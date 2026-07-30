@@ -7,9 +7,11 @@ KI-gestützte Produktionspipeline für visuelle Erklär-Reels zu Politik, Gesell
 Aus einem Thema oder einem deutschen Rohscript entsteht ein vollständiger Reel-Arbeitsordner mit:
 
 - geprüftem Voice-over-Script
-- 8–10 klaren Bildmomenten
+- 8–12 klaren Bildmomenten, abhängig von der Länge
 - einer passenden Bildwelt für das gesamte Reel
 - englischen Bildprompts mit optionalem deutschem Schlüsseltext
+- Audio-Cues für synchronisierte Bildwechsel
+- getrenntem Untertitelplan
 - Cover-Plan und Cover-Prompt
 - Caption und Quellen
 - strenger Inhaltsprüfung
@@ -27,6 +29,18 @@ Der Nutzer erzeugt Audio und Bilder außerhalb des Repositories. Das Repository 
 
 Nicht vorgesehen sind Finanzen, Elektrotechnik, KI-News, tägliche politische Nachrichten oder Parteienwerbung.
 
+## Produktionsregeln
+
+- Hook-Bild ab Sekunde 0 sichtbar
+- 35–44 Sekunden: normalerweise 8–10 Bildmomente
+- 45–55 Sekunden: normalerweise 10–12 Bildmomente
+- sichtbare Veränderung ungefähr alle 3,5–5 Sekunden
+- Bildwechsel normalerweise 0,1–0,3 Sekunden vor dem passenden gesprochenen `audioCue`
+- einfache Bilder dürfen kürzer stehen als komplexere Bilder
+- Untertitel standardmäßig in der unteren Mitte bei ungefähr 65–75 % der Bildhöhe
+- Untertitel normalerweise 3–6 Wörter, höchstens zwei Zeilen
+- kein Wort-für-Wort-Karaoke und keine unnötige Wiederholung von Text, der bereits im Bild steht
+
 ## Produktionsablauf
 
 ```text
@@ -36,7 +50,9 @@ Reel-Arbeitsordner erstellen
         ↓
 Codex-Auftrag automatisch erzeugen
         ↓
-Script, Szenen, Bildprompts, Cover, Caption und Quellen ausfüllen
+Script, Szenen, Audio-Cues, Bildprompts und Untertitelplan ausfüllen
+        ↓
+Cover, Caption und Quellen erstellen
         ↓
 strenge Inhaltsprüfung
         ↓
@@ -45,6 +61,8 @@ Nutzer erzeugt Voice-over und Bilder extern
 alle Dateien unsortiert in die Inbox legen
         ↓
 Codex erkennt Bildinhalte und ordnet sie den Szenen zu
+        ↓
+Bildwechsel und Untertitel gegen die echte Audiospur prüfen
         ↓
 Dateien automatisch kopieren, umbenennen und registrieren
 ```
@@ -63,8 +81,10 @@ npm run create:reel -- \
   --title "Was bedeutet links und rechts?" \
   --script-file input/script.txt \
   --date 2026-07-30 \
-  --scenes 9
+  --scenes 10
 ```
+
+`--scenes` unterstützt Werte von 8 bis 12. Ohne Angabe werden 10 Bildmomente angelegt.
 
 Das Ergebnis wird automatisch nach Kalenderwoche und Wochentag gespeichert:
 
@@ -95,10 +115,18 @@ Codex liest und bearbeitet:
 - `scenes/scene-index.json`
 - jede `scenes/scene-XX/scene.json`
 - jede `scenes/scene-XX/image-prompt.txt`
+- `subtitles/subtitle-plan.json`
 - `cover/cover.json`
 - `cover/cover-prompt.txt`
 - `caption/caption.txt`
 - `sources/sources.md`
+
+Jede Szene enthält zusätzlich:
+
+- `audioCue` – gesprochenes Wort oder Phrase für den Bildwechsel
+- `leadInSeconds` – normalerweise 0,1 bis 0,3 Sekunden
+- `subtitleCues` – kurze Untertitel-Sinnabschnitte
+- `subtitlePosition` – normalerweise `lower-middle`
 
 Der Auftrag kann bei Bedarf neu erzeugt werden:
 
@@ -116,7 +144,7 @@ npm run validate:reel -- \
   --dir "content/2026-KW31_27-07_bis_02-08/donnerstag/reel-01_was-bedeutet-links-und-rechts"
 ```
 
-Script, Szenen, Prompts, Cover, Caption und Quellen streng prüfen:
+Script, Szenen, Prompts, Untertitelplan, Cover, Caption und Quellen streng prüfen:
 
 ```bash
 npm run check:content -- \
@@ -126,11 +154,14 @@ npm run check:content -- \
 
 Die Prüfung kontrolliert unter anderem:
 
-- 8–10 stabile Szenen-IDs
+- 8–12 stabile Szenen-IDs
 - ausgewählte Bildwelt und Begründung
 - vollständige Sprechertexte
 - visuelle Idee und Kontinuitätsnotizen pro Szene
 - geschätzte Gesamtdauer
+- empfohlenen Bildrhythmus
+- `audioCue` und `leadInSeconds`
+- Untertitelposition und Untertitelplan
 - ausführliche englische 9:16-Bildprompts
 - exakte Übernahme geplanter Bildtexte in die Prompts
 - Cover-Idee und Cover-Prompt
@@ -193,6 +224,8 @@ Das System:
 - lässt Dateien unter 0,75 Konfidenz unangetastet
 - verhindert doppelte Verwendung einer Quelle oder eines Ziels
 
+Nach Einfügen der echten Audiodatei prüft Codex zusätzlich, ob die geplanten Bildwechsel und Untertitel zum tatsächlichen Voice-over passen.
+
 ## Tests
 
 ```bash
@@ -214,12 +247,12 @@ GitHub Actions führt die Tests bei Pushes und Pull Requests automatisch mit Nod
 
 - `CODEX_TASK.md` – kompletter Start- und Übergabeworkflow für Codex
 - `AGENTS.md` – verbindliche Projektregeln
-- `knowledge/production-rules.md` – inhaltliche und visuelle Regeln
-- `config/content-rules.json` – Themen und Einschränkungen
+- `knowledge/production-rules.md` – inhaltliche, visuelle und Untertitelregeln
+- `config/content-rules.json` – maschinenlesbare Themen-, Timing- und Untertitelregeln
 - `config/image-styles.json` – verfügbare Bildwelten
 - `src/core/workspace.js` – Reel-Ordnergenerator
 - `src/core/production-brief.js` – dynamischer Codex-Auftrag
-- `src/core/content-validator.js` – Inhalts- und Promptprüfung
+- `src/core/content-validator.js` – Inhalts-, Timing- und Promptprüfung
 - `src/core/asset-ingest.js` – Inventar und Dateiübernahme
 
 ## Noch nicht enthalten
