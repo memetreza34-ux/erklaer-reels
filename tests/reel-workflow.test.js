@@ -30,7 +30,7 @@ test('erstellt einen vollständigen Reel-Arbeitsordner mit Codex-Auftrag', async
   const inboxReadme = await readFile(path.join(result.reelDirectory, 'inbox', 'README.md'), 'utf8');
 
   assert.match(task, /Was bedeutet links und rechts\?/);
-  assert.match(task, /9 Bildmomente/);
+  assert.match(task, /Geplante Bildmomente: \*\*9\*\*/);
   assert.match(inboxReadme, /Reihenfolge ist egal/);
 });
 
