@@ -105,7 +105,10 @@ export async function createReelWorkspace({
     'cover',
     'caption',
     'sources',
-    'review'
+    'review',
+    'inbox/images',
+    'inbox/audio',
+    'inbox/processed'
   ];
 
   await Promise.all(directories.map((directory) => mkdir(path.join(reelDirectory, directory), { recursive: true })));
@@ -122,6 +125,7 @@ export async function createReelWorkspace({
       title: index === 1 ? 'Hook' : `Bildmoment ${index}`,
       narration: '',
       imageText: '',
+      visualIdea: '',
       expectedImageFileName: `${sceneId}.png`,
       status: 'planned'
     };
@@ -152,6 +156,7 @@ export async function createReelWorkspace({
     imagePrompts: 'missing',
     images: 'missing',
     cover: 'missing',
+    assetMatching: 'waiting-for-files',
     qualityControl: 'pending'
   });
   await writeJson(path.join(reelDirectory, 'assets-manifest.json'), {
@@ -182,6 +187,15 @@ export async function createReelWorkspace({
     passed: false,
     checks: [],
     notes: []
+  });
+  await writeText(path.join(reelDirectory, 'inbox', 'images', '.gitkeep'));
+  await writeText(path.join(reelDirectory, 'inbox', 'audio', '.gitkeep'));
+  await writeText(path.join(reelDirectory, 'inbox', 'processed', '.gitkeep'));
+  await writeJson(path.join(reelDirectory, 'inbox', 'asset-map.json'), {
+    version: 1,
+    generatedBy: '',
+    assignments: [],
+    unmatched: []
   });
 
   return { reelDirectory, reel };
