@@ -1,0 +1,41 @@
+{
+  "styles": [
+    {
+      "id": "human-editorial-cartoon",
+      "name": "Menschliche Cartoonfiguren",
+      "bestFor": ["Psychologie", "Gesellschaft", "Verhalten"],
+      "description": "Handgezeichneter 2D-Editorial-Cartoon mit vereinfachten Menschen, starken Gesichtsausdrücken und klaren visuellen Metaphern."
+    },
+    {
+      "id": "round-country-characters",
+      "name": "Runde Länderfiguren",
+      "bestFor": ["Politik", "Länder", "Geografie", "Geschichte"],
+      "description": "Runde Länder- oder Regionenfiguren mit einfachen Augen, kleinen Armen und Beinen sowie kräftigen Konturen."
+    },
+    {
+      "id": "visual-metaphor",
+      "name": "Starke visuelle Metapher",
+      "bestFor": ["abstrakte Begriffe", "Hooks", "soziale Zusammenhänge"],
+      "description": "Ein klarer Gegenstand oder eine Szene erklärt den Begriff sofort, zum Beispiel Hamsterrad, Waage, Mauer oder Puzzle."
+    },
+    {
+      "id": "personified-biology",
+      "name": "Personifizierte Organe und Zellen",
+      "bestFor": ["Körper", "Biologie", "Gesundheitsgrundlagen"],
+      "description": "Organe, Zellen oder Körperbestandteile werden als einfache, sympathische 2D-Figuren dargestellt."
+    },
+    {
+      "id": "comparison-panels",
+      "name": "Panel- und Vergleichsstil",
+      "bestFor": ["Vergleiche", "Kategorien", "Systeme"],
+      "description": "Zwei oder mehr klar getrennte Bereiche zeigen Unterschiede direkt nebeneinander."
+    },
+    {
+      "id": "progressive-build-up",
+      "name": "Build-up-Sequenz",
+      "bestFor": ["Prozesse", "Kombinationen", "schrittweise Entwicklungen"],
+      "description": "Die Grundkomposition bleibt gleich und pro Bild kommt eine sinnvolle neue Information hinzu. Nur einsetzen, wenn es zum Thema passt."
+    }
+  ],
+  "selectionRule": "Wähle pro Reel den Stil, der das konkrete Thema am schnellsten und klarsten erklärt. Halte den Stil innerhalb des Reels konsistent, aber erzwinge keine einheitliche Bildwelt für den gesamten Kanal."
+}
