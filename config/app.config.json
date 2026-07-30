@@ -1,0 +1,20 @@
+{
+  "projectName": "Erklär-Reels",
+  "language": "de",
+  "promptLanguage": "en",
+  "aspectRatio": "9:16",
+  "targetDurationSeconds": {
+    "min": 35,
+    "max": 55
+  },
+  "sceneCount": {
+    "min": 8,
+    "preferred": 9,
+    "max": 10
+  },
+  "visualChangeEverySeconds": {
+    "min": 4,
+    "max": 6
+  },
+  "outputRoot": "content"
+}
