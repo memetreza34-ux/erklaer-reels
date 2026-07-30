@@ -15,15 +15,16 @@ Baue und betreibe einen KI-Workflow, der aus einem Thema oder einem fertigen deu
 Version 1 erzeugt im Repository:
 
 1. geprüftes Voice-over-Script
-2. 8–10 Bildmomente
+2. 8–12 Bildmomente, abhängig von der tatsächlichen Audiolänge
 3. eine begründete Stilentscheidung für das gesamte Reel
 4. englische Bildprompts
 5. Cover-Prompt und Cover-Plan
-6. Caption
-7. Quellenliste
-8. Qualitäts- und Bereitschaftsberichte
-9. eine Inbox für extern erzeugte Bilder und Audio
-10. eine automatische, inhaltsbasierte Zuordnung der unsortierten Assets
+6. einen Untertitelplan
+7. Caption
+8. Quellenliste
+9. Qualitäts- und Bereitschaftsberichte
+10. eine Inbox für extern erzeugte Bilder und Audio
+11. eine automatische, inhaltsbasierte Zuordnung der unsortierten Assets
 
 Der Nutzer erzeugt Audio und Bilder außerhalb des Repositories. Version 1 erzeugt noch kein fertiges Video und veröffentlicht nichts automatisch.
 
@@ -49,14 +50,29 @@ Nicht als eigene Content-Säulen verwenden:
 - Erkläre Dinge einfach, direkt und visuell.
 - Schreibe keine schulische Einleitung.
 - Beginne mit einer verständlichen Frage, einem Widerspruch oder einer überraschenden Beobachtung.
-- Plane normalerweise 8–10 Bilder für 35–55 Sekunden.
-- Erzeuge ungefähr alle 4–6 Sekunden eine sichtbare Veränderung.
+- Das erste Hook-Bild muss ab Sekunde 0 sichtbar sein. Kein schwarzer Start, kein leerer Aufbau und keine unnötige Einblendeverzögerung.
+- Plane für 35–44 Sekunden normalerweise 8–10 visuelle Momente.
+- Plane für 45–55 Sekunden normalerweise 10–12 visuelle Momente.
+- Erzeuge ungefähr alle 3,5–5 Sekunden einen Bildwechsel oder eine deutlich sichtbare Ergänzung.
+- Ein leicht verständliches Bild darf kürzer stehen als ein komplexes Bild. Verwende keine starre Dauer für alle Szenen.
+- Richte jeden Bildwechsel am Sprechertext aus. Jede Szene benötigt ein eindeutiges `audioCue`: das Wort oder die kurze Phrase, an der das Bild inhaltlich beginnt.
+- Das neue Bild soll normalerweise 0,1–0,3 Sekunden vor dem zugehörigen `audioCue` erscheinen.
 - Halte den Zeichenstil innerhalb eines Reels konsistent.
 - Erlaube zwischen Reels unterschiedliche Bildwelten.
 - Erzwinge keine Build-up-Sequenz, wenn einzelne Metaphern besser funktionieren.
 - Integriere kurze deutsche Schlüsselwörter dort, wo sie die Bildaussage verbessern.
-- Verwende keine klassischen Untertitel als Pflichtbestandteil.
 - Politische Themen werden neutral erklärt und nicht als Meinungswerbung formuliert.
+
+## Untertitelregeln
+
+- Untertitel sind standardmäßig vorgesehen, werden aber getrennt von den Bildern geplant.
+- Position: untere Mitte, ungefähr bei 65–75 % der Bildhöhe; nicht exakt in der Bildschirmmitte und nicht ganz unten im Bereich der Plattform-Bedienelemente.
+- Pro Untertitel-Einblendung normalerweise 3–6 Wörter und höchstens zwei Zeilen.
+- Verwende kurze Sinnabschnitte statt Wort-für-Wort-Karaoke.
+- Untertitel müssen zum tatsächlichen Voice-over passen und später an der Audiospur fein synchronisiert werden.
+- Wiederhole keinen integrierten Bildtext wortgleich als Untertitel.
+- Wenn wichtiger Bildtext oder ein zentrales Motiv im unteren Bereich liegt, verschiebe den Untertitel innerhalb der sicheren Zone.
+- Untertitel gehören in `subtitles/subtitle-plan.json`, nicht in die Bildprompts.
 
 ## Bevorzugte Bildwelten
 
@@ -73,7 +89,7 @@ Nicht als eigene Content-Säulen verwenden:
 - Erstelle den Reel-Ordner mit `npm run create:reel`.
 - Der Befehl erzeugt automatisch `production/agent-task.md`.
 - Arbeite diesen reel-spezifischen Auftrag vollständig ab.
-- Fülle `reel.json`, alle `scene.json`-Dateien, alle `image-prompt.txt`-Dateien, Cover, Caption und Quellen aus.
+- Fülle `reel.json`, alle `scene.json`-Dateien, alle `image-prompt.txt`-Dateien, `subtitles/subtitle-plan.json`, Cover, Caption und Quellen aus.
 - Führe danach `npm run check:content -- --dir "<reel-ordner>" --strict` aus.
 - Ein Inhaltspaket darf erst als fertig bezeichnet werden, wenn die strenge Prüfung keine Fehler mehr meldet.
 
@@ -95,6 +111,7 @@ Der Nutzer erzeugt Audio und Bilder außerhalb dieses Repositories und legt sie 
 - Unter 0.75 Konfidenz darf nicht geraten werden; die Datei bleibt in `unmatched`.
 - Nach der Zuordnung führt der Agent `npm run organize:assets -- --dir "<reel-ordner>" --apply` aus.
 - Das Anwenden kopiert die Dateien in die richtigen Szenenordner, benennt sie stabil um und aktualisiert Manifest, Status und Szenendaten.
+- Sobald die echte Audiodatei vorliegt, prüft Codex die geplanten Bildwechsel und Untertitel noch einmal gegen die Audiospur und korrigiert erkennbare Abweichungen.
 
 Beispiel für `inbox/asset-map.json`:
 
@@ -131,6 +148,8 @@ Beispiel für `inbox/asset-map.json`:
 - Nutze stabile IDs wie `scene-01` und feste erwartete Dateinamen.
 - Verlasse dich nie nur auf die alphabetische Dateireihenfolge.
 - Jede Szene benötigt `scene.json`, `image-prompt.txt` und einen erwarteten Bildpfad.
+- Jede Szene benötigt außerdem `audioCue`, `leadInSeconds` und passende `subtitleCues`.
+- `leadInSeconds` liegt normalerweise zwischen 0,1 und 0,3 Sekunden.
 - API-Schlüssel dürfen nie in das Repository geschrieben werden.
 - Fehlende Assets müssen im Status und Manifest erkennbar sein.
 - Jede Pipeline-Stufe muss einzeln erneut ausführbar sein.
