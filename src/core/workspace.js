@@ -106,6 +106,7 @@ export async function createReelWorkspace({
     'caption',
     'sources',
     'review',
+    'production',
     'inbox/images',
     'inbox/audio',
     'inbox/processed'
@@ -126,7 +127,11 @@ export async function createReelWorkspace({
       narration: '',
       imageText: '',
       visualIdea: '',
+      continuityNotes: '',
+      durationSeconds: 0,
       expectedImageFileName: `${sceneId}.png`,
+      promptStatus: 'missing',
+      imageStatus: 'missing',
       status: 'planned'
     };
 
@@ -143,13 +148,17 @@ export async function createReelWorkspace({
     language: 'de',
     promptLanguage: 'en',
     aspectRatio: '9:16',
+    targetDurationSeconds: 45,
     sceneCount,
     visualStyleId: '',
+    visualStyleReason: '',
     status: 'workspace-created'
   };
 
   await writeJson(path.join(reelDirectory, 'reel.json'), reel);
   await writeJson(path.join(reelDirectory, 'status.json'), {
+    workspace: 'ready',
+    content: 'draft',
     script: 'provided',
     scenes: 'planned',
     audio: 'missing',
@@ -176,8 +185,11 @@ export async function createReelWorkspace({
   await writeJson(path.join(reelDirectory, 'scenes', 'scene-index.json'), sceneIndex);
   await writeText(path.join(reelDirectory, 'cover', 'cover-prompt.txt'));
   await writeJson(path.join(reelDirectory, 'cover', 'cover.json'), {
-    title: '',
+    headline: '',
+    visualIdea: '',
     expectedImageFileName: 'cover.png',
+    promptStatus: 'missing',
+    imageStatus: 'missing',
     status: 'planned'
   });
   await writeText(path.join(reelDirectory, 'caption', 'caption.txt'));
@@ -191,6 +203,7 @@ export async function createReelWorkspace({
   await writeText(path.join(reelDirectory, 'inbox', 'images', '.gitkeep'));
   await writeText(path.join(reelDirectory, 'inbox', 'audio', '.gitkeep'));
   await writeText(path.join(reelDirectory, 'inbox', 'processed', '.gitkeep'));
+  await writeText(path.join(reelDirectory, 'inbox', 'README.md'), `# Unsortierte externe Dateien\n\nLege alle generierten Szenenbilder und das Cover mit beliebigen Dateinamen nach \`images/\`.\nLege das fertige Voice-over nach \`audio/\`.\nDie Reihenfolge ist egal; Codex ordnet die Dateien später anhand ihres sichtbaren Inhalts zu.\n`);
   await writeJson(path.join(reelDirectory, 'inbox', 'asset-map.json'), {
     version: 1,
     generatedBy: '',
