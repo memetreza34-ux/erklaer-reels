@@ -34,7 +34,7 @@ export async function prepareReelProduction(reelDirectory) {
   await mkdir(productionDirectory, { recursive: true });
 
   const checklist = {
-    version: 1,
+    version: 2,
     reelId: reel.reelId,
     title: reel.title,
     createdAt: new Date().toISOString(),
@@ -42,8 +42,9 @@ export async function prepareReelProduction(reelDirectory) {
     tasks: [
       { id: 'script-final', label: 'Finales Voice-over-Script prüfen und schreiben', status: 'pending' },
       { id: 'style-select', label: 'Passende Bildwelt auswählen und in reel.json eintragen', status: 'pending' },
-      { id: 'scenes-fill', label: `${scenes.length} Szenen vollständig planen`, status: 'pending' },
+      { id: 'scenes-fill', label: `${scenes.length} Szenen mit Audio-Cues vollständig planen`, status: 'pending' },
       { id: 'prompts-write', label: `${scenes.length} englische Bildprompts schreiben`, status: 'pending' },
+      { id: 'subtitles-write', label: 'Untertitelplan mit kurzen Sinnabschnitten erstellen', status: 'pending' },
       { id: 'cover-write', label: 'Cover-Idee und Cover-Prompt schreiben', status: 'pending' },
       { id: 'caption-write', label: 'Caption erstellen', status: 'pending' },
       { id: 'sources-write', label: 'Quellen und Unsicherheiten dokumentieren', status: 'pending' },
@@ -65,6 +66,7 @@ Erstelle aus dem vorhandenen deutschen Rohscript ein vollständiges Produktionsp
 - Format: **9:16**
 - Sprache des Voice-overs: **Deutsch**
 - Sprache der Bildprompts: **Englisch**
+- Untertitel: **standardmäßig aktiv, getrennt von den Bildern**
 
 ## Rohscript
 
@@ -75,40 +77,59 @@ Erstelle aus dem vorhandenen deutschen Rohscript ein vollständiges Produktionsp
 1. Lies zuerst \`AGENTS.md\`, \`knowledge/production-rules.md\`, \`config/content-rules.json\` und \`config/image-styles.json\`.
 2. Überarbeite das Rohscript zu einem einfachen, flüssigen Voice-over von ungefähr 35–55 Sekunden.
 3. Schreibe denselben finalen Text nach \`script/final-script.txt\` und \`script/voice-script.txt\`.
-4. Wähle genau eine Hauptbildwelt für dieses Reel. Trage deren ID in \`reel.json.visualStyleId\` ein und ergänze \`visualStyleReason\`.
-5. Plane genau ${scenes.length} Bildmomente. Ein Bildwechsel oder eine klare sichtbare Ergänzung soll ungefähr alle 4–6 Sekunden stattfinden.
-6. Aktualisiere für jede Szene sowohl \`scenes/scene-index.json\` als auch die jeweilige \`scenes/scene-XX/scene.json\`.
-7. Jede Szene benötigt mindestens:
+4. Prüfe, ob die Bildanzahl zur erwarteten Dauer passt:
+   - 35–44 Sekunden: normalerweise 8–10 Bildmomente
+   - 45–55 Sekunden: normalerweise 10–12 Bildmomente
+5. Wähle genau eine Hauptbildwelt für dieses Reel. Trage deren ID in \`reel.json.visualStyleId\` ein und ergänze \`visualStyleReason\`.
+6. Plane genau ${scenes.length} Bildmomente. Das Hook-Bild muss ab Sekunde 0 sichtbar sein. Danach soll ungefähr alle 3,5–5 Sekunden ein Bildwechsel oder eine deutliche sichtbare Ergänzung erfolgen.
+7. Teile nicht mechanisch in gleich lange Blöcke. Einfache Bilder dürfen kürzer stehen, komplexere Bilder etwas länger.
+8. Aktualisiere für jede Szene sowohl \`scenes/scene-index.json\` als auch die jeweilige \`scenes/scene-XX/scene.json\`.
+9. Jede Szene benötigt mindestens:
    - \`title\`
    - \`narration\`
    - \`imageText\` (leer lassen, wenn kein integrierter Text sinnvoll ist)
    - \`visualIdea\`
    - \`continuityNotes\`
+   - \`audioCue\`: das gesprochene Wort oder die kurze Phrase, an der der Bildmoment inhaltlich beginnt
+   - \`leadInSeconds\`: normalerweise 0.1 bis 0.3; Standard 0.2
+   - \`subtitleCues\`: kurze Untertitel-Sinnabschnitte für diese Szene
+   - \`subtitlePosition\`: normalerweise \`lower-middle\`
    - \`durationSeconds\`
    - \`expectedImageFileName\`
-8. Schreibe für jede Szene einen vollständigen englischen Prompt nach \`scenes/scene-XX/image-prompt.txt\`.
-9. Die Prompts müssen eigenständig verständlich sein, aber dieselbe Figurenlogik, Strichart und Bildwelt innerhalb des Reels beibehalten.
-10. Nutze kurze deutsche Schlüsselwörter im Bild nur dann, wenn sie die Erklärung verbessern. Schreibe den exakten sichtbaren Text im Prompt aus.
-11. Fülle \`cover/cover.json\` aus und schreibe \`cover/cover-prompt.txt\`. Das Cover muss auf kleiner Ansicht sofort lesbar sein.
-12. Schreibe eine kopierbare Caption nach \`caption/caption.txt\`.
-13. Dokumentiere verwendete Quellen und Unsicherheiten in \`sources/sources.md\`. Bei Politik, Geschichte, Psychologie, Körper und Biologie keine unbelegten Tatsachen erfinden.
-14. Führe anschließend aus:
+10. Schreibe für jede Szene einen vollständigen englischen Prompt nach \`scenes/scene-XX/image-prompt.txt\`.
+11. Die Prompts müssen eigenständig verständlich sein, aber dieselbe Figurenlogik, Strichart und Bildwelt innerhalb des Reels beibehalten.
+12. Nutze kurze deutsche Schlüsselwörter im Bild nur dann, wenn sie die Erklärung verbessern. Schreibe den exakten sichtbaren Text im Prompt aus.
+13. Untertitel dürfen nicht in die Bildprompts eingebrannt werden.
+14. Fülle \`subtitles/subtitle-plan.json\` aus:
+    - Position ungefähr bei 70 % der Bildhöhe, sichere Zone 65–75 %
+    - normalerweise 3–6 Wörter pro Einblendung
+    - höchstens zwei Zeilen
+    - Sinnabschnitte statt Wort-für-Wort-Karaoke
+    - integrierten Bildtext nicht wortgleich wiederholen
+    - jeden Cue einer \`sceneId\` und einem \`audioCue\` zuordnen
+    - Timing zunächst schätzen und als noch nicht final markieren, bis die echte Audiodatei vorliegt
+15. Fülle \`cover/cover.json\` aus und schreibe \`cover/cover-prompt.txt\`. Das Cover muss auf kleiner Ansicht sofort lesbar sein.
+16. Schreibe eine kopierbare Caption nach \`caption/caption.txt\`.
+17. Dokumentiere verwendete Quellen und Unsicherheiten in \`sources/sources.md\`. Bei Politik, Geschichte, Psychologie, Körper und Biologie keine unbelegten Tatsachen erfinden.
+18. Führe anschließend aus:
 
 \`\`\`bash
 npm run check:content -- --dir "${reelDirectory.split(path.sep).join('/')}" --strict
 \`\`\`
 
-15. Behebe alle gemeldeten Fehler. Markiere danach die Aufgaben in \`production/checklist.json\` als \`done\`.
+19. Behebe alle gemeldeten Fehler. Markiere danach die Aufgaben in \`production/checklist.json\` als \`done\`.
 
 ## Kreative Leitplanken
 
 - Ziel des Accounts: schwierige Dinge sehr einfach und visuell erklären.
 - Keine schulische Einleitung und kein künstlich dramatischer Hook.
+- Das erste Bild darf keine Einblendeverzögerung haben.
 - Nicht jede Szene muss gleich aufgebaut sein.
 - Innerhalb dieses Reels bleibt die Bildwelt konsistent.
 - Zwischen unterschiedlichen Reels dürfen Stil und Figuren stark wechseln.
 - Build-up-Bilder nur einsetzen, wenn eine echte schrittweise Entwicklung erklärt wird.
-- Keine klassischen Untertitel erzwingen.
+- Bildwechsel müssen zum gesprochenen Inhalt passen und normalerweise 0,1–0,3 Sekunden vor dem jeweiligen \`audioCue\` beginnen.
+- Untertitel stehen in der unteren Mitte, nicht exakt mittig und nicht ganz unten.
 - Keine realen Politiker oder Parteilogos, außer sie sind für eine sachliche historische Erklärung zwingend erforderlich.
 
 ## Übergabe an den Nutzer
@@ -118,8 +139,10 @@ Wenn die Inhaltsprüfung erfolgreich ist, teile dem Nutzer nur Folgendes mit:
 - Pfad des Reel-Ordners
 - Anzahl der Bildprompts
 - gewählte Bildwelt
+- dass ein Untertitelplan vorhanden ist
 - dass er nun das Voice-over und die Bilder extern erzeugen kann
 - dass alle Dateien anschließend unsortiert nach \`inbox/audio/\` und \`inbox/images/\` dürfen
+- dass Codex nach Einfügen der echten Audiodatei Bildwechsel und Untertitel noch einmal synchron prüft
 `;
 
   await writeFile(path.join(productionDirectory, 'agent-task.md'), `${brief}\n`, 'utf8');
