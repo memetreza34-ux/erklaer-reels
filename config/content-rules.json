@@ -1,0 +1,33 @@
+{
+  "allowedTopics": [
+    "Politik und Gesellschaft",
+    "Länder, Geografie und Geschichte",
+    "Psychologie und menschliches Verhalten",
+    "Körper und Biologie"
+  ],
+  "excludedTopics": [
+    "Finanzen",
+    "Elektrotechnik",
+    "KI-News",
+    "tägliche politische Nachrichten",
+    "Parteienwerbung"
+  ],
+  "scriptRules": {
+    "singleNarrator": true,
+    "language": "de",
+    "simpleExplanations": true,
+    "strongImmediateHook": true,
+    "avoidSchoolLikeIntro": true,
+    "avoidPoliticalEndorsement": true,
+    "stateUncertaintyClearly": true
+  },
+  "visualRules": {
+    "consistentStyleWithinReel": true,
+    "creativeStyleBetweenReels": true,
+    "integratedGermanKeywordsAllowed": true,
+    "classicSubtitlesRequired": false,
+    "fixedBuildUpRequired": false,
+    "noWatermarks": true,
+    "noLogosUnlessEditoriallyNecessary": true
+  }
+}
