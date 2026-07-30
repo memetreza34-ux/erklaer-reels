@@ -66,6 +66,55 @@ Nicht als eigene Content-Säulen verwenden:
 5. Vergleichspanels für klare Gegenüberstellungen
 6. Build-up-Sequenzen nur für echte schrittweise Entwicklungen
 
+## Unsortierte Nutzer-Assets
+
+Der Nutzer erzeugt Audio und Bilder außerhalb dieses Repositories und legt sie anschließend unsortiert in den Reel-Ordner.
+
+- Bilder kommen nach `inbox/images/`.
+- Audio kommt nach `inbox/audio/`.
+- Dateinamen und Ablagereihenfolge sind keine zuverlässigen Zuordnungssignale.
+- Der Agent muss zuerst `npm run organize:assets -- --dir "<reel-ordner>"` ausführen.
+- Danach muss der Agent alle Bilder visuell prüfen und mit `scene-index.json`, jeder `scene.json`, dem Sprechertext und den Bildprompts vergleichen.
+- Sichtbarer deutscher Schlüsseltext, dargestellte Figuren, Objekte, Metaphern und Komposition sind die wichtigsten Signale.
+- Der Agent schreibt die Zuordnung in `inbox/asset-map.json`.
+- Erlaubte Ziele sind `scene-01` bis zur letzten Szene, `cover` und `audio`.
+- Jede Quelle und jedes Ziel darf nur einmal zugewiesen werden.
+- Das Cover ist ein eigenes Asset und darf nicht automatisch als Hook-Bild behandelt werden.
+- Jede Zuweisung benötigt `confidence` zwischen 0 und 1 sowie eine kurze `reason`.
+- Unter 0.75 Konfidenz darf nicht geraten werden; die Datei bleibt in `unmatched`.
+- Nach der Zuordnung führt der Agent `npm run organize:assets -- --dir "<reel-ordner>" --apply` aus.
+- Das Anwenden kopiert die Dateien in die richtigen Szenenordner, benennt sie stabil um und aktualisiert Manifest, Status und Szenendaten.
+
+Beispiel für `inbox/asset-map.json`:
+
+```json
+{
+  "version": 1,
+  "generatedBy": "codex-vision",
+  "assignments": [
+    {
+      "source": "images/IMG_8241.png",
+      "target": "scene-03",
+      "confidence": 0.96,
+      "reason": "Das Bild zeigt die Plattformen und den Text MEHR GLEICHHEIT."
+    },
+    {
+      "source": "images/final-cover.jpg",
+      "target": "cover",
+      "confidence": 0.93,
+      "reason": "Große Titelkomposition im Thumbnail-Stil."
+    },
+    {
+      "source": "audio/voice-final.mp3",
+      "target": "audio",
+      "confidence": 1,
+      "reason": "Einzige Audiodatei im Audio-Inbox-Ordner."
+    }
+  ],
+  "unmatched": []
+}
+```
+
 ## Technische Regeln
 
 - Nutze stabile IDs wie `scene-01` und feste erwartete Dateinamen.
