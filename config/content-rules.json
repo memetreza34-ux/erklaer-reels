@@ -19,15 +19,64 @@
     "strongImmediateHook": true,
     "avoidSchoolLikeIntro": true,
     "avoidPoliticalEndorsement": true,
-    "stateUncertaintyClearly": true
+    "stateUncertaintyClearly": true,
+    "targetDurationSeconds": {
+      "min": 35,
+      "max": 55
+    }
   },
   "visualRules": {
+    "minimumSceneCount": 8,
+    "maximumSceneCount": 12,
+    "sceneCountByDuration": [
+      {
+        "durationSecondsMin": 35,
+        "durationSecondsMax": 44,
+        "recommendedScenesMin": 8,
+        "recommendedScenesMax": 10
+      },
+      {
+        "durationSecondsMin": 45,
+        "durationSecondsMax": 55,
+        "recommendedScenesMin": 10,
+        "recommendedScenesMax": 12
+      }
+    ],
+    "visualChangeIntervalSeconds": {
+      "min": 3.5,
+      "max": 5
+    },
+    "hookVisibleFromSecond": 0,
+    "audioCueRequired": true,
+    "audioCueLeadSeconds": {
+      "min": 0.1,
+      "max": 0.3,
+      "default": 0.2
+    },
     "consistentStyleWithinReel": true,
     "creativeStyleBetweenReels": true,
     "integratedGermanKeywordsAllowed": true,
-    "classicSubtitlesRequired": false,
     "fixedBuildUpRequired": false,
     "noWatermarks": true,
     "noLogosUnlessEditoriallyNecessary": true
+  },
+  "subtitleRules": {
+    "defaultEnabled": true,
+    "separateFromImagePrompts": true,
+    "position": "lower-middle",
+    "verticalPositionPercent": {
+      "min": 65,
+      "max": 75,
+      "default": 70
+    },
+    "wordsPerCue": {
+      "min": 3,
+      "max": 6
+    },
+    "maxLines": 2,
+    "wordByWordKaraoke": false,
+    "repeatIntegratedImageText": false,
+    "avoidPlatformUiSafeZones": true,
+    "allowPositionAdjustmentForVisualConflicts": true
   }
 }
