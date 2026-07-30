@@ -33,6 +33,8 @@ async function main() {
     'script/final-script.txt',
     'script/voice-script.txt',
     'scenes/scene-index.json',
+    'subtitles/subtitle-plan.json',
+    'subtitles/README.md',
     'cover/cover-prompt.txt',
     'cover/cover.json',
     'caption/caption.txt',
@@ -48,6 +50,7 @@ async function main() {
     'script',
     'audio',
     'scenes',
+    'subtitles',
     'cover',
     'caption',
     'sources',
@@ -70,8 +73,8 @@ async function main() {
   let reel;
   if (await exists(reelPath)) reel = JSON.parse(await readFile(reelPath, 'utf8'));
 
-  if (reel && (reel.sceneCount < 8 || reel.sceneCount > 10)) {
-    missing.push('reel.json: sceneCount muss zwischen 8 und 10 liegen');
+  if (reel && (reel.sceneCount < 8 || reel.sceneCount > 12)) {
+    missing.push('reel.json: sceneCount muss zwischen 8 und 12 liegen');
   }
 
   if (reel) {
@@ -94,7 +97,7 @@ async function main() {
   console.log('Grundstruktur ist vollständig.');
   console.log(`Reel: ${reel.title}`);
   console.log(`Szenen: ${reel.sceneCount}`);
-  console.log('Codex-Auftrag und Inbox sind vorhanden.');
+  console.log('Codex-Auftrag, Untertitelplan und Inbox sind vorhanden.');
 }
 
 main().catch((error) => {
