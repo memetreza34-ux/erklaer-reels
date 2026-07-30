@@ -6,25 +6,28 @@ Dieses Repository produziert visuelle Erklär-Reels. Der Nutzer erstellt Audio u
 
 1. Prüfe, ob ein deutsches Rohscript vorhanden ist. Wenn nur ein Thema genannt wurde, schreibe zuerst ein einfaches Voice-over-Script mit einem einzigen Erzähler.
 2. Speichere das Rohscript als Textdatei, zum Beispiel unter `input/script.txt`.
-3. Erstelle den Reel-Ordner:
+3. Wähle die Bildanzahl nach der erwarteten Länge:
+   - 35–44 Sekunden: normalerweise 8–10 Bildmomente
+   - 45–55 Sekunden: normalerweise 10–12 Bildmomente
+4. Erstelle den Reel-Ordner:
 
 ```bash
 npm run create:reel -- \
   --title "TITEL" \
   --script-file input/script.txt \
   --date YYYY-MM-DD \
-  --scenes 9
+  --scenes 10
 ```
 
-4. Öffne anschließend im erzeugten Reel-Ordner `production/agent-task.md` und arbeite den Auftrag vollständig ab.
-5. Führe die strenge Inhaltsprüfung aus:
+5. Öffne anschließend im erzeugten Reel-Ordner `production/agent-task.md` und arbeite den Auftrag vollständig ab.
+6. Führe die strenge Inhaltsprüfung aus:
 
 ```bash
 npm run check:content -- --dir "PFAD-ZUM-REEL" --strict
 ```
 
-6. Behebe alle Fehler, bis das Inhaltspaket bestanden hat.
-7. Teile dem Nutzer danach mit, dass Voice-over und Bilder extern erstellt werden können.
+7. Behebe alle Fehler, bis das Inhaltspaket bestanden hat.
+8. Teile dem Nutzer danach mit, dass Voice-over und Bilder extern erstellt werden können.
 
 ## Wenn der Nutzer Audio und Bilder zurückgibt
 
@@ -52,12 +55,18 @@ npm run organize:assets -- --dir "PFAD-ZUM-REEL" --apply
 ```
 
 9. Prüfe den Bericht unter `review/asset-matching-report.json`.
+10. Vergleiche anschließend die echte Audiospur mit den geplanten `audioCue`-Feldern und dem Untertitelplan. Korrigiere erkennbare Abweichungen, bevor ein späterer Videoschnitt beginnt.
 
 ## Verbindliche kreative Regeln
 
 - Erkläre einen Begriff, ein System oder einen Zusammenhang so einfach, dass kein Vorwissen nötig ist.
-- Ein Reel hat normalerweise 8–10 Bildmomente für ungefähr 35–55 Sekunden.
-- Die Bilder wechseln oder verändern sich sichtbar ungefähr alle 4–6 Sekunden.
+- Das Hook-Bild ist ab Sekunde 0 sichtbar.
+- Für 35–44 Sekunden werden normalerweise 8–10 Bildmomente verwendet.
+- Für 45–55 Sekunden werden normalerweise 10–12 Bildmomente verwendet.
+- Bilder wechseln oder verändern sich sichtbar ungefähr alle 3,5–5 Sekunden.
+- Einfache Bilder dürfen kürzer stehen als komplexere Bilder.
+- Jeder Bildmoment erhält ein `audioCue`, das den passenden gesprochenen Begriff oder Satzanfang nennt.
+- Das neue Bild erscheint normalerweise 0,1–0,3 Sekunden vor dem `audioCue`.
 - Innerhalb eines Reels bleibt die Bildwelt konsistent.
 - Zwischen verschiedenen Reels darf die Bildwelt stark wechseln.
 - Keine starre Build-up-Logik erzwingen.
@@ -65,6 +74,17 @@ npm run organize:assets -- --dir "PFAD-ZUM-REEL" --apply
 - Bildprompts sind auf Englisch.
 - Politische Inhalte neutral erklären und keine Partei bewerben.
 - Bei faktischen Themen Quellen und Unsicherheiten dokumentieren.
+
+## Verbindliche Untertitelregeln
+
+- Untertitel sind standardmäßig aktiv und werden in `subtitles/subtitle-plan.json` geplant.
+- Position: untere Mitte bei ungefähr 65–75 % der Bildhöhe.
+- Nicht exakt in der Bildschirmmitte und nicht ganz unten.
+- Normalerweise 3–6 Wörter pro Einblendung, höchstens zwei Zeilen.
+- Kurze Sinnabschnitte statt Wort-für-Wort-Karaoke.
+- Den integrierten Bildtext nicht wortgleich wiederholen.
+- Bei Konflikten mit Bildtext oder Hauptmotiv die Position innerhalb der sicheren Zone anpassen.
+- Untertitel werden nicht in die Bildprompts eingebrannt.
 
 ## Fertig bedeutet
 
@@ -74,5 +94,7 @@ Ein Reel-Inhaltspaket ist erst bereit, wenn:
 - `npm run check:content -- --strict` erfolgreich ist,
 - alle Szenen gefüllte `scene.json`-Dateien besitzen,
 - alle Szenen einen ausführlichen Bildprompt besitzen,
+- alle Szenen ein `audioCue`, `leadInSeconds` und passende `subtitleCues` besitzen,
+- `subtitles/subtitle-plan.json` vorhanden ist,
 - Cover, Caption und Quellen vorhanden sind,
 - der Nutzer Audio und Bilder ohne Vorsortierung in die Inbox legen kann.
