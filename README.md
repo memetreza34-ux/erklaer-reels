@@ -48,6 +48,69 @@ fertiger Reel-Ordner
 
 Nicht vorgesehen sind Finanzen, Elektrotechnik, KI-News oder tägliche politische Nachrichten.
 
-## Technischer Status
+## Aktueller Stand
 
-Das Repository befindet sich im Aufbau. Version 1 konzentriert sich auf Script, Audio, Bildprompts, Bilder, Cover und eine zuverlässige Ordnerstruktur. Videoschnitt, Remotion-Rendering und automatische Veröffentlichung folgen später.
+Die erste funktionsfähige Grundlage ist vorhanden:
+
+- feste Wochen-, Wochentags- und Reel-Ordnerstruktur
+- automatisch fortlaufende Reel-Nummern
+- 8–10 Szenenordner mit stabilen IDs
+- Script-, Audio-, Cover-, Caption-, Quellen- und Review-Bereiche
+- Asset-Manifest und Produktionsstatus
+- CLI zum Erstellen eines neuen Reel-Arbeitsordners
+- CLI zur Prüfung der Grundstruktur
+- zentrale Inhalts-, Bildstil- und Agentenregeln
+
+Die echten KI-Provider für Szenenplanung, Audio und Bildgenerierung werden als Nächstes angeschlossen.
+
+## Voraussetzungen
+
+- Node.js 20 oder neuer
+
+Es sind aktuell keine zusätzlichen npm-Pakete erforderlich.
+
+## Neues Reel anlegen
+
+1. Lege dein Script beispielsweise unter `input/script.txt` ab.
+2. Führe aus:
+
+```bash
+npm run create:reel -- \
+  --title "Was bedeutet links und rechts?" \
+  --script-file input/script.txt \
+  --date 2026-07-30 \
+  --scenes 9
+```
+
+Das Ergebnis wird automatisch nach Kalenderwoche und Wochentag gespeichert, zum Beispiel:
+
+```text
+content/
+└── 2026-KW31_27-07_bis_02-08/
+    └── donnerstag/
+        └── reel-01_was-bedeutet-links-und-rechts/
+```
+
+## Reel-Struktur prüfen
+
+```bash
+npm run validate:reel -- \
+  --dir "content/2026-KW31_27-07_bis_02-08/donnerstag/reel-01_was-bedeutet-links-und-rechts"
+```
+
+## Wichtige Dateien
+
+- `AGENTS.md` – verbindliche Regeln für Codex und andere Coding-Agenten
+- `knowledge/production-rules.md` – inhaltliche und visuelle Produktionsregeln
+- `config/content-rules.json` – erlaubte Themen und feste Einschränkungen
+- `config/image-styles.json` – verfügbare Bildwelten und Auswahlregel
+- `src/core/workspace.js` – Generator für die komplette Reel-Ordnerstruktur
+
+## Noch nicht enthalten
+
+- echte Script- und Szenenplanung über ein Sprachmodell
+- Audio-Generierung
+- Bild-Generierung
+- automatische Qualitätsbewertung der Bilder
+- Remotion-Videoschnitt
+- Social-Media-Veröffentlichung
