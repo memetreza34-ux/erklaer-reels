@@ -1,0 +1,10 @@
+node_modules/
+.env
+.DS_Store
+logs/*.log
+content/**/audio/*.mp3
+content/**/audio/*.wav
+content/**/scenes/**/*.png
+content/**/scenes/**/*.jpg
+content/**/cover/*.png
+content/**/cover/*.jpg
