@@ -34,24 +34,54 @@ async function main() {
     'script/voice-script.txt',
     'scenes/scene-index.json',
     'cover/cover-prompt.txt',
+    'cover/cover.json',
     'caption/caption.txt',
     'sources/sources.md',
-    'review/quality-report.json'
+    'review/quality-report.json',
+    'production/agent-task.md',
+    'production/checklist.json',
+    'inbox/README.md',
+    'inbox/asset-map.json'
+  ];
+
+  const requiredDirectories = [
+    'script',
+    'audio',
+    'scenes',
+    'cover',
+    'caption',
+    'sources',
+    'review',
+    'production',
+    'inbox/images',
+    'inbox/audio',
+    'inbox/processed'
   ];
 
   const missing = [];
   for (const relativePath of requiredFiles) {
     if (!(await exists(path.join(reelDirectory, relativePath)))) missing.push(relativePath);
   }
+  for (const relativePath of requiredDirectories) {
+    if (!(await exists(path.join(reelDirectory, relativePath)))) missing.push(`${relativePath}/`);
+  }
 
   const reelPath = path.join(reelDirectory, 'reel.json');
   let reel;
-  if (await exists(reelPath)) {
-    reel = JSON.parse(await readFile(reelPath, 'utf8'));
-  }
+  if (await exists(reelPath)) reel = JSON.parse(await readFile(reelPath, 'utf8'));
 
   if (reel && (reel.sceneCount < 8 || reel.sceneCount > 10)) {
     missing.push('reel.json: sceneCount muss zwischen 8 und 10 liegen');
+  }
+
+  if (reel) {
+    for (let index = 1; index <= reel.sceneCount; index += 1) {
+      const sceneId = `scene-${String(index).padStart(2, '0')}`;
+      for (const fileName of ['scene.json', 'image-prompt.txt']) {
+        const relativePath = `scenes/${sceneId}/${fileName}`;
+        if (!(await exists(path.join(reelDirectory, relativePath)))) missing.push(relativePath);
+      }
+    }
   }
 
   if (missing.length > 0) {
@@ -64,6 +94,7 @@ async function main() {
   console.log('Grundstruktur ist vollständig.');
   console.log(`Reel: ${reel.title}`);
   console.log(`Szenen: ${reel.sceneCount}`);
+  console.log('Codex-Auftrag und Inbox sind vorhanden.');
 }
 
 main().catch((error) => {
