@@ -20,7 +20,9 @@ Optionen:
   --title         Titel des Reels
   --script-file   Pfad zum deutschen Sprechertext
   --date          Produktionsdatum im Format YYYY-MM-DD (optional)
-  --scenes        Anzahl der Bildmomente: 8, 9 oder 10 (optional, Standard: 9)
+  --scenes        Anzahl der Bildmomente: 8 bis 12 (optional, Standard: 10)
+                  35–44 Sekunden: meist 8–10
+                  45–55 Sekunden: meist 10–12
   --output        Ausgabeordner (optional, Standard: content)
 `);
 }
@@ -34,7 +36,7 @@ async function main() {
   const title = getArgument('--title');
   const scriptFile = getArgument('--script-file');
   const dateValue = getArgument('--date');
-  const sceneCount = Number(getArgument('--scenes') ?? 9);
+  const sceneCount = Number(getArgument('--scenes') ?? 10);
   const outputRoot = getArgument('--output') ?? 'content';
 
   if (!title || !scriptFile) {
