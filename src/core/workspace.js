@@ -75,13 +75,13 @@ export async function createReelWorkspace({
   title,
   script,
   date = new Date(),
-  sceneCount = 9,
+  sceneCount = 10,
   outputRoot = 'content'
 }) {
   if (!title?.trim()) throw new Error('Ein Titel ist erforderlich.');
   if (!script?.trim()) throw new Error('Ein Script ist erforderlich.');
-  if (!Number.isInteger(sceneCount) || sceneCount < 8 || sceneCount > 10) {
-    throw new Error('sceneCount muss zwischen 8 und 10 liegen.');
+  if (!Number.isInteger(sceneCount) || sceneCount < 8 || sceneCount > 12) {
+    throw new Error('sceneCount muss zwischen 8 und 12 liegen.');
   }
 
   const parsedDate = date instanceof Date ? date : new Date(date);
@@ -102,6 +102,7 @@ export async function createReelWorkspace({
     'script',
     'audio',
     'scenes',
+    'subtitles',
     'cover',
     'caption',
     'sources',
@@ -128,6 +129,10 @@ export async function createReelWorkspace({
       imageText: '',
       visualIdea: '',
       continuityNotes: '',
+      audioCue: '',
+      leadInSeconds: 0.2,
+      subtitleCues: [],
+      subtitlePosition: 'lower-middle',
       durationSeconds: 0,
       expectedImageFileName: `${sceneId}.png`,
       promptStatus: 'missing',
@@ -152,6 +157,7 @@ export async function createReelWorkspace({
     sceneCount,
     visualStyleId: '',
     visualStyleReason: '',
+    subtitlesEnabled: true,
     status: 'workspace-created'
   };
 
@@ -161,6 +167,7 @@ export async function createReelWorkspace({
     content: 'draft',
     script: 'provided',
     scenes: 'planned',
+    subtitles: 'planned',
     audio: 'missing',
     imagePrompts: 'missing',
     images: 'missing',
@@ -183,6 +190,20 @@ export async function createReelWorkspace({
   await writeText(path.join(reelDirectory, 'script', 'voice-script.txt'), `${script.trim()}\n`);
   await writeText(path.join(reelDirectory, 'audio', '.gitkeep'));
   await writeJson(path.join(reelDirectory, 'scenes', 'scene-index.json'), sceneIndex);
+  await writeJson(path.join(reelDirectory, 'subtitles', 'subtitle-plan.json'), {
+    version: 1,
+    enabled: true,
+    language: 'de',
+    position: 'lower-middle',
+    verticalPositionPercent: 70,
+    maxLines: 2,
+    wordsPerCue: { min: 3, max: 6 },
+    wordByWordKaraoke: false,
+    avoidRepeatingImageText: true,
+    timingStatus: 'estimated-until-audio-arrives',
+    cues: []
+  });
+  await writeText(path.join(reelDirectory, 'subtitles', 'README.md'), `# Untertitel\n\nUntertitel werden getrennt von den Bildern geplant.\nPosition: untere Mitte bei ungefähr 65–75 % der Bildhöhe.\nNormalerweise 3–6 Wörter pro Einblendung und höchstens zwei Zeilen.\nDie exakten Zeitpunkte werden nach Einfügen der echten Audiodatei fein synchronisiert.\n`);
   await writeText(path.join(reelDirectory, 'cover', 'cover-prompt.txt'));
   await writeJson(path.join(reelDirectory, 'cover', 'cover.json'), {
     headline: '',
@@ -203,7 +224,7 @@ export async function createReelWorkspace({
   await writeText(path.join(reelDirectory, 'inbox', 'images', '.gitkeep'));
   await writeText(path.join(reelDirectory, 'inbox', 'audio', '.gitkeep'));
   await writeText(path.join(reelDirectory, 'inbox', 'processed', '.gitkeep'));
-  await writeText(path.join(reelDirectory, 'inbox', 'README.md'), `# Unsortierte externe Dateien\n\nLege alle generierten Szenenbilder und das Cover mit beliebigen Dateinamen nach \`images/\`.\nLege das fertige Voice-over nach \`audio/\`.\nDie Reihenfolge ist egal; Codex ordnet die Dateien später anhand ihres sichtbaren Inhalts zu.\n`);
+  await writeText(path.join(reelDirectory, 'inbox', 'README.md'), `# Unsortierte externe Dateien\n\nLege alle generierten Szenenbilder und das Cover mit beliebigen Dateinamen nach \`images/\`.\nLege das fertige Voice-over nach \`audio/\`.\nDie Reihenfolge ist egal; Codex ordnet die Dateien später anhand ihres sichtbaren Inhalts zu.\nNach dem Einfügen der Audiodatei prüft Codex außerdem Bildwechsel und Untertitel gegen die echte Audiospur.\n`);
   await writeJson(path.join(reelDirectory, 'inbox', 'asset-map.json'), {
     version: 1,
     generatedBy: '',
