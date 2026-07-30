@@ -2,7 +2,7 @@
 
 ## Projektauftrag
 
-Baue einen KI-Agenten, der aus einem Thema oder einem fertigen deutschen Sprechertext einen vollständigen Produktionsordner für ein visuelles Erklär-Reel erstellt.
+Baue und betreibe einen KI-Workflow, der aus einem Thema oder einem fertigen deutschen Sprechertext einen vollständigen Produktionsordner für ein visuelles Erklär-Reel erstellt.
 
 ## Sprache
 
@@ -12,20 +12,20 @@ Baue einen KI-Agenten, der aus einem Thema oder einem fertigen deutschen Spreche
 
 ## Version 1
 
-Version 1 erzeugt:
+Version 1 erzeugt im Repository:
 
 1. geprüftes Voice-over-Script
 2. 8–10 Bildmomente
 3. eine begründete Stilentscheidung für das gesamte Reel
 4. englische Bildprompts
-5. deutsches Audio
-6. Szenenbilder
-7. Cover und Cover-Prompt
-8. Caption
-9. Quellenliste
-10. Qualitätsbericht
+5. Cover-Prompt und Cover-Plan
+6. Caption
+7. Quellenliste
+8. Qualitäts- und Bereitschaftsberichte
+9. eine Inbox für extern erzeugte Bilder und Audio
+10. eine automatische, inhaltsbasierte Zuordnung der unsortierten Assets
 
-Version 1 erzeugt noch kein fertiges Video und veröffentlicht nichts automatisch.
+Der Nutzer erzeugt Audio und Bilder außerhalb des Repositories. Version 1 erzeugt noch kein fertiges Video und veröffentlicht nichts automatisch.
 
 ## Themenbereich
 
@@ -48,7 +48,7 @@ Nicht als eigene Content-Säulen verwenden:
 
 - Erkläre Dinge einfach, direkt und visuell.
 - Schreibe keine schulische Einleitung.
-- Beginne mit einer klaren Frage, einem Widerspruch oder einer überraschenden Beobachtung.
+- Beginne mit einer verständlichen Frage, einem Widerspruch oder einer überraschenden Beobachtung.
 - Plane normalerweise 8–10 Bilder für 35–55 Sekunden.
 - Erzeuge ungefähr alle 4–6 Sekunden eine sichtbare Veränderung.
 - Halte den Zeichenstil innerhalb eines Reels konsistent.
@@ -56,6 +56,7 @@ Nicht als eigene Content-Säulen verwenden:
 - Erzwinge keine Build-up-Sequenz, wenn einzelne Metaphern besser funktionieren.
 - Integriere kurze deutsche Schlüsselwörter dort, wo sie die Bildaussage verbessern.
 - Verwende keine klassischen Untertitel als Pflichtbestandteil.
+- Politische Themen werden neutral erklärt und nicht als Meinungswerbung formuliert.
 
 ## Bevorzugte Bildwelten
 
@@ -65,6 +66,16 @@ Nicht als eigene Content-Säulen verwenden:
 4. personifizierte Organe und Zellen für Körper und Biologie
 5. Vergleichspanels für klare Gegenüberstellungen
 6. Build-up-Sequenzen nur für echte schrittweise Entwicklungen
+
+## Neues Reel produzieren
+
+- Lies zuerst `CODEX_TASK.md`.
+- Erstelle den Reel-Ordner mit `npm run create:reel`.
+- Der Befehl erzeugt automatisch `production/agent-task.md`.
+- Arbeite diesen reel-spezifischen Auftrag vollständig ab.
+- Fülle `reel.json`, alle `scene.json`-Dateien, alle `image-prompt.txt`-Dateien, Cover, Caption und Quellen aus.
+- Führe danach `npm run check:content -- --dir "<reel-ordner>" --strict` aus.
+- Ein Inhaltspaket darf erst als fertig bezeichnet werden, wenn die strenge Prüfung keine Fehler mehr meldet.
 
 ## Unsortierte Nutzer-Assets
 
@@ -120,10 +131,11 @@ Beispiel für `inbox/asset-map.json`:
 - Nutze stabile IDs wie `scene-01` und feste erwartete Dateinamen.
 - Verlasse dich nie nur auf die alphabetische Dateireihenfolge.
 - Jede Szene benötigt `scene.json`, `image-prompt.txt` und einen erwarteten Bildpfad.
-- Provider für Text, Audio und Bilder müssen austauschbar bleiben.
 - API-Schlüssel dürfen nie in das Repository geschrieben werden.
 - Fehlende Assets müssen im Status und Manifest erkennbar sein.
 - Jede Pipeline-Stufe muss einzeln erneut ausführbar sein.
+- Schreibe denselben Szenenstand in `scene-index.json` und in die jeweilige `scene.json`.
+- Verändere das Rohscript nicht; überarbeitete Fassungen gehören nach `final-script.txt` und `voice-script.txt`.
 
 ## Arbeitsweise
 
