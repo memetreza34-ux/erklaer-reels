@@ -14,12 +14,31 @@ async function readText(filePath) {
   return (await readFile(filePath, 'utf8')).trim();
 }
 
-async function readJson(filePath) {
+async function readJson(filePath, fallback = null) {
+  if (!(await exists(filePath))) return fallback;
   return JSON.parse(await readFile(filePath, 'utf8'));
+}
+
+async function writeJson(filePath, value) {
+  await writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
 }
 
 function addCheck(checks, id, passed, message, level = 'error') {
   checks.push({ id, passed, level, message });
+}
+
+function comparableScene(scene) {
+  return {
+    sceneId: scene.sceneId,
+    order: scene.order,
+    title: String(scene.title ?? '').trim(),
+    narration: String(scene.narration ?? '').trim(),
+    imageText: String(scene.imageText ?? '').trim(),
+    visualIdea: String(scene.visualIdea ?? '').trim(),
+    continuityNotes: String(scene.continuityNotes ?? '').trim(),
+    durationSeconds: Number(scene.durationSeconds ?? 0),
+    expectedImageFileName: String(scene.expectedImageFileName ?? '').trim()
+  };
 }
 
 export async function validateReelContent(reelDirectory, { strict = false } = {}) {
@@ -38,26 +57,32 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
   }
 
   const reel = await readJson(reelPath);
-  const sceneIndex = await readJson(sceneIndexPath);
-  const styleConfig = (await exists(stylesPath)) ? await readJson(stylesPath) : { styles: [] };
+  const sceneIndex = await readJson(sceneIndexPath, []);
+  const styleConfig = await readJson(stylesPath, { styles: [] });
   const validStyleIds = new Set(styleConfig.styles.map((style) => style.id));
 
   addCheck(checks, 'scene-count-range', Number.isInteger(reel.sceneCount) && reel.sceneCount >= 8 && reel.sceneCount <= 10,
     'Die Szenenanzahl muss zwischen 8 und 10 liegen.');
   addCheck(checks, 'scene-count-match', sceneIndex.length === reel.sceneCount,
     `scene-index.json enthält ${sceneIndex.length} statt ${reel.sceneCount} Szenen.`);
+  addCheck(checks, 'topic-area', String(reel.topicArea ?? '').trim().length >= 5,
+    'reel.json.topicArea fehlt.');
   addCheck(checks, 'visual-style', Boolean(reel.visualStyleId) && validStyleIds.has(reel.visualStyleId),
     'reel.json.visualStyleId fehlt oder ist nicht in config/image-styles.json definiert.');
   addCheck(checks, 'visual-style-reason', String(reel.visualStyleReason ?? '').trim().length >= 20,
     'reel.json.visualStyleReason sollte die Stilentscheidung kurz begründen.');
 
+  const scriptContents = {};
   for (const scriptName of ['final-script.txt', 'voice-script.txt']) {
     const scriptPath = path.join(reelDirectory, 'script', scriptName);
     const present = await exists(scriptPath);
     const content = present ? await readText(scriptPath) : '';
+    scriptContents[scriptName] = content;
     addCheck(checks, `script-${scriptName}`, present && content.length >= 120,
       `${scriptName} fehlt oder ist zu kurz.`);
   }
+  addCheck(checks, 'scripts-identical', scriptContents['final-script.txt'] === scriptContents['voice-script.txt'],
+    'final-script.txt und voice-script.txt müssen denselben finalen Sprechertext enthalten.', 'warning');
 
   let totalDuration = 0;
   const usedImageTexts = new Map();
@@ -77,11 +102,14 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
       continue;
     }
 
-    const scene = await readJson(scenePath);
+    const scene = await readJson(scenePath, {});
     const prompt = (await exists(promptPath)) ? await readText(promptPath) : '';
     const duration = Number(scene.durationSeconds ?? 0);
     totalDuration += Number.isFinite(duration) ? duration : 0;
 
+    addCheck(checks, `${expectedId}-index-sync`,
+      JSON.stringify(comparableScene(indexedScene)) === JSON.stringify(comparableScene(scene)),
+      `${expectedId}: scene-index.json und scene.json enthalten unterschiedliche Szenendaten.`);
     addCheck(checks, `${expectedId}-title`, String(scene.title ?? '').trim().length >= 3,
       `${expectedId}: title fehlt.`);
     addCheck(checks, `${expectedId}-narration`, String(scene.narration ?? '').trim().length >= 10,
@@ -116,10 +144,13 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
   const coverPromptPath = path.join(reelDirectory, 'cover', 'cover-prompt.txt');
   const coverJsonPath = path.join(reelDirectory, 'cover', 'cover.json');
   const coverPrompt = (await exists(coverPromptPath)) ? await readText(coverPromptPath) : '';
-  const cover = (await exists(coverJsonPath)) ? await readJson(coverJsonPath) : {};
+  const cover = await readJson(coverJsonPath, {});
+  const headline = String(cover.headline ?? cover.title ?? '').trim();
   addCheck(checks, 'cover-prompt', coverPrompt.length >= 180, 'cover/cover-prompt.txt fehlt oder ist nicht detailliert genug.');
-  addCheck(checks, 'cover-headline', String(cover.headline ?? cover.title ?? '').trim().length >= 5,
+  addCheck(checks, 'cover-headline', headline.length >= 5,
     'cover/cover.json benötigt eine klare headline.');
+  addCheck(checks, 'cover-headline-prompt', !headline || coverPrompt.toUpperCase().includes(headline.toUpperCase()),
+    'Die Cover-Headline steht nicht exakt im Cover-Prompt.', 'warning');
   addCheck(checks, 'cover-visual-idea', String(cover.visualIdea ?? '').trim().length >= 20,
     'cover/cover.json benötigt eine visualIdea.');
 
@@ -139,9 +170,10 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
 async function finalize(reelDirectory, checks, metadata = {}) {
   const errors = checks.filter((check) => !check.passed && check.level === 'error');
   const warnings = checks.filter((check) => !check.passed && check.level === 'warning');
+  const passed = errors.length === 0;
   const report = {
     createdAt: new Date().toISOString(),
-    passed: errors.length === 0,
+    passed,
     summary: {
       passedChecks: checks.filter((check) => check.passed).length,
       failedChecks: errors.length,
@@ -153,6 +185,22 @@ async function finalize(reelDirectory, checks, metadata = {}) {
   };
 
   const reportPath = path.join(reelDirectory, 'review', 'content-readiness.json');
-  await writeFile(reportPath, `${JSON.stringify(report, null, 2)}\n`, 'utf8');
+  await writeJson(reportPath, report);
+
+  const statusPath = path.join(reelDirectory, 'status.json');
+  const status = await readJson(statusPath, {});
+  status.content = passed ? 'ready' : 'needs-review';
+  status.imagePrompts = passed ? 'ready' : 'needs-review';
+  status.cover = passed ? 'prompt-ready' : (status.cover ?? 'missing');
+  status.qualityControl = passed ? 'content-passed' : 'content-failed';
+  await writeJson(statusPath, status);
+
+  const reelPath = path.join(reelDirectory, 'reel.json');
+  const reel = await readJson(reelPath, null);
+  if (reel) {
+    reel.status = passed ? 'content-ready' : 'content-needs-review';
+    await writeJson(reelPath, reel);
+  }
+
   return report;
 }
