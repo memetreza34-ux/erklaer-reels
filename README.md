@@ -4,42 +4,19 @@ KI-gestützte Produktionspipeline für visuelle Erklär-Reels zu Politik, Gesell
 
 ## Ziel von Version 1
 
-Aus einem Thema oder einem fertigen deutschen Sprechertext erzeugt das Projekt einen vollständigen Reel-Arbeitsordner mit:
+Aus einem Thema oder einem deutschen Rohscript entsteht ein vollständiger Reel-Arbeitsordner mit:
 
-- finalem Voice-over-Script
+- geprüftem Voice-over-Script
 - 8–10 klaren Bildmomenten
-- einer passenden, innerhalb des Reels konsistenten Bildwelt
-- englischen Bildprompts mit deutschem Text im Bild
-- Platz für das extern erzeugte Audio
-- Platz für extern erzeugte Szenenbilder
-- Cover und Cover-Prompt
-- Caption, Quellen und Qualitätsbericht
+- einer passenden Bildwelt für das gesamte Reel
+- englischen Bildprompts mit optionalem deutschem Schlüsseltext
+- Cover-Plan und Cover-Prompt
+- Caption und Quellen
+- strenger Inhaltsprüfung
+- Inbox für extern erzeugte Bilder und Audio
+- automatischer Zuordnung unsortierter Dateien zu den richtigen Szenen
 
-Die Bildideen bleiben kreativ. Ein Reel kann mit menschlichen Cartoonfiguren, Länderfiguren, visuellen Metaphern, Vergleichen oder Build-up-Bildern arbeiten. Es gibt keine starre Bildlogik für alle Themen.
-
-## Tatsächlicher Workflow
-
-```text
-Thema oder Script
-        ↓
-Script prüfen und strukturieren
-        ↓
-8–10 Bildmomente planen
-        ↓
-Bildstil für dieses Reel festlegen
-        ↓
-Voice-Text und Bildprompts erzeugen
-        ↓
-Nutzer erzeugt Audio und Bilder extern
-        ↓
-alle Dateien unsortiert in die Inbox legen
-        ↓
-Agent erkennt die Bildinhalte und ordnet sie den Szenen zu
-        ↓
-Dateien automatisch kopieren, umbenennen und registrieren
-        ↓
-Qualitätskontrolle
-```
+Der Nutzer erzeugt Audio und Bilder außerhalb des Repositories. Das Repository organisiert, prüft und registriert diese Dateien anschließend.
 
 ## Themen des Accounts
 
@@ -48,36 +25,38 @@ Qualitätskontrolle
 - Psychologie und menschliches Verhalten
 - Körper und Biologie
 
-Nicht vorgesehen sind Finanzen, Elektrotechnik, KI-News oder tägliche politische Nachrichten.
+Nicht vorgesehen sind Finanzen, Elektrotechnik, KI-News, tägliche politische Nachrichten oder Parteienwerbung.
 
-## Aktueller Stand
+## Produktionsablauf
 
-Die erste funktionsfähige Grundlage ist vorhanden:
-
-- feste Wochen-, Wochentags- und Reel-Ordnerstruktur
-- automatisch fortlaufende Reel-Nummern
-- 8–10 Szenenordner mit stabilen IDs
-- Script-, Audio-, Cover-, Caption-, Quellen- und Review-Bereiche
-- separate Inbox für unsortierte Bilder und Audiodateien
-- Asset-Inventar und semantische Zuordnung über einen Vision-Agenten
-- automatisches Kopieren und stabiles Umbenennen zu den richtigen Szenen
-- Asset-Manifest und Produktionsstatus
-- CLI zum Erstellen eines neuen Reel-Arbeitsordners
-- CLI zur Prüfung der Grundstruktur
-- zentrale Inhalts-, Bildstil- und Agentenregeln
-
-Der Nutzer muss Bilder nicht in der richtigen Reihenfolge ablegen und nicht selbst in die Szenenordner einsortieren.
+```text
+Thema oder Rohscript
+        ↓
+Reel-Arbeitsordner erstellen
+        ↓
+Codex-Auftrag automatisch erzeugen
+        ↓
+Script, Szenen, Bildprompts, Cover, Caption und Quellen ausfüllen
+        ↓
+strenge Inhaltsprüfung
+        ↓
+Nutzer erzeugt Voice-over und Bilder extern
+        ↓
+alle Dateien unsortiert in die Inbox legen
+        ↓
+Codex erkennt Bildinhalte und ordnet sie den Szenen zu
+        ↓
+Dateien automatisch kopieren, umbenennen und registrieren
+```
 
 ## Voraussetzungen
 
 - Node.js 20 oder neuer
+- keine zusätzlichen npm-Pakete erforderlich
 
-Es sind aktuell keine zusätzlichen npm-Pakete erforderlich.
+## 1. Neues Reel anlegen
 
-## Neues Reel anlegen
-
-1. Lege dein Script beispielsweise unter `input/script.txt` ab.
-2. Führe aus:
+Lege ein Rohscript beispielsweise unter `input/script.txt` ab und führe aus:
 
 ```bash
 npm run create:reel -- \
@@ -87,7 +66,7 @@ npm run create:reel -- \
   --scenes 9
 ```
 
-Das Ergebnis wird automatisch nach Kalenderwoche und Wochentag gespeichert, zum Beispiel:
+Das Ergebnis wird automatisch nach Kalenderwoche und Wochentag gespeichert:
 
 ```text
 content/
@@ -96,7 +75,70 @@ content/
         └── reel-01_was-bedeutet-links-und-rechts/
 ```
 
-## Extern erzeugte Dateien ablegen
+Der Befehl erzeugt zusätzlich automatisch:
+
+```text
+production/
+├── agent-task.md
+└── checklist.json
+```
+
+`production/agent-task.md` ist der vollständige reel-spezifische Arbeitsauftrag für Codex.
+
+## 2. Codex lässt das Inhaltspaket entstehen
+
+Codex liest und bearbeitet:
+
+- `script/final-script.txt`
+- `script/voice-script.txt`
+- `reel.json`
+- `scenes/scene-index.json`
+- jede `scenes/scene-XX/scene.json`
+- jede `scenes/scene-XX/image-prompt.txt`
+- `cover/cover.json`
+- `cover/cover-prompt.txt`
+- `caption/caption.txt`
+- `sources/sources.md`
+
+Der Auftrag kann bei Bedarf neu erzeugt werden:
+
+```bash
+npm run prepare:reel -- \
+  --dir "content/2026-KW31_27-07_bis_02-08/donnerstag/reel-01_was-bedeutet-links-und-rechts"
+```
+
+## 3. Inhaltspaket prüfen
+
+Grundstruktur prüfen:
+
+```bash
+npm run validate:reel -- \
+  --dir "content/2026-KW31_27-07_bis_02-08/donnerstag/reel-01_was-bedeutet-links-und-rechts"
+```
+
+Script, Szenen, Prompts, Cover, Caption und Quellen streng prüfen:
+
+```bash
+npm run check:content -- \
+  --dir "content/2026-KW31_27-07_bis_02-08/donnerstag/reel-01_was-bedeutet-links-und-rechts" \
+  --strict
+```
+
+Die Prüfung kontrolliert unter anderem:
+
+- 8–10 stabile Szenen-IDs
+- ausgewählte Bildwelt und Begründung
+- vollständige Sprechertexte
+- visuelle Idee und Kontinuitätsnotizen pro Szene
+- geschätzte Gesamtdauer
+- ausführliche englische 9:16-Bildprompts
+- exakte Übernahme geplanter Bildtexte in die Prompts
+- Cover-Idee und Cover-Prompt
+- Caption und Quellen
+
+Der Bericht wird unter `review/content-readiness.json` gespeichert.
+
+## 4. Extern erzeugte Dateien unsortiert ablegen
 
 Alle Szenenbilder und das Cover dürfen beliebige Dateinamen haben und in beliebiger Reihenfolge abgelegt werden:
 
@@ -114,24 +156,25 @@ reel-01_was-bedeutet-links-und-rechts/
 
 Die Bilder müssen nicht `scene-01.png`, `scene-02.png` usw. heißen.
 
-## Asset-Inventar erstellen
+## 5. Asset-Inventar erstellen
 
 ```bash
 npm run organize:assets -- \
   --dir "content/2026-KW31_27-07_bis_02-08/donnerstag/reel-01_was-bedeutet-links-und-rechts"
 ```
 
-Dadurch entsteht `inbox/asset-inventory.json`. Ein Vision-Agent vergleicht anschließend jedes Bild mit:
+Dadurch entsteht `inbox/asset-inventory.json`. Codex vergleicht jedes Bild anschließend mit:
 
 - Sprechertext der Szene
 - sichtbarem Schlüsseltext
 - visueller Idee
 - Bildprompt
-- Figuren, Gegenständen und Metaphern im Bild
+- Figuren, Gegenständen und Metaphern
+- Komposition und Cover-Aufbau
 
-Danach schreibt der Agent die erkannte Zuordnung in `inbox/asset-map.json`. Dateiname und Ablagereihenfolge dürfen nur als schwache Hinweise dienen.
+Danach schreibt Codex die erkannte Zuordnung in `inbox/asset-map.json`. Dateiname und Ablagereihenfolge dürfen nur schwache Hinweise sein.
 
-## Erkannte Zuordnung anwenden
+## 6. Erkannte Zuordnung anwenden
 
 ```bash
 npm run organize:assets -- \
@@ -141,35 +184,48 @@ npm run organize:assets -- \
 
 Das System:
 
-- kopiert jedes Bild in den richtigen Szenenordner
+- kopiert jedes erkannte Bild in den richtigen Szenenordner
 - benennt es stabil nach der Szenen-ID
-- erkennt Cover und Audio getrennt
-- erhält das echte Dateiformat wie PNG, JPG oder WEBP
+- behandelt Cover und Audio getrennt
+- erhält PNG, JPG, JPEG oder WEBP
 - aktualisiert `scene.json`, `scene-index.json`, `status.json` und `assets-manifest.json`
 - erstellt `review/asset-matching-report.json`
-- lässt unsichere Dateien unter einer Konfidenz von 0,75 unangetastet
+- lässt Dateien unter 0,75 Konfidenz unangetastet
+- verhindert doppelte Verwendung einer Quelle oder eines Ziels
 
-## Reel-Struktur prüfen
+## Tests
 
 ```bash
-npm run validate:reel -- \
-  --dir "content/2026-KW31_27-07_bis_02-08/donnerstag/reel-01_was-bedeutet-links-und-rechts"
+npm test
 ```
+
+Die Tests prüfen:
+
+- Wochen-, Tages- und Reel-Ordner
+- Codex-Produktionsauftrag
+- strenge Inhaltsbereitschaft
+- Asset-Inventar
+- Übernahme von unsortierten Szenenbildern, Cover und Audio
+- Schutz vor unsicheren Zuweisungen
+
+GitHub Actions führt die Tests bei Pushes und Pull Requests automatisch mit Node.js 20 aus.
 
 ## Wichtige Dateien
 
-- `AGENTS.md` – verbindliche Regeln für Codex und andere Coding-Agenten
-- `knowledge/production-rules.md` – inhaltliche und visuelle Produktionsregeln
-- `config/content-rules.json` – erlaubte Themen und feste Einschränkungen
-- `config/image-styles.json` – verfügbare Bildwelten und Auswahlregel
-- `src/core/workspace.js` – Generator für die komplette Reel-Ordnerstruktur
-- `src/core/asset-ingest.js` – Inventar, Zuordnungsprüfung und Dateiübernahme
-- `src/cli/organize-assets.js` – CLI für unsortierte Nutzer-Assets
+- `CODEX_TASK.md` – kompletter Start- und Übergabeworkflow für Codex
+- `AGENTS.md` – verbindliche Projektregeln
+- `knowledge/production-rules.md` – inhaltliche und visuelle Regeln
+- `config/content-rules.json` – Themen und Einschränkungen
+- `config/image-styles.json` – verfügbare Bildwelten
+- `src/core/workspace.js` – Reel-Ordnergenerator
+- `src/core/production-brief.js` – dynamischer Codex-Auftrag
+- `src/core/content-validator.js` – Inhalts- und Promptprüfung
+- `src/core/asset-ingest.js` – Inventar und Dateiübernahme
 
 ## Noch nicht enthalten
 
-- echte Script- und Szenenplanung über ein Sprachmodell
-- automatische Audio-Generierung
-- automatische Bild-Generierung
+- automatische Bild- oder Audioerzeugung im Repository
 - fertiger Remotion-Videoschnitt
-- Social-Media-Veröffentlichung
+- automatische Social-Media-Veröffentlichung
+
+Diese Punkte sind für Version 1 bewusst nicht erforderlich. Der aktuelle Workflow ist darauf ausgelegt, dass der Nutzer Bilder und Voice-over extern erzeugt und anschließend unsortiert zurückgibt.
