@@ -101,7 +101,7 @@ export async function finalizeReel(reelDirectory, {
     stages.timeline?.renderStatus === 'ready-for-renderer' &&
     stages.visualQuality?.passed === true &&
     stages.visualQuality?.strict === true &&
-    progress.overall === 100;
+    progress.productionReady === 100;
 
   const report = {
     version: 2,
