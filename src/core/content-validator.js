@@ -50,7 +50,9 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
   const reelPath = path.join(reelDirectory, 'reel.json');
   const sceneIndexPath = path.join(reelDirectory, 'scenes', 'scene-index.json');
   const stylesPath = path.resolve('config', 'image-styles.json');
+  const effectsRulesPath = path.resolve('config', 'effects-rules.json');
   const subtitlePlanPath = path.join(reelDirectory, 'subtitles', 'subtitle-plan.json');
+  const effectsPlanPath = path.join(reelDirectory, 'effects', 'effects-plan.json');
 
   if (!(await exists(reelPath))) {
     addCheck(checks, 'reel-json', false, 'reel.json fehlt.');
@@ -64,6 +66,7 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
   const reel = await readJson(reelPath);
   const sceneIndex = await readJson(sceneIndexPath, []);
   const styleConfig = await readJson(stylesPath, { styles: [] });
+  const effectsRules = await readJson(effectsRulesPath, {});
   const validStyleIds = new Set(styleConfig.styles.map((style) => style.id));
 
   addCheck(checks, 'scene-count-range', Number.isInteger(reel.sceneCount) && reel.sceneCount >= 8 && reel.sceneCount <= 12,
@@ -78,6 +81,12 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
     'reel.json.visualStyleReason sollte die Stilentscheidung kurz begründen.');
   addCheck(checks, 'subtitles-enabled', reel.subtitlesEnabled !== false,
     'Untertitel sollten für dieses Format standardmäßig aktiviert sein.', 'warning');
+  addCheck(checks, 'motion-effects-enabled', reel.motionEffectsEnabled !== false,
+    'Die Bewegungsplanung sollte standardmäßig aktiviert sein.', 'warning');
+  addCheck(checks, 'sound-effects-enabled', reel.soundEffectsEnabled !== false,
+    'Die Soundeffektplanung sollte standardmäßig aktiviert sein.', 'warning');
+  addCheck(checks, 'background-music-disabled', reel.backgroundMusicEnabled !== true,
+    'Hintergrundmusik sollte standardmäßig ausgeschaltet bleiben.', 'warning');
 
   const scriptContents = {};
   for (const scriptName of ['final-script.txt', 'voice-script.txt']) {
@@ -167,7 +176,7 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
 
   const subtitlePlan = await readJson(subtitlePlanPath, null);
   addCheck(checks, 'subtitle-plan-present', Boolean(subtitlePlan),
-    'subtitles/subtitle-plan.json fehlt.', 'warning');
+    'subtitles/subtitle-plan.json fehlt.', strict ? 'error' : 'warning');
   if (subtitlePlan) {
     addCheck(checks, 'subtitle-plan-enabled', subtitlePlan.enabled !== false,
       'Der Untertitelplan sollte standardmäßig aktiviert sein.', 'warning');
@@ -179,6 +188,71 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
       'Untertitel sollten höchstens zwei Zeilen verwenden.', 'warning');
     addCheck(checks, 'subtitle-plan-cues', Array.isArray(subtitlePlan.cues) && subtitlePlan.cues.length > 0,
       'Der Untertitelplan enthält noch keine Cues.', 'warning');
+  }
+
+  const effectsPlan = await readJson(effectsPlanPath, null);
+  addCheck(checks, 'effects-plan-present', Boolean(effectsPlan),
+    'effects/effects-plan.json fehlt.', strict ? 'error' : 'warning');
+
+  if (effectsPlan) {
+    const effectScenes = Array.isArray(effectsPlan.scenes) ? effectsPlan.scenes : [];
+    const allowedMotions = new Set(effectsRules.motionEffects?.allowedTypes ?? []);
+    const allowedTransitions = new Set(effectsRules.transitions?.allowedTypes ?? []);
+    const minScale = Number(effectsRules.motionEffects?.zoomScale?.min ?? 0.92);
+    const maxScale = Number(effectsRules.motionEffects?.zoomScale?.max ?? 1.08);
+    const maxPan = Number(effectsRules.motionEffects?.maximumPanPercent ?? 4);
+    const maxSounds = Number(effectsRules.soundEffects?.maximumPerScene ?? 2);
+    const minVolume = Number(effectsRules.soundEffects?.recommendedVolume?.min ?? 0.12);
+    const maxVolume = Number(effectsRules.soundEffects?.recommendedVolume?.max ?? 0.3);
+
+    addCheck(checks, 'effects-plan-enabled', effectsPlan.enabled !== false,
+      'Der Effektplan sollte standardmäßig aktiviert sein.', 'warning');
+    addCheck(checks, 'effects-voiceover-priority', effectsPlan.voiceoverPriority === true,
+      'Der Effektplan muss dem Voice-over Priorität geben.', 'warning');
+    addCheck(checks, 'effects-background-music-disabled', effectsPlan.backgroundMusic?.enabled !== true,
+      'Hintergrundmusik sollte standardmäßig ausgeschaltet sein.', 'warning');
+    addCheck(checks, 'effects-scene-count', effectScenes.length === sceneIndex.length,
+      `effects-plan.json enthält ${effectScenes.length} statt ${sceneIndex.length} Szeneneinträge.`, strict ? 'error' : 'warning');
+
+    let movingScenes = 0;
+    for (let index = 0; index < sceneIndex.length; index += 1) {
+      const sceneId = sceneIndex[index].sceneId;
+      const effect = effectScenes.find((item) => item.sceneId === sceneId);
+      addCheck(checks, `${sceneId}-effect-entry`, Boolean(effect),
+        `${sceneId}: Im Effektplan fehlt ein Eintrag.`, strict ? 'error' : 'warning');
+      if (!effect) continue;
+
+      const transitionType = String(effect.transitionIn?.type ?? '');
+      const cameraType = String(effect.cameraMotion?.type ?? '');
+      const startScale = Number(effect.cameraMotion?.startScale ?? 1);
+      const endScale = Number(effect.cameraMotion?.endScale ?? 1);
+      const panX = Number(effect.cameraMotion?.panXPercent ?? 0);
+      const panY = Number(effect.cameraMotion?.panYPercent ?? 0);
+      const soundEffects = Array.isArray(effect.soundEffects) ? effect.soundEffects : [];
+
+      addCheck(checks, `${sceneId}-transition-type`, allowedTransitions.size === 0 || allowedTransitions.has(transitionType),
+        `${sceneId}: Unbekannter Übergangstyp ${transitionType || '(leer)'}.`, 'warning');
+      addCheck(checks, `${sceneId}-camera-type`, allowedMotions.size === 0 || allowedMotions.has(cameraType),
+        `${sceneId}: Unbekannter Kamerabewegungstyp ${cameraType || '(leer)'}.`, 'warning');
+      addCheck(checks, `${sceneId}-zoom-range`, Number.isFinite(startScale) && Number.isFinite(endScale) && startScale >= minScale && startScale <= maxScale && endScale >= minScale && endScale <= maxScale,
+        `${sceneId}: Zoom-Skalierung muss zwischen ${minScale} und ${maxScale} liegen.`, 'warning');
+      addCheck(checks, `${sceneId}-pan-range`, Number.isFinite(panX) && Number.isFinite(panY) && Math.abs(panX) <= maxPan && Math.abs(panY) <= maxPan,
+        `${sceneId}: Schwenk darf höchstens ${maxPan} Prozent betragen.`, 'warning');
+      addCheck(checks, `${sceneId}-sound-count`, soundEffects.length <= maxSounds,
+        `${sceneId}: Höchstens ${maxSounds} Soundeffekte pro Szene verwenden.`, 'warning');
+
+      if (cameraType && cameraType !== 'none') movingScenes += 1;
+      for (let soundIndex = 0; soundIndex < soundEffects.length; soundIndex += 1) {
+        const volume = Number(soundEffects[soundIndex]?.volume ?? 0.2);
+        addCheck(checks, `${sceneId}-sound-${soundIndex + 1}-volume`, Number.isFinite(volume) && volume >= minVolume && volume <= maxVolume,
+          `${sceneId}: Soundeffekt-Lautstärke sollte zwischen ${minVolume} und ${maxVolume} liegen.`, 'warning');
+      }
+    }
+
+    addCheck(checks, 'effects-not-every-scene-moving', sceneIndex.length === 0 || movingScenes < sceneIndex.length,
+      'Nicht jede Szene sollte automatisch einen Zoom oder Schwenk erhalten.', 'warning');
+    addCheck(checks, 'hook-no-transition', effectScenes[0]?.transitionIn?.type === 'none',
+      'Die Hook sollte ab Sekunde 0 ohne Übergang starten.', 'warning');
   }
 
   const coverPromptPath = path.join(reelDirectory, 'cover', 'cover-prompt.txt');
@@ -232,6 +306,7 @@ async function finalize(reelDirectory, checks, metadata = {}) {
   status.content = passed ? 'ready' : 'needs-review';
   status.imagePrompts = passed ? 'ready' : 'needs-review';
   status.subtitles = passed ? 'planned' : (status.subtitles ?? 'needs-review');
+  status.effects = passed ? 'planned' : (status.effects ?? 'needs-review');
   status.cover = passed ? 'prompt-ready' : (status.cover ?? 'missing');
   status.qualityControl = passed ? 'content-passed' : 'content-failed';
   await writeJson(statusPath, status);
