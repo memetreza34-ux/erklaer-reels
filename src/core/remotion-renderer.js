@@ -1,0 +1,137 @@
+import { mkdir, readFile, stat, writeFile } from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+import { validateRendererInput } from './render-validator.js';
+
+const currentDirectory = path.dirname(fileURLToPath(import.meta.url));
+const entryPoint = path.resolve(currentDirectory, '..', 'renderer', 'index.jsx');
+
+async function readJson(filePath) {
+  return JSON.parse(await readFile(filePath, 'utf8'));
+}
+
+async function writeJson(filePath, value) {
+  await mkdir(path.dirname(filePath), { recursive: true });
+  await writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
+}
+
+function outputPathFor(reelDirectory, plan, requestedOutput) {
+  if (requestedOutput) return path.resolve(requestedOutput);
+  const fileName = `${plan.reelId ?? path.basename(reelDirectory)}.mp4`;
+  return path.join(reelDirectory, 'output', fileName);
+}
+
+export async function renderReel(reelDirectory, {
+  output = null,
+  codec = 'h264',
+  crf = 18,
+  concurrency = null,
+  force = false,
+  onProgress = null
+} = {}) {
+  const startedAt = new Date().toISOString();
+  const validation = await validateRendererInput(reelDirectory, {
+    requireFinalReadiness: !force
+  });
+  const validationReportPath = path.join(reelDirectory, 'review', 'renderer-input-report.json');
+  await writeJson(validationReportPath, validation);
+
+  if (!validation.passed) {
+    const messages = validation.checks
+      .filter((check) => !check.passed && check.level === 'error')
+      .map((check) => check.message)
+      .join('\n- ');
+    throw new Error(`Renderer-Eingabe ist nicht bereit:\n- ${messages}`);
+  }
+
+  const plan = await readJson(path.join(reelDirectory, 'render', 'render-plan.json'));
+  const outputLocation = outputPathFor(reelDirectory, plan, output);
+  await mkdir(path.dirname(outputLocation), { recursive: true });
+
+  const reportPath = path.join(reelDirectory, 'review', 'render-execution-report.json');
+  try {
+    const [{ bundle }, { renderMedia, selectComposition }] = await Promise.all([
+      import('@remotion/bundler'),
+      import('@remotion/renderer')
+    ]);
+
+    const serveUrl = await bundle({
+      entryPoint,
+      publicDir: path.resolve(reelDirectory),
+      onProgress: (progress) => {
+        if (onProgress) onProgress({ stage: 'bundle', progress });
+      }
+    });
+
+    const inputProps = { plan };
+    const composition = await selectComposition({
+      serveUrl,
+      id: 'ErklaerReel',
+      inputProps,
+      logLevel: 'warn'
+    });
+
+    await renderMedia({
+      composition,
+      serveUrl,
+      codec,
+      outputLocation,
+      inputProps,
+      crf: Number(crf),
+      concurrency: concurrency === null ? undefined : Number(concurrency),
+      logLevel: 'info',
+      onProgress: ({ progress, renderedFrames, encodedFrames }) => {
+        if (onProgress) {
+          onProgress({
+            stage: 'render',
+            progress,
+            renderedFrames,
+            encodedFrames
+          });
+        }
+      }
+    });
+
+    const fileStats = await stat(outputLocation);
+    const report = {
+      version: 1,
+      startedAt,
+      finishedAt: new Date().toISOString(),
+      passed: true,
+      renderer: 'remotion',
+      compositionId: 'ErklaerReel',
+      codec,
+      crf: Number(crf),
+      reelDirectory: path.resolve(reelDirectory),
+      outputFile: outputLocation,
+      outputBytes: fileStats.size,
+      composition: plan.composition,
+      validationReport: path.relative(reelDirectory, validationReportPath).split(path.sep).join('/')
+    };
+    await writeJson(reportPath, report);
+
+    const statusPath = path.join(reelDirectory, 'status.json');
+    const status = await readJson(statusPath);
+    status.render = 'complete';
+    status.renderedFile = path.relative(reelDirectory, outputLocation).split(path.sep).join('/');
+    status.qualityControl = 'render-complete';
+    await writeJson(statusPath, status);
+
+    return report;
+  } catch (error) {
+    const report = {
+      version: 1,
+      startedAt,
+      finishedAt: new Date().toISOString(),
+      passed: false,
+      renderer: 'remotion',
+      codec,
+      reelDirectory: path.resolve(reelDirectory),
+      outputFile: outputLocation,
+      error: error.message
+    };
+    await writeJson(reportPath, report);
+    throw error;
+  }
+}
