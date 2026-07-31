@@ -45,7 +45,7 @@ export async function renderReel(reelDirectory, {
     throw new Error(`Renderer-Eingabe ist nicht bereit:\n- ${messages}`);
   }
 
-  const plan = await readJson(path.join(reelDirectory, 'render', 'render-plan.json'));
+  const plan = validation.plan;
   const outputLocation = outputPathFor(reelDirectory, plan, output);
   await mkdir(path.dirname(outputLocation), { recursive: true });
 
@@ -72,14 +72,13 @@ export async function renderReel(reelDirectory, {
       logLevel: 'warn'
     });
 
-    await renderMedia({
+    const renderOptions = {
       composition,
       serveUrl,
       codec,
       outputLocation,
       inputProps,
       crf: Number(crf),
-      concurrency: concurrency === null ? undefined : Number(concurrency),
       logLevel: 'info',
       onProgress: ({ progress, renderedFrames, encodedFrames }) => {
         if (onProgress) {
@@ -91,7 +90,10 @@ export async function renderReel(reelDirectory, {
           });
         }
       }
-    });
+    };
+    if (concurrency !== null) renderOptions.concurrency = Number(concurrency);
+
+    await renderMedia(renderOptions);
 
     const fileStats = await stat(outputLocation);
     const report = {
@@ -107,6 +109,10 @@ export async function renderReel(reelDirectory, {
       outputFile: outputLocation,
       outputBytes: fileStats.size,
       composition: plan.composition,
+      renderedSoundEffects: plan.scenes.reduce(
+        (sum, scene) => sum + (scene.soundEffects ?? []).filter((sound) => sound.file).length,
+        0
+      ),
       validationReport: path.relative(reelDirectory, validationReportPath).split(path.sep).join('/')
     };
     await writeJson(reportPath, report);
