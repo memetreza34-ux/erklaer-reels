@@ -1,10 +1,18 @@
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
 import { validateReelContent } from './content-validator.js';
 import { buildMasterTimeline } from './timeline.js';
 import { runVisualQualityCheck } from './visual-qc.js';
 import { calculateReelProgress } from './reel-progress.js';
+
+async function readJson(filePath, fallback = {}) {
+  try {
+    return JSON.parse(await readFile(filePath, 'utf8'));
+  } catch {
+    return fallback;
+  }
+}
 
 async function writeJson(filePath, value) {
   await mkdir(path.dirname(filePath), { recursive: true });
@@ -40,9 +48,8 @@ export async function finalizeReel(reelDirectory, {
   blockingIssues.push(...issuesFrom(content, 'error'));
   warnings.push(...issuesFrom(content, 'warning'));
 
-  let timelineResult = null;
   try {
-    timelineResult = await buildMasterTimeline(reelDirectory, {
+    const timelineResult = await buildMasterTimeline(reelDirectory, {
       audioDurationSeconds,
       strict,
       probeAudio
@@ -65,9 +72,8 @@ export async function finalizeReel(reelDirectory, {
     blockingIssues.push({ id: 'timeline-build', level: 'error', message: error.message });
   }
 
-  let visual = null;
   try {
-    visual = await runVisualQualityCheck(reelDirectory, { strict });
+    const visual = await runVisualQualityCheck(reelDirectory, { strict });
     stages.visualQuality = {
       passed: visual.passed,
       strict: visual.strict,
@@ -98,7 +104,7 @@ export async function finalizeReel(reelDirectory, {
     progress.overall === 100;
 
   const report = {
-    version: 1,
+    version: 2,
     createdAt,
     reelDirectory: reelDirectory.split(path.sep).join('/'),
     strict,
@@ -108,10 +114,17 @@ export async function finalizeReel(reelDirectory, {
     blockingIssues,
     warnings,
     nextStep: readyForRenderer
-      ? 'Das Reel ist für einen Renderer vorbereitet.'
+      ? `Renderer prüfen und MP4 erzeugen: npm run validate:render -- --dir "${reelDirectory.split(path.sep).join('/')}" && npm run render:reel -- --dir "${reelDirectory.split(path.sep).join('/')}"`
       : progress.nextStep
   };
 
   await writeJson(path.join(reelDirectory, 'review', 'final-readiness-report.json'), report);
+
+  const statusPath = path.join(reelDirectory, 'status.json');
+  const status = await readJson(statusPath, {});
+  status.finalReadiness = readyForRenderer ? 'ready-for-renderer' : 'needs-review';
+  if (readyForRenderer && status.render !== 'complete') status.render = 'ready';
+  await writeJson(statusPath, status);
+
   return report;
 }
