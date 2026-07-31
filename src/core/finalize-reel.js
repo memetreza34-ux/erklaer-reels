@@ -11,12 +11,12 @@ async function writeJson(filePath, value) {
   await writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
 }
 
-function failedChecks(report) {
+function issuesFrom(report, level) {
   return (report?.checks ?? [])
-    .filter((check) => check.passed === false)
+    .filter((check) => check.passed === false && (check.level ?? 'error') === level)
     .map((check) => ({
       id: check.id,
-      level: check.level ?? 'error',
+      level,
       message: check.message
     }));
 }
@@ -29,6 +29,7 @@ export async function finalizeReel(reelDirectory, {
   const createdAt = new Date().toISOString();
   const stages = {};
   const blockingIssues = [];
+  const warnings = [];
 
   const content = await validateReelContent(reelDirectory, { strict: true });
   stages.content = {
@@ -36,7 +37,8 @@ export async function finalizeReel(reelDirectory, {
     reportFile: 'review/content-readiness.json',
     summary: content.summary
   };
-  if (!content.passed) blockingIssues.push(...failedChecks(content));
+  blockingIssues.push(...issuesFrom(content, 'error'));
+  warnings.push(...issuesFrom(content, 'warning'));
 
   let timelineResult = null;
   try {
@@ -52,9 +54,8 @@ export async function finalizeReel(reelDirectory, {
       reportFile: 'review/final-video-report.json',
       summary: timelineResult.qualityReport.summary
     };
-    if (!timelineResult.qualityReport.passed) {
-      blockingIssues.push(...failedChecks(timelineResult.qualityReport));
-    }
+    blockingIssues.push(...issuesFrom(timelineResult.qualityReport, 'error'));
+    warnings.push(...issuesFrom(timelineResult.qualityReport, 'warning'));
   } catch (error) {
     stages.timeline = {
       passed: false,
@@ -74,7 +75,8 @@ export async function finalizeReel(reelDirectory, {
       inspectionFile: 'review/visual-inspection.json',
       summary: visual.summary
     };
-    if (!visual.passed) blockingIssues.push(...failedChecks(visual));
+    blockingIssues.push(...issuesFrom(visual, 'error'));
+    warnings.push(...issuesFrom(visual, 'warning'));
   } catch (error) {
     stages.visualQuality = {
       passed: false,
@@ -104,6 +106,7 @@ export async function finalizeReel(reelDirectory, {
     stages,
     progress,
     blockingIssues,
+    warnings,
     nextStep: readyForRenderer
       ? 'Das Reel ist für einen Renderer vorbereitet.'
       : progress.nextStep
