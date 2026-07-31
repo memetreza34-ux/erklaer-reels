@@ -2,34 +2,15 @@
 
 ## Projektauftrag
 
-Baue und betreibe einen KI-Workflow, der aus einem Thema oder einem fertigen deutschen Sprechertext einen vollständigen Produktionsordner für ein visuelles Erklär-Reel erstellt.
+Baue und betreibe einen KI-Workflow, der aus einem Thema oder einem fertigen deutschen Sprechertext ein vollständiges visuelles Erklär-Reel erzeugt.
+
+Der Nutzer erzeugt Voice-over und Szenenbilder außerhalb des Repositories. Codex übernimmt Planung, Qualitätsprüfung, Zuordnung, Synchronisierung und den abschließenden Remotion-Render.
 
 ## Sprache
 
-- Benutzeroberfläche, Scripts und sichtbare Bildtexte: Deutsch
+- Benutzeroberfläche, Scripts, Untertitel und sichtbare Bildtexte: Deutsch
 - Bildprompts: Englisch
-- Code, Dateinamen und IDs: Englisch oder technisch eindeutiges Deutsch
-
-## Version 1
-
-Version 1 erzeugt im Repository:
-
-1. geprüftes Voice-over-Script
-2. 8–12 Bildmomente, abhängig von der tatsächlichen Audiolänge
-3. eine begründete Stilentscheidung für das gesamte Reel
-4. englische Bildprompts
-5. Cover-Prompt und Cover-Plan
-6. einen Untertitelplan
-7. einen Plan für Zooms, Kamerabewegungen, Übergänge und Soundeffekte
-8. eine Master-Timeline und einen renderer-neutralen Schnittplan
-9. eine technische und manuelle visuelle Qualitätsprüfung
-10. Caption
-11. Quellenliste
-12. Qualitäts- und Bereitschaftsberichte
-13. eine Inbox für extern erzeugte Bilder und Audio
-14. eine automatische, inhaltsbasierte Zuordnung der unsortierten Assets
-
-Der Nutzer erzeugt Audio und Bilder außerhalb des Repositories. Version 1 plant Schnitt, Bewegung, Sound und Qualitätskontrolle, erzeugt aber noch kein fertiges Video und veröffentlicht nichts automatisch.
+- Code, IDs und Dateinamen: technisch eindeutig
 
 ## Themenbereich
 
@@ -48,171 +29,274 @@ Nicht als eigene Content-Säulen verwenden:
 - tägliche politische Nachrichten
 - Parteienwerbung
 
+Politische Inhalte werden neutral erklärt. Unsicherheiten und umstrittene Aussagen müssen kenntlich gemacht und in `sources/sources.md` dokumentiert werden.
+
+## Produktionsumfang
+
+Ein vollständiger Reel-Ordner enthält:
+
+1. geprüftes deutsches Voice-over-Script
+2. 8–12 Bildmomente abhängig von der Audiolänge
+3. eine konsistente Bildwelt innerhalb des Reels
+4. englische Bildprompts mit optionalem deutschem Schlüsseltext
+5. Untertitelplan
+6. Effektplan für Zooms, Schwenks, Übergänge und Soundeffekte
+7. Master-Timeline und Audio-Synchronisierung
+8. renderer-neutralen Render-Plan
+9. technische und visuelle Qualitätsprüfung
+10. Cover, Caption und Quellen
+11. unsortierte Asset-Inbox und automatische Zuordnung
+12. fertige MP4-Datei über Remotion
+
+Eine automatische Social-Media-Veröffentlichung gehört noch nicht zum Projekt.
+
 ## Kreativregeln
 
-- Erkläre Dinge einfach, direkt und visuell.
-- Schreibe keine schulische Einleitung.
-- Beginne mit einer verständlichen Frage, einem Widerspruch oder einer überraschenden Beobachtung.
-- Das erste Hook-Bild muss ab Sekunde 0 sichtbar sein. Kein schwarzer Start, kein leerer Aufbau und keine unnötige Einblendeverzögerung.
-- Plane für 35–44 Sekunden normalerweise 8–10 visuelle Momente.
-- Plane für 45–55 Sekunden normalerweise 10–12 visuelle Momente.
-- Erzeuge ungefähr alle 3,5–5 Sekunden einen Bildwechsel oder eine deutlich sichtbare Ergänzung.
-- Ein leicht verständliches Bild darf kürzer stehen als ein komplexes Bild. Verwende keine starre Dauer für alle Szenen.
-- Richte jeden Bildwechsel am Sprechertext aus. Jede Szene benötigt ein eindeutiges `audioCue`: das Wort oder die kurze Phrase, an der das Bild inhaltlich beginnt.
-- Das neue Bild soll normalerweise 0,1–0,3 Sekunden vor dem zugehörigen `audioCue` erscheinen.
-- Halte den Zeichenstil innerhalb eines Reels konsistent.
-- Erlaube zwischen Reels unterschiedliche Bildwelten.
-- Erzwinge keine Build-up-Sequenz, wenn einzelne Metaphern besser funktionieren.
-- Integriere kurze deutsche Schlüsselwörter dort, wo sie die Bildaussage verbessern.
-- Politische Themen werden neutral erklärt und nicht als Meinungswerbung formuliert.
+- Erkläre einfach, direkt und visuell.
+- Keine schulische Einleitung.
+- Beginne mit einer klaren Frage, einem Widerspruch oder einer überraschenden Beobachtung.
+- Das Hook-Bild ist ab Sekunde 0 vollständig sichtbar.
+- Kein schwarzer Start und keine unnötige Einblendeverzögerung.
+- 35–44 Sekunden: normalerweise 8–10 visuelle Momente.
+- 45–55 Sekunden: normalerweise 10–12 visuelle Momente.
+- Ungefähr alle 3,5–5 Sekunden erfolgt ein Bildwechsel oder eine deutliche Ergänzung.
+- Einfache Bilder dürfen kürzer stehen als komplexere Bilder.
+- Keine mechanisch gleich langen Szenen erzwingen.
+- Innerhalb eines Reels bleibt die Bildwelt konsistent.
+- Zwischen verschiedenen Reels darf die Bildwelt stark wechseln.
+- Build-up-Sequenzen nur verwenden, wenn wirklich eine schrittweise Entwicklung erklärt wird.
 
-## Untertitelregeln
+## Audio-Cues und Bildwechsel
 
-- Untertitel sind standardmäßig vorgesehen, werden aber getrennt von den Bildern geplant.
-- Position: untere Mitte, ungefähr bei 65–75 % der Bildhöhe; nicht exakt in der Bildschirmmitte und nicht ganz unten im Bereich der Plattform-Bedienelemente.
-- Pro Untertitel-Einblendung normalerweise 3–6 Wörter und höchstens zwei Zeilen.
-- Verwende kurze Sinnabschnitte statt Wort-für-Wort-Karaoke.
-- Untertitel müssen zum tatsächlichen Voice-over passen und später an der Audiospur fein synchronisiert werden.
-- Wiederhole keinen integrierten Bildtext wortgleich als Untertitel.
-- Wenn wichtiger Bildtext oder ein zentrales Motiv im unteren Bereich liegt, verschiebe den Untertitel innerhalb der sicheren Zone.
-- Untertitel gehören in `subtitles/subtitle-plan.json`, nicht in die Bildprompts.
+Jede Szene benötigt:
 
-## Bewegungs-, Übergangs- und Soundregeln
+- `audioCue`: gesprochenes Wort oder kurze Phrase für den Bildbeginn
+- `leadInSeconds`: normalerweise 0,1–0,3 Sekunden, Standard 0,2
+- `durationSeconds`
 
-- Lies zusätzlich `knowledge/effects-rules.md` und `config/effects-rules.json`.
-- Plane alle Effekte getrennt in `effects/effects-plan.json`; sie gehören nicht in die Bildprompts.
-- Nicht jedes Bild braucht Bewegung. Ohne klaren Nutzen bleibt `cameraMotion.type` auf `none`.
-- Dezente Zooms verändern die Bildgröße normalerweise um 2–6 Prozent und niemals um mehr als 8 Prozent.
-- Kleine Schwenks bewegen das Bild höchstens um 4 Prozent der Bildbreite oder Bildhöhe.
-- Die Hook darf einen dezenten Push-in erhalten, beginnt aber ohne Übergang ab Sekunde 0.
-- Standardübergang ist ein sauberer Schnitt. Crossfades von 0,1–0,25 Sekunden nur bei sinnvoller weicher Verbindung.
+Das neue Bild beginnt normalerweise 0,1–0,3 Sekunden vor dem zugehörigen `audioCue`.
+
+Unsichere Cue-Zeitpunkte dürfen nicht erfunden werden. Verifizierte Zeiten gehören nach `timeline/audio-sync.json` und erhalten eine realistische `confidence`.
+
+## Untertitel
+
+- Untertitel sind standardmäßig aktiv.
+- Planung in `subtitles/subtitle-plan.json`, nicht in Bildprompts einbrennen.
+- Position: untere Mitte bei ungefähr 65–75 % der Bildhöhe.
+- Normalerweise 3–6 Wörter und höchstens zwei Zeilen pro Cue.
+- Sinnabschnitte statt Wort-für-Wort-Karaoke.
+- Integrierten Bildtext nicht wortgleich wiederholen.
+- Untertitel dürfen weder Hauptmotiv noch Plattform-Bedienelemente verdecken.
+- Nach Einfügen des echten Voice-overs müssen die Zeitpunkte fein synchronisiert werden.
+
+## Zooms, Schwenks, Übergänge und Sounds
+
+Lies zusätzlich:
+
+- `knowledge/effects-rules.md`
+- `config/effects-rules.json`
+
+Planung erfolgt in `effects/effects-plan.json`.
+
+- Nicht jedes Bild braucht Bewegung.
+- Ohne klaren Nutzen bleibt `cameraMotion.type` auf `none`.
+- Zoom normalerweise 2–6 %, maximal 8 %.
+- Schwenk maximal 4 % der Bildbreite oder Bildhöhe.
+- Hook ohne Übergang; optional dezenter Push-in.
+- Standardübergang: `cut`.
+- Crossfade nur 0,1–0,25 Sekunden und nur mit Begründung.
 - Keine Glitch-, Spin-, Flash- oder übertriebenen 3D-Übergänge.
-- Das Voice-over hat immer Vorrang. Hintergrundmusik ist standardmäßig ausgeschaltet.
+- Voice-over hat Vorrang.
+- Hintergrundmusik ist standardmäßig ausgeschaltet.
 - Pro Szene normalerweise null bis zwei dezente Soundeffekte.
-- Soundeffekte nur an einem konkreten `audioCue` oder visuellen Ereignis einsetzen; nicht jeden Schnitt mit einem Whoosh versehen.
-- Keine Meme-Sounds, Jumpscares oder urheberrechtlich ungeklärte Musik.
-- Bewegung darf Bildtext, Motive und Untertitel nie aus der sicheren Zone schieben.
-- Nach Einfügen der echten Audiodatei müssen Effektzeitpunkte noch einmal überprüft werden.
+- Nicht jeden Schnitt mit einem Whoosh vertonen.
+- Soundeffekte benötigen für den Renderer einen tatsächlichen lokalen `file`-Pfad.
+- Fehlende Sounddateien werden als Warnung gemeldet und nicht gerendert.
 
-## Master-Timeline und Audio-Sync
+## Visuelle Qualitätsprüfung
 
-- Lies `knowledge/timeline-rules.md`.
-- Nach dem Import der externen Assets führt Codex `npm run build:timeline -- --dir "<reel-ordner>"` aus.
-- Der erste Lauf erzeugt bei Bedarf `timeline/audio-sync.json` sowie eine geschätzte Timeline.
-- Wenn `ffprobe` verfügbar ist, wird die Audiodauer automatisch ermittelt. Andernfalls wird sie mit `--audio-duration` übergeben.
-- Codex hört die echte Audiodatei ab und trägt für jede Szene den tatsächlichen Zeitpunkt des `audioCue` als `cueTimeSeconds` ein.
-- Unsichere Cue-Zeiten dürfen nicht erfunden werden. `confidence` muss die Sicherheit der Zuordnung widerspiegeln.
-- Danach führt Codex `npm run sync:audio -- --dir "<reel-ordner>" --strict` erneut aus.
-- `timeline/timeline-plan.json` ist die zentrale Wahrheit für Szenen, Untertitel, Übergänge, Kamerabewegungen und Soundeffekte.
-- `render/render-plan.json` enthält dieselben Zeiten zusätzlich in Frames für 1080 × 1920 bei 30 FPS.
-- `review/final-video-report.json` muss geprüft werden, bevor ein Renderer oder manueller Schnitt beginnt.
-- Der Status `audio-synced` wird nur verwendet, wenn die Audiodauer und alle relevanten Audio-Cues verifiziert sind.
-- Die Hook beginnt immer bei Sekunde 0, die letzte Szene endet exakt mit der Voice-over-Dauer und Szenen dürfen keine unbeabsichtigten Lücken oder Überlappungen erzeugen.
+Lies zusätzlich:
 
-## Visuelle Qualitäts- und Sicherheitsprüfung
+- `knowledge/visual-quality-rules.md`
+- `config/visual-quality-rules.json`
 
-- Lies `knowledge/visual-quality-rules.md` und `config/visual-quality-rules.json`.
-- Zielformat ist 1080 × 1920 Pixel im Seitenverhältnis 9:16; Mindestauflösung 720 × 1280 Pixel.
-- Wichtige Motive und Texte bleiben mindestens 6 % von den Seiten, 8 % von oben und 18 % von unten entfernt.
-- Prüfe jedes Bild zusätzlich mit dem geplanten Zoom und Schwenk.
-- Codex betrachtet jedes fertige Szenenbild und das Cover visuell.
-- Codex füllt `review/visual-inspection.json` vollständig aus. Jeder Prüfpunkt wird ausdrücklich auf `true` oder `false` gesetzt.
-- Geprüft werden Hauptmotiv, Lesbarkeit, Textfehler, Untertitelkollision, Plattform-Bedienelemente, Bewegungssicherheit und Stilkonsistenz.
-- Nur vollständig bestandene Bilder erhalten `status: "passed"`.
-- Bei Fehlern wird `status: "needs-fix"` gesetzt und eine konkrete Notiz ergänzt.
-- Führe zunächst `npm run check:visuals -- --dir "<reel-ordner>"` aus, fülle danach die manuelle Prüfliste und führe abschließend denselben Befehl mit `--strict` aus.
-- Ein Render-Plan gilt erst nach bestandener strenger visueller Prüfung als freigegeben.
+Technische Zielwerte:
 
-## Bevorzugte Bildwelten
+- 1080 × 1920 Pixel
+- Seitenverhältnis 9:16
+- Mindestauflösung 720 × 1280 Pixel
+- wichtige Motive und Texte mindestens 6 % von den Seiten entfernt
+- mindestens 8 % Abstand nach oben
+- mindestens 18 % Abstand nach unten
 
-1. menschliche 2D-Cartoonfiguren für Psychologie und Gesellschaft
-2. runde Länderfiguren für Politik, Geschichte und Geografie
-3. starke visuelle Metaphern für abstrakte Begriffe und Hooks
-4. personifizierte Organe und Zellen für Körper und Biologie
-5. Vergleichspanels für klare Gegenüberstellungen
-6. Build-up-Sequenzen nur für echte schrittweise Entwicklungen
+Ablauf:
 
-## Neues Reel produzieren
+1. `npm run check:visuals -- --dir "<reel-ordner>"`
+2. jedes Szenenbild und Cover tatsächlich ansehen
+3. `review/visual-inspection.json` vollständig mit `true` oder `false` ausfüllen
+4. Fehler konkret dokumentieren und `needs-fix` setzen
+5. `npm run check:visuals -- --dir "<reel-ordner>" --strict`
 
-- Lies zuerst `CODEX_TASK.md`.
-- Erstelle den Reel-Ordner mit `npm run create:reel`.
-- Der Befehl erzeugt automatisch `production/agent-task.md`.
-- Arbeite diesen reel-spezifischen Auftrag vollständig ab.
-- Fülle `reel.json`, alle `scene.json`-Dateien, alle `image-prompt.txt`-Dateien, `subtitles/subtitle-plan.json`, `effects/effects-plan.json`, Cover, Caption und Quellen aus.
-- Führe danach `npm run check:content -- --dir "<reel-ordner>" --strict` aus.
-- Ein Inhaltspaket darf erst als fertig bezeichnet werden, wenn die strenge Prüfung keine Fehler mehr meldet.
+Geprüft werden Lesbarkeit, Schreibfehler, Motivposition, Untertitelkollision, Plattform-Bedienelemente, Bewegungssicherheit und Stilkonsistenz.
 
 ## Unsortierte Nutzer-Assets
 
-Der Nutzer erzeugt Audio und Bilder außerhalb dieses Repositories und legt sie anschließend unsortiert in den Reel-Ordner.
+- Bilder nach `inbox/images/`
+- Voice-over nach `inbox/audio/`
+- Dateiname und Reihenfolge sind keine zuverlässigen Signale
 
-- Bilder kommen nach `inbox/images/`.
-- Audio kommt nach `inbox/audio/`.
-- Dateinamen und Ablagereihenfolge sind keine zuverlässigen Zuordnungssignale.
-- Der Agent muss zuerst `npm run organize:assets -- --dir "<reel-ordner>"` ausführen.
-- Danach muss der Agent alle Bilder visuell prüfen und mit `scene-index.json`, jeder `scene.json`, dem Sprechertext und den Bildprompts vergleichen.
-- Sichtbarer deutscher Schlüsseltext, dargestellte Figuren, Objekte, Metaphern und Komposition sind die wichtigsten Signale.
-- Der Agent schreibt die Zuordnung in `inbox/asset-map.json`.
-- Erlaubte Ziele sind `scene-01` bis zur letzten Szene, `cover` und `audio`.
-- Jede Quelle und jedes Ziel darf nur einmal zugewiesen werden.
-- Das Cover ist ein eigenes Asset und darf nicht automatisch als Hook-Bild behandelt werden.
-- Jede Zuweisung benötigt `confidence` zwischen 0 und 1 sowie eine kurze `reason`.
-- Unter 0.75 Konfidenz darf nicht geraten werden; die Datei bleibt in `unmatched`.
-- Nach der Zuordnung führt der Agent `npm run organize:assets -- --dir "<reel-ordner>" --apply` aus.
-- Das Anwenden kopiert die Dateien in die richtigen Szenenordner, benennt sie stabil um und aktualisiert Manifest, Status und Szenendaten.
-- Sobald die echte Audiodatei vorliegt, prüft Codex Bildwechsel, Untertitel, Zooms, Übergänge und Soundeffekte gegen die Audiospur und baut anschließend die Master-Timeline.
-- Danach führt Codex die technische Bildprüfung aus, füllt `review/visual-inspection.json` durch echte visuelle Betrachtung und wiederholt `check:visuals` im strengen Modus.
+Ablauf:
 
-Beispiel für `inbox/asset-map.json`:
-
-```json
-{
-  "version": 1,
-  "generatedBy": "codex-vision",
-  "assignments": [
-    {
-      "source": "images/IMG_8241.png",
-      "target": "scene-03",
-      "confidence": 0.96,
-      "reason": "Das Bild zeigt die Plattformen und den Text MEHR GLEICHHEIT."
-    },
-    {
-      "source": "images/final-cover.jpg",
-      "target": "cover",
-      "confidence": 0.93,
-      "reason": "Große Titelkomposition im Thumbnail-Stil."
-    },
-    {
-      "source": "audio/voice-final.mp3",
-      "target": "audio",
-      "confidence": 1,
-      "reason": "Einzige Audiodatei im Audio-Inbox-Ordner."
-    }
-  ],
-  "unmatched": []
-}
+```bash
+npm run organize:assets -- --dir "<reel-ordner>"
 ```
+
+Danach betrachtet Codex jedes Bild und vergleicht es mit Sprechertext, `imageText`, `visualIdea`, Bildprompt, Figuren, Objekten, Metaphern und Komposition.
+
+Codex schreibt `inbox/asset-map.json`.
+
+Regeln:
+
+- Ziele: `scene-01` bis letzte Szene, `cover`, `audio`
+- jede Quelle und jedes Ziel höchstens einmal
+- Cover nie automatisch als Hook-Bild behandeln
+- jede Zuweisung benötigt `confidence` und `reason`
+- unter 0,75 Konfidenz nicht raten; Datei bleibt `unmatched`
+
+Danach:
+
+```bash
+npm run organize:assets -- --dir "<reel-ordner>" --apply
+```
+
+## Master-Timeline und Audio-Synchronisierung
+
+Lies `knowledge/timeline-rules.md`.
+
+Nach dem Asset-Import:
+
+```bash
+npm run build:timeline -- --dir "<reel-ordner>"
+```
+
+Der erste Lauf erzeugt bei Bedarf `timeline/audio-sync.json`.
+
+Wenn `ffprobe` fehlt:
+
+```bash
+npm run sync:audio -- --dir "<reel-ordner>" --audio-duration 48.7
+```
+
+Codex hört das echte Voice-over ab und trägt für jede Szene `cueTimeSeconds` und `confidence` ein. Danach:
+
+```bash
+npm run sync:audio -- --dir "<reel-ordner>" --strict
+```
+
+Verbindliche Dateien:
+
+- `timeline/audio-sync.json` – verifizierte Cue-Zeiten
+- `timeline/timeline-plan.json` – zentrale zeitliche Wahrheit
+- `render/render-plan.json` – Sekunden und Frames für 1080 × 1920 bei 30 FPS
+- `review/final-video-report.json` – Timeline-Prüfung
+
+Die Hook beginnt bei Frame 0. Die letzte Szene endet exakt mit dem Voice-over. Szenen und Untertitel dürfen keine unbeabsichtigten Lücken oder Überlappungen erzeugen.
+
+## Zentrale Abschlussprüfung
+
+Diagnose:
+
+```bash
+npm run finalize:reel -- --dir "<reel-ordner>"
+```
+
+Endgültige Freigabe:
+
+```bash
+npm run finalize:reel -- --dir "<reel-ordner>" --strict
+```
+
+Der Bericht liegt unter `review/final-readiness-report.json`.
+
+Ein Reel darf nur gerendert werden, wenn:
+
+- `readyForRenderer` auf `true` steht
+- `render/render-plan.json` den Status `ready-for-renderer` besitzt
+- Audio-Sync und visuelle Prüfung bestanden sind
+- alle Bilder und das Voice-over vorhanden sind
+
+## Remotion-Renderer
+
+Lies `docs/remotion-renderer.md`.
+
+Vorprüfung:
+
+```bash
+npm run validate:render -- --dir "<reel-ordner>"
+```
+
+MP4 erzeugen:
+
+```bash
+npm run render:reel -- --dir "<reel-ordner>"
+```
+
+Standardausgabe:
+
+```text
+<reel-ordner>/output/<reel-id>.mp4
+```
+
+Der Renderer muss umsetzen:
+
+- Szenenbilder
+- Voice-over
+- Untertitel
+- Zooms und Schwenks
+- harte Schnitte und kurze Crossfades
+- vorhandene Soundeffekt-Dateien
+
+Der Renderer darf niemals Pfade außerhalb des Reel-Ordners laden. Fehlende Pflichtassets blockieren den Render. `--force` darf nur die finale Freigabe übergehen, nicht Sicherheits- oder Assetfehler.
+
+Nach Erfolg entstehen:
+
+- `review/renderer-input-report.json`
+- `review/render-execution-report.json`
+- fertige MP4-Datei
+
+`status.json` erhält `render: "complete"`.
+
+## Neues Reel produzieren
+
+1. Lies `CODEX_TASK.md`.
+2. Erstelle den Reel-Ordner mit `npm run create:reel`.
+3. Bearbeite `production/agent-task.md` vollständig.
+4. Führe `npm run check:content -- --dir "<reel-ordner>" --strict` aus.
+5. Nutzer erzeugt Bilder und Voice-over extern.
+6. Ordne die Assets inhaltsbasiert zu.
+7. Synchronisiere Timeline und Audio.
+8. Führe die visuelle Prüfung aus.
+9. Führe `finalize:reel --strict` aus.
+10. Validiere den Renderer.
+11. Rendere die MP4-Datei.
 
 ## Technische Regeln
 
-- Nutze stabile IDs wie `scene-01` und feste erwartete Dateinamen.
-- Verlasse dich nie nur auf die alphabetische Dateireihenfolge.
-- Jede Szene benötigt `scene.json`, `image-prompt.txt` und einen erwarteten Bildpfad.
-- Jede Szene benötigt außerdem `audioCue`, `leadInSeconds` und passende `subtitleCues`.
-- `leadInSeconds` liegt normalerweise zwischen 0,1 und 0,3 Sekunden.
-- `effects/effects-plan.json` benötigt genau einen Eintrag pro Szene mit `transitionIn`, `cameraMotion` und `soundEffects`.
-- `timeline/audio-sync.json` enthält echte Cue-Zeiten; `timeline/timeline-plan.json` und `render/render-plan.json` werden daraus neu erzeugt und nicht manuell auseinanderkopiert.
-- `review/visual-inspection.json` dokumentiert die visuelle Einzelprüfung aller Szenen und des Covers.
-- API-Schlüssel dürfen nie in das Repository geschrieben werden.
-- Fehlende Assets müssen im Status und Manifest erkennbar sein.
-- Jede Pipeline-Stufe muss einzeln erneut ausführbar sein.
-- Schreibe denselben Szenenstand in `scene-index.json` und in die jeweilige `scene.json`.
-- Verändere das Rohscript nicht; überarbeitete Fassungen gehören nach `final-script.txt` und `voice-script.txt`.
+- stabile IDs wie `scene-01`
+- feste erwartete Dateinamen
+- nie nur alphabetische Reihenfolge verwenden
+- `scene-index.json` und jede `scene.json` synchron halten
+- Rohscript nicht verändern; überarbeitete Versionen nach `final-script.txt` und `voice-script.txt`
+- API-Schlüssel nie committen
+- fehlende Assets in Status und Manifest sichtbar machen
+- Pipeline-Stufen einzeln erneut ausführbar halten
+- zentrale Logik mit Tests abdecken
+- Remotion- und `@remotion/*`-Pakete immer auf exakt dieselbe Version setzen
+- keine simulierte Integration als fertig bezeichnen
 
 ## Arbeitsweise
 
-- Ändere kleine, nachvollziehbare Einheiten.
-- Prüfe vorhandene Dateien, bevor du Architektur duplizierst.
-- Aktualisiere README und Roadmap bei wichtigen Änderungen.
-- Füge für zentrale Logik Tests hinzu.
-- Markiere Platzhalter klar und behaupte nicht, eine echte Provider-Integration sei fertig, solange sie nur simuliert wird.
+- kleine, nachvollziehbare Änderungen
+- vorhandene Architektur prüfen, bevor neue parallele Strukturen entstehen
+- README und relevante Dokumentation aktualisieren
+- GitHub Actions müssen vor dem Merge erfolgreich sein
