@@ -39,12 +39,7 @@ npm run check:content -- --dir "PFAD-ZUM-REEL" --strict
 npm run organize:assets -- --dir "PFAD-ZUM-REEL"
 ```
 
-4. Betrachte jedes Bild visuell. Vergleiche es mit:
-   - Sprechertext
-   - `imageText`
-   - `visualIdea`
-   - Bildprompt
-   - Figuren, Gegenständen, Symbolen und Komposition
+4. Betrachte jedes Bild visuell. Vergleiche es mit Sprechertext, `imageText`, `visualIdea`, Bildprompt, Figuren, Gegenständen, Symbolen und Komposition.
 5. Schreibe die Zuordnung nach `inbox/asset-map.json`.
 6. Verwende jedes Bild und jedes Ziel höchstens einmal.
 7. Weise nur bei mindestens 0,75 Konfidenz zu. Unsichere Bilder bleiben unter `unmatched`.
@@ -76,11 +71,22 @@ npm run sync:audio -- --dir "PFAD-ZUM-REEL" --audio-duration 48.7
 npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
 ```
 
-16. Prüfe:
-   - `timeline/timeline-plan.json`
-   - `render/render-plan.json`
-   - `review/final-video-report.json`
+16. Prüfe `timeline/timeline-plan.json`, `render/render-plan.json` und `review/final-video-report.json`.
 17. Korrigiere Bildwechsel, Untertitel, Zooms, Übergänge und Soundeffekte, bis der Timeline-Bericht keine strukturellen Fehler mehr enthält.
+18. Starte die technische Bildprüfung:
+
+```bash
+npm run check:visuals -- --dir "PFAD-ZUM-REEL"
+```
+
+19. Öffne jedes Szenenbild und das Cover. Fülle `review/visual-inspection.json` vollständig aus. Setze jeden Prüfpunkt ausdrücklich auf `true` oder `false`, verwende `passed` nur bei vollständig bestandenen Bildern und dokumentiere jeden Fehler konkret.
+20. Führe die strenge visuelle Abnahme aus:
+
+```bash
+npm run check:visuals -- --dir "PFAD-ZUM-REEL" --strict
+```
+
+21. Ein Reel darf erst an einen Renderer oder manuellen Schnitt übergeben werden, wenn Timeline- und visuelle Abnahme bestanden sind.
 
 ## Verbindliche kreative Regeln
 
@@ -144,6 +150,18 @@ npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
 - `audio-synced` darf nur gesetzt werden, wenn Audiodauer und alle relevanten Audio-Cues verifiziert sind.
 - Ein strenger Timeline-Lauf darf erst bestehen, wenn Voice-over und alle Szenenbilder vorhanden sind.
 
+## Verbindliche visuelle Qualitätsregeln
+
+- Lies `knowledge/visual-quality-rules.md` und `config/visual-quality-rules.json`.
+- Zielformat: 1080 × 1920 Pixel, Seitenverhältnis 9:16.
+- Mindestauflösung: 720 × 1280 Pixel.
+- Wichtige Motive und Texte bleiben mindestens 6 % von den Seiten, 8 % von oben und 18 % von unten entfernt.
+- Prüfe jedes Bild im Ausgangszustand und mit dem geplanten Zoom und Schwenk.
+- Prüfe Lesbarkeit auf Smartphone-Größe, Textgenauigkeit, Untertitelkollisionen, Plattform-Bedienelemente und Stilkonsistenz.
+- `review/visual-inspection.json` ist keine Platzhalterdatei. Sie wird nach echter visueller Betrachtung ausgefüllt.
+- Ein nicht eindeutig bestandenes Bild erhält `needs-fix`, nicht `passed`.
+- Der strenge visuelle Lauf muss alle Szenenbilder und das Cover umfassen.
+
 ## Fertig bedeutet
 
 Ein Reel-Inhaltspaket ist erst bereit, wenn:
@@ -164,4 +182,6 @@ Ein Reel ist für den späteren Renderer erst bereit, wenn zusätzlich:
 - `timeline/audio-sync.json` geprüft ist,
 - `npm run sync:audio -- --strict` erfolgreich ist,
 - `render/render-plan.json` den Status `ready-for-renderer` besitzt,
-- `review/final-video-report.json` keine strukturellen Fehler enthält.
+- `review/final-video-report.json` keine strukturellen Fehler enthält,
+- `review/visual-inspection.json` für alle Bilder vollständig ausgefüllt ist,
+- `npm run check:visuals -- --strict` erfolgreich ist.
