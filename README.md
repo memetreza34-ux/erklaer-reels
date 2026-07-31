@@ -7,39 +7,37 @@ KI-gestützte Produktionspipeline für visuelle Erklär-Reels zu Politik, Gesell
 Aus einem Thema oder einem deutschen Rohscript entsteht ein vollständiger Reel-Arbeitsordner mit:
 
 - geprüftem Voice-over-Script
-- 8–12 klaren Bildmomenten, abhängig von der Länge
-- einer passenden Bildwelt für das gesamte Reel
+- 8–12 Bildmomenten abhängig von der Länge
+- einer konsistenten Bildwelt pro Reel
 - englischen Bildprompts mit optionalem deutschem Schlüsseltext
 - Audio-Cues für synchronisierte Bildwechsel
 - getrenntem Untertitelplan
+- getrenntem Plan für Zooms, Kamerabewegungen, Übergänge und Soundeffekte
 - Cover-Plan und Cover-Prompt
 - Caption und Quellen
 - strenger Inhaltsprüfung
 - Inbox für extern erzeugte Bilder und Audio
 - automatischer Zuordnung unsortierter Dateien zu den richtigen Szenen
 
-Der Nutzer erzeugt Audio und Bilder außerhalb des Repositories. Das Repository organisiert, prüft und registriert diese Dateien anschließend.
+Der Nutzer erzeugt Voice-over und Bilder außerhalb des Repositories. Das Repository plant, organisiert und prüft die Produktion. Ein fertiges Video wird in Version 1 noch nicht gerendert.
 
-## Themen des Accounts
-
-- Politik und Gesellschaft
-- Länder, Geografie und Geschichte
-- Psychologie und menschliches Verhalten
-- Körper und Biologie
-
-Nicht vorgesehen sind Finanzen, Elektrotechnik, KI-News, tägliche politische Nachrichten oder Parteienwerbung.
-
-## Produktionsregeln
+## Wichtigste Produktionsregeln
 
 - Hook-Bild ab Sekunde 0 sichtbar
 - 35–44 Sekunden: normalerweise 8–10 Bildmomente
 - 45–55 Sekunden: normalerweise 10–12 Bildmomente
 - sichtbare Veränderung ungefähr alle 3,5–5 Sekunden
-- Bildwechsel normalerweise 0,1–0,3 Sekunden vor dem passenden gesprochenen `audioCue`
-- einfache Bilder dürfen kürzer stehen als komplexere Bilder
-- Untertitel standardmäßig in der unteren Mitte bei ungefähr 65–75 % der Bildhöhe
-- Untertitel normalerweise 3–6 Wörter, höchstens zwei Zeilen
-- kein Wort-für-Wort-Karaoke und keine unnötige Wiederholung von Text, der bereits im Bild steht
+- Bildwechsel normalerweise 0,1–0,3 Sekunden vor dem passenden `audioCue`
+- Untertitel in der unteren Mitte bei ungefähr 65–75 % der Bildhöhe
+- Untertitel normalerweise 3–6 Wörter und höchstens zwei Zeilen
+- Bewegung nur mit klarem Nutzen; nicht jedes Bild benötigt einen Zoom
+- Zoom normalerweise 2–6 %, maximal 8 %
+- Schwenk maximal 4 % der Bildbreite oder Bildhöhe
+- sauberer Schnitt als Standardübergang
+- Crossfade nur kurz und begründet
+- null bis zwei dezente Soundeffekte pro Szene
+- Voice-over hat Vorrang
+- Hintergrundmusik standardmäßig ausgeschaltet
 
 ## Produktionsablauf
 
@@ -50,7 +48,9 @@ Reel-Arbeitsordner erstellen
         ↓
 Codex-Auftrag automatisch erzeugen
         ↓
-Script, Szenen, Audio-Cues, Bildprompts und Untertitelplan ausfüllen
+Script, Szenen, Audio-Cues und Bildprompts ausfüllen
+        ↓
+Untertitel- und Effektplan erstellen
         ↓
 Cover, Caption und Quellen erstellen
         ↓
@@ -62,7 +62,7 @@ alle Dateien unsortiert in die Inbox legen
         ↓
 Codex erkennt Bildinhalte und ordnet sie den Szenen zu
         ↓
-Bildwechsel und Untertitel gegen die echte Audiospur prüfen
+Bildwechsel, Untertitel, Zooms und Sounds gegen die echte Audiospur prüfen
         ↓
 Dateien automatisch kopieren, umbenennen und registrieren
 ```
@@ -74,8 +74,6 @@ Dateien automatisch kopieren, umbenennen und registrieren
 
 ## 1. Neues Reel anlegen
 
-Lege ein Rohscript beispielsweise unter `input/script.txt` ab und führe aus:
-
 ```bash
 npm run create:reel -- \
   --title "Was bedeutet links und rechts?" \
@@ -86,28 +84,28 @@ npm run create:reel -- \
 
 `--scenes` unterstützt Werte von 8 bis 12. Ohne Angabe werden 10 Bildmomente angelegt.
 
-Das Ergebnis wird automatisch nach Kalenderwoche und Wochentag gespeichert:
+Beispielstruktur:
 
 ```text
 content/
 └── 2026-KW31_27-07_bis_02-08/
     └── donnerstag/
         └── reel-01_was-bedeutet-links-und-rechts/
+            ├── script/
+            ├── scenes/
+            ├── subtitles/
+            ├── effects/
+            ├── cover/
+            ├── caption/
+            ├── sources/
+            ├── review/
+            ├── production/
+            └── inbox/
 ```
 
-Der Befehl erzeugt zusätzlich automatisch:
+Der Befehl erzeugt automatisch `production/agent-task.md` und `production/checklist.json`.
 
-```text
-production/
-├── agent-task.md
-└── checklist.json
-```
-
-`production/agent-task.md` ist der vollständige reel-spezifische Arbeitsauftrag für Codex.
-
-## 2. Codex lässt das Inhaltspaket entstehen
-
-Codex liest und bearbeitet:
+## 2. Dateien, die Codex bearbeitet
 
 - `script/final-script.txt`
 - `script/voice-script.txt`
@@ -116,65 +114,84 @@ Codex liest und bearbeitet:
 - jede `scenes/scene-XX/scene.json`
 - jede `scenes/scene-XX/image-prompt.txt`
 - `subtitles/subtitle-plan.json`
+- `effects/effects-plan.json`
 - `cover/cover.json`
 - `cover/cover-prompt.txt`
 - `caption/caption.txt`
 - `sources/sources.md`
 
-Jede Szene enthält zusätzlich:
+### Untertitelplan
 
-- `audioCue` – gesprochenes Wort oder Phrase für den Bildwechsel
-- `leadInSeconds` – normalerweise 0,1 bis 0,3 Sekunden
-- `subtitleCues` – kurze Untertitel-Sinnabschnitte
-- `subtitlePosition` – normalerweise `lower-middle`
+`subtitles/subtitle-plan.json` enthält kurze Sinnabschnitte, Position und geschätztes Timing. Die exakten Zeiten werden nach Einfügen des echten Voice-overs korrigiert.
 
-Der Auftrag kann bei Bedarf neu erzeugt werden:
+### Effektplan
 
-```bash
-npm run prepare:reel -- \
-  --dir "content/2026-KW31_27-07_bis_02-08/donnerstag/reel-01_was-bedeutet-links-und-rechts"
+`effects/effects-plan.json` enthält pro Szene:
+
+```json
+{
+  "sceneId": "scene-03",
+  "transitionIn": {
+    "type": "cut",
+    "durationSeconds": 0,
+    "reason": "Neuer Gedanke beginnt direkt."
+  },
+  "cameraMotion": {
+    "type": "slow-zoom-in",
+    "startScale": 1,
+    "endScale": 1.05,
+    "panXPercent": 0,
+    "panYPercent": 0,
+    "easing": "ease-in-out",
+    "reason": "Fokus langsam auf das zentrale Symbol lenken."
+  },
+  "soundEffects": [
+    {
+      "type": "click",
+      "audioCue": "ständigen Blick auf die Uhr",
+      "estimatedTimeSeconds": 14.2,
+      "volume": 0.18,
+      "reason": "Der Klick betont das Uhrenmotiv."
+    }
+  ]
+}
 ```
+
+Nicht jede Szene muss Bewegung oder Sound enthalten.
 
 ## 3. Inhaltspaket prüfen
 
-Grundstruktur prüfen:
+Grundstruktur:
 
 ```bash
-npm run validate:reel -- \
-  --dir "content/2026-KW31_27-07_bis_02-08/donnerstag/reel-01_was-bedeutet-links-und-rechts"
+npm run validate:reel -- --dir "PFAD-ZUM-REEL"
 ```
 
-Script, Szenen, Prompts, Untertitelplan, Cover, Caption und Quellen streng prüfen:
+Strenge Inhaltsprüfung:
 
 ```bash
-npm run check:content -- \
-  --dir "content/2026-KW31_27-07_bis_02-08/donnerstag/reel-01_was-bedeutet-links-und-rechts" \
-  --strict
+npm run check:content -- --dir "PFAD-ZUM-REEL" --strict
 ```
 
-Die Prüfung kontrolliert unter anderem:
+Geprüft werden unter anderem:
 
 - 8–12 stabile Szenen-IDs
-- ausgewählte Bildwelt und Begründung
-- vollständige Sprechertexte
-- visuelle Idee und Kontinuitätsnotizen pro Szene
-- geschätzte Gesamtdauer
-- empfohlenen Bildrhythmus
-- `audioCue` und `leadInSeconds`
-- Untertitelposition und Untertitelplan
-- ausführliche englische 9:16-Bildprompts
-- exakte Übernahme geplanter Bildtexte in die Prompts
-- Cover-Idee und Cover-Prompt
-- Caption und Quellen
+- Stilwahl und Begründung
+- Voice-over, Szenenideen und Dauer
+- Audio-Cues und Untertitel
+- ausführliche 9:16-Bildprompts
+- vollständiger Effektplan mit genau einem Eintrag pro Szene
+- zulässige Zoom- und Schwenkwerte
+- höchstens zwei Soundeffekte pro Szene
+- Voice-over-Priorität und ausgeschaltete Hintergrundmusik
+- Cover, Caption und Quellen
 
 Der Bericht wird unter `review/content-readiness.json` gespeichert.
 
 ## 4. Extern erzeugte Dateien unsortiert ablegen
 
-Alle Szenenbilder und das Cover dürfen beliebige Dateinamen haben und in beliebiger Reihenfolge abgelegt werden:
-
 ```text
-reel-01_was-bedeutet-links-und-rechts/
+reel-ordner/
 └── inbox/
     ├── images/
     │   ├── IMG_8241.png
@@ -185,46 +202,25 @@ reel-01_was-bedeutet-links-und-rechts/
         └── voice-final.mp3
 ```
 
-Die Bilder müssen nicht `scene-01.png`, `scene-02.png` usw. heißen.
+Dateinamen und Reihenfolge sind egal.
 
-## 5. Asset-Inventar erstellen
+## 5. Assets erkennen und übernehmen
 
-```bash
-npm run organize:assets -- \
-  --dir "content/2026-KW31_27-07_bis_02-08/donnerstag/reel-01_was-bedeutet-links-und-rechts"
-```
-
-Dadurch entsteht `inbox/asset-inventory.json`. Codex vergleicht jedes Bild anschließend mit:
-
-- Sprechertext der Szene
-- sichtbarem Schlüsseltext
-- visueller Idee
-- Bildprompt
-- Figuren, Gegenständen und Metaphern
-- Komposition und Cover-Aufbau
-
-Danach schreibt Codex die erkannte Zuordnung in `inbox/asset-map.json`. Dateiname und Ablagereihenfolge dürfen nur schwache Hinweise sein.
-
-## 6. Erkannte Zuordnung anwenden
+Inventar erstellen:
 
 ```bash
-npm run organize:assets -- \
-  --dir "content/2026-KW31_27-07_bis_02-08/donnerstag/reel-01_was-bedeutet-links-und-rechts" \
-  --apply
+npm run organize:assets -- --dir "PFAD-ZUM-REEL"
 ```
 
-Das System:
+Zuordnung nach visueller Prüfung anwenden:
 
-- kopiert jedes erkannte Bild in den richtigen Szenenordner
-- benennt es stabil nach der Szenen-ID
-- behandelt Cover und Audio getrennt
-- erhält PNG, JPG, JPEG oder WEBP
-- aktualisiert `scene.json`, `scene-index.json`, `status.json` und `assets-manifest.json`
-- erstellt `review/asset-matching-report.json`
-- lässt Dateien unter 0,75 Konfidenz unangetastet
-- verhindert doppelte Verwendung einer Quelle oder eines Ziels
+```bash
+npm run organize:assets -- --dir "PFAD-ZUM-REEL" --apply
+```
 
-Nach Einfügen der echten Audiodatei prüft Codex zusätzlich, ob die geplanten Bildwechsel und Untertitel zum tatsächlichen Voice-over passen.
+Das System kopiert erkannte Bilder in die passenden Szenenordner, benennt sie stabil um und behandelt Cover und Audio getrennt. Dateien unter 0,75 Konfidenz bleiben unangetastet.
+
+Nach Einfügen des Voice-overs prüft Codex zusätzlich Bildwechsel, Untertitel, Zooms, Übergänge und Soundeffekte gegen die echte Audiospur.
 
 ## Tests
 
@@ -232,33 +228,24 @@ Nach Einfügen der echten Audiodatei prüft Codex zusätzlich, ob die geplanten 
 npm test
 ```
 
-Die Tests prüfen:
-
-- Wochen-, Tages- und Reel-Ordner
-- Codex-Produktionsauftrag
-- strenge Inhaltsbereitschaft
-- Asset-Inventar
-- Übernahme von unsortierten Szenenbildern, Cover und Audio
-- Schutz vor unsicheren Zuweisungen
-
-GitHub Actions führt die Tests bei Pushes und Pull Requests automatisch mit Node.js 20 aus.
-
 ## Wichtige Dateien
 
 - `CODEX_TASK.md` – kompletter Start- und Übergabeworkflow für Codex
 - `AGENTS.md` – verbindliche Projektregeln
-- `knowledge/production-rules.md` – inhaltliche, visuelle und Untertitelregeln
-- `config/content-rules.json` – maschinenlesbare Themen-, Timing- und Untertitelregeln
+- `knowledge/production-rules.md` – allgemeine Produktionsregeln
+- `knowledge/effects-rules.md` – Zoom-, Übergangs- und Soundregeln
+- `config/content-rules.json` – Themen-, Timing- und Untertitelregeln
+- `config/effects-rules.json` – maschinenlesbare Effektgrenzen
 - `config/image-styles.json` – verfügbare Bildwelten
 - `src/core/workspace.js` – Reel-Ordnergenerator
 - `src/core/production-brief.js` – dynamischer Codex-Auftrag
-- `src/core/content-validator.js` – Inhalts-, Timing- und Promptprüfung
+- `src/core/content-validator.js` – Inhalts-, Timing- und Effektprüfung
 - `src/core/asset-ingest.js` – Inventar und Dateiübernahme
 
 ## Noch nicht enthalten
 
 - automatische Bild- oder Audioerzeugung im Repository
-- fertiger Remotion-Videoschnitt
+- fertiges Remotion-Rendering
 - automatische Social-Media-Veröffentlichung
 
-Diese Punkte sind für Version 1 bewusst nicht erforderlich. Der aktuelle Workflow ist darauf ausgelegt, dass der Nutzer Bilder und Voice-over extern erzeugt und anschließend unsortiert zurückgibt.
+Der Effektplan ist bereits verbindlich vorhanden und kann später direkt als Vorlage für Remotion oder einen anderen Videoschnitt dienen.
