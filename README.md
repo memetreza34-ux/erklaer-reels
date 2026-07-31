@@ -4,37 +4,35 @@ KI-gestützte Produktionspipeline für visuelle Erklär-Reels zu Politik, Gesell
 
 ## Ziel von Version 1
 
-Aus einem Thema oder einem deutschen Rohscript entsteht ein vollständiger Reel-Arbeitsordner mit:
+Aus einem Thema oder deutschen Rohscript entsteht ein vollständiger Produktionsordner mit:
 
 - geprüftem Voice-over-Script
 - 8–12 Bildmomenten abhängig von der Länge
 - einer konsistenten Bildwelt pro Reel
 - englischen Bildprompts mit optionalem deutschem Schlüsseltext
 - Audio-Cues für synchronisierte Bildwechsel
-- getrenntem Untertitelplan
-- getrenntem Plan für Zooms, Kamerabewegungen, Übergänge und Soundeffekte
-- Cover-Plan und Cover-Prompt
-- Caption und Quellen
-- strenger Inhaltsprüfung
+- Untertitelplan
+- Effektplan für Zooms, Kamerabewegungen, Übergänge und Sounds
+- Master-Timeline
+- renderer-neutralem Render-Plan in Sekunden und Frames
+- Cover, Caption, Quellen und Qualitätsberichten
 - Inbox für extern erzeugte Bilder und Audio
-- automatischer Zuordnung unsortierter Dateien zu den richtigen Szenen
+- automatischer Zuordnung unsortierter Dateien
 
-Der Nutzer erzeugt Voice-over und Bilder außerhalb des Repositories. Das Repository plant, organisiert und prüft die Produktion. Ein fertiges Video wird in Version 1 noch nicht gerendert.
+Der Nutzer erzeugt Voice-over und Bilder außerhalb des Repositories. Das Repository plant, organisiert, synchronisiert und prüft die Produktion. Eine fertige MP4-Datei wird noch nicht gerendert.
 
 ## Wichtigste Produktionsregeln
 
-- Hook-Bild ab Sekunde 0 sichtbar
+- Hook-Bild ab Sekunde 0
 - 35–44 Sekunden: normalerweise 8–10 Bildmomente
 - 45–55 Sekunden: normalerweise 10–12 Bildmomente
 - sichtbare Veränderung ungefähr alle 3,5–5 Sekunden
 - Bildwechsel normalerweise 0,1–0,3 Sekunden vor dem passenden `audioCue`
 - Untertitel in der unteren Mitte bei ungefähr 65–75 % der Bildhöhe
 - Untertitel normalerweise 3–6 Wörter und höchstens zwei Zeilen
-- Bewegung nur mit klarem Nutzen; nicht jedes Bild benötigt einen Zoom
 - Zoom normalerweise 2–6 %, maximal 8 %
-- Schwenk maximal 4 % der Bildbreite oder Bildhöhe
-- sauberer Schnitt als Standardübergang
-- Crossfade nur kurz und begründet
+- Schwenk maximal 4 %
+- sauberer Schnitt als Standard
 - null bis zwei dezente Soundeffekte pro Szene
 - Voice-over hat Vorrang
 - Hintergrundmusik standardmäßig ausgeschaltet
@@ -46,13 +44,7 @@ Thema oder Rohscript
         ↓
 Reel-Arbeitsordner erstellen
         ↓
-Codex-Auftrag automatisch erzeugen
-        ↓
-Script, Szenen, Audio-Cues und Bildprompts ausfüllen
-        ↓
-Untertitel- und Effektplan erstellen
-        ↓
-Cover, Caption und Quellen erstellen
+Codex plant Script, Szenen, Prompts, Untertitel und Effekte
         ↓
 strenge Inhaltsprüfung
         ↓
@@ -60,16 +52,19 @@ Nutzer erzeugt Voice-over und Bilder extern
         ↓
 alle Dateien unsortiert in die Inbox legen
         ↓
-Codex erkennt Bildinhalte und ordnet sie den Szenen zu
+Codex ordnet Bilder, Cover und Audio zu
         ↓
-Bildwechsel, Untertitel, Zooms und Sounds gegen die echte Audiospur prüfen
+Master-Timeline erzeugen
         ↓
-Dateien automatisch kopieren, umbenennen und registrieren
+echte Audio-Cues eintragen und synchronisieren
+        ↓
+Render-Plan und finalen Vorabbericht prüfen
 ```
 
 ## Voraussetzungen
 
 - Node.js 20 oder neuer
+- optional: `ffprobe` für automatische Ermittlung der Audiodauer
 - keine zusätzlichen npm-Pakete erforderlich
 
 ## 1. Neues Reel anlegen
@@ -82,34 +77,12 @@ npm run create:reel -- \
   --scenes 10
 ```
 
-`--scenes` unterstützt Werte von 8 bis 12. Ohne Angabe werden 10 Bildmomente angelegt.
+`--scenes` unterstützt 8 bis 12. Ohne Angabe werden 10 Bildmomente angelegt.
 
-Beispielstruktur:
-
-```text
-content/
-└── 2026-KW31_27-07_bis_02-08/
-    └── donnerstag/
-        └── reel-01_was-bedeutet-links-und-rechts/
-            ├── script/
-            ├── scenes/
-            ├── subtitles/
-            ├── effects/
-            ├── cover/
-            ├── caption/
-            ├── sources/
-            ├── review/
-            ├── production/
-            └── inbox/
-```
-
-Der Befehl erzeugt automatisch `production/agent-task.md` und `production/checklist.json`.
-
-## 2. Dateien, die Codex bearbeitet
+Codex bearbeitet anschließend insbesondere:
 
 - `script/final-script.txt`
 - `script/voice-script.txt`
-- `reel.json`
 - `scenes/scene-index.json`
 - jede `scenes/scene-XX/scene.json`
 - jede `scenes/scene-XX/image-prompt.txt`
@@ -120,75 +93,16 @@ Der Befehl erzeugt automatisch `production/agent-task.md` und `production/checkl
 - `caption/caption.txt`
 - `sources/sources.md`
 
-### Untertitelplan
-
-`subtitles/subtitle-plan.json` enthält kurze Sinnabschnitte, Position und geschätztes Timing. Die exakten Zeiten werden nach Einfügen des echten Voice-overs korrigiert.
-
-### Effektplan
-
-`effects/effects-plan.json` enthält pro Szene:
-
-```json
-{
-  "sceneId": "scene-03",
-  "transitionIn": {
-    "type": "cut",
-    "durationSeconds": 0,
-    "reason": "Neuer Gedanke beginnt direkt."
-  },
-  "cameraMotion": {
-    "type": "slow-zoom-in",
-    "startScale": 1,
-    "endScale": 1.05,
-    "panXPercent": 0,
-    "panYPercent": 0,
-    "easing": "ease-in-out",
-    "reason": "Fokus langsam auf das zentrale Symbol lenken."
-  },
-  "soundEffects": [
-    {
-      "type": "click",
-      "audioCue": "ständigen Blick auf die Uhr",
-      "estimatedTimeSeconds": 14.2,
-      "volume": 0.18,
-      "reason": "Der Klick betont das Uhrenmotiv."
-    }
-  ]
-}
-```
-
-Nicht jede Szene muss Bewegung oder Sound enthalten.
-
-## 3. Inhaltspaket prüfen
-
-Grundstruktur:
+## 2. Inhalt prüfen
 
 ```bash
 npm run validate:reel -- --dir "PFAD-ZUM-REEL"
-```
-
-Strenge Inhaltsprüfung:
-
-```bash
 npm run check:content -- --dir "PFAD-ZUM-REEL" --strict
 ```
 
-Geprüft werden unter anderem:
+Die Prüfung kontrolliert unter anderem Szenen-IDs, Stilwahl, Voice-over, Audio-Cues, Untertitel, Bildprompts, Zoomgrenzen, Übergänge, Sounds, Cover, Caption und Quellen.
 
-- 8–12 stabile Szenen-IDs
-- Stilwahl und Begründung
-- Voice-over, Szenenideen und Dauer
-- Audio-Cues und Untertitel
-- ausführliche 9:16-Bildprompts
-- vollständiger Effektplan mit genau einem Eintrag pro Szene
-- zulässige Zoom- und Schwenkwerte
-- höchstens zwei Soundeffekte pro Szene
-- Voice-over-Priorität und ausgeschaltete Hintergrundmusik
-- Cover, Caption und Quellen
-
-Der Bericht wird unter `review/content-readiness.json` gespeichert.
-
-## 4. Extern erzeugte Dateien unsortiert ablegen
+## 3. Externe Dateien unsortiert ablegen
 
 ```text
 reel-ordner/
@@ -204,48 +118,134 @@ reel-ordner/
 
 Dateinamen und Reihenfolge sind egal.
 
-## 5. Assets erkennen und übernehmen
-
-Inventar erstellen:
+## 4. Assets erkennen und übernehmen
 
 ```bash
 npm run organize:assets -- --dir "PFAD-ZUM-REEL"
-```
-
-Zuordnung nach visueller Prüfung anwenden:
-
-```bash
 npm run organize:assets -- --dir "PFAD-ZUM-REEL" --apply
 ```
 
 Das System kopiert erkannte Bilder in die passenden Szenenordner, benennt sie stabil um und behandelt Cover und Audio getrennt. Dateien unter 0,75 Konfidenz bleiben unangetastet.
 
-Nach Einfügen des Voice-overs prüft Codex zusätzlich Bildwechsel, Untertitel, Zooms, Übergänge und Soundeffekte gegen die echte Audiospur.
-
-## Tests
+## 5. Master-Timeline erzeugen
 
 ```bash
+npm run build:timeline -- --dir "PFAD-ZUM-REEL"
+```
+
+Der Befehl:
+
+- sucht die übernommene Voice-over-Datei
+- liest mit `ffprobe` automatisch die Audiodauer, sofern verfügbar
+- erzeugt bei Bedarf `timeline/audio-sync.json`
+- verteilt Szenen zunächst anhand der geplanten Dauer
+- führt Untertitel, Übergänge, Kamerabewegungen und Sounds zusammen
+- schreibt `timeline/timeline-plan.json`
+- schreibt `render/render-plan.json`
+- schreibt `review/final-video-report.json`
+- aktualisiert `status.json`
+
+Ohne `ffprobe` kann die Audiodauer direkt angegeben werden:
+
+```bash
+npm run sync:audio -- \
+  --dir "PFAD-ZUM-REEL" \
+  --audio-duration 48.7
+```
+
+## 6. Audio-Cues exakt synchronisieren
+
+Nach dem ersten Timeline-Lauf ergänzt Codex `timeline/audio-sync.json`:
+
+```json
+{
+  "audioDurationSeconds": 48.7,
+  "cueTimings": [
+    {
+      "sceneId": "scene-03",
+      "audioCue": "Beim Warten",
+      "cueTimeSeconds": 8.4,
+      "leadInSeconds": 0.2,
+      "confidence": 0.98
+    }
+  ]
+}
+```
+
+Das Bild beginnt in diesem Beispiel bei 8,2 Sekunden. Anschließend:
+
+```bash
+npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
+```
+
+### Timing-Status
+
+- `estimated` – nur geplante Szenendauern bekannt
+- `audio-duration-synced` – echte Audiodauer bekannt, aber noch nicht alle Cues exakt markiert
+- `audio-synced` – Audiodauer und alle relevanten Audio-Cues verifiziert
+
+## 7. Render-Plan
+
+`render/render-plan.json` enthält:
+
+- Format `1080 × 1920`
+- `30 FPS`
+- gesamte Dauer in Sekunden und Frames
+- Voice-over-Datei
+- Bildpfad pro Szene
+- Start- und Endzeit pro Szene
+- Start- und Endframe
+- Übergang
+- Zoom oder Schwenk
+- Untertitel
+- Soundeffekte
+
+Der Status lautet erst `ready-for-renderer`, wenn Voice-over und alle Szenenbilder bereit sind.
+
+## 8. Qualitätsbericht
+
+`review/final-video-report.json` prüft unter anderem:
+
+- Hook beginnt bei Sekunde 0
+- jede Szene besitzt eine positive Dauer
+- keine unbeabsichtigten Lücken oder Überlappungen
+- Untertitel überlappen sich nicht
+- echte Audiodauer ist bekannt
+- Audio-Cues sind synchronisiert
+- alle Szenenbilder sind vorhanden
+
+Ein strenger Lauf behandelt fehlendes Audio und fehlende Szenenbilder als Fehler.
+
+## Befehle
+
+```bash
+npm run create:reel
+npm run prepare:reel
+npm run validate:reel
+npm run check:content
+npm run organize:assets
+npm run build:timeline
+npm run sync:audio
+npm run status:reel
 npm test
 ```
 
 ## Wichtige Dateien
 
-- `CODEX_TASK.md` – kompletter Start- und Übergabeworkflow für Codex
+- `CODEX_TASK.md` – kompletter Codex-Workflow
 - `AGENTS.md` – verbindliche Projektregeln
-- `knowledge/production-rules.md` – allgemeine Produktionsregeln
+- `knowledge/production-rules.md` – Produktionsregeln
 - `knowledge/effects-rules.md` – Zoom-, Übergangs- und Soundregeln
-- `config/content-rules.json` – Themen-, Timing- und Untertitelregeln
-- `config/effects-rules.json` – maschinenlesbare Effektgrenzen
-- `config/image-styles.json` – verfügbare Bildwelten
-- `src/core/workspace.js` – Reel-Ordnergenerator
-- `src/core/production-brief.js` – dynamischer Codex-Auftrag
-- `src/core/content-validator.js` – Inhalts-, Timing- und Effektprüfung
-- `src/core/asset-ingest.js` – Inventar und Dateiübernahme
+- `knowledge/timeline-rules.md` – Master-Timeline und Audio-Sync
+- `src/core/asset-ingest.js` – Asset-Zuordnung
+- `src/core/timeline.js` – Timeline-, Audio-Sync-, Render- und QC-Logik
+- `src/cli/build-timeline.js` – CLI für `build:timeline` und `sync:audio`
 
 ## Noch nicht enthalten
 
-- automatische Bild- oder Audioerzeugung im Repository
+- automatische Bild- oder Audioerzeugung
+- automatisches Forced Alignment gesprochener Phrasen
 - fertiges Remotion-Rendering
 - automatische Social-Media-Veröffentlichung
 
-Der Effektplan ist bereits verbindlich vorhanden und kann später direkt als Vorlage für Remotion oder einen anderen Videoschnitt dienen.
+Die stabile Schnittstelle für exakte Phrase-Zeitpunkte ist `timeline/audio-sync.json`. Ein späterer Forced-Alignment-Anbieter kann daran angeschlossen werden, ohne die restliche Produktionsstruktur zu ändern.
