@@ -55,7 +55,8 @@ npm run organize:assets -- --dir "PFAD-ZUM-REEL" --apply
 ```
 
 9. Prüfe den Bericht unter `review/asset-matching-report.json`.
-10. Vergleiche anschließend die echte Audiospur mit den geplanten `audioCue`-Feldern und dem Untertitelplan. Korrigiere erkennbare Abweichungen, bevor ein späterer Videoschnitt beginnt.
+10. Vergleiche anschließend die echte Audiospur mit den geplanten `audioCue`-Feldern, dem Untertitelplan und `effects/effects-plan.json`.
+11. Korrigiere erkennbare Abweichungen bei Bildwechseln, Untertiteln, Zooms, Übergängen und Soundeffekten, bevor ein späterer Videoschnitt beginnt.
 
 ## Verbindliche kreative Regeln
 
@@ -86,6 +87,25 @@ npm run organize:assets -- --dir "PFAD-ZUM-REEL" --apply
 - Bei Konflikten mit Bildtext oder Hauptmotiv die Position innerhalb der sicheren Zone anpassen.
 - Untertitel werden nicht in die Bildprompts eingebrannt.
 
+## Verbindliche Effektregeln
+
+- Plane Zooms, Kamerabewegungen, Übergänge und Soundeffekte in `effects/effects-plan.json`.
+- Lies `knowledge/effects-rules.md` und `config/effects-rules.json`.
+- Jeder Szeneneintrag benötigt `sceneId`, `transitionIn`, `cameraMotion` und `soundEffects`.
+- Nicht jede Szene braucht Bewegung. Ohne inhaltlichen Nutzen bleibt der Effekt auf `none`.
+- Zooms verändern die Bildgröße normalerweise um 2–6 Prozent und niemals um mehr als 8 Prozent.
+- Schwenks bewegen das Bild höchstens 4 Prozent der Bildbreite oder Bildhöhe.
+- Hook: kein Übergang, optional ein dezenter Push-in.
+- Standardübergang: `cut`. Crossfades nur kurz und begründet.
+- Keine auffälligen Glitch-, Spin-, Flash- oder 3D-Übergänge.
+- Hintergrundmusik bleibt standardmäßig ausgeschaltet.
+- Pro Szene normalerweise null bis zwei Soundeffekte.
+- Soundeffekte nur an konkreten `audioCue`-Punkten oder visuellen Ereignissen einsetzen.
+- Nicht jeden Schnitt mit einem Whoosh versehen.
+- Voice-over hat Vorrang; Effekte dürfen wichtige Wörter nicht verdecken.
+- Keine Meme-Sounds oder urheberrechtlich ungeklärte Musik.
+- Bewegung darf Text, Hauptmotiv und Untertitel nicht aus der sicheren Zone schieben.
+
 ## Fertig bedeutet
 
 Ein Reel-Inhaltspaket ist erst bereit, wenn:
@@ -96,5 +116,6 @@ Ein Reel-Inhaltspaket ist erst bereit, wenn:
 - alle Szenen einen ausführlichen Bildprompt besitzen,
 - alle Szenen ein `audioCue`, `leadInSeconds` und passende `subtitleCues` besitzen,
 - `subtitles/subtitle-plan.json` vorhanden ist,
+- `effects/effects-plan.json` vollständig ist und genau einen Eintrag pro Szene enthält,
 - Cover, Caption und Quellen vorhanden sind,
 - der Nutzer Audio und Bilder ohne Vorsortierung in die Inbox legen kann.
