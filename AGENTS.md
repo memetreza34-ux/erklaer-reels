@@ -22,13 +22,14 @@ Version 1 erzeugt im Repository:
 6. einen Untertitelplan
 7. einen Plan für Zooms, Kamerabewegungen, Übergänge und Soundeffekte
 8. eine Master-Timeline und einen renderer-neutralen Schnittplan
-9. Caption
-10. Quellenliste
-11. Qualitäts- und Bereitschaftsberichte
-12. eine Inbox für extern erzeugte Bilder und Audio
-13. eine automatische, inhaltsbasierte Zuordnung der unsortierten Assets
+9. eine technische und manuelle visuelle Qualitätsprüfung
+10. Caption
+11. Quellenliste
+12. Qualitäts- und Bereitschaftsberichte
+13. eine Inbox für extern erzeugte Bilder und Audio
+14. eine automatische, inhaltsbasierte Zuordnung der unsortierten Assets
 
-Der Nutzer erzeugt Audio und Bilder außerhalb des Repositories. Version 1 plant Schnitt, Bewegung und Sound, erzeugt aber noch kein fertiges Video und veröffentlicht nichts automatisch.
+Der Nutzer erzeugt Audio und Bilder außerhalb des Repositories. Version 1 plant Schnitt, Bewegung, Sound und Qualitätskontrolle, erzeugt aber noch kein fertiges Video und veröffentlicht nichts automatisch.
 
 ## Themenbereich
 
@@ -108,6 +109,20 @@ Nicht als eigene Content-Säulen verwenden:
 - Der Status `audio-synced` wird nur verwendet, wenn die Audiodauer und alle relevanten Audio-Cues verifiziert sind.
 - Die Hook beginnt immer bei Sekunde 0, die letzte Szene endet exakt mit der Voice-over-Dauer und Szenen dürfen keine unbeabsichtigten Lücken oder Überlappungen erzeugen.
 
+## Visuelle Qualitäts- und Sicherheitsprüfung
+
+- Lies `knowledge/visual-quality-rules.md` und `config/visual-quality-rules.json`.
+- Zielformat ist 1080 × 1920 Pixel im Seitenverhältnis 9:16; Mindestauflösung 720 × 1280 Pixel.
+- Wichtige Motive und Texte bleiben mindestens 6 % von den Seiten, 8 % von oben und 18 % von unten entfernt.
+- Prüfe jedes Bild zusätzlich mit dem geplanten Zoom und Schwenk.
+- Codex betrachtet jedes fertige Szenenbild und das Cover visuell.
+- Codex füllt `review/visual-inspection.json` vollständig aus. Jeder Prüfpunkt wird ausdrücklich auf `true` oder `false` gesetzt.
+- Geprüft werden Hauptmotiv, Lesbarkeit, Textfehler, Untertitelkollision, Plattform-Bedienelemente, Bewegungssicherheit und Stilkonsistenz.
+- Nur vollständig bestandene Bilder erhalten `status: "passed"`.
+- Bei Fehlern wird `status: "needs-fix"` gesetzt und eine konkrete Notiz ergänzt.
+- Führe zunächst `npm run check:visuals -- --dir "<reel-ordner>"` aus, fülle danach die manuelle Prüfliste und führe abschließend denselben Befehl mit `--strict` aus.
+- Ein Render-Plan gilt erst nach bestandener strenger visueller Prüfung als freigegeben.
+
 ## Bevorzugte Bildwelten
 
 1. menschliche 2D-Cartoonfiguren für Psychologie und Gesellschaft
@@ -146,6 +161,7 @@ Der Nutzer erzeugt Audio und Bilder außerhalb dieses Repositories und legt sie 
 - Nach der Zuordnung führt der Agent `npm run organize:assets -- --dir "<reel-ordner>" --apply` aus.
 - Das Anwenden kopiert die Dateien in die richtigen Szenenordner, benennt sie stabil um und aktualisiert Manifest, Status und Szenendaten.
 - Sobald die echte Audiodatei vorliegt, prüft Codex Bildwechsel, Untertitel, Zooms, Übergänge und Soundeffekte gegen die Audiospur und baut anschließend die Master-Timeline.
+- Danach führt Codex die technische Bildprüfung aus, füllt `review/visual-inspection.json` durch echte visuelle Betrachtung und wiederholt `check:visuals` im strengen Modus.
 
 Beispiel für `inbox/asset-map.json`:
 
@@ -186,6 +202,7 @@ Beispiel für `inbox/asset-map.json`:
 - `leadInSeconds` liegt normalerweise zwischen 0,1 und 0,3 Sekunden.
 - `effects/effects-plan.json` benötigt genau einen Eintrag pro Szene mit `transitionIn`, `cameraMotion` und `soundEffects`.
 - `timeline/audio-sync.json` enthält echte Cue-Zeiten; `timeline/timeline-plan.json` und `render/render-plan.json` werden daraus neu erzeugt und nicht manuell auseinanderkopiert.
+- `review/visual-inspection.json` dokumentiert die visuelle Einzelprüfung aller Szenen und des Covers.
 - API-Schlüssel dürfen nie in das Repository geschrieben werden.
 - Fehlende Assets müssen im Status und Manifest erkennbar sein.
 - Jede Pipeline-Stufe muss einzeln erneut ausführbar sein.

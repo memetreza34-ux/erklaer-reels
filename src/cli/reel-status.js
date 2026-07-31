@@ -30,6 +30,8 @@ async function main() {
   console.log(`${progress.title || progress.reelId}`);
   console.log(`Vorproduktion: ${progress.preProduction}%`);
   console.log(`Externe Assets: ${progress.assets}%`);
+  console.log(`Timeline und Audio-Sync: ${progress.timeline}%`);
+  console.log(`Visuelle Qualität: ${progress.visualQuality}%`);
   console.log(`Gesamtstand: ${progress.overall}%`);
   console.log('');
   console.log(`Scripts fertig: ${yesNo(progress.details.scriptsReady)}`);
@@ -41,6 +43,10 @@ async function main() {
   console.log(`Szenenbilder übernommen: ${progress.details.sceneImagesReady}`);
   console.log(`Audio übernommen: ${yesNo(progress.details.audioReady)}`);
   console.log(`Cover übernommen: ${yesNo(progress.details.coverImageReady)}`);
+  console.log(`Audio exakt synchronisiert: ${yesNo(progress.details.audioSynced)}`);
+  console.log(`Render-Plan bereit: ${yesNo(progress.details.renderReady)}`);
+  console.log(`Bilder visuell geprüft: ${progress.details.visualAssetsReviewed}`);
+  console.log(`Strenge Bildabnahme bestanden: ${yesNo(progress.details.visualStrictReady)}`);
   console.log('');
   console.log(`Nächster Schritt: ${progress.nextStep}`);
 }

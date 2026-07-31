@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "composition": {
+    "width": 1080,
+    "height": 1920,
+    "aspectRatio": "9:16",
+    "aspectRatioTolerance": 0.015,
+    "minimumWidth": 720,
+    "minimumHeight": 1280
+  },
+  "supportedFormats": ["png", "jpg", "jpeg", "webp"],
+  "safeZones": {
+    "leftPercent": 6,
+    "rightPercent": 6,
+    "topPercent": 8,
+    "bottomPercent": 18,
+    "subtitleVerticalPercent": {
+      "min": 65,
+      "max": 75,
+      "default": 70
+    }
+  },
+  "manualChecks": [
+    "mainSubjectSafe",
+    "textReadable",
+    "textAccurate",
+    "subtitleCollisionFree",
+    "platformUiSafe",
+    "motionSafe",
+    "styleConsistent"
+  ],
+  "strictMode": {
+    "requireAllAssets": true,
+    "requireReadableMetadata": true,
+    "requireMinimumResolution": true,
+    "requireManualReviewPassed": true
+  }
+}
