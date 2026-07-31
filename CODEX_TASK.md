@@ -55,8 +55,32 @@ npm run organize:assets -- --dir "PFAD-ZUM-REEL" --apply
 ```
 
 9. Prüfe den Bericht unter `review/asset-matching-report.json`.
-10. Vergleiche anschließend die echte Audiospur mit den geplanten `audioCue`-Feldern, dem Untertitelplan und `effects/effects-plan.json`.
-11. Korrigiere erkennbare Abweichungen bei Bildwechseln, Untertiteln, Zooms, Übergängen und Soundeffekten, bevor ein späterer Videoschnitt beginnt.
+10. Erzeuge anschließend die Master-Timeline:
+
+```bash
+npm run build:timeline -- --dir "PFAD-ZUM-REEL"
+```
+
+11. Beim ersten Lauf entsteht bei Bedarf `timeline/audio-sync.json`.
+12. Prüfe die echte Audiodauer. Wenn `ffprobe` nicht verfügbar ist, übergib sie ausdrücklich:
+
+```bash
+npm run sync:audio -- --dir "PFAD-ZUM-REEL" --audio-duration 48.7
+```
+
+13. Höre das Voice-over ab und trage für jede Szene den tatsächlichen Zeitpunkt der Phrase aus `audioCue` als `cueTimeSeconds` in `timeline/audio-sync.json` ein.
+14. Verwende `confidence`, um unsichere Cue-Zeiten zu markieren. Erfinde keine Zeitstempel.
+15. Führe danach erneut aus:
+
+```bash
+npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
+```
+
+16. Prüfe:
+   - `timeline/timeline-plan.json`
+   - `render/render-plan.json`
+   - `review/final-video-report.json`
+17. Korrigiere Bildwechsel, Untertitel, Zooms, Übergänge und Soundeffekte, bis der Timeline-Bericht keine strukturellen Fehler mehr enthält.
 
 ## Verbindliche kreative Regeln
 
@@ -106,6 +130,20 @@ npm run organize:assets -- --dir "PFAD-ZUM-REEL" --apply
 - Keine Meme-Sounds oder urheberrechtlich ungeklärte Musik.
 - Bewegung darf Text, Hauptmotiv und Untertitel nicht aus der sicheren Zone schieben.
 
+## Verbindliche Timeline-Regeln
+
+- Lies `knowledge/timeline-rules.md`.
+- `timeline/audio-sync.json` enthält die verifizierten Audio-Cue-Zeitpunkte.
+- `timeline/timeline-plan.json` führt Szenen, Untertitel, Übergänge, Kamerabewegungen und Sounds zeitlich zusammen.
+- `render/render-plan.json` enthält 1080 × 1920, 30 FPS sowie Start- und Endzeiten in Sekunden und Frames.
+- Die Hook beginnt bei Sekunde 0.
+- Die letzte Szene endet exakt mit der Voice-over-Dauer.
+- Szenen dürfen keine unbeabsichtigten Lücken oder Überlappungen erzeugen.
+- Soundeffekte müssen innerhalb ihrer Szene liegen.
+- Untertitel dürfen sich nicht überlappen.
+- `audio-synced` darf nur gesetzt werden, wenn Audiodauer und alle relevanten Audio-Cues verifiziert sind.
+- Ein strenger Timeline-Lauf darf erst bestehen, wenn Voice-over und alle Szenenbilder vorhanden sind.
+
 ## Fertig bedeutet
 
 Ein Reel-Inhaltspaket ist erst bereit, wenn:
@@ -119,3 +157,11 @@ Ein Reel-Inhaltspaket ist erst bereit, wenn:
 - `effects/effects-plan.json` vollständig ist und genau einen Eintrag pro Szene enthält,
 - Cover, Caption und Quellen vorhanden sind,
 - der Nutzer Audio und Bilder ohne Vorsortierung in die Inbox legen kann.
+
+Ein Reel ist für den späteren Renderer erst bereit, wenn zusätzlich:
+
+- die Assets korrekt übernommen wurden,
+- `timeline/audio-sync.json` geprüft ist,
+- `npm run sync:audio -- --strict` erfolgreich ist,
+- `render/render-plan.json` den Status `ready-for-renderer` besitzt,
+- `review/final-video-report.json` keine strukturellen Fehler enthält.

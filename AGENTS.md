@@ -21,11 +21,12 @@ Version 1 erzeugt im Repository:
 5. Cover-Prompt und Cover-Plan
 6. einen Untertitelplan
 7. einen Plan für Zooms, Kamerabewegungen, Übergänge und Soundeffekte
-8. Caption
-9. Quellenliste
-10. Qualitäts- und Bereitschaftsberichte
-11. eine Inbox für extern erzeugte Bilder und Audio
-12. eine automatische, inhaltsbasierte Zuordnung der unsortierten Assets
+8. eine Master-Timeline und einen renderer-neutralen Schnittplan
+9. Caption
+10. Quellenliste
+11. Qualitäts- und Bereitschaftsberichte
+12. eine Inbox für extern erzeugte Bilder und Audio
+13. eine automatische, inhaltsbasierte Zuordnung der unsortierten Assets
 
 Der Nutzer erzeugt Audio und Bilder außerhalb des Repositories. Version 1 plant Schnitt, Bewegung und Sound, erzeugt aber noch kein fertiges Video und veröffentlicht nichts automatisch.
 
@@ -92,6 +93,21 @@ Nicht als eigene Content-Säulen verwenden:
 - Bewegung darf Bildtext, Motive und Untertitel nie aus der sicheren Zone schieben.
 - Nach Einfügen der echten Audiodatei müssen Effektzeitpunkte noch einmal überprüft werden.
 
+## Master-Timeline und Audio-Sync
+
+- Lies `knowledge/timeline-rules.md`.
+- Nach dem Import der externen Assets führt Codex `npm run build:timeline -- --dir "<reel-ordner>"` aus.
+- Der erste Lauf erzeugt bei Bedarf `timeline/audio-sync.json` sowie eine geschätzte Timeline.
+- Wenn `ffprobe` verfügbar ist, wird die Audiodauer automatisch ermittelt. Andernfalls wird sie mit `--audio-duration` übergeben.
+- Codex hört die echte Audiodatei ab und trägt für jede Szene den tatsächlichen Zeitpunkt des `audioCue` als `cueTimeSeconds` ein.
+- Unsichere Cue-Zeiten dürfen nicht erfunden werden. `confidence` muss die Sicherheit der Zuordnung widerspiegeln.
+- Danach führt Codex `npm run sync:audio -- --dir "<reel-ordner>" --strict` erneut aus.
+- `timeline/timeline-plan.json` ist die zentrale Wahrheit für Szenen, Untertitel, Übergänge, Kamerabewegungen und Soundeffekte.
+- `render/render-plan.json` enthält dieselben Zeiten zusätzlich in Frames für 1080 × 1920 bei 30 FPS.
+- `review/final-video-report.json` muss geprüft werden, bevor ein Renderer oder manueller Schnitt beginnt.
+- Der Status `audio-synced` wird nur verwendet, wenn die Audiodauer und alle relevanten Audio-Cues verifiziert sind.
+- Die Hook beginnt immer bei Sekunde 0, die letzte Szene endet exakt mit der Voice-over-Dauer und Szenen dürfen keine unbeabsichtigten Lücken oder Überlappungen erzeugen.
+
 ## Bevorzugte Bildwelten
 
 1. menschliche 2D-Cartoonfiguren für Psychologie und Gesellschaft
@@ -129,7 +145,7 @@ Der Nutzer erzeugt Audio und Bilder außerhalb dieses Repositories und legt sie 
 - Unter 0.75 Konfidenz darf nicht geraten werden; die Datei bleibt in `unmatched`.
 - Nach der Zuordnung führt der Agent `npm run organize:assets -- --dir "<reel-ordner>" --apply` aus.
 - Das Anwenden kopiert die Dateien in die richtigen Szenenordner, benennt sie stabil um und aktualisiert Manifest, Status und Szenendaten.
-- Sobald die echte Audiodatei vorliegt, prüft Codex Bildwechsel, Untertitel, Zooms, Übergänge und Soundeffekte gegen die Audiospur und korrigiert erkennbare Abweichungen.
+- Sobald die echte Audiodatei vorliegt, prüft Codex Bildwechsel, Untertitel, Zooms, Übergänge und Soundeffekte gegen die Audiospur und baut anschließend die Master-Timeline.
 
 Beispiel für `inbox/asset-map.json`:
 
@@ -169,6 +185,7 @@ Beispiel für `inbox/asset-map.json`:
 - Jede Szene benötigt außerdem `audioCue`, `leadInSeconds` und passende `subtitleCues`.
 - `leadInSeconds` liegt normalerweise zwischen 0,1 und 0,3 Sekunden.
 - `effects/effects-plan.json` benötigt genau einen Eintrag pro Szene mit `transitionIn`, `cameraMotion` und `soundEffects`.
+- `timeline/audio-sync.json` enthält echte Cue-Zeiten; `timeline/timeline-plan.json` und `render/render-plan.json` werden daraus neu erzeugt und nicht manuell auseinanderkopiert.
 - API-Schlüssel dürfen nie in das Repository geschrieben werden.
 - Fehlende Assets müssen im Status und Manifest erkennbar sein.
 - Jede Pipeline-Stufe muss einzeln erneut ausführbar sein.
