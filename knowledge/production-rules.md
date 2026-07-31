@@ -43,6 +43,25 @@ Jedes Reel soll einen Begriff, ein System oder einen Zusammenhang so einfach erk
 - Die Untertitelplanung wird in `subtitles/subtitle-plan.json` gespeichert.
 - Nach Einfügen der echten Audiodatei werden Timing und Bildwechsel noch einmal gegen die Audiospur geprüft.
 
+## Bewegung, Übergänge und Sound
+
+- Die Planung wird in `effects/effects-plan.json` gespeichert und bleibt von den Bildprompts getrennt.
+- Nicht jede Szene benötigt Bewegung.
+- Dezente Zooms verändern die Bildgröße normalerweise um 2–6 Prozent und höchstens um 8 Prozent.
+- Kleine Schwenks bewegen das Bild höchstens 4 Prozent der Bildbreite oder Bildhöhe.
+- Der Hook darf einen dezenten Push-in erhalten, startet aber ohne Einblendung ab Sekunde 0.
+- Standardübergang ist ein sauberer Schnitt.
+- Crossfades von ungefähr 0,1–0,25 Sekunden nur einsetzen, wenn Gedanken weich ineinander übergehen.
+- Keine Glitch-, Spin-, Flash- oder aufdringlichen 3D-Übergänge.
+- Das Voice-over hat immer Vorrang.
+- Hintergrundmusik ist standardmäßig ausgeschaltet.
+- Pro Szene normalerweise null bis zwei dezente Soundeffekte.
+- Soundeffekte nur an konkreten visuellen Ereignissen oder `audioCue`-Punkten verwenden.
+- Nicht jeden Bildwechsel mit einem Whoosh versehen.
+- Keine Meme-Sounds, Jumpscares oder ungeklärte urheberrechtlich geschützte Musik.
+- Bewegung und Effekte dürfen Bildtext, Hauptmotiv oder Untertitel nicht verdecken.
+- Nach Einfügen des echten Voice-overs werden alle Effektzeitpunkte noch einmal geprüft.
+
 ## Stärkste Bildwelten
 
 1. Menschliche Cartoonfiguren für Psychologie und Gesellschaft
@@ -64,4 +83,8 @@ Vor der Freigabe prüfen:
 - Gibt es genug Bildwechsel, ohne hektisch zu wirken?
 - Verdecken Untertitel weder Bildtext noch Hauptmotiv?
 - Wiederholen Untertitel nicht unnötig den Text im Bild?
+- Sind Zooms und Schwenks dezent und begründet?
+- Bleiben Texte und Motive während der Bewegung in der sicheren Zone?
+- Sind Soundeffekte sparsam und leiser als das Voice-over?
+- Wird kein Spezialübergang unnötig wiederholt?
 - Ist der Cover-Titel auf kleiner Ansicht lesbar?
