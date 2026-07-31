@@ -35,6 +35,8 @@ async function main() {
     'scenes/scene-index.json',
     'subtitles/subtitle-plan.json',
     'subtitles/README.md',
+    'effects/effects-plan.json',
+    'effects/README.md',
     'cover/cover-prompt.txt',
     'cover/cover.json',
     'caption/caption.txt',
@@ -51,6 +53,7 @@ async function main() {
     'audio',
     'scenes',
     'subtitles',
+    'effects',
     'cover',
     'caption',
     'sources',
@@ -97,7 +100,7 @@ async function main() {
   console.log('Grundstruktur ist vollständig.');
   console.log(`Reel: ${reel.title}`);
   console.log(`Szenen: ${reel.sceneCount}`);
-  console.log('Codex-Auftrag, Untertitelplan und Inbox sind vorhanden.');
+  console.log('Codex-Auftrag, Untertitelplan, Effektplan und Inbox sind vorhanden.');
 }
 
 main().catch((error) => {
