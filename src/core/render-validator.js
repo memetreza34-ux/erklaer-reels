@@ -37,14 +37,30 @@ function isFiniteNumber(value) {
   return Number.isFinite(Number(value));
 }
 
+function mergeSoundEffects(renderSounds, effectSounds) {
+  return (renderSounds ?? []).map((sound, index) => {
+    const matching = (effectSounds ?? []).find((candidate) =>
+      sound.id && candidate.id === sound.id
+    ) ?? effectSounds?.[index] ?? {};
+    return {
+      ...matching,
+      ...sound,
+      file: sound.file ?? matching.file ?? null
+    };
+  });
+}
+
 export async function validateRendererInput(reelDirectory, {
   requireFinalReadiness = true
 } = {}) {
   const checks = [];
   const renderPlanPath = path.join(reelDirectory, 'render', 'render-plan.json');
   const readinessPath = path.join(reelDirectory, 'review', 'final-readiness-report.json');
+  const effectsPath = path.join(reelDirectory, 'effects', 'effects-plan.json');
   const plan = await readJson(renderPlanPath, null);
   const readiness = await readJson(readinessPath, null);
+  const effectsPlan = await readJson(effectsPath, { scenes: [] });
+  const effectsByScene = new Map((effectsPlan.scenes ?? []).map((scene) => [scene.sceneId, scene]));
 
   push(checks, 'render-plan-present', Boolean(plan), 'render/render-plan.json fehlt.');
   if (!plan) return finalize(checks, null, readiness);
@@ -137,7 +153,9 @@ export async function validateRendererInput(reelDirectory, {
         `${cueId}: Untertiteltext fehlt.`);
     }
 
-    for (const [soundIndex, sound] of (scene.soundEffects ?? []).entries()) {
+    const effectScene = effectsByScene.get(id) ?? {};
+    scene.soundEffects = mergeSoundEffects(scene.soundEffects, effectScene.soundEffects);
+    for (const [soundIndex, sound] of scene.soundEffects.entries()) {
       const soundId = sound.id ?? `${id}-sfx-${soundIndex + 1}`;
       push(checks, `${soundId}-time`, Number.isFinite(Number(sound.timeSeconds)),
         `${soundId}: timeSeconds fehlt oder ist ungültig.`, 'warning');
