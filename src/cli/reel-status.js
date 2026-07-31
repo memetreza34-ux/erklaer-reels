@@ -32,7 +32,9 @@ async function main() {
   console.log(`Externe Assets: ${progress.assets}%`);
   console.log(`Timeline und Audio-Sync: ${progress.timeline}%`);
   console.log(`Visuelle Qualität: ${progress.visualQuality}%`);
-  console.log(`Gesamtstand: ${progress.overall}%`);
+  console.log(`Produktionsfreigabe: ${progress.productionReady}%`);
+  console.log(`Rendering: ${progress.rendering}%`);
+  console.log(`Gesamtstand inklusive MP4: ${progress.overall}%`);
   console.log('');
   console.log(`Scripts fertig: ${yesNo(progress.details.scriptsReady)}`);
   console.log(`Bildwelt festgelegt: ${yesNo(progress.details.styleReady)}`);
@@ -47,6 +49,8 @@ async function main() {
   console.log(`Render-Plan bereit: ${yesNo(progress.details.renderReady)}`);
   console.log(`Bilder visuell geprüft: ${progress.details.visualAssetsReviewed}`);
   console.log(`Strenge Bildabnahme bestanden: ${yesNo(progress.details.visualStrictReady)}`);
+  console.log(`Renderer-Eingabe validiert: ${yesNo(progress.details.rendererValidated)}`);
+  console.log(`MP4 erfolgreich erzeugt: ${yesNo(progress.details.renderComplete)}`);
   console.log('');
   console.log(`Nächster Schritt: ${progress.nextStep}`);
 }

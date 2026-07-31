@@ -2,6 +2,11 @@ node_modules/
 .env
 .DS_Store
 logs/*.log
+.remotion/
+
+content/**/output/*.mp4
+content/**/output/*.webm
+content/**/output/*.mov
 
 content/**/audio/*.mp3
 content/**/audio/*.wav

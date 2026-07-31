@@ -1,6 +1,6 @@
 {
   "name": "erklaer-reels",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "private": true,
   "type": "module",
   "description": "KI-gestützte Produktionspipeline für visuelle Erklär-Reels.",
@@ -12,10 +12,21 @@
     "finalize:reel": "node src/cli/finalize-reel.js",
     "status:reel": "node src/cli/reel-status.js",
     "validate:reel": "node src/cli/validate-reel.js",
+    "validate:render": "node src/cli/render-reel.js --validate-only",
     "organize:assets": "node src/cli/organize-assets.js",
     "build:timeline": "node src/cli/build-timeline.js",
     "sync:audio": "node src/cli/build-timeline.js",
+    "render:reel": "node src/cli/render-reel.js",
+    "studio": "remotion studio src/renderer/index.jsx",
     "test": "node --test"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.500",
+    "@remotion/cli": "4.0.500",
+    "@remotion/renderer": "4.0.500",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.500"
   },
   "engines": {
     "node": ">=20"

@@ -34,6 +34,8 @@ export async function calculateReelProgress(reelDirectory) {
   const timelineReport = await readJson(path.join(reelDirectory, 'review', 'final-video-report.json'), null);
   const visualReport = await readJson(path.join(reelDirectory, 'review', 'visual-quality-report.json'), null);
   const visualInspection = await readJson(path.join(reelDirectory, 'review', 'visual-inspection.json'), null);
+  const rendererInputReport = await readJson(path.join(reelDirectory, 'review', 'renderer-input-report.json'), null);
+  const renderExecutionReport = await readJson(path.join(reelDirectory, 'review', 'render-execution-report.json'), null);
 
   const finalScript = (await exists(path.join(reelDirectory, 'script', 'final-script.txt')))
     ? await readText(path.join(reelDirectory, 'script', 'final-script.txt'))
@@ -129,12 +131,19 @@ export async function calculateReelProgress(reelDirectory) {
     (visualStrictReady ? 20 : 0)
   );
 
-  const overall = clamp(
+  const productionReady = clamp(
     preProduction * 0.5 +
     assets * 0.25 +
     timelineProgress * 0.15 +
     visualQuality * 0.1
   );
+
+  const rendererValidated = rendererInputReport?.passed === true;
+  const renderComplete = renderExecutionReport?.passed === true &&
+    Boolean(renderExecutionReport?.outputFile) &&
+    await exists(renderExecutionReport.outputFile);
+  const rendering = renderComplete ? 100 : rendererValidated ? 30 : 0;
+  const overall = clamp(productionReady * 0.9 + rendering * 0.1);
 
   let nextStep;
   if (preProduction < 100) {
@@ -145,8 +154,12 @@ export async function calculateReelProgress(reelDirectory) {
     nextStep = 'Master-Timeline erzeugen, echte Audio-Cues eintragen und sync:audio im strengen Modus ausführen.';
   } else if (visualQuality < 100) {
     nextStep = 'check:visuals ausführen, jedes Bild visuell prüfen und die strenge visuelle Abnahme bestehen.';
+  } else if (!rendererValidated) {
+    nextStep = 'finalize:reel --strict und anschließend validate:render ausführen.';
+  } else if (!renderComplete) {
+    nextStep = 'Mit render:reel die fertige MP4-Datei erzeugen.';
   } else {
-    nextStep = 'Reel ist inhaltlich, zeitlich und visuell für einen Renderer vorbereitet.';
+    nextStep = 'Reel ist vollständig gerendert und bereit zur Veröffentlichung.';
   }
 
   return {
@@ -156,6 +169,8 @@ export async function calculateReelProgress(reelDirectory) {
     assets,
     timeline: timelineProgress,
     visualQuality,
+    productionReady,
+    rendering,
     overall,
     details: {
       scriptsReady,
@@ -178,7 +193,9 @@ export async function calculateReelProgress(reelDirectory) {
       visualReportCreated,
       visualTechnicalReady,
       visualAssetsReviewed: `${reviewedAssets}/${expectedVisualAssets}`,
-      visualStrictReady
+      visualStrictReady,
+      rendererValidated,
+      renderComplete
     },
     nextStep
   };

@@ -18,5 +18,8 @@ jobs:
         with:
           node-version: 20
 
+      - name: Abhängigkeiten installieren
+        run: npm install --no-audit --no-fund
+
       - name: Tests ausführen
         run: npm test

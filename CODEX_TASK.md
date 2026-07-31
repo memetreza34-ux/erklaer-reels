@@ -1,15 +1,17 @@
 # Codex-Hauptauftrag
 
-Dieses Repository produziert visuelle Erklär-Reels. Der Nutzer erstellt Audio und Bilder außerhalb des Repositories. Codex übernimmt Planung, Dateien, Qualitätsprüfung und spätere Zuordnung der unsortierten Assets.
+Dieses Repository produziert vollständige visuelle Erklär-Reels. Der Nutzer erzeugt Voice-over und Bilder extern. Codex übernimmt Planung, Asset-Zuordnung, Synchronisierung, Qualitätsprüfung und den abschließenden Remotion-Render.
 
-## Wenn der Nutzer ein neues Reel verlangt
+## 1. Neues Reel vorbereiten
 
-1. Prüfe, ob ein deutsches Rohscript vorhanden ist. Wenn nur ein Thema genannt wurde, schreibe zuerst ein einfaches Voice-over-Script mit einem einzigen Erzähler.
-2. Speichere das Rohscript als Textdatei, zum Beispiel unter `input/script.txt`.
-3. Wähle die Bildanzahl nach der erwarteten Länge:
-   - 35–44 Sekunden: normalerweise 8–10 Bildmomente
-   - 45–55 Sekunden: normalerweise 10–12 Bildmomente
-4. Erstelle den Reel-Ordner:
+Wenn nur ein Thema vorliegt, schreibe zuerst ein einfaches deutsches Voice-over-Script mit genau einem Erzähler.
+
+Bildanzahl:
+
+- 35–44 Sekunden: normalerweise 8–10 Bildmomente
+- 45–55 Sekunden: normalerweise 10–12 Bildmomente
+
+Reel anlegen:
 
 ```bash
 npm run create:reel -- \
@@ -19,169 +21,266 @@ npm run create:reel -- \
   --scenes 10
 ```
 
-5. Öffne anschließend im erzeugten Reel-Ordner `production/agent-task.md` und arbeite den Auftrag vollständig ab.
-6. Führe die strenge Inhaltsprüfung aus:
+Danach `production/agent-task.md` vollständig bearbeiten.
+
+Verbindliche Dateien:
+
+- `script/final-script.txt`
+- `script/voice-script.txt`
+- `reel.json`
+- `scenes/scene-index.json`
+- jede `scenes/scene-XX/scene.json`
+- jede `scenes/scene-XX/image-prompt.txt`
+- `subtitles/subtitle-plan.json`
+- `effects/effects-plan.json`
+- `cover/cover.json`
+- `cover/cover-prompt.txt`
+- `caption/caption.txt`
+- `sources/sources.md`
+
+Inhalt prüfen:
 
 ```bash
+npm run validate:reel -- --dir "PFAD-ZUM-REEL"
 npm run check:content -- --dir "PFAD-ZUM-REEL" --strict
 ```
 
-7. Behebe alle Fehler, bis das Inhaltspaket bestanden hat.
-8. Teile dem Nutzer danach mit, dass Voice-over und Bilder extern erstellt werden können.
+Fehler vollständig beheben, bevor der Nutzer Bilder und Voice-over erzeugt.
 
-## Wenn der Nutzer Audio und Bilder zurückgibt
+## 2. Kreative Pflichtregeln
 
-1. Lege alle Bilder mit beliebigen Dateinamen und in beliebiger Reihenfolge in `inbox/images/`.
-2. Lege die Audiodatei in `inbox/audio/`.
-3. Erstelle das Inventar:
+- Hook-Bild ab Sekunde 0
+- keine schulische Einleitung
+- ungefähr alle 3,5–5 Sekunden eine sichtbare Veränderung
+- einfache Bilder dürfen kürzer stehen
+- konsistente Bildwelt innerhalb eines Reels
+- Bildprompts Englisch, sichtbarer Bildtext Deutsch
+- politische Inhalte neutral
+- Quellen und Unsicherheiten dokumentieren
+
+Jede Szene benötigt:
+
+- `audioCue`
+- `leadInSeconds`, normalerweise 0,1–0,3
+- `subtitleCues`
+- `subtitlePosition`
+- `durationSeconds`
+
+Das Bild beginnt normalerweise 0,1–0,3 Sekunden vor dem gesprochenen `audioCue`.
+
+## 3. Untertitel
+
+- standardmäßig aktiv
+- untere Mitte bei ungefähr 65–75 % der Bildhöhe
+- normalerweise 3–6 Wörter
+- höchstens zwei Zeilen
+- Sinnabschnitte statt Wort-für-Wort-Karaoke
+- Bildtext nicht identisch wiederholen
+- nicht in Bildprompts einbrennen
+
+## 4. Zooms, Übergänge und Sounds
+
+Lies:
+
+- `knowledge/effects-rules.md`
+- `config/effects-rules.json`
+
+Pflichtregeln:
+
+- nicht jedes Bild bewegen
+- Zoom normalerweise 2–6 %, maximal 8 %
+- Schwenk maximal 4 %
+- Hook ohne Übergang
+- `cut` als Standard
+- Crossfade nur 0,1–0,25 Sekunden
+- keine auffälligen Glitch-, Spin- oder Flash-Übergänge
+- Voice-over hat Vorrang
+- Hintergrundmusik standardmäßig aus
+- null bis zwei dezente Soundeffekte pro Szene
+- Soundeffekt benötigt zum Rendern einen echten lokalen `file`-Pfad
+
+## 5. Externe Dateien zurücknehmen
+
+Bilder unsortiert nach:
+
+```text
+inbox/images/
+```
+
+Voice-over nach:
+
+```text
+inbox/audio/
+```
+
+Inventar erstellen:
 
 ```bash
 npm run organize:assets -- --dir "PFAD-ZUM-REEL"
 ```
 
-4. Betrachte jedes Bild visuell. Vergleiche es mit Sprechertext, `imageText`, `visualIdea`, Bildprompt, Figuren, Gegenständen, Symbolen und Komposition.
-5. Schreibe die Zuordnung nach `inbox/asset-map.json`.
-6. Verwende jedes Bild und jedes Ziel höchstens einmal.
-7. Weise nur bei mindestens 0,75 Konfidenz zu. Unsichere Bilder bleiben unter `unmatched`.
-8. Wende die Zuordnung an:
+Jedes Bild tatsächlich ansehen und mit Sprechertext, `imageText`, `visualIdea`, Prompt, Figuren, Objekten, Metaphern und Komposition vergleichen.
+
+`inbox/asset-map.json` erstellen.
+
+Regeln:
+
+- jede Quelle und jedes Ziel nur einmal
+- Cover getrennt behandeln
+- mindestens 0,75 Konfidenz
+- unter 0,75 nicht raten
+- `confidence` und `reason` angeben
+
+Zuordnung anwenden:
 
 ```bash
 npm run organize:assets -- --dir "PFAD-ZUM-REEL" --apply
 ```
 
-9. Prüfe den Bericht unter `review/asset-matching-report.json`.
-10. Erzeuge anschließend die Master-Timeline:
+`review/asset-matching-report.json` prüfen.
+
+## 6. Timeline und Audio synchronisieren
+
+Erster Lauf:
 
 ```bash
 npm run build:timeline -- --dir "PFAD-ZUM-REEL"
 ```
 
-11. Beim ersten Lauf entsteht bei Bedarf `timeline/audio-sync.json`.
-12. Prüfe die echte Audiodauer. Wenn `ffprobe` nicht verfügbar ist, übergib sie ausdrücklich:
+Falls `ffprobe` fehlt:
 
 ```bash
 npm run sync:audio -- --dir "PFAD-ZUM-REEL" --audio-duration 48.7
 ```
 
-13. Höre das Voice-over ab und trage für jede Szene den tatsächlichen Zeitpunkt der Phrase aus `audioCue` als `cueTimeSeconds` in `timeline/audio-sync.json` ein.
-14. Verwende `confidence`, um unsichere Cue-Zeiten zu markieren. Erfinde keine Zeitstempel.
-15. Führe danach erneut aus:
+Voice-over abhören. Für jede Szene den tatsächlichen Zeitpunkt von `audioCue` in `timeline/audio-sync.json` als `cueTimeSeconds` eintragen. Unsichere Zeiten nicht erfinden.
+
+Danach:
 
 ```bash
 npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
 ```
 
-16. Prüfe `timeline/timeline-plan.json`, `render/render-plan.json` und `review/final-video-report.json`.
-17. Korrigiere Bildwechsel, Untertitel, Zooms, Übergänge und Soundeffekte, bis der Timeline-Bericht keine strukturellen Fehler mehr enthält.
-18. Starte die technische Bildprüfung:
+Prüfen:
+
+- `timeline/timeline-plan.json`
+- `render/render-plan.json`
+- `review/final-video-report.json`
+
+Pflicht:
+
+- Hook beginnt bei Frame 0
+- letzte Szene endet mit dem Voice-over
+- keine unbeabsichtigten Lücken oder Überlappungen
+- Untertitel überschneiden sich nicht
+- Sounds liegen innerhalb ihrer Szene
+- Status `audio-synced` nur bei verifizierten Zeiten
+
+## 7. Visuelle Qualitätsprüfung
+
+Lies:
+
+- `knowledge/visual-quality-rules.md`
+- `config/visual-quality-rules.json`
+
+Technische Prüfung:
 
 ```bash
 npm run check:visuals -- --dir "PFAD-ZUM-REEL"
 ```
 
-19. Öffne jedes Szenenbild und das Cover. Fülle `review/visual-inspection.json` vollständig aus. Setze jeden Prüfpunkt ausdrücklich auf `true` oder `false`, verwende `passed` nur bei vollständig bestandenen Bildern und dokumentiere jeden Fehler konkret.
-20. Führe die strenge visuelle Abnahme aus:
+Danach jedes Szenenbild und Cover tatsächlich ansehen. `review/visual-inspection.json` vollständig mit `true` oder `false` ausfüllen.
+
+Prüfen:
+
+- 9:16 und ausreichende Auflösung
+- Hauptmotiv sicher positioniert
+- Text lesbar und fehlerfrei
+- keine Untertitelkollision
+- keine Kollision mit Plattform-Bedienelementen
+- Zoom und Schwenk schneiden nichts Wichtiges ab
+- Stil bleibt konsistent
+
+Strenge Abnahme:
 
 ```bash
 npm run check:visuals -- --dir "PFAD-ZUM-REEL" --strict
 ```
 
-21. Ein Reel darf erst an einen Renderer oder manuellen Schnitt übergeben werden, wenn Timeline- und visuelle Abnahme bestanden sind.
+## 8. Zentrale Abschlussprüfung
 
-## Verbindliche kreative Regeln
+```bash
+npm run finalize:reel -- --dir "PFAD-ZUM-REEL" --strict
+```
 
-- Erkläre einen Begriff, ein System oder einen Zusammenhang so einfach, dass kein Vorwissen nötig ist.
-- Das Hook-Bild ist ab Sekunde 0 sichtbar.
-- Für 35–44 Sekunden werden normalerweise 8–10 Bildmomente verwendet.
-- Für 45–55 Sekunden werden normalerweise 10–12 Bildmomente verwendet.
-- Bilder wechseln oder verändern sich sichtbar ungefähr alle 3,5–5 Sekunden.
-- Einfache Bilder dürfen kürzer stehen als komplexere Bilder.
-- Jeder Bildmoment erhält ein `audioCue`, das den passenden gesprochenen Begriff oder Satzanfang nennt.
-- Das neue Bild erscheint normalerweise 0,1–0,3 Sekunden vor dem `audioCue`.
-- Innerhalb eines Reels bleibt die Bildwelt konsistent.
-- Zwischen verschiedenen Reels darf die Bildwelt stark wechseln.
-- Keine starre Build-up-Logik erzwingen.
-- Texte im Bild sind kurze deutsche Schlüsselwörter, keine vollständigen Untertitel.
-- Bildprompts sind auf Englisch.
-- Politische Inhalte neutral erklären und keine Partei bewerben.
-- Bei faktischen Themen Quellen und Unsicherheiten dokumentieren.
+Nur weiterarbeiten, wenn:
 
-## Verbindliche Untertitelregeln
+- `review/final-readiness-report.json` enthält `readyForRenderer: true`
+- `render/render-plan.json` enthält `status: "ready-for-renderer"`
 
-- Untertitel sind standardmäßig aktiv und werden in `subtitles/subtitle-plan.json` geplant.
-- Position: untere Mitte bei ungefähr 65–75 % der Bildhöhe.
-- Nicht exakt in der Bildschirmmitte und nicht ganz unten.
-- Normalerweise 3–6 Wörter pro Einblendung, höchstens zwei Zeilen.
-- Kurze Sinnabschnitte statt Wort-für-Wort-Karaoke.
-- Den integrierten Bildtext nicht wortgleich wiederholen.
-- Bei Konflikten mit Bildtext oder Hauptmotiv die Position innerhalb der sicheren Zone anpassen.
-- Untertitel werden nicht in die Bildprompts eingebrannt.
+## 9. Renderer prüfen
 
-## Verbindliche Effektregeln
+```bash
+npm run validate:render -- --dir "PFAD-ZUM-REEL"
+```
 
-- Plane Zooms, Kamerabewegungen, Übergänge und Soundeffekte in `effects/effects-plan.json`.
-- Lies `knowledge/effects-rules.md` und `config/effects-rules.json`.
-- Jeder Szeneneintrag benötigt `sceneId`, `transitionIn`, `cameraMotion` und `soundEffects`.
-- Nicht jede Szene braucht Bewegung. Ohne inhaltlichen Nutzen bleibt der Effekt auf `none`.
-- Zooms verändern die Bildgröße normalerweise um 2–6 Prozent und niemals um mehr als 8 Prozent.
-- Schwenks bewegen das Bild höchstens 4 Prozent der Bildbreite oder Bildhöhe.
-- Hook: kein Übergang, optional ein dezenter Push-in.
-- Standardübergang: `cut`. Crossfades nur kurz und begründet.
-- Keine auffälligen Glitch-, Spin-, Flash- oder 3D-Übergänge.
-- Hintergrundmusik bleibt standardmäßig ausgeschaltet.
-- Pro Szene normalerweise null bis zwei Soundeffekte.
-- Soundeffekte nur an konkreten `audioCue`-Punkten oder visuellen Ereignissen einsetzen.
-- Nicht jeden Schnitt mit einem Whoosh versehen.
-- Voice-over hat Vorrang; Effekte dürfen wichtige Wörter nicht verdecken.
-- Keine Meme-Sounds oder urheberrechtlich ungeklärte Musik.
-- Bewegung darf Text, Hauptmotiv und Untertitel nicht aus der sicheren Zone schieben.
+Die Prüfung muss bestehen. Sie kontrolliert:
 
-## Verbindliche Timeline-Regeln
+- 1080 × 1920 bei 30 FPS
+- lückenlose Frames
+- vorhandene Bilder und Voice-over
+- sichere lokale Pfade
+- gültige Zoom-, Schwenk- und Crossfade-Werte
+- Untertitelzeiten
+- optionale Sounddateien
+- finale Freigabe
 
-- Lies `knowledge/timeline-rules.md`.
-- `timeline/audio-sync.json` enthält die verifizierten Audio-Cue-Zeitpunkte.
-- `timeline/timeline-plan.json` führt Szenen, Untertitel, Übergänge, Kamerabewegungen und Sounds zeitlich zusammen.
-- `render/render-plan.json` enthält 1080 × 1920, 30 FPS sowie Start- und Endzeiten in Sekunden und Frames.
-- Die Hook beginnt bei Sekunde 0.
-- Die letzte Szene endet exakt mit der Voice-over-Dauer.
-- Szenen dürfen keine unbeabsichtigten Lücken oder Überlappungen erzeugen.
-- Soundeffekte müssen innerhalb ihrer Szene liegen.
-- Untertitel dürfen sich nicht überlappen.
-- `audio-synced` darf nur gesetzt werden, wenn Audiodauer und alle relevanten Audio-Cues verifiziert sind.
-- Ein strenger Timeline-Lauf darf erst bestehen, wenn Voice-over und alle Szenenbilder vorhanden sind.
+## 10. Fertige MP4 rendern
 
-## Verbindliche visuelle Qualitätsregeln
+```bash
+npm run render:reel -- --dir "PFAD-ZUM-REEL"
+```
 
-- Lies `knowledge/visual-quality-rules.md` und `config/visual-quality-rules.json`.
-- Zielformat: 1080 × 1920 Pixel, Seitenverhältnis 9:16.
-- Mindestauflösung: 720 × 1280 Pixel.
-- Wichtige Motive und Texte bleiben mindestens 6 % von den Seiten, 8 % von oben und 18 % von unten entfernt.
-- Prüfe jedes Bild im Ausgangszustand und mit dem geplanten Zoom und Schwenk.
-- Prüfe Lesbarkeit auf Smartphone-Größe, Textgenauigkeit, Untertitelkollisionen, Plattform-Bedienelemente und Stilkonsistenz.
-- `review/visual-inspection.json` ist keine Platzhalterdatei. Sie wird nach echter visueller Betrachtung ausgefüllt.
-- Ein nicht eindeutig bestandenes Bild erhält `needs-fix`, nicht `passed`.
-- Der strenge visuelle Lauf muss alle Szenenbilder und das Cover umfassen.
+Standardausgabe:
+
+```text
+PFAD-ZUM-REEL/output/REEL-ID.mp4
+```
+
+Eigener Pfad:
+
+```bash
+npm run render:reel -- \
+  --dir "PFAD-ZUM-REEL" \
+  --output "exports/mein-reel.mp4"
+```
+
+Der Renderer setzt um:
+
+- Szenenbilder
+- Voice-over
+- Untertitel
+- Zooms und Schwenks
+- Schnitte und Crossfades
+- vorhandene Soundeffekt-Dateien
+
+Nach Erfolg prüfen:
+
+- `review/renderer-input-report.json`
+- `review/render-execution-report.json`
+- MP4-Datei
+- `status.json` enthält `render: "complete"`
 
 ## Fertig bedeutet
 
-Ein Reel-Inhaltspaket ist erst bereit, wenn:
+Das Reel ist erst vollständig fertig, wenn:
 
-- `npm run validate:reel` erfolgreich ist,
-- `npm run check:content -- --strict` erfolgreich ist,
-- alle Szenen gefüllte `scene.json`-Dateien besitzen,
-- alle Szenen einen ausführlichen Bildprompt besitzen,
-- alle Szenen ein `audioCue`, `leadInSeconds` und passende `subtitleCues` besitzen,
-- `subtitles/subtitle-plan.json` vorhanden ist,
-- `effects/effects-plan.json` vollständig ist und genau einen Eintrag pro Szene enthält,
-- Cover, Caption und Quellen vorhanden sind,
-- der Nutzer Audio und Bilder ohne Vorsortierung in die Inbox legen kann.
+- Inhaltsprüfung bestanden
+- Assets korrekt zugeordnet
+- Audio synchronisiert
+- visuelle Prüfung bestanden
+- Abschlussprüfung freigegeben
+- Renderer-Eingabe validiert
+- MP4 erfolgreich erzeugt
 
-Ein Reel ist für den späteren Renderer erst bereit, wenn zusätzlich:
-
-- die Assets korrekt übernommen wurden,
-- `timeline/audio-sync.json` geprüft ist,
-- `npm run sync:audio -- --strict` erfolgreich ist,
-- `render/render-plan.json` den Status `ready-for-renderer` besitzt,
-- `review/final-video-report.json` keine strukturellen Fehler enthält,
-- `review/visual-inspection.json` für alle Bilder vollständig ausgefüllt ist,
-- `npm run check:visuals -- --strict` erfolgreich ist.
+Keine simulierte oder nur geplante Stufe als abgeschlossen bezeichnen.
