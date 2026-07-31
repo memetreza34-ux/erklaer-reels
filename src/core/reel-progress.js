@@ -29,6 +29,11 @@ export async function calculateReelProgress(reelDirectory) {
   const manifest = await readJson(path.join(reelDirectory, 'assets-manifest.json'), { scenes: [] });
   const readiness = await readJson(path.join(reelDirectory, 'review', 'content-readiness.json'), null);
   const matchingReport = await readJson(path.join(reelDirectory, 'review', 'asset-matching-report.json'), null);
+  const timeline = await readJson(path.join(reelDirectory, 'timeline', 'timeline-plan.json'), null);
+  const renderPlan = await readJson(path.join(reelDirectory, 'render', 'render-plan.json'), null);
+  const timelineReport = await readJson(path.join(reelDirectory, 'review', 'final-video-report.json'), null);
+  const visualReport = await readJson(path.join(reelDirectory, 'review', 'visual-quality-report.json'), null);
+  const visualInspection = await readJson(path.join(reelDirectory, 'review', 'visual-inspection.json'), null);
 
   const finalScript = (await exists(path.join(reelDirectory, 'script', 'final-script.txt')))
     ? await readText(path.join(reelDirectory, 'script', 'final-script.txt'))
@@ -96,18 +101,61 @@ export async function calculateReelProgress(reelDirectory) {
     (assetReportReady ? 5 : 0)
   );
 
-  const overall = clamp(preProduction * 0.65 + assets * 0.35);
-  const nextStep = preProduction < 100
-    ? 'Codex muss production/agent-task.md fertigstellen und die strenge Inhaltsprüfung bestehen.'
-    : assets < 100
-      ? 'Voice-over und Bilder extern erzeugen, unsortiert in die Inbox legen und zuordnen lassen.'
-      : 'Reel-Assets sind vollständig organisiert; als Nächstes folgt der Videoschnitt.';
+  const timelineBuilt = Boolean(timeline);
+  const audioDurationKnown = timeline?.audio?.exactDurationKnown === true;
+  const audioSynced = timeline?.timingStatus === 'audio-synced';
+  const renderReady = renderPlan?.status === 'ready-for-renderer';
+  const timelineCheckReady = timelineReport?.passed === true;
+  const timelineProgress = clamp(
+    (timelineBuilt ? 20 : 0) +
+    (audioDurationKnown ? 20 : 0) +
+    (audioSynced ? 30 : 0) +
+    (renderReady ? 20 : 0) +
+    (timelineCheckReady ? 10 : 0)
+  );
+
+  const expectedVisualAssets = scenes.length + 1;
+  const reviewedAssets = Array.isArray(visualInspection?.assets)
+    ? visualInspection.assets.filter((asset) => asset.status === 'passed').length
+    : 0;
+  const reviewedRatio = expectedVisualAssets > 0 ? reviewedAssets / expectedVisualAssets : 0;
+  const visualReportCreated = Boolean(visualReport);
+  const visualTechnicalReady = visualReport?.passed === true;
+  const visualStrictReady = visualReport?.passed === true && visualReport?.strict === true;
+  const visualQuality = clamp(
+    (visualReportCreated ? 20 : 0) +
+    (visualTechnicalReady ? 30 : 0) +
+    reviewedRatio * 30 +
+    (visualStrictReady ? 20 : 0)
+  );
+
+  const overall = clamp(
+    preProduction * 0.5 +
+    assets * 0.25 +
+    timelineProgress * 0.15 +
+    visualQuality * 0.1
+  );
+
+  let nextStep;
+  if (preProduction < 100) {
+    nextStep = 'Codex muss production/agent-task.md fertigstellen und die strenge Inhaltsprüfung bestehen.';
+  } else if (assets < 100) {
+    nextStep = 'Voice-over und Bilder extern erzeugen, unsortiert in die Inbox legen und zuordnen lassen.';
+  } else if (timelineProgress < 100) {
+    nextStep = 'Master-Timeline erzeugen, echte Audio-Cues eintragen und sync:audio im strengen Modus ausführen.';
+  } else if (visualQuality < 100) {
+    nextStep = 'check:visuals ausführen, jedes Bild visuell prüfen und die strenge visuelle Abnahme bestehen.';
+  } else {
+    nextStep = 'Reel ist inhaltlich, zeitlich und visuell für einen Renderer vorbereitet.';
+  }
 
   return {
     reelId: reel.reelId ?? path.basename(reelDirectory),
     title: reel.title ?? '',
     preProduction,
     assets,
+    timeline: timelineProgress,
+    visualQuality,
     overall,
     details: {
       scriptsReady,
@@ -121,7 +169,16 @@ export async function calculateReelProgress(reelDirectory) {
       audioReady,
       sceneImagesReady: `${readySceneImages}/${scenes.length}`,
       coverImageReady,
-      assetReportReady
+      assetReportReady,
+      timelineBuilt,
+      audioDurationKnown,
+      audioSynced,
+      renderReady,
+      timelineCheckReady,
+      visualReportCreated,
+      visualTechnicalReady,
+      visualAssetsReviewed: `${reviewedAssets}/${expectedVisualAssets}`,
+      visualStrictReady
     },
     nextStep
   };
