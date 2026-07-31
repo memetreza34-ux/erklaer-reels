@@ -34,7 +34,7 @@ export async function prepareReelProduction(reelDirectory) {
   await mkdir(productionDirectory, { recursive: true });
 
   const checklist = {
-    version: 2,
+    version: 3,
     reelId: reel.reelId,
     title: reel.title,
     createdAt: new Date().toISOString(),
@@ -45,6 +45,7 @@ export async function prepareReelProduction(reelDirectory) {
       { id: 'scenes-fill', label: `${scenes.length} Szenen mit Audio-Cues vollständig planen`, status: 'pending' },
       { id: 'prompts-write', label: `${scenes.length} englische Bildprompts schreiben`, status: 'pending' },
       { id: 'subtitles-write', label: 'Untertitelplan mit kurzen Sinnabschnitten erstellen', status: 'pending' },
+      { id: 'effects-write', label: 'Zooms, Kamerabewegungen, Übergänge und Soundeffekte planen', status: 'pending' },
       { id: 'cover-write', label: 'Cover-Idee und Cover-Prompt schreiben', status: 'pending' },
       { id: 'caption-write', label: 'Caption erstellen', status: 'pending' },
       { id: 'sources-write', label: 'Quellen und Unsicherheiten dokumentieren', status: 'pending' },
@@ -56,7 +57,7 @@ export async function prepareReelProduction(reelDirectory) {
 
 ## Ziel
 
-Erstelle aus dem vorhandenen deutschen Rohscript ein vollständiges Produktionspaket für ein visuelles Erklär-Reel. Erzeuge **keine Bilder und kein Audio**. Der Nutzer erzeugt diese extern und legt sie später unsortiert in \`inbox/\` ab.
+Erstelle aus dem vorhandenen deutschen Rohscript ein vollständiges Produktionspaket für ein visuelles Erklär-Reel. Erzeuge **keine Bilder und kein Audio**. Der Nutzer erzeugt diese extern und legt sie später unsortiert in \`inbox/\` ab. Plane zusätzlich Zooms, Kamerabewegungen, Übergänge und Soundeffekte als Vorlage für den späteren Schnitt.
 
 ## Ausgangsdaten
 
@@ -67,6 +68,8 @@ Erstelle aus dem vorhandenen deutschen Rohscript ein vollständiges Produktionsp
 - Sprache des Voice-overs: **Deutsch**
 - Sprache der Bildprompts: **Englisch**
 - Untertitel: **standardmäßig aktiv, getrennt von den Bildern**
+- Hintergrundmusik: **standardmäßig ausgeschaltet**
+- Bewegungs- und Soundplan: **verbindlich in effects/effects-plan.json**
 
 ## Rohscript
 
@@ -74,7 +77,7 @@ Erstelle aus dem vorhandenen deutschen Rohscript ein vollständiges Produktionsp
 
 ## Verbindlicher Ablauf
 
-1. Lies zuerst \`AGENTS.md\`, \`knowledge/production-rules.md\`, \`config/content-rules.json\` und \`config/image-styles.json\`.
+1. Lies zuerst \`AGENTS.md\`, \`knowledge/production-rules.md\`, \`knowledge/effects-rules.md\`, \`config/content-rules.json\`, \`config/effects-rules.json\` und \`config/image-styles.json\`.
 2. Überarbeite das Rohscript zu einem einfachen, flüssigen Voice-over von ungefähr 35–55 Sekunden.
 3. Schreibe denselben finalen Text nach \`script/final-script.txt\` und \`script/voice-script.txt\`.
 4. Prüfe, ob die Bildanzahl zur erwarteten Dauer passt:
@@ -99,7 +102,7 @@ Erstelle aus dem vorhandenen deutschen Rohscript ein vollständiges Produktionsp
 10. Schreibe für jede Szene einen vollständigen englischen Prompt nach \`scenes/scene-XX/image-prompt.txt\`.
 11. Die Prompts müssen eigenständig verständlich sein, aber dieselbe Figurenlogik, Strichart und Bildwelt innerhalb des Reels beibehalten.
 12. Nutze kurze deutsche Schlüsselwörter im Bild nur dann, wenn sie die Erklärung verbessern. Schreibe den exakten sichtbaren Text im Prompt aus.
-13. Untertitel dürfen nicht in die Bildprompts eingebrannt werden.
+13. Untertitel und spätere Bewegungseffekte dürfen nicht in die Bildprompts eingebrannt werden.
 14. Fülle \`subtitles/subtitle-plan.json\` aus:
     - Position ungefähr bei 70 % der Bildhöhe, sichere Zone 65–75 %
     - normalerweise 3–6 Wörter pro Einblendung
@@ -108,16 +111,30 @@ Erstelle aus dem vorhandenen deutschen Rohscript ein vollständiges Produktionsp
     - integrierten Bildtext nicht wortgleich wiederholen
     - jeden Cue einer \`sceneId\` und einem \`audioCue\` zuordnen
     - Timing zunächst schätzen und als noch nicht final markieren, bis die echte Audiodatei vorliegt
-15. Fülle \`cover/cover.json\` aus und schreibe \`cover/cover-prompt.txt\`. Das Cover muss auf kleiner Ansicht sofort lesbar sein.
-16. Schreibe eine kopierbare Caption nach \`caption/caption.txt\`.
-17. Dokumentiere verwendete Quellen und Unsicherheiten in \`sources/sources.md\`. Bei Politik, Geschichte, Psychologie, Körper und Biologie keine unbelegten Tatsachen erfinden.
-18. Führe anschließend aus:
+15. Fülle \`effects/effects-plan.json\` vollständig aus. Genau ein Eintrag pro Szene:
+    - \`sceneId\`
+    - \`transitionIn\` mit Typ, Dauer und Begründung
+    - \`cameraMotion\` mit Typ, Start-/Endskalierung, optionalem Schwenk, Easing und Begründung
+    - \`soundEffects\` mit Typ, passendem \`audioCue\` oder visuellem Ereignis, geschätztem Zeitpunkt, Lautstärke und Begründung
+    - nicht jede Szene braucht Bewegung oder Sound
+    - Zoom normalerweise 2–6 Prozent, niemals mehr als 8 Prozent
+    - Schwenk höchstens 4 Prozent
+    - Hook ohne Übergang; optional dezenter Push-in
+    - sauberer Schnitt als Standard, Crossfade nur kurz und begründet
+    - null bis zwei Soundeffekte pro Szene
+    - Hintergrundmusik ausgeschaltet lassen, sofern kein ausdrücklicher Grund vorliegt
+    - Voice-over darf nie verdeckt werden
+    - Timing zunächst als geschätzt markieren
+16. Fülle \`cover/cover.json\` aus und schreibe \`cover/cover-prompt.txt\`. Das Cover muss auf kleiner Ansicht sofort lesbar sein.
+17. Schreibe eine kopierbare Caption nach \`caption/caption.txt\`.
+18. Dokumentiere verwendete Quellen und Unsicherheiten in \`sources/sources.md\`. Bei Politik, Geschichte, Psychologie, Körper und Biologie keine unbelegten Tatsachen erfinden.
+19. Führe anschließend aus:
 
 \`\`\`bash
 npm run check:content -- --dir "${reelDirectory.split(path.sep).join('/')}" --strict
 \`\`\`
 
-19. Behebe alle gemeldeten Fehler. Markiere danach die Aufgaben in \`production/checklist.json\` als \`done\`.
+20. Behebe alle gemeldeten Fehler. Markiere danach die Aufgaben in \`production/checklist.json\` als \`done\`.
 
 ## Kreative Leitplanken
 
@@ -130,6 +147,9 @@ npm run check:content -- --dir "${reelDirectory.split(path.sep).join('/')}" --st
 - Build-up-Bilder nur einsetzen, wenn eine echte schrittweise Entwicklung erklärt wird.
 - Bildwechsel müssen zum gesprochenen Inhalt passen und normalerweise 0,1–0,3 Sekunden vor dem jeweiligen \`audioCue\` beginnen.
 - Untertitel stehen in der unteren Mitte, nicht exakt mittig und nicht ganz unten.
+- Zooms und Schwenks bleiben dezent und dürfen keine wichtigen Texte oder Motive abschneiden.
+- Keine Bewegung nur um der Bewegung willen.
+- Keine auffälligen Übergänge und nicht jeden Schnitt mit einem Whoosh vertonen.
 - Keine realen Politiker oder Parteilogos, außer sie sind für eine sachliche historische Erklärung zwingend erforderlich.
 
 ## Übergabe an den Nutzer
@@ -139,10 +159,10 @@ Wenn die Inhaltsprüfung erfolgreich ist, teile dem Nutzer nur Folgendes mit:
 - Pfad des Reel-Ordners
 - Anzahl der Bildprompts
 - gewählte Bildwelt
-- dass ein Untertitelplan vorhanden ist
+- dass Untertitel- und Effektplan vorhanden sind
 - dass er nun das Voice-over und die Bilder extern erzeugen kann
 - dass alle Dateien anschließend unsortiert nach \`inbox/audio/\` und \`inbox/images/\` dürfen
-- dass Codex nach Einfügen der echten Audiodatei Bildwechsel und Untertitel noch einmal synchron prüft
+- dass Codex nach Einfügen der echten Audiodatei Bildwechsel, Untertitel, Zooms, Übergänge und Soundeffekte noch einmal synchron prüft
 `;
 
   await writeFile(path.join(productionDirectory, 'agent-task.md'), `${brief}\n`, 'utf8');
