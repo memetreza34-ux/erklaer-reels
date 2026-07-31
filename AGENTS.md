@@ -20,13 +20,14 @@ Version 1 erzeugt im Repository:
 4. englische Bildprompts
 5. Cover-Prompt und Cover-Plan
 6. einen Untertitelplan
-7. Caption
-8. Quellenliste
-9. Qualitäts- und Bereitschaftsberichte
-10. eine Inbox für extern erzeugte Bilder und Audio
-11. eine automatische, inhaltsbasierte Zuordnung der unsortierten Assets
+7. einen Plan für Zooms, Kamerabewegungen, Übergänge und Soundeffekte
+8. Caption
+9. Quellenliste
+10. Qualitäts- und Bereitschaftsberichte
+11. eine Inbox für extern erzeugte Bilder und Audio
+12. eine automatische, inhaltsbasierte Zuordnung der unsortierten Assets
 
-Der Nutzer erzeugt Audio und Bilder außerhalb des Repositories. Version 1 erzeugt noch kein fertiges Video und veröffentlicht nichts automatisch.
+Der Nutzer erzeugt Audio und Bilder außerhalb des Repositories. Version 1 plant Schnitt, Bewegung und Sound, erzeugt aber noch kein fertiges Video und veröffentlicht nichts automatisch.
 
 ## Themenbereich
 
@@ -74,6 +75,23 @@ Nicht als eigene Content-Säulen verwenden:
 - Wenn wichtiger Bildtext oder ein zentrales Motiv im unteren Bereich liegt, verschiebe den Untertitel innerhalb der sicheren Zone.
 - Untertitel gehören in `subtitles/subtitle-plan.json`, nicht in die Bildprompts.
 
+## Bewegungs-, Übergangs- und Soundregeln
+
+- Lies zusätzlich `knowledge/effects-rules.md` und `config/effects-rules.json`.
+- Plane alle Effekte getrennt in `effects/effects-plan.json`; sie gehören nicht in die Bildprompts.
+- Nicht jedes Bild braucht Bewegung. Ohne klaren Nutzen bleibt `cameraMotion.type` auf `none`.
+- Dezente Zooms verändern die Bildgröße normalerweise um 2–6 Prozent und niemals um mehr als 8 Prozent.
+- Kleine Schwenks bewegen das Bild höchstens um 4 Prozent der Bildbreite oder Bildhöhe.
+- Die Hook darf einen dezenten Push-in erhalten, beginnt aber ohne Übergang ab Sekunde 0.
+- Standardübergang ist ein sauberer Schnitt. Crossfades von 0,1–0,25 Sekunden nur bei sinnvoller weicher Verbindung.
+- Keine Glitch-, Spin-, Flash- oder übertriebenen 3D-Übergänge.
+- Das Voice-over hat immer Vorrang. Hintergrundmusik ist standardmäßig ausgeschaltet.
+- Pro Szene normalerweise null bis zwei dezente Soundeffekte.
+- Soundeffekte nur an einem konkreten `audioCue` oder visuellen Ereignis einsetzen; nicht jeden Schnitt mit einem Whoosh versehen.
+- Keine Meme-Sounds, Jumpscares oder urheberrechtlich ungeklärte Musik.
+- Bewegung darf Bildtext, Motive und Untertitel nie aus der sicheren Zone schieben.
+- Nach Einfügen der echten Audiodatei müssen Effektzeitpunkte noch einmal überprüft werden.
+
 ## Bevorzugte Bildwelten
 
 1. menschliche 2D-Cartoonfiguren für Psychologie und Gesellschaft
@@ -89,7 +107,7 @@ Nicht als eigene Content-Säulen verwenden:
 - Erstelle den Reel-Ordner mit `npm run create:reel`.
 - Der Befehl erzeugt automatisch `production/agent-task.md`.
 - Arbeite diesen reel-spezifischen Auftrag vollständig ab.
-- Fülle `reel.json`, alle `scene.json`-Dateien, alle `image-prompt.txt`-Dateien, `subtitles/subtitle-plan.json`, Cover, Caption und Quellen aus.
+- Fülle `reel.json`, alle `scene.json`-Dateien, alle `image-prompt.txt`-Dateien, `subtitles/subtitle-plan.json`, `effects/effects-plan.json`, Cover, Caption und Quellen aus.
 - Führe danach `npm run check:content -- --dir "<reel-ordner>" --strict` aus.
 - Ein Inhaltspaket darf erst als fertig bezeichnet werden, wenn die strenge Prüfung keine Fehler mehr meldet.
 
@@ -111,7 +129,7 @@ Der Nutzer erzeugt Audio und Bilder außerhalb dieses Repositories und legt sie 
 - Unter 0.75 Konfidenz darf nicht geraten werden; die Datei bleibt in `unmatched`.
 - Nach der Zuordnung führt der Agent `npm run organize:assets -- --dir "<reel-ordner>" --apply` aus.
 - Das Anwenden kopiert die Dateien in die richtigen Szenenordner, benennt sie stabil um und aktualisiert Manifest, Status und Szenendaten.
-- Sobald die echte Audiodatei vorliegt, prüft Codex die geplanten Bildwechsel und Untertitel noch einmal gegen die Audiospur und korrigiert erkennbare Abweichungen.
+- Sobald die echte Audiodatei vorliegt, prüft Codex Bildwechsel, Untertitel, Zooms, Übergänge und Soundeffekte gegen die Audiospur und korrigiert erkennbare Abweichungen.
 
 Beispiel für `inbox/asset-map.json`:
 
@@ -150,6 +168,7 @@ Beispiel für `inbox/asset-map.json`:
 - Jede Szene benötigt `scene.json`, `image-prompt.txt` und einen erwarteten Bildpfad.
 - Jede Szene benötigt außerdem `audioCue`, `leadInSeconds` und passende `subtitleCues`.
 - `leadInSeconds` liegt normalerweise zwischen 0,1 und 0,3 Sekunden.
+- `effects/effects-plan.json` benötigt genau einen Eintrag pro Szene mit `transitionIn`, `cameraMotion` und `soundEffects`.
 - API-Schlüssel dürfen nie in das Repository geschrieben werden.
 - Fehlende Assets müssen im Status und Manifest erkennbar sein.
 - Jede Pipeline-Stufe muss einzeln erneut ausführbar sein.
