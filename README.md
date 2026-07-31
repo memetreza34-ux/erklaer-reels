@@ -15,6 +15,7 @@ Aus einem Thema oder deutschen Rohscript entsteht ein vollständiger Produktions
 - Effektplan für Zooms, Kamerabewegungen, Übergänge und Sounds
 - Master-Timeline
 - renderer-neutralem Render-Plan in Sekunden und Frames
+- technischer Bildprüfung und manueller visueller Abnahme
 - Cover, Caption, Quellen und Qualitätsberichten
 - Inbox für extern erzeugte Bilder und Audio
 - automatischer Zuordnung unsortierter Dateien
@@ -36,6 +37,8 @@ Der Nutzer erzeugt Voice-over und Bilder außerhalb des Repositories. Das Reposi
 - null bis zwei dezente Soundeffekte pro Szene
 - Voice-over hat Vorrang
 - Hintergrundmusik standardmäßig ausgeschaltet
+- Zielformat 1080 × 1920, Mindestauflösung 720 × 1280
+- wichtige Motive mindestens 6 % von den Seiten, 8 % von oben und 18 % von unten entfernt
 
 ## Produktionsablauf
 
@@ -58,7 +61,13 @@ Master-Timeline erzeugen
         ↓
 echte Audio-Cues eintragen und synchronisieren
         ↓
-Render-Plan und finalen Vorabbericht prüfen
+technische Bildprüfung
+        ↓
+Codex prüft jedes Bild visuell und füllt die Prüfliste
+        ↓
+strenge visuelle Abnahme
+        ↓
+Render-Plan freigeben
 ```
 
 ## Voraussetzungen
@@ -184,7 +193,61 @@ npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
 - `audio-duration-synced` – echte Audiodauer bekannt, aber noch nicht alle Cues exakt markiert
 - `audio-synced` – Audiodauer und alle relevanten Audio-Cues verifiziert
 
-## 7. Render-Plan
+## 7. Technische Bildprüfung
+
+```bash
+npm run check:visuals -- --dir "PFAD-ZUM-REEL"
+```
+
+Der Befehl liest PNG-, JPG-, JPEG- und WEBP-Metadaten ohne zusätzliche Pakete und prüft:
+
+- Bilddatei vorhanden
+- Format lesbar und unterstützt
+- Hochformat
+- Seitenverhältnis 9:16
+- Mindestauflösung 720 × 1280
+- empfohlene Auflösung 1080 × 1920
+- Untertitelposition in der sicheren Zone
+- ob Zoom und Schwenk zu viel Rand abschneiden könnten
+
+Er erzeugt:
+
+```text
+review/
+├── visual-inspection.json
+└── visual-quality-report.json
+```
+
+## 8. Manuelle visuelle Abnahme durch Codex
+
+Codex öffnet jedes Szenenbild und das Cover und füllt in `review/visual-inspection.json` diese Punkte aus:
+
+- `mainSubjectSafe`
+- `textReadable`
+- `textAccurate`
+- `subtitleCollisionFree`
+- `platformUiSafe`
+- `motionSafe`
+- `styleConsistent`
+
+Nur vollständig bestandene Bilder erhalten:
+
+```json
+{
+  "reviewer": "codex-vision",
+  "status": "passed"
+}
+```
+
+Bei einem Fehler wird `status` auf `needs-fix` gesetzt und eine konkrete Notiz ergänzt. Danach:
+
+```bash
+npm run check:visuals -- --dir "PFAD-ZUM-REEL" --strict
+```
+
+Der strenge Modus besteht erst, wenn alle Szenenbilder und das Cover vorhanden, technisch geeignet und manuell freigegeben sind.
+
+## 9. Render-Plan
 
 `render/render-plan.json` enthält:
 
@@ -200,11 +263,13 @@ npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
 - Untertitel
 - Soundeffekte
 
-Der Status lautet erst `ready-for-renderer`, wenn Voice-over und alle Szenenbilder bereit sind.
+Der Status lautet erst `ready-for-renderer`, wenn Voice-over und alle Szenenbilder bereit sind. Die tatsächliche Produktionsfreigabe erfolgt zusätzlich erst nach bestandener strenger visueller Abnahme.
 
-## 8. Qualitätsbericht
+## 10. Qualitätsberichte
 
-`review/final-video-report.json` prüft unter anderem:
+`review/final-video-report.json` prüft die zeitliche und strukturelle Timeline. `review/visual-quality-report.json` prüft die technischen Bilddaten und den Status der visuellen Einzelabnahme.
+
+Geprüft werden unter anderem:
 
 - Hook beginnt bei Sekunde 0
 - jede Szene besitzt eine positive Dauer
@@ -213,8 +278,8 @@ Der Status lautet erst `ready-for-renderer`, wenn Voice-over und alle Szenenbild
 - echte Audiodauer ist bekannt
 - Audio-Cues sind synchronisiert
 - alle Szenenbilder sind vorhanden
-
-Ein strenger Lauf behandelt fehlendes Audio und fehlende Szenenbilder als Fehler.
+- Bilder besitzen das richtige Format und Seitenverhältnis
+- wichtige Inhalte bleiben trotz Untertiteln, Plattform-UI und Bewegung sichtbar
 
 ## Befehle
 
@@ -226,6 +291,7 @@ npm run check:content
 npm run organize:assets
 npm run build:timeline
 npm run sync:audio
+npm run check:visuals
 npm run status:reel
 npm test
 ```
@@ -237,15 +303,20 @@ npm test
 - `knowledge/production-rules.md` – Produktionsregeln
 - `knowledge/effects-rules.md` – Zoom-, Übergangs- und Soundregeln
 - `knowledge/timeline-rules.md` – Master-Timeline und Audio-Sync
+- `knowledge/visual-quality-rules.md` – sichere Zonen und manuelle Bildabnahme
+- `config/visual-quality-rules.json` – maschinenlesbare Bildgrenzen
 - `src/core/asset-ingest.js` – Asset-Zuordnung
 - `src/core/timeline.js` – Timeline-, Audio-Sync-, Render- und QC-Logik
-- `src/cli/build-timeline.js` – CLI für `build:timeline` und `sync:audio`
+- `src/core/image-metadata.js` – Bildmaß-Erkennung
+- `src/core/visual-qc.js` – technische und manuelle visuelle Qualitätsprüfung
+- `src/cli/check-visuals.js` – CLI für die Bildabnahme
 
 ## Noch nicht enthalten
 
 - automatische Bild- oder Audioerzeugung
 - automatisches Forced Alignment gesprochener Phrasen
+- vollständig automatische inhaltliche Bilderkennung ohne Codex-Vision
 - fertiges Remotion-Rendering
 - automatische Social-Media-Veröffentlichung
 
-Die stabile Schnittstelle für exakte Phrase-Zeitpunkte ist `timeline/audio-sync.json`. Ein späterer Forced-Alignment-Anbieter kann daran angeschlossen werden, ohne die restliche Produktionsstruktur zu ändern.
+Die technischen Bilddaten werden automatisch geprüft. Lesbarkeit, Textfehler, Motivposition und Stilkonsistenz erfordern weiterhin eine echte visuelle Betrachtung durch Codex; das Repository erfindet dafür keine Ergebnisse.
