@@ -103,6 +103,7 @@ export async function createReelWorkspace({
     'audio',
     'scenes',
     'subtitles',
+    'effects',
     'cover',
     'caption',
     'sources',
@@ -158,6 +159,9 @@ export async function createReelWorkspace({
     visualStyleId: '',
     visualStyleReason: '',
     subtitlesEnabled: true,
+    motionEffectsEnabled: true,
+    soundEffectsEnabled: true,
+    backgroundMusicEnabled: false,
     status: 'workspace-created'
   };
 
@@ -168,6 +172,7 @@ export async function createReelWorkspace({
     script: 'provided',
     scenes: 'planned',
     subtitles: 'planned',
+    effects: 'planned',
     audio: 'missing',
     imagePrompts: 'missing',
     images: 'missing',
@@ -204,6 +209,42 @@ export async function createReelWorkspace({
     cues: []
   });
   await writeText(path.join(reelDirectory, 'subtitles', 'README.md'), `# Untertitel\n\nUntertitel werden getrennt von den Bildern geplant.\nPosition: untere Mitte bei ungefähr 65–75 % der Bildhöhe.\nNormalerweise 3–6 Wörter pro Einblendung und höchstens zwei Zeilen.\nDie exakten Zeitpunkte werden nach Einfügen der echten Audiodatei fein synchronisiert.\n`);
+  await writeJson(path.join(reelDirectory, 'effects', 'effects-plan.json'), {
+    version: 1,
+    enabled: true,
+    timingStatus: 'estimated-until-audio-arrives',
+    voiceoverPriority: true,
+    backgroundMusic: {
+      enabled: false,
+      reason: 'Voice-over-first Erklärformat; Musik nur nach ausdrücklicher Entscheidung.'
+    },
+    defaults: {
+      transition: 'cut',
+      cameraMotion: 'none',
+      soundEffectVolume: 0.2,
+      maximumSoundEffectsPerScene: 2
+    },
+    scenes: sceneIndex.map((scene, index) => ({
+      sceneId: scene.sceneId,
+      transitionIn: {
+        type: index === 0 ? 'none' : 'cut',
+        durationSeconds: 0,
+        reason: index === 0 ? 'Hook beginnt ab Sekunde 0.' : ''
+      },
+      cameraMotion: {
+        type: index === 0 ? 'subtle-push-in' : 'none',
+        startScale: 1,
+        endScale: index === 0 ? 1.04 : 1,
+        panXPercent: 0,
+        panYPercent: 0,
+        easing: 'ease-in-out',
+        reason: index === 0 ? 'Dezenter Fokus auf die Hook; nach Bildprüfung anpassen.' : ''
+      },
+      soundEffects: [],
+      timingStatus: 'estimated-until-audio-arrives'
+    }))
+  });
+  await writeText(path.join(reelDirectory, 'effects', 'README.md'), `# Bewegungen und Soundeffekte\n\nPlane Zooms, Schwenks, Übergänge und Soundeffekte getrennt von den Bildprompts in \`effects-plan.json\`.\nNicht jedes Bild braucht Bewegung. Ein Zoom verändert die Größe normalerweise nur um 2–6 Prozent und höchstens um 8 Prozent.\nDer normale Übergang ist ein sauberer Schnitt. Soundeffekte werden sparsam eingesetzt, normalerweise null bis zwei pro Szene.\nDas Voice-over hat Vorrang; Hintergrundmusik ist standardmäßig ausgeschaltet.\nNach Einfügen des echten Voice-overs werden alle Zeitpunkte erneut geprüft.\n`);
   await writeText(path.join(reelDirectory, 'cover', 'cover-prompt.txt'));
   await writeJson(path.join(reelDirectory, 'cover', 'cover.json'), {
     headline: '',
@@ -224,7 +265,7 @@ export async function createReelWorkspace({
   await writeText(path.join(reelDirectory, 'inbox', 'images', '.gitkeep'));
   await writeText(path.join(reelDirectory, 'inbox', 'audio', '.gitkeep'));
   await writeText(path.join(reelDirectory, 'inbox', 'processed', '.gitkeep'));
-  await writeText(path.join(reelDirectory, 'inbox', 'README.md'), `# Unsortierte externe Dateien\n\nLege alle generierten Szenenbilder und das Cover mit beliebigen Dateinamen nach \`images/\`.\nLege das fertige Voice-over nach \`audio/\`.\nDie Reihenfolge ist egal; Codex ordnet die Dateien später anhand ihres sichtbaren Inhalts zu.\nNach dem Einfügen der Audiodatei prüft Codex außerdem Bildwechsel und Untertitel gegen die echte Audiospur.\n`);
+  await writeText(path.join(reelDirectory, 'inbox', 'README.md'), `# Unsortierte externe Dateien\n\nLege alle generierten Szenenbilder und das Cover mit beliebigen Dateinamen nach \`images/\`.\nLege das fertige Voice-over nach \`audio/\`.\nDie Reihenfolge ist egal; Codex ordnet die Dateien später anhand ihres sichtbaren Inhalts zu.\nNach dem Einfügen der Audiodatei prüft Codex Bildwechsel, Untertitel, Zooms, Übergänge und Soundeffekte gegen die echte Audiospur.\n`);
   await writeJson(path.join(reelDirectory, 'inbox', 'asset-map.json'), {
     version: 1,
     generatedBy: '',
