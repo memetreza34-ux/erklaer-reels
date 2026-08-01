@@ -29,17 +29,15 @@
     "defaultType": "cut",
     "allowedTypes": [
       "none",
-      "cut",
-      "crossfade",
-      "dip-to-dark",
-      "slide-subtle"
+      "cut"
     ],
-    "crossfadeDurationSeconds": {
-      "min": 0.1,
-      "max": 0.25
-    },
-    "avoidFlashyTransitions": true,
-    "avoidSameSpecialTransitionRepeatedly": true
+    "directCutOnly": true,
+    "allowCrossfade": false,
+    "allowDipToDark": false,
+    "allowSlides": false,
+    "forbidBlackFrames": true,
+    "hookTransition": "none",
+    "allFollowingScenes": "cut"
   },
   "soundEffects": {
     "defaultEnabled": true,

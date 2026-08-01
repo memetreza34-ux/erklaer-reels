@@ -17,6 +17,24 @@
 - Ohne exakte Wortzeiten bleibt der gesamte Cue weiß.
 - Der finale Renderer-Check blockiert fehlende, überlappende oder unvollständige Wortzeiten.
 
+## Voice-over zuerst straffen
+
+Vor Timeline und Wortzeiten:
+
+```bash
+npm run trim:pauses -- --dir "PFAD-ZUM-REEL"
+```
+
+Standardwerte:
+
+- Pausen ab ungefähr 0,24 Sekunden werden gekürzt.
+- Der Filter behält nur eine sehr kurze Restpause von 0,05 Sekunden; durch Wortausklänge kann die hörbare Pause etwas länger sein.
+- Das Voice-over läuft mit `1.05x` leicht schneller.
+- Die Tonhöhe bleibt erhalten.
+- Eine stärkere Beschleunigung als 1.10x ist nicht erlaubt.
+
+Die Untertitel- und Wortzeiten werden ausschließlich auf Basis der optimierten Audiodatei erstellt.
+
 ## Lokale Wortzeiten durch Codex
 
 Nach bestandener Szenen-Audio-Synchronisierung zuerst vorbereiten:
@@ -27,7 +45,7 @@ npm run sync:words -- --dir "PFAD-ZUM-REEL"
 
 Dadurch entstehen `subtitles/codex-word-sync.json` und `production/codex-word-sync-task.md`.
 
-Codex hört anschließend das lokale Voice-over vollständig ab und füllt pro Wort:
+Codex hört anschließend das lokale optimierte Voice-over vollständig ab und füllt pro Wort:
 
 - absolute `startSeconds`
 - absolute `endSeconds`
@@ -51,7 +69,7 @@ Pflichtwerte:
 - Cue-Text stimmt vollständig mit der Wortliste überein
 - chronologische Start- und Endzeiten
 - `review/word-sync-report.json` enthält `passed: true`
-- kein Gemini-Aufruf, kein API-Schlüssel und kein externer Audio-Upload
+- kein externer Audio-Upload
 
 Beispiel:
 
@@ -76,18 +94,15 @@ Beispiel:
 }
 ```
 
-## Pausen
+## Reihenfolge nach einer Audioänderung
 
-- Lange Satzpausen ab ungefähr 0,25 Sekunden dürfen automatisch gekürzt werden.
-- Etwa 0,12 Sekunden natürliche Pause bleiben erhalten.
-- Vor der Pausenkürzung bleibt die Originaldatei im Manifest dokumentiert.
-- Nach `trim:pauses` müssen Timeline, Audio-Cues und Codex-Wortzeiten neu geprüft werden.
+Nach einer neuen Voice-over-Datei oder einer erneuten Pacing-Optimierung müssen alle Zeitdaten neu entstehen:
 
 ```bash
 npm run trim:pauses -- --dir "PFAD-ZUM-REEL"
 npm run build:timeline -- --dir "PFAD-ZUM-REEL"
 npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
 npm run sync:words -- --dir "PFAD-ZUM-REEL"
-# Codex hört das neue Audio ab und füllt die Arbeitsdatei
+# Codex hört das optimierte Audio ab und füllt die Arbeitsdatei
 npm run sync:words -- --dir "PFAD-ZUM-REEL" --apply --strict
 ```

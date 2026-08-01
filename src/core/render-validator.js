@@ -5,7 +5,7 @@ import { validateExactWordTimings } from '../renderer/subtitle-timing.js';
 
 const IMAGE_EXTENSIONS = new Set(['.png', '.jpg', '.jpeg', '.webp']);
 const AUDIO_EXTENSIONS = new Set(['.mp3', '.wav', '.m4a', '.aac', '.flac', '.ogg']);
-const TRANSITIONS = new Set(['none', 'cut', 'crossfade']);
+const TRANSITIONS = new Set(['none', 'cut']);
 
 async function exists(filePath) {
   try {
@@ -35,10 +35,6 @@ function push(checks, id, passed, message, level = 'error') {
   checks.push({ id, passed, message, level });
 }
 
-function isFiniteNumber(value) {
-  return Number.isFinite(Number(value));
-}
-
 function mergeSoundEffects(renderSounds, effectSounds) {
   return (renderSounds ?? []).map((sound, index) => {
     const matching = (effectSounds ?? []).find((candidate) =>
@@ -59,13 +55,23 @@ export async function validateRendererInput(reelDirectory, {
   const renderPlanPath = path.join(reelDirectory, 'render', 'render-plan.json');
   const readinessPath = path.join(reelDirectory, 'review', 'final-readiness-report.json');
   const effectsPath = path.join(reelDirectory, 'effects', 'effects-plan.json');
+  const audioPacingPath = path.join(reelDirectory, 'review', 'audio-pacing-report.json');
   const plan = await readJson(renderPlanPath, null);
   const readiness = await readJson(readinessPath, null);
   const effectsPlan = await readJson(effectsPath, { scenes: [] });
+  const audioPacing = await readJson(audioPacingPath, null);
   const effectsByScene = new Map((effectsPlan.scenes ?? []).map((scene) => [scene.sceneId, scene]));
 
   push(checks, 'render-plan-present', Boolean(plan), 'render/render-plan.json fehlt.');
   if (!plan) return finalize(checks, null, readiness);
+
+  const pacingRate = Number(audioPacing?.playbackRate);
+  push(checks, 'audio-pacing-report', audioPacing?.passed === true,
+    'review/audio-pacing-report.json fehlt oder das Voice-over-Pacing wurde nicht erfolgreich optimiert.',
+    requireFinalReadiness ? 'error' : 'warning');
+  push(checks, 'audio-playback-rate', Number.isFinite(pacingRate) && pacingRate >= 1.03 && pacingRate <= 1.07,
+    'Das finale Voice-over soll leicht beschleunigt sein; empfohlen sind ungefähr 1.05x.',
+    requireFinalReadiness ? 'error' : 'warning');
 
   const composition = plan.composition ?? {};
   push(checks, 'composition-width', Number(composition.width) === 1080,
@@ -128,12 +134,13 @@ export async function validateRendererInput(reelDirectory, {
     }
 
     const transition = scene.transitionIn ?? { type: index === 0 ? 'none' : 'cut' };
+    const expectedTransition = index === 0 ? 'none' : 'cut';
     push(checks, `${id}-transition`, TRANSITIONS.has(transition.type),
-      `${id}: Unbekannter Übergang ${transition.type}.`);
-    if (transition.type === 'crossfade') {
-      push(checks, `${id}-crossfade-duration`, isFiniteNumber(transition.durationSeconds) && Number(transition.durationSeconds) >= 0.1 && Number(transition.durationSeconds) <= 0.25,
-        `${id}: Crossfade muss zwischen 0,1 und 0,25 Sekunden liegen.`);
-    }
+      `${id}: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.`);
+    push(checks, `${id}-direct-cut`, transition.type === expectedTransition,
+      `${id}: Erwartet wird transitionIn.type = "${expectedTransition}" ohne Fade oder Schwarzbild.`);
+    push(checks, `${id}-transition-duration`, Number(transition.durationSeconds ?? 0) === 0,
+      `${id}: Direkte Schnitte müssen durationSeconds: 0 besitzen.`);
 
     const motion = scene.cameraMotion ?? {};
     const startScale = Number(motion.startScale ?? 1);

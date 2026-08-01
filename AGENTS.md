@@ -31,7 +31,7 @@ Ein bloßer Satz wie „Reel-Ordner erstellt“ ist keine vollständige Ausführ
 
 ## Projektauftrag
 
-Dieses Repository produziert vollständige visuelle Erklär-Reels. Der Nutzer erzeugt Voice-over und Szenenbilder normalerweise außerhalb des Repositories. Codex übernimmt Planung, Qualitätsprüfung, Zuordnung, lokale Audio-Prüfung, Synchronisierung und den abschließenden Remotion-Render.
+Dieses Repository produziert vollständige visuelle Erklär-Reels. Der Nutzer erzeugt Voice-over und Szenenbilder normalerweise außerhalb des Repositories. Codex übernimmt Planung, Qualitätsprüfung, Zuordnung, Audio-Pacing, lokale Audio-Prüfung, Synchronisierung und den abschließenden Remotion-Render.
 
 ## Sprache
 
@@ -67,7 +67,7 @@ Vor dem externen Asset-Schritt müssen vorhanden und ausgefüllt sein:
 3. eine konsistente Bildwelt innerhalb des Reels
 4. vollständige englische Bildprompts
 5. Untertitelplan
-6. Effektplan für Zooms, Schwenks, Übergänge und Soundeffekte
+6. Effektplan mit direkten Schnitten, Zooms, Schwenks und Soundeffekten
 7. Cover-Idee und Cover-Prompt
 8. Caption
 9. Quellen und Unsicherheiten
@@ -76,6 +76,7 @@ Vor dem externen Asset-Schritt müssen vorhanden und ausgefüllt sein:
 Nach Eingang der externen Assets kommen hinzu:
 
 - inhaltsbasierte Asset-Zuordnung
+- gestrafftes und leicht beschleunigtes Voice-over
 - Master-Timeline und Audio-Synchronisierung
 - durch Codex akustisch bestätigte Wortzeiten
 - renderer-neutraler Render-Plan
@@ -114,6 +115,25 @@ Regeln:
 - innerhalb eines Reels konsistente Bildwelt
 - zwischen Reels darf der Stil wechseln
 - Build-up nur bei echter schrittweiser Erklärung
+
+## Audio-Pacing
+
+Das originale Voice-over wird nicht direkt für die finale Timeline verwendet. Nach der Asset-Zuordnung muss Codex zuerst ausführen:
+
+```bash
+npm run trim:pauses -- --dir "<reel-ordner>"
+```
+
+Verbindliche Standardwerte:
+
+- Pausen ab ungefähr 0,24 Sekunden straffen
+- nur eine kurze natürliche Restpause behalten
+- Voice-over mit ungefähr `1.05x` leicht beschleunigen
+- Tonhöhe erhalten
+- keine hörbar hektische oder künstliche Stimme erzeugen
+- `review/audio-pacing-report.json` prüfen
+
+Nach jeder Audio-Optimierung müssen Timeline, Audio-Cues und Codex-Wortzeiten vollständig neu synchronisiert werden. Eine finale Freigabe ohne bestandene Audio-Pacing-Stufe ist verboten.
 
 ## Audio-Cues und Bildwechsel
 
@@ -171,15 +191,16 @@ Pflicht:
 
 Details: `docs/codex-word-sync.md`.
 
-## Zooms, Übergänge und Sounds
+## Zooms, Schnitte und Sounds
 
 - nicht jedes Bild bewegen
 - Zoom normalerweise 2–6 %, maximal 8 %
 - Schwenk maximal 4 %
-- Hook ohne Übergang
-- `cut` als Standard
-- Crossfade nur 0,1–0,25 Sekunden und nur begründet
-- keine Glitch-, Spin- oder Flash-Übergänge
+- Hook ohne Übergang: `none`, Dauer 0
+- jede weitere Szene ausschließlich mit direktem `cut`, Dauer 0
+- keine Crossfades, Schwarzblenden, Dip-to-dark-, Slide-, Glitch-, Spin- oder Flash-Übergänge
+- kein schwarzes Zwischenbild und keine Ein- oder Ausblendung am Schnitt
+- das neue Bild muss ab dem ersten Frame vollständig sichtbar sein
 - Voice-over hat Vorrang
 - Hintergrundmusik standardmäßig aus
 - normalerweise null bis zwei dezente Soundeffekte pro Szene
@@ -228,6 +249,7 @@ Jedes Bild und das Cover müssen tatsächlich visuell geprüft werden.
 Nach dem Asset-Import:
 
 ```bash
+npm run trim:pauses -- --dir "<reel-ordner>"
 npm run build:timeline -- --dir "<reel-ordner>"
 npm run sync:audio -- --dir "<reel-ordner>" --strict
 npm run sync:words -- --dir "<reel-ordner>"
@@ -240,8 +262,10 @@ npm run render:reel -- --dir "<reel-ordner>"
 Ein Reel darf nur gerendert werden, wenn:
 
 - `readyForRenderer` auf `true` steht
+- Audio-Pacing bestanden ist
 - Audio-Sync bestanden ist
 - Codex-Wortzeiten bestanden sind
+- alle Szenen direkte harte Schnitte verwenden
 - visuelle Prüfung bestanden ist
 - alle Pflichtassets vorhanden sind
 
