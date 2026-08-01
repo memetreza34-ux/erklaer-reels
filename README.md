@@ -7,7 +7,8 @@ Aus einem Thema oder deutschen Rohscript entsteht ein vollständiges Reel mit:
 - geprüftem Voice-over-Script
 - 8–12 Bildmomenten
 - englischen Bildprompts
-- Untertiteln
+- tief positionierten Untertiteln
+- exakt synchronisierter gelber Wortmarkierung
 - Zooms, Schwenks, Übergängen und Sounds
 - Master-Timeline und Audio-Synchronisierung
 - technischer und visueller Qualitätsprüfung
@@ -30,8 +31,12 @@ Der Nutzer erzeugt Voice-over und Bilder extern. Das Repository übernimmt den r
 - 45–55 Sekunden: normalerweise 10–12 Bildmomente
 - sichtbare Veränderung ungefähr alle 3,5–5 Sekunden
 - Bildwechsel ungefähr 0,1–0,3 Sekunden vor dem passenden `audioCue`
-- Untertitel in der unteren Mitte bei ungefähr 65–75 % der Bildhöhe
+- Untertitel standardmäßig bei 77 % der Bildhöhe
+- sichere Untertitelzone 73–79 %
 - 3–6 Wörter, höchstens zwei Zeilen
+- aktuell gesprochenes Wort gelb mit `#FFD84D`
+- gelbe Markierung nur anhand verifizierter `wordTimings`
+- ohne exakte Wortzeiten bleibt der Cue vollständig weiß
 - Zoom normalerweise 2–6 %, maximal 8 %
 - Schwenk maximal 4 %
 - sauberer Schnitt als Standard
@@ -54,7 +59,7 @@ Dateien unsortiert in die Inbox legen
         ↓
 Bilder, Cover und Audio inhaltsbasiert zuordnen
         ↓
-Timeline und Audio-Cues synchronisieren
+Timeline, Audio-Cues und Wortzeiten synchronisieren
         ↓
 Bilder technisch und visuell prüfen
         ↓
@@ -104,7 +109,7 @@ npm run organize:assets -- --dir "PFAD-ZUM-REEL" --apply
 
 Codex betrachtet jedes Bild und ordnet es anhand von Sprechertext, Bildtext, Motiv, Metapher und Komposition zu. Unter 0,75 Konfidenz wird nicht geraten.
 
-## 4. Timeline und Audio synchronisieren
+## 4. Timeline, Audio und Wortzeiten synchronisieren
 
 ```bash
 npm run build:timeline -- --dir "PFAD-ZUM-REEL"
@@ -118,7 +123,31 @@ npm run sync:audio -- \
   --audio-duration 48.7
 ```
 
-Codex trägt anschließend die echten Cue-Zeitpunkte in `timeline/audio-sync.json` ein und führt aus:
+Codex trägt anschließend die echten Cue-Zeitpunkte in `timeline/audio-sync.json` ein.
+
+Zusätzlich bekommt jeder Untertitel-Cue in `subtitles/subtitle-plan.json` exakte absolute Wortzeiten:
+
+```json
+{
+  "id": "scene-01-subtitle-01",
+  "text": "Warum holen manche Menschen",
+  "startSeconds": 0.12,
+  "endSeconds": 2.34,
+  "verticalPositionPercent": 77,
+  "highlightMode": "word",
+  "highlightColor": "#FFD84D",
+  "wordTimings": [
+    { "text": "Warum", "startSeconds": 0.12, "endSeconds": 0.42 },
+    { "text": "holen", "startSeconds": 0.48, "endSeconds": 0.72 },
+    { "text": "manche", "startSeconds": 0.79, "endSeconds": 1.12 },
+    { "text": "Menschen", "startSeconds": 1.18, "endSeconds": 1.63 }
+  ]
+}
+```
+
+Die gelbe Markierung wird nicht gleichmäßig über den Satz verteilt. Sie folgt ausschließlich den echten gesprochenen Wortanfängen. Fehlen gültige Wortzeiten, bleibt der Text weiß.
+
+Danach:
 
 ```bash
 npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
@@ -171,7 +200,16 @@ npm run finalize:reel -- --dir "PFAD-ZUM-REEL" --strict
 npm run validate:render -- --dir "PFAD-ZUM-REEL"
 ```
 
-Die Prüfung kontrolliert Frames, Pflichtassets, sichere Pfade, Untertitelzeiten, Zooms, Schwenks, Übergänge und optionale Sounddateien.
+Die Prüfung kontrolliert:
+
+- Frames und Pflichtassets
+- sichere lokale Pfade
+- Untertitelzeiten
+- Untertitelposition zwischen 73 und 79 %
+- vollständige und chronologisch sortierte `wordTimings`
+- Übereinstimmung zwischen Cue-Text und Wortliste
+- Zooms, Schwenks und Übergänge
+- optionale Sounddateien
 
 ## 8. Fertige MP4 erzeugen
 
@@ -197,7 +235,8 @@ Der Remotion-Renderer setzt um:
 
 - Szenenbilder
 - Voice-over
-- Untertitel
+- tiefe Untertitel bei ungefähr 77 %
+- exakt synchronisierte gelbe Wortmarkierung
 - Zooms und Schwenks
 - Schnitte und kurze Crossfades
 - Soundeffekte mit vorhandenem lokalem `file`-Pfad
@@ -231,6 +270,7 @@ npm test
 - `AGENTS.md` – verbindliche Regeln für Codex
 - `CODEX_TASK.md` – vollständiger Produktionsablauf
 - `docs/remotion-renderer.md` – Renderer-Dokumentation
+- `src/core/subtitle-timing.js` – sichere Position und exakte Wortzeitlogik
 - `src/core/timeline.js` – Timeline und Render-Plan
 - `src/core/render-validator.js` – Renderer-Vorprüfung
 - `src/core/remotion-renderer.js` – automatischer MP4-Render
@@ -239,5 +279,5 @@ npm test
 ## Noch nicht enthalten
 
 - automatische Bild- oder Voice-over-Erzeugung
-- automatisches Forced Alignment gesprochener Phrasen
+- automatisches Forced Alignment der Wortzeiten
 - automatische Social-Media-Veröffentlichung
