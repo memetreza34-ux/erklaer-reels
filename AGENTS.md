@@ -39,7 +39,7 @@ Ein vollständiger Reel-Ordner enthält:
 2. 8–12 Bildmomente abhängig von der Audiolänge
 3. eine konsistente Bildwelt innerhalb des Reels
 4. englische Bildprompts mit optionalem deutschem Schlüsseltext
-5. Untertitelplan mit exakten Wortzeiten für die gelbe Markierung
+5. Untertitelplan mit automatisch erzeugten Wortzeiten
 6. Effektplan für Zooms, Schwenks, Übergänge und Soundeffekte
 7. Master-Timeline und Audio-Synchronisierung
 8. renderer-neutralen Render-Plan
@@ -78,43 +78,42 @@ Das neue Bild beginnt normalerweise 0,1–0,3 Sekunden vor dem zugehörigen `aud
 
 Unsichere Cue-Zeitpunkte dürfen nicht erfunden werden. Verifizierte Zeiten gehören nach `timeline/audio-sync.json` und erhalten eine realistische `confidence`.
 
-## Untertitel
+## Untertitel und automatische Wortzeiten
 
 - Untertitel sind standardmäßig aktiv.
 - Planung in `subtitles/subtitle-plan.json`, nicht in Bildprompts einbrennen.
 - Standardposition: `safe-lower-middle` bei 79,5 % der Bildhöhe.
 - Erlaubter vertikaler Bereich: 76,5–80,5 %.
-- Die Untertitel stehen sichtbar weit unten, aber oberhalb der Plattform-Bedienelemente.
 - Normalerweise 3–6 Wörter und höchstens zwei Zeilen pro Cue.
-- Sinnabschnitte statt hektischem Wort-für-Wort-Karaoke.
 - Integrierten Bildtext nicht wortgleich wiederholen.
-- Untertitel dürfen weder Hauptmotiv noch Plattform-Bedienelemente verdecken.
 - Das aktuell gesprochene Wort wird mit `#FFD84D` gelb markiert.
-- Die gelbe Markierung darf ausschließlich echten, verifizierten Wortzeiten folgen.
+- Die gelbe Markierung darf ausschließlich echten Wortzeiten folgen.
 - Gleichmäßiges Verteilen der Wörter über die Cue-Dauer ist verboten.
-- Ohne gültige `wordTimings` oder `words` bleibt der komplette Untertitel weiß.
-- Der finale Renderer-Check blockiert die Freigabe, wenn gelbe Markierung aktiv ist, aber exakte Wortzeiten fehlen.
+- Ohne gültige Wortzeiten bleibt der komplette Untertitel weiß.
 
-Beispiel:
+Nach bestandener Szenen-Audio-Synchronisierung führt Codex aus:
 
-```json
-{
-  "text": "Warum holen manche Menschen",
-  "startSeconds": 0.12,
-  "endSeconds": 2.34,
-  "verticalPositionPercent": 79.5,
-  "highlightCurrentWord": true,
-  "highlightColor": "#FFD84D",
-  "wordTimings": [
-    { "text": "Warum", "startSeconds": 0.12, "endSeconds": 0.42 },
-    { "text": "holen", "startSeconds": 0.48, "endSeconds": 0.72 },
-    { "text": "manche", "startSeconds": 0.79, "endSeconds": 1.12 },
-    { "text": "Menschen", "startSeconds": 1.18, "endSeconds": 1.63 }
-  ]
-}
+```bash
+npm run sync:words -- --dir "<reel-ordner>" --strict
 ```
 
-Die Wortliste muss vollständig zum sichtbaren Cue-Text passen, chronologisch sortiert sein und innerhalb der Cue-Zeit liegen.
+Der Befehl verwendet die Gemini Interactions API mit Wort-Zeitstempeln und schreibt:
+
+- `subtitles/subtitle-plan.json`
+- `review/gemini-transcript.json`
+- `review/word-sync-report.json`
+- aktualisierte Timeline und aktualisierten Render-Plan
+
+Pflichtregeln:
+
+- `GEMINI_API_KEY` nur lokal in `.env`, niemals committen
+- mindestens 98 % Wortabdeckung
+- jede Szene besitzt erkannte Wörter
+- Cue-Text und Wortliste stimmen vollständig überein
+- nach `trim:pauses` oder einer neuen Audiodatei `sync:words` erneut ausführen
+- der finale Renderer-Check blockiert fehlende oder fehlerhafte Wortzeiten
+
+Details stehen in `docs/gemini-word-sync.md`.
 
 ## Zooms, Schwenks, Übergänge und Sounds
 
@@ -138,7 +137,6 @@ Planung erfolgt in `effects/effects-plan.json`.
 - Pro Szene normalerweise null bis zwei dezente Soundeffekte.
 - Nicht jeden Schnitt mit einem Whoosh vertonen.
 - Soundeffekte benötigen für den Renderer einen tatsächlichen lokalen `file`-Pfad.
-- Fehlende Sounddateien werden als Warnung gemeldet und nicht gerendert.
 
 ## Visuelle Qualitätsprüfung
 
@@ -163,8 +161,6 @@ Ablauf:
 3. `review/visual-inspection.json` vollständig mit `true` oder `false` ausfüllen
 4. Fehler konkret dokumentieren und `needs-fix` setzen
 5. `npm run check:visuals -- --dir "<reel-ordner>" --strict`
-
-Geprüft werden Lesbarkeit, Schreibfehler, Motivposition, Untertitelkollision, Plattform-Bedienelemente, Bewegungssicherheit und Stilkonsistenz.
 
 ## Unsortierte Nutzer-Assets
 
@@ -198,15 +194,11 @@ npm run organize:assets -- --dir "<reel-ordner>" --apply
 
 ## Master-Timeline und Audio-Synchronisierung
 
-Lies `knowledge/timeline-rules.md` und `knowledge/subtitle-pacing-rules.md`.
-
 Nach dem Asset-Import:
 
 ```bash
 npm run build:timeline -- --dir "<reel-ordner>"
 ```
-
-Der erste Lauf erzeugt bei Bedarf `timeline/audio-sync.json`.
 
 Wenn `ffprobe` fehlt:
 
@@ -214,52 +206,39 @@ Wenn `ffprobe` fehlt:
 npm run sync:audio -- --dir "<reel-ordner>" --audio-duration 48.7
 ```
 
-Codex hört das echte Voice-over ab und trägt für jede Szene `cueTimeSeconds` und `confidence` ein. Anschließend ergänzt Codex in `subtitles/subtitle-plan.json` die echten absoluten Wortzeiten für jedes sichtbare Wort.
-
-Nach `trim:pauses` müssen Cue- und Wortzeiten erneut geprüft werden.
-
-Danach:
+Codex hört das Voice-over ab und trägt für jede Szene `cueTimeSeconds` und `confidence` ein. Danach:
 
 ```bash
 npm run sync:audio -- --dir "<reel-ordner>" --strict
+npm run sync:words -- --dir "<reel-ordner>" --strict
 ```
 
 Verbindliche Dateien:
 
-- `timeline/audio-sync.json` – verifizierte Cue-Zeiten
-- `subtitles/subtitle-plan.json` – Cue-Zeiten und exakte Wortzeiten
-- `timeline/timeline-plan.json` – zentrale zeitliche Wahrheit
-- `render/render-plan.json` – Sekunden und Frames für 1080 × 1920 bei 30 FPS
-- `review/final-video-report.json` – Timeline-Prüfung
+- `timeline/audio-sync.json`
+- `subtitles/subtitle-plan.json`
+- `timeline/timeline-plan.json`
+- `render/render-plan.json`
+- `review/final-video-report.json`
+- `review/word-sync-report.json`
 
-Die Hook beginnt bei Frame 0. Die letzte Szene endet exakt mit dem Voice-over. Szenen und Untertitel dürfen keine unbeabsichtigten Lücken oder Überlappungen erzeugen. Die gelbe Wortmarkierung muss hörbar zur Stimme passen.
+Die Hook beginnt bei Frame 0. Die letzte Szene endet exakt mit dem Voice-over. Szenen und Untertitel dürfen keine unbeabsichtigten Lücken oder Überlappungen erzeugen.
 
 ## Zentrale Abschlussprüfung
-
-Diagnose:
-
-```bash
-npm run finalize:reel -- --dir "<reel-ordner>"
-```
-
-Endgültige Freigabe:
 
 ```bash
 npm run finalize:reel -- --dir "<reel-ordner>" --strict
 ```
 
-Der Bericht liegt unter `review/final-readiness-report.json`.
-
 Ein Reel darf nur gerendert werden, wenn:
 
 - `readyForRenderer` auf `true` steht
+- Stufe `wordSync` bestanden ist
 - `render/render-plan.json` den Status `ready-for-renderer` besitzt
 - Audio-Sync und visuelle Prüfung bestanden sind
 - alle Bilder und das Voice-over vorhanden sind
 
 ## Remotion-Renderer
-
-Lies `docs/remotion-renderer.md`.
 
 Vorprüfung:
 
@@ -267,18 +246,10 @@ Vorprüfung:
 npm run validate:render -- --dir "<reel-ordner>"
 ```
 
-Die Vorprüfung blockiert den finalen Render, wenn die gelbe Markierung aktiv ist, aber exakte Wortzeiten fehlen oder fehlerhaft sortiert sind.
-
 MP4 erzeugen:
 
 ```bash
 npm run render:reel -- --dir "<reel-ordner>"
-```
-
-Standardausgabe:
-
-```text
-<reel-ordner>/output/<reel-id>.mp4
 ```
 
 Der Renderer muss umsetzen:
@@ -291,29 +262,22 @@ Der Renderer muss umsetzen:
 - harte Schnitte und kurze Crossfades
 - vorhandene Soundeffekt-Dateien
 
-Der Renderer darf niemals Pfade außerhalb des Reel-Ordners laden. Fehlende Pflichtassets blockieren den Render. `--force` darf nur die finale Freigabe übergehen, nicht Sicherheits- oder Assetfehler.
-
-Nach Erfolg entstehen:
-
-- `review/renderer-input-report.json`
-- `review/render-execution-report.json`
-- fertige MP4-Datei
-
-`status.json` erhält `render: "complete"`.
+Der Renderer darf niemals Pfade außerhalb des Reel-Ordners laden. Fehlende Pflichtassets blockieren den Render.
 
 ## Neues Reel produzieren
 
 1. Lies `CODEX_TASK.md`.
 2. Erstelle den Reel-Ordner mit `npm run create:reel`.
 3. Bearbeite `production/agent-task.md` vollständig.
-4. Führe `npm run check:content -- --dir "<reel-ordner>" --strict` aus.
+4. Führe `check:content --strict` aus.
 5. Nutzer erzeugt Bilder und Voice-over extern.
 6. Ordne die Assets inhaltsbasiert zu.
-7. Synchronisiere Timeline, Audio und Wortzeiten.
-8. Führe die visuelle Prüfung aus.
-9. Führe `finalize:reel --strict` aus.
-10. Validiere den Renderer.
-11. Rendere die MP4-Datei.
+7. Synchronisiere Timeline und Audio.
+8. Erzeuge automatische Gemini-Wortzeiten.
+9. Führe die visuelle Prüfung aus.
+10. Führe `finalize:reel --strict` aus.
+11. Validiere den Renderer.
+12. Rendere die MP4-Datei.
 
 ## Technische Regeln
 

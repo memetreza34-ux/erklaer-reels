@@ -80,6 +80,14 @@
     "highlightCurrentWord": true,
     "highlightColor": "#FFD84D",
     "exactWordTimingsRequired": true,
+    "automaticWordTiming": {
+      "enabled": true,
+      "provider": "gemini-interactions",
+      "defaultModel": "gemini-3.6-flash",
+      "languageHint": "de-DE",
+      "minimumSceneCoverage": 0.98,
+      "command": "npm run sync:words"
+    },
     "fallbackWordTiming": "plain-white-no-highlight",
     "repeatIntegratedImageText": false,
     "avoidPlatformUiSafeZones": true,

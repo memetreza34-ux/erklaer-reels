@@ -31,6 +31,7 @@ async function main() {
   console.log(`Vorproduktion: ${progress.preProduction}%`);
   console.log(`Externe Assets: ${progress.assets}%`);
   console.log(`Timeline und Audio-Sync: ${progress.timeline}%`);
+  console.log(`Wort-Synchronisierung: ${progress.wordSync}%`);
   console.log(`Visuelle Qualität: ${progress.visualQuality}%`);
   console.log(`Produktionsfreigabe: ${progress.productionReady}%`);
   console.log(`Rendering: ${progress.rendering}%`);
@@ -46,6 +47,8 @@ async function main() {
   console.log(`Audio übernommen: ${yesNo(progress.details.audioReady)}`);
   console.log(`Cover übernommen: ${yesNo(progress.details.coverImageReady)}`);
   console.log(`Audio exakt synchronisiert: ${yesNo(progress.details.audioSynced)}`);
+  console.log(`Gemini-Wortzeiten erzeugt: ${yesNo(progress.details.wordSyncPassed)}`);
+  console.log(`Wortabdeckung: ${(Number(progress.details.wordCoverage ?? 0) * 100).toFixed(1)}%`);
   console.log(`Render-Plan bereit: ${yesNo(progress.details.renderReady)}`);
   console.log(`Bilder visuell geprüft: ${progress.details.visualAssetsReviewed}`);
   console.log(`Strenge Bildabnahme bestanden: ${yesNo(progress.details.visualStrictReady)}`);

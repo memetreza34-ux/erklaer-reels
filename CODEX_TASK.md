@@ -74,37 +74,33 @@ Das Bild beginnt normalerweise 0,1–0,3 Sekunden vor dem gesprochenen `audioCue
 - Position `safe-lower-middle`
 - Standardhöhe 79,5 %
 - erlaubter Bereich 76,5–80,5 %
-- sichtbar weit unten, aber oberhalb der Plattform-Bedienelemente
 - normalerweise 3–6 Wörter
 - höchstens zwei Zeilen
-- Sinnabschnitte statt hektischem Karaoke
 - Bildtext nicht identisch wiederholen
-- nicht in Bildprompts einbrennen
 - aktuell gesprochenes Wort gelb mit `#FFD84D`
 - gelbe Markierung ausschließlich mit verifizierten Wortzeiten
 - ohne exakte Wortzeiten bleibt der komplette Cue weiß
 
-Jeder finale Cue benötigt nach dem Audio-Sync absolute Wortzeiten:
+Die finalen Wortzeiten werden nicht manuell geschätzt. Nach dem Audio-Sync muss Codex ausführen:
 
-```json
-{
-  "id": "scene-01-subtitle-01",
-  "text": "Warum holen manche Menschen",
-  "startSeconds": 0.12,
-  "endSeconds": 2.34,
-  "verticalPositionPercent": 79.5,
-  "highlightCurrentWord": true,
-  "highlightColor": "#FFD84D",
-  "wordTimings": [
-    { "text": "Warum", "startSeconds": 0.12, "endSeconds": 0.42 },
-    { "text": "holen", "startSeconds": 0.48, "endSeconds": 0.72 },
-    { "text": "manche", "startSeconds": 0.79, "endSeconds": 1.12 },
-    { "text": "Menschen", "startSeconds": 1.18, "endSeconds": 1.63 }
-  ]
-}
+```bash
+npm run sync:words -- --dir "PFAD-ZUM-REEL" --strict
 ```
 
-`words` ist als Alias für `wordTimings` erlaubt. Die Wörter müssen vollständig zum sichtbaren Cue-Text passen, chronologisch sortiert sein und innerhalb der Cue-Zeit liegen.
+Der Befehl verwendet die Gemini Interactions API, erzeugt `wordTimings`, baut Untertitel-Cues neu und aktualisiert Timeline sowie Render-Plan.
+
+Voraussetzungen:
+
+- `GEMINI_API_KEY` steht nur lokal in `.env`
+- Szenengrenzen wurden zuvor mit `sync:audio --strict` geprüft
+- nach Änderungen am Audio oder nach `trim:pauses` wird `sync:words` erneut ausgeführt
+
+Prüfen:
+
+- `review/word-sync-report.json` enthält `passed: true`
+- Wortabdeckung beträgt mindestens 98 %
+- jede Szene besitzt erkannte Wörter
+- Cue-Text und Wortliste stimmen vollständig überein
 
 ## 4. Zooms, Übergänge und Sounds
 
@@ -129,17 +125,7 @@ Pflichtregeln:
 
 ## 5. Externe Dateien zurücknehmen
 
-Bilder unsortiert nach:
-
-```text
-inbox/images/
-```
-
-Voice-over nach:
-
-```text
-inbox/audio/
-```
+Bilder unsortiert nach `inbox/images/`, Voice-over nach `inbox/audio/`.
 
 Inventar erstellen:
 
@@ -149,9 +135,7 @@ npm run organize:assets -- --dir "PFAD-ZUM-REEL"
 
 Jedes Bild tatsächlich ansehen und mit Sprechertext, `imageText`, `visualIdea`, Prompt, Figuren, Objekten, Metaphern und Komposition vergleichen.
 
-`inbox/asset-map.json` erstellen.
-
-Regeln:
+`inbox/asset-map.json` erstellen. Regeln:
 
 - jede Quelle und jedes Ziel nur einmal
 - Cover getrennt behandeln
@@ -183,14 +167,11 @@ npm run sync:audio -- --dir "PFAD-ZUM-REEL" --audio-duration 48.7
 
 Voice-over abhören. Für jede Szene den tatsächlichen Zeitpunkt von `audioCue` in `timeline/audio-sync.json` als `cueTimeSeconds` eintragen. Unsichere Zeiten nicht erfinden.
 
-Danach jeden Untertitel-Cue gegen das Voice-over prüfen und in `subtitles/subtitle-plan.json` für jedes sichtbare Wort `wordTimings` oder `words` mit absoluten `startSeconds` und `endSeconds` eintragen. Die gelbe Markierung darf niemals gleichmäßig über den Satz verteilt werden.
-
-Nach einer Pausenkürzung müssen Cue- und Wortzeiten erneut geprüft werden.
-
 Danach:
 
 ```bash
 npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
+npm run sync:words -- --dir "PFAD-ZUM-REEL" --strict
 ```
 
 Prüfen:
@@ -198,6 +179,8 @@ Prüfen:
 - `timeline/timeline-plan.json`
 - `render/render-plan.json`
 - `review/final-video-report.json`
+- `review/gemini-transcript.json`
+- `review/word-sync-report.json`
 
 Pflicht:
 
@@ -205,25 +188,17 @@ Pflicht:
 - letzte Szene endet mit dem Voice-over
 - keine unbeabsichtigten Lücken oder Überlappungen
 - Untertitel überschneiden sich nicht
-- gelbe Wortmarkierung stimmt mit der Stimme überein
-- Untertitel liegen standardmäßig bei 79,5 % und niemals außerhalb 76,5–80,5 %
-- Sounds liegen innerhalb ihrer Szene
-- Status `audio-synced` nur bei verifizierten Zeiten
+- gelbe Wortmarkierung folgt echten Gemini-Wortzeiten
+- Untertitel liegen standardmäßig bei 79,5 %
+- Status `audio-synced` und Wort-Sync `complete`
 
 ## 7. Visuelle Qualitätsprüfung
-
-Lies:
-
-- `knowledge/visual-quality-rules.md`
-- `config/visual-quality-rules.json`
-
-Technische Prüfung:
 
 ```bash
 npm run check:visuals -- --dir "PFAD-ZUM-REEL"
 ```
 
-Danach jedes Szenenbild und Cover tatsächlich ansehen. `review/visual-inspection.json` vollständig mit `true` oder `false` ausfüllen.
+Danach jedes Szenenbild und Cover tatsächlich ansehen. `review/visual-inspection.json` vollständig ausfüllen.
 
 Prüfen:
 
@@ -250,6 +225,7 @@ npm run finalize:reel -- --dir "PFAD-ZUM-REEL" --strict
 Nur weiterarbeiten, wenn:
 
 - `review/final-readiness-report.json` enthält `readyForRenderer: true`
+- Stufe `wordSync` ist bestanden
 - `render/render-plan.json` enthält `status: "ready-for-renderer"`
 
 ## 9. Renderer prüfen
@@ -258,18 +234,7 @@ Nur weiterarbeiten, wenn:
 npm run validate:render -- --dir "PFAD-ZUM-REEL"
 ```
 
-Die Prüfung muss bestehen. Sie kontrolliert:
-
-- 1080 × 1920 bei 30 FPS
-- lückenlose Frames
-- vorhandene Bilder und Voice-over
-- sichere lokale Pfade
-- gültige Zoom-, Schwenk- und Crossfade-Werte
-- Untertitelposition 76,5–80,5 %
-- exakte Wortzeiten für die gelbe Markierung
-- Übereinstimmung zwischen Cue-Text und Wortliste
-- optionale Sounddateien
-- finale Freigabe
+Die Prüfung muss bestehen. Sie kontrolliert Pflichtassets, sichere Pfade, Frames, Untertitelposition, exakte Wortzeiten, Cue-Text, Zooms, Schwenks, Übergänge und Sounddateien.
 
 ## 10. Fertige MP4 rendern
 
@@ -282,24 +247,6 @@ Standardausgabe:
 ```text
 PFAD-ZUM-REEL/output/REEL-ID.mp4
 ```
-
-Eigener Pfad:
-
-```bash
-npm run render:reel -- \
-  --dir "PFAD-ZUM-REEL" \
-  --output "exports/mein-reel.mp4"
-```
-
-Der Renderer setzt um:
-
-- Szenenbilder
-- Voice-over
-- tiefe Untertitel
-- exakt synchronisierte gelbe Wortmarkierung
-- Zooms und Schwenks
-- Schnitte und Crossfades
-- vorhandene Soundeffekt-Dateien
 
 Nach Erfolg prüfen:
 
@@ -315,7 +262,7 @@ Das Reel ist erst vollständig fertig, wenn:
 - Inhaltsprüfung bestanden
 - Assets korrekt zugeordnet
 - Audio synchronisiert
-- Wortzeiten der Untertitel verifiziert
+- automatische Gemini-Wortzeiten bestanden
 - visuelle Prüfung bestanden
 - Abschlussprüfung freigegeben
 - Renderer-Eingabe validiert
