@@ -15,7 +15,7 @@ test('verwendet exakte Wortzeiten relativ zum Untertitel-Cue', () => {
     ]
   });
 
-  assert.equal(words[1].startSeconds, 0.4);
+  assert.ok(Math.abs(words[1].startSeconds - 0.4) < 1e-9);
   assert.equal(words[1].timingStatus, 'exact');
   assert.equal(activeWordIndex(words, 0.55), 1);
 });
