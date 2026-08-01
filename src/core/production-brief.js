@@ -34,7 +34,7 @@ export async function prepareReelProduction(reelDirectory) {
   await mkdir(productionDirectory, { recursive: true });
 
   const checklist = {
-    version: 3,
+    version: 4,
     reelId: reel.reelId,
     title: reel.title,
     createdAt: new Date().toISOString(),
@@ -44,7 +44,7 @@ export async function prepareReelProduction(reelDirectory) {
       { id: 'style-select', label: 'Passende Bildwelt auswählen und in reel.json eintragen', status: 'pending' },
       { id: 'scenes-fill', label: `${scenes.length} Szenen mit Audio-Cues vollständig planen`, status: 'pending' },
       { id: 'prompts-write', label: `${scenes.length} englische Bildprompts schreiben`, status: 'pending' },
-      { id: 'subtitles-write', label: 'Untertitelplan mit kurzen Sinnabschnitten erstellen', status: 'pending' },
+      { id: 'subtitles-write', label: 'Tiefe Untertitel mit späterer exakter Wortmarkierung planen', status: 'pending' },
       { id: 'effects-write', label: 'Zooms, Kamerabewegungen, Übergänge und Soundeffekte planen', status: 'pending' },
       { id: 'cover-write', label: 'Cover-Idee und Cover-Prompt schreiben', status: 'pending' },
       { id: 'caption-write', label: 'Caption erstellen', status: 'pending' },
@@ -67,7 +67,8 @@ Erstelle aus dem vorhandenen deutschen Rohscript ein vollständiges Produktionsp
 - Format: **9:16**
 - Sprache des Voice-overs: **Deutsch**
 - Sprache der Bildprompts: **Englisch**
-- Untertitel: **standardmäßig aktiv, getrennt von den Bildern**
+- Untertitel: **standardmäßig aktiv, tief in der sicheren Zone**
+- Gelbe Wortmarkierung: **nur mit später verifizierten Wortzeiten**
 - Hintergrundmusik: **standardmäßig ausgeschaltet**
 - Bewegungs- und Soundplan: **verbindlich in effects/effects-plan.json**
 
@@ -96,7 +97,7 @@ Erstelle aus dem vorhandenen deutschen Rohscript ein vollständiges Produktionsp
    - \`audioCue\`: das gesprochene Wort oder die kurze Phrase, an der der Bildmoment inhaltlich beginnt
    - \`leadInSeconds\`: normalerweise 0.1 bis 0.3; Standard 0.2
    - \`subtitleCues\`: kurze Untertitel-Sinnabschnitte für diese Szene
-   - \`subtitlePosition\`: normalerweise \`lower-middle\`
+   - \`subtitlePosition\`: normalerweise \`safe-lower-middle\`
    - \`durationSeconds\`
    - \`expectedImageFileName\`
 10. Schreibe für jede Szene einen vollständigen englischen Prompt nach \`scenes/scene-XX/image-prompt.txt\`.
@@ -104,13 +105,18 @@ Erstelle aus dem vorhandenen deutschen Rohscript ein vollständiges Produktionsp
 12. Nutze kurze deutsche Schlüsselwörter im Bild nur dann, wenn sie die Erklärung verbessern. Schreibe den exakten sichtbaren Text im Prompt aus.
 13. Untertitel und spätere Bewegungseffekte dürfen nicht in die Bildprompts eingebrannt werden.
 14. Fülle \`subtitles/subtitle-plan.json\` aus:
-    - Position ungefähr bei 70 % der Bildhöhe, sichere Zone 65–75 %
+    - Standardposition bei 77 % der Bildhöhe
+    - sichere Zone 73–79 %
+    - weit unten, aber oberhalb der Plattform-Bedienelemente
     - normalerweise 3–6 Wörter pro Einblendung
     - höchstens zwei Zeilen
-    - Sinnabschnitte statt Wort-für-Wort-Karaoke
+    - Sinnabschnitte statt hektischem Wort-für-Wort-Karaoke
     - integrierten Bildtext nicht wortgleich wiederholen
     - jeden Cue einer \`sceneId\` und einem \`audioCue\` zuordnen
+    - \`highlightMode\` auf \`word\` und \`highlightColor\` auf \`#FFD84D\` setzen
     - Timing zunächst schätzen und als noch nicht final markieren, bis die echte Audiodatei vorliegt
+    - \`wordTimings\` erst nach dem echten Voice-over mit absoluten Wortzeiten füllen
+    - ohne verifizierte \`wordTimings\` darf keine gelbe Schätzung angezeigt werden; der Text bleibt dann weiß
 15. Fülle \`effects/effects-plan.json\` vollständig aus. Genau ein Eintrag pro Szene:
     - \`sceneId\`
     - \`transitionIn\` mit Typ, Dauer und Begründung
@@ -136,6 +142,14 @@ npm run check:content -- --dir "${reelDirectory.split(path.sep).join('/')}" --st
 
 20. Behebe alle gemeldeten Fehler. Markiere danach die Aufgaben in \`production/checklist.json\` als \`done\`.
 
+## Nach Eintreffen des echten Voice-overs
+
+- Höre jeden Untertitel-Cue gegen die Stimme ab.
+- Ergänze pro Cue \`wordTimings\` mit den echten absoluten Start- und Endzeiten jedes sichtbaren Wortes.
+- Die gelbe Markierung darf nicht gleichmäßig über die Cue-Dauer verteilt werden.
+- Die gelbe Markierung folgt ausschließlich dem tatsächlich gesprochenen Wort.
+- Führe danach \`npm run sync:audio -- --dir "${reelDirectory.split(path.sep).join('/')}" --strict\` und anschließend \`npm run validate:render -- --dir "${reelDirectory.split(path.sep).join('/')}"\` aus.
+
 ## Kreative Leitplanken
 
 - Ziel des Accounts: schwierige Dinge sehr einfach und visuell erklären.
@@ -146,7 +160,7 @@ npm run check:content -- --dir "${reelDirectory.split(path.sep).join('/')}" --st
 - Zwischen unterschiedlichen Reels dürfen Stil und Figuren stark wechseln.
 - Build-up-Bilder nur einsetzen, wenn eine echte schrittweise Entwicklung erklärt wird.
 - Bildwechsel müssen zum gesprochenen Inhalt passen und normalerweise 0,1–0,3 Sekunden vor dem jeweiligen \`audioCue\` beginnen.
-- Untertitel stehen in der unteren Mitte, nicht exakt mittig und nicht ganz unten.
+- Untertitel stehen tief im sicheren Bereich, nicht in der Bildmitte und nicht im unteren Bedienfeld.
 - Zooms und Schwenks bleiben dezent und dürfen keine wichtigen Texte oder Motive abschneiden.
 - Keine Bewegung nur um der Bewegung willen.
 - Keine auffälligen Übergänge und nicht jeden Schnitt mit einem Whoosh vertonen.
@@ -162,7 +176,7 @@ Wenn die Inhaltsprüfung erfolgreich ist, teile dem Nutzer nur Folgendes mit:
 - dass Untertitel- und Effektplan vorhanden sind
 - dass er nun das Voice-over und die Bilder extern erzeugen kann
 - dass alle Dateien anschließend unsortiert nach \`inbox/audio/\` und \`inbox/images/\` dürfen
-- dass Codex nach Einfügen der echten Audiodatei Bildwechsel, Untertitel, Zooms, Übergänge und Soundeffekte noch einmal synchron prüft
+- dass Codex nach Einfügen der echten Audiodatei Bildwechsel, Untertitel, gelbe Wortmarkierung, Zooms, Übergänge und Soundeffekte noch einmal synchron prüft
 `;
 
   await writeFile(path.join(productionDirectory, 'agent-task.md'), `${brief}\n`, 'utf8');
