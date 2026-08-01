@@ -8,37 +8,23 @@ Aus einem Thema oder deutschen Rohscript entsteht ein vollständiges Reel mit:
 - 8–12 Bildmomenten
 - englischen Bildprompts
 - tief positionierten Untertiteln
-- automatisch synchronisierter gelber Wortmarkierung
+- exakt synchronisierter gelber Wortmarkierung
 - Zooms, Schwenks, Übergängen und Sounds
 - Master-Timeline und Audio-Synchronisierung
 - technischer und visueller Qualitätsprüfung
 - automatischer Zuordnung unsortierter Bilder und Audiodateien
 - fertiger MP4-Datei über Remotion
 
-Der Nutzer erzeugt Voice-over und Bilder extern. Das Repository übernimmt den restlichen Produktionsablauf.
+Der Nutzer erzeugt Voice-over und Bilder extern. Codex übernimmt Planung, Zuordnung, lokale Audio-Prüfung, Wortzeiten, Qualitätskontrolle und Rendering.
 
 ## Voraussetzungen
 
 - Node.js 20 oder neuer
 - `npm install`
-- Gemini-API-Key für automatische Wortzeitstempel
 - optional `ffprobe` für automatische Audiodauer
 - aktuelle Remotion-Lizenzbedingungen vor geschäftlicher Nutzung prüfen
 
-Gemini einrichten:
-
-```bash
-cp .env.example .env
-```
-
-Danach nur lokal eintragen:
-
-```env
-GEMINI_API_KEY=dein_schluessel
-GEMINI_TRANSCRIBE_MODEL=gemini-3.6-flash
-```
-
-`.env` wird nicht nach GitHub hochgeladen.
+Für den Wort-Sync wird **kein Gemini-Key und kein anderer Transkriptions-Key** benötigt.
 
 ## Produktionsregeln
 
@@ -51,7 +37,7 @@ GEMINI_TRANSCRIBE_MODEL=gemini-3.6-flash
 - sichere Untertitelzone 76,5–80,5 %
 - 3–6 Wörter, höchstens zwei Zeilen
 - aktuell gesprochenes Wort gelb mit `#FFD84D`
-- gelbe Markierung nur anhand verifizierter Wortzeiten
+- gelbe Markierung nur anhand akustisch bestätigter Wortzeiten
 - ohne exakte Wortzeiten bleibt der Cue vollständig weiß
 - Zoom normalerweise 2–6 %, maximal 8 %
 - Schwenk maximal 4 %
@@ -77,7 +63,7 @@ Bilder, Cover und Audio inhaltsbasiert zuordnen
         ↓
 Timeline und Audio-Cues synchronisieren
         ↓
-Gemini erzeugt exakte Wortzeitstempel
+Codex hört das lokale Voice-over ab und trägt Wortzeiten ein
         ↓
 Bilder technisch und visuell prüfen
         ↓
@@ -147,44 +133,60 @@ Danach werden die echten Szenen-Cues in `timeline/audio-sync.json` eingetragen u
 npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
 ```
 
-## 5. Wortzeiten automatisch mit Gemini erzeugen
+## 5. Wortzeiten durch Codex synchronisieren
+
+Vorbereitung:
+
+```bash
+npm run sync:words -- --dir "PFAD-ZUM-REEL"
+```
+
+Dadurch entstehen:
+
+```text
+subtitles/codex-word-sync.json
+production/codex-word-sync-task.md
+review/word-sync-report.json
+```
+
+Codex hört anschließend das lokale Voice-over tatsächlich ab und trägt pro Wort ein:
+
+- absolute Startzeit
+- absolute Endzeit
+- realistische Konfidenz
+- `reviewed: true` nach akustischer Kontrolle
+
+Danach:
 
 ```bash
 npm run sync:words -- \
   --dir "PFAD-ZUM-REEL" \
+  --apply \
   --strict
 ```
 
-Der Befehl:
+Der strenge Lauf:
 
-- transkribiert das Voice-over auf Deutsch
-- fordert Start- und Endzeiten für jedes Wort an
-- ordnet die Wörter anhand der Master-Timeline den Szenen zu
-- erstellt automatisch kurze Untertitelblöcke
-- setzt die Untertitel auf 79,5 % der Bildhöhe
+- verlangt mindestens 98 % Zeitabdeckung
+- prüft Reihenfolge und Überschneidungen
+- blockiert unbestätigte oder unsichere Wortzeiten
+- erzeugt kurze Untertitelblöcke mit normalerweise 3–6 Wörtern
+- setzt die Untertitel auf 79,5 %
 - erzeugt exakte `wordTimings` für die gelbe Markierung
-- baut Timeline und Render-Plan danach neu
+- baut Timeline und Render-Plan neu
 
-Erzeugte Berichte:
+Berichte:
 
 ```text
 review/
-├── gemini-transcript.json
 ├── word-sync-report.json
+├── codex-word-sync-report.json
 └── subtitle-plan-before-word-sync.json
 ```
 
-Mindestens 98 % der Wörter müssen einer Szene zugeordnet werden. Der strenge Lauf schlägt fehl, wenn Szenen oder Wörter nicht sicher erfasst wurden.
+Es wird kein Audio an Gemini oder einen anderen Transkriptionsdienst übertragen. Details: `docs/codex-word-sync.md`.
 
-Dry-Run:
-
-```bash
-npm run sync:words -- --dir "PFAD-ZUM-REEL" --dry-run
-```
-
-Nach `trim:pauses` muss `sync:words` erneut ausgeführt werden.
-
-Details: `docs/gemini-word-sync.md`.
+Nach `trim:pauses` oder einer neuen Audiodatei müssen `sync:audio` und der Codex-Wort-Sync erneut ausgeführt werden.
 
 ## 6. Bilder prüfen
 
@@ -221,7 +223,7 @@ npm run finalize:reel -- --dir "PFAD-ZUM-REEL" --strict
 }
 ```
 
-Die Freigabe wird jetzt auch blockiert, wenn die automatische Wort-Synchronisierung fehlt oder fehlerhaft ist.
+Die Freigabe wird blockiert, wenn die Codex-Wort-Synchronisierung fehlt oder fehlerhaft ist.
 
 ## 8. Renderer prüfen
 
@@ -252,23 +254,7 @@ Standardausgabe:
 PFAD-ZUM-REEL/output/REEL-ID.mp4
 ```
 
-Eigener Ausgabepfad:
-
-```bash
-npm run render:reel -- \
-  --dir "PFAD-ZUM-REEL" \
-  --output "exports/mein-reel.mp4"
-```
-
-Der Remotion-Renderer setzt um:
-
-- Szenenbilder
-- Voice-over
-- tiefe Untertitel bei ungefähr 79,5 %
-- exakt synchronisierte gelbe Wortmarkierung
-- Zooms und Schwenks
-- Schnitte und kurze Crossfades
-- Soundeffekte mit vorhandenem lokalem `file`-Pfad
+Der Remotion-Renderer setzt Szenenbilder, Voice-over, tiefe Untertitel, exakt synchronisierte gelbe Wortmarkierung, Zooms, Schwenks, Übergänge und vorhandene Soundeffekte um.
 
 ## Befehle
 
@@ -296,9 +282,9 @@ npm test
 - `AGENTS.md` – verbindliche Regeln für Codex
 - `CODEX_TASK.md` – vollständiger Produktionsablauf
 - `knowledge/subtitle-pacing-rules.md` – Untertitelposition und Sprechtempo
-- `docs/gemini-word-sync.md` – automatische Wortzeitstempel
+- `docs/codex-word-sync.md` – lokaler Codex-Wort-Sync
 - `docs/remotion-renderer.md` – Renderer-Dokumentation
-- `src/core/gemini-word-sync.js` – Gemini-Transkription und Cue-Erzeugung
+- `src/core/codex-word-sync.js` – Arbeitsdatei, Prüfung und Cue-Erzeugung
 - `src/renderer/subtitle-timing.js` – Prüfung und Darstellung exakter Wortzeiten
 - `src/core/timeline.js` – Timeline und Render-Plan
 - `src/core/render-validator.js` – Renderer-Vorprüfung
@@ -309,4 +295,4 @@ npm test
 - automatische Bild- oder Voice-over-Erzeugung
 - automatische Social-Media-Veröffentlichung
 
-Die Wortzeiten werden automatisch über Gemini erzeugt. Beim ersten echten Reel muss das Ergebnis trotzdem akustisch kontrolliert werden, weil automatische Spracherkennung nie fehlerfrei garantiert werden kann.
+Der Node-Prozess selbst versteht das Audio nicht. Codex übernimmt die akustische Kontrolle im Arbeitsablauf. Ohne bestätigte Wortzeiten wird der finale Render im strengen Modus blockiert.
