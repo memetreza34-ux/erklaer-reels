@@ -69,7 +69,7 @@ Pflichtbestandteile:
 - vollständige Szenenplanung
 - 8–12 englische Bildprompts
 - Untertitelplan
-- Effektplan
+- Effektplan mit Hook ohne Übergang und danach ausschließlich direkten Schnitten
 - Cover-Idee und Cover-Prompt
 - Caption
 - Quellen
@@ -104,13 +104,17 @@ Sind externe Dateien bereits vorhanden, arbeitet Codex ohne Rückfrage weiter:
 
 ```text
 Assets zuordnen
+→ Voice-over-Pausen kürzen und Stimme leicht auf 1.05x beschleunigen
 → Timeline und Audio synchronisieren
 → Codex-Wortzeiten eintragen
 → Bilder visuell prüfen
+→ direkte harte Schnitte prüfen
 → Abschlussprüfung
 → Renderer prüfen
 → MP4 rendern
 ```
+
+Dabei sind Crossfades, Schwarzblenden und andere Übergangsanimationen verboten. Das neue Bild muss beim Schnitt sofort vollständig sichtbar sein.
 
 ## Keine Rückfragen bei normalen Standardfällen
 
