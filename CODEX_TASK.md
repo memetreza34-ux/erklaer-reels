@@ -1,6 +1,6 @@
 # Codex-Hauptauftrag
 
-Dieses Repository produziert vollständige visuelle Erklär-Reels. Der Nutzer erzeugt Voice-over und Bilder extern. Codex übernimmt Planung, Asset-Zuordnung, lokale Audio-Prüfung, Synchronisierung, Qualitätsprüfung und den abschließenden Remotion-Render.
+Dieses Repository produziert vollständige visuelle Erklär-Reels. Der Nutzer erzeugt Voice-over und Bilder extern. Codex übernimmt Planung, Asset-Zuordnung, Audio-Pacing, lokale Audio-Prüfung, Synchronisierung, Qualitätsprüfung und den abschließenden Remotion-Render.
 
 ## 1. Neues Reel vorbereiten
 
@@ -17,7 +17,7 @@ Reel anlegen:
 npm run create:reel -- \
   --title "TITEL" \
   --script-file input/script.txt \
-  --date YYYY-MM-DD \
+  --next-free \
   --scenes 10
 ```
 
@@ -77,7 +77,7 @@ Das Bild beginnt normalerweise 0,1–0,3 Sekunden vor dem gesprochenen `audioCue
 
 Die finalen Wortzeiten werden nicht mathematisch geschätzt und nicht über Gemini erzeugt. Codex übernimmt die lokale Audio-Prüfung.
 
-## 4. Zooms, Übergänge und Sounds
+## 4. Zooms, direkte Schnitte und Sounds
 
 Lies `knowledge/effects-rules.md` und `config/effects-rules.json`.
 
@@ -86,10 +86,11 @@ Pflichtregeln:
 - nicht jedes Bild bewegen
 - Zoom normalerweise 2–6 %, maximal 8 %
 - Schwenk maximal 4 %
-- Hook ohne Übergang
-- `cut` als Standard
-- Crossfade nur 0,1–0,25 Sekunden
-- keine auffälligen Glitch-, Spin- oder Flash-Übergänge
+- Hook: `transitionIn.type: "none"`, Dauer 0
+- jede weitere Szene: `transitionIn.type: "cut"`, Dauer 0
+- keine Crossfades, Schwarzblenden, Dip-to-dark-, Slide-, Glitch-, Spin- oder Flash-Übergänge
+- kein schwarzes Zwischenbild
+- neues Bild ab dem ersten Schnittframe vollständig sichtbar
 - Voice-over hat Vorrang
 - Hintergrundmusik standardmäßig aus
 - null bis zwei dezente Soundeffekte pro Szene
@@ -119,7 +120,26 @@ Zuordnung anwenden:
 npm run organize:assets -- --dir "PFAD-ZUM-REEL" --apply
 ```
 
-## 6. Timeline und Audio synchronisieren
+## 6. Voice-over-Pacing optimieren
+
+Vor der Timeline verpflichtend:
+
+```bash
+npm run trim:pauses -- --dir "PFAD-ZUM-REEL"
+```
+
+Standardwirkung:
+
+- Pausen ab ungefähr 0,24 Sekunden werden deutlich gekürzt.
+- Nur eine kurze natürliche Restpause bleibt erhalten.
+- Das Voice-over wird mit ungefähr `1.05x` leicht beschleunigt.
+- Die Tonhöhe bleibt erhalten.
+
+Prüfe `review/audio-pacing-report.json`. Die Stufe muss bestanden sein. Nach jeder Änderung an der Audiodatei diesen Schritt erneut ausführen.
+
+## 7. Timeline und Audio synchronisieren
+
+Erst mit der optimierten Audiodatei:
 
 ```bash
 npm run build:timeline -- --dir "PFAD-ZUM-REEL"
@@ -139,7 +159,7 @@ Danach:
 npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
 ```
 
-## 7. Wortzeiten durch Codex synchronisieren
+## 8. Wortzeiten durch Codex synchronisieren
 
 Zuerst vorbereiten:
 
@@ -153,7 +173,7 @@ Dadurch entstehen:
 - `production/codex-word-sync-task.md`
 - `review/word-sync-report.json`
 
-Codex muss danach das lokale Voice-over vollständig anhören und in `subtitles/codex-word-sync.json` für jedes Wort eintragen:
+Codex muss danach das optimierte lokale Voice-over vollständig anhören und in `subtitles/codex-word-sync.json` für jedes Wort eintragen:
 
 - absolute `startSeconds`
 - absolute `endSeconds`
@@ -164,7 +184,7 @@ Verboten:
 
 - Wörter gleichmäßig über die Satzdauer verteilen
 - Zeiten erfinden
-- das Audio an Gemini oder einen anderen Transkriptionsdienst senden
+- das Audio an einen externen Transkriptionsdienst senden
 - einen externen API-Schlüssel für diesen Schritt verwenden
 
 Danach anwenden:
@@ -185,9 +205,9 @@ Prüfen:
 - Cue-Text und Wortliste stimmen vollständig überein
 - `timingProvider` ist `codex-local-audio-review`
 
-Nach Änderungen am Audio oder nach `trim:pauses` müssen `sync:audio` und der Codex-Wort-Sync erneut ausgeführt werden.
+Nach Änderungen am Audio müssen Audio-Pacing, `sync:audio` und der Codex-Wort-Sync erneut ausgeführt werden.
 
-## 8. Visuelle Qualitätsprüfung
+## 9. Visuelle Qualitätsprüfung
 
 ```bash
 npm run check:visuals -- --dir "PFAD-ZUM-REEL"
@@ -211,7 +231,7 @@ Strenge Abnahme:
 npm run check:visuals -- --dir "PFAD-ZUM-REEL" --strict
 ```
 
-## 9. Zentrale Abschlussprüfung
+## 10. Zentrale Abschlussprüfung
 
 ```bash
 npm run finalize:reel -- --dir "PFAD-ZUM-REEL" --strict
@@ -220,15 +240,18 @@ npm run finalize:reel -- --dir "PFAD-ZUM-REEL" --strict
 Nur weiterarbeiten, wenn:
 
 - `review/final-readiness-report.json` enthält `readyForRenderer: true`
+- Stufe `audioPacing` ist bestanden
 - Stufe `wordSync` ist bestanden
 - `render/render-plan.json` enthält `status: "ready-for-renderer"`
 
-## 10. Renderer prüfen und MP4 erzeugen
+## 11. Renderer prüfen und MP4 erzeugen
 
 ```bash
 npm run validate:render -- --dir "PFAD-ZUM-REEL"
 npm run render:reel -- --dir "PFAD-ZUM-REEL"
 ```
+
+Die Renderer-Prüfung blockiert jeden Fade oder Übergang mit Dauer. Erlaubt sind ausschließlich `none` für die Hook und `cut` für die folgenden Szenen.
 
 Standardausgabe:
 
@@ -249,8 +272,10 @@ Das Reel ist erst vollständig fertig, wenn:
 
 - Inhaltsprüfung bestanden
 - Assets korrekt zugeordnet
+- Audio-Pacing bestanden
 - Audio synchronisiert
 - Codex-Wortzeiten akustisch bestätigt und streng validiert
+- alle Szenen direkte harte Schnitte verwenden
 - visuelle Prüfung bestanden
 - Abschlussprüfung freigegeben
 - Renderer-Eingabe validiert
