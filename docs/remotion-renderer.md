@@ -1,6 +1,6 @@
 # Remotion-Renderer
 
-Der Renderer erzeugt aus `render/render-plan.json` eine fertige MP4-Datei. Er verwendet die bereits geplanten Bilder, das Voice-over, Untertitel, Zooms, Schwenks, Übergänge und optional vorhandene Sounddateien.
+Der Renderer erzeugt aus `render/render-plan.json` eine fertige MP4-Datei. Er verwendet die geplanten Bilder, das optimierte Voice-over, Untertitel, dezente Zooms und Schwenks sowie optional vorhandene Sounddateien.
 
 ## Voraussetzungen
 
@@ -13,10 +13,30 @@ Remotion und alle `@remotion/*`-Pakete sind absichtlich auf dieselbe exakte Vers
 Vor dem Rendern muss der Reel-Ordner vollständig vorbereitet sein:
 
 ```bash
+npm run trim:pauses -- --dir "PFAD-ZUM-REEL"
+npm run build:timeline -- --dir "PFAD-ZUM-REEL"
+npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
+npm run sync:words -- --dir "PFAD-ZUM-REEL"
+# Codex bearbeitet die Wortzeiten
+npm run sync:words -- --dir "PFAD-ZUM-REEL" --apply --strict
 npm run finalize:reel -- --dir "PFAD-ZUM-REEL" --strict
 ```
 
 `review/final-readiness-report.json` muss `readyForRenderer: true` enthalten und `render/render-plan.json` muss den Status `ready-for-renderer` besitzen.
+
+## Übergänge
+
+Der finale Renderer verwendet keine Übergangsanimationen.
+
+- Hook: `none`, Dauer 0
+- jede weitere Szene: `cut`, Dauer 0
+- keine Crossfades
+- keine Ein- oder Ausblendungen
+- keine Schwarzblenden
+- keine Slides
+- kein schwarzes Zwischenbild
+
+Das neue Bild ist ab dem ersten Frame des Schnitts vollständig sichtbar. Die Remotion-Komposition legt Szenen nicht für Fades übereinander und verändert ihre Deckkraft nicht.
 
 ## Renderer-Eingabe prüfen
 
@@ -29,11 +49,14 @@ Geprüft werden unter anderem:
 - 1080 × 1920 bei 30 FPS
 - positive Gesamtdauer
 - lückenlose Szenenframes
+- `none` für die Hook und ausschließlich `cut` für weitere Szenen
+- Übergangsdauer immer 0
+- bestandener Audio-Pacing-Bericht
+- leicht beschleunigtes Voice-over im sicheren Zielbereich
 - vorhandene Bilder und Voice-over-Datei
-- sichere lokale Pfade ohne Verlassen des Reel-Ordners
-- unterstützte Bild- und Audioformate
-- zulässige Crossfade-, Zoom- und Schwenkwerte
-- gültige Untertitelzeiten
+- sichere lokale Pfade
+- zulässige Zoom- und Schwenkwerte
+- gültige Untertitel- und Wortzeiten
 - vorhandene optionale Sounddateien
 - finale Renderer-Freigabe
 
@@ -66,36 +89,26 @@ Weitere Optionen:
 --force
 ```
 
-`--force` überspringt ausschließlich die finale Freigabeprüfung. Fehlende Bilder, unsichere Pfade oder ungültige Framedaten bleiben blockierende Fehler.
+`--force` überspringt ausschließlich die finale Freigabeprüfung. Fehlende Bilder, unsichere Pfade, ungültige Framedaten oder verbotene Übergänge bleiben blockierende Fehler.
 
 ## Gerenderte Bestandteile
 
 - alle Szenenbilder aus `render/render-plan.json`
-- Voice-over mit der dort festgelegten Lautstärke
-- Untertitel in der unteren sicheren Mitte
+- gestrafftes Voice-over
+- Untertitel bei ungefähr 79,5 %
+- exakt synchronisierte gelbe Wortmarkierung
 - dezente Zooms und Schwenks
-- harte Schnitte und kurze Crossfades
+- sofortige harte Schnitte
 - Soundeffekte, sofern ein gültiges Feld `file` vorhanden ist
 
 Ein geplanter Soundeffekt ohne tatsächliche Datei wird als Warnung gemeldet und nicht gerendert.
-
-Beispiel:
-
-```json
-{
-  "id": "scene-03-sfx-1",
-  "type": "click",
-  "file": "audio/sfx/click.wav",
-  "timeSeconds": 8.4,
-  "volume": 0.18
-}
-```
 
 ## Berichte
 
 Vor dem Rendering:
 
 ```text
+review/audio-pacing-report.json
 review/renderer-input-report.json
 ```
 
@@ -105,19 +118,11 @@ Nach dem Rendering:
 review/render-execution-report.json
 ```
 
-Bei Erfolg aktualisiert der Renderer außerdem `status.json`:
-
-```json
-{
-  "render": "complete",
-  "renderedFile": "output/reel-01_thema.mp4",
-  "qualityControl": "render-complete"
-}
-```
+Bei Erfolg aktualisiert der Renderer außerdem `status.json` mit `render: "complete"`.
 
 ## Remotion Studio
 
-Für eine visuelle Vorschau kann das Studio gestartet werden:
+Für eine visuelle Vorschau:
 
 ```bash
 npm run studio
