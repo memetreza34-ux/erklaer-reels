@@ -32,6 +32,7 @@ export async function calculateReelProgress(reelDirectory) {
   const timeline = await readJson(path.join(reelDirectory, 'timeline', 'timeline-plan.json'), null);
   const renderPlan = await readJson(path.join(reelDirectory, 'render', 'render-plan.json'), null);
   const timelineReport = await readJson(path.join(reelDirectory, 'review', 'final-video-report.json'), null);
+  const wordSyncReport = await readJson(path.join(reelDirectory, 'review', 'word-sync-report.json'), null);
   const visualReport = await readJson(path.join(reelDirectory, 'review', 'visual-quality-report.json'), null);
   const visualInspection = await readJson(path.join(reelDirectory, 'review', 'visual-inspection.json'), null);
   const rendererInputReport = await readJson(path.join(reelDirectory, 'review', 'renderer-input-report.json'), null);
@@ -116,6 +117,15 @@ export async function calculateReelProgress(reelDirectory) {
     (timelineCheckReady ? 10 : 0)
   );
 
+  const wordSyncCreated = Boolean(wordSyncReport);
+  const wordCoverage = Number(wordSyncReport?.coverage ?? 0);
+  const wordSyncPassed = wordSyncReport?.passed === true && wordCoverage >= 0.98;
+  const wordSync = clamp(
+    (wordSyncCreated ? 20 : 0) +
+    Math.min(1, Math.max(0, wordCoverage)) * 50 +
+    (wordSyncPassed ? 30 : 0)
+  );
+
   const expectedVisualAssets = scenes.length + 1;
   const reviewedAssets = Array.isArray(visualInspection?.assets)
     ? visualInspection.assets.filter((asset) => asset.status === 'passed').length
@@ -132,9 +142,10 @@ export async function calculateReelProgress(reelDirectory) {
   );
 
   const productionReady = clamp(
-    preProduction * 0.5 +
-    assets * 0.25 +
-    timelineProgress * 0.15 +
+    preProduction * 0.45 +
+    assets * 0.22 +
+    timelineProgress * 0.13 +
+    wordSync * 0.1 +
     visualQuality * 0.1
   );
 
@@ -152,6 +163,8 @@ export async function calculateReelProgress(reelDirectory) {
     nextStep = 'Voice-over und Bilder extern erzeugen, unsortiert in die Inbox legen und zuordnen lassen.';
   } else if (timelineProgress < 100) {
     nextStep = 'Master-Timeline erzeugen, echte Audio-Cues eintragen und sync:audio im strengen Modus ausführen.';
+  } else if (wordSync < 100) {
+    nextStep = 'Mit sync:words die exakten Gemini-Wortzeiten erzeugen und prüfen.';
   } else if (visualQuality < 100) {
     nextStep = 'check:visuals ausführen, jedes Bild visuell prüfen und die strenge visuelle Abnahme bestehen.';
   } else if (!rendererValidated) {
@@ -168,6 +181,7 @@ export async function calculateReelProgress(reelDirectory) {
     preProduction,
     assets,
     timeline: timelineProgress,
+    wordSync,
     visualQuality,
     productionReady,
     rendering,
@@ -190,6 +204,9 @@ export async function calculateReelProgress(reelDirectory) {
       audioSynced,
       renderReady,
       timelineCheckReady,
+      wordSyncCreated,
+      wordSyncPassed,
+      wordCoverage,
       visualReportCreated,
       visualTechnicalReady,
       visualAssetsReviewed: `${reviewedAssets}/${expectedVisualAssets}`,
