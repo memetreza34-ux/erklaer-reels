@@ -7,11 +7,14 @@ import {
   extractGeminiWordInfo,
   parseOffsetSeconds
 } from '../src/core/gemini-word-sync.js';
+import { validateExactWordTimings } from '../src/renderer/subtitle-timing.js';
 
 test('liest Gemini-Zeitoffsets in Sekunden, Millisekunden und ISO-Dauer', () => {
   assert.equal(parseOffsetSeconds('1.25s'), 1.25);
   assert.equal(parseOffsetSeconds('850ms'), 0.85);
   assert.equal(parseOffsetSeconds('PT1M2.5S'), 62.5);
+  assert.equal(parseOffsetSeconds(null), null);
+  assert.equal(parseOffsetSeconds(''), null);
 });
 
 test('findet WordInfo rekursiv und entfernt Duplikate', () => {
@@ -61,11 +64,27 @@ test('erzeugt exakte Cues mit tiefer Position und Wortzeiten', () => {
   const scenes = [{ sceneId: 'scene-01', startSeconds: 0, endSeconds: 3 }];
 
   const result = buildSubtitleCuesFromWords(words, scenes);
+  const cue = result.cues[0];
   assert.equal(result.cues.length, 1);
-  assert.equal(result.cues[0].text, 'Warum dauert Warten so lange?');
-  assert.equal(result.cues[0].verticalPositionPercent, 79.5);
-  assert.equal(result.cues[0].wordTimings.length, 5);
-  assert.equal(result.cues[0].timingStatus, 'gemini-word-synced');
-  assert.ok(result.cues[0].startSeconds <= words[0].startSeconds);
-  assert.ok(result.cues[0].endSeconds >= words.at(-1).endSeconds);
+  assert.equal(cue.text, 'Warum dauert Warten so lange?');
+  assert.equal(cue.verticalPositionPercent, 79.5);
+  assert.equal(cue.wordTimings.length, 5);
+  assert.equal(cue.timingStatus, 'gemini-word-synced');
+  assert.ok(cue.startSeconds <= words[0].startSeconds);
+  assert.ok(cue.endSeconds >= words.at(-1).endSeconds);
+  assert.equal(validateExactWordTimings(cue).valid, true);
+});
+
+test('erzeugt mehrere exakte Cues ohne zeitliche Überlappung', () => {
+  const words = Array.from({ length: 12 }, (_, index) => ({
+    text: `Wort${index + 1}`,
+    startSeconds: 0.1 + index * 0.25,
+    endSeconds: 0.25 + index * 0.25
+  }));
+  const scenes = [{ sceneId: 'scene-01', startSeconds: 0, endSeconds: 4 }];
+
+  const result = buildSubtitleCuesFromWords(words, scenes);
+  assert.equal(result.cues.length, 2);
+  assert.equal(result.cues.every((cue) => validateExactWordTimings(cue).valid), true);
+  assert.ok(result.cues[1].startSeconds >= result.cues[0].endSeconds);
 });
