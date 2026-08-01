@@ -30,6 +30,53 @@ function issuesFrom(report, level) {
     }));
 }
 
+function audioPacingStage(report, strict) {
+  const rate = Number(report?.playbackRate);
+  const checks = [
+    {
+      id: 'audio-pacing-report-present',
+      passed: Boolean(report?.createdAt),
+      level: strict ? 'error' : 'warning',
+      message: 'review/audio-pacing-report.json fehlt. Führe trim:pauses vor der Timeline aus.'
+    },
+    {
+      id: 'audio-pacing-passed',
+      passed: report?.passed === true,
+      level: strict ? 'error' : 'warning',
+      message: 'Die Voice-over-Optimierung wurde nicht erfolgreich abgeschlossen.'
+    },
+    {
+      id: 'audio-pacing-rate',
+      passed: Number.isFinite(rate) && rate >= 1.03 && rate <= 1.07,
+      level: strict ? 'error' : 'warning',
+      message: 'Das Voice-over soll leicht beschleunigt sein; Zielwert ist ungefähr 1.05x.'
+    },
+    {
+      id: 'audio-pacing-duration-reduced',
+      passed: Number(report?.afterSeconds) > 0 && Number(report?.afterSeconds) < Number(report?.beforeSeconds),
+      level: strict ? 'error' : 'warning',
+      message: 'Die optimierte Audiodatei muss kürzer als das Original sein.'
+    }
+  ];
+  const errors = checks.filter((check) => !check.passed && check.level === 'error');
+  const warnings = checks.filter((check) => !check.passed && check.level === 'warning');
+  return {
+    passed: errors.length === 0 && checks.every((check) => check.passed),
+    strict,
+    playbackRate: Number.isFinite(rate) ? rate : null,
+    beforeSeconds: Number(report?.beforeSeconds) || null,
+    afterSeconds: Number(report?.afterSeconds) || null,
+    reportFile: 'review/audio-pacing-report.json',
+    summary: {
+      passedChecks: checks.filter((check) => check.passed).length,
+      failedChecks: errors.length,
+      warnings: warnings.length,
+      totalChecks: checks.length
+    },
+    checks
+  };
+}
+
 function wordSyncStage(renderPlan, strict) {
   const cues = (renderPlan?.scenes ?? []).flatMap((scene) => scene.subtitles ?? []);
   const checks = [];
@@ -96,6 +143,20 @@ export async function finalizeReel(reelDirectory, {
   blockingIssues.push(...issuesFrom(content, 'error'));
   warnings.push(...issuesFrom(content, 'warning'));
 
+  const pacingReport = await readJson(path.join(reelDirectory, 'review', 'audio-pacing-report.json'), null);
+  const pacing = audioPacingStage(pacingReport, strict);
+  stages.audioPacing = {
+    passed: pacing.passed,
+    strict,
+    playbackRate: pacing.playbackRate,
+    beforeSeconds: pacing.beforeSeconds,
+    afterSeconds: pacing.afterSeconds,
+    reportFile: pacing.reportFile,
+    summary: pacing.summary
+  };
+  blockingIssues.push(...issuesFrom(pacing, 'error'));
+  warnings.push(...issuesFrom(pacing, 'warning'));
+
   let timelineResult = null;
   try {
     timelineResult = await buildMasterTimeline(reelDirectory, {
@@ -158,6 +219,8 @@ export async function finalizeReel(reelDirectory, {
   const progress = await calculateReelProgress(reelDirectory);
   const readyForRenderer =
     content.passed === true &&
+    stages.audioPacing?.passed === true &&
+    stages.audioPacing?.strict === true &&
     stages.timeline?.passed === true &&
     stages.timeline?.timingStatus === 'audio-synced' &&
     stages.timeline?.renderStatus === 'ready-for-renderer' &&
@@ -170,7 +233,7 @@ export async function finalizeReel(reelDirectory, {
 
   const normalizedDirectory = reelDirectory.split(path.sep).join('/');
   const report = {
-    version: 4,
+    version: 5,
     createdAt,
     reelDirectory: normalizedDirectory,
     strict,
@@ -181,15 +244,18 @@ export async function finalizeReel(reelDirectory, {
     warnings,
     nextStep: readyForRenderer
       ? `Renderer prüfen und MP4 erzeugen: npm run validate:render -- --dir "${normalizedDirectory}" && npm run render:reel -- --dir "${normalizedDirectory}"`
-      : stages.wordSync?.passed !== true
-        ? `Codex-Wort-Sync vorbereiten: npm run sync:words -- --dir "${normalizedDirectory}"; danach production/codex-word-sync-task.md bearbeiten und mit --apply --strict übernehmen.`
-        : progress.nextStep
+      : stages.audioPacing?.passed !== true
+        ? `Voice-over straffen: npm run trim:pauses -- --dir "${normalizedDirectory}"; danach Timeline, Audio-Cues und Wortzeiten neu synchronisieren.`
+        : stages.wordSync?.passed !== true
+          ? `Codex-Wort-Sync vorbereiten: npm run sync:words -- --dir "${normalizedDirectory}"; danach production/codex-word-sync-task.md bearbeiten und mit --apply --strict übernehmen.`
+          : progress.nextStep
   };
 
   await writeJson(path.join(reelDirectory, 'review', 'final-readiness-report.json'), report);
 
   const statusPath = path.join(reelDirectory, 'status.json');
   const status = await readJson(statusPath, {});
+  status.audioPacing = stages.audioPacing?.passed ? 'complete' : 'needs-review';
   status.wordSync = stages.wordSync?.passed ? 'complete' : 'needs-review';
   status.finalReadiness = readyForRenderer ? 'ready-for-renderer' : 'needs-review';
   if (readyForRenderer && status.render !== 'complete') status.render = 'ready';
