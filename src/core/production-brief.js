@@ -34,7 +34,7 @@ export async function prepareReelProduction(reelDirectory) {
   await mkdir(productionDirectory, { recursive: true });
 
   const checklist = {
-    version: 6,
+    version: 7,
     reelId: reel.reelId,
     title: reel.title,
     createdAt: new Date().toISOString(),
@@ -45,7 +45,7 @@ export async function prepareReelProduction(reelDirectory) {
       { id: 'scenes-fill', label: `${scenes.length} Szenen mit Audio-Cues vollständig planen`, status: 'pending' },
       { id: 'prompts-write', label: `${scenes.length} englische Bildprompts schreiben`, status: 'pending' },
       { id: 'subtitles-write', label: 'Tiefe Untertitel für spätere Codex-Wortzeiten planen', status: 'pending' },
-      { id: 'effects-write', label: 'Zooms, Kamerabewegungen, Übergänge und Soundeffekte planen', status: 'pending' },
+      { id: 'effects-write', label: 'Dezente Bewegungen, ausschließlich harte Schnitte und Soundeffekte planen', status: 'pending' },
       { id: 'cover-write', label: 'Cover-Idee und Cover-Prompt schreiben', status: 'pending' },
       { id: 'caption-write', label: 'Caption erstellen', status: 'pending' },
       { id: 'sources-write', label: 'Quellen und Unsicherheiten dokumentieren', status: 'pending' },
@@ -70,6 +70,8 @@ Erstelle aus dem vorhandenen deutschen Rohscript ein vollständiges Produktionsp
 - Bildprompts: **Englisch**
 - Untertitel: **79,5 % der Bildhöhe, sichere Zone 76,5–80,5 %**
 - Gelbe Wortmarkierung: **nach dem Voice-over durch lokale Codex-Audio-Prüfung**
+- Übergänge: **keine Fades; Hook ohne Übergang, danach nur direkte harte Schnitte**
+- Audio-Pacing: **Pausen kürzen und Voice-over mit 1.05x leicht beschleunigen**
 - Externer Transkriptionsdienst: **nicht verwenden**
 - Hintergrundmusik: **standardmäßig ausgeschaltet**
 
@@ -96,7 +98,13 @@ Erstelle aus dem vorhandenen deutschen Rohscript ein vollständiges Produktionsp
     - \`highlightColor: "#FFD84D"\`
     - keine geschätzten gelben Wortzeiten eintragen
     - die finalen Cues werden später aus akustisch bestätigten Codex-Wortzeiten neu erzeugt
-11. Fülle \`effects/effects-plan.json\` vollständig aus. Nicht jede Szene braucht Bewegung oder Sound. Zoom maximal 8 %, Schwenk maximal 4 %, \`cut\` als Standard.
+11. Fülle \`effects/effects-plan.json\` vollständig aus:
+    - Szene 1: \`transitionIn.type: "none"\`, \`durationSeconds: 0\`
+    - jede weitere Szene: \`transitionIn.type: "cut"\`, \`durationSeconds: 0\`
+    - keine Crossfades, Schwarzblenden, Slides oder sonstigen Übergangsanimationen
+    - kein schwarzes Zwischenbild
+    - nicht jede Szene braucht Bewegung oder Sound
+    - Zoom maximal 8 %, Schwenk maximal 4 %
 12. Fülle Cover, Caption und Quellen aus.
 13. Führe aus:
 
@@ -115,30 +123,38 @@ npm run organize:assets -- --dir "${normalizedDirectory}"
 npm run organize:assets -- --dir "${normalizedDirectory}" --apply
 \`\`\`
 
-2. Timeline und Szenen-Cues synchronisieren:
+2. Voice-over vor jeder Timeline straffen:
+
+\`\`\`bash
+npm run trim:pauses -- --dir "${normalizedDirectory}"
+\`\`\`
+
+Standard: lange Pausen deutlich kürzen und die Stimme mit 1.05x leicht beschleunigen, ohne die Tonhöhe zu verändern. Prüfe \`review/audio-pacing-report.json\`.
+
+3. Timeline und Szenen-Cues mit der optimierten Audiodatei synchronisieren:
 
 \`\`\`bash
 npm run build:timeline -- --dir "${normalizedDirectory}"
 npm run sync:audio -- --dir "${normalizedDirectory}" --strict
 \`\`\`
 
-3. Codex-Wort-Sync vorbereiten:
+4. Codex-Wort-Sync vorbereiten:
 
 \`\`\`bash
 npm run sync:words -- --dir "${normalizedDirectory}"
 \`\`\`
 
-4. Bearbeite \`production/codex-word-sync-task.md\`: Voice-over lokal anhören und in \`subtitles/codex-word-sync.json\` für jedes Wort echte absolute Start- und Endzeiten, realistische Konfidenz und \`reviewed: true\` eintragen.
-5. Keine gleichmäßige Verteilung, keine erfundenen Zeiten, kein Gemini-Aufruf und kein externer Audio-Upload.
-6. Anwenden:
+5. Bearbeite \`production/codex-word-sync-task.md\`: Voice-over lokal anhören und in \`subtitles/codex-word-sync.json\` für jedes Wort echte absolute Start- und Endzeiten, realistische Konfidenz und \`reviewed: true\` eintragen.
+6. Keine gleichmäßige Verteilung, keine erfundenen Zeiten und kein externer Audio-Upload.
+7. Anwenden:
 
 \`\`\`bash
 npm run sync:words -- --dir "${normalizedDirectory}" --apply --strict
 \`\`\`
 
-7. Prüfe \`review/word-sync-report.json\`: mindestens 98 % Wortabdeckung, mindestens 0,85 Konfidenz und keine leere Szene.
-8. Nach einer Pausenkürzung oder neuer Audiodatei \`sync:audio\` und den Codex-Wort-Sync erneut ausführen.
-9. Danach visuelle Prüfung, \`finalize:reel --strict\`, \`validate:render\` und \`render:reel\` ausführen.
+8. Prüfe \`review/word-sync-report.json\`: mindestens 98 % Wortabdeckung, mindestens 0,85 Konfidenz und keine leere Szene.
+9. Nach einer neuen Audiodatei \`trim:pauses\`, \`sync:audio\` und den Codex-Wort-Sync erneut ausführen.
+10. Danach visuelle Prüfung, \`finalize:reel --strict\`, \`validate:render\` und \`render:reel\` ausführen.
 
 ## Kreative Leitplanken
 
@@ -147,9 +163,10 @@ npm run sync:words -- --dir "${normalizedDirectory}" --apply --strict
 - Hook-Bild sofort sichtbar
 - innerhalb des Reels konsistente Bildwelt
 - Bildwechsel am Sprechertext ausrichten
+- direkte harte Schnitte ohne Verzögerung oder Schwarzbild
 - Untertitel tief, aber nicht im Plattform-Bedienfeld
 - keine Bewegung nur um der Bewegung willen
-- keine auffälligen Übergänge und kein Whoosh bei jedem Schnitt
+- kein Whoosh bei jedem Schnitt
 
 ## Übergabe an den Nutzer
 
@@ -161,7 +178,7 @@ Nach bestandener Inhaltsprüfung nur mitteilen:
 - Untertitel- und Effektplan vorhanden
 - Voice-over und Bilder können extern erzeugt werden
 - Dateien dürfen unsortiert nach \`inbox/audio/\` und \`inbox/images/\`
-- nach dem Upload prüft Codex Audio-Cues und Wortzeiten lokal
+- nach dem Upload strafft Codex zuerst das Audio und prüft anschließend Audio-Cues und Wortzeiten lokal
 `;
 
   await writeFile(path.join(productionDirectory, 'agent-task.md'), `${brief}\n`, 'utf8');
