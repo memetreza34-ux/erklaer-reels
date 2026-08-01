@@ -2,6 +2,7 @@ import { access, mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
 import { buildMasterTimeline } from './timeline.js';
+import { validateExactWordTimings } from '../renderer/subtitle-timing.js';
 
 const AUDIO_EXTENSIONS = new Set(['.mp3', '.wav', '.m4a', '.aac', '.flac', '.ogg', '.webm', '.mp4']);
 const MIME_TYPES = {
@@ -40,9 +41,12 @@ function round(value, digits = 3) {
 }
 
 export function parseOffsetSeconds(value) {
-  if (Number.isFinite(Number(value))) return Number(value);
-  const text = String(value ?? '').trim();
+  if (value === null || value === undefined || value === '') return null;
+  if (typeof value === 'number' && Number.isFinite(value)) return value;
+
+  const text = String(value).trim();
   if (!text) return null;
+  if (/^-?\d+(?:\.\d+)?$/.test(text)) return Number(text);
 
   const milliseconds = text.match(/^(-?\d+(?:\.\d+)?)ms$/i);
   if (milliseconds) return Number(milliseconds[1]) / 1000;
@@ -78,8 +82,12 @@ export function extractGeminiWordInfo(value) {
     }
 
     const type = String(current.type ?? '').toLowerCase();
-    const start = parseOffsetSeconds(current.start_offset ?? current.startOffset ?? current.start_seconds ?? current.startSeconds);
-    const end = parseOffsetSeconds(current.end_offset ?? current.endOffset ?? current.end_seconds ?? current.endSeconds);
+    const start = parseOffsetSeconds(
+      current.start_offset ?? current.startOffset ?? current.start_seconds ?? current.startSeconds ?? current.start
+    );
+    const end = parseOffsetSeconds(
+      current.end_offset ?? current.endOffset ?? current.end_seconds ?? current.endSeconds ?? current.end
+    );
     const text = String(current.text ?? current.word ?? '').trim();
     const looksLikeWordInfo = type === 'word_info' || (text && start !== null && end !== null);
 
@@ -167,7 +175,8 @@ export function chunkTranscriptWords(words, options = {}) {
   return chunks;
 }
 
-function assignWordsToScenes(words, scenes) {
+function assignWordsToScenes(words, inputScenes) {
+  const scenes = [...inputScenes].sort((a, b) => Number(a.startSeconds) - Number(b.startSeconds));
   const assigned = new Map(scenes.map((scene) => [scene.sceneId, []]));
   const unassigned = [];
   let sceneIndex = 0;
@@ -190,26 +199,31 @@ export function buildSubtitleCuesFromWords(words, scenes, options = {}) {
   const position = options.position ?? 'safe-lower-middle';
   const verticalPositionPercent = Number(options.verticalPositionPercent ?? 79.5);
   const highlightColor = options.highlightColor ?? '#FFD84D';
+  const preRoll = Number(options.preRollSeconds ?? 0.035);
+  const postRoll = Number(options.postRollSeconds ?? 0.1);
   const { assigned, unassigned } = assignWordsToScenes(words, scenes);
   const cues = [];
   const sceneSummary = [];
 
   for (const scene of scenes) {
+    const sceneStart = Number(scene.startSeconds);
+    const sceneEnd = Number(scene.endSeconds);
     const sceneWords = assigned.get(scene.sceneId) ?? [];
     const chunks = chunkTranscriptWords(sceneWords, options);
+    let previousCueEnd = sceneStart;
 
     chunks.forEach((chunk, index) => {
       const nextChunk = chunks[index + 1];
       const first = chunk[0];
       const last = chunk.at(-1);
-      const preRoll = Number(options.preRollSeconds ?? 0.035);
-      const postRoll = Number(options.postRollSeconds ?? 0.1);
-      const nextStart = nextChunk ? Math.max(Number(scene.startSeconds), nextChunk[0].startSeconds - preRoll) : null;
-      const startSeconds = Math.max(Number(scene.startSeconds), first.startSeconds - preRoll);
-      const naturalEnd = Math.min(Number(scene.endSeconds), last.endSeconds + postRoll);
-      const endSeconds = nextStart === null ? naturalEnd : Math.min(naturalEnd, nextStart - 0.01);
+      const gapBefore = Math.max(0, first.startSeconds - previousCueEnd);
+      const allowedPreRoll = gapBefore >= preRoll + 0.01 ? preRoll : Math.max(0, gapBefore - 0.01);
+      const startSeconds = Math.max(sceneStart, first.startSeconds - allowedPreRoll, previousCueEnd + (index ? 0.005 : 0));
+      const nextWordStart = nextChunk?.[0]?.startSeconds ?? null;
+      const latestEnd = nextWordStart === null ? sceneEnd : Math.max(last.endSeconds, nextWordStart - 0.01);
+      const endSeconds = Math.min(sceneEnd, Math.max(last.endSeconds, Math.min(last.endSeconds + postRoll, latestEnd)));
 
-      cues.push({
+      const cue = {
         id: `${scene.sceneId}-subtitle-${String(index + 1).padStart(2, '0')}`,
         sceneId: scene.sceneId,
         text: smartJoin(chunk),
@@ -226,7 +240,9 @@ export function buildSubtitleCuesFromWords(words, scenes, options = {}) {
           startSeconds: round(word.startSeconds),
           endSeconds: round(word.endSeconds)
         }))
-      });
+      };
+      cues.push(cue);
+      previousCueEnd = cue.endSeconds;
     });
 
     sceneSummary.push({
@@ -347,8 +363,8 @@ export async function syncSubtitleWordsWithGemini(reelDirectory, {
 
   let timeline = await readJson(path.join(reelDirectory, 'timeline', 'timeline-plan.json'), null);
   if (!timeline) {
-    const built = await buildMasterTimeline(reelDirectory, { strict: false });
-    timeline = built.timeline;
+    const builtTimeline = await buildMasterTimeline(reelDirectory, { strict: false });
+    timeline = builtTimeline.timeline;
   }
 
   const scenes = Array.isArray(timeline?.scenes) ? timeline.scenes : [];
@@ -379,7 +395,10 @@ export async function syncSubtitleWordsWithGemini(reelDirectory, {
   const emptyScenes = built.sceneSummary.filter((scene) => scene.wordCount === 0);
   const assignedCount = built.sceneSummary.reduce((sum, scene) => sum + scene.wordCount, 0);
   const coverage = transcription.words.length ? assignedCount / transcription.words.length : 0;
-  const passed = coverage >= 0.98 && emptyScenes.length === 0 && built.cues.length > 0;
+  const invalidCues = built.cues
+    .map((cue) => ({ cue, result: validateExactWordTimings(cue) }))
+    .filter(({ result }) => !result.valid);
+  const passed = coverage >= 0.98 && emptyScenes.length === 0 && built.cues.length > 0 && invalidCues.length === 0;
 
   const previousPlanPath = path.join(reelDirectory, 'subtitles', 'subtitle-plan.json');
   const previousPlan = await readJson(previousPlanPath, {});
@@ -407,18 +426,21 @@ export async function syncSubtitleWordsWithGemini(reelDirectory, {
     strict,
     provider: transcription.provider,
     model: transcription.model,
+    requestStored: false,
     audioFile: audioPath ? path.relative(reelDirectory, audioPath).split(path.sep).join('/') : null,
     totalWords: transcription.words.length,
     assignedWords: assignedCount,
     unassignedWords: built.unassigned,
     coverage: round(coverage, 4),
     cueCount: built.cues.length,
+    invalidCues: invalidCues.map(({ cue, result }) => ({ id: cue.id, issues: result.issues })),
     sceneSummary: built.sceneSummary,
     checks: [
       { id: 'word-timestamps-present', passed: transcription.words.length > 0, level: 'error', message: 'Keine Wortzeitstempel vorhanden.' },
       { id: 'word-coverage', passed: coverage >= 0.98, level: strict ? 'error' : 'warning', message: 'Mindestens 98 % der Wörter müssen einer Szene zugeordnet sein.' },
       { id: 'all-scenes-covered', passed: emptyScenes.length === 0, level: strict ? 'error' : 'warning', message: `Szenen ohne erkannte Wörter: ${emptyScenes.map((scene) => scene.sceneId).join(', ') || 'keine'}.` },
-      { id: 'subtitle-cues-created', passed: built.cues.length > 0, level: 'error', message: 'Es wurden keine Untertitel-Cues erzeugt.' }
+      { id: 'subtitle-cues-created', passed: built.cues.length > 0, level: 'error', message: 'Es wurden keine Untertitel-Cues erzeugt.' },
+      { id: 'exact-cue-timings', passed: invalidCues.length === 0, level: strict ? 'error' : 'warning', message: `Ungültige Untertitel-Cues: ${invalidCues.map(({ cue }) => cue.id).join(', ') || 'keine'}.` }
     ]
   };
 
@@ -430,6 +452,7 @@ export async function syncSubtitleWordsWithGemini(reelDirectory, {
     await writeJson(path.join(reelDirectory, 'review', 'gemini-transcript.json'), {
       provider: transcription.provider,
       model: transcription.model,
+      requestStored: false,
       words: transcription.words
     });
     await buildMasterTimeline(reelDirectory, { strict: false });
