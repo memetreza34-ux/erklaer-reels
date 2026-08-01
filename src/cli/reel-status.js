@@ -30,6 +30,7 @@ async function main() {
   console.log(`${progress.title || progress.reelId}`);
   console.log(`Vorproduktion: ${progress.preProduction}%`);
   console.log(`Externe Assets: ${progress.assets}%`);
+  console.log(`Audio-Pacing: ${progress.audioPacing}%`);
   console.log(`Timeline und Audio-Sync: ${progress.timeline}%`);
   console.log(`Wort-Synchronisierung: ${progress.wordSync}%`);
   console.log(`Visuelle Qualität: ${progress.visualQuality}%`);
@@ -46,6 +47,8 @@ async function main() {
   console.log(`Szenenbilder übernommen: ${progress.details.sceneImagesReady}`);
   console.log(`Audio übernommen: ${yesNo(progress.details.audioReady)}`);
   console.log(`Cover übernommen: ${yesNo(progress.details.coverImageReady)}`);
+  console.log(`Pausen und Tempo optimiert: ${yesNo(progress.details.audioPacingPassed)}`);
+  console.log(`Voice-over-Tempo: ${Number(progress.details.audioPacingRate ?? 0).toFixed(2)}x`);
   console.log(`Audio exakt synchronisiert: ${yesNo(progress.details.audioSynced)}`);
   console.log(`Codex-Wortzeiten bestätigt: ${yesNo(progress.details.wordSyncPassed)}`);
   console.log(`Wortzeit-Anbieter: ${progress.details.wordSyncProvider ?? 'noch keiner'}`);
