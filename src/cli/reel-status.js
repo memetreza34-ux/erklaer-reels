@@ -47,7 +47,8 @@ async function main() {
   console.log(`Audio übernommen: ${yesNo(progress.details.audioReady)}`);
   console.log(`Cover übernommen: ${yesNo(progress.details.coverImageReady)}`);
   console.log(`Audio exakt synchronisiert: ${yesNo(progress.details.audioSynced)}`);
-  console.log(`Gemini-Wortzeiten erzeugt: ${yesNo(progress.details.wordSyncPassed)}`);
+  console.log(`Codex-Wortzeiten bestätigt: ${yesNo(progress.details.wordSyncPassed)}`);
+  console.log(`Wortzeit-Anbieter: ${progress.details.wordSyncProvider ?? 'noch keiner'}`);
   console.log(`Wortabdeckung: ${(Number(progress.details.wordCoverage ?? 0) * 100).toFixed(1)}%`);
   console.log(`Render-Plan bereit: ${yesNo(progress.details.renderReady)}`);
   console.log(`Bilder visuell geprüft: ${progress.details.visualAssetsReviewed}`);
