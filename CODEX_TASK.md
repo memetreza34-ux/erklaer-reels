@@ -1,6 +1,6 @@
 # Codex-Hauptauftrag
 
-Dieses Repository produziert vollständige visuelle Erklär-Reels. Der Nutzer erzeugt Voice-over und Bilder extern. Codex übernimmt Planung, Asset-Zuordnung, Synchronisierung, Qualitätsprüfung und den abschließenden Remotion-Render.
+Dieses Repository produziert vollständige visuelle Erklär-Reels. Der Nutzer erzeugt Voice-over und Bilder extern. Codex übernimmt Planung, Asset-Zuordnung, lokale Audio-Prüfung, Synchronisierung, Qualitätsprüfung und den abschließenden Remotion-Render.
 
 ## 1. Neues Reel vorbereiten
 
@@ -58,13 +58,7 @@ Fehler vollständig beheben, bevor der Nutzer Bilder und Voice-over erzeugt.
 - politische Inhalte neutral
 - Quellen und Unsicherheiten dokumentieren
 
-Jede Szene benötigt:
-
-- `audioCue`
-- `leadInSeconds`, normalerweise 0,1–0,3
-- `subtitleCues`
-- `subtitlePosition`
-- `durationSeconds`
+Jede Szene benötigt `audioCue`, `leadInSeconds`, `subtitleCues`, `subtitlePosition` und `durationSeconds`.
 
 Das Bild beginnt normalerweise 0,1–0,3 Sekunden vor dem gesprochenen `audioCue`.
 
@@ -78,36 +72,14 @@ Das Bild beginnt normalerweise 0,1–0,3 Sekunden vor dem gesprochenen `audioCue
 - höchstens zwei Zeilen
 - Bildtext nicht identisch wiederholen
 - aktuell gesprochenes Wort gelb mit `#FFD84D`
-- gelbe Markierung ausschließlich mit verifizierten Wortzeiten
+- gelbe Markierung ausschließlich mit akustisch bestätigten Wortzeiten
 - ohne exakte Wortzeiten bleibt der komplette Cue weiß
 
-Die finalen Wortzeiten werden nicht manuell geschätzt. Nach dem Audio-Sync muss Codex ausführen:
-
-```bash
-npm run sync:words -- --dir "PFAD-ZUM-REEL" --strict
-```
-
-Der Befehl verwendet die Gemini Interactions API, erzeugt `wordTimings`, baut Untertitel-Cues neu und aktualisiert Timeline sowie Render-Plan.
-
-Voraussetzungen:
-
-- `GEMINI_API_KEY` steht nur lokal in `.env`
-- Szenengrenzen wurden zuvor mit `sync:audio --strict` geprüft
-- nach Änderungen am Audio oder nach `trim:pauses` wird `sync:words` erneut ausgeführt
-
-Prüfen:
-
-- `review/word-sync-report.json` enthält `passed: true`
-- Wortabdeckung beträgt mindestens 98 %
-- jede Szene besitzt erkannte Wörter
-- Cue-Text und Wortliste stimmen vollständig überein
+Die finalen Wortzeiten werden nicht mathematisch geschätzt und nicht über Gemini erzeugt. Codex übernimmt die lokale Audio-Prüfung.
 
 ## 4. Zooms, Übergänge und Sounds
 
-Lies:
-
-- `knowledge/effects-rules.md`
-- `config/effects-rules.json`
+Lies `knowledge/effects-rules.md` und `config/effects-rules.json`.
 
 Pflichtregeln:
 
@@ -126,8 +98,6 @@ Pflichtregeln:
 ## 5. Externe Dateien zurücknehmen
 
 Bilder unsortiert nach `inbox/images/`, Voice-over nach `inbox/audio/`.
-
-Inventar erstellen:
 
 ```bash
 npm run organize:assets -- --dir "PFAD-ZUM-REEL"
@@ -149,11 +119,7 @@ Zuordnung anwenden:
 npm run organize:assets -- --dir "PFAD-ZUM-REEL" --apply
 ```
 
-`review/asset-matching-report.json` prüfen.
-
-## 6. Timeline, Audio und Wortzeiten synchronisieren
-
-Erster Lauf:
+## 6. Timeline und Audio synchronisieren
 
 ```bash
 npm run build:timeline -- --dir "PFAD-ZUM-REEL"
@@ -171,28 +137,57 @@ Danach:
 
 ```bash
 npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
-npm run sync:words -- --dir "PFAD-ZUM-REEL" --strict
+```
+
+## 7. Wortzeiten durch Codex synchronisieren
+
+Zuerst vorbereiten:
+
+```bash
+npm run sync:words -- --dir "PFAD-ZUM-REEL"
+```
+
+Dadurch entstehen:
+
+- `subtitles/codex-word-sync.json`
+- `production/codex-word-sync-task.md`
+- `review/word-sync-report.json`
+
+Codex muss danach das lokale Voice-over vollständig anhören und in `subtitles/codex-word-sync.json` für jedes Wort eintragen:
+
+- absolute `startSeconds`
+- absolute `endSeconds`
+- `confidence` zwischen 0 und 1
+- `reviewed: true` erst nach akustischer Kontrolle
+
+Verboten:
+
+- Wörter gleichmäßig über die Satzdauer verteilen
+- Zeiten erfinden
+- das Audio an Gemini oder einen anderen Transkriptionsdienst senden
+- einen externen API-Schlüssel für diesen Schritt verwenden
+
+Danach anwenden:
+
+```bash
+npm run sync:words -- \
+  --dir "PFAD-ZUM-REEL" \
+  --apply \
+  --strict
 ```
 
 Prüfen:
 
-- `timeline/timeline-plan.json`
-- `render/render-plan.json`
-- `review/final-video-report.json`
-- `review/gemini-transcript.json`
-- `review/word-sync-report.json`
+- `review/word-sync-report.json` enthält `passed: true`
+- mindestens 98 % Wortabdeckung
+- im strengen Lauf mindestens 0,85 Konfidenz pro Wort
+- jede Szene besitzt bestätigte Wörter
+- Cue-Text und Wortliste stimmen vollständig überein
+- `timingProvider` ist `codex-local-audio-review`
 
-Pflicht:
+Nach Änderungen am Audio oder nach `trim:pauses` müssen `sync:audio` und der Codex-Wort-Sync erneut ausgeführt werden.
 
-- Hook beginnt bei Frame 0
-- letzte Szene endet mit dem Voice-over
-- keine unbeabsichtigten Lücken oder Überlappungen
-- Untertitel überschneiden sich nicht
-- gelbe Wortmarkierung folgt echten Gemini-Wortzeiten
-- Untertitel liegen standardmäßig bei 79,5 %
-- Status `audio-synced` und Wort-Sync `complete`
-
-## 7. Visuelle Qualitätsprüfung
+## 8. Visuelle Qualitätsprüfung
 
 ```bash
 npm run check:visuals -- --dir "PFAD-ZUM-REEL"
@@ -216,7 +211,7 @@ Strenge Abnahme:
 npm run check:visuals -- --dir "PFAD-ZUM-REEL" --strict
 ```
 
-## 8. Zentrale Abschlussprüfung
+## 9. Zentrale Abschlussprüfung
 
 ```bash
 npm run finalize:reel -- --dir "PFAD-ZUM-REEL" --strict
@@ -228,17 +223,10 @@ Nur weiterarbeiten, wenn:
 - Stufe `wordSync` ist bestanden
 - `render/render-plan.json` enthält `status: "ready-for-renderer"`
 
-## 9. Renderer prüfen
+## 10. Renderer prüfen und MP4 erzeugen
 
 ```bash
 npm run validate:render -- --dir "PFAD-ZUM-REEL"
-```
-
-Die Prüfung muss bestehen. Sie kontrolliert Pflichtassets, sichere Pfade, Frames, Untertitelposition, exakte Wortzeiten, Cue-Text, Zooms, Schwenks, Übergänge und Sounddateien.
-
-## 10. Fertige MP4 rendern
-
-```bash
 npm run render:reel -- --dir "PFAD-ZUM-REEL"
 ```
 
@@ -262,7 +250,7 @@ Das Reel ist erst vollständig fertig, wenn:
 - Inhaltsprüfung bestanden
 - Assets korrekt zugeordnet
 - Audio synchronisiert
-- automatische Gemini-Wortzeiten bestanden
+- Codex-Wortzeiten akustisch bestätigt und streng validiert
 - visuelle Prüfung bestanden
 - Abschlussprüfung freigegeben
 - Renderer-Eingabe validiert

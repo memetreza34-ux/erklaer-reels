@@ -4,7 +4,7 @@
 
 Baue und betreibe einen KI-Workflow, der aus einem Thema oder einem fertigen deutschen Sprechertext ein vollständiges visuelles Erklär-Reel erzeugt.
 
-Der Nutzer erzeugt Voice-over und Szenenbilder außerhalb des Repositories. Codex übernimmt Planung, Qualitätsprüfung, Zuordnung, Synchronisierung und den abschließenden Remotion-Render.
+Der Nutzer erzeugt Voice-over und Szenenbilder außerhalb des Repositories. Codex übernimmt Planung, Qualitätsprüfung, Zuordnung, lokale Audio-Prüfung, Synchronisierung und den abschließenden Remotion-Render.
 
 ## Sprache
 
@@ -39,7 +39,7 @@ Ein vollständiger Reel-Ordner enthält:
 2. 8–12 Bildmomente abhängig von der Audiolänge
 3. eine konsistente Bildwelt innerhalb des Reels
 4. englische Bildprompts mit optionalem deutschem Schlüsseltext
-5. Untertitelplan mit automatisch erzeugten Wortzeiten
+5. Untertitelplan mit durch Codex akustisch bestätigten Wortzeiten
 6. Effektplan für Zooms, Schwenks, Übergänge und Soundeffekte
 7. Master-Timeline und Audio-Synchronisierung
 8. renderer-neutralen Render-Plan
@@ -78,7 +78,7 @@ Das neue Bild beginnt normalerweise 0,1–0,3 Sekunden vor dem zugehörigen `aud
 
 Unsichere Cue-Zeitpunkte dürfen nicht erfunden werden. Verifizierte Zeiten gehören nach `timeline/audio-sync.json` und erhalten eine realistische `confidence`.
 
-## Untertitel und automatische Wortzeiten
+## Untertitel und Codex-Wortzeiten
 
 - Untertitel sind standardmäßig aktiv.
 - Planung in `subtitles/subtitle-plan.json`, nicht in Bildprompts einbrennen.
@@ -87,33 +87,48 @@ Unsichere Cue-Zeitpunkte dürfen nicht erfunden werden. Verifizierte Zeiten geh�
 - Normalerweise 3–6 Wörter und höchstens zwei Zeilen pro Cue.
 - Integrierten Bildtext nicht wortgleich wiederholen.
 - Das aktuell gesprochene Wort wird mit `#FFD84D` gelb markiert.
-- Die gelbe Markierung darf ausschließlich echten Wortzeiten folgen.
+- Die gelbe Markierung darf ausschließlich akustisch bestätigten Wortzeiten folgen.
 - Gleichmäßiges Verteilen der Wörter über die Cue-Dauer ist verboten.
 - Ohne gültige Wortzeiten bleibt der komplette Untertitel weiß.
 
-Nach bestandener Szenen-Audio-Synchronisierung führt Codex aus:
+Nach bestandener Szenen-Audio-Synchronisierung führt Codex zuerst aus:
 
 ```bash
-npm run sync:words -- --dir "<reel-ordner>" --strict
+npm run sync:words -- --dir "<reel-ordner>"
 ```
 
-Der Befehl verwendet die Gemini Interactions API mit Wort-Zeitstempeln und schreibt:
+Dadurch entstehen:
 
-- `subtitles/subtitle-plan.json`
-- `review/gemini-transcript.json`
+- `subtitles/codex-word-sync.json`
+- `production/codex-word-sync-task.md`
 - `review/word-sync-report.json`
-- aktualisierte Timeline und aktualisierten Render-Plan
+
+Danach hört Codex das lokale Voice-over vollständig ab und füllt für jedes Wort in `subtitles/codex-word-sync.json`:
+
+- absolute `startSeconds`
+- absolute `endSeconds`
+- realistische `confidence`
+- `reviewed: true` erst nach akustischer Kontrolle
+
+Anschließend:
+
+```bash
+npm run sync:words -- --dir "<reel-ordner>" --apply --strict
+```
 
 Pflichtregeln:
 
-- `GEMINI_API_KEY` nur lokal in `.env`, niemals committen
+- kein Gemini-Aufruf und kein externer Transkriptionsdienst
+- kein API-Schlüssel für den Wort-Sync
+- Audiodatei nicht extern hochladen
 - mindestens 98 % Wortabdeckung
-- jede Szene besitzt erkannte Wörter
-- Cue-Text und Wortliste stimmen vollständig überein
-- nach `trim:pauses` oder einer neuen Audiodatei `sync:words` erneut ausführen
+- im strengen Lauf mindestens 0,85 Konfidenz pro Wort
+- Wortreihenfolge und sichtbarer Wortlaut bleiben unverändert
+- jede Szene besitzt bestätigte Wörter
+- nach `trim:pauses` oder einer neuen Audiodatei den Codex-Wort-Sync erneut ausführen
 - der finale Renderer-Check blockiert fehlende oder fehlerhafte Wortzeiten
 
-Details stehen in `docs/gemini-word-sync.md`.
+Details stehen in `docs/codex-word-sync.md`.
 
 ## Zooms, Schwenks, Übergänge und Sounds
 
@@ -210,12 +225,19 @@ Codex hört das Voice-over ab und trägt für jede Szene `cueTimeSeconds` und `c
 
 ```bash
 npm run sync:audio -- --dir "<reel-ordner>" --strict
-npm run sync:words -- --dir "<reel-ordner>" --strict
+npm run sync:words -- --dir "<reel-ordner>"
+```
+
+Codex bearbeitet anschließend `production/codex-word-sync-task.md` und führt aus:
+
+```bash
+npm run sync:words -- --dir "<reel-ordner>" --apply --strict
 ```
 
 Verbindliche Dateien:
 
 - `timeline/audio-sync.json`
+- `subtitles/codex-word-sync.json`
 - `subtitles/subtitle-plan.json`
 - `timeline/timeline-plan.json`
 - `render/render-plan.json`
@@ -273,7 +295,7 @@ Der Renderer darf niemals Pfade außerhalb des Reel-Ordners laden. Fehlende Pfli
 5. Nutzer erzeugt Bilder und Voice-over extern.
 6. Ordne die Assets inhaltsbasiert zu.
 7. Synchronisiere Timeline und Audio.
-8. Erzeuge automatische Gemini-Wortzeiten.
+8. Bereite den Codex-Wort-Sync vor, höre das Audio ab und wende die bestätigten Zeiten an.
 9. Führe die visuelle Prüfung aus.
 10. Führe `finalize:reel --strict` aus.
 11. Validiere den Renderer.

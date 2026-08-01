@@ -80,13 +80,15 @@
     "highlightCurrentWord": true,
     "highlightColor": "#FFD84D",
     "exactWordTimingsRequired": true,
-    "automaticWordTiming": {
+    "wordTimingWorkflow": {
       "enabled": true,
-      "provider": "gemini-interactions",
-      "defaultModel": "gemini-3.6-flash",
-      "languageHint": "de-DE",
-      "minimumSceneCoverage": 0.98,
-      "command": "npm run sync:words"
+      "provider": "codex-local-audio-review",
+      "externalUpload": false,
+      "apiKeyRequired": false,
+      "minimumWordCoverage": 0.98,
+      "minimumConfidenceStrict": 0.85,
+      "prepareCommand": "npm run sync:words",
+      "applyCommand": "npm run sync:words -- --apply --strict"
     },
     "fallbackWordTiming": "plain-white-no-highlight",
     "repeatIntegratedImageText": false,

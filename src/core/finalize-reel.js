@@ -41,8 +41,15 @@ function wordSyncStage(renderPlan, strict) {
     message: 'Der Render-Plan enthält keine Untertitel-Cues.'
   });
 
-  for (const cue of cues) {
-    if (cue.highlightCurrentWord === false) continue;
+  const highlightedCues = cues.filter((cue) => cue.highlightCurrentWord !== false);
+  checks.push({
+    id: 'codex-word-sync-provider',
+    passed: highlightedCues.length > 0 && highlightedCues.every((cue) => cue.timingSource === 'codex-local-audio-review'),
+    level: strict ? 'error' : 'warning',
+    message: 'Die finalen Wortzeiten müssen aus der lokalen Codex-Audio-Prüfung stammen.'
+  });
+
+  for (const cue of highlightedCues) {
     const result = validateExactWordTimings(cue);
     checks.push({
       id: `${cue.id ?? 'subtitle'}-exact-word-timing`,
@@ -57,7 +64,7 @@ function wordSyncStage(renderPlan, strict) {
   return {
     passed: errors.length === 0 && cues.length > 0,
     strict,
-    provider: cues[0]?.timingSource ?? null,
+    provider: highlightedCues[0]?.timingSource ?? null,
     cueCount: cues.length,
     exactCueCount: checks.filter((check) => check.id.endsWith('-exact-word-timing') && check.passed).length,
     summary: {
@@ -156,13 +163,14 @@ export async function finalizeReel(reelDirectory, {
     stages.timeline?.renderStatus === 'ready-for-renderer' &&
     stages.wordSync?.passed === true &&
     stages.wordSync?.strict === true &&
+    stages.wordSync?.provider === 'codex-local-audio-review' &&
     stages.visualQuality?.passed === true &&
     stages.visualQuality?.strict === true &&
     progress.productionReady === 100;
 
   const normalizedDirectory = reelDirectory.split(path.sep).join('/');
   const report = {
-    version: 3,
+    version: 4,
     createdAt,
     reelDirectory: normalizedDirectory,
     strict,
@@ -174,7 +182,7 @@ export async function finalizeReel(reelDirectory, {
     nextStep: readyForRenderer
       ? `Renderer prüfen und MP4 erzeugen: npm run validate:render -- --dir "${normalizedDirectory}" && npm run render:reel -- --dir "${normalizedDirectory}"`
       : stages.wordSync?.passed !== true
-        ? `Exakte Wortzeiten automatisch erzeugen: npm run sync:words -- --dir "${normalizedDirectory}" --strict`
+        ? `Codex-Wort-Sync vorbereiten: npm run sync:words -- --dir "${normalizedDirectory}"; danach production/codex-word-sync-task.md bearbeiten und mit --apply --strict übernehmen.`
         : progress.nextStep
   };
 

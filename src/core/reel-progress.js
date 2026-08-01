@@ -119,7 +119,10 @@ export async function calculateReelProgress(reelDirectory) {
 
   const wordSyncCreated = Boolean(wordSyncReport);
   const wordCoverage = Number(wordSyncReport?.coverage ?? 0);
-  const wordSyncPassed = wordSyncReport?.passed === true && wordCoverage >= 0.98;
+  const wordSyncProvider = wordSyncReport?.provider ?? null;
+  const wordSyncPassed = wordSyncReport?.passed === true &&
+    wordCoverage >= 0.98 &&
+    wordSyncProvider === 'codex-local-audio-review';
   const wordSync = clamp(
     (wordSyncCreated ? 20 : 0) +
     Math.min(1, Math.max(0, wordCoverage)) * 50 +
@@ -164,7 +167,7 @@ export async function calculateReelProgress(reelDirectory) {
   } else if (timelineProgress < 100) {
     nextStep = 'Master-Timeline erzeugen, echte Audio-Cues eintragen und sync:audio im strengen Modus ausführen.';
   } else if (wordSync < 100) {
-    nextStep = 'Mit sync:words die exakten Gemini-Wortzeiten erzeugen und prüfen.';
+    nextStep = 'sync:words vorbereiten, production/codex-word-sync-task.md bearbeiten und danach mit --apply --strict übernehmen.';
   } else if (visualQuality < 100) {
     nextStep = 'check:visuals ausführen, jedes Bild visuell prüfen und die strenge visuelle Abnahme bestehen.';
   } else if (!rendererValidated) {
@@ -206,6 +209,7 @@ export async function calculateReelProgress(reelDirectory) {
       timelineCheckReady,
       wordSyncCreated,
       wordSyncPassed,
+      wordSyncProvider,
       wordCoverage,
       visualReportCreated,
       visualTechnicalReady,

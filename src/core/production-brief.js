@@ -34,7 +34,7 @@ export async function prepareReelProduction(reelDirectory) {
   await mkdir(productionDirectory, { recursive: true });
 
   const checklist = {
-    version: 5,
+    version: 6,
     reelId: reel.reelId,
     title: reel.title,
     createdAt: new Date().toISOString(),
@@ -44,7 +44,7 @@ export async function prepareReelProduction(reelDirectory) {
       { id: 'style-select', label: 'Passende Bildwelt auswählen und in reel.json eintragen', status: 'pending' },
       { id: 'scenes-fill', label: `${scenes.length} Szenen mit Audio-Cues vollständig planen`, status: 'pending' },
       { id: 'prompts-write', label: `${scenes.length} englische Bildprompts schreiben`, status: 'pending' },
-      { id: 'subtitles-write', label: 'Tiefe Untertitel für spätere Gemini-Wortzeiten planen', status: 'pending' },
+      { id: 'subtitles-write', label: 'Tiefe Untertitel für spätere Codex-Wortzeiten planen', status: 'pending' },
       { id: 'effects-write', label: 'Zooms, Kamerabewegungen, Übergänge und Soundeffekte planen', status: 'pending' },
       { id: 'cover-write', label: 'Cover-Idee und Cover-Prompt schreiben', status: 'pending' },
       { id: 'caption-write', label: 'Caption erstellen', status: 'pending' },
@@ -69,7 +69,8 @@ Erstelle aus dem vorhandenen deutschen Rohscript ein vollständiges Produktionsp
 - Voice-over: **Deutsch**
 - Bildprompts: **Englisch**
 - Untertitel: **79,5 % der Bildhöhe, sichere Zone 76,5–80,5 %**
-- Gelbe Wortmarkierung: **nach dem Voice-over automatisch über Gemini**
+- Gelbe Wortmarkierung: **nach dem Voice-over durch lokale Codex-Audio-Prüfung**
+- Externer Transkriptionsdienst: **nicht verwenden**
 - Hintergrundmusik: **standardmäßig ausgeschaltet**
 
 ## Rohscript
@@ -94,7 +95,7 @@ Erstelle aus dem vorhandenen deutschen Rohscript ein vollständiges Produktionsp
     - \`highlightCurrentWord: true\`
     - \`highlightColor: "#FFD84D"\`
     - keine geschätzten gelben Wortzeiten eintragen
-    - die finalen Cues werden später von \`sync:words\` aus dem echten Voice-over neu erzeugt
+    - die finalen Cues werden später aus akustisch bestätigten Codex-Wortzeiten neu erzeugt
 11. Fülle \`effects/effects-plan.json\` vollständig aus. Nicht jede Szene braucht Bewegung oder Sound. Zoom maximal 8 %, Schwenk maximal 4 %, \`cut\` als Standard.
 12. Fülle Cover, Caption und Quellen aus.
 13. Führe aus:
@@ -121,15 +122,23 @@ npm run build:timeline -- --dir "${normalizedDirectory}"
 npm run sync:audio -- --dir "${normalizedDirectory}" --strict
 \`\`\`
 
-3. Exakte Wortzeiten automatisch mit Gemini erzeugen:
+3. Codex-Wort-Sync vorbereiten:
 
 \`\`\`bash
-npm run sync:words -- --dir "${normalizedDirectory}" --strict
+npm run sync:words -- --dir "${normalizedDirectory}"
 \`\`\`
 
-4. Prüfe \`review/word-sync-report.json\`. Mindestens 98 % Wortabdeckung und keine leere Szene.
-5. Nach einer Pausenkürzung oder neuer Audiodatei \`sync:audio\` und \`sync:words\` erneut ausführen.
-6. Danach visuelle Prüfung, \`finalize:reel --strict\`, \`validate:render\` und \`render:reel\` ausführen.
+4. Bearbeite \`production/codex-word-sync-task.md\`: Voice-over lokal anhören und in \`subtitles/codex-word-sync.json\` für jedes Wort echte absolute Start- und Endzeiten, realistische Konfidenz und \`reviewed: true\` eintragen.
+5. Keine gleichmäßige Verteilung, keine erfundenen Zeiten, kein Gemini-Aufruf und kein externer Audio-Upload.
+6. Anwenden:
+
+\`\`\`bash
+npm run sync:words -- --dir "${normalizedDirectory}" --apply --strict
+\`\`\`
+
+7. Prüfe \`review/word-sync-report.json\`: mindestens 98 % Wortabdeckung, mindestens 0,85 Konfidenz und keine leere Szene.
+8. Nach einer Pausenkürzung oder neuer Audiodatei \`sync:audio\` und den Codex-Wort-Sync erneut ausführen.
+9. Danach visuelle Prüfung, \`finalize:reel --strict\`, \`validate:render\` und \`render:reel\` ausführen.
 
 ## Kreative Leitplanken
 
@@ -152,7 +161,7 @@ Nach bestandener Inhaltsprüfung nur mitteilen:
 - Untertitel- und Effektplan vorhanden
 - Voice-over und Bilder können extern erzeugt werden
 - Dateien dürfen unsortiert nach \`inbox/audio/\` und \`inbox/images/\`
-- nach dem Upload werden Audio-Cues und gelbe Wortmarkierung automatisch synchronisiert
+- nach dem Upload prüft Codex Audio-Cues und Wortzeiten lokal
 `;
 
   await writeFile(path.join(productionDirectory, 'agent-task.md'), `${brief}\n`, 'utf8');

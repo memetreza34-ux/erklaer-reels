@@ -12,35 +12,46 @@
 
 - Der vollständige Untertitel bleibt weiß sichtbar.
 - Nur das gerade gesprochene Wort wird gelb (`#FFD84D`) markiert.
-- Die Markierung darf ausschließlich echten Wortzeitstempeln folgen.
+- Die Markierung darf ausschließlich akustisch bestätigten Wortzeiten folgen.
 - Gleichmäßige oder gewichtete Schätzungen sind verboten.
 - Ohne exakte Wortzeiten bleibt der gesamte Cue weiß.
 - Der finale Renderer-Check blockiert fehlende, überlappende oder unvollständige Wortzeiten.
 
-## Automatische Wortzeiten mit Gemini
+## Lokale Wortzeiten durch Codex
 
-Nach bestandener Szenen-Audio-Synchronisierung:
+Nach bestandener Szenen-Audio-Synchronisierung zuerst vorbereiten:
 
 ```bash
-npm run sync:words -- --dir "PFAD-ZUM-REEL" --strict
+npm run sync:words -- --dir "PFAD-ZUM-REEL"
 ```
 
-Der Befehl:
+Dadurch entstehen `subtitles/codex-word-sync.json` und `production/codex-word-sync-task.md`.
 
-1. sendet das Voice-over an die Gemini Interactions API
-2. fordert deutsche Wort-Zeitstempel an
-3. ordnet die Wörter den Szenen der Master-Timeline zu
-4. erstellt kurze Untertitel-Cues
-5. schreibt absolute `wordTimings`
-6. aktualisiert Timeline und Render-Plan
+Codex hört anschließend das lokale Voice-over vollständig ab und füllt pro Wort:
+
+- absolute `startSeconds`
+- absolute `endSeconds`
+- realistische `confidence`
+- `reviewed: true` erst nach akustischer Kontrolle
+
+Danach:
+
+```bash
+npm run sync:words -- \
+  --dir "PFAD-ZUM-REEL" \
+  --apply \
+  --strict
+```
 
 Pflichtwerte:
 
 - mindestens 98 % Wortabdeckung
-- keine Szene ohne erkannte Wörter
+- im strengen Lauf mindestens 0,85 Konfidenz pro Wort
+- keine Szene ohne bestätigte Wörter
 - Cue-Text stimmt vollständig mit der Wortliste überein
 - chronologische Start- und Endzeiten
 - `review/word-sync-report.json` enthält `passed: true`
+- kein Gemini-Aufruf, kein API-Schlüssel und kein externer Audio-Upload
 
 Beispiel:
 
@@ -53,14 +64,14 @@ Beispiel:
   "verticalPositionPercent": 79.5,
   "highlightCurrentWord": true,
   "highlightColor": "#FFD84D",
-  "timingStatus": "gemini-word-synced",
-  "timingSource": "gemini-interactions-asr",
+  "timingStatus": "codex-word-synced",
+  "timingSource": "codex-local-audio-review",
   "wordTimings": [
-    { "text": "Der", "startSeconds": 4.2, "endSeconds": 4.45 },
-    { "text": "Tisch", "startSeconds": 4.45, "endSeconds": 4.9 },
-    { "text": "bekommt", "startSeconds": 4.96, "endSeconds": 5.32 },
-    { "text": "neuen", "startSeconds": 5.39, "endSeconds": 5.67 },
-    { "text": "Wert", "startSeconds": 5.72, "endSeconds": 6.02 }
+    { "text": "Der", "startSeconds": 4.2, "endSeconds": 4.45, "confidence": 0.97 },
+    { "text": "Tisch", "startSeconds": 4.45, "endSeconds": 4.9, "confidence": 0.98 },
+    { "text": "bekommt", "startSeconds": 4.96, "endSeconds": 5.32, "confidence": 0.96 },
+    { "text": "neuen", "startSeconds": 5.39, "endSeconds": 5.67, "confidence": 0.95 },
+    { "text": "Wert", "startSeconds": 5.72, "endSeconds": 6.02, "confidence": 0.98 }
   ]
 }
 ```
@@ -70,11 +81,13 @@ Beispiel:
 - Lange Satzpausen ab ungefähr 0,25 Sekunden dürfen automatisch gekürzt werden.
 - Etwa 0,12 Sekunden natürliche Pause bleiben erhalten.
 - Vor der Pausenkürzung bleibt die Originaldatei im Manifest dokumentiert.
-- Nach `trim:pauses` müssen Timeline, Audio-Cues und Gemini-Wortzeiten neu erzeugt werden.
+- Nach `trim:pauses` müssen Timeline, Audio-Cues und Codex-Wortzeiten neu geprüft werden.
 
 ```bash
 npm run trim:pauses -- --dir "PFAD-ZUM-REEL"
 npm run build:timeline -- --dir "PFAD-ZUM-REEL"
 npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
-npm run sync:words -- --dir "PFAD-ZUM-REEL" --strict
+npm run sync:words -- --dir "PFAD-ZUM-REEL"
+# Codex hört das neue Audio ab und füllt die Arbeitsdatei
+npm run sync:words -- --dir "PFAD-ZUM-REEL" --apply --strict
 ```
