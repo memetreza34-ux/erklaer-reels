@@ -24,8 +24,19 @@
       "min": 35,
       "max": 55
     },
-    "maximumSentencePauseSeconds": 0.25,
-    "preferredSentencePauseSeconds": 0.12
+    "maximumSentencePauseSeconds": 0.24,
+    "preferredSentencePauseSeconds": 0.1,
+    "audioPacing": {
+      "requiredBeforeTimeline": true,
+      "command": "npm run trim:pauses",
+      "silenceThresholdDb": -35,
+      "minimumPauseToTightenSeconds": 0.24,
+      "retainedPauseFilterSeconds": 0.05,
+      "playbackRate": 1.05,
+      "preservePitch": true,
+      "rerunTimelineAfterward": true,
+      "rerunWordSyncAfterward": true
+    }
   },
   "visualRules": {
     "minimumSceneCount": 8,
