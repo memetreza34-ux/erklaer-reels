@@ -23,7 +23,9 @@
     "targetDurationSeconds": {
       "min": 35,
       "max": 55
-    }
+    },
+    "maximumSentencePauseSeconds": 0.25,
+    "preferredSentencePauseSeconds": 0.12
   },
   "visualRules": {
     "minimumSceneCount": 8,
@@ -65,9 +67,9 @@
     "separateFromImagePrompts": true,
     "position": "lower-middle",
     "verticalPositionPercent": {
-      "min": 65,
-      "max": 75,
-      "default": 70
+      "min": 74,
+      "max": 79,
+      "default": 77
     },
     "wordsPerCue": {
       "min": 3,
@@ -75,6 +77,10 @@
     },
     "maxLines": 2,
     "wordByWordKaraoke": false,
+    "highlightCurrentWord": true,
+    "highlightColor": "#FFD400",
+    "preferExactWordTimings": true,
+    "fallbackWordTiming": "weighted-estimate",
     "repeatIntegratedImageText": false,
     "avoidPlatformUiSafeZones": true,
     "allowPositionAdjustmentForVisualConflicts": true

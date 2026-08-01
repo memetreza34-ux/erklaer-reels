@@ -10,6 +10,8 @@ import {
   useVideoConfig
 } from 'remotion';
 
+import { activeWordIndex, buildWordTimings } from './subtitle-timing.js';
+
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 
 const assetUrl = (file) => staticFile(String(file).replaceAll('\\', '/').replace(/^\/+/, ''));
@@ -100,8 +102,17 @@ const SceneLayer = ({ scene, incomingFrames, outgoingFrames }) => {
 };
 
 const Subtitle = ({ cue }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
   const position = cue.position ?? 'lower-middle';
-  const vertical = position === 'safe-lower-middle' ? 68 : 70;
+  const defaultVertical = position === 'safe-lower-middle' ? 76 : 77;
+  const vertical = clamp(Number(cue.verticalPositionPercent) || defaultVertical, 74, 79);
+  const words = buildWordTimings(cue);
+  const active = cue.highlightCurrentWord === false
+    ? -1
+    : activeWordIndex(words, frame / fps);
+  const highlightColor = cue.highlightColor ?? '#FFD400';
+
   return (
     <AbsoluteFill
       style={{
@@ -113,24 +124,36 @@ const Subtitle = ({ cue }) => {
       <div
         style={{
           position: 'absolute',
-          top: `${Number(cue.verticalPositionPercent) || vertical}%`,
+          top: `${vertical}%`,
           transform: 'translateY(-50%)',
-          maxWidth: '86%',
-          padding: '16px 24px 18px',
-          borderRadius: 18,
-          backgroundColor: 'rgba(0, 0, 0, 0.72)',
+          maxWidth: '88%',
+          padding: '12px 20px 14px',
+          borderRadius: 16,
+          backgroundColor: 'rgba(0, 0, 0, 0.66)',
           color: '#fff',
           fontFamily: 'Arial, Helvetica, sans-serif',
-          fontSize: 58,
+          fontSize: 54,
           fontWeight: 800,
           lineHeight: 1.08,
-          letterSpacing: -1.2,
+          letterSpacing: -1,
           textAlign: 'center',
-          textShadow: '0 3px 10px rgba(0, 0, 0, 0.85)',
-          whiteSpace: 'pre-wrap'
+          textShadow: '0 3px 10px rgba(0, 0, 0, 0.9)',
+          whiteSpace: 'normal'
         }}
       >
-        {cue.text}
+        {words.length > 0 ? words.map((word, index) => (
+          <React.Fragment key={`${word.text}-${index}`}>
+            {index > 0 ? ' ' : ''}
+            <span
+              style={{
+                color: index === active ? highlightColor : '#fff',
+                transition: 'color 60ms linear'
+              }}
+            >
+              {word.text}
+            </span>
+          </React.Fragment>
+        )) : cue.text}
       </div>
     </AbsoluteFill>
   );
