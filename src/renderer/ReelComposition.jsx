@@ -10,6 +10,14 @@ import {
   useVideoConfig
 } from 'remotion';
 
+import {
+  getActiveSubtitleWordIndex,
+  getSubtitleVerticalPositionPercent,
+  getSubtitleWordTimings,
+  subtitleTimingDefaults,
+  validateSubtitleWordTimings
+} from '../core/subtitle-timing.js';
+
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 
 const assetUrl = (file) => staticFile(String(file).replaceAll('\\', '/').replace(/^\/+/, ''));
@@ -99,9 +107,44 @@ const SceneLayer = ({ scene, incomingFrames, outgoingFrames }) => {
   );
 };
 
+const SubtitleText = ({ cue, currentSeconds }) => {
+  const wordTiming = validateSubtitleWordTimings(cue);
+  const highlightEnabled = cue.highlightEnabled !== false && cue.highlightMode !== 'none';
+
+  if (!highlightEnabled || !wordTiming.valid) {
+    return <>{cue.text}</>;
+  }
+
+  const words = getSubtitleWordTimings(cue);
+  const activeIndex = getActiveSubtitleWordIndex(cue, currentSeconds);
+  const highlightColor = cue.highlightColor ?? subtitleTimingDefaults.highlightColor;
+
+  return (
+    <>
+      {words.map((word, index) => (
+        <React.Fragment key={`${cue.id ?? 'subtitle'}-word-${index}`}>
+          {index > 0 ? ' ' : ''}
+          <span
+            style={{
+              color: index === activeIndex ? highlightColor : '#fff',
+              transition: 'color 45ms linear'
+            }}
+          >
+            {word.text}
+          </span>
+        </React.Fragment>
+      ))}
+    </>
+  );
+};
+
 const Subtitle = ({ cue }) => {
-  const position = cue.position ?? 'lower-middle';
-  const vertical = position === 'safe-lower-middle' ? 68 : 70;
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const cueStartSeconds = Number(cue.startSeconds) || 0;
+  const currentSeconds = cueStartSeconds + frame / fps;
+  const vertical = getSubtitleVerticalPositionPercent(cue);
+
   return (
     <AbsoluteFill
       style={{
@@ -113,24 +156,25 @@ const Subtitle = ({ cue }) => {
       <div
         style={{
           position: 'absolute',
-          top: `${Number(cue.verticalPositionPercent) || vertical}%`,
+          top: `${vertical}%`,
           transform: 'translateY(-50%)',
-          maxWidth: '86%',
-          padding: '16px 24px 18px',
-          borderRadius: 18,
-          backgroundColor: 'rgba(0, 0, 0, 0.72)',
+          maxWidth: '88%',
+          padding: '10px 20px 12px',
+          borderRadius: 15,
+          backgroundColor: 'rgba(0, 0, 0, 0.58)',
           color: '#fff',
           fontFamily: 'Arial, Helvetica, sans-serif',
-          fontSize: 58,
+          fontSize: 56,
           fontWeight: 800,
           lineHeight: 1.08,
-          letterSpacing: -1.2,
+          letterSpacing: -1.1,
           textAlign: 'center',
-          textShadow: '0 3px 10px rgba(0, 0, 0, 0.85)',
+          textShadow: '0 3px 10px rgba(0, 0, 0, 0.92)',
+          WebkitTextStroke: '1.2px rgba(0, 0, 0, 0.82)',
           whiteSpace: 'pre-wrap'
         }}
       >
-        {cue.text}
+        <SubtitleText cue={cue} currentSeconds={currentSeconds} />
       </div>
     </AbsoluteFill>
   );
