@@ -2,7 +2,7 @@
 
 ## Grundsatz
 
-Zooms, Kamerabewegungen, Übergänge und Soundeffekte sollen das Verständnis unterstützen. Sie dürfen nicht vom Voice-over oder vom Bildinhalt ablenken.
+Zooms, Kamerabewegungen und Soundeffekte sollen das Verständnis unterstützen. Sie dürfen nicht vom Voice-over oder vom Bildinhalt ablenken.
 
 ## Zooms und Kamerabewegungen
 
@@ -18,12 +18,12 @@ Zooms, Kamerabewegungen, Übergänge und Soundeffekte sollen das Verständnis un
 
 ## Übergänge
 
-- Der normale Übergang ist ein sauberer Schnitt.
-- Crossfades von ungefähr 0,1–0,25 Sekunden nur verwenden, wenn zwei Gedanken weich ineinander übergehen.
-- Dezente Slides nur einsetzen, wenn eine räumliche oder logische Richtung erklärt wird.
-- Keine auffälligen Glitch-, Spin-, Flash- oder 3D-Übergänge.
-- Nicht denselben Spezialübergang zwischen jeder Szene wiederholen.
 - Das Hook-Bild beginnt ohne Übergang ab Sekunde 0.
+- Zwischen allen weiteren Szenen wird ausschließlich ein direkter harter Schnitt verwendet.
+- Keine Crossfades, Schwarzblenden, Dip-to-dark-, Slide-, Glitch-, Spin-, Flash- oder 3D-Übergänge.
+- Kein schwarzes Zwischenbild und keine Ein- oder Ausblendung am Szenenwechsel.
+- Der neue Bildmoment ist ab dem ersten Frame des Schnitts vollständig sichtbar.
+- Das Tempo entsteht durch gute Bildauswahl, passende Bildwechsel und das Voice-over, nicht durch Übergangsanimationen.
 
 ## Soundeffekte
 
@@ -38,6 +38,22 @@ Zooms, Kamerabewegungen, Übergänge und Soundeffekte sollen das Verständnis un
 - Soundeffekte dürfen wichtige Wörter des Voice-overs nicht verdecken.
 - Keine urheberrechtlich geschützte Musik oder ungeklärten Audioausschnitte verwenden.
 
+## Audio-Pacing
+
+Nach dem Einfügen des echten Voice-overs wird das Audio vor der Timeline optimiert:
+
+```bash
+npm run trim:pauses -- --dir "PFAD-ZUM-REEL"
+```
+
+Standardwerte:
+
+- Pausen ab ungefähr 0,24 Sekunden werden gekürzt.
+- Nur eine sehr kurze natürliche Restpause bleibt erhalten.
+- Das Voice-over wird mit `1.05x` leicht beschleunigt.
+- Die Tonhöhe bleibt erhalten.
+- Danach müssen Timeline, Audio-Cues und Codex-Wortzeiten neu synchronisiert werden.
+
 ## Planung
 
 Die Planung wird getrennt von den Bildprompts in `effects/effects-plan.json` gespeichert. Jeder Szeneneintrag enthält:
@@ -48,4 +64,4 @@ Die Planung wird getrennt von den Bildprompts in `effects/effects-plan.json` ges
 - `soundEffects`
 - eine kurze Begründung
 
-Nach Einfügen des echten Voice-overs prüft Codex alle Zeitpunkte erneut gegen die Audiospur. Die Planung erzeugt noch kein fertiges Video; sie ist die verbindliche Vorlage für den späteren Schnitt oder ein Remotion-Rendering.
+Für Szene 1 gilt `transitionIn.type: "none"`. Für jede weitere Szene gilt `transitionIn.type: "cut"` und `durationSeconds: 0`.
