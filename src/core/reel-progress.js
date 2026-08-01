@@ -29,6 +29,7 @@ export async function calculateReelProgress(reelDirectory) {
   const manifest = await readJson(path.join(reelDirectory, 'assets-manifest.json'), { scenes: [] });
   const readiness = await readJson(path.join(reelDirectory, 'review', 'content-readiness.json'), null);
   const matchingReport = await readJson(path.join(reelDirectory, 'review', 'asset-matching-report.json'), null);
+  const audioPacingReport = await readJson(path.join(reelDirectory, 'review', 'audio-pacing-report.json'), null);
   const timeline = await readJson(path.join(reelDirectory, 'timeline', 'timeline-plan.json'), null);
   const renderPlan = await readJson(path.join(reelDirectory, 'render', 'render-plan.json'), null);
   const timelineReport = await readJson(path.join(reelDirectory, 'review', 'final-video-report.json'), null);
@@ -104,6 +105,21 @@ export async function calculateReelProgress(reelDirectory) {
     (assetReportReady ? 5 : 0)
   );
 
+  const audioPacingCreated = Boolean(audioPacingReport?.createdAt);
+  const audioPacingRate = Number(audioPacingReport?.playbackRate ?? 0);
+  const audioPacingRateSafe = audioPacingRate >= 1.03 && audioPacingRate <= 1.07;
+  const audioPacingDurationReduced = Number(audioPacingReport?.afterSeconds) > 0 &&
+    Number(audioPacingReport?.afterSeconds) < Number(audioPacingReport?.beforeSeconds);
+  const audioPacingPassed = audioPacingReport?.passed === true &&
+    audioPacingRateSafe &&
+    audioPacingDurationReduced;
+  const audioPacing = clamp(
+    (audioPacingCreated ? 20 : 0) +
+    (audioPacingReport?.passed === true ? 30 : 0) +
+    (audioPacingRateSafe ? 25 : 0) +
+    (audioPacingDurationReduced ? 25 : 0)
+  );
+
   const timelineBuilt = Boolean(timeline);
   const audioDurationKnown = timeline?.audio?.exactDurationKnown === true;
   const audioSynced = timeline?.timingStatus === 'audio-synced';
@@ -145,10 +161,11 @@ export async function calculateReelProgress(reelDirectory) {
   );
 
   const productionReady = clamp(
-    preProduction * 0.45 +
-    assets * 0.22 +
-    timelineProgress * 0.13 +
-    wordSync * 0.1 +
+    preProduction * 0.4 +
+    assets * 0.2 +
+    audioPacing * 0.1 +
+    timelineProgress * 0.12 +
+    wordSync * 0.08 +
     visualQuality * 0.1
   );
 
@@ -164,8 +181,10 @@ export async function calculateReelProgress(reelDirectory) {
     nextStep = 'Codex muss production/agent-task.md fertigstellen und die strenge Inhaltsprüfung bestehen.';
   } else if (assets < 100) {
     nextStep = 'Voice-over und Bilder extern erzeugen, unsortiert in die Inbox legen und zuordnen lassen.';
+  } else if (audioPacing < 100) {
+    nextStep = 'Mit trim:pauses lange Pausen kürzen und das Voice-over leicht beschleunigen.';
   } else if (timelineProgress < 100) {
-    nextStep = 'Master-Timeline erzeugen, echte Audio-Cues eintragen und sync:audio im strengen Modus ausführen.';
+    nextStep = 'Master-Timeline mit dem optimierten Audio erzeugen, echte Audio-Cues eintragen und sync:audio streng ausführen.';
   } else if (wordSync < 100) {
     nextStep = 'sync:words vorbereiten, production/codex-word-sync-task.md bearbeiten und danach mit --apply --strict übernehmen.';
   } else if (visualQuality < 100) {
@@ -183,6 +202,7 @@ export async function calculateReelProgress(reelDirectory) {
     title: reel.title ?? '',
     preProduction,
     assets,
+    audioPacing,
     timeline: timelineProgress,
     wordSync,
     visualQuality,
@@ -202,6 +222,10 @@ export async function calculateReelProgress(reelDirectory) {
       sceneImagesReady: `${readySceneImages}/${scenes.length}`,
       coverImageReady,
       assetReportReady,
+      audioPacingCreated,
+      audioPacingPassed,
+      audioPacingRate,
+      audioPacingDurationReduced,
       timelineBuilt,
       audioDurationKnown,
       audioSynced,
