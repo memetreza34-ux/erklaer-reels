@@ -1,6 +1,8 @@
 import { access, readFile } from 'node:fs/promises';
 import path from 'node:path';
 
+import { validateExactWordTimings } from '../renderer/subtitle-timing.js';
+
 const IMAGE_EXTENSIONS = new Set(['.png', '.jpg', '.jpeg', '.webp']);
 const AUDIO_EXTENSIONS = new Set(['.mp3', '.wav', '.m4a', '.aac', '.flac', '.ogg']);
 const TRANSITIONS = new Set(['none', 'cut', 'crossfade']);
@@ -151,6 +153,17 @@ export async function validateRendererInput(reelDirectory, {
         `${cueId}: Untertitelzeit ist ungültig.`);
       push(checks, `${cueId}-text`, String(cue.text ?? '').trim().length > 0,
         `${cueId}: Untertiteltext fehlt.`);
+
+      const vertical = Number(cue.verticalPositionPercent ?? 79.5);
+      push(checks, `${cueId}-vertical-position`, Number.isFinite(vertical) && vertical >= 76.5 && vertical <= 80.5,
+        `${cueId}: Untertitel müssen zwischen 76,5 und 80,5 Prozent der Bildhöhe liegen.`);
+
+      if (cue.highlightCurrentWord !== false) {
+        const exact = validateExactWordTimings(cue);
+        push(checks, `${cueId}-exact-word-timing`, exact.valid,
+          `${cueId}: Die gelbe Wortmarkierung braucht echte Wortzeiten. ${exact.issues.join(' ')}`,
+          requireFinalReadiness ? 'error' : 'warning');
+      }
     }
 
     const effectScene = effectsByScene.get(id) ?? {};

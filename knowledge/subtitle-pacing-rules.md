@@ -2,30 +2,38 @@
 
 ## Position
 
-- Standardposition ist 77 % der Bildhöhe.
-- Erlaubter Bereich ist 74–79 %.
-- Untertitel liegen damit deutlich tiefer als zuvor, bleiben aber oberhalb der unteren Plattform-Bedienelemente.
+- Standardposition ist 79,5 % der Bildhöhe.
+- Erlaubter Bereich ist 76,5–80,5 %.
+- Untertitel liegen damit sichtbar weiter unten, bleiben aber oberhalb der unteren Plattform-Bedienelemente.
 - Höchstens zwei Zeilen und kurze Sinnabschnitte verwenden.
+- Bei einer Kollision mit wichtigem Bildinhalt darf innerhalb der sicheren Zone leicht nach oben verschoben werden.
 
 ## Gelbe Wortmarkierung
 
 - Der vollständige Untertitel bleibt weiß sichtbar.
-- Nur das gerade gesprochene Wort wird gelb (`#FFD400`) markiert.
-- Bevorzugt werden exakte Wortzeiten in `cue.words`:
+- Nur das gerade gesprochene Wort wird gelb (`#FFD84D`) markiert.
+- Die gelbe Markierung darf ausschließlich echten, verifizierten Wortzeiten folgen.
+- Exakte Wortzeiten können in `cue.wordTimings` oder `cue.words` stehen:
 
 ```json
 {
   "text": "Der Tisch bekommt neuen Wert",
   "startSeconds": 4.2,
   "endSeconds": 6.1,
-  "words": [
+  "wordTimings": [
     { "text": "Der", "startSeconds": 4.2, "endSeconds": 4.45 },
-    { "text": "Tisch", "startSeconds": 4.45, "endSeconds": 4.9 }
+    { "text": "Tisch", "startSeconds": 4.45, "endSeconds": 4.9 },
+    { "text": "bekommt", "startSeconds": 4.96, "endSeconds": 5.32 },
+    { "text": "neuen", "startSeconds": 5.39, "endSeconds": 5.67 },
+    { "text": "Wert", "startSeconds": 5.72, "endSeconds": 6.02 }
   ]
 }
 ```
 
-- Ohne Wortzeiten verwendet der Renderer nur eine gewichtete Schätzung. Das ist ein Fallback und keine bestätigte Sprachsynchronisation.
+- Die Wörter müssen vollständig zum sichtbaren Cue-Text passen.
+- Zeiten müssen chronologisch sortiert sein und innerhalb der Cue-Zeit liegen.
+- Ohne exakte Wortzeiten bleibt der gesamte Cue weiß. Der Renderer darf keine gelbe Schätzung anzeigen.
+- Der finale Renderer-Check blockiert die Freigabe, wenn die Wortmarkierung aktiv ist, aber exakte Wortzeiten fehlen.
 - Nach Änderungen an der Audiodatei müssen Wortzeiten neu berechnet oder neu geprüft werden.
 
 ## Pausen

@@ -104,14 +104,14 @@ const SceneLayer = ({ scene, incomingFrames, outgoingFrames }) => {
 const Subtitle = ({ cue }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const position = cue.position ?? 'lower-middle';
-  const defaultVertical = position === 'safe-lower-middle' ? 76 : 77;
-  const vertical = clamp(Number(cue.verticalPositionPercent) || defaultVertical, 74, 79);
+  const position = cue.position ?? 'safe-lower-middle';
+  const defaultVertical = position === 'safe-lower-middle' ? 79.5 : 79;
+  const vertical = clamp(Number(cue.verticalPositionPercent) || defaultVertical, 76.5, 80.5);
   const words = buildWordTimings(cue);
   const active = cue.highlightCurrentWord === false
     ? -1
     : activeWordIndex(words, frame / fps);
-  const highlightColor = cue.highlightColor ?? '#FFD400';
+  const highlightColor = cue.highlightColor ?? '#FFD84D';
 
   return (
     <AbsoluteFill
@@ -126,18 +126,18 @@ const Subtitle = ({ cue }) => {
           position: 'absolute',
           top: `${vertical}%`,
           transform: 'translateY(-50%)',
-          maxWidth: '88%',
-          padding: '12px 20px 14px',
-          borderRadius: 16,
-          backgroundColor: 'rgba(0, 0, 0, 0.66)',
+          maxWidth: '90%',
+          padding: '9px 18px 11px',
+          borderRadius: 14,
+          backgroundColor: 'rgba(0, 0, 0, 0.64)',
           color: '#fff',
           fontFamily: 'Arial, Helvetica, sans-serif',
-          fontSize: 54,
+          fontSize: 52,
           fontWeight: 800,
           lineHeight: 1.08,
-          letterSpacing: -1,
+          letterSpacing: -0.9,
           textAlign: 'center',
-          textShadow: '0 3px 10px rgba(0, 0, 0, 0.9)',
+          textShadow: '0 3px 10px rgba(0, 0, 0, 0.92)',
           whiteSpace: 'normal'
         }}
       >
@@ -147,7 +147,7 @@ const Subtitle = ({ cue }) => {
             <span
               style={{
                 color: index === active ? highlightColor : '#fff',
-                transition: 'color 60ms linear'
+                transition: 'color 45ms linear'
               }}
             >
               {word.text}

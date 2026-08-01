@@ -133,7 +133,7 @@ export async function createReelWorkspace({
       audioCue: '',
       leadInSeconds: 0.2,
       subtitleCues: [],
-      subtitlePosition: 'lower-middle',
+      subtitlePosition: 'safe-lower-middle',
       durationSeconds: 0,
       expectedImageFileName: `${sceneId}.png`,
       promptStatus: 'missing',
@@ -196,19 +196,24 @@ export async function createReelWorkspace({
   await writeText(path.join(reelDirectory, 'audio', '.gitkeep'));
   await writeJson(path.join(reelDirectory, 'scenes', 'scene-index.json'), sceneIndex);
   await writeJson(path.join(reelDirectory, 'subtitles', 'subtitle-plan.json'), {
-    version: 1,
+    version: 2,
     enabled: true,
     language: 'de',
-    position: 'lower-middle',
-    verticalPositionPercent: 70,
+    position: 'safe-lower-middle',
+    verticalPositionPercent: 79.5,
+    safeVerticalRangePercent: { min: 76.5, max: 80.5 },
     maxLines: 2,
     wordsPerCue: { min: 3, max: 6 },
     wordByWordKaraoke: false,
+    highlightCurrentWord: true,
+    highlightColor: '#FFD84D',
+    exactWordTimingsRequired: true,
+    fallbackWordTiming: 'plain-white-no-highlight',
     avoidRepeatingImageText: true,
     timingStatus: 'estimated-until-audio-arrives',
     cues: []
   });
-  await writeText(path.join(reelDirectory, 'subtitles', 'README.md'), `# Untertitel\n\nUntertitel werden getrennt von den Bildern geplant.\nPosition: untere Mitte bei ungefähr 65–75 % der Bildhöhe.\nNormalerweise 3–6 Wörter pro Einblendung und höchstens zwei Zeilen.\nDie exakten Zeitpunkte werden nach Einfügen der echten Audiodatei fein synchronisiert.\n`);
+  await writeText(path.join(reelDirectory, 'subtitles', 'README.md'), `# Untertitel\n\nUntertitel stehen standardmäßig bei ungefähr 79,5 % der Bildhöhe.\nDer sichere Bereich liegt zwischen 76,5 und 80,5 %: sichtbar weit unten, aber oberhalb der Plattform-Bedienelemente.\nNormalerweise 3–6 Wörter pro Einblendung und höchstens zwei Zeilen.\nDas aktuell gesprochene Wort wird gelb markiert, aber nur mit exakten Wortzeiten aus \`wordTimings\` oder \`words\`.\nOhne verifizierte Wortzeiten bleibt der gesamte Untertitel weiß, damit keine falsche Synchronisierung angezeigt wird.\n`);
   await writeJson(path.join(reelDirectory, 'effects', 'effects-plan.json'), {
     version: 1,
     enabled: true,
@@ -265,7 +270,7 @@ export async function createReelWorkspace({
   await writeText(path.join(reelDirectory, 'inbox', 'images', '.gitkeep'));
   await writeText(path.join(reelDirectory, 'inbox', 'audio', '.gitkeep'));
   await writeText(path.join(reelDirectory, 'inbox', 'processed', '.gitkeep'));
-  await writeText(path.join(reelDirectory, 'inbox', 'README.md'), `# Unsortierte externe Dateien\n\nLege alle generierten Szenenbilder und das Cover mit beliebigen Dateinamen nach \`images/\`.\nLege das fertige Voice-over nach \`audio/\`.\nDie Reihenfolge ist egal; Codex ordnet die Dateien später anhand ihres sichtbaren Inhalts zu.\nNach dem Einfügen der Audiodatei prüft Codex Bildwechsel, Untertitel, Zooms, Übergänge und Soundeffekte gegen die echte Audiospur.\n`);
+  await writeText(path.join(reelDirectory, 'inbox', 'README.md'), `# Unsortierte externe Dateien\n\nLege alle generierten Szenenbilder und das Cover mit beliebigen Dateinamen nach \`images/\`.\nLege das fertige Voice-over nach \`audio/\`.\nDie Reihenfolge ist egal; Codex ordnet die Dateien später anhand ihres sichtbaren Inhalts zu.\nNach dem Einfügen der Audiodatei prüft Codex Bildwechsel, Untertitel, gelbe Wortmarkierung, Zooms, Übergänge und Soundeffekte gegen die echte Audiospur.\n`);
   await writeJson(path.join(reelDirectory, 'inbox', 'asset-map.json'), {
     version: 1,
     generatedBy: '',

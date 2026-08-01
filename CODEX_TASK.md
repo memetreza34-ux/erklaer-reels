@@ -71,12 +71,40 @@ Das Bild beginnt normalerweise 0,1–0,3 Sekunden vor dem gesprochenen `audioCue
 ## 3. Untertitel
 
 - standardmäßig aktiv
-- untere Mitte bei ungefähr 65–75 % der Bildhöhe
+- Position `safe-lower-middle`
+- Standardhöhe 79,5 %
+- erlaubter Bereich 76,5–80,5 %
+- sichtbar weit unten, aber oberhalb der Plattform-Bedienelemente
 - normalerweise 3–6 Wörter
 - höchstens zwei Zeilen
-- Sinnabschnitte statt Wort-für-Wort-Karaoke
+- Sinnabschnitte statt hektischem Karaoke
 - Bildtext nicht identisch wiederholen
 - nicht in Bildprompts einbrennen
+- aktuell gesprochenes Wort gelb mit `#FFD84D`
+- gelbe Markierung ausschließlich mit verifizierten Wortzeiten
+- ohne exakte Wortzeiten bleibt der komplette Cue weiß
+
+Jeder finale Cue benötigt nach dem Audio-Sync absolute Wortzeiten:
+
+```json
+{
+  "id": "scene-01-subtitle-01",
+  "text": "Warum holen manche Menschen",
+  "startSeconds": 0.12,
+  "endSeconds": 2.34,
+  "verticalPositionPercent": 79.5,
+  "highlightCurrentWord": true,
+  "highlightColor": "#FFD84D",
+  "wordTimings": [
+    { "text": "Warum", "startSeconds": 0.12, "endSeconds": 0.42 },
+    { "text": "holen", "startSeconds": 0.48, "endSeconds": 0.72 },
+    { "text": "manche", "startSeconds": 0.79, "endSeconds": 1.12 },
+    { "text": "Menschen", "startSeconds": 1.18, "endSeconds": 1.63 }
+  ]
+}
+```
+
+`words` ist als Alias für `wordTimings` erlaubt. Die Wörter müssen vollständig zum sichtbaren Cue-Text passen, chronologisch sortiert sein und innerhalb der Cue-Zeit liegen.
 
 ## 4. Zooms, Übergänge und Sounds
 
@@ -139,7 +167,7 @@ npm run organize:assets -- --dir "PFAD-ZUM-REEL" --apply
 
 `review/asset-matching-report.json` prüfen.
 
-## 6. Timeline und Audio synchronisieren
+## 6. Timeline, Audio und Wortzeiten synchronisieren
 
 Erster Lauf:
 
@@ -154,6 +182,10 @@ npm run sync:audio -- --dir "PFAD-ZUM-REEL" --audio-duration 48.7
 ```
 
 Voice-over abhören. Für jede Szene den tatsächlichen Zeitpunkt von `audioCue` in `timeline/audio-sync.json` als `cueTimeSeconds` eintragen. Unsichere Zeiten nicht erfinden.
+
+Danach jeden Untertitel-Cue gegen das Voice-over prüfen und in `subtitles/subtitle-plan.json` für jedes sichtbare Wort `wordTimings` oder `words` mit absoluten `startSeconds` und `endSeconds` eintragen. Die gelbe Markierung darf niemals gleichmäßig über den Satz verteilt werden.
+
+Nach einer Pausenkürzung müssen Cue- und Wortzeiten erneut geprüft werden.
 
 Danach:
 
@@ -173,6 +205,8 @@ Pflicht:
 - letzte Szene endet mit dem Voice-over
 - keine unbeabsichtigten Lücken oder Überlappungen
 - Untertitel überschneiden sich nicht
+- gelbe Wortmarkierung stimmt mit der Stimme überein
+- Untertitel liegen standardmäßig bei 79,5 % und niemals außerhalb 76,5–80,5 %
 - Sounds liegen innerhalb ihrer Szene
 - Status `audio-synced` nur bei verifizierten Zeiten
 
@@ -231,7 +265,9 @@ Die Prüfung muss bestehen. Sie kontrolliert:
 - vorhandene Bilder und Voice-over
 - sichere lokale Pfade
 - gültige Zoom-, Schwenk- und Crossfade-Werte
-- Untertitelzeiten
+- Untertitelposition 76,5–80,5 %
+- exakte Wortzeiten für die gelbe Markierung
+- Übereinstimmung zwischen Cue-Text und Wortliste
 - optionale Sounddateien
 - finale Freigabe
 
@@ -259,7 +295,8 @@ Der Renderer setzt um:
 
 - Szenenbilder
 - Voice-over
-- Untertitel
+- tiefe Untertitel
+- exakt synchronisierte gelbe Wortmarkierung
 - Zooms und Schwenks
 - Schnitte und Crossfades
 - vorhandene Soundeffekt-Dateien
@@ -278,6 +315,7 @@ Das Reel ist erst vollständig fertig, wenn:
 - Inhaltsprüfung bestanden
 - Assets korrekt zugeordnet
 - Audio synchronisiert
+- Wortzeiten der Untertitel verifiziert
 - visuelle Prüfung bestanden
 - Abschlussprüfung freigegeben
 - Renderer-Eingabe validiert
