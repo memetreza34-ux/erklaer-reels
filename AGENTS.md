@@ -39,7 +39,7 @@ Ein vollständiger Reel-Ordner enthält:
 2. 8–12 Bildmomente abhängig von der Audiolänge
 3. eine konsistente Bildwelt innerhalb des Reels
 4. englische Bildprompts mit optionalem deutschem Schlüsseltext
-5. Untertitelplan
+5. Untertitelplan mit exakten Wortzeiten für die gelbe Markierung
 6. Effektplan für Zooms, Schwenks, Übergänge und Soundeffekte
 7. Master-Timeline und Audio-Synchronisierung
 8. renderer-neutralen Render-Plan
@@ -82,12 +82,38 @@ Unsichere Cue-Zeitpunkte dürfen nicht erfunden werden. Verifizierte Zeiten geh�
 
 - Untertitel sind standardmäßig aktiv.
 - Planung in `subtitles/subtitle-plan.json`, nicht in Bildprompts einbrennen.
-- Position: untere Mitte bei ungefähr 65–75 % der Bildhöhe.
+- Standardposition: `safe-lower-middle` bei 77 % der Bildhöhe.
+- Erlaubter vertikaler Bereich: 73–79 %.
+- Die Untertitel stehen sichtbar weit unten, aber oberhalb der Plattform-Bedienelemente.
 - Normalerweise 3–6 Wörter und höchstens zwei Zeilen pro Cue.
-- Sinnabschnitte statt Wort-für-Wort-Karaoke.
+- Sinnabschnitte statt hektischem Wort-für-Wort-Karaoke.
 - Integrierten Bildtext nicht wortgleich wiederholen.
 - Untertitel dürfen weder Hauptmotiv noch Plattform-Bedienelemente verdecken.
-- Nach Einfügen des echten Voice-overs müssen die Zeitpunkte fein synchronisiert werden.
+- Das aktuell gesprochene Wort wird mit `#FFD84D` gelb markiert.
+- Die gelbe Markierung darf ausschließlich echten, verifizierten Wortzeiten folgen.
+- Gleichmäßiges Verteilen der Wörter über die Cue-Dauer ist verboten.
+- Ohne gültige `wordTimings` bleibt der komplette Untertitel weiß; eine falsche gelbe Markierung ist schlechter als keine Markierung.
+
+Jeder finale Cue benötigt nach dem Voice-over-Sync:
+
+```json
+{
+  "text": "Warum holen manche Menschen",
+  "startSeconds": 0.12,
+  "endSeconds": 2.34,
+  "verticalPositionPercent": 77,
+  "highlightMode": "word",
+  "highlightColor": "#FFD84D",
+  "wordTimings": [
+    { "text": "Warum", "startSeconds": 0.12, "endSeconds": 0.42 },
+    { "text": "holen", "startSeconds": 0.48, "endSeconds": 0.72 },
+    { "text": "manche", "startSeconds": 0.79, "endSeconds": 1.12 },
+    { "text": "Menschen", "startSeconds": 1.18, "endSeconds": 1.63 }
+  ]
+}
+```
+
+Die Wortliste muss vollständig zum sichtbaren Cue-Text passen, chronologisch sortiert sein und innerhalb der Cue-Zeit liegen.
 
 ## Zooms, Schwenks, Übergänge und Sounds
 
@@ -187,7 +213,9 @@ Wenn `ffprobe` fehlt:
 npm run sync:audio -- --dir "<reel-ordner>" --audio-duration 48.7
 ```
 
-Codex hört das echte Voice-over ab und trägt für jede Szene `cueTimeSeconds` und `confidence` ein. Danach:
+Codex hört das echte Voice-over ab und trägt für jede Szene `cueTimeSeconds` und `confidence` ein. Anschließend hört Codex jeden Untertitel-Cue ab und ergänzt in `subtitles/subtitle-plan.json` die echten absoluten `wordTimings` für jedes sichtbare Wort.
+
+Danach:
 
 ```bash
 npm run sync:audio -- --dir "<reel-ordner>" --strict
@@ -196,11 +224,12 @@ npm run sync:audio -- --dir "<reel-ordner>" --strict
 Verbindliche Dateien:
 
 - `timeline/audio-sync.json` – verifizierte Cue-Zeiten
+- `subtitles/subtitle-plan.json` – Cue-Zeiten und exakte Wortzeiten
 - `timeline/timeline-plan.json` – zentrale zeitliche Wahrheit
 - `render/render-plan.json` – Sekunden und Frames für 1080 × 1920 bei 30 FPS
 - `review/final-video-report.json` – Timeline-Prüfung
 
-Die Hook beginnt bei Frame 0. Die letzte Szene endet exakt mit dem Voice-over. Szenen und Untertitel dürfen keine unbeabsichtigten Lücken oder Überlappungen erzeugen.
+Die Hook beginnt bei Frame 0. Die letzte Szene endet exakt mit dem Voice-over. Szenen und Untertitel dürfen keine unbeabsichtigten Lücken oder Überlappungen erzeugen. Die gelbe Wortmarkierung muss hörbar zur Stimme passen.
 
 ## Zentrale Abschlussprüfung
 
@@ -235,6 +264,8 @@ Vorprüfung:
 npm run validate:render -- --dir "<reel-ordner>"
 ```
 
+Die Vorprüfung blockiert den finalen Render, wenn die gelbe Markierung aktiviert ist, aber exakte `wordTimings` fehlen oder fehlerhaft sortiert sind.
+
 MP4 erzeugen:
 
 ```bash
@@ -251,7 +282,8 @@ Der Renderer muss umsetzen:
 
 - Szenenbilder
 - Voice-over
-- Untertitel
+- tiefe Untertitel bei 77 %
+- exakt synchronisierte gelbe Wortmarkierung
 - Zooms und Schwenks
 - harte Schnitte und kurze Crossfades
 - vorhandene Soundeffekt-Dateien
@@ -274,7 +306,7 @@ Nach Erfolg entstehen:
 4. Führe `npm run check:content -- --dir "<reel-ordner>" --strict` aus.
 5. Nutzer erzeugt Bilder und Voice-over extern.
 6. Ordne die Assets inhaltsbasiert zu.
-7. Synchronisiere Timeline und Audio.
+7. Synchronisiere Timeline, Audio und Wortzeiten.
 8. Führe die visuelle Prüfung aus.
 9. Führe `finalize:reel --strict` aus.
 10. Validiere den Renderer.
