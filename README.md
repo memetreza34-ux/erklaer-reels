@@ -8,7 +8,7 @@ Aus einem Thema oder deutschen Rohscript entsteht ein vollständiges Reel mit:
 - 8–12 Bildmomenten
 - englischen Bildprompts
 - tief positionierten Untertiteln
-- exakt synchronisierter gelber Wortmarkierung
+- automatisch synchronisierter gelber Wortmarkierung
 - Zooms, Schwenks, Übergängen und Sounds
 - Master-Timeline und Audio-Synchronisierung
 - technischer und visueller Qualitätsprüfung
@@ -21,8 +21,24 @@ Der Nutzer erzeugt Voice-over und Bilder extern. Das Repository übernimmt den r
 
 - Node.js 20 oder neuer
 - `npm install`
+- Gemini-API-Key für automatische Wortzeitstempel
 - optional `ffprobe` für automatische Audiodauer
 - aktuelle Remotion-Lizenzbedingungen vor geschäftlicher Nutzung prüfen
+
+Gemini einrichten:
+
+```bash
+cp .env.example .env
+```
+
+Danach nur lokal eintragen:
+
+```env
+GEMINI_API_KEY=dein_schluessel
+GEMINI_TRANSCRIBE_MODEL=gemini-3.6-flash
+```
+
+`.env` wird nicht nach GitHub hochgeladen.
 
 ## Produktionsregeln
 
@@ -35,7 +51,7 @@ Der Nutzer erzeugt Voice-over und Bilder extern. Das Repository übernimmt den r
 - sichere Untertitelzone 76,5–80,5 %
 - 3–6 Wörter, höchstens zwei Zeilen
 - aktuell gesprochenes Wort gelb mit `#FFD84D`
-- gelbe Markierung nur anhand verifizierter `wordTimings` oder `words`
+- gelbe Markierung nur anhand verifizierter Wortzeiten
 - ohne exakte Wortzeiten bleibt der Cue vollständig weiß
 - Zoom normalerweise 2–6 %, maximal 8 %
 - Schwenk maximal 4 %
@@ -59,7 +75,9 @@ Dateien unsortiert in die Inbox legen
         ↓
 Bilder, Cover und Audio inhaltsbasiert zuordnen
         ↓
-Timeline, Audio-Cues und Wortzeiten synchronisieren
+Timeline und Audio-Cues synchronisieren
+        ↓
+Gemini erzeugt exakte Wortzeitstempel
         ↓
 Bilder technisch und visuell prüfen
         ↓
@@ -109,7 +127,7 @@ npm run organize:assets -- --dir "PFAD-ZUM-REEL" --apply
 
 Codex betrachtet jedes Bild und ordnet es anhand von Sprechertext, Bildtext, Motiv, Metapher und Komposition zu. Unter 0,75 Konfidenz wird nicht geraten.
 
-## 4. Timeline, Audio und Wortzeiten synchronisieren
+## 4. Timeline und Audio synchronisieren
 
 ```bash
 npm run build:timeline -- --dir "PFAD-ZUM-REEL"
@@ -123,49 +141,52 @@ npm run sync:audio -- \
   --audio-duration 48.7
 ```
 
-Codex trägt anschließend die echten Cue-Zeitpunkte in `timeline/audio-sync.json` ein.
-
-Zusätzlich bekommt jeder Untertitel-Cue in `subtitles/subtitle-plan.json` exakte absolute Wortzeiten:
-
-```json
-{
-  "id": "scene-01-subtitle-01",
-  "text": "Warum holen manche Menschen",
-  "startSeconds": 0.12,
-  "endSeconds": 2.34,
-  "verticalPositionPercent": 79.5,
-  "highlightCurrentWord": true,
-  "highlightColor": "#FFD84D",
-  "wordTimings": [
-    { "text": "Warum", "startSeconds": 0.12, "endSeconds": 0.42 },
-    { "text": "holen", "startSeconds": 0.48, "endSeconds": 0.72 },
-    { "text": "manche", "startSeconds": 0.79, "endSeconds": 1.12 },
-    { "text": "Menschen", "startSeconds": 1.18, "endSeconds": 1.63 }
-  ]
-}
-```
-
-Die gelbe Markierung wird nicht gleichmäßig über den Satz verteilt. Sie folgt ausschließlich den echten gesprochenen Wortanfängen. Fehlen gültige Wortzeiten, bleibt der Text weiß.
-
-Nach einer Pausenkürzung müssen Cue- und Wortzeiten erneut geprüft werden:
-
-```bash
-npm run trim:pauses -- --dir "PFAD-ZUM-REEL"
-```
-
-Danach:
+Danach werden die echten Szenen-Cues in `timeline/audio-sync.json` eingetragen und geprüft:
 
 ```bash
 npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
 ```
 
-Erzeugte Dateien:
+## 5. Wortzeiten automatisch mit Gemini erzeugen
 
-- `timeline/timeline-plan.json`
-- `render/render-plan.json`
-- `review/final-video-report.json`
+```bash
+npm run sync:words -- \
+  --dir "PFAD-ZUM-REEL" \
+  --strict
+```
 
-## 5. Bilder prüfen
+Der Befehl:
+
+- transkribiert das Voice-over auf Deutsch
+- fordert Start- und Endzeiten für jedes Wort an
+- ordnet die Wörter anhand der Master-Timeline den Szenen zu
+- erstellt automatisch kurze Untertitelblöcke
+- setzt die Untertitel auf 79,5 % der Bildhöhe
+- erzeugt exakte `wordTimings` für die gelbe Markierung
+- baut Timeline und Render-Plan danach neu
+
+Erzeugte Berichte:
+
+```text
+review/
+├── gemini-transcript.json
+├── word-sync-report.json
+└── subtitle-plan-before-word-sync.json
+```
+
+Mindestens 98 % der Wörter müssen einer Szene zugeordnet werden. Der strenge Lauf schlägt fehl, wenn Szenen oder Wörter nicht sicher erfasst wurden.
+
+Dry-Run:
+
+```bash
+npm run sync:words -- --dir "PFAD-ZUM-REEL" --dry-run
+```
+
+Nach `trim:pauses` muss `sync:words` erneut ausgeführt werden.
+
+Details: `docs/gemini-word-sync.md`.
+
+## 6. Bilder prüfen
 
 ```bash
 npm run check:visuals -- --dir "PFAD-ZUM-REEL"
@@ -186,7 +207,7 @@ Geprüft werden unter anderem:
 - Zoom- und Schwenksicherheit
 - Stilkonsistenz
 
-## 6. Zentrale Abschlussprüfung
+## 7. Zentrale Abschlussprüfung
 
 ```bash
 npm run finalize:reel -- --dir "PFAD-ZUM-REEL" --strict
@@ -200,7 +221,9 @@ npm run finalize:reel -- --dir "PFAD-ZUM-REEL" --strict
 }
 ```
 
-## 7. Renderer prüfen
+Die Freigabe wird jetzt auch blockiert, wenn die automatische Wort-Synchronisierung fehlt oder fehlerhaft ist.
+
+## 8. Renderer prüfen
 
 ```bash
 npm run validate:render -- --dir "PFAD-ZUM-REEL"
@@ -217,7 +240,7 @@ Die Prüfung kontrolliert:
 - Zooms, Schwenks und Übergänge
 - optionale Sounddateien
 
-## 8. Fertige MP4 erzeugen
+## 9. Fertige MP4 erzeugen
 
 ```bash
 npm run render:reel -- --dir "PFAD-ZUM-REEL"
@@ -247,11 +270,6 @@ Der Remotion-Renderer setzt um:
 - Schnitte und kurze Crossfades
 - Soundeffekte mit vorhandenem lokalem `file`-Pfad
 
-Berichte:
-
-- `review/renderer-input-report.json`
-- `review/render-execution-report.json`
-
 ## Befehle
 
 ```bash
@@ -263,6 +281,7 @@ npm run organize:assets
 npm run trim:pauses
 npm run build:timeline
 npm run sync:audio
+npm run sync:words
 npm run check:visuals
 npm run finalize:reel
 npm run validate:render
@@ -276,16 +295,18 @@ npm test
 
 - `AGENTS.md` – verbindliche Regeln für Codex
 - `CODEX_TASK.md` – vollständiger Produktionsablauf
-- `knowledge/subtitle-pacing-rules.md` – Untertitelposition, Wortzeiten und Pausen
+- `knowledge/subtitle-pacing-rules.md` – Untertitelposition und Sprechtempo
+- `docs/gemini-word-sync.md` – automatische Wortzeitstempel
 - `docs/remotion-renderer.md` – Renderer-Dokumentation
-- `src/renderer/subtitle-timing.js` – exakte Wortzeitlogik
+- `src/core/gemini-word-sync.js` – Gemini-Transkription und Cue-Erzeugung
+- `src/renderer/subtitle-timing.js` – Prüfung und Darstellung exakter Wortzeiten
 - `src/core/timeline.js` – Timeline und Render-Plan
 - `src/core/render-validator.js` – Renderer-Vorprüfung
 - `src/core/remotion-renderer.js` – automatischer MP4-Render
-- `src/renderer/ReelComposition.jsx` – visuelle Remotion-Komposition
 
 ## Noch nicht enthalten
 
 - automatische Bild- oder Voice-over-Erzeugung
-- automatisches Forced Alignment der Wortzeiten
 - automatische Social-Media-Veröffentlichung
+
+Die Wortzeiten werden automatisch über Gemini erzeugt. Beim ersten echten Reel muss das Ergebnis trotzdem akustisch kontrolliert werden, weil automatische Spracherkennung nie fehlerfrei garantiert werden kann.
