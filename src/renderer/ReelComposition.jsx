@@ -16,11 +16,6 @@ const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 
 const assetUrl = (file) => staticFile(String(file).replaceAll('\\', '/').replace(/^\/+/, ''));
 
-const transitionFrames = (transition, fps) => {
-  if (transition?.type !== 'crossfade') return 0;
-  return Math.max(1, Math.round((Number(transition.durationSeconds) || 0.15) * fps));
-};
-
 const motionDefaults = (motion = {}) => {
   const type = motion.type ?? 'none';
   const defaults = {
@@ -45,48 +40,32 @@ const motionDefaults = (motion = {}) => {
   };
 };
 
-const SceneLayer = ({ scene, incomingFrames, outgoingFrames }) => {
+const SceneLayer = ({ scene }) => {
   const frame = useCurrentFrame();
-  const mainDuration = Math.max(1, Number(scene.endFrame) - Number(scene.startFrame));
-  const motionFrame = clamp(frame - incomingFrames, 0, mainDuration - 1);
+  const duration = Math.max(1, Number(scene.endFrame) - Number(scene.startFrame));
   const motion = motionDefaults(scene.cameraMotion);
 
   const scale = interpolate(
-    motionFrame,
-    [0, Math.max(1, mainDuration - 1)],
+    frame,
+    [0, Math.max(1, duration - 1)],
     [motion.startScale, motion.endScale],
     { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' }
   );
   const panX = interpolate(
-    motionFrame,
-    [0, Math.max(1, mainDuration - 1)],
+    frame,
+    [0, Math.max(1, duration - 1)],
     [motion.startPanXPercent, motion.endPanXPercent],
     { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' }
   );
   const panY = interpolate(
-    motionFrame,
-    [0, Math.max(1, mainDuration - 1)],
+    frame,
+    [0, Math.max(1, duration - 1)],
     [motion.startPanYPercent, motion.endPanYPercent],
     { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' }
   );
 
-  let opacity = 1;
-  if (incomingFrames > 0) {
-    opacity *= interpolate(frame, [0, incomingFrames], [0, 1], {
-      extrapolateLeft: 'clamp',
-      extrapolateRight: 'clamp'
-    });
-  }
-  if (outgoingFrames > 0) {
-    const fadeStart = incomingFrames + mainDuration;
-    opacity *= interpolate(frame, [fadeStart, fadeStart + outgoingFrames], [1, 0], {
-      extrapolateLeft: 'clamp',
-      extrapolateRight: 'clamp'
-    });
-  }
-
   return (
-    <AbsoluteFill style={{ backgroundColor: '#000', overflow: 'hidden', opacity }}>
+    <AbsoluteFill style={{ backgroundColor: '#000', overflow: 'hidden' }}>
       <Img
         src={assetUrl(scene.imageFile)}
         style={{
@@ -174,23 +153,17 @@ export const ReelComposition = ({ plan }) => {
   return (
     <AbsoluteFill style={{ backgroundColor: '#000' }}>
       {scenes.map((scene, index) => {
-        const incoming = transitionFrames(scene.transitionIn, fps);
-        const nextIncoming = transitionFrames(scenes[index + 1]?.transitionIn, fps);
-        const from = Math.max(0, Number(scene.startFrame) - incoming);
-        const until = Math.min(durationInFrames, Number(scene.endFrame) + nextIncoming);
+        const from = Math.max(0, Number(scene.startFrame));
+        const end = Math.min(durationInFrames, Number(scene.endFrame));
         return (
           <Sequence
             key={scene.sceneId}
             from={from}
-            durationInFrames={Math.max(1, until - from)}
+            durationInFrames={Math.max(1, end - from)}
             style={{ zIndex: index }}
             premountFor={Math.min(fps, Math.max(0, from))}
           >
-            <SceneLayer
-              scene={scene}
-              incomingFrames={incoming}
-              outgoingFrames={nextIncoming}
-            />
+            <SceneLayer scene={scene} />
           </Sequence>
         );
       })}
