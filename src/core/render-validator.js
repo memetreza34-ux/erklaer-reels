@@ -1,6 +1,11 @@
 import { access, readFile } from 'node:fs/promises';
 import path from 'node:path';
 
+import {
+  getSubtitleVerticalPositionPercent,
+  validateSubtitleWordTimings
+} from './subtitle-timing.js';
+
 const IMAGE_EXTENSIONS = new Set(['.png', '.jpg', '.jpeg', '.webp']);
 const AUDIO_EXTENSIONS = new Set(['.mp3', '.wav', '.m4a', '.aac', '.flac', '.ogg']);
 const TRANSITIONS = new Set(['none', 'cut', 'crossfade']);
@@ -151,6 +156,18 @@ export async function validateRendererInput(reelDirectory, {
         `${cueId}: Untertitelzeit ist ungültig.`);
       push(checks, `${cueId}-text`, String(cue.text ?? '').trim().length > 0,
         `${cueId}: Untertiteltext fehlt.`);
+
+      const vertical = getSubtitleVerticalPositionPercent(cue);
+      push(checks, `${cueId}-vertical-position`, vertical >= 73 && vertical <= 79,
+        `${cueId}: Untertitel müssen zwischen 73 und 79 Prozent der Bildhöhe liegen.`);
+
+      const highlightEnabled = cue.highlightEnabled !== false && cue.highlightMode !== 'none';
+      if (highlightEnabled) {
+        const wordTiming = validateSubtitleWordTimings(cue);
+        push(checks, `${cueId}-exact-word-timing`, wordTiming.valid,
+          `${cueId}: Die gelbe Wortmarkierung benötigt exakte, sortierte Wortzeitpunkte. ${wordTiming.issues.join(' ')}`,
+          requireFinalReadiness ? 'error' : 'warning');
+      }
     }
 
     const effectScene = effectsByScene.get(id) ?? {};
