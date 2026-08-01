@@ -1,10 +1,37 @@
 # AGENTS.md
 
+## Pflichttrigger: „Mach ein neues Reel“
+
+Wenn der Nutzer sinngemäß schreibt:
+
+- „Mach ein neues Reel.“
+- „Erstelle das nächste Reel.“
+- „Weiter mit dem nächsten Reel.“
+- „Produziere ein neues Video.“
+
+bedeutet das immer: **Codex soll selbstständig den nächsten freien Produktionstag wählen und das vollständige interne Produktionspaket erstellen.**
+
+Codex darf dann nicht nur einen Ordner anlegen, nicht nur einen Plan schreiben und nicht nach Datum, Thema oder Titel fragen.
+
+Verbindlicher Ablauf:
+
+1. Lies `docs/autonomous-reel.md` und `CODEX_TASK.md`.
+2. Führe `npm run next:slot -- --json` aus.
+3. Prüfe vorhandene Reel-Titel und Themen, damit keine Wiederholung entsteht.
+4. Wähle selbstständig ein passendes langfristiges Thema aus den erlaubten Themenbereichen.
+5. Schreibe selbstständig ein vollständiges deutsches Voice-over-Script mit genau einem Erzähler.
+6. Erstelle den Reel-Ordner mit `npm run create:reel -- --next-free`.
+7. Bearbeite `production/agent-task.md` sofort vollständig.
+8. Erzeuge Script, Szenen, Bildprompts, Untertitelplan, Effektplan, Cover, Caption und Quellen.
+9. Führe `validate:reel` und `check:content --strict` aus und behebe alle Fehler.
+10. Halte erst an, wenn externe Bilder oder das Voice-over fehlen.
+11. Sind externe Assets bereits vorhanden, arbeite ohne Rückfrage bis zur fertigen MP4 weiter.
+
+Ein bloßer Satz wie „Reel-Ordner erstellt“ ist keine vollständige Ausführung.
+
 ## Projektauftrag
 
-Baue und betreibe einen KI-Workflow, der aus einem Thema oder einem fertigen deutschen Sprechertext ein vollständiges visuelles Erklär-Reel erzeugt.
-
-Der Nutzer erzeugt Voice-over und Szenenbilder außerhalb des Repositories. Codex übernimmt Planung, Qualitätsprüfung, Zuordnung, lokale Audio-Prüfung, Synchronisierung und den abschließenden Remotion-Render.
+Dieses Repository produziert vollständige visuelle Erklär-Reels. Der Nutzer erzeugt Voice-over und Szenenbilder normalerweise außerhalb des Repositories. Codex übernimmt Planung, Qualitätsprüfung, Zuordnung, lokale Audio-Prüfung, Synchronisierung und den abschließenden Remotion-Render.
 
 ## Sprache
 
@@ -31,293 +58,224 @@ Nicht als eigene Content-Säulen verwenden:
 
 Politische Inhalte werden neutral erklärt. Unsicherheiten und umstrittene Aussagen müssen kenntlich gemacht und in `sources/sources.md` dokumentiert werden.
 
-## Produktionsumfang
+## Vollständiges Produktionspaket
 
-Ein vollständiger Reel-Ordner enthält:
+Vor dem externen Asset-Schritt müssen vorhanden und ausgefüllt sein:
 
 1. geprüftes deutsches Voice-over-Script
-2. 8–12 Bildmomente abhängig von der Audiolänge
+2. 8–12 Bildmomente passend zur erwarteten Audiolänge
 3. eine konsistente Bildwelt innerhalb des Reels
-4. englische Bildprompts mit optionalem deutschem Schlüsseltext
-5. Untertitelplan mit durch Codex akustisch bestätigten Wortzeiten
+4. vollständige englische Bildprompts
+5. Untertitelplan
 6. Effektplan für Zooms, Schwenks, Übergänge und Soundeffekte
-7. Master-Timeline und Audio-Synchronisierung
-8. renderer-neutralen Render-Plan
-9. technische und visuelle Qualitätsprüfung
-10. Cover, Caption und Quellen
-11. unsortierte Asset-Inbox und automatische Zuordnung
-12. fertige MP4-Datei über Remotion
+7. Cover-Idee und Cover-Prompt
+8. Caption
+9. Quellen und Unsicherheiten
+10. bestandene strenge Inhaltsprüfung
 
-Eine automatische Social-Media-Veröffentlichung gehört noch nicht zum Projekt.
+Nach Eingang der externen Assets kommen hinzu:
+
+- inhaltsbasierte Asset-Zuordnung
+- Master-Timeline und Audio-Synchronisierung
+- durch Codex akustisch bestätigte Wortzeiten
+- renderer-neutraler Render-Plan
+- technische und visuelle Qualitätsprüfung
+- fertige MP4-Datei über Remotion
+
+## Termin- und Ordnerlogik
+
+Für ein neues autonomes Reel wird niemals ein Datum geraten oder manuell aus dem Gedächtnis gewählt.
+
+```bash
+npm run next:slot -- --json
+```
+
+Regeln:
+
+- neuesten vorhandenen Wochenordner verwenden
+- darin Montag bis Sonntag chronologisch prüfen
+- ersten Tag ohne `reel-*`-Ordner auswählen
+- wenn die Woche voll ist, nächsten Montag auswählen
+- belegte Tage niemals überschreiben
+- `create:reel` mit `--next-free` ausführen
 
 ## Kreativregeln
 
-- Erkläre einfach, direkt und visuell.
-- Keine schulische Einleitung.
-- Beginne mit einer klaren Frage, einem Widerspruch oder einer überraschenden Beobachtung.
-- Das Hook-Bild ist ab Sekunde 0 vollständig sichtbar.
-- Kein schwarzer Start und keine unnötige Einblendeverzögerung.
-- 35–44 Sekunden: normalerweise 8–10 visuelle Momente.
-- 45–55 Sekunden: normalerweise 10–12 visuelle Momente.
-- Ungefähr alle 3,5–5 Sekunden erfolgt ein Bildwechsel oder eine deutliche Ergänzung.
-- Einfache Bilder dürfen kürzer stehen als komplexere Bilder.
-- Keine mechanisch gleich langen Szenen erzwingen.
-- Innerhalb eines Reels bleibt die Bildwelt konsistent.
-- Zwischen verschiedenen Reels darf die Bildwelt stark wechseln.
-- Build-up-Sequenzen nur verwenden, wenn wirklich eine schrittweise Entwicklung erklärt wird.
+- schwierige Inhalte einfach, direkt und visuell erklären
+- keine schulische Einleitung
+- mit klarer Frage, Widerspruch oder überraschender Beobachtung starten
+- Hook-Bild ab Sekunde 0 vollständig sichtbar
+- kein schwarzer Start
+- 35–44 Sekunden: normalerweise 8–10 Bildmomente
+- 45–55 Sekunden: normalerweise 10–12 Bildmomente
+- ungefähr alle 3,5–5 Sekunden sichtbare Veränderung
+- einfache Bilder dürfen kürzer stehen als komplexe Bilder
+- keine mechanisch gleich langen Szenen
+- innerhalb eines Reels konsistente Bildwelt
+- zwischen Reels darf der Stil wechseln
+- Build-up nur bei echter schrittweiser Erklärung
 
 ## Audio-Cues und Bildwechsel
 
 Jede Szene benötigt:
 
-- `audioCue`: gesprochenes Wort oder kurze Phrase für den Bildbeginn
-- `leadInSeconds`: normalerweise 0,1–0,3 Sekunden, Standard 0,2
+- `audioCue`
+- `leadInSeconds`, normalerweise 0,1–0,3 Sekunden
 - `durationSeconds`
 
-Das neue Bild beginnt normalerweise 0,1–0,3 Sekunden vor dem zugehörigen `audioCue`.
+Das neue Bild beginnt normalerweise 0,1–0,3 Sekunden vor dem zugehörigen gesprochenen Cue. Unsichere Zeiten dürfen nicht erfunden werden.
 
-Unsichere Cue-Zeitpunkte dürfen nicht erfunden werden. Verifizierte Zeiten gehören nach `timeline/audio-sync.json` und erhalten eine realistische `confidence`.
+## Untertitel
 
-## Untertitel und Codex-Wortzeiten
+- standardmäßig aktiv
+- Planung in `subtitles/subtitle-plan.json`
+- Position `safe-lower-middle`
+- Standardhöhe 79,5 %
+- erlaubter Bereich 76,5–80,5 %
+- normalerweise 3–6 Wörter
+- höchstens zwei Zeilen
+- aktuell gesprochenes Wort gelb mit `#FFD84D`
+- gelbe Markierung nur mit akustisch bestätigten Wortzeiten
+- ohne gültige Wortzeiten bleibt der Cue vollständig weiß
+- keine gleichmäßige oder gewichtete Wortzeitschätzung
 
-- Untertitel sind standardmäßig aktiv.
-- Planung in `subtitles/subtitle-plan.json`, nicht in Bildprompts einbrennen.
-- Standardposition: `safe-lower-middle` bei 79,5 % der Bildhöhe.
-- Erlaubter vertikaler Bereich: 76,5–80,5 %.
-- Normalerweise 3–6 Wörter und höchstens zwei Zeilen pro Cue.
-- Integrierten Bildtext nicht wortgleich wiederholen.
-- Das aktuell gesprochene Wort wird mit `#FFD84D` gelb markiert.
-- Die gelbe Markierung darf ausschließlich akustisch bestätigten Wortzeiten folgen.
-- Gleichmäßiges Verteilen der Wörter über die Cue-Dauer ist verboten.
-- Ohne gültige Wortzeiten bleibt der komplette Untertitel weiß.
+## Codex-Wortzeiten
 
-Nach bestandener Szenen-Audio-Synchronisierung führt Codex zuerst aus:
+Nach bestandener Szenen-Audio-Synchronisierung:
 
 ```bash
 npm run sync:words -- --dir "<reel-ordner>"
 ```
 
-Dadurch entstehen:
+Codex hört das lokale Voice-over vollständig ab und füllt `subtitles/codex-word-sync.json` mit:
 
-- `subtitles/codex-word-sync.json`
-- `production/codex-word-sync-task.md`
-- `review/word-sync-report.json`
-
-Danach hört Codex das lokale Voice-over vollständig ab und füllt für jedes Wort in `subtitles/codex-word-sync.json`:
-
-- absolute `startSeconds`
-- absolute `endSeconds`
-- realistische `confidence`
+- `startSeconds`
+- `endSeconds`
+- realistischer `confidence`
 - `reviewed: true` erst nach akustischer Kontrolle
 
-Anschließend:
+Danach:
 
 ```bash
 npm run sync:words -- --dir "<reel-ordner>" --apply --strict
 ```
 
-Pflichtregeln:
+Pflicht:
 
-- kein Gemini-Aufruf und kein externer Transkriptionsdienst
-- kein API-Schlüssel für den Wort-Sync
-- Audiodatei nicht extern hochladen
+- kein externer Transkriptionsdienst
+- kein Audio-Upload
 - mindestens 98 % Wortabdeckung
 - im strengen Lauf mindestens 0,85 Konfidenz pro Wort
-- Wortreihenfolge und sichtbarer Wortlaut bleiben unverändert
 - jede Szene besitzt bestätigte Wörter
-- nach `trim:pauses` oder einer neuen Audiodatei den Codex-Wort-Sync erneut ausführen
-- der finale Renderer-Check blockiert fehlende oder fehlerhafte Wortzeiten
+- nach neuer Audiodatei oder `trim:pauses` erneut ausführen
 
-Details stehen in `docs/codex-word-sync.md`.
+Details: `docs/codex-word-sync.md`.
 
-## Zooms, Schwenks, Übergänge und Sounds
+## Zooms, Übergänge und Sounds
 
-Lies zusätzlich:
+- nicht jedes Bild bewegen
+- Zoom normalerweise 2–6 %, maximal 8 %
+- Schwenk maximal 4 %
+- Hook ohne Übergang
+- `cut` als Standard
+- Crossfade nur 0,1–0,25 Sekunden und nur begründet
+- keine Glitch-, Spin- oder Flash-Übergänge
+- Voice-over hat Vorrang
+- Hintergrundmusik standardmäßig aus
+- normalerweise null bis zwei dezente Soundeffekte pro Szene
+- Soundeffekte benötigen einen tatsächlichen lokalen `file`-Pfad
 
-- `knowledge/effects-rules.md`
-- `config/effects-rules.json`
+## Externe Assets
 
-Planung erfolgt in `effects/effects-plan.json`.
+Bilder nach:
 
-- Nicht jedes Bild braucht Bewegung.
-- Ohne klaren Nutzen bleibt `cameraMotion.type` auf `none`.
-- Zoom normalerweise 2–6 %, maximal 8 %.
-- Schwenk maximal 4 % der Bildbreite oder Bildhöhe.
-- Hook ohne Übergang; optional dezenter Push-in.
-- Standardübergang: `cut`.
-- Crossfade nur 0,1–0,25 Sekunden und nur mit Begründung.
-- Keine Glitch-, Spin-, Flash- oder übertriebenen 3D-Übergänge.
-- Voice-over hat Vorrang.
-- Hintergrundmusik ist standardmäßig ausgeschaltet.
-- Pro Szene normalerweise null bis zwei dezente Soundeffekte.
-- Nicht jeden Schnitt mit einem Whoosh vertonen.
-- Soundeffekte benötigen für den Renderer einen tatsächlichen lokalen `file`-Pfad.
+```text
+inbox/images/
+```
+
+Voice-over nach:
+
+```text
+inbox/audio/
+```
+
+Codex ordnet nicht nur nach Dateinamen oder alphabetischer Reihenfolge zu. Jedes Bild wird tatsächlich betrachtet und mit Sprechertext, Bildtext, Prompt, Motiv, Metapher und Komposition verglichen.
+
+Unter 0,75 Konfidenz wird nicht geraten.
 
 ## Visuelle Qualitätsprüfung
 
-Lies zusätzlich:
+Zielwerte:
 
-- `knowledge/visual-quality-rules.md`
-- `config/visual-quality-rules.json`
-
-Technische Zielwerte:
-
-- 1080 × 1920 Pixel
-- Seitenverhältnis 9:16
-- Mindestauflösung 720 × 1280 Pixel
+- 1080 × 1920
+- 9:16
+- mindestens 720 × 1280
 - wichtige Motive und Texte mindestens 6 % von den Seiten entfernt
 - mindestens 8 % Abstand nach oben
 - mindestens 18 % Abstand nach unten
 
 Ablauf:
 
-1. `npm run check:visuals -- --dir "<reel-ordner>"`
-2. jedes Szenenbild und Cover tatsächlich ansehen
-3. `review/visual-inspection.json` vollständig mit `true` oder `false` ausfüllen
-4. Fehler konkret dokumentieren und `needs-fix` setzen
-5. `npm run check:visuals -- --dir "<reel-ordner>" --strict`
-
-## Unsortierte Nutzer-Assets
-
-- Bilder nach `inbox/images/`
-- Voice-over nach `inbox/audio/`
-- Dateiname und Reihenfolge sind keine zuverlässigen Signale
-
-Ablauf:
-
 ```bash
-npm run organize:assets -- --dir "<reel-ordner>"
+npm run check:visuals -- --dir "<reel-ordner>"
+npm run check:visuals -- --dir "<reel-ordner>" --strict
 ```
 
-Danach betrachtet Codex jedes Bild und vergleicht es mit Sprechertext, `imageText`, `visualIdea`, Bildprompt, Figuren, Objekten, Metaphern und Komposition.
+Jedes Bild und das Cover müssen tatsächlich visuell geprüft werden.
 
-Codex schreibt `inbox/asset-map.json`.
-
-Regeln:
-
-- Ziele: `scene-01` bis letzte Szene, `cover`, `audio`
-- jede Quelle und jedes Ziel höchstens einmal
-- Cover nie automatisch als Hook-Bild behandeln
-- jede Zuweisung benötigt `confidence` und `reason`
-- unter 0,75 Konfidenz nicht raten; Datei bleibt `unmatched`
-
-Danach:
-
-```bash
-npm run organize:assets -- --dir "<reel-ordner>" --apply
-```
-
-## Master-Timeline und Audio-Synchronisierung
+## Timeline, Abschluss und Renderer
 
 Nach dem Asset-Import:
 
 ```bash
 npm run build:timeline -- --dir "<reel-ordner>"
-```
-
-Wenn `ffprobe` fehlt:
-
-```bash
-npm run sync:audio -- --dir "<reel-ordner>" --audio-duration 48.7
-```
-
-Codex hört das Voice-over ab und trägt für jede Szene `cueTimeSeconds` und `confidence` ein. Danach:
-
-```bash
 npm run sync:audio -- --dir "<reel-ordner>" --strict
 npm run sync:words -- --dir "<reel-ordner>"
-```
-
-Codex bearbeitet anschließend `production/codex-word-sync-task.md` und führt aus:
-
-```bash
 npm run sync:words -- --dir "<reel-ordner>" --apply --strict
-```
-
-Verbindliche Dateien:
-
-- `timeline/audio-sync.json`
-- `subtitles/codex-word-sync.json`
-- `subtitles/subtitle-plan.json`
-- `timeline/timeline-plan.json`
-- `render/render-plan.json`
-- `review/final-video-report.json`
-- `review/word-sync-report.json`
-
-Die Hook beginnt bei Frame 0. Die letzte Szene endet exakt mit dem Voice-over. Szenen und Untertitel dürfen keine unbeabsichtigten Lücken oder Überlappungen erzeugen.
-
-## Zentrale Abschlussprüfung
-
-```bash
 npm run finalize:reel -- --dir "<reel-ordner>" --strict
+npm run validate:render -- --dir "<reel-ordner>"
+npm run render:reel -- --dir "<reel-ordner>"
 ```
 
 Ein Reel darf nur gerendert werden, wenn:
 
 - `readyForRenderer` auf `true` steht
-- Stufe `wordSync` bestanden ist
-- `render/render-plan.json` den Status `ready-for-renderer` besitzt
-- Audio-Sync und visuelle Prüfung bestanden sind
-- alle Bilder und das Voice-over vorhanden sind
+- Audio-Sync bestanden ist
+- Codex-Wortzeiten bestanden sind
+- visuelle Prüfung bestanden ist
+- alle Pflichtassets vorhanden sind
 
-## Remotion-Renderer
+## Erlaubter Haltepunkt
 
-Vorprüfung:
+Bei „Mach ein neues Reel“ darf Codex erst stoppen, wenn das komplette interne Produktionspaket fertig und streng geprüft ist und nur noch externe Dateien fehlen.
 
-```bash
-npm run validate:render -- --dir "<reel-ordner>"
-```
+Dann nennt Codex:
 
-MP4 erzeugen:
+- automatisch gewählten Tag
+- Reel-Ordner
+- Anzahl der Bildprompts
+- gewählte Bildwelt
+- benötigte externe Dateien
+- Inbox-Pfade
 
-```bash
-npm run render:reel -- --dir "<reel-ordner>"
-```
-
-Der Renderer muss umsetzen:
-
-- Szenenbilder
-- Voice-over
-- tiefe Untertitel bei 79,5 %
-- exakt synchronisierte gelbe Wortmarkierung
-- Zooms und Schwenks
-- harte Schnitte und kurze Crossfades
-- vorhandene Soundeffekt-Dateien
-
-Der Renderer darf niemals Pfade außerhalb des Reel-Ordners laden. Fehlende Pflichtassets blockieren den Render.
-
-## Neues Reel produzieren
-
-1. Lies `CODEX_TASK.md`.
-2. Erstelle den Reel-Ordner mit `npm run create:reel`.
-3. Bearbeite `production/agent-task.md` vollständig.
-4. Führe `check:content --strict` aus.
-5. Nutzer erzeugt Bilder und Voice-over extern.
-6. Ordne die Assets inhaltsbasiert zu.
-7. Synchronisiere Timeline und Audio.
-8. Bereite den Codex-Wort-Sync vor, höre das Audio ab und wende die bestätigten Zeiten an.
-9. Führe die visuelle Prüfung aus.
-10. Führe `finalize:reel --strict` aus.
-11. Validiere den Renderer.
-12. Rendere die MP4-Datei.
+Sind die Dateien schon vorhanden, gibt es keinen Haltepunkt vor dem fertigen Render.
 
 ## Technische Regeln
 
 - stabile IDs wie `scene-01`
-- feste erwartete Dateinamen
-- nie nur alphabetische Reihenfolge verwenden
 - `scene-index.json` und jede `scene.json` synchron halten
-- Rohscript nicht verändern; überarbeitete Versionen nach `final-script.txt` und `voice-script.txt`
-- API-Schlüssel nie committen
-- fehlende Assets in Status und Manifest sichtbar machen
+- Rohscript nicht überschreiben; finale Fassungen getrennt speichern
+- API-Schlüssel niemals committen
+- fehlende Assets sichtbar im Status halten
 - Pipeline-Stufen einzeln erneut ausführbar halten
-- zentrale Logik mit Tests abdecken
-- Remotion- und `@remotion/*`-Pakete immer auf exakt dieselbe Version setzen
-- keine simulierte Integration als fertig bezeichnen
+- zentrale Logik testen
+- Remotion-Pakete immer auf exakt derselben Version halten
+- keine geplante oder simulierte Stufe als abgeschlossen bezeichnen
 
 ## Arbeitsweise
 
-- kleine, nachvollziehbare Änderungen
-- vorhandene Architektur prüfen, bevor neue parallele Strukturen entstehen
-- README und relevante Dokumentation aktualisieren
-- GitHub Actions müssen vor dem Merge erfolgreich sein
+- kleine nachvollziehbare Änderungen
+- vorhandene Architektur zuerst prüfen
+- relevante Dokumentation aktualisieren
+- Tests ausführen
+- bei fehlenden oder nicht startenden GitHub-Actions-Logs den Zustand ehrlich dokumentieren
