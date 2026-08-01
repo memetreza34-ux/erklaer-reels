@@ -63,11 +63,11 @@
   "subtitleRules": {
     "defaultEnabled": true,
     "separateFromImagePrompts": true,
-    "position": "lower-middle",
+    "position": "safe-lower-middle",
     "verticalPositionPercent": {
-      "min": 65,
-      "max": 75,
-      "default": 70
+      "min": 73,
+      "max": 79,
+      "default": 77
     },
     "wordsPerCue": {
       "min": 3,
@@ -75,6 +75,12 @@
     },
     "maxLines": 2,
     "wordByWordKaraoke": false,
+    "wordHighlight": {
+      "enabled": true,
+      "color": "#FFD84D",
+      "requireExactWordTimings": true,
+      "fallbackWithoutExactTiming": "plain-white-text"
+    },
     "repeatIntegratedImageText": false,
     "avoidPlatformUiSafeZones": true,
     "allowPositionAdjustmentForVisualConflicts": true
