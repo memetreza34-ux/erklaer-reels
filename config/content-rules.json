@@ -76,11 +76,17 @@
   "subtitleRules": {
     "defaultEnabled": true,
     "separateFromImagePrompts": true,
-    "position": "safe-lower-middle",
+    "position": "safe-middle",
     "verticalPositionPercent": {
-      "min": 76.5,
-      "max": 80.5,
-      "default": 79.5
+      "min": 64,
+      "max": 72,
+      "default": 68
+    },
+    "palette": {
+      "textColor": "#F5F7FA",
+      "highlightColor": "#FFD84D",
+      "backgroundColor": "rgba(0, 0, 0, 0.72)",
+      "reason": "Weiches Weiß bleibt auf wechselnden Bildwelten ruhig lesbar; Warmgelb hebt das aktuell gesprochene Wort klar hervor."
     },
     "wordsPerCue": {
       "min": 3,
@@ -89,7 +95,6 @@
     "maxLines": 2,
     "wordByWordKaraoke": false,
     "highlightCurrentWord": true,
-    "highlightColor": "#FFD84D",
     "exactWordTimingsRequired": true,
     "wordTimingWorkflow": {
       "enabled": true,
@@ -101,9 +106,10 @@
       "prepareCommand": "npm run sync:words",
       "applyCommand": "npm run sync:words -- --apply --strict"
     },
-    "fallbackWordTiming": "plain-white-no-highlight",
+    "fallbackWordTiming": "plain-soft-white-no-highlight",
     "repeatIntegratedImageText": false,
     "avoidPlatformUiSafeZones": true,
+    "avoidExactScreenCenter": true,
     "allowPositionAdjustmentForVisualConflicts": true
   }
 }
