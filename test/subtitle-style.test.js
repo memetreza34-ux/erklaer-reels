@@ -8,16 +8,16 @@ import {
   normalizeSubtitleVerticalPosition
 } from '../src/shared/subtitle-style.js';
 
-test('verwendet eine leicht unterhalb der Mitte liegende Standardposition', () => {
-  assert.equal(SUBTITLE_STYLE.position, 'safe-middle');
-  assert.equal(SUBTITLE_STYLE.verticalPositionPercent, 68);
-  assert.deepEqual(SUBTITLE_STYLE.safeVerticalRangePercent, { min: 64, max: 72 });
+test('verwendet exakt die Bildmitte als Standardposition', () => {
+  assert.equal(SUBTITLE_STYLE.position, 'center');
+  assert.equal(SUBTITLE_STYLE.verticalPositionPercent, 50);
+  assert.deepEqual(SUBTITLE_STYLE.safeVerticalRangePercent, { min: 50, max: 50 });
 });
 
-test('setzt alte oder unsichere Positionen auf den neuen Standard zurück', () => {
-  assert.equal(normalizeSubtitleVerticalPosition(79.5), 68);
-  assert.equal(normalizeSubtitleVerticalPosition(50), 68);
-  assert.equal(normalizeSubtitleVerticalPosition(70), 70);
+test('setzt jede abweichende Position exakt auf 50 Prozent zurück', () => {
+  assert.equal(normalizeSubtitleVerticalPosition(79.5), 50);
+  assert.equal(normalizeSubtitleVerticalPosition(68), 50);
+  assert.equal(normalizeSubtitleVerticalPosition(50), 50);
 });
 
 test('verwendet weiches Weiß und Warmgelb als feste Palette', () => {
