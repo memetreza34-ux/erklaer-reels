@@ -29,50 +29,46 @@ function allManualChecksPassed(entry, requiredChecks) {
   return entry?.status === 'passed' && requiredChecks.every((key) => entry?.checks?.[key] === true);
 }
 
-function createReviewEntry(assetId, file) {
+function createReviewEntry(assetId, file, requiredChecks) {
   return {
     assetId,
     file,
     reviewer: '',
     reviewedAt: null,
     status: 'pending',
-    checks: {
-      mainSubjectSafe: null,
-      textReadable: null,
-      textAccurate: null,
-      subtitleCollisionFree: null,
-      platformUiSafe: null,
-      motionSafe: null,
-      styleConsistent: null
-    },
+    checks: Object.fromEntries(requiredChecks.map((key) => [key, null])),
     notes: []
   };
 }
 
-async function ensureInspectionFile(reelDirectory, assets) {
+async function ensureInspectionFile(reelDirectory, assets, rules) {
   const inspectionPath = path.join(reelDirectory, 'review', 'visual-inspection.json');
   const current = await readJson(inspectionPath, null);
   const byId = new Map((current?.assets ?? []).map((entry) => [entry.assetId, entry]));
   const next = {
-    version: 1,
+    version: 2,
     instructions: [
       'Codex betrachtet jedes Bild visuell und setzt jeden Prüfpunkt auf true oder false.',
       'Bei einem Fehler status auf needs-fix setzen und eine konkrete Notiz ergänzen.',
+      'Prüfe besonders die Untertitelzone 64–72 % und die Lesbarkeit von weichem Weiß und Warmgelb.',
       'Nur vollständig bestandene Bilder erhalten status passed.'
     ],
-    safeZones: {
-      leftPercent: 6,
-      rightPercent: 6,
-      topPercent: 8,
-      bottomPercent: 18,
-      subtitleVerticalPercent: { min: 65, max: 75, default: 70 }
-    },
-    assets: assets.map(({ assetId, file }) => ({
-      ...createReviewEntry(assetId, file),
-      ...(byId.get(assetId) ?? {}),
-      assetId,
-      file
-    }))
+    safeZones: rules.safeZones,
+    subtitlePalette: rules.subtitlePalette,
+    assets: assets.map(({ assetId, file }) => {
+      const base = createReviewEntry(assetId, file, rules.manualChecks);
+      const previous = byId.get(assetId) ?? {};
+      return {
+        ...base,
+        ...previous,
+        checks: {
+          ...base.checks,
+          ...(previous.checks ?? {})
+        },
+        assetId,
+        file
+      };
+    })
   };
   await writeJson(inspectionPath, next);
   return next;
@@ -113,7 +109,7 @@ export async function runVisualQualityCheck(reelDirectory, { strict = false } = 
     scene: null
   });
 
-  const inspection = await ensureInspectionFile(reelDirectory, assets);
+  const inspection = await ensureInspectionFile(reelDirectory, assets, rules);
   const inspectionById = new Map(inspection.assets.map((entry) => [entry.assetId, entry]));
   const checks = [];
   const technicalAssets = [];
@@ -203,6 +199,17 @@ export async function runVisualQualityCheck(reelDirectory, { strict = false } = 
     `Untertitelposition ${subtitlePosition}% liegt außerhalb der sicheren Zone ${rules.safeZones.subtitleVerticalPercent.min}–${rules.safeZones.subtitleVerticalPercent.max}%.`,
     'error');
 
+  const expectedTextColor = String(rules.subtitlePalette?.textColor ?? '').toUpperCase();
+  const expectedHighlightColor = String(rules.subtitlePalette?.highlightColor ?? '').toUpperCase();
+  const actualTextColor = String(subtitlePlan.textColor ?? '').toUpperCase();
+  const actualHighlightColor = String(subtitlePlan.highlightColor ?? '').toUpperCase();
+  addCheck(checks, 'subtitle-text-color', actualTextColor === expectedTextColor,
+    `Untertitel-Normalfarbe muss ${expectedTextColor} sein.`, 'error');
+  addCheck(checks, 'subtitle-highlight-color', actualHighlightColor === expectedHighlightColor,
+    `Synchronfarbe muss ${expectedHighlightColor} sein.`, 'error');
+  addCheck(checks, 'subtitle-colors-distinct', actualTextColor !== actualHighlightColor,
+    'Normaltext und Synchronfarbe müssen klar verschieden sein.', 'error');
+
   const errors = checks.filter((check) => !check.passed && check.level === 'error');
   const warnings = checks.filter((check) => !check.passed && check.level === 'warning');
   const report = {
@@ -210,6 +217,7 @@ export async function runVisualQualityCheck(reelDirectory, { strict = false } = 
     strict,
     passed: errors.length === 0,
     safeZones: rules.safeZones,
+    subtitlePalette: rules.subtitlePalette,
     summary: {
       assetsChecked: technicalAssets.length,
       passedChecks: checks.filter((check) => check.passed).length,
