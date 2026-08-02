@@ -4,6 +4,7 @@ import { readFile } from 'node:fs/promises';
 import { createReelWorkspace } from '../core/workspace.js';
 import { prepareReelProduction } from '../core/production-brief.js';
 import { findNextFreeProductionSlot } from '../core/next-slot.js';
+import { ensureImagePromptBundleDirectory } from '../core/image-prompt-bundle.js';
 
 function getArgument(name) {
   const index = process.argv.indexOf(name);
@@ -66,6 +67,7 @@ async function main() {
   }
 
   const result = await createReelWorkspace({ title, script, date, sceneCount, outputRoot });
+  const promptBundle = await ensureImagePromptBundleDirectory(result.reelDirectory);
   const production = await prepareReelProduction(result.reelDirectory);
 
   if (selectedSlot) {
@@ -74,6 +76,8 @@ async function main() {
   console.log(`Reel-Arbeitsordner erstellt: ${result.reelDirectory}`);
   console.log(`Szenen: ${result.reel.sceneCount}`);
   console.log(`Codex-Auftrag: ${production.taskFile}`);
+  console.log(`Chronologische Bildprompt-Datei: ${promptBundle.file}`);
+  console.log('Nach Fertigstellung aller Szenenprompts verpflichtend export:prompts --strict ausführen.');
   console.log('Pflicht: production/agent-task.md jetzt vollständig bearbeiten und check:content --strict ausführen. Nicht nach der Ordnererstellung stoppen.');
 }
 
