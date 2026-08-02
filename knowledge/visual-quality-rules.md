@@ -17,8 +17,18 @@ Fertige Szenenbilder müssen auf einem Smartphone lesbar bleiben und dürfen dur
 - Wichtige Motive und Texte mindestens 6 % vom linken und rechten Rand entfernt halten.
 - Oben mindestens 8 % Abstand für Plattform- und Gerätebereiche lassen.
 - Unten mindestens 18 % Abstand für Caption, Profilinformationen und Bedienelemente lassen.
-- Untertitel stehen normalerweise bei 65–75 % der Bildhöhe.
-- In der Untertitelzone dürfen keine unverzichtbaren Bildtexte oder kleinen Details liegen.
+- Untertitel stehen normalerweise bei 68 % der Bildhöhe.
+- Der erlaubte Untertitelbereich liegt zwischen 64 und 72 %.
+- Exakt 50 % wird vermieden, weil dort häufig Gesichter und Hauptmotive liegen.
+- In der Untertitelzone dürfen keine unverzichtbaren Bildtexte, Gesichter oder kleinen Details liegen.
+
+## Untertitelfarben
+
+- Normaltext: weiches Weiß `#F5F7FA`.
+- Aktuell gesprochenes Wort: Warmgelb `#FFD84D`.
+- Hintergrund: dunkle halbtransparente Box mit ungefähr 72 % Deckkraft.
+- Prüfe, ob beide Textfarben auf jedem Bild klar lesbar und unterscheidbar bleiben.
+- Das warmgelbe Wort darf nicht mit gelben Bildflächen oder eingebranntem Bildtext verschmelzen; die dunkle Box muss das verhindern.
 
 ## Bewegungssicherheit
 
@@ -34,7 +44,8 @@ Codex betrachtet jedes fertige Bild und dokumentiert in `review/visual-inspectio
 - `mainSubjectSafe`: Hauptmotiv bleibt in der sicheren Zone.
 - `textReadable`: sichtbarer Text ist auf Smartphone-Größe lesbar.
 - `textAccurate`: sichtbarer Text stimmt mit der Planung überein und enthält keine Schreibfehler.
-- `subtitleCollisionFree`: Untertitelzone kollidiert nicht mit Motiv oder Bildtext.
+- `subtitleCollisionFree`: Untertitelzone 64–72 % kollidiert nicht mit Motiv oder Bildtext.
+- `subtitlePaletteReadable`: weiches Weiß und Warmgelb sind auf der dunklen Box klar lesbar.
 - `platformUiSafe`: wichtige Inhalte liegen nicht unter typischen Social-Media-Bedienelementen.
 - `motionSafe`: Zoom und Schwenk schneiden nichts Wichtiges ab.
 - `styleConsistent`: Stil, Figuren und Proportionen passen zum restlichen Reel.
