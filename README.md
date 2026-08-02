@@ -8,8 +8,8 @@ Aus einem Thema oder deutschen Rohscript entsteht ein vollständiges Reel mit:
 - 8–12 Bildmomenten
 - englischen Bildprompts
 - gestrafftem und leicht beschleunigtem Voice-over
-- tief positionierten Untertiteln
-- exakt synchronisierter gelber Wortmarkierung
+- leicht unterhalb der Bildmitte positionierten Untertiteln
+- weichem weißem Normaltext und warmgelber Synchronmarkierung
 - direkten harten Schnitten ohne Fades oder Schwarzbilder
 - dezenten Zooms, Schwenks und Soundeffekten
 - Master-Timeline und Audio-Synchronisierung
@@ -35,11 +35,13 @@ Für den Wort-Sync wird kein Gemini-Key und kein anderer Transkriptions-Key ben�
 - sichtbare Veränderung ungefähr alle 3,5–5 Sekunden
 - Voice-over vor der Timeline mit `trim:pauses` straffen
 - Voice-over standardmäßig mit `1.05x` leicht beschleunigen, Tonhöhe erhalten
-- Untertitel standardmäßig bei 79,5 % der Bildhöhe
-- sichere Untertitelzone 76,5–80,5 %
+- Untertitel standardmäßig bei 68 % der Bildhöhe
+- sichere Untertitelzone 64–72 %
+- normaler Text in weichem Weiß `#F5F7FA`
+- aktuell gesprochenes Wort in Warmgelb `#FFD84D`
+- dunkle halbtransparente Hintergrundbox mit ungefähr 72 % Deckkraft
 - 3–6 Wörter, höchstens zwei Zeilen
-- aktuell gesprochenes Wort gelb mit `#FFD84D`
-- gelbe Markierung nur anhand akustisch bestätigter Wortzeiten
+- warmgelbe Markierung nur anhand akustisch bestätigter Wortzeiten
 - Zoom normalerweise 2–6 %, maximal 8 %
 - Schwenk maximal 4 %
 - Hook ohne Übergang
@@ -47,6 +49,8 @@ Für den Wort-Sync wird kein Gemini-Key und kein anderer Transkriptions-Key ben�
 - keine Crossfades, Schwarzblenden, Slides oder schwarzen Zwischenframes
 - Hintergrundmusik standardmäßig ausgeschaltet
 - Ausgabeformat 1080 × 1920 bei 30 FPS
+
+Die Untertitel stehen bewusst nicht exakt bei 50 %. Dort liegen bei Erklärbildern häufig Gesichter, Figuren und zentrale Motive. 68 % wirkt mittig, bleibt aber meist unterhalb des Hauptmotivs.
 
 ## Autonomes neues Reel
 
@@ -80,6 +84,8 @@ Pausen kürzen und Voice-over leicht beschleunigen
 Timeline und Audio-Cues synchronisieren
         ↓
 Codex hört das optimierte Voice-over ab und trägt Wortzeiten ein
+        ↓
+Untertitelposition und Farbpalette prüfen
         ↓
 Bilder technisch und visuell prüfen
         ↓
@@ -202,7 +208,7 @@ npm run sync:words -- \
   --strict
 ```
 
-Der strenge Lauf verlangt mindestens 98 % Zeitabdeckung und blockiert unbestätigte oder unsichere Wortzeiten.
+Der strenge Lauf verlangt mindestens 98 % Zeitabdeckung und blockiert unbestätigte oder unsichere Wortzeiten. Er erzeugt gleichzeitig die mittige Untertitelposition und die feste Farbpalette.
 
 Details: `docs/codex-word-sync.md`.
 
@@ -218,6 +224,8 @@ Geprüft werden unter anderem:
 - 9:16 und ausreichende Auflösung
 - Textlesbarkeit und Textfehler
 - sichere Position von Hauptmotiven
+- Untertitelzone 64–72 % verdeckt keine wichtigen Inhalte
+- weiches Weiß und Warmgelb bleiben klar unterscheidbar
 - Untertitel- und Plattform-UI-Kollisionen
 - Zoom- und Schwenksicherheit
 - Stilkonsistenz
@@ -233,6 +241,7 @@ Die Freigabe wird unter anderem blockiert, wenn:
 - das Audio-Pacing nicht abgeschlossen wurde
 - die Timeline nicht exakt synchronisiert ist
 - die Codex-Wortzeiten fehlen
+- Untertitelposition oder Farbpalette falsch sind
 - die visuelle Prüfung fehlt
 
 ## 9. Renderer prüfen
@@ -248,6 +257,9 @@ Die Prüfung akzeptiert nur:
 - optimiertes Voice-over im leicht beschleunigten Zielbereich
 - lückenlose Frames
 - gültige Untertitel- und Wortzeiten
+- Untertitelhöhe 64–72 %, Standard 68 %
+- Normaltext `#F5F7FA`
+- Synchronfarbe `#FFD84D`
 
 ## 10. Fertige MP4 erzeugen
 
@@ -261,7 +273,7 @@ Standardausgabe:
 PFAD-ZUM-REEL/output/REEL-ID.mp4
 ```
 
-Der Remotion-Renderer zeigt beim Szenenwechsel sofort das neue Bild. Es gibt keine Fade-Animation, kein Schwarzbild und keine künstliche Übergangsverzögerung.
+Der Remotion-Renderer zeigt beim Szenenwechsel sofort das neue Bild. Es gibt keine Fade-Animation, kein Schwarzbild und keine künstliche Übergangsverzögerung. Die Untertitel stehen leicht unterhalb der Bildmitte auf einer dunklen Box; das aktuelle Wort leuchtet warmgelb.
 
 ## Befehle
 
@@ -293,6 +305,8 @@ npm test
 - `docs/pacing-hard-cuts.md` – Audio-Pacing und direkte Schnitte
 - `docs/codex-word-sync.md` – lokaler Codex-Wort-Sync
 - `docs/remotion-renderer.md` – Renderer-Dokumentation
+- `knowledge/subtitle-pacing-rules.md` – Position, Farben und Synchronmarkierung
+- `src/shared/subtitle-style.js` – zentraler Untertitelstil
 - `src/core/audio-tightener.js` – Pausenkürzung und leichte Tempoerhöhung
 - `src/core/render-validator.js` – Renderer-Vorprüfung
 - `src/renderer/ReelComposition.jsx` – MP4-Komposition mit direkten Schnitten
