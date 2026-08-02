@@ -2,6 +2,7 @@ import { access, readFile } from 'node:fs/promises';
 import path from 'node:path';
 
 import { validateExactWordTimings } from '../renderer/subtitle-timing.js';
+import { SUBTITLE_STYLE, isHexColor } from '../shared/subtitle-style.js';
 
 const IMAGE_EXTENSIONS = new Set(['.png', '.jpg', '.jpeg', '.webp']);
 const AUDIO_EXTENSIONS = new Set(['.mp3', '.wav', '.m4a', '.aac', '.flac', '.ogg']);
@@ -161,14 +162,24 @@ export async function validateRendererInput(reelDirectory, {
       push(checks, `${cueId}-text`, String(cue.text ?? '').trim().length > 0,
         `${cueId}: Untertiteltext fehlt.`);
 
-      const vertical = Number(cue.verticalPositionPercent ?? 79.5);
-      push(checks, `${cueId}-vertical-position`, Number.isFinite(vertical) && vertical >= 76.5 && vertical <= 80.5,
-        `${cueId}: Untertitel müssen zwischen 76,5 und 80,5 Prozent der Bildhöhe liegen.`);
+      const vertical = Number(cue.verticalPositionPercent ?? SUBTITLE_STYLE.verticalPositionPercent);
+      const { min, max } = SUBTITLE_STYLE.safeVerticalRangePercent;
+      push(checks, `${cueId}-vertical-position`, Number.isFinite(vertical) && vertical >= min && vertical <= max,
+        `${cueId}: Untertitel müssen leicht unterhalb der Bildmitte zwischen ${min} und ${max} Prozent liegen.`);
+
+      const textColor = cue.textColor ?? SUBTITLE_STYLE.textColor;
+      const highlightColor = cue.highlightColor ?? SUBTITLE_STYLE.highlightColor;
+      push(checks, `${cueId}-text-color`, isHexColor(textColor) && String(textColor).toUpperCase() === SUBTITLE_STYLE.textColor,
+        `${cueId}: Normaler Untertiteltext muss weiches Weiß ${SUBTITLE_STYLE.textColor} verwenden.`);
+      push(checks, `${cueId}-highlight-color`, isHexColor(highlightColor) && String(highlightColor).toUpperCase() === SUBTITLE_STYLE.highlightColor,
+        `${cueId}: Das synchron gesprochene Wort muss warmgelb ${SUBTITLE_STYLE.highlightColor} verwenden.`);
+      push(checks, `${cueId}-color-separation`, String(textColor).toUpperCase() !== String(highlightColor).toUpperCase(),
+        `${cueId}: Normaltext und Synchronfarbe dürfen nicht identisch sein.`);
 
       if (cue.highlightCurrentWord !== false) {
         const exact = validateExactWordTimings(cue);
         push(checks, `${cueId}-exact-word-timing`, exact.valid,
-          `${cueId}: Die gelbe Wortmarkierung braucht echte Wortzeiten. ${exact.issues.join(' ')}`,
+          `${cueId}: Die warmgelbe Wortmarkierung braucht echte Wortzeiten. ${exact.issues.join(' ')}`,
           requireFinalReadiness ? 'error' : 'warning');
       }
     }
