@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { validateReelContent } from '../core/content-validator.js';
+import { validateImagePromptBundle } from '../core/image-prompt-bundle.js';
 
 function getArgument(name) {
   const index = process.argv.indexOf(name);
@@ -18,6 +19,8 @@ async function main() {
   }
 
   const report = await validateReelContent(reelDirectory, { strict });
+  const promptBundle = await validateImagePromptBundle(reelDirectory);
+
   console.log(`Prüfungen bestanden: ${report.summary.passedChecks}/${report.summary.totalChecks}`);
   console.log(`Fehler: ${report.summary.failedChecks}`);
   console.log(`Warnungen: ${report.summary.warnings}`);
@@ -27,7 +30,15 @@ async function main() {
     console.log(`- ${prefix}: ${check.message}`);
   }
 
-  if (!report.passed) process.exitCode = 1;
+  if (!promptBundle.passed) {
+    const prefix = strict ? 'FEHLER' : 'WARNUNG';
+    console.log(`- ${prefix}: ${promptBundle.message}`);
+    console.log(`  Erzeugen: npm run export:prompts -- --dir "${reelDirectory}" --strict`);
+  } else {
+    console.log(`Bildprompt-Sammeldatei vollständig: ${promptBundle.outputFile}`);
+  }
+
+  if (!report.passed || (strict && !promptBundle.passed)) process.exitCode = 1;
   else console.log('Inhaltspaket ist bereit für Audio- und Bilderstellung.');
 }
 
