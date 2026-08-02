@@ -66,8 +66,8 @@ async function createReadyFixture() {
             text: 'Ein kurzer Untertitel',
             startSeconds: 0.2,
             endSeconds: 1.8,
-            position: 'safe-middle',
-            verticalPositionPercent: 68,
+            position: 'center',
+            verticalPositionPercent: 50,
             textColor: '#F5F7FA',
             highlightCurrentWord: true,
             highlightColor: '#FFD84D',
@@ -85,18 +85,18 @@ async function createReadyFixture() {
   return root;
 }
 
-test('akzeptiert einen vollständigen Plan mit optimiertem Audio und mittiger Untertitelpalette', async () => {
+test('akzeptiert einen vollständigen Plan mit optimiertem Audio und exakt mittiger Untertitelpalette', async () => {
   const root = await createReadyFixture();
   const report = await validateRendererInput(root);
   assert.equal(report.passed, true);
   assert.equal(report.summary.failedChecks, 0);
 });
 
-test('blockiert alte tiefe Untertitelpositionen und falsche Farben', async () => {
+test('blockiert jede abweichende Untertitelposition und falsche Farben', async () => {
   const root = await createReadyFixture();
   const planPath = path.join(root, 'render', 'render-plan.json');
   const plan = await readJson(planPath);
-  plan.scenes[0].subtitles[0].verticalPositionPercent = 79.5;
+  plan.scenes[0].subtitles[0].verticalPositionPercent = 68;
   plan.scenes[0].subtitles[0].textColor = '#FFFFFF';
   plan.scenes[0].subtitles[0].highlightColor = '#00FF00';
   await writeJson(planPath, plan);

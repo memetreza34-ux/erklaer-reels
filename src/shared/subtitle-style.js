@@ -1,7 +1,7 @@
 export const SUBTITLE_STYLE = Object.freeze({
-  position: 'safe-middle',
-  verticalPositionPercent: 68,
-  safeVerticalRangePercent: Object.freeze({ min: 64, max: 72 }),
+  position: 'center',
+  verticalPositionPercent: 50,
+  safeVerticalRangePercent: Object.freeze({ min: 50, max: 50 }),
   textColor: '#F5F7FA',
   highlightColor: '#FFD84D',
   backgroundColor: 'rgba(0, 0, 0, 0.72)',
