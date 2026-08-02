@@ -41,15 +41,21 @@ Dieses Repository produziert vollständige visuelle Erklär-Reels. Der Nutzer er
 
 ## Themenbereich
 
-Erlaubt:
+Der Kanal konzentriert sich auf die Leitidee:
+
+> Warum Menschen, Länder und Gesellschaften so funktionieren.
+
+Erlaubte Content-Säulen:
 
 - Politik und Gesellschaft
 - Länder, Geografie und Geschichte
 - Psychologie und menschliches Verhalten
-- Körper und Biologie
+
+Die autonome Themenwahl darf ausschließlich aus diesen drei Säulen erfolgen.
 
 Nicht als eigene Content-Säulen verwenden:
 
+- Körper und Biologie
 - Finanzen
 - Elektrotechnik
 - KI-News
