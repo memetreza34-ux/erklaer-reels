@@ -1,6 +1,6 @@
 # Codex-Wort-Synchronisierung
 
-Die gelbe Wortmarkierung wird ohne Gemini, ohne externen Transkriptionsanbieter und ohne zusätzlichen API-Schlüssel vorbereitet.
+Die warmgelbe Wortmarkierung wird ohne Gemini, ohne externen Transkriptionsanbieter und ohne zusätzlichen API-Schlüssel vorbereitet.
 
 ## Prinzip
 
@@ -16,6 +16,8 @@ Codex hört das Audio lokal ab
 Codex trägt absolute Start- und Endzeiten ein
         ↓
 sync:words --apply --strict prüft und übernimmt die Daten
+        ↓
+Mittige Untertitelpalette wird angewendet
         ↓
 Timeline und Render-Plan werden neu gebaut
 ```
@@ -71,10 +73,29 @@ Der Befehl:
 - prüft die akustische Bestätigung jedes Wortes
 - erzeugt kurze Untertitelblöcke mit normalerweise 3–6 Wörtern
 - schreibt exakte `wordTimings`
-- setzt die Untertitel auf 79,5 % der Bildhöhe
+- setzt die Untertitel standardmäßig auf 68 % der Bildhöhe
+- erlaubt ausschließlich den sicheren Bereich 64–72 %
+- setzt normalen Text auf weiches Weiß `#F5F7FA`
+- setzt das aktuelle Wort auf Warmgelb `#FFD84D`
+- setzt eine dunkle halbtransparente Hintergrundbox
 - erstellt `review/codex-word-sync-report.json`
 - aktualisiert `review/word-sync-report.json`
 - baut Timeline und Render-Plan neu
+
+## Feste Untertitelpalette
+
+```json
+{
+  "position": "safe-middle",
+  "verticalPositionPercent": 68,
+  "safeVerticalRangePercent": { "min": 64, "max": 72 },
+  "textColor": "#F5F7FA",
+  "highlightColor": "#FFD84D",
+  "backgroundColor": "rgba(0, 0, 0, 0.72)"
+}
+```
+
+Ohne gültige Wortzeiten bleibt der gesamte Cue in weichem Weiß. Warmgelb wird nur bei einem akustisch bestätigten aktiven Wort angezeigt.
 
 ## Nur validieren
 

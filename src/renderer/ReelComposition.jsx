@@ -10,6 +10,11 @@ import {
   useVideoConfig
 } from 'remotion';
 
+import {
+  SUBTITLE_STYLE,
+  normalizeSubtitleColor,
+  normalizeSubtitleVerticalPosition
+} from '../shared/subtitle-style.js';
 import { activeWordIndex, buildWordTimings } from './subtitle-timing.js';
 
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
@@ -83,14 +88,13 @@ const SceneLayer = ({ scene }) => {
 const Subtitle = ({ cue }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const position = cue.position ?? 'safe-lower-middle';
-  const defaultVertical = position === 'safe-lower-middle' ? 79.5 : 79;
-  const vertical = clamp(Number(cue.verticalPositionPercent) || defaultVertical, 76.5, 80.5);
+  const vertical = normalizeSubtitleVerticalPosition(cue.verticalPositionPercent);
+  const textColor = normalizeSubtitleColor(cue.textColor, SUBTITLE_STYLE.textColor);
+  const highlightColor = normalizeSubtitleColor(cue.highlightColor, SUBTITLE_STYLE.highlightColor);
   const words = buildWordTimings(cue);
   const active = cue.highlightCurrentWord === false
     ? -1
     : activeWordIndex(words, frame / fps);
-  const highlightColor = cue.highlightColor ?? '#FFD84D';
 
   return (
     <AbsoluteFill
@@ -105,34 +109,43 @@ const Subtitle = ({ cue }) => {
           position: 'absolute',
           top: `${vertical}%`,
           transform: 'translateY(-50%)',
-          maxWidth: '90%',
-          padding: '9px 18px 11px',
-          borderRadius: 14,
-          backgroundColor: 'rgba(0, 0, 0, 0.64)',
-          color: '#fff',
+          maxWidth: `${SUBTITLE_STYLE.maxWidthPercent}%`,
+          padding: '10px 20px 12px',
+          borderRadius: 16,
+          border: `1px solid ${SUBTITLE_STYLE.borderColor}`,
+          backgroundColor: cue.backgroundColor ?? SUBTITLE_STYLE.backgroundColor,
+          color: textColor,
           fontFamily: 'Arial, Helvetica, sans-serif',
-          fontSize: 52,
-          fontWeight: 800,
+          fontSize: SUBTITLE_STYLE.fontSize,
+          fontWeight: SUBTITLE_STYLE.fontWeight,
           lineHeight: 1.08,
           letterSpacing: -0.9,
           textAlign: 'center',
-          textShadow: '0 3px 10px rgba(0, 0, 0, 0.92)',
+          textShadow: '0 3px 10px rgba(0, 0, 0, 0.94)',
           whiteSpace: 'normal'
         }}
       >
-        {words.length > 0 ? words.map((word, index) => (
-          <React.Fragment key={`${word.text}-${index}`}>
-            {index > 0 ? ' ' : ''}
-            <span
-              style={{
-                color: index === active ? highlightColor : '#fff',
-                transition: 'color 45ms linear'
-              }}
-            >
-              {word.text}
-            </span>
-          </React.Fragment>
-        )) : cue.text}
+        {words.length > 0 ? words.map((word, index) => {
+          const isActive = index === active;
+          return (
+            <React.Fragment key={`${word.text}-${index}`}>
+              {index > 0 ? ' ' : ''}
+              <span
+                style={{
+                  color: isActive ? highlightColor : textColor,
+                  textShadow: isActive
+                    ? '0 0 14px rgba(255, 216, 77, 0.58), 0 3px 10px rgba(0, 0, 0, 0.94)'
+                    : '0 3px 10px rgba(0, 0, 0, 0.94)',
+                  transition: 'color 45ms linear, text-shadow 45ms linear'
+                }}
+              >
+                {word.text}
+              </span>
+            </React.Fragment>
+          );
+        }) : (
+          <span style={{ color: textColor }}>{cue.text}</span>
+        )}
       </div>
     </AbsoluteFill>
   );

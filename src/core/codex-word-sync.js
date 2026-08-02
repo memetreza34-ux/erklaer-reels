@@ -4,6 +4,7 @@ import path from 'node:path';
 
 import { buildMasterTimeline } from './timeline.js';
 import { validateExactWordTimings } from '../renderer/subtitle-timing.js';
+import { SUBTITLE_STYLE } from '../shared/subtitle-style.js';
 
 const AUDIO_EXTENSIONS = new Set(['.mp3', '.wav', '.m4a', '.aac', '.flac', '.ogg', '.webm', '.mp4']);
 
@@ -145,9 +146,11 @@ function assignWordsToScenes(words, inputScenes) {
 }
 
 export function buildSubtitleCuesFromCodexWords(words, scenes, options = {}) {
-  const position = options.position ?? 'safe-lower-middle';
-  const verticalPositionPercent = Number(options.verticalPositionPercent ?? 79.5);
-  const highlightColor = options.highlightColor ?? '#FFD84D';
+  const position = options.position ?? SUBTITLE_STYLE.position;
+  const verticalPositionPercent = Number(options.verticalPositionPercent ?? SUBTITLE_STYLE.verticalPositionPercent);
+  const textColor = options.textColor ?? SUBTITLE_STYLE.textColor;
+  const highlightColor = options.highlightColor ?? SUBTITLE_STYLE.highlightColor;
+  const backgroundColor = options.backgroundColor ?? SUBTITLE_STYLE.backgroundColor;
   const preRoll = Number(options.preRollSeconds ?? 0.035);
   const postRoll = Number(options.postRollSeconds ?? 0.1);
   const { assigned, unassigned } = assignWordsToScenes(words, scenes);
@@ -180,6 +183,8 @@ export function buildSubtitleCuesFromCodexWords(words, scenes, options = {}) {
         endSeconds: round(Math.max(startSeconds + 0.05, endSeconds)),
         position,
         verticalPositionPercent,
+        textColor,
+        backgroundColor,
         highlightCurrentWord: true,
         highlightColor,
         timingStatus: 'codex-word-synced',
@@ -381,7 +386,7 @@ export async function applyCodexWordSync(reelDirectory, { strict = false, valida
   const passed = validation.passed && built.cues.length > 0 && invalidCues.length === 0 && (!strict || emptyScenes.length === 0);
 
   const report = {
-    version: 2,
+    version: 3,
     createdAt: new Date().toISOString(),
     passed,
     strict,
@@ -394,6 +399,12 @@ export async function applyCodexWordSync(reelDirectory, { strict = false, valida
     timedWords: validation.timedWords,
     coverage: validation.coverage,
     cueCount: built.cues.length,
+    subtitleStyle: {
+      position: SUBTITLE_STYLE.position,
+      verticalPositionPercent: SUBTITLE_STYLE.verticalPositionPercent,
+      textColor: SUBTITLE_STYLE.textColor,
+      highlightColor: SUBTITLE_STYLE.highlightColor
+    },
     unassignedWords: built.unassigned,
     invalidCues: invalidCues.map(({ cue, result }) => ({ id: cue.id, issues: result.issues })),
     sceneSummary: built.sceneSummary,
@@ -413,13 +424,16 @@ export async function applyCodexWordSync(reelDirectory, { strict = false, valida
 
     const nextPlan = {
       ...previousPlan,
-      version: Math.max(2, Number(previousPlan.version ?? 1)),
+      version: Math.max(3, Number(previousPlan.version ?? 1)),
       enabled: true,
       language: 'de',
-      position: 'safe-lower-middle',
-      verticalPositionPercent: 79.5,
+      position: SUBTITLE_STYLE.position,
+      verticalPositionPercent: SUBTITLE_STYLE.verticalPositionPercent,
+      safeVerticalRangePercent: SUBTITLE_STYLE.safeVerticalRangePercent,
+      textColor: SUBTITLE_STYLE.textColor,
       highlightCurrentWord: true,
-      highlightColor: '#FFD84D',
+      highlightColor: SUBTITLE_STYLE.highlightColor,
+      backgroundColor: SUBTITLE_STYLE.backgroundColor,
       exactWordTimingsRequired: true,
       timingStatus: 'codex-word-synced',
       timingProvider: 'codex-local-audio-review',

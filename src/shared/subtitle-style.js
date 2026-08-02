@@ -1,0 +1,30 @@
+export const SUBTITLE_STYLE = Object.freeze({
+  position: 'safe-middle',
+  verticalPositionPercent: 68,
+  safeVerticalRangePercent: Object.freeze({ min: 64, max: 72 }),
+  textColor: '#F5F7FA',
+  highlightColor: '#FFD84D',
+  backgroundColor: 'rgba(0, 0, 0, 0.72)',
+  borderColor: 'rgba(255, 255, 255, 0.12)',
+  maxWidthPercent: 88,
+  fontSize: 54,
+  fontWeight: 800,
+  maxLines: 2
+});
+
+export function normalizeSubtitleVerticalPosition(value) {
+  const number = Number(value);
+  const { min, max } = SUBTITLE_STYLE.safeVerticalRangePercent;
+  if (!Number.isFinite(number) || number < min || number > max) {
+    return SUBTITLE_STYLE.verticalPositionPercent;
+  }
+  return number;
+}
+
+export function isHexColor(value) {
+  return /^#[0-9A-F]{6}$/i.test(String(value ?? '').trim());
+}
+
+export function normalizeSubtitleColor(value, fallback) {
+  return isHexColor(value) ? String(value).toUpperCase() : fallback;
+}

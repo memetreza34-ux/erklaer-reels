@@ -2,19 +2,29 @@
 
 ## Position
 
-- Standardposition ist 79,5 % der Bildhöhe.
-- Erlaubter Bereich ist 76,5–80,5 %.
-- Untertitel liegen sichtbar weit unten, bleiben aber oberhalb der Plattform-Bedienelemente.
+- Standardposition ist 68 % der Bildhöhe.
+- Erlaubter Bereich ist 64–72 %.
+- Die Untertitel stehen damit leicht unterhalb der geometrischen Bildmitte.
+- Exakt 50 % wird vermieden, weil dort häufig Gesichter, Figuren und zentrale Erklärmotive liegen.
 - Höchstens zwei Zeilen und normalerweise 3–6 Wörter verwenden.
-- Bei einer Kollision mit wichtigem Bildinhalt darf innerhalb der sicheren Zone leicht nach oben verschoben werden.
+- Bei einer Kollision mit wichtigem Bildinhalt darf innerhalb der sicheren Zone leicht verschoben werden.
 
-## Gelbe Wortmarkierung
+## Farben und Lesbarkeit
 
-- Der vollständige Untertitel bleibt weiß sichtbar.
-- Nur das gerade gesprochene Wort wird gelb (`#FFD84D`) markiert.
+- Normaler Untertiteltext verwendet weiches Weiß `#F5F7FA`.
+- Reines Weiß wird vermieden, weil es auf hellen Bildern stärker blendet und weniger ruhig wirkt.
+- Das aktuell gesprochene Wort wird warmgelb `#FFD84D` markiert.
+- Beide Farben liegen auf einer dunklen halbtransparenten Box mit ungefähr 72 % Deckkraft.
+- Die Box erhält einen sehr dezenten hellen Rand und einen kräftigen Schatten.
+- Diese Palette bleibt auf warmen, kalten, hellen und dunklen Bildwelten gut lesbar.
+
+## Synchronisierte Wortmarkierung
+
+- Der vollständige Untertitel bleibt in weichem Weiß sichtbar.
+- Nur das gerade gesprochene Wort wird warmgelb markiert.
 - Die Markierung darf ausschließlich akustisch bestätigten Wortzeiten folgen.
 - Gleichmäßige oder gewichtete Schätzungen sind verboten.
-- Ohne exakte Wortzeiten bleibt der gesamte Cue weiß.
+- Ohne exakte Wortzeiten bleibt der gesamte Cue in weichem Weiß.
 - Der finale Renderer-Check blockiert fehlende, überlappende oder unvollständige Wortzeiten.
 
 ## Voice-over zuerst straffen
@@ -78,8 +88,10 @@ Beispiel:
   "text": "Der Tisch bekommt neuen Wert",
   "startSeconds": 4.18,
   "endSeconds": 6.12,
-  "position": "safe-lower-middle",
-  "verticalPositionPercent": 79.5,
+  "position": "safe-middle",
+  "verticalPositionPercent": 68,
+  "textColor": "#F5F7FA",
+  "backgroundColor": "rgba(0, 0, 0, 0.72)",
   "highlightCurrentWord": true,
   "highlightColor": "#FFD84D",
   "timingStatus": "codex-word-synced",

@@ -65,15 +65,19 @@ Das Bild beginnt normalerweise 0,1–0,3 Sekunden vor dem gesprochenen `audioCue
 ## 3. Untertitel
 
 - standardmäßig aktiv
-- Position `safe-lower-middle`
-- Standardhöhe 79,5 %
-- erlaubter Bereich 76,5–80,5 %
+- Position `safe-middle`
+- Standardhöhe 68 %
+- erlaubter Bereich 64–72 %
+- nicht exakt bei 50 %, weil dort häufig Gesichter und Hauptmotive liegen
 - normalerweise 3–6 Wörter
 - höchstens zwei Zeilen
 - Bildtext nicht identisch wiederholen
-- aktuell gesprochenes Wort gelb mit `#FFD84D`
-- gelbe Markierung ausschließlich mit akustisch bestätigten Wortzeiten
-- ohne exakte Wortzeiten bleibt der komplette Cue weiß
+- normaler Text in weichem Weiß `#F5F7FA`
+- aktuell gesprochenes Wort in Warmgelb `#FFD84D`
+- dunkle halbtransparente Hintergrundbox mit ungefähr 72 % Deckkraft
+- warmgelbe Markierung ausschließlich mit akustisch bestätigten Wortzeiten
+- ohne exakte Wortzeiten bleibt der komplette Cue in weichem Weiß
+- innerhalb 64–72 % darf die Position verschoben werden, wenn ein wichtiges Motiv verdeckt wird
 
 Die finalen Wortzeiten werden nicht mathematisch geschätzt und nicht über Gemini erzeugt. Codex übernimmt die lokale Audio-Prüfung.
 
@@ -204,6 +208,9 @@ Prüfen:
 - jede Szene besitzt bestätigte Wörter
 - Cue-Text und Wortliste stimmen vollständig überein
 - `timingProvider` ist `codex-local-audio-review`
+- `verticalPositionPercent` liegt zwischen 64 und 72, Standard 68
+- `textColor` ist `#F5F7FA`
+- `highlightColor` ist `#FFD84D`
 
 Nach Änderungen am Audio müssen Audio-Pacing, `sync:audio` und der Codex-Wort-Sync erneut ausgeführt werden.
 
@@ -220,7 +227,8 @@ Prüfen:
 - 9:16 und ausreichende Auflösung
 - Hauptmotiv sicher positioniert
 - Text lesbar und fehlerfrei
-- keine Untertitelkollision
+- Untertitelzone 64–72 % verdeckt keine Gesichter, Schlüsselsymbole oder wichtigen Bildtexte
+- weiches Weiß und Warmgelb bleiben auf der dunklen Box klar unterscheidbar
 - keine Kollision mit Plattform-Bedienelementen
 - Zoom und Schwenk schneiden nichts Wichtiges ab
 - Stil bleibt konsistent
@@ -251,7 +259,7 @@ npm run validate:render -- --dir "PFAD-ZUM-REEL"
 npm run render:reel -- --dir "PFAD-ZUM-REEL"
 ```
 
-Die Renderer-Prüfung blockiert jeden Fade oder Übergang mit Dauer. Erlaubt sind ausschließlich `none` für die Hook und `cut` für die folgenden Szenen.
+Die Renderer-Prüfung blockiert jeden Fade oder Übergang mit Dauer. Erlaubt sind ausschließlich `none` für die Hook und `cut` für die folgenden Szenen. Zusätzlich werden Untertitelposition und Farbpalette streng geprüft.
 
 Standardausgabe:
 
@@ -275,6 +283,7 @@ Das Reel ist erst vollständig fertig, wenn:
 - Audio-Pacing bestanden
 - Audio synchronisiert
 - Codex-Wortzeiten akustisch bestätigt und streng validiert
+- Untertitelposition und Farbpalette validiert
 - alle Szenen direkte harte Schnitte verwenden
 - visuelle Prüfung bestanden
 - Abschlussprüfung freigegeben

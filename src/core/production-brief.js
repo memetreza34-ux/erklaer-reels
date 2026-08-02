@@ -1,6 +1,8 @@
 import { access, mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
+import { SUBTITLE_STYLE } from '../shared/subtitle-style.js';
+
 async function exists(filePath) {
   try {
     await access(filePath);
@@ -34,7 +36,7 @@ export async function prepareReelProduction(reelDirectory) {
   await mkdir(productionDirectory, { recursive: true });
 
   const checklist = {
-    version: 7,
+    version: 8,
     reelId: reel.reelId,
     title: reel.title,
     createdAt: new Date().toISOString(),
@@ -44,7 +46,7 @@ export async function prepareReelProduction(reelDirectory) {
       { id: 'style-select', label: 'Passende Bildwelt auswählen und in reel.json eintragen', status: 'pending' },
       { id: 'scenes-fill', label: `${scenes.length} Szenen mit Audio-Cues vollständig planen`, status: 'pending' },
       { id: 'prompts-write', label: `${scenes.length} englische Bildprompts schreiben`, status: 'pending' },
-      { id: 'subtitles-write', label: 'Tiefe Untertitel für spätere Codex-Wortzeiten planen', status: 'pending' },
+      { id: 'subtitles-write', label: 'Mittige Untertitel mit weichem Weiß und warmgelber Synchronfarbe planen', status: 'pending' },
       { id: 'effects-write', label: 'Dezente Bewegungen, ausschließlich harte Schnitte und Soundeffekte planen', status: 'pending' },
       { id: 'cover-write', label: 'Cover-Idee und Cover-Prompt schreiben', status: 'pending' },
       { id: 'caption-write', label: 'Caption erstellen', status: 'pending' },
@@ -68,8 +70,11 @@ Erstelle aus dem vorhandenen deutschen Rohscript ein vollständiges Produktionsp
 - Format: **9:16**
 - Voice-over: **Deutsch**
 - Bildprompts: **Englisch**
-- Untertitel: **79,5 % der Bildhöhe, sichere Zone 76,5–80,5 %**
-- Gelbe Wortmarkierung: **nach dem Voice-over durch lokale Codex-Audio-Prüfung**
+- Untertitelposition: **${SUBTITLE_STYLE.verticalPositionPercent} % der Bildhöhe, sichere Zone ${SUBTITLE_STYLE.safeVerticalRangePercent.min}–${SUBTITLE_STYLE.safeVerticalRangePercent.max} %**
+- Normaler Untertiteltext: **weiches Weiß ${SUBTITLE_STYLE.textColor}**
+- Synchron markiertes Wort: **Warmgelb ${SUBTITLE_STYLE.highlightColor}**
+- Untertitelhintergrund: **dunkle halbtransparente Box**
+- Wortmarkierung: **nach dem Voice-over durch lokale Codex-Audio-Prüfung**
 - Übergänge: **keine Fades; Hook ohne Übergang, danach nur direkte harte Schnitte**
 - Audio-Pacing: **Pausen kürzen und Voice-over mit 1.05x leicht beschleunigen**
 - Externer Transkriptionsdienst: **nicht verwenden**
@@ -91,12 +96,15 @@ Erstelle aus dem vorhandenen deutschen Rohscript ein vollständiges Produktionsp
 8. Jede Szene benötigt \`title\`, \`narration\`, \`imageText\`, \`visualIdea\`, \`continuityNotes\`, \`audioCue\`, \`leadInSeconds\`, \`subtitleCues\`, \`subtitlePosition\`, \`durationSeconds\` und \`expectedImageFileName\`.
 9. Schreibe für jede Szene einen vollständigen englischen 9:16-Bildprompt.
 10. Fülle \`subtitles/subtitle-plan.json\` zunächst als Plan aus:
-    - Position \`safe-lower-middle\`
-    - Höhe 79,5 %
-    - normalerweise 3–6 Wörter, höchstens zwei Zeilen
+    - Position \`${SUBTITLE_STYLE.position}\`
+    - Höhe ${SUBTITLE_STYLE.verticalPositionPercent} %
+    - sichere Zone ${SUBTITLE_STYLE.safeVerticalRangePercent.min}–${SUBTITLE_STYLE.safeVerticalRangePercent.max} %
+    - \`textColor: "${SUBTITLE_STYLE.textColor}"\`
     - \`highlightCurrentWord: true\`
-    - \`highlightColor: "#FFD84D"\`
-    - keine geschätzten gelben Wortzeiten eintragen
+    - \`highlightColor: "${SUBTITLE_STYLE.highlightColor}"\`
+    - dunkle halbtransparente Hintergrundbox
+    - normalerweise 3–6 Wörter, höchstens zwei Zeilen
+    - keine geschätzten Wortzeiten eintragen
     - die finalen Cues werden später aus akustisch bestätigten Codex-Wortzeiten neu erzeugt
 11. Fülle \`effects/effects-plan.json\` vollständig aus:
     - Szene 1: \`transitionIn.type: "none"\`, \`durationSeconds: 0\`
@@ -153,8 +161,9 @@ npm run sync:words -- --dir "${normalizedDirectory}" --apply --strict
 \`\`\`
 
 8. Prüfe \`review/word-sync-report.json\`: mindestens 98 % Wortabdeckung, mindestens 0,85 Konfidenz und keine leere Szene.
-9. Nach einer neuen Audiodatei \`trim:pauses\`, \`sync:audio\` und den Codex-Wort-Sync erneut ausführen.
-10. Danach visuelle Prüfung, \`finalize:reel --strict\`, \`validate:render\` und \`render:reel\` ausführen.
+9. Prüfe zusätzlich: Position ${SUBTITLE_STYLE.verticalPositionPercent} %, Textfarbe ${SUBTITLE_STYLE.textColor}, Synchronfarbe ${SUBTITLE_STYLE.highlightColor}.
+10. Nach einer neuen Audiodatei \`trim:pauses\`, \`sync:audio\` und den Codex-Wort-Sync erneut ausführen.
+11. Danach visuelle Prüfung, \`finalize:reel --strict\`, \`validate:render\` und \`render:reel\` ausführen.
 
 ## Kreative Leitplanken
 
@@ -164,7 +173,7 @@ npm run sync:words -- --dir "${normalizedDirectory}" --apply --strict
 - innerhalb des Reels konsistente Bildwelt
 - Bildwechsel am Sprechertext ausrichten
 - direkte harte Schnitte ohne Verzögerung oder Schwarzbild
-- Untertitel tief, aber nicht im Plattform-Bedienfeld
+- Untertitel leicht unterhalb der Bildmitte; nicht exakt über Gesichtern oder Hauptmotiven
 - keine Bewegung nur um der Bewegung willen
 - kein Whoosh bei jedem Schnitt
 
