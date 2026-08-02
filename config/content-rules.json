@@ -2,16 +2,21 @@
   "allowedTopics": [
     "Politik und Gesellschaft",
     "Länder, Geografie und Geschichte",
-    "Psychologie und menschliches Verhalten",
-    "Körper und Biologie"
+    "Psychologie und menschliches Verhalten"
   ],
   "excludedTopics": [
+    "Körper und Biologie",
     "Finanzen",
     "Elektrotechnik",
     "KI-News",
     "tägliche politische Nachrichten",
     "Parteienwerbung"
   ],
+  "topicFocus": {
+    "statement": "Warum Menschen, Länder und Gesellschaften so funktionieren.",
+    "autonomousSelectionLimitedToAllowedTopics": true,
+    "bodyAndBiologyExcludedAsContentPillar": true
+  },
   "scriptRules": {
     "singleNarrator": true,
     "language": "de",
