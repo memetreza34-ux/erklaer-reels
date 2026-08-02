@@ -24,6 +24,21 @@ npm run finalize:reel -- --dir "PFAD-ZUM-REEL" --strict
 
 `review/final-readiness-report.json` muss `readyForRenderer: true` enthalten und `render/render-plan.json` muss den Status `ready-for-renderer` besitzen.
 
+## Untertitelstil
+
+Der Renderer verwendet einen zentralen Stil aus `src/shared/subtitle-style.js`:
+
+- Position `safe-middle`
+- Standardhöhe 68 %
+- erlaubter Bereich 64–72 %
+- Normaltext `#F5F7FA`
+- Synchronfarbe `#FFD84D`
+- dunkle halbtransparente Box mit ungefähr 72 % Deckkraft
+- dezenter heller Rand und kräftiger Schatten
+- normalerweise 3–6 Wörter, höchstens zwei Zeilen
+
+Werte außerhalb des sicheren Bereichs werden im Renderer auf 68 % zurückgesetzt. Dadurch werden alte Pläne mit 79,5 % nicht versehentlich weiter unten gerendert.
+
 ## Übergänge
 
 Der finale Renderer verwendet keine Übergangsanimationen.
@@ -56,6 +71,9 @@ Geprüft werden unter anderem:
 - vorhandene Bilder und Voice-over-Datei
 - sichere lokale Pfade
 - zulässige Zoom- und Schwenkwerte
+- Untertitelposition zwischen 64 und 72 %
+- Normaltext exakt `#F5F7FA`
+- Synchronfarbe exakt `#FFD84D`
 - gültige Untertitel- und Wortzeiten
 - vorhandene optionale Sounddateien
 - finale Renderer-Freigabe
@@ -89,14 +107,16 @@ Weitere Optionen:
 --force
 ```
 
-`--force` überspringt ausschließlich die finale Freigabeprüfung. Fehlende Bilder, unsichere Pfade, ungültige Framedaten oder verbotene Übergänge bleiben blockierende Fehler.
+`--force` überspringt ausschließlich die finale Freigabeprüfung. Fehlende Bilder, unsichere Pfade, ungültige Framedaten, falsche Untertitelwerte oder verbotene Übergänge bleiben blockierende Fehler.
 
 ## Gerenderte Bestandteile
 
 - alle Szenenbilder aus `render/render-plan.json`
 - gestrafftes Voice-over
-- Untertitel bei ungefähr 79,5 %
-- exakt synchronisierte gelbe Wortmarkierung
+- Untertitel leicht unterhalb der Bildmitte bei ungefähr 68 %
+- weicher weißer Normaltext
+- exakt synchronisierte warmgelbe Wortmarkierung
+- dunkle halbtransparente Untertitelbox
 - dezente Zooms und Schwenks
 - sofortige harte Schnitte
 - Soundeffekte, sofern ein gültiges Feld `file` vorhanden ist
