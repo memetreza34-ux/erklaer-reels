@@ -66,7 +66,7 @@ Vor dem externen Asset-Schritt müssen vorhanden und ausgefüllt sein:
 2. 8–12 Bildmomente passend zur erwarteten Audiolänge
 3. eine konsistente Bildwelt innerhalb des Reels
 4. vollständige englische Bildprompts
-5. Untertitelplan
+5. mittiger Untertitelplan mit fester Farbpalette
 6. Effektplan mit direkten Schnitten, Zooms, Schwenks und Soundeffekten
 7. Cover-Idee und Cover-Prompt
 8. Caption
@@ -149,15 +149,19 @@ Das neue Bild beginnt normalerweise 0,1–0,3 Sekunden vor dem zugehörigen gesp
 
 - standardmäßig aktiv
 - Planung in `subtitles/subtitle-plan.json`
-- Position `safe-lower-middle`
-- Standardhöhe 79,5 %
-- erlaubter Bereich 76,5–80,5 %
+- Position `safe-middle`
+- Standardhöhe 68 % der Bildhöhe
+- erlaubter Bereich 64–72 %
+- nicht exakt auf 50 %, weil dort häufig Gesichter und Hauptmotive liegen
 - normalerweise 3–6 Wörter
 - höchstens zwei Zeilen
-- aktuell gesprochenes Wort gelb mit `#FFD84D`
-- gelbe Markierung nur mit akustisch bestätigten Wortzeiten
-- ohne gültige Wortzeiten bleibt der Cue vollständig weiß
+- normaler Text in weichem Weiß `#F5F7FA`
+- aktuell gesprochenes Wort in Warmgelb `#FFD84D`
+- dunkle halbtransparente Hintergrundbox mit ungefähr 72 % Deckkraft
+- warmgelbe Markierung nur mit akustisch bestätigten Wortzeiten
+- ohne gültige Wortzeiten bleibt der Cue vollständig in weichem Weiß
 - keine gleichmäßige oder gewichtete Wortzeitschätzung
+- wichtige Gesichter, Bildtexte und Erklärmotive dürfen nicht verdeckt werden; innerhalb 64–72 % darf angepasst werden
 
 ## Codex-Wortzeiten
 
@@ -242,7 +246,7 @@ npm run check:visuals -- --dir "<reel-ordner>"
 npm run check:visuals -- --dir "<reel-ordner>" --strict
 ```
 
-Jedes Bild und das Cover müssen tatsächlich visuell geprüft werden.
+Jedes Bild und das Cover müssen tatsächlich visuell geprüft werden. Zusätzlich ist zu prüfen, ob die Untertitelzone 64–72 % wichtige Bildinhalte verdeckt.
 
 ## Timeline, Abschluss und Renderer
 
@@ -265,6 +269,7 @@ Ein Reel darf nur gerendert werden, wenn:
 - Audio-Pacing bestanden ist
 - Audio-Sync bestanden ist
 - Codex-Wortzeiten bestanden sind
+- Untertitelposition und Farbpalette bestanden sind
 - alle Szenen direkte harte Schnitte verwenden
 - visuelle Prüfung bestanden ist
 - alle Pflichtassets vorhanden sind
