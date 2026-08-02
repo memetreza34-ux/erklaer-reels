@@ -17,6 +17,39 @@
     "autonomousSelectionLimitedToAllowedTopics": true,
     "bodyAndBiologyExcludedAsContentPillar": true
   },
+  "hookRules": {
+    "preferredPattern": "THEMA einfach erklärt:",
+    "purpose": "Das Thema sofort klar nennen und direkt verständlich erklären, statt künstlich dramatisch oder rätselhaft zu beginnen.",
+    "firstSeconds": {
+      "topicNamedImmediately": true,
+      "plainLanguageRequired": true,
+      "answerBeginsImmediately": true,
+      "maximumIntroWordsBeforeExplanation": 5
+    },
+    "tone": [
+      "klar",
+      "direkt",
+      "erwachsen",
+      "neutral",
+      "leicht verständlich"
+    ],
+    "preferredExamples": [
+      "Sozialismus einfach erklärt:",
+      "Demokratie einfach erklärt:",
+      "Gruppendruck einfach erklärt:",
+      "Warum haben Länder Grenzen? Einfach erklärt:"
+    ],
+    "avoid": [
+      "Heute erkläre ich dir ...",
+      "Hast du dich schon einmal gefragt ...",
+      "In diesem Video geht es um ...",
+      "unnötig dramatische Behauptungen",
+      "Clickbait ohne direkte Erklärung",
+      "lange Einleitungen vor dem eigentlichen Thema"
+    ],
+    "alternateHookAllowed": true,
+    "alternateHookCondition": "Nur verwenden, wenn eine andere kurze Formulierung das Thema noch klarer und verständlicher eröffnet."
+  },
   "scriptRules": {
     "singleNarrator": true,
     "language": "de",
