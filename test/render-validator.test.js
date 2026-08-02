@@ -66,9 +66,11 @@ async function createReadyFixture() {
             text: 'Ein kurzer Untertitel',
             startSeconds: 0.2,
             endSeconds: 1.8,
-            position: 'safe-lower-middle',
-            verticalPositionPercent: 79.5,
+            position: 'safe-middle',
+            verticalPositionPercent: 68,
+            textColor: '#F5F7FA',
             highlightCurrentWord: true,
+            highlightColor: '#FFD84D',
             wordTimings: [
               { text: 'Ein', startSeconds: 0.2, endSeconds: 0.5 },
               { text: 'kurzer', startSeconds: 0.55, endSeconds: 0.95 },
@@ -83,11 +85,27 @@ async function createReadyFixture() {
   return root;
 }
 
-test('akzeptiert einen vollständigen Plan mit optimiertem Audio und hartem Schnitt', async () => {
+test('akzeptiert einen vollständigen Plan mit optimiertem Audio und mittiger Untertitelpalette', async () => {
   const root = await createReadyFixture();
   const report = await validateRendererInput(root);
   assert.equal(report.passed, true);
   assert.equal(report.summary.failedChecks, 0);
+});
+
+test('blockiert alte tiefe Untertitelpositionen und falsche Farben', async () => {
+  const root = await createReadyFixture();
+  const planPath = path.join(root, 'render', 'render-plan.json');
+  const plan = await readJson(planPath);
+  plan.scenes[0].subtitles[0].verticalPositionPercent = 79.5;
+  plan.scenes[0].subtitles[0].textColor = '#FFFFFF';
+  plan.scenes[0].subtitles[0].highlightColor = '#00FF00';
+  await writeJson(planPath, plan);
+
+  const report = await validateRendererInput(root);
+  assert.equal(report.passed, false);
+  assert.ok(report.checks.some((check) => check.id === 'subtitle-01-vertical-position' && check.passed === false));
+  assert.ok(report.checks.some((check) => check.id === 'subtitle-01-text-color' && check.passed === false));
+  assert.ok(report.checks.some((check) => check.id === 'subtitle-01-highlight-color' && check.passed === false));
 });
 
 test('blockiert Fade- und Crossfade-Übergänge', async () => {
