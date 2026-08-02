@@ -1,6 +1,20 @@
 # Erklär-Reels
 
-KI-gestützte Produktionspipeline für visuelle Erklär-Reels zu Politik, Gesellschaft, Geschichte, Psychologie, Körper und Biologie.
+KI-gestützte Produktionspipeline für visuelle Erklär-Reels zu Politik, Gesellschaft, Ländern, Geografie, Geschichte, Psychologie und menschlichem Verhalten.
+
+## Inhaltlicher Fokus
+
+Der Kanal beantwortet die Leitfrage:
+
+> Warum Menschen, Länder und Gesellschaften so funktionieren.
+
+Die automatische Themenwahl ist auf drei Content-Säulen begrenzt:
+
+1. Politik und Gesellschaft
+2. Länder, Geografie und Geschichte
+3. Psychologie und menschliches Verhalten
+
+Körper und Biologie gehören nicht mehr zu den Content-Säulen und werden bei neuen autonomen Reels nicht ausgewählt.
 
 Aus einem Thema oder deutschen Rohscript entsteht ein vollständiges Reel mit:
 
@@ -8,7 +22,7 @@ Aus einem Thema oder deutschen Rohscript entsteht ein vollständiges Reel mit:
 - 8–12 Bildmomenten
 - englischen Bildprompts
 - gestrafftem und leicht beschleunigtem Voice-over
-- leicht unterhalb der Bildmitte positionierten Untertiteln
+- exakt in der Bildmitte positionierten Untertiteln
 - weichem weißem Normaltext und warmgelber Synchronmarkierung
 - direkten harten Schnitten ohne Fades oder Schwarzbilder
 - dezenten Zooms, Schwenks und Soundeffekten
@@ -35,8 +49,7 @@ Für den Wort-Sync wird kein Gemini-Key und kein anderer Transkriptions-Key ben�
 - sichtbare Veränderung ungefähr alle 3,5–5 Sekunden
 - Voice-over vor der Timeline mit `trim:pauses` straffen
 - Voice-over standardmäßig mit `1.05x` leicht beschleunigen, Tonhöhe erhalten
-- Untertitel standardmäßig bei 68 % der Bildhöhe
-- sichere Untertitelzone 64–72 %
+- Untertitel fest bei 50 % der Bildhöhe
 - normaler Text in weichem Weiß `#F5F7FA`
 - aktuell gesprochenes Wort in Warmgelb `#FFD84D`
 - dunkle halbtransparente Hintergrundbox mit ungefähr 72 % Deckkraft
@@ -50,7 +63,7 @@ Für den Wort-Sync wird kein Gemini-Key und kein anderer Transkriptions-Key ben�
 - Hintergrundmusik standardmäßig ausgeschaltet
 - Ausgabeformat 1080 × 1920 bei 30 FPS
 
-Die Untertitel stehen bewusst nicht exakt bei 50 %. Dort liegen bei Erklärbildern häufig Gesichter, Figuren und zentrale Motive. 68 % wirkt mittig, bleibt aber meist unterhalb des Hauptmotivs.
+Die Untertitelbox wird exakt um die vertikale Bildmitte zentriert. Abweichende Positionswerte werden auf 50 % zurückgesetzt.
 
 ## Autonomes neues Reel
 
@@ -58,7 +71,7 @@ Wenn Codex im Repository arbeitet und der Nutzer sagt:
 
 > Mach ein neues Reel.
 
-wählt Codex automatisch den nächsten freien Wochentag, erstellt das vollständige interne Produktionspaket und hält erst an, wenn externe Bilder oder das Voice-over fehlen.
+wählt Codex automatisch den nächsten freien Wochentag, erstellt das vollständige interne Produktionspaket und hält erst an, wenn externe Bilder oder das Voice-over fehlen. Das Thema wird ausschließlich aus den drei festgelegten Content-Säulen gewählt.
 
 ```bash
 npm run next:slot -- --json
@@ -208,7 +221,7 @@ npm run sync:words -- \
   --strict
 ```
 
-Der strenge Lauf verlangt mindestens 98 % Zeitabdeckung und blockiert unbestätigte oder unsichere Wortzeiten. Er erzeugt gleichzeitig die mittige Untertitelposition und die feste Farbpalette.
+Der strenge Lauf verlangt mindestens 98 % Zeitabdeckung und blockiert unbestätigte oder unsichere Wortzeiten. Er erzeugt gleichzeitig die exakt mittige Untertitelposition und die feste Farbpalette.
 
 Details: `docs/codex-word-sync.md`.
 
@@ -224,7 +237,7 @@ Geprüft werden unter anderem:
 - 9:16 und ausreichende Auflösung
 - Textlesbarkeit und Textfehler
 - sichere Position von Hauptmotiven
-- Untertitelzone 64–72 % verdeckt keine wichtigen Inhalte
+- die Untertitelbox bei 50 % verdeckt keine unverzichtbaren Inhalte
 - weiches Weiß und Warmgelb bleiben klar unterscheidbar
 - Untertitel- und Plattform-UI-Kollisionen
 - Zoom- und Schwenksicherheit
@@ -257,7 +270,7 @@ Die Prüfung akzeptiert nur:
 - optimiertes Voice-over im leicht beschleunigten Zielbereich
 - lückenlose Frames
 - gültige Untertitel- und Wortzeiten
-- Untertitelhöhe 64–72 %, Standard 68 %
+- Untertitelhöhe exakt 50 %
 - Normaltext `#F5F7FA`
 - Synchronfarbe `#FFD84D`
 
@@ -273,7 +286,7 @@ Standardausgabe:
 PFAD-ZUM-REEL/output/REEL-ID.mp4
 ```
 
-Der Remotion-Renderer zeigt beim Szenenwechsel sofort das neue Bild. Es gibt keine Fade-Animation, kein Schwarzbild und keine künstliche Übergangsverzögerung. Die Untertitel stehen leicht unterhalb der Bildmitte auf einer dunklen Box; das aktuelle Wort leuchtet warmgelb.
+Der Remotion-Renderer zeigt beim Szenenwechsel sofort das neue Bild. Es gibt keine Fade-Animation, kein Schwarzbild und keine künstliche Übergangsverzögerung. Die Untertitel stehen exakt in der Bildmitte auf einer dunklen Box; das aktuelle Wort leuchtet warmgelb.
 
 ## Befehle
 
