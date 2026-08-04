@@ -7,6 +7,7 @@ export const AUDIO_PACING_STYLE = Object.freeze({
   loudnessTargetLufs: -16,
   truePeakDbtp: -1.5,
   loudnessRangeLra: 11,
+  outputSampleRateHz: 48000,
   preservePitch: true
 });
 
