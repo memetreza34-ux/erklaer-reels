@@ -5,6 +5,7 @@ import { createReelWorkspace } from '../core/workspace.js';
 import { prepareReelProduction } from '../core/production-brief.js';
 import { findNextFreeProductionSlot } from '../core/next-slot.js';
 import { ensureImagePromptBundleDirectory } from '../core/image-prompt-bundle.js';
+import { ensureHumanReelView } from '../core/human-reel-view.js';
 
 function getArgument(name) {
   const index = process.argv.indexOf(name);
@@ -69,6 +70,7 @@ async function main() {
   const result = await createReelWorkspace({ title, script, date, sceneCount, outputRoot });
   const promptBundle = await ensureImagePromptBundleDirectory(result.reelDirectory);
   const production = await prepareReelProduction(result.reelDirectory);
+  const humanView = await ensureHumanReelView(result.reelDirectory, { hideTechnicalInFinder: true });
 
   if (selectedSlot) {
     console.log(`Automatisch gewählter Termin: ${selectedSlot.weekday}, ${selectedSlot.dateValue}`);
@@ -77,6 +79,8 @@ async function main() {
   console.log(`Szenen: ${result.reel.sceneCount}`);
   console.log(`Codex-Auftrag: ${production.taskFile}`);
   console.log(`Chronologische Bildprompt-Datei: ${promptBundle.file}`);
+  console.log(`Übersichtliche Ordner: ${humanView.visibleFolders.join(', ')}`);
+  if (humanView.finder.applied) console.log('Technische Ordner wurden im macOS Finder ausgeblendet.');
   console.log('Nach Fertigstellung aller Szenenprompts verpflichtend export:prompts --strict ausführen.');
   console.log('Pflicht: production/agent-task.md jetzt vollständig bearbeiten und check:content --strict ausführen. Nicht nach der Ordnererstellung stoppen.');
 }
