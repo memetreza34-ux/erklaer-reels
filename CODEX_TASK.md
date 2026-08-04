@@ -118,17 +118,23 @@ Jedes Bild tatsächlich ansehen und mit Sprechertext, Prompt, Metapher und Kompo
 
 ## 7. Audio optimieren und synchronisieren
 
+Zentrale Quelle: `src/shared/audio-pacing-style.js`.
+
 ```bash
-npm run trim:pauses -- --dir "PFAD-ZUM-REEL"
+npm run trim:pauses -- --dir "PFAD-ZUM-REEL" --speed 1.10
 npm run build:timeline -- --dir "PFAD-ZUM-REEL"
 ```
 
 Standard:
 
+- immer von der ursprünglichen Voice-over-Datei starten
 - Pausen ab ungefähr 0,24 Sekunden kürzen
 - kurze natürliche Restpause behalten
-- ungefähr `1.05x`
+- Geschwindigkeit exakt `1.10x`
 - Tonhöhe erhalten
+- Lautheit auf `-16 LUFS` normalisieren
+- True Peak auf `-1,5 dBTP` begrenzen
+- bereits optimiertes Audio nicht erneut beschleunigen
 
 In `timeline/audio-sync.json` für jede Szene den echten Zeitpunkt des gesprochenen `audioCue` eintragen.
 
@@ -169,7 +175,8 @@ npm run render:reel -- --dir "PFAD-ZUM-REEL"
 Nur rendern, wenn:
 
 - Inhalt bestanden
-- Audio-Pacing bestanden
+- Audio-Pacing exakt `1.10x`
+- Lautheitsnormalisierung auf `-16 LUFS` und `-1,5 dBTP`
 - Audio-Cues synchronisiert
 - Wort-Highlight deaktiviert
 - Untertitel weiß, transparent und bei 76 %
