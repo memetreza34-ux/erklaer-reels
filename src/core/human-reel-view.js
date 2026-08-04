@@ -1,4 +1,4 @@
-import { access, lstat, mkdir, readlink, rm, symlink, writeFile } from 'node:fs/promises';
+import { access, lstat, mkdir, readdir, readlink, rm, symlink, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
@@ -65,7 +65,7 @@ async function ensureSymlink(linkPath, target, type) {
     if (!stat.isSymbolicLink()) return { status: 'kept-existing', linkPath };
     const currentTarget = await readlink(linkPath);
     if (currentTarget === target) return { status: 'current', linkPath };
-    return { status: 'kept-different-link', linkPath };
+    await rm(linkPath, { force: true });
   } catch (error) {
     if (error?.code !== 'ENOENT') throw error;
   }
@@ -95,7 +95,16 @@ async function removeLegacyHumanView(reelDirectory) {
   return removed;
 }
 
-async function applyMacFinderVisibility(reelDirectory) {
+async function listSceneDirectories(reelDirectory) {
+  const scenesDirectory = path.join(reelDirectory, 'scenes');
+  const entries = await readdir(scenesDirectory, { withFileTypes: true });
+  return entries
+    .filter((entry) => entry.isDirectory() && /^scene-\d+$/.test(entry.name))
+    .map((entry) => entry.name)
+    .sort((left, right) => left.localeCompare(right, 'de', { numeric: true }));
+}
+
+async function applyMacFinderVisibility(reelDirectory, sceneDirectories) {
   if (process.platform !== 'darwin') {
     return { applied: false, reason: 'not-macos' };
   }
@@ -104,6 +113,14 @@ async function applyMacFinderVisibility(reelDirectory) {
   const technicalPaths = [];
   for (const entry of TECHNICAL_REEL_ENTRIES) {
     const entryPath = path.join(reelDirectory, entry);
+    if (await exists(entryPath)) technicalPaths.push(entryPath);
+  }
+
+  const internalMetadataPaths = [
+    path.join(reelDirectory, 'cover', 'cover.json'),
+    ...sceneDirectories.map((sceneDirectory) => path.join(reelDirectory, 'scenes', sceneDirectory, 'scene.json'))
+  ];
+  for (const entryPath of internalMetadataPaths) {
     if (await exists(entryPath)) technicalPaths.push(entryPath);
   }
 
@@ -123,6 +140,7 @@ export async function ensureHumanReelView(reelDirectory, { hideTechnicalInFinder
   }
 
   const removedLegacyFolders = await removeLegacyHumanView(absoluteReelDirectory);
+  const sceneDirectories = await listSceneDirectories(absoluteReelDirectory);
 
   await Promise.all([
     ...HUMAN_REEL_FOLDERS.map((folder) => mkdir(path.join(absoluteReelDirectory, folder), { recursive: true })),
@@ -132,7 +150,7 @@ export async function ensureHumanReelView(reelDirectory, { hideTechnicalInFinder
   await Promise.all([
     writeIfMissing(
       path.join(absoluteReelDirectory, '00-bildprompts', 'README.md'),
-      '# 00 – Bildprompts und Cover\n\nHier liegen der Cover-Prompt, alle Szenenprompts, die einzelnen Szenen und der gemeinsame Eingang für Cover- und Szenenbilder.\n'
+      '# 00 – Bildprompts und Bilder\n\nÖffne für jedes Bild den passenden Szenenordner. Dort liegen der Bildprompt und später direkt das zugehörige Bild. Das Cover ist Szene 00.\n'
     ),
     writeIfMissing(path.join(absoluteReelDirectory, '01-voice-script', 'README.md'), '# 01 – Voice-Script\n\nHier liegt der endgültige Text für das Voice-over.\n'),
     writeIfMissing(path.join(absoluteReelDirectory, '02-audio', 'README.md'), '# 02 – Audio\n\nUnbearbeitetes Voice-over nach `AUDIO-HIER-EINFUEGEN`. Das optimierte Audio erscheint später unter `FINAL-AUDIO`.\n'),
@@ -147,10 +165,8 @@ export async function ensureHumanReelView(reelDirectory, { hideTechnicalInFinder
 
   const linkResults = [];
   const links = [
-    ['00-bildprompts/00-cover-prompt.txt', '../cover/cover-prompt.txt', 'file'],
-    ['00-bildprompts/01-alle-bildprompts.txt', '../all-image-prompts/all-image-prompts.txt', 'file'],
-    ['00-bildprompts/EINZELNE-SZENEN', '../scenes', 'dir'],
-    ['00-bildprompts/BILDER-HIER-EINFUEGEN', '../inbox/images', 'dir'],
+    ['00-bildprompts/00-cover', '../cover', 'dir'],
+    ['00-bildprompts/99-alle-bildprompts.txt', '../all-image-prompts/all-image-prompts.txt', 'file'],
     ['01-voice-script/voice-script.txt', '../script/voice-script.txt', 'file'],
     ['02-audio/AUDIO-HIER-EINFUEGEN', '../inbox/audio', 'dir'],
     ['02-audio/FINAL-AUDIO', '../audio', 'dir'],
@@ -166,17 +182,23 @@ export async function ensureHumanReelView(reelDirectory, { hideTechnicalInFinder
     ['99-technik/ASSET-MANIFEST.json', '../assets-manifest.json', 'file']
   ];
 
+  for (const [index, sceneDirectory] of sceneDirectories.entries()) {
+    const visibleName = `${String(index + 1).padStart(2, '0')}-${sceneDirectory}`;
+    links.push([`00-bildprompts/${visibleName}`, `../scenes/${sceneDirectory}`, 'dir']);
+  }
+
   for (const [relativeLink, target, type] of links) {
     linkResults.push(await ensureSymlink(path.join(absoluteReelDirectory, relativeLink), target, type));
   }
 
   const finder = hideTechnicalInFinder
-    ? await applyMacFinderVisibility(absoluteReelDirectory)
+    ? await applyMacFinderVisibility(absoluteReelDirectory, sceneDirectories)
     : { applied: false, reason: 'not-requested' };
 
   return {
     reelDirectory: absoluteReelDirectory,
     visibleFolders: HUMAN_REEL_FOLDERS,
+    sceneDirectories,
     removedLegacyFolders,
     linkResults,
     finder
