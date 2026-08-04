@@ -2,13 +2,13 @@
 
 ## Ziel
 
-Jedes Reel soll einen Begriff, ein System oder einen Zusammenhang so einfach erklären, dass der Zuschauer ihn ohne Vorwissen versteht.
+Jedes Reel erklärt einen Begriff, ein System oder einen Zusammenhang so einfach, dass Zuschauer ihn ohne Vorwissen verstehen.
 
 ## Script
 
 - ein durchgehender deutscher Erzähler
 - direkte, verständliche Hook ohne lange Einleitung
-- Thema möglichst sofort nennen und direkt mit der Erklärung beginnen
+- Thema möglichst sofort nennen und direkt erklären
 - einfache Wörter und kurze Sätze
 - ungefähr 35–55 Sekunden
 - keine Dialogrollen
@@ -22,58 +22,60 @@ Jedes Reel soll einen Begriff, ein System oder einen Zusammenhang so einfach erk
 - Für 45–55 Sekunden normalerweise 10–12 visuelle Momente.
 - Sichtbare Veränderung ungefähr alle 3,5–5 Sekunden.
 - Einfache Bilder dürfen kürzer stehen; komplexere Bilder dürfen etwas länger stehen.
-- Bilder dürfen neu sein oder sinnvoll aufeinander aufbauen.
-- Nicht künstlich jede Szene als Build-up erzwingen.
+- Bildwechsel werden nach Sinnabschnitten und Audio-Cues geplant, nicht in starren Zeitblöcken.
 - Pro Reel eine zusammenhängende Bildwelt.
-- Zwischen Reels dürfen die Bildwelten stark wechseln.
-- Englische Bildprompts, sichtbare Schlüsselwörter im Bild auf Deutsch.
-- Text kann oben, unten, seitlich, diagonal oder auf einem Objekt stehen.
-- Jeder Bildmoment erhält ein `audioCue`: das Wort oder die Phrase, zu der er gehört.
-- Ein neues Bild erscheint normalerweise 0,1–0,3 Sekunden vor seinem `audioCue`.
-- Bildwechsel werden nach Sinnabschnitten geplant und nicht nach starren, identischen Zeitblöcken.
+- Zwischen Reels dürfen die Bildwelten wechseln.
+- Bildprompts sind Englisch; sichtbarer Bildtext ist nur erlaubt, wenn er ausdrücklich benötigt wird, und dann ausschließlich korrekt auf Deutsch.
+- Unerwünschte englische Wörter, Fantasietext, Labels, Logos und Wasserzeichen sind verboten.
+
+## Natürliche Bildkomposition
+
+- Hauptmotive dürfen die geometrische Bildmitte normal nutzen.
+- Keine künstlich freigehaltene horizontale Mittelzone.
+- Kein leerer Streifen quer durch das Bild.
+- Keine voneinander getrennte obere und untere Bildhälfte nur wegen der Untertitel.
+- Keine riesigen leeren Baumstämme, Pfeile oder Flächen als Platzhalter für Text.
+- Vergleichsbilder möglichst seitlich oder als zusammenhängende Szene aufbauen.
+- Die Illustration muss auch ohne Untertitel vollständig und natürlich komponiert wirken.
+- Nur kleine unverzichtbare Details nicht direkt hinter dem unteren Untertitelbereich platzieren.
 
 ## Untertitel
 
-- Untertitel sind standardmäßig vorgesehen und werden getrennt von den Bildern geplant.
-- Zentrale Quelle ist `src/shared/subtitle-style.js`.
-- Position: `center`.
-- Vertikale Position: exakt 50 % der Bildhöhe.
-- Der erlaubte Bereich ist ebenfalls exakt 50–50 %; abweichende Werte werden nicht akzeptiert.
-- Normalerweise 3–6 Wörter pro Einblendung, höchstens zwei Zeilen.
-- Kurze Sinnabschnitte statt Wort-für-Wort-Karaoke.
-- Integrierten Bildtext nicht wortgleich als Untertitel wiederholen.
-- Hauptmotive und wichtige Bildtexte müssen bereits bei der Bildplanung so angeordnet werden, dass die feste mittige Untertitelbox frei bleibt.
-- Die Untertitelposition darf wegen visueller Kollisionen nicht verschoben werden; stattdessen muss das Bildmotiv angepasst werden.
-- Die Untertitelplanung wird in `subtitles/subtitle-plan.json` gespeichert.
-- Nach Einfügen der echten Audiodatei werden Timing und Bildwechsel noch einmal gegen die Audiospur geprüft.
+Die zentrale Quelle ist `src/shared/subtitle-style.js`.
+
+- Position: `lower`
+- vertikale Position: exakt 76 % der Bildhöhe
+- durchgehend weiches Weiß `#F5F7FA`
+- keine gelbe Wortmarkierung
+- keine schwarze Hintergrundbox und kein Balken
+- Lesbarkeit durch dunkle Kontur und dezenten Schatten
+- normalerweise 3–6 Wörter pro Einblendung
+- höchstens zwei Zeilen
+- keine Wort-für-Wort-Karaoke-Animation
+- integrierten Bildtext nicht wortgleich wiederholen
+- exakte Einzelwortzeiten sind ohne Wort-Highlight nicht erforderlich
 
 ## Bewegung, Übergänge und Sound
 
-- Die Planung wird in `effects/effects-plan.json` gespeichert und bleibt von den Bildprompts getrennt.
-- Nicht jede Szene benötigt Bewegung.
-- Dezente Zooms verändern die Bildgröße normalerweise um 2–6 Prozent und höchstens um 8 Prozent.
-- Kleine Schwenks bewegen das Bild höchstens 4 Prozent der Bildbreite oder Bildhöhe.
-- Der Hook darf einen dezenten Push-in erhalten, startet aber ohne Einblendung ab Sekunde 0.
-- Die Hook verwendet `none` mit Dauer 0.
-- Danach sind ausschließlich direkte harte Schnitte mit `cut` und Dauer 0 erlaubt.
-- Keine Crossfades, Schwarzblenden, Slides, Glitch-, Spin-, Flash- oder aufdringlichen 3D-Übergänge.
-- Kein schwarzes Zwischenbild.
-- Das Voice-over hat immer Vorrang.
-- Hintergrundmusik ist standardmäßig ausgeschaltet.
-- Pro Szene normalerweise null bis zwei dezente Soundeffekte.
-- Soundeffekte nur an konkreten visuellen Ereignissen oder `audioCue`-Punkten verwenden.
-- Nicht jeden Bildwechsel mit einem Whoosh versehen.
-- Keine Meme-Sounds, Jumpscares oder ungeklärte urheberrechtlich geschützte Musik.
-- Bewegung und Effekte dürfen Bildtext, Hauptmotiv oder Untertitel nicht verdecken.
-- Nach Einfügen des echten Voice-overs werden alle Effektzeitpunkte noch einmal geprüft.
+- Planung in `effects/effects-plan.json`
+- nicht jede Szene benötigt Bewegung
+- Zoom normalerweise 2–6 %, maximal 8 %
+- Schwenk maximal 4 %
+- Hook ohne Übergang: `none`, Dauer 0
+- danach ausschließlich direkte harte Schnitte: `cut`, Dauer 0
+- keine Crossfades, Schwarzblenden, Slides, Glitches, Spins oder Flash-Übergänge
+- kein schwarzes Zwischenbild
+- Hintergrundmusik standardmäßig aus
+- null bis zwei dezente Soundeffekte pro Szene
+- Voice-over hat immer Vorrang
 
 ## Stärkste Bildwelten
 
-1. Menschliche Cartoonfiguren für Psychologie und Gesellschaft
-2. Runde Länderfiguren für Politik, Länder, Geschichte und Geografie
+1. Menschliche Editorial-Cartoonfiguren für Psychologie und Gesellschaft
+2. Runde Länderfiguren für neutrale Länder- und Geografieerklärungen
 3. Starke visuelle Metaphern für abstrakte Begriffe und Hooks
 
-Vergleichspanels oder Build-up-Sequenzen werden nur eingesetzt, wenn sie das Thema besser erklären.
+Vergleichspanels oder Build-up-Sequenzen nur einsetzen, wenn sie das Thema klarer machen.
 
 ## Qualitätskontrolle
 
@@ -81,16 +83,14 @@ Vor der Freigabe prüfen:
 
 - Ist das Hook-Bild sofort sichtbar?
 - Erklärt jedes Bild genau den zugehörigen Satz?
-- Stimmt jeder Bildwechsel mit seinem `audioCue` überein?
-- Ist sofort erkennbar, was neu oder wichtig ist?
-- Bleiben Figuren, Konturen und Proportionen innerhalb des Reels konsistent?
-- Enthält das Bild nur sinnvollen Text?
-- Gibt es genug Bildwechsel, ohne hektisch zu wirken?
-- Stehen alle Untertitel exakt bei 50 % der Bildhöhe?
-- Bleibt die feste mittige Untertitelzone frei von unverzichtbaren Motiven und Bildtexten?
-- Wiederholen Untertitel nicht unnötig den Text im Bild?
+- Stimmt jeder Bildwechsel mit seinem Audio-Cue überein?
+- Wirkt jede Illustration als natürliche zusammenhängende Komposition?
+- Gibt es keinen leeren Mittelstreifen oder künstlich getrennte Bildhälften?
+- Enthält das Bild keine unerwünschten englischen oder erfundenen Wörter?
+- Bleiben Figuren, Konturen und Proportionen konsistent?
+- Stehen Untertitel exakt bei 76 % Bildhöhe?
+- Sind alle Wörter weiß, ohne gelbe Markierung und ohne schwarze Box?
+- Bleiben Untertitel durch Kontur und Schatten lesbar?
 - Sind Zooms und Schwenks dezent und begründet?
-- Bleiben Texte und Motive während der Bewegung in der sicheren Zone?
-- Sind Soundeffekte sparsam und leiser als das Voice-over?
 - Werden ausschließlich direkte harte Schnitte verwendet?
-- Ist der Cover-Titel auf kleiner Ansicht lesbar?
+- Ist das Cover auf kleiner Ansicht lesbar?
