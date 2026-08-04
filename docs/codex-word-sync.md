@@ -17,7 +17,7 @@ Codex trägt absolute Start- und Endzeiten ein
         ↓
 sync:words --apply --strict prüft und übernimmt die Daten
         ↓
-Mittige Untertitelpalette wird angewendet
+Exakt mittige Untertitelpalette wird angewendet
         ↓
 Timeline und Render-Plan werden neu gebaut
 ```
@@ -73,8 +73,8 @@ Der Befehl:
 - prüft die akustische Bestätigung jedes Wortes
 - erzeugt kurze Untertitelblöcke mit normalerweise 3–6 Wörtern
 - schreibt exakte `wordTimings`
-- setzt die Untertitel standardmäßig auf 68 % der Bildhöhe
-- erlaubt ausschließlich den sicheren Bereich 64–72 %
+- setzt die Untertitel auf exakt 50 % der Bildhöhe
+- akzeptiert ausschließlich den festen Bereich 50–50 %
 - setzt normalen Text auf weiches Weiß `#F5F7FA`
 - setzt das aktuelle Wort auf Warmgelb `#FFD84D`
 - setzt eine dunkle halbtransparente Hintergrundbox
@@ -86,9 +86,9 @@ Der Befehl:
 
 ```json
 {
-  "position": "safe-middle",
-  "verticalPositionPercent": 68,
-  "safeVerticalRangePercent": { "min": 64, "max": 72 },
+  "position": "center",
+  "verticalPositionPercent": 50,
+  "safeVerticalRangePercent": { "min": 50, "max": 50 },
   "textColor": "#F5F7FA",
   "highlightColor": "#FFD84D",
   "backgroundColor": "rgba(0, 0, 0, 0.72)"
