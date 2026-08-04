@@ -13,10 +13,10 @@
   "maxLines": 2,
   "wordsPerCue": {"min": 3, "max": 6},
   "wordByWordKaraoke": false,
-  "exactWordTimingsRequired": true,
+  "exactWordTimingsRequired": false,
   "fallbackWordTiming": "plain-soft-white-no-highlight",
   "avoidRepeatingImageText": true,
-  "timingStatus": "audio-reviewed",
+  "timingStatus": "cue-synced",
   "cues": [
     {"sceneId":"scene-01","texts":["Sozialismus einfach erklärt"]},
     {"sceneId":"scene-02","texts":["Wirtschaft soll nicht nur","wenigen Eigentümern dienen","sondern der ganzen Gesellschaft"]},
