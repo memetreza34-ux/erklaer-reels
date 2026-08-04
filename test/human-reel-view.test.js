@@ -13,16 +13,21 @@ async function createMinimalReel() {
     'audio',
     'caption',
     'cover',
+    'effects',
     'inbox/audio',
     'inbox/images',
+    'production',
     'review',
     'scenes',
     'script',
-    'sources'
+    'sources',
+    'subtitles'
   ];
   await Promise.all(directories.map((directory) => mkdir(path.join(reelDirectory, directory), { recursive: true })));
 
   await writeFile(path.join(reelDirectory, 'reel.json'), '{"reelId":"test-reel"}\n', 'utf8');
+  await writeFile(path.join(reelDirectory, 'status.json'), '{}\n', 'utf8');
+  await writeFile(path.join(reelDirectory, 'assets-manifest.json'), '{}\n', 'utf8');
   await writeFile(path.join(reelDirectory, 'cover', 'cover-prompt.txt'), 'Cover prompt\n', 'utf8');
   await writeFile(path.join(reelDirectory, 'script', 'voice-script.txt'), 'Voice script\n', 'utf8');
   await writeFile(path.join(reelDirectory, 'all-image-prompts', 'all-image-prompts.txt'), 'Prompts\n', 'utf8');
@@ -32,7 +37,7 @@ async function createMinimalReel() {
   return reelDirectory;
 }
 
-test('erstellt sieben klar nummerierte Benutzerordner', async () => {
+test('erstellt sechs klar nummerierte Benutzerordner', async () => {
   const reelDirectory = await createMinimalReel();
   const result = await ensureHumanReelView(reelDirectory);
 
@@ -42,20 +47,44 @@ test('erstellt sieben klar nummerierte Benutzerordner', async () => {
   }
 });
 
-test('verknüpft sichtbare Dateien mit der bestehenden technischen Struktur', async () => {
+test('legt Cover und Szenen gemeinsam unter Bildprompts ab', async () => {
   const reelDirectory = await createMinimalReel();
   await ensureHumanReelView(reelDirectory);
   await ensureHumanReelView(reelDirectory);
 
-  assert.equal(await readlink(path.join(reelDirectory, '00-cover', 'cover-prompt.txt')), '../cover/cover-prompt.txt');
+  assert.equal(await readlink(path.join(reelDirectory, '00-bildprompts', '00-cover-prompt.txt')), '../cover/cover-prompt.txt');
+  assert.equal(await readlink(path.join(reelDirectory, '00-bildprompts', '01-alle-bildprompts.txt')), '../all-image-prompts/all-image-prompts.txt');
+  assert.equal(await readlink(path.join(reelDirectory, '00-bildprompts', 'EINZELNE-SZENEN')), '../scenes');
+  assert.equal(await readlink(path.join(reelDirectory, '00-bildprompts', 'BILDER-HIER-EINFUEGEN')), '../inbox/images');
+});
+
+test('sammelt unwichtige Dateien im Technikordner', async () => {
+  const reelDirectory = await createMinimalReel();
+  await ensureHumanReelView(reelDirectory);
+
   assert.equal(await readlink(path.join(reelDirectory, '01-voice-script', 'voice-script.txt')), '../script/voice-script.txt');
   assert.equal(await readlink(path.join(reelDirectory, '02-audio', 'AUDIO-HIER-EINFUEGEN')), '../inbox/audio');
-  assert.equal(await readlink(path.join(reelDirectory, '03-szenen', 'alle-bildprompts.txt')), '../all-image-prompts/all-image-prompts.txt');
-  assert.equal(await readlink(path.join(reelDirectory, '03-szenen', 'BILDER-HIER-EINFUEGEN')), '../inbox/images');
-  assert.equal(await readlink(path.join(reelDirectory, '04-caption', 'caption.txt')), '../caption/caption.txt');
-  assert.equal(await readlink(path.join(reelDirectory, '05-review', 'quellen.md')), '../sources/sources.md');
-  assert.equal(await readlink(path.join(reelDirectory, '06-video', 'FERTIGES-VIDEO')), '../output');
+  assert.equal(await readlink(path.join(reelDirectory, '03-caption', 'caption.txt')), '../caption/caption.txt');
+  assert.equal(await readlink(path.join(reelDirectory, '04-video', 'FERTIGES-VIDEO')), '../output');
+  assert.equal(await readlink(path.join(reelDirectory, '99-technik', 'QUELLEN.md')), '../sources/sources.md');
+  assert.equal(await readlink(path.join(reelDirectory, '99-technik', 'UNTERTITEL')), '../subtitles');
+  assert.equal(await readlink(path.join(reelDirectory, '99-technik', 'EFFEKTE')), '../effects');
 
   const outputReadme = await readFile(path.join(reelDirectory, 'output', 'README.md'), 'utf8');
   assert.match(outputReadme, /finale MP4/);
+});
+
+test('entfernt die alte sichtbare Ordneransicht', async () => {
+  const reelDirectory = await createMinimalReel();
+  for (const folder of ['00-cover', '03-szenen', '04-caption', '05-review', '06-video']) {
+    await mkdir(path.join(reelDirectory, folder), { recursive: true });
+    await writeFile(path.join(reelDirectory, folder, 'alte-ansicht.txt'), 'alt\n', 'utf8');
+  }
+
+  const result = await ensureHumanReelView(reelDirectory);
+  assert.deepEqual(result.removedLegacyFolders.sort(), ['00-cover', '03-szenen', '04-caption', '05-review', '06-video']);
+
+  for (const folder of result.removedLegacyFolders) {
+    await assert.rejects(lstat(path.join(reelDirectory, folder)), { code: 'ENOENT' });
+  }
 });
