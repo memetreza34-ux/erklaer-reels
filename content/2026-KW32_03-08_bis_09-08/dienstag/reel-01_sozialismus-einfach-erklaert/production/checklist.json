@@ -1,0 +1,18 @@
+{
+  "version": 8,
+  "reelId": "reel-01_sozialismus-einfach-erklaert",
+  "title": "Sozialismus einfach erklärt",
+  "phase": "content-production",
+  "tasks": [
+    {"id":"script-final","status":"done"},
+    {"id":"style-select","status":"done"},
+    {"id":"scenes-fill","status":"done"},
+    {"id":"prompts-write","status":"done"},
+    {"id":"subtitles-write","status":"done"},
+    {"id":"effects-write","status":"done"},
+    {"id":"cover-write","status":"done"},
+    {"id":"caption-write","status":"done"},
+    {"id":"sources-write","status":"done"},
+    {"id":"content-check","status":"pending"}
+  ]
+}

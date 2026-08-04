@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "enabled": true,
+  "timingStatus": "planned-until-audio-arrives",
+  "voiceoverPriority": true,
+  "backgroundMusic": {"enabled": false, "reason": "Voice-over-first Erklärformat ohne Hintergrundmusik."},
+  "defaults": {"transition": "cut", "cameraMotion": "none", "soundEffectVolume": 0.2, "maximumSoundEffectsPerScene": 2},
+  "scenes": [
+    {"sceneId":"scene-01","transitionIn":{"type":"none","durationSeconds":0},"cameraMotion":{"type":"subtle-push-in","startScale":1,"endScale":1.04,"panXPercent":0,"panYPercent":0,"easing":"ease-in-out"},"soundEffects":[{"name":"tiefer Stempelklang","file":"","volume":0.18}],"timingStatus":"planned-until-audio-arrives"},
+    {"sceneId":"scene-02","transitionIn":{"type":"cut","durationSeconds":0},"cameraMotion":{"type":"none","startScale":1,"endScale":1,"panXPercent":0,"panYPercent":0,"easing":"ease-in-out"},"soundEffects":[],"timingStatus":"planned-until-audio-arrives"},
+    {"sceneId":"scene-03","transitionIn":{"type":"cut","durationSeconds":0},"cameraMotion":{"type":"pan-right","startScale":1,"endScale":1,"panXPercent":3,"panYPercent":0,"easing":"ease-in-out"},"soundEffects":[{"name":"mechanisches Einrasten","file":"","volume":0.18}],"timingStatus":"planned-until-audio-arrives"},
+    {"sceneId":"scene-04","transitionIn":{"type":"cut","durationSeconds":0},"cameraMotion":{"type":"none","startScale":1,"endScale":1,"panXPercent":0,"panYPercent":0,"easing":"ease-in-out"},"soundEffects":[],"timingStatus":"planned-until-audio-arrives"},
+    {"sceneId":"scene-05","transitionIn":{"type":"cut","durationSeconds":0},"cameraMotion":{"type":"subtle-push-in","startScale":1,"endScale":1.03,"panXPercent":0,"panYPercent":0,"easing":"ease-in-out"},"soundEffects":[{"name":"metallisches Ausbalancieren","file":"","volume":0.17}],"timingStatus":"planned-until-audio-arrives"},
+    {"sceneId":"scene-06","transitionIn":{"type":"cut","durationSeconds":0},"cameraMotion":{"type":"slow-zoom-out","startScale":1.04,"endScale":1,"panXPercent":0,"panYPercent":0,"easing":"ease-in-out"},"soundEffects":[],"timingStatus":"planned-until-audio-arrives"},
+    {"sceneId":"scene-07","transitionIn":{"type":"cut","durationSeconds":0},"cameraMotion":{"type":"pan-up","startScale":1,"endScale":1,"panXPercent":0,"panYPercent":-3,"easing":"ease-in-out"},"soundEffects":[{"name":"leises Papiergeräusch","file":"","volume":0.15}],"timingStatus":"planned-until-audio-arrives"},
+    {"sceneId":"scene-08","transitionIn":{"type":"cut","durationSeconds":0},"cameraMotion":{"type":"none","startScale":1,"endScale":1,"panXPercent":0,"panYPercent":0,"easing":"ease-in-out"},"soundEffects":[{"name":"gedämpftes Rumpeln","file":"","volume":0.18}],"timingStatus":"planned-until-audio-arrives"},
+    {"sceneId":"scene-09","transitionIn":{"type":"cut","durationSeconds":0},"cameraMotion":{"type":"none","startScale":1,"endScale":1,"panXPercent":0,"panYPercent":0,"easing":"ease-in-out"},"soundEffects":[],"timingStatus":"planned-until-audio-arrives"},
+    {"sceneId":"scene-10","transitionIn":{"type":"cut","durationSeconds":0},"cameraMotion":{"type":"subtle-push-in","startScale":1,"endScale":1.03,"panXPercent":0,"panYPercent":0,"easing":"ease-in-out"},"soundEffects":[{"name":"abschließendes Einrasten","file":"","volume":0.17}],"timingStatus":"planned-until-audio-arrives"}
+  ]
+}

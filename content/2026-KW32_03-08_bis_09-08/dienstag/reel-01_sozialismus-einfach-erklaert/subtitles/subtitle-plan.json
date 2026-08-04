@@ -1,0 +1,31 @@
+{
+  "version": 3,
+  "enabled": true,
+  "language": "de",
+  "position": "center",
+  "verticalPositionPercent": 50,
+  "safeVerticalRangePercent": {"min": 50, "max": 50},
+  "textColor": "#F5F7FA",
+  "highlightCurrentWord": true,
+  "highlightColor": "#FFD84D",
+  "backgroundColor": "rgba(0, 0, 0, 0.72)",
+  "maxLines": 2,
+  "wordsPerCue": {"min": 3, "max": 6},
+  "wordByWordKaraoke": false,
+  "exactWordTimingsRequired": true,
+  "fallbackWordTiming": "plain-soft-white-no-highlight",
+  "avoidRepeatingImageText": true,
+  "timingStatus": "planned-until-audio-arrives",
+  "cues": [
+    {"sceneId":"scene-01","texts":["Sozialismus einfach erklärt"]},
+    {"sceneId":"scene-02","texts":["Wirtschaft soll nicht nur","wenigen Eigentümern dienen","sondern der ganzen Gesellschaft"]},
+    {"sceneId":"scene-03","texts":["Wichtige Betriebe, Rohstoffe","oder Infrastruktur sollen","gemeinschaftlich kontrolliert werden"]},
+    {"sceneId":"scene-04","texts":["Durch den Staat, Kommunen","Genossenschaften oder Beschäftigte"]},
+    {"sceneId":"scene-05","texts":["Mehr Gleichheit und Solidarität","weniger Abhängigkeit von","großem Privatvermögen"]},
+    {"sceneId":"scene-06","texts":["Sozialismus ist kein","einziges festes System"]},
+    {"sceneId":"scene-07","texts":["Demokratische Sozialisten wollen Veränderungen","durch Wahlen und Reformen"]},
+    {"sceneId":"scene-08","texts":["Revolutionäre Strömungen wollten","den Kapitalismus vollständig stürzen"]},
+    {"sceneId":"scene-09","texts":["Der Umfang unterscheidet sich","Nur Schlüsselbereiche","oder fast die gesamte Wirtschaft"]},
+    {"sceneId":"scene-10","texts":["Nicht automatisch dasselbe wie","Kommunismus oder ein Sozialstaat","Wem gehört wirtschaftliche Macht","und wem soll sie nutzen"]}
+  ]
+}
