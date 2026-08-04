@@ -1,29 +1,47 @@
 # Übersichtliche Reel-Ordnerstruktur
 
-Die sichtbare Struktur orientiert sich am klaren, nummerierten Aufbau der Geldwelt-Produktionen. Nutzer sehen im macOS Finder nur die Ordner, die sie tatsächlich benötigen:
+Im macOS Finder sind nur die Bereiche sichtbar, die du für die tägliche Produktion brauchst:
 
 ```text
 reel-01_thema/
-├── 00-cover/
+├── 00-bildprompts/
 ├── 01-voice-script/
 ├── 02-audio/
-├── 03-szenen/
-├── 04-caption/
-├── 05-review/
-└── 06-video/
+├── 03-caption/
+├── 04-video/
+└── 99-technik/
 ```
 
-## Inhalt
+## 00-bildprompts
 
-- `00-cover`: Cover-Prompt und Ablageort für das Cover-Bild
+Cover und Szenen liegen gemeinsam in einem klaren Bereich:
+
+```text
+00-bildprompts/
+├── 00-cover/
+├── 01-scene-01/
+├── 02-scene-02/
+├── ...
+├── 10-scene-10/
+└── 99-alle-bildprompts.txt
+```
+
+Jeder Szenenordner ist direkt mit dem echten technischen Szenenordner verbunden. Darin liegen:
+
+- `image-prompt.txt`
+- später direkt das passende Bild, zum Beispiel `scene-01.png`
+
+Dadurch ist sofort sichtbar, welches Bild zu welcher Szene gehört. Das Cover funktioniert gleich: Im Ordner `00-cover` liegt der Cover-Prompt und dort wird später `cover.png` abgelegt.
+
+## Weitere Ordner
+
 - `01-voice-script`: endgültiger Voice-over-Text
-- `02-audio`: Audioeingang und optimiertes Audio
-- `03-szenen`: Prompt-Sammeldatei, einzelne Szenen und Bilder-Eingang
-- `04-caption`: fertige Social-Media-Caption
-- `05-review`: Quellen und technische Prüfberichte
-- `06-video`: finale Render-Ausgabe
+- `02-audio`: unbearbeitetes und optimiertes Voice-over
+- `03-caption`: fertige Social-Media-Caption
+- `04-video`: finale MP4-Ausgabe
+- `99-technik`: Quellen, Prüfberichte, Untertitel, Effekte, Produktionsdateien und JSON-Daten; normalerweise nicht öffnen
 
-Die bestehende technische Pipeline bleibt unverändert. Die nummerierten Ordner enthalten symbolische Verknüpfungen zu den echten Dateien. Dadurch gibt es keine doppelten Inhalte und keine Synchronisationsfehler.
+Die technische Pipeline bleibt unverändert. Die sichtbaren Ordner sind Verknüpfungen zu den echten Dateien, deshalb werden Inhalte nicht doppelt gespeichert.
 
 ## Bestehendes Reel aufräumen
 
@@ -31,6 +49,6 @@ Die bestehende technische Pipeline bleibt unverändert. Die nummerierten Ordner 
 npm run organize:finder -- --dir "content/.../reel-01_thema"
 ```
 
-Auf macOS werden die technischen Einträge anschließend mit dem Finder-Attribut `hidden` ausgeblendet. Sie bleiben vollständig erhalten und sind für Codex, Node und Remotion weiterhin erreichbar.
+Auf macOS werden die ursprünglichen technischen Einträge anschließend im Finder ausgeblendet. Codex, Node, Git und Remotion können weiterhin darauf zugreifen.
 
-Neue Reels erhalten die nummerierte Ansicht automatisch über `npm run create:reel`.
+Neue Reels erhalten diese kompakte Ansicht automatisch über `npm run create:reel`.
