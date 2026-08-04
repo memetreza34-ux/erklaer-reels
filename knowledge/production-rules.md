@@ -7,7 +7,8 @@ Jedes Reel soll einen Begriff, ein System oder einen Zusammenhang so einfach erk
 ## Script
 
 - ein durchgehender deutscher Erzähler
-- direkte Hook ohne lange Einleitung
+- direkte, verständliche Hook ohne lange Einleitung
+- Thema möglichst sofort nennen und direkt mit der Erklärung beginnen
 - einfache Wörter und kurze Sätze
 - ungefähr 35–55 Sekunden
 - keine Dialogrollen
@@ -34,12 +35,15 @@ Jedes Reel soll einen Begriff, ein System oder einen Zusammenhang so einfach erk
 ## Untertitel
 
 - Untertitel sind standardmäßig vorgesehen und werden getrennt von den Bildern geplant.
-- Position: untere Mitte bei ungefähr 65–75 % der Bildhöhe.
-- Nicht exakt mittig und nicht ganz unten im Bereich der Social-Media-Bedienelemente.
+- Zentrale Quelle ist `src/shared/subtitle-style.js`.
+- Position: `center`.
+- Vertikale Position: exakt 50 % der Bildhöhe.
+- Der erlaubte Bereich ist ebenfalls exakt 50–50 %; abweichende Werte werden nicht akzeptiert.
 - Normalerweise 3–6 Wörter pro Einblendung, höchstens zwei Zeilen.
 - Kurze Sinnabschnitte statt Wort-für-Wort-Karaoke.
 - Integrierten Bildtext nicht wortgleich als Untertitel wiederholen.
-- Bei einer Kollision mit Bildtext oder Hauptmotiv darf die Position innerhalb der sicheren Zone angepasst werden.
+- Hauptmotive und wichtige Bildtexte müssen bereits bei der Bildplanung so angeordnet werden, dass die feste mittige Untertitelbox frei bleibt.
+- Die Untertitelposition darf wegen visueller Kollisionen nicht verschoben werden; stattdessen muss das Bildmotiv angepasst werden.
 - Die Untertitelplanung wird in `subtitles/subtitle-plan.json` gespeichert.
 - Nach Einfügen der echten Audiodatei werden Timing und Bildwechsel noch einmal gegen die Audiospur geprüft.
 
@@ -50,9 +54,10 @@ Jedes Reel soll einen Begriff, ein System oder einen Zusammenhang so einfach erk
 - Dezente Zooms verändern die Bildgröße normalerweise um 2–6 Prozent und höchstens um 8 Prozent.
 - Kleine Schwenks bewegen das Bild höchstens 4 Prozent der Bildbreite oder Bildhöhe.
 - Der Hook darf einen dezenten Push-in erhalten, startet aber ohne Einblendung ab Sekunde 0.
-- Standardübergang ist ein sauberer Schnitt.
-- Crossfades von ungefähr 0,1–0,25 Sekunden nur einsetzen, wenn Gedanken weich ineinander übergehen.
-- Keine Glitch-, Spin-, Flash- oder aufdringlichen 3D-Übergänge.
+- Die Hook verwendet `none` mit Dauer 0.
+- Danach sind ausschließlich direkte harte Schnitte mit `cut` und Dauer 0 erlaubt.
+- Keine Crossfades, Schwarzblenden, Slides, Glitch-, Spin-, Flash- oder aufdringlichen 3D-Übergänge.
+- Kein schwarzes Zwischenbild.
 - Das Voice-over hat immer Vorrang.
 - Hintergrundmusik ist standardmäßig ausgeschaltet.
 - Pro Szene normalerweise null bis zwei dezente Soundeffekte.
@@ -68,7 +73,7 @@ Jedes Reel soll einen Begriff, ein System oder einen Zusammenhang so einfach erk
 2. Runde Länderfiguren für Politik, Länder, Geschichte und Geografie
 3. Starke visuelle Metaphern für abstrakte Begriffe und Hooks
 
-Weitere Bildwelten wie Organe, Vergleichspanels oder Build-up-Sequenzen werden nur eingesetzt, wenn sie das Thema besser erklären.
+Vergleichspanels oder Build-up-Sequenzen werden nur eingesetzt, wenn sie das Thema besser erklären.
 
 ## Qualitätskontrolle
 
@@ -81,10 +86,11 @@ Vor der Freigabe prüfen:
 - Bleiben Figuren, Konturen und Proportionen innerhalb des Reels konsistent?
 - Enthält das Bild nur sinnvollen Text?
 - Gibt es genug Bildwechsel, ohne hektisch zu wirken?
-- Verdecken Untertitel weder Bildtext noch Hauptmotiv?
+- Stehen alle Untertitel exakt bei 50 % der Bildhöhe?
+- Bleibt die feste mittige Untertitelzone frei von unverzichtbaren Motiven und Bildtexten?
 - Wiederholen Untertitel nicht unnötig den Text im Bild?
 - Sind Zooms und Schwenks dezent und begründet?
 - Bleiben Texte und Motive während der Bewegung in der sicheren Zone?
 - Sind Soundeffekte sparsam und leiser als das Voice-over?
-- Wird kein Spezialübergang unnötig wiederholt?
+- Werden ausschließlich direkte harte Schnitte verwendet?
 - Ist der Cover-Titel auf kleiner Ansicht lesbar?
