@@ -29,10 +29,15 @@ test('erstellt einen vollständigen Reel-Arbeitsordner mit Codex-Auftrag', async
   const production = await prepareReelProduction(result.reelDirectory);
   const task = await readFile(production.taskFile, 'utf8');
   const inboxReadme = await readFile(path.join(result.reelDirectory, 'inbox', 'README.md'), 'utf8');
+  const subtitlePlan = JSON.parse(await readFile(path.join(result.reelDirectory, 'subtitles', 'subtitle-plan.json'), 'utf8'));
 
   assert.match(task, /Was bedeutet links und rechts\?/);
   assert.match(task, /Geplante Bildmomente: \*\*9\*\*/);
-  assert.match(inboxReadme, /Reihenfolge ist egal/);
+  assert.match(inboxReadme, /direkt in den passenden Ordner/);
+  assert.equal(subtitlePlan.position, 'lower');
+  assert.equal(subtitlePlan.verticalPositionPercent, 76);
+  assert.equal(subtitlePlan.highlightCurrentWord, false);
+  assert.equal(subtitlePlan.backgroundColor, 'transparent');
 });
 
 test('strenge Inhaltsprüfung akzeptiert ein vollständig ausgefülltes Produktionspaket', async () => {
@@ -68,7 +73,7 @@ test('strenge Inhaltsprüfung akzeptiert ein vollständig ausgefülltes Produkti
       narration: `Dieser Sprechertext erklärt den politischen Bildmoment Nummer ${index} besonders einfach.`,
       imageText,
       visualIdea: `Eine klare handgezeichnete Metapher zeigt den demokratischen Bestandteil Nummer ${index} ohne unnötige Details.`,
-      continuityNotes: 'Gleiche runde Figuren, gleiche Konturen und dieselbe flache 2D-Bildwelt wie in allen anderen Szenen.',
+      continuityNotes: 'Gleiche runde Figuren, gleiche Konturen und dieselbe flache 2D-Bildwelt. Natürliche durchgehende Komposition ohne leeren Mittelstreifen.',
       subtitlePosition: SUBTITLE_STYLE.position,
       durationSeconds: 5,
       expectedImageFileName: `${sceneId}.png`,
@@ -78,7 +83,7 @@ test('strenge Inhaltsprüfung akzeptiert ein vollständig ausgefülltes Produkti
     };
     scenes.push(scene);
     await writeJson(path.join(result.reelDirectory, 'scenes', sceneId, 'scene.json'), scene);
-    const prompt = `Vertical 9:16 hand-drawn 2D editorial cartoon for an educational reel. Show a simple democratic visual metaphor for scene ${index}, using the same rounded human characters, identical white oval eyes, thick uneven black outlines, flat colors, subtle paper texture, minimal shading and consistent proportions throughout the reel. Integrate the exact German text "${imageText}" naturally into the composition. Keep the message immediately understandable, centered and uncluttered. No logos, no watermark, no realistic politicians, no 3D rendering.`;
+    const prompt = `Vertical 9:16 hand-drawn 2D editorial cartoon for an educational reel. Show a simple democratic visual metaphor for scene ${index}, using the same rounded human characters, identical white oval eyes, thick uneven black outlines, flat colors, subtle paper texture, minimal shading and consistent proportions throughout the reel. Integrate the exact German text "${imageText}" naturally into the composition. Use a natural continuous composition without an empty horizontal center stripe or disconnected upper and lower halves. Keep only small critical details away from the lower subtitle area around 76 percent. No logos, no watermark, no realistic politicians, no 3D rendering.`;
     await writeFile(path.join(result.reelDirectory, 'scenes', sceneId, 'image-prompt.txt'), `${prompt}\n`, 'utf8');
   }
   await writeJson(path.join(result.reelDirectory, 'scenes', 'scene-index.json'), scenes);
@@ -91,7 +96,7 @@ test('strenge Inhaltsprüfung akzeptiert ein vollständig ausgefülltes Produkti
     imageStatus: 'missing',
     status: 'prompt-ready'
   });
-  await writeFile(path.join(result.reelDirectory, 'cover', 'cover-prompt.txt'), 'Vertical 9:16 viral educational reel cover in the same hand-drawn 2D editorial cartoon style. Show a large transparent ballot box in the center, surrounded by simplified citizens, a parliament building, a balanced court scale and a newspaper. Use thick uneven black outlines, flat vibrant colors, subtle paper texture, strong expressions and a clean thumbnail composition. Display the exact German headline "DEMOKRATIE EINFACH ERKLÄRT" in very large readable letters. No party logos, no real politicians, no watermark, no 3D rendering.\n', 'utf8');
+  await writeFile(path.join(result.reelDirectory, 'cover', 'cover-prompt.txt'), 'Vertical 9:16 educational reel cover in the same hand-drawn 2D editorial cartoon style. Show a large transparent ballot box in the center, surrounded by simplified citizens, a parliament building, a balanced court scale and a newspaper. Use thick uneven black outlines, flat vibrant colors, subtle paper texture, strong expressions and a clean thumbnail composition. Display the exact German headline "DEMOKRATIE EINFACH ERKLÄRT" in very large readable letters. No party logos, no real politicians, no watermark, no 3D rendering.\n', 'utf8');
   await writeFile(path.join(result.reelDirectory, 'caption', 'caption.txt'), 'Demokratie bedeutet mehr als nur wählen. Das Reel zeigt einfach, wie Wahlen, Grundrechte, Gerichte, Medien und politische Alternativen gemeinsam Macht kontrollieren. Welche politische Erklärung soll als Nächstes kommen? #Politik #Demokratie #EinfachErklärt #Wissen #Gesellschaft\n', 'utf8');
   await writeFile(path.join(result.reelDirectory, 'sources', 'sources.md'), '# Quellen\n\n- Grundgesetz und neutrale institutionelle Grundlagen zur parlamentarischen Demokratie.\n- Begriffe bewusst vereinfacht; keine Parteienbewertung.\n', 'utf8');
 
