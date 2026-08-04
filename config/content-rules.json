@@ -48,7 +48,7 @@
       "lange Einleitungen vor dem eigentlichen Thema"
     ],
     "alternateHookAllowed": true,
-    "alternateHookCondition": "Nur verwenden, wenn eine andere kurze Formulierung das Thema noch klarer eröffnet."
+    "alternateHookCondition": "Nur verwenden, wenn eine andere kurze Formulierung das Thema noch klarer und verständlicher eröffnet."
   },
   "scriptRules": {
     "singleNarrator": true,
@@ -70,8 +70,14 @@
       "silenceThresholdDb": -35,
       "minimumPauseToTightenSeconds": 0.24,
       "retainedPauseFilterSeconds": 0.05,
-      "playbackRate": 1.05,
+      "playbackRate": 1.1,
       "preservePitch": true,
+      "loudnessNormalization": {
+        "enabled": true,
+        "integratedLufs": -16,
+        "truePeakDbtp": -1.5,
+        "loudnessRangeLra": 11
+      },
       "rerunTimelineAfterward": true,
       "rerunWordSyncAfterward": false
     }
