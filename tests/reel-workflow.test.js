@@ -7,6 +7,7 @@ import path from 'node:path';
 import { createReelWorkspace } from '../src/core/workspace.js';
 import { prepareReelProduction } from '../src/core/production-brief.js';
 import { validateReelContent } from '../src/core/content-validator.js';
+import { SUBTITLE_STYLE } from '../src/shared/subtitle-style.js';
 
 async function writeJson(filePath, value) {
   await writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
@@ -68,6 +69,7 @@ test('strenge Inhaltsprüfung akzeptiert ein vollständig ausgefülltes Produkti
       imageText,
       visualIdea: `Eine klare handgezeichnete Metapher zeigt den demokratischen Bestandteil Nummer ${index} ohne unnötige Details.`,
       continuityNotes: 'Gleiche runde Figuren, gleiche Konturen und dieselbe flache 2D-Bildwelt wie in allen anderen Szenen.',
+      subtitlePosition: SUBTITLE_STYLE.position,
       durationSeconds: 5,
       expectedImageFileName: `${sceneId}.png`,
       promptStatus: 'ready',
