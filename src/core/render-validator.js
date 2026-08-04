@@ -3,6 +3,10 @@ import path from 'node:path';
 
 import { validateExactWordTimings } from '../renderer/subtitle-timing.js';
 import { SUBTITLE_STYLE, isHexColor } from '../shared/subtitle-style.js';
+import {
+  AUDIO_PACING_STYLE,
+  isTargetPlaybackRate
+} from '../shared/audio-pacing-style.js';
 
 const IMAGE_EXTENSIONS = new Set(['.png', '.jpg', '.jpeg', '.webp']);
 const AUDIO_EXTENSIONS = new Set(['.mp3', '.wav', '.m4a', '.aac', '.flac', '.ogg']);
@@ -67,11 +71,22 @@ export async function validateRendererInput(reelDirectory, {
   if (!plan) return finalize(checks, null, readiness);
 
   const pacingRate = Number(audioPacing?.playbackRate);
+  const loudnessTarget = Number(audioPacing?.loudnessSettings?.loudnessTargetLufs);
+  const truePeak = Number(audioPacing?.loudnessSettings?.truePeakDbtp);
   push(checks, 'audio-pacing-report', audioPacing?.passed === true,
     'review/audio-pacing-report.json fehlt oder das Voice-over-Pacing wurde nicht erfolgreich optimiert.',
     requireFinalReadiness ? 'error' : 'warning');
-  push(checks, 'audio-playback-rate', Number.isFinite(pacingRate) && pacingRate >= 1.03 && pacingRate <= 1.07,
-    'Das finale Voice-over soll leicht beschleunigt sein; empfohlen sind ungefähr 1.05x.',
+  push(checks, 'audio-playback-rate', isTargetPlaybackRate(pacingRate),
+    `Das finale Voice-over muss mit exakt ${AUDIO_PACING_STYLE.playbackRate.toFixed(2)}x verarbeitet sein.`,
+    requireFinalReadiness ? 'error' : 'warning');
+  push(checks, 'audio-loudness-normalized', audioPacing?.loudnessNormalized === true,
+    'Das finale Voice-over muss lautheitsnormalisiert sein.',
+    requireFinalReadiness ? 'error' : 'warning');
+  push(checks, 'audio-lufs-target', loudnessTarget === AUDIO_PACING_STYLE.loudnessTargetLufs,
+    `Die Ziellautheit muss ${AUDIO_PACING_STYLE.loudnessTargetLufs} LUFS betragen.`,
+    requireFinalReadiness ? 'error' : 'warning');
+  push(checks, 'audio-true-peak-target', truePeak === AUDIO_PACING_STYLE.truePeakDbtp,
+    `Der True-Peak-Zielwert muss ${AUDIO_PACING_STYLE.truePeakDbtp} dBTP betragen.`,
     requireFinalReadiness ? 'error' : 'warning');
 
   const composition = plan.composition ?? {};
