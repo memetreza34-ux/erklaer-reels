@@ -48,7 +48,7 @@
       "lange Einleitungen vor dem eigentlichen Thema"
     ],
     "alternateHookAllowed": true,
-    "alternateHookCondition": "Nur verwenden, wenn eine andere kurze Formulierung das Thema noch klarer und verständlicher eröffnet."
+    "alternateHookCondition": "Nur verwenden, wenn eine andere kurze Formulierung das Thema noch klarer eröffnet."
   },
   "scriptRules": {
     "singleNarrator": true,
@@ -73,7 +73,7 @@
       "playbackRate": 1.05,
       "preservePitch": true,
       "rerunTimelineAfterward": true,
-      "rerunWordSyncAfterward": true
+      "rerunWordSyncAfterward": false
     }
   },
   "visualRules": {
@@ -142,16 +142,10 @@
     "maxLines": 2,
     "wordByWordKaraoke": false,
     "highlightCurrentWord": false,
-    "exactWordTimingsRequired": true,
+    "exactWordTimingsRequired": false,
     "wordTimingWorkflow": {
-      "enabled": true,
-      "provider": "codex-local-audio-review",
-      "externalUpload": false,
-      "apiKeyRequired": false,
-      "minimumWordCoverage": 0.98,
-      "minimumConfidenceStrict": 0.85,
-      "prepareCommand": "npm run sync:words",
-      "applyCommand": "npm run sync:words -- --apply --strict"
+      "enabled": false,
+      "reason": "Ohne Wort-Highlight sind aufwendige Einzelwortzeiten für den sichtbaren Untertitel nicht erforderlich."
     },
     "fallbackWordTiming": "plain-soft-white-no-highlight",
     "repeatIntegratedImageText": false,
