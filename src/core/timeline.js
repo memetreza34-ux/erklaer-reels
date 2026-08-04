@@ -3,6 +3,8 @@ import { execFile } from 'node:child_process';
 import path from 'node:path';
 import { promisify } from 'node:util';
 
+import { SUBTITLE_STYLE } from '../shared/subtitle-style.js';
+
 const execFileAsync = promisify(execFile);
 const AUDIO_EXTENSIONS = new Set(['.mp3', '.wav', '.m4a', '.aac', '.flac', '.ogg']);
 
@@ -143,22 +145,48 @@ function createTimings(scenes, totalDuration, audioSync) {
   };
 }
 
-function subtitleTimeline(scenes, timings, subtitlePlan) {
+function planCuesForScene(subtitlePlan, scene) {
   const global = Array.isArray(subtitlePlan?.cues) ? subtitlePlan.cues : [];
+  const localEntries = global.filter((cue) => cue.sceneId === scene.sceneId);
+  const expanded = localEntries.flatMap((cue) => {
+    if (Array.isArray(cue.texts)) return cue.texts.map((text) => ({ text }));
+    return [cue];
+  });
+  return expanded.length ? expanded : (Array.isArray(scene.subtitleCues) ? scene.subtitleCues : []);
+}
+
+function applySubtitleStyle(cue) {
+  return {
+    ...cue,
+    position: SUBTITLE_STYLE.position,
+    verticalPositionPercent: SUBTITLE_STYLE.verticalPositionPercent,
+    textColor: SUBTITLE_STYLE.textColor,
+    highlightCurrentWord: SUBTITLE_STYLE.highlightCurrentWord,
+    highlightColor: SUBTITLE_STYLE.highlightColor,
+    backgroundColor: SUBTITLE_STYLE.backgroundColor
+  };
+}
+
+function subtitleTimeline(scenes, timings, subtitlePlan) {
   const output = [];
   scenes.forEach((scene, sceneIndex) => {
     const timing = timings[sceneIndex];
-    const local = global.filter((cue) => cue.sceneId === scene.sceneId);
-    const source = local.length ? local : (Array.isArray(scene.subtitleCues) ? scene.subtitleCues : []);
+    const source = planCuesForScene(subtitlePlan, scene);
     const cues = source.map((cue, index) => typeof cue === 'string'
       ? { id: `${scene.sceneId}-subtitle-${index + 1}`, sceneId: scene.sceneId, text: cue }
       : { ...cue, id: cue.id ?? `${scene.sceneId}-subtitle-${index + 1}`, sceneId: cue.sceneId ?? scene.sceneId })
-      .filter((cue) => String(cue.text ?? '').trim());
+      .filter((cue) => String(cue.text ?? '').trim())
+      .map(applySubtitleStyle);
     if (!cues.length) return;
 
     const exact = cues.every((cue) => numberOrNull(cue.startSeconds) !== null && numberOrNull(cue.endSeconds) > numberOrNull(cue.startSeconds));
     if (exact) {
-      output.push(...cues.map((cue) => ({ ...cue, startSeconds: round(cue.startSeconds), endSeconds: round(cue.endSeconds) })));
+      output.push(...cues.map((cue) => ({
+        ...cue,
+        startSeconds: round(cue.startSeconds),
+        endSeconds: round(cue.endSeconds),
+        timingStatus: cue.timingStatus ?? 'exact-cue-timing'
+      })));
       return;
     }
 
@@ -167,7 +195,12 @@ function subtitleTimeline(scenes, timings, subtitlePlan) {
     let cursor = timing.startSeconds;
     cues.forEach((cue, index) => {
       const end = index === cues.length - 1 ? timing.endSeconds : cursor + timing.durationSeconds * (weights[index] / sum);
-      output.push({ ...cue, startSeconds: round(cursor), endSeconds: round(end), position: cue.position ?? 'lower-middle', timingStatus: 'estimated-within-scene' });
+      output.push({
+        ...cue,
+        startSeconds: round(cursor),
+        endSeconds: round(end),
+        timingStatus: 'estimated-within-scene'
+      });
       cursor = end;
     });
   });
@@ -271,7 +304,7 @@ export async function buildMasterTimeline(reelDirectory, { audioDurationSeconds 
   const timingStatus = durationKnown && allCuesExact ? 'audio-synced' : durationKnown ? 'audio-duration-synced' : 'estimated';
   const relativeAudio = audioPath ? path.relative(reelDirectory, audioPath).split(path.sep).join('/') : null;
   const timeline = {
-    version: 1,
+    version: 2,
     reelId: reel.reelId,
     createdAt: new Date().toISOString(),
     timingStatus,
@@ -283,7 +316,7 @@ export async function buildMasterTimeline(reelDirectory, { audioDurationSeconds 
   };
 
   const renderPlan = {
-    version: 1,
+    version: 2,
     reelId: reel.reelId,
     status: timelineScenes.every((scene) => scene.imageStatus === 'ready') && relativeAudio ? 'ready-for-renderer' : 'waiting-for-assets',
     composition: { width: 1080, height: 1920, fps: 30, durationSeconds: round(totalDuration), durationFrames: Math.ceil(totalDuration * 30) },
