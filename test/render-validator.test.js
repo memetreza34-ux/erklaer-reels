@@ -32,7 +32,7 @@ async function createReadyFixture() {
     readyForRenderer: true
   });
   await writeJson(path.join(root, 'render', 'render-plan.json'), {
-    version: 1,
+    version: 2,
     reelId: 'reel-01_test',
     status: 'ready-for-renderer',
     composition: {
@@ -66,16 +66,12 @@ async function createReadyFixture() {
             text: 'Ein kurzer Untertitel',
             startSeconds: 0.2,
             endSeconds: 1.8,
-            position: 'center',
-            verticalPositionPercent: 50,
+            position: 'lower',
+            verticalPositionPercent: 76,
             textColor: '#F5F7FA',
-            highlightCurrentWord: true,
-            highlightColor: '#FFD84D',
-            wordTimings: [
-              { text: 'Ein', startSeconds: 0.2, endSeconds: 0.5 },
-              { text: 'kurzer', startSeconds: 0.55, endSeconds: 0.95 },
-              { text: 'Untertitel', startSeconds: 1, endSeconds: 1.7 }
-            ]
+            highlightCurrentWord: false,
+            highlightColor: '#F5F7FA',
+            backgroundColor: 'transparent'
           }
         ],
         soundEffects: []
@@ -85,27 +81,29 @@ async function createReadyFixture() {
   return root;
 }
 
-test('akzeptiert einen vollständigen Plan mit optimiertem Audio und exakt mittiger Untertitelpalette', async () => {
+test('akzeptiert weißen Untertitel ohne Box bei 76 Prozent', async () => {
   const root = await createReadyFixture();
   const report = await validateRendererInput(root);
   assert.equal(report.passed, true);
   assert.equal(report.summary.failedChecks, 0);
 });
 
-test('blockiert jede abweichende Untertitelposition und falsche Farben', async () => {
+test('blockiert abweichende Position, Gelb und Hintergrundbox', async () => {
   const root = await createReadyFixture();
   const planPath = path.join(root, 'render', 'render-plan.json');
   const plan = await readJson(planPath);
-  plan.scenes[0].subtitles[0].verticalPositionPercent = 68;
-  plan.scenes[0].subtitles[0].textColor = '#FFFFFF';
-  plan.scenes[0].subtitles[0].highlightColor = '#00FF00';
+  plan.scenes[0].subtitles[0].verticalPositionPercent = 50;
+  plan.scenes[0].subtitles[0].highlightCurrentWord = true;
+  plan.scenes[0].subtitles[0].highlightColor = '#FFD84D';
+  plan.scenes[0].subtitles[0].backgroundColor = 'rgba(0, 0, 0, 0.72)';
   await writeJson(planPath, plan);
 
   const report = await validateRendererInput(root);
   assert.equal(report.passed, false);
   assert.ok(report.checks.some((check) => check.id === 'subtitle-01-vertical-position' && check.passed === false));
-  assert.ok(report.checks.some((check) => check.id === 'subtitle-01-text-color' && check.passed === false));
   assert.ok(report.checks.some((check) => check.id === 'subtitle-01-highlight-color' && check.passed === false));
+  assert.ok(report.checks.some((check) => check.id === 'subtitle-01-highlight-disabled' && check.passed === false));
+  assert.ok(report.checks.some((check) => check.id === 'subtitle-01-background-transparent' && check.passed === false));
 });
 
 test('blockiert Fade- und Crossfade-Übergänge', async () => {
@@ -133,7 +131,7 @@ test('blockiert eine finale Freigabe ohne Audio-Pacing-Bericht', async () => {
 test('blockiert Pfade außerhalb des Reel-Ordners', async () => {
   const root = await createReadyFixture();
   await writeJson(path.join(root, 'render', 'render-plan.json'), {
-    version: 1,
+    version: 2,
     reelId: 'reel-01_unsafe',
     status: 'ready-for-renderer',
     composition: {

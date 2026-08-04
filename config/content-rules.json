@@ -48,7 +48,7 @@
       "lange Einleitungen vor dem eigentlichen Thema"
     ],
     "alternateHookAllowed": true,
-    "alternateHookCondition": "Nur verwenden, wenn eine andere kurze Formulierung das Thema noch klarer und verständlicher eröffnet."
+    "alternateHookCondition": "Nur verwenden, wenn eine andere kurze Formulierung das Thema noch klarer eröffnet."
   },
   "scriptRules": {
     "singleNarrator": true,
@@ -73,7 +73,7 @@
       "playbackRate": 1.05,
       "preservePitch": true,
       "rerunTimelineAfterward": true,
-      "rerunWordSyncAfterward": true
+      "rerunWordSyncAfterward": false
     }
   },
   "visualRules": {
@@ -108,24 +108,32 @@
     "creativeStyleBetweenReels": true,
     "integratedGermanKeywordsAllowed": true,
     "fixedBuildUpRequired": false,
+    "naturalContinuousCompositionRequired": true,
+    "mainSubjectMayUseCenter": true,
+    "forbidArtificialSubtitleGap": true,
+    "forbidEmptyHorizontalStripe": true,
+    "forbidDisconnectedTopBottomLayout": true,
+    "forbidUnrequestedReadableText": true,
+    "visibleTextLanguage": "de",
     "noWatermarks": true,
     "noLogosUnlessEditoriallyNecessary": true
   },
   "subtitleRules": {
     "defaultEnabled": true,
     "separateFromImagePrompts": true,
-    "position": "center",
+    "position": "lower",
     "verticalPositionPercent": {
-      "min": 50,
-      "max": 50,
-      "default": 50
+      "min": 76,
+      "max": 76,
+      "default": 76
     },
-    "fixedExactCenter": true,
+    "fixedExactLowerPosition": true,
     "palette": {
       "textColor": "#F5F7FA",
-      "highlightColor": "#FFD84D",
-      "backgroundColor": "rgba(0, 0, 0, 0.72)",
-      "reason": "Weiches Weiß bleibt auf wechselnden Bildwelten ruhig lesbar; Warmgelb hebt das aktuell gesprochene Wort klar hervor."
+      "highlightColor": "#F5F7FA",
+      "backgroundColor": "transparent",
+      "textStrokeColor": "rgba(0, 0, 0, 0.92)",
+      "reason": "Einheitlich weißer Text mit dunkler Kontur bleibt lesbar, ohne die Illustration durch Gelb oder eine schwarze Box zu verdecken."
     },
     "wordsPerCue": {
       "min": 3,
@@ -133,22 +141,17 @@
     },
     "maxLines": 2,
     "wordByWordKaraoke": false,
-    "highlightCurrentWord": true,
-    "exactWordTimingsRequired": true,
+    "highlightCurrentWord": false,
+    "exactWordTimingsRequired": false,
     "wordTimingWorkflow": {
-      "enabled": true,
-      "provider": "codex-local-audio-review",
-      "externalUpload": false,
-      "apiKeyRequired": false,
-      "minimumWordCoverage": 0.98,
-      "minimumConfidenceStrict": 0.85,
-      "prepareCommand": "npm run sync:words",
-      "applyCommand": "npm run sync:words -- --apply --strict"
+      "enabled": false,
+      "reason": "Ohne Wort-Highlight sind aufwendige Einzelwortzeiten für den sichtbaren Untertitel nicht erforderlich."
     },
     "fallbackWordTiming": "plain-soft-white-no-highlight",
     "repeatIntegratedImageText": false,
     "avoidPlatformUiSafeZones": true,
-    "avoidExactScreenCenter": false,
-    "allowPositionAdjustmentForVisualConflicts": false
+    "avoidExactScreenCenter": true,
+    "allowPositionAdjustmentForVisualConflicts": false,
+    "doNotCreateBlankBandInImage": true
   }
 }

@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "composition": {
     "width": 1080,
     "height": 1920,
@@ -15,22 +15,27 @@
     "topPercent": 8,
     "bottomPercent": 18,
     "subtitleVerticalPercent": {
-      "min": 50,
-      "max": 50,
-      "default": 50
+      "min": 76,
+      "max": 76,
+      "default": 76
     }
   },
   "subtitlePalette": {
     "textColor": "#F5F7FA",
-    "highlightColor": "#FFD84D",
-    "backgroundColor": "rgba(0, 0, 0, 0.72)"
+    "highlightColor": "#F5F7FA",
+    "highlightCurrentWord": false,
+    "backgroundColor": "transparent",
+    "textStrokeColor": "rgba(0, 0, 0, 0.92)"
   },
   "manualChecks": [
     "mainSubjectSafe",
+    "naturalContinuousComposition",
+    "noArtificialCenterGap",
     "textReadable",
     "textAccurate",
+    "noUnrequestedReadableText",
     "subtitleCollisionFree",
-    "subtitlePaletteReadable",
+    "subtitleReadableWithoutBox",
     "platformUiSafe",
     "motionSafe",
     "styleConsistent"

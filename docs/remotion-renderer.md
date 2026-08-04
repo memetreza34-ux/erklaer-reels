@@ -1,47 +1,37 @@
 # Remotion-Renderer
 
-Der Renderer erzeugt aus `render/render-plan.json` eine fertige MP4-Datei. Er verwendet die geplanten Bilder, das optimierte Voice-over, Untertitel, dezente Zooms und Schwenks sowie optional vorhandene Sounddateien.
+Der Renderer erzeugt aus `render/render-plan.json` eine fertige MP4 mit Szenenbildern, optimiertem Voice-over, Untertiteln, dezenten Bewegungen und optionalen Soundeffekten.
 
-## Voraussetzungen
+## Vorbereitung
 
 ```bash
 npm install
-```
-
-Remotion und alle `@remotion/*`-Pakete sind absichtlich auf dieselbe exakte Version festgelegt.
-
-Vor dem Rendern muss der Reel-Ordner vollständig vorbereitet sein:
-
-```bash
 npm run trim:pauses -- --dir "PFAD-ZUM-REEL"
 npm run build:timeline -- --dir "PFAD-ZUM-REEL"
 npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
-npm run sync:words -- --dir "PFAD-ZUM-REEL"
-# Codex bearbeitet die Wortzeiten
-npm run sync:words -- --dir "PFAD-ZUM-REEL" --apply --strict
+npm run check:visuals -- --dir "PFAD-ZUM-REEL" --strict
 npm run finalize:reel -- --dir "PFAD-ZUM-REEL" --strict
 ```
 
-`review/final-readiness-report.json` muss `readyForRenderer: true` enthalten und `render/render-plan.json` muss den Status `ready-for-renderer` besitzen.
+`review/final-readiness-report.json` muss `readyForRenderer: true` enthalten und `render/render-plan.json` den Status `ready-for-renderer` besitzen.
 
 ## Untertitelstil
 
-Der Renderer verwendet den zentralen Stil aus `src/shared/subtitle-style.js`:
+Zentrale Quelle: `src/shared/subtitle-style.js`.
 
-- Position `center`
-- vertikale Position exakt 50 %
-- erlaubter Bereich exakt 50–50 %
-- Normaltext `#F5F7FA`
-- Synchronfarbe `#FFD84D`
-- dunkle halbtransparente Box mit ungefähr 72 % Deckkraft
-- dezenter heller Rand und kräftiger Schatten
+- Position `lower`
+- vertikale Position exakt 76 %
+- weiches Weiß `#F5F7FA`
+- alle Wörter gleichfarbig
+- keine gelbe Wortmarkierung
+- transparenter Hintergrund
+- keine schwarze Box oder Balken
+- dunkle Kontur und dezenter Schatten
 - normalerweise 3–6 Wörter, höchstens zwei Zeilen
 
-Ungültige oder alte Positionswerte werden auf exakt 50 % zurückgesetzt. Der strenge Renderer-Check blockiert davon abweichende Pläne.
+Der Renderer blockiert eine gelbe Markierung, einen schwarzen Hintergrund oder eine abweichende Position.
 
 ## Übergänge
-
-Der finale Renderer verwendet keine Übergangsanimationen.
 
 - Hook: `none`, Dauer 0
 - jede weitere Szene: `cut`, Dauer 0
@@ -51,7 +41,7 @@ Der finale Renderer verwendet keine Übergangsanimationen.
 - keine Slides
 - kein schwarzes Zwischenbild
 
-Das neue Bild ist ab dem ersten Frame des Schnitts vollständig sichtbar. Die Remotion-Komposition legt Szenen nicht für Fades übereinander und verändert ihre Deckkraft nicht.
+Das neue Bild ist ab dem ersten Schnittframe vollständig sichtbar.
 
 ## Renderer-Eingabe prüfen
 
@@ -59,24 +49,20 @@ Das neue Bild ist ab dem ersten Frame des Schnitts vollständig sichtbar. Die Re
 npm run validate:render -- --dir "PFAD-ZUM-REEL"
 ```
 
-Geprüft werden unter anderem:
+Geprüft werden:
 
 - 1080 × 1920 bei 30 FPS
 - positive Gesamtdauer
 - lückenlose Szenenframes
-- `none` für die Hook und ausschließlich `cut` für weitere Szenen
-- Übergangsdauer immer 0
+- direkte Schnitte mit Dauer 0
 - bestandener Audio-Pacing-Bericht
-- leicht beschleunigtes Voice-over im sicheren Zielbereich
 - vorhandene Bilder und Voice-over-Datei
 - sichere lokale Pfade
 - zulässige Zoom- und Schwenkwerte
-- Untertitelposition exakt 50 %
-- fester Bereich exakt 50–50 %
-- Normaltext exakt `#F5F7FA`
-- Synchronfarbe exakt `#FFD84D`
-- gültige Untertitel- und Wortzeiten
-- vorhandene optionale Sounddateien
+- Untertitel exakt bei 76 %
+- Text und ehemalige Highlight-Farbe beide `#F5F7FA`
+- `highlightCurrentWord: false`
+- Hintergrund `transparent`
 - finale Renderer-Freigabe
 
 ## MP4 erzeugen
@@ -99,7 +85,7 @@ npm run render:reel -- \
   --output "exports/mein-reel.mp4"
 ```
 
-Weitere Optionen:
+Optionen:
 
 ```text
 --codec h264
@@ -108,21 +94,18 @@ Weitere Optionen:
 --force
 ```
 
-`--force` überspringt ausschließlich die finale Freigabeprüfung. Fehlende Bilder, unsichere Pfade, ungültige Framedaten, falsche Untertitelwerte oder verbotene Übergänge bleiben blockierende Fehler.
+`--force` überspringt nur die finale Freigabeprüfung. Fehlende Assets, unsichere Pfade, ungültige Framedaten, falsche Untertitelwerte oder verbotene Übergänge bleiben Fehler.
 
 ## Gerenderte Bestandteile
 
-- alle Szenenbilder aus `render/render-plan.json`
+- Szenenbilder aus dem Render-Plan
 - gestrafftes Voice-over
-- Untertitel exakt in der Bildmitte bei 50 %
-- weicher weißer Normaltext
-- exakt synchronisierte warmgelbe Wortmarkierung
-- dunkle halbtransparente Untertitelbox
+- weiße Untertitel unten mit Kontur und Schatten
+- keine Untertitelbox
+- keine gelbe Wortanimation
 - dezente Zooms und Schwenks
-- sofortige harte Schnitte
-- Soundeffekte, sofern ein gültiges Feld `file` vorhanden ist
-
-Ein geplanter Soundeffekt ohne tatsächliche Datei wird als Warnung gemeldet und nicht gerendert.
+- direkte harte Schnitte
+- Soundeffekte mit gültigem lokalem `file`-Pfad
 
 ## Berichte
 
@@ -139,18 +122,14 @@ Nach dem Rendering:
 review/render-execution-report.json
 ```
 
-Bei Erfolg aktualisiert der Renderer außerdem `status.json` mit `render: "complete"`.
+Bei Erfolg setzt der Renderer in `status.json` den Wert `render: "complete"`.
 
 ## Remotion Studio
-
-Für eine visuelle Vorschau:
 
 ```bash
 npm run studio
 ```
 
-Für den automatischen Produktionsablauf ist `npm run render:reel` der verbindliche Befehl.
-
 ## Lizenzhinweis
 
-Vor produktiver oder geschäftlicher Nutzung müssen die aktuellen Remotion-Lizenzbedingungen geprüft werden. Das Repository trifft keine Lizenzentscheidung für den Nutzer.
+Vor produktiver oder geschäftlicher Nutzung müssen die aktuellen Remotion-Lizenzbedingungen geprüft werden.

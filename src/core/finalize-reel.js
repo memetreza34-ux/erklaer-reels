@@ -79,22 +79,21 @@ function audioPacingStage(report, strict) {
 
 function wordSyncStage(renderPlan, strict) {
   const cues = (renderPlan?.scenes ?? []).flatMap((scene) => scene.subtitles ?? []);
-  const checks = [];
-
-  checks.push({
-    id: 'subtitle-cues-present',
-    passed: cues.length > 0,
-    level: strict ? 'error' : 'warning',
-    message: 'Der Render-Plan enthält keine Untertitel-Cues.'
-  });
-
-  const highlightedCues = cues.filter((cue) => cue.highlightCurrentWord !== false);
-  checks.push({
-    id: 'codex-word-sync-provider',
-    passed: highlightedCues.length > 0 && highlightedCues.every((cue) => cue.timingSource === 'codex-local-audio-review'),
-    level: strict ? 'error' : 'warning',
-    message: 'Die finalen Wortzeiten müssen aus der lokalen Codex-Audio-Prüfung stammen.'
-  });
+  const highlightedCues = cues.filter((cue) => cue.highlightCurrentWord === true);
+  const checks = [
+    {
+      id: 'subtitle-cues-present',
+      passed: cues.length > 0,
+      level: strict ? 'error' : 'warning',
+      message: 'Der Render-Plan enthält keine Untertitel-Cues.'
+    },
+    {
+      id: 'word-highlight-disabled',
+      passed: highlightedCues.length === 0,
+      level: strict ? 'error' : 'warning',
+      message: 'Die Wort-für-Wort-Markierung muss für den schlichten weißen Untertitelstil deaktiviert sein.'
+    }
+  ];
 
   for (const cue of highlightedCues) {
     const result = validateExactWordTimings(cue);
@@ -111,7 +110,7 @@ function wordSyncStage(renderPlan, strict) {
   return {
     passed: errors.length === 0 && cues.length > 0,
     strict,
-    provider: highlightedCues[0]?.timingSource ?? null,
+    provider: highlightedCues.length === 0 ? 'not-required' : highlightedCues[0]?.timingSource ?? null,
     cueCount: cues.length,
     exactCueCount: checks.filter((check) => check.id.endsWith('-exact-word-timing') && check.passed).length,
     summary: {
@@ -226,14 +225,14 @@ export async function finalizeReel(reelDirectory, {
     stages.timeline?.renderStatus === 'ready-for-renderer' &&
     stages.wordSync?.passed === true &&
     stages.wordSync?.strict === true &&
-    stages.wordSync?.provider === 'codex-local-audio-review' &&
+    stages.wordSync?.provider === 'not-required' &&
     stages.visualQuality?.passed === true &&
     stages.visualQuality?.strict === true &&
     progress.productionReady === 100;
 
   const normalizedDirectory = reelDirectory.split(path.sep).join('/');
   const report = {
-    version: 5,
+    version: 6,
     createdAt,
     reelDirectory: normalizedDirectory,
     strict,
@@ -245,10 +244,8 @@ export async function finalizeReel(reelDirectory, {
     nextStep: readyForRenderer
       ? `Renderer prüfen und MP4 erzeugen: npm run validate:render -- --dir "${normalizedDirectory}" && npm run render:reel -- --dir "${normalizedDirectory}"`
       : stages.audioPacing?.passed !== true
-        ? `Voice-over straffen: npm run trim:pauses -- --dir "${normalizedDirectory}"; danach Timeline, Audio-Cues und Wortzeiten neu synchronisieren.`
-        : stages.wordSync?.passed !== true
-          ? `Codex-Wort-Sync vorbereiten: npm run sync:words -- --dir "${normalizedDirectory}"; danach production/codex-word-sync-task.md bearbeiten und mit --apply --strict übernehmen.`
-          : progress.nextStep
+        ? `Voice-over straffen: npm run trim:pauses -- --dir "${normalizedDirectory}"; danach Timeline und Audio-Cues neu synchronisieren.`
+        : progress.nextStep
   };
 
   await writeJson(path.join(reelDirectory, 'review', 'final-readiness-report.json'), report);
@@ -256,7 +253,7 @@ export async function finalizeReel(reelDirectory, {
   const statusPath = path.join(reelDirectory, 'status.json');
   const status = await readJson(statusPath, {});
   status.audioPacing = stages.audioPacing?.passed ? 'complete' : 'needs-review';
-  status.wordSync = stages.wordSync?.passed ? 'complete' : 'needs-review';
+  status.wordSync = stages.wordSync?.passed ? 'not-required' : 'needs-review';
   status.finalReadiness = readyForRenderer ? 'ready-for-renderer' : 'needs-review';
   if (readyForRenderer && status.render !== 'complete') status.render = 'ready';
   await writeJson(statusPath, status);

@@ -22,7 +22,7 @@ function getCheck(report, id) {
   return check;
 }
 
-test('neue Arbeitsordner verwenden exakt den zentralen Untertitelstil', async () => {
+test('neue Arbeitsordner verwenden exakt den unteren weißen Untertitelstil', async () => {
   const outputRoot = await mkdtemp(path.join(os.tmpdir(), 'erklaer-reels-subtitles-'));
 
   try {
@@ -37,22 +37,24 @@ test('neue Arbeitsordner verwenden exakt den zentralen Untertitelstil', async ()
     const plan = await readJson(path.join(reelDirectory, 'subtitles', 'subtitle-plan.json'));
     const scene = await readJson(path.join(reelDirectory, 'scenes', 'scene-01', 'scene.json'));
 
-    assert.equal(SUBTITLE_STYLE.position, 'center');
-    assert.equal(SUBTITLE_STYLE.verticalPositionPercent, 50);
-    assert.deepEqual(SUBTITLE_STYLE.safeVerticalRangePercent, { min: 50, max: 50 });
+    assert.equal(SUBTITLE_STYLE.position, 'lower');
+    assert.equal(SUBTITLE_STYLE.verticalPositionPercent, 76);
+    assert.deepEqual(SUBTITLE_STYLE.safeVerticalRangePercent, { min: 76, max: 76 });
     assert.equal(scene.subtitlePosition, SUBTITLE_STYLE.position);
     assert.equal(plan.position, SUBTITLE_STYLE.position);
     assert.equal(plan.verticalPositionPercent, SUBTITLE_STYLE.verticalPositionPercent);
     assert.deepEqual(plan.safeVerticalRangePercent, SUBTITLE_STYLE.safeVerticalRangePercent);
     assert.equal(plan.textColor, SUBTITLE_STYLE.textColor);
+    assert.equal(plan.highlightCurrentWord, false);
     assert.equal(plan.highlightColor, SUBTITLE_STYLE.highlightColor);
-    assert.equal(plan.backgroundColor, SUBTITLE_STYLE.backgroundColor);
+    assert.equal(plan.textColor, plan.highlightColor);
+    assert.equal(plan.backgroundColor, 'transparent');
   } finally {
     await rm(outputRoot, { recursive: true, force: true });
   }
 });
 
-test('strenge Inhaltsprüfung blockiert alte untere Untertitelwerte', async () => {
+test('strenge Inhaltsprüfung blockiert den alten mittigen Stil', async () => {
   const outputRoot = await mkdtemp(path.join(os.tmpdir(), 'erklaer-reels-old-subtitles-'));
 
   try {
@@ -66,14 +68,17 @@ test('strenge Inhaltsprüfung blockiert alte untere Untertitelwerte', async () =
 
     const scenePath = path.join(reelDirectory, 'scenes', 'scene-01', 'scene.json');
     const scene = await readJson(scenePath);
-    scene.subtitlePosition = 'lower-middle';
+    scene.subtitlePosition = 'center';
     await writeJson(scenePath, scene);
 
     const planPath = path.join(reelDirectory, 'subtitles', 'subtitle-plan.json');
     const plan = await readJson(planPath);
-    plan.position = 'lower-middle';
-    plan.verticalPositionPercent = 68;
-    plan.safeVerticalRangePercent = { min: 64, max: 72 };
+    plan.position = 'center';
+    plan.verticalPositionPercent = 50;
+    plan.safeVerticalRangePercent = { min: 50, max: 50 };
+    plan.highlightCurrentWord = true;
+    plan.highlightColor = '#FFD84D';
+    plan.backgroundColor = 'rgba(0, 0, 0, 0.72)';
     await writeJson(planPath, plan);
 
     const report = await validateReelContent(reelDirectory, { strict: true });
@@ -84,6 +89,8 @@ test('strenge Inhaltsprüfung blockiert alte untere Untertitelwerte', async () =
     assert.equal(getCheck(report, 'subtitle-plan-vertical-position').passed, false);
     assert.equal(getCheck(report, 'subtitle-plan-safe-range-min').passed, false);
     assert.equal(getCheck(report, 'subtitle-plan-safe-range-max').passed, false);
+    assert.equal(getCheck(report, 'subtitle-plan-highlight-color').passed, false);
+    assert.equal(getCheck(report, 'subtitle-plan-background-color').passed, false);
   } finally {
     await rm(outputRoot, { recursive: true, force: true });
   }

@@ -46,11 +46,13 @@ async function ensureInspectionFile(reelDirectory, assets, rules) {
   const current = await readJson(inspectionPath, null);
   const byId = new Map((current?.assets ?? []).map((entry) => [entry.assetId, entry]));
   const next = {
-    version: 2,
+    version: 3,
     instructions: [
       'Codex betrachtet jedes Bild visuell und setzt jeden Prüfpunkt auf true oder false.',
       'Bei einem Fehler status auf needs-fix setzen und eine konkrete Notiz ergänzen.',
-      'Prüfe besonders die Untertitelzone 64–72 % und die Lesbarkeit von weichem Weiß und Warmgelb.',
+      'Prüfe eine natürliche durchgehende Komposition ohne leeren Mittelstreifen oder künstlich getrennte obere und untere Bildhälfte.',
+      'Prüfe, dass keine unerwünschten lesbaren Wörter oder englischen Labels im Bild stehen.',
+      'Prüfe die Lesbarkeit der weißen Untertitel mit dunkler Kontur bei 76 Prozent Bildhöhe, ohne schwarze Hintergrundbox.',
       'Nur vollständig bestandene Bilder erhalten status passed.'
     ],
     safeZones: rules.safeZones,
@@ -201,14 +203,20 @@ export async function runVisualQualityCheck(reelDirectory, { strict = false } = 
 
   const expectedTextColor = String(rules.subtitlePalette?.textColor ?? '').toUpperCase();
   const expectedHighlightColor = String(rules.subtitlePalette?.highlightColor ?? '').toUpperCase();
+  const expectedBackgroundColor = String(rules.subtitlePalette?.backgroundColor ?? '');
   const actualTextColor = String(subtitlePlan.textColor ?? '').toUpperCase();
   const actualHighlightColor = String(subtitlePlan.highlightColor ?? '').toUpperCase();
+  const actualBackgroundColor = String(subtitlePlan.backgroundColor ?? '');
   addCheck(checks, 'subtitle-text-color', actualTextColor === expectedTextColor,
     `Untertitel-Normalfarbe muss ${expectedTextColor} sein.`, 'error');
   addCheck(checks, 'subtitle-highlight-color', actualHighlightColor === expectedHighlightColor,
-    `Synchronfarbe muss ${expectedHighlightColor} sein.`, 'error');
-  addCheck(checks, 'subtitle-colors-distinct', actualTextColor !== actualHighlightColor,
-    'Normaltext und Synchronfarbe müssen klar verschieden sein.', 'error');
+    `Die Untertitelfarbe muss durchgehend ${expectedHighlightColor} sein.`, 'error');
+  addCheck(checks, 'subtitle-colors-uniform', actualTextColor === actualHighlightColor,
+    'Alle Untertitelwörter müssen dieselbe weiße Farbe verwenden.', 'error');
+  addCheck(checks, 'subtitle-highlight-disabled', subtitlePlan.highlightCurrentWord === false,
+    'Die gelbe Wortmarkierung muss deaktiviert sein.', 'error');
+  addCheck(checks, 'subtitle-background-transparent', actualBackgroundColor === expectedBackgroundColor,
+    'Der Untertitelhintergrund muss transparent sein.', 'error');
 
   const errors = checks.filter((check) => !check.passed && check.level === 'error');
   const warnings = checks.filter((check) => !check.passed && check.level === 'warning');

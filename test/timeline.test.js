@@ -11,7 +11,7 @@ async function writeJson(filePath, value) {
   await writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
 }
 
-test('führt Szenen, Untertitel, Effekte und Audio-Cues in einer Master-Timeline zusammen', async () => {
+test('führt Szenen, weiße Untertitel, Effekte und Audio-Cues in einer Master-Timeline zusammen', async () => {
   const reelDirectory = await mkdtemp(path.join(os.tmpdir(), 'erklaer-timeline-'));
   const scenes = Array.from({ length: 10 }, (_, index) => {
     const sceneId = `scene-${String(index + 1).padStart(2, '0')}`;
@@ -68,6 +68,14 @@ test('führt Szenen, Untertitel, Effekte und Audio-Cues in einer Master-Timeline
   assert.equal(result.timeline.scenes.at(-1).endSeconds, 50);
   assert.equal(result.timeline.subtitles.cues.length, 10);
   assert.equal(result.renderPlan.composition.durationFrames, 1500);
+
+  const firstSubtitle = result.timeline.subtitles.cues[0];
+  assert.equal(firstSubtitle.position, 'lower');
+  assert.equal(firstSubtitle.verticalPositionPercent, 76);
+  assert.equal(firstSubtitle.textColor, '#F5F7FA');
+  assert.equal(firstSubtitle.highlightColor, '#F5F7FA');
+  assert.equal(firstSubtitle.highlightCurrentWord, false);
+  assert.equal(firstSubtitle.backgroundColor, 'transparent');
 
   const savedTimeline = JSON.parse(await readFile(path.join(reelDirectory, 'timeline', 'timeline-plan.json'), 'utf8'));
   const savedRenderPlan = JSON.parse(await readFile(path.join(reelDirectory, 'render', 'render-plan.json'), 'utf8'));

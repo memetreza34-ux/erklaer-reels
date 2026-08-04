@@ -27,6 +27,7 @@ export async function calculateReelProgress(reelDirectory) {
   const reel = await readJson(path.join(reelDirectory, 'reel.json'), {});
   const scenes = await readJson(path.join(reelDirectory, 'scenes', 'scene-index.json'), []);
   const manifest = await readJson(path.join(reelDirectory, 'assets-manifest.json'), { scenes: [] });
+  const subtitlePlan = await readJson(path.join(reelDirectory, 'subtitles', 'subtitle-plan.json'), {});
   const readiness = await readJson(path.join(reelDirectory, 'review', 'content-readiness.json'), null);
   const matchingReport = await readJson(path.join(reelDirectory, 'review', 'asset-matching-report.json'), null);
   const audioPacingReport = await readJson(path.join(reelDirectory, 'review', 'audio-pacing-report.json'), null);
@@ -133,17 +134,23 @@ export async function calculateReelProgress(reelDirectory) {
     (timelineCheckReady ? 10 : 0)
   );
 
+  const wordSyncRequired = subtitlePlan.highlightCurrentWord === true;
   const wordSyncCreated = Boolean(wordSyncReport);
-  const wordCoverage = Number(wordSyncReport?.coverage ?? 0);
-  const wordSyncProvider = wordSyncReport?.provider ?? null;
-  const wordSyncPassed = wordSyncReport?.passed === true &&
-    wordCoverage >= 0.98 &&
-    wordSyncProvider === 'codex-local-audio-review';
-  const wordSync = clamp(
-    (wordSyncCreated ? 20 : 0) +
-    Math.min(1, Math.max(0, wordCoverage)) * 50 +
-    (wordSyncPassed ? 30 : 0)
-  );
+  const measuredWordCoverage = Number(wordSyncReport?.coverage ?? 0);
+  const measuredWordSyncProvider = wordSyncReport?.provider ?? null;
+  const measuredWordSyncPassed = wordSyncReport?.passed === true &&
+    measuredWordCoverage >= 0.98 &&
+    measuredWordSyncProvider === 'codex-local-audio-review';
+  const wordSyncPassed = wordSyncRequired ? measuredWordSyncPassed : true;
+  const wordSyncProvider = wordSyncRequired ? measuredWordSyncProvider : 'not-required';
+  const wordCoverage = wordSyncRequired ? measuredWordCoverage : 1;
+  const wordSync = wordSyncRequired
+    ? clamp(
+      (wordSyncCreated ? 20 : 0) +
+      Math.min(1, Math.max(0, wordCoverage)) * 50 +
+      (wordSyncPassed ? 30 : 0)
+    )
+    : 100;
 
   const expectedVisualAssets = scenes.length + 1;
   const reviewedAssets = Array.isArray(visualInspection?.assets)
@@ -180,12 +187,12 @@ export async function calculateReelProgress(reelDirectory) {
   if (preProduction < 100) {
     nextStep = 'Codex muss production/agent-task.md fertigstellen und die strenge Inhaltsprüfung bestehen.';
   } else if (assets < 100) {
-    nextStep = 'Voice-over und Bilder extern erzeugen, unsortiert in die Inbox legen und zuordnen lassen.';
+    nextStep = 'Voice-over und Bilder direkt in die vorgesehenen Audio-, Cover- und Szenenordner legen und prüfen.';
   } else if (audioPacing < 100) {
     nextStep = 'Mit trim:pauses lange Pausen kürzen und das Voice-over leicht beschleunigen.';
   } else if (timelineProgress < 100) {
     nextStep = 'Master-Timeline mit dem optimierten Audio erzeugen, echte Audio-Cues eintragen und sync:audio streng ausführen.';
-  } else if (wordSync < 100) {
+  } else if (wordSyncRequired && wordSync < 100) {
     nextStep = 'sync:words vorbereiten, production/codex-word-sync-task.md bearbeiten und danach mit --apply --strict übernehmen.';
   } else if (visualQuality < 100) {
     nextStep = 'check:visuals ausführen, jedes Bild visuell prüfen und die strenge visuelle Abnahme bestehen.';
@@ -231,6 +238,7 @@ export async function calculateReelProgress(reelDirectory) {
       audioSynced,
       renderReady,
       timelineCheckReady,
+      wordSyncRequired,
       wordSyncCreated,
       wordSyncPassed,
       wordSyncProvider,
