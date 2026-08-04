@@ -59,7 +59,8 @@ export function buildAudioPacingFilter({
   playbackRate = AUDIO_PACING_STYLE.playbackRate,
   loudnessTargetLufs = AUDIO_PACING_STYLE.loudnessTargetLufs,
   truePeakDbtp = AUDIO_PACING_STYLE.truePeakDbtp,
-  loudnessRangeLra = AUDIO_PACING_STYLE.loudnessRangeLra
+  loudnessRangeLra = AUDIO_PACING_STYLE.loudnessRangeLra,
+  outputSampleRateHz = AUDIO_PACING_STYLE.outputSampleRateHz
 } = {}) {
   const rate = normalizePlaybackRate(playbackRate);
   const silenceFilter = [
@@ -78,6 +79,7 @@ export function buildAudioPacingFilter({
 
   if (rate > 1.0001) filters.push(`atempo=${rate}`);
   filters.push(buildLoudnessFilter({ loudnessTargetLufs, truePeakDbtp, loudnessRangeLra }));
+  filters.push(`aresample=${Number(outputSampleRateHz)}`);
 
   return filters.join(',');
 }
@@ -116,13 +118,15 @@ export async function tightenVoiceover(reelDirectory, options = {}) {
   await mkdir(path.dirname(outputPath), { recursive: true });
 
   const playbackRate = normalizePlaybackRate(options.playbackRate);
-  const filter = buildAudioPacingFilter({ ...options, playbackRate });
+  const outputSampleRateHz = Number(options.outputSampleRateHz ?? AUDIO_PACING_STYLE.outputSampleRateHz);
+  const filter = buildAudioPacingFilter({ ...options, playbackRate, outputSampleRateHz });
   const beforeSeconds = await probeDuration(sourcePath);
   const args = [
     '-y', '-hide_banner', '-loglevel', 'error',
     '-i', sourcePath,
     '-vn',
     '-af', filter,
+    '-ar', String(outputSampleRateHz),
     '-c:a', 'aac',
     '-b:a', '192k',
     outputPath
@@ -144,7 +148,8 @@ export async function tightenVoiceover(reelDirectory, options = {}) {
   const loudnessSettings = {
     loudnessTargetLufs: Number(options.loudnessTargetLufs ?? AUDIO_PACING_STYLE.loudnessTargetLufs),
     truePeakDbtp: Number(options.truePeakDbtp ?? AUDIO_PACING_STYLE.truePeakDbtp),
-    loudnessRangeLra: Number(options.loudnessRangeLra ?? AUDIO_PACING_STYLE.loudnessRangeLra)
+    loudnessRangeLra: Number(options.loudnessRangeLra ?? AUDIO_PACING_STYLE.loudnessRangeLra),
+    outputSampleRateHz
   };
 
   manifest.audio = {
@@ -155,6 +160,7 @@ export async function tightenVoiceover(reelDirectory, options = {}) {
     tempoAdjusted: playbackRate > 1,
     loudnessNormalized: true,
     playbackRate,
+    outputSampleRateHz,
     pauseTrimSettings: {
       thresholdDb: Number(options.thresholdDb ?? AUDIO_PACING_STYLE.thresholdDb),
       minimumLongPauseSeconds: Number(options.minimumLongPauseSeconds ?? AUDIO_PACING_STYLE.minimumLongPauseSeconds),
