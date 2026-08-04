@@ -36,7 +36,7 @@ export async function prepareReelProduction(reelDirectory) {
   await mkdir(productionDirectory, { recursive: true });
 
   const checklist = {
-    version: 9,
+    version: 10,
     reelId: reel.reelId,
     title: reel.title,
     createdAt: new Date().toISOString(),
@@ -45,10 +45,10 @@ export async function prepareReelProduction(reelDirectory) {
       { id: 'script-final', label: 'Finales Voice-over-Script prüfen und schreiben', status: 'pending' },
       { id: 'style-select', label: 'Passende Bildwelt auswählen und in reel.json eintragen', status: 'pending' },
       { id: 'scenes-fill', label: `${scenes.length} Szenen mit Audio-Cues vollständig planen`, status: 'pending' },
-      { id: 'prompts-write', label: `${scenes.length} englische Bildprompts schreiben`, status: 'pending' },
-      { id: 'prompts-export', label: 'Alle Szenenprompts chronologisch in all-image-prompts.txt exportieren', status: 'pending' },
-      { id: 'subtitles-write', label: 'Exakt mittige Untertitel mit weichem Weiß und warmgelber Synchronfarbe planen', status: 'pending' },
-      { id: 'effects-write', label: 'Dezente Bewegungen, ausschließlich harte Schnitte und Soundeffekte planen', status: 'pending' },
+      { id: 'prompts-write', label: `${scenes.length} natürliche englische Bildprompts ohne leeren Mittelstreifen schreiben`, status: 'pending' },
+      { id: 'prompts-export', label: 'Alle Szenenprompts chronologisch exportieren', status: 'pending' },
+      { id: 'subtitles-write', label: 'Weiße Untertitel unten ohne Gelb und ohne Hintergrundbox planen', status: 'pending' },
+      { id: 'effects-write', label: 'Dezente Bewegungen, harte Schnitte und Soundeffekte planen', status: 'pending' },
       { id: 'cover-write', label: 'Cover-Idee und Cover-Prompt schreiben', status: 'pending' },
       { id: 'caption-write', label: 'Caption erstellen', status: 'pending' },
       { id: 'sources-write', label: 'Quellen und Unsicherheiten dokumentieren', status: 'pending' },
@@ -61,26 +61,23 @@ export async function prepareReelProduction(reelDirectory) {
 
 ## Ziel
 
-Erstelle aus dem vorhandenen deutschen Rohscript ein vollständiges Produktionspaket für ein visuelles Erklär-Reel. Erzeuge keine Bilder und kein Audio. Der Nutzer erzeugt diese extern und legt sie später unsortiert in \`inbox/\` ab.
+Erstelle aus dem deutschen Rohscript ein vollständiges Produktionspaket. Bilder und Audio werden extern erzeugt und anschließend direkt in die vorgesehenen Cover-, Szenen- und Audioordner gelegt.
 
 ## Ausgangsdaten
 
 - Reel-ID: \`${reel.reelId}\`
 - Titel: **${reel.title}**
-- Geplante Bildmomente: **${scenes.length}**
+- Bildmomente: **${scenes.length}**
 - Format: **9:16**
 - Voice-over: **Deutsch**
 - Bildprompts: **Englisch**
-- Untertitelposition: **\`${SUBTITLE_STYLE.position}\`, exakt ${SUBTITLE_STYLE.verticalPositionPercent} % der Bildhöhe**
-- Erlaubter Untertitelbereich: **${SUBTITLE_STYLE.safeVerticalRangePercent.min}–${SUBTITLE_STYLE.safeVerticalRangePercent.max} %**
-- Normaler Untertiteltext: **weiches Weiß ${SUBTITLE_STYLE.textColor}**
-- Synchron markiertes Wort: **Warmgelb ${SUBTITLE_STYLE.highlightColor}**
-- Untertitelhintergrund: **${SUBTITLE_STYLE.backgroundColor}**
-- Wortmarkierung: **nach dem Voice-over durch lokale Codex-Audio-Prüfung**
-- Übergänge: **keine Fades; Hook ohne Übergang, danach nur direkte harte Schnitte**
-- Audio-Pacing: **Pausen kürzen und Voice-over mit 1.05x leicht beschleunigen**
-- Externer Transkriptionsdienst: **nicht verwenden**
-- Hintergrundmusik: **standardmäßig ausgeschaltet**
+- Untertitel: **\`${SUBTITLE_STYLE.position}\`, exakt ${SUBTITLE_STYLE.verticalPositionPercent} % Bildhöhe**
+- Untertitelfarbe: **${SUBTITLE_STYLE.textColor}**
+- Wortmarkierung: **ausgeschaltet**
+- Hintergrundbox: **keine, ${SUBTITLE_STYLE.backgroundColor}**
+- Übergänge: **Hook ohne Übergang, danach nur harte Schnitte**
+- Audio-Pacing: **Pausen kürzen und ungefähr 1.05x**
+- Hintergrundmusik: **aus**
 
 ## Rohscript
 
@@ -88,116 +85,97 @@ Erstelle aus dem vorhandenen deutschen Rohscript ein vollständiges Produktionsp
 
 ## Verbindlicher Ablauf
 
-1. Lies \`AGENTS.md\`, \`knowledge/production-rules.md\`, \`knowledge/effects-rules.md\`, \`knowledge/subtitle-pacing-rules.md\`, \`config/content-rules.json\`, \`config/effects-rules.json\` und \`config/image-styles.json\`.
-2. Überarbeite das Rohscript zu einem einfachen Voice-over von ungefähr 35–55 Sekunden. Bevorzugter Einstieg: \`THEMA einfach erklärt:\` und danach sofort die Erklärung.
-3. Schreibe denselben finalen Text nach \`script/final-script.txt\` und \`script/voice-script.txt\`.
-4. Nutze für 35–44 Sekunden normalerweise 8–10 und für 45–55 Sekunden normalerweise 10–12 Bildmomente.
-5. Wähle genau eine Hauptbildwelt und trage \`visualStyleId\` sowie \`visualStyleReason\` ein.
-6. Plane genau ${scenes.length} Bildmomente. Hook ab Sekunde 0, danach ungefähr alle 3,5–5 Sekunden eine sichtbare Veränderung.
-7. Aktualisiere \`scenes/scene-index.json\` und jede passende \`scene.json\` synchron.
-8. Jede Szene benötigt \`title\`, \`narration\`, \`imageText\`, \`visualIdea\`, \`continuityNotes\`, \`audioCue\`, \`leadInSeconds\`, \`subtitleCues\`, \`subtitlePosition\`, \`durationSeconds\` und \`expectedImageFileName\`.
-9. Schreibe für jede Szene einen vollständigen englischen 9:16-Bildprompt. Die feste horizontale Bildmitte muss von unverzichtbaren Gesichtern, Bildtexten und Hauptmotiven freigehalten werden.
-10. Exportiere danach alle Szenenprompts chronologisch:
+1. Lies \`AGENTS.md\`, \`knowledge/production-rules.md\`, \`knowledge/effects-rules.md\`, \`knowledge/subtitle-pacing-rules.md\` und die Konfigurationen.
+2. Überarbeite das Script auf ungefähr 35–55 Sekunden. Bevorzugter Einstieg: \`THEMA einfach erklärt:\`.
+3. Schreibe den finalen Text nach \`script/final-script.txt\` und \`script/voice-script.txt\`.
+4. Plane genau ${scenes.length} Bildmomente mit Hook ab Sekunde 0 und sichtbaren Änderungen ungefähr alle 3,5–5 Sekunden.
+5. Wähle eine Hauptbildwelt und trage \`visualStyleId\` sowie \`visualStyleReason\` ein.
+6. Aktualisiere \`scenes/scene-index.json\` und jede \`scene.json\` synchron.
+7. Jede Szene benötigt Titel, Sprechertext, visuelle Idee, Kontinuitätsnotizen, Audio-Cue, Lead-in, Untertitel-Cues, Untertitelposition, Dauer und erwarteten Bildnamen.
+8. Schreibe für jede Szene einen vollständigen englischen 9:16-Bildprompt.
+
+### Pflichtregeln für Bilder
+
+- natürliche zusammenhängende Komposition
+- Hauptmotive dürfen die Bildmitte normal nutzen
+- kein künstlich leerer horizontaler Mittelstreifen
+- keine getrennte obere und untere Bildhälfte nur wegen Untertiteln
+- keine riesigen leeren Bäume, Pfeile oder Flächen als Textplatzhalter
+- keine unerwünschten englischen Wörter, Fantasie-Labels, Logos oder Wasserzeichen
+- sichtbarer Text nur bei ausdrücklicher Notwendigkeit und dann korrekt auf Deutsch
+- nur kleine unverzichtbare Details nicht direkt hinter dem unteren Untertitelbereich platzieren
+
+9. Exportiere alle Szenenprompts:
 
 \`\`\`bash
 npm run export:prompts -- --dir "${normalizedDirectory}" --strict
 \`\`\`
 
-11. Fülle \`subtitles/subtitle-plan.json\` zunächst als Plan aus:
-    - Position \`${SUBTITLE_STYLE.position}\`
-    - Höhe exakt ${SUBTITLE_STYLE.verticalPositionPercent} %
-    - erlaubter Bereich exakt ${SUBTITLE_STYLE.safeVerticalRangePercent.min}–${SUBTITLE_STYLE.safeVerticalRangePercent.max} %
-    - \`textColor: "${SUBTITLE_STYLE.textColor}"\`
-    - \`highlightCurrentWord: true\`
-    - \`highlightColor: "${SUBTITLE_STYLE.highlightColor}"\`
-    - \`backgroundColor: "${SUBTITLE_STYLE.backgroundColor}"\`
-    - normalerweise 3–6 Wörter, höchstens zwei Zeilen
-    - keine Positionsverschiebung bei visuellen Kollisionen
-    - keine geschätzten Wortzeiten eintragen
-    - die finalen Cues werden später aus akustisch bestätigten Codex-Wortzeiten neu erzeugt
-12. Fülle \`effects/effects-plan.json\` vollständig aus:
-    - Szene 1: \`transitionIn.type: "none"\`, \`durationSeconds: 0\`
-    - jede weitere Szene: \`transitionIn.type: "cut"\`, \`durationSeconds: 0\`
-    - keine Crossfades, Schwarzblenden, Slides oder sonstigen Übergangsanimationen
-    - kein schwarzes Zwischenbild
-    - nicht jede Szene braucht Bewegung oder Sound
-    - Zoom maximal 8 %, Schwenk maximal 4 %
-13. Fülle Cover, Caption und Quellen aus.
-14. Führe aus:
+10. Fülle \`subtitles/subtitle-plan.json\` mit:
+
+- \`position: "${SUBTITLE_STYLE.position}"\`
+- \`verticalPositionPercent: ${SUBTITLE_STYLE.verticalPositionPercent}\`
+- \`textColor: "${SUBTITLE_STYLE.textColor}"\`
+- \`highlightCurrentWord: false\`
+- \`highlightColor: "${SUBTITLE_STYLE.highlightColor}"\`
+- \`backgroundColor: "${SUBTITLE_STYLE.backgroundColor}"\`
+- 3–6 Wörter und höchstens zwei Zeilen
+- keine Einzelwortzeiten erforderlich
+
+11. Fülle \`effects/effects-plan.json\`:
+
+- Szene 1: \`none\`, Dauer 0
+- danach: \`cut\`, Dauer 0
+- keine Fades, Schwarzblenden oder Slides
+- Zoom maximal 8 %, Schwenk maximal 4 %
+- nicht jede Szene braucht Bewegung oder Sound
+
+12. Fülle Cover, Caption und Quellen aus.
+13. Prüfe streng:
 
 \`\`\`bash
 npm run check:content -- --dir "${normalizedDirectory}" --strict
 \`\`\`
 
-15. Behebe alle Fehler und markiere die Aufgaben in \`production/checklist.json\` als \`done\`.
+14. Behebe alle Fehler und markiere die Checkliste als erledigt.
 
 ## Nach Eintreffen von Bildern und Voice-over
 
-1. Assets zuordnen:
+Bevorzugte Ablage:
 
-\`\`\`bash
-npm run organize:assets -- --dir "${normalizedDirectory}"
-npm run organize:assets -- --dir "${normalizedDirectory}" --apply
+\`\`\`text
+scenes/scene-01/scene-01.png
+scenes/scene-02/scene-02.png
+...
+cover/cover.png
+audio/<voiceover-datei>
 \`\`\`
 
-2. Voice-over vor jeder Timeline straffen:
+Danach:
 
 \`\`\`bash
 npm run trim:pauses -- --dir "${normalizedDirectory}"
-\`\`\`
-
-Standard: lange Pausen deutlich kürzen und die Stimme mit 1.05x leicht beschleunigen, ohne die Tonhöhe zu verändern. Prüfe \`review/audio-pacing-report.json\`.
-
-3. Timeline und Szenen-Cues mit der optimierten Audiodatei synchronisieren:
-
-\`\`\`bash
 npm run build:timeline -- --dir "${normalizedDirectory}"
 npm run sync:audio -- --dir "${normalizedDirectory}" --strict
+npm run check:visuals -- --dir "${normalizedDirectory}" --strict
+npm run finalize:reel -- --dir "${normalizedDirectory}" --strict
+npm run validate:render -- --dir "${normalizedDirectory}"
+npm run render:reel -- --dir "${normalizedDirectory}"
 \`\`\`
 
-4. Codex-Wort-Sync vorbereiten:
-
-\`\`\`bash
-npm run sync:words -- --dir "${normalizedDirectory}"
-\`\`\`
-
-5. Bearbeite \`production/codex-word-sync-task.md\`: Voice-over lokal anhören und in \`subtitles/codex-word-sync.json\` für jedes Wort echte absolute Start- und Endzeiten, realistische Konfidenz und \`reviewed: true\` eintragen.
-6. Keine gleichmäßige Verteilung, keine erfundenen Zeiten und kein externer Audio-Upload.
-7. Anwenden:
-
-\`\`\`bash
-npm run sync:words -- --dir "${normalizedDirectory}" --apply --strict
-\`\`\`
-
-8. Prüfe \`review/word-sync-report.json\`: mindestens 98 % Wortabdeckung, mindestens 0,85 Konfidenz und keine leere Szene.
-9. Prüfe zusätzlich: Position \`${SUBTITLE_STYLE.position}\`, Höhe exakt ${SUBTITLE_STYLE.verticalPositionPercent} %, Bereich exakt ${SUBTITLE_STYLE.safeVerticalRangePercent.min}–${SUBTITLE_STYLE.safeVerticalRangePercent.max} %, Textfarbe ${SUBTITLE_STYLE.textColor}, Synchronfarbe ${SUBTITLE_STYLE.highlightColor}.
-10. Nach einer neuen Audiodatei \`trim:pauses\`, \`sync:audio\` und den Codex-Wort-Sync erneut ausführen.
-11. Danach visuelle Prüfung, \`finalize:reel --strict\`, \`validate:render\` und \`render:reel\` ausführen.
-
-## Kreative Leitplanken
-
-- schwierige Dinge sehr einfach und visuell erklären
-- keine schulische Einleitung
-- Hook-Bild sofort sichtbar
-- innerhalb des Reels konsistente Bildwelt
-- Bildwechsel am Sprechertext ausrichten
-- direkte harte Schnitte ohne Verzögerung oder Schwarzbild
-- Untertitel exakt in der Bildmitte; Bildmotive müssen diese feste Zone freihalten
-- keine Bewegung nur um der Bewegung willen
-- kein Whoosh bei jedem Schnitt
+\`sync:words\` ist ohne Wort-Highlight nicht erforderlich.
 
 ## Übergabe an den Nutzer
 
-Nach bestandener Inhaltsprüfung nur mitteilen:
+Nach bestandener Inhaltsprüfung mitteilen:
 
 - Pfad des Reel-Ordners
 - Anzahl der Bildprompts
-- chronologische Prompt-Sammeldatei vorhanden
+- Prompt-Sammeldatei vorhanden
 - gewählte Bildwelt
-- Untertitel- und Effektplan vorhanden
-- Voice-over und Bilder können extern erzeugt werden
-- Dateien dürfen unsortiert nach \`inbox/audio/\` und \`inbox/images/\`
-- nach dem Upload strafft Codex zuerst das Audio und prüft anschließend Audio-Cues und Wortzeiten lokal
+- Voice-Script, Caption, Cover- und Untertitelplan vorhanden
+- Bilder direkt in die passenden Szenenordner legen
+- Voice-over in den Audioordner legen
 `;
 
   await writeFile(path.join(productionDirectory, 'agent-task.md'), `${brief}\n`, 'utf8');
