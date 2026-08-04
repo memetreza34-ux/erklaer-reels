@@ -1,0 +1,18 @@
+{
+  "reelId": "reel-01_sozialismus-einfach-erklaert",
+  "title": "Sozialismus einfach erklärt",
+  "topicArea": "Politik und Gesellschaft",
+  "date": "2026-08-04",
+  "language": "de",
+  "promptLanguage": "en",
+  "aspectRatio": "9:16",
+  "targetDurationSeconds": 47.5,
+  "sceneCount": 10,
+  "visualStyleId": "human-editorial-cartoon",
+  "visualStyleReason": "Ein erwachsener handgezeichneter 2D-Editorial-Cartoon mit klaren menschlichen Figuren und visuellen Metaphern erklärt Eigentum, Kontrolle und politische Strömungen neutral und leicht verständlich.",
+  "subtitlesEnabled": true,
+  "motionEffectsEnabled": true,
+  "soundEffectsEnabled": true,
+  "backgroundMusicEnabled": false,
+  "status": "content-ready"
+}
