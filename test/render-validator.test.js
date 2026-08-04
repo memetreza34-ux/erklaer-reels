@@ -22,11 +22,18 @@ async function createReadyFixture() {
   await writeFile(path.join(root, 'audio', 'voiceover-tight.m4a'), 'dummy audio');
   await writeFile(path.join(root, 'scenes', 'scene-01', 'scene-01.png'), 'dummy image');
   await writeJson(path.join(root, 'review', 'audio-pacing-report.json'), {
+    version: 3,
     createdAt: new Date().toISOString(),
     passed: true,
     beforeSeconds: 2.4,
     afterSeconds: 2,
-    playbackRate: 1.05
+    playbackRate: 1.1,
+    loudnessNormalized: true,
+    loudnessSettings: {
+      loudnessTargetLufs: -16,
+      truePeakDbtp: -1.5,
+      loudnessRangeLra: 11
+    }
   });
   await writeJson(path.join(root, 'review', 'final-readiness-report.json'), {
     readyForRenderer: true
@@ -81,11 +88,25 @@ async function createReadyFixture() {
   return root;
 }
 
-test('akzeptiert weißen Untertitel ohne Box bei 76 Prozent', async () => {
+test('akzeptiert 1.10x, -16 LUFS und weißen Untertitel ohne Box', async () => {
   const root = await createReadyFixture();
   const report = await validateRendererInput(root);
   assert.equal(report.passed, true);
   assert.equal(report.summary.failedChecks, 0);
+});
+
+test('blockiert altes 1.05x-Pacing oder fehlende Lautheitsnormalisierung', async () => {
+  const root = await createReadyFixture();
+  const reportPath = path.join(root, 'review', 'audio-pacing-report.json');
+  const pacing = await readJson(reportPath);
+  pacing.playbackRate = 1.05;
+  pacing.loudnessNormalized = false;
+  await writeJson(reportPath, pacing);
+
+  const report = await validateRendererInput(root);
+  assert.equal(report.passed, false);
+  assert.ok(report.checks.some((check) => check.id === 'audio-playback-rate' && check.passed === false));
+  assert.ok(report.checks.some((check) => check.id === 'audio-loudness-normalized' && check.passed === false));
 });
 
 test('blockiert abweichende Position, Gelb und Hintergrundbox', async () => {
