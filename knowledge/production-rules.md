@@ -55,6 +55,21 @@ Die zentrale Quelle ist `src/shared/subtitle-style.js`.
 - integrierten Bildtext nicht wortgleich wiederholen
 - exakte Einzelwortzeiten sind ohne Wort-Highlight nicht erforderlich
 
+## Audio
+
+Die zentrale Quelle ist `src/shared/audio-pacing-style.js`.
+
+- Voice-over immer von der ursprünglichen Datei verarbeiten
+- Pausen ab ungefähr 0,24 Sekunden kürzen
+- kurze natürliche Restpause behalten
+- Geschwindigkeit exakt `1.10x`
+- Tonhöhe erhalten
+- integrierte Lautheit auf `-16 LUFS` normalisieren
+- True Peak auf `-1,5 dBTP` begrenzen
+- Lautheitsbereich `11 LRA`
+- bereits optimiertes Audio niemals erneut beschleunigen
+- nach jeder Audioänderung Timeline, Szenen-Cues und Untertitel-Cues neu synchronisieren
+
 ## Bewegung, Übergänge und Sound
 
 - Planung in `effects/effects-plan.json`
@@ -91,6 +106,8 @@ Vor der Freigabe prüfen:
 - Stehen Untertitel exakt bei 76 % Bildhöhe?
 - Sind alle Wörter weiß, ohne gelbe Markierung und ohne schwarze Box?
 - Bleiben Untertitel durch Kontur und Schatten lesbar?
+- Ist das Voice-over exakt auf `1.10x` verarbeitet?
+- Sind `-16 LUFS` und `-1,5 dBTP` eingestellt?
 - Sind Zooms und Schwenks dezent und begründet?
 - Werden ausschließlich direkte harte Schnitte verwendet?
 - Ist das Cover auf kleiner Ansicht lesbar?

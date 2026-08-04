@@ -127,21 +127,30 @@ Verbindlich:
 
 ## Audio
 
+Zentrale technische Quelle:
+
+```text
+src/shared/audio-pacing-style.js
+```
+
 Vor der Timeline:
 
 ```bash
-npm run trim:pauses -- --dir "<reel-ordner>"
+npm run trim:pauses -- --dir "<reel-ordner>" --speed 1.10
 ```
 
 Standard:
 
+- immer von der ursprünglichen Voice-over-Datei starten
 - Pausen ab ungefähr 0,24 Sekunden straffen
 - kurze natürliche Restpause behalten
-- ungefähr `1.05x`
+- Geschwindigkeit exakt `1.10x`
 - Tonhöhe erhalten
-- nicht hektisch oder künstlich klingen
+- auf `-16 LUFS` normalisieren
+- True Peak auf `-1,5 dBTP` begrenzen
+- nicht dieselbe bereits optimierte Datei erneut beschleunigen
 
-Danach Timeline und Audio-Cues neu synchronisieren.
+Danach Timeline, Szenen-Cues und Untertitel-Cues neu synchronisieren.
 
 ## Übergänge, Bewegung und Sounds
 
@@ -199,7 +208,7 @@ npm run validate:render -- --dir "<reel-ordner>"
 npm run render:reel -- --dir "<reel-ordner>"
 ```
 
-Ein Reel darf nur gerendert werden, wenn Inhalt, Audio-Pacing, Audio-Sync, visuelle Prüfung und Renderer-Eingabe bestanden sind. Keine simulierte oder geplante Stufe als abgeschlossen bezeichnen.
+Ein Reel darf nur gerendert werden, wenn Inhalt, Audio-Pacing bei exakt 1.10x, Lautheitsnormalisierung, Audio-Sync, visuelle Prüfung und Renderer-Eingabe bestanden sind. Keine simulierte oder geplante Stufe als abgeschlossen bezeichnen.
 
 ## Technische Regeln
 

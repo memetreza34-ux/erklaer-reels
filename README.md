@@ -20,7 +20,8 @@ Aus einem Thema oder Rohscript entsteht ein vollständiges Reel mit:
 - 8–12 Bildmomenten
 - englischen Bildprompts
 - natürlicher, zusammenhängender Bildkomposition
-- gestrafftem und leicht beschleunigtem Voice-over
+- auf exakt `1.10x` beschleunigtem Voice-over mit erhaltener Tonhöhe
+- automatischer Lautheitsnormalisierung auf `-16 LUFS` und `-1,5 dBTP`
 - weißen Untertiteln ohne Box und ohne gelbe Wortmarkierung
 - direkten harten Schnitten
 - dezenten Zooms, Schwenks und Soundeffekten
@@ -55,8 +56,12 @@ Aus einem Thema oder Rohscript entsteht ein vollständiges Reel mit:
 
 ### Audio und Schnitt
 
-- Voice-over vor der Timeline mit `trim:pauses` straffen
-- Standardtempo ungefähr `1.05x`, Tonhöhe erhalten
+- Voice-over vor der Timeline mit `trim:pauses` verarbeiten
+- Geschwindigkeit exakt `1.10x`, Tonhöhe erhalten
+- Pausen ab ungefähr 0,24 Sekunden kürzen
+- Lautheit auf `-16 LUFS` normalisieren
+- True Peak auf `-1,5 dBTP` begrenzen
+- immer von der ursprünglichen Voice-over-Datei starten
 - Hook ohne Übergang
 - danach ausschließlich `cut` mit Dauer 0
 - keine Fades, Schwarzblenden oder schwarzen Zwischenframes
@@ -121,12 +126,12 @@ audio/voiceover.mp3
 ## Audio und Timeline
 
 ```bash
-npm run trim:pauses -- --dir "PFAD-ZUM-REEL"
+npm run trim:pauses -- --dir "PFAD-ZUM-REEL" --speed 1.10
 npm run build:timeline -- --dir "PFAD-ZUM-REEL"
 npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
 ```
 
-Für jede Szene wird der echte Zeitpunkt des gesprochenen `audioCue` in `timeline/audio-sync.json` eingetragen.
+`trim:pauses` kürzt Pausen, beschleunigt auf `1.10x`, erhält die Tonhöhe und normalisiert die Lautheit. Für jede Szene wird anschließend der echte Zeitpunkt des gesprochenen `audioCue` in `timeline/audio-sync.json` eingetragen.
 
 ## Visuelle Prüfung
 
@@ -154,6 +159,8 @@ npm run validate:render -- --dir "PFAD-ZUM-REEL"
 npm run render:reel -- --dir "PFAD-ZUM-REEL"
 ```
 
+Die strenge Freigabe blockiert altes `1.05x`-Audio, fehlende Lautheitsnormalisierung, falsche Untertitelwerte oder nicht geprüfte Bilder.
+
 Standardausgabe:
 
 ```text
@@ -172,9 +179,10 @@ PFAD-ZUM-REEL/output/REEL-ID.mp4
 - `AGENTS.md` – verbindliche Agent-Regeln
 - `CODEX_TASK.md` – vollständiger Produktionsablauf
 - `knowledge/production-rules.md` – kreative und technische Produktionsregeln
-- `config/content-rules.json` – zentrale Inhalts- und Untertitelregeln
+- `config/content-rules.json` – zentrale Inhalts-, Untertitel- und Audio-Regeln
 - `config/visual-quality-rules.json` – visuelle Abnahmekriterien
 - `src/shared/subtitle-style.js` – zentraler Untertitelstil
+- `src/shared/audio-pacing-style.js` – zentrale Tempo- und Lautheitswerte
 - `src/renderer/ReelComposition.jsx` – Remotion-Komposition
 
 ## Noch nicht enthalten

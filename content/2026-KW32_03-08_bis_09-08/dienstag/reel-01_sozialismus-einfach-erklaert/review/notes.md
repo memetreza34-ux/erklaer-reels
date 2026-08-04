@@ -6,7 +6,7 @@
 
 - Hook startet sofort und nennt das Thema verständlich.
 - Sprechertext ist neutral, logisch aufgebaut und leicht verständlich.
-- Bildwechsel und Gesamttempo funktionieren überwiegend gut.
+- Bildwechsel und Grundtempo funktionieren überwiegend gut.
 - Der einheitliche handgezeichnete Editorial-Stil passt zum Kanal.
 - Voice-over ist klar und bereits relativ straff geschnitten.
 
@@ -32,8 +32,13 @@
 
 4. Alle übrigen Szenen vor dem Render visuell prüfen. Auch dort darf kein künstlicher Mittelstreifen oder zufälliger lesbarer Text vorkommen.
 
-5. Audio beim finalen Export etwas anheben. Zielbereich für Social Media: ungefähr `-16 LUFS` integrierte Lautheit und höchstens ungefähr `-1,5 dBTP` True Peak.
+5. Audio für Version 2 vollständig neu verarbeiten:
+   - Geschwindigkeit exakt `1.10x`
+   - Tonhöhe erhalten
+   - Ziellautheit `-16 LUFS`
+   - True Peak `-1,5 dBTP`
+   - stets von der ursprünglichen Audiodatei starten, damit die Geschwindigkeit nicht doppelt angewendet wird
 
 ## Freigabe
 
-Die inhaltliche Grundlage ist gut. Version 1 ist wegen Untertitelgestaltung, unerwünschter Bildtexte und einzelner unnatürlicher Kompositionen noch nicht final freigegeben.
+Die inhaltliche Grundlage ist gut. Version 1 ist wegen Untertitelgestaltung, unerwünschter Bildtexte, einzelner unnatürlicher Kompositionen und des alten Audioexports noch nicht final freigegeben.

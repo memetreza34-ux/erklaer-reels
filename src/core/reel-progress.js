@@ -1,6 +1,11 @@
 import { access, readFile } from 'node:fs/promises';
 import path from 'node:path';
 
+import {
+  AUDIO_PACING_STYLE,
+  isTargetPlaybackRate
+} from '../shared/audio-pacing-style.js';
+
 async function exists(filePath) {
   try {
     await access(filePath);
@@ -108,17 +113,24 @@ export async function calculateReelProgress(reelDirectory) {
 
   const audioPacingCreated = Boolean(audioPacingReport?.createdAt);
   const audioPacingRate = Number(audioPacingReport?.playbackRate ?? 0);
-  const audioPacingRateSafe = audioPacingRate >= 1.03 && audioPacingRate <= 1.07;
+  const audioPacingRateSafe = isTargetPlaybackRate(audioPacingRate);
+  const audioLoudnessNormalized = audioPacingReport?.loudnessNormalized === true;
+  const audioLoudnessTargetSafe = Number(audioPacingReport?.loudnessSettings?.loudnessTargetLufs) === AUDIO_PACING_STYLE.loudnessTargetLufs;
+  const audioTruePeakSafe = Number(audioPacingReport?.loudnessSettings?.truePeakDbtp) === AUDIO_PACING_STYLE.truePeakDbtp;
   const audioPacingDurationReduced = Number(audioPacingReport?.afterSeconds) > 0 &&
     Number(audioPacingReport?.afterSeconds) < Number(audioPacingReport?.beforeSeconds);
   const audioPacingPassed = audioPacingReport?.passed === true &&
     audioPacingRateSafe &&
+    audioLoudnessNormalized &&
+    audioLoudnessTargetSafe &&
+    audioTruePeakSafe &&
     audioPacingDurationReduced;
   const audioPacing = clamp(
-    (audioPacingCreated ? 20 : 0) +
-    (audioPacingReport?.passed === true ? 30 : 0) +
+    (audioPacingCreated ? 15 : 0) +
+    (audioPacingReport?.passed === true ? 20 : 0) +
     (audioPacingRateSafe ? 25 : 0) +
-    (audioPacingDurationReduced ? 25 : 0)
+    (audioLoudnessNormalized && audioLoudnessTargetSafe && audioTruePeakSafe ? 20 : 0) +
+    (audioPacingDurationReduced ? 20 : 0)
   );
 
   const timelineBuilt = Boolean(timeline);
@@ -189,7 +201,7 @@ export async function calculateReelProgress(reelDirectory) {
   } else if (assets < 100) {
     nextStep = 'Voice-over und Bilder direkt in die vorgesehenen Audio-, Cover- und Szenenordner legen und prüfen.';
   } else if (audioPacing < 100) {
-    nextStep = 'Mit trim:pauses lange Pausen kürzen und das Voice-over leicht beschleunigen.';
+    nextStep = `Mit trim:pauses das Voice-over auf ${AUDIO_PACING_STYLE.playbackRate.toFixed(2)}x beschleunigen, Pausen kürzen und auf ${AUDIO_PACING_STYLE.loudnessTargetLufs} LUFS normalisieren.`;
   } else if (timelineProgress < 100) {
     nextStep = 'Master-Timeline mit dem optimierten Audio erzeugen, echte Audio-Cues eintragen und sync:audio streng ausführen.';
   } else if (wordSyncRequired && wordSync < 100) {
@@ -232,6 +244,10 @@ export async function calculateReelProgress(reelDirectory) {
       audioPacingCreated,
       audioPacingPassed,
       audioPacingRate,
+      audioPacingRateSafe,
+      audioLoudnessNormalized,
+      audioLoudnessTargetSafe,
+      audioTruePeakSafe,
       audioPacingDurationReduced,
       timelineBuilt,
       audioDurationKnown,

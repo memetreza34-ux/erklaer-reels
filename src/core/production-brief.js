@@ -2,6 +2,7 @@ import { access, mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
 import { SUBTITLE_STYLE } from '../shared/subtitle-style.js';
+import { AUDIO_PACING_STYLE } from '../shared/audio-pacing-style.js';
 
 async function exists(filePath) {
   try {
@@ -36,7 +37,7 @@ export async function prepareReelProduction(reelDirectory) {
   await mkdir(productionDirectory, { recursive: true });
 
   const checklist = {
-    version: 10,
+    version: 11,
     reelId: reel.reelId,
     title: reel.title,
     createdAt: new Date().toISOString(),
@@ -76,7 +77,8 @@ Erstelle aus dem deutschen Rohscript ein vollständiges Produktionspaket. Bilder
 - Wortmarkierung: **ausgeschaltet**
 - Hintergrundbox: **keine, ${SUBTITLE_STYLE.backgroundColor}**
 - Übergänge: **Hook ohne Übergang, danach nur harte Schnitte**
-- Audio-Pacing: **Pausen kürzen und ungefähr 1.05x**
+- Audio-Pacing: **Pausen kürzen und exakt ${AUDIO_PACING_STYLE.playbackRate.toFixed(2)}x**
+- Lautheit: **${AUDIO_PACING_STYLE.loudnessTargetLufs} LUFS, höchstens ${AUDIO_PACING_STYLE.truePeakDbtp} dBTP**
 - Hintergrundmusik: **aus**
 
 ## Rohscript
@@ -154,7 +156,7 @@ audio/<voiceover-datei>
 Danach:
 
 \`\`\`bash
-npm run trim:pauses -- --dir "${normalizedDirectory}"
+npm run trim:pauses -- --dir "${normalizedDirectory}" --speed ${AUDIO_PACING_STYLE.playbackRate.toFixed(2)}
 npm run build:timeline -- --dir "${normalizedDirectory}"
 npm run sync:audio -- --dir "${normalizedDirectory}" --strict
 npm run check:visuals -- --dir "${normalizedDirectory}" --strict
@@ -162,6 +164,8 @@ npm run finalize:reel -- --dir "${normalizedDirectory}" --strict
 npm run validate:render -- --dir "${normalizedDirectory}"
 npm run render:reel -- --dir "${normalizedDirectory}"
 \`\`\`
+
+\`trim:pauses\` kürzt Pausen, beschleunigt auf exakt ${AUDIO_PACING_STYLE.playbackRate.toFixed(2)}x, erhält die Tonhöhe und normalisiert auf ${AUDIO_PACING_STYLE.loudnessTargetLufs} LUFS bei ${AUDIO_PACING_STYLE.truePeakDbtp} dBTP.
 
 \`sync:words\` ist ohne Wort-Highlight nicht erforderlich.
 
