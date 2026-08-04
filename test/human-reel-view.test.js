@@ -18,7 +18,8 @@ async function createMinimalReel() {
     'inbox/images',
     'production',
     'review',
-    'scenes',
+    'scenes/scene-01',
+    'scenes/scene-02',
     'script',
     'sources',
     'subtitles'
@@ -29,10 +30,15 @@ async function createMinimalReel() {
   await writeFile(path.join(reelDirectory, 'status.json'), '{}\n', 'utf8');
   await writeFile(path.join(reelDirectory, 'assets-manifest.json'), '{}\n', 'utf8');
   await writeFile(path.join(reelDirectory, 'cover', 'cover-prompt.txt'), 'Cover prompt\n', 'utf8');
+  await writeFile(path.join(reelDirectory, 'cover', 'cover.json'), '{}\n', 'utf8');
   await writeFile(path.join(reelDirectory, 'script', 'voice-script.txt'), 'Voice script\n', 'utf8');
   await writeFile(path.join(reelDirectory, 'all-image-prompts', 'all-image-prompts.txt'), 'Prompts\n', 'utf8');
   await writeFile(path.join(reelDirectory, 'caption', 'caption.txt'), 'Caption\n', 'utf8');
   await writeFile(path.join(reelDirectory, 'sources', 'sources.md'), '# Quellen\n', 'utf8');
+  await writeFile(path.join(reelDirectory, 'scenes', 'scene-01', 'image-prompt.txt'), 'Prompt 1\n', 'utf8');
+  await writeFile(path.join(reelDirectory, 'scenes', 'scene-01', 'scene.json'), '{}\n', 'utf8');
+  await writeFile(path.join(reelDirectory, 'scenes', 'scene-02', 'image-prompt.txt'), 'Prompt 2\n', 'utf8');
+  await writeFile(path.join(reelDirectory, 'scenes', 'scene-02', 'scene.json'), '{}\n', 'utf8');
 
   return reelDirectory;
 }
@@ -47,15 +53,18 @@ test('erstellt sechs klar nummerierte Benutzerordner', async () => {
   }
 });
 
-test('legt Cover und Szenen gemeinsam unter Bildprompts ab', async () => {
+test('ordnet Cover und jedes Szenenbild direkt dem passenden Ordner zu', async () => {
   const reelDirectory = await createMinimalReel();
   await ensureHumanReelView(reelDirectory);
   await ensureHumanReelView(reelDirectory);
 
-  assert.equal(await readlink(path.join(reelDirectory, '00-bildprompts', '00-cover-prompt.txt')), '../cover/cover-prompt.txt');
-  assert.equal(await readlink(path.join(reelDirectory, '00-bildprompts', '01-alle-bildprompts.txt')), '../all-image-prompts/all-image-prompts.txt');
-  assert.equal(await readlink(path.join(reelDirectory, '00-bildprompts', 'EINZELNE-SZENEN')), '../scenes');
-  assert.equal(await readlink(path.join(reelDirectory, '00-bildprompts', 'BILDER-HIER-EINFUEGEN')), '../inbox/images');
+  assert.equal(await readlink(path.join(reelDirectory, '00-bildprompts', '00-cover')), '../cover');
+  assert.equal(await readlink(path.join(reelDirectory, '00-bildprompts', '01-scene-01')), '../scenes/scene-01');
+  assert.equal(await readlink(path.join(reelDirectory, '00-bildprompts', '02-scene-02')), '../scenes/scene-02');
+  assert.equal(await readlink(path.join(reelDirectory, '00-bildprompts', '99-alle-bildprompts.txt')), '../all-image-prompts/all-image-prompts.txt');
+
+  await writeFile(path.join(reelDirectory, '00-bildprompts', '01-scene-01', 'scene-01.png'), 'bild-1', 'utf8');
+  assert.equal(await readFile(path.join(reelDirectory, 'scenes', 'scene-01', 'scene-01.png'), 'utf8'), 'bild-1');
 });
 
 test('sammelt unwichtige Dateien im Technikordner', async () => {
