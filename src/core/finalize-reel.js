@@ -6,6 +6,10 @@ import { buildMasterTimeline } from './timeline.js';
 import { runVisualQualityCheck } from './visual-qc.js';
 import { calculateReelProgress } from './reel-progress.js';
 import { validateExactWordTimings } from '../renderer/subtitle-timing.js';
+import {
+  AUDIO_PACING_STYLE,
+  isTargetPlaybackRate
+} from '../shared/audio-pacing-style.js';
 
 async function readJson(filePath, fallback = {}) {
   try {
@@ -32,6 +36,8 @@ function issuesFrom(report, level) {
 
 function audioPacingStage(report, strict) {
   const rate = Number(report?.playbackRate);
+  const loudnessTarget = Number(report?.loudnessSettings?.loudnessTargetLufs);
+  const truePeak = Number(report?.loudnessSettings?.truePeakDbtp);
   const checks = [
     {
       id: 'audio-pacing-report-present',
@@ -47,9 +53,27 @@ function audioPacingStage(report, strict) {
     },
     {
       id: 'audio-pacing-rate',
-      passed: Number.isFinite(rate) && rate >= 1.03 && rate <= 1.07,
+      passed: isTargetPlaybackRate(rate),
       level: strict ? 'error' : 'warning',
-      message: 'Das Voice-over soll leicht beschleunigt sein; Zielwert ist ungefähr 1.05x.'
+      message: `Das Voice-over muss mit exakt ${AUDIO_PACING_STYLE.playbackRate.toFixed(2)}x verarbeitet werden.`
+    },
+    {
+      id: 'audio-pacing-loudness-normalized',
+      passed: report?.loudnessNormalized === true,
+      level: strict ? 'error' : 'warning',
+      message: 'Das Voice-over muss für Social Media lautheitsnormalisiert werden.'
+    },
+    {
+      id: 'audio-pacing-lufs-target',
+      passed: loudnessTarget === AUDIO_PACING_STYLE.loudnessTargetLufs,
+      level: strict ? 'error' : 'warning',
+      message: `Die Ziellautheit muss ${AUDIO_PACING_STYLE.loudnessTargetLufs} LUFS betragen.`
+    },
+    {
+      id: 'audio-pacing-true-peak',
+      passed: truePeak === AUDIO_PACING_STYLE.truePeakDbtp,
+      level: strict ? 'error' : 'warning',
+      message: `Der True-Peak-Zielwert muss ${AUDIO_PACING_STYLE.truePeakDbtp} dBTP betragen.`
     },
     {
       id: 'audio-pacing-duration-reduced',
@@ -64,6 +88,8 @@ function audioPacingStage(report, strict) {
     passed: errors.length === 0 && checks.every((check) => check.passed),
     strict,
     playbackRate: Number.isFinite(rate) ? rate : null,
+    loudnessTargetLufs: Number.isFinite(loudnessTarget) ? loudnessTarget : null,
+    truePeakDbtp: Number.isFinite(truePeak) ? truePeak : null,
     beforeSeconds: Number(report?.beforeSeconds) || null,
     afterSeconds: Number(report?.afterSeconds) || null,
     reportFile: 'review/audio-pacing-report.json',
@@ -148,6 +174,8 @@ export async function finalizeReel(reelDirectory, {
     passed: pacing.passed,
     strict,
     playbackRate: pacing.playbackRate,
+    loudnessTargetLufs: pacing.loudnessTargetLufs,
+    truePeakDbtp: pacing.truePeakDbtp,
     beforeSeconds: pacing.beforeSeconds,
     afterSeconds: pacing.afterSeconds,
     reportFile: pacing.reportFile,
@@ -232,7 +260,7 @@ export async function finalizeReel(reelDirectory, {
 
   const normalizedDirectory = reelDirectory.split(path.sep).join('/');
   const report = {
-    version: 6,
+    version: 7,
     createdAt,
     reelDirectory: normalizedDirectory,
     strict,
@@ -244,7 +272,7 @@ export async function finalizeReel(reelDirectory, {
     nextStep: readyForRenderer
       ? `Renderer prüfen und MP4 erzeugen: npm run validate:render -- --dir "${normalizedDirectory}" && npm run render:reel -- --dir "${normalizedDirectory}"`
       : stages.audioPacing?.passed !== true
-        ? `Voice-over straffen: npm run trim:pauses -- --dir "${normalizedDirectory}"; danach Timeline und Audio-Cues neu synchronisieren.`
+        ? `Voice-over mit ${AUDIO_PACING_STYLE.playbackRate.toFixed(2)}x und Lautheitsnormalisierung neu erzeugen: npm run trim:pauses -- --dir "${normalizedDirectory}"; danach Timeline und Audio-Cues neu synchronisieren.`
         : progress.nextStep
   };
 
