@@ -6,12 +6,14 @@ Der Renderer erzeugt aus `render/render-plan.json` eine fertige MP4 mit Szenenbi
 
 ```bash
 npm install
-npm run trim:pauses -- --dir "PFAD-ZUM-REEL"
+npm run trim:pauses -- --dir "PFAD-ZUM-REEL" --speed 1.10
 npm run build:timeline -- --dir "PFAD-ZUM-REEL"
 npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
 npm run check:visuals -- --dir "PFAD-ZUM-REEL" --strict
 npm run finalize:reel -- --dir "PFAD-ZUM-REEL" --strict
 ```
+
+`trim:pauses` verarbeitet immer die ursprüngliche Voice-over-Datei, beschleunigt sie auf exakt `1.10x`, erhält die Tonhöhe und normalisiert auf `-16 LUFS` bei `-1,5 dBTP`.
 
 `review/final-readiness-report.json` muss `readyForRenderer: true` enthalten und `render/render-plan.json` den Status `ready-for-renderer` besitzen.
 
@@ -56,6 +58,10 @@ Geprüft werden:
 - lückenlose Szenenframes
 - direkte Schnitte mit Dauer 0
 - bestandener Audio-Pacing-Bericht
+- Geschwindigkeit exakt `1.10x`
+- Lautheitsnormalisierung aktiviert
+- Zielwert `-16 LUFS`
+- True Peak `-1,5 dBTP`
 - vorhandene Bilder und Voice-over-Datei
 - sichere lokale Pfade
 - zulässige Zoom- und Schwenkwerte
@@ -94,12 +100,12 @@ Optionen:
 --force
 ```
 
-`--force` überspringt nur die finale Freigabeprüfung. Fehlende Assets, unsichere Pfade, ungültige Framedaten, falsche Untertitelwerte oder verbotene Übergänge bleiben Fehler.
+`--force` überspringt nur die finale Freigabeprüfung. Fehlende Assets, unsichere Pfade, ungültige Framedaten, falsche Audio- oder Untertitelwerte und verbotene Übergänge bleiben Fehler.
 
 ## Gerenderte Bestandteile
 
 - Szenenbilder aus dem Render-Plan
-- gestrafftes Voice-over
+- auf `1.10x` beschleunigtes und lautheitsnormalisiertes Voice-over
 - weiße Untertitel unten mit Kontur und Schatten
 - keine Untertitelbox
 - keine gelbe Wortanimation
