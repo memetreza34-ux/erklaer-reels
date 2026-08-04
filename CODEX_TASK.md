@@ -1,17 +1,13 @@
 # Codex-Hauptauftrag
 
-Dieses Repository produziert vollständige visuelle Erklär-Reels. Der Nutzer erzeugt Voice-over und Bilder extern. Codex übernimmt Planung, Prompt-Sammlung, Asset-Zuordnung, Audio-Pacing, lokale Audio-Prüfung, Synchronisierung, Qualitätsprüfung und den abschließenden Remotion-Render.
+Dieses Repository produziert vollständige visuelle Erklär-Reels. Der Nutzer erzeugt Voice-over und Bilder extern. Codex übernimmt Planung, Prompt-Sammlung, Prüfung, Audio-Pacing, Synchronisierung und Remotion-Render.
 
 ## 1. Neues Reel vorbereiten
 
-Wenn nur ein Thema vorliegt, schreibe zuerst ein einfaches deutsches Voice-over-Script mit genau einem Erzähler.
-
-Bildanzahl:
+Bei einem Thema zuerst ein einfaches deutsches Voice-over-Script mit genau einem Erzähler schreiben.
 
 - 35–44 Sekunden: normalerweise 8–10 Bildmomente
 - 45–55 Sekunden: normalerweise 10–12 Bildmomente
-
-Reel anlegen:
 
 ```bash
 npm run create:reel -- \
@@ -23,7 +19,7 @@ npm run create:reel -- \
 
 Danach `production/agent-task.md` vollständig bearbeiten.
 
-Verbindliche Dateien:
+Pflichtdateien:
 
 - `script/final-script.txt`
 - `script/voice-script.txt`
@@ -34,278 +30,157 @@ Verbindliche Dateien:
 - `all-image-prompts/all-image-prompts.txt`
 - `subtitles/subtitle-plan.json`
 - `effects/effects-plan.json`
-- `cover/cover.json`
-- `cover/cover-prompt.txt`
-- `caption/caption.txt`
-- `sources/sources.md`
-
-Nach dem Schreiben der Szenenprompts:
+- Cover, Caption und Quellen
 
 ```bash
 npm run export:prompts -- --dir "PFAD-ZUM-REEL" --strict
-```
-
-Inhalt prüfen:
-
-```bash
 npm run validate:reel -- --dir "PFAD-ZUM-REEL"
 npm run check:content -- --dir "PFAD-ZUM-REEL" --strict
 ```
 
-Fehler vollständig beheben, bevor der Nutzer Bilder und Voice-over erzeugt.
-
-## 2. Kreative Pflichtregeln
+## 2. Kreative Regeln
 
 - bevorzugter Einstieg: `THEMA einfach erklärt:`
-- Thema möglichst sofort nennen und direkt erklären
+- Thema sofort nennen und direkt erklären
 - Hook-Bild ab Sekunde 0
 - keine schulische Einleitung
-- ungefähr alle 3,5–5 Sekunden eine sichtbare Veränderung
-- einfache Bilder dürfen kürzer stehen
+- ungefähr alle 3,5–5 Sekunden sichtbare Veränderung
 - konsistente Bildwelt innerhalb eines Reels
-- Bildprompts Englisch, sichtbarer Bildtext Deutsch
 - politische Inhalte neutral
 - Quellen und Unsicherheiten dokumentieren
 
 Jede Szene benötigt `audioCue`, `leadInSeconds`, `subtitleCues`, `subtitlePosition` und `durationSeconds`.
 
-Das Bild beginnt normalerweise 0,1–0,3 Sekunden vor dem gesprochenen `audioCue`.
+## 3. Bildprompts und Komposition
 
-## 3. Untertitel
+Bildprompts sind Englisch. Sichtbarer Bildtext ist nur erlaubt, wenn er ausdrücklich nötig ist, und dann ausschließlich korrekt auf Deutsch.
 
-Die einzige technische Quelle für Position und Farben ist `src/shared/subtitle-style.js`.
+Verboten:
 
-Verbindlich:
+- unerwünschte englische Wörter oder Fantasietext
+- Logos und Wasserzeichen
+- künstlich leerer horizontaler Mittelstreifen
+- voneinander getrennte obere und untere Bildhälfte nur wegen Untertiteln
+- riesige leere Baumstämme, Pfeile oder Flächen als Textplatzhalter
+- Comicraster, wenn eine einheitliche Szene verlangt wird
 
-- standardmäßig aktiv
-- Position `center`
-- vertikale Position exakt 50 %
-- erlaubter Bereich exakt 50–50 %
-- keine Positionsverschiebung bei visuellen Kollisionen
-- Bildkomposition stattdessen so planen, dass die feste Mitte frei bleibt
+Pflicht:
+
+- natürliche zusammenhängende Komposition
+- Hauptmotiv darf die Bildmitte nutzen
+- Vergleiche möglichst seitlich oder in einer verbundenen Szene
+- nur kleine wichtige Details nicht direkt hinter dem unteren Untertitelbereich platzieren
+
+## 4. Untertitel
+
+Zentrale Quelle: `src/shared/subtitle-style.js`.
+
+- Position `lower`
+- vertikale Position exakt 76 %
+- alle Wörter in weichem Weiß `#F5F7FA`
+- keine gelbe Wortmarkierung
+- keine schwarze Hintergrundbox oder Balken
+- dunkle Kontur und Schatten
 - normalerweise 3–6 Wörter
 - höchstens zwei Zeilen
-- Bildtext nicht identisch wiederholen
-- normaler Text in weichem Weiß `#F5F7FA`
-- aktuell gesprochenes Wort in Warmgelb `#FFD84D`
-- dunkle halbtransparente Hintergrundbox `rgba(0, 0, 0, 0.72)`
-- warmgelbe Markierung ausschließlich mit akustisch bestätigten Wortzeiten
-- ohne exakte Wortzeiten bleibt der komplette Cue in weichem Weiß
+- keine Wort-für-Wort-Karaoke-Animation
+- Einzelwort-Sync ist ohne Wort-Highlight nicht erforderlich
 
-Alte Angaben wie `safe-middle`, `lower-middle`, 64–72 %, 65–75 % oder 68 % sind ungültig.
+Der sichtbare Untertitel wird über Cue-Zeiten synchronisiert. `sync:words` ist für diesen Stil kein Pflichtschritt.
 
-Die finalen Wortzeiten werden nicht mathematisch geschätzt und nicht über Gemini erzeugt. Codex übernimmt die lokale Audio-Prüfung.
+## 5. Übergänge, Bewegung und Sound
 
-## 4. Zooms, direkte Schnitte und Sounds
-
-Lies `knowledge/effects-rules.md` und `config/effects-rules.json`.
-
-Pflichtregeln:
-
-- nicht jedes Bild bewegen
+- Hook: `none`, Dauer 0
+- danach nur `cut`, Dauer 0
+- keine Fades, Schwarzblenden, Slides, Glitches, Spins oder Flash-Übergänge
 - Zoom normalerweise 2–6 %, maximal 8 %
 - Schwenk maximal 4 %
-- Hook: `transitionIn.type: "none"`, Dauer 0
-- jede weitere Szene: `transitionIn.type: "cut"`, Dauer 0
-- keine Crossfades, Schwarzblenden, Dip-to-dark-, Slide-, Glitch-, Spin- oder Flash-Übergänge
-- kein schwarzes Zwischenbild
-- neues Bild ab dem ersten Schnittframe vollständig sichtbar
-- Voice-over hat Vorrang
+- nicht jedes Bild bewegen
 - Hintergrundmusik standardmäßig aus
 - null bis zwei dezente Soundeffekte pro Szene
-- Soundeffekt benötigt zum Rendern einen echten lokalen `file`-Pfad
+- Voice-over hat Vorrang
 
-## 5. Externe Dateien zurücknehmen
+## 6. Externe Dateien
 
-Bilder unsortiert nach `inbox/images/`, Voice-over nach `inbox/audio/`.
+Bevorzugte direkte Ablage:
 
-```bash
-npm run organize:assets -- --dir "PFAD-ZUM-REEL"
+```text
+scenes/scene-01/scene-01.png
+scenes/scene-02/scene-02.png
+...
+cover/cover.png
+audio/<voiceover-datei>
 ```
 
-Jedes Bild tatsächlich ansehen und mit Sprechertext, `imageText`, `visualIdea`, Prompt, Figuren, Objekten, Metaphern und Komposition vergleichen.
+In der sichtbaren Finder-Ansicht liegen diese Ziele unter `00-bildprompts` direkt beim jeweiligen Prompt.
 
-`inbox/asset-map.json` erstellen. Regeln:
+Jedes Bild tatsächlich ansehen und mit Sprechertext, Prompt, Metapher und Komposition vergleichen. Unter 0,75 Konfidenz nicht raten.
 
-- jede Quelle und jedes Ziel nur einmal
-- Cover getrennt behandeln
-- mindestens 0,75 Konfidenz
-- unter 0,75 nicht raten
-- `confidence` und `reason` angeben
-
-Zuordnung anwenden:
-
-```bash
-npm run organize:assets -- --dir "PFAD-ZUM-REEL" --apply
-```
-
-## 6. Voice-over-Pacing optimieren
-
-Vor der Timeline verpflichtend:
+## 7. Audio optimieren und synchronisieren
 
 ```bash
 npm run trim:pauses -- --dir "PFAD-ZUM-REEL"
-```
-
-Standardwirkung:
-
-- Pausen ab ungefähr 0,24 Sekunden werden deutlich gekürzt.
-- Nur eine kurze natürliche Restpause bleibt erhalten.
-- Das Voice-over wird mit ungefähr `1.05x` leicht beschleunigt.
-- Die Tonhöhe bleibt erhalten.
-
-Prüfe `review/audio-pacing-report.json`. Die Stufe muss bestanden sein. Nach jeder Änderung an der Audiodatei diesen Schritt erneut ausführen.
-
-## 7. Timeline und Audio synchronisieren
-
-Erst mit der optimierten Audiodatei:
-
-```bash
 npm run build:timeline -- --dir "PFAD-ZUM-REEL"
 ```
 
-Falls `ffprobe` fehlt:
+Standard:
 
-```bash
-npm run sync:audio -- --dir "PFAD-ZUM-REEL" --audio-duration 48.7
-```
+- Pausen ab ungefähr 0,24 Sekunden kürzen
+- kurze natürliche Restpause behalten
+- ungefähr `1.05x`
+- Tonhöhe erhalten
 
-Voice-over abhören. Für jede Szene den tatsächlichen Zeitpunkt von `audioCue` in `timeline/audio-sync.json` als `cueTimeSeconds` eintragen. Unsichere Zeiten nicht erfinden.
-
-Danach:
+In `timeline/audio-sync.json` für jede Szene den echten Zeitpunkt des gesprochenen `audioCue` eintragen.
 
 ```bash
 npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
 ```
 
-## 8. Wortzeiten durch Codex synchronisieren
-
-Zuerst vorbereiten:
-
-```bash
-npm run sync:words -- --dir "PFAD-ZUM-REEL"
-```
-
-Dadurch entstehen:
-
-- `subtitles/codex-word-sync.json`
-- `production/codex-word-sync-task.md`
-- `review/word-sync-report.json`
-
-Codex muss danach das optimierte lokale Voice-over vollständig anhören und in `subtitles/codex-word-sync.json` für jedes Wort eintragen:
-
-- absolute `startSeconds`
-- absolute `endSeconds`
-- `confidence` zwischen 0 und 1
-- `reviewed: true` erst nach akustischer Kontrolle
-
-Verboten:
-
-- Wörter gleichmäßig über die Satzdauer verteilen
-- Zeiten erfinden
-- das Audio an einen externen Transkriptionsdienst senden
-- einen externen API-Schlüssel für diesen Schritt verwenden
-
-Danach anwenden:
-
-```bash
-npm run sync:words -- \
-  --dir "PFAD-ZUM-REEL" \
-  --apply \
-  --strict
-```
-
-Prüfen:
-
-- `review/word-sync-report.json` enthält `passed: true`
-- mindestens 98 % Wortabdeckung
-- im strengen Lauf mindestens 0,85 Konfidenz pro Wort
-- jede Szene besitzt bestätigte Wörter
-- Cue-Text und Wortliste stimmen vollständig überein
-- `timingProvider` ist `codex-local-audio-review`
-- `position` ist `center`
-- `verticalPositionPercent` ist exakt 50
-- `safeVerticalRangePercent` ist exakt `{ "min": 50, "max": 50 }`
-- `textColor` ist `#F5F7FA`
-- `highlightColor` ist `#FFD84D`
-
-Nach Änderungen am Audio müssen Audio-Pacing, `sync:audio` und der Codex-Wort-Sync erneut ausgeführt werden.
-
-## 9. Visuelle Qualitätsprüfung
+## 8. Visuelle Qualitätsprüfung
 
 ```bash
 npm run check:visuals -- --dir "PFAD-ZUM-REEL"
 ```
 
-Danach jedes Szenenbild und Cover tatsächlich ansehen. `review/visual-inspection.json` vollständig ausfüllen.
-
-Prüfen:
+Jedes Bild und Cover ansehen. In `review/visual-inspection.json` prüfen:
 
 - 9:16 und ausreichende Auflösung
-- Hauptmotiv sicher positioniert
-- Text lesbar und fehlerfrei
-- feste Untertitelzone bei 50 % verdeckt keine Gesichter, Schlüsselsymbole oder wichtigen Bildtexte
-- weiches Weiß und Warmgelb bleiben auf der dunklen Box klar unterscheidbar
-- keine Kollision mit Plattform-Bedienelementen
+- natürliche zusammenhängende Komposition
+- kein leerer Mittelstreifen
+- keine künstlich getrennten Bildhälften
+- kein unerwünschter lesbarer Text oder englische Labels
+- Untertitel bei 76 % lesbar
+- weißer Text mit Kontur, ohne Gelb und ohne Box
 - Zoom und Schwenk schneiden nichts Wichtiges ab
 - Stil bleibt konsistent
-
-Strenge Abnahme:
 
 ```bash
 npm run check:visuals -- --dir "PFAD-ZUM-REEL" --strict
 ```
 
-## 10. Zentrale Abschlussprüfung
+## 9. Abschluss und Render
 
 ```bash
 npm run finalize:reel -- --dir "PFAD-ZUM-REEL" --strict
-```
-
-Nur weiterarbeiten, wenn:
-
-- `review/final-readiness-report.json` enthält `readyForRenderer: true`
-- Stufe `audioPacing` ist bestanden
-- Stufe `wordSync` ist bestanden
-- `render/render-plan.json` enthält `status: "ready-for-renderer"`
-
-## 11. Renderer prüfen und MP4 erzeugen
-
-```bash
 npm run validate:render -- --dir "PFAD-ZUM-REEL"
 npm run render:reel -- --dir "PFAD-ZUM-REEL"
 ```
 
-Die Renderer-Prüfung blockiert jeden Fade oder Übergang mit Dauer. Erlaubt sind ausschließlich `none` für die Hook und `cut` für die folgenden Szenen. Zusätzlich werden Untertitelposition und Farbpalette streng geprüft.
+Nur rendern, wenn:
+
+- Inhalt bestanden
+- Audio-Pacing bestanden
+- Audio-Cues synchronisiert
+- Wort-Highlight deaktiviert
+- Untertitel weiß, transparent und bei 76 %
+- visuelle Prüfung bestanden
+- alle Übergänge direkte Schnitte sind
+- `readyForRenderer: true`
 
 Standardausgabe:
 
 ```text
 PFAD-ZUM-REEL/output/REEL-ID.mp4
 ```
-
-Nach Erfolg prüfen:
-
-- `review/renderer-input-report.json`
-- `review/render-execution-report.json`
-- MP4-Datei
-- `status.json` enthält `render: "complete"`
-
-## Fertig bedeutet
-
-Das Reel ist erst vollständig fertig, wenn:
-
-- Inhaltsprüfung bestanden
-- Prompt-Sammeldatei aktuell
-- Assets korrekt zugeordnet
-- Audio-Pacing bestanden
-- Audio synchronisiert
-- Codex-Wortzeiten akustisch bestätigt und streng validiert
-- Untertitelposition und Farbpalette validiert
-- alle Szenen direkte harte Schnitte verwenden
-- visuelle Prüfung bestanden
-- Abschlussprüfung freigegeben
-- Renderer-Eingabe validiert
-- MP4 erfolgreich erzeugt
 
 Keine simulierte oder nur geplante Stufe als abgeschlossen bezeichnen.
