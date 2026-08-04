@@ -18,20 +18,20 @@ Verbindlicher Ablauf:
 1. Lies `docs/autonomous-reel.md` und `CODEX_TASK.md`.
 2. Führe `npm run next:slot -- --json` aus.
 3. Prüfe vorhandene Reel-Titel und Themen, damit keine Wiederholung entsteht.
-4. Wähle selbstständig ein passendes langfristiges Thema aus den erlaubten Themenbereichen.
-5. Schreibe selbstständig ein vollständiges deutsches Voice-over-Script mit genau einem Erzähler.
+4. Wähle selbstständig ein langfristiges Thema aus den erlaubten Themenbereichen.
+5. Schreibe ein vollständiges deutsches Voice-over-Script mit genau einem Erzähler.
 6. Erstelle den Reel-Ordner mit `npm run create:reel -- --next-free`.
-7. Bearbeite `production/agent-task.md` sofort vollständig.
-8. Erzeuge Script, Szenen, Bildprompts, Untertitelplan, Effektplan, Cover, Caption und Quellen.
+7. Bearbeite `production/agent-task.md` vollständig.
+8. Erzeuge Script, Szenen, Bildprompts, Prompt-Sammeldatei, Untertitelplan, Effektplan, Cover, Caption und Quellen.
 9. Führe `validate:reel` und `check:content --strict` aus und behebe alle Fehler.
 10. Halte erst an, wenn externe Bilder oder das Voice-over fehlen.
-11. Sind externe Assets bereits vorhanden, arbeite ohne Rückfrage bis zur fertigen MP4 weiter.
+11. Sind externe Assets vorhanden, arbeite ohne Rückfrage bis zur fertigen MP4 weiter.
 
 Ein bloßer Satz wie „Reel-Ordner erstellt“ ist keine vollständige Ausführung.
 
 ## Projektauftrag
 
-Dieses Repository produziert vollständige visuelle Erklär-Reels. Der Nutzer erzeugt Voice-over und Szenenbilder normalerweise außerhalb des Repositories. Codex übernimmt Planung, Qualitätsprüfung, Zuordnung, Audio-Pacing, lokale Audio-Prüfung, Synchronisierung und den abschließenden Remotion-Render.
+Dieses Repository produziert vollständige visuelle Erklär-Reels. Der Nutzer erzeugt Voice-over und Szenenbilder normalerweise außerhalb des Repositories. Codex übernimmt Planung, Qualitätsprüfung, Prompt-Sammlung, Zuordnung, Audio-Pacing, lokale Audio-Prüfung, Synchronisierung und den abschließenden Remotion-Render.
 
 ## Sprache
 
@@ -64,6 +64,24 @@ Nicht als eigene Content-Säulen verwenden:
 
 Politische Inhalte werden neutral erklärt. Unsicherheiten und umstrittene Aussagen müssen kenntlich gemacht und in `sources/sources.md` dokumentiert werden.
 
+## Hook
+
+Bevorzugter Einstieg:
+
+> **THEMA einfach erklärt:**
+
+Regeln:
+
+- Thema möglichst sofort nennen
+- einfache, erwachsene und neutrale Sprache
+- direkt mit der Erklärung beginnen
+- keine lange Einleitung
+- kein leerer Clickbait
+- Formulierungen wie „Heute erkläre ich dir …“ und „Hast du dich schon einmal gefragt …“ vermeiden
+- andere kurze Hooks nur einsetzen, wenn sie das konkrete Thema noch klarer eröffnen
+- Hook-Bild ab Sekunde 0 vollständig sichtbar
+- kein schwarzer Start
+
 ## Vollständiges Produktionspaket
 
 Vor dem externen Asset-Schritt müssen vorhanden und ausgefüllt sein:
@@ -72,12 +90,13 @@ Vor dem externen Asset-Schritt müssen vorhanden und ausgefüllt sein:
 2. 8–12 Bildmomente passend zur erwarteten Audiolänge
 3. eine konsistente Bildwelt innerhalb des Reels
 4. vollständige englische Bildprompts
-5. mittiger Untertitelplan mit fester Farbpalette
-6. Effektplan mit direkten Schnitten, Zooms, Schwenks und Soundeffekten
-7. Cover-Idee und Cover-Prompt
-8. Caption
-9. Quellen und Unsicherheiten
-10. bestandene strenge Inhaltsprüfung
+5. `all-image-prompts/all-image-prompts.txt` in chronologischer Reihenfolge
+6. exakt mittiger Untertitelplan mit fester Farbpalette
+7. Effektplan mit direkten Schnitten, Zooms, Schwenks und Soundeffekten
+8. Cover-Idee und Cover-Prompt
+9. Caption
+10. Quellen und Unsicherheiten
+11. bestandene strenge Inhaltsprüfung
 
 Nach Eingang der externen Assets kommen hinzu:
 
@@ -110,9 +129,6 @@ Regeln:
 
 - schwierige Inhalte einfach, direkt und visuell erklären
 - keine schulische Einleitung
-- mit klarer Frage, Widerspruch oder überraschender Beobachtung starten
-- Hook-Bild ab Sekunde 0 vollständig sichtbar
-- kein schwarzer Start
 - 35–44 Sekunden: normalerweise 8–10 Bildmomente
 - 45–55 Sekunden: normalerweise 10–12 Bildmomente
 - ungefähr alle 3,5–5 Sekunden sichtbare Veränderung
@@ -121,6 +137,28 @@ Regeln:
 - innerhalb eines Reels konsistente Bildwelt
 - zwischen Reels darf der Stil wechseln
 - Build-up nur bei echter schrittweiser Erklärung
+
+## Bildprompts
+
+Für jede Szene liegt der einzelne Prompt unter:
+
+```text
+scenes/scene-XX/image-prompt.txt
+```
+
+Nach dem Schreiben aller Szenenprompts muss zusätzlich ausgeführt werden:
+
+```bash
+npm run export:prompts -- --dir "<reel-ordner>" --strict
+```
+
+Die Sammeldatei liegt unter:
+
+```text
+all-image-prompts/all-image-prompts.txt
+```
+
+Sie enthält ausschließlich Szenenprompts, chronologisch als Szene 1, Szene 2 und so weiter. Der Cover-Prompt bleibt getrennt.
 
 ## Audio-Pacing
 
@@ -139,7 +177,7 @@ Verbindliche Standardwerte:
 - keine hörbar hektische oder künstliche Stimme erzeugen
 - `review/audio-pacing-report.json` prüfen
 
-Nach jeder Audio-Optimierung müssen Timeline, Audio-Cues und Codex-Wortzeiten vollständig neu synchronisiert werden. Eine finale Freigabe ohne bestandene Audio-Pacing-Stufe ist verboten.
+Nach jeder Audio-Optimierung müssen Timeline, Audio-Cues und Wortzeiten vollständig neu synchronisiert werden. Eine finale Freigabe ohne bestandene Audio-Pacing-Stufe ist verboten.
 
 ## Audio-Cues und Bildwechsel
 
@@ -153,21 +191,31 @@ Das neue Bild beginnt normalerweise 0,1–0,3 Sekunden vor dem zugehörigen gesp
 
 ## Untertitel
 
+Die einzige technische Quelle für Position und Farben ist:
+
+```text
+src/shared/subtitle-style.js
+```
+
+Verbindlich:
+
 - standardmäßig aktiv
 - Planung in `subtitles/subtitle-plan.json`
-- Position `safe-middle`
-- Standardhöhe 68 % der Bildhöhe
-- erlaubter Bereich 64–72 %
-- nicht exakt auf 50 %, weil dort häufig Gesichter und Hauptmotive liegen
+- Position `center`
+- vertikale Position exakt 50 % der Bildhöhe
+- erlaubter Bereich exakt 50–50 %
+- keine Positionsverschiebung bei visuellen Kollisionen
+- Bildkomposition stattdessen so planen, dass die feste Mitte frei bleibt
 - normalerweise 3–6 Wörter
 - höchstens zwei Zeilen
 - normaler Text in weichem Weiß `#F5F7FA`
 - aktuell gesprochenes Wort in Warmgelb `#FFD84D`
-- dunkle halbtransparente Hintergrundbox mit ungefähr 72 % Deckkraft
+- dunkle halbtransparente Hintergrundbox `rgba(0, 0, 0, 0.72)`
 - warmgelbe Markierung nur mit akustisch bestätigten Wortzeiten
 - ohne gültige Wortzeiten bleibt der Cue vollständig in weichem Weiß
 - keine gleichmäßige oder gewichtete Wortzeitschätzung
-- wichtige Gesichter, Bildtexte und Erklärmotive dürfen nicht verdeckt werden; innerhalb 64–72 % darf angepasst werden
+
+Alte Angaben wie `lower-middle`, `safe-middle`, 64–72 %, 65–75 % oder 68 % sind ungültig.
 
 ## Codex-Wortzeiten
 
@@ -244,6 +292,7 @@ Zielwerte:
 - wichtige Motive und Texte mindestens 6 % von den Seiten entfernt
 - mindestens 8 % Abstand nach oben
 - mindestens 18 % Abstand nach unten
+- feste Untertitelzone bei 50 % frei von unverzichtbaren Inhalten
 
 Ablauf:
 
@@ -252,7 +301,7 @@ npm run check:visuals -- --dir "<reel-ordner>"
 npm run check:visuals -- --dir "<reel-ordner>" --strict
 ```
 
-Jedes Bild und das Cover müssen tatsächlich visuell geprüft werden. Zusätzlich ist zu prüfen, ob die Untertitelzone 64–72 % wichtige Bildinhalte verdeckt.
+Jedes Bild und das Cover müssen tatsächlich visuell geprüft werden.
 
 ## Timeline, Abschluss und Renderer
 

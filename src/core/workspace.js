@@ -217,7 +217,7 @@ export async function createReelWorkspace({
     timingStatus: 'estimated-until-audio-arrives',
     cues: []
   });
-  await writeText(path.join(reelDirectory, 'subtitles', 'README.md'), `# Untertitel\n\nUntertitel stehen standardmäßig leicht unterhalb der Bildmitte bei ungefähr ${SUBTITLE_STYLE.verticalPositionPercent} % der Bildhöhe.\nDer sichere Bereich liegt zwischen ${SUBTITLE_STYLE.safeVerticalRangePercent.min} und ${SUBTITLE_STYLE.safeVerticalRangePercent.max} %. Dadurch bleiben Gesichter und zentrale Motive meist frei, während der Text sofort auffällt.\nNormalerweise 3–6 Wörter pro Einblendung und höchstens zwei Zeilen.\nDer normale Text verwendet weiches Weiß (${SUBTITLE_STYLE.textColor}); das aktuell gesprochene Wort wird warmgelb (${SUBTITLE_STYLE.highlightColor}) markiert.\nEine dunkle halbtransparente Box hält beide Farben auf hellen und dunklen Bildern lesbar.\nOhne verifizierte Wortzeiten bleibt der gesamte Untertitel in weichem Weiß, damit keine falsche Synchronisierung angezeigt wird.\n`);
+  await writeText(path.join(reelDirectory, 'subtitles', 'README.md'), `# Untertitel\n\nUntertitel stehen fest in der geometrischen Bildmitte bei exakt ${SUBTITLE_STYLE.verticalPositionPercent} % der Bildhöhe.\nDer erlaubte Bereich liegt ebenfalls exakt zwischen ${SUBTITLE_STYLE.safeVerticalRangePercent.min} und ${SUBTITLE_STYLE.safeVerticalRangePercent.max} %. Die Position wird nicht verschoben; Gesichter, zentrale Motive und wichtige Bildtexte müssen deshalb bereits bei der Bildplanung die feste mittige Zone freihalten.\nNormalerweise 3–6 Wörter pro Einblendung und höchstens zwei Zeilen.\nDer normale Text verwendet weiches Weiß (${SUBTITLE_STYLE.textColor}); das aktuell gesprochene Wort wird warmgelb (${SUBTITLE_STYLE.highlightColor}) markiert.\nEine dunkle halbtransparente Box hält beide Farben auf hellen und dunklen Bildern lesbar.\nOhne verifizierte Wortzeiten bleibt der gesamte Untertitel in weichem Weiß, damit keine falsche Synchronisierung angezeigt wird.\n`);
   await writeJson(path.join(reelDirectory, 'effects', 'effects-plan.json'), {
     version: 1,
     enabled: true,
@@ -253,7 +253,7 @@ export async function createReelWorkspace({
       timingStatus: 'estimated-until-audio-arrives'
     }))
   });
-  await writeText(path.join(reelDirectory, 'effects', 'README.md'), `# Bewegungen und Soundeffekte\n\nPlane Zooms, Schwenks, Übergänge und Soundeffekte getrennt von den Bildprompts in \`effects-plan.json\`.\nNicht jedes Bild braucht Bewegung. Ein Zoom verändert die Größe normalerweise nur um 2–6 Prozent und höchstens um 8 Prozent.\nDer normale Übergang ist ein sauberer Schnitt. Soundeffekte werden sparsam eingesetzt, normalerweise null bis zwei pro Szene.\nDas Voice-over hat Vorrang; Hintergrundmusik ist standardmäßig ausgeschaltet.\nNach Einfügen des echten Voice-overs werden alle Zeitpunkte erneut geprüft.\n`);
+  await writeText(path.join(reelDirectory, 'effects', 'README.md'), `# Bewegungen und Soundeffekte\n\nPlane Zooms, Schwenks, Übergänge und Soundeffekte getrennt von den Bildprompts in \`effects-plan.json\`.\nNicht jedes Bild braucht Bewegung. Ein Zoom verändert die Größe normalerweise nur um 2–6 Prozent und höchstens um 8 Prozent.\nDie Hook startet ohne Übergang; danach sind ausschließlich direkte harte Schnitte mit Dauer 0 erlaubt. Soundeffekte werden sparsam eingesetzt, normalerweise null bis zwei pro Szene.\nDas Voice-over hat Vorrang; Hintergrundmusik ist standardmäßig ausgeschaltet.\nNach Einfügen des echten Voice-overs werden alle Zeitpunkte erneut geprüft.\n`);
   await writeText(path.join(reelDirectory, 'cover', 'cover-prompt.txt'));
   await writeJson(path.join(reelDirectory, 'cover', 'cover.json'), {
     headline: '',
@@ -274,7 +274,7 @@ export async function createReelWorkspace({
   await writeText(path.join(reelDirectory, 'inbox', 'images', '.gitkeep'));
   await writeText(path.join(reelDirectory, 'inbox', 'audio', '.gitkeep'));
   await writeText(path.join(reelDirectory, 'inbox', 'processed', '.gitkeep'));
-  await writeText(path.join(reelDirectory, 'inbox', 'README.md'), `# Unsortierte externe Dateien\n\nLege alle generierten Szenenbilder und das Cover mit beliebigen Dateinamen nach \`images/\`.\nLege das fertige Voice-over nach \`audio/\`.\nDie Reihenfolge ist egal; Codex ordnet die Dateien später anhand ihres sichtbaren Inhalts zu.\nNach dem Einfügen der Audiodatei prüft Codex Bildwechsel, mittige Untertitel, gelbe Wortmarkierung, Zooms, Übergänge und Soundeffekte gegen die echte Audiospur.\n`);
+  await writeText(path.join(reelDirectory, 'inbox', 'README.md'), `# Unsortierte externe Dateien\n\nLege alle generierten Szenenbilder und das Cover mit beliebigen Dateinamen nach \`images/\`.\nLege das fertige Voice-over nach \`audio/\`.\nDie Reihenfolge ist egal; Codex ordnet die Dateien später anhand ihres sichtbaren Inhalts zu.\nNach dem Einfügen der Audiodatei prüft Codex Bildwechsel, exakt mittige Untertitel, gelbe Wortmarkierung, Zooms, harte Schnitte und Soundeffekte gegen die echte Audiospur.\n`);
   await writeJson(path.join(reelDirectory, 'inbox', 'asset-map.json'), {
     version: 1,
     generatedBy: '',

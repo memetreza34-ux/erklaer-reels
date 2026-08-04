@@ -2,12 +2,13 @@
 
 ## Position
 
-- Standardposition ist 68 % der Bildhöhe.
-- Erlaubter Bereich ist 64–72 %.
-- Die Untertitel stehen damit leicht unterhalb der geometrischen Bildmitte.
-- Exakt 50 % wird vermieden, weil dort häufig Gesichter, Figuren und zentrale Erklärmotive liegen.
+- Zentrale Quelle ist `src/shared/subtitle-style.js`.
+- Die Position ist `center`.
+- Die vertikale Position beträgt exakt 50 % der Bildhöhe.
+- Der erlaubte Bereich ist ebenfalls exakt 50–50 %.
+- Abweichende Positionswerte werden auf 50 % zurückgesetzt oder im strengen Lauf blockiert.
 - Höchstens zwei Zeilen und normalerweise 3–6 Wörter verwenden.
-- Bei einer Kollision mit wichtigem Bildinhalt darf innerhalb der sicheren Zone leicht verschoben werden.
+- Bei einer Kollision wird nicht die Untertitelposition verschoben. Stattdessen muss die Bildkomposition so angepasst werden, dass Gesichter, Bildtexte und zentrale Erklärmotive die feste mittige Untertitelzone freihalten.
 
 ## Farben und Lesbarkeit
 
@@ -88,8 +89,9 @@ Beispiel:
   "text": "Der Tisch bekommt neuen Wert",
   "startSeconds": 4.18,
   "endSeconds": 6.12,
-  "position": "safe-middle",
-  "verticalPositionPercent": 68,
+  "position": "center",
+  "verticalPositionPercent": 50,
+  "safeVerticalRangePercent": { "min": 50, "max": 50 },
   "textColor": "#F5F7FA",
   "backgroundColor": "rgba(0, 0, 0, 0.72)",
   "highlightCurrentWord": true,

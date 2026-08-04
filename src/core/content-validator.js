@@ -1,6 +1,8 @@
 import { access, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
+import { SUBTITLE_STYLE } from '../shared/subtitle-style.js';
+
 async function exists(filePath) {
   try {
     await access(filePath);
@@ -142,8 +144,8 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
       `${expectedId}: leadInSeconds sollte zwischen 0,1 und 0,3 liegen.`, 'warning');
     addCheck(checks, `${expectedId}-subtitle-cues`, subtitleCues.length > 0,
       `${expectedId}: subtitleCues fehlen.`, 'warning');
-    addCheck(checks, `${expectedId}-subtitle-position`, ['lower-middle', 'safe-lower-middle'].includes(String(scene.subtitlePosition ?? '')),
-      `${expectedId}: subtitlePosition sollte lower-middle sein.`, 'warning');
+    addCheck(checks, `${expectedId}-subtitle-position`, String(scene.subtitlePosition ?? '') === SUBTITLE_STYLE.position,
+      `${expectedId}: subtitlePosition muss ${SUBTITLE_STYLE.position} sein.`, strict ? 'error' : 'warning');
     addCheck(checks, `${expectedId}-duration`, Number.isFinite(duration) && duration >= 2.5 && duration <= 8,
       `${expectedId}: durationSeconds muss zwischen 2,5 und 8 liegen.`);
     addCheck(checks, `${expectedId}-preferred-duration`, Number.isFinite(duration) && duration >= 3.5 && duration <= 5.5,
@@ -178,14 +180,25 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
   addCheck(checks, 'subtitle-plan-present', Boolean(subtitlePlan),
     'subtitles/subtitle-plan.json fehlt.', strict ? 'error' : 'warning');
   if (subtitlePlan) {
+    const subtitleLevel = strict ? 'error' : 'warning';
     addCheck(checks, 'subtitle-plan-enabled', subtitlePlan.enabled !== false,
       'Der Untertitelplan sollte standardmäßig aktiviert sein.', 'warning');
-    addCheck(checks, 'subtitle-plan-position', subtitlePlan.position === 'lower-middle',
-      'Der Untertitelplan sollte lower-middle verwenden.', 'warning');
-    addCheck(checks, 'subtitle-plan-vertical-position', Number(subtitlePlan.verticalPositionPercent) >= 65 && Number(subtitlePlan.verticalPositionPercent) <= 75,
-      'Die Untertitelposition sollte zwischen 65 und 75 Prozent der Bildhöhe liegen.', 'warning');
-    addCheck(checks, 'subtitle-plan-max-lines', Number(subtitlePlan.maxLines) <= 2,
-      'Untertitel sollten höchstens zwei Zeilen verwenden.', 'warning');
+    addCheck(checks, 'subtitle-plan-position', subtitlePlan.position === SUBTITLE_STYLE.position,
+      `Der Untertitelplan muss die Position ${SUBTITLE_STYLE.position} verwenden.`, subtitleLevel);
+    addCheck(checks, 'subtitle-plan-vertical-position', Number(subtitlePlan.verticalPositionPercent) === SUBTITLE_STYLE.verticalPositionPercent,
+      `Die Untertitelposition muss exakt ${SUBTITLE_STYLE.verticalPositionPercent} Prozent der Bildhöhe betragen.`, subtitleLevel);
+    addCheck(checks, 'subtitle-plan-safe-range-min', Number(subtitlePlan.safeVerticalRangePercent?.min) === SUBTITLE_STYLE.safeVerticalRangePercent.min,
+      `Die minimale Untertitelhöhe muss exakt ${SUBTITLE_STYLE.safeVerticalRangePercent.min} Prozent betragen.`, subtitleLevel);
+    addCheck(checks, 'subtitle-plan-safe-range-max', Number(subtitlePlan.safeVerticalRangePercent?.max) === SUBTITLE_STYLE.safeVerticalRangePercent.max,
+      `Die maximale Untertitelhöhe muss exakt ${SUBTITLE_STYLE.safeVerticalRangePercent.max} Prozent betragen.`, subtitleLevel);
+    addCheck(checks, 'subtitle-plan-text-color', String(subtitlePlan.textColor ?? '').toUpperCase() === SUBTITLE_STYLE.textColor,
+      `Die normale Untertitelfarbe muss ${SUBTITLE_STYLE.textColor} sein.`, subtitleLevel);
+    addCheck(checks, 'subtitle-plan-highlight-color', String(subtitlePlan.highlightColor ?? '').toUpperCase() === SUBTITLE_STYLE.highlightColor,
+      `Die Synchronfarbe muss ${SUBTITLE_STYLE.highlightColor} sein.`, subtitleLevel);
+    addCheck(checks, 'subtitle-plan-background-color', subtitlePlan.backgroundColor === SUBTITLE_STYLE.backgroundColor,
+      `Der Untertitelhintergrund muss ${SUBTITLE_STYLE.backgroundColor} verwenden.`, subtitleLevel);
+    addCheck(checks, 'subtitle-plan-max-lines', Number(subtitlePlan.maxLines) <= SUBTITLE_STYLE.maxLines,
+      `Untertitel sollten höchstens ${SUBTITLE_STYLE.maxLines} Zeilen verwenden.`, 'warning');
     addCheck(checks, 'subtitle-plan-cues', Array.isArray(subtitlePlan.cues) && subtitlePlan.cues.length > 0,
       'Der Untertitelplan enthält noch keine Cues.', 'warning');
   }

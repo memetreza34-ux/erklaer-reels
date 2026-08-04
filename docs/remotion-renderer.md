@@ -26,18 +26,18 @@ npm run finalize:reel -- --dir "PFAD-ZUM-REEL" --strict
 
 ## Untertitelstil
 
-Der Renderer verwendet einen zentralen Stil aus `src/shared/subtitle-style.js`:
+Der Renderer verwendet den zentralen Stil aus `src/shared/subtitle-style.js`:
 
-- Position `safe-middle`
-- Standardhöhe 68 %
-- erlaubter Bereich 64–72 %
+- Position `center`
+- vertikale Position exakt 50 %
+- erlaubter Bereich exakt 50–50 %
 - Normaltext `#F5F7FA`
 - Synchronfarbe `#FFD84D`
 - dunkle halbtransparente Box mit ungefähr 72 % Deckkraft
 - dezenter heller Rand und kräftiger Schatten
 - normalerweise 3–6 Wörter, höchstens zwei Zeilen
 
-Werte außerhalb des sicheren Bereichs werden im Renderer auf 68 % zurückgesetzt. Dadurch werden alte Pläne mit 79,5 % nicht versehentlich weiter unten gerendert.
+Ungültige oder alte Positionswerte werden auf exakt 50 % zurückgesetzt. Der strenge Renderer-Check blockiert davon abweichende Pläne.
 
 ## Übergänge
 
@@ -71,7 +71,8 @@ Geprüft werden unter anderem:
 - vorhandene Bilder und Voice-over-Datei
 - sichere lokale Pfade
 - zulässige Zoom- und Schwenkwerte
-- Untertitelposition zwischen 64 und 72 %
+- Untertitelposition exakt 50 %
+- fester Bereich exakt 50–50 %
 - Normaltext exakt `#F5F7FA`
 - Synchronfarbe exakt `#FFD84D`
 - gültige Untertitel- und Wortzeiten
@@ -113,7 +114,7 @@ Weitere Optionen:
 
 - alle Szenenbilder aus `render/render-plan.json`
 - gestrafftes Voice-over
-- Untertitel leicht unterhalb der Bildmitte bei ungefähr 68 %
+- Untertitel exakt in der Bildmitte bei 50 %
 - weicher weißer Normaltext
 - exakt synchronisierte warmgelbe Wortmarkierung
 - dunkle halbtransparente Untertitelbox
