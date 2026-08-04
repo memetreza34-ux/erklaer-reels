@@ -165,21 +165,25 @@ export async function validateRendererInput(reelDirectory, {
       const vertical = Number(cue.verticalPositionPercent ?? SUBTITLE_STYLE.verticalPositionPercent);
       const { min, max } = SUBTITLE_STYLE.safeVerticalRangePercent;
       push(checks, `${cueId}-vertical-position`, Number.isFinite(vertical) && vertical >= min && vertical <= max,
-        `${cueId}: Untertitel müssen leicht unterhalb der Bildmitte zwischen ${min} und ${max} Prozent liegen.`);
+        `${cueId}: Untertitel müssen unten bei exakt ${SUBTITLE_STYLE.verticalPositionPercent} Prozent liegen.`);
 
       const textColor = cue.textColor ?? SUBTITLE_STYLE.textColor;
       const highlightColor = cue.highlightColor ?? SUBTITLE_STYLE.highlightColor;
       push(checks, `${cueId}-text-color`, isHexColor(textColor) && String(textColor).toUpperCase() === SUBTITLE_STYLE.textColor,
-        `${cueId}: Normaler Untertiteltext muss weiches Weiß ${SUBTITLE_STYLE.textColor} verwenden.`);
+        `${cueId}: Untertiteltext muss weiches Weiß ${SUBTITLE_STYLE.textColor} verwenden.`);
       push(checks, `${cueId}-highlight-color`, isHexColor(highlightColor) && String(highlightColor).toUpperCase() === SUBTITLE_STYLE.highlightColor,
-        `${cueId}: Das synchron gesprochene Wort muss warmgelb ${SUBTITLE_STYLE.highlightColor} verwenden.`);
-      push(checks, `${cueId}-color-separation`, String(textColor).toUpperCase() !== String(highlightColor).toUpperCase(),
-        `${cueId}: Normaltext und Synchronfarbe dürfen nicht identisch sein.`);
+        `${cueId}: Alle Wörter müssen dieselbe weiße Farbe ${SUBTITLE_STYLE.highlightColor} verwenden.`);
+      push(checks, `${cueId}-color-uniform`, String(textColor).toUpperCase() === String(highlightColor).toUpperCase(),
+        `${cueId}: Untertitel dürfen keine gelbe oder andersfarbige Wortmarkierung enthalten.`);
+      push(checks, `${cueId}-highlight-disabled`, cue.highlightCurrentWord === false,
+        `${cueId}: highlightCurrentWord muss false sein.`);
+      push(checks, `${cueId}-background-transparent`, String(cue.backgroundColor ?? SUBTITLE_STYLE.backgroundColor) === SUBTITLE_STYLE.backgroundColor,
+        `${cueId}: Der Untertitelhintergrund muss transparent sein.`);
 
-      if (cue.highlightCurrentWord !== false) {
+      if (cue.highlightCurrentWord === true) {
         const exact = validateExactWordTimings(cue);
         push(checks, `${cueId}-exact-word-timing`, exact.valid,
-          `${cueId}: Die warmgelbe Wortmarkierung braucht echte Wortzeiten. ${exact.issues.join(' ')}`,
+          `${cueId}: Eine aktivierte Wortmarkierung braucht echte Wortzeiten. ${exact.issues.join(' ')}`,
           requireFinalReadiness ? 'error' : 'warning');
       }
     }
