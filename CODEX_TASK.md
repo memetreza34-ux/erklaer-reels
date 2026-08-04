@@ -1,6 +1,6 @@
 # Codex-Hauptauftrag
 
-Dieses Repository produziert vollständige visuelle Erklär-Reels. Der Nutzer erzeugt Voice-over und Bilder extern. Codex übernimmt Planung, Asset-Zuordnung, Audio-Pacing, lokale Audio-Prüfung, Synchronisierung, Qualitätsprüfung und den abschließenden Remotion-Render.
+Dieses Repository produziert vollständige visuelle Erklär-Reels. Der Nutzer erzeugt Voice-over und Bilder extern. Codex übernimmt Planung, Prompt-Sammlung, Asset-Zuordnung, Audio-Pacing, lokale Audio-Prüfung, Synchronisierung, Qualitätsprüfung und den abschließenden Remotion-Render.
 
 ## 1. Neues Reel vorbereiten
 
@@ -31,12 +31,19 @@ Verbindliche Dateien:
 - `scenes/scene-index.json`
 - jede `scenes/scene-XX/scene.json`
 - jede `scenes/scene-XX/image-prompt.txt`
+- `all-image-prompts/all-image-prompts.txt`
 - `subtitles/subtitle-plan.json`
 - `effects/effects-plan.json`
 - `cover/cover.json`
 - `cover/cover-prompt.txt`
 - `caption/caption.txt`
 - `sources/sources.md`
+
+Nach dem Schreiben der Szenenprompts:
+
+```bash
+npm run export:prompts -- --dir "PFAD-ZUM-REEL" --strict
+```
 
 Inhalt prüfen:
 
@@ -49,6 +56,8 @@ Fehler vollständig beheben, bevor der Nutzer Bilder und Voice-over erzeugt.
 
 ## 2. Kreative Pflichtregeln
 
+- bevorzugter Einstieg: `THEMA einfach erklärt:`
+- Thema möglichst sofort nennen und direkt erklären
 - Hook-Bild ab Sekunde 0
 - keine schulische Einleitung
 - ungefähr alle 3,5–5 Sekunden eine sichtbare Veränderung
@@ -64,20 +73,26 @@ Das Bild beginnt normalerweise 0,1–0,3 Sekunden vor dem gesprochenen `audioCue
 
 ## 3. Untertitel
 
+Die einzige technische Quelle für Position und Farben ist `src/shared/subtitle-style.js`.
+
+Verbindlich:
+
 - standardmäßig aktiv
-- Position `safe-middle`
-- Standardhöhe 68 %
-- erlaubter Bereich 64–72 %
-- nicht exakt bei 50 %, weil dort häufig Gesichter und Hauptmotive liegen
+- Position `center`
+- vertikale Position exakt 50 %
+- erlaubter Bereich exakt 50–50 %
+- keine Positionsverschiebung bei visuellen Kollisionen
+- Bildkomposition stattdessen so planen, dass die feste Mitte frei bleibt
 - normalerweise 3–6 Wörter
 - höchstens zwei Zeilen
 - Bildtext nicht identisch wiederholen
 - normaler Text in weichem Weiß `#F5F7FA`
 - aktuell gesprochenes Wort in Warmgelb `#FFD84D`
-- dunkle halbtransparente Hintergrundbox mit ungefähr 72 % Deckkraft
+- dunkle halbtransparente Hintergrundbox `rgba(0, 0, 0, 0.72)`
 - warmgelbe Markierung ausschließlich mit akustisch bestätigten Wortzeiten
 - ohne exakte Wortzeiten bleibt der komplette Cue in weichem Weiß
-- innerhalb 64–72 % darf die Position verschoben werden, wenn ein wichtiges Motiv verdeckt wird
+
+Alte Angaben wie `safe-middle`, `lower-middle`, 64–72 %, 65–75 % oder 68 % sind ungültig.
 
 Die finalen Wortzeiten werden nicht mathematisch geschätzt und nicht über Gemini erzeugt. Codex übernimmt die lokale Audio-Prüfung.
 
@@ -208,7 +223,9 @@ Prüfen:
 - jede Szene besitzt bestätigte Wörter
 - Cue-Text und Wortliste stimmen vollständig überein
 - `timingProvider` ist `codex-local-audio-review`
-- `verticalPositionPercent` liegt zwischen 64 und 72, Standard 68
+- `position` ist `center`
+- `verticalPositionPercent` ist exakt 50
+- `safeVerticalRangePercent` ist exakt `{ "min": 50, "max": 50 }`
 - `textColor` ist `#F5F7FA`
 - `highlightColor` ist `#FFD84D`
 
@@ -227,7 +244,7 @@ Prüfen:
 - 9:16 und ausreichende Auflösung
 - Hauptmotiv sicher positioniert
 - Text lesbar und fehlerfrei
-- Untertitelzone 64–72 % verdeckt keine Gesichter, Schlüsselsymbole oder wichtigen Bildtexte
+- feste Untertitelzone bei 50 % verdeckt keine Gesichter, Schlüsselsymbole oder wichtigen Bildtexte
 - weiches Weiß und Warmgelb bleiben auf der dunklen Box klar unterscheidbar
 - keine Kollision mit Plattform-Bedienelementen
 - Zoom und Schwenk schneiden nichts Wichtiges ab
@@ -279,6 +296,7 @@ Nach Erfolg prüfen:
 Das Reel ist erst vollständig fertig, wenn:
 
 - Inhaltsprüfung bestanden
+- Prompt-Sammeldatei aktuell
 - Assets korrekt zugeordnet
 - Audio-Pacing bestanden
 - Audio synchronisiert
