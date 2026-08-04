@@ -27,31 +27,36 @@
 - Deshalb sind Einzelwortzeiten für den sichtbaren Untertitel nicht erforderlich.
 - `sync:words` bleibt als optionales technisches Werkzeug erhalten, ist für diesen Stil aber kein Pflichtschritt.
 
-## Voice-over zuerst straffen
+## Voice-over zuerst optimieren
+
+Zentrale Quelle: `src/shared/audio-pacing-style.js`.
 
 Vor Timeline und Untertitel-Cues:
 
 ```bash
-npm run trim:pauses -- --dir "PFAD-ZUM-REEL"
+npm run trim:pauses -- --dir "PFAD-ZUM-REEL" --speed 1.10
 ```
 
 Standardwerte:
 
 - Pausen ab ungefähr 0,24 Sekunden werden gekürzt.
 - Nur eine kurze natürliche Restpause bleibt erhalten.
-- Das Voice-over läuft mit ungefähr `1.05x`.
+- Das Voice-over läuft mit exakt `1.10x`.
 - Die Tonhöhe bleibt erhalten.
-- Eine stärkere Beschleunigung als `1.10x` ist nicht erlaubt.
+- Die integrierte Lautheit wird auf `-16 LUFS` normalisiert.
+- Der True Peak wird auf `-1,5 dBTP` begrenzt.
+- Der Lautheitsbereich beträgt `11 LRA`.
+- Die Verarbeitung startet immer von der ursprünglichen Audiodatei.
 
 ## Reihenfolge nach einer Audioänderung
 
 ```bash
-npm run trim:pauses -- --dir "PFAD-ZUM-REEL"
+npm run trim:pauses -- --dir "PFAD-ZUM-REEL" --speed 1.10
 npm run build:timeline -- --dir "PFAD-ZUM-REEL"
 npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
 ```
 
-Danach Untertitel-Cues, Bildwechsel und Audio-Cues gegen die optimierte Audiodatei kontrollieren.
+Danach Untertitel-Cues, Bildwechsel und Audio-Cues gegen die neue optimierte Audiodatei kontrollieren.
 
 ## Beispiel
 
