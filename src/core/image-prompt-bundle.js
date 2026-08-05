@@ -41,12 +41,11 @@ export async function ensureImagePromptBundleDirectory(reelDirectory) {
   const paths = getImagePromptBundlePaths(reelDirectory);
   await mkdir(paths.directory, { recursive: true });
 
-  if (!(await exists(paths.readme))) {
-    await writeFile(paths.readme, `# Alle Bildprompts\n\nIn \`${BUNDLE_FILE}\` stehen alle Szenen-Bildprompts chronologisch in einer einzigen Textdatei.\n\nErzeugen oder aktualisieren:\n\n\`\`\`bash\nnpm run export:prompts -- --dir "${normalizedRelativePath(reelDirectory)}" --strict\n\`\`\`\n\nDie Datei wird automatisch aus \`scenes/scene-XX/image-prompt.txt\` aufgebaut und sollte nicht manuell gepflegt werden.\n`, 'utf8');
-  }
+  const readme = `# Alle Bildprompts\n\nIn \`${BUNDLE_FILE}\` stehen zuerst der Cover-Prompt und danach alle Szenen-Bildprompts in chronologischer Reihenfolge.\n\nErzeugen oder aktualisieren:\n\n\`\`\`bash\nnpm run export:prompts -- --dir "${normalizedRelativePath(reelDirectory)}" --strict\n\`\`\`\n\nDie Datei wird automatisch aus \`cover/cover-prompt.txt\` und \`scenes/scene-XX/image-prompt.txt\` aufgebaut und sollte nicht manuell gepflegt werden.\n`;
+  await writeFile(paths.readme, readme, 'utf8');
 
   if (!(await exists(paths.file))) {
-    await writeFile(paths.file, 'Die chronologische Bildprompt-Sammeldatei wird nach Fertigstellung aller Szenenprompts erzeugt.\n', 'utf8');
+    await writeFile(paths.file, 'Die Bildprompt-Sammeldatei mit Cover und Szenen wird nach Fertigstellung aller Prompts erzeugt.\n', 'utf8');
   }
 
   return paths;
@@ -63,16 +62,31 @@ export async function collectImagePrompts(reelDirectory) {
     throw new Error('scenes/scene-index.json enthält keine Szenen.');
   }
 
+  const coverPromptPath = path.join(reelDirectory, 'cover', 'cover-prompt.txt');
+  const coverPromptPresent = await exists(coverPromptPath);
+  const coverPrompt = coverPromptPresent ? (await readFile(coverPromptPath, 'utf8')).trim() : '';
+
+  const prompts = [{
+    kind: 'cover',
+    promptId: 'cover',
+    sceneId: null,
+    order: 0,
+    promptPath: coverPromptPath,
+    prompt: coverPrompt,
+    missing: !coverPrompt
+  }];
+
   const orderedScenes = scenes
     .map((scene, index) => ({ ...scene, resolvedOrder: sceneNumber(scene, index) }))
     .sort((a, b) => a.resolvedOrder - b.resolvedOrder);
 
-  const prompts = [];
   for (const scene of orderedScenes) {
     const promptPath = path.join(reelDirectory, 'scenes', scene.sceneId, 'image-prompt.txt');
     const present = await exists(promptPath);
     const prompt = present ? (await readFile(promptPath, 'utf8')).trim() : '';
     prompts.push({
+      kind: 'scene',
+      promptId: scene.sceneId,
       sceneId: scene.sceneId,
       order: scene.resolvedOrder,
       promptPath,
@@ -87,19 +101,26 @@ export async function collectImagePrompts(reelDirectory) {
 export function formatImagePromptBundle(prompts) {
   const sections = prompts.map((entry) => {
     const body = entry.prompt || '[BILDPROMPT FEHLT]';
+    if (entry.kind === 'cover') {
+      return `COVER – BILDPROMPT\n\n${body}`;
+    }
     return `SZENE ${entry.order} – BILDPROMPT ${entry.order}\n\n${body}`;
   });
 
-  return `ALLE BILDPROMPTS – CHRONOLOGISCH\n\n${sections.join('\n\n\n')}\n`;
+  return `ALLE BILDPROMPTS – COVER UND SZENEN\n\n${sections.join('\n\n\n')}\n`;
+}
+
+function missingPromptIds(prompts) {
+  return prompts.filter((entry) => entry.missing).map((entry) => entry.promptId);
 }
 
 export async function buildImagePromptBundle(reelDirectory, { strict = false } = {}) {
   const paths = await ensureImagePromptBundleDirectory(reelDirectory);
   const prompts = await collectImagePrompts(reelDirectory);
-  const missing = prompts.filter((entry) => entry.missing);
+  const missingIds = missingPromptIds(prompts);
 
-  if (strict && missing.length > 0) {
-    throw new Error(`Bildprompts fehlen für: ${missing.map((entry) => entry.sceneId).join(', ')}.`);
+  if (strict && missingIds.length > 0) {
+    throw new Error(`Bildprompts fehlen für: ${missingIds.join(', ')}.`);
   }
 
   const content = formatImagePromptBundle(prompts);
@@ -108,15 +129,20 @@ export async function buildImagePromptBundle(reelDirectory, { strict = false } =
   const statusPath = path.join(reelDirectory, 'status.json');
   if (await exists(statusPath)) {
     const status = await readJson(statusPath);
-    status.imagePromptBundle = missing.length === 0 ? 'ready' : 'incomplete';
+    status.imagePromptBundle = missingIds.length === 0 ? 'ready' : 'incomplete';
     await writeFile(statusPath, `${JSON.stringify(status, null, 2)}\n`, 'utf8');
   }
 
   return {
     outputFile: paths.file,
-    sceneCount: prompts.length,
-    missingSceneIds: missing.map((entry) => entry.sceneId),
-    complete: missing.length === 0,
+    sceneCount: prompts.filter((entry) => entry.kind === 'scene').length,
+    totalPromptCount: prompts.length,
+    coverIncluded: prompts.some((entry) => entry.kind === 'cover' && !entry.missing),
+    missingPromptIds: missingIds,
+    missingSceneIds: prompts
+      .filter((entry) => entry.kind === 'scene' && entry.missing)
+      .map((entry) => entry.sceneId),
+    complete: missingIds.length === 0,
     content
   };
 }
@@ -124,24 +150,29 @@ export async function buildImagePromptBundle(reelDirectory, { strict = false } =
 export async function validateImagePromptBundle(reelDirectory) {
   const paths = getImagePromptBundlePaths(reelDirectory);
   const prompts = await collectImagePrompts(reelDirectory);
-  const missing = prompts.filter((entry) => entry.missing);
+  const missingIds = missingPromptIds(prompts);
   const expected = formatImagePromptBundle(prompts);
   const actual = await exists(paths.file) ? await readFile(paths.file, 'utf8') : null;
   const current = actual === expected;
 
   return {
-    passed: missing.length === 0 && current,
+    passed: missingIds.length === 0 && current,
     outputFile: paths.file,
-    sceneCount: prompts.length,
-    missingSceneIds: missing.map((entry) => entry.sceneId),
+    sceneCount: prompts.filter((entry) => entry.kind === 'scene').length,
+    totalPromptCount: prompts.length,
+    coverIncluded: prompts.some((entry) => entry.kind === 'cover' && !entry.missing),
+    missingPromptIds: missingIds,
+    missingSceneIds: prompts
+      .filter((entry) => entry.kind === 'scene' && entry.missing)
+      .map((entry) => entry.sceneId),
     filePresent: actual !== null,
     current,
-    message: missing.length > 0
-      ? `Bildprompts fehlen für: ${missing.map((entry) => entry.sceneId).join(', ')}.`
+    message: missingIds.length > 0
+      ? `Bildprompts fehlen für: ${missingIds.join(', ')}.`
       : !actual
         ? `Sammeldatei fehlt: ${normalizedRelativePath(paths.file)}.`
         : !current
-          ? 'Die Bildprompt-Sammeldatei ist veraltet oder nicht chronologisch vollständig.'
-          : 'Die Bildprompt-Sammeldatei ist vollständig und aktuell.'
+          ? 'Die Bildprompt-Sammeldatei ist veraltet oder enthält Cover und Szenen nicht vollständig in der richtigen Reihenfolge.'
+          : 'Die Bildprompt-Sammeldatei enthält den Cover-Prompt und alle Szenenprompts vollständig und aktuell.'
   };
 }
