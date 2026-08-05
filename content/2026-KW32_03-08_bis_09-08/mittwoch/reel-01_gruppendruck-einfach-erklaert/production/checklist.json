@@ -1,0 +1,21 @@
+{
+  "version": 10,
+  "reelId": "reel-01_gruppendruck-einfach-erklaert",
+  "title": "Gruppendruck einfach erklärt",
+  "phase": "waiting-for-external-assets",
+  "tasks": [
+    {"id":"script-final","label":"Finales Voice-over-Script","status":"complete"},
+    {"id":"style-select","label":"Bildwelt auswählen","status":"complete"},
+    {"id":"scenes-fill","label":"Zehn Szenen planen","status":"complete"},
+    {"id":"prompts-write","label":"Zehn Bildprompts schreiben","status":"complete"},
+    {"id":"prompts-export","label":"Prompt-Sammeldatei erstellen","status":"complete"},
+    {"id":"subtitles-write","label":"Untertitelplan erstellen","status":"complete"},
+    {"id":"effects-write","label":"Effektplan erstellen","status":"complete"},
+    {"id":"cover-write","label":"Cover planen","status":"complete"},
+    {"id":"caption-write","label":"Caption erstellen","status":"complete"},
+    {"id":"sources-write","label":"Quellen dokumentieren","status":"complete"},
+    {"id":"content-check","label":"Lokale strenge Inhaltsprüfung","status":"pending-local-run"},
+    {"id":"assets","label":"Bilder und Original-Voice-over einfügen","status":"waiting"},
+    {"id":"render","label":"Audio optimieren, synchronisieren und rendern","status":"waiting"}
+  ]
+}

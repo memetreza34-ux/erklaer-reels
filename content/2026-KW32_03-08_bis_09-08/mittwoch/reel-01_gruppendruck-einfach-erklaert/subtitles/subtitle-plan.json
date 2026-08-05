@@ -1,0 +1,32 @@
+{
+  "version": 4,
+  "enabled": true,
+  "language": "de",
+  "position": "lower",
+  "verticalPositionPercent": 76,
+  "safeVerticalRangePercent": {"min":76,"max":76},
+  "textColor": "#F5F7FA",
+  "highlightCurrentWord": false,
+  "highlightColor": "#F5F7FA",
+  "backgroundColor": "transparent",
+  "textStrokeColor": "rgba(0, 0, 0, 0.92)",
+  "maxLines": 2,
+  "wordsPerCue": {"min":3,"max":6},
+  "wordByWordKaraoke": false,
+  "exactWordTimingsRequired": false,
+  "fallbackWordTiming": "plain-soft-white-no-highlight",
+  "avoidRepeatingImageText": true,
+  "timingStatus": "estimated-until-audio-arrives",
+  "cues": [
+    {"sceneId":"scene-01","texts":["Gruppendruck einfach erklärt"]},
+    {"sceneId":"scene-02","texts":["Menschen passen sich Gruppen an","obwohl sie anders denken"]},
+    {"sceneId":"scene-03","texts":["Wir wollen dazugehören","und nicht negativ auffallen"]},
+    {"sceneId":"scene-04","texts":["Normativer sozialer Einfluss"]},
+    {"sceneId":"scene-05","texts":["Andere könnten mehr wissen"]},
+    {"sceneId":"scene-06","texts":["Besonders wenn wir unsicher sind","übernehmen wir ihre Einschätzung"]},
+    {"sceneId":"scene-07","texts":["Gruppendruck kann offen sein","oder still entstehen","wenn alle dasselbe tun"]},
+    {"sceneId":"scene-08","texts":["Gruppen können auch helfen","beim Lernen und Helfen","oder bei gesunden Gewohnheiten"]},
+    {"sceneId":"scene-09","texts":["Problematisch wird es","gegen eigene Werte zu handeln","oder Risiken zu unterschätzen"]},
+    {"sceneId":"scene-10","texts":["Kurz Abstand nehmen","eigene Entscheidung formulieren","bei einer Vertrauensperson Unterstützung suchen"]}
+  ]
+}

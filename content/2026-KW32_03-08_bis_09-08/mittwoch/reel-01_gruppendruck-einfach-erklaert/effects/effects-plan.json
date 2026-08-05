@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "enabled": true,
+  "timingStatus": "estimated-until-audio-arrives",
+  "voiceoverPriority": true,
+  "backgroundMusic": {"enabled":false,"reason":"Voice-over-first Erklärformat."},
+  "defaults": {"transition":"cut","cameraMotion":"none","soundEffectVolume":0.18,"maximumSoundEffectsPerScene":1},
+  "scenes": [
+    {"sceneId":"scene-01","transitionIn":{"type":"none","durationSeconds":0},"cameraMotion":{"type":"subtle-push-in","startScale":1,"endScale":1.04,"panXPercent":0,"panYPercent":0},"soundEffects":[]},
+    {"sceneId":"scene-02","transitionIn":{"type":"cut","durationSeconds":0},"cameraMotion":{"type":"slow-zoom-in","startScale":1,"endScale":1.03,"panXPercent":0,"panYPercent":0},"soundEffects":[]},
+    {"sceneId":"scene-03","transitionIn":{"type":"cut","durationSeconds":0},"cameraMotion":{"type":"pan-right","startScale":1.03,"endScale":1.03,"panXPercent":2,"panYPercent":0},"soundEffects":[]},
+    {"sceneId":"scene-04","transitionIn":{"type":"cut","durationSeconds":0},"cameraMotion":{"type":"subtle-push-in","startScale":1,"endScale":1.03,"panXPercent":0,"panYPercent":0},"soundEffects":[]},
+    {"sceneId":"scene-05","transitionIn":{"type":"cut","durationSeconds":0},"cameraMotion":{"type":"none","startScale":1,"endScale":1,"panXPercent":0,"panYPercent":0},"soundEffects":[]},
+    {"sceneId":"scene-06","transitionIn":{"type":"cut","durationSeconds":0},"cameraMotion":{"type":"slow-zoom-in","startScale":1,"endScale":1.03,"panXPercent":0,"panYPercent":0},"soundEffects":[]},
+    {"sceneId":"scene-07","transitionIn":{"type":"cut","durationSeconds":0},"cameraMotion":{"type":"pan-left","startScale":1.03,"endScale":1.03,"panXPercent":-2,"panYPercent":0},"soundEffects":[]},
+    {"sceneId":"scene-08","transitionIn":{"type":"cut","durationSeconds":0},"cameraMotion":{"type":"slow-zoom-out","startScale":1.04,"endScale":1,"panXPercent":0,"panYPercent":0},"soundEffects":[]},
+    {"sceneId":"scene-09","transitionIn":{"type":"cut","durationSeconds":0},"cameraMotion":{"type":"subtle-push-in","startScale":1,"endScale":1.04,"panXPercent":0,"panYPercent":0},"soundEffects":[]},
+    {"sceneId":"scene-10","transitionIn":{"type":"cut","durationSeconds":0},"cameraMotion":{"type":"pan-right","startScale":1.03,"endScale":1.03,"panXPercent":2,"panYPercent":0},"soundEffects":[]}
+  ]
+}
