@@ -15,7 +15,7 @@ async function writeJson(filePath, value) {
   await writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
 }
 
-async function createFixture({ missingSecondPrompt = false } = {}) {
+async function createFixture({ missingCoverPrompt = false, missingSecondPrompt = false } = {}) {
   const root = await mkdtemp(path.join(os.tmpdir(), 'prompt-bundle-'));
   await writeJson(path.join(root, 'status.json'), { imagePrompts: 'ready' });
   await writeJson(path.join(root, 'scenes', 'scene-index.json'), [
@@ -23,6 +23,11 @@ async function createFixture({ missingSecondPrompt = false } = {}) {
     { sceneId: 'scene-01', order: 1 },
     { sceneId: 'scene-03', order: 3 }
   ]);
+
+  await mkdir(path.join(root, 'cover'), { recursive: true });
+  if (!missingCoverPrompt) {
+    await writeFile(path.join(root, 'cover', 'cover-prompt.txt'), 'Prompt für das Cover.', 'utf8');
+  }
 
   for (const sceneId of ['scene-01', 'scene-02', 'scene-03']) {
     await mkdir(path.join(root, 'scenes', sceneId), { recursive: true });
@@ -36,33 +41,51 @@ async function createFixture({ missingSecondPrompt = false } = {}) {
   return root;
 }
 
-test('legt den neuen Sammelordner und die Textdatei an', async () => {
+test('legt den Sammelordner und die Textdatei für Cover und Szenen an', async () => {
   const root = await createFixture();
   const paths = await ensureImagePromptBundleDirectory(root);
   const placeholder = await readFile(paths.file, 'utf8');
+  const readme = await readFile(paths.readme, 'utf8');
 
   assert.match(paths.file, /all-image-prompts[\\/]all-image-prompts\.txt$/);
-  assert.match(placeholder, /Sammeldatei/);
+  assert.match(placeholder, /Cover und Szenen/);
+  assert.match(readme, /cover\/cover-prompt\.txt/);
 });
 
-test('exportiert alle Bildprompts chronologisch in eine Datei', async () => {
+test('exportiert zuerst das Cover und danach alle Szenenprompts chronologisch', async () => {
   const root = await createFixture();
   const result = await buildImagePromptBundle(root, { strict: true });
   const content = await readFile(result.outputFile, 'utf8');
 
+  const cover = content.indexOf('COVER – BILDPROMPT');
   const first = content.indexOf('SZENE 1 – BILDPROMPT 1');
   const second = content.indexOf('SZENE 2 – BILDPROMPT 2');
   const third = content.indexOf('SZENE 3 – BILDPROMPT 3');
 
-  assert.ok(first >= 0);
+  assert.ok(cover >= 0);
+  assert.ok(first > cover);
   assert.ok(second > first);
   assert.ok(third > second);
+  assert.match(content, /Prompt für das Cover\./);
   assert.match(content, /Prompt für die erste Szene\./);
   assert.match(content, /Prompt für die zweite Szene\./);
   assert.match(content, /Prompt für die dritte Szene\./);
+  assert.equal(result.coverIncluded, true);
+  assert.equal(result.sceneCount, 3);
+  assert.equal(result.totalPromptCount, 4);
 
   const validation = await validateImagePromptBundle(root);
   assert.equal(validation.passed, true);
+  assert.equal(validation.coverIncluded, true);
+});
+
+test('blockiert im strengen Modus einen fehlenden Cover-Prompt', async () => {
+  const root = await createFixture({ missingCoverPrompt: true });
+
+  await assert.rejects(
+    () => buildImagePromptBundle(root, { strict: true }),
+    /cover/
+  );
 });
 
 test('blockiert im strengen Modus fehlende Szenenprompts', async () => {
