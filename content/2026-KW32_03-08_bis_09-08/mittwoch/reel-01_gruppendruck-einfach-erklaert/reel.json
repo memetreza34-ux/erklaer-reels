@@ -1,0 +1,18 @@
+{
+  "reelId": "reel-01_gruppendruck-einfach-erklaert",
+  "title": "Gruppendruck einfach erklärt",
+  "topicArea": "Psychologie und menschliches Verhalten",
+  "date": "2026-08-05",
+  "language": "de",
+  "promptLanguage": "en",
+  "aspectRatio": "9:16",
+  "targetDurationSeconds": 41.5,
+  "sceneCount": 10,
+  "visualStyleId": "human-editorial-cartoon",
+  "visualStyleReason": "Ein erwachsener handgezeichneter 2D-Editorial-Cartoon zeigt Zugehörigkeit, Unsicherheit, Anpassung und eigenständige Entscheidungen durch klare menschliche Körpersprache und natürliche Alltagsszenen.",
+  "subtitlesEnabled": true,
+  "motionEffectsEnabled": true,
+  "soundEffectsEnabled": true,
+  "backgroundMusicEnabled": false,
+  "status": "content-ready"
+}

@@ -1,0 +1,6 @@
+{
+  "passed": false,
+  "stage": "waiting-for-external-assets",
+  "checks": [],
+  "notes": ["Kreativpaket vollständig; Bilder, Original-Voice-over, lokale Prüfungen und Render fehlen noch."]
+}

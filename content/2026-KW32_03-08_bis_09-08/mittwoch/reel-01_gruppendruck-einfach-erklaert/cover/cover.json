@@ -1,0 +1,8 @@
+{
+  "headline": "GRUPPENDRUCK",
+  "visualIdea": "Eine einzelne Person steht in einer sich gleichförmig bewegenden Gruppe und hält eine andersfarbige geometrische Form fest, während alle anderen dieselbe Form zeigen.",
+  "expectedImageFileName": "cover.png",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "status": "prompt-ready"
+}
