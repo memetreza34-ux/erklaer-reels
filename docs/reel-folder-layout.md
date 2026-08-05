@@ -26,6 +26,8 @@ Cover und Szenen liegen gemeinsam in einem klaren Bereich:
 └── 99-alle-bildprompts.txt
 ```
 
+`99-alle-bildprompts.txt` enthält zuerst den vollständigen Cover-Prompt und danach alle Szenenprompts in chronologischer Reihenfolge.
+
 Jeder Szenenordner ist direkt mit dem echten technischen Szenenordner verbunden. Darin liegen:
 
 - `image-prompt.txt`
