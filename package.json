@@ -1,6 +1,6 @@
 {
   "name": "erklaer-reels",
-  "version": "0.22.0",
+  "version": "0.22.1",
   "private": true,
   "type": "module",
   "description": "KI-gestützte Produktionspipeline für visuelle Erklär-Reels.",
@@ -17,6 +17,7 @@
     "validate:render": "node src/cli/render-reel.js --validate-only",
     "organize:assets": "node src/cli/organize-assets.js",
     "organize:finder": "node src/cli/organize-finder.js",
+    "materialize:buendnisse": "node tools/materialize-2026-08-06-buendnisse.mjs",
     "trim:pauses": "node src/cli/trim-pauses.js",
     "build:timeline": "node src/cli/build-timeline.js",
     "sync:audio": "node src/cli/build-timeline.js",
