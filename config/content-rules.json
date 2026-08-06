@@ -128,7 +128,39 @@
     },
     "consistentStyleWithinReel": true,
     "creativeStyleBetweenReels": true,
+    "selectVisualWorldAfterScript": true,
     "integratedGermanKeywordsAllowed": true,
+    "integratedGermanTextPreferred": true,
+    "embeddedTextRules": {
+      "useWheneverItImprovesClarity": true,
+      "language": "de",
+      "preferredSceneCoveragePercent": {
+        "min": 55,
+        "max": 85
+      },
+      "preferredWordsPerScene": {
+        "min": 1,
+        "max": 5
+      },
+      "size": "contextual-small-medium-or-large",
+      "allowedUses": [
+        "kurze Überschrift",
+        "ein einzelnes Schlüsselwort",
+        "kleines Schild oder Etikett",
+        "Beschriftung auf Dokument, Karte, Display oder Gegenstand",
+        "kurze Schlussaussage"
+      ],
+      "mustAppearExactlyInPrompt": true,
+      "mustNotRepeatSubtitleVerbatim": true,
+      "mayBeOmittedWhen": "Text würde die Szene überladen, die Aussage doppeln oder die Bildgenerierung unnötig verschlechtern.",
+      "forbidden": [
+        "englischer sichtbarer Text",
+        "zufällige oder erfundene Wörter",
+        "lange Absätze",
+        "unnötig viel Text",
+        "erzwungener Text in jeder einzelnen Szene"
+      ]
+    },
     "fixedBuildUpRequired": false,
     "naturalContinuousCompositionRequired": true,
     "oneClearMomentPerScene": true,
