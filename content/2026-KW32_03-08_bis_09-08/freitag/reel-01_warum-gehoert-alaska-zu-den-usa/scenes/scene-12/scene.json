@@ -1,0 +1,18 @@
+{
+  "sceneId": "scene-12",
+  "order": 12,
+  "title": "Prüffrage: Nähe oder Politik",
+  "narration": "Die entscheidende Frage lautet: Bestimmt geografische Nähe, zu welchem Land ein Gebiet gehört?",
+  "imageText": "NÄHE ODER POLITIK?",
+  "visualIdea": "Die Alaska-Kugel betrachtet nachdenklich zwei Waagschalen: eine mit einer Landkarte und eine mit einem unterschriebenen Vertrag.",
+  "continuityNotes": "Ruhige Prüf- und Erkenntnisszene mit nur einer Alaska-Figur und einer klaren Waagenmetapher.",
+  "audioCue": "entscheidende Frage",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [{"text":"Was bestimmt Zugehörigkeit?"},{"text":"Geografie oder Entscheidungen?"}],
+  "subtitlePosition": "center",
+  "durationSeconds": 4.4,
+  "expectedImageFileName": "scene-12.png",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "status": "prompt-ready"
+}
