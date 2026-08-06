@@ -8,9 +8,9 @@
     },
     {
       "id": "round-country-characters",
-      "name": "Runde Länderfiguren",
-      "bestFor": ["Politik", "Länder", "Geografie", "Geschichte"],
-      "description": "Runde Länder- oder Regionenfiguren mit einfachen Augen, kleinen Armen und Beinen sowie kräftigen Konturen."
+      "name": "Runde Länder- und Kugelfiguren",
+      "bestFor": ["Politik", "Länder", "Geografie", "Geschichte", "allgemeine Erklärthemen mit klaren Symbolfiguren"],
+      "description": "Die komplette Figur ist eine runde Kugel mit einfachen weißen Augen und höchstens kleinen Armen und Beinen. Bei Ländern liegt die passende Flaggen- oder Regionsgestaltung direkt auf der Kugel. Keine menschlichen Köpfe, Hälse oder Oberkörper. Reifer sauberer 2D-Editorial-Stil mit kräftigen Konturen."
     },
     {
       "id": "visual-metaphor",
@@ -37,5 +37,10 @@
       "description": "Die Grundkomposition bleibt gleich und pro Bild kommt eine sinnvolle neue Information hinzu. Nur einsetzen, wenn es zum Thema passt."
     }
   ],
-  "selectionRule": "Wähle pro Reel den Stil, der das konkrete Thema am schnellsten und klarsten erklärt. Halte den Stil innerhalb des Reels konsistent, aber erzwinge keine einheitliche Bildwelt für den gesamten Kanal."
+  "selectionRule": "Schreibe zuerst das vollständige Script und wähle danach die Bildwelt, die den konkreten Inhalt am schnellsten und klarsten erklärt. Halte die gewählte Hauptwelt innerhalb des Reels konsistent, aber erzwinge nicht dieselbe Welt für jedes Thema.",
+  "crossStyleTextRule": {
+    "preferred": true,
+    "language": "de",
+    "guidance": "Wo es die Aussage verbessert, integriere sehr kurzen deutschen Bildtext. Ein einzelnes Wort oder 1–5 Wörter reichen. Der Text darf je nach Szene klein, mittel oder groß sein und natürlich auf Schildern, Karten, Dokumenten, Displays, Gegenständen oder als kurze Überschrift erscheinen. Nicht in jede Szene zwingen und Untertitel nicht wortgleich wiederholen."
+  }
 }
