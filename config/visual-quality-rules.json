@@ -1,5 +1,5 @@
 {
-  "version": 4,
+  "version": 5,
   "composition": {
     "width": 1080,
     "height": 1920,
@@ -15,9 +15,9 @@
     "topPercent": 8,
     "bottomPercent": 18,
     "subtitleVerticalPercent": {
-      "min": 76,
-      "max": 76,
-      "default": 76
+      "min": 50,
+      "max": 50,
+      "default": 50
     }
   },
   "subtitlePalette": {
@@ -30,6 +30,8 @@
   "manualChecks": [
     "mainSubjectSafe",
     "naturalContinuousComposition",
+    "oneClearMoment",
+    "noRepeatedMainCharacter",
     "noArtificialCenterGap",
     "textReadable",
     "textAccurate",
