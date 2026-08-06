@@ -34,7 +34,8 @@ async function readQualityGates() {
       minimumMatchReasonLength: 20,
       requireVisibleSummary: true,
       minimumVisibleSummaryLength: 15,
-      requiredComparedFields: ['narration', 'visualIdea', 'imageText', 'imagePrompt'],
+      requiredSceneComparedFields: ['narration', 'visualIdea', 'imageText', 'imagePrompt'],
+      requiredCoverComparedFields: ['headline', 'coverVisualIdea', 'coverPrompt'],
       forbidFilenameOnlyMatching: true,
       allowedMatchMethods: ['visual-content-review', 'visual-text-and-content-review']
     }
@@ -99,8 +100,10 @@ function validateVisualAssignment(assignment, target, scene, rules) {
   }
 
   const comparedFields = normalizeComparedFields(assignment.comparedFields);
-  const missingComparedFields = (rules.requiredComparedFields ?? [])
-    .filter((field) => !comparedFields.includes(field));
+  const requiredFields = scene
+    ? (rules.requiredSceneComparedFields ?? rules.requiredComparedFields ?? [])
+    : (rules.requiredCoverComparedFields ?? []);
+  const missingComparedFields = requiredFields.filter((field) => !comparedFields.includes(field));
   if (missingComparedFields.length > 0) {
     return `nicht mit allen Pflichtfeldern verglichen: ${missingComparedFields.join(', ')}`;
   }
