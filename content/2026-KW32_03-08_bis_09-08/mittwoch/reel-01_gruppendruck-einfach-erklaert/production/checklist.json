@@ -1,21 +1,22 @@
 {
-  "version": 10,
+  "version": 12,
   "reelId": "reel-01_gruppendruck-einfach-erklaert",
   "title": "Gruppendruck einfach erklärt",
-  "phase": "waiting-for-external-assets",
+  "phase": "waiting-for-new-external-assets",
   "tasks": [
-    {"id":"script-final","label":"Finales Voice-over-Script","status":"complete"},
+    {"id":"script-final","label":"Voice-over mit 168 Wörtern und starkem Ende","status":"complete"},
     {"id":"style-select","label":"Bildwelt auswählen","status":"complete"},
-    {"id":"scenes-fill","label":"Zehn Szenen planen","status":"complete"},
-    {"id":"prompts-write","label":"Zehn Bildprompts schreiben","status":"complete"},
-    {"id":"prompts-export","label":"Prompt-Sammeldatei erstellen","status":"complete"},
-    {"id":"subtitles-write","label":"Untertitelplan erstellen","status":"complete"},
-    {"id":"effects-write","label":"Effektplan erstellen","status":"complete"},
+    {"id":"scenes-fill","label":"14 klare Szenen planen","status":"complete"},
+    {"id":"ending-check","label":"Prüffrage und Entscheidung auf zwei Szenen verteilen","status":"complete"},
+    {"id":"prompts-write","label":"14 neue Bildprompts schreiben","status":"complete"},
+    {"id":"prompts-export","label":"Cover und 14 Szenenprompts sammeln","status":"complete"},
+    {"id":"subtitles-write","label":"Untertitel exakt mittig bei 50 Prozent planen","status":"complete"},
+    {"id":"effects-write","label":"Effektplan für 14 Szenen erstellen","status":"complete"},
     {"id":"cover-write","label":"Cover planen","status":"complete"},
     {"id":"caption-write","label":"Caption erstellen","status":"complete"},
     {"id":"sources-write","label":"Quellen dokumentieren","status":"complete"},
     {"id":"content-check","label":"Lokale strenge Inhaltsprüfung","status":"pending-local-run"},
-    {"id":"assets","label":"Bilder und Original-Voice-over einfügen","status":"waiting"},
-    {"id":"render","label":"Audio optimieren, synchronisieren und rendern","status":"waiting"}
+    {"id":"assets","label":"14 neue Bilder, Cover und neues Original-Voice-over einfügen","status":"waiting"},
+    {"id":"render","label":"Audio auf 1,10x optimieren, synchronisieren und neu rendern","status":"waiting"}
   ]
 }
