@@ -22,13 +22,13 @@ test('erzeugt einen vollständigen Abschlussbericht und nennt den nächsten Schr
     title: 'Warum fühlt sich Warten so lang an?',
     script: 'Beim Warten konzentrieren Menschen ihre Aufmerksamkeit stark auf die Zeit. Dadurch wirken einzelne Sekunden länger, obwohl die Uhr normal weiterläuft.',
     date: new Date('2026-07-31T12:00:00'),
-    sceneCount: 8,
+    sceneCount: 12,
     outputRoot
   });
 
   const report = await finalizeReel(result.reelDirectory, {
     strict: false,
-    audioDurationSeconds: 42,
+    audioDurationSeconds: 55,
     probeAudio: false
   });
 

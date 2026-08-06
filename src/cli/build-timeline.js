@@ -13,13 +13,15 @@ Erstellt die Master-Timeline, einen Render-Plan und einen Vorab-Qualitätsberich
 
 Beispiele:
   npm run build:timeline -- --dir "content/.../reel-01_titel"
-  npm run sync:audio -- --dir "content/.../reel-01_titel" --audio-duration 48.7
+  npm run sync:audio -- --dir "content/.../reel-01_titel" --audio-duration 58.0 --strict
 
 Optionen:
   --dir             Pfad zum Reel-Ordner
-  --audio-duration  Echte Audiodauer in Sekunden, falls ffprobe nicht verfügbar ist
-  --strict          Fehlende Audiodatei oder Szenenbilder als Fehler behandeln
+  --audio-duration  Echte Voice-over-Dauer in Sekunden, falls ffprobe nicht verfügbar ist
+  --strict          Fehlende Assets, unsichere Cue-Zeiten oder unausgeglichene Szenendauern als Fehler behandeln
   --no-probe        ffprobe nicht zur automatischen Dauerermittlung verwenden
+
+Die Timeline hängt automatisch den in config/production-quality-gates.json festgelegten Schlussbild-Nachlauf an.
 `);
 }
 
@@ -49,7 +51,9 @@ async function main() {
   });
 
   console.log(`Timeline: ${result.timeline.timingStatus}`);
-  console.log(`Dauer: ${result.timeline.audio.durationSeconds} Sekunden`);
+  console.log(`Voice-over: ${result.timeline.audio.durationSeconds} Sekunden`);
+  console.log(`Schlussbild-Nachlauf: ${result.timeline.composition.endingHoldSeconds} Sekunden`);
+  console.log(`Videodauer: ${result.timeline.composition.durationSeconds} Sekunden`);
   console.log(`Szenen: ${result.timeline.scenes.length}`);
   console.log(`Render-Plan: ${result.renderPlan.status}`);
   console.log(`Qualitätsprüfung: ${result.qualityReport.passed ? 'bestanden' : 'nicht bestanden'}`);

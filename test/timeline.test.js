@@ -11,7 +11,7 @@ async function writeJson(filePath, value) {
   await writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
 }
 
-test('führt 14 Szenen und mittige weiße Untertitel in einer Ein-Minuten-Timeline zusammen', async () => {
+test('führt 14 Szenen, mittige Untertitel und einen ruhigen Schlussbild-Nachlauf zusammen', async () => {
   const reelDirectory = await mkdtemp(path.join(os.tmpdir(), 'erklaer-timeline-'));
   const scenes = Array.from({ length: 14 }, (_, index) => {
     const sceneId = `scene-${String(index + 1).padStart(2, '0')}`;
@@ -40,7 +40,7 @@ test('führt 14 Szenen und mittige weiße Untertitel in einer Ein-Minuten-Timeli
     }))
   });
   await writeJson(path.join(reelDirectory, 'timeline', 'audio-sync.json'), {
-    version: 1,
+    version: 2,
     audioDurationSeconds: 56,
     cueTimings: scenes.map((scene, index) => ({
       sceneId: scene.sceneId,
@@ -65,9 +65,14 @@ test('führt 14 Szenen und mittige weiße Untertitel in einer Ein-Minuten-Timeli
   assert.equal(result.timeline.timingStatus, 'audio-synced');
   assert.equal(result.timeline.scenes.length, 14);
   assert.equal(result.timeline.scenes[0].startSeconds, 0);
-  assert.equal(result.timeline.scenes.at(-1).endSeconds, 56);
+  assert.equal(result.timeline.audio.durationSeconds, 56);
+  assert.equal(result.timeline.composition.endingHoldSeconds, 0.7);
+  assert.equal(result.timeline.scenes.at(-1).endSeconds, 56.7);
+  assert.equal(result.timeline.subtitles.cues.at(-1).endSeconds, 56);
   assert.equal(result.timeline.subtitles.cues.length, 14);
-  assert.equal(result.renderPlan.composition.durationFrames, 1680);
+  assert.equal(result.renderPlan.composition.durationFrames, 1701);
+  assert.equal(result.renderPlan.composition.audioDurationSeconds, 56);
+  assert.equal(result.renderPlan.composition.endingHoldSeconds, 0.7);
 
   const firstSubtitle = result.timeline.subtitles.cues[0];
   assert.equal(firstSubtitle.position, 'center');
@@ -83,4 +88,5 @@ test('führt 14 Szenen und mittige weiße Untertitel in einer Ein-Minuten-Timeli
   assert.equal(savedTimeline.scenes.length, 14);
   assert.equal(savedRenderPlan.scenes.length, 14);
   assert.equal(savedReport.stage, 'pre-render');
+  assert.equal(savedReport.endingHoldSeconds, 0.7);
 });

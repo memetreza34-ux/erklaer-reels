@@ -111,6 +111,8 @@ export async function createReelWorkspace({
     'sources',
     'review',
     'production',
+    'timeline',
+    'render',
     'inbox/images',
     'inbox/audio',
     'inbox/processed'
@@ -127,7 +129,7 @@ export async function createReelWorkspace({
     const scene = {
       sceneId,
       order: index,
-      title: index === 1 ? 'Hook' : `Bildmoment ${index}`,
+      title: index === 1 ? 'Hook' : index === sceneCount ? 'Starker Abschluss' : `Bildmoment ${index}`,
       narration: '',
       imageText: '',
       visualIdea: '',
@@ -140,6 +142,7 @@ export async function createReelWorkspace({
       expectedImageFileName: `${sceneId}.png`,
       promptStatus: 'missing',
       imageStatus: 'missing',
+      assetVerification: null,
       status: 'planned'
     };
 
@@ -157,6 +160,7 @@ export async function createReelWorkspace({
     promptLanguage: 'en',
     aspectRatio: '9:16',
     targetDurationSeconds: 58,
+    endingHoldSeconds: 0.7,
     sceneCount,
     visualStyleId: '',
     visualStyleReason: '',
@@ -180,6 +184,7 @@ export async function createReelWorkspace({
     images: 'missing',
     cover: 'missing',
     assetMatching: 'waiting-for-files',
+    endingHold: 'planned',
     qualityControl: 'pending'
   });
   await writeJson(path.join(reelDirectory, 'assets-manifest.json'), {
@@ -187,9 +192,10 @@ export async function createReelWorkspace({
     scenes: sceneIndex.map((scene) => ({
       sceneId: scene.sceneId,
       expectedFile: `scenes/${scene.sceneId}/${scene.expectedImageFileName}`,
+      verification: null,
       status: 'missing'
     })),
-    cover: { expectedFile: 'cover/cover.png', status: 'missing' }
+    cover: { expectedFile: 'cover/cover.png', verification: null, status: 'missing' }
   });
 
   await writeText(path.join(reelDirectory, 'script', 'raw-script.txt'), `${script.trim()}\n`);
@@ -218,7 +224,7 @@ export async function createReelWorkspace({
     timingStatus: 'estimated-until-audio-arrives',
     cues: []
   });
-  await writeText(path.join(reelDirectory, 'subtitles', 'README.md'), `# Untertitel\n\nUntertitel stehen fest und vollständig mittig bei exakt ${SUBTITLE_STYLE.verticalPositionPercent} % der Bildhöhe.\nSie bestehen durchgehend aus weichem Weiß (${SUBTITLE_STYLE.textColor}) mit dunkler Kontur und Schatten.\nEs gibt keine gelbe Wortmarkierung, keine schwarze Box und keinen sichtbaren Hintergrundbalken.\nNormalerweise 3–6 Wörter pro Einblendung und höchstens zwei Zeilen.\nDie Bildkomposition bleibt trotzdem natürlich: Es wird kein leerer horizontaler Streifen für Untertitel erzeugt.\n`);
+  await writeText(path.join(reelDirectory, 'subtitles', 'README.md'), `# Untertitel\n\nUntertitel stehen fest und vollständig mittig bei exakt ${SUBTITLE_STYLE.verticalPositionPercent} % der Bildhöhe.\nSie bestehen durchgehend aus weichem Weiß (${SUBTITLE_STYLE.textColor}) mit dunkler Kontur und Schatten.\nEs gibt keine gelbe Wortmarkierung, keine schwarze Box und keinen sichtbaren Hintergrundbalken.\nNormalerweise 3–6 Wörter pro Einblendung und höchstens zwei Zeilen.\nDie Bildkomposition bleibt trotzdem natürlich: Es wird kein leerer horizontaler Streifen für Untertitel erzeugt.\nNach dem letzten gesprochenen Wort endet der Untertitel; das Schlussbild bleibt ungefähr 0,7 Sekunden sauber sichtbar.\n`);
   await writeJson(path.join(reelDirectory, 'effects', 'effects-plan.json'), {
     version: 1,
     enabled: true,
@@ -262,6 +268,7 @@ export async function createReelWorkspace({
     expectedImageFileName: 'cover.png',
     promptStatus: 'missing',
     imageStatus: 'missing',
+    assetVerification: null,
     status: 'planned'
   });
   await writeText(path.join(reelDirectory, 'caption', 'caption.txt'));
@@ -272,13 +279,42 @@ export async function createReelWorkspace({
     checks: [],
     notes: []
   });
+  await writeJson(path.join(reelDirectory, 'review', 'scene-asset-verification.json'), {
+    version: 1,
+    passed: false,
+    scenes: sceneIndex.map((scene) => ({
+      sceneId: scene.sceneId,
+      order: scene.order,
+      title: scene.title,
+      expectedFile: null,
+      verification: null,
+      passed: false
+    }))
+  });
   await writeText(path.join(reelDirectory, 'inbox', 'images', '.gitkeep'));
   await writeText(path.join(reelDirectory, 'inbox', 'audio', '.gitkeep'));
   await writeText(path.join(reelDirectory, 'inbox', 'processed', '.gitkeep'));
-  await writeText(path.join(reelDirectory, 'inbox', 'README.md'), `# Unsortierte externe Dateien\n\nLege generierte Szenenbilder bevorzugt direkt in den passenden Ordner \`scenes/scene-XX/\` und benenne sie \`scene-XX.png\`.\nLege das Cover direkt nach \`cover/cover.png\`.\nLege das fertige Voice-over nach \`audio/\`.\nCodex prüft danach Bildwechsel, mittige weiße Untertitel ohne Box, Zooms, harte Schnitte und Soundeffekte gegen die echte Audiospur.\n`);
+  await writeText(path.join(reelDirectory, 'inbox', 'README.md'), `# Externe Dateien und sichere Zuordnung\n\nLege Bilder bevorzugt direkt in den passenden Ordner \`scenes/scene-XX/\` und benenne sie \`scene-XX.png\`. Auch dann muss Codex jedes Bild tatsächlich öffnen und gegen Sprechertext, Audio-Cue, visuelle Idee, Bildtext und Prompt prüfen.\n\nBei unsortierten Bildern in \`inbox/images/\` gilt zwingend:\n\n1. Sichtbaren Inhalt ohne Dateinamen beschreiben.\n2. Mit allen Szenenfeldern vergleichen.\n3. Gewählte Szene gegen vorherige und nächste Szene prüfen.\n4. Niemals nach Upload-Reihenfolge oder Dateinummer zuordnen.\n5. Unter 0,90 Konfidenz nicht raten.\n6. \`visualReviewed\`, \`secondPassConfirmed\`, \`sceneOrderConfirmed\`, \`visibleSummary\`, \`reason\`, \`comparedFields\`, \`confirmedTarget\` und \`confirmedSceneOrder\` eintragen.\n\nNach der Zuordnung müssen \`review/scene-asset-verification.json\` und die strenge visuelle Prüfung vollständig bestanden sein.\n\nLege das Cover nach \`cover/cover.png\` und das ursprüngliche Voice-over nach \`audio/\`.\n`);
   await writeJson(path.join(reelDirectory, 'inbox', 'asset-map.json'), {
-    version: 1,
+    version: 2,
     generatedBy: '',
+    assignmentSchema: {
+      imageSceneExample: {
+        source: 'images/datei.png',
+        target: 'scene-01',
+        confidence: 0.95,
+        visualReviewed: true,
+        secondPassConfirmed: true,
+        sceneOrderConfirmed: true,
+        confirmedTarget: 'scene-01',
+        confirmedSceneOrder: 1,
+        visibleSummary: 'Kurze neutrale Beschreibung des tatsächlich sichtbaren Bildinhalts.',
+        reason: 'Konkrete sichtbare Objekte und Handlung entsprechen Narration, visueller Idee und Prompt dieser Szene.',
+        comparedFields: ['narration', 'visualIdea', 'imageText', 'imagePrompt'],
+        matchMethod: 'visual-content-review',
+        reviewedAt: null
+      }
+    },
     assignments: [],
     unmatched: []
   });

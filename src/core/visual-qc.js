@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import { access, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
@@ -25,49 +26,114 @@ function addCheck(checks, id, passed, message, level = 'error', assetId = null) 
   checks.push({ id, assetId, passed, level, message });
 }
 
+function requiredChecksForAsset(rules, kind) {
+  const byKind = rules.manualChecksByKind?.[kind];
+  if (Array.isArray(byKind)) return byKind;
+  return Array.isArray(rules.manualChecks) ? rules.manualChecks : [];
+}
+
 function allManualChecksPassed(entry, requiredChecks) {
   return entry?.status === 'passed' && requiredChecks.every((key) => entry?.checks?.[key] === true);
 }
 
-function createReviewEntry(assetId, file, requiredChecks) {
+function manualEvidencePassed(entry, asset, rules) {
+  const evidenceRules = rules.manualEvidence ?? {};
+  if (evidenceRules.requireVisibleSummary &&
+      String(entry?.visibleSummary ?? '').trim().length < Number(evidenceRules.minimumVisibleSummaryLength ?? 15)) {
+    return false;
+  }
+  if (evidenceRules.requireMatchReason &&
+      String(entry?.matchReason ?? '').trim().length < Number(evidenceRules.minimumMatchReasonLength ?? 20)) {
+    return false;
+  }
+  if (evidenceRules.requireComparedAssetId && String(entry?.comparedAssetId ?? '') !== asset.assetId) {
+    return false;
+  }
+  if (asset.kind === 'scene' && evidenceRules.requireSecondPassConfirmationForScenes && entry?.secondPassConfirmed !== true) {
+    return false;
+  }
+  return true;
+}
+
+async function buildReviewFingerprint(reelDirectory, asset) {
+  const hash = createHash('sha256');
+  hash.update(JSON.stringify({
+    assetId: asset.assetId,
+    file: asset.file,
+    kind: asset.kind,
+    expected: asset.expected
+  }));
+
+  const filePath = path.join(reelDirectory, asset.file);
+  if (await exists(filePath)) {
+    hash.update(await readFile(filePath));
+  } else {
+    hash.update('[missing-file]');
+  }
+
+  return hash.digest('hex');
+}
+
+function createReviewEntry(asset, requiredChecks) {
   return {
-    assetId,
-    file,
+    assetId: asset.assetId,
+    file: asset.file,
+    kind: asset.kind,
+    expected: asset.expected,
+    reviewFingerprint: asset.reviewFingerprint,
     reviewer: '',
     reviewedAt: null,
     status: 'pending',
+    visibleSummary: '',
+    matchReason: '',
+    comparedAssetId: asset.assetId,
+    secondPassConfirmed: false,
     checks: Object.fromEntries(requiredChecks.map((key) => [key, null])),
     notes: []
   };
 }
 
-async function ensureInspectionFile(reelDirectory, assets, rules) {
+async function ensureInspectionFile(reelDirectory, assets, rules, reel) {
   const inspectionPath = path.join(reelDirectory, 'review', 'visual-inspection.json');
   const current = await readJson(inspectionPath, null);
   const byId = new Map((current?.assets ?? []).map((entry) => [entry.assetId, entry]));
   const next = {
-    version: 4,
+    version: 6,
+    visualStyleId: reel?.visualStyleId ?? '',
+    visualStyleReason: reel?.visualStyleReason ?? '',
     instructions: [
-      'Codex betrachtet jedes Bild visuell und setzt jeden Prüfpunkt auf true oder false.',
-      'Bei einem Fehler status auf needs-fix setzen und eine konkrete Notiz ergänzen.',
+      'Öffne jedes Bild tatsächlich. Dateiname, Upload-Reihenfolge oder Ordnerposition sind kein Beweis für die richtige Szene.',
+      'Erster Durchgang: Beschreibe den sichtbaren Inhalt neutral in visibleSummary, ohne die Szenennummer zu erraten.',
+      'Vergleiche das Bild danach mit expected.narration, expected.audioCue, expected.visualIdea, expected.imageText und expected.imagePrompt.',
+      'Trage in matchReason konkret ein, welche sichtbaren Objekte und Handlungen die Zuordnung bestätigen.',
+      'Zweiter Durchgang für Szenen: Vergleiche die Zuordnung nochmals mit der vorherigen und nächsten Szene und setze erst danach secondPassConfirmed auf true.',
+      'Setze comparedAssetId exakt auf die geprüfte scene-XX-ID. So werden vertauschte Nachbarszenen sichtbar blockiert.',
+      'Prüfe die gewählte Hauptbildwelt, Figurenform, Konturen und Farbwelt gegen reel.visualStyleId und visualStyleReason.',
+      'Geplanter deutscher Bildtext muss exakt stimmen; zusätzliche englische oder erfundene Wörter sind verboten.',
       'Prüfe genau einen klaren Bildmoment und keine mehrfach dargestellte Hauptperson innerhalb derselben Illustration.',
-      'Prüfe eine natürliche durchgehende Komposition ohne leeren Mittelstreifen oder künstlich getrennte obere und untere Bildhälfte.',
-      'Die exakte Bildmitte darf normal belegt sein; das Bild darf nicht künstlich für Untertitel freigeräumt werden.',
-      'Prüfe, dass keine unerwünschten lesbaren Wörter oder englischen Labels im Bild stehen.',
+      'Prüfe eine natürliche Komposition ohne leeren Mittelstreifen. Die exakte Bildmitte darf normal belegt sein.',
       'Prüfe die Lesbarkeit der weißen Untertitel mit dunkler Kontur exakt bei 50 Prozent Bildhöhe, ohne schwarze Hintergrundbox.',
-      'Nur vollständig bestandene Bilder erhalten status passed.'
+      'Ändert sich die Bilddatei, Narration, visuelle Idee, der Bildtext, Prompt oder die Bildwelt, wird eine frühere Freigabe automatisch auf pending zurückgesetzt.',
+      'Nur vollständig bestandene Bilder mit konkreter Begründung erhalten status passed.'
     ],
     safeZones: rules.safeZones,
     subtitlePalette: rules.subtitlePalette,
-    assets: assets.map(({ assetId, file }) => {
-      const base = createReviewEntry(assetId, file, rules.manualChecks);
-      const previous = byId.get(assetId) ?? {};
+    assets: assets.map((asset) => {
+      const requiredChecks = requiredChecksForAsset(rules, asset.kind);
+      const base = createReviewEntry(asset, requiredChecks);
+      const previous = byId.get(asset.assetId);
+      const previousStillValid = previous?.reviewFingerprint === asset.reviewFingerprint;
+      if (!previousStillValid) return base;
+
       return {
         ...base,
         ...previous,
+        expected: asset.expected,
+        reviewFingerprint: asset.reviewFingerprint,
         checks: { ...base.checks, ...(previous.checks ?? {}) },
-        assetId,
-        file
+        assetId: asset.assetId,
+        file: asset.file,
+        kind: asset.kind
       };
     })
   };
@@ -88,29 +154,67 @@ export async function runVisualQualityCheck(reelDirectory, { strict = false } = 
   const rules = await readJson(path.resolve('config', 'visual-quality-rules.json'), null);
   if (!rules) throw new Error('config/visual-quality-rules.json wurde nicht gefunden.');
 
+  const reel = await readJson(path.join(reelDirectory, 'reel.json'), {});
   const scenes = await readJson(path.join(reelDirectory, 'scenes', 'scene-index.json'), []);
   const manifest = await readJson(path.join(reelDirectory, 'assets-manifest.json'), { scenes: [], cover: {} });
   const effects = await readJson(path.join(reelDirectory, 'effects', 'effects-plan.json'), { scenes: [] });
   const subtitlePlan = await readJson(path.join(reelDirectory, 'subtitles', 'subtitle-plan.json'), {});
+  const cover = await readJson(path.join(reelDirectory, 'cover', 'cover.json'), {});
+  const coverPromptPath = path.join(reelDirectory, 'cover', 'cover-prompt.txt');
+  const coverPrompt = await exists(coverPromptPath) ? (await readFile(coverPromptPath, 'utf8')).trim() : '';
   const statusPath = path.join(reelDirectory, 'status.json');
   const status = await readJson(statusPath, {});
 
   const effectByScene = new Map((effects.scenes ?? []).map((entry) => [entry.sceneId, entry]));
   const manifestByScene = new Map((manifest.scenes ?? []).map((entry) => [entry.sceneId, entry]));
-  const assets = scenes.map((scene) => ({
-    assetId: scene.sceneId,
-    file: manifestByScene.get(scene.sceneId)?.expectedFile ?? `scenes/${scene.sceneId}/${scene.expectedImageFileName}`,
-    kind: 'scene',
-    scene
-  }));
+  const assets = [];
+
+  for (let index = 0; index < scenes.length; index += 1) {
+    const scene = scenes[index];
+    const promptPath = path.join(reelDirectory, 'scenes', scene.sceneId, 'image-prompt.txt');
+    const imagePrompt = await exists(promptPath) ? (await readFile(promptPath, 'utf8')).trim() : '';
+    assets.push({
+      assetId: scene.sceneId,
+      file: manifestByScene.get(scene.sceneId)?.expectedFile ?? `scenes/${scene.sceneId}/${scene.expectedImageFileName}`,
+      kind: 'scene',
+      scene,
+      expected: {
+        sceneId: scene.sceneId,
+        order: scene.order,
+        title: scene.title ?? '',
+        narration: scene.narration ?? '',
+        audioCue: scene.audioCue ?? '',
+        visualIdea: scene.visualIdea ?? '',
+        imageText: scene.imageText ?? '',
+        imagePrompt,
+        visualStyleId: reel.visualStyleId ?? '',
+        visualStyleReason: reel.visualStyleReason ?? '',
+        previousSceneId: scenes[index - 1]?.sceneId ?? null,
+        nextSceneId: scenes[index + 1]?.sceneId ?? null
+      }
+    });
+  }
+
   assets.push({
     assetId: 'cover',
     file: manifest.cover?.expectedFile ?? 'cover/cover.png',
     kind: 'cover',
-    scene: null
+    scene: null,
+    expected: {
+      headline: cover.headline ?? '',
+      visualIdea: cover.visualIdea ?? '',
+      imagePrompt: coverPrompt,
+      visualStyleId: reel.visualStyleId ?? '',
+      visualStyleReason: reel.visualStyleReason ?? '',
+      reelTitle: reel.title ?? ''
+    }
   });
 
-  const inspection = await ensureInspectionFile(reelDirectory, assets, rules);
+  for (const asset of assets) {
+    asset.reviewFingerprint = await buildReviewFingerprint(reelDirectory, asset);
+  }
+
+  const inspection = await ensureInspectionFile(reelDirectory, assets, rules, reel);
   const inspectionById = new Map(inspection.assets.map((entry) => [entry.assetId, entry]));
   const checks = [];
   const technicalAssets = [];
@@ -163,16 +267,25 @@ export async function runVisualQualityCheck(reelDirectory, { strict = false } = 
         `${asset.assetId}: Zoom und vertikaler Schwenk können mehr als ${verticalLimit}% Rand abschneiden.`, 'warning', asset.assetId);
     }
 
-    const manualPassed = allManualChecksPassed(inspectionById.get(asset.assetId), rules.manualChecks);
+    const inspectionEntry = inspectionById.get(asset.assetId);
+    const requiredChecks = requiredChecksForAsset(rules, asset.kind);
+    const manualPassed = allManualChecksPassed(inspectionEntry, requiredChecks);
+    const evidencePassed = manualEvidencePassed(inspectionEntry, asset, rules);
+
     addCheck(checks, `${asset.assetId}-manual-review`, manualPassed,
-      `${asset.assetId}: Manuelle visuelle Prüfung ist noch nicht vollständig bestanden.`, strict ? 'error' : 'warning', asset.assetId);
+      `${asset.assetId}: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden.`, strict ? 'error' : 'warning', asset.assetId);
+    addCheck(checks, `${asset.assetId}-semantic-evidence`, evidencePassed,
+      `${asset.assetId}: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt.`, strict ? 'error' : 'warning', asset.assetId);
 
     technicalAssets.push({
       assetId: asset.assetId,
       file: asset.file,
       kind: asset.kind,
+      expected: asset.expected,
+      reviewFingerprint: asset.reviewFingerprint,
       metadata,
-      manualReviewStatus: inspectionById.get(asset.assetId)?.status ?? 'pending'
+      manualReviewStatus: inspectionEntry?.status ?? 'pending',
+      semanticEvidencePassed: evidencePassed
     });
   }
 
@@ -205,6 +318,7 @@ export async function runVisualQualityCheck(reelDirectory, { strict = false } = 
     createdAt: new Date().toISOString(),
     strict,
     passed: errors.length === 0,
+    visualStyleId: reel.visualStyleId ?? '',
     safeZones: rules.safeZones,
     subtitlePalette: rules.subtitlePalette,
     summary: {

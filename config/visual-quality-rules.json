@@ -1,5 +1,5 @@
 {
-  "version": 5,
+  "version": 6,
   "composition": {
     "width": 1080,
     "height": 1920,
@@ -27,25 +27,51 @@
     "backgroundColor": "transparent",
     "textStrokeColor": "rgba(0, 0, 0, 0.92)"
   },
-  "manualChecks": [
-    "mainSubjectSafe",
-    "naturalContinuousComposition",
-    "oneClearMoment",
-    "noRepeatedMainCharacter",
-    "noArtificialCenterGap",
-    "textReadable",
-    "textAccurate",
-    "noUnrequestedReadableText",
-    "subtitleCollisionFree",
-    "subtitleReadableWithoutBox",
-    "platformUiSafe",
-    "motionSafe",
-    "styleConsistent"
-  ],
+  "manualChecksByKind": {
+    "scene": [
+      "sceneMeaningMatchesNarration",
+      "sceneMatchesVisualIdea",
+      "sceneOrderConfirmed",
+      "visualWorldMatch",
+      "characterModelConsistent",
+      "mainSubjectSafe",
+      "naturalContinuousComposition",
+      "oneClearMoment",
+      "noRepeatedMainCharacter",
+      "noArtificialCenterGap",
+      "plannedGermanTextExact",
+      "noUnexpectedReadableText",
+      "subtitleCollisionFree",
+      "subtitleReadableWithoutBox",
+      "platformUiSafe",
+      "motionSafe",
+      "styleConsistent"
+    ],
+    "cover": [
+      "coverMatchesTopic",
+      "headlineExactAndReadable",
+      "visualWorldMatch",
+      "mainSubjectSafe",
+      "naturalContinuousComposition",
+      "noArtificialCenterGap",
+      "noUnexpectedReadableText",
+      "platformUiSafe",
+      "styleConsistent"
+    ]
+  },
+  "manualEvidence": {
+    "requireVisibleSummary": true,
+    "minimumVisibleSummaryLength": 15,
+    "requireMatchReason": true,
+    "minimumMatchReasonLength": 20,
+    "requireComparedAssetId": true,
+    "requireSecondPassConfirmationForScenes": true
+  },
   "strictMode": {
     "requireAllAssets": true,
     "requireReadableMetadata": true,
     "requireMinimumResolution": true,
-    "requireManualReviewPassed": true
+    "requireManualReviewPassed": true,
+    "requireSemanticSceneVerification": true
   }
 }
