@@ -46,13 +46,15 @@ async function ensureInspectionFile(reelDirectory, assets, rules) {
   const current = await readJson(inspectionPath, null);
   const byId = new Map((current?.assets ?? []).map((entry) => [entry.assetId, entry]));
   const next = {
-    version: 3,
+    version: 4,
     instructions: [
       'Codex betrachtet jedes Bild visuell und setzt jeden Prüfpunkt auf true oder false.',
       'Bei einem Fehler status auf needs-fix setzen und eine konkrete Notiz ergänzen.',
+      'Prüfe genau einen klaren Bildmoment und keine mehrfach dargestellte Hauptperson innerhalb derselben Illustration.',
       'Prüfe eine natürliche durchgehende Komposition ohne leeren Mittelstreifen oder künstlich getrennte obere und untere Bildhälfte.',
+      'Die exakte Bildmitte darf normal belegt sein; das Bild darf nicht künstlich für Untertitel freigeräumt werden.',
       'Prüfe, dass keine unerwünschten lesbaren Wörter oder englischen Labels im Bild stehen.',
-      'Prüfe die Lesbarkeit der weißen Untertitel mit dunkler Kontur bei 76 Prozent Bildhöhe, ohne schwarze Hintergrundbox.',
+      'Prüfe die Lesbarkeit der weißen Untertitel mit dunkler Kontur exakt bei 50 Prozent Bildhöhe, ohne schwarze Hintergrundbox.',
       'Nur vollständig bestandene Bilder erhalten status passed.'
     ],
     safeZones: rules.safeZones,
@@ -63,10 +65,7 @@ async function ensureInspectionFile(reelDirectory, assets, rules) {
       return {
         ...base,
         ...previous,
-        checks: {
-          ...base.checks,
-          ...(previous.checks ?? {})
-        },
+        checks: { ...base.checks, ...(previous.checks ?? {}) },
         assetId,
         file
       };
@@ -120,14 +119,8 @@ export async function runVisualQualityCheck(reelDirectory, { strict = false } = 
   for (const asset of assets) {
     const filePath = path.join(reelDirectory, asset.file);
     const present = await exists(filePath);
-    addCheck(
-      checks,
-      `${asset.assetId}-present`,
-      present,
-      `${asset.assetId}: Bilddatei fehlt (${asset.file}).`,
-      strict ? 'error' : 'warning',
-      asset.assetId
-    );
+    addCheck(checks, `${asset.assetId}-present`, present,
+      `${asset.assetId}: Bilddatei fehlt (${asset.file}).`, strict ? 'error' : 'warning', asset.assetId);
 
     let metadata = null;
     if (present) {
@@ -138,14 +131,8 @@ export async function runVisualQualityCheck(reelDirectory, { strict = false } = 
       }
     }
 
-    addCheck(
-      checks,
-      `${asset.assetId}-metadata`,
-      Boolean(metadata),
-      `${asset.assetId}: Bildmaße oder Format konnten nicht gelesen werden.`,
-      strict ? 'error' : 'warning',
-      asset.assetId
-    );
+    addCheck(checks, `${asset.assetId}-metadata`, Boolean(metadata),
+      `${asset.assetId}: Bildmaße oder Format konnten nicht gelesen werden.`, strict ? 'error' : 'warning', asset.assetId);
 
     if (metadata) {
       const supported = rules.supportedFormats.includes(metadata.format) || rules.supportedFormats.includes(metadata.extension);
@@ -177,14 +164,8 @@ export async function runVisualQualityCheck(reelDirectory, { strict = false } = 
     }
 
     const manualPassed = allManualChecksPassed(inspectionById.get(asset.assetId), rules.manualChecks);
-    addCheck(
-      checks,
-      `${asset.assetId}-manual-review`,
-      manualPassed,
-      `${asset.assetId}: Manuelle visuelle Prüfung ist noch nicht vollständig bestanden.`,
-      strict ? 'error' : 'warning',
-      asset.assetId
-    );
+    addCheck(checks, `${asset.assetId}-manual-review`, manualPassed,
+      `${asset.assetId}: Manuelle visuelle Prüfung ist noch nicht vollständig bestanden.`, strict ? 'error' : 'warning', asset.assetId);
 
     technicalAssets.push({
       assetId: asset.assetId,
@@ -238,9 +219,7 @@ export async function runVisualQualityCheck(reelDirectory, { strict = false } = 
   };
 
   await writeJson(path.join(reelDirectory, 'review', 'visual-quality-report.json'), report);
-  status.visualQuality = report.passed
-    ? (strict ? 'passed' : 'technical-passed')
-    : 'needs-review';
+  status.visualQuality = report.passed ? (strict ? 'passed' : 'technical-passed') : 'needs-review';
   status.qualityControl = report.passed && strict ? 'visual-passed' : status.qualityControl;
   await writeJson(statusPath, status);
   return report;
