@@ -6,12 +6,12 @@
   "subtitles": "planned",
   "effects": "planned",
   "audio": "missing",
-  "audioPacing": "waiting-for-original-audio",
+  "audioPacing": "waiting-for-new-audio",
   "imagePrompts": "ready",
   "imagePromptBundle": "ready",
   "images": "missing",
   "cover": "prompt-ready",
   "assetMatching": "waiting-for-files",
-  "qualityControl": "pending",
+  "qualityControl": "content-passed",
   "render": "waiting-for-assets"
 }
