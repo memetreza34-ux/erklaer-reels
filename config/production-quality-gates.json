@@ -9,11 +9,16 @@
     "minimumMatchReasonLength": 20,
     "requireVisibleSummary": true,
     "minimumVisibleSummaryLength": 15,
-    "requiredComparedFields": [
+    "requiredSceneComparedFields": [
       "narration",
       "visualIdea",
       "imageText",
       "imagePrompt"
+    ],
+    "requiredCoverComparedFields": [
+      "headline",
+      "coverVisualIdea",
+      "coverPrompt"
     ],
     "forbidFilenameOnlyMatching": true,
     "allowedMatchMethods": [
