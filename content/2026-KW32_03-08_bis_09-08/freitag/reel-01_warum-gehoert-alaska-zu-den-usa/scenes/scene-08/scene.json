@@ -1,0 +1,18 @@
+{
+  "sceneId": "scene-08",
+  "order": 8,
+  "title": "Seward handelt den Preis aus",
+  "narration": "US-Außenminister William Seward handelte einen Preis von 7,2 Millionen Dollar aus.",
+  "imageText": "7,2 MILLIONEN DOLLAR",
+  "visualIdea": "Die runde USA- und Russland-Figur verhandeln über einen Vertrag; Münzen und die Alaska-Kugel liegen gut sichtbar dazwischen.",
+  "continuityNotes": "Keine realistische Person darstellen; Sewards Rolle wird über die USA-Kugel, Dokumente und Verhandlung erklärt.",
+  "audioCue": "7,2 Millionen Dollar",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [{"text":"Seward führte die Verhandlung"},{"text":"der Preis war fest"}],
+  "subtitlePosition": "center",
+  "durationSeconds": 4.4,
+  "expectedImageFileName": "scene-08.png",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "status": "prompt-ready"
+}
