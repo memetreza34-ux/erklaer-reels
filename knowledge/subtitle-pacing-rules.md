@@ -3,18 +3,18 @@
 ## Position
 
 - Zentrale Quelle ist `src/shared/subtitle-style.js`.
-- Position `center`
-- exakt 50 % Bildhöhe
-- erlaubter Bereich exakt 50–50 %
-- abweichende Werte werden auf 50 % zurückgesetzt oder im strengen Lauf blockiert
+- horizontal zentriert
+- vertikal exakt 58 % Bildhöhe
+- erlaubter Bereich exakt 58–58 %
+- abweichende Werte werden auf 58 % zurückgesetzt oder im strengen Lauf blockiert
 - normalerweise 3–6 Wörter und höchstens zwei Zeilen
 - Untertitel sind ein Overlay; Hauptmotive dürfen natürlich hinter ihnen liegen
 - keine künstlich leere horizontale Zone im Bild erzeugen
 
 ## Farben und Lesbarkeit
 
-- weiches Weiß `#F5F7FA`
-- keine gelbe Wortmarkierung
+- warmer heller Sandton `#E7C39A`
+- keine andersfarbige Wortmarkierung
 - keine schwarze Hintergrundbox oder Balken
 - dunkle Kontur und dezenter Schatten
 - alle Wörter eines Cues gleichfarbig
@@ -22,9 +22,12 @@
 ## Synchronisierung
 
 - kurze Sinnabschnitte an die echte Audiospur anpassen
-- Cue-Start und Cue-Ende müssen zum gesprochenen Abschnitt passen
+- Cue-Start und Cue-Ende müssen exakt zum gesprochenen Abschnitt passen
 - keine Wort-für-Wort-Karaoke-Animation
-- Einzelwortzeiten sind ohne Highlight nicht erforderlich
+- exakte Wortzeiten sind trotzdem verpflichtend
+- Codex hört das lokale Voice-over vollständig ab
+- gleichmäßig geschätzte oder erfundene Zeiten sind verboten
+- finale Cues benötigen `timingStatus: codex-word-synced` und `timingSource: codex-local-audio-review`
 
 ## Voice-over optimieren
 
@@ -47,6 +50,9 @@ Danach:
 ```bash
 npm run build:timeline -- --dir "PFAD-ZUM-REEL"
 npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
+npm run sync:words -- --dir "PFAD-ZUM-REEL"
+# production/codex-word-sync-task.md akustisch bearbeiten
+npm run sync:words -- --dir "PFAD-ZUM-REEL" --apply --strict
 ```
 
 ## Beispiel
@@ -57,12 +63,19 @@ npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
   "startSeconds": 4.18,
   "endSeconds": 5.72,
   "position": "center",
-  "verticalPositionPercent": 50,
-  "safeVerticalRangePercent": { "min": 50, "max": 50 },
-  "textColor": "#F5F7FA",
+  "verticalPositionPercent": 58,
+  "safeVerticalRangePercent": { "min": 58, "max": 58 },
+  "textColor": "#E7C39A",
   "highlightCurrentWord": false,
-  "highlightColor": "#F5F7FA",
+  "highlightColor": "#E7C39A",
   "backgroundColor": "transparent",
-  "timingStatus": "cue-synced"
+  "timingStatus": "codex-word-synced",
+  "timingSource": "codex-local-audio-review",
+  "wordTimings": [
+    { "text": "Wirtschaft", "startSeconds": 4.18, "endSeconds": 4.62 },
+    { "text": "für", "startSeconds": 4.68, "endSeconds": 4.82 },
+    { "text": "die", "startSeconds": 4.88, "endSeconds": 5.02 },
+    { "text": "Gesellschaft", "startSeconds": 5.08, "endSeconds": 5.62 }
+  ]
 }
 ```
