@@ -7,107 +7,97 @@ Jedes Reel erklärt einen Begriff, ein System oder einen Zusammenhang so einfach
 ## Script
 
 - ein durchgehender deutscher Erzähler
-- direkte, verständliche Hook ohne lange Einleitung
-- Thema möglichst sofort nennen und direkt erklären
-- einfache Wörter und kurze Sätze
-- ungefähr 35–55 Sekunden
+- direkte Hook ohne lange Einleitung
+- 155–175 Wörter
+- 55–60 Sekunden nach Optimierung auf exakt 1,10x
+- einfache, erwachsene und neutrale Sprache
 - keine Dialogrollen
 - politische Inhalte neutral und ohne Parteienwerbung
-- Unsicherheit und umstrittene Aussagen klar kennzeichnen
+- Unsicherheit klar kennzeichnen
+
+## Starkes Ende
+
+Die letzten zwei Szenen müssen eine echte Auflösung bilden:
+
+1. persönliche Prüf-, Erkenntnis- oder Entscheidungsfrage
+2. konkrete Lösung und kurzer einprägsamer Abschlusssatz
+
+Verboten sind ein abruptes Ende nach einer Aufzählung, eine schulische Zusammenfassung und ein einziges überladenes Bild mit mehreren Handlungsschritten.
 
 ## Bilder und Timing
 
-- Das Hook-Bild ist ab Sekunde 0 vollständig sichtbar.
-- Für 35–44 Sekunden normalerweise 8–10 visuelle Momente.
-- Für 45–55 Sekunden normalerweise 10–12 visuelle Momente.
-- Sichtbare Veränderung ungefähr alle 3,5–5 Sekunden.
-- Einfache Bilder dürfen kürzer stehen; komplexere Bilder dürfen etwas länger stehen.
-- Bildwechsel werden nach Sinnabschnitten und Audio-Cues geplant, nicht in starren Zeitblöcken.
-- Pro Reel eine zusammenhängende Bildwelt.
-- Zwischen Reels dürfen die Bildwelten wechseln.
-- Bildprompts sind Englisch; sichtbarer Bildtext ist nur erlaubt, wenn er ausdrücklich benötigt wird, und dann ausschließlich korrekt auf Deutsch.
-- Unerwünschte englische Wörter, Fantasietext, Labels, Logos und Wasserzeichen sind verboten.
+- Hook-Bild ab Sekunde 0
+- 12–14 visuelle Momente, Standard 13
+- sichtbare Veränderung ungefähr alle 3,5–5 Sekunden
+- Bildwechsel nach Sinnabschnitten und Audio-Cues
+- jede Szene zeigt genau einen klaren Moment
+- keine mehrfach dargestellte Hauptperson innerhalb eines Bildes
+- pro Reel eine konsistente Bildwelt
+- Bildprompts Englisch; sichtbarer Text nur bei ausdrücklicher Notwendigkeit und dann korrekt auf Deutsch
+- keine zufälligen Wörter, Fantasie-Labels, Logos oder Wasserzeichen
 
-## Natürliche Bildkomposition
+## Natürliche Komposition
 
-- Hauptmotive dürfen die geometrische Bildmitte normal nutzen.
-- Keine künstlich freigehaltene horizontale Mittelzone.
-- Kein leerer Streifen quer durch das Bild.
-- Keine voneinander getrennte obere und untere Bildhälfte nur wegen der Untertitel.
-- Keine riesigen leeren Baumstämme, Pfeile oder Flächen als Platzhalter für Text.
-- Vergleichsbilder möglichst seitlich oder als zusammenhängende Szene aufbauen.
-- Die Illustration muss auch ohne Untertitel vollständig und natürlich komponiert wirken.
-- Nur kleine unverzichtbare Details nicht direkt hinter dem unteren Untertitelbereich platzieren.
+- Hauptmotive dürfen die exakte Bildmitte normal nutzen und hinter Untertiteln liegen.
+- Untertitel sind ein Overlay; das Bild wird dafür nicht künstlich freigeräumt.
+- Keine leere horizontale Untertitelzone, kein Mittelstreifen und keine getrennten Bildhälften.
+- Keine gestapelten Panels, leeren Bäume, Pfeile oder großen Textplatzhalter.
+- Die Illustration muss auch ohne Untertitel vollständig und natürlich wirken.
 
 ## Untertitel
 
-Die zentrale Quelle ist `src/shared/subtitle-style.js`.
+Zentrale Quelle: `src/shared/subtitle-style.js`.
 
-- Position: `lower`
-- vertikale Position: exakt 76 % der Bildhöhe
-- durchgehend weiches Weiß `#F5F7FA`
+- Position `center`
+- exakt 50 % Bildhöhe
+- weiches Weiß `#F5F7FA`
 - keine gelbe Wortmarkierung
-- keine schwarze Hintergrundbox und kein Balken
-- Lesbarkeit durch dunkle Kontur und dezenten Schatten
-- normalerweise 3–6 Wörter pro Einblendung
-- höchstens zwei Zeilen
-- keine Wort-für-Wort-Karaoke-Animation
-- integrierten Bildtext nicht wortgleich wiederholen
-- exakte Einzelwortzeiten sind ohne Wort-Highlight nicht erforderlich
+- keine schwarze Hintergrundbox oder Balken
+- dunkle Kontur und dezenter Schatten
+- normalerweise 3–6 Wörter, höchstens zwei Zeilen
+- keine Karaoke-Animation
+- exakte Einzelwortzeiten ohne Highlight nicht erforderlich
 
 ## Audio
 
-Die zentrale Quelle ist `src/shared/audio-pacing-style.js`.
+Zentrale Quelle: `src/shared/audio-pacing-style.js`.
 
-- Voice-over immer von der ursprünglichen Datei verarbeiten
+- immer die ursprüngliche Datei verarbeiten
 - Pausen ab ungefähr 0,24 Sekunden kürzen
 - kurze natürliche Restpause behalten
-- Geschwindigkeit exakt `1.10x`
-- Tonhöhe erhalten
-- integrierte Lautheit auf `-16 LUFS` normalisieren
-- True Peak auf `-1,5 dBTP` begrenzen
-- Lautheitsbereich `11 LRA`
-- bereits optimiertes Audio niemals erneut beschleunigen
-- nach jeder Audioänderung Timeline, Szenen-Cues und Untertitel-Cues neu synchronisieren
+- exakt 1,10x, Tonhöhe erhalten
+- −16 LUFS integrierte Lautheit
+- höchstens −1,5 dBTP True Peak
+- Lautheitsbereich 11 LRA
+- optimiertes Audio niemals erneut beschleunigen
+- danach Timeline, Szenen-Cues und Untertitel-Cues neu synchronisieren
 
 ## Bewegung, Übergänge und Sound
 
-- Planung in `effects/effects-plan.json`
-- nicht jede Szene benötigt Bewegung
+- nicht jede Szene bewegen
 - Zoom normalerweise 2–6 %, maximal 8 %
 - Schwenk maximal 4 %
-- Hook ohne Übergang: `none`, Dauer 0
-- danach ausschließlich direkte harte Schnitte: `cut`, Dauer 0
+- Hook `none`, Dauer 0
+- danach nur `cut`, Dauer 0
 - keine Crossfades, Schwarzblenden, Slides, Glitches, Spins oder Flash-Übergänge
-- kein schwarzes Zwischenbild
-- Hintergrundmusik standardmäßig aus
+- Hintergrundmusik aus
 - null bis zwei dezente Soundeffekte pro Szene
-- Voice-over hat immer Vorrang
-
-## Stärkste Bildwelten
-
-1. Menschliche Editorial-Cartoonfiguren für Psychologie und Gesellschaft
-2. Runde Länderfiguren für neutrale Länder- und Geografieerklärungen
-3. Starke visuelle Metaphern für abstrakte Begriffe und Hooks
-
-Vergleichspanels oder Build-up-Sequenzen nur einsetzen, wenn sie das Thema klarer machen.
+- Voice-over hat Vorrang
 
 ## Qualitätskontrolle
 
-Vor der Freigabe prüfen:
+Vor Freigabe prüfen:
 
-- Ist das Hook-Bild sofort sichtbar?
-- Erklärt jedes Bild genau den zugehörigen Satz?
-- Stimmt jeder Bildwechsel mit seinem Audio-Cue überein?
-- Wirkt jede Illustration als natürliche zusammenhängende Komposition?
-- Gibt es keinen leeren Mittelstreifen oder künstlich getrennte Bildhälften?
-- Enthält das Bild keine unerwünschten englischen oder erfundenen Wörter?
-- Bleiben Figuren, Konturen und Proportionen konsistent?
-- Stehen Untertitel exakt bei 76 % Bildhöhe?
-- Sind alle Wörter weiß, ohne gelbe Markierung und ohne schwarze Box?
-- Bleiben Untertitel durch Kontur und Schatten lesbar?
-- Ist das Voice-over exakt auf `1.10x` verarbeitet?
-- Sind `-16 LUFS` und `-1,5 dBTP` eingestellt?
-- Sind Zooms und Schwenks dezent und begründet?
-- Werden ausschließlich direkte harte Schnitte verwendet?
-- Ist das Cover auf kleiner Ansicht lesbar?
+- 155–175 Wörter und 55–60 Sekunden
+- 12–14 Szenen
+- Hook sofort sichtbar
+- starkes Ende über mindestens zwei Szenen
+- jedes Bild erklärt genau seinen Satz und zeigt nur einen klaren Moment
+- keine kopierte Hauptperson oder überladene Mehrschritt-Grafik
+- natürliche Komposition ohne leere Mitte
+- keine unerwünschte Schrift
+- Untertitel exakt bei 50 %, weiß, ohne Gelb und ohne Box
+- Voice-over exakt 1,10x, −16 LUFS und höchstens −1,5 dBTP
+- Bildwechsel und Audio-Cues synchron
+- ausschließlich direkte harte Schnitte
+- Cover auf kleiner Ansicht lesbar

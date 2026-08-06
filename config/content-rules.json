@@ -59,8 +59,29 @@
     "avoidPoliticalEndorsement": true,
     "stateUncertaintyClearly": true,
     "targetDurationSeconds": {
-      "min": 35,
-      "max": 55
+      "min": 55,
+      "max": 60,
+      "preferred": 58
+    },
+    "targetWordCount": {
+      "min": 155,
+      "max": 175,
+      "preferred": 165
+    },
+    "endingRules": {
+      "required": true,
+      "minimumFinalScenes": 2,
+      "structure": [
+        "klare persönliche Prüf- oder Erkenntnisfrage",
+        "konkrete Handlung oder Lösung",
+        "kurzer einprägsamer Abschlusssatz"
+      ],
+      "avoid": [
+        "abruptes Ende direkt nach einer langen Aufzählung",
+        "schulische Zusammenfassung ohne Erkenntnis",
+        "mehrere Handlungsschritte in einem einzigen überladenen Bild",
+        "generischer Aufruf ohne Bezug zum Thema"
+      ]
     },
     "maximumSentencePauseSeconds": 0.24,
     "preferredSentencePauseSeconds": 0.1,
@@ -83,20 +104,15 @@
     }
   },
   "visualRules": {
-    "minimumSceneCount": 8,
-    "maximumSceneCount": 12,
+    "minimumSceneCount": 12,
+    "maximumSceneCount": 14,
+    "defaultSceneCount": 13,
     "sceneCountByDuration": [
       {
-        "durationSecondsMin": 35,
-        "durationSecondsMax": 44,
-        "recommendedScenesMin": 8,
-        "recommendedScenesMax": 10
-      },
-      {
-        "durationSecondsMin": 45,
-        "durationSecondsMax": 55,
-        "recommendedScenesMin": 10,
-        "recommendedScenesMax": 12
+        "durationSecondsMin": 55,
+        "durationSecondsMax": 60,
+        "recommendedScenesMin": 12,
+        "recommendedScenesMax": 14
       }
     ],
     "visualChangeIntervalSeconds": {
@@ -115,10 +131,13 @@
     "integratedGermanKeywordsAllowed": true,
     "fixedBuildUpRequired": false,
     "naturalContinuousCompositionRequired": true,
+    "oneClearMomentPerScene": true,
     "mainSubjectMayUseCenter": true,
+    "mainSubjectMayAppearBehindSubtitles": true,
     "forbidArtificialSubtitleGap": true,
     "forbidEmptyHorizontalStripe": true,
     "forbidDisconnectedTopBottomLayout": true,
+    "forbidOverloadedMultiStepFinalImage": true,
     "forbidUnrequestedReadableText": true,
     "visibleTextLanguage": "de",
     "noWatermarks": true,
@@ -127,19 +146,19 @@
   "subtitleRules": {
     "defaultEnabled": true,
     "separateFromImagePrompts": true,
-    "position": "lower",
+    "position": "center",
     "verticalPositionPercent": {
-      "min": 76,
-      "max": 76,
-      "default": 76
+      "min": 50,
+      "max": 50,
+      "default": 50
     },
-    "fixedExactLowerPosition": true,
+    "fixedExactCenterPosition": true,
     "palette": {
       "textColor": "#F5F7FA",
       "highlightColor": "#F5F7FA",
       "backgroundColor": "transparent",
       "textStrokeColor": "rgba(0, 0, 0, 0.92)",
-      "reason": "Einheitlich weißer Text mit dunkler Kontur bleibt lesbar, ohne die Illustration durch Gelb oder eine schwarze Box zu verdecken."
+      "reason": "Einheitlich weißer Text mit dunkler Kontur bleibt in der Bildmitte lesbar, ohne Gelb oder eine schwarze Box."
     },
     "wordsPerCue": {
       "min": 3,
@@ -156,7 +175,6 @@
     "fallbackWordTiming": "plain-soft-white-no-highlight",
     "repeatIntegratedImageText": false,
     "avoidPlatformUiSafeZones": true,
-    "avoidExactScreenCenter": true,
     "allowPositionAdjustmentForVisualConflicts": false,
     "doNotCreateBlankBandInImage": true
   }

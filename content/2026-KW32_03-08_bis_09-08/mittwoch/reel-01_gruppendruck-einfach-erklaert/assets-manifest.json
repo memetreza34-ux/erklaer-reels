@@ -1,8 +1,5 @@
 {
-  "audio": {
-    "expectedFile": "audio/voiceover.mp3",
-    "status": "missing"
-  },
+  "audio": {"expectedFile": "audio/voiceover.mp3", "status": "missing"},
   "scenes": [
     {"sceneId":"scene-01","expectedFile":"scenes/scene-01/scene-01.png","status":"missing"},
     {"sceneId":"scene-02","expectedFile":"scenes/scene-02/scene-02.png","status":"missing"},
@@ -13,10 +10,11 @@
     {"sceneId":"scene-07","expectedFile":"scenes/scene-07/scene-07.png","status":"missing"},
     {"sceneId":"scene-08","expectedFile":"scenes/scene-08/scene-08.png","status":"missing"},
     {"sceneId":"scene-09","expectedFile":"scenes/scene-09/scene-09.png","status":"missing"},
-    {"sceneId":"scene-10","expectedFile":"scenes/scene-10/scene-10.png","status":"missing"}
+    {"sceneId":"scene-10","expectedFile":"scenes/scene-10/scene-10.png","status":"missing"},
+    {"sceneId":"scene-11","expectedFile":"scenes/scene-11/scene-11.png","status":"missing"},
+    {"sceneId":"scene-12","expectedFile":"scenes/scene-12/scene-12.png","status":"missing"},
+    {"sceneId":"scene-13","expectedFile":"scenes/scene-13/scene-13.png","status":"missing"},
+    {"sceneId":"scene-14","expectedFile":"scenes/scene-14/scene-14.png","status":"missing"}
   ],
-  "cover": {
-    "expectedFile": "cover/cover.png",
-    "status": "missing"
-  }
+  "cover": {"expectedFile": "cover/cover.png", "status": "missing"}
 }

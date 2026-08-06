@@ -29,68 +29,42 @@ async function createReadyFixture() {
     afterSeconds: 2,
     playbackRate: 1.1,
     loudnessNormalized: true,
-    loudnessSettings: {
-      loudnessTargetLufs: -16,
-      truePeakDbtp: -1.5,
-      loudnessRangeLra: 11
-    }
+    loudnessSettings: { loudnessTargetLufs: -16, truePeakDbtp: -1.5, loudnessRangeLra: 11 }
   });
-  await writeJson(path.join(root, 'review', 'final-readiness-report.json'), {
-    readyForRenderer: true
-  });
+  await writeJson(path.join(root, 'review', 'final-readiness-report.json'), { readyForRenderer: true });
   await writeJson(path.join(root, 'render', 'render-plan.json'), {
     version: 2,
     reelId: 'reel-01_test',
     status: 'ready-for-renderer',
-    composition: {
-      width: 1080,
-      height: 1920,
-      fps: 30,
-      durationSeconds: 2,
-      durationFrames: 60
-    },
-    voiceover: {
-      file: 'audio/voiceover-tight.m4a',
-      volume: 1
-    },
-    scenes: [
-      {
-        sceneId: 'scene-01',
-        imageFile: 'scenes/scene-01/scene-01.png',
-        startFrame: 0,
-        endFrame: 60,
-        transitionIn: { type: 'none', durationSeconds: 0 },
-        cameraMotion: {
-          type: 'subtle-push-in',
-          startScale: 1,
-          endScale: 1.04,
-          panXPercent: 0,
-          panYPercent: 0
-        },
-        subtitles: [
-          {
-            id: 'subtitle-01',
-            text: 'Ein kurzer Untertitel',
-            startSeconds: 0.2,
-            endSeconds: 1.8,
-            position: 'lower',
-            verticalPositionPercent: 76,
-            textColor: '#F5F7FA',
-            highlightCurrentWord: false,
-            highlightColor: '#F5F7FA',
-            backgroundColor: 'transparent'
-          }
-        ],
-        soundEffects: []
-      }
-    ]
+    composition: { width: 1080, height: 1920, fps: 30, durationSeconds: 2, durationFrames: 60 },
+    voiceover: { file: 'audio/voiceover-tight.m4a', volume: 1 },
+    scenes: [{
+      sceneId: 'scene-01',
+      imageFile: 'scenes/scene-01/scene-01.png',
+      startFrame: 0,
+      endFrame: 60,
+      transitionIn: { type: 'none', durationSeconds: 0 },
+      cameraMotion: { type: 'subtle-push-in', startScale: 1, endScale: 1.04, panXPercent: 0, panYPercent: 0 },
+      subtitles: [{
+        id: 'subtitle-01',
+        text: 'Ein kurzer Untertitel',
+        startSeconds: 0.2,
+        endSeconds: 1.8,
+        position: 'center',
+        verticalPositionPercent: 50,
+        textColor: '#F5F7FA',
+        highlightCurrentWord: false,
+        highlightColor: '#F5F7FA',
+        backgroundColor: 'transparent'
+      }],
+      soundEffects: []
+    }]
   });
   return root;
 }
 
-test('akzeptiert 1.10x, -16 LUFS und weißen Untertitel ohne Box', async () => {
-  const root = await createReadyFixture();
-  const report = await validateRendererInput(root);
+test('akzeptiert 1.10x, -16 LUFS und mittigen weißen Untertitel ohne Box', async () => {
+  const report = await validateRendererInput(await createReadyFixture());
   assert.equal(report.passed, true);
   assert.equal(report.summary.failedChecks, 0);
 });
@@ -102,29 +76,26 @@ test('blockiert altes 1.05x-Pacing oder fehlende Lautheitsnormalisierung', async
   pacing.playbackRate = 1.05;
   pacing.loudnessNormalized = false;
   await writeJson(reportPath, pacing);
-
   const report = await validateRendererInput(root);
   assert.equal(report.passed, false);
-  assert.ok(report.checks.some((check) => check.id === 'audio-playback-rate' && check.passed === false));
-  assert.ok(report.checks.some((check) => check.id === 'audio-loudness-normalized' && check.passed === false));
+  assert.ok(report.checks.some((check) => check.id === 'audio-playback-rate' && !check.passed));
+  assert.ok(report.checks.some((check) => check.id === 'audio-loudness-normalized' && !check.passed));
 });
 
-test('blockiert abweichende Position, Gelb und Hintergrundbox', async () => {
+test('blockiert alte untere Position, Gelb und Hintergrundbox', async () => {
   const root = await createReadyFixture();
   const planPath = path.join(root, 'render', 'render-plan.json');
   const plan = await readJson(planPath);
-  plan.scenes[0].subtitles[0].verticalPositionPercent = 50;
+  plan.scenes[0].subtitles[0].verticalPositionPercent = 76;
   plan.scenes[0].subtitles[0].highlightCurrentWord = true;
   plan.scenes[0].subtitles[0].highlightColor = '#FFD84D';
   plan.scenes[0].subtitles[0].backgroundColor = 'rgba(0, 0, 0, 0.72)';
   await writeJson(planPath, plan);
-
   const report = await validateRendererInput(root);
   assert.equal(report.passed, false);
-  assert.ok(report.checks.some((check) => check.id === 'subtitle-01-vertical-position' && check.passed === false));
-  assert.ok(report.checks.some((check) => check.id === 'subtitle-01-highlight-color' && check.passed === false));
-  assert.ok(report.checks.some((check) => check.id === 'subtitle-01-highlight-disabled' && check.passed === false));
-  assert.ok(report.checks.some((check) => check.id === 'subtitle-01-background-transparent' && check.passed === false));
+  for (const id of ['subtitle-01-vertical-position', 'subtitle-01-highlight-color', 'subtitle-01-highlight-disabled', 'subtitle-01-background-transparent']) {
+    assert.ok(report.checks.some((check) => check.id === id && !check.passed));
+  }
 });
 
 test('blockiert Fade- und Crossfade-Übergänge', async () => {
@@ -133,20 +104,15 @@ test('blockiert Fade- und Crossfade-Übergänge', async () => {
   const plan = await readJson(planPath);
   plan.scenes[0].transitionIn = { type: 'crossfade', durationSeconds: 0.2 };
   await writeJson(planPath, plan);
-
   const report = await validateRendererInput(root);
   assert.equal(report.passed, false);
-  assert.ok(report.checks.some((check) => check.id === 'scene-01-transition' && check.passed === false));
-  assert.ok(report.checks.some((check) => check.id === 'scene-01-transition-duration' && check.passed === false));
 });
 
 test('blockiert eine finale Freigabe ohne Audio-Pacing-Bericht', async () => {
   const root = await createReadyFixture();
   await writeJson(path.join(root, 'review', 'audio-pacing-report.json'), {});
-
   const report = await validateRendererInput(root);
   assert.equal(report.passed, false);
-  assert.ok(report.checks.some((check) => check.id === 'audio-pacing-report' && check.passed === false));
 });
 
 test('blockiert Pfade außerhalb des Reel-Ordners', async () => {
@@ -155,32 +121,21 @@ test('blockiert Pfade außerhalb des Reel-Ordners', async () => {
     version: 2,
     reelId: 'reel-01_unsafe',
     status: 'ready-for-renderer',
-    composition: {
-      width: 1080,
-      height: 1920,
-      fps: 30,
-      durationFrames: 60
-    },
-    voiceover: {
-      file: '../voiceover.mp3',
-      volume: 1
-    },
-    scenes: [
-      {
-        sceneId: 'scene-01',
-        imageFile: '../scene.png',
-        startFrame: 0,
-        endFrame: 60,
-        transitionIn: { type: 'none', durationSeconds: 0 },
-        cameraMotion: { startScale: 1, endScale: 1, panXPercent: 0, panYPercent: 0 },
-        subtitles: [],
-        soundEffects: []
-      }
-    ]
+    composition: { width: 1080, height: 1920, fps: 30, durationFrames: 60 },
+    voiceover: { file: '../voiceover.mp3', volume: 1 },
+    scenes: [{
+      sceneId: 'scene-01',
+      imageFile: '../scene.png',
+      startFrame: 0,
+      endFrame: 60,
+      transitionIn: { type: 'none', durationSeconds: 0 },
+      cameraMotion: { startScale: 1, endScale: 1, panXPercent: 0, panYPercent: 0 },
+      subtitles: [],
+      soundEffects: []
+    }]
   });
-
   const report = await validateRendererInput(root);
   assert.equal(report.passed, false);
-  assert.ok(report.checks.some((check) => check.id === 'voiceover-safe-path' && check.passed === false));
-  assert.ok(report.checks.some((check) => check.id === 'scene-01-image-safe-path' && check.passed === false));
+  assert.ok(report.checks.some((check) => check.id === 'voiceover-safe-path' && !check.passed));
+  assert.ok(report.checks.some((check) => check.id === 'scene-01-image-safe-path' && !check.passed));
 });

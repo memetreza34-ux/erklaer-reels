@@ -1,6 +1,6 @@
 # Remotion-Renderer
 
-Der Renderer erzeugt aus `render/render-plan.json` eine fertige MP4 mit Szenenbildern, optimiertem Voice-over, Untertiteln, dezenten Bewegungen und optionalen Soundeffekten.
+Der Renderer erzeugt aus `render/render-plan.json` eine fertige MP4 mit 12–14 Szenenbildern, optimiertem Voice-over, mittigen Untertiteln, dezenten Bewegungen und optionalen Soundeffekten.
 
 ## Vorbereitung
 
@@ -13,37 +13,27 @@ npm run check:visuals -- --dir "PFAD-ZUM-REEL" --strict
 npm run finalize:reel -- --dir "PFAD-ZUM-REEL" --strict
 ```
 
-`trim:pauses` verarbeitet immer die ursprüngliche Voice-over-Datei, beschleunigt sie auf exakt `1.10x`, erhält die Tonhöhe und normalisiert auf `-16 LUFS` bei `-1,5 dBTP`.
+Das Audio wird von der ursprünglichen Datei auf exakt 1,10x verarbeitet, die Tonhöhe erhalten und auf −16 LUFS bei höchstens −1,5 dBTP normalisiert.
 
-`review/final-readiness-report.json` muss `readyForRenderer: true` enthalten und `render/render-plan.json` den Status `ready-for-renderer` besitzen.
-
-## Untertitelstil
+## Untertitel
 
 Zentrale Quelle: `src/shared/subtitle-style.js`.
 
-- Position `lower`
-- vertikale Position exakt 76 %
-- weiches Weiß `#F5F7FA`
-- alle Wörter gleichfarbig
+- Position `center`
+- exakt 50 % Bildhöhe
+- Weiß `#F5F7FA`
 - keine gelbe Wortmarkierung
-- transparenter Hintergrund
-- keine schwarze Box oder Balken
-- dunkle Kontur und dezenter Schatten
+- transparenter Hintergrund ohne Box oder Balken
+- dunkle Kontur und Schatten
 - normalerweise 3–6 Wörter, höchstens zwei Zeilen
 
-Der Renderer blockiert eine gelbe Markierung, einen schwarzen Hintergrund oder eine abweichende Position.
+Der Renderer blockiert die alte Position bei 76 %, gelbe Markierungen, schwarze Hintergründe und andere Abweichungen.
 
 ## Übergänge
 
-- Hook: `none`, Dauer 0
-- jede weitere Szene: `cut`, Dauer 0
-- keine Crossfades
-- keine Ein- oder Ausblendungen
-- keine Schwarzblenden
-- keine Slides
-- kein schwarzes Zwischenbild
-
-Das neue Bild ist ab dem ersten Schnittframe vollständig sichtbar.
+- Hook `none`, Dauer 0
+- jede weitere Szene `cut`, Dauer 0
+- keine Crossfades, Einblendungen, Schwarzblenden, Slides oder schwarzen Zwischenbilder
 
 ## Renderer-Eingabe prüfen
 
@@ -51,25 +41,17 @@ Das neue Bild ist ab dem ersten Schnittframe vollständig sichtbar.
 npm run validate:render -- --dir "PFAD-ZUM-REEL"
 ```
 
-Geprüft werden:
+Geprüft werden unter anderem:
 
 - 1080 × 1920 bei 30 FPS
-- positive Gesamtdauer
-- lückenlose Szenenframes
-- direkte Schnitte mit Dauer 0
-- bestandener Audio-Pacing-Bericht
-- Geschwindigkeit exakt `1.10x`
-- Lautheitsnormalisierung aktiviert
-- Zielwert `-16 LUFS`
-- True Peak `-1,5 dBTP`
+- lückenlose Szenenframes und direkte Schnitte
+- Audio exakt 1,10x
+- −16 LUFS und höchstens −1,5 dBTP
 - vorhandene Bilder und Voice-over-Datei
 - sichere lokale Pfade
 - zulässige Zoom- und Schwenkwerte
-- Untertitel exakt bei 76 %
-- Text und ehemalige Highlight-Farbe beide `#F5F7FA`
-- `highlightCurrentWord: false`
-- Hintergrund `transparent`
-- finale Renderer-Freigabe
+- Untertitel exakt bei 50 %, weiß und transparent
+- finale Freigabe `readyForRenderer: true`
 
 ## MP4 erzeugen
 
@@ -83,59 +65,6 @@ Standardausgabe:
 PFAD-ZUM-REEL/output/REEL-ID.mp4
 ```
 
-Eigener Ausgabepfad:
+`--force` überspringt nur die finale Freigabeprüfung. Fehlende Assets, unsichere Pfade, falsche Audio- oder Untertitelwerte und verbotene Übergänge bleiben Fehler.
 
-```bash
-npm run render:reel -- \
-  --dir "PFAD-ZUM-REEL" \
-  --output "exports/mein-reel.mp4"
-```
-
-Optionen:
-
-```text
---codec h264
---crf 18
---concurrency 4
---force
-```
-
-`--force` überspringt nur die finale Freigabeprüfung. Fehlende Assets, unsichere Pfade, ungültige Framedaten, falsche Audio- oder Untertitelwerte und verbotene Übergänge bleiben Fehler.
-
-## Gerenderte Bestandteile
-
-- Szenenbilder aus dem Render-Plan
-- auf `1.10x` beschleunigtes und lautheitsnormalisiertes Voice-over
-- weiße Untertitel unten mit Kontur und Schatten
-- keine Untertitelbox
-- keine gelbe Wortanimation
-- dezente Zooms und Schwenks
-- direkte harte Schnitte
-- Soundeffekte mit gültigem lokalem `file`-Pfad
-
-## Berichte
-
-Vor dem Rendering:
-
-```text
-review/audio-pacing-report.json
-review/renderer-input-report.json
-```
-
-Nach dem Rendering:
-
-```text
-review/render-execution-report.json
-```
-
-Bei Erfolg setzt der Renderer in `status.json` den Wert `render: "complete"`.
-
-## Remotion Studio
-
-```bash
-npm run studio
-```
-
-## Lizenzhinweis
-
-Vor produktiver oder geschäftlicher Nutzung müssen die aktuellen Remotion-Lizenzbedingungen geprüft werden.
+Bei Erfolg schreibt der Renderer `review/render-execution-report.json` und setzt `render: "complete"` in `status.json`.

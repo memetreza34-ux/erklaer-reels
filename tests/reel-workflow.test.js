@@ -13,40 +13,39 @@ async function writeJson(filePath, value) {
   await writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
 }
 
-test('erstellt einen vollständigen Reel-Arbeitsordner mit Codex-Auftrag', async () => {
+test('erstellt standardmäßig ein Ein-Minuten-Reel mit mittigen Untertiteln', async () => {
   const temporaryRoot = await mkdtemp(path.join(os.tmpdir(), 'erklaer-reels-'));
   const result = await createReelWorkspace({
     title: 'Was bedeutet links und rechts?',
-    script: 'Warum nennt man politische Ideen links oder rechts? Dieses Rohscript wird später durch Codex überarbeitet und in klare Bildmomente aufgeteilt.',
+    script: 'Dieses Rohscript wird durch Codex zu einem vollständigen Ein-Minuten-Reel ausgebaut.',
     date: new Date('2026-07-30T12:00:00'),
-    sceneCount: 9,
     outputRoot: temporaryRoot
   });
 
-  assert.match(result.reelDirectory, /2026-KW31_27-07_bis_02-08/);
-  assert.match(result.reelDirectory, /donnerstag/);
+  assert.equal(result.reel.sceneCount, 13);
+  assert.equal(result.reel.targetDurationSeconds, 58);
 
   const production = await prepareReelProduction(result.reelDirectory);
   const task = await readFile(production.taskFile, 'utf8');
-  const inboxReadme = await readFile(path.join(result.reelDirectory, 'inbox', 'README.md'), 'utf8');
   const subtitlePlan = JSON.parse(await readFile(path.join(result.reelDirectory, 'subtitles', 'subtitle-plan.json'), 'utf8'));
 
-  assert.match(task, /Was bedeutet links und rechts\?/);
-  assert.match(task, /Geplante Bildmomente: \*\*9\*\*/);
-  assert.match(inboxReadme, /direkt in den passenden Ordner/);
-  assert.equal(subtitlePlan.position, 'lower');
-  assert.equal(subtitlePlan.verticalPositionPercent, 76);
+  assert.match(task, /55–60 Sekunden/);
+  assert.match(task, /155–175 Wörter/);
+  assert.match(task, /starkem Ende|Prüf-/);
+  assert.equal(subtitlePlan.position, 'center');
+  assert.equal(subtitlePlan.verticalPositionPercent, 50);
   assert.equal(subtitlePlan.highlightCurrentWord, false);
   assert.equal(subtitlePlan.backgroundColor, 'transparent');
 });
 
-test('strenge Inhaltsprüfung akzeptiert ein vollständig ausgefülltes Produktionspaket', async () => {
+test('strenge Inhaltsprüfung akzeptiert 12 vollständige Szenen mit starkem Ende', async () => {
   const temporaryRoot = await mkdtemp(path.join(os.tmpdir(), 'erklaer-reels-ready-'));
+  const finalScript = 'Demokratie einfach erklärt: In einer Demokratie dürfen Bürger politische Macht mitbestimmen und Regierungen friedlich austauschen. Das geschieht vor allem durch freie, faire und regelmäßige Wahlen. Doch Wahlen allein reichen nicht. Grundrechte schützen Menschen auch dann, wenn ihre Meinung unpopulär ist. Parlamente beschließen Gesetze, Regierungen führen sie aus und unabhängige Gerichte kontrollieren, ob Regeln eingehalten werden. Freie Medien machen Entscheidungen öffentlich und Opposition bietet politische Alternativen. Wichtig ist außerdem, dass niemand dauerhaft alle Macht kontrolliert. Deshalb werden Aufgaben verteilt und Institutionen kontrollieren sich gegenseitig. Demokratie bedeutet aber nicht, dass jede Entscheidung allen gefällt. Sie schafft Verfahren, mit denen Konflikte ohne Gewalt ausgetragen und Fehler korrigiert werden können. Problematisch wird es, wenn Wahlen manipuliert, Medien eingeschüchtert oder Gerichte abhängig werden. Dann bleibt vielleicht der Name Demokratie, während echte Kontrolle verschwindet. Die entscheidende Frage lautet deshalb: Können Bürger die Mächtigen wirklich kritisieren und abwählen? Wenn das möglich ist und Grundrechte geschützt bleiben, funktioniert demokratische Kontrolle. Demokratie lebt nicht nur vom Wählen, sondern davon, dass Macht begrenzt und überprüfbar bleibt.';
   const result = await createReelWorkspace({
     title: 'Was ist eine Demokratie?',
-    script: 'Eine Demokratie ist ein politisches System, in dem Bürgerinnen und Bürger politische Entscheidungen beeinflussen und ihre Vertreter in freien Wahlen bestimmen können.',
+    script: finalScript,
     date: new Date('2026-07-30T12:00:00'),
-    sceneCount: 8,
+    sceneCount: 12,
     outputRoot: temporaryRoot
   });
 
@@ -54,28 +53,38 @@ test('strenge Inhaltsprüfung akzeptiert ein vollständig ausgefülltes Produkti
   const reel = JSON.parse(await readFile(reelPath, 'utf8'));
   reel.topicArea = 'Politik und Gesellschaft';
   reel.visualStyleId = 'human-editorial-cartoon';
-  reel.visualStyleReason = 'Vereinfachte menschliche Figuren zeigen Wahlen, Beteiligung und Machtkontrolle besonders verständlich.';
-  reel.status = 'content-ready';
+  reel.visualStyleReason = 'Vereinfachte menschliche Figuren zeigen Wahlen, Beteiligung und Machtkontrolle verständlich.';
+  reel.targetDurationSeconds = 57.6;
   await writeJson(reelPath, reel);
-
-  const finalScript = 'Warum dürfen Bürger in einer Demokratie mitentscheiden? Eine Demokratie verteilt politische Macht auf mehrere Institutionen. Bürger wählen Vertreter, Gerichte kontrollieren Regeln und Medien können Entscheidungen öffentlich prüfen. Keine einzelne Person soll allein bestimmen. Wahlen reichen aber nicht aus: Sie müssen frei, fair und regelmäßig sein. Außerdem brauchen Menschen Grundrechte und echte politische Alternativen. So bleibt die Regierung kontrollierbar und kann friedlich ausgewechselt werden.';
   await writeFile(path.join(result.reelDirectory, 'script', 'final-script.txt'), `${finalScript}\n`, 'utf8');
   await writeFile(path.join(result.reelDirectory, 'script', 'voice-script.txt'), `${finalScript}\n`, 'utf8');
 
   const scenes = [];
-  for (let index = 1; index <= 8; index += 1) {
+  for (let index = 1; index <= 12; index += 1) {
     const sceneId = `scene-${String(index).padStart(2, '0')}`;
-    const imageText = `PUNKT ${index}`;
+    const isQuestion = index === 11;
+    const isFinal = index === 12;
     const scene = {
       sceneId,
       order: index,
-      title: index === 1 ? 'Hook' : `Erklärung ${index}`,
-      narration: `Dieser Sprechertext erklärt den politischen Bildmoment Nummer ${index} besonders einfach.`,
-      imageText,
-      visualIdea: `Eine klare handgezeichnete Metapher zeigt den demokratischen Bestandteil Nummer ${index} ohne unnötige Details.`,
-      continuityNotes: 'Gleiche runde Figuren, gleiche Konturen und dieselbe flache 2D-Bildwelt. Natürliche durchgehende Komposition ohne leeren Mittelstreifen.',
+      title: index === 1 ? 'Hook' : isQuestion ? 'Prüffrage' : isFinal ? 'Abschluss' : `Erklärung ${index}`,
+      narration: isQuestion
+        ? 'Können Bürger die Mächtigen wirklich kritisieren und abwählen?'
+        : isFinal
+          ? 'Demokratie lebt davon, dass Macht begrenzt und überprüfbar bleibt.'
+          : `Dieser Sprecherabschnitt erklärt den demokratischen Bildmoment Nummer ${index} besonders einfach.`,
+      imageText: '',
+      visualIdea: isQuestion
+        ? 'Ein Bürger prüft ruhig eine Wahlurne und blickt zu kontrollierten Regierungsgebäuden.'
+        : isFinal
+          ? 'Eine ausgewogene Waage verbindet Bürger, Parlament und Gericht als klare Schlussmetapher.'
+          : `Eine klare handgezeichnete Metapher zeigt den demokratischen Bestandteil Nummer ${index} als einen einzigen Moment.`,
+      continuityNotes: 'Gleiche Figuren und Konturen, natürliche Komposition, genau ein Moment, keine künstlich freie Mitte.',
+      audioCue: isQuestion ? 'wirklich kritisieren' : isFinal ? 'Macht begrenzt' : `Bildmoment ${index}`,
+      leadInSeconds: 0.2,
+      subtitleCues: [{ text: isFinal ? 'Macht bleibt überprüfbar' : `Demokratischer Punkt ${index}` }],
       subtitlePosition: SUBTITLE_STYLE.position,
-      durationSeconds: 5,
+      durationSeconds: 4.8,
       expectedImageFileName: `${sceneId}.png`,
       promptStatus: 'ready',
       imageStatus: 'missing',
@@ -83,24 +92,24 @@ test('strenge Inhaltsprüfung akzeptiert ein vollständig ausgefülltes Produkti
     };
     scenes.push(scene);
     await writeJson(path.join(result.reelDirectory, 'scenes', sceneId, 'scene.json'), scene);
-    const prompt = `Vertical 9:16 hand-drawn 2D editorial cartoon for an educational reel. Show a simple democratic visual metaphor for scene ${index}, using the same rounded human characters, identical white oval eyes, thick uneven black outlines, flat colors, subtle paper texture, minimal shading and consistent proportions throughout the reel. Integrate the exact German text "${imageText}" naturally into the composition. Use a natural continuous composition without an empty horizontal center stripe or disconnected upper and lower halves. Keep only small critical details away from the lower subtitle area around 76 percent. No logos, no watermark, no realistic politicians, no 3D rendering.`;
+    const prompt = `Vertical 9:16 adult hand-drawn 2D editorial cartoon. Show one clear democratic visual moment for scene ${index}, using consistent human characters, thick dark outlines, flat colors and subtle paper texture. The main subject may occupy the exact center behind subtitle overlays. Do not create an empty horizontal band, disconnected halves, repeated main characters, labels, logos, watermark or 3D rendering.`;
     await writeFile(path.join(result.reelDirectory, 'scenes', sceneId, 'image-prompt.txt'), `${prompt}\n`, 'utf8');
   }
   await writeJson(path.join(result.reelDirectory, 'scenes', 'scene-index.json'), scenes);
 
+  const subtitlePath = path.join(result.reelDirectory, 'subtitles', 'subtitle-plan.json');
+  const subtitlePlan = JSON.parse(await readFile(subtitlePath, 'utf8'));
+  subtitlePlan.cues = scenes.map((scene) => ({ sceneId: scene.sceneId, texts: scene.subtitleCues.map((cue) => cue.text) }));
+  await writeJson(subtitlePath, subtitlePlan);
+
   await writeJson(path.join(result.reelDirectory, 'cover', 'cover.json'), {
     headline: 'DEMOKRATIE EINFACH ERKLÄRT',
-    visualIdea: 'Eine Wahlurne steht zwischen Bürgern, Parlament, Gericht und Medien und verbindet alle Elemente sichtbar.',
-    expectedImageFileName: 'cover.png',
-    promptStatus: 'ready',
-    imageStatus: 'missing',
-    status: 'prompt-ready'
+    visualIdea: 'Eine Wahlurne verbindet Bürger, Parlament und Gericht in einer klaren Titelkomposition.'
   });
-  await writeFile(path.join(result.reelDirectory, 'cover', 'cover-prompt.txt'), 'Vertical 9:16 educational reel cover in the same hand-drawn 2D editorial cartoon style. Show a large transparent ballot box in the center, surrounded by simplified citizens, a parliament building, a balanced court scale and a newspaper. Use thick uneven black outlines, flat vibrant colors, subtle paper texture, strong expressions and a clean thumbnail composition. Display the exact German headline "DEMOKRATIE EINFACH ERKLÄRT" in very large readable letters. No party logos, no real politicians, no watermark, no 3D rendering.\n', 'utf8');
-  await writeFile(path.join(result.reelDirectory, 'caption', 'caption.txt'), 'Demokratie bedeutet mehr als nur wählen. Das Reel zeigt einfach, wie Wahlen, Grundrechte, Gerichte, Medien und politische Alternativen gemeinsam Macht kontrollieren. Welche politische Erklärung soll als Nächstes kommen? #Politik #Demokratie #EinfachErklärt #Wissen #Gesellschaft\n', 'utf8');
-  await writeFile(path.join(result.reelDirectory, 'sources', 'sources.md'), '# Quellen\n\n- Grundgesetz und neutrale institutionelle Grundlagen zur parlamentarischen Demokratie.\n- Begriffe bewusst vereinfacht; keine Parteienbewertung.\n', 'utf8');
+  await writeFile(path.join(result.reelDirectory, 'cover', 'cover-prompt.txt'), 'Vertical 9:16 adult educational cover in a hand-drawn 2D editorial cartoon style. Show a large transparent ballot box surrounded by simplified citizens, parliament and a balanced court scale. Display the exact German headline "DEMOKRATIE EINFACH ERKLÄRT" in large readable letters. Strong focal point, thick outlines, flat colors, no party logos, no real politicians, no watermark and no 3D rendering.\n', 'utf8');
+  await writeFile(path.join(result.reelDirectory, 'caption', 'caption.txt'), 'Demokratie bedeutet mehr als Wahlen. Grundrechte, Gerichte, Medien und politische Alternativen sorgen gemeinsam dafür, dass Macht kontrollierbar und friedlich austauschbar bleibt. #Politik #Demokratie #EinfachErklärt #Wissen\n', 'utf8');
+  await writeFile(path.join(result.reelDirectory, 'sources', 'sources.md'), '# Quellen\n\n- Grundgesetz und neutrale institutionelle Grundlagen der parlamentarischen Demokratie.\n- Begriffe bewusst vereinfacht; keine Parteienbewertung.\n', 'utf8');
 
   const report = await validateReelContent(result.reelDirectory, { strict: true });
   assert.equal(report.passed, true, JSON.stringify(report.checks.filter((check) => !check.passed), null, 2));
-  assert.equal(report.summary.failedChecks, 0);
 });

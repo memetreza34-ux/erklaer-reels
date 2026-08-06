@@ -24,13 +24,12 @@ test('teilt bestätigte Wortzeiten in kurze Untertitelblöcke', () => {
     confidence: 0.95,
     reviewed: true
   }));
-
   const chunks = chunkTimedWords(words, { minWords: 3, maxWords: 6 });
   assert.equal(chunks.flat().length, 10);
   assert.equal(chunks.every((chunk) => chunk.length <= 6), true);
 });
 
-test('Legacy-Wort-Sync übernimmt die neue zentrale Untertitelposition und weiße Palette', () => {
+test('Legacy-Wort-Sync übernimmt die mittige Untertitelposition und weiße Palette', () => {
   const words = [
     { text: 'Warum', startSeconds: 0.1, endSeconds: 0.4, confidence: 0.98, reviewed: true },
     { text: 'dauert', startSeconds: 0.45, endSeconds: 0.75, confidence: 0.97, reviewed: true },
@@ -38,13 +37,11 @@ test('Legacy-Wort-Sync übernimmt die neue zentrale Untertitelposition und weiß
     { text: 'so', startSeconds: 1.25, endSeconds: 1.38, confidence: 0.99, reviewed: true },
     { text: 'lange?', startSeconds: 1.42, endSeconds: 1.8, confidence: 0.97, reviewed: true }
   ];
-  const scenes = [{ sceneId: 'scene-01', startSeconds: 0, endSeconds: 3 }];
-
-  const result = buildSubtitleCuesFromCodexWords(words, scenes);
+  const result = buildSubtitleCuesFromCodexWords(words, [{ sceneId: 'scene-01', startSeconds: 0, endSeconds: 3 }]);
   assert.equal(result.cues.length, 1);
   assert.equal(result.cues[0].text, 'Warum dauert Warten so lange?');
-  assert.equal(result.cues[0].position, 'lower');
-  assert.equal(result.cues[0].verticalPositionPercent, 76);
+  assert.equal(result.cues[0].position, 'center');
+  assert.equal(result.cues[0].verticalPositionPercent, 50);
   assert.equal(result.cues[0].textColor, '#F5F7FA');
   assert.equal(result.cues[0].highlightColor, '#F5F7FA');
   assert.equal(result.cues[0].timingSource, 'codex-local-audio-review');
@@ -59,13 +56,7 @@ test('strenge Prüfung akzeptiert vollständig bestätigte Wortzeiten', () => {
     confidence: 0.95,
     reviewed: true
   }));
-  const workbench = {
-    audioDurationSeconds: 3,
-    scriptTextHash: null,
-    words
-  };
-
-  const result = validateCodexWorkbench(workbench, { strict: true });
+  const result = validateCodexWorkbench({ audioDurationSeconds: 3, scriptTextHash: null, words }, { strict: true });
   assert.equal(result.passed, true);
   assert.equal(result.coverage, 1);
 });
