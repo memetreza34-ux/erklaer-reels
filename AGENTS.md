@@ -2,172 +2,123 @@
 
 ## Pflichttrigger: „Mach ein neues Reel“
 
-Wenn der Nutzer sinngemäß schreibt „Mach ein neues Reel“, „Erstelle das nächste Reel“ oder „Produziere ein neues Video“, erstellt Codex selbstständig das vollständige interne Produktionspaket. Nicht nach Datum oder Thema fragen und nicht nach der Ordnererstellung stoppen.
-
-Ablauf:
+Bei „Mach ein neues Reel“, „Erstelle das nächste Reel“ oder sinngleichen Imperativen erstellt Codex selbstständig das vollständige Produktionspaket. Nicht nach Datum oder Thema fragen und nicht nach der Ordnererstellung stoppen.
 
 1. `docs/autonomous-reel.md` und `CODEX_TASK.md` lesen.
 2. `npm run next:slot -- --json` ausführen.
-3. Wiederholungen vorhandener Themen vermeiden.
-4. Ein Thema aus den erlaubten Säulen auswählen.
-5. Deutsches Voice-over-Script mit einem Erzähler schreiben.
-6. Reel mit `npm run create:reel -- --next-free` anlegen.
-7. `production/agent-task.md` vollständig bearbeiten.
-8. Szenen, Bildprompts, Prompt-Sammeldatei, Untertitel, Effekte, Cover, Caption und Quellen fertigstellen.
-9. `validate:reel` und `check:content --strict` ausführen.
-10. Erst bei fehlenden externen Bildern oder Voice-over anhalten.
-11. Sind Assets vorhanden, bis zur fertigen MP4 weiterarbeiten.
+3. Wiederholungen vermeiden und ein Thema aus den erlaubten Säulen wählen.
+4. Ein deutsches Voice-over mit genau einem Erzähler schreiben.
+5. Reel mit `npm run create:reel -- --next-free` anlegen.
+6. `production/agent-task.md` vollständig bearbeiten.
+7. Cover, 12–14 Szenen, Bildprompts, Sammeldatei, Untertitel, Effekte, Caption und Quellen fertigstellen.
+8. `validate:reel` und `check:content --strict` ausführen.
+9. Erst bei fehlenden externen Bildern oder Voice-over anhalten.
+10. Sind Assets vorhanden, bis zur geprüften MP4 weiterarbeiten.
 
 ## Kanal und Themen
 
-Leitidee:
+Leitidee: **Warum Menschen, Länder und Gesellschaften so funktionieren.**
 
-> Warum Menschen, Länder und Gesellschaften so funktionieren.
-
-Erlaubte Säulen:
+Erlaubt:
 
 - Politik und Gesellschaft
 - Länder, Geografie und Geschichte
 - Psychologie und menschliches Verhalten
 
-Nicht autonom verwenden:
+Nicht autonom verwenden: Körper und Biologie, Finanzen, Elektrotechnik, KI-News, tägliche politische Nachrichten und Parteienwerbung. Politische Inhalte neutral erklären und Unsicherheiten in `sources/sources.md` dokumentieren.
 
-- Körper und Biologie
-- Finanzen
-- Elektrotechnik
-- KI-News
-- tägliche politische Nachrichten
-- Parteienwerbung
+## Script und Ende
 
-Politische Inhalte neutral erklären. Unsicherheiten und umstrittene Aussagen in `sources/sources.md` dokumentieren.
+Bevorzugter Einstieg: **THEMA einfach erklärt:**
 
-## Hook und Script
+Verbindlich:
 
-Bevorzugter Einstieg:
-
-> **THEMA einfach erklärt:**
-
-Regeln:
-
-- Thema sofort nennen
-- direkt erklären
+- Thema sofort nennen und direkt erklären
 - einfache, erwachsene und neutrale Sprache
-- keine lange Einleitung
-- kein leerer Clickbait
-- Hook-Bild ab Sekunde 0 vollständig sichtbar
+- 155–175 Wörter
+- 55–60 Sekunden nach Audiooptimierung
+- Geschwindigkeit exakt 1,10x
+- Hook-Bild ab Sekunde 0
 - kein schwarzer Start
-- Zielzeit 35–55 Sekunden
+- kein leerer Clickbait
 
-## Szenen und Timing
+Die letzten zwei Szenen bilden ein starkes Ende:
 
-- 35–44 Sekunden: normalerweise 8–10 Bildmomente
-- 45–55 Sekunden: normalerweise 10–12 Bildmomente
-- sichtbare Veränderung ungefähr alle 3,5–5 Sekunden
+1. persönliche Prüf-, Erkenntnis- oder Entscheidungsfrage
+2. konkrete Lösung und kurzer einprägsamer Abschlusssatz
+
+Kein abruptes Ende nach einer Aufzählung und keine schulische Standardschlussformel.
+
+## Szenen und Bilder
+
+- 12–14 Szenen, Standard 13
+- sichtbarer Wechsel ungefähr alle 3,5–5 Sekunden
 - Bildwechsel 0,1–0,3 Sekunden vor dem gesprochenen `audioCue`
-- keine mechanisch gleich langen Szenen
-- innerhalb eines Reels konsistente Bildwelt
-- Build-up nur bei echter schrittweiser Erklärung
+- jede Szene zeigt genau einen klaren Moment
+- keine mehrfach kopierte Hauptperson innerhalb eines Bildes
+- kein überladenes mehrstufiges Anleitungspanorama
+- konsistente Bildwelt innerhalb eines Reels
 
-## Bildprompts
-
-Jeder Szenenprompt liegt unter:
-
-```text
-scenes/scene-XX/image-prompt.txt
-```
-
-Danach zwingend:
+Jeder Prompt liegt unter `scenes/scene-XX/image-prompt.txt`. Danach zwingend:
 
 ```bash
 npm run export:prompts -- --dir "<reel-ordner>" --strict
 ```
 
+Die Sammeldatei enthält zuerst den Cover-Prompt und danach alle Szenenprompts.
+
 ### Natürliche Komposition
 
-- Hauptmotiv darf die Bildmitte normal nutzen.
-- Keine künstlich leere horizontale Zone für Untertitel.
-- Kein leerer Streifen quer durch das Bild.
-- Keine getrennte obere und untere Bildhälfte nur wegen der Untertitel.
-- Keine riesigen leeren Baumstämme, Pfeile oder Flächen als Textplatzhalter.
-- Vergleiche möglichst seitlich oder als zusammenhängende Szene darstellen.
-- Nur kleine wichtige Details nicht direkt hinter dem unteren Untertitelbereich platzieren.
-- Das Bild muss ohne Untertitel vollständig und natürlich wirken.
-
-### Bildtext
-
-- Bildprompts auf Englisch
-- sichtbarer Bildtext nur bei redaktioneller Notwendigkeit
-- sichtbarer Text dann ausschließlich korrekt auf Deutsch
-- keine unerwünschten englischen Wörter
-- keine Fantasie-Labels, Logos, Wasserzeichen oder zufällige Schrift
+- Hauptmotive dürfen die exakte Bildmitte normal verwenden und hinter den Untertiteln liegen.
+- Untertitel sind ein Overlay; die Illustration darf dafür nicht künstlich umgebaut werden.
+- Keine leere horizontale Untertitelzone, kein Mittelstreifen und keine getrennten Bildhälften.
+- Keine gestapelten Panels, leeren Bäume, Pfeile oder großen Platzhalterflächen.
+- Keine zufälligen Wörter, englischen Labels, Fantasieschrift, Logos oder Wasserzeichen.
+- Sichtbarer Bildtext nur bei redaktioneller Notwendigkeit und dann korrekt auf Deutsch.
 
 ## Untertitel
 
-Die einzige technische Quelle ist:
+Einzige technische Quelle: `src/shared/subtitle-style.js`.
 
-```text
-src/shared/subtitle-style.js
-```
-
-Verbindlich:
-
-- Position `lower`
-- exakt 76 % Bildhöhe
+- Position `center`
+- exakt 50 % Bildhöhe
 - weiches Weiß `#F5F7FA`
-- alle Wörter in derselben Farbe
 - keine gelbe Wortmarkierung
-- keine schwarze Hintergrundbox und kein Balken
-- dunkle Kontur und dezenter Schatten für Lesbarkeit
-- normalerweise 3–6 Wörter
-- höchstens zwei Zeilen
-- keine Wort-für-Wort-Karaoke-Animation
-- keine Positionsverschiebung
+- keine schwarze Box und kein Balken
+- dunkle Kontur und dezenter Schatten
+- normalerweise 3–6 Wörter, höchstens zwei Zeilen
+- keine Karaoke-Animation und kein erforderlicher Einzelwort-Sync
+- Position nicht verschieben
 - keine künstliche Freifläche im Bild erzeugen
-- Einzelwort-Sync ist ohne Wort-Highlight nicht erforderlich
 
 ## Audio
 
-Zentrale technische Quelle:
-
-```text
-src/shared/audio-pacing-style.js
-```
-
-Vor der Timeline:
+Zentrale Quelle: `src/shared/audio-pacing-style.js`.
 
 ```bash
 npm run trim:pauses -- --dir "<reel-ordner>" --speed 1.10
 ```
 
-Standard:
-
 - immer von der ursprünglichen Voice-over-Datei starten
 - Pausen ab ungefähr 0,24 Sekunden straffen
-- kurze natürliche Restpause behalten
-- Geschwindigkeit exakt `1.10x`
-- Tonhöhe erhalten
-- auf `-16 LUFS` normalisieren
-- True Peak auf `-1,5 dBTP` begrenzen
-- nicht dieselbe bereits optimierte Datei erneut beschleunigen
+- Geschwindigkeit exakt 1,10x, Tonhöhe erhalten
+- auf −16 LUFS normalisieren
+- True Peak auf höchstens −1,5 dBTP begrenzen
+- bereits optimiertes Audio nicht erneut beschleunigen
+- danach Timeline, Szenen-Cues und Untertitel-Cues neu synchronisieren
 
-Danach Timeline, Szenen-Cues und Untertitel-Cues neu synchronisieren.
-
-## Übergänge, Bewegung und Sounds
+## Schnitt und Effekte
 
 - Hook: `none`, Dauer 0
-- alle weiteren Szenen: `cut`, Dauer 0
+- danach ausschließlich `cut`, Dauer 0
 - keine Fades, Schwarzblenden, Slides, Glitches, Spins oder Flash-Übergänge
-- kein schwarzes Zwischenbild
 - Zoom normalerweise 2–6 %, maximal 8 %
 - Schwenk maximal 4 %
 - nicht jedes Bild bewegen
 - Hintergrundmusik standardmäßig aus
-- null bis zwei dezente Soundeffekte pro Szene
-- Voice-over hat Vorrang
+- null bis zwei dezente Soundeffekte pro Szene; Voice-over hat Vorrang
 
-## Externe Assets
-
-Bevorzugte Ablage:
+## Externe Assets und Prüfung
 
 ```text
 scenes/scene-XX/scene-XX.png
@@ -175,32 +126,18 @@ cover/cover.png
 audio/<voiceover-datei>
 ```
 
-In der sichtbaren Finder-Struktur liegen diese Ziele unter `00-bildprompts/00-cover` und den nummerierten Szenenordnern.
+Jedes Bild tatsächlich ansehen und prüfen:
 
-Bilder tatsächlich ansehen und gegen Sprechertext, Prompt, Metapher und Komposition prüfen. Nicht allein nach Dateinamen zuordnen.
-
-## Visuelle Qualitätsprüfung
-
-```bash
-npm run check:visuals -- --dir "<reel-ordner>"
-npm run check:visuals -- --dir "<reel-ordner>" --strict
-```
-
-Pflichtprüfung:
-
-- 9:16, mindestens 720 × 1280, Ziel 1080 × 1920
-- Hauptmotiv sicher und natürlich komponiert
-- kein leerer Mittelstreifen
-- keine künstlich getrennten Bildhälften
-- keine unerwünschten lesbaren Wörter oder englischen Labels
-- Untertitel unten bei 76 % lesbar
-- weißer Text mit Kontur, ohne Gelb und ohne Box
-- Stil innerhalb des Reels konsistent
+- 9:16, Ziel 1080 × 1920
+- genau ein klarer Moment
+- keine mehrfach dargestellte Hauptperson
+- natürliche Komposition ohne leere Mitte
+- keine unerwünschte Schrift
+- mittige weiße Untertitel bei 50 % bleiben lesbar
 - Bewegung schneidet nichts Wichtiges ab
 
-## Timeline, Abschluss und Render
-
 ```bash
+npm run check:visuals -- --dir "<reel-ordner>" --strict
 npm run build:timeline -- --dir "<reel-ordner>"
 npm run sync:audio -- --dir "<reel-ordner>" --strict
 npm run finalize:reel -- --dir "<reel-ordner>" --strict
@@ -208,7 +145,7 @@ npm run validate:render -- --dir "<reel-ordner>"
 npm run render:reel -- --dir "<reel-ordner>"
 ```
 
-Ein Reel darf nur gerendert werden, wenn Inhalt, Audio-Pacing bei exakt 1.10x, Lautheitsnormalisierung, Audio-Sync, visuelle Prüfung und Renderer-Eingabe bestanden sind. Keine simulierte oder geplante Stufe als abgeschlossen bezeichnen.
+Ein Reel darf nur als fertig gelten, wenn Inhalt, 1,10x-Audio, Lautheit, Audio-Sync, alle Bilder, visuelle Prüfung und Renderer-Eingabe tatsächlich bestanden sind.
 
 ## Technische Regeln
 
@@ -219,5 +156,4 @@ Ein Reel darf nur gerendert werden, wenn Inhalt, Audio-Pacing bei exakt 1.10x, L
 - fehlende Assets sichtbar im Status halten
 - Pipeline-Stufen einzeln wiederholbar halten
 - zentrale Logik testen
-- Remotion-Pakete auf identischer Version halten
-- bei nicht startenden GitHub-Actions-Logs ehrlich dokumentieren, dass kein auswertbares Testergebnis vorliegt
+- bei nicht startenden GitHub-Actions-Schritten ehrlich dokumentieren, dass kein auswertbares Testergebnis vorliegt
