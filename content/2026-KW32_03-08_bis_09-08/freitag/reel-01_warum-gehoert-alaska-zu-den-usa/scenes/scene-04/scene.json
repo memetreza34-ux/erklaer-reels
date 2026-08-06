@@ -1,0 +1,18 @@
+{
+  "sceneId": "scene-04",
+  "order": 4,
+  "title": "Russisches Alaska",
+  "narration": "Damals gehörte Alaska zum Russischen Reich. Russland verdiente dort vor allem am Pelzhandel.",
+  "imageText": "RUSSISCHES ALASKA",
+  "visualIdea": "Eine runde Russland-Figur verwaltet die runde Alaska-Figur an einem kleinen historischen Pelzhandelsposten.",
+  "continuityNotes": "Historische Requisiten bleiben vereinfacht; alle Länder und Regionen sind komplette Kugelkörper.",
+  "audioCue": "gehörte Alaska",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [{"text":"Damals gehörte das Gebiet"},{"text":"zum Russischen Reich"},{"text":"Pelze brachten Einnahmen"}],
+  "subtitlePosition": "center",
+  "durationSeconds": 4.2,
+  "expectedImageFileName": "scene-04.png",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "status": "prompt-ready"
+}
