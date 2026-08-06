@@ -19,21 +19,20 @@ async function writeJson(filePath, value) {
   await writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
 }
 
-test('prüft 9:16-Bilder und verlangt im strengen Modus die visuelle Freigabe', async () => {
+test('prüft 12 Szenenbilder plus Cover und verlangt im strengen Modus die visuelle Freigabe', async () => {
   const outputRoot = await mkdtemp(path.join(os.tmpdir(), 'erklaer-visuals-'));
   const result = await createReelWorkspace({
     title: 'Warum wirkt Warten so lang?',
-    script: 'Beim Warten richtet sich die Aufmerksamkeit stark auf die Zeit. Dadurch wirken einzelne Sekunden länger, obwohl die Uhr normal weiterläuft.',
+    script: 'Dieses Rohscript wird später zu einem vollständigen Ein-Minuten-Reel erweitert.',
     date: new Date('2026-07-31T12:00:00'),
-    sceneCount: 8,
+    sceneCount: 12,
     outputRoot
   });
 
   const manifestPath = path.join(result.reelDirectory, 'assets-manifest.json');
   const manifest = JSON.parse(await readFile(manifestPath, 'utf8'));
   for (const scene of manifest.scenes) {
-    const imagePath = path.join(result.reelDirectory, scene.expectedFile);
-    await writeFile(imagePath, fakePng(1080, 1920));
+    await writeFile(path.join(result.reelDirectory, scene.expectedFile), fakePng(1080, 1920));
     scene.status = 'ready';
   }
   await writeFile(path.join(result.reelDirectory, manifest.cover.expectedFile), fakePng(1080, 1920));
@@ -42,8 +41,8 @@ test('prüft 9:16-Bilder und verlangt im strengen Modus die visuelle Freigabe', 
 
   const firstReport = await runVisualQualityCheck(result.reelDirectory, { strict: false });
   assert.equal(firstReport.passed, true);
-  assert.equal(firstReport.summary.assetsChecked, 9);
-  assert.ok(firstReport.summary.warnings >= 9);
+  assert.equal(firstReport.summary.assetsChecked, 13);
+  assert.ok(firstReport.summary.warnings >= 13);
 
   const inspectionPath = path.join(result.reelDirectory, 'review', 'visual-inspection.json');
   const inspection = JSON.parse(await readFile(inspectionPath, 'utf8'));
@@ -64,9 +63,9 @@ test('erkennt ein falsches Seitenverhältnis im strengen Modus', async () => {
   const outputRoot = await mkdtemp(path.join(os.tmpdir(), 'erklaer-visuals-ratio-'));
   const result = await createReelWorkspace({
     title: 'Was ist Gruppendruck?',
-    script: 'Gruppendruck entsteht, wenn Menschen ihr Verhalten an eine Gruppe anpassen, obwohl sie allein vielleicht anders entscheiden würden.',
+    script: 'Dieses Rohscript wird später zu einem vollständigen Ein-Minuten-Reel erweitert.',
     date: new Date('2026-07-31T12:00:00'),
-    sceneCount: 8,
+    sceneCount: 12,
     outputRoot
   });
 
