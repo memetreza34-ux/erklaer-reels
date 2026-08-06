@@ -1,15 +1,8 @@
 # Autonomes neues Reel
 
-Dieser Ablauf gilt immer, wenn der Nutzer sinngemäß schreibt:
+Dieser Ablauf gilt bei „Mach ein neues Reel“, „Erstelle das nächste Reel“ und sinngleichen Imperativen. Die Anweisung bedeutet: nächsten freien Produktionstag bestimmen und das vollständige interne Produktionspaket erstellen.
 
-- „Mach ein neues Reel.“
-- „Erstelle das nächste Reel.“
-- „Weiter mit dem nächsten Reel.“
-- „Produziere ein neues Video.“
-
-Codex darf diese Anweisung nicht nur als Ordnererstellung verstehen. Sie bedeutet: **den nächsten freien Produktionstag bestimmen und das vollständige interne Produktionspaket erstellen.**
-
-## Verbindlicher Ablauf
+## Ablauf
 
 ### 1. Nächsten freien Tag bestimmen
 
@@ -17,126 +10,69 @@ Codex darf diese Anweisung nicht nur als Ordnererstellung verstehen. Sie bedeute
 npm run next:slot -- --json
 ```
 
-Das System prüft den neuesten Wochenordner chronologisch von Montag bis Sonntag.
+Bereits belegte Tage werden niemals überschrieben.
 
-- Der erste Tag ohne `reel-*`-Ordner wird gewählt.
-- Ist die neueste Woche vollständig belegt, wird der Montag der nächsten Kalenderwoche gewählt.
-- Existiert noch kein Wochenordner, beginnt die Suche am aktuellen Wochentag.
-- Bereits belegte Tage werden niemals überschrieben.
+### 2. Thema auswählen
 
-### 2. Thema selbstständig auswählen
+Das Thema muss zu den erlaubten Säulen passen, sich von vorhandenen Reels unterscheiden, langfristig verständlich sein und sich in 12–14 klaren Bildmomenten erklären lassen.
 
-Codex liest die vorhandenen `reel.json`-Dateien und prüft Titel sowie Themen.
+### 3. Ein-Minuten-Script schreiben
 
-Das neue Thema muss:
-
-- zu den erlaubten Themenbereichen passen
-- sich klar von vorhandenen Reels unterscheiden
-- langfristig verständlich und nicht nur tagesaktuell sein
-- visuell mit 8–12 Bildmomenten erklärbar sein
-- eine starke, aber sachliche Hook ermöglichen
-
-Der Nutzer muss nicht nach einem Thema gefragt werden, solange er keine besondere Richtung vorgibt.
-
-### 3. Script erstellen
-
-Codex schreibt selbstständig ein deutsches Voice-over-Script mit genau einem Erzähler.
-
-- ungefähr 35–55 Sekunden
-- einfache Sprache
-- keine schulische Einleitung
-- sofortige Hook
-- sachlich und nachvollziehbar
-- bei unsicheren Fakten klare Kennzeichnung und Quellen
-
-Das Script wird temporär gespeichert und anschließend verwendet:
+- genau ein deutscher Erzähler
+- 155–175 Wörter
+- 55–60 Sekunden nach Optimierung auf 1,10x
+- sofortige sachliche Hook
+- einfache, erwachsene Sprache
+- starkes Ende über zwei Szenen: persönliche Prüffrage, danach Lösung und einprägsamer Abschlusssatz
 
 ```bash
 npm run create:reel -- \
   --title "GEWÄHLTER TITEL" \
   --script-file "PFAD-ZUM-SCRIPT" \
   --next-free \
-  --scenes 10
+  --scenes 13
 ```
 
-### 4. Nicht nach der Ordnererstellung stoppen
+### 4. Produktionspaket fertigstellen
 
-Nach `create:reel` muss Codex sofort `production/agent-task.md` vollständig bearbeiten.
-
-Pflichtbestandteile:
+Nach `create:reel` sofort `production/agent-task.md` vollständig bearbeiten:
 
 - finales Script und Voice-over-Script
-- vollständige Szenenplanung
-- 8–12 englische Bildprompts
-- Untertitelplan
-- Effektplan mit Hook ohne Übergang und danach ausschließlich direkten Schnitten
-- Cover-Idee und Cover-Prompt
-- Caption
-- Quellen
-- aktualisierte Status- und Planungsdateien
-
-Danach zwingend:
+- 12–14 Szenen mit je genau einem klaren Moment
+- Cover und vollständige englische Bildprompts
+- Prompt-Sammeldatei mit Cover an erster Stelle
+- mittiger weißer Untertitelplan ohne Box
+- Effektplan mit Hook ohne Übergang und danach nur harten Schnitten
+- Caption, Quellen und Statusdateien
 
 ```bash
 npm run validate:reel -- --dir "PFAD-ZUM-REEL"
 npm run check:content -- --dir "PFAD-ZUM-REEL" --strict
 ```
 
-Alle Fehler werden behoben. Ein leerer Reel-Ordner, ein bloßer Produktionsauftrag oder eine Liste offener Aufgaben ist keine fertige Ausführung.
+Alle Fehler werden behoben. Ein leerer Ordner oder eine offene Aufgabenliste ist keine fertige Ausführung.
 
 ## Erlaubter Haltepunkt
 
-Codex darf erst anhalten, wenn externe Dateien fehlen:
-
-- Voice-over
-- Szenenbilder
-- Coverbild
-
-Dann nennt Codex nur:
-
-- den Reel-Ordner
-- die Anzahl der Bildprompts
-- die gewählte Bildwelt
-- welche externen Dateien nun erzeugt werden müssen
-- die Inbox-Pfade für Bilder und Audio
-
-Sind externe Dateien bereits vorhanden, arbeitet Codex ohne Rückfrage weiter:
+Codex darf erst anhalten, wenn externe Dateien fehlen: Voice-over, Szenenbilder oder Coverbild. Sind sie vorhanden, arbeitet Codex weiter:
 
 ```text
-Assets zuordnen
-→ Voice-over-Pausen kürzen und Stimme leicht auf 1.05x beschleunigen
-→ Timeline und Audio synchronisieren
-→ Codex-Wortzeiten eintragen
+Assets prüfen
+→ ursprüngliches Voice-over auf exakt 1,10x, −16 LUFS und −1,5 dBTP verarbeiten
+→ Timeline und Audio-Cues synchronisieren
 → Bilder visuell prüfen
+→ mittige Untertitel bei 50 % prüfen
 → direkte harte Schnitte prüfen
-→ Abschlussprüfung
-→ Renderer prüfen
+→ finale Freigabe
 → MP4 rendern
 ```
 
-Dabei sind Crossfades, Schwarzblenden und andere Übergangsanimationen verboten. Das neue Bild muss beim Schnitt sofort vollständig sichtbar sein.
+Jedes Bild muss natürlich komponiert sein, genau einen klaren Moment zeigen und darf die Hauptperson nicht mehrfach darstellen. Für die mittigen Untertitel wird keine leere Bildzone erzeugt.
 
-## Keine Rückfragen bei normalen Standardfällen
+## Keine Standardrückfragen
 
-Codex fragt nicht nach:
-
-- Datum
-- Wochentag
-- Titel
-- Thema
-- Anzahl der Szenen
-- Bildwelt
-
-Codex entscheidet diese Punkte anhand der Repository-Regeln selbst. Rückfragen sind nur zulässig, wenn der Nutzer widersprüchliche Vorgaben gemacht hat oder eine zwingende externe Information fehlt.
+Codex fragt nicht nach Datum, Thema, Szenenzahl oder Bildwelt, solange keine widersprüchliche Vorgabe oder zwingend fehlende externe Information vorliegt.
 
 ## Abschlussmeldung
 
-Codex meldet niemals nur „Ordner erstellt“.
-
-Vor den externen Assets muss die Meldung bestätigen:
-
-- nächster freier Tag wurde automatisch gewählt
-- vollständiges Produktionspaket wurde erstellt
-- strenge Inhaltsprüfung wurde ausgeführt
-- Anzahl der Bildprompts
-- nächster konkreter Schritt
+Vor externen Assets bestätigt Codex den gewählten Tag, das vollständige Produktionspaket, die ausgeführte Inhaltsprüfung, die Zahl der Prompts und den nächsten konkreten Schritt. Keine Prüfung als bestanden bezeichnen, wenn sie nicht tatsächlich ausgeführt werden konnte.
