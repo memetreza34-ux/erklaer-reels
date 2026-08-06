@@ -77,13 +77,13 @@ export async function createReelWorkspace({
   title,
   script,
   date = new Date(),
-  sceneCount = 10,
+  sceneCount = 13,
   outputRoot = 'content'
 }) {
   if (!title?.trim()) throw new Error('Ein Titel ist erforderlich.');
   if (!script?.trim()) throw new Error('Ein Script ist erforderlich.');
-  if (!Number.isInteger(sceneCount) || sceneCount < 8 || sceneCount > 12) {
-    throw new Error('sceneCount muss zwischen 8 und 12 liegen.');
+  if (!Number.isInteger(sceneCount) || sceneCount < 12 || sceneCount > 14) {
+    throw new Error('sceneCount muss zwischen 12 und 14 liegen.');
   }
 
   const parsedDate = date instanceof Date ? date : new Date(date);
@@ -156,7 +156,7 @@ export async function createReelWorkspace({
     language: 'de',
     promptLanguage: 'en',
     aspectRatio: '9:16',
-    targetDurationSeconds: 45,
+    targetDurationSeconds: 58,
     sceneCount,
     visualStyleId: '',
     visualStyleReason: '',
@@ -198,7 +198,7 @@ export async function createReelWorkspace({
   await writeText(path.join(reelDirectory, 'audio', '.gitkeep'));
   await writeJson(path.join(reelDirectory, 'scenes', 'scene-index.json'), sceneIndex);
   await writeJson(path.join(reelDirectory, 'subtitles', 'subtitle-plan.json'), {
-    version: 4,
+    version: 5,
     enabled: true,
     language: 'de',
     position: SUBTITLE_STYLE.position,
@@ -218,7 +218,7 @@ export async function createReelWorkspace({
     timingStatus: 'estimated-until-audio-arrives',
     cues: []
   });
-  await writeText(path.join(reelDirectory, 'subtitles', 'README.md'), `# Untertitel\n\nUntertitel stehen fest im unteren Bildbereich bei exakt ${SUBTITLE_STYLE.verticalPositionPercent} % der Bildhöhe.\nSie bestehen durchgehend aus weichem Weiß (${SUBTITLE_STYLE.textColor}) mit dunkler Kontur und Schatten.\nEs gibt keine gelbe Wortmarkierung, keine schwarze Box und keinen sichtbaren Hintergrundbalken.\nNormalerweise 3–6 Wörter pro Einblendung und höchstens zwei Zeilen.\nDie Bildkomposition bleibt natürlich: Hauptmotive dürfen die Mitte nutzen; es wird kein leerer horizontaler Streifen für Untertitel erzeugt.\nNur kleine wichtige Details sollten nicht direkt hinter dem unteren Untertitelbereich liegen.\n`);
+  await writeText(path.join(reelDirectory, 'subtitles', 'README.md'), `# Untertitel\n\nUntertitel stehen fest und vollständig mittig bei exakt ${SUBTITLE_STYLE.verticalPositionPercent} % der Bildhöhe.\nSie bestehen durchgehend aus weichem Weiß (${SUBTITLE_STYLE.textColor}) mit dunkler Kontur und Schatten.\nEs gibt keine gelbe Wortmarkierung, keine schwarze Box und keinen sichtbaren Hintergrundbalken.\nNormalerweise 3–6 Wörter pro Einblendung und höchstens zwei Zeilen.\nDie Bildkomposition bleibt trotzdem natürlich: Es wird kein leerer horizontaler Streifen für Untertitel erzeugt.\n`);
   await writeJson(path.join(reelDirectory, 'effects', 'effects-plan.json'), {
     version: 1,
     enabled: true,
@@ -275,7 +275,7 @@ export async function createReelWorkspace({
   await writeText(path.join(reelDirectory, 'inbox', 'images', '.gitkeep'));
   await writeText(path.join(reelDirectory, 'inbox', 'audio', '.gitkeep'));
   await writeText(path.join(reelDirectory, 'inbox', 'processed', '.gitkeep'));
-  await writeText(path.join(reelDirectory, 'inbox', 'README.md'), `# Unsortierte externe Dateien\n\nLege generierte Szenenbilder bevorzugt direkt in den passenden Ordner \`scenes/scene-XX/\` und benenne sie \`scene-XX.png\`.\nLege das Cover direkt nach \`cover/cover.png\`.\nLege das fertige Voice-over nach \`audio/\`.\nCodex prüft danach Bildwechsel, weiße Untertitel ohne Box, Zooms, harte Schnitte und Soundeffekte gegen die echte Audiospur.\n`);
+  await writeText(path.join(reelDirectory, 'inbox', 'README.md'), `# Unsortierte externe Dateien\n\nLege generierte Szenenbilder bevorzugt direkt in den passenden Ordner \`scenes/scene-XX/\` und benenne sie \`scene-XX.png\`.\nLege das Cover direkt nach \`cover/cover.png\`.\nLege das fertige Voice-over nach \`audio/\`.\nCodex prüft danach Bildwechsel, mittige weiße Untertitel ohne Box, Zooms, harte Schnitte und Soundeffekte gegen die echte Audiospur.\n`);
   await writeJson(path.join(reelDirectory, 'inbox', 'asset-map.json'), {
     version: 1,
     generatedBy: '',
