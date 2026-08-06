@@ -1,0 +1,18 @@
+{
+  "sceneId": "scene-09",
+  "order": 9,
+  "title": "Übergabe in Sitka",
+  "narration": "Am 18. Oktober 1867 wurde das Gebiet in Sitka offiziell übergeben.",
+  "imageText": "ÜBERGABE IN SITKA",
+  "visualIdea": "Vor einer vereinfachten Küstensiedlung übergibt die Russland-Kugel die Alaska-Kugel offiziell an die USA-Kugel.",
+  "continuityNotes": "Ein feierlicher, neutraler Übergabemoment; keine Menschen und keine zusätzlichen Schriftzeichen.",
+  "audioCue": "18. Oktober 1867",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [{"text":"Die offizielle Übergabe"},{"text":"fand 1867 statt"}],
+  "subtitlePosition": "center",
+  "durationSeconds": 4.5,
+  "expectedImageFileName": "scene-09.png",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "status": "prompt-ready"
+}
