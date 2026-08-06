@@ -36,7 +36,7 @@ Verbindlich:
 - Thema sofort nennen und direkt erklären
 - einfache, erwachsene und neutrale Sprache
 - 155–175 Wörter
-- 55–60 Sekunden nach Audiooptimierung
+- 55–60 Sekunden Voice-over nach Audiooptimierung
 - Geschwindigkeit exakt 1,10x
 - Hook-Bild ab Sekunde 0
 - kein schwarzer Start
@@ -44,22 +44,38 @@ Verbindlich:
 
 **Erst das vollständige Script schreiben, danach die passendste Bildwelt auswählen.** Die runde Kugelwelt, menschliche Editorial-Welt, Objekt-/Metapherwelt, isometrische Szenenwelt oder eine ernstere Symbolwelt werden nur eingesetzt, wenn sie zum konkreten Script passen. Innerhalb eines Reels bleibt die gewählte Hauptwelt konsistent.
 
+Wenn `round-country-characters` gewählt ist:
+
+- Figuren bestehen vollständig aus runden Kugelkörpern
+- einfache weiße Augen
+- höchstens kleine Arme und Beine
+- keine menschlichen Köpfe, Hälse oder Oberkörper
+- reine Karten, Landschaften und Gegenstände sind erlaubt, behalten aber dieselben Konturen, Farben und dieselbe Bildsprache
+
 Die letzten zwei Szenen bilden ein starkes Ende:
 
 1. persönliche Prüf-, Erkenntnis- oder Entscheidungsfrage
 2. konkrete Lösung und kurzer einprägsamer Abschlusssatz
 
-Kein abruptes Ende nach einer Aufzählung und keine schulische Standardschlussformel.
+Nach dem letzten gesprochenen Wort bleibt das Schlussbild **0,7 Sekunden** ohne neuen Untertitel stehen. Kein abruptes Ende nach einer Aufzählung und keine schulische Standardschlussformel.
 
-## Szenen und Bilder
+## Szenenrhythmus
+
+Zentrale Grenzwerte stehen in `config/production-quality-gates.json`.
 
 - 12–14 Szenen, Standard 13
-- sichtbarer Wechsel ungefähr alle 3,5–5 Sekunden
+- Hook: 4,2–5,5 Sekunden
+- normale Szenen: 3,2–5,5 Sekunden
+- letzte Szene inklusive 0,7-Sekunden-Nachlauf: 4,0–6,5 Sekunden
+- kein sichtbarer Erklärmoment unter 3,2 Sekunden
+- Dauersprung zwischen benachbarten Szenen höchstens 2,5 Sekunden
 - Bildwechsel 0,1–0,3 Sekunden vor dem gesprochenen `audioCue`
+- Untertitel enden mit dem Voice-over und laufen nicht in den ruhigen Schlussbild-Nachlauf hinein
 - jede Szene zeigt genau einen klaren Moment
 - keine mehrfach kopierte Hauptperson innerhalb eines Bildes
 - kein überladenes mehrstufiges Anleitungspanorama
-- konsistente Bildwelt innerhalb eines Reels
+
+## Bildprompts
 
 Jeder Prompt liegt unter `scenes/scene-XX/image-prompt.txt`. Danach zwingend:
 
@@ -74,7 +90,7 @@ Die Sammeldatei enthält zuerst den Cover-Prompt und danach alle Szenenprompts.
 Wo es zur Aussage passt, soll ein kurzer deutscher Text direkt in die Illustration integriert werden.
 
 - bevorzugt in ungefähr 55–85 % der Szenen
-- meistens 1–5 Wörter; ein einzelnes Wort ist vollständig ausreichend
+- meistens 1–5 Wörter; ein einzelnes Wort reicht
 - Größe je nach Szene klein, mittel oder groß
 - mögliche Formen: kurze Überschrift, Schild, Etikett, Dokument, Karte, Display, Gegenstandsaufschrift oder Schlussaussage
 - `scene.imageText` enthält den exakten deutschen Wortlaut
@@ -82,7 +98,6 @@ Wo es zur Aussage passt, soll ein kurzer deutscher Text direkt in die Illustrati
 - Bildtext und Untertitel dürfen nicht wortgleich dieselbe Aussage wiederholen
 - kein englischer sichtbarer Text, keine Fantasieschrift und keine zufälligen Wörter
 - Text weglassen, wenn er die Szene überladen, die Aussage doppeln oder die Bildgenerierung verschlechtern würde
-- nicht zwanghaft Text in jede einzelne Szene setzen
 
 ### Natürliche Komposition
 
@@ -90,8 +105,48 @@ Wo es zur Aussage passt, soll ein kurzer deutscher Text direkt in die Illustrati
 - Untertitel sind ein Overlay; die Illustration darf dafür nicht künstlich umgebaut werden.
 - Keine leere horizontale Untertitelzone, kein Mittelstreifen und keine getrennten Bildhälften.
 - Keine gestapelten Panels, leeren Bäume, Pfeile oder großen Platzhalterflächen.
-- Keine zufälligen Wörter, englischen Labels, Fantasieschrift, Logos oder Wasserzeichen.
 - Geplanter sichtbarer Bildtext ist korrektes Deutsch und wird exakt im Prompt angegeben.
+
+## Sichere Bildzuordnung
+
+**Bilder dürfen niemals nach Upload-Reihenfolge, Dateiname, Erstellungszeit oder laufender Nummer zugeordnet werden.**
+
+Für jedes Szenenbild sind zwei Prüfungen Pflicht:
+
+### Durchgang 1: Inhalt erkennen
+
+1. Bild tatsächlich öffnen.
+2. Dateinamen zunächst ignorieren.
+3. In `visibleSummary` neutral beschreiben, was sichtbar ist.
+4. Mit `narration`, `audioCue`, `visualIdea`, `imageText` und `imagePrompt` vergleichen.
+5. Eine konkrete `reason` schreiben, welche sichtbaren Objekte und Handlungen die Zuordnung bestätigen.
+
+### Durchgang 2: Reihenfolge absichern
+
+1. Gewählte Szene gegen die vorherige und nächste Szene vergleichen.
+2. Prüfen, ob das Bild nicht besser zu einer Nachbarszene passt.
+3. `confirmedTarget` und `confirmedSceneOrder` exakt eintragen.
+4. Erst dann `sceneOrderConfirmed: true` und `secondPassConfirmed: true` setzen.
+5. Unter 0,90 Konfidenz nicht raten, sondern `unmatched` lassen.
+
+Pflichtfelder bei einer Bildzuordnung:
+
+```text
+visualReviewed
+secondPassConfirmed
+sceneOrderConfirmed
+confirmedTarget
+confirmedSceneOrder
+visibleSummary
+reason
+comparedFields
+matchMethod
+confidence
+```
+
+`matchMethod` ist `visual-content-review` oder `visual-text-and-content-review`. `filename-only` ist verboten.
+
+Nach der Zuordnung müssen `review/scene-asset-verification.json` und `review/visual-inspection.json` vollständig bestanden sein. Bei direkter Ablage in `scenes/scene-XX/` gilt dieselbe visuelle Doppelprüfung.
 
 ## Untertitel
 
@@ -105,7 +160,6 @@ Einzige technische Quelle: `src/shared/subtitle-style.js`.
 - dunkle Kontur und dezenter Schatten
 - normalerweise 3–6 Wörter, höchstens zwei Zeilen
 - keine Karaoke-Animation und kein erforderlicher Einzelwort-Sync
-- Position nicht verschieben
 - keine künstliche Freifläche im Bild erzeugen
 
 ## Audio
@@ -135,26 +189,10 @@ npm run trim:pauses -- --dir "<reel-ordner>" --speed 1.10
 - Hintergrundmusik standardmäßig aus
 - null bis zwei dezente Soundeffekte pro Szene; Voice-over hat Vorrang
 
-## Externe Assets und Prüfung
-
-```text
-scenes/scene-XX/scene-XX.png
-cover/cover.png
-audio/<voiceover-datei>
-```
-
-Jedes Bild tatsächlich ansehen und prüfen:
-
-- 9:16, Ziel 1080 × 1920
-- genau ein klarer Moment
-- keine mehrfach dargestellte Hauptperson
-- natürliche Komposition ohne leere Mitte
-- geplanter Bildtext vollständig, korrekt und ausschließlich auf Deutsch
-- keine zusätzlichen erfundenen Wörter
-- mittige weiße Untertitel bei 50 % bleiben lesbar
-- Bewegung schneidet nichts Wichtiges ab
+## Finale Prüfung
 
 ```bash
+npm run organize:assets -- --dir "<reel-ordner>" --apply
 npm run check:visuals -- --dir "<reel-ordner>" --strict
 npm run build:timeline -- --dir "<reel-ordner>"
 npm run sync:audio -- --dir "<reel-ordner>" --strict
@@ -163,7 +201,17 @@ npm run validate:render -- --dir "<reel-ordner>"
 npm run render:reel -- --dir "<reel-ordner>"
 ```
 
-Ein Reel darf nur als fertig gelten, wenn Inhalt, 1,10x-Audio, Lautheit, Audio-Sync, alle Bilder, visuelle Prüfung und Renderer-Eingabe tatsächlich bestanden sind.
+Jedes Bild muss zusätzlich bestehen:
+
+- Bedeutung passt exakt zu Sprechertext und visueller Idee
+- Szenenreihenfolge bestätigt
+- gewählte Hauptbildwelt eingehalten
+- Figurenmodell konsistent
+- geplanter deutscher Bildtext exakt
+- keine unerwarteten englischen oder erfundenen Wörter
+- natürliche Komposition und ein klarer Moment
+
+Ein Reel darf nur als fertig gelten, wenn Inhalt, 1,10x-Audio, Lautheit, Audio-Sync, sichere Bildzuordnung, ausgeglichener Szenenrhythmus, 0,7-Sekunden-Schlussbild, visuelle Prüfung und Renderer-Eingabe tatsächlich bestanden sind.
 
 ## Technische Regeln
 
@@ -171,7 +219,7 @@ Ein Reel darf nur als fertig gelten, wenn Inhalt, 1,10x-Audio, Lautheit, Audio-S
 - `scene-index.json` und jede `scene.json` synchron halten
 - Rohscript nicht überschreiben
 - API-Schlüssel niemals committen
-- fehlende Assets sichtbar im Status halten
+- fehlende oder unsichere Assets sichtbar im Status halten
 - Pipeline-Stufen einzeln wiederholbar halten
 - zentrale Logik testen
 - bei nicht startenden GitHub-Actions-Schritten ehrlich dokumentieren, dass kein auswertbares Testergebnis vorliegt
