@@ -1,0 +1,22 @@
+{
+  "version": 12,
+  "reelId": "reel-01_warum-haben-laender-grenzen",
+  "title": "Warum haben Länder Grenzen?",
+  "phase": "waiting-for-external-assets",
+  "tasks": [
+    {"id":"script-final","label":"Voice-over mit 155–175 Wörtern und starkem Ende","status":"complete"},
+    {"id":"style-select","label":"Passende Bildwelt auswählen","status":"complete"},
+    {"id":"scenes-fill","label":"13 klare Ein-Moment-Szenen planen","status":"complete"},
+    {"id":"ending-check","label":"Prüffrage und Abschlusssatz auf zwei Szenen verteilen","status":"complete"},
+    {"id":"prompts-write","label":"Cover und 13 englische Bildprompts schreiben","status":"complete"},
+    {"id":"prompts-export","label":"Cover und Szenenprompts chronologisch sammeln","status":"complete"},
+    {"id":"subtitles-write","label":"Weiße Untertitel exakt mittig planen","status":"complete"},
+    {"id":"effects-write","label":"Harte Schnitte und dezente Bewegungen planen","status":"complete"},
+    {"id":"cover-write","label":"Cover planen","status":"complete"},
+    {"id":"caption-write","label":"Caption erstellen","status":"complete"},
+    {"id":"sources-write","label":"Quellen dokumentieren","status":"complete"},
+    {"id":"content-check","label":"Lokale strenge Inhaltsprüfung","status":"pending-local-run"},
+    {"id":"assets","label":"13 Bilder, Cover und Original-Voice-over einfügen","status":"waiting"},
+    {"id":"render","label":"Audio optimieren, synchronisieren, prüfen und rendern","status":"waiting"}
+  ]
+}
