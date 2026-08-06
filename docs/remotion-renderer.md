@@ -1,6 +1,6 @@
 # Remotion-Renderer
 
-Der Renderer erzeugt aus `render/render-plan.json` eine fertige MP4 mit 12–14 Szenenbildern, optimiertem Voice-over, mittigen Untertiteln, dezenten Bewegungen und optionalen Soundeffekten.
+Der Renderer erzeugt aus `render/render-plan.json` eine fertige MP4 mit 12–14 Szenenbildern, optimiertem Voice-over, leicht tiefer gesetzten Untertiteln, dezenten Bewegungen und optionalen Soundeffekten.
 
 ## Vorbereitung
 
@@ -9,6 +9,9 @@ npm install
 npm run trim:pauses -- --dir "PFAD-ZUM-REEL" --speed 1.10
 npm run build:timeline -- --dir "PFAD-ZUM-REEL"
 npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
+npm run sync:words -- --dir "PFAD-ZUM-REEL"
+# production/codex-word-sync-task.md akustisch vollständig bearbeiten
+npm run sync:words -- --dir "PFAD-ZUM-REEL" --apply --strict
 npm run check:visuals -- --dir "PFAD-ZUM-REEL" --strict
 npm run finalize:reel -- --dir "PFAD-ZUM-REEL" --strict
 ```
@@ -19,15 +22,17 @@ Das Audio wird von der ursprünglichen Datei auf exakt 1,10x verarbeitet, die To
 
 Zentrale Quelle: `src/shared/subtitle-style.js`.
 
-- Position `center`
-- exakt 50 % Bildhöhe
-- Weiß `#F5F7FA`
-- keine gelbe Wortmarkierung
+- horizontal zentriert
+- vertikal exakt 58 % Bildhöhe
+- warmer heller Sandton `#E7C39A`
+- keine andersfarbige Wortmarkierung
 - transparenter Hintergrund ohne Box oder Balken
 - dunkle Kontur und Schatten
 - normalerweise 3–6 Wörter, höchstens zwei Zeilen
+- `highlightCurrentWord: false`
+- trotzdem echte akustisch bestätigte Wortzeiten pro Cue
 
-Der Renderer blockiert die alte Position bei 76 %, gelbe Markierungen, schwarze Hintergründe und andere Abweichungen.
+Der Renderer blockiert die alte Position bei 50 % oder 76 %, weißen Text, Wortmarkierungen, schwarze Hintergründe, geschätzte Cue-Zeiten sowie fehlende `timingSource`- und `wordTimings`-Angaben.
 
 ## Übergänge
 
@@ -50,7 +55,10 @@ Geprüft werden unter anderem:
 - vorhandene Bilder und Voice-over-Datei
 - sichere lokale Pfade
 - zulässige Zoom- und Schwenkwerte
-- Untertitel exakt bei 50 %, weiß und transparent
+- Untertitel exakt bei 58 %, im Sandton und transparent
+- `timingStatus: codex-word-synced`
+- `timingSource: codex-local-audio-review`
+- vollständige gültige Wortzeiten
 - finale Freigabe `readyForRenderer: true`
 
 ## MP4 erzeugen
@@ -65,6 +73,6 @@ Standardausgabe:
 PFAD-ZUM-REEL/output/REEL-ID.mp4
 ```
 
-`--force` überspringt nur die finale Freigabeprüfung. Fehlende Assets, unsichere Pfade, falsche Audio- oder Untertitelwerte und verbotene Übergänge bleiben Fehler.
+`--force` überspringt nur die finale Freigabeprüfung. Fehlende Assets, unsichere Pfade, falsche Audio- oder Untertitelwerte, fehlende exakte Wortzeiten und verbotene Übergänge bleiben Fehler.
 
 Bei Erfolg schreibt der Renderer `review/render-execution-report.json` und setzt `render: "complete"` in `status.json`.

@@ -103,15 +103,18 @@ Nach Zuordnung müssen `review/scene-asset-verification.json` und `review/visual
 
 Zentrale Quelle: `src/shared/subtitle-style.js`.
 
-- Position `center`
-- exakt 50 % Bildhöhe
-- weiches Weiß `#F5F7FA`
-- keine gelbe Wortmarkierung
+- horizontal zentriert
+- vertikal exakt 58 % Bildhöhe, leicht unterhalb der Mitte
+- warmer heller Sandton `#E7C39A`
+- keine andersfarbige Wortmarkierung
 - keine schwarze Hintergrundbox oder Balken
 - dunkle Kontur und dezenter Schatten
 - normalerweise 3–6 Wörter, höchstens zwei Zeilen
 - keine Karaoke-Animation
-- exakte Einzelwortzeiten ohne Highlight nicht erforderlich
+- exakte Wortzeiten sind auch ohne sichtbares Highlight verpflichtend
+- geschätzte Untertitelzeiten dürfen nicht final gerendert werden
+- `timingStatus` muss `codex-word-synced` sein
+- `timingSource` muss `codex-local-audio-review` sein
 
 ## Audio
 
@@ -124,6 +127,8 @@ Zentrale Quelle: `src/shared/audio-pacing-style.js`.
 - höchstens −1,5 dBTP True Peak
 - optimiertes Audio niemals erneut beschleunigen
 - danach Timeline, Szenen-Cues und Untertitel-Cues neu synchronisieren
+- Codex muss das lokale Voice-over vollständig anhören und die Wortzeiten akustisch bestätigen
+- gleichmäßig verteilte oder erfundene Wortzeiten sind verboten
 
 ## Bewegung, Übergänge und Sound
 
@@ -152,7 +157,8 @@ Vor Freigabe prüfen:
 - natürliche Komposition ohne leere Mitte
 - geplanter Bildtext korrekt auf Deutsch und exakt im Prompt
 - kein zusätzlicher englischer oder erfundener Text
-- Untertitel exakt bei 50 %, weiß, ohne Gelb und ohne Box
+- Untertitel exakt bei 58 %, im Sandton, ohne Wortmarkierung und ohne Box
+- alle Untertitel-Cues besitzen akustisch bestätigte Wortzeiten
 - Voice-over exakt 1,10x, −16 LUFS und höchstens −1,5 dBTP
 - Bildwechsel und Audio-Cues synchron
 - ausschließlich direkte harte Schnitte

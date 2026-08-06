@@ -204,7 +204,7 @@ export async function createReelWorkspace({
   await writeText(path.join(reelDirectory, 'audio', '.gitkeep'));
   await writeJson(path.join(reelDirectory, 'scenes', 'scene-index.json'), sceneIndex);
   await writeJson(path.join(reelDirectory, 'subtitles', 'subtitle-plan.json'), {
-    version: 5,
+    version: 6,
     enabled: true,
     language: 'de',
     position: SUBTITLE_STYLE.position,
@@ -218,13 +218,14 @@ export async function createReelWorkspace({
     maxLines: SUBTITLE_STYLE.maxLines,
     wordsPerCue: { min: 3, max: 6 },
     wordByWordKaraoke: false,
-    exactWordTimingsRequired: false,
-    fallbackWordTiming: 'plain-soft-white-no-highlight',
+    exactWordTimingsRequired: true,
+    fallbackWordTiming: 'blocked-until-codex-word-sync',
     avoidRepeatingImageText: true,
-    timingStatus: 'estimated-until-audio-arrives',
+    timingStatus: 'waiting-for-codex-word-sync',
+    timingProvider: 'codex-local-audio-review',
     cues: []
   });
-  await writeText(path.join(reelDirectory, 'subtitles', 'README.md'), `# Untertitel\n\nUntertitel stehen fest und vollständig mittig bei exakt ${SUBTITLE_STYLE.verticalPositionPercent} % der Bildhöhe.\nSie bestehen durchgehend aus weichem Weiß (${SUBTITLE_STYLE.textColor}) mit dunkler Kontur und Schatten.\nEs gibt keine gelbe Wortmarkierung, keine schwarze Box und keinen sichtbaren Hintergrundbalken.\nNormalerweise 3–6 Wörter pro Einblendung und höchstens zwei Zeilen.\nDie Bildkomposition bleibt trotzdem natürlich: Es wird kein leerer horizontaler Streifen für Untertitel erzeugt.\nNach dem letzten gesprochenen Wort endet der Untertitel; das Schlussbild bleibt ungefähr 0,7 Sekunden sauber sichtbar.\n`);
+  await writeText(path.join(reelDirectory, 'subtitles', 'README.md'), `# Untertitel\n\nUntertitel stehen leicht unterhalb der Bildmitte bei exakt ${SUBTITLE_STYLE.verticalPositionPercent} % der Bildhöhe.\nSie verwenden einen warmen hellen Sandton (${SUBTITLE_STYLE.textColor}) mit dunkler Kontur und Schatten.\nEs gibt keine Wortmarkierung, keine Karaoke-Animation, keine schwarze Box und keinen sichtbaren Hintergrundbalken.\nNormalerweise 3–6 Wörter pro Einblendung und höchstens zwei Zeilen.\nDie Untertitel dürfen erst nach lokaler akustischer Prüfung und exakter Wortzeitsynchronisierung gerendert werden.\nNach dem letzten gesprochenen Wort endet der Untertitel; das Schlussbild bleibt ungefähr 0,7 Sekunden sauber sichtbar.\n`);
   await writeJson(path.join(reelDirectory, 'effects', 'effects-plan.json'), {
     version: 1,
     enabled: true,

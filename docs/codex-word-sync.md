@@ -1,46 +1,25 @@
 # Codex-Wort-Synchronisierung
 
-`sync:words` ist ein optionales Werkzeug für Formate mit einer aktiven Wort-für-Wort-Markierung.
+`sync:words` ist für jedes Reel mit Untertiteln ein verbindlicher Produktionsschritt. Die sichtbare Wort-für-Wort-Markierung bleibt deaktiviert, echte Wortzeiten werden aber technisch benötigt, damit jeder Cue exakt mit der Stimme beginnt und endet.
 
-Der aktuelle Standardstil dieses Repositories verwendet:
+Der aktuelle Standardstil verwendet:
 
-- weiße Untertitel ohne gelbe Wortmarkierung
+- warmen hellen Sandton `#E7C39A`
+- keine andersfarbige Wortmarkierung
 - keine Karaoke-Animation
 - keine schwarze Hintergrundbox
-- Position unten bei 76 %
+- Position bei 58 % Bildhöhe, leicht unterhalb der Mitte
 
-Deshalb ist ein aufwendiger Einzelwort-Sync für normale neue Reels **nicht erforderlich**. Cue-Zeiten und Szenen-Audio-Synchronisierung reichen aus.
-
-## Standardworkflow ohne Wort-Highlight
+## Verbindlicher Workflow
 
 ```bash
-npm run trim:pauses -- --dir "PFAD-ZUM-REEL"
+npm run trim:pauses -- --dir "PFAD-ZUM-REEL" --speed 1.10
 npm run build:timeline -- --dir "PFAD-ZUM-REEL"
 npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
-```
-
-Der Render-Plan muss pro Cue enthalten:
-
-```json
-{
-  "position": "lower",
-  "verticalPositionPercent": 76,
-  "textColor": "#F5F7FA",
-  "highlightCurrentWord": false,
-  "highlightColor": "#F5F7FA",
-  "backgroundColor": "transparent"
-}
-```
-
-## Optionaler Legacy-Workflow
-
-Nur wenn später bewusst ein anderer Untertitelstil mit Wort-Highlight entwickelt wird:
-
-```bash
 npm run sync:words -- --dir "PFAD-ZUM-REEL"
 ```
 
-Codex hört dann das lokale Voice-over ab und trägt echte Wortzeiten ein. Anschließend:
+Danach hört Codex das lokale Voice-over vollständig ab und füllt `subtitles/codex-word-sync.json` mit echten absoluten Start- und Endzeiten für jedes Wort. Anschließend:
 
 ```bash
 npm run sync:words -- \
@@ -49,13 +28,39 @@ npm run sync:words -- \
   --strict
 ```
 
-Regeln für diesen optionalen Modus:
+Der Render-Plan muss pro Cue enthalten:
 
-- keine gleichmäßige oder erfundene Zeitverteilung
-- echte akustische Kontrolle
-- kein externer Audio-Upload
+```json
+{
+  "position": "center",
+  "verticalPositionPercent": 58,
+  "textColor": "#E7C39A",
+  "highlightCurrentWord": false,
+  "highlightColor": "#E7C39A",
+  "backgroundColor": "transparent",
+  "timingStatus": "codex-word-synced",
+  "timingSource": "codex-local-audio-review",
+  "wordTimings": [
+    {
+      "text": "Beispiel",
+      "startSeconds": 1.24,
+      "endSeconds": 1.58
+    }
+  ]
+}
+```
+
+## Verbindliche Regeln
+
+- keine gleichmäßige, geschätzte oder erfundene Zeitverteilung
+- echte akustische Kontrolle des vollständigen Voice-overs
+- Start und Ende auf ungefähr 0,01–0,03 Sekunden genau eintragen
+- `reviewed: true` erst nach dem Anhören setzen
 - im strengen Lauf mindestens 0,85 Konfidenz
-- Wortlaut und Reihenfolge unverändert
+- Wortlaut und Reihenfolge unverändert lassen
+- Pausen nicht künstlich als Wortdauer verlängern
+- das letzte Wort darf nicht nach der Audiodauer enden
+- ohne bestandenen Wort-Sync keine finale Renderfreigabe
 
 ## Datenschutz
 
@@ -64,6 +69,6 @@ Regeln für diesen optionalen Modus:
 - kein zusätzlicher API-Schlüssel
 - Voice-over bleibt lokal
 
-## Grenze
+## Designgrenze
 
-Der aktuelle Standard-Renderer erwartet `highlightCurrentWord: false`. Ein aktivierter Wort-Highlight-Modus benötigt eine separate bewusste Design- und Validatoränderung.
+`highlightCurrentWord` bleibt `false`. Die Wortzeiten dienen ausschließlich der genauen Cue-Synchronisierung und erzeugen keine sichtbare Karaoke-Animation.

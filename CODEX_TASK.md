@@ -157,14 +157,16 @@ npm run organize:assets -- --dir "PFAD-ZUM-REEL" --apply
 
 Zentrale Quelle: `src/shared/subtitle-style.js`.
 
-- Position `center`
-- exakt 50 % Bildhöhe
-- weiches Weiß `#F5F7FA`
-- keine gelbe Wortmarkierung
+- horizontal zentriert
+- vertikal exakt 58 % Bildhöhe, leicht unterhalb der Mitte
+- warmer heller Sandton `#E7C39A`
+- keine andersfarbige Wortmarkierung
 - keine schwarze Box oder Balken
 - dunkle Kontur und Schatten
 - normalerweise 3–6 Wörter, höchstens zwei Zeilen
-- keine Karaoke-Animation; Einzelwort-Sync nicht erforderlich
+- keine Karaoke-Animation
+- exakte Wortzeiten sind auch ohne sichtbares Wort-Highlight verpflichtend
+- geschätzte Cue-Zeiten dürfen nicht final gerendert werden
 
 ## Schnitt, Bewegung und Audio
 
@@ -180,6 +182,9 @@ Zentrale Quelle: `src/shared/subtitle-style.js`.
 npm run trim:pauses -- --dir "PFAD-ZUM-REEL" --speed 1.10
 npm run build:timeline -- --dir "PFAD-ZUM-REEL"
 npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
+npm run sync:words -- --dir "PFAD-ZUM-REEL"
+# production/codex-word-sync-task.md vollständig akustisch bearbeiten
+npm run sync:words -- --dir "PFAD-ZUM-REEL" --apply --strict
 ```
 
 Audio-Standard:
@@ -189,6 +194,8 @@ Audio-Standard:
 - exakt 1,10x bei erhaltener Tonhöhe
 - −16 LUFS und höchstens −1,5 dBTP
 - optimierte Datei nicht erneut beschleunigen
+- Codex hört das lokale Audio vollständig ab und bestätigt echte Wortzeiten
+- keine gleichmäßige oder erfundene Zeitverteilung
 
 ## Visuelle Prüfung und Render
 
@@ -211,4 +218,4 @@ npm run validate:render -- --dir "PFAD-ZUM-REEL"
 npm run render:reel -- --dir "PFAD-ZUM-REEL"
 ```
 
-Nur rendern, wenn Inhalt, 1,10x-Audio, Lautheit, Audio-Sync, sichere Bildzuordnung, ausgeglichene Szenendauern, 0,7-Sekunden-Schlussbild, alle Bilder, deutscher Bildtext, mittige Untertitel, visuelle Prüfung, direkte Schnitte und `readyForRenderer: true` tatsächlich vorliegen. Keine geplante Stufe als abgeschlossen bezeichnen.
+Nur rendern, wenn Inhalt, 1,10x-Audio, Lautheit, Audio-Sync, exakte akustisch bestätigte Untertitelsynchronisierung, sichere Bildzuordnung, ausgeglichene Szenendauern, 0,7-Sekunden-Schlussbild, alle Bilder, deutscher Bildtext, Untertitel bei 58 %, visuelle Prüfung, direkte Schnitte und `readyForRenderer: true` tatsächlich vorliegen. Keine geplante Stufe als abgeschlossen bezeichnen.

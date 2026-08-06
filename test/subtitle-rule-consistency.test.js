@@ -22,13 +22,13 @@ function getCheck(report, id) {
   return check;
 }
 
-test('neue Arbeitsordner verwenden exakt den mittigen weißen Untertitelstil', async () => {
+test('neue Arbeitsordner verwenden den tieferen warmen Untertitelstil', async () => {
   const outputRoot = await mkdtemp(path.join(os.tmpdir(), 'erklaer-reels-subtitles-'));
 
   try {
     const { reelDirectory } = await createReelWorkspace({
       title: 'Untertitel Test',
-      script: 'Dieses Rohscript wird zu einem vollständigen Ein-Minuten-Reel mit mittigen Untertiteln ausgebaut.',
+      script: 'Dieses Rohscript wird zu einem vollständigen Ein-Minuten-Reel mit exakt synchronisierten Untertiteln ausgebaut.',
       date: new Date('2026-08-03T12:00:00'),
       sceneCount: 13,
       outputRoot
@@ -38,8 +38,9 @@ test('neue Arbeitsordner verwenden exakt den mittigen weißen Untertitelstil', a
     const scene = await readJson(path.join(reelDirectory, 'scenes', 'scene-01', 'scene.json'));
 
     assert.equal(SUBTITLE_STYLE.position, 'center');
-    assert.equal(SUBTITLE_STYLE.verticalPositionPercent, 50);
-    assert.deepEqual(SUBTITLE_STYLE.safeVerticalRangePercent, { min: 50, max: 50 });
+    assert.equal(SUBTITLE_STYLE.verticalPositionPercent, 58);
+    assert.deepEqual(SUBTITLE_STYLE.safeVerticalRangePercent, { min: 58, max: 58 });
+    assert.equal(SUBTITLE_STYLE.textColor, '#E7C39A');
     assert.equal(scene.subtitlePosition, SUBTITLE_STYLE.position);
     assert.equal(plan.position, SUBTITLE_STYLE.position);
     assert.equal(plan.verticalPositionPercent, SUBTITLE_STYLE.verticalPositionPercent);
@@ -49,12 +50,14 @@ test('neue Arbeitsordner verwenden exakt den mittigen weißen Untertitelstil', a
     assert.equal(plan.highlightColor, SUBTITLE_STYLE.highlightColor);
     assert.equal(plan.textColor, plan.highlightColor);
     assert.equal(plan.backgroundColor, 'transparent');
+    assert.equal(plan.exactWordTimingsRequired, true);
+    assert.equal(plan.timingProvider, 'codex-local-audio-review');
   } finally {
     await rm(outputRoot, { recursive: true, force: true });
   }
 });
 
-test('strenge Inhaltsprüfung blockiert den alten unteren Stil', async () => {
+test('strenge Inhaltsprüfung blockiert den alten mittigen weißen Stil', async () => {
   const outputRoot = await mkdtemp(path.join(os.tmpdir(), 'erklaer-reels-old-subtitles-'));
 
   try {
@@ -66,29 +69,22 @@ test('strenge Inhaltsprüfung blockiert den alten unteren Stil', async () => {
       outputRoot
     });
 
-    const scenePath = path.join(reelDirectory, 'scenes', 'scene-01', 'scene.json');
-    const scene = await readJson(scenePath);
-    scene.subtitlePosition = 'lower';
-    await writeJson(scenePath, scene);
-
     const planPath = path.join(reelDirectory, 'subtitles', 'subtitle-plan.json');
     const plan = await readJson(planPath);
-    plan.position = 'lower';
-    plan.verticalPositionPercent = 76;
-    plan.safeVerticalRangePercent = { min: 76, max: 76 };
+    plan.verticalPositionPercent = 50;
+    plan.safeVerticalRangePercent = { min: 50, max: 50 };
+    plan.textColor = '#F5F7FA';
+    plan.highlightColor = '#F5F7FA';
     plan.highlightCurrentWord = true;
-    plan.highlightColor = '#FFD84D';
     plan.backgroundColor = 'rgba(0, 0, 0, 0.72)';
     await writeJson(planPath, plan);
 
     const report = await validateReelContent(reelDirectory, { strict: true });
 
-    assert.equal(getCheck(report, 'scene-01-subtitle-position').passed, false);
-    assert.equal(getCheck(report, 'scene-01-subtitle-position').level, 'error');
-    assert.equal(getCheck(report, 'subtitle-plan-position').passed, false);
     assert.equal(getCheck(report, 'subtitle-plan-vertical-position').passed, false);
     assert.equal(getCheck(report, 'subtitle-plan-safe-range-min').passed, false);
     assert.equal(getCheck(report, 'subtitle-plan-safe-range-max').passed, false);
+    assert.equal(getCheck(report, 'subtitle-plan-text-color').passed, false);
     assert.equal(getCheck(report, 'subtitle-plan-highlight-color').passed, false);
     assert.equal(getCheck(report, 'subtitle-plan-background-color').passed, false);
   } finally {

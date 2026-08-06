@@ -43,7 +43,7 @@ export async function prepareReelProduction(reelDirectory) {
   const preferredImageTextMaximum = Math.floor(scenes.length * 0.85);
 
   const checklist = {
-    version: 14,
+    version: 15,
     reelId: reel.reelId,
     title: reel.title,
     createdAt: new Date().toISOString(),
@@ -57,7 +57,8 @@ export async function prepareReelProduction(reelDirectory) {
       { id: 'ending-check', label: 'Prüffrage und einprägsamen Abschlusssatz auf zwei Szenen verteilen', status: 'pending' },
       { id: 'prompts-write', label: `${scenes.length} natürliche englische Bildprompts mit exakt angegebenem deutschem Bildtext schreiben`, status: 'pending' },
       { id: 'prompts-export', label: 'Cover und alle Szenenprompts chronologisch exportieren', status: 'pending' },
-      { id: 'subtitles-write', label: 'Weiße Untertitel exakt mittig ohne Gelb und ohne Box planen', status: 'pending' },
+      { id: 'subtitles-write', label: `Untertitel bei ${SUBTITLE_STYLE.verticalPositionPercent} % im warmen Sandton ohne Wortmarkierung planen`, status: 'pending' },
+      { id: 'subtitle-sync-plan', label: 'Exakte lokale Codex-Wortzeitsynchronisierung vor dem Render einplanen', status: 'pending' },
       { id: 'effects-write', label: 'Dezente Bewegungen, harte Schnitte und Soundeffekte planen', status: 'pending' },
       { id: 'asset-matching-plan', label: `Zweistufige visuelle Bildzuordnung mit mindestens ${matching.minimumConfidence} Konfidenz vorbereiten`, status: 'pending' },
       { id: 'cover-write', label: 'Cover-Idee und Cover-Prompt schreiben', status: 'pending' },
@@ -90,7 +91,8 @@ Erstelle ein vollständiges Erklär-Reel mit ungefähr einer Minute Voice-over-L
 - Schlussszene inklusive Nachlauf: **${timing.finalSceneSecondsIncludingHold.min}–${timing.finalSceneSecondsIncludingHold.max} Sekunden**
 - ruhiger Nachlauf nach Sprecherende: **${timing.postVoiceHoldSeconds} Sekunden**
 - Bildzuordnung: **mindestens ${matching.minimumConfidence} Konfidenz, zwei visuelle Durchgänge**
-- Untertitel: **\`${SUBTITLE_STYLE.position}\`, exakt ${SUBTITLE_STYLE.verticalPositionPercent} % Bildhöhe**
+- Untertitel: **horizontal zentriert, exakt ${SUBTITLE_STYLE.verticalPositionPercent} % Bildhöhe, ${SUBTITLE_STYLE.textColor}, ohne Wortmarkierung**
+- Untertitel-Sync: **exakte Wortzeiten aus lokaler Codex-Audioprüfung verpflichtend**
 - Audio-Pacing: **exakt ${AUDIO_PACING_STYLE.playbackRate.toFixed(2)}x**
 - Lautheit: **${AUDIO_PACING_STYLE.loudnessTargetLufs} LUFS, höchstens ${AUDIO_PACING_STYLE.truePeakDbtp} dBTP**
 - Hintergrundmusik: **aus**
@@ -131,7 +133,7 @@ Erstelle ein vollständiges Erklär-Reel mit ungefähr einer Minute Voice-over-L
 npm run export:prompts -- --dir "${normalizedDirectory}" --strict
 \`\`\`
 
-13. Fülle \`subtitles/subtitle-plan.json\`: exakt 50 %, weiß, transparent, keine Wortmarkierung, höchstens zwei Zeilen und normalerweise 3–6 Wörter.
+13. Fülle \`subtitles/subtitle-plan.json\`: exakt ${SUBTITLE_STYLE.verticalPositionPercent} %, Sandton \`${SUBTITLE_STYLE.textColor}\`, transparent, keine Wortmarkierung, höchstens zwei Zeilen, normalerweise 3–6 Wörter und \`exactWordTimingsRequired: true\`.
 14. Fülle \`effects/effects-plan.json\`: Hook \`none\`, danach nur \`cut\` mit Dauer 0; Zoom maximal 8 %, Schwenk maximal 4 %.
 15. Fülle Cover, Caption und Quellen aus.
 16. Prüfe streng:
@@ -172,11 +174,14 @@ npm run organize:assets -- --dir "${normalizedDirectory}" --apply
 
 \`review/scene-asset-verification.json\` muss alle Szenen als bestanden zeigen.
 
-### 3. Timeline, visuelle Prüfung und Render
+### 3. Timeline, exakter Untertitel-Sync, visuelle Prüfung und Render
 
 \`\`\`bash
 npm run build:timeline -- --dir "${normalizedDirectory}"
 npm run sync:audio -- --dir "${normalizedDirectory}" --strict
+npm run sync:words -- --dir "${normalizedDirectory}"
+# production/codex-word-sync-task.md akustisch vollständig bearbeiten
+npm run sync:words -- --dir "${normalizedDirectory}" --apply --strict
 npm run check:visuals -- --dir "${normalizedDirectory}" --strict
 npm run finalize:reel -- --dir "${normalizedDirectory}" --strict
 npm run validate:render -- --dir "${normalizedDirectory}"
@@ -185,7 +190,7 @@ npm run render:reel -- --dir "${normalizedDirectory}"
 
 In \`review/visual-inspection.json\` benötigt jede Szene eine sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung, passende \`comparedAssetId\`, bestätigte zweite Prüfung und vollständig bestandene Szenen-, Welt-, Text- und Kompositionschecks.
 
-Die Timeline hängt nach dem letzten gesprochenen Wort automatisch ${timing.postVoiceHoldSeconds} Sekunden Schlussbild ohne neuen Untertitel an. Die MP4 erst als fertig bezeichnen, wenn Bildzuordnung, Szenenrhythmus, Audio, deutscher Bildtext, Untertitel, Schlussbild-Nachlauf, visuelle Prüfung und Renderer-Validierung tatsächlich bestanden sind.
+Die Timeline hängt nach dem letzten gesprochenen Wort automatisch ${timing.postVoiceHoldSeconds} Sekunden Schlussbild ohne neuen Untertitel an. Die MP4 erst als fertig bezeichnen, wenn Bildzuordnung, Szenenrhythmus, Audio, deutscher Bildtext, Untertitel bei ${SUBTITLE_STYLE.verticalPositionPercent} %, akustisch bestätigte Wortzeiten, Schlussbild-Nachlauf, visuelle Prüfung und Renderer-Validierung tatsächlich bestanden sind.
 `;
 
   await writeFile(path.join(productionDirectory, 'agent-task.md'), `${brief}\n`, 'utf8');
