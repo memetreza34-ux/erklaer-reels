@@ -15,6 +15,18 @@ Jedes Reel erklärt einen Begriff, ein System oder einen Zusammenhang so einfach
 - politische Inhalte neutral und ohne Parteienwerbung
 - Unsicherheit klar kennzeichnen
 
+## Bildwelt erst nach dem Script wählen
+
+Zuerst das vollständige Voice-over schreiben. Danach die Welt auswählen, die den Inhalt am schnellsten erklärt:
+
+- runde Länder- oder Kugelfiguren für Länder, Politik, Geschichte und passende Symbolthemen
+- menschliche Editorial-Figuren für Psychologie, Gesellschaft und Verhalten
+- Objekt- oder Metapherwelt für abstrakte Mechanismen
+- isometrische Mini-Szenen für Abläufe und mehrere klar verbundene Teilbereiche
+- ernstere Symbolwelt für schwere historische oder emotionale Themen
+
+Ein Reel bleibt anschließend konsequent in einer Hauptwelt.
+
 ## Starkes Ende
 
 Die letzten zwei Szenen müssen eine echte Auflösung bilden:
@@ -33,8 +45,23 @@ Verboten sind ein abruptes Ende nach einer Aufzählung, eine schulische Zusammen
 - jede Szene zeigt genau einen klaren Moment
 - keine mehrfach dargestellte Hauptperson innerhalb eines Bildes
 - pro Reel eine konsistente Bildwelt
-- Bildprompts Englisch; sichtbarer Text nur bei ausdrücklicher Notwendigkeit und dann korrekt auf Deutsch
+- Bildprompts Englisch
 - keine zufälligen Wörter, Fantasie-Labels, Logos oder Wasserzeichen
+
+## Deutscher Text im Bild
+
+Wo es zur Szene passt, wird kurzer deutscher Text direkt in das Bild integriert.
+
+- Zielbereich: ungefähr 55–85 % der Szenen
+- normalerweise 1–5 Wörter; ein einzelnes Wort reicht
+- der Text darf klein, mittel oder groß sein
+- geeignete Formen: Überschrift, Schild, Etikett, Karte, Dokument, Display, Gegenstandsbeschriftung oder Schlussaussage
+- `imageText` enthält den exakten deutschen Wortlaut
+- der englische Bildprompt fordert genau diesen deutschen Wortlaut in Anführungszeichen an
+- Bildtext darf den Untertitel nicht wortgleich wiederholen
+- kein englischer sichtbarer Text und keine erfundene Schrift
+- keine langen Absätze und keine unnötig große Textmenge
+- Text nicht erzwingen, wenn das Motiv ohne Text klarer ist oder die Generierung darunter leiden würde
 
 ## Natürliche Komposition
 
@@ -91,11 +118,15 @@ Vor Freigabe prüfen:
 - 155–175 Wörter und 55–60 Sekunden
 - 12–14 Szenen
 - Hook sofort sichtbar
+- Bildwelt erst nach dem Script begründet ausgewählt
 - starkes Ende über mindestens zwei Szenen
 - jedes Bild erklärt genau seinen Satz und zeigt nur einen klaren Moment
 - keine kopierte Hauptperson oder überladene Mehrschritt-Grafik
 - natürliche Komposition ohne leere Mitte
-- keine unerwünschte Schrift
+- kurzer geplanter Bildtext in passenden Szenen
+- geplanter Bildtext korrekt auf Deutsch und exakt im Prompt
+- kein zusätzlicher englischer oder erfundener Text
+- Bildtext wiederholt Untertitel nicht wortgleich
 - Untertitel exakt bei 50 %, weiß, ohne Gelb und ohne Box
 - Voice-over exakt 1,10x, −16 LUFS und höchstens −1,5 dBTP
 - Bildwechsel und Audio-Cues synchron
