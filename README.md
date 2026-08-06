@@ -1,97 +1,56 @@
 # Erklär-Reels
 
-KI-gestützte Produktionspipeline für visuelle Erklär-Reels zu Politik, Gesellschaft, Ländern, Geografie, Geschichte, Psychologie und menschlichem Verhalten.
-
-## Inhaltlicher Fokus
+Produktionspipeline für visuelle Erklär-Reels zu Politik, Gesellschaft, Ländern, Geografie, Geschichte, Psychologie und menschlichem Verhalten.
 
 > Warum Menschen, Länder und Gesellschaften so funktionieren.
 
-Erlaubte Content-Säulen:
+## Neuer Standard
 
-1. Politik und Gesellschaft
-2. Länder, Geografie und Geschichte
-3. Psychologie und menschliches Verhalten
+- 55–60 Sekunden
+- 155–175 deutsche Wörter
+- 12–14 Szenen, Standard 13
+- genau ein klarer Bildmoment pro Szene
+- starkes Ende über mindestens zwei Szenen
+- Voice-over exakt 1,10x mit erhaltener Tonhöhe
+- −16 LUFS und höchstens −1,5 dBTP
+- weiße Untertitel exakt mittig bei 50 %
+- keine gelben Wörter und keine schwarze Box
+- direkte harte Schnitte
+- natürliche Bildkomposition ohne künstliche Untertitelfläche
 
-## Ergebnis
+## Starkes Ende
 
-Aus einem Thema oder Rohscript entsteht ein vollständiges Reel mit:
+Die vorletzte Szene stellt eine persönliche Prüf-, Erkenntnis- oder Entscheidungsfrage. Die letzte Szene zeigt eine konkrete Lösung und endet mit einem kurzen einprägsamen Satz. Keine abrupte Aufzählung und kein überladenes Mehrschritt-Bild.
 
-- geprüftem deutschem Voice-over-Script
-- 8–12 Bildmomenten
-- englischen Bildprompts
-- natürlicher, zusammenhängender Bildkomposition
-- auf exakt `1.10x` beschleunigtem Voice-over mit erhaltener Tonhöhe
-- automatischer Lautheitsnormalisierung auf `-16 LUFS` und `-1,5 dBTP`
-- weißen Untertiteln ohne Box und ohne gelbe Wortmarkierung
-- direkten harten Schnitten
-- dezenten Zooms, Schwenks und Soundeffekten
-- Audio-Synchronisierung und visueller Qualitätsprüfung
-- fertiger MP4 über Remotion
+## Bilder
 
-## Wichtigste Regeln
+- Hook ab Sekunde 0
+- sichtbarer Wechsel ungefähr alle 3,5–5 Sekunden
+- Hauptmotive dürfen die exakte Bildmitte nutzen und hinter Untertiteln liegen
+- keine leere horizontale Zone, keine getrennten Bildhälften und keine gestapelten Panels
+- keine mehrfach dargestellte Hauptperson innerhalb eines Bildes
+- keine zufälligen Wörter, Fantasie-Labels, Logos oder Wasserzeichen
+- Cover-Prompt steht in der Sammeldatei vor allen Szenenprompts
 
-### Bilder
+## Untertitel
 
-- Hook-Bild ab Sekunde 0
-- ungefähr alle 3,5–5 Sekunden sichtbare Veränderung
-- innerhalb eines Reels konsistente Bildwelt
-- Hauptmotive dürfen die Bildmitte normal nutzen
-- kein künstlich leerer horizontaler Mittelstreifen
-- keine getrennte obere und untere Bildhälfte nur wegen Untertiteln
-- keine unerwünschten englischen Wörter, Fantasie-Labels, Logos oder Wasserzeichen
-- sichtbarer Bildtext nur bei redaktioneller Notwendigkeit und dann korrekt auf Deutsch
+- `position: center`
+- exakt 50 % Bildhöhe
+- Weiß `#F5F7FA`
+- dunkle Kontur und Schatten
+- transparenter Hintergrund
+- 3–6 Wörter, höchstens zwei Zeilen
+- kein Wort-Highlight und keine Karaoke-Animation
 
-### Untertitel
+## Audio und Schnitt
 
-- Position `lower`
-- exakt 76 % Bildhöhe
-- durchgehend weiches Weiß `#F5F7FA`
-- dunkle Kontur und dezenter Schatten
-- keine gelbe Wortmarkierung
-- keine schwarze Hintergrundbox oder Balken
-- normalerweise 3–6 Wörter
-- höchstens zwei Zeilen
-- kein Wort-für-Wort-Karaoke
-- Einzelwort-Sync ist ohne Wort-Highlight nicht erforderlich
-
-### Audio und Schnitt
-
-- Voice-over vor der Timeline mit `trim:pauses` verarbeiten
-- Geschwindigkeit exakt `1.10x`, Tonhöhe erhalten
-- Pausen ab ungefähr 0,24 Sekunden kürzen
-- Lautheit auf `-16 LUFS` normalisieren
-- True Peak auf `-1,5 dBTP` begrenzen
-- immer von der ursprünglichen Voice-over-Datei starten
-- Hook ohne Übergang
-- danach ausschließlich `cut` mit Dauer 0
-- keine Fades, Schwarzblenden oder schwarzen Zwischenframes
-- Hintergrundmusik standardmäßig aus
-- Ausgabe 1080 × 1920 bei 30 FPS
-
-## Übersichtliche Reel-Struktur
-
-```text
-reel-01_thema/
-├── 00-bildprompts/
-│   ├── 00-cover/
-│   ├── 01-scene-01/
-│   ├── 02-scene-02/
-│   ├── ...
-│   └── 99-alle-bildprompts.txt
-├── 01-voice-script/
-├── 02-audio/
-├── 03-caption/
-├── 04-video/
-└── 99-technik/
+```bash
+npm run trim:pauses -- --dir "PFAD-ZUM-REEL" --speed 1.10
+npm run build:timeline -- --dir "PFAD-ZUM-REEL"
+npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
 ```
 
-Das jeweilige Bild wird direkt beim passenden Prompt abgelegt:
-
-```text
-scenes/scene-01/
-├── image-prompt.txt
-└── scene-01.png
-```
+Die Verarbeitung startet immer von der ursprünglichen Voice-over-Datei. Pausen werden gestrafft, das Audio auf exakt 1,10x beschleunigt, die Tonhöhe erhalten und die Lautheit normalisiert. Hook ohne Übergang; danach ausschließlich `cut` mit Dauer 0.
 
 ## Neues Reel
 
@@ -100,7 +59,7 @@ npm run create:reel -- \
   --title "Was ist Demokratie?" \
   --script-file input/script.txt \
   --next-free \
-  --scenes 10
+  --scenes 13
 ```
 
 Danach:
@@ -111,81 +70,46 @@ npm run validate:reel -- --dir "PFAD-ZUM-REEL"
 npm run check:content -- --dir "PFAD-ZUM-REEL" --strict
 ```
 
-## Externe Dateien
-
-Bevorzugte Ablage:
+## Ordnerstruktur
 
 ```text
+reel-01_thema/
+├── 00-bildprompts/
+│   ├── 00-cover/
+│   ├── 01-scene-01/
+│   ├── ...
+│   ├── 13-scene-13/
+│   └── 99-alle-bildprompts.txt
+├── 01-voice-script/
+├── 02-audio/
+├── 03-caption/
+├── 04-video/
+└── 99-technik/
+```
+
+Szenenbilder direkt beim passenden Prompt ablegen:
+
+```text
+scenes/scene-01/image-prompt.txt
 scenes/scene-01/scene-01.png
-scenes/scene-02/scene-02.png
-...
 cover/cover.png
 audio/voiceover.mp3
 ```
 
-## Audio und Timeline
+## Prüfung und Render
 
 ```bash
-npm run trim:pauses -- --dir "PFAD-ZUM-REEL" --speed 1.10
-npm run build:timeline -- --dir "PFAD-ZUM-REEL"
-npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
-```
-
-`trim:pauses` kürzt Pausen, beschleunigt auf `1.10x`, erhält die Tonhöhe und normalisiert die Lautheit. Für jede Szene wird anschließend der echte Zeitpunkt des gesprochenen `audioCue` in `timeline/audio-sync.json` eingetragen.
-
-## Visuelle Prüfung
-
-```bash
-npm run check:visuals -- --dir "PFAD-ZUM-REEL"
 npm run check:visuals -- --dir "PFAD-ZUM-REEL" --strict
-```
-
-Geprüft werden unter anderem:
-
-- 9:16 und ausreichende Auflösung
-- natürliche zusammenhängende Komposition
-- kein leerer Mittelstreifen
-- keine künstlich getrennten Bildhälften
-- keine unerwünschten lesbaren Wörter
-- weiße Untertitel ohne Box bei 76 %
-- sichere Zooms und Schwenks
-- Stilkonsistenz
-
-## Abschluss und Render
-
-```bash
 npm run finalize:reel -- --dir "PFAD-ZUM-REEL" --strict
 npm run validate:render -- --dir "PFAD-ZUM-REEL"
 npm run render:reel -- --dir "PFAD-ZUM-REEL"
 ```
 
-Die strenge Freigabe blockiert altes `1.05x`-Audio, fehlende Lautheitsnormalisierung, falsche Untertitelwerte oder nicht geprüfte Bilder.
-
-Standardausgabe:
-
-```text
-PFAD-ZUM-REEL/output/REEL-ID.mp4
-```
+Die Freigabe blockiert falsche Dauer oder Szenenzahl, ein schwaches Ende, altes 1,05x-Audio, fehlende Lautheitsnormalisierung, falsche Untertitelwerte und nicht geprüfte Bilder.
 
 ## Voraussetzungen
 
 - Node.js 20 oder neuer
-- `npm install`
 - FFmpeg und optional `ffprobe`
+- Remotion-Pakete in identischer Version
 - aktuelle Remotion-Lizenzbedingungen vor geschäftlicher Nutzung prüfen
-
-## Wichtige Dateien
-
-- `AGENTS.md` – verbindliche Agent-Regeln
-- `CODEX_TASK.md` – vollständiger Produktionsablauf
-- `knowledge/production-rules.md` – kreative und technische Produktionsregeln
-- `config/content-rules.json` – zentrale Inhalts-, Untertitel- und Audio-Regeln
-- `config/visual-quality-rules.json` – visuelle Abnahmekriterien
-- `src/shared/subtitle-style.js` – zentraler Untertitelstil
-- `src/shared/audio-pacing-style.js` – zentrale Tempo- und Lautheitswerte
-- `src/renderer/ReelComposition.jsx` – Remotion-Komposition
-
-## Noch nicht enthalten
-
-- automatische Bild- oder Voice-over-Erzeugung
-- automatische Social-Media-Veröffentlichung
