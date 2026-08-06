@@ -1,0 +1,18 @@
+{
+  "sceneId": "scene-02",
+  "order": 2,
+  "title": "Direkt neben Kanada und Russland",
+  "narration": "Alaska liegt direkt neben Kanada und an seiner schmalsten Meeresstelle nur wenige Kilometer von Russland entfernt.",
+  "imageText": "SO NAH AN RUSSLAND",
+  "visualIdea": "Runde Alaska-, Kanada- und Russland-Figuren stehen an einer schmalen Beringstraße; die geringe Distanz ist sofort sichtbar.",
+  "continuityNotes": "Gleiche Kugelformen, Augen, Konturen und arktische Farbpalette wie in Szene 1; keine menschlichen Körper.",
+  "audioCue": "direkt neben Kanada",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [{"text":"Direkt neben Kanada"},{"text":"und nahe an Russland"}],
+  "subtitlePosition": "center",
+  "durationSeconds": 4.5,
+  "expectedImageFileName": "scene-02.png",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "status": "prompt-ready"
+}
