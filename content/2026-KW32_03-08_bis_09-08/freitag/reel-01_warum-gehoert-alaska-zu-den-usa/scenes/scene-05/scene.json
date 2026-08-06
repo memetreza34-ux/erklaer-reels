@@ -1,0 +1,18 @@
+{
+  "sceneId": "scene-05",
+  "order": 5,
+  "title": "Der Pelzhandel verliert Wert",
+  "narration": "Doch die Bestände gingen zurück. Gleichzeitig war das Gebiet weit entfernt und teuer zu versorgen.",
+  "imageText": "",
+  "visualIdea": "Eine besorgte runde Russland-Figur betrachtet ein fast leeres Pelzlager neben einem langen, teuren Versorgungsweg nach Alaska.",
+  "continuityNotes": "Derselbe Russland- und Alaska-Charakter; ein einziger zusammenhängender Moment statt mehrerer Panels.",
+  "audioCue": "Bestände gingen zurück",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [{"text":"Die Bestände gingen zurück"},{"text":"Versorgung blieb teuer"}],
+  "subtitlePosition": "center",
+  "durationSeconds": 4.2,
+  "expectedImageFileName": "scene-05.png",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "status": "prompt-ready"
+}
