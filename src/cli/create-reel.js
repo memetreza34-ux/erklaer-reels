@@ -27,9 +27,8 @@ Optionen:
   --script-file   Pfad zum deutschen Sprechertext
   --date          Produktionsdatum im Format YYYY-MM-DD
   --next-free     Chronologisch nächsten freien Tag der neuesten Woche verwenden
-  --scenes        Anzahl der Bildmomente: 8 bis 12 (optional, Standard: 10)
-                  35–44 Sekunden: meist 8–10
-                  45–55 Sekunden: meist 10–12
+  --scenes        Anzahl der Bildmomente: 12 bis 14 (optional, Standard: 13)
+                  Ziel: 55–60 Sekunden bei ungefähr 1,10x
   --output        Ausgabeordner (optional, Standard: content)
 `);
 }
@@ -44,7 +43,7 @@ async function main() {
   const scriptFile = getArgument('--script-file');
   const dateValue = getArgument('--date');
   const useNextFree = process.argv.includes('--next-free');
-  const sceneCount = Number(getArgument('--scenes') ?? 10);
+  const sceneCount = Number(getArgument('--scenes') ?? 13);
   const outputRoot = getArgument('--output') ?? 'content';
 
   if (!title || !scriptFile) {
@@ -77,11 +76,12 @@ async function main() {
   }
   console.log(`Reel-Arbeitsordner erstellt: ${result.reelDirectory}`);
   console.log(`Szenen: ${result.reel.sceneCount}`);
+  console.log(`Zieldauer: ${result.reel.targetDurationSeconds} Sekunden`);
   console.log(`Codex-Auftrag: ${production.taskFile}`);
   console.log(`Chronologische Bildprompt-Datei: ${promptBundle.file}`);
   console.log(`Übersichtliche Ordner: ${humanView.visibleFolders.join(', ')}`);
   if (humanView.finder.applied) console.log('Technische Ordner wurden im macOS Finder ausgeblendet.');
-  console.log('Nach Fertigstellung aller Szenenprompts verpflichtend export:prompts --strict ausführen.');
+  console.log('Nach Fertigstellung aller Bildprompts verpflichtend export:prompts --strict ausführen.');
   console.log('Pflicht: production/agent-task.md jetzt vollständig bearbeiten und check:content --strict ausführen. Nicht nach der Ordnererstellung stoppen.');
 }
 
