@@ -36,6 +36,8 @@ npm run check:content -- --dir "PFAD-ZUM-REEL" --strict
 - keine mehrfach kopierte Hauptperson oder überladene Mehrschritt-Grafik
 - politische Inhalte neutral; Quellen und Unsicherheiten dokumentieren
 
+**Reihenfolge:** Erst Script fertigstellen, danach die passendste Hauptbildwelt auswählen. Die Welt muss zum Inhalt passen und bleibt innerhalb des Reels konsistent.
+
 Das Ende besteht aus mindestens zwei getrennten Szenen:
 
 1. persönliche Prüf-, Erkenntnis- oder Entscheidungsfrage
@@ -43,11 +45,26 @@ Das Ende besteht aus mindestens zwei getrennten Szenen:
 
 ## Bildprompts
 
-Bildprompts sind Englisch. Sichtbarer Bildtext ist nur bei redaktioneller Notwendigkeit erlaubt und dann korrekt auf Deutsch.
+Bildprompts sind Englisch. Wo es die Szene verbessert, wird kurzer deutscher Bildtext integriert.
+
+### Deutscher Bildtext
+
+- bevorzugt in ungefähr 55–85 % der Szenen
+- meistens 1–5 Wörter; ein einzelnes Wort reicht
+- Textgröße darf klein, mittel oder groß sein
+- geeignete Formen: Überschrift, Schild, Etikett, Karte, Dokument, Display, Gegenstand oder Schlussaussage
+- exakten Wortlaut in `scene.imageText` eintragen
+- denselben Wortlaut im englischen Prompt exakt in Anführungszeichen nennen
+- Untertitel nicht wortgleich wiederholen
+- Text weglassen, wenn er die Szene überlädt oder die Bildgenerierung verschlechtert
 
 Verboten:
 
-- unerwünschte Wörter, Fantasietext, Logos oder Wasserzeichen
+- englischer sichtbarer Text
+- zufällige oder erfundene Wörter
+- lange Absätze oder unnötig viel Text
+- erzwungener Text in jeder einzelnen Szene
+- Logos oder Wasserzeichen
 - künstlich leere horizontale Untertitelzone
 - getrennte obere und untere Bildhälfte
 - gestapelte Panels oder mehrfach dargestellte Hauptperson
@@ -99,7 +116,16 @@ Audio-Standard:
 
 ## Visuelle Prüfung und Render
 
-Jedes Bild tatsächlich ansehen. Prüfen: 9:16, ein klarer Moment, natürliche Komposition, keine kopierte Hauptperson, keine unerwünschte Schrift, mittige Untertitel lesbar und sichere Bewegung.
+Jedes Bild tatsächlich ansehen. Prüfen:
+
+- 9:16
+- ein klarer Moment
+- natürliche Komposition
+- keine kopierte Hauptperson
+- geplanter Bildtext vollständig und korrekt auf Deutsch
+- keine zusätzlichen erfundenen oder englischen Wörter
+- mittige Untertitel lesbar
+- sichere Bewegung
 
 ```bash
 npm run check:visuals -- --dir "PFAD-ZUM-REEL" --strict
@@ -108,4 +134,4 @@ npm run validate:render -- --dir "PFAD-ZUM-REEL"
 npm run render:reel -- --dir "PFAD-ZUM-REEL"
 ```
 
-Nur rendern, wenn Inhalt, 1,10x-Audio, Lautheit, Audio-Sync, alle 12–14 Bilder, mittige Untertitel, visuelle Prüfung, direkte Schnitte und `readyForRenderer: true` tatsächlich vorliegen. Keine geplante Stufe als abgeschlossen bezeichnen.
+Nur rendern, wenn Inhalt, 1,10x-Audio, Lautheit, Audio-Sync, alle 12–14 Bilder, geplanter deutscher Bildtext, mittige Untertitel, visuelle Prüfung, direkte Schnitte und `readyForRenderer: true` tatsächlich vorliegen. Keine geplante Stufe als abgeschlossen bezeichnen.
