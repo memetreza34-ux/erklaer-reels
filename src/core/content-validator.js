@@ -29,6 +29,10 @@ function addCheck(checks, id, passed, message, level = 'error') {
   checks.push({ id, passed, level, message });
 }
 
+function wordCount(value) {
+  return String(value ?? '').trim().split(/\s+/).filter(Boolean).length;
+}
+
 function comparableScene(scene) {
   return {
     sceneId: scene.sceneId,
@@ -71,8 +75,8 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
   const effectsRules = await readJson(effectsRulesPath, {});
   const validStyleIds = new Set(styleConfig.styles.map((style) => style.id));
 
-  addCheck(checks, 'scene-count-range', Number.isInteger(reel.sceneCount) && reel.sceneCount >= 8 && reel.sceneCount <= 12,
-    'Die Szenenanzahl muss zwischen 8 und 12 liegen.');
+  addCheck(checks, 'scene-count-range', Number.isInteger(reel.sceneCount) && reel.sceneCount >= 12 && reel.sceneCount <= 14,
+    'Die Szenenanzahl muss zwischen 12 und 14 liegen.');
   addCheck(checks, 'scene-count-match', sceneIndex.length === reel.sceneCount,
     `scene-index.json enthält ${sceneIndex.length} statt ${reel.sceneCount} Szenen.`);
   addCheck(checks, 'topic-area', String(reel.topicArea ?? '').trim().length >= 5,
@@ -95,9 +99,12 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
     const scriptPath = path.join(reelDirectory, 'script', scriptName);
     const present = await exists(scriptPath);
     const content = present ? await readText(scriptPath) : '';
+    const words = wordCount(content);
     scriptContents[scriptName] = content;
     addCheck(checks, `script-${scriptName}`, present && content.length >= 120,
       `${scriptName} fehlt oder ist zu kurz.`);
+    addCheck(checks, `script-${scriptName}-word-count`, words >= 155 && words <= 175,
+      `${scriptName} enthält ${words} Wörter; Ziel sind 155–175 Wörter für ungefähr eine Minute bei 1,10x.`);
   }
   addCheck(checks, 'scripts-identical', scriptContents['final-script.txt'] === scriptContents['voice-script.txt'],
     'final-script.txt und voice-script.txt müssen denselben finalen Sprechertext enthalten.', 'warning');
@@ -171,10 +178,24 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
     }
   }
 
-  addCheck(checks, 'total-duration', totalDuration >= 35 && totalDuration <= 60,
-    `Die geschätzte Gesamtdauer beträgt ${totalDuration.toFixed(1)} Sekunden; Ziel sind 35–60 Sekunden.`);
-  addCheck(checks, 'long-reel-scene-density', totalDuration < 45 || sceneIndex.length >= 10,
-    'Reels ab 45 Sekunden sollten normalerweise mindestens 10 visuelle Momente enthalten.', 'warning');
+  addCheck(checks, 'total-duration', totalDuration >= 55 && totalDuration <= 60,
+    `Die geschätzte Gesamtdauer beträgt ${totalDuration.toFixed(1)} Sekunden; Ziel sind 55–60 Sekunden.`);
+  addCheck(checks, 'one-minute-scene-density', sceneIndex.length >= 12 && sceneIndex.length <= 14,
+    'Ein-Minuten-Reels benötigen normalerweise 12–14 klare visuelle Momente.');
+
+  const endingScenes = sceneIndex.slice(-2);
+  const endingNarration = endingScenes.map((scene) => String(scene.narration ?? '').trim()).join(' ');
+  const finalNarration = String(sceneIndex.at(-1)?.narration ?? '').trim();
+  const reflectionPattern = /\?|würdest|frag|prüf|entscheide|entscheidung/i;
+  addCheck(checks, 'ending-two-scenes', endingScenes.length === 2,
+    'Das Ende benötigt mindestens zwei getrennte Szenen für Erkenntnis und Auflösung.');
+  addCheck(checks, 'ending-reflection', reflectionPattern.test(endingNarration),
+    'Die letzten zwei Szenen benötigen eine klare Prüf-, Erkenntnis- oder Entscheidungsfrage.');
+  addCheck(checks, 'ending-final-line', wordCount(finalNarration) >= 5 && wordCount(finalNarration) <= 45,
+    'Der letzte Sprecherabschnitt sollte mit einem kurzen, einprägsamen Abschlusssatz enden.');
+  addCheck(checks, 'ending-visuals-separated',
+    endingScenes.length === 2 && String(endingScenes[0]?.visualIdea ?? '') !== String(endingScenes[1]?.visualIdea ?? ''),
+    'Prüffrage und endgültige Entscheidung brauchen zwei unterschiedliche klare Bildmomente.');
 
   const subtitlePlan = await readJson(subtitlePlanPath, null);
   addCheck(checks, 'subtitle-plan-present', Boolean(subtitlePlan),
