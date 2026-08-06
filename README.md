@@ -15,8 +15,9 @@ Produktionspipeline für visuelle Erklär-Reels zu Politik, Gesellschaft, Lände
 - Schlussbild bleibt nach dem letzten Wort 0,7 Sekunden ohne neuen Untertitel stehen
 - Voice-over exakt 1,10x mit erhaltener Tonhöhe
 - −16 LUFS und höchstens −1,5 dBTP
-- weiße Untertitel exakt mittig bei 50 %
-- keine gelben Wörter und keine schwarze Box
+- warme sandfarbene Untertitel bei 58 % Bildhöhe
+- keine Wortmarkierung und keine schwarze Box
+- Untertitel müssen vor dem Rendern akustisch exakt synchronisiert sein
 - direkte harte Schnitte
 - natürliche Bildkomposition ohne künstliche Untertitelfläche
 
@@ -83,12 +84,13 @@ Jede Szene braucht eine sichtbare Bildbeschreibung, konkrete Zuordnungsbegründu
 ## Untertitel
 
 - `position: center`
-- exakt 50 % Bildhöhe
-- Weiß `#F5F7FA`
+- exakt 58 % Bildhöhe, leicht unterhalb der Mitte
+- warmer heller Sandton `#E7C39A`
 - dunkle Kontur und Schatten
 - transparenter Hintergrund
 - 3–6 Wörter, höchstens zwei Zeilen
 - kein Wort-Highlight und keine Karaoke-Animation
+- echte Wortzeiten bleiben trotzdem verpflichtend, damit Cue-Start und Cue-Ende exakt zur Stimme passen
 
 ## Audio und Timeline
 
@@ -96,9 +98,12 @@ Jede Szene braucht eine sichtbare Bildbeschreibung, konkrete Zuordnungsbegründu
 npm run trim:pauses -- --dir "PFAD-ZUM-REEL" --speed 1.10
 npm run build:timeline -- --dir "PFAD-ZUM-REEL"
 npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
+npm run sync:words -- --dir "PFAD-ZUM-REEL"
+# production/codex-word-sync-task.md akustisch vollständig bearbeiten
+npm run sync:words -- --dir "PFAD-ZUM-REEL" --apply --strict
 ```
 
-Die Verarbeitung startet immer von der ursprünglichen Voice-over-Datei. Pausen werden gestrafft, das Audio auf exakt 1,10x beschleunigt, die Tonhöhe erhalten und die Lautheit normalisiert. Die Timeline hängt automatisch 0,7 Sekunden ruhiges Schlussbild an.
+Die Verarbeitung startet immer von der ursprünglichen Voice-over-Datei. Pausen werden gestrafft, das Audio auf exakt 1,10x beschleunigt, die Tonhöhe erhalten und die Lautheit normalisiert. Die Timeline hängt automatisch 0,7 Sekunden ruhiges Schlussbild an. Geschätzte Untertitelzeiten dürfen nicht in den finalen Render gelangen.
 
 ## Neues Reel
 
@@ -144,7 +149,7 @@ npm run validate:render -- --dir "PFAD-ZUM-REEL"
 npm run render:reel -- --dir "PFAD-ZUM-REEL"
 ```
 
-Die Freigabe blockiert falsche Szenenzuordnungen, fehlende zweite Bildprüfung, unausgeglichene Szenendauern, ein abruptes Ende, altes 1,05x-Audio, fehlende Lautheitsnormalisierung, falsche Untertitelwerte und nicht geprüfte Bilder.
+Die Freigabe blockiert falsche Szenenzuordnungen, fehlende zweite Bildprüfung, unausgeglichene Szenendauern, ein abruptes Ende, altes 1,05x-Audio, fehlende Lautheitsnormalisierung, geschätzte oder unbestätigte Untertitelzeiten, falsche Untertitelwerte und nicht geprüfte Bilder.
 
 ## Voraussetzungen
 
