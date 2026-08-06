@@ -22,24 +22,24 @@ function getCheck(report, id) {
   return check;
 }
 
-test('neue Arbeitsordner verwenden exakt den unteren weißen Untertitelstil', async () => {
+test('neue Arbeitsordner verwenden exakt den mittigen weißen Untertitelstil', async () => {
   const outputRoot = await mkdtemp(path.join(os.tmpdir(), 'erklaer-reels-subtitles-'));
 
   try {
     const { reelDirectory } = await createReelWorkspace({
       title: 'Untertitel Test',
-      script: 'Dies ist ein ausreichend langer deutscher Testtext für einen neuen Reel-Arbeitsordner und die Untertitelprüfung.',
+      script: 'Dieses Rohscript wird zu einem vollständigen Ein-Minuten-Reel mit mittigen Untertiteln ausgebaut.',
       date: new Date('2026-08-03T12:00:00'),
-      sceneCount: 8,
+      sceneCount: 13,
       outputRoot
     });
 
     const plan = await readJson(path.join(reelDirectory, 'subtitles', 'subtitle-plan.json'));
     const scene = await readJson(path.join(reelDirectory, 'scenes', 'scene-01', 'scene.json'));
 
-    assert.equal(SUBTITLE_STYLE.position, 'lower');
-    assert.equal(SUBTITLE_STYLE.verticalPositionPercent, 76);
-    assert.deepEqual(SUBTITLE_STYLE.safeVerticalRangePercent, { min: 76, max: 76 });
+    assert.equal(SUBTITLE_STYLE.position, 'center');
+    assert.equal(SUBTITLE_STYLE.verticalPositionPercent, 50);
+    assert.deepEqual(SUBTITLE_STYLE.safeVerticalRangePercent, { min: 50, max: 50 });
     assert.equal(scene.subtitlePosition, SUBTITLE_STYLE.position);
     assert.equal(plan.position, SUBTITLE_STYLE.position);
     assert.equal(plan.verticalPositionPercent, SUBTITLE_STYLE.verticalPositionPercent);
@@ -54,28 +54,28 @@ test('neue Arbeitsordner verwenden exakt den unteren weißen Untertitelstil', as
   }
 });
 
-test('strenge Inhaltsprüfung blockiert den alten mittigen Stil', async () => {
+test('strenge Inhaltsprüfung blockiert den alten unteren Stil', async () => {
   const outputRoot = await mkdtemp(path.join(os.tmpdir(), 'erklaer-reels-old-subtitles-'));
 
   try {
     const { reelDirectory } = await createReelWorkspace({
       title: 'Alte Untertitelwerte',
-      script: 'Dies ist ein ausreichend langer deutscher Testtext, mit dem alte Untertitelpositionen im strengen Modus geprüft werden.',
+      script: 'Dieses Rohscript dient ausschließlich der Prüfung veralteter Untertitelwerte im strengen Modus.',
       date: new Date('2026-08-04T12:00:00'),
-      sceneCount: 8,
+      sceneCount: 13,
       outputRoot
     });
 
     const scenePath = path.join(reelDirectory, 'scenes', 'scene-01', 'scene.json');
     const scene = await readJson(scenePath);
-    scene.subtitlePosition = 'center';
+    scene.subtitlePosition = 'lower';
     await writeJson(scenePath, scene);
 
     const planPath = path.join(reelDirectory, 'subtitles', 'subtitle-plan.json');
     const plan = await readJson(planPath);
-    plan.position = 'center';
-    plan.verticalPositionPercent = 50;
-    plan.safeVerticalRangePercent = { min: 50, max: 50 };
+    plan.position = 'lower';
+    plan.verticalPositionPercent = 76;
+    plan.safeVerticalRangePercent = { min: 76, max: 76 };
     plan.highlightCurrentWord = true;
     plan.highlightColor = '#FFD84D';
     plan.backgroundColor = 'rgba(0, 0, 0, 0.72)';
