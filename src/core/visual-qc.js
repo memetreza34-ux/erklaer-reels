@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import { access, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
@@ -54,12 +55,32 @@ function manualEvidencePassed(entry, asset, rules) {
   return true;
 }
 
+async function buildReviewFingerprint(reelDirectory, asset) {
+  const hash = createHash('sha256');
+  hash.update(JSON.stringify({
+    assetId: asset.assetId,
+    file: asset.file,
+    kind: asset.kind,
+    expected: asset.expected
+  }));
+
+  const filePath = path.join(reelDirectory, asset.file);
+  if (await exists(filePath)) {
+    hash.update(await readFile(filePath));
+  } else {
+    hash.update('[missing-file]');
+  }
+
+  return hash.digest('hex');
+}
+
 function createReviewEntry(asset, requiredChecks) {
   return {
     assetId: asset.assetId,
     file: asset.file,
     kind: asset.kind,
     expected: asset.expected,
+    reviewFingerprint: asset.reviewFingerprint,
     reviewer: '',
     reviewedAt: null,
     status: 'pending',
@@ -77,7 +98,7 @@ async function ensureInspectionFile(reelDirectory, assets, rules, reel) {
   const current = await readJson(inspectionPath, null);
   const byId = new Map((current?.assets ?? []).map((entry) => [entry.assetId, entry]));
   const next = {
-    version: 5,
+    version: 6,
     visualStyleId: reel?.visualStyleId ?? '',
     visualStyleReason: reel?.visualStyleReason ?? '',
     instructions: [
@@ -92,6 +113,7 @@ async function ensureInspectionFile(reelDirectory, assets, rules, reel) {
       'Prüfe genau einen klaren Bildmoment und keine mehrfach dargestellte Hauptperson innerhalb derselben Illustration.',
       'Prüfe eine natürliche Komposition ohne leeren Mittelstreifen. Die exakte Bildmitte darf normal belegt sein.',
       'Prüfe die Lesbarkeit der weißen Untertitel mit dunkler Kontur exakt bei 50 Prozent Bildhöhe, ohne schwarze Hintergrundbox.',
+      'Ändert sich die Bilddatei, Narration, visuelle Idee, der Bildtext, Prompt oder die Bildwelt, wird eine frühere Freigabe automatisch auf pending zurückgesetzt.',
       'Nur vollständig bestandene Bilder mit konkreter Begründung erhalten status passed.'
     ],
     safeZones: rules.safeZones,
@@ -99,11 +121,15 @@ async function ensureInspectionFile(reelDirectory, assets, rules, reel) {
     assets: assets.map((asset) => {
       const requiredChecks = requiredChecksForAsset(rules, asset.kind);
       const base = createReviewEntry(asset, requiredChecks);
-      const previous = byId.get(asset.assetId) ?? {};
+      const previous = byId.get(asset.assetId);
+      const previousStillValid = previous?.reviewFingerprint === asset.reviewFingerprint;
+      if (!previousStillValid) return base;
+
       return {
         ...base,
         ...previous,
         expected: asset.expected,
+        reviewFingerprint: asset.reviewFingerprint,
         checks: { ...base.checks, ...(previous.checks ?? {}) },
         assetId: asset.assetId,
         file: asset.file,
@@ -162,6 +188,7 @@ export async function runVisualQualityCheck(reelDirectory, { strict = false } = 
         imageText: scene.imageText ?? '',
         imagePrompt,
         visualStyleId: reel.visualStyleId ?? '',
+        visualStyleReason: reel.visualStyleReason ?? '',
         previousSceneId: scenes[index - 1]?.sceneId ?? null,
         nextSceneId: scenes[index + 1]?.sceneId ?? null
       }
@@ -178,9 +205,14 @@ export async function runVisualQualityCheck(reelDirectory, { strict = false } = 
       visualIdea: cover.visualIdea ?? '',
       imagePrompt: coverPrompt,
       visualStyleId: reel.visualStyleId ?? '',
+      visualStyleReason: reel.visualStyleReason ?? '',
       reelTitle: reel.title ?? ''
     }
   });
+
+  for (const asset of assets) {
+    asset.reviewFingerprint = await buildReviewFingerprint(reelDirectory, asset);
+  }
 
   const inspection = await ensureInspectionFile(reelDirectory, assets, rules, reel);
   const inspectionById = new Map(inspection.assets.map((entry) => [entry.assetId, entry]));
@@ -250,6 +282,7 @@ export async function runVisualQualityCheck(reelDirectory, { strict = false } = 
       file: asset.file,
       kind: asset.kind,
       expected: asset.expected,
+      reviewFingerprint: asset.reviewFingerprint,
       metadata,
       manualReviewStatus: inspectionEntry?.status ?? 'pending',
       semanticEvidencePassed: evidencePassed
