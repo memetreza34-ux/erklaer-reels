@@ -1,0 +1,22 @@
+{
+  "version": 14,
+  "reelId": "reel-01_warum-schliessen-laender-buendnisse",
+  "title": "Warum schließen Länder Bündnisse?",
+  "phase": "waiting-for-external-assets",
+  "tasks": [
+    {"id":"script-final","label":"Voice-over mit 155–175 Wörtern und starkem Ende","status":"complete"},
+    {"id":"style-select","label":"Runde Kugelfiguren-Welt nach dem Script ausgewählt","status":"complete"},
+    {"id":"scenes-fill","label":"13 klare Ein-Moment-Szenen geplant","status":"complete"},
+    {"id":"image-text-plan","label":"Kurzen deutschen Bildtext in passenden Szenen geplant","status":"complete"},
+    {"id":"ending-check","label":"Prüffrage und einprägsamer Abschlusssatz getrennt","status":"complete"},
+    {"id":"prompts-write","label":"13 englische Bildprompts fertig","status":"complete"},
+    {"id":"prompts-export","label":"Cover und alle Prompts gesammelt","status":"complete"},
+    {"id":"subtitles-write","label":"Mittiger weißer Untertitelplan fertig","status":"complete"},
+    {"id":"effects-write","label":"Harte Schnitte und dezente Bewegungen geplant","status":"complete"},
+    {"id":"cover-write","label":"Cover-Prompt fertig","status":"complete"},
+    {"id":"caption-write","label":"Caption fertig","status":"complete"},
+    {"id":"sources-write","label":"Quellen dokumentiert","status":"complete"},
+    {"id":"external-assets","label":"13 Bilder, Cover und Original-Voice-over einfügen","status":"pending"},
+    {"id":"final-validation","label":"Lokale strenge Prüfungen und MP4-Render","status":"pending"}
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "workspace": "ready",
+  "content": "ready",
+  "script": "complete",
+  "scenes": "prompt-ready",
+  "subtitles": "planned",
+  "effects": "planned",
+  "audio": "missing",
+  "imagePrompts": "ready",
+  "imagePromptBundle": "ready",
+  "images": "missing",
+  "cover": "prompt-ready",
+  "assetMatching": "waiting-for-files",
+  "visualReview": "pending",
+  "qualityControl": "pending",
+  "timeline": "waiting-for-audio",
+  "render": "waiting-for-assets"
+}

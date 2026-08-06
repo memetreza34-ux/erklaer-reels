@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "enabled": true,
+  "voiceoverPriority": true,
+  "backgroundMusic": {"enabled": false, "reason": "Klares Voice-over-First-Erklärformat."},
+  "defaults": {"transition": "cut", "maximumSoundEffectsPerScene": 1, "soundEffectVolume": 0.18},
+  "scenes": [
+    {"sceneId":"scene-01","transitionIn":{"type":"none","durationSeconds":0,"reason":"Hook startet sofort."},"cameraMotion":{"type":"subtle-push-in","startScale":1,"endScale":1.04,"panXPercent":0,"panYPercent":0,"easing":"ease-in-out"},"soundEffects":[],"timingStatus":"estimated-until-audio-arrives"},
+    {"sceneId":"scene-02","transitionIn":{"type":"cut","durationSeconds":0},"cameraMotion":{"type":"none","startScale":1,"endScale":1,"panXPercent":0,"panYPercent":0,"easing":"ease-in-out"},"soundEffects":[],"timingStatus":"estimated-until-audio-arrives"},
+    {"sceneId":"scene-03","transitionIn":{"type":"cut","durationSeconds":0},"cameraMotion":{"type":"subtle-push-in","startScale":1,"endScale":1.04,"panXPercent":0,"panYPercent":0,"easing":"ease-in-out"},"soundEffects":[],"timingStatus":"estimated-until-audio-arrives"},
+    {"sceneId":"scene-04","transitionIn":{"type":"cut","durationSeconds":0},"cameraMotion":{"type":"none","startScale":1,"endScale":1,"panXPercent":0,"panYPercent":0,"easing":"ease-in-out"},"soundEffects":[],"timingStatus":"estimated-until-audio-arrives"},
+    {"sceneId":"scene-05","transitionIn":{"type":"cut","durationSeconds":0},"cameraMotion":{"type":"subtle-push-in","startScale":1,"endScale":1.04,"panXPercent":0,"panYPercent":0,"easing":"ease-in-out"},"soundEffects":[],"timingStatus":"estimated-until-audio-arrives"},
+    {"sceneId":"scene-06","transitionIn":{"type":"cut","durationSeconds":0},"cameraMotion":{"type":"gentle-pan-right","startScale":1,"endScale":1,"panXPercent":2,"panYPercent":0,"easing":"ease-in-out"},"soundEffects":[],"timingStatus":"estimated-until-audio-arrives"},
+    {"sceneId":"scene-07","transitionIn":{"type":"cut","durationSeconds":0},"cameraMotion":{"type":"none","startScale":1,"endScale":1,"panXPercent":0,"panYPercent":0,"easing":"ease-in-out"},"soundEffects":[],"timingStatus":"estimated-until-audio-arrives"},
+    {"sceneId":"scene-08","transitionIn":{"type":"cut","durationSeconds":0},"cameraMotion":{"type":"subtle-push-in","startScale":1,"endScale":1.04,"panXPercent":0,"panYPercent":0,"easing":"ease-in-out"},"soundEffects":[],"timingStatus":"estimated-until-audio-arrives"},
+    {"sceneId":"scene-09","transitionIn":{"type":"cut","durationSeconds":0},"cameraMotion":{"type":"none","startScale":1,"endScale":1,"panXPercent":0,"panYPercent":0,"easing":"ease-in-out"},"soundEffects":[],"timingStatus":"estimated-until-audio-arrives"},
+    {"sceneId":"scene-10","transitionIn":{"type":"cut","durationSeconds":0},"cameraMotion":{"type":"gentle-pan-left","startScale":1,"endScale":1,"panXPercent":-2,"panYPercent":0,"easing":"ease-in-out"},"soundEffects":[],"timingStatus":"estimated-until-audio-arrives"},
+    {"sceneId":"scene-11","transitionIn":{"type":"cut","durationSeconds":0},"cameraMotion":{"type":"subtle-push-in","startScale":1,"endScale":1.04,"panXPercent":0,"panYPercent":0,"easing":"ease-in-out"},"soundEffects":[],"timingStatus":"estimated-until-audio-arrives"},
+    {"sceneId":"scene-12","transitionIn":{"type":"cut","durationSeconds":0},"cameraMotion":{"type":"none","startScale":1,"endScale":1,"panXPercent":0,"panYPercent":0,"easing":"ease-in-out"},"soundEffects":[],"timingStatus":"estimated-until-audio-arrives"},
+    {"sceneId":"scene-13","transitionIn":{"type":"cut","durationSeconds":0},"cameraMotion":{"type":"subtle-push-in","startScale":1,"endScale":1.04,"panXPercent":0,"panYPercent":0,"easing":"ease-in-out"},"soundEffects":[],"timingStatus":"estimated-until-audio-arrives"}
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "reelId": "reel-01_warum-schliessen-laender-buendnisse",
+  "title": "Warum schließen Länder Bündnisse?",
+  "topicArea": "Politik und Gesellschaft",
+  "date": "2026-08-06",
+  "language": "de",
+  "promptLanguage": "en",
+  "aspectRatio": "9:16",
+  "targetDurationSeconds": 58.2,
+  "targetVideoDurationSeconds": 58.9,
+  "sceneCount": 13,
+  "visualStyleId": "round-country-characters",
+  "visualStyleReason": "Das Script erklärt Beziehungen zwischen Staaten. Vollständig runde Länder- und Kugelfiguren machen Schutz, Zusammenarbeit, Pflichten und Abhängigkeiten sofort sichtbar und entsprechen der gewünschten Hauptwelt.",
+  "subtitlesEnabled": true,
+  "motionEffectsEnabled": true,
+  "soundEffectsEnabled": true,
+  "backgroundMusicEnabled": false,
+  "audioPlaybackRate": 1.1,
+  "status": "content-ready"
+}
