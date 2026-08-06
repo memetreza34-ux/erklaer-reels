@@ -117,28 +117,47 @@ function wordSyncStage(renderPlan, strict) {
       id: 'word-highlight-disabled',
       passed: highlightedCues.length === 0,
       level: strict ? 'error' : 'warning',
-      message: 'Die Wort-für-Wort-Markierung muss für den schlichten weißen Untertitelstil deaktiviert sein.'
+      message: 'Die Wort-für-Wort-Markierung muss deaktiviert bleiben; die Synchronisierung erfolgt nur über echte Wortzeiten.'
     }
   ];
 
-  for (const cue of highlightedCues) {
+  let exactCueCount = 0;
+  for (const cue of cues) {
     const result = validateExactWordTimings(cue);
+    const exact = result.valid;
+    if (exact) exactCueCount += 1;
+
     checks.push({
       id: `${cue.id ?? 'subtitle'}-exact-word-timing`,
-      passed: result.valid,
+      passed: exact,
       level: strict ? 'error' : 'warning',
       message: `${cue.id ?? 'Untertitel'}: ${result.issues.join(' ') || 'Exakte Wortzeiten vorhanden.'}`
     });
+    checks.push({
+      id: `${cue.id ?? 'subtitle'}-timing-status`,
+      passed: cue.timingStatus === 'codex-word-synced',
+      level: strict ? 'error' : 'warning',
+      message: `${cue.id ?? 'Untertitel'} muss timingStatus "codex-word-synced" verwenden.`
+    });
+    checks.push({
+      id: `${cue.id ?? 'subtitle'}-timing-source`,
+      passed: cue.timingSource === 'codex-local-audio-review',
+      level: strict ? 'error' : 'warning',
+      message: `${cue.id ?? 'Untertitel'} muss aus der lokalen Codex-Audioprüfung stammen.`
+    });
   }
 
+  const provider = cues.length > 0 && cues.every((cue) => cue.timingSource === 'codex-local-audio-review')
+    ? 'codex-local-audio-review'
+    : null;
   const errors = checks.filter((check) => !check.passed && check.level === 'error');
   const warnings = checks.filter((check) => !check.passed && check.level === 'warning');
   return {
-    passed: errors.length === 0 && cues.length > 0,
+    passed: errors.length === 0 && cues.length > 0 && exactCueCount === cues.length && provider === 'codex-local-audio-review',
     strict,
-    provider: highlightedCues.length === 0 ? 'not-required' : highlightedCues[0]?.timingSource ?? null,
+    provider,
     cueCount: cues.length,
-    exactCueCount: checks.filter((check) => check.id.endsWith('-exact-word-timing') && check.passed).length,
+    exactCueCount,
     summary: {
       passedChecks: checks.filter((check) => check.passed).length,
       failedChecks: errors.length,
@@ -253,14 +272,15 @@ export async function finalizeReel(reelDirectory, {
     stages.timeline?.renderStatus === 'ready-for-renderer' &&
     stages.wordSync?.passed === true &&
     stages.wordSync?.strict === true &&
-    stages.wordSync?.provider === 'not-required' &&
+    stages.wordSync?.provider === 'codex-local-audio-review' &&
+    stages.wordSync?.exactCueCount === stages.wordSync?.cueCount &&
     stages.visualQuality?.passed === true &&
     stages.visualQuality?.strict === true &&
     progress.productionReady === 100;
 
   const normalizedDirectory = reelDirectory.split(path.sep).join('/');
   const report = {
-    version: 7,
+    version: 8,
     createdAt,
     reelDirectory: normalizedDirectory,
     strict,
@@ -273,7 +293,9 @@ export async function finalizeReel(reelDirectory, {
       ? `Renderer prüfen und MP4 erzeugen: npm run validate:render -- --dir "${normalizedDirectory}" && npm run render:reel -- --dir "${normalizedDirectory}"`
       : stages.audioPacing?.passed !== true
         ? `Voice-over mit ${AUDIO_PACING_STYLE.playbackRate.toFixed(2)}x und Lautheitsnormalisierung neu erzeugen: npm run trim:pauses -- --dir "${normalizedDirectory}"; danach Timeline und Audio-Cues neu synchronisieren.`
-        : progress.nextStep
+        : stages.wordSync?.passed !== true
+          ? `Exakte Untertitelzeiten erstellen: npm run sync:words -- --dir "${normalizedDirectory}"; production/codex-word-sync-task.md bearbeiten; danach npm run sync:words -- --dir "${normalizedDirectory}" --apply --strict.`
+          : progress.nextStep
   };
 
   await writeJson(path.join(reelDirectory, 'review', 'final-readiness-report.json'), report);
@@ -281,7 +303,7 @@ export async function finalizeReel(reelDirectory, {
   const statusPath = path.join(reelDirectory, 'status.json');
   const status = await readJson(statusPath, {});
   status.audioPacing = stages.audioPacing?.passed ? 'complete' : 'needs-review';
-  status.wordSync = stages.wordSync?.passed ? 'not-required' : 'needs-review';
+  status.wordSync = stages.wordSync?.passed ? 'complete' : 'needs-review';
   status.finalReadiness = readyForRenderer ? 'ready-for-renderer' : 'needs-review';
   if (readyForRenderer && status.render !== 'complete') status.render = 'ready';
   await writeJson(statusPath, status);
