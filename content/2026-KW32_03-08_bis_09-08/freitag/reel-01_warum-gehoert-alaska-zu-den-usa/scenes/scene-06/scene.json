@@ -1,0 +1,18 @@
+{
+  "sceneId": "scene-06",
+  "order": 6,
+  "title": "Schwer zu verteidigen",
+  "narration": "In einem Krieg war Alaska außerdem schwer zu verteidigen. Großbritannien kontrollierte das benachbarte Kanada.",
+  "imageText": "SCHWER ZU VERTEIDIGEN",
+  "visualIdea": "Die kleine runde Alaska-Figur steht weit entfernt von Russland, während die größere runde Kanada-Figur direkt daneben erscheint.",
+  "continuityNotes": "Keine Kampfhandlung; neutraler strategischer Kartenmoment in derselben Kugelwelt.",
+  "audioCue": "schwer zu verteidigen",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [{"text":"Im Krieg schlecht geschützt"},{"text":"Kanada lag direkt daneben"}],
+  "subtitlePosition": "center",
+  "durationSeconds": 4.5,
+  "expectedImageFileName": "scene-06.png",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "status": "prompt-ready"
+}
