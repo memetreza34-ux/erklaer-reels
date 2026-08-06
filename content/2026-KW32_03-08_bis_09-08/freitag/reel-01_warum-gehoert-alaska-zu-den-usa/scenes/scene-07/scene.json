@@ -1,0 +1,18 @@
+{
+  "sceneId": "scene-07",
+  "order": 7,
+  "title": "Russland entscheidet sich zum Verkauf",
+  "narration": "Russland entschied deshalb, Alaska lieber an die Vereinigten Staaten zu verkaufen.",
+  "imageText": "VERKAUFEN?",
+  "visualIdea": "Die runde Russland-Figur hält einen Kaufvertrag und blickt zur runden USA-Figur, während Alaska zwischen beiden wartet.",
+  "continuityNotes": "Klare Entscheidungsszene, gleicher Vertrag und dieselben Figurenformen wie zuvor.",
+  "audioCue": "entschied deshalb",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [{"text":"Russland traf eine Entscheidung"},{"text":"Alaska sollte verkauft werden"}],
+  "subtitlePosition": "center",
+  "durationSeconds": 4.3,
+  "expectedImageFileName": "scene-07.png",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "status": "prompt-ready"
+}
