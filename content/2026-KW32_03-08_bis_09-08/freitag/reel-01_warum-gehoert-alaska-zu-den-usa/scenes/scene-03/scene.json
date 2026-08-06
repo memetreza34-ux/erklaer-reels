@@ -1,0 +1,18 @@
+{
+  "sceneId": "scene-03",
+  "order": 3,
+  "title": "Der Verkauf von 1867",
+  "narration": "Trotzdem ist es amerikanisch. Der Grund ist ein Verkauf im Jahr 1867.",
+  "imageText": "VERKAUF 1867",
+  "visualIdea": "Die runde Alaska-Figur wechselt über einen unterschriebenen Vertrag von der russischen zur amerikanischen Seite.",
+  "continuityNotes": "Ein klarer Übergabemoment in derselben handgezeichneten Kugelwelt; keine geteilten Panels.",
+  "audioCue": "Trotzdem ist es amerikanisch",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [{"text":"Trotzdem wurde es amerikanisch"},{"text":"durch einen Verkauf"}],
+  "subtitlePosition": "center",
+  "durationSeconds": 4.4,
+  "expectedImageFileName": "scene-03.png",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "status": "prompt-ready"
+}
