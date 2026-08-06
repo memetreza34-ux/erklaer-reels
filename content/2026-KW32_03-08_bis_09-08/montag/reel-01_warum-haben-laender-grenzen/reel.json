@@ -1,0 +1,18 @@
+{
+  "reelId": "reel-01_warum-haben-laender-grenzen",
+  "title": "Warum haben Länder Grenzen?",
+  "topicArea": "Länder, Geografie und Geschichte",
+  "date": "2026-08-03",
+  "language": "de",
+  "promptLanguage": "en",
+  "aspectRatio": "9:16",
+  "targetDurationSeconds": 56.1,
+  "sceneCount": 13,
+  "visualStyleId": "round-country-characters",
+  "visualStyleReason": "Reife neutrale Länder- und Regionenfiguren verbinden Karten, Landschaften und historische Grenzverläufe schnell verständlich, ohne reale Staaten zu bewerten.",
+  "subtitlesEnabled": true,
+  "motionEffectsEnabled": true,
+  "soundEffectsEnabled": true,
+  "backgroundMusicEnabled": false,
+  "status": "content-ready"
+}
