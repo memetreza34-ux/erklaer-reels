@@ -27,7 +27,7 @@ Erlaubt:
 
 Nicht autonom verwenden: Körper und Biologie, Finanzen, Elektrotechnik, KI-News, tägliche politische Nachrichten und Parteienwerbung. Politische Inhalte neutral erklären und Unsicherheiten in `sources/sources.md` dokumentieren.
 
-## Script und Ende
+## Script, Bildwelt und Ende
 
 Bevorzugter Einstieg: **THEMA einfach erklärt:**
 
@@ -41,6 +41,8 @@ Verbindlich:
 - Hook-Bild ab Sekunde 0
 - kein schwarzer Start
 - kein leerer Clickbait
+
+**Erst das vollständige Script schreiben, danach die passendste Bildwelt auswählen.** Die runde Kugelwelt, menschliche Editorial-Welt, Objekt-/Metapherwelt, isometrische Szenenwelt oder eine ernstere Symbolwelt werden nur eingesetzt, wenn sie zum konkreten Script passen. Innerhalb eines Reels bleibt die gewählte Hauptwelt konsistent.
 
 Die letzten zwei Szenen bilden ein starkes Ende:
 
@@ -67,6 +69,21 @@ npm run export:prompts -- --dir "<reel-ordner>" --strict
 
 Die Sammeldatei enthält zuerst den Cover-Prompt und danach alle Szenenprompts.
 
+### Deutscher Bildtext
+
+Wo es zur Aussage passt, soll ein kurzer deutscher Text direkt in die Illustration integriert werden.
+
+- bevorzugt in ungefähr 55–85 % der Szenen
+- meistens 1–5 Wörter; ein einzelnes Wort ist vollständig ausreichend
+- Größe je nach Szene klein, mittel oder groß
+- mögliche Formen: kurze Überschrift, Schild, Etikett, Dokument, Karte, Display, Gegenstandsaufschrift oder Schlussaussage
+- `scene.imageText` enthält den exakten deutschen Wortlaut
+- der Bildprompt nennt diesen Wortlaut exakt in Anführungszeichen
+- Bildtext und Untertitel dürfen nicht wortgleich dieselbe Aussage wiederholen
+- kein englischer sichtbarer Text, keine Fantasieschrift und keine zufälligen Wörter
+- Text weglassen, wenn er die Szene überladen, die Aussage doppeln oder die Bildgenerierung verschlechtern würde
+- nicht zwanghaft Text in jede einzelne Szene setzen
+
 ### Natürliche Komposition
 
 - Hauptmotive dürfen die exakte Bildmitte normal verwenden und hinter den Untertiteln liegen.
@@ -74,7 +91,7 @@ Die Sammeldatei enthält zuerst den Cover-Prompt und danach alle Szenenprompts.
 - Keine leere horizontale Untertitelzone, kein Mittelstreifen und keine getrennten Bildhälften.
 - Keine gestapelten Panels, leeren Bäume, Pfeile oder großen Platzhalterflächen.
 - Keine zufälligen Wörter, englischen Labels, Fantasieschrift, Logos oder Wasserzeichen.
-- Sichtbarer Bildtext nur bei redaktioneller Notwendigkeit und dann korrekt auf Deutsch.
+- Geplanter sichtbarer Bildtext ist korrektes Deutsch und wird exakt im Prompt angegeben.
 
 ## Untertitel
 
@@ -132,7 +149,8 @@ Jedes Bild tatsächlich ansehen und prüfen:
 - genau ein klarer Moment
 - keine mehrfach dargestellte Hauptperson
 - natürliche Komposition ohne leere Mitte
-- keine unerwünschte Schrift
+- geplanter Bildtext vollständig, korrekt und ausschließlich auf Deutsch
+- keine zusätzlichen erfundenen Wörter
 - mittige weiße Untertitel bei 50 % bleiben lesbar
 - Bewegung schneidet nichts Wichtiges ab
 
