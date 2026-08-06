@@ -1,0 +1,18 @@
+{
+  "sceneId": "scene-11",
+  "order": 11,
+  "title": "Alaska wird strategisch wertvoll",
+  "narration": "Später machten Gold, Fischerei, Rohstoffe und die strategische Lage Alaska wertvoll. 1959 wurde es der 49. Bundesstaat.",
+  "imageText": "49. BUNDESSTAAT",
+  "visualIdea": "Die runde Alaska-Figur steht vor Gold, Fischerei und einer arktischen Route und erhält einen einzelnen goldenen Stern als Bundesstaatssymbol.",
+  "continuityNotes": "Ein zusammenhängender Wertzuwachs-Moment, keine vier getrennten Panels; gleiche Alaska-Kugel wie zuvor.",
+  "audioCue": "Später machten Gold",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [{"text":"Später stieg der Wert"},{"text":"1959 folgte der Beitritt"}],
+  "subtitlePosition": "center",
+  "durationSeconds": 4.4,
+  "expectedImageFileName": "scene-11.png",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "status": "prompt-ready"
+}
