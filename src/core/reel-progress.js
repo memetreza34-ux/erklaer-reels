@@ -146,12 +146,13 @@ export async function calculateReelProgress(reelDirectory) {
     (timelineCheckReady ? 10 : 0)
   );
 
-  const wordSyncRequired = subtitlePlan.highlightCurrentWord === true;
+  const wordSyncRequired = reel.subtitlesEnabled !== false && subtitlePlan.enabled !== false;
   const wordSyncCreated = Boolean(wordSyncReport);
   const measuredWordCoverage = Number(wordSyncReport?.coverage ?? 0);
   const measuredWordSyncProvider = wordSyncReport?.provider ?? null;
   const measuredWordSyncPassed = wordSyncReport?.passed === true &&
     measuredWordCoverage >= 0.98 &&
+    Number(wordSyncReport?.cueCount ?? 0) > 0 &&
     measuredWordSyncProvider === 'codex-local-audio-review';
   const wordSyncPassed = wordSyncRequired ? measuredWordSyncPassed : true;
   const wordSyncProvider = wordSyncRequired ? measuredWordSyncProvider : 'not-required';
@@ -205,7 +206,7 @@ export async function calculateReelProgress(reelDirectory) {
   } else if (timelineProgress < 100) {
     nextStep = 'Master-Timeline mit dem optimierten Audio erzeugen, echte Audio-Cues eintragen und sync:audio streng ausführen.';
   } else if (wordSyncRequired && wordSync < 100) {
-    nextStep = 'sync:words vorbereiten, production/codex-word-sync-task.md bearbeiten und danach mit --apply --strict übernehmen.';
+    nextStep = 'sync:words vorbereiten, production/codex-word-sync-task.md akustisch bearbeiten und danach mit --apply --strict übernehmen.';
   } else if (visualQuality < 100) {
     nextStep = 'check:visuals ausführen, jedes Bild visuell prüfen und die strenge visuelle Abnahme bestehen.';
   } else if (!rendererValidated) {
