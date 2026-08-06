@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "reelId": "reel-01_warum-schliessen-laender-buendnisse",
+  "status": "waiting-for-assets",
+  "visualStyleId": "round-country-characters",
+  "assets": [
+    {"id":"cover","file":"cover/cover.png","status":"missing"},
+    {"id":"scene-01","file":"scenes/scene-01/scene-01.png","status":"missing"},
+    {"id":"scene-02","file":"scenes/scene-02/scene-02.png","status":"missing"},
+    {"id":"scene-03","file":"scenes/scene-03/scene-03.png","status":"missing"},
+    {"id":"scene-04","file":"scenes/scene-04/scene-04.png","status":"missing"},
+    {"id":"scene-05","file":"scenes/scene-05/scene-05.png","status":"missing"},
+    {"id":"scene-06","file":"scenes/scene-06/scene-06.png","status":"missing"},
+    {"id":"scene-07","file":"scenes/scene-07/scene-07.png","status":"missing"},
+    {"id":"scene-08","file":"scenes/scene-08/scene-08.png","status":"missing"},
+    {"id":"scene-09","file":"scenes/scene-09/scene-09.png","status":"missing"},
+    {"id":"scene-10","file":"scenes/scene-10/scene-10.png","status":"missing"},
+    {"id":"scene-11","file":"scenes/scene-11/scene-11.png","status":"missing"},
+    {"id":"scene-12","file":"scenes/scene-12/scene-12.png","status":"missing"},
+    {"id":"scene-13","file":"scenes/scene-13/scene-13.png","status":"missing"}
+  ]
+}

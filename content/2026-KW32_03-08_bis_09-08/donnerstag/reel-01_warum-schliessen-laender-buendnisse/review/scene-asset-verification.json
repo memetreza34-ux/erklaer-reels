@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "reelId": "reel-01_warum-schliessen-laender-buendnisse",
+  "status": "waiting-for-images",
+  "minimumConfidence": 0.9,
+  "instructions": [
+    "Bild öffnen und Dateinamen ignorieren.",
+    "Sichtbaren Inhalt neutral beschreiben.",
+    "Mit narration, audioCue, visualIdea, imageText und imagePrompt vergleichen.",
+    "Zusätzlich gegen vorherige und nächste Szene prüfen.",
+    "Unter 0,90 Konfidenz nicht zuordnen."
+  ],
+  "scenes": [
+    {"sceneId":"scene-01","expectedOrder":1,"expectedFile":"scenes/scene-01/scene-01.png","visualReviewed":false,"secondPassConfirmed":false,"sceneOrderConfirmed":false,"confirmedTarget":null,"confirmedSceneOrder":null,"visibleSummary":"","reason":"","comparedFields":[],"matchMethod":"","confidence":0,"status":"pending"},
+    {"sceneId":"scene-02","expectedOrder":2,"expectedFile":"scenes/scene-02/scene-02.png","visualReviewed":false,"secondPassConfirmed":false,"sceneOrderConfirmed":false,"confirmedTarget":null,"confirmedSceneOrder":null,"visibleSummary":"","reason":"","comparedFields":[],"matchMethod":"","confidence":0,"status":"pending"},
+    {"sceneId":"scene-03","expectedOrder":3,"expectedFile":"scenes/scene-03/scene-03.png","visualReviewed":false,"secondPassConfirmed":false,"sceneOrderConfirmed":false,"confirmedTarget":null,"confirmedSceneOrder":null,"visibleSummary":"","reason":"","comparedFields":[],"matchMethod":"","confidence":0,"status":"pending"},
+    {"sceneId":"scene-04","expectedOrder":4,"expectedFile":"scenes/scene-04/scene-04.png","visualReviewed":false,"secondPassConfirmed":false,"sceneOrderConfirmed":false,"confirmedTarget":null,"confirmedSceneOrder":null,"visibleSummary":"","reason":"","comparedFields":[],"matchMethod":"","confidence":0,"status":"pending"},
+    {"sceneId":"scene-05","expectedOrder":5,"expectedFile":"scenes/scene-05/scene-05.png","visualReviewed":false,"secondPassConfirmed":false,"sceneOrderConfirmed":false,"confirmedTarget":null,"confirmedSceneOrder":null,"visibleSummary":"","reason":"","comparedFields":[],"matchMethod":"","confidence":0,"status":"pending"},
+    {"sceneId":"scene-06","expectedOrder":6,"expectedFile":"scenes/scene-06/scene-06.png","visualReviewed":false,"secondPassConfirmed":false,"sceneOrderConfirmed":false,"confirmedTarget":null,"confirmedSceneOrder":null,"visibleSummary":"","reason":"","comparedFields":[],"matchMethod":"","confidence":0,"status":"pending"},
+    {"sceneId":"scene-07","expectedOrder":7,"expectedFile":"scenes/scene-07/scene-07.png","visualReviewed":false,"secondPassConfirmed":false,"sceneOrderConfirmed":false,"confirmedTarget":null,"confirmedSceneOrder":null,"visibleSummary":"","reason":"","comparedFields":[],"matchMethod":"","confidence":0,"status":"pending"},
+    {"sceneId":"scene-08","expectedOrder":8,"expectedFile":"scenes/scene-08/scene-08.png","visualReviewed":false,"secondPassConfirmed":false,"sceneOrderConfirmed":false,"confirmedTarget":null,"confirmedSceneOrder":null,"visibleSummary":"","reason":"","comparedFields":[],"matchMethod":"","confidence":0,"status":"pending"},
+    {"sceneId":"scene-09","expectedOrder":9,"expectedFile":"scenes/scene-09/scene-09.png","visualReviewed":false,"secondPassConfirmed":false,"sceneOrderConfirmed":false,"confirmedTarget":null,"confirmedSceneOrder":null,"visibleSummary":"","reason":"","comparedFields":[],"matchMethod":"","confidence":0,"status":"pending"},
+    {"sceneId":"scene-10","expectedOrder":10,"expectedFile":"scenes/scene-10/scene-10.png","visualReviewed":false,"secondPassConfirmed":false,"sceneOrderConfirmed":false,"confirmedTarget":null,"confirmedSceneOrder":null,"visibleSummary":"","reason":"","comparedFields":[],"matchMethod":"","confidence":0,"status":"pending"},
+    {"sceneId":"scene-11","expectedOrder":11,"expectedFile":"scenes/scene-11/scene-11.png","visualReviewed":false,"secondPassConfirmed":false,"sceneOrderConfirmed":false,"confirmedTarget":null,"confirmedSceneOrder":null,"visibleSummary":"","reason":"","comparedFields":[],"matchMethod":"","confidence":0,"status":"pending"},
+    {"sceneId":"scene-12","expectedOrder":12,"expectedFile":"scenes/scene-12/scene-12.png","visualReviewed":false,"secondPassConfirmed":false,"sceneOrderConfirmed":false,"confirmedTarget":null,"confirmedSceneOrder":null,"visibleSummary":"","reason":"","comparedFields":[],"matchMethod":"","confidence":0,"status":"pending"},
+    {"sceneId":"scene-13","expectedOrder":13,"expectedFile":"scenes/scene-13/scene-13.png","visualReviewed":false,"secondPassConfirmed":false,"sceneOrderConfirmed":false,"confirmedTarget":null,"confirmedSceneOrder":null,"visibleSummary":"","reason":"","comparedFields":[],"matchMethod":"","confidence":0,"status":"pending"}
+  ]
+}
