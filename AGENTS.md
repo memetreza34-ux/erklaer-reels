@@ -152,14 +152,16 @@ Nach der Zuordnung müssen `review/scene-asset-verification.json` und `review/vi
 
 Einzige technische Quelle: `src/shared/subtitle-style.js`.
 
-- Position `center`
-- exakt 50 % Bildhöhe
-- weiches Weiß `#F5F7FA`
-- keine gelbe Wortmarkierung
+- horizontal zentriert
+- vertikal exakt bei 58 % Bildhöhe, also leicht unterhalb der Mitte
+- warmer heller Sandton `#E7C39A`
+- keine andersfarbige Wortmarkierung
 - keine schwarze Box und kein Balken
 - dunkle Kontur und dezenter Schatten
 - normalerweise 3–6 Wörter, höchstens zwei Zeilen
-- keine Karaoke-Animation und kein erforderlicher Einzelwort-Sync
+- keine Karaoke-Animation
+- exakte Wortzeiten sind als technische Synchronisationsgrundlage verpflichtend, auch ohne sichtbares Wort-Highlight
+- Codex muss das lokale Voice-over tatsächlich anhören; gleichmäßig geschätzte Zeiten sind verboten
 - keine künstliche Freifläche im Bild erzeugen
 
 ## Audio
@@ -177,6 +179,7 @@ npm run trim:pauses -- --dir "<reel-ordner>" --speed 1.10
 - True Peak auf höchstens −1,5 dBTP begrenzen
 - bereits optimiertes Audio nicht erneut beschleunigen
 - danach Timeline, Szenen-Cues und Untertitel-Cues neu synchronisieren
+- vor dem Rendern `sync:words` vorbereiten, das Audio vollständig akustisch prüfen und mit `--apply --strict` übernehmen
 
 ## Schnitt und Effekte
 
@@ -196,6 +199,9 @@ npm run organize:assets -- --dir "<reel-ordner>" --apply
 npm run check:visuals -- --dir "<reel-ordner>" --strict
 npm run build:timeline -- --dir "<reel-ordner>"
 npm run sync:audio -- --dir "<reel-ordner>" --strict
+npm run sync:words -- --dir "<reel-ordner>"
+# production/codex-word-sync-task.md akustisch vollständig bearbeiten
+npm run sync:words -- --dir "<reel-ordner>" --apply --strict
 npm run finalize:reel -- --dir "<reel-ordner>" --strict
 npm run validate:render -- --dir "<reel-ordner>"
 npm run render:reel -- --dir "<reel-ordner>"
@@ -211,7 +217,7 @@ Jedes Bild muss zusätzlich bestehen:
 - keine unerwarteten englischen oder erfundenen Wörter
 - natürliche Komposition und ein klarer Moment
 
-Ein Reel darf nur als fertig gelten, wenn Inhalt, 1,10x-Audio, Lautheit, Audio-Sync, sichere Bildzuordnung, ausgeglichener Szenenrhythmus, 0,7-Sekunden-Schlussbild, visuelle Prüfung und Renderer-Eingabe tatsächlich bestanden sind.
+Ein Reel darf nur als fertig gelten, wenn Inhalt, 1,10x-Audio, Lautheit, Audio-Sync, **exakte akustisch bestätigte Untertitelsynchronisierung**, sichere Bildzuordnung, ausgeglichener Szenenrhythmus, 0,7-Sekunden-Schlussbild, visuelle Prüfung und Renderer-Eingabe tatsächlich bestanden sind.
 
 ## Technische Regeln
 
