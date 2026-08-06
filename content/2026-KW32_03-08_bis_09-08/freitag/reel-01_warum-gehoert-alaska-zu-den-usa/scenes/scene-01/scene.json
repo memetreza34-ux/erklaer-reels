@@ -1,0 +1,18 @@
+{
+  "sceneId": "scene-01",
+  "order": 1,
+  "title": "Hook: Alaska zwischen zwei Welten",
+  "narration": "Warum gehört Alaska zu den USA? Auf Karten wirkt das zunächst unlogisch:",
+  "imageText": "RUSSLAND ODER USA?",
+  "visualIdea": "Eine vollständige runde Alaska-Figur steht zwischen einer runden Russland-Figur und einer runden USA-Figur auf einer vereinfachten arktischen Karte.",
+  "continuityNotes": "Handgezeichnete 2D-Kugelwelt mit dicken schwarzen Konturen, flachen Farben, leichter Papiertextur und vollständig runden Figuren.",
+  "audioCue": "Warum gehört Alaska",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [{"text":"Warum gehört Alaska"},{"text":"zu den USA?"},{"text":"Die Karte wirkt unlogisch"}],
+  "subtitlePosition": "center",
+  "durationSeconds": 4.8,
+  "expectedImageFileName": "scene-01.png",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "status": "prompt-ready"
+}
