@@ -1,0 +1,18 @@
+{
+  "sceneId": "scene-13",
+  "order": 13,
+  "title": "Abschluss: Verträge verändern Karten",
+  "narration": "Alaska zeigt das Gegenteil. Nicht die Entfernung entscheidet, sondern Verträge, Macht und Geschichte.",
+  "imageText": "VERTRÄGE VERÄNDERN KARTEN",
+  "visualIdea": "Ein unterschriebener Vertrag zieht eine klare Linie von der USA-Kugel zur Alaska-Kugel, während Russland geografisch näher bleibt.",
+  "continuityNotes": "Starkes einzelnes Schlussbild in derselben Kugelwelt; nach dem letzten Wort 0,7 Sekunden ohne Untertitel stehen lassen.",
+  "audioCue": "Alaska zeigt das Gegenteil",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [{"text":"Entfernung entscheidet nicht"},{"text":"Geschichte formt Zugehörigkeit"}],
+  "subtitlePosition": "center",
+  "durationSeconds": 5.1,
+  "expectedImageFileName": "scene-13.png",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "status": "prompt-ready"
+}
