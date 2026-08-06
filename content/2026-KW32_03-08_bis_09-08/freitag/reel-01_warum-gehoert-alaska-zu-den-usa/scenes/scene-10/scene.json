@@ -1,0 +1,18 @@
+{
+  "sceneId": "scene-10",
+  "order": 10,
+  "title": "Indigene Bevölkerung ausgeschlossen",
+  "narration": "Die indigenen Völker Alaskas wurden an diesem Geschäft nicht beteiligt, obwohl sie dort seit Jahrtausenden lebten.",
+  "imageText": "",
+  "visualIdea": "Mehrere respektvoll dargestellte runde indigene Gemeinschaftsfiguren stehen im Vordergrund, während Russland und die USA im Hintergrund den Vertrag schließen.",
+  "continuityNotes": "Ernstere, respektvolle Stimmung ohne stereotype Kostüme; weiterhin vollständige Kugelfiguren und dieselbe 2D-Bildsprache.",
+  "audioCue": "nicht beteiligt",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [{"text":"Die Bewohner wurden ausgeschlossen"},{"text":"obwohl sie dort lebten"}],
+  "subtitlePosition": "center",
+  "durationSeconds": 4.3,
+  "expectedImageFileName": "scene-10.png",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "status": "prompt-ready"
+}
