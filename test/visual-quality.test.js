@@ -50,12 +50,20 @@ test('prüft 12 Szenenbilder plus Cover und verlangt im strengen Modus die visue
     asset.reviewer = 'codex-vision';
     asset.reviewedAt = '2026-07-31T10:00:00.000Z';
     asset.status = 'passed';
+    asset.visibleSummary = asset.kind === 'scene'
+      ? 'Das Bild zeigt den geplanten klaren Szenenmoment mit den erwarteten sichtbaren Motiven.'
+      : 'Das Cover zeigt das Thema mit einem klaren Hauptmotiv und gut lesbarer Überschrift.';
+    asset.matchReason = asset.kind === 'scene'
+      ? 'Die sichtbaren Motive und die Handlung entsprechen Narration, visueller Idee und geplantem Bildinhalt.'
+      : 'Hauptmotiv und Überschrift entsprechen dem geplanten Cover und dem Thema des Reels.';
+    asset.comparedAssetId = asset.assetId;
+    if (asset.kind === 'scene') asset.secondPassConfirmed = true;
     for (const key of Object.keys(asset.checks)) asset.checks[key] = true;
   }
   await writeJson(inspectionPath, inspection);
 
   const strictReport = await runVisualQualityCheck(result.reelDirectory, { strict: true });
-  assert.equal(strictReport.passed, true);
+  assert.equal(strictReport.passed, true, JSON.stringify(strictReport.checks.filter((check) => !check.passed), null, 2));
   assert.equal(strictReport.summary.failedChecks, 0);
 });
 
