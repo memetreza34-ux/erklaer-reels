@@ -87,3 +87,23 @@ test('Dokumentation bleibt beim weißen 58-Prozent-Untertiltelstandard', async (
     assert.match(text, /#F5F7FA|weiches Weiß|in Weiß/i, `${file} nennt den weißen Untertitelstandard nicht.`);
   }
 });
+
+test('abgeschlossene Testphase ist als Produktionsbaseline eingefroren', async () => {
+  const status = await readText('PRODUCTION_STATUS.md');
+  const autonomous = await readText('docs/autonomous-reel.md');
+
+  assert.match(status, /Status:\s*PRODUKTIONSBEREIT/i);
+  assert.match(status, /55–60 Sekunden/);
+  assert.match(status, /12–14 Szenen/);
+  assert.match(status, /58 % Bildhöhe/);
+  assert.match(status, /#F5F7FA/);
+  assert.match(status, /0,90 Konfidenz/);
+  assert.match(status, /0,7 Sekunden/);
+  assert.match(status, /reels\//);
+  assert.match(status, /youtube\//);
+  assert.match(status, /globale Produktionsregeln nicht nebenbei verändern/i);
+
+  assert.match(autonomous, /PRODUCTION_STATUS\.md/);
+  assert.match(autonomous, /keine globalen Produktionsregeln nebenbei verändern/i);
+  assert.match(autonomous, /nur nach einer ausdrücklichen neuen Anweisung/i);
+});
