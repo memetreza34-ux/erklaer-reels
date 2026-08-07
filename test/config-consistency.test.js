@@ -9,6 +9,10 @@ async function readJson(relativePath) {
   return JSON.parse(await readFile(path.resolve(relativePath), 'utf8'));
 }
 
+async function readText(relativePath) {
+  return readFile(path.resolve(relativePath), 'utf8');
+}
+
 test('App- und Inhaltskonfiguration verwenden denselben Ein-Minuten-Standard', async () => {
   const app = await readJson('config/app.config.json');
   const rules = await readJson('config/content-rules.json');
@@ -45,11 +49,41 @@ test('Untertitelregeln entsprechen der technischen Quelle', async () => {
 });
 
 test('Workspace kann den alten content-Ordner und Sandton nicht wieder einführen', async () => {
-  const source = await readFile(path.resolve('src/core/workspace.js'), 'utf8');
+  const source = await readText('src/core/workspace.js');
 
   assert.match(source, /outputRoot = 'reels'/);
   assert.doesNotMatch(source, /outputRoot = 'content'/);
   assert.doesNotMatch(source, /Sandton|warmen hellen Sandton/i);
   assert.match(source, /weiches Weiß/);
   assert.match(source, /exactWordTimingsRequired: true/);
+});
+
+test('Dokumentation bleibt beim weißen 58-Prozent-Untertiltelstandard', async () => {
+  const documents = [
+    'README.md',
+    'CODEX_TASK.md',
+    'knowledge/production-rules.md',
+    'knowledge/subtitle-pacing-rules.md',
+    'docs/codex-word-sync.md',
+    'docs/remotion-renderer.md',
+    'docs/autonomous-reel.md'
+  ];
+
+  for (const file of documents) {
+    const text = await readText(file);
+    assert.doesNotMatch(text, /#E7C39A|warmer heller Sandton|warme sandfarbene Untertitel|im Sandton/i, `${file} enthält noch den alten Sandton.`);
+    assert.match(text, /58\s*%|58 Prozent/, `${file} nennt den verbindlichen 58-Prozent-Standard nicht.`);
+  }
+
+  for (const file of [
+    'README.md',
+    'CODEX_TASK.md',
+    'knowledge/production-rules.md',
+    'knowledge/subtitle-pacing-rules.md',
+    'docs/codex-word-sync.md',
+    'docs/remotion-renderer.md'
+  ]) {
+    const text = await readText(file);
+    assert.match(text, /#F5F7FA|weiches Weiß|in Weiß/i, `${file} nennt den weißen Untertitelstandard nicht.`);
+  }
 });
