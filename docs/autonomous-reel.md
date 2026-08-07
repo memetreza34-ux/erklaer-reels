@@ -2,6 +2,12 @@
 
 Dieser Ablauf gilt bei „Mach ein neues Reel“, „Erstelle das nächste Reel“ und sinngleichen Imperativen. Die Anweisung bedeutet: nächsten freien Produktionstag bestimmen und das vollständige interne Produktionspaket erstellen.
 
+## Produktionsbaseline
+
+Vor jeder autonomen Produktion `PRODUCTION_STATUS.md` lesen. Die dort dokumentierte Produktionsbaseline ist nach Abschluss der Testphase eingefroren.
+
+Ein normaler Auftrag für ein neues Reel darf **keine globalen Produktionsregeln nebenbei verändern**. Themen, Skripte, Bildwelten und Szenen dürfen kreativ variieren. Änderungen an Dauer, Szenenzahl, Untertitelstil, Audio-Pacing, Ordnerstruktur, Qualitätsgrenzen oder Renderlogik erfolgen nur nach einer ausdrücklichen neuen Anweisung.
+
 ## Ablauf
 
 ### 1. Nächsten freien Tag bestimmen
