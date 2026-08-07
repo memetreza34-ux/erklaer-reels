@@ -154,7 +154,7 @@ Einzige technische Quelle: `src/shared/subtitle-style.js`.
 
 - horizontal zentriert
 - vertikal exakt bei 58 % Bildhöhe, also leicht unterhalb der Mitte
-- warmer heller Sandton `#E7C39A`
+- weiches Weiß `#F5F7FA`
 - keine andersfarbige Wortmarkierung
 - keine schwarze Box und kein Balken
 - dunkle Kontur und dezenter Schatten
