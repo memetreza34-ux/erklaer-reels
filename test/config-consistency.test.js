@@ -30,8 +30,9 @@ test('App- und Inhaltskonfiguration verwenden denselben Ein-Minuten-Standard', a
   assert.equal(rules.scriptRules.audioPacing.rerunWordSyncAfterward, true);
 });
 
-test('Untertitelregeln entsprechen der technischen Quelle', async () => {
+test('Untertitelregeln und Visual-QC entsprechen der technischen Quelle', async () => {
   const rules = await readJson('config/content-rules.json');
+  const visualQuality = await readJson('config/visual-quality-rules.json');
   const subtitleRules = rules.subtitleRules;
 
   assert.equal(SUBTITLE_STYLE.verticalPositionPercent, 58);
@@ -46,6 +47,16 @@ test('Untertitelregeln entsprechen der technischen Quelle', async () => {
   assert.equal(subtitleRules.wordTimingWorkflow.localAudioReviewRequired, true);
   assert.equal(subtitleRules.wordTimingWorkflow.estimatedDistributionForbidden, true);
   assert.equal(subtitleRules.fallbackWordTiming, 'blocked-until-codex-word-sync');
+
+  assert.equal(visualQuality.version, 7);
+  assert.deepEqual(visualQuality.safeZones.subtitleVerticalPercent, {
+    min: SUBTITLE_STYLE.safeVerticalRangePercent.min,
+    max: SUBTITLE_STYLE.safeVerticalRangePercent.max,
+    default: SUBTITLE_STYLE.verticalPositionPercent
+  });
+  assert.equal(visualQuality.subtitlePalette.textColor, SUBTITLE_STYLE.textColor);
+  assert.equal(visualQuality.subtitlePalette.highlightColor, SUBTITLE_STYLE.highlightColor);
+  assert.equal(visualQuality.subtitlePalette.backgroundColor, SUBTITLE_STYLE.backgroundColor);
 });
 
 test('Workspace kann den alten content-Ordner und Sandton nicht wieder einführen', async () => {
@@ -56,6 +67,45 @@ test('Workspace kann den alten content-Ordner und Sandton nicht wieder einführe
   assert.doesNotMatch(source, /Sandton|warmen hellen Sandton/i);
   assert.match(source, /weiches Weiß/);
   assert.match(source, /exactWordTimingsRequired: true/);
+});
+
+test('Kernmodule können keine veralteten Untertitelregeln oder falschen Word-Sync-Status zurückbringen', async () => {
+  const productionBrief = await readText('src/core/production-brief.js');
+  const visualQc = await readText('src/core/visual-qc.js');
+  const renderValidator = await readText('src/core/render-validator.js');
+  const audioTightener = await readText('src/core/audio-tightener.js');
+  const buildTimeline = await readText('src/cli/build-timeline.js');
+
+  for (const [file, text] of [
+    ['src/core/production-brief.js', productionBrief],
+    ['src/core/visual-qc.js', visualQc],
+    ['src/core/render-validator.js', renderValidator]
+  ]) {
+    assert.doesNotMatch(text, /Sandton|warmen hellen Sandton|warme sandfarbene Untertitel/i, `${file} enthält noch den alten Sandton.`);
+    assert.doesNotMatch(text, /exakt bei 50 Prozent Bildhöhe/i, `${file} enthält noch die alte 50-Prozent-Regel.`);
+    assert.match(text, /weiches Weiß|weißen Untertitel|weiße Untertitel/i, `${file} nennt den weißen Standard nicht.`);
+  }
+
+  assert.match(visualQc, /SUBTITLE_STYLE\.verticalPositionPercent/);
+  assert.match(visualQc, /subtitle-safe-zone-config/);
+  assert.doesNotMatch(audioTightener, /not-required-for-current-subtitle-style/);
+  assert.match(audioTightener, /needs-resync-after-audio-pacing/);
+  assert.match(audioTightener, /invalidated-after-audio-pacing/);
+  assert.match(audioTightener, /wordSyncInvalidated: true/);
+  assert.match(buildTimeline, /reels\/\.\.\.\/reel-01_titel/);
+  assert.doesNotMatch(buildTimeline, /content\/\.\.\.\/reel-01_titel/);
+});
+
+test('Gitignore schützt generierte Medien in aktuellen Produktionsordnern', async () => {
+  const gitignore = await readText('.gitignore');
+
+  assert.match(gitignore, /reels\/\*\*\/output\/\*\.mp4/);
+  assert.match(gitignore, /reels\/\*\*\/audio\/\*\.m4a/);
+  assert.match(gitignore, /reels\/\*\*\/scenes\/\*\*\/\*\.png/);
+  assert.match(gitignore, /reels\/\*\*\/cover\/\*\.webp/);
+  assert.match(gitignore, /youtube\/\*\*\/output\/\*\.mp4/);
+  assert.match(gitignore, /youtube\/\*\*\/audio\/\*\.mp3/);
+  assert.match(gitignore, /^\.env$/m);
 });
 
 test('Dokumentation bleibt beim weißen 58-Prozent-Untertiltelstandard', async () => {
