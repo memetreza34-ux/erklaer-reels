@@ -19,12 +19,10 @@ test('App- und Inhaltskonfiguration verwenden denselben Ein-Minuten-Standard', a
   assert.equal(app.outputRoot, 'reels');
 
   assert.deepEqual(rules.scriptRules.targetDurationSeconds, { min: 55, max: 60, preferred: 58 });
-  assert.deepEqual(rules.visualRules, {
-    ...rules.visualRules,
-    minimumSceneCount: 12,
-    maximumSceneCount: 14,
-    defaultSceneCount: 13
-  });
+  assert.equal(rules.visualRules.minimumSceneCount, 12);
+  assert.equal(rules.visualRules.maximumSceneCount, 14);
+  assert.equal(rules.visualRules.defaultSceneCount, 13);
+  assert.deepEqual(rules.visualRules.visualChangeIntervalSeconds, { min: 3.5, max: 5 });
   assert.equal(rules.scriptRules.audioPacing.rerunWordSyncAfterward, true);
 });
 
@@ -35,6 +33,8 @@ test('Untertitelregeln entsprechen der technischen Quelle', async () => {
   assert.equal(SUBTITLE_STYLE.verticalPositionPercent, 58);
   assert.equal(SUBTITLE_STYLE.textColor, '#F5F7FA');
   assert.deepEqual(subtitleRules.verticalPositionPercent, { min: 58, max: 58, default: 58 });
+  assert.equal(subtitleRules.fixedExactCenterPosition, false);
+  assert.equal(subtitleRules.fixedVerticalPosition, true);
   assert.equal(subtitleRules.palette.textColor, SUBTITLE_STYLE.textColor);
   assert.equal(subtitleRules.palette.highlightColor, SUBTITLE_STYLE.highlightColor);
   assert.equal(subtitleRules.exactWordTimingsRequired, true);
