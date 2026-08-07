@@ -24,7 +24,7 @@ Zentrale Quelle: `src/shared/subtitle-style.js`.
 
 - horizontal zentriert
 - vertikal exakt 58 % Bildhöhe
-- warmer heller Sandton `#E7C39A`
+- weiches Weiß `#F5F7FA`
 - keine andersfarbige Wortmarkierung
 - transparenter Hintergrund ohne Box oder Balken
 - dunkle Kontur und Schatten
@@ -32,7 +32,7 @@ Zentrale Quelle: `src/shared/subtitle-style.js`.
 - `highlightCurrentWord: false`
 - trotzdem echte akustisch bestätigte Wortzeiten pro Cue
 
-Der Renderer blockiert die alte Position bei 50 % oder 76 %, weißen Text, Wortmarkierungen, schwarze Hintergründe, geschätzte Cue-Zeiten sowie fehlende `timingSource`- und `wordTimings`-Angaben.
+Der Renderer blockiert die alten Positionen bei 50 % oder 76 %, abweichende Textfarben, Wortmarkierungen, schwarze Hintergründe, geschätzte Cue-Zeiten sowie fehlende `timingSource`- und `wordTimings`-Angaben.
 
 ## Übergänge
 
@@ -55,7 +55,7 @@ Geprüft werden unter anderem:
 - vorhandene Bilder und Voice-over-Datei
 - sichere lokale Pfade
 - zulässige Zoom- und Schwenkwerte
-- Untertitel exakt bei 58 %, im Sandton und transparent
+- Untertitel exakt bei 58 %, in Weiß und transparent
 - `timingStatus: codex-word-synced`
 - `timingSource: codex-local-audio-review`
 - vollständige gültige Wortzeiten
