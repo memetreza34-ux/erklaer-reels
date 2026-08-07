@@ -1,6 +1,6 @@
 {
   "name": "erklaer-reels",
-  "version": "0.23.0",
+  "version": "0.23.1",
   "private": true,
   "type": "module",
   "description": "KI-gestützte Produktionspipeline für visuelle Erklär-Reels.",
