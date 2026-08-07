@@ -1,5 +1,5 @@
 {
-  "version": 6,
+  "version": 7,
   "composition": {
     "width": 1080,
     "height": 1920,
@@ -15,9 +15,9 @@
     "topPercent": 8,
     "bottomPercent": 18,
     "subtitleVerticalPercent": {
-      "min": 50,
-      "max": 50,
-      "default": 50
+      "min": 58,
+      "max": 58,
+      "default": 58
     }
   },
   "subtitlePalette": {
