@@ -29,7 +29,7 @@ Optionen:
   --next-free     Chronologisch nächsten freien Tag der neuesten Woche verwenden
   --scenes        Anzahl der Bildmomente: 12 bis 14 (optional, Standard: 13)
                   Ziel: 55–60 Sekunden bei ungefähr 1,10x
-  --output        Ausgabeordner (optional, Standard: content)
+  --output        Ausgabeordner (optional, Standard: reels)
 `);
 }
 
@@ -44,7 +44,7 @@ async function main() {
   const dateValue = getArgument('--date');
   const useNextFree = process.argv.includes('--next-free');
   const sceneCount = Number(getArgument('--scenes') ?? 13);
-  const outputRoot = getArgument('--output') ?? 'content';
+  const outputRoot = getArgument('--output') ?? 'reels';
 
   if (!title || !scriptFile) {
     showUsage();

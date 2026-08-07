@@ -8,7 +8,7 @@ function argument(name) {
 }
 
 async function main() {
-  const outputRoot = argument('--output') ?? 'content';
+  const outputRoot = argument('--output') ?? 'reels';
   const from = argument('--from');
   const asJson = process.argv.includes('--json');
   const slot = await findNextFreeProductionSlot({
