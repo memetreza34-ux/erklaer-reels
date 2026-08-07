@@ -105,7 +105,7 @@ Zentrale Quelle: `src/shared/subtitle-style.js`.
 
 - horizontal zentriert
 - vertikal exakt 58 % Bildhöhe, leicht unterhalb der Mitte
-- warmer heller Sandton `#E7C39A`
+- weiches Weiß `#F5F7FA`
 - keine andersfarbige Wortmarkierung
 - keine schwarze Hintergrundbox oder Balken
 - dunkle Kontur und dezenter Schatten
@@ -157,7 +157,7 @@ Vor Freigabe prüfen:
 - natürliche Komposition ohne leere Mitte
 - geplanter Bildtext korrekt auf Deutsch und exakt im Prompt
 - kein zusätzlicher englischer oder erfundener Text
-- Untertitel exakt bei 58 %, im Sandton, ohne Wortmarkierung und ohne Box
+- Untertitel exakt bei 58 %, in Weiß, ohne Wortmarkierung und ohne Box
 - alle Untertitel-Cues besitzen akustisch bestätigte Wortzeiten
 - Voice-over exakt 1,10x, −16 LUFS und höchstens −1,5 dBTP
 - Bildwechsel und Audio-Cues synchron

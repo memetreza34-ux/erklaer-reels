@@ -100,7 +100,7 @@
         "loudnessRangeLra": 11
       },
       "rerunTimelineAfterward": true,
-      "rerunWordSyncAfterward": false
+      "rerunWordSyncAfterward": true
     }
   },
   "visualRules": {
@@ -180,17 +180,18 @@
     "separateFromImagePrompts": true,
     "position": "center",
     "verticalPositionPercent": {
-      "min": 50,
-      "max": 50,
-      "default": 50
+      "min": 58,
+      "max": 58,
+      "default": 58
     },
-    "fixedExactCenterPosition": true,
+    "fixedExactCenterPosition": false,
+    "fixedVerticalPosition": true,
     "palette": {
       "textColor": "#F5F7FA",
       "highlightColor": "#F5F7FA",
       "backgroundColor": "transparent",
       "textStrokeColor": "rgba(0, 0, 0, 0.92)",
-      "reason": "Einheitlich weißer Text mit dunkler Kontur bleibt in der Bildmitte lesbar, ohne Gelb oder eine schwarze Box."
+      "reason": "Einheitlich weißer Text mit dunkler Kontur bleibt bei 58 Prozent Bildhöhe auf hellen und dunklen Illustrationen lesbar, ohne Gelb oder eine schwarze Box."
     },
     "wordsPerCue": {
       "min": 3,
@@ -199,12 +200,17 @@
     "maxLines": 2,
     "wordByWordKaraoke": false,
     "highlightCurrentWord": false,
-    "exactWordTimingsRequired": false,
+    "exactWordTimingsRequired": true,
     "wordTimingWorkflow": {
-      "enabled": false,
-      "reason": "Ohne Wort-Highlight sind aufwendige Einzelwortzeiten für den sichtbaren Untertitel nicht erforderlich."
+      "enabled": true,
+      "provider": "codex-local-audio-review",
+      "prepareCommand": "npm run sync:words -- --dir REEL_ORDNER",
+      "applyCommand": "npm run sync:words -- --dir REEL_ORDNER --apply --strict",
+      "localAudioReviewRequired": true,
+      "estimatedDistributionForbidden": true,
+      "reason": "Untertitel müssen dem echten Voice-over folgen, auch wenn keine sichtbare Einzelwort-Markierung verwendet wird."
     },
-    "fallbackWordTiming": "plain-soft-white-no-highlight",
+    "fallbackWordTiming": "blocked-until-codex-word-sync",
     "repeatIntegratedImageText": false,
     "avoidPlatformUiSafeZones": true,
     "allowPositionAdjustmentForVisualConflicts": false,

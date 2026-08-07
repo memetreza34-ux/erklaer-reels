@@ -78,7 +78,7 @@ export async function createReelWorkspace({
   script,
   date = new Date(),
   sceneCount = 13,
-  outputRoot = 'content'
+  outputRoot = 'reels'
 }) {
   if (!title?.trim()) throw new Error('Ein Titel ist erforderlich.');
   if (!script?.trim()) throw new Error('Ein Script ist erforderlich.');
@@ -177,7 +177,8 @@ export async function createReelWorkspace({
     content: 'draft',
     script: 'provided',
     scenes: 'planned',
-    subtitles: 'planned',
+    subtitles: 'waiting-for-exact-sync',
+    wordSync: 'waiting-for-audio',
     effects: 'planned',
     audio: 'missing',
     imagePrompts: 'missing',
@@ -225,7 +226,7 @@ export async function createReelWorkspace({
     timingProvider: 'codex-local-audio-review',
     cues: []
   });
-  await writeText(path.join(reelDirectory, 'subtitles', 'README.md'), `# Untertitel\n\nUntertitel stehen leicht unterhalb der Bildmitte bei exakt ${SUBTITLE_STYLE.verticalPositionPercent} % der Bildhöhe.\nSie verwenden einen warmen hellen Sandton (${SUBTITLE_STYLE.textColor}) mit dunkler Kontur und Schatten.\nEs gibt keine Wortmarkierung, keine Karaoke-Animation, keine schwarze Box und keinen sichtbaren Hintergrundbalken.\nNormalerweise 3–6 Wörter pro Einblendung und höchstens zwei Zeilen.\nDie Untertitel dürfen erst nach lokaler akustischer Prüfung und exakter Wortzeitsynchronisierung gerendert werden.\nNach dem letzten gesprochenen Wort endet der Untertitel; das Schlussbild bleibt ungefähr 0,7 Sekunden sauber sichtbar.\n`);
+  await writeText(path.join(reelDirectory, 'subtitles', 'README.md'), `# Untertitel\n\nUntertitel stehen leicht unterhalb der Bildmitte bei exakt ${SUBTITLE_STYLE.verticalPositionPercent} % der Bildhöhe.\nSie verwenden weiches Weiß (${SUBTITLE_STYLE.textColor}) mit dunkler Kontur und Schatten.\nEs gibt keine Wortmarkierung, keine Karaoke-Animation, keine schwarze Box und keinen sichtbaren Hintergrundbalken.\nNormalerweise 3–6 Wörter pro Einblendung und höchstens zwei Zeilen.\nDie Untertitel dürfen erst nach lokaler akustischer Prüfung und exakter Wortzeitsynchronisierung gerendert werden.\nNach dem letzten gesprochenen Wort endet der Untertitel; das Schlussbild bleibt ungefähr 0,7 Sekunden sauber sichtbar.\n`);
   await writeJson(path.join(reelDirectory, 'effects', 'effects-plan.json'), {
     version: 1,
     enabled: true,

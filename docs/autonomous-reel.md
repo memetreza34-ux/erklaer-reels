@@ -41,7 +41,7 @@ Nach `create:reel` sofort `production/agent-task.md` vollständig bearbeiten:
 - 12–14 Szenen mit je genau einem klaren Moment
 - Cover und vollständige englische Bildprompts
 - Prompt-Sammeldatei mit Cover an erster Stelle
-- mittiger weißer Untertitelplan ohne Box
+- weiße Untertitel bei 58 % Bildhöhe ohne Box
 - Effektplan mit Hook ohne Übergang und danach nur harten Schnitten
 - Caption, Quellen und Statusdateien
 
@@ -61,13 +61,14 @@ Assets prüfen
 → ursprüngliches Voice-over auf exakt 1,10x, −16 LUFS und −1,5 dBTP verarbeiten
 → Timeline und Audio-Cues synchronisieren
 → Bilder visuell prüfen
-→ mittige Untertitel bei 50 % prüfen
+→ weiße Untertitel bei 58 % Bildhöhe prüfen
+→ exakte akustische Wort-Synchronisierung prüfen
 → direkte harte Schnitte prüfen
 → finale Freigabe
 → MP4 rendern
 ```
 
-Jedes Bild muss natürlich komponiert sein, genau einen klaren Moment zeigen und darf die Hauptperson nicht mehrfach darstellen. Für die mittigen Untertitel wird keine leere Bildzone erzeugt.
+Jedes Bild muss natürlich komponiert sein, genau einen klaren Moment zeigen und darf die Hauptperson nicht mehrfach darstellen. Für die Untertitel bei 58 % Bildhöhe wird keine leere Bildzone erzeugt.
 
 ## Keine Standardrückfragen
 

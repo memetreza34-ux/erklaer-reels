@@ -15,7 +15,7 @@ Produktionspipeline für visuelle Erklär-Reels zu Politik, Gesellschaft, Lände
 - Schlussbild bleibt nach dem letzten Wort 0,7 Sekunden ohne neuen Untertitel stehen
 - Voice-over exakt 1,10x mit erhaltener Tonhöhe
 - −16 LUFS und höchstens −1,5 dBTP
-- warme sandfarbene Untertitel bei 58 % Bildhöhe
+- weiche weiße Untertitel `#F5F7FA` bei 58 % Bildhöhe
 - keine Wortmarkierung und keine schwarze Box
 - Untertitel müssen vor dem Rendern akustisch exakt synchronisiert sein
 - direkte harte Schnitte
@@ -85,7 +85,7 @@ Jede Szene braucht eine sichtbare Bildbeschreibung, konkrete Zuordnungsbegründu
 
 - `position: center`
 - exakt 58 % Bildhöhe, leicht unterhalb der Mitte
-- warmer heller Sandton `#E7C39A`
+- weiches Weiß `#F5F7FA`
 - dunkle Kontur und Schatten
 - transparenter Hintergrund
 - 3–6 Wörter, höchstens zwei Zeilen

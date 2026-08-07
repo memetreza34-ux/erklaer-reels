@@ -4,7 +4,7 @@
 
 Der aktuelle Standardstil verwendet:
 
-- warmen hellen Sandton `#E7C39A`
+- weiches Weiß `#F5F7FA`
 - keine andersfarbige Wortmarkierung
 - keine Karaoke-Animation
 - keine schwarze Hintergrundbox
@@ -34,9 +34,9 @@ Der Render-Plan muss pro Cue enthalten:
 {
   "position": "center",
   "verticalPositionPercent": 58,
-  "textColor": "#E7C39A",
+  "textColor": "#F5F7FA",
   "highlightCurrentWord": false,
-  "highlightColor": "#E7C39A",
+  "highlightColor": "#F5F7FA",
   "backgroundColor": "transparent",
   "timingStatus": "codex-word-synced",
   "timingSource": "codex-local-audio-review",
