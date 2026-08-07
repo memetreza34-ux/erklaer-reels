@@ -173,11 +173,39 @@ export async function tightenVoiceover(reelDirectory, options = {}) {
   status.audio = 'ready';
   status.audioPacing = 'tightened-accelerated-and-loudness-normalized';
   status.timeline = 'needs-rebuild-after-audio-pacing';
-  status.wordSync = 'not-required-for-current-subtitle-style';
+  status.wordSync = 'needs-resync-after-audio-pacing';
+  status.subtitles = 'waiting-for-exact-sync';
   status.render = 'waiting-for-timeline';
 
   await writeJson(manifestPath, manifest);
   await writeJson(statusPath, status);
+
+  // Jede Audioänderung macht zuvor bestätigte Wortzeiten ungültig. Die Daten bleiben
+  // zur Nachvollziehbarkeit erhalten, dürfen aber erst nach erneuter akustischer Prüfung
+  // wieder als codex-word-synced in einen finalen Render gelangen.
+  const subtitlePlanPath = path.join(reelDirectory, 'subtitles', 'subtitle-plan.json');
+  const subtitlePlan = await readJson(subtitlePlanPath, null);
+  if (subtitlePlan) {
+    subtitlePlan.exactWordTimingsRequired = true;
+    subtitlePlan.timingStatus = 'invalidated-after-audio-pacing';
+    subtitlePlan.timingProvider = 'codex-local-audio-review';
+    subtitlePlan.cues = (subtitlePlan.cues ?? []).map((cue) => ({
+      ...cue,
+      timingStatus: 'invalidated-after-audio-pacing',
+      timingSource: 'audio-changed-requires-codex-word-sync'
+    }));
+    await writeJson(subtitlePlanPath, subtitlePlan);
+  }
+
+  const wordSyncReportPath = path.join(reelDirectory, 'review', 'word-sync-report.json');
+  const wordSyncReport = await readJson(wordSyncReportPath, null);
+  if (wordSyncReport) {
+    wordSyncReport.passed = false;
+    wordSyncReport.stage = 'invalidated-after-audio-pacing';
+    wordSyncReport.invalidatedAt = new Date().toISOString();
+    wordSyncReport.reason = 'Das Voice-over wurde neu verarbeitet; Wortzeiten müssen erneut akustisch bestätigt werden.';
+    await writeJson(wordSyncReportPath, wordSyncReport);
+  }
 
   const audioSyncPath = path.join(reelDirectory, 'timeline', 'audio-sync.json');
   const audioSync = await readJson(audioSyncPath, null);
@@ -195,7 +223,7 @@ export async function tightenVoiceover(reelDirectory, options = {}) {
   }
 
   const report = {
-    version: 3,
+    version: 4,
     createdAt: new Date().toISOString(),
     passed: Boolean(afterSeconds && beforeSeconds && afterSeconds < beforeSeconds),
     sourceFile: sourceRelative,
@@ -210,7 +238,8 @@ export async function tightenVoiceover(reelDirectory, options = {}) {
     loudnessSettings,
     filter,
     settings: manifest.audio.pauseTrimSettings,
-    note: 'Nach der Audio-Optimierung müssen Timeline, Szenen-Cues und Untertitel-Cues erneut mit der neuen Audiodatei synchronisiert werden.'
+    wordSyncInvalidated: true,
+    note: 'Nach der Audio-Optimierung müssen Timeline, Szenen-Cues und exakte Untertitel-Wortzeiten erneut mit der neuen Audiodatei synchronisiert werden.'
   };
   await writeJson(path.join(reelDirectory, 'review', 'audio-pacing-report.json'), report);
   return report;
