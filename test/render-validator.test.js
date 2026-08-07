@@ -52,9 +52,9 @@ async function createReadyFixture() {
         endSeconds: 1.8,
         position: 'center',
         verticalPositionPercent: 58,
-        textColor: '#E7C39A',
+        textColor: '#F5F7FA',
         highlightCurrentWord: false,
-        highlightColor: '#E7C39A',
+        highlightColor: '#F5F7FA',
         backgroundColor: 'transparent',
         timingStatus: 'codex-word-synced',
         timingSource: 'codex-local-audio-review',
@@ -70,7 +70,7 @@ async function createReadyFixture() {
   return root;
 }
 
-test('akzeptiert 1.10x, exakte Wortzeiten und warmen Untertitel bei 58 Prozent', async () => {
+test('akzeptiert 1.10x, exakte Wortzeiten und weiße Untertitel bei 58 Prozent', async () => {
   const report = await validateRendererInput(await createReadyFixture());
   assert.equal(report.passed, true, JSON.stringify(report.checks.filter((check) => !check.passed), null, 2));
   assert.equal(report.summary.failedChecks, 0);
@@ -89,14 +89,14 @@ test('blockiert altes 1.05x-Pacing oder fehlende Lautheitsnormalisierung', async
   assert.ok(report.checks.some((check) => check.id === 'audio-loudness-normalized' && !check.passed));
 });
 
-test('blockiert alte Mitte, Weiß, Wortmarkierung und Hintergrundbox', async () => {
+test('blockiert alte Mitte, Braunton, Wortmarkierung und Hintergrundbox', async () => {
   const root = await createReadyFixture();
   const planPath = path.join(root, 'render', 'render-plan.json');
   const plan = await readJson(planPath);
   plan.scenes[0].subtitles[0].verticalPositionPercent = 50;
-  plan.scenes[0].subtitles[0].textColor = '#F5F7FA';
+  plan.scenes[0].subtitles[0].textColor = '#E7C39A';
   plan.scenes[0].subtitles[0].highlightCurrentWord = true;
-  plan.scenes[0].subtitles[0].highlightColor = '#F5F7FA';
+  plan.scenes[0].subtitles[0].highlightColor = '#E7C39A';
   plan.scenes[0].subtitles[0].backgroundColor = 'rgba(0, 0, 0, 0.72)';
   await writeJson(planPath, plan);
   const report = await validateRendererInput(root);
