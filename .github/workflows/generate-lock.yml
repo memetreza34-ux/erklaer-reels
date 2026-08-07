@@ -1,0 +1,39 @@
+name: Generate package lock
+
+on:
+  push:
+    branches: [fix/final-config-consistency]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lockfile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+
+      - name: Node.js 20 einrichten
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org
+
+      - name: Lockdatei mit npm erzeugen
+        run: npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+        env:
+          NPM_CONFIG_REGISTRY: https://registry.npmjs.org
+
+      - name: Lockdatei prüfen
+        run: |
+          node -e "const lock=require('./package-lock.json'); const pkg=require('./package.json'); if(lock.name!==pkg.name || lock.version!==pkg.version) process.exit(1);"
+          npm ci --ignore-scripts --no-audit --no-fund
+
+      - name: Lockdatei als Artefakt hochladen
+        uses: actions/upload-artifact@v4
+        with:
+          name: package-lock
+          path: package-lock.json
+          if-no-files-found: error
