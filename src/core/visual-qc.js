@@ -3,6 +3,7 @@ import { access, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
 import { readImageMetadata } from './image-metadata.js';
+import { SUBTITLE_STYLE } from '../shared/subtitle-style.js';
 
 async function exists(filePath) {
   try {
@@ -98,7 +99,7 @@ async function ensureInspectionFile(reelDirectory, assets, rules, reel) {
   const current = await readJson(inspectionPath, null);
   const byId = new Map((current?.assets ?? []).map((entry) => [entry.assetId, entry]));
   const next = {
-    version: 6,
+    version: 7,
     visualStyleId: reel?.visualStyleId ?? '',
     visualStyleReason: reel?.visualStyleReason ?? '',
     instructions: [
@@ -112,7 +113,7 @@ async function ensureInspectionFile(reelDirectory, assets, rules, reel) {
       'Geplanter deutscher Bildtext muss exakt stimmen; zusätzliche englische oder erfundene Wörter sind verboten.',
       'Prüfe genau einen klaren Bildmoment und keine mehrfach dargestellte Hauptperson innerhalb derselben Illustration.',
       'Prüfe eine natürliche Komposition ohne leeren Mittelstreifen. Die exakte Bildmitte darf normal belegt sein.',
-      'Prüfe die Lesbarkeit der weißen Untertitel mit dunkler Kontur exakt bei 50 Prozent Bildhöhe, ohne schwarze Hintergrundbox.',
+      `Prüfe die Lesbarkeit der weißen Untertitel mit dunkler Kontur exakt bei ${SUBTITLE_STYLE.verticalPositionPercent} Prozent Bildhöhe, ohne schwarze Hintergrundbox.`,
       'Ändert sich die Bilddatei, Narration, visuelle Idee, der Bildtext, Prompt oder die Bildwelt, wird eine frühere Freigabe automatisch auf pending zurückgesetzt.',
       'Nur vollständig bestandene Bilder mit konkreter Begründung erhalten status passed.'
     ],
@@ -220,6 +221,20 @@ export async function runVisualQualityCheck(reelDirectory, { strict = false } = 
   const technicalAssets = [];
   const expectedRatio = rules.composition.width / rules.composition.height;
 
+  const configuredSubtitleZone = rules.safeZones?.subtitleVerticalPercent ?? {};
+  addCheck(checks, 'subtitle-safe-zone-config',
+    Number(configuredSubtitleZone.min) === SUBTITLE_STYLE.safeVerticalRangePercent.min &&
+    Number(configuredSubtitleZone.max) === SUBTITLE_STYLE.safeVerticalRangePercent.max &&
+    Number(configuredSubtitleZone.default) === SUBTITLE_STYLE.verticalPositionPercent,
+    `config/visual-quality-rules.json muss den zentralen Untertitelstandard von exakt ${SUBTITLE_STYLE.verticalPositionPercent} Prozent verwenden.`,
+    'error');
+  addCheck(checks, 'subtitle-palette-config',
+    String(rules.subtitlePalette?.textColor ?? '').toUpperCase() === SUBTITLE_STYLE.textColor &&
+    String(rules.subtitlePalette?.highlightColor ?? '').toUpperCase() === SUBTITLE_STYLE.highlightColor &&
+    String(rules.subtitlePalette?.backgroundColor ?? '') === SUBTITLE_STYLE.backgroundColor,
+    'config/visual-quality-rules.json muss die zentrale weiße Untertitelpalette verwenden.',
+    'error');
+
   for (const asset of assets) {
     const filePath = path.join(reelDirectory, asset.file);
     const present = await exists(filePath);
@@ -289,15 +304,15 @@ export async function runVisualQualityCheck(reelDirectory, { strict = false } = 
     });
   }
 
-  const subtitlePosition = Number(subtitlePlan.verticalPositionPercent ?? rules.safeZones.subtitleVerticalPercent.default);
+  const subtitlePosition = Number(subtitlePlan.verticalPositionPercent ?? SUBTITLE_STYLE.verticalPositionPercent);
   addCheck(checks, 'subtitle-safe-zone',
-    subtitlePosition >= rules.safeZones.subtitleVerticalPercent.min && subtitlePosition <= rules.safeZones.subtitleVerticalPercent.max,
-    `Untertitelposition ${subtitlePosition}% liegt außerhalb der sicheren Zone ${rules.safeZones.subtitleVerticalPercent.min}–${rules.safeZones.subtitleVerticalPercent.max}%.`,
+    subtitlePosition >= SUBTITLE_STYLE.safeVerticalRangePercent.min && subtitlePosition <= SUBTITLE_STYLE.safeVerticalRangePercent.max,
+    `Untertitelposition ${subtitlePosition}% muss exakt ${SUBTITLE_STYLE.verticalPositionPercent}% betragen.`,
     'error');
 
-  const expectedTextColor = String(rules.subtitlePalette?.textColor ?? '').toUpperCase();
-  const expectedHighlightColor = String(rules.subtitlePalette?.highlightColor ?? '').toUpperCase();
-  const expectedBackgroundColor = String(rules.subtitlePalette?.backgroundColor ?? '');
+  const expectedTextColor = SUBTITLE_STYLE.textColor;
+  const expectedHighlightColor = SUBTITLE_STYLE.highlightColor;
+  const expectedBackgroundColor = SUBTITLE_STYLE.backgroundColor;
   const actualTextColor = String(subtitlePlan.textColor ?? '').toUpperCase();
   const actualHighlightColor = String(subtitlePlan.highlightColor ?? '').toUpperCase();
   const actualBackgroundColor = String(subtitlePlan.backgroundColor ?? '');
@@ -308,7 +323,7 @@ export async function runVisualQualityCheck(reelDirectory, { strict = false } = 
   addCheck(checks, 'subtitle-colors-uniform', actualTextColor === actualHighlightColor,
     'Alle Untertitelwörter müssen dieselbe weiße Farbe verwenden.', 'error');
   addCheck(checks, 'subtitle-highlight-disabled', subtitlePlan.highlightCurrentWord === false,
-    'Die gelbe Wortmarkierung muss deaktiviert sein.', 'error');
+    'Die Wortmarkierung muss deaktiviert sein.', 'error');
   addCheck(checks, 'subtitle-background-transparent', actualBackgroundColor === expectedBackgroundColor,
     'Der Untertitelhintergrund muss transparent sein.', 'error');
 

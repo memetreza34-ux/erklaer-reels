@@ -43,7 +43,7 @@ export async function prepareReelProduction(reelDirectory) {
   const preferredImageTextMaximum = Math.floor(scenes.length * 0.85);
 
   const checklist = {
-    version: 15,
+    version: 16,
     reelId: reel.reelId,
     title: reel.title,
     createdAt: new Date().toISOString(),
@@ -57,7 +57,7 @@ export async function prepareReelProduction(reelDirectory) {
       { id: 'ending-check', label: 'Prüffrage und einprägsamen Abschlusssatz auf zwei Szenen verteilen', status: 'pending' },
       { id: 'prompts-write', label: `${scenes.length} natürliche englische Bildprompts mit exakt angegebenem deutschem Bildtext schreiben`, status: 'pending' },
       { id: 'prompts-export', label: 'Cover und alle Szenenprompts chronologisch exportieren', status: 'pending' },
-      { id: 'subtitles-write', label: `Untertitel bei ${SUBTITLE_STYLE.verticalPositionPercent} % im warmen Sandton ohne Wortmarkierung planen`, status: 'pending' },
+      { id: 'subtitles-write', label: `Untertitel bei ${SUBTITLE_STYLE.verticalPositionPercent} % in weichem Weiß (${SUBTITLE_STYLE.textColor}) ohne Wortmarkierung planen`, status: 'pending' },
       { id: 'subtitle-sync-plan', label: 'Exakte lokale Codex-Wortzeitsynchronisierung vor dem Render einplanen', status: 'pending' },
       { id: 'effects-write', label: 'Dezente Bewegungen, harte Schnitte und Soundeffekte planen', status: 'pending' },
       { id: 'asset-matching-plan', label: `Zweistufige visuelle Bildzuordnung mit mindestens ${matching.minimumConfidence} Konfidenz vorbereiten`, status: 'pending' },
@@ -133,7 +133,7 @@ Erstelle ein vollständiges Erklär-Reel mit ungefähr einer Minute Voice-over-L
 npm run export:prompts -- --dir "${normalizedDirectory}" --strict
 \`\`\`
 
-13. Fülle \`subtitles/subtitle-plan.json\`: exakt ${SUBTITLE_STYLE.verticalPositionPercent} %, Sandton \`${SUBTITLE_STYLE.textColor}\`, transparent, keine Wortmarkierung, höchstens zwei Zeilen, normalerweise 3–6 Wörter und \`exactWordTimingsRequired: true\`.
+13. Fülle \`subtitles/subtitle-plan.json\`: exakt ${SUBTITLE_STYLE.verticalPositionPercent} %, weiches Weiß \`${SUBTITLE_STYLE.textColor}\`, transparent, keine Wortmarkierung, höchstens zwei Zeilen, normalerweise 3–6 Wörter und \`exactWordTimingsRequired: true\`.
 14. Fülle \`effects/effects-plan.json\`: Hook \`none\`, danach nur \`cut\` mit Dauer 0; Zoom maximal 8 %, Schwenk maximal 4 %.
 15. Fülle Cover, Caption und Quellen aus.
 16. Prüfe streng:

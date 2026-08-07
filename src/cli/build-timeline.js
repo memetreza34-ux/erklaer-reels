@@ -12,8 +12,8 @@ function usage() {
 Erstellt die Master-Timeline, einen Render-Plan und einen Vorab-Qualitätsbericht.
 
 Beispiele:
-  npm run build:timeline -- --dir "content/.../reel-01_titel"
-  npm run sync:audio -- --dir "content/.../reel-01_titel" --audio-duration 58.0 --strict
+  npm run build:timeline -- --dir "reels/.../reel-01_titel"
+  npm run sync:audio -- --dir "reels/.../reel-01_titel" --audio-duration 58.0 --strict
 
 Optionen:
   --dir             Pfad zum Reel-Ordner

@@ -5,6 +5,7 @@ import os from 'node:os';
 import path from 'node:path';
 
 import { runVisualQualityCheck } from '../src/core/visual-qc.js';
+import { SUBTITLE_STYLE } from '../src/shared/subtitle-style.js';
 
 async function writeJson(filePath, value) {
   await mkdir(path.dirname(filePath), { recursive: true });
@@ -43,11 +44,11 @@ async function createFixture() {
   });
   await writeJson(path.join(root, 'effects', 'effects-plan.json'), { scenes: [] });
   await writeJson(path.join(root, 'subtitles', 'subtitle-plan.json'), {
-    verticalPositionPercent: 50,
-    textColor: '#F5F7FA',
-    highlightColor: '#F5F7FA',
+    verticalPositionPercent: SUBTITLE_STYLE.verticalPositionPercent,
+    textColor: SUBTITLE_STYLE.textColor,
+    highlightColor: SUBTITLE_STYLE.highlightColor,
     highlightCurrentWord: false,
-    backgroundColor: 'transparent'
+    backgroundColor: SUBTITLE_STYLE.backgroundColor
   });
   await writeJson(path.join(root, 'cover', 'cover.json'), {
     headline: 'LÄNDERGRENZEN',
@@ -66,8 +67,10 @@ test('visuelle Prüfung zeigt für jedes Bild die erwartete Szenenbedeutung und 
   const inspection = await readJson(path.join(root, 'review', 'visual-inspection.json'));
   const sceneEntry = inspection.assets.find((entry) => entry.assetId === 'scene-01');
 
-  assert.equal(inspection.version, 6);
+  assert.equal(inspection.version, 7);
   assert.equal(inspection.visualStyleId, 'round-country-characters');
+  assert.ok(inspection.instructions.some((instruction) => instruction.includes(`${SUBTITLE_STYLE.verticalPositionPercent} Prozent Bildhöhe`)));
+  assert.equal(inspection.safeZones.subtitleVerticalPercent.default, SUBTITLE_STYLE.verticalPositionPercent);
   assert.equal(sceneEntry.expected.narration, scene.narration);
   assert.equal(sceneEntry.expected.audioCue, scene.audioCue);
   assert.equal(sceneEntry.expected.visualIdea, scene.visualIdea);

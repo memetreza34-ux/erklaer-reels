@@ -185,9 +185,9 @@ export async function validateRendererInput(reelDirectory, {
       const textColor = cue.textColor ?? SUBTITLE_STYLE.textColor;
       const highlightColor = cue.highlightColor ?? SUBTITLE_STYLE.highlightColor;
       push(checks, `${cueId}-text-color`, isHexColor(textColor) && String(textColor).toUpperCase() === SUBTITLE_STYLE.textColor,
-        `${cueId}: Untertiteltext muss den warmen Sandton ${SUBTITLE_STYLE.textColor} verwenden.`);
+        `${cueId}: Untertiteltext muss weiches Weiß ${SUBTITLE_STYLE.textColor} verwenden.`);
       push(checks, `${cueId}-highlight-color`, isHexColor(highlightColor) && String(highlightColor).toUpperCase() === SUBTITLE_STYLE.highlightColor,
-        `${cueId}: Alle Wörter müssen denselben warmen Sandton ${SUBTITLE_STYLE.highlightColor} verwenden.`);
+        `${cueId}: Alle Wörter müssen dasselbe weiche Weiß ${SUBTITLE_STYLE.highlightColor} verwenden.`);
       push(checks, `${cueId}-color-uniform`, String(textColor).toUpperCase() === String(highlightColor).toUpperCase(),
         `${cueId}: Untertitel dürfen keine andersfarbige Wortmarkierung enthalten.`);
       push(checks, `${cueId}-highlight-disabled`, cue.highlightCurrentWord === false,
