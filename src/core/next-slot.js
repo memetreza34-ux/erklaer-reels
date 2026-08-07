@@ -111,7 +111,7 @@ async function firstFreeDay(outputRoot, week) {
 }
 
 export async function findNextFreeProductionSlot({
-  outputRoot = 'content',
+  outputRoot = 'reels',
   now = new Date()
 } = {}) {
   const anchor = normalizeDate(now);
