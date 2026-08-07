@@ -159,7 +159,7 @@ Zentrale Quelle: `src/shared/subtitle-style.js`.
 
 - horizontal zentriert
 - vertikal exakt 58 % Bildhöhe, leicht unterhalb der Mitte
-- warmer heller Sandton `#E7C39A`
+- weiches Weiß `#F5F7FA`
 - keine andersfarbige Wortmarkierung
 - keine schwarze Box oder Balken
 - dunkle Kontur und Schatten
@@ -218,4 +218,4 @@ npm run validate:render -- --dir "PFAD-ZUM-REEL"
 npm run render:reel -- --dir "PFAD-ZUM-REEL"
 ```
 
-Nur rendern, wenn Inhalt, 1,10x-Audio, Lautheit, Audio-Sync, exakte akustisch bestätigte Untertitelsynchronisierung, sichere Bildzuordnung, ausgeglichene Szenendauern, 0,7-Sekunden-Schlussbild, alle Bilder, deutscher Bildtext, Untertitel bei 58 %, visuelle Prüfung, direkte Schnitte und `readyForRenderer: true` tatsächlich vorliegen. Keine geplante Stufe als abgeschlossen bezeichnen.
+Nur rendern, wenn Inhalt, 1,10x-Audio, Lautheit, Audio-Sync, exakte akustisch bestätigte Untertitelsynchronisierung, sichere Bildzuordnung, ausgeglichene Szenendauern, 0,7-Sekunden-Schlussbild, alle Bilder, deutscher Bildtext, Untertitel bei 58 % in Weiß, visuelle Prüfung, direkte Schnitte und `readyForRenderer: true` tatsächlich vorliegen. Keine geplante Stufe als abgeschlossen bezeichnen.

@@ -22,7 +22,7 @@ function getCheck(report, id) {
   return check;
 }
 
-test('neue Arbeitsordner verwenden den tieferen warmen Untertitelstil', async () => {
+test('neue Arbeitsordner verwenden tiefere weiße Untertitel', async () => {
   const outputRoot = await mkdtemp(path.join(os.tmpdir(), 'erklaer-reels-subtitles-'));
 
   try {
@@ -40,7 +40,7 @@ test('neue Arbeitsordner verwenden den tieferen warmen Untertitelstil', async ()
     assert.equal(SUBTITLE_STYLE.position, 'center');
     assert.equal(SUBTITLE_STYLE.verticalPositionPercent, 58);
     assert.deepEqual(SUBTITLE_STYLE.safeVerticalRangePercent, { min: 58, max: 58 });
-    assert.equal(SUBTITLE_STYLE.textColor, '#E7C39A');
+    assert.equal(SUBTITLE_STYLE.textColor, '#F5F7FA');
     assert.equal(scene.subtitlePosition, SUBTITLE_STYLE.position);
     assert.equal(plan.position, SUBTITLE_STYLE.position);
     assert.equal(plan.verticalPositionPercent, SUBTITLE_STYLE.verticalPositionPercent);
@@ -57,7 +57,7 @@ test('neue Arbeitsordner verwenden den tieferen warmen Untertitelstil', async ()
   }
 });
 
-test('strenge Inhaltsprüfung blockiert den alten mittigen weißen Stil', async () => {
+test('strenge Inhaltsprüfung blockiert alte Mitte, Braunton, Wortmarkierung und Box', async () => {
   const outputRoot = await mkdtemp(path.join(os.tmpdir(), 'erklaer-reels-old-subtitles-'));
 
   try {
@@ -73,8 +73,8 @@ test('strenge Inhaltsprüfung blockiert den alten mittigen weißen Stil', async 
     const plan = await readJson(planPath);
     plan.verticalPositionPercent = 50;
     plan.safeVerticalRangePercent = { min: 50, max: 50 };
-    plan.textColor = '#F5F7FA';
-    plan.highlightColor = '#F5F7FA';
+    plan.textColor = '#E7C39A';
+    plan.highlightColor = '#E7C39A';
     plan.highlightCurrentWord = true;
     plan.backgroundColor = 'rgba(0, 0, 0, 0.72)';
     await writeJson(planPath, plan);
