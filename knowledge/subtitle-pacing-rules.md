@@ -13,7 +13,7 @@
 
 ## Farben und Lesbarkeit
 
-- warmer heller Sandton `#E7C39A`
+- weiches Weiß `#F5F7FA`
 - keine andersfarbige Wortmarkierung
 - keine schwarze Hintergrundbox oder Balken
 - dunkle Kontur und dezenter Schatten
@@ -65,9 +65,9 @@ npm run sync:words -- --dir "PFAD-ZUM-REEL" --apply --strict
   "position": "center",
   "verticalPositionPercent": 58,
   "safeVerticalRangePercent": { "min": 58, "max": 58 },
-  "textColor": "#E7C39A",
+  "textColor": "#F5F7FA",
   "highlightCurrentWord": false,
-  "highlightColor": "#E7C39A",
+  "highlightColor": "#F5F7FA",
   "backgroundColor": "transparent",
   "timingStatus": "codex-word-synced",
   "timingSource": "codex-local-audio-review",
