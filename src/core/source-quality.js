@@ -1,5 +1,9 @@
 export const SOURCE_SCHEMA_MARKER = '<!-- sources-schema:2 -->';
 
+export function buildSourcesTemplate() {
+  return `# Quellen\n${SOURCE_SCHEMA_MARKER}\n\nFür neue Reels mindestens zwei echte, nachvollziehbare und voneinander unabhängige Quellen eintragen. Keine Platzhalter oder erfundenen Quellen.\n\n## Quelle 1\n- Titel/Institution:\n- URL:\n- Datum/Zugriff:\n- Belegt:\n\n## Quelle 2\n- Titel/Institution:\n- URL:\n- Datum/Zugriff:\n- Belegt:\n`;
+}
+
 function normalizeHost(hostname) {
   return String(hostname ?? '').toLowerCase().replace(/^www\./, '');
 }
