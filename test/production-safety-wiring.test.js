@@ -15,23 +15,42 @@ test('Word-Sync-CLI bindet Vorbereitung und Anwendung an Audio-Fingerprints', as
   assert.match(source, /stampAppliedWordSyncAudioBinding/);
 });
 
-test('Finalisierung, Render-CLI und Core-Renderer blockieren veraltete Word-Sync-Audiodateien', async () => {
+test('Audio-Pacing-CLI bindet die echte Lautheitsmessung an die Ausgabedatei', async () => {
+  const source = await text('src/cli/trim-pauses.js');
+  assert.match(source, /stampAudioPacingFileBinding/);
+  assert.match(source, /Gemessen:/);
+  assert.match(source, /SHA-256-Fingerprint/);
+});
+
+test('Finalisierung, Render-CLI und Core-Renderer prüfen Audio-Dateibindungen', async () => {
   const finalizer = await text('src/cli/finalize-reel.js');
   const renderer = await text('src/cli/render-reel.js');
   const coreRenderer = await text('src/core/remotion-renderer.js');
 
-  assert.match(finalizer, /verifyAppliedWordSyncAudioBinding/);
-  assert.match(renderer, /verifyAppliedWordSyncAudioBinding/);
+  for (const source of [finalizer, renderer, coreRenderer]) {
+    assert.match(source, /verifyAudioPacingFileBinding/);
+    assert.match(source, /verifyAppliedWordSyncAudioBinding/);
+  }
   assert.match(renderer, /auch mit --force blockiert/);
-  assert.match(coreRenderer, /verifyAppliedWordSyncAudioBinding/);
+  assert.match(coreRenderer, /veralteten Lautheitsmesswerte/);
   assert.match(coreRenderer, /veralteten Wortzeiten/);
+});
+
+test('Statusanzeige berücksichtigt Audio-Pacing- und Word-Sync-Fingerprints', async () => {
+  const status = await text('src/cli/reel-status.js');
+  assert.match(status, /verifyAudioPacingFileBinding/);
+  assert.match(status, /verifyAppliedWordSyncAudioBinding/);
+  assert.match(status, /audioPacingFileBindingPassed/);
+  assert.match(status, /wordSyncAudioBindingPassed/);
 });
 
 test('aktuelle Produktions-CLI-Beispiele verwenden reels statt content', async () => {
   for (const file of [
     'src/cli/check-content.js',
     'src/cli/finalize-reel.js',
-    'src/cli/render-reel.js'
+    'src/cli/render-reel.js',
+    'src/cli/reel-status.js',
+    'src/cli/trim-pauses.js'
   ]) {
     const source = await text(file);
     assert.match(source, /reels\/\.\.\.\/reel-01_titel/);
@@ -47,11 +66,17 @@ test('strenges Content-Gate verwendet vollständiges Quellen-QC-Ergebnis', async
   assert.match(source, /hasMalformedUrlField/);
 });
 
-test('Fingerprint-Guard prüft Manifest und Render-Plan und hält Legacy kompatibel', async () => {
-  const source = await text('src/core/word-sync-audio-guard.js');
-  assert.match(source, /assets-manifest\.json/);
-  assert.match(source, /render-plan\.json/);
-  assert.match(source, /audioFingerprintSha256/);
-  assert.match(source, /version = Math\.max\(4/);
-  assert.match(source, /legacy: Boolean\(report\)/);
+test('Fingerprint-Guards prüfen Manifest und Render-Plan und halten Legacy kompatibel', async () => {
+  const wordSyncGuard = await text('src/core/word-sync-audio-guard.js');
+  const pacingGuard = await text('src/core/audio-pacing-file-guard.js');
+
+  for (const source of [wordSyncGuard, pacingGuard]) {
+    assert.match(source, /assets-manifest\.json/);
+    assert.match(source, /render-plan\.json/);
+    assert.match(source, /audioFingerprintSha256/);
+  }
+  assert.match(wordSyncGuard, /version = Math\.max\(4/);
+  assert.match(wordSyncGuard, /legacy: Boolean\(report\)/);
+  assert.match(pacingGuard, /version = Math\.max\(6/);
+  assert.match(pacingGuard, /legacy: Boolean\(report\)/);
 });
