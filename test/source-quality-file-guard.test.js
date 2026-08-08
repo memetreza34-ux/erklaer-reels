@@ -43,6 +43,16 @@ test('entfernter Schema-Marker kann ein neues Reel nicht auf Legacy zurückstufe
   assert.match(result.reason, /Schema-Marker/);
 });
 
+test('Schema-2-Marker bleibt auch ohne Reel-Feld streng', async () => {
+  const root = await fixture({ requiredSchemaVersion: null, includeMarker: true });
+  const result = await verifyRequiredSourceQuality(root);
+
+  assert.equal(result.required, true);
+  assert.equal(result.requiredSchemaVersion, 2);
+  assert.equal(result.markerPresent, true);
+  assert.equal(result.passed, true);
+});
+
 test('unvollständige Pflichtquellen bleiben blockiert', async () => {
   const root = await fixture();
   await writeFile(path.join(root, 'sources', 'sources.md'), `# Quellen\n${SOURCE_SCHEMA_MARKER}\n\n## Quelle 1\n- Titel/Institution: Nur eine Quelle\n- URL: https://www.bundestag.de/\n- Datum/Zugriff: 2026-08-08\n- Belegt: Nur eine Aussage.\n`, 'utf8');
@@ -53,7 +63,7 @@ test('unvollständige Pflichtquellen bleiben blockiert', async () => {
   assert.equal(result.passed, false);
 });
 
-test('altes Reel ohne sourceQualitySchemaVersion bleibt rückwärtskompatibel', async () => {
+test('altes Reel ohne Feld und ohne Schema-Marker bleibt rückwärtskompatibel', async () => {
   const root = await fixture({ requiredSchemaVersion: null, includeMarker: false });
   const result = await verifyRequiredSourceQuality(root);
 
