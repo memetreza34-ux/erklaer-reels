@@ -2,6 +2,7 @@
 
 import { verifyAudioPacingFileBinding } from '../core/audio-pacing-file-guard.js';
 import { calculateReelProgress } from '../core/reel-progress.js';
+import { verifyRequiredSourceQuality } from '../core/source-quality-file-guard.js';
 import { verifyAppliedWordSyncAudioBinding } from '../core/word-sync-audio-guard.js';
 
 function getArgument(name) {
@@ -29,14 +30,29 @@ function recalculateProductionReady(progress) {
   progress.overall = clamp(progress.productionReady * 0.9 + progress.rendering * 0.1);
 }
 
-function applyBindingStatus(progress, pacingBinding, wordSyncBinding) {
+function applyGateStatus(progress, sourceGate, pacingBinding, wordSyncBinding) {
   progress.details = {
     ...progress.details,
+    sourceQualitySchemaRequired: sourceGate.required ? sourceGate.requiredSchemaVersion : null,
+    sourceQualityGatePassed: sourceGate.required ? sourceGate.passed : null,
     audioPacingFileBindingRequired: pacingBinding.required,
     audioPacingFileBindingPassed: pacingBinding.required ? pacingBinding.passed : null,
     wordSyncAudioBindingRequired: wordSyncBinding.required,
     wordSyncAudioBindingPassed: wordSyncBinding.required ? wordSyncBinding.passed : null
   };
+
+  if (sourceGate.required && !sourceGate.passed) {
+    const deduction = (progress.details.sourcesReady ? 5 : 0) + (progress.details.contentCheckReady ? 5 : 0);
+    progress.preProduction = clamp(progress.preProduction - deduction);
+    progress.rendering = 0;
+    progress.details.sourcesReady = false;
+    progress.details.contentCheckReady = false;
+    progress.details.rendererValidated = false;
+    progress.details.renderComplete = false;
+    recalculateProductionReady(progress);
+    progress.nextStep = `${sourceGate.reason} sources/sources.md im verpflichtenden Schema vollständig ausfüllen und check:content --strict erneut ausführen.`;
+    return progress;
+  }
 
   if (pacingBinding.required && !pacingBinding.passed) {
     progress.audioPacing = 0;
@@ -79,9 +95,10 @@ async function main() {
   }
 
   const progress = await calculateReelProgress(reelDirectory);
+  const sourceGate = await verifyRequiredSourceQuality(reelDirectory);
   const pacingBinding = await verifyAudioPacingFileBinding(reelDirectory);
   const wordSyncBinding = await verifyAppliedWordSyncAudioBinding(reelDirectory);
-  applyBindingStatus(progress, pacingBinding, wordSyncBinding);
+  applyGateStatus(progress, sourceGate, pacingBinding, wordSyncBinding);
 
   if (asJson) {
     console.log(JSON.stringify(progress, null, 2));
@@ -105,6 +122,7 @@ async function main() {
   console.log(`Bildprompts fertig: ${progress.details.promptsReady}`);
   console.log(`Cover-Prompt fertig: ${yesNo(progress.details.coverPromptReady)}`);
   console.log(`Inhaltsprüfung bestanden: ${yesNo(progress.details.contentCheckReady)}`);
+  if (sourceGate.required) console.log(`Pflicht-Quellen-QC bestanden: ${yesNo(sourceGate.passed)}`);
   console.log(`Szenenbilder übernommen: ${progress.details.sceneImagesReady}`);
   console.log(`Audio übernommen: ${yesNo(progress.details.audioReady)}`);
   console.log(`Cover übernommen: ${yesNo(progress.details.coverImageReady)}`);
