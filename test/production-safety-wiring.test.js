@@ -13,12 +13,15 @@ test('Neue Reels verankern das verpflichtende Quellen-Schema außerhalb von sour
   assert.match(creator, /buildSourcesTemplate/);
 });
 
-test('Word-Sync-CLI bindet Vorbereitung und Anwendung an Audio-Fingerprints', async () => {
+test('Word-Sync-CLI bindet Audio und verlangt eine aktuelle audio-synced Timeline', async () => {
   const source = await text('src/cli/sync-words.js');
+  assert.match(source, /verifyAudioPacingFileBinding/);
+  assert.match(source, /verifyWordSyncTimelineReadiness/);
   assert.match(source, /invalidateStaleWordSyncWorkbench/);
   assert.match(source, /stampPreparedWordSyncAudioBinding/);
   assert.match(source, /verifyPreparedWordSyncAudioBinding/);
   assert.match(source, /stampAppliedWordSyncAudioBinding/);
+  assert.match(source, /audio-synced/);
 });
 
 test('Audio-Pacing-CLI bindet die echte Lautheitsmessung an die Ausgabedatei', async () => {
@@ -59,6 +62,7 @@ test('aktuelle Produktions-CLI-Beispiele verwenden reels statt content', async (
     'src/cli/finalize-reel.js',
     'src/cli/render-reel.js',
     'src/cli/reel-status.js',
+    'src/cli/sync-words.js',
     'src/cli/trim-pauses.js'
   ]) {
     const source = await text(file);
@@ -88,4 +92,14 @@ test('Fingerprint-Guards prüfen Manifest und Render-Plan und halten Legacy komp
   assert.match(wordSyncGuard, /legacy: Boolean\(report\)/);
   assert.match(pacingGuard, /version = Math\.max\(6/);
   assert.match(pacingGuard, /legacy: Boolean\(report\)/);
+});
+
+test('Timeline-Guard erzwingt moderne Reihenfolge ohne Legacy-Reels pauschal zu blockieren', async () => {
+  const guard = await text('src/core/word-sync-timeline-guard.js');
+  assert.match(guard, /needs-rebuild-after-audio-pacing/);
+  assert.match(guard, /needs-rebuild-after-word-sync-invalidation/);
+  assert.match(guard, /version \?\? 0\) >= 6/);
+  assert.match(guard, /timeline\?\.timingStatus === 'audio-synced'/);
+  assert.match(guard, /required: false/);
+  assert.match(guard, /legacy: true/);
 });
