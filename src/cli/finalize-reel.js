@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { finalizeReel } from '../core/finalize-reel.js';
+import { verifyAppliedWordSyncAudioBinding } from '../core/word-sync-audio-guard.js';
 
 function getArgument(name) {
   const index = process.argv.indexOf(name);
@@ -15,13 +16,18 @@ async function main() {
   const audioDurationSeconds = durationValue === undefined ? null : Number(durationValue);
 
   if (!reelDirectory) {
-    console.log('Verwendung: npm run finalize:reel -- --dir "content/.../reel-01_titel" [--audio-duration 48.7] [--strict] [--json]');
+    console.log('Verwendung: npm run finalize:reel -- --dir "reels/.../reel-01_titel" [--audio-duration 48.7] [--strict] [--json]');
     process.exitCode = 1;
     return;
   }
 
   if (durationValue !== undefined && (!Number.isFinite(audioDurationSeconds) || audioDurationSeconds <= 0)) {
     throw new Error('--audio-duration muss eine positive Zahl sein.');
+  }
+
+  const audioBinding = await verifyAppliedWordSyncAudioBinding(reelDirectory);
+  if (audioBinding.required && !audioBinding.passed) {
+    throw new Error(`${audioBinding.reason} Führe die Word-Synchronisierung mit dem aktuellen Voice-over erneut aus.`);
   }
 
   const report = await finalizeReel(reelDirectory, {
@@ -35,6 +41,7 @@ async function main() {
     console.log(`Inhalt: ${report.stages.content?.passed ? 'bestanden' : 'nicht bestanden'}`);
     console.log(`Timeline: ${report.stages.timeline?.passed ? 'bestanden' : 'nicht bestanden'}`);
     console.log(`Visuelle Qualität: ${report.stages.visualQuality?.passed ? 'bestanden' : 'nicht bestanden'}`);
+    if (audioBinding.required) console.log('Word-Sync-Audio: Fingerprint unverändert');
     console.log(`Gesamtstand: ${report.progress.overall}%`);
     console.log(`Renderer-bereit: ${report.readyForRenderer ? 'ja' : 'nein'}`);
     console.log(`Nächster Schritt: ${report.nextStep}`);
