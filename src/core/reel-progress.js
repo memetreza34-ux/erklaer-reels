@@ -3,7 +3,9 @@ import path from 'node:path';
 
 import {
   AUDIO_PACING_STYLE,
-  isTargetPlaybackRate
+  isMeasuredLoudnessWithinTolerance,
+  isTargetPlaybackRate,
+  toFiniteNumberOrNull
 } from '../shared/audio-pacing-style.js';
 
 async function exists(filePath) {
@@ -112,11 +114,28 @@ export async function calculateReelProgress(reelDirectory) {
   );
 
   const audioPacingCreated = Boolean(audioPacingReport?.createdAt);
-  const audioPacingRate = Number(audioPacingReport?.playbackRate ?? 0);
+  const audioPacingRate = toFiniteNumberOrNull(audioPacingReport?.playbackRate) ?? 0;
   const audioPacingRateSafe = isTargetPlaybackRate(audioPacingRate);
   const audioLoudnessNormalized = audioPacingReport?.loudnessNormalized === true;
-  const audioLoudnessTargetSafe = Number(audioPacingReport?.loudnessSettings?.loudnessTargetLufs) === AUDIO_PACING_STYLE.loudnessTargetLufs;
-  const audioTruePeakSafe = Number(audioPacingReport?.loudnessSettings?.truePeakDbtp) === AUDIO_PACING_STYLE.truePeakDbtp;
+  const audioLoudnessTarget = toFiniteNumberOrNull(audioPacingReport?.loudnessSettings?.loudnessTargetLufs);
+  const audioTruePeakTarget = toFiniteNumberOrNull(audioPacingReport?.loudnessSettings?.truePeakDbtp);
+  const audioLoudnessTargetSafe = audioLoudnessTarget === AUDIO_PACING_STYLE.loudnessTargetLufs;
+  const audioTruePeakSafe = audioTruePeakTarget === AUDIO_PACING_STYLE.truePeakDbtp;
+  const audioMeasurementRequired = Number(audioPacingReport?.version ?? 0) >= 5;
+  const measuredIntegratedLufs = toFiniteNumberOrNull(audioPacingReport?.loudnessMeasurement?.integratedLufs);
+  const measuredTruePeakDbtp = toFiniteNumberOrNull(audioPacingReport?.loudnessMeasurement?.truePeakDbtp);
+  const audioMeasurementPresent = !audioMeasurementRequired || (
+    audioPacingReport?.loudnessMeasured === true &&
+    measuredIntegratedLufs !== null &&
+    measuredTruePeakDbtp !== null
+  );
+  const audioMeasurementSafe = !audioMeasurementRequired || (
+    audioPacingReport?.loudnessMeasurement?.passed === true &&
+    isMeasuredLoudnessWithinTolerance(
+      { integratedLufs: measuredIntegratedLufs, truePeakDbtp: measuredTruePeakDbtp },
+      { loudnessTargetLufs: audioLoudnessTarget, truePeakTargetDbtp: audioTruePeakTarget }
+    )
+  );
   const audioPacingDurationReduced = Number(audioPacingReport?.afterSeconds) > 0 &&
     Number(audioPacingReport?.afterSeconds) < Number(audioPacingReport?.beforeSeconds);
   const audioPacingPassed = audioPacingReport?.passed === true &&
@@ -124,12 +143,14 @@ export async function calculateReelProgress(reelDirectory) {
     audioLoudnessNormalized &&
     audioLoudnessTargetSafe &&
     audioTruePeakSafe &&
+    audioMeasurementPresent &&
+    audioMeasurementSafe &&
     audioPacingDurationReduced;
   const audioPacing = clamp(
     (audioPacingCreated ? 15 : 0) +
     (audioPacingReport?.passed === true ? 20 : 0) +
     (audioPacingRateSafe ? 25 : 0) +
-    (audioLoudnessNormalized && audioLoudnessTargetSafe && audioTruePeakSafe ? 20 : 0) +
+    (audioLoudnessNormalized && audioLoudnessTargetSafe && audioTruePeakSafe && audioMeasurementPresent && audioMeasurementSafe ? 20 : 0) +
     (audioPacingDurationReduced ? 20 : 0)
   );
 
@@ -202,7 +223,7 @@ export async function calculateReelProgress(reelDirectory) {
   } else if (assets < 100) {
     nextStep = 'Voice-over und Bilder direkt in die vorgesehenen Audio-, Cover- und Szenenordner legen und prüfen.';
   } else if (audioPacing < 100) {
-    nextStep = `Mit trim:pauses das Voice-over auf ${AUDIO_PACING_STYLE.playbackRate.toFixed(2)}x beschleunigen, Pausen kürzen und auf ${AUDIO_PACING_STYLE.loudnessTargetLufs} LUFS normalisieren.`;
+    nextStep = `Mit trim:pauses das Voice-over auf ${AUDIO_PACING_STYLE.playbackRate.toFixed(2)}x beschleunigen, Pausen kürzen und auf ${AUDIO_PACING_STYLE.loudnessTargetLufs} LUFS normalisieren und nachmessen.`;
   } else if (timelineProgress < 100) {
     nextStep = 'Master-Timeline mit dem optimierten Audio erzeugen, echte Audio-Cues eintragen und sync:audio streng ausführen.';
   } else if (wordSyncRequired && wordSync < 100) {
@@ -249,6 +270,11 @@ export async function calculateReelProgress(reelDirectory) {
       audioLoudnessNormalized,
       audioLoudnessTargetSafe,
       audioTruePeakSafe,
+      audioMeasurementRequired,
+      audioMeasurementPresent,
+      audioMeasurementSafe,
+      measuredIntegratedLufs,
+      measuredTruePeakDbtp,
       audioPacingDurationReduced,
       timelineBuilt,
       audioDurationKnown,
