@@ -19,10 +19,11 @@ async function readJson(filePath, fallback = null) {
 
 export async function verifyRequiredSourceQuality(reelDirectory) {
   const reel = await readJson(path.join(reelDirectory, 'reel.json'), {});
-  const requiredSchemaVersion = Number(reel?.sourceQualitySchemaVersion ?? 1);
+  const reelRequiredSchemaVersion = Number(reel?.sourceQualitySchemaVersion ?? 1);
   const sourcesPath = path.join(reelDirectory, 'sources', 'sources.md');
   const sources = (await exists(sourcesPath)) ? await readFile(sourcesPath, 'utf8') : '';
   const inspection = inspectSourcesMarkdown(sources);
+  const requiredSchemaVersion = Math.max(reelRequiredSchemaVersion, Number(inspection.schemaVersion ?? 1));
 
   if (requiredSchemaVersion < 2) {
     return {
@@ -30,6 +31,7 @@ export async function verifyRequiredSourceQuality(reelDirectory) {
       passed: true,
       legacy: true,
       requiredSchemaVersion,
+      reelRequiredSchemaVersion,
       inspection
     };
   }
@@ -41,6 +43,7 @@ export async function verifyRequiredSourceQuality(reelDirectory) {
     passed,
     legacy: false,
     requiredSchemaVersion,
+    reelRequiredSchemaVersion,
     markerPresent,
     inspection,
     reason: passed
