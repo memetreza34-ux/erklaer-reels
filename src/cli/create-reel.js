@@ -69,6 +69,12 @@ async function main() {
   }
 
   const result = await createReelWorkspace({ title, script, date, sceneCount, outputRoot });
+  result.reel.sourceQualitySchemaVersion = 2;
+  await writeFile(
+    path.join(result.reelDirectory, 'reel.json'),
+    `${JSON.stringify(result.reel, null, 2)}\n`,
+    'utf8'
+  );
   await writeFile(
     path.join(result.reelDirectory, 'sources', 'sources.md'),
     buildSourcesTemplate(),
@@ -84,6 +90,7 @@ async function main() {
   console.log(`Reel-Arbeitsordner erstellt: ${result.reelDirectory}`);
   console.log(`Szenen: ${result.reel.sceneCount}`);
   console.log(`Zieldauer: ${result.reel.targetDurationSeconds} Sekunden`);
+  console.log('Quellen-QC: Schema 2 ist für dieses neue Reel verpflichtend.');
   console.log(`Codex-Auftrag: ${production.taskFile}`);
   console.log(`Chronologische Bildprompt-Datei: ${promptBundle.file}`);
   console.log(`Übersichtliche Ordner: ${humanView.visibleFolders.join(', ')}`);
