@@ -8,6 +8,7 @@ import { calculateReelProgress } from './reel-progress.js';
 import { validateExactWordTimings } from '../renderer/subtitle-timing.js';
 import {
   AUDIO_PACING_STYLE,
+  isMeasuredLoudnessWithinTolerance,
   isTargetPlaybackRate
 } from '../shared/audio-pacing-style.js';
 
@@ -85,8 +86,13 @@ function audioPacingStage(report, strict) {
   ];
 
   if (measuredAudioRequired) {
-    const measuredLufs = Number(report?.loudnessMeasurement?.integratedLufs);
-    const measuredTruePeak = Number(report?.loudnessMeasurement?.truePeakDbtp);
+    const measurement = report?.loudnessMeasurement ?? {};
+    const measuredLufs = Number(measurement.integratedLufs);
+    const measuredTruePeak = Number(measurement.truePeakDbtp);
+    const measurementValuesPass = isMeasuredLoudnessWithinTolerance(
+      { integratedLufs: measuredLufs, truePeakDbtp: measuredTruePeak },
+      { loudnessTargetLufs: loudnessTarget, truePeakTargetDbtp: truePeak }
+    );
     checks.push(
       {
         id: 'audio-pacing-loudness-measured',
@@ -96,7 +102,7 @@ function audioPacingStage(report, strict) {
       },
       {
         id: 'audio-pacing-measurement-passed',
-        passed: report?.loudnessMeasurement?.passed === true,
+        passed: measurement.passed === true,
         level: strict ? 'error' : 'warning',
         message: 'Die nachgelagerte LUFS-/True-Peak-Messung muss bestanden sein.'
       },
@@ -111,6 +117,12 @@ function audioPacingStage(report, strict) {
         passed: Number.isFinite(measuredTruePeak),
         level: strict ? 'error' : 'warning',
         message: 'Der tatsächlich gemessene True-Peak-Wert fehlt.'
+      },
+      {
+        id: 'audio-pacing-measured-values-within-tolerance',
+        passed: measurementValuesPass,
+        level: strict ? 'error' : 'warning',
+        message: 'Die gespeicherten LUFS-/True-Peak-Messwerte liegen außerhalb der zentralen Produktionstoleranz.'
       }
     );
   }
