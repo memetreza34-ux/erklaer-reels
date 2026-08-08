@@ -2,6 +2,7 @@
 
 import path from 'node:path';
 
+import { verifyAudioPacingFileBinding } from '../core/audio-pacing-file-guard.js';
 import { renderReel } from '../core/remotion-renderer.js';
 import { validateRendererInput } from '../core/render-validator.js';
 import { verifyAppliedWordSyncAudioBinding } from '../core/word-sync-audio-guard.js';
@@ -57,9 +58,15 @@ async function main() {
 
   const force = process.argv.includes('--force');
   const validateOnly = process.argv.includes('--validate-only');
-  const audioBinding = await verifyAppliedWordSyncAudioBinding(reelDirectory);
-  if (audioBinding.required && !audioBinding.passed) {
-    throw new Error(`${audioBinding.reason} Rendern mit veralteten Wortzeiten ist auch mit --force blockiert.`);
+
+  const pacingBinding = await verifyAudioPacingFileBinding(reelDirectory);
+  if (pacingBinding.required && !pacingBinding.passed) {
+    throw new Error(`${pacingBinding.reason} Rendern mit veralteten Lautheitswerten ist auch mit --force blockiert.`);
+  }
+
+  const wordSyncBinding = await verifyAppliedWordSyncAudioBinding(reelDirectory);
+  if (wordSyncBinding.required && !wordSyncBinding.passed) {
+    throw new Error(`${wordSyncBinding.reason} Rendern mit veralteten Wortzeiten ist auch mit --force blockiert.`);
   }
 
   if (validateOnly) {
@@ -67,7 +74,8 @@ async function main() {
       requireFinalReadiness: !force
     });
     printValidation(report);
-    if (audioBinding.required) console.log('Word-Sync-Audio: Fingerprint unverändert');
+    if (pacingBinding.required) console.log('Audio-Pacing-Datei: Fingerprint unverändert');
+    if (wordSyncBinding.required) console.log('Word-Sync-Audio: Fingerprint unverändert');
     if (!report.passed) process.exitCode = 1;
     return;
   }
@@ -89,7 +97,8 @@ async function main() {
   });
 
   console.log('MP4 erfolgreich erzeugt.');
-  if (audioBinding.required) console.log('Word-Sync-Audio: Fingerprint unverändert');
+  if (pacingBinding.required) console.log('Audio-Pacing-Datei: Fingerprint unverändert');
+  if (wordSyncBinding.required) console.log('Word-Sync-Audio: Fingerprint unverändert');
   console.log(`Datei: ${path.resolve(report.outputFile)}`);
   console.log(`Größe: ${(report.outputBytes / 1024 / 1024).toFixed(2)} MB`);
 }
