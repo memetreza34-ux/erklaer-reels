@@ -38,6 +38,7 @@ function audioPacingStage(report, strict) {
   const rate = Number(report?.playbackRate);
   const loudnessTarget = Number(report?.loudnessSettings?.loudnessTargetLufs);
   const truePeak = Number(report?.loudnessSettings?.truePeakDbtp);
+  const measuredAudioRequired = Number(report?.version ?? 0) >= 5;
   const checks = [
     {
       id: 'audio-pacing-report-present',
@@ -82,6 +83,38 @@ function audioPacingStage(report, strict) {
       message: 'Die optimierte Audiodatei muss kürzer als das Original sein.'
     }
   ];
+
+  if (measuredAudioRequired) {
+    const measuredLufs = Number(report?.loudnessMeasurement?.integratedLufs);
+    const measuredTruePeak = Number(report?.loudnessMeasurement?.truePeakDbtp);
+    checks.push(
+      {
+        id: 'audio-pacing-loudness-measured',
+        passed: report?.loudnessMeasured === true,
+        level: strict ? 'error' : 'warning',
+        message: 'Audio-Pacing-Reports ab Version 5 müssen eine echte Lautheitsnachmessung enthalten.'
+      },
+      {
+        id: 'audio-pacing-measurement-passed',
+        passed: report?.loudnessMeasurement?.passed === true,
+        level: strict ? 'error' : 'warning',
+        message: 'Die nachgelagerte LUFS-/True-Peak-Messung muss bestanden sein.'
+      },
+      {
+        id: 'audio-pacing-measured-lufs-present',
+        passed: Number.isFinite(measuredLufs),
+        level: strict ? 'error' : 'warning',
+        message: 'Der tatsächlich gemessene Integrated-LUFS-Wert fehlt.'
+      },
+      {
+        id: 'audio-pacing-measured-true-peak-present',
+        passed: Number.isFinite(measuredTruePeak),
+        level: strict ? 'error' : 'warning',
+        message: 'Der tatsächlich gemessene True-Peak-Wert fehlt.'
+      }
+    );
+  }
+
   const errors = checks.filter((check) => !check.passed && check.level === 'error');
   const warnings = checks.filter((check) => !check.passed && check.level === 'warning');
   return {
@@ -90,6 +123,13 @@ function audioPacingStage(report, strict) {
     playbackRate: Number.isFinite(rate) ? rate : null,
     loudnessTargetLufs: Number.isFinite(loudnessTarget) ? loudnessTarget : null,
     truePeakDbtp: Number.isFinite(truePeak) ? truePeak : null,
+    loudnessMeasured: measuredAudioRequired ? report?.loudnessMeasured === true : null,
+    measuredIntegratedLufs: measuredAudioRequired && Number.isFinite(Number(report?.loudnessMeasurement?.integratedLufs))
+      ? Number(report.loudnessMeasurement.integratedLufs)
+      : null,
+    measuredTruePeakDbtp: measuredAudioRequired && Number.isFinite(Number(report?.loudnessMeasurement?.truePeakDbtp))
+      ? Number(report.loudnessMeasurement.truePeakDbtp)
+      : null,
     beforeSeconds: Number(report?.beforeSeconds) || null,
     afterSeconds: Number(report?.afterSeconds) || null,
     reportFile: 'review/audio-pacing-report.json',
@@ -195,6 +235,9 @@ export async function finalizeReel(reelDirectory, {
     playbackRate: pacing.playbackRate,
     loudnessTargetLufs: pacing.loudnessTargetLufs,
     truePeakDbtp: pacing.truePeakDbtp,
+    loudnessMeasured: pacing.loudnessMeasured,
+    measuredIntegratedLufs: pacing.measuredIntegratedLufs,
+    measuredTruePeakDbtp: pacing.measuredTruePeakDbtp,
     beforeSeconds: pacing.beforeSeconds,
     afterSeconds: pacing.afterSeconds,
     reportFile: pacing.reportFile,
