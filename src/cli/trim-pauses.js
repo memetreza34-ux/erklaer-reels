@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import { stampAudioPacingFileBinding } from '../core/audio-pacing-file-guard.js';
 import { tightenVoiceover } from '../core/audio-tightener.js';
 import { AUDIO_PACING_STYLE } from '../shared/audio-pacing-style.js';
 
@@ -11,12 +12,12 @@ function getArgument(name) {
 async function main() {
   const reelDirectory = getArgument('--dir');
   if (!reelDirectory) {
-    console.log('Verwendung: npm run trim:pauses -- --dir "content/.../reel-01_titel" [--speed 1.10]');
+    console.log('Verwendung: npm run trim:pauses -- --dir "reels/.../reel-01_titel" [--speed 1.10]');
     process.exitCode = 1;
     return;
   }
 
-  const report = await tightenVoiceover(reelDirectory, {
+  await tightenVoiceover(reelDirectory, {
     thresholdDb: Number(getArgument('--threshold-db') ?? AUDIO_PACING_STYLE.thresholdDb),
     minimumLongPauseSeconds: Number(getArgument('--minimum-pause') ?? AUDIO_PACING_STYLE.minimumLongPauseSeconds),
     retainedPauseSeconds: Number(getArgument('--keep-pause') ?? AUDIO_PACING_STYLE.retainedPauseSeconds),
@@ -25,6 +26,8 @@ async function main() {
     truePeakDbtp: Number(getArgument('--true-peak') ?? AUDIO_PACING_STYLE.truePeakDbtp),
     loudnessRangeLra: Number(getArgument('--lra') ?? AUDIO_PACING_STYLE.loudnessRangeLra)
   });
+  const binding = await stampAudioPacingFileBinding(reelDirectory);
+  const report = binding.report;
 
   console.log('Voice-over-Pacing wurde optimiert.');
   console.log(`Vorher: ${report.beforeSeconds?.toFixed(2) ?? 'unbekannt'} s`);
@@ -32,7 +35,11 @@ async function main() {
   console.log(`Entfernt: ${report.removedSeconds?.toFixed(2) ?? 'unbekannt'} s`);
   console.log(`Tempo: ${report.playbackRate?.toFixed(2) ?? AUDIO_PACING_STYLE.playbackRate.toFixed(2)}x bei erhaltener Tonhöhe`);
   console.log(`Lautheit: ${report.loudnessSettings?.loudnessTargetLufs ?? AUDIO_PACING_STYLE.loudnessTargetLufs} LUFS, True Peak ${report.loudnessSettings?.truePeakDbtp ?? AUDIO_PACING_STYLE.truePeakDbtp} dBTP`);
+  if (report.loudnessMeasured) {
+    console.log(`Gemessen: ${report.loudnessMeasurement?.integratedLufs ?? 'unbekannt'} LUFS, True Peak ${report.loudnessMeasurement?.truePeakDbtp ?? 'unbekannt'} dBTP`);
+  }
   console.log(`Neue Audiodatei: ${report.outputFile}`);
+  console.log('Audio-Bindung: SHA-256-Fingerprint der gemessenen Datei gespeichert.');
   console.log('Timeline, Szenen-Cues und Untertitel-Cues müssen jetzt erneut synchronisiert werden.');
 }
 

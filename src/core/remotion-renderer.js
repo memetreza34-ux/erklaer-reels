@@ -2,7 +2,10 @@ import { mkdir, readFile, stat, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import { verifyAudioPacingFileBinding } from './audio-pacing-file-guard.js';
 import { validateRendererInput } from './render-validator.js';
+import { verifyRequiredSourceQuality } from './source-quality-file-guard.js';
+import { verifyAppliedWordSyncAudioBinding } from './word-sync-audio-guard.js';
 
 const currentDirectory = path.dirname(fileURLToPath(import.meta.url));
 const entryPoint = path.resolve(currentDirectory, '..', 'renderer', 'index.jsx');
@@ -31,6 +34,22 @@ export async function renderReel(reelDirectory, {
   onProgress = null
 } = {}) {
   const startedAt = new Date().toISOString();
+
+  const sourceGate = await verifyRequiredSourceQuality(reelDirectory);
+  if (sourceGate.required && !sourceGate.passed) {
+    throw new Error(`${sourceGate.reason} Der Renderer benötigt die verpflichtende Quellen-QC.`);
+  }
+
+  const pacingBinding = await verifyAudioPacingFileBinding(reelDirectory);
+  if (pacingBinding.required && !pacingBinding.passed) {
+    throw new Error(`${pacingBinding.reason} Der Renderer verwendet keine veralteten Lautheitsmesswerte.`);
+  }
+
+  const wordSyncBinding = await verifyAppliedWordSyncAudioBinding(reelDirectory);
+  if (wordSyncBinding.required && !wordSyncBinding.passed) {
+    throw new Error(`${wordSyncBinding.reason} Der Renderer verwendet keine veralteten Wortzeiten.`);
+  }
+
   const validation = await validateRendererInput(reelDirectory, {
     requireFinalReadiness: !force
   });

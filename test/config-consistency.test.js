@@ -92,8 +92,37 @@ test('Kernmodule können keine veralteten Untertitelregeln oder falschen Word-Sy
   assert.match(audioTightener, /needs-resync-after-audio-pacing/);
   assert.match(audioTightener, /invalidated-after-audio-pacing/);
   assert.match(audioTightener, /wordSyncInvalidated: true/);
+  assert.match(audioTightener, /parseLoudnessMeasurement/);
+  assert.match(audioTightener, /loudnessMeasured/);
+  assert.match(audioTightener, /version: 5/);
   assert.match(buildTimeline, /reels\/\.\.\.\/reel-01_titel/);
   assert.doesNotMatch(buildTimeline, /content\/\.\.\.\/reel-01_titel/);
+});
+
+test('Finalizer und Renderer können neue Audio-Messbelege nicht umgehen', async () => {
+  const finalizer = await readText('src/core/finalize-reel.js');
+  const renderValidator = await readText('src/core/render-validator.js');
+
+  for (const [file, text] of [
+    ['src/core/finalize-reel.js', finalizer],
+    ['src/core/render-validator.js', renderValidator]
+  ]) {
+    assert.match(text, /version \?\? 0\) >= 5|version \?\? 0\).*>= 5/, `${file} erkennt Audio-Pacing-Reports ab Version 5 nicht.`);
+    assert.match(text, /loudnessMeasured/);
+    assert.match(text, /measurement\.passed === true/);
+    assert.match(text, /integratedLufs/);
+    assert.match(text, /truePeakDbtp/);
+    assert.match(text, /isMeasuredLoudnessWithinTolerance/);
+  }
+});
+
+test('Core-Finalizer prüft Quellen- und Audio-Dateibindungen selbst', async () => {
+  const finalizer = await readText('src/core/finalize-reel.js');
+  assert.match(finalizer, /verifyRequiredSourceQuality/);
+  assert.match(finalizer, /verifyAudioPacingFileBinding/);
+  assert.match(finalizer, /verifyAppliedWordSyncAudioBinding/);
+  assert.match(finalizer, /audioPacingFileBinding/);
+  assert.match(finalizer, /wordSyncAudioBinding/);
 });
 
 test('Gitignore schützt generierte Medien in aktuellen Produktionsordnern', async () => {
@@ -136,6 +165,25 @@ test('Dokumentation bleibt beim weißen 58-Prozent-Untertiltelstandard', async (
     const text = await readText(file);
     assert.match(text, /#F5F7FA|weiches Weiß|in Weiß/i, `${file} nennt den weißen Untertitelstandard nicht.`);
   }
+});
+
+test('Finder-Doku und technische Ausblendung verwenden nur die aktuelle Reel-Struktur', async () => {
+  const humanView = await readText('src/core/human-reel-view.js');
+  const folderDocs = await readText('docs/reel-folder-layout.md');
+
+  assert.match(humanView, /'timeline'/);
+  assert.match(humanView, /'render'/);
+  assert.match(folderDocs, /reels\/\.\.\.\/reel-01_thema/);
+  assert.doesNotMatch(folderDocs, /content\/\.\.\.\/reel-01_thema/);
+});
+
+test('Autonomer Ablauf verlangt echte Quellen- und Audio-Nachprüfung', async () => {
+  const autonomous = await readText('docs/autonomous-reel.md');
+
+  assert.match(autonomous, /mindestens zwei voneinander unabhängige Quellen/i);
+  assert.match(autonomous, /keine erfundenen Quellen/i);
+  assert.match(autonomous, /tatsächliche LUFS und True Peak/i);
+  assert.match(autonomous, /Zielwert allein reicht nicht als Nachweis/i);
 });
 
 test('abgeschlossene Testphase ist als Produktionsbaseline eingefroren', async () => {

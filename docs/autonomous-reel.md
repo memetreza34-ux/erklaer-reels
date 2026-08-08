@@ -51,6 +51,18 @@ Nach `create:reel` sofort `production/agent-task.md` vollständig bearbeiten:
 - Effektplan mit Hook ohne Übergang und danach nur harten Schnitten
 - Caption, Quellen und Statusdateien
 
+### Quellenstandard
+
+Für Politik, Gesellschaft, Länder, Geschichte, Geografie und Psychologie dürfen Quellen nicht nur als formale Pflichtdatei behandelt werden.
+
+- zentrale Tatsachenbehauptungen vor Veröffentlichung gegen verlässliche Quellen prüfen
+- möglichst Primärquellen oder seriöse Fach-/Institutionenquellen bevorzugen
+- bei strittigen oder aktuellen Aussagen mindestens zwei voneinander unabhängige Quellen verwenden
+- konkrete URLs bzw. eindeutig auffindbare Quellen in `sources/sources.md` eintragen
+- Publisher bzw. Institution und den belegten Punkt kurz nennen
+- Unsicherheit, historische Einordnung oder abweichende Definitionen sichtbar dokumentieren
+- keine erfundenen Quellen, Platzhalterlinks oder ungeprüften KI-Behauptungen als Beleg verwenden
+
 ```bash
 npm run validate:reel -- --dir "PFAD-ZUM-REEL"
 npm run check:content -- --dir "PFAD-ZUM-REEL" --strict
@@ -65,6 +77,7 @@ Codex darf erst anhalten, wenn externe Dateien fehlen: Voice-over, Szenenbilder 
 ```text
 Assets prüfen
 → ursprüngliches Voice-over auf exakt 1,10x, −16 LUFS und −1,5 dBTP verarbeiten
+→ erzeugte Audiodatei erneut auf tatsächliche LUFS und True Peak messen
 → Timeline und Audio-Cues synchronisieren
 → Bilder visuell prüfen
 → weiße Untertitel bei 58 % Bildhöhe prüfen
@@ -73,6 +86,8 @@ Assets prüfen
 → finale Freigabe
 → MP4 rendern
 ```
+
+Die Audio-QC gilt nur als bestanden, wenn die nachgelagerte Messung die erzeugte Datei innerhalb der definierten Lautheitstoleranz bestätigt. Ein korrekt eingetragener Zielwert allein reicht nicht als Nachweis.
 
 Jedes Bild muss natürlich komponiert sein, genau einen klaren Moment zeigen und darf die Hauptperson nicht mehrfach darstellen. Für die Untertitel bei 58 % Bildhöhe wird keine leere Bildzone erzeugt.
 

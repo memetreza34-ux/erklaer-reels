@@ -3,10 +3,12 @@ import assert from 'node:assert/strict';
 
 import {
   buildAudioPacingFilter,
-  buildSilenceRemovalFilter
+  buildSilenceRemovalFilter,
+  parseLoudnessMeasurement
 } from '../src/core/audio-tightener.js';
 import {
   AUDIO_PACING_STYLE,
+  isMeasuredLoudnessWithinTolerance,
   isTargetPlaybackRate
 } from '../src/shared/audio-pacing-style.js';
 
@@ -50,9 +52,47 @@ test('erkennt ausschließlich das feste Produktionsziel von 1.10x', () => {
   assert.equal(AUDIO_PACING_STYLE.outputSampleRateHz, 48000);
 });
 
+test('verwendet zentrale Messtoleranzen für LUFS und True Peak', () => {
+  assert.equal(AUDIO_PACING_STYLE.loudnessMeasurementToleranceLu, 1);
+  assert.equal(AUDIO_PACING_STYLE.truePeakMeasurementToleranceDb, 0.2);
+  assert.equal(isMeasuredLoudnessWithinTolerance({ integratedLufs: -16.9, truePeakDbtp: -1.3 }), true);
+  assert.equal(isMeasuredLoudnessWithinTolerance({ integratedLufs: -14.9, truePeakDbtp: -1.5 }), false);
+  assert.equal(isMeasuredLoudnessWithinTolerance({ integratedLufs: -16, truePeakDbtp: -1.2 }), false);
+});
+
 test('blockiert übertrieben schnelle Voice-over-Werte', () => {
   assert.throws(
     () => buildAudioPacingFilter({ playbackRate: 1.2 }),
     /zwischen 1,00 und 1,10/
   );
+});
+
+test('wertet die nachgelagerte FFmpeg-Lautheitsmessung gegen echte Zielwerte aus', () => {
+  const output = `
+[Parsed_loudnorm_0 @ 0x123] {
+  "input_i" : "-16.18",
+  "input_tp" : "-1.61",
+  "input_lra" : "2.30",
+  "input_thresh" : "-26.20",
+  "output_i" : "-16.00"
+}
+`;
+  const measurement = parseLoudnessMeasurement(output);
+
+  assert.equal(measurement.measured, true);
+  assert.equal(measurement.passed, true);
+  assert.equal(measurement.integratedLufs, -16.18);
+  assert.equal(measurement.truePeakDbtp, -1.61);
+  assert.equal(measurement.loudnessToleranceLu, AUDIO_PACING_STYLE.loudnessMeasurementToleranceLu);
+  assert.equal(measurement.truePeakToleranceDb, AUDIO_PACING_STYLE.truePeakMeasurementToleranceDb);
+});
+
+test('blockiert eine gemessene Audiodatei außerhalb der Lautheitstoleranz', () => {
+  const measurement = parseLoudnessMeasurement(`{
+    "input_i": "-13.20",
+    "input_tp": "-0.60"
+  }`);
+
+  assert.equal(measurement.measured, true);
+  assert.equal(measurement.passed, false);
 });

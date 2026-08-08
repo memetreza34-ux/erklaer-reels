@@ -2,6 +2,7 @@
 
 import { validateReelContent } from '../core/content-validator.js';
 import { validateImagePromptBundle } from '../core/image-prompt-bundle.js';
+import { verifyRequiredSourceQuality } from '../core/source-quality-file-guard.js';
 
 function getArgument(name) {
   const index = process.argv.indexOf(name);
@@ -13,13 +14,16 @@ async function main() {
   const strict = process.argv.includes('--strict');
 
   if (!reelDirectory) {
-    console.log('Verwendung: npm run check:content -- --dir "content/.../reel-01_titel" [--strict]');
+    console.log('Verwendung: npm run check:content -- --dir "reels/.../reel-01_titel" [--strict]');
     process.exitCode = 1;
     return;
   }
 
   const report = await validateReelContent(reelDirectory, { strict });
   const promptBundle = await validateImagePromptBundle(reelDirectory);
+  const sourceGate = await verifyRequiredSourceQuality(reelDirectory);
+  const strictSourceGatePassed = !strict || !sourceGate.required || sourceGate.passed === true;
+  const sourceQuality = sourceGate.inspection;
 
   console.log(`Prüfungen bestanden: ${report.summary.passedChecks}/${report.summary.totalChecks}`);
   console.log(`Fehler: ${report.summary.failedChecks}`);
@@ -30,6 +34,17 @@ async function main() {
     console.log(`- ${prefix}: ${check.message}`);
   }
 
+  if (strict && sourceGate.required) {
+    if (sourceGate.passed) {
+      console.log(`Quellen-QC: bestanden (${sourceQuality.httpsUrlCount} HTTPS-Quellen, ${sourceQuality.distinctHostCount} Domains)`);
+    } else {
+      console.log(`- FEHLER: ${sourceGate.reason}`);
+      if (sourceQuality?.hasMalformedUrlField) console.log('  - Mindestens ein URL-Feld ist ungültig.');
+      if (sourceQuality?.hasInsecureHttp) console.log('  - Mindestens eine Quelle verwendet unsicheres HTTP statt HTTPS.');
+      if (sourceQuality?.hasPlaceholder) console.log('  - Mindestens ein Quellenfeld enthält einen Dummy- oder Platzhalterwert.');
+    }
+  }
+
   if (!promptBundle.passed) {
     const prefix = strict ? 'FEHLER' : 'WARNUNG';
     console.log(`- ${prefix}: ${promptBundle.message}`);
@@ -38,7 +53,7 @@ async function main() {
     console.log(`Bildprompt-Sammeldatei vollständig: ${promptBundle.outputFile}`);
   }
 
-  if (!report.passed || (strict && !promptBundle.passed)) process.exitCode = 1;
+  if (!report.passed || !strictSourceGatePassed || (strict && !promptBundle.passed)) process.exitCode = 1;
   else console.log('Inhaltspaket ist bereit für Audio- und Bilderstellung.');
 }
 

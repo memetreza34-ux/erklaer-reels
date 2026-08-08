@@ -48,9 +48,9 @@ Die technische Pipeline bleibt unverändert. Die sichtbaren Ordner sind Verknüp
 ## Bestehendes Reel aufräumen
 
 ```bash
-npm run organize:finder -- --dir "content/.../reel-01_thema"
+npm run organize:finder -- --dir "reels/.../reel-01_thema"
 ```
 
-Auf macOS werden die ursprünglichen technischen Einträge anschließend im Finder ausgeblendet. Codex, Node, Git und Remotion können weiterhin darauf zugreifen.
+Auf macOS werden die ursprünglichen technischen Einträge anschließend im Finder ausgeblendet. Dazu gehören auch die technischen `timeline`- und `render`-Ordner. Codex, Node, Git und Remotion können weiterhin darauf zugreifen.
 
 Neue Reels erhalten diese kompakte Ansicht automatisch über `npm run create:reel`.
