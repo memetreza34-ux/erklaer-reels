@@ -15,13 +15,16 @@ test('Word-Sync-CLI bindet Vorbereitung und Anwendung an Audio-Fingerprints', as
   assert.match(source, /stampAppliedWordSyncAudioBinding/);
 });
 
-test('Finalisierung und Renderer blockieren veraltete Word-Sync-Audiodateien', async () => {
+test('Finalisierung, Render-CLI und Core-Renderer blockieren veraltete Word-Sync-Audiodateien', async () => {
   const finalizer = await text('src/cli/finalize-reel.js');
   const renderer = await text('src/cli/render-reel.js');
+  const coreRenderer = await text('src/core/remotion-renderer.js');
 
   assert.match(finalizer, /verifyAppliedWordSyncAudioBinding/);
   assert.match(renderer, /verifyAppliedWordSyncAudioBinding/);
   assert.match(renderer, /auch mit --force blockiert/);
+  assert.match(coreRenderer, /verifyAppliedWordSyncAudioBinding/);
+  assert.match(coreRenderer, /veralteten Wortzeiten/);
 });
 
 test('aktuelle Produktions-CLI-Beispiele verwenden reels statt content', async () => {
