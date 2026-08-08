@@ -99,6 +99,22 @@ test('Kernmodule können keine veralteten Untertitelregeln oder falschen Word-Sy
   assert.doesNotMatch(buildTimeline, /content\/\.\.\.\/reel-01_titel/);
 });
 
+test('Finalizer und Renderer können neue Audio-Messbelege nicht umgehen', async () => {
+  const finalizer = await readText('src/core/finalize-reel.js');
+  const renderValidator = await readText('src/core/render-validator.js');
+
+  for (const [file, text] of [
+    ['src/core/finalize-reel.js', finalizer],
+    ['src/core/render-validator.js', renderValidator]
+  ]) {
+    assert.match(text, /version \?\? 0\) >= 5|version \?\? 0\).*>= 5/, `${file} erkennt Audio-Pacing-Reports ab Version 5 nicht.`);
+    assert.match(text, /loudnessMeasured/);
+    assert.match(text, /loudnessMeasurement\?\.passed/);
+    assert.match(text, /integratedLufs/);
+    assert.match(text, /truePeakDbtp/);
+  }
+});
+
 test('Gitignore schützt generierte Medien in aktuellen Produktionsordnern', async () => {
   const gitignore = await readText('.gitignore');
 
