@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import { verifyAudioPacingFileBinding } from '../core/audio-pacing-file-guard.js';
 import { finalizeReel } from '../core/finalize-reel.js';
 import { verifyAppliedWordSyncAudioBinding } from '../core/word-sync-audio-guard.js';
 
@@ -25,9 +26,14 @@ async function main() {
     throw new Error('--audio-duration muss eine positive Zahl sein.');
   }
 
-  const audioBinding = await verifyAppliedWordSyncAudioBinding(reelDirectory);
-  if (audioBinding.required && !audioBinding.passed) {
-    throw new Error(`${audioBinding.reason} Führe die Word-Synchronisierung mit dem aktuellen Voice-over erneut aus.`);
+  const pacingBinding = await verifyAudioPacingFileBinding(reelDirectory);
+  if (pacingBinding.required && !pacingBinding.passed) {
+    throw new Error(`${pacingBinding.reason} Führe trim:pauses mit dem aktuellen Voice-over erneut aus.`);
+  }
+
+  const wordSyncBinding = await verifyAppliedWordSyncAudioBinding(reelDirectory);
+  if (wordSyncBinding.required && !wordSyncBinding.passed) {
+    throw new Error(`${wordSyncBinding.reason} Führe die Word-Synchronisierung mit dem aktuellen Voice-over erneut aus.`);
   }
 
   const report = await finalizeReel(reelDirectory, {
@@ -41,7 +47,8 @@ async function main() {
     console.log(`Inhalt: ${report.stages.content?.passed ? 'bestanden' : 'nicht bestanden'}`);
     console.log(`Timeline: ${report.stages.timeline?.passed ? 'bestanden' : 'nicht bestanden'}`);
     console.log(`Visuelle Qualität: ${report.stages.visualQuality?.passed ? 'bestanden' : 'nicht bestanden'}`);
-    if (audioBinding.required) console.log('Word-Sync-Audio: Fingerprint unverändert');
+    if (pacingBinding.required) console.log('Audio-Pacing-Datei: Fingerprint unverändert');
+    if (wordSyncBinding.required) console.log('Word-Sync-Audio: Fingerprint unverändert');
     console.log(`Gesamtstand: ${report.progress.overall}%`);
     console.log(`Renderer-bereit: ${report.readyForRenderer ? 'ja' : 'nein'}`);
     console.log(`Nächster Schritt: ${report.nextStep}`);
