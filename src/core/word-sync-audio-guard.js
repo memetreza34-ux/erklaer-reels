@@ -125,8 +125,20 @@ export async function invalidateStaleWordSyncWorkbench(reelDirectory) {
   const current = await fingerprintAudioReference(reelDirectory, currentAudioFile);
   const pathChanged = currentAudioFile !== workbench.audioFile;
   const fingerprintChanged = current.audioFingerprintSha256 !== workbench.audioFingerprintSha256;
-  if (!pathChanged && !fingerprintChanged) {
-    return { required: true, changed: false, legacy: false, ...current };
+
+  if (!fingerprintChanged) {
+    if (pathChanged) {
+      workbench.audioFile = currentAudioFile;
+      workbench.updatedAt = new Date().toISOString();
+      await writeJson(workbenchPath, workbench);
+    }
+    return {
+      required: true,
+      changed: false,
+      pathUpdated: pathChanged,
+      legacy: false,
+      ...current
+    };
   }
 
   const previousFingerprint = workbench.audioFingerprintSha256;
@@ -149,7 +161,7 @@ export async function invalidateStaleWordSyncWorkbench(reelDirectory) {
     changed: true,
     legacy: false,
     pathChanged,
-    fingerprintChanged,
+    fingerprintChanged: true,
     previousAudioFile,
     previousAudioFingerprintSha256: previousFingerprint,
     ...current
@@ -204,10 +216,13 @@ export async function verifyPreparedWordSyncAudioBinding(reelDirectory) {
 
 export async function stampAppliedWordSyncAudioBinding(reelDirectory, expectedFingerprint) {
   const prepared = await verifyPreparedWordSyncAudioBinding(reelDirectory);
-  if (prepared.required && !prepared.passed) {
-    throw new Error('Die Voice-over-Datei wurde während der Word-Sync-Anwendung geändert. Wortzeiten werden nicht freigegeben.');
-  }
-  if (expectedFingerprint && prepared.audioFingerprintSha256 !== expectedFingerprint) {
+  const changedDuringApply = (prepared.required && !prepared.passed) ||
+    (expectedFingerprint && prepared.audioFingerprintSha256 !== expectedFingerprint);
+  if (changedDuringApply) {
+    await invalidateAppliedSync(
+      reelDirectory,
+      'Die Voice-over-Datei wurde während der Word-Sync-Anwendung geändert; die gerade erzeugten Wortzeiten wurden deshalb nicht freigegeben.'
+    );
     throw new Error('Die Voice-over-Datei wurde während der Word-Sync-Anwendung geändert. Wortzeiten werden nicht freigegeben.');
   }
 
