@@ -13,9 +13,15 @@ export const AUDIO_PACING_STYLE = Object.freeze({
   preservePitch: true
 });
 
+export function toFiniteNumberOrNull(value) {
+  if (value === null || value === undefined || value === '') return null;
+  const number = Number(value);
+  return Number.isFinite(number) ? number : null;
+}
+
 export function isTargetPlaybackRate(value) {
-  const rate = Number(value);
-  return Number.isFinite(rate) &&
+  const rate = toFiniteNumberOrNull(value);
+  return rate !== null &&
     Math.abs(rate - AUDIO_PACING_STYLE.playbackRate) <= AUDIO_PACING_STYLE.playbackRateTolerance;
 }
 
@@ -26,15 +32,15 @@ export function isMeasuredLoudnessWithinTolerance({
   loudnessTargetLufs = AUDIO_PACING_STYLE.loudnessTargetLufs,
   truePeakTargetDbtp = AUDIO_PACING_STYLE.truePeakDbtp
 } = {}) {
-  const measuredLufs = Number(integratedLufs);
-  const measuredTruePeak = Number(truePeakDbtp);
-  const targetLufs = Number(loudnessTargetLufs);
-  const targetTruePeak = Number(truePeakTargetDbtp);
+  const measuredLufs = toFiniteNumberOrNull(integratedLufs);
+  const measuredTruePeak = toFiniteNumberOrNull(truePeakDbtp);
+  const targetLufs = toFiniteNumberOrNull(loudnessTargetLufs);
+  const targetTruePeak = toFiniteNumberOrNull(truePeakTargetDbtp);
 
-  return Number.isFinite(measuredLufs) &&
-    Number.isFinite(measuredTruePeak) &&
-    Number.isFinite(targetLufs) &&
-    Number.isFinite(targetTruePeak) &&
+  return measuredLufs !== null &&
+    measuredTruePeak !== null &&
+    targetLufs !== null &&
+    targetTruePeak !== null &&
     Math.abs(measuredLufs - targetLufs) <= AUDIO_PACING_STYLE.loudnessMeasurementToleranceLu &&
     measuredTruePeak <= targetTruePeak + AUDIO_PACING_STYLE.truePeakMeasurementToleranceDb;
 }
