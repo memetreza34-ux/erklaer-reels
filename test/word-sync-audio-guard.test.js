@@ -121,6 +121,34 @@ test('erneute Vorbereitung verwirft bestätigte Zeiten bei geänderter Audiodate
   assert.equal(subtitlePlan.timingStatus, 'invalidated-audio-fingerprint-changed');
 });
 
+test('reine Pfadänderung mit identischen Audiobytes verwirft keine Wortzeiten', async () => {
+  const root = await fixture();
+  await stampPreparedWordSyncAudioBinding(root);
+  const workbenchPath = path.join(root, 'subtitles', 'codex-word-sync.json');
+  const workbench = await readJson(workbenchPath);
+  workbench.words[0] = {
+    ...workbench.words[0],
+    startSeconds: 0.1,
+    endSeconds: 0.4,
+    confidence: 0.98,
+    reviewed: true
+  };
+  await writeJson(workbenchPath, workbench);
+  await writeFile(path.join(root, 'audio', 'renamed.m4a'), 'audio-version-a', 'utf8');
+  await writeJson(path.join(root, 'assets-manifest.json'), {
+    audio: { expectedFile: 'audio/renamed.m4a', status: 'ready' }
+  });
+
+  const result = await invalidateStaleWordSyncWorkbench(root);
+  const updated = await readJson(workbenchPath);
+
+  assert.equal(result.changed, false);
+  assert.equal(result.pathUpdated, true);
+  assert.equal(updated.audioFile, 'audio/renamed.m4a');
+  assert.equal(updated.words[0].reviewed, true);
+  assert.equal(updated.words[0].startSeconds, 0.1);
+});
+
 test('angewendeter Word-Sync bleibt nur für dieselbe Produktionsdatei gültig', async () => {
   const root = await fixture();
   const prepared = await stampPreparedWordSyncAudioBinding(root);
