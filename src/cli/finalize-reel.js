@@ -2,6 +2,7 @@
 
 import { verifyAudioPacingFileBinding } from '../core/audio-pacing-file-guard.js';
 import { finalizeReel } from '../core/finalize-reel.js';
+import { verifyRequiredSourceQuality } from '../core/source-quality-file-guard.js';
 import { verifyAppliedWordSyncAudioBinding } from '../core/word-sync-audio-guard.js';
 
 function getArgument(name) {
@@ -26,9 +27,14 @@ async function main() {
     throw new Error('--audio-duration muss eine positive Zahl sein.');
   }
 
+  const sourceGate = await verifyRequiredSourceQuality(reelDirectory);
+  if (sourceGate.required && !sourceGate.passed) {
+    throw new Error(`${sourceGate.reason} Führe check:content --strict aus und korrigiere sources/sources.md.`);
+  }
+
   const pacingBinding = await verifyAudioPacingFileBinding(reelDirectory);
   if (pacingBinding.required && !pacingBinding.passed) {
-    throw new Error(`${pacingBinding.reason} Führe trim:pauses mit dem aktuellen Voice-over erneut aus.`);
+    throw new Error(`${pacingBinding.reason} Führe trim:pauses mit dem aktuellen Voice-over erneut aus oder aktualisiere danach Timeline und Render-Plan.`);
   }
 
   const wordSyncBinding = await verifyAppliedWordSyncAudioBinding(reelDirectory);
@@ -47,6 +53,7 @@ async function main() {
     console.log(`Inhalt: ${report.stages.content?.passed ? 'bestanden' : 'nicht bestanden'}`);
     console.log(`Timeline: ${report.stages.timeline?.passed ? 'bestanden' : 'nicht bestanden'}`);
     console.log(`Visuelle Qualität: ${report.stages.visualQuality?.passed ? 'bestanden' : 'nicht bestanden'}`);
+    if (sourceGate.required) console.log('Quellen-QC: verpflichtendes Schema bestanden');
     if (pacingBinding.required) console.log('Audio-Pacing-Datei: Fingerprint unverändert');
     if (wordSyncBinding.required) console.log('Word-Sync-Audio: Fingerprint unverändert');
     console.log(`Gesamtstand: ${report.progress.overall}%`);
