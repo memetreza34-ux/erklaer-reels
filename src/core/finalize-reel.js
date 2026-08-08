@@ -1,10 +1,13 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
+import { verifyAudioPacingFileBinding } from './audio-pacing-file-guard.js';
 import { validateReelContent } from './content-validator.js';
 import { buildMasterTimeline } from './timeline.js';
 import { runVisualQualityCheck } from './visual-qc.js';
 import { calculateReelProgress } from './reel-progress.js';
+import { verifyRequiredSourceQuality } from './source-quality-file-guard.js';
+import { verifyAppliedWordSyncAudioBinding } from './word-sync-audio-guard.js';
 import { validateExactWordTimings } from '../renderer/subtitle-timing.js';
 import {
   AUDIO_PACING_STYLE,
@@ -219,6 +222,21 @@ function wordSyncStage(renderPlan, strict) {
   };
 }
 
+function guardStage(result, id, message) {
+  return {
+    passed: result?.passed === true,
+    required: result?.required === true,
+    legacy: result?.legacy === true,
+    reason: result?.reason ?? null,
+    checks: [{
+      id,
+      passed: result?.passed === true,
+      level: 'error',
+      message: result?.passed === true ? `${message}: bestanden.` : (result?.reason ?? `${message}: nicht bestanden.`)
+    }]
+  };
+}
+
 export async function finalizeReel(reelDirectory, {
   strict = false,
   audioDurationSeconds = null,
@@ -228,6 +246,24 @@ export async function finalizeReel(reelDirectory, {
   const stages = {};
   const blockingIssues = [];
   const warnings = [];
+
+  const sourceGate = await verifyRequiredSourceQuality(reelDirectory);
+  stages.sourceQuality = guardStage(sourceGate, 'source-quality-binding', 'Verpflichtende Quellen-QC');
+  if (!sourceGate.passed) {
+    blockingIssues.push({ id: 'source-quality-binding', level: 'error', message: sourceGate.reason });
+  }
+
+  const pacingBinding = await verifyAudioPacingFileBinding(reelDirectory);
+  stages.audioPacingFileBinding = guardStage(pacingBinding, 'audio-pacing-file-binding', 'Audio-Pacing-Dateibindung');
+  if (!pacingBinding.passed) {
+    blockingIssues.push({ id: 'audio-pacing-file-binding', level: 'error', message: pacingBinding.reason });
+  }
+
+  const wordSyncBinding = await verifyAppliedWordSyncAudioBinding(reelDirectory);
+  stages.wordSyncAudioBinding = guardStage(wordSyncBinding, 'word-sync-audio-binding', 'Word-Sync-Audiobindung');
+  if (!wordSyncBinding.passed) {
+    blockingIssues.push({ id: 'word-sync-audio-binding', level: 'error', message: wordSyncBinding.reason });
+  }
 
   const content = await validateReelContent(reelDirectory, { strict: true });
   stages.content = {
@@ -318,6 +354,9 @@ export async function finalizeReel(reelDirectory, {
 
   const progress = await calculateReelProgress(reelDirectory);
   const readyForRenderer =
+    stages.sourceQuality?.passed === true &&
+    stages.audioPacingFileBinding?.passed === true &&
+    stages.wordSyncAudioBinding?.passed === true &&
     content.passed === true &&
     stages.audioPacing?.passed === true &&
     stages.audioPacing?.strict === true &&
@@ -334,7 +373,7 @@ export async function finalizeReel(reelDirectory, {
 
   const normalizedDirectory = reelDirectory.split(path.sep).join('/');
   const report = {
-    version: 8,
+    version: 9,
     createdAt,
     reelDirectory: normalizedDirectory,
     strict,
@@ -345,19 +384,23 @@ export async function finalizeReel(reelDirectory, {
     warnings,
     nextStep: readyForRenderer
       ? `Renderer prüfen und MP4 erzeugen: npm run validate:render -- --dir "${normalizedDirectory}" && npm run render:reel -- --dir "${normalizedDirectory}"`
-      : stages.audioPacing?.passed !== true
-        ? `Voice-over mit ${AUDIO_PACING_STYLE.playbackRate.toFixed(2)}x und Lautheitsnormalisierung neu erzeugen: npm run trim:pauses -- --dir "${normalizedDirectory}"; danach Timeline und Audio-Cues neu synchronisieren.`
-        : stages.wordSync?.passed !== true
-          ? `Exakte Untertitelzeiten erstellen: npm run sync:words -- --dir "${normalizedDirectory}"; production/codex-word-sync-task.md bearbeiten; danach npm run sync:words -- --dir "${normalizedDirectory}" --apply --strict.`
-          : progress.nextStep
+      : stages.sourceQuality?.passed !== true
+        ? `Quellen-QC korrigieren und erneut prüfen: npm run check:content -- --dir "${normalizedDirectory}" --strict.`
+        : stages.audioPacingFileBinding?.passed !== true
+          ? `Aktuelles Voice-over erneut verarbeiten und messen: npm run trim:pauses -- --dir "${normalizedDirectory}"; danach Timeline und Word-Sync neu erstellen.`
+          : stages.audioPacing?.passed !== true
+            ? `Voice-over mit ${AUDIO_PACING_STYLE.playbackRate.toFixed(2)}x und Lautheitsnormalisierung neu erzeugen: npm run trim:pauses -- --dir "${normalizedDirectory}"; danach Timeline und Audio-Cues neu synchronisieren.`
+            : stages.wordSyncAudioBinding?.passed !== true || stages.wordSync?.passed !== true
+              ? `Exakte Untertitelzeiten erstellen: npm run sync:words -- --dir "${normalizedDirectory}"; production/codex-word-sync-task.md bearbeiten; danach npm run sync:words -- --dir "${normalizedDirectory}" --apply --strict.`
+              : progress.nextStep
   };
 
   await writeJson(path.join(reelDirectory, 'review', 'final-readiness-report.json'), report);
 
   const statusPath = path.join(reelDirectory, 'status.json');
   const status = await readJson(statusPath, {});
-  status.audioPacing = stages.audioPacing?.passed ? 'complete' : 'needs-review';
-  status.wordSync = stages.wordSync?.passed ? 'complete' : 'needs-review';
+  status.audioPacing = stages.audioPacing?.passed && stages.audioPacingFileBinding?.passed ? 'complete' : 'needs-review';
+  status.wordSync = stages.wordSync?.passed && stages.wordSyncAudioBinding?.passed ? 'complete' : 'needs-review';
   status.finalReadiness = readyForRenderer ? 'ready-for-renderer' : 'needs-review';
   if (readyForRenderer && status.render !== 'complete') status.render = 'ready';
   await writeJson(statusPath, status);
