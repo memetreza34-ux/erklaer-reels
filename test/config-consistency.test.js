@@ -92,6 +92,9 @@ test('Kernmodule können keine veralteten Untertitelregeln oder falschen Word-Sy
   assert.match(audioTightener, /needs-resync-after-audio-pacing/);
   assert.match(audioTightener, /invalidated-after-audio-pacing/);
   assert.match(audioTightener, /wordSyncInvalidated: true/);
+  assert.match(audioTightener, /parseLoudnessMeasurement/);
+  assert.match(audioTightener, /loudnessMeasured/);
+  assert.match(audioTightener, /version: 5/);
   assert.match(buildTimeline, /reels\/\.\.\.\/reel-01_titel/);
   assert.doesNotMatch(buildTimeline, /content\/\.\.\.\/reel-01_titel/);
 });
@@ -136,6 +139,25 @@ test('Dokumentation bleibt beim weißen 58-Prozent-Untertiltelstandard', async (
     const text = await readText(file);
     assert.match(text, /#F5F7FA|weiches Weiß|in Weiß/i, `${file} nennt den weißen Untertitelstandard nicht.`);
   }
+});
+
+test('Finder-Doku und technische Ausblendung verwenden nur die aktuelle Reel-Struktur', async () => {
+  const humanView = await readText('src/core/human-reel-view.js');
+  const folderDocs = await readText('docs/reel-folder-layout.md');
+
+  assert.match(humanView, /'timeline'/);
+  assert.match(humanView, /'render'/);
+  assert.match(folderDocs, /reels\/\.\.\.\/reel-01_thema/);
+  assert.doesNotMatch(folderDocs, /content\/\.\.\.\/reel-01_thema/);
+});
+
+test('Autonomer Ablauf verlangt echte Quellen- und Audio-Nachprüfung', async () => {
+  const autonomous = await readText('docs/autonomous-reel.md');
+
+  assert.match(autonomous, /mindestens zwei voneinander unabhängige Quellen/i);
+  assert.match(autonomous, /keine erfundenen Quellen/i);
+  assert.match(autonomous, /tatsächliche LUFS und True Peak/i);
+  assert.match(autonomous, /Zielwert allein reicht nicht als Nachweis/i);
 });
 
 test('abgeschlossene Testphase ist als Produktionsbaseline eingefroren', async () => {
