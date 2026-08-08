@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 
 import { verifyAudioPacingFileBinding } from './audio-pacing-file-guard.js';
 import { validateRendererInput } from './render-validator.js';
+import { verifyRequiredSourceQuality } from './source-quality-file-guard.js';
 import { verifyAppliedWordSyncAudioBinding } from './word-sync-audio-guard.js';
 
 const currentDirectory = path.dirname(fileURLToPath(import.meta.url));
@@ -33,6 +34,11 @@ export async function renderReel(reelDirectory, {
   onProgress = null
 } = {}) {
   const startedAt = new Date().toISOString();
+
+  const sourceGate = await verifyRequiredSourceQuality(reelDirectory);
+  if (sourceGate.required && !sourceGate.passed) {
+    throw new Error(`${sourceGate.reason} Der Renderer benötigt die verpflichtende Quellen-QC.`);
+  }
 
   const pacingBinding = await verifyAudioPacingFileBinding(reelDirectory);
   if (pacingBinding.required && !pacingBinding.passed) {
