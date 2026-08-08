@@ -3,6 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { validateRendererInput } from './render-validator.js';
+import { verifyAppliedWordSyncAudioBinding } from './word-sync-audio-guard.js';
 
 const currentDirectory = path.dirname(fileURLToPath(import.meta.url));
 const entryPoint = path.resolve(currentDirectory, '..', 'renderer', 'index.jsx');
@@ -31,6 +32,11 @@ export async function renderReel(reelDirectory, {
   onProgress = null
 } = {}) {
   const startedAt = new Date().toISOString();
+  const audioBinding = await verifyAppliedWordSyncAudioBinding(reelDirectory);
+  if (audioBinding.required && !audioBinding.passed) {
+    throw new Error(`${audioBinding.reason} Der Renderer verwendet keine veralteten Wortzeiten.`);
+  }
+
   const validation = await validateRendererInput(reelDirectory, {
     requireFinalReadiness: !force
   });
