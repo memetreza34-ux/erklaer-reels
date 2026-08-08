@@ -5,6 +5,7 @@ import { validateExactWordTimings } from '../renderer/subtitle-timing.js';
 import { SUBTITLE_STYLE, isHexColor } from '../shared/subtitle-style.js';
 import {
   AUDIO_PACING_STYLE,
+  isMeasuredLoudnessWithinTolerance,
   isTargetPlaybackRate
 } from '../shared/audio-pacing-style.js';
 
@@ -91,12 +92,17 @@ export async function validateRendererInput(reelDirectory, {
     requireFinalReadiness ? 'error' : 'warning');
 
   if (measuredAudioRequired) {
-    const measuredLufs = Number(audioPacing?.loudnessMeasurement?.integratedLufs);
-    const measuredTruePeak = Number(audioPacing?.loudnessMeasurement?.truePeakDbtp);
+    const measurement = audioPacing?.loudnessMeasurement ?? {};
+    const measuredLufs = Number(measurement.integratedLufs);
+    const measuredTruePeak = Number(measurement.truePeakDbtp);
+    const measurementValuesPass = isMeasuredLoudnessWithinTolerance(
+      { integratedLufs: measuredLufs, truePeakDbtp: measuredTruePeak },
+      { loudnessTargetLufs: loudnessTarget, truePeakTargetDbtp: truePeak }
+    );
     push(checks, 'audio-loudness-measured', audioPacing?.loudnessMeasured === true,
       'Audio-Pacing-Reports ab Version 5 müssen eine echte Lautheitsnachmessung enthalten.',
       requireFinalReadiness ? 'error' : 'warning');
-    push(checks, 'audio-loudness-measurement-passed', audioPacing?.loudnessMeasurement?.passed === true,
+    push(checks, 'audio-loudness-measurement-passed', measurement.passed === true,
       'Die nachgelagerte LUFS-/True-Peak-Messung muss bestanden sein.',
       requireFinalReadiness ? 'error' : 'warning');
     push(checks, 'audio-measured-lufs-present', Number.isFinite(measuredLufs),
@@ -104,6 +110,9 @@ export async function validateRendererInput(reelDirectory, {
       requireFinalReadiness ? 'error' : 'warning');
     push(checks, 'audio-measured-true-peak-present', Number.isFinite(measuredTruePeak),
       'Im Audio-Pacing-Report fehlt der tatsächlich gemessene True-Peak-Wert.',
+      requireFinalReadiness ? 'error' : 'warning');
+    push(checks, 'audio-measured-values-within-tolerance', measurementValuesPass,
+      'Die gespeicherten LUFS-/True-Peak-Messwerte liegen außerhalb der zentralen Produktionstoleranz.',
       requireFinalReadiness ? 'error' : 'warning');
   }
 
