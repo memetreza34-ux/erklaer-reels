@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import { verifyAudioPacingFileBinding } from '../core/audio-pacing-file-guard.js';
 import { calculateReelProgress } from '../core/reel-progress.js';
 import { verifyAppliedWordSyncAudioBinding } from '../core/word-sync-audio-guard.js';
 
@@ -16,16 +17,7 @@ function clamp(value) {
   return Math.max(0, Math.min(100, Math.round(value)));
 }
 
-function applyAudioBindingStatus(progress, audioBinding) {
-  progress.details = {
-    ...progress.details,
-    wordSyncAudioBindingRequired: audioBinding.required,
-    wordSyncAudioBindingPassed: audioBinding.required ? audioBinding.passed : null
-  };
-
-  if (!audioBinding.required || audioBinding.passed) return progress;
-
-  progress.wordSync = 0;
+function recalculateProductionReady(progress) {
   progress.productionReady = clamp(
     progress.preProduction * 0.4 +
     progress.assets * 0.2 +
@@ -34,12 +26,45 @@ function applyAudioBindingStatus(progress, audioBinding) {
     progress.wordSync * 0.08 +
     progress.visualQuality * 0.1
   );
-  progress.rendering = 0;
-  progress.overall = clamp(progress.productionReady * 0.9);
-  progress.details.wordSyncPassed = false;
-  progress.details.rendererValidated = false;
-  progress.details.renderComplete = false;
-  progress.nextStep = 'Voice-over wurde nach der bestätigten Wort-Synchronisierung verändert. Word-Sync mit dem aktuellen Audio erneut vorbereiten, akustisch prüfen und mit --apply --strict übernehmen.';
+  progress.overall = clamp(progress.productionReady * 0.9 + progress.rendering * 0.1);
+}
+
+function applyBindingStatus(progress, pacingBinding, wordSyncBinding) {
+  progress.details = {
+    ...progress.details,
+    audioPacingFileBindingRequired: pacingBinding.required,
+    audioPacingFileBindingPassed: pacingBinding.required ? pacingBinding.passed : null,
+    wordSyncAudioBindingRequired: wordSyncBinding.required,
+    wordSyncAudioBindingPassed: wordSyncBinding.required ? wordSyncBinding.passed : null
+  };
+
+  if (pacingBinding.required && !pacingBinding.passed) {
+    progress.audioPacing = 0;
+    progress.timeline = 0;
+    progress.wordSync = 0;
+    progress.rendering = 0;
+    progress.details.audioPacingPassed = false;
+    progress.details.audioSynced = false;
+    progress.details.wordSyncPassed = false;
+    progress.details.renderReady = false;
+    progress.details.timelineCheckReady = false;
+    progress.details.rendererValidated = false;
+    progress.details.renderComplete = false;
+    recalculateProductionReady(progress);
+    progress.nextStep = 'Die aktuelle Voice-over-Datei stimmt nicht mehr mit der gemessenen Audio-Pacing-Datei überein. trim:pauses erneut ausführen und danach Timeline sowie Word-Sync neu erstellen.';
+    return progress;
+  }
+
+  if (wordSyncBinding.required && !wordSyncBinding.passed) {
+    progress.wordSync = 0;
+    progress.rendering = 0;
+    progress.details.wordSyncPassed = false;
+    progress.details.rendererValidated = false;
+    progress.details.renderComplete = false;
+    recalculateProductionReady(progress);
+    progress.nextStep = 'Voice-over wurde nach der bestätigten Wort-Synchronisierung verändert. Word-Sync mit dem aktuellen Audio erneut vorbereiten, akustisch prüfen und mit --apply --strict übernehmen.';
+  }
+
   return progress;
 }
 
@@ -54,8 +79,9 @@ async function main() {
   }
 
   const progress = await calculateReelProgress(reelDirectory);
-  const audioBinding = await verifyAppliedWordSyncAudioBinding(reelDirectory);
-  applyAudioBindingStatus(progress, audioBinding);
+  const pacingBinding = await verifyAudioPacingFileBinding(reelDirectory);
+  const wordSyncBinding = await verifyAppliedWordSyncAudioBinding(reelDirectory);
+  applyBindingStatus(progress, pacingBinding, wordSyncBinding);
 
   if (asJson) {
     console.log(JSON.stringify(progress, null, 2));
@@ -84,9 +110,10 @@ async function main() {
   console.log(`Cover übernommen: ${yesNo(progress.details.coverImageReady)}`);
   console.log(`Pausen und Tempo optimiert: ${yesNo(progress.details.audioPacingPassed)}`);
   console.log(`Voice-over-Tempo: ${Number(progress.details.audioPacingRate ?? 0).toFixed(2)}x`);
+  if (pacingBinding.required) console.log(`Gemessene Audio-Datei unverändert: ${yesNo(pacingBinding.passed)}`);
   console.log(`Audio exakt synchronisiert: ${yesNo(progress.details.audioSynced)}`);
   console.log(`Codex-Wortzeiten bestätigt: ${yesNo(progress.details.wordSyncPassed)}`);
-  if (audioBinding.required) console.log(`Word-Sync-Audio unverändert: ${yesNo(audioBinding.passed)}`);
+  if (wordSyncBinding.required) console.log(`Word-Sync-Audio unverändert: ${yesNo(wordSyncBinding.passed)}`);
   console.log(`Wortzeit-Anbieter: ${progress.details.wordSyncProvider ?? 'noch keiner'}`);
   console.log(`Wortabdeckung: ${(Number(progress.details.wordCoverage ?? 0) * 100).toFixed(1)}%`);
   console.log(`Render-Plan bereit: ${yesNo(progress.details.renderReady)}`);
