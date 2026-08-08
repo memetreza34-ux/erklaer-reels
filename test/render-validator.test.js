@@ -105,7 +105,8 @@ test('akzeptiert Version 5 nur mit bestandener echter Lautheitsmessung', async (
     'audio-loudness-measured',
     'audio-loudness-measurement-passed',
     'audio-measured-lufs-present',
-    'audio-measured-true-peak-present'
+    'audio-measured-true-peak-present',
+    'audio-measured-values-within-tolerance'
   ]) {
     assert.ok(report.checks.some((check) => check.id === id && check.passed));
   }
@@ -133,10 +134,33 @@ test('blockiert Version 5 ohne bestandene Lautheitsnachmessung', async () => {
     'audio-loudness-measured',
     'audio-loudness-measurement-passed',
     'audio-measured-lufs-present',
-    'audio-measured-true-peak-present'
+    'audio-measured-true-peak-present',
+    'audio-measured-values-within-tolerance'
   ]) {
     assert.ok(report.checks.some((check) => check.id === id && !check.passed));
   }
+});
+
+test('blockiert inkonsistenten Version-5-Report trotz behauptetem PASS', async () => {
+  const root = await createReadyFixture();
+  const reportPath = path.join(root, 'review', 'audio-pacing-report.json');
+  const pacing = await readJson(reportPath);
+  Object.assign(pacing, {
+    version: 5,
+    loudnessMeasured: true,
+    loudnessMeasurement: {
+      measured: true,
+      integratedLufs: -12.5,
+      truePeakDbtp: -0.4,
+      passed: true
+    }
+  });
+  await writeJson(reportPath, pacing);
+
+  const report = await validateRendererInput(root);
+  assert.equal(report.passed, false);
+  assert.ok(report.checks.some((check) => check.id === 'audio-loudness-measurement-passed' && check.passed));
+  assert.ok(report.checks.some((check) => check.id === 'audio-measured-values-within-tolerance' && !check.passed));
 });
 
 test('blockiert altes 1.05x-Pacing oder fehlende Lautheitsnormalisierung', async () => {
