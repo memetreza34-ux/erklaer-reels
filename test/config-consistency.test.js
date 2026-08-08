@@ -109,10 +109,20 @@ test('Finalizer und Renderer können neue Audio-Messbelege nicht umgehen', async
   ]) {
     assert.match(text, /version \?\? 0\) >= 5|version \?\? 0\).*>= 5/, `${file} erkennt Audio-Pacing-Reports ab Version 5 nicht.`);
     assert.match(text, /loudnessMeasured/);
-    assert.match(text, /loudnessMeasurement\?\.passed/);
+    assert.match(text, /measurement\.passed === true/);
     assert.match(text, /integratedLufs/);
     assert.match(text, /truePeakDbtp/);
+    assert.match(text, /isMeasuredLoudnessWithinTolerance/);
   }
+});
+
+test('Core-Finalizer prüft Quellen- und Audio-Dateibindungen selbst', async () => {
+  const finalizer = await readText('src/core/finalize-reel.js');
+  assert.match(finalizer, /verifyRequiredSourceQuality/);
+  assert.match(finalizer, /verifyAudioPacingFileBinding/);
+  assert.match(finalizer, /verifyAppliedWordSyncAudioBinding/);
+  assert.match(finalizer, /audioPacingFileBinding/);
+  assert.match(finalizer, /wordSyncAudioBinding/);
 });
 
 test('Gitignore schützt generierte Medien in aktuellen Produktionsordnern', async () => {
