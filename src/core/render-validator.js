@@ -6,7 +6,8 @@ import { SUBTITLE_STYLE, isHexColor } from '../shared/subtitle-style.js';
 import {
   AUDIO_PACING_STYLE,
   isMeasuredLoudnessWithinTolerance,
-  isTargetPlaybackRate
+  isTargetPlaybackRate,
+  toFiniteNumberOrNull
 } from '../shared/audio-pacing-style.js';
 
 const IMAGE_EXTENSIONS = new Set(['.png', '.jpg', '.jpeg', '.webp']);
@@ -71,9 +72,9 @@ export async function validateRendererInput(reelDirectory, {
   push(checks, 'render-plan-present', Boolean(plan), 'render/render-plan.json fehlt.');
   if (!plan) return finalize(checks, null, readiness);
 
-  const pacingRate = Number(audioPacing?.playbackRate);
-  const loudnessTarget = Number(audioPacing?.loudnessSettings?.loudnessTargetLufs);
-  const truePeak = Number(audioPacing?.loudnessSettings?.truePeakDbtp);
+  const pacingRate = toFiniteNumberOrNull(audioPacing?.playbackRate);
+  const loudnessTarget = toFiniteNumberOrNull(audioPacing?.loudnessSettings?.loudnessTargetLufs);
+  const truePeak = toFiniteNumberOrNull(audioPacing?.loudnessSettings?.truePeakDbtp);
   const measuredAudioRequired = Number(audioPacing?.version ?? 0) >= 5;
   push(checks, 'audio-pacing-report', audioPacing?.passed === true,
     'review/audio-pacing-report.json fehlt oder das Voice-over-Pacing wurde nicht erfolgreich optimiert.',
@@ -93,8 +94,8 @@ export async function validateRendererInput(reelDirectory, {
 
   if (measuredAudioRequired) {
     const measurement = audioPacing?.loudnessMeasurement ?? {};
-    const measuredLufs = Number(measurement.integratedLufs);
-    const measuredTruePeak = Number(measurement.truePeakDbtp);
+    const measuredLufs = toFiniteNumberOrNull(measurement.integratedLufs);
+    const measuredTruePeak = toFiniteNumberOrNull(measurement.truePeakDbtp);
     const measurementValuesPass = isMeasuredLoudnessWithinTolerance(
       { integratedLufs: measuredLufs, truePeakDbtp: measuredTruePeak },
       { loudnessTargetLufs: loudnessTarget, truePeakTargetDbtp: truePeak }
@@ -105,10 +106,10 @@ export async function validateRendererInput(reelDirectory, {
     push(checks, 'audio-loudness-measurement-passed', measurement.passed === true,
       'Die nachgelagerte LUFS-/True-Peak-Messung muss bestanden sein.',
       requireFinalReadiness ? 'error' : 'warning');
-    push(checks, 'audio-measured-lufs-present', Number.isFinite(measuredLufs),
+    push(checks, 'audio-measured-lufs-present', measuredLufs !== null,
       'Im Audio-Pacing-Report fehlt der tatsächlich gemessene Integrated-LUFS-Wert.',
       requireFinalReadiness ? 'error' : 'warning');
-    push(checks, 'audio-measured-true-peak-present', Number.isFinite(measuredTruePeak),
+    push(checks, 'audio-measured-true-peak-present', measuredTruePeak !== null,
       'Im Audio-Pacing-Report fehlt der tatsächlich gemessene True-Peak-Wert.',
       requireFinalReadiness ? 'error' : 'warning');
     push(checks, 'audio-measured-values-within-tolerance', measurementValuesPass,
