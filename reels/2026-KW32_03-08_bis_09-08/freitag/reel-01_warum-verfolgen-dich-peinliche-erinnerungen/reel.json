@@ -1,0 +1,21 @@
+{
+  "reelId": "reel-01_warum-verfolgen-dich-peinliche-erinnerungen",
+  "title": "Warum verfolgen dich peinliche Erinnerungen noch Jahre später?",
+  "topicArea": "Psychologie und menschliches Verhalten",
+  "date": "2026-08-07",
+  "language": "de",
+  "promptLanguage": "en",
+  "aspectRatio": "9:16",
+  "targetDurationSeconds": 57.2,
+  "targetVideoDurationSeconds": 57.9,
+  "sceneCount": 13,
+  "visualStyleId": "human-editorial-cartoon",
+  "visualStyleReason": "Das Thema lebt von Selbstbeobachtung, sozialer Unsicherheit und Grübelschleifen. Vereinfachte menschliche Editorial-Cartoonfiguren zeigen Gesichtsausdrücke, Perspektivwechsel und Erinnerungsmetaphern sofort verständlich, ohne die Szenen zu überladen.",
+  "subtitlesEnabled": true,
+  "motionEffectsEnabled": true,
+  "soundEffectsEnabled": true,
+  "backgroundMusicEnabled": false,
+  "audioPlaybackRate": 1.1,
+  "sourceQualitySchemaVersion": 2,
+  "status": "content-ready-for-antigravity"
+}

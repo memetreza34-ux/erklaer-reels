@@ -1,0 +1,18 @@
+{
+  "version": 17,
+  "reelId": "reel-01_warum-verfolgen-dich-peinliche-erinnerungen",
+  "title": "Warum verfolgen dich peinliche Erinnerungen noch Jahre später?",
+  "phase": "content-ready-antigravity-image-generation",
+  "tasks": [
+    {"id":"content-ready","label":"Script, Szenen, Cover, Caption und Quellen vollständig","status":"complete"},
+    {"id":"materialize","label":"Standard-Reel-Dateien nach aktueller main-Pipeline materialisieren","status":"pending"},
+    {"id":"image3-cover","label":"Cover mit Image 3 erzeugen","status":"pending"},
+    {"id":"image3-scenes","label":"13 Szenenbilder mit Image 3 erzeugen","status":"pending"},
+    {"id":"visual-review","label":"Alle 14 Bilder zweifach visuell prüfen","status":"pending"},
+    {"id":"asset-apply","label":"Geprüfte Bilder mit organize:assets übernehmen","status":"pending"},
+    {"id":"audio","label":"Externes Voice-over übernehmen und Audio-QC ausführen","status":"waiting-for-audio"},
+    {"id":"word-sync","label":"Exakte akustische Wortzeiten auf aktuelles Audio anwenden","status":"waiting-for-audio"},
+    {"id":"finalize","label":"Strenge Finalisierung und Render-Validierung bestehen","status":"pending"},
+    {"id":"render","label":"Finale MP4 rendern","status":"pending"}
+  ]
+}

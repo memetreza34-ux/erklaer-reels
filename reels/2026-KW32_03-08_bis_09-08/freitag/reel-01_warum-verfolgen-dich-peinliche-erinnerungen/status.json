@@ -1,0 +1,19 @@
+{
+  "workspace": "antigravity-handoff",
+  "content": "ready",
+  "script": "complete",
+  "scenes": "planned",
+  "subtitles": "waiting-for-materialization-and-exact-sync",
+  "wordSync": "waiting-for-audio",
+  "effects": "waiting-for-materialization",
+  "audio": "missing",
+  "imagePrompts": "specified-in-agent-task",
+  "imagePromptBundle": "waiting-for-antigravity",
+  "images": "must-be-generated-with-image-3",
+  "cover": "prompt-ready",
+  "assetMatching": "waiting-for-image-3-files",
+  "visualReview": "pending",
+  "qualityControl": "pending",
+  "timeline": "waiting-for-audio",
+  "render": "waiting-for-assets"
+}
