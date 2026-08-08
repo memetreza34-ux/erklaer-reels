@@ -1,11 +1,13 @@
 #!/usr/bin/env node
 
-import { readFile } from 'node:fs/promises';
+import { readFile, writeFile } from 'node:fs/promises';
+import path from 'node:path';
 import { createReelWorkspace } from '../core/workspace.js';
 import { prepareReelProduction } from '../core/production-brief.js';
 import { findNextFreeProductionSlot } from '../core/next-slot.js';
 import { ensureImagePromptBundleDirectory } from '../core/image-prompt-bundle.js';
 import { ensureHumanReelView } from '../core/human-reel-view.js';
+import { buildSourcesTemplate } from '../core/source-quality.js';
 
 function getArgument(name) {
   const index = process.argv.indexOf(name);
@@ -67,6 +69,11 @@ async function main() {
   }
 
   const result = await createReelWorkspace({ title, script, date, sceneCount, outputRoot });
+  await writeFile(
+    path.join(result.reelDirectory, 'sources', 'sources.md'),
+    buildSourcesTemplate(),
+    'utf8'
+  );
   const promptBundle = await ensureImagePromptBundleDirectory(result.reelDirectory);
   const production = await prepareReelProduction(result.reelDirectory);
   const humanView = await ensureHumanReelView(result.reelDirectory, { hideTechnicalInFinder: true });
