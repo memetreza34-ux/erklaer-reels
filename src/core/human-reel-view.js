@@ -33,12 +33,14 @@ export const TECHNICAL_REEL_ENTRIES = Object.freeze([
   'output',
   'production',
   'reel.json',
+  'render',
   'review',
   'scenes',
   'script',
   'sources',
   'status.json',
-  'subtitles'
+  'subtitles',
+  'timeline'
 ]);
 
 async function exists(filePath) {
