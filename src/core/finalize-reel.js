@@ -9,7 +9,8 @@ import { validateExactWordTimings } from '../renderer/subtitle-timing.js';
 import {
   AUDIO_PACING_STYLE,
   isMeasuredLoudnessWithinTolerance,
-  isTargetPlaybackRate
+  isTargetPlaybackRate,
+  toFiniteNumberOrNull
 } from '../shared/audio-pacing-style.js';
 
 async function readJson(filePath, fallback = {}) {
@@ -36,9 +37,9 @@ function issuesFrom(report, level) {
 }
 
 function audioPacingStage(report, strict) {
-  const rate = Number(report?.playbackRate);
-  const loudnessTarget = Number(report?.loudnessSettings?.loudnessTargetLufs);
-  const truePeak = Number(report?.loudnessSettings?.truePeakDbtp);
+  const rate = toFiniteNumberOrNull(report?.playbackRate);
+  const loudnessTarget = toFiniteNumberOrNull(report?.loudnessSettings?.loudnessTargetLufs);
+  const truePeak = toFiniteNumberOrNull(report?.loudnessSettings?.truePeakDbtp);
   const measuredAudioRequired = Number(report?.version ?? 0) >= 5;
   const checks = [
     {
@@ -85,10 +86,12 @@ function audioPacingStage(report, strict) {
     }
   ];
 
+  let measuredLufs = null;
+  let measuredTruePeak = null;
   if (measuredAudioRequired) {
     const measurement = report?.loudnessMeasurement ?? {};
-    const measuredLufs = Number(measurement.integratedLufs);
-    const measuredTruePeak = Number(measurement.truePeakDbtp);
+    measuredLufs = toFiniteNumberOrNull(measurement.integratedLufs);
+    measuredTruePeak = toFiniteNumberOrNull(measurement.truePeakDbtp);
     const measurementValuesPass = isMeasuredLoudnessWithinTolerance(
       { integratedLufs: measuredLufs, truePeakDbtp: measuredTruePeak },
       { loudnessTargetLufs: loudnessTarget, truePeakTargetDbtp: truePeak }
@@ -108,13 +111,13 @@ function audioPacingStage(report, strict) {
       },
       {
         id: 'audio-pacing-measured-lufs-present',
-        passed: Number.isFinite(measuredLufs),
+        passed: measuredLufs !== null,
         level: strict ? 'error' : 'warning',
         message: 'Der tatsächlich gemessene Integrated-LUFS-Wert fehlt.'
       },
       {
         id: 'audio-pacing-measured-true-peak-present',
-        passed: Number.isFinite(measuredTruePeak),
+        passed: measuredTruePeak !== null,
         level: strict ? 'error' : 'warning',
         message: 'Der tatsächlich gemessene True-Peak-Wert fehlt.'
       },
@@ -132,16 +135,12 @@ function audioPacingStage(report, strict) {
   return {
     passed: errors.length === 0 && checks.every((check) => check.passed),
     strict,
-    playbackRate: Number.isFinite(rate) ? rate : null,
-    loudnessTargetLufs: Number.isFinite(loudnessTarget) ? loudnessTarget : null,
-    truePeakDbtp: Number.isFinite(truePeak) ? truePeak : null,
+    playbackRate: rate,
+    loudnessTargetLufs: loudnessTarget,
+    truePeakDbtp: truePeak,
     loudnessMeasured: measuredAudioRequired ? report?.loudnessMeasured === true : null,
-    measuredIntegratedLufs: measuredAudioRequired && Number.isFinite(Number(report?.loudnessMeasurement?.integratedLufs))
-      ? Number(report.loudnessMeasurement.integratedLufs)
-      : null,
-    measuredTruePeakDbtp: measuredAudioRequired && Number.isFinite(Number(report?.loudnessMeasurement?.truePeakDbtp))
-      ? Number(report.loudnessMeasurement.truePeakDbtp)
-      : null,
+    measuredIntegratedLufs: measuredAudioRequired ? measuredLufs : null,
+    measuredTruePeakDbtp: measuredAudioRequired ? measuredTruePeak : null,
     beforeSeconds: Number(report?.beforeSeconds) || null,
     afterSeconds: Number(report?.afterSeconds) || null,
     reportFile: 'review/audio-pacing-report.json',
