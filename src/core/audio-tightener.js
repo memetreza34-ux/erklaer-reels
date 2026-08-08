@@ -5,12 +5,11 @@ import { promisify } from 'node:util';
 
 import {
   AUDIO_PACING_STYLE,
-  buildLoudnessFilter
+  buildLoudnessFilter,
+  isMeasuredLoudnessWithinTolerance
 } from '../shared/audio-pacing-style.js';
 
 const execFileAsync = promisify(execFile);
-const LOUDNESS_TOLERANCE_LU = 1;
-const TRUE_PEAK_TOLERANCE_DB = 0.2;
 
 async function exists(filePath) {
   try {
@@ -69,17 +68,19 @@ export function parseLoudnessMeasurement(output, {
       if (!Number.isFinite(integratedLufs) || !Number.isFinite(measuredTruePeakDbtp)) continue;
 
       const loudnessDifferenceLu = Math.abs(integratedLufs - Number(loudnessTargetLufs));
-      const truePeakLimitDbtp = Number(truePeakDbtp) + TRUE_PEAK_TOLERANCE_DB;
       return {
         measured: true,
         integratedLufs,
         truePeakDbtp: measuredTruePeakDbtp,
         loudnessTargetLufs: Number(loudnessTargetLufs),
         truePeakTargetDbtp: Number(truePeakDbtp),
-        loudnessToleranceLu: LOUDNESS_TOLERANCE_LU,
-        truePeakToleranceDb: TRUE_PEAK_TOLERANCE_DB,
+        loudnessToleranceLu: AUDIO_PACING_STYLE.loudnessMeasurementToleranceLu,
+        truePeakToleranceDb: AUDIO_PACING_STYLE.truePeakMeasurementToleranceDb,
         loudnessDifferenceLu,
-        passed: loudnessDifferenceLu <= LOUDNESS_TOLERANCE_LU && measuredTruePeakDbtp <= truePeakLimitDbtp
+        passed: isMeasuredLoudnessWithinTolerance(
+          { integratedLufs, truePeakDbtp: measuredTruePeakDbtp },
+          { loudnessTargetLufs, truePeakTargetDbtp: truePeakDbtp }
+        )
       };
     } catch {
       // FFmpeg kann neben dem JSON weitere Statuszeilen ausgeben. Nur gültige Messobjekte übernehmen.
@@ -92,8 +93,8 @@ export function parseLoudnessMeasurement(output, {
     truePeakDbtp: null,
     loudnessTargetLufs: Number(loudnessTargetLufs),
     truePeakTargetDbtp: Number(truePeakDbtp),
-    loudnessToleranceLu: LOUDNESS_TOLERANCE_LU,
-    truePeakToleranceDb: TRUE_PEAK_TOLERANCE_DB,
+    loudnessToleranceLu: AUDIO_PACING_STYLE.loudnessMeasurementToleranceLu,
+    truePeakToleranceDb: AUDIO_PACING_STYLE.truePeakMeasurementToleranceDb,
     loudnessDifferenceLu: null,
     passed: false
   };
