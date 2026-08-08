@@ -5,6 +5,7 @@ import path from 'node:path';
 import { verifyAudioPacingFileBinding } from '../core/audio-pacing-file-guard.js';
 import { renderReel } from '../core/remotion-renderer.js';
 import { validateRendererInput } from '../core/render-validator.js';
+import { verifyRequiredSourceQuality } from '../core/source-quality-file-guard.js';
 import { verifyAppliedWordSyncAudioBinding } from '../core/word-sync-audio-guard.js';
 
 function getArgument(name) {
@@ -59,6 +60,11 @@ async function main() {
   const force = process.argv.includes('--force');
   const validateOnly = process.argv.includes('--validate-only');
 
+  const sourceGate = await verifyRequiredSourceQuality(reelDirectory);
+  if (sourceGate.required && !sourceGate.passed) {
+    throw new Error(`${sourceGate.reason} Rendern mit unvollständiger verpflichtender Quellen-QC ist auch mit --force blockiert.`);
+  }
+
   const pacingBinding = await verifyAudioPacingFileBinding(reelDirectory);
   if (pacingBinding.required && !pacingBinding.passed) {
     throw new Error(`${pacingBinding.reason} Rendern mit veralteten Lautheitswerten ist auch mit --force blockiert.`);
@@ -74,6 +80,7 @@ async function main() {
       requireFinalReadiness: !force
     });
     printValidation(report);
+    if (sourceGate.required) console.log('Quellen-QC: verpflichtendes Schema bestanden');
     if (pacingBinding.required) console.log('Audio-Pacing-Datei: Fingerprint unverändert');
     if (wordSyncBinding.required) console.log('Word-Sync-Audio: Fingerprint unverändert');
     if (!report.passed) process.exitCode = 1;
@@ -97,6 +104,7 @@ async function main() {
   });
 
   console.log('MP4 erfolgreich erzeugt.');
+  if (sourceGate.required) console.log('Quellen-QC: verpflichtendes Schema bestanden');
   if (pacingBinding.required) console.log('Audio-Pacing-Datei: Fingerprint unverändert');
   if (wordSyncBinding.required) console.log('Word-Sync-Audio: Fingerprint unverändert');
   console.log(`Datei: ${path.resolve(report.outputFile)}`);
