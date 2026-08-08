@@ -1,6 +1,7 @@
 import { access, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
+import { inspectSourcesMarkdown } from './source-quality.js';
 import { SUBTITLE_STYLE } from '../shared/subtitle-style.js';
 
 async function exists(filePath) {
@@ -302,6 +303,7 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
   addCheck(checks, 'cover-visual-idea', String(cover.visualIdea ?? '').trim().length >= 20,
     'cover/cover.json benötigt eine visualIdea.');
 
+  let sourceQuality = null;
   if (strict) {
     const captionPath = path.join(reelDirectory, 'caption', 'caption.txt');
     const sourcesPath = path.join(reelDirectory, 'sources', 'sources.md');
@@ -310,9 +312,27 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
     addCheck(checks, 'caption', caption.length >= 80, 'caption/caption.txt fehlt oder ist zu kurz.');
     addCheck(checks, 'sources', sources.length >= 40 && sources !== '# Quellen',
       'sources/sources.md enthält noch keine verwertbaren Quellen oder Hinweise.');
+
+    sourceQuality = inspectSourcesMarkdown(sources);
+    if (sourceQuality.schemaVersion >= 2) {
+      addCheck(checks, 'sources-v2-https-count', sourceQuality.httpsUrlCount >= 2,
+        'Neue Reels benötigen mindestens zwei echte HTTPS-Quellen.');
+      addCheck(checks, 'sources-v2-independent-hosts', sourceQuality.distinctHostCount >= 2,
+        'Neue Reels benötigen mindestens zwei voneinander unabhängige Quell-Domains.');
+      addCheck(checks, 'sources-v2-titles', sourceQuality.titleCount >= 2,
+        'Für mindestens zwei Quellen muss Titel oder Institution eingetragen sein.');
+      addCheck(checks, 'sources-v2-dates', sourceQuality.dateCount >= 2,
+        'Für mindestens zwei Quellen muss Datum oder Zugriffsdatum eingetragen sein.');
+      addCheck(checks, 'sources-v2-evidence', sourceQuality.evidenceCount >= 2,
+        'Für mindestens zwei Quellen muss kurz dokumentiert sein, welche Aussage sie belegt.');
+      addCheck(checks, 'sources-v2-no-placeholders', sourceQuality.hasPlaceholder === false,
+        'Quellen dürfen keine TODO-, Platzhalter- oder example.com-Einträge enthalten.');
+      addCheck(checks, 'sources-v2-https-only', sourceQuality.hasInsecureHttp === false,
+        'Neue Quellen sollen ausschließlich HTTPS-URLs verwenden.');
+    }
   }
 
-  return finalize(reelDirectory, checks, { totalDuration, strict });
+  return finalize(reelDirectory, checks, { totalDuration, strict, sourceQuality });
 }
 
 async function finalize(reelDirectory, checks, metadata = {}) {
