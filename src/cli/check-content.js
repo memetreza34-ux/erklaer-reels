@@ -1,11 +1,8 @@
 #!/usr/bin/env node
 
-import { readFile } from 'node:fs/promises';
-import path from 'node:path';
-
 import { validateReelContent } from '../core/content-validator.js';
 import { validateImagePromptBundle } from '../core/image-prompt-bundle.js';
-import { inspectSourcesMarkdown } from '../core/source-quality.js';
+import { verifyRequiredSourceQuality } from '../core/source-quality-file-guard.js';
 
 function getArgument(name) {
   const index = process.argv.indexOf(name);
@@ -24,14 +21,9 @@ async function main() {
 
   const report = await validateReelContent(reelDirectory, { strict });
   const promptBundle = await validateImagePromptBundle(reelDirectory);
-  const sourcesPath = path.join(reelDirectory, 'sources', 'sources.md');
-  let sourceQuality = { schemaVersion: 1, passed: true };
-  try {
-    sourceQuality = inspectSourcesMarkdown(await readFile(sourcesPath, 'utf8'));
-  } catch {
-    sourceQuality = { schemaVersion: 1, passed: true };
-  }
-  const strictSourceGatePassed = !strict || sourceQuality.schemaVersion < 2 || sourceQuality.passed === true;
+  const sourceGate = await verifyRequiredSourceQuality(reelDirectory);
+  const strictSourceGatePassed = !strict || !sourceGate.required || sourceGate.passed === true;
+  const sourceQuality = sourceGate.inspection;
 
   console.log(`Prüfungen bestanden: ${report.summary.passedChecks}/${report.summary.totalChecks}`);
   console.log(`Fehler: ${report.summary.failedChecks}`);
@@ -42,14 +34,14 @@ async function main() {
     console.log(`- ${prefix}: ${check.message}`);
   }
 
-  if (strict && sourceQuality.schemaVersion >= 2) {
-    if (sourceQuality.passed) {
+  if (strict && sourceGate.required) {
+    if (sourceGate.passed) {
       console.log(`Quellen-QC: bestanden (${sourceQuality.httpsUrlCount} HTTPS-Quellen, ${sourceQuality.distinctHostCount} Domains)`);
     } else {
-      console.log('- FEHLER: Quellen-QC v2 ist nicht vollständig bestanden. Prüfe alle strukturierten Quellenfelder.');
-      if (sourceQuality.hasMalformedUrlField) console.log('  - Mindestens ein URL-Feld ist ungültig.');
-      if (sourceQuality.hasInsecureHttp) console.log('  - Mindestens eine Quelle verwendet unsicheres HTTP statt HTTPS.');
-      if (sourceQuality.hasPlaceholder) console.log('  - Mindestens ein Quellenfeld enthält einen Dummy- oder Platzhalterwert.');
+      console.log(`- FEHLER: ${sourceGate.reason}`);
+      if (sourceQuality?.hasMalformedUrlField) console.log('  - Mindestens ein URL-Feld ist ungültig.');
+      if (sourceQuality?.hasInsecureHttp) console.log('  - Mindestens eine Quelle verwendet unsicheres HTTP statt HTTPS.');
+      if (sourceQuality?.hasPlaceholder) console.log('  - Mindestens ein Quellenfeld enthält einen Dummy- oder Platzhalterwert.');
     }
   }
 
