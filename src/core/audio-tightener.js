@@ -9,6 +9,8 @@ import {
 } from '../shared/audio-pacing-style.js';
 
 const execFileAsync = promisify(execFile);
+const LOUDNESS_TOLERANCE_LU = 1;
+const TRUE_PEAK_TOLERANCE_DB = 0.2;
 
 async function exists(filePath) {
   try {
@@ -50,6 +52,75 @@ function normalizePlaybackRate(value) {
     throw new Error('playbackRate muss zwischen 1,00 und 1,10 liegen.');
   }
   return rate;
+}
+
+export function parseLoudnessMeasurement(output, {
+  loudnessTargetLufs = AUDIO_PACING_STYLE.loudnessTargetLufs,
+  truePeakDbtp = AUDIO_PACING_STYLE.truePeakDbtp
+} = {}) {
+  const text = String(output ?? '');
+  const objects = text.match(/\{[\s\S]*?\}/g) ?? [];
+
+  for (let index = objects.length - 1; index >= 0; index -= 1) {
+    try {
+      const parsed = JSON.parse(objects[index]);
+      const integratedLufs = Number(parsed.input_i);
+      const measuredTruePeakDbtp = Number(parsed.input_tp);
+      if (!Number.isFinite(integratedLufs) || !Number.isFinite(measuredTruePeakDbtp)) continue;
+
+      const loudnessDifferenceLu = Math.abs(integratedLufs - Number(loudnessTargetLufs));
+      const truePeakLimitDbtp = Number(truePeakDbtp) + TRUE_PEAK_TOLERANCE_DB;
+      return {
+        measured: true,
+        integratedLufs,
+        truePeakDbtp: measuredTruePeakDbtp,
+        loudnessTargetLufs: Number(loudnessTargetLufs),
+        truePeakTargetDbtp: Number(truePeakDbtp),
+        loudnessToleranceLu: LOUDNESS_TOLERANCE_LU,
+        truePeakToleranceDb: TRUE_PEAK_TOLERANCE_DB,
+        loudnessDifferenceLu,
+        passed: loudnessDifferenceLu <= LOUDNESS_TOLERANCE_LU && measuredTruePeakDbtp <= truePeakLimitDbtp
+      };
+    } catch {
+      // FFmpeg kann neben dem JSON weitere Statuszeilen ausgeben. Nur gültige Messobjekte übernehmen.
+    }
+  }
+
+  return {
+    measured: false,
+    integratedLufs: null,
+    truePeakDbtp: null,
+    loudnessTargetLufs: Number(loudnessTargetLufs),
+    truePeakTargetDbtp: Number(truePeakDbtp),
+    loudnessToleranceLu: LOUDNESS_TOLERANCE_LU,
+    truePeakToleranceDb: TRUE_PEAK_TOLERANCE_DB,
+    loudnessDifferenceLu: null,
+    passed: false
+  };
+}
+
+async function measureLoudness(filePath, loudnessSettings) {
+  const filter = `${buildLoudnessFilter(loudnessSettings)}:print_format=json`;
+  const args = [
+    '-hide_banner', '-nostats',
+    '-i', filePath,
+    '-vn',
+    '-af', filter,
+    '-f', 'null',
+    '-'
+  ];
+
+  try {
+    const { stderr } = await execFileAsync('ffmpeg', args);
+    return parseLoudnessMeasurement(stderr, loudnessSettings);
+  } catch (error) {
+    const parsed = parseLoudnessMeasurement(error?.stderr, loudnessSettings);
+    if (parsed.measured) return parsed;
+    return {
+      ...parsed,
+      error: error?.message ?? 'Lautheitsmessung fehlgeschlagen.'
+    };
+  }
 }
 
 export function buildAudioPacingFilter({
@@ -151,6 +222,8 @@ export async function tightenVoiceover(reelDirectory, options = {}) {
     loudnessRangeLra: Number(options.loudnessRangeLra ?? AUDIO_PACING_STYLE.loudnessRangeLra),
     outputSampleRateHz
   };
+  const loudnessMeasurement = await measureLoudness(outputPath, loudnessSettings);
+  const pacingPassed = Boolean(afterSeconds && beforeSeconds && afterSeconds < beforeSeconds && loudnessMeasurement.passed);
 
   manifest.audio = {
     ...manifest.audio,
@@ -158,7 +231,10 @@ export async function tightenVoiceover(reelDirectory, options = {}) {
     expectedFile: outputRelative,
     pauseTrimmed: true,
     tempoAdjusted: playbackRate > 1,
-    loudnessNormalized: true,
+    loudnessNormalized: loudnessMeasurement.passed,
+    loudnessMeasured: loudnessMeasurement.measured,
+    measuredIntegratedLufs: loudnessMeasurement.integratedLufs,
+    measuredTruePeakDbtp: loudnessMeasurement.truePeakDbtp,
     playbackRate,
     outputSampleRateHz,
     pauseTrimSettings: {
@@ -168,10 +244,12 @@ export async function tightenVoiceover(reelDirectory, options = {}) {
       playbackRate,
       ...loudnessSettings
     },
-    status: 'ready'
+    status: pacingPassed ? 'ready' : 'needs-review'
   };
-  status.audio = 'ready';
-  status.audioPacing = 'tightened-accelerated-and-loudness-normalized';
+  status.audio = pacingPassed ? 'ready' : 'needs-review';
+  status.audioPacing = pacingPassed
+    ? 'tightened-accelerated-loudness-measured-and-normalized'
+    : 'needs-loudness-review';
   status.timeline = 'needs-rebuild-after-audio-pacing';
   status.wordSync = 'needs-resync-after-audio-pacing';
   status.subtitles = 'waiting-for-exact-sync';
@@ -223,9 +301,9 @@ export async function tightenVoiceover(reelDirectory, options = {}) {
   }
 
   const report = {
-    version: 4,
+    version: 5,
     createdAt: new Date().toISOString(),
-    passed: Boolean(afterSeconds && beforeSeconds && afterSeconds < beforeSeconds),
+    passed: pacingPassed,
     sourceFile: sourceRelative,
     outputFile: outputRelative,
     beforeSeconds,
@@ -234,12 +312,16 @@ export async function tightenVoiceover(reelDirectory, options = {}) {
     reductionPercent,
     playbackRate,
     speedIncreasePercent: (playbackRate - 1) * 100,
-    loudnessNormalized: true,
+    loudnessNormalized: loudnessMeasurement.passed,
+    loudnessMeasured: loudnessMeasurement.measured,
     loudnessSettings,
+    loudnessMeasurement,
     filter,
     settings: manifest.audio.pauseTrimSettings,
     wordSyncInvalidated: true,
-    note: 'Nach der Audio-Optimierung müssen Timeline, Szenen-Cues und exakte Untertitel-Wortzeiten erneut mit der neuen Audiodatei synchronisiert werden.'
+    note: loudnessMeasurement.passed
+      ? 'Lautheit wurde nach der Verarbeitung erneut gemessen. Danach müssen Timeline, Szenen-Cues und exakte Untertitel-Wortzeiten mit der neuen Audiodatei synchronisiert werden.'
+      : 'Die Audioverarbeitung wurde ausgeführt, aber die anschließende Lautheitsmessung liegt außerhalb der Toleranz oder konnte nicht gelesen werden. Vor Timeline und Render muss die Audio-QC korrigiert werden.'
   };
   await writeJson(path.join(reelDirectory, 'review', 'audio-pacing-report.json'), report);
   return report;
