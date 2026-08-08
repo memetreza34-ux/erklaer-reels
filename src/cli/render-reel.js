@@ -4,6 +4,7 @@ import path from 'node:path';
 
 import { renderReel } from '../core/remotion-renderer.js';
 import { validateRendererInput } from '../core/render-validator.js';
+import { verifyAppliedWordSyncAudioBinding } from '../core/word-sync-audio-guard.js';
 
 function getArgument(name) {
   const index = process.argv.indexOf(name);
@@ -15,10 +16,10 @@ function showUsage() {
 Erzeugt aus render/render-plan.json eine fertige MP4-Datei mit Remotion.
 
 Rendern:
-  npm run render:reel -- --dir "content/.../reel-01_titel"
+  npm run render:reel -- --dir "reels/.../reel-01_titel"
 
 Nur prüfen:
-  npm run validate:render -- --dir "content/.../reel-01_titel"
+  npm run validate:render -- --dir "reels/.../reel-01_titel"
 
 Optionen:
   --dir          Reel-Ordner
@@ -56,12 +57,17 @@ async function main() {
 
   const force = process.argv.includes('--force');
   const validateOnly = process.argv.includes('--validate-only');
+  const audioBinding = await verifyAppliedWordSyncAudioBinding(reelDirectory);
+  if (audioBinding.required && !audioBinding.passed) {
+    throw new Error(`${audioBinding.reason} Rendern mit veralteten Wortzeiten ist auch mit --force blockiert.`);
+  }
 
   if (validateOnly) {
     const report = await validateRendererInput(reelDirectory, {
       requireFinalReadiness: !force
     });
     printValidation(report);
+    if (audioBinding.required) console.log('Word-Sync-Audio: Fingerprint unverändert');
     if (!report.passed) process.exitCode = 1;
     return;
   }
@@ -83,6 +89,7 @@ async function main() {
   });
 
   console.log('MP4 erfolgreich erzeugt.');
+  if (audioBinding.required) console.log('Word-Sync-Audio: Fingerprint unverändert');
   console.log(`Datei: ${path.resolve(report.outputFile)}`);
   console.log(`Größe: ${(report.outputBytes / 1024 / 1024).toFixed(2)} MB`);
 }
