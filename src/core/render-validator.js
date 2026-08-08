@@ -73,6 +73,7 @@ export async function validateRendererInput(reelDirectory, {
   const pacingRate = Number(audioPacing?.playbackRate);
   const loudnessTarget = Number(audioPacing?.loudnessSettings?.loudnessTargetLufs);
   const truePeak = Number(audioPacing?.loudnessSettings?.truePeakDbtp);
+  const measuredAudioRequired = Number(audioPacing?.version ?? 0) >= 5;
   push(checks, 'audio-pacing-report', audioPacing?.passed === true,
     'review/audio-pacing-report.json fehlt oder das Voice-over-Pacing wurde nicht erfolgreich optimiert.',
     requireFinalReadiness ? 'error' : 'warning');
@@ -88,6 +89,23 @@ export async function validateRendererInput(reelDirectory, {
   push(checks, 'audio-true-peak-target', truePeak === AUDIO_PACING_STYLE.truePeakDbtp,
     `Der True-Peak-Zielwert muss ${AUDIO_PACING_STYLE.truePeakDbtp} dBTP betragen.`,
     requireFinalReadiness ? 'error' : 'warning');
+
+  if (measuredAudioRequired) {
+    const measuredLufs = Number(audioPacing?.loudnessMeasurement?.integratedLufs);
+    const measuredTruePeak = Number(audioPacing?.loudnessMeasurement?.truePeakDbtp);
+    push(checks, 'audio-loudness-measured', audioPacing?.loudnessMeasured === true,
+      'Audio-Pacing-Reports ab Version 5 müssen eine echte Lautheitsnachmessung enthalten.',
+      requireFinalReadiness ? 'error' : 'warning');
+    push(checks, 'audio-loudness-measurement-passed', audioPacing?.loudnessMeasurement?.passed === true,
+      'Die nachgelagerte LUFS-/True-Peak-Messung muss bestanden sein.',
+      requireFinalReadiness ? 'error' : 'warning');
+    push(checks, 'audio-measured-lufs-present', Number.isFinite(measuredLufs),
+      'Im Audio-Pacing-Report fehlt der tatsächlich gemessene Integrated-LUFS-Wert.',
+      requireFinalReadiness ? 'error' : 'warning');
+    push(checks, 'audio-measured-true-peak-present', Number.isFinite(measuredTruePeak),
+      'Im Audio-Pacing-Report fehlt der tatsächlich gemessene True-Peak-Wert.',
+      requireFinalReadiness ? 'error' : 'warning');
+  }
 
   const composition = plan.composition ?? {};
   push(checks, 'composition-width', Number(composition.width) === 1080,
