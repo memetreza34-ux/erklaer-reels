@@ -31,14 +31,39 @@ function resolveInside(root, relativePath) {
   return resolved;
 }
 
-async function fingerprintForWorkbench(reelDirectory, workbench) {
-  if (!workbench?.audioFile) throw new Error('Im Word-Sync-Workbench fehlt audioFile.');
-  const audioPath = resolveInside(reelDirectory, workbench.audioFile);
-  if (!(await exists(audioPath))) throw new Error(`Word-Sync-Audiodatei fehlt: ${workbench.audioFile}`);
+async function fingerprintAudioReference(reelDirectory, audioFile) {
+  const audioPath = resolveInside(reelDirectory, audioFile);
+  if (!(await exists(audioPath))) throw new Error(`Word-Sync-Audiodatei fehlt: ${audioFile}`);
   return {
+    audioFile,
     audioPath,
     audioFingerprintSha256: await sha256File(audioPath)
   };
+}
+
+async function fingerprintForWorkbench(reelDirectory, workbench) {
+  if (!workbench?.audioFile) throw new Error('Im Word-Sync-Workbench fehlt audioFile.');
+  return fingerprintAudioReference(reelDirectory, workbench.audioFile);
+}
+
+async function currentProductionAudioReference(reelDirectory, fallbackAudioFile) {
+  const manifest = await readJson(path.join(reelDirectory, 'assets-manifest.json'), {});
+  const expectedFile = manifest?.audio?.expectedFile;
+  if (expectedFile) {
+    const expectedPath = resolveInside(reelDirectory, expectedFile);
+    if (await exists(expectedPath)) return expectedFile;
+  }
+  return fallbackAudioFile;
+}
+
+async function declaredProductionAudioReferences(reelDirectory, fallbackAudioFile) {
+  const manifest = await readJson(path.join(reelDirectory, 'assets-manifest.json'), {});
+  const renderPlan = await readJson(path.join(reelDirectory, 'render', 'render-plan.json'), {});
+  return [...new Set([
+    fallbackAudioFile,
+    manifest?.audio?.expectedFile,
+    renderPlan?.voiceover?.file
+  ].filter(Boolean))];
 }
 
 function resetReviewedWords(words) {
@@ -96,27 +121,36 @@ export async function invalidateStaleWordSyncWorkbench(reelDirectory) {
     return { required: false, changed: false, legacy: Boolean(workbench) };
   }
 
-  const current = await fingerprintForWorkbench(reelDirectory, workbench);
-  if (current.audioFingerprintSha256 === workbench.audioFingerprintSha256) {
+  const currentAudioFile = await currentProductionAudioReference(reelDirectory, workbench.audioFile);
+  const current = await fingerprintAudioReference(reelDirectory, currentAudioFile);
+  const pathChanged = currentAudioFile !== workbench.audioFile;
+  const fingerprintChanged = current.audioFingerprintSha256 !== workbench.audioFingerprintSha256;
+  if (!pathChanged && !fingerprintChanged) {
     return { required: true, changed: false, legacy: false, ...current };
   }
 
   const previousFingerprint = workbench.audioFingerprintSha256;
+  const previousAudioFile = workbench.audioFile;
   workbench.status = 'invalidated-audio-changed';
   workbench.updatedAt = new Date().toISOString();
   workbench.words = resetReviewedWords(workbench.words);
+  workbench.audioFile = currentAudioFile;
   workbench.audioFingerprintSha256 = current.audioFingerprintSha256;
+  workbench.previousAudioFile = previousAudioFile;
   workbench.previousAudioFingerprintSha256 = previousFingerprint;
   await writeJson(workbenchPath, workbench);
   await invalidateAppliedSync(
     reelDirectory,
-    'Die lokale Voice-over-Datei stimmt nicht mehr mit der Audio-Datei überein, für die die Wortzeiten bestätigt wurden.'
+    'Die aktuelle Voice-over-Datei stimmt nicht mehr mit der Audio-Datei überein, für die die Wortzeiten bestätigt wurden.'
   );
 
   return {
     required: true,
     changed: true,
     legacy: false,
+    pathChanged,
+    fingerprintChanged,
+    previousAudioFile,
     previousAudioFingerprintSha256: previousFingerprint,
     ...current
   };
@@ -138,6 +172,7 @@ export async function stampPreparedWordSyncAudioBinding(reelDirectory) {
   const report = await readJson(reportPath, null);
   if (report) {
     report.version = Math.max(3, Number(report.version ?? 1));
+    report.audioFile = workbench.audioFile;
     report.audioFingerprintSha256 = current.audioFingerprintSha256;
     report.audioBindingStatus = 'fingerprinted-for-review';
     await writeJson(reportPath, report);
@@ -187,6 +222,7 @@ export async function stampAppliedWordSyncAudioBinding(reelDirectory, expectedFi
     const report = await readJson(reportPath, null);
     if (!report) continue;
     report.version = Math.max(4, Number(report.version ?? 1));
+    report.audioFile = prepared.workbench.audioFile;
     report.audioFingerprintSha256 = fingerprint;
     report.audioBindingStatus = 'verified';
     await writeJson(reportPath, report);
@@ -195,12 +231,19 @@ export async function stampAppliedWordSyncAudioBinding(reelDirectory, expectedFi
   const subtitlePlanPath = path.join(reelDirectory, 'subtitles', 'subtitle-plan.json');
   const subtitlePlan = await readJson(subtitlePlanPath, null);
   if (subtitlePlan) {
+    subtitlePlan.audioFile = prepared.workbench.audioFile;
     subtitlePlan.audioFingerprintSha256 = fingerprint;
     subtitlePlan.audioBindingStatus = 'verified';
     await writeJson(subtitlePlanPath, subtitlePlan);
   }
 
-  return { required: true, passed: true, legacy: false, audioFingerprintSha256: fingerprint };
+  return {
+    required: true,
+    passed: true,
+    legacy: false,
+    audioFile: prepared.workbench.audioFile,
+    audioFingerprintSha256: fingerprint
+  };
 }
 
 export async function verifyAppliedWordSyncAudioBinding(reelDirectory) {
@@ -210,34 +253,43 @@ export async function verifyAppliedWordSyncAudioBinding(reelDirectory) {
     return { required: false, passed: true, legacy: Boolean(report) };
   }
 
-  if (!report.audioFile) {
+  const audioReferences = await declaredProductionAudioReferences(reelDirectory, report.audioFile);
+  if (!audioReferences.length) {
     return {
       required: true,
       passed: false,
       legacy: false,
-      reason: 'Word-Sync-Report enthält keinen Audiopfad.'
+      reason: 'Es wurde keine aktuelle Produktions-Audiodatei gefunden.'
     };
   }
 
-  const audioPath = resolveInside(reelDirectory, report.audioFile);
-  if (!(await exists(audioPath))) {
-    return {
-      required: true,
-      passed: false,
-      legacy: false,
-      reason: `Word-Sync-Audiodatei fehlt: ${report.audioFile}`
-    };
+  const checked = [];
+  for (const audioFile of audioReferences) {
+    let current;
+    try {
+      current = await fingerprintAudioReference(reelDirectory, audioFile);
+    } catch (error) {
+      checked.push({ audioFile, passed: false, error: error.message });
+      continue;
+    }
+    checked.push({
+      audioFile,
+      audioFingerprintSha256: current.audioFingerprintSha256,
+      passed: current.audioFingerprintSha256 === report.audioFingerprintSha256
+    });
   }
 
-  const currentFingerprint = await sha256File(audioPath);
-  const passed = currentFingerprint === report.audioFingerprintSha256;
+  const passed = checked.length > 0 && checked.every((entry) => entry.passed);
+  const mismatched = checked.filter((entry) => !entry.passed).map((entry) => entry.audioFile);
   return {
     required: true,
     passed,
     legacy: false,
     audioFile: report.audioFile,
     expectedAudioFingerprintSha256: report.audioFingerprintSha256,
-    audioFingerprintSha256: currentFingerprint,
-    reason: passed ? null : 'Die aktuelle Voice-over-Datei wurde nach der bestätigten Wort-Synchronisierung verändert.'
+    checkedAudioFiles: checked,
+    reason: passed
+      ? null
+      : `Die aktuelle Produktions-Audiodatei stimmt nicht mehr mit der bestätigten Word-Sync-Datei überein: ${mismatched.join(', ') || 'unbekannt'}.`
   };
 }
