@@ -7,6 +7,12 @@ async function text(file) {
   return readFile(path.resolve(file), 'utf8');
 }
 
+test('Neue Reels verankern das verpflichtende Quellen-Schema außerhalb von sources.md', async () => {
+  const creator = await text('src/cli/create-reel.js');
+  assert.match(creator, /sourceQualitySchemaVersion = 2/);
+  assert.match(creator, /buildSourcesTemplate/);
+});
+
 test('Word-Sync-CLI bindet Vorbereitung und Anwendung an Audio-Fingerprints', async () => {
   const source = await text('src/cli/sync-words.js');
   assert.match(source, /invalidateStaleWordSyncWorkbench/);
@@ -22,12 +28,13 @@ test('Audio-Pacing-CLI bindet die echte Lautheitsmessung an die Ausgabedatei', a
   assert.match(source, /SHA-256-Fingerprint/);
 });
 
-test('Finalisierung, Render-CLI und Core-Renderer prüfen Audio-Dateibindungen', async () => {
+test('Finalisierung, Render-CLI und Core-Renderer prüfen alle verpflichtenden Gates', async () => {
   const finalizer = await text('src/cli/finalize-reel.js');
   const renderer = await text('src/cli/render-reel.js');
   const coreRenderer = await text('src/core/remotion-renderer.js');
 
   for (const source of [finalizer, renderer, coreRenderer]) {
+    assert.match(source, /verifyRequiredSourceQuality/);
     assert.match(source, /verifyAudioPacingFileBinding/);
     assert.match(source, /verifyAppliedWordSyncAudioBinding/);
   }
@@ -36,10 +43,12 @@ test('Finalisierung, Render-CLI und Core-Renderer prüfen Audio-Dateibindungen',
   assert.match(coreRenderer, /veralteten Wortzeiten/);
 });
 
-test('Statusanzeige berücksichtigt Audio-Pacing- und Word-Sync-Fingerprints', async () => {
+test('Statusanzeige berücksichtigt Quellen-, Pacing- und Word-Sync-Gates', async () => {
   const status = await text('src/cli/reel-status.js');
+  assert.match(status, /verifyRequiredSourceQuality/);
   assert.match(status, /verifyAudioPacingFileBinding/);
   assert.match(status, /verifyAppliedWordSyncAudioBinding/);
+  assert.match(status, /sourceQualityGatePassed/);
   assert.match(status, /audioPacingFileBindingPassed/);
   assert.match(status, /wordSyncAudioBindingPassed/);
 });
@@ -58,11 +67,11 @@ test('aktuelle Produktions-CLI-Beispiele verwenden reels statt content', async (
   }
 });
 
-test('strenges Content-Gate verwendet vollständiges Quellen-QC-Ergebnis', async () => {
+test('strenges Content-Gate verwendet das verpflichtende Quellen-Schema', async () => {
   const source = await text('src/cli/check-content.js');
-  assert.match(source, /inspectSourcesMarkdown/);
+  assert.match(source, /verifyRequiredSourceQuality/);
   assert.match(source, /strictSourceGatePassed/);
-  assert.match(source, /sourceQuality\.passed === true/);
+  assert.match(source, /sourceGate\.passed === true/);
   assert.match(source, /hasMalformedUrlField/);
 });
 
