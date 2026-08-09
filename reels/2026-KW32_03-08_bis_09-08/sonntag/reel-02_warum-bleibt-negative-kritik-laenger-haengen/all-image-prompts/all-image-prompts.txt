@@ -1,12 +1,16 @@
-ALLE BILDPROMPTS – GOOGLE FLOW – STRENG EINZELN + COVER ALS STYLE-VORLAGE
+ALLE BILDPROMPTS – GOOGLE FLOW – STRENG EINZELN + AUTONOM OHNE WEITERES GO + COVER ALS STYLE-VORLAGE
 
-GOOGLE FLOW – HARTE SERIELLE SPERRE – NIEMALS PARALLEL
+GOOGLE FLOW – HARTE SERIELLE SPERRE + AUTONOMER DURCHLAUF – NIEMALS PARALLEL, NIEMALS AUF EIN WEITERES GO WARTEN
 
 Diese komplette Nachricht enthält 14 Bildaufträge von Bild 00 bis Bild 13. Sie werden NICHT gleichzeitig und NICHT als Batch ausgeführt.
+DAS EINMALIGE ABSENDEN DIESER KOMPLETTEN NACHRICHT IST DIE VOLLSTÄNDIGE FREIGABE FÜR ALLE BILDER BIS ZUM ENDE.
 ANTWORTE NICHT mit einer Bestätigung, Zusammenfassung oder Erklärung. Beginne ausschließlich mit BILD 00.
+FRAGE AB JETZT NICHT MEHR NACH GO, WEITER, BESTÄTIGUNG, FREIGABE, ERLAUBNIS ODER EINER WEITEREN NUTZERANTWORT.
+WARTE ZWISCHEN DEN BILDERN NIEMALS AUF EINE NACHRICHT DES NUTZERS. DIE FERTIGSTELLUNG UND KORREKTE UMBENENNUNG DES AKTUELLEN BILDES IST AUTOMATISCH DAS STARTSIGNAL FÜR DAS NÄCHSTE BILD.
 
-DIE WICHTIGSTE REGEL:
-ZU JEDEM ZEITPUNKT DARF GENAU EINE EINZIGE BILDGENERIERUNG AKTIV SEIN.
+DIE ZWEI WICHTIGSTEN REGELN:
+1. ZU JEDEM ZEITPUNKT DARF GENAU EINE EINZIGE BILDGENERIERUNG AKTIV SEIN.
+2. SOBALD DIESE EINE GENERIERUNG FERTIG UND DAS BILD KORREKT UMBENANNT IST, MUSST DU SOFORT SELBSTSTÄNDIG MIT DEM NÄCHSTEN BILD WEITERMACHEN – OHNE NUTZERINTERAKTION.
 STARTE NIEMALS DAS NÄCHSTE BILD, SOLANGE DAS AKTUELLE BILD NOCH GENERIERT WIRD, NOCH NICHT VOLLSTÄNDIG FERTIG IST ODER NOCH NICHT KORREKT UMBENANNT WURDE.
 
 BILD 00 = COVER + VERBINDLICHE STILVORLAGE:
@@ -25,38 +29,41 @@ STRENG VERBOTEN:
 - mehrere fertige, aber noch unbenannte Bilder ansammeln
 - Bilder während der Generierung bereits in den gemeinsamen Sammelordner verschieben
 - den visuellen Stil zwischen Cover und Szenen ohne ausdrückliche Prompt-Anweisung wechseln
+- nach einem fertigen Bild auf `Go`, `Weiter`, `OK`, eine Bestätigung oder irgendeine andere Nutzerantwort warten
+- zwischen zwei Bildern eine Rückfrage stellen oder den Arbeitsablauf pausieren, obwohl das vorherige Bild erfolgreich fertig und umbenannt ist
 
-VERBINDLICHER ABLAUF FÜR JEDES EINZELNE BILD:
+VERBINDLICHER AUTONOMER ABLAUF FÜR JEDES EINZELNE BILD:
 A. Lies ausschließlich den aktuellen freigegebenen Bildblock.
 B. Starte GENAU EINE Bildgenerierung für diesen Block.
 C. WARTE, bis diese eine Bildgenerierung vollständig abgeschlossen ist. Währenddessen keinerlei anderes Bild starten.
 D. Sobald das Bild vollständig fertig ist, benenne DIESES Bild sofort exakt mit dem angegebenen Dateinamen um.
 E. WARTE, bis auch die Umbenennung abgeschlossen ist, und prüfe den Dateinamen.
-F. ERST JETZT ist der nächste nummerierte Bildblock freigegeben.
-G. Wiederhole A bis F streng einzeln bis einschließlich Bild 13.
+F. Sobald diese Prüfung erfolgreich ist, ist der nächste nummerierte Bildblock AUTOMATISCH freigegeben. Es ist KEINE Nutzerantwort nötig.
+G. Starte den nächsten Bildblock SOFORT selbstständig. Nicht anhalten, nicht nachfragen, nicht auf ein Go warten.
+H. Wiederhole A bis G streng einzeln und ohne Unterbrechung bis einschließlich Bild 13.
 
-BEISPIEL DER SPERRE:
-Bild 00 erzeugen → warten bis Bild 00 wirklich fertig → sofort `Bild 00.png` nennen → prüfen → Bild 00 als Stilvorlage festhalten → ERST DANN Bild 01 starten.
-Bild 01 erzeugen → dabei Bild 00 als Stilreferenz verwenden → warten bis Bild 01 wirklich fertig → sofort `Bild 01.png` nennen → prüfen → ERST DANN Bild 02 starten.
-Genau so einzeln bis zum letzten Bild. Keine Ausnahme.
+BEISPIEL DER AUTOMATISCHEN KETTE:
+Bild 00 erzeugen → warten bis Bild 00 wirklich fertig → sofort `Bild 00.png` nennen → prüfen → Bild 00 als Stilvorlage festhalten → SOFORT AUTOMATISCH Bild 01 starten. Kein Go vom Nutzer.
+Bild 01 erzeugen → dabei Bild 00 als Stilreferenz verwenden → warten bis Bild 01 wirklich fertig → sofort `Bild 01.png` nennen → prüfen → SOFORT AUTOMATISCH Bild 02 starten. Kein Go vom Nutzer.
+Genau so einzeln und selbstständig bis zum letzten Bild. Keine Pause und keine Ausnahme.
 
 NACH BILD 13: Erst wenn wirklich ALLE 14 Bilder vollständig erzeugt UND jeweils direkt nach ihrer Erzeugung korrekt umbenannt wurden, die komplette Nummerierung prüfen.
-ERST DANACH alle fertigen Bilder gemeinsam in EINEN Sammelordner legen. Vorher keinen Sammelordner-Schritt ausführen.
+ERST DANACH alle fertigen Bilder gemeinsam in EINEN Sammelordner legen. Auch dafür KEINE neue Nutzerfreigabe verlangen.
 
-JETZT AUSFÜHREN: Starte NUR BILD 00. Alle späteren Bildblöcke sind bis zur erfolgreichen Fertigstellung und Umbenennung ihres jeweiligen Vorgängers GESPERRT.
+JETZT AUSFÜHREN: Starte NUR BILD 00. Danach führe die gesamte Kette selbstständig bis zum Abschluss aus. Das einmalige Absenden dieses Gesamtprompts ist bereits das einzige benötigte Go.
 
 
 BILD 00 – COVER – GOOGLE-FLOW-PROMPT
 ZIEL: COVER + STYLE-VORLAGE FÜR DAS GESAMTE REEL
 DATEINAME: Bild 00.png
-FREIGABE: Dies ist der einzige jetzt freigegebene Bildblock.
+FREIGABE: Dies ist der einzige jetzt freigegebene Bildblock. Das einmalige Absenden des Gesamtprompts ist bereits die Freigabe für die gesamte spätere Kette.
 COVER-REGEL: Dieses Bild ist das echte Cover UND die verbindliche visuelle Stilvorlage für das gesamte Reel.
 HOOK-REGEL: Der im folgenden Cover-Prompt verlangte sichtbare deutsche Text muss exakt und gut lesbar auf dem Cover erscheinen. Dieser Text ist die Hook und erklärt sofort, worum es im Reel geht.
 Nach Fertigstellung dieses Covers: Bild 00 als direkte Style-Referenz für alle späteren Szenen beibehalten.
 GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD 00.
 Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.
 Nach vollständigem Abschluss dieses Bildes: sofort exakt in `Bild 00.png` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.
-ERST NACH DIESER PRÜFUNG darf der direkt nächste nummerierte Bildblock freigegeben und gestartet werden.
+SOBALD DIESE PRÜFUNG ERFOLGREICH IST: den direkt nächsten nummerierten Bildblock SOFORT AUTOMATISCH starten. NICHT auf `Go`, `Weiter`, `OK` oder irgendeine Nutzerantwort warten.
 
 MASTER STYLE REFERENCE FOR THE ENTIRE REEL. Create the actual reel cover first and use the finished cover image as the direct visual reference for every later scene: same hand-drawn 2D editorial cartoon style, same character design, same proportions, same line quality, same warm muted palette, same lighting logic and same overall detail level. The cover must clearly communicate the reel topic through one strong visible German hook. Do not omit or paraphrase the hook text.
 
@@ -66,14 +73,14 @@ Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media e
 BILD 01 – SZENE 1 – GOOGLE-FLOW-PROMPT
 ZIEL: SZENE 1
 DATEINAME: Bild 01.png
-FREIGABE-BEDINGUNG: Dieser Block ist GESPERRT, bis BILD 00 vollständig fertig erzeugt, exakt als `Bild 00.png` umbenannt und die Umbenennung geprüft wurde.
+FREIGABE-BEDINGUNG: Dieser Block wird AUTOMATISCH freigegeben, sobald BILD 00 vollständig fertig erzeugt, exakt als `Bild 00.png` umbenannt und die Umbenennung geprüft wurde. KEIN weiteres Go und KEINE Nutzerantwort abwarten.
 STYLE-REFERENZ: Verwende das bereits fertig erzeugte `Bild 00.png` direkt als verbindliche visuelle Vorlage für dieses Szenenbild.
 Behalte Zeichen-/Renderstil, Farbwelt, Figurenmerkmale, Proportionen, Lichtstimmung und Detailqualität von Bild 00 bei.
 Den Cover-Hook-Text nicht kopieren, außer der folgende Szenenprompt verlangt ausdrücklich sichtbaren Text.
 GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD 01.
 Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.
 Nach vollständigem Abschluss dieses Bildes: sofort exakt in `Bild 01.png` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.
-ERST NACH DIESER PRÜFUNG darf der direkt nächste nummerierte Bildblock freigegeben und gestartet werden.
+SOBALD DIESE PRÜFUNG ERFOLGREICH IST: den direkt nächsten nummerierten Bildblock SOFORT AUTOMATISCH starten. NICHT auf `Go`, `Weiter`, `OK` oder irgendeine Nutzerantwort warten.
 
 Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. The main character stands among many small soft-green positive comment cards, but one single red critical comment card is much closer to the face and dominates attention. Make the contrast immediately understandable without implying an exact scientific ratio. Include exactly this visible German text: "WARUM BLEIBT DAS HÄNGEN?". No other readable words.
 
@@ -81,14 +88,14 @@ Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media e
 BILD 02 – SZENE 2 – GOOGLE-FLOW-PROMPT
 ZIEL: SZENE 2
 DATEINAME: Bild 02.png
-FREIGABE-BEDINGUNG: Dieser Block ist GESPERRT, bis BILD 01 vollständig fertig erzeugt, exakt als `Bild 01.png` umbenannt und die Umbenennung geprüft wurde.
+FREIGABE-BEDINGUNG: Dieser Block wird AUTOMATISCH freigegeben, sobald BILD 01 vollständig fertig erzeugt, exakt als `Bild 01.png` umbenannt und die Umbenennung geprüft wurde. KEIN weiteres Go und KEINE Nutzerantwort abwarten.
 STYLE-REFERENZ: Verwende das bereits fertig erzeugte `Bild 00.png` direkt als verbindliche visuelle Vorlage für dieses Szenenbild.
 Behalte Zeichen-/Renderstil, Farbwelt, Figurenmerkmale, Proportionen, Lichtstimmung und Detailqualität von Bild 00 bei.
 Den Cover-Hook-Text nicht kopieren, außer der folgende Szenenprompt verlangt ausdrücklich sichtbaren Text.
 GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD 02.
 Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.
 Nach vollständigem Abschluss dieses Bildes: sofort exakt in `Bild 02.png` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.
-ERST NACH DIESER PRÜFUNG darf der direkt nächste nummerierte Bildblock freigegeben und gestartet werden.
+SOBALD DIESE PRÜFUNG ERFOLGREICH IST: den direkt nächsten nummerierten Bildblock SOFORT AUTOMATISCH starten. NICHT auf `Go`, `Weiter`, `OK` oder irgendeine Nutzerantwort warten.
 
 Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. A wall contains many feedback cards. A single red critical card receives the character's immediate gaze and a subtle symbolic spotlight, while positive cards remain visible around it. Include exactly this visible German text: "NEGATIV FÄLLT AUF". No other readable words.
 
@@ -96,14 +103,14 @@ Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media e
 BILD 03 – SZENE 3 – GOOGLE-FLOW-PROMPT
 ZIEL: SZENE 3
 DATEINAME: Bild 03.png
-FREIGABE-BEDINGUNG: Dieser Block ist GESPERRT, bis BILD 02 vollständig fertig erzeugt, exakt als `Bild 02.png` umbenannt und die Umbenennung geprüft wurde.
+FREIGABE-BEDINGUNG: Dieser Block wird AUTOMATISCH freigegeben, sobald BILD 02 vollständig fertig erzeugt, exakt als `Bild 02.png` umbenannt und die Umbenennung geprüft wurde. KEIN weiteres Go und KEINE Nutzerantwort abwarten.
 STYLE-REFERENZ: Verwende das bereits fertig erzeugte `Bild 00.png` direkt als verbindliche visuelle Vorlage für dieses Szenenbild.
 Behalte Zeichen-/Renderstil, Farbwelt, Figurenmerkmale, Proportionen, Lichtstimmung und Detailqualität von Bild 00 bei.
 Den Cover-Hook-Text nicht kopieren, außer der folgende Szenenprompt verlangt ausdrücklich sichtbaren Text.
 GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD 03.
 Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.
 Nach vollständigem Abschluss dieses Bildes: sofort exakt in `Bild 03.png` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.
-ERST NACH DIESER PRÜFUNG darf der direkt nächste nummerierte Bildblock freigegeben und gestartet werden.
+SOBALD DIESE PRÜFUNG ERFOLGREICH IST: den direkt nächsten nummerierten Bildblock SOFORT AUTOMATISCH starten. NICHT auf `Go`, `Weiter`, `OK` oder irgendeine Nutzerantwort warten.
 
 Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. Show a physical balance scale: several equally sized soft-green positive feedback cards on one side, one red critical feedback card on the other side, with the red side visually feeling heavier as a psychological metaphor. Include exactly this visible German text: "MEHR GEWICHT". No other readable words.
 
@@ -111,14 +118,14 @@ Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media e
 BILD 04 – SZENE 4 – GOOGLE-FLOW-PROMPT
 ZIEL: SZENE 4
 DATEINAME: Bild 04.png
-FREIGABE-BEDINGUNG: Dieser Block ist GESPERRT, bis BILD 03 vollständig fertig erzeugt, exakt als `Bild 03.png` umbenannt und die Umbenennung geprüft wurde.
+FREIGABE-BEDINGUNG: Dieser Block wird AUTOMATISCH freigegeben, sobald BILD 03 vollständig fertig erzeugt, exakt als `Bild 03.png` umbenannt und die Umbenennung geprüft wurde. KEIN weiteres Go und KEINE Nutzerantwort abwarten.
 STYLE-REFERENZ: Verwende das bereits fertig erzeugte `Bild 00.png` direkt als verbindliche visuelle Vorlage für dieses Szenenbild.
 Behalte Zeichen-/Renderstil, Farbwelt, Figurenmerkmale, Proportionen, Lichtstimmung und Detailqualität von Bild 00 bei.
 Den Cover-Hook-Text nicht kopieren, außer der folgende Szenenprompt verlangt ausdrücklich sichtbaren Text.
 GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD 04.
 Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.
 Nach vollständigem Abschluss dieses Bildes: sofort exakt in `Bild 04.png` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.
-ERST NACH DIESER PRÜFUNG darf der direkt nächste nummerierte Bildblock freigegeben und gestartet werden.
+SOBALD DIESE PRÜFUNG ERFOLGREICH IST: den direkt nächsten nummerierten Bildblock SOFORT AUTOMATISCH starten. NICHT auf `Go`, `Weiter`, `OK` oder irgendeine Nutzerantwort warten.
 
 Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. The character walks through a calm everyday environment with pleasant neutral signals, but instantly notices one clear red warning symbol near the path. Present this only as an attention-and-decision metaphor, not a literal evolutionary scene. No readable text anywhere.
 
@@ -126,14 +133,14 @@ Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media e
 BILD 05 – SZENE 5 – GOOGLE-FLOW-PROMPT
 ZIEL: SZENE 5
 DATEINAME: Bild 05.png
-FREIGABE-BEDINGUNG: Dieser Block ist GESPERRT, bis BILD 04 vollständig fertig erzeugt, exakt als `Bild 04.png` umbenannt und die Umbenennung geprüft wurde.
+FREIGABE-BEDINGUNG: Dieser Block wird AUTOMATISCH freigegeben, sobald BILD 04 vollständig fertig erzeugt, exakt als `Bild 04.png` umbenannt und die Umbenennung geprüft wurde. KEIN weiteres Go und KEINE Nutzerantwort abwarten.
 STYLE-REFERENZ: Verwende das bereits fertig erzeugte `Bild 00.png` direkt als verbindliche visuelle Vorlage für dieses Szenenbild.
 Behalte Zeichen-/Renderstil, Farbwelt, Figurenmerkmale, Proportionen, Lichtstimmung und Detailqualität von Bild 00 bei.
 Den Cover-Hook-Text nicht kopieren, außer der folgende Szenenprompt verlangt ausdrücklich sichtbaren Text.
 GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD 05.
 Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.
 Nach vollständigem Abschluss dieses Bildes: sofort exakt in `Bild 05.png` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.
-ERST NACH DIESER PRÜFUNG darf der direkt nächste nummerierte Bildblock freigegeben und gestartet werden.
+SOBALD DIESE PRÜFUNG ERFOLGREICH IST: den direkt nächsten nummerierten Bildblock SOFORT AUTOMATISCH starten. NICHT auf `Go`, `Weiter`, `OK` oder irgendeine Nutzerantwort warten.
 
 Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. The main character faces a large board full of feedback. Their eyes and body turn first toward one red criticism card even though many soft-green positive cards surround it. Include exactly this visible German text: "KRITIK SPRINGT INS AUGE". No other readable words.
 
@@ -141,14 +148,14 @@ Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media e
 BILD 06 – SZENE 6 – GOOGLE-FLOW-PROMPT
 ZIEL: SZENE 6
 DATEINAME: Bild 06.png
-FREIGABE-BEDINGUNG: Dieser Block ist GESPERRT, bis BILD 05 vollständig fertig erzeugt, exakt als `Bild 05.png` umbenannt und die Umbenennung geprüft wurde.
+FREIGABE-BEDINGUNG: Dieser Block wird AUTOMATISCH freigegeben, sobald BILD 05 vollständig fertig erzeugt, exakt als `Bild 05.png` umbenannt und die Umbenennung geprüft wurde. KEIN weiteres Go und KEINE Nutzerantwort abwarten.
 STYLE-REFERENZ: Verwende das bereits fertig erzeugte `Bild 00.png` direkt als verbindliche visuelle Vorlage für dieses Szenenbild.
 Behalte Zeichen-/Renderstil, Farbwelt, Figurenmerkmale, Proportionen, Lichtstimmung und Detailqualität von Bild 00 bei.
 Den Cover-Hook-Text nicht kopieren, außer der folgende Szenenprompt verlangt ausdrücklich sichtbaren Text.
 GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD 06.
 Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.
 Nach vollständigem Abschluss dieses Bildes: sofort exakt in `Bild 06.png` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.
-ERST NACH DIESER PRÜFUNG darf der direkt nächste nummerierte Bildblock freigegeben und gestartet werden.
+SOBALD DIESE PRÜFUNG ERFOLGREICH IST: den direkt nächsten nummerierten Bildblock SOFORT AUTOMATISCH starten. NICHT auf `Go`, `Weiter`, `OK` oder irgendeine Nutzerantwort warten.
 
 Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. Show a memory metaphor: one red criticism card is sharply etched with crisp visual detail inside a translucent memory bubble, while other feedback cards remain softer and less detailed in the background. Include exactly this visible German text: "BLEIBT LEBHAFT". No other readable words.
 
@@ -156,14 +163,14 @@ Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media e
 BILD 07 – SZENE 7 – GOOGLE-FLOW-PROMPT
 ZIEL: SZENE 7
 DATEINAME: Bild 07.png
-FREIGABE-BEDINGUNG: Dieser Block ist GESPERRT, bis BILD 06 vollständig fertig erzeugt, exakt als `Bild 06.png` umbenannt und die Umbenennung geprüft wurde.
+FREIGABE-BEDINGUNG: Dieser Block wird AUTOMATISCH freigegeben, sobald BILD 06 vollständig fertig erzeugt, exakt als `Bild 06.png` umbenannt und die Umbenennung geprüft wurde. KEIN weiteres Go und KEINE Nutzerantwort abwarten.
 STYLE-REFERENZ: Verwende das bereits fertig erzeugte `Bild 00.png` direkt als verbindliche visuelle Vorlage für dieses Szenenbild.
 Behalte Zeichen-/Renderstil, Farbwelt, Figurenmerkmale, Proportionen, Lichtstimmung und Detailqualität von Bild 00 bei.
 Den Cover-Hook-Text nicht kopieren, außer der folgende Szenenprompt verlangt ausdrücklich sichtbaren Text.
 GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD 07.
 Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.
 Nach vollständigem Abschluss dieses Bildes: sofort exakt in `Bild 07.png` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.
-ERST NACH DIESER PRÜFUNG darf der direkt nächste nummerierte Bildblock freigegeben und gestartet werden.
+SOBALD DIESE PRÜFUNG ERFOLGREICH IST: den direkt nächsten nummerierten Bildblock SOFORT AUTOMATISCH starten. NICHT auf `Go`, `Weiter`, `OK` oder irgendeine Nutzerantwort warten.
 
 Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. At night, the same main character sits on the edge of a bed while one red sentence card circles repeatedly around the head in a clean loop, clearly representing repetitive thinking. Include exactly this visible German text: "NOCHMAL. NOCHMAL.". No other readable words.
 
@@ -171,14 +178,14 @@ Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media e
 BILD 08 – SZENE 8 – GOOGLE-FLOW-PROMPT
 ZIEL: SZENE 8
 DATEINAME: Bild 08.png
-FREIGABE-BEDINGUNG: Dieser Block ist GESPERRT, bis BILD 07 vollständig fertig erzeugt, exakt als `Bild 07.png` umbenannt und die Umbenennung geprüft wurde.
+FREIGABE-BEDINGUNG: Dieser Block wird AUTOMATISCH freigegeben, sobald BILD 07 vollständig fertig erzeugt, exakt als `Bild 07.png` umbenannt und die Umbenennung geprüft wurde. KEIN weiteres Go und KEINE Nutzerantwort abwarten.
 STYLE-REFERENZ: Verwende das bereits fertig erzeugte `Bild 00.png` direkt als verbindliche visuelle Vorlage für dieses Szenenbild.
 Behalte Zeichen-/Renderstil, Farbwelt, Figurenmerkmale, Proportionen, Lichtstimmung und Detailqualität von Bild 00 bei.
 Den Cover-Hook-Text nicht kopieren, außer der folgende Szenenprompt verlangt ausdrücklich sichtbaren Text.
 GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD 08.
 Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.
 Nach vollständigem Abschluss dieses Bildes: sofort exakt in `Bild 08.png` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.
-ERST NACH DIESER PRÜFUNG darf der direkt nächste nummerierte Bildblock freigegeben und gestartet werden.
+SOBALD DIESE PRÜFUNG ERFOLGREICH IST: den direkt nächsten nummerierten Bildblock SOFORT AUTOMATISCH starten. NICHT auf `Go`, `Weiter`, `OK` oder irgendeine Nutzerantwort warten.
 
 Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. A tiny real red criticism note lies on a desk, but it casts an enormous symbolic shadow over the main character, showing how mental attention can inflate perceived importance. No readable text anywhere.
 
@@ -186,14 +193,14 @@ Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media e
 BILD 09 – SZENE 9 – GOOGLE-FLOW-PROMPT
 ZIEL: SZENE 9
 DATEINAME: Bild 09.png
-FREIGABE-BEDINGUNG: Dieser Block ist GESPERRT, bis BILD 08 vollständig fertig erzeugt, exakt als `Bild 08.png` umbenannt und die Umbenennung geprüft wurde.
+FREIGABE-BEDINGUNG: Dieser Block wird AUTOMATISCH freigegeben, sobald BILD 08 vollständig fertig erzeugt, exakt als `Bild 08.png` umbenannt und die Umbenennung geprüft wurde. KEIN weiteres Go und KEINE Nutzerantwort abwarten.
 STYLE-REFERENZ: Verwende das bereits fertig erzeugte `Bild 00.png` direkt als verbindliche visuelle Vorlage für dieses Szenenbild.
 Behalte Zeichen-/Renderstil, Farbwelt, Figurenmerkmale, Proportionen, Lichtstimmung und Detailqualität von Bild 00 bei.
 Den Cover-Hook-Text nicht kopieren, außer der folgende Szenenprompt verlangt ausdrücklich sichtbaren Text.
 GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD 09.
 Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.
 Nach vollständigem Abschluss dieses Bildes: sofort exakt in `Bild 09.png` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.
-ERST NACH DIESER PRÜFUNG darf der direkt nächste nummerierte Bildblock freigegeben und gestartet werden.
+SOBALD DIESE PRÜFUNG ERFOLGREICH IST: den direkt nächsten nummerierten Bildblock SOFORT AUTOMATISCH starten. NICHT auf `Go`, `Weiter`, `OK` oder irgendeine Nutzerantwort warten.
 
 Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. Several different adults stand together looking at the same mixed feedback board; their facial expressions and attention differ, showing that responses vary across people and context. Keep one coherent scene, not separate panels. Include exactly this visible German text: "NICHT BEI ALLEN GLEICH". No other readable words.
 
@@ -201,14 +208,14 @@ Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media e
 BILD 10 – SZENE 10 – GOOGLE-FLOW-PROMPT
 ZIEL: SZENE 10
 DATEINAME: Bild 10.png
-FREIGABE-BEDINGUNG: Dieser Block ist GESPERRT, bis BILD 09 vollständig fertig erzeugt, exakt als `Bild 09.png` umbenannt und die Umbenennung geprüft wurde.
+FREIGABE-BEDINGUNG: Dieser Block wird AUTOMATISCH freigegeben, sobald BILD 09 vollständig fertig erzeugt, exakt als `Bild 09.png` umbenannt und die Umbenennung geprüft wurde. KEIN weiteres Go und KEINE Nutzerantwort abwarten.
 STYLE-REFERENZ: Verwende das bereits fertig erzeugte `Bild 00.png` direkt als verbindliche visuelle Vorlage für dieses Szenenbild.
 Behalte Zeichen-/Renderstil, Farbwelt, Figurenmerkmale, Proportionen, Lichtstimmung und Detailqualität von Bild 00 bei.
 Den Cover-Hook-Text nicht kopieren, außer der folgende Szenenprompt verlangt ausdrücklich sichtbaren Text.
 GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD 10.
 Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.
 Nach vollständigem Abschluss dieses Bildes: sofort exakt in `Bild 10.png` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.
-ERST NACH DIESER PRÜFUNG darf der direkt nächste nummerierte Bildblock freigegeben und gestartet werden.
+SOBALD DIESE PRÜFUNG ERFOLGREICH IST: den direkt nächsten nummerierten Bildblock SOFORT AUTOMATISCH starten. NICHT auf `Go`, `Weiter`, `OK` oder irgendeine Nutzerantwort warten.
 
 Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. The main character calmly examines one red criticism card with a magnifying glass. Beside it are three simple nonverbal check symbols representing concrete, relevant, and evidence-based evaluation. Include exactly this visible German text: "IST DIE KRITIK BRAUCHBAR?". No other readable words.
 
@@ -216,14 +223,14 @@ Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media e
 BILD 11 – SZENE 11 – GOOGLE-FLOW-PROMPT
 ZIEL: SZENE 11
 DATEINAME: Bild 11.png
-FREIGABE-BEDINGUNG: Dieser Block ist GESPERRT, bis BILD 10 vollständig fertig erzeugt, exakt als `Bild 10.png` umbenannt und die Umbenennung geprüft wurde.
+FREIGABE-BEDINGUNG: Dieser Block wird AUTOMATISCH freigegeben, sobald BILD 10 vollständig fertig erzeugt, exakt als `Bild 10.png` umbenannt und die Umbenennung geprüft wurde. KEIN weiteres Go und KEINE Nutzerantwort abwarten.
 STYLE-REFERENZ: Verwende das bereits fertig erzeugte `Bild 00.png` direkt als verbindliche visuelle Vorlage für dieses Szenenbild.
 Behalte Zeichen-/Renderstil, Farbwelt, Figurenmerkmale, Proportionen, Lichtstimmung und Detailqualität von Bild 00 bei.
 Den Cover-Hook-Text nicht kopieren, außer der folgende Szenenprompt verlangt ausdrücklich sichtbaren Text.
 GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD 11.
 Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.
 Nach vollständigem Abschluss dieses Bildes: sofort exakt in `Bild 11.png` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.
-ERST NACH DIESER PRÜFUNG darf der direkt nächste nummerierte Bildblock freigegeben und gestartet werden.
+SOBALD DIESE PRÜFUNG ERFOLGREICH IST: den direkt nächsten nummerierten Bildblock SOFORT AUTOMATISCH starten. NICHT auf `Go`, `Weiter`, `OK` oder irgendeine Nutzerantwort warten.
 
 Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. The main character extracts one small useful note from a large red criticism speech bubble while refusing a huge symbolic identity stamp that would turn one comment into a judgment about the whole person. Include exactly this visible German text: "INFO ≠ URTEIL". No other readable words.
 
@@ -231,14 +238,14 @@ Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media e
 BILD 12 – SZENE 12 – GOOGLE-FLOW-PROMPT
 ZIEL: SZENE 12
 DATEINAME: Bild 12.png
-FREIGABE-BEDINGUNG: Dieser Block ist GESPERRT, bis BILD 11 vollständig fertig erzeugt, exakt als `Bild 11.png` umbenannt und die Umbenennung geprüft wurde.
+FREIGABE-BEDINGUNG: Dieser Block wird AUTOMATISCH freigegeben, sobald BILD 11 vollständig fertig erzeugt, exakt als `Bild 11.png` umbenannt und die Umbenennung geprüft wurde. KEIN weiteres Go und KEINE Nutzerantwort abwarten.
 STYLE-REFERENZ: Verwende das bereits fertig erzeugte `Bild 00.png` direkt als verbindliche visuelle Vorlage für dieses Szenenbild.
 Behalte Zeichen-/Renderstil, Farbwelt, Figurenmerkmale, Proportionen, Lichtstimmung und Detailqualität von Bild 00 bei.
 Den Cover-Hook-Text nicht kopieren, außer der folgende Szenenprompt verlangt ausdrücklich sichtbaren Text.
 GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD 12.
 Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.
 Nach vollständigem Abschluss dieses Bildes: sofort exakt in `Bild 12.png` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.
-ERST NACH DIESER PRÜFUNG darf der direkt nächste nummerierte Bildblock freigegeben und gestartet werden.
+SOBALD DIESE PRÜFUNG ERFOLGREICH IST: den direkt nächsten nummerierten Bildblock SOFORT AUTOMATISCH starten. NICHT auf `Go`, `Weiter`, `OK` oder irgendeine Nutzerantwort warten.
 
 Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. The character deliberately stores several concrete soft-green positive feedback cards in a neat visible folder or board, turning vague positivity into accessible evidence for later. Include exactly this visible German text: "POSITIVES SICHTBAR MACHEN". No other readable words.
 
@@ -246,14 +253,14 @@ Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media e
 BILD 13 – SZENE 13 – GOOGLE-FLOW-PROMPT
 ZIEL: SZENE 13
 DATEINAME: Bild 13.png
-FREIGABE-BEDINGUNG: Dieser Block ist GESPERRT, bis BILD 12 vollständig fertig erzeugt, exakt als `Bild 12.png` umbenannt und die Umbenennung geprüft wurde.
+FREIGABE-BEDINGUNG: Dieser Block wird AUTOMATISCH freigegeben, sobald BILD 12 vollständig fertig erzeugt, exakt als `Bild 12.png` umbenannt und die Umbenennung geprüft wurde. KEIN weiteres Go und KEINE Nutzerantwort abwarten.
 STYLE-REFERENZ: Verwende das bereits fertig erzeugte `Bild 00.png` direkt als verbindliche visuelle Vorlage für dieses Szenenbild.
 Behalte Zeichen-/Renderstil, Farbwelt, Figurenmerkmale, Proportionen, Lichtstimmung und Detailqualität von Bild 00 bei.
 Den Cover-Hook-Text nicht kopieren, außer der folgende Szenenprompt verlangt ausdrücklich sichtbaren Text.
 GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD 13.
 Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.
 Nach vollständigem Abschluss dieses Bildes: sofort exakt in `Bild 13.png` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.
-Dies ist das letzte Bild. Erst nach abgeschlossener Umbenennung von Bild 13 darf der Abschluss-Schritt unten ausgeführt werden.
+Dies ist das letzte Bild. Nach abgeschlossener Umbenennung von Bild 13 den Abschluss-Schritt unten AUTOMATISCH ausführen. Keine weitere Nutzerbestätigung verlangen.
 
 Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. Quiet final composition: the main character stands before a balanced evidence board with many feedback cards. The red criticism card remains present but is no longer oversized; the character calmly weighs all evidence. Include exactly this visible German text: "LAUTER ≠ WAHRER". No other readable words.
 
@@ -262,6 +269,7 @@ ABSCHLUSS – ERST JETZT GEMEINSAM IN EINEN ORDNER
 
 DIESER ABSCHLUSS DARF ERST BEGINNEN, WENN BILD 13 VOLLSTÄNDIG FERTIG UND ALS `Bild 13.png` UMBENANNT IST.
 Vorher darf KEIN Bild in den gemeinsamen Sammelordner verschoben werden.
+Für diesen Abschluss ist KEIN neues Go und KEINE neue Nutzerbestätigung erforderlich. Nach dem letzten korrekt umbenannten Bild automatisch fortfahren.
 
 FESTE DATEIBENENNUNG:
 - Bild 00 = COVER → Dateiname `Bild 00.png`
