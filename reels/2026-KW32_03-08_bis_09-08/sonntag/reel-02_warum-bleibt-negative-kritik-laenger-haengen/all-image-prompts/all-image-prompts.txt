@@ -1,0 +1,144 @@
+ALLE BILDPROMPTS – COVER UND SZENEN
+
+BILD 00 – COVER – BILDPROMPT
+ZIEL: COVER
+DATEINAME NACH ERZEUGUNG: Bild 00.png
+GOOGLE FLOW: Erzeuge jetzt NUR dieses eine Bild mit Image 3 anhand des folgenden Prompts. Sobald es fertig ist, benenne es SOFORT in `Bild 00.png` um. Erst danach darfst du zum nächsten Bildprompt weitergehen.
+
+Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. Cover composition: the main character sits with a phone while many small soft-green positive comment cards float calmly around them. One single red critical comment card sits much closer to the face and captures the character's gaze. The negative card should feel attention-grabbing without being grotesque or threatening. Make clear that the visual contrast is psychological, not a literal numerical law. Include exactly this large visible German headline: "WARUM BLEIBT DAS HÄNGEN?". No other readable words. Strong thumbnail hierarchy, clean background.
+
+
+BILD 01 – SZENE 1 – BILDPROMPT
+ZIEL: SZENE 1
+DATEINAME NACH ERZEUGUNG: Bild 01.png
+GOOGLE FLOW: Erzeuge jetzt NUR dieses eine Bild mit Image 3 anhand des folgenden Prompts für Szene 1. Sobald es fertig ist, benenne es SOFORT in `Bild 01.png` um. Erst danach darfst du zum nächsten Bildprompt weitergehen.
+
+Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. The main character stands among many small soft-green positive comment cards, but one single red critical comment card is much closer to the face and dominates attention. Make the contrast immediately understandable without implying an exact scientific ratio. Include exactly this visible German text: "WARUM BLEIBT DAS HÄNGEN?". No other readable words.
+
+
+BILD 02 – SZENE 2 – BILDPROMPT
+ZIEL: SZENE 2
+DATEINAME NACH ERZEUGUNG: Bild 02.png
+GOOGLE FLOW: Erzeuge jetzt NUR dieses eine Bild mit Image 3 anhand des folgenden Prompts für Szene 2. Sobald es fertig ist, benenne es SOFORT in `Bild 02.png` um. Erst danach darfst du zum nächsten Bildprompt weitergehen.
+
+Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. A wall contains many feedback cards. A single red critical card receives the character's immediate gaze and a subtle symbolic spotlight, while positive cards remain visible around it. Include exactly this visible German text: "NEGATIV FÄLLT AUF". No other readable words.
+
+
+BILD 03 – SZENE 3 – BILDPROMPT
+ZIEL: SZENE 3
+DATEINAME NACH ERZEUGUNG: Bild 03.png
+GOOGLE FLOW: Erzeuge jetzt NUR dieses eine Bild mit Image 3 anhand des folgenden Prompts für Szene 3. Sobald es fertig ist, benenne es SOFORT in `Bild 03.png` um. Erst danach darfst du zum nächsten Bildprompt weitergehen.
+
+Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. Show a physical balance scale: several equally sized soft-green positive feedback cards on one side, one red critical feedback card on the other side, with the red side visually feeling heavier as a psychological metaphor. Include exactly this visible German text: "MEHR GEWICHT". No other readable words.
+
+
+BILD 04 – SZENE 4 – BILDPROMPT
+ZIEL: SZENE 4
+DATEINAME NACH ERZEUGUNG: Bild 04.png
+GOOGLE FLOW: Erzeuge jetzt NUR dieses eine Bild mit Image 3 anhand des folgenden Prompts für Szene 4. Sobald es fertig ist, benenne es SOFORT in `Bild 04.png` um. Erst danach darfst du zum nächsten Bildprompt weitergehen.
+
+Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. The character walks through a calm everyday environment with pleasant neutral signals, but instantly notices one clear red warning symbol near the path. Present this only as an attention-and-decision metaphor, not a literal evolutionary scene. No readable text anywhere.
+
+
+BILD 05 – SZENE 5 – BILDPROMPT
+ZIEL: SZENE 5
+DATEINAME NACH ERZEUGUNG: Bild 05.png
+GOOGLE FLOW: Erzeuge jetzt NUR dieses eine Bild mit Image 3 anhand des folgenden Prompts für Szene 5. Sobald es fertig ist, benenne es SOFORT in `Bild 05.png` um. Erst danach darfst du zum nächsten Bildprompt weitergehen.
+
+Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. The main character faces a large board full of feedback. Their eyes and body turn first toward one red criticism card even though many soft-green positive cards surround it. Include exactly this visible German text: "KRITIK SPRINGT INS AUGE". No other readable words.
+
+
+BILD 06 – SZENE 6 – BILDPROMPT
+ZIEL: SZENE 6
+DATEINAME NACH ERZEUGUNG: Bild 06.png
+GOOGLE FLOW: Erzeuge jetzt NUR dieses eine Bild mit Image 3 anhand des folgenden Prompts für Szene 6. Sobald es fertig ist, benenne es SOFORT in `Bild 06.png` um. Erst danach darfst du zum nächsten Bildprompt weitergehen.
+
+Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. Show a memory metaphor: one red criticism card is sharply etched with crisp visual detail inside a translucent memory bubble, while other feedback cards remain softer and less detailed in the background. Include exactly this visible German text: "BLEIBT LEBHAFT". No other readable words.
+
+
+BILD 07 – SZENE 7 – BILDPROMPT
+ZIEL: SZENE 7
+DATEINAME NACH ERZEUGUNG: Bild 07.png
+GOOGLE FLOW: Erzeuge jetzt NUR dieses eine Bild mit Image 3 anhand des folgenden Prompts für Szene 7. Sobald es fertig ist, benenne es SOFORT in `Bild 07.png` um. Erst danach darfst du zum nächsten Bildprompt weitergehen.
+
+Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. At night, the same main character sits on the edge of a bed while one red sentence card circles repeatedly around the head in a clean loop, clearly representing repetitive thinking. Include exactly this visible German text: "NOCHMAL. NOCHMAL.". No other readable words.
+
+
+BILD 08 – SZENE 8 – BILDPROMPT
+ZIEL: SZENE 8
+DATEINAME NACH ERZEUGUNG: Bild 08.png
+GOOGLE FLOW: Erzeuge jetzt NUR dieses eine Bild mit Image 3 anhand des folgenden Prompts für Szene 8. Sobald es fertig ist, benenne es SOFORT in `Bild 08.png` um. Erst danach darfst du zum nächsten Bildprompt weitergehen.
+
+Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. A tiny real red criticism note lies on a desk, but it casts an enormous symbolic shadow over the main character, showing how mental attention can inflate perceived importance. No readable text anywhere.
+
+
+BILD 09 – SZENE 9 – BILDPROMPT
+ZIEL: SZENE 9
+DATEINAME NACH ERZEUGUNG: Bild 09.png
+GOOGLE FLOW: Erzeuge jetzt NUR dieses eine Bild mit Image 3 anhand des folgenden Prompts für Szene 9. Sobald es fertig ist, benenne es SOFORT in `Bild 09.png` um. Erst danach darfst du zum nächsten Bildprompt weitergehen.
+
+Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. Several different adults stand together looking at the same mixed feedback board; their facial expressions and attention differ, showing that responses vary across people and context. Keep one coherent scene, not separate panels. Include exactly this visible German text: "NICHT BEI ALLEN GLEICH". No other readable words.
+
+
+BILD 10 – SZENE 10 – BILDPROMPT
+ZIEL: SZENE 10
+DATEINAME NACH ERZEUGUNG: Bild 10.png
+GOOGLE FLOW: Erzeuge jetzt NUR dieses eine Bild mit Image 3 anhand des folgenden Prompts für Szene 10. Sobald es fertig ist, benenne es SOFORT in `Bild 10.png` um. Erst danach darfst du zum nächsten Bildprompt weitergehen.
+
+Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. The main character calmly examines one red criticism card with a magnifying glass. Beside it are three simple nonverbal check symbols representing concrete, relevant, and evidence-based evaluation. Include exactly this visible German text: "IST DIE KRITIK BRAUCHBAR?". No other readable words.
+
+
+BILD 11 – SZENE 11 – BILDPROMPT
+ZIEL: SZENE 11
+DATEINAME NACH ERZEUGUNG: Bild 11.png
+GOOGLE FLOW: Erzeuge jetzt NUR dieses eine Bild mit Image 3 anhand des folgenden Prompts für Szene 11. Sobald es fertig ist, benenne es SOFORT in `Bild 11.png` um. Erst danach darfst du zum nächsten Bildprompt weitergehen.
+
+Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. The main character extracts one small useful note from a large red criticism speech bubble while refusing a huge symbolic identity stamp that would turn one comment into a judgment about the whole person. Include exactly this visible German text: "INFO ≠ URTEIL". No other readable words.
+
+
+BILD 12 – SZENE 12 – BILDPROMPT
+ZIEL: SZENE 12
+DATEINAME NACH ERZEUGUNG: Bild 12.png
+GOOGLE FLOW: Erzeuge jetzt NUR dieses eine Bild mit Image 3 anhand des folgenden Prompts für Szene 12. Sobald es fertig ist, benenne es SOFORT in `Bild 12.png` um. Erst danach darfst du zum nächsten Bildprompt weitergehen.
+
+Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. The character deliberately stores several concrete soft-green positive feedback cards in a neat visible folder or board, turning vague positivity into accessible evidence for later. Include exactly this visible German text: "POSITIVES SICHTBAR MACHEN". No other readable words.
+
+
+BILD 13 – SZENE 13 – BILDPROMPT
+ZIEL: SZENE 13
+DATEINAME NACH ERZEUGUNG: Bild 13.png
+GOOGLE FLOW: Erzeuge jetzt NUR dieses eine Bild mit Image 3 anhand des folgenden Prompts für Szene 13. Sobald es fertig ist, benenne es SOFORT in `Bild 13.png` um. Erst danach ist die Bildgenerierung abgeschlossen.
+
+Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. Quiet final composition: the main character stands before a balanced evidence board with many feedback cards. The red criticism card remains present but is no longer oversized; the character calmly weighs all evidence. Include exactly this visible German text: "LAUTER ≠ WAHRER". No other readable words.
+
+
+GOOGLE FLOW KI-AGENT – VERBINDLICHER ABLAUF FÜR DIE BILDGENERIERUNG
+
+ACHTUNG: Diese Arbeitsanweisung richtet sich ausdrücklich an den Google-Flow-KI-Agenten, der die Bilder erzeugt.
+
+ARBEITE IMMER BILD FÜR BILD – NIE MEHRERE BILDER AUF EINMAL:
+1. Lies immer nur den nächsten einzelnen Bildprompt. Direkt darüber stehen Bildnummer, Ziel und exakter Dateiname.
+2. Erzeuge genau EIN Bild mit Image 3.
+3. Sobald dieses Bild vollständig erzeugt ist, benenne es SOFORT exakt mit dem dort angegebenen Dateinamen um.
+4. Erst danach darfst du zum nächsten Prompt fortfahren.
+5. Beginne bei Bild 00 = Cover und arbeite streng chronologisch bis Bild 13 = Szene 13.
+6. Wiederhole: PROMPT LESEN → GENAU EIN BILD ERZEUGEN → SOFORT UMBENENNEN → ERST DANN ZUM NÄCHSTEN PROMPT.
+7. Prüfe nach Bild 13 die komplette Reihe: keine Nummer fehlt, keine Nummer ist doppelt und keine Nummer wurde vertauscht.
+8. ERST WENN ALLE 14 Bilder fertig erzeugt und korrekt umbenannt sind, lege ALLE fertigen Bilder gemeinsam in `00-bildprompts/00-ALLE-BILDER-HIER-REIN/` beziehungsweise technisch `inbox/numbered-images/`.
+9. Nicht auf einzelne Cover- oder Szenenordner verteilen.
+
+FESTE DATEIBENENNUNG:
+- Bild 00 = COVER → Dateiname `Bild 00.png`
+- Bild 01 = SZENE 1 → Dateiname `Bild 01.png`
+- Bild 02 = SZENE 2 → Dateiname `Bild 02.png`
+- Bild 03 = SZENE 3 → Dateiname `Bild 03.png`
+- Bild 04 = SZENE 4 → Dateiname `Bild 04.png`
+- Bild 05 = SZENE 5 → Dateiname `Bild 05.png`
+- Bild 06 = SZENE 6 → Dateiname `Bild 06.png`
+- Bild 07 = SZENE 7 → Dateiname `Bild 07.png`
+- Bild 08 = SZENE 8 → Dateiname `Bild 08.png`
+- Bild 09 = SZENE 9 → Dateiname `Bild 09.png`
+- Bild 10 = SZENE 10 → Dateiname `Bild 10.png`
+- Bild 11 = SZENE 11 → Dateiname `Bild 11.png`
+- Bild 12 = SZENE 12 → Dateiname `Bild 12.png`
+- Bild 13 = SZENE 13 → Dateiname `Bild 13.png`
