@@ -20,7 +20,10 @@
 - Format immer **vertikal 9:16**.
 - Bildtext nur exakt wie im Prompt. Keine Zusatzwörter, Logos oder Wasserzeichen.
 - Dieselbe Hauptperson in allen Szenen: kurze dunkle Haare, ockerfarbener Hoodie, dunkle Hose.
-- Rohbilder zuerst nach `inbox/images/` speichern: `cover.png`, `scene-01.png` bis `scene-13.png`.
+- **Alle 14 erzeugten Bilder bleiben zusammen in EINEM Sammelordner:** `00-bildprompts/00-ALLE-BILDER-HIER-REIN/`.
+- **Nach der Generierung jedes Bild chronologisch umbenennen:** `Bild 00` = Cover, `Bild 01` = Szene 1, `Bild 02` = Szene 2 und fortlaufend bis `Bild 13` = Szene 13.
+- Standard-Dateinamen bei PNG: `Bild 00.png`, `Bild 01.png`, `Bild 02.png` ... `Bild 13.png`.
+- Bilder NICHT manuell in einzelne Szenenordner verteilen. Die Pipeline erkennt anhand der Nummer das vorgesehene Ziel.
 - Danach jedes Bild öffnen, sichtbaren Inhalt prüfen und die bestehende Zwei-Pass-Asset-QC durchführen.
 - Unter 0,90 Konfidenz keine Zuordnung erzwingen.
 - Erst nach bestandener Sichtprüfung in die finalen Cover-/Szenenpfade übernehmen.
@@ -33,7 +36,8 @@ Materialisiere den normalen Reel-Workspace anhand der vorhandenen Pipeline und d
 - Verwende **keine alten `content/...`-Pfade**, ausschließlich `reels/...`.
 - Erhalte `sourceQualitySchemaVersion: 2`.
 - Danach `npm run export:prompts -- --dir "reels/2026-KW32_03-08_bis_09-08/freitag/reel-01_warum-verfolgen-dich-peinliche-erinnerungen" --strict` ausführen.
-- Dann erst die 14 Bilder mit Image 3 wirklich generieren.
+- Lies die erzeugte `all-image-prompts/all-image-prompts.txt` vollständig. Ganz am Ende steht die verbindliche Bildnummerierung nochmals explizit.
+- Dann erst die 14 Bilder mit Image 3 wirklich generieren, chronologisch nummerieren und gemeinsam in den Sammelordner legen.
 
 ## Fertiges Voice-over-Script
 
@@ -151,6 +155,27 @@ Vertical 9:16 hand-drawn 2D editorial cartoon. The main character turns away fro
 - Prompt für Image 3:
 Vertical 9:16 mature 2D editorial cartoon. The same main character calmly walks forward while the old red memory bubble behind them becomes smaller because no new thought-arrows are feeding or enlarging it. Quiet final image, no cure promise. Include exactly the German text "NICHT WEITER FÜTTERN". No extra words, no logos, no watermark.
 
+## Verbindliche Nummerierung nach der Generierung
+
+Alle erzeugten Bilder bleiben gemeinsam im Sammelordner `00-bildprompts/00-ALLE-BILDER-HIER-REIN/`.
+
+- `Bild 00` = Cover
+- `Bild 01` = Szene 1
+- `Bild 02` = Szene 2
+- `Bild 03` = Szene 3
+- `Bild 04` = Szene 4
+- `Bild 05` = Szene 5
+- `Bild 06` = Szene 6
+- `Bild 07` = Szene 7
+- `Bild 08` = Szene 8
+- `Bild 09` = Szene 9
+- `Bild 10` = Szene 10
+- `Bild 11` = Szene 11
+- `Bild 12` = Szene 12
+- `Bild 13` = Szene 13
+
+Diese Reihenfolge ist verbindlich. Jedes Bild erhält genau eine Nummer. Keine Nummer doppelt verwenden, keine Nummer vertauschen und die Bilder nicht vorab auf einzelne Szenenordner verteilen.
+
 ## Quellen
 
 Die vorhandene `sources/sources.md` ist verbindlich. Keine Quellen entfernen oder durch erfundene Quellen ersetzen.
@@ -186,6 +211,7 @@ npm run render:reel -- --dir "reels/2026-KW32_03-08_bis_09-08/freitag/reel-01_wa
 Nicht stoppen, sobald Prompts existieren. Dieser Auftrag verlangt ausdrücklich:
 1. Standard-Reel-Dateien vervollständigen.
 2. Cover + 13 Szenen **mit Image 3 erzeugen**.
-3. Alle Bilder visuell prüfen.
-4. Bestehende QC-Gates bestehen.
-5. Nach Eintreffen des Voice-overs Audio, Word-Sync und Render fertigstellen.
+3. Alle 14 Bilder gemeinsam nach `Bild 00` bis `Bild 13` benennen und im Sammelordner lassen.
+4. Alle Bilder visuell prüfen.
+5. Bestehende QC-Gates bestehen.
+6. Nach Eintreffen des Voice-overs Audio, Word-Sync und Render fertigstellen.
