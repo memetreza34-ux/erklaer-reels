@@ -189,7 +189,7 @@ function formatFlowExecutionContract(prompts) {
   ].join('\n');
 }
 
-function formatDirectGenerationInstruction(number, previousNumber, isCover) {
+function formatDirectGenerationInstruction(number, previousNumber, isCover, isLast) {
   const gate = previousNumber === null
     ? 'FREIGABE: Dies ist der einzige jetzt freigegebene Bildblock.'
     : `FREIGABE-BEDINGUNG: Dieser Block ist GESPERRT, bis BILD ${previousNumber} vollständig fertig erzeugt, exakt als \`Bild ${previousNumber}.png\` umbenannt und die Umbenennung geprüft wurde.`;
@@ -206,29 +206,34 @@ function formatDirectGenerationInstruction(number, previousNumber, isCover) {
       'Den Cover-Hook-Text nicht kopieren, außer der folgende Szenenprompt verlangt ausdrücklich sichtbaren Text.'
     ];
 
+  const releaseInstruction = isLast
+    ? `Dies ist das letzte Bild. Erst nach abgeschlossener Umbenennung von Bild ${number} darf der Abschluss-Schritt unten ausgeführt werden.`
+    : 'ERST NACH DIESER PRÜFUNG darf der direkt nächste nummerierte Bildblock freigegeben und gestartet werden.';
+
   return [
     gate,
     ...styleInstruction,
     `GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD ${number}.`,
     'Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.',
     `Nach vollständigem Abschluss dieses Bildes: sofort exakt in \`Bild ${number}.png\` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.`,
-    'ERST NACH DIESER PRÜFUNG darf der direkt nächste nummerierte Bildblock freigegeben und gestartet werden.'
+    releaseInstruction
   ].join('\n');
 }
 
-function formatDirectPromptSection(entry) {
+function formatDirectPromptSection(entry, index, prompts) {
   const body = entry.prompt || '[BILDPROMPT FEHLT]';
   const value = entry.kind === 'cover' ? 0 : entry.order;
   const number = padImageNumber(value);
   const previousNumber = value === 0 ? null : padImageNumber(value - 1);
   const isCover = entry.kind === 'cover';
+  const isLast = index === prompts.length - 1;
 
   if (isCover) {
     return [
       `BILD ${number} – COVER – GOOGLE-FLOW-PROMPT`,
       'ZIEL: COVER + STYLE-VORLAGE FÜR DAS GESAMTE REEL',
       `DATEINAME: Bild ${number}.png`,
-      formatDirectGenerationInstruction(number, previousNumber, true),
+      formatDirectGenerationInstruction(number, previousNumber, true, isLast),
       '',
       body
     ].join('\n');
@@ -238,14 +243,14 @@ function formatDirectPromptSection(entry) {
     `BILD ${number} – SZENE ${entry.order} – GOOGLE-FLOW-PROMPT`,
     `ZIEL: SZENE ${entry.order}`,
     `DATEINAME: Bild ${number}.png`,
-    formatDirectGenerationInstruction(number, previousNumber, false),
+    formatDirectGenerationInstruction(number, previousNumber, false, isLast),
     '',
     body
   ].join('\n');
 }
 
 export function formatImagePromptBundle(prompts) {
-  const sections = prompts.map(formatDirectPromptSection);
+  const sections = prompts.map((entry, index) => formatDirectPromptSection(entry, index, prompts));
   const executionContract = formatFlowExecutionContract(prompts);
   const numberingContract = formatImageNumberingContract(prompts);
   return `ALLE BILDPROMPTS – GOOGLE FLOW – STRENG EINZELN + COVER ALS STYLE-VORLAGE\n\n${executionContract}\n\n\n${sections.join('\n\n\n')}\n\n\n${numberingContract}\n`;
