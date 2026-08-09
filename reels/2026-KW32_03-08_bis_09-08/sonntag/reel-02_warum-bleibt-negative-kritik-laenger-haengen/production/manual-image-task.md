@@ -7,26 +7,57 @@
 
 **Antigravity, Codex und andere Repo-Agenten erzeugen keine Cover- oder Szenenbilder.** Sie bereiten nur Reel, Bildprompts, Nummerierung und spätere Pipeline-Schritte vor.
 
-**Der Nutzer startet die Bildgenerierung selbst in Google Flow.** Dafür kopiert er die komplette Datei
+**Der Nutzer startet die Bildgenerierung selbst in Google Flow**, indem er die komplette Datei
 
 `all-image-prompts/all-image-prompts.txt`
 
-auf einmal in Google Flow und sendet sie ab.
+auf einmal einfügt und einmal absendet.
 
-Ab diesem Moment ist **Google Flow der Bildgenerator** und soll den kompletten eingefügten Auftrag ohne Bestätigungstext ausführen.
+Danach ist **Google Flow der Bildgenerator**, aber mit einer harten seriellen Sperre.
 
-## Ablauf in Google Flow
+## Unverhandelbare serielle Regel
 
-1. Nutzer kopiert die komplette `all-image-prompts.txt` in Google Flow und sendet sie einmal ab.
-2. Google Flow startet sofort mit **Bild 00 = Cover**.
-3. Google Flow erzeugt immer genau ein Bild gleichzeitig.
-4. Nach Bild 00 folgt automatisch Bild 01, danach Bild 02 usw.
-5. Keine Bestätigung, keine Zusammenfassung und keine Rückfrage zwischen den Bildern.
-6. Reihenfolge strikt bis **Bild 13 = Szene 13**.
-7. Dateinamen: `Bild 00.png`, `Bild 01.png`, ... `Bild 13.png`.
-8. Erst wenn alle 14 Bilder fertig sind, vollständige Nummerierung prüfen.
-9. Danach alle Bilder gemeinsam in `00-bildprompts/00-ALLE-BILDER-HIER-REIN/` bzw. technisch `inbox/numbered-images/` legen.
-10. Nicht manuell auf einzelne Cover-/Szenenordner verteilen.
+Google Flow darf **niemals mehrere Bilder gleichzeitig erzeugen** und auch keine späteren Bilder vorab in eine Queue legen.
+
+Für jedes Bild gilt exakt:
+
+**Bild erzeugen → vollständig warten → sofort umbenennen → Umbenennung prüfen → ERST DANN nächstes Bild starten.**
+
+Beispiel:
+
+1. Nur Bild 00 erzeugen.
+2. Warten, bis Bild 00 vollständig fertig ist.
+3. Sofort in `Bild 00.png` umbenennen.
+4. Prüfen, dass `Bild 00.png` wirklich gesetzt ist.
+5. Erst danach Bild 01 starten.
+6. Bild 01 vollständig fertigstellen.
+7. Sofort in `Bild 01.png` umbenennen.
+8. Erst danach Bild 02 starten.
+9. Genau so streng einzeln bis `Bild 13.png`.
+
+Verboten:
+- parallele Bildgenerierung
+- mehrere Prompts gleichzeitig starten
+- Warteschlange/Queue für spätere Bilder
+- nächsten Prompt starten, solange aktuelles Bild noch läuft
+- mehrere fertige, noch unbenannte Bilder sammeln
+
+## Ordner erst ganz am Ende
+
+Während Bild 00 bis Bild 13 erzeugt werden, wird **noch kein Bild** in den gemeinsamen Sammelordner verschoben.
+
+Erst wenn:
+- alle 14 Bilder vollständig erzeugt sind,
+- jedes Bild direkt nach seiner Erzeugung korrekt benannt wurde,
+- die Reihe `Bild 00.png` bis `Bild 13.png` vollständig geprüft wurde,
+
+werden **alle 14 Bilder gemeinsam auf einmal** in
+
+`00-bildprompts/00-ALLE-BILDER-HIER-REIN/`
+
+bzw. technisch `inbox/numbered-images/` gelegt.
+
+Nicht vorher. Nicht einzeln während der Generierung. Nicht auf einzelne Cover-/Szenenordner verteilen.
 
 ## Danach
 
