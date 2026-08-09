@@ -41,7 +41,7 @@ async function createFixture({ missingCoverPrompt = false, missingSecondPrompt =
   return root;
 }
 
-test('legt den Sammelordner und Hinweise fuer serielle Generierung plus Cover-Stilvorlage an', async () => {
+test('legt Hinweise fuer seriellen autonomen Durchlauf ohne weiteres Nutzer-Go an', async () => {
   const root = await createFixture();
   const paths = await ensureImagePromptBundleDirectory(root);
   const placeholder = await readFile(paths.file, 'utf8');
@@ -50,20 +50,21 @@ test('legt den Sammelordner und Hinweise fuer serielle Generierung plus Cover-St
   assert.match(paths.file, /all-image-prompts[\\/]all-image-prompts\.txt$/);
   assert.match(placeholder, /Cover und Szenen/);
   assert.match(readme, /Bild 00 = Cover/);
-  assert.match(readme, /harte serielle Sperre/);
+  assert.match(readme, /harte serielle Sperre und autonomem Durchlauf/);
   assert.match(readme, /nur \*\*eine einzige Bildgenerierung aktiv\*\*/);
-  assert.match(readme, /Kein Parallelisieren, keine Warteschlange, kein Vorladen/);
+  assert.match(readme, /kein weiteres `Go`, `Weiter`/);
+  assert.match(readme, /automatisch ohne Nutzerinteraktion Bild 01 starten/);
+  assert.match(readme, /keine Pause zum Warten auf den Nutzer/);
+  assert.match(readme, /Freigabe des nächsten Blocks erfolgt \*\*automatisch/);
   assert.match(readme, /Bild 00 ist zusätzlich die verbindliche visuelle Stilvorlage/);
-  assert.match(readme, /Cover enthält den sichtbaren Hook zum Reel-Thema/);
-  assert.match(readme, /gleicher Zeichen-\/Renderstil/);
 });
 
-test('exportiert Google-Flow-Gesamtauftrag mit serieller Sperre, Cover-Hook und Style-Referenz', async () => {
+test('exportiert Google-Flow-Gesamtauftrag seriell und autonom ohne weiteres Go', async () => {
   const root = await createFixture();
   const result = await buildImagePromptBundle(root, { strict: true });
   const content = await readFile(result.outputFile, 'utf8');
 
-  const execution = content.indexOf('GOOGLE FLOW – HARTE SERIELLE SPERRE – NIEMALS PARALLEL');
+  const execution = content.indexOf('GOOGLE FLOW – HARTE SERIELLE SPERRE + AUTONOMER DURCHLAUF');
   const cover = content.indexOf('BILD 00 – COVER – GOOGLE-FLOW-PROMPT');
   const first = content.indexOf('BILD 01 – SZENE 1 – GOOGLE-FLOW-PROMPT');
   const second = content.indexOf('BILD 02 – SZENE 2 – GOOGLE-FLOW-PROMPT');
@@ -77,34 +78,30 @@ test('exportiert Google-Flow-Gesamtauftrag mit serieller Sperre, Cover-Hook und 
   assert.ok(third > second);
   assert.ok(numbering > third);
 
-  assert.match(content, /ALLE BILDPROMPTS – GOOGLE FLOW – STRENG EINZELN \+ COVER ALS STYLE-VORLAGE/);
-  assert.match(content, /NICHT gleichzeitig und NICHT als Batch/);
+  assert.match(content, /ALLE BILDPROMPTS – GOOGLE FLOW – STRENG EINZELN \+ AUTONOM OHNE WEITERES GO \+ COVER ALS STYLE-VORLAGE/);
+  assert.match(content, /DAS EINMALIGE ABSENDEN DIESER KOMPLETTEN NACHRICHT IST DIE VOLLSTÄNDIGE FREIGABE/);
+  assert.match(content, /FRAGE AB JETZT NICHT MEHR NACH GO, WEITER, BESTÄTIGUNG, FREIGABE, ERLAUBNIS ODER EINER WEITEREN NUTZERANTWORT/);
+  assert.match(content, /WARTE ZWISCHEN DEN BILDERN NIEMALS AUF EINE NACHRICHT DES NUTZERS/);
+  assert.match(content, /FERTIGSTELLUNG UND KORREKTE UMBENENNUNG DES AKTUELLEN BILDES IST AUTOMATISCH DAS STARTSIGNAL/);
   assert.match(content, /ZU JEDEM ZEITPUNKT DARF GENAU EINE EINZIGE BILDGENERIERUNG AKTIV SEIN/);
-  assert.match(content, /STARTE NIEMALS DAS NÄCHSTE BILD/);
-  assert.match(content, /Warteschlange oder Queue/);
-  assert.match(content, /WARTE, bis diese eine Bildgenerierung vollständig abgeschlossen ist/);
-  assert.match(content, /WARTE, bis auch die Umbenennung abgeschlossen ist/);
-  assert.match(content, /ERST JETZT ist der nächste nummerierte Bildblock freigegeben/);
+  assert.match(content, /SOFORT SELBSTSTÄNDIG MIT DEM NÄCHSTEN BILD WEITERMACHEN/);
+  assert.match(content, /NICHT auf `Go`, `Weiter`, `OK` oder irgendeine Nutzerantwort warten/);
+  assert.match(content, /Keine weitere Nutzerbestätigung verlangen/);
 
   assert.match(content, /BILD 00 = COVER \+ VERBINDLICHE STILVORLAGE/);
   assert.match(content, /sichtbare deutsche Text ist der HOOK des Reels/);
   assert.match(content, /verwende genau dieses fertige Cover als visuelle Referenz\/Vorlage für ALLE folgenden Szenen/i);
   assert.match(content, /denselben Zeichen-\/Renderstil, dieselbe Farbwelt, dieselben Figurenmerkmale/);
-  assert.match(content, /Übernimm den Cover-Hook-Text NICHT automatisch in spätere Szenen/);
 
   assert.match(content, /BILD 00 – COVER – GOOGLE-FLOW-PROMPT\nZIEL: COVER \+ STYLE-VORLAGE FÜR DAS GESAMTE REEL\nDATEINAME: Bild 00\.png/);
   assert.match(content, /BILD 01 – SZENE 1 – GOOGLE-FLOW-PROMPT\nZIEL: SZENE 1\nDATEINAME: Bild 01\.png/);
   assert.match(content, /BILD 02 – SZENE 2 – GOOGLE-FLOW-PROMPT\nZIEL: SZENE 2\nDATEINAME: Bild 02\.png/);
   assert.match(content, /BILD 03 – SZENE 3 – GOOGLE-FLOW-PROMPT\nZIEL: SZENE 3\nDATEINAME: Bild 03\.png/);
 
-  assert.match(content, /COVER-REGEL: Dieses Bild ist das echte Cover UND die verbindliche visuelle Stilvorlage/);
-  assert.match(content, /HOOK-REGEL: Der im folgenden Cover-Prompt verlangte sichtbare deutsche Text muss exakt und gut lesbar/);
-  assert.match(content, /STYLE-REFERENZ: Verwende das bereits fertig erzeugte `Bild 00\.png` direkt als verbindliche visuelle Vorlage/);
-  assert.match(content, /Den Cover-Hook-Text nicht kopieren/);
-
-  assert.match(content, /FREIGABE: Dies ist der einzige jetzt freigegebene Bildblock/);
-  assert.match(content, /FREIGABE-BEDINGUNG: Dieser Block ist GESPERRT, bis BILD 00 vollständig fertig erzeugt, exakt als `Bild 00\.png` umbenannt/);
-  assert.match(content, /FREIGABE-BEDINGUNG: Dieser Block ist GESPERRT, bis BILD 01 vollständig fertig erzeugt, exakt als `Bild 01\.png` umbenannt/);
+  assert.match(content, /FREIGABE: Dies ist der einzige jetzt freigegebene Bildblock\. Das einmalige Absenden des Gesamtprompts ist bereits die Freigabe/);
+  assert.match(content, /FREIGABE-BEDINGUNG: Dieser Block wird AUTOMATISCH freigegeben, sobald BILD 00 vollständig fertig erzeugt/);
+  assert.match(content, /KEIN weiteres Go und KEINE Nutzerantwort abwarten/);
+  assert.match(content, /SOBALD DIESE PRÜFUNG ERFOLGREICH IST: den direkt nächsten nummerierten Bildblock SOFORT AUTOMATISCH starten/);
   assert.match(content, /Während diese Generierung läuft: KEIN anderes Bild starten/);
   assert.match(content, /sofort exakt in `Bild 03\.png` umbenennen und prüfen/);
 
@@ -114,7 +111,7 @@ test('exportiert Google-Flow-Gesamtauftrag mit serieller Sperre, Cover-Hook und 
   assert.match(content, /Prompt für die dritte Szene\./);
   assert.match(content, /Bild 00 = COVER → Dateiname `Bild 00\.png`/);
   assert.match(content, /Bild 03 = SZENE 3 → Dateiname `Bild 03\.png`/);
-  assert.match(content, /ERST NACH DIESER VOLLSTÄNDIGEN PRÜFUNG/);
+  assert.match(content, /Für diesen Abschluss ist KEIN neues Go/);
   assert.match(content, /00-ALLE-BILDER-HIER-REIN/);
 
   assert.doesNotMatch(content, /3ER-STEPS|3er-Step|3er-Batches/);
