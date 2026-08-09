@@ -41,7 +41,7 @@ async function createFixture({ missingCoverPrompt = false, missingSecondPrompt =
   return root;
 }
 
-test('legt den Sammelordner und die One-Paste-Hinweise an', async () => {
+test('legt den Sammelordner und die Hinweise für strikt serielle Generierung an', async () => {
   const root = await createFixture();
   const paths = await ensureImagePromptBundleDirectory(root);
   const placeholder = await readFile(paths.file, 'utf8');
@@ -50,22 +50,22 @@ test('legt den Sammelordner und die One-Paste-Hinweise an', async () => {
   assert.match(paths.file, /all-image-prompts[\\/]all-image-prompts\.txt$/);
   assert.match(placeholder, /Cover und Szenen/);
   assert.match(readme, /Bild 00 = Cover/);
-  assert.match(readme, /komplette Datei auf einmal in Google Flow/);
-  assert.match(readme, /sofort bei Bild 00 starten/);
-  assert.match(readme, /Regeln für Antigravity, Codex oder andere Repo-Agenten gehören \*\*nicht\*\* in diese kopierbare Datei/);
+  assert.match(readme, /harte serielle Sperre/);
+  assert.match(readme, /nur \*\*eine einzige Bildgenerierung aktiv\*\*/);
+  assert.match(readme, /Kein Parallelisieren, keine Warteschlange, kein Vorladen/);
 });
 
-test('exportiert einen einzigen Google-Flow-Gesamtauftrag mit Autostart und allen Bildblöcken', async () => {
+test('exportiert Google-Flow-Gesamtauftrag mit harter serieller Sperre pro Bild', async () => {
   const root = await createFixture();
   const result = await buildImagePromptBundle(root, { strict: true });
   const content = await readFile(result.outputFile, 'utf8');
 
-  const execution = content.indexOf('GOOGLE FLOW – GESAMTAUFTRAG: STARTE JETZT SOFORT');
+  const execution = content.indexOf('GOOGLE FLOW – HARTE SERIELLE SPERRE – NIEMALS PARALLEL');
   const cover = content.indexOf('BILD 00 – COVER – GOOGLE-FLOW-PROMPT');
   const first = content.indexOf('BILD 01 – SZENE 1 – GOOGLE-FLOW-PROMPT');
   const second = content.indexOf('BILD 02 – SZENE 2 – GOOGLE-FLOW-PROMPT');
   const third = content.indexOf('BILD 03 – SZENE 3 – GOOGLE-FLOW-PROMPT');
-  const numbering = content.indexOf('ABSCHLUSS – DATEIBENENNUNG UND GEMEINSAME ABLAGE');
+  const numbering = content.indexOf('ABSCHLUSS – ERST JETZT GEMEINSAM IN EINEN ORDNER');
 
   assert.ok(execution >= 0);
   assert.ok(cover > execution);
@@ -74,22 +74,25 @@ test('exportiert einen einzigen Google-Flow-Gesamtauftrag mit Autostart und alle
   assert.ok(third > second);
   assert.ok(numbering > third);
 
-  assert.match(content, /ALLE BILDPROMPTS – GOOGLE FLOW ONE-PASTE/);
-  assert.match(content, /Diese komplette Nachricht ist EIN zusammenhängender Auftrag für 4 Bilder/);
-  assert.match(content, /ANTWORTE NICHT mit einer Bestätigung, Zusammenfassung, Erklärung, Anleitung/);
-  assert.match(content, /STARTE STATTDESSEN SOFORT mit der tatsächlichen Bildgenerierung von BILD 00/);
-  assert.match(content, /Beginne jetzt mit BILD 00 = COVER/);
-  assert.match(content, /Danach fahre OHNE Textantwort und OHNE Rückfrage automatisch mit dem direkt nächsten Bildblock fort/);
-  assert.match(content, /Stoppe erst, nachdem alle 4 Bilder von Bild 00 bis Bild 03 erzeugt wurden/);
+  assert.match(content, /ALLE BILDPROMPTS – GOOGLE FLOW – STRENG EINZELN/);
+  assert.match(content, /NICHT gleichzeitig und NICHT als Batch/);
+  assert.match(content, /ZU JEDEM ZEITPUNKT DARF GENAU EINE EINZIGE BILDGENERIERUNG AKTIV SEIN/);
+  assert.match(content, /STARTE NIEMALS DAS NÄCHSTE BILD/);
+  assert.match(content, /Warteschlange oder Queue/);
+  assert.match(content, /WARTE, bis diese eine Bildgenerierung vollständig abgeschlossen ist/);
+  assert.match(content, /WARTE, bis auch die Umbenennung abgeschlossen ist/);
+  assert.match(content, /ERST JETZT ist der nächste nummerierte Bildblock freigegeben/);
 
   assert.match(content, /BILD 00 – COVER – GOOGLE-FLOW-PROMPT\nZIEL: COVER\nDATEINAME: Bild 00\.png/);
   assert.match(content, /BILD 01 – SZENE 1 – GOOGLE-FLOW-PROMPT\nZIEL: SZENE 1\nDATEINAME: Bild 01\.png/);
   assert.match(content, /BILD 02 – SZENE 2 – GOOGLE-FLOW-PROMPT\nZIEL: SZENE 2\nDATEINAME: Bild 02\.png/);
   assert.match(content, /BILD 03 – SZENE 3 – GOOGLE-FLOW-PROMPT\nZIEL: SZENE 3\nDATEINAME: Bild 03\.png/);
 
-  assert.match(content, /GOOGLE FLOW – AKTUELLER SCHRITT: Erzeuge JETZT genau BILD 00/);
-  assert.match(content, /GOOGLE FLOW – AKTUELLER SCHRITT: Erzeuge JETZT genau BILD 01/);
-  assert.match(content, /automatisch mit dem direkt folgenden nummerierten Bildblock dieser Nachricht fort/);
+  assert.match(content, /FREIGABE: Dies ist der einzige jetzt freigegebene Bildblock/);
+  assert.match(content, /FREIGABE-BEDINGUNG: Dieser Block ist GESPERRT, bis BILD 00 vollständig fertig erzeugt, exakt als `Bild 00\.png` umbenannt/);
+  assert.match(content, /FREIGABE-BEDINGUNG: Dieser Block ist GESPERRT, bis BILD 01 vollständig fertig erzeugt, exakt als `Bild 01\.png` umbenannt/);
+  assert.match(content, /Während diese Generierung läuft: KEIN anderes Bild starten/);
+  assert.match(content, /sofort exakt in `Bild 03\.png` umbenennen und prüfen/);
 
   assert.match(content, /Prompt für das Cover\./);
   assert.match(content, /Prompt für die erste Szene\./);
@@ -97,15 +100,10 @@ test('exportiert einen einzigen Google-Flow-Gesamtauftrag mit Autostart und alle
   assert.match(content, /Prompt für die dritte Szene\./);
   assert.match(content, /Bild 00 = COVER → Dateiname `Bild 00\.png`/);
   assert.match(content, /Bild 03 = SZENE 3 → Dateiname `Bild 03\.png`/);
+  assert.match(content, /ERST NACH DIESER VOLLSTÄNDIGEN PRÜFUNG/);
   assert.match(content, /00-ALLE-BILDER-HIER-REIN/);
 
-  assert.doesNotMatch(content, /FÜR DEN NUTZER/);
-  assert.doesNotMatch(content, /Kein Agent soll dieses Bild erzeugen/);
-  assert.doesNotMatch(content, /NUR DER NUTZER ERSTELLT DIE BILDER/);
-  assert.doesNotMatch(content, /Kein Agent darf die Bildgenerierung übernehmen/);
-  assert.doesNotMatch(content, /immer genau EINEN vollständigen Bildblock kopieren/);
   assert.doesNotMatch(content, /3ER-STEPS|3er-Step|3er-Batches/);
-
   assert.equal(result.coverIncluded, true);
   assert.equal(result.sceneCount, 3);
   assert.equal(result.totalPromptCount, 4);
