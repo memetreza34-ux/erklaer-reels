@@ -90,14 +90,43 @@ Pflicht:
 
 ## Sichere Bildzuordnung
 
-### Niemals nach Reihenfolge raten
+### Nummerierter Schnellimport
 
-Verboten sind Zuordnungen nach:
+Ab sofort können Cover und alle Szenenbilder gemeinsam in den sichtbaren Ordner `00-bildprompts/00-ALLE-BILDER-HIER-REIN` gelegt werden.
+
+Verbindliches Namensschema:
+
+```text
+00.png              -> Cover
+01.png              -> Szene 1
+02.png              -> Szene 2
+03-meine-szene.png  -> Szene 3
+...
+13.png              -> Szene 13
+```
+
+Auch Varianten wie `bild-00.png`, `bild_01.png` oder `Bild 02.webp` werden erkannt. Unterstützt werden PNG, JPG, JPEG und WEBP.
+
+Der normale Befehl erkennt den Sammelordner automatisch:
+
+```bash
+npm run organize:assets -- --dir "PFAD-ZUM-REEL"
+```
+
+Die Dateinummer darf **nur das vorgeschlagene Ziel vorsortieren**. Sie ist niemals der Nachweis, dass das Bild inhaltlich zur Szene passt. Vor `--apply` muss Codex bzw. der ausführende Agent jedes Bild weiterhin öffnen und die vollständige visuelle QC bestätigen.
+
+Doppelte Nummern dürfen nicht geraten werden. Nummern ohne vorhandene Szene bleiben `unmatched`.
+
+### Niemals die finale Zuordnung nach Reihenfolge raten
+
+Außerhalb des oben definierten nummerierten Schnellimports sind Zuordnungen nach folgenden Signalen verboten:
 
 - Upload-Reihenfolge
 - Dateiname oder laufender Nummer
 - Erstellungszeit
 - Position in Finder oder Download-Ordner
+
+Auch beim nummerierten Schnellimport darf die **finale Bestätigung** niemals nur auf der Nummer beruhen.
 
 ### Durchgang 1: sichtbaren Inhalt prüfen
 
