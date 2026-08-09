@@ -50,6 +50,7 @@ test('legt den Sammelordner und die Textdatei für Cover und Szenen an', async (
   assert.match(paths.file, /all-image-prompts[\\/]all-image-prompts\.txt$/);
   assert.match(placeholder, /Cover und Szenen/);
   assert.match(readme, /cover\/cover-prompt\.txt/);
+  assert.match(readme, /Bild 00 = Cover/);
 });
 
 test('exportiert zuerst das Cover und danach alle Szenenprompts chronologisch', async () => {
@@ -61,15 +62,22 @@ test('exportiert zuerst das Cover und danach alle Szenenprompts chronologisch', 
   const first = content.indexOf('SZENE 1 – BILDPROMPT 1');
   const second = content.indexOf('SZENE 2 – BILDPROMPT 2');
   const third = content.indexOf('SZENE 3 – BILDPROMPT 3');
+  const numbering = content.indexOf('VERBINDLICHE DATEIBENENNUNG NACH DER BILDGENERIERUNG');
 
   assert.ok(cover >= 0);
   assert.ok(first > cover);
   assert.ok(second > first);
   assert.ok(third > second);
+  assert.ok(numbering > third);
   assert.match(content, /Prompt für das Cover\./);
   assert.match(content, /Prompt für die erste Szene\./);
   assert.match(content, /Prompt für die zweite Szene\./);
   assert.match(content, /Prompt für die dritte Szene\./);
+  assert.match(content, /Bild 00 = COVER → Dateiname `Bild 00\.png`/);
+  assert.match(content, /Bild 01 = SZENE 1 → Dateiname `Bild 01\.png`/);
+  assert.match(content, /Bild 02 = SZENE 2 → Dateiname `Bild 02\.png`/);
+  assert.match(content, /Bild 03 = SZENE 3 → Dateiname `Bild 03\.png`/);
+  assert.match(content, /00-ALLE-BILDER-HIER-REIN/);
   assert.equal(result.coverIncluded, true);
   assert.equal(result.sceneCount, 3);
   assert.equal(result.totalPromptCount, 4);
