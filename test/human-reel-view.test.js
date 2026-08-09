@@ -67,6 +67,20 @@ test('ordnet Cover und jedes Szenenbild direkt dem passenden Ordner zu', async (
   assert.equal(await readFile(path.join(reelDirectory, 'scenes', 'scene-01', 'scene-01.png'), 'utf8'), 'bild-1');
 });
 
+test('stellt einen sichtbaren Sammelordner für nummerierte Bilder bereit', async () => {
+  const reelDirectory = await createMinimalReel();
+  await ensureHumanReelView(reelDirectory);
+
+  assert.equal(
+    await readlink(path.join(reelDirectory, '00-bildprompts', '00-ALLE-BILDER-HIER-REIN')),
+    '../inbox/numbered-images'
+  );
+
+  const readme = await readFile(path.join(reelDirectory, 'inbox', 'numbered-images', 'README.md'), 'utf8');
+  assert.match(readme, /`00` ist das Cover/);
+  assert.match(readme, /`01` Szene 1/);
+});
+
 test('sammelt unwichtige Dateien im Technikordner', async () => {
   const reelDirectory = await createMinimalReel();
   await ensureHumanReelView(reelDirectory);
