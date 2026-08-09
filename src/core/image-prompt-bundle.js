@@ -45,7 +45,7 @@ export async function ensureImagePromptBundleDirectory(reelDirectory) {
   const paths = getImagePromptBundlePaths(reelDirectory);
   await mkdir(paths.directory, { recursive: true });
 
-  const readme = `# Alle Bildprompts\n\n\`${BUNDLE_FILE}\` ist als **ein einziger Google-Flow-Gesamtauftrag mit harter serieller Sperre** aufgebaut. Der Nutzer kopiert die komplette Datei einmal in Google Flow und sendet sie ab. Google Flow darf zu jedem Zeitpunkt nur **eine einzige Bildgenerierung aktiv** haben.\n\nVerbindlich: Bild 00 vollständig erzeugen → auf vollständigen Abschluss warten → sofort korrekt umbenennen → prüfen, dass die Umbenennung abgeschlossen ist → **erst dann** Bild 01 starten. Danach identisch Bild für Bild bis zum letzten Bild. Kein Parallelisieren, keine Warteschlange, kein Vorladen und kein Start eines späteren Prompts, solange das aktuelle Bild nicht fertig und umbenannt ist.\n\nDirekt bei JEDEM Bildblock stehen feste Bildnummer, Ziel, Dateiname und die Freigabebedingung für diesen Schritt: Bild 00 = Cover, Bild 01 = Szene 1, Bild 02 = Szene 2 usw.\n\nErzeugen oder aktualisieren:\n\n\`\`\`bash\nnpm run export:prompts -- --dir "${normalizedRelativePath(reelDirectory)}" --strict\n\`\`\`\n\nDie Datei wird automatisch aus \`cover/cover-prompt.txt\` und \`scenes/scene-XX/image-prompt.txt\` aufgebaut und sollte nicht manuell gepflegt werden.\n`;
+  const readme = `# Alle Bildprompts\n\n\`${BUNDLE_FILE}\` ist als **ein einziger Google-Flow-Gesamtauftrag mit harter serieller Sperre** aufgebaut. Der Nutzer kopiert die komplette Datei einmal in Google Flow und sendet sie ab. Google Flow darf zu jedem Zeitpunkt nur **eine einzige Bildgenerierung aktiv** haben.\n\nVerbindlich: Bild 00 vollständig erzeugen → auf vollständigen Abschluss warten → sofort korrekt umbenennen → prüfen, dass die Umbenennung abgeschlossen ist → **erst dann** Bild 01 starten. Danach identisch Bild für Bild bis zum letzten Bild. Kein Parallelisieren, keine Warteschlange, kein Vorladen und kein Start eines späteren Prompts, solange das aktuelle Bild nicht fertig und umbenannt ist.\n\n**Bild 00 ist zusätzlich die verbindliche visuelle Stilvorlage für das gesamte Reel.** Das Cover enthält den sichtbaren Hook zum Reel-Thema. Alle folgenden Szenen müssen sich direkt an Bild 00 orientieren: gleicher Zeichen-/Renderstil, gleiche Farbwelt, gleiche Figurenmerkmale, gleiche Proportionen, gleiche Licht- und Detailqualität. Der Cover-Hook wird aber nur dann in einer Szene wiederholt, wenn der jeweilige Szenenprompt ausdrücklich sichtbaren Text verlangt.\n\nDirekt bei JEDEM Bildblock stehen feste Bildnummer, Ziel, Dateiname und die Freigabebedingung für diesen Schritt: Bild 00 = Cover, Bild 01 = Szene 1, Bild 02 = Szene 2 usw.\n\nErzeugen oder aktualisieren:\n\n\`\`\`bash\nnpm run export:prompts -- --dir "${normalizedRelativePath(reelDirectory)}" --strict\n\`\`\`\n\nDie Datei wird automatisch aus \`cover/cover-prompt.txt\` und \`scenes/scene-XX/image-prompt.txt\` aufgebaut und sollte nicht manuell gepflegt werden.\n`;
   await writeFile(paths.readme, readme, 'utf8');
 
   if (!(await exists(paths.file))) {
@@ -151,6 +151,13 @@ function formatFlowExecutionContract(prompts) {
     'ZU JEDEM ZEITPUNKT DARF GENAU EINE EINZIGE BILDGENERIERUNG AKTIV SEIN.',
     'STARTE NIEMALS DAS NÄCHSTE BILD, SOLANGE DAS AKTUELLE BILD NOCH GENERIERT WIRD, NOCH NICHT VOLLSTÄNDIG FERTIG IST ODER NOCH NICHT KORREKT UMBENANNT WURDE.',
     '',
+    'BILD 00 = COVER + VERBINDLICHE STILVORLAGE:',
+    '- Erzeuge Bild 00 zuerst als echtes Cover des Reels.',
+    '- Der im Cover-Prompt verlangte sichtbare deutsche Text ist der HOOK des Reels und muss exakt lesbar auf Bild 00 erscheinen. Er soll sofort zeigen, worum es im Reel geht.',
+    '- Sobald Bild 00 fertig und als `Bild 00.png` benannt ist, verwende genau dieses fertige Cover als visuelle Referenz/Vorlage für ALLE folgenden Szenen.',
+    '- Halte danach denselben Zeichen-/Renderstil, dieselbe Farbwelt, dieselben Figurenmerkmale, dieselben Proportionen, dieselbe Lichtstimmung und dieselbe Detailqualität wie auf Bild 00.',
+    '- Übernimm den Cover-Hook-Text NICHT automatisch in spätere Szenen. Sichtbarer Szenentext kommt nur hinein, wenn der jeweilige Szenenprompt ihn ausdrücklich verlangt.',
+    '',
     'STRENG VERBOTEN:',
     '- mehrere Bilder gleichzeitig starten',
     '- mehrere Prompts gleichzeitig absenden',
@@ -159,6 +166,7 @@ function formatFlowExecutionContract(prompts) {
     '- alle Bildblöcke als Batch behandeln',
     '- mehrere fertige, aber noch unbenannte Bilder ansammeln',
     '- Bilder während der Generierung bereits in den gemeinsamen Sammelordner verschieben',
+    '- den visuellen Stil zwischen Cover und Szenen ohne ausdrückliche Prompt-Anweisung wechseln',
     '',
     'VERBINDLICHER ABLAUF FÜR JEDES EINZELNE BILD:',
     'A. Lies ausschließlich den aktuellen freigegebenen Bildblock.',
@@ -170,8 +178,8 @@ function formatFlowExecutionContract(prompts) {
     `G. Wiederhole A bis F streng einzeln bis einschließlich Bild ${lastNumber}.`,
     '',
     'BEISPIEL DER SPERRE:',
-    'Bild 00 erzeugen → warten bis Bild 00 wirklich fertig → sofort `Bild 00.png` nennen → prüfen → ERST DANN Bild 01 starten.',
-    'Bild 01 erzeugen → warten bis Bild 01 wirklich fertig → sofort `Bild 01.png` nennen → prüfen → ERST DANN Bild 02 starten.',
+    'Bild 00 erzeugen → warten bis Bild 00 wirklich fertig → sofort `Bild 00.png` nennen → prüfen → Bild 00 als Stilvorlage festhalten → ERST DANN Bild 01 starten.',
+    'Bild 01 erzeugen → dabei Bild 00 als Stilreferenz verwenden → warten bis Bild 01 wirklich fertig → sofort `Bild 01.png` nennen → prüfen → ERST DANN Bild 02 starten.',
     'Genau so einzeln bis zum letzten Bild. Keine Ausnahme.',
     '',
     `NACH BILD ${lastNumber}: Erst wenn wirklich ALLE ${total} Bilder vollständig erzeugt UND jeweils direkt nach ihrer Erzeugung korrekt umbenannt wurden, die komplette Nummerierung prüfen.`,
@@ -181,13 +189,26 @@ function formatFlowExecutionContract(prompts) {
   ].join('\n');
 }
 
-function formatDirectGenerationInstruction(number, previousNumber) {
+function formatDirectGenerationInstruction(number, previousNumber, isCover) {
   const gate = previousNumber === null
     ? 'FREIGABE: Dies ist der einzige jetzt freigegebene Bildblock.'
     : `FREIGABE-BEDINGUNG: Dieser Block ist GESPERRT, bis BILD ${previousNumber} vollständig fertig erzeugt, exakt als \`Bild ${previousNumber}.png\` umbenannt und die Umbenennung geprüft wurde.`;
 
+  const styleInstruction = isCover
+    ? [
+      'COVER-REGEL: Dieses Bild ist das echte Cover UND die verbindliche visuelle Stilvorlage für das gesamte Reel.',
+      'HOOK-REGEL: Der im folgenden Cover-Prompt verlangte sichtbare deutsche Text muss exakt und gut lesbar auf dem Cover erscheinen. Dieser Text ist die Hook und erklärt sofort, worum es im Reel geht.',
+      'Nach Fertigstellung dieses Covers: Bild 00 als direkte Style-Referenz für alle späteren Szenen beibehalten.'
+    ]
+    : [
+      'STYLE-REFERENZ: Verwende das bereits fertig erzeugte `Bild 00.png` direkt als verbindliche visuelle Vorlage für dieses Szenenbild.',
+      'Behalte Zeichen-/Renderstil, Farbwelt, Figurenmerkmale, Proportionen, Lichtstimmung und Detailqualität von Bild 00 bei.',
+      'Den Cover-Hook-Text nicht kopieren, außer der folgende Szenenprompt verlangt ausdrücklich sichtbaren Text.'
+    ];
+
   return [
     gate,
+    ...styleInstruction,
     `GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD ${number}.`,
     'Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.',
     `Nach vollständigem Abschluss dieses Bildes: sofort exakt in \`Bild ${number}.png\` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.`,
@@ -200,13 +221,14 @@ function formatDirectPromptSection(entry) {
   const value = entry.kind === 'cover' ? 0 : entry.order;
   const number = padImageNumber(value);
   const previousNumber = value === 0 ? null : padImageNumber(value - 1);
+  const isCover = entry.kind === 'cover';
 
-  if (entry.kind === 'cover') {
+  if (isCover) {
     return [
       `BILD ${number} – COVER – GOOGLE-FLOW-PROMPT`,
-      'ZIEL: COVER',
+      'ZIEL: COVER + STYLE-VORLAGE FÜR DAS GESAMTE REEL',
       `DATEINAME: Bild ${number}.png`,
-      formatDirectGenerationInstruction(number, previousNumber),
+      formatDirectGenerationInstruction(number, previousNumber, true),
       '',
       body
     ].join('\n');
@@ -216,7 +238,7 @@ function formatDirectPromptSection(entry) {
     `BILD ${number} – SZENE ${entry.order} – GOOGLE-FLOW-PROMPT`,
     `ZIEL: SZENE ${entry.order}`,
     `DATEINAME: Bild ${number}.png`,
-    formatDirectGenerationInstruction(number, previousNumber),
+    formatDirectGenerationInstruction(number, previousNumber, false),
     '',
     body
   ].join('\n');
@@ -226,7 +248,7 @@ export function formatImagePromptBundle(prompts) {
   const sections = prompts.map(formatDirectPromptSection);
   const executionContract = formatFlowExecutionContract(prompts);
   const numberingContract = formatImageNumberingContract(prompts);
-  return `ALLE BILDPROMPTS – GOOGLE FLOW – STRENG EINZELN\n\n${executionContract}\n\n\n${sections.join('\n\n\n')}\n\n\n${numberingContract}\n`;
+  return `ALLE BILDPROMPTS – GOOGLE FLOW – STRENG EINZELN + COVER ALS STYLE-VORLAGE\n\n${executionContract}\n\n\n${sections.join('\n\n\n')}\n\n\n${numberingContract}\n`;
 }
 
 function missingPromptIds(prompts) {
@@ -291,7 +313,7 @@ export async function validateImagePromptBundle(reelDirectory) {
       : !actual
         ? `Sammeldatei fehlt: ${normalizedRelativePath(paths.file)}.`
         : !current
-          ? 'Die Bildprompt-Sammeldatei ist veraltet oder enthält die harte serielle Google-Flow-Sperre nicht vollständig.'
-          : 'Die Bildprompt-Sammeldatei erzwingt Bild für Bild: erzeugen, vollständig abwarten, sofort umbenennen, prüfen und erst danach den nächsten Block freigeben.'
+          ? 'Die Bildprompt-Sammeldatei ist veraltet oder enthält die harte serielle Google-Flow-Sperre plus Cover-Style-Referenz nicht vollständig.'
+          : 'Die Bildprompt-Sammeldatei erzwingt Bild für Bild und verwendet Bild 00 als Cover-Hook sowie verbindliche Stilvorlage für alle Szenen.'
   };
 }
