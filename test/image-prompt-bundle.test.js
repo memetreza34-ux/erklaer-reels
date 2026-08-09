@@ -41,7 +41,7 @@ async function createFixture({ missingCoverPrompt = false, missingSecondPrompt =
   return root;
 }
 
-test('legt den Sammelordner und die Textdatei für Cover und Szenen an', async () => {
+test('legt den Sammelordner und die One-Paste-Hinweise an', async () => {
   const root = await createFixture();
   const paths = await ensureImagePromptBundleDirectory(root);
   const placeholder = await readFile(paths.file, 'utf8');
@@ -49,47 +49,53 @@ test('legt den Sammelordner und die Textdatei für Cover und Szenen an', async (
 
   assert.match(paths.file, /all-image-prompts[\\/]all-image-prompts\.txt$/);
   assert.match(placeholder, /Cover und Szenen/);
-  assert.match(readme, /cover\/cover-prompt\.txt/);
   assert.match(readme, /Bild 00 = Cover/);
-  assert.match(readme, /JEDEM einzelnen Prompt/);
-  assert.match(readme, /jeweils genau EINEN vollständigen Promptblock in Google Flow/);
-  assert.match(readme, /direkte Google-Flow-Bildgenerierungsbefehle/);
+  assert.match(readme, /komplette Datei auf einmal in Google Flow/);
+  assert.match(readme, /sofort bei Bild 00 starten/);
+  assert.match(readme, /Regeln für Antigravity, Codex oder andere Repo-Agenten gehören \*\*nicht\*\* in diese kopierbare Datei/);
 });
 
-test('exportiert Cover und Szenen chronologisch als direkt kopierbare Flow-Generierungsbefehle', async () => {
+test('exportiert einen einzigen Google-Flow-Gesamtauftrag mit Autostart und allen Bildblöcken', async () => {
   const root = await createFixture();
   const result = await buildImagePromptBundle(root, { strict: true });
   const content = await readFile(result.outputFile, 'utf8');
 
+  const execution = content.indexOf('GOOGLE FLOW – GESAMTAUFTRAG: STARTE JETZT SOFORT');
   const cover = content.indexOf('BILD 00 – COVER – GOOGLE-FLOW-PROMPT');
   const first = content.indexOf('BILD 01 – SZENE 1 – GOOGLE-FLOW-PROMPT');
   const second = content.indexOf('BILD 02 – SZENE 2 – GOOGLE-FLOW-PROMPT');
   const third = content.indexOf('BILD 03 – SZENE 3 – GOOGLE-FLOW-PROMPT');
-  const numbering = content.indexOf('DATEIBENENNUNG UND ABLAGE NACH DER BILDGENERIERUNG');
+  const numbering = content.indexOf('ABSCHLUSS – DATEIBENENNUNG UND GEMEINSAME ABLAGE');
 
-  assert.ok(cover >= 0);
+  assert.ok(execution >= 0);
+  assert.ok(cover > execution);
   assert.ok(first > cover);
   assert.ok(second > first);
   assert.ok(third > second);
   assert.ok(numbering > third);
 
-  assert.match(content, /BILD 00 – COVER – GOOGLE-FLOW-PROMPT\nZIEL: COVER\nGEWÜNSCHTER DATEINAME NACH DEM DOWNLOAD: Bild 00\.png/);
-  assert.match(content, /BILD 01 – SZENE 1 – GOOGLE-FLOW-PROMPT\nZIEL: SZENE 1\nGEWÜNSCHTER DATEINAME NACH DEM DOWNLOAD: Bild 01\.png/);
-  assert.match(content, /BILD 02 – SZENE 2 – GOOGLE-FLOW-PROMPT\nZIEL: SZENE 2\nGEWÜNSCHTER DATEINAME NACH DEM DOWNLOAD: Bild 02\.png/);
-  assert.match(content, /BILD 03 – SZENE 3 – GOOGLE-FLOW-PROMPT\nZIEL: SZENE 3\nGEWÜNSCHTER DATEINAME NACH DEM DOWNLOAD: Bild 03\.png/);
+  assert.match(content, /ALLE BILDPROMPTS – GOOGLE FLOW ONE-PASTE/);
+  assert.match(content, /Diese komplette Nachricht ist EIN zusammenhängender Auftrag für 4 Bilder/);
+  assert.match(content, /ANTWORTE NICHT mit einer Bestätigung, Zusammenfassung, Erklärung, Anleitung/);
+  assert.match(content, /STARTE STATTDESSEN SOFORT mit der tatsächlichen Bildgenerierung von BILD 00/);
+  assert.match(content, /Beginne jetzt mit BILD 00 = COVER/);
+  assert.match(content, /Danach fahre OHNE Textantwort und OHNE Rückfrage automatisch mit dem direkt nächsten Bildblock fort/);
+  assert.match(content, /Stoppe erst, nachdem alle 4 Bilder von Bild 00 bis Bild 03 erzeugt wurden/);
 
-  assert.match(content, /GOOGLE FLOW – DIREKTER BILDGENERIERUNGSBEFEHL: ERZEUGE JETZT GENAU EIN BILD/);
-  assert.match(content, /Keine Erklärung, keine Bestätigung, keine Zusammenfassung und keine reine Textantwort/);
-  assert.match(content, /Starte sofort die Bildgenerierung/);
-  assert.match(content, /Erzeuge nur dieses eine Bild/);
+  assert.match(content, /BILD 00 – COVER – GOOGLE-FLOW-PROMPT\nZIEL: COVER\nDATEINAME: Bild 00\.png/);
+  assert.match(content, /BILD 01 – SZENE 1 – GOOGLE-FLOW-PROMPT\nZIEL: SZENE 1\nDATEINAME: Bild 01\.png/);
+  assert.match(content, /BILD 02 – SZENE 2 – GOOGLE-FLOW-PROMPT\nZIEL: SZENE 2\nDATEINAME: Bild 02\.png/);
+  assert.match(content, /BILD 03 – SZENE 3 – GOOGLE-FLOW-PROMPT\nZIEL: SZENE 3\nDATEINAME: Bild 03\.png/);
+
+  assert.match(content, /GOOGLE FLOW – AKTUELLER SCHRITT: Erzeuge JETZT genau BILD 00/);
+  assert.match(content, /GOOGLE FLOW – AKTUELLER SCHRITT: Erzeuge JETZT genau BILD 01/);
+  assert.match(content, /automatisch mit dem direkt folgenden nummerierten Bildblock dieser Nachricht fort/);
 
   assert.match(content, /Prompt für das Cover\./);
   assert.match(content, /Prompt für die erste Szene\./);
   assert.match(content, /Prompt für die zweite Szene\./);
   assert.match(content, /Prompt für die dritte Szene\./);
   assert.match(content, /Bild 00 = COVER → Dateiname `Bild 00\.png`/);
-  assert.match(content, /Bild 01 = SZENE 1 → Dateiname `Bild 01\.png`/);
-  assert.match(content, /Bild 02 = SZENE 2 → Dateiname `Bild 02\.png`/);
   assert.match(content, /Bild 03 = SZENE 3 → Dateiname `Bild 03\.png`/);
   assert.match(content, /00-ALLE-BILDER-HIER-REIN/);
 
@@ -97,6 +103,7 @@ test('exportiert Cover und Szenen chronologisch als direkt kopierbare Flow-Gener
   assert.doesNotMatch(content, /Kein Agent soll dieses Bild erzeugen/);
   assert.doesNotMatch(content, /NUR DER NUTZER ERSTELLT DIE BILDER/);
   assert.doesNotMatch(content, /Kein Agent darf die Bildgenerierung übernehmen/);
+  assert.doesNotMatch(content, /immer genau EINEN vollständigen Bildblock kopieren/);
   assert.doesNotMatch(content, /3ER-STEPS|3er-Step|3er-Batches/);
 
   assert.equal(result.coverIncluded, true);

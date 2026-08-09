@@ -45,7 +45,7 @@ export async function ensureImagePromptBundleDirectory(reelDirectory) {
   const paths = getImagePromptBundlePaths(reelDirectory);
   await mkdir(paths.directory, { recursive: true });
 
-  const readme = `# Alle Bildprompts\n\nIn \`${BUNDLE_FILE}\` stehen zuerst der Cover-Prompt und danach alle Szenen-Bildprompts in chronologischer Reihenfolge. Direkt bei JEDEM einzelnen Prompt stehen die feste Bildnummer und der gewünschte Dateiname: Bild 00 = Cover, Bild 01 = Szene 1, Bild 02 = Szene 2 usw.\n\nDer Nutzer startet die Bildgenerierung selbst, indem er jeweils genau EINEN vollständigen Promptblock in Google Flow einfügt. Antigravity, Codex oder andere Repo-Agenten starten den Bildgenerator nicht selbst. Die kopierbaren Promptblöcke sind deshalb ausdrücklich als direkte Google-Flow-Bildgenerierungsbefehle formuliert und dürfen keine Formulierungen wie \`Kein Agent soll dieses Bild erzeugen\` enthalten.\n\nErzeugen oder aktualisieren:\n\n\`\`\`bash\nnpm run export:prompts -- --dir "${normalizedRelativePath(reelDirectory)}" --strict\n\`\`\`\n\nDie Datei wird automatisch aus \`cover/cover-prompt.txt\` und \`scenes/scene-XX/image-prompt.txt\` aufgebaut und sollte nicht manuell gepflegt werden.\n`;
+  const readme = `# Alle Bildprompts\n\n\`${BUNDLE_FILE}\` ist absichtlich als **ein einziger Google-Flow-Gesamtauftrag** aufgebaut. Der Nutzer kopiert die komplette Datei auf einmal in Google Flow und sendet sie ab. Google Flow soll ohne Bestätigungs- oder Erklärungstext sofort bei Bild 00 starten und danach alle nummerierten Bildblöcke chronologisch bis zum letzten Bild abarbeiten.\n\nDirekt bei JEDEM Bildblock stehen feste Bildnummer, Ziel und Dateiname: Bild 00 = Cover, Bild 01 = Szene 1, Bild 02 = Szene 2 usw.\n\nWichtig: Regeln für Antigravity, Codex oder andere Repo-Agenten gehören **nicht** in diese kopierbare Datei. Dort stehen nur direkte Ausführungsbefehle für Google Flow.\n\nErzeugen oder aktualisieren:\n\n\`\`\`bash\nnpm run export:prompts -- --dir "${normalizedRelativePath(reelDirectory)}" --strict\n\`\`\`\n\nDie Datei wird automatisch aus \`cover/cover-prompt.txt\` und \`scenes/scene-XX/image-prompt.txt\` aufgebaut und sollte nicht manuell gepflegt werden.\n`;
   await writeFile(paths.readme, readme, 'utf8');
 
   if (!(await exists(paths.file))) {
@@ -109,9 +109,9 @@ export function formatImageNumberingContract(prompts) {
   const lastNumber = padImageNumber(scenes.at(-1)?.order ?? 0);
 
   const lines = [
-    'DATEIBENENNUNG UND ABLAGE NACH DER BILDGENERIERUNG',
+    'ABSCHLUSS – DATEIBENENNUNG UND GEMEINSAME ABLAGE',
     '',
-    'Nach dem Download jedes fertigen Bildes gilt die folgende feste Nummerierung. Die Nummerierung ist nur für Dateiname und spätere Zuordnung bestimmt.',
+    'Wenn alle Bilder vollständig erzeugt sind, prüfe die feste Nummerierung:',
     '',
     'FESTE DATEIBENENNUNG:',
     '- Bild 00 = COVER → Dateiname `Bild 00.png`'
@@ -124,16 +124,45 @@ export function formatImageNumberingContract(prompts) {
 
   lines.push(
     '',
-    `Damit gilt immer: Cover = Bild 00, erste Szene = Bild 01 und jede weitere Szene erhält chronologisch genau eine fortlaufende Nummer bis Bild ${lastNumber}.`,
+    `Damit gilt: Cover = Bild 00, erste Szene = Bild 01 und jede weitere Szene erhält chronologisch genau eine fortlaufende Nummer bis Bild ${lastNumber}.`,
     'Falls das Bildformat nicht PNG ist, darf nur die Dateiendung abweichen; die Nummerierung `Bild 00`, `Bild 01`, `Bild 02` usw. bleibt unverändert.',
-    'Wenn alle Bilder fertig heruntergeladen und korrekt benannt sind, werden sie gemeinsam in `00-bildprompts/00-ALLE-BILDER-HIER-REIN/` gelegt. Nicht manuell auf einzelne Szenenordner verteilen.'
+    'Erst wenn wirklich ALLE Bilder fertig erzeugt und korrekt benannt sind, lege sie gemeinsam in `00-bildprompts/00-ALLE-BILDER-HIER-REIN/`. Nicht auf einzelne Cover- oder Szenenordner verteilen.'
   );
 
   return lines.join('\n');
 }
 
-function formatDirectGenerationInstruction() {
-  return 'GOOGLE FLOW – DIREKTER BILDGENERIERUNGSBEFEHL: ERZEUGE JETZT GENAU EIN BILD. Keine Erklärung, keine Bestätigung, keine Zusammenfassung und keine reine Textantwort. Starte sofort die Bildgenerierung anhand des folgenden Bildprompts. Erzeuge nur dieses eine Bild.';
+function formatFlowExecutionContract(prompts) {
+  const scenes = prompts
+    .filter((entry) => entry.kind === 'scene')
+    .sort((a, b) => a.order - b.order);
+  const lastNumber = padImageNumber(scenes.at(-1)?.order ?? 0);
+  const total = scenes.length + 1;
+
+  return [
+    'GOOGLE FLOW – GESAMTAUFTRAG: STARTE JETZT SOFORT',
+    '',
+    `Diese komplette Nachricht ist EIN zusammenhängender Auftrag für ${total} Bilder von Bild 00 bis Bild ${lastNumber}.`,
+    'ANTWORTE NICHT mit einer Bestätigung, Zusammenfassung, Erklärung, Anleitung oder einem Hinweis, dass du die Prompts verstanden hast.',
+    'STARTE STATTDESSEN SOFORT mit der tatsächlichen Bildgenerierung von BILD 00.',
+    '',
+    'VERBINDLICHER ABLAUF:',
+    '1. Arbeite ALLE nachfolgenden nummerierten Bildblöcke dieser Nachricht vollständig und streng chronologisch ab.',
+    '2. Beginne jetzt mit BILD 00 = COVER.',
+    '3. Erzeuge immer nur GENAU EIN Bild gleichzeitig anhand des Bildprompts im aktuellen Block.',
+    '4. Sobald dieses Bild fertig ist, verwende sofort den im Block angegebenen Dateinamen.',
+    '5. Danach fahre OHNE Textantwort und OHNE Rückfrage automatisch mit dem direkt nächsten Bildblock fort.',
+    `6. Wiederhole das selbstständig Bild für Bild bis einschließlich BILD ${lastNumber}.`,
+    '7. Überspringe keinen Bildblock, erzeuge keine zusätzlichen Varianten und ändere die Reihenfolge nicht.',
+    `8. Stoppe erst, nachdem alle ${total} Bilder von Bild 00 bis Bild ${lastNumber} erzeugt wurden.`,
+    '9. Erst danach die vollständige Nummerierung prüfen und alle fertigen Bilder gemeinsam in den unten angegebenen Sammelordner legen.',
+    '',
+    'JETZT AUSFÜHREN: Beginne unmittelbar mit BILD 00. Keine Textantwort vor der ersten Bildgenerierung.'
+  ].join('\n');
+}
+
+function formatDirectGenerationInstruction(number) {
+  return `GOOGLE FLOW – AKTUELLER SCHRITT: Erzeuge JETZT genau BILD ${number} anhand des folgenden Prompts. Keine Erklärung und keine Bestätigung. Sobald BILD ${number} fertig ist, benenne es wie oben angegeben und fahre automatisch mit dem direkt folgenden nummerierten Bildblock dieser Nachricht fort.`;
 }
 
 function formatDirectPromptSection(entry) {
@@ -144,8 +173,8 @@ function formatDirectPromptSection(entry) {
     return [
       `BILD ${number} – COVER – GOOGLE-FLOW-PROMPT`,
       'ZIEL: COVER',
-      `GEWÜNSCHTER DATEINAME NACH DEM DOWNLOAD: Bild ${number}.png`,
-      formatDirectGenerationInstruction(),
+      `DATEINAME: Bild ${number}.png`,
+      formatDirectGenerationInstruction(number),
       '',
       body
     ].join('\n');
@@ -154,8 +183,8 @@ function formatDirectPromptSection(entry) {
   return [
     `BILD ${number} – SZENE ${entry.order} – GOOGLE-FLOW-PROMPT`,
     `ZIEL: SZENE ${entry.order}`,
-    `GEWÜNSCHTER DATEINAME NACH DEM DOWNLOAD: Bild ${number}.png`,
-    formatDirectGenerationInstruction(),
+    `DATEINAME: Bild ${number}.png`,
+    formatDirectGenerationInstruction(number),
     '',
     body
   ].join('\n');
@@ -163,8 +192,9 @@ function formatDirectPromptSection(entry) {
 
 export function formatImagePromptBundle(prompts) {
   const sections = prompts.map(formatDirectPromptSection);
+  const executionContract = formatFlowExecutionContract(prompts);
   const numberingContract = formatImageNumberingContract(prompts);
-  return `ALLE BILDPROMPTS – COVER UND SZENEN\n\nWICHTIG FÜR DIE NUTZUNG: In Google Flow immer genau EINEN vollständigen Bildblock kopieren und absenden. Jeder Block ist bereits so formuliert, dass Flow sofort mit der Bildgenerierung beginnen soll.\n\n${sections.join('\n\n\n')}\n\n\n${numberingContract}\n`;
+  return `ALLE BILDPROMPTS – GOOGLE FLOW ONE-PASTE\n\n${executionContract}\n\n\n${sections.join('\n\n\n')}\n\n\n${numberingContract}\n`;
 }
 
 function missingPromptIds(prompts) {
@@ -229,7 +259,7 @@ export async function validateImagePromptBundle(reelDirectory) {
       : !actual
         ? `Sammeldatei fehlt: ${normalizedRelativePath(paths.file)}.`
         : !current
-          ? 'Die Bildprompt-Sammeldatei ist veraltet oder enthält nicht alle direkten Google-Flow-Bildgenerierungsblöcke mit korrekter Nummerierung.'
-          : 'Die Bildprompt-Sammeldatei enthält für Cover und jede Szene einen direkt kopierbaren Google-Flow-Bildgenerierungsbefehl mit Bildnummer und gewünschtem Dateinamen.'
+          ? 'Die Bildprompt-Sammeldatei ist veraltet oder enthält den Google-Flow-One-Paste-Gesamtauftrag und alle nummerierten Bildblöcke nicht vollständig.'
+          : 'Die Bildprompt-Sammeldatei ist als ein einziger Google-Flow-One-Paste-Gesamtauftrag aufgebaut und startet direkt mit Bild 00.'
   };
 }
