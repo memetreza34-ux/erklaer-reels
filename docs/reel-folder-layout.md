@@ -14,10 +14,11 @@ reel-01_thema/
 
 ## 00-bildprompts
 
-Cover und Szenen liegen gemeinsam in einem klaren Bereich:
+Cover und Szenen liegen gemeinsam in einem klaren Bereich. Zusätzlich gibt es einen Sammelordner für den schnellen Bildimport:
 
 ```text
 00-bildprompts/
+├── 00-ALLE-BILDER-HIER-REIN/
 ├── 00-cover/
 ├── 01-scene-01/
 ├── 02-scene-02/
@@ -25,6 +26,29 @@ Cover und Szenen liegen gemeinsam in einem klaren Bereich:
 ├── 10-scene-10/
 └── 99-alle-bildprompts.txt
 ```
+
+### Schneller Bildimport
+
+Du musst Cover und Szenenbilder nicht mehr einzeln in die Szenenordner ziehen. Lege alle fertigen Bilder gemeinsam in `00-ALLE-BILDER-HIER-REIN` und benenne sie mit einer zweistelligen Nummer:
+
+```text
+00.png              → Cover
+01.png              → Szene 1
+02.png              → Szene 2
+03-meine-szene.png  → Szene 3
+...
+13.png              → Szene 13
+```
+
+Auch Namen wie `bild-00.png`, `bild_01.png` oder `Bild 02.webp` werden erkannt. Unterstützt werden PNG, JPG, JPEG und WEBP.
+
+Der normale Befehl erkennt diesen Sammelordner automatisch:
+
+```bash
+npm run organize:assets -- --dir "reels/.../reel-01_thema"
+```
+
+Die Nummer bestimmt dabei nur das vorgeschlagene Ziel. Die bestehende visuelle Qualitätskontrolle bleibt erhalten: Die KI muss jedes Bild öffnen, gegen Szene und Prompt prüfen und erst danach mit `--apply` endgültig übernehmen.
 
 `99-alle-bildprompts.txt` enthält zuerst den vollständigen Cover-Prompt und danach alle Szenenprompts in chronologischer Reihenfolge.
 
