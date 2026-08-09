@@ -63,6 +63,10 @@ test('ordnet 00 dem Cover und die weiteren Nummern den Szenen vor', async () => 
     assetMap.assignments.slice(1).map((assignment) => assignment.target),
     ['cover', 'scene-01', 'scene-02', 'scene-03']
   );
+  assert.deepEqual(
+    assetMap.assignments.slice(1).map((assignment) => assignment.source),
+    ['numbered-images/bild-00.png', 'numbered-images/01.png', 'numbered-images/Bild 02.webp', 'numbered-images/03-meine-szene.jpg']
+  );
   assert.equal(assetMap.assignments[1].visualReviewed, false);
   assert.equal(assetMap.assignments[2].suggestedSceneOrder, 1);
   assert.equal(assetMap.assignments[2].confirmedSceneOrder, null);
