@@ -45,7 +45,7 @@ export async function ensureImagePromptBundleDirectory(reelDirectory) {
   const paths = getImagePromptBundlePaths(reelDirectory);
   await mkdir(paths.directory, { recursive: true });
 
-  const readme = `# Alle Bildprompts\n\nIn \`${BUNDLE_FILE}\` stehen zuerst der Cover-Prompt und danach alle Szenen-Bildprompts in chronologischer Reihenfolge. Ganz am Ende steht automatisch die verbindliche Google-Flow-Arbeitsanweisung für den Einzelbild-Ablauf und die Dateibenennung: Bild 00 = Cover, Bild 01 = Szene 1 usw.\n\nErzeugen oder aktualisieren:\n\n\`\`\`bash\nnpm run export:prompts -- --dir "${normalizedRelativePath(reelDirectory)}" --strict\n\`\`\`\n\nDie Datei wird automatisch aus \`cover/cover-prompt.txt\` und \`scenes/scene-XX/image-prompt.txt\` aufgebaut und sollte nicht manuell gepflegt werden.\n`;
+  const readme = `# Alle Bildprompts\n\nIn \`${BUNDLE_FILE}\` stehen zuerst der Cover-Prompt und danach alle Szenen-Bildprompts in chronologischer Reihenfolge. Direkt bei JEDEM einzelnen Prompt stehen bereits die feste Bildnummer und der Dateiname: Bild 00 = Cover, Bild 01 = Szene 1, Bild 02 = Szene 2 usw. Ganz am Ende steht zusätzlich die verbindliche Google-Flow-Arbeitsanweisung für den Einzelbild-Ablauf.\n\nErzeugen oder aktualisieren:\n\n\`\`\`bash\nnpm run export:prompts -- --dir "${normalizedRelativePath(reelDirectory)}" --strict\n\`\`\`\n\nDie Datei wird automatisch aus \`cover/cover-prompt.txt\` und \`scenes/scene-XX/image-prompt.txt\` aufgebaut und sollte nicht manuell gepflegt werden.\n`;
   await writeFile(paths.readme, readme, 'utf8');
 
   if (!(await exists(paths.file))) {
@@ -114,17 +114,16 @@ export function formatImageNumberingContract(prompts) {
     'ACHTUNG: Diese Arbeitsanweisung richtet sich ausdrücklich an den Google-Flow-KI-Agenten, der die Bilder erzeugt. Sie ist keine Codex-Anweisung.',
     '',
     'ARBEITE IMMER BILD FÜR BILD – NIE MEHRERE BILDER AUF EINMAL:',
-    '1. Erzeuge immer genau EIN Bild anhand des dazugehörigen Prompts.',
-    '2. Beginne mit Bild 00 = Cover.',
-    '3. Sobald dieses eine Bild vollständig erzeugt ist, benenne es SOFORT korrekt um: `Bild 00.png`.',
-    '4. Erst nachdem dieses Bild korrekt umbenannt wurde, darfst du mit dem nächsten Bild fortfahren.',
-    '5. Erzeuge danach Bild 01 = Szene 1 anhand des Prompts für Szene 1 und benenne es SOFORT nach der Generierung in `Bild 01.png` um.',
-    '6. Erst danach Bild 02 = Szene 2 erzeugen → sofort in `Bild 02.png` umbenennen → erst danach das nächste Bild erzeugen.',
-    '7. Wiederhole diesen Ablauf strikt für jedes einzelne Bild: PROMPT LESEN → GENAU EIN BILD ERZEUGEN → SOFORT UMBENENNEN → ERST DANN ZUM NÄCHSTEN PROMPT.',
-    `8. Fahre so lange einzeln fort, bis wirklich alle Bilder von Bild 00 bis Bild ${lastNumber} vollständig erzeugt UND korrekt umbenannt wurden.`,
-    '9. Prüfe danach einmal die komplette Reihe: keine Nummer fehlt, keine Nummer ist doppelt und keine Nummer wurde vertauscht.',
-    '10. ERST WENN ALLE Bilder fertig erzeugt, korrekt umbenannt und vollständig geprüft sind, lege ALLE fertigen Bilder gemeinsam in den Ordner `00-bildprompts/00-ALLE-BILDER-HIER-REIN/`.',
-    '11. Die Bilder bleiben dort als ein gemeinsamer Stapel. Nicht einzeln auf Cover- oder Szenenordner verteilen.',
+    '1. Lies immer nur den nächsten einzelnen Bildprompt. Direkt darüber stehen bereits Bildnummer, Ziel und exakter Dateiname.',
+    '2. Erzeuge immer genau EIN Bild anhand dieses Prompts.',
+    '3. Sobald dieses eine Bild vollständig erzeugt ist, benenne es SOFORT exakt mit dem dort angegebenen Dateinamen um.',
+    '4. Erst nachdem dieses Bild korrekt umbenannt wurde, darfst du mit dem nächsten Prompt fortfahren.',
+    '5. Beginne mit Bild 00 = Cover und arbeite danach streng chronologisch mit Bild 01 = Szene 1, Bild 02 = Szene 2 usw.',
+    '6. Wiederhole diesen Ablauf strikt für jedes einzelne Bild: PROMPT LESEN → GENAU EIN BILD ERZEUGEN → SOFORT UMBENENNEN → ERST DANN ZUM NÄCHSTEN PROMPT.',
+    `7. Fahre so lange einzeln fort, bis wirklich alle Bilder von Bild 00 bis Bild ${lastNumber} vollständig erzeugt UND korrekt umbenannt wurden.`,
+    '8. Prüfe danach einmal die komplette Reihe: keine Nummer fehlt, keine Nummer ist doppelt und keine Nummer wurde vertauscht.',
+    '9. ERST WENN ALLE Bilder fertig erzeugt, korrekt umbenannt und vollständig geprüft sind, lege ALLE fertigen Bilder gemeinsam in den Ordner `00-bildprompts/00-ALLE-BILDER-HIER-REIN/`.',
+    '10. Die Bilder bleiben dort als ein gemeinsamer Stapel. Nicht einzeln auf Cover- oder Szenenordner verteilen.',
     '',
     'FESTE DATEIBENENNUNG:',
     '- Bild 00 = COVER → Dateiname `Bild 00.png`'
@@ -145,15 +144,33 @@ export function formatImageNumberingContract(prompts) {
   return lines.join('\n');
 }
 
-export function formatImagePromptBundle(prompts) {
-  const sections = prompts.map((entry) => {
-    const body = entry.prompt || '[BILDPROMPT FEHLT]';
-    if (entry.kind === 'cover') {
-      return `COVER – BILDPROMPT\n\n${body}`;
-    }
-    return `SZENE ${entry.order} – BILDPROMPT ${entry.order}\n\n${body}`;
-  });
+function formatDirectPromptSection(entry) {
+  const body = entry.prompt || '[BILDPROMPT FEHLT]';
+  const number = padImageNumber(entry.kind === 'cover' ? 0 : entry.order);
 
+  if (entry.kind === 'cover') {
+    return [
+      `BILD ${number} – COVER – BILDPROMPT`,
+      `ZIEL: COVER`,
+      `DATEINAME NACH ERZEUGUNG: Bild ${number}.png`,
+      `GOOGLE FLOW: Erzeuge jetzt NUR dieses eine Bild anhand des folgenden Prompts. Sobald es fertig ist, benenne es SOFORT in \`Bild ${number}.png\` um. Erst danach darfst du zum nächsten Bildprompt weitergehen.`,
+      '',
+      body
+    ].join('\n');
+  }
+
+  return [
+    `BILD ${number} – SZENE ${entry.order} – BILDPROMPT`,
+    `ZIEL: SZENE ${entry.order}`,
+    `DATEINAME NACH ERZEUGUNG: Bild ${number}.png`,
+    `GOOGLE FLOW: Erzeuge jetzt NUR dieses eine Bild anhand des folgenden Prompts für Szene ${entry.order}. Sobald es fertig ist, benenne es SOFORT in \`Bild ${number}.png\` um. Erst danach darfst du zum nächsten Bildprompt weitergehen.`,
+    '',
+    body
+  ].join('\n');
+}
+
+export function formatImagePromptBundle(prompts) {
+  const sections = prompts.map(formatDirectPromptSection);
   const numberingContract = formatImageNumberingContract(prompts);
   return `ALLE BILDPROMPTS – COVER UND SZENEN\n\n${sections.join('\n\n\n')}\n\n\n${numberingContract}\n`;
 }
@@ -220,7 +237,7 @@ export async function validateImagePromptBundle(reelDirectory) {
       : !actual
         ? `Sammeldatei fehlt: ${normalizedRelativePath(paths.file)}.`
         : !current
-          ? 'Die Bildprompt-Sammeldatei ist veraltet oder enthält Cover, Szenen oder die verbindliche Google-Flow-Einzelbild-Anweisung nicht vollständig in der richtigen Reihenfolge.'
-          : 'Die Bildprompt-Sammeldatei enthält Cover, alle Szenenprompts sowie die vollständige Google-Flow-Einzelbild- und Bildnummerierungsanweisung.'
+          ? 'Die Bildprompt-Sammeldatei ist veraltet oder enthält direkte Bildnummern, Cover, Szenen oder die verbindliche Google-Flow-Einzelbild-Anweisung nicht vollständig in der richtigen Reihenfolge.'
+          : 'Die Bildprompt-Sammeldatei enthält bei jedem einzelnen Prompt die direkte Bildnummer und den Dateinamen sowie die vollständige Google-Flow-Einzelbild-Anweisung.'
   };
 }
