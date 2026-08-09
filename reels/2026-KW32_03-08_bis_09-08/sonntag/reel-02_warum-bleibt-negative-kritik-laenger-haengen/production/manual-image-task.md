@@ -1,37 +1,42 @@
-# Manueller Bildauftrag – nur der Nutzer erstellt Bilder
+# Bildworkflow – Nutzer startet Google Flow, Antigravity erzeugt keine Bilder
 
 ## Reel
 **Warum bleibt ein negativer Kommentar länger hängen als viele positive?**
 
-## Rollenregel
+## Klare Rollenverteilung
 
-**Kein Agent erzeugt Bilder.** Antigravity, Codex und andere automatisierte Agenten dürfen weder Cover noch Szenenbilder generieren oder regenerieren.
+**Antigravity, Codex und andere Repo-Agenten erzeugen keine Cover- oder Szenenbilder.** Sie bereiten nur Reel, Bildprompts, Nummerierung und spätere Pipeline-Schritte vor.
 
-Der Nutzer erstellt alle Bilder selbst anhand von:
+**Der Nutzer startet die Bildgenerierung selbst in Google Flow.** Dafür kopiert er die komplette Datei
 
 `all-image-prompts/all-image-prompts.txt`
 
-## Manueller Ablauf
+auf einmal in Google Flow und sendet sie ab.
 
-1. Nutzer liest nur den Prompt für **Bild 00 = Cover**.
-2. Nutzer erstellt genau ein Bild.
-3. Nutzer benennt es sofort `Bild 00.png`.
-4. Erst danach Prompt für **Bild 01 = Szene 1** verwenden.
-5. Bild 01 selbst erstellen und sofort `Bild 01.png` nennen.
-6. So streng einzeln bis **Bild 13 = Szene 13** fortfahren.
-7. Nach Bild 13 prüfen: keine Nummer fehlt, keine Nummer doppelt, nichts vertauscht.
-8. Erst dann alle 14 fertigen Bilder gemeinsam in `00-bildprompts/00-ALLE-BILDER-HIER-REIN/` bzw. technisch `inbox/numbered-images/` legen.
-9. Nicht manuell auf einzelne Cover-/Szenenordner verteilen.
+Ab diesem Moment ist **Google Flow der Bildgenerator** und soll den kompletten eingefügten Auftrag ohne Bestätigungstext ausführen.
+
+## Ablauf in Google Flow
+
+1. Nutzer kopiert die komplette `all-image-prompts.txt` in Google Flow und sendet sie einmal ab.
+2. Google Flow startet sofort mit **Bild 00 = Cover**.
+3. Google Flow erzeugt immer genau ein Bild gleichzeitig.
+4. Nach Bild 00 folgt automatisch Bild 01, danach Bild 02 usw.
+5. Keine Bestätigung, keine Zusammenfassung und keine Rückfrage zwischen den Bildern.
+6. Reihenfolge strikt bis **Bild 13 = Szene 13**.
+7. Dateinamen: `Bild 00.png`, `Bild 01.png`, ... `Bild 13.png`.
+8. Erst wenn alle 14 Bilder fertig sind, vollständige Nummerierung prüfen.
+9. Danach alle Bilder gemeinsam in `00-bildprompts/00-ALLE-BILDER-HIER-REIN/` bzw. technisch `inbox/numbered-images/` legen.
+10. Nicht manuell auf einzelne Cover-/Szenenordner verteilen.
 
 ## Danach
 
-Erst wenn die Nutzerbilder vorhanden sind:
+Erst wenn die Google-Flow-Bilder vorhanden sind, dürfen Antigravity/Codex bzw. die Repo-Pipeline wieder übernehmen:
 
 ```bash
 npm run organize:assets -- --dir "reels/2026-KW32_03-08_bis_09-08/sonntag/reel-02_warum-bleibt-negative-kritik-laenger-haengen"
 ```
 
-Dann jedes vorgeschlagene Ziel wirklich visuell gegen Narration, `visualIdea`, `imageText` und `imagePrompt` prüfen, Zwei-Pass-QC dokumentieren und erst danach:
+Danach jedes vorgeschlagene Ziel wirklich visuell gegen Narration, `visualIdea`, `imageText` und `imagePrompt` prüfen, Zwei-Pass-QC dokumentieren und erst danach:
 
 ```bash
 npm run organize:assets -- --dir "reels/2026-KW32_03-08_bis_09-08/sonntag/reel-02_warum-bleibt-negative-kritik-laenger-haengen" --apply
