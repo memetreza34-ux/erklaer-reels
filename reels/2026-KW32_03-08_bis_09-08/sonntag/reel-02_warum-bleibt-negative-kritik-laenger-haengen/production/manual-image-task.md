@@ -15,6 +15,27 @@ auf einmal einfügt und einmal absendet.
 
 Danach ist **Google Flow der Bildgenerator**, aber mit einer harten seriellen Sperre.
 
+## Bild 00 = Cover + Stilvorlage
+
+**Bild 00 ist nicht nur das Cover, sondern die verbindliche visuelle Master-Vorlage für das gesamte Reel.**
+
+Google Flow muss bei Bild 00:
+- direkt das echte Cover erzeugen,
+- den im Cover-Prompt vorgegebenen deutschen Hook-Text exakt und gut lesbar darstellen,
+- mit diesem Hook sofort zeigen, worum es im Reel geht,
+- den finalen Zeichen-/Renderstil, die Farbwelt, Figurenmerkmale, Proportionen, Lichtstimmung und Detailqualität für das gesamte Reel festlegen.
+
+Sobald `Bild 00.png` vollständig fertig und korrekt benannt ist, muss Google Flow dieses fertige Cover **direkt als visuelle Referenz/Vorlage für Bild 01 bis Bild 13 verwenden**.
+
+Für jede spätere Szene gilt:
+- gleicher visueller Stil wie Bild 00,
+- gleiche Hauptfigur und erkennbare Merkmale,
+- gleiche Farb- und Lichtlogik,
+- gleiche Linien-/Renderqualität und Proportionen,
+- kein unbegründeter Stilwechsel.
+
+Der Hook-Text des Covers wird **nicht automatisch in die Szenen kopiert**. Sichtbarer Text in einer Szene wird nur verwendet, wenn der jeweilige Szenenprompt ihn ausdrücklich verlangt.
+
 ## Unverhandelbare serielle Regel
 
 Google Flow darf **niemals mehrere Bilder gleichzeitig erzeugen** und auch keine späteren Bilder vorab in eine Queue legen.
@@ -29,11 +50,12 @@ Beispiel:
 2. Warten, bis Bild 00 vollständig fertig ist.
 3. Sofort in `Bild 00.png` umbenennen.
 4. Prüfen, dass `Bild 00.png` wirklich gesetzt ist.
-5. Erst danach Bild 01 starten.
-6. Bild 01 vollständig fertigstellen.
-7. Sofort in `Bild 01.png` umbenennen.
-8. Erst danach Bild 02 starten.
-9. Genau so streng einzeln bis `Bild 13.png`.
+5. Bild 00 ab jetzt als Style-Referenz festhalten.
+6. Erst danach Bild 01 starten und dabei Bild 00 als visuelle Vorlage verwenden.
+7. Bild 01 vollständig fertigstellen.
+8. Sofort in `Bild 01.png` umbenennen.
+9. Erst danach Bild 02 starten.
+10. Genau so streng einzeln bis `Bild 13.png`.
 
 Verboten:
 - parallele Bildgenerierung
@@ -41,6 +63,7 @@ Verboten:
 - Warteschlange/Queue für spätere Bilder
 - nächsten Prompt starten, solange aktuelles Bild noch läuft
 - mehrere fertige, noch unbenannte Bilder sammeln
+- visuellen Stil zwischen Cover und Szenen ohne ausdrückliche Prompt-Anweisung wechseln
 
 ## Ordner erst ganz am Ende
 
