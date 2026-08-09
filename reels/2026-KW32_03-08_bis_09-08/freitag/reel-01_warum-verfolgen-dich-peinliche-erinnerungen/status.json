@@ -1,5 +1,5 @@
 {
-  "workspace": "antigravity-handoff",
+  "workspace": "antigravity-downstream-only",
   "content": "ready",
   "script": "complete",
   "scenes": "planned",
@@ -7,13 +7,15 @@
   "wordSync": "waiting-for-audio",
   "effects": "waiting-for-materialization",
   "audio": "missing",
-  "imagePrompts": "specified-in-agent-task",
-  "imagePromptBundle": "waiting-for-antigravity",
-  "images": "must-be-generated-with-image-3",
-  "cover": "prompt-ready",
-  "assetMatching": "waiting-for-image-3-files",
+  "imagePrompts": "ready-for-user",
+  "imagePromptBundle": "prepare-for-user",
+  "images": "waiting-for-user-created-images",
+  "cover": "prompt-ready-waiting-for-user-image",
+  "assetMatching": "waiting-for-user-images",
   "visualReview": "pending",
   "qualityControl": "pending",
   "timeline": "waiting-for-audio",
-  "render": "waiting-for-assets"
+  "render": "waiting-for-assets",
+  "imageGenerationOwner": "user-only",
+  "antigravityImageGeneration": "forbidden"
 }
