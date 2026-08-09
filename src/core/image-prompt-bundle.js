@@ -28,6 +28,10 @@ function normalizedRelativePath(value) {
   return value.split(path.sep).join('/');
 }
 
+function padImageNumber(value) {
+  return String(value).padStart(2, '0');
+}
+
 export function getImagePromptBundlePaths(reelDirectory) {
   const directory = path.join(reelDirectory, BUNDLE_DIRECTORY);
   return {
@@ -41,7 +45,7 @@ export async function ensureImagePromptBundleDirectory(reelDirectory) {
   const paths = getImagePromptBundlePaths(reelDirectory);
   await mkdir(paths.directory, { recursive: true });
 
-  const readme = `# Alle Bildprompts\n\nIn \`${BUNDLE_FILE}\` stehen zuerst der Cover-Prompt und danach alle Szenen-Bildprompts in chronologischer Reihenfolge.\n\nErzeugen oder aktualisieren:\n\n\`\`\`bash\nnpm run export:prompts -- --dir "${normalizedRelativePath(reelDirectory)}" --strict\n\`\`\`\n\nDie Datei wird automatisch aus \`cover/cover-prompt.txt\` und \`scenes/scene-XX/image-prompt.txt\` aufgebaut und sollte nicht manuell gepflegt werden.\n`;
+  const readme = `# Alle Bildprompts\n\nIn \`${BUNDLE_FILE}\` stehen zuerst der Cover-Prompt und danach alle Szenen-Bildprompts in chronologischer Reihenfolge. Ganz am Ende steht automatisch die verbindliche Dateibenennung: Bild 00 = Cover, Bild 01 = Szene 1 usw.\n\nErzeugen oder aktualisieren:\n\n\`\`\`bash\nnpm run export:prompts -- --dir "${normalizedRelativePath(reelDirectory)}" --strict\n\`\`\`\n\nDie Datei wird automatisch aus \`cover/cover-prompt.txt\` und \`scenes/scene-XX/image-prompt.txt\` aufgebaut und sollte nicht manuell gepflegt werden.\n`;
   await writeFile(paths.readme, readme, 'utf8');
 
   if (!(await exists(paths.file))) {
@@ -98,6 +102,39 @@ export async function collectImagePrompts(reelDirectory) {
   return prompts;
 }
 
+export function formatImageNumberingContract(prompts) {
+  const scenes = prompts
+    .filter((entry) => entry.kind === 'scene')
+    .sort((a, b) => a.order - b.order);
+
+  const lines = [
+    'VERBINDLICHE DATEIBENENNUNG NACH DER BILDGENERIERUNG',
+    '',
+    'WICHTIG FÜR DIE KI:',
+    '- Erzeuge zuerst das Cover und danach alle Szenenbilder exakt in der oben angegebenen chronologischen Reihenfolge.',
+    '- Benenne jedes erzeugte Bild anschließend nach seiner festen Nummer um.',
+    '- Lege ALLE Bilder gemeinsam in denselben Sammelordner `00-bildprompts/00-ALLE-BILDER-HIER-REIN/`.',
+    '- NICHT manuell auf einzelne Szenenordner verteilen. Die Pipeline übernimmt das anhand der Nummer.',
+    '- Die Nummer ist eindeutig und darf nicht vertauscht, übersprungen oder doppelt vergeben werden.',
+    '',
+    'FESTE ZUORDNUNG:',
+    '- Bild 00 = COVER → Dateiname `Bild 00.png`'
+  ];
+
+  for (const scene of scenes) {
+    const number = padImageNumber(scene.order);
+    lines.push(`- Bild ${number} = SZENE ${scene.order} → Dateiname \`Bild ${number}.png\``);
+  }
+
+  lines.push(
+    '',
+    `Damit gilt: Cover = Bild 00, erste Szene = Bild 01 und jede weitere Szene erhält fortlaufend genau eine Nummer bis Bild ${padImageNumber(scenes.at(-1)?.order ?? 0)}.`,
+    'Falls das Bildformat nicht PNG ist, darf nur die Dateiendung abweichen; die Nummerierung `Bild 00`, `Bild 01`, `Bild 02` usw. bleibt unverändert.'
+  );
+
+  return lines.join('\n');
+}
+
 export function formatImagePromptBundle(prompts) {
   const sections = prompts.map((entry) => {
     const body = entry.prompt || '[BILDPROMPT FEHLT]';
@@ -107,7 +144,8 @@ export function formatImagePromptBundle(prompts) {
     return `SZENE ${entry.order} – BILDPROMPT ${entry.order}\n\n${body}`;
   });
 
-  return `ALLE BILDPROMPTS – COVER UND SZENEN\n\n${sections.join('\n\n\n')}\n`;
+  const numberingContract = formatImageNumberingContract(prompts);
+  return `ALLE BILDPROMPTS – COVER UND SZENEN\n\n${sections.join('\n\n\n')}\n\n\n${numberingContract}\n`;
 }
 
 function missingPromptIds(prompts) {
@@ -172,7 +210,7 @@ export async function validateImagePromptBundle(reelDirectory) {
       : !actual
         ? `Sammeldatei fehlt: ${normalizedRelativePath(paths.file)}.`
         : !current
-          ? 'Die Bildprompt-Sammeldatei ist veraltet oder enthält Cover und Szenen nicht vollständig in der richtigen Reihenfolge.'
-          : 'Die Bildprompt-Sammeldatei enthält den Cover-Prompt und alle Szenenprompts vollständig und aktuell.'
+          ? 'Die Bildprompt-Sammeldatei ist veraltet oder enthält Cover, Szenen oder die verbindliche Bildnummerierung nicht vollständig in der richtigen Reihenfolge.'
+          : 'Die Bildprompt-Sammeldatei enthält Cover, alle Szenenprompts und die verbindliche Bildnummerierung vollständig und aktuell.'
   };
 }
