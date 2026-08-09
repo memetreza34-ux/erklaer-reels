@@ -1,0 +1,29 @@
+{
+  "reelId": "reel-02_warum-bleibt-negative-kritik-laenger-haengen",
+  "title": "Warum bleibt ein negativer Kommentar länger hängen als viele positive?",
+  "topicArea": "Psychologie und menschliches Verhalten",
+  "date": "2026-08-09",
+  "language": "de",
+  "promptLanguage": "en",
+  "aspectRatio": "9:16",
+  "targetDurationSeconds": 57.2,
+  "targetVideoDurationSeconds": 57.9,
+  "sceneCount": 13,
+  "scriptWordCount": 175,
+  "visualStyleId": "human-editorial-cartoon",
+  "visualStyleReason": "Das Thema handelt von Aufmerksamkeit, Kritik, Gedächtnis und Grübeln. Ein reifer Editorial-Cartoon-Stil kann Feedbackkarten, mentale Gewichtung und Aufmerksamkeit ohne medizinische oder übertriebene Gehirndarstellungen direkt visualisieren.",
+  "subtitlesEnabled": true,
+  "motionEffectsEnabled": true,
+  "soundEffectsEnabled": true,
+  "backgroundMusicEnabled": false,
+  "audioPlaybackRate": 1.1,
+  "sourceQualitySchemaVersion": 2,
+  "googleFlowImageWorkflow": "single-image-generate-rename-then-next",
+  "numberedImageContract": {
+    "cover": "Bild 00.png",
+    "sceneStart": "Bild 01.png",
+    "sceneEnd": "Bild 13.png",
+    "finalCommonFolder": "inbox/numbered-images/"
+  },
+  "status": "content-ready-for-google-flow"
+}
