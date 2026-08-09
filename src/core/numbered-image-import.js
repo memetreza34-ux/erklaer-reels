@@ -3,6 +3,7 @@ import path from 'node:path';
 
 const IMAGE_EXTENSIONS = new Set(['.png', '.jpg', '.jpeg', '.webp']);
 const DROP_DIRECTORY = path.join('inbox', 'numbered-images');
+const SOURCE_DIRECTORY = 'numbered-images';
 const README_FILE = 'README.md';
 
 async function exists(filePath) {
@@ -65,6 +66,10 @@ export async function ensureNumberedImageDropDirectory(reelDirectory) {
   return directory;
 }
 
+function sourceRelativeToInbox(fileName) {
+  return `${SOURCE_DIRECTORY}/${fileName}`;
+}
+
 function emptyVisualFields(target, sceneOrder) {
   const assignment = {
     confidence: 0,
@@ -97,7 +102,7 @@ export async function prepareNumberedImageAssignments(reelDirectory, { skipWhenE
 
   const entries = await readdir(directory, { withFileTypes: true });
   const candidateFiles = entries
-    .filter((entry) => entry.isFile() && ![README_FILE, '.gitkeep'].includes(entry.name))
+    .filter((entry) => entry.isFile() && !entry.name.startsWith('.') && entry.name !== README_FILE)
     .map((entry) => ({ name: entry.name, parsed: parseNumberedImageFileName(entry.name) }));
 
   if (skipWhenEmpty && candidateFiles.length === 0) return null;
@@ -108,7 +113,7 @@ export async function prepareNumberedImageAssignments(reelDirectory, { skipWhenE
   for (const candidate of candidateFiles) {
     if (!candidate.parsed) {
       unmatched.push({
-        source: `${DROP_DIRECTORY}/${candidate.name}`.split(path.sep).join('/'),
+        source: sourceRelativeToInbox(candidate.name),
         reason: 'Dateiname enthält keine eindeutige zweistellige Bildnummer im Format 00, 01, 02 ...'
       });
       continue;
@@ -125,7 +130,7 @@ export async function prepareNumberedImageAssignments(reelDirectory, { skipWhenE
     if (candidates.length > 1) {
       for (const candidate of candidates) {
         unmatched.push({
-          source: `${DROP_DIRECTORY}/${candidate.name}`.split(path.sep).join('/'),
+          source: sourceRelativeToInbox(candidate.name),
           reason: `Mehrere Dateien verwenden dieselbe Nummer ${String(number).padStart(2, '0')}; keine automatische Auswahl.`
         });
       }
@@ -133,7 +138,7 @@ export async function prepareNumberedImageAssignments(reelDirectory, { skipWhenE
     }
 
     const candidate = candidates[0];
-    const source = `${DROP_DIRECTORY}/${candidate.name}`.split(path.sep).join('/');
+    const source = sourceRelativeToInbox(candidate.name);
 
     if (number === 0) {
       assignments.push({
