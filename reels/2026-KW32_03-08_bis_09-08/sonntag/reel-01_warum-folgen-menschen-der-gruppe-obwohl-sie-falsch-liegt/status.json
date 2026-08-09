@@ -1,0 +1,18 @@
+{
+  "workspace": "ready",
+  "content": "ready",
+  "script": "complete",
+  "scenes": "planned",
+  "subtitles": "waiting-for-exact-sync",
+  "wordSync": "waiting-for-audio",
+  "effects": "planned",
+  "audio": "missing",
+  "imagePrompts": "ready",
+  "imagePromptBundle": "ready",
+  "images": "missing",
+  "cover": "missing",
+  "assetMatching": "waiting-for-files",
+  "endingHold": "planned",
+  "qualityControl": "pending",
+  "nextStep": "Google Flow erzeugt Bild 00 bis Bild 13 einzeln mit Image 3, benennt jedes sofort und legt erst nach vollständiger Generierung alle Bilder gemeinsam in den Sammelordner."
+}
