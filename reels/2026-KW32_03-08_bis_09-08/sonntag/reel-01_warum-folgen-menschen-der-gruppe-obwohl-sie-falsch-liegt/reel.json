@@ -1,0 +1,21 @@
+{
+  "reelId": "reel-01_warum-folgen-menschen-der-gruppe-obwohl-sie-falsch-liegt",
+  "title": "Warum folgen Menschen der Gruppe, obwohl die Gruppe falsch liegt?",
+  "topicArea": "Psychologie und menschliches Verhalten",
+  "date": "2026-08-09",
+  "language": "de",
+  "promptLanguage": "en",
+  "aspectRatio": "9:16",
+  "targetDurationSeconds": 57.2,
+  "targetVideoDurationSeconds": 57.9,
+  "sceneCount": 13,
+  "visualStyleId": "human-editorial-cartoon",
+  "visualStyleReason": "Konformität lebt von Gruppendruck, Unsicherheit und sichtbaren Entscheidungen zwischen Mehrheit und eigener Einschätzung. Vereinfachte menschliche Editorial-Cartoonfiguren machen diese sozialen Situationen und Metaphern sofort verständlich.",
+  "subtitlesEnabled": true,
+  "motionEffectsEnabled": true,
+  "soundEffectsEnabled": true,
+  "backgroundMusicEnabled": false,
+  "audioPlaybackRate": 1.1,
+  "sourceQualitySchemaVersion": 2,
+  "status": "content-ready-for-google-flow"
+}
