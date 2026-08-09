@@ -88,7 +88,7 @@ test('exportiert Google-Flow-Gesamtauftrag mit serieller Sperre, Cover-Hook und 
 
   assert.match(content, /BILD 00 = COVER \+ VERBINDLICHE STILVORLAGE/);
   assert.match(content, /sichtbare deutsche Text ist der HOOK des Reels/);
-  assert.match(content, /verwende genau dieses fertige Cover als visuelle Referenz\/Vorlage fuer ALLE folgenden Szenen/i);
+  assert.match(content, /verwende genau dieses fertige Cover als visuelle Referenz\/Vorlage für ALLE folgenden Szenen/i);
   assert.match(content, /denselben Zeichen-\/Renderstil, dieselbe Farbwelt, dieselben Figurenmerkmale/);
   assert.match(content, /Übernimm den Cover-Hook-Text NICHT automatisch in spätere Szenen/);
 
