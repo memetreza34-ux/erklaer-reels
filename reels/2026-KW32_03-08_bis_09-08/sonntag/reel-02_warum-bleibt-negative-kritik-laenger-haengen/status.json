@@ -1,0 +1,21 @@
+{
+  "workspace": "google-flow-ready",
+  "content": "ready",
+  "script": "complete",
+  "scriptWordCount": 175,
+  "scenes": "13-prompt-ready",
+  "subtitles": "planned-waiting-for-audio-exact-sync",
+  "wordSync": "waiting-for-audio",
+  "effects": "planned",
+  "audio": "missing",
+  "imagePrompts": "ready",
+  "imagePromptBundle": "ready-with-direct-number-on-every-prompt",
+  "images": "waiting-for-google-flow-image-3",
+  "cover": "prompt-ready-as-bild-00",
+  "numberedImageDrop": "ready",
+  "assetMatching": "waiting-for-numbered-image-files-and-visual-review",
+  "visualReview": "pending",
+  "qualityControl": "pending",
+  "timeline": "waiting-for-audio",
+  "render": "waiting-for-assets"
+}
