@@ -45,7 +45,7 @@ export async function ensureImagePromptBundleDirectory(reelDirectory) {
   const paths = getImagePromptBundlePaths(reelDirectory);
   await mkdir(paths.directory, { recursive: true });
 
-  const readme = `# Alle Bildprompts\n\n\`${BUNDLE_FILE}\` ist absichtlich als **ein einziger Google-Flow-Gesamtauftrag** aufgebaut. Der Nutzer kopiert die komplette Datei auf einmal in Google Flow und sendet sie ab. Google Flow soll ohne Bestätigungs- oder Erklärungstext sofort bei Bild 00 starten und danach alle nummerierten Bildblöcke chronologisch bis zum letzten Bild abarbeiten.\n\nDirekt bei JEDEM Bildblock stehen feste Bildnummer, Ziel und Dateiname: Bild 00 = Cover, Bild 01 = Szene 1, Bild 02 = Szene 2 usw.\n\nWichtig: Regeln für Antigravity, Codex oder andere Repo-Agenten gehören **nicht** in diese kopierbare Datei. Dort stehen nur direkte Ausführungsbefehle für Google Flow.\n\nErzeugen oder aktualisieren:\n\n\`\`\`bash\nnpm run export:prompts -- --dir "${normalizedRelativePath(reelDirectory)}" --strict\n\`\`\`\n\nDie Datei wird automatisch aus \`cover/cover-prompt.txt\` und \`scenes/scene-XX/image-prompt.txt\` aufgebaut und sollte nicht manuell gepflegt werden.\n`;
+  const readme = `# Alle Bildprompts\n\n\`${BUNDLE_FILE}\` ist als **ein einziger Google-Flow-Gesamtauftrag mit harter serieller Sperre** aufgebaut. Der Nutzer kopiert die komplette Datei einmal in Google Flow und sendet sie ab. Google Flow darf zu jedem Zeitpunkt nur **eine einzige Bildgenerierung aktiv** haben.\n\nVerbindlich: Bild 00 vollständig erzeugen → auf vollständigen Abschluss warten → sofort korrekt umbenennen → prüfen, dass die Umbenennung abgeschlossen ist → **erst dann** Bild 01 starten. Danach identisch Bild für Bild bis zum letzten Bild. Kein Parallelisieren, keine Warteschlange, kein Vorladen und kein Start eines späteren Prompts, solange das aktuelle Bild nicht fertig und umbenannt ist.\n\nDirekt bei JEDEM Bildblock stehen feste Bildnummer, Ziel, Dateiname und die Freigabebedingung für diesen Schritt: Bild 00 = Cover, Bild 01 = Szene 1, Bild 02 = Szene 2 usw.\n\nErzeugen oder aktualisieren:\n\n\`\`\`bash\nnpm run export:prompts -- --dir "${normalizedRelativePath(reelDirectory)}" --strict\n\`\`\`\n\nDie Datei wird automatisch aus \`cover/cover-prompt.txt\` und \`scenes/scene-XX/image-prompt.txt\` aufgebaut und sollte nicht manuell gepflegt werden.\n`;
   await writeFile(paths.readme, readme, 'utf8');
 
   if (!(await exists(paths.file))) {
@@ -109,9 +109,10 @@ export function formatImageNumberingContract(prompts) {
   const lastNumber = padImageNumber(scenes.at(-1)?.order ?? 0);
 
   const lines = [
-    'ABSCHLUSS – DATEIBENENNUNG UND GEMEINSAME ABLAGE',
+    'ABSCHLUSS – ERST JETZT GEMEINSAM IN EINEN ORDNER',
     '',
-    'Wenn alle Bilder vollständig erzeugt sind, prüfe die feste Nummerierung:',
+    'DIESER ABSCHLUSS DARF ERST BEGINNEN, WENN DAS LETZTE BILD VOLLSTÄNDIG FERTIG UND UMBENANNT IST.',
+    'Vorher darf KEIN Bild in den gemeinsamen Sammelordner verschoben werden.',
     '',
     'FESTE DATEIBENENNUNG:',
     '- Bild 00 = COVER → Dateiname `Bild 00.png`'
@@ -124,9 +125,10 @@ export function formatImageNumberingContract(prompts) {
 
   lines.push(
     '',
-    `Damit gilt: Cover = Bild 00, erste Szene = Bild 01 und jede weitere Szene erhält chronologisch genau eine fortlaufende Nummer bis Bild ${lastNumber}.`,
+    `Prüfe jetzt erst die vollständige Reihe Bild 00 bis Bild ${lastNumber}: keine Nummer fehlt, keine Nummer ist doppelt und keine Nummer ist vertauscht.`,
     'Falls das Bildformat nicht PNG ist, darf nur die Dateiendung abweichen; die Nummerierung `Bild 00`, `Bild 01`, `Bild 02` usw. bleibt unverändert.',
-    'Erst wenn wirklich ALLE Bilder fertig erzeugt und korrekt benannt sind, lege sie gemeinsam in `00-bildprompts/00-ALLE-BILDER-HIER-REIN/`. Nicht auf einzelne Cover- oder Szenenordner verteilen.'
+    'ERST NACH DIESER VOLLSTÄNDIGEN PRÜFUNG: Lege ALLE fertigen und bereits korrekt umbenannten Bilder gemeinsam in `00-bildprompts/00-ALLE-BILDER-HIER-REIN/`.',
+    'Alle Bilder kommen dann zusammen in genau diesen EINEN Sammelordner. Nicht vorher und nicht einzeln während der Generierung. Nicht auf einzelne Cover- oder Szenenordner verteilen.'
   );
 
   return lines.join('\n');
@@ -140,41 +142,71 @@ function formatFlowExecutionContract(prompts) {
   const total = scenes.length + 1;
 
   return [
-    'GOOGLE FLOW – GESAMTAUFTRAG: STARTE JETZT SOFORT',
+    'GOOGLE FLOW – HARTE SERIELLE SPERRE – NIEMALS PARALLEL',
     '',
-    `Diese komplette Nachricht ist EIN zusammenhängender Auftrag für ${total} Bilder von Bild 00 bis Bild ${lastNumber}.`,
-    'ANTWORTE NICHT mit einer Bestätigung, Zusammenfassung, Erklärung, Anleitung oder einem Hinweis, dass du die Prompts verstanden hast.',
-    'STARTE STATTDESSEN SOFORT mit der tatsächlichen Bildgenerierung von BILD 00.',
+    `Diese komplette Nachricht enthält ${total} Bildaufträge von Bild 00 bis Bild ${lastNumber}. Sie werden NICHT gleichzeitig und NICHT als Batch ausgeführt.`,
+    'ANTWORTE NICHT mit einer Bestätigung, Zusammenfassung oder Erklärung. Beginne ausschließlich mit BILD 00.',
     '',
-    'VERBINDLICHER ABLAUF:',
-    '1. Arbeite ALLE nachfolgenden nummerierten Bildblöcke dieser Nachricht vollständig und streng chronologisch ab.',
-    '2. Beginne jetzt mit BILD 00 = COVER.',
-    '3. Erzeuge immer nur GENAU EIN Bild gleichzeitig anhand des Bildprompts im aktuellen Block.',
-    '4. Sobald dieses Bild fertig ist, verwende sofort den im Block angegebenen Dateinamen.',
-    '5. Danach fahre OHNE Textantwort und OHNE Rückfrage automatisch mit dem direkt nächsten Bildblock fort.',
-    `6. Wiederhole das selbstständig Bild für Bild bis einschließlich BILD ${lastNumber}.`,
-    '7. Überspringe keinen Bildblock, erzeuge keine zusätzlichen Varianten und ändere die Reihenfolge nicht.',
-    `8. Stoppe erst, nachdem alle ${total} Bilder von Bild 00 bis Bild ${lastNumber} erzeugt wurden.`,
-    '9. Erst danach die vollständige Nummerierung prüfen und alle fertigen Bilder gemeinsam in den unten angegebenen Sammelordner legen.',
+    'DIE WICHTIGSTE REGEL:',
+    'ZU JEDEM ZEITPUNKT DARF GENAU EINE EINZIGE BILDGENERIERUNG AKTIV SEIN.',
+    'STARTE NIEMALS DAS NÄCHSTE BILD, SOLANGE DAS AKTUELLE BILD NOCH GENERIERT WIRD, NOCH NICHT VOLLSTÄNDIG FERTIG IST ODER NOCH NICHT KORREKT UMBENANNT WURDE.',
     '',
-    'JETZT AUSFÜHREN: Beginne unmittelbar mit BILD 00. Keine Textantwort vor der ersten Bildgenerierung.'
+    'STRENG VERBOTEN:',
+    '- mehrere Bilder gleichzeitig starten',
+    '- mehrere Prompts gleichzeitig absenden',
+    '- spätere Bilder vorab in eine Warteschlange oder Queue legen',
+    '- den nächsten Bildblock vorladen oder ausführen, während das aktuelle Bild noch läuft',
+    '- alle Bildblöcke als Batch behandeln',
+    '- mehrere fertige, aber noch unbenannte Bilder ansammeln',
+    '- Bilder während der Generierung bereits in den gemeinsamen Sammelordner verschieben',
+    '',
+    'VERBINDLICHER ABLAUF FÜR JEDES EINZELNE BILD:',
+    'A. Lies ausschließlich den aktuellen freigegebenen Bildblock.',
+    'B. Starte GENAU EINE Bildgenerierung für diesen Block.',
+    'C. WARTE, bis diese eine Bildgenerierung vollständig abgeschlossen ist. Währenddessen keinerlei anderes Bild starten.',
+    'D. Sobald das Bild vollständig fertig ist, benenne DIESES Bild sofort exakt mit dem angegebenen Dateinamen um.',
+    'E. WARTE, bis auch die Umbenennung abgeschlossen ist, und prüfe den Dateinamen.',
+    'F. ERST JETZT ist der nächste nummerierte Bildblock freigegeben.',
+    `G. Wiederhole A bis F streng einzeln bis einschließlich Bild ${lastNumber}.`,
+    '',
+    'BEISPIEL DER SPERRE:',
+    'Bild 00 erzeugen → warten bis Bild 00 wirklich fertig → sofort `Bild 00.png` nennen → prüfen → ERST DANN Bild 01 starten.',
+    'Bild 01 erzeugen → warten bis Bild 01 wirklich fertig → sofort `Bild 01.png` nennen → prüfen → ERST DANN Bild 02 starten.',
+    'Genau so einzeln bis zum letzten Bild. Keine Ausnahme.',
+    '',
+    `NACH BILD ${lastNumber}: Erst wenn wirklich ALLE ${total} Bilder vollständig erzeugt UND jeweils direkt nach ihrer Erzeugung korrekt umbenannt wurden, die komplette Nummerierung prüfen.`,
+    'ERST DANACH alle fertigen Bilder gemeinsam in EINEN Sammelordner legen. Vorher keinen Sammelordner-Schritt ausführen.',
+    '',
+    'JETZT AUSFÜHREN: Starte NUR BILD 00. Alle späteren Bildblöcke sind bis zur erfolgreichen Fertigstellung und Umbenennung ihres jeweiligen Vorgängers GESPERRT.'
   ].join('\n');
 }
 
-function formatDirectGenerationInstruction(number) {
-  return `GOOGLE FLOW – AKTUELLER SCHRITT: Erzeuge JETZT genau BILD ${number} anhand des folgenden Prompts. Keine Erklärung und keine Bestätigung. Sobald BILD ${number} fertig ist, benenne es wie oben angegeben und fahre automatisch mit dem direkt folgenden nummerierten Bildblock dieser Nachricht fort.`;
+function formatDirectGenerationInstruction(number, previousNumber) {
+  const gate = previousNumber === null
+    ? 'FREIGABE: Dies ist der einzige jetzt freigegebene Bildblock.'
+    : `FREIGABE-BEDINGUNG: Dieser Block ist GESPERRT, bis BILD ${previousNumber} vollständig fertig erzeugt, exakt als \`Bild ${previousNumber}.png\` umbenannt und die Umbenennung geprüft wurde.`;
+
+  return [
+    gate,
+    `GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD ${number}.`,
+    'Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.',
+    `Nach vollständigem Abschluss dieses Bildes: sofort exakt in \`Bild ${number}.png\` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.`,
+    'ERST NACH DIESER PRÜFUNG darf der direkt nächste nummerierte Bildblock freigegeben und gestartet werden.'
+  ].join('\n');
 }
 
 function formatDirectPromptSection(entry) {
   const body = entry.prompt || '[BILDPROMPT FEHLT]';
-  const number = padImageNumber(entry.kind === 'cover' ? 0 : entry.order);
+  const value = entry.kind === 'cover' ? 0 : entry.order;
+  const number = padImageNumber(value);
+  const previousNumber = value === 0 ? null : padImageNumber(value - 1);
 
   if (entry.kind === 'cover') {
     return [
       `BILD ${number} – COVER – GOOGLE-FLOW-PROMPT`,
       'ZIEL: COVER',
       `DATEINAME: Bild ${number}.png`,
-      formatDirectGenerationInstruction(number),
+      formatDirectGenerationInstruction(number, previousNumber),
       '',
       body
     ].join('\n');
@@ -184,7 +216,7 @@ function formatDirectPromptSection(entry) {
     `BILD ${number} – SZENE ${entry.order} – GOOGLE-FLOW-PROMPT`,
     `ZIEL: SZENE ${entry.order}`,
     `DATEINAME: Bild ${number}.png`,
-    formatDirectGenerationInstruction(number),
+    formatDirectGenerationInstruction(number, previousNumber),
     '',
     body
   ].join('\n');
@@ -194,7 +226,7 @@ export function formatImagePromptBundle(prompts) {
   const sections = prompts.map(formatDirectPromptSection);
   const executionContract = formatFlowExecutionContract(prompts);
   const numberingContract = formatImageNumberingContract(prompts);
-  return `ALLE BILDPROMPTS – GOOGLE FLOW ONE-PASTE\n\n${executionContract}\n\n\n${sections.join('\n\n\n')}\n\n\n${numberingContract}\n`;
+  return `ALLE BILDPROMPTS – GOOGLE FLOW – STRENG EINZELN\n\n${executionContract}\n\n\n${sections.join('\n\n\n')}\n\n\n${numberingContract}\n`;
 }
 
 function missingPromptIds(prompts) {
@@ -259,7 +291,7 @@ export async function validateImagePromptBundle(reelDirectory) {
       : !actual
         ? `Sammeldatei fehlt: ${normalizedRelativePath(paths.file)}.`
         : !current
-          ? 'Die Bildprompt-Sammeldatei ist veraltet oder enthält den Google-Flow-One-Paste-Gesamtauftrag und alle nummerierten Bildblöcke nicht vollständig.'
-          : 'Die Bildprompt-Sammeldatei ist als ein einziger Google-Flow-One-Paste-Gesamtauftrag aufgebaut und startet direkt mit Bild 00.'
+          ? 'Die Bildprompt-Sammeldatei ist veraltet oder enthält die harte serielle Google-Flow-Sperre nicht vollständig.'
+          : 'Die Bildprompt-Sammeldatei erzwingt Bild für Bild: erzeugen, vollständig abwarten, sofort umbenennen, prüfen und erst danach den nächsten Block freigeben.'
   };
 }
