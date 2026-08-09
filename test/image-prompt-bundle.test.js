@@ -52,10 +52,11 @@ test('legt den Sammelordner und die Textdatei für Cover und Szenen an', async (
   assert.match(readme, /cover\/cover-prompt\.txt/);
   assert.match(readme, /Bild 00 = Cover/);
   assert.match(readme, /JEDEM einzelnen Prompt/);
-  assert.match(readme, /Einzelbild-Ablauf/);
+  assert.match(readme, /ausschließlich vom Nutzer selbst/);
+  assert.match(readme, /Antigravity, Codex oder andere Agenten dürfen keine Bilder erzeugen/);
 });
 
-test('exportiert Cover und Szenen chronologisch mit direkter Bildnummer und Dateiname an jedem Prompt', async () => {
+test('exportiert Cover und Szenen chronologisch als manuellen Nutzerworkflow', async () => {
   const root = await createFixture();
   const result = await buildImagePromptBundle(root, { strict: true });
   const content = await readFile(result.outputFile, 'utf8');
@@ -64,7 +65,7 @@ test('exportiert Cover und Szenen chronologisch mit direkter Bildnummer und Date
   const first = content.indexOf('BILD 01 – SZENE 1 – BILDPROMPT');
   const second = content.indexOf('BILD 02 – SZENE 2 – BILDPROMPT');
   const third = content.indexOf('BILD 03 – SZENE 3 – BILDPROMPT');
-  const numbering = content.indexOf('GOOGLE FLOW KI-AGENT – VERBINDLICHER ABLAUF FÜR DIE BILDGENERIERUNG');
+  const numbering = content.indexOf('MANUELLE BILDERSTELLUNG DURCH DEN NUTZER – VERBINDLICHER ABLAUF');
 
   assert.ok(cover >= 0);
   assert.ok(first > cover);
@@ -77,7 +78,7 @@ test('exportiert Cover und Szenen chronologisch mit direkter Bildnummer und Date
   assert.match(content, /BILD 02 – SZENE 2 – BILDPROMPT\nZIEL: SZENE 2\nDATEINAME NACH ERZEUGUNG: Bild 02\.png/);
   assert.match(content, /BILD 03 – SZENE 3 – BILDPROMPT\nZIEL: SZENE 3\nDATEINAME NACH ERZEUGUNG: Bild 03\.png/);
 
-  assert.match(content, /GOOGLE FLOW: Erzeuge jetzt NUR dieses eine Bild/);
+  assert.match(content, /FÜR DEN NUTZER: Erstelle selbst NUR dieses eine Bild/);
   assert.match(content, /benenne es SOFORT in `Bild 00\.png` um/);
   assert.match(content, /benenne es SOFORT in `Bild 01\.png` um/);
   assert.match(content, /benenne es SOFORT in `Bild 02\.png` um/);
@@ -87,17 +88,16 @@ test('exportiert Cover und Szenen chronologisch mit direkter Bildnummer und Date
   assert.match(content, /Prompt für die erste Szene\./);
   assert.match(content, /Prompt für die zweite Szene\./);
   assert.match(content, /Prompt für die dritte Szene\./);
-  assert.match(content, /Google-Flow-KI-Agenten/);
-  assert.match(content, /keine Codex-Anweisung/);
-  assert.match(content, /ARBEITE IMMER BILD FÜR BILD/);
-  assert.match(content, /PROMPT LESEN → GENAU EIN BILD ERZEUGEN → SOFORT UMBENENNEN → ERST DANN ZUM NÄCHSTEN PROMPT/);
-  assert.match(content, /ERST WENN ALLE Bilder fertig erzeugt, korrekt umbenannt und vollständig geprüft sind/);
+  assert.match(content, /NUR DER NUTZER ERSTELLT DIE BILDER/);
+  assert.match(content, /Antigravity, Codex und andere Agenten dürfen keine Bilder selbst erzeugen/);
+  assert.match(content, /PROMPT LESEN → GENAU EIN BILD ERSTELLEN → SOFORT UMBENENNEN → ERST DANN ZUM NÄCHSTEN PROMPT/);
+  assert.match(content, /ERST WENN ALLE Bilder fertig erstellt, korrekt umbenannt und vollständig geprüft sind/);
   assert.match(content, /Bild 00 = COVER → Dateiname `Bild 00\.png`/);
   assert.match(content, /Bild 01 = SZENE 1 → Dateiname `Bild 01\.png`/);
   assert.match(content, /Bild 02 = SZENE 2 → Dateiname `Bild 02\.png`/);
   assert.match(content, /Bild 03 = SZENE 3 → Dateiname `Bild 03\.png`/);
   assert.match(content, /00-ALLE-BILDER-HIER-REIN/);
-  assert.doesNotMatch(content, /3ER-STEPS|3er-Step|3er-Batches/);
+  assert.doesNotMatch(content, /GOOGLE FLOW:|GOOGLE FLOW KI-AGENT|Google-Flow-KI-Agenten|3ER-STEPS|3er-Step|3er-Batches/);
   assert.equal(result.coverIncluded, true);
   assert.equal(result.sceneCount, 3);
   assert.equal(result.totalPromptCount, 4);
