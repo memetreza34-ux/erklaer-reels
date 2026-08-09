@@ -1,0 +1,15 @@
+{
+  "sceneId": "scene-06",
+  "order": 6,
+  "title": "Negative Details können lebhaft bleiben",
+  "narration": "Auch im Gedächtnis kann Negatives besonders lebhaft und detailreich bleiben.",
+  "imageText": "BLEIBT LEBHAFT",
+  "visualIdea": "Eine negative Rückmeldung bleibt scharf und detailreich wie eingeritzt, während andere neutrale/positive Details weicher im Hintergrund liegen.",
+  "audioCue": "Auch im Gedächtnis kann Negatives",
+  "durationSeconds": 4.2,
+  "expectedImageFileName": "scene-06.png",
+  "numberedDropFileName": "Bild 06.png",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "status": "prompt-ready"
+}

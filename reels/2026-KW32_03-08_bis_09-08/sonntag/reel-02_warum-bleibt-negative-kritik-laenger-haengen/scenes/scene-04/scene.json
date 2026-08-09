@@ -1,0 +1,15 @@
+{
+  "sceneId": "scene-04",
+  "order": 4,
+  "title": "Risiken können besonders wichtig sein",
+  "narration": "Eine Erklärung: Risiken schnell zu bemerken kann für Entscheidungen besonders wichtig sein.",
+  "imageText": "",
+  "visualIdea": "Die Hauptfigur sieht gleichzeitig freundliche Alltagssignale und ein einzelnes Warnsignal; ihr Blick geht zuerst zur möglichen Gefahr.",
+  "audioCue": "Eine Erklärung: Risiken schnell zu",
+  "durationSeconds": 4.2,
+  "expectedImageFileName": "scene-04.png",
+  "numberedDropFileName": "Bild 04.png",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "status": "prompt-ready"
+}

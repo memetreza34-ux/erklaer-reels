@@ -1,0 +1,15 @@
+{
+  "sceneId": "scene-07",
+  "order": 7,
+  "title": "Grübeln verstärkt die Aufmerksamkeit",
+  "narration": "Dann verstärkt Grübeln den Effekt: Du spielst denselben Satz immer wieder ab.",
+  "imageText": "NOCHMAL. NOCHMAL.",
+  "visualIdea": "Die Hauptfigur sitzt abends und derselbe rote Satz läuft als wiederkehrende Gedanken-Schleife um den Kopf.",
+  "audioCue": "Dann verstärkt Grübeln den Effekt:",
+  "durationSeconds": 4.4,
+  "expectedImageFileName": "scene-07.png",
+  "numberedDropFileName": "Bild 07.png",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "status": "prompt-ready"
+}

@@ -1,0 +1,15 @@
+{
+  "sceneId": "scene-08",
+  "order": 8,
+  "title": "Ein Kommentar wirkt mental zu groß",
+  "narration": "So bekommt ein einzelner Kommentar mehr mentale Aufmerksamkeit, als sein tatsächliches Gewicht rechtfertigt.",
+  "imageText": "",
+  "visualIdea": "Ein winziger realer Kritik-Zettel wirft einen riesigen mentalen Schatten über die Hauptfigur und verzerrt seine gefühlte Größe.",
+  "audioCue": "So bekommt ein einzelner Kommentar",
+  "durationSeconds": 4.4,
+  "expectedImageFileName": "scene-08.png",
+  "numberedDropFileName": "Bild 08.png",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "status": "prompt-ready"
+}

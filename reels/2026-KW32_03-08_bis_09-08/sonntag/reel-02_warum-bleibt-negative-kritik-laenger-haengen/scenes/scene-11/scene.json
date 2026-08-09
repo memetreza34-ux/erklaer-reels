@@ -1,0 +1,15 @@
+{
+  "sceneId": "scene-11",
+  "order": 11,
+  "title": "Brauchbare Information vom Urteil trennen",
+  "narration": "Wenn ja, nimm die brauchbare Information heraus. Wenn nein, mach daraus kein Gesamturteil über dich.",
+  "imageText": "INFO ≠ URTEIL",
+  "visualIdea": "Aus einer großen roten Kritik-Sprechblase zieht die Hauptfigur eine kleine brauchbare Information heraus; ein übergroßes Selbsturteil wird nicht übernommen.",
+  "audioCue": "Wenn ja, nimm die brauchbare",
+  "durationSeconds": 4.5,
+  "expectedImageFileName": "scene-11.png",
+  "numberedDropFileName": "Bild 11.png",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "status": "prompt-ready"
+}

@@ -1,0 +1,15 @@
+{
+  "sceneId": "scene-10",
+  "order": 10,
+  "title": "Kritik sachlich prüfen",
+  "narration": "Was hilft? Kritik nicht sofort wegdrücken, sondern prüfen: Ist sie konkret, relevant und belegbar?",
+  "imageText": "IST DIE KRITIK BRAUCHBAR?",
+  "visualIdea": "Die Hauptfigur prüft eine kritische Rückmeldung mit einer Lupe und drei neutralen Prüfzeichen: konkret, relevant, belegbar.",
+  "audioCue": "Was hilft? Kritik nicht sofort",
+  "durationSeconds": 4.4,
+  "expectedImageFileName": "scene-10.png",
+  "numberedDropFileName": "Bild 10.png",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "status": "prompt-ready"
+}
