@@ -52,7 +52,7 @@ test('legt den Sammelordner und die Textdatei für Cover und Szenen an', async (
   assert.match(readme, /cover\/cover-prompt\.txt/);
   assert.match(readme, /Bild 00 = Cover/);
   assert.match(readme, /Google-Flow-Arbeitsanweisung/);
-  assert.match(readme, /3er-Batches/);
+  assert.match(readme, /Einzelbild-Ablauf/);
 });
 
 test('exportiert zuerst das Cover und danach alle Szenenprompts chronologisch', async () => {
@@ -77,15 +77,18 @@ test('exportiert zuerst das Cover und danach alle Szenenprompts chronologisch', 
   assert.match(content, /Prompt für die dritte Szene\./);
   assert.match(content, /Google-Flow-KI-Agenten/);
   assert.match(content, /keine Codex-Anweisung/);
-  assert.match(content, /ARBEITE IMMER IN 3ER-STEPS/);
-  assert.match(content, /Erster Step: Bild 00 = Cover, Bild 01 = Szene 1, Bild 02 = Szene 2/);
-  assert.match(content, /bis zu 3 Bilder ERZEUGEN → diese Bilder UMBENENNEN/);
+  assert.match(content, /ARBEITE IMMER BILD FÜR BILD/);
+  assert.match(content, /Erzeuge immer genau EIN Bild/);
+  assert.match(content, /SOFORT korrekt um/);
+  assert.match(content, /Erst nachdem dieses Bild korrekt umbenannt wurde/);
+  assert.match(content, /PROMPT LESEN → GENAU EIN BILD ERZEUGEN → SOFORT UMBENENNEN → ERST DANN ZUM NÄCHSTEN PROMPT/);
   assert.match(content, /ERST WENN ALLE Bilder fertig erzeugt, korrekt umbenannt und vollständig geprüft sind/);
   assert.match(content, /Bild 00 = COVER → Dateiname `Bild 00\.png`/);
   assert.match(content, /Bild 01 = SZENE 1 → Dateiname `Bild 01\.png`/);
   assert.match(content, /Bild 02 = SZENE 2 → Dateiname `Bild 02\.png`/);
   assert.match(content, /Bild 03 = SZENE 3 → Dateiname `Bild 03\.png`/);
   assert.match(content, /00-ALLE-BILDER-HIER-REIN/);
+  assert.doesNotMatch(content, /3ER-STEPS|3er-Step|3er-Batches/);
   assert.equal(result.coverIncluded, true);
   assert.equal(result.sceneCount, 3);
   assert.equal(result.totalPromptCount, 4);
