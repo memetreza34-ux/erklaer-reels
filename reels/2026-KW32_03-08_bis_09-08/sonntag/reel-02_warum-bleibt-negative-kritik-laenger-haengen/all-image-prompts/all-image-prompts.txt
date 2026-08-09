@@ -1,122 +1,140 @@
-ALLE BILDPROMPTS – COVER UND SZENEN
+ALLE BILDPROMPTS – GOOGLE FLOW ONE-PASTE
 
-WICHTIG FÜR DIE NUTZUNG: In Google Flow immer genau EINEN vollständigen Bildblock kopieren und absenden. Jeder Block ist bereits so formuliert, dass Flow sofort mit der Bildgenerierung beginnen soll.
+GOOGLE FLOW – GESAMTAUFTRAG: STARTE JETZT SOFORT
+
+Diese komplette Nachricht ist EIN zusammenhängender Auftrag für 14 Bilder von Bild 00 bis Bild 13.
+ANTWORTE NICHT mit einer Bestätigung, Zusammenfassung, Erklärung, Anleitung oder einem Hinweis, dass du die Prompts verstanden hast.
+STARTE STATTDESSEN SOFORT mit der tatsächlichen Bildgenerierung von BILD 00.
+
+VERBINDLICHER ABLAUF:
+1. Arbeite ALLE nachfolgenden nummerierten Bildblöcke dieser Nachricht vollständig und streng chronologisch ab.
+2. Beginne jetzt mit BILD 00 = COVER.
+3. Erzeuge immer nur GENAU EIN Bild gleichzeitig anhand des Bildprompts im aktuellen Block.
+4. Sobald dieses Bild fertig ist, verwende sofort den im Block angegebenen Dateinamen.
+5. Danach fahre OHNE Textantwort und OHNE Rückfrage automatisch mit dem direkt nächsten Bildblock fort.
+6. Wiederhole das selbstständig Bild für Bild bis einschließlich BILD 13.
+7. Überspringe keinen Bildblock, erzeuge keine zusätzlichen Varianten und ändere die Reihenfolge nicht.
+8. Stoppe erst, nachdem alle 14 Bilder von Bild 00 bis Bild 13 erzeugt wurden.
+9. Erst danach die vollständige Nummerierung prüfen und alle fertigen Bilder gemeinsam in den unten angegebenen Sammelordner legen.
+
+JETZT AUSFÜHREN: Beginne unmittelbar mit BILD 00. Keine Textantwort vor der ersten Bildgenerierung.
+
 
 BILD 00 – COVER – GOOGLE-FLOW-PROMPT
 ZIEL: COVER
-GEWÜNSCHTER DATEINAME NACH DEM DOWNLOAD: Bild 00.png
-GOOGLE FLOW – DIREKTER BILDGENERIERUNGSBEFEHL: ERZEUGE JETZT GENAU EIN BILD. Keine Erklärung, keine Bestätigung, keine Zusammenfassung und keine reine Textantwort. Starte sofort die Bildgenerierung anhand des folgenden Bildprompts. Erzeuge nur dieses eine Bild.
+DATEINAME: Bild 00.png
+GOOGLE FLOW – AKTUELLER SCHRITT: Erzeuge JETZT genau BILD 00 anhand des folgenden Prompts. Keine Erklärung und keine Bestätigung. Sobald BILD 00 fertig ist, benenne es wie oben angegeben und fahre automatisch mit dem direkt folgenden nummerierten Bildblock dieser Nachricht fort.
 
 Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. Cover composition: the main character sits with a phone while many small soft-green positive comment cards float calmly around them. One single red critical comment card sits much closer to the face and captures the character's gaze. The negative card should feel attention-grabbing without being grotesque or threatening. Make clear that the visual contrast is psychological, not a literal numerical law. Include exactly this large visible German headline: "WARUM BLEIBT DAS HÄNGEN?". No other readable words. Strong thumbnail hierarchy, clean background.
 
 
 BILD 01 – SZENE 1 – GOOGLE-FLOW-PROMPT
 ZIEL: SZENE 1
-GEWÜNSCHTER DATEINAME NACH DEM DOWNLOAD: Bild 01.png
-GOOGLE FLOW – DIREKTER BILDGENERIERUNGSBEFEHL: ERZEUGE JETZT GENAU EIN BILD. Keine Erklärung, keine Bestätigung, keine Zusammenfassung und keine reine Textantwort. Starte sofort die Bildgenerierung anhand des folgenden Bildprompts. Erzeuge nur dieses eine Bild.
+DATEINAME: Bild 01.png
+GOOGLE FLOW – AKTUELLER SCHRITT: Erzeuge JETZT genau BILD 01 anhand des folgenden Prompts. Keine Erklärung und keine Bestätigung. Sobald BILD 01 fertig ist, benenne es wie oben angegeben und fahre automatisch mit dem direkt folgenden nummerierten Bildblock dieser Nachricht fort.
 
 Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. The main character stands among many small soft-green positive comment cards, but one single red critical comment card is much closer to the face and dominates attention. Make the contrast immediately understandable without implying an exact scientific ratio. Include exactly this visible German text: "WARUM BLEIBT DAS HÄNGEN?". No other readable words.
 
 
 BILD 02 – SZENE 2 – GOOGLE-FLOW-PROMPT
 ZIEL: SZENE 2
-GEWÜNSCHTER DATEINAME NACH DEM DOWNLOAD: Bild 02.png
-GOOGLE FLOW – DIREKTER BILDGENERIERUNGSBEFEHL: ERZEUGE JETZT GENAU EIN BILD. Keine Erklärung, keine Bestätigung, keine Zusammenfassung und keine reine Textantwort. Starte sofort die Bildgenerierung anhand des folgenden Bildprompts. Erzeuge nur dieses eine Bild.
+DATEINAME: Bild 02.png
+GOOGLE FLOW – AKTUELLER SCHRITT: Erzeuge JETZT genau BILD 02 anhand des folgenden Prompts. Keine Erklärung und keine Bestätigung. Sobald BILD 02 fertig ist, benenne es wie oben angegeben und fahre automatisch mit dem direkt folgenden nummerierten Bildblock dieser Nachricht fort.
 
 Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. A wall contains many feedback cards. A single red critical card receives the character's immediate gaze and a subtle symbolic spotlight, while positive cards remain visible around it. Include exactly this visible German text: "NEGATIV FÄLLT AUF". No other readable words.
 
 
 BILD 03 – SZENE 3 – GOOGLE-FLOW-PROMPT
 ZIEL: SZENE 3
-GEWÜNSCHTER DATEINAME NACH DEM DOWNLOAD: Bild 03.png
-GOOGLE FLOW – DIREKTER BILDGENERIERUNGSBEFEHL: ERZEUGE JETZT GENAU EIN BILD. Keine Erklärung, keine Bestätigung, keine Zusammenfassung und keine reine Textantwort. Starte sofort die Bildgenerierung anhand des folgenden Bildprompts. Erzeuge nur dieses eine Bild.
+DATEINAME: Bild 03.png
+GOOGLE FLOW – AKTUELLER SCHRITT: Erzeuge JETZT genau BILD 03 anhand des folgenden Prompts. Keine Erklärung und keine Bestätigung. Sobald BILD 03 fertig ist, benenne es wie oben angegeben und fahre automatisch mit dem direkt folgenden nummerierten Bildblock dieser Nachricht fort.
 
 Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. Show a physical balance scale: several equally sized soft-green positive feedback cards on one side, one red critical feedback card on the other side, with the red side visually feeling heavier as a psychological metaphor. Include exactly this visible German text: "MEHR GEWICHT". No other readable words.
 
 
 BILD 04 – SZENE 4 – GOOGLE-FLOW-PROMPT
 ZIEL: SZENE 4
-GEWÜNSCHTER DATEINAME NACH DEM DOWNLOAD: Bild 04.png
-GOOGLE FLOW – DIREKTER BILDGENERIERUNGSBEFEHL: ERZEUGE JETZT GENAU EIN BILD. Keine Erklärung, keine Bestätigung, keine Zusammenfassung und keine reine Textantwort. Starte sofort die Bildgenerierung anhand des folgenden Bildprompts. Erzeuge nur dieses eine Bild.
+DATEINAME: Bild 04.png
+GOOGLE FLOW – AKTUELLER SCHRITT: Erzeuge JETZT genau BILD 04 anhand des folgenden Prompts. Keine Erklärung und keine Bestätigung. Sobald BILD 04 fertig ist, benenne es wie oben angegeben und fahre automatisch mit dem direkt folgenden nummerierten Bildblock dieser Nachricht fort.
 
 Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. The character walks through a calm everyday environment with pleasant neutral signals, but instantly notices one clear red warning symbol near the path. Present this only as an attention-and-decision metaphor, not a literal evolutionary scene. No readable text anywhere.
 
 
 BILD 05 – SZENE 5 – GOOGLE-FLOW-PROMPT
 ZIEL: SZENE 5
-GEWÜNSCHTER DATEINAME NACH DEM DOWNLOAD: Bild 05.png
-GOOGLE FLOW – DIREKTER BILDGENERIERUNGSBEFEHL: ERZEUGE JETZT GENAU EIN BILD. Keine Erklärung, keine Bestätigung, keine Zusammenfassung und keine reine Textantwort. Starte sofort die Bildgenerierung anhand des folgenden Bildprompts. Erzeuge nur dieses eine Bild.
+DATEINAME: Bild 05.png
+GOOGLE FLOW – AKTUELLER SCHRITT: Erzeuge JETZT genau BILD 05 anhand des folgenden Prompts. Keine Erklärung und keine Bestätigung. Sobald BILD 05 fertig ist, benenne es wie oben angegeben und fahre automatisch mit dem direkt folgenden nummerierten Bildblock dieser Nachricht fort.
 
 Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. The main character faces a large board full of feedback. Their eyes and body turn first toward one red criticism card even though many soft-green positive cards surround it. Include exactly this visible German text: "KRITIK SPRINGT INS AUGE". No other readable words.
 
 
 BILD 06 – SZENE 6 – GOOGLE-FLOW-PROMPT
 ZIEL: SZENE 6
-GEWÜNSCHTER DATEINAME NACH DEM DOWNLOAD: Bild 06.png
-GOOGLE FLOW – DIREKTER BILDGENERIERUNGSBEFEHL: ERZEUGE JETZT GENAU EIN BILD. Keine Erklärung, keine Bestätigung, keine Zusammenfassung und keine reine Textantwort. Starte sofort die Bildgenerierung anhand des folgenden Bildprompts. Erzeuge nur dieses eine Bild.
+DATEINAME: Bild 06.png
+GOOGLE FLOW – AKTUELLER SCHRITT: Erzeuge JETZT genau BILD 06 anhand des folgenden Prompts. Keine Erklärung und keine Bestätigung. Sobald BILD 06 fertig ist, benenne es wie oben angegeben und fahre automatisch mit dem direkt folgenden nummerierten Bildblock dieser Nachricht fort.
 
 Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. Show a memory metaphor: one red criticism card is sharply etched with crisp visual detail inside a translucent memory bubble, while other feedback cards remain softer and less detailed in the background. Include exactly this visible German text: "BLEIBT LEBHAFT". No other readable words.
 
 
 BILD 07 – SZENE 7 – GOOGLE-FLOW-PROMPT
 ZIEL: SZENE 7
-GEWÜNSCHTER DATEINAME NACH DEM DOWNLOAD: Bild 07.png
-GOOGLE FLOW – DIREKTER BILDGENERIERUNGSBEFEHL: ERZEUGE JETZT GENAU EIN BILD. Keine Erklärung, keine Bestätigung, keine Zusammenfassung und keine reine Textantwort. Starte sofort die Bildgenerierung anhand des folgenden Bildprompts. Erzeuge nur dieses eine Bild.
+DATEINAME: Bild 07.png
+GOOGLE FLOW – AKTUELLER SCHRITT: Erzeuge JETZT genau BILD 07 anhand des folgenden Prompts. Keine Erklärung und keine Bestätigung. Sobald BILD 07 fertig ist, benenne es wie oben angegeben und fahre automatisch mit dem direkt folgenden nummerierten Bildblock dieser Nachricht fort.
 
 Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. At night, the same main character sits on the edge of a bed while one red sentence card circles repeatedly around the head in a clean loop, clearly representing repetitive thinking. Include exactly this visible German text: "NOCHMAL. NOCHMAL.". No other readable words.
 
 
 BILD 08 – SZENE 8 – GOOGLE-FLOW-PROMPT
 ZIEL: SZENE 8
-GEWÜNSCHTER DATEINAME NACH DEM DOWNLOAD: Bild 08.png
-GOOGLE FLOW – DIREKTER BILDGENERIERUNGSBEFEHL: ERZEUGE JETZT GENAU EIN BILD. Keine Erklärung, keine Bestätigung, keine Zusammenfassung und keine reine Textantwort. Starte sofort die Bildgenerierung anhand des folgenden Bildprompts. Erzeuge nur dieses eine Bild.
+DATEINAME: Bild 08.png
+GOOGLE FLOW – AKTUELLER SCHRITT: Erzeuge JETZT genau BILD 08 anhand des folgenden Prompts. Keine Erklärung und keine Bestätigung. Sobald BILD 08 fertig ist, benenne es wie oben angegeben und fahre automatisch mit dem direkt folgenden nummerierten Bildblock dieser Nachricht fort.
 
 Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. A tiny real red criticism note lies on a desk, but it casts an enormous symbolic shadow over the main character, showing how mental attention can inflate perceived importance. No readable text anywhere.
 
 
 BILD 09 – SZENE 9 – GOOGLE-FLOW-PROMPT
 ZIEL: SZENE 9
-GEWÜNSCHTER DATEINAME NACH DEM DOWNLOAD: Bild 09.png
-GOOGLE FLOW – DIREKTER BILDGENERIERUNGSBEFEHL: ERZEUGE JETZT GENAU EIN BILD. Keine Erklärung, keine Bestätigung, keine Zusammenfassung und keine reine Textantwort. Starte sofort die Bildgenerierung anhand des folgenden Bildprompts. Erzeuge nur dieses eine Bild.
+DATEINAME: Bild 09.png
+GOOGLE FLOW – AKTUELLER SCHRITT: Erzeuge JETZT genau BILD 09 anhand des folgenden Prompts. Keine Erklärung und keine Bestätigung. Sobald BILD 09 fertig ist, benenne es wie oben angegeben und fahre automatisch mit dem direkt folgenden nummerierten Bildblock dieser Nachricht fort.
 
 Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. Several different adults stand together looking at the same mixed feedback board; their facial expressions and attention differ, showing that responses vary across people and context. Keep one coherent scene, not separate panels. Include exactly this visible German text: "NICHT BEI ALLEN GLEICH". No other readable words.
 
 
 BILD 10 – SZENE 10 – GOOGLE-FLOW-PROMPT
 ZIEL: SZENE 10
-GEWÜNSCHTER DATEINAME NACH DEM DOWNLOAD: Bild 10.png
-GOOGLE FLOW – DIREKTER BILDGENERIERUNGSBEFEHL: ERZEUGE JETZT GENAU EIN BILD. Keine Erklärung, keine Bestätigung, keine Zusammenfassung und keine reine Textantwort. Starte sofort die Bildgenerierung anhand des folgenden Bildprompts. Erzeuge nur dieses eine Bild.
+DATEINAME: Bild 10.png
+GOOGLE FLOW – AKTUELLER SCHRITT: Erzeuge JETZT genau BILD 10 anhand des folgenden Prompts. Keine Erklärung und keine Bestätigung. Sobald BILD 10 fertig ist, benenne es wie oben angegeben und fahre automatisch mit dem direkt folgenden nummerierten Bildblock dieser Nachricht fort.
 
 Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. The main character calmly examines one red criticism card with a magnifying glass. Beside it are three simple nonverbal check symbols representing concrete, relevant, and evidence-based evaluation. Include exactly this visible German text: "IST DIE KRITIK BRAUCHBAR?". No other readable words.
 
 
 BILD 11 – SZENE 11 – GOOGLE-FLOW-PROMPT
 ZIEL: SZENE 11
-GEWÜNSCHTER DATEINAME NACH DEM DOWNLOAD: Bild 11.png
-GOOGLE FLOW – DIREKTER BILDGENERIERUNGSBEFEHL: ERZEUGE JETZT GENAU EIN BILD. Keine Erklärung, keine Bestätigung, keine Zusammenfassung und keine reine Textantwort. Starte sofort die Bildgenerierung anhand des folgenden Bildprompts. Erzeuge nur dieses eine Bild.
+DATEINAME: Bild 11.png
+GOOGLE FLOW – AKTUELLER SCHRITT: Erzeuge JETZT genau BILD 11 anhand des folgenden Prompts. Keine Erklärung und keine Bestätigung. Sobald BILD 11 fertig ist, benenne es wie oben angegeben und fahre automatisch mit dem direkt folgenden nummerierten Bildblock dieser Nachricht fort.
 
 Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. The main character extracts one small useful note from a large red criticism speech bubble while refusing a huge symbolic identity stamp that would turn one comment into a judgment about the whole person. Include exactly this visible German text: "INFO ≠ URTEIL". No other readable words.
 
 
 BILD 12 – SZENE 12 – GOOGLE-FLOW-PROMPT
 ZIEL: SZENE 12
-GEWÜNSCHTER DATEINAME NACH DEM DOWNLOAD: Bild 12.png
-GOOGLE FLOW – DIREKTER BILDGENERIERUNGSBEFEHL: ERZEUGE JETZT GENAU EIN BILD. Keine Erklärung, keine Bestätigung, keine Zusammenfassung und keine reine Textantwort. Starte sofort die Bildgenerierung anhand des folgenden Bildprompts. Erzeuge nur dieses eine Bild.
+DATEINAME: Bild 12.png
+GOOGLE FLOW – AKTUELLER SCHRITT: Erzeuge JETZT genau BILD 12 anhand des folgenden Prompts. Keine Erklärung und keine Bestätigung. Sobald BILD 12 fertig ist, benenne es wie oben angegeben und fahre automatisch mit dem direkt folgenden nummerierten Bildblock dieser Nachricht fort.
 
 Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. The character deliberately stores several concrete soft-green positive feedback cards in a neat visible folder or board, turning vague positivity into accessible evidence for later. Include exactly this visible German text: "POSITIVES SICHTBAR MACHEN". No other readable words.
 
 
 BILD 13 – SZENE 13 – GOOGLE-FLOW-PROMPT
 ZIEL: SZENE 13
-GEWÜNSCHTER DATEINAME NACH DEM DOWNLOAD: Bild 13.png
-GOOGLE FLOW – DIREKTER BILDGENERIERUNGSBEFEHL: ERZEUGE JETZT GENAU EIN BILD. Keine Erklärung, keine Bestätigung, keine Zusammenfassung und keine reine Textantwort. Starte sofort die Bildgenerierung anhand des folgenden Bildprompts. Erzeuge nur dieses eine Bild.
+DATEINAME: Bild 13.png
+GOOGLE FLOW – AKTUELLER SCHRITT: Erzeuge JETZT genau BILD 13 anhand des folgenden Prompts. Keine Erklärung und keine Bestätigung. Sobald BILD 13 fertig ist, benenne es wie oben angegeben. Danach ist die Bildgenerierung abgeschlossen und du führst nur noch die Abschlussprüfung und gemeinsame Ablage aus.
 
 Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. Quiet final composition: the main character stands before a balanced evidence board with many feedback cards. The red criticism card remains present but is no longer oversized; the character calmly weighs all evidence. Include exactly this visible German text: "LAUTER ≠ WAHRER". No other readable words.
 
 
-DATEIBENENNUNG UND ABLAGE NACH DER BILDGENERIERUNG
+ABSCHLUSS – DATEIBENENNUNG UND GEMEINSAME ABLAGE
 
-Nach dem Download jedes fertigen Bildes gilt die folgende feste Nummerierung. Die Nummerierung ist nur für Dateiname und spätere Zuordnung bestimmt.
+Wenn alle Bilder vollständig erzeugt sind, prüfe die feste Nummerierung:
 
 FESTE DATEIBENENNUNG:
 - Bild 00 = COVER → Dateiname `Bild 00.png`
@@ -134,6 +152,6 @@ FESTE DATEIBENENNUNG:
 - Bild 12 = SZENE 12 → Dateiname `Bild 12.png`
 - Bild 13 = SZENE 13 → Dateiname `Bild 13.png`
 
-Damit gilt immer: Cover = Bild 00, erste Szene = Bild 01 und jede weitere Szene erhält chronologisch genau eine fortlaufende Nummer bis Bild 13.
+Damit gilt: Cover = Bild 00, erste Szene = Bild 01 und jede weitere Szene erhält chronologisch genau eine fortlaufende Nummer bis Bild 13.
 Falls das Bildformat nicht PNG ist, darf nur die Dateiendung abweichen; die Nummerierung `Bild 00`, `Bild 01`, `Bild 02` usw. bleibt unverändert.
-Wenn alle Bilder fertig heruntergeladen und korrekt benannt sind, werden sie gemeinsam in `00-bildprompts/00-ALLE-BILDER-HIER-REIN/` gelegt. Nicht manuell auf einzelne Szenenordner verteilen.
+Erst wenn wirklich ALLE Bilder fertig erzeugt und korrekt benannt sind, lege sie gemeinsam in `00-bildprompts/00-ALLE-BILDER-HIER-REIN/`. Nicht auf einzelne Cover- oder Szenenordner verteilen.
