@@ -1,13 +1,15 @@
 # Alle Bildprompts
 
-`all-image-prompts.txt` ist die verbindliche Sammeldatei für die **manuelle Bilderstellung durch den Nutzer**.
+`all-image-prompts.txt` ist die verbindliche Sammeldatei für die externe Bilderstellung durch den Nutzer in Google Flow.
 
 Direkt bei **jedem** Prompt stehen:
 - Bildnummer
 - Ziel (Cover/Szene)
-- exakter Dateiname
-- Einzelbild-Anweisung für den Nutzer
+- gewünschter Dateiname nach dem Download
+- ein direkter Google-Flow-Bildgenerierungsbefehl
 
-**Nur der Nutzer erstellt die Bilder.** Antigravity, Codex und andere Agenten dürfen keine Bilder erzeugen oder regenerieren.
+Der Nutzer kopiert jeweils **genau einen vollständigen Bildblock** in Google Flow. Der Block fordert Flow ausdrücklich auf, sofort das Bild zu erzeugen und nicht nur mit einer Erklärung, Bestätigung oder Zusammenfassung zu antworten.
 
-Der Nutzer erstellt immer genau ein Bild, benennt es sofort korrekt um und verwendet erst danach den nächsten Prompt. Erst wenn alle Bilder fertig sind, werden sie gemeinsam in den nummerierten Sammelordner gelegt.
+Antigravity, Codex und andere Repo-Agenten starten den Bildgenerator nicht selbst. Diese Rollenregel steht bewusst **nicht** in den kopierbaren Bildblöcken, damit Google Flow sie nicht fälschlich als Verbot der Bildgenerierung interpretiert.
+
+Nach dem Download benennt der Nutzer das Bild nach der angegebenen Nummer (`Bild 00.png`, `Bild 01.png` usw.). Erst wenn alle Bilder fertig sind, werden sie gemeinsam in den nummerierten Sammelordner gelegt.
