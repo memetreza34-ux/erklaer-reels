@@ -17,5 +17,7 @@
   "backgroundMusicEnabled": false,
   "audioPlaybackRate": 1.1,
   "sourceQualitySchemaVersion": 2,
-  "status": "content-ready-for-antigravity"
+  "imageGenerationOwner": "user-only",
+  "antigravityImageGeneration": false,
+  "status": "content-ready-for-user-image-creation"
 }
