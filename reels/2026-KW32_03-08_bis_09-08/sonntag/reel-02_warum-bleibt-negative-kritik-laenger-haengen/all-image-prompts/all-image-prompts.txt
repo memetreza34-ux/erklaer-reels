@@ -1,4 +1,4 @@
-ALLE BILDPROMPTS – GOOGLE FLOW – STRENG EINZELN
+ALLE BILDPROMPTS – GOOGLE FLOW – STRENG EINZELN + COVER ALS STYLE-VORLAGE
 
 GOOGLE FLOW – HARTE SERIELLE SPERRE – NIEMALS PARALLEL
 
@@ -9,6 +9,13 @@ DIE WICHTIGSTE REGEL:
 ZU JEDEM ZEITPUNKT DARF GENAU EINE EINZIGE BILDGENERIERUNG AKTIV SEIN.
 STARTE NIEMALS DAS NÄCHSTE BILD, SOLANGE DAS AKTUELLE BILD NOCH GENERIERT WIRD, NOCH NICHT VOLLSTÄNDIG FERTIG IST ODER NOCH NICHT KORREKT UMBENANNT WURDE.
 
+BILD 00 = COVER + VERBINDLICHE STILVORLAGE:
+- Erzeuge Bild 00 zuerst als echtes Cover des Reels.
+- Der im Cover-Prompt verlangte sichtbare deutsche Text ist der HOOK des Reels und muss exakt lesbar auf Bild 00 erscheinen. Er soll sofort zeigen, worum es im Reel geht.
+- Sobald Bild 00 fertig und als `Bild 00.png` benannt ist, verwende genau dieses fertige Cover als visuelle Referenz/Vorlage für ALLE folgenden Szenen.
+- Halte danach denselben Zeichen-/Renderstil, dieselbe Farbwelt, dieselben Figurenmerkmale, dieselben Proportionen, dieselbe Lichtstimmung und dieselbe Detailqualität wie auf Bild 00.
+- Übernimm den Cover-Hook-Text NICHT automatisch in spätere Szenen. Sichtbarer Szenentext kommt nur hinein, wenn der jeweilige Szenenprompt ihn ausdrücklich verlangt.
+
 STRENG VERBOTEN:
 - mehrere Bilder gleichzeitig starten
 - mehrere Prompts gleichzeitig absenden
@@ -17,6 +24,7 @@ STRENG VERBOTEN:
 - alle Bildblöcke als Batch behandeln
 - mehrere fertige, aber noch unbenannte Bilder ansammeln
 - Bilder während der Generierung bereits in den gemeinsamen Sammelordner verschieben
+- den visuellen Stil zwischen Cover und Szenen ohne ausdrückliche Prompt-Anweisung wechseln
 
 VERBINDLICHER ABLAUF FÜR JEDES EINZELNE BILD:
 A. Lies ausschließlich den aktuellen freigegebenen Bildblock.
@@ -28,8 +36,8 @@ F. ERST JETZT ist der nächste nummerierte Bildblock freigegeben.
 G. Wiederhole A bis F streng einzeln bis einschließlich Bild 13.
 
 BEISPIEL DER SPERRE:
-Bild 00 erzeugen → warten bis Bild 00 wirklich fertig → sofort `Bild 00.png` nennen → prüfen → ERST DANN Bild 01 starten.
-Bild 01 erzeugen → warten bis Bild 01 wirklich fertig → sofort `Bild 01.png` nennen → prüfen → ERST DANN Bild 02 starten.
+Bild 00 erzeugen → warten bis Bild 00 wirklich fertig → sofort `Bild 00.png` nennen → prüfen → Bild 00 als Stilvorlage festhalten → ERST DANN Bild 01 starten.
+Bild 01 erzeugen → dabei Bild 00 als Stilreferenz verwenden → warten bis Bild 01 wirklich fertig → sofort `Bild 01.png` nennen → prüfen → ERST DANN Bild 02 starten.
 Genau so einzeln bis zum letzten Bild. Keine Ausnahme.
 
 NACH BILD 13: Erst wenn wirklich ALLE 14 Bilder vollständig erzeugt UND jeweils direkt nach ihrer Erzeugung korrekt umbenannt wurden, die komplette Nummerierung prüfen.
@@ -39,21 +47,29 @@ JETZT AUSFÜHREN: Starte NUR BILD 00. Alle späteren Bildblöcke sind bis zur er
 
 
 BILD 00 – COVER – GOOGLE-FLOW-PROMPT
-ZIEL: COVER
+ZIEL: COVER + STYLE-VORLAGE FÜR DAS GESAMTE REEL
 DATEINAME: Bild 00.png
 FREIGABE: Dies ist der einzige jetzt freigegebene Bildblock.
+COVER-REGEL: Dieses Bild ist das echte Cover UND die verbindliche visuelle Stilvorlage für das gesamte Reel.
+HOOK-REGEL: Der im folgenden Cover-Prompt verlangte sichtbare deutsche Text muss exakt und gut lesbar auf dem Cover erscheinen. Dieser Text ist die Hook und erklärt sofort, worum es im Reel geht.
+Nach Fertigstellung dieses Covers: Bild 00 als direkte Style-Referenz für alle späteren Szenen beibehalten.
 GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD 00.
 Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.
 Nach vollständigem Abschluss dieses Bildes: sofort exakt in `Bild 00.png` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.
 ERST NACH DIESER PRÜFUNG darf der direkt nächste nummerierte Bildblock freigegeben und gestartet werden.
 
-Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. Cover composition: the main character sits with a phone while many small soft-green positive comment cards float calmly around them. One single red critical comment card sits much closer to the face and captures the character's gaze. The negative card should feel attention-grabbing without being grotesque or threatening. Make clear that the visual contrast is psychological, not a literal numerical law. Include exactly this large visible German headline: "WARUM BLEIBT DAS HÄNGEN?". No other readable words. Strong thumbnail hierarchy, clean background.
+MASTER STYLE REFERENCE FOR THE ENTIRE REEL. Create the actual reel cover first and use the finished cover image as the direct visual reference for every later scene: same hand-drawn 2D editorial cartoon style, same character design, same proportions, same line quality, same warm muted palette, same lighting logic and same overall detail level. The cover must clearly communicate the reel topic through one strong visible German hook. Do not omit or paraphrase the hook text.
+
+Vertical 9:16 hand-drawn 2D editorial cartoon for a mature German social-media explainer. Same main character throughout: young adult with short wavy dark-brown hair, muted teal sweatshirt and charcoal trousers. Simplified human characters, expressive but not childish faces, bold clean outlines, warm muted beige background tones, soft green accents for positive feedback and one restrained red accent for criticism or threat. Natural full-frame composition, one clear visual moment, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. Cover composition: the main character sits with a phone while many small soft-green positive comment cards float calmly around them. One single red critical comment card sits much closer to the face and captures the character's gaze. The negative card should feel attention-grabbing without being grotesque or threatening. Make clear that the visual contrast is psychological, not a literal numerical law. Include exactly this large visible German headline: "WARUM BLEIBT DAS HÄNGEN?". This headline is the reel hook and must be clearly legible. No other readable words. Strong thumbnail hierarchy, clean background.
 
 
 BILD 01 – SZENE 1 – GOOGLE-FLOW-PROMPT
 ZIEL: SZENE 1
 DATEINAME: Bild 01.png
 FREIGABE-BEDINGUNG: Dieser Block ist GESPERRT, bis BILD 00 vollständig fertig erzeugt, exakt als `Bild 00.png` umbenannt und die Umbenennung geprüft wurde.
+STYLE-REFERENZ: Verwende das bereits fertig erzeugte `Bild 00.png` direkt als verbindliche visuelle Vorlage für dieses Szenenbild.
+Behalte Zeichen-/Renderstil, Farbwelt, Figurenmerkmale, Proportionen, Lichtstimmung und Detailqualität von Bild 00 bei.
+Den Cover-Hook-Text nicht kopieren, außer der folgende Szenenprompt verlangt ausdrücklich sichtbaren Text.
 GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD 01.
 Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.
 Nach vollständigem Abschluss dieses Bildes: sofort exakt in `Bild 01.png` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.
@@ -66,6 +82,9 @@ BILD 02 – SZENE 2 – GOOGLE-FLOW-PROMPT
 ZIEL: SZENE 2
 DATEINAME: Bild 02.png
 FREIGABE-BEDINGUNG: Dieser Block ist GESPERRT, bis BILD 01 vollständig fertig erzeugt, exakt als `Bild 01.png` umbenannt und die Umbenennung geprüft wurde.
+STYLE-REFERENZ: Verwende das bereits fertig erzeugte `Bild 00.png` direkt als verbindliche visuelle Vorlage für dieses Szenenbild.
+Behalte Zeichen-/Renderstil, Farbwelt, Figurenmerkmale, Proportionen, Lichtstimmung und Detailqualität von Bild 00 bei.
+Den Cover-Hook-Text nicht kopieren, außer der folgende Szenenprompt verlangt ausdrücklich sichtbaren Text.
 GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD 02.
 Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.
 Nach vollständigem Abschluss dieses Bildes: sofort exakt in `Bild 02.png` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.
@@ -78,6 +97,9 @@ BILD 03 – SZENE 3 – GOOGLE-FLOW-PROMPT
 ZIEL: SZENE 3
 DATEINAME: Bild 03.png
 FREIGABE-BEDINGUNG: Dieser Block ist GESPERRT, bis BILD 02 vollständig fertig erzeugt, exakt als `Bild 02.png` umbenannt und die Umbenennung geprüft wurde.
+STYLE-REFERENZ: Verwende das bereits fertig erzeugte `Bild 00.png` direkt als verbindliche visuelle Vorlage für dieses Szenenbild.
+Behalte Zeichen-/Renderstil, Farbwelt, Figurenmerkmale, Proportionen, Lichtstimmung und Detailqualität von Bild 00 bei.
+Den Cover-Hook-Text nicht kopieren, außer der folgende Szenenprompt verlangt ausdrücklich sichtbaren Text.
 GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD 03.
 Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.
 Nach vollständigem Abschluss dieses Bildes: sofort exakt in `Bild 03.png` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.
@@ -90,6 +112,9 @@ BILD 04 – SZENE 4 – GOOGLE-FLOW-PROMPT
 ZIEL: SZENE 4
 DATEINAME: Bild 04.png
 FREIGABE-BEDINGUNG: Dieser Block ist GESPERRT, bis BILD 03 vollständig fertig erzeugt, exakt als `Bild 03.png` umbenannt und die Umbenennung geprüft wurde.
+STYLE-REFERENZ: Verwende das bereits fertig erzeugte `Bild 00.png` direkt als verbindliche visuelle Vorlage für dieses Szenenbild.
+Behalte Zeichen-/Renderstil, Farbwelt, Figurenmerkmale, Proportionen, Lichtstimmung und Detailqualität von Bild 00 bei.
+Den Cover-Hook-Text nicht kopieren, außer der folgende Szenenprompt verlangt ausdrücklich sichtbaren Text.
 GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD 04.
 Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.
 Nach vollständigem Abschluss dieses Bildes: sofort exakt in `Bild 04.png` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.
@@ -102,6 +127,9 @@ BILD 05 – SZENE 5 – GOOGLE-FLOW-PROMPT
 ZIEL: SZENE 5
 DATEINAME: Bild 05.png
 FREIGABE-BEDINGUNG: Dieser Block ist GESPERRT, bis BILD 04 vollständig fertig erzeugt, exakt als `Bild 04.png` umbenannt und die Umbenennung geprüft wurde.
+STYLE-REFERENZ: Verwende das bereits fertig erzeugte `Bild 00.png` direkt als verbindliche visuelle Vorlage für dieses Szenenbild.
+Behalte Zeichen-/Renderstil, Farbwelt, Figurenmerkmale, Proportionen, Lichtstimmung und Detailqualität von Bild 00 bei.
+Den Cover-Hook-Text nicht kopieren, außer der folgende Szenenprompt verlangt ausdrücklich sichtbaren Text.
 GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD 05.
 Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.
 Nach vollständigem Abschluss dieses Bildes: sofort exakt in `Bild 05.png` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.
@@ -114,6 +142,9 @@ BILD 06 – SZENE 6 – GOOGLE-FLOW-PROMPT
 ZIEL: SZENE 6
 DATEINAME: Bild 06.png
 FREIGABE-BEDINGUNG: Dieser Block ist GESPERRT, bis BILD 05 vollständig fertig erzeugt, exakt als `Bild 05.png` umbenannt und die Umbenennung geprüft wurde.
+STYLE-REFERENZ: Verwende das bereits fertig erzeugte `Bild 00.png` direkt als verbindliche visuelle Vorlage für dieses Szenenbild.
+Behalte Zeichen-/Renderstil, Farbwelt, Figurenmerkmale, Proportionen, Lichtstimmung und Detailqualität von Bild 00 bei.
+Den Cover-Hook-Text nicht kopieren, außer der folgende Szenenprompt verlangt ausdrücklich sichtbaren Text.
 GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD 06.
 Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.
 Nach vollständigem Abschluss dieses Bildes: sofort exakt in `Bild 06.png` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.
@@ -126,6 +157,9 @@ BILD 07 – SZENE 7 – GOOGLE-FLOW-PROMPT
 ZIEL: SZENE 7
 DATEINAME: Bild 07.png
 FREIGABE-BEDINGUNG: Dieser Block ist GESPERRT, bis BILD 06 vollständig fertig erzeugt, exakt als `Bild 06.png` umbenannt und die Umbenennung geprüft wurde.
+STYLE-REFERENZ: Verwende das bereits fertig erzeugte `Bild 00.png` direkt als verbindliche visuelle Vorlage für dieses Szenenbild.
+Behalte Zeichen-/Renderstil, Farbwelt, Figurenmerkmale, Proportionen, Lichtstimmung und Detailqualität von Bild 00 bei.
+Den Cover-Hook-Text nicht kopieren, außer der folgende Szenenprompt verlangt ausdrücklich sichtbaren Text.
 GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD 07.
 Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.
 Nach vollständigem Abschluss dieses Bildes: sofort exakt in `Bild 07.png` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.
@@ -138,6 +172,9 @@ BILD 08 – SZENE 8 – GOOGLE-FLOW-PROMPT
 ZIEL: SZENE 8
 DATEINAME: Bild 08.png
 FREIGABE-BEDINGUNG: Dieser Block ist GESPERRT, bis BILD 07 vollständig fertig erzeugt, exakt als `Bild 07.png` umbenannt und die Umbenennung geprüft wurde.
+STYLE-REFERENZ: Verwende das bereits fertig erzeugte `Bild 00.png` direkt als verbindliche visuelle Vorlage für dieses Szenenbild.
+Behalte Zeichen-/Renderstil, Farbwelt, Figurenmerkmale, Proportionen, Lichtstimmung und Detailqualität von Bild 00 bei.
+Den Cover-Hook-Text nicht kopieren, außer der folgende Szenenprompt verlangt ausdrücklich sichtbaren Text.
 GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD 08.
 Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.
 Nach vollständigem Abschluss dieses Bildes: sofort exakt in `Bild 08.png` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.
@@ -150,6 +187,9 @@ BILD 09 – SZENE 9 – GOOGLE-FLOW-PROMPT
 ZIEL: SZENE 9
 DATEINAME: Bild 09.png
 FREIGABE-BEDINGUNG: Dieser Block ist GESPERRT, bis BILD 08 vollständig fertig erzeugt, exakt als `Bild 08.png` umbenannt und die Umbenennung geprüft wurde.
+STYLE-REFERENZ: Verwende das bereits fertig erzeugte `Bild 00.png` direkt als verbindliche visuelle Vorlage für dieses Szenenbild.
+Behalte Zeichen-/Renderstil, Farbwelt, Figurenmerkmale, Proportionen, Lichtstimmung und Detailqualität von Bild 00 bei.
+Den Cover-Hook-Text nicht kopieren, außer der folgende Szenenprompt verlangt ausdrücklich sichtbaren Text.
 GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD 09.
 Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.
 Nach vollständigem Abschluss dieses Bildes: sofort exakt in `Bild 09.png` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.
@@ -162,6 +202,9 @@ BILD 10 – SZENE 10 – GOOGLE-FLOW-PROMPT
 ZIEL: SZENE 10
 DATEINAME: Bild 10.png
 FREIGABE-BEDINGUNG: Dieser Block ist GESPERRT, bis BILD 09 vollständig fertig erzeugt, exakt als `Bild 09.png` umbenannt und die Umbenennung geprüft wurde.
+STYLE-REFERENZ: Verwende das bereits fertig erzeugte `Bild 00.png` direkt als verbindliche visuelle Vorlage für dieses Szenenbild.
+Behalte Zeichen-/Renderstil, Farbwelt, Figurenmerkmale, Proportionen, Lichtstimmung und Detailqualität von Bild 00 bei.
+Den Cover-Hook-Text nicht kopieren, außer der folgende Szenenprompt verlangt ausdrücklich sichtbaren Text.
 GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD 10.
 Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.
 Nach vollständigem Abschluss dieses Bildes: sofort exakt in `Bild 10.png` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.
@@ -174,6 +217,9 @@ BILD 11 – SZENE 11 – GOOGLE-FLOW-PROMPT
 ZIEL: SZENE 11
 DATEINAME: Bild 11.png
 FREIGABE-BEDINGUNG: Dieser Block ist GESPERRT, bis BILD 10 vollständig fertig erzeugt, exakt als `Bild 10.png` umbenannt und die Umbenennung geprüft wurde.
+STYLE-REFERENZ: Verwende das bereits fertig erzeugte `Bild 00.png` direkt als verbindliche visuelle Vorlage für dieses Szenenbild.
+Behalte Zeichen-/Renderstil, Farbwelt, Figurenmerkmale, Proportionen, Lichtstimmung und Detailqualität von Bild 00 bei.
+Den Cover-Hook-Text nicht kopieren, außer der folgende Szenenprompt verlangt ausdrücklich sichtbaren Text.
 GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD 11.
 Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.
 Nach vollständigem Abschluss dieses Bildes: sofort exakt in `Bild 11.png` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.
@@ -186,6 +232,9 @@ BILD 12 – SZENE 12 – GOOGLE-FLOW-PROMPT
 ZIEL: SZENE 12
 DATEINAME: Bild 12.png
 FREIGABE-BEDINGUNG: Dieser Block ist GESPERRT, bis BILD 11 vollständig fertig erzeugt, exakt als `Bild 11.png` umbenannt und die Umbenennung geprüft wurde.
+STYLE-REFERENZ: Verwende das bereits fertig erzeugte `Bild 00.png` direkt als verbindliche visuelle Vorlage für dieses Szenenbild.
+Behalte Zeichen-/Renderstil, Farbwelt, Figurenmerkmale, Proportionen, Lichtstimmung und Detailqualität von Bild 00 bei.
+Den Cover-Hook-Text nicht kopieren, außer der folgende Szenenprompt verlangt ausdrücklich sichtbaren Text.
 GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD 12.
 Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.
 Nach vollständigem Abschluss dieses Bildes: sofort exakt in `Bild 12.png` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.
@@ -198,6 +247,9 @@ BILD 13 – SZENE 13 – GOOGLE-FLOW-PROMPT
 ZIEL: SZENE 13
 DATEINAME: Bild 13.png
 FREIGABE-BEDINGUNG: Dieser Block ist GESPERRT, bis BILD 12 vollständig fertig erzeugt, exakt als `Bild 12.png` umbenannt und die Umbenennung geprüft wurde.
+STYLE-REFERENZ: Verwende das bereits fertig erzeugte `Bild 00.png` direkt als verbindliche visuelle Vorlage für dieses Szenenbild.
+Behalte Zeichen-/Renderstil, Farbwelt, Figurenmerkmale, Proportionen, Lichtstimmung und Detailqualität von Bild 00 bei.
+Den Cover-Hook-Text nicht kopieren, außer der folgende Szenenprompt verlangt ausdrücklich sichtbaren Text.
 GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD 13.
 Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.
 Nach vollständigem Abschluss dieses Bildes: sofort exakt in `Bild 13.png` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.

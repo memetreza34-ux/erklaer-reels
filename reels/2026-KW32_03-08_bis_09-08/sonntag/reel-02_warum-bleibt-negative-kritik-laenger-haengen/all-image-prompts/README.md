@@ -1,15 +1,29 @@
 # Alle Bildprompts
 
-`all-image-prompts.txt` ist die verbindliche Sammeldatei für die externe Bilderstellung durch den Nutzer in Google Flow.
+`all-image-prompts.txt` ist die verbindliche Google-Flow-Sammeldatei für dieses Reel.
 
-Direkt bei **jedem** Prompt stehen:
-- Bildnummer
-- Ziel (Cover/Szene)
-- gewünschter Dateiname nach dem Download
-- ein direkter Google-Flow-Bildgenerierungsbefehl
+Der Nutzer kopiert die **komplette Datei einmal** in Google Flow und sendet sie ab. Google Flow muss danach streng seriell arbeiten:
 
-Der Nutzer kopiert jeweils **genau einen vollständigen Bildblock** in Google Flow. Der Block fordert Flow ausdrücklich auf, sofort das Bild zu erzeugen und nicht nur mit einer Erklärung, Bestätigung oder Zusammenfassung zu antworten.
+**Bild erzeugen → vollständig warten → sofort umbenennen → Umbenennung prüfen → erst dann das nächste Bild starten.**
 
-Antigravity, Codex und andere Repo-Agenten starten den Bildgenerator nicht selbst. Diese Rollenregel steht bewusst **nicht** in den kopierbaren Bildblöcken, damit Google Flow sie nicht fälschlich als Verbot der Bildgenerierung interpretiert.
+Zu keinem Zeitpunkt dürfen mehrere Bilder parallel laufen oder spätere Bilder in eine Queue gelegt werden.
 
-Nach dem Download benennt der Nutzer das Bild nach der angegebenen Nummer (`Bild 00.png`, `Bild 01.png` usw.). Erst wenn alle Bilder fertig sind, werden sie gemeinsam in den nummerierten Sammelordner gelegt.
+## Cover und Stil
+
+`Bild 00.png` ist:
+- das echte Cover,
+- das Bild mit dem sichtbaren Hook zum Reel-Thema,
+- die verbindliche visuelle Master-Vorlage für alle späteren Szenen.
+
+Der Hook-Text des Covers muss exakt und gut lesbar umgesetzt werden. Das fertige `Bild 00.png` dient danach direkt als Style-Referenz für Bild 01 bis Bild 13: gleicher Zeichen-/Renderstil, gleiche Farbwelt, gleiche Figurenmerkmale, Proportionen, Lichtstimmung und Detailqualität.
+
+Der Cover-Hook wird nicht automatisch in Szenen kopiert. Szenentext erscheint nur, wenn der jeweilige Szenenprompt ihn verlangt.
+
+## Nummerierung und Ablage
+
+- Bild 00 = Cover
+- Bild 01 = Szene 1
+- Bild 02 = Szene 2
+- fortlaufend bis Bild 13 = Szene 13
+
+Jedes Bild wird unmittelbar nach seiner vollständigen Erzeugung korrekt umbenannt. Erst wenn **alle** Bilder fertig und geprüft sind, werden sie gemeinsam in `00-bildprompts/00-ALLE-BILDER-HIER-REIN/` beziehungsweise technisch `inbox/numbered-images/` gelegt.
