@@ -146,13 +146,18 @@ export async function ensureHumanReelView(reelDirectory, { hideTechnicalInFinder
 
   await Promise.all([
     ...HUMAN_REEL_FOLDERS.map((folder) => mkdir(path.join(absoluteReelDirectory, folder), { recursive: true })),
-    mkdir(path.join(absoluteReelDirectory, 'output'), { recursive: true })
+    mkdir(path.join(absoluteReelDirectory, 'output'), { recursive: true }),
+    mkdir(path.join(absoluteReelDirectory, 'inbox', 'numbered-images'), { recursive: true })
   ]);
 
   await Promise.all([
     writeIfMissing(
       path.join(absoluteReelDirectory, '00-bildprompts', 'README.md'),
-      '# 00 – Bildprompts und Bilder\n\nÖffne für jedes Bild den passenden Szenenordner. Dort liegen der Bildprompt und später direkt das zugehörige Bild. Das Cover ist Szene 00.\n'
+      '# 00 – Bildprompts und Bilder\n\nFür den schnellen Import kannst du Cover und alle Szenenbilder gemeinsam in `00-ALLE-BILDER-HIER-REIN` legen. Benenne das Cover `00.png`, Szene 1 `01.png`, Szene 2 `02.png` usw. Die KI übernimmt die Vorsortierung automatisch. Die einzelnen Szenenordner bleiben weiterhin für Prompt und geprüftes finales Bild sichtbar.\n'
+    ),
+    writeIfMissing(
+      path.join(absoluteReelDirectory, 'inbox', 'numbered-images', 'README.md'),
+      '# Nummerierter Bild-Schnellimport\n\nLege alle Bilder gemeinsam hier hinein. `00` ist das Cover, `01` Szene 1, `02` Szene 2 usw. Erlaubt sind z. B. `00.png`, `bild-00.png`, `01.png`, `bild_02.webp` oder `03-meine-szene.jpg`. Der Dateiname bestimmt nur das vorgeschlagene Ziel; die KI muss vor der endgültigen Übernahme weiterhin jedes Bild visuell prüfen.\n'
     ),
     writeIfMissing(path.join(absoluteReelDirectory, '01-voice-script', 'README.md'), '# 01 – Voice-Script\n\nHier liegt der endgültige Text für das Voice-over.\n'),
     writeIfMissing(path.join(absoluteReelDirectory, '02-audio', 'README.md'), '# 02 – Audio\n\nUnbearbeitetes Voice-over nach `AUDIO-HIER-EINFUEGEN`. Das optimierte Audio erscheint später unter `FINAL-AUDIO`.\n'),
@@ -167,6 +172,7 @@ export async function ensureHumanReelView(reelDirectory, { hideTechnicalInFinder
 
   const linkResults = [];
   const links = [
+    ['00-bildprompts/00-ALLE-BILDER-HIER-REIN', '../inbox/numbered-images', 'dir'],
     ['00-bildprompts/00-cover', '../cover', 'dir'],
     ['00-bildprompts/99-alle-bildprompts.txt', '../all-image-prompts/all-image-prompts.txt', 'file'],
     ['01-voice-script/voice-script.txt', '../script/voice-script.txt', 'file'],
