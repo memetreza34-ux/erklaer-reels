@@ -1,5 +1,5 @@
 {
-  "workspace": "ready",
+  "workspace": "manual-image-ready",
   "content": "ready",
   "script": "complete",
   "scenes": "planned",
@@ -7,12 +7,14 @@
   "wordSync": "waiting-for-audio",
   "effects": "planned",
   "audio": "missing",
-  "imagePrompts": "ready",
-  "imagePromptBundle": "ready",
-  "images": "missing",
-  "cover": "missing",
-  "assetMatching": "waiting-for-files",
+  "imagePrompts": "ready-for-user",
+  "imagePromptBundle": "ready-for-user-manual-creation",
+  "images": "waiting-for-user-created-images",
+  "cover": "waiting-for-user-created-bild-00",
+  "assetMatching": "waiting-for-user-files",
   "endingHold": "planned",
   "qualityControl": "pending",
-  "nextStep": "Google Flow erzeugt Bild 00 bis Bild 13 einzeln mit Image 3, benennt jedes sofort und legt erst nach vollständiger Generierung alle Bilder gemeinsam in den Sammelordner."
+  "imageGenerationOwner": "user-only",
+  "agentImageGeneration": "forbidden",
+  "nextStep": "Der Nutzer erstellt Bild 00 bis Bild 13 selbst einzeln anhand der Prompts, benennt jedes Bild sofort und legt erst nach vollständiger Erstellung alle Bilder gemeinsam in den Sammelordner."
 }

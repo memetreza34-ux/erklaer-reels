@@ -1,11 +1,14 @@
 # Nummerierte Bilder – gemeinsamer Ablageordner
 
-Dieser Ordner ist für **alle** fertig generierten Google-Flow-Bilder dieses Reels.
+Dieser Ordner ist für **alle vom Nutzer selbst erstellten Bilder** dieses Reels.
 
-Nicht während der Generierung einzeln hier verteilen. Zuerst:
-1. Bild erzeugen
-2. sofort korrekt umbenennen
-3. nächstes Bild erzeugen
+**Kein Agent erstellt die Bilder.** Antigravity, Codex und andere Agenten warten auf die Nutzerbilder.
+
+Der Nutzer legt die Bilder nicht während der Erstellung einzeln hier ab. Zuerst:
+1. Prompt lesen
+2. genau ein Bild selbst erstellen
+3. sofort korrekt umbenennen
+4. erst dann das nächste Bild erstellen
 
 Erst nachdem die komplette Reihe fertig ist, alle Dateien gemeinsam hier ablegen:
 

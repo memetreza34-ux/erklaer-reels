@@ -9,7 +9,8 @@
 - Zielvideo: 57,9 s inklusive 0,7 s Schlussbild
 - Format: 1080 × 1920, 30 fps, 9:16
 - Bildstil: human-editorial-cartoon
-- Bilder: Google Flow / Image 3
+- Bilder: **werden ausschließlich vom Nutzer selbst anhand der Bildprompts erstellt**
+- Agent-Bildgenerierung: verboten
 - Musik: keine
 - SFX: 0–2 leise Effekte pro Szene
 - Voice-over Playback: 1,10×, Tonhöhe erhalten
@@ -35,7 +36,11 @@
 
 ## Bildworkflow
 Verbindlich ist `all-image-prompts/all-image-prompts.txt`.
-Google Flow arbeitet strikt einzeln:
-Prompt lesen → genau ein Bild erzeugen → sofort in die angegebene `Bild XX.png` umbenennen → erst dann nächster Prompt.
+
+**Nur der Nutzer erstellt die Bilder.** Antigravity, Codex und andere Agenten dürfen keine Bilder erzeugen oder regenerieren.
+
+Der Nutzer arbeitet strikt einzeln:
+Prompt lesen → genau ein Bild selbst erstellen → sofort in die angegebene `Bild XX.png` umbenennen → erst dann nächster Prompt.
+
 Erst nach Bild 13 werden alle 14 Dateien gemeinsam in `inbox/numbered-images/` gelegt.
-Danach visuelle Zwei-Pass-QC und erst anschließend `organize:assets --apply`.
+Danach dürfen Agenten mit visueller Zwei-Pass-QC und anschließend `organize:assets --apply` fortfahren.

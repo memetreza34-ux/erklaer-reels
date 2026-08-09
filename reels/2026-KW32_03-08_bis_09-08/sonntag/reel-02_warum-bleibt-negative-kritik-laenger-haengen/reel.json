@@ -18,12 +18,14 @@
   "backgroundMusicEnabled": false,
   "audioPlaybackRate": 1.1,
   "sourceQualitySchemaVersion": 2,
-  "googleFlowImageWorkflow": "single-image-generate-rename-then-next",
+  "manualImageWorkflow": "user-single-image-create-rename-then-next",
+  "imageGenerationOwner": "user-only",
+  "agentImageGeneration": false,
   "numberedImageContract": {
     "cover": "Bild 00.png",
     "sceneStart": "Bild 01.png",
     "sceneEnd": "Bild 13.png",
     "finalCommonFolder": "inbox/numbered-images/"
   },
-  "status": "content-ready-for-google-flow"
+  "status": "content-ready-for-user-image-creation"
 }

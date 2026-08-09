@@ -17,5 +17,7 @@
   "backgroundMusicEnabled": false,
   "audioPlaybackRate": 1.1,
   "sourceQualitySchemaVersion": 2,
-  "status": "content-ready-for-google-flow"
+  "imageGenerationOwner": "user-only",
+  "agentImageGeneration": false,
+  "status": "content-ready-for-user-image-creation"
 }

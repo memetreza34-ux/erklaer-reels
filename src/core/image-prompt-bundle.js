@@ -45,7 +45,7 @@ export async function ensureImagePromptBundleDirectory(reelDirectory) {
   const paths = getImagePromptBundlePaths(reelDirectory);
   await mkdir(paths.directory, { recursive: true });
 
-  const readme = `# Alle Bildprompts\n\nIn \`${BUNDLE_FILE}\` stehen zuerst der Cover-Prompt und danach alle Szenen-Bildprompts in chronologischer Reihenfolge. Direkt bei JEDEM einzelnen Prompt stehen bereits die feste Bildnummer und der Dateiname: Bild 00 = Cover, Bild 01 = Szene 1, Bild 02 = Szene 2 usw. Ganz am Ende steht zusätzlich die verbindliche Google-Flow-Arbeitsanweisung für den Einzelbild-Ablauf.\n\nErzeugen oder aktualisieren:\n\n\`\`\`bash\nnpm run export:prompts -- --dir "${normalizedRelativePath(reelDirectory)}" --strict\n\`\`\`\n\nDie Datei wird automatisch aus \`cover/cover-prompt.txt\` und \`scenes/scene-XX/image-prompt.txt\` aufgebaut und sollte nicht manuell gepflegt werden.\n`;
+  const readme = `# Alle Bildprompts\n\nIn \`${BUNDLE_FILE}\` stehen zuerst der Cover-Prompt und danach alle Szenen-Bildprompts in chronologischer Reihenfolge. Direkt bei JEDEM einzelnen Prompt stehen die feste Bildnummer und der Dateiname: Bild 00 = Cover, Bild 01 = Szene 1, Bild 02 = Szene 2 usw. Die Bilder werden ausschließlich vom Nutzer selbst anhand dieser Prompts erstellt. Antigravity, Codex oder andere Agenten dürfen keine Bilder erzeugen. Ganz am Ende steht zusätzlich der verbindliche manuelle Einzelbild-Ablauf.\n\nErzeugen oder aktualisieren:\n\n\`\`\`bash\nnpm run export:prompts -- --dir "${normalizedRelativePath(reelDirectory)}" --strict\n\`\`\`\n\nDie Datei wird automatisch aus \`cover/cover-prompt.txt\` und \`scenes/scene-XX/image-prompt.txt\` aufgebaut und sollte nicht manuell gepflegt werden.\n`;
   await writeFile(paths.readme, readme, 'utf8');
 
   if (!(await exists(paths.file))) {
@@ -109,21 +109,22 @@ export function formatImageNumberingContract(prompts) {
   const lastNumber = padImageNumber(scenes.at(-1)?.order ?? 0);
 
   const lines = [
-    'GOOGLE FLOW KI-AGENT – VERBINDLICHER ABLAUF FÜR DIE BILDGENERIERUNG',
+    'MANUELLE BILDERSTELLUNG DURCH DEN NUTZER – VERBINDLICHER ABLAUF',
     '',
-    'ACHTUNG: Diese Arbeitsanweisung richtet sich ausdrücklich an den Google-Flow-KI-Agenten, der die Bilder erzeugt. Sie ist keine Codex-Anweisung.',
+    'ACHTUNG: NUR DER NUTZER ERSTELLT DIE BILDER anhand der vorbereiteten Prompts. Antigravity, Codex und andere Agenten dürfen keine Bilder selbst erzeugen, regenerieren oder durch ein Bildmodell erstellen lassen.',
     '',
-    'ARBEITE IMMER BILD FÜR BILD – NIE MEHRERE BILDER AUF EINMAL:',
-    '1. Lies immer nur den nächsten einzelnen Bildprompt. Direkt darüber stehen bereits Bildnummer, Ziel und exakter Dateiname.',
-    '2. Erzeuge immer genau EIN Bild anhand dieses Prompts.',
-    '3. Sobald dieses eine Bild vollständig erzeugt ist, benenne es SOFORT exakt mit dem dort angegebenen Dateinamen um.',
-    '4. Erst nachdem dieses Bild korrekt umbenannt wurde, darfst du mit dem nächsten Prompt fortfahren.',
+    'IMMER BILD FÜR BILD – NIE MEHRERE UNBENANNTE BILDER SAMMELN:',
+    '1. Der Nutzer liest immer nur den nächsten einzelnen Bildprompt. Direkt darüber stehen Bildnummer, Ziel und exakter Dateiname.',
+    '2. Der Nutzer erstellt genau EIN Bild anhand dieses Prompts.',
+    '3. Sobald dieses eine Bild fertig ist, benennt der Nutzer es SOFORT exakt mit dem dort angegebenen Dateinamen um.',
+    '4. Erst nachdem dieses Bild korrekt umbenannt wurde, wird mit dem nächsten Prompt fortgefahren.',
     '5. Beginne mit Bild 00 = Cover und arbeite danach streng chronologisch mit Bild 01 = Szene 1, Bild 02 = Szene 2 usw.',
-    '6. Wiederhole diesen Ablauf strikt für jedes einzelne Bild: PROMPT LESEN → GENAU EIN BILD ERZEUGEN → SOFORT UMBENENNEN → ERST DANN ZUM NÄCHSTEN PROMPT.',
-    `7. Fahre so lange einzeln fort, bis wirklich alle Bilder von Bild 00 bis Bild ${lastNumber} vollständig erzeugt UND korrekt umbenannt wurden.`,
+    '6. Wiederhole den Ablauf für jedes einzelne Bild: PROMPT LESEN → GENAU EIN BILD ERSTELLEN → SOFORT UMBENENNEN → ERST DANN ZUM NÄCHSTEN PROMPT.',
+    `7. Fahre so lange einzeln fort, bis wirklich alle Bilder von Bild 00 bis Bild ${lastNumber} vollständig erstellt UND korrekt umbenannt wurden.`,
     '8. Prüfe danach einmal die komplette Reihe: keine Nummer fehlt, keine Nummer ist doppelt und keine Nummer wurde vertauscht.',
-    '9. ERST WENN ALLE Bilder fertig erzeugt, korrekt umbenannt und vollständig geprüft sind, lege ALLE fertigen Bilder gemeinsam in den Ordner `00-bildprompts/00-ALLE-BILDER-HIER-REIN/`.',
+    '9. ERST WENN ALLE Bilder fertig erstellt, korrekt umbenannt und vollständig geprüft sind, legt der Nutzer ALLE fertigen Bilder gemeinsam in den Ordner `00-bildprompts/00-ALLE-BILDER-HIER-REIN/`.',
     '10. Die Bilder bleiben dort als ein gemeinsamer Stapel. Nicht einzeln auf Cover- oder Szenenordner verteilen.',
+    '11. Erst nachdem die Nutzerbilder im Sammelordner liegen, dürfen Agenten mit Sichtprüfung, Zuordnung, QC, Timeline oder Render weiterarbeiten.',
     '',
     'FESTE DATEIBENENNUNG:',
     '- Bild 00 = COVER → Dateiname `Bild 00.png`'
@@ -138,7 +139,7 @@ export function formatImageNumberingContract(prompts) {
     '',
     `Damit gilt immer: Cover = Bild 00, erste Szene = Bild 01 und jede weitere Szene erhält chronologisch genau eine fortlaufende Nummer bis Bild ${lastNumber}.`,
     'Falls das Bildformat nicht PNG ist, darf nur die Dateiendung abweichen; die Nummerierung `Bild 00`, `Bild 01`, `Bild 02` usw. bleibt unverändert.',
-    'WICHTIG: Google Flow darf niemals mehrere noch unbenannte Bilder sammeln. Jedes Bild wird einzeln erzeugt und unmittelbar danach korrekt umbenannt. Erst wenn wirklich alle Bilder fertig und benannt sind, werden sie gemeinsam in den Sammelordner gelegt.'
+    'WICHTIG: Die Bildprompts sind für die manuelle Bilderstellung durch den Nutzer bestimmt. Kein Agent darf die Bildgenerierung übernehmen. Erst wenn wirklich alle Nutzerbilder fertig und benannt sind, werden sie gemeinsam in den Sammelordner gelegt.'
   );
 
   return lines.join('\n');
@@ -151,9 +152,9 @@ function formatDirectPromptSection(entry) {
   if (entry.kind === 'cover') {
     return [
       `BILD ${number} – COVER – BILDPROMPT`,
-      `ZIEL: COVER`,
+      'ZIEL: COVER',
       `DATEINAME NACH ERZEUGUNG: Bild ${number}.png`,
-      `GOOGLE FLOW: Erzeuge jetzt NUR dieses eine Bild anhand des folgenden Prompts. Sobald es fertig ist, benenne es SOFORT in \`Bild ${number}.png\` um. Erst danach darfst du zum nächsten Bildprompt weitergehen.`,
+      `FÜR DEN NUTZER: Erstelle selbst NUR dieses eine Bild anhand des folgenden Prompts. Sobald es fertig ist, benenne es SOFORT in \`Bild ${number}.png\` um. Erst danach zum nächsten Bildprompt weitergehen. Kein Agent soll dieses Bild erzeugen.`,
       '',
       body
     ].join('\n');
@@ -163,7 +164,7 @@ function formatDirectPromptSection(entry) {
     `BILD ${number} – SZENE ${entry.order} – BILDPROMPT`,
     `ZIEL: SZENE ${entry.order}`,
     `DATEINAME NACH ERZEUGUNG: Bild ${number}.png`,
-    `GOOGLE FLOW: Erzeuge jetzt NUR dieses eine Bild anhand des folgenden Prompts für Szene ${entry.order}. Sobald es fertig ist, benenne es SOFORT in \`Bild ${number}.png\` um. Erst danach darfst du zum nächsten Bildprompt weitergehen.`,
+    `FÜR DEN NUTZER: Erstelle selbst NUR dieses eine Bild anhand des folgenden Prompts für Szene ${entry.order}. Sobald es fertig ist, benenne es SOFORT in \`Bild ${number}.png\` um. Erst danach zum nächsten Bildprompt weitergehen. Kein Agent soll dieses Bild erzeugen.`,
     '',
     body
   ].join('\n');
@@ -237,7 +238,7 @@ export async function validateImagePromptBundle(reelDirectory) {
       : !actual
         ? `Sammeldatei fehlt: ${normalizedRelativePath(paths.file)}.`
         : !current
-          ? 'Die Bildprompt-Sammeldatei ist veraltet oder enthält direkte Bildnummern, Cover, Szenen oder die verbindliche Google-Flow-Einzelbild-Anweisung nicht vollständig in der richtigen Reihenfolge.'
-          : 'Die Bildprompt-Sammeldatei enthält bei jedem einzelnen Prompt die direkte Bildnummer und den Dateinamen sowie die vollständige Google-Flow-Einzelbild-Anweisung.'
+          ? 'Die Bildprompt-Sammeldatei ist veraltet oder enthält direkte Bildnummern, Cover, Szenen oder die verbindliche manuelle Nutzer-Anweisung nicht vollständig in der richtigen Reihenfolge.'
+          : 'Die Bildprompt-Sammeldatei enthält bei jedem einzelnen Prompt die direkte Bildnummer und den Dateinamen sowie die vollständige manuelle Nutzer-Anweisung. Agenten sind von der Bildgenerierung ausgeschlossen.'
   };
 }
