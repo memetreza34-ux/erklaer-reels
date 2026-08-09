@@ -1,0 +1,15 @@
+{
+  "sceneId": "scene-03",
+  "order": 3,
+  "title": "Negativitätsbias gibt Schlechtem mehr Gewicht",
+  "narration": "Dabei bekommt Schlechtes psychologisch oft mehr Gewicht als vergleichbar Gutes.",
+  "imageText": "MEHR GEWICHT",
+  "visualIdea": "Eine Waage: ein roter Kritik-Zettel auf einer Seite wirkt schwerer als mehrere gleich große positive Rückmeldungen auf der anderen.",
+  "audioCue": "Dabei bekommt Schlechtes psychologisch oft",
+  "durationSeconds": 4.1,
+  "expectedImageFileName": "scene-03.png",
+  "numberedDropFileName": "Bild 03.png",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "status": "prompt-ready"
+}

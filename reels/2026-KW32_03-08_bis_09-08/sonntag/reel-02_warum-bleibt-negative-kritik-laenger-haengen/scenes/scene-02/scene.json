@@ -1,0 +1,15 @@
+{
+  "sceneId": "scene-02",
+  "order": 2,
+  "title": "Negative Information bindet Aufmerksamkeit",
+  "narration": "Negative Informationen können unsere Aufmerksamkeit stärker binden als positive. Dafür gibt es einen bekannten Begriff: Negativitätsbias.",
+  "imageText": "NEGATIV FÄLLT AUF",
+  "visualIdea": "Ein roter negativer Feedback-Zettel bekommt einen starken symbolischen Spotlight-Effekt, während positive Zettel weiterhin sichtbar, aber weniger aufmerksamkeitsstark sind.",
+  "audioCue": "Negative Informationen können unsere Aufmerksamkeit",
+  "durationSeconds": 4.4,
+  "expectedImageFileName": "scene-02.png",
+  "numberedDropFileName": "Bild 02.png",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "status": "prompt-ready"
+}

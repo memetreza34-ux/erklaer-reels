@@ -1,0 +1,15 @@
+{
+  "sceneId": "scene-01",
+  "order": 1,
+  "title": "Hook: Ein negativer Kommentar bleibt hängen",
+  "narration": "Du bekommst zehn nette Kommentare und einen fiesen. Welcher hängt abends noch im Kopf? Meist der negative.",
+  "imageText": "WARUM BLEIBT DAS HÄNGEN?",
+  "visualIdea": "Viele kleine positive Kommentare schweben ruhig um die Hauptfigur; ein einzelner roter negativer Kommentar zieht ihren Blick und bleibt groß im Vordergrund.",
+  "audioCue": "Du bekommst zehn nette Kommentare",
+  "durationSeconds": 4.8,
+  "expectedImageFileName": "scene-01.png",
+  "numberedDropFileName": "Bild 01.png",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "status": "prompt-ready"
+}

@@ -1,0 +1,15 @@
+{
+  "sceneId": "scene-12",
+  "order": 12,
+  "title": "Positives Feedback sichtbar machen",
+  "narration": "Mach außerdem positives Feedback sichtbar und konkret, zum Beispiel durch eine gespeicherte Sammlung.",
+  "imageText": "POSITIVES SICHTBAR MACHEN",
+  "visualIdea": "Die Hauptfigur legt konkrete positive Rückmeldungen sichtbar in eine geordnete Sammlung, sodass sie später als echte Gegenbelege verfügbar bleiben.",
+  "audioCue": "Mach außerdem positives Feedback sichtbar",
+  "durationSeconds": 4.5,
+  "expectedImageFileName": "scene-12.png",
+  "numberedDropFileName": "Bild 12.png",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "status": "prompt-ready"
+}

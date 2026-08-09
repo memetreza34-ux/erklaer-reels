@@ -1,0 +1,15 @@
+{
+  "sceneId": "scene-09",
+  "order": 9,
+  "title": "Der Effekt ist nicht bei allen gleich",
+  "narration": "Aber: Nicht jeder Mensch reagiert gleich. Kontext, Alter und Situation können den Effekt verändern.",
+  "imageText": "NICHT BEI ALLEN GLEICH",
+  "visualIdea": "Mehrere unterschiedliche Personen stehen vor derselben Mischung aus positivem und negativem Feedback und reagieren sichtbar unterschiedlich.",
+  "audioCue": "Aber: Nicht jeder Mensch reagiert",
+  "durationSeconds": 4.4,
+  "expectedImageFileName": "scene-09.png",
+  "numberedDropFileName": "Bild 09.png",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "status": "prompt-ready"
+}

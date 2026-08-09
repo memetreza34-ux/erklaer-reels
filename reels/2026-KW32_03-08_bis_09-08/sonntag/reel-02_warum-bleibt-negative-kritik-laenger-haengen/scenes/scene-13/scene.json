@@ -1,0 +1,15 @@
+{
+  "sceneId": "scene-13",
+  "order": 13,
+  "title": "Mehr Aufmerksamkeit ist nicht mehr Wahrheit",
+  "narration": "Dein Kopf kann Negatives lauter speichern. Mehr Aufmerksamkeit bedeutet aber nicht automatisch mehr Wahrheit.",
+  "imageText": "LAUTER ≠ WAHRER",
+  "visualIdea": "Die Hauptfigur betrachtet eine ausgewogene Feedback-Wand: der rote Kommentar ist noch da, aber nicht größer als die restlichen Belege.",
+  "audioCue": "Dein Kopf kann Negatives lauter",
+  "durationSeconds": 4.4,
+  "expectedImageFileName": "scene-13.png",
+  "numberedDropFileName": "Bild 13.png",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "status": "prompt-ready"
+}

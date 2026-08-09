@@ -1,0 +1,15 @@
+{
+  "sceneId": "scene-05",
+  "order": 5,
+  "title": "Kritik springt leichter ins Auge",
+  "narration": "Darum springt dein Blick leichter zu Kritik, Ablehnung oder Gefahr, obwohl daneben viel Positives steht.",
+  "imageText": "KRITIK SPRINGT INS AUGE",
+  "visualIdea": "Auf einer Wand voller Feedbackkarten wandert der Blick der Hauptfigur sofort zu einer roten kritischen Karte, obwohl viele positive daneben hängen.",
+  "audioCue": "Darum springt dein Blick leichter",
+  "durationSeconds": 4.5,
+  "expectedImageFileName": "scene-05.png",
+  "numberedDropFileName": "Bild 05.png",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "status": "prompt-ready"
+}
