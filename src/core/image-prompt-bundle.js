@@ -45,7 +45,7 @@ export async function ensureImagePromptBundleDirectory(reelDirectory) {
   const paths = getImagePromptBundlePaths(reelDirectory);
   await mkdir(paths.directory, { recursive: true });
 
-  const readme = `# Alle Bildprompts\n\nIn \`${BUNDLE_FILE}\` stehen zuerst der Cover-Prompt und danach alle Szenen-Bildprompts in chronologischer Reihenfolge. Ganz am Ende steht automatisch die verbindliche Dateibenennung: Bild 00 = Cover, Bild 01 = Szene 1 usw.\n\nErzeugen oder aktualisieren:\n\n\`\`\`bash\nnpm run export:prompts -- --dir "${normalizedRelativePath(reelDirectory)}" --strict\n\`\`\`\n\nDie Datei wird automatisch aus \`cover/cover-prompt.txt\` und \`scenes/scene-XX/image-prompt.txt\` aufgebaut und sollte nicht manuell gepflegt werden.\n`;
+  const readme = `# Alle Bildprompts\n\nIn \`${BUNDLE_FILE}\` stehen zuerst der Cover-Prompt und danach alle Szenen-Bildprompts in chronologischer Reihenfolge. Ganz am Ende steht automatisch die verbindliche Google-Flow-Arbeitsanweisung mit 3er-Batches und der Dateibenennung: Bild 00 = Cover, Bild 01 = Szene 1 usw.\n\nErzeugen oder aktualisieren:\n\n\`\`\`bash\nnpm run export:prompts -- --dir "${normalizedRelativePath(reelDirectory)}" --strict\n\`\`\`\n\nDie Datei wird automatisch aus \`cover/cover-prompt.txt\` und \`scenes/scene-XX/image-prompt.txt\` aufgebaut und sollte nicht manuell gepflegt werden.\n`;
   await writeFile(paths.readme, readme, 'utf8');
 
   if (!(await exists(paths.file))) {
@@ -106,18 +106,26 @@ export function formatImageNumberingContract(prompts) {
   const scenes = prompts
     .filter((entry) => entry.kind === 'scene')
     .sort((a, b) => a.order - b.order);
+  const lastNumber = padImageNumber(scenes.at(-1)?.order ?? 0);
 
   const lines = [
-    'VERBINDLICHE DATEIBENENNUNG NACH DER BILDGENERIERUNG',
+    'GOOGLE FLOW KI-AGENT – VERBINDLICHER ABLAUF FÜR DIE BILDGENERIERUNG',
     '',
-    'WICHTIG FÜR DIE KI:',
-    '- Erzeuge zuerst das Cover und danach alle Szenenbilder exakt in der oben angegebenen chronologischen Reihenfolge.',
-    '- Benenne jedes erzeugte Bild anschließend nach seiner festen Nummer um.',
-    '- Lege ALLE Bilder gemeinsam in denselben Sammelordner `00-bildprompts/00-ALLE-BILDER-HIER-REIN/`.',
-    '- NICHT manuell auf einzelne Szenenordner verteilen. Die Pipeline übernimmt das anhand der Nummer.',
-    '- Die Nummer ist eindeutig und darf nicht vertauscht, übersprungen oder doppelt vergeben werden.',
+    'ACHTUNG: Diese Arbeitsanweisung richtet sich ausdrücklich an den Google-Flow-KI-Agenten, der die Bilder erzeugt. Sie ist keine Codex-Anweisung.',
     '',
-    'FESTE ZUORDNUNG:',
+    'ARBEITE IMMER IN 3ER-STEPS:',
+    '1. Erzeuge die Bilder streng chronologisch in Gruppen von höchstens 3 Bildern.',
+    '2. Erster Step: Bild 00 = Cover, Bild 01 = Szene 1, Bild 02 = Szene 2.',
+    '3. Sobald diese bis zu 3 Bilder vollständig erzeugt sind, benenne jedes davon SOFORT korrekt um.',
+    '4. Erst danach beginne den nächsten 3er-Step: Bild 03, Bild 04, Bild 05. Danach Bild 06, Bild 07, Bild 08 usw.',
+    '5. Wiederhole immer: bis zu 3 Bilder ERZEUGEN → diese Bilder UMBENENNEN → erst dann die nächsten bis zu 3 Bilder erzeugen.',
+    '6. Der letzte Step darf nur 1 oder 2 Bilder enthalten, wenn weniger als 3 Bilder übrig sind.',
+    `7. Fahre so lange fort, bis wirklich alle Bilder von Bild 00 bis Bild ${lastNumber} vollständig erzeugt UND korrekt umbenannt wurden.`,
+    '8. Prüfe danach einmal die komplette Reihe: keine Nummer fehlt, keine Nummer ist doppelt und keine Nummer wurde vertauscht.',
+    '9. ERST WENN ALLE Bilder fertig erzeugt, korrekt umbenannt und vollständig geprüft sind, lege ALLE Bilder gemeinsam in den Ordner `00-bildprompts/00-ALLE-BILDER-HIER-REIN/`.',
+    '10. Die Bilder bleiben dort als ein gemeinsamer Stapel. Nicht einzeln auf Cover- oder Szenenordner verteilen.',
+    '',
+    'FESTE DATEIBENENNUNG:',
     '- Bild 00 = COVER → Dateiname `Bild 00.png`'
   ];
 
@@ -128,8 +136,9 @@ export function formatImageNumberingContract(prompts) {
 
   lines.push(
     '',
-    `Damit gilt: Cover = Bild 00, erste Szene = Bild 01 und jede weitere Szene erhält fortlaufend genau eine Nummer bis Bild ${padImageNumber(scenes.at(-1)?.order ?? 0)}.`,
-    'Falls das Bildformat nicht PNG ist, darf nur die Dateiendung abweichen; die Nummerierung `Bild 00`, `Bild 01`, `Bild 02` usw. bleibt unverändert.'
+    `Damit gilt immer: Cover = Bild 00, erste Szene = Bild 01 und jede weitere Szene erhält chronologisch genau eine fortlaufende Nummer bis Bild ${lastNumber}.`,
+    'Falls das Bildformat nicht PNG ist, darf nur die Dateiendung abweichen; die Nummerierung `Bild 00`, `Bild 01`, `Bild 02` usw. bleibt unverändert.',
+    'WICHTIG: Nicht alle Bilder erst unsortiert erzeugen und später raten. Google Flow muss nach jedem 3er-Step sofort korrekt umbenennen und erst nach vollständigem Abschluss aller Steps den gemeinsamen Sammelordner befüllen.'
   );
 
   return lines.join('\n');
@@ -210,7 +219,7 @@ export async function validateImagePromptBundle(reelDirectory) {
       : !actual
         ? `Sammeldatei fehlt: ${normalizedRelativePath(paths.file)}.`
         : !current
-          ? 'Die Bildprompt-Sammeldatei ist veraltet oder enthält Cover, Szenen oder die verbindliche Bildnummerierung nicht vollständig in der richtigen Reihenfolge.'
-          : 'Die Bildprompt-Sammeldatei enthält Cover, alle Szenenprompts und die verbindliche Bildnummerierung vollständig und aktuell.'
+          ? 'Die Bildprompt-Sammeldatei ist veraltet oder enthält Cover, Szenen oder die verbindliche Google-Flow-3er-Step-Anweisung nicht vollständig in der richtigen Reihenfolge.'
+          : 'Die Bildprompt-Sammeldatei enthält Cover, alle Szenenprompts sowie die vollständige Google-Flow-3er-Step- und Bildnummerierungsanweisung.'
   };
 }
