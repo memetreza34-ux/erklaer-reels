@@ -185,8 +185,9 @@ export function buildSubtitleCuesFromCodexWords(words, scenes, options = {}) {
         verticalPositionPercent,
         textColor,
         backgroundColor,
-        highlightCurrentWord: false,
+        highlightCurrentWord: true,
         highlightColor,
+        speakerSyncedWordHighlight: true,
         timingStatus: 'codex-word-synced',
         timingSource: 'codex-local-audio-review',
         wordTimings: chunk.map((word) => ({
@@ -235,7 +236,7 @@ function mergeExistingWords(freshWords, existingWords) {
 
 function taskMarkdown(reelDirectory, workbench) {
   const normalized = reelDirectory.split(path.sep).join('/');
-  return `# Codex-Auftrag: exakte Wortzeiten\n\n## Ziel\n\nHöre das lokale Voice-over vollständig ab und fülle in \`subtitles/codex-word-sync.json\` für jedes Wort die echten absoluten Start- und Endzeiten aus. Es wird kein externer Transkriptionsanbieter verwendet.\n\n## Dateien\n\n- Voice-over: \`${workbench.audioFile}\`\n- Sprechertext: \`${workbench.scriptFile}\`\n- Master-Timeline: \`${workbench.timelineFile}\`\n- Arbeitsdatei: \`subtitles/codex-word-sync.json\`\n\n## Verbindliche Regeln\n\n1. Audio tatsächlich anhören; Wörter nicht gleichmäßig über die Dauer verteilen.\n2. Für jedes Wort \`startSeconds\` und \`endSeconds\` als absolute Sekunden eintragen.\n3. Auf ungefähr 0,01–0,03 Sekunden genau arbeiten.\n4. \`reviewed\` erst nach akustischer Kontrolle auf \`true\` setzen.\n5. \`confidence\` realistisch zwischen 0 und 1 eintragen; im strengen Lauf mindestens 0,85.\n6. Reihenfolge und sichtbaren Wortlaut nicht verändern. Weicht das Audio vom Script ab, zuerst Script und Audio klären und den Unterschied in \`notes\` dokumentieren.\n7. Pausen bleiben ohne gelbe Markierung; keine künstlich verlängerten Wortzeiten.\n8. Das letzte Wort darf nicht nach der Audiodauer enden.\n9. Keine Audiodatei zu einem externen Dienst hochladen und keinen API-Schlüssel verwenden.\n\n## Abschluss\n\nNach dem Ausfüllen ausführen:\n\n\`\`\`bash\nnpm run sync:words -- --dir "${normalized}" --apply --strict\n\`\`\`\n\nDanach \`review/word-sync-report.json\` prüfen. Der Lauf muss bestehen, bevor gerendert wird.\n`;
+  return `# Codex-Auftrag: exakte Wortzeiten\n\n## Ziel\n\nHöre das lokale Voice-over vollständig ab und fülle in \`subtitles/codex-word-sync.json\` für jedes Wort die echten absoluten Start- und Endzeiten aus. Es wird kein externer Transkriptionsanbieter verwendet. Kein gesprochenes Wort darf fehlen.\n\n## Dateien\n\n- Voice-over: \`${workbench.audioFile}\`\n- Sprechertext: \`${workbench.scriptFile}\`\n- Master-Timeline: \`${workbench.timelineFile}\`\n- Arbeitsdatei: \`subtitles/codex-word-sync.json\`\n\n## Verbindliche Regeln\n\n1. Audio tatsächlich anhören; Wörter nicht gleichmäßig über die Dauer verteilen.\n2. Für jedes Wort \`startSeconds\` und \`endSeconds\` als absolute Sekunden eintragen.\n3. Auf ungefähr 0,01–0,03 Sekunden genau arbeiten.\n4. \`reviewed\` erst nach akustischer Kontrolle auf \`true\` setzen.\n5. \`confidence\` realistisch zwischen 0 und 1 eintragen; im strengen Lauf mindestens 0,85.\n6. Reihenfolge und sichtbaren Wortlaut nicht verändern. Weicht das Audio vom Script ab, zuerst Script und Audio klären und den Unterschied in \`notes\` dokumentieren.\n7. In Sprechpausen kein Folgewort vorzeitig markieren; keine künstlich verlängerten Wortzeiten.\n8. Das letzte Wort darf nicht nach der Audiodauer enden.\n9. Der Lauf ist nur vollständig bei \`coverage = 1\`, \`timedWords = totalWords\` und \`unassignedWords = 0\`.\n10. Keine Audiodatei zu einem externen Dienst hochladen und keinen API-Schlüssel verwenden.\n\n## Abschluss\n\nNach dem Ausfüllen ausführen:\n\n\`\`\`bash\nnpm run sync:words -- --dir "${normalized}" --apply --strict\n\`\`\`\n\nDanach \`review/word-sync-report.json\` prüfen. Der Lauf muss vollständig bestehen, bevor gerendert wird.\n`;
 }
 
 export function validateCodexWorkbench(workbench, { strict = false } = {}) {
@@ -245,7 +246,7 @@ export function validateCodexWorkbench(workbench, { strict = false } = {}) {
   const coverage = words.length ? timed.length / words.length : 0;
 
   checks.push({ id: 'words-present', passed: words.length > 0, level: 'error', message: 'Die Codex-Arbeitsdatei enthält keine Wörter.' });
-  checks.push({ id: 'timing-coverage', passed: coverage >= 0.98, level: strict ? 'error' : 'warning', message: 'Mindestens 98 % der Wörter benötigen gültige Start- und Endzeiten.' });
+  checks.push({ id: 'timing-coverage', passed: coverage === 1, level: strict ? 'error' : 'warning', message: '100 % der Wörter benötigen gültige Start- und Endzeiten.' });
 
   let previousEnd = -Infinity;
   for (const word of words) {
@@ -274,7 +275,7 @@ export function validateCodexWorkbench(workbench, { strict = false } = {}) {
   const errors = checks.filter((check) => !check.passed && check.level === 'error');
   const warnings = checks.filter((check) => !check.passed && check.level === 'warning');
   return {
-    passed: errors.length === 0 && coverage >= 0.98,
+    passed: errors.length === 0 && coverage === 1,
     coverage: round(coverage, 4),
     totalWords: words.length,
     timedWords: timed.length,
@@ -310,7 +311,7 @@ export async function prepareCodexWordSync(reelDirectory) {
   const words = mergeExistingWords(freshWords, previous?.words);
   const relativeAudio = path.relative(reelDirectory, audioPath).split(path.sep).join('/');
   const workbench = {
-    version: 1,
+    version: 2,
     generatedBy: 'codex-workflow',
     status: words.every((word) => word.reviewed === true) ? 'reviewed' : 'pending-codex-audio-review',
     createdAt: previous?.createdAt ?? new Date().toISOString(),
@@ -327,6 +328,8 @@ export async function prepareCodexWordSync(reelDirectory) {
       timingUnit: 'absolute-seconds',
       preferredPrecisionSeconds: 0.02,
       minimumConfidenceStrict: 0.85,
+      requiredCoverage: 1,
+      requireZeroUnassignedWords: true,
       estimatedDistributionForbidden: true
     },
     scenes: scenes.map((scene) => ({
@@ -342,7 +345,7 @@ export async function prepareCodexWordSync(reelDirectory) {
   await writeJson(workbenchPath, workbench);
   await writeText(path.join(reelDirectory, 'production', 'codex-word-sync-task.md'), taskMarkdown(reelDirectory, workbench));
   await writeJson(path.join(reelDirectory, 'review', 'word-sync-report.json'), {
-    version: 2,
+    version: 3,
     createdAt: new Date().toISOString(),
     passed: false,
     provider: 'codex-local-audio-review',
@@ -351,7 +354,7 @@ export async function prepareCodexWordSync(reelDirectory) {
     apiKeyRequired: false,
     workbenchFile: 'subtitles/codex-word-sync.json',
     taskFile: 'production/codex-word-sync-task.md',
-    checks: [{ id: 'codex-audio-review', passed: false, level: 'warning', message: 'Codex muss das Voice-over anhören und die Wortzeiten bestätigen.' }]
+    checks: [{ id: 'codex-audio-review', passed: false, level: 'warning', message: 'Codex muss das Voice-over vollständig anhören und jedes Wort zeitlich bestätigen.' }]
   });
 
   const statusPath = path.join(reelDirectory, 'status.json');
@@ -383,10 +386,17 @@ export async function applyCodexWordSync(reelDirectory, { strict = false, valida
   const invalidCues = built.cues
     .map((cue) => ({ cue, result: validateExactWordTimings(cue) }))
     .filter(({ result }) => !result.valid);
-  const passed = validation.passed && built.cues.length > 0 && invalidCues.length === 0 && (!strict || emptyScenes.length === 0);
+  const allWordsAssigned = built.unassigned.length === 0;
+  const passed = validation.passed
+    && validation.coverage === 1
+    && validation.timedWords === validation.totalWords
+    && built.cues.length > 0
+    && invalidCues.length === 0
+    && allWordsAssigned
+    && (!strict || emptyScenes.length === 0);
 
   const report = {
-    version: 3,
+    version: 4,
     createdAt: new Date().toISOString(),
     passed,
     strict,
@@ -403,7 +413,9 @@ export async function applyCodexWordSync(reelDirectory, { strict = false, valida
       position: SUBTITLE_STYLE.position,
       verticalPositionPercent: SUBTITLE_STYLE.verticalPositionPercent,
       textColor: SUBTITLE_STYLE.textColor,
-      highlightColor: SUBTITLE_STYLE.highlightColor
+      highlightCurrentWord: true,
+      highlightColor: SUBTITLE_STYLE.highlightColor,
+      speakerSyncedWordHighlight: true
     },
     unassignedWords: built.unassigned,
     invalidCues: invalidCues.map(({ cue, result }) => ({ id: cue.id, issues: result.issues })),
@@ -411,6 +423,7 @@ export async function applyCodexWordSync(reelDirectory, { strict = false, valida
     checks: [
       ...validation.checks,
       { id: 'subtitle-cues-created', passed: built.cues.length > 0, level: 'error', message: 'Es wurden keine Untertitel-Cues erzeugt.' },
+      { id: 'all-spoken-words-assigned', passed: allWordsAssigned, level: 'error', message: `Nicht zugeordnete gesprochene Wörter: ${built.unassigned.map((word) => word.text).join(' ') || 'keine'}.` },
       { id: 'all-scenes-covered', passed: emptyScenes.length === 0, level: strict ? 'error' : 'warning', message: `Szenen ohne bestätigte Wörter: ${emptyScenes.map((scene) => scene.sceneId).join(', ') || 'keine'}.` },
       { id: 'exact-cue-timings', passed: invalidCues.length === 0, level: strict ? 'error' : 'warning', message: `Ungültige Untertitel-Cues: ${invalidCues.map(({ cue }) => cue.id).join(', ') || 'keine'}.` }
     ]
@@ -424,19 +437,25 @@ export async function applyCodexWordSync(reelDirectory, { strict = false, valida
 
     const nextPlan = {
       ...previousPlan,
-      version: Math.max(3, Number(previousPlan.version ?? 1)),
+      version: Math.max(7, Number(previousPlan.version ?? 1)),
       enabled: true,
       language: 'de',
       position: SUBTITLE_STYLE.position,
       verticalPositionPercent: SUBTITLE_STYLE.verticalPositionPercent,
       safeVerticalRangePercent: SUBTITLE_STYLE.safeVerticalRangePercent,
       textColor: SUBTITLE_STYLE.textColor,
-      highlightCurrentWord: false,
+      highlightCurrentWord: true,
       highlightColor: SUBTITLE_STYLE.highlightColor,
+      speakerSyncedWordHighlight: true,
+      highlightAnimation: 'color-only',
       backgroundColor: SUBTITLE_STYLE.backgroundColor,
-      wordByWordKaraoke: false,
+      wordByWordKaraoke: true,
       exactWordTimingsRequired: true,
-      timingStatus: 'codex-word-synced',
+      completeSpokenTextCoverageRequired: true,
+      minimumWordCoverage: 1,
+      requireZeroUnassignedWords: true,
+      requireExactVoiceScriptWordSequence: true,
+      timingStatus: passed ? 'codex-word-synced' : 'needs-review',
       timingProvider: 'codex-local-audio-review',
       generatedBy: 'codex',
       generatedAt: new Date().toISOString(),
@@ -451,6 +470,7 @@ export async function applyCodexWordSync(reelDirectory, { strict = false, valida
     const statusPath = path.join(reelDirectory, 'status.json');
     const status = await readJson(statusPath, {});
     status.wordSync = passed ? 'complete' : 'needs-review';
+    if (!passed) status.render = 'blocked-subtitle-sync';
     await writeJson(statusPath, status);
   }
 
