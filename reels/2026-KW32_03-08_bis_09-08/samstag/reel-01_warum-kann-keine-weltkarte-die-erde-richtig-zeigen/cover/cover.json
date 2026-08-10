@@ -1,0 +1,10 @@
+{
+  "headline": "WARUM IST JEDE WELTKARTE VERZERRT?",
+  "visualIdea": "Ein Globus wird sichtbar in eine flache Weltkarte überführt; die Karte dehnt sich an Rändern und Richtung Pole.",
+  "expectedImageFileName": "cover.png",
+  "numberedDropFileName": "Bild 00.png",
+  "styleMaster": true,
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "status": "prompt-ready"
+}

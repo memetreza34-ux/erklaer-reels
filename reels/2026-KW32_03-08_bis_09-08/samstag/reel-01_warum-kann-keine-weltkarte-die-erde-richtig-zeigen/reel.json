@@ -1,0 +1,32 @@
+{
+  "reelId": "reel-01_warum-kann-keine-weltkarte-die-erde-richtig-zeigen",
+  "title": "Warum kann keine Weltkarte die Erde richtig zeigen?",
+  "topicArea": "Länder, Geografie und Geschichte",
+  "date": "2026-08-08",
+  "language": "de",
+  "promptLanguage": "en",
+  "aspectRatio": "9:16",
+  "targetDurationSeconds": 57.3,
+  "targetVideoDurationSeconds": 58.0,
+  "endingHoldSeconds": 0.7,
+  "sceneCount": 13,
+  "scriptWordCount": 171,
+  "visualStyleId": "visual-metaphor",
+  "visualStyleReason": "Kartenprojektionen werden über Globus-zu-Fläche-Metaphern, Gradnetze und Größenvergleiche in einer konsistenten reifen 2D-Editorial-Kartografie erklärt.",
+  "subtitlesEnabled": true,
+  "motionEffectsEnabled": true,
+  "soundEffectsEnabled": true,
+  "backgroundMusicEnabled": false,
+  "audioPlaybackRate": 1.1,
+  "sourceQualitySchemaVersion": 2,
+  "imageWorkflow": "one-paste-google-flow-strict-serial-autonomous",
+  "imageGenerationOwner": "google-flow-after-user-start",
+  "repoAgentImageGeneration": false,
+  "numberedImageContract": {
+    "cover": "Bild 00.png",
+    "sceneStart": "Bild 01.png",
+    "sceneEnd": "Bild 13.png",
+    "finalCommonFolder": "inbox/numbered-images/"
+  },
+  "status": "content-ready-for-google-flow-and-external-voiceover"
+}
