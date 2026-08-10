@@ -29,9 +29,10 @@ Nicht nach Datum, Thema, Szenenzahl oder Bildwelt fragen, solange kein echter Ko
 3. Vollständiges deutsches Script schreiben.
 4. Reel-Workspace vollständig erstellen.
 5. Cover, 12–14 Szenen, Bildprompts, Prompt-Sammeldatei, Caption, Quellen, Untertitel-/Effektplanung und Statusdateien fertigstellen.
-6. Inhaltsprüfungen ausführen, soweit die Umgebung dies tatsächlich erlaubt.
-7. Erst bei fehlenden externen Assets anhalten.
-8. Vorhandene Bilder und Audio danach nur mit den bestehenden QC-Gates weiterverarbeiten.
+6. Die sichtbare Reel-Ansicht mit `00-bildprompts`, `01-voice-script`, `02-audio`, `03-caption`, `04-video` und `99-technik` sicherstellen.
+7. Inhaltsprüfungen ausführen, soweit die Umgebung dies tatsächlich erlaubt.
+8. Erst bei fehlenden externen Assets anhalten.
+9. Vorhandene Bilder und Audio danach nur mit den bestehenden QC-Gates weiterverarbeiten.
 
 Erlaubte Säulen:
 - Politik und Gesellschaft
@@ -224,12 +225,32 @@ Das Voice-over ist ein externes Asset. Sobald es vorhanden ist:
 7. visuelle QC vollständig durchführen
 8. Finalizer und Render-Validator bestehen
 9. erst dann MP4 rendern
+10. die finale MP4 muss in der sichtbaren Reel-Ansicht unter `04-video/FERTIGES-VIDEO/` erreichbar sein
 
 Keine geschätzten Wortzeiten oder geplanten QC-Stufen als bestanden ausgeben.
 
 ---
 
-## 10. Wichtige Pfade
+## 10. Sichtbare Reel-Ansicht und wichtige Pfade
+
+Jedes Reel muss für den Nutzer diese übersichtliche Top-Level-Struktur besitzen:
+
+```text
+00-bildprompts/
+01-voice-script/
+02-audio/
+03-caption/
+04-video/
+99-technik/
+```
+
+Das fertige Ergebnis gehört **nicht nur** in einen technischen Renderordner. Nach einem erfolgreichen Render muss die MP4 direkt über diesen sichtbaren Pfad erreichbar sein:
+
+```text
+04-video/FERTIGES-VIDEO/
+```
+
+Technisch kann dieselbe Datei weiterhin unter `output/` liegen; `04-video/FERTIGES-VIDEO` verweist auf diese Render-Ausgabe. Der Renderer stellt die sichtbare Human-Ansicht vor dem Render automatisch sicher.
 
 Verbindliche technische Prompt-Sammeldatei:
 
@@ -269,6 +290,8 @@ Verboten ohne ausdrückliche Nutzeranweisung:
 - den gemeinsamen Bildordner bereits während der Generierung befüllen
 - `Bild 00` als Cover/Style-Master entfernen
 - bevorzugte Benennung `Bild XX` stillschweigend auf einen anderen Standard umstellen
+- sichtbare Reel-Ordner wie `04-video` bei einem neuen Reel weglassen
+- das finale Video nur in einem versteckten/technischen Ordner ablegen
 - globale Produktionswerte bei einem normalen neuen Reel verändern
 
 Historische Reel-Dateien dürfen nie benutzt werden, um neuere globale Regeln zurückzudrehen.
