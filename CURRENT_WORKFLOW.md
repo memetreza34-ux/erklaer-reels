@@ -65,8 +65,10 @@ Nicht autonom verwenden:
 - Voice-over exakt 1,10x bei erhaltener Tonhöhe
 - −16 LUFS, höchstens −1,5 dBTP
 - Untertitel horizontal zentriert, vertikal exakt bei 58 % Bildhöhe
-- Untertitelfarbe `#F5F7FA`
-- keine Karaoke-Markierung, keine schwarze Box
+- Untertitel-Grundfarbe `#F5F7FA`
+- **das aktuell gesprochene Wort wird exakt nach den akustischen Wortzeiten in Braun `#B7794A` markiert**
+- **100 % des gesprochenen Voice-Scripts müssen als Untertitel vorhanden sein; kein Wort, Satzteil oder Satz darf fehlen**
+- keine schwarze Box und keine zusätzliche Karaoke-Animation wie Springen, Zoomen oder Größenwechsel; nur die Farbe des aktiven Wortes wechselt
 - ausschließlich harte Schnitte
 - keine Hintergrundmusik
 - 0–2 dezente SFX pro Szene
@@ -277,7 +279,7 @@ Wenn Bilder und Audio gefunden und geprüft sind, soll der Agent selbstständig 
 
 ---
 
-## 10. Voice-over und Finalisierung
+## 10. Voice-over, vollständige Untertitel und Finalisierung
 
 Das Voice-over ist ein externes Asset. Sobald es vorhanden ist oder durch die Asset-Suche gefunden wurde:
 
@@ -286,13 +288,16 @@ Das Voice-over ist ein externes Asset. Sobald es vorhanden ist oder durch die As
 3. exakt 1,10x, Tonhöhe erhalten
 4. −16 LUFS / max. −1,5 dBTP messen und bestätigen
 5. Timeline synchronisieren
-6. exakte akustische Wortzeiten erstellen
-7. visuelle QC vollständig durchführen
-8. Finalizer und Render-Validator bestehen
-9. erst dann MP4 rendern
-10. die finale MP4 muss in der sichtbaren Reel-Ansicht unter `04-video/FERTIGES-VIDEO/` erreichbar sein
+6. **jedes einzelne gesprochene Wort akustisch abhören und echte Start-/Endzeiten erstellen**
+7. prüfen, dass `timedWords === totalWords`, `coverage === 1` und `unassignedWords === 0`
+8. prüfen, dass die komplette Untertitel-Wortfolge exakt `script/voice-script.txt` entspricht
+9. das aktuell gesprochene Wort mit `#B7794A` hervorheben; übrige Wörter bleiben `#F5F7FA`
+10. visuelle QC vollständig durchführen
+11. Finalizer und Render-Validator bestehen
+12. erst dann MP4 rendern
+13. die finale MP4 muss in der sichtbaren Reel-Ansicht unter `04-video/FERTIGES-VIDEO/` erreichbar sein
 
-Keine geschätzten Wortzeiten oder geplanten QC-Stufen als bestanden ausgeben.
+Keine geschätzten Wortzeiten oder geplanten QC-Stufen als bestanden ausgeben. **Ein Render mit fehlendem gesprochenem Wort ist verboten.**
 
 ---
 
@@ -360,6 +365,9 @@ Verboten ohne ausdrückliche Nutzeranweisung:
 - bei einem fehlenden Asset sofort aufgeben, ohne vorher `discover:assets` bzw. die definierte Asset-Suche auszuführen
 - eine ZIP mit vollständigen nummerierten Bildern ignorieren oder den Nutzer unnötig zum manuellen Entpacken auffordern
 - entpackte Bilder nur nach Dateinummer final bestätigen, ohne visuelle QC
+- Untertitel mit weniger als 100 % des gesprochenen Voice-Scripts rendern
+- `unassignedWords` ignorieren oder fehlende Wörter/Sätze trotz striktem Lauf zulassen
+- die braune Sprecher-Markierung `#B7794A` wieder durch eine statische einfarbige Untertitelspur ersetzen
 - globale Produktionswerte bei einem normalen neuen Reel verändern
 
 Historische Reel-Dateien dürfen nie benutzt werden, um neuere globale Regeln zurückzudrehen.
