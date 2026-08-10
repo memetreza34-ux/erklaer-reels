@@ -31,8 +31,10 @@ Nicht nach Datum, Thema, Szenenzahl oder Bildwelt fragen, solange kein echter Ko
 5. Cover, 12–14 Szenen, Bildprompts, Prompt-Sammeldatei, Caption, Quellen, Untertitel-/Effektplanung und Statusdateien fertigstellen.
 6. Die sichtbare Reel-Ansicht mit `00-bildprompts`, `01-voice-script`, `02-audio`, `03-caption`, `04-video` und `99-technik` sicherstellen.
 7. Inhaltsprüfungen ausführen, soweit die Umgebung dies tatsächlich erlaubt.
-8. Erst bei fehlenden externen Assets anhalten.
-9. Vorhandene Bilder und Audio danach nur mit den bestehenden QC-Gates weiterverarbeiten.
+8. Wenn externe Bilder oder Audio scheinbar fehlen, zuerst die verbindliche Asset-Discovery durchführen; **nicht sofort anhalten oder den Nutzer fragen**.
+9. Gefundene Assets sicher übernehmen, visuell bzw. akustisch prüfen und mit den bestehenden QC-Gates weiterverarbeiten.
+10. Erst wenn die Suche tatsächlich nichts Passendes findet oder eine sichere Auswahl nicht möglich ist, den Nutzer informieren.
+11. Sobald alle nötigen Assets vorhanden und geprüft sind, ohne unnötige Pause bis zur tatsächlich geprüften MP4 weiterarbeiten.
 
 Erlaubte Säulen:
 - Politik und Gesellschaft
@@ -86,7 +88,7 @@ Sie erstellen:
 - einzelne Szenenprompts
 - `all-image-prompts/all-image-prompts.txt`
 - Nummerierung
-- spätere QC-, Zuordnungs-, Timeline- und Render-Schritte
+- spätere Suche, Entpackung, QC-, Zuordnungs-, Timeline- und Render-Schritte
 
 ### Nutzer
 
@@ -212,9 +214,72 @@ Erlaubte finale Match-Methoden:
 
 ---
 
-## 9. Voice-over und Finalisierung
+## 9. Fehlende Assets müssen zuerst gesucht werden
 
-Das Voice-over ist ein externes Asset. Sobald es vorhanden ist:
+Ein fehlendes Bild oder Audio im Reel-Ordner bedeutet **nicht**, dass der Nutzer es noch nicht erstellt oder heruntergeladen hat.
+
+Vor jeder Meldung „Bilder fehlen“, „Audio fehlt“ oder „ich kann nicht weitermachen“ muss zuerst ausgeführt werden:
+
+```bash
+npm run discover:assets -- --dir "<reel-ordner>"
+```
+
+Auch der normale Befehl
+
+```bash
+npm run organize:assets -- --dir "<reel-ordner>"
+```
+
+führt diese Suche automatisch vor der Zuordnung aus.
+
+Standardmäßig werden geprüft:
+- der aktuelle Reel-Ordner
+- `~/Downloads`
+- `~/Desktop`
+
+### Wenn die Google-Flow-Bilder als ZIP heruntergeladen wurden
+
+Der Agent muss nach ZIP-Dateien suchen und darf nicht erwarten, dass der Nutzer sie vorher manuell entpackt oder einsortiert.
+
+Eine ZIP darf automatisch verwendet werden, wenn sie für dieses Reel eine vollständige und eindeutige nummerierte Serie enthält: `Bild 00` bis zur letzten Szene.
+
+Dann gilt automatisch:
+
+1. ZIP-Inhalt auf unsichere absolute Pfade oder `..`-Pfade prüfen.
+2. ZIP in einen temporären Ordner entpacken.
+3. `Bild 00`, `Bild 01`, `Bild 02` usw. erkennen.
+4. Bereits vorhandene Bildnummern nicht überschreiben.
+5. Gefundene Bilder standardisiert nach `inbox/numbered-images/Bild XX.<ext>` übernehmen.
+6. Danach `prepareNumberedImageAssignments` bzw. `organize:assets` verwenden.
+7. **Trotz korrekter Nummerierung jedes Bild wirklich öffnen und die visuelle Zwei-Pass-QC durchführen.**
+8. Erst nach bestandener QC `--apply` ausführen.
+
+Eine ZIP-Nummer ist also nur Routing-Hilfe und niemals Ersatz für die Bildprüfung.
+
+### Lose Bilder und Audio
+
+- Eine vollständige lose `Bild 00 ... Bild XX`-Serie in einem gefundenen Ordner darf ebenfalls automatisch in den nummerierten Import übernommen werden.
+- Bei Audio wird nach aktuellen unterstützten Dateien gesucht.
+- Genau ein eindeutig als Voice-over/Speech erkennbarer aktueller Kandidat darf automatisch in `inbox/audio/` bereitgestellt werden.
+- Bei mehreren oder unklaren Audio-Kandidaten muss der Agent die Kandidaten prüfen und darf nicht raten.
+
+Die Suchdiagnose wird unter
+
+```text
+inbox/asset-discovery.json
+```
+
+gespeichert.
+
+**Erst wenn diese Suche tatsächlich nichts Passendes findet oder mehrere Kandidaten nicht sicher unterschieden werden können, darf der Agent den Nutzer um Hilfe bitten.**
+
+Wenn Bilder und Audio gefunden und geprüft sind, soll der Agent selbstständig mit Asset-Anwendung, Audio-Pacing, Wort-Sync, Finalisierung und Render fortfahren, bis ein wirklich noch fehlender externer Schritt erreicht ist.
+
+---
+
+## 10. Voice-over und Finalisierung
+
+Das Voice-over ist ein externes Asset. Sobald es vorhanden ist oder durch die Asset-Suche gefunden wurde:
 
 1. von der Originaldatei starten
 2. Pausen straffen
@@ -231,7 +296,7 @@ Keine geschätzten Wortzeiten oder geplanten QC-Stufen als bestanden ausgeben.
 
 ---
 
-## 10. Sichtbare Reel-Ansicht und wichtige Pfade
+## 11. Sichtbare Reel-Ansicht und wichtige Pfade
 
 Jedes Reel muss für den Nutzer diese übersichtliche Top-Level-Struktur besitzen:
 
@@ -278,7 +343,7 @@ inbox/numbered-images/
 
 ---
 
-## 11. Schutz vor neuen Chats und versehentlichen Regressionen
+## 12. Schutz vor neuen Chats und versehentlichen Regressionen
 
 Ein neuer Chat oder Agent muss vor Änderungen zuerst diese Datei und danach `AGENTS.md` lesen.
 
@@ -292,13 +357,16 @@ Verboten ohne ausdrückliche Nutzeranweisung:
 - bevorzugte Benennung `Bild XX` stillschweigend auf einen anderen Standard umstellen
 - sichtbare Reel-Ordner wie `04-video` bei einem neuen Reel weglassen
 - das finale Video nur in einem versteckten/technischen Ordner ablegen
+- bei einem fehlenden Asset sofort aufgeben, ohne vorher `discover:assets` bzw. die definierte Asset-Suche auszuführen
+- eine ZIP mit vollständigen nummerierten Bildern ignorieren oder den Nutzer unnötig zum manuellen Entpacken auffordern
+- entpackte Bilder nur nach Dateinummer final bestätigen, ohne visuelle QC
 - globale Produktionswerte bei einem normalen neuen Reel verändern
 
 Historische Reel-Dateien dürfen nie benutzt werden, um neuere globale Regeln zurückzudrehen.
 
 ---
 
-## 12. Tests und bekannte Infrastrukturgrenze
+## 13. Tests und bekannte Infrastrukturgrenze
 
 `npm test` ist die lokale Testsuite. Ein Test oder CI-Lauf gilt nur als bestanden, wenn er tatsächlich ausgeführt und erfolgreich beendet wurde.
 
