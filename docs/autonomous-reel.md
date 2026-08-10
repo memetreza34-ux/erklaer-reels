@@ -83,6 +83,40 @@ npm run check:content -- --dir "PFAD-ZUM-REEL" --strict
 
 Fehler beheben. Keine Prüfung als bestanden melden, wenn sie nicht tatsächlich ausgeführt werden konnte.
 
+### 7. Externe Assets zuerst aktiv suchen
+
+Wenn Bilder oder Voice-over im Reel-Ordner nicht gefunden werden, **nicht sofort anhalten**.
+
+Zuerst:
+
+```bash
+npm run discover:assets -- --dir "PFAD-ZUM-REEL"
+```
+
+Der normale Lauf
+
+```bash
+npm run organize:assets -- --dir "PFAD-ZUM-REEL"
+```
+
+führt dieselbe Suche ebenfalls automatisch aus.
+
+Standardmäßig werden Reel-Ordner, `~/Downloads` und `~/Desktop` durchsucht.
+
+Wenn eine eindeutige vollständige ZIP mit `Bild 00` bis zur letzten Szene gefunden wird, wird sie sicher geprüft, temporär entpackt und in `inbox/numbered-images/` übernommen. Bereits vorhandene Bildnummern werden nicht überschrieben.
+
+Wenn **mehrere** vollständige ZIPs gefunden werden, darf nicht blind die neueste verwendet werden. Der Agent prüft die Kandidaten inhaltlich und kann danach gezielt ausführen:
+
+```bash
+npm run discover:assets -- --dir "PFAD-ZUM-REEL" --zip "PFAD-ZUR-GEPRÜFTEN-ZIP"
+```
+
+Auch nach dem ZIP-Import bleibt die visuelle Zwei-Pass-QC Pflicht. Dateinummern sind nur Routing-Hilfe.
+
+Bei Audio werden aktuelle Kandidaten gesucht. Genau ein eindeutig als Voice-over erkennbarer Kandidat kann bereitgestellt werden; bei mehreren/unklaren Kandidaten muss der Agent prüfen und darf nicht raten.
+
+Die Suchdiagnose liegt unter `inbox/asset-discovery.json`.
+
 ## Quellenstandard
 
 - zentrale Tatsachenbehauptungen vor Veröffentlichung prüfen
@@ -93,12 +127,14 @@ Fehler beheben. Keine Prüfung als bestanden melden, wenn sie nicht tatsächlich
 
 ## Erlaubter Haltepunkt
 
-Erst anhalten, wenn externe Dateien fehlen: Voice-over oder Bilder.
+Erst anhalten, wenn **nach der verbindlichen Asset-Suche** externe Dateien tatsächlich nicht auffindbar sind oder mehrere Kandidaten nicht sicher unterschieden werden können.
 
-Sind Assets vorhanden:
+Sind Assets vorhanden oder wurden sie gefunden:
 
 ```text
-Assets visuell prüfen
+ZIP ggf. sicher entpacken
+→ Bilder/Audio bereitstellen
+→ Assets visuell prüfen
 → nummerierte Dateien nur als Routing-Hilfe verwenden
 → Voice-over exakt 1,10x / −16 LUFS / max. −1,5 dBTP verarbeiten
 → Audio wirklich nachmessen
@@ -107,11 +143,12 @@ Assets visuell prüfen
 → visuelle Zwei-Pass-QC
 → finale Freigabe
 → MP4 rendern
+→ fertige MP4 unter 04-video/FERTIGES-VIDEO bereitstellen
 ```
 
 ## Keine Standardrückfragen
 
-Nicht nach Datum, Thema, Szenenzahl oder Bildwelt fragen, solange keine wirklich widersprüchliche Vorgabe oder zwingend fehlende Information vorliegt.
+Nicht nach Datum, Thema, Szenenzahl, Bildwelt oder bereits heruntergeladenen Assets fragen, solange die Repo-Suche diese Information selbst finden kann. Nur bei einer wirklich nicht auflösbaren Mehrdeutigkeit oder tatsächlich fehlenden externen Datei nachfragen.
 
 ## Abschlussmeldung
 

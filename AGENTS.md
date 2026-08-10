@@ -23,8 +23,10 @@ Bei „Mach ein neues Reel“, „Erstelle das nächste Reel“ oder sinngleiche
 7. Cover, 12–14 Szenen, Bildprompts, Sammeldatei, Untertitel-/Effektplanung, Caption und Quellen fertigstellen.
 8. `npm run export:prompts -- --dir "<reel-ordner>" --strict` ausführen.
 9. `validate:reel` und `check:content --strict` ausführen, soweit die Umgebung dies tatsächlich erlaubt.
-10. Erst bei fehlenden externen Bildern oder Voice-over anhalten.
-11. Sind Assets vorhanden, bis zur tatsächlich geprüften MP4 weiterarbeiten.
+10. Wenn Bilder oder Audio scheinbar fehlen, **nicht sofort anhalten**, sondern zuerst `npm run discover:assets -- --dir "<reel-ordner>"` bzw. den normalen `organize:assets`-Lauf verwenden und die definierten Suchorte prüfen.
+11. Gefundene ZIP-Dateien mit vollständiger `Bild 00 ... Bild XX`-Serie automatisch sicher entpacken und in `inbox/numbered-images/` übernehmen; danach weiterhin echte visuelle Zwei-Pass-QC durchführen.
+12. Erst wenn die Asset-Suche nachweislich nichts Passendes findet oder mehrere unklare Kandidaten nicht sicher unterschieden werden können, den Nutzer informieren.
+13. Sind alle Assets vorhanden und geprüft, ohne unnötige Pause bis zur tatsächlich geprüften MP4 weiterarbeiten.
 
 ---
 
@@ -91,6 +93,46 @@ Die erzeugte `all-image-prompts/all-image-prompts.txt` muss dem aktuellen Google
 - Erst nach dem letzten Bild alle fertigen Bilder gemeinsam in `00-bildprompts/00-ALLE-BILDER-HIER-REIN/` legen.
 
 Antigravity, Codex und andere Repo-Agenten erzeugen selbst keine Cover- oder Szenenbilder.
+
+---
+
+## Fehlende Assets suchen, ZIPs entpacken und danach weiterarbeiten
+
+Ein fehlendes Asset im Reel-Ordner bedeutet **nicht automatisch**, dass der Nutzer es noch nicht erstellt hat.
+
+Vor jeder Meldung „Bilder fehlen“ oder „Audio fehlt“ muss der Agent zuerst suchen:
+
+```bash
+npm run discover:assets -- --dir "<reel-ordner>"
+```
+
+Der normale Befehl
+
+```bash
+npm run organize:assets -- --dir "<reel-ordner>"
+```
+
+führt diese Discovery ebenfalls automatisch vor der Zuordnung aus.
+
+Standard-Suchorte:
+- aktueller Reel-Ordner
+- `~/Downloads`
+- `~/Desktop`
+
+Dabei gilt:
+
+1. Nach losen unterstützten Bildern und Audio-Dateien suchen.
+2. Besonders nach ZIP-Dateien suchen, weil Google Flow bzw. Downloads die komplette Bildserie als ZIP liefern können.
+3. Eine ZIP nur automatisch verwenden, wenn sie eine **vollständige und eindeutige** nummerierte Serie für dieses Reel enthält: `Bild 00` bis zur letzten Szene.
+4. Vor dem Entpacken Archivpfade auf unsichere `..`-/absolute Pfade prüfen.
+5. ZIP in einen temporären Ordner entpacken und die Bilder standardisiert nach `inbox/numbered-images/Bild XX.<ext>` übernehmen.
+6. Bereits vorhandene Bildnummern nicht überschreiben und keine doppelten Nummern erzeugen.
+7. Auch nach einer erfolgreichen ZIP-Erkennung bleibt die Nummerierung nur Routing-Hilfe. Jedes Bild muss weiterhin tatsächlich visuell geprüft werden.
+8. Bei Audio darf nur ein eindeutig plausibler einzelner Kandidat automatisch bereitgestellt werden. Mehrere/unklare Audio-Kandidaten müssen geprüft werden; niemals raten.
+9. Wenn passende Assets gefunden und geprüft sind, automatisch mit Zuordnung, Audio-Pacing, Sync, Finalisierung und Render fortfahren.
+10. Erst wenn die echte Suche nichts Passendes findet oder eine sichere Entscheidung unmöglich ist, den Nutzer um Hilfe bitten.
+
+Die Suchdiagnose wird unter `inbox/asset-discovery.json` dokumentiert.
 
 ---
 

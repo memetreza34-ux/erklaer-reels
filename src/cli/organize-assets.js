@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { applyAssetMap, buildAssetInventory } from '../core/asset-ingest.js';
+import { discoverExternalAssets } from '../core/external-asset-discovery.js';
 import { prepareNumberedImageAssignments } from '../core/numbered-image-import.js';
 
 function getArgument(name) {
@@ -30,6 +31,28 @@ async function main() {
     console.log(`Cover: ${report.summary.coverReady ? 'ready' : 'missing'}`);
     console.log(`Skipped: ${report.skipped.length}`);
     return;
+  }
+
+  const discovery = await discoverExternalAssets(reelDirectory);
+  if (discovery.imageDiscovery.importedFrom) {
+    console.log(`External images discovered: ${discovery.imageDiscovery.importedFrom.type}`);
+    console.log(`Source: ${discovery.imageDiscovery.importedFrom.path}`);
+    console.log(`Numbered images staged: ${discovery.imageDiscovery.copiedFiles.length}`);
+  } else if (discovery.imageDiscovery.ambiguousCompleteZips?.length > 0) {
+    console.log(`Multiple complete ZIP candidates found: ${discovery.imageDiscovery.ambiguousCompleteZips.length}`);
+    for (const candidate of discovery.imageDiscovery.ambiguousCompleteZips) console.log(`- ${candidate}`);
+    console.log('Agent must inspect the candidates and rerun discover:assets with --zip <verified-candidate>.');
+  } else if (discovery.imageDiscovery.ambiguousLooseSets?.length > 0) {
+    console.log(`Multiple complete loose image sets found: ${discovery.imageDiscovery.ambiguousLooseSets.length}`);
+    for (const candidate of discovery.imageDiscovery.ambiguousLooseSets) console.log(`- ${candidate}`);
+  } else if (!discovery.imageDiscovery.alreadyComplete) {
+    console.log('No complete external numbered image set found after searching reel folder, Downloads and Desktop.');
+  }
+
+  if (discovery.audioDiscovery?.staged) {
+    console.log(`External audio staged: ${discovery.audioDiscovery.staged.source}`);
+  } else if (discovery.audioDiscovery?.candidates?.length > 0) {
+    console.log(`Audio candidates found for review: ${discovery.audioDiscovery.candidates.length}`);
   }
 
   const numbered = await prepareNumberedImageAssignments(reelDirectory, {
