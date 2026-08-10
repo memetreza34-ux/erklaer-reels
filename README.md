@@ -4,6 +4,12 @@ Produktionspipeline für visuelle Erklär-Reels zu Politik, Gesellschaft, Lände
 
 > Warum Menschen, Länder und Gesellschaften so funktionieren.
 
+## Verbindliche aktuelle Regeln
+
+**`CURRENT_WORKFLOW.md` ist die Single Source of Truth für den aktuellen Produktionsablauf.**
+
+Neue Chats, Codex, Antigravity und andere Repo-Agenten sollen diese Datei zuerst lesen. Bei einem Widerspruch mit älteren Dokumenten oder historischen Reel-Dateien gilt die Prioritätsreihenfolge aus `CURRENT_WORKFLOW.md`.
+
 ## Produktionsstandard
 
 - 55–60 Sekunden Voice-over
@@ -12,126 +18,98 @@ Produktionspipeline für visuelle Erklär-Reels zu Politik, Gesellschaft, Lände
 - genau ein klarer Bildmoment pro Szene
 - Bildwelt erst nach dem fertigen Script auswählen
 - starkes Ende über mindestens zwei Szenen
-- Schlussbild bleibt nach dem letzten Wort 0,7 Sekunden ohne neuen Untertitel stehen
+- Schlussbild 0,7 Sekunden nach dem letzten gesprochenen Wort halten
 - Voice-over exakt 1,10x mit erhaltener Tonhöhe
 - −16 LUFS und höchstens −1,5 dBTP
-- weiche weiße Untertitel `#F5F7FA` bei 58 % Bildhöhe
-- keine Wortmarkierung und keine schwarze Box
-- Untertitel müssen vor dem Rendern akustisch exakt synchronisiert sein
-- direkte harte Schnitte
-- natürliche Bildkomposition ohne künstliche Untertitelfläche
+- weiße Untertitel `#F5F7FA` bei 58 % Bildhöhe
+- keine Wortmarkierung/Karaoke-Animation und keine schwarze Box
+- ausschließlich harte Schnitte
+- keine Hintergrundmusik
 
-## Szenenrhythmus
+## Aktueller Bildworkflow mit Google Flow
 
-- Hook: 4,2–5,5 Sekunden
-- normale Szenen: 3,2–5,5 Sekunden
-- letzte Szene inklusive Schlussbild-Nachlauf: 4,0–6,5 Sekunden
-- kein Erklärmoment unter 3,2 Sekunden
-- Dauersprung zwischen benachbarten Szenen höchstens 2,5 Sekunden
-- Untertitel enden mit dem Voice-over und nicht erst nach dem ruhigen Schlussbild
+Antigravity/Codex erstellen Script, Cover-Prompt, Szenenprompts und die Sammeldatei, **aber keine Bilder**.
 
-Die Grenzwerte stehen in `config/production-quality-gates.json` und werden in der strengen Timeline-Prüfung kontrolliert.
-
-## Bildwelten
-
-Erst das Script fertigstellen, danach die passendste Hauptwelt wählen. Innerhalb eines Reels bleibt sie konsistent.
-
-Bei `round-country-characters` bestehen Figuren vollständig aus runden Kugelkörpern mit einfachen weißen Augen und höchstens kleinen Armen und Beinen. Karten, Landschaften und Gegenstände dürfen vorkommen, behalten aber dieselben Konturen, Farben und dieselbe Bildsprache.
-
-## Deutscher Text im Bild
-
-- bevorzugt in ungefähr 55–85 % der passenden Szenen
-- meistens 1–5 Wörter; ein einzelnes Wort reicht
-- klein, mittel oder groß je nach Motiv
-- exakter Wortlaut in `scene.imageText` und im englischen Prompt
-- keine wortgleiche Wiederholung durch Untertitel
-- kein englischer sichtbarer Text, keine Fantasiewörter und keine langen Textblöcke
-
-## Sichere Bildzuordnung
-
-Bilder werden nicht nach Upload-Reihenfolge, Dateiname, Nummer oder Erstellungszeit zugeordnet.
-
-### Erster Durchgang
-
-1. Bild öffnen und den Dateinamen ignorieren.
-2. Sichtbaren Inhalt in `visibleSummary` beschreiben.
-3. Mit `narration`, `visualIdea`, `imageText` und `imagePrompt` vergleichen.
-4. Konkrete `reason` mit sichtbaren Objekten und Handlungen eintragen.
-
-### Zweiter Durchgang
-
-1. Gewählte Szene gegen vorherige und nächste Szene prüfen.
-2. `confirmedTarget` und `confirmedSceneOrder` exakt bestätigen.
-3. Erst danach `sceneOrderConfirmed` und `secondPassConfirmed` setzen.
-4. Unter 0,90 Konfidenz nicht raten, sondern unmatched lassen.
-
-```bash
-npm run organize:assets -- --dir "PFAD-ZUM-REEL"
-# inbox/asset-map.json vollständig ausfüllen
-npm run organize:assets -- --dir "PFAD-ZUM-REEL" --apply
-```
-
-Pflichtberichte:
+Der Nutzer kopiert einmal die komplette Datei
 
 ```text
-review/scene-asset-verification.json
-review/visual-inspection.json
-review/visual-quality-report.json
+all-image-prompts/all-image-prompts.txt
 ```
 
-Jede Szene braucht eine sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung, bestätigte Reihenfolge, passende Hauptbildwelt und exakt richtigen deutschen Bildtext.
+in Google Flow und sendet sie ab.
 
-## Untertitel
+Danach arbeitet Google Flow autonom und streng seriell:
 
-- `position: center`
-- exakt 58 % Bildhöhe, leicht unterhalb der Mitte
-- weiches Weiß `#F5F7FA`
-- dunkle Kontur und Schatten
-- transparenter Hintergrund
-- 3–6 Wörter, höchstens zwei Zeilen
-- kein Wort-Highlight und keine Karaoke-Animation
-- echte Wortzeiten bleiben trotzdem verpflichtend, damit Cue-Start und Cue-Ende exakt zur Stimme passen
-
-## Audio und Timeline
-
-```bash
-npm run trim:pauses -- --dir "PFAD-ZUM-REEL" --speed 1.10
-npm run build:timeline -- --dir "PFAD-ZUM-REEL"
-npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
-npm run sync:words -- --dir "PFAD-ZUM-REEL"
-# production/codex-word-sync-task.md akustisch vollständig bearbeiten
-npm run sync:words -- --dir "PFAD-ZUM-REEL" --apply --strict
+```text
+Bild 00 erzeugen
+→ vollständig warten
+→ sofort Bild 00.png nennen
+→ prüfen
+→ automatisch Bild 01 starten
+→ vollständig warten
+→ sofort Bild 01.png nennen
+→ ...
+→ bis zum letzten Bild
 ```
 
-Die Verarbeitung startet immer von der ursprünglichen Voice-over-Datei. Pausen werden gestrafft, das Audio auf exakt 1,10x beschleunigt, die Tonhöhe erhalten und die Lautheit normalisiert. Die Timeline hängt automatisch 0,7 Sekunden ruhiges Schlussbild an. Geschätzte Untertitelzeiten dürfen nicht in den finalen Render gelangen.
+Dabei gilt:
+- nie mehrere Bilder gleichzeitig
+- keine Batch-/Queue-Verarbeitung
+- nach einem Bild kein neues `Go`, `Weiter` oder `OK` vom Nutzer verlangen
+- `Bild 00` ist Cover, sichtbare Hook und Style-Master für alle Szenen
+- erst nach dem letzten Bild alle fertigen Bilder gemeinsam in den Sammelordner legen
+
+Gemeinsamer sichtbarer Ordner:
+
+```text
+00-bildprompts/00-ALLE-BILDER-HIER-REIN/
+```
+
+Technisches Ziel:
+
+```text
+inbox/numbered-images/
+```
+
+Bevorzugte Benennung:
+
+```text
+Bild 00.png = Cover
+Bild 01.png = Szene 1
+Bild 02.png = Szene 2
+...
+```
+
+Die Nummerierung dient beim Import nur als Routing-Hilfe. Die finale Zuordnung wird immer visuell geprüft.
 
 ## Neues Reel
 
+Bei „Mach ein neues Reel“ oder sinngleichen Aufträgen gilt der autonome Ablauf aus `CURRENT_WORKFLOW.md`, `AGENTS.md` und `docs/autonomous-reel.md`.
+
 ```bash
+npm run next:slot -- --json
 npm run create:reel -- \
-  --title "Was ist Demokratie?" \
+  --title "TITEL" \
   --script-file input/script.txt \
   --next-free \
   --scenes 13
-```
-
-Danach:
-
-```bash
 npm run export:prompts -- --dir "PFAD-ZUM-REEL" --strict
 npm run validate:reel -- --dir "PFAD-ZUM-REEL"
 npm run check:content -- --dir "PFAD-ZUM-REEL" --strict
 ```
 
-## Ordnerstruktur
+Ein normaler neuer Reel-Auftrag verändert keine globalen Produktionsregeln.
+
+## Sichtbare Ordnerstruktur
 
 ```text
 reel-01_thema/
 ├── 00-bildprompts/
+│   ├── 00-ALLE-BILDER-HIER-REIN/
 │   ├── 00-cover/
 │   ├── 01-scene-01/
+│   ├── 02-scene-02/
 │   ├── ...
-│   ├── 13-scene-13/
 │   └── 99-alle-bildprompts.txt
 ├── 01-voice-script/
 ├── 02-audio/
@@ -140,20 +118,50 @@ reel-01_thema/
 └── 99-technik/
 ```
 
-## Prüfung und Render
+Technisch bleibt die Originalstruktur (`cover/`, `scenes/`, `all-image-prompts/`, `inbox/`, `review/` usw.) erhalten. Die sichtbare Finder-Struktur arbeitet mit Verknüpfungen.
+
+## Sichere Bildzuordnung
+
+Die Dateinummer darf das vorgeschlagene Ziel vorsortieren, aber **niemals allein die finale Zuordnung bestätigen**.
+
+Vor `--apply` jedes Bild tatsächlich öffnen und prüfen gegen:
+- `narration`
+- `audioCue`
+- `visualIdea`
+- `imageText`
+- `imagePrompt`
+
+Danach gegen vorherige und nächste Szene prüfen. Unter 0,90 Konfidenz nicht raten.
 
 ```bash
+npm run organize:assets -- --dir "PFAD-ZUM-REEL"
+# inbox/asset-map.json visuell vollständig prüfen
+a npm run organize:assets -- --dir "PFAD-ZUM-REEL" --apply
+```
+
+## Audio, Synchronisierung und Render
+
+```bash
+npm run trim:pauses -- --dir "PFAD-ZUM-REEL" --speed 1.10
+npm run build:timeline -- --dir "PFAD-ZUM-REEL"
+npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
+npm run sync:words -- --dir "PFAD-ZUM-REEL"
+# echte akustische Wortprüfung durchführen
+npm run sync:words -- --dir "PFAD-ZUM-REEL" --apply --strict
 npm run check:visuals -- --dir "PFAD-ZUM-REEL" --strict
 npm run finalize:reel -- --dir "PFAD-ZUM-REEL" --strict
 npm run validate:render -- --dir "PFAD-ZUM-REEL"
 npm run render:reel -- --dir "PFAD-ZUM-REEL"
 ```
 
-Die Freigabe blockiert falsche Szenenzuordnungen, fehlende zweite Bildprüfung, unausgeglichene Szenendauern, ein abruptes Ende, altes 1,05x-Audio, fehlende Lautheitsnormalisierung, geschätzte oder unbestätigte Untertitelzeiten, falsche Untertitelwerte und nicht geprüfte Bilder.
+Keine geplante oder nicht ausgeführte Stufe als bestanden ausgeben.
 
 ## Voraussetzungen
 
 - Node.js 20 oder neuer
 - FFmpeg und optional `ffprobe`
 - Remotion-Pakete in identischer Version
-- aktuelle Remotion-Lizenzbedingungen vor geschäftlicher Nutzung prüfen
+
+## Bekannter Infrastrukturpunkt
+
+Issue #19 (`package-lock.json` erzeugen und CI auf `npm ci` umstellen) bleibt offen. Keine Lockdatei manuell erfinden und keine nicht ausgeführten Tests als bestanden melden.
