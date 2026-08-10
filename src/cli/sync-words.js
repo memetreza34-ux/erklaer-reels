@@ -5,6 +5,7 @@ import path from 'node:path';
 
 import { verifyAudioPacingFileBinding } from '../core/audio-pacing-file-guard.js';
 import { applyCodexWordSync, prepareCodexWordSync } from '../core/codex-word-sync.js';
+import { buildMasterTimeline } from '../core/timeline.js';
 import {
   invalidateStaleWordSyncWorkbench,
   stampAppliedWordSyncAudioBinding,
@@ -134,6 +135,7 @@ async function main() {
 
   if (!validateOnly && completeCoverage) {
     await enforceSpeakerSyncedHighlight(reelDirectory);
+    await buildMasterTimeline(reelDirectory, { strict: false });
     await stampAppliedWordSyncAudioBinding(reelDirectory, binding.audioFingerprintSha256 ?? null);
   }
 
