@@ -9,13 +9,14 @@ function getArgument(name) {
 
 async function main() {
   const reelDirectory = getArgument('--dir');
+  const preferredZipPath = getArgument('--zip');
   if (!reelDirectory) {
-    console.log('Usage: npm run discover:assets -- --dir <reel-directory>');
+    console.log('Usage: npm run discover:assets -- --dir <reel-directory> [--zip <geprüfte-zip>]');
     process.exitCode = 1;
     return;
   }
 
-  const report = await discoverExternalAssets(reelDirectory);
+  const report = await discoverExternalAssets(reelDirectory, { preferredZipPath });
   console.log(`Scanned files: ${report.scannedFiles}`);
   console.log(`Search roots: ${report.searchRoots.join(', ')}`);
 
@@ -24,6 +25,13 @@ async function main() {
   } else if (report.imageDiscovery.importedFrom) {
     console.log(`Images imported from ${report.imageDiscovery.importedFrom.type}: ${report.imageDiscovery.importedFrom.path}`);
     console.log(`Files staged: ${report.imageDiscovery.copiedFiles.length}`);
+  } else if (report.imageDiscovery.ambiguousCompleteZips?.length > 0) {
+    console.log(`Multiple complete ZIP candidates require agent review: ${report.imageDiscovery.ambiguousCompleteZips.length}`);
+    for (const candidate of report.imageDiscovery.ambiguousCompleteZips) console.log(`- ${candidate}`);
+    console.log('After content review, rerun with --zip <verified-candidate>. Do not ask the user unless the files cannot be distinguished safely.');
+  } else if (report.imageDiscovery.ambiguousLooseSets?.length > 0) {
+    console.log(`Multiple complete loose image sets require agent review: ${report.imageDiscovery.ambiguousLooseSets.length}`);
+    for (const candidate of report.imageDiscovery.ambiguousLooseSets) console.log(`- ${candidate}`);
   } else {
     console.log('Images: no complete numbered set found.');
   }
