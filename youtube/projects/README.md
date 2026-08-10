@@ -1,6 +1,6 @@
 # YouTube-Projekte
 
-Hier liegt später **jedes YouTube-Langvideo in einem eigenen Projektordner**.
+Hier liegt **jedes YouTube-Langvideo in einem eigenen Projektordner**.
 
 Bevorzugte Benennung:
 
