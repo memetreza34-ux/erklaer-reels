@@ -29,7 +29,7 @@ test('teilt bestätigte Wortzeiten in kurze Untertitelblöcke', () => {
   assert.equal(chunks.every((chunk) => chunk.length <= 6), true);
 });
 
-test('Codex-Wort-Sync übernimmt tiefe Position, weißen Grundtext und braune Highlightfarbe', () => {
+test('Codex-Wort-Sync übernimmt 58 Prozent, weißen Grundtext und braunes aktives Sprecherwort', () => {
   const words = [
     { text: 'Warum', startSeconds: 0.1, endSeconds: 0.4, confidence: 0.98, reviewed: true },
     { text: 'dauert', startSeconds: 0.45, endSeconds: 0.75, confidence: 0.97, reviewed: true },
@@ -43,13 +43,16 @@ test('Codex-Wort-Sync übernimmt tiefe Position, weißen Grundtext und braune Hi
   assert.equal(result.cues[0].position, 'center');
   assert.equal(result.cues[0].verticalPositionPercent, 58);
   assert.equal(result.cues[0].textColor, '#F5F7FA');
+  assert.equal(result.cues[0].highlightCurrentWord, true);
   assert.equal(result.cues[0].highlightColor, '#B7794A');
+  assert.equal(result.cues[0].speakerSyncedWordHighlight, true);
   assert.equal(result.cues[0].timingStatus, 'codex-word-synced');
   assert.equal(result.cues[0].timingSource, 'codex-local-audio-review');
   assert.equal(result.cues[0].wordTimings.length, 5);
+  assert.equal(result.unassigned.length, 0);
 });
 
-test('strenge Prüfung akzeptiert vollständig bestätigte Wortzeiten', () => {
+test('strenge Prüfung akzeptiert nur 100 Prozent bestätigte Wortzeiten', () => {
   const words = tokenizeScript('Das ist ein Test.').map((word, index) => ({
     ...word,
     startSeconds: index * 0.35,
@@ -60,4 +63,19 @@ test('strenge Prüfung akzeptiert vollständig bestätigte Wortzeiten', () => {
   const result = validateCodexWorkbench({ audioDurationSeconds: 3, scriptTextHash: null, words }, { strict: true });
   assert.equal(result.passed, true);
   assert.equal(result.coverage, 1);
+  assert.equal(result.timedWords, result.totalWords);
+});
+
+test('strenge Prüfung blockiert bereits ein einziges ungetimtes Wort', () => {
+  const words = tokenizeScript('Das ist ein Test.').map((word, index) => ({
+    ...word,
+    startSeconds: index === 2 ? null : index * 0.35,
+    endSeconds: index === 2 ? null : index * 0.35 + 0.25,
+    confidence: 0.95,
+    reviewed: true
+  }));
+  const result = validateCodexWorkbench({ audioDurationSeconds: 3, scriptTextHash: null, words }, { strict: true });
+  assert.equal(result.passed, false);
+  assert.ok(result.coverage < 1);
+  assert.ok(result.checks.some((check) => check.id === 'timing-coverage' && !check.passed));
 });
