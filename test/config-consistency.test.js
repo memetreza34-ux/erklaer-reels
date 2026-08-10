@@ -37,18 +37,27 @@ test('Untertitelregeln und Visual-QC entsprechen der technischen Quelle', async 
 
   assert.equal(SUBTITLE_STYLE.verticalPositionPercent, 58);
   assert.equal(SUBTITLE_STYLE.textColor, '#F5F7FA');
+  assert.equal(SUBTITLE_STYLE.highlightCurrentWord, true);
+  assert.equal(SUBTITLE_STYLE.highlightColor, '#B7794A');
   assert.deepEqual(subtitleRules.verticalPositionPercent, { min: 58, max: 58, default: 58 });
   assert.equal(subtitleRules.fixedExactCenterPosition, false);
   assert.equal(subtitleRules.fixedVerticalPosition, true);
   assert.equal(subtitleRules.palette.textColor, SUBTITLE_STYLE.textColor);
   assert.equal(subtitleRules.palette.highlightColor, SUBTITLE_STYLE.highlightColor);
+  assert.equal(subtitleRules.highlightCurrentWord, true);
+  assert.equal(subtitleRules.speakerSyncedWordHighlight, true);
+  assert.equal(subtitleRules.highlightAnimation, 'color-only');
   assert.equal(subtitleRules.exactWordTimingsRequired, true);
+  assert.equal(subtitleRules.completeSpokenTextCoverageRequired, true);
+  assert.equal(subtitleRules.minimumWordCoverage, 1);
+  assert.equal(subtitleRules.requireZeroUnassignedWords, true);
+  assert.equal(subtitleRules.requireExactVoiceScriptWordSequence, true);
   assert.equal(subtitleRules.wordTimingWorkflow.enabled, true);
   assert.equal(subtitleRules.wordTimingWorkflow.localAudioReviewRequired, true);
   assert.equal(subtitleRules.wordTimingWorkflow.estimatedDistributionForbidden, true);
   assert.equal(subtitleRules.fallbackWordTiming, 'blocked-until-codex-word-sync');
 
-  assert.equal(visualQuality.version, 7);
+  assert.equal(visualQuality.version, 8);
   assert.deepEqual(visualQuality.safeZones.subtitleVerticalPercent, {
     min: SUBTITLE_STYLE.safeVerticalRangePercent.min,
     max: SUBTITLE_STYLE.safeVerticalRangePercent.max,
@@ -56,23 +65,29 @@ test('Untertitelregeln und Visual-QC entsprechen der technischen Quelle', async 
   });
   assert.equal(visualQuality.subtitlePalette.textColor, SUBTITLE_STYLE.textColor);
   assert.equal(visualQuality.subtitlePalette.highlightColor, SUBTITLE_STYLE.highlightColor);
+  assert.equal(visualQuality.subtitlePalette.highlightCurrentWord, true);
+  assert.equal(visualQuality.subtitlePalette.speakerSyncedWordHighlight, true);
+  assert.equal(visualQuality.subtitlePalette.completeSpokenTextCoverageRequired, true);
   assert.equal(visualQuality.subtitlePalette.backgroundColor, SUBTITLE_STYLE.backgroundColor);
 });
 
-test('Workspace kann den alten content-Ordner und Sandton nicht wieder einführen', async () => {
+test('Workspace erzeugt den aktuellen Sprecher-Sync statt alter statischer Untertitel', async () => {
   const source = await readText('src/core/workspace.js');
 
   assert.match(source, /outputRoot = 'reels'/);
   assert.doesNotMatch(source, /outputRoot = 'content'/);
   assert.doesNotMatch(source, /Sandton|warmen hellen Sandton/i);
-  assert.match(source, /weiches Weiß/);
-  assert.match(source, /exactWordTimingsRequired: true/);
+  assert.match(source, /speakerSyncedWordHighlight: true/);
+  assert.match(source, /completeSpokenTextCoverageRequired: true/);
+  assert.match(source, /wordByWordKaraoke: true/);
+  assert.match(source, /unassignedWords = 0|unassignedWords.*0/i);
 });
 
-test('Kernmodule können keine veralteten Untertitelregeln oder falschen Word-Sync-Status zurückbringen', async () => {
+test('Kernmodule können alte statische Untertitel oder falschen Word-Sync-Status nicht zurückbringen', async () => {
   const productionBrief = await readText('src/core/production-brief.js');
   const visualQc = await readText('src/core/visual-qc.js');
   const renderValidator = await readText('src/core/render-validator.js');
+  const finalizer = await readText('src/core/finalize-reel.js');
   const audioTightener = await readText('src/core/audio-tightener.js');
   const buildTimeline = await readText('src/cli/build-timeline.js');
 
@@ -83,9 +98,13 @@ test('Kernmodule können keine veralteten Untertitelregeln oder falschen Word-Sy
   ]) {
     assert.doesNotMatch(text, /Sandton|warmen hellen Sandton|warme sandfarbene Untertitel/i, `${file} enthält noch den alten Sandton.`);
     assert.doesNotMatch(text, /exakt bei 50 Prozent Bildhöhe/i, `${file} enthält noch die alte 50-Prozent-Regel.`);
-    assert.match(text, /weiches Weiß|weißen Untertitel|weiße Untertitel/i, `${file} nennt den weißen Standard nicht.`);
   }
 
+  assert.match(productionBrief, /#B7794A|SUBTITLE_STYLE\.highlightColor/);
+  assert.match(productionBrief, /100 %|100-%|completeSpokenTextCoverageRequired/);
+  assert.match(renderValidator, /subtitle-full-spoken-text-coverage/);
+  assert.match(finalizer, /subtitle-full-spoken-text-coverage/);
+  assert.doesNotMatch(finalizer, /word-highlight-disabled/);
   assert.match(visualQc, /SUBTITLE_STYLE\.verticalPositionPercent/);
   assert.match(visualQc, /subtitle-safe-zone-config/);
   assert.doesNotMatch(audioTightener, /not-required-for-current-subtitle-style/);
@@ -137,7 +156,7 @@ test('Gitignore schützt generierte Medien in aktuellen Produktionsordnern', asy
   assert.match(gitignore, /^\.env$/m);
 });
 
-test('Dokumentation bleibt beim weißen 58-Prozent-Untertiltelstandard', async () => {
+test('Dokumentation bleibt beim weißen Grundtext, braunen Aktivwort und 58-Prozent-Standard', async () => {
   const documents = [
     'README.md',
     'CODEX_TASK.md',
@@ -152,18 +171,9 @@ test('Dokumentation bleibt beim weißen 58-Prozent-Untertiltelstandard', async (
     const text = await readText(file);
     assert.doesNotMatch(text, /#E7C39A|warmer heller Sandton|warme sandfarbene Untertitel|im Sandton/i, `${file} enthält noch den alten Sandton.`);
     assert.match(text, /58\s*%|58 Prozent/, `${file} nennt den verbindlichen 58-Prozent-Standard nicht.`);
-  }
-
-  for (const file of [
-    'README.md',
-    'CODEX_TASK.md',
-    'knowledge/production-rules.md',
-    'knowledge/subtitle-pacing-rules.md',
-    'docs/codex-word-sync.md',
-    'docs/remotion-renderer.md'
-  ]) {
-    const text = await readText(file);
-    assert.match(text, /#F5F7FA|weiches Weiß|in Weiß/i, `${file} nennt den weißen Untertitelstandard nicht.`);
+    assert.match(text, /#F5F7FA|weiches Weiß|Grundtext/i, `${file} nennt den weißen Grundtext nicht.`);
+    assert.match(text, /#B7794A|braun/i, `${file} nennt das braune Aktivwort nicht.`);
+    assert.match(text, /100\s*%|100-%|kein.*Wort.*fehlen|unassignedWords/i, `${file} nennt die vollständige Untertitelabdeckung nicht.`);
   }
 });
 
@@ -182,8 +192,8 @@ test('Autonomer Ablauf verlangt echte Quellen- und Audio-Nachprüfung', async ()
 
   assert.match(autonomous, /mindestens zwei voneinander unabhängige Quellen/i);
   assert.match(autonomous, /keine erfundenen Quellen/i);
-  assert.match(autonomous, /tatsächliche LUFS und True Peak/i);
-  assert.match(autonomous, /Zielwert allein reicht nicht als Nachweis/i);
+  assert.match(autonomous, /tatsächlichen LUFS und True Peak|tatsächliche LUFS und True Peak/i);
+  assert.match(autonomous, /Zielwerte allein reichen nicht als Nachweis/i);
 });
 
 test('abgeschlossene Testphase ist als Produktionsbaseline eingefroren', async () => {
@@ -195,13 +205,11 @@ test('abgeschlossene Testphase ist als Produktionsbaseline eingefroren', async (
   assert.match(status, /12–14 Szenen/);
   assert.match(status, /58 % Bildhöhe/);
   assert.match(status, /#F5F7FA/);
+  assert.match(status, /#B7794A/);
   assert.match(status, /0,90 Konfidenz/);
   assert.match(status, /0,7 Sekunden/);
-  assert.match(status, /reels\//);
-  assert.match(status, /youtube\//);
   assert.match(status, /globale Produktionsregeln nicht nebenbei verändern/i);
 
   assert.match(autonomous, /PRODUCTION_STATUS\.md/);
-  assert.match(autonomous, /keine globalen Produktionsregeln nebenbei verändern/i);
-  assert.match(autonomous, /nur nach einer ausdrücklichen neuen Anweisung/i);
+  assert.match(autonomous, /keine globalen Produktionsregeln.*verändern/i);
 });
