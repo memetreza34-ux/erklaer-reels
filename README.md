@@ -136,7 +136,7 @@ Danach gegen vorherige und nächste Szene prüfen. Unter 0,90 Konfidenz nicht ra
 ```bash
 npm run organize:assets -- --dir "PFAD-ZUM-REEL"
 # inbox/asset-map.json visuell vollständig prüfen
-a npm run organize:assets -- --dir "PFAD-ZUM-REEL" --apply
+npm run organize:assets -- --dir "PFAD-ZUM-REEL" --apply
 ```
 
 ## Audio, Synchronisierung und Render
