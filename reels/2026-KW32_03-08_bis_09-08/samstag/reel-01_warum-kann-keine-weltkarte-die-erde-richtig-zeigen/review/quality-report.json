@@ -1,0 +1,10 @@
+{
+  "passed": false,
+  "checks": [
+    {"name":"script-word-count","status":"manually-checked","value":171,"required":"155-175"},
+    {"name":"scene-count","status":"manually-checked","value":13,"required":"12-14"},
+    {"name":"target-voice-duration","status":"manually-checked","value":57.3,"required":"55-60"},
+    {"name":"source-links","status":"prepared-not-cli-validated","value":3}
+  ],
+  "notes": ["CLI-Validator und npm tests wurden nicht ausgeführt.", "Externe Bilder und Voice-over fehlen erwartungsgemäß."]
+}

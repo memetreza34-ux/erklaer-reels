@@ -1,0 +1,7 @@
+Eine Weltkarte wirkt objektiv – aber jede flache Karte muss die gekrümmte Erde irgendwo verzerren.
+
+Je nach Kartenprojektion verändern sich Fläche, Form, Entfernung oder Richtung unterschiedlich stark. Deshalb kann die Mercator-Projektion für Navigation praktisch sein und gleichzeitig Länder nahe den Polen viel zu groß wirken lassen.
+
+Die entscheidende Frage ist also nicht: „Welche Weltkarte ist perfekt?“ Sondern: **Welche Verzerrung passt zum Zweck der Karte?**
+
+#Geografie #Weltkarte #Mercator #Kartenprojektion #EinfachErklärt

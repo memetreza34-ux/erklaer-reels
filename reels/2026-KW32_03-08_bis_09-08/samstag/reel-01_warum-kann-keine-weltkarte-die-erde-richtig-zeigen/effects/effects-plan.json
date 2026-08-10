@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "enabled": true,
+  "timingStatus": "estimated-until-audio-arrives",
+  "voiceoverPriority": true,
+  "backgroundMusic": {"enabled": false},
+  "defaults": {"transition": "cut", "cameraMotion": "none", "soundEffectVolume": 0.2, "maximumSoundEffectsPerScene": 2},
+  "notes": "Nur harte Schnitte. Bewegung sparsam; Zooms 2–6 %, kleine Schwenks. Timing nach echtem Audio erneut prüfen."
+}
