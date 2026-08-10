@@ -1,4 +1,4 @@
-import { access, copyFile, mkdir, mkdtemp, readdir, rm, stat, writeFile } from 'node:fs/promises';
+import { access, copyFile, mkdir, mkdtemp, readdir, readFile, rm, stat, writeFile } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { execFile } from 'node:child_process';
@@ -28,7 +28,7 @@ async function exists(filePath) {
 async function readJson(filePath, fallback = null) {
   if (!(await exists(filePath))) return fallback;
   try {
-    return JSON.parse(await import('node:fs/promises').then(({ readFile }) => readFile(filePath, 'utf8')));
+    return JSON.parse(await readFile(filePath, 'utf8'));
   } catch {
     return fallback;
   }
@@ -55,7 +55,7 @@ async function walkLimited(directory, {
 
   for (const entry of entries) {
     if (files.length >= MAX_DISCOVERY_FILES) break;
-    if (entry.name.startsWith('.') && entry.name !== '.zip') continue;
+    if (entry.name.startsWith('.')) continue;
 
     const absolutePath = path.join(directory, entry.name);
     if (entry.isDirectory()) {
@@ -74,21 +74,20 @@ async function walkLimited(directory, {
       const fileStat = await stat(absolutePath);
       files.push({
         absolutePath,
-        directory,
         name: entry.name,
         extension: path.extname(entry.name).toLowerCase(),
         modifiedAtMs: fileStat.mtimeMs,
         size: fileStat.size
       });
     } catch {
-      // Datei kann zwischen Suche und stat verschwunden sein; dann einfach überspringen.
+      // Datei kann zwischen Suche und stat verschwunden sein.
     }
   }
 
   return files;
 }
 
-function uniqueExistingRoots(reelDirectory, searchRoots = null) {
+function uniqueRoots(reelDirectory, searchRoots = null) {
   const defaults = [
     path.resolve(reelDirectory),
     path.join(os.homedir(), 'Downloads'),
@@ -96,6 +95,10 @@ function uniqueExistingRoots(reelDirectory, searchRoots = null) {
   ];
   const roots = Array.isArray(searchRoots) && searchRoots.length > 0 ? searchRoots : defaults;
   return [...new Set(roots.map((entry) => path.resolve(entry)))];
+}
+
+function deduplicateFiles(files) {
+  return [...new Map(files.map((file) => [file.absolutePath, file])).values()];
 }
 
 function expectedNumbers(sceneIndex) {
@@ -177,7 +180,6 @@ async function inspectZipCandidate(file, expected) {
     duplicates: analysis.duplicates,
     numberedCount: [...analysis.grouped.values()].reduce((sum, value) => sum + value.length, 0),
     entries: listing.entries,
-    analysis,
     error: null
   };
 }
@@ -188,20 +190,32 @@ function newestCompleteCandidate(candidates) {
     .sort((left, right) => right.modifiedAtMs - left.modifiedAtMs)[0] ?? null;
 }
 
+async function existingNumbersInDrop(dropDirectory) {
+  if (!(await exists(dropDirectory))) return new Set();
+  const entries = await readdir(dropDirectory, { withFileTypes: true });
+  return new Set(
+    entries
+      .filter((entry) => entry.isFile())
+      .map((entry) => parseNumberedImageFileName(entry.name)?.number)
+      .filter((value) => Number.isInteger(value))
+  );
+}
+
 async function copyNumberedFiles(filesByNumber, expected, dropDirectory) {
   await mkdir(dropDirectory, { recursive: true });
+  const existingNumbers = await existingNumbersInDrop(dropDirectory);
   const copied = [];
 
   for (const number of expected) {
+    if (existingNumbers.has(number)) continue;
     const source = filesByNumber.get(number);
     if (!source) continue;
     const extension = path.extname(source).toLowerCase();
     const targetName = `Bild ${String(number).padStart(2, '0')}${extension}`;
     const targetPath = path.join(dropDirectory, targetName);
-    if (!(await exists(targetPath))) {
-      await copyFile(source, targetPath);
-      copied.push({ number, source, target: targetPath });
-    }
+    await copyFile(source, targetPath);
+    existingNumbers.add(number);
+    copied.push({ number, source, target: targetPath });
   }
 
   return copied;
@@ -233,7 +247,7 @@ async function extractNumberedZip(candidate, expected, dropDirectory) {
       filesByNumber.set(number, bucket[0]);
     }
 
-    return await copyNumberedFiles(filesByNumber, expected, dropDirectory);
+    return copyNumberedFiles(filesByNumber, expected, dropDirectory);
   } finally {
     await rm(temporaryDirectory, { recursive: true, force: true });
   }
@@ -244,17 +258,21 @@ function findCompleteLooseDirectory(files, expected) {
   for (const file of files) {
     const parsed = parseNumberedImageFileName(file.name);
     if (!parsed) continue;
-    const bucket = byDirectory.get(path.dirname(file.absolutePath)) ?? [];
+    const directory = path.dirname(file.absolutePath);
+    const bucket = byDirectory.get(directory) ?? [];
     bucket.push(file);
-    byDirectory.set(path.dirname(file.absolutePath), bucket);
+    byDirectory.set(directory, bucket);
   }
 
   const candidates = [];
   for (const [directory, entries] of byDirectory) {
     const analysis = analyzeNumberedNames(entries.map((entry) => entry.name), expected);
     if (!analysis.complete) continue;
-    const newest = Math.max(...entries.map((entry) => entry.modifiedAtMs));
-    candidates.push({ directory, entries, analysis, modifiedAtMs: newest });
+    candidates.push({
+      directory,
+      entries,
+      modifiedAtMs: Math.max(...entries.map((entry) => entry.modifiedAtMs))
+    });
   }
 
   return candidates.sort((left, right) => right.modifiedAtMs - left.modifiedAtMs)[0] ?? null;
@@ -275,10 +293,7 @@ function audioNameLooksIntentional(fileName) {
 }
 
 async function hasExistingAudio(reelDirectory) {
-  const directories = [
-    path.join(reelDirectory, 'audio'),
-    path.join(reelDirectory, 'inbox', 'audio')
-  ];
+  const directories = [path.join(reelDirectory, 'audio'), path.join(reelDirectory, 'inbox', 'audio')];
   for (const directory of directories) {
     if (!(await exists(directory))) continue;
     const entries = await readdir(directory, { withFileTypes: true });
@@ -326,13 +341,14 @@ export async function discoverExternalAssets(reelDirectory, {
 } = {}) {
   const sceneIndex = await readJson(path.join(reelDirectory, 'scenes', 'scene-index.json'), []);
   const expected = expectedNumbers(sceneIndex);
-  const roots = uniqueExistingRoots(reelDirectory, searchRoots);
-  const files = [];
+  const roots = uniqueRoots(reelDirectory, searchRoots);
+  const collectedFiles = [];
 
   for (const root of roots) {
-    await walkLimited(root, { maxDepth, files });
-    if (files.length >= MAX_DISCOVERY_FILES) break;
+    await walkLimited(root, { maxDepth, files: collectedFiles });
+    if (collectedFiles.length >= MAX_DISCOVERY_FILES) break;
   }
+  const files = deduplicateFiles(collectedFiles);
 
   const dropDirectory = getNumberedImageDropDirectory(reelDirectory);
   await mkdir(dropDirectory, { recursive: true });
@@ -366,9 +382,8 @@ export async function discoverExternalAssets(reelDirectory, {
   };
 
   if (!existingAnalysis.complete && expected.length > 0) {
-    const zipFiles = files.filter((file) => file.extension === ZIP_EXTENSION);
     const zipCandidates = [];
-    for (const file of zipFiles) {
+    for (const file of files.filter((entry) => entry.extension === ZIP_EXTENSION)) {
       zipCandidates.push(await inspectZipCandidate(file, expected));
     }
     report.imageDiscovery.zipCandidates = zipCandidates.map((candidate) => ({
@@ -383,22 +398,17 @@ export async function discoverExternalAssets(reelDirectory, {
 
     const completeZip = newestCompleteCandidate(zipCandidates);
     if (completeZip) {
-      const copied = await extractNumberedZip(completeZip, expected, dropDirectory);
-      report.imageDiscovery.importedFrom = {
-        type: 'zip',
-        path: completeZip.absolutePath
-      };
-      report.imageDiscovery.copiedFiles = copied;
+      report.imageDiscovery.copiedFiles = await extractNumberedZip(completeZip, expected, dropDirectory);
+      report.imageDiscovery.importedFrom = { type: 'zip', path: completeZip.absolutePath };
     } else {
       const looseCandidate = findCompleteLooseDirectory(files, expected);
       if (looseCandidate) {
-        const copied = await importLooseNumberedSet(looseCandidate, expected, dropDirectory);
+        report.imageDiscovery.copiedFiles = await importLooseNumberedSet(looseCandidate, expected, dropDirectory);
         report.imageDiscovery.importedFrom = {
           type: 'loose-numbered-files',
           path: looseCandidate.directory
         };
         report.imageDiscovery.looseCandidateDirectory = looseCandidate.directory;
-        report.imageDiscovery.copiedFiles = copied;
       }
     }
   }
