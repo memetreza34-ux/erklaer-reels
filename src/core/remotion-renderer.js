@@ -3,6 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { verifyAudioPacingFileBinding } from './audio-pacing-file-guard.js';
+import { ensureHumanReelView } from './human-reel-view.js';
 import { validateRendererInput } from './render-validator.js';
 import { verifyRequiredSourceQuality } from './source-quality-file-guard.js';
 import { verifyAppliedWordSyncAudioBinding } from './word-sync-audio-guard.js';
@@ -34,6 +35,12 @@ export async function renderReel(reelDirectory, {
   onProgress = null
 } = {}) {
   const startedAt = new Date().toISOString();
+
+  // Auch bei Reels, die direkt über GitHub/Agenten angelegt wurden, muss die
+  // sichtbare Nutzeransicht vor dem Render vorhanden sein. Dadurch ist die
+  // finale MP4 über 04-video/FERTIGES-VIDEO direkt neben Bildprompts, Audio
+  // und Caption erreichbar, während die technische Datei in output/ liegt.
+  await ensureHumanReelView(reelDirectory);
 
   const sourceGate = await verifyRequiredSourceQuality(reelDirectory);
   if (sourceGate.required && !sourceGate.passed) {
@@ -140,6 +147,7 @@ export async function renderReel(reelDirectory, {
     const status = await readJson(statusPath);
     status.render = 'complete';
     status.renderedFile = path.relative(reelDirectory, outputLocation).split(path.sep).join('/');
+    status.visibleRenderedFile = '04-video/FERTIGES-VIDEO';
     status.qualityControl = 'render-complete';
     await writeJson(statusPath, status);
 
