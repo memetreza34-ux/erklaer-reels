@@ -1,0 +1,409 @@
+import { access, copyFile, mkdir, mkdtemp, readdir, rm, stat, writeFile } from 'node:fs/promises';
+import os from 'node:os';
+import path from 'node:path';
+import { execFile } from 'node:child_process';
+import { promisify } from 'node:util';
+
+import {
+  getNumberedImageDropDirectory,
+  parseNumberedImageFileName
+} from './numbered-image-import.js';
+
+const execFileAsync = promisify(execFile);
+const AUDIO_EXTENSIONS = new Set(['.mp3', '.wav', '.m4a', '.aac', '.flac', '.ogg']);
+const ZIP_EXTENSION = '.zip';
+const DEFAULT_MAX_DEPTH = 2;
+const MAX_DISCOVERY_FILES = 2500;
+const RECENT_AUDIO_WINDOW_MS = 24 * 60 * 60 * 1000;
+
+async function exists(filePath) {
+  try {
+    await access(filePath);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+async function readJson(filePath, fallback = null) {
+  if (!(await exists(filePath))) return fallback;
+  try {
+    return JSON.parse(await import('node:fs/promises').then(({ readFile }) => readFile(filePath, 'utf8')));
+  } catch {
+    return fallback;
+  }
+}
+
+async function writeJson(filePath, value) {
+  await mkdir(path.dirname(filePath), { recursive: true });
+  await writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
+}
+
+async function walkLimited(directory, {
+  maxDepth = DEFAULT_MAX_DEPTH,
+  currentDepth = 0,
+  files = []
+} = {}) {
+  if (files.length >= MAX_DISCOVERY_FILES || !(await exists(directory))) return files;
+
+  let entries;
+  try {
+    entries = await readdir(directory, { withFileTypes: true });
+  } catch {
+    return files;
+  }
+
+  for (const entry of entries) {
+    if (files.length >= MAX_DISCOVERY_FILES) break;
+    if (entry.name.startsWith('.') && entry.name !== '.zip') continue;
+
+    const absolutePath = path.join(directory, entry.name);
+    if (entry.isDirectory()) {
+      if (currentDepth < maxDepth) {
+        await walkLimited(absolutePath, {
+          maxDepth,
+          currentDepth: currentDepth + 1,
+          files
+        });
+      }
+      continue;
+    }
+
+    if (!entry.isFile()) continue;
+    try {
+      const fileStat = await stat(absolutePath);
+      files.push({
+        absolutePath,
+        directory,
+        name: entry.name,
+        extension: path.extname(entry.name).toLowerCase(),
+        modifiedAtMs: fileStat.mtimeMs,
+        size: fileStat.size
+      });
+    } catch {
+      // Datei kann zwischen Suche und stat verschwunden sein; dann einfach überspringen.
+    }
+  }
+
+  return files;
+}
+
+function uniqueExistingRoots(reelDirectory, searchRoots = null) {
+  const defaults = [
+    path.resolve(reelDirectory),
+    path.join(os.homedir(), 'Downloads'),
+    path.join(os.homedir(), 'Desktop')
+  ];
+  const roots = Array.isArray(searchRoots) && searchRoots.length > 0 ? searchRoots : defaults;
+  return [...new Set(roots.map((entry) => path.resolve(entry)))];
+}
+
+function expectedNumbers(sceneIndex) {
+  const orders = sceneIndex
+    .map((scene) => Number(scene.order))
+    .filter((value) => Number.isInteger(value) && value > 0);
+  const lastScene = orders.length > 0 ? Math.max(...orders) : 0;
+  return Array.from({ length: lastScene + 1 }, (_, index) => index);
+}
+
+function analyzeNumberedNames(names, expected) {
+  const grouped = new Map();
+  for (const name of names) {
+    const parsed = parseNumberedImageFileName(path.basename(name));
+    if (!parsed) continue;
+    const bucket = grouped.get(parsed.number) ?? [];
+    bucket.push({ name, parsed });
+    grouped.set(parsed.number, bucket);
+  }
+
+  const missing = expected.filter((number) => !grouped.has(number));
+  const duplicates = expected
+    .filter((number) => (grouped.get(number)?.length ?? 0) > 1)
+    .map((number) => ({ number, count: grouped.get(number).length }));
+
+  return {
+    grouped,
+    missing,
+    duplicates,
+    complete: missing.length === 0 && duplicates.length === 0
+  };
+}
+
+function isSafeArchiveEntry(entry) {
+  const normalized = String(entry).replaceAll('\\', '/');
+  if (!normalized || normalized.startsWith('/') || /^[A-Za-z]:\//.test(normalized)) return false;
+  return !normalized.split('/').some((segment) => segment === '..');
+}
+
+async function listZipEntries(zipPath) {
+  try {
+    const { stdout } = await execFileAsync('unzip', ['-Z1', zipPath], {
+      maxBuffer: 10 * 1024 * 1024
+    });
+    const entries = stdout.split(/\r?\n/).map((entry) => entry.trim()).filter(Boolean);
+    if (entries.some((entry) => !isSafeArchiveEntry(entry))) {
+      return { supported: true, safe: false, entries: [], error: 'ZIP enthält unsichere Pfade.' };
+    }
+    return { supported: true, safe: true, entries, error: null };
+  } catch (error) {
+    if (error?.code === 'ENOENT') {
+      return { supported: false, safe: false, entries: [], error: 'Systemprogramm `unzip` ist nicht verfügbar.' };
+    }
+    return { supported: true, safe: false, entries: [], error: error.message };
+  }
+}
+
+async function inspectZipCandidate(file, expected) {
+  const listing = await listZipEntries(file.absolutePath);
+  if (!listing.supported || !listing.safe) {
+    return {
+      ...file,
+      kind: 'zip',
+      usable: false,
+      complete: false,
+      missing: expected,
+      duplicates: [],
+      error: listing.error
+    };
+  }
+
+  const analysis = analyzeNumberedNames(listing.entries, expected);
+  return {
+    ...file,
+    kind: 'zip',
+    usable: true,
+    complete: analysis.complete,
+    missing: analysis.missing,
+    duplicates: analysis.duplicates,
+    numberedCount: [...analysis.grouped.values()].reduce((sum, value) => sum + value.length, 0),
+    entries: listing.entries,
+    analysis,
+    error: null
+  };
+}
+
+function newestCompleteCandidate(candidates) {
+  return candidates
+    .filter((candidate) => candidate.usable && candidate.complete)
+    .sort((left, right) => right.modifiedAtMs - left.modifiedAtMs)[0] ?? null;
+}
+
+async function copyNumberedFiles(filesByNumber, expected, dropDirectory) {
+  await mkdir(dropDirectory, { recursive: true });
+  const copied = [];
+
+  for (const number of expected) {
+    const source = filesByNumber.get(number);
+    if (!source) continue;
+    const extension = path.extname(source).toLowerCase();
+    const targetName = `Bild ${String(number).padStart(2, '0')}${extension}`;
+    const targetPath = path.join(dropDirectory, targetName);
+    if (!(await exists(targetPath))) {
+      await copyFile(source, targetPath);
+      copied.push({ number, source, target: targetPath });
+    }
+  }
+
+  return copied;
+}
+
+async function extractNumberedZip(candidate, expected, dropDirectory) {
+  const temporaryDirectory = await mkdtemp(path.join(os.tmpdir(), 'erklaer-reels-zip-'));
+  try {
+    await execFileAsync('unzip', ['-qq', candidate.absolutePath, '-d', temporaryDirectory], {
+      maxBuffer: 10 * 1024 * 1024
+    });
+    const extracted = await walkLimited(temporaryDirectory, { maxDepth: 6 });
+    const grouped = new Map();
+
+    for (const file of extracted) {
+      const parsed = parseNumberedImageFileName(file.name);
+      if (!parsed || !expected.includes(parsed.number)) continue;
+      const bucket = grouped.get(parsed.number) ?? [];
+      bucket.push(file.absolutePath);
+      grouped.set(parsed.number, bucket);
+    }
+
+    const filesByNumber = new Map();
+    for (const number of expected) {
+      const bucket = grouped.get(number) ?? [];
+      if (bucket.length !== 1) {
+        throw new Error(`ZIP ist nach dem Entpacken nicht eindeutig für Bild ${String(number).padStart(2, '0')}.`);
+      }
+      filesByNumber.set(number, bucket[0]);
+    }
+
+    return await copyNumberedFiles(filesByNumber, expected, dropDirectory);
+  } finally {
+    await rm(temporaryDirectory, { recursive: true, force: true });
+  }
+}
+
+function findCompleteLooseDirectory(files, expected) {
+  const byDirectory = new Map();
+  for (const file of files) {
+    const parsed = parseNumberedImageFileName(file.name);
+    if (!parsed) continue;
+    const bucket = byDirectory.get(path.dirname(file.absolutePath)) ?? [];
+    bucket.push(file);
+    byDirectory.set(path.dirname(file.absolutePath), bucket);
+  }
+
+  const candidates = [];
+  for (const [directory, entries] of byDirectory) {
+    const analysis = analyzeNumberedNames(entries.map((entry) => entry.name), expected);
+    if (!analysis.complete) continue;
+    const newest = Math.max(...entries.map((entry) => entry.modifiedAtMs));
+    candidates.push({ directory, entries, analysis, modifiedAtMs: newest });
+  }
+
+  return candidates.sort((left, right) => right.modifiedAtMs - left.modifiedAtMs)[0] ?? null;
+}
+
+async function importLooseNumberedSet(candidate, expected, dropDirectory) {
+  const filesByNumber = new Map();
+  for (const file of candidate.entries) {
+    const parsed = parseNumberedImageFileName(file.name);
+    if (!parsed || !expected.includes(parsed.number)) continue;
+    filesByNumber.set(parsed.number, file.absolutePath);
+  }
+  return copyNumberedFiles(filesByNumber, expected, dropDirectory);
+}
+
+function audioNameLooksIntentional(fileName) {
+  return /(voice|voiceover|speech|sprecher|narration|erz[aä]hler|eleven|audio)/i.test(fileName);
+}
+
+async function hasExistingAudio(reelDirectory) {
+  const directories = [
+    path.join(reelDirectory, 'audio'),
+    path.join(reelDirectory, 'inbox', 'audio')
+  ];
+  for (const directory of directories) {
+    if (!(await exists(directory))) continue;
+    const entries = await readdir(directory, { withFileTypes: true });
+    if (entries.some((entry) => entry.isFile() && AUDIO_EXTENSIONS.has(path.extname(entry.name).toLowerCase()))) {
+      return true;
+    }
+  }
+  return false;
+}
+
+async function maybeStageAudio(reelDirectory, files) {
+  if (await hasExistingAudio(reelDirectory)) {
+    return { staged: null, candidates: [], reason: 'audio-already-present' };
+  }
+
+  const now = Date.now();
+  const candidates = files
+    .filter((file) => AUDIO_EXTENSIONS.has(file.extension))
+    .filter((file) => now - file.modifiedAtMs <= RECENT_AUDIO_WINDOW_MS)
+    .sort((left, right) => right.modifiedAtMs - left.modifiedAtMs);
+
+  const intentional = candidates.filter((candidate) => audioNameLooksIntentional(candidate.name));
+  if (intentional.length === 1) {
+    const targetDirectory = path.join(reelDirectory, 'inbox', 'audio');
+    await mkdir(targetDirectory, { recursive: true });
+    const targetPath = path.join(targetDirectory, intentional[0].name);
+    if (!(await exists(targetPath))) await copyFile(intentional[0].absolutePath, targetPath);
+    return {
+      staged: { source: intentional[0].absolutePath, target: targetPath },
+      candidates: candidates.map((candidate) => candidate.absolutePath),
+      reason: 'single-recent-intentional-audio-candidate'
+    };
+  }
+
+  return {
+    staged: null,
+    candidates: candidates.map((candidate) => candidate.absolutePath),
+    reason: candidates.length === 0 ? 'no-recent-audio-candidate' : 'audio-candidates-require-review'
+  };
+}
+
+export async function discoverExternalAssets(reelDirectory, {
+  searchRoots = null,
+  maxDepth = DEFAULT_MAX_DEPTH
+} = {}) {
+  const sceneIndex = await readJson(path.join(reelDirectory, 'scenes', 'scene-index.json'), []);
+  const expected = expectedNumbers(sceneIndex);
+  const roots = uniqueExistingRoots(reelDirectory, searchRoots);
+  const files = [];
+
+  for (const root of roots) {
+    await walkLimited(root, { maxDepth, files });
+    if (files.length >= MAX_DISCOVERY_FILES) break;
+  }
+
+  const dropDirectory = getNumberedImageDropDirectory(reelDirectory);
+  await mkdir(dropDirectory, { recursive: true });
+  const existingDropFiles = await readdir(dropDirectory, { withFileTypes: true });
+  const existingAnalysis = analyzeNumberedNames(
+    existingDropFiles.filter((entry) => entry.isFile()).map((entry) => entry.name),
+    expected
+  );
+
+  const report = {
+    version: 1,
+    createdAt: new Date().toISOString(),
+    reelDirectory: path.resolve(reelDirectory),
+    searchRoots: roots,
+    scannedFiles: files.length,
+    expectedImageNumbers: expected,
+    imageDiscovery: {
+      alreadyComplete: existingAnalysis.complete,
+      importedFrom: null,
+      copiedFiles: [],
+      zipCandidates: [],
+      looseCandidateDirectory: null
+    },
+    audioDiscovery: null,
+    instructions: [
+      'Fehlende externe Assets nicht sofort als endgültig fehlend melden: zuerst diese Discovery ausführen.',
+      'Eine ZIP wird nur automatisch verwendet, wenn sie eine vollständige und eindeutige nummerierte Bildserie enthält.',
+      'Entpackte Nummern sind nur Routing-Hilfe. Vor --apply bleibt die visuelle Zwei-Pass-QC vollständig Pflicht.',
+      'Bei mehreren oder unklaren Audio-Kandidaten nicht raten; Kandidaten prüfen.'
+    ]
+  };
+
+  if (!existingAnalysis.complete && expected.length > 0) {
+    const zipFiles = files.filter((file) => file.extension === ZIP_EXTENSION);
+    const zipCandidates = [];
+    for (const file of zipFiles) {
+      zipCandidates.push(await inspectZipCandidate(file, expected));
+    }
+    report.imageDiscovery.zipCandidates = zipCandidates.map((candidate) => ({
+      path: candidate.absolutePath,
+      modifiedAtMs: candidate.modifiedAtMs,
+      complete: candidate.complete,
+      usable: candidate.usable,
+      missing: candidate.missing,
+      duplicates: candidate.duplicates,
+      error: candidate.error
+    }));
+
+    const completeZip = newestCompleteCandidate(zipCandidates);
+    if (completeZip) {
+      const copied = await extractNumberedZip(completeZip, expected, dropDirectory);
+      report.imageDiscovery.importedFrom = {
+        type: 'zip',
+        path: completeZip.absolutePath
+      };
+      report.imageDiscovery.copiedFiles = copied;
+    } else {
+      const looseCandidate = findCompleteLooseDirectory(files, expected);
+      if (looseCandidate) {
+        const copied = await importLooseNumberedSet(looseCandidate, expected, dropDirectory);
+        report.imageDiscovery.importedFrom = {
+          type: 'loose-numbered-files',
+          path: looseCandidate.directory
+        };
+        report.imageDiscovery.looseCandidateDirectory = looseCandidate.directory;
+        report.imageDiscovery.copiedFiles = copied;
+      }
+    }
+  }
+
+  report.audioDiscovery = await maybeStageAudio(reelDirectory, files);
+  await writeJson(path.join(reelDirectory, 'inbox', 'asset-discovery.json'), report);
+  return report;
+}
