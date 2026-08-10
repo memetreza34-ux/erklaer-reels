@@ -6,6 +6,8 @@ Dieser Bereich ist die **eigenständige Produktionspipeline für YouTube-Langvid
 
 Für YouTube zuerst **`youtube/YOUTUBE_WORKFLOW.md`** lesen. Reel-spezifische Werte aus `CURRENT_WORKFLOW.md` wie 55–60 Sekunden, 13 Szenen oder Reel-Untertitelregeln gelten **nicht automatisch** für YouTube-Langvideos.
 
+Aktueller Startstandard: Neue YouTube-Langvideos zielen zunächst auf **ungefähr 5 bis 6 Minuten**. Die genaue Dauer darf innerhalb dieses Korridors natürlich variieren.
+
 ## Struktur
 
 ```text
@@ -31,4 +33,4 @@ youtube/
         └── 10-output/
 ```
 
-Neue Langvideos werden später unter `youtube/projects/` als eigener Projektordner angelegt. Skript, Recherche, Szenen, Prompts, Assets, Thumbnail, Audio, Schnitt, Upload-Daten und finales Video bleiben dadurch sauber getrennt.
+Neue Langvideos werden unter `youtube/projects/` als eigener Projektordner angelegt. Skript, Recherche, Szenen, Prompts, Assets, Thumbnail, Audio, Schnitt, Upload-Daten und finales Video bleiben dadurch sauber getrennt.
