@@ -184,10 +184,20 @@ async function inspectZipCandidate(file, expected) {
   };
 }
 
-function newestCompleteCandidate(candidates) {
-  return candidates
-    .filter((candidate) => candidate.usable && candidate.complete)
-    .sort((left, right) => right.modifiedAtMs - left.modifiedAtMs)[0] ?? null;
+async function candidateFromExplicitZip(zipPath, expected) {
+  const absolutePath = path.resolve(zipPath);
+  if (!(await exists(absolutePath))) throw new Error(`Angegebene ZIP nicht gefunden: ${absolutePath}`);
+  const fileStat = await stat(absolutePath);
+  if (!fileStat.isFile() || path.extname(absolutePath).toLowerCase() !== ZIP_EXTENSION) {
+    throw new Error(`Angegebener Pfad ist keine ZIP-Datei: ${absolutePath}`);
+  }
+  return inspectZipCandidate({
+    absolutePath,
+    name: path.basename(absolutePath),
+    extension: ZIP_EXTENSION,
+    modifiedAtMs: fileStat.mtimeMs,
+    size: fileStat.size
+  }, expected);
 }
 
 async function existingNumbersInDrop(dropDirectory) {
@@ -253,7 +263,7 @@ async function extractNumberedZip(candidate, expected, dropDirectory) {
   }
 }
 
-function findCompleteLooseDirectory(files, expected) {
+function completeLooseDirectories(files, expected) {
   const byDirectory = new Map();
   for (const file of files) {
     const parsed = parseNumberedImageFileName(file.name);
@@ -275,7 +285,7 @@ function findCompleteLooseDirectory(files, expected) {
     });
   }
 
-  return candidates.sort((left, right) => right.modifiedAtMs - left.modifiedAtMs)[0] ?? null;
+  return candidates.sort((left, right) => right.modifiedAtMs - left.modifiedAtMs);
 }
 
 async function importLooseNumberedSet(candidate, expected, dropDirectory) {
@@ -337,7 +347,8 @@ async function maybeStageAudio(reelDirectory, files) {
 
 export async function discoverExternalAssets(reelDirectory, {
   searchRoots = null,
-  maxDepth = DEFAULT_MAX_DEPTH
+  maxDepth = DEFAULT_MAX_DEPTH,
+  preferredZipPath = null
 } = {}) {
   const sceneIndex = await readJson(path.join(reelDirectory, 'scenes', 'scene-index.json'), []);
   const expected = expectedNumbers(sceneIndex);
@@ -359,7 +370,7 @@ export async function discoverExternalAssets(reelDirectory, {
   );
 
   const report = {
-    version: 1,
+    version: 2,
     createdAt: new Date().toISOString(),
     reelDirectory: path.resolve(reelDirectory),
     searchRoots: roots,
@@ -370,12 +381,15 @@ export async function discoverExternalAssets(reelDirectory, {
       importedFrom: null,
       copiedFiles: [],
       zipCandidates: [],
-      looseCandidateDirectory: null
+      ambiguousCompleteZips: [],
+      looseCandidateDirectories: [],
+      ambiguousLooseSets: []
     },
     audioDiscovery: null,
     instructions: [
       'Fehlende externe Assets nicht sofort als endgültig fehlend melden: zuerst diese Discovery ausführen.',
-      'Eine ZIP wird nur automatisch verwendet, wenn sie eine vollständige und eindeutige nummerierte Bildserie enthält.',
+      'Eine ZIP wird nur automatisch verwendet, wenn genau eine vollständige eindeutige nummerierte Bildserie gefunden wurde oder der Agent einen geprüften preferredZipPath vorgibt.',
+      'Bei mehreren vollständigen ZIPs zuerst den passenden Kandidaten inhaltlich prüfen; niemals blind die neueste ZIP wählen.',
       'Entpackte Nummern sind nur Routing-Hilfe. Vor --apply bleibt die visuelle Zwei-Pass-QC vollständig Pflicht.',
       'Bei mehreren oder unklaren Audio-Kandidaten nicht raten; Kandidaten prüfen.'
     ]
@@ -386,6 +400,31 @@ export async function discoverExternalAssets(reelDirectory, {
     for (const file of files.filter((entry) => entry.extension === ZIP_EXTENSION)) {
       zipCandidates.push(await inspectZipCandidate(file, expected));
     }
+
+    if (preferredZipPath) {
+      const preferredAbsolute = path.resolve(preferredZipPath);
+      let preferred = zipCandidates.find((candidate) => candidate.absolutePath === preferredAbsolute);
+      if (!preferred) {
+        preferred = await candidateFromExplicitZip(preferredAbsolute, expected);
+        zipCandidates.push(preferred);
+      }
+      if (!preferred.usable || !preferred.complete) {
+        throw new Error(`Ausgewählte ZIP ist für dieses Reel nicht vollständig/eindeutig: ${preferredAbsolute}`);
+      }
+      report.imageDiscovery.copiedFiles = await extractNumberedZip(preferred, expected, dropDirectory);
+      report.imageDiscovery.importedFrom = { type: 'zip', path: preferred.absolutePath };
+    } else {
+      const completeZips = zipCandidates.filter((candidate) => candidate.usable && candidate.complete);
+      if (completeZips.length === 1) {
+        report.imageDiscovery.copiedFiles = await extractNumberedZip(completeZips[0], expected, dropDirectory);
+        report.imageDiscovery.importedFrom = { type: 'zip', path: completeZips[0].absolutePath };
+      } else if (completeZips.length > 1) {
+        report.imageDiscovery.ambiguousCompleteZips = completeZips
+          .sort((left, right) => right.modifiedAtMs - left.modifiedAtMs)
+          .map((candidate) => candidate.absolutePath);
+      }
+    }
+
     report.imageDiscovery.zipCandidates = zipCandidates.map((candidate) => ({
       path: candidate.absolutePath,
       modifiedAtMs: candidate.modifiedAtMs,
@@ -396,19 +435,17 @@ export async function discoverExternalAssets(reelDirectory, {
       error: candidate.error
     }));
 
-    const completeZip = newestCompleteCandidate(zipCandidates);
-    if (completeZip) {
-      report.imageDiscovery.copiedFiles = await extractNumberedZip(completeZip, expected, dropDirectory);
-      report.imageDiscovery.importedFrom = { type: 'zip', path: completeZip.absolutePath };
-    } else {
-      const looseCandidate = findCompleteLooseDirectory(files, expected);
-      if (looseCandidate) {
-        report.imageDiscovery.copiedFiles = await importLooseNumberedSet(looseCandidate, expected, dropDirectory);
+    if (!report.imageDiscovery.importedFrom && report.imageDiscovery.ambiguousCompleteZips.length === 0) {
+      const looseCandidates = completeLooseDirectories(files, expected);
+      report.imageDiscovery.looseCandidateDirectories = looseCandidates.map((candidate) => candidate.directory);
+      if (looseCandidates.length === 1) {
+        report.imageDiscovery.copiedFiles = await importLooseNumberedSet(looseCandidates[0], expected, dropDirectory);
         report.imageDiscovery.importedFrom = {
           type: 'loose-numbered-files',
-          path: looseCandidate.directory
+          path: looseCandidates[0].directory
         };
-        report.imageDiscovery.looseCandidateDirectory = looseCandidate.directory;
+      } else if (looseCandidates.length > 1) {
+        report.imageDiscovery.ambiguousLooseSets = looseCandidates.map((candidate) => candidate.directory);
       }
     }
   }
