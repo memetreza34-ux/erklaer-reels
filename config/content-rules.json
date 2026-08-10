@@ -188,19 +188,26 @@
     "fixedVerticalPosition": true,
     "palette": {
       "textColor": "#F5F7FA",
-      "highlightColor": "#F5F7FA",
+      "highlightColor": "#B7794A",
       "backgroundColor": "transparent",
       "textStrokeColor": "rgba(0, 0, 0, 0.92)",
-      "reason": "Einheitlich weißer Text mit dunkler Kontur bleibt bei 58 Prozent Bildhöhe auf hellen und dunklen Illustrationen lesbar, ohne Gelb oder eine schwarze Box."
+      "reason": "Weißer Grundtext bleibt auf den Illustrationen gut lesbar; nur das exakt aktuell gesprochene Wort wechselt synchron in ein warmes Braun."
     },
     "wordsPerCue": {
       "min": 3,
       "max": 6
     },
     "maxLines": 2,
-    "wordByWordKaraoke": false,
-    "highlightCurrentWord": false,
+    "wordByWordKaraoke": true,
+    "highlightCurrentWord": true,
+    "speakerSyncedWordHighlight": true,
+    "highlightAnimation": "color-only",
+    "forbidScaleBounceOrBoxAnimation": true,
     "exactWordTimingsRequired": true,
+    "completeSpokenTextCoverageRequired": true,
+    "minimumWordCoverage": 1,
+    "requireZeroUnassignedWords": true,
+    "requireExactVoiceScriptWordSequence": true,
     "wordTimingWorkflow": {
       "enabled": true,
       "provider": "codex-local-audio-review",
@@ -208,7 +215,7 @@
       "applyCommand": "npm run sync:words -- --dir REEL_ORDNER --apply --strict",
       "localAudioReviewRequired": true,
       "estimatedDistributionForbidden": true,
-      "reason": "Untertitel müssen dem echten Voice-over folgen, auch wenn keine sichtbare Einzelwort-Markierung verwendet wird."
+      "reason": "Untertitel müssen dem echten Voice-over wortgenau folgen. Kein gesprochenes Wort darf fehlen; das aktive Wort wird anhand echter akustischer Zeiten braun markiert."
     },
     "fallbackWordTiming": "blocked-until-codex-word-sync",
     "repeatIntegratedImageText": false,
