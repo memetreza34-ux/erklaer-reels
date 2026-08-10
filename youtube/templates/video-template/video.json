@@ -6,6 +6,11 @@
   "status": "planned",
   "language": "de",
   "format": "youtube-longform",
+  "targetDurationMinutes": {
+    "min": 5,
+    "max": 6,
+    "mode": "approximate"
+  },
   "createdAt": "",
   "updatedAt": ""
 }
