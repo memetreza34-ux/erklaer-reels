@@ -23,6 +23,14 @@ Reel-spezifische Vorgaben dürfen nicht ungefragt auf Langvideos übertragen wer
 - Ein neuer Chat liest zuerst diese Datei, bevor er im YouTube-Bereich Änderungen vornimmt.
 - Ein einzelnes YouTube-Projekt darf globale YouTube-Regeln nicht nebenbei verändern.
 
+## Aktueller YouTube-Startstandard
+
+- Neue YouTube-Langvideos sollen zunächst **ungefähr 5 bis 6 Minuten** lang sein.
+- Die Spanne ist ein Zielkorridor und keine sekundengenaue Pflicht.
+- Ein Video darf innerhalb dieses Bereichs natürlich enden; Inhalt wird nicht künstlich gestreckt oder gekürzt, nur um exakt eine Zahl zu treffen.
+- Eine andere Dauer gilt nur, wenn der Nutzer sie für ein konkretes Video oder als neuen globalen Standard ausdrücklich festlegt.
+- Aus der Dauer werden **keine feste Wortzahl und keine feste Szenenzahl automatisch erfunden**.
+
 ## Standard-Projektstruktur
 
 ```text
@@ -76,7 +84,6 @@ video-XX_slug/
 
 Folgende Werte werden **nicht erfunden**, solange der Nutzer sie nicht ausdrücklich festlegt:
 
-- feste Videolänge
 - feste Wortzahl
 - feste Szenenzahl
 - feste Upload-Frequenz
