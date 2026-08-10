@@ -67,7 +67,7 @@ test('ordnet Cover und jedes Szenenbild direkt dem passenden Ordner zu', async (
   assert.equal(await readFile(path.join(reelDirectory, 'scenes', 'scene-01', 'scene-01.png'), 'utf8'), 'bild-1');
 });
 
-test('stellt einen sichtbaren Sammelordner für nummerierte Bilder bereit', async () => {
+test('stellt einen sichtbaren Sammelordner mit aktuellem Bild-XX-Standard bereit', async () => {
   const reelDirectory = await createMinimalReel();
   await ensureHumanReelView(reelDirectory);
 
@@ -77,8 +77,14 @@ test('stellt einen sichtbaren Sammelordner für nummerierte Bilder bereit', asyn
   );
 
   const readme = await readFile(path.join(reelDirectory, 'inbox', 'numbered-images', 'README.md'), 'utf8');
-  assert.match(readme, /`00` ist das Cover/);
-  assert.match(readme, /`01` Szene 1/);
+  assert.match(readme, /`Bild 00\.png` = Cover/);
+  assert.match(readme, /`Bild 01\.png` = Szene 1/);
+  assert.match(readme, /erst verwendet, wenn die komplette Bildreihe fertig erzeugt/);
+
+  const promptReadme = await readFile(path.join(reelDirectory, '00-bildprompts', 'README.md'), 'utf8');
+  assert.match(promptReadme, /Google Flow erzeugt die Bilder streng einzeln/);
+  assert.match(promptReadme, /ohne weiteres Go automatisch/);
+  assert.match(promptReadme, /`Bild 00\.png` ist Cover und Style-Master/);
 });
 
 test('sammelt unwichtige Dateien im Technikordner', async () => {
