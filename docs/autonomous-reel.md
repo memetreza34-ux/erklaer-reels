@@ -117,13 +117,38 @@ Bei Audio werden aktuelle Kandidaten gesucht. Genau ein eindeutig als Voice-over
 
 Die Suchdiagnose liegt unter `inbox/asset-discovery.json`.
 
+### 8. Untertitel vollständig am Sprecher synchronisieren
+
+Nach dem finalen Audio:
+
+```bash
+npm run sync:words -- --dir "PFAD-ZUM-REEL"
+# Audio vollständig abhören und jedes Wort exakt bestätigen
+npm run sync:words -- --dir "PFAD-ZUM-REEL" --apply --strict
+```
+
+Verbindlich:
+- jedes gesprochene Wort besitzt echte akustische Start-/Endzeiten
+- `coverage === 1`
+- `timedWords === totalWords`
+- `unassignedWords === 0`
+- die komplette gerenderte Untertitel-Wortfolge entspricht exakt `script/voice-script.txt`
+- Grundtext bleibt `#F5F7FA`
+- nur das aktuell gesprochene Wort wird synchron in Braun `#B7794A` markiert
+- keine Box und keine zusätzliche Spring-/Zoom-Karaoke-Animation
+- fehlt auch nur ein Wort, darf nicht gerendert werden
+
 ## Quellenstandard
 
 - zentrale Tatsachenbehauptungen vor Veröffentlichung prüfen
 - Primärquellen oder seriöse Fach-/Institutionenquellen bevorzugen
-- bei strittigen/aktuellen Aussagen mehrere unabhängige Quellen verwenden
+- bei wichtigen oder strittigen Aussagen nach Möglichkeit **mindestens zwei voneinander unabhängige Quellen** verwenden
 - konkrete URLs bzw. eindeutig auffindbare Quellen in `sources/sources.md`
 - keine erfundenen Quellen oder Platzhalterlinks
+
+## Audio-Nachweis
+
+Die Zielwerte allein reichen nicht als Nachweis. Vor einer finalen Freigabe müssen die **tatsächlichen LUFS und True Peak** des verarbeiteten Voice-overs gemessen und im Prüfbericht gespeichert sein, sobald das aktuelle Audio-Pacing-Schema diese Messung verlangt.
 
 ## Erlaubter Haltepunkt
 
@@ -137,9 +162,11 @@ ZIP ggf. sicher entpacken
 → Assets visuell prüfen
 → nummerierte Dateien nur als Routing-Hilfe verwenden
 → Voice-over exakt 1,10x / −16 LUFS / max. −1,5 dBTP verarbeiten
-→ Audio wirklich nachmessen
+→ tatsächliche LUFS und True Peak nachmessen
 → Timeline synchronisieren
-→ exakte akustische Wort-Synchronisierung
+→ jedes gesprochene Wort akustisch synchronisieren
+→ 100-%-Untertitelabdeckung prüfen
+→ aktuelles Wort braun #B7794A markieren
 → visuelle Zwei-Pass-QC
 → finale Freigabe
 → MP4 rendern

@@ -21,8 +21,10 @@ Neue Chats, Codex, Antigravity und andere Repo-Agenten sollen diese Datei zuerst
 - Schlussbild 0,7 Sekunden nach dem letzten gesprochenen Wort halten
 - Voice-over exakt 1,10x mit erhaltener Tonhöhe
 - −16 LUFS und höchstens −1,5 dBTP
-- weiße Untertitel `#F5F7FA` bei 58 % Bildhöhe
-- keine Wortmarkierung/Karaoke-Animation und keine schwarze Box
+- Untertitel bei exakt 58 % Bildhöhe
+- Grundtext `#F5F7FA`; **nur das aktuell gesprochene Wort** wird anhand echter akustischer Wortzeiten in Braun `#B7794A` markiert
+- 100 % des gesprochenen Voice-Scripts müssen in identischer Wortreihenfolge als Untertitel enthalten sein; `unassignedWords` muss 0 sein
+- keine schwarze Box und keine Spring-/Zoom-Karaoke-Animation; ausschließlich Farbwechsel des aktiven Wortes
 - ausschließlich harte Schnitte
 - keine Hintergrundmusik
 
@@ -82,6 +84,16 @@ Bild 02.png = Szene 2
 
 Die Nummerierung dient beim Import nur als Routing-Hilfe. Die finale Zuordnung wird immer visuell geprüft.
 
+## Fehlende Assets automatisch suchen
+
+Bevor ein Agent meldet, dass Bilder oder Audio fehlen, muss er die Asset-Discovery ausführen:
+
+```bash
+npm run discover:assets -- --dir "PFAD-ZUM-REEL"
+```
+
+`organize:assets` führt diese Suche ebenfalls automatisch aus. Standardmäßig werden Reel-Ordner, `~/Downloads` und `~/Desktop` geprüft. Eine eindeutige vollständige ZIP mit `Bild 00 ... Bild XX` kann sicher entpackt und in `inbox/numbered-images/` übernommen werden. Auch danach bleibt die visuelle Zwei-Pass-QC Pflicht.
+
 ## Neues Reel
 
 Bei „Mach ein neues Reel“ oder sinngleichen Aufträgen gilt der autonome Ablauf aus `CURRENT_WORKFLOW.md`, `AGENTS.md` und `docs/autonomous-reel.md`.
@@ -118,20 +130,13 @@ reel-01_thema/
 └── 99-technik/
 ```
 
-Technisch bleibt die Originalstruktur (`cover/`, `scenes/`, `all-image-prompts/`, `inbox/`, `review/` usw.) erhalten. Die sichtbare Finder-Struktur arbeitet mit Verknüpfungen.
+Das finale Video liegt technisch unter `output/` und ist nach erfolgreichem Render sichtbar über `04-video/FERTIGES-VIDEO/` erreichbar.
 
 ## Sichere Bildzuordnung
 
 Die Dateinummer darf das vorgeschlagene Ziel vorsortieren, aber **niemals allein die finale Zuordnung bestätigen**.
 
-Vor `--apply` jedes Bild tatsächlich öffnen und prüfen gegen:
-- `narration`
-- `audioCue`
-- `visualIdea`
-- `imageText`
-- `imagePrompt`
-
-Danach gegen vorherige und nächste Szene prüfen. Unter 0,90 Konfidenz nicht raten.
+Vor `--apply` jedes Bild tatsächlich öffnen und prüfen gegen `narration`, `audioCue`, `visualIdea`, `imageText` und `imagePrompt`, danach gegen vorherige und nächste Szene. Unter 0,90 Konfidenz nicht raten.
 
 ```bash
 npm run organize:assets -- --dir "PFAD-ZUM-REEL"
@@ -139,20 +144,22 @@ npm run organize:assets -- --dir "PFAD-ZUM-REEL"
 npm run organize:assets -- --dir "PFAD-ZUM-REEL" --apply
 ```
 
-## Audio, Synchronisierung und Render
+## Audio, vollständige Untertitel-Synchronisierung und Render
 
 ```bash
 npm run trim:pauses -- --dir "PFAD-ZUM-REEL" --speed 1.10
 npm run build:timeline -- --dir "PFAD-ZUM-REEL"
 npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
 npm run sync:words -- --dir "PFAD-ZUM-REEL"
-# echte akustische Wortprüfung durchführen
+# jedes Wort im echten Audio akustisch prüfen
 npm run sync:words -- --dir "PFAD-ZUM-REEL" --apply --strict
 npm run check:visuals -- --dir "PFAD-ZUM-REEL" --strict
 npm run finalize:reel -- --dir "PFAD-ZUM-REEL" --strict
 npm run validate:render -- --dir "PFAD-ZUM-REEL"
 npm run render:reel -- --dir "PFAD-ZUM-REEL"
 ```
+
+Vor dem Render gilt zwingend: `coverage === 1`, `timedWords === totalWords`, `unassignedWords === 0`, und die gerenderte Untertitel-Wortfolge entspricht exakt `script/voice-script.txt`. Fehlt auch nur ein gesprochenes Wort, ist der Render blockiert.
 
 Keine geplante oder nicht ausgeführte Stufe als bestanden ausgeben.
 

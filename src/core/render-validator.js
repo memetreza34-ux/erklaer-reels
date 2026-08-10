@@ -42,6 +42,27 @@ function push(checks, id, passed, message, level = 'error') {
   checks.push({ id, passed, message, level });
 }
 
+function normalizeSubtitleToken(value) {
+  return String(value ?? '')
+    .toLocaleLowerCase('de-DE')
+    .replace(/[„“”"'’`´.,!?;:()[\]{}…—–-]/g, '')
+    .replace(/\s+/g, '')
+    .trim();
+}
+
+function tokensFromText(value) {
+  return String(value ?? '')
+    .trim()
+    .split(/\s+/)
+    .map(normalizeSubtitleToken)
+    .filter(Boolean);
+}
+
+function sameTokenSequence(expected, actual) {
+  return expected.length === actual.length
+    && expected.every((token, index) => token === actual[index]);
+}
+
 function mergeSoundEffects(renderSounds, effectSounds) {
   return (renderSounds ?? []).map((sound, index) => {
     const matching = (effectSounds ?? []).find((candidate) =>
@@ -63,14 +84,21 @@ export async function validateRendererInput(reelDirectory, {
   const readinessPath = path.join(reelDirectory, 'review', 'final-readiness-report.json');
   const effectsPath = path.join(reelDirectory, 'effects', 'effects-plan.json');
   const audioPacingPath = path.join(reelDirectory, 'review', 'audio-pacing-report.json');
+  const voiceScriptPath = path.join(reelDirectory, 'script', 'voice-script.txt');
   const plan = await readJson(renderPlanPath, null);
   const readiness = await readJson(readinessPath, null);
   const effectsPlan = await readJson(effectsPath, { scenes: [] });
   const audioPacing = await readJson(audioPacingPath, null);
+  const voiceScript = await exists(voiceScriptPath) ? await readFile(voiceScriptPath, 'utf8') : '';
+  const expectedSubtitleTokens = tokensFromText(voiceScript);
+  const renderedSubtitleTokens = [];
   const effectsByScene = new Map((effectsPlan.scenes ?? []).map((scene) => [scene.sceneId, scene]));
 
   push(checks, 'render-plan-present', Boolean(plan), 'render/render-plan.json fehlt.');
   if (!plan) return finalize(checks, null, readiness);
+
+  push(checks, 'subtitle-source-script-present', expectedSubtitleTokens.length > 0,
+    'script/voice-script.txt fehlt oder enthält keinen Sprechertext.');
 
   const pacingRate = toFiniteNumberOrNull(audioPacing?.playbackRate);
   const loudnessTarget = toFiniteNumberOrNull(audioPacing?.loudnessSettings?.loudnessTargetLufs);
@@ -215,11 +243,9 @@ export async function validateRendererInput(reelDirectory, {
       push(checks, `${cueId}-text-color`, isHexColor(textColor) && String(textColor).toUpperCase() === SUBTITLE_STYLE.textColor,
         `${cueId}: Untertiteltext muss weiches Weiß ${SUBTITLE_STYLE.textColor} verwenden.`);
       push(checks, `${cueId}-highlight-color`, isHexColor(highlightColor) && String(highlightColor).toUpperCase() === SUBTITLE_STYLE.highlightColor,
-        `${cueId}: Alle Wörter müssen dasselbe weiche Weiß ${SUBTITLE_STYLE.highlightColor} verwenden.`);
-      push(checks, `${cueId}-color-uniform`, String(textColor).toUpperCase() === String(highlightColor).toUpperCase(),
-        `${cueId}: Untertitel dürfen keine andersfarbige Wortmarkierung enthalten.`);
-      push(checks, `${cueId}-highlight-disabled`, cue.highlightCurrentWord === false,
-        `${cueId}: highlightCurrentWord muss false sein.`);
+        `${cueId}: Das aktuell gesprochene Wort muss Braun ${SUBTITLE_STYLE.highlightColor} verwenden.`);
+      push(checks, `${cueId}-speaker-highlight-enabled`, SUBTITLE_STYLE.highlightCurrentWord === true,
+        `${cueId}: Die sprecher-synchrone Wortmarkierung muss global aktiviert sein.`);
       push(checks, `${cueId}-background-transparent`, String(cue.backgroundColor ?? SUBTITLE_STYLE.backgroundColor) === SUBTITLE_STYLE.backgroundColor,
         `${cueId}: Der Untertitelhintergrund muss transparent sein.`);
 
@@ -227,6 +253,9 @@ export async function validateRendererInput(reelDirectory, {
       push(checks, `${cueId}-exact-word-timing`, exact.valid,
         `${cueId}: Exakte, akustisch bestätigte Wortzeiten fehlen. ${exact.issues.join(' ')}`,
         requireFinalReadiness ? 'error' : 'warning');
+      if (exact.valid) {
+        renderedSubtitleTokens.push(...exact.words.map((word) => normalizeSubtitleToken(word.text)).filter(Boolean));
+      }
       push(checks, `${cueId}-timing-status`, cue.timingStatus === 'codex-word-synced',
         `${cueId}: timingStatus muss "codex-word-synced" sein.`,
         requireFinalReadiness ? 'error' : 'warning');
@@ -260,6 +289,10 @@ export async function validateRendererInput(reelDirectory, {
       }
     }
   }
+
+  push(checks, 'subtitle-full-spoken-text-coverage',
+    expectedSubtitleTokens.length > 0 && sameTokenSequence(expectedSubtitleTokens, renderedSubtitleTokens),
+    `Die gerenderten Untertitel müssen 100 % des Voice-Scripts in exakt derselben Wortreihenfolge enthalten. Erwartet: ${expectedSubtitleTokens.length} Wörter, gerendert: ${renderedSubtitleTokens.length}.`);
 
   push(checks, 'last-frame', scenes.length === 0 || previousEnd === Number(composition.durationFrames),
     'Die letzte Szene endet nicht exakt am letzten Kompositionsframe.');

@@ -91,7 +91,7 @@ const Subtitle = ({ cue }) => {
   const vertical = normalizeSubtitleVerticalPosition(cue.verticalPositionPercent);
   const textColor = normalizeSubtitleColor(cue.textColor, SUBTITLE_STYLE.textColor);
   const words = buildWordTimings(cue);
-  const active = SUBTITLE_STYLE.highlightCurrentWord && cue.highlightCurrentWord !== false
+  const active = SUBTITLE_STYLE.highlightCurrentWord
     ? activeWordIndex(words, frame / fps)
     : -1;
 

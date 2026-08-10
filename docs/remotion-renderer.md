@@ -1,6 +1,6 @@
 # Remotion-Renderer
 
-Der Renderer erzeugt aus `render/render-plan.json` eine fertige MP4 mit 12–14 Szenenbildern, optimiertem Voice-over, leicht tiefer gesetzten Untertiteln, dezenten Bewegungen und optionalen Soundeffekten.
+Der Renderer erzeugt aus `render/render-plan.json` eine fertige MP4 mit 12–14 Szenenbildern, optimiertem Voice-over, sprecher-synchronen Untertiteln, dezenten Bewegungen und optionalen Soundeffekten. Bei Widersprüchen gilt `CURRENT_WORKFLOW.md`.
 
 ## Vorbereitung
 
@@ -24,21 +24,37 @@ Zentrale Quelle: `src/shared/subtitle-style.js`.
 
 - horizontal zentriert
 - vertikal exakt 58 % Bildhöhe
-- weiches Weiß `#F5F7FA`
-- keine andersfarbige Wortmarkierung
+- Grundtext `#F5F7FA`
+- das aktuell gesprochene Wort wird anhand echter Wortzeiten in Braun `#B7794A` markiert
 - transparenter Hintergrund ohne Box oder Balken
 - dunkle Kontur und Schatten
 - normalerweise 3–6 Wörter, höchstens zwei Zeilen
-- `highlightCurrentWord: false`
-- trotzdem echte akustisch bestätigte Wortzeiten pro Cue
+- keine Bounce-/Zoom-/Skalierungsanimation; nur der Farbwechsel des aktiven Wortes
+- 100 % des gesprochenen Voice-Scripts müssen enthalten sein
 
-Der Renderer blockiert die alten Positionen bei 50 % oder 76 %, abweichende Textfarben, Wortmarkierungen, schwarze Hintergründe, geschätzte Cue-Zeiten sowie fehlende `timingSource`- und `wordTimings`-Angaben.
+Vor einem finalen Render müssen gelten:
+
+```text
+coverage === 1
+timedWords === totalWords
+unassignedWords === 0
+```
+
+Zusätzlich muss die vollständige Wortfolge aller gerenderten Untertitel exakt `script/voice-script.txt` entsprechen.
+
+Der Renderer blockiert:
+- Positionen außerhalb 58 %
+- falsche Grund- oder Highlightfarben
+- schwarze Hintergründe
+- geschätzte Cue-/Wortzeiten
+- fehlende `timingSource`- oder `wordTimings`-Angaben
+- fehlende, doppelte oder falsch angeordnete gesprochene Wörter
 
 ## Übergänge
 
 - Hook `none`, Dauer 0
 - jede weitere Szene `cut`, Dauer 0
-- keine Crossfades, Einblendungen, Schwarzblenden, Slides oder schwarzen Zwischenbilder
+- keine Crossfades, Einblendungen, Schwarzblenden oder Slides
 
 ## Renderer-Eingabe prüfen
 
@@ -47,7 +63,6 @@ npm run validate:render -- --dir "PFAD-ZUM-REEL"
 ```
 
 Geprüft werden unter anderem:
-
 - 1080 × 1920 bei 30 FPS
 - lückenlose Szenenframes und direkte Schnitte
 - Audio exakt 1,10x
@@ -55,10 +70,11 @@ Geprüft werden unter anderem:
 - vorhandene Bilder und Voice-over-Datei
 - sichere lokale Pfade
 - zulässige Zoom- und Schwenkwerte
-- Untertitel exakt bei 58 %, in Weiß und transparent
+- Untertitel exakt bei 58 %, Grundtext `#F5F7FA`, Aktivwort `#B7794A`, transparenter Hintergrund
 - `timingStatus: codex-word-synced`
 - `timingSource: codex-local-audio-review`
 - vollständige gültige Wortzeiten
+- exakte 100-%-Wortfolge des Voice-Scripts
 - finale Freigabe `readyForRenderer: true`
 
 ## MP4 erzeugen
@@ -67,12 +83,16 @@ Geprüft werden unter anderem:
 npm run render:reel -- --dir "PFAD-ZUM-REEL"
 ```
 
-Standardausgabe:
+Technische Standardausgabe:
 
 ```text
 PFAD-ZUM-REEL/output/REEL-ID.mp4
 ```
 
-`--force` überspringt nur die finale Freigabeprüfung. Fehlende Assets, unsichere Pfade, falsche Audio- oder Untertitelwerte, fehlende exakte Wortzeiten und verbotene Übergänge bleiben Fehler.
+Sichtbare Nutzeransicht:
 
-Bei Erfolg schreibt der Renderer `review/render-execution-report.json` und setzt `render: "complete"` in `status.json`.
+```text
+PFAD-ZUM-REEL/04-video/FERTIGES-VIDEO/
+```
+
+`--force` darf die harten Asset-, Audio- und Untertitel-Sicherheitsprüfungen nicht umgehen. Bei Erfolg schreibt der Renderer `review/render-execution-report.json` und setzt den Renderstatus auf vollständig.

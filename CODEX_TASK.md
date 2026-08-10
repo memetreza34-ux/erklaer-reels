@@ -1,6 +1,6 @@
 # Codex-Hauptauftrag
 
-Dieses Repository produziert vollständige visuelle Erklär-Reels. Der Nutzer erzeugt Voice-over und Bilder extern. Codex übernimmt Planung, Prompt-Sammlung, Prüfung, Audio-Pacing, sichere Bildzuordnung, Synchronisierung und Remotion-Render.
+Dieses Repository produziert vollständige visuelle Erklär-Reels. **`CURRENT_WORKFLOW.md` ist bei Widersprüchen maßgeblich.** Der Nutzer erzeugt Voice-over und Bilder extern. Codex übernimmt Planung, Prompt-Sammlung, Suche nach Assets/ZIPs, Prüfung, Audio-Pacing, sichere Bildzuordnung, Synchronisierung und Remotion-Render.
 
 ## Neues Reel
 
@@ -28,23 +28,13 @@ npm run check:content -- --dir "PFAD-ZUM-REEL" --strict
 
 ## Aufbau und Bildwelt
 
-- bevorzugter Einstieg: `THEMA einfach erklärt:`
 - Thema sofort nennen und direkt erklären
 - Hook-Bild ab Sekunde 0
 - jede Szene zeigt genau einen klaren Moment
-- keine mehrfach kopierte Hauptperson oder überladene Mehrschritt-Grafik
+- Bildwelt erst nach dem fertigen Script auswählen und innerhalb des Reels konsistent halten
 - politische Inhalte neutral; Quellen und Unsicherheiten dokumentieren
-
-**Reihenfolge:** Erst Script fertigstellen, danach die passendste Hauptbildwelt auswählen. Die Welt muss zum Inhalt passen und bleibt innerhalb des Reels konsistent.
-
-Bei `round-country-characters` bestehen Figuren vollständig aus Kugelkörpern mit einfachen weißen Augen und höchstens kleinen Armen und Beinen. Reine Karten, Landschaften oder Gegenstände sind erlaubt, müssen aber dieselben Konturen, Farben und dieselbe Bildsprache behalten.
-
-Das Ende besteht aus mindestens zwei getrennten Szenen:
-
-1. persönliche Prüf-, Erkenntnis- oder Entscheidungsfrage
-2. konkrete Lösung und kurzer einprägsamer Abschlusssatz
-
-Nach dem letzten gesprochenen Wort bleibt das Schlussbild 0,7 Sekunden ohne neuen Untertitel stehen.
+- Ende über mindestens zwei Szenen: persönliche Prüf-/Erkenntnisfrage → konkrete Lösung/einprägsamer Satz
+- nach dem letzten gesprochenen Wort 0,7 Sekunden Schlussbild ohne neuen Untertitel
 
 ## Szenenrhythmus
 
@@ -56,156 +46,63 @@ Zentrale Quelle: `config/production-quality-gates.json`.
 - kein Erklärmoment unter 3,2 Sekunden
 - Dauersprung zwischen benachbarten Szenen höchstens 2,5 Sekunden
 - Bildwechsel 0,1–0,3 Sekunden vor dem gesprochenen `audioCue`
-- Untertitel enden mit dem Voice-over und nicht erst nach dem Schlussbild-Nachlauf
 
-## Bildprompts und deutscher Bildtext
+## Bildprompts und Google Flow
 
-Bildprompts sind Englisch. Wo es die Szene verbessert, wird kurzer deutscher Bildtext integriert.
+Bildprompts sind Englisch. Sichtbarer Bildtext ist, wenn sinnvoll, kurz und Deutsch. Die komplette Sammeldatei wird einmal in Google Flow gesendet. Google Flow erzeugt danach streng seriell `Bild 00` bis zum letzten Bild und fragt nicht erneut nach `Go`.
 
-- bevorzugt in ungefähr 55–85 % der Szenen
-- meistens 1–5 Wörter; ein einzelnes Wort reicht
-- Textgröße darf klein, mittel oder groß sein
-- geeignete Formen: Überschrift, Schild, Etikett, Karte, Dokument, Display, Gegenstand oder Schlussaussage
-- exakten Wortlaut in `scene.imageText` eintragen
-- denselben Wortlaut im englischen Prompt exakt in Anführungszeichen nennen
-- Untertitel nicht wortgleich wiederholen
-- Text weglassen, wenn er die Szene überlädt oder die Bildgenerierung verschlechtert
+`Bild 00` ist Cover, sichtbare Hook und Style-Master. Der Cover-Hook darf nicht automatisch in spätere Szenen kopiert werden.
 
-Verboten:
+## Fehlende Assets und ZIPs
 
-- englischer sichtbarer Text
-- zufällige oder erfundene Wörter
-- lange Absätze oder unnötig viel Text
-- Logos oder Wasserzeichen
-- künstlich leere horizontale Untertitelzone
-- getrennte obere und untere Bildhälfte
-- gestapelte Panels oder mehrfach dargestellte Hauptperson
-- große leere Bäume, Pfeile oder Flächen als Textplatzhalter
-
-Pflicht:
-
-- natürliche zusammenhängende Komposition
-- Hauptmotiv darf die exakte Bildmitte nutzen und hinter dem Untertitel liegen
-- Prompt-Sammeldatei enthält zuerst das Cover und danach alle Szenen
-
-## Sichere Bildzuordnung
-
-### Nummerierter Schnellimport
-
-Ab sofort können Cover und alle Szenenbilder gemeinsam in den sichtbaren Ordner `00-bildprompts/00-ALLE-BILDER-HIER-REIN` gelegt werden.
-
-Verbindliches Namensschema:
-
-```text
-00.png              -> Cover
-01.png              -> Szene 1
-02.png              -> Szene 2
-03-meine-szene.png  -> Szene 3
-...
-13.png              -> Szene 13
-```
-
-Auch Varianten wie `bild-00.png`, `bild_01.png` oder `Bild 02.webp` werden erkannt. Unterstützt werden PNG, JPG, JPEG und WEBP.
-
-Der normale Befehl erkennt den Sammelordner automatisch:
+Wenn Bilder oder Audio scheinbar fehlen, nicht sofort stoppen:
 
 ```bash
-npm run organize:assets -- --dir "PFAD-ZUM-REEL"
+npm run discover:assets -- --dir "PFAD-ZUM-REEL"
 ```
 
-Die Dateinummer darf **nur das vorgeschlagene Ziel vorsortieren**. Sie ist niemals der Nachweis, dass das Bild inhaltlich zur Szene passt. Vor `--apply` muss Codex bzw. der ausführende Agent jedes Bild weiterhin öffnen und die vollständige visuelle QC bestätigen.
+Standard-Suchorte sind Reel-Ordner, `~/Downloads` und `~/Desktop`. Eine eindeutige vollständige ZIP mit `Bild 00 ... Bild XX` darf nach Sicherheitsprüfung temporär entpackt und in `inbox/numbered-images/` übernommen werden. Mehrere vollständige ZIPs müssen inhaltlich geprüft werden; niemals blind die neueste wählen.
 
-Doppelte Nummern dürfen nicht geraten werden. Nummern ohne vorhandene Szene bleiben `unmatched`.
+Die Nummerierung ist nur Routing-Hilfe. Vor `--apply` bleibt die echte visuelle Zwei-Pass-QC verpflichtend.
 
-### Niemals die finale Zuordnung nach Reihenfolge raten
-
-Außerhalb des oben definierten nummerierten Schnellimports sind Zuordnungen nach folgenden Signalen verboten:
-
-- Upload-Reihenfolge
-- Dateiname oder laufender Nummer
-- Erstellungszeit
-- Position in Finder oder Download-Ordner
-
-Auch beim nummerierten Schnellimport darf die **finale Bestätigung** niemals nur auf der Nummer beruhen.
-
-### Durchgang 1: sichtbaren Inhalt prüfen
+## Sichere Bildzuordnung
 
 Für jedes Bild:
 
 1. Bild öffnen und Dateinamen zunächst ignorieren.
-2. `visibleSummary` als neutrale Beschreibung des sichtbaren Inhalts schreiben.
+2. `visibleSummary` neutral beschreiben.
 3. Mit `narration`, `audioCue`, `visualIdea`, `imageText` und `imagePrompt` vergleichen.
-4. In `reason` konkret nennen, welche sichtbaren Objekte und Handlungen die Szene bestätigen.
-5. `comparedFields` vollständig eintragen.
+4. konkrete `reason` schreiben.
+5. gegen vorherige und nächste Szene prüfen.
+6. `confirmedTarget`, `confirmedSceneOrder`, `sceneOrderConfirmed` und `secondPassConfirmed` erst danach setzen.
+7. Unter 0,90 Konfidenz `unmatched` lassen.
 
-### Durchgang 2: Nachbarszenen ausschließen
-
-1. Gewählte Szene gegen vorherige und nächste Szene prüfen.
-2. Sicherstellen, dass das Bild nicht besser zur Nachbarszene passt.
-3. `confirmedTarget` und `confirmedSceneOrder` exakt eintragen.
-4. `sceneOrderConfirmed: true` und `secondPassConfirmed: true` erst danach setzen.
-5. Unter 0,90 Konfidenz bleibt das Bild `unmatched`.
-
-Erlaubte Methoden:
-
-```text
-visual-content-review
-visual-text-and-content-review
-```
+Erlaubte `matchMethod`:
+- `visual-content-review`
+- `visual-text-and-content-review`
 
 `filename-only` ist verboten.
 
-Pflichtfelder pro Szenenbild:
-
-```json
-{
-  "visualReviewed": true,
-  "secondPassConfirmed": true,
-  "sceneOrderConfirmed": true,
-  "confirmedTarget": "scene-01",
-  "confirmedSceneOrder": 1,
-  "visibleSummary": "...",
-  "reason": "...",
-  "comparedFields": ["narration", "visualIdea", "imageText", "imagePrompt"],
-  "matchMethod": "visual-content-review",
-  "confidence": 0.95
-}
-```
-
-Danach:
-
-```bash
-npm run organize:assets -- --dir "PFAD-ZUM-REEL"
-# asset-map.json visuell und vollständig ausfüllen
-npm run organize:assets -- --dir "PFAD-ZUM-REEL" --apply
-```
-
-`review/scene-asset-verification.json` muss für jede Szene `passed: true` zeigen. Auch direkt abgelegte Bilder müssen in `review/visual-inspection.json` mit sichtbarer Beschreibung, Zuordnungsgrund und zweiter Prüfung bestätigt werden.
-
-## Untertitel
+## Untertitel — verbindlicher aktueller Standard
 
 Zentrale Quelle: `src/shared/subtitle-style.js`.
 
 - horizontal zentriert
-- vertikal exakt 58 % Bildhöhe, leicht unterhalb der Mitte
-- weiches Weiß `#F5F7FA`
-- keine andersfarbige Wortmarkierung
-- keine schwarze Box oder Balken
-- dunkle Kontur und Schatten
-- normalerweise 3–6 Wörter, höchstens zwei Zeilen
-- keine Karaoke-Animation
-- exakte Wortzeiten sind auch ohne sichtbares Wort-Highlight verpflichtend
-- geschätzte Cue-Zeiten dürfen nicht final gerendert werden
+- vertikal exakt **58 %** Bildhöhe
+- Grundtext `#F5F7FA`
+- das **aktuell gesprochene Wort** wird anhand echter akustischer Wortzeiten in Braun **`#B7794A`** markiert
+- keine schwarze Box/Balken
+- keine Bounce-, Zoom-, Größen- oder Positionsanimation; nur der Farbwechsel des aktiven Wortes
+- normalerweise 3–6 Wörter pro Cue, höchstens zwei Zeilen
+- jedes gesprochene Wort muss enthalten sein
+- `coverage === 1`
+- `timedWords === totalWords`
+- `unassignedWords === 0`
+- die komplette gerenderte Untertitel-Wortfolge muss exakt `script/voice-script.txt` entsprechen
+- geschätzte Cue-/Wortzeiten sind verboten
+- fehlt auch nur ein gesprochenes Wort, darf nicht gerendert werden
 
-## Schnitt, Bewegung und Audio
-
-- Hook: `none`, Dauer 0
-- danach nur `cut`, Dauer 0
-- keine Fades oder schwarzen Zwischenbilder
-- Zoom normalerweise 2–6 %, maximal 8 %
-- Schwenk maximal 4 %
-- nicht jedes Bild bewegen
-- Hintergrundmusik aus; Voice-over hat Vorrang
+## Audio und Wort-Sync
 
 ```bash
 npm run trim:pauses -- --dir "PFAD-ZUM-REEL" --speed 1.10
@@ -217,34 +114,33 @@ npm run sync:words -- --dir "PFAD-ZUM-REEL" --apply --strict
 ```
 
 Audio-Standard:
-
 - ursprüngliche Voice-over-Datei verwenden
 - Pausen ab ungefähr 0,24 Sekunden kürzen
 - exakt 1,10x bei erhaltener Tonhöhe
 - −16 LUFS und höchstens −1,5 dBTP
 - optimierte Datei nicht erneut beschleunigen
-- Codex hört das lokale Audio vollständig ab und bestätigt echte Wortzeiten
+- jedes Wort im echten lokalen Audio akustisch bestätigen
 - keine gleichmäßige oder erfundene Zeitverteilung
 
 ## Visuelle Prüfung und Render
 
-`review/visual-inspection.json` muss pro Szene enthalten:
-
-- sichtbare Bildbeschreibung
-- konkrete Zuordnungsbegründung
-- exakt passende `comparedAssetId`
-- zweite Szenenprüfung bestätigt
-- Sprechertext und visuelle Idee passen
-- Szenenreihenfolge bestätigt
-- gewählte Hauptbildwelt und Figurenmodell eingehalten
-- deutscher Bildtext exakt
-- keine zusätzlichen erfundenen oder englischen Wörter
-
 ```bash
+npm run organize:assets -- --dir "PFAD-ZUM-REEL" --apply
 npm run check:visuals -- --dir "PFAD-ZUM-REEL" --strict
+npm run build:timeline -- --dir "PFAD-ZUM-REEL"
+npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
+npm run sync:words -- --dir "PFAD-ZUM-REEL" --apply --strict
 npm run finalize:reel -- --dir "PFAD-ZUM-REEL" --strict
 npm run validate:render -- --dir "PFAD-ZUM-REEL"
 npm run render:reel -- --dir "PFAD-ZUM-REEL"
 ```
 
-Nur rendern, wenn Inhalt, 1,10x-Audio, Lautheit, Audio-Sync, exakte akustisch bestätigte Untertitelsynchronisierung, sichere Bildzuordnung, ausgeglichene Szenendauern, 0,7-Sekunden-Schlussbild, alle Bilder, deutscher Bildtext, Untertitel bei 58 % in Weiß, visuelle Prüfung, direkte Schnitte und `readyForRenderer: true` tatsächlich vorliegen. Keine geplante Stufe als abgeschlossen bezeichnen.
+Nur rendern, wenn Inhalt, Audio, Lautheit, Audio-Sync, **100-%-Untertitelabdeckung**, exakte akustische Wort-Synchronisierung, braune Sprecher-Markierung, sichere Bildzuordnung, visuelle Prüfung, Szenenrhythmus, 0,7-Sekunden-Schlussbild und Renderer-Eingabe tatsächlich bestanden sind.
+
+Das finale Video ist sichtbar unter:
+
+```text
+04-video/FERTIGES-VIDEO/
+```
+
+Keine geplante Stufe als abgeschlossen bezeichnen und keine nicht ausgeführten Tests als bestanden melden.

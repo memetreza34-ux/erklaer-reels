@@ -61,7 +61,11 @@ Kurzfassung:
 - 12–14 Szenen, Standard 13
 - exakt 1,10x Audio
 - −16 LUFS, max. −1,5 dBTP
-- Untertitel bei 58 % Bildhöhe, `#F5F7FA`, keine Box/Karaoke-Markierung
+- Untertitel bei exakt 58 % Bildhöhe
+- Grundtext `#F5F7FA`
+- aktuell gesprochenes Wort exakt nach akustischen Wortzeiten in Braun `#B7794A`
+- 100 % des gesprochenen Voice-Scripts müssen in derselben Wortreihenfolge als Untertitel vorhanden sein; kein Wort und kein Satz darf fehlen
+- keine Untertitelbox, kein Springen, Zoomen oder sonstige Karaoke-Animation; nur die Farbe des aktiven Wortes wechselt
 - nur harte Schnitte
 - 0,7 Sekunden Schlussbild-Nachlauf
 - Bildwelt erst nach dem Script auswählen und innerhalb des Reels konsistent halten
@@ -192,7 +196,14 @@ npm run sync:words -- --dir "<reel-ordner>"
 npm run sync:words -- --dir "<reel-ordner>" --apply --strict
 ```
 
-Keine geschätzten oder gleichmäßig verteilten Wortzeiten als final akzeptieren.
+Verbindlich:
+- keine geschätzten oder gleichmäßig verteilten Wortzeiten als final akzeptieren
+- jedes Wort des tatsächlichen Voice-overs akustisch abhören und mit Start-/Endzeit bestätigen
+- 100 % Wortabdeckung; `unassignedWords` muss exakt `0` sein
+- die komplette gerenderte Untertitel-Wortfolge muss exakt der Wortfolge von `script/voice-script.txt` entsprechen
+- das aktuell gesprochene Wort wird mit `#B7794A` markiert, alle anderen Wörter bleiben `#F5F7FA`
+- bei einer Pause darf kein falsches Folgewort vorzeitig braun werden
+- fehlt auch nur ein gesprochenes Wort, bleibt `wordSync = needs-review` und der Render ist blockiert
 
 ---
 
@@ -209,7 +220,7 @@ npm run validate:render -- --dir "<reel-ordner>"
 npm run render:reel -- --dir "<reel-ordner>"
 ```
 
-Ein Reel darf nur als fertig gelten, wenn Inhalt, Audio, Lautheit, Audio-Sync, exakte Wort-Synchronisierung, sichere Bildzuordnung, visuelle Prüfung, Szenenrhythmus, Schlussbild-Nachlauf und Renderer-Eingabe **tatsächlich** bestanden sind.
+Ein Reel darf nur als fertig gelten, wenn Inhalt, Audio, Lautheit, Audio-Sync, **100-%-Untertitelabdeckung**, exakte akustische Wort-Synchronisierung, braune Sprecher-Markierung, sichere Bildzuordnung, visuelle Prüfung, Szenenrhythmus, Schlussbild-Nachlauf und Renderer-Eingabe **tatsächlich** bestanden sind.
 
 ---
 

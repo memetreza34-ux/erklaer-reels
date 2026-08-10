@@ -205,7 +205,7 @@ export async function createReelWorkspace({
   await writeText(path.join(reelDirectory, 'audio', '.gitkeep'));
   await writeJson(path.join(reelDirectory, 'scenes', 'scene-index.json'), sceneIndex);
   await writeJson(path.join(reelDirectory, 'subtitles', 'subtitle-plan.json'), {
-    version: 6,
+    version: 7,
     enabled: true,
     language: 'de',
     position: SUBTITLE_STYLE.position,
@@ -214,19 +214,25 @@ export async function createReelWorkspace({
     textColor: SUBTITLE_STYLE.textColor,
     highlightCurrentWord: SUBTITLE_STYLE.highlightCurrentWord,
     highlightColor: SUBTITLE_STYLE.highlightColor,
+    speakerSyncedWordHighlight: true,
+    highlightAnimation: 'color-only',
     backgroundColor: SUBTITLE_STYLE.backgroundColor,
     textStrokeColor: SUBTITLE_STYLE.textStrokeColor,
     maxLines: SUBTITLE_STYLE.maxLines,
     wordsPerCue: { min: 3, max: 6 },
-    wordByWordKaraoke: false,
+    wordByWordKaraoke: true,
     exactWordTimingsRequired: true,
+    completeSpokenTextCoverageRequired: true,
+    minimumWordCoverage: 1,
+    requireZeroUnassignedWords: true,
+    requireExactVoiceScriptWordSequence: true,
     fallbackWordTiming: 'blocked-until-codex-word-sync',
     avoidRepeatingImageText: true,
     timingStatus: 'waiting-for-codex-word-sync',
     timingProvider: 'codex-local-audio-review',
     cues: []
   });
-  await writeText(path.join(reelDirectory, 'subtitles', 'README.md'), `# Untertitel\n\nUntertitel stehen leicht unterhalb der Bildmitte bei exakt ${SUBTITLE_STYLE.verticalPositionPercent} % der Bildhöhe.\nSie verwenden weiches Weiß (${SUBTITLE_STYLE.textColor}) mit dunkler Kontur und Schatten.\nEs gibt keine Wortmarkierung, keine Karaoke-Animation, keine schwarze Box und keinen sichtbaren Hintergrundbalken.\nNormalerweise 3–6 Wörter pro Einblendung und höchstens zwei Zeilen.\nDie Untertitel dürfen erst nach lokaler akustischer Prüfung und exakter Wortzeitsynchronisierung gerendert werden.\nNach dem letzten gesprochenen Wort endet der Untertitel; das Schlussbild bleibt ungefähr 0,7 Sekunden sauber sichtbar.\n`);
+  await writeText(path.join(reelDirectory, 'subtitles', 'README.md'), `# Untertitel\n\nUntertitel stehen bei exakt ${SUBTITLE_STYLE.verticalPositionPercent} % der Bildhöhe.\nGrundtext: ${SUBTITLE_STYLE.textColor}. Nur das aktuell gesprochene Wort wird anhand echter akustischer Wortzeiten in Braun ${SUBTITLE_STYLE.highlightColor} markiert.\nKeine schwarze Box, kein sichtbarer Hintergrundbalken und keine Spring-/Zoom-/Größenanimation; nur der Farbwechsel des aktiven Wortes.\nNormalerweise 3–6 Wörter pro Einblendung und höchstens zwei Zeilen.\n100 % des gesprochenen Voice-Scripts müssen enthalten sein: coverage = 1, timedWords = totalWords und unassignedWords = 0.\nDie Untertitel dürfen erst nach lokaler akustischer Prüfung und exakter Wortzeitsynchronisierung gerendert werden. Fehlt ein Wort, ist der Render blockiert.\nNach dem letzten gesprochenen Wort endet der Untertitel; das Schlussbild bleibt ungefähr 0,7 Sekunden sauber sichtbar.\n`);
   await writeJson(path.join(reelDirectory, 'effects', 'effects-plan.json'), {
     version: 1,
     enabled: true,

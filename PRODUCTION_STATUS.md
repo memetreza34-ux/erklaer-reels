@@ -22,8 +22,12 @@ Die kreative und funktionale Testphase ist abgeschlossen. Normale Reel-Erstellun
 - Voice-over exakt 1,10x, Tonhöhe erhalten
 - −16 LUFS, höchstens −1,5 dBTP
 - Untertitel horizontal zentriert und vertikal bei exakt 58 % Bildhöhe
-- Untertitel `#F5F7FA`, keine Wortmarkierung/Karaoke-Animation und keine schwarze Box
+- Untertitel-Grundfarbe `#F5F7FA`
+- das aktuell gesprochene Wort wird exakt nach akustischen Wortzeiten in Braun `#B7794A` markiert
+- 100 % des gesprochenen Voice-Scripts müssen in identischer Wortreihenfolge als Untertitel vorhanden sein; kein Wort oder Satz darf fehlen
+- keine schwarze Box und keine zusätzliche Spring-/Zoom-Karaoke-Animation; nur der Farbwechsel des aktiven Wortes
 - exakte lokale Wort-Synchronisierung mit dem echten Voice-over vor dem finalen Render
+- `unassignedWords` muss exakt `0` sein
 - ausschließlich direkte harte Schnitte
 - starkes Ende über zwei Szenen
 - Schlussbild 0,7 Sekunden nach dem letzten gesprochenen Wort
@@ -44,7 +48,7 @@ Diese Regeln gehören ab jetzt ausdrücklich zum Produktionsstandard:
 
 ## Qualitätsprinzip
 
-Ein Reel ist erst fertig, wenn Inhalt, Audio, Untertitel-Synchronisierung, Bildzuordnung, visuelle Prüfung, Timeline und Renderer-Freigabe tatsächlich bestanden sind. Geplante oder geschätzte Produktionsstufen dürfen nicht als abgeschlossen markiert werden.
+Ein Reel ist erst fertig, wenn Inhalt, Audio, **vollständige Untertitelabdeckung**, akustische Wort-Synchronisierung, braune Sprecher-Markierung, Bildzuordnung, visuelle Prüfung, Timeline und Renderer-Freigabe tatsächlich bestanden sind. Geplante oder geschätzte Produktionsstufen dürfen nicht als abgeschlossen markiert werden.
 
 ## Schutz vor Regressionen
 

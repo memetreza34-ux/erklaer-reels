@@ -43,7 +43,7 @@ export async function prepareReelProduction(reelDirectory) {
   const preferredImageTextMaximum = Math.floor(scenes.length * 0.85);
 
   const checklist = {
-    version: 16,
+    version: 17,
     reelId: reel.reelId,
     title: reel.title,
     createdAt: new Date().toISOString(),
@@ -57,8 +57,8 @@ export async function prepareReelProduction(reelDirectory) {
       { id: 'ending-check', label: 'Prüffrage und einprägsamen Abschlusssatz auf zwei Szenen verteilen', status: 'pending' },
       { id: 'prompts-write', label: `${scenes.length} natürliche englische Bildprompts mit exakt angegebenem deutschem Bildtext schreiben`, status: 'pending' },
       { id: 'prompts-export', label: 'Cover und alle Szenenprompts chronologisch exportieren', status: 'pending' },
-      { id: 'subtitles-write', label: `Untertitel bei ${SUBTITLE_STYLE.verticalPositionPercent} % in weichem Weiß (${SUBTITLE_STYLE.textColor}) ohne Wortmarkierung planen`, status: 'pending' },
-      { id: 'subtitle-sync-plan', label: 'Exakte lokale Codex-Wortzeitsynchronisierung vor dem Render einplanen', status: 'pending' },
+      { id: 'subtitles-write', label: `Untertitel bei ${SUBTITLE_STYLE.verticalPositionPercent} % mit weißem Grundtext ${SUBTITLE_STYLE.textColor} und braunem Aktivwort ${SUBTITLE_STYLE.highlightColor} planen`, status: 'pending' },
+      { id: 'subtitle-sync-plan', label: '100 % des Voice-Scripts mit exakten lokalen Wortzeiten synchronisieren; unassignedWords muss 0 sein', status: 'pending' },
       { id: 'effects-write', label: 'Dezente Bewegungen, harte Schnitte und Soundeffekte planen', status: 'pending' },
       { id: 'asset-matching-plan', label: `Zweistufige visuelle Bildzuordnung mit mindestens ${matching.minimumConfidence} Konfidenz vorbereiten`, status: 'pending' },
       { id: 'cover-write', label: 'Cover-Idee und Cover-Prompt schreiben', status: 'pending' },
@@ -73,7 +73,7 @@ export async function prepareReelProduction(reelDirectory) {
 
 ## Ziel
 
-Erstelle ein vollständiges Erklär-Reel mit ungefähr einer Minute Voice-over-Laufzeit. Bilder und Audio werden extern erzeugt. Vor dem Render muss jedes Bild zweifach visuell gegen seine konkrete Szene geprüft werden.
+Erstelle ein vollständiges Erklär-Reel mit ungefähr einer Minute Voice-over-Laufzeit. Bilder und Audio werden extern erzeugt. Vor dem Render muss jedes Bild zweifach visuell gegen seine konkrete Szene geprüft werden. Die Untertitel müssen jedes gesprochene Wort vollständig enthalten und exakt dem echten Voice-over folgen.
 
 ## Ausgangsdaten
 
@@ -91,8 +91,8 @@ Erstelle ein vollständiges Erklär-Reel mit ungefähr einer Minute Voice-over-L
 - Schlussszene inklusive Nachlauf: **${timing.finalSceneSecondsIncludingHold.min}–${timing.finalSceneSecondsIncludingHold.max} Sekunden**
 - ruhiger Nachlauf nach Sprecherende: **${timing.postVoiceHoldSeconds} Sekunden**
 - Bildzuordnung: **mindestens ${matching.minimumConfidence} Konfidenz, zwei visuelle Durchgänge**
-- Untertitel: **horizontal zentriert, exakt ${SUBTITLE_STYLE.verticalPositionPercent} % Bildhöhe, ${SUBTITLE_STYLE.textColor}, ohne Wortmarkierung**
-- Untertitel-Sync: **exakte Wortzeiten aus lokaler Codex-Audioprüfung verpflichtend**
+- Untertitel: **horizontal zentriert, exakt ${SUBTITLE_STYLE.verticalPositionPercent} % Bildhöhe, Grundtext ${SUBTITLE_STYLE.textColor}, aktuell gesprochenes Wort ${SUBTITLE_STYLE.highlightColor}, transparent**
+- Untertitel-Sync: **100-%-Abdeckung und exakte Wortzeiten aus lokaler Codex-Audioprüfung verpflichtend**
 - Audio-Pacing: **exakt ${AUDIO_PACING_STYLE.playbackRate.toFixed(2)}x**
 - Lautheit: **${AUDIO_PACING_STYLE.loudnessTargetLufs} LUFS, höchstens ${AUDIO_PACING_STYLE.truePeakDbtp} dBTP**
 - Hintergrundmusik: **aus**
@@ -103,16 +103,16 @@ Erstelle ein vollständiges Erklär-Reel mit ungefähr einer Minute Voice-over-L
 
 ## Verbindlicher Ablauf
 
-1. Lies \`AGENTS.md\`, \`CODEX_TASK.md\`, \`knowledge/production-rules.md\`, \`config/production-quality-gates.json\` und die übrigen Konfigurationen.
+1. Lies \`CURRENT_WORKFLOW.md\`, \`AGENTS.md\`, \`CODEX_TASK.md\`, \`knowledge/production-rules.md\` und \`config/production-quality-gates.json\`.
 2. Überarbeite das Script auf 155–175 Wörter und ungefähr 55–60 Sekunden bei 1,10x. Bevorzugter Einstieg: \`THEMA einfach erklärt:\`.
 3. Das Ende benötigt zwei getrennte Stufen: eine persönliche Prüf- oder Erkenntnisfrage und danach eine konkrete Lösung mit kurzem einprägsamem Abschlusssatz.
 4. Schreibe denselben finalen Text nach \`script/final-script.txt\` und \`script/voice-script.txt\`.
 5. Plane genau ${scenes.length} Bildmomente. Hook ${timing.hookSeconds.min}–${timing.hookSeconds.max}s, normale Szenen ${timing.standardSeconds.min}–${timing.standardSeconds.max}s, letzte Szene inklusive Nachlauf ${timing.finalSceneSecondsIncludingHold.min}–${timing.finalSceneSecondsIncludingHold.max}s. Kein Erklärmoment unter ${timing.standardSeconds.min}s.
 6. Der Dauersprung zwischen benachbarten Szenen darf höchstens ${timing.maximumAdjacentDifferenceSeconds}s betragen.
 7. Jede Szene zeigt genau einen klaren Moment. Keine mehrfach kopierte Hauptperson und kein überladenes Anleitungspanorama.
-8. Wähle **erst nach dem fertigen Script** die Hauptbildwelt, die diesen Inhalt am schnellsten erklärt. Trage \`visualStyleId\` und \`visualStyleReason\` ein und halte die Welt konsequent ein.
+8. Wähle erst nach dem fertigen Script die Hauptbildwelt und halte sie konsequent ein.
 9. Aktualisiere \`scenes/scene-index.json\` und jede \`scene.json\` synchron.
-10. Plane in ungefähr ${preferredImageTextMinimum}–${preferredImageTextMaximum} passenden Szenen einen kurzen deutschen Bildtext. Trage den exakten Wortlaut in \`scene.imageText\` ein.
+10. Plane in ungefähr ${preferredImageTextMinimum}–${preferredImageTextMaximum} passenden Szenen kurzen deutschen Bildtext. Trage den exakten Wortlaut in \`scene.imageText\` ein.
 11. Schreibe für jede Szene einen vollständigen englischen 9:16-Bildprompt. Wenn \`imageText\` gesetzt ist, fordere den exakten deutschen Text in Anführungszeichen an.
 
 ### Pflichtregeln für Bilder
@@ -133,7 +133,7 @@ Erstelle ein vollständiges Erklär-Reel mit ungefähr einer Minute Voice-over-L
 npm run export:prompts -- --dir "${normalizedDirectory}" --strict
 \`\`\`
 
-13. Fülle \`subtitles/subtitle-plan.json\`: exakt ${SUBTITLE_STYLE.verticalPositionPercent} %, weiches Weiß \`${SUBTITLE_STYLE.textColor}\`, transparent, keine Wortmarkierung, höchstens zwei Zeilen, normalerweise 3–6 Wörter und \`exactWordTimingsRequired: true\`.
+13. Fülle \`subtitles/subtitle-plan.json\`: exakt ${SUBTITLE_STYLE.verticalPositionPercent} %, Grundtext \`${SUBTITLE_STYLE.textColor}\`, Aktivwort \`${SUBTITLE_STYLE.highlightColor}\`, transparent, höchstens zwei Zeilen, normalerweise 3–6 Wörter, \`highlightCurrentWord: true\`, \`speakerSyncedWordHighlight: true\`, \`exactWordTimingsRequired: true\` und \`completeSpokenTextCoverageRequired: true\`.
 14. Fülle \`effects/effects-plan.json\`: Hook \`none\`, danach nur \`cut\` mit Dauer 0; Zoom maximal 8 %, Schwenk maximal 4 %.
 15. Fülle Cover, Caption und Quellen aus.
 16. Prüfe streng:
@@ -156,15 +156,7 @@ npm run trim:pauses -- --dir "${normalizedDirectory}" --speed ${AUDIO_PACING_STY
 npm run organize:assets -- --dir "${normalizedDirectory}"
 \`\`\`
 
-Für jedes Bild in \`inbox/asset-map.json\`:
-
-1. Dateinamen ignorieren und sichtbaren Inhalt in \`visibleSummary\` beschreiben.
-2. Mit \`narration\`, \`visualIdea\`, \`imageText\` und \`imagePrompt\` vergleichen.
-3. Konkrete \`reason\` mit sichtbaren Objekten und Handlungen eintragen.
-4. Gegen vorherige und nächste Szene prüfen.
-5. \`confirmedTarget\`, \`confirmedSceneOrder\`, \`sceneOrderConfirmed\` und \`secondPassConfirmed\` setzen.
-6. \`matchMethod\` auf \`visual-content-review\` oder \`visual-text-and-content-review\` setzen.
-7. Unter ${matching.minimumConfidence} Konfidenz nicht raten, sondern unmatched lassen.
+Für jedes Bild in \`inbox/asset-map.json\`: sichtbaren Inhalt beschreiben, mit Szene vergleichen, gegen Nachbarszenen prüfen und erst ab ${matching.minimumConfidence} Konfidenz final bestätigen. Dateinummern sind nur Routing-Hilfe.
 
 Danach:
 
@@ -172,9 +164,7 @@ Danach:
 npm run organize:assets -- --dir "${normalizedDirectory}" --apply
 \`\`\`
 
-\`review/scene-asset-verification.json\` muss alle Szenen als bestanden zeigen.
-
-### 3. Timeline, exakter Untertitel-Sync, visuelle Prüfung und Render
+### 3. Timeline, vollständiger Sprecher-Sync, visuelle Prüfung und Render
 
 \`\`\`bash
 npm run build:timeline -- --dir "${normalizedDirectory}"
@@ -188,9 +178,9 @@ npm run validate:render -- --dir "${normalizedDirectory}"
 npm run render:reel -- --dir "${normalizedDirectory}"
 \`\`\`
 
-In \`review/visual-inspection.json\` benötigt jede Szene eine sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung, passende \`comparedAssetId\`, bestätigte zweite Prüfung und vollständig bestandene Szenen-, Welt-, Text- und Kompositionschecks.
+Vor dem Render müssen \`coverage === 1\`, \`timedWords === totalWords\`, \`unassignedWords === 0\` gelten. Die komplette gerenderte Untertitel-Wortfolge muss exakt \`script/voice-script.txt\` entsprechen. Nur das aktuell gesprochene Wort wird synchron \`${SUBTITLE_STYLE.highlightColor}\` markiert; alle übrigen Wörter bleiben \`${SUBTITLE_STYLE.textColor}\`. Fehlt ein Wort, ist der Render blockiert.
 
-Die Timeline hängt nach dem letzten gesprochenen Wort automatisch ${timing.postVoiceHoldSeconds} Sekunden Schlussbild ohne neuen Untertitel an. Die MP4 erst als fertig bezeichnen, wenn Bildzuordnung, Szenenrhythmus, Audio, deutscher Bildtext, Untertitel bei ${SUBTITLE_STYLE.verticalPositionPercent} %, akustisch bestätigte Wortzeiten, Schlussbild-Nachlauf, visuelle Prüfung und Renderer-Validierung tatsächlich bestanden sind.
+Die Timeline hängt nach dem letzten gesprochenen Wort automatisch ${timing.postVoiceHoldSeconds} Sekunden Schlussbild ohne neuen Untertitel an. Die MP4 erst als fertig bezeichnen, wenn alle echten QC-Gates tatsächlich bestanden sind.
 `;
 
   await writeFile(path.join(productionDirectory, 'agent-task.md'), `${brief}\n`, 'utf8');

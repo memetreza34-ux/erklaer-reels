@@ -1,16 +1,19 @@
 {
-  "version": 6,
+  "version": 7,
   "enabled": true,
   "language": "de",
   "position": "center",
   "verticalPositionPercent": 58,
   "textColor": "#F5F7FA",
-  "highlightCurrentWord": false,
+  "highlightCurrentWord": true,
+  "highlightColor": "#B7794A",
   "backgroundColor": "transparent",
   "maxLines": 2,
   "wordsPerCue": {"min": 3, "max": 6},
-  "wordByWordKaraoke": false,
+  "wordByWordKaraoke": true,
+  "speakerSyncedWordHighlight": true,
   "exactWordTimingsRequired": true,
-  "timingStatus": "waiting-for-codex-word-sync",
+  "completeSpokenTextCoverageRequired": true,
+  "timingStatus": "needs-full-audio-resync-after-user-review",
   "cues": []
 }
