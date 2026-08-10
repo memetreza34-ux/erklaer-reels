@@ -1,12 +1,15 @@
 # Autonomes neues Reel
 
-Dieser Ablauf gilt bei „Mach ein neues Reel“, „Erstelle das nächste Reel“ und sinngleichen Imperativen. Die Anweisung bedeutet: nächsten freien Produktionstag bestimmen und das vollständige interne Produktionspaket erstellen.
+Dieser Ablauf gilt bei „Mach ein neues Reel“, „Erstelle das nächste Reel“ und sinngleichen Imperativen.
 
-## Produktionsbaseline
+## Vor jeder Produktion zwingend lesen
 
-Vor jeder autonomen Produktion `PRODUCTION_STATUS.md` lesen. Die dort dokumentierte Produktionsbaseline ist nach Abschluss der Testphase eingefroren.
+1. `CURRENT_WORKFLOW.md`
+2. `PRODUCTION_STATUS.md`
+3. `AGENTS.md`
+4. `CODEX_TASK.md`
 
-Ein normaler Auftrag für ein neues Reel darf **keine globalen Produktionsregeln nebenbei verändern**. Themen, Skripte, Bildwelten und Szenen dürfen kreativ variieren. Änderungen an Dauer, Szenenzahl, Untertitelstil, Audio-Pacing, Ordnerstruktur, Qualitätsgrenzen oder Renderlogik erfolgen nur nach einer ausdrücklichen neuen Anweisung.
+`CURRENT_WORKFLOW.md` ist bei Widersprüchen maßgeblich. Ein normaler neuer Reel-Auftrag darf globale Produktionsregeln **nicht** verändern.
 
 ## Ablauf
 
@@ -16,20 +19,22 @@ Ein normaler Auftrag für ein neues Reel darf **keine globalen Produktionsregeln
 npm run next:slot -- --json
 ```
 
-Bereits belegte Tage werden niemals überschrieben.
+Bereits belegte Slots niemals überschreiben.
 
 ### 2. Thema auswählen
 
-Das Thema muss zu den erlaubten Säulen passen, sich von vorhandenen Reels unterscheiden, langfristig verständlich sein und sich in 12–14 klaren Bildmomenten erklären lassen.
+Thema selbstständig aus den erlaubten Säulen wählen, Wiederholungen vermeiden und keine Standardrückfrage zu Datum, Thema, Szenenzahl oder Bildwelt stellen.
 
-### 3. Ein-Minuten-Script schreiben
+### 3. Script schreiben
 
 - genau ein deutscher Erzähler
 - 155–175 Wörter
-- 55–60 Sekunden nach Optimierung auf 1,10x
+- 55–60 Sekunden nach 1,10x-Audiooptimierung
 - sofortige sachliche Hook
 - einfache, erwachsene Sprache
-- starkes Ende über zwei Szenen: persönliche Prüffrage, danach Lösung und einprägsamer Abschlusssatz
+- starkes Ende über zwei Szenen
+
+### 4. Reel erstellen
 
 ```bash
 npm run create:reel -- \
@@ -39,62 +44,75 @@ npm run create:reel -- \
   --scenes 13
 ```
 
-### 4. Produktionspaket fertigstellen
+Danach `production/agent-task.md` vollständig bearbeiten.
 
-Nach `create:reel` sofort `production/agent-task.md` vollständig bearbeiten:
+Pflichtumfang:
+- finales Script und Voice-Script
+- 12–14 Szenen mit je einem klaren Moment
+- Cover-Prompt
+- vollständige englische Szenenprompts
+- Caption
+- Quellen
+- Untertitel-/Effektplanung
+- Statusdateien
+- vollständige Prompt-Sammeldatei
 
-- finales Script und Voice-over-Script
-- 12–14 Szenen mit je genau einem klaren Moment
-- Cover und vollständige englische Bildprompts
-- Prompt-Sammeldatei mit Cover an erster Stelle
-- weiße Untertitel bei 58 % Bildhöhe ohne Box
-- Effektplan mit Hook ohne Übergang und danach nur harten Schnitten
-- Caption, Quellen und Statusdateien
+### 5. Google-Flow-Sammeldatei erzeugen
 
-### Quellenstandard
+```bash
+npm run export:prompts -- --dir "PFAD-ZUM-REEL" --strict
+```
 
-Für Politik, Gesellschaft, Länder, Geschichte, Geografie und Psychologie dürfen Quellen nicht nur als formale Pflichtdatei behandelt werden.
+Die generierte `all-image-prompts/all-image-prompts.txt` muss automatisch dem aktuellen Vertrag aus `CURRENT_WORKFLOW.md` entsprechen:
 
-- zentrale Tatsachenbehauptungen vor Veröffentlichung gegen verlässliche Quellen prüfen
-- möglichst Primärquellen oder seriöse Fach-/Institutionenquellen bevorzugen
-- bei strittigen oder aktuellen Aussagen mindestens zwei voneinander unabhängige Quellen verwenden
-- konkrete URLs bzw. eindeutig auffindbare Quellen in `sources/sources.md` eintragen
-- Publisher bzw. Institution und den belegten Punkt kurz nennen
-- Unsicherheit, historische Einordnung oder abweichende Definitionen sichtbar dokumentieren
-- keine erfundenen Quellen, Platzhalterlinks oder ungeprüften KI-Behauptungen als Beleg verwenden
+- Nutzer startet Google Flow einmal mit der kompletten Datei.
+- Google Flow arbeitet autonom ohne weiteres `Go`.
+- Trotzdem streng seriell: ein Bild → vollständig warten → sofort umbenennen → prüfen → automatisch nächstes Bild.
+- Kein Parallelisieren, Batch oder Queue.
+- `Bild 00` ist Cover, Hook und Style-Master.
+- Erst nach dem letzten Bild alle fertigen Bilder gemeinsam in den Sammelordner.
+
+Repo-Agenten erzeugen selbst keine Bilder.
+
+### 6. Inhaltsprüfung
 
 ```bash
 npm run validate:reel -- --dir "PFAD-ZUM-REEL"
 npm run check:content -- --dir "PFAD-ZUM-REEL" --strict
 ```
 
-Alle Fehler werden behoben. Ein leerer Ordner oder eine offene Aufgabenliste ist keine fertige Ausführung.
+Fehler beheben. Keine Prüfung als bestanden melden, wenn sie nicht tatsächlich ausgeführt werden konnte.
+
+## Quellenstandard
+
+- zentrale Tatsachenbehauptungen vor Veröffentlichung prüfen
+- Primärquellen oder seriöse Fach-/Institutionenquellen bevorzugen
+- bei strittigen/aktuellen Aussagen mehrere unabhängige Quellen verwenden
+- konkrete URLs bzw. eindeutig auffindbare Quellen in `sources/sources.md`
+- keine erfundenen Quellen oder Platzhalterlinks
 
 ## Erlaubter Haltepunkt
 
-Codex darf erst anhalten, wenn externe Dateien fehlen: Voice-over, Szenenbilder oder Coverbild. Sind sie vorhanden, arbeitet Codex weiter:
+Erst anhalten, wenn externe Dateien fehlen: Voice-over oder Bilder.
+
+Sind Assets vorhanden:
 
 ```text
-Assets prüfen
-→ ursprüngliches Voice-over auf exakt 1,10x, −16 LUFS und −1,5 dBTP verarbeiten
-→ erzeugte Audiodatei erneut auf tatsächliche LUFS und True Peak messen
-→ Timeline und Audio-Cues synchronisieren
-→ Bilder visuell prüfen
-→ weiße Untertitel bei 58 % Bildhöhe prüfen
-→ exakte akustische Wort-Synchronisierung prüfen
-→ direkte harte Schnitte prüfen
+Assets visuell prüfen
+→ nummerierte Dateien nur als Routing-Hilfe verwenden
+→ Voice-over exakt 1,10x / −16 LUFS / max. −1,5 dBTP verarbeiten
+→ Audio wirklich nachmessen
+→ Timeline synchronisieren
+→ exakte akustische Wort-Synchronisierung
+→ visuelle Zwei-Pass-QC
 → finale Freigabe
 → MP4 rendern
 ```
 
-Die Audio-QC gilt nur als bestanden, wenn die nachgelagerte Messung die erzeugte Datei innerhalb der definierten Lautheitstoleranz bestätigt. Ein korrekt eingetragener Zielwert allein reicht nicht als Nachweis.
-
-Jedes Bild muss natürlich komponiert sein, genau einen klaren Moment zeigen und darf die Hauptperson nicht mehrfach darstellen. Für die Untertitel bei 58 % Bildhöhe wird keine leere Bildzone erzeugt.
-
 ## Keine Standardrückfragen
 
-Codex fragt nicht nach Datum, Thema, Szenenzahl oder Bildwelt, solange keine widersprüchliche Vorgabe oder zwingend fehlende externe Information vorliegt.
+Nicht nach Datum, Thema, Szenenzahl oder Bildwelt fragen, solange keine wirklich widersprüchliche Vorgabe oder zwingend fehlende Information vorliegt.
 
 ## Abschlussmeldung
 
-Vor externen Assets bestätigt Codex den gewählten Tag, das vollständige Produktionspaket, die ausgeführte Inhaltsprüfung, die Zahl der Prompts und den nächsten konkreten Schritt. Keine Prüfung als bestanden bezeichnen, wenn sie nicht tatsächlich ausgeführt werden konnte.
+Vor externen Assets nur bestätigen, was tatsächlich erstellt/geprüft wurde. Bilder, Audio, Tests, CI oder Render niemals als vorhanden/erfolgreich darstellen, wenn sie nicht wirklich erzeugt oder ausgeführt wurden.
