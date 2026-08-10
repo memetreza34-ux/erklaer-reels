@@ -1,5 +1,5 @@
 {
-  "version": 7,
+  "version": 8,
   "composition": {
     "width": 1080,
     "height": 1920,
@@ -22,8 +22,10 @@
   },
   "subtitlePalette": {
     "textColor": "#F5F7FA",
-    "highlightColor": "#F5F7FA",
-    "highlightCurrentWord": false,
+    "highlightColor": "#B7794A",
+    "highlightCurrentWord": true,
+    "speakerSyncedWordHighlight": true,
+    "completeSpokenTextCoverageRequired": true,
     "backgroundColor": "transparent",
     "textStrokeColor": "rgba(0, 0, 0, 0.92)"
   },
