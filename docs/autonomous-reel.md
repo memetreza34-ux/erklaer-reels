@@ -142,9 +142,13 @@ Verbindlich:
 
 - zentrale Tatsachenbehauptungen vor Veröffentlichung prüfen
 - Primärquellen oder seriöse Fach-/Institutionenquellen bevorzugen
-- bei strittigen/aktuellen Aussagen mehrere unabhängige Quellen verwenden
+- bei wichtigen oder strittigen Aussagen nach Möglichkeit **mindestens zwei voneinander unabhängige Quellen** verwenden
 - konkrete URLs bzw. eindeutig auffindbare Quellen in `sources/sources.md`
 - keine erfundenen Quellen oder Platzhalterlinks
+
+## Audio-Nachweis
+
+Die Zielwerte allein reichen nicht als Nachweis. Vor einer finalen Freigabe müssen die **tatsächlichen LUFS und True Peak** des verarbeiteten Voice-overs gemessen und im Prüfbericht gespeichert sein, sobald das aktuelle Audio-Pacing-Schema diese Messung verlangt.
 
 ## Erlaubter Haltepunkt
 
@@ -158,7 +162,7 @@ ZIP ggf. sicher entpacken
 → Assets visuell prüfen
 → nummerierte Dateien nur als Routing-Hilfe verwenden
 → Voice-over exakt 1,10x / −16 LUFS / max. −1,5 dBTP verarbeiten
-→ Audio wirklich nachmessen
+→ tatsächliche LUFS und True Peak nachmessen
 → Timeline synchronisieren
 → jedes gesprochene Wort akustisch synchronisieren
 → 100-%-Untertitelabdeckung prüfen
