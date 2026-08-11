@@ -1,0 +1,101 @@
+GOOGLE FLOW – KOMPLETTER SERIELLER BILDLAUF
+
+AUFTRAG
+Erzeuge für dieses Reel genau 14 Bilder: Bild 00 als Cover und danach Bild 01 bis Bild 13 für die 13 Szenen.
+
+WICHTIG – DIESE EINE NACHRICHT IST DIE KOMPLETTE FREIGABE
+Sobald dieser Gesamtprompt einmal abgesendet wurde, arbeitest du selbstständig bis Bild 13 fertig ist. Frage NICHT nach Go, Weiter, OK, Bestätigung oder Erlaubnis.
+
+STRENG SERIELL – NIE PARALLEL
+Zu jedem Zeitpunkt darf genau EINE Bildgenerierung aktiv sein.
+Für jedes Bild zwingend:
+1. Nur den aktuellen Bildprompt bearbeiten.
+2. Genau EIN Bild erzeugen.
+3. Warten, bis dieses Bild vollständig fertig ist.
+4. Sofort exakt in den vorgesehenen Namen umbenennen.
+5. Prüfen, dass die Umbenennung erfolgreich ist.
+6. Erst danach automatisch das nächste Bild starten.
+Keine Batches, keine Queue, kein Vorladen, keine parallelen Generierungen und keine Ansammlung unbenannter Bilder.
+
+DATEINAMEN
+Bild 00.png = Cover
+Bild 01.png = Szene 1
+Bild 02.png = Szene 2
+Bild 03.png = Szene 3
+Bild 04.png = Szene 4
+Bild 05.png = Szene 5
+Bild 06.png = Szene 6
+Bild 07.png = Szene 7
+Bild 08.png = Szene 8
+Bild 09.png = Szene 9
+Bild 10.png = Szene 10
+Bild 11.png = Szene 11
+Bild 12.png = Szene 12
+Bild 13.png = Szene 13
+
+STYLE-MASTER
+Bild 00.png wird zuerst vollständig erzeugt. Das fertige Bild 00.png ist danach die verbindliche visuelle Referenz für ALLE Szenen: gleiche Palette, Papiertextur, Konturstärke, geometrische Formsprache, Lichtstimmung und Detailqualität. Der Cover-Hook darf NICHT automatisch auf spätere Szenen kopiert werden.
+
+TEXTREGEL
+Nur der im jeweiligen Prompt ausdrücklich verlangte deutsche Text darf sichtbar erscheinen. Kein zusätzlicher englischer Text, keine Fantasiewörter, keine Logos und keine Wasserzeichen.
+
+ENDE
+Erst nachdem Bild 00 bis Bild 13 vollständig erzeugt, korrekt umbenannt und die Nummerierung geprüft wurden, alle fertigen Bilder gemeinsam in den vorgesehenen Sammelordner legen. Nicht während der laufenden Generierung einzelne Bilder dorthin verschieben.
+
+────────────────────────────────────────
+
+BILD 00 – COVER
+DATEINAME NACH FERTIGSTELLUNG: Bild 00.png
+Vertical 9:16 premium 2D editorial atlas cover illustration for a German explainer Reel about time zones. Mature documentary visual language, textured warm paper, deep navy, warm cream and muted rust palette, bold hand-inked outlines, flat geometric shading, high clarity on a phone screen. Show one large globe with curved longitude lines, several analog clocks around it showing different times, and a subtle sun-to-night gradient across the Earth. The subject must instantly communicate global time differences. Add one large, perfectly readable German headline exactly: "WARUM GIBT ES ZEITZONEN?" Keep the headline high enough for social safe zones, with strong contrast and clean spacing. No other readable words, no English, no random labels, no flags, no logos, no watermark. This finished Bild 00.png is the binding master reference for palette, paper texture, line weight, geometry, lighting and detail quality of every following scene.
+
+BILD 01 – SZENE 1
+DATEINAME NACH FERTIGSTELLUNG: Bild 01.png
+Vertical 9:16 premium 2D editorial visual-metaphor illustration about time zones. Match Bild 00.png exactly in paper texture, deep navy, warm cream and muted rust palette, bold ink outlines, flat geometric shading and mature documentary tone. Show a simplified globe centered in frame, surrounded by several large analog clocks showing clearly different times, with thin longitude arcs wrapping the globe. Integrate the exact German text "ZEITZONEN" naturally as a small atlas-style heading. One clear visual moment, no humans, no flags, no panels, no empty subtitle band. Keep the center composition natural even though subtitles will later overlay the image. Only the requested German word may be readable; no English text, no random labels, no logo, no watermark.
+
+BILD 02 – SZENE 2
+DATEINAME NACH FERTIGSTELLUNG: Bild 02.png
+Vertical 9:16 premium 2D editorial atlas illustration, matching Bild 00.png exactly in style, palette, paper texture, line weight and lighting. Show a compact 19th-century European town seen slightly from above, a bright sun in the sky, a stone sundial casting a clear shadow, and a town clock being visually aligned with that solar shadow. Integrate the exact German text "LOKALE ZEIT" on a small period-style plaque. One coherent scene, mature documentary look, no split panels, no modern technology, no random readable text, no English, no logo, no watermark.
+
+BILD 03 – SZENE 3
+DATEINAME NACH FERTIGSTELLUNG: Bild 03.png
+Vertical 9:16 premium 2D editorial visual-metaphor illustration matching Bild 00.png. Show a clean globe segment and a small town directly beneath a high noon sun, with very short shadows and an analog clock close to twelve. A highlighted longitude line connects sun position, location and clock. Integrate the exact German text "MITTAG" in a small atlas label. Deep navy, warm cream, muted rust, textured paper, bold ink outlines, flat geometric shading. No additional readable text, no English, no logo, no watermark, no artificial blank subtitle stripe.
+
+BILD 04 – SZENE 4
+DATEINAME NACH FERTIGSTELLUNG: Bild 04.png
+Vertical 9:16 premium 2D editorial atlas illustration matching Bild 00.png. Show one continuous curved Earth surface with two small cities far apart east-to-west, each marked by an analog clock showing a noticeably different local time. Use longitude arcs and the changing solar angle to explain the difference visually. Keep it as one natural composition, not a split screen or comparison panel. Deep navy, warm cream, muted rust, paper grain, bold ink outlines, flat geometric shading. No readable text, no English, no logo, no watermark.
+
+BILD 05 – SZENE 5
+DATEINAME NACH FERTIGSTELLUNG: Bild 05.png
+Vertical 9:16 premium 2D editorial historical atlas illustration matching Bild 00.png exactly. Show a slow horse-drawn carriage traveling along a winding road between two distant small towns, with subtle clock symbols above each town showing slightly different times. The slow travel pace should make the mismatch feel harmless and manageable. Same deep navy, warm cream and muted rust palette, textured paper, bold outlines and mature documentary style. One clear moment, no readable text, no English, no logo, no watermark.
+
+BILD 06 – SZENE 6
+DATEINAME NACH FERTIGSTELLUNG: Bild 06.png
+Vertical 9:16 premium 2D editorial historical atlas illustration matching Bild 00.png. Show a steam locomotive arriving at a busy 19th-century station while telegraph wires cut across the scene. Around the station clock, several smaller local clocks display conflicting times, making the schedule visibly confusing. Integrate the exact German text "FAHRPLAN-CHAOS" on a single station notice board. Keep one coherent composition, not multiple panels. Deep navy, warm cream, muted rust, textured paper, bold ink outlines, flat geometric shading. No other readable text, no English, no logo, no watermark.
+
+BILD 07 – SZENE 7
+DATEINAME NACH FERTIGSTELLUNG: Bild 07.png
+Vertical 9:16 premium 2D editorial atlas illustration matching Bild 00.png. Show a simplified map of North America crossed by several major 19th-century railway lines, with station clocks along the routes snapping into a small set of coordinated standard times. Integrate the exact German text "1883" prominently but elegantly as the historical anchor. Same deep navy, warm cream, muted rust palette, tactile paper texture, bold ink outlines, flat geometric shading. No flags, no extra labels, no English text, no logo, no watermark.
+
+BILD 08 – SZENE 8
+DATEINAME NACH FERTIGSTELLUNG: Bild 08.png
+Vertical 9:16 premium 2D editorial atlas illustration matching Bild 00.png. Show a large globe with the prime meridian highlighted as a single strong vertical line passing through a marked point at Greenwich, while a subtle row of small 1880s conference delegates appears in the lower background as historical context. Integrate the exact German text "GREENWICH 1884" as a clean atlas caption. Same paper texture, deep navy, warm cream, muted rust, bold ink outlines and flat geometric shading. No other readable labels, no English, no logos, no watermark.
+
+BILD 09 – SZENE 9
+DATEINAME NACH FERTIGSTELLUNG: Bild 09.png
+Vertical 9:16 premium 2D editorial visual-metaphor atlas illustration matching Bild 00.png. Show a single globe divided into evenly spaced longitude wedges, visually suggesting 24 equal time zones, with a thin circular clock ring around the globe and one 15-degree wedge subtly emphasized. Integrate the exact German text "24 ZONEN" as the only readable label. Mature educational composition, deep navy, warm cream, muted rust, paper grain, bold ink outlines, flat geometric shading. No clutter, no equations, no English, no logo, no watermark.
+
+BILD 10 – SZENE 10
+DATEINAME NACH FERTIGSTELLUNG: Bild 10.png
+Vertical 9:16 premium 2D editorial atlas illustration matching Bild 00.png. Show one world map where faint perfectly straight theoretical time-zone bands are visibly interrupted by one bold irregular real-world time-zone boundary bending around land and regions. Integrate the exact German text "KEIN RASTER" as a small map heading. Same deep navy, warm cream, muted rust palette, tactile paper texture, bold ink outlines and flat shading. No additional readable map labels, no English, no logo, no watermark.
+
+BILD 11 – SZENE 11
+DATEINAME NACH FERTIGSTELLUNG: Bild 11.png
+Vertical 9:16 premium 2D editorial atlas illustration matching Bild 00.png. Show a stylized regional map with several nearby cities and one country-shaped land area. A bold time-zone boundary bends around the populated region so the cities remain on the same clock time, while a faint sun and straight longitude grid remain visible behind it. Integrate the exact German text "POLITISCHE GRENZEN" as a neutral atlas label. Mature, nonpartisan educational tone, deep navy, warm cream, muted rust, paper texture, bold ink outlines. No flags, no politicians, no extra text, no English, no logo, no watermark.
+
+BILD 12 – SZENE 12
+DATEINAME NACH FERTIGSTELLUNG: Bild 12.png
+Vertical 9:16 premium 2D editorial visual-metaphor illustration matching Bild 00.png. Show a pair of hands holding a folded world time-zone map. A faint perfect longitude grid is visible underneath, while the actual time-zone borders snake irregularly across the map. The visual should immediately invite the viewer to compare ideal geometry with real organization. Same mature atlas style, deep navy, warm cream, muted rust, textured paper, bold ink outlines, flat geometric shading. No readable text, no English, no logo, no watermark.
+
+BILD 13 – SZENE 13
+DATEINAME NACH FERTIGSTELLUNG: Bild 13.png
+Vertical 9:16 premium 2D editorial atlas illustration matching Bild 00.png. Show many small local town clocks around the edges gradually connecting through clean lines into one calm global time-zone system wrapped around a central globe. The final composition should feel organized, resolved and globally coordinated. Integrate the exact German text "GEMEINSAME ZEIT" as a concise closing statement. Match the cover's deep navy, warm cream, muted rust palette, paper grain, bold ink outlines and flat geometric shading exactly. No other readable text, no English, no logo, no watermark. Hold this exact visual unchanged for the final 0.7 seconds after narration ends.
