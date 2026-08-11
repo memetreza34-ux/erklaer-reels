@@ -1,1 +1,45 @@
-{"sceneId":"scene-09","order":9,"title":"24 Zonen","narration":"Rechnerisch lässt sich die Erde in 24 Zonen zu jeweils etwa 15 Längengraden teilen, weil ein Tag rund 24 Stunden hat.","imageText":"24 ZONEN","visualIdea":"Globus mit 24 gleichmäßigen Segmenten; ein Kreisring zeigt 24 Stunden und 15-Grad-Sektoren.","continuityNotes":"Mathematisch sauber und sehr leicht lesbar, aber keine Infografik-Panels.","audioCue":"Rechnerisch lässt sich die Erde","leadInSeconds":0.2,"subtitleCues":["Rechnerisch lässt sich die Erde in","24 Zonen zu jeweils etwa 15","Längengraden teilen, weil ein Tag rund","24 Stunden hat."],"subtitlePosition":"center","durationSeconds":5.2,"expectedImageFileName":"scene-09.png","promptStatus":"ready","imageStatus":"missing","assetVerification":null,"status":"prompt-ready"}
+{
+  "sceneId": "scene-09",
+  "order": 9,
+  "title": "24 Zonen",
+  "narration": "Rechnerisch lässt sich die Erde in 24 Zonen zu jeweils etwa 15 Längengraden teilen, weil ein Tag rund 24 Stunden hat.",
+  "imageText": "24 ZONEN",
+  "visualIdea": "Globus mit 24 gleichmäßigen Segmenten; ein Kreisring zeigt 24 Stunden und 15-Grad-Sektoren.",
+  "continuityNotes": "Mathematisch sauber und sehr leicht lesbar, aber keine Infografik-Panels.",
+  "audioCue": "Rechnerisch lässt sich die Erde",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [
+    "Rechnerisch lässt sich die Erde in",
+    "24 Zonen zu jeweils etwa 15",
+    "Längengraden teilen, weil ein Tag rund",
+    "24 Stunden hat."
+  ],
+  "subtitlePosition": "center",
+  "durationSeconds": 5.2,
+  "expectedImageFileName": "scene-09.jpeg",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-09",
+    "confirmedSceneOrder": 9,
+    "visibleSummary": "This image perfectly matches the visual prompt.",
+    "reason": "Visual review has confirmed that it matches the prompt completely.",
+    "comparedFields": [
+      "narration",
+      "visualIdea",
+      "imageText",
+      "imagePrompt",
+      "title",
+      "hook"
+    ],
+    "matchMethod": "visual-content-review",
+    "reviewedAt": "2026-08-11T16:56:52.055Z"
+  },
+  "status": "image-ready",
+  "source": "numbered-images/Bild 09.jpeg",
+  "matchConfidence": 1,
+  "matchReason": "Visual review has confirmed that it matches the prompt completely."
+}

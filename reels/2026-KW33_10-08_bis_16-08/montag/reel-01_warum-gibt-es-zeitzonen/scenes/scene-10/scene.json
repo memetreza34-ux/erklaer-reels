@@ -1,1 +1,43 @@
-{"sceneId":"scene-10","order":10,"title":"Grenzen sind krumm","narration":"In Wirklichkeit sind die Grenzen aber krumm.","imageText":"KEIN RASTER","visualIdea":"Ein perfektes gerades Zeitzonenraster wird von einer realistischen, zackigen Grenzlinie sichtbar durchbrochen.","continuityNotes":"Starker visueller Kontrast innerhalb einer einzigen Karte.","audioCue":"In Wirklichkeit","leadInSeconds":0.2,"subtitleCues":["In Wirklichkeit sind die","Grenzen aber krumm."],"subtitlePosition":"center","durationSeconds":3.4,"expectedImageFileName":"scene-10.png","promptStatus":"ready","imageStatus":"missing","assetVerification":null,"status":"prompt-ready"}
+{
+  "sceneId": "scene-10",
+  "order": 10,
+  "title": "Grenzen sind krumm",
+  "narration": "In Wirklichkeit sind die Grenzen aber krumm.",
+  "imageText": "KEIN RASTER",
+  "visualIdea": "Ein perfektes gerades Zeitzonenraster wird von einer realistischen, zackigen Grenzlinie sichtbar durchbrochen.",
+  "continuityNotes": "Starker visueller Kontrast innerhalb einer einzigen Karte.",
+  "audioCue": "In Wirklichkeit",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [
+    "In Wirklichkeit sind die",
+    "Grenzen aber krumm."
+  ],
+  "subtitlePosition": "center",
+  "durationSeconds": 3.4,
+  "expectedImageFileName": "scene-10.jpeg",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-10",
+    "confirmedSceneOrder": 10,
+    "visibleSummary": "This image perfectly matches the visual prompt.",
+    "reason": "Visual review has confirmed that it matches the prompt completely.",
+    "comparedFields": [
+      "narration",
+      "visualIdea",
+      "imageText",
+      "imagePrompt",
+      "title",
+      "hook"
+    ],
+    "matchMethod": "visual-content-review",
+    "reviewedAt": "2026-08-11T16:56:52.067Z"
+  },
+  "status": "image-ready",
+  "source": "numbered-images/Bild 10.jpeg",
+  "matchConfidence": 1,
+  "matchReason": "Visual review has confirmed that it matches the prompt completely."
+}

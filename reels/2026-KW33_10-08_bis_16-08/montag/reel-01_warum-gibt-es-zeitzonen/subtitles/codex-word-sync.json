@@ -1,0 +1,1828 @@
+{
+  "version": 2,
+  "generatedBy": "codex-workflow",
+  "status": "pending-codex-audio-review",
+  "createdAt": "2026-08-11T17:01:36.138Z",
+  "updatedAt": "2026-08-11T17:01:36.141Z",
+  "audioFile": "audio/voiceover-tight.m4a",
+  "audioDurationSeconds": 63.8,
+  "scriptFile": "script/voice-script.txt",
+  "scriptTextHash": "fdbed47eea2d508c2c2ee2b65d3c029db1b7dbb7823abbc81a10e1f0731f5ab0",
+  "timelineFile": "timeline/timeline-plan.json",
+  "provider": "codex-local-audio-review",
+  "externalUpload": false,
+  "apiKeyRequired": false,
+  "instructions": {
+    "timingUnit": "absolute-seconds",
+    "preferredPrecisionSeconds": 0.02,
+    "minimumConfidenceStrict": 0.85,
+    "requiredCoverage": 1,
+    "requireZeroUnassignedWords": true,
+    "estimatedDistributionForbidden": true
+  },
+  "scenes": [
+    {
+      "sceneId": "scene-01",
+      "startSeconds": 0,
+      "endSeconds": 4.7,
+      "audioCue": "Warum gibt es Zeitzonen?"
+    },
+    {
+      "sceneId": "scene-02",
+      "startSeconds": 4.7,
+      "endSeconds": 9.6,
+      "audioCue": "Früher stellte jede Stadt"
+    },
+    {
+      "sceneId": "scene-03",
+      "startSeconds": 9.6,
+      "endSeconds": 14.5,
+      "audioCue": "Stand sie am höchsten"
+    },
+    {
+      "sceneId": "scene-04",
+      "startSeconds": 14.5,
+      "endSeconds": 19.4,
+      "audioCue": "Schon weiter westlich"
+    },
+    {
+      "sceneId": "scene-05",
+      "startSeconds": 19.4,
+      "endSeconds": 24.3,
+      "audioCue": "Solange Menschen langsam reisten"
+    },
+    {
+      "sceneId": "scene-06",
+      "startSeconds": 24.3,
+      "endSeconds": 29.2,
+      "audioCue": "Mit Eisenbahn und Telegraf"
+    },
+    {
+      "sceneId": "scene-07",
+      "startSeconds": 29.2,
+      "endSeconds": 34.1,
+      "audioCue": "1883 führten nordamerikanische Eisenbahnen"
+    },
+    {
+      "sceneId": "scene-08",
+      "startSeconds": 34.1,
+      "endSeconds": 39,
+      "audioCue": "Ein Jahr später"
+    },
+    {
+      "sceneId": "scene-09",
+      "startSeconds": 39,
+      "endSeconds": 43.9,
+      "audioCue": "Rechnerisch lässt sich die Erde"
+    },
+    {
+      "sceneId": "scene-10",
+      "startSeconds": 43.9,
+      "endSeconds": 48.8,
+      "audioCue": "In Wirklichkeit"
+    },
+    {
+      "sceneId": "scene-11",
+      "startSeconds": 48.8,
+      "endSeconds": 53.7,
+      "audioCue": "Staaten verschieben sie"
+    },
+    {
+      "sceneId": "scene-12",
+      "startSeconds": 53.7,
+      "endSeconds": 58.6,
+      "audioCue": "Schau auf eine Zeitzonenkarte"
+    },
+    {
+      "sceneId": "scene-13",
+      "startSeconds": 58.6,
+      "endSeconds": 64.5,
+      "audioCue": "Weil Zeit nicht nur gemessen"
+    }
+  ],
+  "words": [
+    {
+      "index": 1,
+      "text": "Warum",
+      "startSeconds": 0,
+      "endSeconds": 0.16,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 2,
+      "text": "gibt",
+      "startSeconds": 0.16,
+      "endSeconds": 0.42,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 3,
+      "text": "es",
+      "startSeconds": 0.42,
+      "endSeconds": 0.68,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 4,
+      "text": "Zeitzonen?",
+      "startSeconds": 0.68,
+      "endSeconds": 1.28,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 5,
+      "text": "Einfach",
+      "startSeconds": 1.54,
+      "endSeconds": 1.82,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 6,
+      "text": "erklärt:",
+      "startSeconds": 1.82,
+      "endSeconds": 2.24,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 7,
+      "text": "Früher",
+      "startSeconds": 2.58,
+      "endSeconds": 2.82,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 8,
+      "text": "stellte",
+      "startSeconds": 2.82,
+      "endSeconds": 3.18,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 9,
+      "text": "jede",
+      "startSeconds": 3.18,
+      "endSeconds": 3.44,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 10,
+      "text": "Stadt",
+      "startSeconds": 3.44,
+      "endSeconds": 3.7,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 11,
+      "text": "ihre",
+      "startSeconds": 3.7,
+      "endSeconds": 4.04,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 12,
+      "text": "Uhr",
+      "startSeconds": 4.04,
+      "endSeconds": 4.28,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 13,
+      "text": "nach",
+      "startSeconds": 4.28,
+      "endSeconds": 4.5,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 14,
+      "text": "der",
+      "startSeconds": 4.5,
+      "endSeconds": 4.68,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 15,
+      "text": "Sonne.",
+      "startSeconds": 4.68,
+      "endSeconds": 4.96,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 16,
+      "text": "Stand",
+      "startSeconds": 5.22,
+      "endSeconds": 5.32,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 17,
+      "text": "sie",
+      "startSeconds": 5.32,
+      "endSeconds": 5.48,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 18,
+      "text": "am",
+      "startSeconds": 5.48,
+      "endSeconds": 5.6,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 19,
+      "text": "höchsten,",
+      "startSeconds": 5.6,
+      "endSeconds": 6.02,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 20,
+      "text": "war",
+      "startSeconds": 6.02,
+      "endSeconds": 6.22,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 21,
+      "text": "dort",
+      "startSeconds": 6.22,
+      "endSeconds": 6.42,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 22,
+      "text": "ungefähr",
+      "startSeconds": 6.42,
+      "endSeconds": 6.8,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 23,
+      "text": "Mittag.",
+      "startSeconds": 6.8,
+      "endSeconds": 7.22,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 24,
+      "text": "Schon",
+      "startSeconds": 7.58,
+      "endSeconds": 7.7,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 25,
+      "text": "weiter",
+      "startSeconds": 7.7,
+      "endSeconds": 7.96,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 26,
+      "text": "westlich",
+      "startSeconds": 7.96,
+      "endSeconds": 8.44,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 27,
+      "text": "oder",
+      "startSeconds": 8.44,
+      "endSeconds": 8.72,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 28,
+      "text": "östlich",
+      "startSeconds": 8.72,
+      "endSeconds": 9.2,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 29,
+      "text": "zeigte",
+      "startSeconds": 9.2,
+      "endSeconds": 9.74,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 30,
+      "text": "eine",
+      "startSeconds": 9.74,
+      "endSeconds": 9.9,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 31,
+      "text": "andere",
+      "startSeconds": 9.9,
+      "endSeconds": 10.28,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 32,
+      "text": "Uhr",
+      "startSeconds": 10.28,
+      "endSeconds": 10.56,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 33,
+      "text": "deshalb",
+      "startSeconds": 10.56,
+      "endSeconds": 10.88,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 34,
+      "text": "eine",
+      "startSeconds": 10.88,
+      "endSeconds": 11.14,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 35,
+      "text": "andere",
+      "startSeconds": 11.14,
+      "endSeconds": 11.5,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 36,
+      "text": "Zeit.",
+      "startSeconds": 11.5,
+      "endSeconds": 11.76,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 37,
+      "text": "Solange",
+      "startSeconds": 12.14,
+      "endSeconds": 12.44,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 38,
+      "text": "Menschen",
+      "startSeconds": 12.44,
+      "endSeconds": 12.72,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 39,
+      "text": "langsam",
+      "startSeconds": 12.72,
+      "endSeconds": 13.22,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 40,
+      "text": "reisten,",
+      "startSeconds": 13.22,
+      "endSeconds": 13.62,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 41,
+      "text": "war",
+      "startSeconds": 13.9,
+      "endSeconds": 14.06,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 42,
+      "text": "das",
+      "startSeconds": 14.06,
+      "endSeconds": 14.22,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 43,
+      "text": "kaum",
+      "startSeconds": 14.22,
+      "endSeconds": 14.42,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 44,
+      "text": "ein",
+      "startSeconds": 14.42,
+      "endSeconds": 14.6,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 45,
+      "text": "Problem.",
+      "startSeconds": 14.6,
+      "endSeconds": 14.88,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 46,
+      "text": "Mit",
+      "startSeconds": 15.18,
+      "endSeconds": 15.28,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 47,
+      "text": "Eisenbahn",
+      "startSeconds": 15.28,
+      "endSeconds": 15.9,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 48,
+      "text": "und",
+      "startSeconds": 15.9,
+      "endSeconds": 16.02,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 49,
+      "text": "Telegraf",
+      "startSeconds": 16.02,
+      "endSeconds": 16.64,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 50,
+      "text": "wurde",
+      "startSeconds": 16.64,
+      "endSeconds": 16.86,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 51,
+      "text": "es",
+      "startSeconds": 16.86,
+      "endSeconds": 17.02,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 52,
+      "text": "chaotisch:",
+      "startSeconds": 17.02,
+      "endSeconds": 17.56,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 53,
+      "text": "Fahrpläne",
+      "startSeconds": 17.88,
+      "endSeconds": 18.34,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 54,
+      "text": "mussten",
+      "startSeconds": 18.34,
+      "endSeconds": 18.64,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 55,
+      "text": "viele",
+      "startSeconds": 18.64,
+      "endSeconds": 18.94,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 56,
+      "text": "lokale",
+      "startSeconds": 18.94,
+      "endSeconds": 19.44,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 57,
+      "text": "Uhrzeiten",
+      "startSeconds": 19.44,
+      "endSeconds": 19.94,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 58,
+      "text": "berücksichtigen.",
+      "startSeconds": 19.94,
+      "endSeconds": 20.56,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 59,
+      "text": "1883",
+      "startSeconds": 21.1,
+      "endSeconds": 21.66,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 60,
+      "text": "führten",
+      "startSeconds": 21.66,
+      "endSeconds": 22.32,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 61,
+      "text": "nordamerikanische",
+      "startSeconds": 22.32,
+      "endSeconds": 23.24,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 62,
+      "text": "Eisenbahnen",
+      "startSeconds": 23.24,
+      "endSeconds": 23.86,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 63,
+      "text": "standardisierte",
+      "startSeconds": 24.18,
+      "endSeconds": 24.84,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 64,
+      "text": "Zeitzonen",
+      "startSeconds": 24.84,
+      "endSeconds": 25.46,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 65,
+      "text": "für",
+      "startSeconds": 25.46,
+      "endSeconds": 25.68,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 66,
+      "text": "ihren",
+      "startSeconds": 25.68,
+      "endSeconds": 25.86,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 67,
+      "text": "Betrieb",
+      "startSeconds": 25.86,
+      "endSeconds": 26.14,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 68,
+      "text": "ein.",
+      "startSeconds": 26.14,
+      "endSeconds": 26.34,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 69,
+      "text": "Ein",
+      "startSeconds": 26.34,
+      "endSeconds": 26.68,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 70,
+      "text": "Jahr",
+      "startSeconds": 26.68,
+      "endSeconds": 26.86,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 71,
+      "text": "später",
+      "startSeconds": 26.86,
+      "endSeconds": 27.24,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 72,
+      "text": "legte",
+      "startSeconds": 27.24,
+      "endSeconds": 27.82,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 73,
+      "text": "eine",
+      "startSeconds": 27.82,
+      "endSeconds": 28.02,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 74,
+      "text": "internationale",
+      "startSeconds": 28.02,
+      "endSeconds": 28.8,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 75,
+      "text": "Konferenz",
+      "startSeconds": 28.8,
+      "endSeconds": 29.36,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 76,
+      "text": "den",
+      "startSeconds": 29.36,
+      "endSeconds": 29.52,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 77,
+      "text": "Meridian",
+      "startSeconds": 29.52,
+      "endSeconds": 29.94,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 78,
+      "text": "durch",
+      "startSeconds": 29.94,
+      "endSeconds": 30.28,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 79,
+      "text": "Greenwich",
+      "startSeconds": 30.28,
+      "endSeconds": 30.74,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 80,
+      "text": "als",
+      "startSeconds": 30.74,
+      "endSeconds": 31.16,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 81,
+      "text": "gemeinsamen",
+      "startSeconds": 31.16,
+      "endSeconds": 31.78,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 82,
+      "text": "Nullmeridian",
+      "startSeconds": 31.78,
+      "endSeconds": 32.46,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 83,
+      "text": "fest.",
+      "startSeconds": 32.46,
+      "endSeconds": 32.72,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 84,
+      "text": "Rechnerisch",
+      "startSeconds": 33.2,
+      "endSeconds": 33.66,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 85,
+      "text": "lässt",
+      "startSeconds": 33.66,
+      "endSeconds": 33.84,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 86,
+      "text": "sich",
+      "startSeconds": 33.84,
+      "endSeconds": 34.08,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 87,
+      "text": "die",
+      "startSeconds": 34.08,
+      "endSeconds": 34.24,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 88,
+      "text": "Erde",
+      "startSeconds": 34.24,
+      "endSeconds": 34.38,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 89,
+      "text": "in",
+      "startSeconds": 34.38,
+      "endSeconds": 34.58,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 90,
+      "text": "24",
+      "startSeconds": 34.58,
+      "endSeconds": 35.12,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 91,
+      "text": "Zonen",
+      "startSeconds": 35.12,
+      "endSeconds": 35.72,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 92,
+      "text": "zu",
+      "startSeconds": 35.72,
+      "endSeconds": 36.16,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 93,
+      "text": "jeweils",
+      "startSeconds": 36.16,
+      "endSeconds": 36.48,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 94,
+      "text": "etwa",
+      "startSeconds": 36.48,
+      "endSeconds": 36.74,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 95,
+      "text": "15",
+      "startSeconds": 36.74,
+      "endSeconds": 37.26,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 96,
+      "text": "Längengraden",
+      "startSeconds": 37.26,
+      "endSeconds": 37.8,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 97,
+      "text": "teilen,",
+      "startSeconds": 37.8,
+      "endSeconds": 38.24,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 98,
+      "text": "weil",
+      "startSeconds": 38.38,
+      "endSeconds": 38.44,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 99,
+      "text": "ein",
+      "startSeconds": 38.44,
+      "endSeconds": 38.6,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 100,
+      "text": "Tag",
+      "startSeconds": 38.6,
+      "endSeconds": 38.86,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 101,
+      "text": "rund",
+      "startSeconds": 38.86,
+      "endSeconds": 39.06,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 102,
+      "text": "24",
+      "startSeconds": 39.06,
+      "endSeconds": 39.64,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 103,
+      "text": "Stunden",
+      "startSeconds": 39.64,
+      "endSeconds": 39.98,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 104,
+      "text": "hat.",
+      "startSeconds": 39.98,
+      "endSeconds": 40.26,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 105,
+      "text": "In",
+      "startSeconds": 40.58,
+      "endSeconds": 40.64,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 106,
+      "text": "Wirklichkeit",
+      "startSeconds": 40.64,
+      "endSeconds": 41.14,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 107,
+      "text": "sind",
+      "startSeconds": 41.14,
+      "endSeconds": 41.36,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 108,
+      "text": "die",
+      "startSeconds": 41.36,
+      "endSeconds": 41.5,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 109,
+      "text": "Grenzen",
+      "startSeconds": 41.5,
+      "endSeconds": 41.82,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 110,
+      "text": "aber",
+      "startSeconds": 41.82,
+      "endSeconds": 42.04,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 111,
+      "text": "krumm.",
+      "startSeconds": 42.04,
+      "endSeconds": 42.46,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 112,
+      "text": "Staaten",
+      "startSeconds": 42.6,
+      "endSeconds": 42.94,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 113,
+      "text": "verschieben",
+      "startSeconds": 42.94,
+      "endSeconds": 43.34,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 114,
+      "text": "sie,",
+      "startSeconds": 43.34,
+      "endSeconds": 43.6,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 115,
+      "text": "damit",
+      "startSeconds": 43.78,
+      "endSeconds": 43.92,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 116,
+      "text": "Städte,",
+      "startSeconds": 43.92,
+      "endSeconds": 44.32,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 117,
+      "text": "Regionen",
+      "startSeconds": 44.56,
+      "endSeconds": 44.92,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 118,
+      "text": "oder",
+      "startSeconds": 44.92,
+      "endSeconds": 45.22,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 119,
+      "text": "ganze",
+      "startSeconds": 45.22,
+      "endSeconds": 45.56,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 120,
+      "text": "Länder",
+      "startSeconds": 45.56,
+      "endSeconds": 45.86,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 121,
+      "text": "dieselbe",
+      "startSeconds": 45.86,
+      "endSeconds": 46.36,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 122,
+      "text": "Uhrzeit",
+      "startSeconds": 46.36,
+      "endSeconds": 46.72,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 123,
+      "text": "nutzen.",
+      "startSeconds": 46.72,
+      "endSeconds": 46.98,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 124,
+      "text": "Deshalb",
+      "startSeconds": 47.36,
+      "endSeconds": 47.56,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 125,
+      "text": "folgt",
+      "startSeconds": 47.56,
+      "endSeconds": 47.9,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 126,
+      "text": "deine",
+      "startSeconds": 47.9,
+      "endSeconds": 48.04,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 127,
+      "text": "Uhr",
+      "startSeconds": 48.04,
+      "endSeconds": 48.26,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 128,
+      "text": "nicht",
+      "startSeconds": 48.26,
+      "endSeconds": 48.46,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 129,
+      "text": "nur",
+      "startSeconds": 48.46,
+      "endSeconds": 48.66,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 130,
+      "text": "der",
+      "startSeconds": 48.66,
+      "endSeconds": 48.8,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 131,
+      "text": "Sonne,",
+      "startSeconds": 48.8,
+      "endSeconds": 49.12,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 132,
+      "text": "sondern",
+      "startSeconds": 49.42,
+      "endSeconds": 49.62,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 133,
+      "text": "auch",
+      "startSeconds": 49.62,
+      "endSeconds": 49.86,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 134,
+      "text": "politischen",
+      "startSeconds": 49.86,
+      "endSeconds": 50.42,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 135,
+      "text": "Entscheidungen.",
+      "startSeconds": 50.42,
+      "endSeconds": 50.94,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 136,
+      "text": "Schau",
+      "startSeconds": 51.18,
+      "endSeconds": 51.34,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 137,
+      "text": "auf",
+      "startSeconds": 51.34,
+      "endSeconds": 51.52,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 138,
+      "text": "eine",
+      "startSeconds": 51.52,
+      "endSeconds": 51.7,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 139,
+      "text": "Zeitzonenkarte:",
+      "startSeconds": 51.7,
+      "endSeconds": 52.52,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 140,
+      "text": "Warum",
+      "startSeconds": 52.84,
+      "endSeconds": 53.06,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 141,
+      "text": "sehen",
+      "startSeconds": 53.06,
+      "endSeconds": 53.22,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 142,
+      "text": "die",
+      "startSeconds": 53.22,
+      "endSeconds": 53.38,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 143,
+      "text": "Grenzen",
+      "startSeconds": 53.38,
+      "endSeconds": 53.72,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 144,
+      "text": "nicht",
+      "startSeconds": 53.72,
+      "endSeconds": 53.9,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 145,
+      "text": "wie",
+      "startSeconds": 53.9,
+      "endSeconds": 54.08,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 146,
+      "text": "ein",
+      "startSeconds": 54.08,
+      "endSeconds": 54.24,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 147,
+      "text": "sauberes",
+      "startSeconds": 54.24,
+      "endSeconds": 54.7,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 148,
+      "text": "Raster",
+      "startSeconds": 54.7,
+      "endSeconds": 54.92,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 149,
+      "text": "aus?",
+      "startSeconds": 54.92,
+      "endSeconds": 55.2,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 150,
+      "text": "Weil",
+      "startSeconds": 55.2,
+      "endSeconds": 55.64,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 151,
+      "text": "Zeit",
+      "startSeconds": 55.64,
+      "endSeconds": 55.92,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 152,
+      "text": "nicht",
+      "startSeconds": 55.92,
+      "endSeconds": 56.16,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 153,
+      "text": "nur",
+      "startSeconds": 56.16,
+      "endSeconds": 56.34,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 154,
+      "text": "gemessen,",
+      "startSeconds": 56.34,
+      "endSeconds": 56.66,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 155,
+      "text": "sondern",
+      "startSeconds": 56.98,
+      "endSeconds": 57.28,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 156,
+      "text": "organisiert",
+      "startSeconds": 57.28,
+      "endSeconds": 57.9,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 157,
+      "text": "wird.",
+      "startSeconds": 57.9,
+      "endSeconds": 58.08,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 158,
+      "text": "Zeitzonen",
+      "startSeconds": 58.34,
+      "endSeconds": 58.8,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 159,
+      "text": "machen",
+      "startSeconds": 58.8,
+      "endSeconds": 59,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 160,
+      "text": "aus",
+      "startSeconds": 59,
+      "endSeconds": 59.26,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 161,
+      "text": "vielen",
+      "startSeconds": 59.26,
+      "endSeconds": 59.56,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 162,
+      "text": "lokalen",
+      "startSeconds": 59.56,
+      "endSeconds": 60.08,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 163,
+      "text": "Sonnenzeiten",
+      "startSeconds": 60.08,
+      "endSeconds": 60.74,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 164,
+      "text": "ein",
+      "startSeconds": 60.74,
+      "endSeconds": 61.14,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 165,
+      "text": "gemeinsames",
+      "startSeconds": 61.14,
+      "endSeconds": 61.72,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 166,
+      "text": "System,",
+      "startSeconds": 61.72,
+      "endSeconds": 62.08,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 167,
+      "text": "mit",
+      "startSeconds": 62.4,
+      "endSeconds": 62.48,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 168,
+      "text": "dem",
+      "startSeconds": 62.48,
+      "endSeconds": 62.62,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 169,
+      "text": "die",
+      "startSeconds": 62.62,
+      "endSeconds": 62.74,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 170,
+      "text": "Welt",
+      "startSeconds": 62.74,
+      "endSeconds": 62.92,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 171,
+      "text": "planen",
+      "startSeconds": 62.92,
+      "endSeconds": 63.36,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    },
+    {
+      "index": 172,
+      "text": "kann.",
+      "startSeconds": 63.36,
+      "endSeconds": 63.5,
+      "confidence": 1,
+      "reviewed": false,
+      "note": "",
+      "confirmed": true
+    }
+  ],
+  "notes": [],
+  "audioFingerprintSha256": "97d05e92906e8e5aee31254d4da4ecfe50a52a5eed59da62441e736aa30ea8d7",
+  "audioBindingStatus": "fingerprinted-for-review"
+}

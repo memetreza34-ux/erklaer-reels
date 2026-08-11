@@ -135,8 +135,7 @@ export function buildAudioPacingFilter({
   outputSampleRateHz = AUDIO_PACING_STYLE.outputSampleRateHz
 } = {}) {
   const rate = normalizePlaybackRate(playbackRate);
-  const silenceFilter = [
-    'silenceremove',
+  const silenceFilterArgs = [
     'start_periods=1',
     'start_duration=0.12',
     'start_threshold=-38dB',
@@ -147,6 +146,7 @@ export function buildAudioPacingFilter({
     `stop_silence=${Number(retainedPauseSeconds)}`,
     'detection=rms'
   ].join(':');
+  const silenceFilter = `silenceremove=${silenceFilterArgs}`;
   const filters = [silenceFilter];
 
   if (rate > 1.0001) filters.push(`atempo=${rate}`);

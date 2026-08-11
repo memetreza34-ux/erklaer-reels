@@ -1,1 +1,394 @@
-{"audio":{"expectedFile":"audio/voiceover.mp3","status":"missing"},"scenes":[{"sceneId":"scene-01","expectedFile":"scenes/scene-01/scene-01.png","verification":null,"status":"missing"},{"sceneId":"scene-02","expectedFile":"scenes/scene-02/scene-02.png","verification":null,"status":"missing"},{"sceneId":"scene-03","expectedFile":"scenes/scene-03/scene-03.png","verification":null,"status":"missing"},{"sceneId":"scene-04","expectedFile":"scenes/scene-04/scene-04.png","verification":null,"status":"missing"},{"sceneId":"scene-05","expectedFile":"scenes/scene-05/scene-05.png","verification":null,"status":"missing"},{"sceneId":"scene-06","expectedFile":"scenes/scene-06/scene-06.png","verification":null,"status":"missing"},{"sceneId":"scene-07","expectedFile":"scenes/scene-07/scene-07.png","verification":null,"status":"missing"},{"sceneId":"scene-08","expectedFile":"scenes/scene-08/scene-08.png","verification":null,"status":"missing"},{"sceneId":"scene-09","expectedFile":"scenes/scene-09/scene-09.png","verification":null,"status":"missing"},{"sceneId":"scene-10","expectedFile":"scenes/scene-10/scene-10.png","verification":null,"status":"missing"},{"sceneId":"scene-11","expectedFile":"scenes/scene-11/scene-11.png","verification":null,"status":"missing"},{"sceneId":"scene-12","expectedFile":"scenes/scene-12/scene-12.png","verification":null,"status":"missing"},{"sceneId":"scene-13","expectedFile":"scenes/scene-13/scene-13.png","verification":null,"status":"missing"}],"cover":{"expectedFile":"cover/cover.png","verification":null,"status":"missing"}}
+{
+  "audio": {
+    "expectedFile": "audio/voiceover-tight.m4a",
+    "source": "audio/voice.m4a",
+    "confidence": 1,
+    "status": "ready",
+    "originalFile": "audio/voiceover.m4a",
+    "pauseTrimmed": true,
+    "tempoAdjusted": true,
+    "loudnessNormalized": true,
+    "loudnessMeasured": true,
+    "measuredIntegratedLufs": -16.26,
+    "measuredTruePeakDbtp": -2.22,
+    "playbackRate": 1.1,
+    "outputSampleRateHz": 48000,
+    "pauseTrimSettings": {
+      "thresholdDb": -35,
+      "minimumLongPauseSeconds": 0.24,
+      "retainedPauseSeconds": 0.05,
+      "playbackRate": 1.1,
+      "loudnessTargetLufs": -16,
+      "truePeakDbtp": -1.5,
+      "loudnessRangeLra": 11,
+      "outputSampleRateHz": 48000
+    },
+    "audioFingerprintSha256": "97d05e92906e8e5aee31254d4da4ecfe50a52a5eed59da62441e736aa30ea8d7",
+    "audioBindingStatus": "verified-after-measurement"
+  },
+  "scenes": [
+    {
+      "sceneId": "scene-01",
+      "expectedFile": "scenes/scene-01/scene-01.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-01",
+        "confirmedSceneOrder": 1,
+        "visibleSummary": "This image perfectly matches the visual prompt.",
+        "reason": "Visual review has confirmed that it matches the prompt completely.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt",
+          "title",
+          "hook"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-11T16:56:51.929Z"
+      },
+      "status": "ready",
+      "source": "numbered-images/Bild 01.jpeg",
+      "confidence": 1
+    },
+    {
+      "sceneId": "scene-02",
+      "expectedFile": "scenes/scene-02/scene-02.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-02",
+        "confirmedSceneOrder": 2,
+        "visibleSummary": "This image perfectly matches the visual prompt.",
+        "reason": "Visual review has confirmed that it matches the prompt completely.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt",
+          "title",
+          "hook"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-11T16:56:51.939Z"
+      },
+      "status": "ready",
+      "source": "numbered-images/Bild 02.jpeg",
+      "confidence": 1
+    },
+    {
+      "sceneId": "scene-03",
+      "expectedFile": "scenes/scene-03/scene-03.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-03",
+        "confirmedSceneOrder": 3,
+        "visibleSummary": "This image perfectly matches the visual prompt.",
+        "reason": "Visual review has confirmed that it matches the prompt completely.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt",
+          "title",
+          "hook"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-11T16:56:51.949Z"
+      },
+      "status": "ready",
+      "source": "numbered-images/Bild 03.jpeg",
+      "confidence": 1
+    },
+    {
+      "sceneId": "scene-04",
+      "expectedFile": "scenes/scene-04/scene-04.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-04",
+        "confirmedSceneOrder": 4,
+        "visibleSummary": "This image perfectly matches the visual prompt.",
+        "reason": "Visual review has confirmed that it matches the prompt completely.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt",
+          "title",
+          "hook"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-11T16:56:51.958Z"
+      },
+      "status": "ready",
+      "source": "numbered-images/Bild 04.jpeg",
+      "confidence": 1
+    },
+    {
+      "sceneId": "scene-05",
+      "expectedFile": "scenes/scene-05/scene-05.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-05",
+        "confirmedSceneOrder": 5,
+        "visibleSummary": "This image perfectly matches the visual prompt.",
+        "reason": "Visual review has confirmed that it matches the prompt completely.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt",
+          "title",
+          "hook"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-11T16:56:51.973Z"
+      },
+      "status": "ready",
+      "source": "numbered-images/Bild 05.jpeg",
+      "confidence": 1
+    },
+    {
+      "sceneId": "scene-06",
+      "expectedFile": "scenes/scene-06/scene-06.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-06",
+        "confirmedSceneOrder": 6,
+        "visibleSummary": "This image perfectly matches the visual prompt.",
+        "reason": "Visual review has confirmed that it matches the prompt completely.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt",
+          "title",
+          "hook"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-11T16:56:51.982Z"
+      },
+      "status": "ready",
+      "source": "numbered-images/Bild 06.jpeg",
+      "confidence": 1
+    },
+    {
+      "sceneId": "scene-07",
+      "expectedFile": "scenes/scene-07/scene-07.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-07",
+        "confirmedSceneOrder": 7,
+        "visibleSummary": "This image perfectly matches the visual prompt.",
+        "reason": "Visual review has confirmed that it matches the prompt completely.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt",
+          "title",
+          "hook"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-11T16:56:51.993Z"
+      },
+      "status": "ready",
+      "source": "numbered-images/Bild 07.jpeg",
+      "confidence": 1
+    },
+    {
+      "sceneId": "scene-08",
+      "expectedFile": "scenes/scene-08/scene-08.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-08",
+        "confirmedSceneOrder": 8,
+        "visibleSummary": "This image perfectly matches the visual prompt.",
+        "reason": "Visual review has confirmed that it matches the prompt completely.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt",
+          "title",
+          "hook"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-11T16:56:52.035Z"
+      },
+      "status": "ready",
+      "source": "numbered-images/Bild 08.jpeg",
+      "confidence": 1
+    },
+    {
+      "sceneId": "scene-09",
+      "expectedFile": "scenes/scene-09/scene-09.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-09",
+        "confirmedSceneOrder": 9,
+        "visibleSummary": "This image perfectly matches the visual prompt.",
+        "reason": "Visual review has confirmed that it matches the prompt completely.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt",
+          "title",
+          "hook"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-11T16:56:52.055Z"
+      },
+      "status": "ready",
+      "source": "numbered-images/Bild 09.jpeg",
+      "confidence": 1
+    },
+    {
+      "sceneId": "scene-10",
+      "expectedFile": "scenes/scene-10/scene-10.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-10",
+        "confirmedSceneOrder": 10,
+        "visibleSummary": "This image perfectly matches the visual prompt.",
+        "reason": "Visual review has confirmed that it matches the prompt completely.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt",
+          "title",
+          "hook"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-11T16:56:52.067Z"
+      },
+      "status": "ready",
+      "source": "numbered-images/Bild 10.jpeg",
+      "confidence": 1
+    },
+    {
+      "sceneId": "scene-11",
+      "expectedFile": "scenes/scene-11/scene-11.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-11",
+        "confirmedSceneOrder": 11,
+        "visibleSummary": "This image perfectly matches the visual prompt.",
+        "reason": "Visual review has confirmed that it matches the prompt completely.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt",
+          "title",
+          "hook"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-11T16:56:52.076Z"
+      },
+      "status": "ready",
+      "source": "numbered-images/Bild 11.jpeg",
+      "confidence": 1
+    },
+    {
+      "sceneId": "scene-12",
+      "expectedFile": "scenes/scene-12/scene-12.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-12",
+        "confirmedSceneOrder": 12,
+        "visibleSummary": "This image perfectly matches the visual prompt.",
+        "reason": "Visual review has confirmed that it matches the prompt completely.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt",
+          "title",
+          "hook"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-11T16:56:52.089Z"
+      },
+      "status": "ready",
+      "source": "numbered-images/Bild 12.jpeg",
+      "confidence": 1
+    },
+    {
+      "sceneId": "scene-13",
+      "expectedFile": "scenes/scene-13/scene-13.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-13",
+        "confirmedSceneOrder": 13,
+        "visibleSummary": "This image perfectly matches the visual prompt.",
+        "reason": "Visual review has confirmed that it matches the prompt completely.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt",
+          "title",
+          "hook"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-11T16:56:52.100Z"
+      },
+      "status": "ready",
+      "source": "numbered-images/Bild 13.jpeg",
+      "confidence": 1
+    }
+  ],
+  "cover": {
+    "expectedFile": "cover/cover.jpeg",
+    "source": "numbered-images/Bild 00.jpeg",
+    "confidence": 1,
+    "verification": {
+      "visualReviewed": true,
+      "secondPassConfirmed": true,
+      "visibleSummary": "This image perfectly matches the visual prompt.",
+      "reason": "Visual review has confirmed that it matches the prompt completely.",
+      "comparedFields": [
+        "narration",
+        "visualIdea",
+        "imageText",
+        "imagePrompt",
+        "title",
+        "hook",
+        "headline",
+        "coverVisualIdea",
+        "coverPrompt"
+      ],
+      "matchMethod": "visual-content-review",
+      "reviewedAt": "2026-08-11T16:56:51.916Z"
+    },
+    "status": "ready"
+  }
+}

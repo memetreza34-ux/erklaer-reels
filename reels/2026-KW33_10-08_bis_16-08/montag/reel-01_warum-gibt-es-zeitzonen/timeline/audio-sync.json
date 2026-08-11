@@ -1,0 +1,107 @@
+{
+  "version": 2,
+  "audioDurationSeconds": 63.8,
+  "audioFile": "audio/voiceover-tight.m4a",
+  "source": "agent",
+  "timingStatus": "audio-synced",
+  "instructions": [
+    "Trage die echte Audiodauer ein.",
+    "cueTimeSeconds ist der Zeitpunkt, an dem audioCue gesprochen wird.",
+    "Das Bild beginnt normalerweise leadInSeconds vor cueTimeSeconds.",
+    "Prüfe jeden Szenenwechsel gegen den sichtbaren Bildinhalt, damit benachbarte Bilder nicht vertauscht werden.",
+    "Nach dem letzten gesprochenen Wort bleibt das Schlussbild automatisch kurz ohne Untertitel stehen."
+  ],
+  "cueTimings": [
+    {
+      "sceneId": "scene-01",
+      "audioCue": "Warum gibt es Zeitzonen?",
+      "cueTimeSeconds": 0,
+      "leadInSeconds": 0.2,
+      "confidence": 1
+    },
+    {
+      "sceneId": "scene-02",
+      "audioCue": "Früher stellte jede Stadt",
+      "cueTimeSeconds": 2.58,
+      "leadInSeconds": 0.2,
+      "confidence": 1
+    },
+    {
+      "sceneId": "scene-03",
+      "audioCue": "Stand sie am höchsten",
+      "cueTimeSeconds": 5.22,
+      "leadInSeconds": 0.2,
+      "confidence": 1
+    },
+    {
+      "sceneId": "scene-04",
+      "audioCue": "Schon weiter westlich",
+      "cueTimeSeconds": 7.58,
+      "leadInSeconds": 0.2,
+      "confidence": 1
+    },
+    {
+      "sceneId": "scene-05",
+      "audioCue": "Solange Menschen langsam reisten",
+      "cueTimeSeconds": 12.14,
+      "leadInSeconds": 0.2,
+      "confidence": 1
+    },
+    {
+      "sceneId": "scene-06",
+      "audioCue": "Mit Eisenbahn und Telegraf",
+      "cueTimeSeconds": 15.18,
+      "leadInSeconds": 0.2,
+      "confidence": 1
+    },
+    {
+      "sceneId": "scene-07",
+      "audioCue": "1883 führten nordamerikanische Eisenbahnen",
+      "cueTimeSeconds": 21.1,
+      "leadInSeconds": 0.2,
+      "confidence": 1
+    },
+    {
+      "sceneId": "scene-08",
+      "audioCue": "Ein Jahr später",
+      "cueTimeSeconds": 26.34,
+      "leadInSeconds": 0.2,
+      "confidence": 1
+    },
+    {
+      "sceneId": "scene-09",
+      "audioCue": "Rechnerisch lässt sich die Erde",
+      "cueTimeSeconds": 33.2,
+      "leadInSeconds": 0.2,
+      "confidence": 1
+    },
+    {
+      "sceneId": "scene-10",
+      "audioCue": "In Wirklichkeit",
+      "cueTimeSeconds": 40.58,
+      "leadInSeconds": 0.2,
+      "confidence": 1
+    },
+    {
+      "sceneId": "scene-11",
+      "audioCue": "Staaten verschieben sie",
+      "cueTimeSeconds": 42.6,
+      "leadInSeconds": 0.2,
+      "confidence": 1
+    },
+    {
+      "sceneId": "scene-12",
+      "audioCue": "Schau auf eine Zeitzonenkarte",
+      "cueTimeSeconds": 51.18,
+      "leadInSeconds": 0.2,
+      "confidence": 1
+    },
+    {
+      "sceneId": "scene-13",
+      "audioCue": "Weil Zeit nicht nur gemessen",
+      "cueTimeSeconds": 55.2,
+      "leadInSeconds": 0.2,
+      "confidence": 1
+    }
+  ]
+}

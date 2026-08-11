@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "startedAt": "2026-08-10T16:49:49.044Z",
+  "finishedAt": "2026-08-10T16:50:46.608Z",
+  "passed": true,
+  "renderer": "remotion",
+  "compositionId": "ErklaerReel",
+  "codec": "h264",
+  "crf": 18,
+  "reelDirectory": "/Users/arman/.gemini/antigravity/scratch/erklaer-reels/reels/2026-KW32_03-08_bis_09-08/samstag/reel-01_warum-kann-keine-weltkarte-die-erde-richtig-zeigen",
+  "outputFile": "reels/2026-KW32_03-08_bis_09-08/samstag/reel-01_warum-kann-keine-weltkarte-die-erde-richtig-zeigen/output/reel-01_warum-kann-keine-weltkarte-die-erde-richtig-zeigen.mp4",
+  "outputBytes": 9024441,
+  "composition": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationSeconds": 65.9,
+    "durationFrames": 1977,
+    "audioDurationSeconds": 65.2,
+    "endingHoldSeconds": 0.7
+  },
+  "renderedSoundEffects": 0,
+  "validationReport": "review/renderer-input-report.json"
+}

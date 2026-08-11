@@ -1,0 +1,20 @@
+{
+  "version": 6,
+  "enabled": true,
+  "language": "de",
+  "position": "center",
+  "verticalPositionPercent": 58,
+  "textColor": "#F5F7FA",
+  "highlightCurrentWord": false,
+  "backgroundColor": "transparent",
+  "maxLines": 2,
+  "wordsPerCue": {
+    "min": 3,
+    "max": 6
+  },
+  "wordByWordKaraoke": false,
+  "exactWordTimingsRequired": true,
+  "timingStatus": "invalidated-after-audio-pacing",
+  "cues": [],
+  "timingProvider": "codex-local-audio-review"
+}

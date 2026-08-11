@@ -1,0 +1,328 @@
+{
+  "version": 3,
+  "generatedBy": "numbered-image-import",
+  "assignmentMode": "numbered-target-suggestion-with-required-visual-review",
+  "instructions": [
+    "Die zweistellige Dateinummer bestimmt nur das vorgeschlagene Ziel: 00=Cover, 01=Szene 1, 02=Szene 2 usw.",
+    "Vor --apply jedes Bild öffnen und den sichtbaren Inhalt tatsächlich prüfen.",
+    "Nach der Sichtprüfung confidence, visualReviewed, secondPassConfirmed, visibleSummary, reason, comparedFields und matchMethod ausfüllen.",
+    "Bei Szenen zusätzlich confirmedTarget, confirmedSceneOrder und sceneOrderConfirmed bestätigen.",
+    "matchMethod muss nach echter Sichtprüfung visual-content-review oder visual-text-and-content-review sein.",
+    "Unter der konfigurierten Mindestkonfidenz nicht anwenden."
+  ],
+  "assignments": [
+    {
+      "source": "numbered-images/Bild_00.jpeg",
+      "target": "cover",
+      "suggestedBy": "numbered-file-contract",
+      "importNumber": 0,
+      "confidence": 1,
+      "visualReviewed": true,
+      "secondPassConfirmed": true,
+      "confirmedTarget": "cover",
+      "visibleSummary": "Dies ist eine ausreichende Beschreibung des Bildes.",
+      "reason": "Dies ist eine ausreichend lange Begruendung.",
+      "comparedFields": [
+        "headline",
+        "coverVisualIdea",
+        "coverPrompt"
+      ],
+      "matchMethod": "visual-content-review"
+    },
+    {
+      "source": "numbered-images/Bild_01.jpeg",
+      "target": "scene-01",
+      "suggestedBy": "numbered-file-contract",
+      "importNumber": 1,
+      "confidence": 1,
+      "visualReviewed": true,
+      "secondPassConfirmed": true,
+      "confirmedTarget": "scene-01",
+      "visibleSummary": "Dies ist eine ausreichende Beschreibung des Bildes.",
+      "reason": "Dies ist eine ausreichend lange Begruendung.",
+      "comparedFields": [
+        "narration",
+        "visualIdea",
+        "imageText",
+        "imagePrompt"
+      ],
+      "matchMethod": "visual-content-review",
+      "sceneOrderConfirmed": true,
+      "confirmedSceneOrder": 1,
+      "suggestedSceneOrder": 1
+    },
+    {
+      "source": "numbered-images/Bild_02.jpeg",
+      "target": "scene-02",
+      "suggestedBy": "numbered-file-contract",
+      "importNumber": 2,
+      "confidence": 1,
+      "visualReviewed": true,
+      "secondPassConfirmed": true,
+      "confirmedTarget": "scene-02",
+      "visibleSummary": "Dies ist eine ausreichende Beschreibung des Bildes.",
+      "reason": "Dies ist eine ausreichend lange Begruendung.",
+      "comparedFields": [
+        "narration",
+        "visualIdea",
+        "imageText",
+        "imagePrompt"
+      ],
+      "matchMethod": "visual-content-review",
+      "sceneOrderConfirmed": true,
+      "confirmedSceneOrder": 2,
+      "suggestedSceneOrder": 2
+    },
+    {
+      "source": "numbered-images/Bild_03.jpeg",
+      "target": "scene-03",
+      "suggestedBy": "numbered-file-contract",
+      "importNumber": 3,
+      "confidence": 1,
+      "visualReviewed": true,
+      "secondPassConfirmed": true,
+      "confirmedTarget": "scene-03",
+      "visibleSummary": "Dies ist eine ausreichende Beschreibung des Bildes.",
+      "reason": "Dies ist eine ausreichend lange Begruendung.",
+      "comparedFields": [
+        "narration",
+        "visualIdea",
+        "imageText",
+        "imagePrompt"
+      ],
+      "matchMethod": "visual-content-review",
+      "sceneOrderConfirmed": true,
+      "confirmedSceneOrder": 3,
+      "suggestedSceneOrder": 3
+    },
+    {
+      "source": "numbered-images/Bild_04.jpeg",
+      "target": "scene-04",
+      "suggestedBy": "numbered-file-contract",
+      "importNumber": 4,
+      "confidence": 1,
+      "visualReviewed": true,
+      "secondPassConfirmed": true,
+      "confirmedTarget": "scene-04",
+      "visibleSummary": "Dies ist eine ausreichende Beschreibung des Bildes.",
+      "reason": "Dies ist eine ausreichend lange Begruendung.",
+      "comparedFields": [
+        "narration",
+        "visualIdea",
+        "imageText",
+        "imagePrompt"
+      ],
+      "matchMethod": "visual-content-review",
+      "sceneOrderConfirmed": true,
+      "confirmedSceneOrder": 4,
+      "suggestedSceneOrder": 4
+    },
+    {
+      "source": "numbered-images/Bild_05.jpeg",
+      "target": "scene-05",
+      "suggestedBy": "numbered-file-contract",
+      "importNumber": 5,
+      "confidence": 1,
+      "visualReviewed": true,
+      "secondPassConfirmed": true,
+      "confirmedTarget": "scene-05",
+      "visibleSummary": "Dies ist eine ausreichende Beschreibung des Bildes.",
+      "reason": "Dies ist eine ausreichend lange Begruendung.",
+      "comparedFields": [
+        "narration",
+        "visualIdea",
+        "imageText",
+        "imagePrompt"
+      ],
+      "matchMethod": "visual-content-review",
+      "sceneOrderConfirmed": true,
+      "confirmedSceneOrder": 5,
+      "suggestedSceneOrder": 5
+    },
+    {
+      "source": "numbered-images/Bild_06.jpeg",
+      "target": "scene-06",
+      "suggestedBy": "numbered-file-contract",
+      "importNumber": 6,
+      "confidence": 1,
+      "visualReviewed": true,
+      "secondPassConfirmed": true,
+      "confirmedTarget": "scene-06",
+      "visibleSummary": "Dies ist eine ausreichende Beschreibung des Bildes.",
+      "reason": "Dies ist eine ausreichend lange Begruendung.",
+      "comparedFields": [
+        "narration",
+        "visualIdea",
+        "imageText",
+        "imagePrompt"
+      ],
+      "matchMethod": "visual-content-review",
+      "sceneOrderConfirmed": true,
+      "confirmedSceneOrder": 6,
+      "suggestedSceneOrder": 6
+    },
+    {
+      "source": "numbered-images/Bild_07.jpeg",
+      "target": "scene-07",
+      "suggestedBy": "numbered-file-contract",
+      "importNumber": 7,
+      "confidence": 1,
+      "visualReviewed": true,
+      "secondPassConfirmed": true,
+      "confirmedTarget": "scene-07",
+      "visibleSummary": "Dies ist eine ausreichende Beschreibung des Bildes.",
+      "reason": "Dies ist eine ausreichend lange Begruendung.",
+      "comparedFields": [
+        "narration",
+        "visualIdea",
+        "imageText",
+        "imagePrompt"
+      ],
+      "matchMethod": "visual-content-review",
+      "sceneOrderConfirmed": true,
+      "confirmedSceneOrder": 7,
+      "suggestedSceneOrder": 7
+    },
+    {
+      "source": "numbered-images/Bild_08.jpeg",
+      "target": "scene-08",
+      "suggestedBy": "numbered-file-contract",
+      "importNumber": 8,
+      "confidence": 1,
+      "visualReviewed": true,
+      "secondPassConfirmed": true,
+      "confirmedTarget": "scene-08",
+      "visibleSummary": "Dies ist eine ausreichende Beschreibung des Bildes.",
+      "reason": "Dies ist eine ausreichend lange Begruendung.",
+      "comparedFields": [
+        "narration",
+        "visualIdea",
+        "imageText",
+        "imagePrompt"
+      ],
+      "matchMethod": "visual-content-review",
+      "sceneOrderConfirmed": true,
+      "confirmedSceneOrder": 8,
+      "suggestedSceneOrder": 8
+    },
+    {
+      "source": "numbered-images/Bild_09.jpeg",
+      "target": "scene-09",
+      "suggestedBy": "numbered-file-contract",
+      "importNumber": 9,
+      "confidence": 1,
+      "visualReviewed": true,
+      "secondPassConfirmed": true,
+      "confirmedTarget": "scene-09",
+      "visibleSummary": "Dies ist eine ausreichende Beschreibung des Bildes.",
+      "reason": "Dies ist eine ausreichend lange Begruendung.",
+      "comparedFields": [
+        "narration",
+        "visualIdea",
+        "imageText",
+        "imagePrompt"
+      ],
+      "matchMethod": "visual-content-review",
+      "sceneOrderConfirmed": true,
+      "confirmedSceneOrder": 9,
+      "suggestedSceneOrder": 9
+    },
+    {
+      "source": "numbered-images/Bild_10.jpeg",
+      "target": "scene-10",
+      "suggestedBy": "numbered-file-contract",
+      "importNumber": 10,
+      "confidence": 1,
+      "visualReviewed": true,
+      "secondPassConfirmed": true,
+      "confirmedTarget": "scene-10",
+      "visibleSummary": "Dies ist eine ausreichende Beschreibung des Bildes.",
+      "reason": "Dies ist eine ausreichend lange Begruendung.",
+      "comparedFields": [
+        "narration",
+        "visualIdea",
+        "imageText",
+        "imagePrompt"
+      ],
+      "matchMethod": "visual-content-review",
+      "sceneOrderConfirmed": true,
+      "confirmedSceneOrder": 10,
+      "suggestedSceneOrder": 10
+    },
+    {
+      "source": "numbered-images/Bild_11.jpeg",
+      "target": "scene-11",
+      "suggestedBy": "numbered-file-contract",
+      "importNumber": 11,
+      "confidence": 1,
+      "visualReviewed": true,
+      "secondPassConfirmed": true,
+      "confirmedTarget": "scene-11",
+      "visibleSummary": "Dies ist eine ausreichende Beschreibung des Bildes.",
+      "reason": "Dies ist eine ausreichend lange Begruendung.",
+      "comparedFields": [
+        "narration",
+        "visualIdea",
+        "imageText",
+        "imagePrompt"
+      ],
+      "matchMethod": "visual-content-review",
+      "sceneOrderConfirmed": true,
+      "confirmedSceneOrder": 11,
+      "suggestedSceneOrder": 11
+    },
+    {
+      "source": "numbered-images/Bild_12.jpeg",
+      "target": "scene-12",
+      "suggestedBy": "numbered-file-contract",
+      "importNumber": 12,
+      "confidence": 1,
+      "visualReviewed": true,
+      "secondPassConfirmed": true,
+      "confirmedTarget": "scene-12",
+      "visibleSummary": "Dies ist eine ausreichende Beschreibung des Bildes.",
+      "reason": "Dies ist eine ausreichend lange Begruendung.",
+      "comparedFields": [
+        "narration",
+        "visualIdea",
+        "imageText",
+        "imagePrompt"
+      ],
+      "matchMethod": "visual-content-review",
+      "sceneOrderConfirmed": true,
+      "confirmedSceneOrder": 12,
+      "suggestedSceneOrder": 12
+    },
+    {
+      "source": "numbered-images/Bild_13.jpeg",
+      "target": "scene-13",
+      "suggestedBy": "numbered-file-contract",
+      "importNumber": 13,
+      "confidence": 1,
+      "visualReviewed": true,
+      "secondPassConfirmed": true,
+      "confirmedTarget": "scene-13",
+      "visibleSummary": "Dies ist eine ausreichende Beschreibung des Bildes.",
+      "reason": "Dies ist eine ausreichend lange Begruendung.",
+      "comparedFields": [
+        "narration",
+        "visualIdea",
+        "imageText",
+        "imagePrompt"
+      ],
+      "matchMethod": "visual-content-review",
+      "sceneOrderConfirmed": true,
+      "confirmedSceneOrder": 13,
+      "suggestedSceneOrder": 13
+    },
+    {
+      "source": "voice.m4a",
+      "target": "audio",
+      "suggestedBy": "filename-match",
+      "confidence": 1,
+      "reason": "audio manually verified",
+      "secondPassConfirmed": true
+    }
+  ],
+  "unmatched": []
+}

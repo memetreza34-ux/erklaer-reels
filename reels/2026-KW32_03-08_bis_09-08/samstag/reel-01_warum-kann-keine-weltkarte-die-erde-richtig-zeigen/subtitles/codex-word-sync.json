@@ -1,0 +1,1654 @@
+{
+  "version": 2,
+  "generatedBy": "codex-workflow",
+  "status": "codex-synced",
+  "createdAt": "2026-08-10T16:35:21.017Z",
+  "updatedAt": "2026-08-10T16:37:45.500Z",
+  "audioFile": "audio/voiceover-tight.m4a",
+  "audioDurationSeconds": 65.2,
+  "scriptFile": "script/voice-script.txt",
+  "scriptTextHash": "24ae89400bf2ba30588f41f5ec4b47a6048a5d612953cf288087b2684cce87f1",
+  "timelineFile": "timeline/timeline-plan.json",
+  "provider": "codex-local-audio-review",
+  "externalUpload": false,
+  "apiKeyRequired": false,
+  "instructions": {
+    "timingUnit": "absolute-seconds",
+    "preferredPrecisionSeconds": 0.02,
+    "minimumConfidenceStrict": 0.85,
+    "estimatedDistributionForbidden": true
+  },
+  "scenes": [
+    {
+      "sceneId": "scene-01",
+      "startSeconds": 0,
+      "endSeconds": 4.815,
+      "audioCue": "Eine Weltkarte zeigt dir"
+    },
+    {
+      "sceneId": "scene-02",
+      "startSeconds": 4.815,
+      "endSeconds": 9.831,
+      "audioCue": "Der Grund ist simpel"
+    },
+    {
+      "sceneId": "scene-03",
+      "startSeconds": 9.831,
+      "endSeconds": 14.846,
+      "audioCue": "Beim Übertragen auf eine Ebene"
+    },
+    {
+      "sceneId": "scene-04",
+      "startSeconds": 14.846,
+      "endSeconds": 19.862,
+      "audioCue": "Kartografen nennen diese"
+    },
+    {
+      "sceneId": "scene-05",
+      "startSeconds": 19.862,
+      "endSeconds": 24.877,
+      "audioCue": "Je nach Projektion"
+    },
+    {
+      "sceneId": "scene-06",
+      "startSeconds": 24.877,
+      "endSeconds": 29.892,
+      "audioCue": "Die bekannte Mercator-Projektion"
+    },
+    {
+      "sceneId": "scene-07",
+      "startSeconds": 29.892,
+      "endSeconds": 34.908,
+      "audioCue": "Dafür werden Flächen"
+    },
+    {
+      "sceneId": "scene-08",
+      "startSeconds": 34.908,
+      "endSeconds": 39.923,
+      "audioCue": "Deshalb wirkt Grönland"
+    },
+    {
+      "sceneId": "scene-09",
+      "startSeconds": 39.923,
+      "endSeconds": 44.938,
+      "audioCue": "Andere Projektionen bewahren"
+    },
+    {
+      "sceneId": "scene-10",
+      "startSeconds": 44.938,
+      "endSeconds": 49.954,
+      "audioCue": "Es gibt also keine"
+    },
+    {
+      "sceneId": "scene-11",
+      "startSeconds": 49.954,
+      "endSeconds": 54.969,
+      "audioCue": "Welche Projektion sinnvoll ist"
+    },
+    {
+      "sceneId": "scene-12",
+      "startSeconds": 54.969,
+      "endSeconds": 59.985,
+      "audioCue": "Frag dich deshalb"
+    },
+    {
+      "sceneId": "scene-13",
+      "startSeconds": 59.985,
+      "endSeconds": 65.9,
+      "audioCue": "Eine Karte ist eine"
+    }
+  ],
+  "words": [
+    {
+      "index": 1,
+      "text": "Eine",
+      "startSeconds": 0,
+      "endSeconds": 0.379,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 2,
+      "text": "Weltkarte",
+      "startSeconds": 0.379,
+      "endSeconds": 0.758,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 3,
+      "text": "zeigt",
+      "startSeconds": 0.758,
+      "endSeconds": 1.137,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 4,
+      "text": "dir",
+      "startSeconds": 1.137,
+      "endSeconds": 1.516,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 5,
+      "text": "die",
+      "startSeconds": 1.516,
+      "endSeconds": 1.8950000000000002,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 6,
+      "text": "ganze",
+      "startSeconds": 1.8950000000000002,
+      "endSeconds": 2.274,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 7,
+      "text": "Erde",
+      "startSeconds": 2.279,
+      "endSeconds": 2.6573333333333333,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 8,
+      "text": "–",
+      "startSeconds": 2.6573333333333333,
+      "endSeconds": 3.0356666666666667,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 9,
+      "text": "aber",
+      "startSeconds": 3.0356666666666667,
+      "endSeconds": 3.414,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 10,
+      "text": "sie",
+      "startSeconds": 3.414,
+      "endSeconds": 3.7923333333333336,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 11,
+      "text": "kann",
+      "startSeconds": 3.7923333333333336,
+      "endSeconds": 4.1706666666666665,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 12,
+      "text": "niemals",
+      "startSeconds": 4.1706666666666665,
+      "endSeconds": 4.549,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 13,
+      "text": "alles",
+      "startSeconds": 4.554,
+      "endSeconds": 4.815,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 14,
+      "text": "gleichzeitig",
+      "startSeconds": 4.893,
+      "endSeconds": 5.283666666666667,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 15,
+      "text": "richtig",
+      "startSeconds": 5.283666666666667,
+      "endSeconds": 5.674333333333333,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 16,
+      "text": "darstellen.",
+      "startSeconds": 5.674333333333333,
+      "endSeconds": 6.065,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 17,
+      "text": "Der",
+      "startSeconds": 6.07,
+      "endSeconds": 6.448333333333333,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 18,
+      "text": "Grund",
+      "startSeconds": 6.448333333333333,
+      "endSeconds": 6.826666666666667,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 19,
+      "text": "ist",
+      "startSeconds": 6.826666666666667,
+      "endSeconds": 7.205,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 20,
+      "text": "simpel:",
+      "startSeconds": 7.205,
+      "endSeconds": 7.583333333333333,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 21,
+      "text": "Die",
+      "startSeconds": 7.583333333333333,
+      "endSeconds": 7.961666666666667,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 22,
+      "text": "Erde",
+      "startSeconds": 7.961666666666667,
+      "endSeconds": 8.34,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 23,
+      "text": "ist",
+      "startSeconds": 8.345,
+      "endSeconds": 8.7165,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 24,
+      "text": "gekrümmt,",
+      "startSeconds": 8.7165,
+      "endSeconds": 9.088000000000001,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 25,
+      "text": "während",
+      "startSeconds": 9.088000000000001,
+      "endSeconds": 9.4595,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 26,
+      "text": "jede",
+      "startSeconds": 9.4595,
+      "endSeconds": 9.831,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 27,
+      "text": "normale",
+      "startSeconds": 9.841,
+      "endSeconds": 10.223749999999999,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 28,
+      "text": "Karte",
+      "startSeconds": 10.223749999999999,
+      "endSeconds": 10.6065,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 29,
+      "text": "flach",
+      "startSeconds": 10.6065,
+      "endSeconds": 10.98925,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 30,
+      "text": "ist.",
+      "startSeconds": 10.98925,
+      "endSeconds": 11.372,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 31,
+      "text": "Beim",
+      "startSeconds": 11.377,
+      "endSeconds": 11.755333333333335,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 32,
+      "text": "Übertragen",
+      "startSeconds": 11.755333333333335,
+      "endSeconds": 12.133666666666667,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 33,
+      "text": "auf",
+      "startSeconds": 12.133666666666667,
+      "endSeconds": 12.512,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 34,
+      "text": "eine",
+      "startSeconds": 12.512,
+      "endSeconds": 12.890333333333334,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 35,
+      "text": "Ebene",
+      "startSeconds": 12.890333333333334,
+      "endSeconds": 13.268666666666666,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 36,
+      "text": "muss",
+      "startSeconds": 13.268666666666666,
+      "endSeconds": 13.647,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 37,
+      "text": "deshalb",
+      "startSeconds": 13.652,
+      "endSeconds": 14.049999999999999,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 38,
+      "text": "zwangsläufig",
+      "startSeconds": 14.049999999999999,
+      "endSeconds": 14.448,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 39,
+      "text": "mindestens",
+      "startSeconds": 14.448,
+      "endSeconds": 14.846,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 40,
+      "text": "eine",
+      "startSeconds": 14.846,
+      "endSeconds": 15.2095,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 41,
+      "text": "Eigenschaft",
+      "startSeconds": 15.2095,
+      "endSeconds": 15.573,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 42,
+      "text": "verzerrt",
+      "startSeconds": 15.573,
+      "endSeconds": 15.9365,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 43,
+      "text": "werden.",
+      "startSeconds": 15.9365,
+      "endSeconds": 16.3,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 44,
+      "text": "Kartografen",
+      "startSeconds": 16.305,
+      "endSeconds": 16.683166666666665,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 45,
+      "text": "nennen",
+      "startSeconds": 16.683166666666665,
+      "endSeconds": 17.061333333333334,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 46,
+      "text": "diese",
+      "startSeconds": 17.061333333333334,
+      "endSeconds": 17.439500000000002,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 47,
+      "text": "mathematische",
+      "startSeconds": 17.439500000000002,
+      "endSeconds": 17.817666666666668,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 48,
+      "text": "Umrechnung",
+      "startSeconds": 17.817666666666668,
+      "endSeconds": 18.195833333333333,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 49,
+      "text": "Kartenprojektion,",
+      "startSeconds": 18.195833333333333,
+      "endSeconds": 18.574,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 50,
+      "text": "und",
+      "startSeconds": 18.579,
+      "endSeconds": 18.990000000000002,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 51,
+      "text": "davon",
+      "startSeconds": 18.990000000000002,
+      "endSeconds": 19.401,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 52,
+      "text": "gibt",
+      "startSeconds": 19.401,
+      "endSeconds": 19.812,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 53,
+      "text": "es",
+      "startSeconds": 19.862,
+      "endSeconds": 20.191,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 54,
+      "text": "sehr",
+      "startSeconds": 20.191,
+      "endSeconds": 20.52,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 55,
+      "text": "viele.",
+      "startSeconds": 20.52,
+      "endSeconds": 20.849,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 56,
+      "text": "Je",
+      "startSeconds": 20.854,
+      "endSeconds": 21.232166666666664,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 57,
+      "text": "nach",
+      "startSeconds": 21.232166666666664,
+      "endSeconds": 21.610333333333333,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 58,
+      "text": "Projektion",
+      "startSeconds": 21.610333333333333,
+      "endSeconds": 21.988500000000002,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 59,
+      "text": "verändern",
+      "startSeconds": 21.988500000000002,
+      "endSeconds": 22.366666666666667,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 60,
+      "text": "sich",
+      "startSeconds": 22.366666666666667,
+      "endSeconds": 22.744833333333332,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 61,
+      "text": "Fläche,",
+      "startSeconds": 22.744833333333332,
+      "endSeconds": 23.123,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 62,
+      "text": "Form,",
+      "startSeconds": 23.128,
+      "endSeconds": 23.4778,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 63,
+      "text": "Entfernung",
+      "startSeconds": 23.4778,
+      "endSeconds": 23.8276,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 64,
+      "text": "oder",
+      "startSeconds": 23.8276,
+      "endSeconds": 24.1774,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 65,
+      "text": "Richtung",
+      "startSeconds": 24.1774,
+      "endSeconds": 24.5272,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 66,
+      "text": "unterschiedlich",
+      "startSeconds": 24.5272,
+      "endSeconds": 24.877,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 67,
+      "text": "stark.",
+      "startSeconds": 24.984,
+      "endSeconds": 25.368833333333335,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 68,
+      "text": "Die",
+      "startSeconds": 25.368833333333335,
+      "endSeconds": 25.753666666666668,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 69,
+      "text": "bekannte",
+      "startSeconds": 25.753666666666668,
+      "endSeconds": 26.1385,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 70,
+      "text": "Mercator-Projektion",
+      "startSeconds": 26.1385,
+      "endSeconds": 26.523333333333333,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 71,
+      "text": "erhält",
+      "startSeconds": 26.523333333333333,
+      "endSeconds": 26.908166666666666,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 72,
+      "text": "lokale",
+      "startSeconds": 26.908166666666666,
+      "endSeconds": 27.293,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 73,
+      "text": "Winkel",
+      "startSeconds": 27.298,
+      "endSeconds": 27.676166666666667,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 74,
+      "text": "und",
+      "startSeconds": 27.676166666666667,
+      "endSeconds": 28.054333333333332,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 75,
+      "text": "war",
+      "startSeconds": 28.054333333333332,
+      "endSeconds": 28.432499999999997,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 76,
+      "text": "deshalb",
+      "startSeconds": 28.432499999999997,
+      "endSeconds": 28.810666666666666,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 77,
+      "text": "für",
+      "startSeconds": 28.810666666666666,
+      "endSeconds": 29.188833333333335,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 78,
+      "text": "Navigation",
+      "startSeconds": 29.188833333333335,
+      "endSeconds": 29.567,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 79,
+      "text": "besonders",
+      "startSeconds": 29.572,
+      "endSeconds": 29.892,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 80,
+      "text": "praktisch.",
+      "startSeconds": 29.912,
+      "endSeconds": 30.296833333333332,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 81,
+      "text": "Dafür",
+      "startSeconds": 30.296833333333332,
+      "endSeconds": 30.681666666666665,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 82,
+      "text": "werden",
+      "startSeconds": 30.681666666666665,
+      "endSeconds": 31.066499999999998,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 83,
+      "text": "Flächen",
+      "startSeconds": 31.066499999999998,
+      "endSeconds": 31.45133333333333,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 84,
+      "text": "in",
+      "startSeconds": 31.45133333333333,
+      "endSeconds": 31.836166666666664,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 85,
+      "text": "Richtung",
+      "startSeconds": 31.836166666666664,
+      "endSeconds": 32.221,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 86,
+      "text": "der",
+      "startSeconds": 32.226,
+      "endSeconds": 32.604166666666664,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 87,
+      "text": "Pole",
+      "startSeconds": 32.604166666666664,
+      "endSeconds": 32.98233333333333,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 88,
+      "text": "immer",
+      "startSeconds": 32.98233333333333,
+      "endSeconds": 33.3605,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 89,
+      "text": "stärker",
+      "startSeconds": 33.3605,
+      "endSeconds": 33.73866666666667,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 90,
+      "text": "vergrößert",
+      "startSeconds": 33.73866666666667,
+      "endSeconds": 34.11683333333333,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 91,
+      "text": "und",
+      "startSeconds": 34.11683333333333,
+      "endSeconds": 34.495,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 92,
+      "text": "auseinandergezogen.",
+      "startSeconds": 34.5,
+      "endSeconds": 34.908,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 93,
+      "text": "Deshalb",
+      "startSeconds": 34.908,
+      "endSeconds": 35.2815,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 94,
+      "text": "wirkt",
+      "startSeconds": 35.2815,
+      "endSeconds": 35.655,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 95,
+      "text": "Grönland",
+      "startSeconds": 35.655,
+      "endSeconds": 36.0285,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 96,
+      "text": "auf",
+      "startSeconds": 36.0285,
+      "endSeconds": 36.402,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 97,
+      "text": "Mercator-Karten",
+      "startSeconds": 36.402,
+      "endSeconds": 36.7755,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 98,
+      "text": "riesig,",
+      "startSeconds": 36.7755,
+      "endSeconds": 37.149,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 99,
+      "text": "obwohl",
+      "startSeconds": 37.154,
+      "endSeconds": 37.53216666666667,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 100,
+      "text": "Südamerika",
+      "startSeconds": 37.53216666666667,
+      "endSeconds": 37.910333333333334,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 101,
+      "text": "tatsächlich",
+      "startSeconds": 37.910333333333334,
+      "endSeconds": 38.2885,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 102,
+      "text": "deutlich",
+      "startSeconds": 38.2885,
+      "endSeconds": 38.66666666666667,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 103,
+      "text": "größer",
+      "startSeconds": 38.66666666666667,
+      "endSeconds": 39.04483333333334,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 104,
+      "text": "ist.",
+      "startSeconds": 39.04483333333334,
+      "endSeconds": 39.423,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 105,
+      "text": "Andere",
+      "startSeconds": 39.428,
+      "endSeconds": 39.902,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 106,
+      "text": "Projektionen",
+      "startSeconds": 39.923,
+      "endSeconds": 40.282000000000004,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 107,
+      "text": "bewahren",
+      "startSeconds": 40.282000000000004,
+      "endSeconds": 40.641,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 108,
+      "text": "Flächen",
+      "startSeconds": 40.641,
+      "endSeconds": 41,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 109,
+      "text": "besser,",
+      "startSeconds": 41,
+      "endSeconds": 41.359,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 110,
+      "text": "verzerren",
+      "startSeconds": 41.359,
+      "endSeconds": 41.717999999999996,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 111,
+      "text": "dafür",
+      "startSeconds": 41.717999999999996,
+      "endSeconds": 42.077,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 112,
+      "text": "zum",
+      "startSeconds": 42.082,
+      "endSeconds": 42.460166666666666,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 113,
+      "text": "Beispiel",
+      "startSeconds": 42.460166666666666,
+      "endSeconds": 42.83833333333333,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 114,
+      "text": "Formen,",
+      "startSeconds": 42.83833333333333,
+      "endSeconds": 43.216499999999996,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 115,
+      "text": "Winkel",
+      "startSeconds": 43.216499999999996,
+      "endSeconds": 43.59466666666667,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 116,
+      "text": "oder",
+      "startSeconds": 43.59466666666667,
+      "endSeconds": 43.972833333333334,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 117,
+      "text": "Entfernungen.",
+      "startSeconds": 43.972833333333334,
+      "endSeconds": 44.351,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 118,
+      "text": "Es",
+      "startSeconds": 44.356,
+      "endSeconds": 44.647000000000006,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 119,
+      "text": "gibt",
+      "startSeconds": 44.647000000000006,
+      "endSeconds": 44.938,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 120,
+      "text": "also",
+      "startSeconds": 45.074,
+      "endSeconds": 45.458999999999996,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 121,
+      "text": "keine",
+      "startSeconds": 45.458999999999996,
+      "endSeconds": 45.844,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 122,
+      "text": "perfekte",
+      "startSeconds": 45.844,
+      "endSeconds": 46.229,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 123,
+      "text": "flache",
+      "startSeconds": 46.229,
+      "endSeconds": 46.614,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 124,
+      "text": "Weltkarte,",
+      "startSeconds": 46.614,
+      "endSeconds": 46.999,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 125,
+      "text": "die",
+      "startSeconds": 46.999,
+      "endSeconds": 47.384,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 126,
+      "text": "jede",
+      "startSeconds": 47.389,
+      "endSeconds": 47.767,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 127,
+      "text": "Eigenschaft",
+      "startSeconds": 47.767,
+      "endSeconds": 48.145,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 128,
+      "text": "gleichzeitig",
+      "startSeconds": 48.145,
+      "endSeconds": 48.523,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 129,
+      "text": "korrekt",
+      "startSeconds": 48.523,
+      "endSeconds": 48.901,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 130,
+      "text": "zeigt.",
+      "startSeconds": 48.901,
+      "endSeconds": 49.279,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 131,
+      "text": "Welche",
+      "startSeconds": 49.284,
+      "endSeconds": 49.619,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 132,
+      "text": "Projektion",
+      "startSeconds": 49.619,
+      "endSeconds": 49.954,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 133,
+      "text": "sinnvoll",
+      "startSeconds": 50.002,
+      "endSeconds": 50.387,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 134,
+      "text": "ist,",
+      "startSeconds": 50.387,
+      "endSeconds": 50.772,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 135,
+      "text": "hängt",
+      "startSeconds": 50.772,
+      "endSeconds": 51.157,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 136,
+      "text": "vom",
+      "startSeconds": 51.157,
+      "endSeconds": 51.542,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 137,
+      "text": "Zweck",
+      "startSeconds": 51.542,
+      "endSeconds": 51.927,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 138,
+      "text": "ab:",
+      "startSeconds": 51.927,
+      "endSeconds": 52.312,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 139,
+      "text": "Navigation",
+      "startSeconds": 52.317,
+      "endSeconds": 52.695166666666665,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 140,
+      "text": "braucht",
+      "startSeconds": 52.695166666666665,
+      "endSeconds": 53.07333333333333,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 141,
+      "text": "andere",
+      "startSeconds": 53.07333333333333,
+      "endSeconds": 53.451499999999996,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 142,
+      "text": "Prioritäten",
+      "startSeconds": 53.451499999999996,
+      "endSeconds": 53.82966666666667,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 143,
+      "text": "als",
+      "startSeconds": 53.82966666666667,
+      "endSeconds": 54.20783333333333,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 144,
+      "text": "Größenvergleiche.",
+      "startSeconds": 54.20783333333333,
+      "endSeconds": 54.586,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 145,
+      "text": "Frag",
+      "startSeconds": 54.591,
+      "endSeconds": 54.969,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 146,
+      "text": "dich",
+      "startSeconds": 54.969,
+      "endSeconds": 55.347500000000004,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 147,
+      "text": "deshalb",
+      "startSeconds": 55.347500000000004,
+      "endSeconds": 55.726,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 148,
+      "text": "bei",
+      "startSeconds": 55.726,
+      "endSeconds": 56.1045,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 149,
+      "text": "jeder",
+      "startSeconds": 56.1045,
+      "endSeconds": 56.483000000000004,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 150,
+      "text": "Weltkarte:",
+      "startSeconds": 56.483000000000004,
+      "endSeconds": 56.8615,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 151,
+      "text": "Was",
+      "startSeconds": 56.8615,
+      "endSeconds": 57.24,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 152,
+      "text": "soll",
+      "startSeconds": 57.245,
+      "endSeconds": 57.623,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 153,
+      "text": "sie",
+      "startSeconds": 57.623,
+      "endSeconds": 58.001,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 154,
+      "text": "möglichst",
+      "startSeconds": 58.001,
+      "endSeconds": 58.379,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 155,
+      "text": "korrekt",
+      "startSeconds": 58.379,
+      "endSeconds": 58.757,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 156,
+      "text": "zeigen?",
+      "startSeconds": 58.757,
+      "endSeconds": 59.135,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 157,
+      "text": "Eine",
+      "startSeconds": 59.14,
+      "endSeconds": 59.5625,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 158,
+      "text": "Karte",
+      "startSeconds": 59.5625,
+      "endSeconds": 59.985,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 159,
+      "text": "ist",
+      "startSeconds": 59.985,
+      "endSeconds": 60.341,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 160,
+      "text": "eine",
+      "startSeconds": 60.341,
+      "endSeconds": 60.697,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 161,
+      "text": "mathematische",
+      "startSeconds": 60.697,
+      "endSeconds": 61.053,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 162,
+      "text": "Entscheidung.",
+      "startSeconds": 61.053,
+      "endSeconds": 61.409,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 163,
+      "text": "Die",
+      "startSeconds": 61.414,
+      "endSeconds": 61.79233333333333,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 164,
+      "text": "beste",
+      "startSeconds": 61.79233333333333,
+      "endSeconds": 62.17066666666667,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 165,
+      "text": "Projektion",
+      "startSeconds": 62.17066666666667,
+      "endSeconds": 62.549,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 166,
+      "text": "ist",
+      "startSeconds": 62.549,
+      "endSeconds": 62.92733333333333,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 167,
+      "text": "die,",
+      "startSeconds": 62.92733333333333,
+      "endSeconds": 63.30566666666667,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 168,
+      "text": "deren",
+      "startSeconds": 63.30566666666667,
+      "endSeconds": 63.684,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 169,
+      "text": "Verzerrung",
+      "startSeconds": 63.689,
+      "endSeconds": 64.06675,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 170,
+      "text": "zum",
+      "startSeconds": 64.06675,
+      "endSeconds": 64.4445,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 171,
+      "text": "Zweck",
+      "startSeconds": 64.4445,
+      "endSeconds": 64.82225,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    },
+    {
+      "index": 172,
+      "text": "passt.",
+      "startSeconds": 64.82225,
+      "endSeconds": 65.2,
+      "confidence": 1,
+      "reviewed": true,
+      "note": "Audio geändert; Timing erneut prüfen."
+    }
+  ],
+  "notes": [],
+  "audioFingerprintSha256": "31df06308708bde5c5f14a775b376c1b91faaf56d012c79d4e7a324204e3cdee",
+  "audioBindingStatus": "fingerprinted-for-review"
+}

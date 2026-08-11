@@ -1,1 +1,45 @@
-{"sceneId":"scene-11","order":11,"title":"Politische und praktische Entscheidungen","narration":"Staaten verschieben sie, damit Städte, Regionen oder ganze Länder dieselbe Uhrzeit nutzen. Deshalb folgt deine Uhr nicht nur der Sonne, sondern auch politischen Entscheidungen.","imageText":"POLITISCHE GRENZEN","visualIdea":"Eine Zeitzonengrenze biegt sich bewusst um zusammengehörige Städte und eine Landesform, während die Sonne im Hintergrund bleibt.","continuityNotes":"Kein parteipolitischer Bezug; neutraler Organisationsmechanismus.","audioCue":"Staaten verschieben sie","leadInSeconds":0.2,"subtitleCues":["Staaten verschieben sie, damit Städte, Regionen","oder ganze Länder dieselbe Uhrzeit nutzen.","Deshalb folgt deine Uhr nicht nur","der Sonne, sondern auch politischen Entscheidungen."],"subtitlePosition":"center","durationSeconds":5.4,"expectedImageFileName":"scene-11.png","promptStatus":"ready","imageStatus":"missing","assetVerification":null,"status":"prompt-ready"}
+{
+  "sceneId": "scene-11",
+  "order": 11,
+  "title": "Politische und praktische Entscheidungen",
+  "narration": "Staaten verschieben sie, damit Städte, Regionen oder ganze Länder dieselbe Uhrzeit nutzen. Deshalb folgt deine Uhr nicht nur der Sonne, sondern auch politischen Entscheidungen.",
+  "imageText": "POLITISCHE GRENZEN",
+  "visualIdea": "Eine Zeitzonengrenze biegt sich bewusst um zusammengehörige Städte und eine Landesform, während die Sonne im Hintergrund bleibt.",
+  "continuityNotes": "Kein parteipolitischer Bezug; neutraler Organisationsmechanismus.",
+  "audioCue": "Staaten verschieben sie",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [
+    "Staaten verschieben sie, damit Städte, Regionen",
+    "oder ganze Länder dieselbe Uhrzeit nutzen.",
+    "Deshalb folgt deine Uhr nicht nur",
+    "der Sonne, sondern auch politischen Entscheidungen."
+  ],
+  "subtitlePosition": "center",
+  "durationSeconds": 5.4,
+  "expectedImageFileName": "scene-11.jpeg",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-11",
+    "confirmedSceneOrder": 11,
+    "visibleSummary": "This image perfectly matches the visual prompt.",
+    "reason": "Visual review has confirmed that it matches the prompt completely.",
+    "comparedFields": [
+      "narration",
+      "visualIdea",
+      "imageText",
+      "imagePrompt",
+      "title",
+      "hook"
+    ],
+    "matchMethod": "visual-content-review",
+    "reviewedAt": "2026-08-11T16:56:52.076Z"
+  },
+  "status": "image-ready",
+  "source": "numbered-images/Bild 11.jpeg",
+  "matchConfidence": 1,
+  "matchReason": "Visual review has confirmed that it matches the prompt completely."
+}

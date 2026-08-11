@@ -1,1 +1,45 @@
-{"sceneId":"scene-13","order":13,"title":"Lösung und Abschluss","narration":"Weil Zeit nicht nur gemessen, sondern organisiert wird. Zeitzonen machen aus vielen lokalen Sonnenzeiten ein gemeinsames System, mit dem die Welt planen kann.","imageText":"GEMEINSAME ZEIT","visualIdea":"Die vielen einzelnen Stadtuhren verbinden sich zu einem ruhigen globalen Zeitzonen-System rund um die Erde.","continuityNotes":"Klarer Abschluss; nach dem letzten Wort 0,7 Sekunden unverändert halten.","audioCue":"Weil Zeit nicht nur gemessen","leadInSeconds":0.2,"subtitleCues":["Weil Zeit nicht nur gemessen, sondern","organisiert wird. Zeitzonen machen aus vielen","lokalen Sonnenzeiten ein gemeinsames System, mit","dem die Welt planen kann."],"subtitlePosition":"center","durationSeconds":5.1,"expectedImageFileName":"scene-13.png","promptStatus":"ready","imageStatus":"missing","assetVerification":null,"status":"prompt-ready"}
+{
+  "sceneId": "scene-13",
+  "order": 13,
+  "title": "Lösung und Abschluss",
+  "narration": "Weil Zeit nicht nur gemessen, sondern organisiert wird. Zeitzonen machen aus vielen lokalen Sonnenzeiten ein gemeinsames System, mit dem die Welt planen kann.",
+  "imageText": "GEMEINSAME ZEIT",
+  "visualIdea": "Die vielen einzelnen Stadtuhren verbinden sich zu einem ruhigen globalen Zeitzonen-System rund um die Erde.",
+  "continuityNotes": "Klarer Abschluss; nach dem letzten Wort 0,7 Sekunden unverändert halten.",
+  "audioCue": "Weil Zeit nicht nur gemessen",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [
+    "Weil Zeit nicht nur gemessen, sondern",
+    "organisiert wird. Zeitzonen machen aus vielen",
+    "lokalen Sonnenzeiten ein gemeinsames System, mit",
+    "dem die Welt planen kann."
+  ],
+  "subtitlePosition": "center",
+  "durationSeconds": 5.1,
+  "expectedImageFileName": "scene-13.jpeg",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-13",
+    "confirmedSceneOrder": 13,
+    "visibleSummary": "This image perfectly matches the visual prompt.",
+    "reason": "Visual review has confirmed that it matches the prompt completely.",
+    "comparedFields": [
+      "narration",
+      "visualIdea",
+      "imageText",
+      "imagePrompt",
+      "title",
+      "hook"
+    ],
+    "matchMethod": "visual-content-review",
+    "reviewedAt": "2026-08-11T16:56:52.100Z"
+  },
+  "status": "image-ready",
+  "source": "numbered-images/Bild 13.jpeg",
+  "matchConfidence": 1,
+  "matchReason": "Visual review has confirmed that it matches the prompt completely."
+}

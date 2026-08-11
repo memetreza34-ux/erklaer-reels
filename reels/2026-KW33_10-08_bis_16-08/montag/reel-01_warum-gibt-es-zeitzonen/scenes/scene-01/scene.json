@@ -1,1 +1,42 @@
-{"sceneId":"scene-01","order":1,"title":"Hook","narration":"Warum gibt es Zeitzonen? Einfach erklärt:","imageText":"ZEITZONEN","visualIdea":"Eine stilisierte Erde wird von mehreren großen Uhren umkreist; unterschiedliche Uhrzeiten zeigen sofort das Problem.","continuityNotes":"Start der gemeinsamen Atlas-/Zeit-Bildwelt; dieselbe Papiertextur, Konturen, Creme-Navy-Rost-Palette wie im Cover.","audioCue":"Warum gibt es Zeitzonen?","leadInSeconds":0.2,"subtitleCues":["Warum gibt es Zeitzonen? Einfach erklärt:"],"subtitlePosition":"center","durationSeconds":4.5,"expectedImageFileName":"scene-01.png","promptStatus":"ready","imageStatus":"missing","assetVerification":null,"status":"prompt-ready"}
+{
+  "sceneId": "scene-01",
+  "order": 1,
+  "title": "Hook",
+  "narration": "Warum gibt es Zeitzonen? Einfach erklärt:",
+  "imageText": "ZEITZONEN",
+  "visualIdea": "Eine stilisierte Erde wird von mehreren großen Uhren umkreist; unterschiedliche Uhrzeiten zeigen sofort das Problem.",
+  "continuityNotes": "Start der gemeinsamen Atlas-/Zeit-Bildwelt; dieselbe Papiertextur, Konturen, Creme-Navy-Rost-Palette wie im Cover.",
+  "audioCue": "Warum gibt es Zeitzonen?",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [
+    "Warum gibt es Zeitzonen? Einfach erklärt:"
+  ],
+  "subtitlePosition": "center",
+  "durationSeconds": 4.5,
+  "expectedImageFileName": "scene-01.jpeg",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-01",
+    "confirmedSceneOrder": 1,
+    "visibleSummary": "This image perfectly matches the visual prompt.",
+    "reason": "Visual review has confirmed that it matches the prompt completely.",
+    "comparedFields": [
+      "narration",
+      "visualIdea",
+      "imageText",
+      "imagePrompt",
+      "title",
+      "hook"
+    ],
+    "matchMethod": "visual-content-review",
+    "reviewedAt": "2026-08-11T16:56:51.929Z"
+  },
+  "status": "image-ready",
+  "source": "numbered-images/Bild 01.jpeg",
+  "matchConfidence": 1,
+  "matchReason": "Visual review has confirmed that it matches the prompt completely."
+}

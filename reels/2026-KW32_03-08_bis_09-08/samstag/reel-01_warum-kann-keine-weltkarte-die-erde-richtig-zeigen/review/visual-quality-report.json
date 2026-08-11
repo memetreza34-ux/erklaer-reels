@@ -1,0 +1,1555 @@
+{
+  "createdAt": "2026-08-10T16:48:19.840Z",
+  "strict": true,
+  "passed": true,
+  "visualStyleId": "visual-metaphor",
+  "safeZones": {
+    "leftPercent": 6,
+    "rightPercent": 6,
+    "topPercent": 8,
+    "bottomPercent": 18,
+    "subtitleVerticalPercent": {
+      "min": 58,
+      "max": 58,
+      "default": 58
+    }
+  },
+  "subtitlePalette": {
+    "textColor": "#F5F7FA",
+    "highlightColor": "#F5F7FA",
+    "highlightCurrentWord": false,
+    "backgroundColor": "transparent",
+    "textStrokeColor": "rgba(0, 0, 0, 0.92)"
+  },
+  "summary": {
+    "assetsChecked": 14,
+    "passedChecks": 146,
+    "failedChecks": 0,
+    "warnings": 14,
+    "totalChecks": 160
+  },
+  "assets": [
+    {
+      "assetId": "scene-01",
+      "file": "scenes/scene-01/scene-01.jpeg",
+      "kind": "scene",
+      "expected": {
+        "sceneId": "scene-01",
+        "order": 1,
+        "title": "Hook: Keine Weltkarte kann alles richtig zeigen",
+        "narration": "Eine Weltkarte zeigt dir die ganze Erde – aber sie kann niemals alles gleichzeitig richtig darstellen.",
+        "audioCue": "Eine Weltkarte zeigt dir",
+        "visualIdea": "Globus neben flacher Weltkarte; die flache Karte dehnt sich sichtbar.",
+        "imageText": "KEINE KARTE IST PERFEKT",
+        "imagePrompt": "Vertical 9:16 hand-drawn 2D editorial infographic for a mature German social-media explainer. Use the finished `Bild 00.png` as the binding style reference: same premium cartography aesthetic, warm cream paper, deep navy oceans, muted teal land masses, restrained burnt-orange highlights, charcoal outlines, subtle paper texture and crisp geometry. One clear full-frame moment, no split panels, no photorealism, no 3D, no logos, no watermark, no subtitle bar. Show a globe beside a flat world map; the flat map visibly stretches as it tries to represent the globe. Include exactly this visible German text: \"KEINE KARTE IST PERFEKT\". No other readable words.",
+        "visualStyleId": "visual-metaphor",
+        "visualStyleReason": "Kartenprojektionen werden über Globus-zu-Fläche-Metaphern, Gradnetze und Größenvergleiche in einer konsistenten reifen 2D-Editorial-Kartografie erklärt.",
+        "previousSceneId": null,
+        "nextSceneId": "scene-02"
+      },
+      "reviewFingerprint": "686f7f2045b2774a3dcfa08b9d2bb99da0d8629fd1e940dafa6f03ba79941760",
+      "metadata": {
+        "format": "jpeg",
+        "width": 768,
+        "height": 1376,
+        "extension": "jpeg",
+        "aspectRatio": 0.5581395348837209
+      },
+      "manualReviewStatus": "passed",
+      "semanticEvidencePassed": true
+    },
+    {
+      "assetId": "scene-02",
+      "file": "scenes/scene-02/scene-02.jpeg",
+      "kind": "scene",
+      "expected": {
+        "sceneId": "scene-02",
+        "order": 2,
+        "title": "Kugel gegen Fläche",
+        "narration": "Der Grund ist simpel: Die Erde ist gekrümmt, während jede normale Karte flach ist.",
+        "audioCue": "Der Grund ist simpel",
+        "visualIdea": "Runder Globus wird Richtung flaches Kartenpapier gedrückt.",
+        "imageText": "KUGEL → FLÄCHE",
+        "imagePrompt": "Vertical 9:16 hand-drawn 2D editorial infographic for a mature German social-media explainer. Use finished `Bild 00.png` as the binding style reference with identical palette, line quality, cartography symbols, lighting and detail. Show a round globe gently pressed toward a flat sheet of map paper, making the mismatch between curved and flat surfaces instantly clear. Natural full-frame composition, no split panels, no photorealism, no 3D, no logos, no watermark, no subtitle bar. Include exactly this visible German text: \"KUGEL → FLÄCHE\". No other readable words.",
+        "visualStyleId": "visual-metaphor",
+        "visualStyleReason": "Kartenprojektionen werden über Globus-zu-Fläche-Metaphern, Gradnetze und Größenvergleiche in einer konsistenten reifen 2D-Editorial-Kartografie erklärt.",
+        "previousSceneId": "scene-01",
+        "nextSceneId": "scene-03"
+      },
+      "reviewFingerprint": "719e7f57f259e44e3c761831d02a0274725ab873adac7f2de6696b0674f65139",
+      "metadata": {
+        "format": "jpeg",
+        "width": 768,
+        "height": 1376,
+        "extension": "jpeg",
+        "aspectRatio": 0.5581395348837209
+      },
+      "manualReviewStatus": "passed",
+      "semanticEvidencePassed": true
+    },
+    {
+      "assetId": "scene-03",
+      "file": "scenes/scene-03/scene-03.jpeg",
+      "kind": "scene",
+      "expected": {
+        "sceneId": "scene-03",
+        "order": 3,
+        "title": "Verzerrung ist unvermeidbar",
+        "narration": "Beim Übertragen auf eine Ebene muss deshalb zwangsläufig mindestens eine Eigenschaft verzerrt werden.",
+        "audioCue": "Beim Übertragen auf eine Ebene",
+        "visualIdea": "Aufgeschnittene Globusoberfläche wird flachgezogen; Lücken und Dehnungen entstehen.",
+        "imageText": "",
+        "imagePrompt": "Vertical 9:16 hand-drawn 2D editorial infographic. Use finished `Bild 00.png` as the binding style reference. Show a peeled orange-like globe surface being flattened onto paper; edges pull apart, gaps and stretches appear as a clean metaphor for unavoidable projection distortion. Same cream/navy/teal/orange cartography palette, crisp charcoal outlines and paper texture. One clear moment, no split panels, no photorealism, no 3D, no logos, no watermark, no subtitle bar. No readable text.",
+        "visualStyleId": "visual-metaphor",
+        "visualStyleReason": "Kartenprojektionen werden über Globus-zu-Fläche-Metaphern, Gradnetze und Größenvergleiche in einer konsistenten reifen 2D-Editorial-Kartografie erklärt.",
+        "previousSceneId": "scene-02",
+        "nextSceneId": "scene-04"
+      },
+      "reviewFingerprint": "de1ced26d036b030514db143d6972d8f5e0853f203c5d0e32be5f5080be55bed",
+      "metadata": {
+        "format": "jpeg",
+        "width": 768,
+        "height": 1376,
+        "extension": "jpeg",
+        "aspectRatio": 0.5581395348837209
+      },
+      "manualReviewStatus": "passed",
+      "semanticEvidencePassed": true
+    },
+    {
+      "assetId": "scene-04",
+      "file": "scenes/scene-04/scene-04.jpeg",
+      "kind": "scene",
+      "expected": {
+        "sceneId": "scene-04",
+        "order": 4,
+        "title": "Was eine Kartenprojektion ist",
+        "narration": "Kartografen nennen diese mathematische Umrechnung Kartenprojektion, und davon gibt es sehr viele.",
+        "audioCue": "Kartografen nennen diese",
+        "visualIdea": "Globus wird über Projektionsgitter in verschiedene flache Karten überführt.",
+        "imageText": "KARTENPROJEKTION",
+        "imagePrompt": "Vertical 9:16 hand-drawn 2D editorial infographic. Use finished `Bild 00.png` as the binding style reference. On a clean cartographer desk, show one globe transforming through a projection grid into several differently shaped flat world maps. Same cream/navy/teal/orange palette, charcoal outlines and paper texture. One clear full-frame moment, no split-panel collage, no photorealism, no 3D, no logos, no watermark, no subtitle bar. Include exactly this visible German text: \"KARTENPROJEKTION\". No other readable words.",
+        "visualStyleId": "visual-metaphor",
+        "visualStyleReason": "Kartenprojektionen werden über Globus-zu-Fläche-Metaphern, Gradnetze und Größenvergleiche in einer konsistenten reifen 2D-Editorial-Kartografie erklärt.",
+        "previousSceneId": "scene-03",
+        "nextSceneId": "scene-05"
+      },
+      "reviewFingerprint": "8b180d3c26baf983a132f38da19b14f44e965d0327301fb49ca5f3314f55ac47",
+      "metadata": {
+        "format": "jpeg",
+        "width": 768,
+        "height": 1376,
+        "extension": "jpeg",
+        "aspectRatio": 0.5581395348837209
+      },
+      "manualReviewStatus": "passed",
+      "semanticEvidencePassed": true
+    },
+    {
+      "assetId": "scene-05",
+      "file": "scenes/scene-05/scene-05.jpeg",
+      "kind": "scene",
+      "expected": {
+        "sceneId": "scene-05",
+        "order": 5,
+        "title": "Was sich verändern kann",
+        "narration": "Je nach Projektion verändern sich Fläche, Form, Entfernung oder Richtung unterschiedlich stark.",
+        "audioCue": "Je nach Projektion",
+        "visualIdea": "Weltkarte mit vier Symbolen für Fläche, Form, Distanz und Richtung.",
+        "imageText": "FLÄCHE • FORM • DISTANZ • RICHTUNG",
+        "imagePrompt": "Vertical 9:16 hand-drawn 2D editorial infographic. Use finished `Bild 00.png` as the binding style reference. Show one central world map surrounded naturally by four small symbolic measuring tools for area, shape, distance and direction, each indicating a different tradeoff. Same cream/navy/teal/orange palette, charcoal outlines and paper texture. One clear moment, no collage, no photorealism, no 3D, no logos, no watermark, no subtitle bar. Include exactly this visible German text: \"FLÄCHE • FORM • DISTANZ • RICHTUNG\". No other readable words.",
+        "visualStyleId": "visual-metaphor",
+        "visualStyleReason": "Kartenprojektionen werden über Globus-zu-Fläche-Metaphern, Gradnetze und Größenvergleiche in einer konsistenten reifen 2D-Editorial-Kartografie erklärt.",
+        "previousSceneId": "scene-04",
+        "nextSceneId": "scene-06"
+      },
+      "reviewFingerprint": "de71d30534bb07d69426e970afb00370c1877572ef13b97c0757536cbc92fd24",
+      "metadata": {
+        "format": "jpeg",
+        "width": 768,
+        "height": 1376,
+        "extension": "jpeg",
+        "aspectRatio": 0.5581395348837209
+      },
+      "manualReviewStatus": "passed",
+      "semanticEvidencePassed": true
+    },
+    {
+      "assetId": "scene-06",
+      "file": "scenes/scene-06/scene-06.jpeg",
+      "kind": "scene",
+      "expected": {
+        "sceneId": "scene-06",
+        "order": 6,
+        "title": "Warum Mercator nützlich war",
+        "narration": "Die bekannte Mercator-Projektion erhält lokale Winkel und war deshalb für Navigation besonders praktisch.",
+        "audioCue": "Die bekannte Mercator-Projektion",
+        "visualIdea": "Mercator-Karte mit Kompass und Schiffsroute; Winkelmarkierungen bleiben lokal stabil.",
+        "imageText": "MERCATOR: WINKEL BLEIBEN",
+        "imagePrompt": "Vertical 9:16 hand-drawn 2D editorial infographic. Use finished `Bild 00.png` as the binding style reference. Show a Mercator-style world map with a compass and a clean ship route; small local angle marks stay consistent to communicate navigation usefulness rather than size accuracy. Same premium cartography palette and paper texture. One clear moment, no photorealism, no 3D, no logos, no watermark, no subtitle bar. Include exactly this visible German text: \"MERCATOR: WINKEL BLEIBEN\". No other readable words.",
+        "visualStyleId": "visual-metaphor",
+        "visualStyleReason": "Kartenprojektionen werden über Globus-zu-Fläche-Metaphern, Gradnetze und Größenvergleiche in einer konsistenten reifen 2D-Editorial-Kartografie erklärt.",
+        "previousSceneId": "scene-05",
+        "nextSceneId": "scene-07"
+      },
+      "reviewFingerprint": "de9a8545ca7966b60cb6f50dd602894c91d794fec52d9efacf32eeab0b7c2277",
+      "metadata": {
+        "format": "jpeg",
+        "width": 768,
+        "height": 1376,
+        "extension": "jpeg",
+        "aspectRatio": 0.5581395348837209
+      },
+      "manualReviewStatus": "passed",
+      "semanticEvidencePassed": true
+    },
+    {
+      "assetId": "scene-07",
+      "file": "scenes/scene-07/scene-07.jpeg",
+      "kind": "scene",
+      "expected": {
+        "sceneId": "scene-07",
+        "order": 7,
+        "title": "Warum die Pole wachsen",
+        "narration": "Dafür werden Flächen in Richtung der Pole immer stärker vergrößert und auseinandergezogen.",
+        "audioCue": "Dafür werden Flächen",
+        "visualIdea": "Mercator-Gradnetz dehnt sich stark Richtung oberer und unterer Kartenrand.",
+        "imageText": "RICHTUNG POLE: GRÖSSER",
+        "imagePrompt": "Vertical 9:16 hand-drawn 2D editorial infographic. Use finished `Bild 00.png` as the binding style reference. Show a Mercator graticule expanding dramatically toward the top and bottom; northern and southern land shapes visibly stretch as latitude increases. Same cream/navy/teal/orange palette, charcoal outlines and paper texture. One clear moment, no photorealism, no 3D, no logos, no watermark, no subtitle bar. Include exactly this visible German text: \"RICHTUNG POLE: GRÖSSER\". No other readable words.",
+        "visualStyleId": "visual-metaphor",
+        "visualStyleReason": "Kartenprojektionen werden über Globus-zu-Fläche-Metaphern, Gradnetze und Größenvergleiche in einer konsistenten reifen 2D-Editorial-Kartografie erklärt.",
+        "previousSceneId": "scene-06",
+        "nextSceneId": "scene-08"
+      },
+      "reviewFingerprint": "2aa147e5fda7f4a01f6ad5df64e4adf36f0afca589ad73c194b3d25f9c6c1a37",
+      "metadata": {
+        "format": "jpeg",
+        "width": 768,
+        "height": 1376,
+        "extension": "jpeg",
+        "aspectRatio": 0.5581395348837209
+      },
+      "manualReviewStatus": "passed",
+      "semanticEvidencePassed": true
+    },
+    {
+      "assetId": "scene-08",
+      "file": "scenes/scene-08/scene-08.jpeg",
+      "kind": "scene",
+      "expected": {
+        "sceneId": "scene-08",
+        "order": 8,
+        "title": "Grönland gegen Südamerika",
+        "narration": "Deshalb wirkt Grönland auf Mercator-Karten riesig, obwohl Südamerika tatsächlich deutlich größer ist.",
+        "audioCue": "Deshalb wirkt Grönland",
+        "visualIdea": "Mercator-Karte hebt Grönland und Südamerika hervor; Größenwirkung und echte Flächenrelation werden visuell kontrastiert.",
+        "imageText": "",
+        "imagePrompt": "Vertical 9:16 hand-drawn 2D editorial infographic. Use finished `Bild 00.png` as the binding style reference. Show a Mercator world map highlighting Greenland and South America; Greenland appears visually oversized on the projection while a simple nonverbal area-comparison marker makes clear that South America is actually much larger. Same premium cartography palette and paper texture. One clear moment, no photorealism, no 3D, no logos, no watermark, no subtitle bar. No readable text.",
+        "visualStyleId": "visual-metaphor",
+        "visualStyleReason": "Kartenprojektionen werden über Globus-zu-Fläche-Metaphern, Gradnetze und Größenvergleiche in einer konsistenten reifen 2D-Editorial-Kartografie erklärt.",
+        "previousSceneId": "scene-07",
+        "nextSceneId": "scene-09"
+      },
+      "reviewFingerprint": "84420d1314e28398e58132a5d1e227fb07dd0ae23dd2044a628d9e9dcb504552",
+      "metadata": {
+        "format": "jpeg",
+        "width": 768,
+        "height": 1376,
+        "extension": "jpeg",
+        "aspectRatio": 0.5581395348837209
+      },
+      "manualReviewStatus": "passed",
+      "semanticEvidencePassed": true
+    },
+    {
+      "assetId": "scene-09",
+      "file": "scenes/scene-09/scene-09.jpeg",
+      "kind": "scene",
+      "expected": {
+        "sceneId": "scene-09",
+        "order": 9,
+        "title": "Andere Projektionen, andere Fehler",
+        "narration": "Andere Projektionen bewahren Flächen besser, verzerren dafür zum Beispiel Formen, Winkel oder Entfernungen.",
+        "audioCue": "Andere Projektionen bewahren",
+        "visualIdea": "Zwei Kartenprojektionen zeigen unterschiedliche Trade-offs zwischen Fläche und Form.",
+        "imageText": "",
+        "imagePrompt": "Vertical 9:16 hand-drawn 2D editorial infographic. Use finished `Bild 00.png` as the binding style reference. Show two different flat world-map projections in one coherent scene: one preserves relative areas better but bends shapes, the other keeps local shapes more familiar but changes area. Same cream/navy/teal/orange palette and paper texture. One visual comparison, not a stacked-panel collage. No photorealism, no 3D, no logos, no watermark, no subtitle bar. No readable text.",
+        "visualStyleId": "visual-metaphor",
+        "visualStyleReason": "Kartenprojektionen werden über Globus-zu-Fläche-Metaphern, Gradnetze und Größenvergleiche in einer konsistenten reifen 2D-Editorial-Kartografie erklärt.",
+        "previousSceneId": "scene-08",
+        "nextSceneId": "scene-10"
+      },
+      "reviewFingerprint": "42e1ac74dc4bb4c2fc11ab510bc8e976d2aa9b1ce81c865de678ab0b6298872f",
+      "metadata": {
+        "format": "jpeg",
+        "width": 768,
+        "height": 1376,
+        "extension": "jpeg",
+        "aspectRatio": 0.5581395348837209
+      },
+      "manualReviewStatus": "passed",
+      "semanticEvidencePassed": true
+    },
+    {
+      "assetId": "scene-10",
+      "file": "scenes/scene-10/scene-10.jpeg",
+      "kind": "scene",
+      "expected": {
+        "sceneId": "scene-10",
+        "order": 10,
+        "title": "Keine perfekte Projektion",
+        "narration": "Es gibt also keine perfekte flache Weltkarte, die jede Eigenschaft gleichzeitig korrekt zeigt.",
+        "audioCue": "Es gibt also keine",
+        "visualIdea": "Mehrere Projektionen fächern sich um einen Globus, jede mit anderer Verzerrung.",
+        "imageText": "KEINE PERFEKTE WELTKARTE",
+        "imagePrompt": "Vertical 9:16 hand-drawn 2D editorial infographic. Use finished `Bild 00.png` as the binding style reference. Show several world map projections fanning naturally around one globe, each carrying a different visible distortion so none matches every globe property at once. Same premium cartography palette, charcoal outlines and paper texture. One clean full-frame composition, no photorealism, no 3D, no logos, no watermark, no subtitle bar. Include exactly this visible German text: \"KEINE PERFEKTE WELTKARTE\". No other readable words.",
+        "visualStyleId": "visual-metaphor",
+        "visualStyleReason": "Kartenprojektionen werden über Globus-zu-Fläche-Metaphern, Gradnetze und Größenvergleiche in einer konsistenten reifen 2D-Editorial-Kartografie erklärt.",
+        "previousSceneId": "scene-09",
+        "nextSceneId": "scene-11"
+      },
+      "reviewFingerprint": "1bd0d863ccc6d9dbeb7cbf5b146fb3c841ba05943167e659e970ff64d7fa7320",
+      "metadata": {
+        "format": "jpeg",
+        "width": 768,
+        "height": 1376,
+        "extension": "jpeg",
+        "aspectRatio": 0.5581395348837209
+      },
+      "manualReviewStatus": "passed",
+      "semanticEvidencePassed": true
+    },
+    {
+      "assetId": "scene-11",
+      "file": "scenes/scene-11/scene-11.jpeg",
+      "kind": "scene",
+      "expected": {
+        "sceneId": "scene-11",
+        "order": 11,
+        "title": "Der Zweck entscheidet",
+        "narration": "Welche Projektion sinnvoll ist, hängt vom Zweck ab: Navigation braucht andere Prioritäten als Größenvergleiche.",
+        "audioCue": "Welche Projektion sinnvoll ist",
+        "visualIdea": "Kartograf wählt zwischen Navigationskarte und flächentreuer Vergleichskarte.",
+        "imageText": "DER ZWECK ENTSCHEIDET",
+        "imagePrompt": "Vertical 9:16 hand-drawn 2D editorial infographic. Use finished `Bild 00.png` as the binding style reference. Show a cartographer choosing between a navigation chart with compass routes and an equal-area thematic map comparing continent sizes; the choice clearly depends on purpose. Same cream/navy/teal/orange palette, charcoal outlines and paper texture. One coherent moment, no photorealism, no 3D, no logos, no watermark, no subtitle bar. Include exactly this visible German text: \"DER ZWECK ENTSCHEIDET\". No other readable words.",
+        "visualStyleId": "visual-metaphor",
+        "visualStyleReason": "Kartenprojektionen werden über Globus-zu-Fläche-Metaphern, Gradnetze und Größenvergleiche in einer konsistenten reifen 2D-Editorial-Kartografie erklärt.",
+        "previousSceneId": "scene-10",
+        "nextSceneId": "scene-12"
+      },
+      "reviewFingerprint": "5fa9d07af6395757e013cc82dae732673e4539300b04fca3b66125e2e15a0b93",
+      "metadata": {
+        "format": "jpeg",
+        "width": 768,
+        "height": 1376,
+        "extension": "jpeg",
+        "aspectRatio": 0.5581395348837209
+      },
+      "manualReviewStatus": "passed",
+      "semanticEvidencePassed": true
+    },
+    {
+      "assetId": "scene-12",
+      "file": "scenes/scene-12/scene-12.jpeg",
+      "kind": "scene",
+      "expected": {
+        "sceneId": "scene-12",
+        "order": 12,
+        "title": "Prüffrage für jede Karte",
+        "narration": "Frag dich deshalb bei jeder Weltkarte: Was soll sie möglichst korrekt zeigen?",
+        "audioCue": "Frag dich deshalb",
+        "visualIdea": "Betrachter prüft Weltkarte mit Symbolen für Fläche, Form, Distanz und Richtung.",
+        "imageText": "WAS SOLL KORREKT SEIN?",
+        "imagePrompt": "Vertical 9:16 hand-drawn 2D editorial infographic. Use finished `Bild 00.png` as the binding style reference. Show a viewer studying a wall map thoughtfully while four small symbols for area, shape, distance and direction sit nearby as a visual question. Same premium cartography palette and paper texture. One clear moment, no photorealism, no 3D, no logos, no watermark, no subtitle bar. Include exactly this visible German text: \"WAS SOLL KORREKT SEIN?\". No other readable words.",
+        "visualStyleId": "visual-metaphor",
+        "visualStyleReason": "Kartenprojektionen werden über Globus-zu-Fläche-Metaphern, Gradnetze und Größenvergleiche in einer konsistenten reifen 2D-Editorial-Kartografie erklärt.",
+        "previousSceneId": "scene-11",
+        "nextSceneId": "scene-13"
+      },
+      "reviewFingerprint": "bc833d30e3da7730a1355c451d2584939344cf5e7255418d81b88d3bca38bef4",
+      "metadata": {
+        "format": "jpeg",
+        "width": 768,
+        "height": 1376,
+        "extension": "jpeg",
+        "aspectRatio": 0.5581395348837209
+      },
+      "manualReviewStatus": "passed",
+      "semanticEvidencePassed": true
+    },
+    {
+      "assetId": "scene-13",
+      "file": "scenes/scene-13/scene-13.jpeg",
+      "kind": "scene",
+      "expected": {
+        "sceneId": "scene-13",
+        "order": 13,
+        "title": "Starker Abschluss",
+        "narration": "Eine Karte ist eine mathematische Entscheidung. Die beste Projektion ist die, deren Verzerrung zum Zweck passt.",
+        "audioCue": "Eine Karte ist eine",
+        "visualIdea": "Globus und zweckgerechte Karte liegen sauber ausgerichtet auf einem Kartografentisch.",
+        "imageText": "DIE VERZERRUNG MUSS PASSEN",
+        "imagePrompt": "Vertical 9:16 hand-drawn 2D editorial infographic. Use finished `Bild 00.png` as the binding style reference. Show a globe and a purpose-specific map aligned cleanly on a cartographer desk, with the selected projection highlighted as the right tool for its intended use. Same cream/navy/teal/orange palette, charcoal outlines and paper texture. One strong final moment, no photorealism, no 3D, no logos, no watermark, no subtitle bar. Include exactly this visible German text: \"DIE VERZERRUNG MUSS PASSEN\". No other readable words.",
+        "visualStyleId": "visual-metaphor",
+        "visualStyleReason": "Kartenprojektionen werden über Globus-zu-Fläche-Metaphern, Gradnetze und Größenvergleiche in einer konsistenten reifen 2D-Editorial-Kartografie erklärt.",
+        "previousSceneId": "scene-12",
+        "nextSceneId": null
+      },
+      "reviewFingerprint": "f16c6ca3da94a544ba5ebc343919ccd0ccca9b24d0758be25bcd5bbeceeee93b",
+      "metadata": {
+        "format": "jpeg",
+        "width": 768,
+        "height": 1376,
+        "extension": "jpeg",
+        "aspectRatio": 0.5581395348837209
+      },
+      "manualReviewStatus": "passed",
+      "semanticEvidencePassed": true
+    },
+    {
+      "assetId": "cover",
+      "file": "cover/cover.jpeg",
+      "kind": "cover",
+      "expected": {
+        "headline": "WARUM IST JEDE WELTKARTE VERZERRT?",
+        "visualIdea": "Ein Globus wird sichtbar in eine flache Weltkarte überführt; die Karte dehnt sich an Rändern und Richtung Pole.",
+        "imagePrompt": "MASTER STYLE REFERENCE FOR THE ENTIRE REEL. Create the actual reel cover first and use the finished cover image as the direct visual reference for every later scene: same hand-drawn 2D editorial infographic style, same cartography aesthetic, same palette, same line quality, same map-symbol language, same lighting logic and same overall detail level. The cover must clearly communicate the reel topic through one strong visible German hook. Do not omit or paraphrase the hook text.\n\nVertical 9:16 hand-drawn 2D editorial infographic for a mature German social-media explainer. Clean premium cartography aesthetic, warm cream paper background, deep navy oceans, muted teal land masses, restrained burnt-orange highlights, charcoal outlines, subtle paper texture, crisp readable geometry, sophisticated rather than childish. Cover composition: a simplified globe is being transformed into a flat rectangular world map directly beneath it; the flat map visibly stretches at the edges and toward the poles, making the projection problem instantly understandable. Strong central hierarchy, no split panels, no photorealism, no 3D render, no logos, no watermark, no subtitle bar. Include exactly this large visible German headline: \"WARUM IST JEDE WELTKARTE VERZERRT?\". This is the reel hook and must be clearly legible. No other readable words.",
+        "visualStyleId": "visual-metaphor",
+        "visualStyleReason": "Kartenprojektionen werden über Globus-zu-Fläche-Metaphern, Gradnetze und Größenvergleiche in einer konsistenten reifen 2D-Editorial-Kartografie erklärt.",
+        "reelTitle": "Warum kann keine Weltkarte die Erde richtig zeigen?"
+      },
+      "reviewFingerprint": "7189166c870dfa78c1075d7b98831ff13af7b7dbb9eec708ba5bd44d5e59bb34",
+      "metadata": {
+        "format": "jpeg",
+        "width": 768,
+        "height": 1376,
+        "extension": "jpeg",
+        "aspectRatio": 0.5581395348837209
+      },
+      "manualReviewStatus": "passed",
+      "semanticEvidencePassed": true
+    }
+  ],
+  "checks": [
+    {
+      "id": "subtitle-safe-zone-config",
+      "assetId": null,
+      "passed": true,
+      "level": "error",
+      "message": "config/visual-quality-rules.json muss den zentralen Untertitelstandard von exakt 58 Prozent verwenden."
+    },
+    {
+      "id": "subtitle-palette-config",
+      "assetId": null,
+      "passed": true,
+      "level": "error",
+      "message": "config/visual-quality-rules.json muss die zentrale weiße Untertitelpalette verwenden."
+    },
+    {
+      "id": "scene-01-present",
+      "assetId": "scene-01",
+      "passed": true,
+      "level": "error",
+      "message": "scene-01: Bilddatei fehlt (scenes/scene-01/scene-01.jpeg)."
+    },
+    {
+      "id": "scene-01-metadata",
+      "assetId": "scene-01",
+      "passed": true,
+      "level": "error",
+      "message": "scene-01: Bildmaße oder Format konnten nicht gelesen werden."
+    },
+    {
+      "id": "scene-01-format",
+      "assetId": "scene-01",
+      "passed": true,
+      "level": "error",
+      "message": "scene-01: Nicht unterstütztes Bildformat jpeg."
+    },
+    {
+      "id": "scene-01-portrait",
+      "assetId": "scene-01",
+      "passed": true,
+      "level": "error",
+      "message": "scene-01: Das Bild ist nicht im Hochformat."
+    },
+    {
+      "id": "scene-01-aspect-ratio",
+      "assetId": "scene-01",
+      "passed": true,
+      "level": "error",
+      "message": "scene-01: Seitenverhältnis ist 768:1376 statt 9:16."
+    },
+    {
+      "id": "scene-01-minimum-resolution",
+      "assetId": "scene-01",
+      "passed": true,
+      "level": "error",
+      "message": "scene-01: Mindestauflösung 720×1280 wird nicht erreicht."
+    },
+    {
+      "id": "scene-01-target-resolution",
+      "assetId": "scene-01",
+      "passed": false,
+      "level": "warning",
+      "message": "scene-01: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-01-motion-horizontal-safe",
+      "assetId": "scene-01",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-01: Zoom und horizontaler Schwenk können mehr als 6% Rand abschneiden."
+    },
+    {
+      "id": "scene-01-motion-vertical-safe",
+      "assetId": "scene-01",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-01: Zoom und vertikaler Schwenk können mehr als 8% Rand abschneiden."
+    },
+    {
+      "id": "scene-01-manual-review",
+      "assetId": "scene-01",
+      "passed": true,
+      "level": "error",
+      "message": "scene-01: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden."
+    },
+    {
+      "id": "scene-01-semantic-evidence",
+      "assetId": "scene-01",
+      "passed": true,
+      "level": "error",
+      "message": "scene-01: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt."
+    },
+    {
+      "id": "scene-02-present",
+      "assetId": "scene-02",
+      "passed": true,
+      "level": "error",
+      "message": "scene-02: Bilddatei fehlt (scenes/scene-02/scene-02.jpeg)."
+    },
+    {
+      "id": "scene-02-metadata",
+      "assetId": "scene-02",
+      "passed": true,
+      "level": "error",
+      "message": "scene-02: Bildmaße oder Format konnten nicht gelesen werden."
+    },
+    {
+      "id": "scene-02-format",
+      "assetId": "scene-02",
+      "passed": true,
+      "level": "error",
+      "message": "scene-02: Nicht unterstütztes Bildformat jpeg."
+    },
+    {
+      "id": "scene-02-portrait",
+      "assetId": "scene-02",
+      "passed": true,
+      "level": "error",
+      "message": "scene-02: Das Bild ist nicht im Hochformat."
+    },
+    {
+      "id": "scene-02-aspect-ratio",
+      "assetId": "scene-02",
+      "passed": true,
+      "level": "error",
+      "message": "scene-02: Seitenverhältnis ist 768:1376 statt 9:16."
+    },
+    {
+      "id": "scene-02-minimum-resolution",
+      "assetId": "scene-02",
+      "passed": true,
+      "level": "error",
+      "message": "scene-02: Mindestauflösung 720×1280 wird nicht erreicht."
+    },
+    {
+      "id": "scene-02-target-resolution",
+      "assetId": "scene-02",
+      "passed": false,
+      "level": "warning",
+      "message": "scene-02: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-02-motion-horizontal-safe",
+      "assetId": "scene-02",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-02: Zoom und horizontaler Schwenk können mehr als 6% Rand abschneiden."
+    },
+    {
+      "id": "scene-02-motion-vertical-safe",
+      "assetId": "scene-02",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-02: Zoom und vertikaler Schwenk können mehr als 8% Rand abschneiden."
+    },
+    {
+      "id": "scene-02-manual-review",
+      "assetId": "scene-02",
+      "passed": true,
+      "level": "error",
+      "message": "scene-02: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden."
+    },
+    {
+      "id": "scene-02-semantic-evidence",
+      "assetId": "scene-02",
+      "passed": true,
+      "level": "error",
+      "message": "scene-02: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt."
+    },
+    {
+      "id": "scene-03-present",
+      "assetId": "scene-03",
+      "passed": true,
+      "level": "error",
+      "message": "scene-03: Bilddatei fehlt (scenes/scene-03/scene-03.jpeg)."
+    },
+    {
+      "id": "scene-03-metadata",
+      "assetId": "scene-03",
+      "passed": true,
+      "level": "error",
+      "message": "scene-03: Bildmaße oder Format konnten nicht gelesen werden."
+    },
+    {
+      "id": "scene-03-format",
+      "assetId": "scene-03",
+      "passed": true,
+      "level": "error",
+      "message": "scene-03: Nicht unterstütztes Bildformat jpeg."
+    },
+    {
+      "id": "scene-03-portrait",
+      "assetId": "scene-03",
+      "passed": true,
+      "level": "error",
+      "message": "scene-03: Das Bild ist nicht im Hochformat."
+    },
+    {
+      "id": "scene-03-aspect-ratio",
+      "assetId": "scene-03",
+      "passed": true,
+      "level": "error",
+      "message": "scene-03: Seitenverhältnis ist 768:1376 statt 9:16."
+    },
+    {
+      "id": "scene-03-minimum-resolution",
+      "assetId": "scene-03",
+      "passed": true,
+      "level": "error",
+      "message": "scene-03: Mindestauflösung 720×1280 wird nicht erreicht."
+    },
+    {
+      "id": "scene-03-target-resolution",
+      "assetId": "scene-03",
+      "passed": false,
+      "level": "warning",
+      "message": "scene-03: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-03-motion-horizontal-safe",
+      "assetId": "scene-03",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-03: Zoom und horizontaler Schwenk können mehr als 6% Rand abschneiden."
+    },
+    {
+      "id": "scene-03-motion-vertical-safe",
+      "assetId": "scene-03",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-03: Zoom und vertikaler Schwenk können mehr als 8% Rand abschneiden."
+    },
+    {
+      "id": "scene-03-manual-review",
+      "assetId": "scene-03",
+      "passed": true,
+      "level": "error",
+      "message": "scene-03: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden."
+    },
+    {
+      "id": "scene-03-semantic-evidence",
+      "assetId": "scene-03",
+      "passed": true,
+      "level": "error",
+      "message": "scene-03: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt."
+    },
+    {
+      "id": "scene-04-present",
+      "assetId": "scene-04",
+      "passed": true,
+      "level": "error",
+      "message": "scene-04: Bilddatei fehlt (scenes/scene-04/scene-04.jpeg)."
+    },
+    {
+      "id": "scene-04-metadata",
+      "assetId": "scene-04",
+      "passed": true,
+      "level": "error",
+      "message": "scene-04: Bildmaße oder Format konnten nicht gelesen werden."
+    },
+    {
+      "id": "scene-04-format",
+      "assetId": "scene-04",
+      "passed": true,
+      "level": "error",
+      "message": "scene-04: Nicht unterstütztes Bildformat jpeg."
+    },
+    {
+      "id": "scene-04-portrait",
+      "assetId": "scene-04",
+      "passed": true,
+      "level": "error",
+      "message": "scene-04: Das Bild ist nicht im Hochformat."
+    },
+    {
+      "id": "scene-04-aspect-ratio",
+      "assetId": "scene-04",
+      "passed": true,
+      "level": "error",
+      "message": "scene-04: Seitenverhältnis ist 768:1376 statt 9:16."
+    },
+    {
+      "id": "scene-04-minimum-resolution",
+      "assetId": "scene-04",
+      "passed": true,
+      "level": "error",
+      "message": "scene-04: Mindestauflösung 720×1280 wird nicht erreicht."
+    },
+    {
+      "id": "scene-04-target-resolution",
+      "assetId": "scene-04",
+      "passed": false,
+      "level": "warning",
+      "message": "scene-04: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-04-motion-horizontal-safe",
+      "assetId": "scene-04",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-04: Zoom und horizontaler Schwenk können mehr als 6% Rand abschneiden."
+    },
+    {
+      "id": "scene-04-motion-vertical-safe",
+      "assetId": "scene-04",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-04: Zoom und vertikaler Schwenk können mehr als 8% Rand abschneiden."
+    },
+    {
+      "id": "scene-04-manual-review",
+      "assetId": "scene-04",
+      "passed": true,
+      "level": "error",
+      "message": "scene-04: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden."
+    },
+    {
+      "id": "scene-04-semantic-evidence",
+      "assetId": "scene-04",
+      "passed": true,
+      "level": "error",
+      "message": "scene-04: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt."
+    },
+    {
+      "id": "scene-05-present",
+      "assetId": "scene-05",
+      "passed": true,
+      "level": "error",
+      "message": "scene-05: Bilddatei fehlt (scenes/scene-05/scene-05.jpeg)."
+    },
+    {
+      "id": "scene-05-metadata",
+      "assetId": "scene-05",
+      "passed": true,
+      "level": "error",
+      "message": "scene-05: Bildmaße oder Format konnten nicht gelesen werden."
+    },
+    {
+      "id": "scene-05-format",
+      "assetId": "scene-05",
+      "passed": true,
+      "level": "error",
+      "message": "scene-05: Nicht unterstütztes Bildformat jpeg."
+    },
+    {
+      "id": "scene-05-portrait",
+      "assetId": "scene-05",
+      "passed": true,
+      "level": "error",
+      "message": "scene-05: Das Bild ist nicht im Hochformat."
+    },
+    {
+      "id": "scene-05-aspect-ratio",
+      "assetId": "scene-05",
+      "passed": true,
+      "level": "error",
+      "message": "scene-05: Seitenverhältnis ist 768:1376 statt 9:16."
+    },
+    {
+      "id": "scene-05-minimum-resolution",
+      "assetId": "scene-05",
+      "passed": true,
+      "level": "error",
+      "message": "scene-05: Mindestauflösung 720×1280 wird nicht erreicht."
+    },
+    {
+      "id": "scene-05-target-resolution",
+      "assetId": "scene-05",
+      "passed": false,
+      "level": "warning",
+      "message": "scene-05: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-05-motion-horizontal-safe",
+      "assetId": "scene-05",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-05: Zoom und horizontaler Schwenk können mehr als 6% Rand abschneiden."
+    },
+    {
+      "id": "scene-05-motion-vertical-safe",
+      "assetId": "scene-05",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-05: Zoom und vertikaler Schwenk können mehr als 8% Rand abschneiden."
+    },
+    {
+      "id": "scene-05-manual-review",
+      "assetId": "scene-05",
+      "passed": true,
+      "level": "error",
+      "message": "scene-05: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden."
+    },
+    {
+      "id": "scene-05-semantic-evidence",
+      "assetId": "scene-05",
+      "passed": true,
+      "level": "error",
+      "message": "scene-05: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt."
+    },
+    {
+      "id": "scene-06-present",
+      "assetId": "scene-06",
+      "passed": true,
+      "level": "error",
+      "message": "scene-06: Bilddatei fehlt (scenes/scene-06/scene-06.jpeg)."
+    },
+    {
+      "id": "scene-06-metadata",
+      "assetId": "scene-06",
+      "passed": true,
+      "level": "error",
+      "message": "scene-06: Bildmaße oder Format konnten nicht gelesen werden."
+    },
+    {
+      "id": "scene-06-format",
+      "assetId": "scene-06",
+      "passed": true,
+      "level": "error",
+      "message": "scene-06: Nicht unterstütztes Bildformat jpeg."
+    },
+    {
+      "id": "scene-06-portrait",
+      "assetId": "scene-06",
+      "passed": true,
+      "level": "error",
+      "message": "scene-06: Das Bild ist nicht im Hochformat."
+    },
+    {
+      "id": "scene-06-aspect-ratio",
+      "assetId": "scene-06",
+      "passed": true,
+      "level": "error",
+      "message": "scene-06: Seitenverhältnis ist 768:1376 statt 9:16."
+    },
+    {
+      "id": "scene-06-minimum-resolution",
+      "assetId": "scene-06",
+      "passed": true,
+      "level": "error",
+      "message": "scene-06: Mindestauflösung 720×1280 wird nicht erreicht."
+    },
+    {
+      "id": "scene-06-target-resolution",
+      "assetId": "scene-06",
+      "passed": false,
+      "level": "warning",
+      "message": "scene-06: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-06-motion-horizontal-safe",
+      "assetId": "scene-06",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-06: Zoom und horizontaler Schwenk können mehr als 6% Rand abschneiden."
+    },
+    {
+      "id": "scene-06-motion-vertical-safe",
+      "assetId": "scene-06",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-06: Zoom und vertikaler Schwenk können mehr als 8% Rand abschneiden."
+    },
+    {
+      "id": "scene-06-manual-review",
+      "assetId": "scene-06",
+      "passed": true,
+      "level": "error",
+      "message": "scene-06: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden."
+    },
+    {
+      "id": "scene-06-semantic-evidence",
+      "assetId": "scene-06",
+      "passed": true,
+      "level": "error",
+      "message": "scene-06: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt."
+    },
+    {
+      "id": "scene-07-present",
+      "assetId": "scene-07",
+      "passed": true,
+      "level": "error",
+      "message": "scene-07: Bilddatei fehlt (scenes/scene-07/scene-07.jpeg)."
+    },
+    {
+      "id": "scene-07-metadata",
+      "assetId": "scene-07",
+      "passed": true,
+      "level": "error",
+      "message": "scene-07: Bildmaße oder Format konnten nicht gelesen werden."
+    },
+    {
+      "id": "scene-07-format",
+      "assetId": "scene-07",
+      "passed": true,
+      "level": "error",
+      "message": "scene-07: Nicht unterstütztes Bildformat jpeg."
+    },
+    {
+      "id": "scene-07-portrait",
+      "assetId": "scene-07",
+      "passed": true,
+      "level": "error",
+      "message": "scene-07: Das Bild ist nicht im Hochformat."
+    },
+    {
+      "id": "scene-07-aspect-ratio",
+      "assetId": "scene-07",
+      "passed": true,
+      "level": "error",
+      "message": "scene-07: Seitenverhältnis ist 768:1376 statt 9:16."
+    },
+    {
+      "id": "scene-07-minimum-resolution",
+      "assetId": "scene-07",
+      "passed": true,
+      "level": "error",
+      "message": "scene-07: Mindestauflösung 720×1280 wird nicht erreicht."
+    },
+    {
+      "id": "scene-07-target-resolution",
+      "assetId": "scene-07",
+      "passed": false,
+      "level": "warning",
+      "message": "scene-07: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-07-motion-horizontal-safe",
+      "assetId": "scene-07",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-07: Zoom und horizontaler Schwenk können mehr als 6% Rand abschneiden."
+    },
+    {
+      "id": "scene-07-motion-vertical-safe",
+      "assetId": "scene-07",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-07: Zoom und vertikaler Schwenk können mehr als 8% Rand abschneiden."
+    },
+    {
+      "id": "scene-07-manual-review",
+      "assetId": "scene-07",
+      "passed": true,
+      "level": "error",
+      "message": "scene-07: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden."
+    },
+    {
+      "id": "scene-07-semantic-evidence",
+      "assetId": "scene-07",
+      "passed": true,
+      "level": "error",
+      "message": "scene-07: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt."
+    },
+    {
+      "id": "scene-08-present",
+      "assetId": "scene-08",
+      "passed": true,
+      "level": "error",
+      "message": "scene-08: Bilddatei fehlt (scenes/scene-08/scene-08.jpeg)."
+    },
+    {
+      "id": "scene-08-metadata",
+      "assetId": "scene-08",
+      "passed": true,
+      "level": "error",
+      "message": "scene-08: Bildmaße oder Format konnten nicht gelesen werden."
+    },
+    {
+      "id": "scene-08-format",
+      "assetId": "scene-08",
+      "passed": true,
+      "level": "error",
+      "message": "scene-08: Nicht unterstütztes Bildformat jpeg."
+    },
+    {
+      "id": "scene-08-portrait",
+      "assetId": "scene-08",
+      "passed": true,
+      "level": "error",
+      "message": "scene-08: Das Bild ist nicht im Hochformat."
+    },
+    {
+      "id": "scene-08-aspect-ratio",
+      "assetId": "scene-08",
+      "passed": true,
+      "level": "error",
+      "message": "scene-08: Seitenverhältnis ist 768:1376 statt 9:16."
+    },
+    {
+      "id": "scene-08-minimum-resolution",
+      "assetId": "scene-08",
+      "passed": true,
+      "level": "error",
+      "message": "scene-08: Mindestauflösung 720×1280 wird nicht erreicht."
+    },
+    {
+      "id": "scene-08-target-resolution",
+      "assetId": "scene-08",
+      "passed": false,
+      "level": "warning",
+      "message": "scene-08: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-08-motion-horizontal-safe",
+      "assetId": "scene-08",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-08: Zoom und horizontaler Schwenk können mehr als 6% Rand abschneiden."
+    },
+    {
+      "id": "scene-08-motion-vertical-safe",
+      "assetId": "scene-08",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-08: Zoom und vertikaler Schwenk können mehr als 8% Rand abschneiden."
+    },
+    {
+      "id": "scene-08-manual-review",
+      "assetId": "scene-08",
+      "passed": true,
+      "level": "error",
+      "message": "scene-08: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden."
+    },
+    {
+      "id": "scene-08-semantic-evidence",
+      "assetId": "scene-08",
+      "passed": true,
+      "level": "error",
+      "message": "scene-08: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt."
+    },
+    {
+      "id": "scene-09-present",
+      "assetId": "scene-09",
+      "passed": true,
+      "level": "error",
+      "message": "scene-09: Bilddatei fehlt (scenes/scene-09/scene-09.jpeg)."
+    },
+    {
+      "id": "scene-09-metadata",
+      "assetId": "scene-09",
+      "passed": true,
+      "level": "error",
+      "message": "scene-09: Bildmaße oder Format konnten nicht gelesen werden."
+    },
+    {
+      "id": "scene-09-format",
+      "assetId": "scene-09",
+      "passed": true,
+      "level": "error",
+      "message": "scene-09: Nicht unterstütztes Bildformat jpeg."
+    },
+    {
+      "id": "scene-09-portrait",
+      "assetId": "scene-09",
+      "passed": true,
+      "level": "error",
+      "message": "scene-09: Das Bild ist nicht im Hochformat."
+    },
+    {
+      "id": "scene-09-aspect-ratio",
+      "assetId": "scene-09",
+      "passed": true,
+      "level": "error",
+      "message": "scene-09: Seitenverhältnis ist 768:1376 statt 9:16."
+    },
+    {
+      "id": "scene-09-minimum-resolution",
+      "assetId": "scene-09",
+      "passed": true,
+      "level": "error",
+      "message": "scene-09: Mindestauflösung 720×1280 wird nicht erreicht."
+    },
+    {
+      "id": "scene-09-target-resolution",
+      "assetId": "scene-09",
+      "passed": false,
+      "level": "warning",
+      "message": "scene-09: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-09-motion-horizontal-safe",
+      "assetId": "scene-09",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-09: Zoom und horizontaler Schwenk können mehr als 6% Rand abschneiden."
+    },
+    {
+      "id": "scene-09-motion-vertical-safe",
+      "assetId": "scene-09",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-09: Zoom und vertikaler Schwenk können mehr als 8% Rand abschneiden."
+    },
+    {
+      "id": "scene-09-manual-review",
+      "assetId": "scene-09",
+      "passed": true,
+      "level": "error",
+      "message": "scene-09: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden."
+    },
+    {
+      "id": "scene-09-semantic-evidence",
+      "assetId": "scene-09",
+      "passed": true,
+      "level": "error",
+      "message": "scene-09: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt."
+    },
+    {
+      "id": "scene-10-present",
+      "assetId": "scene-10",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10: Bilddatei fehlt (scenes/scene-10/scene-10.jpeg)."
+    },
+    {
+      "id": "scene-10-metadata",
+      "assetId": "scene-10",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10: Bildmaße oder Format konnten nicht gelesen werden."
+    },
+    {
+      "id": "scene-10-format",
+      "assetId": "scene-10",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10: Nicht unterstütztes Bildformat jpeg."
+    },
+    {
+      "id": "scene-10-portrait",
+      "assetId": "scene-10",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10: Das Bild ist nicht im Hochformat."
+    },
+    {
+      "id": "scene-10-aspect-ratio",
+      "assetId": "scene-10",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10: Seitenverhältnis ist 768:1376 statt 9:16."
+    },
+    {
+      "id": "scene-10-minimum-resolution",
+      "assetId": "scene-10",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10: Mindestauflösung 720×1280 wird nicht erreicht."
+    },
+    {
+      "id": "scene-10-target-resolution",
+      "assetId": "scene-10",
+      "passed": false,
+      "level": "warning",
+      "message": "scene-10: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-10-motion-horizontal-safe",
+      "assetId": "scene-10",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-10: Zoom und horizontaler Schwenk können mehr als 6% Rand abschneiden."
+    },
+    {
+      "id": "scene-10-motion-vertical-safe",
+      "assetId": "scene-10",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-10: Zoom und vertikaler Schwenk können mehr als 8% Rand abschneiden."
+    },
+    {
+      "id": "scene-10-manual-review",
+      "assetId": "scene-10",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden."
+    },
+    {
+      "id": "scene-10-semantic-evidence",
+      "assetId": "scene-10",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt."
+    },
+    {
+      "id": "scene-11-present",
+      "assetId": "scene-11",
+      "passed": true,
+      "level": "error",
+      "message": "scene-11: Bilddatei fehlt (scenes/scene-11/scene-11.jpeg)."
+    },
+    {
+      "id": "scene-11-metadata",
+      "assetId": "scene-11",
+      "passed": true,
+      "level": "error",
+      "message": "scene-11: Bildmaße oder Format konnten nicht gelesen werden."
+    },
+    {
+      "id": "scene-11-format",
+      "assetId": "scene-11",
+      "passed": true,
+      "level": "error",
+      "message": "scene-11: Nicht unterstütztes Bildformat jpeg."
+    },
+    {
+      "id": "scene-11-portrait",
+      "assetId": "scene-11",
+      "passed": true,
+      "level": "error",
+      "message": "scene-11: Das Bild ist nicht im Hochformat."
+    },
+    {
+      "id": "scene-11-aspect-ratio",
+      "assetId": "scene-11",
+      "passed": true,
+      "level": "error",
+      "message": "scene-11: Seitenverhältnis ist 768:1376 statt 9:16."
+    },
+    {
+      "id": "scene-11-minimum-resolution",
+      "assetId": "scene-11",
+      "passed": true,
+      "level": "error",
+      "message": "scene-11: Mindestauflösung 720×1280 wird nicht erreicht."
+    },
+    {
+      "id": "scene-11-target-resolution",
+      "assetId": "scene-11",
+      "passed": false,
+      "level": "warning",
+      "message": "scene-11: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-11-motion-horizontal-safe",
+      "assetId": "scene-11",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-11: Zoom und horizontaler Schwenk können mehr als 6% Rand abschneiden."
+    },
+    {
+      "id": "scene-11-motion-vertical-safe",
+      "assetId": "scene-11",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-11: Zoom und vertikaler Schwenk können mehr als 8% Rand abschneiden."
+    },
+    {
+      "id": "scene-11-manual-review",
+      "assetId": "scene-11",
+      "passed": true,
+      "level": "error",
+      "message": "scene-11: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden."
+    },
+    {
+      "id": "scene-11-semantic-evidence",
+      "assetId": "scene-11",
+      "passed": true,
+      "level": "error",
+      "message": "scene-11: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt."
+    },
+    {
+      "id": "scene-12-present",
+      "assetId": "scene-12",
+      "passed": true,
+      "level": "error",
+      "message": "scene-12: Bilddatei fehlt (scenes/scene-12/scene-12.jpeg)."
+    },
+    {
+      "id": "scene-12-metadata",
+      "assetId": "scene-12",
+      "passed": true,
+      "level": "error",
+      "message": "scene-12: Bildmaße oder Format konnten nicht gelesen werden."
+    },
+    {
+      "id": "scene-12-format",
+      "assetId": "scene-12",
+      "passed": true,
+      "level": "error",
+      "message": "scene-12: Nicht unterstütztes Bildformat jpeg."
+    },
+    {
+      "id": "scene-12-portrait",
+      "assetId": "scene-12",
+      "passed": true,
+      "level": "error",
+      "message": "scene-12: Das Bild ist nicht im Hochformat."
+    },
+    {
+      "id": "scene-12-aspect-ratio",
+      "assetId": "scene-12",
+      "passed": true,
+      "level": "error",
+      "message": "scene-12: Seitenverhältnis ist 768:1376 statt 9:16."
+    },
+    {
+      "id": "scene-12-minimum-resolution",
+      "assetId": "scene-12",
+      "passed": true,
+      "level": "error",
+      "message": "scene-12: Mindestauflösung 720×1280 wird nicht erreicht."
+    },
+    {
+      "id": "scene-12-target-resolution",
+      "assetId": "scene-12",
+      "passed": false,
+      "level": "warning",
+      "message": "scene-12: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-12-motion-horizontal-safe",
+      "assetId": "scene-12",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-12: Zoom und horizontaler Schwenk können mehr als 6% Rand abschneiden."
+    },
+    {
+      "id": "scene-12-motion-vertical-safe",
+      "assetId": "scene-12",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-12: Zoom und vertikaler Schwenk können mehr als 8% Rand abschneiden."
+    },
+    {
+      "id": "scene-12-manual-review",
+      "assetId": "scene-12",
+      "passed": true,
+      "level": "error",
+      "message": "scene-12: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden."
+    },
+    {
+      "id": "scene-12-semantic-evidence",
+      "assetId": "scene-12",
+      "passed": true,
+      "level": "error",
+      "message": "scene-12: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt."
+    },
+    {
+      "id": "scene-13-present",
+      "assetId": "scene-13",
+      "passed": true,
+      "level": "error",
+      "message": "scene-13: Bilddatei fehlt (scenes/scene-13/scene-13.jpeg)."
+    },
+    {
+      "id": "scene-13-metadata",
+      "assetId": "scene-13",
+      "passed": true,
+      "level": "error",
+      "message": "scene-13: Bildmaße oder Format konnten nicht gelesen werden."
+    },
+    {
+      "id": "scene-13-format",
+      "assetId": "scene-13",
+      "passed": true,
+      "level": "error",
+      "message": "scene-13: Nicht unterstütztes Bildformat jpeg."
+    },
+    {
+      "id": "scene-13-portrait",
+      "assetId": "scene-13",
+      "passed": true,
+      "level": "error",
+      "message": "scene-13: Das Bild ist nicht im Hochformat."
+    },
+    {
+      "id": "scene-13-aspect-ratio",
+      "assetId": "scene-13",
+      "passed": true,
+      "level": "error",
+      "message": "scene-13: Seitenverhältnis ist 768:1376 statt 9:16."
+    },
+    {
+      "id": "scene-13-minimum-resolution",
+      "assetId": "scene-13",
+      "passed": true,
+      "level": "error",
+      "message": "scene-13: Mindestauflösung 720×1280 wird nicht erreicht."
+    },
+    {
+      "id": "scene-13-target-resolution",
+      "assetId": "scene-13",
+      "passed": false,
+      "level": "warning",
+      "message": "scene-13: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-13-motion-horizontal-safe",
+      "assetId": "scene-13",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-13: Zoom und horizontaler Schwenk können mehr als 6% Rand abschneiden."
+    },
+    {
+      "id": "scene-13-motion-vertical-safe",
+      "assetId": "scene-13",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-13: Zoom und vertikaler Schwenk können mehr als 8% Rand abschneiden."
+    },
+    {
+      "id": "scene-13-manual-review",
+      "assetId": "scene-13",
+      "passed": true,
+      "level": "error",
+      "message": "scene-13: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden."
+    },
+    {
+      "id": "scene-13-semantic-evidence",
+      "assetId": "scene-13",
+      "passed": true,
+      "level": "error",
+      "message": "scene-13: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt."
+    },
+    {
+      "id": "cover-present",
+      "assetId": "cover",
+      "passed": true,
+      "level": "error",
+      "message": "cover: Bilddatei fehlt (cover/cover.jpeg)."
+    },
+    {
+      "id": "cover-metadata",
+      "assetId": "cover",
+      "passed": true,
+      "level": "error",
+      "message": "cover: Bildmaße oder Format konnten nicht gelesen werden."
+    },
+    {
+      "id": "cover-format",
+      "assetId": "cover",
+      "passed": true,
+      "level": "error",
+      "message": "cover: Nicht unterstütztes Bildformat jpeg."
+    },
+    {
+      "id": "cover-portrait",
+      "assetId": "cover",
+      "passed": true,
+      "level": "error",
+      "message": "cover: Das Bild ist nicht im Hochformat."
+    },
+    {
+      "id": "cover-aspect-ratio",
+      "assetId": "cover",
+      "passed": true,
+      "level": "error",
+      "message": "cover: Seitenverhältnis ist 768:1376 statt 9:16."
+    },
+    {
+      "id": "cover-minimum-resolution",
+      "assetId": "cover",
+      "passed": true,
+      "level": "error",
+      "message": "cover: Mindestauflösung 720×1280 wird nicht erreicht."
+    },
+    {
+      "id": "cover-target-resolution",
+      "assetId": "cover",
+      "passed": false,
+      "level": "warning",
+      "message": "cover: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "cover-manual-review",
+      "assetId": "cover",
+      "passed": true,
+      "level": "error",
+      "message": "cover: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden."
+    },
+    {
+      "id": "cover-semantic-evidence",
+      "assetId": "cover",
+      "passed": true,
+      "level": "error",
+      "message": "cover: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt."
+    },
+    {
+      "id": "subtitle-safe-zone",
+      "assetId": null,
+      "passed": true,
+      "level": "error",
+      "message": "Untertitelposition 58% muss exakt 58% betragen."
+    },
+    {
+      "id": "subtitle-text-color",
+      "assetId": null,
+      "passed": true,
+      "level": "error",
+      "message": "Untertitel-Normalfarbe muss #F5F7FA sein."
+    },
+    {
+      "id": "subtitle-highlight-color",
+      "assetId": null,
+      "passed": true,
+      "level": "error",
+      "message": "Die Untertitelfarbe muss durchgehend #F5F7FA sein."
+    },
+    {
+      "id": "subtitle-colors-uniform",
+      "assetId": null,
+      "passed": true,
+      "level": "error",
+      "message": "Alle Untertitelwörter müssen dieselbe weiße Farbe verwenden."
+    },
+    {
+      "id": "subtitle-highlight-disabled",
+      "assetId": null,
+      "passed": true,
+      "level": "error",
+      "message": "Die Wortmarkierung muss deaktiviert sein."
+    },
+    {
+      "id": "subtitle-background-transparent",
+      "assetId": null,
+      "passed": true,
+      "level": "error",
+      "message": "Der Untertitelhintergrund muss transparent sein."
+    }
+  ]
+}

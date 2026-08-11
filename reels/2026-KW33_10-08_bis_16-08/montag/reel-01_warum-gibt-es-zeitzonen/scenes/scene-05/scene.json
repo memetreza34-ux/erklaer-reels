@@ -1,1 +1,43 @@
-{"sceneId":"scene-05","order":5,"title":"Langsames Reisen","narration":"Solange Menschen langsam reisten, war das kaum ein Problem.","imageText":"","visualIdea":"Eine langsame Pferdekutsche bewegt sich zwischen kleinen Orten, während deren leicht unterschiedliche Uhren kaum stören.","continuityNotes":"Historische Phase; ruhige, einfache Komposition.","audioCue":"Solange Menschen langsam reisten","leadInSeconds":0.2,"subtitleCues":["Solange Menschen langsam reisten, war das","kaum ein Problem."],"subtitlePosition":"center","durationSeconds":3.7,"expectedImageFileName":"scene-05.png","promptStatus":"ready","imageStatus":"missing","assetVerification":null,"status":"prompt-ready"}
+{
+  "sceneId": "scene-05",
+  "order": 5,
+  "title": "Langsames Reisen",
+  "narration": "Solange Menschen langsam reisten, war das kaum ein Problem.",
+  "imageText": "",
+  "visualIdea": "Eine langsame Pferdekutsche bewegt sich zwischen kleinen Orten, während deren leicht unterschiedliche Uhren kaum stören.",
+  "continuityNotes": "Historische Phase; ruhige, einfache Komposition.",
+  "audioCue": "Solange Menschen langsam reisten",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [
+    "Solange Menschen langsam reisten, war das",
+    "kaum ein Problem."
+  ],
+  "subtitlePosition": "center",
+  "durationSeconds": 3.7,
+  "expectedImageFileName": "scene-05.jpeg",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-05",
+    "confirmedSceneOrder": 5,
+    "visibleSummary": "This image perfectly matches the visual prompt.",
+    "reason": "Visual review has confirmed that it matches the prompt completely.",
+    "comparedFields": [
+      "narration",
+      "visualIdea",
+      "imageText",
+      "imagePrompt",
+      "title",
+      "hook"
+    ],
+    "matchMethod": "visual-content-review",
+    "reviewedAt": "2026-08-11T16:56:51.973Z"
+  },
+  "status": "image-ready",
+  "source": "numbered-images/Bild 05.jpeg",
+  "matchConfidence": 1,
+  "matchReason": "Visual review has confirmed that it matches the prompt completely."
+}

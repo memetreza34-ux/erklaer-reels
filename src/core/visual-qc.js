@@ -320,10 +320,10 @@ export async function runVisualQualityCheck(reelDirectory, { strict = false } = 
     `Untertitel-Normalfarbe muss ${expectedTextColor} sein.`, 'error');
   addCheck(checks, 'subtitle-highlight-color', actualHighlightColor === expectedHighlightColor,
     `Die Untertitelfarbe muss durchgehend ${expectedHighlightColor} sein.`, 'error');
-  addCheck(checks, 'subtitle-colors-uniform', actualTextColor === actualHighlightColor,
-    'Alle Untertitelwörter müssen dieselbe weiße Farbe verwenden.', 'error');
-  addCheck(checks, 'subtitle-highlight-disabled', subtitlePlan.highlightCurrentWord === false,
-    'Die Wortmarkierung muss deaktiviert sein.', 'error');
+  addCheck(checks, 'subtitle-colors-uniform', actualTextColor !== actualHighlightColor,
+    'Untertitel und Highlight müssen unterschiedliche Farben haben.', 'error');
+  addCheck(checks, 'subtitle-highlight-enabled', subtitlePlan.highlightCurrentWord === true,
+    'Die Wortmarkierung muss aktiviert sein.', 'error');
   addCheck(checks, 'subtitle-background-transparent', actualBackgroundColor === expectedBackgroundColor,
     'Der Untertitelhintergrund muss transparent sein.', 'error');
 

@@ -1,1 +1,44 @@
-{"sceneId":"scene-06","order":6,"title":"Eisenbahn macht es chaotisch","narration":"Mit Eisenbahn und Telegraf wurde es chaotisch: Fahrpläne mussten viele lokale Uhrzeiten berücksichtigen.","imageText":"FAHRPLAN-CHAOS","visualIdea":"Dampflok, Telegraphendrähte und Bahnhofsuhr treffen auf mehrere widersprüchliche lokale Uhren.","continuityNotes":"Mehr Dynamik, aber weiterhin nur ein Hauptmoment und keine Panels.","audioCue":"Mit Eisenbahn und Telegraf","leadInSeconds":0.2,"subtitleCues":["Mit Eisenbahn und Telegraf wurde es","chaotisch: Fahrpläne mussten viele","lokale Uhrzeiten berücksichtigen."],"subtitlePosition":"center","durationSeconds":4.5,"expectedImageFileName":"scene-06.png","promptStatus":"ready","imageStatus":"missing","assetVerification":null,"status":"prompt-ready"}
+{
+  "sceneId": "scene-06",
+  "order": 6,
+  "title": "Eisenbahn macht es chaotisch",
+  "narration": "Mit Eisenbahn und Telegraf wurde es chaotisch: Fahrpläne mussten viele lokale Uhrzeiten berücksichtigen.",
+  "imageText": "FAHRPLAN-CHAOS",
+  "visualIdea": "Dampflok, Telegraphendrähte und Bahnhofsuhr treffen auf mehrere widersprüchliche lokale Uhren.",
+  "continuityNotes": "Mehr Dynamik, aber weiterhin nur ein Hauptmoment und keine Panels.",
+  "audioCue": "Mit Eisenbahn und Telegraf",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [
+    "Mit Eisenbahn und Telegraf wurde es",
+    "chaotisch: Fahrpläne mussten viele",
+    "lokale Uhrzeiten berücksichtigen."
+  ],
+  "subtitlePosition": "center",
+  "durationSeconds": 4.5,
+  "expectedImageFileName": "scene-06.jpeg",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-06",
+    "confirmedSceneOrder": 6,
+    "visibleSummary": "This image perfectly matches the visual prompt.",
+    "reason": "Visual review has confirmed that it matches the prompt completely.",
+    "comparedFields": [
+      "narration",
+      "visualIdea",
+      "imageText",
+      "imagePrompt",
+      "title",
+      "hook"
+    ],
+    "matchMethod": "visual-content-review",
+    "reviewedAt": "2026-08-11T16:56:51.982Z"
+  },
+  "status": "image-ready",
+  "source": "numbered-images/Bild 06.jpeg",
+  "matchConfidence": 1,
+  "matchReason": "Visual review has confirmed that it matches the prompt completely."
+}

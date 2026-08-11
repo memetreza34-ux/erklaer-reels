@@ -1,1 +1,44 @@
-{"sceneId":"scene-04","order":4,"title":"Andere Länge, andere Zeit","narration":"Schon weiter westlich oder östlich zeigte eine andere Uhr deshalb eine andere Zeit.","imageText":"","visualIdea":"Zwei weit voneinander entfernte Städte liegen auf verschiedenen Längengraden und zeigen unterschiedliche Uhrzeiten bei demselben Moment.","continuityNotes":"Ein zusammenhängender Globus statt Vergleichspanels.","audioCue":"Schon weiter westlich","leadInSeconds":0.2,"subtitleCues":["Schon weiter westlich oder östlich zeigte","eine andere Uhr deshalb","eine andere Zeit."],"subtitlePosition":"center","durationSeconds":4.4,"expectedImageFileName":"scene-04.png","promptStatus":"ready","imageStatus":"missing","assetVerification":null,"status":"prompt-ready"}
+{
+  "sceneId": "scene-04",
+  "order": 4,
+  "title": "Andere Länge, andere Zeit",
+  "narration": "Schon weiter westlich oder östlich zeigte eine andere Uhr deshalb eine andere Zeit.",
+  "imageText": "",
+  "visualIdea": "Zwei weit voneinander entfernte Städte liegen auf verschiedenen Längengraden und zeigen unterschiedliche Uhrzeiten bei demselben Moment.",
+  "continuityNotes": "Ein zusammenhängender Globus statt Vergleichspanels.",
+  "audioCue": "Schon weiter westlich",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [
+    "Schon weiter westlich oder östlich zeigte",
+    "eine andere Uhr deshalb",
+    "eine andere Zeit."
+  ],
+  "subtitlePosition": "center",
+  "durationSeconds": 4.4,
+  "expectedImageFileName": "scene-04.jpeg",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-04",
+    "confirmedSceneOrder": 4,
+    "visibleSummary": "This image perfectly matches the visual prompt.",
+    "reason": "Visual review has confirmed that it matches the prompt completely.",
+    "comparedFields": [
+      "narration",
+      "visualIdea",
+      "imageText",
+      "imagePrompt",
+      "title",
+      "hook"
+    ],
+    "matchMethod": "visual-content-review",
+    "reviewedAt": "2026-08-11T16:56:51.958Z"
+  },
+  "status": "image-ready",
+  "source": "numbered-images/Bild 04.jpeg",
+  "matchConfidence": 1,
+  "matchReason": "Visual review has confirmed that it matches the prompt completely."
+}

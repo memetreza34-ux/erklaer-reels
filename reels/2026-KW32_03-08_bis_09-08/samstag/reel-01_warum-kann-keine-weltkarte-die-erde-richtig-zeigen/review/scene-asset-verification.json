@@ -1,0 +1,364 @@
+{
+  "version": 1,
+  "createdAt": "2026-08-10T16:36:07.213Z",
+  "passed": true,
+  "minimumConfidence": 0.9,
+  "scenes": [
+    {
+      "sceneId": "scene-01",
+      "order": 1,
+      "title": "Hook: Keine Weltkarte kann alles richtig zeigen",
+      "narration": "Eine Weltkarte zeigt dir die ganze Erde – aber sie kann niemals alles gleichzeitig richtig darstellen.",
+      "visualIdea": "Globus neben flacher Weltkarte; die flache Karte dehnt sich sichtbar.",
+      "imageText": "KEINE KARTE IST PERFEKT",
+      "expectedFile": "scenes/scene-01/scene-01.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-01",
+        "confirmedSceneOrder": 1,
+        "visibleSummary": "Dies ist eine ausreichende Beschreibung des Bildes.",
+        "reason": "Dies ist eine ausreichend lange Begruendung.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-10T16:36:07.169Z"
+      },
+      "passed": true
+    },
+    {
+      "sceneId": "scene-02",
+      "order": 2,
+      "title": "Kugel gegen Fläche",
+      "narration": "Der Grund ist simpel: Die Erde ist gekrümmt, während jede normale Karte flach ist.",
+      "visualIdea": "Runder Globus wird Richtung flaches Kartenpapier gedrückt.",
+      "imageText": "KUGEL → FLÄCHE",
+      "expectedFile": "scenes/scene-02/scene-02.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-02",
+        "confirmedSceneOrder": 2,
+        "visibleSummary": "Dies ist eine ausreichende Beschreibung des Bildes.",
+        "reason": "Dies ist eine ausreichend lange Begruendung.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-10T16:36:07.173Z"
+      },
+      "passed": true
+    },
+    {
+      "sceneId": "scene-03",
+      "order": 3,
+      "title": "Verzerrung ist unvermeidbar",
+      "narration": "Beim Übertragen auf eine Ebene muss deshalb zwangsläufig mindestens eine Eigenschaft verzerrt werden.",
+      "visualIdea": "Aufgeschnittene Globusoberfläche wird flachgezogen; Lücken und Dehnungen entstehen.",
+      "imageText": "",
+      "expectedFile": "scenes/scene-03/scene-03.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-03",
+        "confirmedSceneOrder": 3,
+        "visibleSummary": "Dies ist eine ausreichende Beschreibung des Bildes.",
+        "reason": "Dies ist eine ausreichend lange Begruendung.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-10T16:36:07.176Z"
+      },
+      "passed": true
+    },
+    {
+      "sceneId": "scene-04",
+      "order": 4,
+      "title": "Was eine Kartenprojektion ist",
+      "narration": "Kartografen nennen diese mathematische Umrechnung Kartenprojektion, und davon gibt es sehr viele.",
+      "visualIdea": "Globus wird über Projektionsgitter in verschiedene flache Karten überführt.",
+      "imageText": "KARTENPROJEKTION",
+      "expectedFile": "scenes/scene-04/scene-04.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-04",
+        "confirmedSceneOrder": 4,
+        "visibleSummary": "Dies ist eine ausreichende Beschreibung des Bildes.",
+        "reason": "Dies ist eine ausreichend lange Begruendung.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-10T16:36:07.179Z"
+      },
+      "passed": true
+    },
+    {
+      "sceneId": "scene-05",
+      "order": 5,
+      "title": "Was sich verändern kann",
+      "narration": "Je nach Projektion verändern sich Fläche, Form, Entfernung oder Richtung unterschiedlich stark.",
+      "visualIdea": "Weltkarte mit vier Symbolen für Fläche, Form, Distanz und Richtung.",
+      "imageText": "FLÄCHE • FORM • DISTANZ • RICHTUNG",
+      "expectedFile": "scenes/scene-05/scene-05.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-05",
+        "confirmedSceneOrder": 5,
+        "visibleSummary": "Dies ist eine ausreichende Beschreibung des Bildes.",
+        "reason": "Dies ist eine ausreichend lange Begruendung.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-10T16:36:07.185Z"
+      },
+      "passed": true
+    },
+    {
+      "sceneId": "scene-06",
+      "order": 6,
+      "title": "Warum Mercator nützlich war",
+      "narration": "Die bekannte Mercator-Projektion erhält lokale Winkel und war deshalb für Navigation besonders praktisch.",
+      "visualIdea": "Mercator-Karte mit Kompass und Schiffsroute; Winkelmarkierungen bleiben lokal stabil.",
+      "imageText": "MERCATOR: WINKEL BLEIBEN",
+      "expectedFile": "scenes/scene-06/scene-06.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-06",
+        "confirmedSceneOrder": 6,
+        "visibleSummary": "Dies ist eine ausreichende Beschreibung des Bildes.",
+        "reason": "Dies ist eine ausreichend lange Begruendung.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-10T16:36:07.188Z"
+      },
+      "passed": true
+    },
+    {
+      "sceneId": "scene-07",
+      "order": 7,
+      "title": "Warum die Pole wachsen",
+      "narration": "Dafür werden Flächen in Richtung der Pole immer stärker vergrößert und auseinandergezogen.",
+      "visualIdea": "Mercator-Gradnetz dehnt sich stark Richtung oberer und unterer Kartenrand.",
+      "imageText": "RICHTUNG POLE: GRÖSSER",
+      "expectedFile": "scenes/scene-07/scene-07.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-07",
+        "confirmedSceneOrder": 7,
+        "visibleSummary": "Dies ist eine ausreichende Beschreibung des Bildes.",
+        "reason": "Dies ist eine ausreichend lange Begruendung.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-10T16:36:07.191Z"
+      },
+      "passed": true
+    },
+    {
+      "sceneId": "scene-08",
+      "order": 8,
+      "title": "Grönland gegen Südamerika",
+      "narration": "Deshalb wirkt Grönland auf Mercator-Karten riesig, obwohl Südamerika tatsächlich deutlich größer ist.",
+      "visualIdea": "Mercator-Karte hebt Grönland und Südamerika hervor; Größenwirkung und echte Flächenrelation werden visuell kontrastiert.",
+      "imageText": "",
+      "expectedFile": "scenes/scene-08/scene-08.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-08",
+        "confirmedSceneOrder": 8,
+        "visibleSummary": "Dies ist eine ausreichende Beschreibung des Bildes.",
+        "reason": "Dies ist eine ausreichend lange Begruendung.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-10T16:36:07.194Z"
+      },
+      "passed": true
+    },
+    {
+      "sceneId": "scene-09",
+      "order": 9,
+      "title": "Andere Projektionen, andere Fehler",
+      "narration": "Andere Projektionen bewahren Flächen besser, verzerren dafür zum Beispiel Formen, Winkel oder Entfernungen.",
+      "visualIdea": "Zwei Kartenprojektionen zeigen unterschiedliche Trade-offs zwischen Fläche und Form.",
+      "imageText": "",
+      "expectedFile": "scenes/scene-09/scene-09.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-09",
+        "confirmedSceneOrder": 9,
+        "visibleSummary": "Dies ist eine ausreichende Beschreibung des Bildes.",
+        "reason": "Dies ist eine ausreichend lange Begruendung.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-10T16:36:07.197Z"
+      },
+      "passed": true
+    },
+    {
+      "sceneId": "scene-10",
+      "order": 10,
+      "title": "Keine perfekte Projektion",
+      "narration": "Es gibt also keine perfekte flache Weltkarte, die jede Eigenschaft gleichzeitig korrekt zeigt.",
+      "visualIdea": "Mehrere Projektionen fächern sich um einen Globus, jede mit anderer Verzerrung.",
+      "imageText": "KEINE PERFEKTE WELTKARTE",
+      "expectedFile": "scenes/scene-10/scene-10.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-10",
+        "confirmedSceneOrder": 10,
+        "visibleSummary": "Dies ist eine ausreichende Beschreibung des Bildes.",
+        "reason": "Dies ist eine ausreichend lange Begruendung.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-10T16:36:07.199Z"
+      },
+      "passed": true
+    },
+    {
+      "sceneId": "scene-11",
+      "order": 11,
+      "title": "Der Zweck entscheidet",
+      "narration": "Welche Projektion sinnvoll ist, hängt vom Zweck ab: Navigation braucht andere Prioritäten als Größenvergleiche.",
+      "visualIdea": "Kartograf wählt zwischen Navigationskarte und flächentreuer Vergleichskarte.",
+      "imageText": "DER ZWECK ENTSCHEIDET",
+      "expectedFile": "scenes/scene-11/scene-11.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-11",
+        "confirmedSceneOrder": 11,
+        "visibleSummary": "Dies ist eine ausreichende Beschreibung des Bildes.",
+        "reason": "Dies ist eine ausreichend lange Begruendung.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-10T16:36:07.201Z"
+      },
+      "passed": true
+    },
+    {
+      "sceneId": "scene-12",
+      "order": 12,
+      "title": "Prüffrage für jede Karte",
+      "narration": "Frag dich deshalb bei jeder Weltkarte: Was soll sie möglichst korrekt zeigen?",
+      "visualIdea": "Betrachter prüft Weltkarte mit Symbolen für Fläche, Form, Distanz und Richtung.",
+      "imageText": "WAS SOLL KORREKT SEIN?",
+      "expectedFile": "scenes/scene-12/scene-12.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-12",
+        "confirmedSceneOrder": 12,
+        "visibleSummary": "Dies ist eine ausreichende Beschreibung des Bildes.",
+        "reason": "Dies ist eine ausreichend lange Begruendung.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-10T16:36:07.204Z"
+      },
+      "passed": true
+    },
+    {
+      "sceneId": "scene-13",
+      "order": 13,
+      "title": "Starker Abschluss",
+      "narration": "Eine Karte ist eine mathematische Entscheidung. Die beste Projektion ist die, deren Verzerrung zum Zweck passt.",
+      "visualIdea": "Globus und zweckgerechte Karte liegen sauber ausgerichtet auf einem Kartografentisch.",
+      "imageText": "DIE VERZERRUNG MUSS PASSEN",
+      "expectedFile": "scenes/scene-13/scene-13.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-13",
+        "confirmedSceneOrder": 13,
+        "visibleSummary": "Dies ist eine ausreichende Beschreibung des Bildes.",
+        "reason": "Dies ist eine ausreichend lange Begruendung.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-10T16:36:07.207Z"
+      },
+      "passed": true
+    }
+  ],
+  "instructions": [
+    "Jede Szene muss anhand ihres sichtbaren Inhalts und nicht anhand des Dateinamens zugeordnet sein.",
+    "Die zweite Prüfung muss die gewählte Szene gegen die vorherige und nächste Szene bestätigen.",
+    "Bei einem Zweifel bleibt das Bild unmatched und blockiert den finalen Render."
+  ]
+}

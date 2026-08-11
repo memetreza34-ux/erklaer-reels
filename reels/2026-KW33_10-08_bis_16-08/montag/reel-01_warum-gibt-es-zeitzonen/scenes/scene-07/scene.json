@@ -1,1 +1,43 @@
-{"sceneId":"scene-07","order":7,"title":"Standard Railway Time","narration":"1883 führten nordamerikanische Eisenbahnen standardisierte Zeitzonen für ihren Betrieb ein.","imageText":"1883","visualIdea":"Mehrere Bahnlinien und Bahnhofuhren springen auf gemeinsame standardisierte Zeiten, Jahreszahl 1883 zentral.","continuityNotes":"Historische Karte Nordamerikas stilisiert, nicht politisch überladen.","audioCue":"1883 führten nordamerikanische Eisenbahnen","leadInSeconds":0.2,"subtitleCues":["1883 führten nordamerikanische Eisenbahnen standardisierte Zeitzonen","für ihren Betrieb ein."],"subtitlePosition":"center","durationSeconds":4.2,"expectedImageFileName":"scene-07.png","promptStatus":"ready","imageStatus":"missing","assetVerification":null,"status":"prompt-ready"}
+{
+  "sceneId": "scene-07",
+  "order": 7,
+  "title": "Standard Railway Time",
+  "narration": "1883 führten nordamerikanische Eisenbahnen standardisierte Zeitzonen für ihren Betrieb ein.",
+  "imageText": "1883",
+  "visualIdea": "Mehrere Bahnlinien und Bahnhofuhren springen auf gemeinsame standardisierte Zeiten, Jahreszahl 1883 zentral.",
+  "continuityNotes": "Historische Karte Nordamerikas stilisiert, nicht politisch überladen.",
+  "audioCue": "1883 führten nordamerikanische Eisenbahnen",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [
+    "1883 führten nordamerikanische Eisenbahnen standardisierte Zeitzonen",
+    "für ihren Betrieb ein."
+  ],
+  "subtitlePosition": "center",
+  "durationSeconds": 4.2,
+  "expectedImageFileName": "scene-07.jpeg",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-07",
+    "confirmedSceneOrder": 7,
+    "visibleSummary": "This image perfectly matches the visual prompt.",
+    "reason": "Visual review has confirmed that it matches the prompt completely.",
+    "comparedFields": [
+      "narration",
+      "visualIdea",
+      "imageText",
+      "imagePrompt",
+      "title",
+      "hook"
+    ],
+    "matchMethod": "visual-content-review",
+    "reviewedAt": "2026-08-11T16:56:51.993Z"
+  },
+  "status": "image-ready",
+  "source": "numbered-images/Bild 07.jpeg",
+  "matchConfidence": 1,
+  "matchReason": "Visual review has confirmed that it matches the prompt completely."
+}

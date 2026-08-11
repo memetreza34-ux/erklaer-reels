@@ -1,0 +1,882 @@
+[
+  {
+    "word": "Warum",
+    "start": 0.0,
+    "end": 0.16
+  },
+  {
+    "word": "gibt",
+    "start": 0.16,
+    "end": 0.42
+  },
+  {
+    "word": "es",
+    "start": 0.42,
+    "end": 0.68
+  },
+  {
+    "word": "Zeitzonen?",
+    "start": 0.68,
+    "end": 1.28
+  },
+  {
+    "word": "Einfach",
+    "start": 1.54,
+    "end": 1.82
+  },
+  {
+    "word": "erkl\u00e4rt,",
+    "start": 1.82,
+    "end": 2.24
+  },
+  {
+    "word": "fr\u00fcher",
+    "start": 2.58,
+    "end": 2.82
+  },
+  {
+    "word": "stellte",
+    "start": 2.82,
+    "end": 3.18
+  },
+  {
+    "word": "jede",
+    "start": 3.18,
+    "end": 3.44
+  },
+  {
+    "word": "Stadt",
+    "start": 3.44,
+    "end": 3.7
+  },
+  {
+    "word": "ihre",
+    "start": 3.7,
+    "end": 4.04
+  },
+  {
+    "word": "Uhr",
+    "start": 4.04,
+    "end": 4.28
+  },
+  {
+    "word": "nach",
+    "start": 4.28,
+    "end": 4.5
+  },
+  {
+    "word": "der",
+    "start": 4.5,
+    "end": 4.68
+  },
+  {
+    "word": "Sonne.",
+    "start": 4.68,
+    "end": 4.96
+  },
+  {
+    "word": "Statt",
+    "start": 5.22,
+    "end": 5.32
+  },
+  {
+    "word": "sie",
+    "start": 5.32,
+    "end": 5.48
+  },
+  {
+    "word": "am",
+    "start": 5.48,
+    "end": 5.6
+  },
+  {
+    "word": "h\u00f6chsten",
+    "start": 5.6,
+    "end": 6.02
+  },
+  {
+    "word": "war",
+    "start": 6.02,
+    "end": 6.22
+  },
+  {
+    "word": "dort",
+    "start": 6.22,
+    "end": 6.42
+  },
+  {
+    "word": "ungef\u00e4hr",
+    "start": 6.42,
+    "end": 6.8
+  },
+  {
+    "word": "Mittag.",
+    "start": 6.8,
+    "end": 7.22
+  },
+  {
+    "word": "Schon",
+    "start": 7.58,
+    "end": 7.7
+  },
+  {
+    "word": "weiter",
+    "start": 7.7,
+    "end": 7.96
+  },
+  {
+    "word": "westlich",
+    "start": 7.96,
+    "end": 8.44
+  },
+  {
+    "word": "oder",
+    "start": 8.44,
+    "end": 8.72
+  },
+  {
+    "word": "\u00f6stlich",
+    "start": 8.72,
+    "end": 9.2
+  },
+  {
+    "word": "zeigte",
+    "start": 9.2,
+    "end": 9.74
+  },
+  {
+    "word": "eine",
+    "start": 9.74,
+    "end": 9.9
+  },
+  {
+    "word": "andere",
+    "start": 9.9,
+    "end": 10.28
+  },
+  {
+    "word": "Uhr",
+    "start": 10.28,
+    "end": 10.56
+  },
+  {
+    "word": "deshalb",
+    "start": 10.56,
+    "end": 10.88
+  },
+  {
+    "word": "eine",
+    "start": 10.88,
+    "end": 11.14
+  },
+  {
+    "word": "andere",
+    "start": 11.14,
+    "end": 11.5
+  },
+  {
+    "word": "Zeit.",
+    "start": 11.5,
+    "end": 11.76
+  },
+  {
+    "word": "So",
+    "start": 12.14,
+    "end": 12.28
+  },
+  {
+    "word": "lange",
+    "start": 12.28,
+    "end": 12.44
+  },
+  {
+    "word": "Menschen",
+    "start": 12.44,
+    "end": 12.72
+  },
+  {
+    "word": "langsam",
+    "start": 12.72,
+    "end": 13.22
+  },
+  {
+    "word": "reisten,",
+    "start": 13.22,
+    "end": 13.62
+  },
+  {
+    "word": "war",
+    "start": 13.9,
+    "end": 14.06
+  },
+  {
+    "word": "das",
+    "start": 14.06,
+    "end": 14.22
+  },
+  {
+    "word": "kaum",
+    "start": 14.22,
+    "end": 14.42
+  },
+  {
+    "word": "ein",
+    "start": 14.42,
+    "end": 14.6
+  },
+  {
+    "word": "Problem.",
+    "start": 14.6,
+    "end": 14.88
+  },
+  {
+    "word": "Mit",
+    "start": 15.18,
+    "end": 15.28
+  },
+  {
+    "word": "Eisenbahnen",
+    "start": 15.28,
+    "end": 15.9
+  },
+  {
+    "word": "und",
+    "start": 15.9,
+    "end": 16.02
+  },
+  {
+    "word": "Telegraf",
+    "start": 16.02,
+    "end": 16.64
+  },
+  {
+    "word": "wurde",
+    "start": 16.64,
+    "end": 16.86
+  },
+  {
+    "word": "es",
+    "start": 16.86,
+    "end": 17.02
+  },
+  {
+    "word": "chaotisch.",
+    "start": 17.02,
+    "end": 17.56
+  },
+  {
+    "word": "Fahrpl\u00e4ne",
+    "start": 17.88,
+    "end": 18.34
+  },
+  {
+    "word": "mussten",
+    "start": 18.34,
+    "end": 18.64
+  },
+  {
+    "word": "viele",
+    "start": 18.64,
+    "end": 18.94
+  },
+  {
+    "word": "lokale",
+    "start": 18.94,
+    "end": 19.44
+  },
+  {
+    "word": "Uhrzeiten",
+    "start": 19.44,
+    "end": 19.94
+  },
+  {
+    "word": "ber\u00fccksichtigen.",
+    "start": 19.94,
+    "end": 20.56
+  },
+  {
+    "word": "1883",
+    "start": 21.1,
+    "end": 21.66
+  },
+  {
+    "word": "f\u00fchrten",
+    "start": 21.66,
+    "end": 22.32
+  },
+  {
+    "word": "nordamerikanische",
+    "start": 22.32,
+    "end": 23.24
+  },
+  {
+    "word": "Eisenbahnen,",
+    "start": 23.24,
+    "end": 23.86
+  },
+  {
+    "word": "standardisierte",
+    "start": 24.18,
+    "end": 24.84
+  },
+  {
+    "word": "Zeitzonen",
+    "start": 24.84,
+    "end": 25.46
+  },
+  {
+    "word": "f\u00fcr",
+    "start": 25.46,
+    "end": 25.68
+  },
+  {
+    "word": "ihren",
+    "start": 25.68,
+    "end": 25.86
+  },
+  {
+    "word": "Betrieb",
+    "start": 25.86,
+    "end": 26.14
+  },
+  {
+    "word": "ein.",
+    "start": 26.14,
+    "end": 26.34
+  },
+  {
+    "word": "Ein",
+    "start": 26.34,
+    "end": 26.68
+  },
+  {
+    "word": "Jahr",
+    "start": 26.68,
+    "end": 26.86
+  },
+  {
+    "word": "sp\u00e4ter",
+    "start": 26.86,
+    "end": 27.24
+  },
+  {
+    "word": "legte",
+    "start": 27.24,
+    "end": 27.82
+  },
+  {
+    "word": "eine",
+    "start": 27.82,
+    "end": 28.02
+  },
+  {
+    "word": "internationale",
+    "start": 28.02,
+    "end": 28.8
+  },
+  {
+    "word": "Konferenz",
+    "start": 28.8,
+    "end": 29.36
+  },
+  {
+    "word": "den",
+    "start": 29.36,
+    "end": 29.52
+  },
+  {
+    "word": "Meridian",
+    "start": 29.52,
+    "end": 29.94
+  },
+  {
+    "word": "durch",
+    "start": 29.94,
+    "end": 30.28
+  },
+  {
+    "word": "Grand",
+    "start": 30.28,
+    "end": 30.56
+  },
+  {
+    "word": "Witch",
+    "start": 30.56,
+    "end": 30.74
+  },
+  {
+    "word": "als",
+    "start": 30.74,
+    "end": 31.16
+  },
+  {
+    "word": "gemeinsamen",
+    "start": 31.16,
+    "end": 31.78
+  },
+  {
+    "word": "Null",
+    "start": 31.78,
+    "end": 32.04
+  },
+  {
+    "word": "Meridian",
+    "start": 32.04,
+    "end": 32.46
+  },
+  {
+    "word": "fest.",
+    "start": 32.46,
+    "end": 32.72
+  },
+  {
+    "word": "Rechnerisch",
+    "start": 33.2,
+    "end": 33.66
+  },
+  {
+    "word": "l\u00e4sst",
+    "start": 33.66,
+    "end": 33.84
+  },
+  {
+    "word": "sich",
+    "start": 33.84,
+    "end": 34.08
+  },
+  {
+    "word": "die",
+    "start": 34.08,
+    "end": 34.24
+  },
+  {
+    "word": "Erde",
+    "start": 34.24,
+    "end": 34.38
+  },
+  {
+    "word": "in",
+    "start": 34.38,
+    "end": 34.58
+  },
+  {
+    "word": "24",
+    "start": 34.58,
+    "end": 35.12
+  },
+  {
+    "word": "Zonen",
+    "start": 35.12,
+    "end": 35.72
+  },
+  {
+    "word": "zu",
+    "start": 35.72,
+    "end": 36.16
+  },
+  {
+    "word": "jeweils",
+    "start": 36.16,
+    "end": 36.48
+  },
+  {
+    "word": "etwa",
+    "start": 36.48,
+    "end": 36.74
+  },
+  {
+    "word": "15",
+    "start": 36.74,
+    "end": 37.26
+  },
+  {
+    "word": "L\u00e4ngen",
+    "start": 37.26,
+    "end": 37.56
+  },
+  {
+    "word": "gerade",
+    "start": 37.56,
+    "end": 37.8
+  },
+  {
+    "word": "teilen,",
+    "start": 37.8,
+    "end": 38.24
+  },
+  {
+    "word": "weil",
+    "start": 38.38,
+    "end": 38.44
+  },
+  {
+    "word": "ein",
+    "start": 38.44,
+    "end": 38.6
+  },
+  {
+    "word": "Tag",
+    "start": 38.6,
+    "end": 38.86
+  },
+  {
+    "word": "rund",
+    "start": 38.86,
+    "end": 39.06
+  },
+  {
+    "word": "24",
+    "start": 39.06,
+    "end": 39.64
+  },
+  {
+    "word": "Stunden",
+    "start": 39.64,
+    "end": 39.98
+  },
+  {
+    "word": "hat.",
+    "start": 39.98,
+    "end": 40.26
+  },
+  {
+    "word": "In",
+    "start": 40.58,
+    "end": 40.64
+  },
+  {
+    "word": "Wirklichkeit",
+    "start": 40.64,
+    "end": 41.14
+  },
+  {
+    "word": "sind",
+    "start": 41.14,
+    "end": 41.36
+  },
+  {
+    "word": "die",
+    "start": 41.36,
+    "end": 41.5
+  },
+  {
+    "word": "Grenzen",
+    "start": 41.5,
+    "end": 41.82
+  },
+  {
+    "word": "aber",
+    "start": 41.82,
+    "end": 42.04
+  },
+  {
+    "word": "krumm.",
+    "start": 42.04,
+    "end": 42.46
+  },
+  {
+    "word": "Staaten",
+    "start": 42.6,
+    "end": 42.94
+  },
+  {
+    "word": "verschieben",
+    "start": 42.94,
+    "end": 43.34
+  },
+  {
+    "word": "sie,",
+    "start": 43.34,
+    "end": 43.6
+  },
+  {
+    "word": "damit",
+    "start": 43.78,
+    "end": 43.92
+  },
+  {
+    "word": "St\u00e4dte,",
+    "start": 43.92,
+    "end": 44.32
+  },
+  {
+    "word": "Regionen",
+    "start": 44.56,
+    "end": 44.92
+  },
+  {
+    "word": "oder",
+    "start": 44.92,
+    "end": 45.22
+  },
+  {
+    "word": "ganze",
+    "start": 45.22,
+    "end": 45.56
+  },
+  {
+    "word": "L\u00e4nder",
+    "start": 45.56,
+    "end": 45.86
+  },
+  {
+    "word": "dieselbe",
+    "start": 45.86,
+    "end": 46.36
+  },
+  {
+    "word": "Uhrzeit",
+    "start": 46.36,
+    "end": 46.72
+  },
+  {
+    "word": "nutzen.",
+    "start": 46.72,
+    "end": 46.98
+  },
+  {
+    "word": "Deshalb",
+    "start": 47.36,
+    "end": 47.56
+  },
+  {
+    "word": "folgt",
+    "start": 47.56,
+    "end": 47.9
+  },
+  {
+    "word": "eine",
+    "start": 47.9,
+    "end": 48.04
+  },
+  {
+    "word": "Uhr",
+    "start": 48.04,
+    "end": 48.26
+  },
+  {
+    "word": "nicht",
+    "start": 48.26,
+    "end": 48.46
+  },
+  {
+    "word": "nur",
+    "start": 48.46,
+    "end": 48.66
+  },
+  {
+    "word": "der",
+    "start": 48.66,
+    "end": 48.8
+  },
+  {
+    "word": "Sonne,",
+    "start": 48.8,
+    "end": 49.12
+  },
+  {
+    "word": "sondern",
+    "start": 49.42,
+    "end": 49.62
+  },
+  {
+    "word": "auch",
+    "start": 49.62,
+    "end": 49.86
+  },
+  {
+    "word": "politischen",
+    "start": 49.86,
+    "end": 50.42
+  },
+  {
+    "word": "Entscheidungen.",
+    "start": 50.42,
+    "end": 50.94
+  },
+  {
+    "word": "Schau",
+    "start": 51.18,
+    "end": 51.34
+  },
+  {
+    "word": "auf",
+    "start": 51.34,
+    "end": 51.52
+  },
+  {
+    "word": "eine",
+    "start": 51.52,
+    "end": 51.7
+  },
+  {
+    "word": "Zeitzonenkarte.",
+    "start": 51.7,
+    "end": 52.52
+  },
+  {
+    "word": "Warum",
+    "start": 52.84,
+    "end": 53.06
+  },
+  {
+    "word": "sehen",
+    "start": 53.06,
+    "end": 53.22
+  },
+  {
+    "word": "die",
+    "start": 53.22,
+    "end": 53.38
+  },
+  {
+    "word": "Grenzen",
+    "start": 53.38,
+    "end": 53.72
+  },
+  {
+    "word": "nicht",
+    "start": 53.72,
+    "end": 53.9
+  },
+  {
+    "word": "wie",
+    "start": 53.9,
+    "end": 54.08
+  },
+  {
+    "word": "ein",
+    "start": 54.08,
+    "end": 54.24
+  },
+  {
+    "word": "sauberes",
+    "start": 54.24,
+    "end": 54.7
+  },
+  {
+    "word": "Raster",
+    "start": 54.7,
+    "end": 54.92
+  },
+  {
+    "word": "aus?",
+    "start": 54.92,
+    "end": 55.2
+  },
+  {
+    "word": "Weil",
+    "start": 55.2,
+    "end": 55.64
+  },
+  {
+    "word": "Zeit",
+    "start": 55.64,
+    "end": 55.92
+  },
+  {
+    "word": "nicht",
+    "start": 55.92,
+    "end": 56.16
+  },
+  {
+    "word": "nur",
+    "start": 56.16,
+    "end": 56.34
+  },
+  {
+    "word": "gemessen,",
+    "start": 56.34,
+    "end": 56.66
+  },
+  {
+    "word": "sondern",
+    "start": 56.98,
+    "end": 57.28
+  },
+  {
+    "word": "organisiert",
+    "start": 57.28,
+    "end": 57.9
+  },
+  {
+    "word": "wird.",
+    "start": 57.9,
+    "end": 58.08
+  },
+  {
+    "word": "Zeitzonen",
+    "start": 58.34,
+    "end": 58.8
+  },
+  {
+    "word": "machen",
+    "start": 58.8,
+    "end": 59.0
+  },
+  {
+    "word": "aus",
+    "start": 59.0,
+    "end": 59.26
+  },
+  {
+    "word": "vielen",
+    "start": 59.26,
+    "end": 59.56
+  },
+  {
+    "word": "lokalen",
+    "start": 59.56,
+    "end": 60.08
+  },
+  {
+    "word": "Sonnenzeiten",
+    "start": 60.08,
+    "end": 60.74
+  },
+  {
+    "word": "ein",
+    "start": 60.74,
+    "end": 61.14
+  },
+  {
+    "word": "gemeinsames",
+    "start": 61.14,
+    "end": 61.72
+  },
+  {
+    "word": "System,",
+    "start": 61.72,
+    "end": 62.08
+  },
+  {
+    "word": "mit",
+    "start": 62.4,
+    "end": 62.48
+  },
+  {
+    "word": "dem",
+    "start": 62.48,
+    "end": 62.62
+  },
+  {
+    "word": "die",
+    "start": 62.62,
+    "end": 62.74
+  },
+  {
+    "word": "Welt",
+    "start": 62.74,
+    "end": 62.92
+  },
+  {
+    "word": "planen",
+    "start": 62.92,
+    "end": 63.36
+  },
+  {
+    "word": "kann.",
+    "start": 63.36,
+    "end": 63.5
+  }
+]

@@ -1,1 +1,43 @@
-{"sceneId":"scene-02","order":2,"title":"Lokale Sonnenzeit","narration":"Früher stellte jede Stadt ihre Uhr nach der Sonne.","imageText":"LOKALE ZEIT","visualIdea":"Eine historische Stadt mit Sonnenuhr und Kirchturmuhr richtet sich sichtbar nach dem Sonnenstand.","continuityNotes":"Gleiche Atlas-Papiertextur und Farbwelt; historische Elemente nur als Illustration, kein Fotorealismus.","audioCue":"Früher stellte jede Stadt","leadInSeconds":0.2,"subtitleCues":["Früher stellte jede Stadt ihre Uhr","nach der Sonne."],"subtitlePosition":"center","durationSeconds":4,"expectedImageFileName":"scene-02.png","promptStatus":"ready","imageStatus":"missing","assetVerification":null,"status":"prompt-ready"}
+{
+  "sceneId": "scene-02",
+  "order": 2,
+  "title": "Lokale Sonnenzeit",
+  "narration": "Früher stellte jede Stadt ihre Uhr nach der Sonne.",
+  "imageText": "LOKALE ZEIT",
+  "visualIdea": "Eine historische Stadt mit Sonnenuhr und Kirchturmuhr richtet sich sichtbar nach dem Sonnenstand.",
+  "continuityNotes": "Gleiche Atlas-Papiertextur und Farbwelt; historische Elemente nur als Illustration, kein Fotorealismus.",
+  "audioCue": "Früher stellte jede Stadt",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [
+    "Früher stellte jede Stadt ihre Uhr",
+    "nach der Sonne."
+  ],
+  "subtitlePosition": "center",
+  "durationSeconds": 4,
+  "expectedImageFileName": "scene-02.jpeg",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-02",
+    "confirmedSceneOrder": 2,
+    "visibleSummary": "This image perfectly matches the visual prompt.",
+    "reason": "Visual review has confirmed that it matches the prompt completely.",
+    "comparedFields": [
+      "narration",
+      "visualIdea",
+      "imageText",
+      "imagePrompt",
+      "title",
+      "hook"
+    ],
+    "matchMethod": "visual-content-review",
+    "reviewedAt": "2026-08-11T16:56:51.939Z"
+  },
+  "status": "image-ready",
+  "source": "numbered-images/Bild 02.jpeg",
+  "matchConfidence": 1,
+  "matchReason": "Visual review has confirmed that it matches the prompt completely."
+}

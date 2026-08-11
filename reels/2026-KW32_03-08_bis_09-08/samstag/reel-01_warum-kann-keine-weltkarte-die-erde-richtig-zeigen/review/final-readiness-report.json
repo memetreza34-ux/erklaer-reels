@@ -1,0 +1,515 @@
+{
+  "version": 9,
+  "createdAt": "2026-08-10T16:48:19.817Z",
+  "reelDirectory": "reels/2026-KW32_03-08_bis_09-08/samstag/reel-01_warum-kann-keine-weltkarte-die-erde-richtig-zeigen",
+  "strict": true,
+  "readyForRenderer": true,
+  "stages": {
+    "sourceQuality": {
+      "passed": true,
+      "required": true,
+      "legacy": false,
+      "reason": null,
+      "checks": [
+        {
+          "id": "source-quality-binding",
+          "passed": true,
+          "level": "error",
+          "message": "Verpflichtende Quellen-QC: bestanden."
+        }
+      ]
+    },
+    "audioPacingFileBinding": {
+      "passed": true,
+      "required": true,
+      "legacy": false,
+      "reason": null,
+      "checks": [
+        {
+          "id": "audio-pacing-file-binding",
+          "passed": true,
+          "level": "error",
+          "message": "Audio-Pacing-Dateibindung: bestanden."
+        }
+      ]
+    },
+    "wordSyncAudioBinding": {
+      "passed": true,
+      "required": true,
+      "legacy": false,
+      "reason": null,
+      "checks": [
+        {
+          "id": "word-sync-audio-binding",
+          "passed": true,
+          "level": "error",
+          "message": "Word-Sync-Audiobindung: bestanden."
+        }
+      ]
+    },
+    "content": {
+      "passed": true,
+      "reportFile": "review/content-readiness.json",
+      "summary": {
+        "passedChecks": 301,
+        "failedChecks": 0,
+        "warnings": 53,
+        "totalChecks": 354
+      }
+    },
+    "audioPacing": {
+      "passed": true,
+      "strict": true,
+      "playbackRate": 1.1,
+      "loudnessTargetLufs": -16,
+      "truePeakDbtp": -1.5,
+      "loudnessMeasured": true,
+      "measuredIntegratedLufs": -16.45,
+      "measuredTruePeakDbtp": -1.45,
+      "beforeSeconds": 81.82712,
+      "afterSeconds": 65.2,
+      "reportFile": "review/audio-pacing-report.json",
+      "summary": {
+        "passedChecks": 12,
+        "failedChecks": 0,
+        "warnings": 0,
+        "totalChecks": 12
+      }
+    },
+    "timeline": {
+      "passed": true,
+      "timingStatus": "audio-synced",
+      "renderStatus": "ready-for-renderer",
+      "reportFile": "review/final-video-report.json",
+      "summary": {
+        "passedChecks": 96,
+        "failedChecks": 0,
+        "warnings": 0,
+        "totalChecks": 96
+      }
+    },
+    "wordSync": {
+      "passed": true,
+      "strict": true,
+      "provider": "codex-local-audio-review",
+      "cueCount": 39,
+      "exactCueCount": 39,
+      "reportFile": "review/word-sync-report.json",
+      "summary": {
+        "passedChecks": 119,
+        "failedChecks": 0,
+        "warnings": 0,
+        "totalChecks": 119
+      }
+    },
+    "visualQuality": {
+      "passed": true,
+      "strict": true,
+      "reportFile": "review/visual-quality-report.json",
+      "inspectionFile": "review/visual-inspection.json",
+      "summary": {
+        "assetsChecked": 14,
+        "passedChecks": 146,
+        "failedChecks": 0,
+        "warnings": 14,
+        "totalChecks": 160
+      }
+    }
+  },
+  "progress": {
+    "reelId": "reel-01_warum-kann-keine-weltkarte-die-erde-richtig-zeigen",
+    "title": "Warum kann keine Weltkarte die Erde richtig zeigen?",
+    "preProduction": 100,
+    "assets": 100,
+    "audioPacing": 100,
+    "timeline": 100,
+    "wordSync": 100,
+    "visualQuality": 100,
+    "productionReady": 100,
+    "rendering": 0,
+    "overall": 90,
+    "details": {
+      "scriptsReady": true,
+      "styleReady": true,
+      "scenesReady": "13/13",
+      "promptsReady": "13/13",
+      "coverPromptReady": true,
+      "captionReady": true,
+      "sourcesReady": true,
+      "contentCheckReady": true,
+      "audioReady": true,
+      "sceneImagesReady": "13/13",
+      "coverImageReady": true,
+      "assetReportReady": true,
+      "audioPacingCreated": true,
+      "audioPacingPassed": true,
+      "audioPacingRate": 1.1,
+      "audioPacingRateSafe": true,
+      "audioLoudnessNormalized": true,
+      "audioLoudnessTargetSafe": true,
+      "audioTruePeakSafe": true,
+      "audioMeasurementRequired": true,
+      "audioMeasurementPresent": true,
+      "audioMeasurementSafe": true,
+      "measuredIntegratedLufs": -16.45,
+      "measuredTruePeakDbtp": -1.45,
+      "audioPacingDurationReduced": true,
+      "timelineBuilt": true,
+      "audioDurationKnown": true,
+      "audioSynced": true,
+      "renderReady": true,
+      "timelineCheckReady": true,
+      "wordSyncRequired": true,
+      "wordSyncCreated": true,
+      "wordSyncPassed": true,
+      "wordSyncProvider": "codex-local-audio-review",
+      "wordCoverage": 1,
+      "visualReportCreated": true,
+      "visualTechnicalReady": true,
+      "visualAssetsReviewed": "14/14",
+      "visualStrictReady": true,
+      "rendererValidated": false,
+      "renderComplete": false
+    },
+    "nextStep": "finalize:reel --strict und anschließend validate:render ausführen."
+  },
+  "blockingIssues": [],
+  "warnings": [
+    {
+      "id": "scene-01-lead-in",
+      "level": "warning",
+      "message": "scene-01: leadInSeconds sollte zwischen 0,1 und 0,3 liegen."
+    },
+    {
+      "id": "scene-01-subtitle-cues",
+      "level": "warning",
+      "message": "scene-01: subtitleCues fehlen."
+    },
+    {
+      "id": "scene-02-lead-in",
+      "level": "warning",
+      "message": "scene-02: leadInSeconds sollte zwischen 0,1 und 0,3 liegen."
+    },
+    {
+      "id": "scene-02-subtitle-cues",
+      "level": "warning",
+      "message": "scene-02: subtitleCues fehlen."
+    },
+    {
+      "id": "scene-03-lead-in",
+      "level": "warning",
+      "message": "scene-03: leadInSeconds sollte zwischen 0,1 und 0,3 liegen."
+    },
+    {
+      "id": "scene-03-subtitle-cues",
+      "level": "warning",
+      "message": "scene-03: subtitleCues fehlen."
+    },
+    {
+      "id": "scene-04-lead-in",
+      "level": "warning",
+      "message": "scene-04: leadInSeconds sollte zwischen 0,1 und 0,3 liegen."
+    },
+    {
+      "id": "scene-04-subtitle-cues",
+      "level": "warning",
+      "message": "scene-04: subtitleCues fehlen."
+    },
+    {
+      "id": "scene-05-lead-in",
+      "level": "warning",
+      "message": "scene-05: leadInSeconds sollte zwischen 0,1 und 0,3 liegen."
+    },
+    {
+      "id": "scene-05-subtitle-cues",
+      "level": "warning",
+      "message": "scene-05: subtitleCues fehlen."
+    },
+    {
+      "id": "scene-06-lead-in",
+      "level": "warning",
+      "message": "scene-06: leadInSeconds sollte zwischen 0,1 und 0,3 liegen."
+    },
+    {
+      "id": "scene-06-subtitle-cues",
+      "level": "warning",
+      "message": "scene-06: subtitleCues fehlen."
+    },
+    {
+      "id": "scene-07-lead-in",
+      "level": "warning",
+      "message": "scene-07: leadInSeconds sollte zwischen 0,1 und 0,3 liegen."
+    },
+    {
+      "id": "scene-07-subtitle-cues",
+      "level": "warning",
+      "message": "scene-07: subtitleCues fehlen."
+    },
+    {
+      "id": "scene-08-lead-in",
+      "level": "warning",
+      "message": "scene-08: leadInSeconds sollte zwischen 0,1 und 0,3 liegen."
+    },
+    {
+      "id": "scene-08-subtitle-cues",
+      "level": "warning",
+      "message": "scene-08: subtitleCues fehlen."
+    },
+    {
+      "id": "scene-09-lead-in",
+      "level": "warning",
+      "message": "scene-09: leadInSeconds sollte zwischen 0,1 und 0,3 liegen."
+    },
+    {
+      "id": "scene-09-subtitle-cues",
+      "level": "warning",
+      "message": "scene-09: subtitleCues fehlen."
+    },
+    {
+      "id": "scene-10-lead-in",
+      "level": "warning",
+      "message": "scene-10: leadInSeconds sollte zwischen 0,1 und 0,3 liegen."
+    },
+    {
+      "id": "scene-10-subtitle-cues",
+      "level": "warning",
+      "message": "scene-10: subtitleCues fehlen."
+    },
+    {
+      "id": "scene-11-lead-in",
+      "level": "warning",
+      "message": "scene-11: leadInSeconds sollte zwischen 0,1 und 0,3 liegen."
+    },
+    {
+      "id": "scene-11-subtitle-cues",
+      "level": "warning",
+      "message": "scene-11: subtitleCues fehlen."
+    },
+    {
+      "id": "scene-12-lead-in",
+      "level": "warning",
+      "message": "scene-12: leadInSeconds sollte zwischen 0,1 und 0,3 liegen."
+    },
+    {
+      "id": "scene-12-subtitle-cues",
+      "level": "warning",
+      "message": "scene-12: subtitleCues fehlen."
+    },
+    {
+      "id": "scene-13-lead-in",
+      "level": "warning",
+      "message": "scene-13: leadInSeconds sollte zwischen 0,1 und 0,3 liegen."
+    },
+    {
+      "id": "scene-13-subtitle-cues",
+      "level": "warning",
+      "message": "scene-13: subtitleCues fehlen."
+    },
+    {
+      "id": "scene-01-transition-type",
+      "level": "warning",
+      "message": "scene-01: Unbekannter Übergangstyp (leer)."
+    },
+    {
+      "id": "scene-01-camera-type",
+      "level": "warning",
+      "message": "scene-01: Unbekannter Kamerabewegungstyp (leer)."
+    },
+    {
+      "id": "scene-02-transition-type",
+      "level": "warning",
+      "message": "scene-02: Unbekannter Übergangstyp (leer)."
+    },
+    {
+      "id": "scene-02-camera-type",
+      "level": "warning",
+      "message": "scene-02: Unbekannter Kamerabewegungstyp (leer)."
+    },
+    {
+      "id": "scene-03-transition-type",
+      "level": "warning",
+      "message": "scene-03: Unbekannter Übergangstyp (leer)."
+    },
+    {
+      "id": "scene-03-camera-type",
+      "level": "warning",
+      "message": "scene-03: Unbekannter Kamerabewegungstyp (leer)."
+    },
+    {
+      "id": "scene-04-transition-type",
+      "level": "warning",
+      "message": "scene-04: Unbekannter Übergangstyp (leer)."
+    },
+    {
+      "id": "scene-04-camera-type",
+      "level": "warning",
+      "message": "scene-04: Unbekannter Kamerabewegungstyp (leer)."
+    },
+    {
+      "id": "scene-05-transition-type",
+      "level": "warning",
+      "message": "scene-05: Unbekannter Übergangstyp (leer)."
+    },
+    {
+      "id": "scene-05-camera-type",
+      "level": "warning",
+      "message": "scene-05: Unbekannter Kamerabewegungstyp (leer)."
+    },
+    {
+      "id": "scene-06-transition-type",
+      "level": "warning",
+      "message": "scene-06: Unbekannter Übergangstyp (leer)."
+    },
+    {
+      "id": "scene-06-camera-type",
+      "level": "warning",
+      "message": "scene-06: Unbekannter Kamerabewegungstyp (leer)."
+    },
+    {
+      "id": "scene-07-transition-type",
+      "level": "warning",
+      "message": "scene-07: Unbekannter Übergangstyp (leer)."
+    },
+    {
+      "id": "scene-07-camera-type",
+      "level": "warning",
+      "message": "scene-07: Unbekannter Kamerabewegungstyp (leer)."
+    },
+    {
+      "id": "scene-08-transition-type",
+      "level": "warning",
+      "message": "scene-08: Unbekannter Übergangstyp (leer)."
+    },
+    {
+      "id": "scene-08-camera-type",
+      "level": "warning",
+      "message": "scene-08: Unbekannter Kamerabewegungstyp (leer)."
+    },
+    {
+      "id": "scene-09-transition-type",
+      "level": "warning",
+      "message": "scene-09: Unbekannter Übergangstyp (leer)."
+    },
+    {
+      "id": "scene-09-camera-type",
+      "level": "warning",
+      "message": "scene-09: Unbekannter Kamerabewegungstyp (leer)."
+    },
+    {
+      "id": "scene-10-transition-type",
+      "level": "warning",
+      "message": "scene-10: Unbekannter Übergangstyp (leer)."
+    },
+    {
+      "id": "scene-10-camera-type",
+      "level": "warning",
+      "message": "scene-10: Unbekannter Kamerabewegungstyp (leer)."
+    },
+    {
+      "id": "scene-11-transition-type",
+      "level": "warning",
+      "message": "scene-11: Unbekannter Übergangstyp (leer)."
+    },
+    {
+      "id": "scene-11-camera-type",
+      "level": "warning",
+      "message": "scene-11: Unbekannter Kamerabewegungstyp (leer)."
+    },
+    {
+      "id": "scene-12-transition-type",
+      "level": "warning",
+      "message": "scene-12: Unbekannter Übergangstyp (leer)."
+    },
+    {
+      "id": "scene-12-camera-type",
+      "level": "warning",
+      "message": "scene-12: Unbekannter Kamerabewegungstyp (leer)."
+    },
+    {
+      "id": "scene-13-transition-type",
+      "level": "warning",
+      "message": "scene-13: Unbekannter Übergangstyp (leer)."
+    },
+    {
+      "id": "scene-13-camera-type",
+      "level": "warning",
+      "message": "scene-13: Unbekannter Kamerabewegungstyp (leer)."
+    },
+    {
+      "id": "hook-no-transition",
+      "level": "warning",
+      "message": "Die Hook sollte ab Sekunde 0 ohne Übergang starten."
+    },
+    {
+      "id": "scene-01-target-resolution",
+      "level": "warning",
+      "message": "scene-01: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-02-target-resolution",
+      "level": "warning",
+      "message": "scene-02: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-03-target-resolution",
+      "level": "warning",
+      "message": "scene-03: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-04-target-resolution",
+      "level": "warning",
+      "message": "scene-04: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-05-target-resolution",
+      "level": "warning",
+      "message": "scene-05: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-06-target-resolution",
+      "level": "warning",
+      "message": "scene-06: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-07-target-resolution",
+      "level": "warning",
+      "message": "scene-07: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-08-target-resolution",
+      "level": "warning",
+      "message": "scene-08: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-09-target-resolution",
+      "level": "warning",
+      "message": "scene-09: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-10-target-resolution",
+      "level": "warning",
+      "message": "scene-10: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-11-target-resolution",
+      "level": "warning",
+      "message": "scene-11: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-12-target-resolution",
+      "level": "warning",
+      "message": "scene-12: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-13-target-resolution",
+      "level": "warning",
+      "message": "scene-13: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "cover-target-resolution",
+      "level": "warning",
+      "message": "cover: Empfohlen sind mindestens 1080×1920 Pixel."
+    }
+  ],
+  "nextStep": "Renderer prüfen und MP4 erzeugen: npm run validate:render -- --dir \"reels/2026-KW32_03-08_bis_09-08/samstag/reel-01_warum-kann-keine-weltkarte-die-erde-richtig-zeigen\" && npm run render:reel -- --dir \"reels/2026-KW32_03-08_bis_09-08/samstag/reel-01_warum-kann-keine-weltkarte-die-erde-richtig-zeigen\""
+}

@@ -1,1 +1,29 @@
-{"headline":"WARUM GIBT ES ZEITZONEN?","visualIdea":"Globus mit mehreren unterschiedlich gehenden Uhren und Tag-Nacht-Anmutung; sofort verständliche Frage nach globaler Zeit.","expectedImageFileName":"cover.png","promptStatus":"ready","imageStatus":"missing","assetVerification":null,"status":"prompt-ready"}
+{
+  "headline": "WARUM GIBT ES ZEITZONEN?",
+  "visualIdea": "Globus mit mehreren unterschiedlich gehenden Uhren und Tag-Nacht-Anmutung; sofort verständliche Frage nach globaler Zeit.",
+  "expectedImageFileName": "cover.jpeg",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "visibleSummary": "This image perfectly matches the visual prompt.",
+    "reason": "Visual review has confirmed that it matches the prompt completely.",
+    "comparedFields": [
+      "narration",
+      "visualIdea",
+      "imageText",
+      "imagePrompt",
+      "title",
+      "hook",
+      "headline",
+      "coverVisualIdea",
+      "coverPrompt"
+    ],
+    "matchMethod": "visual-content-review",
+    "reviewedAt": "2026-08-11T16:56:51.916Z"
+  },
+  "status": "ready",
+  "source": "numbered-images/Bild 00.jpeg",
+  "confidence": 1
+}

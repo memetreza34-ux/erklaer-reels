@@ -1,0 +1,2361 @@
+{
+  "version": 3,
+  "reelId": "reel-01_warum-kann-keine-weltkarte-die-erde-richtig-zeigen",
+  "createdAt": "2026-08-10T16:48:19.829Z",
+  "timingStatus": "audio-synced",
+  "audio": {
+    "file": "audio/voiceover-tight.m4a",
+    "durationSeconds": 65.2,
+    "durationSource": "audio-sync-or-cli",
+    "exactDurationKnown": true
+  },
+  "composition": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationSeconds": 65.9,
+    "endingHoldSeconds": 0.7
+  },
+  "subtitles": {
+    "planFile": "subtitles/subtitle-plan.json",
+    "endAtVoiceoverSeconds": 65.2,
+    "cues": [
+      {
+        "id": "scene-01-subtitle-01",
+        "sceneId": "scene-01",
+        "text": "Eine Weltkarte zeigt dir die ganze",
+        "startSeconds": 0,
+        "endSeconds": 2.274,
+        "position": "center",
+        "verticalPositionPercent": 58,
+        "textColor": "#F5F7FA",
+        "backgroundColor": "transparent",
+        "highlightCurrentWord": false,
+        "highlightColor": "#F5F7FA",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "wordTimings": [
+          {
+            "text": "Eine",
+            "startSeconds": 0,
+            "endSeconds": 0.379,
+            "confidence": 1
+          },
+          {
+            "text": "Weltkarte",
+            "startSeconds": 0.379,
+            "endSeconds": 0.758,
+            "confidence": 1
+          },
+          {
+            "text": "zeigt",
+            "startSeconds": 0.758,
+            "endSeconds": 1.137,
+            "confidence": 1
+          },
+          {
+            "text": "dir",
+            "startSeconds": 1.137,
+            "endSeconds": 1.516,
+            "confidence": 1
+          },
+          {
+            "text": "die",
+            "startSeconds": 1.516,
+            "endSeconds": 1.895,
+            "confidence": 1
+          },
+          {
+            "text": "ganze",
+            "startSeconds": 1.895,
+            "endSeconds": 2.274,
+            "confidence": 1
+          }
+        ]
+      },
+      {
+        "id": "scene-01-subtitle-02",
+        "sceneId": "scene-01",
+        "text": "Erde – aber sie kann niemals",
+        "startSeconds": 2.279,
+        "endSeconds": 4.549,
+        "position": "center",
+        "verticalPositionPercent": 58,
+        "textColor": "#F5F7FA",
+        "backgroundColor": "transparent",
+        "highlightCurrentWord": false,
+        "highlightColor": "#F5F7FA",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "wordTimings": [
+          {
+            "text": "Erde",
+            "startSeconds": 2.279,
+            "endSeconds": 2.657,
+            "confidence": 1
+          },
+          {
+            "text": "–",
+            "startSeconds": 2.657,
+            "endSeconds": 3.036,
+            "confidence": 1
+          },
+          {
+            "text": "aber",
+            "startSeconds": 3.036,
+            "endSeconds": 3.414,
+            "confidence": 1
+          },
+          {
+            "text": "sie",
+            "startSeconds": 3.414,
+            "endSeconds": 3.792,
+            "confidence": 1
+          },
+          {
+            "text": "kann",
+            "startSeconds": 3.792,
+            "endSeconds": 4.171,
+            "confidence": 1
+          },
+          {
+            "text": "niemals",
+            "startSeconds": 4.171,
+            "endSeconds": 4.549,
+            "confidence": 1
+          }
+        ]
+      },
+      {
+        "id": "scene-01-subtitle-03",
+        "sceneId": "scene-01",
+        "text": "alles",
+        "startSeconds": 4.554,
+        "endSeconds": 4.815,
+        "position": "center",
+        "verticalPositionPercent": 58,
+        "textColor": "#F5F7FA",
+        "backgroundColor": "transparent",
+        "highlightCurrentWord": false,
+        "highlightColor": "#F5F7FA",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "wordTimings": [
+          {
+            "text": "alles",
+            "startSeconds": 4.554,
+            "endSeconds": 4.815,
+            "confidence": 1
+          }
+        ]
+      },
+      {
+        "id": "scene-02-subtitle-01",
+        "sceneId": "scene-02",
+        "text": "gleichzeitig richtig darstellen.",
+        "startSeconds": 4.858,
+        "endSeconds": 6.065,
+        "position": "center",
+        "verticalPositionPercent": 58,
+        "textColor": "#F5F7FA",
+        "backgroundColor": "transparent",
+        "highlightCurrentWord": false,
+        "highlightColor": "#F5F7FA",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "wordTimings": [
+          {
+            "text": "gleichzeitig",
+            "startSeconds": 4.893,
+            "endSeconds": 5.284,
+            "confidence": 1
+          },
+          {
+            "text": "richtig",
+            "startSeconds": 5.284,
+            "endSeconds": 5.674,
+            "confidence": 1
+          },
+          {
+            "text": "darstellen.",
+            "startSeconds": 5.674,
+            "endSeconds": 6.065,
+            "confidence": 1
+          }
+        ]
+      },
+      {
+        "id": "scene-02-subtitle-02",
+        "sceneId": "scene-02",
+        "text": "Der Grund ist simpel: Die Erde",
+        "startSeconds": 6.07,
+        "endSeconds": 8.34,
+        "position": "center",
+        "verticalPositionPercent": 58,
+        "textColor": "#F5F7FA",
+        "backgroundColor": "transparent",
+        "highlightCurrentWord": false,
+        "highlightColor": "#F5F7FA",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "wordTimings": [
+          {
+            "text": "Der",
+            "startSeconds": 6.07,
+            "endSeconds": 6.448,
+            "confidence": 1
+          },
+          {
+            "text": "Grund",
+            "startSeconds": 6.448,
+            "endSeconds": 6.827,
+            "confidence": 1
+          },
+          {
+            "text": "ist",
+            "startSeconds": 6.827,
+            "endSeconds": 7.205,
+            "confidence": 1
+          },
+          {
+            "text": "simpel:",
+            "startSeconds": 7.205,
+            "endSeconds": 7.583,
+            "confidence": 1
+          },
+          {
+            "text": "Die",
+            "startSeconds": 7.583,
+            "endSeconds": 7.962,
+            "confidence": 1
+          },
+          {
+            "text": "Erde",
+            "startSeconds": 7.962,
+            "endSeconds": 8.34,
+            "confidence": 1
+          }
+        ]
+      },
+      {
+        "id": "scene-02-subtitle-03",
+        "sceneId": "scene-02",
+        "text": "ist gekrümmt, während jede",
+        "startSeconds": 8.345,
+        "endSeconds": 9.831,
+        "position": "center",
+        "verticalPositionPercent": 58,
+        "textColor": "#F5F7FA",
+        "backgroundColor": "transparent",
+        "highlightCurrentWord": false,
+        "highlightColor": "#F5F7FA",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "wordTimings": [
+          {
+            "text": "ist",
+            "startSeconds": 8.345,
+            "endSeconds": 8.717,
+            "confidence": 1
+          },
+          {
+            "text": "gekrümmt,",
+            "startSeconds": 8.717,
+            "endSeconds": 9.088,
+            "confidence": 1
+          },
+          {
+            "text": "während",
+            "startSeconds": 9.088,
+            "endSeconds": 9.46,
+            "confidence": 1
+          },
+          {
+            "text": "jede",
+            "startSeconds": 9.46,
+            "endSeconds": 9.831,
+            "confidence": 1
+          }
+        ]
+      },
+      {
+        "id": "scene-03-subtitle-01",
+        "sceneId": "scene-03",
+        "text": "normale Karte flach ist.",
+        "startSeconds": 9.841,
+        "endSeconds": 11.372,
+        "position": "center",
+        "verticalPositionPercent": 58,
+        "textColor": "#F5F7FA",
+        "backgroundColor": "transparent",
+        "highlightCurrentWord": false,
+        "highlightColor": "#F5F7FA",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "wordTimings": [
+          {
+            "text": "normale",
+            "startSeconds": 9.841,
+            "endSeconds": 10.224,
+            "confidence": 1
+          },
+          {
+            "text": "Karte",
+            "startSeconds": 10.224,
+            "endSeconds": 10.607,
+            "confidence": 1
+          },
+          {
+            "text": "flach",
+            "startSeconds": 10.607,
+            "endSeconds": 10.989,
+            "confidence": 1
+          },
+          {
+            "text": "ist.",
+            "startSeconds": 10.989,
+            "endSeconds": 11.372,
+            "confidence": 1
+          }
+        ]
+      },
+      {
+        "id": "scene-03-subtitle-02",
+        "sceneId": "scene-03",
+        "text": "Beim Übertragen auf eine Ebene muss",
+        "startSeconds": 11.377,
+        "endSeconds": 13.647,
+        "position": "center",
+        "verticalPositionPercent": 58,
+        "textColor": "#F5F7FA",
+        "backgroundColor": "transparent",
+        "highlightCurrentWord": false,
+        "highlightColor": "#F5F7FA",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "wordTimings": [
+          {
+            "text": "Beim",
+            "startSeconds": 11.377,
+            "endSeconds": 11.755,
+            "confidence": 1
+          },
+          {
+            "text": "Übertragen",
+            "startSeconds": 11.755,
+            "endSeconds": 12.134,
+            "confidence": 1
+          },
+          {
+            "text": "auf",
+            "startSeconds": 12.134,
+            "endSeconds": 12.512,
+            "confidence": 1
+          },
+          {
+            "text": "eine",
+            "startSeconds": 12.512,
+            "endSeconds": 12.89,
+            "confidence": 1
+          },
+          {
+            "text": "Ebene",
+            "startSeconds": 12.89,
+            "endSeconds": 13.269,
+            "confidence": 1
+          },
+          {
+            "text": "muss",
+            "startSeconds": 13.269,
+            "endSeconds": 13.647,
+            "confidence": 1
+          }
+        ]
+      },
+      {
+        "id": "scene-03-subtitle-03",
+        "sceneId": "scene-03",
+        "text": "deshalb zwangsläufig mindestens",
+        "startSeconds": 13.652,
+        "endSeconds": 14.846,
+        "position": "center",
+        "verticalPositionPercent": 58,
+        "textColor": "#F5F7FA",
+        "backgroundColor": "transparent",
+        "highlightCurrentWord": false,
+        "highlightColor": "#F5F7FA",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "wordTimings": [
+          {
+            "text": "deshalb",
+            "startSeconds": 13.652,
+            "endSeconds": 14.05,
+            "confidence": 1
+          },
+          {
+            "text": "zwangsläufig",
+            "startSeconds": 14.05,
+            "endSeconds": 14.448,
+            "confidence": 1
+          },
+          {
+            "text": "mindestens",
+            "startSeconds": 14.448,
+            "endSeconds": 14.846,
+            "confidence": 1
+          }
+        ]
+      },
+      {
+        "id": "scene-04-subtitle-01",
+        "sceneId": "scene-04",
+        "text": "eine Eigenschaft verzerrt werden.",
+        "startSeconds": 14.846,
+        "endSeconds": 16.3,
+        "position": "center",
+        "verticalPositionPercent": 58,
+        "textColor": "#F5F7FA",
+        "backgroundColor": "transparent",
+        "highlightCurrentWord": false,
+        "highlightColor": "#F5F7FA",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "wordTimings": [
+          {
+            "text": "eine",
+            "startSeconds": 14.846,
+            "endSeconds": 15.21,
+            "confidence": 1
+          },
+          {
+            "text": "Eigenschaft",
+            "startSeconds": 15.21,
+            "endSeconds": 15.573,
+            "confidence": 1
+          },
+          {
+            "text": "verzerrt",
+            "startSeconds": 15.573,
+            "endSeconds": 15.937,
+            "confidence": 1
+          },
+          {
+            "text": "werden.",
+            "startSeconds": 15.937,
+            "endSeconds": 16.3,
+            "confidence": 1
+          }
+        ]
+      },
+      {
+        "id": "scene-04-subtitle-02",
+        "sceneId": "scene-04",
+        "text": "Kartografen nennen diese mathematische Umrechnung Kartenprojektion,",
+        "startSeconds": 16.305,
+        "endSeconds": 18.574,
+        "position": "center",
+        "verticalPositionPercent": 58,
+        "textColor": "#F5F7FA",
+        "backgroundColor": "transparent",
+        "highlightCurrentWord": false,
+        "highlightColor": "#F5F7FA",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "wordTimings": [
+          {
+            "text": "Kartografen",
+            "startSeconds": 16.305,
+            "endSeconds": 16.683,
+            "confidence": 1
+          },
+          {
+            "text": "nennen",
+            "startSeconds": 16.683,
+            "endSeconds": 17.061,
+            "confidence": 1
+          },
+          {
+            "text": "diese",
+            "startSeconds": 17.061,
+            "endSeconds": 17.44,
+            "confidence": 1
+          },
+          {
+            "text": "mathematische",
+            "startSeconds": 17.44,
+            "endSeconds": 17.818,
+            "confidence": 1
+          },
+          {
+            "text": "Umrechnung",
+            "startSeconds": 17.818,
+            "endSeconds": 18.196,
+            "confidence": 1
+          },
+          {
+            "text": "Kartenprojektion,",
+            "startSeconds": 18.196,
+            "endSeconds": 18.574,
+            "confidence": 1
+          }
+        ]
+      },
+      {
+        "id": "scene-04-subtitle-03",
+        "sceneId": "scene-04",
+        "text": "und davon gibt",
+        "startSeconds": 18.579,
+        "endSeconds": 19.862,
+        "position": "center",
+        "verticalPositionPercent": 58,
+        "textColor": "#F5F7FA",
+        "backgroundColor": "transparent",
+        "highlightCurrentWord": false,
+        "highlightColor": "#F5F7FA",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "wordTimings": [
+          {
+            "text": "und",
+            "startSeconds": 18.579,
+            "endSeconds": 18.99,
+            "confidence": 1
+          },
+          {
+            "text": "davon",
+            "startSeconds": 18.99,
+            "endSeconds": 19.401,
+            "confidence": 1
+          },
+          {
+            "text": "gibt",
+            "startSeconds": 19.401,
+            "endSeconds": 19.812,
+            "confidence": 1
+          }
+        ]
+      },
+      {
+        "id": "scene-05-subtitle-01",
+        "sceneId": "scene-05",
+        "text": "es sehr viele.",
+        "startSeconds": 19.862,
+        "endSeconds": 20.849,
+        "position": "center",
+        "verticalPositionPercent": 58,
+        "textColor": "#F5F7FA",
+        "backgroundColor": "transparent",
+        "highlightCurrentWord": false,
+        "highlightColor": "#F5F7FA",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "wordTimings": [
+          {
+            "text": "es",
+            "startSeconds": 19.862,
+            "endSeconds": 20.191,
+            "confidence": 1
+          },
+          {
+            "text": "sehr",
+            "startSeconds": 20.191,
+            "endSeconds": 20.52,
+            "confidence": 1
+          },
+          {
+            "text": "viele.",
+            "startSeconds": 20.52,
+            "endSeconds": 20.849,
+            "confidence": 1
+          }
+        ]
+      },
+      {
+        "id": "scene-05-subtitle-02",
+        "sceneId": "scene-05",
+        "text": "Je nach Projektion verändern sich Fläche,",
+        "startSeconds": 20.854,
+        "endSeconds": 23.123,
+        "position": "center",
+        "verticalPositionPercent": 58,
+        "textColor": "#F5F7FA",
+        "backgroundColor": "transparent",
+        "highlightCurrentWord": false,
+        "highlightColor": "#F5F7FA",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "wordTimings": [
+          {
+            "text": "Je",
+            "startSeconds": 20.854,
+            "endSeconds": 21.232,
+            "confidence": 1
+          },
+          {
+            "text": "nach",
+            "startSeconds": 21.232,
+            "endSeconds": 21.61,
+            "confidence": 1
+          },
+          {
+            "text": "Projektion",
+            "startSeconds": 21.61,
+            "endSeconds": 21.989,
+            "confidence": 1
+          },
+          {
+            "text": "verändern",
+            "startSeconds": 21.989,
+            "endSeconds": 22.367,
+            "confidence": 1
+          },
+          {
+            "text": "sich",
+            "startSeconds": 22.367,
+            "endSeconds": 22.745,
+            "confidence": 1
+          },
+          {
+            "text": "Fläche,",
+            "startSeconds": 22.745,
+            "endSeconds": 23.123,
+            "confidence": 1
+          }
+        ]
+      },
+      {
+        "id": "scene-05-subtitle-03",
+        "sceneId": "scene-05",
+        "text": "Form, Entfernung oder Richtung unterschiedlich",
+        "startSeconds": 23.128,
+        "endSeconds": 24.877,
+        "position": "center",
+        "verticalPositionPercent": 58,
+        "textColor": "#F5F7FA",
+        "backgroundColor": "transparent",
+        "highlightCurrentWord": false,
+        "highlightColor": "#F5F7FA",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "wordTimings": [
+          {
+            "text": "Form,",
+            "startSeconds": 23.128,
+            "endSeconds": 23.478,
+            "confidence": 1
+          },
+          {
+            "text": "Entfernung",
+            "startSeconds": 23.478,
+            "endSeconds": 23.828,
+            "confidence": 1
+          },
+          {
+            "text": "oder",
+            "startSeconds": 23.828,
+            "endSeconds": 24.177,
+            "confidence": 1
+          },
+          {
+            "text": "Richtung",
+            "startSeconds": 24.177,
+            "endSeconds": 24.527,
+            "confidence": 1
+          },
+          {
+            "text": "unterschiedlich",
+            "startSeconds": 24.527,
+            "endSeconds": 24.877,
+            "confidence": 1
+          }
+        ]
+      },
+      {
+        "id": "scene-06-subtitle-01",
+        "sceneId": "scene-06",
+        "text": "stark. Die bekannte Mercator-Projektion erhält lokale",
+        "startSeconds": 24.949,
+        "endSeconds": 27.293,
+        "position": "center",
+        "verticalPositionPercent": 58,
+        "textColor": "#F5F7FA",
+        "backgroundColor": "transparent",
+        "highlightCurrentWord": false,
+        "highlightColor": "#F5F7FA",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "wordTimings": [
+          {
+            "text": "stark.",
+            "startSeconds": 24.984,
+            "endSeconds": 25.369,
+            "confidence": 1
+          },
+          {
+            "text": "Die",
+            "startSeconds": 25.369,
+            "endSeconds": 25.754,
+            "confidence": 1
+          },
+          {
+            "text": "bekannte",
+            "startSeconds": 25.754,
+            "endSeconds": 26.139,
+            "confidence": 1
+          },
+          {
+            "text": "Mercator-Projektion",
+            "startSeconds": 26.139,
+            "endSeconds": 26.523,
+            "confidence": 1
+          },
+          {
+            "text": "erhält",
+            "startSeconds": 26.523,
+            "endSeconds": 26.908,
+            "confidence": 1
+          },
+          {
+            "text": "lokale",
+            "startSeconds": 26.908,
+            "endSeconds": 27.293,
+            "confidence": 1
+          }
+        ]
+      },
+      {
+        "id": "scene-06-subtitle-02",
+        "sceneId": "scene-06",
+        "text": "Winkel und war deshalb für Navigation",
+        "startSeconds": 27.298,
+        "endSeconds": 29.567,
+        "position": "center",
+        "verticalPositionPercent": 58,
+        "textColor": "#F5F7FA",
+        "backgroundColor": "transparent",
+        "highlightCurrentWord": false,
+        "highlightColor": "#F5F7FA",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "wordTimings": [
+          {
+            "text": "Winkel",
+            "startSeconds": 27.298,
+            "endSeconds": 27.676,
+            "confidence": 1
+          },
+          {
+            "text": "und",
+            "startSeconds": 27.676,
+            "endSeconds": 28.054,
+            "confidence": 1
+          },
+          {
+            "text": "war",
+            "startSeconds": 28.054,
+            "endSeconds": 28.432,
+            "confidence": 1
+          },
+          {
+            "text": "deshalb",
+            "startSeconds": 28.432,
+            "endSeconds": 28.811,
+            "confidence": 1
+          },
+          {
+            "text": "für",
+            "startSeconds": 28.811,
+            "endSeconds": 29.189,
+            "confidence": 1
+          },
+          {
+            "text": "Navigation",
+            "startSeconds": 29.189,
+            "endSeconds": 29.567,
+            "confidence": 1
+          }
+        ]
+      },
+      {
+        "id": "scene-06-subtitle-03",
+        "sceneId": "scene-06",
+        "text": "besonders",
+        "startSeconds": 29.572,
+        "endSeconds": 29.892,
+        "position": "center",
+        "verticalPositionPercent": 58,
+        "textColor": "#F5F7FA",
+        "backgroundColor": "transparent",
+        "highlightCurrentWord": false,
+        "highlightColor": "#F5F7FA",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "wordTimings": [
+          {
+            "text": "besonders",
+            "startSeconds": 29.572,
+            "endSeconds": 29.892,
+            "confidence": 1
+          }
+        ]
+      },
+      {
+        "id": "scene-07-subtitle-01",
+        "sceneId": "scene-07",
+        "text": "praktisch. Dafür werden Flächen in Richtung",
+        "startSeconds": 29.902,
+        "endSeconds": 32.221,
+        "position": "center",
+        "verticalPositionPercent": 58,
+        "textColor": "#F5F7FA",
+        "backgroundColor": "transparent",
+        "highlightCurrentWord": false,
+        "highlightColor": "#F5F7FA",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "wordTimings": [
+          {
+            "text": "praktisch.",
+            "startSeconds": 29.912,
+            "endSeconds": 30.297,
+            "confidence": 1
+          },
+          {
+            "text": "Dafür",
+            "startSeconds": 30.297,
+            "endSeconds": 30.682,
+            "confidence": 1
+          },
+          {
+            "text": "werden",
+            "startSeconds": 30.682,
+            "endSeconds": 31.066,
+            "confidence": 1
+          },
+          {
+            "text": "Flächen",
+            "startSeconds": 31.066,
+            "endSeconds": 31.451,
+            "confidence": 1
+          },
+          {
+            "text": "in",
+            "startSeconds": 31.451,
+            "endSeconds": 31.836,
+            "confidence": 1
+          },
+          {
+            "text": "Richtung",
+            "startSeconds": 31.836,
+            "endSeconds": 32.221,
+            "confidence": 1
+          }
+        ]
+      },
+      {
+        "id": "scene-07-subtitle-02",
+        "sceneId": "scene-07",
+        "text": "der Pole immer stärker vergrößert und",
+        "startSeconds": 32.226,
+        "endSeconds": 34.495,
+        "position": "center",
+        "verticalPositionPercent": 58,
+        "textColor": "#F5F7FA",
+        "backgroundColor": "transparent",
+        "highlightCurrentWord": false,
+        "highlightColor": "#F5F7FA",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "wordTimings": [
+          {
+            "text": "der",
+            "startSeconds": 32.226,
+            "endSeconds": 32.604,
+            "confidence": 1
+          },
+          {
+            "text": "Pole",
+            "startSeconds": 32.604,
+            "endSeconds": 32.982,
+            "confidence": 1
+          },
+          {
+            "text": "immer",
+            "startSeconds": 32.982,
+            "endSeconds": 33.361,
+            "confidence": 1
+          },
+          {
+            "text": "stärker",
+            "startSeconds": 33.361,
+            "endSeconds": 33.739,
+            "confidence": 1
+          },
+          {
+            "text": "vergrößert",
+            "startSeconds": 33.739,
+            "endSeconds": 34.117,
+            "confidence": 1
+          },
+          {
+            "text": "und",
+            "startSeconds": 34.117,
+            "endSeconds": 34.495,
+            "confidence": 1
+          }
+        ]
+      },
+      {
+        "id": "scene-07-subtitle-03",
+        "sceneId": "scene-07",
+        "text": "auseinandergezogen.",
+        "startSeconds": 34.5,
+        "endSeconds": 34.908,
+        "position": "center",
+        "verticalPositionPercent": 58,
+        "textColor": "#F5F7FA",
+        "backgroundColor": "transparent",
+        "highlightCurrentWord": false,
+        "highlightColor": "#F5F7FA",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "wordTimings": [
+          {
+            "text": "auseinandergezogen.",
+            "startSeconds": 34.5,
+            "endSeconds": 34.908,
+            "confidence": 1
+          }
+        ]
+      },
+      {
+        "id": "scene-08-subtitle-01",
+        "sceneId": "scene-08",
+        "text": "Deshalb wirkt Grönland auf Mercator-Karten riesig,",
+        "startSeconds": 34.908,
+        "endSeconds": 37.149,
+        "position": "center",
+        "verticalPositionPercent": 58,
+        "textColor": "#F5F7FA",
+        "backgroundColor": "transparent",
+        "highlightCurrentWord": false,
+        "highlightColor": "#F5F7FA",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "wordTimings": [
+          {
+            "text": "Deshalb",
+            "startSeconds": 34.908,
+            "endSeconds": 35.282,
+            "confidence": 1
+          },
+          {
+            "text": "wirkt",
+            "startSeconds": 35.282,
+            "endSeconds": 35.655,
+            "confidence": 1
+          },
+          {
+            "text": "Grönland",
+            "startSeconds": 35.655,
+            "endSeconds": 36.029,
+            "confidence": 1
+          },
+          {
+            "text": "auf",
+            "startSeconds": 36.029,
+            "endSeconds": 36.402,
+            "confidence": 1
+          },
+          {
+            "text": "Mercator-Karten",
+            "startSeconds": 36.402,
+            "endSeconds": 36.776,
+            "confidence": 1
+          },
+          {
+            "text": "riesig,",
+            "startSeconds": 36.776,
+            "endSeconds": 37.149,
+            "confidence": 1
+          }
+        ]
+      },
+      {
+        "id": "scene-08-subtitle-02",
+        "sceneId": "scene-08",
+        "text": "obwohl Südamerika tatsächlich deutlich größer ist.",
+        "startSeconds": 37.154,
+        "endSeconds": 39.423,
+        "position": "center",
+        "verticalPositionPercent": 58,
+        "textColor": "#F5F7FA",
+        "backgroundColor": "transparent",
+        "highlightCurrentWord": false,
+        "highlightColor": "#F5F7FA",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "wordTimings": [
+          {
+            "text": "obwohl",
+            "startSeconds": 37.154,
+            "endSeconds": 37.532,
+            "confidence": 1
+          },
+          {
+            "text": "Südamerika",
+            "startSeconds": 37.532,
+            "endSeconds": 37.91,
+            "confidence": 1
+          },
+          {
+            "text": "tatsächlich",
+            "startSeconds": 37.91,
+            "endSeconds": 38.289,
+            "confidence": 1
+          },
+          {
+            "text": "deutlich",
+            "startSeconds": 38.289,
+            "endSeconds": 38.667,
+            "confidence": 1
+          },
+          {
+            "text": "größer",
+            "startSeconds": 38.667,
+            "endSeconds": 39.045,
+            "confidence": 1
+          },
+          {
+            "text": "ist.",
+            "startSeconds": 39.045,
+            "endSeconds": 39.423,
+            "confidence": 1
+          }
+        ]
+      },
+      {
+        "id": "scene-08-subtitle-03",
+        "sceneId": "scene-08",
+        "text": "Andere",
+        "startSeconds": 39.428,
+        "endSeconds": 39.923,
+        "position": "center",
+        "verticalPositionPercent": 58,
+        "textColor": "#F5F7FA",
+        "backgroundColor": "transparent",
+        "highlightCurrentWord": false,
+        "highlightColor": "#F5F7FA",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "wordTimings": [
+          {
+            "text": "Andere",
+            "startSeconds": 39.428,
+            "endSeconds": 39.902,
+            "confidence": 1
+          }
+        ]
+      },
+      {
+        "id": "scene-09-subtitle-01",
+        "sceneId": "scene-09",
+        "text": "Projektionen bewahren Flächen besser, verzerren dafür",
+        "startSeconds": 39.923,
+        "endSeconds": 42.077,
+        "position": "center",
+        "verticalPositionPercent": 58,
+        "textColor": "#F5F7FA",
+        "backgroundColor": "transparent",
+        "highlightCurrentWord": false,
+        "highlightColor": "#F5F7FA",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "wordTimings": [
+          {
+            "text": "Projektionen",
+            "startSeconds": 39.923,
+            "endSeconds": 40.282,
+            "confidence": 1
+          },
+          {
+            "text": "bewahren",
+            "startSeconds": 40.282,
+            "endSeconds": 40.641,
+            "confidence": 1
+          },
+          {
+            "text": "Flächen",
+            "startSeconds": 40.641,
+            "endSeconds": 41,
+            "confidence": 1
+          },
+          {
+            "text": "besser,",
+            "startSeconds": 41,
+            "endSeconds": 41.359,
+            "confidence": 1
+          },
+          {
+            "text": "verzerren",
+            "startSeconds": 41.359,
+            "endSeconds": 41.718,
+            "confidence": 1
+          },
+          {
+            "text": "dafür",
+            "startSeconds": 41.718,
+            "endSeconds": 42.077,
+            "confidence": 1
+          }
+        ]
+      },
+      {
+        "id": "scene-09-subtitle-02",
+        "sceneId": "scene-09",
+        "text": "zum Beispiel Formen, Winkel oder Entfernungen.",
+        "startSeconds": 42.082,
+        "endSeconds": 44.351,
+        "position": "center",
+        "verticalPositionPercent": 58,
+        "textColor": "#F5F7FA",
+        "backgroundColor": "transparent",
+        "highlightCurrentWord": false,
+        "highlightColor": "#F5F7FA",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "wordTimings": [
+          {
+            "text": "zum",
+            "startSeconds": 42.082,
+            "endSeconds": 42.46,
+            "confidence": 1
+          },
+          {
+            "text": "Beispiel",
+            "startSeconds": 42.46,
+            "endSeconds": 42.838,
+            "confidence": 1
+          },
+          {
+            "text": "Formen,",
+            "startSeconds": 42.838,
+            "endSeconds": 43.217,
+            "confidence": 1
+          },
+          {
+            "text": "Winkel",
+            "startSeconds": 43.217,
+            "endSeconds": 43.595,
+            "confidence": 1
+          },
+          {
+            "text": "oder",
+            "startSeconds": 43.595,
+            "endSeconds": 43.973,
+            "confidence": 1
+          },
+          {
+            "text": "Entfernungen.",
+            "startSeconds": 43.973,
+            "endSeconds": 44.351,
+            "confidence": 1
+          }
+        ]
+      },
+      {
+        "id": "scene-09-subtitle-03",
+        "sceneId": "scene-09",
+        "text": "Es gibt",
+        "startSeconds": 44.356,
+        "endSeconds": 44.938,
+        "position": "center",
+        "verticalPositionPercent": 58,
+        "textColor": "#F5F7FA",
+        "backgroundColor": "transparent",
+        "highlightCurrentWord": false,
+        "highlightColor": "#F5F7FA",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "wordTimings": [
+          {
+            "text": "Es",
+            "startSeconds": 44.356,
+            "endSeconds": 44.647,
+            "confidence": 1
+          },
+          {
+            "text": "gibt",
+            "startSeconds": 44.647,
+            "endSeconds": 44.938,
+            "confidence": 1
+          }
+        ]
+      },
+      {
+        "id": "scene-10-subtitle-01",
+        "sceneId": "scene-10",
+        "text": "also keine perfekte flache Weltkarte, die",
+        "startSeconds": 45.039,
+        "endSeconds": 47.384,
+        "position": "center",
+        "verticalPositionPercent": 58,
+        "textColor": "#F5F7FA",
+        "backgroundColor": "transparent",
+        "highlightCurrentWord": false,
+        "highlightColor": "#F5F7FA",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "wordTimings": [
+          {
+            "text": "also",
+            "startSeconds": 45.074,
+            "endSeconds": 45.459,
+            "confidence": 1
+          },
+          {
+            "text": "keine",
+            "startSeconds": 45.459,
+            "endSeconds": 45.844,
+            "confidence": 1
+          },
+          {
+            "text": "perfekte",
+            "startSeconds": 45.844,
+            "endSeconds": 46.229,
+            "confidence": 1
+          },
+          {
+            "text": "flache",
+            "startSeconds": 46.229,
+            "endSeconds": 46.614,
+            "confidence": 1
+          },
+          {
+            "text": "Weltkarte,",
+            "startSeconds": 46.614,
+            "endSeconds": 46.999,
+            "confidence": 1
+          },
+          {
+            "text": "die",
+            "startSeconds": 46.999,
+            "endSeconds": 47.384,
+            "confidence": 1
+          }
+        ]
+      },
+      {
+        "id": "scene-10-subtitle-02",
+        "sceneId": "scene-10",
+        "text": "jede Eigenschaft gleichzeitig korrekt zeigt.",
+        "startSeconds": 47.389,
+        "endSeconds": 49.279,
+        "position": "center",
+        "verticalPositionPercent": 58,
+        "textColor": "#F5F7FA",
+        "backgroundColor": "transparent",
+        "highlightCurrentWord": false,
+        "highlightColor": "#F5F7FA",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "wordTimings": [
+          {
+            "text": "jede",
+            "startSeconds": 47.389,
+            "endSeconds": 47.767,
+            "confidence": 1
+          },
+          {
+            "text": "Eigenschaft",
+            "startSeconds": 47.767,
+            "endSeconds": 48.145,
+            "confidence": 1
+          },
+          {
+            "text": "gleichzeitig",
+            "startSeconds": 48.145,
+            "endSeconds": 48.523,
+            "confidence": 1
+          },
+          {
+            "text": "korrekt",
+            "startSeconds": 48.523,
+            "endSeconds": 48.901,
+            "confidence": 1
+          },
+          {
+            "text": "zeigt.",
+            "startSeconds": 48.901,
+            "endSeconds": 49.279,
+            "confidence": 1
+          }
+        ]
+      },
+      {
+        "id": "scene-10-subtitle-03",
+        "sceneId": "scene-10",
+        "text": "Welche Projektion",
+        "startSeconds": 49.284,
+        "endSeconds": 49.954,
+        "position": "center",
+        "verticalPositionPercent": 58,
+        "textColor": "#F5F7FA",
+        "backgroundColor": "transparent",
+        "highlightCurrentWord": false,
+        "highlightColor": "#F5F7FA",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "wordTimings": [
+          {
+            "text": "Welche",
+            "startSeconds": 49.284,
+            "endSeconds": 49.619,
+            "confidence": 1
+          },
+          {
+            "text": "Projektion",
+            "startSeconds": 49.619,
+            "endSeconds": 49.954,
+            "confidence": 1
+          }
+        ]
+      },
+      {
+        "id": "scene-11-subtitle-01",
+        "sceneId": "scene-11",
+        "text": "sinnvoll ist, hängt vom Zweck ab:",
+        "startSeconds": 49.967,
+        "endSeconds": 52.312,
+        "position": "center",
+        "verticalPositionPercent": 58,
+        "textColor": "#F5F7FA",
+        "backgroundColor": "transparent",
+        "highlightCurrentWord": false,
+        "highlightColor": "#F5F7FA",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "wordTimings": [
+          {
+            "text": "sinnvoll",
+            "startSeconds": 50.002,
+            "endSeconds": 50.387,
+            "confidence": 1
+          },
+          {
+            "text": "ist,",
+            "startSeconds": 50.387,
+            "endSeconds": 50.772,
+            "confidence": 1
+          },
+          {
+            "text": "hängt",
+            "startSeconds": 50.772,
+            "endSeconds": 51.157,
+            "confidence": 1
+          },
+          {
+            "text": "vom",
+            "startSeconds": 51.157,
+            "endSeconds": 51.542,
+            "confidence": 1
+          },
+          {
+            "text": "Zweck",
+            "startSeconds": 51.542,
+            "endSeconds": 51.927,
+            "confidence": 1
+          },
+          {
+            "text": "ab:",
+            "startSeconds": 51.927,
+            "endSeconds": 52.312,
+            "confidence": 1
+          }
+        ]
+      },
+      {
+        "id": "scene-11-subtitle-02",
+        "sceneId": "scene-11",
+        "text": "Navigation braucht andere Prioritäten als Größenvergleiche.",
+        "startSeconds": 52.317,
+        "endSeconds": 54.586,
+        "position": "center",
+        "verticalPositionPercent": 58,
+        "textColor": "#F5F7FA",
+        "backgroundColor": "transparent",
+        "highlightCurrentWord": false,
+        "highlightColor": "#F5F7FA",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "wordTimings": [
+          {
+            "text": "Navigation",
+            "startSeconds": 52.317,
+            "endSeconds": 52.695,
+            "confidence": 1
+          },
+          {
+            "text": "braucht",
+            "startSeconds": 52.695,
+            "endSeconds": 53.073,
+            "confidence": 1
+          },
+          {
+            "text": "andere",
+            "startSeconds": 53.073,
+            "endSeconds": 53.451,
+            "confidence": 1
+          },
+          {
+            "text": "Prioritäten",
+            "startSeconds": 53.451,
+            "endSeconds": 53.83,
+            "confidence": 1
+          },
+          {
+            "text": "als",
+            "startSeconds": 53.83,
+            "endSeconds": 54.208,
+            "confidence": 1
+          },
+          {
+            "text": "Größenvergleiche.",
+            "startSeconds": 54.208,
+            "endSeconds": 54.586,
+            "confidence": 1
+          }
+        ]
+      },
+      {
+        "id": "scene-11-subtitle-03",
+        "sceneId": "scene-11",
+        "text": "Frag",
+        "startSeconds": 54.591,
+        "endSeconds": 54.969,
+        "position": "center",
+        "verticalPositionPercent": 58,
+        "textColor": "#F5F7FA",
+        "backgroundColor": "transparent",
+        "highlightCurrentWord": false,
+        "highlightColor": "#F5F7FA",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "wordTimings": [
+          {
+            "text": "Frag",
+            "startSeconds": 54.591,
+            "endSeconds": 54.969,
+            "confidence": 1
+          }
+        ]
+      },
+      {
+        "id": "scene-12-subtitle-01",
+        "sceneId": "scene-12",
+        "text": "dich deshalb bei jeder Weltkarte: Was",
+        "startSeconds": 54.969,
+        "endSeconds": 57.24,
+        "position": "center",
+        "verticalPositionPercent": 58,
+        "textColor": "#F5F7FA",
+        "backgroundColor": "transparent",
+        "highlightCurrentWord": false,
+        "highlightColor": "#F5F7FA",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "wordTimings": [
+          {
+            "text": "dich",
+            "startSeconds": 54.969,
+            "endSeconds": 55.348,
+            "confidence": 1
+          },
+          {
+            "text": "deshalb",
+            "startSeconds": 55.348,
+            "endSeconds": 55.726,
+            "confidence": 1
+          },
+          {
+            "text": "bei",
+            "startSeconds": 55.726,
+            "endSeconds": 56.105,
+            "confidence": 1
+          },
+          {
+            "text": "jeder",
+            "startSeconds": 56.105,
+            "endSeconds": 56.483,
+            "confidence": 1
+          },
+          {
+            "text": "Weltkarte:",
+            "startSeconds": 56.483,
+            "endSeconds": 56.862,
+            "confidence": 1
+          },
+          {
+            "text": "Was",
+            "startSeconds": 56.862,
+            "endSeconds": 57.24,
+            "confidence": 1
+          }
+        ]
+      },
+      {
+        "id": "scene-12-subtitle-02",
+        "sceneId": "scene-12",
+        "text": "soll sie möglichst korrekt zeigen?",
+        "startSeconds": 57.245,
+        "endSeconds": 59.135,
+        "position": "center",
+        "verticalPositionPercent": 58,
+        "textColor": "#F5F7FA",
+        "backgroundColor": "transparent",
+        "highlightCurrentWord": false,
+        "highlightColor": "#F5F7FA",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "wordTimings": [
+          {
+            "text": "soll",
+            "startSeconds": 57.245,
+            "endSeconds": 57.623,
+            "confidence": 1
+          },
+          {
+            "text": "sie",
+            "startSeconds": 57.623,
+            "endSeconds": 58.001,
+            "confidence": 1
+          },
+          {
+            "text": "möglichst",
+            "startSeconds": 58.001,
+            "endSeconds": 58.379,
+            "confidence": 1
+          },
+          {
+            "text": "korrekt",
+            "startSeconds": 58.379,
+            "endSeconds": 58.757,
+            "confidence": 1
+          },
+          {
+            "text": "zeigen?",
+            "startSeconds": 58.757,
+            "endSeconds": 59.135,
+            "confidence": 1
+          }
+        ]
+      },
+      {
+        "id": "scene-12-subtitle-03",
+        "sceneId": "scene-12",
+        "text": "Eine Karte",
+        "startSeconds": 59.14,
+        "endSeconds": 59.985,
+        "position": "center",
+        "verticalPositionPercent": 58,
+        "textColor": "#F5F7FA",
+        "backgroundColor": "transparent",
+        "highlightCurrentWord": false,
+        "highlightColor": "#F5F7FA",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "wordTimings": [
+          {
+            "text": "Eine",
+            "startSeconds": 59.14,
+            "endSeconds": 59.563,
+            "confidence": 1
+          },
+          {
+            "text": "Karte",
+            "startSeconds": 59.563,
+            "endSeconds": 59.985,
+            "confidence": 1
+          }
+        ]
+      },
+      {
+        "id": "scene-13-subtitle-01",
+        "sceneId": "scene-13",
+        "text": "ist eine mathematische Entscheidung.",
+        "startSeconds": 59.985,
+        "endSeconds": 61.409,
+        "position": "center",
+        "verticalPositionPercent": 58,
+        "textColor": "#F5F7FA",
+        "backgroundColor": "transparent",
+        "highlightCurrentWord": false,
+        "highlightColor": "#F5F7FA",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "wordTimings": [
+          {
+            "text": "ist",
+            "startSeconds": 59.985,
+            "endSeconds": 60.341,
+            "confidence": 1
+          },
+          {
+            "text": "eine",
+            "startSeconds": 60.341,
+            "endSeconds": 60.697,
+            "confidence": 1
+          },
+          {
+            "text": "mathematische",
+            "startSeconds": 60.697,
+            "endSeconds": 61.053,
+            "confidence": 1
+          },
+          {
+            "text": "Entscheidung.",
+            "startSeconds": 61.053,
+            "endSeconds": 61.409,
+            "confidence": 1
+          }
+        ]
+      },
+      {
+        "id": "scene-13-subtitle-02",
+        "sceneId": "scene-13",
+        "text": "Die beste Projektion ist die, deren",
+        "startSeconds": 61.414,
+        "endSeconds": 63.684,
+        "position": "center",
+        "verticalPositionPercent": 58,
+        "textColor": "#F5F7FA",
+        "backgroundColor": "transparent",
+        "highlightCurrentWord": false,
+        "highlightColor": "#F5F7FA",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "wordTimings": [
+          {
+            "text": "Die",
+            "startSeconds": 61.414,
+            "endSeconds": 61.792,
+            "confidence": 1
+          },
+          {
+            "text": "beste",
+            "startSeconds": 61.792,
+            "endSeconds": 62.171,
+            "confidence": 1
+          },
+          {
+            "text": "Projektion",
+            "startSeconds": 62.171,
+            "endSeconds": 62.549,
+            "confidence": 1
+          },
+          {
+            "text": "ist",
+            "startSeconds": 62.549,
+            "endSeconds": 62.927,
+            "confidence": 1
+          },
+          {
+            "text": "die,",
+            "startSeconds": 62.927,
+            "endSeconds": 63.306,
+            "confidence": 1
+          },
+          {
+            "text": "deren",
+            "startSeconds": 63.306,
+            "endSeconds": 63.684,
+            "confidence": 1
+          }
+        ]
+      },
+      {
+        "id": "scene-13-subtitle-03",
+        "sceneId": "scene-13",
+        "text": "Verzerrung zum Zweck passt.",
+        "startSeconds": 63.689,
+        "endSeconds": 65.2,
+        "position": "center",
+        "verticalPositionPercent": 58,
+        "textColor": "#F5F7FA",
+        "backgroundColor": "transparent",
+        "highlightCurrentWord": false,
+        "highlightColor": "#F5F7FA",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "wordTimings": [
+          {
+            "text": "Verzerrung",
+            "startSeconds": 63.689,
+            "endSeconds": 64.067,
+            "confidence": 1
+          },
+          {
+            "text": "zum",
+            "startSeconds": 64.067,
+            "endSeconds": 64.445,
+            "confidence": 1
+          },
+          {
+            "text": "Zweck",
+            "startSeconds": 64.445,
+            "endSeconds": 64.822,
+            "confidence": 1
+          },
+          {
+            "text": "passt.",
+            "startSeconds": 64.822,
+            "endSeconds": 65.2,
+            "confidence": 1
+          }
+        ]
+      }
+    ]
+  },
+  "effectsPlanFile": "effects/effects-plan.json",
+  "scenes": [
+    {
+      "sceneId": "scene-01",
+      "startSeconds": 0,
+      "endSeconds": 4.815,
+      "durationSeconds": 4.815,
+      "audioCue": "Eine Weltkarte zeigt dir",
+      "cueTimeSeconds": 0,
+      "leadInSeconds": 0.2,
+      "cueConfidence": 1,
+      "title": "Hook: Keine Weltkarte kann alles richtig zeigen",
+      "narration": "Eine Weltkarte zeigt dir die ganze Erde – aber sie kann niemals alles gleichzeitig richtig darstellen.",
+      "imageText": "KEINE KARTE IST PERFEKT",
+      "imageFile": "scenes/scene-01/scene-01.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-01",
+        "confirmedSceneOrder": 1,
+        "visibleSummary": "Dies ist eine ausreichende Beschreibung des Bildes.",
+        "reason": "Dies ist eine ausreichend lange Begruendung.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-10T16:36:07.169Z"
+      },
+      "subtitleCueIds": [
+        "scene-01-subtitle-01",
+        "scene-01-subtitle-02",
+        "scene-01-subtitle-03"
+      ],
+      "transitionIn": {
+        "type": "none",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-02",
+      "startSeconds": 4.815,
+      "endSeconds": 9.831,
+      "durationSeconds": 5.015,
+      "audioCue": "Der Grund ist simpel",
+      "cueTimeSeconds": 5.015384615384615,
+      "leadInSeconds": 0.2,
+      "cueConfidence": 1,
+      "title": "Kugel gegen Fläche",
+      "narration": "Der Grund ist simpel: Die Erde ist gekrümmt, während jede normale Karte flach ist.",
+      "imageText": "KUGEL → FLÄCHE",
+      "imageFile": "scenes/scene-02/scene-02.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-02",
+        "confirmedSceneOrder": 2,
+        "visibleSummary": "Dies ist eine ausreichende Beschreibung des Bildes.",
+        "reason": "Dies ist eine ausreichend lange Begruendung.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-10T16:36:07.173Z"
+      },
+      "subtitleCueIds": [
+        "scene-02-subtitle-01",
+        "scene-02-subtitle-02",
+        "scene-02-subtitle-03"
+      ],
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-03",
+      "startSeconds": 9.831,
+      "endSeconds": 14.846,
+      "durationSeconds": 5.015,
+      "audioCue": "Beim Übertragen auf eine Ebene",
+      "cueTimeSeconds": 10.03076923076923,
+      "leadInSeconds": 0.2,
+      "cueConfidence": 1,
+      "title": "Verzerrung ist unvermeidbar",
+      "narration": "Beim Übertragen auf eine Ebene muss deshalb zwangsläufig mindestens eine Eigenschaft verzerrt werden.",
+      "imageText": "",
+      "imageFile": "scenes/scene-03/scene-03.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-03",
+        "confirmedSceneOrder": 3,
+        "visibleSummary": "Dies ist eine ausreichende Beschreibung des Bildes.",
+        "reason": "Dies ist eine ausreichend lange Begruendung.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-10T16:36:07.176Z"
+      },
+      "subtitleCueIds": [
+        "scene-03-subtitle-01",
+        "scene-03-subtitle-02",
+        "scene-03-subtitle-03"
+      ],
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-04",
+      "startSeconds": 14.846,
+      "endSeconds": 19.862,
+      "durationSeconds": 5.015,
+      "audioCue": "Kartografen nennen diese",
+      "cueTimeSeconds": 15.046153846153846,
+      "leadInSeconds": 0.2,
+      "cueConfidence": 1,
+      "title": "Was eine Kartenprojektion ist",
+      "narration": "Kartografen nennen diese mathematische Umrechnung Kartenprojektion, und davon gibt es sehr viele.",
+      "imageText": "KARTENPROJEKTION",
+      "imageFile": "scenes/scene-04/scene-04.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-04",
+        "confirmedSceneOrder": 4,
+        "visibleSummary": "Dies ist eine ausreichende Beschreibung des Bildes.",
+        "reason": "Dies ist eine ausreichend lange Begruendung.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-10T16:36:07.179Z"
+      },
+      "subtitleCueIds": [
+        "scene-04-subtitle-01",
+        "scene-04-subtitle-02",
+        "scene-04-subtitle-03"
+      ],
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-05",
+      "startSeconds": 19.862,
+      "endSeconds": 24.877,
+      "durationSeconds": 5.015,
+      "audioCue": "Je nach Projektion",
+      "cueTimeSeconds": 20.06153846153846,
+      "leadInSeconds": 0.2,
+      "cueConfidence": 1,
+      "title": "Was sich verändern kann",
+      "narration": "Je nach Projektion verändern sich Fläche, Form, Entfernung oder Richtung unterschiedlich stark.",
+      "imageText": "FLÄCHE • FORM • DISTANZ • RICHTUNG",
+      "imageFile": "scenes/scene-05/scene-05.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-05",
+        "confirmedSceneOrder": 5,
+        "visibleSummary": "Dies ist eine ausreichende Beschreibung des Bildes.",
+        "reason": "Dies ist eine ausreichend lange Begruendung.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-10T16:36:07.185Z"
+      },
+      "subtitleCueIds": [
+        "scene-05-subtitle-01",
+        "scene-05-subtitle-02",
+        "scene-05-subtitle-03"
+      ],
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-06",
+      "startSeconds": 24.877,
+      "endSeconds": 29.892,
+      "durationSeconds": 5.015,
+      "audioCue": "Die bekannte Mercator-Projektion",
+      "cueTimeSeconds": 25.076923076923077,
+      "leadInSeconds": 0.2,
+      "cueConfidence": 1,
+      "title": "Warum Mercator nützlich war",
+      "narration": "Die bekannte Mercator-Projektion erhält lokale Winkel und war deshalb für Navigation besonders praktisch.",
+      "imageText": "MERCATOR: WINKEL BLEIBEN",
+      "imageFile": "scenes/scene-06/scene-06.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-06",
+        "confirmedSceneOrder": 6,
+        "visibleSummary": "Dies ist eine ausreichende Beschreibung des Bildes.",
+        "reason": "Dies ist eine ausreichend lange Begruendung.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-10T16:36:07.188Z"
+      },
+      "subtitleCueIds": [
+        "scene-06-subtitle-01",
+        "scene-06-subtitle-02",
+        "scene-06-subtitle-03"
+      ],
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-07",
+      "startSeconds": 29.892,
+      "endSeconds": 34.908,
+      "durationSeconds": 5.015,
+      "audioCue": "Dafür werden Flächen",
+      "cueTimeSeconds": 30.092307692307692,
+      "leadInSeconds": 0.2,
+      "cueConfidence": 1,
+      "title": "Warum die Pole wachsen",
+      "narration": "Dafür werden Flächen in Richtung der Pole immer stärker vergrößert und auseinandergezogen.",
+      "imageText": "RICHTUNG POLE: GRÖSSER",
+      "imageFile": "scenes/scene-07/scene-07.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-07",
+        "confirmedSceneOrder": 7,
+        "visibleSummary": "Dies ist eine ausreichende Beschreibung des Bildes.",
+        "reason": "Dies ist eine ausreichend lange Begruendung.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-10T16:36:07.191Z"
+      },
+      "subtitleCueIds": [
+        "scene-07-subtitle-01",
+        "scene-07-subtitle-02",
+        "scene-07-subtitle-03"
+      ],
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-08",
+      "startSeconds": 34.908,
+      "endSeconds": 39.923,
+      "durationSeconds": 5.015,
+      "audioCue": "Deshalb wirkt Grönland",
+      "cueTimeSeconds": 35.107692307692304,
+      "leadInSeconds": 0.2,
+      "cueConfidence": 1,
+      "title": "Grönland gegen Südamerika",
+      "narration": "Deshalb wirkt Grönland auf Mercator-Karten riesig, obwohl Südamerika tatsächlich deutlich größer ist.",
+      "imageText": "",
+      "imageFile": "scenes/scene-08/scene-08.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-08",
+        "confirmedSceneOrder": 8,
+        "visibleSummary": "Dies ist eine ausreichende Beschreibung des Bildes.",
+        "reason": "Dies ist eine ausreichend lange Begruendung.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-10T16:36:07.194Z"
+      },
+      "subtitleCueIds": [
+        "scene-08-subtitle-01",
+        "scene-08-subtitle-02",
+        "scene-08-subtitle-03"
+      ],
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-09",
+      "startSeconds": 39.923,
+      "endSeconds": 44.938,
+      "durationSeconds": 5.015,
+      "audioCue": "Andere Projektionen bewahren",
+      "cueTimeSeconds": 40.12307692307692,
+      "leadInSeconds": 0.2,
+      "cueConfidence": 1,
+      "title": "Andere Projektionen, andere Fehler",
+      "narration": "Andere Projektionen bewahren Flächen besser, verzerren dafür zum Beispiel Formen, Winkel oder Entfernungen.",
+      "imageText": "",
+      "imageFile": "scenes/scene-09/scene-09.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-09",
+        "confirmedSceneOrder": 9,
+        "visibleSummary": "Dies ist eine ausreichende Beschreibung des Bildes.",
+        "reason": "Dies ist eine ausreichend lange Begruendung.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-10T16:36:07.197Z"
+      },
+      "subtitleCueIds": [
+        "scene-09-subtitle-01",
+        "scene-09-subtitle-02",
+        "scene-09-subtitle-03"
+      ],
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-10",
+      "startSeconds": 44.938,
+      "endSeconds": 49.954,
+      "durationSeconds": 5.015,
+      "audioCue": "Es gibt also keine",
+      "cueTimeSeconds": 45.13846153846154,
+      "leadInSeconds": 0.2,
+      "cueConfidence": 1,
+      "title": "Keine perfekte Projektion",
+      "narration": "Es gibt also keine perfekte flache Weltkarte, die jede Eigenschaft gleichzeitig korrekt zeigt.",
+      "imageText": "KEINE PERFEKTE WELTKARTE",
+      "imageFile": "scenes/scene-10/scene-10.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-10",
+        "confirmedSceneOrder": 10,
+        "visibleSummary": "Dies ist eine ausreichende Beschreibung des Bildes.",
+        "reason": "Dies ist eine ausreichend lange Begruendung.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-10T16:36:07.199Z"
+      },
+      "subtitleCueIds": [
+        "scene-10-subtitle-01",
+        "scene-10-subtitle-02",
+        "scene-10-subtitle-03"
+      ],
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-11",
+      "startSeconds": 49.954,
+      "endSeconds": 54.969,
+      "durationSeconds": 5.015,
+      "audioCue": "Welche Projektion sinnvoll ist",
+      "cueTimeSeconds": 50.15384615384615,
+      "leadInSeconds": 0.2,
+      "cueConfidence": 1,
+      "title": "Der Zweck entscheidet",
+      "narration": "Welche Projektion sinnvoll ist, hängt vom Zweck ab: Navigation braucht andere Prioritäten als Größenvergleiche.",
+      "imageText": "DER ZWECK ENTSCHEIDET",
+      "imageFile": "scenes/scene-11/scene-11.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-11",
+        "confirmedSceneOrder": 11,
+        "visibleSummary": "Dies ist eine ausreichende Beschreibung des Bildes.",
+        "reason": "Dies ist eine ausreichend lange Begruendung.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-10T16:36:07.201Z"
+      },
+      "subtitleCueIds": [
+        "scene-11-subtitle-01",
+        "scene-11-subtitle-02",
+        "scene-11-subtitle-03"
+      ],
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-12",
+      "startSeconds": 54.969,
+      "endSeconds": 59.985,
+      "durationSeconds": 5.015,
+      "audioCue": "Frag dich deshalb",
+      "cueTimeSeconds": 55.169230769230765,
+      "leadInSeconds": 0.2,
+      "cueConfidence": 1,
+      "title": "Prüffrage für jede Karte",
+      "narration": "Frag dich deshalb bei jeder Weltkarte: Was soll sie möglichst korrekt zeigen?",
+      "imageText": "WAS SOLL KORREKT SEIN?",
+      "imageFile": "scenes/scene-12/scene-12.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-12",
+        "confirmedSceneOrder": 12,
+        "visibleSummary": "Dies ist eine ausreichende Beschreibung des Bildes.",
+        "reason": "Dies ist eine ausreichend lange Begruendung.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-10T16:36:07.204Z"
+      },
+      "subtitleCueIds": [
+        "scene-12-subtitle-01",
+        "scene-12-subtitle-02",
+        "scene-12-subtitle-03"
+      ],
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-13",
+      "startSeconds": 59.985,
+      "endSeconds": 65.9,
+      "durationSeconds": 5.915,
+      "audioCue": "Eine Karte ist eine",
+      "cueTimeSeconds": 60.184615384615384,
+      "leadInSeconds": 0.2,
+      "cueConfidence": 1,
+      "postVoiceHoldSeconds": 0.7,
+      "title": "Starker Abschluss",
+      "narration": "Eine Karte ist eine mathematische Entscheidung. Die beste Projektion ist die, deren Verzerrung zum Zweck passt.",
+      "imageText": "DIE VERZERRUNG MUSS PASSEN",
+      "imageFile": "scenes/scene-13/scene-13.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-13",
+        "confirmedSceneOrder": 13,
+        "visibleSummary": "Dies ist eine ausreichende Beschreibung des Bildes.",
+        "reason": "Dies ist eine ausreichend lange Begruendung.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-10T16:36:07.207Z"
+      },
+      "subtitleCueIds": [
+        "scene-13-subtitle-01",
+        "scene-13-subtitle-02",
+        "scene-13-subtitle-03"
+      ],
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "soundEffects": []
+    }
+  ]
+}

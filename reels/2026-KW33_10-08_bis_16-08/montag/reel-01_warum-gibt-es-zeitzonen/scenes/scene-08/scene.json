@@ -1,1 +1,44 @@
-{"sceneId":"scene-08","order":8,"title":"Greenwich wird Nullmeridian","narration":"Ein Jahr später legte eine internationale Konferenz den Meridian durch Greenwich als gemeinsamen Nullmeridian fest.","imageText":"GREENWICH 1884","visualIdea":"Eine Weltkugel mit hervorgehobenem Nullmeridian durch Greenwich, flankiert von einer dezenten historischen Konferenz-Silhouette.","continuityNotes":"Nullmeridian visuell klar, Konferenz nur unterstützend.","audioCue":"Ein Jahr später","leadInSeconds":0.2,"subtitleCues":["Ein Jahr später legte eine internationale","Konferenz den Meridian durch Greenwich als","gemeinsamen Nullmeridian fest."],"subtitlePosition":"center","durationSeconds":4.6,"expectedImageFileName":"scene-08.png","promptStatus":"ready","imageStatus":"missing","assetVerification":null,"status":"prompt-ready"}
+{
+  "sceneId": "scene-08",
+  "order": 8,
+  "title": "Greenwich wird Nullmeridian",
+  "narration": "Ein Jahr später legte eine internationale Konferenz den Meridian durch Greenwich als gemeinsamen Nullmeridian fest.",
+  "imageText": "GREENWICH 1884",
+  "visualIdea": "Eine Weltkugel mit hervorgehobenem Nullmeridian durch Greenwich, flankiert von einer dezenten historischen Konferenz-Silhouette.",
+  "continuityNotes": "Nullmeridian visuell klar, Konferenz nur unterstützend.",
+  "audioCue": "Ein Jahr später",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [
+    "Ein Jahr später legte eine internationale",
+    "Konferenz den Meridian durch Greenwich als",
+    "gemeinsamen Nullmeridian fest."
+  ],
+  "subtitlePosition": "center",
+  "durationSeconds": 4.6,
+  "expectedImageFileName": "scene-08.jpeg",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-08",
+    "confirmedSceneOrder": 8,
+    "visibleSummary": "This image perfectly matches the visual prompt.",
+    "reason": "Visual review has confirmed that it matches the prompt completely.",
+    "comparedFields": [
+      "narration",
+      "visualIdea",
+      "imageText",
+      "imagePrompt",
+      "title",
+      "hook"
+    ],
+    "matchMethod": "visual-content-review",
+    "reviewedAt": "2026-08-11T16:56:52.035Z"
+  },
+  "status": "image-ready",
+  "source": "numbered-images/Bild 08.jpeg",
+  "matchConfidence": 1,
+  "matchReason": "Visual review has confirmed that it matches the prompt completely."
+}

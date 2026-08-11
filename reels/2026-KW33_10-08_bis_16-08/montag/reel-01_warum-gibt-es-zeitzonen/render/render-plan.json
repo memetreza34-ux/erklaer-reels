@@ -1,0 +1,2254 @@
+{
+  "version": 3,
+  "reelId": "reel-01_warum-gibt-es-zeitzonen",
+  "status": "ready-for-renderer",
+  "composition": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationSeconds": 64.5,
+    "durationFrames": 1935,
+    "audioDurationSeconds": 63.8,
+    "endingHoldSeconds": 0.7
+  },
+  "voiceover": {
+    "file": "audio/voiceover-tight.m4a",
+    "volume": 1
+  },
+  "backgroundMusic": {
+    "enabled": false
+  },
+  "scenes": [
+    {
+      "sceneId": "scene-01",
+      "imageFile": "scenes/scene-01/scene-01.jpeg",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-01",
+        "confirmedSceneOrder": 1,
+        "visibleSummary": "This image perfectly matches the visual prompt.",
+        "reason": "Visual review has confirmed that it matches the prompt completely.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt",
+          "title",
+          "hook"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-11T16:56:51.929Z"
+      },
+      "startSeconds": 0,
+      "endSeconds": 2.38,
+      "startFrame": 0,
+      "endFrame": 71,
+      "transitionIn": {
+        "type": "none",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "subtle-push-in",
+        "startScale": 1,
+        "endScale": 1.04,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [
+        {
+          "id": "scene-01-subtitle-01",
+          "sceneId": "scene-01",
+          "text": "Warum gibt es Zeitzonen? Einfach erklärt:",
+          "startSeconds": 0,
+          "endSeconds": 2.34,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "Warum",
+              "startSeconds": 0,
+              "endSeconds": 0.16,
+              "confidence": 1
+            },
+            {
+              "text": "gibt",
+              "startSeconds": 0.16,
+              "endSeconds": 0.42,
+              "confidence": 1
+            },
+            {
+              "text": "es",
+              "startSeconds": 0.42,
+              "endSeconds": 0.68,
+              "confidence": 1
+            },
+            {
+              "text": "Zeitzonen?",
+              "startSeconds": 0.68,
+              "endSeconds": 1.28,
+              "confidence": 1
+            },
+            {
+              "text": "Einfach",
+              "startSeconds": 1.54,
+              "endSeconds": 1.82,
+              "confidence": 1
+            },
+            {
+              "text": "erklärt:",
+              "startSeconds": 1.82,
+              "endSeconds": 2.24,
+              "confidence": 1
+            }
+          ]
+        }
+      ],
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-02",
+      "imageFile": "scenes/scene-02/scene-02.jpeg",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-02",
+        "confirmedSceneOrder": 2,
+        "visibleSummary": "This image perfectly matches the visual prompt.",
+        "reason": "Visual review has confirmed that it matches the prompt completely.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt",
+          "title",
+          "hook"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-11T16:56:51.939Z"
+      },
+      "startSeconds": 2.38,
+      "endSeconds": 5.02,
+      "startFrame": 71,
+      "endFrame": 151,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [
+        {
+          "id": "scene-02-subtitle-01",
+          "sceneId": "scene-02",
+          "text": "Früher stellte jede Stadt ihre Uhr",
+          "startSeconds": 2.545,
+          "endSeconds": 4.28,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "Früher",
+              "startSeconds": 2.58,
+              "endSeconds": 2.82,
+              "confidence": 1
+            },
+            {
+              "text": "stellte",
+              "startSeconds": 2.82,
+              "endSeconds": 3.18,
+              "confidence": 1
+            },
+            {
+              "text": "jede",
+              "startSeconds": 3.18,
+              "endSeconds": 3.44,
+              "confidence": 1
+            },
+            {
+              "text": "Stadt",
+              "startSeconds": 3.44,
+              "endSeconds": 3.7,
+              "confidence": 1
+            },
+            {
+              "text": "ihre",
+              "startSeconds": 3.7,
+              "endSeconds": 4.04,
+              "confidence": 1
+            },
+            {
+              "text": "Uhr",
+              "startSeconds": 4.04,
+              "endSeconds": 4.28,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-02-subtitle-02",
+          "sceneId": "scene-02",
+          "text": "nach der Sonne.",
+          "startSeconds": 4.285,
+          "endSeconds": 5.02,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "nach",
+              "startSeconds": 4.28,
+              "endSeconds": 4.5,
+              "confidence": 1
+            },
+            {
+              "text": "der",
+              "startSeconds": 4.5,
+              "endSeconds": 4.68,
+              "confidence": 1
+            },
+            {
+              "text": "Sonne.",
+              "startSeconds": 4.68,
+              "endSeconds": 4.96,
+              "confidence": 1
+            }
+          ]
+        }
+      ],
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-03",
+      "imageFile": "scenes/scene-03/scene-03.jpeg",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-03",
+        "confirmedSceneOrder": 3,
+        "visibleSummary": "This image perfectly matches the visual prompt.",
+        "reason": "Visual review has confirmed that it matches the prompt completely.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt",
+          "title",
+          "hook"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-11T16:56:51.949Z"
+      },
+      "startSeconds": 5.02,
+      "endSeconds": 7.38,
+      "startFrame": 151,
+      "endFrame": 221,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "slow-zoom-in",
+        "startScale": 1,
+        "endScale": 1.04,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [
+        {
+          "id": "scene-03-subtitle-01",
+          "sceneId": "scene-03",
+          "text": "Stand sie am höchsten, war dort",
+          "startSeconds": 5.185,
+          "endSeconds": 6.42,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "Stand",
+              "startSeconds": 5.22,
+              "endSeconds": 5.32,
+              "confidence": 1
+            },
+            {
+              "text": "sie",
+              "startSeconds": 5.32,
+              "endSeconds": 5.48,
+              "confidence": 1
+            },
+            {
+              "text": "am",
+              "startSeconds": 5.48,
+              "endSeconds": 5.6,
+              "confidence": 1
+            },
+            {
+              "text": "höchsten,",
+              "startSeconds": 5.6,
+              "endSeconds": 6.02,
+              "confidence": 1
+            },
+            {
+              "text": "war",
+              "startSeconds": 6.02,
+              "endSeconds": 6.22,
+              "confidence": 1
+            },
+            {
+              "text": "dort",
+              "startSeconds": 6.22,
+              "endSeconds": 6.42,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-03-subtitle-02",
+          "sceneId": "scene-03",
+          "text": "ungefähr Mittag.",
+          "startSeconds": 6.425,
+          "endSeconds": 7.32,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "ungefähr",
+              "startSeconds": 6.42,
+              "endSeconds": 6.8,
+              "confidence": 1
+            },
+            {
+              "text": "Mittag.",
+              "startSeconds": 6.8,
+              "endSeconds": 7.22,
+              "confidence": 1
+            }
+          ]
+        }
+      ],
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-04",
+      "imageFile": "scenes/scene-04/scene-04.jpeg",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-04",
+        "confirmedSceneOrder": 4,
+        "visibleSummary": "This image perfectly matches the visual prompt.",
+        "reason": "Visual review has confirmed that it matches the prompt completely.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt",
+          "title",
+          "hook"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-11T16:56:51.958Z"
+      },
+      "startSeconds": 7.38,
+      "endSeconds": 11.94,
+      "startFrame": 221,
+      "endFrame": 358,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "pan-right",
+        "startScale": 1.04,
+        "endScale": 1.04,
+        "panXPercent": 3,
+        "panYPercent": 0
+      },
+      "subtitles": [
+        {
+          "id": "scene-04-subtitle-01",
+          "sceneId": "scene-04",
+          "text": "Schon weiter westlich oder östlich zeigte",
+          "startSeconds": 7.545,
+          "endSeconds": 9.74,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "Schon",
+              "startSeconds": 7.58,
+              "endSeconds": 7.7,
+              "confidence": 1
+            },
+            {
+              "text": "weiter",
+              "startSeconds": 7.7,
+              "endSeconds": 7.96,
+              "confidence": 1
+            },
+            {
+              "text": "westlich",
+              "startSeconds": 7.96,
+              "endSeconds": 8.44,
+              "confidence": 1
+            },
+            {
+              "text": "oder",
+              "startSeconds": 8.44,
+              "endSeconds": 8.72,
+              "confidence": 1
+            },
+            {
+              "text": "östlich",
+              "startSeconds": 8.72,
+              "endSeconds": 9.2,
+              "confidence": 1
+            },
+            {
+              "text": "zeigte",
+              "startSeconds": 9.2,
+              "endSeconds": 9.74,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-04-subtitle-02",
+          "sceneId": "scene-04",
+          "text": "eine andere Uhr deshalb eine andere",
+          "startSeconds": 9.745,
+          "endSeconds": 11.5,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "eine",
+              "startSeconds": 9.74,
+              "endSeconds": 9.9,
+              "confidence": 1
+            },
+            {
+              "text": "andere",
+              "startSeconds": 9.9,
+              "endSeconds": 10.28,
+              "confidence": 1
+            },
+            {
+              "text": "Uhr",
+              "startSeconds": 10.28,
+              "endSeconds": 10.56,
+              "confidence": 1
+            },
+            {
+              "text": "deshalb",
+              "startSeconds": 10.56,
+              "endSeconds": 10.88,
+              "confidence": 1
+            },
+            {
+              "text": "eine",
+              "startSeconds": 10.88,
+              "endSeconds": 11.14,
+              "confidence": 1
+            },
+            {
+              "text": "andere",
+              "startSeconds": 11.14,
+              "endSeconds": 11.5,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-04-subtitle-03",
+          "sceneId": "scene-04",
+          "text": "Zeit.",
+          "startSeconds": 11.505,
+          "endSeconds": 11.86,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "Zeit.",
+              "startSeconds": 11.5,
+              "endSeconds": 11.76,
+              "confidence": 1
+            }
+          ]
+        }
+      ],
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-05",
+      "imageFile": "scenes/scene-05/scene-05.jpeg",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-05",
+        "confirmedSceneOrder": 5,
+        "visibleSummary": "This image perfectly matches the visual prompt.",
+        "reason": "Visual review has confirmed that it matches the prompt completely.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt",
+          "title",
+          "hook"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-11T16:56:51.973Z"
+      },
+      "startSeconds": 11.94,
+      "endSeconds": 14.98,
+      "startFrame": 358,
+      "endFrame": 449,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [
+        {
+          "id": "scene-05-subtitle-01",
+          "sceneId": "scene-05",
+          "text": "Solange Menschen langsam reisten,",
+          "startSeconds": 12.105,
+          "endSeconds": 13.72,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "Solange",
+              "startSeconds": 12.14,
+              "endSeconds": 12.44,
+              "confidence": 1
+            },
+            {
+              "text": "Menschen",
+              "startSeconds": 12.44,
+              "endSeconds": 12.72,
+              "confidence": 1
+            },
+            {
+              "text": "langsam",
+              "startSeconds": 12.72,
+              "endSeconds": 13.22,
+              "confidence": 1
+            },
+            {
+              "text": "reisten,",
+              "startSeconds": 13.22,
+              "endSeconds": 13.62,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-05-subtitle-02",
+          "sceneId": "scene-05",
+          "text": "war das kaum ein Problem.",
+          "startSeconds": 13.865,
+          "endSeconds": 14.98,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "war",
+              "startSeconds": 13.9,
+              "endSeconds": 14.06,
+              "confidence": 1
+            },
+            {
+              "text": "das",
+              "startSeconds": 14.06,
+              "endSeconds": 14.22,
+              "confidence": 1
+            },
+            {
+              "text": "kaum",
+              "startSeconds": 14.22,
+              "endSeconds": 14.42,
+              "confidence": 1
+            },
+            {
+              "text": "ein",
+              "startSeconds": 14.42,
+              "endSeconds": 14.6,
+              "confidence": 1
+            },
+            {
+              "text": "Problem.",
+              "startSeconds": 14.6,
+              "endSeconds": 14.88,
+              "confidence": 1
+            }
+          ]
+        }
+      ],
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-06",
+      "imageFile": "scenes/scene-06/scene-06.jpeg",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-06",
+        "confirmedSceneOrder": 6,
+        "visibleSummary": "This image perfectly matches the visual prompt.",
+        "reason": "Visual review has confirmed that it matches the prompt completely.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt",
+          "title",
+          "hook"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-11T16:56:51.982Z"
+      },
+      "startSeconds": 14.98,
+      "endSeconds": 20.9,
+      "startFrame": 449,
+      "endFrame": 627,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "subtle-push-in",
+        "startScale": 1,
+        "endScale": 1.04,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [
+        {
+          "id": "scene-06-subtitle-01",
+          "sceneId": "scene-06",
+          "text": "Mit Eisenbahn und Telegraf wurde es",
+          "startSeconds": 15.145,
+          "endSeconds": 17.02,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "Mit",
+              "startSeconds": 15.18,
+              "endSeconds": 15.28,
+              "confidence": 1
+            },
+            {
+              "text": "Eisenbahn",
+              "startSeconds": 15.28,
+              "endSeconds": 15.9,
+              "confidence": 1
+            },
+            {
+              "text": "und",
+              "startSeconds": 15.9,
+              "endSeconds": 16.02,
+              "confidence": 1
+            },
+            {
+              "text": "Telegraf",
+              "startSeconds": 16.02,
+              "endSeconds": 16.64,
+              "confidence": 1
+            },
+            {
+              "text": "wurde",
+              "startSeconds": 16.64,
+              "endSeconds": 16.86,
+              "confidence": 1
+            },
+            {
+              "text": "es",
+              "startSeconds": 16.86,
+              "endSeconds": 17.02,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-06-subtitle-02",
+          "sceneId": "scene-06",
+          "text": "chaotisch: Fahrpläne mussten viele lokale Uhrzeiten",
+          "startSeconds": 17.025,
+          "endSeconds": 19.94,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "chaotisch:",
+              "startSeconds": 17.02,
+              "endSeconds": 17.56,
+              "confidence": 1
+            },
+            {
+              "text": "Fahrpläne",
+              "startSeconds": 17.88,
+              "endSeconds": 18.34,
+              "confidence": 1
+            },
+            {
+              "text": "mussten",
+              "startSeconds": 18.34,
+              "endSeconds": 18.64,
+              "confidence": 1
+            },
+            {
+              "text": "viele",
+              "startSeconds": 18.64,
+              "endSeconds": 18.94,
+              "confidence": 1
+            },
+            {
+              "text": "lokale",
+              "startSeconds": 18.94,
+              "endSeconds": 19.44,
+              "confidence": 1
+            },
+            {
+              "text": "Uhrzeiten",
+              "startSeconds": 19.44,
+              "endSeconds": 19.94,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-06-subtitle-03",
+          "sceneId": "scene-06",
+          "text": "berücksichtigen.",
+          "startSeconds": 19.945,
+          "endSeconds": 20.66,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "berücksichtigen.",
+              "startSeconds": 19.94,
+              "endSeconds": 20.56,
+              "confidence": 1
+            }
+          ]
+        }
+      ],
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-07",
+      "imageFile": "scenes/scene-07/scene-07.jpeg",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-07",
+        "confirmedSceneOrder": 7,
+        "visibleSummary": "This image perfectly matches the visual prompt.",
+        "reason": "Visual review has confirmed that it matches the prompt completely.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt",
+          "title",
+          "hook"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-11T16:56:51.993Z"
+      },
+      "startSeconds": 20.9,
+      "endSeconds": 26.14,
+      "startFrame": 627,
+      "endFrame": 784,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "slow-zoom-in",
+        "startScale": 1,
+        "endScale": 1.04,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [
+        {
+          "id": "scene-07-subtitle-01",
+          "sceneId": "scene-07",
+          "text": "1883 führten nordamerikanische Eisenbahnen",
+          "startSeconds": 21.065,
+          "endSeconds": 23.96,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "1883",
+              "startSeconds": 21.1,
+              "endSeconds": 21.66,
+              "confidence": 1
+            },
+            {
+              "text": "führten",
+              "startSeconds": 21.66,
+              "endSeconds": 22.32,
+              "confidence": 1
+            },
+            {
+              "text": "nordamerikanische",
+              "startSeconds": 22.32,
+              "endSeconds": 23.24,
+              "confidence": 1
+            },
+            {
+              "text": "Eisenbahnen",
+              "startSeconds": 23.24,
+              "endSeconds": 23.86,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-07-subtitle-02",
+          "sceneId": "scene-07",
+          "text": "standardisierte Zeitzonen für ihren Betrieb",
+          "startSeconds": 24.145,
+          "endSeconds": 26.14,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "standardisierte",
+              "startSeconds": 24.18,
+              "endSeconds": 24.84,
+              "confidence": 1
+            },
+            {
+              "text": "Zeitzonen",
+              "startSeconds": 24.84,
+              "endSeconds": 25.46,
+              "confidence": 1
+            },
+            {
+              "text": "für",
+              "startSeconds": 25.46,
+              "endSeconds": 25.68,
+              "confidence": 1
+            },
+            {
+              "text": "ihren",
+              "startSeconds": 25.68,
+              "endSeconds": 25.86,
+              "confidence": 1
+            },
+            {
+              "text": "Betrieb",
+              "startSeconds": 25.86,
+              "endSeconds": 26.14,
+              "confidence": 1
+            }
+          ]
+        }
+      ],
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-08",
+      "imageFile": "scenes/scene-08/scene-08.jpeg",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-08",
+        "confirmedSceneOrder": 8,
+        "visibleSummary": "This image perfectly matches the visual prompt.",
+        "reason": "Visual review has confirmed that it matches the prompt completely.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt",
+          "title",
+          "hook"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-11T16:56:52.035Z"
+      },
+      "startSeconds": 26.14,
+      "endSeconds": 33,
+      "startFrame": 784,
+      "endFrame": 990,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [
+        {
+          "id": "scene-08-subtitle-01",
+          "sceneId": "scene-08",
+          "text": "ein. Ein Jahr später legte eine",
+          "startSeconds": 26.14,
+          "endSeconds": 28.02,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "ein.",
+              "startSeconds": 26.14,
+              "endSeconds": 26.34,
+              "confidence": 1
+            },
+            {
+              "text": "Ein",
+              "startSeconds": 26.34,
+              "endSeconds": 26.68,
+              "confidence": 1
+            },
+            {
+              "text": "Jahr",
+              "startSeconds": 26.68,
+              "endSeconds": 26.86,
+              "confidence": 1
+            },
+            {
+              "text": "später",
+              "startSeconds": 26.86,
+              "endSeconds": 27.24,
+              "confidence": 1
+            },
+            {
+              "text": "legte",
+              "startSeconds": 27.24,
+              "endSeconds": 27.82,
+              "confidence": 1
+            },
+            {
+              "text": "eine",
+              "startSeconds": 27.82,
+              "endSeconds": 28.02,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-08-subtitle-02",
+          "sceneId": "scene-08",
+          "text": "internationale Konferenz den Meridian durch Greenwich",
+          "startSeconds": 28.025,
+          "endSeconds": 30.74,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "internationale",
+              "startSeconds": 28.02,
+              "endSeconds": 28.8,
+              "confidence": 1
+            },
+            {
+              "text": "Konferenz",
+              "startSeconds": 28.8,
+              "endSeconds": 29.36,
+              "confidence": 1
+            },
+            {
+              "text": "den",
+              "startSeconds": 29.36,
+              "endSeconds": 29.52,
+              "confidence": 1
+            },
+            {
+              "text": "Meridian",
+              "startSeconds": 29.52,
+              "endSeconds": 29.94,
+              "confidence": 1
+            },
+            {
+              "text": "durch",
+              "startSeconds": 29.94,
+              "endSeconds": 30.28,
+              "confidence": 1
+            },
+            {
+              "text": "Greenwich",
+              "startSeconds": 30.28,
+              "endSeconds": 30.74,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-08-subtitle-03",
+          "sceneId": "scene-08",
+          "text": "als gemeinsamen Nullmeridian fest.",
+          "startSeconds": 30.745,
+          "endSeconds": 32.82,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "als",
+              "startSeconds": 30.74,
+              "endSeconds": 31.16,
+              "confidence": 1
+            },
+            {
+              "text": "gemeinsamen",
+              "startSeconds": 31.16,
+              "endSeconds": 31.78,
+              "confidence": 1
+            },
+            {
+              "text": "Nullmeridian",
+              "startSeconds": 31.78,
+              "endSeconds": 32.46,
+              "confidence": 1
+            },
+            {
+              "text": "fest.",
+              "startSeconds": 32.46,
+              "endSeconds": 32.72,
+              "confidence": 1
+            }
+          ]
+        }
+      ],
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-09",
+      "imageFile": "scenes/scene-09/scene-09.jpeg",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-09",
+        "confirmedSceneOrder": 9,
+        "visibleSummary": "This image perfectly matches the visual prompt.",
+        "reason": "Visual review has confirmed that it matches the prompt completely.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt",
+          "title",
+          "hook"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-11T16:56:52.055Z"
+      },
+      "startSeconds": 33,
+      "endSeconds": 40.38,
+      "startFrame": 990,
+      "endFrame": 1211,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "slow-zoom-out",
+        "startScale": 1.04,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [
+        {
+          "id": "scene-09-subtitle-01",
+          "sceneId": "scene-09",
+          "text": "Rechnerisch lässt sich die Erde in",
+          "startSeconds": 33.165,
+          "endSeconds": 34.58,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "Rechnerisch",
+              "startSeconds": 33.2,
+              "endSeconds": 33.66,
+              "confidence": 1
+            },
+            {
+              "text": "lässt",
+              "startSeconds": 33.66,
+              "endSeconds": 33.84,
+              "confidence": 1
+            },
+            {
+              "text": "sich",
+              "startSeconds": 33.84,
+              "endSeconds": 34.08,
+              "confidence": 1
+            },
+            {
+              "text": "die",
+              "startSeconds": 34.08,
+              "endSeconds": 34.24,
+              "confidence": 1
+            },
+            {
+              "text": "Erde",
+              "startSeconds": 34.24,
+              "endSeconds": 34.38,
+              "confidence": 1
+            },
+            {
+              "text": "in",
+              "startSeconds": 34.38,
+              "endSeconds": 34.58,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-09-subtitle-02",
+          "sceneId": "scene-09",
+          "text": "24 Zonen zu jeweils etwa 15",
+          "startSeconds": 34.585,
+          "endSeconds": 37.26,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "24",
+              "startSeconds": 34.58,
+              "endSeconds": 35.12,
+              "confidence": 1
+            },
+            {
+              "text": "Zonen",
+              "startSeconds": 35.12,
+              "endSeconds": 35.72,
+              "confidence": 1
+            },
+            {
+              "text": "zu",
+              "startSeconds": 35.72,
+              "endSeconds": 36.16,
+              "confidence": 1
+            },
+            {
+              "text": "jeweils",
+              "startSeconds": 36.16,
+              "endSeconds": 36.48,
+              "confidence": 1
+            },
+            {
+              "text": "etwa",
+              "startSeconds": 36.48,
+              "endSeconds": 36.74,
+              "confidence": 1
+            },
+            {
+              "text": "15",
+              "startSeconds": 36.74,
+              "endSeconds": 37.26,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-09-subtitle-03",
+          "sceneId": "scene-09",
+          "text": "Längengraden teilen, weil ein Tag rund",
+          "startSeconds": 37.265,
+          "endSeconds": 39.06,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "Längengraden",
+              "startSeconds": 37.26,
+              "endSeconds": 37.8,
+              "confidence": 1
+            },
+            {
+              "text": "teilen,",
+              "startSeconds": 37.8,
+              "endSeconds": 38.24,
+              "confidence": 1
+            },
+            {
+              "text": "weil",
+              "startSeconds": 38.38,
+              "endSeconds": 38.44,
+              "confidence": 1
+            },
+            {
+              "text": "ein",
+              "startSeconds": 38.44,
+              "endSeconds": 38.6,
+              "confidence": 1
+            },
+            {
+              "text": "Tag",
+              "startSeconds": 38.6,
+              "endSeconds": 38.86,
+              "confidence": 1
+            },
+            {
+              "text": "rund",
+              "startSeconds": 38.86,
+              "endSeconds": 39.06,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-09-subtitle-04",
+          "sceneId": "scene-09",
+          "text": "24 Stunden hat.",
+          "startSeconds": 39.065,
+          "endSeconds": 40.36,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "24",
+              "startSeconds": 39.06,
+              "endSeconds": 39.64,
+              "confidence": 1
+            },
+            {
+              "text": "Stunden",
+              "startSeconds": 39.64,
+              "endSeconds": 39.98,
+              "confidence": 1
+            },
+            {
+              "text": "hat.",
+              "startSeconds": 39.98,
+              "endSeconds": 40.26,
+              "confidence": 1
+            }
+          ]
+        }
+      ],
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-10",
+      "imageFile": "scenes/scene-10/scene-10.jpeg",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-10",
+        "confirmedSceneOrder": 10,
+        "visibleSummary": "This image perfectly matches the visual prompt.",
+        "reason": "Visual review has confirmed that it matches the prompt completely.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt",
+          "title",
+          "hook"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-11T16:56:52.067Z"
+      },
+      "startSeconds": 40.38,
+      "endSeconds": 42.4,
+      "startFrame": 1211,
+      "endFrame": 1272,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [
+        {
+          "id": "scene-10-subtitle-01",
+          "sceneId": "scene-10",
+          "text": "In Wirklichkeit sind die Grenzen aber",
+          "startSeconds": 40.545,
+          "endSeconds": 42.04,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "In",
+              "startSeconds": 40.58,
+              "endSeconds": 40.64,
+              "confidence": 1
+            },
+            {
+              "text": "Wirklichkeit",
+              "startSeconds": 40.64,
+              "endSeconds": 41.14,
+              "confidence": 1
+            },
+            {
+              "text": "sind",
+              "startSeconds": 41.14,
+              "endSeconds": 41.36,
+              "confidence": 1
+            },
+            {
+              "text": "die",
+              "startSeconds": 41.36,
+              "endSeconds": 41.5,
+              "confidence": 1
+            },
+            {
+              "text": "Grenzen",
+              "startSeconds": 41.5,
+              "endSeconds": 41.82,
+              "confidence": 1
+            },
+            {
+              "text": "aber",
+              "startSeconds": 41.82,
+              "endSeconds": 42.04,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-10-subtitle-02",
+          "sceneId": "scene-10",
+          "text": "krumm.",
+          "startSeconds": 42.045,
+          "endSeconds": 42.4,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "krumm.",
+              "startSeconds": 42.04,
+              "endSeconds": 42.46,
+              "confidence": 1
+            }
+          ]
+        }
+      ],
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-11",
+      "imageFile": "scenes/scene-11/scene-11.jpeg",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-11",
+        "confirmedSceneOrder": 11,
+        "visibleSummary": "This image perfectly matches the visual prompt.",
+        "reason": "Visual review has confirmed that it matches the prompt completely.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt",
+          "title",
+          "hook"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-11T16:56:52.076Z"
+      },
+      "startSeconds": 42.4,
+      "endSeconds": 50.98,
+      "startFrame": 1272,
+      "endFrame": 1529,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "pan-left",
+        "startScale": 1.04,
+        "endScale": 1.04,
+        "panXPercent": -3,
+        "panYPercent": 0
+      },
+      "subtitles": [
+        {
+          "id": "scene-11-subtitle-01",
+          "sceneId": "scene-11",
+          "text": "Staaten verschieben sie, damit Städte,",
+          "startSeconds": 42.565,
+          "endSeconds": 44.42,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "Staaten",
+              "startSeconds": 42.6,
+              "endSeconds": 42.94,
+              "confidence": 1
+            },
+            {
+              "text": "verschieben",
+              "startSeconds": 42.94,
+              "endSeconds": 43.34,
+              "confidence": 1
+            },
+            {
+              "text": "sie,",
+              "startSeconds": 43.34,
+              "endSeconds": 43.6,
+              "confidence": 1
+            },
+            {
+              "text": "damit",
+              "startSeconds": 43.78,
+              "endSeconds": 43.92,
+              "confidence": 1
+            },
+            {
+              "text": "Städte,",
+              "startSeconds": 43.92,
+              "endSeconds": 44.32,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-11-subtitle-02",
+          "sceneId": "scene-11",
+          "text": "Regionen oder ganze Länder dieselbe Uhrzeit",
+          "startSeconds": 44.525,
+          "endSeconds": 46.72,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "Regionen",
+              "startSeconds": 44.56,
+              "endSeconds": 44.92,
+              "confidence": 1
+            },
+            {
+              "text": "oder",
+              "startSeconds": 44.92,
+              "endSeconds": 45.22,
+              "confidence": 1
+            },
+            {
+              "text": "ganze",
+              "startSeconds": 45.22,
+              "endSeconds": 45.56,
+              "confidence": 1
+            },
+            {
+              "text": "Länder",
+              "startSeconds": 45.56,
+              "endSeconds": 45.86,
+              "confidence": 1
+            },
+            {
+              "text": "dieselbe",
+              "startSeconds": 45.86,
+              "endSeconds": 46.36,
+              "confidence": 1
+            },
+            {
+              "text": "Uhrzeit",
+              "startSeconds": 46.36,
+              "endSeconds": 46.72,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-11-subtitle-03",
+          "sceneId": "scene-11",
+          "text": "nutzen. Deshalb folgt deine Uhr nicht",
+          "startSeconds": 46.725,
+          "endSeconds": 48.46,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "nutzen.",
+              "startSeconds": 46.72,
+              "endSeconds": 46.98,
+              "confidence": 1
+            },
+            {
+              "text": "Deshalb",
+              "startSeconds": 47.36,
+              "endSeconds": 47.56,
+              "confidence": 1
+            },
+            {
+              "text": "folgt",
+              "startSeconds": 47.56,
+              "endSeconds": 47.9,
+              "confidence": 1
+            },
+            {
+              "text": "deine",
+              "startSeconds": 47.9,
+              "endSeconds": 48.04,
+              "confidence": 1
+            },
+            {
+              "text": "Uhr",
+              "startSeconds": 48.04,
+              "endSeconds": 48.26,
+              "confidence": 1
+            },
+            {
+              "text": "nicht",
+              "startSeconds": 48.26,
+              "endSeconds": 48.46,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-11-subtitle-04",
+          "sceneId": "scene-11",
+          "text": "nur der Sonne,",
+          "startSeconds": 48.465,
+          "endSeconds": 49.22,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "nur",
+              "startSeconds": 48.46,
+              "endSeconds": 48.66,
+              "confidence": 1
+            },
+            {
+              "text": "der",
+              "startSeconds": 48.66,
+              "endSeconds": 48.8,
+              "confidence": 1
+            },
+            {
+              "text": "Sonne,",
+              "startSeconds": 48.8,
+              "endSeconds": 49.12,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-11-subtitle-05",
+          "sceneId": "scene-11",
+          "text": "sondern auch politischen Entscheidungen.",
+          "startSeconds": 49.385,
+          "endSeconds": 50.98,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "sondern",
+              "startSeconds": 49.42,
+              "endSeconds": 49.62,
+              "confidence": 1
+            },
+            {
+              "text": "auch",
+              "startSeconds": 49.62,
+              "endSeconds": 49.86,
+              "confidence": 1
+            },
+            {
+              "text": "politischen",
+              "startSeconds": 49.86,
+              "endSeconds": 50.42,
+              "confidence": 1
+            },
+            {
+              "text": "Entscheidungen.",
+              "startSeconds": 50.42,
+              "endSeconds": 50.94,
+              "confidence": 1
+            }
+          ]
+        }
+      ],
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-12",
+      "imageFile": "scenes/scene-12/scene-12.jpeg",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-12",
+        "confirmedSceneOrder": 12,
+        "visibleSummary": "This image perfectly matches the visual prompt.",
+        "reason": "Visual review has confirmed that it matches the prompt completely.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt",
+          "title",
+          "hook"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-11T16:56:52.089Z"
+      },
+      "startSeconds": 50.98,
+      "endSeconds": 55,
+      "startFrame": 1529,
+      "endFrame": 1650,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [
+        {
+          "id": "scene-12-subtitle-01",
+          "sceneId": "scene-12",
+          "text": "Schau auf eine Zeitzonenkarte:",
+          "startSeconds": 51.145,
+          "endSeconds": 52.62,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "Schau",
+              "startSeconds": 51.18,
+              "endSeconds": 51.34,
+              "confidence": 1
+            },
+            {
+              "text": "auf",
+              "startSeconds": 51.34,
+              "endSeconds": 51.52,
+              "confidence": 1
+            },
+            {
+              "text": "eine",
+              "startSeconds": 51.52,
+              "endSeconds": 51.7,
+              "confidence": 1
+            },
+            {
+              "text": "Zeitzonenkarte:",
+              "startSeconds": 51.7,
+              "endSeconds": 52.52,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-12-subtitle-02",
+          "sceneId": "scene-12",
+          "text": "Warum sehen die Grenzen nicht wie",
+          "startSeconds": 52.805,
+          "endSeconds": 54.08,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "Warum",
+              "startSeconds": 52.84,
+              "endSeconds": 53.06,
+              "confidence": 1
+            },
+            {
+              "text": "sehen",
+              "startSeconds": 53.06,
+              "endSeconds": 53.22,
+              "confidence": 1
+            },
+            {
+              "text": "die",
+              "startSeconds": 53.22,
+              "endSeconds": 53.38,
+              "confidence": 1
+            },
+            {
+              "text": "Grenzen",
+              "startSeconds": 53.38,
+              "endSeconds": 53.72,
+              "confidence": 1
+            },
+            {
+              "text": "nicht",
+              "startSeconds": 53.72,
+              "endSeconds": 53.9,
+              "confidence": 1
+            },
+            {
+              "text": "wie",
+              "startSeconds": 53.9,
+              "endSeconds": 54.08,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-12-subtitle-03",
+          "sceneId": "scene-12",
+          "text": "ein sauberes Raster",
+          "startSeconds": 54.085,
+          "endSeconds": 55,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "ein",
+              "startSeconds": 54.08,
+              "endSeconds": 54.24,
+              "confidence": 1
+            },
+            {
+              "text": "sauberes",
+              "startSeconds": 54.24,
+              "endSeconds": 54.7,
+              "confidence": 1
+            },
+            {
+              "text": "Raster",
+              "startSeconds": 54.7,
+              "endSeconds": 54.92,
+              "confidence": 1
+            }
+          ]
+        }
+      ],
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-13",
+      "imageFile": "scenes/scene-13/scene-13.jpeg",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-13",
+        "confirmedSceneOrder": 13,
+        "visibleSummary": "This image perfectly matches the visual prompt.",
+        "reason": "Visual review has confirmed that it matches the prompt completely.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt",
+          "title",
+          "hook"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-11T16:56:52.100Z"
+      },
+      "startSeconds": 55,
+      "endSeconds": 64.5,
+      "startFrame": 1650,
+      "endFrame": 1935,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "subtle-push-in",
+        "startScale": 1,
+        "endScale": 1.04,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [
+        {
+          "id": "scene-13-subtitle-01",
+          "sceneId": "scene-13",
+          "text": "aus? Weil Zeit nicht nur gemessen,",
+          "startSeconds": 55,
+          "endSeconds": 56.76,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "aus?",
+              "startSeconds": 54.92,
+              "endSeconds": 55.2,
+              "confidence": 1
+            },
+            {
+              "text": "Weil",
+              "startSeconds": 55.2,
+              "endSeconds": 55.64,
+              "confidence": 1
+            },
+            {
+              "text": "Zeit",
+              "startSeconds": 55.64,
+              "endSeconds": 55.92,
+              "confidence": 1
+            },
+            {
+              "text": "nicht",
+              "startSeconds": 55.92,
+              "endSeconds": 56.16,
+              "confidence": 1
+            },
+            {
+              "text": "nur",
+              "startSeconds": 56.16,
+              "endSeconds": 56.34,
+              "confidence": 1
+            },
+            {
+              "text": "gemessen,",
+              "startSeconds": 56.34,
+              "endSeconds": 56.66,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-13-subtitle-02",
+          "sceneId": "scene-13",
+          "text": "sondern organisiert wird.",
+          "startSeconds": 56.945,
+          "endSeconds": 58.18,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "sondern",
+              "startSeconds": 56.98,
+              "endSeconds": 57.28,
+              "confidence": 1
+            },
+            {
+              "text": "organisiert",
+              "startSeconds": 57.28,
+              "endSeconds": 57.9,
+              "confidence": 1
+            },
+            {
+              "text": "wird.",
+              "startSeconds": 57.9,
+              "endSeconds": 58.08,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-13-subtitle-03",
+          "sceneId": "scene-13",
+          "text": "Zeitzonen machen aus vielen lokalen Sonnenzeiten",
+          "startSeconds": 58.305,
+          "endSeconds": 60.74,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "Zeitzonen",
+              "startSeconds": 58.34,
+              "endSeconds": 58.8,
+              "confidence": 1
+            },
+            {
+              "text": "machen",
+              "startSeconds": 58.8,
+              "endSeconds": 59,
+              "confidence": 1
+            },
+            {
+              "text": "aus",
+              "startSeconds": 59,
+              "endSeconds": 59.26,
+              "confidence": 1
+            },
+            {
+              "text": "vielen",
+              "startSeconds": 59.26,
+              "endSeconds": 59.56,
+              "confidence": 1
+            },
+            {
+              "text": "lokalen",
+              "startSeconds": 59.56,
+              "endSeconds": 60.08,
+              "confidence": 1
+            },
+            {
+              "text": "Sonnenzeiten",
+              "startSeconds": 60.08,
+              "endSeconds": 60.74,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-13-subtitle-04",
+          "sceneId": "scene-13",
+          "text": "ein gemeinsames System,",
+          "startSeconds": 60.745,
+          "endSeconds": 62.18,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "ein",
+              "startSeconds": 60.74,
+              "endSeconds": 61.14,
+              "confidence": 1
+            },
+            {
+              "text": "gemeinsames",
+              "startSeconds": 61.14,
+              "endSeconds": 61.72,
+              "confidence": 1
+            },
+            {
+              "text": "System,",
+              "startSeconds": 61.72,
+              "endSeconds": 62.08,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-13-subtitle-05",
+          "sceneId": "scene-13",
+          "text": "mit dem die Welt planen kann.",
+          "startSeconds": 62.365,
+          "endSeconds": 63.6,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "mit",
+              "startSeconds": 62.4,
+              "endSeconds": 62.48,
+              "confidence": 1
+            },
+            {
+              "text": "dem",
+              "startSeconds": 62.48,
+              "endSeconds": 62.62,
+              "confidence": 1
+            },
+            {
+              "text": "die",
+              "startSeconds": 62.62,
+              "endSeconds": 62.74,
+              "confidence": 1
+            },
+            {
+              "text": "Welt",
+              "startSeconds": 62.74,
+              "endSeconds": 62.92,
+              "confidence": 1
+            },
+            {
+              "text": "planen",
+              "startSeconds": 62.92,
+              "endSeconds": 63.36,
+              "confidence": 1
+            },
+            {
+              "text": "kann.",
+              "startSeconds": 63.36,
+              "endSeconds": 63.5,
+              "confidence": 1
+            }
+          ]
+        }
+      ],
+      "soundEffects": []
+    }
+  ]
+}

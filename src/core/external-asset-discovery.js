@@ -223,6 +223,7 @@ async function copyNumberedFiles(filesByNumber, expected, dropDirectory) {
     const extension = path.extname(source).toLowerCase();
     const targetName = `Bild ${String(number).padStart(2, '0')}${extension}`;
     const targetPath = path.join(dropDirectory, targetName);
+    console.log("Copying", source, "to", targetPath, "exists:", await exists(source));
     await copyFile(source, targetPath);
     existingNumbers.add(number);
     copied.push({ number, source, target: targetPath });
@@ -257,7 +258,8 @@ async function extractNumberedZip(candidate, expected, dropDirectory) {
       filesByNumber.set(number, bucket[0]);
     }
 
-    return copyNumberedFiles(filesByNumber, expected, dropDirectory);
+    const result = await copyNumberedFiles(filesByNumber, expected, dropDirectory);
+    return result;
   } finally {
     await rm(temporaryDirectory, { recursive: true, force: true });
   }
