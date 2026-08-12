@@ -1,0 +1,101 @@
+GOOGLE FLOW – KOMPLETTER SERIELLER BILDLAUF
+
+AUFTRAG
+Erzeuge für dieses Reel genau 14 Bilder: Bild 00 als Cover und danach Bild 01 bis Bild 13 für die 13 Szenen.
+
+WICHTIG – DIESE EINE NACHRICHT IST DIE KOMPLETTE FREIGABE
+Sobald dieser Gesamtprompt einmal abgesendet wurde, arbeitest du selbstständig bis Bild 13 fertig ist. Frage NICHT nach Go, Weiter, OK, Bestätigung oder Erlaubnis.
+
+STRENG SERIELL – NIE PARALLEL
+Zu jedem Zeitpunkt darf genau EINE Bildgenerierung aktiv sein.
+Für jedes Bild zwingend:
+1. Nur den aktuellen Bildprompt bearbeiten.
+2. Genau EIN Bild erzeugen.
+3. Warten, bis dieses Bild vollständig fertig ist.
+4. Sofort exakt in den vorgesehenen Namen umbenennen.
+5. Prüfen, dass die Umbenennung erfolgreich ist.
+6. Erst danach automatisch das nächste Bild starten.
+Keine Batches, keine Queue, kein Vorladen, keine parallelen Generierungen und keine Ansammlung unbenannter Bilder.
+
+DATEINAMEN
+Bild 00.png = Cover
+Bild 01.png = Szene 1
+Bild 02.png = Szene 2
+Bild 03.png = Szene 3
+Bild 04.png = Szene 4
+Bild 05.png = Szene 5
+Bild 06.png = Szene 6
+Bild 07.png = Szene 7
+Bild 08.png = Szene 8
+Bild 09.png = Szene 9
+Bild 10.png = Szene 10
+Bild 11.png = Szene 11
+Bild 12.png = Szene 12
+Bild 13.png = Szene 13
+
+STYLE-MASTER
+Bild 00.png wird zuerst vollständig erzeugt. Das fertige Bild 00.png ist danach die verbindliche visuelle Referenz für ALLE Szenen: gleiche Palette, Papiertextur, Charaktergestaltung, Konturstärke, Lichtstimmung und Detailqualität. Der Cover-Hook darf NICHT automatisch auf spätere Szenen kopiert werden.
+
+TEXTREGEL
+Nur der im jeweiligen Prompt ausdrücklich verlangte deutsche Text darf sichtbar erscheinen. Kein zusätzlicher englischer Text, keine Fantasiewörter, keine Logos und keine Wasserzeichen.
+
+ENDE
+Erst nachdem Bild 00 bis Bild 13 vollständig erzeugt, korrekt umbenannt und die Nummerierung geprüft wurden, alle fertigen Bilder gemeinsam in den vorgesehenen Sammelordner legen. Nicht während der laufenden Generierung einzelne Bilder dorthin verschieben.
+
+────────────────────────────────────────
+
+BILD 00 – COVER
+DATEINAME NACH FERTIGSTELLUNG: Bild 00.png
+Vertical 9:16 premium mature 2D editorial psychology illustration for a German explainer Reel. Dark navy background with warm cream paper textures, muted cobalt details and warm brown accents, bold clean hand-drawn outlines, subtle grain, high contrast and strong phone-screen readability. Show one simplified young adult learner in the center facing a long curved row of fifteen word cards. The first three cards and last three cards glow clearly and remain sharp, while the middle cards visibly fade and blur into the background. A subtle U-shaped memory curve can be suggested behind the cards, but keep the composition emotional and visual rather than technical. Add one large perfectly readable German headline exactly: "WARUM VERGISST DU DIE MITTE?" Keep it inside social safe zones. No other readable words, no English text, no logos, no watermark. This finished Bild 00.png becomes the binding style master for all later scene images: same palette, paper texture, character design, outline weight, lighting and detail quality.
+
+BILD 01 – SZENE 1
+DATEINAME NACH FERTIGSTELLUNG: Bild 01.png
+Match Bild 00.png exactly. Vertical 9:16 mature 2D editorial psychology scene. Show the same learner listening to a curved sequence of fifteen simple word cards floating from left to right. The first few and last few cards are crisp and softly glowing while the middle cards are noticeably less vivid. The learner looks surprised by what remains memorable. No readable text, no English, no logo, no watermark.
+
+BILD 02 – SZENE 2
+DATEINAME NACH FERTIGSTELLUNG: Bild 02.png
+Match Bild 00.png exactly. Show the same long row of memory cards, but now the center section visibly dissolves into soft paper fragments and haze while both ends remain sharp. Integrate the exact German label "SERIENPOSITION" as a small clean editorial heading near the top. One coherent composition, no panels, no other readable text, no English, no logo, no watermark.
+
+BILD 03 – SZENE 3
+DATEINAME NACH FERTIGSTELLUNG: Bild 03.png
+Match Bild 00.png exactly. Show the first three cards entering the learner’s attention one after another, with subtle circular rehearsal arrows looping around them before they move toward a stylized memory shelf inside a simple head silhouette. The later cards wait farther back in the sequence. No readable text, no English, no logo, no watermark.
+
+BILD 04 – SZENE 4
+DATEINAME NACH FERTIGSTELLUNG: Bild 04.png
+Match Bild 00.png exactly. Show the first cards in a list pinned strongly and brightly to a memory board while middle cards are weaker and less anchored. Integrate the exact German text "PRIMACY-EFFEKT" as the only readable label. Keep the same learner nearby, observing the stronger first-position cards. No other text, no English, no logo, no watermark.
+
+BILD 05 – SZENE 5
+DATEINAME NACH FERTIGSTELLUNG: Bild 05.png
+Match Bild 00.png exactly. Show the final three cards of a sequence still hovering brightly and very close to the learner’s head immediately after presentation, while earlier middle cards sit farther away and dimmer. The image should communicate freshness and immediate accessibility without technical brain anatomy. No readable text, no English, no logo, no watermark.
+
+BILD 06 – SZENE 6
+DATEINAME NACH FERTIGSTELLUNG: Bild 06.png
+Match Bild 00.png exactly. Arrange the fifteen cards along a clearly visible U-shaped path: high and bright at the beginning, low and faded in the middle, high and bright again at the end. Integrate the exact German text "RECENCY-EFFEKT" as a small label beside the bright final cards. Keep it visually simple and phone-readable. No other readable text, no English, no logo, no watermark.
+
+BILD 07 – SZENE 7
+DATEINAME NACH FERTIGSTELLUNG: Bild 07.png
+Match Bild 00.png exactly. Create a tasteful 1960s psychology-lab scene in the same editorial style: a participant sits at a desk recalling a presented word list, while a researcher records answers on paper. A subtle row of cards shows stronger recall at both ends. Integrate the exact German text "1962" prominently but elegantly. Do not depict a recognizable real person. No other readable text, no English, no logo, no watermark.
+
+BILD 08 – SZENE 8
+DATEINAME NACH FERTIGSTELLUNG: Bild 08.png
+Match Bild 00.png exactly. Show a learner who has just seen a list but is forced into a brief distraction before recalling it: a small clock ticks while simple number symbols and counting marks occupy attention. Behind this distraction, the once-bright final cards begin fading. Integrate the exact German text "KURZE ABLENKUNG" as the only readable phrase. No other readable text, no English, no logo, no watermark.
+
+BILD 09 – SZENE 9
+DATEINAME NACH FERTIGSTELLUNG: Bild 09.png
+Match Bild 00.png exactly. Show the same U-shaped memory-card curve after a delay: the bright high end on the right is visibly lowered and dimmer, while the beginning remains comparatively strong. A small clock icon and faded final cards make the change obvious. No readable text, no English, no logo, no watermark.
+
+BILD 10 – SZENE 10
+DATEINAME NACH FERTIGSTELLUNG: Bild 10.png
+Match Bild 00.png exactly. Show one continuous ribbon of information moving through a lecture-like situation: a presenter silhouette at one side, a listener at the other, and a sequence of simple idea cards traveling between them. The beginning and ending cards are vivid while the long middle section is less distinct. Keep it one scene, not separate panels. No readable text, no English, no logo, no watermark.
+
+BILD 11 – SZENE 11
+DATEINAME NACH FERTIGSTELLUNG: Bild 11.png
+Match Bild 00.png exactly. Show one especially important golden key-card trapped in the faded middle of a long sequence, visually overshadowed by bright cards at both ends. The learner is about to miss it. Integrate the exact German text "DIE MITTE" as a small emphasis label pointing to the buried important card. No other readable text, no English, no logo, no watermark.
+
+BILD 12 – SZENE 12
+DATEINAME NACH FERTIGSTELLUNG: Bild 12.png
+Match Bild 00.png exactly. Show the learner looking at a long explanation made of many idea cards and trying to recall it from memory. Three empty thought bubbles invite a mental self-test while the first and last cards subtly stand out. Integrate the exact German question "WAS BLEIBT HÄNGEN?" as the only readable text. Keep the visual reflective and clean. No English, no logo, no watermark.
+
+BILD 13 – SZENE 13
+DATEINAME NACH FERTIGSTELLUNG: Bild 13.png
+Match Bild 00.png exactly. Show a practical learning sequence arranged intentionally: important information cards are placed clearly at the beginning and end, while one important middle card is pulled forward and repeated with a circular arrow so it becomes vivid too. The learner looks confident. Integrate the exact German text "MITTE WIEDERHOLEN" as the only readable phrase. Clear satisfying conclusion, no English, no logo, no watermark. Hold this final visual unchanged for the 0.7-second end frame after the last spoken word.
