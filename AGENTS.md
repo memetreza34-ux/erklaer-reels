@@ -197,7 +197,8 @@ npm run sync:words -- --dir "<reel-ordner>" --apply --strict
 ```
 
 Verbindlich:
-- keine geschätzten oder gleichmäßig verteilten Wortzeiten als final akzeptieren
+- keine geschätzten oder gleichmäßig verteilten Wortzeiten als final akzeptieren (ein manuelles "Mocking" oder rechnerisches Schätzen der Wortzeiten ist strengstens verboten!)
+- **WICHTIG:** Nutze immer das Skript `node scripts/sync-whisper.js <whisper_out.json> <reel-dir>`, um die mit Whisper erzeugten Wortzeiten mikrosekundengenau mit den Untertiteln abzugleichen!
 - jedes Wort des tatsächlichen Voice-overs akustisch abhören und mit Start-/Endzeit bestätigen
 - 100 % Wortabdeckung; `unassignedWords` muss exakt `0` sein
 - die komplette gerenderte Untertitel-Wortfolge muss exakt der Wortfolge von `script/voice-script.txt` entsprechen
@@ -226,6 +227,7 @@ Ein Reel darf nur als fertig gelten, wenn Inhalt, Audio, Lautheit, Audio-Sync, *
 
 ## Technische Schutzregeln
 
+- **NIEMALS** interne Quality-Checks (wie `validate:render` oder `sync:words --strict`) mithilfe von `--force` oder durch temporäre Code-Anpassungen (Bypasses) überspringen! Die Pipeline hat immer recht.
 - stabile IDs wie `scene-01`
 - `scene-index.json` und jede `scene.json` synchron halten
 - Rohscript nicht überschreiben
