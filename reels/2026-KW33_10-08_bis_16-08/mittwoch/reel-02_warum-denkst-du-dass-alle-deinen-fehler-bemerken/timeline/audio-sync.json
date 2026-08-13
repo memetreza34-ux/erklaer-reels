@@ -1,0 +1,107 @@
+{
+  "version": 2,
+  "audioDurationSeconds": 55.8,
+  "audioFile": "audio/voiceover-tight.m4a",
+  "source": "pause-trimmed-tempo-adjusted-and-loudness-normalized-voiceover",
+  "timingStatus": "requires-new-cue-sync",
+  "instructions": [
+    "Trage die echte Audiodauer ein.",
+    "cueTimeSeconds ist der Zeitpunkt, an dem audioCue gesprochen wird.",
+    "Das Bild beginnt normalerweise leadInSeconds vor cueTimeSeconds.",
+    "Prüfe jeden Szenenwechsel gegen den sichtbaren Bildinhalt, damit benachbarte Bilder nicht vertauscht werden.",
+    "Nach dem letzten gesprochenen Wort bleibt das Schlussbild automatisch kurz ohne Untertitel stehen."
+  ],
+  "cueTimings": [
+    {
+      "sceneId": "scene-01",
+      "audioCue": "Du stolperst vor anderen",
+      "cueTimeSeconds": 0,
+      "leadInSeconds": 0.2,
+      "confidence": 1
+    },
+    {
+      "sceneId": "scene-02",
+      "audioCue": "Meist überschätzt du das",
+      "cueTimeSeconds": 4.24,
+      "leadInSeconds": 0.2,
+      "confidence": 1
+    },
+    {
+      "sceneId": "scene-03",
+      "audioCue": "In Experimenten glaubten Menschen",
+      "cueTimeSeconds": 7.34,
+      "leadInSeconds": 0.2,
+      "confidence": 1
+    },
+    {
+      "sceneId": "scene-04",
+      "audioCue": "Warum? Weil du",
+      "cueTimeSeconds": 15.48,
+      "leadInSeconds": 0.2,
+      "confidence": 1
+    },
+    {
+      "sceneId": "scene-05",
+      "audioCue": "Du kennst den Patzer",
+      "cueTimeSeconds": 19.18,
+      "leadInSeconds": 0.2,
+      "confidence": 1
+    },
+    {
+      "sceneId": "scene-06",
+      "audioCue": "Andere Menschen",
+      "cueTimeSeconds": 23.68,
+      "leadInSeconds": 0.2,
+      "confidence": 1
+    },
+    {
+      "sceneId": "scene-07",
+      "audioCue": "Sie sind gleichzeitig",
+      "cueTimeSeconds": 24.98,
+      "leadInSeconds": 0.2,
+      "confidence": 1
+    },
+    {
+      "sceneId": "scene-08",
+      "audioCue": "Deshalb fühlt sich",
+      "cueTimeSeconds": 30.1,
+      "leadInSeconds": 0.2,
+      "confidence": 1
+    },
+    {
+      "sceneId": "scene-09",
+      "audioCue": "während sie für andere",
+      "cueTimeSeconds": 35.38,
+      "leadInSeconds": 0.2,
+      "confidence": 1
+    },
+    {
+      "sceneId": "scene-10",
+      "audioCue": "Das gilt nicht nur",
+      "cueTimeSeconds": 37.54,
+      "leadInSeconds": 0.2,
+      "confidence": 1
+    },
+    {
+      "sceneId": "scene-11",
+      "audioCue": "Der Effekt verschwindet",
+      "cueTimeSeconds": 42.4,
+      "leadInSeconds": 0.2,
+      "confidence": 1
+    },
+    {
+      "sceneId": "scene-12",
+      "audioCue": "Frag dich beim nächsten",
+      "cueTimeSeconds": 45.5,
+      "leadInSeconds": 0.2,
+      "confidence": 1
+    },
+    {
+      "sceneId": "scene-13",
+      "audioCue": "Wahrscheinlich kaum",
+      "cueTimeSeconds": 50.82,
+      "leadInSeconds": 0.2,
+      "confidence": 1
+    }
+  ]
+}

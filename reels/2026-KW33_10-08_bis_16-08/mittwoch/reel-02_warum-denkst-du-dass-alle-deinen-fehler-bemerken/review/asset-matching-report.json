@@ -1,35 +1,30 @@
 {
-  "audio": {
-    "expectedFile": "audio/voiceover-tight.m4a",
-    "source": "audio/voice.m4a",
-    "confidence": 1,
-    "status": "ready",
-    "originalFile": "audio/voiceover.m4a",
-    "pauseTrimmed": true,
-    "tempoAdjusted": true,
-    "loudnessNormalized": true,
-    "loudnessMeasured": true,
-    "measuredIntegratedLufs": -16.7,
-    "measuredTruePeakDbtp": -1.39,
-    "playbackRate": 1.1,
-    "outputSampleRateHz": 48000,
-    "pauseTrimSettings": {
-      "thresholdDb": -35,
-      "minimumLongPauseSeconds": 0.24,
-      "retainedPauseSeconds": 0.05,
-      "playbackRate": 1.1,
-      "loudnessTargetLufs": -16,
-      "truePeakDbtp": -1.5,
-      "loudnessRangeLra": 11,
-      "outputSampleRateHz": 48000
-    },
-    "audioFingerprintSha256": "3949b97a6c463c49c0ab11126dd1774a9f61e697e35be09cad6bc14341d497af",
-    "audioBindingStatus": "verified-after-measurement"
-  },
-  "scenes": [
+  "createdAt": "2026-08-12T17:52:03.252Z",
+  "applied": [
     {
-      "sceneId": "scene-01",
-      "expectedFile": "scenes/scene-01/scene-01.jpeg",
+      "source": "numbered-images/Bild 00.jpeg",
+      "target": "cover",
+      "destination": "cover/cover.jpeg",
+      "confidence": 1,
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "visibleSummary": "Verified by user via Google Flow generation",
+        "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+        "comparedFields": [
+          "headline",
+          "coverVisualIdea",
+          "coverPrompt"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-12T17:52:03.214Z"
+      }
+    },
+    {
+      "source": "numbered-images/Bild 01.jpeg",
+      "target": "scene-01",
+      "destination": "scenes/scene-01/scene-01.jpeg",
+      "confidence": 1,
       "verification": {
         "visualReviewed": true,
         "secondPassConfirmed": true,
@@ -46,14 +41,13 @@
         ],
         "matchMethod": "visual-content-review",
         "reviewedAt": "2026-08-12T17:52:03.217Z"
-      },
-      "status": "ready",
-      "source": "numbered-images/Bild 01.jpeg",
-      "confidence": 1
+      }
     },
     {
-      "sceneId": "scene-02",
-      "expectedFile": "scenes/scene-02/scene-02.jpeg",
+      "source": "numbered-images/Bild 02.jpeg",
+      "target": "scene-02",
+      "destination": "scenes/scene-02/scene-02.jpeg",
+      "confidence": 1,
       "verification": {
         "visualReviewed": true,
         "secondPassConfirmed": true,
@@ -70,14 +64,13 @@
         ],
         "matchMethod": "visual-content-review",
         "reviewedAt": "2026-08-12T17:52:03.219Z"
-      },
-      "status": "ready",
-      "source": "numbered-images/Bild 02.jpeg",
-      "confidence": 1
+      }
     },
     {
-      "sceneId": "scene-03",
-      "expectedFile": "scenes/scene-03/scene-03.jpeg",
+      "source": "numbered-images/Bild 03.jpeg",
+      "target": "scene-03",
+      "destination": "scenes/scene-03/scene-03.jpeg",
+      "confidence": 1,
       "verification": {
         "visualReviewed": true,
         "secondPassConfirmed": true,
@@ -94,14 +87,13 @@
         ],
         "matchMethod": "visual-content-review",
         "reviewedAt": "2026-08-12T17:52:03.222Z"
-      },
-      "status": "ready",
-      "source": "numbered-images/Bild 03.jpeg",
-      "confidence": 1
+      }
     },
     {
-      "sceneId": "scene-04",
-      "expectedFile": "scenes/scene-04/scene-04.jpeg",
+      "source": "numbered-images/Bild 04.jpeg",
+      "target": "scene-04",
+      "destination": "scenes/scene-04/scene-04.jpeg",
+      "confidence": 1,
       "verification": {
         "visualReviewed": true,
         "secondPassConfirmed": true,
@@ -118,14 +110,13 @@
         ],
         "matchMethod": "visual-content-review",
         "reviewedAt": "2026-08-12T17:52:03.224Z"
-      },
-      "status": "ready",
-      "source": "numbered-images/Bild 04.jpeg",
-      "confidence": 1
+      }
     },
     {
-      "sceneId": "scene-05",
-      "expectedFile": "scenes/scene-05/scene-05.jpeg",
+      "source": "numbered-images/Bild 05.jpeg",
+      "target": "scene-05",
+      "destination": "scenes/scene-05/scene-05.jpeg",
+      "confidence": 1,
       "verification": {
         "visualReviewed": true,
         "secondPassConfirmed": true,
@@ -142,14 +133,13 @@
         ],
         "matchMethod": "visual-content-review",
         "reviewedAt": "2026-08-12T17:52:03.226Z"
-      },
-      "status": "ready",
-      "source": "numbered-images/Bild 05.jpeg",
-      "confidence": 1
+      }
     },
     {
-      "sceneId": "scene-06",
-      "expectedFile": "scenes/scene-06/scene-06.jpeg",
+      "source": "numbered-images/Bild 06.jpeg",
+      "target": "scene-06",
+      "destination": "scenes/scene-06/scene-06.jpeg",
+      "confidence": 1,
       "verification": {
         "visualReviewed": true,
         "secondPassConfirmed": true,
@@ -166,14 +156,13 @@
         ],
         "matchMethod": "visual-content-review",
         "reviewedAt": "2026-08-12T17:52:03.229Z"
-      },
-      "status": "ready",
-      "source": "numbered-images/Bild 06.jpeg",
-      "confidence": 1
+      }
     },
     {
-      "sceneId": "scene-07",
-      "expectedFile": "scenes/scene-07/scene-07.jpeg",
+      "source": "numbered-images/Bild 07.jpeg",
+      "target": "scene-07",
+      "destination": "scenes/scene-07/scene-07.jpeg",
+      "confidence": 1,
       "verification": {
         "visualReviewed": true,
         "secondPassConfirmed": true,
@@ -190,14 +179,13 @@
         ],
         "matchMethod": "visual-content-review",
         "reviewedAt": "2026-08-12T17:52:03.232Z"
-      },
-      "status": "ready",
-      "source": "numbered-images/Bild 07.jpeg",
-      "confidence": 1
+      }
     },
     {
-      "sceneId": "scene-08",
-      "expectedFile": "scenes/scene-08/scene-08.jpeg",
+      "source": "numbered-images/Bild 08.jpeg",
+      "target": "scene-08",
+      "destination": "scenes/scene-08/scene-08.jpeg",
+      "confidence": 1,
       "verification": {
         "visualReviewed": true,
         "secondPassConfirmed": true,
@@ -214,14 +202,13 @@
         ],
         "matchMethod": "visual-content-review",
         "reviewedAt": "2026-08-12T17:52:03.234Z"
-      },
-      "status": "ready",
-      "source": "numbered-images/Bild 08.jpeg",
-      "confidence": 1
+      }
     },
     {
-      "sceneId": "scene-09",
-      "expectedFile": "scenes/scene-09/scene-09.jpeg",
+      "source": "numbered-images/Bild 09.jpeg",
+      "target": "scene-09",
+      "destination": "scenes/scene-09/scene-09.jpeg",
+      "confidence": 1,
       "verification": {
         "visualReviewed": true,
         "secondPassConfirmed": true,
@@ -238,14 +225,13 @@
         ],
         "matchMethod": "visual-content-review",
         "reviewedAt": "2026-08-12T17:52:03.237Z"
-      },
-      "status": "ready",
-      "source": "numbered-images/Bild 09.jpeg",
-      "confidence": 1
+      }
     },
     {
-      "sceneId": "scene-10",
-      "expectedFile": "scenes/scene-10/scene-10.jpeg",
+      "source": "numbered-images/Bild 10.jpeg",
+      "target": "scene-10",
+      "destination": "scenes/scene-10/scene-10.jpeg",
+      "confidence": 1,
       "verification": {
         "visualReviewed": true,
         "secondPassConfirmed": true,
@@ -262,14 +248,13 @@
         ],
         "matchMethod": "visual-content-review",
         "reviewedAt": "2026-08-12T17:52:03.239Z"
-      },
-      "status": "ready",
-      "source": "numbered-images/Bild 10.jpeg",
-      "confidence": 1
+      }
     },
     {
-      "sceneId": "scene-11",
-      "expectedFile": "scenes/scene-11/scene-11.jpeg",
+      "source": "numbered-images/Bild 11.jpeg",
+      "target": "scene-11",
+      "destination": "scenes/scene-11/scene-11.jpeg",
+      "confidence": 1,
       "verification": {
         "visualReviewed": true,
         "secondPassConfirmed": true,
@@ -286,14 +271,13 @@
         ],
         "matchMethod": "visual-content-review",
         "reviewedAt": "2026-08-12T17:52:03.241Z"
-      },
-      "status": "ready",
-      "source": "numbered-images/Bild 11.jpeg",
-      "confidence": 1
+      }
     },
     {
-      "sceneId": "scene-12",
-      "expectedFile": "scenes/scene-12/scene-12.jpeg",
+      "source": "numbered-images/Bild 12.jpeg",
+      "target": "scene-12",
+      "destination": "scenes/scene-12/scene-12.jpeg",
+      "confidence": 1,
       "verification": {
         "visualReviewed": true,
         "secondPassConfirmed": true,
@@ -310,14 +294,13 @@
         ],
         "matchMethod": "visual-content-review",
         "reviewedAt": "2026-08-12T17:52:03.244Z"
-      },
-      "status": "ready",
-      "source": "numbered-images/Bild 12.jpeg",
-      "confidence": 1
+      }
     },
     {
-      "sceneId": "scene-13",
-      "expectedFile": "scenes/scene-13/scene-13.jpeg",
+      "source": "numbered-images/Bild 13.jpeg",
+      "target": "scene-13",
+      "destination": "scenes/scene-13/scene-13.jpeg",
+      "confidence": 1,
       "verification": {
         "visualReviewed": true,
         "secondPassConfirmed": true,
@@ -334,29 +317,24 @@
         ],
         "matchMethod": "visual-content-review",
         "reviewedAt": "2026-08-12T17:52:03.246Z"
-      },
-      "status": "ready",
-      "source": "numbered-images/Bild 13.jpeg",
-      "confidence": 1
+      }
+    },
+    {
+      "source": "audio/voice.m4a",
+      "target": "audio",
+      "destination": "audio/voiceover.m4a",
+      "confidence": 1,
+      "verification": null
     }
   ],
-  "cover": {
-    "expectedFile": "cover/cover.jpeg",
-    "source": "numbered-images/Bild 00.jpeg",
-    "confidence": 1,
-    "verification": {
-      "visualReviewed": true,
-      "secondPassConfirmed": true,
-      "visibleSummary": "Verified by user via Google Flow generation",
-      "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
-      "comparedFields": [
-        "headline",
-        "coverVisualIdea",
-        "coverPrompt"
-      ],
-      "matchMethod": "visual-content-review",
-      "reviewedAt": "2026-08-12T17:52:03.214Z"
-    },
-    "status": "ready"
+  "skipped": [],
+  "unmatched": [],
+  "verificationReport": "review/scene-asset-verification.json",
+  "summary": {
+    "assignedScenes": 13,
+    "totalScenes": 13,
+    "audioReady": true,
+    "coverReady": true,
+    "sceneVerificationPassed": true
   }
 }

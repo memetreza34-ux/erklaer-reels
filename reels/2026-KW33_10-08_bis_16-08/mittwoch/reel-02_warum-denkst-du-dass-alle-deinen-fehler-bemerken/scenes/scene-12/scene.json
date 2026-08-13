@@ -1,1 +1,35 @@
-{"sceneId":"scene-12","order":12,"title":"Prüffrage","narration":"Frag dich beim nächsten unangenehmen Moment: Würdest du denselben Fehler bei einer anderen Person morgen noch erinnern?","imageText":"WÜRDEST DU ES MORGEN NOCH WISSEN?","visualIdea":"Die Hauptfigur stellt sich eine andere Person mit demselben kleinen Fehler vor und prüft, ob der Moment am nächsten Tag noch wichtig wäre.","audioCue":"Frag dich beim nächsten","leadInSeconds":0.2,"durationSeconds":5.3,"expectedImageFileName":"scene-12.png","promptStatus":"ready","imageStatus":"missing","status":"prompt-ready"}
+{
+  "sceneId": "scene-12",
+  "order": 12,
+  "title": "Prüffrage",
+  "narration": "Frag dich beim nächsten unangenehmen Moment: Würdest du denselben Fehler bei einer anderen Person morgen noch erinnern?",
+  "imageText": "WÜRDEST DU ES MORGEN NOCH WISSEN?",
+  "visualIdea": "Die Hauptfigur stellt sich eine andere Person mit demselben kleinen Fehler vor und prüft, ob der Moment am nächsten Tag noch wichtig wäre.",
+  "audioCue": "Frag dich beim nächsten",
+  "leadInSeconds": 0.2,
+  "durationSeconds": 5.3,
+  "expectedImageFileName": "scene-12.jpeg",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "status": "image-ready",
+  "source": "numbered-images/Bild 12.jpeg",
+  "matchConfidence": 1,
+  "matchReason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-12",
+    "confirmedSceneOrder": 12,
+    "visibleSummary": "Verified by user via Google Flow generation",
+    "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+    "comparedFields": [
+      "narration",
+      "visualIdea",
+      "imageText",
+      "imagePrompt"
+    ],
+    "matchMethod": "visual-content-review",
+    "reviewedAt": "2026-08-12T17:52:03.244Z"
+  }
+}

@@ -1,1 +1,35 @@
-{"sceneId":"scene-03","order":3,"title":"T-Shirt-Experiment","narration":"In Experimenten glaubten Menschen, ein auffälliges oder peinliches T-Shirt werde von deutlich mehr Personen bemerkt, als es tatsächlich der Fall war.","imageText":"T-SHIRT-EXPERIMENT","visualIdea":"Eine Versuchsperson trägt ein sehr auffälliges Shirt in einem Raum mit Beobachtern, von denen nur wenige tatsächlich darauf achten.","audioCue":"In Experimenten glaubten Menschen","leadInSeconds":0.2,"durationSeconds":6.2,"expectedImageFileName":"scene-03.png","promptStatus":"ready","imageStatus":"missing","status":"prompt-ready"}
+{
+  "sceneId": "scene-03",
+  "order": 3,
+  "title": "T-Shirt-Experiment",
+  "narration": "In Experimenten glaubten Menschen, ein auffälliges oder peinliches T-Shirt werde von deutlich mehr Personen bemerkt, als es tatsächlich der Fall war.",
+  "imageText": "T-SHIRT-EXPERIMENT",
+  "visualIdea": "Eine Versuchsperson trägt ein sehr auffälliges Shirt in einem Raum mit Beobachtern, von denen nur wenige tatsächlich darauf achten.",
+  "audioCue": "In Experimenten glaubten Menschen",
+  "leadInSeconds": 0.2,
+  "durationSeconds": 6.2,
+  "expectedImageFileName": "scene-03.jpeg",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "status": "image-ready",
+  "source": "numbered-images/Bild 03.jpeg",
+  "matchConfidence": 1,
+  "matchReason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-03",
+    "confirmedSceneOrder": 3,
+    "visibleSummary": "Verified by user via Google Flow generation",
+    "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+    "comparedFields": [
+      "narration",
+      "visualIdea",
+      "imageText",
+      "imagePrompt"
+    ],
+    "matchMethod": "visual-content-review",
+    "reviewedAt": "2026-08-12T17:52:03.222Z"
+  }
+}

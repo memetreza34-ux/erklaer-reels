@@ -1,1 +1,1682 @@
-{"status":"waiting-for-real-audio","verticalPositionPercent":58,"baseColor":"#F5F7FA","activeWordColor":"#B7794A","completeSpokenTextCoverageRequired":true,"coverageRequired":1,"unassignedWordsRequired":0,"timingRule":"every spoken word must use acoustically verified start/end timing; no estimated final timings"}
+{
+  "status": "waiting-for-real-audio",
+  "verticalPositionPercent": 58,
+  "baseColor": "#F5F7FA",
+  "activeWordColor": "#B7794A",
+  "completeSpokenTextCoverageRequired": true,
+  "coverageRequired": 1,
+  "unassignedWordsRequired": 0,
+  "timingRule": "every spoken word must use acoustically verified start/end timing; no estimated final timings",
+  "exactWordTimingsRequired": true,
+  "timingStatus": "codex-word-synced",
+  "timingProvider": "codex-local-audio-review",
+  "cues": [
+    {
+      "id": "scene-01-subtitle-01",
+      "sceneId": "scene-01",
+      "text": "Du stolperst vor anderen über ein",
+      "startSeconds": 0,
+      "endSeconds": 1.52,
+      "position": "center",
+      "verticalPositionPercent": 58,
+      "textColor": "#F5F7FA",
+      "backgroundColor": "transparent",
+      "highlightCurrentWord": true,
+      "highlightColor": "#B7794A",
+      "speakerSyncedWordHighlight": true,
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "wordTimings": [
+        {
+          "text": "Du",
+          "startSeconds": 0,
+          "endSeconds": 0.1,
+          "confidence": 1
+        },
+        {
+          "text": "stolperst",
+          "startSeconds": 0.1,
+          "endSeconds": 0.56,
+          "confidence": 1
+        },
+        {
+          "text": "vor",
+          "startSeconds": 0.56,
+          "endSeconds": 0.74,
+          "confidence": 1
+        },
+        {
+          "text": "anderen",
+          "startSeconds": 0.74,
+          "endSeconds": 1.04,
+          "confidence": 1
+        },
+        {
+          "text": "über",
+          "startSeconds": 1.04,
+          "endSeconds": 1.32,
+          "confidence": 1
+        },
+        {
+          "text": "ein",
+          "startSeconds": 1.32,
+          "endSeconds": 1.52,
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "scene-01-subtitle-02",
+      "sceneId": "scene-01",
+      "text": "Wort und denkst sofort:",
+      "startSeconds": 1.525,
+      "endSeconds": 2.78,
+      "position": "center",
+      "verticalPositionPercent": 58,
+      "textColor": "#F5F7FA",
+      "backgroundColor": "transparent",
+      "highlightCurrentWord": true,
+      "highlightColor": "#B7794A",
+      "speakerSyncedWordHighlight": true,
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "wordTimings": [
+        {
+          "text": "Wort",
+          "startSeconds": 1.52,
+          "endSeconds": 1.84,
+          "confidence": 1
+        },
+        {
+          "text": "und",
+          "startSeconds": 1.84,
+          "endSeconds": 2.12,
+          "confidence": 1
+        },
+        {
+          "text": "denkst",
+          "startSeconds": 2.12,
+          "endSeconds": 2.38,
+          "confidence": 1
+        },
+        {
+          "text": "sofort:",
+          "startSeconds": 2.38,
+          "endSeconds": 2.68,
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "scene-01-subtitle-03",
+      "sceneId": "scene-01",
+      "text": "Alle haben das gesehen.",
+      "startSeconds": 3.005,
+      "endSeconds": 4.04,
+      "position": "center",
+      "verticalPositionPercent": 58,
+      "textColor": "#F5F7FA",
+      "backgroundColor": "transparent",
+      "highlightCurrentWord": true,
+      "highlightColor": "#B7794A",
+      "speakerSyncedWordHighlight": true,
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "wordTimings": [
+        {
+          "text": "Alle",
+          "startSeconds": 3.04,
+          "endSeconds": 3.24,
+          "confidence": 1
+        },
+        {
+          "text": "haben",
+          "startSeconds": 3.24,
+          "endSeconds": 3.58,
+          "confidence": 1
+        },
+        {
+          "text": "das",
+          "startSeconds": 3.58,
+          "endSeconds": 3.78,
+          "confidence": 1
+        },
+        {
+          "text": "gesehen.",
+          "startSeconds": 3.78,
+          "endSeconds": 4.04,
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "scene-02-subtitle-01",
+      "sceneId": "scene-02",
+      "text": "Meist überschätzt du das.",
+      "startSeconds": 4.205,
+      "endSeconds": 5.36,
+      "position": "center",
+      "verticalPositionPercent": 58,
+      "textColor": "#F5F7FA",
+      "backgroundColor": "transparent",
+      "highlightCurrentWord": true,
+      "highlightColor": "#B7794A",
+      "speakerSyncedWordHighlight": true,
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "wordTimings": [
+        {
+          "text": "Meist",
+          "startSeconds": 4.24,
+          "endSeconds": 4.56,
+          "confidence": 1
+        },
+        {
+          "text": "überschätzt",
+          "startSeconds": 4.56,
+          "endSeconds": 4.96,
+          "confidence": 1
+        },
+        {
+          "text": "du",
+          "startSeconds": 4.96,
+          "endSeconds": 5.06,
+          "confidence": 1
+        },
+        {
+          "text": "das.",
+          "startSeconds": 5.06,
+          "endSeconds": 5.26,
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "scene-02-subtitle-02",
+      "sceneId": "scene-02",
+      "text": "Psychologen nennen das den Spotlight-Effekt.",
+      "startSeconds": 5.525,
+      "endSeconds": 7.14,
+      "position": "center",
+      "verticalPositionPercent": 58,
+      "textColor": "#F5F7FA",
+      "backgroundColor": "transparent",
+      "highlightCurrentWord": true,
+      "highlightColor": "#B7794A",
+      "speakerSyncedWordHighlight": true,
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "wordTimings": [
+        {
+          "text": "Psychologen",
+          "startSeconds": 5.56,
+          "endSeconds": 6.08,
+          "confidence": 1
+        },
+        {
+          "text": "nennen",
+          "startSeconds": 6.08,
+          "endSeconds": 6.3,
+          "confidence": 1
+        },
+        {
+          "text": "das",
+          "startSeconds": 6.3,
+          "endSeconds": 6.5,
+          "confidence": 1
+        },
+        {
+          "text": "den",
+          "startSeconds": 6.5,
+          "endSeconds": 6.68,
+          "confidence": 1
+        },
+        {
+          "text": "Spotlight-Effekt.",
+          "startSeconds": 6.68,
+          "endSeconds": 7.14,
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "scene-03-subtitle-01",
+      "sceneId": "scene-03",
+      "text": "In Experimenten glaubten Menschen, ein auffälliges",
+      "startSeconds": 7.305,
+      "endSeconds": 10.36,
+      "position": "center",
+      "verticalPositionPercent": 58,
+      "textColor": "#F5F7FA",
+      "backgroundColor": "transparent",
+      "highlightCurrentWord": true,
+      "highlightColor": "#B7794A",
+      "speakerSyncedWordHighlight": true,
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "wordTimings": [
+        {
+          "text": "In",
+          "startSeconds": 7.34,
+          "endSeconds": 8.12,
+          "confidence": 1
+        },
+        {
+          "text": "Experimenten",
+          "startSeconds": 8.12,
+          "endSeconds": 8.78,
+          "confidence": 1
+        },
+        {
+          "text": "glaubten",
+          "startSeconds": 8.78,
+          "endSeconds": 9.14,
+          "confidence": 1
+        },
+        {
+          "text": "Menschen,",
+          "startSeconds": 9.14,
+          "endSeconds": 9.42,
+          "confidence": 1
+        },
+        {
+          "text": "ein",
+          "startSeconds": 9.58,
+          "endSeconds": 9.68,
+          "confidence": 1
+        },
+        {
+          "text": "auffälliges",
+          "startSeconds": 9.68,
+          "endSeconds": 10.36,
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "scene-03-subtitle-02",
+      "sceneId": "scene-03",
+      "text": "oder peinliches T-Shirt werde von deutlich",
+      "startSeconds": 10.365,
+      "endSeconds": 12.64,
+      "position": "center",
+      "verticalPositionPercent": 58,
+      "textColor": "#F5F7FA",
+      "backgroundColor": "transparent",
+      "highlightCurrentWord": true,
+      "highlightColor": "#B7794A",
+      "speakerSyncedWordHighlight": true,
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "wordTimings": [
+        {
+          "text": "oder",
+          "startSeconds": 10.36,
+          "endSeconds": 10.58,
+          "confidence": 1
+        },
+        {
+          "text": "peinliches",
+          "startSeconds": 10.58,
+          "endSeconds": 11.14,
+          "confidence": 1
+        },
+        {
+          "text": "T-Shirt",
+          "startSeconds": 11.14,
+          "endSeconds": 11.62,
+          "confidence": 1
+        },
+        {
+          "text": "werde",
+          "startSeconds": 11.62,
+          "endSeconds": 12.08,
+          "confidence": 1
+        },
+        {
+          "text": "von",
+          "startSeconds": 12.08,
+          "endSeconds": 12.28,
+          "confidence": 1
+        },
+        {
+          "text": "deutlich",
+          "startSeconds": 12.28,
+          "endSeconds": 12.64,
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "scene-03-subtitle-03",
+      "sceneId": "scene-03",
+      "text": "mehr Personen bemerkt, als es tatsächlich",
+      "startSeconds": 12.645,
+      "endSeconds": 14.68,
+      "position": "center",
+      "verticalPositionPercent": 58,
+      "textColor": "#F5F7FA",
+      "backgroundColor": "transparent",
+      "highlightCurrentWord": true,
+      "highlightColor": "#B7794A",
+      "speakerSyncedWordHighlight": true,
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "wordTimings": [
+        {
+          "text": "mehr",
+          "startSeconds": 12.64,
+          "endSeconds": 12.98,
+          "confidence": 1
+        },
+        {
+          "text": "Personen",
+          "startSeconds": 12.98,
+          "endSeconds": 13.4,
+          "confidence": 1
+        },
+        {
+          "text": "bemerkt,",
+          "startSeconds": 13.4,
+          "endSeconds": 13.84,
+          "confidence": 1
+        },
+        {
+          "text": "als",
+          "startSeconds": 13.92,
+          "endSeconds": 14.04,
+          "confidence": 1
+        },
+        {
+          "text": "es",
+          "startSeconds": 14.04,
+          "endSeconds": 14.2,
+          "confidence": 1
+        },
+        {
+          "text": "tatsächlich",
+          "startSeconds": 14.2,
+          "endSeconds": 14.68,
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "scene-03-subtitle-04",
+      "sceneId": "scene-03",
+      "text": "der Fall war.",
+      "startSeconds": 14.685,
+      "endSeconds": 15.28,
+      "position": "center",
+      "verticalPositionPercent": 58,
+      "textColor": "#F5F7FA",
+      "backgroundColor": "transparent",
+      "highlightCurrentWord": true,
+      "highlightColor": "#B7794A",
+      "speakerSyncedWordHighlight": true,
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "wordTimings": [
+        {
+          "text": "der",
+          "startSeconds": 14.68,
+          "endSeconds": 14.88,
+          "confidence": 1
+        },
+        {
+          "text": "Fall",
+          "startSeconds": 14.88,
+          "endSeconds": 15.06,
+          "confidence": 1
+        },
+        {
+          "text": "war.",
+          "startSeconds": 15.06,
+          "endSeconds": 15.24,
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "scene-04-subtitle-01",
+      "sceneId": "scene-04",
+      "text": "Warum? Weil du deine eigenen Fehler",
+      "startSeconds": 15.445,
+      "endSeconds": 17.52,
+      "position": "center",
+      "verticalPositionPercent": 58,
+      "textColor": "#F5F7FA",
+      "backgroundColor": "transparent",
+      "highlightCurrentWord": true,
+      "highlightColor": "#B7794A",
+      "speakerSyncedWordHighlight": true,
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "wordTimings": [
+        {
+          "text": "Warum?",
+          "startSeconds": 15.48,
+          "endSeconds": 15.76,
+          "confidence": 1
+        },
+        {
+          "text": "Weil",
+          "startSeconds": 16.1,
+          "endSeconds": 16.32,
+          "confidence": 1
+        },
+        {
+          "text": "du",
+          "startSeconds": 16.32,
+          "endSeconds": 16.5,
+          "confidence": 1
+        },
+        {
+          "text": "deine",
+          "startSeconds": 16.5,
+          "endSeconds": 16.76,
+          "confidence": 1
+        },
+        {
+          "text": "eigenen",
+          "startSeconds": 16.76,
+          "endSeconds": 17.16,
+          "confidence": 1
+        },
+        {
+          "text": "Fehler",
+          "startSeconds": 17.16,
+          "endSeconds": 17.52,
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "scene-04-subtitle-02",
+      "sceneId": "scene-04",
+      "text": "aus der ersten Reihe erlebst.",
+      "startSeconds": 17.525,
+      "endSeconds": 18.98,
+      "position": "center",
+      "verticalPositionPercent": 58,
+      "textColor": "#F5F7FA",
+      "backgroundColor": "transparent",
+      "highlightCurrentWord": true,
+      "highlightColor": "#B7794A",
+      "speakerSyncedWordHighlight": true,
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "wordTimings": [
+        {
+          "text": "aus",
+          "startSeconds": 17.52,
+          "endSeconds": 17.74,
+          "confidence": 1
+        },
+        {
+          "text": "der",
+          "startSeconds": 17.74,
+          "endSeconds": 17.88,
+          "confidence": 1
+        },
+        {
+          "text": "ersten",
+          "startSeconds": 17.88,
+          "endSeconds": 18.24,
+          "confidence": 1
+        },
+        {
+          "text": "Reihe",
+          "startSeconds": 18.24,
+          "endSeconds": 18.56,
+          "confidence": 1
+        },
+        {
+          "text": "erlebst.",
+          "startSeconds": 18.56,
+          "endSeconds": 18.92,
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "scene-05-subtitle-01",
+      "sceneId": "scene-05",
+      "text": "Du kennst den Patzer,",
+      "startSeconds": 19.145,
+      "endSeconds": 20.28,
+      "position": "center",
+      "verticalPositionPercent": 58,
+      "textColor": "#F5F7FA",
+      "backgroundColor": "transparent",
+      "highlightCurrentWord": true,
+      "highlightColor": "#B7794A",
+      "speakerSyncedWordHighlight": true,
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "wordTimings": [
+        {
+          "text": "Du",
+          "startSeconds": 19.18,
+          "endSeconds": 19.4,
+          "confidence": 1
+        },
+        {
+          "text": "kennst",
+          "startSeconds": 19.4,
+          "endSeconds": 19.72,
+          "confidence": 1
+        },
+        {
+          "text": "den",
+          "startSeconds": 19.72,
+          "endSeconds": 19.86,
+          "confidence": 1
+        },
+        {
+          "text": "Patzer,",
+          "startSeconds": 19.86,
+          "endSeconds": 20.18,
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "scene-05-subtitle-02",
+      "sceneId": "scene-05",
+      "text": "spürst die Unsicherheit und denkst noch",
+      "startSeconds": 20.425,
+      "endSeconds": 22.14,
+      "position": "center",
+      "verticalPositionPercent": 58,
+      "textColor": "#F5F7FA",
+      "backgroundColor": "transparent",
+      "highlightCurrentWord": true,
+      "highlightColor": "#B7794A",
+      "speakerSyncedWordHighlight": true,
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "wordTimings": [
+        {
+          "text": "spürst",
+          "startSeconds": 20.46,
+          "endSeconds": 20.72,
+          "confidence": 1
+        },
+        {
+          "text": "die",
+          "startSeconds": 20.72,
+          "endSeconds": 20.82,
+          "confidence": 1
+        },
+        {
+          "text": "Unsicherheit",
+          "startSeconds": 20.82,
+          "endSeconds": 21.4,
+          "confidence": 1
+        },
+        {
+          "text": "und",
+          "startSeconds": 21.4,
+          "endSeconds": 21.72,
+          "confidence": 1
+        },
+        {
+          "text": "denkst",
+          "startSeconds": 21.72,
+          "endSeconds": 21.98,
+          "confidence": 1
+        },
+        {
+          "text": "noch",
+          "startSeconds": 21.98,
+          "endSeconds": 22.14,
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "scene-05-subtitle-03",
+      "sceneId": "scene-05",
+      "text": "minutenlang darüber nach.",
+      "startSeconds": 22.145,
+      "endSeconds": 23.48,
+      "position": "center",
+      "verticalPositionPercent": 58,
+      "textColor": "#F5F7FA",
+      "backgroundColor": "transparent",
+      "highlightCurrentWord": true,
+      "highlightColor": "#B7794A",
+      "speakerSyncedWordHighlight": true,
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "wordTimings": [
+        {
+          "text": "minutenlang",
+          "startSeconds": 22.14,
+          "endSeconds": 22.88,
+          "confidence": 1
+        },
+        {
+          "text": "darüber",
+          "startSeconds": 22.88,
+          "endSeconds": 23.08,
+          "confidence": 1
+        },
+        {
+          "text": "nach.",
+          "startSeconds": 23.08,
+          "endSeconds": 23.48,
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "scene-06-subtitle-01",
+      "sceneId": "scene-06",
+      "text": "Andere Menschen tun das nicht.",
+      "startSeconds": 23.645,
+      "endSeconds": 24.78,
+      "position": "center",
+      "verticalPositionPercent": 58,
+      "textColor": "#F5F7FA",
+      "backgroundColor": "transparent",
+      "highlightCurrentWord": true,
+      "highlightColor": "#B7794A",
+      "speakerSyncedWordHighlight": true,
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "wordTimings": [
+        {
+          "text": "Andere",
+          "startSeconds": 23.68,
+          "endSeconds": 23.98,
+          "confidence": 1
+        },
+        {
+          "text": "Menschen",
+          "startSeconds": 23.98,
+          "endSeconds": 24.24,
+          "confidence": 1
+        },
+        {
+          "text": "tun",
+          "startSeconds": 24.24,
+          "endSeconds": 24.42,
+          "confidence": 1
+        },
+        {
+          "text": "das",
+          "startSeconds": 24.42,
+          "endSeconds": 24.6,
+          "confidence": 1
+        },
+        {
+          "text": "nicht.",
+          "startSeconds": 24.6,
+          "endSeconds": 24.78,
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "scene-07-subtitle-01",
+      "sceneId": "scene-07",
+      "text": "Sie sind gleichzeitig mit ihrem eigenen",
+      "startSeconds": 24.945,
+      "endSeconds": 26.68,
+      "position": "center",
+      "verticalPositionPercent": 58,
+      "textColor": "#F5F7FA",
+      "backgroundColor": "transparent",
+      "highlightCurrentWord": true,
+      "highlightColor": "#B7794A",
+      "speakerSyncedWordHighlight": true,
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "wordTimings": [
+        {
+          "text": "Sie",
+          "startSeconds": 24.98,
+          "endSeconds": 25.18,
+          "confidence": 1
+        },
+        {
+          "text": "sind",
+          "startSeconds": 25.18,
+          "endSeconds": 25.34,
+          "confidence": 1
+        },
+        {
+          "text": "gleichzeitig",
+          "startSeconds": 25.34,
+          "endSeconds": 25.86,
+          "confidence": 1
+        },
+        {
+          "text": "mit",
+          "startSeconds": 25.86,
+          "endSeconds": 26.12,
+          "confidence": 1
+        },
+        {
+          "text": "ihrem",
+          "startSeconds": 26.12,
+          "endSeconds": 26.3,
+          "confidence": 1
+        },
+        {
+          "text": "eigenen",
+          "startSeconds": 26.3,
+          "endSeconds": 26.68,
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "scene-07-subtitle-02",
+      "sceneId": "scene-07",
+      "text": "Aussehen, ihren eigenen Gedanken und ihren",
+      "startSeconds": 26.685,
+      "endSeconds": 28.74,
+      "position": "center",
+      "verticalPositionPercent": 58,
+      "textColor": "#F5F7FA",
+      "backgroundColor": "transparent",
+      "highlightCurrentWord": true,
+      "highlightColor": "#B7794A",
+      "speakerSyncedWordHighlight": true,
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "wordTimings": [
+        {
+          "text": "Aussehen,",
+          "startSeconds": 26.68,
+          "endSeconds": 27.26,
+          "confidence": 1
+        },
+        {
+          "text": "ihren",
+          "startSeconds": 27.46,
+          "endSeconds": 27.56,
+          "confidence": 1
+        },
+        {
+          "text": "eigenen",
+          "startSeconds": 27.56,
+          "endSeconds": 27.9,
+          "confidence": 1
+        },
+        {
+          "text": "Gedanken",
+          "startSeconds": 27.9,
+          "endSeconds": 28.3,
+          "confidence": 1
+        },
+        {
+          "text": "und",
+          "startSeconds": 28.3,
+          "endSeconds": 28.56,
+          "confidence": 1
+        },
+        {
+          "text": "ihren",
+          "startSeconds": 28.56,
+          "endSeconds": 28.74,
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "scene-07-subtitle-03",
+      "sceneId": "scene-07",
+      "text": "eigenen Fehlern beschäftigt.",
+      "startSeconds": 28.745,
+      "endSeconds": 29.9,
+      "position": "center",
+      "verticalPositionPercent": 58,
+      "textColor": "#F5F7FA",
+      "backgroundColor": "transparent",
+      "highlightCurrentWord": true,
+      "highlightColor": "#B7794A",
+      "speakerSyncedWordHighlight": true,
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "wordTimings": [
+        {
+          "text": "eigenen",
+          "startSeconds": 28.74,
+          "endSeconds": 29.1,
+          "confidence": 1
+        },
+        {
+          "text": "Fehlern",
+          "startSeconds": 29.1,
+          "endSeconds": 29.46,
+          "confidence": 1
+        },
+        {
+          "text": "beschäftigt.",
+          "startSeconds": 29.46,
+          "endSeconds": 29.9,
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "scene-08-subtitle-01",
+      "sceneId": "scene-08",
+      "text": "Deshalb fühlt sich ein kleiner Fleck,",
+      "startSeconds": 30.065,
+      "endSeconds": 31.84,
+      "position": "center",
+      "verticalPositionPercent": 58,
+      "textColor": "#F5F7FA",
+      "backgroundColor": "transparent",
+      "highlightCurrentWord": true,
+      "highlightColor": "#B7794A",
+      "speakerSyncedWordHighlight": true,
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "wordTimings": [
+        {
+          "text": "Deshalb",
+          "startSeconds": 30.1,
+          "endSeconds": 30.44,
+          "confidence": 1
+        },
+        {
+          "text": "fühlt",
+          "startSeconds": 30.44,
+          "endSeconds": 30.7,
+          "confidence": 1
+        },
+        {
+          "text": "sich",
+          "startSeconds": 30.7,
+          "endSeconds": 30.82,
+          "confidence": 1
+        },
+        {
+          "text": "ein",
+          "startSeconds": 30.82,
+          "endSeconds": 31,
+          "confidence": 1
+        },
+        {
+          "text": "kleiner",
+          "startSeconds": 31,
+          "endSeconds": 31.38,
+          "confidence": 1
+        },
+        {
+          "text": "Fleck,",
+          "startSeconds": 31.38,
+          "endSeconds": 31.74,
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "scene-08-subtitle-02",
+      "sceneId": "scene-08",
+      "text": "ein Versprecher oder eine komische Bewegung",
+      "startSeconds": 31.865,
+      "endSeconds": 33.9,
+      "position": "center",
+      "verticalPositionPercent": 58,
+      "textColor": "#F5F7FA",
+      "backgroundColor": "transparent",
+      "highlightCurrentWord": true,
+      "highlightColor": "#B7794A",
+      "speakerSyncedWordHighlight": true,
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "wordTimings": [
+        {
+          "text": "ein",
+          "startSeconds": 31.9,
+          "endSeconds": 32.1,
+          "confidence": 1
+        },
+        {
+          "text": "Versprecher",
+          "startSeconds": 32.1,
+          "endSeconds": 32.66,
+          "confidence": 1
+        },
+        {
+          "text": "oder",
+          "startSeconds": 32.66,
+          "endSeconds": 32.88,
+          "confidence": 1
+        },
+        {
+          "text": "eine",
+          "startSeconds": 32.88,
+          "endSeconds": 33.08,
+          "confidence": 1
+        },
+        {
+          "text": "komische",
+          "startSeconds": 33.08,
+          "endSeconds": 33.44,
+          "confidence": 1
+        },
+        {
+          "text": "Bewegung",
+          "startSeconds": 33.44,
+          "endSeconds": 33.9,
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "scene-08-subtitle-03",
+      "sceneId": "scene-08",
+      "text": "für dich riesig an,",
+      "startSeconds": 33.905,
+      "endSeconds": 35.18,
+      "position": "center",
+      "verticalPositionPercent": 58,
+      "textColor": "#F5F7FA",
+      "backgroundColor": "transparent",
+      "highlightCurrentWord": true,
+      "highlightColor": "#B7794A",
+      "speakerSyncedWordHighlight": true,
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "wordTimings": [
+        {
+          "text": "für",
+          "startSeconds": 33.9,
+          "endSeconds": 34.28,
+          "confidence": 1
+        },
+        {
+          "text": "dich",
+          "startSeconds": 34.28,
+          "endSeconds": 34.5,
+          "confidence": 1
+        },
+        {
+          "text": "riesig",
+          "startSeconds": 34.5,
+          "endSeconds": 35.02,
+          "confidence": 1
+        },
+        {
+          "text": "an,",
+          "startSeconds": 35.02,
+          "endSeconds": 35.18,
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "scene-09-subtitle-01",
+      "sceneId": "scene-09",
+      "text": "während sie für andere oft nur",
+      "startSeconds": 35.345,
+      "endSeconds": 36.48,
+      "position": "center",
+      "verticalPositionPercent": 58,
+      "textColor": "#F5F7FA",
+      "backgroundColor": "transparent",
+      "highlightCurrentWord": true,
+      "highlightColor": "#B7794A",
+      "speakerSyncedWordHighlight": true,
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "wordTimings": [
+        {
+          "text": "während",
+          "startSeconds": 35.38,
+          "endSeconds": 35.56,
+          "confidence": 1
+        },
+        {
+          "text": "sie",
+          "startSeconds": 35.56,
+          "endSeconds": 35.7,
+          "confidence": 1
+        },
+        {
+          "text": "für",
+          "startSeconds": 35.7,
+          "endSeconds": 35.82,
+          "confidence": 1
+        },
+        {
+          "text": "andere",
+          "startSeconds": 35.82,
+          "endSeconds": 36.1,
+          "confidence": 1
+        },
+        {
+          "text": "oft",
+          "startSeconds": 36.1,
+          "endSeconds": 36.34,
+          "confidence": 1
+        },
+        {
+          "text": "nur",
+          "startSeconds": 36.34,
+          "endSeconds": 36.48,
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "scene-09-subtitle-02",
+      "sceneId": "scene-09",
+      "text": "ein kurzer Moment ist.",
+      "startSeconds": 36.485,
+      "endSeconds": 37.34,
+      "position": "center",
+      "verticalPositionPercent": 58,
+      "textColor": "#F5F7FA",
+      "backgroundColor": "transparent",
+      "highlightCurrentWord": true,
+      "highlightColor": "#B7794A",
+      "speakerSyncedWordHighlight": true,
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "wordTimings": [
+        {
+          "text": "ein",
+          "startSeconds": 36.48,
+          "endSeconds": 36.6,
+          "confidence": 1
+        },
+        {
+          "text": "kurzer",
+          "startSeconds": 36.6,
+          "endSeconds": 36.94,
+          "confidence": 1
+        },
+        {
+          "text": "Moment",
+          "startSeconds": 36.94,
+          "endSeconds": 37.14,
+          "confidence": 1
+        },
+        {
+          "text": "ist.",
+          "startSeconds": 37.14,
+          "endSeconds": 37.34,
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "scene-10-subtitle-01",
+      "sceneId": "scene-10",
+      "text": "Das gilt nicht nur für peinliche",
+      "startSeconds": 37.505,
+      "endSeconds": 38.88,
+      "position": "center",
+      "verticalPositionPercent": 58,
+      "textColor": "#F5F7FA",
+      "backgroundColor": "transparent",
+      "highlightCurrentWord": true,
+      "highlightColor": "#B7794A",
+      "speakerSyncedWordHighlight": true,
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "wordTimings": [
+        {
+          "text": "Das",
+          "startSeconds": 37.54,
+          "endSeconds": 37.76,
+          "confidence": 1
+        },
+        {
+          "text": "gilt",
+          "startSeconds": 37.76,
+          "endSeconds": 37.92,
+          "confidence": 1
+        },
+        {
+          "text": "nicht",
+          "startSeconds": 37.92,
+          "endSeconds": 38.1,
+          "confidence": 1
+        },
+        {
+          "text": "nur",
+          "startSeconds": 38.1,
+          "endSeconds": 38.28,
+          "confidence": 1
+        },
+        {
+          "text": "für",
+          "startSeconds": 38.28,
+          "endSeconds": 38.42,
+          "confidence": 1
+        },
+        {
+          "text": "peinliche",
+          "startSeconds": 38.42,
+          "endSeconds": 38.88,
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "scene-10-subtitle-02",
+      "sceneId": "scene-10",
+      "text": "Dinge: Auch wie stark deine guten",
+      "startSeconds": 38.885,
+      "endSeconds": 40.36,
+      "position": "center",
+      "verticalPositionPercent": 58,
+      "textColor": "#F5F7FA",
+      "backgroundColor": "transparent",
+      "highlightCurrentWord": true,
+      "highlightColor": "#B7794A",
+      "speakerSyncedWordHighlight": true,
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "wordTimings": [
+        {
+          "text": "Dinge:",
+          "startSeconds": 38.88,
+          "endSeconds": 39.06,
+          "confidence": 1
+        },
+        {
+          "text": "Auch",
+          "startSeconds": 39.24,
+          "endSeconds": 39.36,
+          "confidence": 1
+        },
+        {
+          "text": "wie",
+          "startSeconds": 39.36,
+          "endSeconds": 39.5,
+          "confidence": 1
+        },
+        {
+          "text": "stark",
+          "startSeconds": 39.5,
+          "endSeconds": 39.82,
+          "confidence": 1
+        },
+        {
+          "text": "deine",
+          "startSeconds": 39.82,
+          "endSeconds": 40.04,
+          "confidence": 1
+        },
+        {
+          "text": "guten",
+          "startSeconds": 40.04,
+          "endSeconds": 40.36,
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "scene-10-subtitle-03",
+      "sceneId": "scene-10",
+      "text": "Beiträge auffallen, kannst du überschätzen.",
+      "startSeconds": 40.365,
+      "endSeconds": 42.2,
+      "position": "center",
+      "verticalPositionPercent": 58,
+      "textColor": "#F5F7FA",
+      "backgroundColor": "transparent",
+      "highlightCurrentWord": true,
+      "highlightColor": "#B7794A",
+      "speakerSyncedWordHighlight": true,
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "wordTimings": [
+        {
+          "text": "Beiträge",
+          "startSeconds": 40.36,
+          "endSeconds": 40.88,
+          "confidence": 1
+        },
+        {
+          "text": "auffallen,",
+          "startSeconds": 40.88,
+          "endSeconds": 41.3,
+          "confidence": 1
+        },
+        {
+          "text": "kannst",
+          "startSeconds": 41.5,
+          "endSeconds": 41.66,
+          "confidence": 1
+        },
+        {
+          "text": "du",
+          "startSeconds": 41.66,
+          "endSeconds": 41.8,
+          "confidence": 1
+        },
+        {
+          "text": "überschätzen.",
+          "startSeconds": 41.8,
+          "endSeconds": 42.2,
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "scene-11-subtitle-01",
+      "sceneId": "scene-11",
+      "text": "Der Effekt verschwindet nicht immer, aber",
+      "startSeconds": 42.365,
+      "endSeconds": 44.14,
+      "position": "center",
+      "verticalPositionPercent": 58,
+      "textColor": "#F5F7FA",
+      "backgroundColor": "transparent",
+      "highlightCurrentWord": true,
+      "highlightColor": "#B7794A",
+      "speakerSyncedWordHighlight": true,
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "wordTimings": [
+        {
+          "text": "Der",
+          "startSeconds": 42.4,
+          "endSeconds": 42.56,
+          "confidence": 1
+        },
+        {
+          "text": "Effekt",
+          "startSeconds": 42.56,
+          "endSeconds": 42.86,
+          "confidence": 1
+        },
+        {
+          "text": "verschwindet",
+          "startSeconds": 42.86,
+          "endSeconds": 43.38,
+          "confidence": 1
+        },
+        {
+          "text": "nicht",
+          "startSeconds": 43.38,
+          "endSeconds": 43.52,
+          "confidence": 1
+        },
+        {
+          "text": "immer,",
+          "startSeconds": 43.52,
+          "endSeconds": 43.72,
+          "confidence": 1
+        },
+        {
+          "text": "aber",
+          "startSeconds": 43.94,
+          "endSeconds": 44.14,
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "scene-11-subtitle-02",
+      "sceneId": "scene-11",
+      "text": "du kannst ihn entschärfen.",
+      "startSeconds": 44.145,
+      "endSeconds": 45.3,
+      "position": "center",
+      "verticalPositionPercent": 58,
+      "textColor": "#F5F7FA",
+      "backgroundColor": "transparent",
+      "highlightCurrentWord": true,
+      "highlightColor": "#B7794A",
+      "speakerSyncedWordHighlight": true,
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "wordTimings": [
+        {
+          "text": "du",
+          "startSeconds": 44.14,
+          "endSeconds": 44.28,
+          "confidence": 1
+        },
+        {
+          "text": "kannst",
+          "startSeconds": 44.28,
+          "endSeconds": 44.56,
+          "confidence": 1
+        },
+        {
+          "text": "ihn",
+          "startSeconds": 44.56,
+          "endSeconds": 44.76,
+          "confidence": 1
+        },
+        {
+          "text": "entschärfen.",
+          "startSeconds": 44.76,
+          "endSeconds": 45.28,
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "scene-12-subtitle-01",
+      "sceneId": "scene-12",
+      "text": "Frag dich beim nächsten unangenehmen Moment:",
+      "startSeconds": 45.465,
+      "endSeconds": 47.38,
+      "position": "center",
+      "verticalPositionPercent": 58,
+      "textColor": "#F5F7FA",
+      "backgroundColor": "transparent",
+      "highlightCurrentWord": true,
+      "highlightColor": "#B7794A",
+      "speakerSyncedWordHighlight": true,
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "wordTimings": [
+        {
+          "text": "Frag",
+          "startSeconds": 45.5,
+          "endSeconds": 45.72,
+          "confidence": 1
+        },
+        {
+          "text": "dich",
+          "startSeconds": 45.72,
+          "endSeconds": 45.82,
+          "confidence": 1
+        },
+        {
+          "text": "beim",
+          "startSeconds": 45.82,
+          "endSeconds": 46.02,
+          "confidence": 1
+        },
+        {
+          "text": "nächsten",
+          "startSeconds": 46.02,
+          "endSeconds": 46.34,
+          "confidence": 1
+        },
+        {
+          "text": "unangenehmen",
+          "startSeconds": 46.34,
+          "endSeconds": 46.98,
+          "confidence": 1
+        },
+        {
+          "text": "Moment:",
+          "startSeconds": 46.98,
+          "endSeconds": 47.28,
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "scene-12-subtitle-02",
+      "sceneId": "scene-12",
+      "text": "Würdest du denselben Fehler bei einer",
+      "startSeconds": 47.425,
+      "endSeconds": 49.02,
+      "position": "center",
+      "verticalPositionPercent": 58,
+      "textColor": "#F5F7FA",
+      "backgroundColor": "transparent",
+      "highlightCurrentWord": true,
+      "highlightColor": "#B7794A",
+      "speakerSyncedWordHighlight": true,
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "wordTimings": [
+        {
+          "text": "Würdest",
+          "startSeconds": 47.46,
+          "endSeconds": 47.8,
+          "confidence": 1
+        },
+        {
+          "text": "du",
+          "startSeconds": 47.8,
+          "endSeconds": 47.92,
+          "confidence": 1
+        },
+        {
+          "text": "denselben",
+          "startSeconds": 47.92,
+          "endSeconds": 48.38,
+          "confidence": 1
+        },
+        {
+          "text": "Fehler",
+          "startSeconds": 48.38,
+          "endSeconds": 48.66,
+          "confidence": 1
+        },
+        {
+          "text": "bei",
+          "startSeconds": 48.66,
+          "endSeconds": 48.84,
+          "confidence": 1
+        },
+        {
+          "text": "einer",
+          "startSeconds": 48.84,
+          "endSeconds": 49.02,
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "scene-12-subtitle-03",
+      "sceneId": "scene-12",
+      "text": "anderen Person morgen noch erinnern?",
+      "startSeconds": 49.025,
+      "endSeconds": 50.62,
+      "position": "center",
+      "verticalPositionPercent": 58,
+      "textColor": "#F5F7FA",
+      "backgroundColor": "transparent",
+      "highlightCurrentWord": true,
+      "highlightColor": "#B7794A",
+      "speakerSyncedWordHighlight": true,
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "wordTimings": [
+        {
+          "text": "anderen",
+          "startSeconds": 49.02,
+          "endSeconds": 49.34,
+          "confidence": 1
+        },
+        {
+          "text": "Person",
+          "startSeconds": 49.34,
+          "endSeconds": 49.72,
+          "confidence": 1
+        },
+        {
+          "text": "morgen",
+          "startSeconds": 49.72,
+          "endSeconds": 50.08,
+          "confidence": 1
+        },
+        {
+          "text": "noch",
+          "startSeconds": 50.08,
+          "endSeconds": 50.26,
+          "confidence": 1
+        },
+        {
+          "text": "erinnern?",
+          "startSeconds": 50.26,
+          "endSeconds": 50.62,
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "scene-13-subtitle-01",
+      "sceneId": "scene-13",
+      "text": "Wahrscheinlich kaum. Genau deshalb musst du",
+      "startSeconds": 50.785,
+      "endSeconds": 52.7,
+      "position": "center",
+      "verticalPositionPercent": 58,
+      "textColor": "#F5F7FA",
+      "backgroundColor": "transparent",
+      "highlightCurrentWord": true,
+      "highlightColor": "#B7794A",
+      "speakerSyncedWordHighlight": true,
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "wordTimings": [
+        {
+          "text": "Wahrscheinlich",
+          "startSeconds": 50.82,
+          "endSeconds": 51.26,
+          "confidence": 1
+        },
+        {
+          "text": "kaum.",
+          "startSeconds": 51.26,
+          "endSeconds": 51.52,
+          "confidence": 1
+        },
+        {
+          "text": "Genau",
+          "startSeconds": 51.7,
+          "endSeconds": 51.94,
+          "confidence": 1
+        },
+        {
+          "text": "deshalb",
+          "startSeconds": 51.94,
+          "endSeconds": 52.38,
+          "confidence": 1
+        },
+        {
+          "text": "musst",
+          "startSeconds": 52.38,
+          "endSeconds": 52.6,
+          "confidence": 1
+        },
+        {
+          "text": "du",
+          "startSeconds": 52.6,
+          "endSeconds": 52.7,
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "scene-13-subtitle-02",
+      "sceneId": "scene-13",
+      "text": "nicht jedes kleine Missgeschick stundenlang im",
+      "startSeconds": 52.705,
+      "endSeconds": 54.82,
+      "position": "center",
+      "verticalPositionPercent": 58,
+      "textColor": "#F5F7FA",
+      "backgroundColor": "transparent",
+      "highlightCurrentWord": true,
+      "highlightColor": "#B7794A",
+      "speakerSyncedWordHighlight": true,
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "wordTimings": [
+        {
+          "text": "nicht",
+          "startSeconds": 52.7,
+          "endSeconds": 52.86,
+          "confidence": 1
+        },
+        {
+          "text": "jedes",
+          "startSeconds": 52.86,
+          "endSeconds": 53.2,
+          "confidence": 1
+        },
+        {
+          "text": "kleine",
+          "startSeconds": 53.2,
+          "endSeconds": 53.52,
+          "confidence": 1
+        },
+        {
+          "text": "Missgeschick",
+          "startSeconds": 53.52,
+          "endSeconds": 54.02,
+          "confidence": 1
+        },
+        {
+          "text": "stundenlang",
+          "startSeconds": 54.02,
+          "endSeconds": 54.66,
+          "confidence": 1
+        },
+        {
+          "text": "im",
+          "startSeconds": 54.66,
+          "endSeconds": 54.82,
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "scene-13-subtitle-03",
+      "sceneId": "scene-13",
+      "text": "Kopf wiederholen.",
+      "startSeconds": 54.825,
+      "endSeconds": 55.68,
+      "position": "center",
+      "verticalPositionPercent": 58,
+      "textColor": "#F5F7FA",
+      "backgroundColor": "transparent",
+      "highlightCurrentWord": true,
+      "highlightColor": "#B7794A",
+      "speakerSyncedWordHighlight": true,
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "wordTimings": [
+        {
+          "text": "Kopf",
+          "startSeconds": 54.82,
+          "endSeconds": 55.04,
+          "confidence": 1
+        },
+        {
+          "text": "wiederholen.",
+          "startSeconds": 55.04,
+          "endSeconds": 55.58,
+          "confidence": 1
+        }
+      ]
+    }
+  ],
+  "version": 7,
+  "enabled": true,
+  "language": "de",
+  "position": "center",
+  "safeVerticalRangePercent": {
+    "min": 58,
+    "max": 58
+  },
+  "textColor": "#F5F7FA",
+  "highlightCurrentWord": true,
+  "highlightColor": "#B7794A",
+  "speakerSyncedWordHighlight": true,
+  "highlightAnimation": "color-only",
+  "backgroundColor": "transparent",
+  "wordByWordKaraoke": true,
+  "minimumWordCoverage": 1,
+  "requireZeroUnassignedWords": true,
+  "requireExactVoiceScriptWordSequence": true,
+  "generatedBy": "codex",
+  "generatedAt": "2026-08-13T16:22:12.403Z",
+  "audioFile": "audio/voiceover-tight.m4a",
+  "audioFingerprintSha256": "3949b97a6c463c49c0ab11126dd1774a9f61e697e35be09cad6bc14341d497af",
+  "audioBindingStatus": "verified"
+}

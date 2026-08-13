@@ -1,1 +1,35 @@
-{"sceneId":"scene-10","order":10,"title":"Auch Positives wird überschätzt","narration":"Das gilt nicht nur für peinliche Dinge: Auch wie stark deine guten Beiträge auffallen, kannst du überschätzen.","imageText":"AUCH POSITIVES","visualIdea":"Die Hauptfigur hält einen guten Beitrag für viel auffälliger, als er in der Gruppe tatsächlich wahrgenommen wird.","audioCue":"Das gilt nicht nur","leadInSeconds":0.2,"durationSeconds":5.2,"expectedImageFileName":"scene-10.png","promptStatus":"ready","imageStatus":"missing","status":"prompt-ready"}
+{
+  "sceneId": "scene-10",
+  "order": 10,
+  "title": "Auch Positives wird überschätzt",
+  "narration": "Das gilt nicht nur für peinliche Dinge: Auch wie stark deine guten Beiträge auffallen, kannst du überschätzen.",
+  "imageText": "AUCH POSITIVES",
+  "visualIdea": "Die Hauptfigur hält einen guten Beitrag für viel auffälliger, als er in der Gruppe tatsächlich wahrgenommen wird.",
+  "audioCue": "Das gilt nicht nur",
+  "leadInSeconds": 0.2,
+  "durationSeconds": 5.2,
+  "expectedImageFileName": "scene-10.jpeg",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "status": "image-ready",
+  "source": "numbered-images/Bild 10.jpeg",
+  "matchConfidence": 1,
+  "matchReason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-10",
+    "confirmedSceneOrder": 10,
+    "visibleSummary": "Verified by user via Google Flow generation",
+    "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+    "comparedFields": [
+      "narration",
+      "visualIdea",
+      "imageText",
+      "imagePrompt"
+    ],
+    "matchMethod": "visual-content-review",
+    "reviewedAt": "2026-08-12T17:52:03.239Z"
+  }
+}

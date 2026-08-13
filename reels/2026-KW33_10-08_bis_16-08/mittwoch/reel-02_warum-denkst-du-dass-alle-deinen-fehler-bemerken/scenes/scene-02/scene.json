@@ -1,1 +1,35 @@
-{"sceneId":"scene-02","order":2,"title":"Spotlight-Effekt","narration":"Meist überschätzt du das. Psychologen nennen das den Spotlight-Effekt.","imageText":"SPOTLIGHT-EFFEKT","visualIdea":"Die Hauptfigur steht unter einem übergroßen Lichtkegel, während die Umgebung deutlich weniger Aufmerksamkeit zeigt.","audioCue":"Meist überschätzt du das","leadInSeconds":0.2,"durationSeconds":3.8,"expectedImageFileName":"scene-02.png","promptStatus":"ready","imageStatus":"missing","status":"prompt-ready"}
+{
+  "sceneId": "scene-02",
+  "order": 2,
+  "title": "Spotlight-Effekt",
+  "narration": "Meist überschätzt du das. Psychologen nennen das den Spotlight-Effekt.",
+  "imageText": "SPOTLIGHT-EFFEKT",
+  "visualIdea": "Die Hauptfigur steht unter einem übergroßen Lichtkegel, während die Umgebung deutlich weniger Aufmerksamkeit zeigt.",
+  "audioCue": "Meist überschätzt du das",
+  "leadInSeconds": 0.2,
+  "durationSeconds": 3.8,
+  "expectedImageFileName": "scene-02.jpeg",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "status": "image-ready",
+  "source": "numbered-images/Bild 02.jpeg",
+  "matchConfidence": 1,
+  "matchReason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-02",
+    "confirmedSceneOrder": 2,
+    "visibleSummary": "Verified by user via Google Flow generation",
+    "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+    "comparedFields": [
+      "narration",
+      "visualIdea",
+      "imageText",
+      "imagePrompt"
+    ],
+    "matchMethod": "visual-content-review",
+    "reviewedAt": "2026-08-12T17:52:03.219Z"
+  }
+}

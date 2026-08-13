@@ -1,1 +1,23 @@
-{"imageId":"Bild 00","role":"cover","headline":"ALLE HABEN DAS GESEHEN?","status":"prompt-ready","isStyleMaster":true}
+{
+  "imageId": "Bild 00",
+  "role": "cover",
+  "headline": "ALLE HABEN DAS GESEHEN?",
+  "status": "ready",
+  "isStyleMaster": true,
+  "expectedImageFileName": "cover.jpeg",
+  "source": "numbered-images/Bild 00.jpeg",
+  "confidence": 1,
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "visibleSummary": "Verified by user via Google Flow generation",
+    "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+    "comparedFields": [
+      "headline",
+      "coverVisualIdea",
+      "coverPrompt"
+    ],
+    "matchMethod": "visual-content-review",
+    "reviewedAt": "2026-08-12T17:52:03.214Z"
+  }
+}

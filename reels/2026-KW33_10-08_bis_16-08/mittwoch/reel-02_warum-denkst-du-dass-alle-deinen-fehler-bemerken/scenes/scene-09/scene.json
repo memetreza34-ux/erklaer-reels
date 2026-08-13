@@ -1,1 +1,35 @@
-{"sceneId":"scene-09","order":9,"title":"Für andere nur kurz","narration":"während sie für andere oft nur ein kurzer Moment ist.","imageText":"FÜR ANDERE: KURZ","visualIdea":"Der gleiche Patzer schrumpft aus Sicht der anderen zu einem winzigen Moment, der sofort weiterzieht.","audioCue":"während sie für andere","leadInSeconds":0.2,"durationSeconds":3.4,"expectedImageFileName":"scene-09.png","promptStatus":"ready","imageStatus":"missing","status":"prompt-ready"}
+{
+  "sceneId": "scene-09",
+  "order": 9,
+  "title": "Für andere nur kurz",
+  "narration": "während sie für andere oft nur ein kurzer Moment ist.",
+  "imageText": "FÜR ANDERE: KURZ",
+  "visualIdea": "Der gleiche Patzer schrumpft aus Sicht der anderen zu einem winzigen Moment, der sofort weiterzieht.",
+  "audioCue": "während sie für andere",
+  "leadInSeconds": 0.2,
+  "durationSeconds": 3.4,
+  "expectedImageFileName": "scene-09.jpeg",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "status": "image-ready",
+  "source": "numbered-images/Bild 09.jpeg",
+  "matchConfidence": 1,
+  "matchReason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-09",
+    "confirmedSceneOrder": 9,
+    "visibleSummary": "Verified by user via Google Flow generation",
+    "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+    "comparedFields": [
+      "narration",
+      "visualIdea",
+      "imageText",
+      "imagePrompt"
+    ],
+    "matchMethod": "visual-content-review",
+    "reviewedAt": "2026-08-12T17:52:03.237Z"
+  }
+}

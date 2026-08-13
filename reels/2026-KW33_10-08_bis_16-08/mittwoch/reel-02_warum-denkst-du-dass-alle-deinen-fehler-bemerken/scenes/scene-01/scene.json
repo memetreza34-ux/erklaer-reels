@@ -1,1 +1,35 @@
-{"sceneId":"scene-01","order":1,"title":"Hook","narration":"Du stolperst vor anderen über ein Wort und denkst sofort: Alle haben das gesehen.","imageText":"","visualIdea":"Eine Person verhaspelt sich vor einer kleinen Gruppe und erlebt in ihrer Vorstellung einen riesigen Scheinwerfer auf sich.","audioCue":"Du stolperst vor anderen","leadInSeconds":0.2,"durationSeconds":4.8,"expectedImageFileName":"scene-01.png","promptStatus":"ready","imageStatus":"missing","status":"prompt-ready"}
+{
+  "sceneId": "scene-01",
+  "order": 1,
+  "title": "Hook",
+  "narration": "Du stolperst vor anderen über ein Wort und denkst sofort: Alle haben das gesehen.",
+  "imageText": "",
+  "visualIdea": "Eine Person verhaspelt sich vor einer kleinen Gruppe und erlebt in ihrer Vorstellung einen riesigen Scheinwerfer auf sich.",
+  "audioCue": "Du stolperst vor anderen",
+  "leadInSeconds": 0.2,
+  "durationSeconds": 4.8,
+  "expectedImageFileName": "scene-01.jpeg",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "status": "image-ready",
+  "source": "numbered-images/Bild 01.jpeg",
+  "matchConfidence": 1,
+  "matchReason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-01",
+    "confirmedSceneOrder": 1,
+    "visibleSummary": "Verified by user via Google Flow generation",
+    "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+    "comparedFields": [
+      "narration",
+      "visualIdea",
+      "imageText",
+      "imagePrompt"
+    ],
+    "matchMethod": "visual-content-review",
+    "reviewedAt": "2026-08-12T17:52:03.217Z"
+  }
+}
