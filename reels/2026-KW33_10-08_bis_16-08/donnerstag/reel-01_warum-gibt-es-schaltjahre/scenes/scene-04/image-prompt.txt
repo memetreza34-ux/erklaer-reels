@@ -1,0 +1,1 @@
+Match Bild 00.png exactly. Show a stack of full calendar-day pages as rigid whole rectangles while a glowing partial-day clock slice remains outside the stack and cannot fit as a whole page. Integrate the exact German text "GANZE TAGE" as the only readable heading. Keep the visual metaphor simple and phone-readable. No English, no logo, no watermark.

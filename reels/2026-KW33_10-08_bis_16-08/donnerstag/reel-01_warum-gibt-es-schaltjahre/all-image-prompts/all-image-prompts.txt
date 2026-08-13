@@ -1,0 +1,101 @@
+GOOGLE FLOW – KOMPLETTER SERIELLER BILDLAUF
+
+AUFTRAG
+Erzeuge für dieses Reel genau 14 Bilder: Bild 00 als Cover und danach Bild 01 bis Bild 13 für die 13 Szenen.
+
+WICHTIG – DIESE EINE NACHRICHT IST DIE KOMPLETTE FREIGABE
+Sobald dieser Gesamtprompt einmal abgesendet wurde, arbeitest du selbstständig bis Bild 13 fertig ist. Frage NICHT nach Go, Weiter, OK, Bestätigung oder Erlaubnis.
+
+STRENG SERIELL – NIE PARALLEL
+Zu jedem Zeitpunkt darf genau EINE Bildgenerierung aktiv sein.
+Für jedes Bild zwingend:
+1. Nur den aktuellen Bildprompt bearbeiten.
+2. Genau EIN Bild erzeugen.
+3. Warten, bis dieses Bild vollständig fertig ist.
+4. Sofort exakt in den vorgesehenen Namen umbenennen.
+5. Prüfen, dass die Umbenennung erfolgreich ist.
+6. Erst danach automatisch das nächste Bild starten.
+Keine Batches, keine Queue, kein Vorladen, keine parallelen Generierungen und keine Ansammlung unbenannter Bilder.
+
+DATEINAMEN
+Bild 00.png = Cover
+Bild 01.png = Szene 1
+Bild 02.png = Szene 2
+Bild 03.png = Szene 3
+Bild 04.png = Szene 4
+Bild 05.png = Szene 5
+Bild 06.png = Szene 6
+Bild 07.png = Szene 7
+Bild 08.png = Szene 8
+Bild 09.png = Szene 9
+Bild 10.png = Szene 10
+Bild 11.png = Szene 11
+Bild 12.png = Szene 12
+Bild 13.png = Szene 13
+
+STYLE-MASTER
+Bild 00.png wird zuerst vollständig erzeugt. Das fertige Bild 00.png ist danach die verbindliche visuelle Referenz für ALLE Szenen: gleiche Palette, Papiertextur, Konturstärke, geometrische Formsprache, Lichtstimmung und Detailqualität. Der Cover-Hook darf NICHT automatisch auf spätere Szenen kopiert werden.
+
+TEXTREGEL
+Nur der im jeweiligen Prompt ausdrücklich verlangte deutsche Text darf sichtbar erscheinen. Kein zusätzlicher englischer Text, keine Fantasiewörter, keine Logos und keine Wasserzeichen.
+
+ENDE
+Erst nachdem Bild 00 bis Bild 13 vollständig erzeugt, korrekt umbenannt und die Nummerierung geprüft wurden, alle fertigen Bilder gemeinsam in den vorgesehenen Sammelordner legen. Nicht während der laufenden Generierung einzelne Bilder dorthin verschieben.
+
+────────────────────────────────────────
+
+BILD 00 – COVER
+DATEINAME NACH FERTIGSTELLUNG: Bild 00.png
+Vertical 9:16 premium mature 2D editorial astronomy-and-calendar cover illustration for a German explainer Reel about leap years. Dark navy background, warm cream paper texture, muted gold and rust accents, bold clean hand-drawn outlines, flat geometric shading, subtle grain, high contrast and strong phone-screen readability. Show Earth moving around the Sun on a clear orbital arc while a large calendar flips from February 28 directly toward a glowing February 29 card; beside the calendar, a small clock-like slice represents the leftover fraction of a day. The concept must instantly communicate that Earth's orbit does not fit perfectly into 365 whole calendar days. Add one large perfectly readable German headline exactly: "WARUM GIBT ES SCHALTJAHRE?" Keep it inside social safe zones. No other readable words, no English, no logos, no watermark. This finished Bild 00.png becomes the binding style master for every later scene: same palette, paper texture, line weight, geometry, lighting and detail quality.
+
+BILD 01 – SZENE 1
+DATEINAME NACH FERTIGSTELLUNG: Bild 01.png
+Vertical 9:16 premium mature 2D editorial astronomy-and-calendar illustration. Match Bild 00.png exactly in dark navy, warm cream, muted gold and rust palette, paper texture, bold hand-drawn outlines, flat geometric shading and detail quality. Show Earth on a clean orbital arc around the Sun beside a calendar whose February 29 page suddenly glows into view. Integrate the exact German text "29. FEBRUAR?" as the only readable phrase. No English, no logo, no watermark.
+
+BILD 02 – SZENE 2
+DATEINAME NACH FERTIGSTELLUNG: Bild 02.png
+Match Bild 00.png exactly. Vertical 9:16 mature 2D editorial astronomy illustration. Show a circular Earth orbit divided into 365 neat day markers, but Earth has not quite returned to the starting line after marker 365; a small remaining orbital arc is still visible. Integrate the exact German text "365 TAGE?" as the only readable label. No English, no logo, no watermark.
+
+BILD 03 – SZENE 3
+DATEINAME NACH FERTIGSTELLUNG: Bild 03.png
+Match Bild 00.png exactly. Show Earth completing the final small fraction of its orbit after the 365th day marker while a clean analog-clock arc visualizes the leftover time. Integrate the exact German text "+ 5 H 48 MIN 46 S" prominently and accurately. Mature educational composition, no other readable text, no English, no logo, no watermark.
+
+BILD 04 – SZENE 4
+DATEINAME NACH FERTIGSTELLUNG: Bild 04.png
+Match Bild 00.png exactly. Show a stack of full calendar-day pages as rigid whole rectangles while a glowing partial-day clock slice remains outside the stack and cannot fit as a whole page. Integrate the exact German text "GANZE TAGE" as the only readable heading. Keep the visual metaphor simple and phone-readable. No English, no logo, no watermark.
+
+BILD 05 – SZENE 5
+DATEINAME NACH FERTIGSTELLUNG: Bild 05.png
+Match Bild 00.png exactly. Show four consecutive year cards, each releasing one glowing roughly six-hour time segment. The four segments assemble into almost one complete 24-hour clock face and a February 29 calendar page. Integrate the exact German text "FAST 1 TAG" as the only readable phrase. No English, no logo, no watermark.
+
+BILD 06 – SZENE 6
+DATEINAME NACH FERTIGSTELLUNG: Bild 06.png
+Match Bild 00.png exactly. Show a long calendar ribbon with spring, summer, autumn and winter icons gradually sliding away from their familiar month positions because no correction is made. Keep it one coherent visual, not panels. Integrate the exact German text "KALENDER DRIFTET" as the only readable phrase. No English, no logo, no watermark.
+
+BILD 07 – SZENE 7
+DATEINAME NACH FERTIGSTELLUNG: Bild 07.png
+Match Bild 00.png exactly. Create a tasteful Roman-era inspired calendar scene: a parchment calendar cycle marks every fourth year with one added day at the end of February, while a simple Roman laurel-and-scroll motif gives historical context without depicting a recognizable person. Integrate the exact German text "JULIANISCH" as the only readable label. No English, no logo, no watermark.
+
+BILD 08 – SZENE 8
+DATEINAME NACH FERTIGSTELLUNG: Bild 08.png
+Match Bild 00.png exactly. Show a balanced scientific scale: one side labeled "365,25" sits slightly heavier than the other side labeled "365,2422", with a tiny excess time fragment visibly causing the imbalance. The exact readable text must be "365,25 > 365,2422". No other readable words, no English, no logo, no watermark.
+
+BILD 09 – SZENE 9
+DATEINAME NACH FERTIGSTELLUNG: Bild 09.png
+Match Bild 00.png exactly. Show a calendar mechanism made of large clean gears: the normal four-year gear is joined by one smaller precision gear marked conceptually for century correction, making the calendar align more closely with Earth's orbit. Integrate the exact German text "EXTRA-REGEL" as the only readable phrase. No English, no logo, no watermark.
+
+BILD 10 – SZENE 10
+DATEINAME NACH FERTIGSTELLUNG: Bild 10.png
+Match Bild 00.png exactly. Show a sequence of year cards where years divisible by four receive a glowing February 29 page, using a simple division-by-four visual cue rather than equations. Integrate the exact German text "DURCH 4" as the only readable phrase. No English, no logo, no watermark.
+
+BILD 11 – SZENE 11
+DATEINAME NACH FERTIGSTELLUNG: Bild 11.png
+Match Bild 00.png exactly. Show two large century-year calendar cards side by side within one coherent composition: 1900 has its February 29 card removed with a clear cross symbol, while 2000 keeps February 29 with a clear check symbol. Beneath them, a subtle orbit ring communicates better long-term alignment. Integrate the exact German text "1900 ✕  |  2000 ✓" and a smaller exact number "365,2425". No other readable text, no English, no logo, no watermark.
+
+BILD 12 – SZENE 12
+DATEINAME NACH FERTIGSTELLUNG: Bild 12.png
+Match Bild 00.png exactly. Show one large calendar card labeled 2100 at center, surrounded by a division-by-100 symbol, a division-by-400 symbol and a large question mark. Integrate the exact German question "2100 = SCHALTJAHR?" prominently within safe zones. Keep the answer visually unresolved. No English, no logo, no watermark.
+
+BILD 13 – SZENE 13
+DATEINAME NACH FERTIGSTELLUNG: Bild 13.png
+Match Bild 00.png exactly. Show the 2100 calendar without February 29 because it is not divisible by 400, while Earth, the calendar and four seasonal icons click into a clean aligned mechanism. Integrate the exact German text "NEIN – NICHT DURCH 400" as the only readable phrase. Clear satisfying conclusion, no English, no logo, no watermark. Hold this final visual unchanged for the 0.7-second end frame after the last spoken word.

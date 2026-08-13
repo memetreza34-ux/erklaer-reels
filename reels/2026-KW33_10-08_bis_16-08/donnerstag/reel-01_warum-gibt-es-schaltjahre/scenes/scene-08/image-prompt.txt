@@ -1,0 +1,1 @@
+Match Bild 00.png exactly. Show a balanced scientific scale: one side labeled "365,25" sits slightly heavier than the other side labeled "365,2422", with a tiny excess time fragment visibly causing the imbalance. The exact readable text must be "365,25 > 365,2422". No other readable words, no English, no logo, no watermark.
