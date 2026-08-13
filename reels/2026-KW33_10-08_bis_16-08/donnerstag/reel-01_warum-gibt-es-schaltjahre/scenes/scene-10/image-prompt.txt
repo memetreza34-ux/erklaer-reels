@@ -1,0 +1,1 @@
+Match Bild 00.png exactly. Show a sequence of year cards where years divisible by four receive a glowing February 29 page, using a simple division-by-four visual cue rather than equations. Integrate the exact German text "DURCH 4" as the only readable phrase. No English, no logo, no watermark.

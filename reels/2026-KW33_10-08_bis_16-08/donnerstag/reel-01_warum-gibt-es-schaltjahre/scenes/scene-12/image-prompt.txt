@@ -1,0 +1,1 @@
+Match Bild 00.png exactly. Show one large calendar card labeled 2100 at center, surrounded by a division-by-100 symbol, a division-by-400 symbol and a large question mark. Integrate the exact German question "2100 = SCHALTJAHR?" prominently within safe zones. Keep the answer visually unresolved. No English, no logo, no watermark.
