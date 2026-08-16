@@ -1,0 +1,101 @@
+GOOGLE FLOW – KOMPLETTER SERIELLER BILDLAUF
+
+AUFTRAG
+Erzeuge für dieses Reel genau 14 Bilder: Bild 00 als Cover und danach Bild 01 bis Bild 13 für die 13 Szenen.
+
+WICHTIG – DIESE EINE NACHRICHT IST DIE KOMPLETTE FREIGABE
+Sobald dieser Gesamtprompt einmal abgesendet wurde, arbeitest du selbstständig bis Bild 13 fertig ist. Frage NICHT nach Go, Weiter, OK, Bestätigung oder Erlaubnis.
+
+STRENG SERIELL – NIE PARALLEL
+Zu jedem Zeitpunkt darf genau EINE Bildgenerierung aktiv sein.
+Für jedes Bild zwingend:
+1. Nur den aktuellen Bildprompt bearbeiten.
+2. Genau EIN Bild erzeugen.
+3. Warten, bis dieses Bild vollständig fertig ist.
+4. Sofort exakt in den vorgesehenen Namen umbenennen.
+5. Prüfen, dass die Umbenennung erfolgreich ist.
+6. Erst danach automatisch das nächste Bild starten.
+Keine Batches, keine Queue, kein Vorladen, keine parallelen Generierungen und keine Ansammlung unbenannter Bilder.
+
+DATEINAMEN
+Bild 00.png = Cover
+Bild 01.png = Szene 1
+Bild 02.png = Szene 2
+Bild 03.png = Szene 3
+Bild 04.png = Szene 4
+Bild 05.png = Szene 5
+Bild 06.png = Szene 6
+Bild 07.png = Szene 7
+Bild 08.png = Szene 8
+Bild 09.png = Szene 9
+Bild 10.png = Szene 10
+Bild 11.png = Szene 11
+Bild 12.png = Szene 12
+Bild 13.png = Szene 13
+
+STYLE-MASTER
+Bild 00.png wird zuerst vollständig erzeugt. Das fertige Bild 00.png ist danach die verbindliche visuelle Referenz für ALLE Szenen: gleiche Palette, Papiertextur, Charaktergestaltung, Konturstärke, Lichtstimmung und Detailqualität. Der Cover-Hook darf NICHT automatisch auf spätere Szenen kopiert werden.
+
+TEXTREGEL
+Nur der im jeweiligen Prompt ausdrücklich verlangte deutsche Text darf sichtbar erscheinen. Kein zusätzlicher englischer Text, keine Fantasiewörter, keine Logos und keine Wasserzeichen.
+
+ENDE
+Erst nachdem Bild 00 bis Bild 13 vollständig erzeugt, korrekt umbenannt und die Nummerierung geprüft wurden, alle fertigen Bilder gemeinsam in den vorgesehenen Sammelordner legen. Nicht während der laufenden Generierung einzelne Bilder dorthin verschieben.
+
+────────────────────────────────────────
+
+BILD 00 – COVER
+DATEINAME NACH FERTIGSTELLUNG: Bild 00.png
+Vertical 9:16 premium mature 2D editorial psychology cover illustration for a German explainer Reel about the anchoring effect. Dark navy background, warm cream paper texture, muted rust-brown, cobalt and soft gold accents, bold clean hand-drawn outlines, flat geometric shading, subtle grain, sophisticated not childish. Show one person making a numerical estimate on a horizontal scale while a huge floating number card acts like a heavy anchor pulling the estimate marker toward itself. A second faint estimate marker shows where the person might have guessed without the anchor. Strong visual hierarchy and phone-screen readability. Add one large perfectly readable German headline exactly: "WARUM BEEINFLUSST DICH EINE ZAHL?" Keep it inside social safe zones. No other readable words, no English, no logos, no watermark. This finished Bild 00.png becomes the binding style master for palette, character design, paper texture, line weight, lighting and detail quality of all later scenes.
+
+BILD 01 – SZENE 1
+DATEINAME NACH FERTIGSTELLUNG: Bild 01.png
+Vertical 9:16 premium mature 2D editorial psychology illustration. Match Bild 00.png exactly in dark navy, warm cream, muted rust-brown, cobalt and soft gold palette, paper texture, bold hand-drawn outlines, flat geometric shading and detail quality. Show a person about to make a numerical estimate while one completely random floating number card suddenly appears and pulls the estimate marker toward itself like a magnetic force. Integrate the exact German text "ZUFÄLLIGE ZAHL?" as the only readable phrase. No English, no logo, no watermark.
+
+BILD 02 – SZENE 2
+DATEINAME NACH FERTIGSTELLUNG: Bild 02.png
+Match Bild 00.png exactly. Vertical 9:16 mature 2D editorial psychology illustration. Turn one large number card into a clean symbolic anchor attached to a horizontal estimation scale; the person's estimate marker is visibly pulled toward it. Integrate the exact German text "ANKEREFFEKT" as the only readable label. Sophisticated educational look, no English, no logo, no watermark.
+
+BILD 03 – SZENE 3
+DATEINAME NACH FERTIGSTELLUNG: Bild 03.png
+Match Bild 00.png exactly. Show a clean numerical scale with no fixed answer yet. A first number card lands on the scale and becomes a highlighted reference point; a later estimate marker appears closer to that point than a faint neutral baseline. Integrate the exact German text "BEZUGSPUNKT" as the only readable phrase. No English, no logo, no watermark.
+
+BILD 04 – SZENE 4
+DATEINAME NACH FERTIGSTELLUNG: Bild 04.png
+Match Bild 00.png exactly. Recreate the logic of the classic anchoring experiment without copying any historical photo: show a stylized laboratory-style wheel of fortune that can visibly stop at either 10 or 65, with two strong number wedges highlighted. A participant watches the wheel before answering a separate question. Integrate the exact German text "10 ODER 65" as the only readable phrase. No logos, no English, no watermark.
+
+BILD 05 – SZENE 5
+DATEINAME NACH FERTIGSTELLUNG: Bild 05.png
+Match Bild 00.png exactly. Show the participant now facing an abstract world-map board and a percentage estimation scale about the share of African member states in an international organization. Use simple continent silhouettes and neutral meeting-room symbols, not any real organization logo. Integrate the exact German text "WIE VIEL PROZENT?" as the only readable phrase. No English, no logo, no watermark.
+
+BILD 06 – SZENE 6
+DATEINAME NACH FERTIGSTELLUNG: Bild 06.png
+Match Bild 00.png exactly. Show the low anchor 10 on the left as a heavy number card and a separate estimation scale where the group's median marker lands at 25 percent, visibly shifted toward the low anchor. Integrate the exact German text "10 → 25 %" clearly and accurately as the only readable text. No English, no logo, no watermark.
+
+BILD 07 – SZENE 7
+DATEINAME NACH FERTIGSTELLUNG: Bild 07.png
+Match Bild 00.png exactly. Show the high anchor 65 as a heavy number card and the same estimation scale where the group's median marker now lands at 45 percent, visibly shifted upward toward the high anchor. Integrate the exact German text "65 → 45 %" clearly and accurately as the only readable text. No English, no logo, no watermark.
+
+BILD 08 – SZENE 8
+DATEINAME NACH FERTIGSTELLUNG: Bild 08.png
+Match Bild 00.png exactly. Show the wheel of fortune on one side and the abstract world-map estimation question on the other, separated by a clear broken connection line and a large visual disconnect symbol. The composition must communicate that the wheel number is factually unrelated to the question. Integrate the exact German text "VÖLLIG ZUFÄLLIG" as the only readable phrase. No English, no logo, no watermark.
+
+BILD 09 – SZENE 9
+DATEINAME NACH FERTIGSTELLUNG: Bild 09.png
+Match Bild 00.png exactly. Show several independent estimate markers on a horizontal scale being subtly pulled in the same direction by one oversized number anchor using clean tension lines, while faint neutral markers remain behind. Integrate the exact German text "ANTWORT ZIEHT MIT" as the only readable phrase. No English, no logo, no watermark.
+
+BILD 10 – SZENE 10
+DATEINAME NACH FERTIGSTELLUNG: Bild 10.png
+Match Bild 00.png exactly. Create one coherent everyday scene, not panels: a first price tag, a first time estimate on a clock and a neutral numerical suggestion each appear before later estimation scales, with subtle anchor-shaped shadows connecting first numbers to later judgments. Integrate the exact German text "ERSTE ZAHLEN WIRKEN" as the only readable phrase. No brand names, no English, no logo, no watermark.
+
+BILD 11 – SZENE 11
+DATEINAME NACH FERTIGSTELLUNG: Bild 11.png
+Match Bild 00.png exactly. Show the protagonist deliberately moving an estimate marker away from a large number anchor after reconsidering the evidence. The anchor still exerts a visible pull, but the person's hand and reasoning notes can correct the estimate. Integrate the exact German text "KEIN SCHICKSAL" as the only readable phrase. No English, no logo, no watermark.
+
+BILD 12 – SZENE 12
+DATEINAME NACH FERTIGSTELLUNG: Bild 12.png
+Match Bild 00.png exactly. Show the protagonist in front of a completely blank estimation scale while another person holds up a large arbitrary number card before the estimate is made. The protagonist pauses and looks at the number with a large question mark between number and scale. Integrate the exact German question "WÜRDEST DU SIE IGNORIEREN?" prominently inside safe zones. No English, no logo, no watermark.
+
+BILD 13 – SZENE 13
+DATEINAME NACH FERTIGSTELLUNG: Bild 13.png
+Match Bild 00.png exactly. Show the protagonist first placing an independent estimate marker on a clean blank scale while all outside number cards remain hidden behind a curtain. Only after the marker is placed do the external numbers appear, and the protagonist calmly checks reasons and evidence. Integrate the exact German text "ERST SELBST SCHÄTZEN" as the only readable phrase. Clear satisfying conclusion. No English, no logo, no watermark. Hold this final visual unchanged for the 0.7-second end frame after the last spoken word.
