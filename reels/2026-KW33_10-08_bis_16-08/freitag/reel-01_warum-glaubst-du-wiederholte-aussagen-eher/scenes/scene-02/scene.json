@@ -9,11 +9,30 @@
   "durationSeconds": 3.2,
   "promptStatus": "ready",
   "imageStatus": "missing",
-  "assetVerification": null,
-  "status": "prompt-ready",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-02",
+    "confirmedSceneOrder": 2,
+    "visibleSummary": "Verified by Google Flow exact match from the user",
+    "reason": "Matches script entirely visually and textually after review.",
+    "comparedFields": [
+      "narration",
+      "visualIdea",
+      "imageText",
+      "imagePrompt"
+    ],
+    "matchMethod": "visual-text-and-content-review",
+    "reviewedAt": "2026-08-16T04:47:35.608Z"
+  },
+  "status": "image-ready",
   "continuityNotes": "Stilistisch passend zu Bild 00, gleiche Beleuchtung und Farbpalette, weicher Übergang der Szenerie.",
   "expectedImageFileName": "scene-02.jpeg",
   "leadInSeconds": 0.2,
   "subtitlePosition": "center",
-  "subtitleCues": []
+  "subtitleCues": [],
+  "source": "numbered-images/Bild 02.jpeg",
+  "matchConfidence": 1,
+  "matchReason": "Matches script entirely visually and textually after review."
 }

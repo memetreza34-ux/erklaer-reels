@@ -1,0 +1,133 @@
+{
+  "sceneId": "scene-03",
+  "order": 3,
+  "title": "Klares Ziel",
+  "narration": "Zuerst braucht die KI ein klares Ziel, die wichtigsten Funktionen und den gewünschten Ablauf.",
+  "imageText": "KLARES ZIEL",
+  "visualIdea": "A glowing blueprint of a mobile app structure floating in mid-air, connected by glowing lines, tech aesthetic, 9:16 aspect ratio",
+  "continuityNotes": "",
+  "audioCue": "Zuerst braucht die K",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [
+    {
+      "id": "scene-03-subtitle-1",
+      "text": "dafür meistens noch viel zu",
+      "startSeconds": 7.769,
+      "endSeconds": 9.535,
+      "verticalPositionPercent": 58,
+      "textColor": "#F2F2F2",
+      "highlightColor": "#CC8B66",
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "words": [
+        {
+          "text": "dafür",
+          "startSeconds": 7.769,
+          "endSeconds": 8.122
+        },
+        {
+          "text": "meistens",
+          "startSeconds": 8.122,
+          "endSeconds": 8.476
+        },
+        {
+          "text": "noch",
+          "startSeconds": 8.476,
+          "endSeconds": 8.829
+        },
+        {
+          "text": "viel",
+          "startSeconds": 8.829,
+          "endSeconds": 9.182
+        },
+        {
+          "text": "zu",
+          "startSeconds": 9.182,
+          "endSeconds": 9.535
+        }
+      ]
+    },
+    {
+      "id": "scene-03-subtitle-2",
+      "text": "ungenau.",
+      "startSeconds": 9.535,
+      "endSeconds": 9.888,
+      "verticalPositionPercent": 58,
+      "textColor": "#F2F2F2",
+      "highlightColor": "#CC8B66",
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "words": [
+        {
+          "text": "ungenau.",
+          "startSeconds": 9.535,
+          "endSeconds": 9.888
+        }
+      ]
+    },
+    {
+      "id": "scene-03-subtitle-3",
+      "text": "Zuerst braucht die KI ein",
+      "startSeconds": 9.888,
+      "endSeconds": 11.654,
+      "verticalPositionPercent": 58,
+      "textColor": "#F2F2F2",
+      "highlightColor": "#CC8B66",
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "words": [
+        {
+          "text": "Zuerst",
+          "startSeconds": 9.888,
+          "endSeconds": 10.241
+        },
+        {
+          "text": "braucht",
+          "startSeconds": 10.241,
+          "endSeconds": 10.594
+        },
+        {
+          "text": "die",
+          "startSeconds": 10.594,
+          "endSeconds": 10.948
+        },
+        {
+          "text": "KI",
+          "startSeconds": 10.948,
+          "endSeconds": 11.301
+        },
+        {
+          "text": "ein",
+          "startSeconds": 11.301,
+          "endSeconds": 11.654
+        }
+      ]
+    }
+  ],
+  "subtitlePosition": "center",
+  "durationSeconds": 3.885,
+  "expectedImageFileName": "scene-03.jpeg",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-03",
+    "confirmedSceneOrder": 3,
+    "visibleSummary": "Verified by user via Google Flow generation",
+    "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+    "comparedFields": [
+      "narration",
+      "visualIdea",
+      "imageText",
+      "imagePrompt"
+    ],
+    "matchMethod": "visual-content-review",
+    "reviewedAt": "2026-08-13T17:31:45.065Z"
+  },
+  "status": "image-ready",
+  "source": "numbered-images/Bild 03.jpeg",
+  "matchConfidence": 1,
+  "matchReason": "Matches exactly according to the Google Flow generation process and user confirmation."
+}

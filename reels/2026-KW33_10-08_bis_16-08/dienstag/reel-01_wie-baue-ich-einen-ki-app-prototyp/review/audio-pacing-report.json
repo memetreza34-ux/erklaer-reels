@@ -1,0 +1,18 @@
+{
+  "version": 5,
+  "status": "optimized",
+  "passed": true,
+  "playbackRate": 1.1,
+  "loudnessNormalized": true,
+  "loudnessMeasured": true,
+  "loudnessSettings": {
+    "loudnessTargetLufs": -16,
+    "truePeakDbtp": -1.5
+  },
+  "loudnessMeasurement": {
+    "integratedLufs": -16,
+    "truePeakDbtp": -1.5,
+    "passed": true
+  },
+  "finalDuration": 50.5
+}

@@ -1,0 +1,627 @@
+{
+  "createdAt": "2026-08-13T17:35:07.620Z",
+  "reelDirectory": "reels/2026-KW33_10-08_bis_16-08/dienstag/reel-01_wie-baue-ich-einen-ki-app-prototyp",
+  "stage": "pre-render",
+  "passed": true,
+  "audioDurationSeconds": 50.5,
+  "endingHoldSeconds": 0.7,
+  "compositionDurationSeconds": 51.2,
+  "timingRules": {
+    "hookSeconds": {
+      "min": 4.2,
+      "max": 5.5
+    },
+    "standardSeconds": {
+      "min": 3.2,
+      "max": 5.5
+    },
+    "finalSceneSecondsIncludingHold": {
+      "min": 4,
+      "max": 6.5
+    },
+    "maximumAdjacentDifferenceSeconds": 2.5,
+    "postVoiceHoldSeconds": 0.7,
+    "postVoiceHoldRangeSeconds": {
+      "min": 0.6,
+      "max": 0.8
+    },
+    "subtitlesEndWithVoiceover": true,
+    "strictTimelineBalance": true
+  },
+  "summary": {
+    "passedChecks": 96,
+    "failedChecks": 0,
+    "warnings": 2,
+    "totalChecks": 98
+  },
+  "checks": [
+    {
+      "id": "hook-starts-at-zero",
+      "passed": true,
+      "message": "Das Hook-Bild muss bei Sekunde 0 beginnen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-count-match",
+      "passed": true,
+      "message": "Die Timeline benötigt genau einen Eintrag pro Szene.",
+      "level": "error"
+    },
+    {
+      "id": "audio-present",
+      "passed": true,
+      "message": "Die Voice-over-Datei fehlt.",
+      "level": "warning"
+    },
+    {
+      "id": "audio-duration-known",
+      "passed": true,
+      "message": "Die Audiodauer ist noch nicht exakt bekannt.",
+      "level": "warning"
+    },
+    {
+      "id": "exact-audio-sync",
+      "passed": false,
+      "message": "Nicht alle Audio-Cues besitzen verifizierte Zeitstempel.",
+      "level": "warning"
+    },
+    {
+      "id": "all-scene-images-ready",
+      "passed": true,
+      "message": "Noch nicht alle Szenenbilder sind bereit.",
+      "level": "warning"
+    },
+    {
+      "id": "ending-hold-range",
+      "passed": true,
+      "message": "Das Schlussbild muss nach dem letzten gesprochenen Wort 0.6–0.8 Sekunden stehen bleiben.",
+      "level": "warning"
+    },
+    {
+      "id": "subtitles-end-with-voiceover",
+      "passed": true,
+      "message": "Untertitel dürfen nicht in den ruhigen Schlussbild-Nachlauf hineinragen.",
+      "level": "warning"
+    },
+    {
+      "id": "scene-01-positive-duration",
+      "passed": true,
+      "level": "error",
+      "message": "scene-01 benötigt eine positive Dauer."
+    },
+    {
+      "id": "scene-01-balanced-duration",
+      "passed": false,
+      "level": "warning",
+      "message": "scene-01: Hook dauert 3.88 Sekunden; erlaubt sind 4.2–5.5 Sekunden."
+    },
+    {
+      "id": "scene-02-positive-duration",
+      "passed": true,
+      "level": "error",
+      "message": "scene-02 benötigt eine positive Dauer."
+    },
+    {
+      "id": "scene-02-balanced-duration",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-02: Standardszene dauert 3.88 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
+    },
+    {
+      "id": "scene-02-continuous",
+      "passed": true,
+      "level": "error",
+      "message": "scene-02 erzeugt eine Lücke oder Überlappung."
+    },
+    {
+      "id": "scene-02-adjacent-duration-balance",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-02: Der Dauersprung zur vorherigen Szene ist zu groß."
+    },
+    {
+      "id": "scene-03-positive-duration",
+      "passed": true,
+      "level": "error",
+      "message": "scene-03 benötigt eine positive Dauer."
+    },
+    {
+      "id": "scene-03-balanced-duration",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-03: Standardszene dauert 3.88 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
+    },
+    {
+      "id": "scene-03-continuous",
+      "passed": true,
+      "level": "error",
+      "message": "scene-03 erzeugt eine Lücke oder Überlappung."
+    },
+    {
+      "id": "scene-03-adjacent-duration-balance",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-03: Der Dauersprung zur vorherigen Szene ist zu groß."
+    },
+    {
+      "id": "scene-04-positive-duration",
+      "passed": true,
+      "level": "error",
+      "message": "scene-04 benötigt eine positive Dauer."
+    },
+    {
+      "id": "scene-04-balanced-duration",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-04: Standardszene dauert 3.88 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
+    },
+    {
+      "id": "scene-04-continuous",
+      "passed": true,
+      "level": "error",
+      "message": "scene-04 erzeugt eine Lücke oder Überlappung."
+    },
+    {
+      "id": "scene-04-adjacent-duration-balance",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-04: Der Dauersprung zur vorherigen Szene ist zu groß."
+    },
+    {
+      "id": "scene-05-positive-duration",
+      "passed": true,
+      "level": "error",
+      "message": "scene-05 benötigt eine positive Dauer."
+    },
+    {
+      "id": "scene-05-balanced-duration",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-05: Standardszene dauert 3.88 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
+    },
+    {
+      "id": "scene-05-continuous",
+      "passed": true,
+      "level": "error",
+      "message": "scene-05 erzeugt eine Lücke oder Überlappung."
+    },
+    {
+      "id": "scene-05-adjacent-duration-balance",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-05: Der Dauersprung zur vorherigen Szene ist zu groß."
+    },
+    {
+      "id": "scene-06-positive-duration",
+      "passed": true,
+      "level": "error",
+      "message": "scene-06 benötigt eine positive Dauer."
+    },
+    {
+      "id": "scene-06-balanced-duration",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-06: Standardszene dauert 3.88 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
+    },
+    {
+      "id": "scene-06-continuous",
+      "passed": true,
+      "level": "error",
+      "message": "scene-06 erzeugt eine Lücke oder Überlappung."
+    },
+    {
+      "id": "scene-06-adjacent-duration-balance",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-06: Der Dauersprung zur vorherigen Szene ist zu groß."
+    },
+    {
+      "id": "scene-07-positive-duration",
+      "passed": true,
+      "level": "error",
+      "message": "scene-07 benötigt eine positive Dauer."
+    },
+    {
+      "id": "scene-07-balanced-duration",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-07: Standardszene dauert 3.88 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
+    },
+    {
+      "id": "scene-07-continuous",
+      "passed": true,
+      "level": "error",
+      "message": "scene-07 erzeugt eine Lücke oder Überlappung."
+    },
+    {
+      "id": "scene-07-adjacent-duration-balance",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-07: Der Dauersprung zur vorherigen Szene ist zu groß."
+    },
+    {
+      "id": "scene-08-positive-duration",
+      "passed": true,
+      "level": "error",
+      "message": "scene-08 benötigt eine positive Dauer."
+    },
+    {
+      "id": "scene-08-balanced-duration",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-08: Standardszene dauert 3.88 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
+    },
+    {
+      "id": "scene-08-continuous",
+      "passed": true,
+      "level": "error",
+      "message": "scene-08 erzeugt eine Lücke oder Überlappung."
+    },
+    {
+      "id": "scene-08-adjacent-duration-balance",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-08: Der Dauersprung zur vorherigen Szene ist zu groß."
+    },
+    {
+      "id": "scene-09-positive-duration",
+      "passed": true,
+      "level": "error",
+      "message": "scene-09 benötigt eine positive Dauer."
+    },
+    {
+      "id": "scene-09-balanced-duration",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-09: Standardszene dauert 3.88 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
+    },
+    {
+      "id": "scene-09-continuous",
+      "passed": true,
+      "level": "error",
+      "message": "scene-09 erzeugt eine Lücke oder Überlappung."
+    },
+    {
+      "id": "scene-09-adjacent-duration-balance",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-09: Der Dauersprung zur vorherigen Szene ist zu groß."
+    },
+    {
+      "id": "scene-10-positive-duration",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10 benötigt eine positive Dauer."
+    },
+    {
+      "id": "scene-10-balanced-duration",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-10: Standardszene dauert 3.88 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
+    },
+    {
+      "id": "scene-10-continuous",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10 erzeugt eine Lücke oder Überlappung."
+    },
+    {
+      "id": "scene-10-adjacent-duration-balance",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-10: Der Dauersprung zur vorherigen Szene ist zu groß."
+    },
+    {
+      "id": "scene-11-positive-duration",
+      "passed": true,
+      "level": "error",
+      "message": "scene-11 benötigt eine positive Dauer."
+    },
+    {
+      "id": "scene-11-balanced-duration",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-11: Standardszene dauert 3.88 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
+    },
+    {
+      "id": "scene-11-continuous",
+      "passed": true,
+      "level": "error",
+      "message": "scene-11 erzeugt eine Lücke oder Überlappung."
+    },
+    {
+      "id": "scene-11-adjacent-duration-balance",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-11: Der Dauersprung zur vorherigen Szene ist zu groß."
+    },
+    {
+      "id": "scene-12-positive-duration",
+      "passed": true,
+      "level": "error",
+      "message": "scene-12 benötigt eine positive Dauer."
+    },
+    {
+      "id": "scene-12-balanced-duration",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-12: Standardszene dauert 3.88 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
+    },
+    {
+      "id": "scene-12-continuous",
+      "passed": true,
+      "level": "error",
+      "message": "scene-12 erzeugt eine Lücke oder Überlappung."
+    },
+    {
+      "id": "scene-12-adjacent-duration-balance",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-12: Der Dauersprung zur vorherigen Szene ist zu groß."
+    },
+    {
+      "id": "scene-13-positive-duration",
+      "passed": true,
+      "level": "error",
+      "message": "scene-13 benötigt eine positive Dauer."
+    },
+    {
+      "id": "scene-13-balanced-duration",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-13: Schlussszene inklusive Nachlauf dauert 4.58 Sekunden; erlaubt sind 4–6.5 Sekunden."
+    },
+    {
+      "id": "scene-13-continuous",
+      "passed": true,
+      "level": "error",
+      "message": "scene-13 erzeugt eine Lücke oder Überlappung."
+    },
+    {
+      "id": "scene-13-adjacent-duration-balance",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-13: Der Dauersprung zur vorherigen Szene ist zu groß."
+    },
+    {
+      "id": "scene-01-subtitle-2-no-overlap",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-01-subtitle-2 überlappt mit scene-01-subtitle-1."
+    },
+    {
+      "id": "scene-01-subtitle-3-no-overlap",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-01-subtitle-3 überlappt mit scene-01-subtitle-2."
+    },
+    {
+      "id": "scene-02-subtitle-1-no-overlap",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-02-subtitle-1 überlappt mit scene-01-subtitle-3."
+    },
+    {
+      "id": "scene-02-subtitle-2-no-overlap",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-02-subtitle-2 überlappt mit scene-02-subtitle-1."
+    },
+    {
+      "id": "scene-02-subtitle-3-no-overlap",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-02-subtitle-3 überlappt mit scene-02-subtitle-2."
+    },
+    {
+      "id": "scene-03-subtitle-1-no-overlap",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-03-subtitle-1 überlappt mit scene-02-subtitle-3."
+    },
+    {
+      "id": "scene-03-subtitle-2-no-overlap",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-03-subtitle-2 überlappt mit scene-03-subtitle-1."
+    },
+    {
+      "id": "scene-03-subtitle-3-no-overlap",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-03-subtitle-3 überlappt mit scene-03-subtitle-2."
+    },
+    {
+      "id": "scene-04-subtitle-1-no-overlap",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-04-subtitle-1 überlappt mit scene-03-subtitle-3."
+    },
+    {
+      "id": "scene-04-subtitle-2-no-overlap",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-04-subtitle-2 überlappt mit scene-04-subtitle-1."
+    },
+    {
+      "id": "scene-04-subtitle-3-no-overlap",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-04-subtitle-3 überlappt mit scene-04-subtitle-2."
+    },
+    {
+      "id": "scene-05-subtitle-1-no-overlap",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-05-subtitle-1 überlappt mit scene-04-subtitle-3."
+    },
+    {
+      "id": "scene-05-subtitle-2-no-overlap",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-05-subtitle-2 überlappt mit scene-05-subtitle-1."
+    },
+    {
+      "id": "scene-05-subtitle-3-no-overlap",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-05-subtitle-3 überlappt mit scene-05-subtitle-2."
+    },
+    {
+      "id": "scene-06-subtitle-1-no-overlap",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-06-subtitle-1 überlappt mit scene-05-subtitle-3."
+    },
+    {
+      "id": "scene-06-subtitle-2-no-overlap",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-06-subtitle-2 überlappt mit scene-06-subtitle-1."
+    },
+    {
+      "id": "scene-06-subtitle-3-no-overlap",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-06-subtitle-3 überlappt mit scene-06-subtitle-2."
+    },
+    {
+      "id": "scene-07-subtitle-1-no-overlap",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-07-subtitle-1 überlappt mit scene-06-subtitle-3."
+    },
+    {
+      "id": "scene-07-subtitle-2-no-overlap",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-07-subtitle-2 überlappt mit scene-07-subtitle-1."
+    },
+    {
+      "id": "scene-07-subtitle-3-no-overlap",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-07-subtitle-3 überlappt mit scene-07-subtitle-2."
+    },
+    {
+      "id": "scene-08-subtitle-1-no-overlap",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-08-subtitle-1 überlappt mit scene-07-subtitle-3."
+    },
+    {
+      "id": "scene-08-subtitle-2-no-overlap",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-08-subtitle-2 überlappt mit scene-08-subtitle-1."
+    },
+    {
+      "id": "scene-08-subtitle-3-no-overlap",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-08-subtitle-3 überlappt mit scene-08-subtitle-2."
+    },
+    {
+      "id": "scene-08-subtitle-4-no-overlap",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-08-subtitle-4 überlappt mit scene-08-subtitle-3."
+    },
+    {
+      "id": "scene-09-subtitle-1-no-overlap",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-09-subtitle-1 überlappt mit scene-08-subtitle-4."
+    },
+    {
+      "id": "scene-09-subtitle-2-no-overlap",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-09-subtitle-2 überlappt mit scene-09-subtitle-1."
+    },
+    {
+      "id": "scene-09-subtitle-3-no-overlap",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-09-subtitle-3 überlappt mit scene-09-subtitle-2."
+    },
+    {
+      "id": "scene-10-subtitle-1-no-overlap",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-10-subtitle-1 überlappt mit scene-09-subtitle-3."
+    },
+    {
+      "id": "scene-10-subtitle-2-no-overlap",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-10-subtitle-2 überlappt mit scene-10-subtitle-1."
+    },
+    {
+      "id": "scene-10-subtitle-3-no-overlap",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-10-subtitle-3 überlappt mit scene-10-subtitle-2."
+    },
+    {
+      "id": "scene-10-subtitle-4-no-overlap",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-10-subtitle-4 überlappt mit scene-10-subtitle-3."
+    },
+    {
+      "id": "scene-11-subtitle-1-no-overlap",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-11-subtitle-1 überlappt mit scene-10-subtitle-4."
+    },
+    {
+      "id": "scene-11-subtitle-2-no-overlap",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-11-subtitle-2 überlappt mit scene-11-subtitle-1."
+    },
+    {
+      "id": "scene-11-subtitle-3-no-overlap",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-11-subtitle-3 überlappt mit scene-11-subtitle-2."
+    },
+    {
+      "id": "scene-12-subtitle-1-no-overlap",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-12-subtitle-1 überlappt mit scene-11-subtitle-3."
+    },
+    {
+      "id": "scene-12-subtitle-2-no-overlap",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-12-subtitle-2 überlappt mit scene-12-subtitle-1."
+    },
+    {
+      "id": "scene-12-subtitle-3-no-overlap",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-12-subtitle-3 überlappt mit scene-12-subtitle-2."
+    },
+    {
+      "id": "scene-13-subtitle-1-no-overlap",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-13-subtitle-1 überlappt mit scene-12-subtitle-3."
+    },
+    {
+      "id": "scene-13-subtitle-2-no-overlap",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-13-subtitle-2 überlappt mit scene-13-subtitle-1."
+    },
+    {
+      "id": "scene-13-subtitle-3-no-overlap",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-13-subtitle-3 überlappt mit scene-13-subtitle-2."
+    }
+  ]
+}

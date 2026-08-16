@@ -1,0 +1,48 @@
+{
+  "version": 6,
+  "createdAt": "2026-08-16T05:21:34.254Z",
+  "passed": true,
+  "sourceFile": "audio/voiceover.m4a",
+  "outputFile": "audio/voiceover-tight.m4a",
+  "beforeSeconds": 68.429206,
+  "afterSeconds": 56.1,
+  "removedSeconds": 12.329205999999992,
+  "reductionPercent": 18.01746172533405,
+  "playbackRate": 1.1,
+  "speedIncreasePercent": 10.000000000000009,
+  "loudnessNormalized": true,
+  "loudnessMeasured": true,
+  "loudnessSettings": {
+    "loudnessTargetLufs": -16,
+    "truePeakDbtp": -1.5,
+    "loudnessRangeLra": 11,
+    "outputSampleRateHz": 48000
+  },
+  "loudnessMeasurement": {
+    "measured": true,
+    "integratedLufs": -16.4,
+    "truePeakDbtp": -1.46,
+    "loudnessTargetLufs": -16,
+    "truePeakTargetDbtp": -1.5,
+    "loudnessToleranceLu": 1,
+    "truePeakToleranceDb": 0.2,
+    "loudnessDifferenceLu": 0.3999999999999986,
+    "passed": true
+  },
+  "filter": "silenceremove=start_periods=1:start_duration=0.12:start_threshold=-38dB:start_silence=0.02:stop_periods=-1:stop_duration=0.24:stop_threshold=-35dB:stop_silence=0.05:detection=rms,atempo=1.1,loudnorm=I=-16:TP=-1.5:LRA=11,aresample=48000",
+  "settings": {
+    "thresholdDb": -35,
+    "minimumLongPauseSeconds": 0.24,
+    "retainedPauseSeconds": 0.05,
+    "playbackRate": 1.1,
+    "loudnessTargetLufs": -16,
+    "truePeakDbtp": -1.5,
+    "loudnessRangeLra": 11,
+    "outputSampleRateHz": 48000
+  },
+  "wordSyncInvalidated": true,
+  "note": "Lautheit wurde nach der Verarbeitung erneut gemessen. Danach müssen Timeline, Szenen-Cues und exakte Untertitel-Wortzeiten mit der neuen Audiodatei synchronisiert werden.",
+  "audioFingerprintSha256": "37086dfd9b34a917e595f3aa2bec15415770f7fdc2dbf9c96b6e66998a75900b",
+  "audioBindingStatus": "verified-after-measurement",
+  "measuredFile": "audio/voiceover-tight.m4a"
+}

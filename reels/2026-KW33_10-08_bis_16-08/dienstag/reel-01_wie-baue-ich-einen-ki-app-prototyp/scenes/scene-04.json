@@ -1,0 +1,36 @@
+{
+  "sceneId": "scene-04",
+  "order": 4,
+  "title": "Plan",
+  "narration": "Daraus entsteht ein Plan für Oberfläche, Eingaben, Logik und Ergebnis.",
+  "imageText": "PLAN ENTWICKELN",
+  "visualIdea": "Four transparent glass panels showing UI, input fields, gears for logic, and a final app icon, aligned perfectly, 9:16 aspect ratio",
+  "audioCue": "Daraus entsteht ein ",
+  "leadInSeconds": 0.2,
+  "durationSeconds": 4.5,
+  "expectedImageFileName": "scene-04.jpeg",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "status": "image-ready",
+  "source": "numbered-images/Bild 04.jpeg",
+  "matchConfidence": 1,
+  "matchReason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-04",
+    "confirmedSceneOrder": 4,
+    "visibleSummary": "Verified by user via Google Flow generation",
+    "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+    "comparedFields": [
+      "narration",
+      "visualIdea",
+      "imageText",
+      "imagePrompt"
+    ],
+    "matchMethod": "visual-content-review",
+    "reviewedAt": "2026-08-13T17:18:54.582Z"
+  },
+  "continuityNotes": "Stilistisch konsistent mit den vorherigen Szenen, Fokus auf das Hauptthema."
+}

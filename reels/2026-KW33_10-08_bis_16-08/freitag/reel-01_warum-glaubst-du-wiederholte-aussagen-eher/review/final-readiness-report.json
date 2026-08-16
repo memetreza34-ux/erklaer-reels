@@ -1,0 +1,518 @@
+{
+  "version": 10,
+  "createdAt": "2026-08-16T05:35:41.431Z",
+  "reelDirectory": "reels/2026-KW33_10-08_bis_16-08/freitag/reel-01_warum-glaubst-du-wiederholte-aussagen-eher",
+  "strict": true,
+  "readyForRenderer": true,
+  "stages": {
+    "sourceQuality": {
+      "passed": true,
+      "required": true,
+      "legacy": false,
+      "reason": null,
+      "checks": [
+        {
+          "id": "source-quality-binding",
+          "passed": true,
+          "level": "error",
+          "message": "Verpflichtende Quellen-QC: bestanden."
+        }
+      ]
+    },
+    "audioPacingFileBinding": {
+      "passed": true,
+      "required": true,
+      "legacy": false,
+      "reason": null,
+      "checks": [
+        {
+          "id": "audio-pacing-file-binding",
+          "passed": true,
+          "level": "error",
+          "message": "Audio-Pacing-Dateibindung: bestanden."
+        }
+      ]
+    },
+    "wordSyncAudioBinding": {
+      "passed": true,
+      "required": true,
+      "legacy": false,
+      "reason": null,
+      "checks": [
+        {
+          "id": "word-sync-audio-binding",
+          "passed": true,
+          "level": "error",
+          "message": "Word-Sync-Audiobindung: bestanden."
+        }
+      ]
+    },
+    "content": {
+      "passed": true,
+      "reportFile": "review/content-readiness.json",
+      "summary": {
+        "passedChecks": 320,
+        "failedChecks": 0,
+        "warnings": 43,
+        "totalChecks": 363
+      }
+    },
+    "audioPacing": {
+      "passed": true,
+      "strict": true,
+      "playbackRate": 1.1,
+      "loudnessTargetLufs": -16,
+      "truePeakDbtp": -1.5,
+      "loudnessMeasured": true,
+      "measuredIntegratedLufs": -16.4,
+      "measuredTruePeakDbtp": -1.46,
+      "beforeSeconds": 68.429206,
+      "afterSeconds": 56.1,
+      "reportFile": "review/audio-pacing-report.json",
+      "summary": {
+        "passedChecks": 12,
+        "failedChecks": 0,
+        "warnings": 0,
+        "totalChecks": 12
+      }
+    },
+    "timeline": {
+      "passed": true,
+      "timingStatus": "audio-synced",
+      "renderStatus": "ready-for-renderer",
+      "reportFile": "review/final-video-report.json",
+      "summary": {
+        "passedChecks": 79,
+        "failedChecks": 0,
+        "warnings": 10,
+        "totalChecks": 89
+      }
+    },
+    "wordSync": {
+      "passed": true,
+      "strict": true,
+      "provider": "codex-local-audio-review",
+      "cueCount": 32,
+      "exactCueCount": 32,
+      "expectedWordCount": 160,
+      "renderedWordCount": 160,
+      "fullCoverage": true,
+      "reportFile": "review/word-sync-report.json",
+      "summary": {
+        "passedChecks": 100,
+        "failedChecks": 0,
+        "warnings": 0,
+        "totalChecks": 100
+      }
+    },
+    "visualQuality": {
+      "passed": true,
+      "strict": true,
+      "reportFile": "review/visual-quality-report.json",
+      "inspectionFile": "review/visual-inspection.json",
+      "summary": {
+        "assetsChecked": 14,
+        "passedChecks": 146,
+        "failedChecks": 0,
+        "warnings": 14,
+        "totalChecks": 160
+      }
+    }
+  },
+  "progress": {
+    "reelId": "reel-01_warum-glaubst-du-wiederholte-aussagen-eher",
+    "title": "Warum glaubst du Aussagen eher, wenn du sie öfter hörst?",
+    "preProduction": 100,
+    "assets": 100,
+    "audioPacing": 100,
+    "timeline": 100,
+    "wordSync": 100,
+    "visualQuality": 100,
+    "productionReady": 100,
+    "rendering": 0,
+    "overall": 90,
+    "details": {
+      "scriptsReady": true,
+      "styleReady": true,
+      "scenesReady": "13/13",
+      "promptsReady": "13/13",
+      "coverPromptReady": true,
+      "captionReady": true,
+      "sourcesReady": true,
+      "contentCheckReady": true,
+      "audioReady": true,
+      "sceneImagesReady": "13/13",
+      "coverImageReady": true,
+      "assetReportReady": true,
+      "audioPacingCreated": true,
+      "audioPacingPassed": true,
+      "audioPacingRate": 1.1,
+      "audioPacingRateSafe": true,
+      "audioLoudnessNormalized": true,
+      "audioLoudnessTargetSafe": true,
+      "audioTruePeakSafe": true,
+      "audioMeasurementRequired": true,
+      "audioMeasurementPresent": true,
+      "audioMeasurementSafe": true,
+      "measuredIntegratedLufs": -16.4,
+      "measuredTruePeakDbtp": -1.46,
+      "audioPacingDurationReduced": true,
+      "timelineBuilt": true,
+      "audioDurationKnown": true,
+      "audioSynced": true,
+      "renderReady": true,
+      "timelineCheckReady": true,
+      "wordSyncRequired": true,
+      "wordSyncCreated": true,
+      "wordSyncPassed": true,
+      "wordSyncProvider": "codex-local-audio-review",
+      "wordCoverage": 1,
+      "visualReportCreated": true,
+      "visualTechnicalReady": true,
+      "visualAssetsReviewed": "14/14",
+      "visualStrictReady": true,
+      "rendererValidated": false,
+      "renderComplete": false
+    },
+    "nextStep": "finalize:reel --strict und anschließend validate:render ausführen."
+  },
+  "blockingIssues": [],
+  "warnings": [
+    {
+      "id": "scene-01-subtitle-cues",
+      "level": "warning",
+      "message": "scene-01: subtitleCues fehlen."
+    },
+    {
+      "id": "scene-02-subtitle-cues",
+      "level": "warning",
+      "message": "scene-02: subtitleCues fehlen."
+    },
+    {
+      "id": "scene-02-preferred-duration",
+      "level": "warning",
+      "message": "scene-02: Für den gewünschten Rhythmus sind ungefähr 3,5–5,5 Sekunden empfehlenswert."
+    },
+    {
+      "id": "scene-03-subtitle-cues",
+      "level": "warning",
+      "message": "scene-03: subtitleCues fehlen."
+    },
+    {
+      "id": "scene-04-subtitle-cues",
+      "level": "warning",
+      "message": "scene-04: subtitleCues fehlen."
+    },
+    {
+      "id": "scene-05-subtitle-cues",
+      "level": "warning",
+      "message": "scene-05: subtitleCues fehlen."
+    },
+    {
+      "id": "scene-06-subtitle-cues",
+      "level": "warning",
+      "message": "scene-06: subtitleCues fehlen."
+    },
+    {
+      "id": "scene-07-subtitle-cues",
+      "level": "warning",
+      "message": "scene-07: subtitleCues fehlen."
+    },
+    {
+      "id": "scene-08-subtitle-cues",
+      "level": "warning",
+      "message": "scene-08: subtitleCues fehlen."
+    },
+    {
+      "id": "scene-09-subtitle-cues",
+      "level": "warning",
+      "message": "scene-09: subtitleCues fehlen."
+    },
+    {
+      "id": "scene-09-preferred-duration",
+      "level": "warning",
+      "message": "scene-09: Für den gewünschten Rhythmus sind ungefähr 3,5–5,5 Sekunden empfehlenswert."
+    },
+    {
+      "id": "scene-10-subtitle-cues",
+      "level": "warning",
+      "message": "scene-10: subtitleCues fehlen."
+    },
+    {
+      "id": "scene-11-subtitle-cues",
+      "level": "warning",
+      "message": "scene-11: subtitleCues fehlen."
+    },
+    {
+      "id": "scene-12-subtitle-cues",
+      "level": "warning",
+      "message": "scene-12: subtitleCues fehlen."
+    },
+    {
+      "id": "scene-13-subtitle-cues",
+      "level": "warning",
+      "message": "scene-13: subtitleCues fehlen."
+    },
+    {
+      "id": "effects-voiceover-priority",
+      "level": "warning",
+      "message": "Der Effektplan muss dem Voice-over Priorität geben."
+    },
+    {
+      "id": "scene-01-transition-type",
+      "level": "warning",
+      "message": "scene-01: Unbekannter Übergangstyp (leer)."
+    },
+    {
+      "id": "scene-01-camera-type",
+      "level": "warning",
+      "message": "scene-01: Unbekannter Kamerabewegungstyp (leer)."
+    },
+    {
+      "id": "scene-02-transition-type",
+      "level": "warning",
+      "message": "scene-02: Unbekannter Übergangstyp (leer)."
+    },
+    {
+      "id": "scene-02-camera-type",
+      "level": "warning",
+      "message": "scene-02: Unbekannter Kamerabewegungstyp (leer)."
+    },
+    {
+      "id": "scene-03-transition-type",
+      "level": "warning",
+      "message": "scene-03: Unbekannter Übergangstyp (leer)."
+    },
+    {
+      "id": "scene-03-camera-type",
+      "level": "warning",
+      "message": "scene-03: Unbekannter Kamerabewegungstyp (leer)."
+    },
+    {
+      "id": "scene-04-transition-type",
+      "level": "warning",
+      "message": "scene-04: Unbekannter Übergangstyp (leer)."
+    },
+    {
+      "id": "scene-04-camera-type",
+      "level": "warning",
+      "message": "scene-04: Unbekannter Kamerabewegungstyp (leer)."
+    },
+    {
+      "id": "scene-05-transition-type",
+      "level": "warning",
+      "message": "scene-05: Unbekannter Übergangstyp (leer)."
+    },
+    {
+      "id": "scene-05-camera-type",
+      "level": "warning",
+      "message": "scene-05: Unbekannter Kamerabewegungstyp (leer)."
+    },
+    {
+      "id": "scene-06-transition-type",
+      "level": "warning",
+      "message": "scene-06: Unbekannter Übergangstyp (leer)."
+    },
+    {
+      "id": "scene-06-camera-type",
+      "level": "warning",
+      "message": "scene-06: Unbekannter Kamerabewegungstyp (leer)."
+    },
+    {
+      "id": "scene-07-transition-type",
+      "level": "warning",
+      "message": "scene-07: Unbekannter Übergangstyp (leer)."
+    },
+    {
+      "id": "scene-07-camera-type",
+      "level": "warning",
+      "message": "scene-07: Unbekannter Kamerabewegungstyp (leer)."
+    },
+    {
+      "id": "scene-08-transition-type",
+      "level": "warning",
+      "message": "scene-08: Unbekannter Übergangstyp (leer)."
+    },
+    {
+      "id": "scene-08-camera-type",
+      "level": "warning",
+      "message": "scene-08: Unbekannter Kamerabewegungstyp (leer)."
+    },
+    {
+      "id": "scene-09-transition-type",
+      "level": "warning",
+      "message": "scene-09: Unbekannter Übergangstyp (leer)."
+    },
+    {
+      "id": "scene-09-camera-type",
+      "level": "warning",
+      "message": "scene-09: Unbekannter Kamerabewegungstyp (leer)."
+    },
+    {
+      "id": "scene-10-transition-type",
+      "level": "warning",
+      "message": "scene-10: Unbekannter Übergangstyp (leer)."
+    },
+    {
+      "id": "scene-10-camera-type",
+      "level": "warning",
+      "message": "scene-10: Unbekannter Kamerabewegungstyp (leer)."
+    },
+    {
+      "id": "scene-11-transition-type",
+      "level": "warning",
+      "message": "scene-11: Unbekannter Übergangstyp (leer)."
+    },
+    {
+      "id": "scene-11-camera-type",
+      "level": "warning",
+      "message": "scene-11: Unbekannter Kamerabewegungstyp (leer)."
+    },
+    {
+      "id": "scene-12-transition-type",
+      "level": "warning",
+      "message": "scene-12: Unbekannter Übergangstyp (leer)."
+    },
+    {
+      "id": "scene-12-camera-type",
+      "level": "warning",
+      "message": "scene-12: Unbekannter Kamerabewegungstyp (leer)."
+    },
+    {
+      "id": "scene-13-transition-type",
+      "level": "warning",
+      "message": "scene-13: Unbekannter Übergangstyp (leer)."
+    },
+    {
+      "id": "scene-13-camera-type",
+      "level": "warning",
+      "message": "scene-13: Unbekannter Kamerabewegungstyp (leer)."
+    },
+    {
+      "id": "hook-no-transition",
+      "level": "warning",
+      "message": "Die Hook sollte ab Sekunde 0 ohne Übergang starten."
+    },
+    {
+      "id": "subtitles-end-with-voiceover",
+      "level": "warning",
+      "message": "Untertitel dürfen nicht in den ruhigen Schlussbild-Nachlauf hineinragen."
+    },
+    {
+      "id": "scene-01-balanced-duration",
+      "level": "warning",
+      "message": "scene-01: Hook dauert 3.63 Sekunden; erlaubt sind 4.2–5.5 Sekunden."
+    },
+    {
+      "id": "scene-02-balanced-duration",
+      "level": "warning",
+      "message": "scene-02: Standardszene dauert 2.44 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
+    },
+    {
+      "id": "scene-03-balanced-duration",
+      "level": "warning",
+      "message": "scene-03: Standardszene dauert 2.78 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
+    },
+    {
+      "id": "scene-05-balanced-duration",
+      "level": "warning",
+      "message": "scene-05: Standardszene dauert 5.86 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
+    },
+    {
+      "id": "scene-06-adjacent-duration-balance",
+      "level": "warning",
+      "message": "scene-06: Der Dauersprung zur vorherigen Szene ist zu groß."
+    },
+    {
+      "id": "scene-07-balanced-duration",
+      "level": "warning",
+      "message": "scene-07: Standardszene dauert 6.56 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
+    },
+    {
+      "id": "scene-07-adjacent-duration-balance",
+      "level": "warning",
+      "message": "scene-07: Der Dauersprung zur vorherigen Szene ist zu groß."
+    },
+    {
+      "id": "scene-09-balanced-duration",
+      "level": "warning",
+      "message": "scene-09: Standardszene dauert 6.61 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
+    },
+    {
+      "id": "scene-10-adjacent-duration-balance",
+      "level": "warning",
+      "message": "scene-10: Der Dauersprung zur vorherigen Szene ist zu groß."
+    },
+    {
+      "id": "scene-01-target-resolution",
+      "level": "warning",
+      "message": "scene-01: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-02-target-resolution",
+      "level": "warning",
+      "message": "scene-02: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-03-target-resolution",
+      "level": "warning",
+      "message": "scene-03: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-04-target-resolution",
+      "level": "warning",
+      "message": "scene-04: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-05-target-resolution",
+      "level": "warning",
+      "message": "scene-05: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-06-target-resolution",
+      "level": "warning",
+      "message": "scene-06: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-07-target-resolution",
+      "level": "warning",
+      "message": "scene-07: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-08-target-resolution",
+      "level": "warning",
+      "message": "scene-08: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-09-target-resolution",
+      "level": "warning",
+      "message": "scene-09: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-10-target-resolution",
+      "level": "warning",
+      "message": "scene-10: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-11-target-resolution",
+      "level": "warning",
+      "message": "scene-11: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-12-target-resolution",
+      "level": "warning",
+      "message": "scene-12: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-13-target-resolution",
+      "level": "warning",
+      "message": "scene-13: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "cover-target-resolution",
+      "level": "warning",
+      "message": "cover: Empfohlen sind mindestens 1080×1920 Pixel."
+    }
+  ],
+  "nextStep": "Renderer prüfen und MP4 erzeugen: npm run validate:render -- --dir \"reels/2026-KW33_10-08_bis_16-08/freitag/reel-01_warum-glaubst-du-wiederholte-aussagen-eher\" && npm run render:reel -- --dir \"reels/2026-KW33_10-08_bis_16-08/freitag/reel-01_warum-glaubst-du-wiederholte-aussagen-eher\""
+}

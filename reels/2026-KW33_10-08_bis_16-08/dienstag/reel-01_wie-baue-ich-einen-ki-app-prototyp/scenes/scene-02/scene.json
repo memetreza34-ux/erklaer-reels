@@ -1,0 +1,133 @@
+{
+  "sceneId": "scene-02",
+  "order": 2,
+  "title": "Zu ungenau",
+  "narration": "Aber \"schreib mir eine App\" ist dafür meistens noch viel zu ungenau.",
+  "imageText": "ZU UNGENAU",
+  "visualIdea": "A person looking confused at a laptop screen with a generic text prompt, cinematic lighting, shallow depth of field, 9:16 aspect ratio",
+  "continuityNotes": "",
+  "audioCue": "Aber \"schreib mir ei",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [
+    {
+      "id": "scene-02-subtitle-1",
+      "text": "einen ersten App Prototyp bauen.",
+      "startSeconds": 3.885,
+      "endSeconds": 5.65,
+      "verticalPositionPercent": 58,
+      "textColor": "#F2F2F2",
+      "highlightColor": "#CC8B66",
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "words": [
+        {
+          "text": "einen",
+          "startSeconds": 3.885,
+          "endSeconds": 4.238
+        },
+        {
+          "text": "ersten",
+          "startSeconds": 4.238,
+          "endSeconds": 4.591
+        },
+        {
+          "text": "App",
+          "startSeconds": 4.591,
+          "endSeconds": 4.944
+        },
+        {
+          "text": "Prototyp",
+          "startSeconds": 4.944,
+          "endSeconds": 5.297
+        },
+        {
+          "text": "bauen.",
+          "startSeconds": 5.297,
+          "endSeconds": 5.65
+        }
+      ]
+    },
+    {
+      "id": "scene-02-subtitle-2",
+      "text": "Aber \"schreib mir eine App\"",
+      "startSeconds": 5.65,
+      "endSeconds": 7.416,
+      "verticalPositionPercent": 58,
+      "textColor": "#F2F2F2",
+      "highlightColor": "#CC8B66",
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "words": [
+        {
+          "text": "Aber",
+          "startSeconds": 5.65,
+          "endSeconds": 6.003
+        },
+        {
+          "text": "\"schreib",
+          "startSeconds": 6.003,
+          "endSeconds": 6.357
+        },
+        {
+          "text": "mir",
+          "startSeconds": 6.357,
+          "endSeconds": 6.71
+        },
+        {
+          "text": "eine",
+          "startSeconds": 6.71,
+          "endSeconds": 7.063
+        },
+        {
+          "text": "App\"",
+          "startSeconds": 7.063,
+          "endSeconds": 7.416
+        }
+      ]
+    },
+    {
+      "id": "scene-02-subtitle-3",
+      "text": "ist",
+      "startSeconds": 7.416,
+      "endSeconds": 7.769,
+      "verticalPositionPercent": 58,
+      "textColor": "#F2F2F2",
+      "highlightColor": "#CC8B66",
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "words": [
+        {
+          "text": "ist",
+          "startSeconds": 7.416,
+          "endSeconds": 7.769
+        }
+      ]
+    }
+  ],
+  "subtitlePosition": "center",
+  "durationSeconds": 3.885,
+  "expectedImageFileName": "scene-02.jpeg",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-02",
+    "confirmedSceneOrder": 2,
+    "visibleSummary": "Verified by user via Google Flow generation",
+    "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+    "comparedFields": [
+      "narration",
+      "visualIdea",
+      "imageText",
+      "imagePrompt"
+    ],
+    "matchMethod": "visual-content-review",
+    "reviewedAt": "2026-08-13T17:31:45.064Z"
+  },
+  "status": "image-ready",
+  "source": "numbered-images/Bild 02.jpeg",
+  "matchConfidence": 1,
+  "matchReason": "Matches exactly according to the Google Flow generation process and user confirmation."
+}

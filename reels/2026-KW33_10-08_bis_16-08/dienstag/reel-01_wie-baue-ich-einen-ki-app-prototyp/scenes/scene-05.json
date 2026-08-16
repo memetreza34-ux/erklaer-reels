@@ -1,0 +1,36 @@
+{
+  "sceneId": "scene-05",
+  "order": 5,
+  "title": "Kein Block",
+  "narration": "Danach wird der Code nicht als ein riesiger Block gebaut.",
+  "imageText": "KEIN RIESEN-BLOCK",
+  "visualIdea": "A massive, monolithic block of code shattering into smaller, manageable glowing cubes, dramatic lighting, 9:16 aspect ratio",
+  "audioCue": "Danach wird der Code",
+  "leadInSeconds": 0.2,
+  "durationSeconds": 4.5,
+  "expectedImageFileName": "scene-05.jpeg",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "status": "image-ready",
+  "source": "numbered-images/Bild 05.jpeg",
+  "matchConfidence": 1,
+  "matchReason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-05",
+    "confirmedSceneOrder": 5,
+    "visibleSummary": "Verified by user via Google Flow generation",
+    "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+    "comparedFields": [
+      "narration",
+      "visualIdea",
+      "imageText",
+      "imagePrompt"
+    ],
+    "matchMethod": "visual-content-review",
+    "reviewedAt": "2026-08-13T17:18:54.582Z"
+  },
+  "continuityNotes": "Stilistisch konsistent mit den vorherigen Szenen, Fokus auf das Hauptthema."
+}

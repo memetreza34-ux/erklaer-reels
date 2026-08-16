@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "startedAt": "2026-08-13T17:35:07.801Z",
+  "finishedAt": "2026-08-13T17:35:40.997Z",
+  "passed": true,
+  "renderer": "remotion",
+  "compositionId": "ErklaerReel",
+  "codec": "h264",
+  "crf": 18,
+  "reelDirectory": "/Users/arman/.gemini/antigravity/scratch/erklaer-reels/reels/2026-KW33_10-08_bis_16-08/dienstag/reel-01_wie-baue-ich-einen-ki-app-prototyp",
+  "outputFile": "reels/2026-KW33_10-08_bis_16-08/dienstag/reel-01_wie-baue-ich-einen-ki-app-prototyp/output/reel-01_wie-baue-ich-einen-ki-app-prototyp.mp4",
+  "outputBytes": 7363588,
+  "composition": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationSeconds": 51.2,
+    "durationFrames": 1536,
+    "audioDurationSeconds": 50.5,
+    "endingHoldSeconds": 0.7
+  },
+  "renderedSoundEffects": 0,
+  "validationReport": "review/renderer-input-report.json"
+}

@@ -1,0 +1,36 @@
+{
+  "sceneId": "scene-11",
+  "order": 11,
+  "title": "Du entscheidest",
+  "narration": "Die KI kann Fehler finden und Änderungen vorschlagen, aber du entscheidest, was wirklich richtig ist.",
+  "imageText": "DU ENTSCHEIDEST",
+  "visualIdea": "A human hand shaking a robotic hand over a glowing control panel, cooperation concept, futuristic, 9:16 aspect ratio",
+  "audioCue": "Die KI kann Fehler f",
+  "leadInSeconds": 0.2,
+  "durationSeconds": 4.5,
+  "expectedImageFileName": "scene-11.jpeg",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "status": "image-ready",
+  "source": "numbered-images/Bild 11.jpeg",
+  "matchConfidence": 1,
+  "matchReason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-11",
+    "confirmedSceneOrder": 11,
+    "visibleSummary": "Verified by user via Google Flow generation",
+    "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+    "comparedFields": [
+      "narration",
+      "visualIdea",
+      "imageText",
+      "imagePrompt"
+    ],
+    "matchMethod": "visual-content-review",
+    "reviewedAt": "2026-08-13T17:18:54.585Z"
+  },
+  "continuityNotes": "Stilistisch konsistent mit den vorherigen Szenen, Fokus auf das Hauptthema."
+}

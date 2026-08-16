@@ -1,0 +1,48 @@
+{
+  "version": 2,
+  "createdAt": "2026-08-13T17:31:44.943Z",
+  "reelDirectory": "/Users/arman/.gemini/antigravity/scratch/erklaer-reels/reels/2026-KW33_10-08_bis_16-08/dienstag/reel-01_wie-baue-ich-einen-ki-app-prototyp",
+  "searchRoots": [
+    "/Users/arman/.gemini/antigravity/scratch/erklaer-reels/reels/2026-KW33_10-08_bis_16-08/dienstag/reel-01_wie-baue-ich-einen-ki-app-prototyp",
+    "/Users/arman/Downloads",
+    "/Users/arman/Desktop"
+  ],
+  "scannedFiles": 1559,
+  "expectedImageNumbers": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13
+  ],
+  "imageDiscovery": {
+    "alreadyComplete": true,
+    "importedFrom": null,
+    "copiedFiles": [],
+    "zipCandidates": [],
+    "ambiguousCompleteZips": [],
+    "looseCandidateDirectories": [],
+    "ambiguousLooseSets": []
+  },
+  "audioDiscovery": {
+    "staged": null,
+    "candidates": [],
+    "reason": "audio-already-present"
+  },
+  "instructions": [
+    "Fehlende externe Assets nicht sofort als endgültig fehlend melden: zuerst diese Discovery ausführen.",
+    "Eine ZIP wird nur automatisch verwendet, wenn genau eine vollständige eindeutige nummerierte Bildserie gefunden wurde oder der Agent einen geprüften preferredZipPath vorgibt.",
+    "Bei mehreren vollständigen ZIPs zuerst den passenden Kandidaten inhaltlich prüfen; niemals blind die neueste ZIP wählen.",
+    "Entpackte Nummern sind nur Routing-Hilfe. Vor --apply bleibt die visuelle Zwei-Pass-QC vollständig Pflicht.",
+    "Bei mehreren oder unklaren Audio-Kandidaten nicht raten; Kandidaten prüfen."
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "positionYPercent": 58,
+  "textColor": "#F5F7FA",
+  "highlightColor": "#B7794A",
+  "background": "transparent",
+  "maxLines": 2,
+  "highlightCurrentWord": true,
+  "speakerSyncedWordHighlight": true,
+  "exactWordTimingsRequired": true,
+  "completeSpokenTextCoverageRequired": true,
+  "expectedWordsPerLine": 5,
+  "position": "center",
+  "minHeightPercent": 58,
+  "maxHeightPercent": 58,
+  "timingStatus": "invalidated-after-audio-pacing",
+  "timingProvider": "codex-local-audio-review",
+  "cues": []
+}

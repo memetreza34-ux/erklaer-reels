@@ -1,0 +1,133 @@
+{
+  "sceneId": "scene-11",
+  "order": 11,
+  "title": "Du entscheidest",
+  "narration": "Die KI kann Fehler finden und Änderungen vorschlagen, aber du entscheidest, was wirklich richtig ist.",
+  "imageText": "DU ENTSCHEIDEST",
+  "visualIdea": "A human hand shaking a robotic hand over a glowing control panel, cooperation concept, futuristic, 9:16 aspect ratio",
+  "continuityNotes": "",
+  "audioCue": "Die KI kann Fehler f",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [
+    {
+      "id": "scene-11-subtitle-1",
+      "text": "kann Fehler finden und Änderungen",
+      "startSeconds": 38.846,
+      "endSeconds": 40.612,
+      "verticalPositionPercent": 58,
+      "textColor": "#F2F2F2",
+      "highlightColor": "#CC8B66",
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "words": [
+        {
+          "text": "kann",
+          "startSeconds": 38.846,
+          "endSeconds": 39.199
+        },
+        {
+          "text": "Fehler",
+          "startSeconds": 39.199,
+          "endSeconds": 39.552
+        },
+        {
+          "text": "finden",
+          "startSeconds": 39.552,
+          "endSeconds": 39.906
+        },
+        {
+          "text": "und",
+          "startSeconds": 39.906,
+          "endSeconds": 40.259
+        },
+        {
+          "text": "Änderungen",
+          "startSeconds": 40.259,
+          "endSeconds": 40.612
+        }
+      ]
+    },
+    {
+      "id": "scene-11-subtitle-2",
+      "text": "vorschlagen, aber du entscheidest, was",
+      "startSeconds": 40.612,
+      "endSeconds": 42.378,
+      "verticalPositionPercent": 58,
+      "textColor": "#F2F2F2",
+      "highlightColor": "#CC8B66",
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "words": [
+        {
+          "text": "vorschlagen,",
+          "startSeconds": 40.612,
+          "endSeconds": 40.965
+        },
+        {
+          "text": "aber",
+          "startSeconds": 40.965,
+          "endSeconds": 41.318
+        },
+        {
+          "text": "du",
+          "startSeconds": 41.318,
+          "endSeconds": 41.671
+        },
+        {
+          "text": "entscheidest,",
+          "startSeconds": 41.671,
+          "endSeconds": 42.024
+        },
+        {
+          "text": "was",
+          "startSeconds": 42.024,
+          "endSeconds": 42.378
+        }
+      ]
+    },
+    {
+      "id": "scene-11-subtitle-3",
+      "text": "wirklich",
+      "startSeconds": 42.378,
+      "endSeconds": 42.731,
+      "verticalPositionPercent": 58,
+      "textColor": "#F2F2F2",
+      "highlightColor": "#CC8B66",
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "words": [
+        {
+          "text": "wirklich",
+          "startSeconds": 42.378,
+          "endSeconds": 42.731
+        }
+      ]
+    }
+  ],
+  "subtitlePosition": "center",
+  "durationSeconds": 3.885,
+  "expectedImageFileName": "scene-11.jpeg",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-11",
+    "confirmedSceneOrder": 11,
+    "visibleSummary": "Verified by user via Google Flow generation",
+    "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+    "comparedFields": [
+      "narration",
+      "visualIdea",
+      "imageText",
+      "imagePrompt"
+    ],
+    "matchMethod": "visual-content-review",
+    "reviewedAt": "2026-08-13T17:31:45.072Z"
+  },
+  "status": "image-ready",
+  "source": "numbered-images/Bild 11.jpeg",
+  "matchConfidence": 1,
+  "matchReason": "Matches exactly according to the Google Flow generation process and user confirmation."
+}

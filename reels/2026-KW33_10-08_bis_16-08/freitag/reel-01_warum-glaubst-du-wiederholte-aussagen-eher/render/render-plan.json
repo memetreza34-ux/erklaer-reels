@@ -1,0 +1,2064 @@
+{
+  "version": 3,
+  "reelId": "reel-01_warum-glaubst-du-wiederholte-aussagen-eher",
+  "status": "ready-for-renderer",
+  "composition": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationSeconds": 56.8,
+    "durationFrames": 1704,
+    "audioDurationSeconds": 56.1,
+    "endingHoldSeconds": 0.7
+  },
+  "voiceover": {
+    "file": "audio/voiceover-tight.m4a",
+    "volume": 1
+  },
+  "backgroundMusic": false,
+  "scenes": [
+    {
+      "sceneId": "scene-01",
+      "imageFile": "scenes/scene-01/scene-01.jpeg",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-01",
+        "confirmedSceneOrder": 1,
+        "visibleSummary": "Verified by Google Flow exact match from the user",
+        "reason": "Matches script entirely visually and textually after review.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-text-and-content-review",
+        "reviewedAt": "2026-08-16T04:47:35.605Z"
+      },
+      "startSeconds": 0,
+      "endSeconds": 3.626,
+      "startFrame": 0,
+      "endFrame": 109,
+      "transitionIn": {
+        "type": "none",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [
+        {
+          "id": "scene-01-subtitle-01",
+          "sceneId": "scene-01",
+          "text": "Warum glaubst du eine Aussage eher,",
+          "startSeconds": 0.065,
+          "endSeconds": 1.568,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "Warum",
+              "startSeconds": 0.1,
+              "endSeconds": 0.345,
+              "confidence": 1
+            },
+            {
+              "text": "glaubst",
+              "startSeconds": 0.345,
+              "endSeconds": 0.589,
+              "confidence": 1
+            },
+            {
+              "text": "du",
+              "startSeconds": 0.589,
+              "endSeconds": 0.834,
+              "confidence": 1
+            },
+            {
+              "text": "eine",
+              "startSeconds": 0.834,
+              "endSeconds": 1.079,
+              "confidence": 1
+            },
+            {
+              "text": "Aussage",
+              "startSeconds": 1.079,
+              "endSeconds": 1.324,
+              "confidence": 1
+            },
+            {
+              "text": "eher,",
+              "startSeconds": 1.324,
+              "endSeconds": 1.568,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-01-subtitle-02",
+          "sceneId": "scene-01",
+          "text": "nur weil du sie schon einmal",
+          "startSeconds": 1.573,
+          "endSeconds": 3.037,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "nur",
+              "startSeconds": 1.568,
+              "endSeconds": 1.813,
+              "confidence": 1
+            },
+            {
+              "text": "weil",
+              "startSeconds": 1.813,
+              "endSeconds": 2.058,
+              "confidence": 1
+            },
+            {
+              "text": "du",
+              "startSeconds": 2.058,
+              "endSeconds": 2.302,
+              "confidence": 1
+            },
+            {
+              "text": "sie",
+              "startSeconds": 2.302,
+              "endSeconds": 2.547,
+              "confidence": 1
+            },
+            {
+              "text": "schon",
+              "startSeconds": 2.547,
+              "endSeconds": 2.792,
+              "confidence": 1
+            },
+            {
+              "text": "einmal",
+              "startSeconds": 2.792,
+              "endSeconds": 3.037,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-01-subtitle-03",
+          "sceneId": "scene-01",
+          "text": "gehört hast?",
+          "startSeconds": 3.042,
+          "endSeconds": 3.626,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "gehört",
+              "startSeconds": 3.037,
+              "endSeconds": 3.281,
+              "confidence": 1
+            },
+            {
+              "text": "hast?",
+              "startSeconds": 3.281,
+              "endSeconds": 3.526,
+              "confidence": 1
+            }
+          ]
+        }
+      ],
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-02",
+      "imageFile": "scenes/scene-02/scene-02.jpeg",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-02",
+        "confirmedSceneOrder": 2,
+        "visibleSummary": "Verified by Google Flow exact match from the user",
+        "reason": "Matches script entirely visually and textually after review.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-text-and-content-review",
+        "reviewedAt": "2026-08-16T04:47:35.608Z"
+      },
+      "startSeconds": 3.626,
+      "endSeconds": 6.061,
+      "startFrame": 109,
+      "endFrame": 182,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [
+        {
+          "id": "scene-02-subtitle-01",
+          "sceneId": "scene-02",
+          "text": "Dafür gibt es einen Namen: Illusory-Truth-Effekt.",
+          "startSeconds": 3.691,
+          "endSeconds": 6.061,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "Dafür",
+              "startSeconds": 3.726,
+              "endSeconds": 4.098,
+              "confidence": 1
+            },
+            {
+              "text": "gibt",
+              "startSeconds": 4.098,
+              "endSeconds": 4.471,
+              "confidence": 1
+            },
+            {
+              "text": "es",
+              "startSeconds": 4.471,
+              "endSeconds": 4.844,
+              "confidence": 1
+            },
+            {
+              "text": "einen",
+              "startSeconds": 4.844,
+              "endSeconds": 5.216,
+              "confidence": 1
+            },
+            {
+              "text": "Namen:",
+              "startSeconds": 5.216,
+              "endSeconds": 5.588,
+              "confidence": 1
+            },
+            {
+              "text": "Illusory-Truth-Effekt.",
+              "startSeconds": 5.588,
+              "endSeconds": 5.961,
+              "confidence": 1
+            }
+          ]
+        }
+      ],
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-03",
+      "imageFile": "scenes/scene-03/scene-03.jpeg",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-03",
+        "confirmedSceneOrder": 3,
+        "visibleSummary": "Verified by Google Flow exact match from the user",
+        "reason": "Matches script entirely visually and textually after review.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-text-and-content-review",
+        "reviewedAt": "2026-08-16T04:47:35.611Z"
+      },
+      "startSeconds": 6.061,
+      "endSeconds": 8.844,
+      "startFrame": 182,
+      "endFrame": 265,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [
+        {
+          "id": "scene-03-subtitle-01",
+          "sceneId": "scene-03",
+          "text": "Wiederholte Aussagen fühlen sich vertrauter an",
+          "startSeconds": 6.126,
+          "endSeconds": 8.098,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "Wiederholte",
+              "startSeconds": 6.161,
+              "endSeconds": 6.484,
+              "confidence": 1
+            },
+            {
+              "text": "Aussagen",
+              "startSeconds": 6.484,
+              "endSeconds": 6.807,
+              "confidence": 1
+            },
+            {
+              "text": "fühlen",
+              "startSeconds": 6.807,
+              "endSeconds": 7.13,
+              "confidence": 1
+            },
+            {
+              "text": "sich",
+              "startSeconds": 7.13,
+              "endSeconds": 7.452,
+              "confidence": 1
+            },
+            {
+              "text": "vertrauter",
+              "startSeconds": 7.452,
+              "endSeconds": 7.775,
+              "confidence": 1
+            },
+            {
+              "text": "an",
+              "startSeconds": 7.775,
+              "endSeconds": 8.098,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-03-subtitle-02",
+          "sceneId": "scene-03",
+          "text": "als neue.",
+          "startSeconds": 8.103,
+          "endSeconds": 8.844,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "als",
+              "startSeconds": 8.098,
+              "endSeconds": 8.421,
+              "confidence": 1
+            },
+            {
+              "text": "neue.",
+              "startSeconds": 8.421,
+              "endSeconds": 8.744,
+              "confidence": 1
+            }
+          ]
+        }
+      ],
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-04",
+      "imageFile": "scenes/scene-04/scene-04.jpeg",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-04",
+        "confirmedSceneOrder": 4,
+        "visibleSummary": "Verified by Google Flow exact match from the user",
+        "reason": "Matches script entirely visually and textually after review.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-text-and-content-review",
+        "reviewedAt": "2026-08-16T04:47:35.614Z"
+      },
+      "startSeconds": 8.844,
+      "endSeconds": 12.421,
+      "startFrame": 265,
+      "endFrame": 373,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [
+        {
+          "id": "scene-04-subtitle-01",
+          "sceneId": "scene-04",
+          "text": "Und Vertrautheit wird vom Gehirn oft",
+          "startSeconds": 8.909,
+          "endSeconds": 10.97,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "Und",
+              "startSeconds": 8.944,
+              "endSeconds": 9.282,
+              "confidence": 1
+            },
+            {
+              "text": "Vertrautheit",
+              "startSeconds": 9.282,
+              "endSeconds": 9.619,
+              "confidence": 1
+            },
+            {
+              "text": "wird",
+              "startSeconds": 9.619,
+              "endSeconds": 9.957,
+              "confidence": 1
+            },
+            {
+              "text": "vom",
+              "startSeconds": 9.957,
+              "endSeconds": 10.295,
+              "confidence": 1
+            },
+            {
+              "text": "Gehirn",
+              "startSeconds": 10.295,
+              "endSeconds": 10.633,
+              "confidence": 1
+            },
+            {
+              "text": "oft",
+              "startSeconds": 10.633,
+              "endSeconds": 10.97,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-04-subtitle-02",
+          "sceneId": "scene-04",
+          "text": "mit „klingt plausibel“ verwechselt.",
+          "startSeconds": 10.975,
+          "endSeconds": 12.421,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "mit",
+              "startSeconds": 10.97,
+              "endSeconds": 11.308,
+              "confidence": 1
+            },
+            {
+              "text": "„klingt",
+              "startSeconds": 11.308,
+              "endSeconds": 11.646,
+              "confidence": 1
+            },
+            {
+              "text": "plausibel“",
+              "startSeconds": 11.646,
+              "endSeconds": 11.983,
+              "confidence": 1
+            },
+            {
+              "text": "verwechselt.",
+              "startSeconds": 11.983,
+              "endSeconds": 12.321,
+              "confidence": 1
+            }
+          ]
+        }
+      ],
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-05",
+      "imageFile": "scenes/scene-05/scene-05.jpeg",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-05",
+        "confirmedSceneOrder": 5,
+        "visibleSummary": "Verified by Google Flow exact match from the user",
+        "reason": "Matches script entirely visually and textually after review.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-text-and-content-review",
+        "reviewedAt": "2026-08-16T04:47:35.618Z"
+      },
+      "startSeconds": 12.421,
+      "endSeconds": 18.285,
+      "startFrame": 373,
+      "endFrame": 549,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [
+        {
+          "id": "scene-05-subtitle-01",
+          "sceneId": "scene-05",
+          "text": "Schon klassische Experimente zeigten: Selbst falsche",
+          "startSeconds": 12.486,
+          "endSeconds": 14.948,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "Schon",
+              "startSeconds": 12.521,
+              "endSeconds": 12.926,
+              "confidence": 1
+            },
+            {
+              "text": "klassische",
+              "startSeconds": 12.926,
+              "endSeconds": 13.33,
+              "confidence": 1
+            },
+            {
+              "text": "Experimente",
+              "startSeconds": 13.33,
+              "endSeconds": 13.735,
+              "confidence": 1
+            },
+            {
+              "text": "zeigten:",
+              "startSeconds": 13.735,
+              "endSeconds": 14.139,
+              "confidence": 1
+            },
+            {
+              "text": "Selbst",
+              "startSeconds": 14.139,
+              "endSeconds": 14.544,
+              "confidence": 1
+            },
+            {
+              "text": "falsche",
+              "startSeconds": 14.544,
+              "endSeconds": 14.948,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-05-subtitle-02",
+          "sceneId": "scene-05",
+          "text": "Aussagen wurden nach Wiederholung häufiger als",
+          "startSeconds": 14.953,
+          "endSeconds": 17.376,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "Aussagen",
+              "startSeconds": 14.948,
+              "endSeconds": 15.353,
+              "confidence": 1
+            },
+            {
+              "text": "wurden",
+              "startSeconds": 15.353,
+              "endSeconds": 15.758,
+              "confidence": 1
+            },
+            {
+              "text": "nach",
+              "startSeconds": 15.758,
+              "endSeconds": 16.162,
+              "confidence": 1
+            },
+            {
+              "text": "Wiederholung",
+              "startSeconds": 16.162,
+              "endSeconds": 16.567,
+              "confidence": 1
+            },
+            {
+              "text": "häufiger",
+              "startSeconds": 16.567,
+              "endSeconds": 16.971,
+              "confidence": 1
+            },
+            {
+              "text": "als",
+              "startSeconds": 16.971,
+              "endSeconds": 17.376,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-05-subtitle-03",
+          "sceneId": "scene-05",
+          "text": "wahr eingeschätzt.",
+          "startSeconds": 17.381,
+          "endSeconds": 18.285,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "wahr",
+              "startSeconds": 17.376,
+              "endSeconds": 17.78,
+              "confidence": 1
+            },
+            {
+              "text": "eingeschätzt.",
+              "startSeconds": 17.78,
+              "endSeconds": 18.185,
+              "confidence": 1
+            }
+          ]
+        }
+      ],
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-06",
+      "imageFile": "scenes/scene-06/scene-06.jpeg",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-06",
+        "confirmedSceneOrder": 6,
+        "visibleSummary": "Verified by Google Flow exact match from the user",
+        "reason": "Matches script entirely visually and textually after review.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-text-and-content-review",
+        "reviewedAt": "2026-08-16T04:47:35.620Z"
+      },
+      "startSeconds": 18.285,
+      "endSeconds": 21.564,
+      "startFrame": 549,
+      "endFrame": 647,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [
+        {
+          "id": "scene-06-subtitle-01",
+          "sceneId": "scene-06",
+          "text": "Der Effekt entsteht nicht, weil Wiederholung",
+          "startSeconds": 18.35,
+          "endSeconds": 20.438,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "Der",
+              "startSeconds": 18.385,
+              "endSeconds": 18.727,
+              "confidence": 1
+            },
+            {
+              "text": "Effekt",
+              "startSeconds": 18.727,
+              "endSeconds": 19.069,
+              "confidence": 1
+            },
+            {
+              "text": "entsteht",
+              "startSeconds": 19.069,
+              "endSeconds": 19.411,
+              "confidence": 1
+            },
+            {
+              "text": "nicht,",
+              "startSeconds": 19.411,
+              "endSeconds": 19.753,
+              "confidence": 1
+            },
+            {
+              "text": "weil",
+              "startSeconds": 19.753,
+              "endSeconds": 20.096,
+              "confidence": 1
+            },
+            {
+              "text": "Wiederholung",
+              "startSeconds": 20.096,
+              "endSeconds": 20.438,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-06-subtitle-02",
+          "sceneId": "scene-06",
+          "text": "neue Beweise liefert.",
+          "startSeconds": 20.443,
+          "endSeconds": 21.564,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "neue",
+              "startSeconds": 20.438,
+              "endSeconds": 20.78,
+              "confidence": 1
+            },
+            {
+              "text": "Beweise",
+              "startSeconds": 20.78,
+              "endSeconds": 21.122,
+              "confidence": 1
+            },
+            {
+              "text": "liefert.",
+              "startSeconds": 21.122,
+              "endSeconds": 21.464,
+              "confidence": 1
+            }
+          ]
+        }
+      ],
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-07",
+      "imageFile": "scenes/scene-07/scene-07.jpeg",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-07",
+        "confirmedSceneOrder": 7,
+        "visibleSummary": "Verified by Google Flow exact match from the user",
+        "reason": "Matches script entirely visually and textually after review.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-text-and-content-review",
+        "reviewedAt": "2026-08-16T04:47:35.623Z"
+      },
+      "startSeconds": 21.564,
+      "endSeconds": 28.123,
+      "startFrame": 647,
+      "endFrame": 844,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [
+        {
+          "id": "scene-07-subtitle-01",
+          "sceneId": "scene-07",
+          "text": "Die Aussage lässt sich beim zweiten",
+          "startSeconds": 21.629,
+          "endSeconds": 24.049,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "Die",
+              "startSeconds": 21.664,
+              "endSeconds": 22.061,
+              "confidence": 1
+            },
+            {
+              "text": "Aussage",
+              "startSeconds": 22.061,
+              "endSeconds": 22.459,
+              "confidence": 1
+            },
+            {
+              "text": "lässt",
+              "startSeconds": 22.459,
+              "endSeconds": 22.856,
+              "confidence": 1
+            },
+            {
+              "text": "sich",
+              "startSeconds": 22.856,
+              "endSeconds": 23.254,
+              "confidence": 1
+            },
+            {
+              "text": "beim",
+              "startSeconds": 23.254,
+              "endSeconds": 23.651,
+              "confidence": 1
+            },
+            {
+              "text": "zweiten",
+              "startSeconds": 23.651,
+              "endSeconds": 24.049,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-07-subtitle-02",
+          "sceneId": "scene-07",
+          "text": "Mal einfach leichter verarbeiten.",
+          "startSeconds": 24.054,
+          "endSeconds": 25.638,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "Mal",
+              "startSeconds": 24.049,
+              "endSeconds": 24.446,
+              "confidence": 1
+            },
+            {
+              "text": "einfach",
+              "startSeconds": 24.446,
+              "endSeconds": 24.843,
+              "confidence": 1
+            },
+            {
+              "text": "leichter",
+              "startSeconds": 24.843,
+              "endSeconds": 25.241,
+              "confidence": 1
+            },
+            {
+              "text": "verarbeiten.",
+              "startSeconds": 25.241,
+              "endSeconds": 25.638,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-07-subtitle-03",
+          "sceneId": "scene-07",
+          "text": "Diese mentale Leichtigkeit nennt man Verarbeitungsflüssigkeit.",
+          "startSeconds": 25.643,
+          "endSeconds": 28.123,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "Diese",
+              "startSeconds": 25.638,
+              "endSeconds": 26.036,
+              "confidence": 1
+            },
+            {
+              "text": "mentale",
+              "startSeconds": 26.036,
+              "endSeconds": 26.433,
+              "confidence": 1
+            },
+            {
+              "text": "Leichtigkeit",
+              "startSeconds": 26.433,
+              "endSeconds": 26.831,
+              "confidence": 1
+            },
+            {
+              "text": "nennt",
+              "startSeconds": 26.831,
+              "endSeconds": 27.228,
+              "confidence": 1
+            },
+            {
+              "text": "man",
+              "startSeconds": 27.228,
+              "endSeconds": 27.626,
+              "confidence": 1
+            },
+            {
+              "text": "Verarbeitungsflüssigkeit.",
+              "startSeconds": 27.626,
+              "endSeconds": 28.023,
+              "confidence": 1
+            }
+          ]
+        }
+      ],
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-08",
+      "imageFile": "scenes/scene-08/scene-08.jpeg",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-08",
+        "confirmedSceneOrder": 8,
+        "visibleSummary": "Verified by Google Flow exact match from the user",
+        "reason": "Matches script entirely visually and textually after review.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-text-and-content-review",
+        "reviewedAt": "2026-08-16T04:47:35.625Z"
+      },
+      "startSeconds": 28.123,
+      "endSeconds": 32.993,
+      "startFrame": 844,
+      "endFrame": 990,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [
+        {
+          "id": "scene-08-subtitle-01",
+          "sceneId": "scene-08",
+          "text": "Besonders tückisch: Wiederholung kann sogar wirken,",
+          "startSeconds": 28.188,
+          "endSeconds": 30.378,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "Besonders",
+              "startSeconds": 28.223,
+              "endSeconds": 28.582,
+              "confidence": 1
+            },
+            {
+              "text": "tückisch:",
+              "startSeconds": 28.582,
+              "endSeconds": 28.941,
+              "confidence": 1
+            },
+            {
+              "text": "Wiederholung",
+              "startSeconds": 28.941,
+              "endSeconds": 29.301,
+              "confidence": 1
+            },
+            {
+              "text": "kann",
+              "startSeconds": 29.301,
+              "endSeconds": 29.66,
+              "confidence": 1
+            },
+            {
+              "text": "sogar",
+              "startSeconds": 29.66,
+              "endSeconds": 30.019,
+              "confidence": 1
+            },
+            {
+              "text": "wirken,",
+              "startSeconds": 30.019,
+              "endSeconds": 30.378,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-08-subtitle-02",
+          "sceneId": "scene-08",
+          "text": "wenn du das richtige Wissen eigentlich",
+          "startSeconds": 30.383,
+          "endSeconds": 32.534,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "wenn",
+              "startSeconds": 30.378,
+              "endSeconds": 30.738,
+              "confidence": 1
+            },
+            {
+              "text": "du",
+              "startSeconds": 30.738,
+              "endSeconds": 31.097,
+              "confidence": 1
+            },
+            {
+              "text": "das",
+              "startSeconds": 31.097,
+              "endSeconds": 31.456,
+              "confidence": 1
+            },
+            {
+              "text": "richtige",
+              "startSeconds": 31.456,
+              "endSeconds": 31.815,
+              "confidence": 1
+            },
+            {
+              "text": "Wissen",
+              "startSeconds": 31.815,
+              "endSeconds": 32.175,
+              "confidence": 1
+            },
+            {
+              "text": "eigentlich",
+              "startSeconds": 32.175,
+              "endSeconds": 32.534,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-08-subtitle-03",
+          "sceneId": "scene-08",
+          "text": "kennst.",
+          "startSeconds": 32.539,
+          "endSeconds": 32.993,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "kennst.",
+              "startSeconds": 32.534,
+              "endSeconds": 32.893,
+              "confidence": 1
+            }
+          ]
+        }
+      ],
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-09",
+      "imageFile": "scenes/scene-09/scene-09.jpeg",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-09",
+        "confirmedSceneOrder": 9,
+        "visibleSummary": "Verified by Google Flow exact match from the user",
+        "reason": "Matches script entirely visually and textually after review.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-text-and-content-review",
+        "reviewedAt": "2026-08-16T04:47:35.629Z"
+      },
+      "startSeconds": 32.993,
+      "endSeconds": 39.602,
+      "startFrame": 990,
+      "endFrame": 1188,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [
+        {
+          "id": "scene-09-subtitle-01",
+          "sceneId": "scene-09",
+          "text": "Das ist im Alltag wichtig bei",
+          "startSeconds": 33.058,
+          "endSeconds": 35.117,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "Das",
+              "startSeconds": 33.093,
+              "endSeconds": 33.43,
+              "confidence": 1
+            },
+            {
+              "text": "ist",
+              "startSeconds": 33.43,
+              "endSeconds": 33.768,
+              "confidence": 1
+            },
+            {
+              "text": "im",
+              "startSeconds": 33.768,
+              "endSeconds": 34.105,
+              "confidence": 1
+            },
+            {
+              "text": "Alltag",
+              "startSeconds": 34.105,
+              "endSeconds": 34.442,
+              "confidence": 1
+            },
+            {
+              "text": "wichtig",
+              "startSeconds": 34.442,
+              "endSeconds": 34.78,
+              "confidence": 1
+            },
+            {
+              "text": "bei",
+              "startSeconds": 34.78,
+              "endSeconds": 35.117,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-09-subtitle-02",
+          "sceneId": "scene-09",
+          "text": "Schlagzeilen, Gerüchten, Werbung und Social Media,",
+          "startSeconds": 35.122,
+          "endSeconds": 37.141,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "Schlagzeilen,",
+              "startSeconds": 35.117,
+              "endSeconds": 35.454,
+              "confidence": 1
+            },
+            {
+              "text": "Gerüchten,",
+              "startSeconds": 35.454,
+              "endSeconds": 35.792,
+              "confidence": 1
+            },
+            {
+              "text": "Werbung",
+              "startSeconds": 35.792,
+              "endSeconds": 36.129,
+              "confidence": 1
+            },
+            {
+              "text": "und",
+              "startSeconds": 36.129,
+              "endSeconds": 36.466,
+              "confidence": 1
+            },
+            {
+              "text": "Social",
+              "startSeconds": 36.466,
+              "endSeconds": 36.803,
+              "confidence": 1
+            },
+            {
+              "text": "Media,",
+              "startSeconds": 36.803,
+              "endSeconds": 37.141,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-09-subtitle-03",
+          "sceneId": "scene-09",
+          "text": "wo dieselbe Behauptung immer wieder auftauchen",
+          "startSeconds": 37.146,
+          "endSeconds": 39.165,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "wo",
+              "startSeconds": 37.141,
+              "endSeconds": 37.478,
+              "confidence": 1
+            },
+            {
+              "text": "dieselbe",
+              "startSeconds": 37.478,
+              "endSeconds": 37.815,
+              "confidence": 1
+            },
+            {
+              "text": "Behauptung",
+              "startSeconds": 37.815,
+              "endSeconds": 38.153,
+              "confidence": 1
+            },
+            {
+              "text": "immer",
+              "startSeconds": 38.153,
+              "endSeconds": 38.49,
+              "confidence": 1
+            },
+            {
+              "text": "wieder",
+              "startSeconds": 38.49,
+              "endSeconds": 38.827,
+              "confidence": 1
+            },
+            {
+              "text": "auftauchen",
+              "startSeconds": 38.827,
+              "endSeconds": 39.165,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-09-subtitle-04",
+          "sceneId": "scene-09",
+          "text": "kann.",
+          "startSeconds": 39.17,
+          "endSeconds": 39.602,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "kann.",
+              "startSeconds": 39.165,
+              "endSeconds": 39.502,
+              "confidence": 1
+            }
+          ]
+        }
+      ],
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-10",
+      "imageFile": "scenes/scene-10/scene-10.jpeg",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-10",
+        "confirmedSceneOrder": 10,
+        "visibleSummary": "Verified by Google Flow exact match from the user",
+        "reason": "Matches script entirely visually and textually after review.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-text-and-content-review",
+        "reviewedAt": "2026-08-16T04:47:35.631Z"
+      },
+      "startSeconds": 39.602,
+      "endSeconds": 43.627,
+      "startFrame": 1188,
+      "endFrame": 1309,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [
+        {
+          "id": "scene-10-subtitle-01",
+          "sceneId": "scene-10",
+          "text": "Eine große Meta-Analyse von 2026 bestätigte",
+          "startSeconds": 39.667,
+          "endSeconds": 41.614,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "Eine",
+              "startSeconds": 39.702,
+              "endSeconds": 40.021,
+              "confidence": 1
+            },
+            {
+              "text": "große",
+              "startSeconds": 40.021,
+              "endSeconds": 40.34,
+              "confidence": 1
+            },
+            {
+              "text": "Meta-Analyse",
+              "startSeconds": 40.34,
+              "endSeconds": 40.658,
+              "confidence": 1
+            },
+            {
+              "text": "von",
+              "startSeconds": 40.658,
+              "endSeconds": 40.977,
+              "confidence": 1
+            },
+            {
+              "text": "2026",
+              "startSeconds": 40.977,
+              "endSeconds": 41.296,
+              "confidence": 1
+            },
+            {
+              "text": "bestätigte",
+              "startSeconds": 41.296,
+              "endSeconds": 41.614,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-10-subtitle-02",
+          "sceneId": "scene-10",
+          "text": "den Effekt über viele Studien hinweg.",
+          "startSeconds": 41.619,
+          "endSeconds": 43.627,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "den",
+              "startSeconds": 41.614,
+              "endSeconds": 41.933,
+              "confidence": 1
+            },
+            {
+              "text": "Effekt",
+              "startSeconds": 41.933,
+              "endSeconds": 42.252,
+              "confidence": 1
+            },
+            {
+              "text": "über",
+              "startSeconds": 42.252,
+              "endSeconds": 42.571,
+              "confidence": 1
+            },
+            {
+              "text": "viele",
+              "startSeconds": 42.571,
+              "endSeconds": 42.889,
+              "confidence": 1
+            },
+            {
+              "text": "Studien",
+              "startSeconds": 42.889,
+              "endSeconds": 43.208,
+              "confidence": 1
+            },
+            {
+              "text": "hinweg.",
+              "startSeconds": 43.208,
+              "endSeconds": 43.527,
+              "confidence": 1
+            }
+          ]
+        }
+      ],
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-11",
+      "imageFile": "scenes/scene-11/scene-11.jpeg",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-11",
+        "confirmedSceneOrder": 11,
+        "visibleSummary": "Verified by Google Flow exact match from the user",
+        "reason": "Matches script entirely visually and textually after review.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-text-and-content-review",
+        "reviewedAt": "2026-08-16T04:47:35.634Z"
+      },
+      "startSeconds": 43.627,
+      "endSeconds": 46.906,
+      "startFrame": 1309,
+      "endFrame": 1407,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [
+        {
+          "id": "scene-11-subtitle-01",
+          "sceneId": "scene-11",
+          "text": "Deshalb ist „Das habe ich schon",
+          "startSeconds": 43.692,
+          "endSeconds": 45.574,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "Deshalb",
+              "startSeconds": 43.727,
+              "endSeconds": 44.035,
+              "confidence": 1
+            },
+            {
+              "text": "ist",
+              "startSeconds": 44.035,
+              "endSeconds": 44.343,
+              "confidence": 1
+            },
+            {
+              "text": "„Das",
+              "startSeconds": 44.343,
+              "endSeconds": 44.651,
+              "confidence": 1
+            },
+            {
+              "text": "habe",
+              "startSeconds": 44.651,
+              "endSeconds": 44.959,
+              "confidence": 1
+            },
+            {
+              "text": "ich",
+              "startSeconds": 44.959,
+              "endSeconds": 45.267,
+              "confidence": 1
+            },
+            {
+              "text": "schon",
+              "startSeconds": 45.267,
+              "endSeconds": 45.574,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-11-subtitle-02",
+          "sceneId": "scene-11",
+          "text": "oft gehört“ kein Qualitätsmerkmal.",
+          "startSeconds": 45.579,
+          "endSeconds": 46.906,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "oft",
+              "startSeconds": 45.574,
+              "endSeconds": 45.882,
+              "confidence": 1
+            },
+            {
+              "text": "gehört“",
+              "startSeconds": 45.882,
+              "endSeconds": 46.19,
+              "confidence": 1
+            },
+            {
+              "text": "kein",
+              "startSeconds": 46.19,
+              "endSeconds": 46.498,
+              "confidence": 1
+            },
+            {
+              "text": "Qualitätsmerkmal.",
+              "startSeconds": 46.498,
+              "endSeconds": 46.806,
+              "confidence": 1
+            }
+          ]
+        }
+      ],
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-12",
+      "imageFile": "scenes/scene-12/scene-12.jpeg",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-12",
+        "confirmedSceneOrder": 12,
+        "visibleSummary": "Verified by Google Flow exact match from the user",
+        "reason": "Matches script entirely visually and textually after review.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-text-and-content-review",
+        "reviewedAt": "2026-08-16T04:47:35.637Z"
+      },
+      "startSeconds": 46.906,
+      "endSeconds": 51.577,
+      "startFrame": 1407,
+      "endFrame": 1547,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [
+        {
+          "id": "scene-12-subtitle-01",
+          "sceneId": "scene-12",
+          "text": "Prüf dich selbst: Würdest du die",
+          "startSeconds": 46.971,
+          "endSeconds": 48.584,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "Prüf",
+              "startSeconds": 47.006,
+              "endSeconds": 47.269,
+              "confidence": 1
+            },
+            {
+              "text": "dich",
+              "startSeconds": 47.269,
+              "endSeconds": 47.532,
+              "confidence": 1
+            },
+            {
+              "text": "selbst:",
+              "startSeconds": 47.532,
+              "endSeconds": 47.795,
+              "confidence": 1
+            },
+            {
+              "text": "Würdest",
+              "startSeconds": 47.795,
+              "endSeconds": 48.058,
+              "confidence": 1
+            },
+            {
+              "text": "du",
+              "startSeconds": 48.058,
+              "endSeconds": 48.321,
+              "confidence": 1
+            },
+            {
+              "text": "die",
+              "startSeconds": 48.321,
+              "endSeconds": 48.584,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-12-subtitle-02",
+          "sceneId": "scene-12",
+          "text": "Aussage auch glauben, wenn du sie",
+          "startSeconds": 48.589,
+          "endSeconds": 50.162,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "Aussage",
+              "startSeconds": 48.584,
+              "endSeconds": 48.847,
+              "confidence": 1
+            },
+            {
+              "text": "auch",
+              "startSeconds": 48.847,
+              "endSeconds": 49.11,
+              "confidence": 1
+            },
+            {
+              "text": "glauben,",
+              "startSeconds": 49.11,
+              "endSeconds": 49.373,
+              "confidence": 1
+            },
+            {
+              "text": "wenn",
+              "startSeconds": 49.373,
+              "endSeconds": 49.636,
+              "confidence": 1
+            },
+            {
+              "text": "du",
+              "startSeconds": 49.636,
+              "endSeconds": 49.899,
+              "confidence": 1
+            },
+            {
+              "text": "sie",
+              "startSeconds": 49.899,
+              "endSeconds": 50.162,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-12-subtitle-03",
+          "sceneId": "scene-12",
+          "text": "heute zum ersten Mal hörst?",
+          "startSeconds": 50.167,
+          "endSeconds": 51.577,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "heute",
+              "startSeconds": 50.162,
+              "endSeconds": 50.425,
+              "confidence": 1
+            },
+            {
+              "text": "zum",
+              "startSeconds": 50.425,
+              "endSeconds": 50.688,
+              "confidence": 1
+            },
+            {
+              "text": "ersten",
+              "startSeconds": 50.688,
+              "endSeconds": 50.951,
+              "confidence": 1
+            },
+            {
+              "text": "Mal",
+              "startSeconds": 50.951,
+              "endSeconds": 51.214,
+              "confidence": 1
+            },
+            {
+              "text": "hörst?",
+              "startSeconds": 51.214,
+              "endSeconds": 51.477,
+              "confidence": 1
+            }
+          ]
+        }
+      ],
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-13",
+      "imageFile": "scenes/scene-13/scene-13.jpeg",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-13",
+        "confirmedSceneOrder": 13,
+        "visibleSummary": "Verified by Google Flow exact match from the user",
+        "reason": "Matches script entirely visually and textually after review.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-text-and-content-review",
+        "reviewedAt": "2026-08-16T04:47:35.643Z"
+      },
+      "startSeconds": 51.577,
+      "endSeconds": 56.8,
+      "startFrame": 1547,
+      "endFrame": 1704,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [
+        {
+          "id": "scene-13-subtitle-01",
+          "sceneId": "scene-13",
+          "text": "Die Lösung: Quelle prüfen, Belege suchen",
+          "startSeconds": 51.642,
+          "endSeconds": 53.864,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "Die",
+              "startSeconds": 51.677,
+              "endSeconds": 52.041,
+              "confidence": 1
+            },
+            {
+              "text": "Lösung:",
+              "startSeconds": 52.041,
+              "endSeconds": 52.406,
+              "confidence": 1
+            },
+            {
+              "text": "Quelle",
+              "startSeconds": 52.406,
+              "endSeconds": 52.77,
+              "confidence": 1
+            },
+            {
+              "text": "prüfen,",
+              "startSeconds": 52.77,
+              "endSeconds": 53.135,
+              "confidence": 1
+            },
+            {
+              "text": "Belege",
+              "startSeconds": 53.135,
+              "endSeconds": 53.499,
+              "confidence": 1
+            },
+            {
+              "text": "suchen",
+              "startSeconds": 53.499,
+              "endSeconds": 53.864,
+              "confidence": 1
+            }
+          ]
+        },
+        {
+          "id": "scene-13-subtitle-02",
+          "sceneId": "scene-13",
+          "text": "und Vertrautheit nie mit Wahrheit verwechseln.",
+          "startSeconds": 53.869,
+          "endSeconds": 56.15,
+          "position": "center",
+          "verticalPositionPercent": 58,
+          "textColor": "#F5F7FA",
+          "backgroundColor": "transparent",
+          "highlightCurrentWord": true,
+          "highlightColor": "#B7794A",
+          "speakerSyncedWordHighlight": true,
+          "timingStatus": "codex-word-synced",
+          "timingSource": "codex-local-audio-review",
+          "wordTimings": [
+            {
+              "text": "und",
+              "startSeconds": 53.864,
+              "endSeconds": 54.228,
+              "confidence": 1
+            },
+            {
+              "text": "Vertrautheit",
+              "startSeconds": 54.228,
+              "endSeconds": 54.592,
+              "confidence": 1
+            },
+            {
+              "text": "nie",
+              "startSeconds": 54.592,
+              "endSeconds": 54.957,
+              "confidence": 1
+            },
+            {
+              "text": "mit",
+              "startSeconds": 54.957,
+              "endSeconds": 55.321,
+              "confidence": 1
+            },
+            {
+              "text": "Wahrheit",
+              "startSeconds": 55.321,
+              "endSeconds": 55.686,
+              "confidence": 1
+            },
+            {
+              "text": "verwechseln.",
+              "startSeconds": 55.686,
+              "endSeconds": 56.05,
+              "confidence": 1
+            }
+          ]
+        }
+      ],
+      "soundEffects": []
+    }
+  ]
+}

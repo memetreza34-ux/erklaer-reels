@@ -7,7 +7,7 @@
   "visualIdea": "Die übrigen Personen gehen direkt zu ihren eigenen Tätigkeiten und Gedanken über.",
   "audioCue": "Andere Menschen",
   "leadInSeconds": 0.2,
-  "durationSeconds": 2.2,
+  "durationSeconds": 4,
   "expectedImageFileName": "scene-06.jpeg",
   "promptStatus": "ready",
   "imageStatus": "missing",
@@ -31,5 +31,6 @@
     ],
     "matchMethod": "visual-content-review",
     "reviewedAt": "2026-08-12T17:52:03.229Z"
-  }
+  },
+  "continuityNotes": "Stilistisch konsistent mit den vorherigen Szenen, Fokus auf das Hauptthema."
 }

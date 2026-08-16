@@ -1,0 +1,153 @@
+{
+  "sceneId": "scene-13",
+  "order": 13,
+  "title": "Abschluss",
+  "narration": "So wird aus KI-Code Schritt für Schritt ein brauchbarer Prototyp.",
+  "imageText": "FERTIGER PROTOTYP",
+  "visualIdea": "A fully finished, glowing smartphone app inside a bright, clean studio environment, masterpiece, 9:16 aspect ratio",
+  "continuityNotes": "",
+  "audioCue": "So wird aus KI-Code ",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [
+    {
+      "id": "scene-13-subtitle-1",
+      "text": "Code erzeugen, testen und korrigieren.",
+      "startSeconds": 46.615,
+      "endSeconds": 47.91,
+      "verticalPositionPercent": 58,
+      "textColor": "#F2F2F2",
+      "highlightColor": "#CC8B66",
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "words": [
+        {
+          "text": "Code",
+          "startSeconds": 46.615,
+          "endSeconds": 46.874
+        },
+        {
+          "text": "erzeugen,",
+          "startSeconds": 46.874,
+          "endSeconds": 47.133
+        },
+        {
+          "text": "testen",
+          "startSeconds": 47.133,
+          "endSeconds": 47.392
+        },
+        {
+          "text": "und",
+          "startSeconds": 47.392,
+          "endSeconds": 47.651
+        },
+        {
+          "text": "korrigieren.",
+          "startSeconds": 47.651,
+          "endSeconds": 47.91
+        }
+      ]
+    },
+    {
+      "id": "scene-13-subtitle-2",
+      "text": "So wird aus KI-Code Schritt",
+      "startSeconds": 47.91,
+      "endSeconds": 49.205,
+      "verticalPositionPercent": 58,
+      "textColor": "#F2F2F2",
+      "highlightColor": "#CC8B66",
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "words": [
+        {
+          "text": "So",
+          "startSeconds": 47.91,
+          "endSeconds": 48.169
+        },
+        {
+          "text": "wird",
+          "startSeconds": 48.169,
+          "endSeconds": 48.428
+        },
+        {
+          "text": "aus",
+          "startSeconds": 48.428,
+          "endSeconds": 48.687
+        },
+        {
+          "text": "KI-Code",
+          "startSeconds": 48.687,
+          "endSeconds": 48.946
+        },
+        {
+          "text": "Schritt",
+          "startSeconds": 48.946,
+          "endSeconds": 49.205
+        }
+      ]
+    },
+    {
+      "id": "scene-13-subtitle-3",
+      "text": "für Schritt ein brauchbarer Prototyp.",
+      "startSeconds": 49.205,
+      "endSeconds": 50.5,
+      "verticalPositionPercent": 58,
+      "textColor": "#F2F2F2",
+      "highlightColor": "#CC8B66",
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "words": [
+        {
+          "text": "für",
+          "startSeconds": 49.205,
+          "endSeconds": 49.464
+        },
+        {
+          "text": "Schritt",
+          "startSeconds": 49.464,
+          "endSeconds": 49.723
+        },
+        {
+          "text": "ein",
+          "startSeconds": 49.723,
+          "endSeconds": 49.982
+        },
+        {
+          "text": "brauchbarer",
+          "startSeconds": 49.982,
+          "endSeconds": 50.241
+        },
+        {
+          "text": "Prototyp.",
+          "startSeconds": 50.241,
+          "endSeconds": 50.5
+        }
+      ]
+    }
+  ],
+  "subtitlePosition": "center",
+  "durationSeconds": 3.885,
+  "expectedImageFileName": "scene-13.jpeg",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-13",
+    "confirmedSceneOrder": 13,
+    "visibleSummary": "Verified by user via Google Flow generation",
+    "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+    "comparedFields": [
+      "narration",
+      "visualIdea",
+      "imageText",
+      "imagePrompt"
+    ],
+    "matchMethod": "visual-content-review",
+    "reviewedAt": "2026-08-13T17:31:45.074Z"
+  },
+  "status": "image-ready",
+  "source": "numbered-images/Bild 13.jpeg",
+  "matchConfidence": 1,
+  "matchReason": "Matches exactly according to the Google Flow generation process and user confirmation."
+}

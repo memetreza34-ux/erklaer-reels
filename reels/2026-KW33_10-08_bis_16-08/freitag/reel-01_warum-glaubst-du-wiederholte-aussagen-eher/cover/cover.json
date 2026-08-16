@@ -2,8 +2,24 @@
   "imageNumber": 0,
   "fileName": "Bild 00.png",
   "hook": "WIEDERHOLT = WAHR?",
-  "status": "prompt-ready",
+  "status": "ready",
   "styleMaster": true,
   "headline": "WIEDERHOLT = WAHR?",
-  "visualIdea": "Person facing a curved echo trail of statement cards."
+  "visualIdea": "Person facing a curved echo trail of statement cards.",
+  "expectedImageFileName": "cover.jpeg",
+  "source": "numbered-images/Bild 00.jpeg",
+  "confidence": 1,
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "visibleSummary": "Verified by Google Flow exact match from the user",
+    "reason": "Matches script entirely visually and textually after review.",
+    "comparedFields": [
+      "headline",
+      "coverVisualIdea",
+      "coverPrompt"
+    ],
+    "matchMethod": "visual-text-and-content-review",
+    "reviewedAt": "2026-08-16T04:47:35.602Z"
+  }
 }

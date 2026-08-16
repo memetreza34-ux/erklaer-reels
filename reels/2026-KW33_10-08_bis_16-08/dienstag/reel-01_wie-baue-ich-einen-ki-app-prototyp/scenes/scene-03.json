@@ -1,0 +1,36 @@
+{
+  "sceneId": "scene-03",
+  "order": 3,
+  "title": "Klares Ziel",
+  "narration": "Zuerst braucht die KI ein klares Ziel, die wichtigsten Funktionen und den gewünschten Ablauf.",
+  "imageText": "KLARES ZIEL",
+  "visualIdea": "A glowing blueprint of a mobile app structure floating in mid-air, connected by glowing lines, tech aesthetic, 9:16 aspect ratio",
+  "audioCue": "Zuerst braucht die K",
+  "leadInSeconds": 0.2,
+  "durationSeconds": 4.5,
+  "expectedImageFileName": "scene-03.jpeg",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "status": "image-ready",
+  "source": "numbered-images/Bild 03.jpeg",
+  "matchConfidence": 1,
+  "matchReason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-03",
+    "confirmedSceneOrder": 3,
+    "visibleSummary": "Verified by user via Google Flow generation",
+    "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+    "comparedFields": [
+      "narration",
+      "visualIdea",
+      "imageText",
+      "imagePrompt"
+    ],
+    "matchMethod": "visual-content-review",
+    "reviewedAt": "2026-08-13T17:18:54.581Z"
+  },
+  "continuityNotes": "Stilistisch konsistent mit den vorherigen Szenen, Fokus auf das Hauptthema."
+}

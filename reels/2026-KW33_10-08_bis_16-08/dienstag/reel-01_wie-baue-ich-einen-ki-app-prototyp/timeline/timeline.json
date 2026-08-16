@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "status": "audio-synced",
+  "durationSeconds": 51.2,
+  "audioDurationSeconds": 50.5,
+  "scenes": [
+    {
+      "sceneId": "scene-01",
+      "startSeconds": 0,
+      "endSeconds": 5.132,
+      "durationSeconds": 5.132
+    },
+    {
+      "sceneId": "scene-02",
+      "startSeconds": 5.132,
+      "endSeconds": 8.622,
+      "durationSeconds": 3.49
+    },
+    {
+      "sceneId": "scene-03",
+      "startSeconds": 8.622,
+      "endSeconds": 13.395,
+      "durationSeconds": 4.773
+    },
+    {
+      "sceneId": "scene-04",
+      "startSeconds": 13.395,
+      "endSeconds": 16.987,
+      "durationSeconds": 3.592
+    },
+    {
+      "sceneId": "scene-05",
+      "startSeconds": 16.987,
+      "endSeconds": 19.912,
+      "durationSeconds": 2.925
+    },
+    {
+      "sceneId": "scene-06",
+      "startSeconds": 19.912,
+      "endSeconds": 23.915,
+      "durationSeconds": 4.003
+    },
+    {
+      "sceneId": "scene-07",
+      "startSeconds": 23.915,
+      "endSeconds": 26.276,
+      "durationSeconds": 2.361
+    },
+    {
+      "sceneId": "scene-08",
+      "startSeconds": 26.276,
+      "endSeconds": 28.996,
+      "durationSeconds": 2.72
+    },
+    {
+      "sceneId": "scene-09",
+      "startSeconds": 28.996,
+      "endSeconds": 34.025,
+      "durationSeconds": 5.029
+    },
+    {
+      "sceneId": "scene-10",
+      "startSeconds": 34.025,
+      "endSeconds": 36.488,
+      "durationSeconds": 2.463
+    },
+    {
+      "sceneId": "scene-11",
+      "startSeconds": 36.488,
+      "endSeconds": 41.671,
+      "durationSeconds": 5.183
+    },
+    {
+      "sceneId": "scene-12",
+      "startSeconds": 41.671,
+      "endSeconds": 47.162,
+      "durationSeconds": 5.491
+    },
+    {
+      "sceneId": "scene-13",
+      "startSeconds": 47.162,
+      "endSeconds": 50.498,
+      "durationSeconds": 3.336
+    }
+  ]
+}

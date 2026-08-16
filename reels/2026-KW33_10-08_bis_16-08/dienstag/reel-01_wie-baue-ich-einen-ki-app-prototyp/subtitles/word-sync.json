@@ -1,0 +1,740 @@
+{
+  "version": 1,
+  "words": [
+    {
+      "word": "Aus",
+      "start": 0,
+      "end": 0.321
+    },
+    {
+      "word": "einer",
+      "start": 0.321,
+      "end": 0.642
+    },
+    {
+      "word": "einfachen",
+      "start": 0.642,
+      "end": 0.962
+    },
+    {
+      "word": "Idee",
+      "start": 0.962,
+      "end": 1.283
+    },
+    {
+      "word": "kannst",
+      "start": 1.283,
+      "end": 1.604
+    },
+    {
+      "word": "du",
+      "start": 1.604,
+      "end": 1.925
+    },
+    {
+      "word": "mit",
+      "start": 1.925,
+      "end": 2.245
+    },
+    {
+      "word": "KI",
+      "start": 2.245,
+      "end": 2.566
+    },
+    {
+      "word": "heute",
+      "start": 2.566,
+      "end": 2.887
+    },
+    {
+      "word": "erstaunlich",
+      "start": 2.887,
+      "end": 3.208
+    },
+    {
+      "word": "schnell",
+      "start": 3.208,
+      "end": 3.528
+    },
+    {
+      "word": "einen",
+      "start": 3.528,
+      "end": 3.849
+    },
+    {
+      "word": "ersten",
+      "start": 3.849,
+      "end": 4.17
+    },
+    {
+      "word": "App",
+      "start": 4.17,
+      "end": 4.491
+    },
+    {
+      "word": "Prototyp",
+      "start": 4.491,
+      "end": 4.811
+    },
+    {
+      "word": "bauen.",
+      "start": 4.811,
+      "end": 5.132
+    },
+    {
+      "word": "Aber",
+      "start": 5.132,
+      "end": 5.423
+    },
+    {
+      "word": "\"schreib",
+      "start": 5.423,
+      "end": 5.714
+    },
+    {
+      "word": "mir",
+      "start": 5.714,
+      "end": 6.005
+    },
+    {
+      "word": "eine",
+      "start": 6.005,
+      "end": 6.295
+    },
+    {
+      "word": "App\"",
+      "start": 6.295,
+      "end": 6.586
+    },
+    {
+      "word": "ist",
+      "start": 6.586,
+      "end": 6.877
+    },
+    {
+      "word": "dafür",
+      "start": 6.877,
+      "end": 7.168
+    },
+    {
+      "word": "meistens",
+      "start": 7.168,
+      "end": 7.459
+    },
+    {
+      "word": "noch",
+      "start": 7.459,
+      "end": 7.749
+    },
+    {
+      "word": "viel",
+      "start": 7.749,
+      "end": 8.04
+    },
+    {
+      "word": "zu",
+      "start": 8.04,
+      "end": 8.331
+    },
+    {
+      "word": "ungenau.",
+      "start": 8.331,
+      "end": 8.622
+    },
+    {
+      "word": "Zuerst",
+      "start": 8.622,
+      "end": 8.963
+    },
+    {
+      "word": "braucht",
+      "start": 8.963,
+      "end": 9.304
+    },
+    {
+      "word": "die",
+      "start": 9.304,
+      "end": 9.645
+    },
+    {
+      "word": "KI",
+      "start": 9.645,
+      "end": 9.986
+    },
+    {
+      "word": "ein",
+      "start": 9.986,
+      "end": 10.327
+    },
+    {
+      "word": "klares",
+      "start": 10.327,
+      "end": 10.667
+    },
+    {
+      "word": "Ziel,",
+      "start": 10.667,
+      "end": 11.008
+    },
+    {
+      "word": "die",
+      "start": 11.008,
+      "end": 11.349
+    },
+    {
+      "word": "wichtigsten",
+      "start": 11.349,
+      "end": 11.69
+    },
+    {
+      "word": "Funktionen",
+      "start": 11.69,
+      "end": 12.031
+    },
+    {
+      "word": "und",
+      "start": 12.031,
+      "end": 12.372
+    },
+    {
+      "word": "den",
+      "start": 12.372,
+      "end": 12.713
+    },
+    {
+      "word": "gewünschten",
+      "start": 12.713,
+      "end": 13.054
+    },
+    {
+      "word": "Ablauf.",
+      "start": 13.054,
+      "end": 13.395
+    },
+    {
+      "word": "Daraus",
+      "start": 13.395,
+      "end": 13.754
+    },
+    {
+      "word": "entsteht",
+      "start": 13.754,
+      "end": 14.113
+    },
+    {
+      "word": "ein",
+      "start": 14.113,
+      "end": 14.473
+    },
+    {
+      "word": "Plan",
+      "start": 14.473,
+      "end": 14.832
+    },
+    {
+      "word": "für",
+      "start": 14.832,
+      "end": 15.191
+    },
+    {
+      "word": "Oberfläche,",
+      "start": 15.191,
+      "end": 15.55
+    },
+    {
+      "word": "Eingaben,",
+      "start": 15.55,
+      "end": 15.91
+    },
+    {
+      "word": "Logik",
+      "start": 15.91,
+      "end": 16.269
+    },
+    {
+      "word": "und",
+      "start": 16.269,
+      "end": 16.628
+    },
+    {
+      "word": "Ergebnis.",
+      "start": 16.628,
+      "end": 16.987
+    },
+    {
+      "word": "Danach",
+      "start": 16.987,
+      "end": 17.28
+    },
+    {
+      "word": "wird",
+      "start": 17.28,
+      "end": 17.572
+    },
+    {
+      "word": "der",
+      "start": 17.572,
+      "end": 17.865
+    },
+    {
+      "word": "Code",
+      "start": 17.865,
+      "end": 18.157
+    },
+    {
+      "word": "nicht",
+      "start": 18.157,
+      "end": 18.45
+    },
+    {
+      "word": "als",
+      "start": 18.45,
+      "end": 18.742
+    },
+    {
+      "word": "ein",
+      "start": 18.742,
+      "end": 19.035
+    },
+    {
+      "word": "riesiger",
+      "start": 19.035,
+      "end": 19.328
+    },
+    {
+      "word": "Block",
+      "start": 19.328,
+      "end": 19.62
+    },
+    {
+      "word": "gebaut.",
+      "start": 19.62,
+      "end": 19.913
+    },
+    {
+      "word": "Einzelne",
+      "start": 19.913,
+      "end": 20.357
+    },
+    {
+      "word": "Bausteine",
+      "start": 20.357,
+      "end": 20.802
+    },
+    {
+      "word": "für",
+      "start": 20.802,
+      "end": 21.247
+    },
+    {
+      "word": "Oberfläche,",
+      "start": 21.247,
+      "end": 21.692
+    },
+    {
+      "word": "Daten",
+      "start": 21.692,
+      "end": 22.137
+    },
+    {
+      "word": "und",
+      "start": 22.137,
+      "end": 22.581
+    },
+    {
+      "word": "Funktionen",
+      "start": 22.581,
+      "end": 23.026
+    },
+    {
+      "word": "entstehen",
+      "start": 23.026,
+      "end": 23.471
+    },
+    {
+      "word": "nacheinander",
+      "start": 23.471,
+      "end": 23.916
+    },
+    {
+      "word": "und",
+      "start": 23.916,
+      "end": 24.253
+    },
+    {
+      "word": "werden",
+      "start": 24.253,
+      "end": 24.59
+    },
+    {
+      "word": "zu",
+      "start": 24.59,
+      "end": 24.927
+    },
+    {
+      "word": "einem",
+      "start": 24.927,
+      "end": 25.265
+    },
+    {
+      "word": "ersten",
+      "start": 25.265,
+      "end": 25.602
+    },
+    {
+      "word": "Prototyp",
+      "start": 25.602,
+      "end": 25.939
+    },
+    {
+      "word": "verbunden.",
+      "start": 25.939,
+      "end": 26.276
+    },
+    {
+      "word": "Jetzt",
+      "start": 26.276,
+      "end": 26.616
+    },
+    {
+      "word": "kommt",
+      "start": 26.616,
+      "end": 26.956
+    },
+    {
+      "word": "der",
+      "start": 26.956,
+      "end": 27.296
+    },
+    {
+      "word": "Teil,",
+      "start": 27.296,
+      "end": 27.636
+    },
+    {
+      "word": "den",
+      "start": 27.636,
+      "end": 27.976
+    },
+    {
+      "word": "viele",
+      "start": 27.976,
+      "end": 28.316
+    },
+    {
+      "word": "überspringen:",
+      "start": 28.316,
+      "end": 28.656
+    },
+    {
+      "word": "Testen.",
+      "start": 28.656,
+      "end": 28.996
+    },
+    {
+      "word": "Ein",
+      "start": 28.996,
+      "end": 29.311
+    },
+    {
+      "word": "Button",
+      "start": 29.311,
+      "end": 29.625
+    },
+    {
+      "word": "kann",
+      "start": 29.625,
+      "end": 29.939
+    },
+    {
+      "word": "falsch",
+      "start": 29.939,
+      "end": 30.254
+    },
+    {
+      "word": "reagieren,",
+      "start": 30.254,
+      "end": 30.568
+    },
+    {
+      "word": "Daten",
+      "start": 30.568,
+      "end": 30.882
+    },
+    {
+      "word": "können",
+      "start": 30.882,
+      "end": 31.197
+    },
+    {
+      "word": "fehlen",
+      "start": 31.197,
+      "end": 31.511
+    },
+    {
+      "word": "oder",
+      "start": 31.511,
+      "end": 31.826
+    },
+    {
+      "word": "die",
+      "start": 31.826,
+      "end": 32.14
+    },
+    {
+      "word": "Ansicht",
+      "start": 32.14,
+      "end": 32.454
+    },
+    {
+      "word": "kann",
+      "start": 32.454,
+      "end": 32.769
+    },
+    {
+      "word": "auf",
+      "start": 32.769,
+      "end": 33.083
+    },
+    {
+      "word": "dem",
+      "start": 33.083,
+      "end": 33.397
+    },
+    {
+      "word": "Handy",
+      "start": 33.397,
+      "end": 33.712
+    },
+    {
+      "word": "brechen.",
+      "start": 33.712,
+      "end": 34.026
+    },
+    {
+      "word": "Genau",
+      "start": 34.026,
+      "end": 34.436
+    },
+    {
+      "word": "hier",
+      "start": 34.436,
+      "end": 34.847
+    },
+    {
+      "word": "beginnt",
+      "start": 34.847,
+      "end": 35.258
+    },
+    {
+      "word": "die",
+      "start": 35.258,
+      "end": 35.668
+    },
+    {
+      "word": "eigentliche",
+      "start": 35.668,
+      "end": 36.079
+    },
+    {
+      "word": "Verbesserung.",
+      "start": 36.079,
+      "end": 36.489
+    },
+    {
+      "word": "Die",
+      "start": 36.489,
+      "end": 36.835
+    },
+    {
+      "word": "KI",
+      "start": 36.835,
+      "end": 37.18
+    },
+    {
+      "word": "kann",
+      "start": 37.18,
+      "end": 37.526
+    },
+    {
+      "word": "Fehler",
+      "start": 37.526,
+      "end": 37.872
+    },
+    {
+      "word": "finden",
+      "start": 37.872,
+      "end": 38.217
+    },
+    {
+      "word": "und",
+      "start": 38.217,
+      "end": 38.563
+    },
+    {
+      "word": "Änderungen",
+      "start": 38.563,
+      "end": 38.908
+    },
+    {
+      "word": "vorschlagen,",
+      "start": 38.908,
+      "end": 39.254
+    },
+    {
+      "word": "aber",
+      "start": 39.254,
+      "end": 39.599
+    },
+    {
+      "word": "du",
+      "start": 39.599,
+      "end": 39.945
+    },
+    {
+      "word": "entscheidest,",
+      "start": 39.945,
+      "end": 40.291
+    },
+    {
+      "word": "was",
+      "start": 40.291,
+      "end": 40.636
+    },
+    {
+      "word": "wirklich",
+      "start": 40.636,
+      "end": 40.982
+    },
+    {
+      "word": "richtig",
+      "start": 40.982,
+      "end": 41.327
+    },
+    {
+      "word": "ist.",
+      "start": 41.327,
+      "end": 41.673
+    },
+    {
+      "word": "Der",
+      "start": 41.673,
+      "end": 42.065
+    },
+    {
+      "word": "beste",
+      "start": 42.065,
+      "end": 42.457
+    },
+    {
+      "word": "Workflow",
+      "start": 42.457,
+      "end": 42.849
+    },
+    {
+      "word": "lautet",
+      "start": 42.849,
+      "end": 43.242
+    },
+    {
+      "word": "deshalb:",
+      "start": 43.242,
+      "end": 43.634
+    },
+    {
+      "word": "Idee",
+      "start": 43.634,
+      "end": 44.026
+    },
+    {
+      "word": "präzisieren,",
+      "start": 44.026,
+      "end": 44.418
+    },
+    {
+      "word": "Struktur",
+      "start": 44.418,
+      "end": 44.811
+    },
+    {
+      "word": "bauen,",
+      "start": 44.811,
+      "end": 45.203
+    },
+    {
+      "word": "Code",
+      "start": 45.203,
+      "end": 45.595
+    },
+    {
+      "word": "erzeugen,",
+      "start": 45.595,
+      "end": 45.987
+    },
+    {
+      "word": "testen",
+      "start": 45.987,
+      "end": 46.38
+    },
+    {
+      "word": "und",
+      "start": 46.38,
+      "end": 46.772
+    },
+    {
+      "word": "korrigieren.",
+      "start": 46.772,
+      "end": 47.164
+    },
+    {
+      "word": "So",
+      "start": 47.164,
+      "end": 47.498
+    },
+    {
+      "word": "wird",
+      "start": 47.498,
+      "end": 47.831
+    },
+    {
+      "word": "aus",
+      "start": 47.831,
+      "end": 48.165
+    },
+    {
+      "word": "KI-Code",
+      "start": 48.165,
+      "end": 48.498
+    },
+    {
+      "word": "Schritt",
+      "start": 48.498,
+      "end": 48.832
+    },
+    {
+      "word": "für",
+      "start": 48.832,
+      "end": 49.166
+    },
+    {
+      "word": "Schritt",
+      "start": 49.166,
+      "end": 49.499
+    },
+    {
+      "word": "ein",
+      "start": 49.499,
+      "end": 49.833
+    },
+    {
+      "word": "brauchbarer",
+      "start": 49.833,
+      "end": 50.166
+    },
+    {
+      "word": "Prototyp.",
+      "start": 50.166,
+      "end": 50.5
+    }
+  ]
+}

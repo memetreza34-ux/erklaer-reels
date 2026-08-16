@@ -1,0 +1,133 @@
+{
+  "sceneId": "scene-12",
+  "order": 12,
+  "title": "Workflow",
+  "narration": "Der beste Workflow lautet deshalb: Idee präzisieren, Struktur bauen, Code erzeugen, testen und korrigieren.",
+  "imageText": "DER PERFEKTE WORKFLOW",
+  "visualIdea": "A glowing staircase leading up to a perfect, floating smartphone app, success concept, uplifting lighting, 3d rendering, 9:16 aspect ratio",
+  "continuityNotes": "",
+  "audioCue": "Der beste Workflow l",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [
+    {
+      "id": "scene-12-subtitle-1",
+      "text": "richtig ist.",
+      "startSeconds": 42.731,
+      "endSeconds": 43.437,
+      "verticalPositionPercent": 58,
+      "textColor": "#F2F2F2",
+      "highlightColor": "#CC8B66",
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "words": [
+        {
+          "text": "richtig",
+          "startSeconds": 42.731,
+          "endSeconds": 43.084
+        },
+        {
+          "text": "ist.",
+          "startSeconds": 43.084,
+          "endSeconds": 43.437
+        }
+      ]
+    },
+    {
+      "id": "scene-12-subtitle-2",
+      "text": "Der beste Workflow lautet deshalb:",
+      "startSeconds": 43.437,
+      "endSeconds": 45.203,
+      "verticalPositionPercent": 58,
+      "textColor": "#F2F2F2",
+      "highlightColor": "#CC8B66",
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "words": [
+        {
+          "text": "Der",
+          "startSeconds": 43.437,
+          "endSeconds": 43.79
+        },
+        {
+          "text": "beste",
+          "startSeconds": 43.79,
+          "endSeconds": 44.143
+        },
+        {
+          "text": "Workflow",
+          "startSeconds": 44.143,
+          "endSeconds": 44.497
+        },
+        {
+          "text": "lautet",
+          "startSeconds": 44.497,
+          "endSeconds": 44.85
+        },
+        {
+          "text": "deshalb:",
+          "startSeconds": 44.85,
+          "endSeconds": 45.203
+        }
+      ]
+    },
+    {
+      "id": "scene-12-subtitle-3",
+      "text": "Idee präzisieren, Struktur bauen,",
+      "startSeconds": 45.203,
+      "endSeconds": 46.615,
+      "verticalPositionPercent": 58,
+      "textColor": "#F2F2F2",
+      "highlightColor": "#CC8B66",
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "words": [
+        {
+          "text": "Idee",
+          "startSeconds": 45.203,
+          "endSeconds": 45.556
+        },
+        {
+          "text": "präzisieren,",
+          "startSeconds": 45.556,
+          "endSeconds": 45.909
+        },
+        {
+          "text": "Struktur",
+          "startSeconds": 45.909,
+          "endSeconds": 46.262
+        },
+        {
+          "text": "bauen,",
+          "startSeconds": 46.262,
+          "endSeconds": 46.615
+        }
+      ]
+    }
+  ],
+  "subtitlePosition": "center",
+  "durationSeconds": 3.885,
+  "expectedImageFileName": "scene-12.jpeg",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-12",
+    "confirmedSceneOrder": 12,
+    "visibleSummary": "Verified by user via Google Flow generation",
+    "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+    "comparedFields": [
+      "narration",
+      "visualIdea",
+      "imageText",
+      "imagePrompt"
+    ],
+    "matchMethod": "visual-content-review",
+    "reviewedAt": "2026-08-13T17:31:45.073Z"
+  },
+  "status": "image-ready",
+  "source": "numbered-images/Bild 12.jpeg",
+  "matchConfidence": 1,
+  "matchReason": "Matches exactly according to the Google Flow generation process and user confirmation."
+}

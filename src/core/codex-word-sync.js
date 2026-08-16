@@ -71,8 +71,8 @@ function smartJoin(words) {
     .map((word) => String(word.text ?? '').trim())
     .filter(Boolean)
     .join(' ')
-    .replace(/\s+([,.;:!?…])/g, '$1')
-    .replace(/([([{„“])\s+/g, '$1')
+    .replace(/\s+([,.;:!?…\])}“"'])/g, '$1')
+    .replace(/([([{„"'])\s+/g, '$1')
     .trim();
 }
 

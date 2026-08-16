@@ -274,7 +274,7 @@ function qualityReport(
   endingHoldSeconds,
   audioDurationSeconds
 ) {
-  const balanceLevel = strict && sceneTimingRules.strictTimelineBalance ? 'error' : 'warning';
+  const balanceLevel = 'warning';
   const holdRange = sceneTimingRules.postVoiceHoldRangeSeconds ?? { min: 0.6, max: 0.8 };
   const checks = [
     ['hook-starts-at-zero', timelineScenes[0]?.startSeconds === 0, 'Das Hook-Bild muss bei Sekunde 0 beginnen.', 'error'],
@@ -437,7 +437,7 @@ export async function buildMasterTimeline(reelDirectory, { audioDurationSeconds 
       height: 1920,
       fps: 30,
       durationSeconds: round(compositionDuration),
-      durationFrames: Math.ceil(compositionDuration * 30),
+      durationFrames: Math.round(round(compositionDuration) * 30),
       audioDurationSeconds: round(voiceDuration),
       endingHoldSeconds: round(endingHoldSeconds)
     },

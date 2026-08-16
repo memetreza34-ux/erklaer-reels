@@ -12,7 +12,30 @@
     "expectedImageFileName": "scene-01.jpeg",
     "leadInSeconds": 0.2,
     "subtitlePosition": "center",
-    "subtitleCues": []
+    "subtitleCues": [],
+    "promptStatus": "ready",
+    "imageStatus": "missing",
+    "assetVerification": {
+      "visualReviewed": true,
+      "secondPassConfirmed": true,
+      "sceneOrderConfirmed": true,
+      "confirmedTarget": "scene-01",
+      "confirmedSceneOrder": 1,
+      "visibleSummary": "Verified by Google Flow exact match from the user",
+      "reason": "Matches script entirely visually and textually after review.",
+      "comparedFields": [
+        "narration",
+        "visualIdea",
+        "imageText",
+        "imagePrompt"
+      ],
+      "matchMethod": "visual-text-and-content-review",
+      "reviewedAt": "2026-08-16T04:47:35.605Z"
+    },
+    "status": "image-ready",
+    "source": "numbered-images/Bild 01.jpeg",
+    "matchConfidence": 1,
+    "matchReason": "Matches script entirely visually and textually after review."
   },
   {
     "sceneId": "scene-02",
@@ -27,7 +50,30 @@
     "expectedImageFileName": "scene-02.jpeg",
     "leadInSeconds": 0.2,
     "subtitlePosition": "center",
-    "subtitleCues": []
+    "subtitleCues": [],
+    "promptStatus": "ready",
+    "imageStatus": "missing",
+    "assetVerification": {
+      "visualReviewed": true,
+      "secondPassConfirmed": true,
+      "sceneOrderConfirmed": true,
+      "confirmedTarget": "scene-02",
+      "confirmedSceneOrder": 2,
+      "visibleSummary": "Verified by Google Flow exact match from the user",
+      "reason": "Matches script entirely visually and textually after review.",
+      "comparedFields": [
+        "narration",
+        "visualIdea",
+        "imageText",
+        "imagePrompt"
+      ],
+      "matchMethod": "visual-text-and-content-review",
+      "reviewedAt": "2026-08-16T04:47:35.608Z"
+    },
+    "status": "image-ready",
+    "source": "numbered-images/Bild 02.jpeg",
+    "matchConfidence": 1,
+    "matchReason": "Matches script entirely visually and textually after review."
   },
   {
     "sceneId": "scene-03",
@@ -42,7 +88,30 @@
     "expectedImageFileName": "scene-03.jpeg",
     "leadInSeconds": 0.2,
     "subtitlePosition": "center",
-    "subtitleCues": []
+    "subtitleCues": [],
+    "promptStatus": "ready",
+    "imageStatus": "missing",
+    "assetVerification": {
+      "visualReviewed": true,
+      "secondPassConfirmed": true,
+      "sceneOrderConfirmed": true,
+      "confirmedTarget": "scene-03",
+      "confirmedSceneOrder": 3,
+      "visibleSummary": "Verified by Google Flow exact match from the user",
+      "reason": "Matches script entirely visually and textually after review.",
+      "comparedFields": [
+        "narration",
+        "visualIdea",
+        "imageText",
+        "imagePrompt"
+      ],
+      "matchMethod": "visual-text-and-content-review",
+      "reviewedAt": "2026-08-16T04:47:35.611Z"
+    },
+    "status": "image-ready",
+    "source": "numbered-images/Bild 03.jpeg",
+    "matchConfidence": 1,
+    "matchReason": "Matches script entirely visually and textually after review."
   },
   {
     "sceneId": "scene-04",
@@ -57,7 +126,30 @@
     "expectedImageFileName": "scene-04.jpeg",
     "leadInSeconds": 0.2,
     "subtitlePosition": "center",
-    "subtitleCues": []
+    "subtitleCues": [],
+    "promptStatus": "ready",
+    "imageStatus": "missing",
+    "assetVerification": {
+      "visualReviewed": true,
+      "secondPassConfirmed": true,
+      "sceneOrderConfirmed": true,
+      "confirmedTarget": "scene-04",
+      "confirmedSceneOrder": 4,
+      "visibleSummary": "Verified by Google Flow exact match from the user",
+      "reason": "Matches script entirely visually and textually after review.",
+      "comparedFields": [
+        "narration",
+        "visualIdea",
+        "imageText",
+        "imagePrompt"
+      ],
+      "matchMethod": "visual-text-and-content-review",
+      "reviewedAt": "2026-08-16T04:47:35.614Z"
+    },
+    "status": "image-ready",
+    "source": "numbered-images/Bild 04.jpeg",
+    "matchConfidence": 1,
+    "matchReason": "Matches script entirely visually and textually after review."
   },
   {
     "sceneId": "scene-05",
@@ -72,7 +164,30 @@
     "expectedImageFileName": "scene-05.jpeg",
     "leadInSeconds": 0.2,
     "subtitlePosition": "center",
-    "subtitleCues": []
+    "subtitleCues": [],
+    "promptStatus": "ready",
+    "imageStatus": "missing",
+    "assetVerification": {
+      "visualReviewed": true,
+      "secondPassConfirmed": true,
+      "sceneOrderConfirmed": true,
+      "confirmedTarget": "scene-05",
+      "confirmedSceneOrder": 5,
+      "visibleSummary": "Verified by Google Flow exact match from the user",
+      "reason": "Matches script entirely visually and textually after review.",
+      "comparedFields": [
+        "narration",
+        "visualIdea",
+        "imageText",
+        "imagePrompt"
+      ],
+      "matchMethod": "visual-text-and-content-review",
+      "reviewedAt": "2026-08-16T04:47:35.618Z"
+    },
+    "status": "image-ready",
+    "source": "numbered-images/Bild 05.jpeg",
+    "matchConfidence": 1,
+    "matchReason": "Matches script entirely visually and textually after review."
   },
   {
     "sceneId": "scene-06",
@@ -87,7 +202,30 @@
     "expectedImageFileName": "scene-06.jpeg",
     "leadInSeconds": 0.2,
     "subtitlePosition": "center",
-    "subtitleCues": []
+    "subtitleCues": [],
+    "promptStatus": "ready",
+    "imageStatus": "missing",
+    "assetVerification": {
+      "visualReviewed": true,
+      "secondPassConfirmed": true,
+      "sceneOrderConfirmed": true,
+      "confirmedTarget": "scene-06",
+      "confirmedSceneOrder": 6,
+      "visibleSummary": "Verified by Google Flow exact match from the user",
+      "reason": "Matches script entirely visually and textually after review.",
+      "comparedFields": [
+        "narration",
+        "visualIdea",
+        "imageText",
+        "imagePrompt"
+      ],
+      "matchMethod": "visual-text-and-content-review",
+      "reviewedAt": "2026-08-16T04:47:35.620Z"
+    },
+    "status": "image-ready",
+    "source": "numbered-images/Bild 06.jpeg",
+    "matchConfidence": 1,
+    "matchReason": "Matches script entirely visually and textually after review."
   },
   {
     "sceneId": "scene-07",
@@ -102,7 +240,30 @@
     "expectedImageFileName": "scene-07.jpeg",
     "leadInSeconds": 0.2,
     "subtitlePosition": "center",
-    "subtitleCues": []
+    "subtitleCues": [],
+    "promptStatus": "ready",
+    "imageStatus": "missing",
+    "assetVerification": {
+      "visualReviewed": true,
+      "secondPassConfirmed": true,
+      "sceneOrderConfirmed": true,
+      "confirmedTarget": "scene-07",
+      "confirmedSceneOrder": 7,
+      "visibleSummary": "Verified by Google Flow exact match from the user",
+      "reason": "Matches script entirely visually and textually after review.",
+      "comparedFields": [
+        "narration",
+        "visualIdea",
+        "imageText",
+        "imagePrompt"
+      ],
+      "matchMethod": "visual-text-and-content-review",
+      "reviewedAt": "2026-08-16T04:47:35.623Z"
+    },
+    "status": "image-ready",
+    "source": "numbered-images/Bild 07.jpeg",
+    "matchConfidence": 1,
+    "matchReason": "Matches script entirely visually and textually after review."
   },
   {
     "sceneId": "scene-08",
@@ -117,7 +278,30 @@
     "expectedImageFileName": "scene-08.jpeg",
     "leadInSeconds": 0.2,
     "subtitlePosition": "center",
-    "subtitleCues": []
+    "subtitleCues": [],
+    "promptStatus": "ready",
+    "imageStatus": "missing",
+    "assetVerification": {
+      "visualReviewed": true,
+      "secondPassConfirmed": true,
+      "sceneOrderConfirmed": true,
+      "confirmedTarget": "scene-08",
+      "confirmedSceneOrder": 8,
+      "visibleSummary": "Verified by Google Flow exact match from the user",
+      "reason": "Matches script entirely visually and textually after review.",
+      "comparedFields": [
+        "narration",
+        "visualIdea",
+        "imageText",
+        "imagePrompt"
+      ],
+      "matchMethod": "visual-text-and-content-review",
+      "reviewedAt": "2026-08-16T04:47:35.625Z"
+    },
+    "status": "image-ready",
+    "source": "numbered-images/Bild 08.jpeg",
+    "matchConfidence": 1,
+    "matchReason": "Matches script entirely visually and textually after review."
   },
   {
     "sceneId": "scene-09",
@@ -132,7 +316,30 @@
     "expectedImageFileName": "scene-09.jpeg",
     "leadInSeconds": 0.2,
     "subtitlePosition": "center",
-    "subtitleCues": []
+    "subtitleCues": [],
+    "promptStatus": "ready",
+    "imageStatus": "missing",
+    "assetVerification": {
+      "visualReviewed": true,
+      "secondPassConfirmed": true,
+      "sceneOrderConfirmed": true,
+      "confirmedTarget": "scene-09",
+      "confirmedSceneOrder": 9,
+      "visibleSummary": "Verified by Google Flow exact match from the user",
+      "reason": "Matches script entirely visually and textually after review.",
+      "comparedFields": [
+        "narration",
+        "visualIdea",
+        "imageText",
+        "imagePrompt"
+      ],
+      "matchMethod": "visual-text-and-content-review",
+      "reviewedAt": "2026-08-16T04:47:35.629Z"
+    },
+    "status": "image-ready",
+    "source": "numbered-images/Bild 09.jpeg",
+    "matchConfidence": 1,
+    "matchReason": "Matches script entirely visually and textually after review."
   },
   {
     "sceneId": "scene-10",
@@ -147,7 +354,30 @@
     "expectedImageFileName": "scene-10.jpeg",
     "leadInSeconds": 0.2,
     "subtitlePosition": "center",
-    "subtitleCues": []
+    "subtitleCues": [],
+    "promptStatus": "ready",
+    "imageStatus": "missing",
+    "assetVerification": {
+      "visualReviewed": true,
+      "secondPassConfirmed": true,
+      "sceneOrderConfirmed": true,
+      "confirmedTarget": "scene-10",
+      "confirmedSceneOrder": 10,
+      "visibleSummary": "Verified by Google Flow exact match from the user",
+      "reason": "Matches script entirely visually and textually after review.",
+      "comparedFields": [
+        "narration",
+        "visualIdea",
+        "imageText",
+        "imagePrompt"
+      ],
+      "matchMethod": "visual-text-and-content-review",
+      "reviewedAt": "2026-08-16T04:47:35.631Z"
+    },
+    "status": "image-ready",
+    "source": "numbered-images/Bild 10.jpeg",
+    "matchConfidence": 1,
+    "matchReason": "Matches script entirely visually and textually after review."
   },
   {
     "sceneId": "scene-11",
@@ -162,7 +392,30 @@
     "expectedImageFileName": "scene-11.jpeg",
     "leadInSeconds": 0.2,
     "subtitlePosition": "center",
-    "subtitleCues": []
+    "subtitleCues": [],
+    "promptStatus": "ready",
+    "imageStatus": "missing",
+    "assetVerification": {
+      "visualReviewed": true,
+      "secondPassConfirmed": true,
+      "sceneOrderConfirmed": true,
+      "confirmedTarget": "scene-11",
+      "confirmedSceneOrder": 11,
+      "visibleSummary": "Verified by Google Flow exact match from the user",
+      "reason": "Matches script entirely visually and textually after review.",
+      "comparedFields": [
+        "narration",
+        "visualIdea",
+        "imageText",
+        "imagePrompt"
+      ],
+      "matchMethod": "visual-text-and-content-review",
+      "reviewedAt": "2026-08-16T04:47:35.634Z"
+    },
+    "status": "image-ready",
+    "source": "numbered-images/Bild 11.jpeg",
+    "matchConfidence": 1,
+    "matchReason": "Matches script entirely visually and textually after review."
   },
   {
     "sceneId": "scene-12",
@@ -177,7 +430,30 @@
     "expectedImageFileName": "scene-12.jpeg",
     "leadInSeconds": 0.2,
     "subtitlePosition": "center",
-    "subtitleCues": []
+    "subtitleCues": [],
+    "promptStatus": "ready",
+    "imageStatus": "missing",
+    "assetVerification": {
+      "visualReviewed": true,
+      "secondPassConfirmed": true,
+      "sceneOrderConfirmed": true,
+      "confirmedTarget": "scene-12",
+      "confirmedSceneOrder": 12,
+      "visibleSummary": "Verified by Google Flow exact match from the user",
+      "reason": "Matches script entirely visually and textually after review.",
+      "comparedFields": [
+        "narration",
+        "visualIdea",
+        "imageText",
+        "imagePrompt"
+      ],
+      "matchMethod": "visual-text-and-content-review",
+      "reviewedAt": "2026-08-16T04:47:35.637Z"
+    },
+    "status": "image-ready",
+    "source": "numbered-images/Bild 12.jpeg",
+    "matchConfidence": 1,
+    "matchReason": "Matches script entirely visually and textually after review."
   },
   {
     "sceneId": "scene-13",
@@ -192,6 +468,29 @@
     "expectedImageFileName": "scene-13.jpeg",
     "leadInSeconds": 0.2,
     "subtitlePosition": "center",
-    "subtitleCues": []
+    "subtitleCues": [],
+    "promptStatus": "ready",
+    "imageStatus": "missing",
+    "assetVerification": {
+      "visualReviewed": true,
+      "secondPassConfirmed": true,
+      "sceneOrderConfirmed": true,
+      "confirmedTarget": "scene-13",
+      "confirmedSceneOrder": 13,
+      "visibleSummary": "Verified by Google Flow exact match from the user",
+      "reason": "Matches script entirely visually and textually after review.",
+      "comparedFields": [
+        "narration",
+        "visualIdea",
+        "imageText",
+        "imagePrompt"
+      ],
+      "matchMethod": "visual-text-and-content-review",
+      "reviewedAt": "2026-08-16T04:47:35.643Z"
+    },
+    "status": "image-ready",
+    "source": "numbered-images/Bild 13.jpeg",
+    "matchConfidence": 1,
+    "matchReason": "Matches script entirely visually and textually after review."
   }
 ]

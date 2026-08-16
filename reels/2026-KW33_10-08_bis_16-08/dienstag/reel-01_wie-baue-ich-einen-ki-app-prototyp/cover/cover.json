@@ -1,0 +1,23 @@
+{
+  "headline": "KI App Prototyp",
+  "visualIdea": "A glowing futuristic smartphone",
+  "expectedImageFileName": "cover.jpeg",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "visibleSummary": "Verified by user via Google Flow generation",
+    "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+    "comparedFields": [
+      "headline",
+      "coverVisualIdea",
+      "coverPrompt"
+    ],
+    "matchMethod": "visual-content-review",
+    "reviewedAt": "2026-08-13T17:31:45.062Z"
+  },
+  "status": "ready",
+  "source": "numbered-images/Bild 00.jpeg",
+  "confidence": 1
+}

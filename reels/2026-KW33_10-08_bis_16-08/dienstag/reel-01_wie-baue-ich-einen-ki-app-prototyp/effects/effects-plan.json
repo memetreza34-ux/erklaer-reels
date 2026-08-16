@@ -1,0 +1,126 @@
+{
+  "version": 1,
+  "hook": "none",
+  "transitions": [
+    {
+      "type": "cut",
+      "durationSeconds": 0
+    },
+    {
+      "type": "cut",
+      "durationSeconds": 0
+    },
+    {
+      "type": "cut",
+      "durationSeconds": 0
+    },
+    {
+      "type": "cut",
+      "durationSeconds": 0
+    },
+    {
+      "type": "cut",
+      "durationSeconds": 0
+    },
+    {
+      "type": "cut",
+      "durationSeconds": 0
+    },
+    {
+      "type": "cut",
+      "durationSeconds": 0
+    },
+    {
+      "type": "cut",
+      "durationSeconds": 0
+    },
+    {
+      "type": "cut",
+      "durationSeconds": 0
+    },
+    {
+      "type": "cut",
+      "durationSeconds": 0
+    },
+    {
+      "type": "cut",
+      "durationSeconds": 0
+    },
+    {
+      "type": "cut",
+      "durationSeconds": 0
+    },
+    {
+      "type": "cut",
+      "durationSeconds": 0
+    }
+  ],
+  "sceneEffects": [
+    {
+      "sceneId": "scene-01",
+      "type": "zoom-in",
+      "amountPercent": 5
+    },
+    {
+      "sceneId": "scene-02",
+      "type": "zoom-in",
+      "amountPercent": 5
+    },
+    {
+      "sceneId": "scene-03",
+      "type": "zoom-in",
+      "amountPercent": 5
+    },
+    {
+      "sceneId": "scene-04",
+      "type": "zoom-in",
+      "amountPercent": 5
+    },
+    {
+      "sceneId": "scene-05",
+      "type": "zoom-in",
+      "amountPercent": 5
+    },
+    {
+      "sceneId": "scene-06",
+      "type": "zoom-in",
+      "amountPercent": 5
+    },
+    {
+      "sceneId": "scene-07",
+      "type": "zoom-in",
+      "amountPercent": 5
+    },
+    {
+      "sceneId": "scene-08",
+      "type": "zoom-in",
+      "amountPercent": 5
+    },
+    {
+      "sceneId": "scene-09",
+      "type": "zoom-in",
+      "amountPercent": 5
+    },
+    {
+      "sceneId": "scene-10",
+      "type": "zoom-in",
+      "amountPercent": 5
+    },
+    {
+      "sceneId": "scene-11",
+      "type": "zoom-in",
+      "amountPercent": 5
+    },
+    {
+      "sceneId": "scene-12",
+      "type": "zoom-in",
+      "amountPercent": 5
+    },
+    {
+      "sceneId": "scene-13",
+      "type": "zoom-in",
+      "amountPercent": 5
+    }
+  ],
+  "audioPriority": true
+}

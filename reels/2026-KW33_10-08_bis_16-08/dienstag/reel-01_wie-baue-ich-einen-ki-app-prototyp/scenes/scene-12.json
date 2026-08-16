@@ -1,0 +1,36 @@
+{
+  "sceneId": "scene-12",
+  "order": 12,
+  "title": "Workflow",
+  "narration": "Der beste Workflow lautet deshalb: Idee präzisieren, Struktur bauen, Code erzeugen, testen und korrigieren.",
+  "imageText": "DER PERFEKTE WORKFLOW",
+  "visualIdea": "A glowing staircase leading up to a perfect, floating smartphone app, success concept, uplifting lighting, 3d rendering, 9:16 aspect ratio",
+  "audioCue": "Der beste Workflow l",
+  "leadInSeconds": 0.2,
+  "durationSeconds": 4.5,
+  "expectedImageFileName": "scene-12.jpeg",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "status": "image-ready",
+  "source": "numbered-images/Bild 12.jpeg",
+  "matchConfidence": 1,
+  "matchReason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-12",
+    "confirmedSceneOrder": 12,
+    "visibleSummary": "Verified by user via Google Flow generation",
+    "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+    "comparedFields": [
+      "narration",
+      "visualIdea",
+      "imageText",
+      "imagePrompt"
+    ],
+    "matchMethod": "visual-content-review",
+    "reviewedAt": "2026-08-13T17:18:54.588Z"
+  },
+  "continuityNotes": "Stilistisch konsistent mit den vorherigen Szenen, Fokus auf das Hauptthema."
+}

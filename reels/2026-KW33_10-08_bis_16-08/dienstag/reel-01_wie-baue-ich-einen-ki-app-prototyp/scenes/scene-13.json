@@ -1,0 +1,36 @@
+{
+  "sceneId": "scene-13",
+  "order": 13,
+  "title": "Abschluss",
+  "narration": "So wird aus KI-Code Schritt für Schritt ein brauchbarer Prototyp.",
+  "imageText": "FERTIGER PROTOTYP",
+  "visualIdea": "A fully finished, glowing smartphone app inside a bright, clean studio environment, masterpiece, 9:16 aspect ratio",
+  "audioCue": "So wird aus KI-Code ",
+  "leadInSeconds": 0.2,
+  "durationSeconds": 4.5,
+  "expectedImageFileName": "scene-13.jpeg",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "status": "image-ready",
+  "source": "numbered-images/Bild 13.jpeg",
+  "matchConfidence": 1,
+  "matchReason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-13",
+    "confirmedSceneOrder": 13,
+    "visibleSummary": "Verified by user via Google Flow generation",
+    "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+    "comparedFields": [
+      "narration",
+      "visualIdea",
+      "imageText",
+      "imagePrompt"
+    ],
+    "matchMethod": "visual-content-review",
+    "reviewedAt": "2026-08-13T17:18:54.588Z"
+  },
+  "continuityNotes": "Stilistisch konsistent mit den vorherigen Szenen, Fokus auf das Hauptthema."
+}

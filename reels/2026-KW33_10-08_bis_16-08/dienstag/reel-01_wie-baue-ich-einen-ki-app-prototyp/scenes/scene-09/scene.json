@@ -1,0 +1,133 @@
+{
+  "sceneId": "scene-09",
+  "order": 9,
+  "title": "Fehler passieren",
+  "narration": "Ein Button kann falsch reagieren, Daten können fehlen oder die Ansicht kann auf dem Handy brechen.",
+  "imageText": "FEHLER FINDEN",
+  "visualIdea": "A shattered glass smartphone screen displaying a glitched UI, dramatic lighting, high contrast, 9:16 aspect ratio",
+  "continuityNotes": "",
+  "audioCue": "Ein Button kann fals",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [
+    {
+      "id": "scene-09-subtitle-1",
+      "text": "kann falsch reagieren, Daten können",
+      "startSeconds": 31.077,
+      "endSeconds": 32.843,
+      "verticalPositionPercent": 58,
+      "textColor": "#F2F2F2",
+      "highlightColor": "#CC8B66",
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "words": [
+        {
+          "text": "kann",
+          "startSeconds": 31.077,
+          "endSeconds": 31.43
+        },
+        {
+          "text": "falsch",
+          "startSeconds": 31.43,
+          "endSeconds": 31.783
+        },
+        {
+          "text": "reagieren,",
+          "startSeconds": 31.783,
+          "endSeconds": 32.136
+        },
+        {
+          "text": "Daten",
+          "startSeconds": 32.136,
+          "endSeconds": 32.49
+        },
+        {
+          "text": "können",
+          "startSeconds": 32.49,
+          "endSeconds": 32.843
+        }
+      ]
+    },
+    {
+      "id": "scene-09-subtitle-2",
+      "text": "fehlen oder die Ansicht kann",
+      "startSeconds": 32.843,
+      "endSeconds": 34.608,
+      "verticalPositionPercent": 58,
+      "textColor": "#F2F2F2",
+      "highlightColor": "#CC8B66",
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "words": [
+        {
+          "text": "fehlen",
+          "startSeconds": 32.843,
+          "endSeconds": 33.196
+        },
+        {
+          "text": "oder",
+          "startSeconds": 33.196,
+          "endSeconds": 33.549
+        },
+        {
+          "text": "die",
+          "startSeconds": 33.549,
+          "endSeconds": 33.902
+        },
+        {
+          "text": "Ansicht",
+          "startSeconds": 33.902,
+          "endSeconds": 34.255
+        },
+        {
+          "text": "kann",
+          "startSeconds": 34.255,
+          "endSeconds": 34.608
+        }
+      ]
+    },
+    {
+      "id": "scene-09-subtitle-3",
+      "text": "auf",
+      "startSeconds": 34.608,
+      "endSeconds": 34.962,
+      "verticalPositionPercent": 58,
+      "textColor": "#F2F2F2",
+      "highlightColor": "#CC8B66",
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "words": [
+        {
+          "text": "auf",
+          "startSeconds": 34.608,
+          "endSeconds": 34.962
+        }
+      ]
+    }
+  ],
+  "subtitlePosition": "center",
+  "durationSeconds": 3.885,
+  "expectedImageFileName": "scene-09.jpeg",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-09",
+    "confirmedSceneOrder": 9,
+    "visibleSummary": "Verified by user via Google Flow generation",
+    "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+    "comparedFields": [
+      "narration",
+      "visualIdea",
+      "imageText",
+      "imagePrompt"
+    ],
+    "matchMethod": "visual-content-review",
+    "reviewedAt": "2026-08-13T17:31:45.070Z"
+  },
+  "status": "image-ready",
+  "source": "numbered-images/Bild 09.jpeg",
+  "matchConfidence": 1,
+  "matchReason": "Matches exactly according to the Google Flow generation process and user confirmation."
+}

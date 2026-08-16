@@ -1,0 +1,146 @@
+{
+  "sceneId": "scene-08",
+  "order": 8,
+  "title": "Testen übersprungen",
+  "narration": "Jetzt kommt der Teil, den viele überspringen: Testen.",
+  "imageText": "UNBEDINGT TESTEN",
+  "visualIdea": "A magnifying glass inspecting glowing code on a dark screen, highlighting bugs in red, cinematic, 9:16 aspect ratio",
+  "continuityNotes": "",
+  "audioCue": "Jetzt kommt der Teil",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [
+    {
+      "id": "scene-08-subtitle-1",
+      "text": "verbunden.",
+      "startSeconds": 27.192,
+      "endSeconds": 27.545,
+      "verticalPositionPercent": 58,
+      "textColor": "#F2F2F2",
+      "highlightColor": "#CC8B66",
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "words": [
+        {
+          "text": "verbunden.",
+          "startSeconds": 27.192,
+          "endSeconds": 27.545
+        }
+      ]
+    },
+    {
+      "id": "scene-08-subtitle-2",
+      "text": "Jetzt kommt der Teil, den",
+      "startSeconds": 27.545,
+      "endSeconds": 29.311,
+      "verticalPositionPercent": 58,
+      "textColor": "#F2F2F2",
+      "highlightColor": "#CC8B66",
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "words": [
+        {
+          "text": "Jetzt",
+          "startSeconds": 27.545,
+          "endSeconds": 27.899
+        },
+        {
+          "text": "kommt",
+          "startSeconds": 27.899,
+          "endSeconds": 28.252
+        },
+        {
+          "text": "der",
+          "startSeconds": 28.252,
+          "endSeconds": 28.605
+        },
+        {
+          "text": "Teil,",
+          "startSeconds": 28.605,
+          "endSeconds": 28.958
+        },
+        {
+          "text": "den",
+          "startSeconds": 28.958,
+          "endSeconds": 29.311
+        }
+      ]
+    },
+    {
+      "id": "scene-08-subtitle-3",
+      "text": "viele überspringen: Testen.",
+      "startSeconds": 29.311,
+      "endSeconds": 30.371,
+      "verticalPositionPercent": 58,
+      "textColor": "#F2F2F2",
+      "highlightColor": "#CC8B66",
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "words": [
+        {
+          "text": "viele",
+          "startSeconds": 29.311,
+          "endSeconds": 29.664
+        },
+        {
+          "text": "überspringen:",
+          "startSeconds": 29.664,
+          "endSeconds": 30.017
+        },
+        {
+          "text": "Testen.",
+          "startSeconds": 30.017,
+          "endSeconds": 30.371
+        }
+      ]
+    },
+    {
+      "id": "scene-08-subtitle-4",
+      "text": "Ein Button",
+      "startSeconds": 30.371,
+      "endSeconds": 31.077,
+      "verticalPositionPercent": 58,
+      "textColor": "#F2F2F2",
+      "highlightColor": "#CC8B66",
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "words": [
+        {
+          "text": "Ein",
+          "startSeconds": 30.371,
+          "endSeconds": 30.724
+        },
+        {
+          "text": "Button",
+          "startSeconds": 30.724,
+          "endSeconds": 31.077
+        }
+      ]
+    }
+  ],
+  "subtitlePosition": "center",
+  "durationSeconds": 3.885,
+  "expectedImageFileName": "scene-08.jpeg",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-08",
+    "confirmedSceneOrder": 8,
+    "visibleSummary": "Verified by user via Google Flow generation",
+    "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+    "comparedFields": [
+      "narration",
+      "visualIdea",
+      "imageText",
+      "imagePrompt"
+    ],
+    "matchMethod": "visual-content-review",
+    "reviewedAt": "2026-08-13T17:31:45.069Z"
+  },
+  "status": "image-ready",
+  "source": "numbered-images/Bild 08.jpeg",
+  "matchConfidence": 1,
+  "matchReason": "Matches exactly according to the Google Flow generation process and user confirmation."
+}

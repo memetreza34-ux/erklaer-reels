@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "audioDuration": 50.5,
+  "cues": [
+    {
+      "sceneId": "scene-01",
+      "cueStartSeconds": 0,
+      "cueEndSeconds": 5.132
+    },
+    {
+      "sceneId": "scene-02",
+      "cueStartSeconds": 5.132,
+      "cueEndSeconds": 8.622
+    },
+    {
+      "sceneId": "scene-03",
+      "cueStartSeconds": 8.622,
+      "cueEndSeconds": 13.395
+    },
+    {
+      "sceneId": "scene-04",
+      "cueStartSeconds": 13.395,
+      "cueEndSeconds": 16.987
+    },
+    {
+      "sceneId": "scene-05",
+      "cueStartSeconds": 16.987,
+      "cueEndSeconds": 19.913
+    },
+    {
+      "sceneId": "scene-06",
+      "cueStartSeconds": 19.913,
+      "cueEndSeconds": 23.916
+    },
+    {
+      "sceneId": "scene-07",
+      "cueStartSeconds": 23.916,
+      "cueEndSeconds": 26.276
+    },
+    {
+      "sceneId": "scene-08",
+      "cueStartSeconds": 26.276,
+      "cueEndSeconds": 28.996
+    },
+    {
+      "sceneId": "scene-09",
+      "cueStartSeconds": 28.996,
+      "cueEndSeconds": 34.026
+    },
+    {
+      "sceneId": "scene-10",
+      "cueStartSeconds": 34.026,
+      "cueEndSeconds": 36.489
+    },
+    {
+      "sceneId": "scene-11",
+      "cueStartSeconds": 36.489,
+      "cueEndSeconds": 41.673
+    },
+    {
+      "sceneId": "scene-12",
+      "cueStartSeconds": 41.673,
+      "cueEndSeconds": 47.164
+    },
+    {
+      "sceneId": "scene-13",
+      "cueStartSeconds": 47.164,
+      "cueEndSeconds": 50.5
+    }
+  ]
+}

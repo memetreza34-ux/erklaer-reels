@@ -1,0 +1,133 @@
+{
+  "sceneId": "scene-04",
+  "order": 4,
+  "title": "Plan",
+  "narration": "Daraus entsteht ein Plan für Oberfläche, Eingaben, Logik und Ergebnis.",
+  "imageText": "PLAN ENTWICKELN",
+  "visualIdea": "Four transparent glass panels showing UI, input fields, gears for logic, and a final app icon, aligned perfectly, 9:16 aspect ratio",
+  "continuityNotes": "",
+  "audioCue": "Daraus entsteht ein ",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [
+    {
+      "id": "scene-04-subtitle-1",
+      "text": "klares Ziel, die wichtigsten Funktionen",
+      "startSeconds": 11.654,
+      "endSeconds": 13.42,
+      "verticalPositionPercent": 58,
+      "textColor": "#F2F2F2",
+      "highlightColor": "#CC8B66",
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "words": [
+        {
+          "text": "klares",
+          "startSeconds": 11.654,
+          "endSeconds": 12.007
+        },
+        {
+          "text": "Ziel,",
+          "startSeconds": 12.007,
+          "endSeconds": 12.36
+        },
+        {
+          "text": "die",
+          "startSeconds": 12.36,
+          "endSeconds": 12.713
+        },
+        {
+          "text": "wichtigsten",
+          "startSeconds": 12.713,
+          "endSeconds": 13.066
+        },
+        {
+          "text": "Funktionen",
+          "startSeconds": 13.066,
+          "endSeconds": 13.42
+        }
+      ]
+    },
+    {
+      "id": "scene-04-subtitle-2",
+      "text": "und den gewünschten Ablauf.",
+      "startSeconds": 13.42,
+      "endSeconds": 14.832,
+      "verticalPositionPercent": 58,
+      "textColor": "#F2F2F2",
+      "highlightColor": "#CC8B66",
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "words": [
+        {
+          "text": "und",
+          "startSeconds": 13.42,
+          "endSeconds": 13.773
+        },
+        {
+          "text": "den",
+          "startSeconds": 13.773,
+          "endSeconds": 14.126
+        },
+        {
+          "text": "gewünschten",
+          "startSeconds": 14.126,
+          "endSeconds": 14.479
+        },
+        {
+          "text": "Ablauf.",
+          "startSeconds": 14.479,
+          "endSeconds": 14.832
+        }
+      ]
+    },
+    {
+      "id": "scene-04-subtitle-3",
+      "text": "Daraus entsteht",
+      "startSeconds": 14.832,
+      "endSeconds": 15.538,
+      "verticalPositionPercent": 58,
+      "textColor": "#F2F2F2",
+      "highlightColor": "#CC8B66",
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "words": [
+        {
+          "text": "Daraus",
+          "startSeconds": 14.832,
+          "endSeconds": 15.185
+        },
+        {
+          "text": "entsteht",
+          "startSeconds": 15.185,
+          "endSeconds": 15.538
+        }
+      ]
+    }
+  ],
+  "subtitlePosition": "center",
+  "durationSeconds": 3.885,
+  "expectedImageFileName": "scene-04.jpeg",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-04",
+    "confirmedSceneOrder": 4,
+    "visibleSummary": "Verified by user via Google Flow generation",
+    "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+    "comparedFields": [
+      "narration",
+      "visualIdea",
+      "imageText",
+      "imagePrompt"
+    ],
+    "matchMethod": "visual-content-review",
+    "reviewedAt": "2026-08-13T17:31:45.066Z"
+  },
+  "status": "image-ready",
+  "source": "numbered-images/Bild 04.jpeg",
+  "matchConfidence": 1,
+  "matchReason": "Matches exactly according to the Google Flow generation process and user confirmation."
+}

@@ -1,0 +1,1557 @@
+{
+  "createdAt": "2026-08-16T05:35:41.470Z",
+  "strict": true,
+  "passed": true,
+  "visualStyleId": "visual-metaphor",
+  "safeZones": {
+    "leftPercent": 6,
+    "rightPercent": 6,
+    "topPercent": 8,
+    "bottomPercent": 18,
+    "subtitleVerticalPercent": {
+      "min": 58,
+      "max": 58,
+      "default": 58
+    }
+  },
+  "subtitlePalette": {
+    "textColor": "#F5F7FA",
+    "highlightColor": "#B7794A",
+    "highlightCurrentWord": true,
+    "speakerSyncedWordHighlight": true,
+    "completeSpokenTextCoverageRequired": true,
+    "backgroundColor": "transparent",
+    "textStrokeColor": "rgba(0, 0, 0, 0.92)"
+  },
+  "summary": {
+    "assetsChecked": 14,
+    "passedChecks": 146,
+    "failedChecks": 0,
+    "warnings": 14,
+    "totalChecks": 160
+  },
+  "assets": [
+    {
+      "assetId": "scene-01",
+      "file": "scenes/scene-01/scene-01.jpeg",
+      "kind": "scene",
+      "expected": {
+        "sceneId": "scene-01",
+        "order": 1,
+        "title": "Hook",
+        "narration": "Warum glaubst du eine Aussage eher, nur weil du sie schon einmal gehört hast?",
+        "audioCue": "Warum glaubst du eine Aussage eher",
+        "visualIdea": "Dieselbe Aussagekarte erscheint mehrfach um eine Person und wird mit jeder Wiederholung vertrauter und heller.",
+        "imageText": "WIEDERHOLT = WAHR?",
+        "imagePrompt": "Match Bild 00.png exactly. Vertical 9:16 premium mature 2D editorial media-literacy psychology illustration. Show the same young adult surrounded by several copies of one neutral statement card traveling in a curved echo path. The repeated copies become progressively brighter and smoother while the person's expression shifts from skeptical to familiar. Integrate the exact German text \"WIEDERHOLT = WAHR?\" as the only readable phrase. No brands, no political content, no English, no logo, no watermark.",
+        "visualStyleId": "visual-metaphor",
+        "visualStyleReason": "Eine reife 2D-Editorial-Medienwelt aus wiederkehrenden Aussagekarten, Echo-Spuren, Quellen und Belegen macht Vertrautheit und wahrgenommene Wahrheit unmittelbar sichtbar.",
+        "previousSceneId": null,
+        "nextSceneId": "scene-02"
+      },
+      "reviewFingerprint": "0793b39e925713bbcb3dfb813a745ae54a52b6dfd56de74326446beb3d87f5c3",
+      "metadata": {
+        "format": "jpeg",
+        "width": 768,
+        "height": 1376,
+        "extension": "jpeg",
+        "aspectRatio": 0.5581395348837209
+      },
+      "manualReviewStatus": "passed",
+      "semanticEvidencePassed": true
+    },
+    {
+      "assetId": "scene-02",
+      "file": "scenes/scene-02/scene-02.jpeg",
+      "kind": "scene",
+      "expected": {
+        "sceneId": "scene-02",
+        "order": 2,
+        "title": "Name des Effekts",
+        "narration": "Dafür gibt es einen Namen: Illusory-Truth-Effekt.",
+        "audioCue": "Dafür gibt es einen Namen",
+        "visualIdea": "Eine neutrale Aussagekarte läuft mehrfach durch eine Echo-Schleife und erhält ein klares Effekt-Label.",
+        "imageText": "ILLUSORY-TRUTH-EFFEKT",
+        "imagePrompt": "Match Bild 00.png exactly. Show one neutral statement card moving through three clean echo loops around the same person, each pass increasing visual familiarity but adding no evidence. Integrate the exact German text \"ILLUSORY-TRUTH-EFFEKT\" as one clean editorial heading. Mature educational composition, no other readable text, no English, no logo, no watermark., 9:16 aspect ratio",
+        "visualStyleId": "visual-metaphor",
+        "visualStyleReason": "Eine reife 2D-Editorial-Medienwelt aus wiederkehrenden Aussagekarten, Echo-Spuren, Quellen und Belegen macht Vertrautheit und wahrgenommene Wahrheit unmittelbar sichtbar.",
+        "previousSceneId": "scene-01",
+        "nextSceneId": "scene-03"
+      },
+      "reviewFingerprint": "b9e341588d5a7d4cb8ec675f60fe1fcb40fe63cbd1f189b1dd4b6f3c174d71ca",
+      "metadata": {
+        "format": "jpeg",
+        "width": 768,
+        "height": 1376,
+        "extension": "jpeg",
+        "aspectRatio": 0.5581395348837209
+      },
+      "manualReviewStatus": "passed",
+      "semanticEvidencePassed": true
+    },
+    {
+      "assetId": "scene-03",
+      "file": "scenes/scene-03/scene-03.jpeg",
+      "kind": "scene",
+      "expected": {
+        "sceneId": "scene-03",
+        "order": 3,
+        "title": "Vertrautheit",
+        "narration": "Wiederholte Aussagen fühlen sich vertrauter an als neue.",
+        "audioCue": "Wiederholte Aussagen fühlen sich",
+        "visualIdea": "Eine wiederholte Karte gleitet auf einer bekannten hellen Spur, eine neue Karte steht daneben auf unbekanntem Terrain.",
+        "imageText": "VERTRAUTER",
+        "imagePrompt": "Match Bild 00.png exactly. Show two statement cards approaching the same person: one repeated card travels on a bright familiar curved path worn smooth by previous passes, while one new card arrives on a fresh unmarked path. The repeated card feels visually easier and more familiar. Integrate the exact German word \"VERTRAUTER\" as the only readable text. No English, no logo, no watermark., 9:16 aspect ratio",
+        "visualStyleId": "visual-metaphor",
+        "visualStyleReason": "Eine reife 2D-Editorial-Medienwelt aus wiederkehrenden Aussagekarten, Echo-Spuren, Quellen und Belegen macht Vertrautheit und wahrgenommene Wahrheit unmittelbar sichtbar.",
+        "previousSceneId": "scene-02",
+        "nextSceneId": "scene-04"
+      },
+      "reviewFingerprint": "98d0f4b0757bef5fadca6d5d54f62ea91e3ecce0c7ebafdcd073b47ed3594f52",
+      "metadata": {
+        "format": "jpeg",
+        "width": 768,
+        "height": 1376,
+        "extension": "jpeg",
+        "aspectRatio": 0.5581395348837209
+      },
+      "manualReviewStatus": "passed",
+      "semanticEvidencePassed": true
+    },
+    {
+      "assetId": "scene-04",
+      "file": "scenes/scene-04/scene-04.jpeg",
+      "kind": "scene",
+      "expected": {
+        "sceneId": "scene-04",
+        "order": 4,
+        "title": "Vertraut wirkt plausibel",
+        "narration": "Und Vertrautheit wird vom Gehirn oft mit „klingt plausibel“ verwechselt.",
+        "audioCue": "Und Vertrautheit wird",
+        "visualIdea": "Im Kopf der Figur verschieben sich zwei Waagschalen: Vertrautheit wird fälschlich Richtung Plausibilität gezogen.",
+        "imageText": "VERTRAUT ≠ BEWIESEN",
+        "imagePrompt": "Match Bild 00.png exactly. Show a stylized thought-space inside the same person's head with two distinct concepts on a balance: familiarity on one side and evidence on the other. A familiar repeated statement card wrongly slides toward a glowing plausibility zone even though the evidence side remains empty. Integrate the exact German text \"VERTRAUT ≠ BEWIESEN\" as the only readable phrase. No English, no logo, no watermark., 9:16 aspect ratio",
+        "visualStyleId": "visual-metaphor",
+        "visualStyleReason": "Eine reife 2D-Editorial-Medienwelt aus wiederkehrenden Aussagekarten, Echo-Spuren, Quellen und Belegen macht Vertrautheit und wahrgenommene Wahrheit unmittelbar sichtbar.",
+        "previousSceneId": "scene-03",
+        "nextSceneId": "scene-05"
+      },
+      "reviewFingerprint": "82c3bd53bd3a7e4eb20e438b53bf599abe412f9a5d3fb4b74e652d2656dc227d",
+      "metadata": {
+        "format": "jpeg",
+        "width": 768,
+        "height": 1376,
+        "extension": "jpeg",
+        "aspectRatio": 0.5581395348837209
+      },
+      "manualReviewStatus": "passed",
+      "semanticEvidencePassed": true
+    },
+    {
+      "assetId": "scene-05",
+      "file": "scenes/scene-05/scene-05.jpeg",
+      "kind": "scene",
+      "expected": {
+        "sceneId": "scene-05",
+        "order": 5,
+        "title": "Klassische Experimente",
+        "narration": "Schon klassische Experimente zeigten: Selbst falsche Aussagen wurden nach Wiederholung häufiger als wahr eingeschätzt.",
+        "audioCue": "Schon klassische Experimente zeigten",
+        "visualIdea": "Stilisiertes Psychologie-Labor mit wiederholten wahren und falschen Aussagekarten und steigenden Wahrheitsurteilen.",
+        "imageText": "1977",
+        "imagePrompt": "Match Bild 00.png exactly. Create a tasteful late-1970s psychology-lab scene with generic participants rating simple statement cards on paper scales across repeated sessions. Some statement cards are marked conceptually true and false using symbols only; repeated cards become more accepted over time. Integrate the exact German text \"1977\" prominently as the only readable text. Do not depict recognizable real people. No English, no logo, no watermark., 9:16 aspect ratio",
+        "visualStyleId": "visual-metaphor",
+        "visualStyleReason": "Eine reife 2D-Editorial-Medienwelt aus wiederkehrenden Aussagekarten, Echo-Spuren, Quellen und Belegen macht Vertrautheit und wahrgenommene Wahrheit unmittelbar sichtbar.",
+        "previousSceneId": "scene-04",
+        "nextSceneId": "scene-06"
+      },
+      "reviewFingerprint": "85c8a8a58bae70c0f834023e1848112fe931d17f0db440405df7a8ae83c7b6b5",
+      "metadata": {
+        "format": "jpeg",
+        "width": 768,
+        "height": 1376,
+        "extension": "jpeg",
+        "aspectRatio": 0.5581395348837209
+      },
+      "manualReviewStatus": "passed",
+      "semanticEvidencePassed": true
+    },
+    {
+      "assetId": "scene-06",
+      "file": "scenes/scene-06/scene-06.jpeg",
+      "kind": "scene",
+      "expected": {
+        "sceneId": "scene-06",
+        "order": 6,
+        "title": "Keine neuen Beweise",
+        "narration": "Der Effekt entsteht nicht, weil Wiederholung neue Beweise liefert.",
+        "audioCue": "Der Effekt entsteht nicht",
+        "visualIdea": "Eine Aussagekarte vervielfacht sich, während die danebenliegende Belegmappe sichtbar leer bleibt.",
+        "imageText": "KEIN NEUER BEWEIS",
+        "imagePrompt": "Match Bild 00.png exactly. Show one neutral statement card multiplying into many identical copies while a separate evidence folder beside it remains visibly empty. The copies grow in familiarity but no document, source or proof is added. Integrate the exact German text \"KEIN NEUER BEWEIS\" as the only readable phrase. Mature, clean, phone-readable, no English, no logo, no watermark., 9:16 aspect ratio",
+        "visualStyleId": "visual-metaphor",
+        "visualStyleReason": "Eine reife 2D-Editorial-Medienwelt aus wiederkehrenden Aussagekarten, Echo-Spuren, Quellen und Belegen macht Vertrautheit und wahrgenommene Wahrheit unmittelbar sichtbar.",
+        "previousSceneId": "scene-05",
+        "nextSceneId": "scene-07"
+      },
+      "reviewFingerprint": "fe1721cc34d790d49bc9288e33a6d339d82589e821241735011d48be1f8cb493",
+      "metadata": {
+        "format": "jpeg",
+        "width": 768,
+        "height": 1376,
+        "extension": "jpeg",
+        "aspectRatio": 0.5581395348837209
+      },
+      "manualReviewStatus": "passed",
+      "semanticEvidencePassed": true
+    },
+    {
+      "assetId": "scene-07",
+      "file": "scenes/scene-07/scene-07.jpeg",
+      "kind": "scene",
+      "expected": {
+        "sceneId": "scene-07",
+        "order": 7,
+        "title": "Leichtere Verarbeitung",
+        "narration": "Die Aussage lässt sich beim zweiten Mal einfach leichter verarbeiten. Diese mentale Leichtigkeit nennt man Verarbeitungsflüssigkeit.",
+        "audioCue": "Die Aussage lässt sich beim zweiten Mal",
+        "visualIdea": "Die wiederholte Aussage gleitet auf einer glatten Spur durch ein abstraktes Verarbeitungssystem, die neue Karte über eine raue Spur.",
+        "imageText": "LEICHTER ZU VERARBEITEN",
+        "imagePrompt": "Match Bild 00.png exactly. Show two neutral statement cards moving through an abstract cognitive pathway toward the same person's attention. The repeated card travels smoothly along a polished, gently glowing route; the new card travels over a rougher unfamiliar route. Keep the metaphor clear without literal brain anatomy. Integrate the exact German text \"LEICHTER ZU VERARBEITEN\" as the only readable phrase. No English, no logo, no watermark., 9:16 aspect ratio",
+        "visualStyleId": "visual-metaphor",
+        "visualStyleReason": "Eine reife 2D-Editorial-Medienwelt aus wiederkehrenden Aussagekarten, Echo-Spuren, Quellen und Belegen macht Vertrautheit und wahrgenommene Wahrheit unmittelbar sichtbar.",
+        "previousSceneId": "scene-06",
+        "nextSceneId": "scene-08"
+      },
+      "reviewFingerprint": "2e11acefea612089d438ac0d4bc4a1abe9b202656dc658e7630b0cd0c0c6bf0b",
+      "metadata": {
+        "format": "jpeg",
+        "width": 768,
+        "height": 1376,
+        "extension": "jpeg",
+        "aspectRatio": 0.5581395348837209
+      },
+      "manualReviewStatus": "passed",
+      "semanticEvidencePassed": true
+    },
+    {
+      "assetId": "scene-08",
+      "file": "scenes/scene-08/scene-08.jpeg",
+      "kind": "scene",
+      "expected": {
+        "sceneId": "scene-08",
+        "order": 8,
+        "title": "Wissen schützt nicht immer",
+        "narration": "Besonders tückisch: Wiederholung kann sogar wirken, wenn du das richtige Wissen eigentlich kennst.",
+        "audioCue": "Besonders tückisch",
+        "visualIdea": "Die Person hält eine korrekte Wissenskarte, während eine oft wiederholte falsche Karte trotzdem vertraut leuchtet.",
+        "imageText": "WISSEN SCHÜTZT NICHT IMMER",
+        "imagePrompt": "Match Bild 00.png exactly. Show the same person holding one clearly supported knowledge card linked to a source document, while a different false-but-repeated statement card circles nearby with a strong familiar glow. The person looks conflicted between known evidence and familiarity. Integrate the exact German text \"WISSEN SCHÜTZT NICHT IMMER\" as the only readable phrase. No English, no logo, no watermark., 9:16 aspect ratio",
+        "visualStyleId": "visual-metaphor",
+        "visualStyleReason": "Eine reife 2D-Editorial-Medienwelt aus wiederkehrenden Aussagekarten, Echo-Spuren, Quellen und Belegen macht Vertrautheit und wahrgenommene Wahrheit unmittelbar sichtbar.",
+        "previousSceneId": "scene-07",
+        "nextSceneId": "scene-09"
+      },
+      "reviewFingerprint": "344422cb29ff84b18891717a84cd240e8498a886a7a64da1f62a20800b3202f2",
+      "metadata": {
+        "format": "jpeg",
+        "width": 768,
+        "height": 1376,
+        "extension": "jpeg",
+        "aspectRatio": 0.5581395348837209
+      },
+      "manualReviewStatus": "passed",
+      "semanticEvidencePassed": true
+    },
+    {
+      "assetId": "scene-09",
+      "file": "scenes/scene-09/scene-09.jpeg",
+      "kind": "scene",
+      "expected": {
+        "sceneId": "scene-09",
+        "order": 9,
+        "title": "Alltag",
+        "narration": "Das ist im Alltag wichtig bei Schlagzeilen, Gerüchten, Werbung und Social Media, wo dieselbe Behauptung immer wieder auftauchen kann.",
+        "audioCue": "Das ist im Alltag wichtig",
+        "visualIdea": "Dieselbe neutrale Behauptung erscheint in Feed, Plakat, Chat und Gespräch wiederholt, ohne Marken oder reale politische Inhalte.",
+        "imageText": "ÜBERALL WIEDERHOLT",
+        "imagePrompt": "Match Bild 00.png exactly. Show the same generic neutral claim appearing repeatedly across a phone feed, a street poster, a chat bubble and an everyday conversation around the protagonist. Use abstract placeholder marks on the claim card rather than a real-world assertion. Integrate the exact German text \"ÜBERALL WIEDERHOLT\" as the only readable phrase. No brands, no political slogans, no English, no logo, no watermark., 9:16 aspect ratio",
+        "visualStyleId": "visual-metaphor",
+        "visualStyleReason": "Eine reife 2D-Editorial-Medienwelt aus wiederkehrenden Aussagekarten, Echo-Spuren, Quellen und Belegen macht Vertrautheit und wahrgenommene Wahrheit unmittelbar sichtbar.",
+        "previousSceneId": "scene-08",
+        "nextSceneId": "scene-10"
+      },
+      "reviewFingerprint": "effa2477c147f0cf31ef4cf9d148c0721681286ba4c7ec64ca8619d96f46900a",
+      "metadata": {
+        "format": "jpeg",
+        "width": 768,
+        "height": 1376,
+        "extension": "jpeg",
+        "aspectRatio": 0.5581395348837209
+      },
+      "manualReviewStatus": "passed",
+      "semanticEvidencePassed": true
+    },
+    {
+      "assetId": "scene-10",
+      "file": "scenes/scene-10/scene-10.jpeg",
+      "kind": "scene",
+      "expected": {
+        "sceneId": "scene-10",
+        "order": 10,
+        "title": "Meta-Analyse 2026",
+        "narration": "Eine große Meta-Analyse von 2026 bestätigte den Effekt über viele Studien hinweg.",
+        "audioCue": "Eine große Meta-Analyse von 2026",
+        "visualIdea": "Viele kleine Studienblätter bündeln sich zu einer großen Evidenzmappe, daneben wiederholte Aussagekarten.",
+        "imageText": "182 STUDIEN",
+        "imagePrompt": "Match Bild 00.png exactly. Show many small research-paper sheets and study icons flowing into one large systematic-review folder dated 2026, with repeated statement cards beside it and a subtle aggregated effect arrow. Integrate the exact German text \"182 STUDIEN\" as the only readable phrase. Keep it mature and evidence-focused, no fabricated journal logos, no English, no watermark., 9:16 aspect ratio",
+        "visualStyleId": "visual-metaphor",
+        "visualStyleReason": "Eine reife 2D-Editorial-Medienwelt aus wiederkehrenden Aussagekarten, Echo-Spuren, Quellen und Belegen macht Vertrautheit und wahrgenommene Wahrheit unmittelbar sichtbar.",
+        "previousSceneId": "scene-09",
+        "nextSceneId": "scene-11"
+      },
+      "reviewFingerprint": "3f387ec27b25d6445b027628995900222fffb18d1e2fa61589cae61407043142",
+      "metadata": {
+        "format": "jpeg",
+        "width": 768,
+        "height": 1376,
+        "extension": "jpeg",
+        "aspectRatio": 0.5581395348837209
+      },
+      "manualReviewStatus": "passed",
+      "semanticEvidencePassed": true
+    },
+    {
+      "assetId": "scene-11",
+      "file": "scenes/scene-11/scene-11.jpeg",
+      "kind": "scene",
+      "expected": {
+        "sceneId": "scene-11",
+        "order": 11,
+        "title": "Nicht mit Qualität verwechseln",
+        "narration": "Deshalb ist „Das habe ich schon oft gehört“ kein Qualitätsmerkmal.",
+        "audioCue": "Deshalb ist",
+        "visualIdea": "Ein Stempel OFT GEHÖRT wird von einem separaten Wahrheits-Häkchen klar getrennt.",
+        "imageText": "OFT GEHÖRT ≠ WAHR",
+        "imagePrompt": "Match Bild 00.png exactly. Show one statement card covered with many repetition stamps on the left, while a separate evidence-based truth check sits on the right with a source document and magnifying glass. A clear gap separates repetition from verification. Integrate the exact German text \"OFT GEHÖRT ≠ WAHR\" as the only readable phrase. No English, no logo, no watermark., 9:16 aspect ratio",
+        "visualStyleId": "visual-metaphor",
+        "visualStyleReason": "Eine reife 2D-Editorial-Medienwelt aus wiederkehrenden Aussagekarten, Echo-Spuren, Quellen und Belegen macht Vertrautheit und wahrgenommene Wahrheit unmittelbar sichtbar.",
+        "previousSceneId": "scene-10",
+        "nextSceneId": "scene-12"
+      },
+      "reviewFingerprint": "9f3874f85ebbb2b9288087821b93dd514b198d6449550fb7f7f6ffb5ea792b29",
+      "metadata": {
+        "format": "jpeg",
+        "width": 768,
+        "height": 1376,
+        "extension": "jpeg",
+        "aspectRatio": 0.5581395348837209
+      },
+      "manualReviewStatus": "passed",
+      "semanticEvidencePassed": true
+    },
+    {
+      "assetId": "scene-12",
+      "file": "scenes/scene-12/scene-12.jpeg",
+      "kind": "scene",
+      "expected": {
+        "sceneId": "scene-12",
+        "order": 12,
+        "title": "Prüffrage",
+        "narration": "Prüf dich selbst: Würdest du die Aussage auch glauben, wenn du sie heute zum ersten Mal hörst?",
+        "audioCue": "Prüf dich selbst",
+        "visualIdea": "Die Person betrachtet dieselbe Aussage nun als einzelne neue Karte ohne Echo oder Wiederholung und denkt kritisch nach.",
+        "imageText": "WÜRDEST DU ES BEIM ERSTEN MAL GLAUBEN?",
+        "imagePrompt": "Match Bild 00.png exactly. Show the protagonist facing the same neutral claim as a single isolated card for the first time, with all echo copies removed. The person pauses critically with a magnifying glass still lowered, inviting a fresh judgment without familiarity. Integrate the exact German question \"WÜRDEST DU ES BEIM ERSTEN MAL GLAUBEN?\" clearly inside safe zones. No other readable text, no English, no logo, no watermark., 9:16 aspect ratio",
+        "visualStyleId": "visual-metaphor",
+        "visualStyleReason": "Eine reife 2D-Editorial-Medienwelt aus wiederkehrenden Aussagekarten, Echo-Spuren, Quellen und Belegen macht Vertrautheit und wahrgenommene Wahrheit unmittelbar sichtbar.",
+        "previousSceneId": "scene-11",
+        "nextSceneId": "scene-13"
+      },
+      "reviewFingerprint": "cb36672e16830156f3d5a958f674c34db757ef1b1524f6828bac3baac2829313",
+      "metadata": {
+        "format": "jpeg",
+        "width": 768,
+        "height": 1376,
+        "extension": "jpeg",
+        "aspectRatio": 0.5581395348837209
+      },
+      "manualReviewStatus": "passed",
+      "semanticEvidencePassed": true
+    },
+    {
+      "assetId": "scene-13",
+      "file": "scenes/scene-13/scene-13.jpeg",
+      "kind": "scene",
+      "expected": {
+        "sceneId": "scene-13",
+        "order": 13,
+        "title": "Lösung",
+        "narration": "Die Lösung: Quelle prüfen, Belege suchen und Vertrautheit nie mit Wahrheit verwechseln.",
+        "audioCue": "Die Lösung",
+        "visualIdea": "Aussagekarte wird durch Lupe, Quellenblatt und Belegprüfung geführt; am Ende klare Trennung zwischen vertraut und wahr.",
+        "imageText": "QUELLE + BELEGE",
+        "imagePrompt": "Match Bild 00.png exactly. Show the protagonist running a neutral claim through a simple verification path: magnifying glass, source document, evidence folder, then a final clear decision card. Familiarity echoes fade into the background while evidence remains sharp. Integrate the exact German text \"QUELLE + BELEGE\" as the only readable phrase. Clear satisfying conclusion, no English, no logo, no watermark. Hold this final visual unchanged for the 0.7-second end frame after the last spoken word., 9:16 aspect ratio",
+        "visualStyleId": "visual-metaphor",
+        "visualStyleReason": "Eine reife 2D-Editorial-Medienwelt aus wiederkehrenden Aussagekarten, Echo-Spuren, Quellen und Belegen macht Vertrautheit und wahrgenommene Wahrheit unmittelbar sichtbar.",
+        "previousSceneId": "scene-12",
+        "nextSceneId": null
+      },
+      "reviewFingerprint": "7f7ef9deaa9a8ae1358111f6226ef52ba16ad4c2466e3fc4775f7d2cb06bec52",
+      "metadata": {
+        "format": "jpeg",
+        "width": 768,
+        "height": 1376,
+        "extension": "jpeg",
+        "aspectRatio": 0.5581395348837209
+      },
+      "manualReviewStatus": "passed",
+      "semanticEvidencePassed": true
+    },
+    {
+      "assetId": "cover",
+      "file": "cover/cover.jpeg",
+      "kind": "cover",
+      "expected": {
+        "headline": "WIEDERHOLT = WAHR?",
+        "visualIdea": "Person facing a curved echo trail of statement cards.",
+        "imagePrompt": "Vertical 9:16 premium mature 2D editorial media-literacy and psychology cover illustration for a German explainer Reel about the illusory truth effect. Dark navy background, warm cream paper texture, muted rust-brown and cobalt accents, bold clean hand-drawn outlines, flat geometric shading, subtle grain, high contrast and strong phone-screen readability. Show one young adult in the center facing the same neutral statement card repeated several times in a curved echo trail. The first card feels ordinary, while later repetitions become brighter, smoother and more familiar; the person gradually looks more convinced even though no evidence has appeared. Add one large perfectly readable German headline exactly: \"WIEDERHOLT = WAHR?\" Keep it inside social safe zones. No other readable words, no English text, no brands, no political logos, no watermark. This finished Bild 00.png becomes the binding style master for all following scenes: identical palette, paper texture, character design, line weight, lighting and detail quality.",
+        "visualStyleId": "visual-metaphor",
+        "visualStyleReason": "Eine reife 2D-Editorial-Medienwelt aus wiederkehrenden Aussagekarten, Echo-Spuren, Quellen und Belegen macht Vertrautheit und wahrgenommene Wahrheit unmittelbar sichtbar.",
+        "reelTitle": "Warum glaubst du Aussagen eher, wenn du sie öfter hörst?"
+      },
+      "reviewFingerprint": "18a4e1c8631bb89817527ecc9f55013e045e450db7d403c1290fee81d54e2f7b",
+      "metadata": {
+        "format": "jpeg",
+        "width": 768,
+        "height": 1376,
+        "extension": "jpeg",
+        "aspectRatio": 0.5581395348837209
+      },
+      "manualReviewStatus": "passed",
+      "semanticEvidencePassed": true
+    }
+  ],
+  "checks": [
+    {
+      "id": "subtitle-safe-zone-config",
+      "assetId": null,
+      "passed": true,
+      "level": "error",
+      "message": "config/visual-quality-rules.json muss den zentralen Untertitelstandard von exakt 58 Prozent verwenden."
+    },
+    {
+      "id": "subtitle-palette-config",
+      "assetId": null,
+      "passed": true,
+      "level": "error",
+      "message": "config/visual-quality-rules.json muss die zentrale weiße Untertitelpalette verwenden."
+    },
+    {
+      "id": "scene-01-present",
+      "assetId": "scene-01",
+      "passed": true,
+      "level": "error",
+      "message": "scene-01: Bilddatei fehlt (scenes/scene-01/scene-01.jpeg)."
+    },
+    {
+      "id": "scene-01-metadata",
+      "assetId": "scene-01",
+      "passed": true,
+      "level": "error",
+      "message": "scene-01: Bildmaße oder Format konnten nicht gelesen werden."
+    },
+    {
+      "id": "scene-01-format",
+      "assetId": "scene-01",
+      "passed": true,
+      "level": "error",
+      "message": "scene-01: Nicht unterstütztes Bildformat jpeg."
+    },
+    {
+      "id": "scene-01-portrait",
+      "assetId": "scene-01",
+      "passed": true,
+      "level": "error",
+      "message": "scene-01: Das Bild ist nicht im Hochformat."
+    },
+    {
+      "id": "scene-01-aspect-ratio",
+      "assetId": "scene-01",
+      "passed": true,
+      "level": "error",
+      "message": "scene-01: Seitenverhältnis ist 768:1376 statt 9:16."
+    },
+    {
+      "id": "scene-01-minimum-resolution",
+      "assetId": "scene-01",
+      "passed": true,
+      "level": "error",
+      "message": "scene-01: Mindestauflösung 720×1280 wird nicht erreicht."
+    },
+    {
+      "id": "scene-01-target-resolution",
+      "assetId": "scene-01",
+      "passed": false,
+      "level": "warning",
+      "message": "scene-01: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-01-motion-horizontal-safe",
+      "assetId": "scene-01",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-01: Zoom und horizontaler Schwenk können mehr als 6% Rand abschneiden."
+    },
+    {
+      "id": "scene-01-motion-vertical-safe",
+      "assetId": "scene-01",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-01: Zoom und vertikaler Schwenk können mehr als 8% Rand abschneiden."
+    },
+    {
+      "id": "scene-01-manual-review",
+      "assetId": "scene-01",
+      "passed": true,
+      "level": "error",
+      "message": "scene-01: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden."
+    },
+    {
+      "id": "scene-01-semantic-evidence",
+      "assetId": "scene-01",
+      "passed": true,
+      "level": "error",
+      "message": "scene-01: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt."
+    },
+    {
+      "id": "scene-02-present",
+      "assetId": "scene-02",
+      "passed": true,
+      "level": "error",
+      "message": "scene-02: Bilddatei fehlt (scenes/scene-02/scene-02.jpeg)."
+    },
+    {
+      "id": "scene-02-metadata",
+      "assetId": "scene-02",
+      "passed": true,
+      "level": "error",
+      "message": "scene-02: Bildmaße oder Format konnten nicht gelesen werden."
+    },
+    {
+      "id": "scene-02-format",
+      "assetId": "scene-02",
+      "passed": true,
+      "level": "error",
+      "message": "scene-02: Nicht unterstütztes Bildformat jpeg."
+    },
+    {
+      "id": "scene-02-portrait",
+      "assetId": "scene-02",
+      "passed": true,
+      "level": "error",
+      "message": "scene-02: Das Bild ist nicht im Hochformat."
+    },
+    {
+      "id": "scene-02-aspect-ratio",
+      "assetId": "scene-02",
+      "passed": true,
+      "level": "error",
+      "message": "scene-02: Seitenverhältnis ist 768:1376 statt 9:16."
+    },
+    {
+      "id": "scene-02-minimum-resolution",
+      "assetId": "scene-02",
+      "passed": true,
+      "level": "error",
+      "message": "scene-02: Mindestauflösung 720×1280 wird nicht erreicht."
+    },
+    {
+      "id": "scene-02-target-resolution",
+      "assetId": "scene-02",
+      "passed": false,
+      "level": "warning",
+      "message": "scene-02: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-02-motion-horizontal-safe",
+      "assetId": "scene-02",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-02: Zoom und horizontaler Schwenk können mehr als 6% Rand abschneiden."
+    },
+    {
+      "id": "scene-02-motion-vertical-safe",
+      "assetId": "scene-02",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-02: Zoom und vertikaler Schwenk können mehr als 8% Rand abschneiden."
+    },
+    {
+      "id": "scene-02-manual-review",
+      "assetId": "scene-02",
+      "passed": true,
+      "level": "error",
+      "message": "scene-02: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden."
+    },
+    {
+      "id": "scene-02-semantic-evidence",
+      "assetId": "scene-02",
+      "passed": true,
+      "level": "error",
+      "message": "scene-02: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt."
+    },
+    {
+      "id": "scene-03-present",
+      "assetId": "scene-03",
+      "passed": true,
+      "level": "error",
+      "message": "scene-03: Bilddatei fehlt (scenes/scene-03/scene-03.jpeg)."
+    },
+    {
+      "id": "scene-03-metadata",
+      "assetId": "scene-03",
+      "passed": true,
+      "level": "error",
+      "message": "scene-03: Bildmaße oder Format konnten nicht gelesen werden."
+    },
+    {
+      "id": "scene-03-format",
+      "assetId": "scene-03",
+      "passed": true,
+      "level": "error",
+      "message": "scene-03: Nicht unterstütztes Bildformat jpeg."
+    },
+    {
+      "id": "scene-03-portrait",
+      "assetId": "scene-03",
+      "passed": true,
+      "level": "error",
+      "message": "scene-03: Das Bild ist nicht im Hochformat."
+    },
+    {
+      "id": "scene-03-aspect-ratio",
+      "assetId": "scene-03",
+      "passed": true,
+      "level": "error",
+      "message": "scene-03: Seitenverhältnis ist 768:1376 statt 9:16."
+    },
+    {
+      "id": "scene-03-minimum-resolution",
+      "assetId": "scene-03",
+      "passed": true,
+      "level": "error",
+      "message": "scene-03: Mindestauflösung 720×1280 wird nicht erreicht."
+    },
+    {
+      "id": "scene-03-target-resolution",
+      "assetId": "scene-03",
+      "passed": false,
+      "level": "warning",
+      "message": "scene-03: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-03-motion-horizontal-safe",
+      "assetId": "scene-03",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-03: Zoom und horizontaler Schwenk können mehr als 6% Rand abschneiden."
+    },
+    {
+      "id": "scene-03-motion-vertical-safe",
+      "assetId": "scene-03",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-03: Zoom und vertikaler Schwenk können mehr als 8% Rand abschneiden."
+    },
+    {
+      "id": "scene-03-manual-review",
+      "assetId": "scene-03",
+      "passed": true,
+      "level": "error",
+      "message": "scene-03: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden."
+    },
+    {
+      "id": "scene-03-semantic-evidence",
+      "assetId": "scene-03",
+      "passed": true,
+      "level": "error",
+      "message": "scene-03: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt."
+    },
+    {
+      "id": "scene-04-present",
+      "assetId": "scene-04",
+      "passed": true,
+      "level": "error",
+      "message": "scene-04: Bilddatei fehlt (scenes/scene-04/scene-04.jpeg)."
+    },
+    {
+      "id": "scene-04-metadata",
+      "assetId": "scene-04",
+      "passed": true,
+      "level": "error",
+      "message": "scene-04: Bildmaße oder Format konnten nicht gelesen werden."
+    },
+    {
+      "id": "scene-04-format",
+      "assetId": "scene-04",
+      "passed": true,
+      "level": "error",
+      "message": "scene-04: Nicht unterstütztes Bildformat jpeg."
+    },
+    {
+      "id": "scene-04-portrait",
+      "assetId": "scene-04",
+      "passed": true,
+      "level": "error",
+      "message": "scene-04: Das Bild ist nicht im Hochformat."
+    },
+    {
+      "id": "scene-04-aspect-ratio",
+      "assetId": "scene-04",
+      "passed": true,
+      "level": "error",
+      "message": "scene-04: Seitenverhältnis ist 768:1376 statt 9:16."
+    },
+    {
+      "id": "scene-04-minimum-resolution",
+      "assetId": "scene-04",
+      "passed": true,
+      "level": "error",
+      "message": "scene-04: Mindestauflösung 720×1280 wird nicht erreicht."
+    },
+    {
+      "id": "scene-04-target-resolution",
+      "assetId": "scene-04",
+      "passed": false,
+      "level": "warning",
+      "message": "scene-04: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-04-motion-horizontal-safe",
+      "assetId": "scene-04",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-04: Zoom und horizontaler Schwenk können mehr als 6% Rand abschneiden."
+    },
+    {
+      "id": "scene-04-motion-vertical-safe",
+      "assetId": "scene-04",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-04: Zoom und vertikaler Schwenk können mehr als 8% Rand abschneiden."
+    },
+    {
+      "id": "scene-04-manual-review",
+      "assetId": "scene-04",
+      "passed": true,
+      "level": "error",
+      "message": "scene-04: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden."
+    },
+    {
+      "id": "scene-04-semantic-evidence",
+      "assetId": "scene-04",
+      "passed": true,
+      "level": "error",
+      "message": "scene-04: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt."
+    },
+    {
+      "id": "scene-05-present",
+      "assetId": "scene-05",
+      "passed": true,
+      "level": "error",
+      "message": "scene-05: Bilddatei fehlt (scenes/scene-05/scene-05.jpeg)."
+    },
+    {
+      "id": "scene-05-metadata",
+      "assetId": "scene-05",
+      "passed": true,
+      "level": "error",
+      "message": "scene-05: Bildmaße oder Format konnten nicht gelesen werden."
+    },
+    {
+      "id": "scene-05-format",
+      "assetId": "scene-05",
+      "passed": true,
+      "level": "error",
+      "message": "scene-05: Nicht unterstütztes Bildformat jpeg."
+    },
+    {
+      "id": "scene-05-portrait",
+      "assetId": "scene-05",
+      "passed": true,
+      "level": "error",
+      "message": "scene-05: Das Bild ist nicht im Hochformat."
+    },
+    {
+      "id": "scene-05-aspect-ratio",
+      "assetId": "scene-05",
+      "passed": true,
+      "level": "error",
+      "message": "scene-05: Seitenverhältnis ist 768:1376 statt 9:16."
+    },
+    {
+      "id": "scene-05-minimum-resolution",
+      "assetId": "scene-05",
+      "passed": true,
+      "level": "error",
+      "message": "scene-05: Mindestauflösung 720×1280 wird nicht erreicht."
+    },
+    {
+      "id": "scene-05-target-resolution",
+      "assetId": "scene-05",
+      "passed": false,
+      "level": "warning",
+      "message": "scene-05: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-05-motion-horizontal-safe",
+      "assetId": "scene-05",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-05: Zoom und horizontaler Schwenk können mehr als 6% Rand abschneiden."
+    },
+    {
+      "id": "scene-05-motion-vertical-safe",
+      "assetId": "scene-05",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-05: Zoom und vertikaler Schwenk können mehr als 8% Rand abschneiden."
+    },
+    {
+      "id": "scene-05-manual-review",
+      "assetId": "scene-05",
+      "passed": true,
+      "level": "error",
+      "message": "scene-05: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden."
+    },
+    {
+      "id": "scene-05-semantic-evidence",
+      "assetId": "scene-05",
+      "passed": true,
+      "level": "error",
+      "message": "scene-05: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt."
+    },
+    {
+      "id": "scene-06-present",
+      "assetId": "scene-06",
+      "passed": true,
+      "level": "error",
+      "message": "scene-06: Bilddatei fehlt (scenes/scene-06/scene-06.jpeg)."
+    },
+    {
+      "id": "scene-06-metadata",
+      "assetId": "scene-06",
+      "passed": true,
+      "level": "error",
+      "message": "scene-06: Bildmaße oder Format konnten nicht gelesen werden."
+    },
+    {
+      "id": "scene-06-format",
+      "assetId": "scene-06",
+      "passed": true,
+      "level": "error",
+      "message": "scene-06: Nicht unterstütztes Bildformat jpeg."
+    },
+    {
+      "id": "scene-06-portrait",
+      "assetId": "scene-06",
+      "passed": true,
+      "level": "error",
+      "message": "scene-06: Das Bild ist nicht im Hochformat."
+    },
+    {
+      "id": "scene-06-aspect-ratio",
+      "assetId": "scene-06",
+      "passed": true,
+      "level": "error",
+      "message": "scene-06: Seitenverhältnis ist 768:1376 statt 9:16."
+    },
+    {
+      "id": "scene-06-minimum-resolution",
+      "assetId": "scene-06",
+      "passed": true,
+      "level": "error",
+      "message": "scene-06: Mindestauflösung 720×1280 wird nicht erreicht."
+    },
+    {
+      "id": "scene-06-target-resolution",
+      "assetId": "scene-06",
+      "passed": false,
+      "level": "warning",
+      "message": "scene-06: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-06-motion-horizontal-safe",
+      "assetId": "scene-06",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-06: Zoom und horizontaler Schwenk können mehr als 6% Rand abschneiden."
+    },
+    {
+      "id": "scene-06-motion-vertical-safe",
+      "assetId": "scene-06",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-06: Zoom und vertikaler Schwenk können mehr als 8% Rand abschneiden."
+    },
+    {
+      "id": "scene-06-manual-review",
+      "assetId": "scene-06",
+      "passed": true,
+      "level": "error",
+      "message": "scene-06: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden."
+    },
+    {
+      "id": "scene-06-semantic-evidence",
+      "assetId": "scene-06",
+      "passed": true,
+      "level": "error",
+      "message": "scene-06: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt."
+    },
+    {
+      "id": "scene-07-present",
+      "assetId": "scene-07",
+      "passed": true,
+      "level": "error",
+      "message": "scene-07: Bilddatei fehlt (scenes/scene-07/scene-07.jpeg)."
+    },
+    {
+      "id": "scene-07-metadata",
+      "assetId": "scene-07",
+      "passed": true,
+      "level": "error",
+      "message": "scene-07: Bildmaße oder Format konnten nicht gelesen werden."
+    },
+    {
+      "id": "scene-07-format",
+      "assetId": "scene-07",
+      "passed": true,
+      "level": "error",
+      "message": "scene-07: Nicht unterstütztes Bildformat jpeg."
+    },
+    {
+      "id": "scene-07-portrait",
+      "assetId": "scene-07",
+      "passed": true,
+      "level": "error",
+      "message": "scene-07: Das Bild ist nicht im Hochformat."
+    },
+    {
+      "id": "scene-07-aspect-ratio",
+      "assetId": "scene-07",
+      "passed": true,
+      "level": "error",
+      "message": "scene-07: Seitenverhältnis ist 768:1376 statt 9:16."
+    },
+    {
+      "id": "scene-07-minimum-resolution",
+      "assetId": "scene-07",
+      "passed": true,
+      "level": "error",
+      "message": "scene-07: Mindestauflösung 720×1280 wird nicht erreicht."
+    },
+    {
+      "id": "scene-07-target-resolution",
+      "assetId": "scene-07",
+      "passed": false,
+      "level": "warning",
+      "message": "scene-07: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-07-motion-horizontal-safe",
+      "assetId": "scene-07",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-07: Zoom und horizontaler Schwenk können mehr als 6% Rand abschneiden."
+    },
+    {
+      "id": "scene-07-motion-vertical-safe",
+      "assetId": "scene-07",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-07: Zoom und vertikaler Schwenk können mehr als 8% Rand abschneiden."
+    },
+    {
+      "id": "scene-07-manual-review",
+      "assetId": "scene-07",
+      "passed": true,
+      "level": "error",
+      "message": "scene-07: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden."
+    },
+    {
+      "id": "scene-07-semantic-evidence",
+      "assetId": "scene-07",
+      "passed": true,
+      "level": "error",
+      "message": "scene-07: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt."
+    },
+    {
+      "id": "scene-08-present",
+      "assetId": "scene-08",
+      "passed": true,
+      "level": "error",
+      "message": "scene-08: Bilddatei fehlt (scenes/scene-08/scene-08.jpeg)."
+    },
+    {
+      "id": "scene-08-metadata",
+      "assetId": "scene-08",
+      "passed": true,
+      "level": "error",
+      "message": "scene-08: Bildmaße oder Format konnten nicht gelesen werden."
+    },
+    {
+      "id": "scene-08-format",
+      "assetId": "scene-08",
+      "passed": true,
+      "level": "error",
+      "message": "scene-08: Nicht unterstütztes Bildformat jpeg."
+    },
+    {
+      "id": "scene-08-portrait",
+      "assetId": "scene-08",
+      "passed": true,
+      "level": "error",
+      "message": "scene-08: Das Bild ist nicht im Hochformat."
+    },
+    {
+      "id": "scene-08-aspect-ratio",
+      "assetId": "scene-08",
+      "passed": true,
+      "level": "error",
+      "message": "scene-08: Seitenverhältnis ist 768:1376 statt 9:16."
+    },
+    {
+      "id": "scene-08-minimum-resolution",
+      "assetId": "scene-08",
+      "passed": true,
+      "level": "error",
+      "message": "scene-08: Mindestauflösung 720×1280 wird nicht erreicht."
+    },
+    {
+      "id": "scene-08-target-resolution",
+      "assetId": "scene-08",
+      "passed": false,
+      "level": "warning",
+      "message": "scene-08: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-08-motion-horizontal-safe",
+      "assetId": "scene-08",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-08: Zoom und horizontaler Schwenk können mehr als 6% Rand abschneiden."
+    },
+    {
+      "id": "scene-08-motion-vertical-safe",
+      "assetId": "scene-08",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-08: Zoom und vertikaler Schwenk können mehr als 8% Rand abschneiden."
+    },
+    {
+      "id": "scene-08-manual-review",
+      "assetId": "scene-08",
+      "passed": true,
+      "level": "error",
+      "message": "scene-08: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden."
+    },
+    {
+      "id": "scene-08-semantic-evidence",
+      "assetId": "scene-08",
+      "passed": true,
+      "level": "error",
+      "message": "scene-08: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt."
+    },
+    {
+      "id": "scene-09-present",
+      "assetId": "scene-09",
+      "passed": true,
+      "level": "error",
+      "message": "scene-09: Bilddatei fehlt (scenes/scene-09/scene-09.jpeg)."
+    },
+    {
+      "id": "scene-09-metadata",
+      "assetId": "scene-09",
+      "passed": true,
+      "level": "error",
+      "message": "scene-09: Bildmaße oder Format konnten nicht gelesen werden."
+    },
+    {
+      "id": "scene-09-format",
+      "assetId": "scene-09",
+      "passed": true,
+      "level": "error",
+      "message": "scene-09: Nicht unterstütztes Bildformat jpeg."
+    },
+    {
+      "id": "scene-09-portrait",
+      "assetId": "scene-09",
+      "passed": true,
+      "level": "error",
+      "message": "scene-09: Das Bild ist nicht im Hochformat."
+    },
+    {
+      "id": "scene-09-aspect-ratio",
+      "assetId": "scene-09",
+      "passed": true,
+      "level": "error",
+      "message": "scene-09: Seitenverhältnis ist 768:1376 statt 9:16."
+    },
+    {
+      "id": "scene-09-minimum-resolution",
+      "assetId": "scene-09",
+      "passed": true,
+      "level": "error",
+      "message": "scene-09: Mindestauflösung 720×1280 wird nicht erreicht."
+    },
+    {
+      "id": "scene-09-target-resolution",
+      "assetId": "scene-09",
+      "passed": false,
+      "level": "warning",
+      "message": "scene-09: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-09-motion-horizontal-safe",
+      "assetId": "scene-09",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-09: Zoom und horizontaler Schwenk können mehr als 6% Rand abschneiden."
+    },
+    {
+      "id": "scene-09-motion-vertical-safe",
+      "assetId": "scene-09",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-09: Zoom und vertikaler Schwenk können mehr als 8% Rand abschneiden."
+    },
+    {
+      "id": "scene-09-manual-review",
+      "assetId": "scene-09",
+      "passed": true,
+      "level": "error",
+      "message": "scene-09: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden."
+    },
+    {
+      "id": "scene-09-semantic-evidence",
+      "assetId": "scene-09",
+      "passed": true,
+      "level": "error",
+      "message": "scene-09: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt."
+    },
+    {
+      "id": "scene-10-present",
+      "assetId": "scene-10",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10: Bilddatei fehlt (scenes/scene-10/scene-10.jpeg)."
+    },
+    {
+      "id": "scene-10-metadata",
+      "assetId": "scene-10",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10: Bildmaße oder Format konnten nicht gelesen werden."
+    },
+    {
+      "id": "scene-10-format",
+      "assetId": "scene-10",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10: Nicht unterstütztes Bildformat jpeg."
+    },
+    {
+      "id": "scene-10-portrait",
+      "assetId": "scene-10",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10: Das Bild ist nicht im Hochformat."
+    },
+    {
+      "id": "scene-10-aspect-ratio",
+      "assetId": "scene-10",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10: Seitenverhältnis ist 768:1376 statt 9:16."
+    },
+    {
+      "id": "scene-10-minimum-resolution",
+      "assetId": "scene-10",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10: Mindestauflösung 720×1280 wird nicht erreicht."
+    },
+    {
+      "id": "scene-10-target-resolution",
+      "assetId": "scene-10",
+      "passed": false,
+      "level": "warning",
+      "message": "scene-10: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-10-motion-horizontal-safe",
+      "assetId": "scene-10",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-10: Zoom und horizontaler Schwenk können mehr als 6% Rand abschneiden."
+    },
+    {
+      "id": "scene-10-motion-vertical-safe",
+      "assetId": "scene-10",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-10: Zoom und vertikaler Schwenk können mehr als 8% Rand abschneiden."
+    },
+    {
+      "id": "scene-10-manual-review",
+      "assetId": "scene-10",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden."
+    },
+    {
+      "id": "scene-10-semantic-evidence",
+      "assetId": "scene-10",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt."
+    },
+    {
+      "id": "scene-11-present",
+      "assetId": "scene-11",
+      "passed": true,
+      "level": "error",
+      "message": "scene-11: Bilddatei fehlt (scenes/scene-11/scene-11.jpeg)."
+    },
+    {
+      "id": "scene-11-metadata",
+      "assetId": "scene-11",
+      "passed": true,
+      "level": "error",
+      "message": "scene-11: Bildmaße oder Format konnten nicht gelesen werden."
+    },
+    {
+      "id": "scene-11-format",
+      "assetId": "scene-11",
+      "passed": true,
+      "level": "error",
+      "message": "scene-11: Nicht unterstütztes Bildformat jpeg."
+    },
+    {
+      "id": "scene-11-portrait",
+      "assetId": "scene-11",
+      "passed": true,
+      "level": "error",
+      "message": "scene-11: Das Bild ist nicht im Hochformat."
+    },
+    {
+      "id": "scene-11-aspect-ratio",
+      "assetId": "scene-11",
+      "passed": true,
+      "level": "error",
+      "message": "scene-11: Seitenverhältnis ist 768:1376 statt 9:16."
+    },
+    {
+      "id": "scene-11-minimum-resolution",
+      "assetId": "scene-11",
+      "passed": true,
+      "level": "error",
+      "message": "scene-11: Mindestauflösung 720×1280 wird nicht erreicht."
+    },
+    {
+      "id": "scene-11-target-resolution",
+      "assetId": "scene-11",
+      "passed": false,
+      "level": "warning",
+      "message": "scene-11: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-11-motion-horizontal-safe",
+      "assetId": "scene-11",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-11: Zoom und horizontaler Schwenk können mehr als 6% Rand abschneiden."
+    },
+    {
+      "id": "scene-11-motion-vertical-safe",
+      "assetId": "scene-11",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-11: Zoom und vertikaler Schwenk können mehr als 8% Rand abschneiden."
+    },
+    {
+      "id": "scene-11-manual-review",
+      "assetId": "scene-11",
+      "passed": true,
+      "level": "error",
+      "message": "scene-11: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden."
+    },
+    {
+      "id": "scene-11-semantic-evidence",
+      "assetId": "scene-11",
+      "passed": true,
+      "level": "error",
+      "message": "scene-11: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt."
+    },
+    {
+      "id": "scene-12-present",
+      "assetId": "scene-12",
+      "passed": true,
+      "level": "error",
+      "message": "scene-12: Bilddatei fehlt (scenes/scene-12/scene-12.jpeg)."
+    },
+    {
+      "id": "scene-12-metadata",
+      "assetId": "scene-12",
+      "passed": true,
+      "level": "error",
+      "message": "scene-12: Bildmaße oder Format konnten nicht gelesen werden."
+    },
+    {
+      "id": "scene-12-format",
+      "assetId": "scene-12",
+      "passed": true,
+      "level": "error",
+      "message": "scene-12: Nicht unterstütztes Bildformat jpeg."
+    },
+    {
+      "id": "scene-12-portrait",
+      "assetId": "scene-12",
+      "passed": true,
+      "level": "error",
+      "message": "scene-12: Das Bild ist nicht im Hochformat."
+    },
+    {
+      "id": "scene-12-aspect-ratio",
+      "assetId": "scene-12",
+      "passed": true,
+      "level": "error",
+      "message": "scene-12: Seitenverhältnis ist 768:1376 statt 9:16."
+    },
+    {
+      "id": "scene-12-minimum-resolution",
+      "assetId": "scene-12",
+      "passed": true,
+      "level": "error",
+      "message": "scene-12: Mindestauflösung 720×1280 wird nicht erreicht."
+    },
+    {
+      "id": "scene-12-target-resolution",
+      "assetId": "scene-12",
+      "passed": false,
+      "level": "warning",
+      "message": "scene-12: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-12-motion-horizontal-safe",
+      "assetId": "scene-12",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-12: Zoom und horizontaler Schwenk können mehr als 6% Rand abschneiden."
+    },
+    {
+      "id": "scene-12-motion-vertical-safe",
+      "assetId": "scene-12",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-12: Zoom und vertikaler Schwenk können mehr als 8% Rand abschneiden."
+    },
+    {
+      "id": "scene-12-manual-review",
+      "assetId": "scene-12",
+      "passed": true,
+      "level": "error",
+      "message": "scene-12: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden."
+    },
+    {
+      "id": "scene-12-semantic-evidence",
+      "assetId": "scene-12",
+      "passed": true,
+      "level": "error",
+      "message": "scene-12: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt."
+    },
+    {
+      "id": "scene-13-present",
+      "assetId": "scene-13",
+      "passed": true,
+      "level": "error",
+      "message": "scene-13: Bilddatei fehlt (scenes/scene-13/scene-13.jpeg)."
+    },
+    {
+      "id": "scene-13-metadata",
+      "assetId": "scene-13",
+      "passed": true,
+      "level": "error",
+      "message": "scene-13: Bildmaße oder Format konnten nicht gelesen werden."
+    },
+    {
+      "id": "scene-13-format",
+      "assetId": "scene-13",
+      "passed": true,
+      "level": "error",
+      "message": "scene-13: Nicht unterstütztes Bildformat jpeg."
+    },
+    {
+      "id": "scene-13-portrait",
+      "assetId": "scene-13",
+      "passed": true,
+      "level": "error",
+      "message": "scene-13: Das Bild ist nicht im Hochformat."
+    },
+    {
+      "id": "scene-13-aspect-ratio",
+      "assetId": "scene-13",
+      "passed": true,
+      "level": "error",
+      "message": "scene-13: Seitenverhältnis ist 768:1376 statt 9:16."
+    },
+    {
+      "id": "scene-13-minimum-resolution",
+      "assetId": "scene-13",
+      "passed": true,
+      "level": "error",
+      "message": "scene-13: Mindestauflösung 720×1280 wird nicht erreicht."
+    },
+    {
+      "id": "scene-13-target-resolution",
+      "assetId": "scene-13",
+      "passed": false,
+      "level": "warning",
+      "message": "scene-13: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-13-motion-horizontal-safe",
+      "assetId": "scene-13",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-13: Zoom und horizontaler Schwenk können mehr als 6% Rand abschneiden."
+    },
+    {
+      "id": "scene-13-motion-vertical-safe",
+      "assetId": "scene-13",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-13: Zoom und vertikaler Schwenk können mehr als 8% Rand abschneiden."
+    },
+    {
+      "id": "scene-13-manual-review",
+      "assetId": "scene-13",
+      "passed": true,
+      "level": "error",
+      "message": "scene-13: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden."
+    },
+    {
+      "id": "scene-13-semantic-evidence",
+      "assetId": "scene-13",
+      "passed": true,
+      "level": "error",
+      "message": "scene-13: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt."
+    },
+    {
+      "id": "cover-present",
+      "assetId": "cover",
+      "passed": true,
+      "level": "error",
+      "message": "cover: Bilddatei fehlt (cover/cover.jpeg)."
+    },
+    {
+      "id": "cover-metadata",
+      "assetId": "cover",
+      "passed": true,
+      "level": "error",
+      "message": "cover: Bildmaße oder Format konnten nicht gelesen werden."
+    },
+    {
+      "id": "cover-format",
+      "assetId": "cover",
+      "passed": true,
+      "level": "error",
+      "message": "cover: Nicht unterstütztes Bildformat jpeg."
+    },
+    {
+      "id": "cover-portrait",
+      "assetId": "cover",
+      "passed": true,
+      "level": "error",
+      "message": "cover: Das Bild ist nicht im Hochformat."
+    },
+    {
+      "id": "cover-aspect-ratio",
+      "assetId": "cover",
+      "passed": true,
+      "level": "error",
+      "message": "cover: Seitenverhältnis ist 768:1376 statt 9:16."
+    },
+    {
+      "id": "cover-minimum-resolution",
+      "assetId": "cover",
+      "passed": true,
+      "level": "error",
+      "message": "cover: Mindestauflösung 720×1280 wird nicht erreicht."
+    },
+    {
+      "id": "cover-target-resolution",
+      "assetId": "cover",
+      "passed": false,
+      "level": "warning",
+      "message": "cover: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "cover-manual-review",
+      "assetId": "cover",
+      "passed": true,
+      "level": "error",
+      "message": "cover: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden."
+    },
+    {
+      "id": "cover-semantic-evidence",
+      "assetId": "cover",
+      "passed": true,
+      "level": "error",
+      "message": "cover: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt."
+    },
+    {
+      "id": "subtitle-safe-zone",
+      "assetId": null,
+      "passed": true,
+      "level": "error",
+      "message": "Untertitelposition 58% muss exakt 58% betragen."
+    },
+    {
+      "id": "subtitle-text-color",
+      "assetId": null,
+      "passed": true,
+      "level": "error",
+      "message": "Untertitel-Normalfarbe muss #F5F7FA sein."
+    },
+    {
+      "id": "subtitle-highlight-color",
+      "assetId": null,
+      "passed": true,
+      "level": "error",
+      "message": "Die Untertitelfarbe muss durchgehend #B7794A sein."
+    },
+    {
+      "id": "subtitle-colors-uniform",
+      "assetId": null,
+      "passed": true,
+      "level": "error",
+      "message": "Untertitel und Highlight müssen unterschiedliche Farben haben."
+    },
+    {
+      "id": "subtitle-highlight-enabled",
+      "assetId": null,
+      "passed": true,
+      "level": "error",
+      "message": "Die Wortmarkierung muss aktiviert sein."
+    },
+    {
+      "id": "subtitle-background-transparent",
+      "assetId": null,
+      "passed": true,
+      "level": "error",
+      "message": "Der Untertitelhintergrund muss transparent sein."
+    }
+  ]
+}

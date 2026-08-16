@@ -1,0 +1,206 @@
+{
+  "version": 2,
+  "reelDirectory": "reels/2026-KW33_10-08_bis_16-08/dienstag/reel-01_wie-baue-ich-einen-ki-app-prototyp",
+  "createdAt": "2026-08-13T17:22:54.331Z",
+  "matchingRules": {
+    "minimumConfidence": 0.9,
+    "requireVisualReview": true,
+    "requireSecondPassConfirmation": true,
+    "requireSceneOrderConfirmation": true,
+    "requireMatchReason": true,
+    "minimumMatchReasonLength": 20,
+    "requireVisibleSummary": true,
+    "minimumVisibleSummaryLength": 15,
+    "requiredSceneComparedFields": [
+      "narration",
+      "visualIdea",
+      "imageText",
+      "imagePrompt"
+    ],
+    "requiredCoverComparedFields": [
+      "headline",
+      "coverVisualIdea",
+      "coverPrompt"
+    ],
+    "forbidFilenameOnlyMatching": true,
+    "allowedMatchMethods": [
+      "visual-content-review",
+      "visual-text-and-content-review"
+    ],
+    "leaveUnmatchedWhenUncertain": true
+  },
+  "instructions": [
+    "Erster Durchgang: Betrachte jedes Bild ohne Dateinamen und beschreibe ausschließlich den sichtbaren Inhalt.",
+    "Vergleiche danach das Bild mit narration, audioCue, visualIdea, imageText und imagePrompt jeder möglichen Szene.",
+    "Zweiter Durchgang: Prüfe die gewählte Szene nochmals gegen die vorherige und die nächste Szene, damit benachbarte Bilder nicht vertauscht werden.",
+    "Ordne niemals nach Upload-Reihenfolge, Dateiname, Erstellungszeit oder vermuteter laufender Nummer zu.",
+    "Sichtbarer deutscher Schlüsseltext ist ein starkes Signal, reicht aber allein nicht aus.",
+    "Jede Quelle und jedes Ziel darf höchstens einmal verwendet werden.",
+    "Das Cover ist eine eigene Zuweisung und gehört nicht zu scene-01.",
+    "Unter einer Konfidenz von 0.9 bleibt die Datei unmatched.",
+    "Für jede Bildzuordnung sind visibleSummary, reason, comparedFields, matchMethod, visualReviewed und secondPassConfirmed Pflicht.",
+    "Für Szenen sind zusätzlich confirmedTarget, confirmedSceneOrder und sceneOrderConfirmed Pflicht."
+  ],
+  "scenes": [
+    {
+      "sceneId": "scene-01",
+      "order": 1,
+      "title": "Hook",
+      "narration": "",
+      "audioCue": "",
+      "imageText": "",
+      "visualIdea": "",
+      "imagePrompt": "A glowing lightbulb transforming into a digital wireframe, modern 3d rendering, glassmorphism, dark background, 9:16 aspect ratio",
+      "previousSceneId": null,
+      "nextSceneId": "scene-02"
+    },
+    {
+      "sceneId": "scene-02",
+      "order": 2,
+      "title": "Bildmoment 2",
+      "narration": "",
+      "audioCue": "",
+      "imageText": "",
+      "visualIdea": "",
+      "imagePrompt": "A person looking confused at a laptop screen with a generic text prompt, cinematic lighting, shallow depth of field, 9:16 aspect ratio",
+      "previousSceneId": "scene-01",
+      "nextSceneId": "scene-03"
+    },
+    {
+      "sceneId": "scene-03",
+      "order": 3,
+      "title": "Bildmoment 3",
+      "narration": "",
+      "audioCue": "",
+      "imageText": "",
+      "visualIdea": "",
+      "imagePrompt": "A glowing blueprint of a mobile app structure floating in mid-air, connected by glowing lines, tech aesthetic, 9:16 aspect ratio",
+      "previousSceneId": "scene-02",
+      "nextSceneId": "scene-04"
+    },
+    {
+      "sceneId": "scene-04",
+      "order": 4,
+      "title": "Bildmoment 4",
+      "narration": "",
+      "audioCue": "",
+      "imageText": "",
+      "visualIdea": "",
+      "imagePrompt": "Four transparent glass panels showing UI, input fields, gears for logic, and a final app icon, aligned perfectly, 9:16 aspect ratio",
+      "previousSceneId": "scene-03",
+      "nextSceneId": "scene-05"
+    },
+    {
+      "sceneId": "scene-05",
+      "order": 5,
+      "title": "Bildmoment 5",
+      "narration": "",
+      "audioCue": "",
+      "imageText": "",
+      "visualIdea": "",
+      "imagePrompt": "A massive, monolithic block of code shattering into smaller, manageable glowing cubes, dramatic lighting, 9:16 aspect ratio",
+      "previousSceneId": "scene-04",
+      "nextSceneId": "scene-06"
+    },
+    {
+      "sceneId": "scene-06",
+      "order": 6,
+      "title": "Bildmoment 6",
+      "narration": "",
+      "audioCue": "",
+      "imageText": "",
+      "visualIdea": "",
+      "imagePrompt": "Glowing floating blocks snapping together to form a mobile phone structure, 3d rendering, high quality, 9:16 aspect ratio",
+      "previousSceneId": "scene-05",
+      "nextSceneId": "scene-07"
+    },
+    {
+      "sceneId": "scene-07",
+      "order": 7,
+      "title": "Bildmoment 7",
+      "narration": "",
+      "audioCue": "",
+      "imageText": "",
+      "visualIdea": "",
+      "imagePrompt": "A sleek, glowing smartphone prototype materializing from energy beams, dark studio background, 9:16 aspect ratio",
+      "previousSceneId": "scene-06",
+      "nextSceneId": "scene-08"
+    },
+    {
+      "sceneId": "scene-08",
+      "order": 8,
+      "title": "Bildmoment 8",
+      "narration": "",
+      "audioCue": "",
+      "imageText": "",
+      "visualIdea": "",
+      "imagePrompt": "A magnifying glass inspecting glowing code on a dark screen, highlighting bugs in red, cinematic, 9:16 aspect ratio",
+      "previousSceneId": "scene-07",
+      "nextSceneId": "scene-09"
+    },
+    {
+      "sceneId": "scene-09",
+      "order": 9,
+      "title": "Bildmoment 9",
+      "narration": "",
+      "audioCue": "",
+      "imageText": "",
+      "visualIdea": "",
+      "imagePrompt": "A shattered glass smartphone screen displaying a glitched UI, dramatic lighting, high contrast, 9:16 aspect ratio",
+      "previousSceneId": "scene-08",
+      "nextSceneId": "scene-10"
+    },
+    {
+      "sceneId": "scene-10",
+      "order": 10,
+      "title": "Bildmoment 10",
+      "narration": "",
+      "audioCue": "",
+      "imageText": "",
+      "visualIdea": "",
+      "imagePrompt": "A glowing wrench repairing the shattered glass of the smartphone, turning it pristine, glowing green light, 9:16 aspect ratio",
+      "previousSceneId": "scene-09",
+      "nextSceneId": "scene-11"
+    },
+    {
+      "sceneId": "scene-11",
+      "order": 11,
+      "title": "Bildmoment 11",
+      "narration": "",
+      "audioCue": "",
+      "imageText": "",
+      "visualIdea": "",
+      "imagePrompt": "A human hand shaking a robotic hand over a glowing control panel, cooperation concept, futuristic, 9:16 aspect ratio",
+      "previousSceneId": "scene-10",
+      "nextSceneId": "scene-12"
+    },
+    {
+      "sceneId": "scene-12",
+      "order": 12,
+      "title": "Bildmoment 12",
+      "narration": "",
+      "audioCue": "",
+      "imageText": "",
+      "visualIdea": "",
+      "imagePrompt": "A glowing staircase leading up to a perfect, floating smartphone app, success concept, uplifting lighting, 3d rendering, 9:16 aspect ratio",
+      "previousSceneId": "scene-11",
+      "nextSceneId": "scene-13"
+    },
+    {
+      "sceneId": "scene-13",
+      "order": 13,
+      "title": "Starker Abschluss",
+      "narration": "",
+      "audioCue": "",
+      "imageText": "",
+      "visualIdea": "",
+      "imagePrompt": "A fully finished, glowing smartphone app inside a bright, clean studio environment, masterpiece, 9:16 aspect ratio",
+      "previousSceneId": "scene-12",
+      "nextSceneId": null
+    }
+  ],
+  "candidates": {
+    "images": [],
+    "audio": []
+  }
+}

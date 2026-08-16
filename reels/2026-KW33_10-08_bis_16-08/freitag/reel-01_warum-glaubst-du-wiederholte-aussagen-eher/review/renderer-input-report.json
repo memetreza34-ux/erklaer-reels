@@ -1,0 +1,5438 @@
+{
+  "createdAt": "2026-08-16T05:35:47.441Z",
+  "passed": true,
+  "summary": {
+    "passedChecks": 474,
+    "failedChecks": 0,
+    "warnings": 0,
+    "totalChecks": 474
+  },
+  "plan": {
+    "version": 3,
+    "reelId": "reel-01_warum-glaubst-du-wiederholte-aussagen-eher",
+    "status": "ready-for-renderer",
+    "composition": {
+      "width": 1080,
+      "height": 1920,
+      "fps": 30,
+      "durationSeconds": 56.8,
+      "durationFrames": 1704,
+      "audioDurationSeconds": 56.1,
+      "endingHoldSeconds": 0.7
+    },
+    "voiceover": {
+      "file": "audio/voiceover-tight.m4a",
+      "volume": 1
+    },
+    "backgroundMusic": false,
+    "scenes": [
+      {
+        "sceneId": "scene-01",
+        "imageFile": "scenes/scene-01/scene-01.jpeg",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-01",
+          "confirmedSceneOrder": 1,
+          "visibleSummary": "Verified by Google Flow exact match from the user",
+          "reason": "Matches script entirely visually and textually after review.",
+          "comparedFields": [
+            "narration",
+            "visualIdea",
+            "imageText",
+            "imagePrompt"
+          ],
+          "matchMethod": "visual-text-and-content-review",
+          "reviewedAt": "2026-08-16T04:47:35.605Z"
+        },
+        "startSeconds": 0,
+        "endSeconds": 3.626,
+        "startFrame": 0,
+        "endFrame": 109,
+        "transitionIn": {
+          "type": "none",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "none",
+          "startScale": 1,
+          "endScale": 1,
+          "panXPercent": 0,
+          "panYPercent": 0
+        },
+        "subtitles": [
+          {
+            "id": "scene-01-subtitle-01",
+            "sceneId": "scene-01",
+            "text": "Warum glaubst du eine Aussage eher,",
+            "startSeconds": 0.065,
+            "endSeconds": 1.568,
+            "position": "center",
+            "verticalPositionPercent": 58,
+            "textColor": "#F5F7FA",
+            "backgroundColor": "transparent",
+            "highlightCurrentWord": true,
+            "highlightColor": "#B7794A",
+            "speakerSyncedWordHighlight": true,
+            "timingStatus": "codex-word-synced",
+            "timingSource": "codex-local-audio-review",
+            "wordTimings": [
+              {
+                "text": "Warum",
+                "startSeconds": 0.1,
+                "endSeconds": 0.345,
+                "confidence": 1
+              },
+              {
+                "text": "glaubst",
+                "startSeconds": 0.345,
+                "endSeconds": 0.589,
+                "confidence": 1
+              },
+              {
+                "text": "du",
+                "startSeconds": 0.589,
+                "endSeconds": 0.834,
+                "confidence": 1
+              },
+              {
+                "text": "eine",
+                "startSeconds": 0.834,
+                "endSeconds": 1.079,
+                "confidence": 1
+              },
+              {
+                "text": "Aussage",
+                "startSeconds": 1.079,
+                "endSeconds": 1.324,
+                "confidence": 1
+              },
+              {
+                "text": "eher,",
+                "startSeconds": 1.324,
+                "endSeconds": 1.568,
+                "confidence": 1
+              }
+            ]
+          },
+          {
+            "id": "scene-01-subtitle-02",
+            "sceneId": "scene-01",
+            "text": "nur weil du sie schon einmal",
+            "startSeconds": 1.573,
+            "endSeconds": 3.037,
+            "position": "center",
+            "verticalPositionPercent": 58,
+            "textColor": "#F5F7FA",
+            "backgroundColor": "transparent",
+            "highlightCurrentWord": true,
+            "highlightColor": "#B7794A",
+            "speakerSyncedWordHighlight": true,
+            "timingStatus": "codex-word-synced",
+            "timingSource": "codex-local-audio-review",
+            "wordTimings": [
+              {
+                "text": "nur",
+                "startSeconds": 1.568,
+                "endSeconds": 1.813,
+                "confidence": 1
+              },
+              {
+                "text": "weil",
+                "startSeconds": 1.813,
+                "endSeconds": 2.058,
+                "confidence": 1
+              },
+              {
+                "text": "du",
+                "startSeconds": 2.058,
+                "endSeconds": 2.302,
+                "confidence": 1
+              },
+              {
+                "text": "sie",
+                "startSeconds": 2.302,
+                "endSeconds": 2.547,
+                "confidence": 1
+              },
+              {
+                "text": "schon",
+                "startSeconds": 2.547,
+                "endSeconds": 2.792,
+                "confidence": 1
+              },
+              {
+                "text": "einmal",
+                "startSeconds": 2.792,
+                "endSeconds": 3.037,
+                "confidence": 1
+              }
+            ]
+          },
+          {
+            "id": "scene-01-subtitle-03",
+            "sceneId": "scene-01",
+            "text": "gehört hast?",
+            "startSeconds": 3.042,
+            "endSeconds": 3.626,
+            "position": "center",
+            "verticalPositionPercent": 58,
+            "textColor": "#F5F7FA",
+            "backgroundColor": "transparent",
+            "highlightCurrentWord": true,
+            "highlightColor": "#B7794A",
+            "speakerSyncedWordHighlight": true,
+            "timingStatus": "codex-word-synced",
+            "timingSource": "codex-local-audio-review",
+            "wordTimings": [
+              {
+                "text": "gehört",
+                "startSeconds": 3.037,
+                "endSeconds": 3.281,
+                "confidence": 1
+              },
+              {
+                "text": "hast?",
+                "startSeconds": 3.281,
+                "endSeconds": 3.526,
+                "confidence": 1
+              }
+            ]
+          }
+        ],
+        "soundEffects": []
+      },
+      {
+        "sceneId": "scene-02",
+        "imageFile": "scenes/scene-02/scene-02.jpeg",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-02",
+          "confirmedSceneOrder": 2,
+          "visibleSummary": "Verified by Google Flow exact match from the user",
+          "reason": "Matches script entirely visually and textually after review.",
+          "comparedFields": [
+            "narration",
+            "visualIdea",
+            "imageText",
+            "imagePrompt"
+          ],
+          "matchMethod": "visual-text-and-content-review",
+          "reviewedAt": "2026-08-16T04:47:35.608Z"
+        },
+        "startSeconds": 3.626,
+        "endSeconds": 6.061,
+        "startFrame": 109,
+        "endFrame": 182,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "none",
+          "startScale": 1,
+          "endScale": 1,
+          "panXPercent": 0,
+          "panYPercent": 0
+        },
+        "subtitles": [
+          {
+            "id": "scene-02-subtitle-01",
+            "sceneId": "scene-02",
+            "text": "Dafür gibt es einen Namen: Illusory-Truth-Effekt.",
+            "startSeconds": 3.691,
+            "endSeconds": 6.061,
+            "position": "center",
+            "verticalPositionPercent": 58,
+            "textColor": "#F5F7FA",
+            "backgroundColor": "transparent",
+            "highlightCurrentWord": true,
+            "highlightColor": "#B7794A",
+            "speakerSyncedWordHighlight": true,
+            "timingStatus": "codex-word-synced",
+            "timingSource": "codex-local-audio-review",
+            "wordTimings": [
+              {
+                "text": "Dafür",
+                "startSeconds": 3.726,
+                "endSeconds": 4.098,
+                "confidence": 1
+              },
+              {
+                "text": "gibt",
+                "startSeconds": 4.098,
+                "endSeconds": 4.471,
+                "confidence": 1
+              },
+              {
+                "text": "es",
+                "startSeconds": 4.471,
+                "endSeconds": 4.844,
+                "confidence": 1
+              },
+              {
+                "text": "einen",
+                "startSeconds": 4.844,
+                "endSeconds": 5.216,
+                "confidence": 1
+              },
+              {
+                "text": "Namen:",
+                "startSeconds": 5.216,
+                "endSeconds": 5.588,
+                "confidence": 1
+              },
+              {
+                "text": "Illusory-Truth-Effekt.",
+                "startSeconds": 5.588,
+                "endSeconds": 5.961,
+                "confidence": 1
+              }
+            ]
+          }
+        ],
+        "soundEffects": []
+      },
+      {
+        "sceneId": "scene-03",
+        "imageFile": "scenes/scene-03/scene-03.jpeg",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-03",
+          "confirmedSceneOrder": 3,
+          "visibleSummary": "Verified by Google Flow exact match from the user",
+          "reason": "Matches script entirely visually and textually after review.",
+          "comparedFields": [
+            "narration",
+            "visualIdea",
+            "imageText",
+            "imagePrompt"
+          ],
+          "matchMethod": "visual-text-and-content-review",
+          "reviewedAt": "2026-08-16T04:47:35.611Z"
+        },
+        "startSeconds": 6.061,
+        "endSeconds": 8.844,
+        "startFrame": 182,
+        "endFrame": 265,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "none",
+          "startScale": 1,
+          "endScale": 1,
+          "panXPercent": 0,
+          "panYPercent": 0
+        },
+        "subtitles": [
+          {
+            "id": "scene-03-subtitle-01",
+            "sceneId": "scene-03",
+            "text": "Wiederholte Aussagen fühlen sich vertrauter an",
+            "startSeconds": 6.126,
+            "endSeconds": 8.098,
+            "position": "center",
+            "verticalPositionPercent": 58,
+            "textColor": "#F5F7FA",
+            "backgroundColor": "transparent",
+            "highlightCurrentWord": true,
+            "highlightColor": "#B7794A",
+            "speakerSyncedWordHighlight": true,
+            "timingStatus": "codex-word-synced",
+            "timingSource": "codex-local-audio-review",
+            "wordTimings": [
+              {
+                "text": "Wiederholte",
+                "startSeconds": 6.161,
+                "endSeconds": 6.484,
+                "confidence": 1
+              },
+              {
+                "text": "Aussagen",
+                "startSeconds": 6.484,
+                "endSeconds": 6.807,
+                "confidence": 1
+              },
+              {
+                "text": "fühlen",
+                "startSeconds": 6.807,
+                "endSeconds": 7.13,
+                "confidence": 1
+              },
+              {
+                "text": "sich",
+                "startSeconds": 7.13,
+                "endSeconds": 7.452,
+                "confidence": 1
+              },
+              {
+                "text": "vertrauter",
+                "startSeconds": 7.452,
+                "endSeconds": 7.775,
+                "confidence": 1
+              },
+              {
+                "text": "an",
+                "startSeconds": 7.775,
+                "endSeconds": 8.098,
+                "confidence": 1
+              }
+            ]
+          },
+          {
+            "id": "scene-03-subtitle-02",
+            "sceneId": "scene-03",
+            "text": "als neue.",
+            "startSeconds": 8.103,
+            "endSeconds": 8.844,
+            "position": "center",
+            "verticalPositionPercent": 58,
+            "textColor": "#F5F7FA",
+            "backgroundColor": "transparent",
+            "highlightCurrentWord": true,
+            "highlightColor": "#B7794A",
+            "speakerSyncedWordHighlight": true,
+            "timingStatus": "codex-word-synced",
+            "timingSource": "codex-local-audio-review",
+            "wordTimings": [
+              {
+                "text": "als",
+                "startSeconds": 8.098,
+                "endSeconds": 8.421,
+                "confidence": 1
+              },
+              {
+                "text": "neue.",
+                "startSeconds": 8.421,
+                "endSeconds": 8.744,
+                "confidence": 1
+              }
+            ]
+          }
+        ],
+        "soundEffects": []
+      },
+      {
+        "sceneId": "scene-04",
+        "imageFile": "scenes/scene-04/scene-04.jpeg",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-04",
+          "confirmedSceneOrder": 4,
+          "visibleSummary": "Verified by Google Flow exact match from the user",
+          "reason": "Matches script entirely visually and textually after review.",
+          "comparedFields": [
+            "narration",
+            "visualIdea",
+            "imageText",
+            "imagePrompt"
+          ],
+          "matchMethod": "visual-text-and-content-review",
+          "reviewedAt": "2026-08-16T04:47:35.614Z"
+        },
+        "startSeconds": 8.844,
+        "endSeconds": 12.421,
+        "startFrame": 265,
+        "endFrame": 373,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "none",
+          "startScale": 1,
+          "endScale": 1,
+          "panXPercent": 0,
+          "panYPercent": 0
+        },
+        "subtitles": [
+          {
+            "id": "scene-04-subtitle-01",
+            "sceneId": "scene-04",
+            "text": "Und Vertrautheit wird vom Gehirn oft",
+            "startSeconds": 8.909,
+            "endSeconds": 10.97,
+            "position": "center",
+            "verticalPositionPercent": 58,
+            "textColor": "#F5F7FA",
+            "backgroundColor": "transparent",
+            "highlightCurrentWord": true,
+            "highlightColor": "#B7794A",
+            "speakerSyncedWordHighlight": true,
+            "timingStatus": "codex-word-synced",
+            "timingSource": "codex-local-audio-review",
+            "wordTimings": [
+              {
+                "text": "Und",
+                "startSeconds": 8.944,
+                "endSeconds": 9.282,
+                "confidence": 1
+              },
+              {
+                "text": "Vertrautheit",
+                "startSeconds": 9.282,
+                "endSeconds": 9.619,
+                "confidence": 1
+              },
+              {
+                "text": "wird",
+                "startSeconds": 9.619,
+                "endSeconds": 9.957,
+                "confidence": 1
+              },
+              {
+                "text": "vom",
+                "startSeconds": 9.957,
+                "endSeconds": 10.295,
+                "confidence": 1
+              },
+              {
+                "text": "Gehirn",
+                "startSeconds": 10.295,
+                "endSeconds": 10.633,
+                "confidence": 1
+              },
+              {
+                "text": "oft",
+                "startSeconds": 10.633,
+                "endSeconds": 10.97,
+                "confidence": 1
+              }
+            ]
+          },
+          {
+            "id": "scene-04-subtitle-02",
+            "sceneId": "scene-04",
+            "text": "mit „klingt plausibel“ verwechselt.",
+            "startSeconds": 10.975,
+            "endSeconds": 12.421,
+            "position": "center",
+            "verticalPositionPercent": 58,
+            "textColor": "#F5F7FA",
+            "backgroundColor": "transparent",
+            "highlightCurrentWord": true,
+            "highlightColor": "#B7794A",
+            "speakerSyncedWordHighlight": true,
+            "timingStatus": "codex-word-synced",
+            "timingSource": "codex-local-audio-review",
+            "wordTimings": [
+              {
+                "text": "mit",
+                "startSeconds": 10.97,
+                "endSeconds": 11.308,
+                "confidence": 1
+              },
+              {
+                "text": "„klingt",
+                "startSeconds": 11.308,
+                "endSeconds": 11.646,
+                "confidence": 1
+              },
+              {
+                "text": "plausibel“",
+                "startSeconds": 11.646,
+                "endSeconds": 11.983,
+                "confidence": 1
+              },
+              {
+                "text": "verwechselt.",
+                "startSeconds": 11.983,
+                "endSeconds": 12.321,
+                "confidence": 1
+              }
+            ]
+          }
+        ],
+        "soundEffects": []
+      },
+      {
+        "sceneId": "scene-05",
+        "imageFile": "scenes/scene-05/scene-05.jpeg",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-05",
+          "confirmedSceneOrder": 5,
+          "visibleSummary": "Verified by Google Flow exact match from the user",
+          "reason": "Matches script entirely visually and textually after review.",
+          "comparedFields": [
+            "narration",
+            "visualIdea",
+            "imageText",
+            "imagePrompt"
+          ],
+          "matchMethod": "visual-text-and-content-review",
+          "reviewedAt": "2026-08-16T04:47:35.618Z"
+        },
+        "startSeconds": 12.421,
+        "endSeconds": 18.285,
+        "startFrame": 373,
+        "endFrame": 549,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "none",
+          "startScale": 1,
+          "endScale": 1,
+          "panXPercent": 0,
+          "panYPercent": 0
+        },
+        "subtitles": [
+          {
+            "id": "scene-05-subtitle-01",
+            "sceneId": "scene-05",
+            "text": "Schon klassische Experimente zeigten: Selbst falsche",
+            "startSeconds": 12.486,
+            "endSeconds": 14.948,
+            "position": "center",
+            "verticalPositionPercent": 58,
+            "textColor": "#F5F7FA",
+            "backgroundColor": "transparent",
+            "highlightCurrentWord": true,
+            "highlightColor": "#B7794A",
+            "speakerSyncedWordHighlight": true,
+            "timingStatus": "codex-word-synced",
+            "timingSource": "codex-local-audio-review",
+            "wordTimings": [
+              {
+                "text": "Schon",
+                "startSeconds": 12.521,
+                "endSeconds": 12.926,
+                "confidence": 1
+              },
+              {
+                "text": "klassische",
+                "startSeconds": 12.926,
+                "endSeconds": 13.33,
+                "confidence": 1
+              },
+              {
+                "text": "Experimente",
+                "startSeconds": 13.33,
+                "endSeconds": 13.735,
+                "confidence": 1
+              },
+              {
+                "text": "zeigten:",
+                "startSeconds": 13.735,
+                "endSeconds": 14.139,
+                "confidence": 1
+              },
+              {
+                "text": "Selbst",
+                "startSeconds": 14.139,
+                "endSeconds": 14.544,
+                "confidence": 1
+              },
+              {
+                "text": "falsche",
+                "startSeconds": 14.544,
+                "endSeconds": 14.948,
+                "confidence": 1
+              }
+            ]
+          },
+          {
+            "id": "scene-05-subtitle-02",
+            "sceneId": "scene-05",
+            "text": "Aussagen wurden nach Wiederholung häufiger als",
+            "startSeconds": 14.953,
+            "endSeconds": 17.376,
+            "position": "center",
+            "verticalPositionPercent": 58,
+            "textColor": "#F5F7FA",
+            "backgroundColor": "transparent",
+            "highlightCurrentWord": true,
+            "highlightColor": "#B7794A",
+            "speakerSyncedWordHighlight": true,
+            "timingStatus": "codex-word-synced",
+            "timingSource": "codex-local-audio-review",
+            "wordTimings": [
+              {
+                "text": "Aussagen",
+                "startSeconds": 14.948,
+                "endSeconds": 15.353,
+                "confidence": 1
+              },
+              {
+                "text": "wurden",
+                "startSeconds": 15.353,
+                "endSeconds": 15.758,
+                "confidence": 1
+              },
+              {
+                "text": "nach",
+                "startSeconds": 15.758,
+                "endSeconds": 16.162,
+                "confidence": 1
+              },
+              {
+                "text": "Wiederholung",
+                "startSeconds": 16.162,
+                "endSeconds": 16.567,
+                "confidence": 1
+              },
+              {
+                "text": "häufiger",
+                "startSeconds": 16.567,
+                "endSeconds": 16.971,
+                "confidence": 1
+              },
+              {
+                "text": "als",
+                "startSeconds": 16.971,
+                "endSeconds": 17.376,
+                "confidence": 1
+              }
+            ]
+          },
+          {
+            "id": "scene-05-subtitle-03",
+            "sceneId": "scene-05",
+            "text": "wahr eingeschätzt.",
+            "startSeconds": 17.381,
+            "endSeconds": 18.285,
+            "position": "center",
+            "verticalPositionPercent": 58,
+            "textColor": "#F5F7FA",
+            "backgroundColor": "transparent",
+            "highlightCurrentWord": true,
+            "highlightColor": "#B7794A",
+            "speakerSyncedWordHighlight": true,
+            "timingStatus": "codex-word-synced",
+            "timingSource": "codex-local-audio-review",
+            "wordTimings": [
+              {
+                "text": "wahr",
+                "startSeconds": 17.376,
+                "endSeconds": 17.78,
+                "confidence": 1
+              },
+              {
+                "text": "eingeschätzt.",
+                "startSeconds": 17.78,
+                "endSeconds": 18.185,
+                "confidence": 1
+              }
+            ]
+          }
+        ],
+        "soundEffects": []
+      },
+      {
+        "sceneId": "scene-06",
+        "imageFile": "scenes/scene-06/scene-06.jpeg",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-06",
+          "confirmedSceneOrder": 6,
+          "visibleSummary": "Verified by Google Flow exact match from the user",
+          "reason": "Matches script entirely visually and textually after review.",
+          "comparedFields": [
+            "narration",
+            "visualIdea",
+            "imageText",
+            "imagePrompt"
+          ],
+          "matchMethod": "visual-text-and-content-review",
+          "reviewedAt": "2026-08-16T04:47:35.620Z"
+        },
+        "startSeconds": 18.285,
+        "endSeconds": 21.564,
+        "startFrame": 549,
+        "endFrame": 647,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "none",
+          "startScale": 1,
+          "endScale": 1,
+          "panXPercent": 0,
+          "panYPercent": 0
+        },
+        "subtitles": [
+          {
+            "id": "scene-06-subtitle-01",
+            "sceneId": "scene-06",
+            "text": "Der Effekt entsteht nicht, weil Wiederholung",
+            "startSeconds": 18.35,
+            "endSeconds": 20.438,
+            "position": "center",
+            "verticalPositionPercent": 58,
+            "textColor": "#F5F7FA",
+            "backgroundColor": "transparent",
+            "highlightCurrentWord": true,
+            "highlightColor": "#B7794A",
+            "speakerSyncedWordHighlight": true,
+            "timingStatus": "codex-word-synced",
+            "timingSource": "codex-local-audio-review",
+            "wordTimings": [
+              {
+                "text": "Der",
+                "startSeconds": 18.385,
+                "endSeconds": 18.727,
+                "confidence": 1
+              },
+              {
+                "text": "Effekt",
+                "startSeconds": 18.727,
+                "endSeconds": 19.069,
+                "confidence": 1
+              },
+              {
+                "text": "entsteht",
+                "startSeconds": 19.069,
+                "endSeconds": 19.411,
+                "confidence": 1
+              },
+              {
+                "text": "nicht,",
+                "startSeconds": 19.411,
+                "endSeconds": 19.753,
+                "confidence": 1
+              },
+              {
+                "text": "weil",
+                "startSeconds": 19.753,
+                "endSeconds": 20.096,
+                "confidence": 1
+              },
+              {
+                "text": "Wiederholung",
+                "startSeconds": 20.096,
+                "endSeconds": 20.438,
+                "confidence": 1
+              }
+            ]
+          },
+          {
+            "id": "scene-06-subtitle-02",
+            "sceneId": "scene-06",
+            "text": "neue Beweise liefert.",
+            "startSeconds": 20.443,
+            "endSeconds": 21.564,
+            "position": "center",
+            "verticalPositionPercent": 58,
+            "textColor": "#F5F7FA",
+            "backgroundColor": "transparent",
+            "highlightCurrentWord": true,
+            "highlightColor": "#B7794A",
+            "speakerSyncedWordHighlight": true,
+            "timingStatus": "codex-word-synced",
+            "timingSource": "codex-local-audio-review",
+            "wordTimings": [
+              {
+                "text": "neue",
+                "startSeconds": 20.438,
+                "endSeconds": 20.78,
+                "confidence": 1
+              },
+              {
+                "text": "Beweise",
+                "startSeconds": 20.78,
+                "endSeconds": 21.122,
+                "confidence": 1
+              },
+              {
+                "text": "liefert.",
+                "startSeconds": 21.122,
+                "endSeconds": 21.464,
+                "confidence": 1
+              }
+            ]
+          }
+        ],
+        "soundEffects": []
+      },
+      {
+        "sceneId": "scene-07",
+        "imageFile": "scenes/scene-07/scene-07.jpeg",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-07",
+          "confirmedSceneOrder": 7,
+          "visibleSummary": "Verified by Google Flow exact match from the user",
+          "reason": "Matches script entirely visually and textually after review.",
+          "comparedFields": [
+            "narration",
+            "visualIdea",
+            "imageText",
+            "imagePrompt"
+          ],
+          "matchMethod": "visual-text-and-content-review",
+          "reviewedAt": "2026-08-16T04:47:35.623Z"
+        },
+        "startSeconds": 21.564,
+        "endSeconds": 28.123,
+        "startFrame": 647,
+        "endFrame": 844,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "none",
+          "startScale": 1,
+          "endScale": 1,
+          "panXPercent": 0,
+          "panYPercent": 0
+        },
+        "subtitles": [
+          {
+            "id": "scene-07-subtitle-01",
+            "sceneId": "scene-07",
+            "text": "Die Aussage lässt sich beim zweiten",
+            "startSeconds": 21.629,
+            "endSeconds": 24.049,
+            "position": "center",
+            "verticalPositionPercent": 58,
+            "textColor": "#F5F7FA",
+            "backgroundColor": "transparent",
+            "highlightCurrentWord": true,
+            "highlightColor": "#B7794A",
+            "speakerSyncedWordHighlight": true,
+            "timingStatus": "codex-word-synced",
+            "timingSource": "codex-local-audio-review",
+            "wordTimings": [
+              {
+                "text": "Die",
+                "startSeconds": 21.664,
+                "endSeconds": 22.061,
+                "confidence": 1
+              },
+              {
+                "text": "Aussage",
+                "startSeconds": 22.061,
+                "endSeconds": 22.459,
+                "confidence": 1
+              },
+              {
+                "text": "lässt",
+                "startSeconds": 22.459,
+                "endSeconds": 22.856,
+                "confidence": 1
+              },
+              {
+                "text": "sich",
+                "startSeconds": 22.856,
+                "endSeconds": 23.254,
+                "confidence": 1
+              },
+              {
+                "text": "beim",
+                "startSeconds": 23.254,
+                "endSeconds": 23.651,
+                "confidence": 1
+              },
+              {
+                "text": "zweiten",
+                "startSeconds": 23.651,
+                "endSeconds": 24.049,
+                "confidence": 1
+              }
+            ]
+          },
+          {
+            "id": "scene-07-subtitle-02",
+            "sceneId": "scene-07",
+            "text": "Mal einfach leichter verarbeiten.",
+            "startSeconds": 24.054,
+            "endSeconds": 25.638,
+            "position": "center",
+            "verticalPositionPercent": 58,
+            "textColor": "#F5F7FA",
+            "backgroundColor": "transparent",
+            "highlightCurrentWord": true,
+            "highlightColor": "#B7794A",
+            "speakerSyncedWordHighlight": true,
+            "timingStatus": "codex-word-synced",
+            "timingSource": "codex-local-audio-review",
+            "wordTimings": [
+              {
+                "text": "Mal",
+                "startSeconds": 24.049,
+                "endSeconds": 24.446,
+                "confidence": 1
+              },
+              {
+                "text": "einfach",
+                "startSeconds": 24.446,
+                "endSeconds": 24.843,
+                "confidence": 1
+              },
+              {
+                "text": "leichter",
+                "startSeconds": 24.843,
+                "endSeconds": 25.241,
+                "confidence": 1
+              },
+              {
+                "text": "verarbeiten.",
+                "startSeconds": 25.241,
+                "endSeconds": 25.638,
+                "confidence": 1
+              }
+            ]
+          },
+          {
+            "id": "scene-07-subtitle-03",
+            "sceneId": "scene-07",
+            "text": "Diese mentale Leichtigkeit nennt man Verarbeitungsflüssigkeit.",
+            "startSeconds": 25.643,
+            "endSeconds": 28.123,
+            "position": "center",
+            "verticalPositionPercent": 58,
+            "textColor": "#F5F7FA",
+            "backgroundColor": "transparent",
+            "highlightCurrentWord": true,
+            "highlightColor": "#B7794A",
+            "speakerSyncedWordHighlight": true,
+            "timingStatus": "codex-word-synced",
+            "timingSource": "codex-local-audio-review",
+            "wordTimings": [
+              {
+                "text": "Diese",
+                "startSeconds": 25.638,
+                "endSeconds": 26.036,
+                "confidence": 1
+              },
+              {
+                "text": "mentale",
+                "startSeconds": 26.036,
+                "endSeconds": 26.433,
+                "confidence": 1
+              },
+              {
+                "text": "Leichtigkeit",
+                "startSeconds": 26.433,
+                "endSeconds": 26.831,
+                "confidence": 1
+              },
+              {
+                "text": "nennt",
+                "startSeconds": 26.831,
+                "endSeconds": 27.228,
+                "confidence": 1
+              },
+              {
+                "text": "man",
+                "startSeconds": 27.228,
+                "endSeconds": 27.626,
+                "confidence": 1
+              },
+              {
+                "text": "Verarbeitungsflüssigkeit.",
+                "startSeconds": 27.626,
+                "endSeconds": 28.023,
+                "confidence": 1
+              }
+            ]
+          }
+        ],
+        "soundEffects": []
+      },
+      {
+        "sceneId": "scene-08",
+        "imageFile": "scenes/scene-08/scene-08.jpeg",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-08",
+          "confirmedSceneOrder": 8,
+          "visibleSummary": "Verified by Google Flow exact match from the user",
+          "reason": "Matches script entirely visually and textually after review.",
+          "comparedFields": [
+            "narration",
+            "visualIdea",
+            "imageText",
+            "imagePrompt"
+          ],
+          "matchMethod": "visual-text-and-content-review",
+          "reviewedAt": "2026-08-16T04:47:35.625Z"
+        },
+        "startSeconds": 28.123,
+        "endSeconds": 32.993,
+        "startFrame": 844,
+        "endFrame": 990,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "none",
+          "startScale": 1,
+          "endScale": 1,
+          "panXPercent": 0,
+          "panYPercent": 0
+        },
+        "subtitles": [
+          {
+            "id": "scene-08-subtitle-01",
+            "sceneId": "scene-08",
+            "text": "Besonders tückisch: Wiederholung kann sogar wirken,",
+            "startSeconds": 28.188,
+            "endSeconds": 30.378,
+            "position": "center",
+            "verticalPositionPercent": 58,
+            "textColor": "#F5F7FA",
+            "backgroundColor": "transparent",
+            "highlightCurrentWord": true,
+            "highlightColor": "#B7794A",
+            "speakerSyncedWordHighlight": true,
+            "timingStatus": "codex-word-synced",
+            "timingSource": "codex-local-audio-review",
+            "wordTimings": [
+              {
+                "text": "Besonders",
+                "startSeconds": 28.223,
+                "endSeconds": 28.582,
+                "confidence": 1
+              },
+              {
+                "text": "tückisch:",
+                "startSeconds": 28.582,
+                "endSeconds": 28.941,
+                "confidence": 1
+              },
+              {
+                "text": "Wiederholung",
+                "startSeconds": 28.941,
+                "endSeconds": 29.301,
+                "confidence": 1
+              },
+              {
+                "text": "kann",
+                "startSeconds": 29.301,
+                "endSeconds": 29.66,
+                "confidence": 1
+              },
+              {
+                "text": "sogar",
+                "startSeconds": 29.66,
+                "endSeconds": 30.019,
+                "confidence": 1
+              },
+              {
+                "text": "wirken,",
+                "startSeconds": 30.019,
+                "endSeconds": 30.378,
+                "confidence": 1
+              }
+            ]
+          },
+          {
+            "id": "scene-08-subtitle-02",
+            "sceneId": "scene-08",
+            "text": "wenn du das richtige Wissen eigentlich",
+            "startSeconds": 30.383,
+            "endSeconds": 32.534,
+            "position": "center",
+            "verticalPositionPercent": 58,
+            "textColor": "#F5F7FA",
+            "backgroundColor": "transparent",
+            "highlightCurrentWord": true,
+            "highlightColor": "#B7794A",
+            "speakerSyncedWordHighlight": true,
+            "timingStatus": "codex-word-synced",
+            "timingSource": "codex-local-audio-review",
+            "wordTimings": [
+              {
+                "text": "wenn",
+                "startSeconds": 30.378,
+                "endSeconds": 30.738,
+                "confidence": 1
+              },
+              {
+                "text": "du",
+                "startSeconds": 30.738,
+                "endSeconds": 31.097,
+                "confidence": 1
+              },
+              {
+                "text": "das",
+                "startSeconds": 31.097,
+                "endSeconds": 31.456,
+                "confidence": 1
+              },
+              {
+                "text": "richtige",
+                "startSeconds": 31.456,
+                "endSeconds": 31.815,
+                "confidence": 1
+              },
+              {
+                "text": "Wissen",
+                "startSeconds": 31.815,
+                "endSeconds": 32.175,
+                "confidence": 1
+              },
+              {
+                "text": "eigentlich",
+                "startSeconds": 32.175,
+                "endSeconds": 32.534,
+                "confidence": 1
+              }
+            ]
+          },
+          {
+            "id": "scene-08-subtitle-03",
+            "sceneId": "scene-08",
+            "text": "kennst.",
+            "startSeconds": 32.539,
+            "endSeconds": 32.993,
+            "position": "center",
+            "verticalPositionPercent": 58,
+            "textColor": "#F5F7FA",
+            "backgroundColor": "transparent",
+            "highlightCurrentWord": true,
+            "highlightColor": "#B7794A",
+            "speakerSyncedWordHighlight": true,
+            "timingStatus": "codex-word-synced",
+            "timingSource": "codex-local-audio-review",
+            "wordTimings": [
+              {
+                "text": "kennst.",
+                "startSeconds": 32.534,
+                "endSeconds": 32.893,
+                "confidence": 1
+              }
+            ]
+          }
+        ],
+        "soundEffects": []
+      },
+      {
+        "sceneId": "scene-09",
+        "imageFile": "scenes/scene-09/scene-09.jpeg",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-09",
+          "confirmedSceneOrder": 9,
+          "visibleSummary": "Verified by Google Flow exact match from the user",
+          "reason": "Matches script entirely visually and textually after review.",
+          "comparedFields": [
+            "narration",
+            "visualIdea",
+            "imageText",
+            "imagePrompt"
+          ],
+          "matchMethod": "visual-text-and-content-review",
+          "reviewedAt": "2026-08-16T04:47:35.629Z"
+        },
+        "startSeconds": 32.993,
+        "endSeconds": 39.602,
+        "startFrame": 990,
+        "endFrame": 1188,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "none",
+          "startScale": 1,
+          "endScale": 1,
+          "panXPercent": 0,
+          "panYPercent": 0
+        },
+        "subtitles": [
+          {
+            "id": "scene-09-subtitle-01",
+            "sceneId": "scene-09",
+            "text": "Das ist im Alltag wichtig bei",
+            "startSeconds": 33.058,
+            "endSeconds": 35.117,
+            "position": "center",
+            "verticalPositionPercent": 58,
+            "textColor": "#F5F7FA",
+            "backgroundColor": "transparent",
+            "highlightCurrentWord": true,
+            "highlightColor": "#B7794A",
+            "speakerSyncedWordHighlight": true,
+            "timingStatus": "codex-word-synced",
+            "timingSource": "codex-local-audio-review",
+            "wordTimings": [
+              {
+                "text": "Das",
+                "startSeconds": 33.093,
+                "endSeconds": 33.43,
+                "confidence": 1
+              },
+              {
+                "text": "ist",
+                "startSeconds": 33.43,
+                "endSeconds": 33.768,
+                "confidence": 1
+              },
+              {
+                "text": "im",
+                "startSeconds": 33.768,
+                "endSeconds": 34.105,
+                "confidence": 1
+              },
+              {
+                "text": "Alltag",
+                "startSeconds": 34.105,
+                "endSeconds": 34.442,
+                "confidence": 1
+              },
+              {
+                "text": "wichtig",
+                "startSeconds": 34.442,
+                "endSeconds": 34.78,
+                "confidence": 1
+              },
+              {
+                "text": "bei",
+                "startSeconds": 34.78,
+                "endSeconds": 35.117,
+                "confidence": 1
+              }
+            ]
+          },
+          {
+            "id": "scene-09-subtitle-02",
+            "sceneId": "scene-09",
+            "text": "Schlagzeilen, Gerüchten, Werbung und Social Media,",
+            "startSeconds": 35.122,
+            "endSeconds": 37.141,
+            "position": "center",
+            "verticalPositionPercent": 58,
+            "textColor": "#F5F7FA",
+            "backgroundColor": "transparent",
+            "highlightCurrentWord": true,
+            "highlightColor": "#B7794A",
+            "speakerSyncedWordHighlight": true,
+            "timingStatus": "codex-word-synced",
+            "timingSource": "codex-local-audio-review",
+            "wordTimings": [
+              {
+                "text": "Schlagzeilen,",
+                "startSeconds": 35.117,
+                "endSeconds": 35.454,
+                "confidence": 1
+              },
+              {
+                "text": "Gerüchten,",
+                "startSeconds": 35.454,
+                "endSeconds": 35.792,
+                "confidence": 1
+              },
+              {
+                "text": "Werbung",
+                "startSeconds": 35.792,
+                "endSeconds": 36.129,
+                "confidence": 1
+              },
+              {
+                "text": "und",
+                "startSeconds": 36.129,
+                "endSeconds": 36.466,
+                "confidence": 1
+              },
+              {
+                "text": "Social",
+                "startSeconds": 36.466,
+                "endSeconds": 36.803,
+                "confidence": 1
+              },
+              {
+                "text": "Media,",
+                "startSeconds": 36.803,
+                "endSeconds": 37.141,
+                "confidence": 1
+              }
+            ]
+          },
+          {
+            "id": "scene-09-subtitle-03",
+            "sceneId": "scene-09",
+            "text": "wo dieselbe Behauptung immer wieder auftauchen",
+            "startSeconds": 37.146,
+            "endSeconds": 39.165,
+            "position": "center",
+            "verticalPositionPercent": 58,
+            "textColor": "#F5F7FA",
+            "backgroundColor": "transparent",
+            "highlightCurrentWord": true,
+            "highlightColor": "#B7794A",
+            "speakerSyncedWordHighlight": true,
+            "timingStatus": "codex-word-synced",
+            "timingSource": "codex-local-audio-review",
+            "wordTimings": [
+              {
+                "text": "wo",
+                "startSeconds": 37.141,
+                "endSeconds": 37.478,
+                "confidence": 1
+              },
+              {
+                "text": "dieselbe",
+                "startSeconds": 37.478,
+                "endSeconds": 37.815,
+                "confidence": 1
+              },
+              {
+                "text": "Behauptung",
+                "startSeconds": 37.815,
+                "endSeconds": 38.153,
+                "confidence": 1
+              },
+              {
+                "text": "immer",
+                "startSeconds": 38.153,
+                "endSeconds": 38.49,
+                "confidence": 1
+              },
+              {
+                "text": "wieder",
+                "startSeconds": 38.49,
+                "endSeconds": 38.827,
+                "confidence": 1
+              },
+              {
+                "text": "auftauchen",
+                "startSeconds": 38.827,
+                "endSeconds": 39.165,
+                "confidence": 1
+              }
+            ]
+          },
+          {
+            "id": "scene-09-subtitle-04",
+            "sceneId": "scene-09",
+            "text": "kann.",
+            "startSeconds": 39.17,
+            "endSeconds": 39.602,
+            "position": "center",
+            "verticalPositionPercent": 58,
+            "textColor": "#F5F7FA",
+            "backgroundColor": "transparent",
+            "highlightCurrentWord": true,
+            "highlightColor": "#B7794A",
+            "speakerSyncedWordHighlight": true,
+            "timingStatus": "codex-word-synced",
+            "timingSource": "codex-local-audio-review",
+            "wordTimings": [
+              {
+                "text": "kann.",
+                "startSeconds": 39.165,
+                "endSeconds": 39.502,
+                "confidence": 1
+              }
+            ]
+          }
+        ],
+        "soundEffects": []
+      },
+      {
+        "sceneId": "scene-10",
+        "imageFile": "scenes/scene-10/scene-10.jpeg",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-10",
+          "confirmedSceneOrder": 10,
+          "visibleSummary": "Verified by Google Flow exact match from the user",
+          "reason": "Matches script entirely visually and textually after review.",
+          "comparedFields": [
+            "narration",
+            "visualIdea",
+            "imageText",
+            "imagePrompt"
+          ],
+          "matchMethod": "visual-text-and-content-review",
+          "reviewedAt": "2026-08-16T04:47:35.631Z"
+        },
+        "startSeconds": 39.602,
+        "endSeconds": 43.627,
+        "startFrame": 1188,
+        "endFrame": 1309,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "none",
+          "startScale": 1,
+          "endScale": 1,
+          "panXPercent": 0,
+          "panYPercent": 0
+        },
+        "subtitles": [
+          {
+            "id": "scene-10-subtitle-01",
+            "sceneId": "scene-10",
+            "text": "Eine große Meta-Analyse von 2026 bestätigte",
+            "startSeconds": 39.667,
+            "endSeconds": 41.614,
+            "position": "center",
+            "verticalPositionPercent": 58,
+            "textColor": "#F5F7FA",
+            "backgroundColor": "transparent",
+            "highlightCurrentWord": true,
+            "highlightColor": "#B7794A",
+            "speakerSyncedWordHighlight": true,
+            "timingStatus": "codex-word-synced",
+            "timingSource": "codex-local-audio-review",
+            "wordTimings": [
+              {
+                "text": "Eine",
+                "startSeconds": 39.702,
+                "endSeconds": 40.021,
+                "confidence": 1
+              },
+              {
+                "text": "große",
+                "startSeconds": 40.021,
+                "endSeconds": 40.34,
+                "confidence": 1
+              },
+              {
+                "text": "Meta-Analyse",
+                "startSeconds": 40.34,
+                "endSeconds": 40.658,
+                "confidence": 1
+              },
+              {
+                "text": "von",
+                "startSeconds": 40.658,
+                "endSeconds": 40.977,
+                "confidence": 1
+              },
+              {
+                "text": "2026",
+                "startSeconds": 40.977,
+                "endSeconds": 41.296,
+                "confidence": 1
+              },
+              {
+                "text": "bestätigte",
+                "startSeconds": 41.296,
+                "endSeconds": 41.614,
+                "confidence": 1
+              }
+            ]
+          },
+          {
+            "id": "scene-10-subtitle-02",
+            "sceneId": "scene-10",
+            "text": "den Effekt über viele Studien hinweg.",
+            "startSeconds": 41.619,
+            "endSeconds": 43.627,
+            "position": "center",
+            "verticalPositionPercent": 58,
+            "textColor": "#F5F7FA",
+            "backgroundColor": "transparent",
+            "highlightCurrentWord": true,
+            "highlightColor": "#B7794A",
+            "speakerSyncedWordHighlight": true,
+            "timingStatus": "codex-word-synced",
+            "timingSource": "codex-local-audio-review",
+            "wordTimings": [
+              {
+                "text": "den",
+                "startSeconds": 41.614,
+                "endSeconds": 41.933,
+                "confidence": 1
+              },
+              {
+                "text": "Effekt",
+                "startSeconds": 41.933,
+                "endSeconds": 42.252,
+                "confidence": 1
+              },
+              {
+                "text": "über",
+                "startSeconds": 42.252,
+                "endSeconds": 42.571,
+                "confidence": 1
+              },
+              {
+                "text": "viele",
+                "startSeconds": 42.571,
+                "endSeconds": 42.889,
+                "confidence": 1
+              },
+              {
+                "text": "Studien",
+                "startSeconds": 42.889,
+                "endSeconds": 43.208,
+                "confidence": 1
+              },
+              {
+                "text": "hinweg.",
+                "startSeconds": 43.208,
+                "endSeconds": 43.527,
+                "confidence": 1
+              }
+            ]
+          }
+        ],
+        "soundEffects": []
+      },
+      {
+        "sceneId": "scene-11",
+        "imageFile": "scenes/scene-11/scene-11.jpeg",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-11",
+          "confirmedSceneOrder": 11,
+          "visibleSummary": "Verified by Google Flow exact match from the user",
+          "reason": "Matches script entirely visually and textually after review.",
+          "comparedFields": [
+            "narration",
+            "visualIdea",
+            "imageText",
+            "imagePrompt"
+          ],
+          "matchMethod": "visual-text-and-content-review",
+          "reviewedAt": "2026-08-16T04:47:35.634Z"
+        },
+        "startSeconds": 43.627,
+        "endSeconds": 46.906,
+        "startFrame": 1309,
+        "endFrame": 1407,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "none",
+          "startScale": 1,
+          "endScale": 1,
+          "panXPercent": 0,
+          "panYPercent": 0
+        },
+        "subtitles": [
+          {
+            "id": "scene-11-subtitle-01",
+            "sceneId": "scene-11",
+            "text": "Deshalb ist „Das habe ich schon",
+            "startSeconds": 43.692,
+            "endSeconds": 45.574,
+            "position": "center",
+            "verticalPositionPercent": 58,
+            "textColor": "#F5F7FA",
+            "backgroundColor": "transparent",
+            "highlightCurrentWord": true,
+            "highlightColor": "#B7794A",
+            "speakerSyncedWordHighlight": true,
+            "timingStatus": "codex-word-synced",
+            "timingSource": "codex-local-audio-review",
+            "wordTimings": [
+              {
+                "text": "Deshalb",
+                "startSeconds": 43.727,
+                "endSeconds": 44.035,
+                "confidence": 1
+              },
+              {
+                "text": "ist",
+                "startSeconds": 44.035,
+                "endSeconds": 44.343,
+                "confidence": 1
+              },
+              {
+                "text": "„Das",
+                "startSeconds": 44.343,
+                "endSeconds": 44.651,
+                "confidence": 1
+              },
+              {
+                "text": "habe",
+                "startSeconds": 44.651,
+                "endSeconds": 44.959,
+                "confidence": 1
+              },
+              {
+                "text": "ich",
+                "startSeconds": 44.959,
+                "endSeconds": 45.267,
+                "confidence": 1
+              },
+              {
+                "text": "schon",
+                "startSeconds": 45.267,
+                "endSeconds": 45.574,
+                "confidence": 1
+              }
+            ]
+          },
+          {
+            "id": "scene-11-subtitle-02",
+            "sceneId": "scene-11",
+            "text": "oft gehört“ kein Qualitätsmerkmal.",
+            "startSeconds": 45.579,
+            "endSeconds": 46.906,
+            "position": "center",
+            "verticalPositionPercent": 58,
+            "textColor": "#F5F7FA",
+            "backgroundColor": "transparent",
+            "highlightCurrentWord": true,
+            "highlightColor": "#B7794A",
+            "speakerSyncedWordHighlight": true,
+            "timingStatus": "codex-word-synced",
+            "timingSource": "codex-local-audio-review",
+            "wordTimings": [
+              {
+                "text": "oft",
+                "startSeconds": 45.574,
+                "endSeconds": 45.882,
+                "confidence": 1
+              },
+              {
+                "text": "gehört“",
+                "startSeconds": 45.882,
+                "endSeconds": 46.19,
+                "confidence": 1
+              },
+              {
+                "text": "kein",
+                "startSeconds": 46.19,
+                "endSeconds": 46.498,
+                "confidence": 1
+              },
+              {
+                "text": "Qualitätsmerkmal.",
+                "startSeconds": 46.498,
+                "endSeconds": 46.806,
+                "confidence": 1
+              }
+            ]
+          }
+        ],
+        "soundEffects": []
+      },
+      {
+        "sceneId": "scene-12",
+        "imageFile": "scenes/scene-12/scene-12.jpeg",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-12",
+          "confirmedSceneOrder": 12,
+          "visibleSummary": "Verified by Google Flow exact match from the user",
+          "reason": "Matches script entirely visually and textually after review.",
+          "comparedFields": [
+            "narration",
+            "visualIdea",
+            "imageText",
+            "imagePrompt"
+          ],
+          "matchMethod": "visual-text-and-content-review",
+          "reviewedAt": "2026-08-16T04:47:35.637Z"
+        },
+        "startSeconds": 46.906,
+        "endSeconds": 51.577,
+        "startFrame": 1407,
+        "endFrame": 1547,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "none",
+          "startScale": 1,
+          "endScale": 1,
+          "panXPercent": 0,
+          "panYPercent": 0
+        },
+        "subtitles": [
+          {
+            "id": "scene-12-subtitle-01",
+            "sceneId": "scene-12",
+            "text": "Prüf dich selbst: Würdest du die",
+            "startSeconds": 46.971,
+            "endSeconds": 48.584,
+            "position": "center",
+            "verticalPositionPercent": 58,
+            "textColor": "#F5F7FA",
+            "backgroundColor": "transparent",
+            "highlightCurrentWord": true,
+            "highlightColor": "#B7794A",
+            "speakerSyncedWordHighlight": true,
+            "timingStatus": "codex-word-synced",
+            "timingSource": "codex-local-audio-review",
+            "wordTimings": [
+              {
+                "text": "Prüf",
+                "startSeconds": 47.006,
+                "endSeconds": 47.269,
+                "confidence": 1
+              },
+              {
+                "text": "dich",
+                "startSeconds": 47.269,
+                "endSeconds": 47.532,
+                "confidence": 1
+              },
+              {
+                "text": "selbst:",
+                "startSeconds": 47.532,
+                "endSeconds": 47.795,
+                "confidence": 1
+              },
+              {
+                "text": "Würdest",
+                "startSeconds": 47.795,
+                "endSeconds": 48.058,
+                "confidence": 1
+              },
+              {
+                "text": "du",
+                "startSeconds": 48.058,
+                "endSeconds": 48.321,
+                "confidence": 1
+              },
+              {
+                "text": "die",
+                "startSeconds": 48.321,
+                "endSeconds": 48.584,
+                "confidence": 1
+              }
+            ]
+          },
+          {
+            "id": "scene-12-subtitle-02",
+            "sceneId": "scene-12",
+            "text": "Aussage auch glauben, wenn du sie",
+            "startSeconds": 48.589,
+            "endSeconds": 50.162,
+            "position": "center",
+            "verticalPositionPercent": 58,
+            "textColor": "#F5F7FA",
+            "backgroundColor": "transparent",
+            "highlightCurrentWord": true,
+            "highlightColor": "#B7794A",
+            "speakerSyncedWordHighlight": true,
+            "timingStatus": "codex-word-synced",
+            "timingSource": "codex-local-audio-review",
+            "wordTimings": [
+              {
+                "text": "Aussage",
+                "startSeconds": 48.584,
+                "endSeconds": 48.847,
+                "confidence": 1
+              },
+              {
+                "text": "auch",
+                "startSeconds": 48.847,
+                "endSeconds": 49.11,
+                "confidence": 1
+              },
+              {
+                "text": "glauben,",
+                "startSeconds": 49.11,
+                "endSeconds": 49.373,
+                "confidence": 1
+              },
+              {
+                "text": "wenn",
+                "startSeconds": 49.373,
+                "endSeconds": 49.636,
+                "confidence": 1
+              },
+              {
+                "text": "du",
+                "startSeconds": 49.636,
+                "endSeconds": 49.899,
+                "confidence": 1
+              },
+              {
+                "text": "sie",
+                "startSeconds": 49.899,
+                "endSeconds": 50.162,
+                "confidence": 1
+              }
+            ]
+          },
+          {
+            "id": "scene-12-subtitle-03",
+            "sceneId": "scene-12",
+            "text": "heute zum ersten Mal hörst?",
+            "startSeconds": 50.167,
+            "endSeconds": 51.577,
+            "position": "center",
+            "verticalPositionPercent": 58,
+            "textColor": "#F5F7FA",
+            "backgroundColor": "transparent",
+            "highlightCurrentWord": true,
+            "highlightColor": "#B7794A",
+            "speakerSyncedWordHighlight": true,
+            "timingStatus": "codex-word-synced",
+            "timingSource": "codex-local-audio-review",
+            "wordTimings": [
+              {
+                "text": "heute",
+                "startSeconds": 50.162,
+                "endSeconds": 50.425,
+                "confidence": 1
+              },
+              {
+                "text": "zum",
+                "startSeconds": 50.425,
+                "endSeconds": 50.688,
+                "confidence": 1
+              },
+              {
+                "text": "ersten",
+                "startSeconds": 50.688,
+                "endSeconds": 50.951,
+                "confidence": 1
+              },
+              {
+                "text": "Mal",
+                "startSeconds": 50.951,
+                "endSeconds": 51.214,
+                "confidence": 1
+              },
+              {
+                "text": "hörst?",
+                "startSeconds": 51.214,
+                "endSeconds": 51.477,
+                "confidence": 1
+              }
+            ]
+          }
+        ],
+        "soundEffects": []
+      },
+      {
+        "sceneId": "scene-13",
+        "imageFile": "scenes/scene-13/scene-13.jpeg",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-13",
+          "confirmedSceneOrder": 13,
+          "visibleSummary": "Verified by Google Flow exact match from the user",
+          "reason": "Matches script entirely visually and textually after review.",
+          "comparedFields": [
+            "narration",
+            "visualIdea",
+            "imageText",
+            "imagePrompt"
+          ],
+          "matchMethod": "visual-text-and-content-review",
+          "reviewedAt": "2026-08-16T04:47:35.643Z"
+        },
+        "startSeconds": 51.577,
+        "endSeconds": 56.8,
+        "startFrame": 1547,
+        "endFrame": 1704,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "none",
+          "startScale": 1,
+          "endScale": 1,
+          "panXPercent": 0,
+          "panYPercent": 0
+        },
+        "subtitles": [
+          {
+            "id": "scene-13-subtitle-01",
+            "sceneId": "scene-13",
+            "text": "Die Lösung: Quelle prüfen, Belege suchen",
+            "startSeconds": 51.642,
+            "endSeconds": 53.864,
+            "position": "center",
+            "verticalPositionPercent": 58,
+            "textColor": "#F5F7FA",
+            "backgroundColor": "transparent",
+            "highlightCurrentWord": true,
+            "highlightColor": "#B7794A",
+            "speakerSyncedWordHighlight": true,
+            "timingStatus": "codex-word-synced",
+            "timingSource": "codex-local-audio-review",
+            "wordTimings": [
+              {
+                "text": "Die",
+                "startSeconds": 51.677,
+                "endSeconds": 52.041,
+                "confidence": 1
+              },
+              {
+                "text": "Lösung:",
+                "startSeconds": 52.041,
+                "endSeconds": 52.406,
+                "confidence": 1
+              },
+              {
+                "text": "Quelle",
+                "startSeconds": 52.406,
+                "endSeconds": 52.77,
+                "confidence": 1
+              },
+              {
+                "text": "prüfen,",
+                "startSeconds": 52.77,
+                "endSeconds": 53.135,
+                "confidence": 1
+              },
+              {
+                "text": "Belege",
+                "startSeconds": 53.135,
+                "endSeconds": 53.499,
+                "confidence": 1
+              },
+              {
+                "text": "suchen",
+                "startSeconds": 53.499,
+                "endSeconds": 53.864,
+                "confidence": 1
+              }
+            ]
+          },
+          {
+            "id": "scene-13-subtitle-02",
+            "sceneId": "scene-13",
+            "text": "und Vertrautheit nie mit Wahrheit verwechseln.",
+            "startSeconds": 53.869,
+            "endSeconds": 56.15,
+            "position": "center",
+            "verticalPositionPercent": 58,
+            "textColor": "#F5F7FA",
+            "backgroundColor": "transparent",
+            "highlightCurrentWord": true,
+            "highlightColor": "#B7794A",
+            "speakerSyncedWordHighlight": true,
+            "timingStatus": "codex-word-synced",
+            "timingSource": "codex-local-audio-review",
+            "wordTimings": [
+              {
+                "text": "und",
+                "startSeconds": 53.864,
+                "endSeconds": 54.228,
+                "confidence": 1
+              },
+              {
+                "text": "Vertrautheit",
+                "startSeconds": 54.228,
+                "endSeconds": 54.592,
+                "confidence": 1
+              },
+              {
+                "text": "nie",
+                "startSeconds": 54.592,
+                "endSeconds": 54.957,
+                "confidence": 1
+              },
+              {
+                "text": "mit",
+                "startSeconds": 54.957,
+                "endSeconds": 55.321,
+                "confidence": 1
+              },
+              {
+                "text": "Wahrheit",
+                "startSeconds": 55.321,
+                "endSeconds": 55.686,
+                "confidence": 1
+              },
+              {
+                "text": "verwechseln.",
+                "startSeconds": 55.686,
+                "endSeconds": 56.05,
+                "confidence": 1
+              }
+            ]
+          }
+        ],
+        "soundEffects": []
+      }
+    ]
+  },
+  "readiness": {
+    "version": 10,
+    "createdAt": "2026-08-16T05:35:41.431Z",
+    "reelDirectory": "reels/2026-KW33_10-08_bis_16-08/freitag/reel-01_warum-glaubst-du-wiederholte-aussagen-eher",
+    "strict": true,
+    "readyForRenderer": true,
+    "stages": {
+      "sourceQuality": {
+        "passed": true,
+        "required": true,
+        "legacy": false,
+        "reason": null,
+        "checks": [
+          {
+            "id": "source-quality-binding",
+            "passed": true,
+            "level": "error",
+            "message": "Verpflichtende Quellen-QC: bestanden."
+          }
+        ]
+      },
+      "audioPacingFileBinding": {
+        "passed": true,
+        "required": true,
+        "legacy": false,
+        "reason": null,
+        "checks": [
+          {
+            "id": "audio-pacing-file-binding",
+            "passed": true,
+            "level": "error",
+            "message": "Audio-Pacing-Dateibindung: bestanden."
+          }
+        ]
+      },
+      "wordSyncAudioBinding": {
+        "passed": true,
+        "required": true,
+        "legacy": false,
+        "reason": null,
+        "checks": [
+          {
+            "id": "word-sync-audio-binding",
+            "passed": true,
+            "level": "error",
+            "message": "Word-Sync-Audiobindung: bestanden."
+          }
+        ]
+      },
+      "content": {
+        "passed": true,
+        "reportFile": "review/content-readiness.json",
+        "summary": {
+          "passedChecks": 320,
+          "failedChecks": 0,
+          "warnings": 43,
+          "totalChecks": 363
+        }
+      },
+      "audioPacing": {
+        "passed": true,
+        "strict": true,
+        "playbackRate": 1.1,
+        "loudnessTargetLufs": -16,
+        "truePeakDbtp": -1.5,
+        "loudnessMeasured": true,
+        "measuredIntegratedLufs": -16.4,
+        "measuredTruePeakDbtp": -1.46,
+        "beforeSeconds": 68.429206,
+        "afterSeconds": 56.1,
+        "reportFile": "review/audio-pacing-report.json",
+        "summary": {
+          "passedChecks": 12,
+          "failedChecks": 0,
+          "warnings": 0,
+          "totalChecks": 12
+        }
+      },
+      "timeline": {
+        "passed": true,
+        "timingStatus": "audio-synced",
+        "renderStatus": "ready-for-renderer",
+        "reportFile": "review/final-video-report.json",
+        "summary": {
+          "passedChecks": 79,
+          "failedChecks": 0,
+          "warnings": 10,
+          "totalChecks": 89
+        }
+      },
+      "wordSync": {
+        "passed": true,
+        "strict": true,
+        "provider": "codex-local-audio-review",
+        "cueCount": 32,
+        "exactCueCount": 32,
+        "expectedWordCount": 160,
+        "renderedWordCount": 160,
+        "fullCoverage": true,
+        "reportFile": "review/word-sync-report.json",
+        "summary": {
+          "passedChecks": 100,
+          "failedChecks": 0,
+          "warnings": 0,
+          "totalChecks": 100
+        }
+      },
+      "visualQuality": {
+        "passed": true,
+        "strict": true,
+        "reportFile": "review/visual-quality-report.json",
+        "inspectionFile": "review/visual-inspection.json",
+        "summary": {
+          "assetsChecked": 14,
+          "passedChecks": 146,
+          "failedChecks": 0,
+          "warnings": 14,
+          "totalChecks": 160
+        }
+      }
+    },
+    "progress": {
+      "reelId": "reel-01_warum-glaubst-du-wiederholte-aussagen-eher",
+      "title": "Warum glaubst du Aussagen eher, wenn du sie öfter hörst?",
+      "preProduction": 100,
+      "assets": 100,
+      "audioPacing": 100,
+      "timeline": 100,
+      "wordSync": 100,
+      "visualQuality": 100,
+      "productionReady": 100,
+      "rendering": 0,
+      "overall": 90,
+      "details": {
+        "scriptsReady": true,
+        "styleReady": true,
+        "scenesReady": "13/13",
+        "promptsReady": "13/13",
+        "coverPromptReady": true,
+        "captionReady": true,
+        "sourcesReady": true,
+        "contentCheckReady": true,
+        "audioReady": true,
+        "sceneImagesReady": "13/13",
+        "coverImageReady": true,
+        "assetReportReady": true,
+        "audioPacingCreated": true,
+        "audioPacingPassed": true,
+        "audioPacingRate": 1.1,
+        "audioPacingRateSafe": true,
+        "audioLoudnessNormalized": true,
+        "audioLoudnessTargetSafe": true,
+        "audioTruePeakSafe": true,
+        "audioMeasurementRequired": true,
+        "audioMeasurementPresent": true,
+        "audioMeasurementSafe": true,
+        "measuredIntegratedLufs": -16.4,
+        "measuredTruePeakDbtp": -1.46,
+        "audioPacingDurationReduced": true,
+        "timelineBuilt": true,
+        "audioDurationKnown": true,
+        "audioSynced": true,
+        "renderReady": true,
+        "timelineCheckReady": true,
+        "wordSyncRequired": true,
+        "wordSyncCreated": true,
+        "wordSyncPassed": true,
+        "wordSyncProvider": "codex-local-audio-review",
+        "wordCoverage": 1,
+        "visualReportCreated": true,
+        "visualTechnicalReady": true,
+        "visualAssetsReviewed": "14/14",
+        "visualStrictReady": true,
+        "rendererValidated": false,
+        "renderComplete": false
+      },
+      "nextStep": "finalize:reel --strict und anschließend validate:render ausführen."
+    },
+    "blockingIssues": [],
+    "warnings": [
+      {
+        "id": "scene-01-subtitle-cues",
+        "level": "warning",
+        "message": "scene-01: subtitleCues fehlen."
+      },
+      {
+        "id": "scene-02-subtitle-cues",
+        "level": "warning",
+        "message": "scene-02: subtitleCues fehlen."
+      },
+      {
+        "id": "scene-02-preferred-duration",
+        "level": "warning",
+        "message": "scene-02: Für den gewünschten Rhythmus sind ungefähr 3,5–5,5 Sekunden empfehlenswert."
+      },
+      {
+        "id": "scene-03-subtitle-cues",
+        "level": "warning",
+        "message": "scene-03: subtitleCues fehlen."
+      },
+      {
+        "id": "scene-04-subtitle-cues",
+        "level": "warning",
+        "message": "scene-04: subtitleCues fehlen."
+      },
+      {
+        "id": "scene-05-subtitle-cues",
+        "level": "warning",
+        "message": "scene-05: subtitleCues fehlen."
+      },
+      {
+        "id": "scene-06-subtitle-cues",
+        "level": "warning",
+        "message": "scene-06: subtitleCues fehlen."
+      },
+      {
+        "id": "scene-07-subtitle-cues",
+        "level": "warning",
+        "message": "scene-07: subtitleCues fehlen."
+      },
+      {
+        "id": "scene-08-subtitle-cues",
+        "level": "warning",
+        "message": "scene-08: subtitleCues fehlen."
+      },
+      {
+        "id": "scene-09-subtitle-cues",
+        "level": "warning",
+        "message": "scene-09: subtitleCues fehlen."
+      },
+      {
+        "id": "scene-09-preferred-duration",
+        "level": "warning",
+        "message": "scene-09: Für den gewünschten Rhythmus sind ungefähr 3,5–5,5 Sekunden empfehlenswert."
+      },
+      {
+        "id": "scene-10-subtitle-cues",
+        "level": "warning",
+        "message": "scene-10: subtitleCues fehlen."
+      },
+      {
+        "id": "scene-11-subtitle-cues",
+        "level": "warning",
+        "message": "scene-11: subtitleCues fehlen."
+      },
+      {
+        "id": "scene-12-subtitle-cues",
+        "level": "warning",
+        "message": "scene-12: subtitleCues fehlen."
+      },
+      {
+        "id": "scene-13-subtitle-cues",
+        "level": "warning",
+        "message": "scene-13: subtitleCues fehlen."
+      },
+      {
+        "id": "effects-voiceover-priority",
+        "level": "warning",
+        "message": "Der Effektplan muss dem Voice-over Priorität geben."
+      },
+      {
+        "id": "scene-01-transition-type",
+        "level": "warning",
+        "message": "scene-01: Unbekannter Übergangstyp (leer)."
+      },
+      {
+        "id": "scene-01-camera-type",
+        "level": "warning",
+        "message": "scene-01: Unbekannter Kamerabewegungstyp (leer)."
+      },
+      {
+        "id": "scene-02-transition-type",
+        "level": "warning",
+        "message": "scene-02: Unbekannter Übergangstyp (leer)."
+      },
+      {
+        "id": "scene-02-camera-type",
+        "level": "warning",
+        "message": "scene-02: Unbekannter Kamerabewegungstyp (leer)."
+      },
+      {
+        "id": "scene-03-transition-type",
+        "level": "warning",
+        "message": "scene-03: Unbekannter Übergangstyp (leer)."
+      },
+      {
+        "id": "scene-03-camera-type",
+        "level": "warning",
+        "message": "scene-03: Unbekannter Kamerabewegungstyp (leer)."
+      },
+      {
+        "id": "scene-04-transition-type",
+        "level": "warning",
+        "message": "scene-04: Unbekannter Übergangstyp (leer)."
+      },
+      {
+        "id": "scene-04-camera-type",
+        "level": "warning",
+        "message": "scene-04: Unbekannter Kamerabewegungstyp (leer)."
+      },
+      {
+        "id": "scene-05-transition-type",
+        "level": "warning",
+        "message": "scene-05: Unbekannter Übergangstyp (leer)."
+      },
+      {
+        "id": "scene-05-camera-type",
+        "level": "warning",
+        "message": "scene-05: Unbekannter Kamerabewegungstyp (leer)."
+      },
+      {
+        "id": "scene-06-transition-type",
+        "level": "warning",
+        "message": "scene-06: Unbekannter Übergangstyp (leer)."
+      },
+      {
+        "id": "scene-06-camera-type",
+        "level": "warning",
+        "message": "scene-06: Unbekannter Kamerabewegungstyp (leer)."
+      },
+      {
+        "id": "scene-07-transition-type",
+        "level": "warning",
+        "message": "scene-07: Unbekannter Übergangstyp (leer)."
+      },
+      {
+        "id": "scene-07-camera-type",
+        "level": "warning",
+        "message": "scene-07: Unbekannter Kamerabewegungstyp (leer)."
+      },
+      {
+        "id": "scene-08-transition-type",
+        "level": "warning",
+        "message": "scene-08: Unbekannter Übergangstyp (leer)."
+      },
+      {
+        "id": "scene-08-camera-type",
+        "level": "warning",
+        "message": "scene-08: Unbekannter Kamerabewegungstyp (leer)."
+      },
+      {
+        "id": "scene-09-transition-type",
+        "level": "warning",
+        "message": "scene-09: Unbekannter Übergangstyp (leer)."
+      },
+      {
+        "id": "scene-09-camera-type",
+        "level": "warning",
+        "message": "scene-09: Unbekannter Kamerabewegungstyp (leer)."
+      },
+      {
+        "id": "scene-10-transition-type",
+        "level": "warning",
+        "message": "scene-10: Unbekannter Übergangstyp (leer)."
+      },
+      {
+        "id": "scene-10-camera-type",
+        "level": "warning",
+        "message": "scene-10: Unbekannter Kamerabewegungstyp (leer)."
+      },
+      {
+        "id": "scene-11-transition-type",
+        "level": "warning",
+        "message": "scene-11: Unbekannter Übergangstyp (leer)."
+      },
+      {
+        "id": "scene-11-camera-type",
+        "level": "warning",
+        "message": "scene-11: Unbekannter Kamerabewegungstyp (leer)."
+      },
+      {
+        "id": "scene-12-transition-type",
+        "level": "warning",
+        "message": "scene-12: Unbekannter Übergangstyp (leer)."
+      },
+      {
+        "id": "scene-12-camera-type",
+        "level": "warning",
+        "message": "scene-12: Unbekannter Kamerabewegungstyp (leer)."
+      },
+      {
+        "id": "scene-13-transition-type",
+        "level": "warning",
+        "message": "scene-13: Unbekannter Übergangstyp (leer)."
+      },
+      {
+        "id": "scene-13-camera-type",
+        "level": "warning",
+        "message": "scene-13: Unbekannter Kamerabewegungstyp (leer)."
+      },
+      {
+        "id": "hook-no-transition",
+        "level": "warning",
+        "message": "Die Hook sollte ab Sekunde 0 ohne Übergang starten."
+      },
+      {
+        "id": "subtitles-end-with-voiceover",
+        "level": "warning",
+        "message": "Untertitel dürfen nicht in den ruhigen Schlussbild-Nachlauf hineinragen."
+      },
+      {
+        "id": "scene-01-balanced-duration",
+        "level": "warning",
+        "message": "scene-01: Hook dauert 3.63 Sekunden; erlaubt sind 4.2–5.5 Sekunden."
+      },
+      {
+        "id": "scene-02-balanced-duration",
+        "level": "warning",
+        "message": "scene-02: Standardszene dauert 2.44 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
+      },
+      {
+        "id": "scene-03-balanced-duration",
+        "level": "warning",
+        "message": "scene-03: Standardszene dauert 2.78 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
+      },
+      {
+        "id": "scene-05-balanced-duration",
+        "level": "warning",
+        "message": "scene-05: Standardszene dauert 5.86 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
+      },
+      {
+        "id": "scene-06-adjacent-duration-balance",
+        "level": "warning",
+        "message": "scene-06: Der Dauersprung zur vorherigen Szene ist zu groß."
+      },
+      {
+        "id": "scene-07-balanced-duration",
+        "level": "warning",
+        "message": "scene-07: Standardszene dauert 6.56 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
+      },
+      {
+        "id": "scene-07-adjacent-duration-balance",
+        "level": "warning",
+        "message": "scene-07: Der Dauersprung zur vorherigen Szene ist zu groß."
+      },
+      {
+        "id": "scene-09-balanced-duration",
+        "level": "warning",
+        "message": "scene-09: Standardszene dauert 6.61 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
+      },
+      {
+        "id": "scene-10-adjacent-duration-balance",
+        "level": "warning",
+        "message": "scene-10: Der Dauersprung zur vorherigen Szene ist zu groß."
+      },
+      {
+        "id": "scene-01-target-resolution",
+        "level": "warning",
+        "message": "scene-01: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-02-target-resolution",
+        "level": "warning",
+        "message": "scene-02: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-03-target-resolution",
+        "level": "warning",
+        "message": "scene-03: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-04-target-resolution",
+        "level": "warning",
+        "message": "scene-04: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-05-target-resolution",
+        "level": "warning",
+        "message": "scene-05: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-06-target-resolution",
+        "level": "warning",
+        "message": "scene-06: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-07-target-resolution",
+        "level": "warning",
+        "message": "scene-07: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-08-target-resolution",
+        "level": "warning",
+        "message": "scene-08: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-09-target-resolution",
+        "level": "warning",
+        "message": "scene-09: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-10-target-resolution",
+        "level": "warning",
+        "message": "scene-10: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-11-target-resolution",
+        "level": "warning",
+        "message": "scene-11: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-12-target-resolution",
+        "level": "warning",
+        "message": "scene-12: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-13-target-resolution",
+        "level": "warning",
+        "message": "scene-13: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "cover-target-resolution",
+        "level": "warning",
+        "message": "cover: Empfohlen sind mindestens 1080×1920 Pixel."
+      }
+    ],
+    "nextStep": "Renderer prüfen und MP4 erzeugen: npm run validate:render -- --dir \"reels/2026-KW33_10-08_bis_16-08/freitag/reel-01_warum-glaubst-du-wiederholte-aussagen-eher\" && npm run render:reel -- --dir \"reels/2026-KW33_10-08_bis_16-08/freitag/reel-01_warum-glaubst-du-wiederholte-aussagen-eher\""
+  },
+  "checks": [
+    {
+      "id": "render-plan-present",
+      "passed": true,
+      "message": "render/render-plan.json fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "subtitle-source-script-present",
+      "passed": true,
+      "message": "script/voice-script.txt fehlt oder enthält keinen Sprechertext.",
+      "level": "error"
+    },
+    {
+      "id": "audio-pacing-report",
+      "passed": true,
+      "message": "review/audio-pacing-report.json fehlt oder das Voice-over-Pacing wurde nicht erfolgreich optimiert.",
+      "level": "error"
+    },
+    {
+      "id": "audio-playback-rate",
+      "passed": true,
+      "message": "Das finale Voice-over muss mit exakt 1.10x verarbeitet sein.",
+      "level": "error"
+    },
+    {
+      "id": "audio-loudness-normalized",
+      "passed": true,
+      "message": "Das finale Voice-over muss lautheitsnormalisiert sein.",
+      "level": "error"
+    },
+    {
+      "id": "audio-lufs-target",
+      "passed": true,
+      "message": "Die Ziellautheit muss -16 LUFS betragen.",
+      "level": "error"
+    },
+    {
+      "id": "audio-true-peak-target",
+      "passed": true,
+      "message": "Der True-Peak-Zielwert muss -1.5 dBTP betragen.",
+      "level": "error"
+    },
+    {
+      "id": "audio-loudness-measured",
+      "passed": true,
+      "message": "Audio-Pacing-Reports ab Version 5 müssen eine echte Lautheitsnachmessung enthalten.",
+      "level": "error"
+    },
+    {
+      "id": "audio-loudness-measurement-passed",
+      "passed": true,
+      "message": "Die nachgelagerte LUFS-/True-Peak-Messung muss bestanden sein.",
+      "level": "error"
+    },
+    {
+      "id": "audio-measured-lufs-present",
+      "passed": true,
+      "message": "Im Audio-Pacing-Report fehlt der tatsächlich gemessene Integrated-LUFS-Wert.",
+      "level": "error"
+    },
+    {
+      "id": "audio-measured-true-peak-present",
+      "passed": true,
+      "message": "Im Audio-Pacing-Report fehlt der tatsächlich gemessene True-Peak-Wert.",
+      "level": "error"
+    },
+    {
+      "id": "audio-measured-values-within-tolerance",
+      "passed": true,
+      "message": "Die gespeicherten LUFS-/True-Peak-Messwerte liegen außerhalb der zentralen Produktionstoleranz.",
+      "level": "error"
+    },
+    {
+      "id": "composition-width",
+      "passed": true,
+      "message": "Der Renderer erwartet 1080 Pixel Breite.",
+      "level": "error"
+    },
+    {
+      "id": "composition-height",
+      "passed": true,
+      "message": "Der Renderer erwartet 1920 Pixel Höhe.",
+      "level": "error"
+    },
+    {
+      "id": "composition-fps",
+      "passed": true,
+      "message": "Der Renderer erwartet 30 FPS.",
+      "level": "error"
+    },
+    {
+      "id": "composition-duration",
+      "passed": true,
+      "message": "composition.durationFrames muss eine positive Ganzzahl sein.",
+      "level": "error"
+    },
+    {
+      "id": "scenes-present",
+      "passed": true,
+      "message": "Der Render-Plan enthält keine Szenen.",
+      "level": "error"
+    },
+    {
+      "id": "render-status",
+      "passed": true,
+      "message": "render-plan.json besitzt noch nicht den Status ready-for-renderer.",
+      "level": "error"
+    },
+    {
+      "id": "final-readiness",
+      "passed": true,
+      "message": "review/final-readiness-report.json gibt das Reel noch nicht für den Renderer frei.",
+      "level": "error"
+    },
+    {
+      "id": "voiceover-file",
+      "passed": true,
+      "message": "Im Render-Plan fehlt die Voice-over-Datei.",
+      "level": "error"
+    },
+    {
+      "id": "voiceover-format",
+      "passed": true,
+      "message": "Nicht unterstütztes Voice-over-Format: .m4a.",
+      "level": "error"
+    },
+    {
+      "id": "voiceover-present",
+      "passed": true,
+      "message": "Voice-over-Datei wurde nicht gefunden: audio/voiceover-tight.m4a.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-frame-range",
+      "passed": true,
+      "message": "scene-01: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-continuous",
+      "passed": true,
+      "message": "scene-01: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-image-file",
+      "passed": true,
+      "message": "scene-01: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-image-format",
+      "passed": true,
+      "message": "scene-01: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-image-present",
+      "passed": true,
+      "message": "scene-01: Bilddatei wurde nicht gefunden: scenes/scene-01/scene-01.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-transition",
+      "passed": true,
+      "message": "scene-01: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-direct-cut",
+      "passed": true,
+      "message": "scene-01: Erwartet wird transitionIn.type = \"none\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-transition-duration",
+      "passed": true,
+      "message": "scene-01: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-scale-safe",
+      "passed": true,
+      "message": "scene-01: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-pan-safe",
+      "passed": true,
+      "message": "scene-01: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-subtitle-01-time",
+      "passed": true,
+      "message": "scene-01-subtitle-01: Untertitelzeit ist ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-subtitle-01-text",
+      "passed": true,
+      "message": "scene-01-subtitle-01: Untertiteltext fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-subtitle-01-vertical-position",
+      "passed": true,
+      "message": "scene-01-subtitle-01: Untertitel müssen bei exakt 58 Prozent der Bildhöhe liegen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-subtitle-01-text-color",
+      "passed": true,
+      "message": "scene-01-subtitle-01: Untertiteltext muss weiches Weiß #F5F7FA verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-subtitle-01-highlight-color",
+      "passed": true,
+      "message": "scene-01-subtitle-01: Das aktuell gesprochene Wort muss Braun #B7794A verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-subtitle-01-speaker-highlight-enabled",
+      "passed": true,
+      "message": "scene-01-subtitle-01: Die sprecher-synchrone Wortmarkierung muss global aktiviert sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-subtitle-01-background-transparent",
+      "passed": true,
+      "message": "scene-01-subtitle-01: Der Untertitelhintergrund muss transparent sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-subtitle-01-exact-word-timing",
+      "passed": true,
+      "message": "scene-01-subtitle-01: Exakte, akustisch bestätigte Wortzeiten fehlen. ",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-subtitle-01-timing-status",
+      "passed": true,
+      "message": "scene-01-subtitle-01: timingStatus muss \"codex-word-synced\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-subtitle-01-timing-source",
+      "passed": true,
+      "message": "scene-01-subtitle-01: timingSource muss \"codex-local-audio-review\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-subtitle-02-time",
+      "passed": true,
+      "message": "scene-01-subtitle-02: Untertitelzeit ist ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-subtitle-02-text",
+      "passed": true,
+      "message": "scene-01-subtitle-02: Untertiteltext fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-subtitle-02-vertical-position",
+      "passed": true,
+      "message": "scene-01-subtitle-02: Untertitel müssen bei exakt 58 Prozent der Bildhöhe liegen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-subtitle-02-text-color",
+      "passed": true,
+      "message": "scene-01-subtitle-02: Untertiteltext muss weiches Weiß #F5F7FA verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-subtitle-02-highlight-color",
+      "passed": true,
+      "message": "scene-01-subtitle-02: Das aktuell gesprochene Wort muss Braun #B7794A verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-subtitle-02-speaker-highlight-enabled",
+      "passed": true,
+      "message": "scene-01-subtitle-02: Die sprecher-synchrone Wortmarkierung muss global aktiviert sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-subtitle-02-background-transparent",
+      "passed": true,
+      "message": "scene-01-subtitle-02: Der Untertitelhintergrund muss transparent sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-subtitle-02-exact-word-timing",
+      "passed": true,
+      "message": "scene-01-subtitle-02: Exakte, akustisch bestätigte Wortzeiten fehlen. ",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-subtitle-02-timing-status",
+      "passed": true,
+      "message": "scene-01-subtitle-02: timingStatus muss \"codex-word-synced\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-subtitle-02-timing-source",
+      "passed": true,
+      "message": "scene-01-subtitle-02: timingSource muss \"codex-local-audio-review\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-subtitle-03-time",
+      "passed": true,
+      "message": "scene-01-subtitle-03: Untertitelzeit ist ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-subtitle-03-text",
+      "passed": true,
+      "message": "scene-01-subtitle-03: Untertiteltext fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-subtitle-03-vertical-position",
+      "passed": true,
+      "message": "scene-01-subtitle-03: Untertitel müssen bei exakt 58 Prozent der Bildhöhe liegen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-subtitle-03-text-color",
+      "passed": true,
+      "message": "scene-01-subtitle-03: Untertiteltext muss weiches Weiß #F5F7FA verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-subtitle-03-highlight-color",
+      "passed": true,
+      "message": "scene-01-subtitle-03: Das aktuell gesprochene Wort muss Braun #B7794A verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-subtitle-03-speaker-highlight-enabled",
+      "passed": true,
+      "message": "scene-01-subtitle-03: Die sprecher-synchrone Wortmarkierung muss global aktiviert sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-subtitle-03-background-transparent",
+      "passed": true,
+      "message": "scene-01-subtitle-03: Der Untertitelhintergrund muss transparent sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-subtitle-03-exact-word-timing",
+      "passed": true,
+      "message": "scene-01-subtitle-03: Exakte, akustisch bestätigte Wortzeiten fehlen. ",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-subtitle-03-timing-status",
+      "passed": true,
+      "message": "scene-01-subtitle-03: timingStatus muss \"codex-word-synced\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-subtitle-03-timing-source",
+      "passed": true,
+      "message": "scene-01-subtitle-03: timingSource muss \"codex-local-audio-review\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-frame-range",
+      "passed": true,
+      "message": "scene-02: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-continuous",
+      "passed": true,
+      "message": "scene-02: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-image-file",
+      "passed": true,
+      "message": "scene-02: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-image-format",
+      "passed": true,
+      "message": "scene-02: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-image-present",
+      "passed": true,
+      "message": "scene-02: Bilddatei wurde nicht gefunden: scenes/scene-02/scene-02.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-transition",
+      "passed": true,
+      "message": "scene-02: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-direct-cut",
+      "passed": true,
+      "message": "scene-02: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-transition-duration",
+      "passed": true,
+      "message": "scene-02: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-scale-safe",
+      "passed": true,
+      "message": "scene-02: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-pan-safe",
+      "passed": true,
+      "message": "scene-02: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-subtitle-01-time",
+      "passed": true,
+      "message": "scene-02-subtitle-01: Untertitelzeit ist ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-subtitle-01-text",
+      "passed": true,
+      "message": "scene-02-subtitle-01: Untertiteltext fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-subtitle-01-vertical-position",
+      "passed": true,
+      "message": "scene-02-subtitle-01: Untertitel müssen bei exakt 58 Prozent der Bildhöhe liegen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-subtitle-01-text-color",
+      "passed": true,
+      "message": "scene-02-subtitle-01: Untertiteltext muss weiches Weiß #F5F7FA verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-subtitle-01-highlight-color",
+      "passed": true,
+      "message": "scene-02-subtitle-01: Das aktuell gesprochene Wort muss Braun #B7794A verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-subtitle-01-speaker-highlight-enabled",
+      "passed": true,
+      "message": "scene-02-subtitle-01: Die sprecher-synchrone Wortmarkierung muss global aktiviert sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-subtitle-01-background-transparent",
+      "passed": true,
+      "message": "scene-02-subtitle-01: Der Untertitelhintergrund muss transparent sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-subtitle-01-exact-word-timing",
+      "passed": true,
+      "message": "scene-02-subtitle-01: Exakte, akustisch bestätigte Wortzeiten fehlen. ",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-subtitle-01-timing-status",
+      "passed": true,
+      "message": "scene-02-subtitle-01: timingStatus muss \"codex-word-synced\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-subtitle-01-timing-source",
+      "passed": true,
+      "message": "scene-02-subtitle-01: timingSource muss \"codex-local-audio-review\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-frame-range",
+      "passed": true,
+      "message": "scene-03: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-continuous",
+      "passed": true,
+      "message": "scene-03: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-image-file",
+      "passed": true,
+      "message": "scene-03: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-image-format",
+      "passed": true,
+      "message": "scene-03: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-image-present",
+      "passed": true,
+      "message": "scene-03: Bilddatei wurde nicht gefunden: scenes/scene-03/scene-03.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-transition",
+      "passed": true,
+      "message": "scene-03: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-direct-cut",
+      "passed": true,
+      "message": "scene-03: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-transition-duration",
+      "passed": true,
+      "message": "scene-03: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-scale-safe",
+      "passed": true,
+      "message": "scene-03: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-pan-safe",
+      "passed": true,
+      "message": "scene-03: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-subtitle-01-time",
+      "passed": true,
+      "message": "scene-03-subtitle-01: Untertitelzeit ist ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-subtitle-01-text",
+      "passed": true,
+      "message": "scene-03-subtitle-01: Untertiteltext fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-subtitle-01-vertical-position",
+      "passed": true,
+      "message": "scene-03-subtitle-01: Untertitel müssen bei exakt 58 Prozent der Bildhöhe liegen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-subtitle-01-text-color",
+      "passed": true,
+      "message": "scene-03-subtitle-01: Untertiteltext muss weiches Weiß #F5F7FA verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-subtitle-01-highlight-color",
+      "passed": true,
+      "message": "scene-03-subtitle-01: Das aktuell gesprochene Wort muss Braun #B7794A verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-subtitle-01-speaker-highlight-enabled",
+      "passed": true,
+      "message": "scene-03-subtitle-01: Die sprecher-synchrone Wortmarkierung muss global aktiviert sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-subtitle-01-background-transparent",
+      "passed": true,
+      "message": "scene-03-subtitle-01: Der Untertitelhintergrund muss transparent sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-subtitle-01-exact-word-timing",
+      "passed": true,
+      "message": "scene-03-subtitle-01: Exakte, akustisch bestätigte Wortzeiten fehlen. ",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-subtitle-01-timing-status",
+      "passed": true,
+      "message": "scene-03-subtitle-01: timingStatus muss \"codex-word-synced\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-subtitle-01-timing-source",
+      "passed": true,
+      "message": "scene-03-subtitle-01: timingSource muss \"codex-local-audio-review\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-subtitle-02-time",
+      "passed": true,
+      "message": "scene-03-subtitle-02: Untertitelzeit ist ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-subtitle-02-text",
+      "passed": true,
+      "message": "scene-03-subtitle-02: Untertiteltext fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-subtitle-02-vertical-position",
+      "passed": true,
+      "message": "scene-03-subtitle-02: Untertitel müssen bei exakt 58 Prozent der Bildhöhe liegen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-subtitle-02-text-color",
+      "passed": true,
+      "message": "scene-03-subtitle-02: Untertiteltext muss weiches Weiß #F5F7FA verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-subtitle-02-highlight-color",
+      "passed": true,
+      "message": "scene-03-subtitle-02: Das aktuell gesprochene Wort muss Braun #B7794A verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-subtitle-02-speaker-highlight-enabled",
+      "passed": true,
+      "message": "scene-03-subtitle-02: Die sprecher-synchrone Wortmarkierung muss global aktiviert sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-subtitle-02-background-transparent",
+      "passed": true,
+      "message": "scene-03-subtitle-02: Der Untertitelhintergrund muss transparent sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-subtitle-02-exact-word-timing",
+      "passed": true,
+      "message": "scene-03-subtitle-02: Exakte, akustisch bestätigte Wortzeiten fehlen. ",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-subtitle-02-timing-status",
+      "passed": true,
+      "message": "scene-03-subtitle-02: timingStatus muss \"codex-word-synced\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-subtitle-02-timing-source",
+      "passed": true,
+      "message": "scene-03-subtitle-02: timingSource muss \"codex-local-audio-review\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-frame-range",
+      "passed": true,
+      "message": "scene-04: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-continuous",
+      "passed": true,
+      "message": "scene-04: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-image-file",
+      "passed": true,
+      "message": "scene-04: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-image-format",
+      "passed": true,
+      "message": "scene-04: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-image-present",
+      "passed": true,
+      "message": "scene-04: Bilddatei wurde nicht gefunden: scenes/scene-04/scene-04.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-transition",
+      "passed": true,
+      "message": "scene-04: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-direct-cut",
+      "passed": true,
+      "message": "scene-04: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-transition-duration",
+      "passed": true,
+      "message": "scene-04: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-scale-safe",
+      "passed": true,
+      "message": "scene-04: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-pan-safe",
+      "passed": true,
+      "message": "scene-04: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-subtitle-01-time",
+      "passed": true,
+      "message": "scene-04-subtitle-01: Untertitelzeit ist ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-subtitle-01-text",
+      "passed": true,
+      "message": "scene-04-subtitle-01: Untertiteltext fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-subtitle-01-vertical-position",
+      "passed": true,
+      "message": "scene-04-subtitle-01: Untertitel müssen bei exakt 58 Prozent der Bildhöhe liegen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-subtitle-01-text-color",
+      "passed": true,
+      "message": "scene-04-subtitle-01: Untertiteltext muss weiches Weiß #F5F7FA verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-subtitle-01-highlight-color",
+      "passed": true,
+      "message": "scene-04-subtitle-01: Das aktuell gesprochene Wort muss Braun #B7794A verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-subtitle-01-speaker-highlight-enabled",
+      "passed": true,
+      "message": "scene-04-subtitle-01: Die sprecher-synchrone Wortmarkierung muss global aktiviert sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-subtitle-01-background-transparent",
+      "passed": true,
+      "message": "scene-04-subtitle-01: Der Untertitelhintergrund muss transparent sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-subtitle-01-exact-word-timing",
+      "passed": true,
+      "message": "scene-04-subtitle-01: Exakte, akustisch bestätigte Wortzeiten fehlen. ",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-subtitle-01-timing-status",
+      "passed": true,
+      "message": "scene-04-subtitle-01: timingStatus muss \"codex-word-synced\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-subtitle-01-timing-source",
+      "passed": true,
+      "message": "scene-04-subtitle-01: timingSource muss \"codex-local-audio-review\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-subtitle-02-time",
+      "passed": true,
+      "message": "scene-04-subtitle-02: Untertitelzeit ist ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-subtitle-02-text",
+      "passed": true,
+      "message": "scene-04-subtitle-02: Untertiteltext fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-subtitle-02-vertical-position",
+      "passed": true,
+      "message": "scene-04-subtitle-02: Untertitel müssen bei exakt 58 Prozent der Bildhöhe liegen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-subtitle-02-text-color",
+      "passed": true,
+      "message": "scene-04-subtitle-02: Untertiteltext muss weiches Weiß #F5F7FA verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-subtitle-02-highlight-color",
+      "passed": true,
+      "message": "scene-04-subtitle-02: Das aktuell gesprochene Wort muss Braun #B7794A verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-subtitle-02-speaker-highlight-enabled",
+      "passed": true,
+      "message": "scene-04-subtitle-02: Die sprecher-synchrone Wortmarkierung muss global aktiviert sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-subtitle-02-background-transparent",
+      "passed": true,
+      "message": "scene-04-subtitle-02: Der Untertitelhintergrund muss transparent sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-subtitle-02-exact-word-timing",
+      "passed": true,
+      "message": "scene-04-subtitle-02: Exakte, akustisch bestätigte Wortzeiten fehlen. ",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-subtitle-02-timing-status",
+      "passed": true,
+      "message": "scene-04-subtitle-02: timingStatus muss \"codex-word-synced\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-subtitle-02-timing-source",
+      "passed": true,
+      "message": "scene-04-subtitle-02: timingSource muss \"codex-local-audio-review\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-frame-range",
+      "passed": true,
+      "message": "scene-05: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-continuous",
+      "passed": true,
+      "message": "scene-05: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-image-file",
+      "passed": true,
+      "message": "scene-05: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-image-format",
+      "passed": true,
+      "message": "scene-05: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-image-present",
+      "passed": true,
+      "message": "scene-05: Bilddatei wurde nicht gefunden: scenes/scene-05/scene-05.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-transition",
+      "passed": true,
+      "message": "scene-05: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-direct-cut",
+      "passed": true,
+      "message": "scene-05: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-transition-duration",
+      "passed": true,
+      "message": "scene-05: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-scale-safe",
+      "passed": true,
+      "message": "scene-05: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-pan-safe",
+      "passed": true,
+      "message": "scene-05: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-subtitle-01-time",
+      "passed": true,
+      "message": "scene-05-subtitle-01: Untertitelzeit ist ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-subtitle-01-text",
+      "passed": true,
+      "message": "scene-05-subtitle-01: Untertiteltext fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-subtitle-01-vertical-position",
+      "passed": true,
+      "message": "scene-05-subtitle-01: Untertitel müssen bei exakt 58 Prozent der Bildhöhe liegen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-subtitle-01-text-color",
+      "passed": true,
+      "message": "scene-05-subtitle-01: Untertiteltext muss weiches Weiß #F5F7FA verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-subtitle-01-highlight-color",
+      "passed": true,
+      "message": "scene-05-subtitle-01: Das aktuell gesprochene Wort muss Braun #B7794A verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-subtitle-01-speaker-highlight-enabled",
+      "passed": true,
+      "message": "scene-05-subtitle-01: Die sprecher-synchrone Wortmarkierung muss global aktiviert sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-subtitle-01-background-transparent",
+      "passed": true,
+      "message": "scene-05-subtitle-01: Der Untertitelhintergrund muss transparent sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-subtitle-01-exact-word-timing",
+      "passed": true,
+      "message": "scene-05-subtitle-01: Exakte, akustisch bestätigte Wortzeiten fehlen. ",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-subtitle-01-timing-status",
+      "passed": true,
+      "message": "scene-05-subtitle-01: timingStatus muss \"codex-word-synced\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-subtitle-01-timing-source",
+      "passed": true,
+      "message": "scene-05-subtitle-01: timingSource muss \"codex-local-audio-review\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-subtitle-02-time",
+      "passed": true,
+      "message": "scene-05-subtitle-02: Untertitelzeit ist ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-subtitle-02-text",
+      "passed": true,
+      "message": "scene-05-subtitle-02: Untertiteltext fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-subtitle-02-vertical-position",
+      "passed": true,
+      "message": "scene-05-subtitle-02: Untertitel müssen bei exakt 58 Prozent der Bildhöhe liegen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-subtitle-02-text-color",
+      "passed": true,
+      "message": "scene-05-subtitle-02: Untertiteltext muss weiches Weiß #F5F7FA verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-subtitle-02-highlight-color",
+      "passed": true,
+      "message": "scene-05-subtitle-02: Das aktuell gesprochene Wort muss Braun #B7794A verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-subtitle-02-speaker-highlight-enabled",
+      "passed": true,
+      "message": "scene-05-subtitle-02: Die sprecher-synchrone Wortmarkierung muss global aktiviert sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-subtitle-02-background-transparent",
+      "passed": true,
+      "message": "scene-05-subtitle-02: Der Untertitelhintergrund muss transparent sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-subtitle-02-exact-word-timing",
+      "passed": true,
+      "message": "scene-05-subtitle-02: Exakte, akustisch bestätigte Wortzeiten fehlen. ",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-subtitle-02-timing-status",
+      "passed": true,
+      "message": "scene-05-subtitle-02: timingStatus muss \"codex-word-synced\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-subtitle-02-timing-source",
+      "passed": true,
+      "message": "scene-05-subtitle-02: timingSource muss \"codex-local-audio-review\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-subtitle-03-time",
+      "passed": true,
+      "message": "scene-05-subtitle-03: Untertitelzeit ist ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-subtitle-03-text",
+      "passed": true,
+      "message": "scene-05-subtitle-03: Untertiteltext fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-subtitle-03-vertical-position",
+      "passed": true,
+      "message": "scene-05-subtitle-03: Untertitel müssen bei exakt 58 Prozent der Bildhöhe liegen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-subtitle-03-text-color",
+      "passed": true,
+      "message": "scene-05-subtitle-03: Untertiteltext muss weiches Weiß #F5F7FA verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-subtitle-03-highlight-color",
+      "passed": true,
+      "message": "scene-05-subtitle-03: Das aktuell gesprochene Wort muss Braun #B7794A verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-subtitle-03-speaker-highlight-enabled",
+      "passed": true,
+      "message": "scene-05-subtitle-03: Die sprecher-synchrone Wortmarkierung muss global aktiviert sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-subtitle-03-background-transparent",
+      "passed": true,
+      "message": "scene-05-subtitle-03: Der Untertitelhintergrund muss transparent sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-subtitle-03-exact-word-timing",
+      "passed": true,
+      "message": "scene-05-subtitle-03: Exakte, akustisch bestätigte Wortzeiten fehlen. ",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-subtitle-03-timing-status",
+      "passed": true,
+      "message": "scene-05-subtitle-03: timingStatus muss \"codex-word-synced\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-subtitle-03-timing-source",
+      "passed": true,
+      "message": "scene-05-subtitle-03: timingSource muss \"codex-local-audio-review\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-frame-range",
+      "passed": true,
+      "message": "scene-06: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-continuous",
+      "passed": true,
+      "message": "scene-06: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-image-file",
+      "passed": true,
+      "message": "scene-06: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-image-format",
+      "passed": true,
+      "message": "scene-06: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-image-present",
+      "passed": true,
+      "message": "scene-06: Bilddatei wurde nicht gefunden: scenes/scene-06/scene-06.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-transition",
+      "passed": true,
+      "message": "scene-06: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-direct-cut",
+      "passed": true,
+      "message": "scene-06: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-transition-duration",
+      "passed": true,
+      "message": "scene-06: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-scale-safe",
+      "passed": true,
+      "message": "scene-06: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-pan-safe",
+      "passed": true,
+      "message": "scene-06: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-subtitle-01-time",
+      "passed": true,
+      "message": "scene-06-subtitle-01: Untertitelzeit ist ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-subtitle-01-text",
+      "passed": true,
+      "message": "scene-06-subtitle-01: Untertiteltext fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-subtitle-01-vertical-position",
+      "passed": true,
+      "message": "scene-06-subtitle-01: Untertitel müssen bei exakt 58 Prozent der Bildhöhe liegen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-subtitle-01-text-color",
+      "passed": true,
+      "message": "scene-06-subtitle-01: Untertiteltext muss weiches Weiß #F5F7FA verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-subtitle-01-highlight-color",
+      "passed": true,
+      "message": "scene-06-subtitle-01: Das aktuell gesprochene Wort muss Braun #B7794A verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-subtitle-01-speaker-highlight-enabled",
+      "passed": true,
+      "message": "scene-06-subtitle-01: Die sprecher-synchrone Wortmarkierung muss global aktiviert sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-subtitle-01-background-transparent",
+      "passed": true,
+      "message": "scene-06-subtitle-01: Der Untertitelhintergrund muss transparent sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-subtitle-01-exact-word-timing",
+      "passed": true,
+      "message": "scene-06-subtitle-01: Exakte, akustisch bestätigte Wortzeiten fehlen. ",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-subtitle-01-timing-status",
+      "passed": true,
+      "message": "scene-06-subtitle-01: timingStatus muss \"codex-word-synced\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-subtitle-01-timing-source",
+      "passed": true,
+      "message": "scene-06-subtitle-01: timingSource muss \"codex-local-audio-review\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-subtitle-02-time",
+      "passed": true,
+      "message": "scene-06-subtitle-02: Untertitelzeit ist ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-subtitle-02-text",
+      "passed": true,
+      "message": "scene-06-subtitle-02: Untertiteltext fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-subtitle-02-vertical-position",
+      "passed": true,
+      "message": "scene-06-subtitle-02: Untertitel müssen bei exakt 58 Prozent der Bildhöhe liegen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-subtitle-02-text-color",
+      "passed": true,
+      "message": "scene-06-subtitle-02: Untertiteltext muss weiches Weiß #F5F7FA verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-subtitle-02-highlight-color",
+      "passed": true,
+      "message": "scene-06-subtitle-02: Das aktuell gesprochene Wort muss Braun #B7794A verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-subtitle-02-speaker-highlight-enabled",
+      "passed": true,
+      "message": "scene-06-subtitle-02: Die sprecher-synchrone Wortmarkierung muss global aktiviert sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-subtitle-02-background-transparent",
+      "passed": true,
+      "message": "scene-06-subtitle-02: Der Untertitelhintergrund muss transparent sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-subtitle-02-exact-word-timing",
+      "passed": true,
+      "message": "scene-06-subtitle-02: Exakte, akustisch bestätigte Wortzeiten fehlen. ",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-subtitle-02-timing-status",
+      "passed": true,
+      "message": "scene-06-subtitle-02: timingStatus muss \"codex-word-synced\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-subtitle-02-timing-source",
+      "passed": true,
+      "message": "scene-06-subtitle-02: timingSource muss \"codex-local-audio-review\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-frame-range",
+      "passed": true,
+      "message": "scene-07: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-continuous",
+      "passed": true,
+      "message": "scene-07: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-image-file",
+      "passed": true,
+      "message": "scene-07: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-image-format",
+      "passed": true,
+      "message": "scene-07: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-image-present",
+      "passed": true,
+      "message": "scene-07: Bilddatei wurde nicht gefunden: scenes/scene-07/scene-07.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-transition",
+      "passed": true,
+      "message": "scene-07: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-direct-cut",
+      "passed": true,
+      "message": "scene-07: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-transition-duration",
+      "passed": true,
+      "message": "scene-07: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-scale-safe",
+      "passed": true,
+      "message": "scene-07: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-pan-safe",
+      "passed": true,
+      "message": "scene-07: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-subtitle-01-time",
+      "passed": true,
+      "message": "scene-07-subtitle-01: Untertitelzeit ist ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-subtitle-01-text",
+      "passed": true,
+      "message": "scene-07-subtitle-01: Untertiteltext fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-subtitle-01-vertical-position",
+      "passed": true,
+      "message": "scene-07-subtitle-01: Untertitel müssen bei exakt 58 Prozent der Bildhöhe liegen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-subtitle-01-text-color",
+      "passed": true,
+      "message": "scene-07-subtitle-01: Untertiteltext muss weiches Weiß #F5F7FA verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-subtitle-01-highlight-color",
+      "passed": true,
+      "message": "scene-07-subtitle-01: Das aktuell gesprochene Wort muss Braun #B7794A verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-subtitle-01-speaker-highlight-enabled",
+      "passed": true,
+      "message": "scene-07-subtitle-01: Die sprecher-synchrone Wortmarkierung muss global aktiviert sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-subtitle-01-background-transparent",
+      "passed": true,
+      "message": "scene-07-subtitle-01: Der Untertitelhintergrund muss transparent sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-subtitle-01-exact-word-timing",
+      "passed": true,
+      "message": "scene-07-subtitle-01: Exakte, akustisch bestätigte Wortzeiten fehlen. ",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-subtitle-01-timing-status",
+      "passed": true,
+      "message": "scene-07-subtitle-01: timingStatus muss \"codex-word-synced\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-subtitle-01-timing-source",
+      "passed": true,
+      "message": "scene-07-subtitle-01: timingSource muss \"codex-local-audio-review\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-subtitle-02-time",
+      "passed": true,
+      "message": "scene-07-subtitle-02: Untertitelzeit ist ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-subtitle-02-text",
+      "passed": true,
+      "message": "scene-07-subtitle-02: Untertiteltext fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-subtitle-02-vertical-position",
+      "passed": true,
+      "message": "scene-07-subtitle-02: Untertitel müssen bei exakt 58 Prozent der Bildhöhe liegen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-subtitle-02-text-color",
+      "passed": true,
+      "message": "scene-07-subtitle-02: Untertiteltext muss weiches Weiß #F5F7FA verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-subtitle-02-highlight-color",
+      "passed": true,
+      "message": "scene-07-subtitle-02: Das aktuell gesprochene Wort muss Braun #B7794A verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-subtitle-02-speaker-highlight-enabled",
+      "passed": true,
+      "message": "scene-07-subtitle-02: Die sprecher-synchrone Wortmarkierung muss global aktiviert sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-subtitle-02-background-transparent",
+      "passed": true,
+      "message": "scene-07-subtitle-02: Der Untertitelhintergrund muss transparent sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-subtitle-02-exact-word-timing",
+      "passed": true,
+      "message": "scene-07-subtitle-02: Exakte, akustisch bestätigte Wortzeiten fehlen. ",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-subtitle-02-timing-status",
+      "passed": true,
+      "message": "scene-07-subtitle-02: timingStatus muss \"codex-word-synced\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-subtitle-02-timing-source",
+      "passed": true,
+      "message": "scene-07-subtitle-02: timingSource muss \"codex-local-audio-review\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-subtitle-03-time",
+      "passed": true,
+      "message": "scene-07-subtitle-03: Untertitelzeit ist ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-subtitle-03-text",
+      "passed": true,
+      "message": "scene-07-subtitle-03: Untertiteltext fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-subtitle-03-vertical-position",
+      "passed": true,
+      "message": "scene-07-subtitle-03: Untertitel müssen bei exakt 58 Prozent der Bildhöhe liegen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-subtitle-03-text-color",
+      "passed": true,
+      "message": "scene-07-subtitle-03: Untertiteltext muss weiches Weiß #F5F7FA verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-subtitle-03-highlight-color",
+      "passed": true,
+      "message": "scene-07-subtitle-03: Das aktuell gesprochene Wort muss Braun #B7794A verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-subtitle-03-speaker-highlight-enabled",
+      "passed": true,
+      "message": "scene-07-subtitle-03: Die sprecher-synchrone Wortmarkierung muss global aktiviert sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-subtitle-03-background-transparent",
+      "passed": true,
+      "message": "scene-07-subtitle-03: Der Untertitelhintergrund muss transparent sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-subtitle-03-exact-word-timing",
+      "passed": true,
+      "message": "scene-07-subtitle-03: Exakte, akustisch bestätigte Wortzeiten fehlen. ",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-subtitle-03-timing-status",
+      "passed": true,
+      "message": "scene-07-subtitle-03: timingStatus muss \"codex-word-synced\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-subtitle-03-timing-source",
+      "passed": true,
+      "message": "scene-07-subtitle-03: timingSource muss \"codex-local-audio-review\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-frame-range",
+      "passed": true,
+      "message": "scene-08: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-continuous",
+      "passed": true,
+      "message": "scene-08: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-image-file",
+      "passed": true,
+      "message": "scene-08: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-image-format",
+      "passed": true,
+      "message": "scene-08: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-image-present",
+      "passed": true,
+      "message": "scene-08: Bilddatei wurde nicht gefunden: scenes/scene-08/scene-08.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-transition",
+      "passed": true,
+      "message": "scene-08: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-direct-cut",
+      "passed": true,
+      "message": "scene-08: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-transition-duration",
+      "passed": true,
+      "message": "scene-08: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-scale-safe",
+      "passed": true,
+      "message": "scene-08: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-pan-safe",
+      "passed": true,
+      "message": "scene-08: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-subtitle-01-time",
+      "passed": true,
+      "message": "scene-08-subtitle-01: Untertitelzeit ist ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-subtitle-01-text",
+      "passed": true,
+      "message": "scene-08-subtitle-01: Untertiteltext fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-subtitle-01-vertical-position",
+      "passed": true,
+      "message": "scene-08-subtitle-01: Untertitel müssen bei exakt 58 Prozent der Bildhöhe liegen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-subtitle-01-text-color",
+      "passed": true,
+      "message": "scene-08-subtitle-01: Untertiteltext muss weiches Weiß #F5F7FA verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-subtitle-01-highlight-color",
+      "passed": true,
+      "message": "scene-08-subtitle-01: Das aktuell gesprochene Wort muss Braun #B7794A verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-subtitle-01-speaker-highlight-enabled",
+      "passed": true,
+      "message": "scene-08-subtitle-01: Die sprecher-synchrone Wortmarkierung muss global aktiviert sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-subtitle-01-background-transparent",
+      "passed": true,
+      "message": "scene-08-subtitle-01: Der Untertitelhintergrund muss transparent sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-subtitle-01-exact-word-timing",
+      "passed": true,
+      "message": "scene-08-subtitle-01: Exakte, akustisch bestätigte Wortzeiten fehlen. ",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-subtitle-01-timing-status",
+      "passed": true,
+      "message": "scene-08-subtitle-01: timingStatus muss \"codex-word-synced\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-subtitle-01-timing-source",
+      "passed": true,
+      "message": "scene-08-subtitle-01: timingSource muss \"codex-local-audio-review\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-subtitle-02-time",
+      "passed": true,
+      "message": "scene-08-subtitle-02: Untertitelzeit ist ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-subtitle-02-text",
+      "passed": true,
+      "message": "scene-08-subtitle-02: Untertiteltext fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-subtitle-02-vertical-position",
+      "passed": true,
+      "message": "scene-08-subtitle-02: Untertitel müssen bei exakt 58 Prozent der Bildhöhe liegen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-subtitle-02-text-color",
+      "passed": true,
+      "message": "scene-08-subtitle-02: Untertiteltext muss weiches Weiß #F5F7FA verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-subtitle-02-highlight-color",
+      "passed": true,
+      "message": "scene-08-subtitle-02: Das aktuell gesprochene Wort muss Braun #B7794A verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-subtitle-02-speaker-highlight-enabled",
+      "passed": true,
+      "message": "scene-08-subtitle-02: Die sprecher-synchrone Wortmarkierung muss global aktiviert sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-subtitle-02-background-transparent",
+      "passed": true,
+      "message": "scene-08-subtitle-02: Der Untertitelhintergrund muss transparent sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-subtitle-02-exact-word-timing",
+      "passed": true,
+      "message": "scene-08-subtitle-02: Exakte, akustisch bestätigte Wortzeiten fehlen. ",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-subtitle-02-timing-status",
+      "passed": true,
+      "message": "scene-08-subtitle-02: timingStatus muss \"codex-word-synced\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-subtitle-02-timing-source",
+      "passed": true,
+      "message": "scene-08-subtitle-02: timingSource muss \"codex-local-audio-review\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-subtitle-03-time",
+      "passed": true,
+      "message": "scene-08-subtitle-03: Untertitelzeit ist ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-subtitle-03-text",
+      "passed": true,
+      "message": "scene-08-subtitle-03: Untertiteltext fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-subtitle-03-vertical-position",
+      "passed": true,
+      "message": "scene-08-subtitle-03: Untertitel müssen bei exakt 58 Prozent der Bildhöhe liegen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-subtitle-03-text-color",
+      "passed": true,
+      "message": "scene-08-subtitle-03: Untertiteltext muss weiches Weiß #F5F7FA verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-subtitle-03-highlight-color",
+      "passed": true,
+      "message": "scene-08-subtitle-03: Das aktuell gesprochene Wort muss Braun #B7794A verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-subtitle-03-speaker-highlight-enabled",
+      "passed": true,
+      "message": "scene-08-subtitle-03: Die sprecher-synchrone Wortmarkierung muss global aktiviert sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-subtitle-03-background-transparent",
+      "passed": true,
+      "message": "scene-08-subtitle-03: Der Untertitelhintergrund muss transparent sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-subtitle-03-exact-word-timing",
+      "passed": true,
+      "message": "scene-08-subtitle-03: Exakte, akustisch bestätigte Wortzeiten fehlen. ",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-subtitle-03-timing-status",
+      "passed": true,
+      "message": "scene-08-subtitle-03: timingStatus muss \"codex-word-synced\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-subtitle-03-timing-source",
+      "passed": true,
+      "message": "scene-08-subtitle-03: timingSource muss \"codex-local-audio-review\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-frame-range",
+      "passed": true,
+      "message": "scene-09: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-continuous",
+      "passed": true,
+      "message": "scene-09: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-image-file",
+      "passed": true,
+      "message": "scene-09: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-image-format",
+      "passed": true,
+      "message": "scene-09: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-image-present",
+      "passed": true,
+      "message": "scene-09: Bilddatei wurde nicht gefunden: scenes/scene-09/scene-09.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-transition",
+      "passed": true,
+      "message": "scene-09: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-direct-cut",
+      "passed": true,
+      "message": "scene-09: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-transition-duration",
+      "passed": true,
+      "message": "scene-09: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-scale-safe",
+      "passed": true,
+      "message": "scene-09: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-pan-safe",
+      "passed": true,
+      "message": "scene-09: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-subtitle-01-time",
+      "passed": true,
+      "message": "scene-09-subtitle-01: Untertitelzeit ist ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-subtitle-01-text",
+      "passed": true,
+      "message": "scene-09-subtitle-01: Untertiteltext fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-subtitle-01-vertical-position",
+      "passed": true,
+      "message": "scene-09-subtitle-01: Untertitel müssen bei exakt 58 Prozent der Bildhöhe liegen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-subtitle-01-text-color",
+      "passed": true,
+      "message": "scene-09-subtitle-01: Untertiteltext muss weiches Weiß #F5F7FA verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-subtitle-01-highlight-color",
+      "passed": true,
+      "message": "scene-09-subtitle-01: Das aktuell gesprochene Wort muss Braun #B7794A verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-subtitle-01-speaker-highlight-enabled",
+      "passed": true,
+      "message": "scene-09-subtitle-01: Die sprecher-synchrone Wortmarkierung muss global aktiviert sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-subtitle-01-background-transparent",
+      "passed": true,
+      "message": "scene-09-subtitle-01: Der Untertitelhintergrund muss transparent sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-subtitle-01-exact-word-timing",
+      "passed": true,
+      "message": "scene-09-subtitle-01: Exakte, akustisch bestätigte Wortzeiten fehlen. ",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-subtitle-01-timing-status",
+      "passed": true,
+      "message": "scene-09-subtitle-01: timingStatus muss \"codex-word-synced\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-subtitle-01-timing-source",
+      "passed": true,
+      "message": "scene-09-subtitle-01: timingSource muss \"codex-local-audio-review\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-subtitle-02-time",
+      "passed": true,
+      "message": "scene-09-subtitle-02: Untertitelzeit ist ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-subtitle-02-text",
+      "passed": true,
+      "message": "scene-09-subtitle-02: Untertiteltext fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-subtitle-02-vertical-position",
+      "passed": true,
+      "message": "scene-09-subtitle-02: Untertitel müssen bei exakt 58 Prozent der Bildhöhe liegen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-subtitle-02-text-color",
+      "passed": true,
+      "message": "scene-09-subtitle-02: Untertiteltext muss weiches Weiß #F5F7FA verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-subtitle-02-highlight-color",
+      "passed": true,
+      "message": "scene-09-subtitle-02: Das aktuell gesprochene Wort muss Braun #B7794A verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-subtitle-02-speaker-highlight-enabled",
+      "passed": true,
+      "message": "scene-09-subtitle-02: Die sprecher-synchrone Wortmarkierung muss global aktiviert sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-subtitle-02-background-transparent",
+      "passed": true,
+      "message": "scene-09-subtitle-02: Der Untertitelhintergrund muss transparent sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-subtitle-02-exact-word-timing",
+      "passed": true,
+      "message": "scene-09-subtitle-02: Exakte, akustisch bestätigte Wortzeiten fehlen. ",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-subtitle-02-timing-status",
+      "passed": true,
+      "message": "scene-09-subtitle-02: timingStatus muss \"codex-word-synced\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-subtitle-02-timing-source",
+      "passed": true,
+      "message": "scene-09-subtitle-02: timingSource muss \"codex-local-audio-review\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-subtitle-03-time",
+      "passed": true,
+      "message": "scene-09-subtitle-03: Untertitelzeit ist ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-subtitle-03-text",
+      "passed": true,
+      "message": "scene-09-subtitle-03: Untertiteltext fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-subtitle-03-vertical-position",
+      "passed": true,
+      "message": "scene-09-subtitle-03: Untertitel müssen bei exakt 58 Prozent der Bildhöhe liegen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-subtitle-03-text-color",
+      "passed": true,
+      "message": "scene-09-subtitle-03: Untertiteltext muss weiches Weiß #F5F7FA verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-subtitle-03-highlight-color",
+      "passed": true,
+      "message": "scene-09-subtitle-03: Das aktuell gesprochene Wort muss Braun #B7794A verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-subtitle-03-speaker-highlight-enabled",
+      "passed": true,
+      "message": "scene-09-subtitle-03: Die sprecher-synchrone Wortmarkierung muss global aktiviert sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-subtitle-03-background-transparent",
+      "passed": true,
+      "message": "scene-09-subtitle-03: Der Untertitelhintergrund muss transparent sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-subtitle-03-exact-word-timing",
+      "passed": true,
+      "message": "scene-09-subtitle-03: Exakte, akustisch bestätigte Wortzeiten fehlen. ",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-subtitle-03-timing-status",
+      "passed": true,
+      "message": "scene-09-subtitle-03: timingStatus muss \"codex-word-synced\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-subtitle-03-timing-source",
+      "passed": true,
+      "message": "scene-09-subtitle-03: timingSource muss \"codex-local-audio-review\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-subtitle-04-time",
+      "passed": true,
+      "message": "scene-09-subtitle-04: Untertitelzeit ist ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-subtitle-04-text",
+      "passed": true,
+      "message": "scene-09-subtitle-04: Untertiteltext fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-subtitle-04-vertical-position",
+      "passed": true,
+      "message": "scene-09-subtitle-04: Untertitel müssen bei exakt 58 Prozent der Bildhöhe liegen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-subtitle-04-text-color",
+      "passed": true,
+      "message": "scene-09-subtitle-04: Untertiteltext muss weiches Weiß #F5F7FA verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-subtitle-04-highlight-color",
+      "passed": true,
+      "message": "scene-09-subtitle-04: Das aktuell gesprochene Wort muss Braun #B7794A verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-subtitle-04-speaker-highlight-enabled",
+      "passed": true,
+      "message": "scene-09-subtitle-04: Die sprecher-synchrone Wortmarkierung muss global aktiviert sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-subtitle-04-background-transparent",
+      "passed": true,
+      "message": "scene-09-subtitle-04: Der Untertitelhintergrund muss transparent sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-subtitle-04-exact-word-timing",
+      "passed": true,
+      "message": "scene-09-subtitle-04: Exakte, akustisch bestätigte Wortzeiten fehlen. ",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-subtitle-04-timing-status",
+      "passed": true,
+      "message": "scene-09-subtitle-04: timingStatus muss \"codex-word-synced\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-subtitle-04-timing-source",
+      "passed": true,
+      "message": "scene-09-subtitle-04: timingSource muss \"codex-local-audio-review\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-frame-range",
+      "passed": true,
+      "message": "scene-10: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-continuous",
+      "passed": true,
+      "message": "scene-10: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-image-file",
+      "passed": true,
+      "message": "scene-10: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-image-format",
+      "passed": true,
+      "message": "scene-10: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-image-present",
+      "passed": true,
+      "message": "scene-10: Bilddatei wurde nicht gefunden: scenes/scene-10/scene-10.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-transition",
+      "passed": true,
+      "message": "scene-10: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-direct-cut",
+      "passed": true,
+      "message": "scene-10: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-transition-duration",
+      "passed": true,
+      "message": "scene-10: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-scale-safe",
+      "passed": true,
+      "message": "scene-10: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-pan-safe",
+      "passed": true,
+      "message": "scene-10: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-subtitle-01-time",
+      "passed": true,
+      "message": "scene-10-subtitle-01: Untertitelzeit ist ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-subtitle-01-text",
+      "passed": true,
+      "message": "scene-10-subtitle-01: Untertiteltext fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-subtitle-01-vertical-position",
+      "passed": true,
+      "message": "scene-10-subtitle-01: Untertitel müssen bei exakt 58 Prozent der Bildhöhe liegen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-subtitle-01-text-color",
+      "passed": true,
+      "message": "scene-10-subtitle-01: Untertiteltext muss weiches Weiß #F5F7FA verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-subtitle-01-highlight-color",
+      "passed": true,
+      "message": "scene-10-subtitle-01: Das aktuell gesprochene Wort muss Braun #B7794A verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-subtitle-01-speaker-highlight-enabled",
+      "passed": true,
+      "message": "scene-10-subtitle-01: Die sprecher-synchrone Wortmarkierung muss global aktiviert sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-subtitle-01-background-transparent",
+      "passed": true,
+      "message": "scene-10-subtitle-01: Der Untertitelhintergrund muss transparent sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-subtitle-01-exact-word-timing",
+      "passed": true,
+      "message": "scene-10-subtitle-01: Exakte, akustisch bestätigte Wortzeiten fehlen. ",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-subtitle-01-timing-status",
+      "passed": true,
+      "message": "scene-10-subtitle-01: timingStatus muss \"codex-word-synced\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-subtitle-01-timing-source",
+      "passed": true,
+      "message": "scene-10-subtitle-01: timingSource muss \"codex-local-audio-review\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-subtitle-02-time",
+      "passed": true,
+      "message": "scene-10-subtitle-02: Untertitelzeit ist ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-subtitle-02-text",
+      "passed": true,
+      "message": "scene-10-subtitle-02: Untertiteltext fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-subtitle-02-vertical-position",
+      "passed": true,
+      "message": "scene-10-subtitle-02: Untertitel müssen bei exakt 58 Prozent der Bildhöhe liegen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-subtitle-02-text-color",
+      "passed": true,
+      "message": "scene-10-subtitle-02: Untertiteltext muss weiches Weiß #F5F7FA verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-subtitle-02-highlight-color",
+      "passed": true,
+      "message": "scene-10-subtitle-02: Das aktuell gesprochene Wort muss Braun #B7794A verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-subtitle-02-speaker-highlight-enabled",
+      "passed": true,
+      "message": "scene-10-subtitle-02: Die sprecher-synchrone Wortmarkierung muss global aktiviert sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-subtitle-02-background-transparent",
+      "passed": true,
+      "message": "scene-10-subtitle-02: Der Untertitelhintergrund muss transparent sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-subtitle-02-exact-word-timing",
+      "passed": true,
+      "message": "scene-10-subtitle-02: Exakte, akustisch bestätigte Wortzeiten fehlen. ",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-subtitle-02-timing-status",
+      "passed": true,
+      "message": "scene-10-subtitle-02: timingStatus muss \"codex-word-synced\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-subtitle-02-timing-source",
+      "passed": true,
+      "message": "scene-10-subtitle-02: timingSource muss \"codex-local-audio-review\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-11-frame-range",
+      "passed": true,
+      "message": "scene-11: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-11-continuous",
+      "passed": true,
+      "message": "scene-11: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-11-image-file",
+      "passed": true,
+      "message": "scene-11: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-11-image-format",
+      "passed": true,
+      "message": "scene-11: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-11-image-present",
+      "passed": true,
+      "message": "scene-11: Bilddatei wurde nicht gefunden: scenes/scene-11/scene-11.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-11-transition",
+      "passed": true,
+      "message": "scene-11: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-11-direct-cut",
+      "passed": true,
+      "message": "scene-11: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-11-transition-duration",
+      "passed": true,
+      "message": "scene-11: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-11-scale-safe",
+      "passed": true,
+      "message": "scene-11: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-11-pan-safe",
+      "passed": true,
+      "message": "scene-11: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-11-subtitle-01-time",
+      "passed": true,
+      "message": "scene-11-subtitle-01: Untertitelzeit ist ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-11-subtitle-01-text",
+      "passed": true,
+      "message": "scene-11-subtitle-01: Untertiteltext fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-11-subtitle-01-vertical-position",
+      "passed": true,
+      "message": "scene-11-subtitle-01: Untertitel müssen bei exakt 58 Prozent der Bildhöhe liegen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-11-subtitle-01-text-color",
+      "passed": true,
+      "message": "scene-11-subtitle-01: Untertiteltext muss weiches Weiß #F5F7FA verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-11-subtitle-01-highlight-color",
+      "passed": true,
+      "message": "scene-11-subtitle-01: Das aktuell gesprochene Wort muss Braun #B7794A verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-11-subtitle-01-speaker-highlight-enabled",
+      "passed": true,
+      "message": "scene-11-subtitle-01: Die sprecher-synchrone Wortmarkierung muss global aktiviert sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-11-subtitle-01-background-transparent",
+      "passed": true,
+      "message": "scene-11-subtitle-01: Der Untertitelhintergrund muss transparent sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-11-subtitle-01-exact-word-timing",
+      "passed": true,
+      "message": "scene-11-subtitle-01: Exakte, akustisch bestätigte Wortzeiten fehlen. ",
+      "level": "error"
+    },
+    {
+      "id": "scene-11-subtitle-01-timing-status",
+      "passed": true,
+      "message": "scene-11-subtitle-01: timingStatus muss \"codex-word-synced\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-11-subtitle-01-timing-source",
+      "passed": true,
+      "message": "scene-11-subtitle-01: timingSource muss \"codex-local-audio-review\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-11-subtitle-02-time",
+      "passed": true,
+      "message": "scene-11-subtitle-02: Untertitelzeit ist ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-11-subtitle-02-text",
+      "passed": true,
+      "message": "scene-11-subtitle-02: Untertiteltext fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-11-subtitle-02-vertical-position",
+      "passed": true,
+      "message": "scene-11-subtitle-02: Untertitel müssen bei exakt 58 Prozent der Bildhöhe liegen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-11-subtitle-02-text-color",
+      "passed": true,
+      "message": "scene-11-subtitle-02: Untertiteltext muss weiches Weiß #F5F7FA verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-11-subtitle-02-highlight-color",
+      "passed": true,
+      "message": "scene-11-subtitle-02: Das aktuell gesprochene Wort muss Braun #B7794A verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-11-subtitle-02-speaker-highlight-enabled",
+      "passed": true,
+      "message": "scene-11-subtitle-02: Die sprecher-synchrone Wortmarkierung muss global aktiviert sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-11-subtitle-02-background-transparent",
+      "passed": true,
+      "message": "scene-11-subtitle-02: Der Untertitelhintergrund muss transparent sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-11-subtitle-02-exact-word-timing",
+      "passed": true,
+      "message": "scene-11-subtitle-02: Exakte, akustisch bestätigte Wortzeiten fehlen. ",
+      "level": "error"
+    },
+    {
+      "id": "scene-11-subtitle-02-timing-status",
+      "passed": true,
+      "message": "scene-11-subtitle-02: timingStatus muss \"codex-word-synced\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-11-subtitle-02-timing-source",
+      "passed": true,
+      "message": "scene-11-subtitle-02: timingSource muss \"codex-local-audio-review\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-frame-range",
+      "passed": true,
+      "message": "scene-12: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-continuous",
+      "passed": true,
+      "message": "scene-12: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-image-file",
+      "passed": true,
+      "message": "scene-12: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-image-format",
+      "passed": true,
+      "message": "scene-12: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-image-present",
+      "passed": true,
+      "message": "scene-12: Bilddatei wurde nicht gefunden: scenes/scene-12/scene-12.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-transition",
+      "passed": true,
+      "message": "scene-12: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-direct-cut",
+      "passed": true,
+      "message": "scene-12: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-transition-duration",
+      "passed": true,
+      "message": "scene-12: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-scale-safe",
+      "passed": true,
+      "message": "scene-12: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-pan-safe",
+      "passed": true,
+      "message": "scene-12: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-subtitle-01-time",
+      "passed": true,
+      "message": "scene-12-subtitle-01: Untertitelzeit ist ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-subtitle-01-text",
+      "passed": true,
+      "message": "scene-12-subtitle-01: Untertiteltext fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-subtitle-01-vertical-position",
+      "passed": true,
+      "message": "scene-12-subtitle-01: Untertitel müssen bei exakt 58 Prozent der Bildhöhe liegen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-subtitle-01-text-color",
+      "passed": true,
+      "message": "scene-12-subtitle-01: Untertiteltext muss weiches Weiß #F5F7FA verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-subtitle-01-highlight-color",
+      "passed": true,
+      "message": "scene-12-subtitle-01: Das aktuell gesprochene Wort muss Braun #B7794A verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-subtitle-01-speaker-highlight-enabled",
+      "passed": true,
+      "message": "scene-12-subtitle-01: Die sprecher-synchrone Wortmarkierung muss global aktiviert sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-subtitle-01-background-transparent",
+      "passed": true,
+      "message": "scene-12-subtitle-01: Der Untertitelhintergrund muss transparent sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-subtitle-01-exact-word-timing",
+      "passed": true,
+      "message": "scene-12-subtitle-01: Exakte, akustisch bestätigte Wortzeiten fehlen. ",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-subtitle-01-timing-status",
+      "passed": true,
+      "message": "scene-12-subtitle-01: timingStatus muss \"codex-word-synced\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-subtitle-01-timing-source",
+      "passed": true,
+      "message": "scene-12-subtitle-01: timingSource muss \"codex-local-audio-review\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-subtitle-02-time",
+      "passed": true,
+      "message": "scene-12-subtitle-02: Untertitelzeit ist ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-subtitle-02-text",
+      "passed": true,
+      "message": "scene-12-subtitle-02: Untertiteltext fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-subtitle-02-vertical-position",
+      "passed": true,
+      "message": "scene-12-subtitle-02: Untertitel müssen bei exakt 58 Prozent der Bildhöhe liegen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-subtitle-02-text-color",
+      "passed": true,
+      "message": "scene-12-subtitle-02: Untertiteltext muss weiches Weiß #F5F7FA verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-subtitle-02-highlight-color",
+      "passed": true,
+      "message": "scene-12-subtitle-02: Das aktuell gesprochene Wort muss Braun #B7794A verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-subtitle-02-speaker-highlight-enabled",
+      "passed": true,
+      "message": "scene-12-subtitle-02: Die sprecher-synchrone Wortmarkierung muss global aktiviert sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-subtitle-02-background-transparent",
+      "passed": true,
+      "message": "scene-12-subtitle-02: Der Untertitelhintergrund muss transparent sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-subtitle-02-exact-word-timing",
+      "passed": true,
+      "message": "scene-12-subtitle-02: Exakte, akustisch bestätigte Wortzeiten fehlen. ",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-subtitle-02-timing-status",
+      "passed": true,
+      "message": "scene-12-subtitle-02: timingStatus muss \"codex-word-synced\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-subtitle-02-timing-source",
+      "passed": true,
+      "message": "scene-12-subtitle-02: timingSource muss \"codex-local-audio-review\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-subtitle-03-time",
+      "passed": true,
+      "message": "scene-12-subtitle-03: Untertitelzeit ist ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-subtitle-03-text",
+      "passed": true,
+      "message": "scene-12-subtitle-03: Untertiteltext fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-subtitle-03-vertical-position",
+      "passed": true,
+      "message": "scene-12-subtitle-03: Untertitel müssen bei exakt 58 Prozent der Bildhöhe liegen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-subtitle-03-text-color",
+      "passed": true,
+      "message": "scene-12-subtitle-03: Untertiteltext muss weiches Weiß #F5F7FA verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-subtitle-03-highlight-color",
+      "passed": true,
+      "message": "scene-12-subtitle-03: Das aktuell gesprochene Wort muss Braun #B7794A verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-subtitle-03-speaker-highlight-enabled",
+      "passed": true,
+      "message": "scene-12-subtitle-03: Die sprecher-synchrone Wortmarkierung muss global aktiviert sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-subtitle-03-background-transparent",
+      "passed": true,
+      "message": "scene-12-subtitle-03: Der Untertitelhintergrund muss transparent sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-subtitle-03-exact-word-timing",
+      "passed": true,
+      "message": "scene-12-subtitle-03: Exakte, akustisch bestätigte Wortzeiten fehlen. ",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-subtitle-03-timing-status",
+      "passed": true,
+      "message": "scene-12-subtitle-03: timingStatus muss \"codex-word-synced\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-subtitle-03-timing-source",
+      "passed": true,
+      "message": "scene-12-subtitle-03: timingSource muss \"codex-local-audio-review\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-frame-range",
+      "passed": true,
+      "message": "scene-13: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-continuous",
+      "passed": true,
+      "message": "scene-13: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-image-file",
+      "passed": true,
+      "message": "scene-13: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-image-format",
+      "passed": true,
+      "message": "scene-13: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-image-present",
+      "passed": true,
+      "message": "scene-13: Bilddatei wurde nicht gefunden: scenes/scene-13/scene-13.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-transition",
+      "passed": true,
+      "message": "scene-13: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-direct-cut",
+      "passed": true,
+      "message": "scene-13: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-transition-duration",
+      "passed": true,
+      "message": "scene-13: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-scale-safe",
+      "passed": true,
+      "message": "scene-13: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-pan-safe",
+      "passed": true,
+      "message": "scene-13: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-subtitle-01-time",
+      "passed": true,
+      "message": "scene-13-subtitle-01: Untertitelzeit ist ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-subtitle-01-text",
+      "passed": true,
+      "message": "scene-13-subtitle-01: Untertiteltext fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-subtitle-01-vertical-position",
+      "passed": true,
+      "message": "scene-13-subtitle-01: Untertitel müssen bei exakt 58 Prozent der Bildhöhe liegen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-subtitle-01-text-color",
+      "passed": true,
+      "message": "scene-13-subtitle-01: Untertiteltext muss weiches Weiß #F5F7FA verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-subtitle-01-highlight-color",
+      "passed": true,
+      "message": "scene-13-subtitle-01: Das aktuell gesprochene Wort muss Braun #B7794A verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-subtitle-01-speaker-highlight-enabled",
+      "passed": true,
+      "message": "scene-13-subtitle-01: Die sprecher-synchrone Wortmarkierung muss global aktiviert sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-subtitle-01-background-transparent",
+      "passed": true,
+      "message": "scene-13-subtitle-01: Der Untertitelhintergrund muss transparent sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-subtitle-01-exact-word-timing",
+      "passed": true,
+      "message": "scene-13-subtitle-01: Exakte, akustisch bestätigte Wortzeiten fehlen. ",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-subtitle-01-timing-status",
+      "passed": true,
+      "message": "scene-13-subtitle-01: timingStatus muss \"codex-word-synced\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-subtitle-01-timing-source",
+      "passed": true,
+      "message": "scene-13-subtitle-01: timingSource muss \"codex-local-audio-review\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-subtitle-02-time",
+      "passed": true,
+      "message": "scene-13-subtitle-02: Untertitelzeit ist ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-subtitle-02-text",
+      "passed": true,
+      "message": "scene-13-subtitle-02: Untertiteltext fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-subtitle-02-vertical-position",
+      "passed": true,
+      "message": "scene-13-subtitle-02: Untertitel müssen bei exakt 58 Prozent der Bildhöhe liegen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-subtitle-02-text-color",
+      "passed": true,
+      "message": "scene-13-subtitle-02: Untertiteltext muss weiches Weiß #F5F7FA verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-subtitle-02-highlight-color",
+      "passed": true,
+      "message": "scene-13-subtitle-02: Das aktuell gesprochene Wort muss Braun #B7794A verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-subtitle-02-speaker-highlight-enabled",
+      "passed": true,
+      "message": "scene-13-subtitle-02: Die sprecher-synchrone Wortmarkierung muss global aktiviert sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-subtitle-02-background-transparent",
+      "passed": true,
+      "message": "scene-13-subtitle-02: Der Untertitelhintergrund muss transparent sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-subtitle-02-exact-word-timing",
+      "passed": true,
+      "message": "scene-13-subtitle-02: Exakte, akustisch bestätigte Wortzeiten fehlen. ",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-subtitle-02-timing-status",
+      "passed": true,
+      "message": "scene-13-subtitle-02: timingStatus muss \"codex-word-synced\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-subtitle-02-timing-source",
+      "passed": true,
+      "message": "scene-13-subtitle-02: timingSource muss \"codex-local-audio-review\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "subtitle-full-spoken-text-coverage",
+      "passed": true,
+      "message": "Die gerenderten Untertitel müssen 100 % des Voice-Scripts in exakt derselben Wortreihenfolge enthalten. Erwartet: 160 Wörter, gerendert: 160.",
+      "level": "error"
+    },
+    {
+      "id": "last-frame",
+      "passed": true,
+      "message": "Die letzte Szene endet nicht exakt am letzten Kompositionsframe.",
+      "level": "error"
+    }
+  ]
+}

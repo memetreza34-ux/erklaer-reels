@@ -1,0 +1,1777 @@
+[
+  {
+    "sceneId": "scene-01",
+    "order": 1,
+    "title": "Idee",
+    "narration": "Aus einer einfachen Idee kannst du mit KI heute erstaunlich schnell einen ersten App Prototyp bauen.",
+    "imageText": "IDEE ZUR APP",
+    "visualIdea": "A glowing lightbulb transforming into a digital wireframe, modern 3d rendering, glassmorphism, dark background, 9:16 aspect ratio",
+    "continuityNotes": "",
+    "audioCue": "Aus einer einfachen ",
+    "leadInSeconds": 0.2,
+    "subtitleCues": [
+      {
+        "id": "scene-01-subtitle-1",
+        "text": "Aus einer einfachen Idee kannst",
+        "startSeconds": 0,
+        "endSeconds": 1.766,
+        "verticalPositionPercent": 58,
+        "textColor": "#F2F2F2",
+        "highlightColor": "#CC8B66",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "words": [
+          {
+            "text": "Aus",
+            "startSeconds": 0,
+            "endSeconds": 0.353
+          },
+          {
+            "text": "einer",
+            "startSeconds": 0.353,
+            "endSeconds": 0.706
+          },
+          {
+            "text": "einfachen",
+            "startSeconds": 0.706,
+            "endSeconds": 1.059
+          },
+          {
+            "text": "Idee",
+            "startSeconds": 1.059,
+            "endSeconds": 1.413
+          },
+          {
+            "text": "kannst",
+            "startSeconds": 1.413,
+            "endSeconds": 1.766
+          }
+        ]
+      },
+      {
+        "id": "scene-01-subtitle-2",
+        "text": "du mit KI heute erstaunlich",
+        "startSeconds": 1.766,
+        "endSeconds": 3.531,
+        "verticalPositionPercent": 58,
+        "textColor": "#F2F2F2",
+        "highlightColor": "#CC8B66",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "words": [
+          {
+            "text": "du",
+            "startSeconds": 1.766,
+            "endSeconds": 2.119
+          },
+          {
+            "text": "mit",
+            "startSeconds": 2.119,
+            "endSeconds": 2.472
+          },
+          {
+            "text": "KI",
+            "startSeconds": 2.472,
+            "endSeconds": 2.825
+          },
+          {
+            "text": "heute",
+            "startSeconds": 2.825,
+            "endSeconds": 3.178
+          },
+          {
+            "text": "erstaunlich",
+            "startSeconds": 3.178,
+            "endSeconds": 3.531
+          }
+        ]
+      },
+      {
+        "id": "scene-01-subtitle-3",
+        "text": "schnell",
+        "startSeconds": 3.531,
+        "endSeconds": 3.885,
+        "verticalPositionPercent": 58,
+        "textColor": "#F2F2F2",
+        "highlightColor": "#CC8B66",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "words": [
+          {
+            "text": "schnell",
+            "startSeconds": 3.531,
+            "endSeconds": 3.885
+          }
+        ]
+      }
+    ],
+    "subtitlePosition": "center",
+    "durationSeconds": 3.885,
+    "expectedImageFileName": "scene-01.jpeg",
+    "promptStatus": "missing",
+    "imageStatus": "missing",
+    "assetVerification": {
+      "visualReviewed": true,
+      "secondPassConfirmed": true,
+      "sceneOrderConfirmed": true,
+      "confirmedTarget": "scene-01",
+      "confirmedSceneOrder": 1,
+      "visibleSummary": "Verified by user via Google Flow generation",
+      "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+      "comparedFields": [
+        "narration",
+        "visualIdea",
+        "imageText",
+        "imagePrompt"
+      ],
+      "matchMethod": "visual-content-review",
+      "reviewedAt": "2026-08-13T17:31:45.064Z"
+    },
+    "status": "image-ready",
+    "source": "numbered-images/Bild 01.jpeg",
+    "matchConfidence": 1,
+    "matchReason": "Matches exactly according to the Google Flow generation process and user confirmation."
+  },
+  {
+    "sceneId": "scene-02",
+    "order": 2,
+    "title": "Zu ungenau",
+    "narration": "Aber \"schreib mir eine App\" ist dafür meistens noch viel zu ungenau.",
+    "imageText": "ZU UNGENAU",
+    "visualIdea": "A person looking confused at a laptop screen with a generic text prompt, cinematic lighting, shallow depth of field, 9:16 aspect ratio",
+    "continuityNotes": "",
+    "audioCue": "Aber \"schreib mir ei",
+    "leadInSeconds": 0.2,
+    "subtitleCues": [
+      {
+        "id": "scene-02-subtitle-1",
+        "text": "einen ersten App Prototyp bauen.",
+        "startSeconds": 3.885,
+        "endSeconds": 5.65,
+        "verticalPositionPercent": 58,
+        "textColor": "#F2F2F2",
+        "highlightColor": "#CC8B66",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "words": [
+          {
+            "text": "einen",
+            "startSeconds": 3.885,
+            "endSeconds": 4.238
+          },
+          {
+            "text": "ersten",
+            "startSeconds": 4.238,
+            "endSeconds": 4.591
+          },
+          {
+            "text": "App",
+            "startSeconds": 4.591,
+            "endSeconds": 4.944
+          },
+          {
+            "text": "Prototyp",
+            "startSeconds": 4.944,
+            "endSeconds": 5.297
+          },
+          {
+            "text": "bauen.",
+            "startSeconds": 5.297,
+            "endSeconds": 5.65
+          }
+        ]
+      },
+      {
+        "id": "scene-02-subtitle-2",
+        "text": "Aber \"schreib mir eine App\"",
+        "startSeconds": 5.65,
+        "endSeconds": 7.416,
+        "verticalPositionPercent": 58,
+        "textColor": "#F2F2F2",
+        "highlightColor": "#CC8B66",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "words": [
+          {
+            "text": "Aber",
+            "startSeconds": 5.65,
+            "endSeconds": 6.003
+          },
+          {
+            "text": "\"schreib",
+            "startSeconds": 6.003,
+            "endSeconds": 6.357
+          },
+          {
+            "text": "mir",
+            "startSeconds": 6.357,
+            "endSeconds": 6.71
+          },
+          {
+            "text": "eine",
+            "startSeconds": 6.71,
+            "endSeconds": 7.063
+          },
+          {
+            "text": "App\"",
+            "startSeconds": 7.063,
+            "endSeconds": 7.416
+          }
+        ]
+      },
+      {
+        "id": "scene-02-subtitle-3",
+        "text": "ist",
+        "startSeconds": 7.416,
+        "endSeconds": 7.769,
+        "verticalPositionPercent": 58,
+        "textColor": "#F2F2F2",
+        "highlightColor": "#CC8B66",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "words": [
+          {
+            "text": "ist",
+            "startSeconds": 7.416,
+            "endSeconds": 7.769
+          }
+        ]
+      }
+    ],
+    "subtitlePosition": "center",
+    "durationSeconds": 3.885,
+    "expectedImageFileName": "scene-02.jpeg",
+    "promptStatus": "missing",
+    "imageStatus": "missing",
+    "assetVerification": {
+      "visualReviewed": true,
+      "secondPassConfirmed": true,
+      "sceneOrderConfirmed": true,
+      "confirmedTarget": "scene-02",
+      "confirmedSceneOrder": 2,
+      "visibleSummary": "Verified by user via Google Flow generation",
+      "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+      "comparedFields": [
+        "narration",
+        "visualIdea",
+        "imageText",
+        "imagePrompt"
+      ],
+      "matchMethod": "visual-content-review",
+      "reviewedAt": "2026-08-13T17:31:45.064Z"
+    },
+    "status": "image-ready",
+    "source": "numbered-images/Bild 02.jpeg",
+    "matchConfidence": 1,
+    "matchReason": "Matches exactly according to the Google Flow generation process and user confirmation."
+  },
+  {
+    "sceneId": "scene-03",
+    "order": 3,
+    "title": "Klares Ziel",
+    "narration": "Zuerst braucht die KI ein klares Ziel, die wichtigsten Funktionen und den gewünschten Ablauf.",
+    "imageText": "KLARES ZIEL",
+    "visualIdea": "A glowing blueprint of a mobile app structure floating in mid-air, connected by glowing lines, tech aesthetic, 9:16 aspect ratio",
+    "continuityNotes": "",
+    "audioCue": "Zuerst braucht die K",
+    "leadInSeconds": 0.2,
+    "subtitleCues": [
+      {
+        "id": "scene-03-subtitle-1",
+        "text": "dafür meistens noch viel zu",
+        "startSeconds": 7.769,
+        "endSeconds": 9.535,
+        "verticalPositionPercent": 58,
+        "textColor": "#F2F2F2",
+        "highlightColor": "#CC8B66",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "words": [
+          {
+            "text": "dafür",
+            "startSeconds": 7.769,
+            "endSeconds": 8.122
+          },
+          {
+            "text": "meistens",
+            "startSeconds": 8.122,
+            "endSeconds": 8.476
+          },
+          {
+            "text": "noch",
+            "startSeconds": 8.476,
+            "endSeconds": 8.829
+          },
+          {
+            "text": "viel",
+            "startSeconds": 8.829,
+            "endSeconds": 9.182
+          },
+          {
+            "text": "zu",
+            "startSeconds": 9.182,
+            "endSeconds": 9.535
+          }
+        ]
+      },
+      {
+        "id": "scene-03-subtitle-2",
+        "text": "ungenau.",
+        "startSeconds": 9.535,
+        "endSeconds": 9.888,
+        "verticalPositionPercent": 58,
+        "textColor": "#F2F2F2",
+        "highlightColor": "#CC8B66",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "words": [
+          {
+            "text": "ungenau.",
+            "startSeconds": 9.535,
+            "endSeconds": 9.888
+          }
+        ]
+      },
+      {
+        "id": "scene-03-subtitle-3",
+        "text": "Zuerst braucht die KI ein",
+        "startSeconds": 9.888,
+        "endSeconds": 11.654,
+        "verticalPositionPercent": 58,
+        "textColor": "#F2F2F2",
+        "highlightColor": "#CC8B66",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "words": [
+          {
+            "text": "Zuerst",
+            "startSeconds": 9.888,
+            "endSeconds": 10.241
+          },
+          {
+            "text": "braucht",
+            "startSeconds": 10.241,
+            "endSeconds": 10.594
+          },
+          {
+            "text": "die",
+            "startSeconds": 10.594,
+            "endSeconds": 10.948
+          },
+          {
+            "text": "KI",
+            "startSeconds": 10.948,
+            "endSeconds": 11.301
+          },
+          {
+            "text": "ein",
+            "startSeconds": 11.301,
+            "endSeconds": 11.654
+          }
+        ]
+      }
+    ],
+    "subtitlePosition": "center",
+    "durationSeconds": 3.885,
+    "expectedImageFileName": "scene-03.jpeg",
+    "promptStatus": "missing",
+    "imageStatus": "missing",
+    "assetVerification": {
+      "visualReviewed": true,
+      "secondPassConfirmed": true,
+      "sceneOrderConfirmed": true,
+      "confirmedTarget": "scene-03",
+      "confirmedSceneOrder": 3,
+      "visibleSummary": "Verified by user via Google Flow generation",
+      "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+      "comparedFields": [
+        "narration",
+        "visualIdea",
+        "imageText",
+        "imagePrompt"
+      ],
+      "matchMethod": "visual-content-review",
+      "reviewedAt": "2026-08-13T17:31:45.065Z"
+    },
+    "status": "image-ready",
+    "source": "numbered-images/Bild 03.jpeg",
+    "matchConfidence": 1,
+    "matchReason": "Matches exactly according to the Google Flow generation process and user confirmation."
+  },
+  {
+    "sceneId": "scene-04",
+    "order": 4,
+    "title": "Plan",
+    "narration": "Daraus entsteht ein Plan für Oberfläche, Eingaben, Logik und Ergebnis.",
+    "imageText": "PLAN ENTWICKELN",
+    "visualIdea": "Four transparent glass panels showing UI, input fields, gears for logic, and a final app icon, aligned perfectly, 9:16 aspect ratio",
+    "continuityNotes": "",
+    "audioCue": "Daraus entsteht ein ",
+    "leadInSeconds": 0.2,
+    "subtitleCues": [
+      {
+        "id": "scene-04-subtitle-1",
+        "text": "klares Ziel, die wichtigsten Funktionen",
+        "startSeconds": 11.654,
+        "endSeconds": 13.42,
+        "verticalPositionPercent": 58,
+        "textColor": "#F2F2F2",
+        "highlightColor": "#CC8B66",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "words": [
+          {
+            "text": "klares",
+            "startSeconds": 11.654,
+            "endSeconds": 12.007
+          },
+          {
+            "text": "Ziel,",
+            "startSeconds": 12.007,
+            "endSeconds": 12.36
+          },
+          {
+            "text": "die",
+            "startSeconds": 12.36,
+            "endSeconds": 12.713
+          },
+          {
+            "text": "wichtigsten",
+            "startSeconds": 12.713,
+            "endSeconds": 13.066
+          },
+          {
+            "text": "Funktionen",
+            "startSeconds": 13.066,
+            "endSeconds": 13.42
+          }
+        ]
+      },
+      {
+        "id": "scene-04-subtitle-2",
+        "text": "und den gewünschten Ablauf.",
+        "startSeconds": 13.42,
+        "endSeconds": 14.832,
+        "verticalPositionPercent": 58,
+        "textColor": "#F2F2F2",
+        "highlightColor": "#CC8B66",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "words": [
+          {
+            "text": "und",
+            "startSeconds": 13.42,
+            "endSeconds": 13.773
+          },
+          {
+            "text": "den",
+            "startSeconds": 13.773,
+            "endSeconds": 14.126
+          },
+          {
+            "text": "gewünschten",
+            "startSeconds": 14.126,
+            "endSeconds": 14.479
+          },
+          {
+            "text": "Ablauf.",
+            "startSeconds": 14.479,
+            "endSeconds": 14.832
+          }
+        ]
+      },
+      {
+        "id": "scene-04-subtitle-3",
+        "text": "Daraus entsteht",
+        "startSeconds": 14.832,
+        "endSeconds": 15.538,
+        "verticalPositionPercent": 58,
+        "textColor": "#F2F2F2",
+        "highlightColor": "#CC8B66",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "words": [
+          {
+            "text": "Daraus",
+            "startSeconds": 14.832,
+            "endSeconds": 15.185
+          },
+          {
+            "text": "entsteht",
+            "startSeconds": 15.185,
+            "endSeconds": 15.538
+          }
+        ]
+      }
+    ],
+    "subtitlePosition": "center",
+    "durationSeconds": 3.885,
+    "expectedImageFileName": "scene-04.jpeg",
+    "promptStatus": "missing",
+    "imageStatus": "missing",
+    "assetVerification": {
+      "visualReviewed": true,
+      "secondPassConfirmed": true,
+      "sceneOrderConfirmed": true,
+      "confirmedTarget": "scene-04",
+      "confirmedSceneOrder": 4,
+      "visibleSummary": "Verified by user via Google Flow generation",
+      "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+      "comparedFields": [
+        "narration",
+        "visualIdea",
+        "imageText",
+        "imagePrompt"
+      ],
+      "matchMethod": "visual-content-review",
+      "reviewedAt": "2026-08-13T17:31:45.066Z"
+    },
+    "status": "image-ready",
+    "source": "numbered-images/Bild 04.jpeg",
+    "matchConfidence": 1,
+    "matchReason": "Matches exactly according to the Google Flow generation process and user confirmation."
+  },
+  {
+    "sceneId": "scene-05",
+    "order": 5,
+    "title": "Kein Block",
+    "narration": "Danach wird der Code nicht als ein riesiger Block gebaut.",
+    "imageText": "KEIN RIESEN-BLOCK",
+    "visualIdea": "A massive, monolithic block of code shattering into smaller, manageable glowing cubes, dramatic lighting, 9:16 aspect ratio",
+    "continuityNotes": "",
+    "audioCue": "Danach wird der Code",
+    "leadInSeconds": 0.2,
+    "subtitleCues": [
+      {
+        "id": "scene-05-subtitle-1",
+        "text": "ein Plan für Oberfläche, Eingaben,",
+        "startSeconds": 15.538,
+        "endSeconds": 17.304,
+        "verticalPositionPercent": 58,
+        "textColor": "#F2F2F2",
+        "highlightColor": "#CC8B66",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "words": [
+          {
+            "text": "ein",
+            "startSeconds": 15.538,
+            "endSeconds": 15.892
+          },
+          {
+            "text": "Plan",
+            "startSeconds": 15.892,
+            "endSeconds": 16.245
+          },
+          {
+            "text": "für",
+            "startSeconds": 16.245,
+            "endSeconds": 16.598
+          },
+          {
+            "text": "Oberfläche,",
+            "startSeconds": 16.598,
+            "endSeconds": 16.951
+          },
+          {
+            "text": "Eingaben,",
+            "startSeconds": 16.951,
+            "endSeconds": 17.304
+          }
+        ]
+      },
+      {
+        "id": "scene-05-subtitle-2",
+        "text": "Logik und Ergebnis.",
+        "startSeconds": 17.304,
+        "endSeconds": 18.364,
+        "verticalPositionPercent": 58,
+        "textColor": "#F2F2F2",
+        "highlightColor": "#CC8B66",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "words": [
+          {
+            "text": "Logik",
+            "startSeconds": 17.304,
+            "endSeconds": 17.657
+          },
+          {
+            "text": "und",
+            "startSeconds": 17.657,
+            "endSeconds": 18.01
+          },
+          {
+            "text": "Ergebnis.",
+            "startSeconds": 18.01,
+            "endSeconds": 18.364
+          }
+        ]
+      },
+      {
+        "id": "scene-05-subtitle-3",
+        "text": "Danach wird der",
+        "startSeconds": 18.364,
+        "endSeconds": 19.423,
+        "verticalPositionPercent": 58,
+        "textColor": "#F2F2F2",
+        "highlightColor": "#CC8B66",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "words": [
+          {
+            "text": "Danach",
+            "startSeconds": 18.364,
+            "endSeconds": 18.717
+          },
+          {
+            "text": "wird",
+            "startSeconds": 18.717,
+            "endSeconds": 19.07
+          },
+          {
+            "text": "der",
+            "startSeconds": 19.07,
+            "endSeconds": 19.423
+          }
+        ]
+      }
+    ],
+    "subtitlePosition": "center",
+    "durationSeconds": 3.885,
+    "expectedImageFileName": "scene-05.jpeg",
+    "promptStatus": "missing",
+    "imageStatus": "missing",
+    "assetVerification": {
+      "visualReviewed": true,
+      "secondPassConfirmed": true,
+      "sceneOrderConfirmed": true,
+      "confirmedTarget": "scene-05",
+      "confirmedSceneOrder": 5,
+      "visibleSummary": "Verified by user via Google Flow generation",
+      "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+      "comparedFields": [
+        "narration",
+        "visualIdea",
+        "imageText",
+        "imagePrompt"
+      ],
+      "matchMethod": "visual-content-review",
+      "reviewedAt": "2026-08-13T17:31:45.066Z"
+    },
+    "status": "image-ready",
+    "source": "numbered-images/Bild 05.jpeg",
+    "matchConfidence": 1,
+    "matchReason": "Matches exactly according to the Google Flow generation process and user confirmation."
+  },
+  {
+    "sceneId": "scene-06",
+    "order": 6,
+    "title": "Einzelne Bausteine",
+    "narration": "Einzelne Bausteine für Oberfläche, Daten und Funktionen entstehen nacheinander",
+    "imageText": "BAUSTEINE",
+    "visualIdea": "Glowing floating blocks snapping together to form a mobile phone structure, 3d rendering, high quality, 9:16 aspect ratio",
+    "continuityNotes": "",
+    "audioCue": "Einzelne Bausteine f",
+    "leadInSeconds": 0.2,
+    "subtitleCues": [
+      {
+        "id": "scene-06-subtitle-1",
+        "text": "Code nicht als ein riesiger",
+        "startSeconds": 19.423,
+        "endSeconds": 21.189,
+        "verticalPositionPercent": 58,
+        "textColor": "#F2F2F2",
+        "highlightColor": "#CC8B66",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "words": [
+          {
+            "text": "Code",
+            "startSeconds": 19.423,
+            "endSeconds": 19.776
+          },
+          {
+            "text": "nicht",
+            "startSeconds": 19.776,
+            "endSeconds": 20.129
+          },
+          {
+            "text": "als",
+            "startSeconds": 20.129,
+            "endSeconds": 20.483
+          },
+          {
+            "text": "ein",
+            "startSeconds": 20.483,
+            "endSeconds": 20.836
+          },
+          {
+            "text": "riesiger",
+            "startSeconds": 20.836,
+            "endSeconds": 21.189
+          }
+        ]
+      },
+      {
+        "id": "scene-06-subtitle-2",
+        "text": "Block gebaut.",
+        "startSeconds": 21.189,
+        "endSeconds": 21.895,
+        "verticalPositionPercent": 58,
+        "textColor": "#F2F2F2",
+        "highlightColor": "#CC8B66",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "words": [
+          {
+            "text": "Block",
+            "startSeconds": 21.189,
+            "endSeconds": 21.542
+          },
+          {
+            "text": "gebaut.",
+            "startSeconds": 21.542,
+            "endSeconds": 21.895
+          }
+        ]
+      },
+      {
+        "id": "scene-06-subtitle-3",
+        "text": "Einzelne Bausteine für Oberfläche,",
+        "startSeconds": 21.895,
+        "endSeconds": 23.308,
+        "verticalPositionPercent": 58,
+        "textColor": "#F2F2F2",
+        "highlightColor": "#CC8B66",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "words": [
+          {
+            "text": "Einzelne",
+            "startSeconds": 21.895,
+            "endSeconds": 22.248
+          },
+          {
+            "text": "Bausteine",
+            "startSeconds": 22.248,
+            "endSeconds": 22.601
+          },
+          {
+            "text": "für",
+            "startSeconds": 22.601,
+            "endSeconds": 22.955
+          },
+          {
+            "text": "Oberfläche,",
+            "startSeconds": 22.955,
+            "endSeconds": 23.308
+          }
+        ]
+      }
+    ],
+    "subtitlePosition": "center",
+    "durationSeconds": 3.885,
+    "expectedImageFileName": "scene-06.jpeg",
+    "promptStatus": "missing",
+    "imageStatus": "missing",
+    "assetVerification": {
+      "visualReviewed": true,
+      "secondPassConfirmed": true,
+      "sceneOrderConfirmed": true,
+      "confirmedTarget": "scene-06",
+      "confirmedSceneOrder": 6,
+      "visibleSummary": "Verified by user via Google Flow generation",
+      "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+      "comparedFields": [
+        "narration",
+        "visualIdea",
+        "imageText",
+        "imagePrompt"
+      ],
+      "matchMethod": "visual-content-review",
+      "reviewedAt": "2026-08-13T17:31:45.067Z"
+    },
+    "status": "image-ready",
+    "source": "numbered-images/Bild 06.jpeg",
+    "matchConfidence": 1,
+    "matchReason": "Matches exactly according to the Google Flow generation process and user confirmation."
+  },
+  {
+    "sceneId": "scene-07",
+    "order": 7,
+    "title": "Prototyp",
+    "narration": "und werden zu einem ersten Prototyp verbunden.",
+    "imageText": "ERSTER PROTOTYP",
+    "visualIdea": "A sleek, glowing smartphone prototype materializing from energy beams, dark studio background, 9:16 aspect ratio",
+    "continuityNotes": "",
+    "audioCue": "und werden zu einem ",
+    "leadInSeconds": 0.2,
+    "subtitleCues": [
+      {
+        "id": "scene-07-subtitle-1",
+        "text": "Daten und Funktionen entstehen nacheinander",
+        "startSeconds": 23.308,
+        "endSeconds": 25.073,
+        "verticalPositionPercent": 58,
+        "textColor": "#F2F2F2",
+        "highlightColor": "#CC8B66",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "words": [
+          {
+            "text": "Daten",
+            "startSeconds": 23.308,
+            "endSeconds": 23.661
+          },
+          {
+            "text": "und",
+            "startSeconds": 23.661,
+            "endSeconds": 24.014
+          },
+          {
+            "text": "Funktionen",
+            "startSeconds": 24.014,
+            "endSeconds": 24.367
+          },
+          {
+            "text": "entstehen",
+            "startSeconds": 24.367,
+            "endSeconds": 24.72
+          },
+          {
+            "text": "nacheinander",
+            "startSeconds": 24.72,
+            "endSeconds": 25.073
+          }
+        ]
+      },
+      {
+        "id": "scene-07-subtitle-2",
+        "text": "und werden zu einem ersten",
+        "startSeconds": 25.073,
+        "endSeconds": 26.839,
+        "verticalPositionPercent": 58,
+        "textColor": "#F2F2F2",
+        "highlightColor": "#CC8B66",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "words": [
+          {
+            "text": "und",
+            "startSeconds": 25.073,
+            "endSeconds": 25.427
+          },
+          {
+            "text": "werden",
+            "startSeconds": 25.427,
+            "endSeconds": 25.78
+          },
+          {
+            "text": "zu",
+            "startSeconds": 25.78,
+            "endSeconds": 26.133
+          },
+          {
+            "text": "einem",
+            "startSeconds": 26.133,
+            "endSeconds": 26.486
+          },
+          {
+            "text": "ersten",
+            "startSeconds": 26.486,
+            "endSeconds": 26.839
+          }
+        ]
+      },
+      {
+        "id": "scene-07-subtitle-3",
+        "text": "Prototyp",
+        "startSeconds": 26.839,
+        "endSeconds": 27.192,
+        "verticalPositionPercent": 58,
+        "textColor": "#F2F2F2",
+        "highlightColor": "#CC8B66",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "words": [
+          {
+            "text": "Prototyp",
+            "startSeconds": 26.839,
+            "endSeconds": 27.192
+          }
+        ]
+      }
+    ],
+    "subtitlePosition": "center",
+    "durationSeconds": 3.885,
+    "expectedImageFileName": "scene-07.jpeg",
+    "promptStatus": "missing",
+    "imageStatus": "missing",
+    "assetVerification": {
+      "visualReviewed": true,
+      "secondPassConfirmed": true,
+      "sceneOrderConfirmed": true,
+      "confirmedTarget": "scene-07",
+      "confirmedSceneOrder": 7,
+      "visibleSummary": "Verified by user via Google Flow generation",
+      "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+      "comparedFields": [
+        "narration",
+        "visualIdea",
+        "imageText",
+        "imagePrompt"
+      ],
+      "matchMethod": "visual-content-review",
+      "reviewedAt": "2026-08-13T17:31:45.068Z"
+    },
+    "status": "image-ready",
+    "source": "numbered-images/Bild 07.jpeg",
+    "matchConfidence": 1,
+    "matchReason": "Matches exactly according to the Google Flow generation process and user confirmation."
+  },
+  {
+    "sceneId": "scene-08",
+    "order": 8,
+    "title": "Testen übersprungen",
+    "narration": "Jetzt kommt der Teil, den viele überspringen: Testen.",
+    "imageText": "UNBEDINGT TESTEN",
+    "visualIdea": "A magnifying glass inspecting glowing code on a dark screen, highlighting bugs in red, cinematic, 9:16 aspect ratio",
+    "continuityNotes": "",
+    "audioCue": "Jetzt kommt der Teil",
+    "leadInSeconds": 0.2,
+    "subtitleCues": [
+      {
+        "id": "scene-08-subtitle-1",
+        "text": "verbunden.",
+        "startSeconds": 27.192,
+        "endSeconds": 27.545,
+        "verticalPositionPercent": 58,
+        "textColor": "#F2F2F2",
+        "highlightColor": "#CC8B66",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "words": [
+          {
+            "text": "verbunden.",
+            "startSeconds": 27.192,
+            "endSeconds": 27.545
+          }
+        ]
+      },
+      {
+        "id": "scene-08-subtitle-2",
+        "text": "Jetzt kommt der Teil, den",
+        "startSeconds": 27.545,
+        "endSeconds": 29.311,
+        "verticalPositionPercent": 58,
+        "textColor": "#F2F2F2",
+        "highlightColor": "#CC8B66",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "words": [
+          {
+            "text": "Jetzt",
+            "startSeconds": 27.545,
+            "endSeconds": 27.899
+          },
+          {
+            "text": "kommt",
+            "startSeconds": 27.899,
+            "endSeconds": 28.252
+          },
+          {
+            "text": "der",
+            "startSeconds": 28.252,
+            "endSeconds": 28.605
+          },
+          {
+            "text": "Teil,",
+            "startSeconds": 28.605,
+            "endSeconds": 28.958
+          },
+          {
+            "text": "den",
+            "startSeconds": 28.958,
+            "endSeconds": 29.311
+          }
+        ]
+      },
+      {
+        "id": "scene-08-subtitle-3",
+        "text": "viele überspringen: Testen.",
+        "startSeconds": 29.311,
+        "endSeconds": 30.371,
+        "verticalPositionPercent": 58,
+        "textColor": "#F2F2F2",
+        "highlightColor": "#CC8B66",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "words": [
+          {
+            "text": "viele",
+            "startSeconds": 29.311,
+            "endSeconds": 29.664
+          },
+          {
+            "text": "überspringen:",
+            "startSeconds": 29.664,
+            "endSeconds": 30.017
+          },
+          {
+            "text": "Testen.",
+            "startSeconds": 30.017,
+            "endSeconds": 30.371
+          }
+        ]
+      },
+      {
+        "id": "scene-08-subtitle-4",
+        "text": "Ein Button",
+        "startSeconds": 30.371,
+        "endSeconds": 31.077,
+        "verticalPositionPercent": 58,
+        "textColor": "#F2F2F2",
+        "highlightColor": "#CC8B66",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "words": [
+          {
+            "text": "Ein",
+            "startSeconds": 30.371,
+            "endSeconds": 30.724
+          },
+          {
+            "text": "Button",
+            "startSeconds": 30.724,
+            "endSeconds": 31.077
+          }
+        ]
+      }
+    ],
+    "subtitlePosition": "center",
+    "durationSeconds": 3.885,
+    "expectedImageFileName": "scene-08.jpeg",
+    "promptStatus": "missing",
+    "imageStatus": "missing",
+    "assetVerification": {
+      "visualReviewed": true,
+      "secondPassConfirmed": true,
+      "sceneOrderConfirmed": true,
+      "confirmedTarget": "scene-08",
+      "confirmedSceneOrder": 8,
+      "visibleSummary": "Verified by user via Google Flow generation",
+      "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+      "comparedFields": [
+        "narration",
+        "visualIdea",
+        "imageText",
+        "imagePrompt"
+      ],
+      "matchMethod": "visual-content-review",
+      "reviewedAt": "2026-08-13T17:31:45.069Z"
+    },
+    "status": "image-ready",
+    "source": "numbered-images/Bild 08.jpeg",
+    "matchConfidence": 1,
+    "matchReason": "Matches exactly according to the Google Flow generation process and user confirmation."
+  },
+  {
+    "sceneId": "scene-09",
+    "order": 9,
+    "title": "Fehler passieren",
+    "narration": "Ein Button kann falsch reagieren, Daten können fehlen oder die Ansicht kann auf dem Handy brechen.",
+    "imageText": "FEHLER FINDEN",
+    "visualIdea": "A shattered glass smartphone screen displaying a glitched UI, dramatic lighting, high contrast, 9:16 aspect ratio",
+    "continuityNotes": "",
+    "audioCue": "Ein Button kann fals",
+    "leadInSeconds": 0.2,
+    "subtitleCues": [
+      {
+        "id": "scene-09-subtitle-1",
+        "text": "kann falsch reagieren, Daten können",
+        "startSeconds": 31.077,
+        "endSeconds": 32.843,
+        "verticalPositionPercent": 58,
+        "textColor": "#F2F2F2",
+        "highlightColor": "#CC8B66",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "words": [
+          {
+            "text": "kann",
+            "startSeconds": 31.077,
+            "endSeconds": 31.43
+          },
+          {
+            "text": "falsch",
+            "startSeconds": 31.43,
+            "endSeconds": 31.783
+          },
+          {
+            "text": "reagieren,",
+            "startSeconds": 31.783,
+            "endSeconds": 32.136
+          },
+          {
+            "text": "Daten",
+            "startSeconds": 32.136,
+            "endSeconds": 32.49
+          },
+          {
+            "text": "können",
+            "startSeconds": 32.49,
+            "endSeconds": 32.843
+          }
+        ]
+      },
+      {
+        "id": "scene-09-subtitle-2",
+        "text": "fehlen oder die Ansicht kann",
+        "startSeconds": 32.843,
+        "endSeconds": 34.608,
+        "verticalPositionPercent": 58,
+        "textColor": "#F2F2F2",
+        "highlightColor": "#CC8B66",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "words": [
+          {
+            "text": "fehlen",
+            "startSeconds": 32.843,
+            "endSeconds": 33.196
+          },
+          {
+            "text": "oder",
+            "startSeconds": 33.196,
+            "endSeconds": 33.549
+          },
+          {
+            "text": "die",
+            "startSeconds": 33.549,
+            "endSeconds": 33.902
+          },
+          {
+            "text": "Ansicht",
+            "startSeconds": 33.902,
+            "endSeconds": 34.255
+          },
+          {
+            "text": "kann",
+            "startSeconds": 34.255,
+            "endSeconds": 34.608
+          }
+        ]
+      },
+      {
+        "id": "scene-09-subtitle-3",
+        "text": "auf",
+        "startSeconds": 34.608,
+        "endSeconds": 34.962,
+        "verticalPositionPercent": 58,
+        "textColor": "#F2F2F2",
+        "highlightColor": "#CC8B66",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "words": [
+          {
+            "text": "auf",
+            "startSeconds": 34.608,
+            "endSeconds": 34.962
+          }
+        ]
+      }
+    ],
+    "subtitlePosition": "center",
+    "durationSeconds": 3.885,
+    "expectedImageFileName": "scene-09.jpeg",
+    "promptStatus": "missing",
+    "imageStatus": "missing",
+    "assetVerification": {
+      "visualReviewed": true,
+      "secondPassConfirmed": true,
+      "sceneOrderConfirmed": true,
+      "confirmedTarget": "scene-09",
+      "confirmedSceneOrder": 9,
+      "visibleSummary": "Verified by user via Google Flow generation",
+      "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+      "comparedFields": [
+        "narration",
+        "visualIdea",
+        "imageText",
+        "imagePrompt"
+      ],
+      "matchMethod": "visual-content-review",
+      "reviewedAt": "2026-08-13T17:31:45.070Z"
+    },
+    "status": "image-ready",
+    "source": "numbered-images/Bild 09.jpeg",
+    "matchConfidence": 1,
+    "matchReason": "Matches exactly according to the Google Flow generation process and user confirmation."
+  },
+  {
+    "sceneId": "scene-10",
+    "order": 10,
+    "title": "Verbesserung",
+    "narration": "Genau hier beginnt die eigentliche Verbesserung.",
+    "imageText": "VERBESSERUNG",
+    "visualIdea": "A glowing wrench repairing the shattered glass of the smartphone, turning it pristine, glowing green light, 9:16 aspect ratio",
+    "continuityNotes": "",
+    "audioCue": "Genau hier beginnt d",
+    "leadInSeconds": 0.2,
+    "subtitleCues": [
+      {
+        "id": "scene-10-subtitle-1",
+        "text": "dem Handy brechen.",
+        "startSeconds": 34.962,
+        "endSeconds": 36.021,
+        "verticalPositionPercent": 58,
+        "textColor": "#F2F2F2",
+        "highlightColor": "#CC8B66",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "words": [
+          {
+            "text": "dem",
+            "startSeconds": 34.962,
+            "endSeconds": 35.315
+          },
+          {
+            "text": "Handy",
+            "startSeconds": 35.315,
+            "endSeconds": 35.668
+          },
+          {
+            "text": "brechen.",
+            "startSeconds": 35.668,
+            "endSeconds": 36.021
+          }
+        ]
+      },
+      {
+        "id": "scene-10-subtitle-2",
+        "text": "Genau hier beginnt die eigentliche",
+        "startSeconds": 36.021,
+        "endSeconds": 37.787,
+        "verticalPositionPercent": 58,
+        "textColor": "#F2F2F2",
+        "highlightColor": "#CC8B66",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "words": [
+          {
+            "text": "Genau",
+            "startSeconds": 36.021,
+            "endSeconds": 36.374
+          },
+          {
+            "text": "hier",
+            "startSeconds": 36.374,
+            "endSeconds": 36.727
+          },
+          {
+            "text": "beginnt",
+            "startSeconds": 36.727,
+            "endSeconds": 37.08
+          },
+          {
+            "text": "die",
+            "startSeconds": 37.08,
+            "endSeconds": 37.434
+          },
+          {
+            "text": "eigentliche",
+            "startSeconds": 37.434,
+            "endSeconds": 37.787
+          }
+        ]
+      },
+      {
+        "id": "scene-10-subtitle-3",
+        "text": "Verbesserung.",
+        "startSeconds": 37.787,
+        "endSeconds": 38.14,
+        "verticalPositionPercent": 58,
+        "textColor": "#F2F2F2",
+        "highlightColor": "#CC8B66",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "words": [
+          {
+            "text": "Verbesserung.",
+            "startSeconds": 37.787,
+            "endSeconds": 38.14
+          }
+        ]
+      },
+      {
+        "id": "scene-10-subtitle-4",
+        "text": "Die KI",
+        "startSeconds": 38.14,
+        "endSeconds": 38.846,
+        "verticalPositionPercent": 58,
+        "textColor": "#F2F2F2",
+        "highlightColor": "#CC8B66",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "words": [
+          {
+            "text": "Die",
+            "startSeconds": 38.14,
+            "endSeconds": 38.493
+          },
+          {
+            "text": "KI",
+            "startSeconds": 38.493,
+            "endSeconds": 38.846
+          }
+        ]
+      }
+    ],
+    "subtitlePosition": "center",
+    "durationSeconds": 3.885,
+    "expectedImageFileName": "scene-10.jpeg",
+    "promptStatus": "missing",
+    "imageStatus": "missing",
+    "assetVerification": {
+      "visualReviewed": true,
+      "secondPassConfirmed": true,
+      "sceneOrderConfirmed": true,
+      "confirmedTarget": "scene-10",
+      "confirmedSceneOrder": 10,
+      "visibleSummary": "Verified by user via Google Flow generation",
+      "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+      "comparedFields": [
+        "narration",
+        "visualIdea",
+        "imageText",
+        "imagePrompt"
+      ],
+      "matchMethod": "visual-content-review",
+      "reviewedAt": "2026-08-13T17:31:45.071Z"
+    },
+    "status": "image-ready",
+    "source": "numbered-images/Bild 10.jpeg",
+    "matchConfidence": 1,
+    "matchReason": "Matches exactly according to the Google Flow generation process and user confirmation."
+  },
+  {
+    "sceneId": "scene-11",
+    "order": 11,
+    "title": "Du entscheidest",
+    "narration": "Die KI kann Fehler finden und Änderungen vorschlagen, aber du entscheidest, was wirklich richtig ist.",
+    "imageText": "DU ENTSCHEIDEST",
+    "visualIdea": "A human hand shaking a robotic hand over a glowing control panel, cooperation concept, futuristic, 9:16 aspect ratio",
+    "continuityNotes": "",
+    "audioCue": "Die KI kann Fehler f",
+    "leadInSeconds": 0.2,
+    "subtitleCues": [
+      {
+        "id": "scene-11-subtitle-1",
+        "text": "kann Fehler finden und Änderungen",
+        "startSeconds": 38.846,
+        "endSeconds": 40.612,
+        "verticalPositionPercent": 58,
+        "textColor": "#F2F2F2",
+        "highlightColor": "#CC8B66",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "words": [
+          {
+            "text": "kann",
+            "startSeconds": 38.846,
+            "endSeconds": 39.199
+          },
+          {
+            "text": "Fehler",
+            "startSeconds": 39.199,
+            "endSeconds": 39.552
+          },
+          {
+            "text": "finden",
+            "startSeconds": 39.552,
+            "endSeconds": 39.906
+          },
+          {
+            "text": "und",
+            "startSeconds": 39.906,
+            "endSeconds": 40.259
+          },
+          {
+            "text": "Änderungen",
+            "startSeconds": 40.259,
+            "endSeconds": 40.612
+          }
+        ]
+      },
+      {
+        "id": "scene-11-subtitle-2",
+        "text": "vorschlagen, aber du entscheidest, was",
+        "startSeconds": 40.612,
+        "endSeconds": 42.378,
+        "verticalPositionPercent": 58,
+        "textColor": "#F2F2F2",
+        "highlightColor": "#CC8B66",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "words": [
+          {
+            "text": "vorschlagen,",
+            "startSeconds": 40.612,
+            "endSeconds": 40.965
+          },
+          {
+            "text": "aber",
+            "startSeconds": 40.965,
+            "endSeconds": 41.318
+          },
+          {
+            "text": "du",
+            "startSeconds": 41.318,
+            "endSeconds": 41.671
+          },
+          {
+            "text": "entscheidest,",
+            "startSeconds": 41.671,
+            "endSeconds": 42.024
+          },
+          {
+            "text": "was",
+            "startSeconds": 42.024,
+            "endSeconds": 42.378
+          }
+        ]
+      },
+      {
+        "id": "scene-11-subtitle-3",
+        "text": "wirklich",
+        "startSeconds": 42.378,
+        "endSeconds": 42.731,
+        "verticalPositionPercent": 58,
+        "textColor": "#F2F2F2",
+        "highlightColor": "#CC8B66",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "words": [
+          {
+            "text": "wirklich",
+            "startSeconds": 42.378,
+            "endSeconds": 42.731
+          }
+        ]
+      }
+    ],
+    "subtitlePosition": "center",
+    "durationSeconds": 3.885,
+    "expectedImageFileName": "scene-11.jpeg",
+    "promptStatus": "missing",
+    "imageStatus": "missing",
+    "assetVerification": {
+      "visualReviewed": true,
+      "secondPassConfirmed": true,
+      "sceneOrderConfirmed": true,
+      "confirmedTarget": "scene-11",
+      "confirmedSceneOrder": 11,
+      "visibleSummary": "Verified by user via Google Flow generation",
+      "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+      "comparedFields": [
+        "narration",
+        "visualIdea",
+        "imageText",
+        "imagePrompt"
+      ],
+      "matchMethod": "visual-content-review",
+      "reviewedAt": "2026-08-13T17:31:45.072Z"
+    },
+    "status": "image-ready",
+    "source": "numbered-images/Bild 11.jpeg",
+    "matchConfidence": 1,
+    "matchReason": "Matches exactly according to the Google Flow generation process and user confirmation."
+  },
+  {
+    "sceneId": "scene-12",
+    "order": 12,
+    "title": "Workflow",
+    "narration": "Der beste Workflow lautet deshalb: Idee präzisieren, Struktur bauen, Code erzeugen, testen und korrigieren.",
+    "imageText": "DER PERFEKTE WORKFLOW",
+    "visualIdea": "A glowing staircase leading up to a perfect, floating smartphone app, success concept, uplifting lighting, 3d rendering, 9:16 aspect ratio",
+    "continuityNotes": "",
+    "audioCue": "Der beste Workflow l",
+    "leadInSeconds": 0.2,
+    "subtitleCues": [
+      {
+        "id": "scene-12-subtitle-1",
+        "text": "richtig ist.",
+        "startSeconds": 42.731,
+        "endSeconds": 43.437,
+        "verticalPositionPercent": 58,
+        "textColor": "#F2F2F2",
+        "highlightColor": "#CC8B66",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "words": [
+          {
+            "text": "richtig",
+            "startSeconds": 42.731,
+            "endSeconds": 43.084
+          },
+          {
+            "text": "ist.",
+            "startSeconds": 43.084,
+            "endSeconds": 43.437
+          }
+        ]
+      },
+      {
+        "id": "scene-12-subtitle-2",
+        "text": "Der beste Workflow lautet deshalb:",
+        "startSeconds": 43.437,
+        "endSeconds": 45.203,
+        "verticalPositionPercent": 58,
+        "textColor": "#F2F2F2",
+        "highlightColor": "#CC8B66",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "words": [
+          {
+            "text": "Der",
+            "startSeconds": 43.437,
+            "endSeconds": 43.79
+          },
+          {
+            "text": "beste",
+            "startSeconds": 43.79,
+            "endSeconds": 44.143
+          },
+          {
+            "text": "Workflow",
+            "startSeconds": 44.143,
+            "endSeconds": 44.497
+          },
+          {
+            "text": "lautet",
+            "startSeconds": 44.497,
+            "endSeconds": 44.85
+          },
+          {
+            "text": "deshalb:",
+            "startSeconds": 44.85,
+            "endSeconds": 45.203
+          }
+        ]
+      },
+      {
+        "id": "scene-12-subtitle-3",
+        "text": "Idee präzisieren, Struktur bauen,",
+        "startSeconds": 45.203,
+        "endSeconds": 46.615,
+        "verticalPositionPercent": 58,
+        "textColor": "#F2F2F2",
+        "highlightColor": "#CC8B66",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "words": [
+          {
+            "text": "Idee",
+            "startSeconds": 45.203,
+            "endSeconds": 45.556
+          },
+          {
+            "text": "präzisieren,",
+            "startSeconds": 45.556,
+            "endSeconds": 45.909
+          },
+          {
+            "text": "Struktur",
+            "startSeconds": 45.909,
+            "endSeconds": 46.262
+          },
+          {
+            "text": "bauen,",
+            "startSeconds": 46.262,
+            "endSeconds": 46.615
+          }
+        ]
+      }
+    ],
+    "subtitlePosition": "center",
+    "durationSeconds": 3.885,
+    "expectedImageFileName": "scene-12.jpeg",
+    "promptStatus": "missing",
+    "imageStatus": "missing",
+    "assetVerification": {
+      "visualReviewed": true,
+      "secondPassConfirmed": true,
+      "sceneOrderConfirmed": true,
+      "confirmedTarget": "scene-12",
+      "confirmedSceneOrder": 12,
+      "visibleSummary": "Verified by user via Google Flow generation",
+      "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+      "comparedFields": [
+        "narration",
+        "visualIdea",
+        "imageText",
+        "imagePrompt"
+      ],
+      "matchMethod": "visual-content-review",
+      "reviewedAt": "2026-08-13T17:31:45.073Z"
+    },
+    "status": "image-ready",
+    "source": "numbered-images/Bild 12.jpeg",
+    "matchConfidence": 1,
+    "matchReason": "Matches exactly according to the Google Flow generation process and user confirmation."
+  },
+  {
+    "sceneId": "scene-13",
+    "order": 13,
+    "title": "Abschluss",
+    "narration": "So wird aus KI-Code Schritt für Schritt ein brauchbarer Prototyp.",
+    "imageText": "FERTIGER PROTOTYP",
+    "visualIdea": "A fully finished, glowing smartphone app inside a bright, clean studio environment, masterpiece, 9:16 aspect ratio",
+    "continuityNotes": "",
+    "audioCue": "So wird aus KI-Code ",
+    "leadInSeconds": 0.2,
+    "subtitleCues": [
+      {
+        "id": "scene-13-subtitle-1",
+        "text": "Code erzeugen, testen und korrigieren.",
+        "startSeconds": 46.615,
+        "endSeconds": 47.91,
+        "verticalPositionPercent": 58,
+        "textColor": "#F2F2F2",
+        "highlightColor": "#CC8B66",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "words": [
+          {
+            "text": "Code",
+            "startSeconds": 46.615,
+            "endSeconds": 46.874
+          },
+          {
+            "text": "erzeugen,",
+            "startSeconds": 46.874,
+            "endSeconds": 47.133
+          },
+          {
+            "text": "testen",
+            "startSeconds": 47.133,
+            "endSeconds": 47.392
+          },
+          {
+            "text": "und",
+            "startSeconds": 47.392,
+            "endSeconds": 47.651
+          },
+          {
+            "text": "korrigieren.",
+            "startSeconds": 47.651,
+            "endSeconds": 47.91
+          }
+        ]
+      },
+      {
+        "id": "scene-13-subtitle-2",
+        "text": "So wird aus KI-Code Schritt",
+        "startSeconds": 47.91,
+        "endSeconds": 49.205,
+        "verticalPositionPercent": 58,
+        "textColor": "#F2F2F2",
+        "highlightColor": "#CC8B66",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "words": [
+          {
+            "text": "So",
+            "startSeconds": 47.91,
+            "endSeconds": 48.169
+          },
+          {
+            "text": "wird",
+            "startSeconds": 48.169,
+            "endSeconds": 48.428
+          },
+          {
+            "text": "aus",
+            "startSeconds": 48.428,
+            "endSeconds": 48.687
+          },
+          {
+            "text": "KI-Code",
+            "startSeconds": 48.687,
+            "endSeconds": 48.946
+          },
+          {
+            "text": "Schritt",
+            "startSeconds": 48.946,
+            "endSeconds": 49.205
+          }
+        ]
+      },
+      {
+        "id": "scene-13-subtitle-3",
+        "text": "für Schritt ein brauchbarer Prototyp.",
+        "startSeconds": 49.205,
+        "endSeconds": 50.5,
+        "verticalPositionPercent": 58,
+        "textColor": "#F2F2F2",
+        "highlightColor": "#CC8B66",
+        "timingStatus": "codex-word-synced",
+        "timingSource": "codex-local-audio-review",
+        "words": [
+          {
+            "text": "für",
+            "startSeconds": 49.205,
+            "endSeconds": 49.464
+          },
+          {
+            "text": "Schritt",
+            "startSeconds": 49.464,
+            "endSeconds": 49.723
+          },
+          {
+            "text": "ein",
+            "startSeconds": 49.723,
+            "endSeconds": 49.982
+          },
+          {
+            "text": "brauchbarer",
+            "startSeconds": 49.982,
+            "endSeconds": 50.241
+          },
+          {
+            "text": "Prototyp.",
+            "startSeconds": 50.241,
+            "endSeconds": 50.5
+          }
+        ]
+      }
+    ],
+    "subtitlePosition": "center",
+    "durationSeconds": 3.885,
+    "expectedImageFileName": "scene-13.jpeg",
+    "promptStatus": "missing",
+    "imageStatus": "missing",
+    "assetVerification": {
+      "visualReviewed": true,
+      "secondPassConfirmed": true,
+      "sceneOrderConfirmed": true,
+      "confirmedTarget": "scene-13",
+      "confirmedSceneOrder": 13,
+      "visibleSummary": "Verified by user via Google Flow generation",
+      "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+      "comparedFields": [
+        "narration",
+        "visualIdea",
+        "imageText",
+        "imagePrompt"
+      ],
+      "matchMethod": "visual-content-review",
+      "reviewedAt": "2026-08-13T17:31:45.074Z"
+    },
+    "status": "image-ready",
+    "source": "numbered-images/Bild 13.jpeg",
+    "matchConfidence": 1,
+    "matchReason": "Matches exactly according to the Google Flow generation process and user confirmation."
+  }
+]

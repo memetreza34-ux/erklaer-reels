@@ -1,0 +1,36 @@
+{
+  "sceneId": "scene-01",
+  "order": 1,
+  "title": "Idee",
+  "narration": "Aus einer einfachen Idee kannst du mit KI heute erstaunlich schnell einen ersten App Prototyp bauen.",
+  "imageText": "IDEE ZUR APP",
+  "visualIdea": "A glowing lightbulb transforming into a digital wireframe, modern 3d rendering, glassmorphism, dark background, 9:16 aspect ratio",
+  "audioCue": "Aus einer einfachen ",
+  "leadInSeconds": 0.2,
+  "durationSeconds": 4.5,
+  "expectedImageFileName": "scene-01.jpeg",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "status": "image-ready",
+  "source": "numbered-images/Bild 01.jpeg",
+  "matchConfidence": 1,
+  "matchReason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-01",
+    "confirmedSceneOrder": 1,
+    "visibleSummary": "Verified by user via Google Flow generation",
+    "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+    "comparedFields": [
+      "narration",
+      "visualIdea",
+      "imageText",
+      "imagePrompt"
+    ],
+    "matchMethod": "visual-content-review",
+    "reviewedAt": "2026-08-13T17:18:54.567Z"
+  },
+  "continuityNotes": "Stilistisch konsistent mit den vorherigen Szenen, Fokus auf das Hauptthema."
+}

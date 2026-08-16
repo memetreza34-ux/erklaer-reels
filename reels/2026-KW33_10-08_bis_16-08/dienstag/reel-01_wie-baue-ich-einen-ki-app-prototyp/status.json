@@ -1,0 +1,21 @@
+{
+  "workspace": "ready",
+  "content": "needs-review",
+  "script": "provided",
+  "scenes": "planned",
+  "subtitles": "waiting-for-exact-sync",
+  "wordSync": "needs-resync-after-audio-pacing",
+  "effects": "planned",
+  "audio": "needs-review",
+  "imagePrompts": "needs-review",
+  "images": "ready",
+  "cover": "ready",
+  "assetMatching": "verified",
+  "endingHold": "ready",
+  "qualityControl": "render-complete",
+  "audioPacing": "needs-loudness-review",
+  "timeline": "audio-duration-synced",
+  "render": "complete",
+  "renderedFile": "output/reel-01_wie-baue-ich-einen-ki-app-prototyp.mp4",
+  "visibleRenderedFile": "04-video/FERTIGES-VIDEO"
+}

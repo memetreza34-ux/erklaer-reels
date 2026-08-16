@@ -1,0 +1,4010 @@
+{
+  "version": 4,
+  "createdAt": "2026-08-16T05:26:12.912Z",
+  "passed": true,
+  "strict": true,
+  "provider": "codex-local-audio-review",
+  "audioUploaded": false,
+  "apiKeyRequired": false,
+  "workbenchFile": "subtitles/codex-word-sync.json",
+  "audioFile": "audio/voiceover-tight.m4a",
+  "totalWords": 160,
+  "timedWords": 160,
+  "coverage": 1,
+  "cueCount": 32,
+  "subtitleStyle": {
+    "position": "center",
+    "verticalPositionPercent": 58,
+    "textColor": "#F5F7FA",
+    "highlightCurrentWord": true,
+    "highlightColor": "#B7794A",
+    "speakerSyncedWordHighlight": true
+  },
+  "unassignedWords": [],
+  "invalidCues": [],
+  "sceneSummary": [
+    {
+      "sceneId": "scene-01",
+      "startSeconds": 0,
+      "endSeconds": 3.626,
+      "wordCount": 14,
+      "cueCount": 3
+    },
+    {
+      "sceneId": "scene-02",
+      "startSeconds": 3.626,
+      "endSeconds": 6.061,
+      "wordCount": 6,
+      "cueCount": 1
+    },
+    {
+      "sceneId": "scene-03",
+      "startSeconds": 6.061,
+      "endSeconds": 8.844,
+      "wordCount": 8,
+      "cueCount": 2
+    },
+    {
+      "sceneId": "scene-04",
+      "startSeconds": 8.844,
+      "endSeconds": 12.421,
+      "wordCount": 10,
+      "cueCount": 2
+    },
+    {
+      "sceneId": "scene-05",
+      "startSeconds": 12.421,
+      "endSeconds": 18.285,
+      "wordCount": 14,
+      "cueCount": 3
+    },
+    {
+      "sceneId": "scene-06",
+      "startSeconds": 18.285,
+      "endSeconds": 21.564,
+      "wordCount": 9,
+      "cueCount": 2
+    },
+    {
+      "sceneId": "scene-07",
+      "startSeconds": 21.564,
+      "endSeconds": 28.123,
+      "wordCount": 16,
+      "cueCount": 3
+    },
+    {
+      "sceneId": "scene-08",
+      "startSeconds": 28.123,
+      "endSeconds": 32.993,
+      "wordCount": 13,
+      "cueCount": 3
+    },
+    {
+      "sceneId": "scene-09",
+      "startSeconds": 32.993,
+      "endSeconds": 39.602,
+      "wordCount": 19,
+      "cueCount": 4
+    },
+    {
+      "sceneId": "scene-10",
+      "startSeconds": 39.602,
+      "endSeconds": 43.627,
+      "wordCount": 12,
+      "cueCount": 2
+    },
+    {
+      "sceneId": "scene-11",
+      "startSeconds": 43.627,
+      "endSeconds": 46.906,
+      "wordCount": 10,
+      "cueCount": 2
+    },
+    {
+      "sceneId": "scene-12",
+      "startSeconds": 46.906,
+      "endSeconds": 51.577,
+      "wordCount": 17,
+      "cueCount": 3
+    },
+    {
+      "sceneId": "scene-13",
+      "startSeconds": 51.577,
+      "endSeconds": 56.8,
+      "wordCount": 12,
+      "cueCount": 2
+    }
+  ],
+  "checks": [
+    {
+      "id": "words-present",
+      "passed": true,
+      "level": "error",
+      "message": "Die Codex-Arbeitsdatei enthält keine Wörter."
+    },
+    {
+      "id": "timing-coverage",
+      "passed": true,
+      "level": "error",
+      "message": "100 % der Wörter benötigen gültige Start- und Endzeiten."
+    },
+    {
+      "id": "word-1-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 1 (Warum) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-1-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 1 (Warum) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-1-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 1 (Warum) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-1-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 1 (Warum) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-2-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 2 (glaubst) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-2-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 2 (glaubst) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-2-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 2 (glaubst) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-2-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 2 (glaubst) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-3-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 3 (du) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-3-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 3 (du) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-3-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 3 (du) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-3-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 3 (du) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-4-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 4 (eine) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-4-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 4 (eine) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-4-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 4 (eine) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-4-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 4 (eine) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-5-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 5 (Aussage) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-5-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 5 (Aussage) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-5-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 5 (Aussage) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-5-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 5 (Aussage) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-6-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 6 (eher,) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-6-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 6 (eher,) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-6-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 6 (eher,) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-6-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 6 (eher,) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-7-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 7 (nur) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-7-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 7 (nur) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-7-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 7 (nur) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-7-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 7 (nur) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-8-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 8 (weil) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-8-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 8 (weil) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-8-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 8 (weil) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-8-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 8 (weil) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-9-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 9 (du) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-9-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 9 (du) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-9-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 9 (du) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-9-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 9 (du) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-10-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 10 (sie) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-10-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 10 (sie) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-10-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 10 (sie) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-10-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 10 (sie) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-11-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 11 (schon) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-11-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 11 (schon) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-11-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 11 (schon) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-11-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 11 (schon) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-12-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 12 (einmal) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-12-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 12 (einmal) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-12-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 12 (einmal) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-12-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 12 (einmal) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-13-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 13 (gehört) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-13-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 13 (gehört) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-13-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 13 (gehört) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-13-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 13 (gehört) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-14-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 14 (hast?) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-14-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 14 (hast?) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-14-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 14 (hast?) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-14-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 14 (hast?) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-15-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 15 (Dafür) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-15-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 15 (Dafür) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-15-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 15 (Dafür) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-15-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 15 (Dafür) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-16-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 16 (gibt) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-16-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 16 (gibt) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-16-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 16 (gibt) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-16-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 16 (gibt) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-17-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 17 (es) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-17-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 17 (es) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-17-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 17 (es) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-17-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 17 (es) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-18-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 18 (einen) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-18-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 18 (einen) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-18-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 18 (einen) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-18-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 18 (einen) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-19-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 19 (Namen:) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-19-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 19 (Namen:) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-19-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 19 (Namen:) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-19-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 19 (Namen:) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-20-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 20 (Illusory-Truth-Effekt.) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-20-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 20 (Illusory-Truth-Effekt.) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-20-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 20 (Illusory-Truth-Effekt.) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-20-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 20 (Illusory-Truth-Effekt.) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-21-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 21 (Wiederholte) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-21-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 21 (Wiederholte) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-21-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 21 (Wiederholte) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-21-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 21 (Wiederholte) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-22-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 22 (Aussagen) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-22-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 22 (Aussagen) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-22-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 22 (Aussagen) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-22-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 22 (Aussagen) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-23-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 23 (fühlen) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-23-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 23 (fühlen) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-23-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 23 (fühlen) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-23-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 23 (fühlen) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-24-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 24 (sich) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-24-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 24 (sich) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-24-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 24 (sich) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-24-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 24 (sich) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-25-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 25 (vertrauter) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-25-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 25 (vertrauter) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-25-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 25 (vertrauter) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-25-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 25 (vertrauter) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-26-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 26 (an) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-26-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 26 (an) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-26-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 26 (an) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-26-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 26 (an) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-27-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 27 (als) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-27-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 27 (als) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-27-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 27 (als) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-27-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 27 (als) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-28-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 28 (neue.) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-28-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 28 (neue.) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-28-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 28 (neue.) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-28-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 28 (neue.) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-29-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 29 (Und) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-29-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 29 (Und) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-29-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 29 (Und) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-29-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 29 (Und) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-30-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 30 (Vertrautheit) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-30-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 30 (Vertrautheit) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-30-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 30 (Vertrautheit) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-30-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 30 (Vertrautheit) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-31-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 31 (wird) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-31-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 31 (wird) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-31-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 31 (wird) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-31-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 31 (wird) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-32-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 32 (vom) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-32-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 32 (vom) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-32-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 32 (vom) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-32-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 32 (vom) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-33-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 33 (Gehirn) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-33-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 33 (Gehirn) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-33-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 33 (Gehirn) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-33-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 33 (Gehirn) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-34-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 34 (oft) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-34-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 34 (oft) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-34-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 34 (oft) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-34-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 34 (oft) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-35-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 35 (mit) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-35-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 35 (mit) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-35-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 35 (mit) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-35-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 35 (mit) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-36-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 36 („klingt) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-36-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 36 („klingt) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-36-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 36 („klingt) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-36-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 36 („klingt) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-37-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 37 (plausibel“) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-37-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 37 (plausibel“) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-37-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 37 (plausibel“) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-37-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 37 (plausibel“) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-38-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 38 (verwechselt.) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-38-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 38 (verwechselt.) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-38-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 38 (verwechselt.) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-38-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 38 (verwechselt.) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-39-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 39 (Schon) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-39-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 39 (Schon) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-39-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 39 (Schon) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-39-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 39 (Schon) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-40-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 40 (klassische) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-40-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 40 (klassische) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-40-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 40 (klassische) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-40-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 40 (klassische) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-41-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 41 (Experimente) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-41-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 41 (Experimente) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-41-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 41 (Experimente) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-41-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 41 (Experimente) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-42-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 42 (zeigten:) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-42-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 42 (zeigten:) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-42-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 42 (zeigten:) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-42-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 42 (zeigten:) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-43-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 43 (Selbst) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-43-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 43 (Selbst) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-43-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 43 (Selbst) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-43-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 43 (Selbst) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-44-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 44 (falsche) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-44-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 44 (falsche) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-44-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 44 (falsche) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-44-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 44 (falsche) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-45-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 45 (Aussagen) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-45-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 45 (Aussagen) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-45-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 45 (Aussagen) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-45-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 45 (Aussagen) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-46-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 46 (wurden) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-46-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 46 (wurden) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-46-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 46 (wurden) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-46-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 46 (wurden) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-47-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 47 (nach) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-47-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 47 (nach) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-47-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 47 (nach) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-47-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 47 (nach) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-48-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 48 (Wiederholung) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-48-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 48 (Wiederholung) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-48-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 48 (Wiederholung) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-48-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 48 (Wiederholung) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-49-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 49 (häufiger) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-49-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 49 (häufiger) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-49-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 49 (häufiger) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-49-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 49 (häufiger) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-50-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 50 (als) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-50-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 50 (als) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-50-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 50 (als) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-50-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 50 (als) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-51-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 51 (wahr) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-51-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 51 (wahr) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-51-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 51 (wahr) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-51-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 51 (wahr) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-52-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 52 (eingeschätzt.) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-52-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 52 (eingeschätzt.) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-52-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 52 (eingeschätzt.) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-52-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 52 (eingeschätzt.) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-53-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 53 (Der) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-53-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 53 (Der) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-53-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 53 (Der) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-53-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 53 (Der) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-54-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 54 (Effekt) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-54-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 54 (Effekt) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-54-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 54 (Effekt) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-54-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 54 (Effekt) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-55-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 55 (entsteht) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-55-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 55 (entsteht) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-55-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 55 (entsteht) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-55-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 55 (entsteht) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-56-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 56 (nicht,) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-56-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 56 (nicht,) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-56-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 56 (nicht,) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-56-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 56 (nicht,) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-57-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 57 (weil) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-57-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 57 (weil) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-57-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 57 (weil) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-57-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 57 (weil) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-58-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 58 (Wiederholung) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-58-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 58 (Wiederholung) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-58-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 58 (Wiederholung) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-58-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 58 (Wiederholung) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-59-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 59 (neue) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-59-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 59 (neue) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-59-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 59 (neue) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-59-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 59 (neue) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-60-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 60 (Beweise) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-60-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 60 (Beweise) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-60-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 60 (Beweise) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-60-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 60 (Beweise) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-61-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 61 (liefert.) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-61-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 61 (liefert.) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-61-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 61 (liefert.) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-61-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 61 (liefert.) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-62-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 62 (Die) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-62-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 62 (Die) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-62-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 62 (Die) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-62-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 62 (Die) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-63-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 63 (Aussage) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-63-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 63 (Aussage) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-63-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 63 (Aussage) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-63-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 63 (Aussage) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-64-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 64 (lässt) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-64-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 64 (lässt) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-64-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 64 (lässt) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-64-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 64 (lässt) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-65-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 65 (sich) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-65-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 65 (sich) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-65-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 65 (sich) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-65-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 65 (sich) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-66-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 66 (beim) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-66-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 66 (beim) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-66-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 66 (beim) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-66-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 66 (beim) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-67-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 67 (zweiten) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-67-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 67 (zweiten) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-67-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 67 (zweiten) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-67-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 67 (zweiten) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-68-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 68 (Mal) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-68-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 68 (Mal) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-68-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 68 (Mal) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-68-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 68 (Mal) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-69-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 69 (einfach) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-69-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 69 (einfach) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-69-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 69 (einfach) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-69-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 69 (einfach) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-70-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 70 (leichter) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-70-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 70 (leichter) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-70-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 70 (leichter) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-70-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 70 (leichter) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-71-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 71 (verarbeiten.) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-71-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 71 (verarbeiten.) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-71-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 71 (verarbeiten.) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-71-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 71 (verarbeiten.) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-72-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 72 (Diese) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-72-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 72 (Diese) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-72-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 72 (Diese) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-72-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 72 (Diese) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-73-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 73 (mentale) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-73-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 73 (mentale) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-73-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 73 (mentale) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-73-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 73 (mentale) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-74-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 74 (Leichtigkeit) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-74-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 74 (Leichtigkeit) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-74-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 74 (Leichtigkeit) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-74-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 74 (Leichtigkeit) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-75-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 75 (nennt) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-75-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 75 (nennt) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-75-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 75 (nennt) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-75-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 75 (nennt) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-76-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 76 (man) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-76-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 76 (man) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-76-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 76 (man) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-76-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 76 (man) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-77-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 77 (Verarbeitungsflüssigkeit.) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-77-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 77 (Verarbeitungsflüssigkeit.) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-77-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 77 (Verarbeitungsflüssigkeit.) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-77-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 77 (Verarbeitungsflüssigkeit.) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-78-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 78 (Besonders) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-78-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 78 (Besonders) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-78-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 78 (Besonders) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-78-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 78 (Besonders) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-79-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 79 (tückisch:) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-79-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 79 (tückisch:) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-79-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 79 (tückisch:) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-79-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 79 (tückisch:) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-80-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 80 (Wiederholung) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-80-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 80 (Wiederholung) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-80-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 80 (Wiederholung) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-80-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 80 (Wiederholung) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-81-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 81 (kann) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-81-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 81 (kann) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-81-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 81 (kann) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-81-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 81 (kann) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-82-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 82 (sogar) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-82-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 82 (sogar) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-82-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 82 (sogar) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-82-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 82 (sogar) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-83-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 83 (wirken,) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-83-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 83 (wirken,) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-83-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 83 (wirken,) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-83-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 83 (wirken,) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-84-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 84 (wenn) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-84-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 84 (wenn) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-84-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 84 (wenn) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-84-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 84 (wenn) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-85-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 85 (du) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-85-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 85 (du) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-85-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 85 (du) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-85-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 85 (du) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-86-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 86 (das) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-86-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 86 (das) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-86-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 86 (das) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-86-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 86 (das) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-87-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 87 (richtige) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-87-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 87 (richtige) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-87-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 87 (richtige) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-87-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 87 (richtige) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-88-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 88 (Wissen) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-88-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 88 (Wissen) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-88-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 88 (Wissen) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-88-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 88 (Wissen) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-89-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 89 (eigentlich) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-89-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 89 (eigentlich) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-89-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 89 (eigentlich) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-89-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 89 (eigentlich) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-90-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 90 (kennst.) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-90-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 90 (kennst.) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-90-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 90 (kennst.) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-90-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 90 (kennst.) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-91-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 91 (Das) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-91-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 91 (Das) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-91-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 91 (Das) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-91-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 91 (Das) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-92-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 92 (ist) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-92-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 92 (ist) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-92-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 92 (ist) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-92-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 92 (ist) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-93-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 93 (im) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-93-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 93 (im) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-93-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 93 (im) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-93-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 93 (im) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-94-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 94 (Alltag) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-94-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 94 (Alltag) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-94-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 94 (Alltag) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-94-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 94 (Alltag) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-95-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 95 (wichtig) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-95-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 95 (wichtig) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-95-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 95 (wichtig) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-95-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 95 (wichtig) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-96-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 96 (bei) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-96-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 96 (bei) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-96-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 96 (bei) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-96-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 96 (bei) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-97-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 97 (Schlagzeilen,) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-97-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 97 (Schlagzeilen,) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-97-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 97 (Schlagzeilen,) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-97-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 97 (Schlagzeilen,) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-98-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 98 (Gerüchten,) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-98-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 98 (Gerüchten,) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-98-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 98 (Gerüchten,) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-98-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 98 (Gerüchten,) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-99-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 99 (Werbung) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-99-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 99 (Werbung) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-99-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 99 (Werbung) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-99-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 99 (Werbung) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-100-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 100 (und) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-100-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 100 (und) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-100-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 100 (und) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-100-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 100 (und) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-101-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 101 (Social) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-101-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 101 (Social) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-101-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 101 (Social) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-101-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 101 (Social) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-102-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 102 (Media,) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-102-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 102 (Media,) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-102-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 102 (Media,) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-102-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 102 (Media,) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-103-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 103 (wo) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-103-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 103 (wo) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-103-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 103 (wo) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-103-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 103 (wo) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-104-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 104 (dieselbe) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-104-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 104 (dieselbe) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-104-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 104 (dieselbe) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-104-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 104 (dieselbe) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-105-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 105 (Behauptung) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-105-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 105 (Behauptung) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-105-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 105 (Behauptung) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-105-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 105 (Behauptung) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-106-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 106 (immer) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-106-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 106 (immer) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-106-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 106 (immer) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-106-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 106 (immer) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-107-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 107 (wieder) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-107-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 107 (wieder) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-107-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 107 (wieder) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-107-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 107 (wieder) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-108-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 108 (auftauchen) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-108-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 108 (auftauchen) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-108-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 108 (auftauchen) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-108-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 108 (auftauchen) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-109-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 109 (kann.) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-109-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 109 (kann.) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-109-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 109 (kann.) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-109-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 109 (kann.) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-110-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 110 (Eine) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-110-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 110 (Eine) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-110-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 110 (Eine) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-110-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 110 (Eine) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-111-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 111 (große) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-111-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 111 (große) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-111-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 111 (große) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-111-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 111 (große) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-112-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 112 (Meta-Analyse) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-112-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 112 (Meta-Analyse) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-112-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 112 (Meta-Analyse) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-112-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 112 (Meta-Analyse) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-113-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 113 (von) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-113-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 113 (von) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-113-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 113 (von) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-113-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 113 (von) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-114-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 114 (2026) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-114-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 114 (2026) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-114-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 114 (2026) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-114-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 114 (2026) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-115-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 115 (bestätigte) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-115-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 115 (bestätigte) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-115-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 115 (bestätigte) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-115-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 115 (bestätigte) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-116-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 116 (den) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-116-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 116 (den) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-116-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 116 (den) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-116-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 116 (den) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-117-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 117 (Effekt) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-117-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 117 (Effekt) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-117-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 117 (Effekt) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-117-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 117 (Effekt) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-118-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 118 (über) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-118-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 118 (über) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-118-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 118 (über) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-118-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 118 (über) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-119-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 119 (viele) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-119-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 119 (viele) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-119-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 119 (viele) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-119-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 119 (viele) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-120-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 120 (Studien) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-120-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 120 (Studien) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-120-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 120 (Studien) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-120-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 120 (Studien) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-121-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 121 (hinweg.) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-121-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 121 (hinweg.) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-121-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 121 (hinweg.) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-121-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 121 (hinweg.) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-122-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 122 (Deshalb) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-122-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 122 (Deshalb) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-122-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 122 (Deshalb) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-122-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 122 (Deshalb) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-123-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 123 (ist) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-123-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 123 (ist) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-123-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 123 (ist) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-123-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 123 (ist) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-124-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 124 („Das) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-124-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 124 („Das) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-124-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 124 („Das) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-124-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 124 („Das) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-125-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 125 (habe) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-125-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 125 (habe) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-125-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 125 (habe) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-125-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 125 (habe) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-126-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 126 (ich) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-126-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 126 (ich) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-126-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 126 (ich) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-126-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 126 (ich) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-127-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 127 (schon) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-127-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 127 (schon) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-127-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 127 (schon) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-127-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 127 (schon) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-128-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 128 (oft) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-128-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 128 (oft) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-128-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 128 (oft) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-128-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 128 (oft) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-129-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 129 (gehört“) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-129-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 129 (gehört“) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-129-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 129 (gehört“) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-129-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 129 (gehört“) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-130-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 130 (kein) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-130-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 130 (kein) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-130-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 130 (kein) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-130-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 130 (kein) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-131-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 131 (Qualitätsmerkmal.) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-131-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 131 (Qualitätsmerkmal.) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-131-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 131 (Qualitätsmerkmal.) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-131-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 131 (Qualitätsmerkmal.) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-132-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 132 (Prüf) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-132-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 132 (Prüf) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-132-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 132 (Prüf) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-132-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 132 (Prüf) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-133-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 133 (dich) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-133-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 133 (dich) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-133-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 133 (dich) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-133-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 133 (dich) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-134-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 134 (selbst:) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-134-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 134 (selbst:) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-134-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 134 (selbst:) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-134-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 134 (selbst:) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-135-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 135 (Würdest) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-135-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 135 (Würdest) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-135-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 135 (Würdest) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-135-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 135 (Würdest) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-136-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 136 (du) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-136-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 136 (du) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-136-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 136 (du) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-136-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 136 (du) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-137-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 137 (die) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-137-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 137 (die) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-137-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 137 (die) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-137-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 137 (die) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-138-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 138 (Aussage) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-138-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 138 (Aussage) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-138-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 138 (Aussage) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-138-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 138 (Aussage) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-139-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 139 (auch) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-139-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 139 (auch) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-139-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 139 (auch) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-139-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 139 (auch) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-140-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 140 (glauben,) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-140-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 140 (glauben,) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-140-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 140 (glauben,) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-140-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 140 (glauben,) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-141-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 141 (wenn) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-141-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 141 (wenn) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-141-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 141 (wenn) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-141-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 141 (wenn) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-142-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 142 (du) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-142-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 142 (du) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-142-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 142 (du) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-142-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 142 (du) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-143-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 143 (sie) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-143-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 143 (sie) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-143-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 143 (sie) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-143-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 143 (sie) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-144-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 144 (heute) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-144-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 144 (heute) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-144-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 144 (heute) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-144-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 144 (heute) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-145-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 145 (zum) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-145-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 145 (zum) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-145-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 145 (zum) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-145-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 145 (zum) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-146-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 146 (ersten) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-146-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 146 (ersten) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-146-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 146 (ersten) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-146-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 146 (ersten) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-147-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 147 (Mal) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-147-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 147 (Mal) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-147-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 147 (Mal) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-147-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 147 (Mal) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-148-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 148 (hörst?) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-148-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 148 (hörst?) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-148-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 148 (hörst?) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-148-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 148 (hörst?) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-149-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 149 (Die) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-149-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 149 (Die) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-149-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 149 (Die) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-149-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 149 (Die) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-150-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 150 (Lösung:) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-150-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 150 (Lösung:) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-150-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 150 (Lösung:) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-150-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 150 (Lösung:) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-151-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 151 (Quelle) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-151-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 151 (Quelle) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-151-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 151 (Quelle) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-151-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 151 (Quelle) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-152-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 152 (prüfen,) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-152-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 152 (prüfen,) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-152-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 152 (prüfen,) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-152-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 152 (prüfen,) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-153-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 153 (Belege) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-153-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 153 (Belege) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-153-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 153 (Belege) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-153-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 153 (Belege) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-154-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 154 (suchen) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-154-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 154 (suchen) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-154-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 154 (suchen) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-154-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 154 (suchen) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-155-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 155 (und) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-155-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 155 (und) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-155-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 155 (und) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-155-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 155 (und) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-156-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 156 (Vertrautheit) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-156-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 156 (Vertrautheit) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-156-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 156 (Vertrautheit) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-156-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 156 (Vertrautheit) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-157-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 157 (nie) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-157-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 157 (nie) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-157-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 157 (nie) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-157-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 157 (nie) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-158-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 158 (mit) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-158-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 158 (mit) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-158-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 158 (mit) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-158-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 158 (mit) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-159-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 159 (Wahrheit) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-159-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 159 (Wahrheit) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-159-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 159 (Wahrheit) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-159-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 159 (Wahrheit) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "word-160-timing",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 160 (verwechseln.) besitzt keine gültige Zeit."
+    },
+    {
+      "id": "word-160-order",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 160 (verwechseln.) überlappt zu stark oder ist falsch sortiert."
+    },
+    {
+      "id": "word-160-reviewed",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 160 (verwechseln.) wurde noch nicht akustisch bestätigt."
+    },
+    {
+      "id": "word-160-confidence",
+      "passed": true,
+      "level": "error",
+      "message": "Wort 160 (verwechseln.) benötigt eine realistische Konfidenz von mindestens 0,85."
+    },
+    {
+      "id": "within-audio-duration",
+      "passed": true,
+      "level": "error",
+      "message": "Das letzte Wort endet nach der Audiodauer."
+    },
+    {
+      "id": "script-text-unchanged",
+      "passed": true,
+      "level": "error",
+      "message": "Der Wortlaut der Codex-Arbeitsdatei wurde verändert."
+    },
+    {
+      "id": "subtitle-cues-created",
+      "passed": true,
+      "level": "error",
+      "message": "Es wurden keine Untertitel-Cues erzeugt."
+    },
+    {
+      "id": "all-spoken-words-assigned",
+      "passed": true,
+      "level": "error",
+      "message": "Nicht zugeordnete gesprochene Wörter: keine."
+    },
+    {
+      "id": "all-scenes-covered",
+      "passed": true,
+      "level": "error",
+      "message": "Szenen ohne bestätigte Wörter: keine."
+    },
+    {
+      "id": "exact-cue-timings",
+      "passed": true,
+      "level": "error",
+      "message": "Ungültige Untertitel-Cues: keine."
+    }
+  ],
+  "audioFingerprintSha256": "37086dfd9b34a917e595f3aa2bec15415770f7fdc2dbf9c96b6e66998a75900b",
+  "audioBindingStatus": "verified"
+}

@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "styleId": "bottom-center-dynamic",
+  "expectedWordsPerLine": 4,
+  "position": "center",
+  "fontSize": 48,
+  "maxLines": 2,
+  "textColor": "#F5F7FA",
+  "highlightColor": "#B7794A",
+  "backgroundColor": "transparent",
+  "highlightCurrentWord": true,
+  "verticalPositionPercent": 58
+}

@@ -1,0 +1,133 @@
+{
+  "sceneId": "scene-07",
+  "order": 7,
+  "title": "Prototyp",
+  "narration": "und werden zu einem ersten Prototyp verbunden.",
+  "imageText": "ERSTER PROTOTYP",
+  "visualIdea": "A sleek, glowing smartphone prototype materializing from energy beams, dark studio background, 9:16 aspect ratio",
+  "continuityNotes": "",
+  "audioCue": "und werden zu einem ",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [
+    {
+      "id": "scene-07-subtitle-1",
+      "text": "Daten und Funktionen entstehen nacheinander",
+      "startSeconds": 23.308,
+      "endSeconds": 25.073,
+      "verticalPositionPercent": 58,
+      "textColor": "#F2F2F2",
+      "highlightColor": "#CC8B66",
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "words": [
+        {
+          "text": "Daten",
+          "startSeconds": 23.308,
+          "endSeconds": 23.661
+        },
+        {
+          "text": "und",
+          "startSeconds": 23.661,
+          "endSeconds": 24.014
+        },
+        {
+          "text": "Funktionen",
+          "startSeconds": 24.014,
+          "endSeconds": 24.367
+        },
+        {
+          "text": "entstehen",
+          "startSeconds": 24.367,
+          "endSeconds": 24.72
+        },
+        {
+          "text": "nacheinander",
+          "startSeconds": 24.72,
+          "endSeconds": 25.073
+        }
+      ]
+    },
+    {
+      "id": "scene-07-subtitle-2",
+      "text": "und werden zu einem ersten",
+      "startSeconds": 25.073,
+      "endSeconds": 26.839,
+      "verticalPositionPercent": 58,
+      "textColor": "#F2F2F2",
+      "highlightColor": "#CC8B66",
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "words": [
+        {
+          "text": "und",
+          "startSeconds": 25.073,
+          "endSeconds": 25.427
+        },
+        {
+          "text": "werden",
+          "startSeconds": 25.427,
+          "endSeconds": 25.78
+        },
+        {
+          "text": "zu",
+          "startSeconds": 25.78,
+          "endSeconds": 26.133
+        },
+        {
+          "text": "einem",
+          "startSeconds": 26.133,
+          "endSeconds": 26.486
+        },
+        {
+          "text": "ersten",
+          "startSeconds": 26.486,
+          "endSeconds": 26.839
+        }
+      ]
+    },
+    {
+      "id": "scene-07-subtitle-3",
+      "text": "Prototyp",
+      "startSeconds": 26.839,
+      "endSeconds": 27.192,
+      "verticalPositionPercent": 58,
+      "textColor": "#F2F2F2",
+      "highlightColor": "#CC8B66",
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "words": [
+        {
+          "text": "Prototyp",
+          "startSeconds": 26.839,
+          "endSeconds": 27.192
+        }
+      ]
+    }
+  ],
+  "subtitlePosition": "center",
+  "durationSeconds": 3.885,
+  "expectedImageFileName": "scene-07.jpeg",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-07",
+    "confirmedSceneOrder": 7,
+    "visibleSummary": "Verified by user via Google Flow generation",
+    "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+    "comparedFields": [
+      "narration",
+      "visualIdea",
+      "imageText",
+      "imagePrompt"
+    ],
+    "matchMethod": "visual-content-review",
+    "reviewedAt": "2026-08-13T17:31:45.068Z"
+  },
+  "status": "image-ready",
+  "source": "numbered-images/Bild 07.jpeg",
+  "matchConfidence": 1,
+  "matchReason": "Matches exactly according to the Google Flow generation process and user confirmation."
+}

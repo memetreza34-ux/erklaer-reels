@@ -1,0 +1,133 @@
+{
+  "sceneId": "scene-05",
+  "order": 5,
+  "title": "Kein Block",
+  "narration": "Danach wird der Code nicht als ein riesiger Block gebaut.",
+  "imageText": "KEIN RIESEN-BLOCK",
+  "visualIdea": "A massive, monolithic block of code shattering into smaller, manageable glowing cubes, dramatic lighting, 9:16 aspect ratio",
+  "continuityNotes": "",
+  "audioCue": "Danach wird der Code",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [
+    {
+      "id": "scene-05-subtitle-1",
+      "text": "ein Plan für Oberfläche, Eingaben,",
+      "startSeconds": 15.538,
+      "endSeconds": 17.304,
+      "verticalPositionPercent": 58,
+      "textColor": "#F2F2F2",
+      "highlightColor": "#CC8B66",
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "words": [
+        {
+          "text": "ein",
+          "startSeconds": 15.538,
+          "endSeconds": 15.892
+        },
+        {
+          "text": "Plan",
+          "startSeconds": 15.892,
+          "endSeconds": 16.245
+        },
+        {
+          "text": "für",
+          "startSeconds": 16.245,
+          "endSeconds": 16.598
+        },
+        {
+          "text": "Oberfläche,",
+          "startSeconds": 16.598,
+          "endSeconds": 16.951
+        },
+        {
+          "text": "Eingaben,",
+          "startSeconds": 16.951,
+          "endSeconds": 17.304
+        }
+      ]
+    },
+    {
+      "id": "scene-05-subtitle-2",
+      "text": "Logik und Ergebnis.",
+      "startSeconds": 17.304,
+      "endSeconds": 18.364,
+      "verticalPositionPercent": 58,
+      "textColor": "#F2F2F2",
+      "highlightColor": "#CC8B66",
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "words": [
+        {
+          "text": "Logik",
+          "startSeconds": 17.304,
+          "endSeconds": 17.657
+        },
+        {
+          "text": "und",
+          "startSeconds": 17.657,
+          "endSeconds": 18.01
+        },
+        {
+          "text": "Ergebnis.",
+          "startSeconds": 18.01,
+          "endSeconds": 18.364
+        }
+      ]
+    },
+    {
+      "id": "scene-05-subtitle-3",
+      "text": "Danach wird der",
+      "startSeconds": 18.364,
+      "endSeconds": 19.423,
+      "verticalPositionPercent": 58,
+      "textColor": "#F2F2F2",
+      "highlightColor": "#CC8B66",
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "words": [
+        {
+          "text": "Danach",
+          "startSeconds": 18.364,
+          "endSeconds": 18.717
+        },
+        {
+          "text": "wird",
+          "startSeconds": 18.717,
+          "endSeconds": 19.07
+        },
+        {
+          "text": "der",
+          "startSeconds": 19.07,
+          "endSeconds": 19.423
+        }
+      ]
+    }
+  ],
+  "subtitlePosition": "center",
+  "durationSeconds": 3.885,
+  "expectedImageFileName": "scene-05.jpeg",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-05",
+    "confirmedSceneOrder": 5,
+    "visibleSummary": "Verified by user via Google Flow generation",
+    "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+    "comparedFields": [
+      "narration",
+      "visualIdea",
+      "imageText",
+      "imagePrompt"
+    ],
+    "matchMethod": "visual-content-review",
+    "reviewedAt": "2026-08-13T17:31:45.066Z"
+  },
+  "status": "image-ready",
+  "source": "numbered-images/Bild 05.jpeg",
+  "matchConfidence": 1,
+  "matchReason": "Matches exactly according to the Google Flow generation process and user confirmation."
+}

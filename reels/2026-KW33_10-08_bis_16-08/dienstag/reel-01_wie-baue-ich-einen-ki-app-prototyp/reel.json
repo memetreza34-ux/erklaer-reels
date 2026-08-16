@@ -1,0 +1,22 @@
+{
+  "reelId": "reel-01_wie-baue-ich-einen-ki-app-prototyp",
+  "title": "Wie baue ich einen KI App Prototyp",
+  "topicArea": "",
+  "date": "2026-08-11",
+  "language": "de",
+  "promptLanguage": "en",
+  "aspectRatio": "9:16",
+  "targetDurationSeconds": 58,
+  "endingHoldSeconds": 0.7,
+  "sceneCount": 13,
+  "visualStyleId": "",
+  "visualStyleReason": "",
+  "subtitlesEnabled": true,
+  "motionEffectsEnabled": true,
+  "soundEffectsEnabled": true,
+  "backgroundMusicEnabled": false,
+  "status": "content-needs-review",
+  "sourceQualitySchemaVersion": 2,
+  "coverVisualIdea": "A glowing futuristic smartphone showing an AI generating an app prototype, 3d rendering, glassmorphism",
+  "coverPrompt": "A glowing futuristic smartphone showing an AI generating an app prototype, 3d rendering, glassmorphism"
+}

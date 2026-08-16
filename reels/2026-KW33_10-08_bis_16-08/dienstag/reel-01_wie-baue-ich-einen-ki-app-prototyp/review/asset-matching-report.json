@@ -1,0 +1,333 @@
+{
+  "createdAt": "2026-08-13T17:31:45.075Z",
+  "applied": [
+    {
+      "source": "numbered-images/Bild 00.jpeg",
+      "target": "cover",
+      "destination": "cover/cover.jpeg",
+      "confidence": 1,
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "visibleSummary": "Verified by user via Google Flow generation",
+        "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+        "comparedFields": [
+          "headline",
+          "coverVisualIdea",
+          "coverPrompt"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-13T17:31:45.062Z"
+      }
+    },
+    {
+      "source": "numbered-images/Bild 01.jpeg",
+      "target": "scene-01",
+      "destination": "scenes/scene-01/scene-01.jpeg",
+      "confidence": 1,
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-01",
+        "confirmedSceneOrder": 1,
+        "visibleSummary": "Verified by user via Google Flow generation",
+        "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-13T17:31:45.064Z"
+      }
+    },
+    {
+      "source": "numbered-images/Bild 02.jpeg",
+      "target": "scene-02",
+      "destination": "scenes/scene-02/scene-02.jpeg",
+      "confidence": 1,
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-02",
+        "confirmedSceneOrder": 2,
+        "visibleSummary": "Verified by user via Google Flow generation",
+        "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-13T17:31:45.064Z"
+      }
+    },
+    {
+      "source": "numbered-images/Bild 03.jpeg",
+      "target": "scene-03",
+      "destination": "scenes/scene-03/scene-03.jpeg",
+      "confidence": 1,
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-03",
+        "confirmedSceneOrder": 3,
+        "visibleSummary": "Verified by user via Google Flow generation",
+        "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-13T17:31:45.065Z"
+      }
+    },
+    {
+      "source": "numbered-images/Bild 04.jpeg",
+      "target": "scene-04",
+      "destination": "scenes/scene-04/scene-04.jpeg",
+      "confidence": 1,
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-04",
+        "confirmedSceneOrder": 4,
+        "visibleSummary": "Verified by user via Google Flow generation",
+        "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-13T17:31:45.066Z"
+      }
+    },
+    {
+      "source": "numbered-images/Bild 05.jpeg",
+      "target": "scene-05",
+      "destination": "scenes/scene-05/scene-05.jpeg",
+      "confidence": 1,
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-05",
+        "confirmedSceneOrder": 5,
+        "visibleSummary": "Verified by user via Google Flow generation",
+        "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-13T17:31:45.066Z"
+      }
+    },
+    {
+      "source": "numbered-images/Bild 06.jpeg",
+      "target": "scene-06",
+      "destination": "scenes/scene-06/scene-06.jpeg",
+      "confidence": 1,
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-06",
+        "confirmedSceneOrder": 6,
+        "visibleSummary": "Verified by user via Google Flow generation",
+        "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-13T17:31:45.067Z"
+      }
+    },
+    {
+      "source": "numbered-images/Bild 07.jpeg",
+      "target": "scene-07",
+      "destination": "scenes/scene-07/scene-07.jpeg",
+      "confidence": 1,
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-07",
+        "confirmedSceneOrder": 7,
+        "visibleSummary": "Verified by user via Google Flow generation",
+        "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-13T17:31:45.068Z"
+      }
+    },
+    {
+      "source": "numbered-images/Bild 08.jpeg",
+      "target": "scene-08",
+      "destination": "scenes/scene-08/scene-08.jpeg",
+      "confidence": 1,
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-08",
+        "confirmedSceneOrder": 8,
+        "visibleSummary": "Verified by user via Google Flow generation",
+        "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-13T17:31:45.069Z"
+      }
+    },
+    {
+      "source": "numbered-images/Bild 09.jpeg",
+      "target": "scene-09",
+      "destination": "scenes/scene-09/scene-09.jpeg",
+      "confidence": 1,
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-09",
+        "confirmedSceneOrder": 9,
+        "visibleSummary": "Verified by user via Google Flow generation",
+        "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-13T17:31:45.070Z"
+      }
+    },
+    {
+      "source": "numbered-images/Bild 10.jpeg",
+      "target": "scene-10",
+      "destination": "scenes/scene-10/scene-10.jpeg",
+      "confidence": 1,
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-10",
+        "confirmedSceneOrder": 10,
+        "visibleSummary": "Verified by user via Google Flow generation",
+        "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-13T17:31:45.071Z"
+      }
+    },
+    {
+      "source": "numbered-images/Bild 11.jpeg",
+      "target": "scene-11",
+      "destination": "scenes/scene-11/scene-11.jpeg",
+      "confidence": 1,
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-11",
+        "confirmedSceneOrder": 11,
+        "visibleSummary": "Verified by user via Google Flow generation",
+        "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-13T17:31:45.072Z"
+      }
+    },
+    {
+      "source": "numbered-images/Bild 12.jpeg",
+      "target": "scene-12",
+      "destination": "scenes/scene-12/scene-12.jpeg",
+      "confidence": 1,
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-12",
+        "confirmedSceneOrder": 12,
+        "visibleSummary": "Verified by user via Google Flow generation",
+        "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-13T17:31:45.073Z"
+      }
+    },
+    {
+      "source": "numbered-images/Bild 13.jpeg",
+      "target": "scene-13",
+      "destination": "scenes/scene-13/scene-13.jpeg",
+      "confidence": 1,
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-13",
+        "confirmedSceneOrder": 13,
+        "visibleSummary": "Verified by user via Google Flow generation",
+        "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+        "comparedFields": [
+          "narration",
+          "visualIdea",
+          "imageText",
+          "imagePrompt"
+        ],
+        "matchMethod": "visual-content-review",
+        "reviewedAt": "2026-08-13T17:31:45.074Z"
+      }
+    }
+  ],
+  "skipped": [],
+  "unmatched": [],
+  "verificationReport": "review/scene-asset-verification.json",
+  "summary": {
+    "assignedScenes": 13,
+    "totalScenes": 13,
+    "audioReady": false,
+    "coverReady": true,
+    "sceneVerificationPassed": true
+  }
+}

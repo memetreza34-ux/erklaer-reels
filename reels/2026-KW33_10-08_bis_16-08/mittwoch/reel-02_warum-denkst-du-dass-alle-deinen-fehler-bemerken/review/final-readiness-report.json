@@ -1,0 +1,744 @@
+{
+  "version": 10,
+  "createdAt": "2026-08-13T16:25:51.198Z",
+  "reelDirectory": "reels/2026-KW33_10-08_bis_16-08/mittwoch/reel-02_warum-denkst-du-dass-alle-deinen-fehler-bemerken",
+  "strict": false,
+  "readyForRenderer": false,
+  "stages": {
+    "sourceQuality": {
+      "passed": true,
+      "required": false,
+      "legacy": true,
+      "reason": null,
+      "checks": [
+        {
+          "id": "source-quality-binding",
+          "passed": true,
+          "level": "error",
+          "message": "Verpflichtende Quellen-QC: bestanden."
+        }
+      ]
+    },
+    "audioPacingFileBinding": {
+      "passed": true,
+      "required": true,
+      "legacy": false,
+      "reason": null,
+      "checks": [
+        {
+          "id": "audio-pacing-file-binding",
+          "passed": true,
+          "level": "error",
+          "message": "Audio-Pacing-Dateibindung: bestanden."
+        }
+      ]
+    },
+    "wordSyncAudioBinding": {
+      "passed": true,
+      "required": true,
+      "legacy": false,
+      "reason": null,
+      "checks": [
+        {
+          "id": "word-sync-audio-binding",
+          "passed": true,
+          "level": "error",
+          "message": "Word-Sync-Audiobindung: bestanden."
+        }
+      ]
+    },
+    "content": {
+      "passed": false,
+      "reportFile": "review/content-readiness.json",
+      "summary": {
+        "passedChecks": 224,
+        "failedChecks": 27,
+        "warnings": 31,
+        "totalChecks": 282
+      }
+    },
+    "audioPacing": {
+      "passed": true,
+      "strict": false,
+      "playbackRate": 1.1,
+      "loudnessTargetLufs": -16,
+      "truePeakDbtp": -1.5,
+      "loudnessMeasured": true,
+      "measuredIntegratedLufs": -16.7,
+      "measuredTruePeakDbtp": -1.39,
+      "beforeSeconds": 70.528,
+      "afterSeconds": 55.8,
+      "reportFile": "review/audio-pacing-report.json",
+      "summary": {
+        "passedChecks": 12,
+        "failedChecks": 0,
+        "warnings": 0,
+        "totalChecks": 12
+      }
+    },
+    "timeline": {
+      "passed": true,
+      "timingStatus": "audio-synced",
+      "renderStatus": "ready-for-renderer",
+      "reportFile": "review/final-video-report.json",
+      "summary": {
+        "passedChecks": 79,
+        "failedChecks": 0,
+        "warnings": 12,
+        "totalChecks": 91
+      }
+    },
+    "wordSync": {
+      "passed": true,
+      "strict": false,
+      "provider": "codex-local-audio-review",
+      "cueCount": 34,
+      "exactCueCount": 34,
+      "expectedWordCount": 172,
+      "renderedWordCount": 172,
+      "fullCoverage": true,
+      "reportFile": "review/word-sync-report.json",
+      "summary": {
+        "passedChecks": 106,
+        "failedChecks": 0,
+        "warnings": 0,
+        "totalChecks": 106
+      }
+    },
+    "visualQuality": {
+      "passed": true,
+      "strict": false,
+      "reportFile": "review/visual-quality-report.json",
+      "inspectionFile": "review/visual-inspection.json",
+      "summary": {
+        "assetsChecked": 14,
+        "passedChecks": 118,
+        "failedChecks": 0,
+        "warnings": 42,
+        "totalChecks": 160
+      }
+    }
+  },
+  "progress": {
+    "reelId": "reel-02_warum-denkst-du-dass-alle-deinen-fehler-bemerken",
+    "title": "Warum denkst du, dass alle deinen Fehler bemerken?",
+    "preProduction": 95,
+    "assets": 100,
+    "audioPacing": 100,
+    "timeline": 100,
+    "wordSync": 100,
+    "visualQuality": 50,
+    "productionReady": 93,
+    "rendering": 0,
+    "overall": 84,
+    "details": {
+      "scriptsReady": true,
+      "styleReady": true,
+      "scenesReady": "13/13",
+      "promptsReady": "13/13",
+      "coverPromptReady": true,
+      "captionReady": true,
+      "sourcesReady": true,
+      "contentCheckReady": false,
+      "audioReady": true,
+      "sceneImagesReady": "13/13",
+      "coverImageReady": true,
+      "assetReportReady": true,
+      "audioPacingCreated": true,
+      "audioPacingPassed": true,
+      "audioPacingRate": 1.1,
+      "audioPacingRateSafe": true,
+      "audioLoudnessNormalized": true,
+      "audioLoudnessTargetSafe": true,
+      "audioTruePeakSafe": true,
+      "audioMeasurementRequired": true,
+      "audioMeasurementPresent": true,
+      "audioMeasurementSafe": true,
+      "measuredIntegratedLufs": -16.7,
+      "measuredTruePeakDbtp": -1.39,
+      "audioPacingDurationReduced": true,
+      "timelineBuilt": true,
+      "audioDurationKnown": true,
+      "audioSynced": true,
+      "renderReady": true,
+      "timelineCheckReady": true,
+      "wordSyncRequired": true,
+      "wordSyncCreated": true,
+      "wordSyncPassed": true,
+      "wordSyncProvider": "codex-local-audio-review",
+      "wordCoverage": 1,
+      "visualReportCreated": true,
+      "visualTechnicalReady": true,
+      "visualAssetsReviewed": "0/14",
+      "visualStrictReady": false,
+      "rendererValidated": false,
+      "renderComplete": false
+    },
+    "nextStep": "Codex muss production/agent-task.md fertigstellen und die strenge Inhaltsprüfung bestehen."
+  },
+  "blockingIssues": [
+    {
+      "id": "scene-01-subtitle-position",
+      "level": "error",
+      "message": "scene-01: subtitlePosition muss center sein."
+    },
+    {
+      "id": "scene-02-subtitle-position",
+      "level": "error",
+      "message": "scene-02: subtitlePosition muss center sein."
+    },
+    {
+      "id": "scene-03-subtitle-position",
+      "level": "error",
+      "message": "scene-03: subtitlePosition muss center sein."
+    },
+    {
+      "id": "scene-04-subtitle-position",
+      "level": "error",
+      "message": "scene-04: subtitlePosition muss center sein."
+    },
+    {
+      "id": "scene-05-subtitle-position",
+      "level": "error",
+      "message": "scene-05: subtitlePosition muss center sein."
+    },
+    {
+      "id": "scene-06-subtitle-position",
+      "level": "error",
+      "message": "scene-06: subtitlePosition muss center sein."
+    },
+    {
+      "id": "scene-07-subtitle-position",
+      "level": "error",
+      "message": "scene-07: subtitlePosition muss center sein."
+    },
+    {
+      "id": "scene-08-subtitle-position",
+      "level": "error",
+      "message": "scene-08: subtitlePosition muss center sein."
+    },
+    {
+      "id": "scene-09-subtitle-position",
+      "level": "error",
+      "message": "scene-09: subtitlePosition muss center sein."
+    },
+    {
+      "id": "scene-10-subtitle-position",
+      "level": "error",
+      "message": "scene-10: subtitlePosition muss center sein."
+    },
+    {
+      "id": "scene-11-subtitle-position",
+      "level": "error",
+      "message": "scene-11: subtitlePosition muss center sein."
+    },
+    {
+      "id": "scene-12-subtitle-position",
+      "level": "error",
+      "message": "scene-12: subtitlePosition muss center sein."
+    },
+    {
+      "id": "scene-13-subtitle-position",
+      "level": "error",
+      "message": "scene-13: subtitlePosition muss center sein."
+    },
+    {
+      "id": "effects-scene-count",
+      "level": "error",
+      "message": "effects-plan.json enthält 0 statt 13 Szeneneinträge."
+    },
+    {
+      "id": "scene-01-effect-entry",
+      "level": "error",
+      "message": "scene-01: Im Effektplan fehlt ein Eintrag."
+    },
+    {
+      "id": "scene-02-effect-entry",
+      "level": "error",
+      "message": "scene-02: Im Effektplan fehlt ein Eintrag."
+    },
+    {
+      "id": "scene-03-effect-entry",
+      "level": "error",
+      "message": "scene-03: Im Effektplan fehlt ein Eintrag."
+    },
+    {
+      "id": "scene-04-effect-entry",
+      "level": "error",
+      "message": "scene-04: Im Effektplan fehlt ein Eintrag."
+    },
+    {
+      "id": "scene-05-effect-entry",
+      "level": "error",
+      "message": "scene-05: Im Effektplan fehlt ein Eintrag."
+    },
+    {
+      "id": "scene-06-effect-entry",
+      "level": "error",
+      "message": "scene-06: Im Effektplan fehlt ein Eintrag."
+    },
+    {
+      "id": "scene-07-effect-entry",
+      "level": "error",
+      "message": "scene-07: Im Effektplan fehlt ein Eintrag."
+    },
+    {
+      "id": "scene-08-effect-entry",
+      "level": "error",
+      "message": "scene-08: Im Effektplan fehlt ein Eintrag."
+    },
+    {
+      "id": "scene-09-effect-entry",
+      "level": "error",
+      "message": "scene-09: Im Effektplan fehlt ein Eintrag."
+    },
+    {
+      "id": "scene-10-effect-entry",
+      "level": "error",
+      "message": "scene-10: Im Effektplan fehlt ein Eintrag."
+    },
+    {
+      "id": "scene-11-effect-entry",
+      "level": "error",
+      "message": "scene-11: Im Effektplan fehlt ein Eintrag."
+    },
+    {
+      "id": "scene-12-effect-entry",
+      "level": "error",
+      "message": "scene-12: Im Effektplan fehlt ein Eintrag."
+    },
+    {
+      "id": "scene-13-effect-entry",
+      "level": "error",
+      "message": "scene-13: Im Effektplan fehlt ein Eintrag."
+    }
+  ],
+  "warnings": [
+    {
+      "id": "scene-01-subtitle-cues",
+      "level": "warning",
+      "message": "scene-01: subtitleCues fehlen."
+    },
+    {
+      "id": "scene-02-subtitle-cues",
+      "level": "warning",
+      "message": "scene-02: subtitleCues fehlen."
+    },
+    {
+      "id": "scene-02-prompt-format",
+      "level": "warning",
+      "message": "scene-02: Der Bildprompt sollte das Format 9:16 ausdrücklich nennen."
+    },
+    {
+      "id": "scene-03-subtitle-cues",
+      "level": "warning",
+      "message": "scene-03: subtitleCues fehlen."
+    },
+    {
+      "id": "scene-03-preferred-duration",
+      "level": "warning",
+      "message": "scene-03: Für den gewünschten Rhythmus sind ungefähr 3,5–5,5 Sekunden empfehlenswert."
+    },
+    {
+      "id": "scene-03-prompt-format",
+      "level": "warning",
+      "message": "scene-03: Der Bildprompt sollte das Format 9:16 ausdrücklich nennen."
+    },
+    {
+      "id": "scene-04-subtitle-cues",
+      "level": "warning",
+      "message": "scene-04: subtitleCues fehlen."
+    },
+    {
+      "id": "scene-04-prompt-format",
+      "level": "warning",
+      "message": "scene-04: Der Bildprompt sollte das Format 9:16 ausdrücklich nennen."
+    },
+    {
+      "id": "scene-05-subtitle-cues",
+      "level": "warning",
+      "message": "scene-05: subtitleCues fehlen."
+    },
+    {
+      "id": "scene-05-prompt-format",
+      "level": "warning",
+      "message": "scene-05: Der Bildprompt sollte das Format 9:16 ausdrücklich nennen."
+    },
+    {
+      "id": "scene-06-subtitle-cues",
+      "level": "warning",
+      "message": "scene-06: subtitleCues fehlen."
+    },
+    {
+      "id": "scene-06-prompt-format",
+      "level": "warning",
+      "message": "scene-06: Der Bildprompt sollte das Format 9:16 ausdrücklich nennen."
+    },
+    {
+      "id": "scene-07-subtitle-cues",
+      "level": "warning",
+      "message": "scene-07: subtitleCues fehlen."
+    },
+    {
+      "id": "scene-07-prompt-format",
+      "level": "warning",
+      "message": "scene-07: Der Bildprompt sollte das Format 9:16 ausdrücklich nennen."
+    },
+    {
+      "id": "scene-08-subtitle-cues",
+      "level": "warning",
+      "message": "scene-08: subtitleCues fehlen."
+    },
+    {
+      "id": "scene-08-prompt-format",
+      "level": "warning",
+      "message": "scene-08: Der Bildprompt sollte das Format 9:16 ausdrücklich nennen."
+    },
+    {
+      "id": "scene-09-subtitle-cues",
+      "level": "warning",
+      "message": "scene-09: subtitleCues fehlen."
+    },
+    {
+      "id": "scene-09-preferred-duration",
+      "level": "warning",
+      "message": "scene-09: Für den gewünschten Rhythmus sind ungefähr 3,5–5,5 Sekunden empfehlenswert."
+    },
+    {
+      "id": "scene-09-prompt-format",
+      "level": "warning",
+      "message": "scene-09: Der Bildprompt sollte das Format 9:16 ausdrücklich nennen."
+    },
+    {
+      "id": "scene-10-subtitle-cues",
+      "level": "warning",
+      "message": "scene-10: subtitleCues fehlen."
+    },
+    {
+      "id": "scene-10-prompt-format",
+      "level": "warning",
+      "message": "scene-10: Der Bildprompt sollte das Format 9:16 ausdrücklich nennen."
+    },
+    {
+      "id": "scene-11-subtitle-cues",
+      "level": "warning",
+      "message": "scene-11: subtitleCues fehlen."
+    },
+    {
+      "id": "scene-11-preferred-duration",
+      "level": "warning",
+      "message": "scene-11: Für den gewünschten Rhythmus sind ungefähr 3,5–5,5 Sekunden empfehlenswert."
+    },
+    {
+      "id": "scene-11-prompt-format",
+      "level": "warning",
+      "message": "scene-11: Der Bildprompt sollte das Format 9:16 ausdrücklich nennen."
+    },
+    {
+      "id": "scene-12-subtitle-cues",
+      "level": "warning",
+      "message": "scene-12: subtitleCues fehlen."
+    },
+    {
+      "id": "scene-12-prompt-format",
+      "level": "warning",
+      "message": "scene-12: Der Bildprompt sollte das Format 9:16 ausdrücklich nennen."
+    },
+    {
+      "id": "scene-13-subtitle-cues",
+      "level": "warning",
+      "message": "scene-13: subtitleCues fehlen."
+    },
+    {
+      "id": "scene-13-prompt-format",
+      "level": "warning",
+      "message": "scene-13: Der Bildprompt sollte das Format 9:16 ausdrücklich nennen."
+    },
+    {
+      "id": "subtitle-plan-max-lines",
+      "level": "warning",
+      "message": "Untertitel sollten höchstens 2 Zeilen verwenden."
+    },
+    {
+      "id": "effects-voiceover-priority",
+      "level": "warning",
+      "message": "Der Effektplan muss dem Voice-over Priorität geben."
+    },
+    {
+      "id": "hook-no-transition",
+      "level": "warning",
+      "message": "Die Hook sollte ab Sekunde 0 ohne Übergang starten."
+    },
+    {
+      "id": "scene-01-balanced-duration",
+      "level": "warning",
+      "message": "scene-01: Hook dauert 4.04 Sekunden; erlaubt sind 4.2–5.5 Sekunden."
+    },
+    {
+      "id": "scene-02-balanced-duration",
+      "level": "warning",
+      "message": "scene-02: Standardszene dauert 3.10 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
+    },
+    {
+      "id": "scene-03-balanced-duration",
+      "level": "warning",
+      "message": "scene-03: Standardszene dauert 8.14 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
+    },
+    {
+      "id": "scene-03-adjacent-duration-balance",
+      "level": "warning",
+      "message": "scene-03: Der Dauersprung zur vorherigen Szene ist zu groß."
+    },
+    {
+      "id": "scene-04-adjacent-duration-balance",
+      "level": "warning",
+      "message": "scene-04: Der Dauersprung zur vorherigen Szene ist zu groß."
+    },
+    {
+      "id": "scene-06-balanced-duration",
+      "level": "warning",
+      "message": "scene-06: Standardszene dauert 1.30 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
+    },
+    {
+      "id": "scene-06-adjacent-duration-balance",
+      "level": "warning",
+      "message": "scene-06: Der Dauersprung zur vorherigen Szene ist zu groß."
+    },
+    {
+      "id": "scene-07-adjacent-duration-balance",
+      "level": "warning",
+      "message": "scene-07: Der Dauersprung zur vorherigen Szene ist zu groß."
+    },
+    {
+      "id": "scene-09-balanced-duration",
+      "level": "warning",
+      "message": "scene-09: Standardszene dauert 2.16 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
+    },
+    {
+      "id": "scene-09-adjacent-duration-balance",
+      "level": "warning",
+      "message": "scene-09: Der Dauersprung zur vorherigen Szene ist zu groß."
+    },
+    {
+      "id": "scene-10-adjacent-duration-balance",
+      "level": "warning",
+      "message": "scene-10: Der Dauersprung zur vorherigen Szene ist zu groß."
+    },
+    {
+      "id": "scene-11-balanced-duration",
+      "level": "warning",
+      "message": "scene-11: Standardszene dauert 3.10 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
+    },
+    {
+      "id": "scene-01-target-resolution",
+      "level": "warning",
+      "message": "scene-01: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-01-manual-review",
+      "level": "warning",
+      "message": "scene-01: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden."
+    },
+    {
+      "id": "scene-01-semantic-evidence",
+      "level": "warning",
+      "message": "scene-01: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt."
+    },
+    {
+      "id": "scene-02-target-resolution",
+      "level": "warning",
+      "message": "scene-02: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-02-manual-review",
+      "level": "warning",
+      "message": "scene-02: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden."
+    },
+    {
+      "id": "scene-02-semantic-evidence",
+      "level": "warning",
+      "message": "scene-02: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt."
+    },
+    {
+      "id": "scene-03-target-resolution",
+      "level": "warning",
+      "message": "scene-03: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-03-manual-review",
+      "level": "warning",
+      "message": "scene-03: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden."
+    },
+    {
+      "id": "scene-03-semantic-evidence",
+      "level": "warning",
+      "message": "scene-03: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt."
+    },
+    {
+      "id": "scene-04-target-resolution",
+      "level": "warning",
+      "message": "scene-04: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-04-manual-review",
+      "level": "warning",
+      "message": "scene-04: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden."
+    },
+    {
+      "id": "scene-04-semantic-evidence",
+      "level": "warning",
+      "message": "scene-04: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt."
+    },
+    {
+      "id": "scene-05-target-resolution",
+      "level": "warning",
+      "message": "scene-05: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-05-manual-review",
+      "level": "warning",
+      "message": "scene-05: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden."
+    },
+    {
+      "id": "scene-05-semantic-evidence",
+      "level": "warning",
+      "message": "scene-05: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt."
+    },
+    {
+      "id": "scene-06-target-resolution",
+      "level": "warning",
+      "message": "scene-06: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-06-manual-review",
+      "level": "warning",
+      "message": "scene-06: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden."
+    },
+    {
+      "id": "scene-06-semantic-evidence",
+      "level": "warning",
+      "message": "scene-06: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt."
+    },
+    {
+      "id": "scene-07-target-resolution",
+      "level": "warning",
+      "message": "scene-07: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-07-manual-review",
+      "level": "warning",
+      "message": "scene-07: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden."
+    },
+    {
+      "id": "scene-07-semantic-evidence",
+      "level": "warning",
+      "message": "scene-07: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt."
+    },
+    {
+      "id": "scene-08-target-resolution",
+      "level": "warning",
+      "message": "scene-08: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-08-manual-review",
+      "level": "warning",
+      "message": "scene-08: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden."
+    },
+    {
+      "id": "scene-08-semantic-evidence",
+      "level": "warning",
+      "message": "scene-08: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt."
+    },
+    {
+      "id": "scene-09-target-resolution",
+      "level": "warning",
+      "message": "scene-09: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-09-manual-review",
+      "level": "warning",
+      "message": "scene-09: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden."
+    },
+    {
+      "id": "scene-09-semantic-evidence",
+      "level": "warning",
+      "message": "scene-09: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt."
+    },
+    {
+      "id": "scene-10-target-resolution",
+      "level": "warning",
+      "message": "scene-10: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-10-manual-review",
+      "level": "warning",
+      "message": "scene-10: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden."
+    },
+    {
+      "id": "scene-10-semantic-evidence",
+      "level": "warning",
+      "message": "scene-10: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt."
+    },
+    {
+      "id": "scene-11-target-resolution",
+      "level": "warning",
+      "message": "scene-11: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-11-manual-review",
+      "level": "warning",
+      "message": "scene-11: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden."
+    },
+    {
+      "id": "scene-11-semantic-evidence",
+      "level": "warning",
+      "message": "scene-11: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt."
+    },
+    {
+      "id": "scene-12-target-resolution",
+      "level": "warning",
+      "message": "scene-12: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-12-manual-review",
+      "level": "warning",
+      "message": "scene-12: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden."
+    },
+    {
+      "id": "scene-12-semantic-evidence",
+      "level": "warning",
+      "message": "scene-12: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt."
+    },
+    {
+      "id": "scene-13-target-resolution",
+      "level": "warning",
+      "message": "scene-13: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-13-manual-review",
+      "level": "warning",
+      "message": "scene-13: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden."
+    },
+    {
+      "id": "scene-13-semantic-evidence",
+      "level": "warning",
+      "message": "scene-13: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt."
+    },
+    {
+      "id": "cover-target-resolution",
+      "level": "warning",
+      "message": "cover: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "cover-manual-review",
+      "level": "warning",
+      "message": "cover: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden."
+    },
+    {
+      "id": "cover-semantic-evidence",
+      "level": "warning",
+      "message": "cover: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt."
+    }
+  ],
+  "nextStep": "Codex muss production/agent-task.md fertigstellen und die strenge Inhaltsprüfung bestehen."
+}

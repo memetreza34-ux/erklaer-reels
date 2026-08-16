@@ -1,0 +1,805 @@
+{
+  "version": 1,
+  "words": [
+    {
+      "word": "Warum",
+      "start": 0,
+      "end": 0.273
+    },
+    {
+      "word": "glaubst",
+      "start": 0.273,
+      "end": 0.547
+    },
+    {
+      "word": "du",
+      "start": 0.547,
+      "end": 0.82
+    },
+    {
+      "word": "eine",
+      "start": 0.82,
+      "end": 1.093
+    },
+    {
+      "word": "Aussage",
+      "start": 1.093,
+      "end": 1.366
+    },
+    {
+      "word": "eher,",
+      "start": 1.366,
+      "end": 1.64
+    },
+    {
+      "word": "nur",
+      "start": 1.64,
+      "end": 1.913
+    },
+    {
+      "word": "weil",
+      "start": 1.913,
+      "end": 2.186
+    },
+    {
+      "word": "du",
+      "start": 2.186,
+      "end": 2.46
+    },
+    {
+      "word": "sie",
+      "start": 2.46,
+      "end": 2.733
+    },
+    {
+      "word": "schon",
+      "start": 2.733,
+      "end": 3.006
+    },
+    {
+      "word": "einmal",
+      "start": 3.006,
+      "end": 3.28
+    },
+    {
+      "word": "gehört",
+      "start": 3.28,
+      "end": 3.553
+    },
+    {
+      "word": "hast?",
+      "start": 3.553,
+      "end": 3.826
+    },
+    {
+      "word": "Dafür",
+      "start": 3.826,
+      "end": 4.232
+    },
+    {
+      "word": "gibt",
+      "start": 4.232,
+      "end": 4.638
+    },
+    {
+      "word": "es",
+      "start": 4.638,
+      "end": 5.044
+    },
+    {
+      "word": "einen",
+      "start": 5.044,
+      "end": 5.449
+    },
+    {
+      "word": "Namen:",
+      "start": 5.449,
+      "end": 5.855
+    },
+    {
+      "word": "Illusory-Truth-Effekt.",
+      "start": 5.855,
+      "end": 6.261
+    },
+    {
+      "word": "Wiederholte",
+      "start": 6.261,
+      "end": 6.609
+    },
+    {
+      "word": "Aussagen",
+      "start": 6.609,
+      "end": 6.957
+    },
+    {
+      "word": "fühlen",
+      "start": 6.957,
+      "end": 7.304
+    },
+    {
+      "word": "sich",
+      "start": 7.304,
+      "end": 7.652
+    },
+    {
+      "word": "vertrauter",
+      "start": 7.652,
+      "end": 8
+    },
+    {
+      "word": "an",
+      "start": 8,
+      "end": 8.348
+    },
+    {
+      "word": "als",
+      "start": 8.348,
+      "end": 8.696
+    },
+    {
+      "word": "neue.",
+      "start": 8.696,
+      "end": 9.044
+    },
+    {
+      "word": "Und",
+      "start": 9.044,
+      "end": 9.401
+    },
+    {
+      "word": "Vertrautheit",
+      "start": 9.401,
+      "end": 9.759
+    },
+    {
+      "word": "wird",
+      "start": 9.759,
+      "end": 10.117
+    },
+    {
+      "word": "vom",
+      "start": 10.117,
+      "end": 10.475
+    },
+    {
+      "word": "Gehirn",
+      "start": 10.475,
+      "end": 10.832
+    },
+    {
+      "word": "oft",
+      "start": 10.832,
+      "end": 11.19
+    },
+    {
+      "word": "mit",
+      "start": 11.19,
+      "end": 11.548
+    },
+    {
+      "word": "„klingt",
+      "start": 11.548,
+      "end": 11.906
+    },
+    {
+      "word": "plausibel“",
+      "start": 11.906,
+      "end": 12.263
+    },
+    {
+      "word": "verwechselt.",
+      "start": 12.263,
+      "end": 12.621
+    },
+    {
+      "word": "Schon",
+      "start": 12.621,
+      "end": 13.04
+    },
+    {
+      "word": "klassische",
+      "start": 13.04,
+      "end": 13.459
+    },
+    {
+      "word": "Experimente",
+      "start": 13.459,
+      "end": 13.878
+    },
+    {
+      "word": "zeigten:",
+      "start": 13.878,
+      "end": 14.297
+    },
+    {
+      "word": "Selbst",
+      "start": 14.297,
+      "end": 14.715
+    },
+    {
+      "word": "falsche",
+      "start": 14.715,
+      "end": 15.134
+    },
+    {
+      "word": "Aussagen",
+      "start": 15.134,
+      "end": 15.553
+    },
+    {
+      "word": "wurden",
+      "start": 15.553,
+      "end": 15.972
+    },
+    {
+      "word": "nach",
+      "start": 15.972,
+      "end": 16.391
+    },
+    {
+      "word": "Wiederholung",
+      "start": 16.391,
+      "end": 16.809
+    },
+    {
+      "word": "häufiger",
+      "start": 16.809,
+      "end": 17.228
+    },
+    {
+      "word": "als",
+      "start": 17.228,
+      "end": 17.647
+    },
+    {
+      "word": "wahr",
+      "start": 17.647,
+      "end": 18.066
+    },
+    {
+      "word": "eingeschätzt.",
+      "start": 18.066,
+      "end": 18.485
+    },
+    {
+      "word": "Der",
+      "start": 18.485,
+      "end": 18.849
+    },
+    {
+      "word": "Effekt",
+      "start": 18.849,
+      "end": 19.213
+    },
+    {
+      "word": "entsteht",
+      "start": 19.213,
+      "end": 19.578
+    },
+    {
+      "word": "nicht,",
+      "start": 19.578,
+      "end": 19.942
+    },
+    {
+      "word": "weil",
+      "start": 19.942,
+      "end": 20.307
+    },
+    {
+      "word": "Wiederholung",
+      "start": 20.307,
+      "end": 20.671
+    },
+    {
+      "word": "neue",
+      "start": 20.671,
+      "end": 21.035
+    },
+    {
+      "word": "Beweise",
+      "start": 21.035,
+      "end": 21.4
+    },
+    {
+      "word": "liefert.",
+      "start": 21.4,
+      "end": 21.764
+    },
+    {
+      "word": "Die",
+      "start": 21.764,
+      "end": 22.174
+    },
+    {
+      "word": "Aussage",
+      "start": 22.174,
+      "end": 22.584
+    },
+    {
+      "word": "lässt",
+      "start": 22.584,
+      "end": 22.994
+    },
+    {
+      "word": "sich",
+      "start": 22.994,
+      "end": 23.404
+    },
+    {
+      "word": "beim",
+      "start": 23.404,
+      "end": 23.814
+    },
+    {
+      "word": "zweiten",
+      "start": 23.814,
+      "end": 24.224
+    },
+    {
+      "word": "Mal",
+      "start": 24.224,
+      "end": 24.634
+    },
+    {
+      "word": "einfach",
+      "start": 24.634,
+      "end": 25.044
+    },
+    {
+      "word": "leichter",
+      "start": 25.044,
+      "end": 25.454
+    },
+    {
+      "word": "verarbeiten.",
+      "start": 25.454,
+      "end": 25.864
+    },
+    {
+      "word": "Diese",
+      "start": 25.864,
+      "end": 26.274
+    },
+    {
+      "word": "mentale",
+      "start": 26.274,
+      "end": 26.684
+    },
+    {
+      "word": "Leichtigkeit",
+      "start": 26.684,
+      "end": 27.093
+    },
+    {
+      "word": "nennt",
+      "start": 27.093,
+      "end": 27.503
+    },
+    {
+      "word": "man",
+      "start": 27.503,
+      "end": 27.913
+    },
+    {
+      "word": "Verarbeitungsflüssigkeit.",
+      "start": 27.913,
+      "end": 28.323
+    },
+    {
+      "word": "Besonders",
+      "start": 28.323,
+      "end": 28.698
+    },
+    {
+      "word": "tückisch:",
+      "start": 28.698,
+      "end": 29.072
+    },
+    {
+      "word": "Wiederholung",
+      "start": 29.072,
+      "end": 29.447
+    },
+    {
+      "word": "kann",
+      "start": 29.447,
+      "end": 29.822
+    },
+    {
+      "word": "sogar",
+      "start": 29.822,
+      "end": 30.196
+    },
+    {
+      "word": "wirken,",
+      "start": 30.196,
+      "end": 30.571
+    },
+    {
+      "word": "wenn",
+      "start": 30.571,
+      "end": 30.945
+    },
+    {
+      "word": "du",
+      "start": 30.945,
+      "end": 31.32
+    },
+    {
+      "word": "das",
+      "start": 31.32,
+      "end": 31.695
+    },
+    {
+      "word": "richtige",
+      "start": 31.695,
+      "end": 32.069
+    },
+    {
+      "word": "Wissen",
+      "start": 32.069,
+      "end": 32.444
+    },
+    {
+      "word": "eigentlich",
+      "start": 32.444,
+      "end": 32.818
+    },
+    {
+      "word": "kennst.",
+      "start": 32.818,
+      "end": 33.193
+    },
+    {
+      "word": "Das",
+      "start": 33.193,
+      "end": 33.541
+    },
+    {
+      "word": "ist",
+      "start": 33.541,
+      "end": 33.889
+    },
+    {
+      "word": "im",
+      "start": 33.889,
+      "end": 34.236
+    },
+    {
+      "word": "Alltag",
+      "start": 34.236,
+      "end": 34.584
+    },
+    {
+      "word": "wichtig",
+      "start": 34.584,
+      "end": 34.932
+    },
+    {
+      "word": "bei",
+      "start": 34.932,
+      "end": 35.28
+    },
+    {
+      "word": "Schlagzeilen,",
+      "start": 35.28,
+      "end": 35.628
+    },
+    {
+      "word": "Gerüchten,",
+      "start": 35.628,
+      "end": 35.976
+    },
+    {
+      "word": "Werbung",
+      "start": 35.976,
+      "end": 36.323
+    },
+    {
+      "word": "und",
+      "start": 36.323,
+      "end": 36.671
+    },
+    {
+      "word": "Social",
+      "start": 36.671,
+      "end": 37.019
+    },
+    {
+      "word": "Media,",
+      "start": 37.019,
+      "end": 37.367
+    },
+    {
+      "word": "wo",
+      "start": 37.367,
+      "end": 37.715
+    },
+    {
+      "word": "dieselbe",
+      "start": 37.715,
+      "end": 38.063
+    },
+    {
+      "word": "Behauptung",
+      "start": 38.063,
+      "end": 38.41
+    },
+    {
+      "word": "immer",
+      "start": 38.41,
+      "end": 38.758
+    },
+    {
+      "word": "wieder",
+      "start": 38.758,
+      "end": 39.106
+    },
+    {
+      "word": "auftauchen",
+      "start": 39.106,
+      "end": 39.454
+    },
+    {
+      "word": "kann.",
+      "start": 39.454,
+      "end": 39.802
+    },
+    {
+      "word": "Eine",
+      "start": 39.802,
+      "end": 40.137
+    },
+    {
+      "word": "große",
+      "start": 40.137,
+      "end": 40.472
+    },
+    {
+      "word": "Meta-Analyse",
+      "start": 40.472,
+      "end": 40.808
+    },
+    {
+      "word": "von",
+      "start": 40.808,
+      "end": 41.143
+    },
+    {
+      "word": "2026",
+      "start": 41.143,
+      "end": 41.479
+    },
+    {
+      "word": "bestätigte",
+      "start": 41.479,
+      "end": 41.814
+    },
+    {
+      "word": "den",
+      "start": 41.814,
+      "end": 42.15
+    },
+    {
+      "word": "Effekt",
+      "start": 42.15,
+      "end": 42.485
+    },
+    {
+      "word": "über",
+      "start": 42.485,
+      "end": 42.82
+    },
+    {
+      "word": "viele",
+      "start": 42.82,
+      "end": 43.156
+    },
+    {
+      "word": "Studien",
+      "start": 43.156,
+      "end": 43.491
+    },
+    {
+      "word": "hinweg.",
+      "start": 43.491,
+      "end": 43.827
+    },
+    {
+      "word": "Deshalb",
+      "start": 43.827,
+      "end": 44.155
+    },
+    {
+      "word": "ist",
+      "start": 44.155,
+      "end": 44.482
+    },
+    {
+      "word": "„Das",
+      "start": 44.482,
+      "end": 44.81
+    },
+    {
+      "word": "habe",
+      "start": 44.81,
+      "end": 45.138
+    },
+    {
+      "word": "ich",
+      "start": 45.138,
+      "end": 45.466
+    },
+    {
+      "word": "schon",
+      "start": 45.466,
+      "end": 45.794
+    },
+    {
+      "word": "oft",
+      "start": 45.794,
+      "end": 46.122
+    },
+    {
+      "word": "gehört“",
+      "start": 46.122,
+      "end": 46.45
+    },
+    {
+      "word": "kein",
+      "start": 46.45,
+      "end": 46.778
+    },
+    {
+      "word": "Qualitätsmerkmal.",
+      "start": 46.778,
+      "end": 47.106
+    },
+    {
+      "word": "Prüf",
+      "start": 47.106,
+      "end": 47.381
+    },
+    {
+      "word": "dich",
+      "start": 47.381,
+      "end": 47.656
+    },
+    {
+      "word": "selbst:",
+      "start": 47.656,
+      "end": 47.93
+    },
+    {
+      "word": "Würdest",
+      "start": 47.93,
+      "end": 48.205
+    },
+    {
+      "word": "du",
+      "start": 48.205,
+      "end": 48.48
+    },
+    {
+      "word": "die",
+      "start": 48.48,
+      "end": 48.755
+    },
+    {
+      "word": "Aussage",
+      "start": 48.755,
+      "end": 49.029
+    },
+    {
+      "word": "auch",
+      "start": 49.029,
+      "end": 49.304
+    },
+    {
+      "word": "glauben,",
+      "start": 49.304,
+      "end": 49.579
+    },
+    {
+      "word": "wenn",
+      "start": 49.579,
+      "end": 49.854
+    },
+    {
+      "word": "du",
+      "start": 49.854,
+      "end": 50.128
+    },
+    {
+      "word": "sie",
+      "start": 50.128,
+      "end": 50.403
+    },
+    {
+      "word": "heute",
+      "start": 50.403,
+      "end": 50.678
+    },
+    {
+      "word": "zum",
+      "start": 50.678,
+      "end": 50.953
+    },
+    {
+      "word": "ersten",
+      "start": 50.953,
+      "end": 51.227
+    },
+    {
+      "word": "Mal",
+      "start": 51.227,
+      "end": 51.502
+    },
+    {
+      "word": "hörst?",
+      "start": 51.502,
+      "end": 51.777
+    },
+    {
+      "word": "Die",
+      "start": 51.777,
+      "end": 52.137
+    },
+    {
+      "word": "Lösung:",
+      "start": 52.137,
+      "end": 52.497
+    },
+    {
+      "word": "Quelle",
+      "start": 52.497,
+      "end": 52.858
+    },
+    {
+      "word": "prüfen,",
+      "start": 52.858,
+      "end": 53.218
+    },
+    {
+      "word": "Belege",
+      "start": 53.218,
+      "end": 53.578
+    },
+    {
+      "word": "suchen",
+      "start": 53.578,
+      "end": 53.938
+    },
+    {
+      "word": "und",
+      "start": 53.938,
+      "end": 54.299
+    },
+    {
+      "word": "Vertrautheit",
+      "start": 54.299,
+      "end": 54.659
+    },
+    {
+      "word": "nie",
+      "start": 54.659,
+      "end": 55.019
+    },
+    {
+      "word": "mit",
+      "start": 55.019,
+      "end": 55.379
+    },
+    {
+      "word": "Wahrheit",
+      "start": 55.379,
+      "end": 55.74
+    },
+    {
+      "word": "verwechseln.",
+      "start": 55.74,
+      "end": 56.1
+    }
+  ]
+}

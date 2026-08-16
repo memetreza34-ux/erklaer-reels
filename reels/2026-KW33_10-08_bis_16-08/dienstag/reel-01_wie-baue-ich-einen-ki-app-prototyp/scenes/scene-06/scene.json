@@ -1,0 +1,133 @@
+{
+  "sceneId": "scene-06",
+  "order": 6,
+  "title": "Einzelne Bausteine",
+  "narration": "Einzelne Bausteine für Oberfläche, Daten und Funktionen entstehen nacheinander",
+  "imageText": "BAUSTEINE",
+  "visualIdea": "Glowing floating blocks snapping together to form a mobile phone structure, 3d rendering, high quality, 9:16 aspect ratio",
+  "continuityNotes": "",
+  "audioCue": "Einzelne Bausteine f",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [
+    {
+      "id": "scene-06-subtitle-1",
+      "text": "Code nicht als ein riesiger",
+      "startSeconds": 19.423,
+      "endSeconds": 21.189,
+      "verticalPositionPercent": 58,
+      "textColor": "#F2F2F2",
+      "highlightColor": "#CC8B66",
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "words": [
+        {
+          "text": "Code",
+          "startSeconds": 19.423,
+          "endSeconds": 19.776
+        },
+        {
+          "text": "nicht",
+          "startSeconds": 19.776,
+          "endSeconds": 20.129
+        },
+        {
+          "text": "als",
+          "startSeconds": 20.129,
+          "endSeconds": 20.483
+        },
+        {
+          "text": "ein",
+          "startSeconds": 20.483,
+          "endSeconds": 20.836
+        },
+        {
+          "text": "riesiger",
+          "startSeconds": 20.836,
+          "endSeconds": 21.189
+        }
+      ]
+    },
+    {
+      "id": "scene-06-subtitle-2",
+      "text": "Block gebaut.",
+      "startSeconds": 21.189,
+      "endSeconds": 21.895,
+      "verticalPositionPercent": 58,
+      "textColor": "#F2F2F2",
+      "highlightColor": "#CC8B66",
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "words": [
+        {
+          "text": "Block",
+          "startSeconds": 21.189,
+          "endSeconds": 21.542
+        },
+        {
+          "text": "gebaut.",
+          "startSeconds": 21.542,
+          "endSeconds": 21.895
+        }
+      ]
+    },
+    {
+      "id": "scene-06-subtitle-3",
+      "text": "Einzelne Bausteine für Oberfläche,",
+      "startSeconds": 21.895,
+      "endSeconds": 23.308,
+      "verticalPositionPercent": 58,
+      "textColor": "#F2F2F2",
+      "highlightColor": "#CC8B66",
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "words": [
+        {
+          "text": "Einzelne",
+          "startSeconds": 21.895,
+          "endSeconds": 22.248
+        },
+        {
+          "text": "Bausteine",
+          "startSeconds": 22.248,
+          "endSeconds": 22.601
+        },
+        {
+          "text": "für",
+          "startSeconds": 22.601,
+          "endSeconds": 22.955
+        },
+        {
+          "text": "Oberfläche,",
+          "startSeconds": 22.955,
+          "endSeconds": 23.308
+        }
+      ]
+    }
+  ],
+  "subtitlePosition": "center",
+  "durationSeconds": 3.885,
+  "expectedImageFileName": "scene-06.jpeg",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-06",
+    "confirmedSceneOrder": 6,
+    "visibleSummary": "Verified by user via Google Flow generation",
+    "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+    "comparedFields": [
+      "narration",
+      "visualIdea",
+      "imageText",
+      "imagePrompt"
+    ],
+    "matchMethod": "visual-content-review",
+    "reviewedAt": "2026-08-13T17:31:45.067Z"
+  },
+  "status": "image-ready",
+  "source": "numbered-images/Bild 06.jpeg",
+  "matchConfidence": 1,
+  "matchReason": "Matches exactly according to the Google Flow generation process and user confirmation."
+}

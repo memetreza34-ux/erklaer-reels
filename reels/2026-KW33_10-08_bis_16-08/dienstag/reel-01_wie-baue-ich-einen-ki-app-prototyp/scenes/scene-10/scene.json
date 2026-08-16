@@ -1,0 +1,146 @@
+{
+  "sceneId": "scene-10",
+  "order": 10,
+  "title": "Verbesserung",
+  "narration": "Genau hier beginnt die eigentliche Verbesserung.",
+  "imageText": "VERBESSERUNG",
+  "visualIdea": "A glowing wrench repairing the shattered glass of the smartphone, turning it pristine, glowing green light, 9:16 aspect ratio",
+  "continuityNotes": "",
+  "audioCue": "Genau hier beginnt d",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [
+    {
+      "id": "scene-10-subtitle-1",
+      "text": "dem Handy brechen.",
+      "startSeconds": 34.962,
+      "endSeconds": 36.021,
+      "verticalPositionPercent": 58,
+      "textColor": "#F2F2F2",
+      "highlightColor": "#CC8B66",
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "words": [
+        {
+          "text": "dem",
+          "startSeconds": 34.962,
+          "endSeconds": 35.315
+        },
+        {
+          "text": "Handy",
+          "startSeconds": 35.315,
+          "endSeconds": 35.668
+        },
+        {
+          "text": "brechen.",
+          "startSeconds": 35.668,
+          "endSeconds": 36.021
+        }
+      ]
+    },
+    {
+      "id": "scene-10-subtitle-2",
+      "text": "Genau hier beginnt die eigentliche",
+      "startSeconds": 36.021,
+      "endSeconds": 37.787,
+      "verticalPositionPercent": 58,
+      "textColor": "#F2F2F2",
+      "highlightColor": "#CC8B66",
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "words": [
+        {
+          "text": "Genau",
+          "startSeconds": 36.021,
+          "endSeconds": 36.374
+        },
+        {
+          "text": "hier",
+          "startSeconds": 36.374,
+          "endSeconds": 36.727
+        },
+        {
+          "text": "beginnt",
+          "startSeconds": 36.727,
+          "endSeconds": 37.08
+        },
+        {
+          "text": "die",
+          "startSeconds": 37.08,
+          "endSeconds": 37.434
+        },
+        {
+          "text": "eigentliche",
+          "startSeconds": 37.434,
+          "endSeconds": 37.787
+        }
+      ]
+    },
+    {
+      "id": "scene-10-subtitle-3",
+      "text": "Verbesserung.",
+      "startSeconds": 37.787,
+      "endSeconds": 38.14,
+      "verticalPositionPercent": 58,
+      "textColor": "#F2F2F2",
+      "highlightColor": "#CC8B66",
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "words": [
+        {
+          "text": "Verbesserung.",
+          "startSeconds": 37.787,
+          "endSeconds": 38.14
+        }
+      ]
+    },
+    {
+      "id": "scene-10-subtitle-4",
+      "text": "Die KI",
+      "startSeconds": 38.14,
+      "endSeconds": 38.846,
+      "verticalPositionPercent": 58,
+      "textColor": "#F2F2F2",
+      "highlightColor": "#CC8B66",
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "words": [
+        {
+          "text": "Die",
+          "startSeconds": 38.14,
+          "endSeconds": 38.493
+        },
+        {
+          "text": "KI",
+          "startSeconds": 38.493,
+          "endSeconds": 38.846
+        }
+      ]
+    }
+  ],
+  "subtitlePosition": "center",
+  "durationSeconds": 3.885,
+  "expectedImageFileName": "scene-10.jpeg",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-10",
+    "confirmedSceneOrder": 10,
+    "visibleSummary": "Verified by user via Google Flow generation",
+    "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+    "comparedFields": [
+      "narration",
+      "visualIdea",
+      "imageText",
+      "imagePrompt"
+    ],
+    "matchMethod": "visual-content-review",
+    "reviewedAt": "2026-08-13T17:31:45.071Z"
+  },
+  "status": "image-ready",
+  "source": "numbered-images/Bild 10.jpeg",
+  "matchConfidence": 1,
+  "matchReason": "Matches exactly according to the Google Flow generation process and user confirmation."
+}

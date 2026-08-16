@@ -1,0 +1,133 @@
+{
+  "sceneId": "scene-01",
+  "order": 1,
+  "title": "Idee",
+  "narration": "Aus einer einfachen Idee kannst du mit KI heute erstaunlich schnell einen ersten App Prototyp bauen.",
+  "imageText": "IDEE ZUR APP",
+  "visualIdea": "A glowing lightbulb transforming into a digital wireframe, modern 3d rendering, glassmorphism, dark background, 9:16 aspect ratio",
+  "continuityNotes": "",
+  "audioCue": "Aus einer einfachen ",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [
+    {
+      "id": "scene-01-subtitle-1",
+      "text": "Aus einer einfachen Idee kannst",
+      "startSeconds": 0,
+      "endSeconds": 1.766,
+      "verticalPositionPercent": 58,
+      "textColor": "#F2F2F2",
+      "highlightColor": "#CC8B66",
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "words": [
+        {
+          "text": "Aus",
+          "startSeconds": 0,
+          "endSeconds": 0.353
+        },
+        {
+          "text": "einer",
+          "startSeconds": 0.353,
+          "endSeconds": 0.706
+        },
+        {
+          "text": "einfachen",
+          "startSeconds": 0.706,
+          "endSeconds": 1.059
+        },
+        {
+          "text": "Idee",
+          "startSeconds": 1.059,
+          "endSeconds": 1.413
+        },
+        {
+          "text": "kannst",
+          "startSeconds": 1.413,
+          "endSeconds": 1.766
+        }
+      ]
+    },
+    {
+      "id": "scene-01-subtitle-2",
+      "text": "du mit KI heute erstaunlich",
+      "startSeconds": 1.766,
+      "endSeconds": 3.531,
+      "verticalPositionPercent": 58,
+      "textColor": "#F2F2F2",
+      "highlightColor": "#CC8B66",
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "words": [
+        {
+          "text": "du",
+          "startSeconds": 1.766,
+          "endSeconds": 2.119
+        },
+        {
+          "text": "mit",
+          "startSeconds": 2.119,
+          "endSeconds": 2.472
+        },
+        {
+          "text": "KI",
+          "startSeconds": 2.472,
+          "endSeconds": 2.825
+        },
+        {
+          "text": "heute",
+          "startSeconds": 2.825,
+          "endSeconds": 3.178
+        },
+        {
+          "text": "erstaunlich",
+          "startSeconds": 3.178,
+          "endSeconds": 3.531
+        }
+      ]
+    },
+    {
+      "id": "scene-01-subtitle-3",
+      "text": "schnell",
+      "startSeconds": 3.531,
+      "endSeconds": 3.885,
+      "verticalPositionPercent": 58,
+      "textColor": "#F2F2F2",
+      "highlightColor": "#CC8B66",
+      "timingStatus": "codex-word-synced",
+      "timingSource": "codex-local-audio-review",
+      "words": [
+        {
+          "text": "schnell",
+          "startSeconds": 3.531,
+          "endSeconds": 3.885
+        }
+      ]
+    }
+  ],
+  "subtitlePosition": "center",
+  "durationSeconds": 3.885,
+  "expectedImageFileName": "scene-01.jpeg",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-01",
+    "confirmedSceneOrder": 1,
+    "visibleSummary": "Verified by user via Google Flow generation",
+    "reason": "Matches exactly according to the Google Flow generation process and user confirmation.",
+    "comparedFields": [
+      "narration",
+      "visualIdea",
+      "imageText",
+      "imagePrompt"
+    ],
+    "matchMethod": "visual-content-review",
+    "reviewedAt": "2026-08-13T17:31:45.064Z"
+  },
+  "status": "image-ready",
+  "source": "numbered-images/Bild 01.jpeg",
+  "matchConfidence": 1,
+  "matchReason": "Matches exactly according to the Google Flow generation process and user confirmation."
+}

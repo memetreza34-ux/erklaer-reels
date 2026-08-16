@@ -1,101 +1,291 @@
-GOOGLE FLOW – KOMPLETTER SERIELLER BILDLAUF
+ALLE BILDPROMPTS – GOOGLE FLOW – STRENG EINZELN + AUTONOM OHNE WEITERES GO + COVER ALS STYLE-VORLAGE
 
-AUFTRAG
-Erzeuge für dieses Reel genau 14 Bilder: Bild 00 als Cover und danach Bild 01 bis Bild 13 für die 13 Szenen.
+GOOGLE FLOW – HARTE SERIELLE SPERRE + AUTONOMER DURCHLAUF – NIEMALS PARALLEL, NIEMALS AUF EIN WEITERES GO WARTEN
 
-WICHTIG – DIESE EINE NACHRICHT IST DIE KOMPLETTE FREIGABE
-Sobald dieser Gesamtprompt einmal abgesendet wurde, arbeitest du selbstständig bis Bild 13 fertig ist. Frage NICHT nach Go, Weiter, OK, Bestätigung oder Erlaubnis.
+Diese komplette Nachricht enthält 14 Bildaufträge von Bild 00 bis Bild 13. Sie werden NICHT gleichzeitig und NICHT als Batch ausgeführt.
+DAS EINMALIGE ABSENDEN DIESER KOMPLETTEN NACHRICHT IST DIE VOLLSTÄNDIGE FREIGABE FÜR ALLE BILDER BIS ZUM ENDE.
+ANTWORTE NICHT mit einer Bestätigung, Zusammenfassung oder Erklärung. Beginne ausschließlich mit BILD 00.
+FRAGE AB JETZT NICHT MEHR NACH GO, WEITER, BESTÄTIGUNG, FREIGABE, ERLAUBNIS ODER EINER WEITEREN NUTZERANTWORT.
+WARTE ZWISCHEN DEN BILDERN NIEMALS AUF EINE NACHRICHT DES NUTZERS. DIE FERTIGSTELLUNG UND KORREKTE UMBENENNUNG DES AKTUELLEN BILDES IST AUTOMATISCH DAS STARTSIGNAL FÜR DAS NÄCHSTE BILD.
 
-STRENG SERIELL – NIE PARALLEL
-Zu jedem Zeitpunkt darf genau EINE Bildgenerierung aktiv sein.
-Für jedes Bild zwingend:
-1. Nur den aktuellen Bildprompt bearbeiten.
-2. Genau EIN Bild erzeugen.
-3. Warten, bis dieses Bild vollständig fertig ist.
-4. Sofort exakt in den vorgesehenen Namen umbenennen.
-5. Prüfen, dass die Umbenennung erfolgreich ist.
-6. Erst danach automatisch das nächste Bild starten.
-Keine Batches, keine Queue, kein Vorladen, keine parallelen Generierungen und keine Ansammlung unbenannter Bilder.
+DIE ZWEI WICHTIGSTEN REGELN:
+1. ZU JEDEM ZEITPUNKT DARF GENAU EINE EINZIGE BILDGENERIERUNG AKTIV SEIN.
+2. SOBALD DIESE EINE GENERIERUNG FERTIG UND DAS BILD KORREKT UMBENANNT IST, MUSST DU SOFORT SELBSTSTÄNDIG MIT DEM NÄCHSTEN BILD WEITERMACHEN – OHNE NUTZERINTERAKTION.
+STARTE NIEMALS DAS NÄCHSTE BILD, SOLANGE DAS AKTUELLE BILD NOCH GENERIERT WIRD, NOCH NICHT VOLLSTÄNDIG FERTIG IST ODER NOCH NICHT KORREKT UMBENANNT WURDE.
 
-DATEINAMEN
-Bild 00.png = Cover
-Bild 01.png = Szene 1
-Bild 02.png = Szene 2
-Bild 03.png = Szene 3
-Bild 04.png = Szene 4
-Bild 05.png = Szene 5
-Bild 06.png = Szene 6
-Bild 07.png = Szene 7
-Bild 08.png = Szene 8
-Bild 09.png = Szene 9
-Bild 10.png = Szene 10
-Bild 11.png = Szene 11
-Bild 12.png = Szene 12
-Bild 13.png = Szene 13
+BILD 00 = COVER + VERBINDLICHE STILVORLAGE:
+- Erzeuge Bild 00 zuerst als echtes Cover des Reels.
+- Der im Cover-Prompt verlangte sichtbare deutsche Text ist der HOOK des Reels und muss exakt lesbar auf Bild 00 erscheinen. Er soll sofort zeigen, worum es im Reel geht.
+- Sobald Bild 00 fertig und als `Bild 00.png` benannt ist, verwende genau dieses fertige Cover als visuelle Referenz/Vorlage für ALLE folgenden Szenen.
+- Halte danach denselben Zeichen-/Renderstil, dieselbe Farbwelt, dieselben Figurenmerkmale, dieselben Proportionen, dieselbe Lichtstimmung und dieselbe Detailqualität wie auf Bild 00.
+- Übernimm den Cover-Hook-Text NICHT automatisch in spätere Szenen. Sichtbarer Szenentext kommt nur hinein, wenn der jeweilige Szenenprompt ihn ausdrücklich verlangt.
 
-STYLE-MASTER
-Bild 00.png wird zuerst vollständig erzeugt. Das fertige Bild 00.png ist danach die verbindliche visuelle Referenz für ALLE Szenen: gleiche Palette, Papiertextur, Charaktergestaltung, Konturstärke, Lichtstimmung und Detailqualität. Der Cover-Hook darf NICHT automatisch auf spätere Szenen kopiert werden.
+STRENG VERBOTEN:
+- mehrere Bilder gleichzeitig starten
+- mehrere Prompts gleichzeitig absenden
+- spätere Bilder vorab in eine Warteschlange oder Queue legen
+- den nächsten Bildblock vorladen oder ausführen, während das aktuelle Bild noch läuft
+- alle Bildblöcke als Batch behandeln
+- mehrere fertige, aber noch unbenannte Bilder ansammeln
+- Bilder während der Generierung bereits in den gemeinsamen Sammelordner verschieben
+- den visuellen Stil zwischen Cover und Szenen ohne ausdrückliche Prompt-Anweisung wechseln
+- nach einem fertigen Bild auf `Go`, `Weiter`, `OK`, eine Bestätigung oder irgendeine andere Nutzerantwort warten
+- zwischen zwei Bildern eine Rückfrage stellen oder den Arbeitsablauf pausieren, obwohl das vorherige Bild erfolgreich fertig und umbenannt ist
 
-TEXTREGEL
-Nur der im jeweiligen Prompt ausdrücklich verlangte deutsche Text darf sichtbar erscheinen. Kein zusätzlicher englischer Text, keine Fantasiewörter, keine Logos und keine Wasserzeichen.
+VERBINDLICHER AUTONOMER ABLAUF FÜR JEDES EINZELNE BILD:
+A. Lies ausschließlich den aktuellen freigegebenen Bildblock.
+B. Starte GENAU EINE Bildgenerierung für diesen Block.
+C. WARTE, bis diese eine Bildgenerierung vollständig abgeschlossen ist. Währenddessen keinerlei anderes Bild starten.
+D. Sobald das Bild vollständig fertig ist, benenne DIESES Bild sofort exakt mit dem angegebenen Dateinamen um.
+E. WARTE, bis auch die Umbenennung abgeschlossen ist, und prüfe den Dateinamen.
+F. Sobald diese Prüfung erfolgreich ist, ist der nächste nummerierte Bildblock AUTOMATISCH freigegeben. Es ist KEINE Nutzerantwort nötig.
+G. Starte den nächsten Bildblock SOFORT selbstständig. Nicht anhalten, nicht nachfragen, nicht auf ein Go warten.
+H. Wiederhole A bis G streng einzeln und ohne Unterbrechung bis einschließlich Bild 13.
 
-ENDE
-Erst nachdem Bild 00 bis Bild 13 vollständig erzeugt, korrekt umbenannt und die Nummerierung geprüft wurden, alle fertigen Bilder gemeinsam in den vorgesehenen Sammelordner legen. Nicht während der laufenden Generierung einzelne Bilder dorthin verschieben.
+BEISPIEL DER AUTOMATISCHEN KETTE:
+Bild 00 erzeugen → warten bis Bild 00 wirklich fertig → sofort `Bild 00.png` nennen → prüfen → Bild 00 als Stilvorlage festhalten → SOFORT AUTOMATISCH Bild 01 starten. Kein Go vom Nutzer.
+Bild 01 erzeugen → dabei Bild 00 als Stilreferenz verwenden → warten bis Bild 01 wirklich fertig → sofort `Bild 01.png` nennen → prüfen → SOFORT AUTOMATISCH Bild 02 starten. Kein Go vom Nutzer.
+Genau so einzeln und selbstständig bis zum letzten Bild. Keine Pause und keine Ausnahme.
 
-────────────────────────────────────────
+NACH BILD 13: Erst wenn wirklich ALLE 14 Bilder vollständig erzeugt UND jeweils direkt nach ihrer Erzeugung korrekt umbenannt wurden, die komplette Nummerierung prüfen.
+ERST DANACH alle fertigen Bilder gemeinsam in EINEN Sammelordner legen. Auch dafür KEINE neue Nutzerfreigabe verlangen.
 
-BILD 00 – COVER
-DATEINAME NACH FERTIGSTELLUNG: Bild 00.png
+JETZT AUSFÜHREN: Starte NUR BILD 00. Danach führe die gesamte Kette selbstständig bis zum Abschluss aus. Das einmalige Absenden dieses Gesamtprompts ist bereits das einzige benötigte Go.
+
+
+BILD 00 – COVER – GOOGLE-FLOW-PROMPT
+ZIEL: COVER + STYLE-VORLAGE FÜR DAS GESAMTE REEL
+DATEINAME: Bild 00.png
+FREIGABE: Dies ist der einzige jetzt freigegebene Bildblock. Das einmalige Absenden des Gesamtprompts ist bereits die Freigabe für die gesamte spätere Kette.
+COVER-REGEL: Dieses Bild ist das echte Cover UND die verbindliche visuelle Stilvorlage für das gesamte Reel.
+HOOK-REGEL: Der im folgenden Cover-Prompt verlangte sichtbare deutsche Text muss exakt und gut lesbar auf dem Cover erscheinen. Dieser Text ist die Hook und erklärt sofort, worum es im Reel geht.
+Nach Fertigstellung dieses Covers: Bild 00 als direkte Style-Referenz für alle späteren Szenen beibehalten.
+GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD 00.
+Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.
+Nach vollständigem Abschluss dieses Bildes: sofort exakt in `Bild 00.png` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.
+SOBALD DIESE PRÜFUNG ERFOLGREICH IST: den direkt nächsten nummerierten Bildblock SOFORT AUTOMATISCH starten. NICHT auf `Go`, `Weiter`, `OK` oder irgendeine Nutzerantwort warten.
+
 Vertical 9:16 premium mature 2D editorial psychology cover illustration for a German explainer Reel about the spotlight effect. Dark navy background, warm cream paper texture, muted rust-brown and cobalt accents, bold clean hand-drawn outlines, subtle grain, expressive but not childish human figures, strong contrast for a phone screen. Show one young adult in the center after a small social mistake, standing under an enormous bright theatrical spotlight and imagining many eyes looking at them. Around them, a crowd is actually occupied with their own phones, thoughts, clothes and conversations, each person subtly contained in a much smaller personal pool of light. The visual must instantly communicate 'I think everyone noticed me, but they did not'. Add one large perfectly readable German headline exactly: "ALLE HABEN DAS GESEHEN?" Keep it inside social safe zones. No other readable words, no English, no logos, no watermark. This finished Bild 00.png is the binding master reference for palette, character design, paper texture, outline weight, lighting and detail quality of all later scenes.
 
-BILD 01 – SZENE 1
-DATEINAME NACH FERTIGSTELLUNG: Bild 01.png
+
+BILD 01 – SZENE 1 – GOOGLE-FLOW-PROMPT
+ZIEL: SZENE 1
+DATEINAME: Bild 01.png
+FREIGABE-BEDINGUNG: Dieser Block wird AUTOMATISCH freigegeben, sobald BILD 00 vollständig fertig erzeugt, exakt als `Bild 00.png` umbenannt und die Umbenennung geprüft wurde. KEIN weiteres Go und KEINE Nutzerantwort abwarten.
+STYLE-REFERENZ: Verwende das bereits fertig erzeugte `Bild 00.png` direkt als verbindliche visuelle Vorlage für dieses Szenenbild.
+Behalte Zeichen-/Renderstil, Farbwelt, Figurenmerkmale, Proportionen, Lichtstimmung und Detailqualität von Bild 00 bei.
+Den Cover-Hook-Text nicht kopieren, außer der folgende Szenenprompt verlangt ausdrücklich sichtbaren Text.
+GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD 01.
+Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.
+Nach vollständigem Abschluss dieses Bildes: sofort exakt in `Bild 01.png` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.
+SOBALD DIESE PRÜFUNG ERFOLGREICH IST: den direkt nächsten nummerierten Bildblock SOFORT AUTOMATISCH starten. NICHT auf `Go`, `Weiter`, `OK` oder irgendeine Nutzerantwort warten.
+
 Match Bild 00.png exactly. Vertical 9:16 mature 2D editorial psychology illustration. Show the same young adult speaking in a small group and visibly stumbling over one word, represented by one tiny broken speech-card fragment falling from a speech bubble. In the person's imagination a huge theatrical spotlight snaps onto them and several oversized eye symbols seem to turn toward them, while the actual people nearby remain only mildly attentive. No readable text, no English, no logo, no watermark.
 
-BILD 02 – SZENE 2
-DATEINAME NACH FERTIGSTELLUNG: Bild 02.png
+
+BILD 02 – SZENE 2 – GOOGLE-FLOW-PROMPT
+ZIEL: SZENE 2
+DATEINAME: Bild 02.png
+FREIGABE-BEDINGUNG: Dieser Block wird AUTOMATISCH freigegeben, sobald BILD 01 vollständig fertig erzeugt, exakt als `Bild 01.png` umbenannt und die Umbenennung geprüft wurde. KEIN weiteres Go und KEINE Nutzerantwort abwarten.
+STYLE-REFERENZ: Verwende das bereits fertig erzeugte `Bild 00.png` direkt als verbindliche visuelle Vorlage für dieses Szenenbild.
+Behalte Zeichen-/Renderstil, Farbwelt, Figurenmerkmale, Proportionen, Lichtstimmung und Detailqualität von Bild 00 bei.
+Den Cover-Hook-Text nicht kopieren, außer der folgende Szenenprompt verlangt ausdrücklich sichtbaren Text.
+GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD 02.
+Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.
+Nach vollständigem Abschluss dieses Bildes: sofort exakt in `Bild 02.png` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.
+SOBALD DIESE PRÜFUNG ERFOLGREICH IST: den direkt nächsten nummerierten Bildblock SOFORT AUTOMATISCH starten. NICHT auf `Go`, `Weiter`, `OK` oder irgendeine Nutzerantwort warten.
+
 Match Bild 00.png exactly. Show the same young adult beneath an absurdly large bright spotlight that fills much of the frame, while the surrounding crowd stands mostly outside the light and pays only modest attention. Integrate the exact German text "SPOTLIGHT-EFFEKT" as one clean editorial label. The visual should feel like a cognitive-bias metaphor, mature and simple. No other readable text, no English, no logo, no watermark.
 
-BILD 03 – SZENE 3
-DATEINAME NACH FERTIGSTELLUNG: Bild 03.png
+
+BILD 03 – SZENE 3 – GOOGLE-FLOW-PROMPT
+ZIEL: SZENE 3
+DATEINAME: Bild 03.png
+FREIGABE-BEDINGUNG: Dieser Block wird AUTOMATISCH freigegeben, sobald BILD 02 vollständig fertig erzeugt, exakt als `Bild 02.png` umbenannt und die Umbenennung geprüft wurde. KEIN weiteres Go und KEINE Nutzerantwort abwarten.
+STYLE-REFERENZ: Verwende das bereits fertig erzeugte `Bild 00.png` direkt als verbindliche visuelle Vorlage für dieses Szenenbild.
+Behalte Zeichen-/Renderstil, Farbwelt, Figurenmerkmale, Proportionen, Lichtstimmung und Detailqualität von Bild 00 bei.
+Den Cover-Hook-Text nicht kopieren, außer der folgende Szenenprompt verlangt ausdrücklich sichtbaren Text.
+GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD 03.
+Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.
+Nach vollständigem Abschluss dieses Bildes: sofort exakt in `Bild 03.png` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.
+SOBALD DIESE PRÜFUNG ERFOLGREICH IST: den direkt nächsten nummerierten Bildblock SOFORT AUTOMATISCH starten. NICHT auf `Go`, `Weiter`, `OK` oder irgendeine Nutzerantwort warten.
+
 Match Bild 00.png exactly. Create a tasteful social-psychology experiment scene. The same participant enters a room wearing an intentionally loud, awkward retro graphic T-shirt with a generic non-famous face silhouette. The participant imagines almost everyone staring, shown by faint imagined eye-lines, but in reality only a few observers glance at the shirt while most continue their own activity. Integrate the exact German text "T-SHIRT-EXPERIMENT" as the only readable label. No recognizable celebrity, no other text, no English, no logo, no watermark.
 
-BILD 04 – SZENE 4
-DATEINAME NACH FERTIGSTELLUNG: Bild 04.png
+
+BILD 04 – SZENE 4 – GOOGLE-FLOW-PROMPT
+ZIEL: SZENE 4
+DATEINAME: Bild 04.png
+FREIGABE-BEDINGUNG: Dieser Block wird AUTOMATISCH freigegeben, sobald BILD 03 vollständig fertig erzeugt, exakt als `Bild 03.png` umbenannt und die Umbenennung geprüft wurde. KEIN weiteres Go und KEINE Nutzerantwort abwarten.
+STYLE-REFERENZ: Verwende das bereits fertig erzeugte `Bild 00.png` direkt als verbindliche visuelle Vorlage für dieses Szenenbild.
+Behalte Zeichen-/Renderstil, Farbwelt, Figurenmerkmale, Proportionen, Lichtstimmung und Detailqualität von Bild 00 bei.
+Den Cover-Hook-Text nicht kopieren, außer der folgende Szenenprompt verlangt ausdrücklich sichtbaren Text.
+GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD 04.
+Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.
+Nach vollständigem Abschluss dieses Bildes: sofort exakt in `Bild 04.png` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.
+SOBALD DIESE PRÜFUNG ERFOLGREICH IST: den direkt nächsten nummerierten Bildblock SOFORT AUTOMATISCH starten. NICHT auf `Go`, `Weiter`, `OK` oder irgendeine Nutzerantwort warten.
+
 Match Bild 00.png exactly. Show the protagonist viewing one tiny social mistake through a huge magnifying lens placed directly in front of their face, making the mistake look enormous from their first-person perspective. Farther away, the same mistake is represented as a tiny harmless paper fragment near the group. One coherent metaphor, no panels, no readable text, no English, no logo, no watermark.
 
-BILD 05 – SZENE 5
-DATEINAME NACH FERTIGSTELLUNG: Bild 05.png
+
+BILD 05 – SZENE 5 – GOOGLE-FLOW-PROMPT
+ZIEL: SZENE 5
+DATEINAME: Bild 05.png
+FREIGABE-BEDINGUNG: Dieser Block wird AUTOMATISCH freigegeben, sobald BILD 04 vollständig fertig erzeugt, exakt als `Bild 04.png` umbenannt und die Umbenennung geprüft wurde. KEIN weiteres Go und KEINE Nutzerantwort abwarten.
+STYLE-REFERENZ: Verwende das bereits fertig erzeugte `Bild 00.png` direkt als verbindliche visuelle Vorlage für dieses Szenenbild.
+Behalte Zeichen-/Renderstil, Farbwelt, Figurenmerkmale, Proportionen, Lichtstimmung und Detailqualität von Bild 00 bei.
+Den Cover-Hook-Text nicht kopieren, außer der folgende Szenenprompt verlangt ausdrücklich sichtbaren Text.
+GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD 05.
+Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.
+Nach vollständigem Abschluss dieses Bildes: sofort exakt in `Bild 05.png` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.
+SOBALD DIESE PRÜFUNG ERFOLGREICH IST: den direkt nächsten nummerierten Bildblock SOFORT AUTOMATISCH starten. NICHT auf `Go`, `Weiter`, `OK` oder irgendeine Nutzerantwort warten.
+
 Match Bild 00.png exactly. Show the same protagonist after the event, with a small broken speech-card fragment circling around their head several times on a looping arrow like a mental replay. Their expression is self-conscious, while the real social scene is already fading far into the background. Integrate the exact German word "REPLAY" as a small label. No other readable text, no English, no logo, no watermark.
 
-BILD 06 – SZENE 6
-DATEINAME NACH FERTIGSTELLUNG: Bild 06.png
+
+BILD 06 – SZENE 6 – GOOGLE-FLOW-PROMPT
+ZIEL: SZENE 6
+DATEINAME: Bild 06.png
+FREIGABE-BEDINGUNG: Dieser Block wird AUTOMATISCH freigegeben, sobald BILD 05 vollständig fertig erzeugt, exakt als `Bild 05.png` umbenannt und die Umbenennung geprüft wurde. KEIN weiteres Go und KEINE Nutzerantwort abwarten.
+STYLE-REFERENZ: Verwende das bereits fertig erzeugte `Bild 00.png` direkt als verbindliche visuelle Vorlage für dieses Szenenbild.
+Behalte Zeichen-/Renderstil, Farbwelt, Figurenmerkmale, Proportionen, Lichtstimmung und Detailqualität von Bild 00 bei.
+Den Cover-Hook-Text nicht kopieren, außer der folgende Szenenprompt verlangt ausdrücklich sichtbaren Text.
+GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD 06.
+Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.
+Nach vollständigem Abschluss dieses Bildes: sofort exakt in `Bild 06.png` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.
+SOBALD DIESE PRÜFUNG ERFOLGREICH IST: den direkt nächsten nummerierten Bildblock SOFORT AUTOMATISCH starten. NICHT auf `Go`, `Weiter`, `OK` oder irgendeine Nutzerantwort warten.
+
 Match Bild 00.png exactly. Show the surrounding people immediately turning back to ordinary activities after the tiny mistake: one checks a phone, one talks to a friend, one adjusts a bag, one thinks about food. The protagonist's imagined spotlight remains, but nobody else is replaying the mistake. No readable text, no English, no logo, no watermark.
 
-BILD 07 – SZENE 7
-DATEINAME NACH FERTIGSTELLUNG: Bild 07.png
+
+BILD 07 – SZENE 7 – GOOGLE-FLOW-PROMPT
+ZIEL: SZENE 7
+DATEINAME: Bild 07.png
+FREIGABE-BEDINGUNG: Dieser Block wird AUTOMATISCH freigegeben, sobald BILD 06 vollständig fertig erzeugt, exakt als `Bild 06.png` umbenannt und die Umbenennung geprüft wurde. KEIN weiteres Go und KEINE Nutzerantwort abwarten.
+STYLE-REFERENZ: Verwende das bereits fertig erzeugte `Bild 00.png` direkt als verbindliche visuelle Vorlage für dieses Szenenbild.
+Behalte Zeichen-/Renderstil, Farbwelt, Figurenmerkmale, Proportionen, Lichtstimmung und Detailqualität von Bild 00 bei.
+Den Cover-Hook-Text nicht kopieren, außer der folgende Szenenprompt verlangt ausdrücklich sichtbaren Text.
+GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD 07.
+Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.
+Nach vollständigem Abschluss dieses Bildes: sofort exakt in `Bild 07.png` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.
+SOBALD DIESE PRÜFUNG ERFOLGREICH IST: den direkt nächsten nummerierten Bildblock SOFORT AUTOMATISCH starten. NICHT auf `Go`, `Weiter`, `OK` oder irgendeine Nutzerantwort warten.
+
 Match Bild 00.png exactly. Show a small crowd where every person stands inside their own modest pool of spotlight, each focused on something personal: hair, clothing, a phone message, a remembered mistake, a thought bubble. The protagonist realizes attention is distributed rather than centered only on them. Integrate the exact German text "JEDER HAT SEINEN SPOTLIGHT" as the only readable phrase. No other text, no English, no logo, no watermark.
 
-BILD 08 – SZENE 8
-DATEINAME NACH FERTIGSTELLUNG: Bild 08.png
+
+BILD 08 – SZENE 8 – GOOGLE-FLOW-PROMPT
+ZIEL: SZENE 8
+DATEINAME: Bild 08.png
+FREIGABE-BEDINGUNG: Dieser Block wird AUTOMATISCH freigegeben, sobald BILD 07 vollständig fertig erzeugt, exakt als `Bild 07.png` umbenannt und die Umbenennung geprüft wurde. KEIN weiteres Go und KEINE Nutzerantwort abwarten.
+STYLE-REFERENZ: Verwende das bereits fertig erzeugte `Bild 00.png` direkt als verbindliche visuelle Vorlage für dieses Szenenbild.
+Behalte Zeichen-/Renderstil, Farbwelt, Figurenmerkmale, Proportionen, Lichtstimmung und Detailqualität von Bild 00 bei.
+Den Cover-Hook-Text nicht kopieren, außer der folgende Szenenprompt verlangt ausdrücklich sichtbaren Text.
+GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD 08.
+Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.
+Nach vollständigem Abschluss dieses Bildes: sofort exakt in `Bild 08.png` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.
+SOBALD DIESE PRÜFUNG ERFOLGREICH IST: den direkt nächsten nummerierten Bildblock SOFORT AUTOMATISCH starten. NICHT auf `Go`, `Weiter`, `OK` oder irgendeine Nutzerantwort warten.
+
 Match Bild 00.png exactly. Show the protagonist looking at three tiny social imperfections that appear enormous only inside their spotlight: a very small stain on a shirt, one broken speech fragment representing a slip of the tongue, and one slightly awkward arm movement. Use exaggerated scale around the protagonist while the surrounding crowd remains normal. Integrate the exact German text "FÜR DICH: RIESIG" as the only readable phrase. No English, no logo, no watermark.
 
-BILD 09 – SZENE 9
-DATEINAME NACH FERTIGSTELLUNG: Bild 09.png
+
+BILD 09 – SZENE 9 – GOOGLE-FLOW-PROMPT
+ZIEL: SZENE 9
+DATEINAME: Bild 09.png
+FREIGABE-BEDINGUNG: Dieser Block wird AUTOMATISCH freigegeben, sobald BILD 08 vollständig fertig erzeugt, exakt als `Bild 08.png` umbenannt und die Umbenennung geprüft wurde. KEIN weiteres Go und KEINE Nutzerantwort abwarten.
+STYLE-REFERENZ: Verwende das bereits fertig erzeugte `Bild 00.png` direkt als verbindliche visuelle Vorlage für dieses Szenenbild.
+Behalte Zeichen-/Renderstil, Farbwelt, Figurenmerkmale, Proportionen, Lichtstimmung und Detailqualität von Bild 00 bei.
+Den Cover-Hook-Text nicht kopieren, außer der folgende Szenenprompt verlangt ausdrücklich sichtbaren Text.
+GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD 09.
+Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.
+Nach vollständigem Abschluss dieses Bildes: sofort exakt in `Bild 09.png` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.
+SOBALD DIESE PRÜFUNG ERFOLGREICH IST: den direkt nächsten nummerierten Bildblock SOFORT AUTOMATISCH starten. NICHT auf `Go`, `Weiter`, `OK` oder irgendeine Nutzerantwort warten.
+
 Match Bild 00.png exactly. Show the same tiny social mistake as a small paper fragment briefly passing through the edge of another person's attention before drifting away. The observer is already turning back to their own thoughts. Integrate the exact German text "FÜR ANDERE: KURZ" as the only readable phrase. Keep the protagonist visible but no longer dominating the scene. No English, no logo, no watermark.
 
-BILD 10 – SZENE 10
-DATEINAME NACH FERTIGSTELLUNG: Bild 10.png
+
+BILD 10 – SZENE 10 – GOOGLE-FLOW-PROMPT
+ZIEL: SZENE 10
+DATEINAME: Bild 10.png
+FREIGABE-BEDINGUNG: Dieser Block wird AUTOMATISCH freigegeben, sobald BILD 09 vollständig fertig erzeugt, exakt als `Bild 09.png` umbenannt und die Umbenennung geprüft wurde. KEIN weiteres Go und KEINE Nutzerantwort abwarten.
+STYLE-REFERENZ: Verwende das bereits fertig erzeugte `Bild 00.png` direkt als verbindliche visuelle Vorlage für dieses Szenenbild.
+Behalte Zeichen-/Renderstil, Farbwelt, Figurenmerkmale, Proportionen, Lichtstimmung und Detailqualität von Bild 00 bei.
+Den Cover-Hook-Text nicht kopieren, außer der folgende Szenenprompt verlangt ausdrücklich sichtbaren Text.
+GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD 10.
+Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.
+Nach vollständigem Abschluss dieses Bildes: sofort exakt in `Bild 10.png` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.
+SOBALD DIESE PRÜFUNG ERFOLGREICH IST: den direkt nächsten nummerierten Bildblock SOFORT AUTOMATISCH starten. NICHT auf `Go`, `Weiter`, `OK` oder irgendeine Nutzerantwort warten.
+
 Match Bild 00.png exactly. Show the protagonist making a strong positive contribution in a group discussion, represented by one bright golden idea card rising from their speech. In their imagination the idea becomes a huge glowing object under a spotlight, while in the actual group it is received positively but as one contribution among many. Integrate the exact German text "AUCH POSITIVES" as the only readable label. No English, no logo, no watermark.
 
-BILD 11 – SZENE 11
-DATEINAME NACH FERTIGSTELLUNG: Bild 11.png
+
+BILD 11 – SZENE 11 – GOOGLE-FLOW-PROMPT
+ZIEL: SZENE 11
+DATEINAME: Bild 11.png
+FREIGABE-BEDINGUNG: Dieser Block wird AUTOMATISCH freigegeben, sobald BILD 10 vollständig fertig erzeugt, exakt als `Bild 10.png` umbenannt und die Umbenennung geprüft wurde. KEIN weiteres Go und KEINE Nutzerantwort abwarten.
+STYLE-REFERENZ: Verwende das bereits fertig erzeugte `Bild 00.png` direkt als verbindliche visuelle Vorlage für dieses Szenenbild.
+Behalte Zeichen-/Renderstil, Farbwelt, Figurenmerkmale, Proportionen, Lichtstimmung und Detailqualität von Bild 00 bei.
+Den Cover-Hook-Text nicht kopieren, außer der folgende Szenenprompt verlangt ausdrücklich sichtbaren Text.
+GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD 11.
+Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.
+Nach vollständigem Abschluss dieses Bildes: sofort exakt in `Bild 11.png` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.
+SOBALD DIESE PRÜFUNG ERFOLGREICH IST: den direkt nächsten nummerierten Bildblock SOFORT AUTOMATISCH starten. NICHT auf `Go`, `Weiter`, `OK` oder irgendeine Nutzerantwort warten.
+
 Match Bild 00.png exactly. Show the protagonist calmly turning down a large dimmer wheel connected to the exaggerated theatrical spotlight above them. As the light softens, the imagined giant eye symbols fade and the ordinary social environment becomes more balanced. Integrate the exact German text "SPOTLIGHT DIMMEN" as the only readable phrase. No English, no logo, no watermark.
 
-BILD 12 – SZENE 12
-DATEINAME NACH FERTIGSTELLUNG: Bild 12.png
+
+BILD 12 – SZENE 12 – GOOGLE-FLOW-PROMPT
+ZIEL: SZENE 12
+DATEINAME: Bild 12.png
+FREIGABE-BEDINGUNG: Dieser Block wird AUTOMATISCH freigegeben, sobald BILD 11 vollständig fertig erzeugt, exakt als `Bild 11.png` umbenannt und die Umbenennung geprüft wurde. KEIN weiteres Go und KEINE Nutzerantwort abwarten.
+STYLE-REFERENZ: Verwende das bereits fertig erzeugte `Bild 00.png` direkt als verbindliche visuelle Vorlage für dieses Szenenbild.
+Behalte Zeichen-/Renderstil, Farbwelt, Figurenmerkmale, Proportionen, Lichtstimmung und Detailqualität von Bild 00 bei.
+Den Cover-Hook-Text nicht kopieren, außer der folgende Szenenprompt verlangt ausdrücklich sichtbaren Text.
+GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD 12.
+Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.
+Nach vollständigem Abschluss dieses Bildes: sofort exakt in `Bild 12.png` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.
+SOBALD DIESE PRÜFUNG ERFOLGREICH IST: den direkt nächsten nummerierten Bildblock SOFORT AUTOMATISCH starten. NICHT auf `Go`, `Weiter`, `OK` oder irgendeine Nutzerantwort warten.
+
 Match Bild 00.png exactly. Show the protagonist thinking about another ordinary person making the same tiny verbal mistake. A small calendar page flips from today to tomorrow while the mistake icon fades almost completely from memory. Integrate the exact German question "WÜRDEST DU ES MORGEN NOCH WISSEN?" clearly within safe zones. No other readable text, no English, no logo, no watermark.
 
-BILD 13 – SZENE 13
-DATEINAME NACH FERTIGSTELLUNG: Bild 13.png
+
+BILD 13 – SZENE 13 – GOOGLE-FLOW-PROMPT
+ZIEL: SZENE 13
+DATEINAME: Bild 13.png
+FREIGABE-BEDINGUNG: Dieser Block wird AUTOMATISCH freigegeben, sobald BILD 12 vollständig fertig erzeugt, exakt als `Bild 12.png` umbenannt und die Umbenennung geprüft wurde. KEIN weiteres Go und KEINE Nutzerantwort abwarten.
+STYLE-REFERENZ: Verwende das bereits fertig erzeugte `Bild 00.png` direkt als verbindliche visuelle Vorlage für dieses Szenenbild.
+Behalte Zeichen-/Renderstil, Farbwelt, Figurenmerkmale, Proportionen, Lichtstimmung und Detailqualität von Bild 00 bei.
+Den Cover-Hook-Text nicht kopieren, außer der folgende Szenenprompt verlangt ausdrücklich sichtbaren Text.
+GOOGLE FLOW – AKTUELLER EINZELSCHRITT: Erzeuge GENAU EIN Bild: BILD 13.
+Während diese Generierung läuft: KEIN anderes Bild starten, keinen späteren Prompt absenden und nichts in eine Queue legen.
+Nach vollständigem Abschluss dieses Bildes: sofort exakt in `Bild 13.png` umbenennen und prüfen, dass dieser Dateiname wirklich gesetzt ist.
+Dies ist das letzte Bild. Nach abgeschlossener Umbenennung von Bild 13 den Abschluss-Schritt unten AUTOMATISCH ausführen. Keine weitere Nutzerbestätigung verlangen.
+
 Match Bild 00.png exactly. Show the protagonist stepping calmly out of the oversized theatrical spotlight and walking forward into a normal social setting. Behind them the tiny broken speech fragment and imagined eye symbols fade into paper dust, while the crowd continues with ordinary life. Integrate the exact German text "WEITERGEHEN" as the only readable phrase. Clear satisfying conclusion. No English, no logo, no watermark. Hold this final visual unchanged for the 0.7-second end frame after the last spoken word.
+
+
+ABSCHLUSS – ERST JETZT GEMEINSAM IN EINEN ORDNER
+
+DIESER ABSCHLUSS DARF ERST BEGINNEN, WENN DAS LETZTE BILD VOLLSTÄNDIG FERTIG UND UMBENANNT IST.
+Vorher darf KEIN Bild in den gemeinsamen Sammelordner verschoben werden.
+Für diesen Abschluss ist KEIN neues Go und KEINE neue Nutzerbestätigung erforderlich. Nach dem letzten korrekt umbenannten Bild automatisch fortfahren.
+
+FESTE DATEIBENENNUNG:
+- Bild 00 = COVER → Dateiname `Bild 00.png`
+- Bild 01 = SZENE 1 → Dateiname `Bild 01.png`
+- Bild 02 = SZENE 2 → Dateiname `Bild 02.png`
+- Bild 03 = SZENE 3 → Dateiname `Bild 03.png`
+- Bild 04 = SZENE 4 → Dateiname `Bild 04.png`
+- Bild 05 = SZENE 5 → Dateiname `Bild 05.png`
+- Bild 06 = SZENE 6 → Dateiname `Bild 06.png`
+- Bild 07 = SZENE 7 → Dateiname `Bild 07.png`
+- Bild 08 = SZENE 8 → Dateiname `Bild 08.png`
+- Bild 09 = SZENE 9 → Dateiname `Bild 09.png`
+- Bild 10 = SZENE 10 → Dateiname `Bild 10.png`
+- Bild 11 = SZENE 11 → Dateiname `Bild 11.png`
+- Bild 12 = SZENE 12 → Dateiname `Bild 12.png`
+- Bild 13 = SZENE 13 → Dateiname `Bild 13.png`
+
+Prüfe jetzt erst die vollständige Reihe Bild 00 bis Bild 13: keine Nummer fehlt, keine Nummer ist doppelt und keine Nummer ist vertauscht.
+Falls das Bildformat nicht PNG ist, darf nur die Dateiendung abweichen; die Nummerierung `Bild 00`, `Bild 01`, `Bild 02` usw. bleibt unverändert.
+ERST NACH DIESER VOLLSTÄNDIGEN PRÜFUNG: Lege ALLE fertigen und bereits korrekt umbenannten Bilder gemeinsam in `00-bildprompts/00-ALLE-BILDER-HIER-REIN/`.
+Alle Bilder kommen dann zusammen in genau diesen EINEN Sammelordner. Nicht vorher und nicht einzeln während der Generierung. Nicht auf einzelne Cover- oder Szenenordner verteilen.

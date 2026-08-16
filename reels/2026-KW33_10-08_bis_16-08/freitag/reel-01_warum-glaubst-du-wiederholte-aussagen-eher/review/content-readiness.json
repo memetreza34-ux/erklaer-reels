@@ -1,16 +1,34 @@
 {
-  "createdAt": "2026-08-16T04:19:36.637Z",
+  "createdAt": "2026-08-16T05:35:41.441Z",
   "passed": true,
   "summary": {
-    "passedChecks": 303,
+    "passedChecks": 320,
     "failedChecks": 0,
-    "warnings": 51,
-    "totalChecks": 354
+    "warnings": 43,
+    "totalChecks": 363
   },
   "metadata": {
     "totalDuration": 56.99999999999999,
-    "strict": false,
-    "sourceQuality": null
+    "strict": true,
+    "sourceQuality": {
+      "schemaVersion": 2,
+      "urlFieldCount": 3,
+      "urlCount": 3,
+      "httpsUrlCount": 3,
+      "distinctHostCount": 3,
+      "hosts": [
+        "doi.org",
+        "pubmed.ncbi.nlm.nih.gov",
+        "nature.com"
+      ],
+      "titleCount": 3,
+      "dateCount": 3,
+      "evidenceCount": 3,
+      "hasPlaceholder": false,
+      "hasInsecureHttp": false,
+      "hasMalformedUrlField": false,
+      "passed": true
+    }
   },
   "checks": [
     {
@@ -154,7 +172,7 @@
     {
       "id": "scene-01-subtitle-position",
       "passed": true,
-      "level": "warning",
+      "level": "error",
       "message": "scene-01: subtitlePosition muss center sein."
     },
     {
@@ -262,7 +280,7 @@
     {
       "id": "scene-02-subtitle-position",
       "passed": true,
-      "level": "warning",
+      "level": "error",
       "message": "scene-02: subtitlePosition muss center sein."
     },
     {
@@ -370,7 +388,7 @@
     {
       "id": "scene-03-subtitle-position",
       "passed": true,
-      "level": "warning",
+      "level": "error",
       "message": "scene-03: subtitlePosition muss center sein."
     },
     {
@@ -478,7 +496,7 @@
     {
       "id": "scene-04-subtitle-position",
       "passed": true,
-      "level": "warning",
+      "level": "error",
       "message": "scene-04: subtitlePosition muss center sein."
     },
     {
@@ -586,7 +604,7 @@
     {
       "id": "scene-05-subtitle-position",
       "passed": true,
-      "level": "warning",
+      "level": "error",
       "message": "scene-05: subtitlePosition muss center sein."
     },
     {
@@ -694,7 +712,7 @@
     {
       "id": "scene-06-subtitle-position",
       "passed": true,
-      "level": "warning",
+      "level": "error",
       "message": "scene-06: subtitlePosition muss center sein."
     },
     {
@@ -802,7 +820,7 @@
     {
       "id": "scene-07-subtitle-position",
       "passed": true,
-      "level": "warning",
+      "level": "error",
       "message": "scene-07: subtitlePosition muss center sein."
     },
     {
@@ -910,7 +928,7 @@
     {
       "id": "scene-08-subtitle-position",
       "passed": true,
-      "level": "warning",
+      "level": "error",
       "message": "scene-08: subtitlePosition muss center sein."
     },
     {
@@ -1018,7 +1036,7 @@
     {
       "id": "scene-09-subtitle-position",
       "passed": true,
-      "level": "warning",
+      "level": "error",
       "message": "scene-09: subtitlePosition muss center sein."
     },
     {
@@ -1126,7 +1144,7 @@
     {
       "id": "scene-10-subtitle-position",
       "passed": true,
-      "level": "warning",
+      "level": "error",
       "message": "scene-10: subtitlePosition muss center sein."
     },
     {
@@ -1234,7 +1252,7 @@
     {
       "id": "scene-11-subtitle-position",
       "passed": true,
-      "level": "warning",
+      "level": "error",
       "message": "scene-11: subtitlePosition muss center sein."
     },
     {
@@ -1342,7 +1360,7 @@
     {
       "id": "scene-12-subtitle-position",
       "passed": true,
-      "level": "warning",
+      "level": "error",
       "message": "scene-12: subtitlePosition muss center sein."
     },
     {
@@ -1450,7 +1468,7 @@
     {
       "id": "scene-13-subtitle-position",
       "passed": true,
-      "level": "warning",
+      "level": "error",
       "message": "scene-13: subtitlePosition muss center sein."
     },
     {
@@ -1540,7 +1558,7 @@
     {
       "id": "subtitle-plan-present",
       "passed": true,
-      "level": "warning",
+      "level": "error",
       "message": "subtitles/subtitle-plan.json fehlt."
     },
     {
@@ -1551,62 +1569,62 @@
     },
     {
       "id": "subtitle-plan-position",
-      "passed": false,
-      "level": "warning",
+      "passed": true,
+      "level": "error",
       "message": "Der Untertitelplan muss die Position center verwenden."
     },
     {
       "id": "subtitle-plan-vertical-position",
       "passed": true,
-      "level": "warning",
+      "level": "error",
       "message": "Die Untertitelposition muss exakt 58 Prozent der Bildhöhe betragen."
     },
     {
       "id": "subtitle-plan-safe-range-min",
-      "passed": false,
-      "level": "warning",
+      "passed": true,
+      "level": "error",
       "message": "Die minimale Untertitelhöhe muss exakt 58 Prozent betragen."
     },
     {
       "id": "subtitle-plan-safe-range-max",
-      "passed": false,
-      "level": "warning",
+      "passed": true,
+      "level": "error",
       "message": "Die maximale Untertitelhöhe muss exakt 58 Prozent betragen."
     },
     {
       "id": "subtitle-plan-text-color",
-      "passed": false,
-      "level": "warning",
+      "passed": true,
+      "level": "error",
       "message": "Die normale Untertitelfarbe muss #F5F7FA sein."
     },
     {
       "id": "subtitle-plan-highlight-color",
-      "passed": false,
-      "level": "warning",
+      "passed": true,
+      "level": "error",
       "message": "Die Synchronfarbe muss #B7794A sein."
     },
     {
       "id": "subtitle-plan-background-color",
-      "passed": false,
-      "level": "warning",
+      "passed": true,
+      "level": "error",
       "message": "Der Untertitelhintergrund muss transparent verwenden."
     },
     {
       "id": "subtitle-plan-max-lines",
-      "passed": false,
+      "passed": true,
       "level": "warning",
       "message": "Untertitel sollten höchstens 2 Zeilen verwenden."
     },
     {
       "id": "subtitle-plan-cues",
-      "passed": false,
+      "passed": true,
       "level": "warning",
       "message": "Der Untertitelplan enthält noch keine Cues."
     },
     {
       "id": "effects-plan-present",
       "passed": true,
-      "level": "warning",
+      "level": "error",
       "message": "effects/effects-plan.json fehlt."
     },
     {
@@ -1630,13 +1648,13 @@
     {
       "id": "effects-scene-count",
       "passed": true,
-      "level": "warning",
+      "level": "error",
       "message": "effects-plan.json enthält 13 statt 13 Szeneneinträge."
     },
     {
       "id": "scene-01-effect-entry",
       "passed": true,
-      "level": "warning",
+      "level": "error",
       "message": "scene-01: Im Effektplan fehlt ein Eintrag."
     },
     {
@@ -1672,7 +1690,7 @@
     {
       "id": "scene-02-effect-entry",
       "passed": true,
-      "level": "warning",
+      "level": "error",
       "message": "scene-02: Im Effektplan fehlt ein Eintrag."
     },
     {
@@ -1708,7 +1726,7 @@
     {
       "id": "scene-03-effect-entry",
       "passed": true,
-      "level": "warning",
+      "level": "error",
       "message": "scene-03: Im Effektplan fehlt ein Eintrag."
     },
     {
@@ -1744,7 +1762,7 @@
     {
       "id": "scene-04-effect-entry",
       "passed": true,
-      "level": "warning",
+      "level": "error",
       "message": "scene-04: Im Effektplan fehlt ein Eintrag."
     },
     {
@@ -1780,7 +1798,7 @@
     {
       "id": "scene-05-effect-entry",
       "passed": true,
-      "level": "warning",
+      "level": "error",
       "message": "scene-05: Im Effektplan fehlt ein Eintrag."
     },
     {
@@ -1816,7 +1834,7 @@
     {
       "id": "scene-06-effect-entry",
       "passed": true,
-      "level": "warning",
+      "level": "error",
       "message": "scene-06: Im Effektplan fehlt ein Eintrag."
     },
     {
@@ -1852,7 +1870,7 @@
     {
       "id": "scene-07-effect-entry",
       "passed": true,
-      "level": "warning",
+      "level": "error",
       "message": "scene-07: Im Effektplan fehlt ein Eintrag."
     },
     {
@@ -1888,7 +1906,7 @@
     {
       "id": "scene-08-effect-entry",
       "passed": true,
-      "level": "warning",
+      "level": "error",
       "message": "scene-08: Im Effektplan fehlt ein Eintrag."
     },
     {
@@ -1924,7 +1942,7 @@
     {
       "id": "scene-09-effect-entry",
       "passed": true,
-      "level": "warning",
+      "level": "error",
       "message": "scene-09: Im Effektplan fehlt ein Eintrag."
     },
     {
@@ -1960,7 +1978,7 @@
     {
       "id": "scene-10-effect-entry",
       "passed": true,
-      "level": "warning",
+      "level": "error",
       "message": "scene-10: Im Effektplan fehlt ein Eintrag."
     },
     {
@@ -1996,7 +2014,7 @@
     {
       "id": "scene-11-effect-entry",
       "passed": true,
-      "level": "warning",
+      "level": "error",
       "message": "scene-11: Im Effektplan fehlt ein Eintrag."
     },
     {
@@ -2032,7 +2050,7 @@
     {
       "id": "scene-12-effect-entry",
       "passed": true,
-      "level": "warning",
+      "level": "error",
       "message": "scene-12: Im Effektplan fehlt ein Eintrag."
     },
     {
@@ -2068,7 +2086,7 @@
     {
       "id": "scene-13-effect-entry",
       "passed": true,
-      "level": "warning",
+      "level": "error",
       "message": "scene-13: Im Effektplan fehlt ein Eintrag."
     },
     {
@@ -2136,6 +2154,60 @@
       "passed": true,
       "level": "error",
       "message": "cover/cover.json benötigt eine visualIdea."
+    },
+    {
+      "id": "caption",
+      "passed": true,
+      "level": "error",
+      "message": "caption/caption.txt fehlt oder ist zu kurz."
+    },
+    {
+      "id": "sources",
+      "passed": true,
+      "level": "error",
+      "message": "sources/sources.md enthält noch keine verwertbaren Quellen oder Hinweise."
+    },
+    {
+      "id": "sources-v2-https-count",
+      "passed": true,
+      "level": "error",
+      "message": "Neue Reels benötigen mindestens zwei echte HTTPS-Quellen."
+    },
+    {
+      "id": "sources-v2-independent-hosts",
+      "passed": true,
+      "level": "error",
+      "message": "Neue Reels benötigen mindestens zwei voneinander unabhängige Quell-Domains."
+    },
+    {
+      "id": "sources-v2-titles",
+      "passed": true,
+      "level": "error",
+      "message": "Für mindestens zwei Quellen muss Titel oder Institution eingetragen sein."
+    },
+    {
+      "id": "sources-v2-dates",
+      "passed": true,
+      "level": "error",
+      "message": "Für mindestens zwei Quellen muss Datum oder Zugriffsdatum eingetragen sein."
+    },
+    {
+      "id": "sources-v2-evidence",
+      "passed": true,
+      "level": "error",
+      "message": "Für mindestens zwei Quellen muss kurz dokumentiert sein, welche Aussage sie belegt."
+    },
+    {
+      "id": "sources-v2-no-placeholders",
+      "passed": true,
+      "level": "error",
+      "message": "Quellen dürfen keine TODO-, Platzhalter- oder example.com-Einträge enthalten."
+    },
+    {
+      "id": "sources-v2-https-only",
+      "passed": true,
+      "level": "error",
+      "message": "Neue Quellen sollen ausschließlich HTTPS-URLs verwenden."
     }
   ]
 }
