@@ -1,5 +1,5 @@
 {
-  "createdAt": "2026-08-16T05:50:29.843Z",
+  "createdAt": "2026-08-16T06:00:13.054Z",
   "passed": true,
   "summary": {
     "passedChecks": 494,
@@ -81,12 +81,12 @@
               {
                 "text": "Warum",
                 "startSeconds": 0,
-                "endSeconds": 0.1,
+                "endSeconds": 0.26,
                 "confidence": 1
               },
               {
                 "text": "glaubst",
-                "startSeconds": 0.1,
+                "startSeconds": 0.26,
                 "endSeconds": 0.68,
                 "confidence": 1
               },
@@ -480,12 +480,12 @@
               {
                 "text": "Vertrautheit",
                 "startSeconds": 9.84,
-                "endSeconds": 9.94,
+                "endSeconds": 10.42,
                 "confidence": 1
               },
               {
                 "text": "wird",
-                "startSeconds": 9.94,
+                "startSeconds": 10.42,
                 "endSeconds": 10.58,
                 "confidence": 1
               },
@@ -1110,12 +1110,12 @@
               {
                 "text": "tückisch:",
                 "startSeconds": 28.78,
-                "endSeconds": 28.88,
+                "endSeconds": 29.2,
                 "confidence": 1
               },
               {
                 "text": "Wiederholung",
-                "startSeconds": 28.88,
+                "startSeconds": 29.5,
                 "endSeconds": 29.94,
                 "confidence": 1
               },
@@ -1334,13 +1334,13 @@
               },
               {
                 "text": "Gerüchten,",
-                "startSeconds": 34.72,
-                "endSeconds": 34.82,
+                "startSeconds": 34.86,
+                "endSeconds": 35.22,
                 "confidence": 1
               },
               {
                 "text": "Werbung",
-                "startSeconds": 34.86,
+                "startSeconds": 35.46,
                 "endSeconds": 35.78,
                 "confidence": 1
               },
@@ -1512,12 +1512,12 @@
               {
                 "text": "Meta-Analyse",
                 "startSeconds": 39.56,
-                "endSeconds": 39.66,
+                "endSeconds": 40.24,
                 "confidence": 1
               },
               {
                 "text": "von",
-                "startSeconds": 39.66,
+                "startSeconds": 40.24,
                 "endSeconds": 40.36,
                 "confidence": 1
               },
@@ -2055,12 +2055,12 @@
               {
                 "text": "Vertrautheit",
                 "startSeconds": 53.94,
-                "endSeconds": 54.04,
+                "endSeconds": 54.54,
                 "confidence": 1
               },
               {
                 "text": "nie",
-                "startSeconds": 54.04,
+                "startSeconds": 54.54,
                 "endSeconds": 54.84,
                 "confidence": 1
               },
@@ -2109,7 +2109,7 @@
   },
   "readiness": {
     "version": 10,
-    "createdAt": "2026-08-16T05:50:23.822Z",
+    "createdAt": "2026-08-16T06:00:08.399Z",
     "reelDirectory": "reels/2026-KW33_10-08_bis_16-08/freitag/reel-01_warum-glaubst-du-wiederholte-aussagen-eher",
     "strict": true,
     "readyForRenderer": true,

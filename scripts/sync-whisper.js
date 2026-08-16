@@ -34,6 +34,24 @@ for (const cw of codex.words) {
   cw.endSeconds = null;
 }
 
+const distance = (a, b) => {
+  if (a.length === 0) return b.length;
+  if (b.length === 0) return a.length;
+  const matrix = [];
+  for (let i = 0; i <= b.length; i++) { matrix[i] = [i]; }
+  for (let j = 0; j <= a.length; j++) { matrix[0][j] = j; }
+  for (let i = 1; i <= b.length; i++) {
+    for (let j = 1; j <= a.length; j++) {
+      if (b.charAt(i - 1) == a.charAt(j - 1)) {
+        matrix[i][j] = matrix[i - 1][j - 1];
+      } else {
+        matrix[i][j] = Math.min(matrix[i - 1][j - 1] + 1, Math.min(matrix[i][j - 1] + 1, matrix[i - 1][j] + 1));
+      }
+    }
+  }
+  return matrix[b.length][a.length];
+};
+
 for (const cw of codex.words) {
   const targetText = normalize(cw.text);
   
@@ -50,7 +68,10 @@ for (const cw of codex.words) {
     endSeconds = ww.end;
     combinedText += normalizedWw;
     
-    if (combinedText.includes(targetText) || (targetText.includes(combinedText) && combinedText.length > 3) || targetText === normalizedWw) {
+    const dist = distance(targetText, normalizedWw);
+    const isFuzzyMatch = dist <= 1 || (targetText.length > 5 && dist <= 2) || (targetText.length > 8 && dist <= 3);
+    
+    if (isFuzzyMatch || combinedText.includes(targetText) || (targetText.includes(combinedText) && combinedText.length > 3) || targetText === normalizedWw) {
       cw.startSeconds = startSeconds;
       cw.endSeconds = endSeconds;
       wIdx = wIdx + lookahead + 1;
