@@ -1,1 +1,29 @@
-{"reelId":"reel-01_warum-glaubst-du-wiederholte-aussagen-eher","title":"Warum glaubst du Aussagen eher, wenn du sie öfter hörst?","topicArea":"Psychologie und menschliches Verhalten","date":"2026-08-14","language":"de","promptLanguage":"en","aspectRatio":"9:16","targetDurationSeconds":58,"plannedVoiceDurationSeconds":57,"endingHoldSeconds":0.7,"plannedVideoDurationSeconds":57.7,"scriptWordCount":160,"sceneCount":13,"visualStyleId":"visual-metaphor","visualStyleReason":"Eine reife 2D-Editorial-Medienwelt aus wiederkehrenden Aussagekarten, Echo-Spuren, Quellen und Belegen macht Vertrautheit und wahrgenommene Wahrheit unmittelbar sichtbar.","subtitlesEnabled":true,"subtitleStyle":{"verticalPositionPercent":58,"textColor":"#F5F7FA","highlightCurrentWord":true,"highlightColor":"#B7794A","completeSpokenTextCoverageRequired":true},"motionEffectsEnabled":true,"soundEffectsEnabled":true,"backgroundMusicEnabled":false,"status":"prompt-ready-waiting-for-external-assets"}
+{
+  "reelId": "reel-01_warum-glaubst-du-wiederholte-aussagen-eher",
+  "title": "Warum glaubst du Aussagen eher, wenn du sie öfter hörst?",
+  "topicArea": "Psychologie und menschliches Verhalten",
+  "date": "2026-08-14",
+  "language": "de",
+  "promptLanguage": "en",
+  "aspectRatio": "9:16",
+  "targetDurationSeconds": 58,
+  "plannedVoiceDurationSeconds": 57,
+  "endingHoldSeconds": 0.7,
+  "plannedVideoDurationSeconds": 57.7,
+  "scriptWordCount": 160,
+  "sceneCount": 13,
+  "visualStyleId": "visual-metaphor",
+  "visualStyleReason": "Eine reife 2D-Editorial-Medienwelt aus wiederkehrenden Aussagekarten, Echo-Spuren, Quellen und Belegen macht Vertrautheit und wahrgenommene Wahrheit unmittelbar sichtbar.",
+  "subtitlesEnabled": true,
+  "subtitleStyle": {
+    "verticalPositionPercent": 58,
+    "textColor": "#F5F7FA",
+    "highlightCurrentWord": true,
+    "highlightColor": "#B7794A",
+    "completeSpokenTextCoverageRequired": true
+  },
+  "motionEffectsEnabled": true,
+  "soundEffectsEnabled": true,
+  "backgroundMusicEnabled": false,
+  "status": "content-ready"
+}

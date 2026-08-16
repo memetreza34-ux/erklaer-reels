@@ -1,1 +1,19 @@
-{"sceneId":"scene-10","order":10,"title":"Meta-Analyse 2026","narration":"Eine große Meta-Analyse von 2026 bestätigte den Effekt über viele Studien hinweg.","imageText":"182 STUDIEN","visualIdea":"Viele kleine Studienblätter bündeln sich zu einer großen Evidenzmappe, daneben wiederholte Aussagekarten.","audioCue":"Eine große Meta-Analyse von 2026","durationSeconds":4.4,"promptStatus":"ready","imageStatus":"missing","assetVerification":null,"status":"prompt-ready"}
+{
+  "sceneId": "scene-10",
+  "order": 10,
+  "title": "Meta-Analyse 2026",
+  "narration": "Eine große Meta-Analyse von 2026 bestätigte den Effekt über viele Studien hinweg.",
+  "imageText": "182 STUDIEN",
+  "visualIdea": "Viele kleine Studienblätter bündeln sich zu einer großen Evidenzmappe, daneben wiederholte Aussagekarten.",
+  "audioCue": "Eine große Meta-Analyse von 2026",
+  "durationSeconds": 4.4,
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "prompt-ready",
+  "continuityNotes": "Stilistisch passend zu Bild 00, gleiche Beleuchtung und Farbpalette, weicher Übergang der Szenerie.",
+  "expectedImageFileName": "scene-10.jpeg",
+  "leadInSeconds": 0.2,
+  "subtitlePosition": "center",
+  "subtitleCues": []
+}

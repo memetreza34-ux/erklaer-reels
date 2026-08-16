@@ -1,1 +1,19 @@
-{"sceneId":"scene-11","order":11,"title":"Nicht mit Qualität verwechseln","narration":"Deshalb ist „Das habe ich schon oft gehört“ kein Qualitätsmerkmal.","imageText":"OFT GEHÖRT ≠ WAHR","visualIdea":"Ein Stempel OFT GEHÖRT wird von einem separaten Wahrheits-Häkchen klar getrennt.","audioCue":"Deshalb ist","durationSeconds":3.5,"promptStatus":"ready","imageStatus":"missing","assetVerification":null,"status":"prompt-ready"}
+{
+  "sceneId": "scene-11",
+  "order": 11,
+  "title": "Nicht mit Qualität verwechseln",
+  "narration": "Deshalb ist „Das habe ich schon oft gehört“ kein Qualitätsmerkmal.",
+  "imageText": "OFT GEHÖRT ≠ WAHR",
+  "visualIdea": "Ein Stempel OFT GEHÖRT wird von einem separaten Wahrheits-Häkchen klar getrennt.",
+  "audioCue": "Deshalb ist",
+  "durationSeconds": 3.5,
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "prompt-ready",
+  "continuityNotes": "Stilistisch passend zu Bild 00, gleiche Beleuchtung und Farbpalette, weicher Übergang der Szenerie.",
+  "expectedImageFileName": "scene-11.jpeg",
+  "leadInSeconds": 0.2,
+  "subtitlePosition": "center",
+  "subtitleCues": []
+}

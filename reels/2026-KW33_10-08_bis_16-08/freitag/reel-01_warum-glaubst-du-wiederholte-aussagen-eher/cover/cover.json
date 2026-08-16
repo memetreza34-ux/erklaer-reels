@@ -1,1 +1,9 @@
-{"imageNumber":0,"fileName":"Bild 00.png","hook":"WIEDERHOLT = WAHR?","status":"prompt-ready","styleMaster":true}
+{
+  "imageNumber": 0,
+  "fileName": "Bild 00.png",
+  "hook": "WIEDERHOLT = WAHR?",
+  "status": "prompt-ready",
+  "styleMaster": true,
+  "headline": "WIEDERHOLT = WAHR?",
+  "visualIdea": "Person facing a curved echo trail of statement cards."
+}

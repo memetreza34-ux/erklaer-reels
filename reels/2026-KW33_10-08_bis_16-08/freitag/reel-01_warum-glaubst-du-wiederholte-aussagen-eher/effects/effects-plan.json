@@ -1,1 +1,65 @@
-{"transitions":"hard-cuts-only","backgroundMusic":false,"sfxPerScene":"0-2 subtle","motion":"subtle pan-zoom/echo movement only when useful","rules":["Kein Zoom/Springen der Untertitel","Keine Übergangseffekte zwischen Szenen","SFX niemals Sprache überdecken"]}
+{
+  "transitions": "hard-cuts-only",
+  "backgroundMusic": false,
+  "sfxPerScene": "0-2 subtle",
+  "motion": "subtle pan-zoom/echo movement only when useful",
+  "rules": [
+    "Kein Zoom/Springen der Untertitel",
+    "Keine Übergangseffekte zwischen Szenen",
+    "SFX niemals Sprache überdecken"
+  ],
+  "scenes": [
+    {
+      "sceneId": "scene-01",
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-02",
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-03",
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-04",
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-05",
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-06",
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-07",
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-08",
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-09",
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-10",
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-11",
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-12",
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-13",
+      "soundEffects": []
+    }
+  ]
+}

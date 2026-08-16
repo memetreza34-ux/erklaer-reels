@@ -1,1 +1,19 @@
-{"sceneId":"scene-03","order":3,"title":"Vertrautheit","narration":"Wiederholte Aussagen fühlen sich vertrauter an als neue.","imageText":"VERTRAUTER","visualIdea":"Eine wiederholte Karte gleitet auf einer bekannten hellen Spur, eine neue Karte steht daneben auf unbekanntem Terrain.","audioCue":"Wiederholte Aussagen fühlen sich","durationSeconds":3.6,"promptStatus":"ready","imageStatus":"missing","assetVerification":null,"status":"prompt-ready"}
+{
+  "sceneId": "scene-03",
+  "order": 3,
+  "title": "Vertrautheit",
+  "narration": "Wiederholte Aussagen fühlen sich vertrauter an als neue.",
+  "imageText": "VERTRAUTER",
+  "visualIdea": "Eine wiederholte Karte gleitet auf einer bekannten hellen Spur, eine neue Karte steht daneben auf unbekanntem Terrain.",
+  "audioCue": "Wiederholte Aussagen fühlen sich",
+  "durationSeconds": 3.6,
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "prompt-ready",
+  "continuityNotes": "Stilistisch passend zu Bild 00, gleiche Beleuchtung und Farbpalette, weicher Übergang der Szenerie.",
+  "expectedImageFileName": "scene-03.jpeg",
+  "leadInSeconds": 0.2,
+  "subtitlePosition": "center",
+  "subtitleCues": []
+}

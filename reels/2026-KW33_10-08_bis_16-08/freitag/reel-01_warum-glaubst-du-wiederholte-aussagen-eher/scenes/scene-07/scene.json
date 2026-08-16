@@ -1,1 +1,19 @@
-{"sceneId":"scene-07","order":7,"title":"Leichtere Verarbeitung","narration":"Die Aussage lässt sich beim zweiten Mal einfach leichter verarbeiten. Diese mentale Leichtigkeit nennt man Verarbeitungsflüssigkeit.","imageText":"LEICHTER ZU VERARBEITEN","visualIdea":"Die wiederholte Aussage gleitet auf einer glatten Spur durch ein abstraktes Verarbeitungssystem, die neue Karte über eine raue Spur.","audioCue":"Die Aussage lässt sich beim zweiten Mal","durationSeconds":5.2,"promptStatus":"ready","imageStatus":"missing","assetVerification":null,"status":"prompt-ready"}
+{
+  "sceneId": "scene-07",
+  "order": 7,
+  "title": "Leichtere Verarbeitung",
+  "narration": "Die Aussage lässt sich beim zweiten Mal einfach leichter verarbeiten. Diese mentale Leichtigkeit nennt man Verarbeitungsflüssigkeit.",
+  "imageText": "LEICHTER ZU VERARBEITEN",
+  "visualIdea": "Die wiederholte Aussage gleitet auf einer glatten Spur durch ein abstraktes Verarbeitungssystem, die neue Karte über eine raue Spur.",
+  "audioCue": "Die Aussage lässt sich beim zweiten Mal",
+  "durationSeconds": 5.2,
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "prompt-ready",
+  "continuityNotes": "Stilistisch passend zu Bild 00, gleiche Beleuchtung und Farbpalette, weicher Übergang der Szenerie.",
+  "expectedImageFileName": "scene-07.jpeg",
+  "leadInSeconds": 0.2,
+  "subtitlePosition": "center",
+  "subtitleCues": []
+}

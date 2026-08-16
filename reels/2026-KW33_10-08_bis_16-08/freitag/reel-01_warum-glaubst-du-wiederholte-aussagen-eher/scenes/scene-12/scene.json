@@ -1,1 +1,19 @@
-{"sceneId":"scene-12","order":12,"title":"Prüffrage","narration":"Prüf dich selbst: Würdest du die Aussage auch glauben, wenn du sie heute zum ersten Mal hörst?","imageText":"WÜRDEST DU ES BEIM ERSTEN MAL GLAUBEN?","visualIdea":"Die Person betrachtet dieselbe Aussage nun als einzelne neue Karte ohne Echo oder Wiederholung und denkt kritisch nach.","audioCue":"Prüf dich selbst","durationSeconds":5.4,"promptStatus":"ready","imageStatus":"missing","assetVerification":null,"status":"prompt-ready"}
+{
+  "sceneId": "scene-12",
+  "order": 12,
+  "title": "Prüffrage",
+  "narration": "Prüf dich selbst: Würdest du die Aussage auch glauben, wenn du sie heute zum ersten Mal hörst?",
+  "imageText": "WÜRDEST DU ES BEIM ERSTEN MAL GLAUBEN?",
+  "visualIdea": "Die Person betrachtet dieselbe Aussage nun als einzelne neue Karte ohne Echo oder Wiederholung und denkt kritisch nach.",
+  "audioCue": "Prüf dich selbst",
+  "durationSeconds": 5.4,
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "prompt-ready",
+  "continuityNotes": "Stilistisch passend zu Bild 00, gleiche Beleuchtung und Farbpalette, weicher Übergang der Szenerie.",
+  "expectedImageFileName": "scene-12.jpeg",
+  "leadInSeconds": 0.2,
+  "subtitlePosition": "center",
+  "subtitleCues": []
+}

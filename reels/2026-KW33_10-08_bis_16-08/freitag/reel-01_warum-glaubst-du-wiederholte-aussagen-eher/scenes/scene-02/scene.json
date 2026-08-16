@@ -1,1 +1,19 @@
-{"sceneId":"scene-02","order":2,"title":"Name des Effekts","narration":"Dafür gibt es einen Namen: Illusory-Truth-Effekt.","imageText":"ILLUSORY-TRUTH-EFFEKT","visualIdea":"Eine neutrale Aussagekarte läuft mehrfach durch eine Echo-Schleife und erhält ein klares Effekt-Label.","audioCue":"Dafür gibt es einen Namen","durationSeconds":3.2,"promptStatus":"ready","imageStatus":"missing","assetVerification":null,"status":"prompt-ready"}
+{
+  "sceneId": "scene-02",
+  "order": 2,
+  "title": "Name des Effekts",
+  "narration": "Dafür gibt es einen Namen: Illusory-Truth-Effekt.",
+  "imageText": "ILLUSORY-TRUTH-EFFEKT",
+  "visualIdea": "Eine neutrale Aussagekarte läuft mehrfach durch eine Echo-Schleife und erhält ein klares Effekt-Label.",
+  "audioCue": "Dafür gibt es einen Namen",
+  "durationSeconds": 3.2,
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "prompt-ready",
+  "continuityNotes": "Stilistisch passend zu Bild 00, gleiche Beleuchtung und Farbpalette, weicher Übergang der Szenerie.",
+  "expectedImageFileName": "scene-02.jpeg",
+  "leadInSeconds": 0.2,
+  "subtitlePosition": "center",
+  "subtitleCues": []
+}

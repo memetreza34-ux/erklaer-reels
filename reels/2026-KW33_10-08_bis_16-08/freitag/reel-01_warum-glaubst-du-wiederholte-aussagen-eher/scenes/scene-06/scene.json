@@ -1,1 +1,19 @@
-{"sceneId":"scene-06","order":6,"title":"Keine neuen Beweise","narration":"Der Effekt entsteht nicht, weil Wiederholung neue Beweise liefert.","imageText":"KEIN NEUER BEWEIS","visualIdea":"Eine Aussagekarte vervielfacht sich, während die danebenliegende Belegmappe sichtbar leer bleibt.","audioCue":"Der Effekt entsteht nicht","durationSeconds":3.7,"promptStatus":"ready","imageStatus":"missing","assetVerification":null,"status":"prompt-ready"}
+{
+  "sceneId": "scene-06",
+  "order": 6,
+  "title": "Keine neuen Beweise",
+  "narration": "Der Effekt entsteht nicht, weil Wiederholung neue Beweise liefert.",
+  "imageText": "KEIN NEUER BEWEIS",
+  "visualIdea": "Eine Aussagekarte vervielfacht sich, während die danebenliegende Belegmappe sichtbar leer bleibt.",
+  "audioCue": "Der Effekt entsteht nicht",
+  "durationSeconds": 3.7,
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "prompt-ready",
+  "continuityNotes": "Stilistisch passend zu Bild 00, gleiche Beleuchtung und Farbpalette, weicher Übergang der Szenerie.",
+  "expectedImageFileName": "scene-06.jpeg",
+  "leadInSeconds": 0.2,
+  "subtitlePosition": "center",
+  "subtitleCues": []
+}
