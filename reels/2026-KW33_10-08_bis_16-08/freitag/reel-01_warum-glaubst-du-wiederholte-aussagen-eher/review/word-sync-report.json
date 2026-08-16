@@ -1,6 +1,6 @@
 {
   "version": 4,
-  "createdAt": "2026-08-16T05:26:12.912Z",
+  "createdAt": "2026-08-16T05:50:18.514Z",
   "passed": true,
   "strict": true,
   "provider": "codex-local-audio-review",
@@ -11,7 +11,7 @@
   "totalWords": 160,
   "timedWords": 160,
   "coverage": 1,
-  "cueCount": 32,
+  "cueCount": 34,
   "subtitleStyle": {
     "position": "center",
     "verticalPositionPercent": 58,
@@ -26,93 +26,93 @@
     {
       "sceneId": "scene-01",
       "startSeconds": 0,
-      "endSeconds": 3.626,
+      "endSeconds": 3.88,
       "wordCount": 14,
       "cueCount": 3
     },
     {
       "sceneId": "scene-02",
-      "startSeconds": 3.626,
-      "endSeconds": 6.061,
+      "startSeconds": 3.88,
+      "endSeconds": 5.2,
       "wordCount": 6,
       "cueCount": 1
     },
     {
       "sceneId": "scene-03",
-      "startSeconds": 6.061,
-      "endSeconds": 8.844,
+      "startSeconds": 5.2,
+      "endSeconds": 9.56,
       "wordCount": 8,
       "cueCount": 2
     },
     {
       "sceneId": "scene-04",
-      "startSeconds": 8.844,
-      "endSeconds": 12.421,
+      "startSeconds": 9.56,
+      "endSeconds": 13.14,
       "wordCount": 10,
       "cueCount": 2
     },
     {
       "sceneId": "scene-05",
-      "startSeconds": 12.421,
-      "endSeconds": 18.285,
+      "startSeconds": 13.14,
+      "endSeconds": 18.7,
       "wordCount": 14,
       "cueCount": 3
     },
     {
       "sceneId": "scene-06",
-      "startSeconds": 18.285,
-      "endSeconds": 21.564,
+      "startSeconds": 18.7,
+      "endSeconds": 21.6,
       "wordCount": 9,
       "cueCount": 2
     },
     {
       "sceneId": "scene-07",
-      "startSeconds": 21.564,
-      "endSeconds": 28.123,
+      "startSeconds": 21.6,
+      "endSeconds": 28,
       "wordCount": 16,
       "cueCount": 3
     },
     {
       "sceneId": "scene-08",
-      "startSeconds": 28.123,
-      "endSeconds": 32.993,
+      "startSeconds": 28,
+      "endSeconds": 32.62,
       "wordCount": 13,
       "cueCount": 3
     },
     {
       "sceneId": "scene-09",
-      "startSeconds": 32.993,
-      "endSeconds": 39.602,
+      "startSeconds": 32.62,
+      "endSeconds": 38.94,
       "wordCount": 19,
       "cueCount": 4
     },
     {
       "sceneId": "scene-10",
-      "startSeconds": 39.602,
-      "endSeconds": 43.627,
+      "startSeconds": 38.94,
+      "endSeconds": 43.76,
       "wordCount": 12,
       "cueCount": 2
     },
     {
       "sceneId": "scene-11",
-      "startSeconds": 43.627,
-      "endSeconds": 46.906,
+      "startSeconds": 43.76,
+      "endSeconds": 47.12,
       "wordCount": 10,
       "cueCount": 2
     },
     {
       "sceneId": "scene-12",
-      "startSeconds": 46.906,
-      "endSeconds": 51.577,
+      "startSeconds": 47.12,
+      "endSeconds": 51.18,
       "wordCount": 17,
-      "cueCount": 3
+      "cueCount": 4
     },
     {
       "sceneId": "scene-13",
-      "startSeconds": 51.577,
+      "startSeconds": 51.18,
       "endSeconds": 56.8,
       "wordCount": 12,
-      "cueCount": 2
+      "cueCount": 3
     }
   ],
   "checks": [

@@ -1,6 +1,6 @@
 {
   "version": 10,
-  "createdAt": "2026-08-16T05:35:41.431Z",
+  "createdAt": "2026-08-16T05:50:23.822Z",
   "reelDirectory": "reels/2026-KW33_10-08_bis_16-08/freitag/reel-01_warum-glaubst-du-wiederholte-aussagen-eher",
   "strict": true,
   "readyForRenderer": true,
@@ -82,27 +82,27 @@
       "renderStatus": "ready-for-renderer",
       "reportFile": "review/final-video-report.json",
       "summary": {
-        "passedChecks": 79,
+        "passedChecks": 81,
         "failedChecks": 0,
         "warnings": 10,
-        "totalChecks": 89
+        "totalChecks": 91
       }
     },
     "wordSync": {
       "passed": true,
       "strict": true,
       "provider": "codex-local-audio-review",
-      "cueCount": 32,
-      "exactCueCount": 32,
+      "cueCount": 34,
+      "exactCueCount": 34,
       "expectedWordCount": 160,
       "renderedWordCount": 160,
       "fullCoverage": true,
       "reportFile": "review/word-sync-report.json",
       "summary": {
-        "passedChecks": 100,
+        "passedChecks": 106,
         "failedChecks": 0,
         "warnings": 0,
-        "totalChecks": 100
+        "totalChecks": 106
       }
     },
     "visualQuality": {
@@ -129,8 +129,8 @@
     "wordSync": 100,
     "visualQuality": 100,
     "productionReady": 100,
-    "rendering": 0,
-    "overall": 90,
+    "rendering": 100,
+    "overall": 100,
     "details": {
       "scriptsReady": true,
       "styleReady": true,
@@ -171,10 +171,10 @@
       "visualTechnicalReady": true,
       "visualAssetsReviewed": "14/14",
       "visualStrictReady": true,
-      "rendererValidated": false,
-      "renderComplete": false
+      "rendererValidated": true,
+      "renderComplete": true
     },
-    "nextStep": "finalize:reel --strict und anschließend validate:render ausführen."
+    "nextStep": "Reel ist vollständig gerendert und bereit zur Veröffentlichung."
   },
   "blockingIssues": [],
   "warnings": [
@@ -394,29 +394,34 @@
       "message": "Die Hook sollte ab Sekunde 0 ohne Übergang starten."
     },
     {
-      "id": "subtitles-end-with-voiceover",
-      "level": "warning",
-      "message": "Untertitel dürfen nicht in den ruhigen Schlussbild-Nachlauf hineinragen."
-    },
-    {
       "id": "scene-01-balanced-duration",
       "level": "warning",
-      "message": "scene-01: Hook dauert 3.63 Sekunden; erlaubt sind 4.2–5.5 Sekunden."
+      "message": "scene-01: Hook dauert 3.88 Sekunden; erlaubt sind 4.2–5.5 Sekunden."
     },
     {
       "id": "scene-02-balanced-duration",
       "level": "warning",
-      "message": "scene-02: Standardszene dauert 2.44 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
+      "message": "scene-02: Standardszene dauert 1.32 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
     },
     {
-      "id": "scene-03-balanced-duration",
+      "id": "scene-02-adjacent-duration-balance",
       "level": "warning",
-      "message": "scene-03: Standardszene dauert 2.78 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
+      "message": "scene-02: Der Dauersprung zur vorherigen Szene ist zu groß."
+    },
+    {
+      "id": "scene-03-adjacent-duration-balance",
+      "level": "warning",
+      "message": "scene-03: Der Dauersprung zur vorherigen Szene ist zu groß."
     },
     {
       "id": "scene-05-balanced-duration",
       "level": "warning",
-      "message": "scene-05: Standardszene dauert 5.86 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
+      "message": "scene-05: Standardszene dauert 5.56 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
+    },
+    {
+      "id": "scene-06-balanced-duration",
+      "level": "warning",
+      "message": "scene-06: Standardszene dauert 2.90 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
     },
     {
       "id": "scene-06-adjacent-duration-balance",
@@ -426,7 +431,7 @@
     {
       "id": "scene-07-balanced-duration",
       "level": "warning",
-      "message": "scene-07: Standardszene dauert 6.56 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
+      "message": "scene-07: Standardszene dauert 6.40 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
     },
     {
       "id": "scene-07-adjacent-duration-balance",
@@ -436,12 +441,7 @@
     {
       "id": "scene-09-balanced-duration",
       "level": "warning",
-      "message": "scene-09: Standardszene dauert 6.61 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
-    },
-    {
-      "id": "scene-10-adjacent-duration-balance",
-      "level": "warning",
-      "message": "scene-10: Der Dauersprung zur vorherigen Szene ist zu groß."
+      "message": "scene-09: Standardszene dauert 6.32 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
     },
     {
       "id": "scene-01-target-resolution",

@@ -1,9 +1,9 @@
 {
   "version": 2,
   "generatedBy": "codex-workflow",
-  "status": "completed",
+  "status": "reviewed",
   "createdAt": "2026-08-16T05:22:44.895Z",
-  "updatedAt": "2026-08-16T05:22:44.897Z",
+  "updatedAt": "2026-08-16T05:50:08.423Z",
   "audioFile": "audio/voiceover-tight.m4a",
   "audioDurationSeconds": 56.1,
   "scriptFile": "script/voice-script.txt",
@@ -24,78 +24,78 @@
     {
       "sceneId": "scene-01",
       "startSeconds": 0,
-      "endSeconds": 3.626,
+      "endSeconds": 3.88,
       "audioCue": "Warum glaubst du eine Aussage eher"
     },
     {
       "sceneId": "scene-02",
-      "startSeconds": 3.626,
-      "endSeconds": 6.061,
+      "startSeconds": 3.88,
+      "endSeconds": 5.2,
       "audioCue": "Dafür gibt es einen Namen"
     },
     {
       "sceneId": "scene-03",
-      "startSeconds": 6.061,
-      "endSeconds": 8.844,
+      "startSeconds": 5.2,
+      "endSeconds": 9.56,
       "audioCue": "Wiederholte Aussagen fühlen sich"
     },
     {
       "sceneId": "scene-04",
-      "startSeconds": 8.844,
-      "endSeconds": 12.421,
+      "startSeconds": 9.56,
+      "endSeconds": 13.14,
       "audioCue": "Und Vertrautheit wird"
     },
     {
       "sceneId": "scene-05",
-      "startSeconds": 12.421,
-      "endSeconds": 18.285,
+      "startSeconds": 13.14,
+      "endSeconds": 18.7,
       "audioCue": "Schon klassische Experimente zeigten"
     },
     {
       "sceneId": "scene-06",
-      "startSeconds": 18.285,
-      "endSeconds": 21.564,
+      "startSeconds": 18.7,
+      "endSeconds": 21.6,
       "audioCue": "Der Effekt entsteht nicht"
     },
     {
       "sceneId": "scene-07",
-      "startSeconds": 21.564,
-      "endSeconds": 28.123,
+      "startSeconds": 21.6,
+      "endSeconds": 28,
       "audioCue": "Die Aussage lässt sich beim zweiten Mal"
     },
     {
       "sceneId": "scene-08",
-      "startSeconds": 28.123,
-      "endSeconds": 32.993,
+      "startSeconds": 28,
+      "endSeconds": 32.62,
       "audioCue": "Besonders tückisch"
     },
     {
       "sceneId": "scene-09",
-      "startSeconds": 32.993,
-      "endSeconds": 39.602,
+      "startSeconds": 32.62,
+      "endSeconds": 38.94,
       "audioCue": "Das ist im Alltag wichtig"
     },
     {
       "sceneId": "scene-10",
-      "startSeconds": 39.602,
-      "endSeconds": 43.627,
+      "startSeconds": 38.94,
+      "endSeconds": 43.76,
       "audioCue": "Eine große Meta-Analyse von 2026"
     },
     {
       "sceneId": "scene-11",
-      "startSeconds": 43.627,
-      "endSeconds": 46.906,
+      "startSeconds": 43.76,
+      "endSeconds": 47.12,
       "audioCue": "Deshalb ist"
     },
     {
       "sceneId": "scene-12",
-      "startSeconds": 46.906,
-      "endSeconds": 51.577,
+      "startSeconds": 47.12,
+      "endSeconds": 51.18,
       "audioCue": "Prüf dich selbst"
     },
     {
       "sceneId": "scene-13",
-      "startSeconds": 51.577,
+      "startSeconds": 51.18,
       "endSeconds": 56.8,
       "audioCue": "Die Lösung"
     }
@@ -104,8 +104,8 @@
     {
       "index": 1,
       "text": "Warum",
-      "startSeconds": 0.1,
-      "endSeconds": 0.345,
+      "startSeconds": 0,
+      "endSeconds": 0.1,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -113,8 +113,8 @@
     {
       "index": 2,
       "text": "glaubst",
-      "startSeconds": 0.345,
-      "endSeconds": 0.589,
+      "startSeconds": 0.1,
+      "endSeconds": 0.68,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -122,8 +122,8 @@
     {
       "index": 3,
       "text": "du",
-      "startSeconds": 0.589,
-      "endSeconds": 0.834,
+      "startSeconds": 0.68,
+      "endSeconds": 0.74,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -131,8 +131,8 @@
     {
       "index": 4,
       "text": "eine",
-      "startSeconds": 0.834,
-      "endSeconds": 1.079,
+      "startSeconds": 0.74,
+      "endSeconds": 0.9,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -140,8 +140,8 @@
     {
       "index": 5,
       "text": "Aussage",
-      "startSeconds": 1.079,
-      "endSeconds": 1.324,
+      "startSeconds": 0.9,
+      "endSeconds": 1.34,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -149,8 +149,8 @@
     {
       "index": 6,
       "text": "eher,",
-      "startSeconds": 1.324,
-      "endSeconds": 1.568,
+      "startSeconds": 1.34,
+      "endSeconds": 1.78,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -158,8 +158,8 @@
     {
       "index": 7,
       "text": "nur",
-      "startSeconds": 1.568,
-      "endSeconds": 1.813,
+      "startSeconds": 2,
+      "endSeconds": 2.22,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -167,8 +167,8 @@
     {
       "index": 8,
       "text": "weil",
-      "startSeconds": 1.813,
-      "endSeconds": 2.058,
+      "startSeconds": 2.22,
+      "endSeconds": 2.4,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -176,8 +176,8 @@
     {
       "index": 9,
       "text": "du",
-      "startSeconds": 2.058,
-      "endSeconds": 2.302,
+      "startSeconds": 2.4,
+      "endSeconds": 2.52,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -185,8 +185,8 @@
     {
       "index": 10,
       "text": "sie",
-      "startSeconds": 2.302,
-      "endSeconds": 2.547,
+      "startSeconds": 2.52,
+      "endSeconds": 2.66,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -194,8 +194,8 @@
     {
       "index": 11,
       "text": "schon",
-      "startSeconds": 2.547,
-      "endSeconds": 2.792,
+      "startSeconds": 2.66,
+      "endSeconds": 2.8,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -203,8 +203,8 @@
     {
       "index": 12,
       "text": "einmal",
-      "startSeconds": 2.792,
-      "endSeconds": 3.037,
+      "startSeconds": 2.8,
+      "endSeconds": 3.16,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -212,8 +212,8 @@
     {
       "index": 13,
       "text": "gehört",
-      "startSeconds": 3.037,
-      "endSeconds": 3.281,
+      "startSeconds": 3.16,
+      "endSeconds": 3.42,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -221,8 +221,8 @@
     {
       "index": 14,
       "text": "hast?",
-      "startSeconds": 3.281,
-      "endSeconds": 3.526,
+      "startSeconds": 3.42,
+      "endSeconds": 3.78,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -230,8 +230,8 @@
     {
       "index": 15,
       "text": "Dafür",
-      "startSeconds": 3.726,
-      "endSeconds": 4.098,
+      "startSeconds": 4.08,
+      "endSeconds": 4.26,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -239,8 +239,8 @@
     {
       "index": 16,
       "text": "gibt",
-      "startSeconds": 4.098,
-      "endSeconds": 4.471,
+      "startSeconds": 4.26,
+      "endSeconds": 4.4,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -248,8 +248,8 @@
     {
       "index": 17,
       "text": "es",
-      "startSeconds": 4.471,
-      "endSeconds": 4.844,
+      "startSeconds": 4.4,
+      "endSeconds": 4.58,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -257,8 +257,8 @@
     {
       "index": 18,
       "text": "einen",
-      "startSeconds": 4.844,
-      "endSeconds": 5.216,
+      "startSeconds": 4.58,
+      "endSeconds": 4.78,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -266,8 +266,8 @@
     {
       "index": 19,
       "text": "Namen:",
-      "startSeconds": 5.216,
-      "endSeconds": 5.588,
+      "startSeconds": 4.78,
+      "endSeconds": 5.12,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -275,8 +275,8 @@
     {
       "index": 20,
       "text": "Illusory-Truth-Effekt.",
-      "startSeconds": 5.588,
-      "endSeconds": 5.961,
+      "startSeconds": 5.12,
+      "endSeconds": 5.2,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -284,8 +284,8 @@
     {
       "index": 21,
       "text": "Wiederholte",
-      "startSeconds": 6.161,
-      "endSeconds": 6.484,
+      "startSeconds": 5.4,
+      "endSeconds": 7.4,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -293,8 +293,8 @@
     {
       "index": 22,
       "text": "Aussagen",
-      "startSeconds": 6.484,
-      "endSeconds": 6.807,
+      "startSeconds": 7.4,
+      "endSeconds": 7.78,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -302,8 +302,8 @@
     {
       "index": 23,
       "text": "fühlen",
-      "startSeconds": 6.807,
-      "endSeconds": 7.13,
+      "startSeconds": 7.78,
+      "endSeconds": 8.18,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -311,8 +311,8 @@
     {
       "index": 24,
       "text": "sich",
-      "startSeconds": 7.13,
-      "endSeconds": 7.452,
+      "startSeconds": 8.18,
+      "endSeconds": 8.36,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -320,8 +320,8 @@
     {
       "index": 25,
       "text": "vertrauter",
-      "startSeconds": 7.452,
-      "endSeconds": 7.775,
+      "startSeconds": 8.36,
+      "endSeconds": 8.82,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -329,8 +329,8 @@
     {
       "index": 26,
       "text": "an",
-      "startSeconds": 7.775,
-      "endSeconds": 8.098,
+      "startSeconds": 8.82,
+      "endSeconds": 9.04,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -338,8 +338,8 @@
     {
       "index": 27,
       "text": "als",
-      "startSeconds": 8.098,
-      "endSeconds": 8.421,
+      "startSeconds": 9.04,
+      "endSeconds": 9.28,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -347,8 +347,8 @@
     {
       "index": 28,
       "text": "neue.",
-      "startSeconds": 8.421,
-      "endSeconds": 8.744,
+      "startSeconds": 9.28,
+      "endSeconds": 9.48,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -356,8 +356,8 @@
     {
       "index": 29,
       "text": "Und",
-      "startSeconds": 8.944,
-      "endSeconds": 9.282,
+      "startSeconds": 9.76,
+      "endSeconds": 9.84,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -365,8 +365,8 @@
     {
       "index": 30,
       "text": "Vertrautheit",
-      "startSeconds": 9.282,
-      "endSeconds": 9.619,
+      "startSeconds": 9.84,
+      "endSeconds": 9.94,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -374,8 +374,8 @@
     {
       "index": 31,
       "text": "wird",
-      "startSeconds": 9.619,
-      "endSeconds": 9.957,
+      "startSeconds": 9.94,
+      "endSeconds": 10.58,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -383,8 +383,8 @@
     {
       "index": 32,
       "text": "vom",
-      "startSeconds": 9.957,
-      "endSeconds": 10.295,
+      "startSeconds": 10.58,
+      "endSeconds": 10.76,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -392,8 +392,8 @@
     {
       "index": 33,
       "text": "Gehirn",
-      "startSeconds": 10.295,
-      "endSeconds": 10.633,
+      "startSeconds": 10.76,
+      "endSeconds": 11.1,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -401,8 +401,8 @@
     {
       "index": 34,
       "text": "oft",
-      "startSeconds": 10.633,
-      "endSeconds": 10.97,
+      "startSeconds": 11.1,
+      "endSeconds": 11.36,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -410,8 +410,8 @@
     {
       "index": 35,
       "text": "mit",
-      "startSeconds": 10.97,
-      "endSeconds": 11.308,
+      "startSeconds": 11.36,
+      "endSeconds": 11.58,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -419,8 +419,8 @@
     {
       "index": 36,
       "text": "„klingt",
-      "startSeconds": 11.308,
-      "endSeconds": 11.646,
+      "startSeconds": 11.58,
+      "endSeconds": 12,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -428,8 +428,8 @@
     {
       "index": 37,
       "text": "plausibel“",
-      "startSeconds": 11.646,
-      "endSeconds": 11.983,
+      "startSeconds": 12,
+      "endSeconds": 12.56,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -437,8 +437,8 @@
     {
       "index": 38,
       "text": "verwechselt.",
-      "startSeconds": 11.983,
-      "endSeconds": 12.321,
+      "startSeconds": 12.56,
+      "endSeconds": 13.14,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -446,8 +446,8 @@
     {
       "index": 39,
       "text": "Schon",
-      "startSeconds": 12.521,
-      "endSeconds": 12.926,
+      "startSeconds": 13.34,
+      "endSeconds": 13.46,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -455,8 +455,8 @@
     {
       "index": 40,
       "text": "klassische",
-      "startSeconds": 12.926,
-      "endSeconds": 13.33,
+      "startSeconds": 13.46,
+      "endSeconds": 13.92,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -464,8 +464,8 @@
     {
       "index": 41,
       "text": "Experimente",
-      "startSeconds": 13.33,
-      "endSeconds": 13.735,
+      "startSeconds": 13.92,
+      "endSeconds": 14.46,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -473,8 +473,8 @@
     {
       "index": 42,
       "text": "zeigten:",
-      "startSeconds": 13.735,
-      "endSeconds": 14.139,
+      "startSeconds": 14.46,
+      "endSeconds": 14.78,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -482,8 +482,8 @@
     {
       "index": 43,
       "text": "Selbst",
-      "startSeconds": 14.139,
-      "endSeconds": 14.544,
+      "startSeconds": 15.14,
+      "endSeconds": 15.34,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -491,8 +491,8 @@
     {
       "index": 44,
       "text": "falsche",
-      "startSeconds": 14.544,
-      "endSeconds": 14.948,
+      "startSeconds": 15.34,
+      "endSeconds": 15.8,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -500,8 +500,8 @@
     {
       "index": 45,
       "text": "Aussagen",
-      "startSeconds": 14.948,
-      "endSeconds": 15.353,
+      "startSeconds": 15.8,
+      "endSeconds": 16.2,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -509,8 +509,8 @@
     {
       "index": 46,
       "text": "wurden",
-      "startSeconds": 15.353,
-      "endSeconds": 15.758,
+      "startSeconds": 16.2,
+      "endSeconds": 16.42,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -518,8 +518,8 @@
     {
       "index": 47,
       "text": "nach",
-      "startSeconds": 15.758,
-      "endSeconds": 16.162,
+      "startSeconds": 16.42,
+      "endSeconds": 16.62,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -527,8 +527,8 @@
     {
       "index": 48,
       "text": "Wiederholung",
-      "startSeconds": 16.162,
-      "endSeconds": 16.567,
+      "startSeconds": 16.62,
+      "endSeconds": 17.18,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -536,8 +536,8 @@
     {
       "index": 49,
       "text": "häufiger",
-      "startSeconds": 16.567,
-      "endSeconds": 16.971,
+      "startSeconds": 17.18,
+      "endSeconds": 17.66,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -545,8 +545,8 @@
     {
       "index": 50,
       "text": "als",
-      "startSeconds": 16.971,
-      "endSeconds": 17.376,
+      "startSeconds": 17.66,
+      "endSeconds": 17.82,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -554,8 +554,8 @@
     {
       "index": 51,
       "text": "wahr",
-      "startSeconds": 17.376,
-      "endSeconds": 17.78,
+      "startSeconds": 17.82,
+      "endSeconds": 18.06,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -563,8 +563,8 @@
     {
       "index": 52,
       "text": "eingeschätzt.",
-      "startSeconds": 17.78,
-      "endSeconds": 18.185,
+      "startSeconds": 18.06,
+      "endSeconds": 18.64,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -572,8 +572,8 @@
     {
       "index": 53,
       "text": "Der",
-      "startSeconds": 18.385,
-      "endSeconds": 18.727,
+      "startSeconds": 18.9,
+      "endSeconds": 19,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -581,8 +581,8 @@
     {
       "index": 54,
       "text": "Effekt",
-      "startSeconds": 18.727,
-      "endSeconds": 19.069,
+      "startSeconds": 19,
+      "endSeconds": 19.28,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -590,8 +590,8 @@
     {
       "index": 55,
       "text": "entsteht",
-      "startSeconds": 19.069,
-      "endSeconds": 19.411,
+      "startSeconds": 19.28,
+      "endSeconds": 19.68,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -599,8 +599,8 @@
     {
       "index": 56,
       "text": "nicht,",
-      "startSeconds": 19.411,
-      "endSeconds": 19.753,
+      "startSeconds": 19.68,
+      "endSeconds": 19.82,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -608,8 +608,8 @@
     {
       "index": 57,
       "text": "weil",
-      "startSeconds": 19.753,
-      "endSeconds": 20.096,
+      "startSeconds": 19.98,
+      "endSeconds": 20.06,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -617,8 +617,8 @@
     {
       "index": 58,
       "text": "Wiederholung",
-      "startSeconds": 20.096,
-      "endSeconds": 20.438,
+      "startSeconds": 20.06,
+      "endSeconds": 20.58,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -626,8 +626,8 @@
     {
       "index": 59,
       "text": "neue",
-      "startSeconds": 20.438,
-      "endSeconds": 20.78,
+      "startSeconds": 20.58,
+      "endSeconds": 20.82,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -635,8 +635,8 @@
     {
       "index": 60,
       "text": "Beweise",
-      "startSeconds": 20.78,
-      "endSeconds": 21.122,
+      "startSeconds": 20.82,
+      "endSeconds": 21.12,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -644,8 +644,8 @@
     {
       "index": 61,
       "text": "liefert.",
-      "startSeconds": 21.122,
-      "endSeconds": 21.464,
+      "startSeconds": 21.12,
+      "endSeconds": 21.46,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -653,8 +653,8 @@
     {
       "index": 62,
       "text": "Die",
-      "startSeconds": 21.664,
-      "endSeconds": 22.061,
+      "startSeconds": 21.8,
+      "endSeconds": 21.9,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -662,8 +662,8 @@
     {
       "index": 63,
       "text": "Aussage",
-      "startSeconds": 22.061,
-      "endSeconds": 22.459,
+      "startSeconds": 21.9,
+      "endSeconds": 22.28,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -671,8 +671,8 @@
     {
       "index": 64,
       "text": "lässt",
-      "startSeconds": 22.459,
-      "endSeconds": 22.856,
+      "startSeconds": 22.28,
+      "endSeconds": 22.44,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -680,8 +680,8 @@
     {
       "index": 65,
       "text": "sich",
-      "startSeconds": 22.856,
-      "endSeconds": 23.254,
+      "startSeconds": 22.44,
+      "endSeconds": 22.66,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -689,8 +689,8 @@
     {
       "index": 66,
       "text": "beim",
-      "startSeconds": 23.254,
-      "endSeconds": 23.651,
+      "startSeconds": 22.66,
+      "endSeconds": 22.78,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -698,8 +698,8 @@
     {
       "index": 67,
       "text": "zweiten",
-      "startSeconds": 23.651,
-      "endSeconds": 24.049,
+      "startSeconds": 22.78,
+      "endSeconds": 23.08,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -707,8 +707,8 @@
     {
       "index": 68,
       "text": "Mal",
-      "startSeconds": 24.049,
-      "endSeconds": 24.446,
+      "startSeconds": 23.08,
+      "endSeconds": 23.3,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -716,8 +716,8 @@
     {
       "index": 69,
       "text": "einfach",
-      "startSeconds": 24.446,
-      "endSeconds": 24.843,
+      "startSeconds": 23.3,
+      "endSeconds": 23.64,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -725,8 +725,8 @@
     {
       "index": 70,
       "text": "leichter",
-      "startSeconds": 24.843,
-      "endSeconds": 25.241,
+      "startSeconds": 23.64,
+      "endSeconds": 24.18,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -734,8 +734,8 @@
     {
       "index": 71,
       "text": "verarbeiten.",
-      "startSeconds": 25.241,
-      "endSeconds": 25.638,
+      "startSeconds": 24.18,
+      "endSeconds": 24.58,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -743,8 +743,8 @@
     {
       "index": 72,
       "text": "Diese",
-      "startSeconds": 25.638,
-      "endSeconds": 26.036,
+      "startSeconds": 24.96,
+      "endSeconds": 25.2,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -752,8 +752,8 @@
     {
       "index": 73,
       "text": "mentale",
-      "startSeconds": 26.036,
-      "endSeconds": 26.433,
+      "startSeconds": 25.2,
+      "endSeconds": 25.78,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -761,8 +761,8 @@
     {
       "index": 74,
       "text": "Leichtigkeit",
-      "startSeconds": 26.433,
-      "endSeconds": 26.831,
+      "startSeconds": 25.78,
+      "endSeconds": 26.48,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -770,8 +770,8 @@
     {
       "index": 75,
       "text": "nennt",
-      "startSeconds": 26.831,
-      "endSeconds": 27.228,
+      "startSeconds": 26.48,
+      "endSeconds": 26.78,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -779,8 +779,8 @@
     {
       "index": 76,
       "text": "man",
-      "startSeconds": 27.228,
-      "endSeconds": 27.626,
+      "startSeconds": 26.78,
+      "endSeconds": 26.9,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -788,8 +788,8 @@
     {
       "index": 77,
       "text": "Verarbeitungsflüssigkeit.",
-      "startSeconds": 27.626,
-      "endSeconds": 28.023,
+      "startSeconds": 26.9,
+      "endSeconds": 28,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -797,8 +797,8 @@
     {
       "index": 78,
       "text": "Besonders",
-      "startSeconds": 28.223,
-      "endSeconds": 28.582,
+      "startSeconds": 28.2,
+      "endSeconds": 28.78,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -806,8 +806,8 @@
     {
       "index": 79,
       "text": "tückisch:",
-      "startSeconds": 28.582,
-      "endSeconds": 28.941,
+      "startSeconds": 28.78,
+      "endSeconds": 28.880000000000003,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -815,8 +815,8 @@
     {
       "index": 80,
       "text": "Wiederholung",
-      "startSeconds": 28.941,
-      "endSeconds": 29.301,
+      "startSeconds": 28.880000000000003,
+      "endSeconds": 29.94,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -824,8 +824,8 @@
     {
       "index": 81,
       "text": "kann",
-      "startSeconds": 29.301,
-      "endSeconds": 29.66,
+      "startSeconds": 29.94,
+      "endSeconds": 30.06,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -833,8 +833,8 @@
     {
       "index": 82,
       "text": "sogar",
-      "startSeconds": 29.66,
-      "endSeconds": 30.019,
+      "startSeconds": 30.06,
+      "endSeconds": 30.22,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -842,8 +842,8 @@
     {
       "index": 83,
       "text": "wirken,",
-      "startSeconds": 30.019,
-      "endSeconds": 30.378,
+      "startSeconds": 30.22,
+      "endSeconds": 30.58,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -851,8 +851,8 @@
     {
       "index": 84,
       "text": "wenn",
-      "startSeconds": 30.378,
-      "endSeconds": 30.738,
+      "startSeconds": 30.68,
+      "endSeconds": 30.74,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -860,8 +860,8 @@
     {
       "index": 85,
       "text": "du",
-      "startSeconds": 30.738,
-      "endSeconds": 31.097,
+      "startSeconds": 30.74,
+      "endSeconds": 30.86,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -869,8 +869,8 @@
     {
       "index": 86,
       "text": "das",
-      "startSeconds": 31.097,
-      "endSeconds": 31.456,
+      "startSeconds": 30.86,
+      "endSeconds": 31,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -878,8 +878,8 @@
     {
       "index": 87,
       "text": "richtige",
-      "startSeconds": 31.456,
-      "endSeconds": 31.815,
+      "startSeconds": 31,
+      "endSeconds": 31.3,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -887,8 +887,8 @@
     {
       "index": 88,
       "text": "Wissen",
-      "startSeconds": 31.815,
-      "endSeconds": 32.175,
+      "startSeconds": 31.3,
+      "endSeconds": 31.62,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -896,8 +896,8 @@
     {
       "index": 89,
       "text": "eigentlich",
-      "startSeconds": 32.175,
-      "endSeconds": 32.534,
+      "startSeconds": 31.62,
+      "endSeconds": 32.04,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -905,8 +905,8 @@
     {
       "index": 90,
       "text": "kennst.",
-      "startSeconds": 32.534,
-      "endSeconds": 32.893,
+      "startSeconds": 32.04,
+      "endSeconds": 32.5,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -914,8 +914,8 @@
     {
       "index": 91,
       "text": "Das",
-      "startSeconds": 33.093,
-      "endSeconds": 33.43,
+      "startSeconds": 32.82,
+      "endSeconds": 32.9,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -923,8 +923,8 @@
     {
       "index": 92,
       "text": "ist",
-      "startSeconds": 33.43,
-      "endSeconds": 33.768,
+      "startSeconds": 32.9,
+      "endSeconds": 33.02,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -932,8 +932,8 @@
     {
       "index": 93,
       "text": "im",
-      "startSeconds": 33.768,
-      "endSeconds": 34.105,
+      "startSeconds": 33.02,
+      "endSeconds": 33.18,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -941,8 +941,8 @@
     {
       "index": 94,
       "text": "Alltag",
-      "startSeconds": 34.105,
-      "endSeconds": 34.442,
+      "startSeconds": 33.18,
+      "endSeconds": 33.46,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -950,8 +950,8 @@
     {
       "index": 95,
       "text": "wichtig",
-      "startSeconds": 34.442,
-      "endSeconds": 34.78,
+      "startSeconds": 33.46,
+      "endSeconds": 33.72,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -959,8 +959,8 @@
     {
       "index": 96,
       "text": "bei",
-      "startSeconds": 34.78,
-      "endSeconds": 35.117,
+      "startSeconds": 33.72,
+      "endSeconds": 33.98,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -968,8 +968,8 @@
     {
       "index": 97,
       "text": "Schlagzeilen,",
-      "startSeconds": 35.117,
-      "endSeconds": 35.454,
+      "startSeconds": 33.98,
+      "endSeconds": 34.72,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -977,8 +977,8 @@
     {
       "index": 98,
       "text": "Gerüchten,",
-      "startSeconds": 35.454,
-      "endSeconds": 35.792,
+      "startSeconds": 34.72,
+      "endSeconds": 34.82,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -986,8 +986,8 @@
     {
       "index": 99,
       "text": "Werbung",
-      "startSeconds": 35.792,
-      "endSeconds": 36.129,
+      "startSeconds": 34.86,
+      "endSeconds": 35.78,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -995,8 +995,8 @@
     {
       "index": 100,
       "text": "und",
-      "startSeconds": 36.129,
-      "endSeconds": 36.466,
+      "startSeconds": 35.78,
+      "endSeconds": 35.98,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1004,8 +1004,8 @@
     {
       "index": 101,
       "text": "Social",
-      "startSeconds": 36.466,
-      "endSeconds": 36.803,
+      "startSeconds": 35.98,
+      "endSeconds": 36.24,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1013,8 +1013,8 @@
     {
       "index": 102,
       "text": "Media,",
-      "startSeconds": 36.803,
-      "endSeconds": 37.141,
+      "startSeconds": 36.24,
+      "endSeconds": 36.54,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1022,8 +1022,8 @@
     {
       "index": 103,
       "text": "wo",
-      "startSeconds": 37.141,
-      "endSeconds": 37.478,
+      "startSeconds": 36.84,
+      "endSeconds": 37,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1031,8 +1031,8 @@
     {
       "index": 104,
       "text": "dieselbe",
-      "startSeconds": 37.478,
-      "endSeconds": 37.815,
+      "startSeconds": 37,
+      "endSeconds": 37.36,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1040,8 +1040,8 @@
     {
       "index": 105,
       "text": "Behauptung",
-      "startSeconds": 37.815,
-      "endSeconds": 38.153,
+      "startSeconds": 37.36,
+      "endSeconds": 37.76,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1049,8 +1049,8 @@
     {
       "index": 106,
       "text": "immer",
-      "startSeconds": 38.153,
-      "endSeconds": 38.49,
+      "startSeconds": 37.76,
+      "endSeconds": 38.04,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1058,8 +1058,8 @@
     {
       "index": 107,
       "text": "wieder",
-      "startSeconds": 38.49,
-      "endSeconds": 38.827,
+      "startSeconds": 38.04,
+      "endSeconds": 38.28,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1067,8 +1067,8 @@
     {
       "index": 108,
       "text": "auftauchen",
-      "startSeconds": 38.827,
-      "endSeconds": 39.165,
+      "startSeconds": 38.28,
+      "endSeconds": 38.72,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1076,8 +1076,8 @@
     {
       "index": 109,
       "text": "kann.",
-      "startSeconds": 39.165,
-      "endSeconds": 39.502,
+      "startSeconds": 38.72,
+      "endSeconds": 38.9,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1085,8 +1085,8 @@
     {
       "index": 110,
       "text": "Eine",
-      "startSeconds": 39.702,
-      "endSeconds": 40.021,
+      "startSeconds": 39.14,
+      "endSeconds": 39.26,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1094,8 +1094,8 @@
     {
       "index": 111,
       "text": "große",
-      "startSeconds": 40.021,
-      "endSeconds": 40.34,
+      "startSeconds": 39.26,
+      "endSeconds": 39.56,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1103,8 +1103,8 @@
     {
       "index": 112,
       "text": "Meta-Analyse",
-      "startSeconds": 40.34,
-      "endSeconds": 40.658,
+      "startSeconds": 39.56,
+      "endSeconds": 39.660000000000004,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1112,8 +1112,8 @@
     {
       "index": 113,
       "text": "von",
-      "startSeconds": 40.658,
-      "endSeconds": 40.977,
+      "startSeconds": 39.660000000000004,
+      "endSeconds": 40.36,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1121,8 +1121,8 @@
     {
       "index": 114,
       "text": "2026",
-      "startSeconds": 40.977,
-      "endSeconds": 41.296,
+      "startSeconds": 40.36,
+      "endSeconds": 41.42,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1130,8 +1130,8 @@
     {
       "index": 115,
       "text": "bestätigte",
-      "startSeconds": 41.296,
-      "endSeconds": 41.614,
+      "startSeconds": 41.42,
+      "endSeconds": 41.96,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1139,8 +1139,8 @@
     {
       "index": 116,
       "text": "den",
-      "startSeconds": 41.614,
-      "endSeconds": 41.933,
+      "startSeconds": 41.96,
+      "endSeconds": 42.08,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1148,8 +1148,8 @@
     {
       "index": 117,
       "text": "Effekt",
-      "startSeconds": 41.933,
-      "endSeconds": 42.252,
+      "startSeconds": 42.08,
+      "endSeconds": 42.36,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1157,8 +1157,8 @@
     {
       "index": 118,
       "text": "über",
-      "startSeconds": 42.252,
-      "endSeconds": 42.571,
+      "startSeconds": 42.36,
+      "endSeconds": 42.62,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1166,8 +1166,8 @@
     {
       "index": 119,
       "text": "viele",
-      "startSeconds": 42.571,
-      "endSeconds": 42.889,
+      "startSeconds": 42.62,
+      "endSeconds": 42.88,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1175,8 +1175,8 @@
     {
       "index": 120,
       "text": "Studien",
-      "startSeconds": 42.889,
-      "endSeconds": 43.208,
+      "startSeconds": 42.88,
+      "endSeconds": 43.24,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1184,8 +1184,8 @@
     {
       "index": 121,
       "text": "hinweg.",
-      "startSeconds": 43.208,
-      "endSeconds": 43.527,
+      "startSeconds": 43.24,
+      "endSeconds": 43.58,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1193,8 +1193,8 @@
     {
       "index": 122,
       "text": "Deshalb",
-      "startSeconds": 43.727,
-      "endSeconds": 44.035,
+      "startSeconds": 43.96,
+      "endSeconds": 44.16,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1202,8 +1202,8 @@
     {
       "index": 123,
       "text": "ist",
-      "startSeconds": 44.035,
-      "endSeconds": 44.343,
+      "startSeconds": 44.16,
+      "endSeconds": 44.32,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1211,8 +1211,8 @@
     {
       "index": 124,
       "text": "„Das",
-      "startSeconds": 44.343,
-      "endSeconds": 44.651,
+      "startSeconds": 44.64,
+      "endSeconds": 44.74,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1220,8 +1220,8 @@
     {
       "index": 125,
       "text": "habe",
-      "startSeconds": 44.651,
-      "endSeconds": 44.959,
+      "startSeconds": 44.74,
+      "endSeconds": 44.92,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1229,8 +1229,8 @@
     {
       "index": 126,
       "text": "ich",
-      "startSeconds": 44.959,
-      "endSeconds": 45.267,
+      "startSeconds": 44.92,
+      "endSeconds": 45.04,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1238,8 +1238,8 @@
     {
       "index": 127,
       "text": "schon",
-      "startSeconds": 45.267,
-      "endSeconds": 45.574,
+      "startSeconds": 45.04,
+      "endSeconds": 45.14,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1247,8 +1247,8 @@
     {
       "index": 128,
       "text": "oft",
-      "startSeconds": 45.574,
-      "endSeconds": 45.882,
+      "startSeconds": 45.14,
+      "endSeconds": 45.34,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1256,8 +1256,8 @@
     {
       "index": 129,
       "text": "gehört“",
-      "startSeconds": 45.882,
-      "endSeconds": 46.19,
+      "startSeconds": 45.34,
+      "endSeconds": 45.66,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1265,8 +1265,8 @@
     {
       "index": 130,
       "text": "kein",
-      "startSeconds": 46.19,
-      "endSeconds": 46.498,
+      "startSeconds": 46.04,
+      "endSeconds": 46.18,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1274,8 +1274,8 @@
     {
       "index": 131,
       "text": "Qualitätsmerkmal.",
-      "startSeconds": 46.498,
-      "endSeconds": 46.806,
+      "startSeconds": 46.18,
+      "endSeconds": 47.08,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1283,8 +1283,8 @@
     {
       "index": 132,
       "text": "Prüf",
-      "startSeconds": 47.006,
-      "endSeconds": 47.269,
+      "startSeconds": 47.32,
+      "endSeconds": 47.48,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1292,8 +1292,8 @@
     {
       "index": 133,
       "text": "dich",
-      "startSeconds": 47.269,
-      "endSeconds": 47.532,
+      "startSeconds": 47.48,
+      "endSeconds": 47.6,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1301,8 +1301,8 @@
     {
       "index": 134,
       "text": "selbst:",
-      "startSeconds": 47.532,
-      "endSeconds": 47.795,
+      "startSeconds": 47.6,
+      "endSeconds": 47.9,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1310,8 +1310,8 @@
     {
       "index": 135,
       "text": "Würdest",
-      "startSeconds": 47.795,
-      "endSeconds": 48.058,
+      "startSeconds": 48.18,
+      "endSeconds": 48.36,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1319,8 +1319,8 @@
     {
       "index": 136,
       "text": "du",
-      "startSeconds": 48.058,
-      "endSeconds": 48.321,
+      "startSeconds": 48.36,
+      "endSeconds": 48.48,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1328,8 +1328,8 @@
     {
       "index": 137,
       "text": "die",
-      "startSeconds": 48.321,
-      "endSeconds": 48.584,
+      "startSeconds": 48.48,
+      "endSeconds": 48.6,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1337,8 +1337,8 @@
     {
       "index": 138,
       "text": "Aussage",
-      "startSeconds": 48.584,
-      "endSeconds": 48.847,
+      "startSeconds": 48.6,
+      "endSeconds": 48.92,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1346,8 +1346,8 @@
     {
       "index": 139,
       "text": "auch",
-      "startSeconds": 48.847,
-      "endSeconds": 49.11,
+      "startSeconds": 48.92,
+      "endSeconds": 49.16,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1355,8 +1355,8 @@
     {
       "index": 140,
       "text": "glauben,",
-      "startSeconds": 49.11,
-      "endSeconds": 49.373,
+      "startSeconds": 49.16,
+      "endSeconds": 49.5,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1364,8 +1364,8 @@
     {
       "index": 141,
       "text": "wenn",
-      "startSeconds": 49.373,
-      "endSeconds": 49.636,
+      "startSeconds": 49.6,
+      "endSeconds": 49.66,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1373,8 +1373,8 @@
     {
       "index": 142,
       "text": "du",
-      "startSeconds": 49.636,
-      "endSeconds": 49.899,
+      "startSeconds": 49.66,
+      "endSeconds": 49.78,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1382,8 +1382,8 @@
     {
       "index": 143,
       "text": "sie",
-      "startSeconds": 49.899,
-      "endSeconds": 50.162,
+      "startSeconds": 49.78,
+      "endSeconds": 49.9,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1391,8 +1391,8 @@
     {
       "index": 144,
       "text": "heute",
-      "startSeconds": 50.162,
-      "endSeconds": 50.425,
+      "startSeconds": 49.9,
+      "endSeconds": 50.1,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1400,8 +1400,8 @@
     {
       "index": 145,
       "text": "zum",
-      "startSeconds": 50.425,
-      "endSeconds": 50.688,
+      "startSeconds": 50.1,
+      "endSeconds": 50.32,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1409,8 +1409,8 @@
     {
       "index": 146,
       "text": "ersten",
-      "startSeconds": 50.688,
-      "endSeconds": 50.951,
+      "startSeconds": 50.32,
+      "endSeconds": 50.6,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1418,8 +1418,8 @@
     {
       "index": 147,
       "text": "Mal",
-      "startSeconds": 50.951,
-      "endSeconds": 51.214,
+      "startSeconds": 50.6,
+      "endSeconds": 50.8,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1427,8 +1427,8 @@
     {
       "index": 148,
       "text": "hörst?",
-      "startSeconds": 51.214,
-      "endSeconds": 51.477,
+      "startSeconds": 50.8,
+      "endSeconds": 51.14,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1436,8 +1436,8 @@
     {
       "index": 149,
       "text": "Die",
-      "startSeconds": 51.677,
-      "endSeconds": 52.041,
+      "startSeconds": 51.38,
+      "endSeconds": 51.48,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1445,8 +1445,8 @@
     {
       "index": 150,
       "text": "Lösung:",
-      "startSeconds": 52.041,
-      "endSeconds": 52.406,
+      "startSeconds": 51.48,
+      "endSeconds": 51.72,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1454,8 +1454,8 @@
     {
       "index": 151,
       "text": "Quelle",
-      "startSeconds": 52.406,
-      "endSeconds": 52.77,
+      "startSeconds": 52.06,
+      "endSeconds": 52.32,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1463,8 +1463,8 @@
     {
       "index": 152,
       "text": "prüfen,",
-      "startSeconds": 52.77,
-      "endSeconds": 53.135,
+      "startSeconds": 52.32,
+      "endSeconds": 52.66,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1472,8 +1472,8 @@
     {
       "index": 153,
       "text": "Belege",
-      "startSeconds": 53.135,
-      "endSeconds": 53.499,
+      "startSeconds": 52.96,
+      "endSeconds": 53.18,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1481,8 +1481,8 @@
     {
       "index": 154,
       "text": "suchen",
-      "startSeconds": 53.499,
-      "endSeconds": 53.864,
+      "startSeconds": 53.18,
+      "endSeconds": 53.48,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1490,8 +1490,8 @@
     {
       "index": 155,
       "text": "und",
-      "startSeconds": 53.864,
-      "endSeconds": 54.228,
+      "startSeconds": 53.48,
+      "endSeconds": 53.94,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1499,8 +1499,8 @@
     {
       "index": 156,
       "text": "Vertrautheit",
-      "startSeconds": 54.228,
-      "endSeconds": 54.592,
+      "startSeconds": 53.94,
+      "endSeconds": 54.04,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1508,8 +1508,8 @@
     {
       "index": 157,
       "text": "nie",
-      "startSeconds": 54.592,
-      "endSeconds": 54.957,
+      "startSeconds": 54.04,
+      "endSeconds": 54.84,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1517,8 +1517,8 @@
     {
       "index": 158,
       "text": "mit",
-      "startSeconds": 54.957,
-      "endSeconds": 55.321,
+      "startSeconds": 54.84,
+      "endSeconds": 55.02,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1526,8 +1526,8 @@
     {
       "index": 159,
       "text": "Wahrheit",
-      "startSeconds": 55.321,
-      "endSeconds": 55.686,
+      "startSeconds": 55.02,
+      "endSeconds": 55.4,
       "confidence": 1,
       "reviewed": true,
       "note": ""
@@ -1535,8 +1535,8 @@
     {
       "index": 160,
       "text": "verwechseln.",
-      "startSeconds": 55.686,
-      "endSeconds": 56.05,
+      "startSeconds": 55.4,
+      "endSeconds": 55.84,
       "confidence": 1,
       "reviewed": true,
       "note": ""

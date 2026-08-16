@@ -1,11 +1,11 @@
 {
-  "createdAt": "2026-08-16T05:35:47.441Z",
+  "createdAt": "2026-08-16T05:50:29.843Z",
   "passed": true,
   "summary": {
-    "passedChecks": 474,
+    "passedChecks": 494,
     "failedChecks": 0,
     "warnings": 0,
-    "totalChecks": 474
+    "totalChecks": 494
   },
   "plan": {
     "version": 3,
@@ -47,9 +47,9 @@
           "reviewedAt": "2026-08-16T04:47:35.605Z"
         },
         "startSeconds": 0,
-        "endSeconds": 3.626,
+        "endSeconds": 3.88,
         "startFrame": 0,
-        "endFrame": 109,
+        "endFrame": 116,
         "transitionIn": {
           "type": "none",
           "durationSeconds": 0
@@ -66,8 +66,8 @@
             "id": "scene-01-subtitle-01",
             "sceneId": "scene-01",
             "text": "Warum glaubst du eine Aussage eher,",
-            "startSeconds": 0.065,
-            "endSeconds": 1.568,
+            "startSeconds": 0,
+            "endSeconds": 1.88,
             "position": "center",
             "verticalPositionPercent": 58,
             "textColor": "#F5F7FA",
@@ -80,38 +80,38 @@
             "wordTimings": [
               {
                 "text": "Warum",
-                "startSeconds": 0.1,
-                "endSeconds": 0.345,
+                "startSeconds": 0,
+                "endSeconds": 0.1,
                 "confidence": 1
               },
               {
                 "text": "glaubst",
-                "startSeconds": 0.345,
-                "endSeconds": 0.589,
+                "startSeconds": 0.1,
+                "endSeconds": 0.68,
                 "confidence": 1
               },
               {
                 "text": "du",
-                "startSeconds": 0.589,
-                "endSeconds": 0.834,
+                "startSeconds": 0.68,
+                "endSeconds": 0.74,
                 "confidence": 1
               },
               {
                 "text": "eine",
-                "startSeconds": 0.834,
-                "endSeconds": 1.079,
+                "startSeconds": 0.74,
+                "endSeconds": 0.9,
                 "confidence": 1
               },
               {
                 "text": "Aussage",
-                "startSeconds": 1.079,
-                "endSeconds": 1.324,
+                "startSeconds": 0.9,
+                "endSeconds": 1.34,
                 "confidence": 1
               },
               {
                 "text": "eher,",
-                "startSeconds": 1.324,
-                "endSeconds": 1.568,
+                "startSeconds": 1.34,
+                "endSeconds": 1.78,
                 "confidence": 1
               }
             ]
@@ -120,8 +120,8 @@
             "id": "scene-01-subtitle-02",
             "sceneId": "scene-01",
             "text": "nur weil du sie schon einmal",
-            "startSeconds": 1.573,
-            "endSeconds": 3.037,
+            "startSeconds": 1.965,
+            "endSeconds": 3.16,
             "position": "center",
             "verticalPositionPercent": 58,
             "textColor": "#F5F7FA",
@@ -134,38 +134,38 @@
             "wordTimings": [
               {
                 "text": "nur",
-                "startSeconds": 1.568,
-                "endSeconds": 1.813,
+                "startSeconds": 2,
+                "endSeconds": 2.22,
                 "confidence": 1
               },
               {
                 "text": "weil",
-                "startSeconds": 1.813,
-                "endSeconds": 2.058,
+                "startSeconds": 2.22,
+                "endSeconds": 2.4,
                 "confidence": 1
               },
               {
                 "text": "du",
-                "startSeconds": 2.058,
-                "endSeconds": 2.302,
+                "startSeconds": 2.4,
+                "endSeconds": 2.52,
                 "confidence": 1
               },
               {
                 "text": "sie",
-                "startSeconds": 2.302,
-                "endSeconds": 2.547,
+                "startSeconds": 2.52,
+                "endSeconds": 2.66,
                 "confidence": 1
               },
               {
                 "text": "schon",
-                "startSeconds": 2.547,
-                "endSeconds": 2.792,
+                "startSeconds": 2.66,
+                "endSeconds": 2.8,
                 "confidence": 1
               },
               {
                 "text": "einmal",
-                "startSeconds": 2.792,
-                "endSeconds": 3.037,
+                "startSeconds": 2.8,
+                "endSeconds": 3.16,
                 "confidence": 1
               }
             ]
@@ -174,8 +174,8 @@
             "id": "scene-01-subtitle-03",
             "sceneId": "scene-01",
             "text": "gehört hast?",
-            "startSeconds": 3.042,
-            "endSeconds": 3.626,
+            "startSeconds": 3.165,
+            "endSeconds": 3.88,
             "position": "center",
             "verticalPositionPercent": 58,
             "textColor": "#F5F7FA",
@@ -188,14 +188,14 @@
             "wordTimings": [
               {
                 "text": "gehört",
-                "startSeconds": 3.037,
-                "endSeconds": 3.281,
+                "startSeconds": 3.16,
+                "endSeconds": 3.42,
                 "confidence": 1
               },
               {
                 "text": "hast?",
-                "startSeconds": 3.281,
-                "endSeconds": 3.526,
+                "startSeconds": 3.42,
+                "endSeconds": 3.78,
                 "confidence": 1
               }
             ]
@@ -223,10 +223,10 @@
           "matchMethod": "visual-text-and-content-review",
           "reviewedAt": "2026-08-16T04:47:35.608Z"
         },
-        "startSeconds": 3.626,
-        "endSeconds": 6.061,
-        "startFrame": 109,
-        "endFrame": 182,
+        "startSeconds": 3.88,
+        "endSeconds": 5.2,
+        "startFrame": 116,
+        "endFrame": 156,
         "transitionIn": {
           "type": "cut",
           "durationSeconds": 0
@@ -243,8 +243,8 @@
             "id": "scene-02-subtitle-01",
             "sceneId": "scene-02",
             "text": "Dafür gibt es einen Namen: Illusory-Truth-Effekt.",
-            "startSeconds": 3.691,
-            "endSeconds": 6.061,
+            "startSeconds": 4.045,
+            "endSeconds": 5.2,
             "position": "center",
             "verticalPositionPercent": 58,
             "textColor": "#F5F7FA",
@@ -257,38 +257,38 @@
             "wordTimings": [
               {
                 "text": "Dafür",
-                "startSeconds": 3.726,
-                "endSeconds": 4.098,
+                "startSeconds": 4.08,
+                "endSeconds": 4.26,
                 "confidence": 1
               },
               {
                 "text": "gibt",
-                "startSeconds": 4.098,
-                "endSeconds": 4.471,
+                "startSeconds": 4.26,
+                "endSeconds": 4.4,
                 "confidence": 1
               },
               {
                 "text": "es",
-                "startSeconds": 4.471,
-                "endSeconds": 4.844,
+                "startSeconds": 4.4,
+                "endSeconds": 4.58,
                 "confidence": 1
               },
               {
                 "text": "einen",
-                "startSeconds": 4.844,
-                "endSeconds": 5.216,
+                "startSeconds": 4.58,
+                "endSeconds": 4.78,
                 "confidence": 1
               },
               {
                 "text": "Namen:",
-                "startSeconds": 5.216,
-                "endSeconds": 5.588,
+                "startSeconds": 4.78,
+                "endSeconds": 5.12,
                 "confidence": 1
               },
               {
                 "text": "Illusory-Truth-Effekt.",
-                "startSeconds": 5.588,
-                "endSeconds": 5.961,
+                "startSeconds": 5.12,
+                "endSeconds": 5.2,
                 "confidence": 1
               }
             ]
@@ -316,10 +316,10 @@
           "matchMethod": "visual-text-and-content-review",
           "reviewedAt": "2026-08-16T04:47:35.611Z"
         },
-        "startSeconds": 6.061,
-        "endSeconds": 8.844,
-        "startFrame": 182,
-        "endFrame": 265,
+        "startSeconds": 5.2,
+        "endSeconds": 9.56,
+        "startFrame": 156,
+        "endFrame": 287,
         "transitionIn": {
           "type": "cut",
           "durationSeconds": 0
@@ -335,9 +335,9 @@
           {
             "id": "scene-03-subtitle-01",
             "sceneId": "scene-03",
-            "text": "Wiederholte Aussagen fühlen sich vertrauter an",
-            "startSeconds": 6.126,
-            "endSeconds": 8.098,
+            "text": "Wiederholte Aussagen fühlen",
+            "startSeconds": 5.365,
+            "endSeconds": 8.18,
             "position": "center",
             "verticalPositionPercent": 58,
             "textColor": "#F5F7FA",
@@ -350,38 +350,20 @@
             "wordTimings": [
               {
                 "text": "Wiederholte",
-                "startSeconds": 6.161,
-                "endSeconds": 6.484,
+                "startSeconds": 5.4,
+                "endSeconds": 7.4,
                 "confidence": 1
               },
               {
                 "text": "Aussagen",
-                "startSeconds": 6.484,
-                "endSeconds": 6.807,
+                "startSeconds": 7.4,
+                "endSeconds": 7.78,
                 "confidence": 1
               },
               {
                 "text": "fühlen",
-                "startSeconds": 6.807,
-                "endSeconds": 7.13,
-                "confidence": 1
-              },
-              {
-                "text": "sich",
-                "startSeconds": 7.13,
-                "endSeconds": 7.452,
-                "confidence": 1
-              },
-              {
-                "text": "vertrauter",
-                "startSeconds": 7.452,
-                "endSeconds": 7.775,
-                "confidence": 1
-              },
-              {
-                "text": "an",
-                "startSeconds": 7.775,
-                "endSeconds": 8.098,
+                "startSeconds": 7.78,
+                "endSeconds": 8.18,
                 "confidence": 1
               }
             ]
@@ -389,9 +371,9 @@
           {
             "id": "scene-03-subtitle-02",
             "sceneId": "scene-03",
-            "text": "als neue.",
-            "startSeconds": 8.103,
-            "endSeconds": 8.844,
+            "text": "sich vertrauter an als neue.",
+            "startSeconds": 8.185,
+            "endSeconds": 9.56,
             "position": "center",
             "verticalPositionPercent": 58,
             "textColor": "#F5F7FA",
@@ -403,15 +385,33 @@
             "timingSource": "codex-local-audio-review",
             "wordTimings": [
               {
+                "text": "sich",
+                "startSeconds": 8.18,
+                "endSeconds": 8.36,
+                "confidence": 1
+              },
+              {
+                "text": "vertrauter",
+                "startSeconds": 8.36,
+                "endSeconds": 8.82,
+                "confidence": 1
+              },
+              {
+                "text": "an",
+                "startSeconds": 8.82,
+                "endSeconds": 9.04,
+                "confidence": 1
+              },
+              {
                 "text": "als",
-                "startSeconds": 8.098,
-                "endSeconds": 8.421,
+                "startSeconds": 9.04,
+                "endSeconds": 9.28,
                 "confidence": 1
               },
               {
                 "text": "neue.",
-                "startSeconds": 8.421,
-                "endSeconds": 8.744,
+                "startSeconds": 9.28,
+                "endSeconds": 9.48,
                 "confidence": 1
               }
             ]
@@ -439,10 +439,10 @@
           "matchMethod": "visual-text-and-content-review",
           "reviewedAt": "2026-08-16T04:47:35.614Z"
         },
-        "startSeconds": 8.844,
-        "endSeconds": 12.421,
-        "startFrame": 265,
-        "endFrame": 373,
+        "startSeconds": 9.56,
+        "endSeconds": 13.14,
+        "startFrame": 287,
+        "endFrame": 394,
         "transitionIn": {
           "type": "cut",
           "durationSeconds": 0
@@ -459,8 +459,8 @@
             "id": "scene-04-subtitle-01",
             "sceneId": "scene-04",
             "text": "Und Vertrautheit wird vom Gehirn oft",
-            "startSeconds": 8.909,
-            "endSeconds": 10.97,
+            "startSeconds": 9.725,
+            "endSeconds": 11.36,
             "position": "center",
             "verticalPositionPercent": 58,
             "textColor": "#F5F7FA",
@@ -473,38 +473,38 @@
             "wordTimings": [
               {
                 "text": "Und",
-                "startSeconds": 8.944,
-                "endSeconds": 9.282,
+                "startSeconds": 9.76,
+                "endSeconds": 9.84,
                 "confidence": 1
               },
               {
                 "text": "Vertrautheit",
-                "startSeconds": 9.282,
-                "endSeconds": 9.619,
+                "startSeconds": 9.84,
+                "endSeconds": 9.94,
                 "confidence": 1
               },
               {
                 "text": "wird",
-                "startSeconds": 9.619,
-                "endSeconds": 9.957,
+                "startSeconds": 9.94,
+                "endSeconds": 10.58,
                 "confidence": 1
               },
               {
                 "text": "vom",
-                "startSeconds": 9.957,
-                "endSeconds": 10.295,
+                "startSeconds": 10.58,
+                "endSeconds": 10.76,
                 "confidence": 1
               },
               {
                 "text": "Gehirn",
-                "startSeconds": 10.295,
-                "endSeconds": 10.633,
+                "startSeconds": 10.76,
+                "endSeconds": 11.1,
                 "confidence": 1
               },
               {
                 "text": "oft",
-                "startSeconds": 10.633,
-                "endSeconds": 10.97,
+                "startSeconds": 11.1,
+                "endSeconds": 11.36,
                 "confidence": 1
               }
             ]
@@ -513,8 +513,8 @@
             "id": "scene-04-subtitle-02",
             "sceneId": "scene-04",
             "text": "mit „klingt plausibel“ verwechselt.",
-            "startSeconds": 10.975,
-            "endSeconds": 12.421,
+            "startSeconds": 11.365,
+            "endSeconds": 13.14,
             "position": "center",
             "verticalPositionPercent": 58,
             "textColor": "#F5F7FA",
@@ -527,26 +527,26 @@
             "wordTimings": [
               {
                 "text": "mit",
-                "startSeconds": 10.97,
-                "endSeconds": 11.308,
+                "startSeconds": 11.36,
+                "endSeconds": 11.58,
                 "confidence": 1
               },
               {
                 "text": "„klingt",
-                "startSeconds": 11.308,
-                "endSeconds": 11.646,
+                "startSeconds": 11.58,
+                "endSeconds": 12,
                 "confidence": 1
               },
               {
                 "text": "plausibel“",
-                "startSeconds": 11.646,
-                "endSeconds": 11.983,
+                "startSeconds": 12,
+                "endSeconds": 12.56,
                 "confidence": 1
               },
               {
                 "text": "verwechselt.",
-                "startSeconds": 11.983,
-                "endSeconds": 12.321,
+                "startSeconds": 12.56,
+                "endSeconds": 13.14,
                 "confidence": 1
               }
             ]
@@ -574,10 +574,10 @@
           "matchMethod": "visual-text-and-content-review",
           "reviewedAt": "2026-08-16T04:47:35.618Z"
         },
-        "startSeconds": 12.421,
-        "endSeconds": 18.285,
-        "startFrame": 373,
-        "endFrame": 549,
+        "startSeconds": 13.14,
+        "endSeconds": 18.7,
+        "startFrame": 394,
+        "endFrame": 561,
         "transitionIn": {
           "type": "cut",
           "durationSeconds": 0
@@ -593,9 +593,9 @@
           {
             "id": "scene-05-subtitle-01",
             "sceneId": "scene-05",
-            "text": "Schon klassische Experimente zeigten: Selbst falsche",
-            "startSeconds": 12.486,
-            "endSeconds": 14.948,
+            "text": "Schon klassische Experimente zeigten:",
+            "startSeconds": 13.305,
+            "endSeconds": 14.88,
             "position": "center",
             "verticalPositionPercent": 58,
             "textColor": "#F5F7FA",
@@ -608,38 +608,26 @@
             "wordTimings": [
               {
                 "text": "Schon",
-                "startSeconds": 12.521,
-                "endSeconds": 12.926,
+                "startSeconds": 13.34,
+                "endSeconds": 13.46,
                 "confidence": 1
               },
               {
                 "text": "klassische",
-                "startSeconds": 12.926,
-                "endSeconds": 13.33,
+                "startSeconds": 13.46,
+                "endSeconds": 13.92,
                 "confidence": 1
               },
               {
                 "text": "Experimente",
-                "startSeconds": 13.33,
-                "endSeconds": 13.735,
+                "startSeconds": 13.92,
+                "endSeconds": 14.46,
                 "confidence": 1
               },
               {
                 "text": "zeigten:",
-                "startSeconds": 13.735,
-                "endSeconds": 14.139,
-                "confidence": 1
-              },
-              {
-                "text": "Selbst",
-                "startSeconds": 14.139,
-                "endSeconds": 14.544,
-                "confidence": 1
-              },
-              {
-                "text": "falsche",
-                "startSeconds": 14.544,
-                "endSeconds": 14.948,
+                "startSeconds": 14.46,
+                "endSeconds": 14.78,
                 "confidence": 1
               }
             ]
@@ -647,9 +635,9 @@
           {
             "id": "scene-05-subtitle-02",
             "sceneId": "scene-05",
-            "text": "Aussagen wurden nach Wiederholung häufiger als",
-            "startSeconds": 14.953,
-            "endSeconds": 17.376,
+            "text": "Selbst falsche Aussagen wurden nach Wiederholung",
+            "startSeconds": 15.105,
+            "endSeconds": 17.18,
             "position": "center",
             "verticalPositionPercent": 58,
             "textColor": "#F5F7FA",
@@ -661,39 +649,39 @@
             "timingSource": "codex-local-audio-review",
             "wordTimings": [
               {
+                "text": "Selbst",
+                "startSeconds": 15.14,
+                "endSeconds": 15.34,
+                "confidence": 1
+              },
+              {
+                "text": "falsche",
+                "startSeconds": 15.34,
+                "endSeconds": 15.8,
+                "confidence": 1
+              },
+              {
                 "text": "Aussagen",
-                "startSeconds": 14.948,
-                "endSeconds": 15.353,
+                "startSeconds": 15.8,
+                "endSeconds": 16.2,
                 "confidence": 1
               },
               {
                 "text": "wurden",
-                "startSeconds": 15.353,
-                "endSeconds": 15.758,
+                "startSeconds": 16.2,
+                "endSeconds": 16.42,
                 "confidence": 1
               },
               {
                 "text": "nach",
-                "startSeconds": 15.758,
-                "endSeconds": 16.162,
+                "startSeconds": 16.42,
+                "endSeconds": 16.62,
                 "confidence": 1
               },
               {
                 "text": "Wiederholung",
-                "startSeconds": 16.162,
-                "endSeconds": 16.567,
-                "confidence": 1
-              },
-              {
-                "text": "häufiger",
-                "startSeconds": 16.567,
-                "endSeconds": 16.971,
-                "confidence": 1
-              },
-              {
-                "text": "als",
-                "startSeconds": 16.971,
-                "endSeconds": 17.376,
+                "startSeconds": 16.62,
+                "endSeconds": 17.18,
                 "confidence": 1
               }
             ]
@@ -701,9 +689,9 @@
           {
             "id": "scene-05-subtitle-03",
             "sceneId": "scene-05",
-            "text": "wahr eingeschätzt.",
-            "startSeconds": 17.381,
-            "endSeconds": 18.285,
+            "text": "häufiger als wahr eingeschätzt.",
+            "startSeconds": 17.185,
+            "endSeconds": 18.7,
             "position": "center",
             "verticalPositionPercent": 58,
             "textColor": "#F5F7FA",
@@ -715,15 +703,27 @@
             "timingSource": "codex-local-audio-review",
             "wordTimings": [
               {
+                "text": "häufiger",
+                "startSeconds": 17.18,
+                "endSeconds": 17.66,
+                "confidence": 1
+              },
+              {
+                "text": "als",
+                "startSeconds": 17.66,
+                "endSeconds": 17.82,
+                "confidence": 1
+              },
+              {
                 "text": "wahr",
-                "startSeconds": 17.376,
-                "endSeconds": 17.78,
+                "startSeconds": 17.82,
+                "endSeconds": 18.06,
                 "confidence": 1
               },
               {
                 "text": "eingeschätzt.",
-                "startSeconds": 17.78,
-                "endSeconds": 18.185,
+                "startSeconds": 18.06,
+                "endSeconds": 18.64,
                 "confidence": 1
               }
             ]
@@ -751,10 +751,10 @@
           "matchMethod": "visual-text-and-content-review",
           "reviewedAt": "2026-08-16T04:47:35.620Z"
         },
-        "startSeconds": 18.285,
-        "endSeconds": 21.564,
-        "startFrame": 549,
-        "endFrame": 647,
+        "startSeconds": 18.7,
+        "endSeconds": 21.6,
+        "startFrame": 561,
+        "endFrame": 648,
         "transitionIn": {
           "type": "cut",
           "durationSeconds": 0
@@ -771,8 +771,8 @@
             "id": "scene-06-subtitle-01",
             "sceneId": "scene-06",
             "text": "Der Effekt entsteht nicht, weil Wiederholung",
-            "startSeconds": 18.35,
-            "endSeconds": 20.438,
+            "startSeconds": 18.865,
+            "endSeconds": 20.58,
             "position": "center",
             "verticalPositionPercent": 58,
             "textColor": "#F5F7FA",
@@ -785,38 +785,38 @@
             "wordTimings": [
               {
                 "text": "Der",
-                "startSeconds": 18.385,
-                "endSeconds": 18.727,
+                "startSeconds": 18.9,
+                "endSeconds": 19,
                 "confidence": 1
               },
               {
                 "text": "Effekt",
-                "startSeconds": 18.727,
-                "endSeconds": 19.069,
+                "startSeconds": 19,
+                "endSeconds": 19.28,
                 "confidence": 1
               },
               {
                 "text": "entsteht",
-                "startSeconds": 19.069,
-                "endSeconds": 19.411,
+                "startSeconds": 19.28,
+                "endSeconds": 19.68,
                 "confidence": 1
               },
               {
                 "text": "nicht,",
-                "startSeconds": 19.411,
-                "endSeconds": 19.753,
+                "startSeconds": 19.68,
+                "endSeconds": 19.82,
                 "confidence": 1
               },
               {
                 "text": "weil",
-                "startSeconds": 19.753,
-                "endSeconds": 20.096,
+                "startSeconds": 19.98,
+                "endSeconds": 20.06,
                 "confidence": 1
               },
               {
                 "text": "Wiederholung",
-                "startSeconds": 20.096,
-                "endSeconds": 20.438,
+                "startSeconds": 20.06,
+                "endSeconds": 20.58,
                 "confidence": 1
               }
             ]
@@ -825,8 +825,8 @@
             "id": "scene-06-subtitle-02",
             "sceneId": "scene-06",
             "text": "neue Beweise liefert.",
-            "startSeconds": 20.443,
-            "endSeconds": 21.564,
+            "startSeconds": 20.585,
+            "endSeconds": 21.56,
             "position": "center",
             "verticalPositionPercent": 58,
             "textColor": "#F5F7FA",
@@ -839,20 +839,20 @@
             "wordTimings": [
               {
                 "text": "neue",
-                "startSeconds": 20.438,
-                "endSeconds": 20.78,
+                "startSeconds": 20.58,
+                "endSeconds": 20.82,
                 "confidence": 1
               },
               {
                 "text": "Beweise",
-                "startSeconds": 20.78,
-                "endSeconds": 21.122,
+                "startSeconds": 20.82,
+                "endSeconds": 21.12,
                 "confidence": 1
               },
               {
                 "text": "liefert.",
-                "startSeconds": 21.122,
-                "endSeconds": 21.464,
+                "startSeconds": 21.12,
+                "endSeconds": 21.46,
                 "confidence": 1
               }
             ]
@@ -880,10 +880,10 @@
           "matchMethod": "visual-text-and-content-review",
           "reviewedAt": "2026-08-16T04:47:35.623Z"
         },
-        "startSeconds": 21.564,
-        "endSeconds": 28.123,
-        "startFrame": 647,
-        "endFrame": 844,
+        "startSeconds": 21.6,
+        "endSeconds": 28,
+        "startFrame": 648,
+        "endFrame": 840,
         "transitionIn": {
           "type": "cut",
           "durationSeconds": 0
@@ -900,8 +900,8 @@
             "id": "scene-07-subtitle-01",
             "sceneId": "scene-07",
             "text": "Die Aussage lässt sich beim zweiten",
-            "startSeconds": 21.629,
-            "endSeconds": 24.049,
+            "startSeconds": 21.765,
+            "endSeconds": 23.08,
             "position": "center",
             "verticalPositionPercent": 58,
             "textColor": "#F5F7FA",
@@ -914,38 +914,38 @@
             "wordTimings": [
               {
                 "text": "Die",
-                "startSeconds": 21.664,
-                "endSeconds": 22.061,
+                "startSeconds": 21.8,
+                "endSeconds": 21.9,
                 "confidence": 1
               },
               {
                 "text": "Aussage",
-                "startSeconds": 22.061,
-                "endSeconds": 22.459,
+                "startSeconds": 21.9,
+                "endSeconds": 22.28,
                 "confidence": 1
               },
               {
                 "text": "lässt",
-                "startSeconds": 22.459,
-                "endSeconds": 22.856,
+                "startSeconds": 22.28,
+                "endSeconds": 22.44,
                 "confidence": 1
               },
               {
                 "text": "sich",
-                "startSeconds": 22.856,
-                "endSeconds": 23.254,
+                "startSeconds": 22.44,
+                "endSeconds": 22.66,
                 "confidence": 1
               },
               {
                 "text": "beim",
-                "startSeconds": 23.254,
-                "endSeconds": 23.651,
+                "startSeconds": 22.66,
+                "endSeconds": 22.78,
                 "confidence": 1
               },
               {
                 "text": "zweiten",
-                "startSeconds": 23.651,
-                "endSeconds": 24.049,
+                "startSeconds": 22.78,
+                "endSeconds": 23.08,
                 "confidence": 1
               }
             ]
@@ -954,8 +954,8 @@
             "id": "scene-07-subtitle-02",
             "sceneId": "scene-07",
             "text": "Mal einfach leichter verarbeiten.",
-            "startSeconds": 24.054,
-            "endSeconds": 25.638,
+            "startSeconds": 23.085,
+            "endSeconds": 24.68,
             "position": "center",
             "verticalPositionPercent": 58,
             "textColor": "#F5F7FA",
@@ -968,26 +968,26 @@
             "wordTimings": [
               {
                 "text": "Mal",
-                "startSeconds": 24.049,
-                "endSeconds": 24.446,
+                "startSeconds": 23.08,
+                "endSeconds": 23.3,
                 "confidence": 1
               },
               {
                 "text": "einfach",
-                "startSeconds": 24.446,
-                "endSeconds": 24.843,
+                "startSeconds": 23.3,
+                "endSeconds": 23.64,
                 "confidence": 1
               },
               {
                 "text": "leichter",
-                "startSeconds": 24.843,
-                "endSeconds": 25.241,
+                "startSeconds": 23.64,
+                "endSeconds": 24.18,
                 "confidence": 1
               },
               {
                 "text": "verarbeiten.",
-                "startSeconds": 25.241,
-                "endSeconds": 25.638,
+                "startSeconds": 24.18,
+                "endSeconds": 24.58,
                 "confidence": 1
               }
             ]
@@ -996,8 +996,8 @@
             "id": "scene-07-subtitle-03",
             "sceneId": "scene-07",
             "text": "Diese mentale Leichtigkeit nennt man Verarbeitungsflüssigkeit.",
-            "startSeconds": 25.643,
-            "endSeconds": 28.123,
+            "startSeconds": 24.925,
+            "endSeconds": 28,
             "position": "center",
             "verticalPositionPercent": 58,
             "textColor": "#F5F7FA",
@@ -1010,38 +1010,38 @@
             "wordTimings": [
               {
                 "text": "Diese",
-                "startSeconds": 25.638,
-                "endSeconds": 26.036,
+                "startSeconds": 24.96,
+                "endSeconds": 25.2,
                 "confidence": 1
               },
               {
                 "text": "mentale",
-                "startSeconds": 26.036,
-                "endSeconds": 26.433,
+                "startSeconds": 25.2,
+                "endSeconds": 25.78,
                 "confidence": 1
               },
               {
                 "text": "Leichtigkeit",
-                "startSeconds": 26.433,
-                "endSeconds": 26.831,
+                "startSeconds": 25.78,
+                "endSeconds": 26.48,
                 "confidence": 1
               },
               {
                 "text": "nennt",
-                "startSeconds": 26.831,
-                "endSeconds": 27.228,
+                "startSeconds": 26.48,
+                "endSeconds": 26.78,
                 "confidence": 1
               },
               {
                 "text": "man",
-                "startSeconds": 27.228,
-                "endSeconds": 27.626,
+                "startSeconds": 26.78,
+                "endSeconds": 26.9,
                 "confidence": 1
               },
               {
                 "text": "Verarbeitungsflüssigkeit.",
-                "startSeconds": 27.626,
-                "endSeconds": 28.023,
+                "startSeconds": 26.9,
+                "endSeconds": 28,
                 "confidence": 1
               }
             ]
@@ -1069,10 +1069,10 @@
           "matchMethod": "visual-text-and-content-review",
           "reviewedAt": "2026-08-16T04:47:35.625Z"
         },
-        "startSeconds": 28.123,
-        "endSeconds": 32.993,
-        "startFrame": 844,
-        "endFrame": 990,
+        "startSeconds": 28,
+        "endSeconds": 32.62,
+        "startFrame": 840,
+        "endFrame": 979,
         "transitionIn": {
           "type": "cut",
           "durationSeconds": 0
@@ -1089,8 +1089,8 @@
             "id": "scene-08-subtitle-01",
             "sceneId": "scene-08",
             "text": "Besonders tückisch: Wiederholung kann sogar wirken,",
-            "startSeconds": 28.188,
-            "endSeconds": 30.378,
+            "startSeconds": 28.165,
+            "endSeconds": 30.67,
             "position": "center",
             "verticalPositionPercent": 58,
             "textColor": "#F5F7FA",
@@ -1103,38 +1103,38 @@
             "wordTimings": [
               {
                 "text": "Besonders",
-                "startSeconds": 28.223,
-                "endSeconds": 28.582,
+                "startSeconds": 28.2,
+                "endSeconds": 28.78,
                 "confidence": 1
               },
               {
                 "text": "tückisch:",
-                "startSeconds": 28.582,
-                "endSeconds": 28.941,
+                "startSeconds": 28.78,
+                "endSeconds": 28.88,
                 "confidence": 1
               },
               {
                 "text": "Wiederholung",
-                "startSeconds": 28.941,
-                "endSeconds": 29.301,
+                "startSeconds": 28.88,
+                "endSeconds": 29.94,
                 "confidence": 1
               },
               {
                 "text": "kann",
-                "startSeconds": 29.301,
-                "endSeconds": 29.66,
+                "startSeconds": 29.94,
+                "endSeconds": 30.06,
                 "confidence": 1
               },
               {
                 "text": "sogar",
-                "startSeconds": 29.66,
-                "endSeconds": 30.019,
+                "startSeconds": 30.06,
+                "endSeconds": 30.22,
                 "confidence": 1
               },
               {
                 "text": "wirken,",
-                "startSeconds": 30.019,
-                "endSeconds": 30.378,
+                "startSeconds": 30.22,
+                "endSeconds": 30.58,
                 "confidence": 1
               }
             ]
@@ -1143,8 +1143,8 @@
             "id": "scene-08-subtitle-02",
             "sceneId": "scene-08",
             "text": "wenn du das richtige Wissen eigentlich",
-            "startSeconds": 30.383,
-            "endSeconds": 32.534,
+            "startSeconds": 30.68,
+            "endSeconds": 32.04,
             "position": "center",
             "verticalPositionPercent": 58,
             "textColor": "#F5F7FA",
@@ -1157,38 +1157,38 @@
             "wordTimings": [
               {
                 "text": "wenn",
-                "startSeconds": 30.378,
-                "endSeconds": 30.738,
+                "startSeconds": 30.68,
+                "endSeconds": 30.74,
                 "confidence": 1
               },
               {
                 "text": "du",
-                "startSeconds": 30.738,
-                "endSeconds": 31.097,
+                "startSeconds": 30.74,
+                "endSeconds": 30.86,
                 "confidence": 1
               },
               {
                 "text": "das",
-                "startSeconds": 31.097,
-                "endSeconds": 31.456,
+                "startSeconds": 30.86,
+                "endSeconds": 31,
                 "confidence": 1
               },
               {
                 "text": "richtige",
-                "startSeconds": 31.456,
-                "endSeconds": 31.815,
+                "startSeconds": 31,
+                "endSeconds": 31.3,
                 "confidence": 1
               },
               {
                 "text": "Wissen",
-                "startSeconds": 31.815,
-                "endSeconds": 32.175,
+                "startSeconds": 31.3,
+                "endSeconds": 31.62,
                 "confidence": 1
               },
               {
                 "text": "eigentlich",
-                "startSeconds": 32.175,
-                "endSeconds": 32.534,
+                "startSeconds": 31.62,
+                "endSeconds": 32.04,
                 "confidence": 1
               }
             ]
@@ -1197,8 +1197,8 @@
             "id": "scene-08-subtitle-03",
             "sceneId": "scene-08",
             "text": "kennst.",
-            "startSeconds": 32.539,
-            "endSeconds": 32.993,
+            "startSeconds": 32.045,
+            "endSeconds": 32.6,
             "position": "center",
             "verticalPositionPercent": 58,
             "textColor": "#F5F7FA",
@@ -1211,8 +1211,8 @@
             "wordTimings": [
               {
                 "text": "kennst.",
-                "startSeconds": 32.534,
-                "endSeconds": 32.893,
+                "startSeconds": 32.04,
+                "endSeconds": 32.5,
                 "confidence": 1
               }
             ]
@@ -1240,10 +1240,10 @@
           "matchMethod": "visual-text-and-content-review",
           "reviewedAt": "2026-08-16T04:47:35.629Z"
         },
-        "startSeconds": 32.993,
-        "endSeconds": 39.602,
-        "startFrame": 990,
-        "endFrame": 1188,
+        "startSeconds": 32.62,
+        "endSeconds": 38.94,
+        "startFrame": 979,
+        "endFrame": 1168,
         "transitionIn": {
           "type": "cut",
           "durationSeconds": 0
@@ -1260,8 +1260,8 @@
             "id": "scene-09-subtitle-01",
             "sceneId": "scene-09",
             "text": "Das ist im Alltag wichtig bei",
-            "startSeconds": 33.058,
-            "endSeconds": 35.117,
+            "startSeconds": 32.785,
+            "endSeconds": 33.98,
             "position": "center",
             "verticalPositionPercent": 58,
             "textColor": "#F5F7FA",
@@ -1274,38 +1274,38 @@
             "wordTimings": [
               {
                 "text": "Das",
-                "startSeconds": 33.093,
-                "endSeconds": 33.43,
+                "startSeconds": 32.82,
+                "endSeconds": 32.9,
                 "confidence": 1
               },
               {
                 "text": "ist",
-                "startSeconds": 33.43,
-                "endSeconds": 33.768,
+                "startSeconds": 32.9,
+                "endSeconds": 33.02,
                 "confidence": 1
               },
               {
                 "text": "im",
-                "startSeconds": 33.768,
-                "endSeconds": 34.105,
+                "startSeconds": 33.02,
+                "endSeconds": 33.18,
                 "confidence": 1
               },
               {
                 "text": "Alltag",
-                "startSeconds": 34.105,
-                "endSeconds": 34.442,
+                "startSeconds": 33.18,
+                "endSeconds": 33.46,
                 "confidence": 1
               },
               {
                 "text": "wichtig",
-                "startSeconds": 34.442,
-                "endSeconds": 34.78,
+                "startSeconds": 33.46,
+                "endSeconds": 33.72,
                 "confidence": 1
               },
               {
                 "text": "bei",
-                "startSeconds": 34.78,
-                "endSeconds": 35.117,
+                "startSeconds": 33.72,
+                "endSeconds": 33.98,
                 "confidence": 1
               }
             ]
@@ -1314,8 +1314,8 @@
             "id": "scene-09-subtitle-02",
             "sceneId": "scene-09",
             "text": "Schlagzeilen, Gerüchten, Werbung und Social Media,",
-            "startSeconds": 35.122,
-            "endSeconds": 37.141,
+            "startSeconds": 33.985,
+            "endSeconds": 36.64,
             "position": "center",
             "verticalPositionPercent": 58,
             "textColor": "#F5F7FA",
@@ -1328,38 +1328,38 @@
             "wordTimings": [
               {
                 "text": "Schlagzeilen,",
-                "startSeconds": 35.117,
-                "endSeconds": 35.454,
+                "startSeconds": 33.98,
+                "endSeconds": 34.72,
                 "confidence": 1
               },
               {
                 "text": "Gerüchten,",
-                "startSeconds": 35.454,
-                "endSeconds": 35.792,
+                "startSeconds": 34.72,
+                "endSeconds": 34.82,
                 "confidence": 1
               },
               {
                 "text": "Werbung",
-                "startSeconds": 35.792,
-                "endSeconds": 36.129,
+                "startSeconds": 34.86,
+                "endSeconds": 35.78,
                 "confidence": 1
               },
               {
                 "text": "und",
-                "startSeconds": 36.129,
-                "endSeconds": 36.466,
+                "startSeconds": 35.78,
+                "endSeconds": 35.98,
                 "confidence": 1
               },
               {
                 "text": "Social",
-                "startSeconds": 36.466,
-                "endSeconds": 36.803,
+                "startSeconds": 35.98,
+                "endSeconds": 36.24,
                 "confidence": 1
               },
               {
                 "text": "Media,",
-                "startSeconds": 36.803,
-                "endSeconds": 37.141,
+                "startSeconds": 36.24,
+                "endSeconds": 36.54,
                 "confidence": 1
               }
             ]
@@ -1368,8 +1368,8 @@
             "id": "scene-09-subtitle-03",
             "sceneId": "scene-09",
             "text": "wo dieselbe Behauptung immer wieder auftauchen",
-            "startSeconds": 37.146,
-            "endSeconds": 39.165,
+            "startSeconds": 36.805,
+            "endSeconds": 38.72,
             "position": "center",
             "verticalPositionPercent": 58,
             "textColor": "#F5F7FA",
@@ -1382,38 +1382,38 @@
             "wordTimings": [
               {
                 "text": "wo",
-                "startSeconds": 37.141,
-                "endSeconds": 37.478,
+                "startSeconds": 36.84,
+                "endSeconds": 37,
                 "confidence": 1
               },
               {
                 "text": "dieselbe",
-                "startSeconds": 37.478,
-                "endSeconds": 37.815,
+                "startSeconds": 37,
+                "endSeconds": 37.36,
                 "confidence": 1
               },
               {
                 "text": "Behauptung",
-                "startSeconds": 37.815,
-                "endSeconds": 38.153,
+                "startSeconds": 37.36,
+                "endSeconds": 37.76,
                 "confidence": 1
               },
               {
                 "text": "immer",
-                "startSeconds": 38.153,
-                "endSeconds": 38.49,
+                "startSeconds": 37.76,
+                "endSeconds": 38.04,
                 "confidence": 1
               },
               {
                 "text": "wieder",
-                "startSeconds": 38.49,
-                "endSeconds": 38.827,
+                "startSeconds": 38.04,
+                "endSeconds": 38.28,
                 "confidence": 1
               },
               {
                 "text": "auftauchen",
-                "startSeconds": 38.827,
-                "endSeconds": 39.165,
+                "startSeconds": 38.28,
+                "endSeconds": 38.72,
                 "confidence": 1
               }
             ]
@@ -1422,8 +1422,8 @@
             "id": "scene-09-subtitle-04",
             "sceneId": "scene-09",
             "text": "kann.",
-            "startSeconds": 39.17,
-            "endSeconds": 39.602,
+            "startSeconds": 38.725,
+            "endSeconds": 38.94,
             "position": "center",
             "verticalPositionPercent": 58,
             "textColor": "#F5F7FA",
@@ -1436,8 +1436,8 @@
             "wordTimings": [
               {
                 "text": "kann.",
-                "startSeconds": 39.165,
-                "endSeconds": 39.502,
+                "startSeconds": 38.72,
+                "endSeconds": 38.9,
                 "confidence": 1
               }
             ]
@@ -1465,10 +1465,10 @@
           "matchMethod": "visual-text-and-content-review",
           "reviewedAt": "2026-08-16T04:47:35.631Z"
         },
-        "startSeconds": 39.602,
-        "endSeconds": 43.627,
-        "startFrame": 1188,
-        "endFrame": 1309,
+        "startSeconds": 38.94,
+        "endSeconds": 43.76,
+        "startFrame": 1168,
+        "endFrame": 1313,
         "transitionIn": {
           "type": "cut",
           "durationSeconds": 0
@@ -1485,8 +1485,8 @@
             "id": "scene-10-subtitle-01",
             "sceneId": "scene-10",
             "text": "Eine große Meta-Analyse von 2026 bestätigte",
-            "startSeconds": 39.667,
-            "endSeconds": 41.614,
+            "startSeconds": 39.105,
+            "endSeconds": 41.96,
             "position": "center",
             "verticalPositionPercent": 58,
             "textColor": "#F5F7FA",
@@ -1499,38 +1499,38 @@
             "wordTimings": [
               {
                 "text": "Eine",
-                "startSeconds": 39.702,
-                "endSeconds": 40.021,
+                "startSeconds": 39.14,
+                "endSeconds": 39.26,
                 "confidence": 1
               },
               {
                 "text": "große",
-                "startSeconds": 40.021,
-                "endSeconds": 40.34,
+                "startSeconds": 39.26,
+                "endSeconds": 39.56,
                 "confidence": 1
               },
               {
                 "text": "Meta-Analyse",
-                "startSeconds": 40.34,
-                "endSeconds": 40.658,
+                "startSeconds": 39.56,
+                "endSeconds": 39.66,
                 "confidence": 1
               },
               {
                 "text": "von",
-                "startSeconds": 40.658,
-                "endSeconds": 40.977,
+                "startSeconds": 39.66,
+                "endSeconds": 40.36,
                 "confidence": 1
               },
               {
                 "text": "2026",
-                "startSeconds": 40.977,
-                "endSeconds": 41.296,
+                "startSeconds": 40.36,
+                "endSeconds": 41.42,
                 "confidence": 1
               },
               {
                 "text": "bestätigte",
-                "startSeconds": 41.296,
-                "endSeconds": 41.614,
+                "startSeconds": 41.42,
+                "endSeconds": 41.96,
                 "confidence": 1
               }
             ]
@@ -1539,8 +1539,8 @@
             "id": "scene-10-subtitle-02",
             "sceneId": "scene-10",
             "text": "den Effekt über viele Studien hinweg.",
-            "startSeconds": 41.619,
-            "endSeconds": 43.627,
+            "startSeconds": 41.965,
+            "endSeconds": 43.68,
             "position": "center",
             "verticalPositionPercent": 58,
             "textColor": "#F5F7FA",
@@ -1553,38 +1553,38 @@
             "wordTimings": [
               {
                 "text": "den",
-                "startSeconds": 41.614,
-                "endSeconds": 41.933,
+                "startSeconds": 41.96,
+                "endSeconds": 42.08,
                 "confidence": 1
               },
               {
                 "text": "Effekt",
-                "startSeconds": 41.933,
-                "endSeconds": 42.252,
+                "startSeconds": 42.08,
+                "endSeconds": 42.36,
                 "confidence": 1
               },
               {
                 "text": "über",
-                "startSeconds": 42.252,
-                "endSeconds": 42.571,
+                "startSeconds": 42.36,
+                "endSeconds": 42.62,
                 "confidence": 1
               },
               {
                 "text": "viele",
-                "startSeconds": 42.571,
-                "endSeconds": 42.889,
+                "startSeconds": 42.62,
+                "endSeconds": 42.88,
                 "confidence": 1
               },
               {
                 "text": "Studien",
-                "startSeconds": 42.889,
-                "endSeconds": 43.208,
+                "startSeconds": 42.88,
+                "endSeconds": 43.24,
                 "confidence": 1
               },
               {
                 "text": "hinweg.",
-                "startSeconds": 43.208,
-                "endSeconds": 43.527,
+                "startSeconds": 43.24,
+                "endSeconds": 43.58,
                 "confidence": 1
               }
             ]
@@ -1612,10 +1612,10 @@
           "matchMethod": "visual-text-and-content-review",
           "reviewedAt": "2026-08-16T04:47:35.634Z"
         },
-        "startSeconds": 43.627,
-        "endSeconds": 46.906,
-        "startFrame": 1309,
-        "endFrame": 1407,
+        "startSeconds": 43.76,
+        "endSeconds": 47.12,
+        "startFrame": 1313,
+        "endFrame": 1414,
         "transitionIn": {
           "type": "cut",
           "durationSeconds": 0
@@ -1632,8 +1632,8 @@
             "id": "scene-11-subtitle-01",
             "sceneId": "scene-11",
             "text": "Deshalb ist „Das habe ich schon",
-            "startSeconds": 43.692,
-            "endSeconds": 45.574,
+            "startSeconds": 43.925,
+            "endSeconds": 45.14,
             "position": "center",
             "verticalPositionPercent": 58,
             "textColor": "#F5F7FA",
@@ -1646,38 +1646,38 @@
             "wordTimings": [
               {
                 "text": "Deshalb",
-                "startSeconds": 43.727,
-                "endSeconds": 44.035,
+                "startSeconds": 43.96,
+                "endSeconds": 44.16,
                 "confidence": 1
               },
               {
                 "text": "ist",
-                "startSeconds": 44.035,
-                "endSeconds": 44.343,
+                "startSeconds": 44.16,
+                "endSeconds": 44.32,
                 "confidence": 1
               },
               {
                 "text": "„Das",
-                "startSeconds": 44.343,
-                "endSeconds": 44.651,
+                "startSeconds": 44.64,
+                "endSeconds": 44.74,
                 "confidence": 1
               },
               {
                 "text": "habe",
-                "startSeconds": 44.651,
-                "endSeconds": 44.959,
+                "startSeconds": 44.74,
+                "endSeconds": 44.92,
                 "confidence": 1
               },
               {
                 "text": "ich",
-                "startSeconds": 44.959,
-                "endSeconds": 45.267,
+                "startSeconds": 44.92,
+                "endSeconds": 45.04,
                 "confidence": 1
               },
               {
                 "text": "schon",
-                "startSeconds": 45.267,
-                "endSeconds": 45.574,
+                "startSeconds": 45.04,
+                "endSeconds": 45.14,
                 "confidence": 1
               }
             ]
@@ -1686,8 +1686,8 @@
             "id": "scene-11-subtitle-02",
             "sceneId": "scene-11",
             "text": "oft gehört“ kein Qualitätsmerkmal.",
-            "startSeconds": 45.579,
-            "endSeconds": 46.906,
+            "startSeconds": 45.145,
+            "endSeconds": 47.12,
             "position": "center",
             "verticalPositionPercent": 58,
             "textColor": "#F5F7FA",
@@ -1700,26 +1700,26 @@
             "wordTimings": [
               {
                 "text": "oft",
-                "startSeconds": 45.574,
-                "endSeconds": 45.882,
+                "startSeconds": 45.14,
+                "endSeconds": 45.34,
                 "confidence": 1
               },
               {
                 "text": "gehört“",
-                "startSeconds": 45.882,
-                "endSeconds": 46.19,
+                "startSeconds": 45.34,
+                "endSeconds": 45.66,
                 "confidence": 1
               },
               {
                 "text": "kein",
-                "startSeconds": 46.19,
-                "endSeconds": 46.498,
+                "startSeconds": 46.04,
+                "endSeconds": 46.18,
                 "confidence": 1
               },
               {
                 "text": "Qualitätsmerkmal.",
-                "startSeconds": 46.498,
-                "endSeconds": 46.806,
+                "startSeconds": 46.18,
+                "endSeconds": 47.08,
                 "confidence": 1
               }
             ]
@@ -1747,10 +1747,10 @@
           "matchMethod": "visual-text-and-content-review",
           "reviewedAt": "2026-08-16T04:47:35.637Z"
         },
-        "startSeconds": 46.906,
-        "endSeconds": 51.577,
-        "startFrame": 1407,
-        "endFrame": 1547,
+        "startSeconds": 47.12,
+        "endSeconds": 51.18,
+        "startFrame": 1414,
+        "endFrame": 1535,
         "transitionIn": {
           "type": "cut",
           "durationSeconds": 0
@@ -1766,9 +1766,9 @@
           {
             "id": "scene-12-subtitle-01",
             "sceneId": "scene-12",
-            "text": "Prüf dich selbst: Würdest du die",
-            "startSeconds": 46.971,
-            "endSeconds": 48.584,
+            "text": "Prüf dich selbst:",
+            "startSeconds": 47.285,
+            "endSeconds": 48,
             "position": "center",
             "verticalPositionPercent": 58,
             "textColor": "#F5F7FA",
@@ -1781,38 +1781,20 @@
             "wordTimings": [
               {
                 "text": "Prüf",
-                "startSeconds": 47.006,
-                "endSeconds": 47.269,
+                "startSeconds": 47.32,
+                "endSeconds": 47.48,
                 "confidence": 1
               },
               {
                 "text": "dich",
-                "startSeconds": 47.269,
-                "endSeconds": 47.532,
+                "startSeconds": 47.48,
+                "endSeconds": 47.6,
                 "confidence": 1
               },
               {
                 "text": "selbst:",
-                "startSeconds": 47.532,
-                "endSeconds": 47.795,
-                "confidence": 1
-              },
-              {
-                "text": "Würdest",
-                "startSeconds": 47.795,
-                "endSeconds": 48.058,
-                "confidence": 1
-              },
-              {
-                "text": "du",
-                "startSeconds": 48.058,
-                "endSeconds": 48.321,
-                "confidence": 1
-              },
-              {
-                "text": "die",
-                "startSeconds": 48.321,
-                "endSeconds": 48.584,
+                "startSeconds": 47.6,
+                "endSeconds": 47.9,
                 "confidence": 1
               }
             ]
@@ -1820,9 +1802,9 @@
           {
             "id": "scene-12-subtitle-02",
             "sceneId": "scene-12",
-            "text": "Aussage auch glauben, wenn du sie",
-            "startSeconds": 48.589,
-            "endSeconds": 50.162,
+            "text": "Würdest du die Aussage auch glauben,",
+            "startSeconds": 48.145,
+            "endSeconds": 49.59,
             "position": "center",
             "verticalPositionPercent": 58,
             "textColor": "#F5F7FA",
@@ -1834,39 +1816,39 @@
             "timingSource": "codex-local-audio-review",
             "wordTimings": [
               {
-                "text": "Aussage",
-                "startSeconds": 48.584,
-                "endSeconds": 48.847,
-                "confidence": 1
-              },
-              {
-                "text": "auch",
-                "startSeconds": 48.847,
-                "endSeconds": 49.11,
-                "confidence": 1
-              },
-              {
-                "text": "glauben,",
-                "startSeconds": 49.11,
-                "endSeconds": 49.373,
-                "confidence": 1
-              },
-              {
-                "text": "wenn",
-                "startSeconds": 49.373,
-                "endSeconds": 49.636,
+                "text": "Würdest",
+                "startSeconds": 48.18,
+                "endSeconds": 48.36,
                 "confidence": 1
               },
               {
                 "text": "du",
-                "startSeconds": 49.636,
-                "endSeconds": 49.899,
+                "startSeconds": 48.36,
+                "endSeconds": 48.48,
                 "confidence": 1
               },
               {
-                "text": "sie",
-                "startSeconds": 49.899,
-                "endSeconds": 50.162,
+                "text": "die",
+                "startSeconds": 48.48,
+                "endSeconds": 48.6,
+                "confidence": 1
+              },
+              {
+                "text": "Aussage",
+                "startSeconds": 48.6,
+                "endSeconds": 48.92,
+                "confidence": 1
+              },
+              {
+                "text": "auch",
+                "startSeconds": 48.92,
+                "endSeconds": 49.16,
+                "confidence": 1
+              },
+              {
+                "text": "glauben,",
+                "startSeconds": 49.16,
+                "endSeconds": 49.5,
                 "confidence": 1
               }
             ]
@@ -1874,9 +1856,9 @@
           {
             "id": "scene-12-subtitle-03",
             "sceneId": "scene-12",
-            "text": "heute zum ersten Mal hörst?",
-            "startSeconds": 50.167,
-            "endSeconds": 51.577,
+            "text": "wenn du sie heute zum ersten",
+            "startSeconds": 49.6,
+            "endSeconds": 50.6,
             "position": "center",
             "verticalPositionPercent": 58,
             "textColor": "#F5F7FA",
@@ -1888,33 +1870,69 @@
             "timingSource": "codex-local-audio-review",
             "wordTimings": [
               {
+                "text": "wenn",
+                "startSeconds": 49.6,
+                "endSeconds": 49.66,
+                "confidence": 1
+              },
+              {
+                "text": "du",
+                "startSeconds": 49.66,
+                "endSeconds": 49.78,
+                "confidence": 1
+              },
+              {
+                "text": "sie",
+                "startSeconds": 49.78,
+                "endSeconds": 49.9,
+                "confidence": 1
+              },
+              {
                 "text": "heute",
-                "startSeconds": 50.162,
-                "endSeconds": 50.425,
+                "startSeconds": 49.9,
+                "endSeconds": 50.1,
                 "confidence": 1
               },
               {
                 "text": "zum",
-                "startSeconds": 50.425,
-                "endSeconds": 50.688,
+                "startSeconds": 50.1,
+                "endSeconds": 50.32,
                 "confidence": 1
               },
               {
                 "text": "ersten",
-                "startSeconds": 50.688,
-                "endSeconds": 50.951,
+                "startSeconds": 50.32,
+                "endSeconds": 50.6,
                 "confidence": 1
-              },
+              }
+            ]
+          },
+          {
+            "id": "scene-12-subtitle-04",
+            "sceneId": "scene-12",
+            "text": "Mal hörst?",
+            "startSeconds": 50.605,
+            "endSeconds": 51.18,
+            "position": "center",
+            "verticalPositionPercent": 58,
+            "textColor": "#F5F7FA",
+            "backgroundColor": "transparent",
+            "highlightCurrentWord": true,
+            "highlightColor": "#B7794A",
+            "speakerSyncedWordHighlight": true,
+            "timingStatus": "codex-word-synced",
+            "timingSource": "codex-local-audio-review",
+            "wordTimings": [
               {
                 "text": "Mal",
-                "startSeconds": 50.951,
-                "endSeconds": 51.214,
+                "startSeconds": 50.6,
+                "endSeconds": 50.8,
                 "confidence": 1
               },
               {
                 "text": "hörst?",
-                "startSeconds": 51.214,
-                "endSeconds": 51.477,
+                "startSeconds": 50.8,
+                "endSeconds": 51.14,
                 "confidence": 1
               }
             ]
@@ -1942,9 +1960,9 @@
           "matchMethod": "visual-text-and-content-review",
           "reviewedAt": "2026-08-16T04:47:35.643Z"
         },
-        "startSeconds": 51.577,
+        "startSeconds": 51.18,
         "endSeconds": 56.8,
-        "startFrame": 1547,
+        "startFrame": 1535,
         "endFrame": 1704,
         "transitionIn": {
           "type": "cut",
@@ -1961,9 +1979,9 @@
           {
             "id": "scene-13-subtitle-01",
             "sceneId": "scene-13",
-            "text": "Die Lösung: Quelle prüfen, Belege suchen",
-            "startSeconds": 51.642,
-            "endSeconds": 53.864,
+            "text": "Die Lösung: Quelle prüfen,",
+            "startSeconds": 51.345,
+            "endSeconds": 52.76,
             "position": "center",
             "verticalPositionPercent": 58,
             "textColor": "#F5F7FA",
@@ -1976,38 +1994,26 @@
             "wordTimings": [
               {
                 "text": "Die",
-                "startSeconds": 51.677,
-                "endSeconds": 52.041,
+                "startSeconds": 51.38,
+                "endSeconds": 51.48,
                 "confidence": 1
               },
               {
                 "text": "Lösung:",
-                "startSeconds": 52.041,
-                "endSeconds": 52.406,
+                "startSeconds": 51.48,
+                "endSeconds": 51.72,
                 "confidence": 1
               },
               {
                 "text": "Quelle",
-                "startSeconds": 52.406,
-                "endSeconds": 52.77,
+                "startSeconds": 52.06,
+                "endSeconds": 52.32,
                 "confidence": 1
               },
               {
                 "text": "prüfen,",
-                "startSeconds": 52.77,
-                "endSeconds": 53.135,
-                "confidence": 1
-              },
-              {
-                "text": "Belege",
-                "startSeconds": 53.135,
-                "endSeconds": 53.499,
-                "confidence": 1
-              },
-              {
-                "text": "suchen",
-                "startSeconds": 53.499,
-                "endSeconds": 53.864,
+                "startSeconds": 52.32,
+                "endSeconds": 52.66,
                 "confidence": 1
               }
             ]
@@ -2015,9 +2021,9 @@
           {
             "id": "scene-13-subtitle-02",
             "sceneId": "scene-13",
-            "text": "und Vertrautheit nie mit Wahrheit verwechseln.",
-            "startSeconds": 53.869,
-            "endSeconds": 56.15,
+            "text": "Belege suchen und Vertrautheit nie mit",
+            "startSeconds": 52.925,
+            "endSeconds": 55.02,
             "position": "center",
             "verticalPositionPercent": 58,
             "textColor": "#F5F7FA",
@@ -2029,39 +2035,69 @@
             "timingSource": "codex-local-audio-review",
             "wordTimings": [
               {
+                "text": "Belege",
+                "startSeconds": 52.96,
+                "endSeconds": 53.18,
+                "confidence": 1
+              },
+              {
+                "text": "suchen",
+                "startSeconds": 53.18,
+                "endSeconds": 53.48,
+                "confidence": 1
+              },
+              {
                 "text": "und",
-                "startSeconds": 53.864,
-                "endSeconds": 54.228,
+                "startSeconds": 53.48,
+                "endSeconds": 53.94,
                 "confidence": 1
               },
               {
                 "text": "Vertrautheit",
-                "startSeconds": 54.228,
-                "endSeconds": 54.592,
+                "startSeconds": 53.94,
+                "endSeconds": 54.04,
                 "confidence": 1
               },
               {
                 "text": "nie",
-                "startSeconds": 54.592,
-                "endSeconds": 54.957,
+                "startSeconds": 54.04,
+                "endSeconds": 54.84,
                 "confidence": 1
               },
               {
                 "text": "mit",
-                "startSeconds": 54.957,
-                "endSeconds": 55.321,
+                "startSeconds": 54.84,
+                "endSeconds": 55.02,
                 "confidence": 1
-              },
+              }
+            ]
+          },
+          {
+            "id": "scene-13-subtitle-03",
+            "sceneId": "scene-13",
+            "text": "Wahrheit verwechseln.",
+            "startSeconds": 55.025,
+            "endSeconds": 55.94,
+            "position": "center",
+            "verticalPositionPercent": 58,
+            "textColor": "#F5F7FA",
+            "backgroundColor": "transparent",
+            "highlightCurrentWord": true,
+            "highlightColor": "#B7794A",
+            "speakerSyncedWordHighlight": true,
+            "timingStatus": "codex-word-synced",
+            "timingSource": "codex-local-audio-review",
+            "wordTimings": [
               {
                 "text": "Wahrheit",
-                "startSeconds": 55.321,
-                "endSeconds": 55.686,
+                "startSeconds": 55.02,
+                "endSeconds": 55.4,
                 "confidence": 1
               },
               {
                 "text": "verwechseln.",
-                "startSeconds": 55.686,
-                "endSeconds": 56.05,
+                "startSeconds": 55.4,
+                "endSeconds": 55.84,
                 "confidence": 1
               }
             ]
@@ -2073,7 +2109,7 @@
   },
   "readiness": {
     "version": 10,
-    "createdAt": "2026-08-16T05:35:41.431Z",
+    "createdAt": "2026-08-16T05:50:23.822Z",
     "reelDirectory": "reels/2026-KW33_10-08_bis_16-08/freitag/reel-01_warum-glaubst-du-wiederholte-aussagen-eher",
     "strict": true,
     "readyForRenderer": true,
@@ -2155,27 +2191,27 @@
         "renderStatus": "ready-for-renderer",
         "reportFile": "review/final-video-report.json",
         "summary": {
-          "passedChecks": 79,
+          "passedChecks": 81,
           "failedChecks": 0,
           "warnings": 10,
-          "totalChecks": 89
+          "totalChecks": 91
         }
       },
       "wordSync": {
         "passed": true,
         "strict": true,
         "provider": "codex-local-audio-review",
-        "cueCount": 32,
-        "exactCueCount": 32,
+        "cueCount": 34,
+        "exactCueCount": 34,
         "expectedWordCount": 160,
         "renderedWordCount": 160,
         "fullCoverage": true,
         "reportFile": "review/word-sync-report.json",
         "summary": {
-          "passedChecks": 100,
+          "passedChecks": 106,
           "failedChecks": 0,
           "warnings": 0,
-          "totalChecks": 100
+          "totalChecks": 106
         }
       },
       "visualQuality": {
@@ -2202,8 +2238,8 @@
       "wordSync": 100,
       "visualQuality": 100,
       "productionReady": 100,
-      "rendering": 0,
-      "overall": 90,
+      "rendering": 100,
+      "overall": 100,
       "details": {
         "scriptsReady": true,
         "styleReady": true,
@@ -2244,10 +2280,10 @@
         "visualTechnicalReady": true,
         "visualAssetsReviewed": "14/14",
         "visualStrictReady": true,
-        "rendererValidated": false,
-        "renderComplete": false
+        "rendererValidated": true,
+        "renderComplete": true
       },
-      "nextStep": "finalize:reel --strict und anschließend validate:render ausführen."
+      "nextStep": "Reel ist vollständig gerendert und bereit zur Veröffentlichung."
     },
     "blockingIssues": [],
     "warnings": [
@@ -2467,29 +2503,34 @@
         "message": "Die Hook sollte ab Sekunde 0 ohne Übergang starten."
       },
       {
-        "id": "subtitles-end-with-voiceover",
-        "level": "warning",
-        "message": "Untertitel dürfen nicht in den ruhigen Schlussbild-Nachlauf hineinragen."
-      },
-      {
         "id": "scene-01-balanced-duration",
         "level": "warning",
-        "message": "scene-01: Hook dauert 3.63 Sekunden; erlaubt sind 4.2–5.5 Sekunden."
+        "message": "scene-01: Hook dauert 3.88 Sekunden; erlaubt sind 4.2–5.5 Sekunden."
       },
       {
         "id": "scene-02-balanced-duration",
         "level": "warning",
-        "message": "scene-02: Standardszene dauert 2.44 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
+        "message": "scene-02: Standardszene dauert 1.32 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
       },
       {
-        "id": "scene-03-balanced-duration",
+        "id": "scene-02-adjacent-duration-balance",
         "level": "warning",
-        "message": "scene-03: Standardszene dauert 2.78 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
+        "message": "scene-02: Der Dauersprung zur vorherigen Szene ist zu groß."
+      },
+      {
+        "id": "scene-03-adjacent-duration-balance",
+        "level": "warning",
+        "message": "scene-03: Der Dauersprung zur vorherigen Szene ist zu groß."
       },
       {
         "id": "scene-05-balanced-duration",
         "level": "warning",
-        "message": "scene-05: Standardszene dauert 5.86 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
+        "message": "scene-05: Standardszene dauert 5.56 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
+      },
+      {
+        "id": "scene-06-balanced-duration",
+        "level": "warning",
+        "message": "scene-06: Standardszene dauert 2.90 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
       },
       {
         "id": "scene-06-adjacent-duration-balance",
@@ -2499,7 +2540,7 @@
       {
         "id": "scene-07-balanced-duration",
         "level": "warning",
-        "message": "scene-07: Standardszene dauert 6.56 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
+        "message": "scene-07: Standardszene dauert 6.40 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
       },
       {
         "id": "scene-07-adjacent-duration-balance",
@@ -2509,12 +2550,7 @@
       {
         "id": "scene-09-balanced-duration",
         "level": "warning",
-        "message": "scene-09: Standardszene dauert 6.61 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
-      },
-      {
-        "id": "scene-10-adjacent-duration-balance",
-        "level": "warning",
-        "message": "scene-10: Der Dauersprung zur vorherigen Szene ist zu groß."
+        "message": "scene-09: Standardszene dauert 6.32 Sekunden; erlaubt sind 3.2–5.5 Sekunden."
       },
       {
         "id": "scene-01-target-resolution",
@@ -5243,6 +5279,66 @@
       "level": "error"
     },
     {
+      "id": "scene-12-subtitle-04-time",
+      "passed": true,
+      "message": "scene-12-subtitle-04: Untertitelzeit ist ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-subtitle-04-text",
+      "passed": true,
+      "message": "scene-12-subtitle-04: Untertiteltext fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-subtitle-04-vertical-position",
+      "passed": true,
+      "message": "scene-12-subtitle-04: Untertitel müssen bei exakt 58 Prozent der Bildhöhe liegen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-subtitle-04-text-color",
+      "passed": true,
+      "message": "scene-12-subtitle-04: Untertiteltext muss weiches Weiß #F5F7FA verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-subtitle-04-highlight-color",
+      "passed": true,
+      "message": "scene-12-subtitle-04: Das aktuell gesprochene Wort muss Braun #B7794A verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-subtitle-04-speaker-highlight-enabled",
+      "passed": true,
+      "message": "scene-12-subtitle-04: Die sprecher-synchrone Wortmarkierung muss global aktiviert sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-subtitle-04-background-transparent",
+      "passed": true,
+      "message": "scene-12-subtitle-04: Der Untertitelhintergrund muss transparent sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-subtitle-04-exact-word-timing",
+      "passed": true,
+      "message": "scene-12-subtitle-04: Exakte, akustisch bestätigte Wortzeiten fehlen. ",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-subtitle-04-timing-status",
+      "passed": true,
+      "message": "scene-12-subtitle-04: timingStatus muss \"codex-word-synced\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-subtitle-04-timing-source",
+      "passed": true,
+      "message": "scene-12-subtitle-04: timingSource muss \"codex-local-audio-review\" sein.",
+      "level": "error"
+    },
+    {
       "id": "scene-13-frame-range",
       "passed": true,
       "message": "scene-13: startFrame und endFrame sind ungültig.",
@@ -5420,6 +5516,66 @@
       "id": "scene-13-subtitle-02-timing-source",
       "passed": true,
       "message": "scene-13-subtitle-02: timingSource muss \"codex-local-audio-review\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-subtitle-03-time",
+      "passed": true,
+      "message": "scene-13-subtitle-03: Untertitelzeit ist ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-subtitle-03-text",
+      "passed": true,
+      "message": "scene-13-subtitle-03: Untertiteltext fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-subtitle-03-vertical-position",
+      "passed": true,
+      "message": "scene-13-subtitle-03: Untertitel müssen bei exakt 58 Prozent der Bildhöhe liegen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-subtitle-03-text-color",
+      "passed": true,
+      "message": "scene-13-subtitle-03: Untertiteltext muss weiches Weiß #F5F7FA verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-subtitle-03-highlight-color",
+      "passed": true,
+      "message": "scene-13-subtitle-03: Das aktuell gesprochene Wort muss Braun #B7794A verwenden.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-subtitle-03-speaker-highlight-enabled",
+      "passed": true,
+      "message": "scene-13-subtitle-03: Die sprecher-synchrone Wortmarkierung muss global aktiviert sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-subtitle-03-background-transparent",
+      "passed": true,
+      "message": "scene-13-subtitle-03: Der Untertitelhintergrund muss transparent sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-subtitle-03-exact-word-timing",
+      "passed": true,
+      "message": "scene-13-subtitle-03: Exakte, akustisch bestätigte Wortzeiten fehlen. ",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-subtitle-03-timing-status",
+      "passed": true,
+      "message": "scene-13-subtitle-03: timingStatus muss \"codex-word-synced\" sein.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-subtitle-03-timing-source",
+      "passed": true,
+      "message": "scene-13-subtitle-03: timingSource muss \"codex-local-audio-review\" sein.",
       "level": "error"
     },
     {

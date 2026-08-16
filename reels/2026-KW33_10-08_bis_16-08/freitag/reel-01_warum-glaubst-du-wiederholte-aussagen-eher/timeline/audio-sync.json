@@ -15,84 +15,84 @@
     {
       "sceneId": "scene-02",
       "audioCue": "Dafür gibt es einen Namen",
-      "cueTimeSeconds": 3.826,
+      "cueTimeSeconds": 4.08,
       "leadInSeconds": 0.2,
       "confidence": 1
     },
     {
       "sceneId": "scene-03",
       "audioCue": "Wiederholte Aussagen fühlen sich",
-      "cueTimeSeconds": 6.261,
+      "cueTimeSeconds": 5.4,
       "leadInSeconds": 0.2,
       "confidence": 1
     },
     {
       "sceneId": "scene-04",
       "audioCue": "Und Vertrautheit wird",
-      "cueTimeSeconds": 9.044,
+      "cueTimeSeconds": 9.76,
       "leadInSeconds": 0.2,
       "confidence": 1
     },
     {
       "sceneId": "scene-05",
       "audioCue": "Schon klassische Experimente zeigten",
-      "cueTimeSeconds": 12.621,
+      "cueTimeSeconds": 13.34,
       "leadInSeconds": 0.2,
       "confidence": 1
     },
     {
       "sceneId": "scene-06",
       "audioCue": "Der Effekt entsteht nicht",
-      "cueTimeSeconds": 18.485,
+      "cueTimeSeconds": 18.9,
       "leadInSeconds": 0.2,
       "confidence": 1
     },
     {
       "sceneId": "scene-07",
       "audioCue": "Die Aussage lässt sich beim zweiten Mal",
-      "cueTimeSeconds": 21.764,
+      "cueTimeSeconds": 21.8,
       "leadInSeconds": 0.2,
       "confidence": 1
     },
     {
       "sceneId": "scene-08",
       "audioCue": "Besonders tückisch",
-      "cueTimeSeconds": 28.323,
+      "cueTimeSeconds": 28.2,
       "leadInSeconds": 0.2,
       "confidence": 1
     },
     {
       "sceneId": "scene-09",
       "audioCue": "Das ist im Alltag wichtig",
-      "cueTimeSeconds": 33.193,
+      "cueTimeSeconds": 32.82,
       "leadInSeconds": 0.2,
       "confidence": 1
     },
     {
       "sceneId": "scene-10",
       "audioCue": "Eine große Meta-Analyse von 2026",
-      "cueTimeSeconds": 39.802,
+      "cueTimeSeconds": 39.14,
       "leadInSeconds": 0.2,
       "confidence": 1
     },
     {
       "sceneId": "scene-11",
       "audioCue": "Deshalb ist",
-      "cueTimeSeconds": 43.827,
+      "cueTimeSeconds": 43.96,
       "leadInSeconds": 0.2,
       "confidence": 1
     },
     {
       "sceneId": "scene-12",
       "audioCue": "Prüf dich selbst",
-      "cueTimeSeconds": 47.106,
+      "cueTimeSeconds": 47.32,
       "leadInSeconds": 0.2,
       "confidence": 1
     },
     {
       "sceneId": "scene-13",
       "audioCue": "Die Lösung",
-      "cueTimeSeconds": 51.777,
+      "cueTimeSeconds": 51.38,
       "leadInSeconds": 0.2,
       "confidence": 1
     }
