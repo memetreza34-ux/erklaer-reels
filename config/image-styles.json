@@ -1,43 +1,75 @@
 {
+  "mandatoryPolicyFile": "VISUAL_WORLD_POLICY.md",
+  "newReelAllowedStyleIds": [
+    "human-editorial-cartoon",
+    "round-country-characters",
+    "visual-metaphor"
+  ],
   "styles": [
     {
       "id": "human-editorial-cartoon",
-      "name": "Menschliche Cartoonfiguren",
-      "bestFor": ["Psychologie", "Gesellschaft", "Verhalten"],
-      "description": "Handgezeichneter 2D-Editorial-Cartoon mit vereinfachten Menschen, starken Gesichtsausdrücken und klaren visuellen Metaphern."
+      "name": "Menschliche Cartoonfiguren / Köpfe",
+      "allowedForNewReels": true,
+      "bestFor": ["Psychologie", "Gesellschaft", "Verhalten", "Wahrnehmung", "Emotionen", "soziale Situationen"],
+      "description": "Reifer handgezeichneter 2D-Editorial-Cartoon mit vereinfachten Menschen, starken Gesichtsausdrücken, großen klar lesbaren Köpfen und Gesichtern, Close-ups, Körpersprache und bei Bedarf Gedanken- oder Kopfmetaphern. Besonders stark, wenn menschliche Gefühle, Irrtümer, Wahrnehmung oder Verhalten der Kern des Themas sind."
     },
     {
       "id": "round-country-characters",
       "name": "Runde Länder- und Kugelfiguren",
-      "bestFor": ["Politik", "Länder", "Geografie", "Geschichte", "allgemeine Erklärthemen mit klaren Symbolfiguren"],
-      "description": "Die komplette Figur ist eine runde Kugel mit einfachen weißen Augen und höchstens kleinen Armen und Beinen. Bei Ländern liegt die passende Flaggen- oder Regionsgestaltung direkt auf der Kugel. Keine menschlichen Köpfe, Hälse oder Oberkörper. Reifer sauberer 2D-Editorial-Stil mit kräftigen Konturen."
+      "allowedForNewReels": true,
+      "bestFor": ["Politik", "Länder", "Geografie", "Geschichte", "Grenzen", "Bündnisse", "internationale Beziehungen"],
+      "description": "Die komplette Figur ist eine runde Kugel mit einfachen weißen Augen und höchstens kleinen Armen und Beinen. Bei Ländern liegt die passende Flaggen- oder Regionsgestaltung direkt auf der Kugel. Keine menschlichen Köpfe, Hälse oder Oberkörper. Reifer sauberer 2D-Editorial-Stil mit kräftigen Konturen, klaren Karten, Grenzen und Beziehungen zwischen Staaten."
     },
     {
       "id": "visual-metaphor",
       "name": "Starke visuelle Metapher",
-      "bestFor": ["abstrakte Begriffe", "Hooks", "soziale Zusammenhänge"],
-      "description": "Ein klarer Gegenstand oder eine Szene erklärt den Begriff sofort, zum Beispiel Hamsterrad, Waage, Mauer oder Puzzle."
+      "allowedForNewReels": true,
+      "bestFor": ["abstrakte Begriffe", "unsichtbare Mechanismen", "Ursache-Wirkung", "Systeme", "soziale Zusammenhänge"],
+      "description": "Ein klarer Gegenstand oder eine starke Szene erklärt den Begriff sofort, zum Beispiel Anker, Magnet, Waage, Domino, Labyrinth, Mauer, Kette, Puzzle, Trichter oder Brücke. Nur wählen, wenn die Metapher das konkrete Thema tatsächlich schneller und stärker erklärt als die beiden anderen Top-3-Welten. Kein Standard-Fallback."
     },
     {
       "id": "personified-biology",
       "name": "Personifizierte Organe und Zellen",
+      "allowedForNewReels": false,
+      "legacyOnly": true,
       "bestFor": ["Körper", "Biologie", "Gesundheitsgrundlagen"],
-      "description": "Organe, Zellen oder Körperbestandteile werden als einfache, sympathische 2D-Figuren dargestellt."
+      "description": "Legacy-Stil. Darf bei bestehenden älteren Reels weiter lesbar bleiben, ist für neue Reels aber nicht autonom erlaubt."
     },
     {
       "id": "comparison-panels",
       "name": "Panel- und Vergleichsstil",
+      "allowedForNewReels": false,
+      "legacyOnly": true,
       "bestFor": ["Vergleiche", "Kategorien", "Systeme"],
-      "description": "Zwei oder mehr klar getrennte Bereiche zeigen Unterschiede direkt nebeneinander."
+      "description": "Legacy-Stil. Darf bei bestehenden älteren Reels weiter lesbar bleiben, ist für neue Reels aber nicht autonom erlaubt. Vergleiche müssen bei neuen Reels innerhalb einer der drei Top-Welten gelöst werden."
     },
     {
       "id": "progressive-build-up",
       "name": "Build-up-Sequenz",
+      "allowedForNewReels": false,
+      "legacyOnly": true,
       "bestFor": ["Prozesse", "Kombinationen", "schrittweise Entwicklungen"],
-      "description": "Die Grundkomposition bleibt gleich und pro Bild kommt eine sinnvolle neue Information hinzu. Nur einsetzen, wenn es zum Thema passt."
+      "description": "Legacy-Stil. Darf bei bestehenden älteren Reels weiter lesbar bleiben, ist für neue Reels aber nicht autonom erlaubt. Ein Build-up darf nur als Kompositionsprinzip innerhalb einer der drei Top-Welten vorkommen."
     }
   ],
-  "selectionRule": "Schreibe zuerst das vollständige Script und wähle danach die Bildwelt, die den konkreten Inhalt am schnellsten und klarsten erklärt. Halte die gewählte Hauptwelt innerhalb des Reels konsistent, aber erzwinge nicht dieselbe Welt für jedes Thema.",
+  "selectionRule": "Für jedes neue Reel zuerst das vollständige Script schreiben. Danach zwingend VISUAL_WORLD_POLICY.md lesen und ausschließlich human-editorial-cartoon, round-country-characters oder visual-metaphor gegeneinander prüfen. Mindestens die letzten 5 Reels und deren visualStyleId berücksichtigen. Die thematisch stärkste, am schnellsten verständliche und scroll-stoppendste Welt wählen, dabei Wiederholungen aktiv vermeiden. visual-metaphor ist ausdrücklich kein Standard-Fallback. Dieselbe Welt wie im direkt vorherigen Reel nur wählen, wenn sie klar besser passt; die konkrete Begründung muss in visualStyleReason dokumentiert werden.",
+  "diversityRule": {
+    "recentReelsToInspect": 5,
+    "avoidImmediateRepeat": true,
+    "dominanceThresholdInLastFive": 3,
+    "forcedRotation": false,
+    "sameStyleRepeatRequiresSpecificReason": true,
+    "defaultFallbackStyle": null
+  },
+  "selectionCriteria": [
+    "Themenpassung",
+    "1-Sekunden-Verständlichkeit",
+    "Cover-und-Hook-Stärke",
+    "Emotionalität-und-Wiedererkennung",
+    "Szenenvielfalt",
+    "visuelle Klarheit",
+    "Abwechslung-zu-den-letzten-Reels"
+  ],
   "crossStyleTextRule": {
     "preferred": true,
     "language": "de",
