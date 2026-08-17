@@ -1,0 +1,101 @@
+GOOGLE FLOW – KOMPLETTER SERIELLER BILDLAUF
+
+AUFTRAG
+Erzeuge für dieses Reel genau 14 Bilder: Bild 00 als Cover und danach Bild 01 bis Bild 13 für die 13 Szenen.
+
+WICHTIG – DIESE EINE NACHRICHT IST DIE KOMPLETTE FREIGABE
+Sobald dieser Gesamtprompt einmal abgesendet wurde, arbeitest du selbstständig bis Bild 13 fertig ist. Frage NICHT nach Go, Weiter, OK, Bestätigung oder Erlaubnis.
+
+STRENG SERIELL – NIE PARALLEL
+Zu jedem Zeitpunkt darf genau EINE Bildgenerierung aktiv sein.
+Für jedes Bild zwingend:
+1. Nur den aktuellen Bildprompt bearbeiten.
+2. Genau EIN Bild erzeugen.
+3. Warten, bis dieses Bild vollständig fertig ist.
+4. Sofort exakt in den vorgesehenen Namen umbenennen.
+5. Prüfen, dass die Umbenennung erfolgreich ist.
+6. Erst danach automatisch das nächste Bild starten.
+Keine Batches, keine Queue, kein Vorladen, keine parallelen Generierungen und keine Ansammlung unbenannter Bilder.
+
+DATEINAMEN
+Bild 00.png = Cover
+Bild 01.png = Szene 1
+Bild 02.png = Szene 2
+Bild 03.png = Szene 3
+Bild 04.png = Szene 4
+Bild 05.png = Szene 5
+Bild 06.png = Szene 6
+Bild 07.png = Szene 7
+Bild 08.png = Szene 8
+Bild 09.png = Szene 9
+Bild 10.png = Szene 10
+Bild 11.png = Szene 11
+Bild 12.png = Szene 12
+Bild 13.png = Szene 13
+
+STYLE-MASTER
+Bild 00.png wird zuerst vollständig erzeugt. Das fertige Bild 00.png ist danach die verbindliche visuelle Referenz für ALLE Szenen: gleiche Palette, Papiertextur, Charaktergestaltung, Konturstärke, Lichtstimmung und Detailqualität. Der Cover-Hook darf NICHT automatisch auf spätere Szenen kopiert werden.
+
+TEXTREGEL
+Nur der im jeweiligen Prompt ausdrücklich verlangte deutsche Text darf sichtbar erscheinen. Kein zusätzlicher englischer Text, keine Fantasiewörter, keine Logos und keine Wasserzeichen.
+
+ENDE
+Erst nachdem Bild 00 bis Bild 13 vollständig erzeugt, korrekt umbenannt und die Nummerierung geprüft wurden, alle fertigen Bilder gemeinsam in den vorgesehenen Sammelordner legen. Nicht während der laufenden Generierung einzelne Bilder dorthin verschieben.
+
+────────────────────────────────────────
+
+BILD 00 – COVER
+DATEINAME NACH FERTIGSTELLUNG: Bild 00.png
+Vertical 9:16 premium mature 2D editorial technical explainer illustration. Dark navy background, warm cream paper texture, muted rust-brown, cobalt blue and soft gold accents, bold clean hand-drawn outlines, flat geometric shading, subtle grain, sophisticated and educational, never childish. Cover for a German psychology explainer Reel about the illusion of explanatory depth. Show a confident person holding a simple zipper, while behind it a large exploded cutaway diagram reveals many interlocking teeth, slider parts and hidden mechanical relationships the person cannot fully trace. Strong visual hierarchy, central composition, high phone-screen readability. Add one large perfectly readable German headline exactly: "VERSTEHST DU ES WIRKLICH?" No other readable words, no English, no logos, no watermark. This finished Bild 00.png becomes the binding style master for all later scenes.
+
+BILD 01 – SZENE 1
+DATEINAME NACH FERTIGSTELLUNG: Bild 01.png
+Vertical 9:16 premium mature 2D editorial technical explainer illustration. Dark navy background, warm cream paper texture, muted rust-brown, cobalt blue and soft gold accents, bold clean hand-drawn outlines, flat geometric shading, subtle grain, sophisticated and educational, never childish. Match Bild 00.png exactly. Show the same person confidently holding a zipper while a technical cutaway blooms open behind it and exposes more complexity than expected. Integrate the exact German text "WIRKLICH VERSTANDEN?" as the only readable phrase. No English, no logo, no watermark.
+
+BILD 02 – SZENE 2
+DATEINAME NACH FERTIGSTELLUNG: Bild 02.png
+Vertical 9:16 premium mature 2D editorial technical explainer illustration. Dark navy background, warm cream paper texture, muted rust-brown, cobalt blue and soft gold accents, bold clean hand-drawn outlines, flat geometric shading, subtle grain, sophisticated and educational, never childish. Match Bild 00.png exactly. Visualize the illusion of explanatory depth as a shallow polished surface with a much deeper transparent cutaway beneath that contains large empty gaps. Integrate the exact German text "ERKLÄRUNGSTIEFE" as the only readable phrase. No English, no logo, no watermark.
+
+BILD 03 – SZENE 3
+DATEINAME NACH FERTIGSTELLUNG: Bild 03.png
+Vertical 9:16 premium mature 2D editorial technical explainer illustration. Dark navy background, warm cream paper texture, muted rust-brown, cobalt blue and soft gold accents, bold clean hand-drawn outlines, flat geometric shading, subtle grain, sophisticated and educational, never childish. Match Bild 00.png exactly. Show several ordinary mechanical objects arranged as elegant technical silhouettes: a zipper, bicycle gear mechanism, toilet flush mechanism and simple lock, all linked by subtle diagram lines. Integrate the exact German text "ALLTAGSMECHANISMEN" as the only readable phrase. No English, no logo, no watermark.
+
+BILD 04 – SZENE 4
+DATEINAME NACH FERTIGSTELLUNG: Bild 04.png
+Vertical 9:16 premium mature 2D editorial technical explainer illustration. Dark navy background, warm cream paper texture, muted rust-brown, cobalt blue and soft gold accents, bold clean hand-drawn outlines, flat geometric shading, subtle grain, sophisticated and educational, never childish. Match Bild 00.png exactly. Show a person rating their own understanding on a tall confidence meter before any explanation is requested; the marker sits high. Keep objects from the same technical world visible nearby. Integrate the exact German text "ERST SCHÄTZEN" as the only readable phrase. No English, no logo, no watermark.
+
+BILD 05 – SZENE 5
+DATEINAME NACH FERTIGSTELLUNG: Bild 05.png
+Vertical 9:16 premium mature 2D editorial technical explainer illustration. Dark navy background, warm cream paper texture, muted rust-brown, cobalt blue and soft gold accents, bold clean hand-drawn outlines, flat geometric shading, subtle grain, sophisticated and educational, never childish. Match Bild 00.png exactly. Show the person now trying to explain the zipper mechanism step by step on a technical diagram. Numbered visual steps proceed clearly at first, then arrows stop and the next mechanism is unknown. Integrate the exact German text "JETZT ERKLÄREN" as the only readable phrase. No English, no logo, no watermark.
+
+BILD 06 – SZENE 6
+DATEINAME NACH FERTIGSTELLUNG: Bild 06.png
+Vertical 9:16 premium mature 2D editorial technical explainer illustration. Dark navy background, warm cream paper texture, muted rust-brown, cobalt blue and soft gold accents, bold clean hand-drawn outlines, flat geometric shading, subtle grain, sophisticated and educational, never childish. Match Bild 00.png exactly. Show two known mechanical steps separated by a conspicuous missing central gear or connector piece, with broken arrows revealing the knowledge gap. Integrate the exact German text "HIER FEHLT WAS" as the only readable phrase. No English, no logo, no watermark.
+
+BILD 07 – SZENE 7
+DATEINAME NACH FERTIGSTELLUNG: Bild 07.png
+Vertical 9:16 premium mature 2D editorial technical explainer illustration. Dark navy background, warm cream paper texture, muted rust-brown, cobalt blue and soft gold accents, bold clean hand-drawn outlines, flat geometric shading, subtle grain, sophisticated and educational, never childish. Match Bild 00.png exactly. Show the same confidence meter from earlier, but now the person's self-rating marker is being moved downward after attempting the explanation. Integrate the exact German text "SELBSTBILD SINKT" as the only readable phrase. No English, no logo, no watermark.
+
+BILD 08 – SZENE 8
+DATEINAME NACH FERTIGSTELLUNG: Bild 08.png
+Vertical 9:16 premium mature 2D editorial technical explainer illustration. Dark navy background, warm cream paper texture, muted rust-brown, cobalt blue and soft gold accents, bold clean hand-drawn outlines, flat geometric shading, subtle grain, sophisticated and educational, never childish. Match Bild 00.png exactly. Show a transparent mechanism in cutaway with a clear causal chain: one lever moves a gear, which moves another part, which creates the final result. Use arrows to show causal flow. Integrate the exact German text "URSACHE → WIRKUNG" as the only readable phrase. No English, no logo, no watermark.
+
+BILD 09 – SZENE 9
+DATEINAME NACH FERTIGSTELLUNG: Bild 09.png
+Vertical 9:16 premium mature 2D editorial technical explainer illustration. Dark navy background, warm cream paper texture, muted rust-brown, cobalt blue and soft gold accents, bold clean hand-drawn outlines, flat geometric shading, subtle grain, sophisticated and educational, never childish. Match Bild 00.png exactly. Show a familiar everyday object with a perfectly recognizable outer shell, but its internal cutaway contains incomplete or missing mechanism pieces. Integrate the exact German text "VERTRAUT ≠ VERSTANDEN" as the only readable phrase. No English, no logo, no watermark.
+
+BILD 10 – SZENE 10
+DATEINAME NACH FERTIGSTELLUNG: Bild 10.png
+Vertical 9:16 premium mature 2D editorial technical explainer illustration. Dark navy background, warm cream paper texture, muted rust-brown, cobalt blue and soft gold accents, bold clean hand-drawn outlines, flat geometric shading, subtle grain, sophisticated and educational, never childish. Match Bild 00.png exactly. Contrast one simple confident thought bubble represented visually by a short clean line with a long detailed technical explanation chain full of connected mechanical steps. Integrate the exact German text "ERKLÄREN IST SCHWERER" as the only readable phrase. No English, no logo, no watermark.
+
+BILD 11 – SZENE 11
+DATEINAME NACH FERTIGSTELLUNG: Bild 11.png
+Vertical 9:16 premium mature 2D editorial technical explainer illustration. Dark navy background, warm cream paper texture, muted rust-brown, cobalt blue and soft gold accents, bold clean hand-drawn outlines, flat geometric shading, subtle grain, sophisticated and educational, never childish. Match Bild 00.png exactly. Show a layered knowledge gauge: some real filled sections at the top, but deeper layers become sparse and incomplete, communicating that partial knowledge is real while depth is limited. Integrate the exact German text "WISSENSTIEFE" as the only readable phrase. No English, no logo, no watermark.
+
+BILD 12 – SZENE 12
+DATEINAME NACH FERTIGSTELLUNG: Bild 12.png
+Vertical 9:16 premium mature 2D editorial technical explainer illustration. Dark navy background, warm cream paper texture, muted rust-brown, cobalt blue and soft gold accents, bold clean hand-drawn outlines, flat geometric shading, subtle grain, sophisticated and educational, never childish. Match Bild 00.png exactly. Show the protagonist facing a zipper and an empty step-by-step technical diagram, trying to reconstruct every stage without help. Add a large question mark where the mechanism becomes uncertain. Integrate the exact German question "KANNST DU ES ERKLÄREN?" prominently inside safe zones. No English, no logo, no watermark.
+
+BILD 13 – SZENE 13
+DATEINAME NACH FERTIGSTELLUNG: Bild 13.png
+Vertical 9:16 premium mature 2D editorial technical explainer illustration. Dark navy background, warm cream paper texture, muted rust-brown, cobalt blue and soft gold accents, bold clean hand-drawn outlines, flat geometric shading, subtle grain, sophisticated and educational, never childish. Match Bild 00.png exactly. Show the protagonist explaining aloud beside a blank sheet, with a clean chain of explanation steps. At the exact point where the chain stops, one missing mechanism part glows as the discovered knowledge gap. Integrate the exact German text "ERKLÄR ES LAUT" as the only readable phrase. Clear satisfying conclusion. No English, no logo, no watermark. Hold this final visual unchanged for the 0.7-second end frame after the last spoken word.
