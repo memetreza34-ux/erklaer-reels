@@ -52,8 +52,8 @@ Die kreative Testphase ist abgeschlossen. Neue Reels werden als normale Produkti
 
 ## Wartung
 
-- [ ] Issue #19: echte `package-lock.json` mit dem npm-Client erzeugen
-- [ ] CI anschließend von `npm install` auf reproduzierbares `npm ci` umstellen
+- [x] Issue #19: echte `package-lock.json` mit dem npm-Client erzeugen
+- [x] CI von `npm install` auf reproduzierbares `npm ci` umstellen
 - [ ] npm-Cache in GitHub Actions aktivieren
 
 Die Lockdatei darf nicht manuell konstruiert oder aus einer fremden Umgebung übernommen werden.

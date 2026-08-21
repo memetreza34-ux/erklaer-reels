@@ -151,6 +151,9 @@ test('Gitignore schützt generierte Medien in aktuellen Produktionsordnern', asy
   assert.match(gitignore, /reels\/\*\*\/audio\/\*\.m4a/);
   assert.match(gitignore, /reels\/\*\*\/scenes\/\*\*\/\*\.png/);
   assert.match(gitignore, /reels\/\*\*\/cover\/\*\.webp/);
+  assert.match(gitignore, /reels\/\*\*\/\*\.zip/);
+  assert.match(gitignore, /reels\/\*\*\/\*\.mp4/);
+  assert.match(gitignore, /reels\/\*\*\/\*\.jpeg/);
   assert.match(gitignore, /youtube\/\*\*\/output\/\*\.mp4/);
   assert.match(gitignore, /youtube\/\*\*\/audio\/\*\.mp3/);
   assert.match(gitignore, /^\.env$/m);

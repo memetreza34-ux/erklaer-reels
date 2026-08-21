@@ -16,7 +16,8 @@ function getArgument(name) {
 
 function showUsage() {
   console.log(`
-Erstellt einen neuen Reel-Arbeitsordner und den dazugehörigen Codex-Produktionsauftrag.
+Phase-1-Hilfswerkzeug: Erstellt einen Reel-Arbeitsordner für das kreative ChatGPT-Paket.
+Antigravity darf diesen Befehl in Phase 3 nicht verwenden.
 
 Beispiel mit festem Datum:
   npm run create:reel -- --title "Was bedeutet links und rechts?" --script-file input/script.txt --date 2026-08-03
@@ -91,12 +92,12 @@ async function main() {
   console.log(`Szenen: ${result.reel.sceneCount}`);
   console.log(`Zieldauer: ${result.reel.targetDurationSeconds} Sekunden`);
   console.log('Quellen-QC: Schema 2 ist für dieses neue Reel verpflichtend.');
-  console.log(`Codex-Auftrag: ${production.taskFile}`);
+  console.log(`Phase-1-Auftrag für normales ChatGPT: ${production.taskFile}`);
   console.log(`Chronologische Bildprompt-Datei: ${promptBundle.file}`);
   console.log(`Übersichtliche Ordner: ${humanView.visibleFolders.join(', ')}`);
   if (humanView.finder.applied) console.log('Technische Ordner wurden im macOS Finder ausgeblendet.');
   console.log('Nach Fertigstellung aller Bildprompts verpflichtend export:prompts --strict ausführen.');
-  console.log('Pflicht: production/agent-task.md jetzt vollständig bearbeiten und check:content --strict ausführen. Nicht nach der Ordnererstellung stoppen.');
+  console.log('Phase 1: production/agent-task.md mit normalem ChatGPT vollständig bearbeiten und check:content --strict ausführen.');
 }
 
 main().catch((error) => {

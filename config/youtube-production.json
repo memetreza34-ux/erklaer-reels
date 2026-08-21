@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "format": "youtube-longform",
+  "language": "de",
+  "aspectRatio": "16:9",
+  "composition": { "width": 1920, "height": 1080, "fps": 30 },
+  "durationMinutes": { "min": 8, "target": 10, "max": 12 },
+  "sceneCount": { "min": 60, "target": 72, "max": 90 },
+  "sceneDurationSeconds": { "min": 5, "targetRange": [7, 10], "max": 15 },
+  "visualWorld": {
+    "id": "german-simple-explainer-cartoon",
+    "policyFile": "youtube/YOUTUBE_VISUAL_WORLD.md",
+    "referenceChannel": "Ink Explainer",
+    "copyingForbidden": true,
+    "sceneModes": [
+      { "id": "minimal-vignette", "targetPercent": 45 },
+      { "id": "object-explainer", "targetPercent": 25 },
+      { "id": "sparse-environment", "targetPercent": 30 }
+    ]
+  },
+  "contentPillars": [
+    "Menschheitsgeschichte und Alltagsleben früherer Menschen",
+    "Psychologie, Verhalten und Wahrnehmung",
+    "Gesellschaftliche und kulturelle Entwicklungen",
+    "Wissenschaft hinter alltäglichen menschlichen Fragen"
+  ],
+  "subtitles": {
+    "enabled": false,
+    "burnedInCaptionsForbidden": true,
+    "karaokeTextForbidden": true,
+    "editorialTextCardsForbidden": true
+  },
+  "audio": {
+    "voiceoverRequired": true,
+    "language": "de",
+    "narrators": 1,
+    "loudnessTargetLufs": -16,
+    "truePeakMaxDbtp": -1.5,
+    "backgroundMusicEnabled": false,
+    "soundEffectsAllowed": true
+  },
+  "editing": {
+    "hardCutsOnly": true,
+    "subtleImageMotionAllowed": true,
+    "maximumScale": 1.08,
+    "maximumPanPercent": 4
+  },
+  "script": {
+    "wordsPerMinuteTarget": 145,
+    "hookSeconds": 30,
+    "patternInterruptSeconds": { "min": 60, "max": 90 },
+    "midCtaPercent": 25,
+    "retentionRehookPercent": 60,
+    "minimumSources": 3
+  },
+  "workflow": {
+    "phase1Owner": "chatgpt",
+    "phase2Owner": "user",
+    "phase3Owner": "antigravity",
+    "phase3StartTrigger": "Antigravity los, erstelle das YouTube-Video",
+    "communicationMode": "silent-until-error-or-complete"
+  }
+}

@@ -1,4 +1,4 @@
-# Codex-Wort-Synchronisierung
+# Antigravity-Wort-Synchronisierung
 
 `sync:words` ist für jedes Reel mit Untertiteln ein verbindlicher Produktionsschritt. **`CURRENT_WORKFLOW.md` ist bei Widersprüchen maßgeblich.**
 
@@ -19,9 +19,10 @@ npm run trim:pauses -- --dir "PFAD-ZUM-REEL" --speed 1.10
 npm run build:timeline -- --dir "PFAD-ZUM-REEL"
 npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
 npm run sync:words -- --dir "PFAD-ZUM-REEL"
+node scripts/sync-whisper.js whisper_out.json "PFAD-ZUM-REEL"
 ```
 
-Danach wird das lokale Voice-over vollständig abgehört und `subtitles/codex-word-sync.json` mit echten absoluten Start- und Endzeiten **für jedes Wort** gefüllt. Anschließend:
+Whisper muss dabei auf der finalen, bereits gestrafften und auf 1,10x verarbeiteten Audiodatei gelaufen sein. Das Skript übernimmt nur exakte Treffer, baut die Bild-Cues aus denselben Wortzeiten neu und blockiert fehlende, zusätzliche oder unsichere Wörter. Anschließend:
 
 ```bash
 npm run sync:words -- \
@@ -36,6 +37,7 @@ Vor Freigabe müssen gelten:
 coverage === 1
 timedWords === totalWords
 unassignedWords === 0
+fallbackCount === 0
 ```
 
 Zusätzlich muss die vollständige gerenderte Untertitel-Wortfolge exakt `script/voice-script.txt` entsprechen. Fehlt ein Wort, ist die Renderfreigabe verboten.
@@ -66,6 +68,8 @@ Der Render-Plan muss pro Cue enthalten:
 ## Verbindliche Regeln
 
 - keine gleichmäßige, geschätzte oder erfundene Zeitverteilung
+- keine pauschalen Bild-Cue-Fallbacks
+- jeder Scriptwort- und Bild-Cue-Treffer muss exakt sein
 - echte akustische Kontrolle des vollständigen Voice-overs
 - Start und Ende auf ungefähr 0,01–0,03 Sekunden genau eintragen
 - `reviewed: true` erst nach dem Anhören setzen

@@ -1,10 +1,10 @@
-# ANTIGRAVITY — ABSOLUTES BILDGENERIERUNGSVERBOT
+# ANTIGRAVITY — AUSSCHLIESSLICH PHASE 3
 
 **Verbindliche globale Repo-Regel.**
 
-Diese Regel gilt für **Antigravity** bei jeder Reel-Erstellung, jeder Reparatur, jedem neuen Chat und jedem automatischen Produktionslauf in diesem Repository.
+Diese Regel gilt für **Antigravity** bei jeder Arbeit in diesem Repository.
 
-## Verbot
+## Verbot vor und während Phase 3
 
 **Antigravity darf niemals selbst Bilder erzeugen.**
 
@@ -17,20 +17,18 @@ Das bedeutet ausdrücklich:
 - Antigravity darf **nicht stellvertretend für den Nutzer Google Flow starten oder dort die Generierung auslösen**.
 - Antigravity darf auch dann **keine Ersatzbilder selbst erzeugen**, wenn Bilder fehlen, beschädigt sind, falsch nummeriert wurden oder die Asset-Suche nichts findet.
 - Antigravity darf dieses Verbot **nicht mit dem Argument umgehen**, dass eine automatische Bildgenerierung schneller, einfacher oder für die Fertigstellung notwendig wäre.
+- Antigravity darf **kein Thema, Voice-Script oder Szenenkonzept neu erstellen**.
+- Antigravity darf **keine Bildwelt wählen oder wechseln**.
+- Antigravity darf **keine Cover- oder Szenenprompts schreiben oder ergänzen**.
+- Antigravity darf **kein Voice-over-Audio erzeugen**.
 
 Es gibt **keine automatische Ausnahme** von diesem Verbot.
 
-## Was Antigravity stattdessen tun darf und soll
+## Was Antigravity in Phase 3 tun muss
 
-Antigravity erstellt vollständig:
+Antigravity übernimmt vollständig:
 
-- Thema und Script
-- Szenenplanung
-- Cover-Prompt
-- einzelne Szenenprompts
-- `all-image-prompts/all-image-prompts.txt`
-- Nummerierung `Bild 00`, `Bild 01`, ...
-- Produktions- und Statusdateien
+- Prüfung der Phase-1-/Phase-2-Übergabe
 - Suche nach bereits vorhandenen Bildern
 - sichere ZIP-Suche und ZIP-Entpackung
 - visuelle Zwei-Pass-QC
@@ -49,7 +47,7 @@ all-image-prompts/all-image-prompts.txt
 
 Erst **nach diesem Nutzer-Start** darf Google Flow die Bilder gemäß dem verbindlichen seriellen Flow-Vertrag erzeugen.
 
-Antigravity darf die Prompts vorbereiten, aber **nicht selbst auf „Generieren“, „Senden“, „Start“, „Create“ oder eine vergleichbare Bildgenerierungsaktion klicken bzw. diese auslösen**.
+Die Prompts wurden bereits in Phase 1 durch normales ChatGPT erstellt. Antigravity darf sie nicht vorbereiten, neu schreiben oder inhaltlich ersetzen und darf **nicht selbst auf „Generieren“, „Senden“, „Start“, „Create“ oder eine vergleichbare Mediengenerierungsaktion klicken bzw. diese auslösen**.
 
 ## Wenn Bilder fehlen
 
@@ -63,4 +61,6 @@ Diese Datei konkretisiert die bereits in `CURRENT_WORKFLOW.md` und `AGENTS.md` f
 
 Bei Widersprüchen gilt weiterhin die Prioritätsreihenfolge aus `CURRENT_WORKFLOW.md`. Eine normale Anweisung wie „Mach ein neues Reel“ hebt dieses Bildgenerierungsverbot **nicht** auf.
 
-**Kurzform: Antigravity schreibt Bildprompts und verarbeitet vorhandene Bilder — Antigravity erzeugt niemals selbst Bilder.**
+**Kurzform: ChatGPT erstellt. Der Nutzer erzeugt Bilder und Audio. Antigravity verarbeitet ab Phase 3 alles bis zur geprüften MP4.**
+
+Nach dem Startsignal `Antigravity los, erstelle das Reel` meldet Antigravity keine Zwischenstände. Es kontaktiert den Nutzer erst bei einem echten blockierenden Fehler nach ausgeschöpften sicheren Eigenlösungen oder nach Fertigstellung der geprüften MP4.

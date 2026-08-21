@@ -106,9 +106,9 @@ async function main() {
     const invalidation = await invalidateStaleWordSyncWorkbench(reelDirectory);
     const result = await prepareCodexWordSync(reelDirectory);
     const binding = await stampPreparedWordSyncAudioBinding(reelDirectory);
-    console.log('Codex-Wort-Synchronisierung vorbereitet.');
+    console.log('Antigravity-Wort-Synchronisierung vorbereitet.');
     console.log(`Arbeitsdatei: ${result.workbenchFile}`);
-    console.log(`Codex-Auftrag: ${result.taskFile}`);
+    console.log(`Antigravity-Auftrag: ${result.taskFile}`);
     console.log(`Wörter: ${binding.workbench.words.length}`);
     if (prerequisites.timelineReadiness.required) console.log('Timeline: audio-synced bestätigt.');
     if (prerequisites.pacingBinding.required) console.log('Audio-Pacing-Datei: Fingerprint unverändert.');
@@ -116,7 +116,7 @@ async function main() {
     if (invalidation.changed) {
       console.log('Vorherige Wortzeiten wurden verworfen, weil sich der Audioinhalt geändert hat.');
     }
-    console.log('Nächster Schritt: Codex hört das lokale Voice-over vollständig ab, bestätigt ausnahmslos jedes gesprochene Wort und führt sync:words mit --apply --strict erneut aus.');
+    console.log('Nächster Schritt: Antigravity hört das lokale Voice-over vollständig ab, bestätigt ausnahmslos jedes gesprochene Wort und führt sync:words mit --apply --strict erneut aus.');
     return;
   }
 
@@ -139,7 +139,7 @@ async function main() {
     await stampAppliedWordSyncAudioBinding(reelDirectory, binding.audioFingerprintSha256 ?? null);
   }
 
-  console.log(`Codex-Wort-Synchronisierung: ${completeCoverage ? 'vollständig bestanden' : 'Prüfung nötig'}`);
+  console.log(`Antigravity-Wort-Synchronisierung: ${completeCoverage ? 'vollständig bestanden' : 'Prüfung nötig'}`);
   console.log(`Wörter mit Zeiten: ${report.timedWords}/${report.totalWords}`);
   console.log(`Abdeckung: ${(report.coverage * 100).toFixed(1)} %`);
   console.log(`Nicht zugeordnete Wörter: ${report.unassignedWords?.length ?? 0}`);

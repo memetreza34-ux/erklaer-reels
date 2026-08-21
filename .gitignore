@@ -26,6 +26,21 @@ reels/**/cover/*.jpg
 reels/**/cover/*.jpeg
 reels/**/cover/*.webp
 
+# Produktions-Binaries unabhängig vom konkreten Unterordner
+reels/**/*.zip
+reels/**/*.mp4
+reels/**/*.mov
+reels/**/*.mp3
+reels/**/*.wav
+reels/**/*.m4a
+reels/**/*.aac
+reels/**/*.flac
+reels/**/*.ogg
+reels/**/*.png
+reels/**/*.jpg
+reels/**/*.jpeg
+reels/**/*.webp
+
 reels/**/inbox/images/*.png
 reels/**/inbox/images/*.jpg
 reels/**/inbox/images/*.jpeg
@@ -65,6 +80,19 @@ youtube/**/inbox/audio/*.m4a
 youtube/**/inbox/audio/*.aac
 youtube/**/inbox/audio/*.flac
 youtube/**/inbox/audio/*.ogg
+youtube/projects/**/10-output/*.mp4
+youtube/projects/**/10-output/*.webm
+youtube/projects/**/10-output/*.mov
+youtube/projects/**/06-audio/**/*.mp3
+youtube/projects/**/06-audio/**/*.wav
+youtube/projects/**/06-audio/**/*.m4a
+youtube/projects/**/06-audio/**/*.aac
+youtube/projects/**/06-audio/**/*.flac
+youtube/projects/**/06-audio/**/*.ogg
+youtube/projects/**/05-assets/**/*.png
+youtube/projects/**/05-assets/**/*.jpg
+youtube/projects/**/05-assets/**/*.jpeg
+youtube/projects/**/05-assets/**/*.webp
 
 # Legacy-Schutz für ältere lokale Arbeitsordner
 content/**/output/*.mp4

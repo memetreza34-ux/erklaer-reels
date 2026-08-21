@@ -17,14 +17,14 @@ test('zeigt getrennten Fortschritt für Vorproduktion und externe Assets', async
     title: 'Was ist Gruppendruck?',
     script: 'Gruppendruck beschreibt den Einfluss einer Gruppe auf das Verhalten einzelner Personen. Menschen passen ihre Meinung manchmal an, weil sie dazugehören möchten oder Ablehnung vermeiden wollen. Dieses längere Rohscript sorgt dafür, dass die beiden Scriptdateien im Test als vorhanden gelten.',
     date: new Date('2026-07-30T12:00:00'),
-    sceneCount: 8,
+    sceneCount: 12,
     outputRoot: temporaryRoot
   });
 
   const initial = await calculateReelProgress(result.reelDirectory);
   assert.equal(initial.assets, 0);
-  assert.equal(initial.details.sceneImagesReady, '0/8');
-  assert.match(initial.nextStep, /Codex/);
+  assert.equal(initial.details.sceneImagesReady, '0/12');
+  assert.match(initial.nextStep, /Phase 1.*ChatGPT/);
 
   const manifestPath = path.join(result.reelDirectory, 'assets-manifest.json');
   const manifest = JSON.parse(await readFile(manifestPath, 'utf8'));
@@ -33,12 +33,12 @@ test('zeigt getrennten Fortschritt für Vorproduktion und externe Assets', async
   for (const scene of manifest.scenes) scene.status = 'ready';
   await writeJson(manifestPath, manifest);
   await writeJson(path.join(result.reelDirectory, 'review', 'asset-matching-report.json'), {
-    summary: { assignedScenes: 8, totalScenes: 8, audioReady: true, coverReady: true }
+    summary: { assignedScenes: 12, totalScenes: 12, audioReady: true, coverReady: true }
   });
 
   const withAssets = await calculateReelProgress(result.reelDirectory);
   assert.equal(withAssets.assets, 100);
-  assert.equal(withAssets.details.sceneImagesReady, '8/8');
+  assert.equal(withAssets.details.sceneImagesReady, '12/12');
   assert.equal(withAssets.details.audioReady, true);
   assert.equal(withAssets.details.coverImageReady, true);
 });

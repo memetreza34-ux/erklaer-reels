@@ -219,7 +219,7 @@ export async function calculateReelProgress(reelDirectory) {
 
   let nextStep;
   if (preProduction < 100) {
-    nextStep = 'Codex muss production/agent-task.md fertigstellen und die strenge Inhaltsprüfung bestehen.';
+    nextStep = 'Phase 1 ist unvollständig: Normales ChatGPT muss production/agent-task.md fertigstellen und die strenge Inhaltsprüfung bestehen.';
   } else if (assets < 100) {
     nextStep = 'Voice-over und Bilder direkt in die vorgesehenen Audio-, Cover- und Szenenordner legen und prüfen.';
   } else if (audioPacing < 100) {

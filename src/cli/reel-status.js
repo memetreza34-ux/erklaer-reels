@@ -130,7 +130,7 @@ async function main() {
   console.log(`Voice-over-Tempo: ${Number(progress.details.audioPacingRate ?? 0).toFixed(2)}x`);
   if (pacingBinding.required) console.log(`Gemessene Audio-Datei unverändert: ${yesNo(pacingBinding.passed)}`);
   console.log(`Audio exakt synchronisiert: ${yesNo(progress.details.audioSynced)}`);
-  console.log(`Codex-Wortzeiten bestätigt: ${yesNo(progress.details.wordSyncPassed)}`);
+  console.log(`Antigravity-Wortzeiten bestätigt: ${yesNo(progress.details.wordSyncPassed)}`);
   if (wordSyncBinding.required) console.log(`Word-Sync-Audio unverändert: ${yesNo(wordSyncBinding.passed)}`);
   console.log(`Wortzeit-Anbieter: ${progress.details.wordSyncProvider ?? 'noch keiner'}`);
   console.log(`Wortabdeckung: ${(Number(progress.details.wordCoverage ?? 0) * 100).toFixed(1)}%`);

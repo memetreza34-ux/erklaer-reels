@@ -1,0 +1,72 @@
+{
+  "version": 1,
+  "runtimeOwner": "antigravity",
+  "allowedVisualWorlds": [
+    "human-editorial-cartoon",
+    "round-country-characters",
+    "visual-metaphor"
+  ],
+  "phases": [
+    {
+      "id": "phase-1-chatgpt",
+      "owner": "chatgpt",
+      "purpose": "Kreatives Produktionspaket erstellen",
+      "outputs": [
+        "Voice-Script",
+        "12 bis 14 Szenen",
+        "eine der drei erlaubten Bildwelten",
+        "Cover- und Szenenprompts",
+        "Google-Flow-Sammeldatei",
+        "Caption und Quellen"
+      ]
+    },
+    {
+      "id": "phase-2-user-assets",
+      "owner": "user",
+      "purpose": "Externe Medien erzeugen",
+      "outputs": [
+        "Bild 00 bis Bild XX aus Google Flow",
+        "unbearbeitetes Voice-over-Audio"
+      ]
+    },
+    {
+      "id": "phase-3-antigravity",
+      "owner": "antigravity",
+      "purpose": "Komplette technische Postproduktion bis zur geprüften MP4",
+      "startTriggers": [
+        "Antigravity los, erstelle das Reel",
+        "Antigravity los",
+        "sinngleicher eindeutiger Phase-3-Startauftrag"
+      ],
+      "inputs": [
+        "vollständiges Phase-1-Paket",
+        "vollständige Bilder",
+        "Voice-over-Audio"
+      ],
+      "forbidden": [
+        "Thema neu wählen",
+        "Voice-Script neu schreiben",
+        "Bildwelt neu wählen",
+        "Cover- oder Szenenprompts neu erstellen",
+        "Bilder oder Voice-over selbst generieren"
+      ],
+      "communicationPolicy": {
+        "mode": "silent-until-error-or-complete",
+        "intermediateStatusMessages": false,
+        "routineQuestions": false,
+        "contactUserOnlyWhen": [
+          "ein blockierender Fehler nach Ausschöpfung sicherer automatischer Prüfungen und Wiederholungen bestehen bleibt",
+          "die finale MP4 alle verpflichtenden Quality-Gates bestanden hat"
+        ],
+        "errorMessageMustContain": [
+          "konkreter fehlgeschlagener Schritt oder Gate",
+          "konkrete benötigte Nutzeraktion"
+        ],
+        "completionMessageMustContain": [
+          "Pfad zur geprüften MP4",
+          "Bestätigung der bestandenen finalen Prüfung"
+        ]
+      }
+    }
+  ]
+}

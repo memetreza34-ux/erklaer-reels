@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "composition": { "width": 1920, "height": 1080, "fps": 30, "durationFrames": 1 },
+  "voiceover": { "file": null, "volume": 1 },
+  "subtitles": [],
+  "scenes": []
+}

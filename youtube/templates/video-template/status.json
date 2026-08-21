@@ -1,6 +1,6 @@
 {
-  "schemaVersion": 1,
-  "phase": "idea",
+  "schemaVersion": 2,
+  "phase": "phase-1-chatgpt",
   "idea": "pending",
   "research": "pending",
   "script": "pending",

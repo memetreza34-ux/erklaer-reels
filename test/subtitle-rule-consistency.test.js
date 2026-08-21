@@ -22,7 +22,7 @@ function getCheck(report, id) {
   return check;
 }
 
-test('neue Arbeitsordner verwenden tiefere weiße Untertitel', async () => {
+test('neue Arbeitsordner verwenden tiefe Untertitel mit braunem Aktivwort', async () => {
   const outputRoot = await mkdtemp(path.join(os.tmpdir(), 'erklaer-reels-subtitles-'));
 
   try {
@@ -46,9 +46,10 @@ test('neue Arbeitsordner verwenden tiefere weiße Untertitel', async () => {
     assert.equal(plan.verticalPositionPercent, SUBTITLE_STYLE.verticalPositionPercent);
     assert.deepEqual(plan.safeVerticalRangePercent, SUBTITLE_STYLE.safeVerticalRangePercent);
     assert.equal(plan.textColor, SUBTITLE_STYLE.textColor);
-    assert.equal(plan.highlightCurrentWord, false);
+    assert.equal(plan.highlightCurrentWord, true);
     assert.equal(plan.highlightColor, SUBTITLE_STYLE.highlightColor);
-    assert.equal(plan.textColor, plan.highlightColor);
+    assert.notEqual(plan.textColor, plan.highlightColor);
+    assert.equal(plan.highlightColor, '#B7794A');
     assert.equal(plan.backgroundColor, 'transparent');
     assert.equal(plan.exactWordTimingsRequired, true);
     assert.equal(plan.timingProvider, 'codex-local-audio-review');

@@ -79,6 +79,6 @@ Die technische Pipeline bleibt unverändert. Die sichtbaren Ordner sind Verknüp
 npm run organize:finder -- --dir "reels/.../reel-01_thema"
 ```
 
-Auf macOS werden die ursprünglichen technischen Einträge anschließend im Finder ausgeblendet. Dazu gehören auch die technischen `timeline`- und `render`-Ordner. Codex, Node, Git und Remotion können weiterhin darauf zugreifen.
+Auf macOS werden die ursprünglichen technischen Einträge anschließend im Finder ausgeblendet. Dazu gehören auch die technischen `timeline`- und `render`-Ordner. Antigravity, Node, Git und Remotion können weiterhin darauf zugreifen.
 
 Neue Reels erhalten diese kompakte Ansicht automatisch über `npm run create:reel`.

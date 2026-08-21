@@ -46,7 +46,7 @@ Nach diesem Schritt sind alte Cue- und Wortzeiten ungültig. Deshalb anschließe
 npm run build:timeline -- --dir "PFAD-ZUM-REEL"
 npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
 npm run sync:words -- --dir "PFAD-ZUM-REEL"
-# Codex hört das optimierte Audio ab
+# Antigravity hört das optimierte Audio ab
 npm run sync:words -- --dir "PFAD-ZUM-REEL" --apply --strict
 ```
 

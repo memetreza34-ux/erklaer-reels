@@ -13,7 +13,7 @@ async function writeJson(filePath, value) {
   await writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
 }
 
-test('erstellt standardmäßig ein Ein-Minuten-Reel mit tieferen weißen Untertiteln', async () => {
+test('erstellt standardmäßig ein Ein-Minuten-Reel mit tiefen Sprecher-Untertiteln', async () => {
   const temporaryRoot = await mkdtemp(path.join(os.tmpdir(), 'erklaer-reels-'));
   const result = await createReelWorkspace({
     title: 'Was bedeutet links und rechts?',
@@ -35,7 +35,8 @@ test('erstellt standardmäßig ein Ein-Minuten-Reel mit tieferen weißen Unterti
   assert.equal(subtitlePlan.position, 'center');
   assert.equal(subtitlePlan.verticalPositionPercent, 58);
   assert.equal(subtitlePlan.textColor, '#F5F7FA');
-  assert.equal(subtitlePlan.highlightCurrentWord, false);
+  assert.equal(subtitlePlan.highlightCurrentWord, true);
+  assert.equal(subtitlePlan.highlightColor, '#B7794A');
   assert.equal(subtitlePlan.backgroundColor, 'transparent');
   assert.equal(subtitlePlan.exactWordTimingsRequired, true);
 });

@@ -37,9 +37,9 @@ Fertige Szenenbilder müssen auf einem Smartphone lesbar bleiben und dürfen dur
 - Bildtext muss während der gesamten Kamerabewegung vollständig lesbar bleiben.
 - Bei Konflikten Bewegung reduzieren oder auf `none` setzen.
 
-## Manuelle visuelle Prüfung durch Codex
+## Manuelle visuelle Prüfung durch Antigravity
 
-Codex betrachtet jedes fertige Bild und dokumentiert in `review/visual-inspection.json`:
+Antigravity betrachtet jedes fertige Bild und dokumentiert in `review/visual-inspection.json`:
 
 - `mainSubjectSafe`: Hauptmotiv bleibt in der sicheren Zone.
 - `textReadable`: sichtbarer Text ist auf Smartphone-Größe lesbar.

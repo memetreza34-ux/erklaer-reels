@@ -153,7 +153,7 @@ export async function ensureHumanReelView(reelDirectory, { hideTechnicalInFinder
   await Promise.all([
     writeIfMissing(
       path.join(absoluteReelDirectory, '00-bildprompts', 'README.md'),
-      '# 00 – Bildprompts und Bilder\n\nVerbindliche aktuelle Regeln stehen in `CURRENT_WORKFLOW.md` im Repository. Für Google Flow verwendest du die komplette Datei `99-alle-bildprompts.txt`. Google Flow erzeugt die Bilder streng einzeln: ein Bild vollständig fertigstellen → sofort `Bild XX.png` benennen → ohne weiteres Go automatisch mit dem nächsten Bild fortfahren. `Bild 00.png` ist Cover und Style-Master. Erst wenn wirklich alle Bilder fertig und korrekt benannt sind, legst du sie gemeinsam in `00-ALLE-BILDER-HIER-REIN`. Bevorzugte Benennung: `Bild 00.png` = Cover, `Bild 01.png` = Szene 1, `Bild 02.png` = Szene 2 usw.\n'
+      '# 00 – Phase 2: Bildprompts und Bilder\n\nDie Prompts stammen vollständig aus Phase 1 mit normalem ChatGPT. Für Google Flow verwendest du die komplette Datei `99-alle-bildprompts.txt`. Google Flow erzeugt die Bilder streng einzeln: ein Bild vollständig fertigstellen → sofort `Bild XX.png` benennen → ohne weiteres Go automatisch mit dem nächsten Bild fortfahren. `Bild 00.png` ist Cover und Style-Master. Erst wenn wirklich alle Bilder fertig und korrekt benannt sind, legst du sie gemeinsam in `00-ALLE-BILDER-HIER-REIN`. Bevorzugte Benennung: `Bild 00.png` = Cover, `Bild 01.png` = Szene 1, `Bild 02.png` = Szene 2 usw. Antigravity übernimmt erst danach Phase 3.\n'
     ),
     writeIfMissing(
       path.join(absoluteReelDirectory, 'inbox', 'numbered-images', 'README.md'),

@@ -31,7 +31,7 @@
 - die vollständige Untertitel-Wortfolge muss exakt `script/voice-script.txt` entsprechen
 - das braune Aktivwort folgt den exakten Wortzeiten des Sprechers
 - bei Sprechpausen kein Folgewort vorzeitig markieren
-- Codex hört das lokale Voice-over vollständig ab
+- Antigravity hört das lokale Voice-over vollständig ab
 - gleichmäßig geschätzte oder erfundene Zeiten sind verboten
 - finale Cues benötigen `timingStatus: codex-word-synced` und `timingSource: codex-local-audio-review`
 - fehlt auch nur ein Wort, ist der Render blockiert
@@ -58,7 +58,7 @@ Danach:
 npm run build:timeline -- --dir "PFAD-ZUM-REEL"
 npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
 npm run sync:words -- --dir "PFAD-ZUM-REEL"
-# production/codex-word-sync-task.md akustisch vollständig bearbeiten
+node scripts/sync-whisper.js whisper_out.json "PFAD-ZUM-REEL"
 npm run sync:words -- --dir "PFAD-ZUM-REEL" --apply --strict
 ```
 

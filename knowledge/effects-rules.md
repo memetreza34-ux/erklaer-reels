@@ -52,7 +52,7 @@ Standardwerte:
 - Nur eine sehr kurze natürliche Restpause bleibt erhalten.
 - Das Voice-over wird mit `1.05x` leicht beschleunigt.
 - Die Tonhöhe bleibt erhalten.
-- Danach müssen Timeline, Audio-Cues und Codex-Wortzeiten neu synchronisiert werden.
+- Danach müssen Timeline, Audio-Cues und Antigravity-Wortzeiten neu synchronisiert werden.
 
 ## Planung
 

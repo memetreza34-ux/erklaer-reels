@@ -10,4 +10,4 @@ video-02_kurzer-themen-slug
 video-03_kurzer-themen-slug
 ```
 
-Für neue Projekte dient `youtube/templates/video-template/` als Strukturvorlage. Ein Projekt darf erst als fertig gelten, wenn sein `status.json` die tatsächlich erledigten Produktionsphasen widerspiegelt.
+Neue Projekte werden mit `npm run create:youtube -- --title "TITEL"` aus `youtube/templates/video-template/` angelegt. Ein Projekt darf erst als fertig gelten, wenn sein `status.json` die tatsächlich erledigten Produktionsphasen widerspiegelt und die geprüfte MP4 unter `10-output/` liegt.

@@ -1,12 +1,22 @@
 # Produktionsstatus
 
-**Status: PRODUKTIONSBEREIT**
+**Status: PRODUKTIONSBEREIT — PHASE 3**
 
 ## Verbindliche aktuelle Quelle
 
 Die vollständige aktuelle Produktionsregel steht in **`CURRENT_WORKFLOW.md`**. Diese Datei ist bei Widersprüchen maßgeblich.
 
 Die kreative und funktionale Testphase ist abgeschlossen. Normale Reel-Erstellung darf globale Produktionsregeln nicht nebenbei verändern. Globale Änderungen erfolgen nur nach einer ausdrücklichen neuen Nutzerentscheidung.
+
+## Verbindliche Rollen
+
+- Phase 1: Normales ChatGPT erstellt das kreative Paket und wählt genau eine der drei Bildwelten.
+- Phase 2: Der Nutzer erzeugt Bilder und Voice-over-Audio extern.
+- Phase 3: Antigravity übernimmt ausschließlich die technische Fertigstellung bis zur geprüften MP4.
+
+Antigravity beginnt erst nach bestandenem `npm run verify:handoff` und erstellt keine fehlenden Inhalte oder Medien selbst.
+
+Nach `Antigravity los, erstelle das Reel` läuft Phase 3 ohne Zwischenmeldungen. Eine Nachricht erfolgt nur bei einem nach sicheren Eigenlösungen weiterhin blockierenden Fehler oder nach bestandener finaler MP4-Prüfung.
 
 ## Eingefrorener Reel-Standard
 
@@ -36,7 +46,7 @@ Die kreative und funktionale Testphase ist abgeschlossen. Normale Reel-Erstellun
 
 Diese Regeln gehören ab jetzt ausdrücklich zum Produktionsstandard:
 
-- Antigravity/Codex/Repo-Agenten erzeugen keine Cover- oder Szenenbilder.
+- Antigravity erzeugt weder Bildprompts noch Cover- oder Szenenbilder.
 - Der Nutzer startet Google Flow einmal mit der kompletten `all-image-prompts/all-image-prompts.txt`.
 - Google Flow arbeitet danach autonom bis zum letzten Bild und verlangt kein weiteres `Go`, `Weiter`, `OK` oder eine andere Nutzerfreigabe.
 - Trotzdem immer streng seriell: genau ein Bild aktiv, vollständig warten, sofort umbenennen, prüfen, erst dann automatisch das nächste Bild starten.
@@ -56,4 +66,4 @@ Bei einem normalen Auftrag wie `Mach ein neues Reel` bleibt dieser Produktionsst
 
 ## Bekannter Infrastrukturpunkt
 
-Issue #19 (`package-lock.json` und Umstellung von CI auf `npm ci`) bleibt als nicht blockierende Wartungsaufgabe offen. Für den aktuellen `main`-Stand liegt kein verifizierter erfolgreicher CI-Lauf vor. Deshalb keine Lockdatei erfinden und keine nicht tatsächlich ausgeführten Tests als bestanden melden.
+Die versionierte `package-lock.json` ist aktiv; lokale Installation und CI verwenden `npm ci`. Tests und CI nur als bestanden melden, wenn sie tatsächlich erfolgreich gelaufen sind.

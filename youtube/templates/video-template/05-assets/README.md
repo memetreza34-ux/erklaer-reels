@@ -1,3 +1,3 @@
 # Assets
 
-Hier kommen Bilder, Grafiken, Screenshots, Karten und sonstige Medien hinein. Dateinamen sollen eindeutig und nachvollziehbar sein.
+Alle fertigen Google-Flow-Bilder gemeinsam nach `numbered-images/` legen: `Bild 00` = Thumbnail, `Bild 01` bis `Bild XX` = Szenen. Die Nummerierung ist nur Routing-Hilfe; Antigravity prüft jedes Bild visuell in zwei Durchgängen.

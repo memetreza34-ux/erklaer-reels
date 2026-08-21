@@ -1,27 +1,22 @@
-# CHAT OUTPUT POLICY — REELS DIREKT INS REPO
+# CHAT OUTPUT POLICY — PHASE-1-ÜBERGABE
 
-**Verbindliche globale Repo-Regel für ChatGPT, Codex, Antigravity und andere Repo-Agenten.**
+**Verbindliche globale Regel für normales ChatGPT in Phase 1.**
 
-Bei normalen Anweisungen wie `Mach ein Reel`, `Erstelle ein Reel für heute`, `Mach das nächste Reel` oder sinngleichen Aufträgen wird das Reel **direkt im Repository erstellt bzw. geändert**.
+Normales ChatGPT erstellt das kreative Produktionspaket. Der Nutzer muss daraus in Phase 2 die Bilder und das Audio erzeugen können. Antigravity ist nicht für diese Chat-Ausgabe zuständig.
 
-## Im Chat verboten, solange der Nutzer es nicht ausdrücklich verlangt
+## In Phase 1 erforderlich
 
-- vollständigen Voice-Text ausgeben
-- Szenenplan ausgeben
-- einzelne Bildprompts ausgeben
-- `all-image-prompts/all-image-prompts.txt` ausgeben
-- komplette Caption ausgeben
-- technische Produktionsdateien oder JSON-Inhalte ausgeben
-- das komplette Reel-Paket als kopierbaren Chattext ausgeben
+- vollständiges Voice-Script
+- 12–14 Szenen mit Narration, Bildidee und Audio-Cue
+- gewählte Top-3-Bildwelt mit Begründung
+- Cover- und Szenenprompts
+- vollständiger Google-Flow-Gesamtprompt
+- Caption und Quellen
 
-Eine normale Reel-Anweisung ist **keine** Erlaubnis, diese Inhalte im Chat anzuzeigen.
+Die Übergabe darf als kopierbarer Chatinhalt oder als vollständiges Dateipaket erfolgen.
 
-## Im Chat erlaubt
+## In Phase 3
 
-Nach der Repo-Arbeit nur eine kurze Statusmeldung mit Thema, Datum, PR/Commit und wirklich offenem externem Schritt. Keine langen Inhaltsdumps.
+Antigravity gibt nur Status, konkrete Übergabelücken und am Ende den Pfad zur geprüften MP4 aus. Es erzeugt keine neuen kreativen Inhalte im Chat.
 
-## Ausnahme
-
-Nur wenn der Nutzer ausdrücklich nach einem bestimmten Inhalt fragt, zum Beispiel `Gib mir den Voice-Text`, `Zeig mir die Caption` oder `Gib mir den Google-Flow-Prompt`, darf genau dieser angeforderte Inhalt im Chat gezeigt werden.
-
-**Kurzform: Reel-Arbeit gehört ins Repo. Chat zeigt standardmäßig nur den kurzen Abschlussstatus.**
+**Kurzform: ChatGPT liefert Phase 1. Der Nutzer liefert Phase 2. Antigravity meldet Phase 3.**

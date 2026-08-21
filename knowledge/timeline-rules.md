@@ -22,7 +22,7 @@ npm run sync:audio -- --dir "PFAD-ZUM-REEL" --audio-duration 48.7
 ```
 
 6. Beim ersten Lauf entsteht `timeline/audio-sync.json`.
-7. Codex hört das Voice-over ab und trägt für jede Szene den echten Zeitpunkt von `audioCue` als `cueTimeSeconds` ein.
+7. Antigravity hört das Voice-over ab und trägt für jede Szene den echten Zeitpunkt von `audioCue` als `cueTimeSeconds` ein.
 8. Danach wird `sync:audio` erneut ausgeführt.
 
 ## Audio-Sync-Datei
@@ -70,4 +70,4 @@ Das Szenenbild beginnt in diesem Beispiel bei 8,2 Sekunden. Die Hook beginnt una
 
 ## Wichtige Grenze
 
-Die Audiodauer kann lokal automatisch über `ffprobe` gelesen werden. Das genaue Erkennen gesprochener Phrasen benötigt weiterhin eine geprüfte Transkription, einen Forced-Alignment-Anbieter oder eine visuelle beziehungsweise akustische Prüfung durch Codex. Das Repository stellt dafür die stabile Schnittstelle `timeline/audio-sync.json` bereit und rät keine unsicheren Cue-Zeiten.
+Die Audiodauer kann lokal automatisch über `ffprobe` gelesen werden. Das genaue Erkennen gesprochener Phrasen benötigt weiterhin eine geprüfte Transkription, einen Forced-Alignment-Anbieter oder eine visuelle beziehungsweise akustische Prüfung durch Antigravity. Das Repository stellt dafür die stabile Schnittstelle `timeline/audio-sync.json` bereit und rät keine unsicheren Cue-Zeiten.

@@ -52,6 +52,21 @@ test('Codex-Wort-Sync übernimmt 58 Prozent, weißen Grundtext und braunes aktiv
   assert.equal(result.unassigned.length, 0);
 });
 
+test('behält den Abstand nach einem schließenden deutschen Anführungszeichen', () => {
+  const words = [
+    { text: 'Das', startSeconds: 0, endSeconds: 0.2, confidence: 1, reviewed: true },
+    { text: 'klingt', startSeconds: 0.21, endSeconds: 0.4, confidence: 1, reviewed: true },
+    { text: '„sehr', startSeconds: 0.41, endSeconds: 0.6, confidence: 1, reviewed: true },
+    { text: 'plausibel“', startSeconds: 0.61, endSeconds: 0.9, confidence: 1, reviewed: true },
+    { text: 'gedacht.', startSeconds: 0.91, endSeconds: 1.2, confidence: 1, reviewed: true }
+  ];
+  const result = buildSubtitleCuesFromCodexWords(words, [
+    { sceneId: 'scene-01', startSeconds: 0, endSeconds: 2 }
+  ]);
+
+  assert.equal(result.cues[0].text, 'Das klingt „sehr plausibel“ gedacht.');
+});
+
 test('strenge Prüfung akzeptiert nur 100 Prozent bestätigte Wortzeiten', () => {
   const words = tokenizeScript('Das ist ein Test.').map((word, index) => ({
     ...word,
@@ -78,4 +93,32 @@ test('strenge Prüfung blockiert bereits ein einziges ungetimtes Wort', () => {
   assert.equal(result.passed, false);
   assert.ok(result.coverage < 1);
   assert.ok(result.checks.some((check) => check.id === 'timing-coverage' && !check.passed));
+});
+
+test('strenge Prüfung blockiert Whisper-Fallbacks und falsche Audio-Bindung', () => {
+  const words = tokenizeScript('Das ist exakt.').map((word, index) => ({
+    ...word,
+    startSeconds: index * 0.3,
+    endSeconds: index * 0.3 + 0.2,
+    confidence: 1,
+    reviewed: true
+  }));
+  const result = validateCodexWorkbench({
+    audioDurationSeconds: 2,
+    audioFingerprintSha256: 'aktuelles-audio',
+    words,
+    whisperAlignment: {
+      status: 'passed',
+      audioFingerprintSha256: 'altes-audio',
+      fallbackCount: 1,
+      unmatchedScriptWords: [],
+      fuzzyScriptWords: [],
+      extraWhisperWords: [],
+      unmatchedCues: []
+    }
+  }, { strict: true });
+
+  assert.equal(result.passed, false);
+  assert.ok(result.checks.some((check) => check.id === 'whisper-no-fallbacks' && !check.passed));
+  assert.ok(result.checks.some((check) => check.id === 'whisper-audio-fingerprint-match' && !check.passed));
 });

@@ -5,12 +5,12 @@ Der Renderer erzeugt aus `render/render-plan.json` eine fertige MP4 mit 12–14 
 ## Vorbereitung
 
 ```bash
-npm install
+npm ci
 npm run trim:pauses -- --dir "PFAD-ZUM-REEL" --speed 1.10
 npm run build:timeline -- --dir "PFAD-ZUM-REEL"
 npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
 npm run sync:words -- --dir "PFAD-ZUM-REEL"
-# production/codex-word-sync-task.md akustisch vollständig bearbeiten
+node scripts/sync-whisper.js whisper_out.json "PFAD-ZUM-REEL"
 npm run sync:words -- --dir "PFAD-ZUM-REEL" --apply --strict
 npm run check:visuals -- --dir "PFAD-ZUM-REEL" --strict
 npm run finalize:reel -- --dir "PFAD-ZUM-REEL" --strict

@@ -47,7 +47,7 @@ export async function prepareReelProduction(reelDirectory) {
     reelId: reel.reelId,
     title: reel.title,
     createdAt: new Date().toISOString(),
-    phase: 'content-production',
+    phase: 'phase-1-chatgpt',
     tasks: [
       { id: 'script-final', label: 'Voice-over mit 155–175 Wörtern und starkem Ende fertigstellen', status: 'pending' },
       { id: 'style-select', label: 'Nach dem fertigen Script die passendste Bildwelt auswählen und begründen', status: 'pending' },
@@ -69,9 +69,17 @@ export async function prepareReelProduction(reelDirectory) {
   };
 
   const normalizedDirectory = reelDirectory.split(path.sep).join('/');
-  const brief = `# Codex-Produktionsauftrag: ${reel.title}
+  const brief = `# 3-Phasen-Produktionsauftrag: ${reel.title}
 
-## Ziel
+## Feste Rollen
+
+- Phase 1: Normales ChatGPT erstellt das vollständige kreative Paket.
+- Phase 2: Der Nutzer erzeugt Bilder und Voice-over-Audio extern.
+- Phase 3: Antigravity übernimmt ausschließlich die technische Fertigstellung.
+
+Antigravity darf die kreativen Aufgaben aus Phase 1 nicht ausführen oder fehlende Inhalte selbst ergänzen.
+
+## Ziel des Gesamtpakets
 
 Erstelle ein vollständiges Erklär-Reel mit ungefähr einer Minute Voice-over-Laufzeit. Bilder und Audio werden extern erzeugt. Vor dem Render muss jedes Bild zweifach visuell gegen seine konkrete Szene geprüft werden. Die Untertitel müssen jedes gesprochene Wort vollständig enthalten und exakt dem echten Voice-over folgen.
 
@@ -92,7 +100,7 @@ Erstelle ein vollständiges Erklär-Reel mit ungefähr einer Minute Voice-over-L
 - ruhiger Nachlauf nach Sprecherende: **${timing.postVoiceHoldSeconds} Sekunden**
 - Bildzuordnung: **mindestens ${matching.minimumConfidence} Konfidenz, zwei visuelle Durchgänge**
 - Untertitel: **horizontal zentriert, exakt ${SUBTITLE_STYLE.verticalPositionPercent} % Bildhöhe, Grundtext ${SUBTITLE_STYLE.textColor}, aktuell gesprochenes Wort ${SUBTITLE_STYLE.highlightColor}, transparent**
-- Untertitel-Sync: **100-%-Abdeckung und exakte Wortzeiten aus lokaler Codex-Audioprüfung verpflichtend**
+- Untertitel-Sync: **100-%-Abdeckung und exakte Wortzeiten aus lokaler Antigravity-Audioprüfung verpflichtend**
 - Audio-Pacing: **exakt ${AUDIO_PACING_STYLE.playbackRate.toFixed(2)}x**
 - Lautheit: **${AUDIO_PACING_STYLE.loudnessTargetLufs} LUFS, höchstens ${AUDIO_PACING_STYLE.truePeakDbtp} dBTP**
 - Hintergrundmusik: **aus**
@@ -101,7 +109,7 @@ Erstelle ein vollständiges Erklär-Reel mit ungefähr einer Minute Voice-over-L
 
 > ${rawScript.replace(/\n/g, '\n> ')}
 
-## Verbindlicher Ablauf
+## Phase 1 — normales ChatGPT
 
 1. Lies \`CURRENT_WORKFLOW.md\`, \`AGENTS.md\`, \`CODEX_TASK.md\`, \`knowledge/production-rules.md\` und \`config/production-quality-gates.json\`.
 2. Überarbeite das Script auf 155–175 Wörter und ungefähr 55–60 Sekunden bei 1,10x. Bevorzugter Einstieg: \`THEMA einfach erklärt:\`.
@@ -142,7 +150,21 @@ npm run export:prompts -- --dir "${normalizedDirectory}" --strict
 npm run check:content -- --dir "${normalizedDirectory}" --strict
 \`\`\`
 
-## Nach Eintreffen von Bildern und Voice-over
+## Phase 2 — Nutzer
+
+Der Nutzer erzeugt mit Google Flow alle Bilder und extern das Voice-over-Audio. Antigravity erzeugt oder ersetzt diese Medien nicht.
+
+## Phase 3 — Antigravity nach vollständiger Übergabe
+
+Vor jeder Verarbeitung:
+
+\`\`\`bash
+npm run verify:handoff -- --dir "${normalizedDirectory}"
+\`\`\`
+
+Nur bei bestandenem Übergabecheck fortfahren. Antigravity verändert Thema, Script, Bildwelt und Prompts nicht.
+
+Nach dem Startsignal arbeitet Antigravity ohne Zwischenmeldungen und routinemäßige Rückfragen bis zur geprüften MP4. Es meldet nur einen nach sicheren Eigenlösungen weiterhin blockierenden Fehler oder die erfolgreiche Fertigstellung mit MP4-Pfad.
 
 ### 1. Audio
 

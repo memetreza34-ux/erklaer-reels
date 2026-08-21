@@ -1,8 +1,22 @@
-# Codex-Hauptauftrag
+# Antigravity-Hauptauftrag — Phase 3
 
-Dieses Repository produziert vollständige visuelle Erklär-Reels. **`CURRENT_WORKFLOW.md` ist bei Widersprüchen maßgeblich.** Der Nutzer erzeugt Voice-over und Bilder extern. Codex übernimmt Planung, Prompt-Sammlung, Suche nach Assets/ZIPs, Prüfung, Audio-Pacing, sichere Bildzuordnung, Synchronisierung und Remotion-Render.
+Dieses Repository ist für die technische Phase 3 bestimmt. **`CURRENT_WORKFLOW.md` ist bei Widersprüchen maßgeblich.** Normales ChatGPT liefert Script, Szenen, Bildwelt, Prompts, Caption und Quellen. Der Nutzer erzeugt Voice-over und Bilder extern. Antigravity übernimmt danach Suche nach Assets/ZIPs, Prüfung, Audio-Pacing, sichere Bildzuordnung, Synchronisierung, Remotion-Render und finale Video-QC.
 
-## Neues Reel
+Antigravity schreibt keine fehlenden Phase-1-Inhalte und erzeugt keine Phase-2-Medien.
+
+## Pflicht vor dem Start
+
+```bash
+npm run verify:handoff -- --dir "PFAD-ZUM-REEL"
+```
+
+Nur bei bestandener Übergabe Phase 3 fortsetzen.
+
+## Kommunikation nach dem Start
+
+`Antigravity los, erstelle das Reel` startet den vollständigen Phase-3-Lauf. Danach keine Zwischenstände und keine routinemäßigen Rückfragen senden. Antigravity meldet sich erst bei einem nach sicheren Eigenlösungen weiterhin blockierenden Fehler oder mit dem Pfad zur vollständig geprüften MP4.
+
+## Übernommener Reel-Standard
 
 - genau ein deutscher Erzähler
 - 155–175 Wörter
@@ -10,21 +24,7 @@ Dieses Repository produziert vollständige visuelle Erklär-Reels. **`CURRENT_WO
 - 12–14 Bildmomente, Standard 13
 - Geschwindigkeit exakt 1,10x
 
-```bash
-npm run create:reel -- \
-  --title "TITEL" \
-  --script-file input/script.txt \
-  --next-free \
-  --scenes 13
-```
-
-Danach `production/agent-task.md` vollständig bearbeiten. Pflichtdateien sind Script, `reel.json`, Szenendaten, alle Bildprompts, Cover, Prompt-Sammeldatei, Untertitel, Effekte, Caption und Quellen.
-
-```bash
-npm run export:prompts -- --dir "PFAD-ZUM-REEL" --strict
-npm run validate:reel -- --dir "PFAD-ZUM-REEL"
-npm run check:content -- --dir "PFAD-ZUM-REEL" --strict
-```
+Script, `reel.json`, Szenendaten, alle Bildprompts, Cover-Prompt, Prompt-Sammeldatei, Caption und Quellen müssen bereits aus Phase 1 vorhanden sein.
 
 ## Aufbau und Bildwelt
 
@@ -49,7 +49,7 @@ Zentrale Quelle: `config/production-quality-gates.json`.
 
 ## Bildprompts und Google Flow
 
-Bildprompts sind Englisch. Sichtbarer Bildtext ist, wenn sinnvoll, kurz und Deutsch. Die komplette Sammeldatei wird einmal in Google Flow gesendet. Google Flow erzeugt danach streng seriell `Bild 00` bis zum letzten Bild und fragt nicht erneut nach `Go`.
+Die fertigen Bildprompts aus Phase 1 sind Englisch. Sichtbarer Bildtext ist, wenn sinnvoll, kurz und Deutsch. Der Nutzer sendet die komplette Sammeldatei einmal an Google Flow. Google Flow erzeugt danach streng seriell `Bild 00` bis zum letzten Bild und fragt nicht erneut nach `Go`.
 
 `Bild 00` ist Cover, sichtbare Hook und Style-Master. Der Cover-Hook darf nicht automatisch in spätere Szenen kopiert werden.
 
@@ -109,7 +109,7 @@ npm run trim:pauses -- --dir "PFAD-ZUM-REEL" --speed 1.10
 npm run build:timeline -- --dir "PFAD-ZUM-REEL"
 npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
 npm run sync:words -- --dir "PFAD-ZUM-REEL"
-# production/codex-word-sync-task.md vollständig akustisch bearbeiten
+node scripts/sync-whisper.js whisper_out.json "PFAD-ZUM-REEL"
 npm run sync:words -- --dir "PFAD-ZUM-REEL" --apply --strict
 ```
 
@@ -119,6 +119,8 @@ Audio-Standard:
 - exakt 1,10x bei erhaltener Tonhöhe
 - −16 LUFS und höchstens −1,5 dBTP
 - optimierte Datei nicht erneut beschleunigen
+- Whisper-Zeiten ausschließlich aus der finalen optimierten Datei verwenden
+- keine Wort- oder Bild-Cue-Fallbacks; `fallbackCount` muss 0 sein
 - jedes Wort im echten lokalen Audio akustisch bestätigen
 - keine gleichmäßige oder erfundene Zeitverteilung
 

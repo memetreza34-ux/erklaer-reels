@@ -168,11 +168,15 @@ export async function createReelWorkspace({
     motionEffectsEnabled: true,
     soundEffectsEnabled: true,
     backgroundMusicEnabled: false,
+    workflowPhase: 'phase-1-chatgpt',
+    phase3RuntimeOwner: 'antigravity',
     status: 'workspace-created'
   };
 
   await writeJson(path.join(reelDirectory, 'reel.json'), reel);
   await writeJson(path.join(reelDirectory, 'status.json'), {
+    workflowPhase: 'phase-1-chatgpt',
+    phase3Handoff: 'not-ready',
     workspace: 'ready',
     content: 'draft',
     script: 'provided',

@@ -274,7 +274,9 @@ function qualityReport(
   endingHoldSeconds,
   audioDurationSeconds
 ) {
-  const balanceLevel = 'warning';
+  const balanceLevel = strict && sceneTimingRules.strictTimelineBalance !== false
+    ? 'error'
+    : 'warning';
   const holdRange = sceneTimingRules.postVoiceHoldRangeSeconds ?? { min: 0.6, max: 0.8 };
   const checks = [
     ['hook-starts-at-zero', timelineScenes[0]?.startSeconds === 0, 'Das Hook-Bild muss bei Sekunde 0 beginnen.', 'error'],

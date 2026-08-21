@@ -1,169 +1,222 @@
-import fs from 'fs';
-import path from 'path';
+#!/usr/bin/env node
 
-if (process.argv.length < 4) {
-  console.log("Usage: node sync-whisper.js <path_to_whisper_json> <path_to_reel_dir>");
-  process.exit(1);
+import { access, mkdir, readFile, writeFile } from 'node:fs/promises';
+import path from 'node:path';
+
+import { buildMasterTimeline } from '../src/core/timeline.js';
+import {
+  alignAudioCueTimings,
+  alignWhisperWords
+} from '../src/core/whisper-alignment.js';
+import { verifyPreparedWordSyncAudioBinding } from '../src/core/word-sync-audio-guard.js';
+
+async function exists(filePath) {
+  try {
+    await access(filePath);
+    return true;
+  } catch {
+    return false;
+  }
 }
 
-const whisperPath = process.argv[2];
-const reelDir = process.argv[3];
-
-const whisperWords = JSON.parse(fs.readFileSync(whisperPath, 'utf8'));
-const codexPath = path.join(reelDir, 'subtitles/codex-word-sync.json');
-const audioPath = path.join(reelDir, 'timeline/audio-sync.json');
-
-const codex = JSON.parse(fs.readFileSync(codexPath, 'utf8'));
-const audio = JSON.parse(fs.readFileSync(audioPath, 'utf8'));
-
-const normalize = (text) => (text || '').toLowerCase().replace(/[^a-z0-9äöüß]/g, '');
-
-// Flatten whisper words from segments if necessary, but whisper_out.json usually has 'words' at top or inside segments.
-let wWords = [];
-if (whisperWords.words) {
-  wWords = whisperWords.words;
-} else if (whisperWords.segments) {
-  wWords = whisperWords.segments.flatMap(s => s.words || []);
-} else if (Array.isArray(whisperWords)) {
-  wWords = whisperWords;
+async function readJson(filePath) {
+  return JSON.parse(await readFile(filePath, 'utf8'));
 }
 
-let wIdx = 0;
-for (const cw of codex.words) {
-  cw.startSeconds = null;
-  cw.endSeconds = null;
+async function writeJson(filePath, value) {
+  await mkdir(path.dirname(filePath), { recursive: true });
+  await writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
 }
 
-const distance = (a, b) => {
-  if (a.length === 0) return b.length;
-  if (b.length === 0) return a.length;
-  const matrix = [];
-  for (let i = 0; i <= b.length; i++) { matrix[i] = [i]; }
-  for (let j = 0; j <= a.length; j++) { matrix[0][j] = j; }
-  for (let i = 1; i <= b.length; i++) {
-    for (let j = 1; j <= a.length; j++) {
-      if (b.charAt(i - 1) == a.charAt(j - 1)) {
-        matrix[i][j] = matrix[i - 1][j - 1];
-      } else {
-        matrix[i][j] = Math.min(matrix[i - 1][j - 1] + 1, Math.min(matrix[i][j - 1] + 1, matrix[i - 1][j] + 1));
+async function markBlocked(reelDirectory) {
+  const statusPath = path.join(reelDirectory, 'status.json');
+  const timelinePath = path.join(reelDirectory, 'timeline', 'timeline-plan.json');
+  const renderPlanPath = path.join(reelDirectory, 'render', 'render-plan.json');
+  const status = await exists(statusPath) ? await readJson(statusPath) : {};
+  status.wordSync = 'needs-review';
+  status.timeline = 'needs-review';
+  status.render = 'blocked-subtitle-sync';
+  const writes = [writeJson(statusPath, status)];
+  if (await exists(timelinePath)) {
+    const timeline = await readJson(timelinePath);
+    timeline.timingStatus = 'needs-review';
+    writes.push(writeJson(timelinePath, timeline));
+  }
+  if (await exists(renderPlanPath)) {
+    const renderPlan = await readJson(renderPlanPath);
+    renderPlan.status = 'blocked-subtitle-sync';
+    writes.push(writeJson(renderPlanPath, renderPlan));
+  }
+  await Promise.all(writes);
+}
+
+function verifyWhisperDuration(wordReport, expectedAudioDurationSeconds) {
+  const expected = Number(expectedAudioDurationSeconds);
+  const lastWordEnd = Number(wordReport.whisperEndSeconds);
+  if (!Number.isFinite(expected) || expected <= 0 || !Number.isFinite(lastWordEnd)) {
+    return { passed: false, expectedAudioDurationSeconds: expected || null, lastWhisperWordEndSeconds: null, trailingSilenceSeconds: null };
+  }
+  const trailingSilenceSeconds = expected - lastWordEnd;
+  return {
+    passed: trailingSilenceSeconds >= -0.08 && trailingSilenceSeconds <= 1,
+    expectedAudioDurationSeconds: expected,
+    lastWhisperWordEndSeconds: lastWordEnd,
+    trailingSilenceSeconds: Math.round(trailingSilenceSeconds * 1000) / 1000
+  };
+}
+
+function failureMessage(wordReport, cueReport, durationReport) {
+  const issues = [];
+  if (wordReport.unmatchedScriptWords.length) {
+    issues.push(`Scriptwörter ohne Whisper-Treffer: ${wordReport.unmatchedScriptWords.join(', ')}`);
+  }
+  if (wordReport.fuzzyScriptWords.length) {
+    issues.push(`unsichere Worttreffer: ${wordReport.fuzzyScriptWords.join(', ')}`);
+  }
+  if (wordReport.extraWhisperWords.length) {
+    issues.push(`zusätzliche gesprochene Wörter: ${wordReport.extraWhisperWords.join(', ')}`);
+  }
+  if (cueReport.unmatchedCues.length) {
+    issues.push(`Bild-Cues ohne exakten Treffer: ${cueReport.unmatchedCues.join(', ')}`);
+  }
+  if (!durationReport.passed) {
+    issues.push(`Whisper-Zeitachse endet bei ${durationReport.lastWhisperWordEndSeconds ?? 'unbekannt'} s, finales Audio bei ${durationReport.expectedAudioDurationSeconds ?? 'unbekannt'} s`);
+  }
+  return issues.join('; ');
+}
+
+async function main() {
+  const whisperPath = process.argv[2];
+  const reelDirectory = process.argv[3];
+  if (!whisperPath || !reelDirectory) {
+    throw new Error('Verwendung: node scripts/sync-whisper.js <whisper_out.json> <reel-ordner>');
+  }
+
+  const codexPath = path.join(reelDirectory, 'subtitles', 'codex-word-sync.json');
+  const audioSyncPath = path.join(reelDirectory, 'timeline', 'audio-sync.json');
+  for (const requiredPath of [whisperPath, codexPath, audioSyncPath]) {
+    if (!(await exists(requiredPath))) throw new Error(`Pflichtdatei fehlt: ${requiredPath}`);
+  }
+
+  const binding = await verifyPreparedWordSyncAudioBinding(reelDirectory);
+  if (!binding.required) {
+    throw new Error('Der Word-Sync besitzt noch keinen Audio-Fingerprint. Führe zuerst npm run sync:words -- --dir "<reel-ordner>" aus.');
+  }
+  if (!binding.passed) {
+    throw new Error('Die Audiodatei wurde nach der Word-Sync-Vorbereitung verändert. Erzeuge Whisper-Zeiten erneut aus dem finalen Audio.');
+  }
+
+  const [whisperPayload, codex, audioSync] = await Promise.all([
+    readJson(whisperPath),
+    readJson(codexPath),
+    readJson(audioSyncPath)
+  ]);
+  const wordAlignment = alignWhisperWords(codex.words, whisperPayload);
+  const cueAlignment = alignAudioCueTimings(audioSync.cueTimings, wordAlignment.words);
+  const durationAlignment = verifyWhisperDuration(
+    wordAlignment.report,
+    codex.audioDurationSeconds ?? audioSync.audioDurationSeconds
+  );
+  const passed = wordAlignment.passed && cueAlignment.passed && durationAlignment.passed;
+  const createdAt = new Date().toISOString();
+  const report = {
+    version: 1,
+    createdAt,
+    passed,
+    source: 'whisper-final-audio',
+    whisperFile: path.basename(whisperPath),
+    audioFile: codex.audioFile,
+    audioFingerprintSha256: binding.audioFingerprintSha256,
+    fallbackCount: 0,
+    words: wordAlignment.report,
+    imageCues: cueAlignment.report,
+    durationAlignment,
+    checks: [
+      {
+        id: 'audio-fingerprint-current',
+        passed: true,
+        level: 'error',
+        message: 'Whisper-Abgleich ist an die unveränderte vorbereitete Produktionsdatei gebunden.'
+      },
+      {
+        id: 'all-script-words-exact',
+        passed: wordAlignment.passed,
+        level: 'error',
+        message: 'Jedes Scriptwort muss exakt und ohne zusätzliche gesprochene Wörter aus Whisper ausgerichtet sein.'
+      },
+      {
+        id: 'all-image-cues-exact',
+        passed: cueAlignment.passed,
+        level: 'error',
+        message: 'Jeder Bildwechsel benötigt einen exakten Treffer in den ausgerichteten Wörtern.'
+      },
+      {
+        id: 'whisper-duration-matches-final-audio',
+        passed: durationAlignment.passed,
+        level: 'error',
+        message: 'Die Whisper-Zeitachse muss zur Dauer des final verarbeiteten Audios passen.'
+      },
+      {
+        id: 'no-timing-fallbacks',
+        passed: true,
+        level: 'error',
+        message: 'Es wurden keine Zeitwerte geschätzt oder erfunden.'
       }
-    }
-  }
-  return matrix[b.length][a.length];
-};
+    ]
+  };
 
-for (const cw of codex.words) {
-  const targetText = normalize(cw.text);
-  
-  let found = false;
-  let startSeconds = null;
-  let endSeconds = null;
-  let combinedText = '';
-  
-  for (let lookahead = 0; lookahead < 10 && wIdx + lookahead < wWords.length; lookahead++) {
-    const ww = wWords[wIdx + lookahead];
-    const normalizedWw = normalize(ww.word || ww.text);
-    
-    if (lookahead === 0) startSeconds = ww.start;
-    endSeconds = ww.end;
-    combinedText += normalizedWw;
-    
-    const dist = distance(targetText, normalizedWw);
-    const isFuzzyMatch = dist <= 1 || (targetText.length > 5 && dist <= 2) || (targetText.length > 8 && dist <= 3);
-    
-    if (isFuzzyMatch || combinedText.includes(targetText) || (targetText.includes(combinedText) && combinedText.length > 3) || targetText === normalizedWw) {
-      cw.startSeconds = startSeconds;
-      cw.endSeconds = endSeconds;
-      wIdx = wIdx + lookahead + 1;
-      found = true;
-      break;
-    }
+  codex.words = wordAlignment.words;
+  codex.status = passed ? 'whisper-aligned' : 'needs-review';
+  codex.updatedAt = createdAt;
+  codex.whisperAlignment = {
+    status: passed ? 'passed' : 'needs-review',
+    reportFile: 'review/whisper-sync-report.json',
+    audioFingerprintSha256: binding.audioFingerprintSha256,
+    fallbackCount: 0,
+    unmatchedScriptWords: wordAlignment.report.unmatchedScriptWords,
+    fuzzyScriptWords: wordAlignment.report.fuzzyScriptWords,
+    extraWhisperWords: wordAlignment.report.extraWhisperWords,
+    unmatchedCues: cueAlignment.report.unmatchedCues
+  };
+  audioSync.cueTimings = cueAlignment.cueTimings;
+  audioSync.timingStatus = passed ? 'whisper-aligned' : 'needs-review';
+  audioSync.timingSource = 'whisper-final-audio';
+  audioSync.audioFingerprintSha256 = binding.audioFingerprintSha256;
+
+  await Promise.all([
+    writeJson(codexPath, codex),
+    writeJson(audioSyncPath, audioSync),
+    writeJson(path.join(reelDirectory, 'review', 'whisper-sync-report.json'), report)
+  ]);
+
+  if (!passed) {
+    await markBlocked(reelDirectory);
+    throw new Error(`Whisper-Synchronisierung blockiert: ${failureMessage(wordAlignment.report, cueAlignment.report, durationAlignment)}`);
   }
-  
-  cw.reviewed = true;
-  cw.confidence = 1;
+
+  const timelineResult = await buildMasterTimeline(reelDirectory, { strict: false });
+  codex.scenes = timelineResult.timeline.scenes.map((scene) => ({
+    sceneId: scene.sceneId,
+    startSeconds: scene.startSeconds,
+    endSeconds: scene.endSeconds,
+    audioCue: scene.audioCue ?? ''
+  }));
+  await writeJson(codexPath, codex);
+
+  const statusPath = path.join(reelDirectory, 'status.json');
+  const status = await exists(statusPath) ? await readJson(statusPath) : {};
+  status.wordSync = 'whisper-aligned-needs-strict-apply';
+  status.timeline = timelineResult.timeline.timingStatus;
+  status.render = 'blocked-until-strict-word-sync';
+  await writeJson(statusPath, status);
+
+  console.log(`Whisper-Synchronisierung bestanden: ${wordAlignment.report.exactlyAlignedWords}/${wordAlignment.report.scriptWordCount} Wörter.`);
+  console.log(`Bild-Cues: ${cueAlignment.report.matchedCueCount}/${cueAlignment.report.cueCount}.`);
+  console.log('Fallbacks: 0. Timeline wurde aus den echten Cue-Zeiten neu aufgebaut.');
+  console.log(`Nächster Schritt: npm run sync:words -- --dir "${reelDirectory}" --apply --strict`);
 }
 
-// Bulletproof monotonic time assignment
-let currentMinTime = 0.0;
-for (const cw of codex.words) {
-  if (cw.startSeconds === null) {
-     cw.startSeconds = currentMinTime;
-     cw.endSeconds = currentMinTime + 0.1;
-  }
-  
-  if (cw.startSeconds < currentMinTime) {
-     cw.startSeconds = currentMinTime;
-  }
-  
-  if (cw.endSeconds <= cw.startSeconds) {
-     cw.endSeconds = cw.startSeconds + 0.1;
-  }
-  
-  currentMinTime = cw.endSeconds;
-}
-
-// Clamp to scene boundaries so validateExactWordTimings doesn't fail
-for (const cw of codex.words) {
-  const midpoint = (cw.startSeconds + cw.endSeconds) / 2;
-  let sceneIndex = 0;
-  while (sceneIndex < codex.scenes.length - 1 && midpoint >= codex.scenes[sceneIndex].endSeconds) {
-    sceneIndex++;
-  }
-  const scene = codex.scenes[sceneIndex];
-  if (cw.endSeconds > scene.endSeconds) {
-    cw.endSeconds = scene.endSeconds;
-    if (cw.startSeconds > cw.endSeconds) cw.startSeconds = Math.max(0, cw.endSeconds - 0.05);
-  }
-}
-
-fs.writeFileSync(codexPath, JSON.stringify(codex, null, 2));
-
-const findCueTime = (audioCue, startIndex = 0) => {
-  const cueWords = audioCue.split(' ').map(normalize).filter(Boolean);
-  if (cueWords.length === 0) return null;
-  
-  for (let i = startIndex; i < codex.words.length - cueWords.length + 1; i++) {
-    let match = true;
-    for (let j = 0; j < cueWords.length; j++) {
-      if (normalize(codex.words[i + j].text) !== cueWords[j]) {
-        match = false;
-        break;
-      }
-    }
-    if (match) {
-      let time = codex.words[i].startSeconds;
-      return { time, nextIndex: i + cueWords.length };
-    }
-  }
-  return null;
-};
-
-let currentIndex = 0;
-let lastTime = 0;
-
-audio.cueTimings.forEach((cue) => {
-  const result = findCueTime(cue.audioCue, currentIndex);
-  if (result !== null && result.time !== null) {
-    cue.cueTimeSeconds = result.time;
-    currentIndex = result.nextIndex;
-    lastTime = result.time;
-  } else {
-    let fallbackTime = lastTime + 2.0;
-    const firstWord = normalize(cue.audioCue.split(' ')[0]);
-    for (let i = currentIndex; i < codex.words.length; i++) {
-      if (normalize(codex.words[i].text) === firstWord && codex.words[i].startSeconds !== null) {
-        fallbackTime = codex.words[i].startSeconds;
-        currentIndex = i + 1;
-        break;
-      }
-    }
-    cue.cueTimeSeconds = fallbackTime;
-    lastTime = fallbackTime;
-  }
-  cue.confidence = 1;
+main().catch((error) => {
+  console.error(`Fehler: ${error.message}`);
+  process.exitCode = 1;
 });
-
-fs.writeFileSync(audioPath, JSON.stringify(audio, null, 2));
-
-console.log("Successfully aligned codex words and audio cues using Whisper timestamps!");

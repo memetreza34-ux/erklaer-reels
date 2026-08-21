@@ -76,10 +76,10 @@ test('führt 14 Szenen, mittige Untertitel und einen ruhigen Schlussbild-Nachlau
 
   const firstSubtitle = result.timeline.subtitles.cues[0];
   assert.equal(firstSubtitle.position, 'center');
-  assert.equal(firstSubtitle.verticalPositionPercent, 50);
+  assert.equal(firstSubtitle.verticalPositionPercent, 58);
   assert.equal(firstSubtitle.textColor, '#F5F7FA');
-  assert.equal(firstSubtitle.highlightColor, '#F5F7FA');
-  assert.equal(firstSubtitle.highlightCurrentWord, false);
+  assert.equal(firstSubtitle.highlightColor, '#B7794A');
+  assert.equal(firstSubtitle.highlightCurrentWord, true);
   assert.equal(firstSubtitle.backgroundColor, 'transparent');
 
   const savedTimeline = JSON.parse(await readFile(path.join(reelDirectory, 'timeline', 'timeline-plan.json'), 'utf8'));

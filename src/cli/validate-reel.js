@@ -76,8 +76,8 @@ async function main() {
   let reel;
   if (await exists(reelPath)) reel = JSON.parse(await readFile(reelPath, 'utf8'));
 
-  if (reel && (reel.sceneCount < 8 || reel.sceneCount > 12)) {
-    missing.push('reel.json: sceneCount muss zwischen 8 und 12 liegen');
+  if (reel && (reel.sceneCount < 12 || reel.sceneCount > 14)) {
+    missing.push('reel.json: sceneCount muss zwischen 12 und 14 liegen');
   }
 
   if (reel) {
@@ -100,7 +100,7 @@ async function main() {
   console.log('Grundstruktur ist vollständig.');
   console.log(`Reel: ${reel.title}`);
   console.log(`Szenen: ${reel.sceneCount}`);
-  console.log('Codex-Auftrag, Untertitelplan, Effektplan und Inbox sind vorhanden.');
+  console.log('3-Phasen-Auftrag, Untertitelplan, Effektplan und Inbox sind vorhanden.');
 }
 
 main().catch((error) => {

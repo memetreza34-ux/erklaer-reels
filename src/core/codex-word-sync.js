@@ -272,6 +272,41 @@ export function validateCodexWorkbench(workbench, { strict = false } = {}) {
   const actualHash = hash(words.map((word) => word.text).join(' '));
   checks.push({ id: 'script-text-unchanged', passed: !expectedHash || expectedHash === actualHash, level: 'error', message: 'Der Wortlaut der Codex-Arbeitsdatei wurde verändert.' });
 
+  const whisperAlignment = workbench?.whisperAlignment;
+  if (whisperAlignment) {
+    const unresolved = [
+      ...(whisperAlignment.unmatchedScriptWords ?? []),
+      ...(whisperAlignment.fuzzyScriptWords ?? []),
+      ...(whisperAlignment.extraWhisperWords ?? []),
+      ...(whisperAlignment.unmatchedCues ?? [])
+    ];
+    checks.push({
+      id: 'whisper-alignment-passed',
+      passed: whisperAlignment.status === 'passed',
+      level: 'error',
+      message: 'Der Whisper-Abgleich ist nicht vollständig bestanden.'
+    });
+    checks.push({
+      id: 'whisper-no-fallbacks',
+      passed: Number(whisperAlignment.fallbackCount ?? 0) === 0,
+      level: 'error',
+      message: 'Whisper-Zeiten dürfen keine geschätzten oder erfundenen Fallbacks enthalten.'
+    });
+    checks.push({
+      id: 'whisper-no-unresolved-items',
+      passed: unresolved.length === 0,
+      level: 'error',
+      message: `Whisper-Abgleich enthält ungeklärte Wörter oder Bild-Cues: ${unresolved.join(', ') || 'keine'}.`
+    });
+    checks.push({
+      id: 'whisper-audio-fingerprint-match',
+      passed: Boolean(whisperAlignment.audioFingerprintSha256)
+        && whisperAlignment.audioFingerprintSha256 === workbench.audioFingerprintSha256,
+      level: 'error',
+      message: 'Der Whisper-Abgleich gehört nicht zum aktuell gebundenen Produktionsaudio.'
+    });
+  }
+
   const errors = checks.filter((check) => !check.passed && check.level === 'error');
   const warnings = checks.filter((check) => !check.passed && check.level === 'warning');
   return {
@@ -354,7 +389,7 @@ export async function prepareCodexWordSync(reelDirectory) {
     apiKeyRequired: false,
     workbenchFile: 'subtitles/codex-word-sync.json',
     taskFile: 'production/codex-word-sync-task.md',
-    checks: [{ id: 'codex-audio-review', passed: false, level: 'warning', message: 'Codex muss das Voice-over vollständig anhören und jedes Wort zeitlich bestätigen.' }]
+    checks: [{ id: 'codex-audio-review', passed: false, level: 'warning', message: 'Antigravity muss das Voice-over vollständig anhören und jedes Wort zeitlich bestätigen.' }]
   });
 
   const statusPath = path.join(reelDirectory, 'status.json');

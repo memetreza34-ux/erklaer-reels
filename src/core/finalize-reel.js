@@ -136,7 +136,7 @@ function wordSyncStage(renderPlan, strict, voiceScript) {
 
     checks.push({ id: `${cue.id ?? 'subtitle'}-exact-word-timing`, passed: exact, level: strict ? 'error' : 'warning', message: `${cue.id ?? 'Untertitel'}: ${result.issues.join(' ') || 'Exakte Wortzeiten vorhanden.'}` });
     checks.push({ id: `${cue.id ?? 'subtitle'}-timing-status`, passed: cue.timingStatus === 'codex-word-synced', level: strict ? 'error' : 'warning', message: `${cue.id ?? 'Untertitel'} muss timingStatus "codex-word-synced" verwenden.` });
-    checks.push({ id: `${cue.id ?? 'subtitle'}-timing-source`, passed: cue.timingSource === 'codex-local-audio-review', level: strict ? 'error' : 'warning', message: `${cue.id ?? 'Untertitel'} muss aus der lokalen Codex-Audioprüfung stammen.` });
+    checks.push({ id: `${cue.id ?? 'subtitle'}-timing-source`, passed: cue.timingSource === 'codex-local-audio-review', level: strict ? 'error' : 'warning', message: `${cue.id ?? 'Untertitel'} muss aus der lokalen Antigravity-Audioprüfung stammen.` });
   }
 
   checks.push({

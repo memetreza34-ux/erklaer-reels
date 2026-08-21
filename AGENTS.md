@@ -10,23 +10,38 @@ Ein normaler Auftrag wie „Mach ein neues Reel“ darf globale Regeln **nicht**
 
 ---
 
-## Pflichttrigger: „Mach ein neues Reel“
+## Pflicht: Antigravity arbeitet nur in Phase 3
 
-Bei „Mach ein neues Reel“, „Erstelle das nächste Reel“ oder sinngleichen Imperativen erstellt Codex selbstständig das vollständige Produktionspaket. Nicht nach Datum oder Thema fragen und nicht nach der Ordnererstellung stoppen.
+Dieses Repository ist ausschließlich die Produktionsumgebung für Antigravity nach der kreativen Erstellung und externen Mediengenerierung.
 
-1. `CURRENT_WORKFLOW.md`, `docs/autonomous-reel.md` und `CODEX_TASK.md` lesen.
-2. `npm run next:slot -- --json` ausführen.
-3. Wiederholungen vermeiden und ein Thema aus den erlaubten Säulen wählen.
-4. Ein deutsches Voice-over mit genau einem Erzähler schreiben.
-5. Reel mit `npm run create:reel -- --next-free` anlegen.
-6. `production/agent-task.md` vollständig bearbeiten.
-7. Cover, 12–14 Szenen, Bildprompts, Sammeldatei, Untertitel-/Effektplanung, Caption und Quellen fertigstellen.
-8. `npm run export:prompts -- --dir "<reel-ordner>" --strict` ausführen.
-9. `validate:reel` und `check:content --strict` ausführen, soweit die Umgebung dies tatsächlich erlaubt.
-10. Wenn Bilder oder Audio scheinbar fehlen, **nicht sofort anhalten**, sondern zuerst `npm run discover:assets -- --dir "<reel-ordner>"` bzw. den normalen `organize:assets`-Lauf verwenden und die definierten Suchorte prüfen.
-11. Gefundene ZIP-Dateien mit vollständiger `Bild 00 ... Bild XX`-Serie automatisch sicher entpacken und in `inbox/numbered-images/` übernehmen; danach weiterhin echte visuelle Zwei-Pass-QC durchführen.
-12. Erst wenn die Asset-Suche nachweislich nichts Passendes findet oder mehrere unklare Kandidaten nicht sicher unterschieden werden können, den Nutzer informieren.
-13. Sind alle Assets vorhanden und geprüft, ohne unnötige Pause bis zur tatsächlich geprüften MP4 weiterarbeiten.
+1. Phase 1: Normales ChatGPT erstellt Thema, Script, 12–14 Szenen, eine der drei erlaubten Bildwelten, alle Bildprompts, Caption und Quellen.
+2. Phase 2: Der Nutzer erstellt mit Google Flow alle Bilder und extern das Voice-over-Audio.
+3. Phase 3: Antigravity übernimmt danach den vollständigen technischen Abschluss bis zur geprüften MP4.
+
+Antigravity darf kein Thema wählen, kein Voice-Script schreiben, keine Bildwelt wählen, keine Bildprompts erstellen und keine Bilder oder Audios generieren. Es darf fehlende kreative Inhalte nicht selbst ergänzen.
+
+Vor jeder Phase-3-Produktion zwingend:
+
+```bash
+npm run verify:handoff -- --dir "<reel-ordner>"
+```
+
+Ist die Übergabe vollständig, arbeitet Antigravity ohne unnötige Pause durch Asset-Discovery, sichere Übernahme, Zwei-Pass-QC, Audio-Pacing, Timeline, Whisper-Sync, Untertitel, Finalisierung, Render und finale Video-QC. Ist sie unvollständig, meldet Antigravity nur die konkrete fehlende Phase-1- oder Phase-2-Komponente.
+
+## Pflichttrigger: „Antigravity los, erstelle das Reel“
+
+Dieser Satz, `Antigravity los` und sinngleiche eindeutige Startaufträge geben den vollständigen Phase-3-Lauf frei.
+
+Danach gilt:
+
+- selbstständig bis zur geprüften MP4 durcharbeiten
+- keine Zwischenstände oder routinemäßigen Rückfragen an den Nutzer senden
+- intern weiterarbeiten, auch wenn ein Schritt Suche, Prüfung oder sichere Wiederholung benötigt
+- erst melden, wenn ein nach allen sicheren Eigenlösungen weiterhin blockierender Fehler vorliegt oder das Reel vollständig fertig und geprüft ist
+- Fehlermeldung: konkretes Gate plus konkret benötigte Nutzeraktion
+- Fertigmeldung: geprüfter MP4-Pfad plus bestandener Endstatus
+
+Ein bloß schwieriger, langsamer oder noch laufender Schritt ist kein Meldegrund.
 
 ---
 
@@ -96,7 +111,7 @@ Die erzeugte `all-image-prompts/all-image-prompts.txt` muss dem aktuellen Google
 - `Bild 00` ist Cover, sichtbare Hook und verbindlicher Style-Master.
 - Erst nach dem letzten Bild alle fertigen Bilder gemeinsam in `00-bildprompts/00-ALLE-BILDER-HIER-REIN/` legen.
 
-Antigravity, Codex und andere Repo-Agenten erzeugen selbst keine Cover- oder Szenenbilder.
+Diese Prompts stammen aus Phase 1. Antigravity erzeugt oder verändert sie in Phase 3 nicht und erstellt selbst keine Cover- oder Szenenbilder.
 
 ---
 
@@ -192,13 +207,14 @@ npm run trim:pauses -- --dir "<reel-ordner>" --speed 1.10
 npm run build:timeline -- --dir "<reel-ordner>"
 npm run sync:audio -- --dir "<reel-ordner>" --strict
 npm run sync:words -- --dir "<reel-ordner>"
-# production/codex-word-sync-task.md akustisch vollständig bearbeiten
+node scripts/sync-whisper.js <whisper_out.json> "<reel-ordner>"
 npm run sync:words -- --dir "<reel-ordner>" --apply --strict
 ```
 
 Verbindlich:
 - keine geschätzten oder gleichmäßig verteilten Wortzeiten als final akzeptieren (ein manuelles "Mocking" oder rechnerisches Schätzen der Wortzeiten ist strengstens verboten!)
-- **WICHTIG:** Nutze immer das Skript `node scripts/sync-whisper.js <whisper_out.json> <reel-dir>`, um die mit Whisper erzeugten Wortzeiten mikrosekundengenau mit den Untertiteln abzugleichen!
+- **WICHTIG:** `sync-whisper.js` immer mit Whisper-Zeiten aus dem finalen, bereits gestrafften und auf 1,10x verarbeiteten Audio ausführen.
+- der Whisper-Abgleich muss `fallbackCount: 0` sowie exakte Treffer für alle Scriptwörter und Bild-Cues melden; sonst bleibt der Render blockiert
 - jedes Wort des tatsächlichen Voice-overs akustisch abhören und mit Start-/Endzeit bestätigen
 - 100 % Wortabdeckung; `unassignedWords` muss exakt `0` sein
 - die komplette gerenderte Untertitel-Wortfolge muss exakt der Wortfolge von `script/voice-script.txt` entsprechen
@@ -236,4 +252,20 @@ Ein Reel darf nur als fertig gelten, wenn Inhalt, Audio, Lautheit, Audio-Sync, *
 - Pipeline-Stufen einzeln wiederholbar halten
 - zentrale Logik testen
 - keine Tests, CI-Läufe, Bilder, Audios oder Render als erfolgreich behaupten, wenn sie nicht tatsächlich erzeugt/geprüft wurden
-- Issue #19 zur Lockdatei/CI nicht durch eine erfundene `package-lock.json` umgehen
+- die versionierte `package-lock.json` verwenden und Abhängigkeiten mit `npm ci` installieren
+
+---
+
+## YouTube-Langvideos — getrennte Pflichtregeln
+
+Vor jeder Arbeit unter `youtube/` zuerst `youtube/YOUTUBE_WORKFLOW.md` und `youtube/YOUTUBE_VISUAL_WORLD.md` lesen. Reel-spezifische Untertitel- und 9:16-Regeln dürfen nicht auf YouTube übertragen werden.
+
+Für YouTube gilt:
+
+- 16:9, 8–12 Minuten, eigene Bildwelt `german-simple-explainer-cartoon`
+- ausschließlich Bilder, deutsches Voice-over und sparsame SFX
+- keine eingebrannten Untertitel, Karaoke-Wörter oder Textkarten
+- gleiches 3-Phasen-Prinzip: ChatGPT erstellt → Nutzer erzeugt Bilder/Audio → Antigravity finalisiert
+- `npm run verify:youtube-handoff -- --dir "<youtube-projekt>"` vor Phase 3
+- `Antigravity los, erstelle das YouTube-Video` startet den stillen Durchlauf bis Fehler oder geprüfter MP4
+- Antigravity meldet keine Zwischenstände und legt die finale Datei unter `10-output/` ab

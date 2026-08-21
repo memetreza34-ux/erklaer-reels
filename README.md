@@ -1,6 +1,6 @@
 # Erklär-Reels
 
-Produktionspipeline für visuelle Erklär-Reels zu Politik, Gesellschaft, Ländern, Geografie, Geschichte, Psychologie und menschlichem Verhalten.
+Antigravity-Produktionspipeline für die technische Fertigstellung visueller Erklär-Reels.
 
 > Warum Menschen, Länder und Gesellschaften so funktionieren.
 
@@ -8,7 +8,23 @@ Produktionspipeline für visuelle Erklär-Reels zu Politik, Gesellschaft, Lände
 
 **`CURRENT_WORKFLOW.md` ist die Single Source of Truth für den aktuellen Produktionsablauf.**
 
-Neue Chats, Codex, Antigravity und andere Repo-Agenten sollen diese Datei zuerst lesen. Bei einem Widerspruch mit älteren Dokumenten oder historischen Reel-Dateien gilt die Prioritätsreihenfolge aus `CURRENT_WORKFLOW.md`.
+Antigravity liest diese Datei zuerst. Bei einem Widerspruch mit älteren Dokumenten oder historischen Reel-Dateien gilt die Prioritätsreihenfolge aus `CURRENT_WORKFLOW.md`.
+
+## Drei feste Phasen
+
+1. **Normales ChatGPT:** erstellt Script, 12–14 Szenen, eine der drei Bildwelten, Prompts, Caption und Quellen.
+2. **Arman:** erzeugt mit Google Flow alle Bilder und extern das Voice-over-Audio.
+3. **Antigravity:** übernimmt danach alles technisch bis zur geprüften MP4.
+
+Vor Phase 3:
+
+```bash
+npm run verify:handoff -- --dir "PFAD-ZUM-REEL"
+```
+
+Die Details stehen in `WORKFLOW_PHASES.md`.
+
+Mit `Antigravity los, erstelle das Reel` startet Phase 3. Antigravity arbeitet anschließend ohne Zwischenmeldungen bis zu einem echten blockierenden Fehler oder bis zur vollständig geprüften MP4.
 
 ## Produktionsstandard
 
@@ -30,7 +46,7 @@ Neue Chats, Codex, Antigravity und andere Repo-Agenten sollen diese Datei zuerst
 
 ## Aktueller Bildworkflow mit Google Flow
 
-Antigravity/Codex erstellen Script, Cover-Prompt, Szenenprompts und die Sammeldatei, **aber keine Bilder**.
+Normales ChatGPT erstellt Script, Cover-Prompt, Szenenprompts und die Sammeldatei. Antigravity verändert diese Inhalte in Phase 3 nicht.
 
 Der Nutzer kopiert einmal die komplette Datei
 
@@ -94,9 +110,9 @@ npm run discover:assets -- --dir "PFAD-ZUM-REEL"
 
 `organize:assets` führt diese Suche ebenfalls automatisch aus. Standardmäßig werden Reel-Ordner, `~/Downloads` und `~/Desktop` geprüft. Eine eindeutige vollständige ZIP mit `Bild 00 ... Bild XX` kann sicher entpackt und in `inbox/numbered-images/` übernommen werden. Auch danach bleibt die visuelle Zwei-Pass-QC Pflicht.
 
-## Neues Reel
+## Antigravity-Start
 
-Bei „Mach ein neues Reel“ oder sinngleichen Aufträgen gilt der autonome Ablauf aus `CURRENT_WORKFLOW.md`, `AGENTS.md` und `docs/autonomous-reel.md`.
+Antigravity startet erst mit einer vollständigen Phase-1-/Phase-2-Übergabe. Danach gelten `CURRENT_WORKFLOW.md`, `AGENTS.md` und `CODEX_TASK.md`.
 
 ```bash
 npm run next:slot -- --json
@@ -151,7 +167,7 @@ npm run trim:pauses -- --dir "PFAD-ZUM-REEL" --speed 1.10
 npm run build:timeline -- --dir "PFAD-ZUM-REEL"
 npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
 npm run sync:words -- --dir "PFAD-ZUM-REEL"
-# jedes Wort im echten Audio akustisch prüfen
+node scripts/sync-whisper.js whisper_out.json "PFAD-ZUM-REEL"
 npm run sync:words -- --dir "PFAD-ZUM-REEL" --apply --strict
 npm run check:visuals -- --dir "PFAD-ZUM-REEL" --strict
 npm run finalize:reel -- --dir "PFAD-ZUM-REEL" --strict
@@ -159,7 +175,7 @@ npm run validate:render -- --dir "PFAD-ZUM-REEL"
 npm run render:reel -- --dir "PFAD-ZUM-REEL"
 ```
 
-Vor dem Render gilt zwingend: `coverage === 1`, `timedWords === totalWords`, `unassignedWords === 0`, und die gerenderte Untertitel-Wortfolge entspricht exakt `script/voice-script.txt`. Fehlt auch nur ein gesprochenes Wort, ist der Render blockiert.
+`whisper_out.json` muss aus dem finalen, bereits auf 1,10x verarbeiteten Audio stammen. Vor dem Render gilt zwingend: `fallbackCount === 0`, `coverage === 1`, `timedWords === totalWords`, `unassignedWords === 0`, alle Bild-Cues sind exakt getroffen und die gerenderte Wortfolge entspricht `script/voice-script.txt`.
 
 Keine geplante oder nicht ausgeführte Stufe als bestanden ausgeben.
 
@@ -169,6 +185,6 @@ Keine geplante oder nicht ausgeführte Stufe als bestanden ausgeben.
 - FFmpeg und optional `ffprobe`
 - Remotion-Pakete in identischer Version
 
-## Bekannter Infrastrukturpunkt
+## Reproduzierbare Installation
 
-Issue #19 (`package-lock.json` erzeugen und CI auf `npm ci` umstellen) bleibt offen. Keine Lockdatei manuell erfinden und keine nicht ausgeführten Tests als bestanden melden.
+Die versionierte `package-lock.json` ist maßgeblich. Lokal und in CI werden Abhängigkeiten mit `npm ci` installiert. Tests oder CI-Läufe nur als bestanden melden, wenn sie tatsächlich erfolgreich gelaufen sind.

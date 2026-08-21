@@ -50,7 +50,7 @@ test('legt Hinweise fuer seriellen autonomen Durchlauf ohne weiteres Nutzer-Go a
   assert.match(paths.file, /all-image-prompts[\\/]all-image-prompts\.txt$/);
   assert.match(placeholder, /Cover und Szenen/);
   assert.match(readme, /Bild 00 = Cover/);
-  assert.match(readme, /harte serielle Sperre und autonomem Durchlauf/);
+  assert.match(readme, /harter serieller Sperre und autonomem Durchlauf/);
   assert.match(readme, /nur \*\*eine einzige Bildgenerierung aktiv\*\*/);
   assert.match(readme, /kein weiteres `Go`, `Weiter`/);
   assert.match(readme, /automatisch ohne Nutzerinteraktion Bild 01 starten/);

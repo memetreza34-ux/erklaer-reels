@@ -22,7 +22,7 @@ test('übernimmt unsortierte Bilder, Cover und Audio anhand der Asset-Map', asyn
     title: 'Warum entstehen Grenzen?',
     script: 'Grenzen entstehen durch politische Entscheidungen, Konflikte, Verträge und historische Entwicklungen. Dieses Script dient nur als Test.',
     date: new Date('2026-07-30T12:00:00'),
-    sceneCount: 8,
+    sceneCount: 12,
     outputRoot: temporaryRoot
   });
 
@@ -44,13 +44,26 @@ test('übernimmt unsortierte Bilder, Cover und Audio anhand der Asset-Map', asyn
         source: 'images/zufall-a.png',
         target: 'scene-01',
         confidence: 0.97,
-        reason: 'Das Testbild gehört zum Hook.'
+        visualReviewed: true,
+        secondPassConfirmed: true,
+        sceneOrderConfirmed: true,
+        confirmedTarget: 'scene-01',
+        confirmedSceneOrder: 1,
+        visibleSummary: 'Eine klare Szene zeigt den visuellen Hook des Test-Reels.',
+        reason: 'Der sichtbare Bildinhalt entspricht dem Sprechertext und dem geplanten Hook.',
+        comparedFields: ['narration', 'visualIdea', 'imageText', 'imagePrompt'],
+        matchMethod: 'visual-content-review'
       },
       {
         source: 'images/thumbnail-final.webp',
         target: 'cover',
         confidence: 0.94,
-        reason: 'Das Testbild ist als Cover markiert.'
+        visualReviewed: true,
+        secondPassConfirmed: true,
+        visibleSummary: 'Ein klar gestaltetes Titelbild fasst das Thema visuell zusammen.',
+        reason: 'Die sichtbare Titelkomposition entspricht Headline, Cover-Idee und Cover-Prompt.',
+        comparedFields: ['headline', 'coverVisualIdea', 'coverPrompt'],
+        matchMethod: 'visual-content-review'
       },
       {
         source: 'audio/sprecher-neu.mp3',
@@ -89,7 +102,7 @@ test('lehnt unsichere oder doppelte Zuweisungen ab', async () => {
     title: 'Was ist Gruppendruck?',
     script: 'Gruppendruck beschreibt den Einfluss einer Gruppe auf Entscheidungen und Verhalten einzelner Personen.',
     date: new Date('2026-07-30T12:00:00'),
-    sceneCount: 8,
+    sceneCount: 12,
     outputRoot: temporaryRoot
   });
 

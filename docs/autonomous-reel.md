@@ -1,6 +1,6 @@
-# Autonomes neues Reel
+# Phase 1 — kreatives Reel-Paket mit normalem ChatGPT
 
-Dieser Ablauf gilt bei „Mach ein neues Reel“, „Erstelle das nächste Reel“ und sinngleichen Imperativen.
+Dieser Ablauf gehört ausschließlich zu normalem ChatGPT. Antigravity führt ihn nicht aus.
 
 ## Vor jeder Produktion zwingend lesen
 
@@ -9,7 +9,7 @@ Dieser Ablauf gilt bei „Mach ein neues Reel“, „Erstelle das nächste Reel�
 3. `AGENTS.md`
 4. `CODEX_TASK.md`
 
-`CURRENT_WORKFLOW.md` ist bei Widersprüchen maßgeblich. Ein normaler neuer Reel-Auftrag darf globale Produktionsregeln **nicht** verändern.
+`CURRENT_WORKFLOW.md` ist bei Widersprüchen maßgeblich. Ein normaler neuer Reel-Auftrag darf **keine globalen Produktionsregeln** verändern.
 
 ## Ablauf
 
@@ -72,9 +72,17 @@ Die generierte `all-image-prompts/all-image-prompts.txt` muss automatisch dem ak
 - `Bild 00` ist Cover, Hook und Style-Master.
 - Erst nach dem letzten Bild alle fertigen Bilder gemeinsam in den Sammelordner.
 
-Repo-Agenten erzeugen selbst keine Bilder.
+ChatGPT erzeugt selbst keine Bilder oder Audios. Diese Medien erstellt der Nutzer in Phase 2.
 
-### 6. Inhaltsprüfung
+### 6. Übergabe an den Nutzer
+
+ChatGPT liefert das vollständige kreative Paket. Der Nutzer erzeugt danach alle Bilder und das Voice-over-Audio. Antigravity beginnt erst anschließend mit:
+
+```bash
+npm run verify:handoff -- --dir "PFAD-ZUM-REEL"
+```
+
+### 7. Inhaltsprüfung
 
 ```bash
 npm run validate:reel -- --dir "PFAD-ZUM-REEL"
@@ -123,17 +131,20 @@ Nach dem finalen Audio:
 
 ```bash
 npm run sync:words -- --dir "PFAD-ZUM-REEL"
-# Audio vollständig abhören und jedes Wort exakt bestätigen
+node scripts/sync-whisper.js whisper_out.json "PFAD-ZUM-REEL"
 npm run sync:words -- --dir "PFAD-ZUM-REEL" --apply --strict
 ```
 
 Verbindlich:
 - jedes gesprochene Wort besitzt echte akustische Start-/Endzeiten
+- Whisper wurde auf dem finalen verarbeiteten Audio ausgeführt
+- `fallbackCount === 0`; kein Wort und kein Bild-Cue verwendet eine Schätzung
 - `coverage === 1`
 - `timedWords === totalWords`
 - `unassignedWords === 0`
 - die komplette gerenderte Untertitel-Wortfolge entspricht exakt `script/voice-script.txt`
 - Grundtext bleibt `#F5F7FA`
+- vertikale Position bleibt exakt bei 58 % der Bildhöhe
 - nur das aktuell gesprochene Wort wird synchron in Braun `#B7794A` markiert
 - keine Box und keine zusätzliche Spring-/Zoom-Karaoke-Animation
 - fehlt auch nur ein Wort, darf nicht gerendert werden

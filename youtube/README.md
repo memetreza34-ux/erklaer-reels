@@ -6,7 +6,17 @@ Dieser Bereich ist die **eigenständige Produktionspipeline für YouTube-Langvid
 
 Für YouTube zuerst **`youtube/YOUTUBE_WORKFLOW.md`** lesen. Reel-spezifische Werte aus `CURRENT_WORKFLOW.md` wie 55–60 Sekunden, 13 Szenen oder Reel-Untertitelregeln gelten **nicht automatisch** für YouTube-Langvideos.
 
-Aktueller Startstandard: Neue YouTube-Langvideos zielen zunächst auf **ungefähr 5 bis 6 Minuten**. Die genaue Dauer darf innerhalb dieses Korridors natürlich variieren.
+Aktueller Standard: deutsche, quellenbasierte 16:9-Erklärgeschichten mit **8 bis 12 Minuten**, Ziel ungefähr 10 Minuten. Sie bestehen nur aus Bildern, deutschem Voice-over und sparsamen Soundeffekten. Im Video gibt es keine Untertitel oder Textkarten.
+
+Eigene Bildwelt: **`german-simple-explainer-cartoon`** aus `youtube/YOUTUBE_VISUAL_WORLD.md`.
+
+```bash
+npm run create:youtube -- --title "TITEL"
+npm run verify:youtube-handoff -- --dir "youtube/projects/video-XX_slug"
+npm run validate:youtube-render -- --dir "youtube/projects/video-XX_slug"
+npm run render:youtube -- --dir "youtube/projects/video-XX_slug"
+npm run validate:youtube-output -- --dir "youtube/projects/video-XX_slug"
+```
 
 ## Struktur
 

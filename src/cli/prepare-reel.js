@@ -23,7 +23,7 @@ async function main() {
   console.log(`Geplante Bildmomente: ${result.sceneCount}`);
   console.log(`Chronologische Bildprompt-Datei: ${promptBundle.file}`);
   console.log('Nach Fertigstellung aller Szenenprompts: npm run export:prompts -- --dir "PFAD-ZUM-REEL" --strict');
-  console.log('Nächster Schritt für Codex: production/agent-task.md vollständig abarbeiten.');
+  console.log('Nächster Schritt in Phase 1: production/agent-task.md mit normalem ChatGPT vollständig abarbeiten. Antigravity startet erst nach der Medienübergabe.');
 }
 
 main().catch((error) => {

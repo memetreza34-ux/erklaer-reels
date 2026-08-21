@@ -1,16 +1,26 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "videoId": "video-XX_slug",
   "title": "",
   "topic": "",
   "status": "planned",
   "language": "de",
   "format": "youtube-longform",
+  "aspectRatio": "16:9",
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "visualStyleId": "german-simple-explainer-cartoon",
+  "subtitlesEnabled": false,
+  "textCardsEnabled": false,
+  "narratorCount": 1,
   "targetDurationMinutes": {
-    "min": 5,
-    "max": 6,
+    "min": 8,
+    "target": 10,
+    "max": 12,
     "mode": "approximate"
   },
+  "sceneCount": 72,
   "createdAt": "",
   "updatedAt": ""
 }

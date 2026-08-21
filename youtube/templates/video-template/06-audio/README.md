@@ -1,3 +1,3 @@
 # Audio
 
-Hier liegen Voice-over, SFX und gegebenenfalls weitere Audioelemente. Audio gilt erst als fertig, wenn die tatsächlich verwendete Datei feststeht.
+Das unbearbeitete deutsche Voice-over kommt nach `inbox/`. Antigravity erstellt daraus in Phase 3 das normalisierte Produktionsaudio. Keine Hintergrundmusik; sparsame SFX sind erlaubt.

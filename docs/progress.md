@@ -21,11 +21,11 @@ npm run status:reel -- \
 - **Externe Assets:** Szenenbilder, Cover, Audio und Zuordnungsbericht.
 - **Gesamtstand:** 65 % Vorproduktion und 35 % externe Assets.
 
-Ein Reel kann deshalb vor der externen Bilderstellung bei höchstens 65 % Gesamtstand liegen, obwohl die Vorproduktion bereits 100 % erreicht hat. Das trennt sauber zwischen dem, was Codex im Repository erledigt, und dem, was der Nutzer extern erzeugt.
+Ein Reel kann deshalb vor der externen Bilderstellung bei höchstens 65 % Gesamtstand liegen, obwohl Phase 1 bereits 100 % erreicht hat. Das trennt sauber zwischen dem kreativen ChatGPT-Paket, den externen Nutzer-Assets und Antigravity in Phase 3.
 
 Die Ausgabe nennt außerdem den nächsten sinnvollen Schritt, zum Beispiel:
 
-- Codex-Auftrag fertigstellen
+- Phase-1-Auftrag mit normalem ChatGPT fertigstellen
 - strenge Inhaltsprüfung bestehen
 - Audio und Bilder erzeugen
 - unsortierte Assets zuordnen

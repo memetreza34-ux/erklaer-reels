@@ -9,7 +9,7 @@ function normalizeHost(hostname) {
 }
 
 function fieldValues(text, labelPattern) {
-  const expression = new RegExp(`^- ${labelPattern}:\\s*(.+)$`, 'gmi');
+  const expression = new RegExp(`^[ \\t]*-[ \\t]*${labelPattern}:[ \\t]*(.+)$`, 'gmi');
   return [...String(text ?? '').matchAll(expression)]
     .map((match) => String(match[1] ?? '').trim())
     .filter(Boolean);
