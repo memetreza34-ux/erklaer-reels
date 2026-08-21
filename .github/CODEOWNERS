@@ -1,0 +1,18 @@
+# Kritische Produktionsregeln benötigen eine bewusste Prüfung durch den Repository-Eigentümer.
+/AGENTS.md @memetreza34-ux
+/CURRENT_WORKFLOW.md @memetreza34-ux
+/WORKFLOW_PHASES.md @memetreza34-ux
+/config/workflow-phases.json @memetreza34-ux
+/config/production-quality-gates.json @memetreza34-ux
+/config/youtube-production.json @memetreza34-ux
+/config/locked-production-baseline.json @memetreza34-ux
+/scripts/sync-whisper.js @memetreza34-ux
+/src/shared/subtitle-style.js @memetreza34-ux
+/src/shared/audio-pacing-style.js @memetreza34-ux
+/src/core/whisper-alignment.js @memetreza34-ux
+/src/core/workflow-handoff.js @memetreza34-ux
+/src/core/youtube-handoff.js @memetreza34-ux
+/src/core/youtube-render-validator.js @memetreza34-ux
+/src/core/youtube-output-validator.js @memetreza34-ux
+/youtube/YOUTUBE_WORKFLOW.md @memetreza34-ux
+/youtube/YOUTUBE_VISUAL_WORLD.md @memetreza34-ux

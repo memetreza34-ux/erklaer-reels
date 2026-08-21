@@ -29,6 +29,7 @@
     "validate:youtube-render": "node src/cli/render-youtube-video.js --validate-only",
     "render:youtube": "node src/cli/render-youtube-video.js",
     "validate:youtube-output": "node src/cli/validate-youtube-output.js",
+    "verify:production-lock": "node src/cli/verify-production-lock.js",
     "studio": "remotion studio src/renderer/index.jsx",
     "test": "node --test"
   },

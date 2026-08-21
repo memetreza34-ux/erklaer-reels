@@ -243,6 +243,9 @@ Ein Reel darf nur als fertig gelten, wenn Inhalt, Audio, Lautheit, Audio-Sync, *
 
 ## Technische Schutzregeln
 
+- Vor jeder Arbeit `npm run verify:production-lock` ausführen. Schlägt der Produktions-Lock fehl, nicht weiterarbeiten und keine Hashes automatisch aktualisieren.
+- Dateien aus `config/locked-production-baseline.json` dürfen nur nach einer ausdrücklichen aktuellen Nutzeranweisung geändert werden. Eine normale Reel- oder YouTube-Produktion ist keine Freigabe dafür.
+- Lock-Hashes niemals nebenbei, automatisch oder nur zum Bestehen von CI aktualisieren. Eine Hash-Änderung ist eine bewusste Freigabe des neuen globalen Produktionsvertrags.
 - **NIEMALS** interne Quality-Checks (wie `validate:render` oder `sync:words --strict`) mithilfe von `--force` oder durch temporäre Code-Anpassungen (Bypasses) überspringen! Die Pipeline hat immer recht.
 - stabile IDs wie `scene-01`
 - `scene-index.json` und jede `scene.json` synchron halten

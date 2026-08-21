@@ -18,6 +18,16 @@ Wenn sich Dokumente, alte Reel-Dateien, Beispieltexte oder frühere Produktionsa
 
 Ein normaler Auftrag wie „Mach ein neues Reel“ darf diese globalen Regeln **nicht** verändern. Globale Regeln werden nur geändert, wenn der Nutzer ausdrücklich eine neue Regel festlegt.
 
+## Eingefrorene Produktionsbaseline
+
+Die finalen Workflow-, Synchronisations-, Bildwelt- und Qualitätsregeln sind zusätzlich durch `config/locked-production-baseline.json` kryptografisch gebunden.
+
+```bash
+npm run verify:production-lock
+```
+
+Der Befehl muss lokal und in CI bestehen. Eine Abweichung blockiert die Pipeline. Lock-Dateien und Hashes dürfen nur nach einer ausdrücklichen aktuellen Nutzeranweisung bewusst gemeinsam aktualisiert werden; niemals automatisch, nebenbei oder zur Umgehung einer fehlgeschlagenen Prüfung.
+
 ---
 
 ## 1. Verbindliches 3-Phasen-System

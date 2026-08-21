@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "lockedAt": "2026-08-21",
+  "purpose": "Verhindert unbeabsichtigte Änderungen an den final freigegebenen Produktionsregeln.",
+  "requiredEntryCount": 19,
+  "files": [
+    { "path": ".github/workflows/node-ci.yml", "sha256": "8e599c46729cbd52c9a3f55f999915aa7fd2d042b387c5255be0c238458f73b0" },
+    { "path": "AGENTS.md", "sha256": "69efa4942da28062b158a2412f62b7075449626444b5272eb8b8800c02d417a9" },
+    { "path": "CURRENT_WORKFLOW.md", "sha256": "d55362cc7617e5353e916d2288b732da1609c110d6a80a1a316bb99f431528dd" },
+    { "path": "WORKFLOW_PHASES.md", "sha256": "917ed8f9a8729e5da79a50c52fe6a362394254603e5bbcb0cc70351076435f74" },
+    { "path": "config/workflow-phases.json", "sha256": "7f1a37e63bf22e361e517e8eb6a7586ee63e535b5f37c4a91a059b5d3b5cf78a" },
+    { "path": "config/production-quality-gates.json", "sha256": "79fc407ee07c010a9116448b96949b42523b82689b268a9c6f7f2e00213f8fef" },
+    { "path": "config/youtube-production.json", "sha256": "96487931ef3d4672cb8302886c36f3599d27423922e1c7d9e713e5c377a02822" },
+    { "path": "scripts/sync-whisper.js", "sha256": "a315a9f67bafe129faa3fe6affaff9678f999ddf1ab3f8052be60b9a99a04fad" },
+    { "path": "src/shared/subtitle-style.js", "sha256": "93ee25fbc0dafffd2310ba298ef20d75f93f10bd05be6069ad63aee5a3888fec" },
+    { "path": "src/shared/audio-pacing-style.js", "sha256": "98fb2209337b3ec857076477d983327abf4740aadb6428719c8939137763a987" },
+    { "path": "src/core/codex-word-sync.js", "sha256": "8e036e65556a1ff8ebd1cdc0096f27da99d6639cd731f9c3837a3862f2ece5fc" },
+    { "path": "src/core/timeline.js", "sha256": "221ad99bd516dd802e5feb1290ce82e98338699c40e20f3d00b5d5bcfaf858a8" },
+    { "path": "src/core/whisper-alignment.js", "sha256": "42685db6e768ba9e66411caef7ba7e6140cbd528df66b851c8e12828ebbff583" },
+    { "path": "src/core/workflow-handoff.js", "sha256": "1a5c13a2b76a5080c8b35eae63cdad9d04453ddd559dae604ec3dbf0fe6bb4a1" },
+    { "path": "src/core/youtube-handoff.js", "sha256": "89ebd99d148cc4a90f466c8d3a693eff6c2c6220b73abb3697bf1d75d49e2f64" },
+    { "path": "src/core/youtube-render-validator.js", "sha256": "347bfd50c6c8a600e97cbe2ccbedca57e24ac7bfbf03990e35fb6aa42d859bba" },
+    { "path": "src/core/youtube-output-validator.js", "sha256": "0f30bafed992a588401b4b5efc33cfd0a82a4bc72b622a656b351c1752192de7" },
+    { "path": "youtube/YOUTUBE_WORKFLOW.md", "sha256": "328977506f9814fb8b5af5bedfea94bac3b2f3cc6e59e16a37e4a5d96e8412de" },
+    { "path": "youtube/YOUTUBE_VISUAL_WORLD.md", "sha256": "efc9ce9d4b7dbc4eed3ebb2e1013b4f6790b07f7f83778eb82f0b121e641e44f" }
+  ]
+}

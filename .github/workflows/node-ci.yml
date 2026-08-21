@@ -21,6 +21,9 @@ jobs:
       - name: Abhängigkeiten installieren
         run: npm ci --no-audit --no-fund
 
+      - name: Eingefrorene Produktionsregeln prüfen
+        run: npm run verify:production-lock
+
       - name: Tests ausführen
         shell: bash
         run: |
