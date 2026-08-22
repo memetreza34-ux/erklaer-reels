@@ -116,9 +116,7 @@ export function activeWordIndex(words, elapsedSeconds) {
   }
   if (active < 0) return -1;
 
-  const nextStart = words[active + 1]?.startSeconds;
-  const highlightUntil = Number.isFinite(nextStart)
-    ? nextStart
-    : words[active].endSeconds + 0.1;
-  return elapsed <= highlightUntil + 0.015 ? active : -1;
+  // The highlight follows the acoustic word end, not the next word start.
+  // This prevents the previous word staying brown during a real speech pause.
+  return elapsed <= words[active].endSeconds + 0.015 ? active : -1;
 }
