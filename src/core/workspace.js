@@ -1,6 +1,8 @@
 import { mkdir, readdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
+import { SUBTITLE_STYLE } from '../shared/subtitle-style.js';
+
 const WEEKDAYS_DE = [
   'sonntag',
   'montag',
@@ -135,7 +137,7 @@ export async function createReelWorkspace({
       audioCue: '',
       leadInSeconds: 0.2,
       subtitleCues: [],
-      subtitlePosition: null,
+      subtitlePosition: SUBTITLE_STYLE.position,
       durationSeconds: 0,
       expectedImageFileName: `${sceneId}.png`,
       promptStatus: 'missing',
@@ -206,9 +208,18 @@ export async function createReelWorkspace({
     version: 8,
     enabled: false,
     reason: 'Globale Nutzerregel: Erklär-Reels werden ohne Untertitel gerendert.',
+    language: 'de',
+    position: SUBTITLE_STYLE.position,
+    verticalPositionPercent: SUBTITLE_STYLE.verticalPositionPercent,
+    safeVerticalRangePercent: SUBTITLE_STYLE.safeVerticalRangePercent,
+    textColor: SUBTITLE_STYLE.textColor,
+    highlightCurrentWord: SUBTITLE_STYLE.highlightCurrentWord,
+    highlightColor: SUBTITLE_STYLE.highlightColor,
+    backgroundColor: SUBTITLE_STYLE.backgroundColor,
+    maxLines: SUBTITLE_STYLE.maxLines,
     cues: []
   });
-  await writeText(path.join(reelDirectory, 'subtitles', 'README.md'), '# Untertitel\n\nUntertitel sind für dieses Format global deaktiviert. Der Renderer darf keine Untertitel einblenden.\n');
+  await writeText(path.join(reelDirectory, 'subtitles', 'README.md'), '# Untertitel\n\nUntertitel sind für dieses Format global deaktiviert. Die verbleibende Plan-Datei dient nur der Abwärtskompatibilität; der Renderer darf keine Untertitel einblenden.\n');
   await writeJson(path.join(reelDirectory, 'effects', 'effects-plan.json'), {
     version: 1,
     enabled: true,
