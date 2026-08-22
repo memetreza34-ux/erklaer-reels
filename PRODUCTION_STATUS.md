@@ -21,20 +21,17 @@ Die kreative und funktionale Testphase ist abgeschlossen. Normale Reel-Erstellun
 - mindestens 0,90 Konfidenz für finale automatische Bildzuordnung
 - Voice-over exakt 1,10x, Tonhöhe erhalten
 - −16 LUFS, höchstens −1,5 dBTP
-- Untertitel horizontal zentriert und vertikal bei exakt 58 % Bildhöhe
-- Untertitel-Grundfarbe `#F5F7FA`
-- das aktuell gesprochene Wort wird exakt nach akustischen Wortzeiten in Braun `#B7794A` markiert
-- 100 % des gesprochenen Voice-Scripts müssen in identischer Wortreihenfolge als Untertitel vorhanden sein; kein Wort oder Satz darf fehlen
-- keine schwarze Box und keine zusätzliche Spring-/Zoom-Karaoke-Animation; nur der Farbwechsel des aktiven Wortes
-- exakte lokale Wort-Synchronisierung mit dem echten Voice-over vor dem finalen Render
-- `unassignedWords` muss exakt `0` sein
+- **keine Untertitel**
+- **kein Word-Sync für Untertitel**
+- keine künstlich freigehaltene Untertitelzone; Bilder dürfen die volle 9:16-Fläche sinnvoll nutzen
+- Szenenwechsel werden ausschließlich an bestätigten Audio-Cues der finalen Audiodatei ausgerichtet
 - ausschließlich direkte harte Schnitte
 - starkes Ende über zwei Szenen
 - Schlussbild 0,7 Sekunden nach dem letzten gesprochenen Wort
 
 ## Eingefrorener Google-Flow-Bildworkflow
 
-Diese Regeln gehören ab jetzt ausdrücklich zum Produktionsstandard:
+Diese Regeln gehören ausdrücklich zum Produktionsstandard:
 
 - Antigravity/Codex/Repo-Agenten erzeugen keine Cover- oder Szenenbilder.
 - Der Nutzer startet Google Flow einmal mit der kompletten `all-image-prompts/all-image-prompts.txt`.
@@ -48,12 +45,12 @@ Diese Regeln gehören ab jetzt ausdrücklich zum Produktionsstandard:
 
 ## Qualitätsprinzip
 
-Ein Reel ist erst fertig, wenn Inhalt, Audio, **vollständige Untertitelabdeckung**, akustische Wort-Synchronisierung, braune Sprecher-Markierung, Bildzuordnung, visuelle Prüfung, Timeline und Renderer-Freigabe tatsächlich bestanden sind. Geplante oder geschätzte Produktionsstufen dürfen nicht als abgeschlossen markiert werden.
+Ein Reel ist erst fertig, wenn Inhalt, Audio, Lautheit, bestätigter Szenen-Sync, Bildzuordnung, visuelle Prüfung, Timeline und Renderer-Freigabe tatsächlich bestanden sind. **Der finale Renderer darf keine Untertitel-Cues enthalten.** Geplante oder geschätzte Produktionsstufen dürfen nicht als abgeschlossen markiert werden.
 
 ## Schutz vor Regressionen
 
-Bei einem normalen Auftrag wie `Mach ein neues Reel` bleibt dieser Produktionsstandard unverändert. Alte Reel-Dateien, historische Agent-Aufträge oder Beispieltexte dürfen nicht genutzt werden, um neuere globale Regeln zurückzudrehen.
+Bei einem normalen Auftrag wie `Mach ein neues Reel` bleibt dieser Produktionsstandard unverändert. Alte Reel-Dateien, historische Agent-Aufträge oder Beispieltexte dürfen nicht genutzt werden, um Untertitel wieder zu aktivieren oder andere neuere globale Regeln zurückzudrehen.
 
 ## Bekannter Infrastrukturpunkt
 
-Issue #19 (`package-lock.json` und Umstellung von CI auf `npm ci`) bleibt als nicht blockierende Wartungsaufgabe offen. Für den aktuellen `main`-Stand liegt kein verifizierter erfolgreicher CI-Lauf vor. Deshalb keine Lockdatei erfinden und keine nicht tatsächlich ausgeführten Tests als bestanden melden.
+Issue #19 (`package-lock.json` und Umstellung von CI auf `npm ci`) bleibt als nicht blockierende Wartungsaufgabe offen. Für den aktuellen Stand gilt: keine nicht tatsächlich ausgeführten Tests als bestanden melden.
