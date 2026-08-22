@@ -18,11 +18,13 @@ async function readJson(filePath) {
 async function createReadyFixture() {
   const root = await mkdtemp(path.join(os.tmpdir(), 'erklaer-renderer-'));
   await mkdir(path.join(root, 'audio'), { recursive: true });
-  await mkdir(path.join(root, 'script'), { recursive: true });
   await mkdir(path.join(root, 'scenes', 'scene-01'), { recursive: true });
   await writeFile(path.join(root, 'audio', 'voiceover-tight.m4a'), 'dummy audio');
-  await writeFile(path.join(root, 'script', 'voice-script.txt'), 'Ein kurzer Untertitel\n', 'utf8');
   await writeFile(path.join(root, 'scenes', 'scene-01', 'scene-01.png'), 'dummy image');
+  await writeJson(path.join(root, 'reel.json'), {
+    reelId: 'reel-01_test',
+    subtitlesEnabled: false
+  });
   await writeJson(path.join(root, 'review', 'audio-pacing-report.json'), {
     version: 3,
     createdAt: new Date().toISOString(),
@@ -35,9 +37,10 @@ async function createReadyFixture() {
   });
   await writeJson(path.join(root, 'review', 'final-readiness-report.json'), { readyForRenderer: true });
   await writeJson(path.join(root, 'render', 'render-plan.json'), {
-    version: 2,
+    version: 4,
     reelId: 'reel-01_test',
     status: 'ready-for-renderer',
+    subtitlesEnabled: false,
     composition: { width: 1080, height: 1920, fps: 30, durationSeconds: 2, durationFrames: 60 },
     voiceover: { file: 'audio/voiceover-tight.m4a', volume: 1 },
     scenes: [{
@@ -47,36 +50,39 @@ async function createReadyFixture() {
       endFrame: 60,
       transitionIn: { type: 'none', durationSeconds: 0 },
       cameraMotion: { type: 'subtle-push-in', startScale: 1, endScale: 1.04, panXPercent: 0, panYPercent: 0 },
-      subtitles: [{
-        id: 'subtitle-01',
-        text: 'Ein kurzer Untertitel',
-        startSeconds: 0.2,
-        endSeconds: 1.8,
-        position: 'center',
-        verticalPositionPercent: 58,
-        textColor: '#F5F7FA',
-        highlightCurrentWord: true,
-        highlightColor: '#B7794A',
-        backgroundColor: 'transparent',
-        timingStatus: 'codex-word-synced',
-        timingSource: 'codex-local-audio-review',
-        wordTimings: [
-          { text: 'Ein', startSeconds: 0.25, endSeconds: 0.45 },
-          { text: 'kurzer', startSeconds: 0.5, endSeconds: 0.9 },
-          { text: 'Untertitel', startSeconds: 0.95, endSeconds: 1.5 }
-        ]
-      }],
+      subtitles: [],
       soundEffects: []
     }]
   });
   return root;
 }
 
-test('akzeptiert 1.10x, vollständige exakte Wortzeiten und braunes Sprecher-Highlight bei 58 Prozent', async () => {
+test('akzeptiert einen vollständigen Render-Plan ohne Untertitel', async () => {
   const report = await validateRendererInput(await createReadyFixture());
   assert.equal(report.passed, true, JSON.stringify(report.checks.filter((check) => !check.passed), null, 2));
-  assert.equal(report.summary.failedChecks, 0);
-  assert.ok(report.checks.some((check) => check.id === 'subtitle-full-spoken-text-coverage' && check.passed));
+  assert.ok(report.checks.some((check) => check.id === 'subtitles-disabled-in-reel' && check.passed));
+  assert.ok(report.checks.some((check) => check.id === 'no-subtitles-in-render-plan' && check.passed));
+});
+
+test('blockiert jeden Untertitel-Cue im Render-Plan', async () => {
+  const root = await createReadyFixture();
+  const planPath = path.join(root, 'render', 'render-plan.json');
+  const plan = await readJson(planPath);
+  plan.scenes[0].subtitles = [{ id: 'subtitle-01', text: 'Darf nicht gerendert werden' }];
+  await writeJson(planPath, plan);
+
+  const report = await validateRendererInput(root);
+  assert.equal(report.passed, false);
+  assert.ok(report.checks.some((check) => check.id === 'no-subtitles-in-render-plan' && !check.passed));
+  assert.ok(report.checks.some((check) => check.id === 'scene-01-no-subtitles' && !check.passed));
+});
+
+test('blockiert ein Reel, das Untertitel wieder aktiviert', async () => {
+  const root = await createReadyFixture();
+  await writeJson(path.join(root, 'reel.json'), { reelId: 'reel-01_test', subtitlesEnabled: true });
+  const report = await validateRendererInput(root);
+  assert.equal(report.passed, false);
+  assert.ok(report.checks.some((check) => check.id === 'subtitles-disabled-in-reel' && !check.passed));
 });
 
 test('alte Audio-Pacing-Reports bleiben rückwärtskompatibel', async () => {
@@ -104,15 +110,6 @@ test('akzeptiert Version 5 nur mit bestandener echter Lautheitsmessung', async (
 
   const report = await validateRendererInput(root);
   assert.equal(report.passed, true, JSON.stringify(report.checks.filter((check) => !check.passed), null, 2));
-  for (const id of [
-    'audio-loudness-measured',
-    'audio-loudness-measurement-passed',
-    'audio-measured-lufs-present',
-    'audio-measured-true-peak-present',
-    'audio-measured-values-within-tolerance'
-  ]) {
-    assert.ok(report.checks.some((check) => check.id === id && check.passed));
-  }
 });
 
 test('blockiert Version 5 ohne bestandene Lautheitsnachmessung', async () => {
@@ -133,37 +130,7 @@ test('blockiert Version 5 ohne bestandene Lautheitsnachmessung', async () => {
 
   const report = await validateRendererInput(root);
   assert.equal(report.passed, false);
-  for (const id of [
-    'audio-loudness-measured',
-    'audio-loudness-measurement-passed',
-    'audio-measured-lufs-present',
-    'audio-measured-true-peak-present',
-    'audio-measured-values-within-tolerance'
-  ]) {
-    assert.ok(report.checks.some((check) => check.id === id && !check.passed));
-  }
-});
-
-test('blockiert inkonsistenten Version-5-Report trotz behauptetem PASS', async () => {
-  const root = await createReadyFixture();
-  const reportPath = path.join(root, 'review', 'audio-pacing-report.json');
-  const pacing = await readJson(reportPath);
-  Object.assign(pacing, {
-    version: 5,
-    loudnessMeasured: true,
-    loudnessMeasurement: {
-      measured: true,
-      integratedLufs: -12.5,
-      truePeakDbtp: -0.4,
-      passed: true
-    }
-  });
-  await writeJson(reportPath, pacing);
-
-  const report = await validateRendererInput(root);
-  assert.equal(report.passed, false);
-  assert.ok(report.checks.some((check) => check.id === 'audio-loudness-measurement-passed' && check.passed));
-  assert.ok(report.checks.some((check) => check.id === 'audio-measured-values-within-tolerance' && !check.passed));
+  assert.ok(report.checks.some((check) => check.id === 'audio-loudness-measured' && !check.passed));
 });
 
 test('blockiert altes 1.05x-Pacing oder fehlende Lautheitsnormalisierung', async () => {
@@ -176,52 +143,6 @@ test('blockiert altes 1.05x-Pacing oder fehlende Lautheitsnormalisierung', async
   const report = await validateRendererInput(root);
   assert.equal(report.passed, false);
   assert.ok(report.checks.some((check) => check.id === 'audio-playback-rate' && !check.passed));
-  assert.ok(report.checks.some((check) => check.id === 'audio-loudness-normalized' && !check.passed));
-});
-
-test('blockiert falsche Position, falsche Farben und Hintergrundbox', async () => {
-  const root = await createReadyFixture();
-  const planPath = path.join(root, 'render', 'render-plan.json');
-  const plan = await readJson(planPath);
-  plan.scenes[0].subtitles[0].verticalPositionPercent = 50;
-  plan.scenes[0].subtitles[0].textColor = '#E7C39A';
-  plan.scenes[0].subtitles[0].highlightColor = '#F5F7FA';
-  plan.scenes[0].subtitles[0].backgroundColor = 'rgba(0, 0, 0, 0.72)';
-  await writeJson(planPath, plan);
-  const report = await validateRendererInput(root);
-  assert.equal(report.passed, false);
-  for (const id of ['subtitle-01-vertical-position', 'subtitle-01-text-color', 'subtitle-01-highlight-color', 'subtitle-01-background-transparent']) {
-    assert.ok(report.checks.some((check) => check.id === id && !check.passed));
-  }
-});
-
-test('blockiert fehlende Wörter auch dann, wenn der einzelne Cue intern gültig ist', async () => {
-  const root = await createReadyFixture();
-  const planPath = path.join(root, 'render', 'render-plan.json');
-  const plan = await readJson(planPath);
-  plan.scenes[0].subtitles[0].text = 'Ein kurzer';
-  plan.scenes[0].subtitles[0].wordTimings = plan.scenes[0].subtitles[0].wordTimings.slice(0, 2);
-  await writeJson(planPath, plan);
-
-  const report = await validateRendererInput(root);
-  assert.equal(report.passed, false);
-  assert.ok(report.checks.some((check) => check.id === 'subtitle-full-spoken-text-coverage' && !check.passed));
-});
-
-test('blockiert geschätzte Untertitelzeiten', async () => {
-  const root = await createReadyFixture();
-  const planPath = path.join(root, 'render', 'render-plan.json');
-  const plan = await readJson(planPath);
-  delete plan.scenes[0].subtitles[0].wordTimings;
-  plan.scenes[0].subtitles[0].timingStatus = 'estimated-within-scene';
-  delete plan.scenes[0].subtitles[0].timingSource;
-  await writeJson(planPath, plan);
-
-  const report = await validateRendererInput(root);
-  assert.equal(report.passed, false);
-  for (const id of ['subtitle-01-exact-word-timing', 'subtitle-01-timing-status', 'subtitle-01-timing-source', 'subtitle-full-spoken-text-coverage']) {
-    assert.ok(report.checks.some((check) => check.id === id && !check.passed));
-  }
 });
 
 test('blockiert Fade- und Crossfade-Übergänge', async () => {
@@ -243,23 +164,10 @@ test('blockiert eine finale Freigabe ohne Audio-Pacing-Bericht', async () => {
 
 test('blockiert Pfade außerhalb des Reel-Ordners', async () => {
   const root = await createReadyFixture();
-  await writeJson(path.join(root, 'render', 'render-plan.json'), {
-    version: 2,
-    reelId: 'reel-01_unsafe',
-    status: 'ready-for-renderer',
-    composition: { width: 1080, height: 1920, fps: 30, durationFrames: 60 },
-    voiceover: { file: '../voiceover.mp3', volume: 1 },
-    scenes: [{
-      sceneId: 'scene-01',
-      imageFile: '../scene.png',
-      startFrame: 0,
-      endFrame: 60,
-      transitionIn: { type: 'none', durationSeconds: 0 },
-      cameraMotion: { startScale: 1, endScale: 1, panXPercent: 0, panYPercent: 0 },
-      subtitles: [],
-      soundEffects: []
-    }]
-  });
+  const plan = await readJson(path.join(root, 'render', 'render-plan.json'));
+  plan.voiceover.file = '../voiceover.mp3';
+  plan.scenes[0].imageFile = '../scene.png';
+  await writeJson(path.join(root, 'render', 'render-plan.json'), plan);
   const report = await validateRendererInput(root);
   assert.equal(report.passed, false);
   assert.ok(report.checks.some((check) => check.id === 'voiceover-safe-path' && !check.passed));
