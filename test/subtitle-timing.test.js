@@ -26,7 +26,25 @@ test('verwendet exakte Wortzeiten relativ zum Untertitel-Cue', () => {
   assert.equal(activeWordIndex(words, 0.55), 1);
 });
 
-test('zeigt ohne exakte Wortzeiten keine gelbe Schätzung', () => {
+test('entfernt die Wortmarkierung während einer echten Sprechpause', () => {
+  const cue = {
+    text: 'Hallo Welt',
+    startSeconds: 5,
+    endSeconds: 7,
+    wordTimings: [
+      { text: 'Hallo', startSeconds: 5.0, endSeconds: 5.35 },
+      { text: 'Welt', startSeconds: 5.9, endSeconds: 6.25 }
+    ]
+  };
+  const words = buildWordTimings(cue);
+
+  assert.equal(activeWordIndex(words, 0.2), 0);
+  assert.equal(activeWordIndex(words, 0.55), -1);
+  assert.equal(activeWordIndex(words, 1.0), 1);
+  assert.equal(activeWordIndex(words, 1.4), -1);
+});
+
+test('zeigt ohne exakte Wortzeiten keine geschätzte Wortmarkierung', () => {
   const words = buildWordTimings({
     text: 'Kurze Wörter dauern weniger',
     startSeconds: 0,
@@ -40,11 +58,11 @@ test('zeigt ohne exakte Wortzeiten keine gelbe Schätzung', () => {
 
 test('lehnt falsch sortierte oder unvollständige Wortzeiten ab', () => {
   const result = validateExactWordTimings({
-    text: 'Gelb folgt Stimme',
+    text: 'Braun folgt Stimme',
     startSeconds: 2,
     endSeconds: 4,
     words: [
-      { text: 'Gelb', startSeconds: 2.1, endSeconds: 2.5 },
+      { text: 'Braun', startSeconds: 2.1, endSeconds: 2.5 },
       { text: 'folgt', startSeconds: 2.4, endSeconds: 2.8 },
       { text: 'falsch', startSeconds: 2.9, endSeconds: 3.3 }
     ]
