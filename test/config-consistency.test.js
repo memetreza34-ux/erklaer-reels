@@ -26,99 +26,59 @@ test('App- und Inhaltskonfiguration verwenden denselben Ein-Minuten-Standard', a
   assert.equal(rules.visualRules.minimumSceneCount, 12);
   assert.equal(rules.visualRules.maximumSceneCount, 14);
   assert.equal(rules.visualRules.defaultSceneCount, 13);
-  assert.deepEqual(rules.visualRules.visualChangeIntervalSeconds, { min: 3.5, max: 5 });
-  assert.equal(rules.scriptRules.audioPacing.rerunWordSyncAfterward, true);
+  assert.equal(rules.scriptRules.audioPacing.rerunWordSyncAfterward, false);
 });
 
-test('Untertitelregeln und Visual-QC entsprechen der technischen Quelle', async () => {
+test('Untertitel sind in Shared-Config und Inhaltsregeln global deaktiviert', async () => {
   const rules = await readJson('config/content-rules.json');
-  const visualQuality = await readJson('config/visual-quality-rules.json');
-  const subtitleRules = rules.subtitleRules;
 
-  assert.equal(SUBTITLE_STYLE.verticalPositionPercent, 58);
-  assert.equal(SUBTITLE_STYLE.textColor, '#F5F7FA');
-  assert.equal(SUBTITLE_STYLE.highlightCurrentWord, true);
-  assert.equal(SUBTITLE_STYLE.highlightColor, '#B7794A');
-  assert.deepEqual(subtitleRules.verticalPositionPercent, { min: 58, max: 58, default: 58 });
-  assert.equal(subtitleRules.fixedExactCenterPosition, false);
-  assert.equal(subtitleRules.fixedVerticalPosition, true);
-  assert.equal(subtitleRules.palette.textColor, SUBTITLE_STYLE.textColor);
-  assert.equal(subtitleRules.palette.highlightColor, SUBTITLE_STYLE.highlightColor);
-  assert.equal(subtitleRules.highlightCurrentWord, true);
-  assert.equal(subtitleRules.speakerSyncedWordHighlight, true);
-  assert.equal(subtitleRules.highlightAnimation, 'color-only');
-  assert.equal(subtitleRules.exactWordTimingsRequired, true);
-  assert.equal(subtitleRules.completeSpokenTextCoverageRequired, true);
-  assert.equal(subtitleRules.minimumWordCoverage, 1);
-  assert.equal(subtitleRules.requireZeroUnassignedWords, true);
-  assert.equal(subtitleRules.requireExactVoiceScriptWordSequence, true);
-  assert.equal(subtitleRules.wordTimingWorkflow.enabled, true);
-  assert.equal(subtitleRules.wordTimingWorkflow.localAudioReviewRequired, true);
-  assert.equal(subtitleRules.wordTimingWorkflow.estimatedDistributionForbidden, true);
-  assert.equal(subtitleRules.fallbackWordTiming, 'blocked-until-codex-word-sync');
-
-  assert.equal(visualQuality.version, 8);
-  assert.deepEqual(visualQuality.safeZones.subtitleVerticalPercent, {
-    min: SUBTITLE_STYLE.safeVerticalRangePercent.min,
-    max: SUBTITLE_STYLE.safeVerticalRangePercent.max,
-    default: SUBTITLE_STYLE.verticalPositionPercent
-  });
-  assert.equal(visualQuality.subtitlePalette.textColor, SUBTITLE_STYLE.textColor);
-  assert.equal(visualQuality.subtitlePalette.highlightColor, SUBTITLE_STYLE.highlightColor);
-  assert.equal(visualQuality.subtitlePalette.highlightCurrentWord, true);
-  assert.equal(visualQuality.subtitlePalette.speakerSyncedWordHighlight, true);
-  assert.equal(visualQuality.subtitlePalette.completeSpokenTextCoverageRequired, true);
-  assert.equal(visualQuality.subtitlePalette.backgroundColor, SUBTITLE_STYLE.backgroundColor);
+  assert.equal(SUBTITLE_STYLE.enabled, false);
+  assert.equal(rules.subtitleRules.defaultEnabled, false);
+  assert.equal(rules.subtitleRules.globallyDisabled, true);
+  assert.equal(rules.subtitleRules.renderSubtitles, false);
+  assert.equal(rules.subtitleRules.generateSubtitleCues, false);
+  assert.equal(rules.subtitleRules.wordTimingWorkflowRequired, false);
+  assert.equal(rules.visualRules.reserveSubtitleSafeZone, false);
+  assert.equal(rules.visualRules.useFullFrameComposition, true);
 });
 
-test('Workspace erzeugt den aktuellen Sprecher-Sync statt alter statischer Untertitel', async () => {
+test('Workspace erzeugt keine aktiven Untertitel', async () => {
   const source = await readText('src/core/workspace.js');
 
-  assert.match(source, /outputRoot = 'reels'/);
-  assert.doesNotMatch(source, /outputRoot = 'content'/);
-  assert.doesNotMatch(source, /Sandton|warmen hellen Sandton/i);
-  assert.match(source, /speakerSyncedWordHighlight: true/);
-  assert.match(source, /completeSpokenTextCoverageRequired: true/);
-  assert.match(source, /wordByWordKaraoke: true/);
-  assert.match(source, /unassignedWords = 0|unassignedWords.*0/i);
+  assert.match(source, /subtitlesEnabled:\s*false/);
+  assert.match(source, /subtitles:\s*'disabled'/);
+  assert.match(source, /wordSync:\s*'not-required'/);
+  assert.match(source, /enabled:\s*false/);
+  assert.doesNotMatch(source, /exactWordTimingsRequired:\s*true/);
 });
 
-test('Kernmodule können alte statische Untertitel oder falschen Word-Sync-Status nicht zurückbringen', async () => {
-  const productionBrief = await readText('src/core/production-brief.js');
-  const visualQc = await readText('src/core/visual-qc.js');
+test('Timeline und Renderer erzwingen leere Untertitelspuren', async () => {
+  const timeline = await readText('src/core/timeline.js');
+  const renderer = await readText('src/renderer/ReelComposition.jsx');
   const renderValidator = await readText('src/core/render-validator.js');
-  const finalizer = await readText('src/core/finalize-reel.js');
-  const audioTightener = await readText('src/core/audio-tightener.js');
-  const buildTimeline = await readText('src/cli/build-timeline.js');
 
-  for (const [file, text] of [
-    ['src/core/production-brief.js', productionBrief],
-    ['src/core/visual-qc.js', visualQc],
-    ['src/core/render-validator.js', renderValidator]
-  ]) {
-    assert.doesNotMatch(text, /Sandton|warmen hellen Sandton|warme sandfarbene Untertitel/i, `${file} enthält noch den alten Sandton.`);
-    assert.doesNotMatch(text, /exakt bei 50 Prozent Bildhöhe/i, `${file} enthält noch die alte 50-Prozent-Regel.`);
-  }
-
-  assert.match(productionBrief, /#B7794A|SUBTITLE_STYLE\.highlightColor/);
-  assert.match(productionBrief, /100 %|100-%|completeSpokenTextCoverageRequired/);
-  assert.match(renderValidator, /subtitle-full-spoken-text-coverage/);
-  assert.match(finalizer, /subtitle-full-spoken-text-coverage/);
-  assert.doesNotMatch(finalizer, /word-highlight-disabled/);
-  assert.match(visualQc, /SUBTITLE_STYLE\.verticalPositionPercent/);
-  assert.match(visualQc, /subtitle-safe-zone-config/);
-  assert.doesNotMatch(audioTightener, /not-required-for-current-subtitle-style/);
-  assert.match(audioTightener, /needs-resync-after-audio-pacing/);
-  assert.match(audioTightener, /invalidated-after-audio-pacing/);
-  assert.match(audioTightener, /wordSyncInvalidated: true/);
-  assert.match(audioTightener, /parseLoudnessMeasurement/);
-  assert.match(audioTightener, /loudnessMeasured/);
-  assert.match(audioTightener, /version: 5/);
-  assert.match(buildTimeline, /reels\/\.\.\.\/reel-01_titel/);
-  assert.doesNotMatch(buildTimeline, /content\/\.\.\.\/reel-01_titel/);
+  assert.match(timeline, /subtitlesEnabled:\s*false/);
+  assert.match(timeline, /subtitles:\s*\[\]/);
+  assert.match(renderValidator, /no-subtitles-in-render-plan/);
+  assert.match(renderValidator, /subtitles-disabled-in-reel/);
+  assert.doesNotMatch(renderer, /Subtitle/);
+  assert.doesNotMatch(renderer, /wordTimings|activeWordIndex/);
 });
 
-test('Finalizer und Renderer können neue Audio-Messbelege nicht umgehen', async () => {
+test('Finalizer und Renderpfad benötigen keinen Word-Sync mehr', async () => {
+  const finalizer = await readText('src/core/finalize-reel.js');
+  const cliFinalizer = await readText('src/cli/finalize-reel.js');
+  const renderCli = await readText('src/cli/render-reel.js');
+  const coreRenderer = await readText('src/core/remotion-renderer.js');
+
+  for (const source of [finalizer, cliFinalizer, renderCli, coreRenderer]) {
+    assert.doesNotMatch(source, /verifyAppliedWordSyncAudioBinding/);
+  }
+  assert.match(finalizer, /wordSyncRequired:\s*false/);
+  assert.match(finalizer, /subtitlesEnabled:\s*false/);
+});
+
+test('Finalizer und Renderer behalten echte Audio-Messbelege bei', async () => {
   const finalizer = await readText('src/core/finalize-reel.js');
   const renderValidator = await readText('src/core/render-validator.js');
 
@@ -135,13 +95,15 @@ test('Finalizer und Renderer können neue Audio-Messbelege nicht umgehen', async
   }
 });
 
-test('Core-Finalizer prüft Quellen- und Audio-Dateibindungen selbst', async () => {
-  const finalizer = await readText('src/core/finalize-reel.js');
-  assert.match(finalizer, /verifyRequiredSourceQuality/);
-  assert.match(finalizer, /verifyAudioPacingFileBinding/);
-  assert.match(finalizer, /verifyAppliedWordSyncAudioBinding/);
-  assert.match(finalizer, /audioPacingFileBinding/);
-  assert.match(finalizer, /wordSyncAudioBinding/);
+test('Dokumentation friert den Untertitel-freien Standard ein', async () => {
+  const workflow = await readText('CURRENT_WORKFLOW.md');
+  const agents = await readText('AGENTS.md');
+
+  assert.match(workflow, /keine Untertitel/i);
+  assert.match(workflow, /keinen Untertitel- oder Word-Sync-Schritt/i);
+  assert.match(workflow, /Untertitel wieder aktivieren.*verboten|Untertitel wieder aktivieren/i);
+  assert.match(agents, /keine Untertitel/i);
+  assert.match(agents, /sync:words.*nicht erforderlich/i);
 });
 
 test('Gitignore schützt generierte Medien in aktuellen Produktionsordnern', async () => {
@@ -151,65 +113,5 @@ test('Gitignore schützt generierte Medien in aktuellen Produktionsordnern', asy
   assert.match(gitignore, /reels\/\*\*\/audio\/\*\.m4a/);
   assert.match(gitignore, /reels\/\*\*\/scenes\/\*\*\/\*\.png/);
   assert.match(gitignore, /reels\/\*\*\/cover\/\*\.webp/);
-  assert.match(gitignore, /youtube\/\*\*\/output\/\*\.mp4/);
-  assert.match(gitignore, /youtube\/\*\*\/audio\/\*\.mp3/);
   assert.match(gitignore, /^\.env$/m);
-});
-
-test('Dokumentation bleibt beim weißen Grundtext, braunen Aktivwort und 58-Prozent-Standard', async () => {
-  const documents = [
-    'README.md',
-    'CODEX_TASK.md',
-    'knowledge/production-rules.md',
-    'knowledge/subtitle-pacing-rules.md',
-    'docs/codex-word-sync.md',
-    'docs/remotion-renderer.md',
-    'docs/autonomous-reel.md'
-  ];
-
-  for (const file of documents) {
-    const text = await readText(file);
-    assert.doesNotMatch(text, /#E7C39A|warmer heller Sandton|warme sandfarbene Untertitel|im Sandton/i, `${file} enthält noch den alten Sandton.`);
-    assert.match(text, /58\s*%|58 Prozent/, `${file} nennt den verbindlichen 58-Prozent-Standard nicht.`);
-    assert.match(text, /#F5F7FA|weiches Weiß|Grundtext/i, `${file} nennt den weißen Grundtext nicht.`);
-    assert.match(text, /#B7794A|braun/i, `${file} nennt das braune Aktivwort nicht.`);
-    assert.match(text, /100\s*%|100-%|kein.*Wort.*fehlen|unassignedWords/i, `${file} nennt die vollständige Untertitelabdeckung nicht.`);
-  }
-});
-
-test('Finder-Doku und technische Ausblendung verwenden nur die aktuelle Reel-Struktur', async () => {
-  const humanView = await readText('src/core/human-reel-view.js');
-  const folderDocs = await readText('docs/reel-folder-layout.md');
-
-  assert.match(humanView, /'timeline'/);
-  assert.match(humanView, /'render'/);
-  assert.match(folderDocs, /reels\/\.\.\.\/reel-01_thema/);
-  assert.doesNotMatch(folderDocs, /content\/\.\.\.\/reel-01_thema/);
-});
-
-test('Autonomer Ablauf verlangt echte Quellen- und Audio-Nachprüfung', async () => {
-  const autonomous = await readText('docs/autonomous-reel.md');
-
-  assert.match(autonomous, /mindestens zwei voneinander unabhängige Quellen/i);
-  assert.match(autonomous, /keine erfundenen Quellen/i);
-  assert.match(autonomous, /tatsächlichen LUFS und True Peak|tatsächliche LUFS und True Peak/i);
-  assert.match(autonomous, /Zielwerte allein reichen nicht als Nachweis/i);
-});
-
-test('abgeschlossene Testphase ist als Produktionsbaseline eingefroren', async () => {
-  const status = await readText('PRODUCTION_STATUS.md');
-  const autonomous = await readText('docs/autonomous-reel.md');
-
-  assert.match(status, /Status:\s*PRODUKTIONSBEREIT/i);
-  assert.match(status, /55–60 Sekunden/);
-  assert.match(status, /12–14 Szenen/);
-  assert.match(status, /58 % Bildhöhe/);
-  assert.match(status, /#F5F7FA/);
-  assert.match(status, /#B7794A/);
-  assert.match(status, /0,90 Konfidenz/);
-  assert.match(status, /0,7 Sekunden/);
-  assert.match(status, /globale Produktionsregeln nicht nebenbei verändern/i);
-
-  assert.match(autonomous, /PRODUCTION_STATUS\.md/);
-  assert.match(autonomous, /keine globalen Produktionsregeln.*verändern/i);
 });

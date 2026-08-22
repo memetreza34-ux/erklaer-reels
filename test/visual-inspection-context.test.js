@@ -5,7 +5,6 @@ import os from 'node:os';
 import path from 'node:path';
 
 import { runVisualQualityCheck } from '../src/core/visual-qc.js';
-import { SUBTITLE_STYLE } from '../src/shared/subtitle-style.js';
 
 async function writeJson(filePath, value) {
   await mkdir(path.dirname(filePath), { recursive: true });
@@ -32,6 +31,7 @@ async function createFixture() {
   await writeJson(path.join(root, 'reel.json'), {
     reelId: 'reel-01_test',
     title: 'Warum haben Länder Grenzen?',
+    subtitlesEnabled: false,
     visualStyleId: 'round-country-characters',
     visualStyleReason: 'Runde Länderfiguren und Karten erklären Staaten und Grenzen besonders klar.'
   });
@@ -43,13 +43,6 @@ async function createFixture() {
     cover: { expectedFile: 'cover/cover.png', status: 'missing' }
   });
   await writeJson(path.join(root, 'effects', 'effects-plan.json'), { scenes: [] });
-  await writeJson(path.join(root, 'subtitles', 'subtitle-plan.json'), {
-    verticalPositionPercent: SUBTITLE_STYLE.verticalPositionPercent,
-    textColor: SUBTITLE_STYLE.textColor,
-    highlightColor: SUBTITLE_STYLE.highlightColor,
-    highlightCurrentWord: false,
-    backgroundColor: SUBTITLE_STYLE.backgroundColor
-  });
   await writeJson(path.join(root, 'cover', 'cover.json'), {
     headline: 'LÄNDERGRENZEN',
     visualIdea: 'Zwei Länderfiguren stehen an einer Grenzlinie.'
@@ -60,17 +53,18 @@ async function createFixture() {
   return { root, scene };
 }
 
-test('visuelle Prüfung zeigt für jedes Bild die erwartete Szenenbedeutung und Reihenfolge', async () => {
+test('visuelle Prüfung zeigt Szenenbedeutung und verlangt keine Untertitelzone', async () => {
   const { root, scene } = await createFixture();
 
   await runVisualQualityCheck(root, { strict: false });
   const inspection = await readJson(path.join(root, 'review', 'visual-inspection.json'));
   const sceneEntry = inspection.assets.find((entry) => entry.assetId === 'scene-01');
 
-  assert.equal(inspection.version, 7);
+  assert.equal(inspection.version, 8);
+  assert.equal(inspection.subtitlesEnabled, false);
   assert.equal(inspection.visualStyleId, 'round-country-characters');
-  assert.ok(inspection.instructions.some((instruction) => instruction.includes(`${SUBTITLE_STYLE.verticalPositionPercent} Prozent Bildhöhe`)));
-  assert.equal(inspection.safeZones.subtitleVerticalPercent.default, SUBTITLE_STYLE.verticalPositionPercent);
+  assert.ok(inspection.instructions.some((instruction) => /ohne künstlich freigehaltene Untertitelzone/i.test(instruction)));
+  assert.equal(Object.hasOwn(inspection.safeZones, 'subtitleVerticalPercent'), false);
   assert.equal(sceneEntry.expected.narration, scene.narration);
   assert.equal(sceneEntry.expected.audioCue, scene.audioCue);
   assert.equal(sceneEntry.expected.visualIdea, scene.visualIdea);
@@ -83,6 +77,7 @@ test('visuelle Prüfung zeigt für jedes Bild die erwartete Szenenbedeutung und 
   assert.ok(Object.hasOwn(sceneEntry.checks, 'sceneOrderConfirmed'));
   assert.ok(Object.hasOwn(sceneEntry.checks, 'visualWorldMatch'));
   assert.ok(Object.hasOwn(sceneEntry.checks, 'plannedGermanTextExact'));
+  assert.equal(Object.hasOwn(sceneEntry.checks, 'subtitleCollisionFree'), false);
 });
 
 test('setzt eine alte Freigabe zurück, sobald sich die Szenenbedeutung ändert', async () => {
@@ -118,8 +113,5 @@ test('setzt eine alte Freigabe zurück, sobald sich die Szenenbedeutung ändert'
   assert.equal(secondSceneEntry.visibleSummary, '');
   assert.equal(secondSceneEntry.matchReason, '');
   assert.equal(secondSceneEntry.secondPassConfirmed, false);
-  assert.equal(
-    Object.values(secondSceneEntry.checks).every((value) => value === null),
-    true
-  );
+  assert.equal(Object.values(secondSceneEntry.checks).every((value) => value === null), true);
 });

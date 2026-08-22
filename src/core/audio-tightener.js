@@ -156,7 +156,6 @@ export function buildAudioPacingFilter({
   return filters.join(',');
 }
 
-// Rückwärtskompatibler Export für bestehende Tests und Aufrufer.
 export const buildSilenceRemovalFilter = buildAudioPacingFilter;
 
 function resolveInside(root, relativePath) {
@@ -175,8 +174,6 @@ export async function tightenVoiceover(reelDirectory, options = {}) {
   const manifest = await readJson(manifestPath, { audio: {} });
   const status = await readJson(statusPath, {});
 
-  // Bei erneutem Ausführen immer von der ursprünglichen Datei starten,
-  // damit Tempo, Pausenkürzung und Lautheitsnormalisierung nicht mehrfach angewendet werden.
   const sourceRelative = manifest.audio?.originalFile ?? manifest.audio?.expectedFile;
   if (!sourceRelative) throw new Error('Im Asset-Manifest ist keine Voice-over-Datei eingetragen.');
   const sourcePath = resolveInside(reelDirectory, sourceRelative);
@@ -252,39 +249,12 @@ export async function tightenVoiceover(reelDirectory, options = {}) {
     ? 'tightened-accelerated-loudness-measured-and-normalized'
     : 'needs-loudness-review';
   status.timeline = 'needs-rebuild-after-audio-pacing';
-  status.wordSync = 'needs-resync-after-audio-pacing';
-  status.subtitles = 'waiting-for-exact-sync';
+  status.subtitles = 'disabled';
+  status.wordSync = 'not-required';
   status.render = 'waiting-for-timeline';
 
   await writeJson(manifestPath, manifest);
   await writeJson(statusPath, status);
-
-  // Jede Audioänderung macht zuvor bestätigte Wortzeiten ungültig. Die Daten bleiben
-  // zur Nachvollziehbarkeit erhalten, dürfen aber erst nach erneuter akustischer Prüfung
-  // wieder als codex-word-synced in einen finalen Render gelangen.
-  const subtitlePlanPath = path.join(reelDirectory, 'subtitles', 'subtitle-plan.json');
-  const subtitlePlan = await readJson(subtitlePlanPath, null);
-  if (subtitlePlan) {
-    subtitlePlan.exactWordTimingsRequired = true;
-    subtitlePlan.timingStatus = 'invalidated-after-audio-pacing';
-    subtitlePlan.timingProvider = 'codex-local-audio-review';
-    subtitlePlan.cues = (subtitlePlan.cues ?? []).map((cue) => ({
-      ...cue,
-      timingStatus: 'invalidated-after-audio-pacing',
-      timingSource: 'audio-changed-requires-codex-word-sync'
-    }));
-    await writeJson(subtitlePlanPath, subtitlePlan);
-  }
-
-  const wordSyncReportPath = path.join(reelDirectory, 'review', 'word-sync-report.json');
-  const wordSyncReport = await readJson(wordSyncReportPath, null);
-  if (wordSyncReport) {
-    wordSyncReport.passed = false;
-    wordSyncReport.stage = 'invalidated-after-audio-pacing';
-    wordSyncReport.invalidatedAt = new Date().toISOString();
-    wordSyncReport.reason = 'Das Voice-over wurde neu verarbeitet; Wortzeiten müssen erneut akustisch bestätigt werden.';
-    await writeJson(wordSyncReportPath, wordSyncReport);
-  }
 
   const audioSyncPath = path.join(reelDirectory, 'timeline', 'audio-sync.json');
   const audioSync = await readJson(audioSyncPath, null);
@@ -302,7 +272,7 @@ export async function tightenVoiceover(reelDirectory, options = {}) {
   }
 
   const report = {
-    version: 5,
+    version: 6,
     createdAt: new Date().toISOString(),
     passed: pacingPassed,
     sourceFile: sourceRelative,
@@ -319,9 +289,11 @@ export async function tightenVoiceover(reelDirectory, options = {}) {
     loudnessMeasurement,
     filter,
     settings: manifest.audio.pauseTrimSettings,
-    wordSyncInvalidated: true,
+    subtitlesEnabled: false,
+    wordSyncRequired: false,
+    sceneTimelineInvalidated: true,
     note: loudnessMeasurement.passed
-      ? 'Lautheit wurde nach der Verarbeitung erneut gemessen. Danach müssen Timeline, Szenen-Cues und exakte Untertitel-Wortzeiten mit der neuen Audiodatei synchronisiert werden.'
+      ? 'Lautheit wurde nach der Verarbeitung erneut gemessen. Danach müssen nur Timeline und Szenen-Cues mit der neuen Audiodatei synchronisiert werden; Untertitel sind deaktiviert.'
       : 'Die Audioverarbeitung wurde ausgeführt, aber die anschließende Lautheitsmessung liegt außerhalb der Toleranz oder konnte nicht gelesen werden. Vor Timeline und Render muss die Audio-QC korrigiert werden.'
   };
   await writeJson(path.join(reelDirectory, 'review', 'audio-pacing-report.json'), report);

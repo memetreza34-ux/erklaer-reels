@@ -6,7 +6,6 @@ import { verifyAudioPacingFileBinding } from './audio-pacing-file-guard.js';
 import { ensureHumanReelView } from './human-reel-view.js';
 import { validateRendererInput } from './render-validator.js';
 import { verifyRequiredSourceQuality } from './source-quality-file-guard.js';
-import { verifyAppliedWordSyncAudioBinding } from './word-sync-audio-guard.js';
 
 const currentDirectory = path.dirname(fileURLToPath(import.meta.url));
 const entryPoint = path.resolve(currentDirectory, '..', 'renderer', 'index.jsx');
@@ -36,10 +35,6 @@ export async function renderReel(reelDirectory, {
 } = {}) {
   const startedAt = new Date().toISOString();
 
-  // Auch bei Reels, die direkt über GitHub/Agenten angelegt wurden, muss die
-  // sichtbare Nutzeransicht vor dem Render vorhanden sein. Dadurch ist die
-  // finale MP4 über 04-video/FERTIGES-VIDEO direkt neben Bildprompts, Audio
-  // und Caption erreichbar, während die technische Datei in output/ liegt.
   await ensureHumanReelView(reelDirectory);
 
   const sourceGate = await verifyRequiredSourceQuality(reelDirectory);
@@ -50,11 +45,6 @@ export async function renderReel(reelDirectory, {
   const pacingBinding = await verifyAudioPacingFileBinding(reelDirectory);
   if (pacingBinding.required && !pacingBinding.passed) {
     throw new Error(`${pacingBinding.reason} Der Renderer verwendet keine veralteten Lautheitsmesswerte.`);
-  }
-
-  const wordSyncBinding = await verifyAppliedWordSyncAudioBinding(reelDirectory);
-  if (wordSyncBinding.required && !wordSyncBinding.passed) {
-    throw new Error(`${wordSyncBinding.reason} Der Renderer verwendet keine veralteten Wortzeiten.`);
   }
 
   const validation = await validateRendererInput(reelDirectory, {
@@ -123,7 +113,7 @@ export async function renderReel(reelDirectory, {
 
     const fileStats = await stat(outputLocation);
     const report = {
-      version: 1,
+      version: 2,
       startedAt,
       finishedAt: new Date().toISOString(),
       passed: true,
@@ -134,6 +124,7 @@ export async function renderReel(reelDirectory, {
       reelDirectory: path.resolve(reelDirectory),
       outputFile: outputLocation,
       outputBytes: fileStats.size,
+      subtitlesEnabled: false,
       composition: plan.composition,
       renderedSoundEffects: plan.scenes.reduce(
         (sum, scene) => sum + (scene.soundEffects ?? []).filter((sound) => sound.file).length,
@@ -145,6 +136,8 @@ export async function renderReel(reelDirectory, {
 
     const statusPath = path.join(reelDirectory, 'status.json');
     const status = await readJson(statusPath);
+    status.subtitles = 'disabled';
+    status.wordSync = 'not-required';
     status.render = 'complete';
     status.renderedFile = path.relative(reelDirectory, outputLocation).split(path.sep).join('/');
     status.visibleRenderedFile = '04-video/FERTIGES-VIDEO';
@@ -154,7 +147,7 @@ export async function renderReel(reelDirectory, {
     return report;
   } catch (error) {
     const report = {
-      version: 1,
+      version: 2,
       startedAt,
       finishedAt: new Date().toISOString(),
       passed: false,
@@ -162,6 +155,7 @@ export async function renderReel(reelDirectory, {
       codec,
       reelDirectory: path.resolve(reelDirectory),
       outputFile: outputLocation,
+      subtitlesEnabled: false,
       error: error.message
     };
     await writeJson(reportPath, report);

@@ -87,7 +87,7 @@ async function ensureAudioSync(reelDirectory, scenes) {
         'cueTimeSeconds ist der Zeitpunkt, an dem audioCue gesprochen wird.',
         'Das Bild beginnt normalerweise leadInSeconds vor cueTimeSeconds.',
         'Prüfe jeden Szenenwechsel gegen den sichtbaren Bildinhalt, damit benachbarte Bilder nicht vertauscht werden.',
-        'Nach dem letzten gesprochenen Wort bleibt das Schlussbild automatisch kurz ohne Untertitel stehen.'
+        'Nach dem letzten gesprochenen Wort bleibt das Schlussbild automatisch kurz stehen.'
       ],
       cueTimings: scenes.map((scene, index) => ({
         sceneId: scene.sceneId,
@@ -198,6 +198,8 @@ function applySubtitleStyle(cue) {
 }
 
 function subtitleTimeline(scenes, timings, subtitlePlan) {
+  if (SUBTITLE_STYLE.enabled === false || subtitlePlan?.enabled === false) return [];
+
   const output = [];
   scenes.forEach((scene, sceneIndex) => {
     const timing = timings[sceneIndex];
@@ -285,8 +287,8 @@ function qualityReport(
     ['all-scene-images-ready', timelineScenes.every((scene) => scene.imageStatus === 'ready'), 'Noch nicht alle Szenenbilder sind bereit.', strict ? 'error' : 'warning'],
     ['ending-hold-range', endingHoldSeconds >= holdRange.min && endingHoldSeconds <= holdRange.max,
       `Das Schlussbild muss nach dem letzten gesprochenen Wort ${holdRange.min}–${holdRange.max} Sekunden stehen bleiben.`, balanceLevel],
-    ['subtitles-end-with-voiceover', subtitles.length === 0 || subtitles.at(-1).endSeconds <= audioDurationSeconds + 0.01,
-      'Untertitel dürfen nicht in den ruhigen Schlussbild-Nachlauf hineinragen.', balanceLevel]
+    ['subtitles-disabled', subtitles.length === 0,
+      'Für dieses Format dürfen keine Untertitel in der Timeline vorhanden sein.', 'error']
   ].map(([id, passed, message, level]) => ({ id, passed, message, level }));
 
   timelineScenes.forEach((scene, index) => {
@@ -320,16 +322,6 @@ function qualityReport(
     }
   });
 
-  subtitles.slice(1).forEach((cue, index) => {
-    const previous = subtitles[index];
-    checks.push({
-      id: `${cue.id}-no-overlap`,
-      passed: cue.startSeconds >= previous.endSeconds - 0.01,
-      level: 'warning',
-      message: `${cue.id} überlappt mit ${previous.id}.`
-    });
-  });
-
   const errors = checks.filter((check) => !check.passed && check.level === 'error');
   const warnings = checks.filter((check) => !check.passed && check.level === 'warning');
   return {
@@ -360,7 +352,7 @@ export async function buildMasterTimeline(reelDirectory, { audioDurationSeconds 
   const qualityGates = await readQualityGates();
   const sceneTimingRules = qualityGates.sceneTiming ?? {};
   const endingHoldSeconds = Number(sceneTimingRules.postVoiceHoldSeconds ?? 0.7);
-  const subtitlesPlan = await readJson(path.join(reelDirectory, 'subtitles', 'subtitle-plan.json'), { cues: [] });
+  const subtitlesPlan = await readJson(path.join(reelDirectory, 'subtitles', 'subtitle-plan.json'), { enabled: false, cues: [] });
   const effectsPlan = await readJson(path.join(reelDirectory, 'effects', 'effects-plan.json'), { scenes: [] });
   const manifest = await readJson(path.join(reelDirectory, 'assets-manifest.json'), { audio: {}, scenes: [] });
   const status = await readJson(path.join(reelDirectory, 'status.json'), {});
@@ -391,7 +383,7 @@ export async function buildMasterTimeline(reelDirectory, { audioDurationSeconds 
       imageFile: asset.expectedFile ?? `scenes/${scene.sceneId}/${scene.expectedImageFileName ?? `${scene.sceneId}.png`}`,
       imageStatus: asset.status ?? scene.imageStatus ?? 'missing',
       assetVerification: asset.verification ?? scene.assetVerification ?? null,
-      subtitleCueIds: subtitles.filter((cue) => cue.sceneId === scene.sceneId).map((cue) => cue.id),
+      subtitleCueIds: [],
       transitionIn: effect.transitionIn ?? { type: index ? 'cut' : 'none', durationSeconds: 0 },
       cameraMotion: effect.cameraMotion ?? { type: 'none', startScale: 1, endScale: 1, panXPercent: 0, panYPercent: 0 },
       soundEffects: soundTimeline(effect, item)
@@ -402,7 +394,7 @@ export async function buildMasterTimeline(reelDirectory, { audioDurationSeconds 
   const timingStatus = durationKnown && allCuesExact ? 'audio-synced' : durationKnown ? 'audio-duration-synced' : 'estimated';
   const relativeAudio = audioPath ? path.relative(reelDirectory, audioPath).split(path.sep).join('/') : null;
   const timeline = {
-    version: 3,
+    version: 4,
     reelId: reel.reelId,
     createdAt: new Date().toISOString(),
     timingStatus,
@@ -420,16 +412,15 @@ export async function buildMasterTimeline(reelDirectory, { audioDurationSeconds 
       endingHoldSeconds: round(endingHoldSeconds)
     },
     subtitles: {
-      planFile: 'subtitles/subtitle-plan.json',
-      endAtVoiceoverSeconds: round(voiceDuration),
-      cues: subtitles
+      enabled: false,
+      cues: []
     },
     effectsPlanFile: 'effects/effects-plan.json',
     scenes: timelineScenes
   };
 
   const renderPlan = {
-    version: 3,
+    version: 4,
     reelId: reel.reelId,
     status: timelineScenes.every((scene) => scene.imageStatus === 'ready') && relativeAudio ? 'ready-for-renderer' : 'waiting-for-assets',
     composition: {
@@ -443,6 +434,7 @@ export async function buildMasterTimeline(reelDirectory, { audioDurationSeconds 
     },
     voiceover: { file: relativeAudio, volume: 1 },
     backgroundMusic: effectsPlan.backgroundMusic ?? { enabled: false },
+    subtitlesEnabled: false,
     scenes: timelineScenes.map((scene) => ({
       sceneId: scene.sceneId,
       imageFile: scene.imageFile,
@@ -453,7 +445,7 @@ export async function buildMasterTimeline(reelDirectory, { audioDurationSeconds 
       endFrame: Math.round(scene.endSeconds * 30),
       transitionIn: scene.transitionIn,
       cameraMotion: scene.cameraMotion,
-      subtitles: subtitles.filter((cue) => cue.sceneId === scene.sceneId),
+      subtitles: [],
       soundEffects: scene.soundEffects
     }))
   };
@@ -476,6 +468,8 @@ export async function buildMasterTimeline(reelDirectory, { audioDurationSeconds 
   await writeJson(path.join(reelDirectory, 'render', 'render-plan.json'), renderPlan);
   await writeJson(path.join(reelDirectory, 'review', 'final-video-report.json'), report);
   status.timeline = report.passed ? timingStatus : 'needs-review';
+  status.subtitles = 'disabled';
+  status.wordSync = 'not-required';
   status.endingHold = report.checks.find((check) => check.id === 'ending-hold-range')?.passed ? 'ready' : 'needs-review';
   status.render = renderPlan.status;
   status.qualityControl = report.passed ? 'timeline-passed' : 'timeline-failed';

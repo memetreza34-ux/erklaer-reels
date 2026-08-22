@@ -53,9 +53,10 @@ Pflichtumfang:
 - vollständige englische Szenenprompts
 - Caption
 - Quellen
-- Untertitel-/Effektplanung
+- Effektplanung
 - Statusdateien
 - vollständige Prompt-Sammeldatei
+- **Untertitel deaktiviert lassen**
 
 ### 5. Google-Flow-Sammeldatei erzeugen
 
@@ -117,26 +118,24 @@ Bei Audio werden aktuelle Kandidaten gesucht. Genau ein eindeutig als Voice-over
 
 Die Suchdiagnose liegt unter `inbox/asset-discovery.json`.
 
-### 8. Untertitel vollständig am Sprecher synchronisieren
+### 8. Audio und Szenen synchronisieren
 
 Nach dem finalen Audio:
 
 ```bash
-npm run sync:words -- --dir "PFAD-ZUM-REEL"
-# Audio vollständig abhören und jedes Wort exakt bestätigen
-npm run sync:words -- --dir "PFAD-ZUM-REEL" --apply --strict
+npm run trim:pauses -- --dir "PFAD-ZUM-REEL" --speed 1.10
+npm run build:timeline -- --dir "PFAD-ZUM-REEL"
+npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
 ```
 
 Verbindlich:
-- jedes gesprochene Wort besitzt echte akustische Start-/Endzeiten
-- `coverage === 1`
-- `timedWords === totalWords`
-- `unassignedWords === 0`
-- die komplette gerenderte Untertitel-Wortfolge entspricht exakt `script/voice-script.txt`
-- Grundtext bleibt `#F5F7FA`
-- nur das aktuell gesprochene Wort wird synchron in Braun `#B7794A` markiert
-- keine Box und keine zusätzliche Spring-/Zoom-Karaoke-Animation
-- fehlt auch nur ein Wort, darf nicht gerendert werden
+- exakt 1,10x bei erhaltener Tonhöhe
+- −16 LUFS und höchstens −1,5 dBTP
+- tatsächliche Lautheit nachmessen
+- jeder Szenenwechsel basiert auf dem passenden `audioCue` der finalen Audiodatei
+- keine geschätzten, gleichmäßig verteilten oder künstlich geklemmten Szenenanker
+- jede spätere Änderung am Voice-over macht die Szenen-Timeline ungültig
+- **kein `sync:words` und keine Untertitel**
 
 ## Quellenstandard
 
@@ -163,13 +162,10 @@ ZIP ggf. sicher entpacken
 → nummerierte Dateien nur als Routing-Hilfe verwenden
 → Voice-over exakt 1,10x / −16 LUFS / max. −1,5 dBTP verarbeiten
 → tatsächliche LUFS und True Peak nachmessen
-→ Timeline synchronisieren
-→ jedes gesprochene Wort akustisch synchronisieren
-→ 100-%-Untertitelabdeckung prüfen
-→ aktuelles Wort braun #B7794A markieren
+→ Szenen-Timeline mit echten Audio-Cues synchronisieren
 → visuelle Zwei-Pass-QC
 → finale Freigabe
-→ MP4 rendern
+→ MP4 ohne Untertitel rendern
 → fertige MP4 unter 04-video/FERTIGES-VIDEO bereitstellen
 ```
 

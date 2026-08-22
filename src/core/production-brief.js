@@ -1,7 +1,6 @@
 import { access, mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
-import { SUBTITLE_STYLE } from '../shared/subtitle-style.js';
 import { AUDIO_PACING_STYLE } from '../shared/audio-pacing-style.js';
 
 async function exists(filePath) {
@@ -43,11 +42,12 @@ export async function prepareReelProduction(reelDirectory) {
   const preferredImageTextMaximum = Math.floor(scenes.length * 0.85);
 
   const checklist = {
-    version: 17,
+    version: 18,
     reelId: reel.reelId,
     title: reel.title,
     createdAt: new Date().toISOString(),
     phase: 'content-production',
+    subtitlesEnabled: false,
     tasks: [
       { id: 'script-final', label: 'Voice-over mit 155–175 Wörtern und starkem Ende fertigstellen', status: 'pending' },
       { id: 'style-select', label: 'Nach dem fertigen Script die passendste Bildwelt auswählen und begründen', status: 'pending' },
@@ -57,8 +57,7 @@ export async function prepareReelProduction(reelDirectory) {
       { id: 'ending-check', label: 'Prüffrage und einprägsamen Abschlusssatz auf zwei Szenen verteilen', status: 'pending' },
       { id: 'prompts-write', label: `${scenes.length} natürliche englische Bildprompts mit exakt angegebenem deutschem Bildtext schreiben`, status: 'pending' },
       { id: 'prompts-export', label: 'Cover und alle Szenenprompts chronologisch exportieren', status: 'pending' },
-      { id: 'subtitles-write', label: `Untertitel bei ${SUBTITLE_STYLE.verticalPositionPercent} % mit weißem Grundtext ${SUBTITLE_STYLE.textColor} und braunem Aktivwort ${SUBTITLE_STYLE.highlightColor} planen`, status: 'pending' },
-      { id: 'subtitle-sync-plan', label: '100 % des Voice-Scripts mit exakten lokalen Wortzeiten synchronisieren; unassignedWords muss 0 sein', status: 'pending' },
+      { id: 'subtitles-disabled', label: 'Untertitel deaktiviert lassen; keine Subtitle-Cues und keinen Word-Sync erzeugen', status: 'pending' },
       { id: 'effects-write', label: 'Dezente Bewegungen, harte Schnitte und Soundeffekte planen', status: 'pending' },
       { id: 'asset-matching-plan', label: `Zweistufige visuelle Bildzuordnung mit mindestens ${matching.minimumConfidence} Konfidenz vorbereiten`, status: 'pending' },
       { id: 'cover-write', label: 'Cover-Idee und Cover-Prompt schreiben', status: 'pending' },
@@ -73,7 +72,7 @@ export async function prepareReelProduction(reelDirectory) {
 
 ## Ziel
 
-Erstelle ein vollständiges Erklär-Reel mit ungefähr einer Minute Voice-over-Laufzeit. Bilder und Audio werden extern erzeugt. Vor dem Render muss jedes Bild zweifach visuell gegen seine konkrete Szene geprüft werden. Die Untertitel müssen jedes gesprochene Wort vollständig enthalten und exakt dem echten Voice-over folgen.
+Erstelle ein vollständiges Erklär-Reel mit ungefähr einer Minute Voice-over-Laufzeit. Bilder und Audio werden extern erzeugt. Vor dem Render muss jedes Bild zweifach visuell gegen seine konkrete Szene geprüft werden. **Das Reel wird vollständig ohne Untertitel produziert und gerendert.**
 
 ## Ausgangsdaten
 
@@ -91,8 +90,8 @@ Erstelle ein vollständiges Erklär-Reel mit ungefähr einer Minute Voice-over-L
 - Schlussszene inklusive Nachlauf: **${timing.finalSceneSecondsIncludingHold.min}–${timing.finalSceneSecondsIncludingHold.max} Sekunden**
 - ruhiger Nachlauf nach Sprecherende: **${timing.postVoiceHoldSeconds} Sekunden**
 - Bildzuordnung: **mindestens ${matching.minimumConfidence} Konfidenz, zwei visuelle Durchgänge**
-- Untertitel: **horizontal zentriert, exakt ${SUBTITLE_STYLE.verticalPositionPercent} % Bildhöhe, Grundtext ${SUBTITLE_STYLE.textColor}, aktuell gesprochenes Wort ${SUBTITLE_STYLE.highlightColor}, transparent**
-- Untertitel-Sync: **100-%-Abdeckung und exakte Wortzeiten aus lokaler Codex-Audioprüfung verpflichtend**
+- Untertitel: **deaktiviert**
+- Word-Sync: **nicht erforderlich**
 - Audio-Pacing: **exakt ${AUDIO_PACING_STYLE.playbackRate.toFixed(2)}x**
 - Lautheit: **${AUDIO_PACING_STYLE.loudnessTargetLufs} LUFS, höchstens ${AUDIO_PACING_STYLE.truePeakDbtp} dBTP**
 - Hintergrundmusik: **aus**
@@ -117,13 +116,12 @@ Erstelle ein vollständiges Erklär-Reel mit ungefähr einer Minute Voice-over-L
 
 ### Pflichtregeln für Bilder
 
-- natürliche zusammenhängende Komposition
-- Hauptmotive dürfen die Bildmitte normal nutzen und hinter dem Untertitel liegen
-- keine künstlich leere horizontale Untertitelzone
+- natürliche zusammenhängende Komposition über die volle 9:16-Fläche
+- Hauptmotive dürfen die Bildmitte normal nutzen
+- keine künstlich leere horizontale Zone für Untertitel
 - keine getrennte obere und untere Bildhälfte
 - keine gestapelten Panels oder mehrfach dargestellte Hauptperson
 - geplanter sichtbarer Text ausschließlich korrekt auf Deutsch
-- Untertitel und Bildtext nicht wortgleich wiederholen
 - keine zusätzlichen englischen Wörter, Fantasie-Labels, Logos oder Wasserzeichen
 - gewählte Hauptbildwelt, Figurenform, Konturen und Farbwelt durchgehend beibehalten
 
@@ -133,7 +131,7 @@ Erstelle ein vollständiges Erklär-Reel mit ungefähr einer Minute Voice-over-L
 npm run export:prompts -- --dir "${normalizedDirectory}" --strict
 \`\`\`
 
-13. Fülle \`subtitles/subtitle-plan.json\`: exakt ${SUBTITLE_STYLE.verticalPositionPercent} %, Grundtext \`${SUBTITLE_STYLE.textColor}\`, Aktivwort \`${SUBTITLE_STYLE.highlightColor}\`, transparent, höchstens zwei Zeilen, normalerweise 3–6 Wörter, \`highlightCurrentWord: true\`, \`speakerSyncedWordHighlight: true\`, \`exactWordTimingsRequired: true\` und \`completeSpokenTextCoverageRequired: true\`.
+13. Stelle sicher, dass \`reel.json\` \`subtitlesEnabled: false\` setzt und \`subtitles/subtitle-plan.json\` deaktiviert bleibt. Keine Cues erzeugen.
 14. Fülle \`effects/effects-plan.json\`: Hook \`none\`, danach nur \`cut\` mit Dauer 0; Zoom maximal 8 %, Schwenk maximal 4 %.
 15. Fülle Cover, Caption und Quellen aus.
 16. Prüfe streng:
@@ -164,23 +162,18 @@ Danach:
 npm run organize:assets -- --dir "${normalizedDirectory}" --apply
 \`\`\`
 
-### 3. Timeline, vollständiger Sprecher-Sync, visuelle Prüfung und Render
+### 3. Timeline, visuelle Prüfung und Render
 
 \`\`\`bash
 npm run build:timeline -- --dir "${normalizedDirectory}"
 npm run sync:audio -- --dir "${normalizedDirectory}" --strict
-npm run sync:words -- --dir "${normalizedDirectory}"
-# production/codex-word-sync-task.md akustisch vollständig bearbeiten
-npm run sync:words -- --dir "${normalizedDirectory}" --apply --strict
 npm run check:visuals -- --dir "${normalizedDirectory}" --strict
 npm run finalize:reel -- --dir "${normalizedDirectory}" --strict
 npm run validate:render -- --dir "${normalizedDirectory}"
 npm run render:reel -- --dir "${normalizedDirectory}"
 \`\`\`
 
-Vor dem Render müssen \`coverage === 1\`, \`timedWords === totalWords\`, \`unassignedWords === 0\` gelten. Die komplette gerenderte Untertitel-Wortfolge muss exakt \`script/voice-script.txt\` entsprechen. Nur das aktuell gesprochene Wort wird synchron \`${SUBTITLE_STYLE.highlightColor}\` markiert; alle übrigen Wörter bleiben \`${SUBTITLE_STYLE.textColor}\`. Fehlt ein Wort, ist der Render blockiert.
-
-Die Timeline hängt nach dem letzten gesprochenen Wort automatisch ${timing.postVoiceHoldSeconds} Sekunden Schlussbild ohne neuen Untertitel an. Die MP4 erst als fertig bezeichnen, wenn alle echten QC-Gates tatsächlich bestanden sind.
+Es gibt keinen \`sync:words\`-Schritt mehr. Vor dem Render müssen alle Szenenanker aus der finalen Audiodatei bestätigt sein. Die Timeline hängt nach dem letzten gesprochenen Wort automatisch ${timing.postVoiceHoldSeconds} Sekunden Schlussbild an. Die MP4 erst als fertig bezeichnen, wenn alle echten QC-Gates tatsächlich bestanden sind.
 `;
 
   await writeFile(path.join(productionDirectory, 'agent-task.md'), `${brief}\n`, 'utf8');
