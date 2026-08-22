@@ -1,7 +1,6 @@
 export const SUBTITLE_STYLE = Object.freeze({
+  enabled: false,
   position: 'center',
-  // Social-safe baseline for 9:16 TikTok / Reels / Shorts.
-  // Low enough to stay below the main face area, but high enough to avoid bottom UI/caption overlays.
   verticalPositionPercent: 64,
   safeVerticalRangePercent: Object.freeze({ min: 62, max: 66 }),
   textColor: '#F5F7FA',
@@ -12,7 +11,6 @@ export const SUBTITLE_STYLE = Object.freeze({
   textStrokeColor: 'rgba(0, 0, 0, 0.92)',
   textStrokeWidth: 2.4,
   textShadow: '0 3px 8px rgba(0, 0, 0, 0.88)',
-  // Keep centered captions away from the right-side platform action column.
   maxWidthPercent: 72,
   fontSize: 54,
   fontWeight: 800,
