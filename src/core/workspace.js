@@ -1,8 +1,6 @@
 import { mkdir, readdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
-import { SUBTITLE_STYLE } from '../shared/subtitle-style.js';
-
 const WEEKDAYS_DE = [
   'sonntag',
   'montag',
@@ -137,7 +135,7 @@ export async function createReelWorkspace({
       audioCue: '',
       leadInSeconds: 0.2,
       subtitleCues: [],
-      subtitlePosition: SUBTITLE_STYLE.position,
+      subtitlePosition: null,
       durationSeconds: 0,
       expectedImageFileName: `${sceneId}.png`,
       promptStatus: 'missing',
@@ -164,7 +162,7 @@ export async function createReelWorkspace({
     sceneCount,
     visualStyleId: '',
     visualStyleReason: '',
-    subtitlesEnabled: true,
+    subtitlesEnabled: false,
     motionEffectsEnabled: true,
     soundEffectsEnabled: true,
     backgroundMusicEnabled: false,
@@ -177,8 +175,8 @@ export async function createReelWorkspace({
     content: 'draft',
     script: 'provided',
     scenes: 'planned',
-    subtitles: 'waiting-for-exact-sync',
-    wordSync: 'waiting-for-audio',
+    subtitles: 'disabled',
+    wordSync: 'not-required',
     effects: 'planned',
     audio: 'missing',
     imagePrompts: 'missing',
@@ -205,34 +203,12 @@ export async function createReelWorkspace({
   await writeText(path.join(reelDirectory, 'audio', '.gitkeep'));
   await writeJson(path.join(reelDirectory, 'scenes', 'scene-index.json'), sceneIndex);
   await writeJson(path.join(reelDirectory, 'subtitles', 'subtitle-plan.json'), {
-    version: 7,
-    enabled: true,
-    language: 'de',
-    position: SUBTITLE_STYLE.position,
-    verticalPositionPercent: SUBTITLE_STYLE.verticalPositionPercent,
-    safeVerticalRangePercent: SUBTITLE_STYLE.safeVerticalRangePercent,
-    textColor: SUBTITLE_STYLE.textColor,
-    highlightCurrentWord: SUBTITLE_STYLE.highlightCurrentWord,
-    highlightColor: SUBTITLE_STYLE.highlightColor,
-    speakerSyncedWordHighlight: true,
-    highlightAnimation: 'color-only',
-    backgroundColor: SUBTITLE_STYLE.backgroundColor,
-    textStrokeColor: SUBTITLE_STYLE.textStrokeColor,
-    maxLines: SUBTITLE_STYLE.maxLines,
-    wordsPerCue: { min: 3, max: 6 },
-    wordByWordKaraoke: true,
-    exactWordTimingsRequired: true,
-    completeSpokenTextCoverageRequired: true,
-    minimumWordCoverage: 1,
-    requireZeroUnassignedWords: true,
-    requireExactVoiceScriptWordSequence: true,
-    fallbackWordTiming: 'blocked-until-codex-word-sync',
-    avoidRepeatingImageText: true,
-    timingStatus: 'waiting-for-codex-word-sync',
-    timingProvider: 'codex-local-audio-review',
+    version: 8,
+    enabled: false,
+    reason: 'Globale Nutzerregel: Erklär-Reels werden ohne Untertitel gerendert.',
     cues: []
   });
-  await writeText(path.join(reelDirectory, 'subtitles', 'README.md'), `# Untertitel\n\nUntertitel stehen bei exakt ${SUBTITLE_STYLE.verticalPositionPercent} % der Bildhöhe.\nGrundtext: ${SUBTITLE_STYLE.textColor}. Nur das aktuell gesprochene Wort wird anhand echter akustischer Wortzeiten in Braun ${SUBTITLE_STYLE.highlightColor} markiert.\nKeine schwarze Box, kein sichtbarer Hintergrundbalken und keine Spring-/Zoom-/Größenanimation; nur der Farbwechsel des aktiven Wortes.\nNormalerweise 3–6 Wörter pro Einblendung und höchstens zwei Zeilen.\n100 % des gesprochenen Voice-Scripts müssen enthalten sein: coverage = 1, timedWords = totalWords und unassignedWords = 0.\nDie Untertitel dürfen erst nach lokaler akustischer Prüfung und exakter Wortzeitsynchronisierung gerendert werden. Fehlt ein Wort, ist der Render blockiert.\nNach dem letzten gesprochenen Wort endet der Untertitel; das Schlussbild bleibt ungefähr 0,7 Sekunden sauber sichtbar.\n`);
+  await writeText(path.join(reelDirectory, 'subtitles', 'README.md'), '# Untertitel\n\nUntertitel sind für dieses Format global deaktiviert. Der Renderer darf keine Untertitel einblenden.\n');
   await writeJson(path.join(reelDirectory, 'effects', 'effects-plan.json'), {
     version: 1,
     enabled: true,
