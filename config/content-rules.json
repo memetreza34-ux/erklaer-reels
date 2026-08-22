@@ -165,7 +165,8 @@
     "naturalContinuousCompositionRequired": true,
     "oneClearMomentPerScene": true,
     "mainSubjectMayUseCenter": true,
-    "mainSubjectMayAppearBehindSubtitles": true,
+    "mainSubjectMayAppearBehindSubtitles": false,
+    "protectCriticalFaceDetailsFromSubtitleZone": true,
     "forbidArtificialSubtitleGap": true,
     "forbidEmptyHorizontalStripe": true,
     "forbidDisconnectedTopBottomLayout": true,
@@ -180,12 +181,14 @@
     "separateFromImagePrompts": true,
     "position": "center",
     "verticalPositionPercent": {
-      "min": 58,
-      "max": 58,
-      "default": 58
+      "min": 62,
+      "max": 66,
+      "default": 64
     },
+    "maxWidthPercent": 72,
+    "platformTarget": "9:16 TikTok / Instagram Reels / YouTube Shorts",
     "fixedExactCenterPosition": false,
-    "fixedVerticalPosition": true,
+    "fixedVerticalPosition": false,
     "palette": {
       "textColor": "#F5F7FA",
       "highlightColor": "#B7794A",
@@ -215,12 +218,14 @@
       "applyCommand": "npm run sync:words -- --dir REEL_ORDNER --apply --strict",
       "localAudioReviewRequired": true,
       "estimatedDistributionForbidden": true,
-      "reason": "Untertitel müssen dem echten Voice-over wortgenau folgen. Kein gesprochenes Wort darf fehlen; das aktive Wort wird anhand echter akustischer Zeiten braun markiert."
+      "sceneCueTimingMustAlsoBeVerified": true,
+      "rerunAfterAnyAudioEdit": true,
+      "reason": "Untertitel und Bildwechsel müssen aus demselben finalen Voice-over abgeleitet werden. Kein gesprochenes Wort und kein Szenenanker darf geschätzt werden."
     },
     "fallbackWordTiming": "blocked-until-codex-word-sync",
     "repeatIntegratedImageText": false,
     "avoidPlatformUiSafeZones": true,
-    "allowPositionAdjustmentForVisualConflicts": false,
+    "allowPositionAdjustmentForVisualConflicts": true,
     "doNotCreateBlankBandInImage": true
   }
 }
