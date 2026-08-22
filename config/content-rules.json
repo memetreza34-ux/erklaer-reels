@@ -100,7 +100,7 @@
         "loudnessRangeLra": 11
       },
       "rerunTimelineAfterward": true,
-      "rerunWordSyncAfterward": true
+      "rerunWordSyncAfterward": false
     }
   },
   "visualRules": {
@@ -151,8 +151,7 @@
         "kurze Schlussaussage"
       ],
       "mustAppearExactlyInPrompt": true,
-      "mustNotRepeatSubtitleVerbatim": true,
-      "mayBeOmittedWhen": "Text würde die Szene überladen, die Aussage doppeln oder die Bildgenerierung unnötig verschlechtern.",
+      "mayBeOmittedWhen": "Text würde die Szene überladen oder die Bildgenerierung unnötig verschlechtern.",
       "forbidden": [
         "englischer sichtbarer Text",
         "zufällige oder erfundene Wörter",
@@ -164,9 +163,8 @@
     "fixedBuildUpRequired": false,
     "naturalContinuousCompositionRequired": true,
     "oneClearMomentPerScene": true,
-    "mainSubjectMayUseCenter": true,
-    "mainSubjectMayAppearBehindSubtitles": false,
-    "protectCriticalFaceDetailsFromSubtitleZone": true,
+    "useFullFrameComposition": true,
+    "reserveSubtitleSafeZone": false,
     "forbidArtificialSubtitleGap": true,
     "forbidEmptyHorizontalStripe": true,
     "forbidDisconnectedTopBottomLayout": true,
@@ -177,55 +175,11 @@
     "noLogosUnlessEditoriallyNecessary": true
   },
   "subtitleRules": {
-    "defaultEnabled": true,
-    "separateFromImagePrompts": true,
-    "position": "center",
-    "verticalPositionPercent": {
-      "min": 62,
-      "max": 66,
-      "default": 64
-    },
-    "maxWidthPercent": 72,
-    "platformTarget": "9:16 TikTok / Instagram Reels / YouTube Shorts",
-    "fixedExactCenterPosition": false,
-    "fixedVerticalPosition": false,
-    "palette": {
-      "textColor": "#F5F7FA",
-      "highlightColor": "#B7794A",
-      "backgroundColor": "transparent",
-      "textStrokeColor": "rgba(0, 0, 0, 0.92)",
-      "reason": "Weißer Grundtext bleibt auf den Illustrationen gut lesbar; nur das exakt aktuell gesprochene Wort wechselt synchron in ein warmes Braun."
-    },
-    "wordsPerCue": {
-      "min": 3,
-      "max": 6
-    },
-    "maxLines": 2,
-    "wordByWordKaraoke": true,
-    "highlightCurrentWord": true,
-    "speakerSyncedWordHighlight": true,
-    "highlightAnimation": "color-only",
-    "forbidScaleBounceOrBoxAnimation": true,
-    "exactWordTimingsRequired": true,
-    "completeSpokenTextCoverageRequired": true,
-    "minimumWordCoverage": 1,
-    "requireZeroUnassignedWords": true,
-    "requireExactVoiceScriptWordSequence": true,
-    "wordTimingWorkflow": {
-      "enabled": true,
-      "provider": "codex-local-audio-review",
-      "prepareCommand": "npm run sync:words -- --dir REEL_ORDNER",
-      "applyCommand": "npm run sync:words -- --dir REEL_ORDNER --apply --strict",
-      "localAudioReviewRequired": true,
-      "estimatedDistributionForbidden": true,
-      "sceneCueTimingMustAlsoBeVerified": true,
-      "rerunAfterAnyAudioEdit": true,
-      "reason": "Untertitel und Bildwechsel müssen aus demselben finalen Voice-over abgeleitet werden. Kein gesprochenes Wort und kein Szenenanker darf geschätzt werden."
-    },
-    "fallbackWordTiming": "blocked-until-codex-word-sync",
-    "repeatIntegratedImageText": false,
-    "avoidPlatformUiSafeZones": true,
-    "allowPositionAdjustmentForVisualConflicts": true,
-    "doNotCreateBlankBandInImage": true
+    "defaultEnabled": false,
+    "globallyDisabled": true,
+    "renderSubtitles": false,
+    "generateSubtitleCues": false,
+    "wordTimingWorkflowRequired": false,
+    "reason": "Globale Nutzerregel: Erklär-Reels werden ab sofort ohne Untertitel produziert und gerendert."
   }
 }
