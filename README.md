@@ -21,10 +21,10 @@ Neue Chats, Codex, Antigravity und andere Repo-Agenten sollen diese Datei zuerst
 - Schlussbild 0,7 Sekunden nach dem letzten gesprochenen Wort halten
 - Voice-over exakt 1,10x mit erhaltener Tonhöhe
 - −16 LUFS und höchstens −1,5 dBTP
-- Untertitel bei exakt 58 % Bildhöhe
-- Grundtext `#F5F7FA`; **nur das aktuell gesprochene Wort** wird anhand echter akustischer Wortzeiten in Braun `#B7794A` markiert
-- 100 % des gesprochenen Voice-Scripts müssen in identischer Wortreihenfolge als Untertitel enthalten sein; `unassignedWords` muss 0 sein
-- keine schwarze Box und keine Spring-/Zoom-Karaoke-Animation; ausschließlich Farbwechsel des aktiven Wortes
+- **keine Untertitel**
+- **kein Word-Sync für Untertitel**
+- volle 9:16-Bildkomposition ohne künstlich freigehaltene Untertitelzone
+- Szenenwechsel werden an bestätigten Audio-Cues der finalen Voice-over-Datei ausgerichtet
 - ausschließlich harte Schnitte
 - keine Hintergrundmusik
 
@@ -110,7 +110,7 @@ npm run validate:reel -- --dir "PFAD-ZUM-REEL"
 npm run check:content -- --dir "PFAD-ZUM-REEL" --strict
 ```
 
-Ein normaler neuer Reel-Auftrag verändert keine globalen Produktionsregeln.
+Neue Workspaces setzen `subtitlesEnabled: false`. Eine eventuell vorhandene `subtitles/subtitle-plan.json` ist nur noch eine deaktivierte Kompatibilitätsdatei und wird nicht gerendert.
 
 ## Sichtbare Ordnerstruktur
 
@@ -144,22 +144,19 @@ npm run organize:assets -- --dir "PFAD-ZUM-REEL"
 npm run organize:assets -- --dir "PFAD-ZUM-REEL" --apply
 ```
 
-## Audio, vollständige Untertitel-Synchronisierung und Render
+## Audio, Szenen-Synchronisierung und Render
 
 ```bash
 npm run trim:pauses -- --dir "PFAD-ZUM-REEL" --speed 1.10
 npm run build:timeline -- --dir "PFAD-ZUM-REEL"
 npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
-npm run sync:words -- --dir "PFAD-ZUM-REEL"
-# jedes Wort im echten Audio akustisch prüfen
-npm run sync:words -- --dir "PFAD-ZUM-REEL" --apply --strict
 npm run check:visuals -- --dir "PFAD-ZUM-REEL" --strict
 npm run finalize:reel -- --dir "PFAD-ZUM-REEL" --strict
 npm run validate:render -- --dir "PFAD-ZUM-REEL"
 npm run render:reel -- --dir "PFAD-ZUM-REEL"
 ```
 
-Vor dem Render gilt zwingend: `coverage === 1`, `timedWords === totalWords`, `unassignedWords === 0`, und die gerenderte Untertitel-Wortfolge entspricht exakt `script/voice-script.txt`. Fehlt auch nur ein gesprochenes Wort, ist der Render blockiert.
+Es gibt im aktuellen Workflow **keinen `sync:words`-Schritt**. Der Render-Validator blockiert jeden Render-Plan, der Untertitel-Cues enthält. Nach jeder Veränderung der finalen Audiodatei müssen die Szenen-Cues erneut bestätigt werden.
 
 Keine geplante oder nicht ausgeführte Stufe als bestanden ausgeben.
 
@@ -171,4 +168,4 @@ Keine geplante oder nicht ausgeführte Stufe als bestanden ausgeben.
 
 ## Bekannter Infrastrukturpunkt
 
-Issue #19 (`package-lock.json` erzeugen und CI auf `npm ci` umstellen) bleibt offen. Keine Lockdatei manuell erfinden und keine nicht ausgeführten Tests als bestanden melden.
+Issue #19 bleibt als Wartungsaufgabe dokumentiert. Keine nicht tatsächlich ausgeführten Tests oder CI-Läufe als bestanden melden.
