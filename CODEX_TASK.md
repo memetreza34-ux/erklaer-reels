@@ -1,6 +1,6 @@
 # Codex-Hauptauftrag
 
-Dieses Repository produziert vollständige visuelle Erklär-Reels. **`CURRENT_WORKFLOW.md` ist bei Widersprüchen maßgeblich.** Der Nutzer erzeugt Voice-over und Bilder extern. Codex übernimmt Planung, Prompt-Sammlung, Suche nach Assets/ZIPs, Prüfung, Audio-Pacing, sichere Bildzuordnung, Synchronisierung und Remotion-Render.
+Dieses Repository produziert vollständige visuelle Erklär-Reels. **`CURRENT_WORKFLOW.md` ist bei Widersprüchen maßgeblich.** Der Nutzer erzeugt Voice-over und Bilder extern. Codex übernimmt Planung, Prompt-Sammlung, Suche nach Assets/ZIPs, Prüfung, Audio-Pacing, sichere Bildzuordnung, Szenen-Synchronisierung und Remotion-Render.
 
 ## Neues Reel
 
@@ -9,6 +9,8 @@ Dieses Repository produziert vollständige visuelle Erklär-Reels. **`CURRENT_WO
 - 55–60 Sekunden Voice-over nach Audiooptimierung
 - 12–14 Bildmomente, Standard 13
 - Geschwindigkeit exakt 1,10x
+- **keine Untertitel**
+- **kein Word-Sync-Schritt**
 
 ```bash
 npm run create:reel -- \
@@ -18,7 +20,7 @@ npm run create:reel -- \
   --scenes 13
 ```
 
-Danach `production/agent-task.md` vollständig bearbeiten. Pflichtdateien sind Script, `reel.json`, Szenendaten, alle Bildprompts, Cover, Prompt-Sammeldatei, Untertitel, Effekte, Caption und Quellen.
+Danach `production/agent-task.md` vollständig bearbeiten. Pflichtdateien sind Script, `reel.json`, Szenendaten, alle Bildprompts, Cover, Prompt-Sammeldatei, Effekte, Caption und Quellen. `reel.json` muss `subtitlesEnabled: false` setzen.
 
 ```bash
 npm run export:prompts -- --dir "PFAD-ZUM-REEL" --strict
@@ -34,7 +36,8 @@ npm run check:content -- --dir "PFAD-ZUM-REEL" --strict
 - Bildwelt erst nach dem fertigen Script auswählen und innerhalb des Reels konsistent halten
 - politische Inhalte neutral; Quellen und Unsicherheiten dokumentieren
 - Ende über mindestens zwei Szenen: persönliche Prüf-/Erkenntnisfrage → konkrete Lösung/einprägsamer Satz
-- nach dem letzten gesprochenen Wort 0,7 Sekunden Schlussbild ohne neuen Untertitel
+- nach dem letzten gesprochenen Wort 0,7 Sekunden Schlussbild
+- Bilder nutzen die volle 9:16-Fläche; keine künstliche Untertitelzone freihalten
 
 ## Szenenrhythmus
 
@@ -83,34 +86,24 @@ Erlaubte `matchMethod`:
 
 `filename-only` ist verboten.
 
-## Untertitel — verbindlicher aktueller Standard
+## Untertitel
 
-Zentrale Quelle: `src/shared/subtitle-style.js`.
+**Untertitel sind global deaktiviert.**
 
-- horizontal zentriert
-- vertikal exakt **58 %** Bildhöhe
-- Grundtext `#F5F7FA`
-- das **aktuell gesprochene Wort** wird anhand echter akustischer Wortzeiten in Braun **`#B7794A`** markiert
-- keine schwarze Box/Balken
-- keine Bounce-, Zoom-, Größen- oder Positionsanimation; nur der Farbwechsel des aktiven Wortes
-- normalerweise 3–6 Wörter pro Cue, höchstens zwei Zeilen
-- jedes gesprochene Wort muss enthalten sein
-- `coverage === 1`
-- `timedWords === totalWords`
-- `unassignedWords === 0`
-- die komplette gerenderte Untertitel-Wortfolge muss exakt `script/voice-script.txt` entsprechen
-- geschätzte Cue-/Wortzeiten sind verboten
-- fehlt auch nur ein gesprochenes Wort, darf nicht gerendert werden
+- keine Untertitel-Cues erzeugen
+- kein Karaoke oder Wort-Highlight
+- kein `sync:words` im normalen Produktionsablauf
+- keine Untertitel-Safe-Zone in Bildern reservieren
+- der Render-Validator blockiert Render-Pläne, die Untertitel enthalten
 
-## Audio und Wort-Sync
+Legacy-Word-Sync-Hilfen dürfen für alte historische Reels im Repository bleiben, sind aber nicht Teil des aktuellen Produktionswegs.
+
+## Audio und Szenen-Sync
 
 ```bash
 npm run trim:pauses -- --dir "PFAD-ZUM-REEL" --speed 1.10
 npm run build:timeline -- --dir "PFAD-ZUM-REEL"
 npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
-npm run sync:words -- --dir "PFAD-ZUM-REEL"
-# production/codex-word-sync-task.md vollständig akustisch bearbeiten
-npm run sync:words -- --dir "PFAD-ZUM-REEL" --apply --strict
 ```
 
 Audio-Standard:
@@ -119,8 +112,9 @@ Audio-Standard:
 - exakt 1,10x bei erhaltener Tonhöhe
 - −16 LUFS und höchstens −1,5 dBTP
 - optimierte Datei nicht erneut beschleunigen
-- jedes Wort im echten lokalen Audio akustisch bestätigen
+- Szenenanker ausschließlich aus der finalen Audiodatei bestätigen
 - keine gleichmäßige oder erfundene Zeitverteilung
+- jede spätere Audioänderung macht die Szenen-Timeline ungültig
 
 ## Visuelle Prüfung und Render
 
@@ -129,13 +123,12 @@ npm run organize:assets -- --dir "PFAD-ZUM-REEL" --apply
 npm run check:visuals -- --dir "PFAD-ZUM-REEL" --strict
 npm run build:timeline -- --dir "PFAD-ZUM-REEL"
 npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
-npm run sync:words -- --dir "PFAD-ZUM-REEL" --apply --strict
 npm run finalize:reel -- --dir "PFAD-ZUM-REEL" --strict
 npm run validate:render -- --dir "PFAD-ZUM-REEL"
 npm run render:reel -- --dir "PFAD-ZUM-REEL"
 ```
 
-Nur rendern, wenn Inhalt, Audio, Lautheit, Audio-Sync, **100-%-Untertitelabdeckung**, exakte akustische Wort-Synchronisierung, braune Sprecher-Markierung, sichere Bildzuordnung, visuelle Prüfung, Szenenrhythmus, 0,7-Sekunden-Schlussbild und Renderer-Eingabe tatsächlich bestanden sind.
+Nur rendern, wenn Inhalt, Audio, Lautheit, bestätigter Szenen-Sync, sichere Bildzuordnung, visuelle Prüfung, Szenenrhythmus, 0,7-Sekunden-Schlussbild und Renderer-Eingabe tatsächlich bestanden sind. **Der finale Render enthält keine Untertitel.**
 
 Das finale Video ist sichtbar unter:
 
