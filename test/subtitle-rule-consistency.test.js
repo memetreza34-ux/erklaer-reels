@@ -22,7 +22,7 @@ function getCheck(report, id) {
   return check;
 }
 
-test('neue Arbeitsordner verwenden tiefere weiße Untertitel', async () => {
+test('neue Arbeitsordner verwenden social-safe Untertitel mit exakter Wortmarkierung', async () => {
   const outputRoot = await mkdtemp(path.join(os.tmpdir(), 'erklaer-reels-subtitles-'));
 
   try {
@@ -38,17 +38,17 @@ test('neue Arbeitsordner verwenden tiefere weiße Untertitel', async () => {
     const scene = await readJson(path.join(reelDirectory, 'scenes', 'scene-01', 'scene.json'));
 
     assert.equal(SUBTITLE_STYLE.position, 'center');
-    assert.equal(SUBTITLE_STYLE.verticalPositionPercent, 58);
-    assert.deepEqual(SUBTITLE_STYLE.safeVerticalRangePercent, { min: 58, max: 58 });
+    assert.equal(SUBTITLE_STYLE.verticalPositionPercent, 64);
+    assert.deepEqual(SUBTITLE_STYLE.safeVerticalRangePercent, { min: 62, max: 66 });
+    assert.equal(SUBTITLE_STYLE.maxWidthPercent, 72);
     assert.equal(SUBTITLE_STYLE.textColor, '#F5F7FA');
     assert.equal(scene.subtitlePosition, SUBTITLE_STYLE.position);
     assert.equal(plan.position, SUBTITLE_STYLE.position);
     assert.equal(plan.verticalPositionPercent, SUBTITLE_STYLE.verticalPositionPercent);
     assert.deepEqual(plan.safeVerticalRangePercent, SUBTITLE_STYLE.safeVerticalRangePercent);
     assert.equal(plan.textColor, SUBTITLE_STYLE.textColor);
-    assert.equal(plan.highlightCurrentWord, false);
-    assert.equal(plan.highlightColor, SUBTITLE_STYLE.highlightColor);
-    assert.equal(plan.textColor, plan.highlightColor);
+    assert.equal(plan.highlightCurrentWord, true);
+    assert.equal(plan.highlightColor, '#B7794A');
     assert.equal(plan.backgroundColor, 'transparent');
     assert.equal(plan.exactWordTimingsRequired, true);
     assert.equal(plan.timingProvider, 'codex-local-audio-review');
@@ -57,7 +57,7 @@ test('neue Arbeitsordner verwenden tiefere weiße Untertitel', async () => {
   }
 });
 
-test('strenge Inhaltsprüfung blockiert alte Mitte, Braunton, Wortmarkierung und Box', async () => {
+test('strenge Inhaltsprüfung blockiert Positionen außerhalb der Safe-Zone, falsche Farben und Box', async () => {
   const outputRoot = await mkdtemp(path.join(os.tmpdir(), 'erklaer-reels-old-subtitles-'));
 
   try {
@@ -71,11 +71,10 @@ test('strenge Inhaltsprüfung blockiert alte Mitte, Braunton, Wortmarkierung und
 
     const planPath = path.join(reelDirectory, 'subtitles', 'subtitle-plan.json');
     const plan = await readJson(planPath);
-    plan.verticalPositionPercent = 50;
-    plan.safeVerticalRangePercent = { min: 50, max: 50 };
+    plan.verticalPositionPercent = 58;
+    plan.safeVerticalRangePercent = { min: 58, max: 58 };
     plan.textColor = '#E7C39A';
     plan.highlightColor = '#E7C39A';
-    plan.highlightCurrentWord = true;
     plan.backgroundColor = 'rgba(0, 0, 0, 0.72)';
     await writeJson(planPath, plan);
 
