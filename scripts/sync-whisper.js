@@ -78,7 +78,7 @@ for (const cw of codex.words ?? []) {
 
   let match = null;
 
-  // Prefer a single real Whisper token near the current cursor.
+  // Prefer one real Whisper token near the current cursor.
   for (let lookahead = 0; lookahead < 8 && wIdx + lookahead < wWords.length; lookahead += 1) {
     const candidate = wWords[wIdx + lookahead];
     const confidence = fuzzyConfidence(target, candidate.normalized);
@@ -93,13 +93,12 @@ for (const cw of codex.words ?? []) {
     }
   }
 
-  // Whisper sometimes splits one written word into multiple acoustic tokens.
+  // Whisper can split one written word into several acoustic tokens.
   if (!match) {
     for (let lookahead = 0; lookahead < 5 && wIdx + lookahead < wWords.length; lookahead += 1) {
-      let combined = '';
       for (let count = 1; count <= 3 && wIdx + lookahead + count - 1 < wWords.length; count += 1) {
         const slice = wWords.slice(wIdx + lookahead, wIdx + lookahead + count);
-        combined = slice.map((word) => word.normalized).join('');
+        const combined = slice.map((word) => word.normalized).join('');
         const confidence = fuzzyConfidence(target, combined);
         if (confidence > 0) {
           match = {
@@ -143,14 +142,19 @@ let currentIndex = 0;
 for (const cue of audio.cueTimings ?? []) {
   const result = findCueTime(cue.audioCue, currentIndex);
   if (result) {
-    cue.cueTimeSeconds = result.time;
-    cue.confidence = 0.9;
+    // Keep the machine result separate from the verified scene anchor.
+    // The timeline only uses cueTimeSeconds, so an unreviewed Whisper result can never silently mark scene sync as exact.
+    cue.candidateCueTimeSeconds = result.time;
+    cue.cueTimeSeconds = null;
+    cue.reviewed = false;
+    cue.confidence = null;
     cue.timingSource = 'whisper-candidate';
     currentIndex = result.nextIndex;
   } else {
-    // Never invent a scene anchor. A missing cue must keep the timeline non-audio-synced.
+    cue.candidateCueTimeSeconds = null;
     cue.cueTimeSeconds = null;
-    cue.confidence = 0;
+    cue.reviewed = false;
+    cue.confidence = null;
     cue.timingSource = 'missing';
   }
 }
@@ -159,11 +163,11 @@ fs.writeFileSync(codexPath, `${JSON.stringify(codex, null, 2)}\n`);
 fs.writeFileSync(audioPath, `${JSON.stringify(audio, null, 2)}\n`);
 
 const unresolvedWords = codexWords.filter((word) => finite(word.startSeconds) === null || finite(word.endSeconds) === null);
-const unresolvedCues = (audio.cueTimings ?? []).filter((cue) => finite(cue.cueTimeSeconds) === null);
+const missingCueCandidates = (audio.cueTimings ?? []).filter((cue) => finite(cue.candidateCueTimeSeconds) === null);
 
-if (unresolvedWords.length || unresolvedCues.length) {
-  console.error(`Whisper alignment incomplete: ${unresolvedWords.length} word(s) and ${unresolvedCues.length} scene cue(s) unresolved. No synthetic timings were created.`);
+if (unresolvedWords.length || missingCueCandidates.length) {
+  console.error(`Whisper alignment incomplete: ${unresolvedWords.length} word(s) and ${missingCueCandidates.length} scene cue candidate(s) unresolved. No synthetic timings were created.`);
   process.exitCode = 1;
 } else {
-  console.log('Whisper candidates aligned from real timestamps. Acoustic Codex review is still required before strict word-sync apply.');
+  console.log('Whisper candidates came only from real timestamps. Word timings and scene anchors remain unreviewed until acoustic confirmation.');
 }
