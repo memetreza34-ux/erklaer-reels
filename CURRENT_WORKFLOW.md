@@ -1,6 +1,6 @@
 # CURRENT WORKFLOW — VERBINDLICHE SINGLE SOURCE OF TRUTH
 
-**Stand: 2026-08-10**
+**Stand: 2026-08-22**
 
 Diese Datei ist die verbindliche Repo-weite Produktionsregel für neue Chats, Codex, Antigravity und andere Repo-Agenten.
 
@@ -64,7 +64,9 @@ Nicht autonom verwenden:
 - Schlussbild nach dem letzten gesprochenen Wort 0,7 Sekunden halten
 - Voice-over exakt 1,10x bei erhaltener Tonhöhe
 - −16 LUFS, höchstens −1,5 dBTP
-- Untertitel horizontal zentriert, vertikal exakt bei 58 % Bildhöhe
+- Untertitel horizontal zentriert; Standardhöhe **64 %**, zulässige Social-Safe-Zone **62–66 %** der Bildhöhe
+- Untertitel maximal **72 % Bildbreite**, damit TikTok-/Reels-/Shorts-UI nicht mit wichtigem Text kollidiert
+- kritische Gesichtsdetails, Augen und Mund dürfen nicht hinter der Untertitel-Safe-Zone liegen
 - Untertitel-Grundfarbe `#F5F7FA`
 - **das aktuell gesprochene Wort wird exakt nach den akustischen Wortzeiten in Braun `#B7794A` markiert**
 - **100 % des gesprochenen Voice-Scripts müssen als Untertitel vorhanden sein; kein Wort, Satzteil oder Satz darf fehlen**
@@ -279,7 +281,7 @@ Wenn Bilder und Audio gefunden und geprüft sind, soll der Agent selbstständig 
 
 ---
 
-## 10. Voice-over, vollständige Untertitel und Finalisierung
+## 10. Voice-over, Szenen-Sync, vollständige Untertitel und Finalisierung
 
 Das Voice-over ist ein externes Asset. Sobald es vorhanden ist oder durch die Asset-Suche gefunden wurde:
 
@@ -287,17 +289,24 @@ Das Voice-over ist ein externes Asset. Sobald es vorhanden ist oder durch die As
 2. Pausen straffen
 3. exakt 1,10x, Tonhöhe erhalten
 4. −16 LUFS / max. −1,5 dBTP messen und bestätigen
-5. Timeline synchronisieren
-6. **jedes einzelne gesprochene Wort akustisch abhören und echte Start-/Endzeiten erstellen**
-7. prüfen, dass `timedWords === totalWords`, `coverage === 1` und `unassignedWords === 0`
-8. prüfen, dass die komplette Untertitel-Wortfolge exakt `script/voice-script.txt` entspricht
-9. das aktuell gesprochene Wort mit `#B7794A` hervorheben; übrige Wörter bleiben `#F5F7FA`
-10. visuelle QC vollständig durchführen
-11. Finalizer und Render-Validator bestehen
-12. erst dann MP4 rendern
-13. die finale MP4 muss in der sichtbaren Reel-Ansicht unter `04-video/FERTIGES-VIDEO/` erreichbar sein
+5. **ab jetzt ausschließlich die endgültige verarbeitete Audiodatei als gemeinsame Zeitquelle verwenden**
+6. jeden Szenen-`audioCue` akustisch gegen diese finale Audiodatei prüfen; keine geschätzten oder künstlich erzeugten Szenenanker
+7. Timeline aus den bestätigten Szenenankern neu synchronisieren
+8. **jedes einzelne gesprochene Wort akustisch abhören und echte Start-/Endzeiten aus derselben finalen Audiodatei erstellen**
+9. prüfen, dass `timedWords === totalWords`, `coverage === 1` und `unassignedWords === 0`
+10. prüfen, dass die komplette Untertitel-Wortfolge exakt `script/voice-script.txt` entspricht
+11. das aktuell gesprochene Wort nur von seinem echten `startSeconds` bis zu seinem echten `endSeconds` mit `#B7794A` hervorheben; in Sprechpausen ist kein Wort aktiv markiert
+12. prüfen, dass jeder Szenenwechsel zum gesprochenen Inhalt seiner Szene passt
+13. visuelle QC vollständig durchführen
+14. Finalizer und Render-Validator bestehen
+15. erst dann MP4 rendern
+16. die finale MP4 muss in der sichtbaren Reel-Ansicht unter `04-video/FERTIGES-VIDEO/` erreichbar sein
 
-Keine geschätzten Wortzeiten oder geplanten QC-Stufen als bestanden ausgeben. **Ein Render mit fehlendem gesprochenem Wort ist verboten.**
+**Jede Änderung am Voice-over nach Schritt 4 macht sowohl Szenen-Timeline als auch Wortzeiten ungültig. Beide müssen danach aus derselben neuen finalen Audiodatei erneut erzeugt und geprüft werden.**
+
+Whisper-/ASR-Zeitstempel dürfen als Kandidaten helfen, gelten aber ohne akustische Bestätigung nicht als bestanden. Nicht erkannte Wörter oder Szenenanker bleiben offen; sie werden niemals mathematisch aufgefüllt, an Szenengrenzen geklemmt oder mit erfundener Konfidenz als geprüft markiert.
+
+Keine geschätzten Wortzeiten, keine geschätzten Szenenanker und keine geplanten QC-Stufen als bestanden ausgeben. **Ein Render mit fehlendem gesprochenem Wort oder unbestätigtem Szenen-Sync ist verboten.**
 
 ---
 
@@ -368,6 +377,8 @@ Verboten ohne ausdrückliche Nutzeranweisung:
 - Untertitel mit weniger als 100 % des gesprochenen Voice-Scripts rendern
 - `unassignedWords` ignorieren oder fehlende Wörter/Sätze trotz striktem Lauf zulassen
 - die braune Sprecher-Markierung `#B7794A` wieder durch eine statische einfarbige Untertitelspur ersetzen
+- fehlende Wortzeiten oder Szenenanker künstlich erzeugen, verteilen, klemmen oder als geprüft markieren
+- Untertitel oder Bildwechsel aus einer älteren Audiodatei weiterverwenden, nachdem das Voice-over verändert wurde
 - globale Produktionswerte bei einem normalen neuen Reel verändern
 
 Historische Reel-Dateien dürfen nie benutzt werden, um neuere globale Regeln zurückzudrehen.
