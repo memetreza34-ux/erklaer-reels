@@ -10,13 +10,6 @@ import {
   useVideoConfig
 } from 'remotion';
 
-import {
-  SUBTITLE_STYLE,
-  normalizeSubtitleColor,
-  normalizeSubtitleVerticalPosition
-} from '../shared/subtitle-style.js';
-import { activeWordIndex, buildWordTimings } from './subtitle-timing.js';
-
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 
 const assetUrl = (file) => staticFile(String(file).replaceAll('\\', '/').replace(/^\/+/, ''));
@@ -85,65 +78,6 @@ const SceneLayer = ({ scene }) => {
   );
 };
 
-const Subtitle = ({ cue }) => {
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-  const vertical = normalizeSubtitleVerticalPosition(cue.verticalPositionPercent);
-  const textColor = normalizeSubtitleColor(cue.textColor, SUBTITLE_STYLE.textColor);
-  const words = buildWordTimings(cue);
-  const active = SUBTITLE_STYLE.highlightCurrentWord
-    ? activeWordIndex(words, frame / fps)
-    : -1;
-
-  return (
-    <AbsoluteFill
-      style={{
-        justifyContent: 'flex-start',
-        alignItems: 'center',
-        pointerEvents: 'none'
-      }}
-    >
-      <div
-        style={{
-          position: 'absolute',
-          top: `${vertical}%`,
-          transform: 'translateY(-50%)',
-          maxWidth: `${SUBTITLE_STYLE.maxWidthPercent}%`,
-          padding: 0,
-          borderRadius: 0,
-          border: 'none',
-          backgroundColor: SUBTITLE_STYLE.backgroundColor,
-          color: textColor,
-          fontFamily: 'Arial, Helvetica, sans-serif',
-          fontSize: SUBTITLE_STYLE.fontSize,
-          fontWeight: SUBTITLE_STYLE.fontWeight,
-          lineHeight: 1.08,
-          letterSpacing: -0.9,
-          textAlign: 'center',
-          WebkitTextStroke: `${SUBTITLE_STYLE.textStrokeWidth}px ${SUBTITLE_STYLE.textStrokeColor}`,
-          paintOrder: 'stroke fill',
-          textShadow: SUBTITLE_STYLE.textShadow,
-          whiteSpace: 'normal'
-        }}
-      >
-        {words.length > 0 ? words.map((word, index) => {
-          const isActive = index === active;
-          return (
-            <React.Fragment key={`${word.text}-${index}`}>
-              {index > 0 ? ' ' : ''}
-              <span style={{ color: isActive ? SUBTITLE_STYLE.highlightColor : textColor }}>
-                {word.text}
-              </span>
-            </React.Fragment>
-          );
-        }) : (
-          <span style={{ color: textColor }}>{cue.text}</span>
-        )}
-      </div>
-    </AbsoluteFill>
-  );
-};
-
 export const ReelComposition = ({ plan }) => {
   const { fps, durationInFrames } = useVideoConfig();
   const scenes = Array.isArray(plan?.scenes) ? plan.scenes : [];
@@ -154,7 +88,6 @@ export const ReelComposition = ({ plan }) => {
       .filter((sound) => sound.file)
       .map((sound) => ({ ...sound, sceneId: scene.sceneId }))
   );
-  const subtitles = scenes.flatMap((scene) => scene.subtitles ?? []);
 
   return (
     <AbsoluteFill style={{ backgroundColor: '#000' }}>
@@ -183,21 +116,6 @@ export const ReelComposition = ({ plan }) => {
         return (
           <Sequence key={sound.id ?? `${sound.sceneId}-${from}`} from={from}>
             <Audio src={assetUrl(sound.file)} volume={Number(sound.volume) || 0.2} />
-          </Sequence>
-        );
-      })}
-
-      {subtitles.map((cue, index) => {
-        const from = clamp(Math.round(Number(cue.startSeconds) * fps), 0, durationInFrames - 1);
-        const end = clamp(Math.round(Number(cue.endSeconds) * fps), from + 1, durationInFrames);
-        return (
-          <Sequence
-            key={cue.id ?? `subtitle-${index + 1}`}
-            from={from}
-            durationInFrames={Math.max(1, end - from)}
-            style={{ zIndex: scenes.length + 10 }}
-          >
-            <Subtitle cue={cue} />
           </Sequence>
         );
       })}
