@@ -16,7 +16,7 @@ Wenn sich Dokumente, alte Reel-Dateien, Beispieltexte oder frühere Produktionsa
 6. `docs/` und `knowledge/`
 7. einzelne ältere Reel-Dateien, Beispiele oder historische Produktionsaufträge
 
-Ein normaler Auftrag wie „Mach ein neues Reel“ darf diese globalen Regeln **nicht** verändern. Globale Regeln werden nur geändert, wenn der Nutzer ausdrücklich eine neue Regel festlegt.
+Ein normaler Auftrag wie „Mach ein neues Reel“ darf diese globalen Regeln nicht verändern. Globale Regeln werden nur geändert, wenn der Nutzer ausdrücklich eine neue Regel festlegt.
 
 ---
 
@@ -28,13 +28,14 @@ Nicht nach Datum, Thema, Szenenzahl oder Bildwelt fragen, solange kein echter Ko
 2. Thema selbstständig aus den erlaubten Säulen wählen.
 3. Vollständiges deutsches Script schreiben.
 4. Reel-Workspace vollständig erstellen.
-5. Cover, 12–14 Szenen, Bildprompts, Prompt-Sammeldatei, Caption, Quellen, Untertitel-/Effektplanung und Statusdateien fertigstellen.
-6. Die sichtbare Reel-Ansicht mit `00-bildprompts`, `01-voice-script`, `02-audio`, `03-caption`, `04-video` und `99-technik` sicherstellen.
-7. Inhaltsprüfungen ausführen, soweit die Umgebung dies tatsächlich erlaubt.
-8. Wenn externe Bilder oder Audio scheinbar fehlen, zuerst die verbindliche Asset-Discovery durchführen; **nicht sofort anhalten oder den Nutzer fragen**.
-9. Gefundene Assets sicher übernehmen, visuell bzw. akustisch prüfen und mit den bestehenden QC-Gates weiterverarbeiten.
-10. Erst wenn die Suche tatsächlich nichts Passendes findet oder eine sichere Auswahl nicht möglich ist, den Nutzer informieren.
-11. Sobald alle nötigen Assets vorhanden und geprüft sind, ohne unnötige Pause bis zur tatsächlich geprüften MP4 weiterarbeiten.
+5. Cover, 12–14 Szenen, Bildprompts, Prompt-Sammeldatei, Caption, Quellen, Effektplanung und Statusdateien fertigstellen.
+6. **Keine Untertitel planen, erzeugen oder rendern.**
+7. Die sichtbare Reel-Ansicht mit `00-bildprompts`, `01-voice-script`, `02-audio`, `03-caption`, `04-video` und `99-technik` sicherstellen.
+8. Inhaltsprüfungen ausführen, soweit die Umgebung dies tatsächlich erlaubt.
+9. Wenn externe Bilder oder Audio scheinbar fehlen, zuerst die verbindliche Asset-Discovery durchführen; nicht sofort anhalten oder den Nutzer fragen.
+10. Gefundene Assets sicher übernehmen, visuell bzw. akustisch prüfen und mit den bestehenden QC-Gates weiterverarbeiten.
+11. Erst wenn die Suche tatsächlich nichts Passendes findet oder eine sichere Auswahl nicht möglich ist, den Nutzer informieren.
+12. Sobald alle nötigen Assets vorhanden und geprüft sind, ohne unnötige Pause bis zur tatsächlich geprüften MP4 weiterarbeiten.
 
 Erlaubte Säulen:
 - Politik und Gesellschaft
@@ -64,13 +65,9 @@ Nicht autonom verwenden:
 - Schlussbild nach dem letzten gesprochenen Wort 0,7 Sekunden halten
 - Voice-over exakt 1,10x bei erhaltener Tonhöhe
 - −16 LUFS, höchstens −1,5 dBTP
-- Untertitel horizontal zentriert; Standardhöhe **64 %**, zulässige Social-Safe-Zone **62–66 %** der Bildhöhe
-- Untertitel maximal **72 % Bildbreite**, damit TikTok-/Reels-/Shorts-UI nicht mit wichtigem Text kollidiert
-- kritische Gesichtsdetails, Augen und Mund dürfen nicht hinter der Untertitel-Safe-Zone liegen
-- Untertitel-Grundfarbe `#F5F7FA`
-- **das aktuell gesprochene Wort wird exakt nach den akustischen Wortzeiten in Braun `#B7794A` markiert**
-- **100 % des gesprochenen Voice-Scripts müssen als Untertitel vorhanden sein; kein Wort, Satzteil oder Satz darf fehlen**
-- keine schwarze Box und keine zusätzliche Karaoke-Animation wie Springen, Zoomen oder Größenwechsel; nur die Farbe des aktiven Wortes wechselt
+- **keine Untertitel**
+- **keine Wort-für-Wort-Markierung und kein Word-Sync-Schritt für Untertitel**
+- Bilder dürfen die volle 9:16-Fläche sinnvoll nutzen; keine künstliche Untertitel-Lücke oder leere horizontale Safe-Zone erzeugen
 - ausschließlich harte Schnitte
 - keine Hintergrundmusik
 - 0–2 dezente SFX pro Szene
@@ -83,7 +80,7 @@ Technische Grenzwerte bleiben in `config/production-quality-gates.json` und den 
 
 ### Antigravity / Codex / Repo-Agenten
 
-Sie **erzeugen keine Cover- oder Szenenbilder selbst** und starten nicht stellvertretend einen Bildgenerator.
+Sie erzeugen keine Cover- oder Szenenbilder selbst und starten nicht stellvertretend einen Bildgenerator.
 
 Sie erstellen:
 - Script
@@ -96,19 +93,19 @@ Sie erstellen:
 
 ### Nutzer
 
-Der Nutzer startet Google Flow selbst, indem er die **komplette** `all-image-prompts/all-image-prompts.txt` einmal in Google Flow einfügt und absendet.
+Der Nutzer startet Google Flow selbst, indem er die komplette `all-image-prompts/all-image-prompts.txt` einmal in Google Flow einfügt und absendet.
 
 ### Google Flow
 
-Nach diesem einmaligen Start ist Google Flow der Bildgenerator und arbeitet **autonom bis zum letzten Bild**, ohne ein weiteres `Go`, `Weiter`, `OK`, eine Bestätigung oder irgendeine weitere Nutzerantwort zu verlangen.
+Nach diesem einmaligen Start ist Google Flow der Bildgenerator und arbeitet autonom bis zum letzten Bild, ohne ein weiteres `Go`, `Weiter`, `OK`, eine Bestätigung oder irgendeine weitere Nutzerantwort zu verlangen.
 
 ---
 
 ## 4. Google Flow — streng serieller Bildablauf
 
-**Niemals parallel. Niemals Batch. Niemals Queue.**
+Niemals parallel. Niemals Batch. Niemals Queue.
 
-Zu jedem Zeitpunkt darf genau **eine einzige Bildgenerierung aktiv** sein.
+Zu jedem Zeitpunkt darf genau eine einzige Bildgenerierung aktiv sein.
 
 Für jedes Bild gilt zwingend:
 
@@ -148,7 +145,7 @@ Alle folgenden Szenen übernehmen von `Bild 00.png`:
 - Lichtstimmung
 - Detailqualität
 
-Der Cover-Hook-Text wird **nicht automatisch** auf Szenen kopiert. Szenentext erscheint nur, wenn der jeweilige Szenenprompt ihn ausdrücklich verlangt.
+Der Cover-Hook-Text wird nicht automatisch auf Szenen kopiert. Szenentext erscheint nur, wenn der jeweilige Szenenprompt ihn ausdrücklich verlangt.
 
 ---
 
@@ -166,20 +163,20 @@ Bild 13.png = Szene 13
 
 Bei anderer Szenenzahl läuft die Nummerierung dynamisch bis zur letzten Szene.
 
-PNG, JPG, JPEG und WEBP werden technisch unterstützt. Kompatibilitätsnamen wie `00.png`, `bild-00.png` oder `bild_01.png` können erkannt werden, aber **der bevorzugte Nutzerstandard bleibt `Bild 00.png`, `Bild 01.png`, ...**
+PNG, JPG, JPEG und WEBP werden technisch unterstützt. Kompatibilitätsnamen wie `00.png`, `bild-00.png` oder `bild_01.png` können erkannt werden, aber der bevorzugte Nutzerstandard bleibt `Bild 00.png`, `Bild 01.png`, ...
 
 ---
 
 ## 7. Gemeinsamer Bildordner erst ganz am Ende
 
-Während Google Flow noch Bilder erzeugt, wird **kein einzelnes Bild** in den gemeinsamen Sammelordner verschoben.
+Während Google Flow noch Bilder erzeugt, wird kein einzelnes Bild in den gemeinsamen Sammelordner verschoben.
 
 Erst wenn:
 - alle Bilder vollständig erzeugt sind,
 - jedes Bild direkt nach seiner Erzeugung korrekt benannt wurde,
 - keine Nummer fehlt, doppelt ist oder vertauscht wurde,
 
-werden **alle fertigen Bilder gemeinsam** abgelegt in:
+werden alle fertigen Bilder gemeinsam abgelegt in:
 
 ```text
 00-bildprompts/00-ALLE-BILDER-HIER-REIN/
@@ -197,7 +194,7 @@ Nicht vorher und nicht einzeln auf Cover-/Szenenordner verteilen.
 
 ## 8. Nummerierung ist nur Routing-Hilfe — visuelle QC bleibt Pflicht
 
-Die Nummer darf beim Import das **vorgeschlagene Ziel** bestimmen. Sie ist aber niemals allein der Beweis, dass ein Bild inhaltlich zur Szene passt.
+Die Nummer darf beim Import das vorgeschlagene Ziel bestimmen. Sie ist aber niemals allein der Beweis, dass ein Bild inhaltlich zur Szene passt.
 
 Vor finalem `--apply` muss jedes Bild tatsächlich geöffnet und gegen folgende Felder geprüft werden:
 - `narration`
@@ -220,7 +217,7 @@ Erlaubte finale Match-Methoden:
 
 ## 9. Fehlende Assets müssen zuerst gesucht werden
 
-Ein fehlendes Bild oder Audio im Reel-Ordner bedeutet **nicht**, dass der Nutzer es noch nicht erstellt oder heruntergeladen hat.
+Ein fehlendes Bild oder Audio im Reel-Ordner bedeutet nicht, dass der Nutzer es noch nicht erstellt oder heruntergeladen hat.
 
 Vor jeder Meldung „Bilder fehlen“, „Audio fehlt“ oder „ich kann nicht weitermachen“ muss zuerst ausgeführt werden:
 
@@ -255,10 +252,8 @@ Dann gilt automatisch:
 4. Bereits vorhandene Bildnummern nicht überschreiben.
 5. Gefundene Bilder standardisiert nach `inbox/numbered-images/Bild XX.<ext>` übernehmen.
 6. Danach `prepareNumberedImageAssignments` bzw. `organize:assets` verwenden.
-7. **Trotz korrekter Nummerierung jedes Bild wirklich öffnen und die visuelle Zwei-Pass-QC durchführen.**
+7. Trotz korrekter Nummerierung jedes Bild wirklich öffnen und die visuelle Zwei-Pass-QC durchführen.
 8. Erst nach bestandener QC `--apply` ausführen.
-
-Eine ZIP-Nummer ist also nur Routing-Hilfe und niemals Ersatz für die Bildprüfung.
 
 ### Lose Bilder und Audio
 
@@ -267,21 +262,15 @@ Eine ZIP-Nummer ist also nur Routing-Hilfe und niemals Ersatz für die Bildprüf
 - Genau ein eindeutig als Voice-over/Speech erkennbarer aktueller Kandidat darf automatisch in `inbox/audio/` bereitgestellt werden.
 - Bei mehreren oder unklaren Audio-Kandidaten muss der Agent die Kandidaten prüfen und darf nicht raten.
 
-Die Suchdiagnose wird unter
+Die Suchdiagnose wird unter `inbox/asset-discovery.json` gespeichert.
 
-```text
-inbox/asset-discovery.json
-```
+Erst wenn diese Suche tatsächlich nichts Passendes findet oder mehrere Kandidaten nicht sicher unterschieden werden können, darf der Agent den Nutzer um Hilfe bitten.
 
-gespeichert.
-
-**Erst wenn diese Suche tatsächlich nichts Passendes findet oder mehrere Kandidaten nicht sicher unterschieden werden können, darf der Agent den Nutzer um Hilfe bitten.**
-
-Wenn Bilder und Audio gefunden und geprüft sind, soll der Agent selbstständig mit Asset-Anwendung, Audio-Pacing, Wort-Sync, Finalisierung und Render fortfahren, bis ein wirklich noch fehlender externer Schritt erreicht ist.
+Wenn Bilder und Audio gefunden und geprüft sind, soll der Agent selbstständig mit Asset-Anwendung, Audio-Pacing, Szenen-Sync, Finalisierung und Render fortfahren, bis ein wirklich noch fehlender externer Schritt erreicht ist.
 
 ---
 
-## 10. Voice-over, Szenen-Sync, vollständige Untertitel und Finalisierung
+## 10. Voice-over, Szenen-Sync und Finalisierung
 
 Das Voice-over ist ein externes Asset. Sobald es vorhanden ist oder durch die Asset-Suche gefunden wurde:
 
@@ -289,24 +278,22 @@ Das Voice-over ist ein externes Asset. Sobald es vorhanden ist oder durch die As
 2. Pausen straffen
 3. exakt 1,10x, Tonhöhe erhalten
 4. −16 LUFS / max. −1,5 dBTP messen und bestätigen
-5. **ab jetzt ausschließlich die endgültige verarbeitete Audiodatei als gemeinsame Zeitquelle verwenden**
+5. ab jetzt ausschließlich die endgültige verarbeitete Audiodatei als Zeitquelle verwenden
 6. jeden Szenen-`audioCue` akustisch gegen diese finale Audiodatei prüfen; keine geschätzten oder künstlich erzeugten Szenenanker
 7. Timeline aus den bestätigten Szenenankern neu synchronisieren
-8. **jedes einzelne gesprochene Wort akustisch abhören und echte Start-/Endzeiten aus derselben finalen Audiodatei erstellen**
-9. prüfen, dass `timedWords === totalWords`, `coverage === 1` und `unassignedWords === 0`
-10. prüfen, dass die komplette Untertitel-Wortfolge exakt `script/voice-script.txt` entspricht
-11. das aktuell gesprochene Wort nur von seinem echten `startSeconds` bis zu seinem echten `endSeconds` mit `#B7794A` hervorheben; in Sprechpausen ist kein Wort aktiv markiert
-12. prüfen, dass jeder Szenenwechsel zum gesprochenen Inhalt seiner Szene passt
-13. visuelle QC vollständig durchführen
-14. Finalizer und Render-Validator bestehen
-15. erst dann MP4 rendern
-16. die finale MP4 muss in der sichtbaren Reel-Ansicht unter `04-video/FERTIGES-VIDEO/` erreichbar sein
+8. prüfen, dass jeder Szenenwechsel zum gesprochenen Inhalt seiner Szene passt
+9. visuelle QC vollständig durchführen
+10. Finalizer und Render-Validator bestehen
+11. erst dann MP4 rendern
+12. die finale MP4 muss in der sichtbaren Reel-Ansicht unter `04-video/FERTIGES-VIDEO/` erreichbar sein
 
-**Jede Änderung am Voice-over nach Schritt 4 macht sowohl Szenen-Timeline als auch Wortzeiten ungültig. Beide müssen danach aus derselben neuen finalen Audiodatei erneut erzeugt und geprüft werden.**
+**Es gibt keinen Untertitel- oder Word-Sync-Schritt mehr.** `sync:words` ist für neue Reels nicht erforderlich.
 
-Whisper-/ASR-Zeitstempel dürfen als Kandidaten helfen, gelten aber ohne akustische Bestätigung nicht als bestanden. Nicht erkannte Wörter oder Szenenanker bleiben offen; sie werden niemals mathematisch aufgefüllt, an Szenengrenzen geklemmt oder mit erfundener Konfidenz als geprüft markiert.
+Jede Änderung am Voice-over nach Schritt 4 macht die Szenen-Timeline ungültig. Die Szenenanker müssen danach aus derselben neuen finalen Audiodatei erneut erzeugt und geprüft werden.
 
-Keine geschätzten Wortzeiten, keine geschätzten Szenenanker und keine geplanten QC-Stufen als bestanden ausgeben. **Ein Render mit fehlendem gesprochenem Wort oder unbestätigtem Szenen-Sync ist verboten.**
+Whisper-/ASR-Zeitstempel dürfen als Kandidaten für Szenenanker helfen, gelten aber ohne akustische Bestätigung nicht als bestanden. Nicht erkannte Szenenanker bleiben offen; sie werden niemals mathematisch aufgefüllt, an Szenengrenzen geklemmt oder mit erfundener Konfidenz als geprüft markiert.
+
+Keine geschätzten Szenenanker und keine geplanten QC-Stufen als bestanden ausgeben. Ein Render mit unbestätigtem Szenen-Sync ist verboten.
 
 ---
 
@@ -323,13 +310,13 @@ Jedes Reel muss für den Nutzer diese übersichtliche Top-Level-Struktur besitze
 99-technik/
 ```
 
-Das fertige Ergebnis gehört **nicht nur** in einen technischen Renderordner. Nach einem erfolgreichen Render muss die MP4 direkt über diesen sichtbaren Pfad erreichbar sein:
+Das fertige Ergebnis gehört nicht nur in einen technischen Renderordner. Nach einem erfolgreichen Render muss die MP4 direkt über diesen sichtbaren Pfad erreichbar sein:
 
 ```text
 04-video/FERTIGES-VIDEO/
 ```
 
-Technisch kann dieselbe Datei weiterhin unter `output/` liegen; `04-video/FERTIGES-VIDEO` verweist auf diese Render-Ausgabe. Der Renderer stellt die sichtbare Human-Ansicht vor dem Render automatisch sicher.
+Technisch kann dieselbe Datei weiterhin unter `output/` liegen; `04-video/FERTIGES-VIDEO` verweist auf diese Render-Ausgabe.
 
 Verbindliche technische Prompt-Sammeldatei:
 
@@ -374,11 +361,10 @@ Verboten ohne ausdrückliche Nutzeranweisung:
 - bei einem fehlenden Asset sofort aufgeben, ohne vorher `discover:assets` bzw. die definierte Asset-Suche auszuführen
 - eine ZIP mit vollständigen nummerierten Bildern ignorieren oder den Nutzer unnötig zum manuellen Entpacken auffordern
 - entpackte Bilder nur nach Dateinummer final bestätigen, ohne visuelle QC
-- Untertitel mit weniger als 100 % des gesprochenen Voice-Scripts rendern
-- `unassignedWords` ignorieren oder fehlende Wörter/Sätze trotz striktem Lauf zulassen
-- die braune Sprecher-Markierung `#B7794A` wieder durch eine statische einfarbige Untertitelspur ersetzen
-- fehlende Wortzeiten oder Szenenanker künstlich erzeugen, verteilen, klemmen oder als geprüft markieren
-- Untertitel oder Bildwechsel aus einer älteren Audiodatei weiterverwenden, nachdem das Voice-over verändert wurde
+- **Untertitel wieder aktivieren, Untertitel-Cues erzeugen oder Untertitel im Renderer anzeigen**
+- eine künstliche Bildzone nur für Untertitel freihalten
+- fehlende Szenenanker künstlich erzeugen, verteilen, klemmen oder als geprüft markieren
+- Szenenanker aus einer älteren Audiodatei weiterverwenden, nachdem das Voice-over verändert wurde
 - globale Produktionswerte bei einem normalen neuen Reel verändern
 
 Historische Reel-Dateien dürfen nie benutzt werden, um neuere globale Regeln zurückzudrehen.
