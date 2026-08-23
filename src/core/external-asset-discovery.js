@@ -8,6 +8,7 @@ import {
   getNumberedImageDropDirectory,
   parseNumberedImageFileName
 } from './numbered-image-import.js';
+import { plannedImageCount } from '../shared/visual-moments.js';
 
 const execFileAsync = promisify(execFile);
 const AUDIO_EXTENSIONS = new Set(['.mp3', '.wav', '.m4a', '.aac', '.flac', '.ogg']);
@@ -102,11 +103,8 @@ function deduplicateFiles(files) {
 }
 
 function expectedNumbers(sceneIndex) {
-  const orders = sceneIndex
-    .map((scene) => Number(scene.order))
-    .filter((value) => Number.isInteger(value) && value > 0);
-  const lastScene = orders.length > 0 ? Math.max(...orders) : 0;
-  return Array.from({ length: lastScene + 1 }, (_, index) => index);
+  const imageCount = plannedImageCount(sceneIndex);
+  return Array.from({ length: imageCount + 1 }, (_, index) => index);
 }
 
 function analyzeNumberedNames(names, expected) {
@@ -223,7 +221,6 @@ async function copyNumberedFiles(filesByNumber, expected, dropDirectory) {
     const extension = path.extname(source).toLowerCase();
     const targetName = `Bild ${String(number).padStart(2, '0')}${extension}`;
     const targetPath = path.join(dropDirectory, targetName);
-    console.log("Copying", source, "to", targetPath, "exists:", await exists(source));
     await copyFile(source, targetPath);
     existingNumbers.add(number);
     copied.push({ number, source, target: targetPath });
@@ -258,8 +255,7 @@ async function extractNumberedZip(candidate, expected, dropDirectory) {
       filesByNumber.set(number, bucket[0]);
     }
 
-    const result = await copyNumberedFiles(filesByNumber, expected, dropDirectory);
-    return result;
+    return copyNumberedFiles(filesByNumber, expected, dropDirectory);
   } finally {
     await rm(temporaryDirectory, { recursive: true, force: true });
   }
@@ -372,11 +368,12 @@ export async function discoverExternalAssets(reelDirectory, {
   );
 
   const report = {
-    version: 2,
+    version: 3,
     createdAt: new Date().toISOString(),
     reelDirectory: path.resolve(reelDirectory),
     searchRoots: roots,
     scannedFiles: files.length,
+    plannedImageCount: Math.max(0, expected.length - 1),
     expectedImageNumbers: expected,
     imageDiscovery: {
       alreadyComplete: existingAnalysis.complete,
@@ -390,6 +387,7 @@ export async function discoverExternalAssets(reelDirectory, {
     audioDiscovery: null,
     instructions: [
       'Fehlende externe Assets nicht sofort als endgültig fehlend melden: zuerst diese Discovery ausführen.',
+      'Die erwartete Bildreihe richtet sich nach der individuell geplanten Anzahl aller Bildphasen, nicht nach der Szenenzahl.',
       'Eine ZIP wird nur automatisch verwendet, wenn genau eine vollständige eindeutige nummerierte Bildserie gefunden wurde oder der Agent einen geprüften preferredZipPath vorgibt.',
       'Bei mehreren vollständigen ZIPs zuerst den passenden Kandidaten inhaltlich prüfen; niemals blind die neueste ZIP wählen.',
       'Entpackte Nummern sind nur Routing-Hilfe. Vor --apply bleibt die visuelle Zwei-Pass-QC vollständig Pflicht.',
