@@ -1,0 +1,15 @@
+{
+  "version": 8,
+  "enabled": false,
+  "reason": "Globale Nutzerregel: Erklär-Reels werden ohne Untertitel gerendert.",
+  "language": "de",
+  "position": "center",
+  "verticalPositionPercent": 64,
+  "safeVerticalRangePercent": {"min": 62, "max": 66},
+  "textColor": "#F5F7FA",
+  "highlightCurrentWord": true,
+  "highlightColor": "#B7794A",
+  "backgroundColor": "transparent",
+  "maxLines": 2,
+  "cues": []
+}
