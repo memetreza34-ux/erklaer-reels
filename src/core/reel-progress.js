@@ -7,6 +7,7 @@ import {
   isTargetPlaybackRate,
   toFiniteNumberOrNull
 } from '../shared/audio-pacing-style.js';
+import { flattenSceneImagePhases } from '../shared/visual-moments.js';
 
 async function exists(filePath) {
   try {
@@ -33,7 +34,8 @@ function clamp(value) {
 export async function calculateReelProgress(reelDirectory) {
   const reel = await readJson(path.join(reelDirectory, 'reel.json'), {});
   const scenes = await readJson(path.join(reelDirectory, 'scenes', 'scene-index.json'), []);
-  const manifest = await readJson(path.join(reelDirectory, 'assets-manifest.json'), { scenes: [] });
+  const visualPhases = flattenSceneImagePhases(scenes);
+  const manifest = await readJson(path.join(reelDirectory, 'assets-manifest.json'), { visuals: [], scenes: [] });
   const subtitlePlan = await readJson(path.join(reelDirectory, 'subtitles', 'subtitle-plan.json'), {});
   const readiness = await readJson(path.join(reelDirectory, 'review', 'content-readiness.json'), null);
   const matchingReport = await readJson(path.join(reelDirectory, 'review', 'asset-matching-report.json'), null);
@@ -74,8 +76,8 @@ export async function calculateReelProgress(reelDirectory) {
   ).length;
 
   let promptCount = 0;
-  for (const scene of scenes) {
-    const promptPath = path.join(reelDirectory, 'scenes', scene.sceneId, 'image-prompt.txt');
+  for (const phase of visualPhases) {
+    const promptPath = path.join(reelDirectory, 'scenes', phase.sceneId, phase.promptFileName);
     if ((await exists(promptPath)) && (await readText(promptPath)).length >= 180) promptCount += 1;
   }
 
@@ -87,7 +89,7 @@ export async function calculateReelProgress(reelDirectory) {
   const contentCheckReady = readiness?.passed === true;
 
   const sceneRatio = scenes.length > 0 ? completeScenes / scenes.length : 0;
-  const promptRatio = scenes.length > 0 ? promptCount / scenes.length : 0;
+  const promptRatio = visualPhases.length > 0 ? promptCount / visualPhases.length : 0;
   const preProduction = clamp(
     (scriptsReady ? 15 : 0) +
     (styleReady ? 10 : 0) +
@@ -99,10 +101,11 @@ export async function calculateReelProgress(reelDirectory) {
     (contentCheckReady ? 5 : 0)
   );
 
-  const readySceneImages = Array.isArray(manifest.scenes)
-    ? manifest.scenes.filter((scene) => scene.status === 'ready').length
-    : 0;
-  const sceneImageRatio = scenes.length > 0 ? readySceneImages / scenes.length : 0;
+  const manifestVisuals = Array.isArray(manifest.visuals) && manifest.visuals.length > 0
+    ? manifest.visuals
+    : (manifest.scenes ?? []).map((scene) => ({ targetId: scene.sceneId, ...scene }));
+  const readySceneImages = manifestVisuals.filter((visual) => visual.status === 'ready').length;
+  const sceneImageRatio = visualPhases.length > 0 ? readySceneImages / visualPhases.length : 0;
   const audioReady = manifest.audio?.status === 'ready';
   const coverImageReady = manifest.cover?.status === 'ready';
   const assetReportReady = Boolean(matchingReport);
@@ -186,7 +189,7 @@ export async function calculateReelProgress(reelDirectory) {
     )
     : 100;
 
-  const expectedVisualAssets = scenes.length + 1;
+  const expectedVisualAssets = visualPhases.length + 1;
   const reviewedAssets = Array.isArray(visualInspection?.assets)
     ? visualInspection.assets.filter((asset) => asset.status === 'passed').length
     : 0;
@@ -219,17 +222,17 @@ export async function calculateReelProgress(reelDirectory) {
 
   let nextStep;
   if (preProduction < 100) {
-    nextStep = 'Codex muss production/agent-task.md fertigstellen und die strenge Inhaltsprüfung bestehen.';
+    nextStep = 'Codex muss Script, Szenen und die individuell gewählte Bilddichte fertigstellen und die strenge Inhaltsprüfung bestehen.';
   } else if (assets < 100) {
-    nextStep = 'Voice-over und Bilder direkt in die vorgesehenen Audio-, Cover- und Szenenordner legen und prüfen.';
+    nextStep = 'Voice-over, Cover und alle geplanten Bildphasen bereitstellen und visuell prüfen.';
   } else if (audioPacing < 100) {
     nextStep = `Mit trim:pauses das Voice-over auf ${AUDIO_PACING_STYLE.playbackRate.toFixed(2)}x beschleunigen, Pausen kürzen und auf ${AUDIO_PACING_STYLE.loudnessTargetLufs} LUFS normalisieren und nachmessen.`;
   } else if (timelineProgress < 100) {
-    nextStep = 'Master-Timeline mit dem optimierten Audio erzeugen, echte Audio-Cues eintragen und sync:audio streng ausführen.';
+    nextStep = 'Master-Timeline mit dem optimierten Audio erzeugen, echte Szenen-Cues eintragen und alle internen Bildphasen prüfen.';
   } else if (wordSyncRequired && wordSync < 100) {
-    nextStep = 'sync:words vorbereiten, production/codex-word-sync-task.md akustisch bearbeiten und danach mit --apply --strict übernehmen.';
+    nextStep = 'sync:words vorbereiten und akustisch bearbeiten.';
   } else if (visualQuality < 100) {
-    nextStep = 'check:visuals ausführen, jedes Bild visuell prüfen und die strenge visuelle Abnahme bestehen.';
+    nextStep = 'check:visuals ausführen und jede einzelne geplante Bildphase streng visuell abnehmen.';
   } else if (!rendererValidated) {
     nextStep = 'finalize:reel --strict und anschließend validate:render ausführen.';
   } else if (!renderComplete) {
@@ -254,13 +257,14 @@ export async function calculateReelProgress(reelDirectory) {
       scriptsReady,
       styleReady,
       scenesReady: `${completeScenes}/${scenes.length}`,
-      promptsReady: `${promptCount}/${scenes.length}`,
+      plannedImageCount: visualPhases.length,
+      promptsReady: `${promptCount}/${visualPhases.length}`,
       coverPromptReady: coverReady,
       captionReady,
       sourcesReady,
       contentCheckReady,
       audioReady,
-      sceneImagesReady: `${readySceneImages}/${scenes.length}`,
+      sceneImagesReady: `${readySceneImages}/${visualPhases.length}`,
       coverImageReady,
       assetReportReady,
       audioPacingCreated,
