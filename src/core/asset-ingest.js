@@ -1,6 +1,13 @@
 import { access, copyFile, mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
+import {
+  flattenSceneImagePhases,
+  normalizeSceneImagePhases,
+  syncSceneImagePhases,
+  visualTargetMap
+} from '../shared/visual-moments.js';
+
 const IMAGE_EXTENSIONS = new Set(['.png', '.jpg', '.jpeg', '.webp']);
 const AUDIO_EXTENSIONS = new Set(['.mp3', '.wav', '.m4a', '.aac', '.flac', '.ogg']);
 
@@ -131,18 +138,22 @@ function validateVisualAssignment(assignment, target, scene, rules) {
   return null;
 }
 
-function sceneInventoryEntry(scene, index, sceneIndex, imagePrompt) {
+function visualInventoryEntry(phase, previousTargetId, nextTargetId, imagePrompt) {
   return {
-    sceneId: scene.sceneId,
-    order: scene.order,
-    title: scene.title,
-    narration: scene.narration ?? '',
-    audioCue: scene.audioCue ?? '',
-    imageText: scene.imageText ?? '',
-    visualIdea: scene.visualIdea ?? '',
+    targetId: phase.targetId,
+    sceneId: phase.sceneId,
+    sceneOrder: phase.sceneOrder,
+    phaseId: phase.phaseId,
+    phaseOrder: phase.phaseOrder,
+    globalOrder: phase.globalOrder,
+    title: phase.sceneTitle,
+    narration: phase.narration ?? '',
+    audioCue: phase.audioCue ?? '',
+    imageText: phase.imageText || phase.sceneImageText || '',
+    visualIdea: phase.visualIdea || phase.sceneVisualIdea || '',
     imagePrompt,
-    previousSceneId: sceneIndex[index - 1]?.sceneId ?? null,
-    nextSceneId: sceneIndex[index + 1]?.sceneId ?? null
+    previousTargetId,
+    nextTargetId
   };
 }
 
@@ -154,16 +165,21 @@ export async function buildAssetInventory(reelDirectory) {
   await mkdir(imagesDirectory, { recursive: true });
   await mkdir(audioDirectory, { recursive: true });
 
-  const sceneIndexPath = path.join(reelDirectory, 'scenes', 'scene-index.json');
-  const sceneIndex = await readJson(sceneIndexPath, []);
+  const sceneIndex = await readJson(path.join(reelDirectory, 'scenes', 'scene-index.json'), []);
   const qualityGates = await readQualityGates();
+  const phases = flattenSceneImagePhases(sceneIndex);
 
-  const scenes = [];
-  for (let index = 0; index < sceneIndex.length; index += 1) {
-    const scene = sceneIndex[index];
-    const promptPath = path.join(reelDirectory, 'scenes', scene.sceneId, 'image-prompt.txt');
+  const visuals = [];
+  for (let index = 0; index < phases.length; index += 1) {
+    const phase = phases[index];
+    const promptPath = path.join(reelDirectory, 'scenes', phase.sceneId, phase.promptFileName);
     const imagePrompt = (await exists(promptPath)) ? (await readFile(promptPath, 'utf8')).trim() : '';
-    scenes.push(sceneInventoryEntry(scene, index, sceneIndex, imagePrompt));
+    visuals.push(visualInventoryEntry(
+      phase,
+      phases[index - 1]?.targetId ?? null,
+      phases[index + 1]?.targetId ?? null,
+      imagePrompt
+    ));
   }
 
   const imageFiles = (await walkFiles(imagesDirectory, inboxDirectory))
@@ -175,23 +191,21 @@ export async function buildAssetInventory(reelDirectory) {
     .map((file) => ({ file: file.relativePath, extension: extensionOf(file.relativePath) }));
 
   const inventory = {
-    version: 2,
+    version: 3,
     reelDirectory: reelDirectory.split(path.sep).join('/'),
     createdAt: new Date().toISOString(),
+    plannedImageCount: phases.length,
     matchingRules: qualityGates.assetMatching,
     instructions: [
       'Erster Durchgang: Betrachte jedes Bild ohne Dateinamen und beschreibe ausschließlich den sichtbaren Inhalt.',
-      'Vergleiche danach das Bild mit narration, audioCue, visualIdea, imageText und imagePrompt jeder möglichen Szene.',
-      'Zweiter Durchgang: Prüfe die gewählte Szene nochmals gegen die vorherige und die nächste Szene, damit benachbarte Bilder nicht vertauscht werden.',
-      'Ordne niemals nach Upload-Reihenfolge, Dateiname, Erstellungszeit oder vermuteter laufender Nummer zu.',
-      'Sichtbarer deutscher Schlüsseltext ist ein starkes Signal, reicht aber allein nicht aus.',
-      'Jede Quelle und jedes Ziel darf höchstens einmal verwendet werden.',
-      'Das Cover ist eine eigene Zuweisung und gehört nicht zu scene-01.',
-      `Unter einer Konfidenz von ${qualityGates.assetMatching?.minimumConfidence ?? 0.9} bleibt die Datei unmatched.`,
-      'Für jede Bildzuordnung sind visibleSummary, reason, comparedFields, matchMethod, visualReviewed und secondPassConfirmed Pflicht.',
-      'Für Szenen sind zusätzlich confirmedTarget, confirmedSceneOrder und sceneOrderConfirmed Pflicht.'
+      'Vergleiche danach das Bild mit narration, audioCue, visualIdea, imageText und imagePrompt der konkreten Bildphase.',
+      'Zweiter Durchgang: Prüfe die gewählte Bildphase nochmals gegen die vorherige und nächste Bildphase, damit benachbarte Bilder nicht vertauscht werden.',
+      'Ordne niemals ausschließlich nach Upload-Reihenfolge, Dateiname, Erstellungszeit oder laufender Nummer zu.',
+      'Eine narrative Szene kann mehrere Bildphasen besitzen; confirmedTarget muss deshalb exakt den Zielnamen der Bildphase enthalten.',
+      `Unter einer Konfidenz von ${qualityGates.assetMatching?.minimumConfidence ?? 0.9} bleibt die Datei unmatched.`
     ],
-    scenes,
+    visuals,
+    scenes: sceneIndex,
     candidates: {
       images: imageFiles,
       audio: audioFiles
@@ -203,7 +217,7 @@ export async function buildAssetInventory(reelDirectory) {
   const mapPath = path.join(inboxDirectory, 'asset-map.json');
   if (!(await exists(mapPath))) {
     await writeJson(mapPath, {
-      version: 2,
+      version: 4,
       generatedBy: '',
       assignments: [],
       unmatched: []
@@ -211,6 +225,46 @@ export async function buildAssetInventory(reelDirectory) {
   }
 
   return inventory;
+}
+
+function replaceExtension(fileName, extension) {
+  const parsed = path.parse(fileName);
+  return `${parsed.name}${extension}`;
+}
+
+function upsertVisualManifest(manifest, entry) {
+  if (!Array.isArray(manifest.visuals)) manifest.visuals = [];
+  const existing = manifest.visuals.find((item) => item.targetId === entry.targetId);
+  if (existing) Object.assign(existing, entry);
+  else manifest.visuals.push(entry);
+}
+
+function upsertLegacySceneManifest(manifest, entry) {
+  if (!Array.isArray(manifest.scenes)) manifest.scenes = [];
+  const existing = manifest.scenes.find((item) => item.sceneId === entry.sceneId);
+  if (existing) Object.assign(existing, entry);
+  else manifest.scenes.push(entry);
+}
+
+function seedVisualManifest(manifest, sceneIndex) {
+  if (!Array.isArray(manifest.visuals)) manifest.visuals = [];
+  const legacyByScene = new Map((manifest.scenes ?? []).map((entry) => [entry.sceneId, entry]));
+  for (const phase of flattenSceneImagePhases(sceneIndex)) {
+    if (manifest.visuals.some((entry) => entry.targetId === phase.targetId)) continue;
+    const legacy = phase.primary ? legacyByScene.get(phase.sceneId) : null;
+    manifest.visuals.push({
+      targetId: phase.targetId,
+      sceneId: phase.sceneId,
+      sceneOrder: phase.sceneOrder,
+      phaseId: phase.phaseId,
+      phaseOrder: phase.phaseOrder,
+      expectedFile: legacy?.expectedFile ?? `scenes/${phase.sceneId}/${phase.expectedImageFileName}`,
+      source: legacy?.source ?? null,
+      confidence: legacy?.confidence ?? null,
+      verification: legacy?.verification ?? phase.assetVerification ?? null,
+      status: legacy?.status ?? phase.imageStatus ?? 'missing'
+    });
+  }
 }
 
 export async function applyAssetMap(reelDirectory) {
@@ -227,8 +281,10 @@ export async function applyAssetMap(reelDirectory) {
   const sceneIndexPath = path.join(reelDirectory, 'scenes', 'scene-index.json');
   const sceneIndex = await readJson(sceneIndexPath, []);
   const scenesById = new Map(sceneIndex.map((scene) => [scene.sceneId, scene]));
+  const targets = visualTargetMap(sceneIndex);
   const manifestPath = path.join(reelDirectory, 'assets-manifest.json');
-  const manifest = await readJson(manifestPath, { audio: {}, scenes: [], cover: {} });
+  const manifest = await readJson(manifestPath, { audio: {}, visuals: [], scenes: [], cover: {} });
+  seedVisualManifest(manifest, sceneIndex);
   const statusPath = path.join(reelDirectory, 'status.json');
   const status = await readJson(statusPath, {});
 
@@ -320,13 +376,14 @@ export async function applyAssetMap(reelDirectory) {
         status: 'ready'
       };
       status.cover = 'ready';
-    } else if (scenesById.has(target)) {
+    } else if (targets.has(target)) {
       if (!IMAGE_EXTENSIONS.has(extension)) {
         skipped.push({ assignment, reason: 'Datei ist kein unterstütztes Bildformat' });
         continue;
       }
 
-      const indexedScene = scenesById.get(target);
+      const phaseTarget = targets.get(target);
+      const indexedScene = scenesById.get(phaseTarget.sceneId);
       const visualError = validateVisualAssignment(assignment, target, indexedScene, matchingRules);
       if (visualError) {
         skipped.push({ assignment, reason: visualError });
@@ -339,6 +396,7 @@ export async function applyAssetMap(reelDirectory) {
         sceneOrderConfirmed: true,
         confirmedTarget: target,
         confirmedSceneOrder: Number(indexedScene.order),
+        confirmedPhaseOrder: Number(phaseTarget.phaseOrder),
         visibleSummary: String(assignment.visibleSummary).trim(),
         reason: String(assignment.reason).trim(),
         comparedFields: normalizeComparedFields(assignment.comparedFields),
@@ -346,30 +404,49 @@ export async function applyAssetMap(reelDirectory) {
         reviewedAt: assignment.reviewedAt ?? new Date().toISOString()
       };
 
-      destinationPath = path.join(reelDirectory, 'scenes', target, `${target}${extension}`);
-      expectedRelativePath = `scenes/${target}/${target}${extension}`;
-      const scenePath = path.join(reelDirectory, 'scenes', target, 'scene.json');
+      const outputFileName = replaceExtension(phaseTarget.expectedImageFileName, extension);
+      destinationPath = path.join(reelDirectory, 'scenes', phaseTarget.sceneId, outputFileName);
+      expectedRelativePath = `scenes/${phaseTarget.sceneId}/${outputFileName}`;
+
+      const scenePath = path.join(reelDirectory, 'scenes', phaseTarget.sceneId, 'scene.json');
       const scene = await readJson(scenePath, indexedScene);
-      scene.expectedImageFileName = `${target}${extension}`;
-      scene.status = 'image-ready';
-      scene.source = source;
-      scene.matchConfidence = confidence;
-      scene.matchReason = verification.reason;
-      scene.assetVerification = verification;
+      const phases = normalizeSceneImagePhases(scene).map((phase) => {
+        if (phase.targetId !== target) return phase;
+        return {
+          ...phase,
+          expectedImageFileName: outputFileName,
+          imageStatus: 'ready',
+          assetVerification: verification
+        };
+      });
+      syncSceneImagePhases(scene, phases);
+      scene.status = phases.every((phase) => phase.imageStatus === 'ready') ? 'image-ready' : 'images-partial';
       await writeJson(scenePath, scene);
       Object.assign(indexedScene, scene);
 
-      const manifestScene = manifest.scenes.find((item) => item.sceneId === target);
-      const nextManifestScene = {
-        sceneId: target,
+      upsertVisualManifest(manifest, {
+        targetId: target,
+        sceneId: phaseTarget.sceneId,
+        sceneOrder: Number(indexedScene.order),
+        phaseId: phaseTarget.phaseId,
+        phaseOrder: Number(phaseTarget.phaseOrder),
         expectedFile: expectedRelativePath,
         source,
         confidence,
         verification,
         status: 'ready'
-      };
-      if (manifestScene) Object.assign(manifestScene, nextManifestScene);
-      else manifest.scenes.push(nextManifestScene);
+      });
+
+      if (phaseTarget.primary) {
+        upsertLegacySceneManifest(manifest, {
+          sceneId: phaseTarget.sceneId,
+          expectedFile: expectedRelativePath,
+          source,
+          confidence,
+          verification,
+          status: 'ready'
+        });
+      }
     } else {
       skipped.push({ assignment, reason: `Unbekanntes Ziel: ${target}` });
       continue;
@@ -382,51 +459,63 @@ export async function applyAssetMap(reelDirectory) {
     applied.push({ source, target, destination: expectedRelativePath, confidence, verification });
   }
 
-  const verifiedSceneIds = new Set(
-    applied
-      .filter((entry) => scenesById.has(entry.target) && entry.verification?.secondPassConfirmed === true)
-      .map((entry) => entry.target)
-  );
-  const readySceneCount = manifest.scenes.filter((scene) =>
-    scene.status === 'ready' &&
-    (scene.verification?.secondPassConfirmed === true || verifiedSceneIds.has(scene.sceneId))
-  ).length;
+  const refreshedScenes = [...scenesById.values()].sort((a, b) => a.order - b.order);
+  seedVisualManifest(manifest, refreshedScenes);
+  const expectedVisualTargets = flattenSceneImagePhases(refreshedScenes);
+  const manifestVisualByTarget = new Map((manifest.visuals ?? []).map((entry) => [entry.targetId, entry]));
+  const readyVisualCount = expectedVisualTargets.filter((phase) => {
+    const entry = manifestVisualByTarget.get(phase.targetId);
+    return entry?.status === 'ready' && entry?.verification?.secondPassConfirmed === true;
+  }).length;
 
-  status.images = readySceneCount === sceneIndex.length
+  status.plannedImageCount = expectedVisualTargets.length;
+  status.images = readyVisualCount === expectedVisualTargets.length
     ? 'ready'
-    : readySceneCount > 0
+    : readyVisualCount > 0
       ? 'partial'
       : 'missing';
-  status.assetMatching = readySceneCount === sceneIndex.length ? 'verified' : 'needs-review';
+  status.assetMatching = readyVisualCount === expectedVisualTargets.length ? 'verified' : 'needs-review';
 
-  await writeJson(sceneIndexPath, [...scenesById.values()].sort((a, b) => a.order - b.order));
+  await writeJson(sceneIndexPath, refreshedScenes);
   await writeJson(manifestPath, manifest);
   await writeJson(statusPath, status);
 
-  const sceneVerification = sceneIndex.map((scene) => {
-    const manifestScene = manifest.scenes.find((entry) => entry.sceneId === scene.sceneId);
+  const visualVerification = expectedVisualTargets.map((phase) => {
+    const manifestVisual = manifestVisualByTarget.get(phase.targetId);
+    return {
+      targetId: phase.targetId,
+      sceneId: phase.sceneId,
+      sceneOrder: phase.sceneOrder,
+      phaseId: phase.phaseId,
+      phaseOrder: phase.phaseOrder,
+      expectedFile: manifestVisual?.expectedFile ?? null,
+      verification: manifestVisual?.verification ?? null,
+      passed: manifestVisual?.status === 'ready' && manifestVisual?.verification?.secondPassConfirmed === true
+    };
+  });
+
+  const sceneVerification = refreshedScenes.map((scene) => {
+    const entries = visualVerification.filter((entry) => entry.sceneId === scene.sceneId);
     return {
       sceneId: scene.sceneId,
       order: scene.order,
       title: scene.title,
-      narration: scene.narration ?? '',
-      visualIdea: scene.visualIdea ?? '',
-      imageText: scene.imageText ?? '',
-      expectedFile: manifestScene?.expectedFile ?? null,
-      verification: manifestScene?.verification ?? null,
-      passed: manifestScene?.status === 'ready' && manifestScene?.verification?.secondPassConfirmed === true
+      imageCount: entries.length,
+      targetIds: entries.map((entry) => entry.targetId),
+      passed: entries.length > 0 && entries.every((entry) => entry.passed)
     };
   });
 
   const verificationReport = {
-    version: 1,
+    version: 2,
     createdAt: new Date().toISOString(),
-    passed: sceneVerification.length > 0 && sceneVerification.every((entry) => entry.passed),
+    passed: visualVerification.length > 0 && visualVerification.every((entry) => entry.passed),
     minimumConfidence: matchingRules.minimumConfidence ?? 0.9,
+    visuals: visualVerification,
     scenes: sceneVerification,
     instructions: [
-      'Jede Szene muss anhand ihres sichtbaren Inhalts und nicht anhand des Dateinamens zugeordnet sein.',
-      'Die zweite Prüfung muss die gewählte Szene gegen die vorherige und nächste Szene bestätigen.',
+      'Jede Bildphase muss anhand ihres sichtbaren Inhalts und nicht allein anhand des Dateinamens zugeordnet sein.',
+      'Die zweite Prüfung muss die gewählte Bildphase gegen die vorherige und nächste Bildphase bestätigen.',
       'Bei einem Zweifel bleibt das Bild unmatched und blockiert den finalen Render.'
     ]
   };
@@ -438,11 +527,12 @@ export async function applyAssetMap(reelDirectory) {
     unmatched: assetMap.unmatched ?? [],
     verificationReport: 'review/scene-asset-verification.json',
     summary: {
-      assignedScenes: readySceneCount,
-      totalScenes: sceneIndex.length,
+      assignedImages: readyVisualCount,
+      totalImages: expectedVisualTargets.length,
+      totalScenes: refreshedScenes.length,
       audioReady: status.audio === 'ready',
       coverReady: status.cover === 'ready',
-      sceneVerificationPassed: verificationReport.passed
+      visualVerificationPassed: verificationReport.passed
     }
   };
 
