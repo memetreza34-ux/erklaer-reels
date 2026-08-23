@@ -25,8 +25,8 @@ Globale Regeln werden nur durch eine ausdrückliche neue Nutzerentscheidung geä
 - 12–14 **narrative Szenen**, Standard 13
 - genau ein deutscher Erzähler
 - Hook ab Sekunde 0
-- Bildwelt erst nach dem fertigen Script wählen
-- innerhalb eines Reels eine konsistente Hauptbildwelt
+- **für alle neuen Reels ausschließlich die Kugel-Welt `round-country-characters` verwenden**
+- andere Bildwelten sind pausiert und dürfen von Agenten nicht autonom gewählt werden
 - letzte zwei Szenen: persönliche Prüf-/Erkenntnisfrage → konkrete Lösung/Abschlusssatz
 - Schlussbild nach dem letzten gesprochenen Wort 0,7 Sekunden halten
 - Voice-over exakt 1,10x bei erhaltener Tonhöhe
@@ -39,11 +39,46 @@ Globale Regeln werden nur durch eine ausdrückliche neue Nutzerentscheidung geä
 
 ---
 
-## 2. Verbindliche neue Regel: Bildanzahl immer individuell
+## 2. Verbindliche Hauptbildwelt: Kugeln für alle Themen
 
-**Narrative Szenenzahl und Bildanzahl sind ab sofort getrennt.**
+`round-country-characters` ist ab sofort die **einzige aktive Standardbildwelt** für neue Reels und wird themenübergreifend eingesetzt.
 
-Es gilt ausdrücklich nicht mehr:
+Das gilt ausdrücklich auch für Themen, die früher mit Köpfen oder Metaphern umgesetzt worden wären, zum Beispiel:
+- Psychologie und menschliches Verhalten
+- Politik und Gesellschaft
+- Länder, Geografie und Geschichte
+- abstrakte Ursache-Wirkung-Erklärungen
+
+### Figurenregel
+
+Jede anthropomorphe Hauptfigur ist eine **vollständig runde Kugel / ein perfekter kreisrunder Ball**.
+
+- Bei Ländern: vereinfachtes, klar erkennbares Flaggenmuster auf der Kugel.
+- Bei nicht-länderbezogenen Rollen oder Konzepten: neutrale runde Kugelfigur mit klarer Farbe, einfachem Symbol oder passendem visuellen Merkmal.
+- einfache weiße Augen; höchstens winzige Arme/Beine
+- keine menschlichen Köpfe, Torsi oder normalen Menschen als Hauptfiguren
+- keine Karten-/Länderform als Figurenkörper
+- Länder-/Kartenformen dürfen nur gesichtslose Hintergrund- oder Erklärgrafik sein
+
+Jeder neue Bildprompt muss sinngemäß erzwingen:
+
+> complete perfectly round editorial ball/sphere character; never a map-shaped character and never a normal human character
+
+### Pausierte Welten
+
+Bis zu einer ausdrücklichen neuen Nutzerentscheidung sind diese Welten **außer Kraft**:
+- `human-editorial-cartoon`
+- `visual-metaphor`
+
+Sie bleiben nur für historische Reels/Abwärtskompatibilität im Repo dokumentiert und dürfen nicht für neue Reels ausgewählt werden.
+
+---
+
+## 3. Bildanzahl immer individuell
+
+**Narrative Szenenzahl und Bildanzahl sind getrennt.**
+
+Es gilt ausdrücklich nicht:
 
 > 13 Szenen = 13 Bilder
 
@@ -52,7 +87,7 @@ Stattdessen:
 - 12–14 narrative Szenen bleiben der Strukturrahmen.
 - Jede narrative Szene bekommt **1, 2 oder selten 3 Bildphasen**.
 - Die tatsächliche Gesamtzahl der Bilder wird **für jedes Reel individuell nach Inhalt und Rhythmus entschieden**.
-- Es gibt **keine feste Zielsumme** wie 13, 16 oder 18 Bilder, die mechanisch erfüllt werden muss.
+- Es gibt **keine feste Zielsumme** wie 13, 16 oder 18 Bilder.
 - `reel.json` verwendet `imageCountMode: "individual-per-reel"` und speichert die tatsächlich geplante Summe in `plannedImageCount`.
 
 ### Entscheidung pro Szene
@@ -64,8 +99,8 @@ Stattdessen:
 - Karte → Zoom
 - Ursache → Folge
 - Ausgangslage → Vergleich
-- Gesicht → Gedanken-/Detailansicht
-- Metapher → sichtbare Konsequenz
+- Figur → innerer/gedanklicher Mechanismus
+- Symbol → sichtbare Konsequenz
 
 **3 Bilder** nur selten, wenn die Erklärung tatsächlich drei klar getrennte visuelle Schritte braucht.
 
@@ -76,39 +111,6 @@ Wenn ein einzelnes Still-Bild ungefähr **3,5–4,0 Sekunden oder länger** steh
 Das ist **kein Automatismus**: Ein sehr starkes Einzelbild darf länger stehen, wenn ein zusätzlicher Schnitt nur künstlich wäre.
 
 **Kein zusätzliches Bild darf nur erzeugt werden, um eine Zahl oder Quote zu erfüllen.** Jeder zusätzliche Bildwechsel braucht einen sichtbaren Informations-, Fokus- oder Rhythmusgewinn.
-
----
-
-## 3. Bilddichte und die drei Bildwelten
-
-Die Bildanzahl bleibt auch innerhalb der Bildwelten individuell.
-
-### 1. `human-editorial-cartoon` — Köpfe-Welt
-
-- dominante große Köpfe/Gesichter
-- starke Mimik und Close-ups
-- wenig Körper
-- kleine Gruppen
-- Gedanken, Wahrnehmung und mentale Mechanismen direkt am/in/um den Kopf visualisieren
-- keine generischen Klassenraum- oder Menschenmengen-Kompositionen
-
-Zusätzliche Bildphasen sind sinnvoll, wenn z. B. von Gesicht/Emotion zu Gedankenmechanismus oder Detail gewechselt wird.
-
-### 2. `round-country-characters` — Länder-Welt
-
-Diese Welt darf besonders häufig mehrere Bildphasen nutzen, weil geografische Erklärungen oft von **Überblick → Zoom → Vergleich** profitieren.
-
-Typische Wechsel:
-- Welt-/Kontinentkarte → Land
-- Land → Grenz-/Nachbardetail
-- ein Land → Vergleich mit anderem Land
-- historische Karte → heutige Situation
-
-Trotzdem gibt es **keine feste Mindest- oder Sollzahl an Bildern**.
-
-### 3. `visual-metaphor` — Metaphern-Welt
-
-Ein starkes Symbol kann eine ganze Szene alleine tragen. Eine zweite Bildphase ist sinnvoll, wenn erst die Metapher und danach ihre Folge/Auflösung gezeigt werden soll.
 
 ---
 
@@ -154,7 +156,27 @@ Regeln:
 
 ---
 
-## 5. Rollenverteilung bei Bildern
+## 5. Sichtbarer Text in Bildern — harte Whitelist
+
+Workflow- und Produktionsdaten sind **niemals Bildinhalt**.
+
+Strikt verboten als sichtbarer Bildtext:
+- Bildnummern wie `BILD 00`, `Bild 01`
+- `COVER`
+- `SZENE`, `SCENE`
+- `BILDPHASE`, `IMAGE PHASE`
+- `DATEINAME`, Dateinamen und Dateiendungen
+- `GOOGLE FLOW`, `PROMPT`, `STYLE-REFERENZ`, `ZIEL`
+- technische IDs
+- sonstige Steuertexte
+
+Für jede einzelne Bildphase gilt:
+- `imageText`/Cover-Headline gesetzt → **nur exakt dieser Text darf lesbar sein**
+- `imageText` leer → **gar kein lesbarer Text im Bild**
+
+---
+
+## 6. Rollenverteilung bei Bildern
 
 ### Repo-Agenten / Codex / Antigravity
 
@@ -164,43 +186,53 @@ Sie erzeugen keine Bilder selbst. Sie erstellen:
 - individuelle Bildphasen
 - Cover-Prompt
 - Prompt pro Bildphase
-- `all-image-prompts/all-image-prompts.txt`
+- **einen separaten Prompt pro tatsächlichem Bild**
+- `all-image-prompts/google-flow-controller.txt`
+- `all-image-prompts/individual-prompts/Bild 00.txt`, `Bild 01.txt`, ...
+- `all-image-prompts/all-image-prompts.txt` nur noch als Manifest/Kompatibilitätsdatei, **nicht als Mega-Prompt**
 - Caption und Quellen
 - Asset-Suche, QC, Zuordnung, Timeline und Render
 
-### Nutzer
+### Nutzer / Browser-Agent
 
-Der Nutzer startet Google Flow einmal mit der vollständigen Sammeldatei.
+Google Flow darf **immer nur genau einen Einzelprompt gleichzeitig erhalten**.
 
-### Google Flow
-
-Google Flow arbeitet danach ohne weiteres `Go`, `Weiter` oder `OK` bis zum letzten Bild.
+Der Controller ist für einen Agenten gedacht, der auf die Repo-Dateien zugreifen kann. Er öffnet die Einzelprompt-Dateien nacheinander. Der Controller selbst wird nicht als Bildprompt verwendet.
 
 ---
 
-## 6. Google Flow — streng seriell
+## 7. Google Flow — Qualitätsmodus: ein Prompt, ein Bild
 
-Niemals parallel, niemals Batch, niemals Queue.
+Die frühere One-Paste-Mega-Prompt-Strategie ist aufgehoben, weil Flow mehrere enthaltene Bildaufträge parallelisieren oder qualitativ schlechter behandeln kann.
+
+### Nicht erlaubt
+
+- mehrere Bildprompts in einer einzigen Flow-Nachricht
+- Batch-Generierung
+- Queue mehrerer Bilder
+- parallele Generierung
+- Kontaktbogen/Collage/Storyboard als Ersatz für Einzelbilder
+- nächstes Bild starten, solange das aktuelle Bild noch generiert wird
+
+### Verbindlicher Ablauf
 
 Für jedes Bild:
 
-**Prompt lesen → genau ein Bild erzeugen → vollständig warten → sofort umbenennen → Dateiname prüfen → automatisch nächstes Bild starten**
+1. genau **eine** Datei aus `all-image-prompts/individual-prompts/` öffnen
+2. ausschließlich den Inhalt dieser einen Datei an Google Flow geben
+3. genau **ein** Bild erzeugen
+4. vollständig warten, bis dieses Bild fertig ist
+5. Ergebnis auf Qualität und Textfehler prüfen
+6. extern auf den vorgesehenen Dateinamen `Bild XX.png` umbenennen
+7. erst danach die nächste Einzelprompt-Datei öffnen
 
-`Bild 00.png` ist immer Cover und Style-Master.
+`Bild 00.png` ist Cover und Style-Master.
 
-Danach folgen alle Bildphasen in **globaler Bildreihenfolge**:
+Danach folgen alle Bildphasen in globaler Bildreihenfolge.
 
-```text
-Bild 00.png = Cover
-Bild 01.png = erste Bildphase des Reels
-Bild 02.png = zweite Bildphase des Reels
-Bild 03.png = dritte Bildphase des Reels
-...
-```
+### Wichtig
 
-### Sehr wichtig
-
-**Die Google-Flow-Bildnummer ist nicht mehr automatisch die Szenennummer.**
+**Die Bildnummer ist globale Bildreihenfolge und nicht automatisch Szenennummer.**
 
 Beispiel:
 
@@ -211,11 +243,15 @@ Bild 03 = Szene 2 · Bildphase 2
 Bild 04 = Szene 3 · Bildphase 1
 ```
 
-Die Sammeldatei erzeugt diese Zuordnung automatisch.
+### Controller-Datei
+
+`all-image-prompts/google-flow-controller.txt` enthält nur Reihenfolge und Steuerlogik. Sie enthält **keine vollständigen Visual-Prompts** und darf nicht als Mega-Prompt zur gleichzeitigen Generierung interpretiert werden.
+
+`all-image-prompts/all-image-prompts.txt` ist nur ein Manifest/Kompatibilitätshinweis und darf ebenfalls nicht als Sammel-Bildprompt verwendet werden.
 
 ---
 
-## 7. Bildimport und visuelle QC
+## 8. Bildimport und visuelle QC
 
 Alle fertigen Bilder werden nach Abschluss gemeinsam nach
 
@@ -237,6 +273,8 @@ Die laufende Nummer ist nur Routing-Hilfe. Vor `--apply` muss **jede einzelne Bi
 - Bildphasen-`visualIdea`
 - Bildphasen-`imageText`
 - Bildphasen-`imagePrompt`
+- Kugel-Welt-Regel
+- sichtbare Text-Whitelist
 
 Danach zweite Prüfung gegen die **vorherige und nächste Bildphase**.
 
@@ -248,7 +286,7 @@ Erlaubte Match-Methoden:
 
 ---
 
-## 8. Fehlende Assets zuerst suchen
+## 9. Fehlende Assets zuerst suchen
 
 Vor jeder Meldung, dass Bilder oder Audio fehlen:
 
@@ -256,13 +294,13 @@ Vor jeder Meldung, dass Bilder oder Audio fehlen:
 npm run discover:assets -- --dir "<reel-ordner>"
 ```
 
-Die Asset-Discovery erwartet bei neuen Reels automatisch die individuell geplante Bildreihe von `Bild 00` bis zur letzten Bildphase und nicht mehr nur `Bild 00` bis `Bild 13`.
+Die Asset-Discovery erwartet bei neuen Reels automatisch die individuell geplante Bildreihe von `Bild 00` bis zur letzten Bildphase.
 
 Bei mehreren vollständigen ZIPs oder mehreren Audio-Kandidaten niemals blind wählen; inhaltlich prüfen.
 
 ---
 
-## 9. Voice-over, Szenen-Sync und interne Bildwechsel
+## 10. Voice-over, Szenen-Sync und interne Bildwechsel
 
 Das finale Voice-over bleibt die einzige Zeitquelle.
 
@@ -281,7 +319,7 @@ Es gibt keinen Untertitel- oder Word-Sync-Schritt.
 
 ---
 
-## 10. Standardbefehle
+## 11. Standardbefehle
 
 ```bash
 npm run export:prompts -- --dir "<reel-ordner>" --strict
@@ -301,7 +339,7 @@ npm run render:reel -- --dir "<reel-ordner>"
 
 ---
 
-## 11. Sichtbare Reel-Struktur
+## 12. Sichtbare Reel-Struktur
 
 ```text
 00-bildprompts/
@@ -318,20 +356,26 @@ Finale MP4:
 04-video/FERTIGES-VIDEO/
 ```
 
-Technische Prompt-Sammeldatei:
+Bildprompt-Ausgabe:
 
 ```text
+all-image-prompts/google-flow-controller.txt
 all-image-prompts/all-image-prompts.txt
+all-image-prompts/individual-prompts/Bild 00.txt
+all-image-prompts/individual-prompts/Bild 01.txt
+...
 ```
 
 ---
 
-## 12. Abschlussprinzip
+## 13. Abschlussprinzip
 
 Ein Reel ist erst fertig, wenn:
 - Script und Quellen geprüft sind
 - alle individuell geplanten Bildphasen vorhanden sind
 - jede Bildphase visuell zweifach bestätigt ist
+- alle neuen Bilder die Kugel-Welt einhalten
+- kein unerlaubter Workflow-Text sichtbar ist
 - das finale Audio gemessen und synchronisiert ist
 - narrative Szenen und interne Bildwechsel korrekt zur finalen Audiodatei passen
 - keine Untertitel gerendert werden
