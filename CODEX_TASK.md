@@ -1,16 +1,47 @@
 # Codex-Hauptauftrag
 
-Dieses Repository produziert vollständige visuelle Erklär-Reels. **`CURRENT_WORKFLOW.md` ist bei Widersprüchen maßgeblich.** Der Nutzer erzeugt Voice-over und Bilder extern. Codex übernimmt Planung, Prompt-Sammlung, Suche nach Assets/ZIPs, Prüfung, Audio-Pacing, sichere Bildzuordnung, Szenen-Synchronisierung und Remotion-Render.
+`CURRENT_WORKFLOW.md` ist bei Widersprüchen maßgeblich.
+
+Dieses Repository produziert vollständige visuelle Erklär-Reels. Der Nutzer erzeugt Voice-over und Bilder extern. Codex übernimmt Planung, individuelle Bilddichte, Prompts, Asset-Suche, QC, Audio-Pacing, sichere Bildzuordnung, Timeline und Remotion-Render.
+
+## Reel-Standard
+
+- 55–60 Sekunden Voice-over
+- 155–175 deutsche Wörter
+- 12–14 **narrative Szenen**, Standard 13
+- genau ein deutscher Erzähler
+- Voice-over exakt 1,10x
+- −16 LUFS, max. −1,5 dBTP
+- keine Untertitel
+- harte Schnitte
+- 0,7 Sekunden Schlussbild-Nachlauf
+
+## Bildanzahl: immer individuell
+
+Die Anzahl der Bilder ist **nicht** mehr an die Szenenzahl gekoppelt.
+
+Für jede narrative Szene separat entscheiden:
+- 1 Bild, wenn ein starkes Motiv reicht
+- 2 Bilder bei echtem Mehrwert durch Überblick/Detail, Karte/Zoom, Ursache/Folge, Gesicht/Gedanke oder Metapher/Auflösung
+- 3 Bilder nur selten
+
+Wenn ein einzelnes Still-Bild ungefähr 3,5–4 Sekunden oder länger stehen würde, eine zweite Bildphase aktiv prüfen. Keine Bildphase nur zur Erfüllung einer Quote hinzufügen.
+
+Pflichtfelder:
+
+```text
+reel.json.imageCountMode = individual-per-reel
+reel.json.plannedImageCount = tatsächliche Bildsumme
+scene.imageCount = 1..3
+scene.imagePhases[]
+```
+
+Erste Phase: `image-prompt.txt`.
+Zusätzliche Phasen: `image-prompt-02.txt`, `image-prompt-03.txt`.
+
+`startPercent` bestimmt den internen Bildwechsel innerhalb der bestätigten narrativen Szenendauer.
 
 ## Neues Reel
-
-- genau ein deutscher Erzähler
-- 155–175 Wörter
-- 55–60 Sekunden Voice-over nach Audiooptimierung
-- 12–14 Bildmomente, Standard 13
-- Geschwindigkeit exakt 1,10x
-- **keine Untertitel**
-- **kein Word-Sync-Schritt**
 
 ```bash
 npm run create:reel -- \
@@ -20,7 +51,7 @@ npm run create:reel -- \
   --scenes 13
 ```
 
-Danach `production/agent-task.md` vollständig bearbeiten. Pflichtdateien sind Script, `reel.json`, Szenendaten, alle Bildprompts, Cover, Prompt-Sammeldatei, Effekte, Caption und Quellen. `reel.json` muss `subtitlesEnabled: false` setzen.
+Danach `production/agent-task.md` vollständig bearbeiten. Besonders die Aufgabe `image-density-plan` ist verpflichtend.
 
 ```bash
 npm run export:prompts -- --dir "PFAD-ZUM-REEL" --strict
@@ -28,77 +59,42 @@ npm run validate:reel -- --dir "PFAD-ZUM-REEL"
 npm run check:content -- --dir "PFAD-ZUM-REEL" --strict
 ```
 
-## Aufbau und Bildwelt
+## Google Flow
 
-- Thema sofort nennen und direkt erklären
-- Hook-Bild ab Sekunde 0
-- jede Szene zeigt genau einen klaren Moment
-- Bildwelt erst nach dem fertigen Script auswählen und innerhalb des Reels konsistent halten
-- politische Inhalte neutral; Quellen und Unsicherheiten dokumentieren
-- Ende über mindestens zwei Szenen: persönliche Prüf-/Erkenntnisfrage → konkrete Lösung/einprägsamer Satz
-- nach dem letzten gesprochenen Wort 0,7 Sekunden Schlussbild
-- Bilder nutzen die volle 9:16-Fläche; keine künstliche Untertitelzone freihalten
+`Bild 00` = Cover + Style-Master.
 
-## Szenenrhythmus
+Danach folgen alle Bildphasen in globaler Reihenfolge. Die Bildnummer ist nicht automatisch die Szenennummer.
 
-Zentrale Quelle: `config/production-quality-gates.json`.
+Beispiel:
 
-- Hook: 4,2–5,5 Sekunden
-- normale Szenen: 3,2–5,5 Sekunden
-- letzte Szene inklusive Nachlauf: 4,0–6,5 Sekunden
-- kein Erklärmoment unter 3,2 Sekunden
-- Dauersprung zwischen benachbarten Szenen höchstens 2,5 Sekunden
-- Bildwechsel 0,1–0,3 Sekunden vor dem gesprochenen `audioCue`
+```text
+Bild 01 = Szene 1 / Phase 1
+Bild 02 = Szene 2 / Phase 1
+Bild 03 = Szene 2 / Phase 2
+Bild 04 = Szene 3 / Phase 1
+```
 
-## Bildprompts und Google Flow
+Flow arbeitet streng seriell: ein Bild → vollständig warten → umbenennen → prüfen → automatisch nächstes Bild. Keine Queue, kein Batch, kein Parallelisieren und kein weiteres `Go`.
 
-Bildprompts sind Englisch. Sichtbarer Bildtext ist, wenn sinnvoll, kurz und Deutsch. Die komplette Sammeldatei wird einmal in Google Flow gesendet. Google Flow erzeugt danach streng seriell `Bild 00` bis zum letzten Bild und fragt nicht erneut nach `Go`.
+## Bildwelten
 
-`Bild 00` ist Cover, sichtbare Hook und Style-Master. Der Cover-Hook darf nicht automatisch in spätere Szenen kopiert werden.
+- `human-editorial-cartoon`: Köpfe-Welt, große Gesichter, Close-ups, wenig Körper
+- `round-country-characters`: Länder-Welt, Karten/Zooms/Vergleiche; oft besonders geeignet für zusätzliche Bildphasen
+- `visual-metaphor`: starke zentrale Metapher; Zusatzbild nur für echten zweiten Erklärungsschritt
 
-## Fehlende Assets und ZIPs
+Keine feste Bildsumme pro Bildwelt erzwingen.
 
-Wenn Bilder oder Audio scheinbar fehlen, nicht sofort stoppen:
+## Fehlende Assets
 
 ```bash
 npm run discover:assets -- --dir "PFAD-ZUM-REEL"
 ```
 
-Standard-Suchorte sind Reel-Ordner, `~/Downloads` und `~/Desktop`. Eine eindeutige vollständige ZIP mit `Bild 00 ... Bild XX` darf nach Sicherheitsprüfung temporär entpackt und in `inbox/numbered-images/` übernommen werden. Mehrere vollständige ZIPs müssen inhaltlich geprüft werden; niemals blind die neueste wählen.
+Die Discovery erwartet automatisch `Bild 00` bis zur letzten **geplanten Bildphase**.
 
-Die Nummerierung ist nur Routing-Hilfe. Vor `--apply` bleibt die echte visuelle Zwei-Pass-QC verpflichtend.
+Vor `--apply` jede Bildphase sichtbar prüfen. Dateinummern sind nur Routing-Hilfe.
 
-## Sichere Bildzuordnung
-
-Für jedes Bild:
-
-1. Bild öffnen und Dateinamen zunächst ignorieren.
-2. `visibleSummary` neutral beschreiben.
-3. Mit `narration`, `audioCue`, `visualIdea`, `imageText` und `imagePrompt` vergleichen.
-4. konkrete `reason` schreiben.
-5. gegen vorherige und nächste Szene prüfen.
-6. `confirmedTarget`, `confirmedSceneOrder`, `sceneOrderConfirmed` und `secondPassConfirmed` erst danach setzen.
-7. Unter 0,90 Konfidenz `unmatched` lassen.
-
-Erlaubte `matchMethod`:
-- `visual-content-review`
-- `visual-text-and-content-review`
-
-`filename-only` ist verboten.
-
-## Untertitel
-
-**Untertitel sind global deaktiviert.**
-
-- keine Untertitel-Cues erzeugen
-- kein Karaoke oder Wort-Highlight
-- kein `sync:words` im normalen Produktionsablauf
-- keine Untertitel-Safe-Zone in Bildern reservieren
-- der Render-Validator blockiert Render-Pläne, die Untertitel enthalten
-
-Legacy-Word-Sync-Hilfen dürfen für alte historische Reels im Repository bleiben, sind aber nicht Teil des aktuellen Produktionswegs.
-
-## Audio und Szenen-Sync
+## Audio und Timeline
 
 ```bash
 npm run trim:pauses -- --dir "PFAD-ZUM-REEL" --speed 1.10
@@ -106,34 +102,20 @@ npm run build:timeline -- --dir "PFAD-ZUM-REEL"
 npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
 ```
 
-Audio-Standard:
-- ursprüngliche Voice-over-Datei verwenden
-- Pausen ab ungefähr 0,24 Sekunden kürzen
-- exakt 1,10x bei erhaltener Tonhöhe
-- −16 LUFS und höchstens −1,5 dBTP
-- optimierte Datei nicht erneut beschleunigen
-- Szenenanker ausschließlich aus der finalen Audiodatei bestätigen
-- keine gleichmäßige oder erfundene Zeitverteilung
-- jede spätere Audioänderung macht die Szenen-Timeline ungültig
+Narrative Szenen werden mit echten akustisch bestätigten Audio-Cues synchronisiert. Zusätzliche Bildphasen werden innerhalb der Szene anhand `startPercent` als harte Schnitte verteilt.
+
+Keine geschätzten Szenenanker. Keine Untertitel und kein `sync:words`.
 
 ## Visuelle Prüfung und Render
 
 ```bash
 npm run organize:assets -- --dir "PFAD-ZUM-REEL" --apply
 npm run check:visuals -- --dir "PFAD-ZUM-REEL" --strict
-npm run build:timeline -- --dir "PFAD-ZUM-REEL"
-npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
 npm run finalize:reel -- --dir "PFAD-ZUM-REEL" --strict
 npm run validate:render -- --dir "PFAD-ZUM-REEL"
 npm run render:reel -- --dir "PFAD-ZUM-REEL"
 ```
 
-Nur rendern, wenn Inhalt, Audio, Lautheit, bestätigter Szenen-Sync, sichere Bildzuordnung, visuelle Prüfung, Szenenrhythmus, 0,7-Sekunden-Schlussbild und Renderer-Eingabe tatsächlich bestanden sind. **Der finale Render enthält keine Untertitel.**
-
-Das finale Video ist sichtbar unter:
-
-```text
-04-video/FERTIGES-VIDEO/
-```
+Jede einzelne Bildphase muss die visuelle Zwei-Pass-QC bestehen. Die letzte Bildphase bleibt nach dem letzten gesprochenen Wort 0,7 Sekunden stehen.
 
 Keine geplante Stufe als abgeschlossen bezeichnen und keine nicht ausgeführten Tests als bestanden melden.
