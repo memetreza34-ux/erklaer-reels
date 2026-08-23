@@ -39,13 +39,28 @@ Keine feste Gesamtzahl erzwingen.
 
 Diese Welt ist für Länder, Geografie, Grenzen, Geschichte, internationale Unterschiede und gesellschaftliche Systeme gedacht.
 
+### Nicht verhandelbare Figurenregel
+
+**Jede anthropomorphe Länderfigur ist immer eine vollständig runde Kugel.**
+
 Verbindliche Merkmale:
-- Länder als vollständige runde Kugel-/Country-Charaktere
-- vereinfachte, aber klar erkennbare Flaggenmuster
-- einfache Augen; höchstens kleine Arme/Beine
+- vollständige kreisrunde/kugelförmige Country-Charaktere als Figurenkörper
+- vereinfachte, aber klar erkennbare Flaggenmuster direkt auf der runden Kugel
+- einfache weiße Augen; höchstens winzige Arme/Beine
 - keine menschlichen Köpfe oder menschlichen Torsi als Hauptfiguren
-- Karten, Straßen, Grenzen, Pfeile und geografische Formen dürfen die Erklärung unterstützen
 - erwachsener 2D-Editorial-/Dokumentar-Look
+
+**Strikt verboten:**
+- Länderumriss oder Karten-Silhouette als Körper der Figur
+- Augen, Gesicht, Mund, Arme oder Beine auf einer Länder-/Kontinentform
+- Australien-, Brasilien-, USA-, Deutschland- usw. als anthropomorphe Kartenform
+- unregelmäßig geformte „Countryballs“ statt echter runder Kugeln
+
+Karten, Grenzen, Straßen, Küsten, Länderumrisse und territoriale Formen dürfen weiterhin vorkommen, aber **nur als gesichtslose Hintergrund-/Erklärgrafik**. Eine Kartenform darf niemals selbst der Charakter sein.
+
+Wenn ein Prompt eine Länderfigur erwähnt, muss er ausdrücklich die Formulierung sinngemäß enthalten:
+
+> complete perfectly round country sphere / circular country ball; never a map-shaped character
 
 ### Mehrere Bildphasen
 
@@ -85,6 +100,28 @@ Problem → Auflösung
 ```
 
 Keine feste Gesamtzahl erzwingen.
+
+---
+
+# Sichtbarer Text in generierten Bildern — globale Pflichtregel
+
+Workflow- und Produktionsdaten sind **niemals Bildinhalt**.
+
+In einem generierten Bild dürfen niemals sichtbar erscheinen:
+- `BILD 00`, `BILD 01`, `Bild 1` usw.
+- `COVER`
+- `SZENE`, `SCENE`
+- `BILDPHASE`, `IMAGE PHASE`
+- `DATEINAME`, Dateinamen oder Dateiendungen
+- `GOOGLE FLOW`, `PROMPT`, `STYLE-REFERENZ`, `ZIEL`
+- technische IDs wie `scene-04-image-02`
+- sonstige Workflow-Metadaten aus der Sammeldatei
+
+Für **jede einzelne Bildphase** gilt eine harte Text-Whitelist:
+- wenn `imageText`/Cover-Headline gesetzt ist, ist **genau dieser Text der einzige erlaubte lesbare Text im Bild**
+- wenn `imageText` leer ist, muss das Bild **vollständig ohne lesbaren Text** erzeugt werden
+
+Diese Regel gilt auch dann, wenn technische Labels unmittelbar vor dem Bildprompt in einer Sammeldatei stehen. Sie sind ausschließlich Steuerinformationen und dürfen niemals gerendert werden.
 
 ---
 
