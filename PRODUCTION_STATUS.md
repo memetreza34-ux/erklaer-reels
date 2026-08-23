@@ -2,55 +2,61 @@
 
 **Status: PRODUKTIONSBEREIT**
 
-## Verbindliche aktuelle Quelle
+## Verbindliche Quelle
 
-Die vollständige aktuelle Produktionsregel steht in **`CURRENT_WORKFLOW.md`**. Diese Datei ist bei Widersprüchen maßgeblich.
+`CURRENT_WORKFLOW.md` ist die Single Source of Truth.
 
-Die kreative und funktionale Testphase ist abgeschlossen. Normale Reel-Erstellung darf globale Produktionsregeln nicht nebenbei verändern. Globale Änderungen erfolgen nur nach einer ausdrücklichen neuen Nutzerentscheidung.
+## Aktueller Reel-Standard
 
-## Eingefrorener Reel-Standard
-
-- 55–60 Sekunden Voice-over, Ziel 58 Sekunden
-- 155–175 deutsche Wörter, Ziel ungefähr 165
-- 12–14 Szenen, Standard 13
-- sichtbarer Bildwechsel ungefähr alle 3,5–5 Sekunden
+- 55–60 Sekunden Voice-over
+- 155–175 deutsche Wörter
+- 12–14 **narrative Szenen**, Standard 13
 - Hook ab Sekunde 0
-- Bildwelt erst nach dem fertigen Script auswählen und innerhalb des Reels konsistent halten
-- kurzer deutscher Bildtext, wenn er die Szene verbessert
-- Bildzuordnung final ausschließlich nach tatsächlichem sichtbarem Inhalt plus Nachbarszenenprüfung
-- mindestens 0,90 Konfidenz für finale automatische Bildzuordnung
-- Voice-over exakt 1,10x, Tonhöhe erhalten
-- −16 LUFS, höchstens −1,5 dBTP
-- **keine Untertitel**
-- **kein Word-Sync für Untertitel**
-- keine künstlich freigehaltene Untertitelzone; Bilder dürfen die volle 9:16-Fläche sinnvoll nutzen
-- Szenenwechsel werden ausschließlich an bestätigten Audio-Cues der finalen Audiodatei ausgerichtet
-- ausschließlich direkte harte Schnitte
-- starkes Ende über zwei Szenen
-- Schlussbild 0,7 Sekunden nach dem letzten gesprochenen Wort
+- Voice-over exakt 1,10x, Pitch erhalten
+- −16 LUFS, max. −1,5 dBTP
+- keine Untertitel und kein Word-Sync
+- harte Schnitte
+- 0,7 Sekunden Schlussbild-Nachlauf
 
-## Eingefrorener Google-Flow-Bildworkflow
+## Bildanzahl — seit 23.08.2026 individuell
 
-Diese Regeln gehören ausdrücklich zum Produktionsstandard:
+Die alte Gleichsetzung `13 Szenen = 13 Bilder` ist aufgehoben.
 
-- Antigravity/Codex/Repo-Agenten erzeugen keine Cover- oder Szenenbilder.
-- Der Nutzer startet Google Flow einmal mit der kompletten `all-image-prompts/all-image-prompts.txt`.
-- Google Flow arbeitet danach autonom bis zum letzten Bild und verlangt kein weiteres `Go`, `Weiter`, `OK` oder eine andere Nutzerfreigabe.
-- Trotzdem immer streng seriell: genau ein Bild aktiv, vollständig warten, sofort umbenennen, prüfen, erst dann automatisch das nächste Bild starten.
-- Keine parallelen Generierungen, keine Batches und keine Queue.
-- `Bild 00.png` ist Cover, sichtbare Hook und verbindlicher Style-Master für alle Szenen.
-- Bevorzugte Benennung: `Bild 00.png`, `Bild 01.png`, `Bild 02.png` usw.
-- Erst nach Abschluss aller Bilder werden alle fertig benannten Dateien gemeinsam in `00-bildprompts/00-ALLE-BILDER-HIER-REIN/` bzw. technisch `inbox/numbered-images/` gelegt.
-- Die Dateinummer ist nur Routing-Hilfe; finale Bildzuordnung erfordert weiterhin echte visuelle QC.
+Ab sofort:
+- jede narrative Szene besitzt 1, 2 oder selten 3 Bildphasen
+- die Gesamtzahl der Bilder wird pro Reel individuell gewählt
+- keine fixe Sollzahl pro Reel oder Bildwelt
+- ein Stillstand von ungefähr 3,5–4 Sekunden ist ein Trigger, eine zweite Bildphase zu prüfen, aber keine automatische Pflicht
+- jedes Zusatzbild braucht einen echten Informations-, Fokus- oder Rhythmusgewinn
+
+Technisch:
+- `imageCountMode: "individual-per-reel"`
+- `plannedImageCount`
+- `scene.imageCount`
+- `scene.imagePhases[]`
+- zusätzliche Prompts als `image-prompt-02.txt`, `image-prompt-03.txt`
+
+## Google Flow
+
+`Bild 00.png` bleibt Cover und Style-Master.
+
+Danach bezeichnet die Nummer die **globale Bildreihenfolge**, nicht mehr automatisch die Szenennummer. Beispiel: Szene 2 kann Bild 02 und Bild 03 besitzen.
+
+Flow arbeitet weiterhin streng seriell: genau ein Bild erzeugen, vollständig warten, umbenennen, prüfen, nächstes Bild starten. Kein Batch, keine Queue, kein Parallelisieren.
 
 ## Qualitätsprinzip
 
-Ein Reel ist erst fertig, wenn Inhalt, Audio, Lautheit, bestätigter Szenen-Sync, Bildzuordnung, visuelle Prüfung, Timeline und Renderer-Freigabe tatsächlich bestanden sind. **Der finale Renderer darf keine Untertitel-Cues enthalten.** Geplante oder geschätzte Produktionsstufen dürfen nicht als abgeschlossen markiert werden.
+Ein Reel ist erst fertig, wenn:
+- alle individuell geplanten Bildphasen vorhanden sind
+- jede Bildphase zweifach visuell geprüft wurde
+- das finale Voice-over gemessen wurde
+- narrative Szenen am finalen Audio synchronisiert sind
+- interne Bildphasen passend innerhalb der Szenen liegen
+- Finalizer und Renderer-Prüfung tatsächlich bestanden sind
+- die echte MP4 erzeugt wurde
 
-## Schutz vor Regressionen
+Nicht ausgeführte Tests oder geplante Produktionsstufen niemals als bestanden melden.
 
-Bei einem normalen Auftrag wie `Mach ein neues Reel` bleibt dieser Produktionsstandard unverändert. Alte Reel-Dateien, historische Agent-Aufträge oder Beispieltexte dürfen nicht genutzt werden, um Untertitel wieder zu aktivieren oder andere neuere globale Regeln zurückzudrehen.
+## Infrastruktur
 
-## Bekannter Infrastrukturpunkt
-
-Issue #19 (`package-lock.json` und Umstellung von CI auf `npm ci`) bleibt als nicht blockierende Wartungsaufgabe offen. Für den aktuellen Stand gilt: keine nicht tatsächlich ausgeführten Tests als bestanden melden.
+Die GitHub-Actions-CI hatte zuletzt weiterhin Läufe mit leerer Step-Liste bzw. nicht abrufbaren Logs. Ein grüner CI-Status darf nur gemeldet werden, wenn ein Lauf tatsächlich erfolgreich abgeschlossen wurde.

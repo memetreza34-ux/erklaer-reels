@@ -3,6 +3,7 @@ import { access, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
 import { readImageMetadata } from './image-metadata.js';
+import { flattenSceneImagePhases } from '../shared/visual-moments.js';
 
 async function exists(filePath) {
   try {
@@ -98,24 +99,24 @@ async function ensureInspectionFile(reelDirectory, assets, rules, reel) {
   const current = await readJson(inspectionPath, null);
   const byId = new Map((current?.assets ?? []).map((entry) => [entry.assetId, entry]));
   const next = {
-    version: 8,
+    version: 9,
     visualStyleId: reel?.visualStyleId ?? '',
     visualStyleReason: reel?.visualStyleReason ?? '',
+    imageCountMode: reel?.imageCountMode ?? 'legacy-one-image-per-scene',
+    plannedImageCount: assets.filter((asset) => asset.kind === 'scene').length,
     subtitlesEnabled: false,
     instructions: [
-      'Öffne jedes Bild tatsächlich. Dateiname, Upload-Reihenfolge oder Ordnerposition sind kein Beweis für die richtige Szene.',
-      'Erster Durchgang: Beschreibe den sichtbaren Inhalt neutral in visibleSummary, ohne die Szenennummer zu erraten.',
+      'Öffne jedes einzelne Bild tatsächlich. Dateiname, Upload-Reihenfolge oder Ordnerposition sind kein Beweis für die richtige Bildphase.',
+      'Eine narrative Szene kann mehrere Bildphasen besitzen. Prüfe deshalb exakt assetId/phaseOrder und nicht nur die übergeordnete Szenennummer.',
+      'Erster Durchgang: Beschreibe den sichtbaren Inhalt neutral in visibleSummary.',
       'Vergleiche das Bild danach mit expected.narration, expected.audioCue, expected.visualIdea, expected.imageText und expected.imagePrompt.',
       'Trage in matchReason konkret ein, welche sichtbaren Objekte und Handlungen die Zuordnung bestätigen.',
-      'Zweiter Durchgang für Szenen: Vergleiche die Zuordnung nochmals mit der vorherigen und nächsten Szene und setze erst danach secondPassConfirmed auf true.',
-      'Setze comparedAssetId exakt auf die geprüfte scene-XX-ID. So werden vertauschte Nachbarszenen sichtbar blockiert.',
+      'Zweiter Durchgang: Vergleiche die Zuordnung mit der vorherigen und nächsten Bildphase und setze erst danach secondPassConfirmed auf true.',
+      'Setze comparedAssetId exakt auf die geprüfte Bildphasen-ID.',
       'Prüfe die gewählte Hauptbildwelt, Figurenform, Konturen und Farbwelt gegen reel.visualStyleId und visualStyleReason.',
       'Geplanter deutscher Bildtext muss exakt stimmen; zusätzliche englische oder erfundene Wörter sind verboten.',
-      'Prüfe genau einen klaren Bildmoment und keine mehrfach dargestellte Hauptperson innerhalb derselben Illustration.',
-      'Prüfe eine natürliche Vollbild-Komposition ohne künstlich freigehaltene Untertitelzone oder leeren Mittelstreifen.',
-      'Prüfe zusätzlich die üblichen Plattform-UI-Ränder, ohne dafür den eigentlichen Bildinhalt künstlich zu teilen.',
-      'Ändert sich die Bilddatei, Narration, visuelle Idee, der Bildtext, Prompt oder die Bildwelt, wird eine frühere Freigabe automatisch auf pending zurückgesetzt.',
-      'Nur vollständig bestandene Bilder mit konkreter Begründung erhalten status passed.'
+      'Prüfe eine natürliche Vollbild-Komposition ohne künstlich freigehaltene Untertitelzone.',
+      'Ändert sich Bilddatei, Narration, Bildphase, Bildtext, Prompt oder Bildwelt, wird eine frühere Freigabe automatisch zurückgesetzt.'
     ],
     safeZones: rules.safeZones,
     assets: assets.map((asset) => {
@@ -156,7 +157,7 @@ export async function runVisualQualityCheck(reelDirectory, { strict = false } = 
 
   const reel = await readJson(path.join(reelDirectory, 'reel.json'), {});
   const scenes = await readJson(path.join(reelDirectory, 'scenes', 'scene-index.json'), []);
-  const manifest = await readJson(path.join(reelDirectory, 'assets-manifest.json'), { scenes: [], cover: {} });
+  const manifest = await readJson(path.join(reelDirectory, 'assets-manifest.json'), { visuals: [], scenes: [], cover: {} });
   const effects = await readJson(path.join(reelDirectory, 'effects', 'effects-plan.json'), { scenes: [] });
   const cover = await readJson(path.join(reelDirectory, 'cover', 'cover.json'), {});
   const coverPromptPath = path.join(reelDirectory, 'cover', 'cover-prompt.txt');
@@ -165,31 +166,40 @@ export async function runVisualQualityCheck(reelDirectory, { strict = false } = 
   const status = await readJson(statusPath, {});
 
   const effectByScene = new Map((effects.scenes ?? []).map((entry) => [entry.sceneId, entry]));
+  const manifestByVisual = new Map((manifest.visuals ?? []).map((entry) => [entry.targetId, entry]));
   const manifestByScene = new Map((manifest.scenes ?? []).map((entry) => [entry.sceneId, entry]));
+  const flattened = flattenSceneImagePhases(scenes);
   const assets = [];
 
-  for (let index = 0; index < scenes.length; index += 1) {
-    const scene = scenes[index];
-    const promptPath = path.join(reelDirectory, 'scenes', scene.sceneId, 'image-prompt.txt');
+  for (let index = 0; index < flattened.length; index += 1) {
+    const phase = flattened[index];
+    const scene = scenes.find((entry) => entry.sceneId === phase.sceneId) ?? {};
+    const promptPath = path.join(reelDirectory, 'scenes', phase.sceneId, phase.promptFileName);
     const imagePrompt = await exists(promptPath) ? (await readFile(promptPath, 'utf8')).trim() : '';
+    const manifestVisual = manifestByVisual.get(phase.targetId) ?? (phase.primary ? manifestByScene.get(phase.sceneId) : null) ?? {};
     assets.push({
-      assetId: scene.sceneId,
-      file: manifestByScene.get(scene.sceneId)?.expectedFile ?? `scenes/${scene.sceneId}/${scene.expectedImageFileName}`,
+      assetId: phase.targetId,
+      file: manifestVisual.expectedFile ?? `scenes/${phase.sceneId}/${phase.expectedImageFileName}`,
       kind: 'scene',
+      parentSceneId: phase.sceneId,
       scene,
       expected: {
-        sceneId: scene.sceneId,
-        order: scene.order,
-        title: scene.title ?? '',
-        narration: scene.narration ?? '',
-        audioCue: scene.audioCue ?? '',
-        visualIdea: scene.visualIdea ?? '',
-        imageText: scene.imageText ?? '',
+        targetId: phase.targetId,
+        sceneId: phase.sceneId,
+        order: phase.sceneOrder,
+        phaseId: phase.phaseId,
+        phaseOrder: phase.phaseOrder,
+        startPercent: phase.startPercent,
+        title: phase.sceneTitle ?? '',
+        narration: phase.narration ?? '',
+        audioCue: phase.audioCue ?? '',
+        visualIdea: phase.visualIdea || phase.sceneVisualIdea || '',
+        imageText: phase.imageText || phase.sceneImageText || '',
         imagePrompt,
         visualStyleId: reel.visualStyleId ?? '',
         visualStyleReason: reel.visualStyleReason ?? '',
-        previousSceneId: scenes[index - 1]?.sceneId ?? null,
-        nextSceneId: scenes[index + 1]?.sceneId ?? null
+        previousTargetId: flattened[index - 1]?.targetId ?? null,
+        nextTargetId: flattened[index + 1]?.targetId ?? null
       }
     });
   }
@@ -198,6 +208,7 @@ export async function runVisualQualityCheck(reelDirectory, { strict = false } = 
     assetId: 'cover',
     file: manifest.cover?.expectedFile ?? 'cover/cover.png',
     kind: 'cover',
+    parentSceneId: null,
     scene: null,
     expected: {
       headline: cover.headline ?? '',
@@ -223,6 +234,8 @@ export async function runVisualQualityCheck(reelDirectory, { strict = false } = 
     'config/visual-quality-rules.json muss Untertitel explizit deaktivieren.', 'error');
   addCheck(checks, 'reel-subtitles-disabled', reel.subtitlesEnabled === false,
     'reel.json muss Untertitel für den aktuellen Produktionsstandard deaktivieren.', 'error');
+  addCheck(checks, 'visual-count-match', assets.filter((asset) => asset.kind === 'scene').length === flattened.length,
+    'Die visuelle QC muss jede geplante Bildphase prüfen.', 'error');
 
   for (const asset of assets) {
     const filePath = path.join(reelDirectory, asset.file);
@@ -261,7 +274,7 @@ export async function runVisualQualityCheck(reelDirectory, { strict = false } = 
     }
 
     if (asset.kind === 'scene') {
-      const effect = effectByScene.get(asset.assetId) ?? {};
+      const effect = effectByScene.get(asset.parentSceneId) ?? {};
       const crop = motionCropPercent(effect.cameraMotion);
       const horizontalLimit = Math.min(rules.safeZones.leftPercent, rules.safeZones.rightPercent);
       const verticalLimit = Math.min(rules.safeZones.topPercent, rules.safeZones.bottomPercent);
@@ -279,12 +292,13 @@ export async function runVisualQualityCheck(reelDirectory, { strict = false } = 
     addCheck(checks, `${asset.assetId}-manual-review`, manualPassed,
       `${asset.assetId}: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden.`, strict ? 'error' : 'warning', asset.assetId);
     addCheck(checks, `${asset.assetId}-semantic-evidence`, evidencePassed,
-      `${asset.assetId}: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Szenenprüfung fehlt.`, strict ? 'error' : 'warning', asset.assetId);
+      `${asset.assetId}: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Prüfung fehlt.`, strict ? 'error' : 'warning', asset.assetId);
 
     technicalAssets.push({
       assetId: asset.assetId,
       file: asset.file,
       kind: asset.kind,
+      parentSceneId: asset.parentSceneId,
       expected: asset.expected,
       reviewFingerprint: asset.reviewFingerprint,
       metadata,
@@ -296,15 +310,18 @@ export async function runVisualQualityCheck(reelDirectory, { strict = false } = 
   const errors = checks.filter((check) => !check.passed && check.level === 'error');
   const warnings = checks.filter((check) => !check.passed && check.level === 'warning');
   const report = {
-    version: 9,
+    version: 10,
     createdAt: new Date().toISOString(),
     strict,
     passed: errors.length === 0,
     visualStyleId: reel.visualStyleId ?? '',
+    imageCountMode: reel.imageCountMode ?? 'legacy-one-image-per-scene',
+    plannedImageCount: flattened.length,
     subtitlesEnabled: false,
     safeZones: rules.safeZones,
     summary: {
       assetsChecked: technicalAssets.length,
+      sceneImagesChecked: technicalAssets.filter((asset) => asset.kind === 'scene').length,
       passedChecks: checks.filter((check) => check.passed).length,
       failedChecks: errors.length,
       warnings: warnings.length,
@@ -317,6 +334,7 @@ export async function runVisualQualityCheck(reelDirectory, { strict = false } = 
   await writeJson(path.join(reelDirectory, 'review', 'visual-quality-report.json'), report);
   status.subtitles = 'disabled';
   status.wordSync = 'not-required';
+  status.plannedImageCount = flattened.length;
   status.visualQuality = report.passed ? (strict ? 'passed' : 'technical-passed') : 'needs-review';
   status.qualityControl = report.passed && strict ? 'visual-passed' : status.qualityControl;
   await writeJson(statusPath, status);

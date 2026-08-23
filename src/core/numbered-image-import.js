@@ -1,6 +1,8 @@
 import { access, mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
+import { collectImagePrompts } from './image-prompt-bundle.js';
+
 const IMAGE_EXTENSIONS = new Set(['.png', '.jpg', '.jpeg', '.webp']);
 const DROP_DIRECTORY = path.join('inbox', 'numbered-images');
 const SOURCE_DIRECTORY = 'numbered-images';
@@ -48,20 +50,18 @@ export async function ensureNumberedImageDropDirectory(reelDirectory) {
   await mkdir(directory, { recursive: true });
 
   const readmePath = path.join(directory, README_FILE);
-  if (!(await exists(readmePath))) {
-    await writeFile(
-      readmePath,
-      '# Alle Bilder hier hinein\n\n' +
-      'Lege Cover und Szenenbilder gemeinsam in diesen Ordner. Die zweistellige Nummer bestimmt nur das vorgeschlagene Ziel:\n\n' +
-      '- `00.png` oder `bild-00.png` → Cover\n' +
-      '- `01.png` oder `bild-01.png` → Szene 1\n' +
-      '- `02.png` → Szene 2\n' +
-      '- usw. bis zur letzten Szene\n\n' +
-      'Unterstützt werden PNG, JPG, JPEG und WEBP. Zusätzlicher Text nach der Nummer ist erlaubt, z. B. `03-meine-szene.png`.\n\n' +
-      'Die Nummerierung spart nur das manuelle Einsortieren. Vor der endgültigen Übernahme muss die KI jedes Bild weiterhin sichtbar prüfen und die bestehende Asset-QC bestätigen.\n',
-      'utf8'
-    );
-  }
+  await writeFile(
+    readmePath,
+    '# Alle Bilder hier hinein\n\n' +
+    'Lege Cover und alle Szenen-Bildphasen gemeinsam in diesen Ordner. Die zweistellige Nummer bestimmt nur das vorgeschlagene Ziel in der **globalen Bildreihenfolge**:\n\n' +
+    '- `00.png` oder `Bild 00.png` → Cover\n' +
+    '- `01.png` → erste Bildphase des Reels\n' +
+    '- `02.png` → zweite Bildphase des Reels\n' +
+    '- usw. bis zum letzten geplanten Bild\n\n' +
+    '**Wichtig:** Bild 03 bedeutet nicht automatisch Szene 3. Wenn Szene 2 zwei Bilder besitzt, können Bild 02 und Bild 03 beide zu Szene 2 gehören.\n\n' +
+    'Unterstützt werden PNG, JPG, JPEG und WEBP. Die Nummerierung ist weiterhin nur Routing-Hilfe. Vor der endgültigen Übernahme muss jedes Bild sichtbar gegen seine konkrete Bildphase geprüft werden.\n',
+    'utf8'
+  );
 
   return directory;
 }
@@ -70,7 +70,7 @@ function sourceRelativeToInbox(fileName) {
   return `${SOURCE_DIRECTORY}/${fileName}`;
 }
 
-function emptyVisualFields(target, sceneOrder) {
+function emptyVisualFields(target, sceneOrder, phaseOrder) {
   const assignment = {
     confidence: 0,
     visualReviewed: false,
@@ -86,6 +86,7 @@ function emptyVisualFields(target, sceneOrder) {
     assignment.sceneOrderConfirmed = false;
     assignment.confirmedSceneOrder = null;
     assignment.suggestedSceneOrder = sceneOrder;
+    assignment.suggestedPhaseOrder = phaseOrder;
   }
 
   return assignment;
@@ -93,11 +94,11 @@ function emptyVisualFields(target, sceneOrder) {
 
 export async function prepareNumberedImageAssignments(reelDirectory, { skipWhenEmpty = false } = {}) {
   const directory = await ensureNumberedImageDropDirectory(reelDirectory);
-  const sceneIndex = await readJson(path.join(reelDirectory, 'scenes', 'scene-index.json'), []);
-  const scenesByOrder = new Map(
-    sceneIndex
-      .filter((scene) => Number.isInteger(Number(scene.order)) && Number(scene.order) > 0)
-      .map((scene) => [Number(scene.order), scene])
+  const prompts = await collectImagePrompts(reelDirectory);
+  const imageTargetsByNumber = new Map(
+    prompts
+      .filter((entry) => entry.kind === 'scene')
+      .map((entry) => [Number(entry.order), entry])
   );
 
   const entries = await readdir(directory, { withFileTypes: true });
@@ -144,28 +145,29 @@ export async function prepareNumberedImageAssignments(reelDirectory, { skipWhenE
       assignments.push({
         source,
         target: 'cover',
-        suggestedBy: 'numbered-file-contract',
+        suggestedBy: 'numbered-global-image-order',
         importNumber: 0,
-        ...emptyVisualFields('cover', null)
+        ...emptyVisualFields('cover', null, null)
       });
       continue;
     }
 
-    const scene = scenesByOrder.get(number);
-    if (!scene) {
+    const visual = imageTargetsByNumber.get(number);
+    if (!visual) {
       unmatched.push({
         source,
-        reason: `Für Bildnummer ${String(number).padStart(2, '0')} existiert keine Szene mit order=${number}.`
+        reason: `Für Bildnummer ${String(number).padStart(2, '0')} existiert keine geplante Bildphase.`
       });
       continue;
     }
 
     assignments.push({
       source,
-      target: scene.sceneId,
-      suggestedBy: 'numbered-file-contract',
+      target: visual.targetId,
+      parentSceneId: visual.sceneId,
+      suggestedBy: 'numbered-global-image-order',
       importNumber: number,
-      ...emptyVisualFields(scene.sceneId, number)
+      ...emptyVisualFields(visual.targetId, visual.sceneOrder, visual.phaseOrder)
     });
   }
 
@@ -176,12 +178,14 @@ export async function prepareNumberedImageAssignments(reelDirectory, { skipWhenE
     : [];
 
   const assetMap = {
-    version: 3,
+    version: 4,
     generatedBy: 'numbered-image-import',
-    assignmentMode: 'numbered-target-suggestion-with-required-visual-review',
+    assignmentMode: 'global-image-order-suggestion-with-required-visual-review',
+    plannedImageCount: imageTargetsByNumber.size,
     instructions: [
-      'Die zweistellige Dateinummer bestimmt nur das vorgeschlagene Ziel: 00=Cover, 01=Szene 1, 02=Szene 2 usw.',
-      'Vor --apply jedes Bild öffnen und den sichtbaren Inhalt tatsächlich prüfen.',
+      'Die zweistellige Dateinummer beschreibt die globale Bildreihenfolge: 00=Cover, danach alle geplanten Bildphasen fortlaufend.',
+      'Eine Bildnummer ist nicht automatisch identisch mit einer Szenennummer, wenn Szenen mehrere Bilder besitzen.',
+      'Vor --apply jedes Bild öffnen und den sichtbaren Inhalt tatsächlich gegen die vorgeschlagene Bildphase prüfen.',
       'Nach der Sichtprüfung confidence, visualReviewed, secondPassConfirmed, visibleSummary, reason, comparedFields und matchMethod ausfüllen.',
       'Bei Szenen zusätzlich confirmedTarget, confirmedSceneOrder und sceneOrderConfirmed bestätigen.',
       'matchMethod muss nach echter Sichtprüfung visual-content-review oder visual-text-and-content-review sein.',
@@ -197,6 +201,7 @@ export async function prepareNumberedImageAssignments(reelDirectory, { skipWhenE
     directory,
     mapPath,
     candidateCount: candidateFiles.length,
+    plannedImageCount: imageTargetsByNumber.size,
     assignedCount: assignments.length,
     preservedAudioAssignments: preservedAssignments.length,
     unmatchedCount: unmatched.length,

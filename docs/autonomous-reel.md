@@ -2,39 +2,39 @@
 
 Dieser Ablauf gilt bei „Mach ein neues Reel“, „Erstelle das nächste Reel“ und sinngleichen Imperativen.
 
-## Vor jeder Produktion zwingend lesen
+## Zuerst lesen
 
 1. `CURRENT_WORKFLOW.md`
 2. `PRODUCTION_STATUS.md`
 3. `AGENTS.md`
 4. `CODEX_TASK.md`
 
-`CURRENT_WORKFLOW.md` ist bei Widersprüchen maßgeblich. Ein normaler neuer Reel-Auftrag darf globale Produktionsregeln **nicht** verändern.
+`CURRENT_WORKFLOW.md` ist bei Widersprüchen maßgeblich.
 
 ## Ablauf
 
-### 1. Nächsten freien Tag bestimmen
+### 1. Nächsten freien Slot bestimmen
 
 ```bash
 npm run next:slot -- --json
 ```
 
-Bereits belegte Slots niemals überschreiben.
+Belegte Slots niemals überschreiben.
 
 ### 2. Thema auswählen
 
-Thema selbstständig aus den erlaubten Säulen wählen, Wiederholungen vermeiden und keine Standardrückfrage zu Datum, Thema, Szenenzahl oder Bildwelt stellen.
+Thema selbstständig aus den erlaubten Säulen wählen und Wiederholungen vermeiden.
 
 ### 3. Script schreiben
 
 - genau ein deutscher Erzähler
 - 155–175 Wörter
-- 55–60 Sekunden nach 1,10x-Audiooptimierung
-- sofortige sachliche Hook
-- einfache, erwachsene Sprache
+- 55–60 Sekunden nach Audiooptimierung
+- Hook sofort
+- erwachsene einfache Sprache
 - starkes Ende über zwei Szenen
 
-### 4. Reel erstellen
+### 4. Workspace erstellen
 
 ```bash
 npm run create:reel -- \
@@ -44,83 +44,75 @@ npm run create:reel -- \
   --scenes 13
 ```
 
-Danach `production/agent-task.md` vollständig bearbeiten.
+Die 13 sind **narrative Szenen**, nicht automatisch 13 Bilder.
 
-Pflichtumfang:
-- finales Script und Voice-Script
-- 12–14 Szenen mit je einem klaren Moment
-- Cover-Prompt
-- vollständige englische Szenenprompts
-- Caption
-- Quellen
-- Effektplanung
-- Statusdateien
-- vollständige Prompt-Sammeldatei
-- **Untertitel deaktiviert lassen**
+### 5. Bilddichte individuell planen
 
-### 5. Google-Flow-Sammeldatei erzeugen
+Für jede Szene separat:
+- 1 Bild, wenn ein starkes Motiv reicht
+- 2 Bilder, wenn Überblick/Detail, Karte/Zoom, Ursache/Folge, Gesicht/Gedanke oder ein anderer echter zweiter visueller Schritt hilft
+- 3 Bilder nur selten
+
+Bei ungefähr 3,5–4 Sekunden oder längerem Stillstand eine zweite Bildphase aktiv prüfen. Keine künstlichen Zusatzbilder nur für eine Quote.
+
+Danach:
+- `reel.json.imageCountMode = "individual-per-reel"`
+- `reel.json.plannedImageCount` auf tatsächliche Summe setzen
+- pro Szene `imageCount` + `imagePhases[]`
+- erste Phase `image-prompt.txt`
+- zusätzliche Phasen `image-prompt-02.txt`, `image-prompt-03.txt`
+
+### 6. Google-Flow-Sammeldatei
 
 ```bash
 npm run export:prompts -- --dir "PFAD-ZUM-REEL" --strict
 ```
 
-Die generierte `all-image-prompts/all-image-prompts.txt` muss automatisch dem aktuellen Vertrag aus `CURRENT_WORKFLOW.md` entsprechen:
+`Bild 00` bleibt Cover und Style-Master. Danach folgen alle Bildphasen fortlaufend in globaler Bildreihenfolge.
 
-- Nutzer startet Google Flow einmal mit der kompletten Datei.
-- Google Flow arbeitet autonom ohne weiteres `Go`.
-- Trotzdem streng seriell: ein Bild → vollständig warten → sofort umbenennen → prüfen → automatisch nächstes Bild.
-- Kein Parallelisieren, Batch oder Queue.
-- `Bild 00` ist Cover, Hook und Style-Master.
-- Erst nach dem letzten Bild alle fertigen Bilder gemeinsam in den Sammelordner.
+Die Bildnummer ist nicht mehr automatisch die Szenennummer. Beispiel:
 
-Repo-Agenten erzeugen selbst keine Bilder.
+```text
+Bild 01 = Szene 1 / Phase 1
+Bild 02 = Szene 2 / Phase 1
+Bild 03 = Szene 2 / Phase 2
+Bild 04 = Szene 3 / Phase 1
+```
 
-### 6. Inhaltsprüfung
+Flow arbeitet streng seriell und fragt nach dem einmaligen Start nicht erneut nach `Go`.
+
+### 7. Inhaltsprüfung
 
 ```bash
 npm run validate:reel -- --dir "PFAD-ZUM-REEL"
 npm run check:content -- --dir "PFAD-ZUM-REEL" --strict
 ```
 
-Fehler beheben. Keine Prüfung als bestanden melden, wenn sie nicht tatsächlich ausgeführt werden konnte.
-
-### 7. Externe Assets zuerst aktiv suchen
-
-Wenn Bilder oder Voice-over im Reel-Ordner nicht gefunden werden, **nicht sofort anhalten**.
-
-Zuerst:
+### 8. Externe Assets zuerst suchen
 
 ```bash
 npm run discover:assets -- --dir "PFAD-ZUM-REEL"
 ```
 
-Der normale Lauf
+Die Discovery erwartet automatisch die individuell geplante Bildreihe.
+
+Bei mehreren ZIPs oder Audio-Kandidaten nicht raten.
+
+### 9. Bildzuordnung
 
 ```bash
 npm run organize:assets -- --dir "PFAD-ZUM-REEL"
 ```
 
-führt dieselbe Suche ebenfalls automatisch aus.
+Jede Bildphase wirklich öffnen. Dateinummer nur als Routing-Hilfe verwenden. Gegen Phasen-Prompt und Phasen-Visual-Idea prüfen, dann gegen vorherige und nächste Bildphase. Unter 0,90 Konfidenz nicht anwenden.
 
-Standardmäßig werden Reel-Ordner, `~/Downloads` und `~/Desktop` durchsucht.
-
-Wenn eine eindeutige vollständige ZIP mit `Bild 00` bis zur letzten Szene gefunden wird, wird sie sicher geprüft, temporär entpackt und in `inbox/numbered-images/` übernommen. Bereits vorhandene Bildnummern werden nicht überschrieben.
-
-Wenn **mehrere** vollständige ZIPs gefunden werden, darf nicht blind die neueste verwendet werden. Der Agent prüft die Kandidaten inhaltlich und kann danach gezielt ausführen:
+Danach:
 
 ```bash
-npm run discover:assets -- --dir "PFAD-ZUM-REEL" --zip "PFAD-ZUR-GEPRÜFTEN-ZIP"
+npm run organize:assets -- --dir "PFAD-ZUM-REEL" --apply
 ```
 
-Auch nach dem ZIP-Import bleibt die visuelle Zwei-Pass-QC Pflicht. Dateinummern sind nur Routing-Hilfe.
-
-Bei Audio werden aktuelle Kandidaten gesucht. Genau ein eindeutig als Voice-over erkennbarer Kandidat kann bereitgestellt werden; bei mehreren/unklaren Kandidaten muss der Agent prüfen und darf nicht raten.
-
-Die Suchdiagnose liegt unter `inbox/asset-discovery.json`.
-
-### 8. Audio und Szenen synchronisieren
-
-Nach dem finalen Audio:
+### 10. Audio und Szenen-Sync
 
 ```bash
 npm run trim:pauses -- --dir "PFAD-ZUM-REEL" --speed 1.10
@@ -128,51 +120,25 @@ npm run build:timeline -- --dir "PFAD-ZUM-REEL"
 npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
 ```
 
-Verbindlich:
-- exakt 1,10x bei erhaltener Tonhöhe
-- −16 LUFS und höchstens −1,5 dBTP
-- tatsächliche Lautheit nachmessen
-- jeder Szenenwechsel basiert auf dem passenden `audioCue` der finalen Audiodatei
-- keine geschätzten, gleichmäßig verteilten oder künstlich geklemmten Szenenanker
-- jede spätere Änderung am Voice-over macht die Szenen-Timeline ungültig
-- **kein `sync:words` und keine Untertitel**
+Narrative Szenen werden über echte akustisch bestätigte `audioCue`-Anker synchronisiert. Zusätzliche Bildphasen wechseln innerhalb der bestätigten Szene anhand `startPercent`.
 
-## Quellenstandard
+Keine Untertitel und kein Word-Sync.
 
-- zentrale Tatsachenbehauptungen vor Veröffentlichung prüfen
-- Primärquellen oder seriöse Fach-/Institutionenquellen bevorzugen
-- bei wichtigen oder strittigen Aussagen nach Möglichkeit **mindestens zwei voneinander unabhängige Quellen** verwenden
-- konkrete URLs bzw. eindeutig auffindbare Quellen in `sources/sources.md`
-- keine erfundenen Quellen oder Platzhalterlinks
+### 11. Finale QC und Render
 
-## Audio-Nachweis
-
-Die Zielwerte allein reichen nicht als Nachweis. Vor einer finalen Freigabe müssen die **tatsächlichen LUFS und True Peak** des verarbeiteten Voice-overs gemessen und im Prüfbericht gespeichert sein, sobald das aktuelle Audio-Pacing-Schema diese Messung verlangt.
-
-## Erlaubter Haltepunkt
-
-Erst anhalten, wenn **nach der verbindlichen Asset-Suche** externe Dateien tatsächlich nicht auffindbar sind oder mehrere Kandidaten nicht sicher unterschieden werden können.
-
-Sind Assets vorhanden oder wurden sie gefunden:
-
-```text
-ZIP ggf. sicher entpacken
-→ Bilder/Audio bereitstellen
-→ Assets visuell prüfen
-→ nummerierte Dateien nur als Routing-Hilfe verwenden
-→ Voice-over exakt 1,10x / −16 LUFS / max. −1,5 dBTP verarbeiten
-→ tatsächliche LUFS und True Peak nachmessen
-→ Szenen-Timeline mit echten Audio-Cues synchronisieren
-→ visuelle Zwei-Pass-QC
-→ finale Freigabe
-→ MP4 ohne Untertitel rendern
-→ fertige MP4 unter 04-video/FERTIGES-VIDEO bereitstellen
+```bash
+npm run check:visuals -- --dir "PFAD-ZUM-REEL" --strict
+npm run finalize:reel -- --dir "PFAD-ZUM-REEL" --strict
+npm run validate:render -- --dir "PFAD-ZUM-REEL"
+npm run render:reel -- --dir "PFAD-ZUM-REEL"
 ```
+
+Jede geplante Bildphase muss die visuelle QC bestehen. Die letzte sichtbare Phase bleibt 0,7 Sekunden nach Sprecherende stehen.
 
 ## Keine Standardrückfragen
 
-Nicht nach Datum, Thema, Szenenzahl, Bildwelt oder bereits heruntergeladenen Assets fragen, solange die Repo-Suche diese Information selbst finden kann. Nur bei einer wirklich nicht auflösbaren Mehrdeutigkeit oder tatsächlich fehlenden externen Datei nachfragen.
+Nicht nach Datum, Thema, Szenenzahl, Bildwelt oder bereits heruntergeladenen Assets fragen, solange Repo und Asset-Suche die Information selbst liefern können.
 
 ## Abschlussmeldung
 
-Vor externen Assets nur bestätigen, was tatsächlich erstellt/geprüft wurde. Bilder, Audio, Tests, CI oder Render niemals als vorhanden/erfolgreich darstellen, wenn sie nicht wirklich erzeugt oder ausgeführt wurden.
+Nur tatsächlich erzeugte und geprüfte Schritte als fertig melden. Bilder, Audio, Tests, CI oder Render niemals als erfolgreich darstellen, wenn sie nicht wirklich ausgeführt wurden.
