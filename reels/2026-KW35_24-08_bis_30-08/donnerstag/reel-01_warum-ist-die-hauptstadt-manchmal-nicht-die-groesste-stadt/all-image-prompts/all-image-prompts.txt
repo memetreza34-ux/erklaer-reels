@@ -1,0 +1,93 @@
+ALLE BILDPROMPTS – GOOGLE FLOW – STRENG EINZELN + AUTONOM OHNE WEITERES GO
+
+WICHTIGER ABLAUF
+- Generate exactly ONE image at a time.
+- Wait until the current image is completely finished.
+- Rename it immediately to the exact filename shown below.
+- Verify the filename, then automatically start the next image.
+- Do not ask for Go, Weiter, OK, confirmation or another user message.
+- Bild 00 is the cover and the binding visual style reference for every later image.
+- The numbers follow visual image phases, not narrative scene numbers. This reel has 13 narrative scenes but 18 scene images.
+- No subtitles, no subtitle band and no artificial empty middle area.
+
+BINDING MASTER STYLE FOR ALL 19 IMAGES
+Vertical 9:16 premium mature 2D editorial country-character illustration. Warm off-white textured paper background, deep navy borders and map shapes, muted rust, mustard, cobalt and forest-green accents, bold clean hand-inked outlines, flat geometric shading, subtle grain, high contrast, sophisticated documentary tone, not childish. Country characters are complete round spheres with accurate simplified flag patterns, simple white eyes, and at most tiny arms and legs; no human heads or torsos. Use clear map silhouettes, city icons, border lines and directional geography only when they improve one-second readability. No 3D, no photorealism, no logos, no watermark. Use the full 9:16 composition naturally. After Bild 00, match Bild 00.png exactly in line weight, paper texture, palette, proportions, character design and overall editorial finish.
+
+BILD 00 – COVER
+DATEINAME: Bild 00.png
+Create the master cover for a reel about capitals that are not the biggest city. Show four recognizable country spheres—Australia, Brazil, Türkiye and the United States—each looking toward a smaller government-capital marker while a larger famous metropolis icon sits nearby. Make the contrast between “largest city” and “political capital” instantly readable with one dominant central question motif and clean map cues rather than clutter. Integrate the exact German headline "WARUM NICHT DIE GRÖSSTE?" as the only readable phrase. No other readable text.
+
+BILD 01 – SZENE 1 – BILDPHASE 1
+DATEINAME: Bild 01.png
+Match Bild 00.png exactly. A globe-style map compares a huge famous city sphere with a smaller capital sphere carrying a clear government icon. Make the size-versus-capital contrast instantly readable. Integrate the exact German text "NICHT DIE GRÖSSTE?" as the only readable phrase. No other readable text.
+
+BILD 02 – SZENE 2 – BILDPHASE 1
+DATEINAME: Bild 02.png
+Match Bild 00.png exactly. Several country spheres point toward different city markers: the largest city glows with many population dots while a separate smaller capital marker carries parliament and government symbols. Integrate the exact German text "HAUPTSTADT ≠ GRÖSSTE STADT" as the only readable phrase. No other readable text.
+
+BILD 03 – SZENE 3 – BILDPHASE 1
+DATEINAME: Bild 03.png
+Match Bild 00.png exactly. A country sphere stands at a clean four-way decision graphic made of a history scroll, shield, government building and handshake, all pointing toward a capital marker. Integrate the exact German text "GESCHICHTE ENTSCHEIDET" as the only readable phrase. No other readable text.
+
+BILD 04 – SZENE 4 – BILDPHASE 1
+DATEINAME: Bild 04.png
+Match Bild 00.png exactly. Australia sphere stands between two competing city symbols: Sydney represented by the Opera House and harbour silhouette, Melbourne by a contrasting urban skyline and tram cue. Both pull the capital decision toward themselves. Integrate the exact German text "SYDNEY ODER MELBOURNE?" as the only readable phrase. No other readable text.
+
+BILD 05 – SZENE 4 – BILDPHASE 2
+DATEINAME: Bild 05.png
+Match Bild 00.png exactly. Zoom out to a simplified Australia map. The two rival city symbols remain on opposite sides while a neutral inland capital marker appears as a compromise solution. Integrate the exact German text "KOMPROMISS" as the only readable phrase. No other readable text.
+
+BILD 06 – SZENE 5 – BILDPHASE 1
+DATEINAME: Bild 06.png
+Match Bild 00.png exactly. Australia sphere places a new capital pin at Canberra while the Sydney and Melbourne rivalry recedes into the background. Make the neutral federal compromise immediately clear. Integrate the exact German text "CANBERRA" as the only readable phrase. No other readable text.
+
+BILD 07 – SZENE 5 – BILDPHASE 2
+DATEINAME: Bild 07.png
+Match Bild 00.png exactly. Show early planned Canberra as a clean geometric capital plan emerging from open inland terrain, with the Australia sphere approving a deliberately designed government center. Integrate the exact German text "NEU GEPLANT" as the only readable phrase. No other readable text.
+
+BILD 08 – SZENE 6 – BILDPHASE 1
+DATEINAME: Bild 08.png
+Match Bild 00.png exactly. Brazil sphere watches a capital marker move from coastal Rio de Janeiro toward inland Brasília on a simplified map of Brazil. Use a coast-to-interior arrow and recognizable but stylized Rio and Brasília cues. Integrate the exact German text "RIO → BRASÍLIA" as the only readable phrase. No other readable text.
+
+BILD 09 – SZENE 6 – BILDPHASE 2
+DATEINAME: Bild 09.png
+Match Bild 00.png exactly. Show Brasília appearing as a modern planned capital in Brazil's interior with monumental government architecture, while coastal Rio recedes into the distance. Integrate the exact German text "1960" as the only readable phrase. No other readable text.
+
+BILD 10 – SZENE 7 – BILDPHASE 1
+DATEINAME: Bild 10.png
+Match Bild 00.png exactly. A simplified Brazil map shows development arrows, roads and institutions radiating from inland Brasília toward the interior. The coast remains visible but no longer dominates the composition. Integrate the exact German text "INS LANDESINNERE" as the only readable phrase. No other readable text.
+
+BILD 11 – SZENE 8 – BILDPHASE 1
+DATEINAME: Bild 11.png
+Match Bild 00.png exactly. Türkiye sphere stands over a simplified map with Istanbul shown as a large historic metropolis by the Bosphorus and Ankara highlighted inland as the new capital. Integrate the exact German text "ISTANBUL → ANKARA" as the only readable phrase. No other readable text.
+
+BILD 12 – SZENE 8 – BILDPHASE 2
+DATEINAME: Bild 12.png
+Match Bild 00.png exactly. Focus on inland Ankara as the new political center: Türkiye sphere beside a parliament/government symbol, while Istanbul remains a large historic metropolis far in the background. Integrate the exact German text "ANKARA 1923" as the only readable phrase. No other readable text.
+
+BILD 13 – SZENE 9 – BILDPHASE 1
+DATEINAME: Bild 13.png
+Match Bild 00.png exactly. Türkiye sphere moves toward Ankara beside restrained symbols of the national independence movement and a newly formed republican government, with Istanbul receding into the background. Integrate the exact German text "NEUER STAAT" as the only readable phrase. No other readable text.
+
+BILD 14 – SZENE 10 – BILDPHASE 1
+DATEINAME: Bild 14.png
+Match Bild 00.png exactly. United States sphere points to a distinct federal district on the Potomac, visually separated from ordinary state territory. Use clean river, border and government-building cues. Integrate the exact German text "EIGENER BUNDESDISTRIKT" as the only readable phrase. No other readable text.
+
+BILD 15 – SZENE 10 – BILDPHASE 2
+DATEINAME: Bild 15.png
+Match Bild 00.png exactly. Show an elegant historical plan of Washington, D.C. with broad diagonal avenues, the Capitol and presidential residence as focal government buildings, making the purpose-built federal capital instantly clear. Integrate the exact German text "GEPLANTE HAUPTSTADT" as the only readable phrase. No other readable text.
+
+BILD 16 – SZENE 11 – BILDPHASE 1
+DATEINAME: Bild 16.png
+Match Bild 00.png exactly. A country sphere connects to three city roles: a government building, a money/economy symbol and a dense population skyline. Make it clear that only the government role defines the capital. Integrate the exact German text "POLITISCHES ZENTRUM" as the only readable phrase. No other readable text.
+
+BILD 17 – SZENE 12 – BILDPHASE 1
+DATEINAME: Bild 17.png
+Match Bild 00.png exactly. A country sphere faces three clear capital-location choices on a map: the giant metropolis, a central inland point and a neutral compromise location. Present them like a strong clean decision screen. Integrate the exact German text "WAS WÜRDEST DU WÄHLEN?" as the only readable phrase. No other readable text.
+
+BILD 18 – SZENE 13 – BILDPHASE 1
+DATEINAME: Bild 18.png
+Match Bild 00.png exactly. A reduced world map highlights Canberra, Brasília, Ankara and Washington with country spheres, historical arrows and government symbols. Visually connect capital choices to history and political power rather than city size. Integrate the exact German text "HAUPTSTÄDTE ERZÄHLEN MACHT" as the only readable phrase. No other readable text.
+
+ABSCHLUSS
+Only after Bild 18 is completely generated, correctly renamed and verified, place Bild 00 through Bild 18 together in the reel's shared numbered-image drop. Do not skip, duplicate or reorder any number.
