@@ -43,6 +43,39 @@ Strikt verboten:
 Jeder Bildprompt erzwingt sinngemäß:
 `complete perfectly round circular character / country sphere; never a map-shaped or human-shaped character`.
 
+## Bildprompt-Autorenschaft — alten Aufbau verwenden
+
+Die Visual-Prompts dürfen **nicht** als neue generische Kurzprompts geschrieben werden. Der vor der Controller-Umstellung verwendete detaillierte Editorial-Aufbau ist wieder verbindlich.
+
+Jede `cover-prompt.txt`, `image-prompt.txt`, `image-prompt-02.txt` usw. soll wie die früheren guten Prompts aufgebaut sein:
+
+1. `Vertical 9:16 premium mature 2D editorial country-character illustration ...`
+2. vollständige Stilwelt: warm off-white textured paper, deep navy borders/map shapes, muted rust, mustard, cobalt, forest-green, bold clean hand-inked outlines, flat geometric shading, subtle grain, high contrast, sophisticated documentary tone, not childish
+3. konkrete Szene und klare Komposition
+4. vollständige runde Kugelfiguren passend zum Thema
+5. exakt erlaubten deutschen Bildtext nennen, falls vorhanden
+6. `No other readable text, no English, no logos, no watermark`
+7. `No 3D, no photorealism`
+8. volle 9:16-Fläche, keine Subtitle-Safe-Zone
+
+Für Folgeframes darf `matching Bild 00.png exactly` benutzt werden, aber niemals als Ersatz für eine gute konkrete Bildidee.
+
+### Export darf Visual-Prompts nicht verändern
+
+`all-image-prompts/image-prompts/Bild NN.txt` muss den visuellen Quellprompt **wortgetreu** enthalten.
+
+Der Exporter darf dort nicht ergänzen:
+- `GENERATE EXACTLY ONE IMAGE`
+- `VISIBLE TEXT FIREWALL`
+- `ROUND SPHERE WORLD`
+- `QUALITY GATE`
+- Dateinamen
+- Szenen-/Phasenlabels
+- technische IDs
+- sonstige Workflow-Instruktionen
+
+Diese Steuerung gehört ausschließlich in `google-flow-controller.txt`.
+
 ## Narrative Szenen ≠ Bildanzahl
 
 Jede narrative Szene besitzt normalerweise 1 Bildphase, 2 wenn ein zweiter visueller Schritt klar verbessert, 3 nur selten.
@@ -55,9 +88,9 @@ Technische Felder:
 - pro Szene `imageCount`
 - pro Szene `imagePhases[]`
 
-## Google Flow — neue Pflichtstruktur
+## Google Flow — Pflichtstruktur
 
-**Nicht mehr:** einen riesigen Prompt mit allen Bildprompts an Flow geben.
+**Nicht:** einen riesigen Prompt mit allen Bildprompts an Flow geben.
 
 **Stattdessen:**
 
@@ -107,7 +140,7 @@ Verboten als sichtbarer Bildtext:
 - `DATEINAME`, Dateinamen, technische IDs
 - `GOOGLE FLOW`, `PROMPT`, `STYLE-REFERENZ`, `ZIEL`
 
-Harte Text-Whitelist:
+Der eigentliche visuelle Quellprompt trägt die Textregel selbst:
 - `imageText`/Cover-Headline gesetzt → nur exakt dieser Text darf lesbar sein
 - leer → kein lesbarer Text
 
