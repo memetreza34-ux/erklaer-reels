@@ -10,12 +10,38 @@ Bei „Mach ein neues Reel“ autonom:
 2. Thema aus den erlaubten Säulen wählen
 3. deutsches Voice-over mit 155–175 Wörtern schreiben
 4. 12–14 narrative Szenen planen, Standard 13
-5. Bildwelt nach dem fertigen Script wählen
-6. **Bildanzahl pro Reel und pro Szene individuell planen**
-7. Cover + alle Bildphasen-Prompts + Google-Flow-Sammeldatei + Caption + Quellen fertigstellen
+5. **immer `round-country-characters` als aktive Kugel-Welt setzen**
+6. Bildanzahl pro Reel und pro Szene individuell planen
+7. Cover + alle Bildphasen-Prompts + Einzelprompt-Dateien + Controller + Caption + Quellen fertigstellen
 8. keine Untertitel erzeugen
 9. externe Assets zuerst suchen, bevor etwas als fehlend gemeldet wird
 10. Assets zweifach visuell prüfen, Audio synchronisieren und nur nach echten QC-Gates rendern
+
+## Aktive Bildwelt: nur Kugel-Welt
+
+Für alle neuen Reels gilt `round-country-characters` als einzige aktive Bildwelt.
+
+Andere Welten sind pausiert:
+- `human-editorial-cartoon`
+- `visual-metaphor`
+
+Sie dürfen erst wieder verwendet werden, wenn der Nutzer sie ausdrücklich reaktiviert.
+
+### Figurenregel für alle Themen
+
+Jede anthropomorphe Hauptfigur ist eine **perfekt runde Kugel / ein kreisrunder Ball**.
+
+- Länder-Themen: Flaggenmuster auf der Kugel
+- Nicht-Länder-Themen: neutrale Kugelfiguren mit Farben/Symbolen/Rollenmerkmalen
+- einfache weiße Augen
+- höchstens winzige Arme/Beine
+- keine normalen Menschen als Hauptfiguren
+- keine menschlichen Köpfe/Torsi als Hauptbildwelt
+- keine Länder-/Kartenform als Figurenkörper
+
+Jeder neue Bildprompt muss sinngemäß erzwingen:
+
+`Every anthropomorphic main character must be a complete perfectly round editorial ball/sphere character; never a map-shaped character and never a normal human character as the main figure.`
 
 ## Narrative Szenen ≠ Bildanzahl
 
@@ -28,7 +54,7 @@ Jede narrative Szene besitzt:
 
 Wenn ein einziges Still-Bild ungefähr 3,5–4 Sekunden oder länger stehen würde, aktiv eine zweite Bildphase prüfen. **Nicht automatisch hinzufügen**, wenn sie keinen Mehrwert bringt.
 
-Keine feste Gesamtzahl erzwingen. Länder-Reels können häufiger zusätzliche Karten-/Zoom-/Vergleichsbilder brauchen; Köpfe- oder Metaphern-Reels können mit weniger Wechseln funktionieren. Entscheidend ist immer der konkrete Inhalt.
+Keine feste Gesamtzahl erzwingen.
 
 Technische Felder:
 - `reel.json.imageCountMode = "individual-per-reel"`
@@ -45,32 +71,54 @@ Zusätzliche Phasen:
 - `image-prompt-03.txt`
 - eigener visueller Gedanke und eigener Grund für den Bildwechsel
 
-## Google Flow
+## Google Flow — kein Mega-Prompt mehr
 
-Repo-Agenten erzeugen keine Bilder selbst. Der Nutzer startet Google Flow einmal mit:
+Repo-Agenten erzeugen keine Bilder selbst.
+
+`npm run export:prompts` erzeugt ab jetzt:
 
 ```text
+all-image-prompts/google-flow-controller.txt
 all-image-prompts/all-image-prompts.txt
+all-image-prompts/individual-prompts/Bild 00.txt
+all-image-prompts/individual-prompts/Bild 01.txt
+...
 ```
 
-Danach arbeitet Flow streng seriell und ohne weiteres `Go`:
+### Bedeutung
+
+- `google-flow-controller.txt` = Steuerlogik und Reihenfolge für einen Agenten mit Repo-Zugriff
+- `all-image-prompts.txt` = Manifest/Kompatibilitätsdatei
+- `individual-prompts/Bild XX.txt` = der **einzige** Inhalt, der für dieses konkrete Bild an Google Flow gegeben wird
+
+### Verbindlicher Ablauf
 
 ```text
-Bild erzeugen → vollständig warten → sofort umbenennen → prüfen → nächstes Bild
+Einzelprompt öffnen
+→ nur diesen einen Prompt an Flow geben
+→ genau ein Bild erzeugen
+→ vollständig warten
+→ Ergebnis prüfen
+→ umbenennen
+→ erst dann nächsten Einzelprompt öffnen
 ```
 
-`Bild 00.png` = Cover und Style-Master.
+Strikt verboten:
+- alle Bildprompts in eine Flow-Nachricht kopieren
+- mehrere Generierungen gleichzeitig
+- Batch
+- Queue
+- Preloading
+- Kontaktbogen/Storyboard statt Einzelbildern
 
-Danach ist die Nummer **globale Bildreihenfolge**, nicht automatisch Szenennummer. Wenn Szene 2 zwei Bilder besitzt, können Bild 02 und Bild 03 beide zu Szene 2 gehören.
+`Bild 00.png` bleibt Cover und Style-Master.
 
-Keine Batch-/Queue-/Parallelgenerierung.
+Die Bildnummer ist globale Bildreihenfolge, nicht automatisch Szenennummer.
 
-### Workflow-Metadaten dürfen niemals im Bild erscheinen
-
-Die Sammeldatei enthält technische Steuerinformationen. Diese sind **niemals visueller Inhalt**.
+## Workflow-Metadaten dürfen niemals im Bild erscheinen
 
 Verboten als sichtbarer Bildtext sind insbesondere:
-- Bildnummern (`BILD 00`, `Bild 01` usw.)
+- Bildnummern
 - `COVER`
 - `SZENE` / `SCENE`
 - `BILDPHASE` / `IMAGE PHASE`
@@ -81,28 +129,7 @@ Für jeden Bildauftrag gilt eine harte Text-Whitelist:
 - `imageText` bzw. Cover-Headline gesetzt → **nur exakt dieser Text darf lesbar sein**
 - `imageText` leer → **kein lesbarer Text im Bild**
 
-Die Prompt-Sammeldatei muss diese Regel vor jedem einzelnen Bildprompt ausdrücklich wiederholen.
-
-## Bildwelten
-
-### `human-editorial-cartoon`
-Köpfe-Welt: große dominante Gesichter/Köpfe, starke Mimik, wenig Körper, Close-ups und mentale Mechanismen direkt am Kopf. Keine generischen überfüllten Gruppenszenen.
-
-### `round-country-characters`
-Länder-Welt: **jede anthropomorphe Länderfigur ist eine vollständig runde Kugel** mit vereinfachtem Flaggenmuster und einfachen weißen Augen. Höchstens winzige Arme/Beine.
-
-Strikt verboten:
-- Länderumriss/Karten-Silhouette als Figurenkörper
-- Gesicht oder Augen auf einer Kartenform
-- unregelmäßige Länderform mit Flagge statt runder Kugel
-
-Karten- und Länderumrisse dürfen nur als **gesichtslose Hintergrund-/Erklärgrafiken** vorkommen. Diese Welt darf besonders häufig 2 Bildphasen in einer Szene nutzen, aber nie nach fixer Quote.
-
-Jeder Länder-Welt-Prompt muss sinngemäß erzwingen:
-`complete perfectly round country sphere / circular country ball; never a map-shaped character`.
-
-### `visual-metaphor`
-Starke zentrale Metapher; zweite Phase nur, wenn Folge oder Auflösung sichtbar einen neuen Schritt liefert.
+Die Einzelprompt-Datei selbst enthält keine Bildnummer, keinen Dateinamen und keine Szenen-/Phasenlabels.
 
 ## Untertitel
 
@@ -126,7 +153,12 @@ Global deaktiviert:
 
 ## Asset-Zuordnung
 
-Dateinummer ist nur Routing-Hilfe. Jede Bildphase tatsächlich öffnen und gegen Narration, Audio-Cue, Phasen-Visual-Idea, Bildtext und Prompt prüfen. Danach gegen vorherige und nächste **Bildphase** prüfen.
+Dateinummer ist nur Routing-Hilfe. Jede Bildphase tatsächlich öffnen und gegen Narration, Audio-Cue, Phasen-Visual-Idea, Bildtext und Prompt prüfen. Danach gegen vorherige und nächste Bildphase prüfen.
+
+Zusätzlich prüfen:
+- alle Hauptfiguren sind echte runde Kugeln
+- keine map-shaped characters
+- keine unerlaubten Workflow-Texte sichtbar
 
 Unter 0,90 Konfidenz nicht raten. `filename-only` ist verboten.
 
