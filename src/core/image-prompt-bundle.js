@@ -1,10 +1,13 @@
-import { access, mkdir, readFile, writeFile } from 'node:fs/promises';
+import { access, mkdir, readFile, readdir, unlink, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
 import { flattenSceneImagePhases } from '../shared/visual-moments.js';
 
 const BUNDLE_DIRECTORY = 'all-image-prompts';
 const BUNDLE_FILE = 'all-image-prompts.txt';
+const CONTROLLER_FILE = 'google-flow-controller.txt';
+const INDIVIDUAL_DIRECTORY = 'individual-prompts';
+const DEFAULT_VISUAL_STYLE_ID = 'round-country-characters';
 
 async function exists(filePath) {
   try {
@@ -31,24 +34,35 @@ function padImageNumber(value) {
   return String(value).padStart(2, '0');
 }
 
+function individualPromptFileName(order) {
+  return `Bild ${padImageNumber(order)}.txt`;
+}
+
 export function getImagePromptBundlePaths(reelDirectory) {
   const directory = path.join(reelDirectory, BUNDLE_DIRECTORY);
+  const promptDirectory = path.join(directory, INDIVIDUAL_DIRECTORY);
   return {
     directory,
     file: path.join(directory, BUNDLE_FILE),
+    controller: path.join(directory, CONTROLLER_FILE),
+    promptDirectory,
     readme: path.join(directory, 'README.md')
   };
 }
 
 export async function ensureImagePromptBundleDirectory(reelDirectory) {
   const paths = getImagePromptBundlePaths(reelDirectory);
-  await mkdir(paths.directory, { recursive: true });
+  await mkdir(paths.promptDirectory, { recursive: true });
 
-  const readme = `# Alle Bildprompts\n\n\`${BUNDLE_FILE}\` ist ein einziger Google-Flow-Gesamtauftrag. Bild 00 ist immer das Cover. Danach folgen alle geplanten Bildphasen fortlaufend als Bild 01, Bild 02, Bild 03 usw.\n\n**Wichtig:** Die Bildnummer ist die globale Bildreihenfolge und nicht automatisch die Szenennummer. Eine narrative Szene kann ein, zwei oder selten drei Bilder besitzen.\n\n**Noch wichtiger:** Bildnummern, Dateinamen, COVER-/SZENE-/BILDPHASE-Labels und sonstige Workflow-Metadaten sind reine Steuerinformationen und dürfen niemals im generierten Bild sichtbar sein. Pro Bild gilt eine harte Text-Whitelist: nur der ausdrücklich erlaubte deutsche Bildtext; bei leerem Bildtext gar kein lesbarer Text.\n\nFür \`round-country-characters\` gilt zusätzlich: jede anthropomorphe Länderfigur ist eine vollständig runde Kugel mit Flaggenmuster. Länderumrisse/Kartenformen dürfen nie selbst Gesicht, Augen oder Körper einer Figur sein.\n\nDie Bildanzahl wird für jedes Reel individuell geplant. Google Flow arbeitet trotzdem streng seriell: genau ein Bild erzeugen → vollständig warten → sofort korrekt umbenennen → prüfen → automatisch das nächste Bild starten. Kein Parallelisieren, keine Queue und kein weiteres Go zwischen den Bildern.\n\nBild 00 bleibt die verbindliche Stilvorlage für das gesamte Reel.\n\nErzeugen oder aktualisieren:\n\n\`\`\`bash\nnpm run export:prompts -- --dir "${normalizedRelativePath(reelDirectory)}" --strict\n\`\`\`\n`;
+  const readme = `# Google-Flow-Bildprompts\n\nDie frühere Mega-Prompt-Strategie ist deaktiviert. Google Flow darf immer nur **einen einzigen Bildprompt gleichzeitig** erhalten.\n\nAusgabe:\n\n- \`${CONTROLLER_FILE}\` = Reihenfolge und Steuerlogik für einen Agenten mit Repo-Zugriff\n- \`${BUNDLE_FILE}\` = Manifest/Kompatibilitätsdatei; enthält keine vollständigen Visual-Prompts\n- \`${INDIVIDUAL_DIRECTORY}/Bild 00.txt\`, \`Bild 01.txt\`, ... = jeweils genau ein echter Visual-Prompt\n\nVerbindlicher Ablauf:\n\n1. genau eine Einzelprompt-Datei öffnen\n2. ausschließlich deren Inhalt an Google Flow geben\n3. genau ein Bild erzeugen\n4. vollständig warten und Ergebnis prüfen\n5. extern korrekt umbenennen\n6. erst danach die nächste Einzelprompt-Datei öffnen\n\nKeine Batch-, Queue-, Parallel-, Storyboard- oder Kontaktbogen-Generierung.\n\nFür neue Reels ist die Kugel-Welt \`round-country-characters\` die einzige aktive Bildwelt. Alle anthropomorphen Hauptfiguren sind perfekt runde Kugeln.\n\nErzeugen oder aktualisieren:\n\n\`\`\`bash\nnpm run export:prompts -- --dir "${normalizedRelativePath(reelDirectory)}" --strict\n\`\`\`\n`;
+
   await writeFile(paths.readme, readme, 'utf8');
 
   if (!(await exists(paths.file))) {
-    await writeFile(paths.file, 'Die Bildprompt-Sammeldatei wird nach Fertigstellung aller Bildphasen erzeugt.\n', 'utf8');
+    await writeFile(paths.file, 'Manifest wird durch export:prompts erzeugt. Nicht als Mega-Prompt an Google Flow senden.\n', 'utf8');
+  }
+  if (!(await exists(paths.controller))) {
+    await writeFile(paths.controller, 'Controller wird durch export:prompts erzeugt.\n', 'utf8');
   }
 
   return paths;
@@ -67,7 +81,7 @@ export async function collectImagePrompts(reelDirectory) {
 
   const reel = await readJsonIfExists(path.join(reelDirectory, 'reel.json'), {});
   const cover = await readJsonIfExists(path.join(reelDirectory, 'cover', 'cover.json'), {});
-  const visualStyleId = String(reel.visualStyleId ?? '').trim();
+  const visualStyleId = String(reel.visualStyleId || DEFAULT_VISUAL_STYLE_ID).trim();
 
   const coverPromptPath = path.join(reelDirectory, 'cover', 'cover-prompt.txt');
   const coverPromptPresent = await exists(coverPromptPath);
@@ -111,157 +125,146 @@ export async function collectImagePrompts(reelDirectory) {
     });
   }
 
-  return prompts;
+  return prompts.sort((a, b) => a.order - b.order);
 }
 
 function sceneLabel(entry) {
-  if (entry.phaseOrder === 1) return `scene-${entry.sceneOrder}-phase-1`;
+  if (entry.kind === 'cover') return 'cover';
   return `scene-${entry.sceneOrder}-phase-${entry.phaseOrder}`;
 }
 
-function formatVisibleTextGuard(entry) {
-  const allowed = String(entry.allowedVisibleText ?? '').trim();
-  const forbidden = 'Never render workflow metadata such as image numbers, filenames, COVER, SZENE/SCENE, BILDPHASE/IMAGE PHASE, DATEINAME, GOOGLE FLOW, PROMPT, STYLE-REFERENZ/STYLE REFERENCE, ZIEL/TARGET, technical ids or file extensions.';
-
-  if (!allowed) {
-    return [
-      'VISIBLE-TEXT FIREWALL — NON-NEGOTIABLE:',
-      'Generate ZERO readable text inside the image.',
-      forbidden
-    ].join('\n');
-  }
-
-  return [
-    'VISIBLE-TEXT FIREWALL — NON-NEGOTIABLE:',
-    `The ONLY readable text allowed anywhere inside the image is exactly: "${allowed}"`,
-    'Do not add a title, header, label, caption, filename or any other letters/numbers beyond that exact phrase.',
-    forbidden
-  ].join('\n');
+function sanitizePromptBody(value) {
+  return String(value ?? '')
+    .split(/\r?\n/)
+    .filter((line) => !/^\s*(?:\[\[WORKFLOW_METADATA|BILD\s*\d+\s*[–—-]|DATEINAME\s*:|ZIEL\s*:|GOOGLE FLOW\b|WORKFLOW CONTROL\b|ABSCHLUSS\b)/i.test(line))
+    .join('\n')
+    .replace(/\bMatch\s+Bild\s*00(?:\.png)?\s+exactly\.?/gi, 'Match the established master visual style exactly.')
+    .replace(/\bBild\s*00(?:\.png)?\b/gi, 'the established master-style reference')
+    .replace(/\[\[WORKFLOW_METADATA[^\]]*\]\]/gi, '')
+    .trim();
 }
 
-function formatVisualWorldGuard(entry) {
-  if (entry.visualStyleId !== 'round-country-characters') return '';
+function formatVisibleTextRule(entry) {
+  const allowed = String(entry.allowedVisibleText ?? '').trim();
+  if (!allowed) {
+    return 'Do not place any readable text, letters, numbers, labels, captions, filenames or interface words inside the image.';
+  }
+
+  return `The only readable text allowed anywhere inside the image is exactly: "${allowed}". Do not add any other letters, numbers, labels, captions, filenames or interface words.`;
+}
+
+function formatBallWorldRule(entry) {
+  if (entry.visualStyleId !== DEFAULT_VISUAL_STYLE_ID) return '';
 
   return [
-    'ROUND-COUNTRY-CHARACTER BODY RULE — NON-NEGOTIABLE:',
-    'Every anthropomorphic country character must be a complete perfectly round circular country ball/sphere with the simplified flag pattern wrapped across the round body and simple white eyes.',
-    'Never use a country outline, map silhouette, territorial polygon, continent shape or irregular geographic shape as the body, face or character.',
-    'Never put eyes, mouth, arms or legs on a map-shaped country or continent.',
-    'Map outlines and territorial silhouettes may appear only as FACELESS background/support geography.'
-  ].join('\n');
+    'Use the universal mature 2D editorial Kugel-Welt.',
+    'Every anthropomorphic main character must be a complete perfectly round circular ball/sphere character with simple white eyes and at most tiny arms or legs.',
+    'For country characters, wrap the simplified recognizable flag pattern across the perfectly round sphere.',
+    'For non-country roles or concepts, use a neutral perfectly round sphere with a simple color or symbol motif instead of a normal human.',
+    'Never use a country outline, map silhouette, territorial polygon, continent shape or irregular geographic shape as a character body or face.',
+    'Never use a normal human head, torso or full human figure as the main character.',
+    'Map outlines and territorial silhouettes may appear only as faceless background/support geography.'
+  ].join(' ');
+}
+
+export function formatIndividualImagePrompt(entry) {
+  const body = sanitizePromptBody(entry.prompt || '[BILDPROMPT FEHLT]');
+  const worldRule = formatBallWorldRule(entry);
+
+  return [
+    'Create exactly one vertical 9:16 image from this request.',
+    'Do not generate, queue, preload, storyboard, batch, collage, contact-sheet or combine any additional images. Finish only this one image.',
+    'Treat every instruction sentence as non-visual direction; never copy workflow or instruction wording into the artwork.',
+    formatVisibleTextRule(entry),
+    worldRule,
+    body
+  ].filter(Boolean).join('\n\n').trim() + '\n';
 }
 
 export function formatImageNumberingContract(prompts) {
-  const visuals = prompts
-    .filter((entry) => entry.kind === 'scene')
-    .sort((a, b) => a.order - b.order);
-  const lastNumber = padImageNumber(visuals.at(-1)?.order ?? 0);
-
   const lines = [
-    'WORKFLOW COMPLETION CHECK — NOT VISUAL CONTENT',
+    'SERIAL FILE ORDER',
     '',
-    'Only after the final image has been generated, renamed and verified, check the complete file sequence.',
-    'These filenames and mappings are workflow metadata only and must never be visible inside any generated image.',
-    '',
-    '- asset 00 -> filename `Bild 00.png` -> cover'
+    'Open exactly one file at a time. Never send more than one individual prompt to Google Flow at once.'
   ];
 
-  for (const visual of visuals) {
-    const number = padImageNumber(visual.order);
-    lines.push(`- asset ${number} -> filename \`Bild ${number}.png\` -> ${sceneLabel(visual)}`);
+  for (const entry of prompts) {
+    const fileName = individualPromptFileName(entry.order);
+    lines.push(`- ${fileName} -> ${sceneLabel(entry)}`);
   }
 
   lines.push(
     '',
-    `Verify assets 00 through ${lastNumber}: no missing, duplicate or reordered filename.`,
-    'The asset number describes global image order, not narrative scene number.',
-    'Then place all completed images together in `00-bildprompts/00-ALLE-BILDER-HIER-REIN/`.'
+    'After each image is fully finished and visually checked, rename the generated image externally to the matching `Bild XX.png` filename, then continue with the next text file.',
+    'The text filename and image filename are workflow metadata only and must never appear inside the generated image.'
   );
 
   return lines.join('\n');
 }
 
 function formatFlowExecutionContract(prompts) {
-  const visuals = prompts
-    .filter((entry) => entry.kind === 'scene')
-    .sort((a, b) => a.order - b.order);
-  const lastNumber = padImageNumber(visuals.at(-1)?.order ?? 0);
-  const total = visuals.length + 1;
-
+  const lastNumber = padImageNumber(prompts.at(-1)?.order ?? 0);
   return [
-    'WORKFLOW CONTROL — NEVER RENDER WORKFLOW TEXT INTO THE IMAGE',
+    'GOOGLE FLOW SERIAL CONTROLLER — QUALITY MODE',
     '',
-    `This file contains ${total} sequential image tasks, assets 00 through ${lastNumber}.`,
-    'Everything describing asset numbers, filenames, cover/scene/phase roles or workflow steps is CONTROL METADATA ONLY.',
-    'For each task, obey the VISIBLE-TEXT FIREWALL inside that task. That whitelist overrides every workflow word around it.',
-    'At any moment exactly ONE image generation may be active.',
-    'After each image is fully complete: rename the file exactly, verify the filename, then automatically start the next task.',
-    'Do not wait for Go, Weiter, OK or another user message.',
-    'No batch processing, no queue, no preloading and no parallel generation.',
+    'DO NOT use this controller text itself as an image-generation prompt.',
+    'DO NOT paste all visual prompts into one Flow message.',
+    'The visual prompts live in `individual-prompts/` and must be opened one at a time.',
     '',
-    'Asset 00 is the cover and binding visual style reference. Later tasks match its visual style but never copy its visible headline unless their own whitelist explicitly allows the same text.',
+    'For every step:',
+    '1. Open exactly one `individual-prompts/Bild XX.txt` file.',
+    '2. Send only that file content to Google Flow.',
+    '3. Start exactly one image generation.',
+    '4. Wait until it is completely finished.',
+    '5. Check image quality, round-ball character shape and visible-text whitelist.',
+    '6. Rename the completed image externally to the matching `Bild XX.png`.',
+    '7. Only then open the next prompt file.',
     '',
-    'Narrative scenes and image tasks are not 1:1 coupled; one scene may contain multiple image phases.',
+    'Never batch, queue, preload or start multiple images in parallel.',
+    'Never ask Google Flow to interpret multiple prompt files in one message.',
+    'Asset 00 establishes the visual style master. Later individual prompts must visually match that completed style reference.',
     '',
-    `Continue strictly one task at a time through asset ${lastNumber}.`
+    `Continue until Bild ${lastNumber}.txt has been completed.`
   ].join('\n');
-}
-
-function formatDirectGenerationInstruction(number, previousNumber, isCover, isLast) {
-  const gate = previousNumber === null
-    ? 'Start this first image task immediately after the overall prompt is submitted.'
-    : `Start this task automatically only after workflow asset ${previousNumber} is fully finished, renamed and verified.`;
-
-  const styleInstruction = isCover
-    ? 'This task establishes the visual style master for all later images.'
-    : 'Match the visual style of the completed cover asset exactly; do not copy the cover headline unless explicitly whitelisted below.';
-
-  const releaseInstruction = isLast
-    ? 'After this task is renamed and verified, run the final filename-sequence check.'
-    : 'After renaming and verification, immediately continue to the next task without waiting for user input.';
-
-  return [
-    gate,
-    styleInstruction,
-    'Generate exactly ONE image for this task and do not start another image concurrently.',
-    `After completion, rename the output file to \`Bild ${number}.png\`. The filename is workflow metadata and must never appear inside the image.`,
-    releaseInstruction
-  ].join('\n');
-}
-
-function formatDirectPromptSection(entry, index, prompts) {
-  const body = entry.prompt || '[BILDPROMPT FEHLT]';
-  const number = padImageNumber(entry.order);
-  const previousNumber = entry.order === 0 ? null : padImageNumber(entry.order - 1);
-  const isCover = entry.kind === 'cover';
-  const isLast = index === prompts.length - 1;
-  const metadata = isCover
-    ? `[[WORKFLOW_METADATA asset=${number}; role=cover; filename="Bild ${number}.png"]]`
-    : `[[WORKFLOW_METADATA asset=${number}; role=${sceneLabel(entry)}; target=${entry.targetId}; filename="Bild ${number}.png"]]`;
-  const worldGuard = formatVisualWorldGuard(entry);
-
-  return [
-    metadata,
-    'WORKFLOW METADATA IS NEVER VISUAL CONTENT.',
-    formatDirectGenerationInstruction(number, previousNumber, isCover, isLast),
-    '',
-    formatVisibleTextGuard(entry),
-    worldGuard ? `\n${worldGuard}` : '',
-    '',
-    'VISUAL PROMPT:',
-    body
-  ].filter(Boolean).join('\n');
 }
 
 export function formatImagePromptBundle(prompts) {
-  const sections = prompts.map((entry, index) => formatDirectPromptSection(entry, index, prompts));
-  const executionContract = formatFlowExecutionContract(prompts);
-  const numberingContract = formatImageNumberingContract(prompts);
-  return `GOOGLE FLOW CONTROL FILE — WORKFLOW TEXT MUST NEVER APPEAR IN GENERATED IMAGES\n\n${executionContract}\n\n\n${sections.join('\n\n\n')}\n\n\n${numberingContract}\n`;
+  return [
+    'IMAGE PROMPT MANIFEST — NOT A GOOGLE FLOW IMAGE PROMPT',
+    '',
+    'This file intentionally contains NO full visual prompts.',
+    'The old all-in-one Mega-Prompt workflow is disabled because it can trigger parallel generation and lower image quality.',
+    'Use `google-flow-controller.txt` for sequence control and `individual-prompts/Bild XX.txt` one at a time for actual generation.',
+    '',
+    formatImageNumberingContract(prompts),
+    ''
+  ].join('\n');
 }
 
 function missingPromptIds(prompts) {
   return prompts.filter((entry) => entry.missing).map((entry) => entry.promptId);
+}
+
+async function clearGeneratedPromptFiles(promptDirectory) {
+  if (!(await exists(promptDirectory))) return;
+  const entries = await readdir(promptDirectory, { withFileTypes: true });
+  await Promise.all(entries
+    .filter((entry) => entry.isFile() && /^Bild \d+\.txt$/i.test(entry.name))
+    .map((entry) => unlink(path.join(promptDirectory, entry.name))));
+}
+
+async function writeIndividualPromptFiles(paths, prompts) {
+  await clearGeneratedPromptFiles(paths.promptDirectory);
+  const written = [];
+
+  for (const entry of prompts) {
+    const fileName = individualPromptFileName(entry.order);
+    const filePath = path.join(paths.promptDirectory, fileName);
+    await writeFile(filePath, formatIndividualImagePrompt(entry), 'utf8');
+    written.push(filePath);
+  }
+
+  return written;
 }
 
 export async function buildImagePromptBundle(reelDirectory, { strict = false } = {}) {
@@ -274,18 +277,27 @@ export async function buildImagePromptBundle(reelDirectory, { strict = false } =
   }
 
   const content = formatImagePromptBundle(prompts);
+  const controller = formatFlowExecutionContract(prompts) + '\n\n' + formatImageNumberingContract(prompts) + '\n';
+  const promptFiles = await writeIndividualPromptFiles(paths, prompts);
+
   await writeFile(paths.file, content, 'utf8');
+  await writeFile(paths.controller, controller, 'utf8');
 
   const statusPath = path.join(reelDirectory, 'status.json');
   if (await exists(statusPath)) {
     const status = await readJson(statusPath);
-    status.imagePromptBundle = missingIds.length === 0 ? 'ready' : 'incomplete';
+    status.imagePromptBundle = missingIds.length === 0 ? 'ready-serial-individual-files' : 'incomplete';
+    status.imagePromptDelivery = 'one-file-per-image';
+    status.googleFlowController = missingIds.length === 0 ? 'ready' : 'incomplete';
     status.plannedImageCount = prompts.filter((entry) => entry.kind === 'scene').length;
     await writeFile(statusPath, `${JSON.stringify(status, null, 2)}\n`, 'utf8');
   }
 
   return {
     outputFile: paths.file,
+    controllerFile: paths.controller,
+    promptDirectory: paths.promptDirectory,
+    promptFiles,
     sceneCount: new Set(prompts.filter((entry) => entry.kind === 'scene').map((entry) => entry.sceneId)).size,
     plannedImageCount: prompts.filter((entry) => entry.kind === 'scene').length,
     totalPromptCount: prompts.length,
@@ -303,13 +315,34 @@ export async function validateImagePromptBundle(reelDirectory) {
   const paths = getImagePromptBundlePaths(reelDirectory);
   const prompts = await collectImagePrompts(reelDirectory);
   const missingIds = missingPromptIds(prompts);
-  const expected = formatImagePromptBundle(prompts);
-  const actual = await exists(paths.file) ? await readFile(paths.file, 'utf8') : null;
-  const current = actual === expected;
+  const expectedManifest = formatImagePromptBundle(prompts);
+  const expectedController = formatFlowExecutionContract(prompts) + '\n\n' + formatImageNumberingContract(prompts) + '\n';
+
+  const actualManifest = await exists(paths.file) ? await readFile(paths.file, 'utf8') : null;
+  const actualController = await exists(paths.controller) ? await readFile(paths.controller, 'utf8') : null;
+  const manifestCurrent = actualManifest === expectedManifest;
+  const controllerCurrent = actualController === expectedController;
+
+  const individualChecks = [];
+  for (const entry of prompts) {
+    const filePath = path.join(paths.promptDirectory, individualPromptFileName(entry.order));
+    const actual = await exists(filePath) ? await readFile(filePath, 'utf8') : null;
+    const expected = formatIndividualImagePrompt(entry);
+    individualChecks.push({
+      filePath,
+      present: actual !== null,
+      current: actual === expected
+    });
+  }
+
+  const individualPromptsCurrent = individualChecks.every((check) => check.present && check.current);
+  const current = manifestCurrent && controllerCurrent && individualPromptsCurrent;
 
   return {
     passed: missingIds.length === 0 && current,
     outputFile: paths.file,
+    controllerFile: paths.controller,
+    promptDirectory: paths.promptDirectory,
     sceneCount: new Set(prompts.filter((entry) => entry.kind === 'scene').map((entry) => entry.sceneId)).size,
     plannedImageCount: prompts.filter((entry) => entry.kind === 'scene').length,
     totalPromptCount: prompts.length,
@@ -318,14 +351,23 @@ export async function validateImagePromptBundle(reelDirectory) {
     missingSceneIds: prompts
       .filter((entry) => entry.kind === 'scene' && entry.missing)
       .map((entry) => entry.sceneId),
-    filePresent: actual !== null,
+    filePresent: actualManifest !== null,
+    controllerPresent: actualController !== null,
+    manifestCurrent,
+    controllerCurrent,
+    individualPromptsCurrent,
+    individualChecks,
     current,
     message: missingIds.length > 0
       ? `Bildprompts fehlen für: ${missingIds.join(', ')}.`
-      : !actual
-        ? `Sammeldatei fehlt: ${normalizedRelativePath(paths.file)}.`
-        : !current
-          ? 'Die Bildprompt-Sammeldatei ist veraltet.'
-          : 'Die Bildprompt-Sammeldatei enthält alle individuell geplanten Bildphasen in fortlaufender Google-Flow-Reihenfolge mit Text-Whitelist und Bildwelt-Guard.'
+      : !actualManifest
+        ? `Manifest fehlt: ${normalizedRelativePath(paths.file)}.`
+        : !actualController
+          ? `Google-Flow-Controller fehlt: ${normalizedRelativePath(paths.controller)}.`
+          : !individualPromptsCurrent
+            ? 'Mindestens eine Einzelprompt-Datei fehlt oder ist veraltet.'
+            : !manifestCurrent || !controllerCurrent
+              ? 'Manifest oder Controller ist veraltet.'
+              : 'Serieller Einzelprompt-Export ist vollständig und aktuell.'
   };
 }
