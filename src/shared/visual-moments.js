@@ -76,8 +76,9 @@ export function normalizeSceneImagePhases(scene) {
 export function flattenSceneImagePhases(scenes) {
   const output = [];
   let globalOrder = 1;
+  const orderedScenes = [...(scenes ?? [])].sort((left, right) => Number(left.order) - Number(right.order));
 
-  for (const scene of scenes ?? []) {
+  for (const scene of orderedScenes) {
     const phases = normalizeSceneImagePhases(scene);
     for (const phase of phases) {
       output.push({
