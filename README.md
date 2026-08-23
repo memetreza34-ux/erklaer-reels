@@ -4,125 +4,95 @@ Produktionspipeline für visuelle Erklär-Reels zu Politik, Gesellschaft, Lände
 
 > Warum Menschen, Länder und Gesellschaften so funktionieren.
 
-## Verbindliche aktuelle Regeln
+## Verbindliche Regeln
 
-**`CURRENT_WORKFLOW.md` ist die Single Source of Truth für den aktuellen Produktionsablauf.**
-
-Neue Chats, Codex, Antigravity und andere Repo-Agenten sollen diese Datei zuerst lesen. Bei einem Widerspruch mit älteren Dokumenten oder historischen Reel-Dateien gilt die Prioritätsreihenfolge aus `CURRENT_WORKFLOW.md`.
+**`CURRENT_WORKFLOW.md` ist die Single Source of Truth.**
 
 ## Produktionsstandard
 
 - 55–60 Sekunden Voice-over
 - 155–175 deutsche Wörter
-- 12–14 Szenen, Standard 13
-- genau ein klarer Bildmoment pro Szene
+- 12–14 **narrative Szenen**, Standard 13
+- genau ein klarer Erklärschritt pro narrativer Szene
 - Bildwelt erst nach dem fertigen Script auswählen
-- starkes Ende über mindestens zwei Szenen
-- Schlussbild 0,7 Sekunden nach dem letzten gesprochenen Wort halten
+- **Bildanzahl individuell pro Reel**
+- pro narrativer Szene 1, 2 oder selten 3 Bildphasen
+- keine starre Gleichsetzung `13 Szenen = 13 Bilder`
 - Voice-over exakt 1,10x mit erhaltener Tonhöhe
-- −16 LUFS und höchstens −1,5 dBTP
-- **keine Untertitel**
-- **kein Word-Sync für Untertitel**
-- volle 9:16-Bildkomposition ohne künstlich freigehaltene Untertitelzone
-- Szenenwechsel werden an bestätigten Audio-Cues der finalen Voice-over-Datei ausgerichtet
+- −16 LUFS, höchstens −1,5 dBTP
+- keine Untertitel
 - ausschließlich harte Schnitte
 - keine Hintergrundmusik
+- Schlussbild 0,7 Sekunden nach dem letzten gesprochenen Wort halten
 
-## Aktueller Bildworkflow mit Google Flow
+## Individuelle Bilddichte
 
-Antigravity/Codex erstellen Script, Cover-Prompt, Szenenprompts und die Sammeldatei, **aber keine Bilder**.
+Für jede Szene wird separat entschieden, wie viele Bilder wirklich sinnvoll sind.
 
-Der Nutzer kopiert einmal die komplette Datei
+- **1 Bild:** starkes Motiv trägt den ganzen Gedanken
+- **2 Bilder:** z. B. Überblick → Detail, Karte → Zoom, Ursache → Folge, Gesicht → Gedanke
+- **3 Bilder:** nur selten bei echten dreistufigen Erklärungen
+
+Wenn ein Still-Bild ungefähr 3,5–4 Sekunden oder länger stehen würde, wird eine zweite Bildphase aktiv geprüft. Sie wird nur hinzugefügt, wenn sie das Reel tatsächlich verbessert.
+
+Technisch:
+
+```text
+reel.json.imageCountMode = individual-per-reel
+reel.json.plannedImageCount = tatsächliche Bildsumme
+scene.imageCount = 1..3
+scene.imagePhases[]
+```
+
+Erste Phase einer Szene:
+
+```text
+image-prompt.txt
+```
+
+Zusätzliche Phasen:
+
+```text
+image-prompt-02.txt
+image-prompt-03.txt
+```
+
+## Google Flow
+
+Repo-Agenten erzeugen Script, Szenen, Bildphasen und Prompts, aber keine Bilder.
+
+Der Nutzer sendet einmal:
 
 ```text
 all-image-prompts/all-image-prompts.txt
 ```
 
-in Google Flow und sendet sie ab.
+an Google Flow.
 
-Danach arbeitet Google Flow autonom und streng seriell:
-
-```text
-Bild 00 erzeugen
-→ vollständig warten
-→ sofort Bild 00.png nennen
-→ prüfen
-→ automatisch Bild 01 starten
-→ vollständig warten
-→ sofort Bild 01.png nennen
-→ ...
-→ bis zum letzten Bild
-```
-
-Dabei gilt:
-- nie mehrere Bilder gleichzeitig
-- keine Batch-/Queue-Verarbeitung
-- nach einem Bild kein neues `Go`, `Weiter` oder `OK` vom Nutzer verlangen
-- `Bild 00` ist Cover, sichtbare Hook und Style-Master für alle Szenen
-- erst nach dem letzten Bild alle fertigen Bilder gemeinsam in den Sammelordner legen
-
-Gemeinsamer sichtbarer Ordner:
+Flow arbeitet danach streng seriell:
 
 ```text
-00-bildprompts/00-ALLE-BILDER-HIER-REIN/
+Bild erzeugen → vollständig warten → umbenennen → prüfen → nächstes Bild
 ```
 
-Technisches Ziel:
+`Bild 00.png` ist Cover und Style-Master.
+
+Danach bezeichnet die Nummer die **globale Bildreihenfolge**. Sie entspricht bei mehreren Bildphasen nicht automatisch der Szenennummer.
+
+Beispiel:
 
 ```text
-inbox/numbered-images/
+Bild 01 = Szene 1 / Phase 1
+Bild 02 = Szene 2 / Phase 1
+Bild 03 = Szene 2 / Phase 2
+Bild 04 = Szene 3 / Phase 1
 ```
 
-Bevorzugte Benennung:
-
-```text
-Bild 00.png = Cover
-Bild 01.png = Szene 1
-Bild 02.png = Szene 2
-...
-```
-
-Die Nummerierung dient beim Import nur als Routing-Hilfe. Die finale Zuordnung wird immer visuell geprüft.
-
-## Fehlende Assets automatisch suchen
-
-Bevor ein Agent meldet, dass Bilder oder Audio fehlen, muss er die Asset-Discovery ausführen:
-
-```bash
-npm run discover:assets -- --dir "PFAD-ZUM-REEL"
-```
-
-`organize:assets` führt diese Suche ebenfalls automatisch aus. Standardmäßig werden Reel-Ordner, `~/Downloads` und `~/Desktop` geprüft. Eine eindeutige vollständige ZIP mit `Bild 00 ... Bild XX` kann sicher entpackt und in `inbox/numbered-images/` übernommen werden. Auch danach bleibt die visuelle Zwei-Pass-QC Pflicht.
-
-## Neues Reel
-
-Bei „Mach ein neues Reel“ oder sinngleichen Aufträgen gilt der autonome Ablauf aus `CURRENT_WORKFLOW.md`, `AGENTS.md` und `docs/autonomous-reel.md`.
-
-```bash
-npm run next:slot -- --json
-npm run create:reel -- \
-  --title "TITEL" \
-  --script-file input/script.txt \
-  --next-free \
-  --scenes 13
-npm run export:prompts -- --dir "PFAD-ZUM-REEL" --strict
-npm run validate:reel -- --dir "PFAD-ZUM-REEL"
-npm run check:content -- --dir "PFAD-ZUM-REEL" --strict
-```
-
-Neue Workspaces setzen `subtitlesEnabled: false`. Eine eventuell vorhandene `subtitles/subtitle-plan.json` ist nur noch eine deaktivierte Kompatibilitätsdatei und wird nicht gerendert.
-
-## Sichtbare Ordnerstruktur
+## Sichtbare Reel-Struktur
 
 ```text
 reel-01_thema/
 ├── 00-bildprompts/
-│   ├── 00-ALLE-BILDER-HIER-REIN/
-│   ├── 00-cover/
-│   ├── 01-scene-01/
-│   ├── 02-scene-02/
-│   ├── ...
-│   └── 99-alle-bildprompts.txt
 ├── 01-voice-script/
 ├── 02-audio/
 ├── 03-caption/
@@ -130,21 +100,32 @@ reel-01_thema/
 └── 99-technik/
 ```
 
-Das finale Video liegt technisch unter `output/` und ist nach erfolgreichem Render sichtbar über `04-video/FERTIGES-VIDEO/` erreichbar.
+Finales Video:
+
+```text
+04-video/FERTIGES-VIDEO/
+```
+
+## Fehlende Assets suchen
+
+Vor einer Meldung, dass Bilder oder Audio fehlen:
+
+```bash
+npm run discover:assets -- --dir "PFAD-ZUM-REEL"
+```
+
+Die Discovery richtet sich nach der individuell geplanten Bildzahl.
 
 ## Sichere Bildzuordnung
 
-Die Dateinummer darf das vorgeschlagene Ziel vorsortieren, aber **niemals allein die finale Zuordnung bestätigen**.
-
-Vor `--apply` jedes Bild tatsächlich öffnen und prüfen gegen `narration`, `audioCue`, `visualIdea`, `imageText` und `imagePrompt`, danach gegen vorherige und nächste Szene. Unter 0,90 Konfidenz nicht raten.
+Dateinummern sind nur Routing-Hilfe. Jedes Bild wird gegen seine konkrete Bildphase geprüft und anschließend gegen vorherige und nächste Bildphase gegengeprüft. Unter 0,90 Konfidenz wird nicht geraten.
 
 ```bash
 npm run organize:assets -- --dir "PFAD-ZUM-REEL"
-# inbox/asset-map.json visuell vollständig prüfen
 npm run organize:assets -- --dir "PFAD-ZUM-REEL" --apply
 ```
 
-## Audio, Szenen-Synchronisierung und Render
+## Audio und Render
 
 ```bash
 npm run trim:pauses -- --dir "PFAD-ZUM-REEL" --speed 1.10
@@ -156,7 +137,7 @@ npm run validate:render -- --dir "PFAD-ZUM-REEL"
 npm run render:reel -- --dir "PFAD-ZUM-REEL"
 ```
 
-Es gibt im aktuellen Workflow **keinen `sync:words`-Schritt**. Der Render-Validator blockiert jeden Render-Plan, der Untertitel-Cues enthält. Nach jeder Veränderung der finalen Audiodatei müssen die Szenen-Cues erneut bestätigt werden.
+Narrative Szenen werden mit dem finalen Voice-over synchronisiert. Zusätzliche Bildphasen wechseln innerhalb einer Szene anhand ihrer relativen `startPercent`-Positionen.
 
 Keine geplante oder nicht ausgeführte Stufe als bestanden ausgeben.
 
@@ -165,7 +146,3 @@ Keine geplante oder nicht ausgeführte Stufe als bestanden ausgeben.
 - Node.js 20 oder neuer
 - FFmpeg und optional `ffprobe`
 - Remotion-Pakete in identischer Version
-
-## Bekannter Infrastrukturpunkt
-
-Issue #19 bleibt als Wartungsaufgabe dokumentiert. Keine nicht tatsächlich ausgeführten Tests oder CI-Läufe als bestanden melden.
