@@ -2,7 +2,7 @@
   "workspace": "ready",
   "content": "ready-manually-checked-cli-not-run",
   "script": "complete",
-  "scriptWordCount": 166,
+  "scriptWordCount": 167,
   "scenes": "13-prompt-ready",
   "imageDensity": "individual-planned",
   "plannedImageCount": 18,
