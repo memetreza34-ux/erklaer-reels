@@ -16,10 +16,6 @@ Diese aktive Kugel-Welt wird für **alle erlaubten Themen** benutzt, nicht nur f
 
 ## `round-country-characters` — globale Hauptwelt
 
-### Grundidee
-
-Alle Erklärungen werden in einer konsistenten erwachsenen 2D-Editorial-Welt mit runden Kugelfiguren umgesetzt.
-
 ### Nicht verhandelbare Figurenregel
 
 Jede anthropomorphe Hauptfigur ist eine **vollständig runde Kugel**.
@@ -44,19 +40,44 @@ Für nicht-länderspezifische Rollen:
 
 Karten, Grenzen, Straßen, Küsten, Länderumrisse und territoriale Formen dürfen vorkommen, aber nur als **gesichtslose Erklär-/Hintergrundgrafik**.
 
-Jeder Bildprompt muss sinngemäß enthalten:
+---
 
-> Every anthropomorphic main character is a complete perfectly round circular sphere. Never use a map-shaped or human-shaped character.
+# Bewährter alter Visual-Look — verbindlich
 
-### Themen außerhalb Geografie
+Die Prompt-Qualität soll wieder dem früheren Stil entsprechen. Neue Prompts dürfen nicht in generische „Sphere World“-Kurzprompts abrutschen.
 
-Psychologie, Gesellschaft, Geschichte, Verhalten oder abstrakte Mechanismen werden nicht in eine andere Bildwelt gewechselt. Stattdessen werden runde Kugelfiguren mit passenden Requisiten, Symbolen, Umgebungen und Metaphern innerhalb derselben Kugel-Ästhetik verwendet.
+Verbindlicher visueller Grundblock:
 
-Beispiele:
-- Gruppendruck → mehrere runde Figuren + eine abweichende Kugelfigur
-- Erinnerung → Kugelfigur + Gedanken-/Speicher-Symbole
-- soziale Medien → Kugelfiguren + Feed-/Benachrichtigungs-Metaphern
-- Geschichte → Kugelfiguren + Karten, Dokumente, Zeitachsen
+> Vertical 9:16 premium mature 2D editorial country-character illustration. Warm off-white textured paper background, deep navy borders and map shapes, muted rust, mustard, cobalt and forest-green accents, bold clean hand-inked outlines, flat geometric shading, subtle grain, high contrast, sophisticated documentary tone, not childish.
+
+Zusätzlich:
+- klare, hochwertige Editorial-Komposition
+- ein dominanter visueller Gedanke pro Bild
+- starke 1-Sekunden-Lesbarkeit
+- Karten nur, wenn sie den Inhalt wirklich erklären
+- keine billige Icon-Sammlung oder generische Infografik
+- kein 3D, keine Fotorealistik
+- volle 9:16-Fläche ohne Untertitelband
+- `Bild 00` definiert Liniengewicht, Papiertextur, Palette, Kugelproportionen und Editorial-Finish für alle Folgeframes
+
+## Verbindlicher Prompt-Aufbau
+
+Jeder visuelle Quellprompt folgt wieder dem früheren Aufbau:
+
+1. **Format + vollständiger Editorial-Stil**
+2. **konkrete Bildkomposition und Handlung**
+3. **runde Kugelfiguren passend zum Thema**
+4. **exakter sichtbarer deutscher Text**, falls vorgesehen
+5. **negative Regeln**: kein anderer lesbarer Text, kein Englisch, keine Logos, kein Wasserzeichen, kein 3D, keine Fotorealistik
+6. **volle 9:16-Komposition**, keine Subtitle-Safe-Zone
+
+Sekundäre Bildphasen dürfen kompakter sein und `matching Bild 00.png exactly` verwenden, aber sie müssen klar in derselben hochwertigen Welt bleiben.
+
+## Export-Regel
+
+Die seriellen Dateien `all-image-prompts/image-prompts/Bild NN.txt` enthalten ausschließlich den **eigentlichen visuellen Quellprompt**. Der Exporter darf keine technischen Wrapper, Quality-Gates, Dateinamen, Szenenlabels oder Workflow-Instruktionen in diesen Prompt hineinmischen.
+
+Die serielle Steuerung lebt nur in `google-flow-controller.txt`.
 
 ---
 
@@ -74,7 +95,7 @@ Nie sichtbar im Bild:
 - technische IDs
 - sonstige Workflow-Metadaten
 
-Pro Bild gilt eine harte Text-Whitelist:
+Pro Bild gilt:
 - `imageText`/Cover-Headline gesetzt → genau dieser Text ist der einzige erlaubte lesbare Text
 - `imageText` leer → überhaupt kein lesbarer Text
 

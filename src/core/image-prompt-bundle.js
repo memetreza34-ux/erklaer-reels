@@ -49,7 +49,7 @@ export async function ensureImagePromptBundleDirectory(reelDirectory) {
   const paths = getImagePromptBundlePaths(reelDirectory);
   await mkdir(paths.individualPromptsDirectory, { recursive: true });
 
-  const readme = `# Google-Flow-Bildprompts\n\nDie eigentliche Bildgenerierung startet **nicht** mehr mit einem Mega-Sammelprompt.\n\nVerwende ausschließlich:\n\n\`google-flow-controller.txt\`\n\nDer Controller liest danach strikt nur die jeweils nächste Datei aus \`image-prompts/\`.\n\nVerbindlicher Ablauf:\n\n1. nur \`Bild 00.txt\` lesen\n2. genau ein Bild erzeugen\n3. vollständig warten\n4. in \`Bild 00.png\` umbenennen und prüfen\n5. erst danach \`Bild 01.txt\` öffnen\n6. so seriell bis zum letzten Bild fortfahren\n\nKeine Queue, kein Batch, keine parallelen Generierungen und niemals mehrere Prompt-Dateien vorab einlesen.\n\n\`${LEGACY_INDEX_FILE}\` ist nur eine Kompatibilitäts-/Indexdatei und darf **nicht** als Generierungsprompt verwendet werden.\n\nAlle anthropomorphen Hauptfiguren sind vollständige runde Kugeln; Kartenformen bleiben gesichtslos. Workflow-Metadaten dürfen niemals im Bild erscheinen.\n\nErzeugen oder aktualisieren:\n\n\`\`\`bash\nnpm run export:prompts -- --dir "${normalizedRelativePath(reelDirectory)}" --strict\n\`\`\`\n`;
+  const readme = `# Google-Flow-Bildprompts\n\nGoogle Flow wird weiterhin **streng seriell** über \`${CONTROLLER_FILE}\` gesteuert.\n\nDie visuelle Prompt-Qualität bleibt aber im früheren bewährten Aufbau. Jede Datei unter \`${INDIVIDUAL_PROMPTS_DIRECTORY}/Bild NN.txt\` enthält ausschließlich den eigentlichen visuellen Quellprompt aus \`cover/cover-prompt.txt\` bzw. \`scenes/.../image-prompt*.txt\` — wortgetreu und ohne technische Wrapper.\n\nVerbindlicher Ablauf:\n\n1. nur \`Bild 00.txt\` lesen\n2. genau ein Bild erzeugen\n3. vollständig warten\n4. in \`Bild 00.png\` umbenennen und prüfen\n5. erst danach \`Bild 01.txt\` öffnen\n6. so seriell bis zum letzten Bild fortfahren\n\nKeine Queue, kein Batch, keine parallelen Generierungen und niemals mehrere Prompt-Dateien vorab einlesen.\n\n\`${LEGACY_INDEX_FILE}\` ist nur eine Kompatibilitäts-/Indexdatei und darf nicht als Generierungsprompt verwendet werden.\n\n**Wichtig:** Steuertexte wie Dateinamen, Bildnummern, Szenenlabels, \`GENERATE EXACTLY ONE IMAGE\`, \`VISIBLE TEXT FIREWALL\`, \`ROUND SPHERE WORLD\` oder \`QUALITY GATE\` gehören nicht in die einzelnen Visual-Prompts. Der Visual-Prompt selbst bleibt im alten detaillierten Editorial-Aufbau.\n\nErzeugen oder aktualisieren:\n\n\`\`\`bash\nnpm run export:prompts -- --dir "${normalizedRelativePath(reelDirectory)}" --strict\n\`\`\`\n`;
   await writeFile(paths.readme, readme, 'utf8');
 
   return paths;
@@ -112,60 +112,8 @@ export async function collectImagePrompts(reelDirectory) {
   return prompts;
 }
 
-function formatVisibleTextGuard(entry) {
-  const allowed = String(entry.allowedVisibleText ?? '').trim();
-  const forbidden = 'Never render image numbers, filenames, COVER, SZENE/SCENE, BILDPHASE/IMAGE PHASE, DATEINAME, GOOGLE FLOW, PROMPT, STYLE REFERENCE, TARGET, technical ids or file extensions.';
-
-  if (!allowed) {
-    return [
-      'VISIBLE TEXT FIREWALL:',
-      'Generate ZERO readable text inside the image.',
-      forbidden
-    ].join('\n');
-  }
-
-  return [
-    'VISIBLE TEXT FIREWALL:',
-    `The ONLY readable text allowed anywhere in the image is exactly: "${allowed}"`,
-    'No title, header, label, caption, filename or extra letters/numbers.',
-    forbidden
-  ].join('\n');
-}
-
-function formatSphereGuard() {
-  return [
-    'ROUND SPHERE WORLD — NON-NEGOTIABLE:',
-    'Every anthropomorphic main character must be a complete perfectly round circular sphere / country-ball-style character.',
-    'Country characters carry a simplified flag pattern across the round sphere. Non-country roles use neutral round spheres with suitable colors or symbols.',
-    'Use simple white eyes and at most tiny arms or legs.',
-    'Never use a map-shaped, country-outline-shaped, continent-shaped or human-shaped character.',
-    'Never place eyes, mouth, arms or legs on map silhouettes. Maps and territory outlines are FACELESS supporting graphics only.',
-    'Maintain a mature premium 2D editorial documentary look, not childish.'
-  ].join('\n');
-}
-
 function formatIndividualPrompt(entry) {
-  const body = entry.prompt || '[BILDPROMPT FEHLT]';
-  const styleReference = entry.order === 0
-    ? 'This first image establishes the binding visual style master for all later images.'
-    : 'Match the completed Bild 00.png exactly for line weight, palette, paper texture, character proportions and editorial finish. Do not copy its headline unless your whitelist allows it.';
-
-  return [
-    'GENERATE EXACTLY ONE IMAGE ONLY.',
-    'Do not generate variants, contact sheets, grids, batches or multiple outputs.',
-    'Do not start or plan any later image while this image is being generated.',
-    styleReference,
-    '',
-    formatVisibleTextGuard(entry),
-    '',
-    formatSphereGuard(),
-    '',
-    'VISUAL TASK:',
-    body,
-    '',
-    'QUALITY GATE:',
-    'Before finishing, verify: one coherent 9:16 composition, correct round-sphere characters, clean readable hierarchy, no workflow metadata, no unintended text, no duplicate panels or collage layout.'
-  ].join('\n');
+  return entry.prompt || '[BILDPROMPT FEHLT]';
 }
 
 function formatController(prompts) {
@@ -176,16 +124,17 @@ function formatController(prompts) {
     'GOOGLE FLOW SERIAL CONTROLLER — ONE IMAGE AT A TIME',
     '',
     'This controller is the ONLY file to start the Google Flow agent with.',
+    'The files inside image-prompts/ are pure visual prompts in the proven legacy editorial structure. Do not rewrite, summarize, merge or simplify them.',
     'Do NOT read all prompt files in advance.',
-    'Do NOT summarize, merge or preload future prompt files.',
+    'Do NOT preload future prompt files.',
     '',
     'STRICT LOOP:',
     '1. Open only the next required prompt file from image-prompts/.',
-    '2. Read only that one prompt file.',
-    '3. Generate exactly ONE image.',
+    '2. Read only that one complete visual prompt.',
+    '3. Generate exactly ONE image from that prompt.',
     '4. Wait until generation is completely finished.',
     '5. Rename the result to the matching Bild NN.png filename.',
-    '6. Verify the image and filename.',
+    '6. Verify image quality and filename.',
     '7. Only then open the next prompt file.',
     '',
     'FORBIDDEN:',
@@ -193,14 +142,15 @@ function formatController(prompts) {
     '- parallel generation',
     '- queues',
     '- contact sheets or grids',
-    '- generating multiple images from one task',
+    '- multiple outputs from one image task',
     '- reading two or more image prompt files before the current image is finished',
-    '- using all-image-prompts.txt as a generation prompt',
+    '- combining or shortening multiple visual prompts',
+    `- using ${LEGACY_INDEX_FILE} as a generation prompt`,
     '',
     'START:',
     '- open image-prompts/Bild 00.txt only',
     '- generate Bild 00.png',
-    '- use Bild 00.png as visual style master for all later images',
+    '- use Bild 00.png as visual style master for all later images where the visual prompt requests it',
     '',
     `Continue strictly one image at a time through image-prompts/Bild ${last}.txt.`,
     'Do not ask the user for Go/Weiter/OK between images.'
@@ -254,9 +204,9 @@ export async function buildImagePromptBundle(reelDirectory, { strict = false } =
   const statusPath = path.join(reelDirectory, 'status.json');
   if (await exists(statusPath)) {
     const status = await readJson(statusPath);
-    status.imagePromptBundle = missingIds.length === 0 ? 'ready-individual-files' : 'incomplete';
+    status.imagePromptBundle = missingIds.length === 0 ? 'ready-individual-files-legacy-visual-prompts' : 'incomplete';
     status.googleFlowController = missingIds.length === 0 ? 'ready' : 'incomplete';
-    status.imagePromptMode = 'one-file-per-image-strict-serial';
+    status.imagePromptMode = 'one-file-per-image-strict-serial-legacy-visual-payload';
     status.plannedImageCount = prompts.filter((entry) => entry.kind === 'scene').length;
     await writeFile(statusPath, `${JSON.stringify(status, null, 2)}\n`, 'utf8');
   }
@@ -318,9 +268,9 @@ export async function validateImagePromptBundle(reelDirectory) {
       : !actualController
         ? `Google-Flow-Controller fehlt: ${normalizedRelativePath(paths.controller)}.`
         : individualChecks.some((item) => !item.present)
-          ? 'Mindestens eine Einzelprompt-Datei fehlt.'
+          ? 'Mindestens eine serielle Einzelprompt-Datei fehlt.'
           : !current
-            ? 'Controller/Einzelprompts sind veraltet.'
-            : 'Controller und alle Einzelprompt-Dateien sind aktuell und erzwingen strikt serielle Einzelgenerierung.'
+            ? 'Controller, Index oder Einzelprompt-Dateien sind veraltet.'
+            : 'Controller und serielle Einzelprompt-Dateien sind aktuell; die Visual-Prompts werden wortgetreu im bewährten alten Aufbau exportiert.'
   };
 }

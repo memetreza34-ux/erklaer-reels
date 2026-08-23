@@ -64,7 +64,58 @@ Jeder Prompt muss diese Form erzwingen:
 
 ---
 
-## 3. Bildanzahl immer individuell
+## 3. Verbindlicher alter Bildprompt-Aufbau — wiederhergestellt
+
+Die visuelle Prompt-Struktur, die vor der Controller-Umstellung benutzt wurde und bessere Ergebnisse geliefert hat, ist wieder der Standard.
+
+**Wichtig:** Die neue serielle Google-Flow-Steuerung darf den eigentlichen visuellen Bildprompt **nicht vereinfachen, umformulieren oder mit technischem Boilerplate ersetzen**.
+
+### Bindender Stil-Master für neue Prompts
+
+Neue Bildprompts orientieren sich an diesem bewährten Aufbau und Look:
+
+> Vertical 9:16 premium mature 2D editorial country-character illustration. Warm off-white textured paper background, deep navy borders and map shapes, muted rust, mustard, cobalt and forest-green accents, bold clean hand-inked outlines, flat geometric shading, subtle grain, high contrast, sophisticated documentary tone, not childish.
+
+Dazu immer passend zur Szene:
+- vollständige runde Kugelcharaktere
+- Länder mit vereinfachtem Flaggenmuster auf der Kugel
+- einfache weiße Augen, höchstens winzige Arme/Beine
+- Karten/Länderumrisse nur gesichtslos als Hintergrund oder Erklärung
+- klare 1-Sekunden-Lesbarkeit
+- starke zentrale Komposition statt generischem Symbolbrei
+- `Bild 00` ist visueller Style-Master; spätere Bilder matchen dessen Liniengewicht, Papiertextur, Palette, Proportionen und Editorial-Finish
+
+### Reihenfolge innerhalb jedes visuellen Prompts
+
+Jede `cover/cover-prompt.txt`, `image-prompt.txt`, `image-prompt-02.txt` usw. ist ein **vollwertiger visueller Prompt** und folgt wieder dieser Struktur:
+
+1. **Format + vollständiger Stil**
+2. **konkrete Szene / Komposition / Handlung**
+3. **genau erlaubter deutscher Bildtext**, falls vorhanden
+4. **negative Regeln**: kein anderer lesbarer Text, kein Englisch, keine Logos, kein Wasserzeichen, kein 3D, keine Fotorealistik
+5. **volle 9:16-Fläche**, keine Untertitel-Safe-Zone, kein künstliches leeres Untertitelband
+
+Bei späteren Bildphasen darf `Match Bild 00.png exactly` verwendet werden, aber der Prompt darf dadurch nicht zu einer dünnen generischen Kurzbeschreibung verkommen. Der alte detaillierte Editorial-Aufbau bleibt maßgeblich.
+
+### Ganz wichtig für den Export
+
+Die Dateien
+
+```text
+all-image-prompts/image-prompts/Bild 00.txt
+all-image-prompts/image-prompts/Bild 01.txt
+...
+```
+
+müssen den jeweiligen **visuellen Quellprompt unverändert / wortgetreu** enthalten.
+
+Der Exporter darf dort **keine** zusätzlichen Blöcke wie `GENERATE EXACTLY ONE IMAGE`, `VISIBLE TEXT FIREWALL`, `ROUND SPHERE WORLD`, `QUALITY GATE`, Dateinamen, Szenenlabels oder andere Workflow-Metadaten hineinmischen.
+
+Diese Steuerung gehört ausschließlich in `google-flow-controller.txt`.
+
+---
+
+## 4. Bildanzahl immer individuell
 
 Narrative Szenenzahl und Bildanzahl sind getrennt.
 
@@ -74,8 +125,6 @@ Narrative Szenenzahl und Bildanzahl sind getrennt.
 - keine feste Zielsumme wie 13, 16 oder 18
 - `reel.json.imageCountMode = "individual-per-reel"`
 - `reel.json.plannedImageCount` enthält die echte geplante Zahl
-
-### Entscheidung pro Szene
 
 **1 Bild:** ein starkes Motiv trägt den Gedanken.
 
@@ -87,7 +136,7 @@ Wenn ein Still-Bild ungefähr 3,5–4,0 Sekunden oder länger stehen würde, akt
 
 ---
 
-## 4. Sichtbarer Text: harte Firewall
+## 5. Sichtbarer Text: harte Firewall
 
 Workflow- und Produktionsdaten sind niemals Bildinhalt.
 
@@ -100,17 +149,19 @@ In einem generierten Bild dürfen niemals sichtbar erscheinen:
 - `GOOGLE FLOW`, `PROMPT`, `STYLE-REFERENZ`, `ZIEL`
 - technische IDs
 
-Pro Bild gilt eine harte Text-Whitelist:
+Pro Bild gilt:
 - `imageText`/Cover-Headline gesetzt → nur exakt dieser Text darf lesbar sein
 - `imageText` leer → keinerlei lesbarer Text im Bild
 
+Diese Regel wird **im visuellen Quellprompt selbst** sauber formuliert, nicht durch große technische Wrapper im exportierten Bildprompt.
+
 ---
 
-## 5. Google Flow: Einzeldateien statt Mega-Sammelprompt
+## 6. Google Flow: Einzeldateien statt Mega-Sammelprompt
 
-Die bisherige Methode, **alle visuellen Prompts direkt in einen riesigen Google-Flow-Prompt zu packen**, ist deaktiviert, weil der Agent sonst mehrere Bilder zusammen/zu schnell erzeugen und die Qualität verschlechtern kann.
+Die Mega-Sammelprompt-Methode bleibt deaktiviert.
 
-### Neue verbindliche Exportstruktur
+### Exportstruktur
 
 ```text
 all-image-prompts/
@@ -123,36 +174,28 @@ all-image-prompts/
   all-image-prompts.txt
 ```
 
-`all-image-prompts.txt` bleibt nur als **Kompatibilitäts-/Indexdatei** und darf nicht als eigentlicher Mega-Generierungsprompt verwendet werden.
+`all-image-prompts.txt` ist nur Kompatibilitäts-/Indexdatei.
 
 ### Google-Flow-Ablauf
 
 Der Nutzer startet den Agenten mit `google-flow-controller.txt`.
 
-Der Controller darf **niemals alle Bildprompts auf einmal einlesen**.
-
 Für jedes Bild strikt:
 
 1. nur die nächste Datei `image-prompts/Bild NN.txt` öffnen
 2. genau **ein** Bild generieren
-3. vollständig warten, bis die Generierung fertig ist
+3. vollständig warten
 4. Ergebnis exakt in `Bild NN.png` umbenennen
 5. Dateiname und Ergebnis prüfen
 6. erst danach die nächste Prompt-Datei öffnen
 
-**Verboten:**
-- mehrere Prompt-Dateien vorab lesen
-- Batch
-- Queue
-- Parallelgenerierung
-- mehrere Bilder in einem Generierungsauftrag
-- das nächste Bild starten, solange das aktuelle noch läuft
+**Verboten:** mehrere Prompt-Dateien vorab lesen, Batch, Queue, Parallelgenerierung, mehrere Bilder pro Auftrag oder nächstes Bild starten, solange das aktuelle läuft.
 
 `Bild 00.png` ist Cover und Style-Master. Ab Bild 01 wird Bild 00 als Stilreferenz verwendet, aber der Cover-Text niemals automatisch übernommen.
 
 ---
 
-## 6. Technisches Bildphasen-Schema
+## 7. Technisches Bildphasen-Schema
 
 Pro narrativer Szene:
 
@@ -189,15 +232,15 @@ Erste Phase startet immer bei `startPercent: 0`; weitere Werte steigen zwischen 
 
 ---
 
-## 7. Rollenverteilung
+## 8. Rollenverteilung
 
-Repo-Agenten / Codex / Antigravity erzeugen keine Bilder. Sie erstellen Script, Szenen, individuelle Bildphasen, Cover-Prompt, Prompt pro Bildphase, Controller, Einzelprompt-Dateien, Caption, Quellen, Asset-Suche, QC, Timeline und Render.
+Repo-Agenten / Codex / Antigravity erzeugen keine Bilder. Sie erstellen Script, Szenen, individuelle Bildphasen, **vollwertige Bildprompts im bewährten alten Aufbau**, Controller, Einzelprompt-Dateien, Caption, Quellen, Asset-Suche, QC, Timeline und Render.
 
 Der Nutzer startet Google Flow einmal mit dem Controller. Google Flow arbeitet danach strikt seriell bis zum letzten Bild.
 
 ---
 
-## 8. Bildimport und visuelle QC
+## 9. Bildimport und visuelle QC
 
 Fertige Bilder kommen nach
 
@@ -215,7 +258,7 @@ Die Nummer ist nur Routing-Hilfe. Jede Bildphase sichtbar prüfen gegen Narratio
 
 ---
 
-## 9. Fehlende Assets zuerst suchen
+## 10. Fehlende Assets zuerst suchen
 
 Vor jeder Meldung, dass Bilder oder Audio fehlen:
 
@@ -227,7 +270,7 @@ Bei mehreren vollständigen ZIPs oder Audio-Kandidaten niemals blind wählen; in
 
 ---
 
-## 10. Voice-over, Szenen-Sync und interne Bildwechsel
+## 11. Voice-over, Szenen-Sync und interne Bildwechsel
 
 Das finale Voice-over ist die einzige Zeitquelle.
 
@@ -244,7 +287,7 @@ Whisper/ASR darf Kandidaten liefern, aber keine geschätzten Szenenanker als gep
 
 ---
 
-## 11. Standardbefehle
+## 12. Standardbefehle
 
 ```bash
 npm run export:prompts -- --dir "<reel-ordner>" --strict
@@ -263,6 +306,6 @@ npm run render:reel -- --dir "<reel-ordner>"
 
 ---
 
-## 12. Abschlussprinzip
+## 13. Abschlussprinzip
 
 Ein Reel ist erst fertig, wenn Script/Quellen geprüft, alle Bildphasen vorhanden und zweifach visuell bestätigt, finales Audio gemessen und synchronisiert, interne Bildwechsel korrekt, keine Untertitel vorhanden und Finalizer/Render-Validator bestanden sind. Nicht ausgeführte Stufen niemals als bestanden melden.
