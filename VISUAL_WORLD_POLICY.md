@@ -2,104 +2,97 @@
 
 `CURRENT_WORKFLOW.md` ist bei Widersprüchen maßgeblich.
 
-Für neue Reels gibt es drei Hauptbildwelten. Die Bildwelt wird nach dem fertigen Script gewählt und innerhalb eines Reels konsistent gehalten.
+## Aktiver Zustand ab 2026-08-23
 
-## 1. `human-editorial-cartoon` — Köpfe-Welt
+Für **alle neuen Reels** ist ausschließlich diese Bildwelt aktiv:
 
-Diese Welt ist für Psychologie, Verhalten, Gefühle, Denken und soziale Mechanismen gedacht.
+## `round-country-characters` — Kugel-Welt / Welt Nummer 1
 
-Verbindliche Merkmale:
-- ein dominanter großer Kopf oder ein sehr klarer Gesichts-Close-up als Hauptmotiv
-- maximal kleine Gruppen, wenn möglich 1–3 Köpfe
-- starke Mimik und klare Blickrichtung
-- wenig Körper; keine generischen Ganzkörper-Gruppenkompositionen
-- Augen, Gedanken, innere Konflikte oder mentale Mechanismen direkt am/in/um den Kopf visualisieren
-- erwachsener 2D-Editorial-/Dokumentar-Look, nicht kindlich
-- schnelle 1-Sekunden-Lesbarkeit
-
-### Verbotene Fehlinterpretation
-
-`human-editorial-cartoon` bedeutet **nicht** einfach „normale Cartoon-Menschen“. Überfüllte Klassenraum-, Gruppen- oder Halb-/Ganzkörper-Szenen mit kleinen Köpfen verfehlen die Köpfe-Welt.
-
-### Mehrere Bildphasen
-
-Zusätzliche Bilder sind sinnvoll, wenn der zweite Schritt einen anderen mentalen Fokus zeigt, z. B.:
-
-```text
-Gesicht/Emotion → Gedankenmechanismus
-Unsicherheit → innerer Konflikt
-soziale Reaktion → Close-up der Wahrnehmung
-```
-
-Keine feste Gesamtzahl erzwingen.
-
----
-
-## 2. `round-country-characters` — Länder-Welt
-
-Diese Welt ist für Länder, Geografie, Grenzen, Geschichte, internationale Unterschiede und gesellschaftliche Systeme gedacht.
+Diese Welt wird ab sofort **für alle Themenbereiche** verwendet, nicht nur für Länder- und Geografie-Themen.
 
 ### Nicht verhandelbare Figurenregel
 
-**Jede anthropomorphe Länderfigur ist immer eine vollständig runde Kugel.**
+**Jede anthropomorphe Hauptfigur ist immer eine vollständig runde Kugel.**
 
 Verbindliche Merkmale:
-- vollständige kreisrunde/kugelförmige Country-Charaktere als Figurenkörper
-- vereinfachte, aber klar erkennbare Flaggenmuster direkt auf der runden Kugel
-- einfache weiße Augen; höchstens winzige Arme/Beine
-- keine menschlichen Köpfe oder menschlichen Torsi als Hauptfiguren
+- vollständige kreisrunde/kugelförmige Editorial-Charaktere als Figurenkörper
+- einfache weiße Augen
+- höchstens winzige Arme/Beine
 - erwachsener 2D-Editorial-/Dokumentar-Look
+- starke 1-Sekunden-Lesbarkeit
+- keine normalen Menschen als Hauptfiguren
 
-**Strikt verboten:**
+### Länder-Themen
+
+Bei Ländern wird das vereinfachte, klar erkennbare Flaggenmuster direkt auf die runde Kugel gelegt.
+
+Beispiele:
+- Deutschland → runde Kugel mit Deutschland-Flaggenmuster
+- USA → runde Kugel mit vereinfachtem USA-Flaggenmuster
+- Brasilien → runde Kugel mit vereinfachtem Brasilien-Flaggenmuster
+
+### Nicht-Länder-Themen
+
+Auch Psychologie, Politik, Gesellschaft oder abstrakte Mechanismen werden in derselben Kugel-Welt erzählt.
+
+Dafür werden neutrale runde Kugelfiguren verwendet, zum Beispiel:
+- einfache Farbflächen
+- kleine klare Symbole
+- visuelle Rollenmerkmale
+- Emotion über Augen/Blick/Position
+
+Dabei bleiben Körperform und Stil exakt kugelförmig. Keine menschlichen Köpfe oder Torsi.
+
+### Strikt verboten
+
 - Länderumriss oder Karten-Silhouette als Körper der Figur
 - Augen, Gesicht, Mund, Arme oder Beine auf einer Länder-/Kontinentform
-- Australien-, Brasilien-, USA-, Deutschland- usw. als anthropomorphe Kartenform
 - unregelmäßig geformte „Countryballs“ statt echter runder Kugeln
+- normale menschliche Figuren als Hauptcharaktere
+- menschliche Köpfe als Hauptbildwelt
 
-Karten, Grenzen, Straßen, Küsten, Länderumrisse und territoriale Formen dürfen weiterhin vorkommen, aber **nur als gesichtslose Hintergrund-/Erklärgrafik**. Eine Kartenform darf niemals selbst der Charakter sein.
+Karten, Grenzen, Straßen, Küsten, Länderumrisse und territoriale Formen dürfen weiterhin vorkommen, aber **nur als gesichtslose Hintergrund-/Erklärgrafik**.
 
-Wenn ein Prompt eine Länderfigur erwähnt, muss er ausdrücklich die Formulierung sinngemäß enthalten:
+Jeder Prompt für ein neues Reel muss sinngemäß enthalten:
 
-> complete perfectly round country sphere / circular country ball; never a map-shaped character
+> Every anthropomorphic main character must be a complete perfectly round editorial ball/sphere character. Never use a map-shaped character and never use a normal human character as the main figure.
 
-### Mehrere Bildphasen
+Bei Länderfiguren zusätzlich:
 
-Diese Welt eignet sich besonders oft für zusätzliche Bildwechsel, weil geografische Erklärungen natürliche Zoomstufen besitzen:
-
-```text
-Welt/Kontinent → Land
-Land → Grenze/Nachbar
-historische Karte → heutige Situation
-Land A → Vergleich mit Land B
-Überblick → Detail
-```
-
-Trotzdem gilt ausdrücklich **keine feste Zielsumme** wie 16–18 Bilder. Die Bildanzahl bleibt pro Reel und pro Szene individuell.
+> Use the simplified flag pattern wrapped across the perfectly round sphere.
 
 ---
 
-## 3. `visual-metaphor` — Metaphern-Welt
+# Pausierte Bildwelten
 
-Diese Welt ist für abstrakte Mechanismen, Ursache-Wirkung, Denkmodelle und unsichtbare Prozesse gedacht.
+Bis der Nutzer sie ausdrücklich wieder aktiviert, sind diese Welten **außer Kraft** und dürfen für neue Reels nicht ausgewählt werden:
 
-Verbindliche Merkmale:
-- ein starkes Hauptsymbol
-- klare visuelle Hierarchie
-- möglichst in einer Sekunde verständliche Metapher
-- typische Motive: Anker, Magnet, Waage, Domino, Mauer, Filter, Trichter, Seil, Käfig
-- keine überladene Symbolsammlung
+## `human-editorial-cartoon` — PAUSIERT
 
-### Mehrere Bildphasen
+Historische Beschreibung bleibt nur zur Abwärtskompatibilität erhalten. Neue Psychologie-/Verhaltensthemen werden trotzdem in der Kugel-Welt umgesetzt.
 
-Ein starkes Einzelmotiv darf lange genug stehen. Ein zweites Bild ist nur sinnvoll, wenn es einen echten zweiten Erklärungsschritt zeigt:
+## `visual-metaphor` — PAUSIERT
+
+Historische Beschreibung bleibt nur zur Abwärtskompatibilität erhalten. Neue abstrakte Themen werden ebenfalls in der Kugel-Welt umgesetzt; Metaphern dürfen als Hintergrundobjekte vorkommen, aber die Hauptfiguren bleiben Kugeln.
+
+---
+
+# Mehrere Bildphasen
+
+Die Kugel-Welt eignet sich für zusätzliche Bildwechsel, wenn sie einen echten Mehrwert bringen:
 
 ```text
-Metapher/Mechanismus → Konsequenz
-Ausgangszustand → sichtbare Wirkung
-Problem → Auflösung
+Überblick → Detail
+Karte → Zoom
+Ausgangslage → Folge
+Figur → innerer Mechanismus
+Land A → Land B
+historische Situation → heutige Situation
 ```
 
-Keine feste Gesamtzahl erzwingen.
+Es gibt keine feste Zielsumme an Bildern.
+
+Wenn ein einziges Still-Bild ungefähr 3,5–4 Sekunden oder länger stehen würde, wird eine zusätzliche Bildphase aktiv geprüft. Sie wird nicht automatisch hinzugefügt.
 
 ---
 
@@ -114,33 +107,24 @@ In einem generierten Bild dürfen niemals sichtbar erscheinen:
 - `BILDPHASE`, `IMAGE PHASE`
 - `DATEINAME`, Dateinamen oder Dateiendungen
 - `GOOGLE FLOW`, `PROMPT`, `STYLE-REFERENZ`, `ZIEL`
-- technische IDs wie `scene-04-image-02`
-- sonstige Workflow-Metadaten aus der Sammeldatei
+- technische IDs
+- sonstige Workflow-Metadaten
 
 Für **jede einzelne Bildphase** gilt eine harte Text-Whitelist:
 - wenn `imageText`/Cover-Headline gesetzt ist, ist **genau dieser Text der einzige erlaubte lesbare Text im Bild**
 - wenn `imageText` leer ist, muss das Bild **vollständig ohne lesbaren Text** erzeugt werden
 
-Diese Regel gilt auch dann, wenn technische Labels unmittelbar vor dem Bildprompt in einer Sammeldatei stehen. Sie sind ausschließlich Steuerinformationen und dürfen niemals gerendert werden.
-
 ---
 
-# Bilddichte — globale Regel
+# Google-Flow-Qualitätsregel
 
-Die alte Annahme `eine narrative Szene = genau ein Bild` ist aufgehoben.
+Mehrere Visual-Prompts dürfen nicht mehr gemeinsam als Mega-Prompt an Google Flow gegeben werden.
 
-Jede narrative Szene erhält:
-- 1 Bild, wenn es reicht
-- 2 Bilder, wenn ein weiterer visueller Schritt klar verbessert
-- 3 Bilder nur selten
+Für die eigentliche Generierung gilt:
+- **eine Prompt-Datei = genau ein Bild**
+- genau ein aktiver Generierungsvorgang
+- vollständig warten
+- Ergebnis prüfen
+- erst dann nächster Einzelprompt
 
-Wenn ein einziges Still-Bild ungefähr 3,5–4 Sekunden oder länger stehen würde, wird eine zusätzliche Bildphase aktiv geprüft. Sie wird nicht automatisch hinzugefügt.
-
-Entscheidend ist nicht die Bildwelt und nicht eine Quote, sondern:
-- Verständlichkeit
-- visueller Informationsgewinn
-- Abwechslung
-- Rhythmus
-- Vermeidung unnötig langer statischer Stellen
-
-Jedes zusätzliche Bild muss einen begründbaren Mehrwert haben.
+Die Steuerdatei und das Manifest enthalten keine vollständigen Visual-Prompts und sind nicht als Bildgenerierungs-Prompt gedacht.
