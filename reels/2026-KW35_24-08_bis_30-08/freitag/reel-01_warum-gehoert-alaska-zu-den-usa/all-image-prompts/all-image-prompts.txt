@@ -1,0 +1,89 @@
+ALLE BILDPROMPTS – GOOGLE FLOW – STRENG EINZELN + AUTONOM OHNE WEITERES GO
+
+WICHTIGER ABLAUF
+- Generate exactly ONE image at a time.
+- Wait until the current image is completely finished.
+- Rename it immediately to the exact filename shown below.
+- Verify the filename, then automatically start the next image.
+- Do not ask for Go, Weiter, OK, confirmation or another user message.
+- Bild 00 is the cover and the binding visual style reference for every later image.
+- The numbers follow visual image phases, not narrative scene numbers. This reel has 13 narrative scenes but 17 scene images.
+- No subtitles, no subtitle band and no artificial empty middle area.
+
+BINDING MASTER STYLE FOR ALL 18 IMAGES
+Vertical 9:16 premium mature 2D editorial country-character illustration. Warm off-white textured paper background, deep navy borders and map shapes, muted rust, mustard, cobalt and forest-green accents, bold clean hand-inked outlines, flat geometric shading, subtle grain, high contrast, sophisticated documentary tone, not childish. Country characters are complete round spheres with accurate simplified flag patterns, simple white eyes, and at most tiny arms and legs; no human heads or torsos. Use clear map silhouettes, border lines, historical document motifs and directional geography only when they improve one-second readability. No 3D, no photorealism, no logos, no watermark. Use the full 9:16 composition naturally. After Bild 00, match Bild 00.png exactly in line weight, paper texture, palette, proportions, character design and overall editorial finish.
+
+BILD 00 – COVER
+DATEINAME: Bild 00.png
+Create the master cover for a reel explaining why Alaska belongs to the United States even though Canada lies between Alaska and the contiguous United States. Show a clear North America map with the lower 48 USA at the bottom, Canada dominating the center, and Alaska separated in the northwest. Use matching USA country spheres at the lower 48 and Alaska, visually connected across Canada with one strong route/history motif. Integrate the exact German headline "WARUM GEHÖRT ALASKA ZU DEN USA?" as the only readable phrase. No other readable text.
+
+BILD 01 – SZENE 1 – BILDPHASE 1
+DATEINAME: Bild 01.png
+Match Bild 00.png exactly. A simplified North America map shows the contiguous United States at the bottom, Canada in the middle and Alaska far northwest, with USA and Alaska country spheres linked across Canada. Integrate the exact German text "USA – KANADA – ALASKA?" as the only readable phrase. No other readable text, no English, no logos, no watermark. Use the full 9:16 composition naturally; no subtitle safe-zone.
+
+BILD 02 – SZENE 2 – BILDPHASE 1
+DATEINAME: Bild 02.png
+Match Bild 00.png exactly. Alaska is highlighted on an old-style North Pacific map with a Russia country sphere reaching east across the Bering region. Integrate the exact German text "FRÜHER RUSSISCH" as the only readable phrase. No other readable text, no English, no logos, no watermark. Use the full 9:16 composition naturally; no subtitle safe-zone.
+
+BILD 03 – SZENE 3 – BILDPHASE 1
+DATEINAME: Bild 03.png
+Match Bild 00.png exactly. A Russia sphere looks across a huge icy distance toward sparse trading posts in Alaska, emphasizing remoteness and limited settlement. Integrate the exact German text "WEIT WEG" as the only readable phrase. No other readable text, no English, no logos, no watermark. Use the full 9:16 composition naturally; no subtitle safe-zone.
+
+BILD 04 – SZENE 3 – BILDPHASE 2
+DATEINAME: Bild 04.png
+Match Bild 00.png exactly. Zoom into a few small coastal trading posts surrounded by vast empty Alaskan territory, with supply crates and a long sea route showing the difficulty and expense of maintaining them. Integrate the exact German text "HOHE KOSTEN" as the only readable phrase. No other readable text, no English, no logos, no watermark. Use the full 9:16 composition naturally; no subtitle safe-zone.
+
+BILD 05 – SZENE 4 – BILDPHASE 1
+DATEINAME: Bild 05.png
+Match Bild 00.png exactly. Russia sphere studies a post-Crimean-War strategy map: Alaska is distant, expensive and exposed across the Pacific, while Britain/Canada appears nearby. Integrate the exact German text "WENIGER ATTRAKTIV" as the only readable phrase. No other readable text, no English, no logos, no watermark. Use the full 9:16 composition naturally; no subtitle safe-zone.
+
+BILD 06 – SZENE 5 – BILDPHASE 1
+DATEINAME: Bild 06.png
+Match Bild 00.png exactly. Russia and United States country spheres face each other across a treaty table with a clear Alaska map between them. Integrate the exact German text "VERKAUF 1867" as the only readable phrase. No other readable text, no English, no logos, no watermark. Use the full 9:16 composition naturally; no subtitle safe-zone.
+
+BILD 07 – SZENE 5 – BILDPHASE 2
+DATEINAME: Bild 07.png
+Match Bild 00.png exactly. The Alaska map visibly changes from Russian control to United States control with a clean handover arrow and treaty document motif. Integrate the exact German text "RUSSLAND → USA" as the only readable phrase. No other readable text, no English, no logos, no watermark. Use the full 9:16 composition naturally; no subtitle safe-zone.
+
+BILD 08 – SZENE 6 – BILDPHASE 1
+DATEINAME: Bild 08.png
+Match Bild 00.png exactly. A giant Alaska silhouette fills most of the frame while a small historical payment document and dollar amount emphasize the purchase price. Integrate the exact German text "7,2 MILLIONEN $" as the only readable phrase. No other readable text, no English, no logos, no watermark. Use the full 9:16 composition naturally; no subtitle safe-zone.
+
+BILD 09 – SZENE 7 – BILDPHASE 1
+DATEINAME: Bild 09.png
+Match Bild 00.png exactly. A clear North America map visually sandwiches Canada between the contiguous United States and Alaska, with both U.S. areas highlighted in the same visual language. Integrate the exact German text "KANADA DAZWISCHEN" as the only readable phrase. No other readable text, no English, no logos, no watermark. Use the full 9:16 composition naturally; no subtitle safe-zone.
+
+BILD 10 – SZENE 7 – BILDPHASE 2
+DATEINAME: Bild 10.png
+Match Bild 00.png exactly. Zoom onto the land route from the lower 48 states to Alaska, which must cross Canada, with a bold directional path and border crossings. Integrate the exact German text "DURCH KANADA" as the only readable phrase. No other readable text, no English, no logos, no watermark. Use the full 9:16 composition naturally; no subtitle safe-zone.
+
+BILD 11 – SZENE 8 – BILDPHASE 1
+DATEINAME: Bild 11.png
+Match Bild 00.png exactly. A diagram shows one country sphere split into a main territory and a detached territory separated by another country, making the geographic concept instantly readable. Integrate the exact German text "EXKLAVE" as the only readable phrase. No other readable text, no English, no logos, no watermark. Use the full 9:16 composition naturally; no subtitle safe-zone.
+
+BILD 12 – SZENE 9 – BILDPHASE 1
+DATEINAME: Bild 12.png
+Match Bild 00.png exactly. United States sphere stands beside Alaska with three clean visual icons: North Pacific access, natural resources and strategic northern position. Integrate the exact German text "PAZIFIK + ROHSTOFFE" as the only readable phrase. No other readable text, no English, no logos, no watermark. Use the full 9:16 composition naturally; no subtitle safe-zone.
+
+BILD 13 – SZENE 9 – BILDPHASE 2
+DATEINAME: Bild 13.png
+Match Bild 00.png exactly. A wider northern-Pacific map shows Alaska projecting toward Asia with shipping, defense and resource cues, emphasizing its strategic location. Integrate the exact German text "STRATEGISCHE LAGE" as the only readable phrase. No other readable text, no English, no logos, no watermark. Use the full 9:16 composition naturally; no subtitle safe-zone.
+
+BILD 14 – SZENE 10 – BILDPHASE 1
+DATEINAME: Bild 14.png
+Match Bild 00.png exactly. At Sitka, a restrained historical handover scene uses Russia and United States country spheres, two flags and Alaska changing administrative control. Integrate the exact German text "18. OKTOBER 1867" as the only readable phrase. No other readable text, no English, no logos, no watermark. Use the full 9:16 composition naturally; no subtitle safe-zone.
+
+BILD 15 – SZENE 11 – BILDPHASE 1
+DATEINAME: Bild 15.png
+Match Bild 00.png exactly. A timeline moves from 1867 territory status to a prominent 1959 star joining the United States, with Alaska sphere entering the statehood lineup. Integrate the exact German text "BUNDESSTAAT SEIT 1959" as the only readable phrase. No other readable text, no English, no logos, no watermark. Use the full 9:16 composition naturally; no subtitle safe-zone.
+
+BILD 16 – SZENE 12 – BILDPHASE 1
+DATEINAME: Bild 16.png
+Match Bild 00.png exactly. A playful but mature map analogy shows a detached regional sphere far from its home country, with a route forced through a neighboring country. Integrate the exact German text "WIE WÜRDE SICH DAS ANFÜHLEN?" as the only readable phrase. No other readable text, no English, no logos, no watermark. Use the full 9:16 composition naturally; no subtitle safe-zone.
+
+BILD 17 – SZENE 13 – BILDPHASE 1
+DATEINAME: Bild 17.png
+Match Bild 00.png exactly. A final North America map overlays the 1867 treaty route and modern borders, connecting the Alaska-USA relationship directly to history rather than distance. Integrate the exact German text "GESCHICHTE FORMT GRENZEN" as the only readable phrase. No other readable text, no English, no logos, no watermark. Use the full 9:16 composition naturally; no subtitle safe-zone.
+
+ABSCHLUSS
+Only after Bild 17 is completely generated, correctly renamed and verified, place Bild 00 through Bild 17 together in the reel's shared numbered-image drop. Do not skip, duplicate or reorder any number.
