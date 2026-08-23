@@ -18,14 +18,17 @@ async function main() {
   }
 
   const result = await buildImagePromptBundle(reelDirectory, { strict });
-  console.log(`Bildprompt-Sammeldatei erstellt: ${result.outputFile}`);
-  console.log(`Chronologisch exportierte Szenen: ${result.sceneCount}`);
+  console.log(`Bildprompt-Manifest erstellt: ${result.outputFile}`);
+  console.log(`Google-Flow-Controller erstellt: ${result.controllerFile}`);
+  console.log(`Einzelprompt-Ordner: ${result.promptDirectory}`);
+  console.log(`Einzelprompts insgesamt: ${result.totalPromptCount} (inklusive Cover)`);
+  console.log(`Narrative Szenen: ${result.sceneCount}`);
 
-  if (result.missingSceneIds.length > 0) {
-    console.log(`Fehlende Bildprompts: ${result.missingSceneIds.join(', ')}`);
+  if (result.missingSceneIds.length > 0 || result.missingPromptIds.length > 0) {
+    console.log(`Fehlende Bildprompts: ${result.missingPromptIds.join(', ')}`);
     if (strict) process.exitCode = 1;
   } else {
-    console.log('Alle Bildprompts sind vollständig und chronologisch aufgelistet.');
+    console.log('Alle Bildprompts sind als einzelne Dateien exportiert. Google Flow darf immer nur eine Datei gleichzeitig erhalten.');
   }
 }
 
