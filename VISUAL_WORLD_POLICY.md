@@ -2,145 +2,93 @@
 
 `CURRENT_WORKFLOW.md` ist bei Widersprüchen maßgeblich.
 
-Für neue Reels gibt es drei Hauptbildwelten. Die Bildwelt wird nach dem fertigen Script gewählt und innerhalb eines Reels konsistent gehalten.
+## Aktiver Modus ab 2026-08-23
 
-## 1. `human-editorial-cartoon` — Köpfe-Welt
+Bis zu einer ausdrücklichen neuen Nutzerentscheidung ist **nur eine Bildwelt aktiv**:
 
-Diese Welt ist für Psychologie, Verhalten, Gefühle, Denken und soziale Mechanismen gedacht.
+`round-country-characters`
 
-Verbindliche Merkmale:
-- ein dominanter großer Kopf oder ein sehr klarer Gesichts-Close-up als Hauptmotiv
-- maximal kleine Gruppen, wenn möglich 1–3 Köpfe
-- starke Mimik und klare Blickrichtung
-- wenig Körper; keine generischen Ganzkörper-Gruppenkompositionen
-- Augen, Gedanken, innere Konflikte oder mentale Mechanismen direkt am/in/um den Kopf visualisieren
-- erwachsener 2D-Editorial-/Dokumentar-Look, nicht kindlich
-- schnelle 1-Sekunden-Lesbarkeit
+Die früheren Welten `human-editorial-cartoon` und `visual-metaphor` sind vorerst pausiert und dürfen nicht autonom ausgewählt werden.
 
-### Verbotene Fehlinterpretation
-
-`human-editorial-cartoon` bedeutet **nicht** einfach „normale Cartoon-Menschen“. Überfüllte Klassenraum-, Gruppen- oder Halb-/Ganzkörper-Szenen mit kleinen Köpfen verfehlen die Köpfe-Welt.
-
-### Mehrere Bildphasen
-
-Zusätzliche Bilder sind sinnvoll, wenn der zweite Schritt einen anderen mentalen Fokus zeigt, z. B.:
-
-```text
-Gesicht/Emotion → Gedankenmechanismus
-Unsicherheit → innerer Konflikt
-soziale Reaktion → Close-up der Wahrnehmung
-```
-
-Keine feste Gesamtzahl erzwingen.
+Diese aktive Kugel-Welt wird für **alle erlaubten Themen** benutzt, nicht nur für Länder oder Geografie.
 
 ---
 
-## 2. `round-country-characters` — Länder-Welt
+## `round-country-characters` — globale Hauptwelt
 
-Diese Welt ist für Länder, Geografie, Grenzen, Geschichte, internationale Unterschiede und gesellschaftliche Systeme gedacht.
+### Grundidee
+
+Alle Erklärungen werden in einer konsistenten erwachsenen 2D-Editorial-Welt mit runden Kugelfiguren umgesetzt.
 
 ### Nicht verhandelbare Figurenregel
 
-**Jede anthropomorphe Länderfigur ist immer eine vollständig runde Kugel.**
+Jede anthropomorphe Hauptfigur ist eine **vollständig runde Kugel**.
 
-Verbindliche Merkmale:
-- vollständige kreisrunde/kugelförmige Country-Charaktere als Figurenkörper
-- vereinfachte, aber klar erkennbare Flaggenmuster direkt auf der runden Kugel
-- einfache weiße Augen; höchstens winzige Arme/Beine
-- keine menschlichen Köpfe oder menschlichen Torsi als Hauptfiguren
-- erwachsener 2D-Editorial-/Dokumentar-Look
+Für Länderfiguren:
+- complete perfectly round circular country ball / sphere
+- vereinfachtes, klar erkennbares Flaggenmuster direkt auf der runden Kugel
+- einfache weiße Augen
+- höchstens winzige Arme/Beine
 
-**Strikt verboten:**
-- Länderumriss oder Karten-Silhouette als Körper der Figur
-- Augen, Gesicht, Mund, Arme oder Beine auf einer Länder-/Kontinentform
-- Australien-, Brasilien-, USA-, Deutschland- usw. als anthropomorphe Kartenform
-- unregelmäßig geformte „Countryballs“ statt echter runder Kugeln
+Für nicht-länderspezifische Rollen:
+- ebenfalls vollständig runde Kugelfigur
+- neutrale Farben oder passende Symbole statt Flagge
+- keine menschlichen Köpfe oder Torsi als Hauptfigur
 
-Karten, Grenzen, Straßen, Küsten, Länderumrisse und territoriale Formen dürfen weiterhin vorkommen, aber **nur als gesichtslose Hintergrund-/Erklärgrafik**. Eine Kartenform darf niemals selbst der Charakter sein.
+### Strikt verboten
 
-Wenn ein Prompt eine Länderfigur erwähnt, muss er ausdrücklich die Formulierung sinngemäß enthalten:
+- Länderumriss oder Karten-Silhouette als Körper einer Figur
+- Augen, Mund, Arme oder Beine auf einer Länder-/Kontinentform
+- unregelmäßige geografische Formen als „Countryball“
+- menschliche Köpfe/Torsi als primäre Figurenwelt
 
-> complete perfectly round country sphere / circular country ball; never a map-shaped character
+Karten, Grenzen, Straßen, Küsten, Länderumrisse und territoriale Formen dürfen vorkommen, aber nur als **gesichtslose Erklär-/Hintergrundgrafik**.
 
-### Mehrere Bildphasen
+Jeder Bildprompt muss sinngemäß enthalten:
 
-Diese Welt eignet sich besonders oft für zusätzliche Bildwechsel, weil geografische Erklärungen natürliche Zoomstufen besitzen:
+> Every anthropomorphic main character is a complete perfectly round circular sphere. Never use a map-shaped or human-shaped character.
 
-```text
-Welt/Kontinent → Land
-Land → Grenze/Nachbar
-historische Karte → heutige Situation
-Land A → Vergleich mit Land B
-Überblick → Detail
-```
+### Themen außerhalb Geografie
 
-Trotzdem gilt ausdrücklich **keine feste Zielsumme** wie 16–18 Bilder. Die Bildanzahl bleibt pro Reel und pro Szene individuell.
+Psychologie, Gesellschaft, Geschichte, Verhalten oder abstrakte Mechanismen werden nicht in eine andere Bildwelt gewechselt. Stattdessen werden runde Kugelfiguren mit passenden Requisiten, Symbolen, Umgebungen und Metaphern innerhalb derselben Kugel-Ästhetik verwendet.
 
----
-
-## 3. `visual-metaphor` — Metaphern-Welt
-
-Diese Welt ist für abstrakte Mechanismen, Ursache-Wirkung, Denkmodelle und unsichtbare Prozesse gedacht.
-
-Verbindliche Merkmale:
-- ein starkes Hauptsymbol
-- klare visuelle Hierarchie
-- möglichst in einer Sekunde verständliche Metapher
-- typische Motive: Anker, Magnet, Waage, Domino, Mauer, Filter, Trichter, Seil, Käfig
-- keine überladene Symbolsammlung
-
-### Mehrere Bildphasen
-
-Ein starkes Einzelmotiv darf lange genug stehen. Ein zweites Bild ist nur sinnvoll, wenn es einen echten zweiten Erklärungsschritt zeigt:
-
-```text
-Metapher/Mechanismus → Konsequenz
-Ausgangszustand → sichtbare Wirkung
-Problem → Auflösung
-```
-
-Keine feste Gesamtzahl erzwingen.
+Beispiele:
+- Gruppendruck → mehrere runde Figuren + eine abweichende Kugelfigur
+- Erinnerung → Kugelfigur + Gedanken-/Speicher-Symbole
+- soziale Medien → Kugelfiguren + Feed-/Benachrichtigungs-Metaphern
+- Geschichte → Kugelfiguren + Karten, Dokumente, Zeitachsen
 
 ---
 
-# Sichtbarer Text in generierten Bildern — globale Pflichtregel
+# Sichtbarer Text — globale Pflichtregel
 
-Workflow- und Produktionsdaten sind **niemals Bildinhalt**.
+Workflow- und Produktionsdaten sind niemals Bildinhalt.
 
-In einem generierten Bild dürfen niemals sichtbar erscheinen:
+Nie sichtbar im Bild:
 - `BILD 00`, `BILD 01`, `Bild 1` usw.
 - `COVER`
 - `SZENE`, `SCENE`
 - `BILDPHASE`, `IMAGE PHASE`
 - `DATEINAME`, Dateinamen oder Dateiendungen
 - `GOOGLE FLOW`, `PROMPT`, `STYLE-REFERENZ`, `ZIEL`
-- technische IDs wie `scene-04-image-02`
-- sonstige Workflow-Metadaten aus der Sammeldatei
+- technische IDs
+- sonstige Workflow-Metadaten
 
-Für **jede einzelne Bildphase** gilt eine harte Text-Whitelist:
-- wenn `imageText`/Cover-Headline gesetzt ist, ist **genau dieser Text der einzige erlaubte lesbare Text im Bild**
-- wenn `imageText` leer ist, muss das Bild **vollständig ohne lesbaren Text** erzeugt werden
-
-Diese Regel gilt auch dann, wenn technische Labels unmittelbar vor dem Bildprompt in einer Sammeldatei stehen. Sie sind ausschließlich Steuerinformationen und dürfen niemals gerendert werden.
+Pro Bild gilt eine harte Text-Whitelist:
+- `imageText`/Cover-Headline gesetzt → genau dieser Text ist der einzige erlaubte lesbare Text
+- `imageText` leer → überhaupt kein lesbarer Text
 
 ---
 
-# Bilddichte — globale Regel
+# Bilddichte
 
-Die alte Annahme `eine narrative Szene = genau ein Bild` ist aufgehoben.
+Die Bildanzahl bleibt individuell.
 
 Jede narrative Szene erhält:
 - 1 Bild, wenn es reicht
 - 2 Bilder, wenn ein weiterer visueller Schritt klar verbessert
 - 3 Bilder nur selten
 
-Wenn ein einziges Still-Bild ungefähr 3,5–4 Sekunden oder länger stehen würde, wird eine zusätzliche Bildphase aktiv geprüft. Sie wird nicht automatisch hinzugefügt.
+Wenn ein einzelnes Still-Bild ungefähr 3,5–4 Sekunden oder länger stehen würde, wird eine zusätzliche Bildphase aktiv geprüft, aber nicht automatisch erzwungen.
 
-Entscheidend ist nicht die Bildwelt und nicht eine Quote, sondern:
-- Verständlichkeit
-- visueller Informationsgewinn
-- Abwechslung
-- Rhythmus
-- Vermeidung unnötig langer statischer Stellen
-
-Jedes zusätzliche Bild muss einen begründbaren Mehrwert haben.
+Entscheidend sind Verständlichkeit, visueller Informationsgewinn, Abwechslung und Rhythmus.

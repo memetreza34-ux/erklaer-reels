@@ -10,25 +10,44 @@ Bei „Mach ein neues Reel“ autonom:
 2. Thema aus den erlaubten Säulen wählen
 3. deutsches Voice-over mit 155–175 Wörtern schreiben
 4. 12–14 narrative Szenen planen, Standard 13
-5. Bildwelt nach dem fertigen Script wählen
-6. **Bildanzahl pro Reel und pro Szene individuell planen**
-7. Cover + alle Bildphasen-Prompts + Google-Flow-Sammeldatei + Caption + Quellen fertigstellen
+5. **immer `round-country-characters` verwenden**, solange der Nutzer keine andere Welt ausdrücklich reaktiviert
+6. Bildanzahl pro Reel und Szene individuell planen
+7. Cover + Bildphasen-Prompts + Einzelprompt-Dateien + Flow-Controller + Caption + Quellen fertigstellen
 8. keine Untertitel erzeugen
 9. externe Assets zuerst suchen, bevor etwas als fehlend gemeldet wird
 10. Assets zweifach visuell prüfen, Audio synchronisieren und nur nach echten QC-Gates rendern
 
+## Aktive Bildwelt
+
+Nur `round-country-characters` ist aktiv.
+
+`human-editorial-cartoon` und `visual-metaphor` sind pausiert.
+
+Die Kugel-Welt gilt für **alle Themen**, auch Psychologie, Gesellschaft, Verhalten und abstrakte Mechanismen.
+
+### Figurenregel
+
+Jede anthropomorphe Hauptfigur ist eine vollständige runde Kugel.
+
+- Länder → runde Kugel + vereinfachtes Flaggenmuster
+- nicht-länderspezifische Rollen → runde Kugel + neutrale Farben/Symbole
+- einfache weiße Augen
+- höchstens winzige Arme/Beine
+
+Strikt verboten:
+- Länderumriss/Kartenform als Figurenkörper
+- Gesicht/Augen auf einer Kartenform
+- unregelmäßige geografische Figuren
+- menschliche Köpfe/Torsi als Hauptwelt
+
+Jeder Bildprompt erzwingt sinngemäß:
+`complete perfectly round circular character / country sphere; never a map-shaped or human-shaped character`.
+
 ## Narrative Szenen ≠ Bildanzahl
 
-Die frühere starre Annahme `13 Szenen = 13 Bilder` ist aufgehoben.
+Jede narrative Szene besitzt normalerweise 1 Bildphase, 2 wenn ein zweiter visueller Schritt klar verbessert, 3 nur selten.
 
-Jede narrative Szene besitzt:
-- normalerweise 1 Bildphase
-- 2 Bildphasen, wenn ein zweiter visueller Schritt Verständnis oder Rhythmus klar verbessert
-- 3 Bildphasen nur selten bei echten dreistufigen Erklärungen
-
-Wenn ein einziges Still-Bild ungefähr 3,5–4 Sekunden oder länger stehen würde, aktiv eine zweite Bildphase prüfen. **Nicht automatisch hinzufügen**, wenn sie keinen Mehrwert bringt.
-
-Keine feste Gesamtzahl erzwingen. Länder-Reels können häufiger zusätzliche Karten-/Zoom-/Vergleichsbilder brauchen; Köpfe- oder Metaphern-Reels können mit weniger Wechseln funktionieren. Entscheidend ist immer der konkrete Inhalt.
+Wenn ein Still-Bild ungefähr 3,5–4 Sekunden oder länger stehen würde, aktiv eine weitere Bildphase prüfen. Keine feste Gesamtzahl erzwingen.
 
 Technische Felder:
 - `reel.json.imageCountMode = "individual-per-reel"`
@@ -36,73 +55,61 @@ Technische Felder:
 - pro Szene `imageCount`
 - pro Szene `imagePhases[]`
 
-Erste Phase:
-- `image-prompt.txt`
-- beginnt bei `startPercent: 0`
+## Google Flow — neue Pflichtstruktur
 
-Zusätzliche Phasen:
-- `image-prompt-02.txt`
-- `image-prompt-03.txt`
-- eigener visueller Gedanke und eigener Grund für den Bildwechsel
+**Nicht mehr:** einen riesigen Prompt mit allen Bildprompts an Flow geben.
 
-## Google Flow
-
-Repo-Agenten erzeugen keine Bilder selbst. Der Nutzer startet Google Flow einmal mit:
+**Stattdessen:**
 
 ```text
-all-image-prompts/all-image-prompts.txt
+all-image-prompts/
+  google-flow-controller.txt
+  image-prompts/
+    Bild 00.txt
+    Bild 01.txt
+    Bild 02.txt
+    ...
+  all-image-prompts.txt
 ```
 
-Danach arbeitet Flow streng seriell und ohne weiteres `Go`:
+`all-image-prompts.txt` ist nur Kompatibilitäts-/Indexdatei.
+
+Der Nutzer startet Flow mit `google-flow-controller.txt`.
+
+Der Agent arbeitet strikt:
 
 ```text
-Bild erzeugen → vollständig warten → sofort umbenennen → prüfen → nächstes Bild
+nur nächste Prompt-Datei öffnen
+→ genau 1 Bild erzeugen
+→ vollständig warten
+→ umbenennen
+→ prüfen
+→ erst dann nächste Prompt-Datei öffnen
 ```
 
-`Bild 00.png` = Cover und Style-Master.
+Strikt verboten:
+- alle Prompt-Dateien vorab lesen
+- Batch
+- Queue
+- Parallelgenerierung
+- mehrere Bilder pro Auftrag
+- nächstes Bild starten, bevor das aktuelle fertig ist
 
-Danach ist die Nummer **globale Bildreihenfolge**, nicht automatisch Szenennummer. Wenn Szene 2 zwei Bilder besitzt, können Bild 02 und Bild 03 beide zu Szene 2 gehören.
+`Bild 00.png` ist Cover und Style-Master.
 
-Keine Batch-/Queue-/Parallelgenerierung.
+## Workflow-Metadaten dürfen nie im Bild erscheinen
 
-### Workflow-Metadaten dürfen niemals im Bild erscheinen
-
-Die Sammeldatei enthält technische Steuerinformationen. Diese sind **niemals visueller Inhalt**.
-
-Verboten als sichtbarer Bildtext sind insbesondere:
-- Bildnummern (`BILD 00`, `Bild 01` usw.)
+Verboten als sichtbarer Bildtext:
+- Bildnummern
 - `COVER`
 - `SZENE` / `SCENE`
 - `BILDPHASE` / `IMAGE PHASE`
-- `DATEINAME`, Dateinamen und technische IDs
+- `DATEINAME`, Dateinamen, technische IDs
 - `GOOGLE FLOW`, `PROMPT`, `STYLE-REFERENZ`, `ZIEL`
 
-Für jeden Bildauftrag gilt eine harte Text-Whitelist:
-- `imageText` bzw. Cover-Headline gesetzt → **nur exakt dieser Text darf lesbar sein**
-- `imageText` leer → **kein lesbarer Text im Bild**
-
-Die Prompt-Sammeldatei muss diese Regel vor jedem einzelnen Bildprompt ausdrücklich wiederholen.
-
-## Bildwelten
-
-### `human-editorial-cartoon`
-Köpfe-Welt: große dominante Gesichter/Köpfe, starke Mimik, wenig Körper, Close-ups und mentale Mechanismen direkt am Kopf. Keine generischen überfüllten Gruppenszenen.
-
-### `round-country-characters`
-Länder-Welt: **jede anthropomorphe Länderfigur ist eine vollständig runde Kugel** mit vereinfachtem Flaggenmuster und einfachen weißen Augen. Höchstens winzige Arme/Beine.
-
-Strikt verboten:
-- Länderumriss/Karten-Silhouette als Figurenkörper
-- Gesicht oder Augen auf einer Kartenform
-- unregelmäßige Länderform mit Flagge statt runder Kugel
-
-Karten- und Länderumrisse dürfen nur als **gesichtslose Hintergrund-/Erklärgrafiken** vorkommen. Diese Welt darf besonders häufig 2 Bildphasen in einer Szene nutzen, aber nie nach fixer Quote.
-
-Jeder Länder-Welt-Prompt muss sinngemäß erzwingen:
-`complete perfectly round country sphere / circular country ball; never a map-shaped character`.
-
-### `visual-metaphor`
-Starke zentrale Metapher; zweite Phase nur, wenn Folge oder Auflösung sichtbar einen neuen Schritt liefert.
+Harte Text-Whitelist:
+- `imageText`/Cover-Headline gesetzt → nur exakt dieser Text darf lesbar sein
+- leer → kein lesbarer Text
 
 ## Untertitel
 
@@ -119,14 +126,14 @@ Global deaktiviert:
 - exakt 1,10x, Pitch erhalten
 - −16 LUFS
 - max. −1,5 dBTP
-- narrative Szenen über echte akustisch bestätigte `audioCue`-Anker synchronisieren
+- Szenen über echte akustisch bestätigte `audioCue`-Anker synchronisieren
 - zusätzliche Bildphasen über `startPercent` innerhalb der bestätigten Szenendauer legen
 - nach Audioänderung Timeline neu synchronisieren
 - keine erfundenen Szenenanker
 
 ## Asset-Zuordnung
 
-Dateinummer ist nur Routing-Hilfe. Jede Bildphase tatsächlich öffnen und gegen Narration, Audio-Cue, Phasen-Visual-Idea, Bildtext und Prompt prüfen. Danach gegen vorherige und nächste **Bildphase** prüfen.
+Dateinummer ist nur Routing-Hilfe. Jede Bildphase tatsächlich öffnen und gegen Narration, Audio-Cue, Visual-Idea, Bildtext und Prompt prüfen. Danach gegen vorherige und nächste Bildphase prüfen.
 
 Unter 0,90 Konfidenz nicht raten. `filename-only` ist verboten.
 
