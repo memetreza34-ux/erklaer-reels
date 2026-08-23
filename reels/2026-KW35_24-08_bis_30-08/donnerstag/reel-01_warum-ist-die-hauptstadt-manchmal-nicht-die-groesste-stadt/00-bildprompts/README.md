@@ -1,9 +1,9 @@
 # Bildprompts
 
-Dieses Reel hat **13 narrative Szenen und 18 individuell geplante Szenenbilder** plus Cover `Bild 00`.
+Dieses Reel nutzt den neuen Qualitätsmodus: **ein Prompt = ein Bild**.
 
-Die vollständige Google-Flow-Sammeldatei liegt unter:
+Nicht mehr die alte Sammeldatei als Mega-Prompt in Google Flow einfügen.
 
-`../../all-image-prompts/all-image-prompts.txt`
+Verwende `../../all-image-prompts/google-flow-controller.txt` zur Reihenfolge und danach ausschließlich jeweils **eine** Datei aus `../../all-image-prompts/individual-prompts/` gleichzeitig.
 
-Google Flow erzeugt streng seriell `Bild 00.png` bis `Bild 18.png`. Die Bildnummer ist die globale Bildreihenfolge und nicht automatisch die Szenennummer. Untertitel sind deaktiviert.
+Reihenfolge: `Bild 00.txt` bis `Bild 18.txt`. Erst wenn ein Bild komplett fertig und geprüft ist, darf die nächste Datei verwendet werden.
