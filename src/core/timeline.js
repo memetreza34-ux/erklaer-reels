@@ -4,6 +4,7 @@ import path from 'node:path';
 import { promisify } from 'node:util';
 
 import { SUBTITLE_STYLE } from '../shared/subtitle-style.js';
+import { normalizeSceneImagePhases } from '../shared/visual-moments.js';
 
 const execFileAsync = promisify(execFile);
 const AUDIO_EXTENSIONS = new Set(['.mp3', '.wav', '.m4a', '.aac', '.flac', '.ogg']);
@@ -85,9 +86,10 @@ async function ensureAudioSync(reelDirectory, scenes) {
       instructions: [
         'Trage die echte Audiodauer ein.',
         'cueTimeSeconds ist der Zeitpunkt, an dem audioCue gesprochen wird.',
-        'Das Bild beginnt normalerweise leadInSeconds vor cueTimeSeconds.',
-        'Prüfe jeden Szenenwechsel gegen den sichtbaren Bildinhalt, damit benachbarte Bilder nicht vertauscht werden.',
-        'Nach dem letzten gesprochenen Wort bleibt das Schlussbild automatisch kurz stehen.'
+        'Das erste Bild einer Szene beginnt normalerweise leadInSeconds vor cueTimeSeconds.',
+        'Zusätzliche Bildphasen wechseln innerhalb der bestätigten Szenendauer anhand ihres geplanten startPercent.',
+        'Prüfe jeden Szenenwechsel gegen den sichtbaren Bildinhalt.',
+        'Nach dem letzten gesprochenen Wort bleibt das letzte Bild automatisch kurz stehen.'
       ],
       cueTimings: scenes.map((scene, index) => ({
         sceneId: scene.sceneId,
@@ -263,6 +265,34 @@ function timingRangeForScene(index, sceneCount, rules) {
   return { ...rules.standardSeconds, label: 'Standardszene' };
 }
 
+function visualPhasesForScene(scene, baseTiming, extendedTiming, manifest, legacyAsset) {
+  const manifestByTarget = new Map((manifest.visuals ?? []).map((entry) => [entry.targetId, entry]));
+  const definitions = normalizeSceneImagePhases(scene);
+
+  return definitions.map((phase, index) => {
+    const asset = manifestByTarget.get(phase.targetId) ?? (phase.primary ? legacyAsset : null) ?? {};
+    const startSeconds = round(baseTiming.startSeconds + baseTiming.durationSeconds * phase.startPercent);
+    const next = definitions[index + 1];
+    const endSeconds = next
+      ? round(baseTiming.startSeconds + baseTiming.durationSeconds * next.startPercent)
+      : round(extendedTiming.endSeconds);
+    return {
+      targetId: phase.targetId,
+      phaseId: phase.phaseId,
+      phaseOrder: phase.phaseOrder,
+      startPercent: phase.startPercent,
+      startSeconds,
+      endSeconds,
+      durationSeconds: round(Math.max(0, endSeconds - startSeconds)),
+      imageFile: asset.expectedFile ?? `scenes/${scene.sceneId}/${phase.expectedImageFileName}`,
+      imageStatus: asset.status ?? phase.imageStatus ?? 'missing',
+      assetVerification: asset.verification ?? phase.assetVerification ?? null,
+      visualIdea: phase.visualIdea || scene.visualIdea || '',
+      imageText: phase.imageText || scene.imageText || ''
+    };
+  });
+}
+
 function qualityReport(
   reelDirectory,
   scenes,
@@ -280,11 +310,11 @@ function qualityReport(
   const holdRange = sceneTimingRules.postVoiceHoldRangeSeconds ?? { min: 0.6, max: 0.8 };
   const checks = [
     ['hook-starts-at-zero', timelineScenes[0]?.startSeconds === 0, 'Das Hook-Bild muss bei Sekunde 0 beginnen.', 'error'],
-    ['scene-count-match', timelineScenes.length === scenes.length, 'Die Timeline benötigt genau einen Eintrag pro Szene.', 'error'],
+    ['scene-count-match', timelineScenes.length === scenes.length, 'Die Timeline benötigt genau einen narrativen Eintrag pro Szene.', 'error'],
     ['audio-present', Boolean(audioPath), 'Die Voice-over-Datei fehlt.', strict ? 'error' : 'warning'],
     ['audio-duration-known', durationKnown, 'Die Audiodauer ist noch nicht exakt bekannt.', strict ? 'error' : 'warning'],
     ['exact-audio-sync', timingStatus === 'audio-synced', 'Nicht alle Audio-Cues besitzen verifizierte Zeitstempel.', strict ? 'error' : 'warning'],
-    ['all-scene-images-ready', timelineScenes.every((scene) => scene.imageStatus === 'ready'), 'Noch nicht alle Szenenbilder sind bereit.', strict ? 'error' : 'warning'],
+    ['all-scene-images-ready', timelineScenes.every((scene) => scene.imageStatus === 'ready'), 'Noch nicht alle geplanten Bildphasen sind bereit.', strict ? 'error' : 'warning'],
     ['ending-hold-range', endingHoldSeconds >= holdRange.min && endingHoldSeconds <= holdRange.max,
       `Das Schlussbild muss nach dem letzten gesprochenen Wort ${holdRange.min}–${holdRange.max} Sekunden stehen bleiben.`, balanceLevel],
     ['subtitles-disabled', subtitles.length === 0,
@@ -304,6 +334,12 @@ function qualityReport(
       passed: scene.durationSeconds >= Number(range.min) && scene.durationSeconds <= Number(range.max),
       level: balanceLevel,
       message: `${scene.sceneId}: ${range.label} dauert ${scene.durationSeconds.toFixed(2)} Sekunden; erlaubt sind ${range.min}–${range.max} Sekunden.`
+    });
+    checks.push({
+      id: `${scene.sceneId}-visual-phases-present`,
+      passed: Array.isArray(scene.imagePhases) && scene.imagePhases.length >= 1 && scene.imagePhases.length <= 3,
+      level: 'error',
+      message: `${scene.sceneId}: Jede Szene benötigt ein bis drei individuell geplante Bildphasen.`
     });
     if (index) {
       const previous = timelineScenes[index - 1];
@@ -354,7 +390,7 @@ export async function buildMasterTimeline(reelDirectory, { audioDurationSeconds 
   const endingHoldSeconds = Number(sceneTimingRules.postVoiceHoldSeconds ?? 0.7);
   const subtitlesPlan = await readJson(path.join(reelDirectory, 'subtitles', 'subtitle-plan.json'), { enabled: false, cues: [] });
   const effectsPlan = await readJson(path.join(reelDirectory, 'effects', 'effects-plan.json'), { scenes: [] });
-  const manifest = await readJson(path.join(reelDirectory, 'assets-manifest.json'), { audio: {}, scenes: [] });
+  const manifest = await readJson(path.join(reelDirectory, 'assets-manifest.json'), { audio: {}, visuals: [], scenes: [] });
   const status = await readJson(path.join(reelDirectory, 'status.json'), {});
   const audioSync = await ensureAudioSync(reelDirectory, scenes);
   const audioPath = await findAudioPath(reelDirectory, manifest);
@@ -374,15 +410,18 @@ export async function buildMasterTimeline(reelDirectory, { audioDurationSeconds 
   const timelineScenes = extendedTimingScenes.map((item, index) => {
     const scene = scenes[index];
     const effect = effectByScene.get(scene.sceneId) ?? {};
-    const asset = manifestByScene.get(scene.sceneId) ?? {};
+    const legacyAsset = manifestByScene.get(scene.sceneId) ?? {};
+    const imagePhases = visualPhasesForScene(scene, baseTiming.scenes[index], item, manifest, legacyAsset);
     return {
       ...item,
       title: scene.title ?? '',
       narration: scene.narration ?? '',
       imageText: scene.imageText ?? '',
-      imageFile: asset.expectedFile ?? `scenes/${scene.sceneId}/${scene.expectedImageFileName ?? `${scene.sceneId}.png`}`,
-      imageStatus: asset.status ?? scene.imageStatus ?? 'missing',
-      assetVerification: asset.verification ?? scene.assetVerification ?? null,
+      imageCount: imagePhases.length,
+      imagePhases,
+      imageFile: imagePhases[0]?.imageFile ?? legacyAsset.expectedFile ?? `scenes/${scene.sceneId}/${scene.expectedImageFileName ?? `${scene.sceneId}.png`}`,
+      imageStatus: imagePhases.every((phase) => phase.imageStatus === 'ready') ? 'ready' : 'missing',
+      assetVerification: imagePhases[0]?.assetVerification ?? legacyAsset.verification ?? scene.assetVerification ?? null,
       subtitleCueIds: [],
       transitionIn: effect.transitionIn ?? { type: index ? 'cut' : 'none', durationSeconds: 0 },
       cameraMotion: effect.cameraMotion ?? { type: 'none', startScale: 1, endScale: 1, panXPercent: 0, panYPercent: 0 },
@@ -394,7 +433,7 @@ export async function buildMasterTimeline(reelDirectory, { audioDurationSeconds 
   const timingStatus = durationKnown && allCuesExact ? 'audio-synced' : durationKnown ? 'audio-duration-synced' : 'estimated';
   const relativeAudio = audioPath ? path.relative(reelDirectory, audioPath).split(path.sep).join('/') : null;
   const timeline = {
-    version: 4,
+    version: 5,
     reelId: reel.reelId,
     createdAt: new Date().toISOString(),
     timingStatus,
@@ -411,6 +450,8 @@ export async function buildMasterTimeline(reelDirectory, { audioDurationSeconds 
       durationSeconds: round(compositionDuration),
       endingHoldSeconds: round(endingHoldSeconds)
     },
+    imageCountMode: 'individual-per-reel',
+    plannedImageCount: timelineScenes.reduce((sum, scene) => sum + scene.imagePhases.length, 0),
     subtitles: {
       enabled: false,
       cues: []
@@ -419,10 +460,42 @@ export async function buildMasterTimeline(reelDirectory, { audioDurationSeconds 
     scenes: timelineScenes
   };
 
+  const shots = [];
+  for (let sceneIndex = 0; sceneIndex < timelineScenes.length; sceneIndex += 1) {
+    const scene = timelineScenes[sceneIndex];
+    for (let phaseIndex = 0; phaseIndex < scene.imagePhases.length; phaseIndex += 1) {
+      const phase = scene.imagePhases[phaseIndex];
+      const firstShot = shots.length === 0;
+      shots.push({
+        sceneId: phase.targetId,
+        shotId: phase.targetId,
+        parentSceneId: scene.sceneId,
+        parentSceneOrder: sceneIndex + 1,
+        phaseId: phase.phaseId,
+        phaseOrder: phase.phaseOrder,
+        imageFile: phase.imageFile,
+        imageStatus: phase.imageStatus,
+        assetVerification: phase.assetVerification,
+        startSeconds: phase.startSeconds,
+        endSeconds: phase.endSeconds,
+        startFrame: Math.round(phase.startSeconds * 30),
+        endFrame: Math.round(phase.endSeconds * 30),
+        transitionIn: { type: firstShot ? 'none' : 'cut', durationSeconds: 0 },
+        cameraMotion: phaseIndex === 0
+          ? scene.cameraMotion
+          : { type: 'none', startScale: 1, endScale: 1, panXPercent: 0, panYPercent: 0 },
+        subtitles: [],
+        soundEffects: phaseIndex === 0 ? scene.soundEffects : []
+      });
+    }
+  }
+
   const renderPlan = {
-    version: 4,
+    version: 5,
     reelId: reel.reelId,
-    status: timelineScenes.every((scene) => scene.imageStatus === 'ready') && relativeAudio ? 'ready-for-renderer' : 'waiting-for-assets',
+    status: shots.every((shot) => shot.imageStatus === 'ready') && relativeAudio ? 'ready-for-renderer' : 'waiting-for-assets',
+    imageCountMode: 'individual-per-reel',
+    plannedImageCount: shots.length,
     composition: {
       width: 1080,
       height: 1920,
@@ -435,19 +508,7 @@ export async function buildMasterTimeline(reelDirectory, { audioDurationSeconds 
     voiceover: { file: relativeAudio, volume: 1 },
     backgroundMusic: effectsPlan.backgroundMusic ?? { enabled: false },
     subtitlesEnabled: false,
-    scenes: timelineScenes.map((scene) => ({
-      sceneId: scene.sceneId,
-      imageFile: scene.imageFile,
-      assetVerification: scene.assetVerification,
-      startSeconds: scene.startSeconds,
-      endSeconds: scene.endSeconds,
-      startFrame: Math.round(scene.startSeconds * 30),
-      endFrame: Math.round(scene.endSeconds * 30),
-      transitionIn: scene.transitionIn,
-      cameraMotion: scene.cameraMotion,
-      subtitles: [],
-      soundEffects: scene.soundEffects
-    }))
+    scenes: shots
   };
 
   const report = qualityReport(
@@ -470,6 +531,7 @@ export async function buildMasterTimeline(reelDirectory, { audioDurationSeconds 
   status.timeline = report.passed ? timingStatus : 'needs-review';
   status.subtitles = 'disabled';
   status.wordSync = 'not-required';
+  status.plannedImageCount = shots.length;
   status.endingHold = report.checks.find((check) => check.id === 'ending-hold-range')?.passed ? 'ready' : 'needs-review';
   status.render = renderPlan.status;
   status.qualityControl = report.passed ? 'timeline-passed' : 'timeline-failed';
