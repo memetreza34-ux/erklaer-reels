@@ -70,6 +70,8 @@ async function main() {
 
   const result = await createReelWorkspace({ title, script, date, sceneCount, outputRoot });
   result.reel.sourceQualitySchemaVersion = 2;
+  result.reel.visualStyleId = 'round-country-characters';
+  result.reel.visualStyleReason = 'Globale Nutzerregel: Für alle neuen Reels ist ausschließlich die universelle Kugel-Welt aktiv; andere Bildwelten sind pausiert.';
   await writeFile(
     path.join(result.reelDirectory, 'reel.json'),
     `${JSON.stringify(result.reel, null, 2)}\n`,
@@ -90,12 +92,16 @@ async function main() {
   console.log(`Reel-Arbeitsordner erstellt: ${result.reelDirectory}`);
   console.log(`Szenen: ${result.reel.sceneCount}`);
   console.log(`Zieldauer: ${result.reel.targetDurationSeconds} Sekunden`);
+  console.log('Bildwelt: round-country-characters (universelle Kugel-Welt, verbindlich).');
   console.log('Quellen-QC: Schema 2 ist für dieses neue Reel verpflichtend.');
   console.log(`Codex-Auftrag: ${production.taskFile}`);
-  console.log(`Chronologische Bildprompt-Datei: ${promptBundle.file}`);
+  console.log(`Google-Flow-Controller: ${promptBundle.controller}`);
+  console.log(`Einzelprompt-Ordner: ${promptBundle.promptDirectory}`);
+  console.log(`Manifest: ${promptBundle.file}`);
   console.log(`Übersichtliche Ordner: ${humanView.visibleFolders.join(', ')}`);
   if (humanView.finder.applied) console.log('Technische Ordner wurden im macOS Finder ausgeblendet.');
   console.log('Nach Fertigstellung aller Bildprompts verpflichtend export:prompts --strict ausführen.');
+  console.log('Google Flow darf danach immer nur genau eine Einzelprompt-Datei gleichzeitig erhalten.');
   console.log('Pflicht: production/agent-task.md jetzt vollständig bearbeiten und check:content --strict ausführen. Nicht nach der Ordnererstellung stoppen.');
 }
 
