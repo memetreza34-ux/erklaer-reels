@@ -65,13 +65,41 @@ Danach ist die Nummer **globale Bildreihenfolge**, nicht automatisch Szenennumme
 
 Keine Batch-/Queue-/Parallelgenerierung.
 
+### Workflow-Metadaten dürfen niemals im Bild erscheinen
+
+Die Sammeldatei enthält technische Steuerinformationen. Diese sind **niemals visueller Inhalt**.
+
+Verboten als sichtbarer Bildtext sind insbesondere:
+- Bildnummern (`BILD 00`, `Bild 01` usw.)
+- `COVER`
+- `SZENE` / `SCENE`
+- `BILDPHASE` / `IMAGE PHASE`
+- `DATEINAME`, Dateinamen und technische IDs
+- `GOOGLE FLOW`, `PROMPT`, `STYLE-REFERENZ`, `ZIEL`
+
+Für jeden Bildauftrag gilt eine harte Text-Whitelist:
+- `imageText` bzw. Cover-Headline gesetzt → **nur exakt dieser Text darf lesbar sein**
+- `imageText` leer → **kein lesbarer Text im Bild**
+
+Die Prompt-Sammeldatei muss diese Regel vor jedem einzelnen Bildprompt ausdrücklich wiederholen.
+
 ## Bildwelten
 
 ### `human-editorial-cartoon`
 Köpfe-Welt: große dominante Gesichter/Köpfe, starke Mimik, wenig Körper, Close-ups und mentale Mechanismen direkt am Kopf. Keine generischen überfüllten Gruppenszenen.
 
 ### `round-country-characters`
-Länder-Welt: runde Länderfiguren; Karten, Grenzen, Zooms, Nachbarn und Vergleiche. Diese Welt darf besonders häufig 2 Bildphasen in einer Szene nutzen, aber nie nach fixer Quote.
+Länder-Welt: **jede anthropomorphe Länderfigur ist eine vollständig runde Kugel** mit vereinfachtem Flaggenmuster und einfachen weißen Augen. Höchstens winzige Arme/Beine.
+
+Strikt verboten:
+- Länderumriss/Karten-Silhouette als Figurenkörper
+- Gesicht oder Augen auf einer Kartenform
+- unregelmäßige Länderform mit Flagge statt runder Kugel
+
+Karten- und Länderumrisse dürfen nur als **gesichtslose Hintergrund-/Erklärgrafiken** vorkommen. Diese Welt darf besonders häufig 2 Bildphasen in einer Szene nutzen, aber nie nach fixer Quote.
+
+Jeder Länder-Welt-Prompt muss sinngemäß erzwingen:
+`complete perfectly round country sphere / circular country ball; never a map-shaped character`.
 
 ### `visual-metaphor`
 Starke zentrale Metapher; zweite Phase nur, wenn Folge oder Auflösung sichtbar einen neuen Schritt liefert.
