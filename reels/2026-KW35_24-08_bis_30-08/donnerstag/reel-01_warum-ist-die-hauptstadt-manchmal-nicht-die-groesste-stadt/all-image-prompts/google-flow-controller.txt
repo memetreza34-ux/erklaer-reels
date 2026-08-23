@@ -1,0 +1,7 @@
+GOOGLE FLOW SERIAL CONTROLLER — QUALITY MODE
+
+Do not paste all visual prompts into one Flow message. Open exactly one file from `individual-prompts/` at a time, send only that file content to Google Flow, generate exactly one image, wait until it is completely finished, visually check it, rename the completed image externally, and only then open the next prompt file.
+
+Never batch, queue, preload, storyboard, collage, contact-sheet or run multiple image generations in parallel.
+
+Start with `Bild 00.txt`, then continue numerically through `Bild 18.txt`. Bild 00 establishes the style master. The filenames are workflow metadata only and must never appear inside generated artwork.
