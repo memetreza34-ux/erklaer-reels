@@ -153,11 +153,11 @@ export async function ensureHumanReelView(reelDirectory, { hideTechnicalInFinder
   await Promise.all([
     writeIfMissing(
       path.join(absoluteReelDirectory, '00-bildprompts', 'README.md'),
-      '# 00 – Bildprompts und Bilder\n\nVerbindliche aktuelle Regeln stehen in `CURRENT_WORKFLOW.md` im Repository. Für Google Flow verwendest du die komplette Datei `99-alle-bildprompts.txt`. Google Flow erzeugt die Bilder streng einzeln: ein Bild vollständig fertigstellen → sofort `Bild XX.png` benennen → ohne weiteres Go automatisch mit dem nächsten Bild fortfahren. `Bild 00.png` ist Cover und Style-Master. Erst wenn wirklich alle Bilder fertig und korrekt benannt sind, legst du sie gemeinsam in `00-ALLE-BILDER-HIER-REIN`. Bevorzugte Benennung: `Bild 00.png` = Cover, `Bild 01.png` = Szene 1, `Bild 02.png` = Szene 2 usw.\n'
+      '# 00 – Bildprompts und Bilder\n\nVerbindliche aktuelle Regeln stehen in `CURRENT_WORKFLOW.md` im Repository. Für Google Flow verwendest du die komplette Datei `99-alle-bildprompts.txt`. Google Flow erzeugt die Bilder streng einzeln: ein Bild vollständig fertigstellen → sofort `Bild XX.png` benennen → ohne weiteres Go automatisch mit dem nächsten Bild fortfahren. `Bild 00.png` ist Cover und Style-Master. Danach läuft die Nummerierung über alle geplanten Bildphasen global weiter; eine Bildnummer ist nicht automatisch eine Szenennummer. Erst wenn wirklich alle Bilder fertig und korrekt benannt sind, legst du sie gemeinsam in `00-ALLE-BILDER-HIER-REIN`.\n'
     ),
     writeIfMissing(
       path.join(absoluteReelDirectory, 'inbox', 'numbered-images', 'README.md'),
-      '# Nummerierter Bild-Schnellimport\n\nDieser Ordner wird erst verwendet, wenn die komplette Bildreihe fertig erzeugt und jedes Bild bereits korrekt benannt ist. Bevorzugter Standard: `Bild 00.png` = Cover, `Bild 01.png` = Szene 1, `Bild 02.png` = Szene 2 usw. Kompatibilitätsnamen wie `00.png`, `bild-00.png`, `bild_02.webp` oder `03-meine-szene.jpg` werden ebenfalls erkannt. Die Dateinummer bestimmt nur das vorgeschlagene Ziel; vor der endgültigen Übernahme muss jedes Bild weiterhin visuell geprüft werden.\n'
+      '# Nummerierter Bild-Schnellimport\n\nDieser Ordner wird erst verwendet, wenn die komplette Bildreihe fertig erzeugt und jedes Bild bereits korrekt benannt ist. `Bild 00.png` ist das Cover; danach folgt die globale Bildreihenfolge aller geplanten Bildphasen. Kompatibilitätsnamen wie `00.png`, `bild-00.png`, `bild_02.webp` oder `03-meine-szene.jpg` werden ebenfalls erkannt. Die Dateinummer bestimmt nur das vorgeschlagene Ziel; vor der endgültigen Übernahme muss jedes Bild weiterhin visuell geprüft werden.\n'
     ),
     writeIfMissing(path.join(absoluteReelDirectory, '01-voice-script', 'README.md'), '# 01 – Voice-Script\n\nHier liegt der endgültige Text für das Voice-over.\n'),
     writeIfMissing(path.join(absoluteReelDirectory, '02-audio', 'README.md'), '# 02 – Audio\n\nUnbearbeitetes Voice-over nach `AUDIO-HIER-EINFUEGEN`. Das optimierte Audio erscheint später unter `FINAL-AUDIO`.\n'),
@@ -165,7 +165,7 @@ export async function ensureHumanReelView(reelDirectory, { hideTechnicalInFinder
     writeIfMissing(path.join(absoluteReelDirectory, '04-video', 'README.md'), '# 04 – Fertiges Video\n\nDie finale MP4 erscheint nach dem Rendern unter `FERTIGES-VIDEO`.\n'),
     writeIfMissing(
       path.join(absoluteReelDirectory, '99-technik', 'README.md'),
-      '# 99 – Technik\n\nHier sind Quellen, Prüfberichte, Untertitel-, Effekt- und Produktionsdateien gesammelt. Diesen Ordner musst du normalerweise nicht öffnen.\n'
+      '# 99 – Technik\n\nHier sind Quellen, Prüfberichte, Effekt-, Produktions- und Kompatibilitätsdateien gesammelt. Diesen Ordner musst du normalerweise nicht öffnen. Untertitel sind für neue Reels deaktiviert und werden hier nicht als aktiver Arbeitsbereich angeboten.\n'
     ),
     writeIfMissing(path.join(absoluteReelDirectory, 'output', 'README.md'), '# Render-Ausgabe\n\nDie finale MP4 wird lokal in diesem Ordner erzeugt. Videodateien werden nicht in Git gespeichert.\n')
   ]);
@@ -183,7 +183,6 @@ export async function ensureHumanReelView(reelDirectory, { hideTechnicalInFinder
     ['99-technik/QUELLEN.md', '../sources/sources.md', 'file'],
     ['99-technik/PRUEFBERICHTE', '../review', 'dir'],
     ['99-technik/PRODUKTION', '../production', 'dir'],
-    ['99-technik/UNTERTITEL', '../subtitles', 'dir'],
     ['99-technik/EFFEKTE', '../effects', 'dir'],
     ['99-technik/REEL-DATEN.json', '../reel.json', 'file'],
     ['99-technik/STATUS.json', '../status.json', 'file'],
