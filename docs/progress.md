@@ -1,32 +1,48 @@
 # Reel-Fortschritt
 
+> Bei Widersprüchen gilt `CURRENT_WORKFLOW.md`.
+
 Der Produktionsstand eines einzelnen Reel-Ordners kann jederzeit berechnet werden:
 
 ```bash
 npm run status:reel -- \
-  --dir "content/2026-KW31_27-07_bis_02-08/donnerstag/reel-01_titel"
+  --dir "reels/.../reel-01_titel"
 ```
 
 Maschinenlesbare Ausgabe:
 
 ```bash
 npm run status:reel -- \
-  --dir "content/2026-KW31_27-07_bis_02-08/donnerstag/reel-01_titel" \
+  --dir "reels/.../reel-01_titel" \
   --json
 ```
 
-## Drei Werte
+## Produktionsbereiche
 
-- **Vorproduktion:** Script, Stilwahl, Szenen, Bildprompts, Cover-Prompt, Caption, Quellen und Inhaltsprüfung.
-- **Externe Assets:** Szenenbilder, Cover, Audio und Zuordnungsbericht.
-- **Gesamtstand:** 65 % Vorproduktion und 35 % externe Assets.
+Der Status trennt insbesondere:
 
-Ein Reel kann deshalb vor der externen Bilderstellung bei höchstens 65 % Gesamtstand liegen, obwohl die Vorproduktion bereits 100 % erreicht hat. Das trennt sauber zwischen dem, was Codex im Repository erledigt, und dem, was der Nutzer extern erzeugt.
+- **Vorproduktion:** Script, offene Themenentscheidung, feste Kugel-Welt, narrative Szenen, individuelle Bildphasen, Bildprompts, Cover-Prompt, Flow-Gesamtprompt, Caption, Quellen und Inhaltsprüfung.
+- **Externe Assets:** alle tatsächlich geplanten Bildphasen, Cover, Voice-over und sichere Zuordnung.
+- **Postproduktion:** reales Audio-Pacing, verifizierte narrative Audio-Cues, visuelle Zwei-Pass-QC, Timeline, Finalizer, Render-Validierung und echte MP4.
 
-Die Ausgabe nennt außerdem den nächsten sinnvollen Schritt, zum Beispiel:
+Die genaue Prozentgewichtung wird vom aktuellen Status-Code bestimmt. Dokumentation darf keine feste Prozentzahl als Wahrheit annehmen, wenn der Code sie ändert.
 
-- Codex-Auftrag fertigstellen
-- strenge Inhaltsprüfung bestehen
-- Audio und Bilder erzeugen
-- unsortierte Assets zuordnen
-- Videoschnitt beginnen
+## Wichtige Regeln
+
+- 13 narrative Szenen bedeuten nicht automatisch 13 Bilder.
+- Die Asset-Vollständigkeit richtet sich nach `plannedImageCount` und allen `imagePhases`.
+- Quellen-Schema 3 gilt für neu erstellte Reels; bestehende Schema-2-Reels bleiben kompatibel.
+- Untertitel und Word-Sync sind kein aktiver Produktionsfortschritt.
+- Ein vorhandener Dateiname ist keine bestandene visuelle QC.
+- Nicht ausgeführte Prüfungen zählen nicht als bestanden.
+- Ein Readiness-Status darf nicht künstlich erzwungen werden.
+
+Die Ausgabe nennt den nächsten sinnvollen Schritt, zum Beispiel:
+
+- Produktionsauftrag fertigstellen
+- Quellen-/Inhaltsprüfung bestehen
+- externes Voice-over oder Bilder erzeugen
+- unsortierte Assets visuell zuordnen
+- Audio-Cues verifizieren
+- visuelle QC abschließen
+- Finalizer/Render-Validierung ausführen
