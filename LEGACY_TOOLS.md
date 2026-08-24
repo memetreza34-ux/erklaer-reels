@@ -1,6 +1,6 @@
 # Legacy-Werkzeuge
 
-`CURRENT_WORKFLOW.md` ist immer maßgeblich. Diese Datei dokumentiert nur historische Helfer, damit sie nicht versehentlich wieder Teil des aktiven Produktionsworkflows werden.
+`CURRENT_WORKFLOW.md` ist immer maßgeblich. Diese Datei dokumentiert historische Helfer, damit sie nicht versehentlich wieder Teil des aktiven Produktionsworkflows werden.
 
 ## Word-Sync / Untertitel
 
@@ -25,22 +25,29 @@ Er darf bei einem normalen neuen Reel **nicht** autonom ausgeführt werden.
 
 `scripts/sync-whisper.js` darf ebenfalls nur für historische Diagnose oder ausdrücklich angeforderte Audioanalyse verwendet werden. Seine Kandidaten ersetzen niemals akustisch bestätigte Szenenanker.
 
-## Entfernt: `force-render-state.js`
+## Aus dem aktiven Root entfernt
 
-Die frühere Root-Datei `force-render-state.js` wurde aus dem aktiven Repository entfernt.
+Die folgenden historischen Einmal- oder Bypass-Helfer wurden aus dem aktiven Repository entfernt. Ihre frühere Implementierung bleibt über die Git-Historie nachvollziehbar, darf aber nicht wieder als normaler Produktionsweg eingeführt werden:
 
-Grund: Sie erzeugte künstlich verteilte Timings, Subtitle-Cues und gefälschte `passed: true`-/Audio-Messberichte. Das widerspricht den aktuellen QC-Regeln und hätte einen unberechtigten Ready-for-Render-Zustand erzeugen können.
+- `force-render-state.js` – erzeugte künstliche Timings, Subtitle-Cues und gefälschte QC-/Audio-Freigaben.
+- `approve-visuals.js` – setzte visuelle Checks pauschal auf bestanden, ohne echte Bildprüfung.
+- `confirm-assets.js` – setzte Asset-Matching, Konfidenz und Zweitprüfung pauschal auf bestätigt.
+- `do-sync.js` – verteilte Szenen und Wörter rechnerisch über eine feste Dauer und bezeichnete das Ergebnis als audio-synchron.
+- `auto-sync.js` – erzeugte synthetische Szenen- und Wortzeiten aus Textlängen statt aus dem echten Voice-over.
+- `auto-cues.js` – erzeugte alte Subtitle-Cues und gehört nicht mehr zur untertitelfreien Pipeline.
+- `fill-codex.js` – verteilte Wortzeiten künstlich und markierte sie anschließend als geprüft.
+- `fix-content.js`, `fix-narration.js`, `fix-reel.js`, `fill-ki-app-scenes.js` – hart codierte Reparaturskripte für einzelne historische Reels, nicht allgemeine Produktionswerkzeuge.
 
-Die historische Version bleibt über die Git-Historie nachvollziehbar, darf aber nicht wieder als Produktionswerkzeug eingeführt werden.
-
-## Grundregel
+## Unverhandelbare Sicherheitsregel
 
 Legacy-Code darf niemals:
 
 - echte QC-Gates umgehen
 - Messwerte erfinden
 - ungeprüfte Timings als verifiziert markieren
+- `confidence: 1` oder `reviewed: true` ohne echte Prüfung setzen
+- eine visuelle Prüfung simulieren
 - Untertitel für neue Reels reaktivieren
 - einen Render als bereit markieren, wenn die realen Voraussetzungen fehlen
 
-Wenn ein Legacy-Werkzeug im Widerspruch zu `CURRENT_WORKFLOW.md` steht, wird es nicht verwendet.
+Für neue Reels gelten die Kernmodule unter `src/`, die offiziellen CLI-Befehle in `package.json` und die aktuellen Regeln in `CURRENT_WORKFLOW.md`. Wenn ein historischer Helfer im Widerspruch dazu steht, wird er nicht verwendet.
