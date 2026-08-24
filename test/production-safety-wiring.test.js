@@ -7,10 +7,16 @@ async function text(file) {
   return readFile(path.resolve(file), 'utf8');
 }
 
-test('Neue Reels verankern das verpflichtende Quellen-Schema außerhalb von sources.md', async () => {
+test('Neue Reels verankern Quellen-Schema und Kugel-Welt direkt im Workspace-Core', async () => {
+  const workspace = await text('src/core/workspace.js');
   const creator = await text('src/cli/create-reel.js');
-  assert.match(creator, /sourceQualitySchemaVersion = 3/);
-  assert.match(creator, /buildSourcesTemplate/);
+
+  assert.match(workspace, /visualStyleId:\s*'round-country-characters'/);
+  assert.match(workspace, /sourceQualitySchemaVersion:\s*3/);
+  assert.match(workspace, /buildSourcesTemplate/);
+
+  assert.doesNotMatch(creator, /sourceQualitySchemaVersion\s*=\s*3/);
+  assert.doesNotMatch(creator, /buildSourcesTemplate/);
 });
 
 test('Audio-Pacing-CLI bindet die echte Lautheitsmessung an die Ausgabedatei', async () => {
