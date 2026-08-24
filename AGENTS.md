@@ -100,7 +100,7 @@ Technische Felder:
 - pro Szene `imageCount`
 - pro Szene `imagePhases[]`
 
-## Google Flow — wieder der alte komplette Gesamtprompt
+## Google Flow — kompletter serieller Gesamtprompt
 
 Die verbindliche Nutzerdatei ist:
 
@@ -108,7 +108,7 @@ Die verbindliche Nutzerdatei ist:
 00-bildprompts/99-alle-bildprompts.txt
 ```
 
-Sie muss wieder so aufgebaut sein wie die frühere funktionierende Variante:
+Sie muss so aufgebaut sein wie die frühere funktionierende Variante:
 
 ```text
 GOOGLE FLOW – KOMPLETTER SERIELLER BILDLAUF
@@ -174,13 +174,30 @@ Die Überschriften im Gesamtprompt sind reine Workflow-Steuerung. Der eigentlich
 - `imageText`/Cover-Headline gesetzt → nur exakt dieser Text darf lesbar sein
 - leer → kein lesbarer Text
 
+## Quellen-QC
+
+Für **neu erstellte Reels** gilt Quellen-Schema 3.
+
+Mindestens:
+- zwei echte HTTPS-Quellen
+- zwei unterschiedliche Hosts/Domains
+- vollständige Felder `Titel/Institution`, `URL`, `Datum/Zugriff`, `Quellentyp`, `Belegt`
+- mindestens eine Primär-/offizielle Quelle oder wissenschaftliche Originalquelle
+- mindestens eine davon unabhängige Sekundär-/Fachquelle
+
+Unter `Belegt` muss konkret stehen, welche Aussage des Reels die jeweilige Quelle stützt. Die formale QC ersetzt keine inhaltliche Prüfung der Quelle.
+
+Bestehende Schema-2-Reels bleiben rückwärtskompatibel und werden nicht künstlich umgeschrieben.
+
 ## Untertitel
 
 Global deaktiviert:
 - keine Untertitel
 - keine Karaoke-Markierung
-- kein `sync:words`
 - keine künstliche Untertitel-Safe-Zone
+- `sync:words` ist **nicht erforderlich** und darf im aktiven Produktionsworkflow nicht ausgeführt werden
+
+Historische Word-Sync-Helfer dürfen nur explizit als Legacy-Diagnosewerkzeuge verwendet werden; niemals als Pflichtschritt für neue Reels.
 
 ## Audio
 
