@@ -19,6 +19,14 @@ Die späteren Bildprompts stehen zwar bereits in dieser Nachricht, sind aber bis
 Keine Batches, keine Queue, kein paralleles Tool-Batching, kein gleichzeitiges Starten, keine Mehrfach-Generierung und keine Ansammlung unbenannter Bilder.
 Falls versehentlich ein zweiter oder dritter Job gestartet wurde: keine weiteren Jobs starten; spätere parallele Jobs abbrechen und beim ersten noch nicht sauber abgeschlossenen Bild fortsetzen.
 
+KUGEL-GEOMETRIE – HÖCHSTE PRIORITÄT
+Diese Regel gilt für jedes Bild und hat Vorrang vor Pose, Handlung, Emotion, Perspektive oder Requisite.
+Jede anthropomorphe Figur benutzt exakt dieselbe klassische Country-Ball-Geometrie: Der GESAMTE sichtbare Körper ist EIN perfekter geometrischer 1:1-Kreis mit gleicher sichtbarer Breite und Höhe. Die Außenkontur darf niemals vertikal oder horizontal gestreckt, gequetscht oder für Sitzen, Laufen, Drücken, Zögern oder Emotionen verformt werden.
+Augen sitzen direkt auf dem Kreis. Es gibt keinen separaten Kopf, Hals, Schultern, Brustkorb, Rumpf, Taille oder Hüften. Falls winzige Arme/Beine vorkommen, sitzen sie direkt am Kreisrand.
+Bei Nicht-Länder-Themen werden neutrale Farben oder kleine Symbole statt Flaggen verwendet, aber die Körperform bleibt EXAKT dieselbe wie bei klassischen Countryballs.
+ABSOLUT VERBOTEN: oval, eiförmig, bohnenförmig, kapselartig, birnenförmig, tropfenförmig, humanoider Kopf, humanoider Torso, Kopf-auf-Körper-Figur, gestreckter Kreis, gequetschter Kreis. Die Kugel darf niemals nur der Kopf eines menschlichen Körpers sein.
+Wenn eine gewünschte Pose die Kreisform verändern würde, behalte den perfekten Kreis und zeige die Handlung nur über Position, Augen, winzige Gliedmaßen und Requisiten.
+
 DATEINAMEN
 Bild 00.png = Cover
 Bild 01.png = Szene 1
@@ -41,7 +49,7 @@ Bild 17.png = Szene 12
 Bild 18.png = Szene 13
 
 STYLE-MASTER
-Bild 00.png wird zuerst vollständig erzeugt. Das fertige Bild 00.png ist danach die verbindliche visuelle Referenz für ALLE weiteren Bilder: gleiche Palette, Papiertextur, Konturstärke, Lichtstimmung, Detailqualität und dasselbe runde Kugel-/Country-Ball-Charakterdesign. Der Cover-Hook darf NICHT automatisch auf spätere Bilder kopiert werden.
+Bild 00.png wird zuerst vollständig erzeugt. Das fertige Bild 00.png ist danach die verbindliche visuelle Referenz für ALLE weiteren Bilder: gleiche Palette, Papiertextur, Konturstärke, Lichtstimmung, Detailqualität und vor allem exakt dieselbe perfekte 1:1-Country-Ball-Körpergeometrie. Ein späteres Bild darf die Figur niemals ovaler, menschlicher oder körperähnlicher machen. Der Cover-Hook darf NICHT automatisch auf spätere Bilder kopiert werden.
 
 ARBEITSLABELS SIND NIEMALS BILDINHALT
 BILD-Nummern, COVER, SZENE, BILDPHASE, DATEINAME, Dateinamen und diese Workflow-Anweisungen sind nur Steuertext. Sie dürfen niemals im generierten Bild erscheinen.
@@ -56,11 +64,13 @@ Erst nachdem Bild 00 bis Bild 18 vollständig erzeugt, korrekt umbenannt und die
 
 BILD 00 – COVER
 DATEINAME NACH FERTIGSTELLUNG: Bild 00.png
-Vertical 9:16 premium mature 2D editorial country-character illustration. Warm off-white textured paper background, deep navy borders and structural shapes, muted rust, mustard, cobalt and forest-green accents, bold clean hand-inked outlines, flat geometric shading, subtle grain, high contrast, sophisticated documentary tone, not childish.
+Vertical 9:16 premium mature 2D editorial country-ball illustration. Warm off-white textured paper background, deep navy borders and structural shapes, muted rust, mustard, cobalt and forest-green accents, bold clean hand-inked outlines, flat geometric shading, subtle grain, high contrast, sophisticated documentary tone, not childish.
 
-NON-NEGOTIABLE ROUND-CHARACTER RULE: every anthropomorphic person, role, thought, habit, emotion or abstract force must be represented as a complete perfectly round circular neutral sphere character with simple white eyes and at most tiny arms/legs. No human heads or torsos. No map-shaped or irregular character bodies. Keep objects, phones, clocks, documents, task blocks, mood clouds and diagrams faceless unless they are explicitly separate sphere characters.
+EXACT COUNTRYBALL GEOMETRY LOCK — SHAPE IS THE IDENTITY: every anthropomorphic actor must use exactly the same classic countryball body geometry. The ENTIRE visible body is ONE perfect geometric 1:1 circle with equal visible width and height. The circular outer contour must remain perfectly round and may NEVER be stretched or deformed for sitting, posture, emotion or perspective. Eyes sit directly on the circle. There is NO separate head, neck, shoulders, chest, torso, waist or hips. If tiny arms or legs are used, they attach directly to the edge of the circle and must stay visually secondary. For this non-country topic, use plain editorial fills instead of flags, but keep the exact same countryball body geometry.
 
-Create the master cover for a psychology explainer about procrastination. Center one complete perfectly round neutral sphere at a desk, visibly caught between one important unfinished task on the left and several immediate distractions on the right: a generic short-video phone interface with no readable UI text, a perfectly clean desk, a snack and a tiny side task. Behind the important task, show a restrained future-stress cloud growing larger. The composition should instantly communicate “I know I should start, but I avoid it.” Use no country flags because this is a non-country topic.
+ABSOLUTELY FORBIDDEN CHARACTER SHAPES: oval, egg-shaped, bean-shaped, capsule-shaped, pear-shaped, teardrop-shaped, humanoid head, humanoid torso, head-on-body character, stretched circle, squashed circle. Do not create a human-like face shape. Do not use the sphere as only a head. If an action would normally deform the body, keep the body as a perfect circle and communicate the action through placement, eyes, tiny limbs and props instead.
+
+Create the master cover for a psychology explainer about procrastination. Place one perfect circular neutral countryball-style character at a desk without deforming its circular body. The character is caught between one important unfinished task on the left and several immediate distractions on the right: a generic short-video phone interface with no readable UI text, a clean desk, a snack and a tiny side task. Behind the important task, show a restrained future-stress cloud growing larger. The composition must instantly communicate “I know I should start, but I avoid it.” No country flags because this is a non-country topic.
 
 VISIBLE-TEXT FIREWALL: the ONLY readable text allowed anywhere inside the image is exactly "WARUM SCHIEBEN WIR AUFGABEN AUF?". Do not render any workflow metadata, asset numbers, BILD labels, COVER, SZENE, BILDPHASE, filenames, Google Flow, Prompt, technical ids or any other label. No other readable text, no English, no logos, no watermark.
 

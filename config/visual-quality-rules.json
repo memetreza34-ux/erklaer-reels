@@ -1,5 +1,5 @@
 {
-  "version": 9,
+  "version": 10,
   "composition": {
     "width": 1080,
     "height": 1920,
@@ -22,6 +22,8 @@
       "sceneMatchesVisualIdea",
       "sceneOrderConfirmed",
       "visualWorldMatch",
+      "perfectCircularCharacterGeometry",
+      "noOvalEggBeanHumanoidCharacters",
       "characterModelConsistent",
       "mainSubjectSafe",
       "naturalContinuousComposition",
@@ -38,6 +40,9 @@
       "coverMatchesTopic",
       "headlineExactAndReadable",
       "visualWorldMatch",
+      "perfectCircularCharacterGeometry",
+      "noOvalEggBeanHumanoidCharacters",
+      "characterModelConsistent",
       "mainSubjectSafe",
       "naturalContinuousComposition",
       "noArtificialCenterGap",
@@ -45,6 +50,16 @@
       "platformUiSafe",
       "styleConsistent"
     ]
+  },
+  "characterGeometry": {
+    "requiredVisualWorld": "round-country-characters",
+    "bodyShape": "perfect-geometric-circle",
+    "equalVisibleWidthAndHeight": true,
+    "sameGeometryForCountryAndNonCountryCharacters": true,
+    "eyesDirectlyOnCircle": true,
+    "forbidSeparateHeadNeckTorsoShouldersWaist": true,
+    "forbiddenVisibleShapes": ["oval", "egg-shaped", "bean-shaped", "capsule-shaped", "pear-shaped", "teardrop-shaped", "humanoid-body"],
+    "poseMayDeformCircle": false
   },
   "manualEvidence": {
     "requireVisibleSummary": true,

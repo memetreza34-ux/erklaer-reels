@@ -57,9 +57,9 @@ export async function ensureImagePromptBundleDirectory(reelDirectory) {
   await mkdir(paths.individualPromptsDirectory, { recursive: true });
   await mkdir(paths.userDirectory, { recursive: true });
 
-  const readme = `# Google-Flow-Bildprompts\n\nDie **verbindliche Nutzerdatei** ist wieder der bewährte komplette serielle Gesamtprompt:\n\n\`${USER_PROMPTS_DIRECTORY}/${USER_BUNDLE_FILE}\`\n\nDarin stehen zuerst Auftrag, Serienregeln, Dateinamen, Style-Master und Textregel und danach alle Bildprompts vollständig in Reihenfolge. Genau diese Struktur hat sich als qualitativ besser bewährt.\n\nWichtig: Trotz Gesamtprompt darf Google Flow niemals mehrere Bilder gleichzeitig starten. Exakt eine Bildgenerierung pro Agent-Schritt, vollständig warten, umbenennen und prüfen, erst danach das nächste Bild. Keine Queue und kein paralleles Tool-Batching.\n\n\`${BUNDLE_DIRECTORY}/${BUNDLE_FILE}\` ist eine identische technische Kopie. Die Dateien unter \`${BUNDLE_DIRECTORY}/${INDIVIDUAL_PROMPTS_DIRECTORY}/\` bleiben nur als interne Einzelprompt-Sicherung erhalten. \`${CONTROLLER_FILE}\` ist deaktiviert und wird beim Export entfernt.\n\nErzeugen oder aktualisieren:\n\n\`\`\`bash\nnpm run export:prompts -- --dir "${normalizedRelativePath(reelDirectory)}" --strict\n\`\`\`\n`;
+  const readme = `# Google-Flow-Bildprompts\n\nDie **verbindliche Nutzerdatei** ist wieder der bewährte komplette serielle Gesamtprompt:\n\n\`${USER_PROMPTS_DIRECTORY}/${USER_BUNDLE_FILE}\`\n\nDarin stehen zuerst Auftrag, Serienregeln, die harte Kugel-Geometrie, Dateinamen, Style-Master und Textregel und danach alle Bildprompts vollständig in Reihenfolge. Genau diese Struktur hat sich als qualitativ besser bewährt.\n\nWichtig: Trotz Gesamtprompt darf Google Flow niemals mehrere Bilder gleichzeitig starten. Exakt eine Bildgenerierung pro Agent-Schritt, vollständig warten, umbenennen und prüfen, erst danach das nächste Bild. Keine Queue und kein paralleles Tool-Batching.\n\n\`${BUNDLE_DIRECTORY}/${BUNDLE_FILE}\` ist eine identische technische Kopie. Die Dateien unter \`${BUNDLE_DIRECTORY}/${INDIVIDUAL_PROMPTS_DIRECTORY}/\` bleiben nur als interne Einzelprompt-Sicherung erhalten. \`${CONTROLLER_FILE}\` ist deaktiviert und wird beim Export entfernt.\n\nErzeugen oder aktualisieren:\n\n\`\`\`bash\nnpm run export:prompts -- --dir "${normalizedRelativePath(reelDirectory)}" --strict\n\`\`\`\n`;
 
-  const userReadme = `# Bildprompts\n\nFür Google Flow **nur diese Datei verwenden**:\n\n\`${USER_BUNDLE_FILE}\`\n\nSie enthält den kompletten alten, ausführlichen seriellen Ablauf in einer Nachricht: Auftrag → strenge Serienregel → Dateinamen → Style-Master → Textregel → alle Bildprompts.\n\nNicht mehrere Bilder gleichzeitig erzeugen. Immer genau ein Bild fertigstellen, umbenennen und prüfen, bevor das nächste gestartet wird.\n`;
+  const userReadme = `# Bildprompts\n\nFür Google Flow **nur diese Datei verwenden**:\n\n\`${USER_BUNDLE_FILE}\`\n\nSie enthält den kompletten alten, ausführlichen seriellen Ablauf in einer Nachricht: Auftrag → strenge Serienregel → harte Country-Ball-Geometrie → Dateinamen → Style-Master → Textregel → alle Bildprompts.\n\nNicht mehrere Bilder gleichzeitig erzeugen. Immer genau ein Bild fertigstellen, umbenennen und prüfen, bevor das nächste gestartet wird.\n`;
 
   await writeFile(paths.readme, readme, 'utf8');
   await writeFile(paths.userReadme, userReadme, 'utf8');
@@ -169,6 +169,14 @@ function formatCompleteSerialBundle(prompts) {
     'Keine Batches, keine Queue, kein paralleles Tool-Batching, kein gleichzeitiges Starten, keine Mehrfach-Generierung und keine Ansammlung unbenannter Bilder.',
     'Falls versehentlich ein zweiter oder dritter Job gestartet wurde: keine weiteren Jobs starten; spätere parallele Jobs abbrechen und beim ersten noch nicht sauber abgeschlossenen Bild fortsetzen.',
     '',
+    'KUGEL-GEOMETRIE – HÖCHSTE PRIORITÄT',
+    'Diese Regel gilt für jedes Bild und hat Vorrang vor Pose, Handlung, Emotion, Perspektive oder Requisite.',
+    'Jede anthropomorphe Figur benutzt exakt dieselbe klassische Country-Ball-Geometrie: Der GESAMTE sichtbare Körper ist EIN perfekter geometrischer 1:1-Kreis mit gleicher sichtbarer Breite und Höhe. Die Außenkontur darf niemals vertikal oder horizontal gestreckt, gequetscht oder für Sitzen, Laufen, Drücken, Zögern oder Emotionen verformt werden.',
+    'Augen sitzen direkt auf dem Kreis. Es gibt keinen separaten Kopf, Hals, Schultern, Brustkorb, Rumpf, Taille oder Hüften. Falls winzige Arme/Beine vorkommen, sitzen sie direkt am Kreisrand.',
+    'Bei Nicht-Länder-Themen werden neutrale Farben oder kleine Symbole statt Flaggen verwendet, aber die Körperform bleibt EXAKT dieselbe wie bei klassischen Countryballs.',
+    'ABSOLUT VERBOTEN: oval, eiförmig, bohnenförmig, kapselartig, birnenförmig, tropfenförmig, humanoider Kopf, humanoider Torso, Kopf-auf-Körper-Figur, gestreckter Kreis, gequetschter Kreis. Die Kugel darf niemals nur der Kopf eines menschlichen Körpers sein.',
+    'Wenn eine gewünschte Pose die Kreisform verändern würde, behalte den perfekten Kreis und zeige die Handlung nur über Position, Augen, winzige Gliedmaßen und Requisiten.',
+    '',
     'DATEINAMEN'
   ];
 
@@ -180,7 +188,7 @@ function formatCompleteSerialBundle(prompts) {
   lines.push(
     '',
     'STYLE-MASTER',
-    'Bild 00.png wird zuerst vollständig erzeugt. Das fertige Bild 00.png ist danach die verbindliche visuelle Referenz für ALLE weiteren Bilder: gleiche Palette, Papiertextur, Konturstärke, Lichtstimmung, Detailqualität und dasselbe runde Kugel-/Country-Ball-Charakterdesign. Der Cover-Hook darf NICHT automatisch auf spätere Bilder kopiert werden.',
+    'Bild 00.png wird zuerst vollständig erzeugt. Das fertige Bild 00.png ist danach die verbindliche visuelle Referenz für ALLE weiteren Bilder: gleiche Palette, Papiertextur, Konturstärke, Lichtstimmung, Detailqualität und vor allem exakt dieselbe perfekte 1:1-Country-Ball-Körpergeometrie. Ein späteres Bild darf die Figur niemals ovaler, menschlicher oder körperähnlicher machen. Der Cover-Hook darf NICHT automatisch auf spätere Bilder kopiert werden.',
     '',
     'ARBEITSLABELS SIND NIEMALS BILDINHALT',
     'BILD-Nummern, COVER, SZENE, BILDPHASE, DATEINAME, Dateinamen und diese Workflow-Anweisungen sind nur Steuertext. Sie dürfen niemals im generierten Bild erscheinen.',
@@ -236,9 +244,9 @@ export async function buildImagePromptBundle(reelDirectory, { strict = false } =
   const statusPath = path.join(reelDirectory, 'status.json');
   if (await exists(statusPath)) {
     const status = await readJson(statusPath);
-    status.imagePromptBundle = missingIds.length === 0 ? 'ready-complete-old-style-serial-bundle' : 'incomplete';
+    status.imagePromptBundle = missingIds.length === 0 ? 'ready-complete-old-style-serial-bundle-strict-countryball-geometry' : 'incomplete';
     status.googleFlowController = 'disabled-use-complete-bundle';
-    status.imagePromptMode = 'single-complete-serial-bundle-old-structure';
+    status.imagePromptMode = 'single-complete-serial-bundle-old-structure-strict-countryball-geometry';
     status.plannedImageCount = prompts.filter((entry) => entry.kind === 'scene').length;
     await writeFile(statusPath, `${JSON.stringify(status, null, 2)}\n`, 'utf8');
   }
@@ -311,6 +319,6 @@ export async function validateImagePromptBundle(reelDirectory) {
               ? 'Mindestens eine interne Einzelprompt-Sicherung fehlt.'
               : !current
                 ? 'Kompletter Gesamtprompt oder Einzelprompt-Sicherungen sind veraltet.'
-                : 'Kompletter alter serieller Google-Flow-Gesamtprompt ist aktuell und als verbindliche Nutzerdatei bereit.'
+                : 'Kompletter alter serielle Google-Flow-Gesamtprompt ist aktuell, enthält den harten Country-Ball-Geometrie-Lock und ist als verbindliche Nutzerdatei bereit.'
   };
 }

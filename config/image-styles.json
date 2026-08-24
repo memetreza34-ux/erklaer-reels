@@ -1,31 +1,33 @@
 {
   "mandatoryPolicyFile": "VISUAL_WORLD_POLICY.md",
+  "visualWorldMode": "fixed",
+  "fixedVisualWorld": "round-country-characters",
   "newReelAllowedStyleIds": [
-    "human-editorial-cartoon",
-    "round-country-characters",
-    "visual-metaphor"
+    "round-country-characters"
   ],
   "styles": [
     {
       "id": "human-editorial-cartoon",
       "name": "Menschliche Cartoonfiguren / Köpfe",
-      "allowedForNewReels": true,
+      "allowedForNewReels": false,
+      "paused": true,
       "bestFor": ["Psychologie", "Gesellschaft", "Verhalten", "Wahrnehmung", "Emotionen", "soziale Situationen"],
-      "description": "Reifer handgezeichneter 2D-Editorial-Cartoon mit vereinfachten Menschen, starken Gesichtsausdrücken, großen klar lesbaren Köpfen und Gesichtern, Close-ups, Körpersprache und bei Bedarf Gedanken- oder Kopfmetaphern. Besonders stark, wenn menschliche Gefühle, Irrtümer, Wahrnehmung oder Verhalten der Kern des Themas sind."
+      "description": "Pausierte historische Welt. Darf für neue Reels nicht autonom gewählt werden, solange der Nutzer sie nicht ausdrücklich wieder aktiviert."
     },
     {
       "id": "round-country-characters",
       "name": "Runde Länder- und Kugelfiguren",
       "allowedForNewReels": true,
-      "bestFor": ["Politik", "Länder", "Geografie", "Geschichte", "Grenzen", "Bündnisse", "internationale Beziehungen"],
-      "description": "Die komplette Figur ist eine runde Kugel mit einfachen weißen Augen und höchstens kleinen Armen und Beinen. Bei Ländern liegt die passende Flaggen- oder Regionsgestaltung direkt auf der Kugel. Keine menschlichen Köpfe, Hälse oder Oberkörper. Reifer sauberer 2D-Editorial-Stil mit kräftigen Konturen, klaren Karten, Grenzen und Beziehungen zwischen Staaten."
+      "bestFor": ["alle geeigneten Erklärthemen"],
+      "description": "Einzige aktive Markenwelt. Jede anthropomorphe Figur hat exakt dieselbe Country-Ball-Geometrie: der komplette Körper ist ein perfekter geometrischer Kreis bzw. eine runde Kugel, nicht oval, nicht eiförmig, nicht bohnenförmig und nicht humanoid. Breite und Höhe der sichtbaren Körper-Silhouette sind gleich. Augen sitzen direkt auf der Kugel; es gibt keinen separaten Kopf, Hals, Rumpf, Schultern oder Brustkorb. Höchstens winzige einfache Arme/Beine sind direkt an der Kugel befestigt. Bei Ländern liegt das Flaggenmuster auf der Kugel; bei Nicht-Länder-Rollen bleibt dieselbe exakte Kugelform erhalten und wird nur mit neutraler Farbe oder kleinen Symbolen statt Flagge gestaltet."
     },
     {
       "id": "visual-metaphor",
       "name": "Starke visuelle Metapher",
-      "allowedForNewReels": true,
+      "allowedForNewReels": false,
+      "paused": true,
       "bestFor": ["abstrakte Begriffe", "unsichtbare Mechanismen", "Ursache-Wirkung", "Systeme", "soziale Zusammenhänge"],
-      "description": "Ein klarer Gegenstand oder eine starke Szene erklärt den Begriff sofort, zum Beispiel Anker, Magnet, Waage, Domino, Labyrinth, Mauer, Kette, Puzzle, Trichter oder Brücke. Nur wählen, wenn die Metapher das konkrete Thema tatsächlich schneller und stärker erklärt als die beiden anderen Top-3-Welten. Kein Standard-Fallback."
+      "description": "Pausierte historische Welt. Metaphern dürfen weiterhin als Requisit oder Kompositionsprinzip innerhalb der festen Kugel-Welt verwendet werden, aber nicht als eigene neue Bildwelt."
     },
     {
       "id": "personified-biology",
@@ -41,7 +43,7 @@
       "allowedForNewReels": false,
       "legacyOnly": true,
       "bestFor": ["Vergleiche", "Kategorien", "Systeme"],
-      "description": "Legacy-Stil. Darf bei bestehenden älteren Reels weiter lesbar bleiben, ist für neue Reels aber nicht autonom erlaubt. Vergleiche müssen bei neuen Reels innerhalb einer der drei Top-Welten gelöst werden."
+      "description": "Legacy-Stil. Darf bei bestehenden älteren Reels weiter lesbar bleiben, ist für neue Reels aber nicht autonom erlaubt. Vergleiche werden innerhalb der festen Kugel-Welt gelöst."
     },
     {
       "id": "progressive-build-up",
@@ -49,30 +51,48 @@
       "allowedForNewReels": false,
       "legacyOnly": true,
       "bestFor": ["Prozesse", "Kombinationen", "schrittweise Entwicklungen"],
-      "description": "Legacy-Stil. Darf bei bestehenden älteren Reels weiter lesbar bleiben, ist für neue Reels aber nicht autonom erlaubt. Ein Build-up darf nur als Kompositionsprinzip innerhalb einer der drei Top-Welten vorkommen."
+      "description": "Legacy-Stil. Darf bei bestehenden älteren Reels weiter lesbar bleiben, ist für neue Reels aber nicht autonom erlaubt. Ein Build-up ist nur als Kompositionsprinzip innerhalb der festen Kugel-Welt zulässig."
     }
   ],
-  "selectionRule": "Für jedes neue Reel zuerst das vollständige Script schreiben. Danach zwingend VISUAL_WORLD_POLICY.md lesen und ausschließlich human-editorial-cartoon, round-country-characters oder visual-metaphor gegeneinander prüfen. Mindestens die letzten 5 Reels und deren visualStyleId berücksichtigen. Die thematisch stärkste, am schnellsten verständliche und scroll-stoppendste Welt wählen, dabei Wiederholungen aktiv vermeiden. visual-metaphor ist ausdrücklich kein Standard-Fallback. Dieselbe Welt wie im direkt vorherigen Reel nur wählen, wenn sie klar besser passt; die konkrete Begründung muss in visualStyleReason dokumentiert werden.",
+  "selectionRule": "Für jedes neue Reel ist round-country-characters ohne Stil-Auswahl die feste Bildwelt. Das Thema verändert nur Farbe, Symbole, Requisiten, Karten und Handlung, niemals die Grundgeometrie der Figuren. Nicht-Länder-Themen benutzen dieselbe perfekte Country-Ball-Körperform wie Länderfiguren, nur ohne Flaggenmuster. human-editorial-cartoon und visual-metaphor bleiben pausiert, bis der Nutzer sie ausdrücklich wieder aktiviert.",
+  "characterGeometryLock": {
+    "required": true,
+    "bodyShape": "perfect-geometric-circle",
+    "equalVisibleBodyWidthAndHeight": true,
+    "sameGeometryForCountryAndNonCountryRoles": true,
+    "eyesDirectlyOnSphere": true,
+    "separateHead": false,
+    "neck": false,
+    "torso": false,
+    "shoulders": false,
+    "chest": false,
+    "maxLimbs": "tiny-simple-limbs-attached-directly-to-circle",
+    "forbiddenShapes": [
+      "oval",
+      "egg-shaped",
+      "bean-shaped",
+      "capsule-shaped",
+      "pear-shaped",
+      "humanoid-head",
+      "humanoid-torso"
+    ]
+  },
   "diversityRule": {
     "recentReelsToInspect": 5,
-    "avoidImmediateRepeat": true,
-    "dominanceThresholdInLastFive": 3,
+    "avoidImmediateRepeat": false,
     "forcedRotation": false,
-    "sameStyleRepeatRequiresSpecificReason": true,
-    "defaultFallbackStyle": null
+    "fixedVisualWorldOverridesDiversity": true
   },
   "selectionCriteria": [
-    "Themenpassung",
     "1-Sekunden-Verständlichkeit",
     "Cover-und-Hook-Stärke",
-    "Emotionalität-und-Wiedererkennung",
-    "Szenenvielfalt",
+    "Szenenvielfalt innerhalb derselben Kugel-Welt",
     "visuelle Klarheit",
-    "Abwechslung-zu-den-letzten-Reels"
+    "exakte runde Figuren-Geometrie"
   ],
   "crossStyleTextRule": {
     "preferred": true,
     "language": "de",
-    "guidance": "Wo es die Aussage verbessert, integriere sehr kurzen deutschen Bildtext. Ein einzelnes Wort oder 1–5 Wörter reichen. Der Text darf je nach Szene klein, mittel oder groß sein und natürlich auf Schildern, Karten, Dokumenten, Displays, Gegenständen oder als kurze Überschrift erscheinen. Nicht in jede Szene zwingen und Untertitel nicht wortgleich wiederholen."
+    "guidance": "Wo es die Aussage verbessert, integriere sehr kurzen deutschen Bildtext. Ein einzelnes Wort oder 1–5 Wörter reichen. Nicht in jede Szene zwingen; Untertitel bleiben deaktiviert."
   }
 }
