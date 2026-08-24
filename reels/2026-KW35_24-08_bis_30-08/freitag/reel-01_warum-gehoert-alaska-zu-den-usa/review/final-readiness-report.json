@@ -1,0 +1,314 @@
+{
+  "version": 11,
+  "createdAt": "2026-08-24T15:19:20.876Z",
+  "reelDirectory": "reels/2026-KW35_24-08_bis_30-08/freitag/reel-01_warum-gehoert-alaska-zu-den-usa",
+  "strict": true,
+  "readyForRenderer": true,
+  "subtitlesEnabled": false,
+  "wordSyncRequired": false,
+  "stages": {
+    "sourceQuality": {
+      "passed": true,
+      "required": true,
+      "legacy": false,
+      "reason": null,
+      "checks": [
+        {
+          "id": "source-quality-binding",
+          "passed": true,
+          "level": "error",
+          "message": "Verpflichtende Quellen-QC: bestanden."
+        }
+      ]
+    },
+    "audioPacingFileBinding": {
+      "passed": true,
+      "required": true,
+      "legacy": false,
+      "reason": null,
+      "checks": [
+        {
+          "id": "audio-pacing-file-binding",
+          "passed": true,
+          "level": "error",
+          "message": "Audio-Pacing-Dateibindung: bestanden."
+        }
+      ]
+    },
+    "subtitles": {
+      "passed": true,
+      "required": false,
+      "enabled": false,
+      "checks": [
+        {
+          "id": "subtitles-disabled",
+          "passed": true,
+          "level": "info",
+          "message": "Untertitel sind global deaktiviert und kein Word-Sync ist erforderlich."
+        }
+      ]
+    },
+    "content": {
+      "passed": true,
+      "reportFile": "review/content-readiness.json",
+      "summary": {
+        "passedChecks": 416,
+        "failedChecks": 0,
+        "warnings": 9,
+        "totalChecks": 425
+      }
+    },
+    "audioPacing": {
+      "passed": true,
+      "strict": true,
+      "playbackRate": 1.1,
+      "loudnessTargetLufs": -16,
+      "truePeakDbtp": -1.5,
+      "loudnessMeasured": true,
+      "measuredIntegratedLufs": -16,
+      "measuredTruePeakDbtp": -1.5,
+      "beforeSeconds": 80.64,
+      "afterSeconds": 63.5,
+      "reportFile": "review/audio-pacing-report.json",
+      "summary": {
+        "passedChecks": 12,
+        "failedChecks": 0,
+        "warnings": 0,
+        "totalChecks": 12
+      }
+    },
+    "timeline": {
+      "passed": true,
+      "timingStatus": "audio-synced",
+      "renderStatus": "ready-for-renderer",
+      "reportFile": "review/final-video-report.json",
+      "summary": {
+        "passedChecks": 69,
+        "failedChecks": 0,
+        "warnings": 2,
+        "totalChecks": 71
+      }
+    },
+    "visualQuality": {
+      "passed": true,
+      "strict": true,
+      "reportFile": "review/visual-quality-report.json",
+      "inspectionFile": "review/visual-inspection.json",
+      "summary": {
+        "assetsChecked": 18,
+        "sceneImagesChecked": 17,
+        "passedChecks": 181,
+        "failedChecks": 0,
+        "warnings": 18,
+        "totalChecks": 199
+      }
+    }
+  },
+  "progress": {
+    "reelId": "reel-01_warum-gehoert-alaska-zu-den-usa",
+    "title": "Warum gehört Alaska zu den USA, obwohl Kanada dazwischenliegt?",
+    "preProduction": 100,
+    "assets": 80,
+    "audioPacing": 100,
+    "timeline": 100,
+    "wordSync": 100,
+    "visualQuality": 100,
+    "productionReady": 96,
+    "rendering": 0,
+    "overall": 86,
+    "details": {
+      "scriptsReady": true,
+      "styleReady": true,
+      "scenesReady": "13/13",
+      "plannedImageCount": 17,
+      "promptsReady": "17/17",
+      "coverPromptReady": true,
+      "captionReady": true,
+      "sourcesReady": true,
+      "contentCheckReady": true,
+      "audioReady": false,
+      "sceneImagesReady": "17/17",
+      "coverImageReady": true,
+      "assetReportReady": true,
+      "audioPacingCreated": true,
+      "audioPacingPassed": true,
+      "audioPacingRate": 1.1,
+      "audioPacingRateSafe": true,
+      "audioLoudnessNormalized": true,
+      "audioLoudnessTargetSafe": true,
+      "audioTruePeakSafe": true,
+      "audioMeasurementRequired": true,
+      "audioMeasurementPresent": true,
+      "audioMeasurementSafe": true,
+      "measuredIntegratedLufs": -16,
+      "measuredTruePeakDbtp": -1.5,
+      "audioPacingDurationReduced": true,
+      "timelineBuilt": true,
+      "audioDurationKnown": true,
+      "audioSynced": true,
+      "renderReady": true,
+      "timelineCheckReady": true,
+      "wordSyncRequired": false,
+      "wordSyncCreated": false,
+      "wordSyncPassed": true,
+      "wordSyncProvider": "not-required",
+      "wordCoverage": 1,
+      "visualReportCreated": true,
+      "visualTechnicalReady": true,
+      "visualAssetsReviewed": "18/18",
+      "visualStrictReady": true,
+      "rendererValidated": false,
+      "renderComplete": false
+    },
+    "nextStep": "Voice-over, Cover und alle geplanten Bildphasen bereitstellen und visuell prüfen."
+  },
+  "blockingIssues": [],
+  "warnings": [
+    {
+      "id": "scene-01-long-static-review",
+      "level": "warning",
+      "message": "scene-01: Das einzige Bild würde ungefähr 4.3 Sekunden stehen. Prüfe aktiv, ob eine zweite Bildphase Verständnis oder Rhythmus verbessert."
+    },
+    {
+      "id": "scene-02-long-static-review",
+      "level": "warning",
+      "message": "scene-02: Das einzige Bild würde ungefähr 4.2 Sekunden stehen. Prüfe aktiv, ob eine zweite Bildphase Verständnis oder Rhythmus verbessert."
+    },
+    {
+      "id": "scene-04-long-static-review",
+      "level": "warning",
+      "message": "scene-04: Das einzige Bild würde ungefähr 4.3 Sekunden stehen. Prüfe aktiv, ob eine zweite Bildphase Verständnis oder Rhythmus verbessert."
+    },
+    {
+      "id": "scene-06-long-static-review",
+      "level": "warning",
+      "message": "scene-06: Das einzige Bild würde ungefähr 4.3 Sekunden stehen. Prüfe aktiv, ob eine zweite Bildphase Verständnis oder Rhythmus verbessert."
+    },
+    {
+      "id": "scene-08-long-static-review",
+      "level": "warning",
+      "message": "scene-08: Das einzige Bild würde ungefähr 4.4 Sekunden stehen. Prüfe aktiv, ob eine zweite Bildphase Verständnis oder Rhythmus verbessert."
+    },
+    {
+      "id": "scene-10-long-static-review",
+      "level": "warning",
+      "message": "scene-10: Das einzige Bild würde ungefähr 4.4 Sekunden stehen. Prüfe aktiv, ob eine zweite Bildphase Verständnis oder Rhythmus verbessert."
+    },
+    {
+      "id": "scene-11-long-static-review",
+      "level": "warning",
+      "message": "scene-11: Das einzige Bild würde ungefähr 4.3 Sekunden stehen. Prüfe aktiv, ob eine zweite Bildphase Verständnis oder Rhythmus verbessert."
+    },
+    {
+      "id": "scene-12-long-static-review",
+      "level": "warning",
+      "message": "scene-12: Das einzige Bild würde ungefähr 4.5 Sekunden stehen. Prüfe aktiv, ob eine zweite Bildphase Verständnis oder Rhythmus verbessert."
+    },
+    {
+      "id": "scene-13-long-static-review",
+      "level": "warning",
+      "message": "scene-13: Das einzige Bild würde ungefähr 4.5 Sekunden stehen. Prüfe aktiv, ob eine zweite Bildphase Verständnis oder Rhythmus verbessert."
+    },
+    {
+      "id": "scene-13-balanced-duration",
+      "level": "warning",
+      "message": "scene-13: Schlussszene inklusive Nachlauf dauert 9.90 Sekunden; erlaubt sind 4–6.5 Sekunden."
+    },
+    {
+      "id": "scene-13-adjacent-duration-balance",
+      "level": "warning",
+      "message": "scene-13: Der Dauersprung zur vorherigen Szene ist zu groß."
+    },
+    {
+      "id": "scene-01-target-resolution",
+      "level": "warning",
+      "message": "scene-01: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-02-target-resolution",
+      "level": "warning",
+      "message": "scene-02: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-03-target-resolution",
+      "level": "warning",
+      "message": "scene-03: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-03-image-02-target-resolution",
+      "level": "warning",
+      "message": "scene-03-image-02: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-04-target-resolution",
+      "level": "warning",
+      "message": "scene-04: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-05-target-resolution",
+      "level": "warning",
+      "message": "scene-05: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-05-image-02-target-resolution",
+      "level": "warning",
+      "message": "scene-05-image-02: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-06-target-resolution",
+      "level": "warning",
+      "message": "scene-06: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-07-target-resolution",
+      "level": "warning",
+      "message": "scene-07: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-07-image-02-target-resolution",
+      "level": "warning",
+      "message": "scene-07-image-02: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-08-target-resolution",
+      "level": "warning",
+      "message": "scene-08: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-09-target-resolution",
+      "level": "warning",
+      "message": "scene-09: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-09-image-02-target-resolution",
+      "level": "warning",
+      "message": "scene-09-image-02: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-10-target-resolution",
+      "level": "warning",
+      "message": "scene-10: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-11-target-resolution",
+      "level": "warning",
+      "message": "scene-11: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-12-target-resolution",
+      "level": "warning",
+      "message": "scene-12: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-13-target-resolution",
+      "level": "warning",
+      "message": "scene-13: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "cover-target-resolution",
+      "level": "warning",
+      "message": "cover: Empfohlen sind mindestens 1080×1920 Pixel."
+    }
+  ],
+  "nextStep": "Renderer prüfen und MP4 ohne Untertitel erzeugen: npm run validate:render -- --dir \"reels/2026-KW35_24-08_bis_30-08/freitag/reel-01_warum-gehoert-alaska-zu-den-usa\" && npm run render:reel -- --dir \"reels/2026-KW35_24-08_bis_30-08/freitag/reel-01_warum-gehoert-alaska-zu-den-usa\""
+}

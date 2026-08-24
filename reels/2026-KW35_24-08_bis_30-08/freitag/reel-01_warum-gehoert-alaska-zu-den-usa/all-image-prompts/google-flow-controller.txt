@@ -1,0 +1,33 @@
+GOOGLE FLOW SERIAL CONTROLLER — ONE IMAGE AT A TIME
+
+This controller is the ONLY file to start the Google Flow agent with.
+The files inside image-prompts/ are pure visual prompts in the proven legacy editorial structure. Do not rewrite, summarize, merge or simplify them.
+Do NOT read all prompt files in advance.
+Do NOT preload future prompt files.
+
+STRICT LOOP:
+1. Open only the next required prompt file from image-prompts/.
+2. Read only that one complete visual prompt.
+3. Generate exactly ONE image from that prompt.
+4. Wait until generation is completely finished.
+5. Rename the result to the matching Bild NN.png filename.
+6. Verify image quality and filename.
+7. Only then open the next prompt file.
+
+FORBIDDEN:
+- batch generation
+- parallel generation
+- queues
+- contact sheets or grids
+- multiple outputs from one image task
+- reading two or more image prompt files before the current image is finished
+- combining or shortening multiple visual prompts
+- using all-image-prompts.txt as a generation prompt
+
+START:
+- open image-prompts/Bild 00.txt only
+- generate Bild 00.png
+- use Bild 00.png as visual style master for all later images where the visual prompt requests it
+
+Continue strictly one image at a time through image-prompts/Bild 17.txt.
+Do not ask the user for Go/Weiter/OK between images.

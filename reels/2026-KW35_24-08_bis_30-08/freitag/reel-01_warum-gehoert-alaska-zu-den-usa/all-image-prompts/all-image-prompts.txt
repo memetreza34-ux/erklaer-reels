@@ -1,93 +1,23 @@
-GOOGLE FLOW CONTROL FILE — WORKFLOW TEXT MUST NEVER APPEAR IN GENERATED IMAGES
+KOMPATIBILITÄTS-/INDEXDATEI — NICHT ALS GOOGLE-FLOW-GENERIERUNGSPROMPT VERWENDEN
 
-WORKFLOW ONLY:
-- Generate exactly ONE image at a time.
-- Wait until it is fully finished, rename it to the filename in the metadata line, verify it, then continue automatically.
-- Do not wait for Go, Weiter, OK or another user message.
-- Asset 00 is the cover and binding style master.
-- Metadata lines, asset numbers, filenames, scene/phase roles and all workflow instructions are NEVER visual content.
-- No subtitles, no subtitle band, no artificial empty subtitle area.
+Starte Google Flow stattdessen mit: google-flow-controller.txt
 
-NON-NEGOTIABLE WORLD RULE FOR EVERY IMAGE:
-Every anthropomorphic country character must be a COMPLETE PERFECTLY ROUND CIRCULAR COUNTRY BALL/SPHERE with the simplified national flag pattern wrapped across the round body, simple white eyes and at most tiny arms/legs. NEVER use a country outline, map silhouette, territorial polygon, continent shape or irregular geographic shape as a character body or face. NEVER put eyes, mouth, arms or legs on a map-shaped country. Geographic outlines may appear only as FACELESS background/support map graphics.
-
-VISIBLE-TEXT FIREWALL FOR EVERY IMAGE:
-The line `VISIBLE_TEXT="..."` is the complete whitelist for that image. The generated image may contain exactly that readable phrase and nothing else. If `VISIBLE_TEXT=""`, generate zero readable text. NEVER render asset numbers, `BILD 00`, `COVER`, `SZENE`, `BILDPHASE`, filenames, `DATEINAME`, `GOOGLE FLOW`, `PROMPT`, technical ids or any other workflow label.
-
-BINDING MASTER STYLE:
-Vertical 9:16 premium mature 2D editorial country-character illustration. Warm off-white textured paper background, deep navy borders and map shapes, muted rust, mustard, cobalt and forest-green accents, bold clean hand-inked outlines, flat geometric shading, subtle grain, high contrast, sophisticated documentary tone, not childish. No human heads or torsos. No 3D, no photorealism, no logos, no watermark. Use the full 9:16 composition naturally. After asset 00, match its line weight, paper texture, palette, proportions, round country-ball character design and editorial finish exactly.
-
-[[WORKFLOW_METADATA asset=00; role=cover; filename="Bild 00.png"]]
-VISIBLE_TEXT="WARUM GEHÖRT ALASKA ZU DEN USA?"
-Create the master cover explaining why Alaska belongs to the United States even though Canada lies between Alaska and the contiguous United States. Show a clear faceless North America map in the background with the lower 48 United States at the bottom, Canada in the center and Alaska in the northwest. Use matching perfectly round USA country balls at the lower 48 and Alaska, visually connected across Canada with one strong route/history motif. Canada may be a faceless map area or a separate perfectly round Canada country ball, never a map-shaped character.
-
-[[WORKFLOW_METADATA asset=01; role=scene-1-phase-1; filename="Bild 01.png"]]
-VISIBLE_TEXT="USA – KANADA – ALASKA?"
-Match the cover style exactly. A simplified faceless North America map shows the contiguous United States at the bottom, Canada in the middle and Alaska far northwest, with separate perfectly round USA and Alaska country balls linked across Canada.
-
-[[WORKFLOW_METADATA asset=02; role=scene-2-phase-1; filename="Bild 02.png"]]
-VISIBLE_TEXT="FRÜHER RUSSISCH"
-Match the cover style exactly. Alaska is highlighted on an old-style faceless North Pacific map with a separate perfectly round Russia country ball reaching east across the Bering region.
-
-[[WORKFLOW_METADATA asset=03; role=scene-3-phase-1; filename="Bild 03.png"]]
-VISIBLE_TEXT="WEIT WEG"
-Match the cover style exactly. A perfectly round Russia country ball looks across a huge icy distance toward sparse trading posts in Alaska, emphasizing remoteness and limited settlement.
-
-[[WORKFLOW_METADATA asset=04; role=scene-3-phase-2; filename="Bild 04.png"]]
-VISIBLE_TEXT="HOHE KOSTEN"
-Match the cover style exactly. Zoom into a few small coastal trading posts surrounded by vast empty Alaskan territory, with supply crates and a long sea route showing the difficulty and expense of maintaining them. If Russia appears as a character, it must remain a perfect round country ball.
-
-[[WORKFLOW_METADATA asset=05; role=scene-4-phase-1; filename="Bild 05.png"]]
-VISIBLE_TEXT="WENIGER ATTRAKTIV"
-Match the cover style exactly. A perfectly round Russia country ball studies a post-Crimean-War strategy map: Alaska is distant, expensive and exposed across the Pacific, while Britain/Canada appears nearby as faceless map geography or separate round country balls.
-
-[[WORKFLOW_METADATA asset=06; role=scene-5-phase-1; filename="Bild 06.png"]]
-VISIBLE_TEXT="VERKAUF 1867"
-Match the cover style exactly. Perfectly round Russia and United States country balls face each other across a treaty table with a clear faceless Alaska map between them.
-
-[[WORKFLOW_METADATA asset=07; role=scene-5-phase-2; filename="Bild 07.png"]]
-VISIBLE_TEXT="RUSSLAND → USA"
-Match the cover style exactly. The faceless Alaska map visibly changes from Russian control to United States control with a clean handover arrow and treaty document motif. Russia and USA, if shown as characters, remain separate perfect round country balls.
-
-[[WORKFLOW_METADATA asset=08; role=scene-6-phase-1; filename="Bild 08.png"]]
-VISIBLE_TEXT="7,2 MILLIONEN $"
-Match the cover style exactly. A large faceless Alaska silhouette fills much of the frame while a small historical payment document and dollar amount emphasize the purchase price. Do not put a face on the Alaska map shape. Add a separate perfect round Alaska/USA country ball only if a character is needed.
-
-[[WORKFLOW_METADATA asset=09; role=scene-7-phase-1; filename="Bild 09.png"]]
-VISIBLE_TEXT="KANADA DAZWISCHEN"
-Match the cover style exactly. A clear faceless North America map visually sandwiches Canada between the contiguous United States and Alaska, with separate perfectly round USA country balls representing the two U.S. areas.
-
-[[WORKFLOW_METADATA asset=10; role=scene-7-phase-2; filename="Bild 10.png"]]
-VISIBLE_TEXT="DURCH KANADA"
-Match the cover style exactly. Zoom onto the land route from the lower 48 states to Alaska, which must cross Canada, with a bold directional path and border crossings. Maps remain faceless; any country characters are separate perfect round balls.
-
-[[WORKFLOW_METADATA asset=11; role=scene-8-phase-1; filename="Bild 11.png"]]
-VISIBLE_TEXT="EXKLAVE"
-Match the cover style exactly. Show one perfectly round country ball visually associated with a main territory and a detached territory separated by another country. Use faceless map pieces to explain the geography, never map-shaped characters.
-
-[[WORKFLOW_METADATA asset=12; role=scene-9-phase-1; filename="Bild 12.png"]]
-VISIBLE_TEXT="PAZIFIK + ROHSTOFFE"
-Match the cover style exactly. A perfectly round United States country ball stands beside Alaska with three clean visual icons: North Pacific access, natural resources and strategic northern position.
-
-[[WORKFLOW_METADATA asset=13; role=scene-9-phase-2; filename="Bild 13.png"]]
-VISIBLE_TEXT="STRATEGISCHE LAGE"
-Match the cover style exactly. A wider faceless northern-Pacific map shows Alaska projecting toward Asia with shipping, defense and resource cues, emphasizing its strategic location. Any USA/Russia characters remain separate perfect round country balls.
-
-[[WORKFLOW_METADATA asset=14; role=scene-10-phase-1; filename="Bild 14.png"]]
-VISIBLE_TEXT="18. OKTOBER 1867"
-Match the cover style exactly. At Sitka, use perfectly round Russia and United States country balls, two flags and a faceless Alaska map changing administrative control in a restrained historical handover scene.
-
-[[WORKFLOW_METADATA asset=15; role=scene-11-phase-1; filename="Bild 15.png"]]
-VISIBLE_TEXT="BUNDESSTAAT SEIT 1959"
-Match the cover style exactly. A timeline moves from 1867 territory status to a prominent 1959 star joining the United States, with a perfectly round Alaska/USA country ball entering the statehood lineup.
-
-[[WORKFLOW_METADATA asset=16; role=scene-12-phase-1; filename="Bild 16.png"]]
-VISIBLE_TEXT="WIE WÜRDE SICH DAS ANFÜHLEN?"
-Match the cover style exactly. A mature map analogy shows a detached regional area far from its home country, with a route forced through a neighboring country. Use perfectly round country balls as characters and faceless map areas only as geography.
-
-[[WORKFLOW_METADATA asset=17; role=scene-13-phase-1; filename="Bild 17.png"]]
-VISIBLE_TEXT="GESCHICHTE FORMT GRENZEN"
-Match the cover style exactly. A final faceless North America map overlays the 1867 treaty route and modern borders, connecting the Alaska-USA relationship directly to history rather than distance. Use separate perfectly round USA/Russia country balls if characters are shown.
-
-WORKFLOW COMPLETION CHECK — NOT VISUAL CONTENT:
-Only after asset 17 is fully generated, renamed and verified, check that files `Bild 00.png` through `Bild 17.png` are complete, unique and correctly ordered. Then place them together in the reel's shared numbered-image drop. None of these workflow filenames or labels may appear inside any generated image.
+Einzelprompts:
+- image-prompts/Bild 00.txt -> output Bild 00.png
+- image-prompts/Bild 01.txt -> output Bild 01.png
+- image-prompts/Bild 02.txt -> output Bild 02.png
+- image-prompts/Bild 03.txt -> output Bild 03.png
+- image-prompts/Bild 04.txt -> output Bild 04.png
+- image-prompts/Bild 05.txt -> output Bild 05.png
+- image-prompts/Bild 06.txt -> output Bild 06.png
+- image-prompts/Bild 07.txt -> output Bild 07.png
+- image-prompts/Bild 08.txt -> output Bild 08.png
+- image-prompts/Bild 09.txt -> output Bild 09.png
+- image-prompts/Bild 10.txt -> output Bild 10.png
+- image-prompts/Bild 11.txt -> output Bild 11.png
+- image-prompts/Bild 12.txt -> output Bild 12.png
+- image-prompts/Bild 13.txt -> output Bild 13.png
+- image-prompts/Bild 14.txt -> output Bild 14.png
+- image-prompts/Bild 15.txt -> output Bild 15.png
+- image-prompts/Bild 16.txt -> output Bild 16.png
+- image-prompts/Bild 17.txt -> output Bild 17.png

@@ -1,0 +1,54 @@
+{
+  "version": 3,
+  "createdAt": "2026-08-24T04:12:39.392Z",
+  "reelDirectory": "/Users/arman/.gemini/antigravity/scratch/erklaer-reels/reels/2026-KW35_24-08_bis_30-08/freitag/reel-01_warum-gehoert-alaska-zu-den-usa",
+  "searchRoots": [
+    "/Users/arman/.gemini/antigravity/scratch/erklaer-reels/reels/2026-KW35_24-08_bis_30-08/freitag/reel-01_warum-gehoert-alaska-zu-den-usa",
+    "/Users/arman/Downloads",
+    "/Users/arman/Desktop"
+  ],
+  "scannedFiles": 294,
+  "plannedImageCount": 17,
+  "expectedImageNumbers": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+  ],
+  "imageDiscovery": {
+    "alreadyComplete": true,
+    "importedFrom": null,
+    "copiedFiles": [],
+    "zipCandidates": [],
+    "ambiguousCompleteZips": [],
+    "looseCandidateDirectories": [],
+    "ambiguousLooseSets": []
+  },
+  "audioDiscovery": {
+    "staged": null,
+    "candidates": [],
+    "reason": "audio-already-present"
+  },
+  "instructions": [
+    "Fehlende externe Assets nicht sofort als endgültig fehlend melden: zuerst diese Discovery ausführen.",
+    "Die erwartete Bildreihe richtet sich nach der individuell geplanten Anzahl aller Bildphasen, nicht nach der Szenenzahl.",
+    "Eine ZIP wird nur automatisch verwendet, wenn genau eine vollständige eindeutige nummerierte Bildserie gefunden wurde oder der Agent einen geprüften preferredZipPath vorgibt.",
+    "Bei mehreren vollständigen ZIPs zuerst den passenden Kandidaten inhaltlich prüfen; niemals blind die neueste ZIP wählen.",
+    "Entpackte Nummern sind nur Routing-Hilfe. Vor --apply bleibt die visuelle Zwei-Pass-QC vollständig Pflicht.",
+    "Bei mehreren oder unklaren Audio-Kandidaten nicht raten; Kandidaten prüfen."
+  ]
+}

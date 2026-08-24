@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "startedAt": "2026-08-24T15:19:25.674Z",
+  "finishedAt": "2026-08-24T15:20:05.034Z",
+  "passed": true,
+  "renderer": "remotion",
+  "compositionId": "ErklaerReel",
+  "codec": "h264",
+  "crf": 18,
+  "reelDirectory": "/Users/arman/.gemini/antigravity/scratch/erklaer-reels/reels/2026-KW35_24-08_bis_30-08/freitag/reel-01_warum-gehoert-alaska-zu-den-usa",
+  "outputFile": "reels/2026-KW35_24-08_bis_30-08/freitag/reel-01_warum-gehoert-alaska-zu-den-usa/output/reel-01_warum-gehoert-alaska-zu-den-usa.mp4",
+  "outputBytes": 12767525,
+  "subtitlesEnabled": false,
+  "composition": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationSeconds": 64.2,
+    "durationFrames": 1926,
+    "audioDurationSeconds": 63.5,
+    "endingHoldSeconds": 0.7
+  },
+  "renderedSoundEffects": 0,
+  "validationReport": "review/renderer-input-report.json"
+}

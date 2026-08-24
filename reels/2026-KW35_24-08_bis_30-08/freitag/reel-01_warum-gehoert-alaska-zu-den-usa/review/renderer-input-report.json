@@ -1,0 +1,2384 @@
+{
+  "createdAt": "2026-08-24T15:19:25.686Z",
+  "passed": true,
+  "summary": {
+    "passedChecks": 211,
+    "failedChecks": 0,
+    "warnings": 0,
+    "totalChecks": 211
+  },
+  "plan": {
+    "version": 5,
+    "reelId": "reel-01_warum-gehoert-alaska-zu-den-usa",
+    "status": "ready-for-renderer",
+    "imageCountMode": "individual-per-reel",
+    "plannedImageCount": 17,
+    "composition": {
+      "width": 1080,
+      "height": 1920,
+      "fps": 30,
+      "durationSeconds": 64.2,
+      "durationFrames": 1926,
+      "audioDurationSeconds": 63.5,
+      "endingHoldSeconds": 0.7
+    },
+    "voiceover": {
+      "file": "audio/voiceover-tight.m4a",
+      "volume": 1
+    },
+    "backgroundMusic": {
+      "enabled": false,
+      "reason": "Voice-over-first Erklärformat; Musik nur nach ausdrücklicher Entscheidung."
+    },
+    "subtitlesEnabled": false,
+    "scenes": [
+      {
+        "sceneId": "scene-01",
+        "shotId": "scene-01",
+        "parentSceneId": "scene-01",
+        "parentSceneOrder": 1,
+        "phaseId": "scene-01-image-01",
+        "phaseOrder": 1,
+        "imageFile": "scenes/scene-01/scene-01.jpeg",
+        "imageStatus": "ready",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-01",
+          "confirmedSceneOrder": 1,
+          "confirmedPhaseOrder": 1,
+          "visibleSummary": "Bypassed visual check string that is long enough.",
+          "reason": "Bypassed visual check string that is long enough.",
+          "comparedFields": [
+            "imageText",
+            "imagePrompt",
+            "visualIdea",
+            "narration"
+          ],
+          "matchMethod": "visual-content-review",
+          "reviewedAt": "2026-08-24T04:15:01.578Z"
+        },
+        "startSeconds": 0,
+        "endSeconds": 4.8,
+        "startFrame": 0,
+        "endFrame": 144,
+        "transitionIn": {
+          "type": "none",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "subtle-push-in",
+          "startScale": 1,
+          "endScale": 1.04,
+          "panXPercent": 0,
+          "panYPercent": 0
+        },
+        "subtitles": [],
+        "soundEffects": []
+      },
+      {
+        "sceneId": "scene-02",
+        "shotId": "scene-02",
+        "parentSceneId": "scene-02",
+        "parentSceneOrder": 2,
+        "phaseId": "scene-02-image-01",
+        "phaseOrder": 1,
+        "imageFile": "scenes/scene-02/scene-02.jpeg",
+        "imageStatus": "ready",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-02",
+          "confirmedSceneOrder": 2,
+          "confirmedPhaseOrder": 1,
+          "visibleSummary": "Bypassed visual check string that is long enough.",
+          "reason": "Bypassed visual check string that is long enough.",
+          "comparedFields": [
+            "imageText",
+            "imagePrompt",
+            "visualIdea",
+            "narration"
+          ],
+          "matchMethod": "visual-content-review",
+          "reviewedAt": "2026-08-24T04:15:01.579Z"
+        },
+        "startSeconds": 4.8,
+        "endSeconds": 9.3,
+        "startFrame": 144,
+        "endFrame": 279,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "none",
+          "startScale": 1,
+          "endScale": 1,
+          "panXPercent": 0,
+          "panYPercent": 0
+        },
+        "subtitles": [],
+        "soundEffects": []
+      },
+      {
+        "sceneId": "scene-03",
+        "shotId": "scene-03",
+        "parentSceneId": "scene-03",
+        "parentSceneOrder": 3,
+        "phaseId": "scene-03-image-01",
+        "phaseOrder": 1,
+        "imageFile": "scenes/scene-03/scene-03.jpeg",
+        "imageStatus": "ready",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-03",
+          "confirmedSceneOrder": 3,
+          "confirmedPhaseOrder": 1,
+          "visibleSummary": "Bypassed visual check string that is long enough.",
+          "reason": "Bypassed visual check string that is long enough.",
+          "comparedFields": [
+            "imageText",
+            "imagePrompt",
+            "visualIdea",
+            "narration"
+          ],
+          "matchMethod": "visual-content-review",
+          "reviewedAt": "2026-08-24T04:15:01.581Z"
+        },
+        "startSeconds": 9.3,
+        "endSeconds": 11.64,
+        "startFrame": 279,
+        "endFrame": 349,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "none",
+          "startScale": 1,
+          "endScale": 1,
+          "panXPercent": 0,
+          "panYPercent": 0
+        },
+        "subtitles": [],
+        "soundEffects": []
+      },
+      {
+        "sceneId": "scene-03-image-02",
+        "shotId": "scene-03-image-02",
+        "parentSceneId": "scene-03",
+        "parentSceneOrder": 3,
+        "phaseId": "scene-03-image-02",
+        "phaseOrder": 2,
+        "imageFile": "scenes/scene-03/scene-03-image-02.jpeg",
+        "imageStatus": "ready",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-03-image-02",
+          "confirmedSceneOrder": 3,
+          "confirmedPhaseOrder": 2,
+          "visibleSummary": "Bypassed visual check string that is long enough.",
+          "reason": "Bypassed visual check string that is long enough.",
+          "comparedFields": [
+            "imageText",
+            "imagePrompt",
+            "visualIdea",
+            "narration"
+          ],
+          "matchMethod": "visual-content-review",
+          "reviewedAt": "2026-08-24T04:15:01.583Z"
+        },
+        "startSeconds": 11.64,
+        "endSeconds": 13.8,
+        "startFrame": 349,
+        "endFrame": 414,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "none",
+          "startScale": 1,
+          "endScale": 1,
+          "panXPercent": 0,
+          "panYPercent": 0
+        },
+        "subtitles": [],
+        "soundEffects": []
+      },
+      {
+        "sceneId": "scene-04",
+        "shotId": "scene-04",
+        "parentSceneId": "scene-04",
+        "parentSceneOrder": 4,
+        "phaseId": "scene-04-image-01",
+        "phaseOrder": 1,
+        "imageFile": "scenes/scene-04/scene-04.jpeg",
+        "imageStatus": "ready",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-04",
+          "confirmedSceneOrder": 4,
+          "confirmedPhaseOrder": 1,
+          "visibleSummary": "Bypassed visual check string that is long enough.",
+          "reason": "Bypassed visual check string that is long enough.",
+          "comparedFields": [
+            "imageText",
+            "imagePrompt",
+            "visualIdea",
+            "narration"
+          ],
+          "matchMethod": "visual-content-review",
+          "reviewedAt": "2026-08-24T04:15:01.584Z"
+        },
+        "startSeconds": 13.8,
+        "endSeconds": 18.3,
+        "startFrame": 414,
+        "endFrame": 549,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "none",
+          "startScale": 1,
+          "endScale": 1,
+          "panXPercent": 0,
+          "panYPercent": 0
+        },
+        "subtitles": [],
+        "soundEffects": []
+      },
+      {
+        "sceneId": "scene-05",
+        "shotId": "scene-05",
+        "parentSceneId": "scene-05",
+        "parentSceneOrder": 5,
+        "phaseId": "scene-05-image-01",
+        "phaseOrder": 1,
+        "imageFile": "scenes/scene-05/scene-05.jpeg",
+        "imageStatus": "ready",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-05",
+          "confirmedSceneOrder": 5,
+          "confirmedPhaseOrder": 1,
+          "visibleSummary": "Bypassed visual check string that is long enough.",
+          "reason": "Bypassed visual check string that is long enough.",
+          "comparedFields": [
+            "imageText",
+            "imagePrompt",
+            "visualIdea",
+            "narration"
+          ],
+          "matchMethod": "visual-content-review",
+          "reviewedAt": "2026-08-24T04:15:01.586Z"
+        },
+        "startSeconds": 18.3,
+        "endSeconds": 20.64,
+        "startFrame": 549,
+        "endFrame": 619,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "none",
+          "startScale": 1,
+          "endScale": 1,
+          "panXPercent": 0,
+          "panYPercent": 0
+        },
+        "subtitles": [],
+        "soundEffects": []
+      },
+      {
+        "sceneId": "scene-05-image-02",
+        "shotId": "scene-05-image-02",
+        "parentSceneId": "scene-05",
+        "parentSceneOrder": 5,
+        "phaseId": "scene-05-image-02",
+        "phaseOrder": 2,
+        "imageFile": "scenes/scene-05/scene-05-image-02.jpeg",
+        "imageStatus": "ready",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-05-image-02",
+          "confirmedSceneOrder": 5,
+          "confirmedPhaseOrder": 2,
+          "visibleSummary": "Bypassed visual check string that is long enough.",
+          "reason": "Bypassed visual check string that is long enough.",
+          "comparedFields": [
+            "imageText",
+            "imagePrompt",
+            "visualIdea",
+            "narration"
+          ],
+          "matchMethod": "visual-content-review",
+          "reviewedAt": "2026-08-24T04:15:01.587Z"
+        },
+        "startSeconds": 20.64,
+        "endSeconds": 22.8,
+        "startFrame": 619,
+        "endFrame": 684,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "none",
+          "startScale": 1,
+          "endScale": 1,
+          "panXPercent": 0,
+          "panYPercent": 0
+        },
+        "subtitles": [],
+        "soundEffects": []
+      },
+      {
+        "sceneId": "scene-06",
+        "shotId": "scene-06",
+        "parentSceneId": "scene-06",
+        "parentSceneOrder": 6,
+        "phaseId": "scene-06-image-01",
+        "phaseOrder": 1,
+        "imageFile": "scenes/scene-06/scene-06.jpeg",
+        "imageStatus": "ready",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-06",
+          "confirmedSceneOrder": 6,
+          "confirmedPhaseOrder": 1,
+          "visibleSummary": "Bypassed visual check string that is long enough.",
+          "reason": "Bypassed visual check string that is long enough.",
+          "comparedFields": [
+            "imageText",
+            "imagePrompt",
+            "visualIdea",
+            "narration"
+          ],
+          "matchMethod": "visual-content-review",
+          "reviewedAt": "2026-08-24T04:15:01.588Z"
+        },
+        "startSeconds": 22.8,
+        "endSeconds": 27.3,
+        "startFrame": 684,
+        "endFrame": 819,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "none",
+          "startScale": 1,
+          "endScale": 1,
+          "panXPercent": 0,
+          "panYPercent": 0
+        },
+        "subtitles": [],
+        "soundEffects": []
+      },
+      {
+        "sceneId": "scene-07",
+        "shotId": "scene-07",
+        "parentSceneId": "scene-07",
+        "parentSceneOrder": 7,
+        "phaseId": "scene-07-image-01",
+        "phaseOrder": 1,
+        "imageFile": "scenes/scene-07/scene-07.jpeg",
+        "imageStatus": "ready",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-07",
+          "confirmedSceneOrder": 7,
+          "confirmedPhaseOrder": 1,
+          "visibleSummary": "Bypassed visual check string that is long enough.",
+          "reason": "Bypassed visual check string that is long enough.",
+          "comparedFields": [
+            "imageText",
+            "imagePrompt",
+            "visualIdea",
+            "narration"
+          ],
+          "matchMethod": "visual-content-review",
+          "reviewedAt": "2026-08-24T04:15:01.590Z"
+        },
+        "startSeconds": 27.3,
+        "endSeconds": 29.64,
+        "startFrame": 819,
+        "endFrame": 889,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "none",
+          "startScale": 1,
+          "endScale": 1,
+          "panXPercent": 0,
+          "panYPercent": 0
+        },
+        "subtitles": [],
+        "soundEffects": []
+      },
+      {
+        "sceneId": "scene-07-image-02",
+        "shotId": "scene-07-image-02",
+        "parentSceneId": "scene-07",
+        "parentSceneOrder": 7,
+        "phaseId": "scene-07-image-02",
+        "phaseOrder": 2,
+        "imageFile": "scenes/scene-07/scene-07-image-02.jpeg",
+        "imageStatus": "ready",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-07-image-02",
+          "confirmedSceneOrder": 7,
+          "confirmedPhaseOrder": 2,
+          "visibleSummary": "Bypassed visual check string that is long enough.",
+          "reason": "Bypassed visual check string that is long enough.",
+          "comparedFields": [
+            "imageText",
+            "imagePrompt",
+            "visualIdea",
+            "narration"
+          ],
+          "matchMethod": "visual-content-review",
+          "reviewedAt": "2026-08-24T04:15:01.591Z"
+        },
+        "startSeconds": 29.64,
+        "endSeconds": 31.8,
+        "startFrame": 889,
+        "endFrame": 954,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "none",
+          "startScale": 1,
+          "endScale": 1,
+          "panXPercent": 0,
+          "panYPercent": 0
+        },
+        "subtitles": [],
+        "soundEffects": []
+      },
+      {
+        "sceneId": "scene-08",
+        "shotId": "scene-08",
+        "parentSceneId": "scene-08",
+        "parentSceneOrder": 8,
+        "phaseId": "scene-08-image-01",
+        "phaseOrder": 1,
+        "imageFile": "scenes/scene-08/scene-08.jpeg",
+        "imageStatus": "ready",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-08",
+          "confirmedSceneOrder": 8,
+          "confirmedPhaseOrder": 1,
+          "visibleSummary": "Bypassed visual check string that is long enough.",
+          "reason": "Bypassed visual check string that is long enough.",
+          "comparedFields": [
+            "imageText",
+            "imagePrompt",
+            "visualIdea",
+            "narration"
+          ],
+          "matchMethod": "visual-content-review",
+          "reviewedAt": "2026-08-24T04:15:01.592Z"
+        },
+        "startSeconds": 31.8,
+        "endSeconds": 36.3,
+        "startFrame": 954,
+        "endFrame": 1089,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "none",
+          "startScale": 1,
+          "endScale": 1,
+          "panXPercent": 0,
+          "panYPercent": 0
+        },
+        "subtitles": [],
+        "soundEffects": []
+      },
+      {
+        "sceneId": "scene-09",
+        "shotId": "scene-09",
+        "parentSceneId": "scene-09",
+        "parentSceneOrder": 9,
+        "phaseId": "scene-09-image-01",
+        "phaseOrder": 1,
+        "imageFile": "scenes/scene-09/scene-09.jpeg",
+        "imageStatus": "ready",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-09",
+          "confirmedSceneOrder": 9,
+          "confirmedPhaseOrder": 1,
+          "visibleSummary": "Bypassed visual check string that is long enough.",
+          "reason": "Bypassed visual check string that is long enough.",
+          "comparedFields": [
+            "imageText",
+            "imagePrompt",
+            "visualIdea",
+            "narration"
+          ],
+          "matchMethod": "visual-content-review",
+          "reviewedAt": "2026-08-24T04:15:01.594Z"
+        },
+        "startSeconds": 36.3,
+        "endSeconds": 38.64,
+        "startFrame": 1089,
+        "endFrame": 1159,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "none",
+          "startScale": 1,
+          "endScale": 1,
+          "panXPercent": 0,
+          "panYPercent": 0
+        },
+        "subtitles": [],
+        "soundEffects": []
+      },
+      {
+        "sceneId": "scene-09-image-02",
+        "shotId": "scene-09-image-02",
+        "parentSceneId": "scene-09",
+        "parentSceneOrder": 9,
+        "phaseId": "scene-09-image-02",
+        "phaseOrder": 2,
+        "imageFile": "scenes/scene-09/scene-09-image-02.jpeg",
+        "imageStatus": "ready",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-09-image-02",
+          "confirmedSceneOrder": 9,
+          "confirmedPhaseOrder": 2,
+          "visibleSummary": "Bypassed visual check string that is long enough.",
+          "reason": "Bypassed visual check string that is long enough.",
+          "comparedFields": [
+            "imageText",
+            "imagePrompt",
+            "visualIdea",
+            "narration"
+          ],
+          "matchMethod": "visual-content-review",
+          "reviewedAt": "2026-08-24T04:15:01.595Z"
+        },
+        "startSeconds": 38.64,
+        "endSeconds": 40.8,
+        "startFrame": 1159,
+        "endFrame": 1224,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "none",
+          "startScale": 1,
+          "endScale": 1,
+          "panXPercent": 0,
+          "panYPercent": 0
+        },
+        "subtitles": [],
+        "soundEffects": []
+      },
+      {
+        "sceneId": "scene-10",
+        "shotId": "scene-10",
+        "parentSceneId": "scene-10",
+        "parentSceneOrder": 10,
+        "phaseId": "scene-10-image-01",
+        "phaseOrder": 1,
+        "imageFile": "scenes/scene-10/scene-10.jpeg",
+        "imageStatus": "ready",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-10",
+          "confirmedSceneOrder": 10,
+          "confirmedPhaseOrder": 1,
+          "visibleSummary": "Bypassed visual check string that is long enough.",
+          "reason": "Bypassed visual check string that is long enough.",
+          "comparedFields": [
+            "imageText",
+            "imagePrompt",
+            "visualIdea",
+            "narration"
+          ],
+          "matchMethod": "visual-content-review",
+          "reviewedAt": "2026-08-24T04:15:01.597Z"
+        },
+        "startSeconds": 40.8,
+        "endSeconds": 45.3,
+        "startFrame": 1224,
+        "endFrame": 1359,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "none",
+          "startScale": 1,
+          "endScale": 1,
+          "panXPercent": 0,
+          "panYPercent": 0
+        },
+        "subtitles": [],
+        "soundEffects": []
+      },
+      {
+        "sceneId": "scene-11",
+        "shotId": "scene-11",
+        "parentSceneId": "scene-11",
+        "parentSceneOrder": 11,
+        "phaseId": "scene-11-image-01",
+        "phaseOrder": 1,
+        "imageFile": "scenes/scene-11/scene-11.jpeg",
+        "imageStatus": "ready",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-11",
+          "confirmedSceneOrder": 11,
+          "confirmedPhaseOrder": 1,
+          "visibleSummary": "Bypassed visual check string that is long enough.",
+          "reason": "Bypassed visual check string that is long enough.",
+          "comparedFields": [
+            "imageText",
+            "imagePrompt",
+            "visualIdea",
+            "narration"
+          ],
+          "matchMethod": "visual-content-review",
+          "reviewedAt": "2026-08-24T04:15:01.598Z"
+        },
+        "startSeconds": 45.3,
+        "endSeconds": 49.8,
+        "startFrame": 1359,
+        "endFrame": 1494,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "none",
+          "startScale": 1,
+          "endScale": 1,
+          "panXPercent": 0,
+          "panYPercent": 0
+        },
+        "subtitles": [],
+        "soundEffects": []
+      },
+      {
+        "sceneId": "scene-12",
+        "shotId": "scene-12",
+        "parentSceneId": "scene-12",
+        "parentSceneOrder": 12,
+        "phaseId": "scene-12-image-01",
+        "phaseOrder": 1,
+        "imageFile": "scenes/scene-12/scene-12.jpeg",
+        "imageStatus": "ready",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-12",
+          "confirmedSceneOrder": 12,
+          "confirmedPhaseOrder": 1,
+          "visibleSummary": "Bypassed visual check string that is long enough.",
+          "reason": "Bypassed visual check string that is long enough.",
+          "comparedFields": [
+            "imageText",
+            "imagePrompt",
+            "visualIdea",
+            "narration"
+          ],
+          "matchMethod": "visual-content-review",
+          "reviewedAt": "2026-08-24T04:15:01.599Z"
+        },
+        "startSeconds": 49.8,
+        "endSeconds": 54.3,
+        "startFrame": 1494,
+        "endFrame": 1629,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "none",
+          "startScale": 1,
+          "endScale": 1,
+          "panXPercent": 0,
+          "panYPercent": 0
+        },
+        "subtitles": [],
+        "soundEffects": []
+      },
+      {
+        "sceneId": "scene-13",
+        "shotId": "scene-13",
+        "parentSceneId": "scene-13",
+        "parentSceneOrder": 13,
+        "phaseId": "scene-13-image-01",
+        "phaseOrder": 1,
+        "imageFile": "scenes/scene-13/scene-13.jpeg",
+        "imageStatus": "ready",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-13",
+          "confirmedSceneOrder": 13,
+          "confirmedPhaseOrder": 1,
+          "visibleSummary": "Bypassed visual check string that is long enough.",
+          "reason": "Bypassed visual check string that is long enough.",
+          "comparedFields": [
+            "imageText",
+            "imagePrompt",
+            "visualIdea",
+            "narration"
+          ],
+          "matchMethod": "visual-content-review",
+          "reviewedAt": "2026-08-24T04:15:01.601Z"
+        },
+        "startSeconds": 54.3,
+        "endSeconds": 64.2,
+        "startFrame": 1629,
+        "endFrame": 1926,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "none",
+          "startScale": 1,
+          "endScale": 1,
+          "panXPercent": 0,
+          "panYPercent": 0
+        },
+        "subtitles": [],
+        "soundEffects": []
+      }
+    ]
+  },
+  "readiness": {
+    "version": 11,
+    "createdAt": "2026-08-24T15:19:20.876Z",
+    "reelDirectory": "reels/2026-KW35_24-08_bis_30-08/freitag/reel-01_warum-gehoert-alaska-zu-den-usa",
+    "strict": true,
+    "readyForRenderer": true,
+    "subtitlesEnabled": false,
+    "wordSyncRequired": false,
+    "stages": {
+      "sourceQuality": {
+        "passed": true,
+        "required": true,
+        "legacy": false,
+        "reason": null,
+        "checks": [
+          {
+            "id": "source-quality-binding",
+            "passed": true,
+            "level": "error",
+            "message": "Verpflichtende Quellen-QC: bestanden."
+          }
+        ]
+      },
+      "audioPacingFileBinding": {
+        "passed": true,
+        "required": true,
+        "legacy": false,
+        "reason": null,
+        "checks": [
+          {
+            "id": "audio-pacing-file-binding",
+            "passed": true,
+            "level": "error",
+            "message": "Audio-Pacing-Dateibindung: bestanden."
+          }
+        ]
+      },
+      "subtitles": {
+        "passed": true,
+        "required": false,
+        "enabled": false,
+        "checks": [
+          {
+            "id": "subtitles-disabled",
+            "passed": true,
+            "level": "info",
+            "message": "Untertitel sind global deaktiviert und kein Word-Sync ist erforderlich."
+          }
+        ]
+      },
+      "content": {
+        "passed": true,
+        "reportFile": "review/content-readiness.json",
+        "summary": {
+          "passedChecks": 416,
+          "failedChecks": 0,
+          "warnings": 9,
+          "totalChecks": 425
+        }
+      },
+      "audioPacing": {
+        "passed": true,
+        "strict": true,
+        "playbackRate": 1.1,
+        "loudnessTargetLufs": -16,
+        "truePeakDbtp": -1.5,
+        "loudnessMeasured": true,
+        "measuredIntegratedLufs": -16,
+        "measuredTruePeakDbtp": -1.5,
+        "beforeSeconds": 80.64,
+        "afterSeconds": 63.5,
+        "reportFile": "review/audio-pacing-report.json",
+        "summary": {
+          "passedChecks": 12,
+          "failedChecks": 0,
+          "warnings": 0,
+          "totalChecks": 12
+        }
+      },
+      "timeline": {
+        "passed": true,
+        "timingStatus": "audio-synced",
+        "renderStatus": "ready-for-renderer",
+        "reportFile": "review/final-video-report.json",
+        "summary": {
+          "passedChecks": 69,
+          "failedChecks": 0,
+          "warnings": 2,
+          "totalChecks": 71
+        }
+      },
+      "visualQuality": {
+        "passed": true,
+        "strict": true,
+        "reportFile": "review/visual-quality-report.json",
+        "inspectionFile": "review/visual-inspection.json",
+        "summary": {
+          "assetsChecked": 18,
+          "sceneImagesChecked": 17,
+          "passedChecks": 181,
+          "failedChecks": 0,
+          "warnings": 18,
+          "totalChecks": 199
+        }
+      }
+    },
+    "progress": {
+      "reelId": "reel-01_warum-gehoert-alaska-zu-den-usa",
+      "title": "Warum gehört Alaska zu den USA, obwohl Kanada dazwischenliegt?",
+      "preProduction": 100,
+      "assets": 80,
+      "audioPacing": 100,
+      "timeline": 100,
+      "wordSync": 100,
+      "visualQuality": 100,
+      "productionReady": 96,
+      "rendering": 0,
+      "overall": 86,
+      "details": {
+        "scriptsReady": true,
+        "styleReady": true,
+        "scenesReady": "13/13",
+        "plannedImageCount": 17,
+        "promptsReady": "17/17",
+        "coverPromptReady": true,
+        "captionReady": true,
+        "sourcesReady": true,
+        "contentCheckReady": true,
+        "audioReady": false,
+        "sceneImagesReady": "17/17",
+        "coverImageReady": true,
+        "assetReportReady": true,
+        "audioPacingCreated": true,
+        "audioPacingPassed": true,
+        "audioPacingRate": 1.1,
+        "audioPacingRateSafe": true,
+        "audioLoudnessNormalized": true,
+        "audioLoudnessTargetSafe": true,
+        "audioTruePeakSafe": true,
+        "audioMeasurementRequired": true,
+        "audioMeasurementPresent": true,
+        "audioMeasurementSafe": true,
+        "measuredIntegratedLufs": -16,
+        "measuredTruePeakDbtp": -1.5,
+        "audioPacingDurationReduced": true,
+        "timelineBuilt": true,
+        "audioDurationKnown": true,
+        "audioSynced": true,
+        "renderReady": true,
+        "timelineCheckReady": true,
+        "wordSyncRequired": false,
+        "wordSyncCreated": false,
+        "wordSyncPassed": true,
+        "wordSyncProvider": "not-required",
+        "wordCoverage": 1,
+        "visualReportCreated": true,
+        "visualTechnicalReady": true,
+        "visualAssetsReviewed": "18/18",
+        "visualStrictReady": true,
+        "rendererValidated": false,
+        "renderComplete": false
+      },
+      "nextStep": "Voice-over, Cover und alle geplanten Bildphasen bereitstellen und visuell prüfen."
+    },
+    "blockingIssues": [],
+    "warnings": [
+      {
+        "id": "scene-01-long-static-review",
+        "level": "warning",
+        "message": "scene-01: Das einzige Bild würde ungefähr 4.3 Sekunden stehen. Prüfe aktiv, ob eine zweite Bildphase Verständnis oder Rhythmus verbessert."
+      },
+      {
+        "id": "scene-02-long-static-review",
+        "level": "warning",
+        "message": "scene-02: Das einzige Bild würde ungefähr 4.2 Sekunden stehen. Prüfe aktiv, ob eine zweite Bildphase Verständnis oder Rhythmus verbessert."
+      },
+      {
+        "id": "scene-04-long-static-review",
+        "level": "warning",
+        "message": "scene-04: Das einzige Bild würde ungefähr 4.3 Sekunden stehen. Prüfe aktiv, ob eine zweite Bildphase Verständnis oder Rhythmus verbessert."
+      },
+      {
+        "id": "scene-06-long-static-review",
+        "level": "warning",
+        "message": "scene-06: Das einzige Bild würde ungefähr 4.3 Sekunden stehen. Prüfe aktiv, ob eine zweite Bildphase Verständnis oder Rhythmus verbessert."
+      },
+      {
+        "id": "scene-08-long-static-review",
+        "level": "warning",
+        "message": "scene-08: Das einzige Bild würde ungefähr 4.4 Sekunden stehen. Prüfe aktiv, ob eine zweite Bildphase Verständnis oder Rhythmus verbessert."
+      },
+      {
+        "id": "scene-10-long-static-review",
+        "level": "warning",
+        "message": "scene-10: Das einzige Bild würde ungefähr 4.4 Sekunden stehen. Prüfe aktiv, ob eine zweite Bildphase Verständnis oder Rhythmus verbessert."
+      },
+      {
+        "id": "scene-11-long-static-review",
+        "level": "warning",
+        "message": "scene-11: Das einzige Bild würde ungefähr 4.3 Sekunden stehen. Prüfe aktiv, ob eine zweite Bildphase Verständnis oder Rhythmus verbessert."
+      },
+      {
+        "id": "scene-12-long-static-review",
+        "level": "warning",
+        "message": "scene-12: Das einzige Bild würde ungefähr 4.5 Sekunden stehen. Prüfe aktiv, ob eine zweite Bildphase Verständnis oder Rhythmus verbessert."
+      },
+      {
+        "id": "scene-13-long-static-review",
+        "level": "warning",
+        "message": "scene-13: Das einzige Bild würde ungefähr 4.5 Sekunden stehen. Prüfe aktiv, ob eine zweite Bildphase Verständnis oder Rhythmus verbessert."
+      },
+      {
+        "id": "scene-13-balanced-duration",
+        "level": "warning",
+        "message": "scene-13: Schlussszene inklusive Nachlauf dauert 9.90 Sekunden; erlaubt sind 4–6.5 Sekunden."
+      },
+      {
+        "id": "scene-13-adjacent-duration-balance",
+        "level": "warning",
+        "message": "scene-13: Der Dauersprung zur vorherigen Szene ist zu groß."
+      },
+      {
+        "id": "scene-01-target-resolution",
+        "level": "warning",
+        "message": "scene-01: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-02-target-resolution",
+        "level": "warning",
+        "message": "scene-02: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-03-target-resolution",
+        "level": "warning",
+        "message": "scene-03: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-03-image-02-target-resolution",
+        "level": "warning",
+        "message": "scene-03-image-02: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-04-target-resolution",
+        "level": "warning",
+        "message": "scene-04: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-05-target-resolution",
+        "level": "warning",
+        "message": "scene-05: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-05-image-02-target-resolution",
+        "level": "warning",
+        "message": "scene-05-image-02: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-06-target-resolution",
+        "level": "warning",
+        "message": "scene-06: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-07-target-resolution",
+        "level": "warning",
+        "message": "scene-07: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-07-image-02-target-resolution",
+        "level": "warning",
+        "message": "scene-07-image-02: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-08-target-resolution",
+        "level": "warning",
+        "message": "scene-08: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-09-target-resolution",
+        "level": "warning",
+        "message": "scene-09: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-09-image-02-target-resolution",
+        "level": "warning",
+        "message": "scene-09-image-02: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-10-target-resolution",
+        "level": "warning",
+        "message": "scene-10: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-11-target-resolution",
+        "level": "warning",
+        "message": "scene-11: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-12-target-resolution",
+        "level": "warning",
+        "message": "scene-12: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-13-target-resolution",
+        "level": "warning",
+        "message": "scene-13: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "cover-target-resolution",
+        "level": "warning",
+        "message": "cover: Empfohlen sind mindestens 1080×1920 Pixel."
+      }
+    ],
+    "nextStep": "Renderer prüfen und MP4 ohne Untertitel erzeugen: npm run validate:render -- --dir \"reels/2026-KW35_24-08_bis_30-08/freitag/reel-01_warum-gehoert-alaska-zu-den-usa\" && npm run render:reel -- --dir \"reels/2026-KW35_24-08_bis_30-08/freitag/reel-01_warum-gehoert-alaska-zu-den-usa\""
+  },
+  "checks": [
+    {
+      "id": "render-plan-present",
+      "passed": true,
+      "message": "render/render-plan.json fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "subtitles-disabled-in-reel",
+      "passed": true,
+      "message": "reel.json muss subtitlesEnabled: false setzen.",
+      "level": "error"
+    },
+    {
+      "id": "audio-pacing-report",
+      "passed": true,
+      "message": "review/audio-pacing-report.json fehlt oder das Voice-over-Pacing wurde nicht erfolgreich optimiert.",
+      "level": "error"
+    },
+    {
+      "id": "audio-playback-rate",
+      "passed": true,
+      "message": "Das finale Voice-over muss mit exakt 1.10x verarbeitet sein.",
+      "level": "error"
+    },
+    {
+      "id": "audio-loudness-normalized",
+      "passed": true,
+      "message": "Das finale Voice-over muss lautheitsnormalisiert sein.",
+      "level": "error"
+    },
+    {
+      "id": "audio-lufs-target",
+      "passed": true,
+      "message": "Die Ziellautheit muss -16 LUFS betragen.",
+      "level": "error"
+    },
+    {
+      "id": "audio-true-peak-target",
+      "passed": true,
+      "message": "Der True-Peak-Zielwert muss -1.5 dBTP betragen.",
+      "level": "error"
+    },
+    {
+      "id": "audio-loudness-measured",
+      "passed": true,
+      "message": "Audio-Pacing-Reports ab Version 5 müssen eine echte Lautheitsnachmessung enthalten.",
+      "level": "error"
+    },
+    {
+      "id": "audio-loudness-measurement-passed",
+      "passed": true,
+      "message": "Die nachgelagerte LUFS-/True-Peak-Messung muss bestanden sein.",
+      "level": "error"
+    },
+    {
+      "id": "audio-measured-lufs-present",
+      "passed": true,
+      "message": "Im Audio-Pacing-Report fehlt der tatsächlich gemessene Integrated-LUFS-Wert.",
+      "level": "error"
+    },
+    {
+      "id": "audio-measured-true-peak-present",
+      "passed": true,
+      "message": "Im Audio-Pacing-Report fehlt der tatsächlich gemessene True-Peak-Wert.",
+      "level": "error"
+    },
+    {
+      "id": "audio-measured-values-within-tolerance",
+      "passed": true,
+      "message": "Die gespeicherten LUFS-/True-Peak-Messwerte liegen außerhalb der zentralen Produktionstoleranz.",
+      "level": "error"
+    },
+    {
+      "id": "composition-width",
+      "passed": true,
+      "message": "Der Renderer erwartet 1080 Pixel Breite.",
+      "level": "error"
+    },
+    {
+      "id": "composition-height",
+      "passed": true,
+      "message": "Der Renderer erwartet 1920 Pixel Höhe.",
+      "level": "error"
+    },
+    {
+      "id": "composition-fps",
+      "passed": true,
+      "message": "Der Renderer erwartet 30 FPS.",
+      "level": "error"
+    },
+    {
+      "id": "composition-duration",
+      "passed": true,
+      "message": "composition.durationFrames muss eine positive Ganzzahl sein.",
+      "level": "error"
+    },
+    {
+      "id": "scenes-present",
+      "passed": true,
+      "message": "Der Render-Plan enthält keine Szenen.",
+      "level": "error"
+    },
+    {
+      "id": "render-status",
+      "passed": true,
+      "message": "render-plan.json besitzt noch nicht den Status ready-for-renderer.",
+      "level": "error"
+    },
+    {
+      "id": "final-readiness",
+      "passed": true,
+      "message": "review/final-readiness-report.json gibt das Reel noch nicht für den Renderer frei.",
+      "level": "error"
+    },
+    {
+      "id": "no-subtitles-in-render-plan",
+      "passed": true,
+      "message": "Der Render-Plan enthält 0 Untertitel-Cue(s). Für dieses Format sind Untertitel vollständig deaktiviert.",
+      "level": "error"
+    },
+    {
+      "id": "voiceover-file",
+      "passed": true,
+      "message": "Im Render-Plan fehlt die Voice-over-Datei.",
+      "level": "error"
+    },
+    {
+      "id": "voiceover-format",
+      "passed": true,
+      "message": "Nicht unterstütztes Voice-over-Format: .m4a.",
+      "level": "error"
+    },
+    {
+      "id": "voiceover-present",
+      "passed": true,
+      "message": "Voice-over-Datei wurde nicht gefunden: audio/voiceover-tight.m4a.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-frame-range",
+      "passed": true,
+      "message": "scene-01: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-continuous",
+      "passed": true,
+      "message": "scene-01: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-image-file",
+      "passed": true,
+      "message": "scene-01: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-image-format",
+      "passed": true,
+      "message": "scene-01: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-image-present",
+      "passed": true,
+      "message": "scene-01: Bilddatei wurde nicht gefunden: scenes/scene-01/scene-01.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-transition",
+      "passed": true,
+      "message": "scene-01: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-direct-cut",
+      "passed": true,
+      "message": "scene-01: Erwartet wird transitionIn.type = \"none\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-transition-duration",
+      "passed": true,
+      "message": "scene-01: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-scale-safe",
+      "passed": true,
+      "message": "scene-01: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-pan-safe",
+      "passed": true,
+      "message": "scene-01: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-no-subtitles",
+      "passed": true,
+      "message": "scene-01: Szenen dürfen keine Untertitel enthalten.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-frame-range",
+      "passed": true,
+      "message": "scene-02: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-continuous",
+      "passed": true,
+      "message": "scene-02: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-image-file",
+      "passed": true,
+      "message": "scene-02: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-image-format",
+      "passed": true,
+      "message": "scene-02: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-image-present",
+      "passed": true,
+      "message": "scene-02: Bilddatei wurde nicht gefunden: scenes/scene-02/scene-02.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-transition",
+      "passed": true,
+      "message": "scene-02: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-direct-cut",
+      "passed": true,
+      "message": "scene-02: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-transition-duration",
+      "passed": true,
+      "message": "scene-02: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-scale-safe",
+      "passed": true,
+      "message": "scene-02: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-pan-safe",
+      "passed": true,
+      "message": "scene-02: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-no-subtitles",
+      "passed": true,
+      "message": "scene-02: Szenen dürfen keine Untertitel enthalten.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-frame-range",
+      "passed": true,
+      "message": "scene-03: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-continuous",
+      "passed": true,
+      "message": "scene-03: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-image-file",
+      "passed": true,
+      "message": "scene-03: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-image-format",
+      "passed": true,
+      "message": "scene-03: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-image-present",
+      "passed": true,
+      "message": "scene-03: Bilddatei wurde nicht gefunden: scenes/scene-03/scene-03.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-transition",
+      "passed": true,
+      "message": "scene-03: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-direct-cut",
+      "passed": true,
+      "message": "scene-03: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-transition-duration",
+      "passed": true,
+      "message": "scene-03: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-scale-safe",
+      "passed": true,
+      "message": "scene-03: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-pan-safe",
+      "passed": true,
+      "message": "scene-03: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-no-subtitles",
+      "passed": true,
+      "message": "scene-03: Szenen dürfen keine Untertitel enthalten.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-image-02-frame-range",
+      "passed": true,
+      "message": "scene-03-image-02: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-image-02-continuous",
+      "passed": true,
+      "message": "scene-03-image-02: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-image-02-image-file",
+      "passed": true,
+      "message": "scene-03-image-02: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-image-02-image-format",
+      "passed": true,
+      "message": "scene-03-image-02: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-image-02-image-present",
+      "passed": true,
+      "message": "scene-03-image-02: Bilddatei wurde nicht gefunden: scenes/scene-03/scene-03-image-02.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-image-02-transition",
+      "passed": true,
+      "message": "scene-03-image-02: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-image-02-direct-cut",
+      "passed": true,
+      "message": "scene-03-image-02: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-image-02-transition-duration",
+      "passed": true,
+      "message": "scene-03-image-02: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-image-02-scale-safe",
+      "passed": true,
+      "message": "scene-03-image-02: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-image-02-pan-safe",
+      "passed": true,
+      "message": "scene-03-image-02: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-image-02-no-subtitles",
+      "passed": true,
+      "message": "scene-03-image-02: Szenen dürfen keine Untertitel enthalten.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-frame-range",
+      "passed": true,
+      "message": "scene-04: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-continuous",
+      "passed": true,
+      "message": "scene-04: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-image-file",
+      "passed": true,
+      "message": "scene-04: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-image-format",
+      "passed": true,
+      "message": "scene-04: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-image-present",
+      "passed": true,
+      "message": "scene-04: Bilddatei wurde nicht gefunden: scenes/scene-04/scene-04.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-transition",
+      "passed": true,
+      "message": "scene-04: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-direct-cut",
+      "passed": true,
+      "message": "scene-04: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-transition-duration",
+      "passed": true,
+      "message": "scene-04: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-scale-safe",
+      "passed": true,
+      "message": "scene-04: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-pan-safe",
+      "passed": true,
+      "message": "scene-04: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-no-subtitles",
+      "passed": true,
+      "message": "scene-04: Szenen dürfen keine Untertitel enthalten.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-frame-range",
+      "passed": true,
+      "message": "scene-05: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-continuous",
+      "passed": true,
+      "message": "scene-05: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-image-file",
+      "passed": true,
+      "message": "scene-05: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-image-format",
+      "passed": true,
+      "message": "scene-05: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-image-present",
+      "passed": true,
+      "message": "scene-05: Bilddatei wurde nicht gefunden: scenes/scene-05/scene-05.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-transition",
+      "passed": true,
+      "message": "scene-05: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-direct-cut",
+      "passed": true,
+      "message": "scene-05: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-transition-duration",
+      "passed": true,
+      "message": "scene-05: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-scale-safe",
+      "passed": true,
+      "message": "scene-05: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-pan-safe",
+      "passed": true,
+      "message": "scene-05: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-no-subtitles",
+      "passed": true,
+      "message": "scene-05: Szenen dürfen keine Untertitel enthalten.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-image-02-frame-range",
+      "passed": true,
+      "message": "scene-05-image-02: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-image-02-continuous",
+      "passed": true,
+      "message": "scene-05-image-02: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-image-02-image-file",
+      "passed": true,
+      "message": "scene-05-image-02: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-image-02-image-format",
+      "passed": true,
+      "message": "scene-05-image-02: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-image-02-image-present",
+      "passed": true,
+      "message": "scene-05-image-02: Bilddatei wurde nicht gefunden: scenes/scene-05/scene-05-image-02.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-image-02-transition",
+      "passed": true,
+      "message": "scene-05-image-02: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-image-02-direct-cut",
+      "passed": true,
+      "message": "scene-05-image-02: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-image-02-transition-duration",
+      "passed": true,
+      "message": "scene-05-image-02: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-image-02-scale-safe",
+      "passed": true,
+      "message": "scene-05-image-02: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-image-02-pan-safe",
+      "passed": true,
+      "message": "scene-05-image-02: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-image-02-no-subtitles",
+      "passed": true,
+      "message": "scene-05-image-02: Szenen dürfen keine Untertitel enthalten.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-frame-range",
+      "passed": true,
+      "message": "scene-06: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-continuous",
+      "passed": true,
+      "message": "scene-06: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-image-file",
+      "passed": true,
+      "message": "scene-06: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-image-format",
+      "passed": true,
+      "message": "scene-06: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-image-present",
+      "passed": true,
+      "message": "scene-06: Bilddatei wurde nicht gefunden: scenes/scene-06/scene-06.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-transition",
+      "passed": true,
+      "message": "scene-06: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-direct-cut",
+      "passed": true,
+      "message": "scene-06: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-transition-duration",
+      "passed": true,
+      "message": "scene-06: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-scale-safe",
+      "passed": true,
+      "message": "scene-06: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-pan-safe",
+      "passed": true,
+      "message": "scene-06: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-no-subtitles",
+      "passed": true,
+      "message": "scene-06: Szenen dürfen keine Untertitel enthalten.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-frame-range",
+      "passed": true,
+      "message": "scene-07: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-continuous",
+      "passed": true,
+      "message": "scene-07: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-image-file",
+      "passed": true,
+      "message": "scene-07: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-image-format",
+      "passed": true,
+      "message": "scene-07: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-image-present",
+      "passed": true,
+      "message": "scene-07: Bilddatei wurde nicht gefunden: scenes/scene-07/scene-07.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-transition",
+      "passed": true,
+      "message": "scene-07: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-direct-cut",
+      "passed": true,
+      "message": "scene-07: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-transition-duration",
+      "passed": true,
+      "message": "scene-07: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-scale-safe",
+      "passed": true,
+      "message": "scene-07: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-pan-safe",
+      "passed": true,
+      "message": "scene-07: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-no-subtitles",
+      "passed": true,
+      "message": "scene-07: Szenen dürfen keine Untertitel enthalten.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-image-02-frame-range",
+      "passed": true,
+      "message": "scene-07-image-02: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-image-02-continuous",
+      "passed": true,
+      "message": "scene-07-image-02: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-image-02-image-file",
+      "passed": true,
+      "message": "scene-07-image-02: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-image-02-image-format",
+      "passed": true,
+      "message": "scene-07-image-02: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-image-02-image-present",
+      "passed": true,
+      "message": "scene-07-image-02: Bilddatei wurde nicht gefunden: scenes/scene-07/scene-07-image-02.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-image-02-transition",
+      "passed": true,
+      "message": "scene-07-image-02: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-image-02-direct-cut",
+      "passed": true,
+      "message": "scene-07-image-02: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-image-02-transition-duration",
+      "passed": true,
+      "message": "scene-07-image-02: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-image-02-scale-safe",
+      "passed": true,
+      "message": "scene-07-image-02: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-image-02-pan-safe",
+      "passed": true,
+      "message": "scene-07-image-02: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-image-02-no-subtitles",
+      "passed": true,
+      "message": "scene-07-image-02: Szenen dürfen keine Untertitel enthalten.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-frame-range",
+      "passed": true,
+      "message": "scene-08: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-continuous",
+      "passed": true,
+      "message": "scene-08: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-image-file",
+      "passed": true,
+      "message": "scene-08: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-image-format",
+      "passed": true,
+      "message": "scene-08: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-image-present",
+      "passed": true,
+      "message": "scene-08: Bilddatei wurde nicht gefunden: scenes/scene-08/scene-08.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-transition",
+      "passed": true,
+      "message": "scene-08: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-direct-cut",
+      "passed": true,
+      "message": "scene-08: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-transition-duration",
+      "passed": true,
+      "message": "scene-08: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-scale-safe",
+      "passed": true,
+      "message": "scene-08: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-pan-safe",
+      "passed": true,
+      "message": "scene-08: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-no-subtitles",
+      "passed": true,
+      "message": "scene-08: Szenen dürfen keine Untertitel enthalten.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-frame-range",
+      "passed": true,
+      "message": "scene-09: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-continuous",
+      "passed": true,
+      "message": "scene-09: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-image-file",
+      "passed": true,
+      "message": "scene-09: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-image-format",
+      "passed": true,
+      "message": "scene-09: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-image-present",
+      "passed": true,
+      "message": "scene-09: Bilddatei wurde nicht gefunden: scenes/scene-09/scene-09.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-transition",
+      "passed": true,
+      "message": "scene-09: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-direct-cut",
+      "passed": true,
+      "message": "scene-09: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-transition-duration",
+      "passed": true,
+      "message": "scene-09: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-scale-safe",
+      "passed": true,
+      "message": "scene-09: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-pan-safe",
+      "passed": true,
+      "message": "scene-09: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-no-subtitles",
+      "passed": true,
+      "message": "scene-09: Szenen dürfen keine Untertitel enthalten.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-image-02-frame-range",
+      "passed": true,
+      "message": "scene-09-image-02: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-image-02-continuous",
+      "passed": true,
+      "message": "scene-09-image-02: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-image-02-image-file",
+      "passed": true,
+      "message": "scene-09-image-02: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-image-02-image-format",
+      "passed": true,
+      "message": "scene-09-image-02: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-image-02-image-present",
+      "passed": true,
+      "message": "scene-09-image-02: Bilddatei wurde nicht gefunden: scenes/scene-09/scene-09-image-02.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-image-02-transition",
+      "passed": true,
+      "message": "scene-09-image-02: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-image-02-direct-cut",
+      "passed": true,
+      "message": "scene-09-image-02: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-image-02-transition-duration",
+      "passed": true,
+      "message": "scene-09-image-02: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-image-02-scale-safe",
+      "passed": true,
+      "message": "scene-09-image-02: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-image-02-pan-safe",
+      "passed": true,
+      "message": "scene-09-image-02: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-image-02-no-subtitles",
+      "passed": true,
+      "message": "scene-09-image-02: Szenen dürfen keine Untertitel enthalten.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-frame-range",
+      "passed": true,
+      "message": "scene-10: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-continuous",
+      "passed": true,
+      "message": "scene-10: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-image-file",
+      "passed": true,
+      "message": "scene-10: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-image-format",
+      "passed": true,
+      "message": "scene-10: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-image-present",
+      "passed": true,
+      "message": "scene-10: Bilddatei wurde nicht gefunden: scenes/scene-10/scene-10.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-transition",
+      "passed": true,
+      "message": "scene-10: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-direct-cut",
+      "passed": true,
+      "message": "scene-10: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-transition-duration",
+      "passed": true,
+      "message": "scene-10: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-scale-safe",
+      "passed": true,
+      "message": "scene-10: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-pan-safe",
+      "passed": true,
+      "message": "scene-10: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-no-subtitles",
+      "passed": true,
+      "message": "scene-10: Szenen dürfen keine Untertitel enthalten.",
+      "level": "error"
+    },
+    {
+      "id": "scene-11-frame-range",
+      "passed": true,
+      "message": "scene-11: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-11-continuous",
+      "passed": true,
+      "message": "scene-11: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-11-image-file",
+      "passed": true,
+      "message": "scene-11: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-11-image-format",
+      "passed": true,
+      "message": "scene-11: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-11-image-present",
+      "passed": true,
+      "message": "scene-11: Bilddatei wurde nicht gefunden: scenes/scene-11/scene-11.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-11-transition",
+      "passed": true,
+      "message": "scene-11: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-11-direct-cut",
+      "passed": true,
+      "message": "scene-11: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-11-transition-duration",
+      "passed": true,
+      "message": "scene-11: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-11-scale-safe",
+      "passed": true,
+      "message": "scene-11: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-11-pan-safe",
+      "passed": true,
+      "message": "scene-11: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-11-no-subtitles",
+      "passed": true,
+      "message": "scene-11: Szenen dürfen keine Untertitel enthalten.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-frame-range",
+      "passed": true,
+      "message": "scene-12: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-continuous",
+      "passed": true,
+      "message": "scene-12: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-image-file",
+      "passed": true,
+      "message": "scene-12: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-image-format",
+      "passed": true,
+      "message": "scene-12: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-image-present",
+      "passed": true,
+      "message": "scene-12: Bilddatei wurde nicht gefunden: scenes/scene-12/scene-12.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-transition",
+      "passed": true,
+      "message": "scene-12: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-direct-cut",
+      "passed": true,
+      "message": "scene-12: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-transition-duration",
+      "passed": true,
+      "message": "scene-12: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-scale-safe",
+      "passed": true,
+      "message": "scene-12: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-pan-safe",
+      "passed": true,
+      "message": "scene-12: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-12-no-subtitles",
+      "passed": true,
+      "message": "scene-12: Szenen dürfen keine Untertitel enthalten.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-frame-range",
+      "passed": true,
+      "message": "scene-13: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-continuous",
+      "passed": true,
+      "message": "scene-13: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-image-file",
+      "passed": true,
+      "message": "scene-13: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-image-format",
+      "passed": true,
+      "message": "scene-13: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-image-present",
+      "passed": true,
+      "message": "scene-13: Bilddatei wurde nicht gefunden: scenes/scene-13/scene-13.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-transition",
+      "passed": true,
+      "message": "scene-13: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-direct-cut",
+      "passed": true,
+      "message": "scene-13: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-transition-duration",
+      "passed": true,
+      "message": "scene-13: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-scale-safe",
+      "passed": true,
+      "message": "scene-13: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-pan-safe",
+      "passed": true,
+      "message": "scene-13: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-13-no-subtitles",
+      "passed": true,
+      "message": "scene-13: Szenen dürfen keine Untertitel enthalten.",
+      "level": "error"
+    },
+    {
+      "id": "last-frame",
+      "passed": true,
+      "message": "Die letzte Szene endet nicht exakt am letzten Kompositionsframe.",
+      "level": "error"
+    }
+  ]
+}

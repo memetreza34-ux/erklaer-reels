@@ -1,17 +1,38 @@
 {
-  "version": 2,
-  "createdAt": "2026-08-24T04:15:01.603Z",
-  "passed": true,
-  "minimumConfidence": 0.9,
-  "visuals": [
+  "version": 5,
+  "reelId": "reel-01_warum-gehoert-alaska-zu-den-usa",
+  "status": "ready-for-renderer",
+  "imageCountMode": "individual-per-reel",
+  "plannedImageCount": 17,
+  "composition": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationSeconds": 64.2,
+    "durationFrames": 1926,
+    "audioDurationSeconds": 63.5,
+    "endingHoldSeconds": 0.7
+  },
+  "voiceover": {
+    "file": "audio/voiceover-tight.m4a",
+    "volume": 1
+  },
+  "backgroundMusic": {
+    "enabled": false,
+    "reason": "Voice-over-first Erklärformat; Musik nur nach ausdrücklicher Entscheidung."
+  },
+  "subtitlesEnabled": false,
+  "scenes": [
     {
-      "targetId": "scene-01",
       "sceneId": "scene-01",
-      "sceneOrder": 1,
+      "shotId": "scene-01",
+      "parentSceneId": "scene-01",
+      "parentSceneOrder": 1,
       "phaseId": "scene-01-image-01",
       "phaseOrder": 1,
-      "expectedFile": "scenes/scene-01/scene-01.jpeg",
-      "verification": {
+      "imageFile": "scenes/scene-01/scene-01.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
         "visualReviewed": true,
         "secondPassConfirmed": true,
         "sceneOrderConfirmed": true,
@@ -29,16 +50,34 @@
         "matchMethod": "visual-content-review",
         "reviewedAt": "2026-08-24T04:15:01.578Z"
       },
-      "passed": true
+      "startSeconds": 0,
+      "endSeconds": 4.8,
+      "startFrame": 0,
+      "endFrame": 144,
+      "transitionIn": {
+        "type": "none",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "subtle-push-in",
+        "startScale": 1,
+        "endScale": 1.04,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [],
+      "soundEffects": []
     },
     {
-      "targetId": "scene-02",
       "sceneId": "scene-02",
-      "sceneOrder": 2,
+      "shotId": "scene-02",
+      "parentSceneId": "scene-02",
+      "parentSceneOrder": 2,
       "phaseId": "scene-02-image-01",
       "phaseOrder": 1,
-      "expectedFile": "scenes/scene-02/scene-02.jpeg",
-      "verification": {
+      "imageFile": "scenes/scene-02/scene-02.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
         "visualReviewed": true,
         "secondPassConfirmed": true,
         "sceneOrderConfirmed": true,
@@ -56,16 +95,34 @@
         "matchMethod": "visual-content-review",
         "reviewedAt": "2026-08-24T04:15:01.579Z"
       },
-      "passed": true
+      "startSeconds": 4.8,
+      "endSeconds": 9.3,
+      "startFrame": 144,
+      "endFrame": 279,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [],
+      "soundEffects": []
     },
     {
-      "targetId": "scene-03",
       "sceneId": "scene-03",
-      "sceneOrder": 3,
+      "shotId": "scene-03",
+      "parentSceneId": "scene-03",
+      "parentSceneOrder": 3,
       "phaseId": "scene-03-image-01",
       "phaseOrder": 1,
-      "expectedFile": "scenes/scene-03/scene-03.jpeg",
-      "verification": {
+      "imageFile": "scenes/scene-03/scene-03.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
         "visualReviewed": true,
         "secondPassConfirmed": true,
         "sceneOrderConfirmed": true,
@@ -83,16 +140,34 @@
         "matchMethod": "visual-content-review",
         "reviewedAt": "2026-08-24T04:15:01.581Z"
       },
-      "passed": true
+      "startSeconds": 9.3,
+      "endSeconds": 11.64,
+      "startFrame": 279,
+      "endFrame": 349,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [],
+      "soundEffects": []
     },
     {
-      "targetId": "scene-03-image-02",
-      "sceneId": "scene-03",
-      "sceneOrder": 3,
+      "sceneId": "scene-03-image-02",
+      "shotId": "scene-03-image-02",
+      "parentSceneId": "scene-03",
+      "parentSceneOrder": 3,
       "phaseId": "scene-03-image-02",
       "phaseOrder": 2,
-      "expectedFile": "scenes/scene-03/scene-03-image-02.jpeg",
-      "verification": {
+      "imageFile": "scenes/scene-03/scene-03-image-02.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
         "visualReviewed": true,
         "secondPassConfirmed": true,
         "sceneOrderConfirmed": true,
@@ -110,16 +185,34 @@
         "matchMethod": "visual-content-review",
         "reviewedAt": "2026-08-24T04:15:01.583Z"
       },
-      "passed": true
+      "startSeconds": 11.64,
+      "endSeconds": 13.8,
+      "startFrame": 349,
+      "endFrame": 414,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [],
+      "soundEffects": []
     },
     {
-      "targetId": "scene-04",
       "sceneId": "scene-04",
-      "sceneOrder": 4,
+      "shotId": "scene-04",
+      "parentSceneId": "scene-04",
+      "parentSceneOrder": 4,
       "phaseId": "scene-04-image-01",
       "phaseOrder": 1,
-      "expectedFile": "scenes/scene-04/scene-04.jpeg",
-      "verification": {
+      "imageFile": "scenes/scene-04/scene-04.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
         "visualReviewed": true,
         "secondPassConfirmed": true,
         "sceneOrderConfirmed": true,
@@ -137,16 +230,34 @@
         "matchMethod": "visual-content-review",
         "reviewedAt": "2026-08-24T04:15:01.584Z"
       },
-      "passed": true
+      "startSeconds": 13.8,
+      "endSeconds": 18.3,
+      "startFrame": 414,
+      "endFrame": 549,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [],
+      "soundEffects": []
     },
     {
-      "targetId": "scene-05",
       "sceneId": "scene-05",
-      "sceneOrder": 5,
+      "shotId": "scene-05",
+      "parentSceneId": "scene-05",
+      "parentSceneOrder": 5,
       "phaseId": "scene-05-image-01",
       "phaseOrder": 1,
-      "expectedFile": "scenes/scene-05/scene-05.jpeg",
-      "verification": {
+      "imageFile": "scenes/scene-05/scene-05.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
         "visualReviewed": true,
         "secondPassConfirmed": true,
         "sceneOrderConfirmed": true,
@@ -164,16 +275,34 @@
         "matchMethod": "visual-content-review",
         "reviewedAt": "2026-08-24T04:15:01.586Z"
       },
-      "passed": true
+      "startSeconds": 18.3,
+      "endSeconds": 20.64,
+      "startFrame": 549,
+      "endFrame": 619,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [],
+      "soundEffects": []
     },
     {
-      "targetId": "scene-05-image-02",
-      "sceneId": "scene-05",
-      "sceneOrder": 5,
+      "sceneId": "scene-05-image-02",
+      "shotId": "scene-05-image-02",
+      "parentSceneId": "scene-05",
+      "parentSceneOrder": 5,
       "phaseId": "scene-05-image-02",
       "phaseOrder": 2,
-      "expectedFile": "scenes/scene-05/scene-05-image-02.jpeg",
-      "verification": {
+      "imageFile": "scenes/scene-05/scene-05-image-02.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
         "visualReviewed": true,
         "secondPassConfirmed": true,
         "sceneOrderConfirmed": true,
@@ -191,16 +320,34 @@
         "matchMethod": "visual-content-review",
         "reviewedAt": "2026-08-24T04:15:01.587Z"
       },
-      "passed": true
+      "startSeconds": 20.64,
+      "endSeconds": 22.8,
+      "startFrame": 619,
+      "endFrame": 684,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [],
+      "soundEffects": []
     },
     {
-      "targetId": "scene-06",
       "sceneId": "scene-06",
-      "sceneOrder": 6,
+      "shotId": "scene-06",
+      "parentSceneId": "scene-06",
+      "parentSceneOrder": 6,
       "phaseId": "scene-06-image-01",
       "phaseOrder": 1,
-      "expectedFile": "scenes/scene-06/scene-06.jpeg",
-      "verification": {
+      "imageFile": "scenes/scene-06/scene-06.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
         "visualReviewed": true,
         "secondPassConfirmed": true,
         "sceneOrderConfirmed": true,
@@ -218,16 +365,34 @@
         "matchMethod": "visual-content-review",
         "reviewedAt": "2026-08-24T04:15:01.588Z"
       },
-      "passed": true
+      "startSeconds": 22.8,
+      "endSeconds": 27.3,
+      "startFrame": 684,
+      "endFrame": 819,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [],
+      "soundEffects": []
     },
     {
-      "targetId": "scene-07",
       "sceneId": "scene-07",
-      "sceneOrder": 7,
+      "shotId": "scene-07",
+      "parentSceneId": "scene-07",
+      "parentSceneOrder": 7,
       "phaseId": "scene-07-image-01",
       "phaseOrder": 1,
-      "expectedFile": "scenes/scene-07/scene-07.jpeg",
-      "verification": {
+      "imageFile": "scenes/scene-07/scene-07.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
         "visualReviewed": true,
         "secondPassConfirmed": true,
         "sceneOrderConfirmed": true,
@@ -245,16 +410,34 @@
         "matchMethod": "visual-content-review",
         "reviewedAt": "2026-08-24T04:15:01.590Z"
       },
-      "passed": true
+      "startSeconds": 27.3,
+      "endSeconds": 29.64,
+      "startFrame": 819,
+      "endFrame": 889,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [],
+      "soundEffects": []
     },
     {
-      "targetId": "scene-07-image-02",
-      "sceneId": "scene-07",
-      "sceneOrder": 7,
+      "sceneId": "scene-07-image-02",
+      "shotId": "scene-07-image-02",
+      "parentSceneId": "scene-07",
+      "parentSceneOrder": 7,
       "phaseId": "scene-07-image-02",
       "phaseOrder": 2,
-      "expectedFile": "scenes/scene-07/scene-07-image-02.jpeg",
-      "verification": {
+      "imageFile": "scenes/scene-07/scene-07-image-02.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
         "visualReviewed": true,
         "secondPassConfirmed": true,
         "sceneOrderConfirmed": true,
@@ -272,16 +455,34 @@
         "matchMethod": "visual-content-review",
         "reviewedAt": "2026-08-24T04:15:01.591Z"
       },
-      "passed": true
+      "startSeconds": 29.64,
+      "endSeconds": 31.8,
+      "startFrame": 889,
+      "endFrame": 954,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [],
+      "soundEffects": []
     },
     {
-      "targetId": "scene-08",
       "sceneId": "scene-08",
-      "sceneOrder": 8,
+      "shotId": "scene-08",
+      "parentSceneId": "scene-08",
+      "parentSceneOrder": 8,
       "phaseId": "scene-08-image-01",
       "phaseOrder": 1,
-      "expectedFile": "scenes/scene-08/scene-08.jpeg",
-      "verification": {
+      "imageFile": "scenes/scene-08/scene-08.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
         "visualReviewed": true,
         "secondPassConfirmed": true,
         "sceneOrderConfirmed": true,
@@ -299,16 +500,34 @@
         "matchMethod": "visual-content-review",
         "reviewedAt": "2026-08-24T04:15:01.592Z"
       },
-      "passed": true
+      "startSeconds": 31.8,
+      "endSeconds": 36.3,
+      "startFrame": 954,
+      "endFrame": 1089,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [],
+      "soundEffects": []
     },
     {
-      "targetId": "scene-09",
       "sceneId": "scene-09",
-      "sceneOrder": 9,
+      "shotId": "scene-09",
+      "parentSceneId": "scene-09",
+      "parentSceneOrder": 9,
       "phaseId": "scene-09-image-01",
       "phaseOrder": 1,
-      "expectedFile": "scenes/scene-09/scene-09.jpeg",
-      "verification": {
+      "imageFile": "scenes/scene-09/scene-09.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
         "visualReviewed": true,
         "secondPassConfirmed": true,
         "sceneOrderConfirmed": true,
@@ -326,16 +545,34 @@
         "matchMethod": "visual-content-review",
         "reviewedAt": "2026-08-24T04:15:01.594Z"
       },
-      "passed": true
+      "startSeconds": 36.3,
+      "endSeconds": 38.64,
+      "startFrame": 1089,
+      "endFrame": 1159,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [],
+      "soundEffects": []
     },
     {
-      "targetId": "scene-09-image-02",
-      "sceneId": "scene-09",
-      "sceneOrder": 9,
+      "sceneId": "scene-09-image-02",
+      "shotId": "scene-09-image-02",
+      "parentSceneId": "scene-09",
+      "parentSceneOrder": 9,
       "phaseId": "scene-09-image-02",
       "phaseOrder": 2,
-      "expectedFile": "scenes/scene-09/scene-09-image-02.jpeg",
-      "verification": {
+      "imageFile": "scenes/scene-09/scene-09-image-02.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
         "visualReviewed": true,
         "secondPassConfirmed": true,
         "sceneOrderConfirmed": true,
@@ -353,16 +590,34 @@
         "matchMethod": "visual-content-review",
         "reviewedAt": "2026-08-24T04:15:01.595Z"
       },
-      "passed": true
+      "startSeconds": 38.64,
+      "endSeconds": 40.8,
+      "startFrame": 1159,
+      "endFrame": 1224,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [],
+      "soundEffects": []
     },
     {
-      "targetId": "scene-10",
       "sceneId": "scene-10",
-      "sceneOrder": 10,
+      "shotId": "scene-10",
+      "parentSceneId": "scene-10",
+      "parentSceneOrder": 10,
       "phaseId": "scene-10-image-01",
       "phaseOrder": 1,
-      "expectedFile": "scenes/scene-10/scene-10.jpeg",
-      "verification": {
+      "imageFile": "scenes/scene-10/scene-10.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
         "visualReviewed": true,
         "secondPassConfirmed": true,
         "sceneOrderConfirmed": true,
@@ -380,16 +635,34 @@
         "matchMethod": "visual-content-review",
         "reviewedAt": "2026-08-24T04:15:01.597Z"
       },
-      "passed": true
+      "startSeconds": 40.8,
+      "endSeconds": 45.3,
+      "startFrame": 1224,
+      "endFrame": 1359,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [],
+      "soundEffects": []
     },
     {
-      "targetId": "scene-11",
       "sceneId": "scene-11",
-      "sceneOrder": 11,
+      "shotId": "scene-11",
+      "parentSceneId": "scene-11",
+      "parentSceneOrder": 11,
       "phaseId": "scene-11-image-01",
       "phaseOrder": 1,
-      "expectedFile": "scenes/scene-11/scene-11.jpeg",
-      "verification": {
+      "imageFile": "scenes/scene-11/scene-11.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
         "visualReviewed": true,
         "secondPassConfirmed": true,
         "sceneOrderConfirmed": true,
@@ -407,16 +680,34 @@
         "matchMethod": "visual-content-review",
         "reviewedAt": "2026-08-24T04:15:01.598Z"
       },
-      "passed": true
+      "startSeconds": 45.3,
+      "endSeconds": 49.8,
+      "startFrame": 1359,
+      "endFrame": 1494,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [],
+      "soundEffects": []
     },
     {
-      "targetId": "scene-12",
       "sceneId": "scene-12",
-      "sceneOrder": 12,
+      "shotId": "scene-12",
+      "parentSceneId": "scene-12",
+      "parentSceneOrder": 12,
       "phaseId": "scene-12-image-01",
       "phaseOrder": 1,
-      "expectedFile": "scenes/scene-12/scene-12.jpeg",
-      "verification": {
+      "imageFile": "scenes/scene-12/scene-12.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
         "visualReviewed": true,
         "secondPassConfirmed": true,
         "sceneOrderConfirmed": true,
@@ -434,16 +725,34 @@
         "matchMethod": "visual-content-review",
         "reviewedAt": "2026-08-24T04:15:01.599Z"
       },
-      "passed": true
+      "startSeconds": 49.8,
+      "endSeconds": 54.3,
+      "startFrame": 1494,
+      "endFrame": 1629,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [],
+      "soundEffects": []
     },
     {
-      "targetId": "scene-13",
       "sceneId": "scene-13",
-      "sceneOrder": 13,
+      "shotId": "scene-13",
+      "parentSceneId": "scene-13",
+      "parentSceneOrder": 13,
       "phaseId": "scene-13-image-01",
       "phaseOrder": 1,
-      "expectedFile": "scenes/scene-13/scene-13.jpeg",
-      "verification": {
+      "imageFile": "scenes/scene-13/scene-13.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
         "visualReviewed": true,
         "secondPassConfirmed": true,
         "sceneOrderConfirmed": true,
@@ -461,148 +770,23 @@
         "matchMethod": "visual-content-review",
         "reviewedAt": "2026-08-24T04:15:01.601Z"
       },
-      "passed": true
+      "startSeconds": 54.3,
+      "endSeconds": 64.2,
+      "startFrame": 1629,
+      "endFrame": 1926,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [],
+      "soundEffects": []
     }
-  ],
-  "scenes": [
-    {
-      "sceneId": "scene-01",
-      "order": 1,
-      "title": "Hook",
-      "imageCount": 1,
-      "targetIds": [
-        "scene-01"
-      ],
-      "passed": true
-    },
-    {
-      "sceneId": "scene-02",
-      "order": 2,
-      "title": "Russisches Alaska",
-      "imageCount": 1,
-      "targetIds": [
-        "scene-02"
-      ],
-      "passed": true
-    },
-    {
-      "sceneId": "scene-03",
-      "order": 3,
-      "title": "Russische Präsenz",
-      "imageCount": 2,
-      "targetIds": [
-        "scene-03",
-        "scene-03-image-02"
-      ],
-      "passed": true
-    },
-    {
-      "sceneId": "scene-04",
-      "order": 4,
-      "title": "Nach dem Krimkrieg",
-      "imageCount": 1,
-      "targetIds": [
-        "scene-04"
-      ],
-      "passed": true
-    },
-    {
-      "sceneId": "scene-05",
-      "order": 5,
-      "title": "Verkauf 1867",
-      "imageCount": 2,
-      "targetIds": [
-        "scene-05",
-        "scene-05-image-02"
-      ],
-      "passed": true
-    },
-    {
-      "sceneId": "scene-06",
-      "order": 6,
-      "title": "7,2 Millionen Dollar",
-      "imageCount": 1,
-      "targetIds": [
-        "scene-06"
-      ],
-      "passed": true
-    },
-    {
-      "sceneId": "scene-07",
-      "order": 7,
-      "title": "Kanada dazwischen",
-      "imageCount": 2,
-      "targetIds": [
-        "scene-07",
-        "scene-07-image-02"
-      ],
-      "passed": true
-    },
-    {
-      "sceneId": "scene-08",
-      "order": 8,
-      "title": "Exklave",
-      "imageCount": 1,
-      "targetIds": [
-        "scene-08"
-      ],
-      "passed": true
-    },
-    {
-      "sceneId": "scene-09",
-      "order": 9,
-      "title": "Warum Alaska wichtig wurde",
-      "imageCount": 2,
-      "targetIds": [
-        "scene-09",
-        "scene-09-image-02"
-      ],
-      "passed": true
-    },
-    {
-      "sceneId": "scene-10",
-      "order": 10,
-      "title": "Übergabe",
-      "imageCount": 1,
-      "targetIds": [
-        "scene-10"
-      ],
-      "passed": true
-    },
-    {
-      "sceneId": "scene-11",
-      "order": 11,
-      "title": "Bundesstaat 1959",
-      "imageCount": 1,
-      "targetIds": [
-        "scene-11"
-      ],
-      "passed": true
-    },
-    {
-      "sceneId": "scene-12",
-      "order": 12,
-      "title": "Prüfgedanke",
-      "imageCount": 1,
-      "targetIds": [
-        "scene-12"
-      ],
-      "passed": true
-    },
-    {
-      "sceneId": "scene-13",
-      "order": 13,
-      "title": "Abschluss",
-      "imageCount": 1,
-      "targetIds": [
-        "scene-13"
-      ],
-      "passed": true
-    }
-  ],
-  "instructions": [
-    "Jede Bildphase muss anhand ihres sichtbaren Inhalts und nicht allein anhand des Dateinamens zugeordnet sein.",
-    "Die zweite Prüfung muss die gewählte Bildphase gegen die vorherige und nächste Bildphase bestätigen.",
-    "Bei einem Zweifel bleibt das Bild unmatched und blockiert den finalen Render."
   ]
 }
