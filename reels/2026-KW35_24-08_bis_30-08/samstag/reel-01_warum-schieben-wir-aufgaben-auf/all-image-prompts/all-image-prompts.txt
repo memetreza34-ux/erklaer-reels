@@ -1,0 +1,131 @@
+GOOGLE FLOW – KOMPLETTER SERIELLER BILDLAUF
+
+AUFTRAG
+Erzeuge für dieses Reel genau 19 Bilder: Bild 00 als Cover und danach Bild 01 bis Bild 18 für die geplanten Bildmomente der 13 Szenen.
+
+WICHTIG – DIESE EINE NACHRICHT IST DIE KOMPLETTE FREIGABE
+Sobald dieser Gesamtprompt einmal abgesendet wurde, arbeitest du selbstständig bis Bild 18 fertig ist. Frage NICHT nach Go, Weiter, OK, Bestätigung oder Erlaubnis.
+
+STRENG SERIELL – NIE PARALLEL
+Zu jedem Zeitpunkt darf genau EINE Bildgenerierung aktiv, ausstehend, queued oder in Bearbeitung sein.
+Für jedes Bild zwingend:
+1. Nur den aktuellen Bildabschnitt bearbeiten.
+2. Genau EINEN Bildgenerator-Aufruf auslösen. Niemals zwei oder mehr Generierungsaktionen im selben Agent-Schritt, Tool-Batch oder Turn.
+3. Warten, bis dieses eine Bild sichtbar vollständig fertig ist. Solange der Status unklar ist oder noch eine Generierung läuft: WARTEN, nicht das nächste Bild starten.
+4. Sofort exakt in den vorgesehenen Namen umbenennen.
+5. Prüfen, dass die Umbenennung erfolgreich ist und genau dieses Bild fertig vorliegt.
+6. Erst NACH dieser Bestätigung den nächsten Bildabschnitt ausführen.
+Die späteren Bildprompts stehen zwar bereits in dieser Nachricht, sind aber bis zum Abschluss des aktuellen Bildes NICHT zur Ausführung freigegeben.
+Keine Batches, keine Queue, kein paralleles Tool-Batching, kein gleichzeitiges Starten, keine Mehrfach-Generierung und keine Ansammlung unbenannter Bilder.
+Falls versehentlich ein zweiter oder dritter Job gestartet wurde: keine weiteren Jobs starten; spätere parallele Jobs abbrechen und beim ersten noch nicht sauber abgeschlossenen Bild fortsetzen.
+
+DATEINAMEN
+Bild 00.png = Cover
+Bild 01.png = Szene 1
+Bild 02.png = Szene 2
+Bild 03.png = Szene 3
+Bild 04.png = Szene 3, Bildphase 2
+Bild 05.png = Szene 4
+Bild 06.png = Szene 4, Bildphase 2
+Bild 07.png = Szene 5
+Bild 08.png = Szene 6
+Bild 09.png = Szene 7
+Bild 10.png = Szene 7, Bildphase 2
+Bild 11.png = Szene 8
+Bild 12.png = Szene 8, Bildphase 2
+Bild 13.png = Szene 9
+Bild 14.png = Szene 10
+Bild 15.png = Szene 11
+Bild 16.png = Szene 11, Bildphase 2
+Bild 17.png = Szene 12
+Bild 18.png = Szene 13
+
+STYLE-MASTER
+Bild 00.png wird zuerst vollständig erzeugt. Das fertige Bild 00.png ist danach die verbindliche visuelle Referenz für ALLE weiteren Bilder: gleiche Palette, Papiertextur, Konturstärke, Lichtstimmung, Detailqualität und dasselbe runde Kugel-Charakterdesign. Der Cover-Hook darf NICHT automatisch auf spätere Bilder kopiert werden.
+
+ARBEITSLABELS SIND NIEMALS BILDINHALT
+BILD-Nummern, COVER, SZENE, BILDPHASE, DATEINAME, Dateinamen und diese Workflow-Anweisungen sind nur Steuertext. Sie dürfen niemals im generierten Bild erscheinen.
+
+TEXTREGEL
+Nur der im jeweiligen visuellen Prompt ausdrücklich verlangte deutsche Text darf sichtbar erscheinen. Kein zusätzlicher englischer Text, keine Fantasiewörter, keine technischen Labels, keine Logos und keine Wasserzeichen.
+
+ENDE
+Erst nachdem Bild 00 bis Bild 18 vollständig erzeugt, korrekt umbenannt und die Nummerierung geprüft wurden, alle fertigen Bilder gemeinsam in den vorgesehenen Sammelordner legen. Nicht während der laufenden Generierung einzelne Bilder dorthin verschieben.
+
+────────────────────────────────────────
+
+BILD 00 – COVER
+DATEINAME NACH FERTIGSTELLUNG: Bild 00.png
+Vertical 9:16 premium mature 2D editorial country-character illustration. Warm off-white textured paper background, deep navy borders and structural shapes, muted rust, mustard, cobalt and forest-green accents, bold clean hand-inked outlines, flat geometric shading, subtle grain, high contrast, sophisticated documentary tone, not childish. Every anthropomorphic person or abstract role must be a complete perfectly round circular neutral sphere character with simple white eyes and at most tiny arms/legs; no human heads or torsos. Center one neutral sphere at a desk, caught between one important unfinished task on the left and immediate distractions on the right: generic short-video phone with no readable UI, clean desk, snack and tiny side task. A restrained future-stress cloud grows behind the task. ONLY readable text: "WARUM SCHIEBEN WIR AUFGABEN AUF?". No other readable text, no English, no logos, no watermark, no workflow labels, no 3D, no photorealism. Full 9:16, no subtitle band.
+
+BILD 01 – SZENE 1
+DATEINAME NACH FERTIGSTELLUNG: Bild 01.png
+Vertical 9:16 premium mature 2D editorial country-character illustration matching Bild 00.png exactly. Complete perfectly round neutral sphere character, no human head or torso. Show the sphere before one important task while a generic short-video phone, a spotless desk, a snack and a tiny side task pull attention away. ONLY readable text: "JETZT ANFANGEN?". No other readable text, no English, no logos, no watermark, no workflow labels, no 3D, no photorealism. Full 9:16.
+
+BILD 02 – SZENE 2
+DATEINAME NACH FERTIGSTELLUNG: Bild 02.png
+Vertical 9:16 premium mature 2D editorial country-character illustration matching Bild 00.png exactly. Complete perfectly round neutral sphere character, no human head or torso. Place the sphere between an important task and a turbulent abstract emotion cloud, showing conflict and self-regulation rather than a lazy stereotype. ONLY readable text: "NICHT EINFACH FAULHEIT". No other readable text, no English, no logos, no watermark, no workflow labels, no 3D, no photorealism. Full 9:16.
+
+BILD 03 – SZENE 3
+DATEINAME NACH FERTIGSTELLUNG: Bild 03.png
+Vertical 9:16 premium mature 2D editorial country-character illustration matching Bild 00.png exactly. Complete perfectly round neutral sphere character, no human head or torso. A large intimidating task block looms over the sphere with clean faceless cues for boredom, difficulty, uncertainty and emotional discomfort. ONLY readable text: "UNANGENEHME AUFGABE". No other readable text, no English, no logos, no watermark, no workflow labels, no 3D, no photorealism. Full 9:16.
+
+BILD 04 – SZENE 3 – BILDPHASE 2
+DATEINAME NACH FERTIGSTELLUNG: Bild 04.png
+Vertical 9:16 premium mature 2D editorial country-character illustration matching Bild 00.png exactly. Zoom into the task itself; show four clean faceless cues for boring repetition, high difficulty, unclear instructions and emotional discomfort, with a small complete round sphere hesitating at the bottom. ONLY readable text: "LANGWEILIG. SCHWIERIG. UNKLAR.". No other readable text, no English, no logos, no watermark, no workflow labels, no 3D, no photorealism. Full 9:16.
+
+BILD 05 – SZENE 4
+DATEINAME NACH FERTIGSTELLUNG: Bild 05.png
+Vertical 9:16 premium mature 2D editorial country-character illustration matching Bild 00.png exactly. Complete perfectly round neutral sphere character. Show the sphere turning away from the unpleasant task toward one quick generic distraction and visibly relaxing for a moment while the unfinished task remains nearby. ONLY readable text: "SOFORTIGE ERLEICHTERUNG". No other readable text, no English, no logos, no watermark, no workflow labels, no 3D, no photorealism. Full 9:16.
+
+BILD 06 – SZENE 4 – BILDPHASE 2
+DATEINAME NACH FERTIGSTELLUNG: Bild 06.png
+Vertical 9:16 premium mature 2D editorial country-character illustration matching Bild 00.png exactly. Close view of the complete round sphere with a small faceless mood gauge moving from tense to relieved; the unfinished task remains blurred but recognizable behind it. ONLY readable text: "KURZ BESSER". No other readable text, no English, no logos, no watermark, no workflow labels, no 3D, no photorealism. Full 9:16.
+
+BILD 07 – SZENE 5
+DATEINAME NACH FERTIGSTELLUNG: Bild 07.png
+Vertical 9:16 premium mature 2D editorial country-character illustration matching Bild 00.png exactly. Complete round neutral sphere character. The unfinished task stays untouched while a future stress pile grows behind the sphere using stacked papers, a looming faceless clock and restrained pressure gauge. ONLY readable text: "SPÄTER MEHR STRESS". No other readable text, no English, no logos, no watermark, no workflow labels, no 3D, no photorealism. Full 9:16.
+
+BILD 08 – SZENE 6
+DATEINAME NACH FERTIGSTELLUNG: Bild 08.png
+Vertical 9:16 premium mature 2D editorial country-character illustration matching Bild 00.png exactly. Create a clean split timeline with the same complete round sphere: immediate relief on the left, larger unfinished task and stronger stress later on the right. ONLY readable text: "KURZ GUT. SPÄTER SCHLECHT.". No other readable text, no English, no logos, no watermark, no workflow labels, no 3D, no photorealism. Full 9:16.
+
+BILD 09 – SZENE 7
+DATEINAME NACH FERTIGSTELLUNG: Bild 09.png
+Vertical 9:16 premium mature 2D editorial country-character illustration matching Bild 00.png exactly. A complete round neutral sphere is pulled toward a bright immediate distraction while looking uncertainly at a difficult task; use a restrained tug-of-war composition. ONLY readable text: "IMPULS + ZWEIFEL". No other readable text, no English, no logos, no watermark, no workflow labels, no 3D, no photorealism. Full 9:16.
+
+BILD 10 – SZENE 7 – BILDPHASE 2
+DATEINAME NACH FERTIGSTELLUNG: Bild 10.png
+Vertical 9:16 premium mature 2D editorial country-character illustration matching Bild 00.png exactly. The same complete round sphere sees a meaningful reward far away at the end of a long path while an easy pleasant option sits close in the foreground. ONLY readable text: "BELOHNUNG ZU WEIT WEG". No other readable text, no English, no logos, no watermark, no workflow labels, no 3D, no photorealism. Full 9:16.
+
+BILD 11 – SZENE 8
+DATEINAME NACH FERTIGSTELLUNG: Bild 11.png
+Vertical 9:16 premium mature 2D editorial country-character illustration matching Bild 00.png exactly. Use forced perspective: immediate pleasant option large and close, future consequence and meaningful goal small and far away, complete round sphere at the decision point. ONLY readable text: "JETZT ODER SPÄTER?". No other readable text, no English, no logos, no watermark, no workflow labels, no 3D, no photorealism. Full 9:16.
+
+BILD 12 – SZENE 8 – BILDPHASE 2
+DATEINAME NACH FERTIGSTELLUNG: Bild 12.png
+Vertical 9:16 premium mature 2D editorial country-character illustration matching Bild 00.png exactly. Create a clean balance-scale metaphor tipping toward the immediate pleasant option while the delayed consequence remains visually distant; a complete round sphere watches the choice. ONLY readable text: "JETZT GEWINNT". No other readable text, no English, no logos, no watermark, no workflow labels, no 3D, no photorealism. Full 9:16.
+
+BILD 13 – SZENE 9
+DATEINAME NACH FERTIGSTELLUNG: Bild 13.png
+Vertical 9:16 premium mature 2D editorial country-character illustration matching Bild 00.png exactly. Complete round neutral sphere pushes against an oversized task wall as if sheer willpower should solve everything, while a small unresolved mood cloud follows behind. ONLY readable text: "MEHR DISZIPLIN?". No other readable text, no English, no logos, no watermark, no workflow labels, no 3D, no photorealism. Full 9:16.
+
+BILD 14 – SZENE 10
+DATEINAME NACH FERTIGSTELLUNG: Bild 14.png
+Vertical 9:16 premium mature 2D editorial country-character illustration matching Bild 00.png exactly. A huge intimidating task block is broken into smaller pieces, with one tiny first tile highlighted directly in front of the complete round sphere. ONLY readable text: "START KLEIN MACHEN". No other readable text, no English, no logos, no watermark, no workflow labels, no 3D, no photorealism. Full 9:16.
+
+BILD 15 – SZENE 11
+DATEINAME NACH FERTIGSTELLUNG: Bild 15.png
+Vertical 9:16 premium mature 2D editorial country-character illustration matching Bild 00.png exactly. A vague floating plan hovers above the complete round sphere with no clear time, location or first action; the sphere does not know where to begin. ONLY readable text: "ZU VAGE: „ICH LERNE HEUTE“". No other readable text, no English, no logos, no watermark, no workflow labels, no 3D, no photorealism. Full 9:16.
+
+BILD 16 – SZENE 11 – BILDPHASE 2
+DATEINAME NACH FERTIGSTELLUNG: Bild 16.png
+Vertical 9:16 premium mature 2D editorial country-character illustration matching Bild 00.png exactly. Transform the vague plan into a concrete start sequence: faceless clock at 19:00, open document and tiny five-minute task block, with the complete round sphere starting the first action. ONLY readable text: "19 UHR · 5 MINUTEN · AUFGABE 1". No other readable text, no English, no logos, no watermark, no workflow labels, no 3D, no photorealism. Full 9:16.
+
+BILD 17 – SZENE 12
+DATEINAME NACH FERTIGSTELLUNG: Bild 17.png
+Vertical 9:16 premium mature 2D editorial country-character illustration matching Bild 00.png exactly. Complete round neutral sphere pauses between the task and abstract faceless emotion clouds for boredom, uncertainty, anxiety and frustration, turning to inspect the feeling rather than escape. ONLY readable text: "WAS VERMEIDE ICH GERADE?". No other readable text, no English, no logos, no watermark, no workflow labels, no 3D, no photorealism. Full 9:16.
+
+BILD 18 – SZENE 13
+DATEINAME NACH FERTIGSTELLUNG: Bild 18.png
+Vertical 9:16 premium mature 2D editorial country-character illustration matching Bild 00.png exactly. Complete round neutral sphere takes one small illuminated first step toward a much larger staircase-sized task; only the first step is crisp and bright, the rest softly out of focus. Calm achievable ending, not triumphal. ONLY readable text: "NUR ANFANGEN.". No other readable text, no English, no logos, no watermark, no workflow labels, no 3D, no photorealism. Full 9:16.
