@@ -1,5 +1,7 @@
 # Straffes Audio-Pacing und direkte Schnitte
 
+> Bei Widersprüchen gilt `CURRENT_WORKFLOW.md`.
+
 ## Ziel
 
 Die Reels sollen ohne künstliche Verzögerungen wirken. Das Tempo kommt aus dem Sprechertext, kurzen natürlichen Pausen und sofortigen Bildwechseln.
@@ -9,7 +11,7 @@ Die Reels sollen ohne künstliche Verzögerungen wirken. Das Tempo kommt aus dem
 Vor dem Aufbau der finalen Timeline:
 
 ```bash
-npm run trim:pauses -- --dir "PFAD-ZUM-REEL"
+npm run trim:pauses -- --dir "PFAD-ZUM-REEL" --speed 1.10
 ```
 
 Standardwerte:
@@ -17,38 +19,37 @@ Standardwerte:
 ```text
 Pausenerkennung:      ab ungefähr 0,24 Sekunden
 Restpause im Filter:  0,05 Sekunden
-Sprechtempo:          1.05x
+Sprechtempo:          exakt 1,10x
 Tonhöhe:              bleibt erhalten
+Lautheit:              −16 LUFS
+True Peak:             höchstens −1,5 dBTP
 ```
 
 `retainedPauseSeconds` ist der FFmpeg-Filterwert. Die hörbare Pause kann durch Erkennungsfenster und Wortausklänge etwas länger sein. Ziel ist eine kurze natürliche Trennung, nicht ein ununterbrochener Wortstrom.
 
-Optionale Anpassung:
+Optionale Parameter dürfen die verbindliche Geschwindigkeit von 1,10x nicht still verändern.
 
-```bash
-npm run trim:pauses -- \
-  --dir "PFAD-ZUM-REEL" \
-  --minimum-pause 0.24 \
-  --keep-pause 0.05 \
-  --speed 1.05
-```
-
-Ergebnis:
+Ergebnis typischerweise:
 
 ```text
 audio/voiceover-tight.m4a
 review/audio-pacing-report.json
 ```
 
-Nach diesem Schritt sind alte Cue- und Wortzeiten ungültig. Deshalb anschließend immer:
+Danach sind alte Szenen-Cue-Zeiten ungültig. Deshalb anschließend:
 
 ```bash
 npm run build:timeline -- --dir "PFAD-ZUM-REEL"
 npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
-npm run sync:words -- --dir "PFAD-ZUM-REEL"
-# Codex hört das optimierte Audio ab
-npm run sync:words -- --dir "PFAD-ZUM-REEL" --apply --strict
 ```
+
+Kein `sync:words` im aktiven Produktionsworkflow.
+
+## Narrative Szenen und interne Bildphasen
+
+Narrative Szenen werden am finalen Voice-over über echte `audioCue`-Zeitpunkte synchronisiert.
+
+Hat eine narrative Szene mehrere `imagePhases`, werden diese innerhalb der bestätigten Szenendauer über `startPercent` verteilt. Auch diese internen Wechsel sind harte Schnitte.
 
 ## Bildwechsel
 
@@ -58,13 +59,13 @@ Final erlaubt sind nur:
 { "type": "none", "durationSeconds": 0 }
 ```
 
-für die Hook und:
+für den ersten visuellen Shot und:
 
 ```json
 { "type": "cut", "durationSeconds": 0 }
 ```
 
-für alle weiteren Szenen.
+für alle weiteren Bildwechsel.
 
 Nicht erlaubt:
 
@@ -75,19 +76,21 @@ Nicht erlaubt:
 - Flash, Glitch, Spin oder 3D-Übergang
 - schwarzes Zwischenbild
 
-Der neue Bildmoment muss am Schnittframe sofort vollständig sichtbar sein. Der Remotion-Renderer überblendet Szenen deshalb nicht mehr und legt keine Übergangsframes übereinander.
+Der neue Bildmoment muss am Schnittframe sofort vollständig sichtbar sein. Der Remotion-Renderer überblendet Shots nicht und legt keine Übergangsframes übereinander.
 
 ## Finale Prüfungen
 
 `finalize:reel --strict` blockiert fehlendes oder unzureichendes Audio-Pacing.
 
-`validate:render` blockiert:
+`validate:render` blockiert unter anderem:
 
 - andere Übergangstypen als `none` und `cut`
 - Übergangsdauern größer als null
-- fehlenden Audio-Pacing-Bericht
-- ein Voice-over außerhalb des leicht beschleunigten Zielbereichs
+- fehlenden oder nicht zum Audio passenden Audio-Pacing-Bericht
+- nicht real gemessene Lautheit
+- unbestätigte narrative Szenenanker
+- fehlende Bildphasen
 
 ## Qualitätsgrenze
 
-Das Voice-over darf trotz Straffung nicht hektisch oder künstlich klingen. Der Standardwert `1.05x` ist bewusst gering. Bei problematischer Aussprache muss das Audio neu erzeugt werden, statt die Geschwindigkeit stark zu erhöhen.
+Das Voice-over darf trotz Straffung nicht hektisch oder künstlich klingen. Der verbindliche Produktionswert ist **1,10x**. Bei problematischer Aussprache muss das Voice-over neu erzeugt oder die Rohaufnahme verbessert werden, statt QC-Gates zu umgehen oder Messwerte zu erfinden.
