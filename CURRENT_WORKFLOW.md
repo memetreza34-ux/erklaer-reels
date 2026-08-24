@@ -35,6 +35,42 @@ Globale Regeln werden nur durch eine ausdrückliche neue Nutzerentscheidung geä
 - keine Hintergrundmusik
 - 0–2 dezente SFX pro narrativer Szene
 
+### Themenuniversum: offen statt feste Säulen
+
+Die visuelle Welt ist fest, **die Themenwahl ist ausdrücklich offen**.
+
+Neue Reels sind nicht auf Geschichte, Politik, Länder/Geografie oder Psychologie beschränkt. Für autonome Themenwahl darf grundsätzlich jeder geeignete Erklärbereich verwendet werden, zum Beispiel:
+
+- Psychologie und menschliches Verhalten
+- Alltag und Gewohnheiten
+- Beziehungen und soziale Dynamiken
+- Gesellschaft und Kultur
+- Geschichte
+- Länder und Geografie
+- Politik und staatliche Systeme
+- Wissenschaft und Naturphänomene
+- Technik und digitale Welt
+- Internet und Social Media
+- Lernen, Schule und Gedächtnis
+- Arbeit und Beruf
+- Wirtschaft und Geldmechanismen
+- Gesundheit und Ernährung
+- Sprache und Kommunikation
+- Denkfehler, Mythen, kuriose Fakten und starke „Warum ist das so?“-Fragen
+
+Diese Liste ist **nur beispielhaft und keine Begrenzung**.
+
+Bei „Mach ein neues Reel“ darf kein altes Pillar-System die Auswahl einschränken. Es gibt keine feste Themenquote und keine starre Rotation. Themen werden nach diesen Kriterien gewählt:
+
+1. starker Hook / Neugier in der ersten Sekunde
+2. klarer Aha-Moment innerhalb von unter 60 Sekunden
+3. faktisch sauber erklärbar
+4. visuell stark in der Kugel-Welt umsetzbar
+5. abwechslungsreich gegenüber den unmittelbar vorherigen Reels
+6. teilbar, überraschend oder alltagsrelevant
+
+Nicht automatisch mehrere neue Reels hintereinander nur über Länder, Grenzen, Hauptstädte, Geschichte oder Politik auswählen, nur weil die Kugel-Welt ursprünglich dort entstanden ist.
+
 ---
 
 ## 2. Verbindliche Hauptbildwelt: nur Kugel-Welt
@@ -45,13 +81,14 @@ Bis der Nutzer ausdrücklich etwas anderes aktiviert, gilt für **jedes neue Ree
 
 Die früheren Welten `human-editorial-cartoon` und `visual-metaphor` sind vorerst **außer Kraft** und dürfen nicht autonom ausgewählt werden.
 
-Diese Kugel-Welt ist **nicht auf Länder-/Geografie-Themen beschränkt**. Auch Psychologie, Gesellschaft, Geschichte, Verhalten und andere erlaubte Themen werden mit runden Figuren, Symbolen, Karten, Objekten und metaphorischen Requisiten innerhalb derselben Kugel-Ästhetik erklärt.
+Diese Kugel-Welt ist **nicht auf Länder-/Geografie-Themen beschränkt**. Psychologie, Gesellschaft, Geschichte, Verhalten, Alltag, Wissenschaft, Technik, Wirtschaft, Gesundheit, Kultur und andere geeignete Themen werden mit runden Figuren, Symbolen, Karten, Objekten und metaphorischen Requisiten innerhalb derselben Kugel-Ästhetik erklärt.
 
 ### Nicht verhandelbare Figurenregel
 
 - Jede anthropomorphe Hauptfigur ist eine **vollständig runde Kugel / Country-Ball-artige Figur**.
 - Bei Ländern liegt das vereinfachte Flaggenmuster auf der Kugel.
 - Bei nicht-länderspezifischen Rollen werden neutrale runde Kugelfiguren mit passenden Farben/Symbolen verwendet.
+- Nicht-Länder-Kugeln dürfen Personen, Gruppen, Rollen, Systeme, Gedanken, Gewohnheiten, Emotionen oder abstrakte Kräfte repräsentieren.
 - einfache weiße Augen; höchstens winzige Arme/Beine
 - Karten-/Länderumrisse dürfen nur gesichtslose Hintergrundgrafik sein
 - niemals Augen, Mund oder Gliedmaßen auf Kartenformen
