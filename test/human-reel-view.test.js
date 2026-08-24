@@ -67,7 +67,7 @@ test('ordnet Cover und jedes Szenenbild direkt dem passenden Ordner zu', async (
   assert.equal(await readFile(path.join(reelDirectory, 'scenes', 'scene-01', 'scene-01.png'), 'utf8'), 'bild-1');
 });
 
-test('stellt einen sichtbaren Sammelordner mit aktuellem Bild-XX-Standard bereit', async () => {
+test('stellt einen sichtbaren Sammelordner mit globalem Bild-XX-Standard bereit', async () => {
   const reelDirectory = await createMinimalReel();
   await ensureHumanReelView(reelDirectory);
 
@@ -77,17 +77,19 @@ test('stellt einen sichtbaren Sammelordner mit aktuellem Bild-XX-Standard bereit
   );
 
   const readme = await readFile(path.join(reelDirectory, 'inbox', 'numbered-images', 'README.md'), 'utf8');
-  assert.match(readme, /`Bild 00\.png` = Cover/);
-  assert.match(readme, /`Bild 01\.png` = Szene 1/);
+  assert.match(readme, /`Bild 00\.png` ist das Cover/);
+  assert.match(readme, /globale Bildreihenfolge aller geplanten Bildphasen/);
+  assert.doesNotMatch(readme, /`Bild 01\.png` = Szene 1/);
   assert.match(readme, /erst verwendet, wenn die komplette Bildreihe fertig erzeugt/);
 
   const promptReadme = await readFile(path.join(reelDirectory, '00-bildprompts', 'README.md'), 'utf8');
   assert.match(promptReadme, /Google Flow erzeugt die Bilder streng einzeln/);
   assert.match(promptReadme, /ohne weiteres Go automatisch/);
   assert.match(promptReadme, /`Bild 00\.png` ist Cover und Style-Master/);
+  assert.match(promptReadme, /Bildnummer ist nicht automatisch eine Szenennummer/);
 });
 
-test('sammelt unwichtige Dateien im Technikordner', async () => {
+test('sammelt Technik ohne aktiven Untertitel-Arbeitsbereich', async () => {
   const reelDirectory = await createMinimalReel();
   await ensureHumanReelView(reelDirectory);
 
@@ -96,8 +98,11 @@ test('sammelt unwichtige Dateien im Technikordner', async () => {
   assert.equal(await readlink(path.join(reelDirectory, '03-caption', 'caption.txt')), '../caption/caption.txt');
   assert.equal(await readlink(path.join(reelDirectory, '04-video', 'FERTIGES-VIDEO')), '../output');
   assert.equal(await readlink(path.join(reelDirectory, '99-technik', 'QUELLEN.md')), '../sources/sources.md');
-  assert.equal(await readlink(path.join(reelDirectory, '99-technik', 'UNTERTITEL')), '../subtitles');
+  await assert.rejects(readlink(path.join(reelDirectory, '99-technik', 'UNTERTITEL')), { code: 'ENOENT' });
   assert.equal(await readlink(path.join(reelDirectory, '99-technik', 'EFFEKTE')), '../effects');
+
+  const techniqueReadme = await readFile(path.join(reelDirectory, '99-technik', 'README.md'), 'utf8');
+  assert.match(techniqueReadme, /Untertitel sind für neue Reels deaktiviert/);
 
   const outputReadme = await readFile(path.join(reelDirectory, 'output', 'README.md'), 'utf8');
   assert.match(outputReadme, /finale MP4/);
