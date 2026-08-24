@@ -1,88 +1,52 @@
-# Codex-Wort-Synchronisierung
+# Codex-Wort-Synchronisierung — LEGACY
 
-`sync:words` ist für jedes Reel mit Untertiteln ein verbindlicher Produktionsschritt. **`CURRENT_WORKFLOW.md` ist bei Widersprüchen maßgeblich.**
+> Bei Widersprüchen gilt `CURRENT_WORKFLOW.md`.
 
-Der aktuelle Standardstil verwendet:
+**Diese Datei beschreibt keinen aktiven Produktionsschritt mehr.** Der aktuelle Reel-Standard ist vollständig untertitelfrei und benötigt keinen Word-Sync.
 
-- Grundtext `#F5F7FA`
-- aktuell gesprochenes Wort `#B7794A`
-- Farbwechsel exakt nach echten akustischen Wortzeiten
-- keine Bounce-/Zoom-/Größenanimation
-- keine schwarze Hintergrundbox
-- Position bei exakt 58 % Bildhöhe
-- 100 % des gesprochenen Voice-Scripts als Untertitel
+## Aktueller Status
 
-## Verbindlicher Workflow
+Für neue Reels gilt:
+
+- keine Untertitel
+- keine Wortmarkierung/Karaoke
+- keine Subtitle-Cues
+- keine Word-Timings als Render-Voraussetzung
+- kein normaler `npm run sync:words`-Befehl im aktiven Workflow
+
+Der frühere Befehl ist nur noch explizit als Legacy-Diagnose verfügbar:
+
+```bash
+npm run legacy:sync:words -- ...
+```
+
+Er darf bei einem normalen neuen Reel nicht autonom ausgeführt werden.
+
+## Wann Legacy-Word-Sync überhaupt verwendet werden darf
+
+Nur wenn ausdrücklich ein historisches Reel oder eine alte Timing-Datei untersucht werden soll.
+
+Auch dann gilt:
+
+- keine gleichmäßige, geschätzte oder erfundene Zeitverteilung
+- echte Audiodaten verwenden
+- Whisper/ASR-Werte nur als Kandidaten behandeln
+- `reviewed: true` erst nach tatsächlicher akustischer Bestätigung
+- Legacy-Ergebnisse dürfen keine aktuellen QC-Gates umgehen
+- ein altes Subtitle-/Word-Sync-Artefakt darf neue Reels nicht wieder auf Untertitelbetrieb umstellen
+
+## Aktiver Audio-Workflow stattdessen
 
 ```bash
 npm run trim:pauses -- --dir "PFAD-ZUM-REEL" --speed 1.10
 npm run build:timeline -- --dir "PFAD-ZUM-REEL"
 npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
-npm run sync:words -- --dir "PFAD-ZUM-REEL"
 ```
 
-Danach wird das lokale Voice-over vollständig abgehört und `subtitles/codex-word-sync.json` mit echten absoluten Start- und Endzeiten **für jedes Wort** gefüllt. Anschließend:
+Danach werden **nur narrative Szenenanker** über echte akustisch bestätigte `audioCue`-Zeitpunkte synchronisiert. Zusätzliche Bildphasen liegen über `startPercent` innerhalb der bestätigten Szene.
 
-```bash
-npm run sync:words -- \
-  --dir "PFAD-ZUM-REEL" \
-  --apply \
-  --strict
-```
+## Warum die Legacy-Datei erhalten bleibt
 
-Vor Freigabe müssen gelten:
+Sie dokumentiert historische Funktionen und verhindert, dass alte Helfer versehentlich wieder als aktueller Standard interpretiert werden.
 
-```text
-coverage === 1
-timedWords === totalWords
-unassignedWords === 0
-```
-
-Zusätzlich muss die vollständige gerenderte Untertitel-Wortfolge exakt `script/voice-script.txt` entsprechen. Fehlt ein Wort, ist die Renderfreigabe verboten.
-
-Der Render-Plan muss pro Cue enthalten:
-
-```json
-{
-  "position": "center",
-  "verticalPositionPercent": 58,
-  "textColor": "#F5F7FA",
-  "highlightCurrentWord": true,
-  "highlightColor": "#B7794A",
-  "speakerSyncedWordHighlight": true,
-  "backgroundColor": "transparent",
-  "timingStatus": "codex-word-synced",
-  "timingSource": "codex-local-audio-review",
-  "wordTimings": [
-    {
-      "text": "Beispiel",
-      "startSeconds": 1.24,
-      "endSeconds": 1.58
-    }
-  ]
-}
-```
-
-## Verbindliche Regeln
-
-- keine gleichmäßige, geschätzte oder erfundene Zeitverteilung
-- echte akustische Kontrolle des vollständigen Voice-overs
-- Start und Ende auf ungefähr 0,01–0,03 Sekunden genau eintragen
-- `reviewed: true` erst nach dem Anhören setzen
-- im strengen Lauf mindestens 0,85 Konfidenz
-- Wortlaut und Reihenfolge unverändert lassen
-- Pausen nicht künstlich als Wortdauer verlängern
-- bei einer Pause darf kein nächstes Wort vorzeitig braun werden
-- das letzte Wort darf nicht nach der Audiodauer enden
-- `unassignedWords` muss 0 sein
-- ohne vollständigen Wort-Sync keine finale Renderfreigabe
-
-## Datenschutz
-
-- kein externer Transkriptionsdienst
-- kein zusätzlicher API-Schlüssel
-- Voice-over bleibt lokal
-
-## Designgrenze
-
-Die Markierung ist ausschließlich ein **Farbwechsel des aktuell gesprochenen Wortes** von `#F5F7FA` auf `#B7794A`. Es gibt keine Spring-, Zoom-, Skalierungs- oder Box-Animation.
+Weitere Hinweise: `LEGACY_TOOLS.md`.

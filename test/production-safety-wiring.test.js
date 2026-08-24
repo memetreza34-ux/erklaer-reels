@@ -9,7 +9,7 @@ async function text(file) {
 
 test('Neue Reels verankern das verpflichtende Quellen-Schema außerhalb von sources.md', async () => {
   const creator = await text('src/cli/create-reel.js');
-  assert.match(creator, /sourceQualitySchemaVersion = 2/);
+  assert.match(creator, /sourceQualitySchemaVersion = 3/);
   assert.match(creator, /buildSourcesTemplate/);
 });
 
@@ -72,9 +72,12 @@ test('Legacy-Word-Sync-Hilfen dürfen bestehen, sind aber nicht Teil des normale
   const wordSyncCli = await text('src/cli/sync-words.js');
   const renderCli = await text('src/cli/render-reel.js');
   const finalizer = await text('src/core/finalize-reel.js');
+  const packageJson = JSON.parse(await text('package.json'));
 
   assert.match(wordSyncGuard, /audioFingerprintSha256/);
   assert.match(wordSyncCli, /verifyWordSyncTimelineReadiness/);
   assert.doesNotMatch(renderCli, /sync:words|Word-Sync-Audio|Wortzeiten/);
   assert.doesNotMatch(finalizer, /sync:words|wordSyncAudioBinding/);
+  assert.equal(packageJson.scripts['sync:words'], undefined);
+  assert.equal(packageJson.scripts['legacy:sync:words'], 'node src/cli/sync-words.js');
 });

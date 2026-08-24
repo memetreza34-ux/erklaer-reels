@@ -1,13 +1,11 @@
 #!/usr/bin/env node
 
-import { readFile, writeFile } from 'node:fs/promises';
-import path from 'node:path';
+import { readFile } from 'node:fs/promises';
 import { createReelWorkspace } from '../core/workspace.js';
 import { prepareReelProduction } from '../core/production-brief.js';
 import { findNextFreeProductionSlot } from '../core/next-slot.js';
 import { ensureImagePromptBundleDirectory } from '../core/image-prompt-bundle.js';
 import { ensureHumanReelView } from '../core/human-reel-view.js';
-import { buildSourcesTemplate } from '../core/source-quality.js';
 
 function getArgument(name) {
   const index = process.argv.indexOf(name);
@@ -29,7 +27,8 @@ Optionen:
   --script-file   Pfad zum deutschen Sprechertext
   --date          Produktionsdatum im Format YYYY-MM-DD
   --next-free     Chronologisch nächsten freien Tag der neuesten Woche verwenden
-  --scenes        Anzahl der Bildmomente: 12 bis 14 (optional, Standard: 13)
+  --scenes        Anzahl narrativer Szenen: 12 bis 14 (optional, Standard: 13)
+                  Die tatsächliche Bildanzahl wird danach individuell über imagePhases geplant.
                   Ziel: 55–60 Sekunden bei ungefähr 1,10x
   --output        Ausgabeordner (optional, Standard: reels)
 `);
@@ -69,17 +68,6 @@ async function main() {
   }
 
   const result = await createReelWorkspace({ title, script, date, sceneCount, outputRoot });
-  result.reel.sourceQualitySchemaVersion = 2;
-  await writeFile(
-    path.join(result.reelDirectory, 'reel.json'),
-    `${JSON.stringify(result.reel, null, 2)}\n`,
-    'utf8'
-  );
-  await writeFile(
-    path.join(result.reelDirectory, 'sources', 'sources.md'),
-    buildSourcesTemplate(),
-    'utf8'
-  );
   const promptBundle = await ensureImagePromptBundleDirectory(result.reelDirectory);
   const production = await prepareReelProduction(result.reelDirectory);
   const humanView = await ensureHumanReelView(result.reelDirectory, { hideTechnicalInFinder: true });
@@ -88,11 +76,14 @@ async function main() {
     console.log(`Automatisch gewählter Termin: ${selectedSlot.weekday}, ${selectedSlot.dateValue}`);
   }
   console.log(`Reel-Arbeitsordner erstellt: ${result.reelDirectory}`);
-  console.log(`Szenen: ${result.reel.sceneCount}`);
+  console.log(`Narrative Szenen: ${result.reel.sceneCount}`);
+  console.log('Bildanzahl: wird individuell über 1–3 imagePhases pro Szene geplant.');
   console.log(`Zieldauer: ${result.reel.targetDurationSeconds} Sekunden`);
-  console.log('Quellen-QC: Schema 2 ist für dieses neue Reel verpflichtend.');
+  console.log(`Bildwelt: ${result.reel.visualStyleId}`);
+  console.log(`Quellen-QC: Schema ${result.reel.sourceQualitySchemaVersion} ist für dieses neue Reel verpflichtend.`);
   console.log(`Codex-Auftrag: ${production.taskFile}`);
-  console.log(`Chronologische Bildprompt-Datei: ${promptBundle.file}`);
+  console.log(`Google-Flow-Nutzerdatei: ${promptBundle.userFile}`);
+  console.log(`Technische Prompt-Spiegeldatei: ${promptBundle.file}`);
   console.log(`Übersichtliche Ordner: ${humanView.visibleFolders.join(', ')}`);
   if (humanView.finder.applied) console.log('Technische Ordner wurden im macOS Finder ausgeblendet.');
   console.log('Nach Fertigstellung aller Bildprompts verpflichtend export:prompts --strict ausführen.');
