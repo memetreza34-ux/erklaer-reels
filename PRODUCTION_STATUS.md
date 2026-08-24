@@ -1,6 +1,6 @@
 # Produktionsstatus
 
-**Status: PRODUKTIONSBEREIT**
+**Status: PRODUKTIONSLOGIK BEREIT — E2E-PRODUKTIONSTEST AUSSTEHEND**
 
 ## Verbindliche Quelle
 
@@ -88,6 +88,21 @@ Ein Reel ist erst fertig, wenn:
 - die echte MP4 erzeugt wurde
 
 Nicht ausgeführte Tests oder geplante Produktionsstufen niemals als bestanden melden. Messwerte und Readiness-Reports dürfen niemals künstlich erzeugt oder erzwungen werden.
+
+## Runtime-/E2E-Validierung
+
+Die Produktionslogik ist implementiert und durch statische/automatisierte Tests abgesichert. Der nächste Freigabeschritt ist ein kompletter echter Produktionsdurchlauf mit einem neuen, nicht-geografischen Thema.
+
+Dieser E2E-Test muss mindestens prüfen:
+- neuer Workspace startet direkt mit `round-country-characters` und Quellen-Schema 3
+- individuelle Bildphasen werden korrekt geplant und exportiert
+- Google-Flow-Gesamtprompt bleibt vollständig und seriell strukturiert
+- echte Bilder werden visuell zugeordnet und zweifach geprüft
+- echtes Voice-over wird verarbeitet, gemessen und als einzige Timeline-Quelle verwendet
+- Finalizer und Render-Validator blockieren fehlende oder ungeprüfte Voraussetzungen
+- finale MP4 wird tatsächlich erzeugt
+
+Erst nach diesem vollständigen Durchlauf darf der Status wieder als vollständig produktionsvalidiert bezeichnet werden.
 
 ## Legacy
 
