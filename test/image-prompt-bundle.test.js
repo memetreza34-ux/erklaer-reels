@@ -78,58 +78,52 @@ async function createFixture({ missingCoverPrompt = false, missingSecondPrompt =
   return root;
 }
 
-test('README erklärt serielle Steuerung und wortgetreue alte Visual-Prompts', async () => {
+test('README erklärt wieder den kompletten alten seriellen Gesamtprompt', async () => {
   const root = await createFixture();
   const paths = await ensureImagePromptBundleDirectory(root);
   const readme = await readFile(paths.readme, 'utf8');
+  const userReadme = await readFile(paths.userReadme, 'utf8');
 
-  assert.match(readme, /google-flow-controller\.txt/);
-  assert.match(readme, /Bild 00\.txt/);
-  assert.match(readme, /wortgetreu/);
-  assert.match(readme, /ohne technische Wrapper/);
-  assert.match(readme, /Keine Queue/);
-  assert.match(readme, /Kompatibilitäts-\/Indexdatei/);
+  assert.match(readme, /00-bildprompts\/99-alle-bildprompts\.txt/);
+  assert.match(readme, /komplette serielle Gesamtprompt/);
+  assert.match(readme, /Exakt eine Bildgenerierung pro Agent-Schritt/);
+  assert.match(readme, /Controller.*deaktiviert/);
+  assert.match(userReadme, /99-alle-bildprompts\.txt/);
 });
 
-test('exportiert Controller plus unveränderten visuellen Quellprompt pro Bild', async () => {
+test('exportiert alten Komplettaufbau in einer Nachricht und hält Visual-Prompts wortgetreu', async () => {
   const root = await createFixture();
   const sourceCover = (await readFile(path.join(root, 'cover', 'cover-prompt.txt'), 'utf8')).trim();
   const sourceScene = (await readFile(path.join(root, 'scenes', 'scene-02', 'image-prompt-02.txt'), 'utf8')).trim();
 
   const result = await buildImagePromptBundle(root, { strict: true });
 
-  const controller = await readFile(result.controllerFile, 'utf8');
-  const index = await readFile(result.outputFile, 'utf8');
+  const bundle = await readFile(result.outputFile, 'utf8');
+  const mirror = await readFile(result.technicalMirrorFile, 'utf8');
   const p00 = (await readFile(path.join(result.individualPromptsDirectory, 'Bild 00.txt'), 'utf8')).trim();
   const p03 = (await readFile(path.join(result.individualPromptsDirectory, 'Bild 03.txt'), 'utf8')).trim();
 
-  assert.match(controller, /Do NOT read all prompt files in advance/);
-  assert.match(controller, /Generate exactly ONE image/);
-  assert.match(controller, /Do not rewrite, summarize, merge or simplify them/);
-  assert.match(controller, /batch generation/);
-  assert.match(controller, /parallel generation/);
-  assert.match(controller, /open image-prompts\/Bild 00\.txt only/);
-
-  assert.match(index, /NICHT ALS GOOGLE-FLOW-GENERIERUNGSPROMPT VERWENDEN/);
-  assert.match(index, /image-prompts\/Bild 00\.txt/);
-  assert.match(index, /image-prompts\/Bild 04\.txt/);
-  assert.doesNotMatch(index, /Vertical 9:16/);
+  assert.equal(bundle, mirror);
+  assert.match(bundle, /^GOOGLE FLOW – KOMPLETTER SERIELLER BILDLAUF/);
+  assert.match(bundle, /DIESE EINE NACHRICHT IST DIE KOMPLETTE FREIGABE/);
+  assert.match(bundle, /STRENG SERIELL – NIE PARALLEL/);
+  assert.match(bundle, /Genau EINEN Bildgenerator-Aufruf/);
+  assert.match(bundle, /Niemals zwei oder mehr Generierungsaktionen im selben Agent-Schritt/);
+  assert.match(bundle, /späteren Bildprompts.*NICHT zur Ausführung freigegeben/);
+  assert.match(bundle, /BILD 00 – COVER/);
+  assert.match(bundle, /BILD 03 – SZENE 2 – BILDPHASE 2/);
+  assert.match(bundle, /DATEINAME NACH FERTIGSTELLUNG: Bild 03\.png/);
+  assert.match(bundle, /ARBEITSLABELS SIND NIEMALS BILDINHALT/);
+  assert.match(bundle, /Warm off-white textured paper background/);
+  assert.ok(bundle.includes(sourceCover));
+  assert.ok(bundle.includes(sourceScene));
 
   assert.equal(p00, sourceCover);
   assert.equal(p03, sourceScene);
-  assert.match(p00, /Warm off-white textured paper background/);
-  assert.match(p00, /deep navy borders and map shapes/);
-  assert.match(p00, /muted rust, mustard, cobalt and forest-green accents/);
-  assert.match(p00, /bold clean hand-inked outlines/);
-  assert.match(p00, /subtle grain/);
-  assert.match(p00, /sophisticated documentary tone/);
+  assert.doesNotMatch(p00, /BILD 00 – COVER/);
+  assert.doesNotMatch(p00, /DATEINAME NACH FERTIGSTELLUNG/);
 
-  assert.doesNotMatch(p00, /GENERATE EXACTLY ONE IMAGE ONLY/);
-  assert.doesNotMatch(p00, /VISIBLE TEXT FIREWALL/);
-  assert.doesNotMatch(p00, /ROUND SPHERE WORLD/);
-  assert.doesNotMatch(p00, /QUALITY GATE/);
-  assert.doesNotMatch(p00, /filename/i);
-
+  assert.equal(result.controllerFile, null);
   assert.equal(result.coverIncluded, true);
   assert.equal(result.sceneCount, 3);
   assert.equal(result.plannedImageCount, 4);
@@ -137,7 +131,9 @@ test('exportiert Controller plus unveränderten visuellen Quellprompt pro Bild',
 
   const validation = await validateImagePromptBundle(root);
   assert.equal(validation.passed, true);
-  assert.equal(validation.controllerPresent, true);
+  assert.equal(validation.controllerPresent, false);
+  assert.equal(validation.filePresent, true);
+  assert.equal(validation.technicalMirrorPresent, true);
   assert.equal(validation.individualPromptFiles.length, 5);
   assert.ok(validation.individualPromptFiles.every((item) => item.current));
 });
@@ -153,7 +149,7 @@ test('blockiert fehlende Prompts im strengen Modus', async () => {
   await assert.rejects(() => buildImagePromptBundle(noExtra, { strict: true }), /scene-02-image-02/);
 });
 
-test('erkennt veraltete Einzelprompt-Datei', async () => {
+test('erkennt veraltete Einzelprompt-Sicherung', async () => {
   const root = await createFixture();
   const result = await buildImagePromptBundle(root, { strict: true });
   await writeFile(path.join(result.individualPromptsDirectory, 'Bild 02.txt'), 'veraltet\n', 'utf8');
