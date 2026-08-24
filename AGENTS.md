@@ -7,7 +7,7 @@
 Bei „Mach ein neues Reel“ autonom:
 
 1. nächsten freien Slot bestimmen
-2. Thema aus den erlaubten Säulen wählen
+2. **ein starkes Thema aus dem offenen Themenuniversum wählen; keine Beschränkung auf alte Säulen wie Geschichte, Politik, Länder oder Psychologie**
 3. deutsches Voice-over mit 155–175 Wörtern schreiben
 4. 12–14 narrative Szenen planen, Standard 13
 5. **immer `round-country-characters` verwenden**, solange der Nutzer keine andere Welt ausdrücklich reaktiviert
@@ -17,13 +17,41 @@ Bei „Mach ein neues Reel“ autonom:
 9. externe Assets zuerst suchen, bevor etwas als fehlend gemeldet wird
 10. Assets zweifach visuell prüfen, Audio synchronisieren und nur nach echten QC-Gates rendern
 
+## Themenwahl — offen und abwechslungsreich
+
+Die Bildwelt ist fest, **die Themenwelt ist offen**.
+
+Neue Reels dürfen aus praktisch jedem geeigneten Erklärbereich kommen. Beispiele:
+- Psychologie und menschliches Verhalten
+- Alltag und Gewohnheiten
+- Beziehungen und soziale Dynamiken
+- Gesellschaft und Kultur
+- Geschichte
+- Länder und Geografie
+- Politik und staatliche Systeme
+- Wissenschaft und Naturphänomene
+- Technik und digitale Welt
+- Internet und Social Media
+- Lernen, Schule und Gedächtnis
+- Arbeit und Beruf
+- Wirtschaft und Geldmechanismen
+- Gesundheit und Ernährung
+- Sprache und Kommunikation
+- überraschende Alltagsfragen, Denkfehler, Mythen und „Warum ist das so?“-Themen
+
+Diese Liste ist **keine Begrenzung**. Ein Thema darf gewählt werden, wenn es als verständliches, faktenbasiertes Erklär-Reel funktioniert und sich visuell sinnvoll in der Kugel-Welt erzählen lässt.
+
+Verboten ist eine starre Themenrotation oder eine Quote nach alten Säulen. Nicht automatisch mehrere Reels hintereinander nur über Länder/Geschichte/Politik wählen. Bei autonomer Themenwahl auf Abwechslung, Neugier, klaren Aha-Moment, Teilbarkeit und visuelle Erklärbarkeit achten.
+
+Die Kugeln müssen nicht immer Länder darstellen. Bei nicht-länderspezifischen Themen dürfen neutrale Kugelfiguren Personen, Gruppen, Rollen, Systeme, Gedanken, Gewohnheiten oder abstrakte Kräfte repräsentieren.
+
 ## Aktive Bildwelt
 
 Nur `round-country-characters` ist aktiv.
 
 `human-editorial-cartoon` und `visual-metaphor` sind pausiert.
 
-Die Kugel-Welt gilt für **alle Themen**, auch Psychologie, Gesellschaft, Verhalten und abstrakte Mechanismen.
+Die Kugel-Welt gilt für **alle Themen**, auch Psychologie, Gesellschaft, Verhalten, Wissenschaft, Technik, Alltag, Gesundheit, Wirtschaft, Kultur und abstrakte Mechanismen.
 
 ### Figurenregel
 
