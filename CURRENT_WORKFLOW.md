@@ -290,6 +290,22 @@ Repo-Agenten / Codex / Antigravity erzeugen keine Bilder. Sie erstellen Script, 
 
 Der Nutzer sendet Google Flow einmal `00-bildprompts/99-alle-bildprompts.txt`. Flow arbeitet danach selbstständig, aber strikt Bild für Bild.
 
+### Quellen-QC für neue Reels
+
+Neu erstellte Reels verwenden `sourceQualitySchemaVersion: 3`.
+
+Pflicht:
+- mindestens zwei echte HTTPS-Quellen
+- unterschiedliche Hosts/Domains
+- vollständige Felder `Titel/Institution`, `URL`, `Datum/Zugriff`, `Quellentyp`, `Belegt`
+- mindestens eine Primär-/offizielle Quelle oder wissenschaftliche Originalquelle
+- mindestens eine davon unabhängige Sekundär-/Fachquelle
+- unter `Belegt` konkret benennen, welche Reel-Aussage die Quelle stützt
+
+Die formale Quellen-QC ersetzt keine inhaltliche Prüfung. Bei Gesundheit, Wissenschaft, Wirtschaft, Politik und aktuellen technischen Fakten besonders auf Aktualität, Primärbezug und tatsächliche Belegbarkeit achten.
+
+Bestehende Schema-2-Reels bleiben rückwärtskompatibel und werden nicht nur wegen der Schema-3-Einführung umgeschrieben.
+
 ---
 
 ## 9. Bildimport und visuelle QC
@@ -337,6 +353,8 @@ Das finale Voice-over ist die einzige Zeitquelle.
 
 Whisper/ASR darf Kandidaten liefern, aber keine geschätzten Szenenanker als geprüft markieren. Kein Untertitel- oder Word-Sync-Schritt.
 
+Historische Word-Sync-Helfer sind nur Legacy-Diagnosewerkzeuge und dürfen für neue Reels nicht als Pflichtschritt eingeführt werden.
+
 ---
 
 ## 12. Standardbefehle
@@ -355,6 +373,8 @@ npm run finalize:reel -- --dir "<reel-ordner>" --strict
 npm run validate:render -- --dir "<reel-ordner>"
 npm run render:reel -- --dir "<reel-ordner>"
 ```
+
+`npm run sync:words` gehört **nicht** zum aktiven Workflow. Falls historische Diagnose ausdrücklich nötig ist, existiert nur der klar gekennzeichnete Legacy-Befehl `npm run legacy:sync:words`.
 
 ---
 
