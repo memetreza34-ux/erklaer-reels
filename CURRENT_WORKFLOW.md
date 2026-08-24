@@ -31,6 +31,7 @@ Globale Regeln werden nur durch eine ausdrückliche neue Nutzerentscheidung geä
 - −16 LUFS, höchstens −1,5 dBTP
 - **keine Untertitel**
 - **kein Word-Sync für Untertitel**
+- **Untertitel wieder aktivieren ist ohne ausdrückliche neue Nutzerentscheidung verboten.**
 - ausschließlich harte Schnitte
 - keine Hintergrundmusik
 - 0–2 dezente SFX pro narrativer Szene
