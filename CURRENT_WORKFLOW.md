@@ -1,6 +1,6 @@
 # CURRENT WORKFLOW — VERBINDLICHE SINGLE SOURCE OF TRUTH
 
-**Stand: 2026-08-23**
+**Stand: 2026-08-24**
 
 Diese Datei ist die verbindliche Repo-weite Produktionsregel für neue Chats, Codex, Antigravity und andere Repo-Agenten.
 
@@ -64,13 +64,11 @@ Jeder Prompt muss diese Form erzwingen:
 
 ---
 
-## 3. Verbindlicher alter Bildprompt-Aufbau — wiederhergestellt
+## 3. Verbindlicher alter Bildprompt-Aufbau
 
-Die visuelle Prompt-Struktur, die vor der Controller-Umstellung benutzt wurde und bessere Ergebnisse geliefert hat, ist wieder der Standard.
+Die frühere ausführliche Bildprompt-Struktur ist der Standard, weil sie qualitativ bessere Ergebnisse geliefert hat.
 
-**Wichtig:** Die neue serielle Google-Flow-Steuerung darf den eigentlichen visuellen Bildprompt **nicht vereinfachen, umformulieren oder mit technischem Boilerplate ersetzen**.
-
-### Bindender Stil-Master für neue Prompts
+### Bindender Stil-Master
 
 Neue Bildprompts orientieren sich an diesem bewährten Aufbau und Look:
 
@@ -87,31 +85,21 @@ Dazu immer passend zur Szene:
 
 ### Reihenfolge innerhalb jedes visuellen Prompts
 
-Jede `cover/cover-prompt.txt`, `image-prompt.txt`, `image-prompt-02.txt` usw. ist ein **vollwertiger visueller Prompt** und folgt wieder dieser Struktur:
+Jede `cover/cover-prompt.txt`, `image-prompt.txt`, `image-prompt-02.txt` usw. ist ein vollwertiger visueller Prompt:
 
-1. **Format + vollständiger Stil**
-2. **konkrete Szene / Komposition / Handlung**
-3. **genau erlaubter deutscher Bildtext**, falls vorhanden
-4. **negative Regeln**: kein anderer lesbarer Text, kein Englisch, keine Logos, kein Wasserzeichen, kein 3D, keine Fotorealistik
-5. **volle 9:16-Fläche**, keine Untertitel-Safe-Zone, kein künstliches leeres Untertitelband
+1. Format + vollständiger Stil
+2. konkrete Szene / Komposition / Handlung
+3. genau erlaubter deutscher Bildtext, falls vorhanden
+4. negative Regeln: kein anderer lesbarer Text, kein Englisch, keine Logos, kein Wasserzeichen, kein 3D, keine Fotorealistik
+5. volle 9:16-Fläche, keine Untertitel-Safe-Zone, kein künstliches leeres Untertitelband
 
-Bei späteren Bildphasen darf `Match Bild 00.png exactly` verwendet werden, aber der Prompt darf dadurch nicht zu einer dünnen generischen Kurzbeschreibung verkommen. Der alte detaillierte Editorial-Aufbau bleibt maßgeblich.
+Bei späteren Bildphasen darf `Match Bild 00.png exactly` verwendet werden, aber nie als Ersatz für eine konkrete Bildidee.
 
-### Ganz wichtig für den Export
+### Interne Einzelprompt-Sicherungen
 
-Die Dateien
+`all-image-prompts/image-prompts/Bild NN.txt` darf zusätzlich als interne Sicherung existieren und muss den visuellen Quellprompt wortgetreu enthalten. Dort keine Workflow-Wrapper hineinmischen.
 
-```text
-all-image-prompts/image-prompts/Bild 00.txt
-all-image-prompts/image-prompts/Bild 01.txt
-...
-```
-
-müssen den jeweiligen **visuellen Quellprompt unverändert / wortgetreu** enthalten.
-
-Der Exporter darf dort **keine** zusätzlichen Blöcke wie `GENERATE EXACTLY ONE IMAGE`, `VISIBLE TEXT FIREWALL`, `ROUND SPHERE WORLD`, `QUALITY GATE`, Dateinamen, Szenenlabels oder andere Workflow-Metadaten hineinmischen.
-
-Diese Steuerung gehört ausschließlich in `google-flow-controller.txt`.
+Die **verbindliche Datei für Google Flow ist aber nicht mehr diese Einzeldatei-Struktur**, sondern wieder der komplette Gesamtprompt unter `00-bildprompts/99-alle-bildprompts.txt`.
 
 ---
 
@@ -153,45 +141,72 @@ Pro Bild gilt:
 - `imageText`/Cover-Headline gesetzt → nur exakt dieser Text darf lesbar sein
 - `imageText` leer → keinerlei lesbarer Text im Bild
 
-Diese Regel wird **im visuellen Quellprompt selbst** sauber formuliert, nicht durch große technische Wrapper im exportierten Bildprompt.
+Die Überschriften im Gesamtprompt sind reine Workflow-Steuerung und ausdrücklich niemals Bildinhalt.
 
 ---
 
-## 6. Google Flow: Einzeldateien statt Mega-Sammelprompt
+## 6. Google Flow: wieder kompletter Gesamtprompt wie früher
 
-Die Mega-Sammelprompt-Methode bleibt deaktiviert.
+Die bevorzugte Nutzerstruktur ist wieder der frühere komplette serielle Prompt in **einer Datei / einer Nachricht**.
 
-### Exportstruktur
+Verbindliche Datei:
 
 ```text
-all-image-prompts/
-  google-flow-controller.txt
-  image-prompts/
-    Bild 00.txt
-    Bild 01.txt
-    Bild 02.txt
-    ...
-  all-image-prompts.txt
+00-bildprompts/99-alle-bildprompts.txt
 ```
 
-`all-image-prompts.txt` ist nur Kompatibilitäts-/Indexdatei.
+Technische identische Spiegeldatei:
 
-### Google-Flow-Ablauf
+```text
+all-image-prompts/all-image-prompts.txt
+```
 
-Der Nutzer startet den Agenten mit `google-flow-controller.txt`.
+Der separate `google-flow-controller.txt` ist deaktiviert und wird nicht mehr als Startdatei verwendet.
 
-Für jedes Bild strikt:
+### Aufbau des Gesamtprompts
 
-1. nur die nächste Datei `image-prompts/Bild NN.txt` öffnen
-2. genau **ein** Bild generieren
-3. vollständig warten
-4. Ergebnis exakt in `Bild NN.png` umbenennen
-5. Dateiname und Ergebnis prüfen
-6. erst danach die nächste Prompt-Datei öffnen
+Genau wie beim bewährten alten Aufbau:
 
-**Verboten:** mehrere Prompt-Dateien vorab lesen, Batch, Queue, Parallelgenerierung, mehrere Bilder pro Auftrag oder nächstes Bild starten, solange das aktuelle läuft.
+1. `GOOGLE FLOW – KOMPLETTER SERIELLER BILDLAUF`
+2. `AUFTRAG`
+3. `WICHTIG – DIESE EINE NACHRICHT IST DIE KOMPLETTE FREIGABE`
+4. `STRENG SERIELL – NIE PARALLEL`
+5. komplette `DATEINAMEN`-Liste
+6. `STYLE-MASTER`
+7. Text-/Workflow-Regeln
+8. `ENDE`
+9. danach für **jedes Bild** ein eigener Abschnitt:
+   - `BILD NN – COVER/SZENE ...`
+   - `DATEINAME NACH FERTIGSTELLUNG: Bild NN.png`
+   - vollständiger alter hochwertiger Visual-Prompt
 
-`Bild 00.png` ist Cover und Style-Master. Ab Bild 01 wird Bild 00 als Stilreferenz verwendet, aber der Cover-Text niemals automatisch übernommen.
+### Harte Serienregel trotz Gesamtprompt
+
+Dass alle Bildprompts bereits in einer Nachricht sichtbar sind, ist **keine Freigabe für Parallelgenerierung**.
+
+Für jedes Bild zwingend:
+
+1. nur den aktuellen Bildabschnitt ausführen
+2. exakt **einen** Bildgenerator-Aufruf starten
+3. niemals zwei oder mehr Generierungsaktionen im selben Agent-Schritt, Tool-Batch oder Turn auslösen
+4. warten, bis das aktuelle Bild sichtbar vollständig fertig ist
+5. exakt umbenennen
+6. prüfen, dass die Umbenennung erfolgreich war
+7. erst danach den nächsten Bildabschnitt ausführen
+
+Wenn noch ein Job aktiv/queued/pending ist oder der Status unklar ist: **warten und keinen neuen Job starten**.
+
+Verboten:
+- parallele Generierungen
+- Batch-Generierung
+- mehrere Bildgenerator-Aufrufe in einem Schritt
+- Queueing kommender Bilder
+- mehrere Varianten auf einmal
+- nächstes Bild starten, bevor das vorige sichtbar fertig, umbenannt und geprüft wurde
+
+Falls Flow versehentlich mehrere Jobs startet, keine weiteren starten und spätere parallele Jobs abbrechen.
+
+`Bild 00.png` ist Cover und Style-Master. Der Cover-Text wird auf spätere Bilder nicht übernommen.
 
 ---
 
@@ -234,9 +249,9 @@ Erste Phase startet immer bei `startPercent: 0`; weitere Werte steigen zwischen 
 
 ## 8. Rollenverteilung
 
-Repo-Agenten / Codex / Antigravity erzeugen keine Bilder. Sie erstellen Script, Szenen, individuelle Bildphasen, **vollwertige Bildprompts im bewährten alten Aufbau**, Controller, Einzelprompt-Dateien, Caption, Quellen, Asset-Suche, QC, Timeline und Render.
+Repo-Agenten / Codex / Antigravity erzeugen keine Bilder. Sie erstellen Script, Szenen, individuelle Bildphasen, vollwertige Bildprompts im bewährten alten Aufbau, **den kompletten seriellen Google-Flow-Gesamtprompt**, Caption, Quellen, Asset-Suche, QC, Timeline und Render.
 
-Der Nutzer startet Google Flow einmal mit dem Controller. Google Flow arbeitet danach strikt seriell bis zum letzten Bild.
+Der Nutzer sendet Google Flow einmal `00-bildprompts/99-alle-bildprompts.txt`. Flow arbeitet danach selbstständig, aber strikt Bild für Bild.
 
 ---
 

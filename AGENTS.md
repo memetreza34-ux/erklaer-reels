@@ -12,7 +12,7 @@ Bei „Mach ein neues Reel“ autonom:
 4. 12–14 narrative Szenen planen, Standard 13
 5. **immer `round-country-characters` verwenden**, solange der Nutzer keine andere Welt ausdrücklich reaktiviert
 6. Bildanzahl pro Reel und Szene individuell planen
-7. Cover + Bildphasen-Prompts + Einzelprompt-Dateien + Flow-Controller + Caption + Quellen fertigstellen
+7. Cover + Bildphasen-Prompts + **kompletten alten seriellen Google-Flow-Gesamtprompt** + Caption + Quellen fertigstellen
 8. keine Untertitel erzeugen
 9. externe Assets zuerst suchen, bevor etwas als fehlend gemeldet wird
 10. Assets zweifach visuell prüfen, Audio synchronisieren und nur nach echten QC-Gates rendern
@@ -45,36 +45,20 @@ Jeder Bildprompt erzwingt sinngemäß:
 
 ## Bildprompt-Autorenschaft — alten Aufbau verwenden
 
-Die Visual-Prompts dürfen **nicht** als neue generische Kurzprompts geschrieben werden. Der vor der Controller-Umstellung verwendete detaillierte Editorial-Aufbau ist wieder verbindlich.
+Die Visual-Prompts dürfen nicht als generische Kurzprompts geschrieben werden. Der frühere detaillierte Editorial-Aufbau ist verbindlich.
 
-Jede `cover-prompt.txt`, `image-prompt.txt`, `image-prompt-02.txt` usw. soll wie die früheren guten Prompts aufgebaut sein:
+Jede `cover-prompt.txt`, `image-prompt.txt`, `image-prompt-02.txt` usw. enthält:
 
 1. `Vertical 9:16 premium mature 2D editorial country-character illustration ...`
 2. vollständige Stilwelt: warm off-white textured paper, deep navy borders/map shapes, muted rust, mustard, cobalt, forest-green, bold clean hand-inked outlines, flat geometric shading, subtle grain, high contrast, sophisticated documentary tone, not childish
 3. konkrete Szene und klare Komposition
 4. vollständige runde Kugelfiguren passend zum Thema
-5. exakt erlaubten deutschen Bildtext nennen, falls vorhanden
+5. exakt erlaubten deutschen Bildtext, falls vorhanden
 6. `No other readable text, no English, no logos, no watermark`
 7. `No 3D, no photorealism`
 8. volle 9:16-Fläche, keine Subtitle-Safe-Zone
 
-Für Folgeframes darf `matching Bild 00.png exactly` benutzt werden, aber niemals als Ersatz für eine gute konkrete Bildidee.
-
-### Export darf Visual-Prompts nicht verändern
-
-`all-image-prompts/image-prompts/Bild NN.txt` muss den visuellen Quellprompt **wortgetreu** enthalten.
-
-Der Exporter darf dort nicht ergänzen:
-- `GENERATE EXACTLY ONE IMAGE`
-- `VISIBLE TEXT FIREWALL`
-- `ROUND SPHERE WORLD`
-- `QUALITY GATE`
-- Dateinamen
-- Szenen-/Phasenlabels
-- technische IDs
-- sonstige Workflow-Instruktionen
-
-Diese Steuerung gehört ausschließlich in `google-flow-controller.txt`.
+`Match Bild 00.png exactly` darf genutzt werden, aber niemals als Ersatz für eine konkrete Bildidee.
 
 ## Narrative Szenen ≠ Bildanzahl
 
@@ -88,45 +72,63 @@ Technische Felder:
 - pro Szene `imageCount`
 - pro Szene `imagePhases[]`
 
-## Google Flow — Pflichtstruktur
+## Google Flow — wieder der alte komplette Gesamtprompt
 
-**Nicht:** einen riesigen Prompt mit allen Bildprompts an Flow geben.
-
-**Stattdessen:**
+Die verbindliche Nutzerdatei ist:
 
 ```text
-all-image-prompts/
-  google-flow-controller.txt
-  image-prompts/
-    Bild 00.txt
-    Bild 01.txt
-    Bild 02.txt
-    ...
-  all-image-prompts.txt
+00-bildprompts/99-alle-bildprompts.txt
 ```
 
-`all-image-prompts.txt` ist nur Kompatibilitäts-/Indexdatei.
-
-Der Nutzer startet Flow mit `google-flow-controller.txt`.
-
-Der Agent arbeitet strikt:
+Sie muss wieder so aufgebaut sein wie die frühere funktionierende Variante:
 
 ```text
-nur nächste Prompt-Datei öffnen
-→ genau 1 Bild erzeugen
+GOOGLE FLOW – KOMPLETTER SERIELLER BILDLAUF
+AUFTRAG
+WICHTIG – DIESE EINE NACHRICHT IST DIE KOMPLETTE FREIGABE
+STRENG SERIELL – NIE PARALLEL
+DATEINAMEN
+STYLE-MASTER
+TEXTREGEL
+ENDE
+────────────────────────────────────────
+BILD 00 – COVER
+DATEINAME NACH FERTIGSTELLUNG: Bild 00.png
+<vollständiger Visual-Prompt>
+BILD 01 – SZENE 1
+...
+```
+
+`all-image-prompts/all-image-prompts.txt` ist eine identische technische Kopie.
+
+Die Einzeldateien unter `all-image-prompts/image-prompts/` dürfen als interne Sicherung bleiben, sind aber **nicht** der normale Google-Flow-Einstieg.
+
+Der separate `google-flow-controller.txt` ist deaktiviert.
+
+### Hard Serial Lock
+
+Obwohl alle Prompts in einer Nachricht stehen, darf immer nur **eine** Generierung laufen.
+
+Für jedes Bild:
+
+```text
+nur aktuellen Bildabschnitt ausführen
+→ genau 1 Bildgenerator-Aufruf
 → vollständig warten
 → umbenennen
 → prüfen
-→ erst dann nächste Prompt-Datei öffnen
+→ erst dann nächster Bildabschnitt
 ```
 
 Strikt verboten:
-- alle Prompt-Dateien vorab lesen
+- zwei oder mehr Bildgenerator-Aufrufe im selben Agent-Schritt / Tool-Batch / Turn
 - Batch
 - Queue
 - Parallelgenerierung
-- mehrere Bilder pro Auftrag
-- nächstes Bild starten, bevor das aktuelle fertig ist
+- mehrere Varianten gleichzeitig
+- nächstes Bild starten, bevor das aktuelle sichtbar fertig und geprüft ist
+
+Wenn ein Job noch läuft, queued/pending ist oder der Status unklar ist: warten. Wenn versehentlich mehrere Jobs gestartet wurden, keine weiteren starten und spätere parallele Jobs abbrechen.
 
 `Bild 00.png` ist Cover und Style-Master.
 
@@ -140,7 +142,7 @@ Verboten als sichtbarer Bildtext:
 - `DATEINAME`, Dateinamen, technische IDs
 - `GOOGLE FLOW`, `PROMPT`, `STYLE-REFERENZ`, `ZIEL`
 
-Der eigentliche visuelle Quellprompt trägt die Textregel selbst:
+Die Überschriften im Gesamtprompt sind reine Workflow-Steuerung. Der eigentliche visuelle Prompt trägt die Textregel selbst:
 - `imageText`/Cover-Headline gesetzt → nur exakt dieser Text darf lesbar sein
 - leer → kein lesbarer Text
 

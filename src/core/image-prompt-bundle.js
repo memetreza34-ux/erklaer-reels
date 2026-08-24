@@ -1,12 +1,14 @@
-import { access, mkdir, readFile, writeFile } from 'node:fs/promises';
+import { access, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
 import { flattenSceneImagePhases } from '../shared/visual-moments.js';
 
 const BUNDLE_DIRECTORY = 'all-image-prompts';
-const LEGACY_INDEX_FILE = 'all-image-prompts.txt';
+const BUNDLE_FILE = 'all-image-prompts.txt';
 const CONTROLLER_FILE = 'google-flow-controller.txt';
 const INDIVIDUAL_PROMPTS_DIRECTORY = 'image-prompts';
+const USER_PROMPTS_DIRECTORY = '00-bildprompts';
+const USER_BUNDLE_FILE = '99-alle-bildprompts.txt';
 
 async function exists(filePath) {
   try {
@@ -36,22 +38,31 @@ function padImageNumber(value) {
 export function getImagePromptBundlePaths(reelDirectory) {
   const directory = path.join(reelDirectory, BUNDLE_DIRECTORY);
   const individualPromptsDirectory = path.join(directory, INDIVIDUAL_PROMPTS_DIRECTORY);
+  const userDirectory = path.join(reelDirectory, USER_PROMPTS_DIRECTORY);
+
   return {
     directory,
-    file: path.join(directory, LEGACY_INDEX_FILE),
+    file: path.join(directory, BUNDLE_FILE),
     controller: path.join(directory, CONTROLLER_FILE),
     individualPromptsDirectory,
-    readme: path.join(directory, 'README.md')
+    readme: path.join(directory, 'README.md'),
+    userDirectory,
+    userFile: path.join(userDirectory, USER_BUNDLE_FILE),
+    userReadme: path.join(userDirectory, 'README.md')
   };
 }
 
 export async function ensureImagePromptBundleDirectory(reelDirectory) {
   const paths = getImagePromptBundlePaths(reelDirectory);
   await mkdir(paths.individualPromptsDirectory, { recursive: true });
+  await mkdir(paths.userDirectory, { recursive: true });
 
-  const readme = `# Google-Flow-Bildprompts\n\nGoogle Flow wird weiterhin **streng seriell** über \`${CONTROLLER_FILE}\` gesteuert.\n\nDie visuelle Prompt-Qualität bleibt aber im früheren bewährten Aufbau. Jede Datei unter \`${INDIVIDUAL_PROMPTS_DIRECTORY}/Bild NN.txt\` enthält ausschließlich den eigentlichen visuellen Quellprompt aus \`cover/cover-prompt.txt\` bzw. \`scenes/.../image-prompt*.txt\` — wortgetreu und ohne technische Wrapper.\n\nVerbindlicher Ablauf:\n\n1. nur \`Bild 00.txt\` lesen\n2. genau ein Bild erzeugen\n3. vollständig warten\n4. in \`Bild 00.png\` umbenennen und prüfen\n5. erst danach \`Bild 01.txt\` öffnen\n6. so seriell bis zum letzten Bild fortfahren\n\nKeine Queue, kein Batch, keine parallelen Generierungen und niemals mehrere Prompt-Dateien vorab einlesen.\n\n\`${LEGACY_INDEX_FILE}\` ist nur eine Kompatibilitäts-/Indexdatei und darf nicht als Generierungsprompt verwendet werden.\n\n**Wichtig:** Steuertexte wie Dateinamen, Bildnummern, Szenenlabels, \`GENERATE EXACTLY ONE IMAGE\`, \`VISIBLE TEXT FIREWALL\`, \`ROUND SPHERE WORLD\` oder \`QUALITY GATE\` gehören nicht in die einzelnen Visual-Prompts. Der Visual-Prompt selbst bleibt im alten detaillierten Editorial-Aufbau.\n\nErzeugen oder aktualisieren:\n\n\`\`\`bash\nnpm run export:prompts -- --dir "${normalizedRelativePath(reelDirectory)}" --strict\n\`\`\`\n`;
+  const readme = `# Google-Flow-Bildprompts\n\nDie **verbindliche Nutzerdatei** ist wieder der bewährte komplette serielle Gesamtprompt:\n\n\`${USER_PROMPTS_DIRECTORY}/${USER_BUNDLE_FILE}\`\n\nDarin stehen zuerst Auftrag, Serienregeln, Dateinamen, Style-Master und Textregel und danach alle Bildprompts vollständig in Reihenfolge. Genau diese Struktur hat sich als qualitativ besser bewährt.\n\nWichtig: Trotz Gesamtprompt darf Google Flow niemals mehrere Bilder gleichzeitig starten. Exakt eine Bildgenerierung pro Agent-Schritt, vollständig warten, umbenennen und prüfen, erst danach das nächste Bild. Keine Queue und kein paralleles Tool-Batching.\n\n\`${BUNDLE_DIRECTORY}/${BUNDLE_FILE}\` ist eine identische technische Kopie. Die Dateien unter \`${BUNDLE_DIRECTORY}/${INDIVIDUAL_PROMPTS_DIRECTORY}/\` bleiben nur als interne Einzelprompt-Sicherung erhalten. \`${CONTROLLER_FILE}\` ist deaktiviert und wird beim Export entfernt.\n\nErzeugen oder aktualisieren:\n\n\`\`\`bash\nnpm run export:prompts -- --dir "${normalizedRelativePath(reelDirectory)}" --strict\n\`\`\`\n`;
+
+  const userReadme = `# Bildprompts\n\nFür Google Flow **nur diese Datei verwenden**:\n\n\`${USER_BUNDLE_FILE}\`\n\nSie enthält den kompletten alten, ausführlichen seriellen Ablauf in einer Nachricht: Auftrag → strenge Serienregel → Dateinamen → Style-Master → Textregel → alle Bildprompts.\n\nNicht mehrere Bilder gleichzeitig erzeugen. Immer genau ein Bild fertigstellen, umbenennen und prüfen, bevor das nächste gestartet wird.\n`;
+
   await writeFile(paths.readme, readme, 'utf8');
-
+  await writeFile(paths.userReadme, userReadme, 'utf8');
   return paths;
 }
 
@@ -116,60 +127,81 @@ function formatIndividualPrompt(entry) {
   return entry.prompt || '[BILDPROMPT FEHLT]';
 }
 
-function formatController(prompts) {
-  const ordered = [...prompts].sort((a, b) => a.order - b.order);
-  const last = padImageNumber(ordered.at(-1)?.order ?? 0);
-
-  return [
-    'GOOGLE FLOW SERIAL CONTROLLER — ONE IMAGE AT A TIME',
-    '',
-    'This controller is the ONLY file to start the Google Flow agent with.',
-    'The files inside image-prompts/ are pure visual prompts in the proven legacy editorial structure. Do not rewrite, summarize, merge or simplify them.',
-    'Do NOT read all prompt files in advance.',
-    'Do NOT preload future prompt files.',
-    '',
-    'STRICT LOOP:',
-    '1. Open only the next required prompt file from image-prompts/.',
-    '2. Read only that one complete visual prompt.',
-    '3. Generate exactly ONE image from that prompt.',
-    '4. Wait until generation is completely finished.',
-    '5. Rename the result to the matching Bild NN.png filename.',
-    '6. Verify image quality and filename.',
-    '7. Only then open the next prompt file.',
-    '',
-    'FORBIDDEN:',
-    '- batch generation',
-    '- parallel generation',
-    '- queues',
-    '- contact sheets or grids',
-    '- multiple outputs from one image task',
-    '- reading two or more image prompt files before the current image is finished',
-    '- combining or shortening multiple visual prompts',
-    `- using ${LEGACY_INDEX_FILE} as a generation prompt`,
-    '',
-    'START:',
-    '- open image-prompts/Bild 00.txt only',
-    '- generate Bild 00.png',
-    '- use Bild 00.png as visual style master for all later images where the visual prompt requests it',
-    '',
-    `Continue strictly one image at a time through image-prompts/Bild ${last}.txt.`,
-    'Do not ask the user for Go/Weiter/OK between images.'
-  ].join('\n');
+function imageRole(entry) {
+  if (entry.kind === 'cover') return 'Cover';
+  if (Number(entry.phaseOrder ?? 1) > 1) return `Szene ${entry.sceneOrder}, Bildphase ${entry.phaseOrder}`;
+  return `Szene ${entry.sceneOrder}`;
 }
 
-function formatLegacyIndex(prompts) {
+function imageHeading(entry) {
+  const number = padImageNumber(entry.order);
+  if (entry.kind === 'cover') return `BILD ${number} – COVER`;
+  if (Number(entry.phaseOrder ?? 1) > 1) return `BILD ${number} – SZENE ${entry.sceneOrder} – BILDPHASE ${entry.phaseOrder}`;
+  return `BILD ${number} – SZENE ${entry.sceneOrder}`;
+}
+
+function formatCompleteSerialBundle(prompts) {
   const ordered = [...prompts].sort((a, b) => a.order - b.order);
+  const lastEntry = ordered.at(-1);
+  const last = padImageNumber(lastEntry?.order ?? 0);
+  const total = ordered.length;
+  const sceneCount = new Set(ordered.filter((entry) => entry.kind === 'scene').map((entry) => entry.sceneId)).size;
+
   const lines = [
-    'KOMPATIBILITÄTS-/INDEXDATEI — NICHT ALS GOOGLE-FLOW-GENERIERUNGSPROMPT VERWENDEN',
+    'GOOGLE FLOW – KOMPLETTER SERIELLER BILDLAUF',
     '',
-    `Starte Google Flow stattdessen mit: ${CONTROLLER_FILE}`,
+    'AUFTRAG',
+    `Erzeuge für dieses Reel genau ${total} Bilder: Bild 00 als Cover und danach Bild 01 bis Bild ${last} für die geplanten Bildmomente der ${sceneCount} Szenen.`,
     '',
-    'Einzelprompts:'
+    'WICHTIG – DIESE EINE NACHRICHT IST DIE KOMPLETTE FREIGABE',
+    `Sobald dieser Gesamtprompt einmal abgesendet wurde, arbeitest du selbstständig bis Bild ${last} fertig ist. Frage NICHT nach Go, Weiter, OK, Bestätigung oder Erlaubnis.`,
+    '',
+    'STRENG SERIELL – NIE PARALLEL',
+    'Zu jedem Zeitpunkt darf genau EINE Bildgenerierung aktiv, ausstehend, queued oder in Bearbeitung sein.',
+    'Für jedes Bild zwingend:',
+    '1. Nur den aktuellen Bildabschnitt bearbeiten.',
+    '2. Genau EINEN Bildgenerator-Aufruf auslösen. Niemals zwei oder mehr Generierungsaktionen im selben Agent-Schritt, Tool-Batch oder Turn.',
+    '3. Warten, bis dieses eine Bild sichtbar vollständig fertig ist. Solange der Status unklar ist oder noch eine Generierung läuft: WARTEN, nicht das nächste Bild starten.',
+    '4. Sofort exakt in den vorgesehenen Namen umbenennen.',
+    '5. Prüfen, dass die Umbenennung erfolgreich ist und genau dieses Bild fertig vorliegt.',
+    '6. Erst NACH dieser Bestätigung den nächsten Bildabschnitt ausführen.',
+    'Die späteren Bildprompts stehen zwar bereits in dieser Nachricht, sind aber bis zum Abschluss des aktuellen Bildes NICHT zur Ausführung freigegeben.',
+    'Keine Batches, keine Queue, kein paralleles Tool-Batching, kein gleichzeitiges Starten, keine Mehrfach-Generierung und keine Ansammlung unbenannter Bilder.',
+    'Falls versehentlich ein zweiter oder dritter Job gestartet wurde: keine weiteren Jobs starten; spätere parallele Jobs abbrechen und beim ersten noch nicht sauber abgeschlossenen Bild fortsetzen.',
+    '',
+    'DATEINAMEN'
   ];
 
   for (const entry of ordered) {
     const number = padImageNumber(entry.order);
-    lines.push(`- image-prompts/Bild ${number}.txt -> output Bild ${number}.png`);
+    lines.push(`Bild ${number}.png = ${imageRole(entry)}`);
+  }
+
+  lines.push(
+    '',
+    'STYLE-MASTER',
+    'Bild 00.png wird zuerst vollständig erzeugt. Das fertige Bild 00.png ist danach die verbindliche visuelle Referenz für ALLE weiteren Bilder: gleiche Palette, Papiertextur, Konturstärke, Lichtstimmung, Detailqualität und dasselbe runde Kugel-/Country-Ball-Charakterdesign. Der Cover-Hook darf NICHT automatisch auf spätere Bilder kopiert werden.',
+    '',
+    'ARBEITSLABELS SIND NIEMALS BILDINHALT',
+    'BILD-Nummern, COVER, SZENE, BILDPHASE, DATEINAME, Dateinamen und diese Workflow-Anweisungen sind nur Steuertext. Sie dürfen niemals im generierten Bild erscheinen.',
+    '',
+    'TEXTREGEL',
+    'Nur der im jeweiligen visuellen Prompt ausdrücklich verlangte deutsche Text darf sichtbar erscheinen. Kein zusätzlicher englischer Text, keine Fantasiewörter, keine technischen Labels, keine Logos und keine Wasserzeichen. Wenn der Bildprompt keinen sichtbaren Text verlangt, bleibt das Bild vollständig textfrei.',
+    '',
+    'ENDE',
+    `Erst nachdem Bild 00 bis Bild ${last} vollständig erzeugt, korrekt umbenannt und die Nummerierung geprüft wurden, alle fertigen Bilder gemeinsam in den vorgesehenen Sammelordner legen. Nicht während der laufenden Generierung einzelne Bilder dorthin verschieben.`,
+    '',
+    '────────────────────────────────────────'
+  );
+
+  for (const entry of ordered) {
+    const number = padImageNumber(entry.order);
+    lines.push(
+      '',
+      imageHeading(entry),
+      `DATEINAME NACH FERTIGSTELLUNG: Bild ${number}.png`,
+      entry.prompt || '[BILDPROMPT FEHLT]'
+    );
   }
 
   return `${lines.join('\n')}\n`;
@@ -180,7 +212,7 @@ function missingPromptIds(prompts) {
 }
 
 export function formatImagePromptBundle(prompts) {
-  return formatLegacyIndex(prompts);
+  return formatCompleteSerialBundle(prompts);
 }
 
 export async function buildImagePromptBundle(reelDirectory, { strict = false } = {}) {
@@ -196,24 +228,25 @@ export async function buildImagePromptBundle(reelDirectory, { strict = false } =
     await writeFile(path.join(paths.individualPromptsDirectory, `Bild ${number}.txt`), `${formatIndividualPrompt(entry)}\n`, 'utf8');
   }
 
-  const controller = formatController(ordered);
-  const index = formatLegacyIndex(ordered);
-  await writeFile(paths.controller, `${controller}\n`, 'utf8');
-  await writeFile(paths.file, index, 'utf8');
+  const bundle = formatCompleteSerialBundle(ordered);
+  await writeFile(paths.file, bundle, 'utf8');
+  await writeFile(paths.userFile, bundle, 'utf8');
+  await rm(paths.controller, { force: true });
 
   const statusPath = path.join(reelDirectory, 'status.json');
   if (await exists(statusPath)) {
     const status = await readJson(statusPath);
-    status.imagePromptBundle = missingIds.length === 0 ? 'ready-individual-files-legacy-visual-prompts' : 'incomplete';
-    status.googleFlowController = missingIds.length === 0 ? 'ready' : 'incomplete';
-    status.imagePromptMode = 'one-file-per-image-strict-serial-legacy-visual-payload';
+    status.imagePromptBundle = missingIds.length === 0 ? 'ready-complete-old-style-serial-bundle' : 'incomplete';
+    status.googleFlowController = 'disabled-use-complete-bundle';
+    status.imagePromptMode = 'single-complete-serial-bundle-old-structure';
     status.plannedImageCount = prompts.filter((entry) => entry.kind === 'scene').length;
     await writeFile(statusPath, `${JSON.stringify(status, null, 2)}\n`, 'utf8');
   }
 
   return {
-    outputFile: paths.file,
-    controllerFile: paths.controller,
+    outputFile: paths.userFile,
+    technicalMirrorFile: paths.file,
+    controllerFile: null,
     individualPromptsDirectory: paths.individualPromptsDirectory,
     sceneCount: new Set(prompts.filter((entry) => entry.kind === 'scene').map((entry) => entry.sceneId)).size,
     plannedImageCount: prompts.filter((entry) => entry.kind === 'scene').length,
@@ -222,8 +255,7 @@ export async function buildImagePromptBundle(reelDirectory, { strict = false } =
     missingPromptIds: missingIds,
     missingSceneIds: prompts.filter((entry) => entry.kind === 'scene' && entry.missing).map((entry) => entry.sceneId),
     complete: missingIds.length === 0,
-    content: index,
-    controller
+    content: bundle
   };
 }
 
@@ -232,11 +264,11 @@ export async function validateImagePromptBundle(reelDirectory) {
   const prompts = await collectImagePrompts(reelDirectory);
   const missingIds = missingPromptIds(prompts);
   const ordered = [...prompts].sort((a, b) => a.order - b.order);
+  const expectedBundle = formatCompleteSerialBundle(ordered);
 
-  const expectedIndex = formatLegacyIndex(ordered);
-  const expectedController = `${formatController(ordered)}\n`;
-  const actualIndex = await exists(paths.file) ? await readFile(paths.file, 'utf8') : null;
-  const actualController = await exists(paths.controller) ? await readFile(paths.controller, 'utf8') : null;
+  const actualTechnical = await exists(paths.file) ? await readFile(paths.file, 'utf8') : null;
+  const actualUser = await exists(paths.userFile) ? await readFile(paths.userFile, 'utf8') : null;
+  const controllerPresent = await exists(paths.controller);
 
   const individualChecks = [];
   for (const entry of ordered) {
@@ -247,30 +279,38 @@ export async function validateImagePromptBundle(reelDirectory) {
     individualChecks.push({ number, filePath, present: actual !== null, current: actual === expected });
   }
 
-  const current = actualIndex === expectedIndex && actualController === expectedController && individualChecks.every((item) => item.current);
+  const current = actualTechnical === expectedBundle
+    && actualUser === expectedBundle
+    && !controllerPresent
+    && individualChecks.every((item) => item.current);
 
   return {
     passed: missingIds.length === 0 && current,
-    outputFile: paths.file,
-    controllerFile: paths.controller,
+    outputFile: paths.userFile,
+    technicalMirrorFile: paths.file,
     sceneCount: new Set(prompts.filter((entry) => entry.kind === 'scene').map((entry) => entry.sceneId)).size,
     plannedImageCount: prompts.filter((entry) => entry.kind === 'scene').length,
     totalPromptCount: prompts.length,
     coverIncluded: prompts.some((entry) => entry.kind === 'cover' && !entry.missing),
     missingPromptIds: missingIds,
     missingSceneIds: prompts.filter((entry) => entry.kind === 'scene' && entry.missing).map((entry) => entry.sceneId),
-    filePresent: actualIndex !== null,
-    controllerPresent: actualController !== null,
+    filePresent: actualUser !== null,
+    technicalMirrorPresent: actualTechnical !== null,
+    controllerPresent,
     individualPromptFiles: individualChecks,
     current,
     message: missingIds.length > 0
       ? `Bildprompts fehlen für: ${missingIds.join(', ')}.`
-      : !actualController
-        ? `Google-Flow-Controller fehlt: ${normalizedRelativePath(paths.controller)}.`
-        : individualChecks.some((item) => !item.present)
-          ? 'Mindestens eine serielle Einzelprompt-Datei fehlt.'
-          : !current
-            ? 'Controller, Index oder Einzelprompt-Dateien sind veraltet.'
-            : 'Controller und serielle Einzelprompt-Dateien sind aktuell; die Visual-Prompts werden wortgetreu im bewährten alten Aufbau exportiert.'
+      : controllerPresent
+        ? 'Der alte separate Google-Flow-Controller ist noch vorhanden und muss entfernt werden.'
+        : !actualUser
+          ? `Kompletter Google-Flow-Gesamtprompt fehlt: ${normalizedRelativePath(paths.userFile)}.`
+          : !actualTechnical
+            ? `Technische Spiegeldatei fehlt: ${normalizedRelativePath(paths.file)}.`
+            : individualChecks.some((item) => !item.present)
+              ? 'Mindestens eine interne Einzelprompt-Sicherung fehlt.'
+              : !current
+                ? 'Kompletter Gesamtprompt oder Einzelprompt-Sicherungen sind veraltet.'
+                : 'Kompletter alter serieller Google-Flow-Gesamtprompt ist aktuell und als verbindliche Nutzerdatei bereit.'
   };
 }
