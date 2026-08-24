@@ -16,8 +16,24 @@ async function exists(file) {
   }
 }
 
-test('gefährlicher Fake-Render-State-Helfer ist aus dem aktiven Repo entfernt', async () => {
-  assert.equal(await exists('force-render-state.js'), false);
+test('gefährliche Fake-QC- und Fake-Timing-Helfer sind aus dem aktiven Repo entfernt', async () => {
+  const forbiddenRootHelpers = [
+    'force-render-state.js',
+    'approve-visuals.js',
+    'confirm-assets.js',
+    'do-sync.js',
+    'auto-sync.js',
+    'auto-cues.js',
+    'fill-codex.js',
+    'fix-content.js',
+    'fix-narration.js',
+    'fix-reel.js',
+    'fill-ki-app-scenes.js'
+  ];
+
+  for (const file of forbiddenRootHelpers) {
+    assert.equal(await exists(file), false, `${file} darf nicht wieder als aktiver Root-Helfer eingeführt werden.`);
+  }
 });
 
 test('aktiver npm-Workflow bietet keinen normalen sync:words-Befehl mehr an', async () => {
@@ -59,4 +75,17 @@ test('Content-Regeln sind nicht mehr auf drei alte Themen-Säulen begrenzt', asy
   assert.equal(rules.topicFocus.autonomousSelectionLimitedToAllowedTopics, false);
   assert.equal(rules.visualRules.fixedVisualWorld, 'round-country-characters');
   assert.equal(rules.visualRules.selectVisualWorldAfterScript, false);
+});
+
+test('sichtbare Technikansicht bietet Untertitel nicht mehr als aktiven Arbeitsbereich an', async () => {
+  const humanView = await text('src/core/human-reel-view.js');
+
+  assert.doesNotMatch(humanView, /99-technik\/UNTERTITEL/);
+  assert.match(humanView, /Untertitel sind für neue Reels deaktiviert/);
+});
+
+test('Quality Gates enthalten keine tote Untertitel-Timing-Regel mehr', async () => {
+  const gates = JSON.parse(await text('config/production-quality-gates.json'));
+
+  assert.equal(gates.sceneTiming.subtitlesEndWithVoiceover, undefined);
 });
