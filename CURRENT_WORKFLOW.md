@@ -352,7 +352,7 @@ Das finale Voice-over ist die einzige Zeitquelle.
 7. jeden Bildwechsel visuell prüfen
 8. letztes Bild nach Sprecherende 0,7 Sekunden halten
 
-Whisper/ASR darf Kandidaten liefern, aber keine geschätzten Szenenanker als geprüft markieren. Kein Untertitel- oder Word-Sync-Schritt.
+Whisper/ASR darf Kandidaten liefern, aber keine geschätzten Szenenanker als geprüft markieren. Der aktive Produktionsworkflow enthält **keinen Untertitel- oder Word-Sync-Schritt**.
 
 Historische Word-Sync-Helfer sind nur Legacy-Diagnosewerkzeuge und dürfen für neue Reels nicht als Pflichtschritt eingeführt werden.
 
