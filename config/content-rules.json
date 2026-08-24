@@ -1,21 +1,41 @@
 {
   "allowedTopics": [
-    "Politik und Gesellschaft",
-    "Länder, Geografie und Geschichte",
-    "Psychologie und menschliches Verhalten"
+    "Psychologie und menschliches Verhalten",
+    "Alltag und Gewohnheiten",
+    "Beziehungen und soziale Dynamiken",
+    "Gesellschaft und Kultur",
+    "Geschichte",
+    "Länder und Geografie",
+    "Politik und staatliche Systeme",
+    "Wissenschaft und Naturphänomene",
+    "Technik und digitale Welt",
+    "Internet und Social Media",
+    "Lernen, Schule und Gedächtnis",
+    "Arbeit und Beruf",
+    "Wirtschaft und Geldmechanismen",
+    "Gesundheit und Ernährung",
+    "Sprache und Kommunikation",
+    "Denkfehler, Mythen und kuriose Warum-Fragen"
   ],
   "excludedTopics": [
-    "Körper und Biologie",
-    "Finanzen",
-    "Elektrotechnik",
-    "KI-News",
-    "tägliche politische Nachrichten",
-    "Parteienwerbung"
+    "reine tägliche Breaking-News-Zusammenfassungen",
+    "Parteienwerbung oder politische Propaganda",
+    "reine Produktwerbung ohne Erklärwert"
   ],
   "topicFocus": {
-    "statement": "Warum Menschen, Länder und Gesellschaften so funktionieren.",
-    "autonomousSelectionLimitedToAllowedTopics": true,
-    "bodyAndBiologyExcludedAsContentPillar": true
+    "statement": "Eine feste Kugel-Welt erklärt möglichst viele starke Warum-Fragen.",
+    "openTopicUniverse": true,
+    "autonomousSelectionLimitedToAllowedTopics": false,
+    "allowedTopicsAreExamplesNotHardLimit": true,
+    "avoidRepeatedCountryHistoryBias": true,
+    "selectionCriteria": [
+      "starker Hook und sofortige Neugier",
+      "klarer Aha-Moment in unter 60 Sekunden",
+      "faktisch sauber erklärbar",
+      "visuell stark in der Kugel-Welt",
+      "abwechslungsreich gegenüber den letzten Reels",
+      "teilbar, überraschend oder alltagsrelevant"
+    ]
   },
   "hookRules": {
     "preferredPattern": "THEMA einfach erklärt:",
@@ -34,10 +54,10 @@
       "leicht verständlich"
     ],
     "preferredExamples": [
-      "Sozialismus einfach erklärt:",
-      "Demokratie einfach erklärt:",
-      "Gruppendruck einfach erklärt:",
-      "Warum haben Länder Grenzen? Einfach erklärt:"
+      "Warum schieben wir Aufgaben auf? Einfach erklärt:",
+      "Warum erinnern wir uns falsch? Einfach erklärt:",
+      "Warum gehört Alaska zu den USA? Einfach erklärt:",
+      "Warum macht Social Media so schnell abhängig? Einfach erklärt:"
     ],
     "avoid": [
       "Heute erkläre ich dir ...",
@@ -127,8 +147,10 @@
       "default": 0.2
     },
     "consistentStyleWithinReel": true,
-    "creativeStyleBetweenReels": true,
-    "selectVisualWorldAfterScript": true,
+    "creativeStyleBetweenReels": false,
+    "visualWorldMode": "fixed",
+    "fixedVisualWorld": "round-country-characters",
+    "selectVisualWorldAfterScript": false,
     "integratedGermanKeywordsAllowed": true,
     "integratedGermanTextPreferred": true,
     "embeddedTextRules": {
@@ -157,7 +179,8 @@
         "zufällige oder erfundene Wörter",
         "lange Absätze",
         "unnötig viel Text",
-        "erzwungener Text in jeder einzelnen Szene"
+        "erzwungener Text in jeder einzelnen Szene",
+        "Workflow-Labels wie BILD, COVER, SZENE oder DATEINAME"
       ]
     },
     "fixedBuildUpRequired": false,
@@ -180,6 +203,6 @@
     "renderSubtitles": false,
     "generateSubtitleCues": false,
     "wordTimingWorkflowRequired": false,
-    "reason": "Globale Nutzerregel: Erklär-Reels werden ab sofort ohne Untertitel produziert und gerendert."
+    "reason": "Globale Nutzerregel: Erklär-Reels werden ohne Untertitel produziert und gerendert."
   }
 }
