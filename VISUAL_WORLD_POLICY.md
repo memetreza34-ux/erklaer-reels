@@ -2,15 +2,15 @@
 
 `CURRENT_WORKFLOW.md` ist bei Widersprüchen maßgeblich.
 
-## Aktiver Modus ab 2026-08-23
+## Aktiver Modus ab 2026-08-24
 
 Bis zu einer ausdrücklichen neuen Nutzerentscheidung ist **nur eine Bildwelt aktiv**:
 
 `round-country-characters`
 
-Die früheren Welten `human-editorial-cartoon` und `visual-metaphor` sind vorerst pausiert und dürfen nicht autonom ausgewählt werden.
+Die früheren Welten `human-editorial-cartoon` und `visual-metaphor` sind pausiert und dürfen nicht autonom ausgewählt werden.
 
-Diese aktive Kugel-Welt wird für **alle erlaubten Themen** benutzt, nicht nur für Länder oder Geografie.
+Die Kugel-Welt ist **nicht an Länder-, Geschichts- oder Politikthemen gebunden**. Sie ist die visuelle Markenwelt für alle geeigneten Erklärthemen: Alltag, Psychologie, Verhalten, Beziehungen, Gesellschaft, Kultur, Wissenschaft, Technik, Internet, Lernen, Arbeit, Wirtschaft, Gesundheit, Ernährung, Sprache, Geschichte, Geografie und weitere starke Warum-Fragen.
 
 ---
 
@@ -29,6 +29,7 @@ Für Länderfiguren:
 Für nicht-länderspezifische Rollen:
 - ebenfalls vollständig runde Kugelfigur
 - neutrale Farben oder passende Symbole statt Flagge
+- Kugeln dürfen Personen, Gruppen, Rollen, Systeme, Gedanken, Gewohnheiten, Emotionen oder abstrakte Kräfte repräsentieren
 - keine menschlichen Köpfe oder Torsi als Hauptfigur
 
 ### Strikt verboten
@@ -40,11 +41,23 @@ Für nicht-länderspezifische Rollen:
 
 Karten, Grenzen, Straßen, Küsten, Länderumrisse und territoriale Formen dürfen vorkommen, aber nur als **gesichtslose Erklär-/Hintergrundgrafik**.
 
+### Visuelle Grammatik für Nicht-Länder-Themen
+
+Die Kugeln sollen auch bei abstrakten Themen sofort verständlich bleiben:
+- einzelne Person/Rolle → eine dominante neutrale Kugel
+- Gruppe/Mehrheit → mehrere klar verwandte Kugeln
+- Gedanke/Erinnerung → kleine Nebenform, Gedankenblase oder eingebettetes Symbol
+- System/Plattform/Institution → Kugel + eindeutiges Requisit oder Interface-Motiv
+- Ursache/Folge → räumliche Richtung, Pfeil, Kontrast oder klarer Vorher-/Nachher-Wechsel
+- Emotion/Gewohnheit/abstrakte Kraft → Kugel + eindeutige Körpersprache, Symbolik und Szene statt bloßer Beschriftung
+
+Kein starres Farbcodesystem erzwingen. Entscheidend sind Wiedererkennbarkeit, 1-Sekunden-Lesbarkeit und eine klare visuelle Handlung.
+
 ---
 
 # Bewährter alter Visual-Look — verbindlich
 
-Die Prompt-Qualität soll wieder dem früheren Stil entsprechen. Neue Prompts dürfen nicht in generische „Sphere World“-Kurzprompts abrutschen.
+Die Prompt-Qualität soll dem früheren ausführlichen Stil entsprechen. Neue Prompts dürfen nicht in generische „Sphere World“-Kurzprompts abrutschen.
 
 Verbindlicher visueller Grundblock:
 
@@ -62,7 +75,7 @@ Zusätzlich:
 
 ## Verbindlicher Prompt-Aufbau
 
-Jeder visuelle Quellprompt folgt wieder dem früheren Aufbau:
+Jeder visuelle Quellprompt folgt dem bewährten Aufbau:
 
 1. **Format + vollständiger Editorial-Stil**
 2. **konkrete Bildkomposition und Handlung**
@@ -71,13 +84,37 @@ Jeder visuelle Quellprompt folgt wieder dem früheren Aufbau:
 5. **negative Regeln**: kein anderer lesbarer Text, kein Englisch, keine Logos, kein Wasserzeichen, kein 3D, keine Fotorealistik
 6. **volle 9:16-Komposition**, keine Subtitle-Safe-Zone
 
-Sekundäre Bildphasen dürfen kompakter sein und `matching Bild 00.png exactly` verwenden, aber sie müssen klar in derselben hochwertigen Welt bleiben.
+Sekundäre Bildphasen dürfen kompakter sein und `Match Bild 00.png exactly` verwenden, müssen aber eine konkrete eigene Bildidee behalten.
 
-## Export-Regel
+---
 
-Die seriellen Dateien `all-image-prompts/image-prompts/Bild NN.txt` enthalten ausschließlich den **eigentlichen visuellen Quellprompt**. Der Exporter darf keine technischen Wrapper, Quality-Gates, Dateinamen, Szenenlabels oder Workflow-Instruktionen in diesen Prompt hineinmischen.
+# Google-Flow-Export — aktueller verbindlicher Stand
 
-Die serielle Steuerung lebt nur in `google-flow-controller.txt`.
+Die **verbindliche Nutzerdatei** ist:
+
+```text
+00-bildprompts/99-alle-bildprompts.txt
+```
+
+Sie enthält den vollständigen seriellen Gesamtprompt mit Auftrag, Serienregeln, Dateinamen, Style-Master und danach allen vollständigen Bildprompts in Reihenfolge.
+
+Technische identische Spiegeldatei:
+
+```text
+all-image-prompts/all-image-prompts.txt
+```
+
+Die Dateien unter
+
+```text
+all-image-prompts/image-prompts/Bild NN.txt
+```
+
+bleiben nur interne Sicherungen der reinen visuellen Quellprompts.
+
+Der frühere separate `google-flow-controller.txt` ist **deaktiviert** und nicht der normale Google-Flow-Einstieg.
+
+Trotz Gesamtprompt gilt strikt: genau ein Bildgenerator-Aufruf → vollständig warten → umbenennen → prüfen → erst danach das nächste Bild. Keine Queue, kein Batch und keine Parallelgenerierung.
 
 ---
 
@@ -98,6 +135,8 @@ Nie sichtbar im Bild:
 Pro Bild gilt:
 - `imageText`/Cover-Headline gesetzt → genau dieser Text ist der einzige erlaubte lesbare Text
 - `imageText` leer → überhaupt kein lesbarer Text
+
+Die technischen Überschriften des Gesamtprompts sind reine Steuerung und dürfen niemals in das generierte Bild übernommen werden.
 
 ---
 
