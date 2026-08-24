@@ -16,13 +16,29 @@ Dieses Repository produziert vollständige visuelle Erklär-Reels. Der Nutzer er
 - harte Schnitte
 - 0,7 Sekunden Schlussbild-Nachlauf
 
+## Themenuniversum: offen
+
+Die Themenwahl ist **nicht mehr auf feste Säulen beschränkt**.
+
+Bei einem autonomen neuen Reel darf Codex aus jedem geeigneten Erklärbereich wählen, zum Beispiel Psychologie, Alltag, Verhalten, Beziehungen, Gesellschaft, Kultur, Geschichte, Länder, Geografie, Politik, Wissenschaft, Naturphänomene, Technik, Internet, Social Media, Lernen, Arbeit, Wirtschaft, Gesundheit, Ernährung, Sprache, Kommunikation, Denkfehler, Mythen und kuriose „Warum?“-Fragen.
+
+Die Liste ist nicht abschließend. Entscheidend sind:
+- starke Neugier/Hook
+- klarer Aha-Moment
+- faktische Erklärbarkeit
+- visuelle Stärke in der Kugel-Welt
+- Abwechslung gegenüber den zuletzt produzierten Reels
+- Teilbarkeit oder Alltagsrelevanz
+
+Keine feste Pillar-Quote und keine automatische Rotation. Die Kugel-Welt darf nicht dazu führen, dass neue Themen automatisch immer Länder-, Grenzen-, Hauptstadt-, Geschichts- oder Politikthemen sind.
+
 ## Bildanzahl: immer individuell
 
 Die Anzahl der Bilder ist **nicht** mehr an die Szenenzahl gekoppelt.
 
 Für jede narrative Szene separat entscheiden:
 - 1 Bild, wenn ein starkes Motiv reicht
-- 2 Bilder bei echtem Mehrwert durch Überblick/Detail, Karte/Zoom, Ursache/Folge, Gesicht/Gedanke oder Metapher/Auflösung
+- 2 Bilder bei echtem Mehrwert durch Überblick/Detail, Karte/Zoom, Ursache/Folge, Figur/Mechanismus oder Ausgangslage/Auflösung
 - 3 Bilder nur selten
 
 Wenn ein einzelnes Still-Bild ungefähr 3,5–4 Sekunden oder länger stehen würde, eine zweite Bildphase aktiv prüfen. Keine Bildphase nur zur Erfüllung einer Quote hinzufügen.
@@ -74,15 +90,24 @@ Bild 03 = Szene 2 / Phase 2
 Bild 04 = Szene 3 / Phase 1
 ```
 
-Flow arbeitet streng seriell: ein Bild → vollständig warten → umbenennen → prüfen → automatisch nächstes Bild. Keine Queue, kein Batch, kein Parallelisieren und kein weiteres `Go`.
+Die verbindliche Nutzerdatei ist `00-bildprompts/99-alle-bildprompts.txt` mit dem vollständigen seriellen Gesamtprompt. Flow arbeitet streng seriell: ein Bild → vollständig warten → umbenennen → prüfen → automatisch nächstes Bild. Keine Queue, kein Batch, kein Parallelisieren und kein weiteres `Go`.
 
-## Bildwelten
+## Bildwelt
 
-- `human-editorial-cartoon`: Köpfe-Welt, große Gesichter, Close-ups, wenig Körper
-- `round-country-characters`: Länder-Welt, Karten/Zooms/Vergleiche; oft besonders geeignet für zusätzliche Bildphasen
-- `visual-metaphor`: starke zentrale Metapher; Zusatzbild nur für echten zweiten Erklärungsschritt
+Bis zur ausdrücklichen Reaktivierung anderer Welten gilt ausschließlich:
 
-Keine feste Bildsumme pro Bildwelt erzwingen.
+`round-country-characters`
+
+Die Kugel-Welt ist **für alle Themen** zuständig, nicht nur für Länder und Geschichte.
+
+- Länderrollen → vollständige runde Kugel mit vereinfachtem Flaggenmuster
+- nicht-länderspezifische Personen/Rollen → neutrale runde Kugel mit Farbe/Symbol
+- Gruppen, Systeme, Gedanken, Gewohnheiten, Emotionen oder abstrakte Kräfte dürfen ebenfalls durch runde Kugelfiguren dargestellt werden
+- Karten und Länderumrisse bleiben gesichtslose Erklärgrafik
+- keine menschlichen Köpfe/Torsi als Hauptwelt
+- keine map-shaped characters
+
+Keine feste Bildsumme aufgrund des Themas erzwingen.
 
 ## Fehlende Assets
 
