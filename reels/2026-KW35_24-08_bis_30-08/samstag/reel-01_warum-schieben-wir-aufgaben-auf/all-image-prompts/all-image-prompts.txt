@@ -41,13 +41,13 @@ Bild 17.png = Szene 12
 Bild 18.png = Szene 13
 
 STYLE-MASTER
-Bild 00.png wird zuerst vollständig erzeugt. Das fertige Bild 00.png ist danach die verbindliche visuelle Referenz für ALLE weiteren Bilder: gleiche Palette, Papiertextur, Konturstärke, Lichtstimmung, Detailqualität und dasselbe runde Kugel-Charakterdesign. Der Cover-Hook darf NICHT automatisch auf spätere Bilder kopiert werden.
+Bild 00.png wird zuerst vollständig erzeugt. Das fertige Bild 00.png ist danach die verbindliche visuelle Referenz für ALLE weiteren Bilder: gleiche Palette, Papiertextur, Konturstärke, Lichtstimmung, Detailqualität und dasselbe runde Kugel-/Country-Ball-Charakterdesign. Der Cover-Hook darf NICHT automatisch auf spätere Bilder kopiert werden.
 
 ARBEITSLABELS SIND NIEMALS BILDINHALT
 BILD-Nummern, COVER, SZENE, BILDPHASE, DATEINAME, Dateinamen und diese Workflow-Anweisungen sind nur Steuertext. Sie dürfen niemals im generierten Bild erscheinen.
 
 TEXTREGEL
-Nur der im jeweiligen visuellen Prompt ausdrücklich verlangte deutsche Text darf sichtbar erscheinen. Kein zusätzlicher englischer Text, keine Fantasiewörter, keine technischen Labels, keine Logos und keine Wasserzeichen.
+Nur der im jeweiligen visuellen Prompt ausdrücklich verlangte deutsche Text darf sichtbar erscheinen. Kein zusätzlicher englischer Text, keine Fantasiewörter, keine technischen Labels, keine Logos und keine Wasserzeichen. Wenn der Bildprompt keinen sichtbaren Text verlangt, bleibt das Bild vollständig textfrei.
 
 ENDE
 Erst nachdem Bild 00 bis Bild 18 vollständig erzeugt, korrekt umbenannt und die Nummerierung geprüft wurden, alle fertigen Bilder gemeinsam in den vorgesehenen Sammelordner legen. Nicht während der laufenden Generierung einzelne Bilder dorthin verschieben.
@@ -56,76 +56,228 @@ Erst nachdem Bild 00 bis Bild 18 vollständig erzeugt, korrekt umbenannt und die
 
 BILD 00 – COVER
 DATEINAME NACH FERTIGSTELLUNG: Bild 00.png
-Vertical 9:16 premium mature 2D editorial country-character illustration. Warm off-white textured paper background, deep navy borders and structural shapes, muted rust, mustard, cobalt and forest-green accents, bold clean hand-inked outlines, flat geometric shading, subtle grain, high contrast, sophisticated documentary tone, not childish. Every anthropomorphic person or abstract role must be a complete perfectly round circular neutral sphere character with simple white eyes and at most tiny arms/legs; no human heads or torsos. Center one neutral sphere at a desk, caught between one important unfinished task on the left and immediate distractions on the right: generic short-video phone with no readable UI, clean desk, snack and tiny side task. A restrained future-stress cloud grows behind the task. ONLY readable text: "WARUM SCHIEBEN WIR AUFGABEN AUF?". No other readable text, no English, no logos, no watermark, no workflow labels, no 3D, no photorealism. Full 9:16, no subtitle band.
+Vertical 9:16 premium mature 2D editorial country-character illustration. Warm off-white textured paper background, deep navy borders and structural shapes, muted rust, mustard, cobalt and forest-green accents, bold clean hand-inked outlines, flat geometric shading, subtle grain, high contrast, sophisticated documentary tone, not childish.
+
+NON-NEGOTIABLE ROUND-CHARACTER RULE: every anthropomorphic person, role, thought, habit, emotion or abstract force must be represented as a complete perfectly round circular neutral sphere character with simple white eyes and at most tiny arms/legs. No human heads or torsos. No map-shaped or irregular character bodies. Keep objects, phones, clocks, documents, task blocks, mood clouds and diagrams faceless unless they are explicitly separate sphere characters.
+
+Create the master cover for a psychology explainer about procrastination. Center one complete perfectly round neutral sphere at a desk, visibly caught between one important unfinished task on the left and several immediate distractions on the right: a generic short-video phone interface with no readable UI text, a perfectly clean desk, a snack and a tiny side task. Behind the important task, show a restrained future-stress cloud growing larger. The composition should instantly communicate “I know I should start, but I avoid it.” Use no country flags because this is a non-country topic.
+
+VISIBLE-TEXT FIREWALL: the ONLY readable text allowed anywhere inside the image is exactly "WARUM SCHIEBEN WIR AUFGABEN AUF?". Do not render any workflow metadata, asset numbers, BILD labels, COVER, SZENE, BILDPHASE, filenames, Google Flow, Prompt, technical ids or any other label. No other readable text, no English, no logos, no watermark.
+
+No 3D, no photorealism. Use the full 9:16 composition naturally; no subtitle safe-zone or artificial empty subtitle band. Build one dominant visual idea readable within about one second; avoid cheap icon soup.
 
 BILD 01 – SZENE 1
 DATEINAME NACH FERTIGSTELLUNG: Bild 01.png
-Vertical 9:16 premium mature 2D editorial country-character illustration matching Bild 00.png exactly. Complete perfectly round neutral sphere character, no human head or torso. Show the sphere before one important task while a generic short-video phone, a spotless desk, a snack and a tiny side task pull attention away. ONLY readable text: "JETZT ANFANGEN?". No other readable text, no English, no logos, no watermark, no workflow labels, no 3D, no photorealism. Full 9:16.
+Vertical 9:16 premium mature 2D editorial country-character illustration. Warm off-white textured paper background, deep navy borders and structural shapes, muted rust, mustard, cobalt and forest-green accents, bold clean hand-inked outlines, flat geometric shading, subtle grain, high contrast, sophisticated documentary tone, not childish.
+
+Match Bild 00.png exactly in line weight, paper texture, palette, round-character proportions and editorial finish.
+
+NON-NEGOTIABLE ROUND-CHARACTER RULE: every anthropomorphic person, role, thought, habit, emotion or abstract force must be a complete perfectly round circular neutral sphere character with simple white eyes and at most tiny arms/legs. No human heads or torsos. Keep phones, documents, desks, snacks and task objects faceless.
+
+Show one neutral round sphere sitting in front of one important task while several instant distractions pull its attention away: a generic short-video phone with no readable UI text, a spotless desk, a snack and a tiny side task. Make the tension between “start now” and “do anything else” instantly readable.
+
+VISIBLE-TEXT FIREWALL: the ONLY readable text allowed anywhere inside the image is exactly "JETZT ANFANGEN?". No other readable text, no English, no logos, no watermark, no workflow labels or filenames. No 3D, no photorealism. Full 9:16 frame, no subtitle safe-zone.
 
 BILD 02 – SZENE 2
 DATEINAME NACH FERTIGSTELLUNG: Bild 02.png
-Vertical 9:16 premium mature 2D editorial country-character illustration matching Bild 00.png exactly. Complete perfectly round neutral sphere character, no human head or torso. Place the sphere between an important task and a turbulent abstract emotion cloud, showing conflict and self-regulation rather than a lazy stereotype. ONLY readable text: "NICHT EINFACH FAULHEIT". No other readable text, no English, no logos, no watermark, no workflow labels, no 3D, no photorealism. Full 9:16.
+Vertical 9:16 premium mature 2D editorial country-character illustration. Warm off-white textured paper background, deep navy borders and structural shapes, muted rust, mustard, cobalt and forest-green accents, bold clean hand-inked outlines, flat geometric shading, subtle grain, high contrast, sophisticated documentary tone, not childish.
+
+Match Bild 00.png exactly in line weight, paper texture, palette, round-character proportions and editorial finish.
+
+NON-NEGOTIABLE ROUND-CHARACTER RULE: every anthropomorphic person, role, thought, habit, emotion or abstract force must be a complete perfectly round circular neutral sphere character with simple white eyes and at most tiny arms/legs. No human heads or torsos.
+
+Place one neutral sphere between an important task and a turbulent emotion cloud. The sphere should look conflicted rather than lazy. Use a restrained self-regulation motif such as two competing directional paths, one toward the task and one toward immediate relief. Avoid stereotypes like sleeping or lounging.
+
+VISIBLE-TEXT FIREWALL: the ONLY readable text allowed anywhere inside the image is exactly "NICHT EINFACH FAULHEIT". No other readable text, no English, no logos, no watermark, no workflow labels or filenames. No 3D, no photorealism. Full 9:16 frame, no subtitle safe-zone.
 
 BILD 03 – SZENE 3
 DATEINAME NACH FERTIGSTELLUNG: Bild 03.png
-Vertical 9:16 premium mature 2D editorial country-character illustration matching Bild 00.png exactly. Complete perfectly round neutral sphere character, no human head or torso. A large intimidating task block looms over the sphere with clean faceless cues for boredom, difficulty, uncertainty and emotional discomfort. ONLY readable text: "UNANGENEHME AUFGABE". No other readable text, no English, no logos, no watermark, no workflow labels, no 3D, no photorealism. Full 9:16.
+Vertical 9:16 premium mature 2D editorial country-character illustration. Warm off-white textured paper background, deep navy borders and structural shapes, muted rust, mustard, cobalt and forest-green accents, bold clean hand-inked outlines, flat geometric shading, subtle grain, high contrast, sophisticated documentary tone, not childish.
+
+Match Bild 00.png exactly in line weight, paper texture, palette, round-character proportions and editorial finish.
+
+NON-NEGOTIABLE ROUND-CHARACTER RULE: every anthropomorphic role must be a complete perfectly round circular neutral sphere character with simple white eyes and at most tiny arms/legs. No human heads or torsos. Keep task blocks and symbols faceless.
+
+Show a large intimidating task block looming over one smaller neutral sphere. Around the task, use four clean faceless cues for boredom, difficulty, uncertainty and emotional discomfort. Keep the composition focused on one dominant idea: the task feels aversive before it has even started.
+
+VISIBLE-TEXT FIREWALL: the ONLY readable text allowed anywhere inside the image is exactly "UNANGENEHME AUFGABE". No other readable text, no English, no logos, no watermark, no workflow labels or filenames. No 3D, no photorealism. Full 9:16 frame, no subtitle safe-zone.
 
 BILD 04 – SZENE 3 – BILDPHASE 2
 DATEINAME NACH FERTIGSTELLUNG: Bild 04.png
-Vertical 9:16 premium mature 2D editorial country-character illustration matching Bild 00.png exactly. Zoom into the task itself; show four clean faceless cues for boring repetition, high difficulty, unclear instructions and emotional discomfort, with a small complete round sphere hesitating at the bottom. ONLY readable text: "LANGWEILIG. SCHWIERIG. UNKLAR.". No other readable text, no English, no logos, no watermark, no workflow labels, no 3D, no photorealism. Full 9:16.
+Vertical 9:16 premium mature 2D editorial country-character illustration. Warm off-white textured paper background, deep navy borders and structural shapes, muted rust, mustard, cobalt and forest-green accents, bold clean hand-inked outlines, flat geometric shading, subtle grain, high contrast, sophisticated documentary tone, not childish.
+
+Match Bild 00.png exactly in line weight, paper texture, palette, round-character proportions and editorial finish.
+
+NON-NEGOTIABLE ROUND-CHARACTER RULE: any anthropomorphic role must be a complete perfectly round circular neutral sphere character. No human heads or torsos. All task symbols remain faceless.
+
+Zoom closer into the task itself. Use a clean editorial arrangement of four faceless visual cues representing boring repetition, high difficulty, unclear instructions and emotional discomfort. One small neutral sphere hesitates at the bottom edge. Do not turn the icons into characters.
+
+VISIBLE-TEXT FIREWALL: the ONLY readable text allowed anywhere inside the image is exactly "LANGWEILIG. SCHWIERIG. UNKLAR.". No other readable text, no English, no logos, no watermark, no workflow labels or filenames. No 3D, no photorealism. Full 9:16 frame, no subtitle safe-zone.
 
 BILD 05 – SZENE 4
 DATEINAME NACH FERTIGSTELLUNG: Bild 05.png
-Vertical 9:16 premium mature 2D editorial country-character illustration matching Bild 00.png exactly. Complete perfectly round neutral sphere character. Show the sphere turning away from the unpleasant task toward one quick generic distraction and visibly relaxing for a moment while the unfinished task remains nearby. ONLY readable text: "SOFORTIGE ERLEICHTERUNG". No other readable text, no English, no logos, no watermark, no workflow labels, no 3D, no photorealism. Full 9:16.
+Vertical 9:16 premium mature 2D editorial country-character illustration. Warm off-white textured paper background, deep navy borders and structural shapes, muted rust, mustard, cobalt and forest-green accents, bold clean hand-inked outlines, flat geometric shading, subtle grain, high contrast, sophisticated documentary tone, not childish.
+
+Match Bild 00.png exactly in line weight, paper texture, palette, round-character proportions and editorial finish.
+
+NON-NEGOTIABLE ROUND-CHARACTER RULE: every anthropomorphic role must be a complete perfectly round circular neutral sphere character with simple white eyes and at most tiny arms/legs. No human heads or torsos. Keep the distraction object and task faceless.
+
+Show the same neutral sphere turning away from the unpleasant task toward a quick generic distraction such as a bright phone-shaped object with no readable interface. Its expression and posture visibly relax for a moment while the unfinished task remains nearby. Make the short-term relief the dominant visual idea.
+
+VISIBLE-TEXT FIREWALL: the ONLY readable text allowed anywhere inside the image is exactly "SOFORTIGE ERLEICHTERUNG". No other readable text, no English, no logos, no watermark, no workflow labels or filenames. No 3D, no photorealism. Full 9:16 frame, no subtitle safe-zone.
 
 BILD 06 – SZENE 4 – BILDPHASE 2
 DATEINAME NACH FERTIGSTELLUNG: Bild 06.png
-Vertical 9:16 premium mature 2D editorial country-character illustration matching Bild 00.png exactly. Close view of the complete round sphere with a small faceless mood gauge moving from tense to relieved; the unfinished task remains blurred but recognizable behind it. ONLY readable text: "KURZ BESSER". No other readable text, no English, no logos, no watermark, no workflow labels, no 3D, no photorealism. Full 9:16.
+Vertical 9:16 premium mature 2D editorial country-character illustration. Warm off-white textured paper background, deep navy borders and structural shapes, muted rust, mustard, cobalt and forest-green accents, bold clean hand-inked outlines, flat geometric shading, subtle grain, high contrast, sophisticated documentary tone, not childish.
+
+Match Bild 00.png exactly in line weight, paper texture, palette, round-character proportions and editorial finish.
+
+NON-NEGOTIABLE ROUND-CHARACTER RULE: the person remains a complete perfectly round circular neutral sphere character. No human heads or torsos. Mood gauges and task objects stay faceless.
+
+Create a close editorial view of the sphere with a small faceless mood gauge moving from tense to relieved. Keep the unfinished task blurred but recognizable behind it so the viewer understands the problem has not disappeared. The image should feel like a temporary mood improvement, not a solved task.
+
+VISIBLE-TEXT FIREWALL: the ONLY readable text allowed anywhere inside the image is exactly "KURZ BESSER". No other readable text, no English, no logos, no watermark, no workflow labels or filenames. No 3D, no photorealism. Full 9:16 frame, no subtitle safe-zone.
 
 BILD 07 – SZENE 5
 DATEINAME NACH FERTIGSTELLUNG: Bild 07.png
-Vertical 9:16 premium mature 2D editorial country-character illustration matching Bild 00.png exactly. Complete round neutral sphere character. The unfinished task stays untouched while a future stress pile grows behind the sphere using stacked papers, a looming faceless clock and restrained pressure gauge. ONLY readable text: "SPÄTER MEHR STRESS". No other readable text, no English, no logos, no watermark, no workflow labels, no 3D, no photorealism. Full 9:16.
+Vertical 9:16 premium mature 2D editorial country-character illustration. Warm off-white textured paper background, deep navy borders and structural shapes, muted rust, mustard, cobalt and forest-green accents, bold clean hand-inked outlines, flat geometric shading, subtle grain, high contrast, sophisticated documentary tone, not childish.
+
+Match Bild 00.png exactly in line weight, paper texture, palette, round-character proportions and editorial finish.
+
+NON-NEGOTIABLE ROUND-CHARACTER RULE: the person is a complete perfectly round circular neutral sphere character. No human heads or torsos. Papers, clocks and gauges remain faceless.
+
+The unfinished task stays untouched in the foreground while a future stress pile grows behind the sphere: stacked papers, a looming clock and a restrained pressure gauge. Make the future burden visibly larger than the original task without creating clutter.
+
+VISIBLE-TEXT FIREWALL: the ONLY readable text allowed anywhere inside the image is exactly "SPÄTER MEHR STRESS". No other readable text, no English, no logos, no watermark, no workflow labels or filenames. No 3D, no photorealism. Full 9:16 frame, no subtitle safe-zone.
 
 BILD 08 – SZENE 6
 DATEINAME NACH FERTIGSTELLUNG: Bild 08.png
-Vertical 9:16 premium mature 2D editorial country-character illustration matching Bild 00.png exactly. Create a clean split timeline with the same complete round sphere: immediate relief on the left, larger unfinished task and stronger stress later on the right. ONLY readable text: "KURZ GUT. SPÄTER SCHLECHT.". No other readable text, no English, no logos, no watermark, no workflow labels, no 3D, no photorealism. Full 9:16.
+Vertical 9:16 premium mature 2D editorial country-character illustration. Warm off-white textured paper background, deep navy borders and structural shapes, muted rust, mustard, cobalt and forest-green accents, bold clean hand-inked outlines, flat geometric shading, subtle grain, high contrast, sophisticated documentary tone, not childish.
+
+Match Bild 00.png exactly in line weight, paper texture, palette, round-character proportions and editorial finish.
+
+NON-NEGOTIABLE ROUND-CHARACTER RULE: every anthropomorphic role is a complete perfectly round circular neutral sphere character. No human heads or torsos. Timeline elements remain faceless.
+
+Create one clean split-timeline composition. On the left, the neutral sphere gets immediate relief by avoiding the task. On the right, the same sphere faces a larger unfinished task and stronger stress later. Use one directional timeline arrow and keep both states visually linked.
+
+VISIBLE-TEXT FIREWALL: the ONLY readable text allowed anywhere inside the image is exactly "KURZ GUT. SPÄTER SCHLECHT.". No other readable text, no English, no logos, no watermark, no workflow labels or filenames. No 3D, no photorealism. Full 9:16 frame, no subtitle safe-zone.
 
 BILD 09 – SZENE 7
 DATEINAME NACH FERTIGSTELLUNG: Bild 09.png
-Vertical 9:16 premium mature 2D editorial country-character illustration matching Bild 00.png exactly. A complete round neutral sphere is pulled toward a bright immediate distraction while looking uncertainly at a difficult task; use a restrained tug-of-war composition. ONLY readable text: "IMPULS + ZWEIFEL". No other readable text, no English, no logos, no watermark, no workflow labels, no 3D, no photorealism. Full 9:16.
+Vertical 9:16 premium mature 2D editorial country-character illustration. Warm off-white textured paper background, deep navy borders and structural shapes, muted rust, mustard, cobalt and forest-green accents, bold clean hand-inked outlines, flat geometric shading, subtle grain, high contrast, sophisticated documentary tone, not childish.
+
+Match Bild 00.png exactly in line weight, paper texture, palette, round-character proportions and editorial finish.
+
+NON-NEGOTIABLE ROUND-CHARACTER RULE: every anthropomorphic role, impulse or thought must be a complete perfectly round circular neutral sphere character with simple white eyes and at most tiny arms/legs. No human heads or torsos. Task blocks and reward objects remain faceless.
+
+Show one neutral sphere being pulled toward a bright immediate distraction while looking uncertainly at a difficult task. Use a restrained tug-of-war composition: the pleasant option close and vivid, the task heavier and less inviting. Communicate impulsivity plus doubt without adding clutter.
+
+VISIBLE-TEXT FIREWALL: the ONLY readable text allowed anywhere inside the image is exactly "IMPULS + ZWEIFEL". No other readable text, no English, no logos, no watermark, no workflow labels or filenames. No 3D, no photorealism. Full 9:16 frame, no subtitle safe-zone.
 
 BILD 10 – SZENE 7 – BILDPHASE 2
 DATEINAME NACH FERTIGSTELLUNG: Bild 10.png
-Vertical 9:16 premium mature 2D editorial country-character illustration matching Bild 00.png exactly. The same complete round sphere sees a meaningful reward far away at the end of a long path while an easy pleasant option sits close in the foreground. ONLY readable text: "BELOHNUNG ZU WEIT WEG". No other readable text, no English, no logos, no watermark, no workflow labels, no 3D, no photorealism. Full 9:16.
+Vertical 9:16 premium mature 2D editorial country-character illustration. Warm off-white textured paper background, deep navy borders and structural shapes, muted rust, mustard, cobalt and forest-green accents, bold clean hand-inked outlines, flat geometric shading, subtle grain, high contrast, sophisticated documentary tone, not childish.
+
+Match Bild 00.png exactly in line weight, paper texture, palette, round-character proportions and editorial finish.
+
+NON-NEGOTIABLE ROUND-CHARACTER RULE: the person remains a complete perfectly round circular neutral sphere character. No human heads or torsos. Reward symbols and paths stay faceless.
+
+Place the neutral sphere near an easy pleasant option in the foreground while a meaningful reward sits far away at the end of a long path. Use depth and scale to make the distant reward feel psychologically weaker in the moment. Keep one dominant visual comparison.
+
+VISIBLE-TEXT FIREWALL: the ONLY readable text allowed anywhere inside the image is exactly "BELOHNUNG ZU WEIT WEG". No other readable text, no English, no logos, no watermark, no workflow labels or filenames. No 3D, no photorealism. Full 9:16 frame, no subtitle safe-zone.
 
 BILD 11 – SZENE 8
 DATEINAME NACH FERTIGSTELLUNG: Bild 11.png
-Vertical 9:16 premium mature 2D editorial country-character illustration matching Bild 00.png exactly. Use forced perspective: immediate pleasant option large and close, future consequence and meaningful goal small and far away, complete round sphere at the decision point. ONLY readable text: "JETZT ODER SPÄTER?". No other readable text, no English, no logos, no watermark, no workflow labels, no 3D, no photorealism. Full 9:16.
+Vertical 9:16 premium mature 2D editorial country-character illustration. Warm off-white textured paper background, deep navy borders and structural shapes, muted rust, mustard, cobalt and forest-green accents, bold clean hand-inked outlines, flat geometric shading, subtle grain, high contrast, sophisticated documentary tone, not childish.
+
+Match Bild 00.png exactly in line weight, paper texture, palette, round-character proportions and editorial finish.
+
+NON-NEGOTIABLE ROUND-CHARACTER RULE: every anthropomorphic role must be a complete perfectly round circular neutral sphere character. No human heads or torsos. All options and future consequences remain faceless objects or simple symbols.
+
+Use forced perspective: the immediate pleasant option appears large, close and easy to reach, while the later consequence and meaningful goal appear smaller and farther away. Put the neutral sphere at the decision point between both paths.
+
+VISIBLE-TEXT FIREWALL: the ONLY readable text allowed anywhere inside the image is exactly "JETZT ODER SPÄTER?". No other readable text, no English, no logos, no watermark, no workflow labels or filenames. No 3D, no photorealism. Full 9:16 frame, no subtitle safe-zone.
 
 BILD 12 – SZENE 8 – BILDPHASE 2
 DATEINAME NACH FERTIGSTELLUNG: Bild 12.png
-Vertical 9:16 premium mature 2D editorial country-character illustration matching Bild 00.png exactly. Create a clean balance-scale metaphor tipping toward the immediate pleasant option while the delayed consequence remains visually distant; a complete round sphere watches the choice. ONLY readable text: "JETZT GEWINNT". No other readable text, no English, no logos, no watermark, no workflow labels, no 3D, no photorealism. Full 9:16.
+Vertical 9:16 premium mature 2D editorial country-character illustration. Warm off-white textured paper background, deep navy borders and structural shapes, muted rust, mustard, cobalt and forest-green accents, bold clean hand-inked outlines, flat geometric shading, subtle grain, high contrast, sophisticated documentary tone, not childish.
+
+Match Bild 00.png exactly in line weight, paper texture, palette, round-character proportions and editorial finish.
+
+NON-NEGOTIABLE ROUND-CHARACTER RULE: if a character appears, it must be a complete perfectly round circular neutral sphere with simple white eyes. No human heads or torsos. The scale and options remain faceless.
+
+Create a clean editorial balance-scale metaphor. The near immediate pleasant option visibly tips the scale, while the delayed consequence sits farther away and appears lighter because of distance. Keep the sphere beside the scale watching the choice happen.
+
+VISIBLE-TEXT FIREWALL: the ONLY readable text allowed anywhere inside the image is exactly "JETZT GEWINNT". No other readable text, no English, no logos, no watermark, no workflow labels or filenames. No 3D, no photorealism. Full 9:16 frame, no subtitle safe-zone.
 
 BILD 13 – SZENE 9
 DATEINAME NACH FERTIGSTELLUNG: Bild 13.png
-Vertical 9:16 premium mature 2D editorial country-character illustration matching Bild 00.png exactly. Complete round neutral sphere pushes against an oversized task wall as if sheer willpower should solve everything, while a small unresolved mood cloud follows behind. ONLY readable text: "MEHR DISZIPLIN?". No other readable text, no English, no logos, no watermark, no workflow labels, no 3D, no photorealism. Full 9:16.
+Vertical 9:16 premium mature 2D editorial country-character illustration. Warm off-white textured paper background, deep navy borders and structural shapes, muted rust, mustard, cobalt and forest-green accents, bold clean hand-inked outlines, flat geometric shading, subtle grain, high contrast, sophisticated documentary tone, not childish.
+
+Match Bild 00.png exactly in line weight, paper texture, palette, round-character proportions and editorial finish.
+
+NON-NEGOTIABLE ROUND-CHARACTER RULE: the person is a complete perfectly round circular neutral sphere character with simple white eyes and at most tiny arms/legs. No human heads or torsos. Mood clouds and task walls remain faceless.
+
+Show a determined sphere pushing hard against an oversized task wall as if sheer force of will should solve everything, while a small unresolved mood cloud follows behind. The visual should question the idea that more discipline alone fixes the underlying avoidance.
+
+VISIBLE-TEXT FIREWALL: the ONLY readable text allowed anywhere inside the image is exactly "MEHR DISZIPLIN?". No other readable text, no English, no logos, no watermark, no workflow labels or filenames. No 3D, no photorealism. Full 9:16 frame, no subtitle safe-zone.
 
 BILD 14 – SZENE 10
 DATEINAME NACH FERTIGSTELLUNG: Bild 14.png
-Vertical 9:16 premium mature 2D editorial country-character illustration matching Bild 00.png exactly. A huge intimidating task block is broken into smaller pieces, with one tiny first tile highlighted directly in front of the complete round sphere. ONLY readable text: "START KLEIN MACHEN". No other readable text, no English, no logos, no watermark, no workflow labels, no 3D, no photorealism. Full 9:16.
+Vertical 9:16 premium mature 2D editorial country-character illustration. Warm off-white textured paper background, deep navy borders and structural shapes, muted rust, mustard, cobalt and forest-green accents, bold clean hand-inked outlines, flat geometric shading, subtle grain, high contrast, sophisticated documentary tone, not childish.
+
+Match Bild 00.png exactly in line weight, paper texture, palette, round-character proportions and editorial finish.
+
+NON-NEGOTIABLE ROUND-CHARACTER RULE: the person is a complete perfectly round circular neutral sphere character. No human heads or torsos. Task pieces stay faceless.
+
+Show a huge intimidating task block broken into smaller pieces, with one tiny first tile highlighted directly in front of the neutral sphere. The rest of the task remains large but no longer needs to be solved all at once. Make the first step feel physically reachable.
+
+VISIBLE-TEXT FIREWALL: the ONLY readable text allowed anywhere inside the image is exactly "START KLEIN MACHEN". No other readable text, no English, no logos, no watermark, no workflow labels or filenames. No 3D, no photorealism. Full 9:16 frame, no subtitle safe-zone.
 
 BILD 15 – SZENE 11
 DATEINAME NACH FERTIGSTELLUNG: Bild 15.png
-Vertical 9:16 premium mature 2D editorial country-character illustration matching Bild 00.png exactly. A vague floating plan hovers above the complete round sphere with no clear time, location or first action; the sphere does not know where to begin. ONLY readable text: "ZU VAGE: „ICH LERNE HEUTE“". No other readable text, no English, no logos, no watermark, no workflow labels, no 3D, no photorealism. Full 9:16.
+Vertical 9:16 premium mature 2D editorial country-character illustration. Warm off-white textured paper background, deep navy borders and structural shapes, muted rust, mustard, cobalt and forest-green accents, bold clean hand-inked outlines, flat geometric shading, subtle grain, high contrast, sophisticated documentary tone, not childish.
+
+Match Bild 00.png exactly in line weight, paper texture, palette, round-character proportions and editorial finish.
+
+NON-NEGOTIABLE ROUND-CHARACTER RULE: the person is a complete perfectly round circular neutral sphere character. No human heads or torsos. Planning bubbles and document shapes remain faceless.
+
+Show a vague floating plan above the sphere with no clear time, place or first action. The sphere looks up at it without knowing where to begin. Keep the composition intentionally fuzzy around the plan but crisp around the sphere.
+
+VISIBLE-TEXT FIREWALL: the ONLY readable text allowed anywhere inside the image is exactly "ZU VAGE: „ICH LERNE HEUTE“". No other readable text, no English, no logos, no watermark, no workflow labels or filenames. No 3D, no photorealism. Full 9:16 frame, no subtitle safe-zone.
 
 BILD 16 – SZENE 11 – BILDPHASE 2
 DATEINAME NACH FERTIGSTELLUNG: Bild 16.png
-Vertical 9:16 premium mature 2D editorial country-character illustration matching Bild 00.png exactly. Transform the vague plan into a concrete start sequence: faceless clock at 19:00, open document and tiny five-minute task block, with the complete round sphere starting the first action. ONLY readable text: "19 UHR · 5 MINUTEN · AUFGABE 1". No other readable text, no English, no logos, no watermark, no workflow labels, no 3D, no photorealism. Full 9:16.
+Vertical 9:16 premium mature 2D editorial country-character illustration. Warm off-white textured paper background, deep navy borders and structural shapes, muted rust, mustard, cobalt and forest-green accents, bold clean hand-inked outlines, flat geometric shading, subtle grain, high contrast, sophisticated documentary tone, not childish.
+
+Match Bild 00.png exactly in line weight, paper texture, palette, round-character proportions and editorial finish.
+
+NON-NEGOTIABLE ROUND-CHARACTER RULE: the person is a complete perfectly round circular neutral sphere character. No human heads or torsos. Clock, document and task block remain faceless.
+
+Transform the vague plan into one concrete three-part start sequence: a clock at 19:00, an open document and a tiny five-minute task block labelled only through the allowed headline. Arrange the three elements in one simple left-to-right path toward action, with the sphere beginning the first move.
+
+VISIBLE-TEXT FIREWALL: the ONLY readable text allowed anywhere inside the image is exactly "19 UHR · 5 MINUTEN · AUFGABE 1". No other readable text, no English, no logos, no watermark, no workflow labels or filenames. No 3D, no photorealism. Full 9:16 frame, no subtitle safe-zone.
 
 BILD 17 – SZENE 12
 DATEINAME NACH FERTIGSTELLUNG: Bild 17.png
-Vertical 9:16 premium mature 2D editorial country-character illustration matching Bild 00.png exactly. Complete round neutral sphere pauses between the task and abstract faceless emotion clouds for boredom, uncertainty, anxiety and frustration, turning to inspect the feeling rather than escape. ONLY readable text: "WAS VERMEIDE ICH GERADE?". No other readable text, no English, no logos, no watermark, no workflow labels, no 3D, no photorealism. Full 9:16.
+Vertical 9:16 premium mature 2D editorial country-character illustration. Warm off-white textured paper background, deep navy borders and structural shapes, muted rust, mustard, cobalt and forest-green accents, bold clean hand-inked outlines, flat geometric shading, subtle grain, high contrast, sophisticated documentary tone, not childish.
+
+Match Bild 00.png exactly in line weight, paper texture, palette, round-character proportions and editorial finish.
+
+NON-NEGOTIABLE ROUND-CHARACTER RULE: the person and any anthropomorphic emotion must be complete perfectly round circular neutral sphere characters. No human heads or torsos. Keep the task faceless and emotion clouds abstract rather than giving clouds faces.
+
+The neutral sphere pauses between the task and several abstract emotion clouds representing boredom, uncertainty, anxiety and frustration. Instead of running away, it turns to inspect the feeling it has been avoiding. Make the pause and self-questioning the central moment.
+
+VISIBLE-TEXT FIREWALL: the ONLY readable text allowed anywhere inside the image is exactly "WAS VERMEIDE ICH GERADE?". No other readable text, no English, no logos, no watermark, no workflow labels or filenames. No 3D, no photorealism. Full 9:16 frame, no subtitle safe-zone.
 
 BILD 18 – SZENE 13
 DATEINAME NACH FERTIGSTELLUNG: Bild 18.png
-Vertical 9:16 premium mature 2D editorial country-character illustration matching Bild 00.png exactly. Complete round neutral sphere takes one small illuminated first step toward a much larger staircase-sized task; only the first step is crisp and bright, the rest softly out of focus. Calm achievable ending, not triumphal. ONLY readable text: "NUR ANFANGEN.". No other readable text, no English, no logos, no watermark, no workflow labels, no 3D, no photorealism. Full 9:16.
+Vertical 9:16 premium mature 2D editorial country-character illustration. Warm off-white textured paper background, deep navy borders and structural shapes, muted rust, mustard, cobalt and forest-green accents, bold clean hand-inked outlines, flat geometric shading, subtle grain, high contrast, sophisticated documentary tone, not childish.
+
+Match Bild 00.png exactly in line weight, paper texture, palette, round-character proportions and editorial finish.
+
+NON-NEGOTIABLE ROUND-CHARACTER RULE: the person is a complete perfectly round circular neutral sphere character with simple white eyes and at most tiny arms/legs. No human heads or torsos. Steps and task objects remain faceless.
+
+Show the sphere taking one small illuminated first step toward a much larger staircase-sized task. Only the first step is crisp and bright; the rest of the staircase can remain softly out of focus to communicate that the whole task does not need to be solved now. End on a calm, achievable feeling rather than triumphalism.
+
+VISIBLE-TEXT FIREWALL: the ONLY readable text allowed anywhere inside the image is exactly "NUR ANFANGEN.". No other readable text, no English, no logos, no watermark, no workflow labels or filenames. No 3D, no photorealism. Full 9:16 frame, no subtitle safe-zone.
