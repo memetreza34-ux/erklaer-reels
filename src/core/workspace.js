@@ -3,6 +3,7 @@ import path from 'node:path';
 
 import { SUBTITLE_STYLE } from '../shared/subtitle-style.js';
 import { normalizeSceneImagePhases } from '../shared/visual-moments.js';
+import { buildSourcesTemplate } from './source-quality.js';
 
 const WEEKDAYS_DE = [
   'sonntag',
@@ -179,8 +180,9 @@ export async function createReelWorkspace({
     imageCountMode: 'individual-per-reel',
     plannedImageCount: sceneCount,
     imageDensityReason: '',
-    visualStyleId: '',
-    visualStyleReason: '',
+    visualStyleId: 'round-country-characters',
+    visualStyleReason: 'Globale feste Kugel-Welt für neue Erklär-Reels; Länder als Flaggen-Kugeln, sonst neutrale runde Figuren.',
+    sourceQualitySchemaVersion: 3,
     subtitlesEnabled: false,
     motionEffectsEnabled: true,
     soundEffectsEnabled: true,
@@ -298,7 +300,7 @@ export async function createReelWorkspace({
     status: 'planned'
   });
   await writeText(path.join(reelDirectory, 'caption', 'caption.txt'));
-  await writeText(path.join(reelDirectory, 'sources', 'sources.md'), '# Quellen\n\n');
+  await writeText(path.join(reelDirectory, 'sources', 'sources.md'), buildSourcesTemplate());
   await writeText(path.join(reelDirectory, 'review', 'notes.md'), '# Review-Notizen\n\n');
   await writeJson(path.join(reelDirectory, 'review', 'quality-report.json'), {
     passed: false,
