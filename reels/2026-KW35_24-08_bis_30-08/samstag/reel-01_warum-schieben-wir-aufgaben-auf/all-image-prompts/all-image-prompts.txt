@@ -20,9 +20,10 @@ Keine Batches, keine Queue, kein paralleles Tool-Batching, kein gleichzeitiges S
 Falls versehentlich ein zweiter oder dritter Job gestartet wurde: keine weiteren Jobs starten; spätere parallele Jobs abbrechen und beim ersten noch nicht sauber abgeschlossenen Bild fortsetzen.
 
 KUGEL-GEOMETRIE – HÖCHSTE PRIORITÄT
-Diese Regel gilt für Bild 00 bis Bild 18 und hat Vorrang vor jeder Pose, Handlung, Emotion, Perspektive oder Requisite.
-Jede anthropomorphe Figur muss exakt dieselbe klassische Country-Ball-Geometrie besitzen: Der GESAMTE sichtbare Körper ist EIN perfekter geometrischer 1:1-Kreis mit gleicher sichtbarer Breite und Höhe. Die Außenkontur darf niemals vertikal oder horizontal gestreckt, gequetscht oder für Sitzen, Laufen, Drücken, Zögern oder Emotionen verformt werden. Augen sitzen direkt auf dem Kreis. Es gibt keinen separaten Kopf, Hals, Schultern, Brustkorb, Rumpf, Taille oder Hüften. Falls winzige Arme/Beine vorkommen, sitzen sie direkt am Kreisrand.
-Bei diesem Nicht-Länder-Thema werden neutrale Farben statt Flaggen verwendet, aber die Körperform bleibt EXAKT dieselbe wie bei klassischen Countryballs.
+Diese Regel gilt für jedes Bild und hat Vorrang vor Pose, Handlung, Emotion, Perspektive oder Requisite.
+Jede anthropomorphe Figur benutzt exakt dieselbe klassische Country-Ball-Geometrie: Der GESAMTE sichtbare Körper ist EIN perfekter geometrischer 1:1-Kreis mit gleicher sichtbarer Breite und Höhe. Die Außenkontur darf niemals vertikal oder horizontal gestreckt, gequetscht oder für Sitzen, Laufen, Drücken, Zögern oder Emotionen verformt werden.
+Augen sitzen direkt auf dem Kreis. Es gibt keinen separaten Kopf, Hals, Schultern, Brustkorb, Rumpf, Taille oder Hüften. Falls winzige Arme/Beine vorkommen, sitzen sie direkt am Kreisrand.
+Bei Nicht-Länder-Themen werden neutrale Farben oder kleine Symbole statt Flaggen verwendet, aber die Körperform bleibt EXAKT dieselbe wie bei klassischen Countryballs.
 ABSOLUT VERBOTEN: oval, eiförmig, bohnenförmig, kapselartig, birnenförmig, tropfenförmig, humanoider Kopf, humanoider Torso, Kopf-auf-Körper-Figur, gestreckter Kreis, gequetschter Kreis. Die Kugel darf niemals nur der Kopf eines menschlichen Körpers sein.
 Wenn eine gewünschte Pose die Kreisform verändern würde, behalte den perfekten Kreis und zeige die Handlung nur über Position, Augen, winzige Gliedmaßen und Requisiten.
 
