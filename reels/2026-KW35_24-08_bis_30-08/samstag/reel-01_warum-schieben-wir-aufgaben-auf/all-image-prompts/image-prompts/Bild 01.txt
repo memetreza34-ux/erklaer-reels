@@ -1,1 +1,9 @@
-../../scenes/scene-01/image-prompt.txt
+Vertical 9:16 premium mature 2D editorial country-character illustration matching the accepted Bild 00.png exactly: warm off-white textured paper background, deep navy structural shapes, muted rust, mustard, cobalt and forest-green accents, bold clean hand-inked outlines, flat geometric shading, subtle grain, high contrast, sophisticated documentary tone, not childish.
+
+Use the exact same classic countryball character model as Bild 00.png. One LARGE complete 1:1 round ball is the focal character and its entire circular silhouette is visible. Keep the same bold cobalt-and-mustard two-tone surface pattern from Bild 00. Exactly two simple white countryball eyes are the ONLY facial feature. NO mouth, nose, ears, hair, eyebrows or human face; no separate head, neck or torso; at most tiny simple limbs directly on the ball.
+
+Do not show the ball sitting behind furniture. Place the complete ball beside one large faceless unfinished task block. Put a generic short-video phone, a tiny side task and a small snack on the opposite side as faceless distractions. Use only the direction of the white eyes and the spatial pull of the objects to communicate hesitation. The image must read as the same Countryball world as the successful older country Reels, not as a human cartoon with a round head.
+
+ABSOLUTELY FORBIDDEN: oval/egg/bean/capsule/pear body, human head, mouth, skin-tone face, furniture hiding the lower half, clothing or torso beneath the ball.
+
+Integrate the exact German text "JETZT ANFANGEN?" as the only readable phrase. No other readable text, no English, no logos, no watermark. No 3D, no photorealism. Use the full 9:16 composition naturally; no subtitle safe-zone.
