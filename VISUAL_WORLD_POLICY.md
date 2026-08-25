@@ -14,6 +14,23 @@ Die Kugel-Welt ist **nicht an Länder-, Geschichts- oder Politikthemen gebunden*
 
 ---
 
+## Golden References — zuerst alte erfolgreiche Reels nachbauen
+
+Die Markenfigur wird nicht aus einer abstrakten Beschreibung neu erfunden. Für neue Reels gelten die bewährten älteren Kugel-Reels als **Golden References**:
+
+- `reels/2026-KW34_17-08_bis_23-08/dienstag/reel-01_warum-fahren-manche-laender-links/cover/cover-prompt.txt`
+- `reels/2026-KW34_17-08_bis_23-08/dienstag/reel-01_warum-fahren-manche-laender-links/scenes/scene-01/image-prompt.txt`
+- `reels/2026-KW35_24-08_bis_30-08/dienstag/reel-01_warum-haben-manche-laender-keine-armee/cover/cover-prompt.txt`
+- `reels/2026-KW35_24-08_bis_30-08/dienstag/reel-01_warum-haben-manche-laender-keine-armee/scenes/scene-01/image-prompt.txt`
+- `reels/2026-KW35_24-08_bis_30-08/mittwoch/reel-01_warum-gibt-es-laender-in-anderen-laendern/cover/cover-prompt.txt`
+- `reels/2026-KW35_24-08_bis_30-08/mittwoch/reel-01_warum-gibt-es-laender-in-anderen-laendern/scenes/scene-01/image-prompt.txt`
+
+Zusätzliche Detailregel: `knowledge/countryball-style-master.md`.
+
+Wenn ein neuer Prompt in Richtung Mensch/Cartoon/Bean-Character driftet, haben diese Golden References Vorrang. **Countryball zuerst, Thema danach.**
+
+---
+
 ## `round-country-characters` — globale Hauptwelt
 
 ### Identitätsregel: dieselbe echte Country-Ball-Form bei jedem Thema
@@ -22,98 +39,109 @@ Die Figurenform darf sich **niemals** an das Thema anpassen. Nur Farbe, Flagge, 
 
 Ein Land, eine Person, eine Gruppe, ein Gedanke, eine Gewohnheit, eine Emotion oder eine abstrakte Kraft benutzt immer dieselbe Grundgeometrie:
 
-- der **komplette sichtbare Körper ist ein perfekter geometrischer Kreis / eine echte Country-Ball-Kugel**
-- sichtbare Körperbreite und Körperhöhe sind gleich: **1:1-Kreis**, nicht gestreckt
-- die runde Außenkontur bleibt auch beim Sitzen, Laufen, Drücken, Zögern oder bei Emotionen unverformt
-- Augen sitzen direkt auf der Kugel
-- es gibt **keinen separaten Kopf, Hals, Rumpf, Brustkorb, Schultern, Taille oder Hüften**
-- höchstens winzige, einfache Arme/Beine sitzen direkt am Rand der Kugel
-- Länder: vereinfachtes Flaggenmuster direkt auf derselben Kugel
-- Nicht-Länder: **exakt dieselbe Country-Ball-Körperform**, nur mit neutraler Editorial-Farbe oder kleinem Symbol statt Flagge
+- kompletter Charakter = **eine einzige perfekte runde Countryball-Kugel / geometrischer 1:1-Kreis**
+- die **vollständige Kreis-Silhouette der Hauptfigur bleibt sichtbar**; nicht wie einen Kopf hinter Möbeln verstecken
+- sichtbare Körperbreite und Körperhöhe sind gleich
+- Außenkontur bleibt auch bei Handlung oder Emotion unverformt
+- **nur zwei einfache weiße Countryball-Augen direkt auf der Kugel**
+- **kein Mund, keine Nase, keine Ohren, keine Haare, keine Lippen, keine Zähne, keine menschlichen Gesichtsdetails**
+- keine Iris/Pupillen/Wimpern; die weißen Countryball-Augen tragen den Ausdruck über Winkel und Blickrichtung
+- kein separater Kopf, Hals, Rumpf, Brustkorb, Schultern, Taille oder Hüften
+- höchstens winzige einfache Arme/Beine direkt am Kugelrand
+- Länder: vereinfachtes Flaggenmuster direkt auf der Kugel
+- Nicht-Länder: **exakt dieselbe Countryball-Körperform**, mit kräftiger flacher Editorial-Farbe oder einfacher 2-Ton-/Streifen-/Panel-Gestaltung statt Flagge
+- Nicht-Länder-Kugeln benutzen **keine Haut-/Fleischfarbe als Standardkörperfarbe**, damit sie nicht wie menschliche Köpfe wirken
 
-### Harte Geometrie-Sperre für Prompts
+### Harte Silhouettenregel
 
-Bei jeder anthropomorphen Figur muss die folgende Bedeutung ausdrücklich enthalten sein:
+Eine Hauptkugel darf nicht hinter Schreibtisch, Tisch, Pult, Bett, Sofa oder einer anderen Vordergrundfläche so verdeckt werden, dass nur die obere Hälfte als vermeintlicher menschlicher Kopf sichtbar ist.
 
-> EXACT COUNTRYBALL GEOMETRY LOCK: the entire character body is one perfect geometric 1:1 circle, equal visible width and height, with eyes directly on the circle. No separate head, neck, shoulders or torso. Never deform the circle for pose or emotion. Non-country roles use exactly the same classic countryball body geometry, only without a flag.
+Wenn eine Szene normalerweise eine sitzende Person verlangt, wird die **Komposition angepasst**:
+- Kugel neben oder vor die Aufgabe stellen
+- Aufgabe/Telefon/Dokumente als gesichtslose Requisiten um die Kugel anordnen
+- bei Bedarf Bird's-eye-/Editorial-Komposition verwenden
+- aber die vollständige runde Kugel-Silhouette lesbar halten
 
-Zusätzlich müssen Prompts die falschen Formen ausdrücklich ausschließen:
+Wörter wie `person`, `sitting`, `posture`, `body language`, `sad`, `relaxed` oder `expression` dürfen **nie** zur menschlichen Figur führen. Emotion wird über Augenrichtung/-winkel, Kugelposition, winzige Gliedmaßen, Requisiten und Komposition gezeigt.
 
-> NO oval, egg-shaped, bean-shaped, capsule-shaped, pear-shaped, teardrop-shaped or humanoid character bodies.
+### Prompt-Lock
 
-**Wichtig:** Wörter wie `person`, `sitting`, `posture`, `body language` oder emotionale Posen dürfen niemals dazu führen, dass Flow einen menschlich geformten Körper baut. Wenn eine Handlung normalerweise den Körper verformen würde, bleibt die Kugel trotzdem perfekt rund und die Handlung wird über Position, Augen, winzige Gliedmaßen, Requisiten und Komposition gezeigt.
+Bei jeder anthropomorphen Figur muss sinngemäß enthalten sein:
+
+> CLASSIC COUNTRYBALL CHARACTER MODEL: the entire character is one complete perfect 1:1 round ball. Show the full circular silhouette. Use only two simple white countryball eyes directly on the ball. No mouth, nose, ears, hair or human facial anatomy. No separate head, neck, shoulders or torso. Never hide the lower half behind furniture so the ball reads like a human head. For non-country roles use the exact same countryball model with a bold flat editorial color/pattern instead of a flag; do not use skin/flesh tones as the default body color.
+
+Zusätzlich ausdrücklich ausschließen:
+
+> NO oval, egg-shaped, bean-shaped, capsule-shaped, pear-shaped, teardrop-shaped or humanoid character bodies; no mouth; no human face; no ball-as-head-on-body.
 
 ### Strikt verboten
 
-- ovale, eiförmige, bohnenförmige, kapselartige, birnenförmige oder tropfenförmige Figuren
-- humanoider Kopf mit darunterliegendem Körper
+- ovale, ei-, bohnen-, kapsel-, birnen- oder tropfenförmige Figuren
+- menschlicher Kopf oder menschliche Mimik
+- Mund, Nase, Ohren, Haare, Lippen oder Zähne auf der Kugel
+- Countryball als Kopf auf einem Körper
+- nur obere Kugelhälfte hinter Möbeln sichtbar
+- hautfarbene Kopf-Kugel als Standardfigur
+- Kleidung/Torso unter der Kugel
 - separater Kopf, Hals, Schultern, Brustkorb, Rumpf, Taille oder Hüfte
-- vertikal oder horizontal gestreckte Kugelfiguren
-- Country-Ball nur als „Kopf“ eines menschlichen Körpers
-- Länderumriss oder Karten-Silhouette als Körper einer Figur
-- Augen, Mund, Arme oder Beine auf einer Länder-/Kontinentform
-- unregelmäßige geografische Formen als „Countryball“
-- menschliche Köpfe/Torsi als primäre Figurenwelt
+- Länderumriss/Karten-Silhouette als Figur
+- Gesicht oder Gliedmaßen auf Kartenformen
 
 Karten, Grenzen, Straßen, Küsten, Länderumrisse und territoriale Formen dürfen vorkommen, aber nur als **gesichtslose Erklär-/Hintergrundgrafik**.
 
 ### Visuelle Grammatik für Nicht-Länder-Themen
 
-Die Kugeln sollen auch bei abstrakten Themen sofort verständlich bleiben:
-- einzelne Person/Rolle → eine dominante perfekte neutrale Country-Ball-Kugel
-- Gruppe/Mehrheit → mehrere klar verwandte perfekte Kugeln
-- Gedanke/Erinnerung → kleine Nebenform, Gedankenblase oder eingebettetes Symbol; wenn anthropomorph, ebenfalls perfekte Kugel
-- System/Plattform/Institution → Kugel + eindeutiges Requisit oder Interface-Motiv
-- Ursache/Folge → räumliche Richtung, Pfeil, Kontrast oder klarer Vorher-/Nachher-Wechsel
-- Emotion/Gewohnheit/abstrakte Kraft → perfekte Kugel + Symbolik und Szene; keine Körperverformung
+- Person/Rolle → eine dominante vollständige Countryball-Kugel mit kräftigem Editorial-Farbmuster
+- Gruppe/Mehrheit → mehrere klar verwandte Countryballs
+- Gedanke/Erinnerung → gesichtslose Gedankenform oder, falls Figur, ebenfalls Countryball
+- System/Plattform/Institution → Countryball + eindeutiges gesichtsloses Requisit
+- Ursache/Folge → räumliche Richtung, Pfeil, Kontrast oder Vorher/Nachher
+- Emotion/Gewohnheit → Augenwinkel, Position, Requisiten und Szene; **kein Mund und keine Körperverformung**
 
-Kein starres Farbcodesystem erzwingen. Entscheidend sind Wiedererkennbarkeit, 1-Sekunden-Lesbarkeit und eine klare visuelle Handlung.
+Kein starres Farbcodesystem erzwingen. Entscheidend sind Wiedererkennbarkeit, Golden-Reference-Nähe, 1-Sekunden-Lesbarkeit und eine klare visuelle Handlung.
 
 ---
 
 # Bewährter alter Visual-Look — verbindlich
 
-Die Prompt-Qualität soll dem früheren ausführlichen Stil entsprechen. Neue Prompts dürfen nicht in generische „Sphere World“-Kurzprompts abrutschen.
-
 Verbindlicher visueller Grundblock:
 
-> Vertical 9:16 premium mature 2D editorial country-character illustration. Warm off-white textured paper background, deep navy borders and map shapes, muted rust, mustard, cobalt and forest-green accents, bold clean hand-inked outlines, flat geometric shading, subtle grain, high contrast, sophisticated documentary tone, not childish.
+> Vertical 9:16 premium mature 2D editorial country-character illustration. Warm off-white textured paper background, deep navy structural shapes, muted rust, mustard, cobalt and forest-green accents, bold clean hand-inked outlines, flat geometric shading, subtle grain, high contrast, sophisticated documentary tone, not childish.
 
 Zusätzlich:
-- klare, hochwertige Editorial-Komposition
+- klare hochwertige Editorial-Komposition
 - ein dominanter visueller Gedanke pro Bild
-- starke 1-Sekunden-Lesbarkeit
-- **exakte 1:1-Country-Ball-Geometrie vor Pose oder Ausdruck priorisieren**
-- Karten nur, wenn sie den Inhalt wirklich erklären
-- keine billige Icon-Sammlung oder generische Infografik
+- Golden References stärker gewichten als generische „neutral sphere“-Interpretationen
+- vollständige runde Hauptfigur sichtbar
+- zwei weiße Countryball-Augen als einziges Gesichtselement
+- kein Mund / keine menschliche Mimik
+- kräftige nicht-hautfarbene Kugeloberfläche bei Nicht-Länder-Rollen
+- Karten nur, wenn sie wirklich erklären
+- keine billige Icon-Sammlung
 - kein 3D, keine Fotorealistik
 - volle 9:16-Fläche ohne Untertitelband
-- `Bild 00` definiert Liniengewicht, Papiertextur, Palette, **exakte Kugelgeometrie** und Editorial-Finish für alle Folgeframes
+- `Bild 00` definiert Liniengewicht, Papiertextur, Palette, **Kugelmodell, Augenstil und Oberflächenmuster** für alle Folgeframes
 
 ## Verbindlicher Prompt-Aufbau
 
-Jeder visuelle Quellprompt folgt dem bewährten Aufbau:
+1. Format + vollständiger Editorial-Stil
+2. Golden-Reference-Countryball-Modell: vollständiger Kreis, Augen-only, kein Mund, kein humanoider Körper, volle Silhouette
+3. konkrete Bildkomposition/Handlung; bei Konflikt Komposition an Kugelmodell anpassen
+4. exakter deutscher Bildtext, falls vorgesehen
+5. negative Regeln: kein anderer Text, kein Englisch, keine Logos/Wasserzeichen, kein 3D/Fotorealismus, kein menschliches Gesicht
+6. volle 9:16-Komposition, keine Subtitle-Safe-Zone
 
-1. **Format + vollständiger Editorial-Stil**
-2. **EXACT COUNTRYBALL GEOMETRY LOCK** inklusive 1:1-Kreis und Verbotsformen
-3. **konkrete Bildkomposition und Handlung**, ohne die Kugel für eine Pose zu deformieren
-4. **exakter sichtbarer deutscher Text**, falls vorgesehen
-5. **negative Regeln**: kein anderer lesbarer Text, kein Englisch, keine Logos, kein Wasserzeichen, kein 3D, keine Fotorealistik
-6. **volle 9:16-Komposition**, keine Subtitle-Safe-Zone
-
-Sekundäre Bildphasen dürfen kompakter sein und `Match Bild 00.png exactly` verwenden, müssen aber die exakte Kugelgeometrie ausdrücklich beibehalten.
+Sekundäre Bildphasen dürfen `Match Bild 00.png exactly` verwenden, müssen aber Kugelmodell, Augenstil und vollständige Silhouette beibehalten.
 
 ---
 
-# Google-Flow-Export — aktueller verbindlicher Stand
+# Google-Flow-Export
 
-Die **verbindliche Nutzerdatei** ist:
+Verbindliche Nutzerdatei:
 
 ```text
 00-bildprompts/99-alle-bildprompts.txt
 ```
-
-Sie enthält den vollständigen seriellen Gesamtprompt mit Auftrag, Serienregeln, Dateinamen, Style-Master und danach allen vollständigen Bildprompts in Reihenfolge.
 
 Technische identische Spiegeldatei:
 
@@ -121,68 +149,40 @@ Technische identische Spiegeldatei:
 all-image-prompts/all-image-prompts.txt
 ```
 
-Die Dateien unter
+`all-image-prompts/image-prompts/Bild NN.txt` bleiben interne Sicherungen. `google-flow-controller.txt` ist deaktiviert.
 
-```text
-all-image-prompts/image-prompts/Bild NN.txt
-```
-
-bleiben nur interne Sicherungen der reinen visuellen Quellprompts.
-
-Der frühere separate `google-flow-controller.txt` ist **deaktiviert** und nicht der normale Google-Flow-Einstieg.
-
-Trotz Gesamtprompt gilt strikt: genau ein Bildgenerator-Aufruf → vollständig warten → umbenennen → prüfen → erst danach das nächste Bild. Keine Queue, kein Batch und keine Parallelgenerierung.
+Trotz Gesamtprompt gilt: genau ein Bildgenerator-Aufruf → vollständig warten → umbenennen → prüfen → erst danach das nächste Bild. Keine Queue, kein Batch, keine Parallelgenerierung.
 
 ---
 
-# Sichtbarer Text — globale Pflichtregel
+# Sichtbarer Text
 
-Workflow- und Produktionsdaten sind niemals Bildinhalt.
+Nie sichtbar im Bild: Bildnummern, COVER, SZENE, BILDPHASE, DATEINAME, Dateinamen, GOOGLE FLOW, PROMPT, technische IDs.
 
-Nie sichtbar im Bild:
-- `BILD 00`, `BILD 01`, `Bild 1` usw.
-- `COVER`
-- `SZENE`, `SCENE`
-- `BILDPHASE`, `IMAGE PHASE`
-- `DATEINAME`, Dateinamen oder Dateiendungen
-- `GOOGLE FLOW`, `PROMPT`, `STYLE-REFERENZ`, `ZIEL`
-- technische IDs
-- sonstige Workflow-Metadaten
-
-Pro Bild gilt:
 - `imageText`/Cover-Headline gesetzt → genau dieser Text ist der einzige erlaubte lesbare Text
 - `imageText` leer → überhaupt kein lesbarer Text
-
-Die technischen Überschriften des Gesamtprompts sind reine Steuerung und dürfen niemals in das generierte Bild übernommen werden.
 
 ---
 
 # Visuelle QC der Figurenform
 
-Ein Bild darf den Visual-QC-Check **nicht** bestehen, wenn eine anthropomorphe Figur zwar ungefähr rund wirkt, aber als ovaler/ei-/bohnenförmiger Mensch gezeichnet wurde.
+Ein Bild darf nicht bestehen, wenn die Hauptfigur nur „ungefähr rund“ ist.
 
-Bei jeder sichtbaren Figur prüfen:
-- Außenkontur als echter Kreis erkennbar
-- sichtbare Breite ungefähr gleich sichtbarer Höhe
-- kein separater Kopf oder Torso
-- keine Schultern/Hals/Taille
-- Augen direkt auf der Kugel
-- Pose verändert die Kugelform nicht
-- Nicht-Länder-Figur besitzt dieselbe Geometrie wie eine Länder-Country-Ball-Figur
+Prüfen:
+- vollständige runde Außenkontur als echter Countryball
+- Breite ungefähr gleich Höhe
+- Hauptkugel nicht als Kopf hinter Möbeln versteckt
+- zwei einfache weiße Countryball-Augen
+- **kein Mund / keine Nase / keine menschliche Gesichtsstruktur**
+- kein separater Kopf/Torso/Hals/Schultern
+- keine Haut-/Fleischfarbe als neutrale Kopf-Anmutung
+- Pose deformiert die Kugel nicht
+- Nicht-Länder-Figur wirkt wie dieselbe Welt wie die Golden References
 
-Wenn einer dieser Punkte klar verletzt ist: `visualWorldMatch = false`, `characterModelConsistent = false` und der spezielle Geometrie-Check muss fehlschlagen.
+Bei Verletzung: `visualWorldMatch = false`, `characterModelConsistent = false`, Geometrie-/Gesichts-/Silhouettenchecks fehlschlagen.
 
 ---
 
 # Bilddichte
 
-Die Bildanzahl bleibt individuell.
-
-Jede narrative Szene erhält:
-- 1 Bild, wenn es reicht
-- 2 Bilder, wenn ein weiterer visueller Schritt klar verbessert
-- 3 Bilder nur selten
-
-Wenn ein einzelnes Still-Bild ungefähr 3,5–4 Sekunden oder länger stehen würde, wird eine zusätzliche Bildphase aktiv geprüft, aber nicht automatisch erzwungen.
-
-Entscheidend sind Verständlichkeit, visueller Informationsgewinn, Abwechslung und Rhythmus.
+Die Bildanzahl bleibt individuell: 1 Bild wenn es trägt, 2 bei echtem zweiten visuellen Schritt, 3 nur selten. Bei ungefähr 3,5–4 Sekunden Still aktiv prüfen, ob eine zweite Bildphase verbessert; keine Quote erzwingen.

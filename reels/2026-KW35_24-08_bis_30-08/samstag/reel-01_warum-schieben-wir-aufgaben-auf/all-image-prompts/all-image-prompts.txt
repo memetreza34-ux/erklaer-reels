@@ -11,21 +11,24 @@ Zu jedem Zeitpunkt darf genau EINE Bildgenerierung aktiv, ausstehend, queued ode
 Für jedes Bild zwingend:
 1. Nur den aktuellen Bildabschnitt bearbeiten.
 2. Genau EINEN Bildgenerator-Aufruf auslösen. Niemals zwei oder mehr Generierungsaktionen im selben Agent-Schritt, Tool-Batch oder Turn.
-3. Warten, bis dieses eine Bild sichtbar vollständig fertig ist. Solange der Status unklar ist oder noch eine Generierung läuft: WARTEN, nicht das nächste Bild starten.
-4. Sofort exakt in den vorgesehenen Namen umbenennen.
-5. Prüfen, dass die Umbenennung erfolgreich ist und genau dieses Bild fertig vorliegt.
-6. Erst NACH dieser Bestätigung den nächsten Bildabschnitt ausführen.
+3. Warten, bis dieses eine Bild sichtbar vollständig fertig ist.
+4. VOR dem Fortfahren das Figurenmodell sichtbar prüfen. Bei falscher Kugelwelt dasselbe Bild verwerfen/neu erzeugen und NICHT zum nächsten Bild gehen.
+5. Erst ein korrektes Bild exakt in den vorgesehenen Namen umbenennen.
+6. Prüfen, dass die Umbenennung erfolgreich ist und genau dieses Bild fertig vorliegt.
+7. Erst NACH dieser Bestätigung den nächsten Bildabschnitt ausführen.
 Die späteren Bildprompts stehen zwar bereits in dieser Nachricht, sind aber bis zum Abschluss des aktuellen Bildes NICHT zur Ausführung freigegeben.
 Keine Batches, keine Queue, kein paralleles Tool-Batching, kein gleichzeitiges Starten, keine Mehrfach-Generierung und keine Ansammlung unbenannter Bilder.
 Falls versehentlich ein zweiter oder dritter Job gestartet wurde: keine weiteren Jobs starten; spätere parallele Jobs abbrechen und beim ersten noch nicht sauber abgeschlossenen Bild fortsetzen.
 
-KUGEL-GEOMETRIE – HÖCHSTE PRIORITÄT
-Diese Regel gilt für jedes Bild und hat Vorrang vor Pose, Handlung, Emotion, Perspektive oder Requisite.
-Jede anthropomorphe Figur benutzt exakt dieselbe klassische Country-Ball-Geometrie: Der GESAMTE sichtbare Körper ist EIN perfekter geometrischer 1:1-Kreis mit gleicher sichtbarer Breite und Höhe. Die Außenkontur darf niemals vertikal oder horizontal gestreckt, gequetscht oder für Sitzen, Laufen, Drücken, Zögern oder Emotionen verformt werden.
-Augen sitzen direkt auf dem Kreis. Es gibt keinen separaten Kopf, Hals, Schultern, Brustkorb, Rumpf, Taille oder Hüften. Falls winzige Arme/Beine vorkommen, sitzen sie direkt am Kreisrand.
-Bei Nicht-Länder-Themen werden neutrale Farben oder kleine Symbole statt Flaggen verwendet, aber die Körperform bleibt EXAKT dieselbe wie bei klassischen Countryballs.
-ABSOLUT VERBOTEN: oval, eiförmig, bohnenförmig, kapselartig, birnenförmig, tropfenförmig, humanoider Kopf, humanoider Torso, Kopf-auf-Körper-Figur, gestreckter Kreis, gequetschter Kreis. Die Kugel darf niemals nur der Kopf eines menschlichen Körpers sein.
-Wenn eine gewünschte Pose die Kreisform verändern würde, behalte den perfekten Kreis und zeige die Handlung nur über Position, Augen, winzige Gliedmaßen und Requisiten.
+GOLDEN-REFERENCE COUNTRYBALL-MODELL – HÖCHSTE PRIORITÄT
+Die Figuren müssen wie die bewährten älteren Länder-Reels aussehen (Linksverkehr / Länder ohne Armee / Länder in Ländern): klassische vollständige Countryballs, nicht eine neu erfundene Menschen-Kugel.
+Der KOMPLETTE Charakter ist EIN perfekter geometrischer 1:1-Kreis. Die vollständige runde Außenkontur der Hauptfigur muss sichtbar sein.
+GESICHT: ausschließlich zwei einfache weiße Countryball-Augen direkt auf der Kugel. KEIN Mund, keine Nase, keine Ohren, keine Haare, keine Lippen, keine Zähne, keine Augenbrauen, keine menschliche Gesichtsstruktur, keine Iris/Pupillen/Wimpern.
+Es gibt keinen separaten Kopf, Hals, Schultern, Brustkorb, Rumpf, Taille oder Hüften. Winzige einfache Arme/Beine dürfen direkt am Kreisrand sitzen.
+Die Hauptkugel darf NICHT hinter Schreibtisch, Tisch, Sofa, Bett oder anderen Vordergrundflächen so verdeckt werden, dass nur eine runde Kopf-Form sichtbar bleibt. Requisiten um die Kugel herum oder dahinter anordnen; bei einer normalerweise sitzenden Szene die Komposition so ändern, dass der ganze Countryball sichtbar bleibt.
+NICHT-LÄNDER: exakt dasselbe Countryball-Modell wie bei Länderfiguren. Statt Flagge eine kräftige flache Editorial-Farbe oder einfache 2-Ton-/Streifen-/Panel-Gestaltung auf der Kugel. Keine Haut-/Fleischfarbe als Standardkörperfarbe.
+ABSOLUT VERBOTEN: oval, Ei, Bean, Kapsel, Birne, Tropfen, humanoider Kopf, humanoider Torso, Countryball als Kopf auf Körper, Mund, menschliche Mimik, nur obere Kugelhälfte hinter Möbeln sichtbar.
+Wenn Szenenwörter wie person, sitting, posture, sad, relaxed oder expression mit dieser Markenfigur kollidieren, wird die KOMPOSITION angepasst — niemals das Countryball-Modell.
 
 DATEINAMEN
 Bild 00.png = Cover
@@ -49,7 +52,8 @@ Bild 17.png = Szene 12
 Bild 18.png = Szene 13
 
 STYLE-MASTER
-Bild 00.png wird zuerst vollständig erzeugt. Das fertige Bild 00.png ist danach die verbindliche visuelle Referenz für ALLE weiteren Bilder: gleiche Palette, Papiertextur, Konturstärke, Lichtstimmung, Detailqualität und vor allem exakt dieselbe perfekte 1:1-Country-Ball-Körpergeometrie. Ein späteres Bild darf die Figur niemals ovaler, menschlicher oder körperähnlicher machen. Der Cover-Hook darf NICHT automatisch auf spätere Bilder kopiert werden.
+Bild 00.png wird zuerst vollständig erzeugt. Es darf NUR dann Style-Master werden, wenn es das Golden-Reference-Countryball-Modell erfüllt: vollständiger Kreis sichtbar, Augen-only, kein Mund, kein menschlicher Kopf-/Torso-Look, keine Möbel-Kopf-Illusion. Falls Bild 00 diese Prüfung nicht besteht, Bild 00 neu generieren und NICHT mit Bild 01 fortfahren.
+Das akzeptierte Bild 00.png ist danach verbindliche Referenz für Palette, Papiertextur, Konturstärke, Detailqualität, Kugelproportion, Augenstil und Kugeloberfläche. Spätere Bilder dürfen nie menschlicher werden.
 
 ARBEITSLABELS SIND NIEMALS BILDINHALT
 BILD-Nummern, COVER, SZENE, BILDPHASE, DATEINAME, Dateinamen und diese Workflow-Anweisungen sind nur Steuertext. Sie dürfen niemals im generierten Bild erscheinen.
@@ -58,35 +62,35 @@ TEXTREGEL
 Nur der im jeweiligen visuellen Prompt ausdrücklich verlangte deutsche Text darf sichtbar erscheinen. Kein zusätzlicher englischer Text, keine Fantasiewörter, keine technischen Labels, keine Logos und keine Wasserzeichen. Wenn der Bildprompt keinen sichtbaren Text verlangt, bleibt das Bild vollständig textfrei.
 
 ENDE
-Erst nachdem Bild 00 bis Bild 18 vollständig erzeugt, korrekt umbenannt und die Nummerierung geprüft wurden, alle fertigen Bilder gemeinsam in den vorgesehenen Sammelordner legen. Nicht während der laufenden Generierung einzelne Bilder dorthin verschieben.
+Erst nachdem Bild 00 bis Bild 18 vollständig erzeugt, auf das Golden-Reference-Countryball-Modell geprüft, korrekt umbenannt und die Nummerierung geprüft wurden, alle fertigen Bilder gemeinsam in den vorgesehenen Sammelordner legen.
 
 ────────────────────────────────────────
 
 BILD 00 – COVER
 DATEINAME NACH FERTIGSTELLUNG: Bild 00.png
-Vertical 9:16 premium mature 2D editorial country-ball illustration. Warm off-white textured paper background, deep navy borders and structural shapes, muted rust, mustard, cobalt and forest-green accents, bold clean hand-inked outlines, flat geometric shading, subtle grain, high contrast, sophisticated documentary tone, not childish.
+Vertical 9:16 premium mature 2D editorial country-character cover illustration matching the successful countryball Reels: warm off-white textured paper background, deep navy structural shapes, muted rust, mustard, cobalt and forest-green accents, bold clean hand-inked outlines, flat geometric shading, subtle grain, high contrast, sophisticated documentary tone, not childish.
 
-EXACT COUNTRYBALL GEOMETRY LOCK — SHAPE IS THE IDENTITY: every anthropomorphic actor must use exactly the same classic countryball body geometry. The ENTIRE visible body is ONE perfect geometric 1:1 circle with equal visible width and height. The circular outer contour must remain perfectly round and may NEVER be stretched or deformed for sitting, posture, emotion or perspective. Eyes sit directly on the circle. There is NO separate head, neck, shoulders, chest, torso, waist or hips. If tiny arms or legs are used, they attach directly to the edge of the circle and must stay visually secondary. For this non-country topic, use plain editorial fills instead of flags, but keep the exact same countryball body geometry.
+CLASSIC COUNTRYBALL CHARACTER MODEL: show one LARGE complete perfectly round 1:1 countryball-style character as the unmistakable focal figure. The entire circular silhouette must be visible from top to bottom and left to right. Use exactly two simple white countryball eyes directly on the ball as the ONLY facial feature. NO mouth, NO nose, NO ears, NO hair, NO lips, NO teeth, NO eyebrows, NO human facial anatomy, NO separate head, neck, shoulders or torso. At most tiny simple arms/legs attached directly to the ball. Use a bold cobalt-and-mustard two-tone geometric surface pattern on the ball instead of a country flag; do NOT use beige, peach or skin/flesh tones as the ball's main surface.
 
-ABSOLUTELY FORBIDDEN CHARACTER SHAPES: oval, egg-shaped, bean-shaped, capsule-shaped, pear-shaped, teardrop-shaped, humanoid head, humanoid torso, head-on-body character, stretched circle, squashed circle. Do not create a human-like face shape. Do not use the sphere as only a head. If an action would normally deform the body, keep the body as a perfect circle and communicate the action through placement, eyes, tiny limbs and props instead.
+Do NOT place the ball behind a desk or table. Do NOT hide its lower half. Arrange the faceless task and distractions AROUND the fully visible ball instead: one large unfinished document/task block to the left; a generic short-video phone, small snack and tiny side task to the right; a restrained future-stress cloud farther behind. The ball looks toward the distractions only through the direction/angle of its simple white eyes. Make the conflict instantly readable in one second while preserving the exact classic countryball silhouette from the older successful country/geography Reels.
 
-Create the master cover for a psychology explainer about procrastination. Place one perfect circular neutral countryball-style character at a desk without deforming its circular body. The character is caught between one important unfinished task on the left and several immediate distractions on the right: a generic short-video phone interface with no readable UI text, a clean desk, a snack and a tiny side task. Behind the important task, show a restrained future-stress cloud growing larger. The composition must instantly communicate “I know I should start, but I avoid it.” No country flags because this is a non-country topic.
+ABSOLUTELY FORBIDDEN: oval, egg-shaped, bean-shaped, capsule-shaped, pear-shaped or humanoid figure; human head look; ball used as a head; mouth or human expression; skin-tone head; furniture covering the lower half; clothing or torso beneath the ball.
 
-VISIBLE-TEXT FIREWALL: the ONLY readable text allowed anywhere inside the image is exactly "WARUM SCHIEBEN WIR AUFGABEN AUF?". Do not render any workflow metadata, asset numbers, BILD labels, COVER, SZENE, BILDPHASE, filenames, Google Flow, Prompt, technical ids or any other label. No other readable text, no English, no logos, no watermark.
+VISIBLE-TEXT FIREWALL: the ONLY readable text allowed anywhere inside the image is exactly "WARUM SCHIEBEN WIR AUFGABEN AUF?". No other readable text, no English, no logos, no watermark, no workflow labels or filenames.
 
-No 3D, no photorealism. Use the full 9:16 composition naturally; no subtitle safe-zone or artificial empty subtitle band. Build one dominant visual idea readable within about one second; avoid cheap icon soup.
+No 3D, no photorealism. Use the full 9:16 composition naturally; no subtitle safe-zone or artificial empty subtitle band. This accepted Bild 00.png becomes the binding character/style master for every later image.
 
 BILD 01 – SZENE 1
 DATEINAME NACH FERTIGSTELLUNG: Bild 01.png
-Vertical 9:16 premium mature 2D editorial country-character illustration. Warm off-white textured paper background, deep navy borders and structural shapes, muted rust, mustard, cobalt and forest-green accents, bold clean hand-inked outlines, flat geometric shading, subtle grain, high contrast, sophisticated documentary tone, not childish.
+Vertical 9:16 premium mature 2D editorial country-character illustration matching the accepted Bild 00.png exactly: warm off-white textured paper background, deep navy structural shapes, muted rust, mustard, cobalt and forest-green accents, bold clean hand-inked outlines, flat geometric shading, subtle grain, high contrast, sophisticated documentary tone, not childish.
 
-Match Bild 00.png exactly in line weight, paper texture, palette, round-character proportions and editorial finish.
+Use the exact same classic countryball character model as Bild 00.png. One LARGE complete 1:1 round ball is the focal character and its entire circular silhouette is visible. Keep the same bold cobalt-and-mustard two-tone surface pattern from Bild 00. Exactly two simple white countryball eyes are the ONLY facial feature. NO mouth, nose, ears, hair, eyebrows or human face; no separate head, neck or torso; at most tiny simple limbs directly on the ball.
 
-NON-NEGOTIABLE ROUND-CHARACTER RULE: every anthropomorphic person, role, thought, habit, emotion or abstract force must be a complete perfectly round circular neutral sphere character with simple white eyes and at most tiny arms/legs. No human heads or torsos. Keep phones, documents, desks, snacks and task objects faceless.
+Do not show the ball sitting behind furniture. Place the complete ball beside one large faceless unfinished task block. Put a generic short-video phone, a tiny side task and a small snack on the opposite side as faceless distractions. Use only the direction of the white eyes and the spatial pull of the objects to communicate hesitation. The image must read as the same Countryball world as the successful older country Reels, not as a human cartoon with a round head.
 
-Show one neutral round sphere sitting in front of one important task while several instant distractions pull its attention away: a generic short-video phone with no readable UI text, a spotless desk, a snack and a tiny side task. Make the tension between “start now” and “do anything else” instantly readable.
+ABSOLUTELY FORBIDDEN: oval/egg/bean/capsule/pear body, human head, mouth, skin-tone face, furniture hiding the lower half, clothing or torso beneath the ball.
 
-VISIBLE-TEXT FIREWALL: the ONLY readable text allowed anywhere inside the image is exactly "JETZT ANFANGEN?". No other readable text, no English, no logos, no watermark, no workflow labels or filenames. No 3D, no photorealism. Full 9:16 frame, no subtitle safe-zone.
+Integrate the exact German text "JETZT ANFANGEN?" as the only readable phrase. No other readable text, no English, no logos, no watermark. No 3D, no photorealism. Use the full 9:16 composition naturally; no subtitle safe-zone.
 
 BILD 02 – SZENE 2
 DATEINAME NACH FERTIGSTELLUNG: Bild 02.png
