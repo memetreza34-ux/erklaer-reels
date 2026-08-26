@@ -19,19 +19,43 @@ Dieses Repository produziert vollständige visuelle Erklär-Reels. Der Nutzer er
 
 ## Themenuniversum: offen
 
-Die Themenwahl ist **nicht mehr auf feste Säulen beschränkt**.
+Die Themenwahl ist **nicht auf feste Säulen beschränkt**.
 
 Bei einem autonomen neuen Reel darf Codex aus jedem geeigneten Erklärbereich wählen, zum Beispiel Psychologie, Alltag, Verhalten, Beziehungen, Gesellschaft, Kultur, Geschichte, Länder, Geografie, Politik, Wissenschaft, Naturphänomene, Technik, Internet, Social Media, Lernen, Arbeit, Wirtschaft, Gesundheit, Ernährung, Sprache, Kommunikation, Denkfehler, Mythen und kuriose „Warum?“-Fragen.
 
-Die Liste ist nicht abschließend. Entscheidend sind:
+Entscheidend sind:
 - starke Neugier/Hook
 - klarer Aha-Moment
 - faktische Erklärbarkeit
-- visuelle Stärke in der Kugel-Welt
+- visuelle Klarheit
 - Abwechslung gegenüber den zuletzt produzierten Reels
 - Teilbarkeit oder Alltagsrelevanz
 
-Keine feste Pillar-Quote und keine automatische Rotation. Die Kugel-Welt darf nicht dazu führen, dass neue Themen automatisch immer Länder-, Grenzen-, Hauptstadt-, Geschichts- oder Politikthemen sind.
+Keine feste Pillar-Quote und keine automatische Rotation.
+
+## Bildwelt: aktuell keine feste Vorgabe
+
+Seit 2026-08-26 ist die frühere feste Bildwelt aus dem aktiven Workflow entfernt.
+
+Für neue Reels gilt standardmäßig:
+
+```text
+visualStyleId = null
+visualStyleReason = ""
+```
+
+Codex darf **keine** frühere Bildwelt automatisch reaktivieren oder aus alten Reels ableiten. Insbesondere nicht automatisch:
+
+- `round-country-characters`
+- Countryball-/Kugel-Geometrie
+- alte Golden References
+- `human-editorial-cartoon`
+- `visual-metaphor`
+- feste Figuren-, Augen-, Mund- oder Körperregeln
+- feste Farbpalette oder Papiertextur
+- früheren Premium-Editorial-Look
+
+Historische Reel-Prompts bleiben Archivmaterial. Eine neue feste Bildwelt wird erst verwendet, nachdem der Nutzer sie ausdrücklich definiert hat.
 
 ## Bildanzahl: immer individuell
 
@@ -39,7 +63,7 @@ Die Anzahl der Bilder ist **nicht** an die Szenenzahl gekoppelt.
 
 Für jede narrative Szene separat entscheiden:
 - 1 Bild, wenn ein starkes Motiv reicht
-- 2 Bilder bei echtem Mehrwert durch Überblick/Detail, Karte/Zoom, Ursache/Folge, Figur/Mechanismus oder Ausgangslage/Auflösung
+- 2 Bilder bei echtem Mehrwert durch Überblick/Detail, Ursache/Folge, Mechanismus/Auswirkung oder Ausgangslage/Auflösung
 - 3 Bilder nur selten
 
 Wenn ein einzelnes Still-Bild ungefähr 3,5–4 Sekunden oder länger stehen würde, eine zweite Bildphase aktiv prüfen. Keine Bildphase nur zur Erfüllung einer Quote hinzufügen.
@@ -78,6 +102,21 @@ npm run validate:reel -- --dir "PFAD-ZUM-REEL"
 npm run check:content -- --dir "PFAD-ZUM-REEL" --strict
 ```
 
+## Bildprompts
+
+Jeder Bildprompt beschreibt nur den konkreten Bildmoment. Keine alte Repo-Bildwelt automatisch voranstellen oder ergänzen.
+
+Neutral verbindlich:
+
+- 9:16
+- klare konkrete Szene und Komposition
+- exakt geplanter deutscher Bildtext, falls vorhanden
+- kein unerwarteter lesbarer Text
+- keine Workflow-Metadaten als Bildinhalt
+- volle Bildfläche ohne künstliche Untertitelzone
+
+`Bild 00` ist aktuell nur das Cover und nicht automatisch ein Style-Master.
+
 ## Quellen-QC
 
 Neue Reels verwenden `sourceQualitySchemaVersion: 3`.
@@ -90,47 +129,19 @@ Pflicht:
 - mindestens eine davon unabhängige Sekundär-/Fachquelle
 - `Belegt` muss konkret die jeweilige Reel-Aussage benennen
 
-Die formale Prüfung ersetzt keine inhaltliche Quellenbewertung. Bei Gesundheit, Wissenschaft, Wirtschaft, Politik oder aktuellen technischen Fakten besonders auf Primärquellen, Aktualität und tatsächliche Belegbarkeit achten.
-
-Bestehende Schema-2-Reels bleiben rückwärtskompatibel.
+Die formale Prüfung ersetzt keine inhaltliche Quellenbewertung. Bestehende Schema-2-Reels bleiben rückwärtskompatibel.
 
 ## Google Flow
 
-`Bild 00` = Cover + Style-Master.
+`Bild 00` = Cover.
 
 Danach folgen alle Bildphasen in globaler Reihenfolge. Die Bildnummer ist nicht automatisch die Szenennummer.
 
-Beispiel:
-
-```text
-Bild 01 = Szene 1 / Phase 1
-Bild 02 = Szene 2 / Phase 1
-Bild 03 = Szene 2 / Phase 2
-Bild 04 = Szene 3 / Phase 1
-```
-
 Die verbindliche Nutzerdatei ist `00-bildprompts/99-alle-bildprompts.txt` mit dem vollständigen seriellen Gesamtprompt. `all-image-prompts/all-image-prompts.txt` ist nur die identische technische Spiegeldatei.
 
-Flow arbeitet streng seriell: ein Bild → vollständig warten → umbenennen → prüfen → automatisch nächstes Bild. Keine Queue, kein Batch, kein Parallelisieren und kein weiteres `Go`.
+Flow arbeitet streng seriell: ein Bild → vollständig warten → gegen den aktuellen Bildprompt prüfen → umbenennen → nächstes Bild. Keine Queue, kein Batch, kein Parallelisieren und kein weiteres `Go`.
 
 Der frühere separate `google-flow-controller.txt` ist deaktiviert.
-
-## Bildwelt
-
-Bis zur ausdrücklichen Reaktivierung anderer Welten gilt ausschließlich:
-
-`round-country-characters`
-
-Die Kugel-Welt ist **für alle Themen** zuständig, nicht nur für Länder und Geschichte.
-
-- Länderrollen → vollständige runde Kugel mit vereinfachtem Flaggenmuster
-- nicht-länderspezifische Personen/Rollen → neutrale runde Kugel mit Farbe/Symbol
-- Gruppen, Systeme, Gedanken, Gewohnheiten, Emotionen oder abstrakte Kräfte dürfen ebenfalls durch runde Kugelfiguren dargestellt werden
-- Karten und Länderumrisse bleiben gesichtslose Erklärgrafik
-- keine menschlichen Köpfe/Torsi als Hauptwelt
-- keine map-shaped characters
-
-Keine feste Bildsumme aufgrund des Themas erzwingen.
 
 ## Fehlende Assets
 
@@ -164,6 +175,6 @@ npm run validate:render -- --dir "PFAD-ZUM-REEL"
 npm run render:reel -- --dir "PFAD-ZUM-REEL"
 ```
 
-Jede einzelne Bildphase muss die visuelle Zwei-Pass-QC bestehen. Die letzte Bildphase bleibt nach dem letzten gesprochenen Wort 0,7 Sekunden stehen.
+Jede einzelne Bildphase muss die visuelle Zwei-Pass-QC gegen ihren konkreten Inhalt und Prompt bestehen. Die letzte Bildphase bleibt nach dem letzten gesprochenen Wort 0,7 Sekunden stehen.
 
 Keine geplante Stufe als abgeschlossen bezeichnen und keine nicht ausgeführten Tests als bestanden melden.
