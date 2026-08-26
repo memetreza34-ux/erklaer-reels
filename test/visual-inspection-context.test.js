@@ -46,11 +46,12 @@ async function createFixture({ twoImages = false } = {}) {
   await writeJson(path.join(root, 'reel.json'), {
     reelId: 'reel-01_test',
     title: 'Warum haben Länder Grenzen?',
+    date: '2026-08-26',
     subtitlesEnabled: false,
     imageCountMode: 'individual-per-reel',
     plannedImageCount: twoImages ? 2 : 1,
-    visualStyleId: 'round-country-characters',
-    visualStyleReason: 'Runde Länderfiguren und Karten erklären Staaten und Grenzen besonders klar.'
+    visualStyleId: null,
+    visualStyleReason: ''
   });
   await writeJson(path.join(root, 'scenes', 'scene-index.json'), [scene]);
   await mkdir(path.join(root, 'scenes', 'scene-01'), { recursive: true });
@@ -69,7 +70,7 @@ async function createFixture({ twoImages = false } = {}) {
   await writeJson(path.join(root, 'effects', 'effects-plan.json'), { scenes: [] });
   await writeJson(path.join(root, 'cover', 'cover.json'), {
     headline: 'LÄNDERGRENZEN',
-    visualIdea: 'Zwei Länderfiguren stehen an einer Grenzlinie.'
+    visualIdea: 'Zwei Regionen werden durch eine klare sichtbare Grenzlinie getrennt.'
   });
   await writeFile(path.join(root, 'cover', 'cover-prompt.txt'), 'Vertical 9:16 cover with the exact German headline "LÄNDERGRENZEN".', 'utf8');
   await writeJson(path.join(root, 'status.json'), {});
@@ -77,18 +78,19 @@ async function createFixture({ twoImages = false } = {}) {
   return { root, scene };
 }
 
-test('visuelle Prüfung zeigt Szenenbedeutung und verlangt keine Untertitelzone', async () => {
+test('visuelle Prüfung zeigt Szenenbedeutung und verlangt keine Untertitelzone oder feste Bildwelt', async () => {
   const { root, scene } = await createFixture();
 
   await runVisualQualityCheck(root, { strict: false });
   const inspection = await readJson(path.join(root, 'review', 'visual-inspection.json'));
   const sceneEntry = inspection.assets.find((entry) => entry.assetId === 'scene-01');
 
-  assert.equal(inspection.version, 9);
+  assert.equal(inspection.version, 10);
   assert.equal(inspection.subtitlesEnabled, false);
-  assert.equal(inspection.visualStyleId, 'round-country-characters');
+  assert.equal(Object.hasOwn(inspection, 'visualStyleId'), false);
   assert.equal(inspection.plannedImageCount, 1);
   assert.ok(inspection.instructions.some((instruction) => /ohne künstlich freigehaltene Untertitelzone/i.test(instruction)));
+  assert.ok(inspection.instructions.some((instruction) => /keine feste Repo-Bildwelt/i.test(instruction)));
   assert.equal(Object.hasOwn(inspection.safeZones, 'subtitleVerticalPercent'), false);
   assert.equal(sceneEntry.expected.narration, scene.narration);
   assert.equal(sceneEntry.expected.audioCue, scene.audioCue);
@@ -100,7 +102,7 @@ test('visuelle Prüfung zeigt Szenenbedeutung und verlangt keine Untertitelzone'
   assert.equal(sceneEntry.reviewFingerprint.length, 64);
   assert.ok(Object.hasOwn(sceneEntry.checks, 'sceneMeaningMatchesNarration'));
   assert.ok(Object.hasOwn(sceneEntry.checks, 'sceneOrderConfirmed'));
-  assert.ok(Object.hasOwn(sceneEntry.checks, 'visualWorldMatch'));
+  assert.equal(Object.hasOwn(sceneEntry.checks, 'visualWorldMatch'), false);
   assert.ok(Object.hasOwn(sceneEntry.checks, 'plannedGermanTextExact'));
   assert.equal(Object.hasOwn(sceneEntry.checks, 'subtitleCollisionFree'), false);
 });
@@ -136,7 +138,7 @@ test('setzt eine alte Freigabe zurück, sobald sich die Szenenbedeutung ändert'
   const changedScene = {
     ...scene,
     narration: 'Andere Grenzen wurden durch Verträge und politische Entscheidungen festgelegt.',
-    visualIdea: 'Mehrere runde Länderfiguren unterschreiben gemeinsam einen Grenzvertrag.'
+    visualIdea: 'Mehrere Vertreter unterschreiben gemeinsam einen Grenzvertrag.'
   };
   await writeJson(path.join(root, 'scenes', 'scene-index.json'), [changedScene]);
 
