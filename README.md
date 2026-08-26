@@ -1,10 +1,8 @@
 # Erklär-Reels
 
-Produktionspipeline für visuelle Erklär-Reels mit **einer festen Kugel-Welt und einem offenen Themenuniversum**.
+Produktionspipeline für visuelle Erklär-Reels mit **offenem Themenuniversum und aktuell bewusst nicht festgelegter Bildwelt**.
 
 Themen können unter anderem aus Alltag, Psychologie, Verhalten, Beziehungen, Gesellschaft, Kultur, Wissenschaft, Technik, Internet, Lernen, Arbeit, Wirtschaft, Gesundheit, Ernährung, Sprache, Geschichte, Politik, Ländern, Geografie, Mythen und kuriosen Warum-Fragen kommen.
-
-> Eine wiedererkennbare visuelle Welt, aber keine starre Themen-Nische.
 
 ## Verbindliche Regeln
 
@@ -16,7 +14,7 @@ Themen können unter anderem aus Alltag, Psychologie, Verhalten, Beziehungen, Ge
 - 155–175 deutsche Wörter
 - 12–14 **narrative Szenen**, Standard 13
 - genau ein klarer Erklärschritt pro narrativer Szene
-- **feste Hauptbildwelt: `round-country-characters`**
+- **aktuell keine feste Bildwelt**
 - die Themenwahl ist offen und wird nicht durch alte Pillars begrenzt
 - **Bildanzahl individuell pro Reel**
 - pro narrativer Szene 1, 2 oder selten 3 Bildphasen
@@ -29,22 +27,35 @@ Themen können unter anderem aus Alltag, Psychologie, Verhalten, Beziehungen, Ge
 - keine Hintergrundmusik
 - Schlussbild 0,7 Sekunden nach dem letzten gesprochenen Wort halten
 
-## Kugel-Welt
+## Bildwelt — zurückgesetzt
 
-Bis der Nutzer ausdrücklich etwas anderes aktiviert, wird jedes neue Reel in derselben Hauptwelt umgesetzt:
+Seit 2026-08-26 ist die frühere feste Bildwelt vollständig aus dem aktiven Workflow entfernt.
+
+Für neue Reels gilt:
 
 ```text
-round-country-characters
+visualStyleId = null
+visualStyleReason = ""
 ```
 
-- Länder → vollständig runde Kugeln mit vereinfachtem Flaggenmuster
-- nicht-länderspezifische Personen/Rollen → neutrale runde Kugeln mit passenden Farben/Symbolen
-- auch Gruppen, Systeme, Gedanken, Gewohnheiten oder Emotionen dürfen als runde Figuren visualisiert werden
-- Karten und Länderumrisse bleiben gesichtslose Erklärgrafik
-- keine menschlichen Köpfe/Torsi als Hauptwelt
-- keine map-shaped characters
+Aktuell **nicht** automatisch verwenden:
 
-Der bewährte ausführliche Editorial-Look bleibt verbindlich: warm off-white paper texture, deep navy, muted rust/mustard/cobalt/forest-green, hand-inked outlines, flat geometric shading und subtle grain.
+- `round-country-characters`
+- Countryball-/Kugel-Geometrie
+- Golden References aus alten Länder-Reels
+- `human-editorial-cartoon`
+- `visual-metaphor`
+- feste Augen-/Mund-/Körperregeln
+- feste Farbpalette
+- Papiertextur
+- alter Premium-Editorial-Look
+- alte Reel-Prompts als Stilvorlage
+
+Historische Reels bleiben als Archiv erhalten, definieren aber keine neue Produktion mehr.
+
+Eine neue feste Bildwelt wird erst eingeführt, wenn der Nutzer sie ausdrücklich festlegt.
+
+`Bild 00` ist momentan nur das Cover und **nicht automatisch ein Style-Master**.
 
 ## Themenwahl
 
@@ -54,18 +65,16 @@ Gute Themen erfüllen möglichst viele dieser Punkte:
 - starker Hook in der ersten Sekunde
 - klarer Aha-Moment
 - faktisch sauber erklärbar
-- visuell stark in der Kugel-Welt
+- visuell klar umsetzbar
 - abwechslungsreich gegenüber den letzten Reels
 - teilbar, überraschend oder alltagsrelevant
-
-Die Kugel-Welt darf nicht dazu führen, dass automatisch immer nur Länder-, Grenzen-, Geschichts- oder Politikthemen gewählt werden.
 
 ## Individuelle Bilddichte
 
 Für jede Szene wird separat entschieden, wie viele Bilder wirklich sinnvoll sind.
 
 - **1 Bild:** starkes Motiv trägt den ganzen Gedanken
-- **2 Bilder:** z. B. Überblick → Detail, Karte → Zoom, Ursache → Folge, Figur → Mechanismus
+- **2 Bilder:** z. B. Überblick → Detail, Ursache → Folge oder Ausgangslage → Auflösung
 - **3 Bilder:** nur selten bei echten dreistufigen Erklärungen
 
 Wenn ein Still-Bild ungefähr 3,5–4 Sekunden oder länger stehen würde, wird eine zweite Bildphase aktiv geprüft. Sie wird nur hinzugefügt, wenn sie das Reel tatsächlich verbessert.
@@ -92,6 +101,19 @@ image-prompt-02.txt
 image-prompt-03.txt
 ```
 
+## Bildprompts
+
+Jeder Bildprompt beschreibt aktuell ausschließlich die konkrete Szene. Der Repo-Workflow fügt keine feste Figurenform, Palette, Textur oder historische Stilreferenz hinzu.
+
+Neutral verbindlich bleiben:
+
+- 9:16
+- konkrete Komposition und Handlung
+- exakt erlaubter deutscher Bildtext, falls vorgesehen
+- kein unerwarteter lesbarer Text
+- keine Workflow-Labels im Bild
+- volle Bildfläche ohne künstliche Untertitelzone
+
 ## Google Flow
 
 Repo-Agenten erzeugen Script, Szenen, Bildphasen und Prompts, aber keine Reel-Bilder.
@@ -102,8 +124,6 @@ Die **verbindliche Nutzerdatei** für Google Flow ist:
 00-bildprompts/99-alle-bildprompts.txt
 ```
 
-Sie enthält den kompletten alten, ausführlichen seriellen Gesamtprompt in einer Nachricht.
-
 Technische Spiegeldatei:
 
 ```text
@@ -113,21 +133,12 @@ all-image-prompts/all-image-prompts.txt
 Flow arbeitet streng seriell:
 
 ```text
-Bild erzeugen → vollständig warten → umbenennen → prüfen → nächstes Bild
+Bild erzeugen → vollständig warten → gegen aktuellen Prompt prüfen → umbenennen → nächstes Bild
 ```
 
-Keine Queue, kein Batch und keine Parallelgenerierung. `Bild 00.png` ist Cover und Style-Master.
+Keine Queue, kein Batch und keine Parallelgenerierung.
 
 Danach bezeichnet die Nummer die **globale Bildreihenfolge**. Sie entspricht bei mehreren Bildphasen nicht automatisch der Szenennummer.
-
-Beispiel:
-
-```text
-Bild 01 = Szene 1 / Phase 1
-Bild 02 = Szene 2 / Phase 1
-Bild 03 = Szene 2 / Phase 2
-Bild 04 = Szene 3 / Phase 1
-```
 
 ## Quellen-QC
 
