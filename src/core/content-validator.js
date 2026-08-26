@@ -4,6 +4,8 @@ import path from 'node:path';
 import { inspectSourcesMarkdown } from './source-quality.js';
 import { normalizeSceneImagePhases, plannedImageCount } from '../shared/visual-moments.js';
 
+const VISUAL_WORLD_RESET_DATE = '2026-08-26';
+
 async function exists(filePath) {
   try {
     await access(filePath);
@@ -56,11 +58,15 @@ function phasePromptPath(sceneDirectory, phase) {
   return path.join(sceneDirectory, phase.promptFileName);
 }
 
+function isPostVisualResetReel(reel) {
+  const date = String(reel?.date ?? '').trim();
+  return Boolean(date) && date >= VISUAL_WORLD_RESET_DATE;
+}
+
 export async function validateReelContent(reelDirectory, { strict = false } = {}) {
   const checks = [];
   const reelPath = path.join(reelDirectory, 'reel.json');
   const sceneIndexPath = path.join(reelDirectory, 'scenes', 'scene-index.json');
-  const stylesPath = path.resolve('config', 'image-styles.json');
   const effectsRulesPath = path.resolve('config', 'effects-rules.json');
   const subtitlePlanPath = path.join(reelDirectory, 'subtitles', 'subtitle-plan.json');
   const effectsPlanPath = path.join(reelDirectory, 'effects', 'effects-plan.json');
@@ -76,10 +82,11 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
 
   const reel = await readJson(reelPath);
   const sceneIndex = await readJson(sceneIndexPath, []);
-  const styleConfig = await readJson(stylesPath, { styles: [] });
   const effectsRules = await readJson(effectsRulesPath, {});
-  const validStyleIds = new Set(styleConfig.styles.map((style) => style.id));
   const totalPlannedImages = plannedImageCount(sceneIndex);
+  const postVisualReset = isPostVisualResetReel(reel);
+  const styleId = String(reel.visualStyleId ?? '').trim();
+  const styleReason = String(reel.visualStyleReason ?? '').trim();
 
   addCheck(checks, 'scene-count-range', Number.isInteger(reel.sceneCount) && reel.sceneCount >= 12 && reel.sceneCount <= 14,
     'Die narrative Szenenanzahl muss zwischen 12 und 14 liegen.');
@@ -87,10 +94,17 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
     `scene-index.json enthält ${sceneIndex.length} statt ${reel.sceneCount} narrativen Szenen.`);
   addCheck(checks, 'topic-area', String(reel.topicArea ?? '').trim().length >= 5,
     'reel.json.topicArea fehlt.');
-  addCheck(checks, 'visual-style', Boolean(reel.visualStyleId) && validStyleIds.has(reel.visualStyleId),
-    'reel.json.visualStyleId fehlt oder ist nicht in config/image-styles.json definiert.');
-  addCheck(checks, 'visual-style-reason', String(reel.visualStyleReason ?? '').trim().length >= 20,
-    'reel.json.visualStyleReason sollte die Stilentscheidung kurz begründen.');
+
+  if (postVisualReset) {
+    addCheck(checks, 'visual-world-unassigned', styleId.length === 0,
+      'Neue Reels ab 2026-08-26 müssen ohne feste Bildwelt starten: visualStyleId muss leer/null sein.');
+    addCheck(checks, 'visual-world-reason-empty', styleReason.length === 0,
+      'Neue Reels ab 2026-08-26 dürfen keine alte Stilbegründung automatisch übernehmen.');
+  } else {
+    addCheck(checks, 'legacy-visual-world-nonblocking', true,
+      'Historische Reels dürfen ihre alten Stilfelder als Archivdaten behalten.', 'warning');
+  }
+
   addCheck(checks, 'subtitles-disabled', reel.subtitlesEnabled === false,
     'Untertitel müssen für dieses Format deaktiviert sein.');
   addCheck(checks, 'image-count-mode', !reel.imageCountMode || reel.imageCountMode === 'individual-per-reel',
