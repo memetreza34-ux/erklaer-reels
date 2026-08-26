@@ -1,6 +1,7 @@
 import { mkdir, readdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
+import { FIXED_VISUAL_STYLE_ID, FIXED_VISUAL_STYLE_REASON } from '../shared/fixed-visual-world.js';
 import { SUBTITLE_STYLE } from '../shared/subtitle-style.js';
 import { normalizeSceneImagePhases } from '../shared/visual-moments.js';
 import { buildSourcesTemplate } from './source-quality.js';
@@ -180,8 +181,8 @@ export async function createReelWorkspace({
     imageCountMode: 'individual-per-reel',
     plannedImageCount: sceneCount,
     imageDensityReason: '',
-    visualStyleId: null,
-    visualStyleReason: '',
+    visualStyleId: FIXED_VISUAL_STYLE_ID,
+    visualStyleReason: FIXED_VISUAL_STYLE_REASON,
     sourceQualitySchemaVersion: 3,
     subtitlesEnabled: false,
     motionEffectsEnabled: true,
@@ -209,6 +210,7 @@ export async function createReelWorkspace({
     scenes: 'planned',
     imageDensity: 'individual-planning-required',
     plannedImageCount: sceneCount,
+    visualWorld: `fixed-${FIXED_VISUAL_STYLE_ID}`,
     subtitles: 'disabled',
     wordSync: 'not-required',
     effects: 'planned',

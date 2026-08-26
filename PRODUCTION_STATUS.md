@@ -1,6 +1,6 @@
 # Produktionsstatus
 
-**Status: PRODUKTIONSLOGIK BEREIT — BILDWELT ZURÜCKGESETZT — E2E-PRODUKTIONSTEST AUSSTEHEND**
+**Status: PRODUKTIONSLOGIK BEREIT — FESTE BILDWELT AKTIV — E2E-PRODUKTIONSTEST AUSSTEHEND**
 
 ## Verbindliche Quelle
 
@@ -22,19 +22,19 @@
 
 Die Themenwahl ist offen. Es gibt keine feste Pillar-Quote mehr.
 
-Die frühere feste Bildwelt wurde am 2026-08-26 aus dem aktiven Produktionssystem entfernt.
-
-Aktueller Zustand:
+Für alle neuen Reels ist die feste Bildwelt aktiv:
 
 ```text
-visualWorldMode: unassigned
-visualStyleId: null
-visualStyleReason: ""
+visualWorldMode: fixed
+visualStyleId: modern-countryball-explainer
+visualStyleReason: "Globale feste Bildwelt für alle neuen Erklär-Reels: moderner minimalistischer Countryball-Erklärstil."
 ```
 
-Es gibt derzeit **keine** aktive Countryball-/Kugel-Welt, keine Golden References, keine feste Figuren-Geometrie, keine feste Palette und keinen verbindlichen historischen Editorial-Look.
+Verbindliche Style-Bibel: `knowledge/fixed-visual-world.md`.
 
-Alte Reels bleiben als Archiv erhalten, steuern neue Produktionen aber nicht mehr.
+Der Stil bleibt über alle Themen identisch: moderner minimalistischer Countryball-inspirierter 2D-Erklärlook, dicke schwarze Konturen, runde Kugelfiguren für Akteure, ruhige einfarbige Hintergründe, wenige Requisiten und eine klare visuelle Metapher. Länderflaggen werden nur verwendet, wenn geografische Identität wirklich relevant ist; allgemeine Themen nutzen neutrale Kugeln oder passende Objekte in derselben Formsprache.
+
+Prompts sind Englisch, sichtbarer Bildtext ist ausschließlich Deutsch.
 
 ## Bildanzahl — individuell
 
@@ -62,11 +62,13 @@ Verbindliche Nutzerdatei:
 00-bildprompts/99-alle-bildprompts.txt
 ```
 
-`Bild 00.png` ist aktuell nur das Cover und nicht automatisch ein Style-Master.
+Der Exporter ergänzt `modern-countryball-explainer` global und zusätzlich direkt vor jedem einzelnen Bildabschnitt. Dadurch bleibt die Bildwelt auch bei komplett unterschiedlichen Themen stabil.
+
+`Bild 00.png` ist das Cover, aber nicht der alleinige Style-Master. Die globale Repo-Bildwelt ist der Style-Master.
 
 Danach bezeichnet die Nummer die **globale Bildreihenfolge**, nicht automatisch die Szenennummer.
 
-Flow arbeitet streng seriell: genau ein Bild erzeugen, vollständig warten, gegen den aktuellen Bildprompt prüfen, umbenennen, nächstes Bild starten. Kein Batch, keine Queue, kein Parallelisieren.
+Flow arbeitet streng seriell: genau ein Bild erzeugen, vollständig warten, gegen den aktuellen Bildprompt **und die feste Bildwelt** prüfen, umbenennen, nächstes Bild starten. Kein Batch, keine Queue, kein Parallelisieren.
 
 Der separate `google-flow-controller.txt` ist deaktiviert.
 
@@ -87,6 +89,7 @@ Ein Reel ist erst fertig, wenn:
 - Script und Quellen tatsächlich geprüft wurden
 - alle individuell geplanten Bildphasen vorhanden sind
 - jede Bildphase zweifach visuell gegen ihren konkreten Inhalt und Prompt geprüft wurde
+- die feste Bildwelt sichtbar eingehalten wird
 - das finale Voice-over real gemessen wurde
 - narrative Szenen am finalen Audio synchronisiert sind
 - interne Bildphasen passend innerhalb der Szenen liegen
@@ -97,23 +100,24 @@ Nicht ausgeführte Tests oder geplante Produktionsstufen niemals als bestanden m
 
 ## Runtime-/E2E-Validierung
 
-Die Produktionslogik ist implementiert. Nach dem Zurücksetzen der Bildwelt muss der nächste vollständige E2E-Test insbesondere prüfen:
+Nach Aktivierung der festen Bildwelt muss der nächste vollständige E2E-Test insbesondere prüfen:
 
-- neuer Workspace startet mit `visualStyleId: null` und leerem `visualStyleReason`
-- keine alte Countryball-/Kugel-/Golden-Reference-Regel wird automatisch injiziert
+- neuer Workspace startet mit `visualStyleId: "modern-countryball-explainer"`
+- `config/image-styles.json` und `config/content-rules.json` zeigen dieselbe feste Bildwelt
 - individuelle Bildphasen werden korrekt geplant und exportiert
-- Google-Flow-Gesamtprompt bleibt vollständig und seriell strukturiert
-- `Bild 00` wird nicht automatisch als Style-Master erzwungen
+- Google-Flow-Gesamtprompt enthält den globalen Style-Lock und wiederholt ihn direkt vor jedem Bildabschnitt
+- sichtbarer Bildtext bleibt Deutsch; Prompttext bleibt Englisch
+- konkrete Themen ändern nur Inhalt, Metapher und ggf. Hintergrundfarbe, nicht die grundlegende Bildsprache
 - echte Bilder werden visuell zugeordnet und zweifach gegen konkrete Prompts geprüft
 - echtes Voice-over wird verarbeitet, gemessen und als einzige Timeline-Quelle verwendet
 - Finalizer und Render-Validator blockieren fehlende oder ungeprüfte Voraussetzungen
 - finale MP4 wird tatsächlich erzeugt
 
-Erst nach diesem vollständigen Durchlauf darf der Status wieder als vollständig produktionsvalidiert bezeichnet werden.
+Erst nach diesem vollständigen Durchlauf darf der Status als vollständig E2E-produktionsvalidiert bezeichnet werden.
 
 ## Legacy
 
-`sync:words` gehört nicht zum aktiven Workflow. Historische Word-Sync-Helfer sind nur unter dem expliziten Legacy-Namensraum zulässig. Historische Reel-Bildprompts definieren ebenfalls keine aktive Bildwelt.
+`sync:words` gehört nicht zum aktiven Workflow. Historische Word-Sync-Helfer sind nur unter dem expliziten Legacy-Namensraum zulässig. Historische Reel-Bildprompts definieren keine abweichende aktive Bildwelt.
 
 ## Infrastruktur
 

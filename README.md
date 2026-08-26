@@ -1,6 +1,6 @@
 # Erklär-Reels
 
-Produktionspipeline für visuelle Erklär-Reels mit **offenem Themenuniversum und aktuell bewusst nicht festgelegter Bildwelt**.
+Produktionspipeline für visuelle Erklär-Reels mit **offenem Themenuniversum und einer festen wiedererkennbaren Bildwelt**.
 
 Themen können unter anderem aus Alltag, Psychologie, Verhalten, Beziehungen, Gesellschaft, Kultur, Wissenschaft, Technik, Internet, Lernen, Arbeit, Wirtschaft, Gesundheit, Ernährung, Sprache, Geschichte, Politik, Ländern, Geografie, Mythen und kuriosen Warum-Fragen kommen.
 
@@ -14,7 +14,7 @@ Themen können unter anderem aus Alltag, Psychologie, Verhalten, Beziehungen, Ge
 - 155–175 deutsche Wörter
 - 12–14 **narrative Szenen**, Standard 13
 - genau ein klarer Erklärschritt pro narrativer Szene
-- **aktuell keine feste Bildwelt**
+- **feste Bildwelt: `modern-countryball-explainer`**
 - die Themenwahl ist offen und wird nicht durch alte Pillars begrenzt
 - **Bildanzahl individuell pro Reel**
 - pro narrativer Szene 1, 2 oder selten 3 Bildphasen
@@ -27,35 +27,48 @@ Themen können unter anderem aus Alltag, Psychologie, Verhalten, Beziehungen, Ge
 - keine Hintergrundmusik
 - Schlussbild 0,7 Sekunden nach dem letzten gesprochenen Wort halten
 
-## Bildwelt — zurückgesetzt
+## Feste Bildwelt — Modern Countryball Explainer
 
-Seit 2026-08-26 ist die frühere feste Bildwelt vollständig aus dem aktiven Workflow entfernt.
-
-Für neue Reels gilt:
+Für alle neuen Reels gilt:
 
 ```text
-visualStyleId = null
-visualStyleReason = ""
+visualStyleId = "modern-countryball-explainer"
+visualStyleReason = "Globale feste Bildwelt für alle neuen Erklär-Reels: moderner minimalistischer Countryball-Erklärstil."
 ```
 
-Aktuell **nicht** automatisch verwenden:
+Die vollständige Style-Bibel liegt unter:
 
-- `round-country-characters`
-- Countryball-/Kugel-Geometrie
-- Golden References aus alten Länder-Reels
-- `human-editorial-cartoon`
-- `visual-metaphor`
-- feste Augen-/Mund-/Körperregeln
-- feste Farbpalette
-- Papiertextur
-- alter Premium-Editorial-Look
-- alte Reel-Prompts als Stilvorlage
+```text
+knowledge/fixed-visual-world.md
+```
 
-Historische Reels bleiben als Archiv erhalten, definieren aber keine neue Produktion mehr.
+Die maschinenlesbare Konfiguration liegt unter:
 
-Eine neue feste Bildwelt wird erst eingeführt, wenn der Nutzer sie ausdrücklich festlegt.
+```text
+config/image-styles.json
+```
 
-`Bild 00` ist momentan nur das Cover und **nicht automatisch ein Style-Master**.
+### Wiedererkennungsmerkmale
+
+- vertikal 9:16
+- moderner minimalistischer Countryball-inspirierter Erklärgrafik-Stil
+- runde Kugelfiguren für Menschen, Gruppen, Institutionen oder Länder
+- Länderflaggen nur wenn die geografische Identität tatsächlich relevant ist; sonst neutrale Kugeln
+- dicke schwarze Konturen
+- einfache weiße expressive Augen, minimale Gesichtselemente
+- sauberer flacher 2D-Vektor-/Comic-Look
+- dezente Schatten und höchstens leichte Textur
+- ein klares Hauptmotiv mit wenigen Requisiten
+- ruhiger einfarbiger oder leicht texturierter Hintergrund
+- klare visuelle Metapher, sofort verständlich
+- keine realistischen Menschen, kein Fotorealismus, kein Anime, kein Clay, kein glänzendes 3D
+- Prompts Englisch; sichtbarer Bildtext ausschließlich Deutsch
+
+Reine Objekte, Mechanismen oder wissenschaftliche Symbole dürfen Hauptmotiv sein, müssen aber dieselbe Kontur-, Farb- und Vereinfachungslogik behalten.
+
+Der konkrete Inhalt darf bei jedem Thema komplett wechseln. **Die Bildsprache bleibt gleich.**
+
+`Bild 00` ist das Cover, aber nicht der alleinige Style-Master. Die globale Bildwelt ist der Style-Master.
 
 ## Themenwahl
 
@@ -103,7 +116,7 @@ image-prompt-03.txt
 
 ## Bildprompts
 
-Jeder Bildprompt beschreibt aktuell ausschließlich die konkrete Szene. Der Repo-Workflow fügt keine feste Figurenform, Palette, Textur oder historische Stilreferenz hinzu.
+Jeder Bildprompt beschreibt die konkrete Szene auf Englisch und bleibt mit `modern-countryball-explainer` kompatibel.
 
 Neutral verbindlich bleiben:
 
@@ -113,6 +126,8 @@ Neutral verbindlich bleiben:
 - kein unerwarteter lesbarer Text
 - keine Workflow-Labels im Bild
 - volle Bildfläche ohne künstliche Untertitelzone
+
+Beim Export ergänzt das System automatisch einen **globalen Style-Lock und zusätzlich denselben Style-Lock direkt vor jedem einzelnen Bildabschnitt**. Damit wird die feste Bildwelt auch bei völlig unterschiedlichen Themen durchgehend erzwungen.
 
 ## Google Flow
 
@@ -133,7 +148,7 @@ all-image-prompts/all-image-prompts.txt
 Flow arbeitet streng seriell:
 
 ```text
-Bild erzeugen → vollständig warten → gegen aktuellen Prompt prüfen → umbenennen → nächstes Bild
+Bild erzeugen → vollständig warten → gegen aktuellen Prompt UND feste Bildwelt prüfen → umbenennen → nächstes Bild
 ```
 
 Keine Queue, kein Batch und keine Parallelgenerierung.
@@ -176,7 +191,7 @@ Die Discovery richtet sich nach der individuell geplanten Bildzahl.
 
 ## Sichere Bildzuordnung
 
-Dateinummern sind nur Routing-Hilfe. Jedes Bild wird gegen seine konkrete Bildphase geprüft und anschließend gegen vorherige und nächste Bildphase gegengeprüft. Unter 0,90 Konfidenz wird nicht geraten.
+Dateinummern sind nur Routing-Hilfe. Jedes Bild wird gegen seine konkrete Bildphase, die feste Bildwelt und anschließend gegen vorherige und nächste Bildphase gegengeprüft. Unter 0,90 Konfidenz wird nicht geraten.
 
 ```bash
 npm run organize:assets -- --dir "PFAD-ZUM-REEL"

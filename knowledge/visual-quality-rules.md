@@ -4,9 +4,9 @@
 
 ## Ziel
 
-Fertige Cover- und Szenenbilder müssen auf einem Smartphone sofort verständlich, technisch geeignet und inhaltlich eindeutig dem jeweiligen Bildmoment zugeordnet sein.
+Fertige Cover- und Szenenbilder müssen auf einem Smartphone sofort verständlich, technisch geeignet, inhaltlich eindeutig dem jeweiligen Bildmoment zugeordnet und sichtbar Teil derselben festen Bildwelt sein.
 
-**Aktuell ist keine feste Repo-Bildwelt aktiv.** Die visuelle QC darf deshalb keine historische Countryball-/Kugel-, Golden-Reference-, Figuren-, Farb- oder Editorial-Regel voraussetzen.
+**Aktive Repo-Bildwelt: `modern-countryball-explainer`.**
 
 Untertitel sind deaktiviert. Es wird **keine Untertitelzone reserviert oder geprüft**.
 
@@ -18,22 +18,26 @@ Untertitel sind deaktiviert. Es wird **keine Untertitelzone reserviert oder gepr
 - Bilder mit falschem Seitenverhältnis dürfen nicht unbemerkt in den Schnitt gelangen
 - Cover und jede einzelne Bildphase werden separat geprüft
 
-## Keine feste Stil-QC
+## Feste Stil-QC
 
-Bis der Nutzer eine neue Bildwelt ausdrücklich definiert, werden **nicht** geprüft oder erzwungen:
+Für jedes Bild sichtbar prüfen:
 
-- Countryball-/Kugel-Geometrie
-- Golden References
-- Augen-only-/Mundverbote oder andere feste Gesichtselemente
-- feste Körper- oder Silhouettenformen
-- feste Farbpalette
-- Papiertextur
-- historischer Premium-Editorial-Look
-- Übereinstimmung mit alten Länder-Reels
+- moderner minimalistischer Countryball-inspirierter Erklärgrafik-Look
+- dicke saubere schwarze Konturen
+- flacher sauberer 2D-Vektor-/Comic-Look
+- runde Kugelfigur, wenn ein Mensch, eine Gruppe, Institution oder ein Land als Akteur dargestellt wird
+- einfache weiße expressive Augen und minimale Gesichtselemente
+- Länder-/Regionsflaggen nur bei inhaltlich relevanter geografischer Identität; sonst neutrale Kugeln
+- reine Objekte/Mechanismen nur in derselben vereinfachten Kontur- und 2D-Formsprache
+- ein dominantes Hauptmotiv und wenige Requisiten
+- ruhiger einfarbiger oder sanft texturierter Hintergrund
+- dezente weiche Schatten, höchstens sehr leichte Textur
+- klare visuelle Metapher, möglichst innerhalb ungefähr einer Sekunde verständlich
+- keine realistischen Menschen oder Gesichter
+- kein Fotorealismus, Anime/Manga, Clay, glänzendes 3D, cinematic realism oder Stockfoto-Look
+- kein Stilwechsel zwischen Cover und Szenen oder zwischen Themen
 
-`Bild 00` ist aktuell nur das Cover und nicht automatisch ein Style-Master.
-
-Die inhaltliche Prüfung richtet sich ausschließlich nach Narration, `visualIdea`, `imageText` und dem konkreten `imagePrompt`.
+`Bild 00` ist das Cover, aber nicht der alleinige Style-Master. Die globale Style-Bibel `knowledge/fixed-visual-world.md` ist der Style-Master.
 
 ## Sichere Bereiche
 
@@ -50,7 +54,7 @@ Die volle 9:16-Komposition wird natürlich genutzt.
 
 Pro Bild gilt eine harte Whitelist:
 
-- `imageText`/Cover-Headline gesetzt → nur exakt dieser lesbare Text ist erlaubt
+- `imageText`/Cover-Headline gesetzt → nur exakt dieser **deutsche** lesbare Text ist erlaubt
 - `imageText` leer → keinerlei lesbarer Text
 
 Immer verboten:
@@ -85,12 +89,14 @@ Für jede Bildphase prüfen und dokumentieren:
 - `sceneMeaningMatchesNarration`: sichtbarer Inhalt passt zur Narration
 - `sceneMatchesVisualIdea`: Bild erklärt die konkrete visuelle Idee
 - `oneClearMoment`: ein klar lesbarer Bildmoment statt unverständlicher Überladung
+- Stilkonformität mit `modern-countryball-explainer`
 
 ### Pass 2
 Danach gegen vorherige und nächste Bildphase prüfen:
 - ist die Reihenfolge logisch?
 - gibt es Verwechslung mit einer Nachbarphase?
 - erklärt das Bild wirklich genau diesen Moment?
+- bleibt die Bildsprache sichtbar dieselbe?
 - ist der Zusatzbildwechsel inhaltlich sinnvoll?
 
 Unter 0,90 Konfidenz nicht raten und nicht automatisch anwenden. `filename-only` ist verboten.

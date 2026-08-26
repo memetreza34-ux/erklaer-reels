@@ -6,7 +6,7 @@
 
 Jedes Reel erklärt einen Begriff, ein System, ein Verhalten oder einen Zusammenhang so einfach, dass Zuschauer ihn ohne Vorwissen verstehen.
 
-Die **Themenwelt ist offen**. Die **Bildwelt ist aktuell bewusst nicht festgelegt**.
+Die **Themenwelt ist offen**. Die **Bildwelt ist fest: `modern-countryball-explainer`**.
 
 ## Script
 
@@ -34,47 +34,55 @@ Bei autonomer Auswahl zählen:
 - Abwechslung gegenüber den letzten Reels
 - Teilbarkeit oder Alltagsrelevanz
 
-## Bildwelt — unassigned
-
-Aktuell keine Bildwelt nach dem Script auswählen oder aus historischen Dateien ableiten.
+## Bildwelt — fest
 
 Neue Reels verwenden:
 
 ```text
-visualStyleId = null
-visualStyleReason = ""
+visualStyleId = "modern-countryball-explainer"
+visualStyleReason = "Globale feste Bildwelt für alle neuen Erklär-Reels: moderner minimalistischer Countryball-Erklärstil."
 ```
 
-Nicht aktiv:
+Verbindliche Style-Bibel: `knowledge/fixed-visual-world.md`.
 
-- `round-country-characters`
-- Countryball-/Kugel-Zwang
-- Golden References
-- feste Figurenform oder Gesichtselemente
-- `human-editorial-cartoon`
-- `visual-metaphor`
-- feste Farbpalette
-- feste Papiertextur
-- alter Editorial-Stilblock
+Die Bildwelt wird nicht pro Thema ausgewählt und nicht zwischen Reels rotiert.
 
-Historische Reels und Prompts bleiben Archivmaterial.
+### Kernregeln
+
+- moderner minimalistischer Countryball-inspirierter 2D-Erklärgrafik-Stil
+- runde Kugelfiguren für Menschen, Gruppen, Institutionen oder Länder
+- Länder-/Regionsflaggen nur bei tatsächlicher geografischer Relevanz; sonst neutrale Kugeln
+- einfache weiße expressive Augen, minimale Gesichtselemente
+- dicke saubere schwarze Konturen
+- sauberer flacher Vektor-/Comic-Look
+- dezente weiche Schatten, höchstens sehr leichte Textur
+- ein dominantes Hauptmotiv, wenige unterstützende Requisiten
+- einfarbiger oder sanft texturierter Hintergrund
+- klare Metapher, möglichst innerhalb ungefähr einer Sekunde verständlich
+- keine realistischen Menschen, kein Fotorealismus, kein Anime, kein Clay, kein glänzendes 3D, keine Stockfoto-Ästhetik
+- Prompts Englisch; sichtbarer Bildtext ausschließlich Deutsch
+
+Reine Mechanismen, Gegenstände, Diagramme oder wissenschaftliche Symbole dürfen ohne Kugelfigur Hauptmotiv sein, müssen aber dieselbe Kontur-, Vereinfachungs- und 2D-Formsprache verwenden.
+
+Historische Reels und Prompts bleiben Archivmaterial und dürfen keine abweichende Bildwelt reaktivieren.
 
 ## Bildprompts
 
-Jeder visuelle Quellprompt bleibt konkret und eindeutig, aber ohne globalen Stil-Lock.
+Jeder visuelle Quellprompt ist konkret, eindeutig, auf Englisch und mit `modern-countryball-explainer` kompatibel.
 
 Pflicht:
 
 1. 9:16
 2. konkrete Bildkomposition und Handlung
-3. exakt erlaubter deutscher Bildtext, falls vorgesehen
-4. keine unerwarteten lesbaren Wörter
-5. keine Workflow-Labels im Bild
-6. volle 9:16-Fläche ohne künstliche Untertitelzone
+3. feste Bildwelt `modern-countryball-explainer`
+4. exakt erlaubter deutscher Bildtext, falls vorgesehen
+5. keine unerwarteten lesbaren Wörter
+6. keine Workflow-Labels im Bild
+7. volle 9:16-Fläche ohne künstliche Untertitelzone
 
-Keine feste Figurengeometrie, Palette, Textur oder historische Referenz automatisch ergänzen.
+Beim Export ergänzt das System den festen Style-Lock global und direkt vor jedem einzelnen Bildabschnitt. Widersprechende Stilbegriffe in einem Quellprompt werden dadurch überstimmt, ohne den konkreten Inhalt zu verändern.
 
-`Bild 00` ist aktuell nur Cover, nicht automatisch Style-Master.
+`Bild 00` ist das Cover, aber nicht der alleinige Style-Master. Die globale Repo-Bildwelt ist der Style-Master.
 
 ## Starkes Ende
 
@@ -133,7 +141,7 @@ Verbindliche Nutzerdatei:
 00-bildprompts/99-alle-bildprompts.txt
 ```
 
-Sie enthält den kompletten seriellen Gesamtprompt mit Auftrag, Serienregeln, Dateinamen und allen vollständigen konkreten Bildprompts.
+Sie enthält den kompletten seriellen Gesamtprompt mit Auftrag, Serienregeln, Dateinamen, dem festen globalen Style-Lock und allen vollständigen konkreten Bildprompts. Vor jedem Bildabschnitt wird derselbe Style-Lock erneut gesetzt.
 
 `all-image-prompts/all-image-prompts.txt` ist die identische technische Spiegeldatei.
 
@@ -144,7 +152,7 @@ Flow muss streng seriell arbeiten:
 ```text
 genau ein Bild generieren
 → vollständig warten
-→ gegen den aktuellen Bildprompt prüfen
+→ gegen aktuellen Bildprompt UND feste Bildwelt prüfen
 → korrekt umbenennen
 → erst dann nächstes Bild
 ```
@@ -174,6 +182,7 @@ Die Nummerierung `Bild 00`, `Bild 01` usw. ist nur Routing-Hilfe. Die finale Zuo
 - Bild tatsächlich öffnen
 - sichtbaren Inhalt neutral in `visibleSummary` beschreiben
 - mit `narration`, `audioCue`, `visualIdea`, `imageText` und `imagePrompt` vergleichen
+- feste Bildwelt `modern-countryball-explainer` sichtbar prüfen
 - konkrete `reason` schreiben
 
 ### Zweiter Durchgang
@@ -228,6 +237,7 @@ Vor Freigabe prüfen:
 - 12–14 narrative Szenen mit sinnvoller individueller Bilddichte
 - Hook sofort sichtbar
 - jedes Bild erklärt exakt seine Bildphase
+- jedes Bild hält `modern-countryball-explainer` ein
 - sichtbare Bildbeschreibung, Zuordnungsgrund und zweite Prüfung vorhanden
 - keine Untertitel
 - Voice-over exakt 1,10x, −16 LUFS und höchstens −1,5 dBTP real gemessen

@@ -7,13 +7,14 @@ import path from 'node:path';
 import { createReelWorkspace } from '../src/core/workspace.js';
 import { prepareReelProduction } from '../src/core/production-brief.js';
 
-test('bevorzugt kurzen deutschen Bildtext ohne automatische Bildwelt-Auswahl', async () => {
+test('bevorzugt kurzen deutschen Bildtext innerhalb der festen Bildwelt', async () => {
   const rules = JSON.parse(await readFile(path.resolve('config', 'content-rules.json'), 'utf8'));
   const textRules = rules.visualRules.embeddedTextRules;
 
-  assert.equal(rules.visualRules.visualWorldMode, 'unassigned');
-  assert.equal(rules.visualRules.fixedVisualWorld, null);
+  assert.equal(rules.visualRules.visualWorldMode, 'fixed');
+  assert.equal(rules.visualRules.fixedVisualWorld, 'modern-countryball-explainer');
   assert.equal(rules.visualRules.selectVisualWorldAfterScript, false);
+  assert.equal(rules.visualRules.promptLanguage, 'en');
   assert.equal(rules.visualRules.integratedGermanTextPreferred, true);
   assert.equal(textRules.language, 'de');
   assert.deepEqual(textRules.preferredWordsPerScene, { min: 1, max: 5 });
@@ -21,7 +22,7 @@ test('bevorzugt kurzen deutschen Bildtext ohne automatische Bildwelt-Auswahl', a
   assert.equal(textRules.mustAppearExactlyInPrompt, true);
 });
 
-test('Codex-Auftrag berechnet Bildtext-Zielbereich und verbietet alte Stil-Ableitung', async () => {
+test('Codex-Auftrag berechnet Bildtext-Zielbereich und erzwingt die feste Bildwelt', async () => {
   const outputRoot = await mkdtemp(path.join(os.tmpdir(), 'erklaer-image-text-'));
 
   try {
@@ -37,12 +38,16 @@ test('Codex-Auftrag berechnet Bildtext-Zielbereich und verbietet alte Stil-Ablei
     const task = await readFile(result.taskFile, 'utf8');
     const checklist = JSON.parse(await readFile(result.checklistFile, 'utf8'));
 
-    assert.match(task, /keine feste Bildwelt definiert/i);
-    assert.match(task, /Keine Bildwelt autonom auswählen/i);
+    assert.match(task, /Verbindliche Bildwelt: Modern Countryball Explainer/i);
+    assert.match(task, /modern-countryball-explainer/);
+    assert.match(task, /Keine Bildwelt auswählen oder rotieren/i);
     assert.match(task, /kurzen deutschen Bildtext/i);
     assert.match(task, /exakten deutschen Text/i);
+    assert.match(task, /Bildprompts: \*\*Englisch\*\*/i);
+    assert.match(task, /sichtbarer Bildtext: \*\*Deutsch\*\*/i);
     assert.ok(checklist.tasks.some((entry) => entry.id === 'image-text-plan'));
-    assert.ok(checklist.tasks.some((entry) => entry.id === 'visual-world-unassigned'));
+    assert.ok(checklist.tasks.some((entry) => entry.id === 'visual-world-fixed'));
+    assert.equal(checklist.visualStyleId, 'modern-countryball-explainer');
   } finally {
     await rm(outputRoot, { recursive: true, force: true });
   }

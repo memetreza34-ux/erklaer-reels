@@ -43,18 +43,19 @@ test('aktiver npm-Workflow bietet keinen normalen sync:words-Befehl mehr an', as
   assert.equal(packageJson.scripts['legacy:sync:words'], 'node src/cli/sync-words.js');
 });
 
-test('alte Visual-World-Policy und Countryball-Style-Master sind entfernt', async () => {
+test('alte Visual-World-Policy und alter Countryball-Style-Master bleiben entfernt', async () => {
   assert.equal(await exists('VISUAL_WORLD_POLICY.md'), false);
   assert.equal(await exists('knowledge/countryball-style-master.md'), false);
   assert.equal(await exists('test/kugelwelt-geometry-lock.test.js'), false);
+  assert.equal(await exists('knowledge/fixed-visual-world.md'), true);
 });
 
-test('README friert offene Themenwelt und unassigned Bildwelt ein', async () => {
+test('README friert offene Themenwelt und neue feste Bildwelt ein', async () => {
   const readme = await text('README.md');
 
   assert.match(readme, /offenem Themenuniversum/i);
-  assert.match(readme, /keine feste Bildwelt/i);
-  assert.match(readme, /visualStyleId = null/);
+  assert.match(readme, /feste.*Bildwelt/i);
+  assert.match(readme, /modern-countryball-explainer/);
   assert.match(readme, /00-bildprompts\/99-alle-bildprompts\.txt/);
 });
 
@@ -66,24 +67,28 @@ test('Antigravity Policy enthält weder aktiven Word-Sync noch alten Flow-Einsti
   assert.doesNotMatch(policy, /Untertitel-\/Word-Sync/);
 });
 
-test('Content-Regeln sind offen und besitzen keine feste Bildwelt', async () => {
+test('Content-Regeln sind offen und besitzen die feste Bildwelt', async () => {
   const rules = JSON.parse(await text('config/content-rules.json'));
 
   assert.equal(rules.topicFocus.openTopicUniverse, true);
   assert.equal(rules.topicFocus.autonomousSelectionLimitedToAllowedTopics, false);
-  assert.equal(rules.visualRules.visualWorldMode, 'unassigned');
-  assert.equal(rules.visualRules.fixedVisualWorld, null);
+  assert.equal(rules.visualRules.visualWorldMode, 'fixed');
+  assert.equal(rules.visualRules.fixedVisualWorld, 'modern-countryball-explainer');
   assert.equal(rules.visualRules.selectVisualWorldAfterScript, false);
+  assert.equal(rules.visualRules.consistentStyleWithinReel, true);
 });
 
-test('Image-Style-Konfiguration enthält keine aktive alte Stilwelt', async () => {
+test('Image-Style-Konfiguration enthält genau die aktive feste Bildwelt', async () => {
   const styles = JSON.parse(await text('config/image-styles.json'));
 
-  assert.equal(styles.visualWorldMode, 'unassigned');
-  assert.equal(styles.fixedVisualWorld, null);
-  assert.deepEqual(styles.newReelAllowedStyleIds, []);
-  assert.deepEqual(styles.styles, []);
-  assert.deepEqual(styles.goldenReferencePaths, []);
+  assert.equal(styles.visualWorldMode, 'fixed');
+  assert.equal(styles.fixedVisualWorld, 'modern-countryball-explainer');
+  assert.deepEqual(styles.newReelAllowedStyleIds, ['modern-countryball-explainer']);
+  assert.equal(styles.styles.length, 1);
+  assert.equal(styles.styles[0].id, 'modern-countryball-explainer');
+  assert.equal(styles.styles[0].promptLanguage, 'en');
+  assert.equal(styles.styles[0].visibleTextLanguage, 'de');
+  assert.equal(styles.styleBiblePath, 'knowledge/fixed-visual-world.md');
 });
 
 test('sichtbare Technikansicht bietet Untertitel nicht mehr als aktiven Arbeitsbereich an', async () => {
@@ -93,10 +98,8 @@ test('sichtbare Technikansicht bietet Untertitel nicht mehr als aktiven Arbeitsb
   assert.match(humanView, /Untertitel sind für neue Reels deaktiviert/);
 });
 
-test('Quality Gates enthalten keine tote Untertitel-Timing-Regel und keine Bildwelt-Sperre mehr', async () => {
+test('Quality Gates enthalten keine tote Untertitel-Timing-Regel', async () => {
   const gates = JSON.parse(await text('config/production-quality-gates.json'));
 
   assert.equal(gates.sceneTiming.subtitlesEndWithVoiceover, undefined);
-  assert.equal(gates.visualContinuity.requireVisualWorldMatch, undefined);
-  assert.equal(gates.visualContinuity.requireCharacterModelConsistency, undefined);
 });

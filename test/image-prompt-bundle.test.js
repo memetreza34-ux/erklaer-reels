@@ -20,7 +20,10 @@ const NEUTRAL_BASE = 'Vertical 9:16 illustration. Use the full frame naturally w
 async function createFixture({ missingCoverPrompt = false, missingSecondPrompt = false, missingExtraPrompt = false } = {}) {
   const root = await mkdtemp(path.join(os.tmpdir(), 'prompt-bundle-'));
   await writeJson(path.join(root, 'status.json'), { imagePrompts: 'ready' });
-  await writeJson(path.join(root, 'reel.json'), { visualStyleId: null, visualStyleReason: '' });
+  await writeJson(path.join(root, 'reel.json'), {
+    visualStyleId: 'modern-countryball-explainer',
+    visualStyleReason: 'Globale feste Bildwelt für alle neuen Erklär-Reels: moderner minimalistischer Countryball-Erklärstil.'
+  });
   await writeJson(path.join(root, 'cover', 'cover.json'), { headline: 'NUR DIESE HOOK' });
   await writeJson(path.join(root, 'scenes', 'scene-index.json'), [
     {
@@ -78,7 +81,7 @@ async function createFixture({ missingCoverPrompt = false, missingSecondPrompt =
   return root;
 }
 
-test('README erklärt den kompletten seriellen Gesamtprompt ohne feste Bildwelt', async () => {
+test('README erklärt den kompletten seriellen Gesamtprompt mit fester Bildwelt', async () => {
   const root = await createFixture();
   const paths = await ensureImagePromptBundleDirectory(root);
   const readme = await readFile(paths.readme, 'utf8');
@@ -88,11 +91,14 @@ test('README erklärt den kompletten seriellen Gesamtprompt ohne feste Bildwelt'
   assert.match(readme, /komplette serielle Gesamtprompt/);
   assert.match(readme, /Exakt eine Bildgenerierung pro Agent-Schritt/);
   assert.match(readme, /google-flow-controller\.txt.*deaktiviert/is);
-  assert.match(readme, /keine feste Bildwelt definiert/i);
+  assert.match(readme, /Modern Countryball Explainer/i);
+  assert.match(readme, /modern-countryball-explainer/);
+  assert.match(readme, /Style-Lock global.*direkt vor jedem/is);
   assert.match(userReadme, /99-alle-bildprompts\.txt/);
+  assert.match(userReadme, /Prompts sind Englisch.*Bildtext ist Deutsch/is);
 });
 
-test('exportiert kompletten seriellen Aufbau und hält konkrete Visual-Prompts wortgetreu', async () => {
+test('exportiert seriellen Aufbau, erzwingt festen Style-Lock und hält Quellprompts wortgetreu', async () => {
   const root = await createFixture();
   const sourceCover = (await readFile(path.join(root, 'cover', 'cover-prompt.txt'), 'utf8')).trim();
   const sourceScene = (await readFile(path.join(root, 'scenes', 'scene-02', 'image-prompt-02.txt'), 'utf8')).trim();
@@ -111,19 +117,25 @@ test('exportiert kompletten seriellen Aufbau und hält konkrete Visual-Prompts w
   assert.match(bundle, /Genau EINEN Bildgenerator-Aufruf/);
   assert.match(bundle, /Niemals zwei oder mehr Generierungsaktionen im selben Agent-Schritt/);
   assert.match(bundle, /späteren Bildprompts.*NICHT zur Ausführung freigegeben/);
-  assert.match(bundle, /KEINE FESTE BILDWELT AKTIV/);
+  assert.match(bundle, /VERBINDLICHE BILDWELT – MODERN COUNTRYBALL EXPLAINER/);
+  assert.match(bundle, /Style-ID: modern-countryball-explainer/);
+  assert.match(bundle, /GLOBAL FIXED STYLE LOCK \(ENGLISH — MANDATORY FOR EVERY IMAGE\)/);
+  assert.match(bundle, /Create a vertical 9:16 educational explainer illustration in a modern minimalist countryball-inspired style/);
+  assert.match(bundle, /FIXED VISUAL STYLE FOR THIS IMAGE — MANDATORY:/);
+  assert.match(bundle, /If the specific image content below contains any style wording that conflicts/i);
   assert.match(bundle, /BILD 00 – COVER/);
   assert.match(bundle, /BILD 03 – SZENE 2 – BILDPHASE 2/);
   assert.match(bundle, /DATEINAME NACH FERTIGSTELLUNG: Bild 03\.png/);
   assert.match(bundle, /ARBEITSLABELS SIND NIEMALS BILDINHALT/);
+  assert.match(bundle, /the ONLY readable text allowed is exactly the German phrase "NUR DIESE HOOK"/);
+  assert.match(bundle, /Visible text rule for this image: no readable text anywhere in the image/);
   assert.ok(bundle.includes(sourceCover));
   assert.ok(bundle.includes(sourceScene));
-  assert.doesNotMatch(bundle, /round-country-characters/);
-  assert.doesNotMatch(bundle, /Golden Reference/i);
 
   assert.equal(p00, sourceCover);
   assert.equal(p03, sourceScene);
   assert.doesNotMatch(p00, /BILD 00 – COVER/);
+  assert.doesNotMatch(p00, /FIXED VISUAL STYLE FOR THIS IMAGE/);
   assert.doesNotMatch(p00, /DATEINAME NACH FERTIGSTELLUNG/);
 
   assert.equal(result.controllerFile, null);
@@ -131,6 +143,12 @@ test('exportiert kompletten seriellen Aufbau und hält konkrete Visual-Prompts w
   assert.equal(result.sceneCount, 3);
   assert.equal(result.plannedImageCount, 4);
   assert.equal(result.totalPromptCount, 5);
+  assert.equal(result.visualStyleId, 'modern-countryball-explainer');
+
+  const status = JSON.parse(await readFile(path.join(root, 'status.json'), 'utf8'));
+  assert.equal(status.imagePromptBundle, 'ready-complete-serial-bundle-fixed-visual-world');
+  assert.equal(status.imagePromptMode, 'single-complete-serial-bundle-fixed-visual-world');
+  assert.equal(status.visualWorld, 'fixed-modern-countryball-explainer');
 
   const validation = await validateImagePromptBundle(root);
   assert.equal(validation.passed, true);
@@ -138,6 +156,8 @@ test('exportiert kompletten seriellen Aufbau und hält konkrete Visual-Prompts w
   assert.equal(validation.filePresent, true);
   assert.equal(validation.technicalMirrorPresent, true);
   assert.equal(validation.individualPromptFiles.length, 5);
+  assert.equal(validation.visualStyleId, 'modern-countryball-explainer');
+  assert.match(validation.message, /feste Bildwelt modern-countryball-explainer/);
   assert.ok(validation.individualPromptFiles.every((item) => item.current));
 });
 

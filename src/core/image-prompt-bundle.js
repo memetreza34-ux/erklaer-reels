@@ -1,6 +1,11 @@
 import { access, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
+import {
+  FIXED_VISUAL_STYLE_ID,
+  FIXED_VISUAL_WORLD_LABEL,
+  FIXED_VISUAL_WORLD_PROMPT
+} from '../shared/fixed-visual-world.js';
 import { flattenSceneImagePhases } from '../shared/visual-moments.js';
 
 const BUNDLE_DIRECTORY = 'all-image-prompts';
@@ -57,9 +62,9 @@ export async function ensureImagePromptBundleDirectory(reelDirectory) {
   await mkdir(paths.individualPromptsDirectory, { recursive: true });
   await mkdir(paths.userDirectory, { recursive: true });
 
-  const readme = `# Google-Flow-Bildprompts\n\nDie **verbindliche Nutzerdatei** ist der komplette serielle Gesamtprompt:\n\n\`${USER_PROMPTS_DIRECTORY}/${USER_BUNDLE_FILE}\`\n\nAktuell ist im Repository **keine feste Bildwelt definiert**. Der Exporter fügt deshalb keine Countryball-, Figuren-, Farb-, Papier-, Editorial- oder Golden-Reference-Regeln hinzu. Ausschließlich die konkreten Cover- und Szenenprompts bestimmen den visuellen Inhalt. Historische Reel-Prompts sind keine aktive Stilvorgabe.\n\nWichtig: Trotz Gesamtprompt darf Google Flow niemals mehrere Bilder gleichzeitig starten. Exakt eine Bildgenerierung pro Agent-Schritt, vollständig warten, das Ergebnis gegen den aktuellen Prompt prüfen, umbenennen und erst danach das nächste Bild.\n\n\`${BUNDLE_DIRECTORY}/${BUNDLE_FILE}\` ist eine identische technische Kopie. Die Dateien unter \`${BUNDLE_DIRECTORY}/${INDIVIDUAL_PROMPTS_DIRECTORY}/\` bleiben nur als interne Einzelprompt-Sicherung erhalten. \`${CONTROLLER_FILE}\` ist deaktiviert und wird beim Export entfernt.\n\nErzeugen oder aktualisieren:\n\n\`\`\`bash\nnpm run export:prompts -- --dir "${normalizedRelativePath(reelDirectory)}" --strict\n\`\`\`\n`;
+  const readme = `# Google-Flow-Bildprompts\n\nDie **verbindliche Nutzerdatei** ist der komplette serielle Gesamtprompt:\n\n\`${USER_PROMPTS_DIRECTORY}/${USER_BUNDLE_FILE}\`\n\nIm Repository ist die feste Bildwelt **${FIXED_VISUAL_WORLD_LABEL}** (\`${FIXED_VISUAL_STYLE_ID}\`) aktiv. Der Exporter ergänzt diesen Style-Lock global und zusätzlich direkt vor jedem einzelnen Cover-/Szenenprompt. Dadurch bleibt die Bildsprache unabhängig vom Thema gleich. Der konkrete Quellprompt bestimmt Inhalt und Komposition; widersprechende Stilformulierungen werden vom festen Style-Lock überstimmt.\n\nBildprompts sind Englisch. Sichtbarer Bildtext ist ausschließlich der konkret geplante deutsche Text.\n\nWichtig: Trotz Gesamtprompt darf Google Flow niemals mehrere Bilder gleichzeitig starten. Exakt eine Bildgenerierung pro Agent-Schritt, vollständig warten, das Ergebnis gegen den aktuellen Prompt prüfen, umbenennen und erst danach das nächste Bild.\n\n\`${BUNDLE_DIRECTORY}/${BUNDLE_FILE}\` ist eine identische technische Kopie. Die Dateien unter \`${BUNDLE_DIRECTORY}/${INDIVIDUAL_PROMPTS_DIRECTORY}/\` bleiben nur als interne wortgetreue Einzelprompt-Sicherung erhalten. \`${CONTROLLER_FILE}\` ist deaktiviert und wird beim Export entfernt.\n\nErzeugen oder aktualisieren:\n\n\`\`\`bash\nnpm run export:prompts -- --dir "${normalizedRelativePath(reelDirectory)}" --strict\n\`\`\`\n`;
 
-  const userReadme = `# Bildprompts\n\nFür Google Flow **nur diese Datei verwenden**:\n\n\`${USER_BUNDLE_FILE}\`\n\nAktuell existiert keine feste Repo-Bildwelt. Der Gesamtprompt darf keine alte Kugel-/Countryball-Welt oder andere historische Stilvorgabe automatisch ergänzen. Immer genau ein Bild erzeugen, gegen den jeweiligen Bildprompt prüfen, korrekt benennen und erst dann das nächste starten.\n`;
+  const userReadme = `# Bildprompts\n\nFür Google Flow **nur diese Datei verwenden**:\n\n\`${USER_BUNDLE_FILE}\`\n\nFeste Bildwelt: **${FIXED_VISUAL_WORLD_LABEL}** (\`${FIXED_VISUAL_STYLE_ID}\`). Sie gilt für jedes Bild und jedes Thema. Prompts sind Englisch, sichtbarer Bildtext ist Deutsch. Immer genau ein Bild erzeugen, gegen den jeweiligen Bildprompt und den festen Style-Lock prüfen, korrekt benennen und erst dann das nächste starten.\n`;
 
   await writeFile(paths.readme, readme, 'utf8');
   await writeFile(paths.userReadme, userReadme, 'utf8');
@@ -121,6 +126,26 @@ function formatIndividualPrompt(entry) {
   return entry.prompt || '[BILDPROMPT FEHLT]';
 }
 
+function visibleTextRule(entry) {
+  if (entry.allowedVisibleText) {
+    return `Visible text rule for this image: the ONLY readable text allowed is exactly the German phrase "${entry.allowedVisibleText}". Keep the spelling exact. No other readable text and no English visible text.`;
+  }
+  return 'Visible text rule for this image: no readable text anywhere in the image. No English, pseudo-text, labels, logos or watermark.';
+}
+
+function formatStyledGenerationPrompt(entry) {
+  const specificPrompt = entry.prompt || '[BILDPROMPT FEHLT]';
+  return [
+    'FIXED VISUAL STYLE FOR THIS IMAGE — MANDATORY:',
+    FIXED_VISUAL_WORLD_PROMPT,
+    'If the specific image content below contains any style wording that conflicts with this fixed visual style, ignore only the conflicting style wording. Preserve its factual subject, visual metaphor, composition and requested German text.',
+    visibleTextRule(entry),
+    '',
+    'SPECIFIC IMAGE CONTENT:',
+    specificPrompt
+  ].join('\n');
+}
+
 function imageRole(entry) {
   if (entry.kind === 'cover') return 'Cover';
   if (Number(entry.phaseOrder ?? 1) > 1) return `Szene ${entry.sceneOrder}, Bildphase ${entry.phaseOrder}`;
@@ -156,7 +181,7 @@ function formatCompleteSerialBundle(prompts) {
     '1. Nur den aktuellen Bildabschnitt bearbeiten.',
     '2. Genau EINEN Bildgenerator-Aufruf auslösen. Niemals zwei oder mehr Generierungsaktionen im selben Agent-Schritt, Tool-Batch oder Turn.',
     '3. Warten, bis dieses eine Bild sichtbar vollständig fertig ist.',
-    '4. VOR dem Fortfahren das Bild sichtbar gegen den aktuellen visuellen Prompt prüfen. Bei falschem Inhalt dasselbe Bild neu erzeugen und NICHT zum nächsten Bild gehen.',
+    '4. VOR dem Fortfahren das Bild sichtbar gegen den aktuellen visuellen Prompt UND die feste Bildwelt prüfen. Bei falschem Inhalt oder Stil dasselbe Bild neu erzeugen und NICHT zum nächsten Bild gehen.',
     '5. Erst ein korrektes Bild exakt in den vorgesehenen Namen umbenennen.',
     '6. Prüfen, dass die Umbenennung erfolgreich ist und genau dieses Bild fertig vorliegt.',
     '7. Erst NACH dieser Bestätigung den nächsten Bildabschnitt ausführen.',
@@ -164,10 +189,13 @@ function formatCompleteSerialBundle(prompts) {
     'Keine Batches, keine Queue, kein paralleles Tool-Batching, kein gleichzeitiges Starten, keine Mehrfach-Generierung und keine Ansammlung unbenannter Bilder.',
     'Falls versehentlich ein zweiter oder dritter Job gestartet wurde: keine weiteren Jobs starten; spätere parallele Jobs abbrechen und beim ersten noch nicht sauber abgeschlossenen Bild fortsetzen.',
     '',
-    'KEINE FESTE BILDWELT AKTIV',
-    'Das Repository definiert aktuell bewusst keine feste Bildwelt, kein festes Figurenmodell und keine Golden Reference.',
-    'Keine Regeln aus alten Kugel-, Countryball-, Editorial- oder anderen historischen Reels automatisch übernehmen.',
-    'Für jedes Bild ist ausschließlich der jeweilige konkrete visuelle Prompt maßgeblich.',
+    `VERBINDLICHE BILDWELT – ${FIXED_VISUAL_WORLD_LABEL.toUpperCase()}`,
+    `Style-ID: ${FIXED_VISUAL_STYLE_ID}`,
+    'Diese Bildwelt gilt ausnahmslos für Cover und jedes Szenenbild, unabhängig vom Thema. Inhalt, Symbolik und Hintergrundfarbe dürfen wechseln; die Formsprache darf nicht wechseln.',
+    'Jeder einzelne Bildabschnitt wiederholt den Style-Lock zusätzlich direkt vor dem konkreten Bildinhalt.',
+    '',
+    'GLOBAL FIXED STYLE LOCK (ENGLISH — MANDATORY FOR EVERY IMAGE):',
+    FIXED_VISUAL_WORLD_PROMPT,
     '',
     'DATEINAMEN'
   ];
@@ -180,7 +208,7 @@ function formatCompleteSerialBundle(prompts) {
   lines.push(
     '',
     'BILD 00',
-    'Bild 00.png ist das Cover. Es wird aktuell NICHT automatisch als verbindlicher globaler Style-Master interpretiert. Eine neue feste Bildwelt oder Style-Master-Regel darf erst nach einer ausdrücklichen Nutzerentscheidung eingeführt werden.',
+    `Bild 00.png ist das Cover. Es ist nicht der alleinige Style-Master; der globale Style-Master ist die feste Repo-Bildwelt ${FIXED_VISUAL_STYLE_ID}, die für Bild 00 und alle folgenden Bilder identisch gilt.`,
     '',
     'ARBEITSLABELS SIND NIEMALS BILDINHALT',
     'BILD-Nummern, COVER, SZENE, BILDPHASE, DATEINAME, Dateinamen und diese Workflow-Anweisungen sind nur Steuertext. Sie dürfen niemals im generierten Bild erscheinen.',
@@ -189,7 +217,7 @@ function formatCompleteSerialBundle(prompts) {
     'Nur der im jeweiligen visuellen Prompt ausdrücklich verlangte deutsche Text darf sichtbar erscheinen. Kein zusätzlicher englischer Text, keine Fantasiewörter, keine technischen Labels, keine Logos und keine Wasserzeichen. Wenn der Bildprompt keinen sichtbaren Text verlangt, bleibt das Bild vollständig textfrei.',
     '',
     'ENDE',
-    `Erst nachdem Bild 00 bis Bild ${last} vollständig erzeugt, gegen den jeweiligen Bildprompt geprüft, korrekt umbenannt und die Nummerierung geprüft wurden, alle fertigen Bilder gemeinsam in den vorgesehenen Sammelordner legen.`,
+    `Erst nachdem Bild 00 bis Bild ${last} vollständig erzeugt, gegen den jeweiligen Bildprompt und die feste Bildwelt geprüft, korrekt umbenannt und die Nummerierung geprüft wurden, alle fertigen Bilder gemeinsam in den vorgesehenen Sammelordner legen.`,
     '',
     '────────────────────────────────────────'
   );
@@ -200,7 +228,7 @@ function formatCompleteSerialBundle(prompts) {
       '',
       imageHeading(entry),
       `DATEINAME NACH FERTIGSTELLUNG: Bild ${number}.png`,
-      entry.prompt || '[BILDPROMPT FEHLT]'
+      formatStyledGenerationPrompt(entry)
     );
   }
 
@@ -236,9 +264,10 @@ export async function buildImagePromptBundle(reelDirectory, { strict = false } =
   const statusPath = path.join(reelDirectory, 'status.json');
   if (await exists(statusPath)) {
     const status = await readJson(statusPath);
-    status.imagePromptBundle = missingIds.length === 0 ? 'ready-complete-serial-bundle-no-fixed-visual-world' : 'incomplete';
+    status.imagePromptBundle = missingIds.length === 0 ? 'ready-complete-serial-bundle-fixed-visual-world' : 'incomplete';
     status.googleFlowController = 'disabled-use-complete-bundle';
-    status.imagePromptMode = 'single-complete-serial-bundle-no-fixed-visual-world';
+    status.imagePromptMode = 'single-complete-serial-bundle-fixed-visual-world';
+    status.visualWorld = `fixed-${FIXED_VISUAL_STYLE_ID}`;
     status.plannedImageCount = prompts.filter((entry) => entry.kind === 'scene').length;
     await writeFile(statusPath, `${JSON.stringify(status, null, 2)}\n`, 'utf8');
   }
@@ -255,6 +284,7 @@ export async function buildImagePromptBundle(reelDirectory, { strict = false } =
     missingPromptIds: missingIds,
     missingSceneIds: prompts.filter((entry) => entry.kind === 'scene' && entry.missing).map((entry) => entry.sceneId),
     complete: missingIds.length === 0,
+    visualStyleId: FIXED_VISUAL_STYLE_ID,
     content: bundle
   };
 }
@@ -298,6 +328,7 @@ export async function validateImagePromptBundle(reelDirectory) {
     technicalMirrorPresent: actualTechnical !== null,
     controllerPresent,
     individualPromptFiles: individualChecks,
+    visualStyleId: FIXED_VISUAL_STYLE_ID,
     current,
     message: missingIds.length > 0
       ? `Bildprompts fehlen für: ${missingIds.join(', ')}.`
@@ -311,6 +342,6 @@ export async function validateImagePromptBundle(reelDirectory) {
               ? 'Mindestens eine interne Einzelprompt-Sicherung fehlt.'
               : !current
                 ? 'Kompletter Gesamtprompt oder Einzelprompt-Sicherungen sind veraltet.'
-                : 'Kompletter serieller Google-Flow-Gesamtprompt ist aktuell und enthält keine feste Repo-Bildwelt.'
+                : `Kompletter serieller Google-Flow-Gesamtprompt ist aktuell und erzwingt die feste Bildwelt ${FIXED_VISUAL_STYLE_ID}.`
   };
 }

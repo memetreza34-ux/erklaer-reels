@@ -1,24 +1,101 @@
 {
-  "visualWorldMode": "unassigned",
-  "fixedVisualWorld": null,
-  "newReelAllowedStyleIds": [],
-  "styles": [],
-  "selectionRule": "Aktuell ist keine feste Bildwelt definiert. Keine frühere Bildwelt, Golden Reference oder Figurenregel automatisch übernehmen. Historische Reel-Prompts sind nur Archivmaterial und keine aktive Stilvorgabe.",
+  "visualWorldMode": "fixed",
+  "fixedVisualWorld": "modern-countryball-explainer",
+  "newReelAllowedStyleIds": [
+    "modern-countryball-explainer"
+  ],
+  "styles": [
+    {
+      "id": "modern-countryball-explainer",
+      "name": "Modern Countryball Explainer",
+      "active": true,
+      "scope": "all-new-reels-all-topics",
+      "promptLanguage": "en",
+      "visibleTextLanguage": "de",
+      "description": "Moderner minimalistischer Countryball-inspirierter 2D-Erklärgrafik-Stil mit dicken schwarzen Konturen, klaren visuellen Metaphern, ruhigen einfarbigen Hintergründen und kurzem deutschem Bildtext.",
+      "characterSystem": {
+        "defaultActor": "round-ball-character",
+        "countryFlagOnlyWhenSemanticallyRelevant": true,
+        "neutralBallForGeneralTopics": true,
+        "eyes": "simple-white-expressive-eyes-with-black-outline",
+        "mouth": "optional-only-when-needed",
+        "limbs": "minimal-only-when-action-needs-them"
+      },
+      "rendering": {
+        "dimension": "2d",
+        "look": "clean-vector-cartoon",
+        "outlines": "thick-clean-black",
+        "shadows": "subtle-soft",
+        "texture": "none-or-very-light-grain",
+        "photorealism": false,
+        "glossy3d": false
+      },
+      "composition": {
+        "aspectRatio": "9:16",
+        "smartphoneFirst": true,
+        "oneClearMoment": true,
+        "oneDominantFocalSubject": true,
+        "fewSupportingProps": true,
+        "fullFrame": true,
+        "noSubtitleSafeZone": true,
+        "avoidMultiPanel": true,
+        "understandableWithinSeconds": 1
+      },
+      "background": {
+        "type": "solid-or-gently-textured-single-color",
+        "colorMayVaryByScene": true,
+        "complexScenery": false
+      },
+      "visibleText": {
+        "language": "de",
+        "preferredWords": {
+          "min": 1,
+          "max": 5
+        },
+        "style": "bold-high-contrast-sans-serif-often-uppercase",
+        "preferredPlacement": "bottom-or-naturally-integrated",
+        "exactOnly": true,
+        "noTextWhenUnrequested": true
+      },
+      "forbidden": [
+        "photorealism",
+        "realistic-humans",
+        "realistic-faces",
+        "anime",
+        "manga",
+        "clay-style",
+        "glossy-3d",
+        "cinematic-photorealism",
+        "stock-photo-aesthetic",
+        "complex-realistic-scenery",
+        "generic-icon-collage",
+        "excessive-small-details",
+        "unrequested-readable-text",
+        "english-visible-text",
+        "logos",
+        "watermarks"
+      ]
+    }
+  ],
+  "selectionRule": "Für jedes neue Reel und jedes Thema muss ausschließlich modern-countryball-explainer verwendet werden. Die konkrete Szene, Symbolik und Hintergrundfarbe dürfen wechseln, die Formsprache bleibt fest. Länderflaggen nur verwenden, wenn die geografische Identität inhaltlich relevant ist; sonst neutrale Kugelfiguren oder passende Objekte in derselben 2D-Formsprache nutzen.",
   "goldenReferencePaths": [],
+  "styleBiblePath": "knowledge/fixed-visual-world.md",
   "diversityRule": {
     "recentReelsToInspect": 5,
-    "avoidImmediateRepeat": false,
+    "avoidImmediateRepeat": true,
     "forcedRotation": false,
-    "fixedVisualWorldOverridesDiversity": false
+    "fixedVisualWorldOverridesDiversity": true,
+    "guidance": "Inhalt, Metaphern und Hintergrundfarben dürfen variieren; der Illustrationsstil darf nicht rotieren."
   },
   "selectionCriteria": [
     "1-Sekunden-Verständlichkeit",
     "Cover-und-Hook-Stärke",
-    "visuelle Klarheit"
+    "visuelle Klarheit",
+    "Übereinstimmung mit modern-countryball-explainer"
   ],
   "crossStyleTextRule": {
     "preferred": true,
     "language": "de",
-    "guidance": "Wo es die Aussage verbessert, integriere sehr kurzen deutschen Bildtext. Ein einzelnes Wort oder 1–5 Wörter reichen. Nicht in jede Szene zwingen; Untertitel bleiben deaktiviert."
+    "guidance": "Wo es die Aussage verbessert, integriere sehr kurzen deutschen Bildtext. Ein einzelnes Wort oder 1–5 Wörter reichen. Sichtbarer Text ist ausschließlich Deutsch; Prompts bleiben Englisch. Nicht in jede Szene zwingen; Untertitel bleiben deaktiviert."
   }
 }

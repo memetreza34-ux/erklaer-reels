@@ -23,7 +23,7 @@
     "reine Produktwerbung ohne Erklärwert"
   ],
   "topicFocus": {
-    "statement": "Das Themenuniversum ist offen. Aktuell ist keine feste Bildwelt definiert.",
+    "statement": "Das Themenuniversum ist offen. Alle neuen Reels verwenden die feste Bildwelt modern-countryball-explainer.",
     "openTopicUniverse": true,
     "autonomousSelectionLimitedToAllowedTopics": false,
     "allowedTopicsAreExamplesNotHardLimit": true,
@@ -146,11 +146,13 @@
       "max": 0.3,
       "default": 0.2
     },
-    "consistentStyleWithinReel": false,
-    "creativeStyleBetweenReels": true,
-    "visualWorldMode": "unassigned",
-    "fixedVisualWorld": null,
+    "consistentStyleWithinReel": true,
+    "creativeStyleBetweenReels": false,
+    "visualWorldMode": "fixed",
+    "fixedVisualWorld": "modern-countryball-explainer",
     "selectVisualWorldAfterScript": false,
+    "styleBiblePath": "knowledge/fixed-visual-world.md",
+    "promptLanguage": "en",
     "integratedGermanKeywordsAllowed": true,
     "integratedGermanTextPreferred": true,
     "embeddedTextRules": {
@@ -195,7 +197,21 @@
     "forbidUnrequestedReadableText": true,
     "visibleTextLanguage": "de",
     "noWatermarks": true,
-    "noLogosUnlessEditoriallyNecessary": true
+    "noLogosUnlessEditoriallyNecessary": true,
+    "fixedVisualWorldRequirements": [
+      "moderner minimalistischer Countryball-inspirierter Erklärgrafik-Stil",
+      "runde Kugelfiguren für Menschen, Gruppen, Institutionen oder Länder",
+      "Länderflaggen nur wenn geografische Identität inhaltlich relevant ist",
+      "neutrale einfarbige Kugeln für allgemeine Themen",
+      "dicke saubere schwarze Konturen",
+      "einfache weiße expressive Augen und minimale Gesichtselemente",
+      "sauberer flacher 2D-Vektor-/Comic-Look",
+      "dezente weiche Schatten und höchstens sehr leichte Textur",
+      "ein dominantes Hauptmotiv und wenige unterstützende Requisiten",
+      "einfarbiger oder sanft texturierter Hintergrund",
+      "keine realistischen Menschen, kein Fotorealismus, kein Anime, kein glänzendes 3D",
+      "sichtbarer Text ausschließlich Deutsch"
+    ]
   },
   "subtitleRules": {
     "defaultEnabled": false,

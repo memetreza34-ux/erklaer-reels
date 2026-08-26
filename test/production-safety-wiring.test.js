@@ -7,13 +7,16 @@ async function text(file) {
   return readFile(path.resolve(file), 'utf8');
 }
 
-test('Neue Reels verankern Quellen-Schema und unassigned Bildwelt direkt im Workspace-Core', async () => {
+test('Neue Reels verankern Quellen-Schema und feste Bildwelt direkt im Workspace-Core', async () => {
   const workspace = await text('src/core/workspace.js');
   const creator = await text('src/cli/create-reel.js');
+  const fixedWorld = await text('src/shared/fixed-visual-world.js');
 
-  assert.match(workspace, /visualStyleId:\s*null/);
-  assert.match(workspace, /visualStyleReason:\s*''/);
-  assert.doesNotMatch(workspace, /visualStyleId:\s*'round-country-characters'/);
+  assert.match(workspace, /FIXED_VISUAL_STYLE_ID/);
+  assert.match(workspace, /visualStyleId:\s*FIXED_VISUAL_STYLE_ID/);
+  assert.match(workspace, /visualStyleReason:\s*FIXED_VISUAL_STYLE_REASON/);
+  assert.match(fixedWorld, /modern-countryball-explainer/);
+  assert.match(fixedWorld, /modern minimalist countryball-inspired style/i);
   assert.match(workspace, /sourceQualitySchemaVersion:\s*3/);
   assert.match(workspace, /buildSourcesTemplate/);
 

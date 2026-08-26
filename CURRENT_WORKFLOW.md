@@ -72,54 +72,73 @@ Bei „Mach ein neues Reel“ darf kein altes Pillar-System die Auswahl einschr�
 
 ---
 
-## 2. Bildwelt: aktuell bewusst nicht definiert
+## 2. Bildwelt: fest definiert
 
-**Seit 2026-08-26 ist keine feste Repo-Bildwelt aktiv.**
+**Für alle neuen Reels ist die feste Repo-Bildwelt `modern-countryball-explainer` aktiv.**
 
-Das bedeutet ausdrücklich:
+Die Bildwelt gilt unabhängig vom Thema für Cover und jede einzelne Bildphase. Inhalt, Symbolik, Requisiten und Hintergrundfarbe dürfen wechseln; die grundlegende Formsprache darf nicht wechseln.
 
-- kein `round-country-characters` als Standard
-- keine feste Countryball-/Kugelregel
-- kein `human-editorial-cartoon` als Standard
-- kein `visual-metaphor` als Standard
-- keine Golden References
-- keine feste Figuren-Geometrie
-- keine feste Augen-, Mund-, Körper- oder Silhouettenregel
-- keine feste Palette
-- keine feste Papiertextur
-- kein verbindlicher „premium mature editorial“-Stil
-- keine automatische Übernahme alter Reel-Prompts
+Verbindliche Style-Bibel:
 
-Historische Reels, alte Prompts und frühere Stildateien sind **Archivmaterial**, keine aktive Vorgabe für neue Reels.
+```text
+knowledge/fixed-visual-world.md
+```
+
+Verbindliche Style-Konfiguration:
+
+```text
+config/image-styles.json
+```
 
 Neue Workspaces setzen:
 
 ```text
-visualStyleId = null
-visualStyleReason = ""
+visualStyleId = "modern-countryball-explainer"
+visualStyleReason = "Globale feste Bildwelt für alle neuen Erklär-Reels: moderner minimalistischer Countryball-Erklärstil."
 ```
 
-Solange der Nutzer keine neue Bildwelt ausdrücklich definiert, darf kein Agent selbst eine feste Bildwelt auswählen, erfinden oder aus älteren Reels ableiten.
+### Kernmerkmale
+
+- vertikal 9:16
+- moderner minimalistischer Countryball-inspirierter Erklärgrafik-Stil
+- runde Kugelfiguren für Menschen, Gruppen, Institutionen oder Länder
+- Länder-/Regionsflaggen nur wenn diese Identität inhaltlich relevant ist
+- bei allgemeinen Themen neutrale einfarbige Kugeln
+- einfache weiße expressive Augen, minimale Gesichtselemente
+- dicke saubere schwarze Konturen
+- flacher sauberer 2D-Vektor-/Comic-Look
+- dezente weiche Schatten, höchstens sehr leichte Textur
+- ein dominantes Hauptmotiv, wenige unterstützende Requisiten
+- klare visuelle Metapher, möglichst innerhalb ungefähr einer Sekunde verständlich
+- einfarbiger oder sanft texturierter Hintergrund; Farbe darf pro Bild zum Thema passen
+- keine realistischen Menschen, kein Fotorealismus, kein Anime, kein Clay, kein glänzendes 3D, keine Stockfoto-Ästhetik
+- Prompts Englisch; sichtbarer Bildtext ausschließlich Deutsch
+
+Reine Mechanismen, Gegenstände, Diagramme oder wissenschaftliche Symbole dürfen ohne Kugelfigur Hauptmotiv sein, wenn das Thema dadurch klarer erklärt wird. Sie müssen aber dieselbe dicke Kontur, Vereinfachung und 2D-Formsprache verwenden.
+
+Historische Reels bleiben Archivmaterial. Frühere Bildwelten oder alte Prompts dürfen die feste Bildwelt nicht überschreiben.
 
 ---
 
-## 3. Bildprompts ohne Repo-Stil-Lock
+## 3. Bildprompts mit Repo-Stil-Lock
 
-Jede `cover/cover-prompt.txt`, `image-prompt.txt`, `image-prompt-02.txt` usw. beschreibt nur den konkret gewünschten Bildinhalt.
+Jede `cover/cover-prompt.txt`, `image-prompt.txt`, `image-prompt-02.txt` usw. beschreibt den konkret gewünschten Bildinhalt **auf Englisch** und bleibt mit `modern-countryball-explainer` kompatibel.
 
-Aktuell darf der Repo-Workflow **keine** globale Figurenform, Palette, Textur, Golden Reference oder historische Stilformulierung automatisch davor- oder dahintersetzen.
-
-Verbindlich bleiben nur die neutralen Produktionsregeln:
+Verbindlich:
 
 1. Format 9:16
 2. konkrete Szene / Komposition / Handlung
-3. genau erlaubter deutscher Bildtext, falls vorhanden
-4. kein anderer lesbarer Text, kein Englisch, keine Logos, kein Wasserzeichen, sofern nicht ausdrücklich verlangt
-5. volle 9:16-Fläche, keine Untertitel-Safe-Zone und kein künstliches leeres Untertitelband
+3. feste Bildwelt `modern-countryball-explainer`
+4. genau erlaubter deutscher Bildtext, falls vorhanden
+5. kein anderer lesbarer Text, kein Englisch, keine Logos, kein Wasserzeichen
+6. volle 9:16-Fläche, keine Untertitel-Safe-Zone und kein künstliches leeres Untertitelband
+7. ein klarer Erklärmoment und möglichst ein dominantes Hauptmotiv
 
-`Bild 00.png` ist aktuell nur das Cover. Es ist **nicht automatisch ein globaler Style-Master**. Eine neue Style-Master-Regel darf erst nach einer ausdrücklichen Nutzerentscheidung eingeführt werden.
+Der Exporter ergänzt den festen Style-Lock **global und zusätzlich direkt vor jedem einzelnen Bildabschnitt** im Google-Flow-Gesamtprompt. So bleibt die Bildwelt auch dann stabil, wenn ein konkreter Inhalts-Prompt versehentlich widersprechende Stilbegriffe enthält. In diesem Fall wird nur die widersprechende Stilbeschreibung ignoriert; Inhalt, Metapher, Komposition und geplanter deutscher Text bleiben erhalten.
 
-Die internen Einzelprompt-Sicherungen unter `all-image-prompts/image-prompts/Bild NN.txt` enthalten den visuellen Quellprompt wortgetreu und keine zusätzlichen Stil-Wrapper.
+Die internen Einzelprompt-Sicherungen unter `all-image-prompts/image-prompts/Bild NN.txt` enthalten weiterhin den visuellen Quellprompt wortgetreu. Der verbindliche Style-Lock liegt im exportierten Gesamtprompt.
+
+`Bild 00.png` ist das Cover, aber nicht der alleinige Style-Master. **Die globale Repo-Bildwelt ist der Style-Master.**
 
 ---
 
@@ -158,10 +177,10 @@ In einem generierten Bild dürfen niemals sichtbar erscheinen:
 - technische IDs
 
 Pro Bild gilt:
-- `imageText`/Cover-Headline gesetzt → nur exakt dieser Text darf lesbar sein
+- `imageText`/Cover-Headline gesetzt → nur exakt dieser **deutsche** Text darf lesbar sein
 - `imageText` leer → keinerlei lesbarer Text im Bild
 
-Die Überschriften im Gesamtprompt sind reine Workflow-Steuerung und ausdrücklich niemals Bildinhalt.
+Bildprompts und Style-Anweisungen selbst werden auf Englisch geschrieben. Sichtbare Wörter im Bild bleiben Deutsch.
 
 ---
 
@@ -189,11 +208,12 @@ Der separate `google-flow-controller.txt` ist deaktiviert und wird nicht mehr al
 2. `AUFTRAG`
 3. `WICHTIG – DIESE EINE NACHRICHT IST DIE KOMPLETTE FREIGABE`
 4. `STRENG SERIELL – NIE PARALLEL`
-5. Hinweis, dass **keine feste Repo-Bildwelt aktiv ist**
-6. komplette `DATEINAMEN`-Liste
-7. Text-/Workflow-Regeln
-8. `ENDE`
-9. danach für **jedes Bild** ein eigener Abschnitt mit vollständigem konkretem Visual-Prompt
+5. `VERBINDLICHE BILDWELT – MODERN COUNTRYBALL EXPLAINER`
+6. globaler englischer Style-Lock
+7. komplette `DATEINAMEN`-Liste
+8. Text-/Workflow-Regeln
+9. `ENDE`
+10. danach für **jedes Bild** ein eigener Abschnitt mit erneutem festen Style-Lock plus vollständigem konkretem Visual-Prompt
 
 ### Harte Serienregel trotz Gesamtprompt
 
@@ -205,10 +225,11 @@ Für jedes Bild zwingend:
 2. exakt **einen** Bildgenerator-Aufruf starten
 3. niemals zwei oder mehr Generierungsaktionen im selben Agent-Schritt, Tool-Batch oder Turn auslösen
 4. warten, bis das aktuelle Bild sichtbar vollständig fertig ist
-5. gegen den konkreten aktuellen Bildprompt prüfen
-6. exakt umbenennen
-7. prüfen, dass die Umbenennung erfolgreich war
-8. erst danach den nächsten Bildabschnitt ausführen
+5. gegen den konkreten aktuellen Bildprompt **und die feste Bildwelt** prüfen
+6. bei Stilabweichung dasselbe Bild neu erzeugen und noch nicht weitergehen
+7. exakt umbenennen
+8. prüfen, dass die Umbenennung erfolgreich war
+9. erst danach den nächsten Bildabschnitt ausführen
 
 Wenn noch ein Job aktiv/queued/pending ist oder der Status unklar ist: **warten und keinen neuen Job starten**.
 
@@ -218,7 +239,7 @@ Verboten:
 - mehrere Bildgenerator-Aufrufe in einem Schritt
 - Queueing kommender Bilder
 - mehrere Varianten auf einmal
-- nächstes Bild starten, bevor das vorige sichtbar fertig, umbenannt und geprüft wurde
+- nächstes Bild starten, bevor das vorige sichtbar fertig, stilkonform, umbenannt und geprüft wurde
 
 Falls Flow versehentlich mehrere Jobs startet, keine weiteren starten und spätere parallele Jobs abbrechen.
 
@@ -263,7 +284,7 @@ Erste Phase startet immer bei `startPercent: 0`; weitere Werte steigen zwischen 
 
 ## 8. Rollenverteilung
 
-Repo-Agenten / Codex / Antigravity erzeugen keine Bilder. Sie erstellen Script, Szenen, individuelle Bildphasen, konkrete Bildprompts, **den kompletten seriellen Google-Flow-Gesamtprompt**, Caption, Quellen, Asset-Suche, QC, Timeline und Render.
+Repo-Agenten / Codex / Antigravity erzeugen keine Bilder. Sie erstellen Script, Szenen, individuelle Bildphasen, konkrete englische Bildprompts im festen Stil, **den kompletten seriellen Google-Flow-Gesamtprompt**, Caption, Quellen, Asset-Suche, QC, Timeline und Render.
 
 Der Nutzer sendet Google Flow einmal `00-bildprompts/99-alle-bildprompts.txt`. Flow arbeitet danach selbstständig, aber strikt Bild für Bild.
 
@@ -299,9 +320,15 @@ bzw. technisch nach
 inbox/numbered-images/
 ```
 
-Die Nummer ist nur Routing-Hilfe. Jede Bildphase sichtbar prüfen gegen Narration, `audioCue`, `visualIdea`, `imageText`, Prompt und anschließend gegen vorherige/nächste Bildphase. Unter 0,90 Konfidenz nicht raten. `filename-only` ist verboten.
+Die Nummer ist nur Routing-Hilfe. Jede Bildphase sichtbar prüfen gegen Narration, `audioCue`, `visualIdea`, `imageText`, Prompt und anschließend gegen vorherige/nächste Bildphase. Zusätzlich prüfen, dass die feste Bildwelt `modern-countryball-explainer` eingehalten ist. Unter 0,90 Konfidenz nicht raten. `filename-only` ist verboten.
 
-Die visuelle QC prüft aktuell **keine feste Bildwelt und kein festes Charaktermodell**.
+Typische Stilfehler, die vor Freigabe auffallen müssen:
+- Fotorealismus oder realistische Menschen
+- 3D-/Clay-/Anime-Abweichung
+- fehlende dicke schwarze Konturen
+- unnötig komplexe Kulisse oder überladene Collage
+- zufällige Länderflaggen bei allgemeinen Themen
+- sichtbarer englischer oder ungeplanter Text
 
 ---
 
@@ -359,4 +386,4 @@ npm run render:reel -- --dir "<reel-ordner>"
 
 ## 13. Abschlussprinzip
 
-Ein Reel ist erst fertig, wenn Script/Quellen geprüft, alle Bildphasen vorhanden und zweifach visuell bestätigt, finales Audio gemessen und synchronisiert, interne Bildwechsel korrekt, keine Untertitel vorhanden und Finalizer/Render-Validator bestanden sind. Nicht ausgeführte Stufen niemals als bestanden melden.
+Ein Reel ist erst fertig, wenn Script/Quellen geprüft, alle Bildphasen vorhanden und zweifach visuell bestätigt, die feste Bildwelt eingehalten, finales Audio gemessen und synchronisiert, interne Bildwechsel korrekt, keine Untertitel vorhanden und Finalizer/Render-Validator bestanden sind. Nicht ausgeführte Stufen niemals als bestanden melden.

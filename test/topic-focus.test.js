@@ -27,12 +27,15 @@ test('verhindert Themen-Bias nur auf Länder, Geschichte und Politik', async () 
   assert.ok(rules.topicFocus.selectionCriteria.length >= 5);
 });
 
-test('Bildwelt ist bewusst unassigned und wird nicht automatisch ausgewählt', async () => {
+test('Bildwelt ist fest und wird nicht nach dem Script neu ausgewählt', async () => {
   const rules = await loadRules();
 
-  assert.equal(rules.visualRules.visualWorldMode, 'unassigned');
-  assert.equal(rules.visualRules.fixedVisualWorld, null);
+  assert.equal(rules.visualRules.visualWorldMode, 'fixed');
+  assert.equal(rules.visualRules.fixedVisualWorld, 'modern-countryball-explainer');
   assert.equal(rules.visualRules.selectVisualWorldAfterScript, false);
+  assert.equal(rules.visualRules.consistentStyleWithinReel, true);
+  assert.equal(rules.visualRules.creativeStyleBetweenReels, false);
+  assert.equal(rules.visualRules.styleBiblePath, 'knowledge/fixed-visual-world.md');
 });
 
 test('nur Format-Risiken bleiben als autonome Ausschlüsse erhalten', async () => {
