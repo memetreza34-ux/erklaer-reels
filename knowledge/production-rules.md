@@ -6,7 +6,7 @@
 
 Jedes Reel erklärt einen Begriff, ein System, ein Verhalten oder einen Zusammenhang so einfach, dass Zuschauer ihn ohne Vorwissen verstehen.
 
-Die **Themenwelt ist offen**, die **visuelle Welt ist fest**.
+Die **Themenwelt ist offen**. Die **Bildwelt ist aktuell bewusst nicht festgelegt**.
 
 ## Script
 
@@ -30,36 +30,51 @@ Bei autonomer Auswahl zählen:
 - Hook/Neugier
 - klarer Aha-Moment
 - faktische Belegbarkeit
-- visuelle Stärke in der Kugel-Welt
+- visuelle Klarheit
 - Abwechslung gegenüber den letzten Reels
 - Teilbarkeit oder Alltagsrelevanz
 
-## Feste Bildwelt: Kugel-Welt
+## Bildwelt — unassigned
 
-Nicht nach dem Script eine neue Bildwelt auswählen.
+Aktuell keine Bildwelt nach dem Script auswählen oder aus historischen Dateien ableiten.
 
-Bis der Nutzer ausdrücklich etwas anderes aktiviert, gilt immer:
+Neue Reels verwenden:
 
 ```text
-round-country-characters
+visualStyleId = null
+visualStyleReason = ""
 ```
 
-- Länder → vollständige perfekt runde Kugeln mit vereinfachtem Flaggenmuster
-- nicht-länderspezifische Personen/Rollen → neutrale runde Kugeln mit Farben/Symbolen
-- Gruppen, Systeme, Gedanken, Gewohnheiten, Emotionen und abstrakte Kräfte dürfen ebenfalls durch Kugelfiguren dargestellt werden
-- Karten und Länderumrisse bleiben gesichtslos
-- niemals map-shaped characters
-- keine menschlichen Köpfe/Torsi als Hauptwelt
+Nicht aktiv:
 
-## Bewährter Bildprompt-Look
+- `round-country-characters`
+- Countryball-/Kugel-Zwang
+- Golden References
+- feste Figurenform oder Gesichtselemente
+- `human-editorial-cartoon`
+- `visual-metaphor`
+- feste Farbpalette
+- feste Papiertextur
+- alter Editorial-Stilblock
 
-Jeder visuelle Quellprompt bleibt ausführlich und konkret:
+Historische Reels und Prompts bleiben Archivmaterial.
 
-> Vertical 9:16 premium mature 2D editorial country-character illustration. Warm off-white textured paper background, deep navy borders and map shapes, muted rust, mustard, cobalt and forest-green accents, bold clean hand-inked outlines, flat geometric shading, subtle grain, high contrast, sophisticated documentary tone, not childish.
+## Bildprompts
 
-Danach folgen konkrete Bildkomposition, Handlung, Kugelfiguren, exakt erlaubter deutscher Bildtext und negative Regeln.
+Jeder visuelle Quellprompt bleibt konkret und eindeutig, aber ohne globalen Stil-Lock.
 
-Workflow-Labels wie `BILD 00`, `COVER`, `SZENE`, `BILDPHASE` oder Dateinamen sind niemals Bildinhalt.
+Pflicht:
+
+1. 9:16
+2. konkrete Bildkomposition und Handlung
+3. exakt erlaubter deutscher Bildtext, falls vorgesehen
+4. keine unerwarteten lesbaren Wörter
+5. keine Workflow-Labels im Bild
+6. volle 9:16-Fläche ohne künstliche Untertitelzone
+
+Keine feste Figurengeometrie, Palette, Textur oder historische Referenz automatisch ergänzen.
+
+`Bild 00` ist aktuell nur Cover, nicht automatisch Style-Master.
 
 ## Starkes Ende
 
@@ -118,7 +133,7 @@ Verbindliche Nutzerdatei:
 00-bildprompts/99-alle-bildprompts.txt
 ```
 
-Sie enthält den kompletten seriellen Gesamtprompt mit Auftrag, Serienregeln, Dateinamen, Style-Master und allen vollständigen Bildprompts.
+Sie enthält den kompletten seriellen Gesamtprompt mit Auftrag, Serienregeln, Dateinamen und allen vollständigen konkreten Bildprompts.
 
 `all-image-prompts/all-image-prompts.txt` ist die identische technische Spiegeldatei.
 
@@ -129,8 +144,8 @@ Flow muss streng seriell arbeiten:
 ```text
 genau ein Bild generieren
 → vollständig warten
+→ gegen den aktuellen Bildprompt prüfen
 → korrekt umbenennen
-→ prüfen
 → erst dann nächstes Bild
 ```
 
@@ -212,8 +227,6 @@ Vor Freigabe prüfen:
 - 155–175 Wörter und 55–60 Sekunden Voice-over
 - 12–14 narrative Szenen mit sinnvoller individueller Bilddichte
 - Hook sofort sichtbar
-- feste Kugel-Welt konsequent
-- starkes Ende plus 0,7 Sekunden Schlussbild
 - jedes Bild erklärt exakt seine Bildphase
 - sichtbare Bildbeschreibung, Zuordnungsgrund und zweite Prüfung vorhanden
 - keine Untertitel
