@@ -57,9 +57,9 @@ export async function ensureImagePromptBundleDirectory(reelDirectory) {
   await mkdir(paths.individualPromptsDirectory, { recursive: true });
   await mkdir(paths.userDirectory, { recursive: true });
 
-  const readme = `# Google-Flow-Bildprompts\n\nDie **verbindliche Nutzerdatei** ist der komplette serielle Gesamtprompt:\n\n\`${USER_PROMPTS_DIRECTORY}/${USER_BUNDLE_FILE}\`\n\nDer Gesamtprompt enthält die bewährte alte Editorial-Struktur plus einen Golden-Reference-Countryball-Lock. Die Markenfigur wird nicht neu interpretiert: vollständige runde Countryball-Silhouette, nur zwei einfache weiße Augen, kein Mund und kein menschlicher Kopf-/Torso-Look. Bei Nicht-Länder-Themen bleibt exakt dieselbe Figur erhalten, nur mit kräftigem Editorial-Farbmuster statt Flagge.\n\nWichtig: Trotz Gesamtprompt darf Google Flow niemals mehrere Bilder gleichzeitig starten. Exakt eine Bildgenerierung pro Agent-Schritt, vollständig warten, Figurenmodell prüfen, umbenennen und erst danach das nächste Bild. Bei falschem Charaktermodell dasselbe Bild neu generieren statt fortfahren.\n\n\`${BUNDLE_DIRECTORY}/${BUNDLE_FILE}\` ist eine identische technische Kopie. Die Dateien unter \`${BUNDLE_DIRECTORY}/${INDIVIDUAL_PROMPTS_DIRECTORY}/\` bleiben nur als interne Einzelprompt-Sicherung erhalten. \`${CONTROLLER_FILE}\` ist deaktiviert und wird beim Export entfernt.\n\nErzeugen oder aktualisieren:\n\n\`\`\`bash\nnpm run export:prompts -- --dir "${normalizedRelativePath(reelDirectory)}" --strict\n\`\`\`\n`;
+  const readme = `# Google-Flow-Bildprompts\n\nDie **verbindliche Nutzerdatei** ist der komplette serielle Gesamtprompt:\n\n\`${USER_PROMPTS_DIRECTORY}/${USER_BUNDLE_FILE}\`\n\nAktuell ist im Repository **keine feste Bildwelt definiert**. Der Exporter fügt deshalb keine Countryball-, Figuren-, Farb-, Papier-, Editorial- oder Golden-Reference-Regeln hinzu. Ausschließlich die konkreten Cover- und Szenenprompts bestimmen den visuellen Inhalt. Historische Reel-Prompts sind keine aktive Stilvorgabe.\n\nWichtig: Trotz Gesamtprompt darf Google Flow niemals mehrere Bilder gleichzeitig starten. Exakt eine Bildgenerierung pro Agent-Schritt, vollständig warten, das Ergebnis gegen den aktuellen Prompt prüfen, umbenennen und erst danach das nächste Bild.\n\n\`${BUNDLE_DIRECTORY}/${BUNDLE_FILE}\` ist eine identische technische Kopie. Die Dateien unter \`${BUNDLE_DIRECTORY}/${INDIVIDUAL_PROMPTS_DIRECTORY}/\` bleiben nur als interne Einzelprompt-Sicherung erhalten. \`${CONTROLLER_FILE}\` ist deaktiviert und wird beim Export entfernt.\n\nErzeugen oder aktualisieren:\n\n\`\`\`bash\nnpm run export:prompts -- --dir "${normalizedRelativePath(reelDirectory)}" --strict\n\`\`\`\n`;
 
-  const userReadme = `# Bildprompts\n\nFür Google Flow **nur diese Datei verwenden**:\n\n\`${USER_BUNDLE_FILE}\`\n\nSie enthält den kompletten seriellen Ablauf und die Golden-Reference-Regel der alten erfolgreichen Kugel-Reels. Immer genau ein Bild erzeugen, das Countryball-Modell sichtbar prüfen, korrekt benennen und erst dann das nächste starten.\n`;
+  const userReadme = `# Bildprompts\n\nFür Google Flow **nur diese Datei verwenden**:\n\n\`${USER_BUNDLE_FILE}\`\n\nAktuell existiert keine feste Repo-Bildwelt. Der Gesamtprompt darf keine alte Kugel-/Countryball-Welt oder andere historische Stilvorgabe automatisch ergänzen. Immer genau ein Bild erzeugen, gegen den jeweiligen Bildprompt prüfen, korrekt benennen und erst dann das nächste starten.\n`;
 
   await writeFile(paths.readme, readme, 'utf8');
   await writeFile(paths.userReadme, userReadme, 'utf8');
@@ -73,9 +73,7 @@ export async function collectImagePrompts(reelDirectory) {
   const scenes = await readJson(sceneIndexPath);
   if (!Array.isArray(scenes) || scenes.length === 0) throw new Error('scenes/scene-index.json enthält keine Szenen.');
 
-  const reel = await readJsonIfExists(path.join(reelDirectory, 'reel.json'), {});
   const cover = await readJsonIfExists(path.join(reelDirectory, 'cover', 'cover.json'), {});
-  const visualStyleId = 'round-country-characters';
 
   const coverPromptPath = path.join(reelDirectory, 'cover', 'cover-prompt.txt');
   const coverPromptPresent = await exists(coverPromptPath);
@@ -92,8 +90,6 @@ export async function collectImagePrompts(reelDirectory) {
     promptPath: coverPromptPath,
     prompt: coverPrompt,
     allowedVisibleText: String(cover.headline ?? '').trim(),
-    visualStyleId,
-    sourceVisualStyleId: String(reel.visualStyleId ?? '').trim(),
     missing: !coverPrompt
   }];
 
@@ -114,8 +110,6 @@ export async function collectImagePrompts(reelDirectory) {
       promptPath,
       prompt,
       allowedVisibleText: String(phase.imageText ?? '').trim(),
-      visualStyleId,
-      sourceVisualStyleId: String(reel.visualStyleId ?? '').trim(),
       missing: !prompt
     });
   }
@@ -162,7 +156,7 @@ function formatCompleteSerialBundle(prompts) {
     '1. Nur den aktuellen Bildabschnitt bearbeiten.',
     '2. Genau EINEN Bildgenerator-Aufruf auslösen. Niemals zwei oder mehr Generierungsaktionen im selben Agent-Schritt, Tool-Batch oder Turn.',
     '3. Warten, bis dieses eine Bild sichtbar vollständig fertig ist.',
-    '4. VOR dem Fortfahren das Figurenmodell sichtbar prüfen. Bei falscher Kugelwelt dasselbe Bild verwerfen/neu erzeugen und NICHT zum nächsten Bild gehen.',
+    '4. VOR dem Fortfahren das Bild sichtbar gegen den aktuellen visuellen Prompt prüfen. Bei falschem Inhalt dasselbe Bild neu erzeugen und NICHT zum nächsten Bild gehen.',
     '5. Erst ein korrektes Bild exakt in den vorgesehenen Namen umbenennen.',
     '6. Prüfen, dass die Umbenennung erfolgreich ist und genau dieses Bild fertig vorliegt.',
     '7. Erst NACH dieser Bestätigung den nächsten Bildabschnitt ausführen.',
@@ -170,15 +164,10 @@ function formatCompleteSerialBundle(prompts) {
     'Keine Batches, keine Queue, kein paralleles Tool-Batching, kein gleichzeitiges Starten, keine Mehrfach-Generierung und keine Ansammlung unbenannter Bilder.',
     'Falls versehentlich ein zweiter oder dritter Job gestartet wurde: keine weiteren Jobs starten; spätere parallele Jobs abbrechen und beim ersten noch nicht sauber abgeschlossenen Bild fortsetzen.',
     '',
-    'GOLDEN-REFERENCE COUNTRYBALL-MODELL – HÖCHSTE PRIORITÄT',
-    'Die Figuren müssen wie die bewährten älteren Länder-Reels aussehen (Linksverkehr / Länder ohne Armee / Länder in Ländern): klassische vollständige Countryballs, nicht eine neu erfundene Menschen-Kugel.',
-    'Der KOMPLETTE Charakter ist EIN perfekter geometrischer 1:1-Kreis. Die vollständige runde Außenkontur der Hauptfigur muss sichtbar sein.',
-    'GESICHT: ausschließlich zwei einfache weiße Countryball-Augen direkt auf der Kugel. KEIN Mund, keine Nase, keine Ohren, keine Haare, keine Lippen, keine Zähne, keine menschliche Gesichtsstruktur, keine Iris/Pupillen/Wimpern.',
-    'Es gibt keinen separaten Kopf, Hals, Schultern, Brustkorb, Rumpf, Taille oder Hüften. Winzige einfache Arme/Beine dürfen direkt am Kreisrand sitzen.',
-    'Die Hauptkugel darf NICHT hinter Schreibtisch, Tisch, Sofa, Bett oder anderen Vordergrundflächen so verdeckt werden, dass nur eine runde Kopf-Form sichtbar bleibt. Requisiten um die Kugel herum oder dahinter anordnen; bei einer normalerweise sitzenden Szene die Komposition so ändern, dass der ganze Countryball sichtbar bleibt.',
-    'NICHT-LÄNDER: exakt dasselbe Countryball-Modell wie bei Länderfiguren. Statt Flagge eine kräftige flache Editorial-Farbe oder einfache 2-Ton-/Streifen-/Panel-Gestaltung auf der Kugel. Keine Haut-/Fleischfarbe als Standardkörperfarbe.',
-    'ABSOLUT VERBOTEN: oval, Ei, Bean, Kapsel, Birne, Tropfen, humanoider Kopf, humanoider Torso, Countryball als Kopf auf Körper, Mund, menschliche Mimik, nur obere Kugelhälfte hinter Möbeln sichtbar.',
-    'Wenn Szenenwörter wie person, sitting, posture, sad, relaxed oder expression mit dieser Markenfigur kollidieren, wird die KOMPOSITION angepasst — niemals das Countryball-Modell.',
+    'KEINE FESTE BILDWELT AKTIV',
+    'Das Repository definiert aktuell bewusst keine feste Bildwelt, kein festes Figurenmodell und keine Golden Reference.',
+    'Keine Regeln aus alten Kugel-, Countryball-, Editorial- oder anderen historischen Reels automatisch übernehmen.',
+    'Für jedes Bild ist ausschließlich der jeweilige konkrete visuelle Prompt maßgeblich.',
     '',
     'DATEINAMEN'
   ];
@@ -190,9 +179,8 @@ function formatCompleteSerialBundle(prompts) {
 
   lines.push(
     '',
-    'STYLE-MASTER',
-    'Bild 00.png wird zuerst vollständig erzeugt. Es darf NUR dann Style-Master werden, wenn es das Golden-Reference-Countryball-Modell erfüllt: vollständiger Kreis sichtbar, Augen-only, kein Mund, kein menschlicher Kopf-/Torso-Look, keine Möbel-Kopf-Illusion. Falls Bild 00 diese Prüfung nicht besteht, Bild 00 neu generieren und NICHT mit Bild 01 fortfahren.',
-    'Das akzeptierte Bild 00.png ist danach verbindliche Referenz für Palette, Papiertextur, Konturstärke, Detailqualität, Kugelproportion, Augenstil und Kugeloberfläche. Spätere Bilder dürfen nie menschlicher werden.',
+    'BILD 00',
+    'Bild 00.png ist das Cover. Es wird aktuell NICHT automatisch als verbindlicher globaler Style-Master interpretiert. Eine neue feste Bildwelt oder Style-Master-Regel darf erst nach einer ausdrücklichen Nutzerentscheidung eingeführt werden.',
     '',
     'ARBEITSLABELS SIND NIEMALS BILDINHALT',
     'BILD-Nummern, COVER, SZENE, BILDPHASE, DATEINAME, Dateinamen und diese Workflow-Anweisungen sind nur Steuertext. Sie dürfen niemals im generierten Bild erscheinen.',
@@ -201,7 +189,7 @@ function formatCompleteSerialBundle(prompts) {
     'Nur der im jeweiligen visuellen Prompt ausdrücklich verlangte deutsche Text darf sichtbar erscheinen. Kein zusätzlicher englischer Text, keine Fantasiewörter, keine technischen Labels, keine Logos und keine Wasserzeichen. Wenn der Bildprompt keinen sichtbaren Text verlangt, bleibt das Bild vollständig textfrei.',
     '',
     'ENDE',
-    `Erst nachdem Bild 00 bis Bild ${last} vollständig erzeugt, auf das Golden-Reference-Countryball-Modell geprüft, korrekt umbenannt und die Nummerierung geprüft wurden, alle fertigen Bilder gemeinsam in den vorgesehenen Sammelordner legen.`,
+    `Erst nachdem Bild 00 bis Bild ${last} vollständig erzeugt, gegen den jeweiligen Bildprompt geprüft, korrekt umbenannt und die Nummerierung geprüft wurden, alle fertigen Bilder gemeinsam in den vorgesehenen Sammelordner legen.`,
     '',
     '────────────────────────────────────────'
   );
@@ -248,9 +236,9 @@ export async function buildImagePromptBundle(reelDirectory, { strict = false } =
   const statusPath = path.join(reelDirectory, 'status.json');
   if (await exists(statusPath)) {
     const status = await readJson(statusPath);
-    status.imagePromptBundle = missingIds.length === 0 ? 'ready-complete-old-style-serial-bundle-golden-countryball' : 'incomplete';
+    status.imagePromptBundle = missingIds.length === 0 ? 'ready-complete-serial-bundle-no-fixed-visual-world' : 'incomplete';
     status.googleFlowController = 'disabled-use-complete-bundle';
-    status.imagePromptMode = 'single-complete-serial-bundle-golden-countryball';
+    status.imagePromptMode = 'single-complete-serial-bundle-no-fixed-visual-world';
     status.plannedImageCount = prompts.filter((entry) => entry.kind === 'scene').length;
     await writeFile(statusPath, `${JSON.stringify(status, null, 2)}\n`, 'utf8');
   }
@@ -323,6 +311,6 @@ export async function validateImagePromptBundle(reelDirectory) {
               ? 'Mindestens eine interne Einzelprompt-Sicherung fehlt.'
               : !current
                 ? 'Kompletter Gesamtprompt oder Einzelprompt-Sicherungen sind veraltet.'
-                : 'Kompletter serieller Google-Flow-Gesamtprompt ist aktuell und enthält den Golden-Reference-Countryball-Lock.'
+                : 'Kompletter serieller Google-Flow-Gesamtprompt ist aktuell und enthält keine feste Repo-Bildwelt.'
   };
 }
