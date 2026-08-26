@@ -23,7 +23,7 @@
     "reine Produktwerbung ohne Erklärwert"
   ],
   "topicFocus": {
-    "statement": "Eine feste Kugel-Welt erklärt möglichst viele starke Warum-Fragen.",
+    "statement": "Das Themenuniversum ist offen. Aktuell ist keine feste Bildwelt definiert.",
     "openTopicUniverse": true,
     "autonomousSelectionLimitedToAllowedTopics": false,
     "allowedTopicsAreExamplesNotHardLimit": true,
@@ -32,7 +32,7 @@
       "starker Hook und sofortige Neugier",
       "klarer Aha-Moment in unter 60 Sekunden",
       "faktisch sauber erklärbar",
-      "visuell stark in der Kugel-Welt",
+      "visuell stark und klar umsetzbar",
       "abwechslungsreich gegenüber den letzten Reels",
       "teilbar, überraschend oder alltagsrelevant"
     ]
@@ -146,10 +146,10 @@
       "max": 0.3,
       "default": 0.2
     },
-    "consistentStyleWithinReel": true,
-    "creativeStyleBetweenReels": false,
-    "visualWorldMode": "fixed",
-    "fixedVisualWorld": "round-country-characters",
+    "consistentStyleWithinReel": false,
+    "creativeStyleBetweenReels": true,
+    "visualWorldMode": "unassigned",
+    "fixedVisualWorld": null,
     "selectVisualWorldAfterScript": false,
     "integratedGermanKeywordsAllowed": true,
     "integratedGermanTextPreferred": true,
