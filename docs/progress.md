@@ -21,7 +21,7 @@ npm run status:reel -- \
 
 Der Status trennt insbesondere:
 
-- **Vorproduktion:** Script, offene Themenentscheidung, feste Kugel-Welt, narrative Szenen, individuelle Bildphasen, Bildprompts, Cover-Prompt, Flow-Gesamtprompt, Caption, Quellen und Inhaltsprüfung.
+- **Vorproduktion:** Script, offene Themenentscheidung, narrative Szenen, individuelle Bildphasen, konkrete Bildprompts, Cover-Prompt, Flow-Gesamtprompt, Caption, Quellen und Inhaltsprüfung. Eine feste Bildwelt gehört aktuell ausdrücklich nicht zur Vorproduktion.
 - **Externe Assets:** alle tatsächlich geplanten Bildphasen, Cover, Voice-over und sichere Zuordnung.
 - **Postproduktion:** reales Audio-Pacing, verifizierte narrative Audio-Cues, visuelle Zwei-Pass-QC, Timeline, Finalizer, Render-Validierung und echte MP4.
 
@@ -31,6 +31,7 @@ Die genaue Prozentgewichtung wird vom aktuellen Status-Code bestimmt. Dokumentat
 
 - 13 narrative Szenen bedeuten nicht automatisch 13 Bilder.
 - Die Asset-Vollständigkeit richtet sich nach `plannedImageCount` und allen `imagePhases`.
+- Neue Workspaces starten aktuell mit `visualStyleId: null`; alte Bildwelten werden nicht automatisch übernommen.
 - Quellen-Schema 3 gilt für neu erstellte Reels; bestehende Schema-2-Reels bleiben kompatibel.
 - Untertitel und Word-Sync sind kein aktiver Produktionsfortschritt.
 - Ein vorhandener Dateiname ist keine bestandene visuelle QC.
