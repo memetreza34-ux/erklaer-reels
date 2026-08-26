@@ -1,6 +1,6 @@
 # Produktionsstatus
 
-**Status: PRODUKTIONSLOGIK BEREIT — E2E-PRODUKTIONSTEST AUSSTEHEND**
+**Status: PRODUKTIONSLOGIK BEREIT — BILDWELT ZURÜCKGESETZT — E2E-PRODUKTIONSTEST AUSSTEHEND**
 
 ## Verbindliche Quelle
 
@@ -22,22 +22,28 @@
 
 Die Themenwahl ist offen. Es gibt keine feste Pillar-Quote mehr.
 
-Aktive Bildwelt für alle Themen:
+Die frühere feste Bildwelt wurde am 2026-08-26 aus dem aktiven Produktionssystem entfernt.
+
+Aktueller Zustand:
 
 ```text
-round-country-characters
+visualWorldMode: unassigned
+visualStyleId: null
+visualStyleReason: ""
 ```
 
-Die Kugel-Welt gilt auch für Alltag, Psychologie, Verhalten, Wissenschaft, Technik, Wirtschaft, Gesundheit, Kultur und andere geeignete Erklärthemen. Länder-/Geschichts-/Politikthemen sind nur ein Teil des Themenuniversums.
+Es gibt derzeit **keine** aktive Countryball-/Kugel-Welt, keine Golden References, keine feste Figuren-Geometrie, keine feste Palette und keinen verbindlichen historischen Editorial-Look.
 
-## Bildanzahl — seit 23.08.2026 individuell
+Alte Reels bleiben als Archiv erhalten, steuern neue Produktionen aber nicht mehr.
+
+## Bildanzahl — individuell
 
 Die alte Gleichsetzung `13 Szenen = 13 Bilder` ist aufgehoben.
 
 Ab sofort:
 - jede narrative Szene besitzt 1, 2 oder selten 3 Bildphasen
 - die Gesamtzahl der Bilder wird pro Reel individuell gewählt
-- keine fixe Sollzahl pro Reel oder Bildwelt
+- keine fixe Sollzahl pro Reel
 - ein Stillstand von ungefähr 3,5–4 Sekunden ist ein Trigger, eine zweite Bildphase zu prüfen, aber keine automatische Pflicht
 - jedes Zusatzbild braucht einen echten Informations-, Fokus- oder Rhythmusgewinn
 
@@ -56,11 +62,11 @@ Verbindliche Nutzerdatei:
 00-bildprompts/99-alle-bildprompts.txt
 ```
 
-`Bild 00.png` bleibt Cover und Style-Master.
+`Bild 00.png` ist aktuell nur das Cover und nicht automatisch ein Style-Master.
 
-Danach bezeichnet die Nummer die **globale Bildreihenfolge**, nicht automatisch die Szenennummer. Beispiel: Szene 2 kann Bild 02 und Bild 03 besitzen.
+Danach bezeichnet die Nummer die **globale Bildreihenfolge**, nicht automatisch die Szenennummer.
 
-Flow arbeitet streng seriell: genau ein Bild erzeugen, vollständig warten, umbenennen, prüfen, nächstes Bild starten. Kein Batch, keine Queue, kein Parallelisieren.
+Flow arbeitet streng seriell: genau ein Bild erzeugen, vollständig warten, gegen den aktuellen Bildprompt prüfen, umbenennen, nächstes Bild starten. Kein Batch, keine Queue, kein Parallelisieren.
 
 Der separate `google-flow-controller.txt` ist deaktiviert.
 
@@ -80,7 +86,7 @@ Bestehende Schema-2-Reels bleiben rückwärtskompatibel.
 Ein Reel ist erst fertig, wenn:
 - Script und Quellen tatsächlich geprüft wurden
 - alle individuell geplanten Bildphasen vorhanden sind
-- jede Bildphase zweifach visuell geprüft wurde
+- jede Bildphase zweifach visuell gegen ihren konkreten Inhalt und Prompt geprüft wurde
 - das finale Voice-over real gemessen wurde
 - narrative Szenen am finalen Audio synchronisiert sind
 - interne Bildphasen passend innerhalb der Szenen liegen
@@ -91,13 +97,14 @@ Nicht ausgeführte Tests oder geplante Produktionsstufen niemals als bestanden m
 
 ## Runtime-/E2E-Validierung
 
-Die Produktionslogik ist implementiert und durch statische/automatisierte Tests abgesichert. Der nächste Freigabeschritt ist ein kompletter echter Produktionsdurchlauf mit einem neuen, nicht-geografischen Thema.
+Die Produktionslogik ist implementiert. Nach dem Zurücksetzen der Bildwelt muss der nächste vollständige E2E-Test insbesondere prüfen:
 
-Dieser E2E-Test muss mindestens prüfen:
-- neuer Workspace startet direkt mit `round-country-characters` und Quellen-Schema 3
+- neuer Workspace startet mit `visualStyleId: null` und leerem `visualStyleReason`
+- keine alte Countryball-/Kugel-/Golden-Reference-Regel wird automatisch injiziert
 - individuelle Bildphasen werden korrekt geplant und exportiert
 - Google-Flow-Gesamtprompt bleibt vollständig und seriell strukturiert
-- echte Bilder werden visuell zugeordnet und zweifach geprüft
+- `Bild 00` wird nicht automatisch als Style-Master erzwungen
+- echte Bilder werden visuell zugeordnet und zweifach gegen konkrete Prompts geprüft
 - echtes Voice-over wird verarbeitet, gemessen und als einzige Timeline-Quelle verwendet
 - Finalizer und Render-Validator blockieren fehlende oder ungeprüfte Voraussetzungen
 - finale MP4 wird tatsächlich erzeugt
@@ -106,7 +113,7 @@ Erst nach diesem vollständigen Durchlauf darf der Status wieder als vollständi
 
 ## Legacy
 
-`sync:words` gehört nicht zum aktiven Workflow. Historische Word-Sync-Helfer sind nur unter dem expliziten Legacy-Namensraum zulässig. Der frühere unsichere `force-render-state.js`-Helfer wurde entfernt.
+`sync:words` gehört nicht zum aktiven Workflow. Historische Word-Sync-Helfer sind nur unter dem expliziten Legacy-Namensraum zulässig. Historische Reel-Bildprompts definieren ebenfalls keine aktive Bildwelt.
 
 ## Infrastruktur
 
