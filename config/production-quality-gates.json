@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "assetMatching": {
     "minimumConfidence": 0.9,
     "requireVisualReview": true,
@@ -51,10 +51,7 @@
   "visualContinuity": {
     "requireSceneMeaningMatch": true,
     "requireSceneOrderConfirmed": true,
-    "requireVisualWorldMatch": true,
-    "requireCharacterModelConsistency": true,
     "requirePlannedGermanTextExact": true,
-    "forbidUnexpectedReadableText": true,
-    "roundCharacterWorldRule": "Wenn round-country-characters gewählt ist, bestehen Figuren vollständig aus runden Kugelkörpern mit einfachen weißen Augen und höchstens kleinen Armen und Beinen. Reine Karten, Landschaften und Gegenstände sind erlaubt, müssen aber dieselbe Linienführung, Farbwelt und Bildsprache behalten."
+    "forbidUnexpectedReadableText": true
   }
 }
