@@ -27,13 +27,12 @@ test('verhindert Themen-Bias nur auf Länder, Geschichte und Politik', async () 
   assert.ok(rules.topicFocus.selectionCriteria.length >= 5);
 });
 
-test('Bildwelt ist fest auf round-country-characters statt nach dem Script auswählbar', async () => {
+test('Bildwelt ist bewusst unassigned und wird nicht automatisch ausgewählt', async () => {
   const rules = await loadRules();
 
-  assert.equal(rules.visualRules.visualWorldMode, 'fixed');
-  assert.equal(rules.visualRules.fixedVisualWorld, 'round-country-characters');
+  assert.equal(rules.visualRules.visualWorldMode, 'unassigned');
+  assert.equal(rules.visualRules.fixedVisualWorld, null);
   assert.equal(rules.visualRules.selectVisualWorldAfterScript, false);
-  assert.equal(rules.visualRules.creativeStyleBetweenReels, false);
 });
 
 test('nur Format-Risiken bleiben als autonome Ausschlüsse erhalten', async () => {
