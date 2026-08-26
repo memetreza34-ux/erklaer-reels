@@ -44,23 +44,23 @@ export async function prepareReelProduction(reelDirectory) {
   const currentPlannedImages = plannedImageCount(scenes);
 
   const checklist = {
-    version: 20,
+    version: 21,
     reelId: reel.reelId,
     title: reel.title,
     createdAt: new Date().toISOString(),
     phase: 'content-production',
     subtitlesEnabled: false,
     imageCountMode: 'individual-per-reel',
-    visualStyleId: 'round-country-characters',
+    visualWorldMode: 'unassigned',
     tasks: [
       { id: 'script-final', label: 'Voice-over mit 155–175 Wörtern und starkem Ende fertigstellen', status: 'pending' },
-      { id: 'style-lock', label: 'Verbindliche Kugel-Welt round-country-characters beibehalten; keine andere Bildwelt auswählen', status: 'pending' },
+      { id: 'visual-world-unassigned', label: 'Keine alte Bildwelt, Countryball-Regel, Golden Reference oder feste Figurenform automatisch übernehmen', status: 'pending' },
       { id: 'scenes-fill', label: `${scenes.length} narrative Szenen mit klaren Audio-Cues planen`, status: 'pending' },
       { id: 'image-density-plan', label: 'Für jede Szene individuell 1, 2 oder selten 3 Bildphasen festlegen; keine starre Gleichsetzung Szenenanzahl = Bildanzahl', status: 'pending' },
       { id: 'scene-timing-balance', label: `Hook ${timing.hookSeconds.min}–${timing.hookSeconds.max}s, normale Szenen ${timing.standardSeconds.min}–${timing.standardSeconds.max}s und Schlussbild-Nachlauf ${timing.postVoiceHoldSeconds}s planen`, status: 'pending' },
       { id: 'image-text-plan', label: `In ungefähr ${preferredImageTextMinimum}–${preferredImageTextMaximum} passenden narrativen Szenen kurzen deutschen Bildtext planen`, status: 'pending' },
       { id: 'ending-check', label: 'Prüffrage und einprägsamen Abschlusssatz auf zwei Szenen verteilen', status: 'pending' },
-      { id: 'prompts-write', label: 'Für jede geplante Bildphase einen vollständigen englischen 9:16-Bildprompt im bewährten Kugel-Editorial-Stil schreiben', status: 'pending' },
+      { id: 'prompts-write', label: 'Für jede geplante Bildphase einen vollständigen englischen 9:16-Bildprompt schreiben, ohne eine alte feste Bildwelt einzubauen', status: 'pending' },
       { id: 'prompts-export', label: 'Cover und alle Bildphasen in globaler Bildreihenfolge als kompletten seriellen Google-Flow-Gesamtprompt exportieren', status: 'pending' },
       { id: 'subtitles-disabled', label: 'Untertitel deaktiviert lassen; keine Subtitle-Cues und keinen Word-Sync erzeugen', status: 'pending' },
       { id: 'effects-write', label: 'Dezente Bewegungen, harte Schnitte und Soundeffekte planen', status: 'pending' },
@@ -77,7 +77,9 @@ export async function prepareReelProduction(reelDirectory) {
 
 ## Ziel
 
-Erstelle ein vollständiges Erklär-Reel mit ungefähr einer Minute Voice-over-Laufzeit. Bilder und Audio werden extern erzeugt. **Narrative Szenen und Bildanzahl sind getrennt:** Eine Szene kann ein, zwei oder selten drei aufeinanderfolgende Bilder besitzen. Die Bilddichte wird für jedes Reel individuell entschieden. Das Reel wird vollständig ohne Untertitel produziert und gerendert. Die visuelle Welt ist bereits festgelegt: **round-country-characters** für alle Themen.
+Erstelle ein vollständiges Erklär-Reel mit ungefähr einer Minute Voice-over-Laufzeit. Bilder und Audio werden extern erzeugt. **Narrative Szenen und Bildanzahl sind getrennt:** Eine Szene kann ein, zwei oder selten drei aufeinanderfolgende Bilder besitzen. Die Bilddichte wird für jedes Reel individuell entschieden. Das Reel wird vollständig ohne Untertitel produziert und gerendert.
+
+**Wichtig: Aktuell ist im Repository bewusst keine feste Bildwelt definiert.** Keine alte Kugel-/Countryball-Welt, Golden Reference, feste Figurenform, Palette oder Editorial-Struktur automatisch übernehmen. Historische Reels sind keine aktive Stilvorgabe.
 
 ## Ausgangsdaten
 
@@ -86,7 +88,7 @@ Erstelle ein vollständiges Erklär-Reel mit ungefähr einer Minute Voice-over-L
 - narrative Szenen: **${scenes.length}**
 - aktuell initialisierte Bilder: **${currentPlannedImages}**; diese Zahl ist ausdrücklich noch nicht automatisch final
 - Bildanzahl-Modus: **individuell pro Reel**
-- feste Bildwelt: **round-country-characters**
+- feste Bildwelt: **keine**
 - Voice-over-Zieldauer: **55–60 Sekunden**
 - Zieltext: **155–175 Wörter**
 - Format: **9:16**
@@ -109,41 +111,34 @@ Erstelle ein vollständiges Erklär-Reel mit ungefähr einer Minute Voice-over-L
 
 ## Verbindlicher Ablauf
 
-1. Lies \`CURRENT_WORKFLOW.md\`, \`AGENTS.md\`, \`CODEX_TASK.md\`, \`VISUAL_WORLD_POLICY.md\`, \`knowledge/production-rules.md\` und \`config/production-quality-gates.json\`.
+1. Lies \`CURRENT_WORKFLOW.md\`, \`AGENTS.md\`, \`CODEX_TASK.md\`, \`knowledge/production-rules.md\` und \`config/production-quality-gates.json\`.
 2. Überarbeite das Script auf 155–175 Wörter und ungefähr 55–60 Sekunden bei 1,10x.
 3. Das Ende benötigt zwei getrennte Stufen: eine persönliche Prüf- oder Erkenntnisfrage und danach eine konkrete Lösung mit kurzem einprägsamem Abschlusssatz.
 4. Schreibe denselben finalen Text nach \`script/final-script.txt\` und \`script/voice-script.txt\`.
 5. Plane ${scenes.length} **narrative Szenen**. Diese Zahl bestimmt nicht automatisch die Bildanzahl.
-6. **Wähle keine Bildwelt neu aus.** Verwende durchgehend \`round-country-characters\`. Länder sind perfekt runde Flaggen-Kugeln; nicht-länderspezifische Personen, Gruppen, Systeme, Gedanken, Gewohnheiten oder Emotionen werden als neutrale runde Kugelfiguren mit passenden Symbolen/Requisiten umgesetzt. Kartenformen bleiben immer gesichtslos.
+6. **Keine Bildwelt autonom auswählen oder aus alten Dateien ableiten.** Solange der Nutzer keine neue Bildwelt ausdrücklich festlegt, bleiben \`visualStyleId\` und \`visualStyleReason\` leer/unassigned. Historische Kugel-, Countryball-, Menschen-, Metapher- oder andere Stile sind nicht aktiv.
 7. Plane danach die Bilddichte **für jede Szene einzeln**. Jede Szene bekommt:
    - normalerweise 1 Bild,
    - 2 Bilder, wenn ein zweiter visueller Schritt Verständnis, Rhythmus oder Abwechslung klar verbessert,
    - 3 Bilder nur selten bei wirklich mehrstufigen Erklärungen.
 8. Wenn ein einziges Still-Bild ungefähr 3,5–4 Sekunden oder länger stehen würde, prüfe aktiv eine zweite Bildphase. Das ist ein Prüftrigger, **keine starre Pflicht**. Ein starkes Einzelbild darf länger tragen, wenn es visuell sinnvoll ist.
-9. Wähle Bildphasen nach Inhalt, nicht nach Quote. Typische sinnvolle Wechsel innerhalb der Kugel-Welt:
-   - Überblick → Detail oder Zoom,
-   - Ursache → sichtbare Folge,
-   - Ausgangslage → Vergleich oder Auflösung,
-   - einzelne Kugelfigur → Gruppe/System,
-   - äußere Handlung → Gedanken-/Mechanismus-Detail,
-   - Karte/Ort → konkrete Kugelinteraktion.
+9. Wähle Bildphasen nach Inhalt, nicht nach Quote. Sinnvolle Wechsel sind z. B. Überblick → Detail, Ursache → Folge, Ausgangslage → Vergleich oder äußere Handlung → Mechanismus-Detail. Diese Beispiele sind keine Stilvorgabe.
 10. Keine feste Gesamtzahl wie 13, 16 oder 18 erzwingen. Schreibe die tatsächlich gewählte Summe nach \`reel.json.plannedImageCount\` und setze \`imageCountMode: "individual-per-reel"\`.
 11. Hinterlege pro Szene \`imageCount\` und \`imagePhases\`. Die erste Phase beginnt mit \`startPercent: 0\`; weitere Phasen liegen streng aufsteigend innerhalb 0–1.
 12. Die erste Bildphase nutzt \`image-prompt.txt\`. Zusätzliche Phasen nutzen \`image-prompt-02.txt\`, \`image-prompt-03.txt\`. Jede Phase bekommt eine eigene \`visualIdea\`, optional eigenen \`imageText\` und einen kurzen \`rationale\`-Grund für den zusätzlichen Bildwechsel.
 13. Aktualisiere \`scenes/scene-index.json\` und jede \`scene.json\` synchron.
 14. Hook ${timing.hookSeconds.min}–${timing.hookSeconds.max}s, normale narrative Szenen ${timing.standardSeconds.min}–${timing.standardSeconds.max}s, letzte Szene inklusive Nachlauf ${timing.finalSceneSecondsIncludingHold.min}–${timing.finalSceneSecondsIncludingHold.max}s. Der Szenenwechsel bleibt am echten Voice-over-Cue; zusätzliche Bildphasen wechseln innerhalb der Szene über \`startPercent\`.
-15. Schreibe für **jede** geplante Bildphase einen vollständigen englischen 9:16-Bildprompt im bewährten ausführlichen Editorial-Aufbau. Wenn \`imageText\` gesetzt ist, fordere nur den exakten deutschen Text an.
+15. Schreibe für **jede** geplante Bildphase einen vollständigen englischen 9:16-Bildprompt, der nur die konkrete Szene beschreibt. Keine alte Repo-Bildwelt ergänzen. Wenn \`imageText\` gesetzt ist, fordere nur den exakten deutschen Text an.
 
 ### Pflichtregeln für Bilder
 
 - natürliche zusammenhängende Komposition über die volle 9:16-Fläche
-- komplette perfekt runde Kugelfiguren; niemals map-shaped characters
 - keine künstlich leere horizontale Zone für Untertitel
 - kein zusätzliches Bild nur um eine Zahl zu erfüllen
 - jeder Bildwechsel muss einen sichtbaren neuen Informationsschritt, Detailfokus oder klaren Rhythmusgewinn liefern
-- Kugelform, Konturen, Papiertextur und Farbwelt durchgehend beibehalten
-- Bild 00 bleibt Cover und Style-Master
 - technische Labels wie BILD, COVER, SZENE, BILDPHASE oder DATEINAME dürfen niemals im Bild erscheinen
+- keine feste Figurenform, Palette, Textur, Konturstärke oder historische Referenz erzwingen, solange der Nutzer keine neue Bildwelt definiert hat
+- Bild 00 ist aktuell nur das Cover und nicht automatisch ein globaler Style-Master
 
 16. Exportiere Cover und alle geplanten Bildphasen:
 
