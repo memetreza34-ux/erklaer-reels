@@ -85,7 +85,8 @@ test('stellt einen sichtbaren Sammelordner mit globalem Bild-XX-Standard bereit'
   const promptReadme = await readFile(path.join(reelDirectory, '00-bildprompts', 'README.md'), 'utf8');
   assert.match(promptReadme, /Google Flow erzeugt die Bilder streng einzeln/);
   assert.match(promptReadme, /ohne weiteres Go automatisch/);
-  assert.match(promptReadme, /`Bild 00\.png` ist Cover und Style-Master/);
+  assert.match(promptReadme, /`Bild 00\.png` ist aktuell nur das Cover und nicht automatisch ein Style-Master/);
+  assert.match(promptReadme, /keine feste Repo-Bildwelt aktiv/);
   assert.match(promptReadme, /Bildnummer ist nicht automatisch eine Szenennummer/);
 });
 
