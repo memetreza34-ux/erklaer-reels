@@ -67,7 +67,8 @@ export async function calculateReelProgress(reelDirectory) {
   const cover = await readJson(path.join(reelDirectory, 'cover', 'cover.json'), {});
 
   const scriptsReady = finalScript.length >= 120 && voiceScript.length >= 120;
-  const styleReady = Boolean(reel.visualStyleId) && String(reel.visualStyleReason ?? '').trim().length >= 20;
+  const visualWorldUnassigned = !String(reel.visualStyleId ?? '').trim();
+  const styleReady = true;
   const completeScenes = scenes.filter((scene) =>
     String(scene.narration ?? '').trim().length >= 10 &&
     String(scene.visualIdea ?? '').trim().length >= 20 &&
@@ -256,6 +257,7 @@ export async function calculateReelProgress(reelDirectory) {
     details: {
       scriptsReady,
       styleReady,
+      visualWorldUnassigned,
       scenesReady: `${completeScenes}/${scenes.length}`,
       plannedImageCount: visualPhases.length,
       promptsReady: `${promptCount}/${visualPhases.length}`,
