@@ -4,7 +4,9 @@
 
 ## Ziel
 
-Fertige Cover- und Szenenbilder müssen auf einem Smartphone sofort verständlich, technisch geeignet, stilistisch konsistent und in der festen Kugel-Welt korrekt sein.
+Fertige Cover- und Szenenbilder müssen auf einem Smartphone sofort verständlich, technisch geeignet und inhaltlich eindeutig dem jeweiligen Bildmoment zugeordnet sein.
+
+**Aktuell ist keine feste Repo-Bildwelt aktiv.** Die visuelle QC darf deshalb keine historische Countryball-/Kugel-, Golden-Reference-, Figuren-, Farb- oder Editorial-Regel voraussetzen.
 
 Untertitel sind deaktiviert. Es wird **keine Untertitelzone reserviert oder geprüft**.
 
@@ -16,19 +18,22 @@ Untertitel sind deaktiviert. Es wird **keine Untertitelzone reserviert oder gepr
 - Bilder mit falschem Seitenverhältnis dürfen nicht unbemerkt in den Schnitt gelangen
 - Cover und jede einzelne Bildphase werden separat geprüft
 
-## Kugel-Welt-QC
+## Keine feste Stil-QC
 
-Für jede anthropomorphe Hauptfigur gilt:
+Bis der Nutzer eine neue Bildwelt ausdrücklich definiert, werden **nicht** geprüft oder erzwungen:
 
-- vollständig runde Kugelform
-- Länderrollen mit vereinfachtem Flaggenmuster auf der Kugel
-- nicht-länderspezifische Rollen als neutrale Kugeln mit passenden Farben/Symbolen/Requisiten
-- einfache weiße Augen; höchstens winzige Arme/Beine
-- Karten- oder Länderformen bleiben gesichtslos
-- keine menschlichen Köpfe/Torsi als Hauptwelt
-- keine map-shaped characters
+- Countryball-/Kugel-Geometrie
+- Golden References
+- Augen-only-/Mundverbote oder andere feste Gesichtselemente
+- feste Körper- oder Silhouettenformen
+- feste Farbpalette
+- Papiertextur
+- historischer Premium-Editorial-Look
+- Übereinstimmung mit alten Länder-Reels
 
-`Bild 00` ist Style-Master. Folgeframes müssen Papiertextur, Liniengewicht, Palette, Kugelproportionen und Editorial-Finish sichtbar matchen.
+`Bild 00` ist aktuell nur das Cover und nicht automatisch ein Style-Master.
+
+Die inhaltliche Prüfung richtet sich ausschließlich nach Narration, `visualIdea`, `imageText` und dem konkreten `imagePrompt`.
 
 ## Sichere Bereiche
 
@@ -38,7 +43,7 @@ Die volle 9:16-Komposition wird natürlich genutzt.
 - links/rechts ungefähr 6 % Sicherheitsabstand für unverzichtbare Details einplanen
 - oben ungefähr 8 % und unten ungefähr 18 % für typische Plattform-UI berücksichtigen, wenn dort kritischer Text oder kleine Details liegen
 - **keine künstliche horizontale Untertitelzone** freihalten
-- Hauptfigur darf die Bildmitte normal und groß besetzen
+- Hauptmotiv darf die Bildmitte normal und groß besetzen
 - Cover-/Bildtext muss auf Smartphone-Größe lesbar bleiben
 
 ## Sichtbarer Text
@@ -74,13 +79,12 @@ Die Dateinummer ist nur Routing-Hilfe.
 Für jede Bildphase prüfen und dokumentieren:
 - `visibleSummary`: was tatsächlich sichtbar ist
 - `mainSubjectSafe`: Hauptmotiv technisch sicher
-- `textReadable`: erlaubter Text lesbar
-- `textAccurate`: exakt geplanter Wortlaut, kein zusätzlicher Text
-- `worldCompliant`: Kugel-Welt-Regeln eingehalten
+- `plannedGermanTextExact`: exakt geplanter Wortlaut, kein zusätzlicher Text
 - `platformUiSafe`: unverzichtbare Details nicht unter typischer Plattform-UI
 - `motionSafe`: Bewegung schneidet nichts Wichtiges ab
-- `styleConsistent`: Stil und Kugelproportionen passen zu Bild 00
-- `semanticMatch`: sichtbarer Inhalt passt zu Narration, `visualIdea`, `imageText` und Prompt
+- `sceneMeaningMatchesNarration`: sichtbarer Inhalt passt zur Narration
+- `sceneMatchesVisualIdea`: Bild erklärt die konkrete visuelle Idee
+- `oneClearMoment`: ein klar lesbarer Bildmoment statt unverständlicher Überladung
 
 ### Pass 2
 Danach gegen vorherige und nächste Bildphase prüfen:
