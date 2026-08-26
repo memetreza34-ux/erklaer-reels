@@ -7,20 +7,20 @@ import path from 'node:path';
 import { createReelWorkspace } from '../src/core/workspace.js';
 import { verifyRequiredSourceQuality } from '../src/core/source-quality-file-guard.js';
 
-test('createReelWorkspace setzt feste Kugel-Welt und Quellen-Schema 3 ohne CLI-Nachbearbeitung', async () => {
+test('createReelWorkspace startet ohne feste Bildwelt und mit Quellen-Schema 3', async () => {
   const temporaryRoot = await mkdtemp(path.join(os.tmpdir(), 'erklaer-workspace-policy-'));
   const result = await createReelWorkspace({
     title: 'Warum vergessen wir Namen so schnell?',
     script: 'Dieses Rohscript dient nur dazu, die zentralen Workspace-Standards unabhängig von der CLI zu prüfen.',
-    date: new Date('2026-08-24T12:00:00'),
+    date: new Date('2026-08-26T12:00:00'),
     outputRoot: temporaryRoot
   });
 
   const reel = JSON.parse(await readFile(path.join(result.reelDirectory, 'reel.json'), 'utf8'));
   const sources = await readFile(path.join(result.reelDirectory, 'sources', 'sources.md'), 'utf8');
 
-  assert.equal(reel.visualStyleId, 'round-country-characters');
-  assert.match(reel.visualStyleReason, /Kugel-Welt/i);
+  assert.equal(reel.visualStyleId, null);
+  assert.equal(reel.visualStyleReason, '');
   assert.equal(reel.sourceQualitySchemaVersion, 3);
   assert.equal(reel.subtitlesEnabled, false);
   assert.match(sources, /<!-- sources-schema:3 -->/);
