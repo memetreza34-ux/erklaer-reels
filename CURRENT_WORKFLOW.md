@@ -1,6 +1,6 @@
 # CURRENT WORKFLOW — VERBINDLICHE SINGLE SOURCE OF TRUTH
 
-**Stand: 2026-08-24**
+**Stand: 2026-08-26**
 
 Diese Datei ist die verbindliche Repo-weite Produktionsregel für neue Chats, Codex, Antigravity und andere Repo-Agenten.
 
@@ -38,7 +38,7 @@ Globale Regeln werden nur durch eine ausdrückliche neue Nutzerentscheidung geä
 
 ### Themenuniversum: offen statt feste Säulen
 
-Die visuelle Welt ist fest, **die Themenwahl ist ausdrücklich offen**.
+Die Themenwahl ist ausdrücklich offen.
 
 Neue Reels sind nicht auf Geschichte, Politik, Länder/Geografie oder Psychologie beschränkt. Für autonome Themenwahl darf grundsätzlich jeder geeignete Erklärbereich verwendet werden, zum Beispiel:
 
@@ -66,78 +66,60 @@ Bei „Mach ein neues Reel“ darf kein altes Pillar-System die Auswahl einschr�
 1. starker Hook / Neugier in der ersten Sekunde
 2. klarer Aha-Moment innerhalb von unter 60 Sekunden
 3. faktisch sauber erklärbar
-4. visuell stark in der Kugel-Welt umsetzbar
+4. visuell stark und klar umsetzbar
 5. abwechslungsreich gegenüber den unmittelbar vorherigen Reels
 6. teilbar, überraschend oder alltagsrelevant
 
-Nicht automatisch mehrere neue Reels hintereinander nur über Länder, Grenzen, Hauptstädte, Geschichte oder Politik auswählen, nur weil die Kugel-Welt ursprünglich dort entstanden ist.
+---
+
+## 2. Bildwelt: aktuell bewusst nicht definiert
+
+**Seit 2026-08-26 ist keine feste Repo-Bildwelt aktiv.**
+
+Das bedeutet ausdrücklich:
+
+- kein `round-country-characters` als Standard
+- keine feste Countryball-/Kugelregel
+- kein `human-editorial-cartoon` als Standard
+- kein `visual-metaphor` als Standard
+- keine Golden References
+- keine feste Figuren-Geometrie
+- keine feste Augen-, Mund-, Körper- oder Silhouettenregel
+- keine feste Palette
+- keine feste Papiertextur
+- kein verbindlicher „premium mature editorial“-Stil
+- keine automatische Übernahme alter Reel-Prompts
+
+Historische Reels, alte Prompts und frühere Stildateien sind **Archivmaterial**, keine aktive Vorgabe für neue Reels.
+
+Neue Workspaces setzen:
+
+```text
+visualStyleId = null
+visualStyleReason = ""
+```
+
+Solange der Nutzer keine neue Bildwelt ausdrücklich definiert, darf kein Agent selbst eine feste Bildwelt auswählen, erfinden oder aus älteren Reels ableiten.
 
 ---
 
-## 2. Verbindliche Hauptbildwelt: nur Kugel-Welt
+## 3. Bildprompts ohne Repo-Stil-Lock
 
-Bis der Nutzer ausdrücklich etwas anderes aktiviert, gilt für **jedes neue Reel und jedes Thema** ausschließlich:
+Jede `cover/cover-prompt.txt`, `image-prompt.txt`, `image-prompt-02.txt` usw. beschreibt nur den konkret gewünschten Bildinhalt.
 
-`round-country-characters`
+Aktuell darf der Repo-Workflow **keine** globale Figurenform, Palette, Textur, Golden Reference oder historische Stilformulierung automatisch davor- oder dahintersetzen.
 
-Die früheren Welten `human-editorial-cartoon` und `visual-metaphor` sind vorerst **außer Kraft** und dürfen nicht autonom ausgewählt werden.
+Verbindlich bleiben nur die neutralen Produktionsregeln:
 
-Diese Kugel-Welt ist **nicht auf Länder-/Geografie-Themen beschränkt**. Psychologie, Gesellschaft, Geschichte, Verhalten, Alltag, Wissenschaft, Technik, Wirtschaft, Gesundheit, Kultur und andere geeignete Themen werden mit runden Figuren, Symbolen, Karten, Objekten und metaphorischen Requisiten innerhalb derselben Kugel-Ästhetik erklärt.
-
-### Nicht verhandelbare Figurenregel
-
-- Jede anthropomorphe Hauptfigur ist eine **vollständig runde Kugel / Country-Ball-artige Figur**.
-- Bei Ländern liegt das vereinfachte Flaggenmuster auf der Kugel.
-- Bei nicht-länderspezifischen Rollen werden neutrale runde Kugelfiguren mit passenden Farben/Symbolen verwendet.
-- Nicht-Länder-Kugeln dürfen Personen, Gruppen, Rollen, Systeme, Gedanken, Gewohnheiten, Emotionen oder abstrakte Kräfte repräsentieren.
-- einfache weiße Augen; höchstens winzige Arme/Beine
-- Karten-/Länderumrisse dürfen nur gesichtslose Hintergrundgrafik sein
-- niemals Augen, Mund oder Gliedmaßen auf Kartenformen
-- niemals unregelmäßige Länderform als Figur
-- keine menschlichen Köpfe/Torsi als Hauptfiguren
-
-Jeder Prompt muss diese Form erzwingen:
-
-> complete perfectly round circular character / country sphere; never a map-shaped character
-
----
-
-## 3. Verbindlicher alter Bildprompt-Aufbau
-
-Die frühere ausführliche Bildprompt-Struktur ist der Standard, weil sie qualitativ bessere Ergebnisse geliefert hat.
-
-### Bindender Stil-Master
-
-Neue Bildprompts orientieren sich an diesem bewährten Aufbau und Look:
-
-> Vertical 9:16 premium mature 2D editorial country-character illustration. Warm off-white textured paper background, deep navy borders and map shapes, muted rust, mustard, cobalt and forest-green accents, bold clean hand-inked outlines, flat geometric shading, subtle grain, high contrast, sophisticated documentary tone, not childish.
-
-Dazu immer passend zur Szene:
-- vollständige runde Kugelcharaktere
-- Länder mit vereinfachtem Flaggenmuster auf der Kugel
-- einfache weiße Augen, höchstens winzige Arme/Beine
-- Karten/Länderumrisse nur gesichtslos als Hintergrund oder Erklärung
-- klare 1-Sekunden-Lesbarkeit
-- starke zentrale Komposition statt generischem Symbolbrei
-- `Bild 00` ist visueller Style-Master; spätere Bilder matchen dessen Liniengewicht, Papiertextur, Palette, Proportionen und Editorial-Finish
-
-### Reihenfolge innerhalb jedes visuellen Prompts
-
-Jede `cover/cover-prompt.txt`, `image-prompt.txt`, `image-prompt-02.txt` usw. ist ein vollwertiger visueller Prompt:
-
-1. Format + vollständiger Stil
+1. Format 9:16
 2. konkrete Szene / Komposition / Handlung
 3. genau erlaubter deutscher Bildtext, falls vorhanden
-4. negative Regeln: kein anderer lesbarer Text, kein Englisch, keine Logos, kein Wasserzeichen, kein 3D, keine Fotorealistik
-5. volle 9:16-Fläche, keine Untertitel-Safe-Zone, kein künstliches leeres Untertitelband
+4. kein anderer lesbarer Text, kein Englisch, keine Logos, kein Wasserzeichen, sofern nicht ausdrücklich verlangt
+5. volle 9:16-Fläche, keine Untertitel-Safe-Zone und kein künstliches leeres Untertitelband
 
-Bei späteren Bildphasen darf `Match Bild 00.png exactly` verwendet werden, aber nie als Ersatz für eine konkrete Bildidee.
+`Bild 00.png` ist aktuell nur das Cover. Es ist **nicht automatisch ein globaler Style-Master**. Eine neue Style-Master-Regel darf erst nach einer ausdrücklichen Nutzerentscheidung eingeführt werden.
 
-### Interne Einzelprompt-Sicherungen
-
-`all-image-prompts/image-prompts/Bild NN.txt` darf zusätzlich als interne Sicherung existieren und muss den visuellen Quellprompt wortgetreu enthalten. Dort keine Workflow-Wrapper hineinmischen.
-
-Die **verbindliche Datei für Google Flow ist aber nicht mehr diese Einzeldatei-Struktur**, sondern wieder der komplette Gesamtprompt unter `00-bildprompts/99-alle-bildprompts.txt`.
+Die internen Einzelprompt-Sicherungen unter `all-image-prompts/image-prompts/Bild NN.txt` enthalten den visuellen Quellprompt wortgetreu und keine zusätzlichen Stil-Wrapper.
 
 ---
 
@@ -154,7 +136,7 @@ Narrative Szenenzahl und Bildanzahl sind getrennt.
 
 **1 Bild:** ein starkes Motiv trägt den Gedanken.
 
-**2 Bilder:** ein echter zweiter visueller Schritt hilft, z. B. Überblick → Detail, Ursache → Folge, Ausgangslage → Vergleich, Karte → Zoom, Figur → Mechanismus.
+**2 Bilder:** ein echter zweiter visueller Schritt hilft, z. B. Überblick → Detail, Ursache → Folge, Ausgangslage → Vergleich oder Mechanismus → Konsequenz.
 
 **3 Bilder:** nur bei wirklich dreistufigen Erklärungen.
 
@@ -183,9 +165,9 @@ Die Überschriften im Gesamtprompt sind reine Workflow-Steuerung und ausdrückli
 
 ---
 
-## 6. Google Flow: wieder kompletter Gesamtprompt wie früher
+## 6. Google Flow: kompletter serieller Gesamtprompt
 
-Die bevorzugte Nutzerstruktur ist wieder der frühere komplette serielle Prompt in **einer Datei / einer Nachricht**.
+Die bevorzugte Nutzerstruktur ist ein kompletter serieller Prompt in **einer Datei / einer Nachricht**.
 
 Verbindliche Datei:
 
@@ -203,20 +185,15 @@ Der separate `google-flow-controller.txt` ist deaktiviert und wird nicht mehr al
 
 ### Aufbau des Gesamtprompts
 
-Genau wie beim bewährten alten Aufbau:
-
 1. `GOOGLE FLOW – KOMPLETTER SERIELLER BILDLAUF`
 2. `AUFTRAG`
 3. `WICHTIG – DIESE EINE NACHRICHT IST DIE KOMPLETTE FREIGABE`
 4. `STRENG SERIELL – NIE PARALLEL`
-5. komplette `DATEINAMEN`-Liste
-6. `STYLE-MASTER`
+5. Hinweis, dass **keine feste Repo-Bildwelt aktiv ist**
+6. komplette `DATEINAMEN`-Liste
 7. Text-/Workflow-Regeln
 8. `ENDE`
-9. danach für **jedes Bild** ein eigener Abschnitt:
-   - `BILD NN – COVER/SZENE ...`
-   - `DATEINAME NACH FERTIGSTELLUNG: Bild NN.png`
-   - vollständiger alter hochwertiger Visual-Prompt
+9. danach für **jedes Bild** ein eigener Abschnitt mit vollständigem konkretem Visual-Prompt
 
 ### Harte Serienregel trotz Gesamtprompt
 
@@ -228,9 +205,10 @@ Für jedes Bild zwingend:
 2. exakt **einen** Bildgenerator-Aufruf starten
 3. niemals zwei oder mehr Generierungsaktionen im selben Agent-Schritt, Tool-Batch oder Turn auslösen
 4. warten, bis das aktuelle Bild sichtbar vollständig fertig ist
-5. exakt umbenennen
-6. prüfen, dass die Umbenennung erfolgreich war
-7. erst danach den nächsten Bildabschnitt ausführen
+5. gegen den konkreten aktuellen Bildprompt prüfen
+6. exakt umbenennen
+7. prüfen, dass die Umbenennung erfolgreich war
+8. erst danach den nächsten Bildabschnitt ausführen
 
 Wenn noch ein Job aktiv/queued/pending ist oder der Status unklar ist: **warten und keinen neuen Job starten**.
 
@@ -243,8 +221,6 @@ Verboten:
 - nächstes Bild starten, bevor das vorige sichtbar fertig, umbenannt und geprüft wurde
 
 Falls Flow versehentlich mehrere Jobs startet, keine weiteren starten und spätere parallele Jobs abbrechen.
-
-`Bild 00.png` ist Cover und Style-Master. Der Cover-Text wird auf spätere Bilder nicht übernommen.
 
 ---
 
@@ -287,7 +263,7 @@ Erste Phase startet immer bei `startPercent: 0`; weitere Werte steigen zwischen 
 
 ## 8. Rollenverteilung
 
-Repo-Agenten / Codex / Antigravity erzeugen keine Bilder. Sie erstellen Script, Szenen, individuelle Bildphasen, vollwertige Bildprompts im bewährten alten Aufbau, **den kompletten seriellen Google-Flow-Gesamtprompt**, Caption, Quellen, Asset-Suche, QC, Timeline und Render.
+Repo-Agenten / Codex / Antigravity erzeugen keine Bilder. Sie erstellen Script, Szenen, individuelle Bildphasen, konkrete Bildprompts, **den kompletten seriellen Google-Flow-Gesamtprompt**, Caption, Quellen, Asset-Suche, QC, Timeline und Render.
 
 Der Nutzer sendet Google Flow einmal `00-bildprompts/99-alle-bildprompts.txt`. Flow arbeitet danach selbstständig, aber strikt Bild für Bild.
 
@@ -324,6 +300,8 @@ inbox/numbered-images/
 ```
 
 Die Nummer ist nur Routing-Hilfe. Jede Bildphase sichtbar prüfen gegen Narration, `audioCue`, `visualIdea`, `imageText`, Prompt und anschließend gegen vorherige/nächste Bildphase. Unter 0,90 Konfidenz nicht raten. `filename-only` ist verboten.
+
+Die visuelle QC prüft aktuell **keine feste Bildwelt und kein festes Charaktermodell**.
 
 ---
 
