@@ -43,21 +43,19 @@ test('aktiver npm-Workflow bietet keinen normalen sync:words-Befehl mehr an', as
   assert.equal(packageJson.scripts['legacy:sync:words'], 'node src/cli/sync-words.js');
 });
 
-test('Visual Policy verweist auf den aktuellen kompletten Google-Flow-Gesamtprompt', async () => {
-  const policy = await text('VISUAL_WORLD_POLICY.md');
-
-  assert.match(policy, /00-bildprompts\/99-alle-bildprompts\.txt/);
-  assert.match(policy, /google-flow-controller\.txt.*deaktiviert/is);
-  assert.doesNotMatch(policy, /serielle Steuerung lebt nur in `google-flow-controller\.txt`/i);
+test('alte Visual-World-Policy und Countryball-Style-Master sind entfernt', async () => {
+  assert.equal(await exists('VISUAL_WORLD_POLICY.md'), false);
+  assert.equal(await exists('knowledge/countryball-style-master.md'), false);
+  assert.equal(await exists('test/kugelwelt-geometry-lock.test.js'), false);
 });
 
-test('README friert offene Themenwelt und feste Kugel-Welt ein', async () => {
+test('README friert offene Themenwelt und unassigned Bildwelt ein', async () => {
   const readme = await text('README.md');
 
-  assert.match(readme, /offenen Themenuniversum/i);
-  assert.match(readme, /round-country-characters/);
+  assert.match(readme, /offenem Themenuniversum/i);
+  assert.match(readme, /keine feste Bildwelt/i);
+  assert.match(readme, /visualStyleId = null/);
   assert.match(readme, /00-bildprompts\/99-alle-bildprompts\.txt/);
-  assert.doesNotMatch(readme, /Bildwelt erst nach dem fertigen Script auswählen/i);
 });
 
 test('Antigravity Policy enthält weder aktiven Word-Sync noch alten Flow-Einstieg', async () => {
@@ -68,13 +66,24 @@ test('Antigravity Policy enthält weder aktiven Word-Sync noch alten Flow-Einsti
   assert.doesNotMatch(policy, /Untertitel-\/Word-Sync/);
 });
 
-test('Content-Regeln sind nicht mehr auf drei alte Themen-Säulen begrenzt', async () => {
+test('Content-Regeln sind offen und besitzen keine feste Bildwelt', async () => {
   const rules = JSON.parse(await text('config/content-rules.json'));
 
   assert.equal(rules.topicFocus.openTopicUniverse, true);
   assert.equal(rules.topicFocus.autonomousSelectionLimitedToAllowedTopics, false);
-  assert.equal(rules.visualRules.fixedVisualWorld, 'round-country-characters');
+  assert.equal(rules.visualRules.visualWorldMode, 'unassigned');
+  assert.equal(rules.visualRules.fixedVisualWorld, null);
   assert.equal(rules.visualRules.selectVisualWorldAfterScript, false);
+});
+
+test('Image-Style-Konfiguration enthält keine aktive alte Stilwelt', async () => {
+  const styles = JSON.parse(await text('config/image-styles.json'));
+
+  assert.equal(styles.visualWorldMode, 'unassigned');
+  assert.equal(styles.fixedVisualWorld, null);
+  assert.deepEqual(styles.newReelAllowedStyleIds, []);
+  assert.deepEqual(styles.styles, []);
+  assert.deepEqual(styles.goldenReferencePaths, []);
 });
 
 test('sichtbare Technikansicht bietet Untertitel nicht mehr als aktiven Arbeitsbereich an', async () => {
@@ -84,8 +93,10 @@ test('sichtbare Technikansicht bietet Untertitel nicht mehr als aktiven Arbeitsb
   assert.match(humanView, /Untertitel sind für neue Reels deaktiviert/);
 });
 
-test('Quality Gates enthalten keine tote Untertitel-Timing-Regel mehr', async () => {
+test('Quality Gates enthalten keine tote Untertitel-Timing-Regel und keine Bildwelt-Sperre mehr', async () => {
   const gates = JSON.parse(await text('config/production-quality-gates.json'));
 
   assert.equal(gates.sceneTiming.subtitlesEndWithVoiceover, undefined);
+  assert.equal(gates.visualContinuity.requireVisualWorldMatch, undefined);
+  assert.equal(gates.visualContinuity.requireCharacterModelConsistency, undefined);
 });
