@@ -1,117 +1,20 @@
 {
-  "mandatoryPolicyFile": "VISUAL_WORLD_POLICY.md",
-  "goldenReferenceFile": "knowledge/countryball-style-master.md",
-  "visualWorldMode": "fixed",
-  "fixedVisualWorld": "round-country-characters",
-  "newReelAllowedStyleIds": [
-    "round-country-characters"
-  ],
-  "styles": [
-    {
-      "id": "human-editorial-cartoon",
-      "name": "Menschliche Cartoonfiguren / Köpfe",
-      "allowedForNewReels": false,
-      "paused": true,
-      "bestFor": ["Psychologie", "Gesellschaft", "Verhalten", "Wahrnehmung", "Emotionen", "soziale Situationen"],
-      "description": "Pausierte historische Welt. Darf für neue Reels nicht autonom gewählt werden, solange der Nutzer sie nicht ausdrücklich wieder aktiviert."
-    },
-    {
-      "id": "round-country-characters",
-      "name": "Runde Länder- und Kugelfiguren",
-      "allowedForNewReels": true,
-      "bestFor": ["alle geeigneten Erklärthemen"],
-      "description": "Einzige aktive Markenwelt, abgeleitet aus den bewährten Länder-Reels. Der komplette Charakter ist ein sichtbarer perfekter 1:1-Countryball. Zwei einfache weiße Countryball-Augen sind das einzige Gesichtselement; kein Mund, keine Nase, keine Ohren, keine Haare und keine menschliche Gesichtsstruktur. Kein separater Kopf, Hals, Rumpf oder menschlicher Körper. Hauptkugeln dürfen nicht hinter Möbeln so verdeckt werden, dass sie wie Köpfe wirken. Nicht-Länder-Rollen verwenden exakt dasselbe Modell mit kräftiger flacher Editorial-Farbe oder einfachem 2-Ton-/Panel-Muster statt Flagge und ohne Haut-/Fleischfarbe als Standardkörperfarbe."
-    },
-    {
-      "id": "visual-metaphor",
-      "name": "Starke visuelle Metapher",
-      "allowedForNewReels": false,
-      "paused": true,
-      "bestFor": ["abstrakte Begriffe", "unsichtbare Mechanismen", "Ursache-Wirkung", "Systeme", "soziale Zusammenhänge"],
-      "description": "Pausierte historische Welt. Metaphern dürfen als Requisit oder Kompositionsprinzip innerhalb der festen Kugel-Welt verwendet werden, aber nicht als eigene neue Bildwelt."
-    },
-    {
-      "id": "personified-biology",
-      "name": "Personifizierte Organe und Zellen",
-      "allowedForNewReels": false,
-      "legacyOnly": true,
-      "bestFor": ["Körper", "Biologie", "Gesundheitsgrundlagen"],
-      "description": "Legacy-Stil. Darf bei bestehenden älteren Reels weiter lesbar bleiben, ist für neue Reels aber nicht autonom erlaubt."
-    },
-    {
-      "id": "comparison-panels",
-      "name": "Panel- und Vergleichsstil",
-      "allowedForNewReels": false,
-      "legacyOnly": true,
-      "bestFor": ["Vergleiche", "Kategorien", "Systeme"],
-      "description": "Legacy-Stil. Darf bei bestehenden älteren Reels weiter lesbar bleiben, ist für neue Reels aber nicht autonom erlaubt. Vergleiche werden innerhalb der festen Kugel-Welt gelöst."
-    },
-    {
-      "id": "progressive-build-up",
-      "name": "Build-up-Sequenz",
-      "allowedForNewReels": false,
-      "legacyOnly": true,
-      "bestFor": ["Prozesse", "Kombinationen", "schrittweise Entwicklungen"],
-      "description": "Legacy-Stil. Darf bei bestehenden älteren Reels weiter lesbar bleiben, ist für neue Reels aber nicht autonom erlaubt. Ein Build-up ist nur als Kompositionsprinzip innerhalb der festen Kugel-Welt zulässig."
-    }
-  ],
-  "selectionRule": "Für jedes neue Reel ist round-country-characters ohne Stil-Auswahl die feste Bildwelt. Die Golden References und knowledge/countryball-style-master.md definieren das Charaktermodell. Das Thema verändert nur Oberflächenmuster, Symbole, Requisiten und Handlung, niemals die Countryball-Grundform oder den Augen-only-Gesichtsstil.",
-  "characterGeometryLock": {
-    "required": true,
-    "bodyShape": "perfect-geometric-circle",
-    "equalVisibleBodyWidthAndHeight": true,
-    "sameGeometryForCountryAndNonCountryRoles": true,
-    "fullMainCharacterCircleVisible": true,
-    "forbidFurnitureHeadOcclusion": true,
-    "eyesDirectlyOnSphere": true,
-    "eyesStyle": "two-simple-white-countryball-eyes-only",
-    "mouth": false,
-    "nose": false,
-    "ears": false,
-    "hair": false,
-    "humanFacialAnatomy": false,
-    "separateHead": false,
-    "neck": false,
-    "torso": false,
-    "shoulders": false,
-    "chest": false,
-    "defaultNonCountrySkinTone": false,
-    "nonCountrySurface": "bold-flat-editorial-color-or-simple-two-tone-panel-pattern",
-    "maxLimbs": "tiny-simple-limbs-attached-directly-to-circle",
-    "forbiddenShapes": [
-      "oval",
-      "egg-shaped",
-      "bean-shaped",
-      "capsule-shaped",
-      "pear-shaped",
-      "teardrop-shaped",
-      "humanoid-head",
-      "humanoid-torso",
-      "ball-as-human-head"
-    ]
-  },
-  "goldenReferencePaths": [
-    "reels/2026-KW34_17-08_bis_23-08/dienstag/reel-01_warum-fahren-manche-laender-links/cover/cover-prompt.txt",
-    "reels/2026-KW34_17-08_bis_23-08/dienstag/reel-01_warum-fahren-manche-laender-links/scenes/scene-01/image-prompt.txt",
-    "reels/2026-KW35_24-08_bis_30-08/dienstag/reel-01_warum-haben-manche-laender-keine-armee/cover/cover-prompt.txt",
-    "reels/2026-KW35_24-08_bis_30-08/dienstag/reel-01_warum-haben-manche-laender-keine-armee/scenes/scene-01/image-prompt.txt",
-    "reels/2026-KW35_24-08_bis_30-08/mittwoch/reel-01_warum-gibt-es-laender-in-anderen-laendern/cover/cover-prompt.txt",
-    "reels/2026-KW35_24-08_bis_30-08/mittwoch/reel-01_warum-gibt-es-laender-in-anderen-laendern/scenes/scene-01/image-prompt.txt"
-  ],
+  "visualWorldMode": "unassigned",
+  "fixedVisualWorld": null,
+  "newReelAllowedStyleIds": [],
+  "styles": [],
+  "selectionRule": "Aktuell ist keine feste Bildwelt definiert. Keine frühere Bildwelt, Golden Reference oder Figurenregel automatisch übernehmen. Historische Reel-Prompts sind nur Archivmaterial und keine aktive Stilvorgabe.",
+  "goldenReferencePaths": [],
   "diversityRule": {
     "recentReelsToInspect": 5,
     "avoidImmediateRepeat": false,
     "forcedRotation": false,
-    "fixedVisualWorldOverridesDiversity": true
+    "fixedVisualWorldOverridesDiversity": false
   },
   "selectionCriteria": [
-    "Golden-Reference-Nähe",
     "1-Sekunden-Verständlichkeit",
     "Cover-und-Hook-Stärke",
-    "Szenenvielfalt innerhalb derselben Kugel-Welt",
-    "visuelle Klarheit",
-    "exakte runde Figuren-Geometrie",
-    "Countryball-Augen-only statt menschlichem Gesicht"
+    "visuelle Klarheit"
   ],
   "crossStyleTextRule": {
     "preferred": true,
