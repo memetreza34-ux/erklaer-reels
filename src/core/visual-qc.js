@@ -94,15 +94,13 @@ function createReviewEntry(asset, requiredChecks) {
   };
 }
 
-async function ensureInspectionFile(reelDirectory, assets, rules, reel) {
+async function ensureInspectionFile(reelDirectory, assets, rules) {
   const inspectionPath = path.join(reelDirectory, 'review', 'visual-inspection.json');
   const current = await readJson(inspectionPath, null);
   const byId = new Map((current?.assets ?? []).map((entry) => [entry.assetId, entry]));
   const next = {
-    version: 9,
-    visualStyleId: reel?.visualStyleId ?? '',
-    visualStyleReason: reel?.visualStyleReason ?? '',
-    imageCountMode: reel?.imageCountMode ?? 'legacy-one-image-per-scene',
+    version: 10,
+    imageCountMode: 'individual-per-reel',
     plannedImageCount: assets.filter((asset) => asset.kind === 'scene').length,
     subtitlesEnabled: false,
     instructions: [
@@ -113,10 +111,10 @@ async function ensureInspectionFile(reelDirectory, assets, rules, reel) {
       'Trage in matchReason konkret ein, welche sichtbaren Objekte und Handlungen die Zuordnung bestätigen.',
       'Zweiter Durchgang: Vergleiche die Zuordnung mit der vorherigen und nächsten Bildphase und setze erst danach secondPassConfirmed auf true.',
       'Setze comparedAssetId exakt auf die geprüfte Bildphasen-ID.',
-      'Prüfe die gewählte Hauptbildwelt, Figurenform, Konturen und Farbwelt gegen reel.visualStyleId und visualStyleReason.',
       'Geplanter deutscher Bildtext muss exakt stimmen; zusätzliche englische oder erfundene Wörter sind verboten.',
       'Prüfe eine natürliche Vollbild-Komposition ohne künstlich freigehaltene Untertitelzone.',
-      'Ändert sich Bilddatei, Narration, Bildphase, Bildtext, Prompt oder Bildwelt, wird eine frühere Freigabe automatisch zurückgesetzt.'
+      'Aktuell existiert keine feste Repo-Bildwelt. Prüfe nur die konkrete Bildidee und den konkreten Bildprompt; keine historischen Stilregeln ergänzen.',
+      'Ändert sich Bilddatei, Narration, Bildphase, Bildtext oder Prompt, wird eine frühere Freigabe automatisch zurückgesetzt.'
     ],
     safeZones: rules.safeZones,
     assets: assets.map((asset) => {
@@ -196,8 +194,6 @@ export async function runVisualQualityCheck(reelDirectory, { strict = false } = 
         visualIdea: phase.visualIdea || phase.sceneVisualIdea || '',
         imageText: phase.imageText || phase.sceneImageText || '',
         imagePrompt,
-        visualStyleId: reel.visualStyleId ?? '',
-        visualStyleReason: reel.visualStyleReason ?? '',
         previousTargetId: flattened[index - 1]?.targetId ?? null,
         nextTargetId: flattened[index + 1]?.targetId ?? null
       }
@@ -214,8 +210,6 @@ export async function runVisualQualityCheck(reelDirectory, { strict = false } = 
       headline: cover.headline ?? '',
       visualIdea: cover.visualIdea ?? '',
       imagePrompt: coverPrompt,
-      visualStyleId: reel.visualStyleId ?? '',
-      visualStyleReason: reel.visualStyleReason ?? '',
       reelTitle: reel.title ?? ''
     }
   });
@@ -224,7 +218,7 @@ export async function runVisualQualityCheck(reelDirectory, { strict = false } = 
     asset.reviewFingerprint = await buildReviewFingerprint(reelDirectory, asset);
   }
 
-  const inspection = await ensureInspectionFile(reelDirectory, assets, rules, reel);
+  const inspection = await ensureInspectionFile(reelDirectory, assets, rules);
   const inspectionById = new Map(inspection.assets.map((entry) => [entry.assetId, entry]));
   const checks = [];
   const technicalAssets = [];
@@ -310,11 +304,10 @@ export async function runVisualQualityCheck(reelDirectory, { strict = false } = 
   const errors = checks.filter((check) => !check.passed && check.level === 'error');
   const warnings = checks.filter((check) => !check.passed && check.level === 'warning');
   const report = {
-    version: 10,
+    version: 11,
     createdAt: new Date().toISOString(),
     strict,
     passed: errors.length === 0,
-    visualStyleId: reel.visualStyleId ?? '',
     imageCountMode: reel.imageCountMode ?? 'legacy-one-image-per-scene',
     plannedImageCount: flattened.length,
     subtitlesEnabled: false,
