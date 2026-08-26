@@ -7,8 +7,7 @@ Dieser Ablauf gilt bei „Mach ein neues Reel“, „Erstelle das nächste Reel�
 1. `CURRENT_WORKFLOW.md`
 2. `AGENTS.md`
 3. `CODEX_TASK.md`
-4. `VISUAL_WORLD_POLICY.md`
-5. `PRODUCTION_STATUS.md`
+4. `PRODUCTION_STATUS.md`
 
 `CURRENT_WORKFLOW.md` ist bei Widersprüchen maßgeblich.
 
@@ -26,9 +25,7 @@ Belegte Slots niemals überschreiben.
 
 Thema selbstständig aus dem **offenen Themenuniversum** wählen.
 
-Keine feste Pillar-Quote und keine Beschränkung auf Geschichte, Politik, Länder oder Psychologie. Entscheidend sind Hook, Aha-Moment, Faktenbasis, visuelle Stärke in der Kugel-Welt, Abwechslung und Teilbarkeit.
-
-Nicht mehrere neue Reels hintereinander automatisch nur über Länder/Geschichte/Politik wählen.
+Keine feste Pillar-Quote und keine Beschränkung auf Geschichte, Politik, Länder oder Psychologie. Entscheidend sind Hook, Aha-Moment, Faktenbasis, visuelle Klarheit, Abwechslung und Teilbarkeit.
 
 ### 3. Script schreiben
 
@@ -51,27 +48,35 @@ npm run create:reel -- \
 
 Die 13 sind **narrative Szenen**, nicht automatisch 13 Bilder.
 
-Neue Reels verwenden automatisch Quellen-Schema 3.
-
-### 5. Feste Kugel-Welt anwenden
-
-Keine neue Bildwelt auswählen. Verbindlich:
+Neue Reels verwenden automatisch Quellen-Schema 3 und starten aktuell ohne feste Bildwelt:
 
 ```text
-round-country-characters
+visualStyleId = null
+visualStyleReason = ""
 ```
 
-- Länder → perfekte runde Flaggen-Kugeln
-- normale Personen/Rollen → neutrale runde Kugeln mit Farben/Symbolen
-- Gruppen, Systeme, Gedanken, Gewohnheiten und Emotionen dürfen ebenfalls als Kugelfiguren dargestellt werden
-- Kartenformen bleiben gesichtslos
-- keine menschlichen Köpfe/Torsi als Hauptwelt
+### 5. Keine alte Bildwelt übernehmen
+
+Bis der Nutzer ausdrücklich eine neue Bildwelt definiert, keine frühere Stilwelt autonom auswählen oder aus historischen Reels ableiten.
+
+Nicht automatisch aktivieren:
+
+- `round-country-characters`
+- Countryball-/Kugel-Regeln
+- Golden References
+- `human-editorial-cartoon`
+- `visual-metaphor`
+- feste Figuren-Geometrie
+- feste Farbpalette oder Papiertextur
+- alten Premium-Editorial-Look
+
+Historische Reels sind Archivmaterial.
 
 ### 6. Bilddichte individuell planen
 
 Für jede narrative Szene separat:
 - 1 Bild, wenn ein starkes Motiv reicht
-- 2 Bilder, wenn Überblick/Detail, Ursache/Folge, Figur/Mechanismus oder ein anderer echter zweiter visueller Schritt hilft
+- 2 Bilder, wenn Überblick/Detail, Ursache/Folge oder ein anderer echter zweiter visueller Schritt hilft
 - 3 Bilder nur selten
 
 Bei ungefähr 3,5–4 Sekunden oder längerem Stillstand eine zweite Bildphase aktiv prüfen. Keine künstlichen Zusatzbilder nur für eine Quote.
@@ -85,7 +90,7 @@ Danach:
 
 ### 7. Bildprompts und Google-Flow-Gesamtprompt
 
-Bildprompts im bewährten ausführlichen Editorial-Stil schreiben. Keine generischen Kurzprompts.
+Bildprompts konkret für den jeweiligen Bildmoment schreiben. Keine alte Repo-Bildwelt, Golden Reference, Figurenform, Palette oder Textur automatisch ergänzen.
 
 Dann:
 
@@ -99,21 +104,12 @@ Die verbindliche Nutzerdatei ist:
 00-bildprompts/99-alle-bildprompts.txt
 ```
 
-`Bild 00` bleibt Cover und Style-Master. Danach folgen alle Bildphasen fortlaufend in globaler Bildreihenfolge.
-
-Die Bildnummer ist nicht automatisch die Szenennummer. Beispiel:
-
-```text
-Bild 01 = Szene 1 / Phase 1
-Bild 02 = Szene 2 / Phase 1
-Bild 03 = Szene 2 / Phase 2
-Bild 04 = Szene 3 / Phase 1
-```
+`Bild 00` ist aktuell nur Cover und nicht automatisch Style-Master. Danach folgen alle Bildphasen fortlaufend in globaler Bildreihenfolge.
 
 Flow arbeitet streng seriell und fragt nach dem einmaligen Start nicht erneut nach `Go`:
 
 ```text
-genau ein Bild → vollständig warten → umbenennen → prüfen → nächstes Bild
+genau ein Bild → vollständig warten → gegen aktuellen Prompt prüfen → umbenennen → nächstes Bild
 ```
 
 Keine Queue, kein Batch, keine Parallelgenerierung.
@@ -182,11 +178,11 @@ npm run validate:render -- --dir "PFAD-ZUM-REEL"
 npm run render:reel -- --dir "PFAD-ZUM-REEL"
 ```
 
-Jede geplante Bildphase muss die visuelle QC bestehen. Die letzte sichtbare Phase bleibt 0,7 Sekunden nach Sprecherende stehen.
+Jede geplante Bildphase muss die visuelle QC gegen ihren konkreten Inhalt und Prompt bestehen. Die letzte sichtbare Phase bleibt 0,7 Sekunden nach Sprecherende stehen.
 
 ## Keine Standardrückfragen
 
-Nicht nach Datum, Thema, Szenenzahl, Bildwelt oder bereits heruntergeladenen Assets fragen, solange Repo und Asset-Suche die Information selbst liefern können.
+Nicht nach Datum, Thema, Szenenzahl oder bereits heruntergeladenen Assets fragen, solange Repo und Asset-Suche die Information selbst liefern können. Wegen der Bildwelt keine alte Stilentscheidung selbst treffen; solange keine neue Bildwelt festgelegt wurde, bleibt sie unassigned.
 
 ## Abschlussmeldung
 
