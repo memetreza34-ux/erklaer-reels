@@ -10,16 +10,14 @@ Bei „Mach ein neues Reel“ autonom:
 2. **ein starkes Thema aus dem offenen Themenuniversum wählen; keine Beschränkung auf alte Säulen wie Geschichte, Politik, Länder oder Psychologie**
 3. deutsches Voice-over mit 155–175 Wörtern schreiben
 4. 12–14 narrative Szenen planen, Standard 13
-5. **immer `round-country-characters` verwenden**, solange der Nutzer keine andere Welt ausdrücklich reaktiviert
+5. **keine feste Bildwelt auswählen oder aus alten Reels ableiten**, solange der Nutzer keine neue Bildwelt ausdrücklich definiert
 6. Bildanzahl pro Reel und Szene individuell planen
-7. Cover + Bildphasen-Prompts + **kompletten alten seriellen Google-Flow-Gesamtprompt** + Caption + Quellen fertigstellen
+7. Cover + Bildphasen-Prompts + kompletten seriellen Google-Flow-Gesamtprompt + Caption + Quellen fertigstellen
 8. keine Untertitel erzeugen
 9. externe Assets zuerst suchen, bevor etwas als fehlend gemeldet wird
 10. Assets zweifach visuell prüfen, Audio synchronisieren und nur nach echten QC-Gates rendern
 
 ## Themenwahl — offen und abwechslungsreich
-
-Die Bildwelt ist fest, **die Themenwelt ist offen**.
 
 Neue Reels dürfen aus praktisch jedem geeigneten Erklärbereich kommen. Beispiele:
 - Psychologie und menschliches Verhalten
@@ -39,54 +37,41 @@ Neue Reels dürfen aus praktisch jedem geeigneten Erklärbereich kommen. Beispie
 - Sprache und Kommunikation
 - überraschende Alltagsfragen, Denkfehler, Mythen und „Warum ist das so?“-Themen
 
-Diese Liste ist **keine Begrenzung**. Ein Thema darf gewählt werden, wenn es als verständliches, faktenbasiertes Erklär-Reel funktioniert und sich visuell sinnvoll in der Kugel-Welt erzählen lässt.
+Diese Liste ist **keine Begrenzung**. Verboten ist eine starre Themenrotation oder eine Quote nach alten Säulen.
 
-Verboten ist eine starre Themenrotation oder eine Quote nach alten Säulen. Nicht automatisch mehrere Reels hintereinander nur über Länder/Geschichte/Politik wählen. Bei autonomer Themenwahl auf Abwechslung, Neugier, klaren Aha-Moment, Teilbarkeit und visuelle Erklärbarkeit achten.
+## Bildwelt — aktuell unassigned
 
-Die Kugeln müssen nicht immer Länder darstellen. Bei nicht-länderspezifischen Themen dürfen neutrale Kugelfiguren Personen, Gruppen, Rollen, Systeme, Gedanken, Gewohnheiten oder abstrakte Kräfte repräsentieren.
+Aktuell ist **keine feste Repo-Bildwelt aktiv**.
 
-## Aktive Bildwelt
+Nicht automatisch verwenden:
+- `round-country-characters`
+- `human-editorial-cartoon`
+- `visual-metaphor`
+- alte Countryball-/Kugel-Regeln
+- Golden References
+- feste Figuren-Geometrie
+- feste Augen-/Mund-/Körperregeln
+- alte Editorial-Palette oder Papiertextur
 
-Nur `round-country-characters` ist aktiv.
+Historische Reel-Prompts sind Archivmaterial, keine aktive Stilvorgabe.
 
-`human-editorial-cartoon` und `visual-metaphor` sind pausiert.
+Neue Reels erhalten `visualStyleId: null` und `visualStyleReason: ""`, bis der Nutzer ausdrücklich eine neue Bildwelt definiert.
 
-Die Kugel-Welt gilt für **alle Themen**, auch Psychologie, Gesellschaft, Verhalten, Wissenschaft, Technik, Alltag, Gesundheit, Wirtschaft, Kultur und abstrakte Mechanismen.
+## Bildprompt-Autorenschaft
 
-### Figurenregel
+Die Visual-Prompts dürfen nicht als generische unklare Kurzprompts geschrieben werden. Sie sollen die **konkrete Szene** präzise beschreiben, aber keine alte Repo-Bildwelt ergänzen.
 
-Jede anthropomorphe Hauptfigur ist eine vollständige runde Kugel.
+Jede `cover-prompt.txt`, `image-prompt.txt`, `image-prompt-02.txt` usw. enthält mindestens:
 
-- Länder → runde Kugel + vereinfachtes Flaggenmuster
-- nicht-länderspezifische Rollen → runde Kugel + neutrale Farben/Symbole
-- einfache weiße Augen
-- höchstens winzige Arme/Beine
+1. Format 9:16
+2. konkrete Szene und klare Komposition
+3. exakt erlaubten deutschen Bildtext, falls vorhanden
+4. `No other readable text, no English, no logos, no watermark`, sofern nicht ausdrücklich anders gewünscht
+5. volle 9:16-Fläche, keine Subtitle-Safe-Zone
 
-Strikt verboten:
-- Länderumriss/Kartenform als Figurenkörper
-- Gesicht/Augen auf einer Kartenform
-- unregelmäßige geografische Figuren
-- menschliche Köpfe/Torsi als Hauptwelt
+Keine globale Figurenform, Farbpalette, Textur, Golden Reference oder historische Stilformulierung automatisch hinzufügen.
 
-Jeder Bildprompt erzwingt sinngemäß:
-`complete perfectly round circular character / country sphere; never a map-shaped or human-shaped character`.
-
-## Bildprompt-Autorenschaft — alten Aufbau verwenden
-
-Die Visual-Prompts dürfen nicht als generische Kurzprompts geschrieben werden. Der frühere detaillierte Editorial-Aufbau ist verbindlich.
-
-Jede `cover-prompt.txt`, `image-prompt.txt`, `image-prompt-02.txt` usw. enthält:
-
-1. `Vertical 9:16 premium mature 2D editorial country-character illustration ...`
-2. vollständige Stilwelt: warm off-white textured paper, deep navy borders/map shapes, muted rust, mustard, cobalt, forest-green, bold clean hand-inked outlines, flat geometric shading, subtle grain, high contrast, sophisticated documentary tone, not childish
-3. konkrete Szene und klare Komposition
-4. vollständige runde Kugelfiguren passend zum Thema
-5. exakt erlaubten deutschen Bildtext, falls vorhanden
-6. `No other readable text, no English, no logos, no watermark`
-7. `No 3D, no photorealism`
-8. volle 9:16-Fläche, keine Subtitle-Safe-Zone
-
-`Match Bild 00.png exactly` darf genutzt werden, aber niemals als Ersatz für eine konkrete Bildidee.
+`Bild 00.png` ist aktuell nur das Cover und **nicht automatisch ein Style-Master**.
 
 ## Narrative Szenen ≠ Bildanzahl
 
@@ -108,25 +93,6 @@ Die verbindliche Nutzerdatei ist:
 00-bildprompts/99-alle-bildprompts.txt
 ```
 
-Sie muss so aufgebaut sein wie die frühere funktionierende Variante:
-
-```text
-GOOGLE FLOW – KOMPLETTER SERIELLER BILDLAUF
-AUFTRAG
-WICHTIG – DIESE EINE NACHRICHT IST DIE KOMPLETTE FREIGABE
-STRENG SERIELL – NIE PARALLEL
-DATEINAMEN
-STYLE-MASTER
-TEXTREGEL
-ENDE
-────────────────────────────────────────
-BILD 00 – COVER
-DATEINAME NACH FERTIGSTELLUNG: Bild 00.png
-<vollständiger Visual-Prompt>
-BILD 01 – SZENE 1
-...
-```
-
 `all-image-prompts/all-image-prompts.txt` ist eine identische technische Kopie.
 
 Die Einzeldateien unter `all-image-prompts/image-prompts/` dürfen als interne Sicherung bleiben, sind aber **nicht** der normale Google-Flow-Einstieg.
@@ -137,12 +103,11 @@ Der separate `google-flow-controller.txt` ist deaktiviert.
 
 Obwohl alle Prompts in einer Nachricht stehen, darf immer nur **eine** Generierung laufen.
 
-Für jedes Bild:
-
 ```text
 nur aktuellen Bildabschnitt ausführen
 → genau 1 Bildgenerator-Aufruf
 → vollständig warten
+→ gegen den aktuellen Bildprompt prüfen
 → umbenennen
 → prüfen
 → erst dann nächster Bildabschnitt
@@ -156,9 +121,7 @@ Strikt verboten:
 - mehrere Varianten gleichzeitig
 - nächstes Bild starten, bevor das aktuelle sichtbar fertig und geprüft ist
 
-Wenn ein Job noch läuft, queued/pending ist oder der Status unklar ist: warten. Wenn versehentlich mehrere Jobs gestartet wurden, keine weiteren starten und spätere parallele Jobs abbrechen.
-
-`Bild 00.png` ist Cover und Style-Master.
+Wenn ein Job noch läuft, queued/pending ist oder der Status unklar ist: warten.
 
 ## Workflow-Metadaten dürfen nie im Bild erscheinen
 
@@ -170,7 +133,7 @@ Verboten als sichtbarer Bildtext:
 - `DATEINAME`, Dateinamen, technische IDs
 - `GOOGLE FLOW`, `PROMPT`, `STYLE-REFERENZ`, `ZIEL`
 
-Die Überschriften im Gesamtprompt sind reine Workflow-Steuerung. Der eigentliche visuelle Prompt trägt die Textregel selbst:
+Der eigentliche visuelle Prompt trägt die Textregel selbst:
 - `imageText`/Cover-Headline gesetzt → nur exakt dieser Text darf lesbar sein
 - leer → kein lesbarer Text
 
