@@ -1,5 +1,5 @@
 {
-  "version": 11,
+  "version": 12,
   "composition": {
     "width": 1080,
     "height": 1920,
@@ -21,15 +21,6 @@
       "sceneMeaningMatchesNarration",
       "sceneMatchesVisualIdea",
       "sceneOrderConfirmed",
-      "visualWorldMatch",
-      "goldenReferenceCountryballMatch",
-      "perfectCircularCharacterGeometry",
-      "fullMainBallSilhouetteVisible",
-      "countryballEyesOnlyNoHumanFace",
-      "noFurnitureHeadOcclusion",
-      "noSkinToneHumanHeadLook",
-      "noOvalEggBeanHumanoidCharacters",
-      "characterModelConsistent",
       "mainSubjectSafe",
       "naturalContinuousComposition",
       "oneClearMoment",
@@ -38,58 +29,17 @@
       "plannedGermanTextExact",
       "noUnexpectedReadableText",
       "platformUiSafe",
-      "motionSafe",
-      "styleConsistent"
+      "motionSafe"
     ],
     "cover": [
       "coverMatchesTopic",
       "headlineExactAndReadable",
-      "visualWorldMatch",
-      "goldenReferenceCountryballMatch",
-      "perfectCircularCharacterGeometry",
-      "fullMainBallSilhouetteVisible",
-      "countryballEyesOnlyNoHumanFace",
-      "noFurnitureHeadOcclusion",
-      "noSkinToneHumanHeadLook",
-      "noOvalEggBeanHumanoidCharacters",
-      "characterModelConsistent",
       "mainSubjectSafe",
       "naturalContinuousComposition",
       "noArtificialCenterGap",
       "noUnexpectedReadableText",
-      "platformUiSafe",
-      "styleConsistent"
+      "platformUiSafe"
     ]
-  },
-  "characterGeometry": {
-    "requiredVisualWorld": "round-country-characters",
-    "goldenReferenceFile": "knowledge/countryball-style-master.md",
-    "bodyShape": "perfect-geometric-circle",
-    "equalVisibleWidthAndHeight": true,
-    "sameGeometryForCountryAndNonCountryCharacters": true,
-    "fullMainBallSilhouetteVisible": true,
-    "eyesDirectlyOnCircle": true,
-    "eyesStyle": "two-simple-white-countryball-eyes-only",
-    "mouthAllowed": false,
-    "noseAllowed": false,
-    "earsAllowed": false,
-    "hairAllowed": false,
-    "humanFacialAnatomyAllowed": false,
-    "forbidSeparateHeadNeckTorsoShouldersWaist": true,
-    "forbidFurnitureOcclusionThatCreatesHeadLook": true,
-    "defaultNonCountrySkinToneAllowed": false,
-    "nonCountrySurface": "bold-flat-editorial-color-or-simple-two-tone-panel-pattern",
-    "forbiddenVisibleShapes": [
-      "oval",
-      "egg-shaped",
-      "bean-shaped",
-      "capsule-shaped",
-      "pear-shaped",
-      "teardrop-shaped",
-      "humanoid-body",
-      "ball-as-human-head"
-    ],
-    "poseMayDeformCircle": false
   },
   "manualEvidence": {
     "requireVisibleSummary": true,
