@@ -14,6 +14,7 @@ const CONTROLLER_FILE = 'google-flow-controller.txt';
 const INDIVIDUAL_PROMPTS_DIRECTORY = 'image-prompts';
 const USER_PROMPTS_DIRECTORY = '00-bildprompts';
 const USER_BUNDLE_FILE = '99-alle-bildprompts.txt';
+const FLOW_OUTPUT_FOLDER = '00-FERTIGE-REEL-BILDER';
 
 async function exists(filePath) {
   try {
@@ -62,9 +63,9 @@ export async function ensureImagePromptBundleDirectory(reelDirectory) {
   await mkdir(paths.individualPromptsDirectory, { recursive: true });
   await mkdir(paths.userDirectory, { recursive: true });
 
-  const readme = `# Google-Flow-Bildprompts\n\nDie **verbindliche Nutzerdatei** ist der komplette serielle Gesamtprompt:\n\n\`${USER_PROMPTS_DIRECTORY}/${USER_BUNDLE_FILE}\`\n\nIm Repository ist die feste Bildwelt **${FIXED_VISUAL_WORLD_LABEL}** (\`${FIXED_VISUAL_STYLE_ID}\`) aktiv. Der Exporter ergänzt diesen Style-Lock global und zusätzlich direkt vor jedem einzelnen Cover-/Szenenprompt. Dadurch bleibt die Bildsprache unabhängig vom Thema gleich. Der konkrete Quellprompt bestimmt Inhalt und Komposition; widersprechende Stilformulierungen werden vom festen Style-Lock überstimmt.\n\nBildprompts sind Englisch. Sichtbarer Bildtext ist ausschließlich der konkret geplante deutsche Text.\n\nWichtig: Trotz Gesamtprompt darf Google Flow niemals mehrere Bilder gleichzeitig starten. Exakt eine Bildgenerierung pro Agent-Schritt, vollständig warten, das Ergebnis gegen den aktuellen Prompt prüfen, umbenennen und erst danach das nächste Bild.\n\n\`${BUNDLE_DIRECTORY}/${BUNDLE_FILE}\` ist eine identische technische Kopie. Die Dateien unter \`${BUNDLE_DIRECTORY}/${INDIVIDUAL_PROMPTS_DIRECTORY}/\` bleiben nur als interne wortgetreue Einzelprompt-Sicherung erhalten. \`${CONTROLLER_FILE}\` ist deaktiviert und wird beim Export entfernt.\n\nErzeugen oder aktualisieren:\n\n\`\`\`bash\nnpm run export:prompts -- --dir "${normalizedRelativePath(reelDirectory)}" --strict\n\`\`\`\n`;
+  const readme = `# Google-Flow-Bildprompts\n\nDie **verbindliche Nutzerdatei** ist der komplette serielle Gesamtprompt:\n\n\`${USER_PROMPTS_DIRECTORY}/${USER_BUNDLE_FILE}\`\n\nIm Repository ist die feste Bildwelt **${FIXED_VISUAL_WORLD_LABEL}** (\`${FIXED_VISUAL_STYLE_ID}\`) aktiv. Der Exporter ergänzt diesen Style-Lock global und zusätzlich direkt vor jedem einzelnen Cover-/Szenenprompt. Dadurch bleibt die Bildsprache unabhängig vom Thema gleich. Der konkrete Quellprompt bestimmt Inhalt und Komposition; widersprechende Stilformulierungen werden vom festen Style-Lock überstimmt.\n\nBildprompts sind Englisch. Sichtbarer Bildtext ist ausschließlich der konkret geplante deutsche Text.\n\nWichtig: Trotz Gesamtprompt darf Google Flow niemals mehrere Bilder gleichzeitig starten. Exakt eine Bildgenerierung pro Agent-Schritt, vollständig warten, sichtbar prüfen, sofort umbenennen, sofort in den Flow-Ausgabeordner \`${FLOW_OUTPUT_FOLDER}\` legen und erst danach das nächste Bild starten. Der Ordner wird vor Bild 00 angelegt. Wenn Umbenennen oder Ablegen nicht erfolgreich bestätigt werden kann, muss der Lauf stoppen statt weitere Bilder zu erzeugen.\n\n\`${BUNDLE_DIRECTORY}/${BUNDLE_FILE}\` ist eine identische technische Kopie. Die Dateien unter \`${BUNDLE_DIRECTORY}/${INDIVIDUAL_PROMPTS_DIRECTORY}/\` bleiben nur als interne wortgetreue Einzelprompt-Sicherung erhalten. \`${CONTROLLER_FILE}\` ist deaktiviert und wird beim Export entfernt.\n\nErzeugen oder aktualisieren:\n\n\`\`\`bash\nnpm run export:prompts -- --dir "${normalizedRelativePath(reelDirectory)}" --strict\n\`\`\`\n`;
 
-  const userReadme = `# Bildprompts\n\nFür Google Flow **nur diese Datei verwenden**:\n\n\`${USER_BUNDLE_FILE}\`\n\nFeste Bildwelt: **${FIXED_VISUAL_WORLD_LABEL}** (\`${FIXED_VISUAL_STYLE_ID}\`). Sie gilt für jedes Bild und jedes Thema. Prompts sind Englisch, sichtbarer Bildtext ist Deutsch. Immer genau ein Bild erzeugen, gegen den jeweiligen Bildprompt und den festen Style-Lock prüfen, korrekt benennen und erst dann das nächste starten.\n`;
+  const userReadme = `# Bildprompts\n\nFür Google Flow **nur diese Datei verwenden**:\n\n\`${USER_BUNDLE_FILE}\`\n\nFeste Bildwelt: **${FIXED_VISUAL_WORLD_LABEL}** (\`${FIXED_VISUAL_STYLE_ID}\`). Sie gilt für jedes Bild und jedes Thema. Prompts sind Englisch, sichtbarer Bildtext ist Deutsch. Vor Bild 00 den Flow-Ordner \`${FLOW_OUTPUT_FOLDER}\` anlegen. Danach immer exakt ein Bild erzeugen, vollständig warten, prüfen, korrekt umbenennen, sofort in diesen einen Ordner legen und erst dann das nächste starten. Niemals alle Bildprompts als Batch/Serie gleichzeitig generieren.\n`;
 
   await writeFile(paths.readme, readme, 'utf8');
   await writeFile(paths.userReadme, userReadme, 'utf8');
@@ -174,20 +175,35 @@ function formatCompleteSerialBundle(prompts) {
     '',
     'WICHTIG – DIESE EINE NACHRICHT IST DIE KOMPLETTE FREIGABE',
     `Sobald dieser Gesamtprompt einmal abgesendet wurde, arbeitest du selbstständig bis Bild ${last} fertig ist. Frage NICHT nach Go, Weiter, OK, Bestätigung oder Erlaubnis.`,
+    'Dieser Auftrag ist KEIN Mehrbild-/Serien-Generator-Aufruf. Die Nachricht enthält zwar alle Prompts, aber sie muss als Zustandsmaschine abgearbeitet werden: immer nur genau ein aktuell freigegebenes Bild.',
+    '',
+    'SCHRITT 0 – ZUERST EINEN GEMEINSAMEN AUSGABEORDNER ANLEGEN',
+    `Bevor du Bild 00 generierst, erstelle in diesem Flow-Projekt genau EINEN Ordner bzw. eine Medien-Sammlung mit dem Namen "${FLOW_OUTPUT_FOLDER}".`,
+    `Alle final akzeptierten Bilder dieses Reels müssen ausschließlich in "${FLOW_OUTPUT_FOLDER}" gesammelt werden.`,
+    'Nach JEDEM einzelnen Bild: erst korrekt umbenennen, dann sofort in diesen Ordner legen/verschieben/einsortieren und sichtbar prüfen, dass es dort vorhanden ist. Nicht bis zum Ende mit dem Einsortieren warten.',
+    `Wenn der Ordner "${FLOW_OUTPUT_FOLDER}" nicht angelegt werden kann, oder wenn ein fertiges Bild nicht umbenannt oder dort abgelegt werden kann, STOPPE den Lauf und erzeuge KEINE späteren Bilder.`,
     '',
     'STRENG SERIELL – NIE PARALLEL',
     'Zu jedem Zeitpunkt darf genau EINE Bildgenerierung aktiv, ausstehend, queued oder in Bearbeitung sein.',
     'Für jedes Bild zwingend:',
-    '1. Nur den aktuellen Bildabschnitt bearbeiten.',
-    '2. Genau EINEN Bildgenerator-Aufruf auslösen. Niemals zwei oder mehr Generierungsaktionen im selben Agent-Schritt, Tool-Batch oder Turn.',
-    '3. Warten, bis dieses eine Bild sichtbar vollständig fertig ist.',
-    '4. VOR dem Fortfahren das Bild sichtbar gegen den aktuellen visuellen Prompt UND die feste Bildwelt prüfen. Bei falschem Inhalt oder Stil dasselbe Bild neu erzeugen und NICHT zum nächsten Bild gehen.',
-    '5. Erst ein korrektes Bild exakt in den vorgesehenen Namen umbenennen.',
-    '6. Prüfen, dass die Umbenennung erfolgreich ist und genau dieses Bild fertig vorliegt.',
-    '7. Erst NACH dieser Bestätigung den nächsten Bildabschnitt ausführen.',
-    'Die späteren Bildprompts stehen zwar bereits in dieser Nachricht, sind aber bis zum Abschluss des aktuellen Bildes NICHT zur Ausführung freigegeben.',
+    '1. Bestimme die nächste noch nicht abgeschlossene Bildnummer. Starte bei Bild 00.',
+    '2. Lies und verwende NUR den Promptabschnitt dieser aktuellen Bildnummer. Ignoriere alle späteren Bildabschnitte vollständig, bis das aktuelle Bild gespeichert ist.',
+    '3. Genau EINEN Bildgenerator-Aufruf auslösen. Niemals zwei oder mehr Generierungsaktionen im selben Agent-Schritt, Tool-Batch oder Turn.',
+    '4. Keine Serienfunktion, keinen Multi-Prompt-Aufruf, kein Batch, keine Galerie-Erstellung und keine Option verwenden, die mehrere Bilder gleichzeitig anfordert. Pro Generierung genau ein Prompt und genau ein Ergebnis.',
+    '5. Warten, bis dieses eine Bild sichtbar vollständig fertig ist. Währenddessen keinen späteren Bildprompt lesen, vorbereiten oder starten.',
+    '6. VOR dem Fortfahren das Bild sichtbar gegen den aktuellen visuellen Prompt UND die feste Bildwelt prüfen. Bei falschem Inhalt oder Stil dasselbe Bild neu erzeugen und NICHT zum nächsten Bild gehen.',
+    '7. Erst ein korrektes Bild exakt in den vorgesehenen Namen umbenennen.',
+    '8. Prüfen, dass die Umbenennung erfolgreich ist und genau dieses Bild unter diesem Namen vorliegt.',
+    `9. Das korrekt benannte Bild sofort in "${FLOW_OUTPUT_FOLDER}" legen/verschieben/einsortieren. Danach sichtbar prüfen, dass es dort vorhanden ist.`,
+    '10. Erst NACH erfolgreicher Generierung + Prüfung + Umbenennung + Ablage im Ordner ist das aktuelle Bild abgeschlossen und der nächste Bildabschnitt freigegeben.',
+    'Die späteren Bildprompts stehen zwar bereits in dieser Nachricht, sind aber bis zum vollständigen Abschluss des aktuellen Bildes NICHT zur Ausführung freigegeben.',
     'Keine Batches, keine Queue, kein paralleles Tool-Batching, kein gleichzeitiges Starten, keine Mehrfach-Generierung und keine Ansammlung unbenannter Bilder.',
     'Falls versehentlich ein zweiter oder dritter Job gestartet wurde: keine weiteren Jobs starten; spätere parallele Jobs abbrechen und beim ersten noch nicht sauber abgeschlossenen Bild fortsetzen.',
+    '',
+    'INTERNE FORTSCHRITTSLOGIK',
+    `Führe intern eine einfache Reihenfolge: current = 00 → 01 → 02 → ... → ${last}.`,
+    `Ein Bild zählt nur als abgeschlossen, wenn es 1) fertig erzeugt, 2) geprüft, 3) exakt umbenannt und 4) im Ordner "${FLOW_OUTPUT_FOLDER}" bestätigt wurde.`,
+    'Wenn irgendeiner dieser vier Punkte fehlt, darf current NICHT erhöht werden.',
     '',
     `VERBINDLICHE BILDWELT – ${FIXED_VISUAL_WORLD_LABEL.toUpperCase()}`,
     `Style-ID: ${FIXED_VISUAL_STYLE_ID}`,
@@ -216,8 +232,9 @@ function formatCompleteSerialBundle(prompts) {
     'TEXTREGEL',
     'Nur der im jeweiligen visuellen Prompt ausdrücklich verlangte deutsche Text darf sichtbar erscheinen. Kein zusätzlicher englischer Text, keine Fantasiewörter, keine technischen Labels, keine Logos und keine Wasserzeichen. Wenn der Bildprompt keinen sichtbaren Text verlangt, bleibt das Bild vollständig textfrei.',
     '',
-    'ENDE',
-    `Erst nachdem Bild 00 bis Bild ${last} vollständig erzeugt, gegen den jeweiligen Bildprompt und die feste Bildwelt geprüft, korrekt umbenannt und die Nummerierung geprüft wurden, alle fertigen Bilder gemeinsam in den vorgesehenen Sammelordner legen.`,
+    'ABSCHLUSSKONTROLLE',
+    `Nach Bild ${last}: Öffne bzw. prüfe den Ordner "${FLOW_OUTPUT_FOLDER}". Er muss exakt ${total} finale Bilder enthalten: Bild 00.png bis Bild ${last}.png, ohne fehlende Nummer, ohne doppelte Nummer und ohne unbenannte finale Bilder.`,
+    'Erst nach dieser Ordnerkontrolle ist der Auftrag abgeschlossen.',
     '',
     '────────────────────────────────────────'
   );
@@ -228,6 +245,8 @@ function formatCompleteSerialBundle(prompts) {
       '',
       imageHeading(entry),
       `DATEINAME NACH FERTIGSTELLUNG: Bild ${number}.png`,
+      `DANACH SOFORT IN ORDNER: ${FLOW_OUTPUT_FOLDER}`,
+      `FREIGABEBEDINGUNG FÜR DAS NÄCHSTE BILD: Bild ${number}.png ist sichtbar fertig, geprüft, exakt umbenannt und im Ordner ${FLOW_OUTPUT_FOLDER} bestätigt.`,
       formatStyledGenerationPrompt(entry)
     );
   }
