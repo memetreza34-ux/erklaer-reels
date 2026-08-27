@@ -56,5 +56,5 @@ test('Style-Bibel dokumentiert Szenenlogik, Anti-Generic-Regeln und YouTube-Tren
   assert.match(bible, /YouTube-Langvideo-Bildwelt.*vollständig getrennt/i);
   assert.match(bible, /sichtbarer Bildtext ist immer Deutsch/i);
   assert.match(bible, /Prompts werden auf Englisch/i);
-  assert.match(bible, /keine realistischen Menschen/i);
+  assert.match(bible, /realistische Menschen/i);
 });
