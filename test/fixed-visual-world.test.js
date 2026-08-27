@@ -21,24 +21,39 @@ test('feste Bildwelt ist in Runtime und Config identisch verdrahtet', async () =
   assert.equal(contentRules.visualRules.fixedVisualWorld, FIXED_VISUAL_STYLE_ID);
   assert.equal(contentRules.visualRules.promptLanguage, 'en');
   assert.equal(contentRules.visualRules.visibleTextLanguage, 'de');
+  assert.equal(contentRules.visualRules.sceneFirstCompositionRequired, true);
+  assert.equal(contentRules.visualRules.genericIconBoardForbidden, true);
+  assert.equal(contentRules.visualRules.genericFloatingCardsForbidden, true);
+  assert.equal(contentRules.visualRules.youtubeVisualWorldInheritanceForbidden, true);
 });
 
-test('Style-Lock enthält die zentralen visuellen Regeln', () => {
+test('Style-Lock enthält die zentralen verbesserten Reel-Regeln', () => {
   assert.match(FIXED_VISUAL_WORLD_PROMPT, /vertical 9:16/i);
-  assert.match(FIXED_VISUAL_WORLD_PROMPT, /countryball-inspired/i);
-  assert.match(FIXED_VISUAL_WORLD_PROMPT, /round ball characters/i);
-  assert.match(FIXED_VISUAL_WORLD_PROMPT, /thick clean black outlines/i);
-  assert.match(FIXED_VISUAL_WORLD_PROMPT, /flat 2D vector-like rendering/i);
+  assert.match(FIXED_VISUAL_WORLD_PROMPT, /scene-first editorial countryball-inspired/i);
+  assert.match(FIXED_VISUAL_WORLD_PROMPT, /hand-drawn 2D vector-cartoon hybrid/i);
+  assert.match(FIXED_VISUAL_WORLD_PROMPT, /concrete mini-scene/i);
+  assert.match(FIXED_VISUAL_WORLD_PROMPT, /round countryball-like character/i);
+  assert.match(FIXED_VISUAL_WORLD_PROMPT, /thick slightly organic black outlines/i);
+  assert.match(FIXED_VISUAL_WORLD_PROMPT, /Avoid generic floating reaction cards/i);
+  assert.match(FIXED_VISUAL_WORLD_PROMPT, /Never use generic praise\/criticism cards as a default/i);
+  assert.match(FIXED_VISUAL_WORLD_PROMPT, /Never duplicate the same headline/i);
   assert.match(FIXED_VISUAL_WORLD_PROMPT, /German only/i);
   assert.match(FIXED_VISUAL_WORLD_PROMPT, /No English visible text/i);
   assert.match(FIXED_VISUAL_WORLD_PROMPT, /Do not use realistic humans/i);
+  assert.match(FIXED_VISUAL_WORLD_PROMPT, /Do not borrow the separate YouTube visual world/i);
+  assert.match(FIXED_VISUAL_WORLD_PROMPT, /no thin-line stick figures/i);
 });
 
-test('Style-Bibel dokumentiert Themenunabhängigkeit und deutsche Bildtexte', async () => {
+test('Style-Bibel dokumentiert Szenenlogik, Anti-Generic-Regeln und YouTube-Trennung', async () => {
   const bible = await readFile(new URL('../knowledge/fixed-visual-world.md', import.meta.url), 'utf8');
 
   assert.match(bible, /verbindliche globale Bildwelt/i);
   assert.match(bible, /unabhängig vom Thema/i);
+  assert.match(bible, /Erst eine konkrete Szene bauen/i);
+  assert.match(bible, /Szenen statt Icon-Karten/i);
+  assert.match(bible, /Anti-Generic-Regeln/i);
+  assert.match(bible, /Nicht automatisch eine leere beige Kugel/i);
+  assert.match(bible, /YouTube-Langvideo-Bildwelt.*vollständig getrennt/i);
   assert.match(bible, /sichtbarer Bildtext ist immer Deutsch/i);
   assert.match(bible, /Prompts werden auf Englisch/i);
   assert.match(bible, /keine realistischen Menschen/i);
