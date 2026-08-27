@@ -1,6 +1,6 @@
 # CURRENT WORKFLOW — VERBINDLICHE SINGLE SOURCE OF TRUTH
 
-**Stand: 2026-08-26**
+**Stand: 2026-08-27**
 
 Diese Datei ist die verbindliche Repo-weite Produktionsregel für neue Chats, Codex, Antigravity und andere Repo-Agenten.
 
@@ -31,52 +31,47 @@ Globale Regeln werden nur durch eine ausdrückliche neue Nutzerentscheidung geä
 - −16 LUFS, höchstens −1,5 dBTP
 - **keine Untertitel**
 - **kein Word-Sync für Untertitel**
-- **Untertitel wieder aktivieren ist ohne ausdrückliche neue Nutzerentscheidung verboten.**
 - ausschließlich harte Schnitte
 - keine Hintergrundmusik
 - 0–2 dezente SFX pro narrativer Szene
 
-### Themenuniversum: offen statt feste Säulen
+### Themenuniversum
 
-Die Themenwahl ist ausdrücklich offen.
+Die Themenwahl ist offen. Neue Reels dürfen aus Psychologie, Alltag, Gesellschaft, Geschichte, Geografie, Politik, Wissenschaft, Technik, Internet, Lernen, Arbeit, Wirtschaft, Gesundheit, Sprache, Mythen oder anderen geeigneten Erklärbereichen kommen.
 
-Neue Reels sind nicht auf Geschichte, Politik, Länder/Geografie oder Psychologie beschränkt. Für autonome Themenwahl darf grundsätzlich jeder geeignete Erklärbereich verwendet werden, zum Beispiel:
-
-- Psychologie und menschliches Verhalten
-- Alltag und Gewohnheiten
-- Beziehungen und soziale Dynamiken
-- Gesellschaft und Kultur
-- Geschichte
-- Länder und Geografie
-- Politik und staatliche Systeme
-- Wissenschaft und Naturphänomene
-- Technik und digitale Welt
-- Internet und Social Media
-- Lernen, Schule und Gedächtnis
-- Arbeit und Beruf
-- Wirtschaft und Geldmechanismen
-- Gesundheit und Ernährung
-- Sprache und Kommunikation
-- Denkfehler, Mythen, kuriose Fakten und starke „Warum ist das so?“-Fragen
-
-Diese Liste ist **nur beispielhaft und keine Begrenzung**.
-
-Bei „Mach ein neues Reel“ darf kein altes Pillar-System die Auswahl einschränken. Es gibt keine feste Themenquote und keine starre Rotation. Themen werden nach diesen Kriterien gewählt:
-
-1. starker Hook / Neugier in der ersten Sekunde
-2. klarer Aha-Moment innerhalb von unter 60 Sekunden
-3. faktisch sauber erklärbar
-4. visuell stark und klar umsetzbar
-5. abwechslungsreich gegenüber den unmittelbar vorherigen Reels
-6. teilbar, überraschend oder alltagsrelevant
+Keine feste Themenquote und keine starre Rotation. Entscheidend sind Hook, Aha-Moment, Faktentreue, visuelle Umsetzbarkeit, Abwechslung und Teilbarkeit.
 
 ---
 
-## 2. Bildwelt: fest definiert
+## 2. Reels und YouTube sind vollständig getrennt
 
-**Für alle neuen Reels ist die feste Repo-Bildwelt `modern-countryball-explainer` aktiv.**
+**Reels und YouTube besitzen getrennte Bildwelten und getrennte Produktionsregeln.**
 
-Die Bildwelt gilt unabhängig vom Thema für Cover und jede einzelne Bildphase. Inhalt, Symbolik, Requisiten und Hintergrundfarbe dürfen wechseln; die grundlegende Formsprache darf nicht wechseln.
+Für Reels gilt ausschließlich:
+
+```text
+modern-countryball-explainer
+```
+
+Für YouTube-Langvideos gilt ausschließlich die separate Regelquelle unter:
+
+```text
+youtube/YOUTUBE_WORKFLOW.md
+youtube/YOUTUBE_VISUAL_WORLD.md
+```
+
+Strikt verboten:
+
+- YouTube-Stick-Figuren automatisch auf Reels übertragen
+- Reel-Countryball-Regeln automatisch auf YouTube übertragen
+- 16:9-YouTube-Kompositionen als Reel-Stil verwenden
+- 9:16-Reel-Regeln als globale YouTube-Regeln interpretieren
+
+---
+
+## 3. Reel-Bildwelt: scene-first Editorial Countryball
+
+**Für alle neuen Reels bleibt die Style-ID `modern-countryball-explainer` aktiv, aber die verbindliche Ausführung ist jetzt szenisch statt infographic-first.**
 
 Verbindliche Style-Bibel:
 
@@ -94,160 +89,196 @@ Neue Workspaces setzen:
 
 ```text
 visualStyleId = "modern-countryball-explainer"
-visualStyleReason = "Globale feste Bildwelt für alle neuen Erklär-Reels: moderner minimalistischer Countryball-Erklärstil."
+visualStyleReason = "Globale feste Bildwelt für alle neuen Erklär-Reels: szenischer Editorial-Countryball-Erklärstil mit konkreten Umgebungen statt generischer Icon-Karten."
 ```
+
+### Wichtigstes Bildprinzip
+
+**Erst eine konkrete physische Mini-Szene bauen, danach Symbole ergänzen.**
+
+Ein Bild soll wie ein eingefrorener Story-Moment wirken, nicht wie ein Icon-Board.
 
 ### Kernmerkmale
 
-- vertikal 9:16
-- moderner minimalistischer Countryball-inspirierter Erklärgrafik-Stil
-- runde Kugelfiguren für Menschen, Gruppen, Institutionen oder Länder
-- Länder-/Regionsflaggen nur wenn diese Identität inhaltlich relevant ist
-- bei allgemeinen Themen neutrale einfarbige Kugeln
-- einfache weiße expressive Augen, minimale Gesichtselemente
-- dicke saubere schwarze Konturen
-- flacher sauberer 2D-Vektor-/Comic-Look
-- dezente weiche Schatten, höchstens sehr leichte Textur
-- ein dominantes Hauptmotiv, wenige unterstützende Requisiten
-- klare visuelle Metapher, möglichst innerhalb ungefähr einer Sekunde verständlich
-- einfarbiger oder sanft texturierter Hintergrund; Farbe darf pro Bild zum Thema passen
-- keine realistischen Menschen, kein Fotorealismus, kein Anime, kein Clay, kein glänzendes 3D, keine Stockfoto-Ästhetik
-- Prompts Englisch; sichtbarer Bildtext ausschließlich Deutsch
+- vertikal 9:16, Smartphone-first
+- hand-drawn 2D vector-cartoon hybrid
+- dicke, leicht organische schwarze Konturen
+- flächige Farben, leichte Cel-Shading-Anmutung
+- dezente weiche Schatten, sehr leichte Papier-/Korntextur erlaubt
+- ein dominantes Hauptmotiv und eine klare Handlung
+- 1–3 unterstützende Requisiten
+- konkrete Umgebung, wenn sie die Aussage verbessert
+- Close-up, Off-Center, Vorder-/Mittel-/Hintergrund und einfache Weitwinkel-Szenen erlaubt
+- klare negative Fläche, starke Silhouette
+- Bedeutung innerhalb ungefähr einer Sekunde verständlich
 
-Reine Mechanismen, Gegenstände, Diagramme oder wissenschaftliche Symbole dürfen ohne Kugelfigur Hauptmotiv sein, wenn das Thema dadurch klarer erklärt wird. Sie müssen aber dieselbe dicke Kontur, Vereinfachung und 2D-Formsprache verwenden.
+### Figuren
 
-Historische Reels bleiben Archivmaterial. Frühere Bildwelten oder alte Prompts dürfen die feste Bildwelt nicht überschreiben.
+Countryball-ähnliche Figuren werden verwendet, wenn Länder, Regionen, Institutionen, Gruppen oder gesellschaftliche Akteure sinnvoll personifiziert werden.
+
+- einfache weiße expressive Augen
+- kleine Arme/Hände/Beine nur für konkrete Handlung
+- Flaggenmuster nur wenn geografische Identität inhaltlich relevant ist
+- keine zufälligen Länderflaggen
+
+Bei Psychologie, Alltag, Technik, Gesundheit oder anderen abstrakten Allgemeinthemen gilt:
+
+**Nicht automatisch eine leere beige Kugel in die Mitte setzen.**
+
+Wenn ein Gegenstand, Mechanismus, Raum, Gebäude, Dokument, Landschaft oder anthropomorphes Objekt die Aussage besser erklärt, hat dieses Motiv Vorrang.
+
+### Bevorzugte Szenenobjekte
+
+Zum Beispiel Türen, Ruinen, Straßen, Räume, Bühnen, Karten, Tische, Werkzeuge, Dokumente, Koffer, Gebäude, Landschaften, Gewichte, Thermometer, Schilder, Bücher oder einfache Maschinen.
+
+### Anti-Generic-Regeln
+
+Nicht als Standardlösung verwenden:
+
+- schwebende Reaktionskarten
+- generische Lob-/Kritik-Karten
+- Kreise aus Sprechblasen
+- Icon-Gitter
+- UI-artige Boxen
+- sterile Infografik-Kacheln
+- wiederholte Figur-mittig-plus-Icons-Komposition
+- immer derselbe einfarbige Hintergrund
+- unnötige Pfeilketten
+- Waage oder Megafon als Universalmetapher
+- identische Headline oben und unten
+
+Solche Elemente sind nur erlaubt, wenn genau sie inhaltlich notwendig sind.
+
+### Verbotene Stilabweichungen
+
+- Fotorealismus
+- realistische Menschen oder Gesichter
+- Anime/Manga
+- Clay/Knetstil
+- glänzendes 3D / Pixar-Look
+- Stockfoto-Ästhetik
+- komplexe realistische Kulissen
+- YouTube-Stick-Figure-/Ink-Explainer-Look
+- 16:9-Komposition
+
+Prompts sind Englisch. Sichtbarer Bildtext ist ausschließlich Deutsch.
 
 ---
 
-## 3. Bildprompts mit Repo-Stil-Lock
+## 4. Bildprompts mit Repo-Stil-Lock
 
-Jede `cover/cover-prompt.txt`, `image-prompt.txt`, `image-prompt-02.txt` usw. beschreibt den konkret gewünschten Bildinhalt **auf Englisch** und bleibt mit `modern-countryball-explainer` kompatibel.
+Jede `cover/cover-prompt.txt`, `image-prompt.txt`, `image-prompt-02.txt` usw. beschreibt den **konkreten physischen Bildmoment auf Englisch**.
 
-Verbindlich:
+Jeder Prompt muss beantworten:
 
-1. Format 9:16
-2. konkrete Szene / Komposition / Handlung
-3. feste Bildwelt `modern-countryball-explainer`
-4. genau erlaubter deutscher Bildtext, falls vorhanden
-5. kein anderer lesbarer Text, kein Englisch, keine Logos, kein Wasserzeichen
-6. volle 9:16-Fläche, keine Untertitel-Safe-Zone und kein künstliches leeres Untertitelband
-7. ein klarer Erklärmoment und möglichst ein dominantes Hauptmotiv
+1. Wer oder was ist das Hauptmotiv?
+2. Wo befindet es sich?
+3. Was passiert physisch im Bild?
+4. Welche wenigen Objekte/Umgebung erklären die Aussage?
+5. Welche Perspektive und Komposition wird genutzt?
+6. Welcher exakte deutsche Bildtext ist erlaubt, falls vorhanden?
 
-Der Exporter ergänzt den festen Style-Lock **global und zusätzlich direkt vor jedem einzelnen Bildabschnitt** im Google-Flow-Gesamtprompt. So bleibt die Bildwelt auch dann stabil, wenn ein konkreter Inhalts-Prompt versehentlich widersprechende Stilbegriffe enthält. In diesem Fall wird nur die widersprechende Stilbeschreibung ignoriert; Inhalt, Metapher, Komposition und geplanter deutscher Text bleiben erhalten.
+Verbindlich zusätzlich:
 
-Die internen Einzelprompt-Sicherungen unter `all-image-prompts/image-prompts/Bild NN.txt` enthalten weiterhin den visuellen Quellprompt wortgetreu. Der verbindliche Style-Lock liegt im exportierten Gesamtprompt.
+- Format 9:16
+- feste Bildwelt `modern-countryball-explainer`
+- kein anderer lesbarer Text, kein Englisch, keine Logos, kein Wasserzeichen
+- volle 9:16-Fläche, keine künstliche Untertitelzone
+- keine generische Karten-/Icon-Lösung, wenn eine konkrete Szene möglich ist
 
-`Bild 00.png` ist das Cover, aber nicht der alleinige Style-Master. **Die globale Repo-Bildwelt ist der Style-Master.**
+Der Exporter ergänzt den festen Style-Lock global und direkt vor jedem einzelnen Bildabschnitt.
+
+`Bild 00.png` ist das Cover, aber nicht der alleinige Style-Master. Die globale Reel-Bildwelt ist der Style-Master.
 
 ---
 
-## 4. Bildanzahl immer individuell
+## 5. Bildanzahl immer individuell
 
 Narrative Szenenzahl und Bildanzahl sind getrennt.
 
-- 12–14 narrative Szenen bleiben der Strukturrahmen.
-- Jede Szene bekommt 1, 2 oder selten 3 Bildphasen.
-- Die Gesamtzahl wird pro Reel nach Inhalt und Rhythmus entschieden.
-- keine feste Zielsumme wie 13, 16 oder 18
+- 12–14 narrative Szenen bleiben der Strukturrahmen
+- jede Szene bekommt 1, 2 oder selten 3 Bildphasen
+- keine feste Gesamtzahl wie 13, 16 oder 18 erzwingen
 - `reel.json.imageCountMode = "individual-per-reel"`
 - `reel.json.plannedImageCount` enthält die echte geplante Zahl
 
 **1 Bild:** ein starkes Motiv trägt den Gedanken.
 
-**2 Bilder:** ein echter zweiter visueller Schritt hilft, z. B. Überblick → Detail, Ursache → Folge, Ausgangslage → Vergleich oder Mechanismus → Konsequenz.
+**2 Bilder:** echter visueller Fortschritt, z. B. Überblick → Detail, Ursache → Folge, Ausgangslage → Konsequenz.
 
 **3 Bilder:** nur bei wirklich dreistufigen Erklärungen.
 
-Wenn ein Still-Bild ungefähr 3,5–4,0 Sekunden oder länger stehen würde, aktiv prüfen, ob eine weitere Bildphase verbessert. Kein zusätzliches Bild nur für eine Quote.
+Wenn ein Still ungefähr 3,5–4 Sekunden oder länger stehen würde, aktiv eine weitere Bildphase prüfen. Keine zusätzliche Phase nur für eine Quote.
 
 ---
 
-## 5. Sichtbarer Text: harte Firewall
+## 6. Sichtbarer Text: harte Firewall
 
 Workflow- und Produktionsdaten sind niemals Bildinhalt.
 
-In einem generierten Bild dürfen niemals sichtbar erscheinen:
-- Bildnummern (`BILD 00`, `Bild 01` usw.)
+Verboten:
+
+- Bildnummern
 - `COVER`
 - `SZENE` / `SCENE`
 - `BILDPHASE` / `IMAGE PHASE`
-- `DATEINAME`, Dateinamen, Dateiendungen
+- `DATEINAME` und Dateinamen
 - `GOOGLE FLOW`, `PROMPT`, `STYLE-REFERENZ`, `ZIEL`
 - technische IDs
 
-Pro Bild gilt:
-- `imageText`/Cover-Headline gesetzt → nur exakt dieser **deutsche** Text darf lesbar sein
-- `imageText` leer → keinerlei lesbarer Text im Bild
+Pro Bild:
 
-Bildprompts und Style-Anweisungen selbst werden auf Englisch geschrieben. Sichtbare Wörter im Bild bleiben Deutsch.
+- `imageText`/Cover-Headline gesetzt → nur exakt dieser **deutsche** Text
+- `imageText` leer → keinerlei lesbarer Text
+- dieselbe Headline niemals oben und unten doppeln
 
 ---
 
-## 6. Google Flow: kompletter serieller Gesamtprompt
+## 7. Google Flow: kompletter serieller Gesamtprompt
 
-Die bevorzugte Nutzerstruktur ist ein kompletter serieller Prompt in **einer Datei / einer Nachricht**.
-
-Verbindliche Datei:
+Verbindliche Nutzerdatei:
 
 ```text
 00-bildprompts/99-alle-bildprompts.txt
 ```
 
-Technische identische Spiegeldatei:
+Identische technische Spiegeldatei:
 
 ```text
 all-image-prompts/all-image-prompts.txt
 ```
 
-Der separate `google-flow-controller.txt` ist deaktiviert und wird nicht mehr als Startdatei verwendet.
+Der separate `google-flow-controller.txt` ist deaktiviert.
 
-### Aufbau des Gesamtprompts
+Der Gesamtprompt enthält:
 
-1. `GOOGLE FLOW – KOMPLETTER SERIELLER BILDLAUF`
-2. `AUFTRAG`
-3. `WICHTIG – DIESE EINE NACHRICHT IST DIE KOMPLETTE FREIGABE`
-4. `STRENG SERIELL – NIE PARALLEL`
-5. `VERBINDLICHE BILDWELT – MODERN COUNTRYBALL EXPLAINER`
-6. globaler englischer Style-Lock
-7. komplette `DATEINAMEN`-Liste
-8. Text-/Workflow-Regeln
-9. `ENDE`
-10. danach für **jedes Bild** ein eigener Abschnitt mit erneutem festen Style-Lock plus vollständigem konkretem Visual-Prompt
+1. Auftrag
+2. Hard Serial Lock
+3. globale feste Reel-Bildwelt
+4. Dateinamenliste
+5. Text-/Workflow-Regeln
+6. für jedes Bild erneut den Style-Lock plus konkreten Visual-Prompt
 
-### Harte Serienregel trotz Gesamtprompt
-
-Dass alle Bildprompts bereits in einer Nachricht sichtbar sind, ist **keine Freigabe für Parallelgenerierung**.
+### Hard Serial Lock
 
 Für jedes Bild zwingend:
 
-1. nur den aktuellen Bildabschnitt ausführen
-2. exakt **einen** Bildgenerator-Aufruf starten
-3. niemals zwei oder mehr Generierungsaktionen im selben Agent-Schritt, Tool-Batch oder Turn auslösen
-4. warten, bis das aktuelle Bild sichtbar vollständig fertig ist
-5. gegen den konkreten aktuellen Bildprompt **und die feste Bildwelt** prüfen
-6. bei Stilabweichung dasselbe Bild neu erzeugen und noch nicht weitergehen
-7. exakt umbenennen
-8. prüfen, dass die Umbenennung erfolgreich war
-9. erst danach den nächsten Bildabschnitt ausführen
+1. nur aktuellen Bildabschnitt ausführen
+2. exakt einen Bildgenerator-Aufruf starten
+3. vollständig warten
+4. Ergebnis gegen konkreten Prompt **und Reel-Bildwelt** prüfen
+5. bei falschem Inhalt oder Stil dasselbe Bild neu erzeugen
+6. korrekt umbenennen
+7. Umbenennung prüfen
+8. erst dann nächstes Bild
 
-Wenn noch ein Job aktiv/queued/pending ist oder der Status unklar ist: **warten und keinen neuen Job starten**.
-
-Verboten:
-- parallele Generierungen
-- Batch-Generierung
-- mehrere Bildgenerator-Aufrufe in einem Schritt
-- Queueing kommender Bilder
-- mehrere Varianten auf einmal
-- nächstes Bild starten, bevor das vorige sichtbar fertig, stilkonform, umbenannt und geprüft wurde
-
-Falls Flow versehentlich mehrere Jobs startet, keine weiteren starten und spätere parallele Jobs abbrechen.
+Keine Queue, kein Batch, keine Parallelgenerierung, keine Mehrfachvarianten.
 
 ---
 
-## 7. Technisches Bildphasen-Schema
+## 8. Technisches Bildphasen-Schema
 
-Pro narrativer Szene:
+Pro Szene:
 
 ```json
 {
@@ -278,61 +309,56 @@ Pro narrativer Szene:
 }
 ```
 
-Erste Phase startet immer bei `startPercent: 0`; weitere Werte steigen zwischen 0 und 1. `scene-index.json` und `scene.json` bleiben synchron.
+Erste Phase immer `startPercent: 0`; weitere Werte streng steigend zwischen 0 und 1. `scene-index.json` und `scene.json` bleiben synchron.
 
 ---
 
-## 8. Rollenverteilung
+## 9. Rollenverteilung und Quellen
 
-Repo-Agenten / Codex / Antigravity erzeugen keine Bilder. Sie erstellen Script, Szenen, individuelle Bildphasen, konkrete englische Bildprompts im festen Stil, **den kompletten seriellen Google-Flow-Gesamtprompt**, Caption, Quellen, Asset-Suche, QC, Timeline und Render.
+Repo-Agenten / Codex / Antigravity erzeugen keine Bilder. Sie erstellen Script, Szenen, Bildphasen, konkrete englische Bildprompts, Gesamtprompt, Caption, Quellen, Asset-Suche, QC, Timeline und Render.
 
-Der Nutzer sendet Google Flow einmal `00-bildprompts/99-alle-bildprompts.txt`. Flow arbeitet danach selbstständig, aber strikt Bild für Bild.
+Neu erstellte Reels verwenden Quellen-Schema 3:
 
-### Quellen-QC für neue Reels
-
-Neu erstellte Reels verwenden `sourceQualitySchemaVersion: 3`.
-
-Pflicht:
 - mindestens zwei echte HTTPS-Quellen
-- unterschiedliche Hosts/Domains
-- vollständige Felder `Titel/Institution`, `URL`, `Datum/Zugriff`, `Quellentyp`, `Belegt`
-- mindestens eine Primär-/offizielle Quelle oder wissenschaftliche Originalquelle
-- mindestens eine davon unabhängige Sekundär-/Fachquelle
-- unter `Belegt` konkret benennen, welche Reel-Aussage die Quelle stützt
-
-Die formale Quellen-QC ersetzt keine inhaltliche Prüfung. Bei Gesundheit, Wissenschaft, Wirtschaft, Politik und aktuellen technischen Fakten besonders auf Aktualität, Primärbezug und tatsächliche Belegbarkeit achten.
-
-Bestehende Schema-2-Reels bleiben rückwärtskompatibel und werden nicht nur wegen der Schema-3-Einführung umgeschrieben.
+- unterschiedliche Hosts
+- mindestens eine Primär-/offizielle oder wissenschaftliche Originalquelle
+- mindestens eine unabhängige Sekundär-/Fachquelle
+- unter `Belegt` konkret die gestützte Reel-Aussage nennen
 
 ---
 
-## 9. Bildimport und visuelle QC
+## 10. Bildimport und visuelle QC
 
-Fertige Bilder kommen nach
+Fertige Bilder kommen nach:
 
 ```text
 00-bildprompts/00-ALLE-BILDER-HIER-REIN/
 ```
 
-bzw. technisch nach
+bzw. technisch nach:
 
 ```text
 inbox/numbered-images/
 ```
 
-Die Nummer ist nur Routing-Hilfe. Jede Bildphase sichtbar prüfen gegen Narration, `audioCue`, `visualIdea`, `imageText`, Prompt und anschließend gegen vorherige/nächste Bildphase. Zusätzlich prüfen, dass die feste Bildwelt `modern-countryball-explainer` eingehalten ist. Unter 0,90 Konfidenz nicht raten. `filename-only` ist verboten.
+Jede Bildphase sichtbar gegen Narration, `audioCue`, `visualIdea`, `imageText`, Prompt, feste Bildwelt und benachbarte Bildphasen prüfen. Unter 0,90 Konfidenz nicht raten. `filename-only` ist verboten.
 
-Typische Stilfehler, die vor Freigabe auffallen müssen:
-- Fotorealismus oder realistische Menschen
+Typische Stilfehler:
+
+- Fotorealismus / realistische Menschen
 - 3D-/Clay-/Anime-Abweichung
-- fehlende dicke schwarze Konturen
-- unnötig komplexe Kulisse oder überladene Collage
-- zufällige Länderflaggen bei allgemeinen Themen
+- dünne YouTube-Stick-Figure-Linien
+- generische Karten-/Icon-Collage
+- wiederholte Figur-mittig-plus-Icons-Komposition
+- leere beige Kugel ohne inhaltlichen Grund
+- unnötig komplexe Kulisse
+- zufällige Flaggen
 - sichtbarer englischer oder ungeplanter Text
+- doppelte Headline oben und unten
 
 ---
 
-## 10. Fehlende Assets zuerst suchen
+## 11. Fehlende Assets zuerst suchen
 
 Vor jeder Meldung, dass Bilder oder Audio fehlen:
 
@@ -340,30 +366,28 @@ Vor jeder Meldung, dass Bilder oder Audio fehlen:
 npm run discover:assets -- --dir "<reel-ordner>"
 ```
 
-Bei mehreren vollständigen ZIPs oder Audio-Kandidaten niemals blind wählen; inhaltlich prüfen.
+Bei mehreren Kandidaten niemals blind wählen; inhaltlich prüfen.
 
 ---
 
-## 11. Voice-over, Szenen-Sync und interne Bildwechsel
+## 12. Voice-over und Szenen-Sync
 
 Das finale Voice-over ist die einzige Zeitquelle.
 
 1. Original-Audio verwenden
 2. Pausen straffen
 3. exakt 1,10x bei erhaltener Tonhöhe
-4. −16 LUFS / max. −1,5 dBTP messen und bestätigen
-5. narrative Szenen über echte akustisch bestätigte `audioCue`-Anker synchronisieren
-6. zusätzliche Bildphasen über `startPercent` auf die bestätigte Szenendauer legen
+4. −16 LUFS / max. −1,5 dBTP messen
+5. narrative Szenen über echte akustische `audioCue`-Anker synchronisieren
+6. zusätzliche Bildphasen über `startPercent` legen
 7. jeden Bildwechsel visuell prüfen
 8. letztes Bild nach Sprecherende 0,7 Sekunden halten
 
-Whisper/ASR darf Kandidaten liefern, aber keine geschätzten Szenenanker als geprüft markieren. Der aktive Produktionsworkflow enthält **keinen Untertitel- oder Word-Sync-Schritt**.
-
-Historische Word-Sync-Helfer sind nur Legacy-Diagnosewerkzeuge und dürfen für neue Reels nicht als Pflichtschritt eingeführt werden.
+Whisper/ASR darf Kandidaten liefern, aber keine geschätzten Anker als geprüft markieren. Der aktive Workflow enthält **keinen Untertitel- oder Word-Sync-Schritt**.
 
 ---
 
-## 12. Standardbefehle
+## 13. Standardbefehle
 
 ```bash
 npm run export:prompts -- --dir "<reel-ordner>" --strict
@@ -380,10 +404,12 @@ npm run validate:render -- --dir "<reel-ordner>"
 npm run render:reel -- --dir "<reel-ordner>"
 ```
 
-`npm run sync:words` gehört **nicht** zum aktiven Workflow. Falls historische Diagnose ausdrücklich nötig ist, existiert nur der klar gekennzeichnete Legacy-Befehl `npm run legacy:sync:words`.
+`npm run sync:words` gehört nicht zum aktiven Workflow.
 
 ---
 
-## 13. Abschlussprinzip
+## 14. Abschlussprinzip
 
-Ein Reel ist erst fertig, wenn Script/Quellen geprüft, alle Bildphasen vorhanden und zweifach visuell bestätigt, die feste Bildwelt eingehalten, finales Audio gemessen und synchronisiert, interne Bildwechsel korrekt, keine Untertitel vorhanden und Finalizer/Render-Validator bestanden sind. Nicht ausgeführte Stufen niemals als bestanden melden.
+Ein Reel ist erst fertig, wenn Script/Quellen geprüft, alle Bildphasen vorhanden und visuell bestätigt, die **verbesserte scene-first Reel-Bildwelt** eingehalten, finales Audio gemessen und synchronisiert, keine Untertitel vorhanden und Finalizer/Render-Validator bestanden sind.
+
+Nicht ausgeführte Stufen niemals als bestanden melden.
