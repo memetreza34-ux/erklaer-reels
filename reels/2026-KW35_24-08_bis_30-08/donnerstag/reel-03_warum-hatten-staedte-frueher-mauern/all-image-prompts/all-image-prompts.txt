@@ -1,0 +1,54 @@
+GOOGLE FLOW – KOMPLETTER SERIELLER BILDLAUF
+
+AUFTRAG
+Erzeuge Bild 00 bis Bild 13 in exakt dieser Reihenfolge.
+
+STRENG SERIELL – NIE PARALLEL
+Nur den aktuellen Bildabschnitt ausführen → exakt EINEN Bildgenerator-Aufruf starten → vollständig warten → gegen Bildprompt und feste Reel-Bildwelt prüfen → exakt als Bild NN.png benennen → erst danach das nächste Bild starten. Keine Queue, kein Batch, keine Parallelgenerierung, keine Mehrfachvarianten.
+
+FESTE REEL-BILDWELT – GILT FÜR JEDES BILD
+Create a vertical 9:16 educational explainer illustration in a modern minimalist countryball-inspired style, using a scene-first editorial countryball-inspired approach made specifically for short-form Reels. Use a bold hand-drawn 2D vector-cartoon hybrid with thick slightly organic black outlines, simple readable shapes, flat cel-like color blocks, subtle soft shadows and very light paper or grain texture. Build a concrete mini-scene before adding symbols. Prefer physical storytelling with architecture, doors, streets, rooms, tools, documents, landscapes and real scene objects. When actors are needed, use simple round countryball-like characters with expressive white eyes and minimal limbs only for action. Use flag patterns only when geographic identity is actually relevant; otherwise use simple non-flag round characters or let the environment/object be the main subject. Create one dominant physical action, one strong focal subject and only one to three supporting elements. Use simple foreground, midground and background depth when useful. Vary framing with close-ups, off-center compositions and environmental wide shots. Do not repeat a centered-character-plus-icons template. Avoid generic floating cards, speech-bubble rings, icon grids, UI boxes, abstract infographic boards, duplicated headlines and sterile symbol collages. Backgrounds may be strong color fields but should become simplified contextual environments whenever that improves the story. Visible text is German only and only when explicitly requested. Never add English visible text, pseudo-text, logos, watermarks, workflow labels or filenames. No realistic humans, no photorealism, no anime, no manga, no clay, no glossy 3D, no cinematic realism. Do not borrow the separate YouTube visual world: no thin-line stick figures, no 16:9 layout, no Ink-Explainer-like longform look.
+
+ARBEITSLABELS WIE BILD, COVER, SZENE, DATEINAME ODER GOOGLE FLOW SIND NIE BILDINHALT.
+
+=== BILD 00 — COVER ===
+Create a powerful vertical cover showing a massive medieval stone city wall and fortified gate towering over the lower half of the frame. A few small round cartoon travelers with expressive white eyes stand outside the closed gate and look up at it, making the wall feel enormous. Warm sunset sky, strong stone texture simplified into bold cartoon shapes, slight perspective from below, dramatic but clean composition. The environment is the hero, not the characters. Add the exact German headline in large bold type near the lower third: "WARUM STADTMAUERN?" No other readable text.
+
+=== BILD 01 — SZENE 1 ===
+Show a wide elevated view of a compact medieval city completely enclosed by a thick stone wall with towers and one main gate. Inside are simplified roofs, a market square and a church-like tower; outside are open fields and a road leading to the gate. Add only a few tiny round inhabitants for scale. Morning light, earthy beige and muted red palette, strong black outlines. Add the exact German text: "MEHR ALS SCHUTZ" No other readable text.
+
+=== BILD 02 — SZENE 2 ===
+Show an attack stopped by the city wall: a few hostile round raider characters outside the wall cannot reach the city while defenders stand high on the battlements. A wooden ladder leans against the wall but is clearly too exposed. The scene should read instantly as a physical barrier protecting the city. Dusty sky, dramatic diagonal composition, strong depth from attackers in foreground to wall in background. Add the exact German text: "SCHUTZ VOR ANGRIFFEN" No other readable text.
+
+=== BILD 03 — SZENE 3 ===
+Show the main city gate as a real checkpoint scene. A merchant cart loaded with barrels waits under the stone arch while a guard-like round character inspects the cargo. Another traveler waits behind. Large wooden gate doors, simple guard booth, road continuing into the city. Use a three-quarter view instead of a flat front view. Add the exact German text on a small integrated sign beside the gate: "WER KOMMT REIN?" No other readable text.
+
+=== BILD 04 — SZENE 4 ===
+Close-up at the gate toll point. A merchant round character reaches out with a coin pouch while a gate official receives a few coins beside stacked barrels and sacks. The stone arch and partially visible city beyond create context. Do not use floating money icons; the exchange must happen physically between characters. Warm muted ochre palette. Add the exact German text in the lower third: "ABGABEN AM TOR" No other readable text.
+
+=== BILD 05 — SZENE 5 ===
+Night scene. Show two large wooden gate doors being pulled shut inside a stone city gate while the last traveler approaches from the dark road outside. Moonlight, one lantern glowing near the gate, long shadows, deep blue sky. The closed entrance should communicate control and security without extra symbols. Add the exact German text: "NACHTS GESCHLOSSEN" No other readable text.
+
+=== BILD 06 — SZENE 6 ===
+Show a proud fortified city entrance in daylight with tall stone towers, decorative banners without readable text, clean masonry and guards standing above. A small group of arriving visitors look upward in awe. Use low-angle perspective to make the wall feel expensive, powerful and prestigious. Rich but muted red-brown stone and blue sky. Add the exact German text: "MACHT AUS STEIN" No other readable text.
+
+=== BILD 07 — SZENE 7 ===
+Show defenders using the height advantage of the wall during an attack. View from slightly outside and below: defenders on the battlements can see and react to attackers far below, while important buildings are safely visible behind the wall. No text. Keep the scene readable with one clear action and no clutter.
+
+=== BILD 08 — SZENE 8 ===
+Show the inside of an overcrowded walled city. Narrow street, tall tightly packed houses leaning close together, laundry lines, carts and several small round residents squeezing through the limited space. The stone wall is visible at the far end, physically boxing the city in. Slight top-down perspective, compressed composition that feels cramped. Add the exact German text: "PLATZ WIRD KNAPP" No other readable text.
+
+=== BILD 09 — SZENE 9 ===
+Show new houses and workshops appearing just outside the old city wall while the dense old city remains behind it. Builders work on simple timber structures in the foreground, a road crosses the scene, and the stone wall now looks like a boundary the growing settlement is pushing beyond. Bright daytime palette, clear left-to-right visual growth. Add the exact German text: "DIE STADT WÄCHST" No other readable text.
+
+=== BILD 10 — SZENE 10 ===
+Show an early cannon firing toward an old medieval wall. The cannon dominates the foreground at an angle; smoke bursts from the barrel while a chunk of wall cracks where the shot lands. A few small defenders react from the battlements. Do not use explosion icons or abstract arrows; show the physical impact. Dark smoke against a pale sky. Add the exact German text: "KANONEN ÄNDERN ALLES" No other readable text.
+
+=== BILD 11 — SZENE 11 ===
+Show workers dismantling a section of obsolete city wall. Large stones are being removed with ropes and simple tools while an opening reveals a broad new road beyond. A few round workers push a cart of stones. The remaining tower stands to one side as a historical remnant. Warm late-afternoon light. Add the exact German text: "MAUERN VERSCHWINDEN" No other readable text.
+
+=== BILD 12 — SZENE 12 ===
+Show a broad 19th-century-style boulevard passing through the former wall line, with only a short stone remnant at the side. A simple railway station roof or tracks appear farther back, and new buildings line the road. The scene should communicate that removing fortifications created room for transport and expansion. No split-screen and no before/after panels. Add the exact German text: "PLATZ FÜR NEUES" No other readable text.
+
+=== BILD 13 — SZENE 13 / SCHLUSS ===
+Create a calm final scene at sunset. Show one surviving old stone city gate integrated into a much larger expanded city, with streets and buildings continuing far beyond where the wall once stood. A few small round residents pass through naturally. The old gate remains as a visible reminder of the former boundary. Use a balanced cinematic-like illustration composition without photorealism. Add the exact German final text in bold near the bottom: "SCHUTZ. KONTROLLE. GRENZE." No other readable text.
