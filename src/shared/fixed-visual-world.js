@@ -3,7 +3,7 @@ export const FIXED_VISUAL_STYLE_ID = 'modern-countryball-explainer';
 export const FIXED_VISUAL_STYLE_REASON = 'Globale feste Bildwelt für alle neuen Erklär-Reels: szenischer Editorial-Countryball-Erklärstil mit konkreten Umgebungen statt generischer Icon-Karten.';
 
 export const FIXED_VISUAL_WORLD_PROMPT = [
-  'Create a vertical 9:16 educational explainer illustration in a scene-first editorial countryball-inspired style made specifically for short-form Reels.',
+  'Create a vertical 9:16 educational explainer illustration in a modern minimalist countryball-inspired style, using a scene-first editorial countryball-inspired approach made specifically for short-form Reels.',
   'The visual language is a bold hand-drawn 2D vector-cartoon hybrid: thick slightly organic black outlines, simple readable shapes, flat cel-like color blocks, subtle soft shadows and a very light paper or grain texture. Keep it polished but not sterile.',
   'Build a concrete mini-scene before adding symbols. Prefer physical storytelling with doors, ruins, streets, rooms, stages, maps, tables, tools, documents, landscapes, buildings, weights, thermometers, luggage, signs or other real scene objects. The image should feel like a frozen moment from a visual story, not like an icon board.',
   'When a country, region, institution, group or social actor needs personification, use a round countryball-like character with a thick black outline and simple expressive white eyes. Use a country or regional flag pattern only when geographic identity is actually relevant. For general topics, do not default to a blank beige ball if a concrete object, environment or anthropomorphic object explains the idea better.',
@@ -19,4 +19,4 @@ export const FIXED_VISUAL_WORLD_PROMPT = [
   'The meaning must be understandable within about one second, while still looking like a real illustrated scene from the same recurring Reel channel.'
 ].join(' ');
 
-export const FIXED_VISUAL_WORLD_LABEL = 'Editorial Countryball Explainer';
+export const FIXED_VISUAL_WORLD_LABEL = 'Modern Countryball Explainer';
