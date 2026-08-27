@@ -15,6 +15,7 @@ function getArgument(name) {
 function showUsage() {
   console.log(`
 Erzeugt aus render/render-plan.json eine fertige MP4-Datei mit Remotion – ohne Untertitel.
+Der Standard-Export landet direkt im Reel-Ordner unter 05-export mit fertiger MP4 und universeller Caption.
 
 Rendern:
   npm run render:reel -- --dir "reels/.../reel-01_titel"
@@ -24,7 +25,7 @@ Nur prüfen:
 
 Optionen:
   --dir          Reel-Ordner
-  --output       Ausgabepfad der MP4-Datei
+  --output       Optionaler zusätzlicher Ausgabepfad der MP4-Datei; der kanonische Export wird trotzdem unter export/FERTIGES-REEL.mp4 abgelegt
   --codec        Remotion-Codec, Standard: h264
   --crf          Qualitätswert, Standard: 18
   --concurrency  Anzahl paralleler Renderprozesse
@@ -100,7 +101,9 @@ async function main() {
   console.log('MP4 erfolgreich ohne Untertitel erzeugt.');
   if (sourceGate.required) console.log('Quellen-QC: verpflichtendes Schema bestanden');
   if (pacingBinding.required) console.log('Audio-Pacing-Datei: Fingerprint unverändert');
-  console.log(`Datei: ${path.resolve(report.outputFile)}`);
+  console.log(`Export-Video: ${path.resolve(report.exportVideoFile ?? report.outputFile)}`);
+  console.log(`Universal-Caption: ${path.resolve(report.exportCaptionFile)}`);
+  console.log('Sichtbarer Upload-Bereich: 05-export/');
   console.log(`Größe: ${(report.outputBytes / 1024 / 1024).toFixed(2)} MB`);
 }
 
