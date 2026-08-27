@@ -101,7 +101,7 @@ test('Dokumentation friert den Untertitel-freien Standard ein', async () => {
 
   assert.match(workflow, /keine Untertitel/i);
   assert.match(workflow, /keinen Untertitel- oder Word-Sync-Schritt/i);
-  assert.match(workflow, /Untertitel wieder aktivieren.*verboten|Untertitel wieder aktivieren/i);
+  assert.match(workflow, /sync:words.*nicht.*aktiven Workflow|sync:words.*gehört nicht zum aktiven Workflow/is);
   assert.match(agents, /keine Untertitel/i);
   assert.match(agents, /sync:words.*nicht erforderlich/i);
 });
