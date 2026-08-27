@@ -7,177 +7,193 @@
 Bei „Mach ein neues Reel“ autonom:
 
 1. nächsten freien Slot bestimmen
-2. **ein starkes Thema aus dem offenen Themenuniversum wählen; keine Beschränkung auf alte Säulen wie Geschichte, Politik, Länder oder Psychologie**
+2. starkes Thema aus dem offenen Themenuniversum wählen
 3. deutsches Voice-over mit 155–175 Wörtern schreiben
 4. 12–14 narrative Szenen planen, Standard 13
-5. **für Cover und jede Bildphase zwingend die feste Bildwelt `modern-countryball-explainer` verwenden**
+5. für Cover und jede Bildphase zwingend `modern-countryball-explainer` verwenden
 6. Bildanzahl pro Reel und Szene individuell planen
 7. Cover + Bildphasen-Prompts + kompletten seriellen Google-Flow-Gesamtprompt + Caption + Quellen fertigstellen
 8. keine Untertitel erzeugen
 9. externe Assets zuerst suchen, bevor etwas als fehlend gemeldet wird
 10. Assets zweifach visuell prüfen, inklusive Stilkonformität, Audio synchronisieren und nur nach echten QC-Gates rendern
 
-## Themenwahl — offen und abwechslungsreich
+## Reels und YouTube strikt trennen
 
-Neue Reels dürfen aus praktisch jedem geeigneten Erklärbereich kommen. Beispiele:
-- Psychologie und menschliches Verhalten
-- Alltag und Gewohnheiten
-- Beziehungen und soziale Dynamiken
-- Gesellschaft und Kultur
-- Geschichte
-- Länder und Geografie
-- Politik und staatliche Systeme
-- Wissenschaft und Naturphänomene
-- Technik und digitale Welt
-- Internet und Social Media
-- Lernen, Schule und Gedächtnis
-- Arbeit und Beruf
-- Wirtschaft und Geldmechanismen
-- Gesundheit und Ernährung
-- Sprache und Kommunikation
-- überraschende Alltagsfragen, Denkfehler, Mythen und „Warum ist das so?“-Themen
+Reels und YouTube besitzen **getrennte Bildwelten**.
 
-Diese Liste ist **keine Begrenzung**. Verboten ist eine starre Themenrotation oder eine Quote nach alten Säulen.
+Für Reels gilt:
 
-## Bildwelt — fest: modern-countryball-explainer
+```text
+modern-countryball-explainer
+```
 
-Die globale Bildwelt ist verbindlich in `knowledge/fixed-visual-world.md` und `config/image-styles.json` definiert.
+Für YouTube gilt ausschließlich:
+
+```text
+youtube/YOUTUBE_WORKFLOW.md
+youtube/YOUTUBE_VISUAL_WORLD.md
+```
+
+Nie automatisch übertragen:
+
+- YouTube-Stick-Figuren auf Reels
+- Reel-Countryball-Regeln auf YouTube
+- 16:9-YouTube-Komposition auf Reels
+- 9:16-Reel-Regeln auf YouTube
+
+## Themenwahl
+
+Neue Reels dürfen aus praktisch jedem geeigneten Erklärbereich kommen: Psychologie, Alltag, Beziehungen, Gesellschaft, Geschichte, Geografie, Politik, Wissenschaft, Technik, Internet, Lernen, Arbeit, Wirtschaft, Gesundheit, Sprache, Mythen und andere starke Warum-Fragen.
+
+Keine starre Themenrotation und keine Quote nach alten Säulen.
+
+## Reel-Bildwelt — scene-first Editorial Countryball
+
+Die globale Reel-Bildwelt ist verbindlich in `knowledge/fixed-visual-world.md` und `config/image-styles.json` definiert.
 
 Neue Reels erhalten:
 
 ```text
 visualStyleId: "modern-countryball-explainer"
-visualStyleReason: "Globale feste Bildwelt für alle neuen Erklär-Reels: moderner minimalistischer Countryball-Erklärstil."
+visualStyleReason: "Globale feste Bildwelt für alle neuen Erklär-Reels: szenischer Editorial-Countryball-Erklärstil mit konkreten Umgebungen statt generischer Icon-Karten."
 ```
 
-Die Bildwelt wird **nicht** pro Thema neu gewählt und nicht rotiert.
+### Hauptregel
 
-Kernregeln:
+**Zuerst eine konkrete physische Mini-Szene bauen. Erst danach Symbole ergänzen.**
+
+Das Bild soll wie ein eingefrorener Story-Moment wirken, nicht wie eine sterile Infografik.
+
+### Kernregeln
+
 - 9:16
-- moderner minimalistischer Countryball-inspirierter Erklärgrafik-Stil
-- runde Ball-Figuren für Personen, Gruppen, Institutionen oder Länder
-- Länderflaggen nur bei inhaltlich relevanter Länder-/Regionsidentität; sonst neutrale Kugeln
-- dicke saubere schwarze Konturen
-- einfache weiße expressive Augen, minimale Gesichtselemente
-- flacher sauberer 2D-Vektor-/Comic-Look
-- dezente weiche Schatten, höchstens leichte Textur
-- ein dominantes Hauptmotiv, wenige unterstützende Requisiten
-- einfarbiger oder sanft texturierter Hintergrund; Farbe darf pro Szene wechseln
-- eine sofort verständliche visuelle Metapher
-- keine realistischen Menschen, kein Fotorealismus, kein Anime, kein Clay, kein glänzendes 3D, keine Stockfoto-Ästhetik
-- Bildprompts Englisch; sichtbarer Bildtext ausschließlich Deutsch
+- hand-drawn 2D vector-cartoon hybrid
+- dicke leicht organische schwarze Konturen
+- flächige Farben, dezente Schatten, höchstens leichte Korn-/Papiertextur
+- ein dominantes Hauptmotiv und eine klare Handlung
+- nur wenige unterstützende Requisiten
+- konkrete Umgebung, wenn sie die Aussage verbessert
+- Close-ups, Off-Center-Framing und einfacher Vorder-/Mittel-/Hintergrund ausdrücklich erlaubt
+- Countryball-ähnliche Figuren nur wenn Akteure sinnvoll personifiziert werden
+- Flaggen nur wenn Länder-/Regionsidentität relevant ist
+- bei abstrakten Allgemeinthemen Gegenstand, Mechanismus oder Umgebung einer leeren neutralen Kugel vorziehen
+- Prompts Englisch, sichtbarer Bildtext ausschließlich Deutsch
 
-Reine Gegenstände oder Mechanismen dürfen ohne Kugelfigur Hauptmotiv sein, müssen aber dieselbe Kontur-, 2D- und Vereinfachungslogik verwenden.
+### Nicht als Standardlösung verwenden
 
-Historische Reel-Prompts dürfen Inhalt inspirieren, aber **keine** abweichende alte Bildwelt reaktivieren.
+- leere beige Kugel mittig
+- schwebende Reaktionskarten
+- generische Lob-/Kritik-Karten
+- Kreise aus Sprechblasen
+- Icon-Gitter
+- UI-Boxen
+- Figur-mittig-plus-Icons
+- immer derselbe einfarbige Hintergrund
+- Waage/Megafon als Universalmetapher
+- doppelte identische Headline oben und unten
+
+### Verbotene Stilabweichungen
+
+- Fotorealismus
+- realistische Menschen/Gesichter
+- Anime/Manga
+- Clay/Knetstil
+- glänzendes 3D/Pixar-Look
+- Stockfoto-Ästhetik
+- YouTube-Stick-Figure-/Ink-Explainer-Look
+- 16:9-Komposition
 
 ## Bildprompt-Autorenschaft
 
-Die Visual-Prompts dürfen nicht als generische unklare Kurzprompts geschrieben werden. Sie sollen die **konkrete Szene** präzise beschreiben und mit der festen Bildwelt kompatibel sein.
+Jede `cover-prompt.txt`, `image-prompt.txt`, `image-prompt-02.txt` usw. beschreibt eine **konkrete Szene**.
 
-Jede `cover-prompt.txt`, `image-prompt.txt`, `image-prompt-02.txt` usw. enthält mindestens:
+Jeder Prompt enthält mindestens:
 
 1. Format 9:16
-2. konkrete Szene und klare Komposition
-3. festen Stil `modern-countryball-explainer`
-4. exakt erlaubten deutschen Bildtext, falls vorhanden
-5. `No other readable text, no English, no logos, no watermark`, sofern nicht ausdrücklich anders gewünscht
-6. volle 9:16-Fläche, keine Subtitle-Safe-Zone
+2. Hauptmotiv
+3. Ort/Umgebung
+4. physische Handlung
+5. Perspektive/Komposition
+6. nur wenige unterstützende Requisiten
+7. festen Stil `modern-countryball-explainer`
+8. exakt erlaubten deutschen Bildtext, falls vorhanden
+9. `No other readable text, no English, no logos, no watermark`
+10. volle 9:16-Fläche, keine Subtitle-Safe-Zone
 
-Der Exporter ergänzt zusätzlich automatisch einen globalen und per-Bild Style-Lock. Bei Konflikten überstimmt der feste Style-Lock nur widersprechende Stilbegriffe; Inhalt, Metapher, Komposition und deutscher Text bleiben bestehen.
+Der Exporter ergänzt den globalen und per-Bild Style-Lock automatisch.
 
-`Bild 00.png` ist das Cover, aber nicht der alleinige Style-Master. Die globale Repo-Bildwelt ist der Style-Master.
+`Bild 00.png` ist das Cover, aber nicht der alleinige Style-Master.
 
 ## Narrative Szenen ≠ Bildanzahl
 
-Jede narrative Szene besitzt normalerweise 1 Bildphase, 2 wenn ein zweiter visueller Schritt klar verbessert, 3 nur selten.
+Jede narrative Szene besitzt normalerweise 1 Bildphase, 2 wenn ein echter zweiter visueller Schritt hilft, 3 nur selten.
 
-Wenn ein Still-Bild ungefähr 3,5–4 Sekunden oder länger stehen würde, aktiv eine weitere Bildphase prüfen. Keine feste Gesamtzahl erzwingen.
+Wenn ein Still ungefähr 3,5–4 Sekunden oder länger stehen würde, aktiv eine weitere Bildphase prüfen. Keine feste Gesamtzahl erzwingen.
 
 Technische Felder:
+
 - `reel.json.imageCountMode = "individual-per-reel"`
 - `reel.json.plannedImageCount`
 - pro Szene `imageCount`
 - pro Szene `imagePhases[]`
 
-## Google Flow — kompletter serieller Gesamtprompt
+## Google Flow
 
-Die verbindliche Nutzerdatei ist:
+Verbindliche Nutzerdatei:
 
 ```text
 00-bildprompts/99-alle-bildprompts.txt
 ```
 
-`all-image-prompts/all-image-prompts.txt` ist eine identische technische Kopie.
-
-Die Einzeldateien unter `all-image-prompts/image-prompts/` dürfen als interne Sicherung bleiben, sind aber **nicht** der normale Google-Flow-Einstieg.
+`all-image-prompts/all-image-prompts.txt` ist die identische technische Kopie.
 
 Der separate `google-flow-controller.txt` ist deaktiviert.
 
-Der Gesamtprompt enthält die feste Bildwelt global und erneut direkt vor jedem Bildabschnitt.
-
 ### Hard Serial Lock
-
-Obwohl alle Prompts in einer Nachricht stehen, darf immer nur **eine** Generierung laufen.
 
 ```text
 nur aktuellen Bildabschnitt ausführen
 → genau 1 Bildgenerator-Aufruf
 → vollständig warten
-→ gegen aktuellen Bildprompt UND feste Bildwelt prüfen
+→ gegen aktuellen Bildprompt UND feste Reel-Bildwelt prüfen
 → umbenennen
 → prüfen
 → erst dann nächster Bildabschnitt
 ```
 
-Strikt verboten:
-- zwei oder mehr Bildgenerator-Aufrufe im selben Agent-Schritt / Tool-Batch / Turn
-- Batch
-- Queue
-- Parallelgenerierung
-- mehrere Varianten gleichzeitig
-- nächstes Bild starten, bevor das aktuelle sichtbar fertig, stilkonform und geprüft ist
+Keine Queue, kein Batch, keine Parallelgenerierung, keine Mehrfachvarianten.
 
-Wenn ein Job noch läuft, queued/pending ist oder der Status unklar ist: warten.
-
-## Workflow-Metadaten dürfen nie im Bild erscheinen
+## Workflow-Metadaten nie im Bild
 
 Verboten als sichtbarer Bildtext:
+
 - Bildnummern
 - `COVER`
 - `SZENE` / `SCENE`
 - `BILDPHASE` / `IMAGE PHASE`
-- `DATEINAME`, Dateinamen, technische IDs
+- `DATEINAME`, Dateinamen
 - `GOOGLE FLOW`, `PROMPT`, `STYLE-REFERENZ`, `ZIEL`
 
-Der eigentliche visuelle Prompt trägt die Textregel selbst:
-- `imageText`/Cover-Headline gesetzt → nur exakt dieser deutsche Text darf lesbar sein
-- leer → kein lesbarer Text
+`imageText` gesetzt → nur exakt dieser deutsche Text. Leer → kein lesbarer Text.
 
 ## Quellen-QC
 
-Für **neu erstellte Reels** gilt Quellen-Schema 3.
+Neue Reels verwenden Quellen-Schema 3:
 
-Mindestens:
-- zwei echte HTTPS-Quellen
-- zwei unterschiedliche Hosts/Domains
-- vollständige Felder `Titel/Institution`, `URL`, `Datum/Zugriff`, `Quellentyp`, `Belegt`
-- mindestens eine Primär-/offizielle Quelle oder wissenschaftliche Originalquelle
-- mindestens eine davon unabhängige Sekundär-/Fachquelle
-
-Unter `Belegt` muss konkret stehen, welche Aussage des Reels die jeweilige Quelle stützt. Die formale QC ersetzt keine inhaltliche Prüfung der Quelle.
-
-Bestehende Schema-2-Reels bleiben rückwärtskompatibel und werden nicht künstlich umgeschrieben.
+- mindestens zwei echte HTTPS-Quellen
+- unterschiedliche Hosts
+- mindestens eine Primär-/offizielle oder wissenschaftliche Originalquelle
+- mindestens eine unabhängige Sekundär-/Fachquelle
+- unter `Belegt` konkrete gestützte Reel-Aussage nennen
 
 ## Untertitel
 
 Global deaktiviert:
+
 - keine Untertitel
 - keine Karaoke-Markierung
-- keine künstliche Untertitel-Safe-Zone
-- `sync:words` ist **nicht erforderlich** und darf im aktiven Produktionsworkflow nicht ausgeführt werden
-
-Historische Word-Sync-Helfer dürfen nur explizit als Legacy-Diagnosewerkzeuge verwendet werden; niemals als Pflichtschritt für neue Reels.
+- keine künstliche Subtitle-Safe-Zone
+- `sync:words` ist nicht erforderlich
 
 ## Audio
 
@@ -186,14 +202,13 @@ Historische Word-Sync-Helfer dürfen nur explizit als Legacy-Diagnosewerkzeuge v
 - exakt 1,10x, Pitch erhalten
 - −16 LUFS
 - max. −1,5 dBTP
-- Szenen über echte akustisch bestätigte `audioCue`-Anker synchronisieren
-- zusätzliche Bildphasen über `startPercent` innerhalb der bestätigten Szenendauer legen
+- Szenen über echte akustische `audioCue`-Anker synchronisieren
+- zusätzliche Bildphasen über `startPercent`
 - nach Audioänderung Timeline neu synchronisieren
-- keine erfundenen Szenenanker
 
 ## Asset-Zuordnung
 
-Dateinummer ist nur Routing-Hilfe. Jede Bildphase tatsächlich öffnen und gegen Narration, Audio-Cue, Visual-Idea, Bildtext und Prompt prüfen. Zusätzlich die feste Bildwelt prüfen. Danach gegen vorherige und nächste Bildphase prüfen.
+Dateinummer ist nur Routing-Hilfe. Jede Bildphase tatsächlich öffnen und gegen Narration, Audio-Cue, Visual-Idea, Bildtext, Prompt, feste Reel-Bildwelt und benachbarte Bildphasen prüfen.
 
 Unter 0,90 Konfidenz nicht raten. `filename-only` ist verboten.
 
