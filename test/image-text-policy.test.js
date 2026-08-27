@@ -22,7 +22,7 @@ test('bevorzugt kurzen deutschen Bildtext innerhalb der festen Bildwelt', async 
   assert.equal(textRules.mustAppearExactlyInPrompt, true);
 });
 
-test('Codex-Auftrag berechnet Bildtext-Zielbereich und erzwingt die feste Bildwelt', async () => {
+test('Codex-Auftrag berechnet Bildtext-Zielbereich und erzwingt die getrennte scene-first Reel-Bildwelt', async () => {
   const outputRoot = await mkdtemp(path.join(os.tmpdir(), 'erklaer-image-text-'));
 
   try {
@@ -38,15 +38,19 @@ test('Codex-Auftrag berechnet Bildtext-Zielbereich und erzwingt die feste Bildwe
     const task = await readFile(result.taskFile, 'utf8');
     const checklist = JSON.parse(await readFile(result.checklistFile, 'utf8'));
 
-    assert.match(task, /Verbindliche Bildwelt: Modern Countryball Explainer/i);
+    assert.match(task, /Verbindliche Reel-Bildwelt: Modern Countryball Explainer/i);
     assert.match(task, /modern-countryball-explainer/);
     assert.match(task, /Keine Bildwelt auswählen oder rotieren/i);
-    assert.match(task, /kurzen deutschen Bildtext/i);
+    assert.match(task, /konkreten physischen Bildmoment/i);
+    assert.match(task, /generischen schwebenden Karten/i);
+    assert.match(task, /keine YouTube-Stick-Figuren/i);
     assert.match(task, /exakten deutschen Text/i);
     assert.match(task, /Bildprompts: \*\*Englisch\*\*/i);
     assert.match(task, /sichtbarer Bildtext: \*\*Deutsch\*\*/i);
     assert.ok(checklist.tasks.some((entry) => entry.id === 'image-text-plan'));
     assert.ok(checklist.tasks.some((entry) => entry.id === 'visual-world-fixed'));
+    assert.ok(checklist.tasks.some((entry) => entry.id === 'visual-world-separated'));
+    assert.ok(checklist.tasks.some((entry) => entry.id === 'scene-first-visuals'));
     assert.equal(checklist.visualStyleId, 'modern-countryball-explainer');
   } finally {
     await rm(outputRoot, { recursive: true, force: true });
