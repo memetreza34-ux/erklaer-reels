@@ -1,4 +1,4 @@
-import { mkdir, readFile, stat, writeFile } from 'node:fs/promises';
+import { copyFile, mkdir, readFile, stat, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -9,9 +9,20 @@ import { verifyRequiredSourceQuality } from './source-quality-file-guard.js';
 
 const currentDirectory = path.dirname(fileURLToPath(import.meta.url));
 const entryPoint = path.resolve(currentDirectory, '..', 'renderer', 'index.jsx');
+const EXPORT_VIDEO_NAME = 'FERTIGES-REEL.mp4';
+const EXPORT_CAPTION_NAME = 'UNIVERSELLE-CAPTION.txt';
 
 async function readJson(filePath) {
   return JSON.parse(await readFile(filePath, 'utf8'));
+}
+
+async function readTextIfExists(filePath) {
+  try {
+    return await readFile(filePath, 'utf8');
+  } catch (error) {
+    if (error?.code === 'ENOENT') return '';
+    throw error;
+  }
 }
 
 async function writeJson(filePath, value) {
@@ -19,10 +30,39 @@ async function writeJson(filePath, value) {
   await writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
 }
 
-function outputPathFor(reelDirectory, plan, requestedOutput) {
+function exportVideoPathFor(reelDirectory) {
+  return path.join(reelDirectory, 'export', EXPORT_VIDEO_NAME);
+}
+
+function exportCaptionPathFor(reelDirectory) {
+  return path.join(reelDirectory, 'export', EXPORT_CAPTION_NAME);
+}
+
+function outputPathFor(reelDirectory, requestedOutput) {
   if (requestedOutput) return path.resolve(requestedOutput);
-  const fileName = `${plan.reelId ?? path.basename(reelDirectory)}.mp4`;
-  return path.join(reelDirectory, 'output', fileName);
+  return exportVideoPathFor(reelDirectory);
+}
+
+function fallbackUniversalCaption(reel) {
+  const title = String(reel?.title ?? '').trim() || 'Kurz erklärt';
+  return `${title}\n\nKurz erklärt in unter einer Minute.\n\n#Wissen #Erklärt #KurzErklärt\n`;
+}
+
+async function writeUniversalCaption(reelDirectory) {
+  const sourcePath = path.join(reelDirectory, 'caption', 'caption.txt');
+  const exportPath = exportCaptionPathFor(reelDirectory);
+  const sourceCaption = (await readTextIfExists(sourcePath)).trim();
+  const reel = await readJson(path.join(reelDirectory, 'reel.json'));
+  const caption = sourceCaption || fallbackUniversalCaption(reel).trim();
+
+  await mkdir(path.dirname(exportPath), { recursive: true });
+  await writeFile(exportPath, `${caption}\n`, 'utf8');
+
+  return {
+    file: exportPath,
+    source: sourceCaption ? 'caption/caption.txt' : 'automatic-fallback',
+    fallbackUsed: !sourceCaption
+  };
 }
 
 export async function renderReel(reelDirectory, {
@@ -62,8 +102,10 @@ export async function renderReel(reelDirectory, {
   }
 
   const plan = validation.plan;
-  const outputLocation = outputPathFor(reelDirectory, plan, output);
+  const outputLocation = outputPathFor(reelDirectory, output);
+  const canonicalExportVideo = exportVideoPathFor(reelDirectory);
   await mkdir(path.dirname(outputLocation), { recursive: true });
+  await mkdir(path.dirname(canonicalExportVideo), { recursive: true });
 
   const reportPath = path.join(reelDirectory, 'review', 'render-execution-report.json');
   try {
@@ -111,9 +153,14 @@ export async function renderReel(reelDirectory, {
 
     await renderMedia(renderOptions);
 
-    const fileStats = await stat(outputLocation);
+    if (path.resolve(outputLocation) !== path.resolve(canonicalExportVideo)) {
+      await copyFile(outputLocation, canonicalExportVideo);
+    }
+
+    const captionExport = await writeUniversalCaption(reelDirectory);
+    const fileStats = await stat(canonicalExportVideo);
     const report = {
-      version: 2,
+      version: 3,
       startedAt,
       finishedAt: new Date().toISOString(),
       passed: true,
@@ -122,7 +169,12 @@ export async function renderReel(reelDirectory, {
       codec,
       crf: Number(crf),
       reelDirectory: path.resolve(reelDirectory),
-      outputFile: outputLocation,
+      outputFile: canonicalExportVideo,
+      renderedOutputFile: outputLocation,
+      exportVideoFile: canonicalExportVideo,
+      exportCaptionFile: captionExport.file,
+      exportCaptionSource: captionExport.source,
+      exportCaptionFallbackUsed: captionExport.fallbackUsed,
       outputBytes: fileStats.size,
       subtitlesEnabled: false,
       composition: plan.composition,
@@ -139,22 +191,27 @@ export async function renderReel(reelDirectory, {
     status.subtitles = 'disabled';
     status.wordSync = 'not-required';
     status.render = 'complete';
-    status.renderedFile = path.relative(reelDirectory, outputLocation).split(path.sep).join('/');
-    status.visibleRenderedFile = '04-video/FERTIGES-VIDEO';
+    status.export = 'complete';
+    status.renderedFile = path.relative(reelDirectory, canonicalExportVideo).split(path.sep).join('/');
+    status.exportedVideoFile = path.relative(reelDirectory, canonicalExportVideo).split(path.sep).join('/');
+    status.exportedCaptionFile = path.relative(reelDirectory, captionExport.file).split(path.sep).join('/');
+    status.visibleRenderedFile = '05-export/FERTIGES-REEL.mp4';
+    status.visibleCaptionFile = '05-export/UNIVERSELLE-CAPTION.txt';
     status.qualityControl = 'render-complete';
     await writeJson(statusPath, status);
 
     return report;
   } catch (error) {
     const report = {
-      version: 2,
+      version: 3,
       startedAt,
       finishedAt: new Date().toISOString(),
       passed: false,
       renderer: 'remotion',
       codec,
       reelDirectory: path.resolve(reelDirectory),
-      outputFile: outputLocation,
+      outputFile: canonicalExportVideo,
+      renderedOutputFile: outputLocation,
       subtitlesEnabled: false,
       error: error.message
     };
