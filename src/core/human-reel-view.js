@@ -11,6 +11,7 @@ export const HUMAN_REEL_FOLDERS = Object.freeze([
   '02-audio',
   '03-caption',
   '04-video',
+  '05-export',
   '99-technik'
 ]);
 
@@ -29,6 +30,7 @@ export const TECHNICAL_REEL_ENTRIES = Object.freeze([
   'caption',
   'cover',
   'effects',
+  'export',
   'inbox',
   'output',
   'production',
@@ -147,13 +149,14 @@ export async function ensureHumanReelView(reelDirectory, { hideTechnicalInFinder
   await Promise.all([
     ...HUMAN_REEL_FOLDERS.map((folder) => mkdir(path.join(absoluteReelDirectory, folder), { recursive: true })),
     mkdir(path.join(absoluteReelDirectory, 'output'), { recursive: true }),
+    mkdir(path.join(absoluteReelDirectory, 'export'), { recursive: true }),
     mkdir(path.join(absoluteReelDirectory, 'inbox', 'numbered-images'), { recursive: true })
   ]);
 
   await Promise.all([
     writeIfMissing(
       path.join(absoluteReelDirectory, '00-bildprompts', 'README.md'),
-      '# 00 – Bildprompts und Bilder\n\nVerbindliche aktuelle Regeln stehen in `CURRENT_WORKFLOW.md` im Repository. Für Google Flow verwendest du die komplette Datei `99-alle-bildprompts.txt`. Google Flow erzeugt die Bilder streng einzeln: ein Bild vollständig fertigstellen → gegen den aktuellen Bildprompt prüfen → sofort `Bild XX.png` benennen → ohne weiteres Go automatisch mit dem nächsten Bild fortfahren. `Bild 00.png` ist aktuell nur das Cover und nicht automatisch ein Style-Master. Danach läuft die Nummerierung über alle geplanten Bildphasen global weiter; eine Bildnummer ist nicht automatisch eine Szenennummer. Erst wenn wirklich alle Bilder fertig und korrekt benannt sind, legst du sie gemeinsam in `00-ALLE-BILDER-HIER-REIN`. Aktuell ist keine feste Repo-Bildwelt aktiv.\n'
+      '# 00 – Bildprompts und Bilder\n\nVerbindliche aktuelle Regeln stehen in `CURRENT_WORKFLOW.md` im Repository. Für Google Flow verwendest du die komplette Datei `99-alle-bildprompts.txt`. Google Flow erzeugt die Bilder streng einzeln: ein Bild vollständig fertigstellen → gegen den aktuellen Bildprompt prüfen → sofort `Bild XX.png` benennen → ohne weiteres Go automatisch mit dem nächsten Bild fortfahren. `Bild 00.png` ist das Cover. Danach läuft die Nummerierung über alle geplanten Bildphasen global weiter; eine Bildnummer ist nicht automatisch eine Szenennummer. Erst wenn wirklich alle Bilder fertig und korrekt benannt sind, legst du sie gemeinsam in `00-ALLE-BILDER-HIER-REIN`.\n'
     ),
     writeIfMissing(
       path.join(absoluteReelDirectory, 'inbox', 'numbered-images', 'README.md'),
@@ -161,13 +164,15 @@ export async function ensureHumanReelView(reelDirectory, { hideTechnicalInFinder
     ),
     writeIfMissing(path.join(absoluteReelDirectory, '01-voice-script', 'README.md'), '# 01 – Voice-Script\n\nHier liegt der endgültige Text für das Voice-over.\n'),
     writeIfMissing(path.join(absoluteReelDirectory, '02-audio', 'README.md'), '# 02 – Audio\n\nUnbearbeitetes Voice-over nach `AUDIO-HIER-EINFUEGEN`. Das optimierte Audio erscheint später unter `FINAL-AUDIO`.\n'),
-    writeIfMissing(path.join(absoluteReelDirectory, '03-caption', 'README.md'), '# 03 – Caption\n\nHier liegt die fertige Social-Media-Caption.\n'),
-    writeIfMissing(path.join(absoluteReelDirectory, '04-video', 'README.md'), '# 04 – Fertiges Video\n\nDie finale MP4 erscheint nach dem Rendern unter `FERTIGES-VIDEO`.\n'),
+    writeIfMissing(path.join(absoluteReelDirectory, '03-caption', 'README.md'), '# 03 – Universelle Caption\n\nHier liegt die plattformneutrale Caption für Instagram Reels, TikTok und YouTube Shorts. Dieselbe fertige Caption wird beim Rendern automatisch in den Exportbereich übernommen.\n'),
+    writeIfMissing(path.join(absoluteReelDirectory, '04-video', 'README.md'), '# 04 – Fertiges Video\n\nDie finale MP4 erscheint nach dem Rendern unter `FERTIGES-VIDEO`. Der komplette Upload-Bereich liegt zusätzlich unter `05-export`.\n'),
+    writeIfMissing(path.join(absoluteReelDirectory, '05-export', 'README.md'), '# 05 – Export\n\nHier liegt nach dem finalen Render alles, was du zum Hochladen brauchst:\n\n- `FERTIGES-REEL.mp4` – finales Reel\n- `UNIVERSELLE-CAPTION.txt` – dieselbe plattformneutrale Caption für Instagram Reels, TikTok und YouTube Shorts\n\nDu sollst für den normalen Upload nur diesen Ordner brauchen.\n'),
     writeIfMissing(
       path.join(absoluteReelDirectory, '99-technik', 'README.md'),
       '# 99 – Technik\n\nHier sind Quellen, Prüfberichte, Effekt-, Produktions- und Kompatibilitätsdateien gesammelt. Diesen Ordner musst du normalerweise nicht öffnen. Untertitel sind für neue Reels deaktiviert und werden hier nicht als aktiver Arbeitsbereich angeboten.\n'
     ),
-    writeIfMissing(path.join(absoluteReelDirectory, 'output', 'README.md'), '# Render-Ausgabe\n\nDie finale MP4 wird lokal in diesem Ordner erzeugt. Videodateien werden nicht in Git gespeichert.\n')
+    writeIfMissing(path.join(absoluteReelDirectory, 'output', 'README.md'), '# Legacy-Render-Ausgabe\n\nDieser technische Ordner bleibt aus Kompatibilitätsgründen bestehen. Der normale finale Export landet unter `export/` bzw. sichtbar unter `05-export/`.\n'),
+    writeIfMissing(path.join(absoluteReelDirectory, 'export', 'README.md'), '# Finaler Export\n\nDer Renderer schreibt hier automatisch `FERTIGES-REEL.mp4` und `UNIVERSELLE-CAPTION.txt`. Videodateien werden nicht in Git gespeichert.\n')
   ]);
 
   const linkResults = [];
@@ -179,7 +184,9 @@ export async function ensureHumanReelView(reelDirectory, { hideTechnicalInFinder
     ['02-audio/AUDIO-HIER-EINFUEGEN', '../inbox/audio', 'dir'],
     ['02-audio/FINAL-AUDIO', '../audio', 'dir'],
     ['03-caption/caption.txt', '../caption/caption.txt', 'file'],
-    ['04-video/FERTIGES-VIDEO', '../output', 'dir'],
+    ['04-video/FERTIGES-VIDEO', '../export', 'dir'],
+    ['05-export/FERTIGES-REEL.mp4', '../export/FERTIGES-REEL.mp4', 'file'],
+    ['05-export/UNIVERSELLE-CAPTION.txt', '../export/UNIVERSELLE-CAPTION.txt', 'file'],
     ['99-technik/QUELLEN.md', '../sources/sources.md', 'file'],
     ['99-technik/PRUEFBERICHTE', '../review', 'dir'],
     ['99-technik/PRODUKTION', '../production', 'dir'],
