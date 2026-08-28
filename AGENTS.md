@@ -149,6 +149,8 @@ Verbindliche Nutzerdatei:
 
 Der separate `google-flow-controller.txt` ist deaktiviert.
 
+Vor der ersten Bildgenerierung muss Flow genau **einen gemeinsamen Ausgabeordner für dieses Reel** erstellen.
+
 ### Hard Serial Lock
 
 ```text
@@ -156,12 +158,15 @@ nur aktuellen Bildabschnitt ausführen
 → genau 1 Bildgenerator-Aufruf
 → vollständig warten
 → gegen aktuellen Bildprompt UND feste Reel-Bildwelt prüfen
-→ umbenennen
-→ prüfen
+→ exakt als Bild NN.png umbenennen
+→ in den gemeinsamen Reel-Ausgabeordner legen
+→ Dateiname und Ablage prüfen
 → erst dann nächster Bildabschnitt
 ```
 
-Keine Queue, kein Batch, keine Parallelgenerierung, keine Mehrfachvarianten.
+Keine Queue, kein Batch, keine Parallelgenerierung, keine Mehrfachvarianten. Wenn Umbenennen oder Ablage nicht bestätigt werden kann, stoppen statt weitere Bilder zu erzeugen.
+
+Nach Abschluss müssen alle Bilder des Reels lückenlos in diesem einen Flow-Ausgabeordner liegen. Für den Repo-Import werden sie gesammelt nach `00-bildprompts/00-ALLE-BILDER-HIER-REIN/` übernommen.
 
 ## Workflow-Metadaten nie im Bild
 
@@ -211,6 +216,18 @@ Global deaktiviert:
 Dateinummer ist nur Routing-Hilfe. Jede Bildphase tatsächlich öffnen und gegen Narration, Audio-Cue, Visual-Idea, Bildtext, Prompt, feste Reel-Bildwelt und benachbarte Bildphasen prüfen.
 
 Unter 0,90 Konfidenz nicht raten. `filename-only` ist verboten.
+
+## Finaler Reel-Export
+
+Der einzige sichtbare finale Upload-Bereich ist:
+
+```text
+03-export/
+├── FERTIGES-REEL.mp4
+└── UNIVERSELLE-CAPTION.txt
+```
+
+Es gibt keinen separaten sichtbaren Caption- oder Video-Ordner. Die Universal-Caption muss zum konkreten Reel passen und `UNIVERSAL_CAPTION_POLICY.md` erfüllen.
 
 ## Render
 
