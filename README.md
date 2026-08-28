@@ -14,7 +14,8 @@ Themen können unter anderem aus Alltag, Psychologie, Verhalten, Beziehungen, Ge
 - 155–175 deutsche Wörter
 - 12–14 **narrative Szenen**, Standard 13
 - genau ein klarer Erklärschritt pro narrativer Szene
-- **feste Bildwelt: `modern-countryball-explainer`**
+- feste technische Style-ID: `modern-countryball-explainer`
+- verbindliche Ausführung: **Clarity-First Editorial Reel**
 - die Themenwahl ist offen und wird nicht durch alte Pillars begrenzt
 - **Bildanzahl individuell pro Reel**
 - pro narrativer Szene 1, 2 oder selten 3 Bildphasen
@@ -27,14 +28,15 @@ Themen können unter anderem aus Alltag, Psychologie, Verhalten, Beziehungen, Ge
 - keine Hintergrundmusik
 - Schlussbild 0,7 Sekunden nach dem letzten gesprochenen Wort halten
 
-## Feste Bildwelt — Modern Countryball Explainer
+## Feste Bildwelt — Clarity-First Editorial Reel
 
-Für alle neuen Reels gilt:
+Für alle neuen Reels bleibt aus Kompatibilitätsgründen die technische Style-ID:
 
 ```text
 visualStyleId = "modern-countryball-explainer"
-visualStyleReason = "Globale feste Bildwelt für alle neuen Erklär-Reels: moderner minimalistischer Countryball-Erklärstil."
 ```
+
+Die verbindliche Ausführung ist aber **nicht** mehr „Countryball in jedem Bild“, sondern eine clarity-first Social-Media-Bildwelt.
 
 Die vollständige Style-Bibel liegt unter:
 
@@ -51,22 +53,36 @@ config/image-styles.json
 ### Wiedererkennungsmerkmale
 
 - vertikal 9:16
-- moderner minimalistischer Countryball-inspirierter Erklärgrafik-Stil
-- runde Kugelfiguren für Menschen, Gruppen, Institutionen oder Länder
-- Länderflaggen nur wenn die geografische Identität tatsächlich relevant ist; sonst neutrale Kugeln
-- dicke schwarze Konturen
-- einfache weiße expressive Augen, minimale Gesichtselemente
-- sauberer flacher 2D-Vektor-/Comic-Look
-- dezente Schatten und höchstens leichte Textur
-- ein klares Hauptmotiv mit wenigen Requisiten
-- ruhiger einfarbiger oder leicht texturierter Hintergrund
-- klare visuelle Metapher, sofort verständlich
-- keine realistischen Menschen, kein Fotorealismus, kein Anime, kein Clay, kein glänzendes 3D
+- clean hand-drawn 2D editorial cartoon
+- dicke, leicht organische schwarze Konturen
+- niedrige bis mittlere Detaildichte
+- flächige, gut lesbare Farben und nur dezente Schatten
+- eine dominante Kernaussage pro Bild
+- eine konkrete einfache Mini-Szene, ein direkter Kontrast oder eine starke Metapher
+- Bedeutung innerhalb ungefähr einer Sekunde verständlich
+- einfache Hintergründe und wenig visuelles Chaos
+- Countryball-ähnliche Figuren nur wenn sie den Inhalt wirklich besser erklären
+- einfache Cartoon-Personen, anthropomorphe Gegenstände, konkrete Objekte und Mechanismen sind genauso erlaubt
+- Länderflaggen nur wenn geografische Identität tatsächlich relevant ist
 - Prompts Englisch; sichtbarer Bildtext ausschließlich Deutsch
 
-Reine Objekte, Mechanismen oder wissenschaftliche Symbole dürfen Hauptmotiv sein, müssen aber dieselbe Kontur-, Farb- und Vereinfachungslogik behalten.
+### Wichtigste Schutzregeln
 
-Der konkrete Inhalt darf bei jedem Thema komplett wechseln. **Die Bildsprache bleibt gleich.**
+Das Thema darf die Bildwelt **nicht in eine neue Unter-Bildwelt verwandeln**.
+
+Ein Aviation-, Technik-, Medizin- oder Wissenschafts-Reel bleibt im selben einfachen Editorial-Reel-Look. Nicht als Standard verwenden:
+
+- technische Cutaways oder Blueprint-Optik
+- hochdetaillierte Maschinenquerschnitte
+- realistische Produkt-/CAD-Darstellung
+- stark ausgerenderte realistische Innenräume
+- dunkle cinematic Concept-Art-Beleuchtung
+- generische Icon-Collagen oder Floating Cards
+- wiederholte Figur-mittig-plus-Icons-Komposition
+
+Technische Details sind nur erlaubt, wenn sie für die eigentliche Erklärung zwingend nötig sind, und bleiben dann trotzdem vereinfacht und schnell lesbar.
+
+Nicht verwenden: realistische Menschen, Fotorealismus, Anime, Clay, glänzendes 3D, YouTube-Stick-Figure-Look oder 16:9-Komposition.
 
 `Bild 00` ist das Cover, aber nicht der alleinige Style-Master. Die globale Bildwelt ist der Style-Master.
 
@@ -116,18 +132,19 @@ image-prompt-03.txt
 
 ## Bildprompts
 
-Jeder Bildprompt beschreibt die konkrete Szene auf Englisch und bleibt mit `modern-countryball-explainer` kompatibel.
+Jeder Bildprompt beschreibt die konkrete Szene auf Englisch und bleibt mit der festen Reel-Bildwelt kompatibel.
 
 Neutral verbindlich bleiben:
 
 - 9:16
-- konkrete Komposition und Handlung
+- eine klare Kernaussage
+- konkrete einfache Komposition und Handlung
 - exakt erlaubter deutscher Bildtext, falls vorgesehen
 - kein unerwarteter lesbarer Text
 - keine Workflow-Labels im Bild
 - volle Bildfläche ohne künstliche Untertitelzone
 
-Beim Export ergänzt das System automatisch einen **globalen Style-Lock und zusätzlich denselben Style-Lock direkt vor jedem einzelnen Bildabschnitt**. Damit wird die feste Bildwelt auch bei völlig unterschiedlichen Themen durchgehend erzwungen.
+Beim Export ergänzt das System automatisch einen **globalen Style-Lock und zusätzlich denselben Style-Lock direkt vor jedem einzelnen Bildabschnitt**. Damit wird verhindert, dass themenspezifische Prompts die feste Bildwelt überschreiben.
 
 ## Google Flow
 
