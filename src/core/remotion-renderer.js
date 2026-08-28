@@ -11,18 +11,15 @@ const currentDirectory = path.dirname(fileURLToPath(import.meta.url));
 const entryPoint = path.resolve(currentDirectory, '..', 'renderer', 'index.jsx');
 const EXPORT_VIDEO_NAME = 'FERTIGES-REEL.mp4';
 const EXPORT_CAPTION_NAME = 'UNIVERSELLE-CAPTION.txt';
+const CAPTION_MIN_WORDS = 60;
+const CAPTION_MAX_WORDS = 130;
+const HOOK_MIN_WORDS = 4;
+const HOOK_MAX_WORDS = 24;
+const HASHTAG_MINIMUM = 3;
+const HASHTAG_MAXIMUM = 6;
 
 async function readJson(filePath) {
   return JSON.parse(await readFile(filePath, 'utf8'));
-}
-
-async function readTextIfExists(filePath) {
-  try {
-    return await readFile(filePath, 'utf8');
-  } catch (error) {
-    if (error?.code === 'ENOENT') return '';
-    throw error;
-  }
 }
 
 async function writeJson(filePath, value) {
@@ -43,25 +40,64 @@ function outputPathFor(reelDirectory, requestedOutput) {
   return exportVideoPathFor(reelDirectory);
 }
 
-function fallbackUniversalCaption(reel) {
-  const title = String(reel?.title ?? '').trim() || 'Kurz erklärt';
-  return `${title}\n\nKurz erklärt in unter einer Minute.\n\n#Wissen #Erklärt #KurzErklärt\n`;
+function wordsIn(text) {
+  return String(text ?? '').match(/[\p{L}\p{N}]+(?:[’'-][\p{L}\p{N}]+)*/gu) ?? [];
+}
+
+function validateUniversalCaption(caption) {
+  const text = String(caption ?? '').trim();
+  if (!text) {
+    throw new Error('caption/caption.txt ist leer. Vor dem Rendern ist eine individuelle Universal-Caption Pflicht.');
+  }
+
+  const wordCount = wordsIn(text).length;
+  if (wordCount < CAPTION_MIN_WORDS || wordCount > CAPTION_MAX_WORDS) {
+    throw new Error(`Die Universal-Caption muss ${CAPTION_MIN_WORDS}–${CAPTION_MAX_WORDS} Wörter haben; aktuell sind es ${wordCount}.`);
+  }
+
+  const firstLine = text.split(/\r?\n/).map((line) => line.trim()).find(Boolean) ?? '';
+  const hookWordCount = wordsIn(firstLine).length;
+  if (hookWordCount < HOOK_MIN_WORDS || hookWordCount > HOOK_MAX_WORDS) {
+    throw new Error(`Die erste Caption-Zeile muss eine klare Hook mit ${HOOK_MIN_WORDS}–${HOOK_MAX_WORDS} Wörtern sein; aktuell sind es ${hookWordCount}.`);
+  }
+
+  const hashtags = text.match(/#[\p{L}\p{N}_]+/gu) ?? [];
+  if (hashtags.length < HASHTAG_MINIMUM || hashtags.length > HASHTAG_MAXIMUM) {
+    throw new Error(`Die Universal-Caption braucht ${HASHTAG_MINIMUM}–${HASHTAG_MAXIMUM} passende Hashtags; aktuell sind es ${hashtags.length}.`);
+  }
+
+  const platformSpecific = /\b(link in bio|duett|remix|story teilen|instagram|tiktok|youtube|facebook)\b/i;
+  if (platformSpecific.test(text)) {
+    throw new Error('Die Universal-Caption enthält plattformspezifische Formulierungen oder Plattformnamen. Sie muss für alle Social-Media-Accounts neutral bleiben.');
+  }
+
+  return { text, wordCount, hookWordCount, hashtags };
 }
 
 async function writeUniversalCaption(reelDirectory) {
   const sourcePath = path.join(reelDirectory, 'caption', 'caption.txt');
   const exportPath = exportCaptionPathFor(reelDirectory);
-  const sourceCaption = (await readTextIfExists(sourcePath)).trim();
-  const reel = await readJson(path.join(reelDirectory, 'reel.json'));
-  const caption = sourceCaption || fallbackUniversalCaption(reel).trim();
+  let sourceCaption;
+  try {
+    sourceCaption = await readFile(sourcePath, 'utf8');
+  } catch (error) {
+    if (error?.code === 'ENOENT') {
+      throw new Error('caption/caption.txt fehlt. Vor dem Rendern ist eine individuelle Universal-Caption Pflicht.');
+    }
+    throw error;
+  }
 
+  const validation = validateUniversalCaption(sourceCaption);
   await mkdir(path.dirname(exportPath), { recursive: true });
-  await writeFile(exportPath, `${caption}\n`, 'utf8');
+  await writeFile(exportPath, `${validation.text}\n`, 'utf8');
 
   return {
     file: exportPath,
-    source: sourceCaption ? 'caption/caption.txt' : 'automatic-fallback',
-    fallbackUsed: !sourceCaption
+    source: 'caption/caption.txt',
+    fallbackUsed: false,
+    wordCount: validation.wordCount,
+    hookWordCount: validation.hookWordCount,
+    hashtagCount: validation.hashtags.length
   };
 }
 
@@ -101,6 +137,7 @@ export async function renderReel(reelDirectory, {
     throw new Error(`Renderer-Eingabe ist nicht bereit:\n- ${messages}`);
   }
 
+  const captionExport = await writeUniversalCaption(reelDirectory);
   const plan = validation.plan;
   const outputLocation = outputPathFor(reelDirectory, output);
   const canonicalExportVideo = exportVideoPathFor(reelDirectory);
@@ -157,10 +194,9 @@ export async function renderReel(reelDirectory, {
       await copyFile(outputLocation, canonicalExportVideo);
     }
 
-    const captionExport = await writeUniversalCaption(reelDirectory);
     const fileStats = await stat(canonicalExportVideo);
     const report = {
-      version: 3,
+      version: 4,
       startedAt,
       finishedAt: new Date().toISOString(),
       passed: true,
@@ -174,7 +210,8 @@ export async function renderReel(reelDirectory, {
       exportVideoFile: canonicalExportVideo,
       exportCaptionFile: captionExport.file,
       exportCaptionSource: captionExport.source,
-      exportCaptionFallbackUsed: captionExport.fallbackUsed,
+      exportCaptionFallbackUsed: false,
+      exportCaptionWordCount: captionExport.wordCount,
       outputBytes: fileStats.size,
       subtitlesEnabled: false,
       composition: plan.composition,
@@ -195,15 +232,15 @@ export async function renderReel(reelDirectory, {
     status.renderedFile = path.relative(reelDirectory, canonicalExportVideo).split(path.sep).join('/');
     status.exportedVideoFile = path.relative(reelDirectory, canonicalExportVideo).split(path.sep).join('/');
     status.exportedCaptionFile = path.relative(reelDirectory, captionExport.file).split(path.sep).join('/');
-    status.visibleRenderedFile = '05-export/FERTIGES-REEL.mp4';
-    status.visibleCaptionFile = '05-export/UNIVERSELLE-CAPTION.txt';
+    status.visibleRenderedFile = '03-export/FERTIGES-REEL.mp4';
+    status.visibleCaptionFile = '03-export/UNIVERSELLE-CAPTION.txt';
     status.qualityControl = 'render-complete';
     await writeJson(statusPath, status);
 
     return report;
   } catch (error) {
     const report = {
-      version: 3,
+      version: 4,
       startedAt,
       finishedAt: new Date().toISOString(),
       passed: false,
@@ -212,6 +249,7 @@ export async function renderReel(reelDirectory, {
       reelDirectory: path.resolve(reelDirectory),
       outputFile: canonicalExportVideo,
       renderedOutputFile: outputLocation,
+      exportCaptionFile: captionExport.file,
       subtitlesEnabled: false,
       error: error.message
     };
