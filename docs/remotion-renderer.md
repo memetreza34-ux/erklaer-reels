@@ -21,7 +21,7 @@ Das Audio wird von der ursprünglichen Datei auf exakt 1,10x verarbeitet, die To
 
 ## Bilder und visuelle Shots
 
-- `Bild 00` ist Cover/Style-Master
+- `Bild 00` ist das Cover
 - 12–14 narrative Szenen bleiben die Erzählstruktur
 - jede Szene besitzt 1, 2 oder selten 3 Bildphasen
 - der Renderer verarbeitet die daraus entstehenden `visualShots`
@@ -68,27 +68,35 @@ Geprüft werden unter anderem:
 - interne Visual-Shots liegen innerhalb der narrativen Szenen
 - finale Freigabe `readyForRenderer: true` beruht auf real bestandenen QC-Gates
 
-## MP4 erzeugen
+## MP4 und Caption erzeugen
 
 ```bash
 npm run render:reel -- --dir "PFAD-ZUM-REEL"
 ```
 
-Technische Standardausgabe:
+Kanonische technische Exportdateien:
 
 ```text
-PFAD-ZUM-REEL/output/REEL-ID.mp4
+PFAD-ZUM-REEL/export/
+├── FERTIGES-REEL.mp4
+└── UNIVERSELLE-CAPTION.txt
 ```
 
-Sichtbare Nutzeransicht:
+Sichtbare Nutzeransicht derselben finalen Dateien:
 
 ```text
-PFAD-ZUM-REEL/04-video/FERTIGES-VIDEO/
+PFAD-ZUM-REEL/03-export/
+├── FERTIGES-REEL.mp4
+└── UNIVERSELLE-CAPTION.txt
 ```
 
-`--force` darf harte Asset-, Quellen-, Audio-, Timing- oder visuelle Sicherheitsprüfungen nicht umgehen.
+Die Caption wird aus `caption/caption.txt` übernommen und vor dem finalen Render gegen die verbindlichen Regeln aus `UNIVERSAL_CAPTION_POLICY.md` geprüft. Eine fehlende oder ungültige Universal-Caption blockiert den finalen Export.
 
-Bei Erfolg schreibt der Renderer `review/render-execution-report.json` und setzt den Renderstatus nur dann auf vollständig, wenn die echte MP4 erzeugt wurde.
+`--output` kann zusätzlich einen weiteren MP4-Ausgabepfad setzen; der kanonische Export unter `export/FERTIGES-REEL.mp4` wird trotzdem geschrieben.
+
+`--force` darf harte Asset-, Quellen-, Audio-, Timing-, Caption- oder visuelle Sicherheitsprüfungen nicht umgehen.
+
+Bei Erfolg schreibt der Renderer `review/render-execution-report.json` und setzt den Renderstatus nur dann auf vollständig, wenn die echte MP4 erzeugt wurde und der finale Export geschrieben ist.
 
 ## Verbotene Abkürzungen
 
