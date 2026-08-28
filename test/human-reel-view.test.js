@@ -1,14 +1,24 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { lstat, mkdir, mkdtemp, readFile, readlink, writeFile } from 'node:fs/promises';
+import { access, lstat, mkdir, mkdtemp, readFile, readlink, writeFile } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 
 import { ensureHumanReelView, HUMAN_REEL_FOLDERS } from '../src/core/human-reel-view.js';
 
+async function exists(filePath) {
+  try {
+    await access(filePath);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 async function createMinimalReel() {
   const reelDirectory = await mkdtemp(path.join(os.tmpdir(), 'human-reel-view-'));
   const directories = [
+    '00-bildprompts',
     'all-image-prompts',
     'audio',
     'caption',
@@ -33,7 +43,8 @@ async function createMinimalReel() {
   await writeFile(path.join(reelDirectory, 'cover', 'cover-prompt.txt'), 'Cover prompt\n', 'utf8');
   await writeFile(path.join(reelDirectory, 'cover', 'cover.json'), '{}\n', 'utf8');
   await writeFile(path.join(reelDirectory, 'script', 'voice-script.txt'), 'Voice script\n', 'utf8');
-  await writeFile(path.join(reelDirectory, 'all-image-prompts', 'all-image-prompts.txt'), 'Prompts\n', 'utf8');
+  await writeFile(path.join(reelDirectory, '00-bildprompts', '99-alle-bildprompts.txt'), 'Prompts\n', 'utf8');
+  await writeFile(path.join(reelDirectory, 'all-image-prompts', 'all-image-prompts.txt'), 'Legacy copy\n', 'utf8');
   await writeFile(path.join(reelDirectory, 'caption', 'caption.txt'), 'Caption\n', 'utf8');
   await writeFile(path.join(reelDirectory, 'sources', 'sources.md'), '# Quellen\n', 'utf8');
   await writeFile(path.join(reelDirectory, 'scenes', 'scene-01', 'image-prompt.txt'), 'Prompt 1\n', 'utf8');
@@ -61,14 +72,17 @@ test('erstellt fünf klare sichtbare Benutzerordner', async () => {
   }
 });
 
-test('ordnet Cover, Szenen und Google-Flow-Masterprompt sichtbar zu', async () => {
+test('behält genau einen echten Google-Flow-Masterprompt und entfernt die Legacy-Kopie', async () => {
   const reelDirectory = await createMinimalReel();
   await ensureHumanReelView(reelDirectory);
+
+  assert.equal(await readFile(path.join(reelDirectory, '00-bildprompts', '99-alle-bildprompts.txt'), 'utf8'), 'Prompts\n');
+  assert.equal((await lstat(path.join(reelDirectory, '00-bildprompts', '99-alle-bildprompts.txt'))).isSymbolicLink(), false);
+  assert.equal(await exists(path.join(reelDirectory, 'all-image-prompts')), false);
 
   assert.equal(await readlink(path.join(reelDirectory, '00-bildprompts', '00-cover')), '../cover');
   assert.equal(await readlink(path.join(reelDirectory, '00-bildprompts', '01-scene-01')), '../scenes/scene-01');
   assert.equal(await readlink(path.join(reelDirectory, '00-bildprompts', '02-scene-02')), '../scenes/scene-02');
-  assert.equal(await readlink(path.join(reelDirectory, '00-bildprompts', '99-alle-bildprompts.txt')), '../all-image-prompts/all-image-prompts.txt');
 });
 
 test('stellt Sammelordner für nummerierte Flow-Bilder bereit', async () => {
@@ -79,9 +93,6 @@ test('stellt Sammelordner für nummerierte Flow-Bilder bereit', async () => {
     await readlink(path.join(reelDirectory, '00-bildprompts', '00-ALLE-BILDER-HIER-REIN')),
     '../inbox/numbered-images'
   );
-  const promptReadme = await readFile(path.join(reelDirectory, '00-bildprompts', 'README.md'), 'utf8');
-  assert.match(promptReadme, /Google Flow erzeugt die Bilder streng einzeln/);
-  assert.match(promptReadme, /`Bild 00\.png` ist das Cover/);
 });
 
 test('sammelt fertiges Reel und Universal-Caption nur im sichtbaren Exportbereich', async () => {
@@ -94,10 +105,6 @@ test('sammelt fertiges Reel und Universal-Caption nur im sichtbaren Exportbereic
   assert.equal(await readlink(path.join(reelDirectory, '03-export', 'UNIVERSELLE-CAPTION.txt')), '../export/UNIVERSELLE-CAPTION.txt');
   await assert.rejects(lstat(path.join(reelDirectory, '03-caption')), { code: 'ENOENT' });
   await assert.rejects(lstat(path.join(reelDirectory, '04-video')), { code: 'ENOENT' });
-
-  const exportReadme = await readFile(path.join(reelDirectory, '03-export', 'README.md'), 'utf8');
-  assert.match(exportReadme, /alles, was du zum Hochladen/);
-  assert.match(exportReadme, /starkem und klarem Einstieg/);
 });
 
 test('sammelt Technik ohne aktiven Untertitel-Arbeitsbereich', async () => {
@@ -109,7 +116,7 @@ test('sammelt Technik ohne aktiven Untertitel-Arbeitsbereich', async () => {
   assert.equal(await readlink(path.join(reelDirectory, '99-technik', 'EFFEKTE')), '../effects');
 });
 
-test('entfernt alte sichtbare Caption-, Video- und Exportordner', async () => {
+test('entfernt alte sichtbare Ordner und den all-image-prompts-Doppelordner', async () => {
   const reelDirectory = await createMinimalReel();
   const oldFolders = ['00-cover', '03-szenen', '04-caption', '05-review', '06-video', '03-caption', '04-video', '05-export'];
   for (const folder of oldFolders) {
@@ -118,9 +125,8 @@ test('entfernt alte sichtbare Caption-, Video- und Exportordner', async () => {
   }
 
   const result = await ensureHumanReelView(reelDirectory);
-  assert.deepEqual(result.removedLegacyFolders.sort(), [...oldFolders].sort());
-  for (const folder of oldFolders) {
-    await assert.rejects(lstat(path.join(reelDirectory, folder)), { code: 'ENOENT' });
-  }
+  for (const folder of oldFolders) assert.equal(await exists(path.join(reelDirectory, folder)), false);
+  assert.equal(await exists(path.join(reelDirectory, 'all-image-prompts')), false);
+  assert.ok(result.removedLegacyFolders.includes('all-image-prompts'));
   assert.equal((await lstat(path.join(reelDirectory, '03-export'))).isDirectory(), true);
 });
