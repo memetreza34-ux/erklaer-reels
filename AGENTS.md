@@ -10,24 +10,18 @@ Bei „Mach ein neues Reel“ autonom:
 2. starkes Thema aus dem offenen Themenuniversum wählen
 3. deutsches Voice-over mit 155–175 Wörtern schreiben
 4. 12–14 narrative Szenen planen, Standard 13
-5. für Cover und jede Bildphase zwingend `modern-countryball-explainer` verwenden
+5. für Cover und jede Bildphase ausschließlich **Human Editorial Explainer** verwenden
 6. Bildanzahl pro Reel und Szene individuell planen
-7. Cover + Bildphasen-Prompts + kompletten seriellen Google-Flow-Gesamtprompt + Caption + Quellen fertigstellen
+7. Cover + Bildphasen-Prompts + einen seriellen Google-Flow-Gesamtprompt + Universal-Caption + Quellen fertigstellen
 8. keine Untertitel erzeugen
 9. externe Assets zuerst suchen, bevor etwas als fehlend gemeldet wird
-10. Assets zweifach visuell prüfen, inklusive Stilkonformität, Audio synchronisieren und nur nach echten QC-Gates rendern
+10. Assets visuell prüfen, Audio synchronisieren und nur nach echten QC-Gates rendern
 
 ## Reels und YouTube strikt trennen
 
-Reels und YouTube besitzen **getrennte Bildwelten**.
+Reels verwenden ausschließlich **Human Editorial Explainer** in 9:16.
 
-Für Reels gilt:
-
-```text
-modern-countryball-explainer
-```
-
-Für YouTube gilt ausschließlich:
+YouTube verwendet ausschließlich:
 
 ```text
 youtube/YOUTUBE_WORKFLOW.md
@@ -35,109 +29,81 @@ youtube/YOUTUBE_VISUAL_WORLD.md
 ```
 
 Nie automatisch übertragen:
-
 - YouTube-Stick-Figuren auf Reels
-- Reel-Countryball-Regeln auf YouTube
-- 16:9-YouTube-Komposition auf Reels
+- Reel-Human-Editorial-Regeln auf YouTube
+- 16:9 auf Reels
 - 9:16-Reel-Regeln auf YouTube
 
-## Themenwahl
+## Eine einzige Reel-Bildwelt
 
-Neue Reels dürfen aus praktisch jedem geeigneten Erklärbereich kommen: Psychologie, Alltag, Beziehungen, Gesellschaft, Geschichte, Geografie, Politik, Wissenschaft, Technik, Internet, Lernen, Arbeit, Wirtschaft, Gesundheit, Sprache, Mythen und andere starke Warum-Fragen.
+Verbindlich definiert in:
+- `knowledge/fixed-visual-world.md`
+- `config/image-styles.json`
+- `src/shared/fixed-visual-world.js`
 
-Keine starre Themenrotation und keine Quote nach alten Säulen.
+Der technische Legacy-ID `modern-countryball-explainer` bleibt nur zur Kompatibilität. Er ist **keine Countryball-Stilanweisung**.
 
-## Reel-Bildwelt — scene-first Editorial Countryball
+### Menschen
 
-Die globale Reel-Bildwelt ist verbindlich in `knowledge/fixed-visual-world.md` und `config/image-styles.json` definiert.
+Wenn eine Person sinnvoll ist, muss sie eindeutig als vereinfachter echter Mensch lesbar sein:
+- natürlicher ovaler oder leicht runder menschlicher Kopf
+- Hals/Oberkörper, wenn sichtbar
+- normale vereinfachte menschliche Proportionen
+- einfache Augen, Brauen, Nase, Mund, Haare und Kleidung nach Bedarf
+- Kopf/Portrait, Oberkörper, Hände oder Ganzkörper je nach Szene
 
-Neue Reels erhalten:
+Ein Mensch ist nicht in jedem Bild Pflicht. Wenn ein Objekt, Mechanismus, Dokument, Gebäude, Pflanze, Landschaft oder physischer Prozess klarer erklärt, darf dieses Motiv alleine verwendet werden.
 
-```text
-visualStyleId: "modern-countryball-explainer"
-visualStyleReason: "Globale feste Bildwelt für alle neuen Erklär-Reels: szenischer Editorial-Countryball-Erklärstil mit konkreten Umgebungen statt generischer Icon-Karten."
-```
+### Verboten
 
-### Hauptregel
-
-**Zuerst eine konkrete physische Mini-Szene bauen. Erst danach Symbole ergänzen.**
-
-Das Bild soll wie ein eingefrorener Story-Moment wirken, nicht wie eine sterile Infografik.
-
-### Kernregeln
-
-- 9:16
-- hand-drawn 2D vector-cartoon hybrid
-- dicke leicht organische schwarze Konturen
-- flächige Farben, dezente Schatten, höchstens leichte Korn-/Papiertextur
-- ein dominantes Hauptmotiv und eine klare Handlung
-- nur wenige unterstützende Requisiten
-- konkrete Umgebung, wenn sie die Aussage verbessert
-- Close-ups, Off-Center-Framing und einfacher Vorder-/Mittel-/Hintergrund ausdrücklich erlaubt
-- Countryball-ähnliche Figuren nur wenn Akteure sinnvoll personifiziert werden
-- Flaggen nur wenn Länder-/Regionsidentität relevant ist
-- bei abstrakten Allgemeinthemen Gegenstand, Mechanismus oder Umgebung einer leeren neutralen Kugel vorziehen
-- Prompts Englisch, sichtbarer Bildtext ausschließlich Deutsch
-
-### Nicht als Standardlösung verwenden
-
-- leere beige Kugel mittig
-- schwebende Reaktionskarten
-- generische Lob-/Kritik-Karten
-- Kreise aus Sprechblasen
-- Icon-Gitter
-- UI-Boxen
-- Figur-mittig-plus-Icons
-- immer derselbe einfarbige Hintergrund
-- Waage/Megafon als Universalmetapher
-- doppelte identische Headline oben und unten
-
-### Verbotene Stilabweichungen
-
+- Countryballs / Länderbälle
+- Kugelmenschen / Ball-Maskottchen
+- Stick-Figuren
 - Fotorealismus
-- realistische Menschen/Gesichter
 - Anime/Manga
 - Clay/Knetstil
-- glänzendes 3D/Pixar-Look
-- Stockfoto-Ästhetik
-- YouTube-Stick-Figure-/Ink-Explainer-Look
-- 16:9-Komposition
+- glänzendes 3D / Pixar-Look
+- technische Cutaway-/Blueprint-Welt als Standard
+- eigene Unter-Bildwelt pro Thema
+- generische Icon-Boards, Floating Cards und wiederholte Figur-mittig-plus-Icons-Kompositionen
 
-## Bildprompt-Autorenschaft
+Länder, Regierungen und Institutionen werden durch Menschen, Karten, Flaggen, Dokumente oder Gebäude dargestellt, nicht durch Bälle.
 
-Jede `cover-prompt.txt`, `image-prompt.txt`, `image-prompt-02.txt` usw. beschreibt eine **konkrete Szene**.
+### Gestaltung
 
-Jeder Prompt enthält mindestens:
+- 9:16
+- clean hand-drawn 2D editorial cartoon
+- klare schwarze Konturen
+- niedrige bis mittlere Detaildichte
+- flächige oder leicht cel-geschattete Farben
+- normalerweise klare helle grafische Beleuchtung
+- ein dominantes Hauptmotiv
+- eine sichtbare Handlung oder Ursache-Folge-Beziehung
+- 1–3 unterstützende Elemente
+- möglichst innerhalb einer Sekunde verständlich
 
-1. Format 9:16
-2. Hauptmotiv
-3. Ort/Umgebung
-4. physische Handlung
-5. Perspektive/Komposition
-6. nur wenige unterstützende Requisiten
-7. festen Stil `modern-countryball-explainer`
-8. exakt erlaubten deutschen Bildtext, falls vorhanden
-9. `No other readable text, no English, no logos, no watermark`
-10. volle 9:16-Fläche, keine Subtitle-Safe-Zone
+**Erst konkrete Szene, dann zusätzliche Symbole.**
 
-Der Exporter ergänzt den globalen und per-Bild Style-Lock automatisch.
+## Bildprompts
 
-`Bild 00.png` ist das Cover, aber nicht der alleinige Style-Master.
+Jeder Cover-/Szenenprompt ist Englisch und beschreibt den konkreten physischen Moment. Sichtbarer Bildtext ist ausschließlich Deutsch.
+
+Jeder Prompt enthält:
+1. 9:16
+2. Kernaussage
+3. Hauptmotiv
+4. Ort/Umgebung
+5. sichtbare Handlung
+6. passenden Bildausschnitt: Kopf, Portrait, Oberkörper, Ganzkörper, Close-up, Objekt oder Umgebung
+7. wenige Requisiten
+8. exakt erlaubten deutschen Text, falls vorhanden
+9. kein zusätzlicher lesbarer Text, keine Logos/Wasserzeichen
 
 ## Narrative Szenen ≠ Bildanzahl
 
-Jede narrative Szene besitzt normalerweise 1 Bildphase, 2 wenn ein echter zweiter visueller Schritt hilft, 3 nur selten.
+Pro narrativer Szene normalerweise 1 Bildphase, 2 bei echtem visuellen Fortschritt, 3 nur selten. Wenn ein Still ca. 3,5–4 Sekunden oder länger stehen würde, zusätzliche Phase aktiv prüfen. Keine feste Gesamtbildzahl erzwingen.
 
-Wenn ein Still ungefähr 3,5–4 Sekunden oder länger stehen würde, aktiv eine weitere Bildphase prüfen. Keine feste Gesamtzahl erzwingen.
-
-Technische Felder:
-
-- `reel.json.imageCountMode = "individual-per-reel"`
-- `reel.json.plannedImageCount`
-- pro Szene `imageCount`
-- pro Szene `imagePhases[]`
-
-## Google Flow
+## Google Flow — nur eine Masterdatei
 
 Verbindliche Nutzerdatei:
 
@@ -145,11 +111,9 @@ Verbindliche Nutzerdatei:
 00-bildprompts/99-alle-bildprompts.txt
 ```
 
-`all-image-prompts/all-image-prompts.txt` ist die identische technische Kopie.
+Es gibt keine zweite Kopie unter `all-image-prompts/`. Der alte Doppelordner ist Legacy und wird entfernt.
 
-Der separate `google-flow-controller.txt` ist deaktiviert.
-
-Vor der ersten Bildgenerierung muss Flow genau **einen gemeinsamen Ausgabeordner für dieses Reel** erstellen.
+Der separate `google-flow-controller.txt` ist deaktiviert. Alle Steuerregeln stehen in der einen Masterdatei.
 
 ### Hard Serial Lock
 
@@ -157,69 +121,51 @@ Vor der ersten Bildgenerierung muss Flow genau **einen gemeinsamen Ausgabeordner
 nur aktuellen Bildabschnitt ausführen
 → genau 1 Bildgenerator-Aufruf
 → vollständig warten
-→ gegen aktuellen Bildprompt UND feste Reel-Bildwelt prüfen
+→ gegen Prompt UND Human Editorial Explainer prüfen
 → exakt als Bild NN.png umbenennen
 → in den gemeinsamen Reel-Ausgabeordner legen
-→ Dateiname und Ablage prüfen
-→ erst dann nächster Bildabschnitt
+→ Ablage prüfen
+→ erst dann nächstes Bild
 ```
 
-Keine Queue, kein Batch, keine Parallelgenerierung, keine Mehrfachvarianten. Wenn Umbenennen oder Ablage nicht bestätigt werden kann, stoppen statt weitere Bilder zu erzeugen.
-
-Nach Abschluss müssen alle Bilder des Reels lückenlos in diesem einen Flow-Ausgabeordner liegen. Für den Repo-Import werden sie gesammelt nach `00-bildprompts/00-ALLE-BILDER-HIER-REIN/` übernommen.
+Keine Queue, kein Batch, keine Parallelgenerierung, keine Mehrfachvarianten.
 
 ## Workflow-Metadaten nie im Bild
 
 Verboten als sichtbarer Bildtext:
-
 - Bildnummern
-- `COVER`
-- `SZENE` / `SCENE`
-- `BILDPHASE` / `IMAGE PHASE`
-- `DATEINAME`, Dateinamen
-- `GOOGLE FLOW`, `PROMPT`, `STYLE-REFERENZ`, `ZIEL`
+- COVER / SZENE / BILDPHASE
+- DATEINAME und Dateinamen
+- GOOGLE FLOW / PROMPT / STYLE-REFERENZ / ZIEL
 
 `imageText` gesetzt → nur exakt dieser deutsche Text. Leer → kein lesbarer Text.
 
 ## Quellen-QC
 
-Neue Reels verwenden Quellen-Schema 3:
-
+Neue Reels:
 - mindestens zwei echte HTTPS-Quellen
 - unterschiedliche Hosts
-- mindestens eine Primär-/offizielle oder wissenschaftliche Originalquelle
+- möglichst mindestens eine Primär-/offizielle oder wissenschaftliche Originalquelle
 - mindestens eine unabhängige Sekundär-/Fachquelle
-- unter `Belegt` konkrete gestützte Reel-Aussage nennen
+- konkret dokumentieren, welche Reel-Aussage belegt wird
 
-## Untertitel
-
-Global deaktiviert:
+## Untertitel und Audio
 
 - keine Untertitel
-- keine Karaoke-Markierung
-- keine künstliche Subtitle-Safe-Zone
-- `sync:words` ist nicht erforderlich
-
-## Audio
-
-- finale Audiodatei ist einzige Zeitquelle
+- kein aktiver Word-Sync
+- keine Subtitle-Safe-Zone
+- finales Audio ist einzige Zeitquelle
 - Pausen straffen
-- exakt 1,10x, Pitch erhalten
+- 1,10x, Pitch erhalten
 - −16 LUFS
 - max. −1,5 dBTP
-- Szenen über echte akustische `audioCue`-Anker synchronisieren
-- zusätzliche Bildphasen über `startPercent`
-- nach Audioänderung Timeline neu synchronisieren
+- Szenen über echte Audio-Cues synchronisieren
 
 ## Asset-Zuordnung
 
-Dateinummer ist nur Routing-Hilfe. Jede Bildphase tatsächlich öffnen und gegen Narration, Audio-Cue, Visual-Idea, Bildtext, Prompt, feste Reel-Bildwelt und benachbarte Bildphasen prüfen.
-
-Unter 0,90 Konfidenz nicht raten. `filename-only` ist verboten.
+Dateinummer ist nur Routing-Hilfe. Bilder tatsächlich gegen Narration, Bildtext, Prompt, Human Editorial Explainer und benachbarte Bildphasen prüfen. Unter 0,90 Konfidenz nicht raten.
 
 ## Finaler Reel-Export
-
-Der einzige sichtbare finale Upload-Bereich ist:
 
 ```text
 03-export/
@@ -227,23 +173,8 @@ Der einzige sichtbare finale Upload-Bereich ist:
 └── UNIVERSELLE-CAPTION.txt
 ```
 
-Es gibt keinen separaten sichtbaren Caption- oder Video-Ordner. Die Universal-Caption muss zum konkreten Reel passen und `UNIVERSAL_CAPTION_POLICY.md` erfüllen.
+Kein separater sichtbarer Caption- oder Video-Ordner.
 
 ## Render
 
-Nur nach tatsächlich bestandenen Prüfungen:
-
-```bash
-npm run check:content -- --dir "<reel>" --strict
-npm run discover:assets -- --dir "<reel>"
-npm run organize:assets -- --dir "<reel>" --apply
-npm run trim:pauses -- --dir "<reel>" --speed 1.10
-npm run build:timeline -- --dir "<reel>"
-npm run sync:audio -- --dir "<reel>" --strict
-npm run check:visuals -- --dir "<reel>" --strict
-npm run finalize:reel -- --dir "<reel>" --strict
-npm run validate:render -- --dir "<reel>"
-npm run render:reel -- --dir "<reel>"
-```
-
-Nicht ausgeführte Tests, QC-Stufen oder Render niemals als bestanden melden.
+Nur nach tatsächlich bestandenen Prüfungen. Nicht ausgeführte Tests, QC-Stufen oder Render niemals als bestanden melden.
