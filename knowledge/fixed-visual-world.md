@@ -1,8 +1,10 @@
-# Feste Bildwelt — Human Editorial Explainer
+# Feste Bildwelt — Human Head Editorial Reel
 
-Diese Datei definiert die **eine verbindliche globale Bildwelt** für alle neuen Erklär-Reels. Sie gilt für jedes Thema und wird nicht pro Reel neu ausgewählt.
+Diese Datei definiert die **eine und einzige verbindliche Reel-Bildwelt** für alle neuen Erklär-Reels.
 
-> Technischer Legacy-ID im Code: `modern-countryball-explainer`. Dieser Name bleibt nur aus Kompatibilitätsgründen bestehen und ist **keine** Countryball-Stilanweisung mehr.
+Style-ID: `human-head-editorial-reel`
+
+Es gibt keine zweite Reel-Bildwelt, keine Themen-Unterwelt und keinen wechselnden Stil pro Reel. Das Thema ändert nur den Inhalt der Szene.
 
 ## Trennung zu YouTube
 
@@ -10,55 +12,70 @@ Diese Datei gilt ausschließlich für Reels. Die YouTube-Langvideo-Bildwelt unte
 
 Für Reels gilt:
 - 9:16
+- Human Head Editorial Reel
 - keine YouTube-Stick-Figuren
 - kein Ink-Explainer-/Longform-Look
 - keine 16:9-Komposition
 
 ## Die eine Reel-Bildwelt
 
-Die Reel-Bildwelt heißt **Human Editorial Explainer**.
+Die Reel-Bildwelt heißt **Human Head Editorial Reel**.
 
-Sie ist eine klare, handgezeichnete 2D-Editorial-Cartoon-Welt für Kurzvideos. Standardfiguren sind **vereinfachte echte Menschen**: erkennbare menschliche Köpfe, Hälse, Oberkörper, Arme, Hände und Beine, soweit die Szene sie benötigt.
+Die Grundästhetik ist eine klare, handgezeichnete 2D-Editorial-Cartoon-Welt für Kurzvideos. Wenn ein Mensch vorkommt, muss er **eindeutig wie ein stilisierter echter Mensch** aussehen.
+
+Die menschliche Kopf- und Gesichtslogik ist der wichtigste Figurenanker:
+- natürliche ovale oder weich gerundete menschliche Kopfform
+- der Kopf darf für Editorial-Lesbarkeit leicht vereinfacht oder etwas betont sein
+- einfache menschliche Augen, Brauen, Nase und Mund
+- einfache Frisur, wenn sinnvoll
+- sichtbarer Hals bei Portrait-/Oberkörperszenen
+- vereinfachter menschlicher Oberkörper und normale vereinfachte Gliedmaßen, wenn sichtbar
+- klare menschliche Kleidung und Körpersprache
+
+Der Kopf darf **niemals** wie eine Kugel, ein Countryball oder ein rundes Maskottchen wirken.
+
+## Nicht in jedem Bild muss ein Kopf oder Mensch vorkommen
+
+Ein Reel gehört trotzdem zur gleichen Bildwelt, wenn eine Szene gar keinen Menschen zeigt.
 
 Ein Bild darf zeigen:
-- nur einen menschlichen Kopf oder ein Portrait
-- Kopf + Oberkörper
-- eine Ganzkörperfigur
+- nur einen menschlichen Kopf / Close-up
+- Portrait mit Kopf und Oberkörper
+- Ganzkörperfigur
 - Hände oder Körperausschnitte
 - mehrere vereinfachte Menschen
-- oder gar keinen Menschen, wenn ein Objekt, Mechanismus oder eine Umgebung die Aussage klarer erklärt
+- oder keinen Menschen, wenn ein Objekt, Mechanismus, Gebäude, Dokument, Pflanze, Landschaft oder physischer Prozess die Aussage besser erklärt
 
-Wichtig: Menschen dürfen cartoonhaft vereinfacht sein, müssen aber **als Menschen und nicht als Kugeln, Countryballs, Ball-Maskottchen oder Stick-Figuren** wirken.
+Wichtig: **Keinen Menschen dekorativ erzwingen.** Wenn eine Regentropfen-Szene ohne Person klarer ist, bleibt sie trotzdem dieselbe Human-Head-Editorial-Reel-Welt.
 
 ## Figuren-System
 
-Standard bei menschlichen Situationen:
-- natürliche ovale oder leicht runde menschliche Kopfform
-- sichtbarer Hals bei Oberkörper-/Ganzkörperszenen
-- vereinfachte normale menschliche Proportionen
-- einfache Augen, Augenbrauen, Nase und Mund
-- einfache Frisur, wenn passend
-- klare Emotion und Körpersprache
+Wenn eine Person sinnvoll ist:
+- eindeutig menschlicher Kopf und Gesicht
+- Hals bei sichtbarem Oberkörper
+- vereinfachte normale menschliche Anatomie
 - Hände und Arme für konkrete Handlungen
 - Kleidung passend zur Situation
+- einfache, gut lesbare Emotion
 
 Nicht verwenden:
 - Countryballs
+- Länderbälle
 - Flaggen auf Kugelfiguren
 - kugelförmige Personen
-- gesichtslose Ball-Maskottchen
-- dünne Stick-Figuren
-- fotorealistische Gesichter
+- Ball-Maskottchen
+- Stick-Figuren
+- fotorealistische Menschen oder Gesichter
 
-Bei Ländern, Regierungen, Institutionen oder historischen Akteuren werden Menschen, Karten, Flaggen, Dokumente, Gebäude oder andere reale Kontextobjekte verwendet — **keine Länderbälle**.
+Bei Ländern, Regierungen, Institutionen oder historischen Akteuren werden Menschen, Karten, Flaggen, Dokumente, Gebäude oder andere reale Kontextobjekte verwendet — keine Länderbälle.
 
 ## Wenn kein Mensch nötig ist
 
-Nicht jedes Bild braucht eine Person. Wenn die Aussage schneller mit einem konkreten Motiv verständlich wird, hat dieses Vorrang, zum Beispiel:
+Wenn die Aussage schneller mit einem konkreten Motiv verständlich wird, hat dieses Vorrang, zum Beispiel:
 - Gegenstand
 - Maschine oder vereinfachter Mechanismus
 - Tür, Straße, Gebäude oder Raum
-- Pflanze, Tier, Landschaft
+- Pflanze, Tier oder Landschaft
 - Karte oder Dokument
 - physische Ursache-Folge-Szene
 - Close-up eines relevanten Details
@@ -69,8 +86,8 @@ Objekte brauchen nicht automatisch Augen oder Gesichter.
 
 - vertikal 9:16, Smartphone-first
 - clean hand-drawn 2D editorial cartoon
-- klare schwarze Konturen
-- einfache lesbare Formen und menschliche Anatomie
+- klare, selbstbewusste schwarze Konturen
+- einfache gut lesbare Formen
 - flächige oder leicht cel-geschattete Farben
 - dezente weiche Schatten
 - höchstens leichte Papier-/Korntextur
@@ -86,9 +103,9 @@ Objekte brauchen nicht automatisch Augen oder Gesichter.
 **Erst die konkrete Szene, dann zusätzliche Symbole.**
 
 Ein Bild soll wie ein eingefrorener verständlicher Moment wirken, zum Beispiel:
-- Mensch öffnet oder schließt eine Tür
-- Person reagiert auf einen Geruch
-- Arbeiter prüft ein Gerät
+- ein menschliches Gesicht reagiert auf einen Geruch
+- eine Person öffnet oder schließt eine Tür
+- ein Arbeiter prüft ein Gerät
 - Verkäufer und Kunde handeln auf einem Markt
 - ein Riss entsteht sichtbar an einer Ecke
 - Wasser trifft Boden und löst einen sichtbaren Effekt aus
@@ -105,11 +122,11 @@ Keine dekorative Icon-Sammlung um eine Figur herum.
 - keine komplexen realistischen Innenräume als Standard
 - keine überladene architektonische Kulisse
 
-## Technik, Wissenschaft, Geschichte und andere Themen
+## Alle Themen bleiben in derselben Welt
 
 **Das Thema ändert nie die Bildwelt.**
 
-Flugzeuge, Elektrotechnik, Medizin, Geschichte, Politik, Psychologie oder Ernährung bleiben alle im selben Human-Editorial-Look.
+Flugzeuge, Elektrotechnik, Medizin, Geschichte, Politik, Psychologie, Ernährung, Natur und Alltag verwenden alle dieselbe Human Head Editorial Reel Formsprache.
 
 Nicht als Standard:
 - technische Cutaways
@@ -117,7 +134,10 @@ Nicht als Standard:
 - CAD-Look
 - hochdetaillierte Maschinenquerschnitte
 - wissenschaftliche Posterwelt
-- eigene Unter-Bildwelt pro Thema
+- Geschichts-Unterwelt
+- Medizin-Unterwelt
+- Technik-Unterwelt
+- irgendeine andere eigene Unter-Bildwelt
 
 Technische Details sind nur dann erlaubt, wenn sie für die Erklärung notwendig sind, und bleiben vereinfacht.
 
@@ -138,8 +158,9 @@ Prompts sind Englisch. Sichtbarer Bildtext ist Deutsch.
 
 - Countryballs oder Länderbälle
 - Kugelmenschen / Ball-Maskottchen
+- Stick-Figuren
 - Fotorealismus
-- realistische Gesichter
+- realistische Foto-Gesichter
 - Anime/Manga
 - Clay/Knetstil
 - glänzendes 3D / Pixar-Look
@@ -151,7 +172,8 @@ Prompts sind Englisch. Sichtbarer Bildtext ist Deutsch.
 - UI-Boxen
 - Figur-mittig-plus-Icons als wiederholtes Standardschema
 - extrem detaillierte Illustrationen
-- technische Cutaway-Welt als Standard
+- technische Cutaway-/Blueprint-Welt als Standard
+- themenspezifische Unter-Bildwelten
 - YouTube-Stick-Figure-Look
 - 16:9
 - Logos oder Wasserzeichen
@@ -161,9 +183,11 @@ Prompts sind Englisch. Sichtbarer Bildtext ist Deutsch.
 Vor der Freigabe jedes Bildes:
 
 1. Ist die Kernaussage sofort verständlich?
-2. Wenn eine Person vorkommt: sieht sie eindeutig wie ein vereinfachter echter Mensch aus?
-3. Wurde kein Countryball-/Kugelmenschen-Look verwendet?
-4. Ist die Szene einfacher als nötig statt komplizierter als nötig?
-5. Bleibt sie klar von der YouTube-Bildwelt getrennt?
+2. Wenn eine Person vorkommt: sieht Kopf, Gesicht und Körper eindeutig wie ein vereinfachter echter Mensch aus?
+3. Wurde kein Countryball-/Kugelmenschen-/Stick-Figure-Look verwendet?
+4. Wenn kein Mensch vorkommt: ist er tatsächlich unnötig und erklärt das Hauptmotiv die Szene klarer?
+5. Bleibt die Szene in derselben Human Head Editorial Reel Formsprache?
+6. Wurde keine themenspezifische zweite Bildwelt erzeugt?
+7. Bleibt Reels klar von der YouTube-Bildwelt getrennt?
 
 Wenn eine dieser Fragen scheitert, wird das Bild vereinfacht oder neu erzeugt.
