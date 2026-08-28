@@ -206,7 +206,7 @@ Das finale Voice-over ist die einzige Zeitquelle.
 8. letztes Bild 0,7 Sekunden halten
 9. final validieren und rendern
 
-Aktiver Workflow ohne Untertitel und ohne Word-Sync-Schritt.
+Der aktive Workflow enthält keinen Untertitel- oder Word-Sync-Schritt. `npm run legacy:sync:words` ist ein Legacy-Befehl und gehört nicht zum aktiven Workflow; Details in `LEGACY_TOOLS.md`.
 
 ## 11. Standardbefehle
 

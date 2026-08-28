@@ -306,7 +306,9 @@ function qualityReport(
   endingHoldSeconds,
   audioDurationSeconds
 ) {
-  const balanceLevel = 'warning';
+  // Im strengen Lauf blockieren Szenenlängen außerhalb der Regelspanne, wie bei den
+  // übrigen Gates auch. Ohne strict bleibt es eine Warnung.
+  const balanceLevel = strict ? 'error' : 'warning';
   const holdRange = sceneTimingRules.postVoiceHoldRangeSeconds ?? { min: 0.6, max: 0.8 };
   const checks = [
     ['hook-starts-at-zero', timelineScenes[0]?.startSeconds === 0, 'Das Hook-Bild muss bei Sekunde 0 beginnen.', 'error'],

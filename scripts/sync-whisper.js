@@ -20,7 +20,13 @@ const normalize = (text) => String(text || '')
   .toLocaleLowerCase('de-DE')
   .replace(/[^a-z0-9äöüß]/g, '');
 
-const finite = (value) => Number.isFinite(Number(value)) ? Number(value) : null;
+// Number(null) und Number('') sind 0, nicht NaN. Ohne diese Vorprüfung würde ein
+// fehlender Zeitstempel als gültige Sekunde 0 durchgehen und die Guards unten wirkungslos machen.
+const finite = (value) => {
+  if (value === null || value === undefined || value === '') return null;
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? parsed : null;
+};
 
 let wWords = [];
 if (Array.isArray(whisperWords.words)) {

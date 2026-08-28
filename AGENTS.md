@@ -156,6 +156,7 @@ Neue Reels:
 
 - keine Untertitel
 - kein aktiver Word-Sync
+- `sync:words` ist für neue Reels nicht erforderlich und bleibt Legacy (`npm run legacy:sync:words`, siehe `LEGACY_TOOLS.md`)
 - keine Subtitle-Safe-Zone
 - finales Audio ist einzige Zeitquelle
 - Pausen straffen

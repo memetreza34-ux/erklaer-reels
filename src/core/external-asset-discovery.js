@@ -255,7 +255,9 @@ async function extractNumberedZip(candidate, expected, dropDirectory) {
       filesByNumber.set(number, bucket[0]);
     }
 
-    return copyNumberedFiles(filesByNumber, expected, dropDirectory);
+    // await, damit das temporäre Verzeichnis im finally nicht gelöscht wird,
+    // während die Dateien noch daraus kopiert werden.
+    return await copyNumberedFiles(filesByNumber, expected, dropDirectory);
   } finally {
     await rm(temporaryDirectory, { recursive: true, force: true });
   }
