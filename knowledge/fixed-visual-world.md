@@ -1,270 +1,169 @@
-# Feste Bildwelt — Clarity-First Editorial Reel
+# Feste Bildwelt — Human Editorial Explainer
 
-Diese Datei definiert die **verbindliche globale Bildwelt** für alle neuen Erklär-Reels. Sie gilt unabhängig vom Thema und wird nicht pro Reel neu ausgewählt.
+Diese Datei definiert die **eine verbindliche globale Bildwelt** für alle neuen Erklär-Reels. Sie gilt für jedes Thema und wird nicht pro Reel neu ausgewählt.
 
-Style-ID: `modern-countryball-explainer`
-
-Der technische Style-ID bleibt aus Kompatibilitätsgründen bestehen. Die verbindliche Ausführung ist ab jetzt jedoch **Clarity-First Editorial Reel**: einfach, schnell lesbar, szenisch und klar für Kurzvideo.
+> Technischer Legacy-ID im Code: `modern-countryball-explainer`. Dieser Name bleibt nur aus Kompatibilitätsgründen bestehen und ist **keine** Countryball-Stilanweisung mehr.
 
 ## Trennung zu YouTube
 
-Diese Datei gilt **nur für Reels**.
+Diese Datei gilt ausschließlich für Reels. Die YouTube-Langvideo-Bildwelt unter `youtube/YOUTUBE_VISUAL_WORLD.md` bleibt vollständig getrennt.
 
-Die YouTube-Langvideo-Bildwelt unter `youtube/YOUTUBE_VISUAL_WORLD.md` bleibt vollständig getrennt und darf nicht automatisch übernommen werden.
-
-Für Reels gilt ausdrücklich:
-
-- 9:16 statt 16:9
-- keine dünnen Stick-Figuren
+Für Reels gilt:
+- 9:16
+- keine YouTube-Stick-Figuren
 - kein Ink-Explainer-/Longform-Look
-- keine Übernahme der YouTube-Figurenwelt
+- keine 16:9-Komposition
 
-## Grundidee
+## Die eine Reel-Bildwelt
 
-Die Reel-Bildwelt ist ein **clarity-first, scene-first Editorial-Cartoon-System** für Social Media.
+Die Reel-Bildwelt heißt **Human Editorial Explainer**.
 
-Das wichtigste Qualitätsziel lautet:
+Sie ist eine klare, handgezeichnete 2D-Editorial-Cartoon-Welt für Kurzvideos. Standardfiguren sind **vereinfachte echte Menschen**: erkennbare menschliche Köpfe, Hälse, Oberkörper, Arme, Hände und Beine, soweit die Szene sie benötigt.
 
-**Die Kernaussage muss innerhalb ungefähr einer Sekunde verständlich sein.**
+Ein Bild darf zeigen:
+- nur einen menschlichen Kopf oder ein Portrait
+- Kopf + Oberkörper
+- eine Ganzkörperfigur
+- Hände oder Körperausschnitte
+- mehrere vereinfachte Menschen
+- oder gar keinen Menschen, wenn ein Objekt, Mechanismus oder eine Umgebung die Aussage klarer erklärt
 
-Dafür gilt:
-
-- eine Hauptidee pro Bild
-- eine klare physische Handlung, ein starker Kontrast oder eine einfache Metapher
-- wenige große Elemente statt vieler kleiner Details
-- vereinfachte Formen statt technischer Detailzeichnung
-- klarer Fokus statt komplexer Kulisse
-- starke 2D-Comic-Handschrift über alle Themen hinweg
-
-Das wichtigste Aufbauprinzip lautet weiterhin:
-
-**Erst eine konkrete Szene bauen, danach Symbole ergänzen. Nicht umgekehrt.**
-
-## Verbindliche Gestaltung
-
-- vertikal 9:16, Smartphone-first
-- clean hand-drawn 2D editorial cartoon
-- hand-drawn 2D vector-cartoon hybrid
-- dicke, leicht organische schwarze Konturen
-- einfache, sofort lesbare Formen
-- flächige Farben mit leichter Cel-Shading-Anmutung
-- dezente weiche Schatten
-- höchstens sehr leichte Papier-/Korntextur
-- niedrige bis mittlere Detaildichte
-- ein dominantes Hauptmotiv
-- eine klare Handlung, ein direkter Vergleich oder eine starke Metapher
-- normalerweise höchstens 1–3 unterstützende Elemente
-- keine künstliche Untertitelzone
-- klare negative Fläche und starke Silhouette
-
-Die Bilder sollen modern und hochwertig wirken, aber **nicht technisch beeindruckend auf Kosten der Verständlichkeit**.
-
-## Szenen statt Icon-Karten
-
-Bevorzugt werden konkrete Mini-Szenen mit physischer Handlung und einfachem räumlichem Kontext.
-
-Gute Bausteine sind zum Beispiel:
-
-- Türen
-- Mauern
-- Straßen
-- Räume
-- Märkte
-- Tische
-- Werkzeuge
-- Dokumente
-- Koffer
-- Gebäude
-- Landschaften
-- Gewichte
-- Thermometer
-- Schilder
-- Bücher
-- einfache Maschinen
-- Alltagsgegenstände
-
-Beispiele:
-
-- Separatismus → Figur verlässt sichtbar durch eine Tür einen bestehenden Raum oder Staat
-- Unterdrückung → schwere Last drückt eine Figur oder ein Gebiet physisch nach unten
-- Wachstum → etwas breitet sich sichtbar über eine bestehende Grenze hinaus aus
-- Stress → ein konkreter Alltagsmoment zeigt Überforderung statt eines Rings aus Warnsymbolen
-- Ernährung → zwei klar unterschiedliche Essensentscheidungen liegen direkt vor einer Figur
-- Technik → ein einfaches Gerät oder Mechanismus zeigt Ursache und Wirkung, ohne unnötige technische Schnittzeichnung
-
-Die Szene soll sich wie ein **eingefrorener Story-Moment** anfühlen, nicht wie eine Sammlung von Icons.
+Wichtig: Menschen dürfen cartoonhaft vereinfacht sein, müssen aber **als Menschen und nicht als Kugeln, Countryballs, Ball-Maskottchen oder Stick-Figuren** wirken.
 
 ## Figuren-System
 
-Die Bildwelt ist **nicht mehr darauf angewiesen, in jedem Bild Countryballs zu benutzen**.
+Standard bei menschlichen Situationen:
+- natürliche ovale oder leicht runde menschliche Kopfform
+- sichtbarer Hals bei Oberkörper-/Ganzkörperszenen
+- vereinfachte normale menschliche Proportionen
+- einfache Augen, Augenbrauen, Nase und Mund
+- einfache Frisur, wenn passend
+- klare Emotion und Körpersprache
+- Hände und Arme für konkrete Handlungen
+- Kleidung passend zur Situation
 
-Je nach Aussage darf das Hauptmotiv sein:
+Nicht verwenden:
+- Countryballs
+- Flaggen auf Kugelfiguren
+- kugelförmige Personen
+- gesichtslose Ball-Maskottchen
+- dünne Stick-Figuren
+- fotorealistische Gesichter
 
-- eine einfache cartoonhafte Person
-- ein anthropomorpher Gegenstand
-- ein konkreter Gegenstand oder Mechanismus
-- eine Countryball-ähnliche Figur
-- eine kleine Gruppe einfacher Figuren
+Bei Ländern, Regierungen, Institutionen oder historischen Akteuren werden Menschen, Karten, Flaggen, Dokumente, Gebäude oder andere reale Kontextobjekte verwendet — **keine Länderbälle**.
 
-### Countryball-ähnliche Figuren
+## Wenn kein Mensch nötig ist
 
-Wenn Länder, Regionen, Institutionen, Gruppen oder gesellschaftliche Akteure personifiziert werden, sind Countryball-ähnliche Figuren weiterhin besonders geeignet.
+Nicht jedes Bild braucht eine Person. Wenn die Aussage schneller mit einem konkreten Motiv verständlich wird, hat dieses Vorrang, zum Beispiel:
+- Gegenstand
+- Maschine oder vereinfachter Mechanismus
+- Tür, Straße, Gebäude oder Raum
+- Pflanze, Tier, Landschaft
+- Karte oder Dokument
+- physische Ursache-Folge-Szene
+- Close-up eines relevanten Details
 
-- runde oder leicht organische Kugelform
-- kräftige schwarze Außenkontur
-- einfache weiße expressive Augen
-- Brauenhaltung nur wenn hilfreich
-- Mund nur wenn wirklich nötig
-- kleine Arme/Hände/Beine nur für konkrete Handlung
-- Emotion primär über Augen, Haltung und Interaktion mit der Umgebung
+Objekte brauchen nicht automatisch Augen oder Gesichter.
 
-### Länderflaggen
+## Gestaltung
 
-- Länder-/Regionsflaggen nur dann auf der Figur, wenn diese Identität inhaltlich wichtig ist
-- keine zufälligen Flaggen zur Dekoration
+- vertikal 9:16, Smartphone-first
+- clean hand-drawn 2D editorial cartoon
+- klare schwarze Konturen
+- einfache lesbare Formen und menschliche Anatomie
+- flächige oder leicht cel-geschattete Farben
+- dezente weiche Schatten
+- höchstens leichte Papier-/Korntextur
+- niedrige bis mittlere Detaildichte
+- eine dominante Kernaussage
+- eine klare sichtbare Handlung oder Ursache-Folge-Beziehung
+- normalerweise höchstens 1–3 unterstützende Elemente
+- keine künstliche Untertitelzone
+- Bedeutung möglichst innerhalb einer Sekunde verständlich
 
-### Allgemeine Themen
+## Szenenlogik
 
-Bei Psychologie, Alltag, Technik, Gesundheit oder abstrakten Themen gilt:
+**Erst die konkrete Szene, dann zusätzliche Symbole.**
 
-**Nicht automatisch eine leere beige Kugel in die Mitte setzen.**
+Ein Bild soll wie ein eingefrorener verständlicher Moment wirken, zum Beispiel:
+- Mensch öffnet oder schließt eine Tür
+- Person reagiert auf einen Geruch
+- Arbeiter prüft ein Gerät
+- Verkäufer und Kunde handeln auf einem Markt
+- ein Riss entsteht sichtbar an einer Ecke
+- Wasser trifft Boden und löst einen sichtbaren Effekt aus
+- ein Objekt wird durch Gewicht belastet
 
-Wenn eine einfache Person, ein Gegenstand, eine Umgebung, ein Mechanismus oder ein anthropomorphes Objekt die Aussage schneller erklärt, hat dieses Motiv Vorrang.
-
-## Komposition
-
-Die Komposition soll plakativ, klar und abwechslungsreich sein.
-
-Erlaubt und erwünscht:
-
-- große Close-ups
-- Off-Center-Komposition
-- einfache Vordergrund-/Mittelgrund-/Hintergrund-Tiefe
-- ruhige reduzierte Umgebung
-- angeschnittene Objekte
-- klare Blickrichtung
-- starke Silhouette
-- deutlicher Größenkontrast
-- direkte Vorher-/Nachher- oder Ursache-/Folge-Beziehung innerhalb einer einzigen Szene, wenn sie sofort verständlich bleibt
-
-Nicht jede Szene darf nach demselben Schema aufgebaut sein.
-
-Insbesondere vermeiden:
-
-- Figur exakt mittig + Icons kreisförmig außen herum
-- immer dieselbe Frontansicht
-- immer derselbe Hintergrund
-- dekorative Symbolwolken ohne physische Handlung
-- komplexe Perspektive nur um visuell beeindruckend zu wirken
+Keine dekorative Icon-Sammlung um eine Figur herum.
 
 ## Hintergrund, Licht und Farbe
 
-- Hintergründe sind einfach und unterstützend
-- starke, klare Farbflächen sind erlaubt
-- Farbe darf pro Szene wechseln
-- leichte Textur ist erlaubt
-- eine vereinfachte Umgebung ist gut, wenn sie die Aussage schneller verständlich macht
-- realistische, stark ausgerenderte Innenräume sind nicht der Standard
-- komplexe architektonische Details sind zu vermeiden, wenn sie nicht nötig sind
-- Licht ist normalerweise klar und grafisch, nicht düster-cinematisch
-- Nachtlicht oder dramatische Beleuchtung nur, wenn Nacht oder Licht inhaltlich relevant sind
+- Hintergründe einfach und kontextbezogen
+- Umgebung nur so detailliert wie für die Aussage nötig
+- Licht normalerweise hell, klar und grafisch
+- dunkle cinematic Beleuchtung nur, wenn Nacht oder Dunkelheit selbst zum Inhalt gehören
+- keine komplexen realistischen Innenräume als Standard
+- keine überladene architektonische Kulisse
 
-Das Ziel ist **Kontext ohne Überladung**.
+## Technik, Wissenschaft, Geschichte und andere Themen
 
-## Technik-, Wissenschafts- und Aviation-Regel
+**Das Thema ändert nie die Bildwelt.**
 
-Das Thema darf die Bildwelt **nicht in eine neue Unter-Bildwelt verwandeln**.
+Flugzeuge, Elektrotechnik, Medizin, Geschichte, Politik, Psychologie oder Ernährung bleiben alle im selben Human-Editorial-Look.
 
-Bei Technik, Flugzeugen, Maschinen, Medizin oder Wissenschaft gilt weiterhin derselbe einfache Editorial-Reel-Look.
-
-Nicht als Standard verwenden:
-
-- technische Schnittzeichnungen
-- Engineering-Cutaways
+Nicht als Standard:
+- technische Cutaways
 - Blueprint-Optik
+- CAD-Look
 - hochdetaillierte Maschinenquerschnitte
-- realistische CAD-/Produktdarstellung
-- komplizierte technische Perspektiven
+- wissenschaftliche Posterwelt
+- eigene Unter-Bildwelt pro Thema
 
-Solche Darstellungen sind nur erlaubt, wenn genau dieser technische Aufbau für die Erklärung zwingend nötig ist. Auch dann bleibt die Zeichnung vereinfacht, plakativ und klar.
+Technische Details sind nur dann erlaubt, wenn sie für die Erklärung notwendig sind, und bleiben vereinfacht.
 
 ## Deutscher Bildtext
 
-Prompts werden auf Englisch geschrieben, aber **sichtbarer Bildtext ist immer Deutsch**.
+Prompts sind Englisch. Sichtbarer Bildtext ist Deutsch.
 
-- nur exakt geplanter deutscher Text
-- normalerweise 1–5 Wörter
-- bevorzugt kurze fette Überschrift oder einzelnes Schlüsselwort
-- hohe Lesbarkeit vor dekorativer Typografie
-- Text nur einmal
+- nur exakt geplanter Text
+- meist 1–5 Wörter
+- stark und gut lesbar
+- nur einmal im Bild
 - kein zusätzlicher englischer Text
 - keine Fantasiewörter oder Pseudo-Schrift
-- wenn kein Bildtext geplant ist, keinerlei lesbarer Text
-- dieselbe Headline niemals gleichzeitig oben und unten doppeln
+- wenn kein Text geplant ist: keinerlei lesbarer Text
+- keine doppelte Headline oben und unten
 
-## Anti-Generic-Regeln
+## Nicht verwenden
 
-Folgende Muster dürfen **nicht als Standardlösung** benutzt werden:
-
-- schwebende Reaktionskarten
-- Kreise aus Sprechblasen
-- generische Lob-/Kritik-Karten
-- Icon-Gitter
-- UI-artige Boxen
-- abstrakte Infografik-Kacheln
-- unnötige Pfeilketten
-- Waagen als universelle Metapher
-- Megafone als universelle Metapher
-- sterile Diagramme ohne echte Szene
-- Figur-mittig-plus-Icons als wiederholte Standardkomposition
-
-Solche Elemente sind nur erlaubt, wenn genau sie inhaltlich notwendig sind.
-
-## Verbotene Stilabweichungen
-
-Nicht verwenden:
-
+- Countryballs oder Länderbälle
+- Kugelmenschen / Ball-Maskottchen
 - Fotorealismus
-- realistische Menschen oder realistische Gesichter
+- realistische Gesichter
 - Anime/Manga
-- Clay-/Knetfiguren
-- glänzender 3D-Render-/Pixar-Look
-- cinematic realism als Standard
-- Stockfoto-Ästhetik
+- Clay/Knetstil
+- glänzendes 3D / Pixar-Look
+- Stockfoto-Look
 - painterly concept art
-- komplexe realistische Hintergründe
 - generische Icon-Collagen
+- schwebende Reaktionskarten
+- Sprechblasenringe
+- UI-Boxen
+- Figur-mittig-plus-Icons als wiederholtes Standardschema
 - extrem detaillierte Illustrationen
 - technische Cutaway-Welt als Standard
-- wechselnde Illustrationsstile zwischen Szenen
-- Logos oder Wasserzeichen
-- ungeplanter lesbarer Text
 - YouTube-Stick-Figure-Look
-- 16:9-Komposition
+- 16:9
+- Logos oder Wasserzeichen
 
-## Prompt-Regel
+## Qualitätsprüfung
 
-Jeder Cover- und Szenenprompt beschreibt zuerst den **konkreten physischen Bildmoment**:
+Vor der Freigabe jedes Bildes:
 
-1. Was ist die eine Kernaussage?
-2. Wer oder was ist das Hauptmotiv?
-3. Was passiert sichtbar?
-4. Welche wenigen Requisiten sind wirklich nötig?
-5. Welche einfache Komposition erklärt es am schnellsten?
-6. Welcher exakte deutsche Bildtext ist erlaubt, falls vorhanden?
+1. Ist die Kernaussage sofort verständlich?
+2. Wenn eine Person vorkommt: sieht sie eindeutig wie ein vereinfachter echter Mensch aus?
+3. Wurde kein Countryball-/Kugelmenschen-Look verwendet?
+4. Ist die Szene einfacher als nötig statt komplizierter als nötig?
+5. Bleibt sie klar von der YouTube-Bildwelt getrennt?
 
-Erst danach werden Symbole und zusätzliche Details ergänzt.
-
-Beim Export wird zusätzlich der globale Style-Lock `modern-countryball-explainer` verbindlich ergänzt.
-
-Der Style-Lock soll insbesondere verhindern, dass die Bildgenerierung in technische Detailillustrationen, düstere Concept-Art, sterile Karten-/Icon-Layouts oder die separate YouTube-Bildwelt abdriftet.
-
-Das Cover ist kein alleiniger Style-Master. **Diese globale Reel-Bildwelt ist der Style-Master.**
-
-## Letzte Qualitätsprüfung
-
-Vor der Freigabe jedes Bildes gilt:
-
-**Wenn man das Bild erst studieren muss, ist es zu kompliziert.**
-
-Dann muss die Szene vereinfacht werden.
+Wenn eine dieser Fragen scheitert, wird das Bild vereinfacht oder neu erzeugt.
