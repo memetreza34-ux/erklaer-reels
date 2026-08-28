@@ -37,7 +37,7 @@ test('Style-Lock erzwingt Menschen statt Countryballs und bleibt scene-first', (
   assert.match(FIXED_VISUAL_WORLD_PROMPT, /vertical 9:16/i);
   assert.match(FIXED_VISUAL_WORLD_PROMPT, /Human Editorial Explainer/i);
   assert.match(FIXED_VISUAL_WORLD_PROMPT, /recognizably HUMAN/i);
-  assert.match(FIXED_VISUAL_WORLD_PROMPT, /head, necks?, torsos?, arms?, hands? and legs?/i);
+  assert.match(FIXED_VISUAL_WORLD_PROMPT, /heads, necks, torsos, arms, hands and legs/i);
   assert.match(FIXED_VISUAL_WORLD_PROMPT, /head, portrait, upper body, hands or a full body/i);
   assert.match(FIXED_VISUAL_WORLD_PROMPT, /never as a ball, sphere, countryball or stick figure/i);
   assert.match(FIXED_VISUAL_WORLD_PROMPT, /A human is NOT mandatory in every image/i);
