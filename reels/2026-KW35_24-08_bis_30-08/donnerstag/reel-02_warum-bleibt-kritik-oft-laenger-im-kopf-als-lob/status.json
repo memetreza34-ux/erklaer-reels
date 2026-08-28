@@ -1,0 +1,17 @@
+{
+  "workspace": "ready",
+  "content": "ready",
+  "script": "ready",
+  "sources": "ready",
+  "scenes": "ready",
+  "plannedImageCount": 17,
+  "imagePrompts": "ready",
+  "images": "missing-external-google-flow",
+  "cover": "prompt-ready-image-missing",
+  "audio": "missing",
+  "subtitles": "disabled",
+  "wordSync": "not-required",
+  "caption": "ready",
+  "render": "blocked-until-images-and-audio",
+  "qualityControl": "pending-assets"
+}

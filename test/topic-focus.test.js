@@ -6,21 +6,44 @@ async function loadRules() {
   return JSON.parse(await readFile(new URL('../config/content-rules.json', import.meta.url), 'utf8'));
 }
 
-test('begrenzt die automatische Themenwahl auf drei Content-Säulen', async () => {
+test('automatische Themenwahl verwendet ein offenes Themenuniversum statt drei harter Säulen', async () => {
   const rules = await loadRules();
 
-  assert.deepEqual(rules.allowedTopics, [
-    'Politik und Gesellschaft',
-    'Länder, Geografie und Geschichte',
-    'Psychologie und menschliches Verhalten'
-  ]);
-  assert.equal(rules.topicFocus.autonomousSelectionLimitedToAllowedTopics, true);
+  assert.equal(rules.topicFocus.openTopicUniverse, true);
+  assert.equal(rules.topicFocus.autonomousSelectionLimitedToAllowedTopics, false);
+  assert.equal(rules.topicFocus.allowedTopicsAreExamplesNotHardLimit, true);
+  assert.equal(rules.allowedTopics.includes('Alltag und Gewohnheiten'), true);
+  assert.equal(rules.allowedTopics.includes('Wissenschaft und Naturphänomene'), true);
+  assert.equal(rules.allowedTopics.includes('Technik und digitale Welt'), true);
+  assert.equal(rules.allowedTopics.includes('Gesundheit und Ernährung'), true);
+  assert.equal(rules.allowedTopics.includes('Wirtschaft und Geldmechanismen'), true);
 });
 
-test('schließt Körper und Biologie als Content-Säule aus', async () => {
+test('verhindert Themen-Bias nur auf Länder, Geschichte und Politik', async () => {
   const rules = await loadRules();
 
-  assert.equal(rules.allowedTopics.includes('Körper und Biologie'), false);
-  assert.equal(rules.excludedTopics.includes('Körper und Biologie'), true);
-  assert.equal(rules.topicFocus.bodyAndBiologyExcludedAsContentPillar, true);
+  assert.equal(rules.topicFocus.avoidRepeatedCountryHistoryBias, true);
+  assert.ok(Array.isArray(rules.topicFocus.selectionCriteria));
+  assert.ok(rules.topicFocus.selectionCriteria.length >= 5);
+});
+
+test('Bildwelt ist fest und wird nicht nach dem Script neu ausgewählt', async () => {
+  const rules = await loadRules();
+
+  assert.equal(rules.visualRules.visualWorldMode, 'fixed');
+  assert.equal(rules.visualRules.fixedVisualWorld, 'modern-countryball-explainer');
+  assert.equal(rules.visualRules.selectVisualWorldAfterScript, false);
+  assert.equal(rules.visualRules.consistentStyleWithinReel, true);
+  assert.equal(rules.visualRules.creativeStyleBetweenReels, false);
+  assert.equal(rules.visualRules.styleBiblePath, 'knowledge/fixed-visual-world.md');
+});
+
+test('nur Format-Risiken bleiben als autonome Ausschlüsse erhalten', async () => {
+  const rules = await loadRules();
+
+  assert.equal(rules.excludedTopics.includes('Körper und Biologie'), false);
+  assert.equal(rules.excludedTopics.includes('Finanzen'), false);
+  assert.equal(rules.excludedTopics.includes('Elektrotechnik'), false);
+  assert.ok(rules.excludedTopics.some((value) => /Breaking-News/i.test(value)));
+  assert.ok(rules.excludedTopics.some((value) => /Parteienwerbung|Propaganda/i.test(value)));
 });

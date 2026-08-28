@@ -1,0 +1,5 @@
+Die verbindliche vollständige Google-Flow-Sammeldatei für dieses Reel liegt unter:
+
+../../all-image-prompts/all-image-prompts.txt
+
+Umfang: Bild 00 (Cover) + Bild 01 bis Bild 18 (18 individuell geplante Szenenbilder).

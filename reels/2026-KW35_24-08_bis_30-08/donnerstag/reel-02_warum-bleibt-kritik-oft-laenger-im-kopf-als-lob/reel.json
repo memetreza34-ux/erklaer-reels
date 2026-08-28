@@ -1,0 +1,20 @@
+{
+  "reelId": "reel-02_warum-bleibt-kritik-oft-laenger-im-kopf-als-lob",
+  "title": "Warum bleibt Kritik oft länger im Kopf als Lob?",
+  "topicArea": "Psychologie und menschliches Verhalten",
+  "date": "2026-08-27",
+  "language": "de",
+  "promptLanguage": "en",
+  "aspectRatio": "9:16",
+  "targetDurationSeconds": 58,
+  "endingHoldSeconds": 0.7,
+  "sceneCount": 13,
+  "imageCountMode": "individual-per-reel",
+  "plannedImageCount": 17,
+  "visualStyleId": "modern-countryball-explainer",
+  "visualStyleReason": "Globale feste Bildwelt für alle neuen Erklär-Reels: moderner minimalistischer Countryball-Erklärstil.",
+  "sourceQualitySchemaVersion": 3,
+  "subtitlesEnabled": false,
+  "backgroundMusicEnabled": false,
+  "status": "content-and-prompts-ready"
+}

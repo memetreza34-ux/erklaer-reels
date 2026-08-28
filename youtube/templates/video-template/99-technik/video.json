@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "videoId": "video-XX_slug",
+  "title": "",
+  "topic": "",
+  "status": "planned",
+  "language": "de",
+  "format": "youtube-longform",
+  "visualStyleId": "youtube-editorial-stick-explainer",
+  "visualStyleReason": "Feste YouTube-Bildwelt: hand-drawn editorial stick-figure explainer style für erzählerische Langvideos.",
+  "targetDurationMinutes": {
+    "min": 5,
+    "max": 6,
+    "mode": "approximate"
+  },
+  "createdAt": "",
+  "updatedAt": ""
+}

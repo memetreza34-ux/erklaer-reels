@@ -1,8 +1,9 @@
 import { access, mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
-import { SUBTITLE_STYLE } from '../shared/subtitle-style.js';
 import { AUDIO_PACING_STYLE } from '../shared/audio-pacing-style.js';
+import { FIXED_VISUAL_STYLE_ID, FIXED_VISUAL_WORLD_LABEL } from '../shared/fixed-visual-world.js';
+import { plannedImageCount } from '../shared/visual-moments.js';
 
 async function exists(filePath) {
   try {
@@ -41,29 +42,36 @@ export async function prepareReelProduction(reelDirectory) {
 
   const preferredImageTextMinimum = Math.ceil(scenes.length * 0.55);
   const preferredImageTextMaximum = Math.floor(scenes.length * 0.85);
+  const currentPlannedImages = plannedImageCount(scenes);
 
   const checklist = {
-    version: 17,
+    version: 23,
     reelId: reel.reelId,
     title: reel.title,
     createdAt: new Date().toISOString(),
     phase: 'content-production',
+    subtitlesEnabled: false,
+    imageCountMode: 'individual-per-reel',
+    visualWorldMode: 'fixed',
+    visualStyleId: FIXED_VISUAL_STYLE_ID,
     tasks: [
       { id: 'script-final', label: 'Voice-over mit 155–175 Wörtern und starkem Ende fertigstellen', status: 'pending' },
-      { id: 'style-select', label: 'Nach dem fertigen Script die passendste Bildwelt auswählen und begründen', status: 'pending' },
-      { id: 'scenes-fill', label: `${scenes.length} klare Ein-Moment-Szenen mit Audio-Cues planen`, status: 'pending' },
+      { id: 'visual-world-fixed', label: `Feste Reel-Bildwelt ${FIXED_VISUAL_WORLD_LABEL} für Cover und jede Bildphase beibehalten; keine Stilrotation`, status: 'pending' },
+      { id: 'visual-world-separated', label: 'YouTube-Bildwelt strikt getrennt halten; keine Stick-Figuren, kein 16:9-Longform-Look in Reels', status: 'pending' },
+      { id: 'scene-first-visuals', label: 'Jede Bildphase zuerst als konkrete physische Mini-Szene planen; generische Karten-/Icon-Boards vermeiden', status: 'pending' },
+      { id: 'scenes-fill', label: `${scenes.length} narrative Szenen mit klaren Audio-Cues planen`, status: 'pending' },
+      { id: 'image-density-plan', label: 'Für jede Szene individuell 1, 2 oder selten 3 Bildphasen festlegen; keine starre Gleichsetzung Szenenanzahl = Bildanzahl', status: 'pending' },
       { id: 'scene-timing-balance', label: `Hook ${timing.hookSeconds.min}–${timing.hookSeconds.max}s, normale Szenen ${timing.standardSeconds.min}–${timing.standardSeconds.max}s und Schlussbild-Nachlauf ${timing.postVoiceHoldSeconds}s planen`, status: 'pending' },
-      { id: 'image-text-plan', label: `In ungefähr ${preferredImageTextMinimum}–${preferredImageTextMaximum} passenden Szenen kurzen deutschen Bildtext mit 1–5 Wörtern planen`, status: 'pending' },
+      { id: 'image-text-plan', label: `In ungefähr ${preferredImageTextMinimum}–${preferredImageTextMaximum} passenden narrativen Szenen kurzen deutschen Bildtext planen; keine doppelte Headline oben und unten`, status: 'pending' },
       { id: 'ending-check', label: 'Prüffrage und einprägsamen Abschlusssatz auf zwei Szenen verteilen', status: 'pending' },
-      { id: 'prompts-write', label: `${scenes.length} natürliche englische Bildprompts mit exakt angegebenem deutschem Bildtext schreiben`, status: 'pending' },
-      { id: 'prompts-export', label: 'Cover und alle Szenenprompts chronologisch exportieren', status: 'pending' },
-      { id: 'subtitles-write', label: `Untertitel bei ${SUBTITLE_STYLE.verticalPositionPercent} % mit weißem Grundtext ${SUBTITLE_STYLE.textColor} und braunem Aktivwort ${SUBTITLE_STYLE.highlightColor} planen`, status: 'pending' },
-      { id: 'subtitle-sync-plan', label: '100 % des Voice-Scripts mit exakten lokalen Wortzeiten synchronisieren; unassignedWords muss 0 sein', status: 'pending' },
+      { id: 'prompts-write', label: `Für jede geplante Bildphase einen vollständigen englischen 9:16-Bildprompt im festen Stil ${FIXED_VISUAL_STYLE_ID} schreiben; konkrete Szene, Handlung, Umgebung und Perspektive angeben`, status: 'pending' },
+      { id: 'prompts-export', label: 'Cover und alle Bildphasen in globaler Bildreihenfolge als kompletten seriellen Google-Flow-Gesamtprompt mit globalem und per-Bild Style-Lock exportieren', status: 'pending' },
+      { id: 'subtitles-disabled', label: 'Untertitel deaktiviert lassen; keine Subtitle-Cues und keinen Word-Sync erzeugen', status: 'pending' },
       { id: 'effects-write', label: 'Dezente Bewegungen, harte Schnitte und Soundeffekte planen', status: 'pending' },
-      { id: 'asset-matching-plan', label: `Zweistufige visuelle Bildzuordnung mit mindestens ${matching.minimumConfidence} Konfidenz vorbereiten`, status: 'pending' },
-      { id: 'cover-write', label: 'Cover-Idee und Cover-Prompt schreiben', status: 'pending' },
+      { id: 'asset-matching-plan', label: `Zweistufige visuelle Zuordnung jeder Bildphase mit mindestens ${matching.minimumConfidence} Konfidenz vorbereiten`, status: 'pending' },
+      { id: 'cover-write', label: 'Cover-Idee und Cover-Prompt als starke konkrete Szene in derselben festen Reel-Bildwelt schreiben', status: 'pending' },
       { id: 'caption-write', label: 'Caption erstellen', status: 'pending' },
-      { id: 'sources-write', label: 'Quellen und Unsicherheiten dokumentieren', status: 'pending' },
+      { id: 'sources-write', label: 'Schema-3-Quellen mit Primär-/Offiziell- und unabhängiger Sekundärrolle dokumentieren', status: 'pending' },
       { id: 'content-check', label: 'npm run check:content --strict erfolgreich ausführen', status: 'pending' }
     ]
   };
@@ -73,26 +81,31 @@ export async function prepareReelProduction(reelDirectory) {
 
 ## Ziel
 
-Erstelle ein vollständiges Erklär-Reel mit ungefähr einer Minute Voice-over-Laufzeit. Bilder und Audio werden extern erzeugt. Vor dem Render muss jedes Bild zweifach visuell gegen seine konkrete Szene geprüft werden. Die Untertitel müssen jedes gesprochene Wort vollständig enthalten und exakt dem echten Voice-over folgen.
+Erstelle ein vollständiges Erklär-Reel mit ungefähr einer Minute Voice-over-Laufzeit. Bilder und Audio werden extern erzeugt. **Narrative Szenen und Bildanzahl sind getrennt:** Eine Szene kann ein, zwei oder selten drei aufeinanderfolgende Bilder besitzen. Die Bilddichte wird für jedes Reel individuell entschieden. Das Reel wird vollständig ohne Untertitel produziert und gerendert.
+
+**Verbindliche Reel-Bildwelt: ${FIXED_VISUAL_WORLD_LABEL} (\`${FIXED_VISUAL_STYLE_ID}\`).** Sie gilt für Cover und jede Bildphase. Die separate YouTube-Bildwelt darf niemals automatisch auf Reels übertragen werden.
 
 ## Ausgangsdaten
 
 - Reel-ID: \`${reel.reelId}\`
 - Titel: **${reel.title}**
-- Bildmomente: **${scenes.length}**
+- narrative Szenen: **${scenes.length}**
+- aktuell initialisierte Bilder: **${currentPlannedImages}**; diese Zahl ist ausdrücklich noch nicht automatisch final
+- Bildanzahl-Modus: **individuell pro Reel**
+- feste Reel-Bildwelt: **${FIXED_VISUAL_WORLD_LABEL} / ${FIXED_VISUAL_STYLE_ID}**
 - Voice-over-Zieldauer: **55–60 Sekunden**
 - Zieltext: **155–175 Wörter**
 - Format: **9:16**
 - Voice-over: **Deutsch**
 - Bildprompts: **Englisch**
-- geplanter Bildtext: **Deutsch, meistens 1–5 Wörter in ungefähr ${preferredImageTextMinimum}–${preferredImageTextMaximum} passenden Szenen**
+- sichtbarer Bildtext: **Deutsch**
 - Hook-Dauer: **${timing.hookSeconds.min}–${timing.hookSeconds.max} Sekunden**
-- normale Szenen: **${timing.standardSeconds.min}–${timing.standardSeconds.max} Sekunden**
+- normale narrative Szenen: **${timing.standardSeconds.min}–${timing.standardSeconds.max} Sekunden**
 - Schlussszene inklusive Nachlauf: **${timing.finalSceneSecondsIncludingHold.min}–${timing.finalSceneSecondsIncludingHold.max} Sekunden**
 - ruhiger Nachlauf nach Sprecherende: **${timing.postVoiceHoldSeconds} Sekunden**
-- Bildzuordnung: **mindestens ${matching.minimumConfidence} Konfidenz, zwei visuelle Durchgänge**
-- Untertitel: **horizontal zentriert, exakt ${SUBTITLE_STYLE.verticalPositionPercent} % Bildhöhe, Grundtext ${SUBTITLE_STYLE.textColor}, aktuell gesprochenes Wort ${SUBTITLE_STYLE.highlightColor}, transparent**
-- Untertitel-Sync: **100-%-Abdeckung und exakte Wortzeiten aus lokaler Codex-Audioprüfung verpflichtend**
+- Bildzuordnung: **mindestens ${matching.minimumConfidence} Konfidenz, zwei visuelle Durchgänge pro Bildphase**
+- Untertitel: **deaktiviert**
+- Quellen-QC: **Schema 3 für neu erstellte Reels**
 - Audio-Pacing: **exakt ${AUDIO_PACING_STYLE.playbackRate.toFixed(2)}x**
 - Lautheit: **${AUDIO_PACING_STYLE.loudnessTargetLufs} LUFS, höchstens ${AUDIO_PACING_STYLE.truePeakDbtp} dBTP**
 - Hintergrundmusik: **aus**
@@ -103,40 +116,60 @@ Erstelle ein vollständiges Erklär-Reel mit ungefähr einer Minute Voice-over-L
 
 ## Verbindlicher Ablauf
 
-1. Lies \`CURRENT_WORKFLOW.md\`, \`AGENTS.md\`, \`CODEX_TASK.md\`, \`knowledge/production-rules.md\` und \`config/production-quality-gates.json\`.
-2. Überarbeite das Script auf 155–175 Wörter und ungefähr 55–60 Sekunden bei 1,10x. Bevorzugter Einstieg: \`THEMA einfach erklärt:\`.
+1. Lies \`CURRENT_WORKFLOW.md\`, \`AGENTS.md\`, \`CODEX_TASK.md\`, \`knowledge/fixed-visual-world.md\`, \`knowledge/production-rules.md\`, \`config/image-styles.json\` und \`config/production-quality-gates.json\`.
+2. Überarbeite das Script auf 155–175 Wörter und ungefähr 55–60 Sekunden bei 1,10x.
 3. Das Ende benötigt zwei getrennte Stufen: eine persönliche Prüf- oder Erkenntnisfrage und danach eine konkrete Lösung mit kurzem einprägsamem Abschlusssatz.
 4. Schreibe denselben finalen Text nach \`script/final-script.txt\` und \`script/voice-script.txt\`.
-5. Plane genau ${scenes.length} Bildmomente. Hook ${timing.hookSeconds.min}–${timing.hookSeconds.max}s, normale Szenen ${timing.standardSeconds.min}–${timing.standardSeconds.max}s, letzte Szene inklusive Nachlauf ${timing.finalSceneSecondsIncludingHold.min}–${timing.finalSceneSecondsIncludingHold.max}s. Kein Erklärmoment unter ${timing.standardSeconds.min}s.
-6. Der Dauersprung zwischen benachbarten Szenen darf höchstens ${timing.maximumAdjacentDifferenceSeconds}s betragen.
-7. Jede Szene zeigt genau einen klaren Moment. Keine mehrfach kopierte Hauptperson und kein überladenes Anleitungspanorama.
-8. Wähle erst nach dem fertigen Script die Hauptbildwelt und halte sie konsequent ein.
-9. Aktualisiere \`scenes/scene-index.json\` und jede \`scene.json\` synchron.
-10. Plane in ungefähr ${preferredImageTextMinimum}–${preferredImageTextMaximum} passenden Szenen kurzen deutschen Bildtext. Trage den exakten Wortlaut in \`scene.imageText\` ein.
-11. Schreibe für jede Szene einen vollständigen englischen 9:16-Bildprompt. Wenn \`imageText\` gesetzt ist, fordere den exakten deutschen Text in Anführungszeichen an.
+5. Plane ${scenes.length} **narrative Szenen**. Diese Zahl bestimmt nicht automatisch die Bildanzahl.
+6. **Keine Bildwelt auswählen oder rotieren.** Setze und behalte \`visualStyleId: "${FIXED_VISUAL_STYLE_ID}"\`. Reels bleiben 9:16 und verwenden niemals die separate YouTube-Stick-Figure-/16:9-Welt.
+7. Plane danach die Bilddichte **für jede Szene einzeln**. Jede Szene bekommt normalerweise 1 Bild, 2 Bilder bei echtem visuellem Fortschritt und 3 nur selten.
+8. Wenn ein einziges Still-Bild ungefähr 3,5–4 Sekunden oder länger stehen würde, prüfe aktiv eine zweite Bildphase. Das ist ein Prüftrigger, keine starre Pflicht.
+9. Wähle Bildphasen nach Inhalt, nicht nach Quote. Sinnvolle Wechsel sind Überblick → Detail, Ursache → Folge, Ausgangslage → Konsequenz oder äußere Handlung → Mechanismus-Detail.
+10. Keine feste Gesamtzahl wie 13, 16 oder 18 erzwingen. Schreibe die tatsächliche Summe nach \`reel.json.plannedImageCount\` und setze \`imageCountMode: "individual-per-reel"\`.
+11. Hinterlege pro Szene \`imageCount\` und \`imagePhases\`. Die erste Phase beginnt mit \`startPercent: 0\`; weitere Phasen liegen streng aufsteigend innerhalb 0–1.
+12. Die erste Bildphase nutzt \`image-prompt.txt\`. Zusätzliche Phasen nutzen \`image-prompt-02.txt\`, \`image-prompt-03.txt\`. Jede Phase bekommt eigene \`visualIdea\`, optional eigenen \`imageText\` und \`rationale\`.
+13. Aktualisiere \`scenes/scene-index.json\` und jede \`scene.json\` synchron.
+14. Hook ${timing.hookSeconds.min}–${timing.hookSeconds.max}s, normale narrative Szenen ${timing.standardSeconds.min}–${timing.standardSeconds.max}s, letzte Szene inklusive Nachlauf ${timing.finalSceneSecondsIncludingHold.min}–${timing.finalSceneSecondsIncludingHold.max}s.
+15. Schreibe für **jede** geplante Bildphase einen vollständigen englischen 9:16-Bildprompt. Der Prompt muss zuerst den **konkreten physischen Bildmoment** beschreiben: Hauptmotiv, Ort/Umgebung, Handlung, wenige Requisiten und Perspektive. Erst danach Symbole ergänzen. Wenn \`imageText\` gesetzt ist, fordere nur den exakten deutschen Text an.
 
-### Pflichtregeln für Bilder
+### Pflichtregeln für die feste Reel-Bildwelt
 
-- natürliche zusammenhängende Komposition
-- Hauptmotive dürfen die Bildmitte normal nutzen und hinter dem Untertitel liegen
-- keine künstlich leere horizontale Untertitelzone
-- keine getrennte obere und untere Bildhälfte
-- keine gestapelten Panels oder mehrfach dargestellte Hauptperson
-- geplanter sichtbarer Text ausschließlich korrekt auf Deutsch
-- Untertitel und Bildtext nicht wortgleich wiederholen
-- keine zusätzlichen englischen Wörter, Fantasie-Labels, Logos oder Wasserzeichen
-- gewählte Hauptbildwelt, Figurenform, Konturen und Farbwelt durchgehend beibehalten
+- scene-first Editorial-Countryball-Erklärstil
+- hand-drawn 2D vector-cartoon hybrid
+- dicke leicht organische schwarze Konturen
+- konkrete Mini-Szene statt sterilem Icon-Board
+- ein dominantes Hauptmotiv und eine klare physische Handlung
+- nur 1–3 unterstützende Requisiten
+- einfache kontextuelle Umgebung, wenn sie die Aussage verbessert
+- Close-ups, Off-Center-Kompositionen und einfacher Vorder-/Mittel-/Hintergrund sind erwünscht
+- Countryball-ähnliche Figuren nur wenn Akteure sinnvoll personifiziert werden
+- Länder-/Regionsflaggen nur bei echter geografischer Relevanz
+- bei abstrakten Allgemeinthemen Gegenstand, Mechanismus oder Umgebung einer leeren beige/neutralen Kugel vorziehen
+- keine generischen schwebenden Karten, Lob-/Kritik-Karten, Sprechblasenringe, Icon-Gitter oder UI-Boxen als Standardlösung
+- keine wiederholte Figur-mittig-plus-Icons-Komposition
+- keine doppelte identische Headline oben und unten
+- keine realistischen Menschen, kein Fotorealismus, kein Anime, kein Clay, kein glänzendes 3D
+- **keine YouTube-Stick-Figuren, kein 16:9-Longform-Look**
+- sichtbarer Text ausschließlich Deutsch; Prompts selbst Englisch
+- natürliche zusammenhängende Komposition über die volle 9:16-Fläche
+- keine künstliche Untertitelzone
+- jeder Bildwechsel braucht einen sichtbaren neuen Informationsschritt oder klaren Rhythmusgewinn
+- technische Labels wie BILD, COVER, SZENE, BILDPHASE oder DATEINAME dürfen niemals im Bild erscheinen
+- Bild 00 ist das Cover, aber nicht der alleinige Style-Master; der globale Style-Master ist \`${FIXED_VISUAL_STYLE_ID}\`
 
-12. Exportiere Cover und alle Szenenprompts:
+16. Exportiere Cover und alle geplanten Bildphasen:
 
 \`\`\`bash
 npm run export:prompts -- --dir "${normalizedDirectory}" --strict
 \`\`\`
 
-13. Fülle \`subtitles/subtitle-plan.json\`: exakt ${SUBTITLE_STYLE.verticalPositionPercent} %, Grundtext \`${SUBTITLE_STYLE.textColor}\`, Aktivwort \`${SUBTITLE_STYLE.highlightColor}\`, transparent, höchstens zwei Zeilen, normalerweise 3–6 Wörter, \`highlightCurrentWord: true\`, \`speakerSyncedWordHighlight: true\`, \`exactWordTimingsRequired: true\` und \`completeSpokenTextCoverageRequired: true\`.
-14. Fülle \`effects/effects-plan.json\`: Hook \`none\`, danach nur \`cut\` mit Dauer 0; Zoom maximal 8 %, Schwenk maximal 4 %.
-15. Fülle Cover, Caption und Quellen aus.
-16. Prüfe streng:
+Die verbindliche Nutzerdatei ist danach \`00-bildprompts/99-alle-bildprompts.txt\`. Sie enthält den vollständigen seriellen Gesamtprompt sowie den festen Style-Lock global und direkt vor jedem Bildabschnitt.
+
+17. Stelle sicher, dass \`reel.json\` \`subtitlesEnabled: false\` setzt und der Untertitelplan deaktiviert bleibt. Kein \`sync:words\`.
+18. Fülle \`effects/effects-plan.json\`: Hook \`none\`, danach nur \`cut\` mit Dauer 0; Zoom maximal 8 %, Schwenk maximal 4 %.
+19. Fülle Cover und Caption aus.
+20. Fülle \`sources/sources.md\` nach Schema 3 aus: mindestens zwei HTTPS-Quellen auf unterschiedlichen Hosts, mindestens eine Primär-/offizielle oder wissenschaftliche Originalquelle und mindestens eine unabhängige Sekundär-/Fachquelle. Unter \`Belegt\` muss die konkrete gestützte Reel-Aussage stehen.
+21. Prüfe streng:
 
 \`\`\`bash
 npm run check:content -- --dir "${normalizedDirectory}" --strict
@@ -150,13 +183,13 @@ npm run check:content -- --dir "${normalizedDirectory}" --strict
 npm run trim:pauses -- --dir "${normalizedDirectory}" --speed ${AUDIO_PACING_STYLE.playbackRate.toFixed(2)}
 \`\`\`
 
-### 2. Bilder zweifach zuordnen
+### 2. Alle Bildphasen zweifach zuordnen
 
 \`\`\`bash
 npm run organize:assets -- --dir "${normalizedDirectory}"
 \`\`\`
 
-Für jedes Bild in \`inbox/asset-map.json\`: sichtbaren Inhalt beschreiben, mit Szene vergleichen, gegen Nachbarszenen prüfen und erst ab ${matching.minimumConfidence} Konfidenz final bestätigen. Dateinummern sind nur Routing-Hilfe.
+Für jedes Bild in \`inbox/asset-map.json\`: sichtbaren Inhalt beschreiben, mit der konkreten Bildphase vergleichen, gegen vorherige und nächste Bildphase prüfen und erst ab ${matching.minimumConfidence} Konfidenz final bestätigen. Zusätzlich sichtbar prüfen, dass die **scene-first Reel-Bildwelt** ${FIXED_VISUAL_WORLD_LABEL} eingehalten wird und keine YouTube-Stick-Figure-/16:9-Abweichung vorliegt. Die laufende Bildnummer ist nur Routing-Hilfe.
 
 Danach:
 
@@ -164,23 +197,18 @@ Danach:
 npm run organize:assets -- --dir "${normalizedDirectory}" --apply
 \`\`\`
 
-### 3. Timeline, vollständiger Sprecher-Sync, visuelle Prüfung und Render
+### 3. Timeline, visuelle Prüfung und Render
 
 \`\`\`bash
 npm run build:timeline -- --dir "${normalizedDirectory}"
 npm run sync:audio -- --dir "${normalizedDirectory}" --strict
-npm run sync:words -- --dir "${normalizedDirectory}"
-# production/codex-word-sync-task.md akustisch vollständig bearbeiten
-npm run sync:words -- --dir "${normalizedDirectory}" --apply --strict
 npm run check:visuals -- --dir "${normalizedDirectory}" --strict
 npm run finalize:reel -- --dir "${normalizedDirectory}" --strict
 npm run validate:render -- --dir "${normalizedDirectory}"
 npm run render:reel -- --dir "${normalizedDirectory}"
 \`\`\`
 
-Vor dem Render müssen \`coverage === 1\`, \`timedWords === totalWords\`, \`unassignedWords === 0\` gelten. Die komplette gerenderte Untertitel-Wortfolge muss exakt \`script/voice-script.txt\` entsprechen. Nur das aktuell gesprochene Wort wird synchron \`${SUBTITLE_STYLE.highlightColor}\` markiert; alle übrigen Wörter bleiben \`${SUBTITLE_STYLE.textColor}\`. Fehlt ein Wort, ist der Render blockiert.
-
-Die Timeline hängt nach dem letzten gesprochenen Wort automatisch ${timing.postVoiceHoldSeconds} Sekunden Schlussbild ohne neuen Untertitel an. Die MP4 erst als fertig bezeichnen, wenn alle echten QC-Gates tatsächlich bestanden sind.
+Die Master-Timeline synchronisiert weiterhin die narrativen Szenen mit dem finalen Voice-over. Innerhalb einer Szene werden die geplanten Bildphasen als harte Schnitte an ihren relativen Positionen gerendert. Die letzte sichtbare Bildphase bleibt nach dem letzten gesprochenen Wort automatisch ${timing.postVoiceHoldSeconds} Sekunden stehen.
 `;
 
   await writeFile(path.join(productionDirectory, 'agent-task.md'), `${brief}\n`, 'utf8');
@@ -189,7 +217,6 @@ Die Timeline hängt nach dem letzten gesprochenen Wort automatisch ${timing.post
   return {
     reelDirectory,
     taskFile: path.join(productionDirectory, 'agent-task.md'),
-    checklistFile: path.join(productionDirectory, 'checklist.json'),
-    sceneCount: scenes.length
+    checklistFile: path.join(productionDirectory, 'checklist.json')
   };
 }

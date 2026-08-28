@@ -1,0 +1,102 @@
+GOOGLE FLOW – KOMPLETTER SERIELLER BILDLAUF
+
+AUFTRAG
+Erzeuge Bild 00 bis Bild 13 in exakt dieser Reihenfolge.
+
+WICHTIG – DIESE EINE NACHRICHT IST DIE KOMPLETTE FREIGABE
+Arbeite den gesamten Lauf selbstständig ab. Nach jedem Bild vollständig warten, prüfen und erst dann das nächste Bild erzeugen.
+
+STRENG SERIELL – NIE PARALLEL
+Nur den aktuellen Bildabschnitt ausführen → exakt EINEN Bildgenerator-Aufruf starten → vollständig warten → gegen Bildprompt und feste Reel-Bildwelt prüfen → exakt als Bild NN.png benennen → erst danach das nächste Bild starten. Keine Queue, kein Batch, keine Parallelgenerierung, keine Mehrfachvarianten.
+
+VERBINDLICHE REEL-BILDWELT – GILT FÜR JEDES BILD
+Create a vertical 9:16 educational explainer illustration in the fixed Modern Countryball Explainer visual world. Use one coherent visual language across the entire reel: clean flat 2D vector cartoon in a modern minimalist countryball-inspired style, thick confident black outlines, simplified readable shapes, flat or very lightly shaded colors, subtle soft shadows, very light paper/grain texture, clear foreground-midground-background separation, and one instantly readable physical story moment per image.
+
+Whenever an actor appears, it must be a round countryball-style character: a clean perfect circle or sphere body with NO separate head, neck, hair or human face, simple expressive white eyes with black pupils, and at most small simple arms, hands or feet when an action requires them. Ball bodies must stay geometrically round and must never become bean-shaped, oval, egg-shaped or humanoid. Clothing is expressed as a flat colour or simple pattern on the ball itself, plus small props such as helmets, hats or tools.
+
+An actor is NOT mandatory in every image. If the explanation is clearer through architecture, an object, mechanism, environment or close-up, let that physical subject carry the scene. Objects and buildings must keep the same thick outline weight and flat colour treatment as the ball characters. Build a concrete mini-scene first; do not build an icon board.
+
+For this reel, keep one coherent medieval design system across all images: warm sandstone walls, terracotta/red tiled roofs, muted ochre and parchment beige, moss green accents, deep navy for night, charcoal/dark clothing for attackers, warm lantern/firelight. Keep the same simplified medieval architecture throughout.
+
+Use one recurring city defender whenever a defender needs to return: a round ball character in red-and-cream colours with a small white castle emblem on the ball, simple white expressive eyes and a small simple medieval helmet. Attackers are round ball characters in charcoal/dark colours with simple steel helmets. Merchants, civilians and workers are round ball characters in muted earth-tone colours with small identifying props. No national flags on the balls — this reel is not about countries.
+
+IMPORTANT STYLE CONTINUITY RULE
+Bild 00 establishes the reel-specific visual anchor. From Bild 01 onward, preserve Bild 00's line thickness, shading level, texture strength, stone style, roof style, ball geometry, eye style, colour coding and overall color treatment. Do not copy the exact composition; keep the visual DNA consistent while varying camera angle and scene.
+
+COMPOSITION RULES
+- Prefer concrete physical storytelling over abstract symbols.
+- One dominant action or visual idea per image.
+- Use one to three supporting elements only.
+- Vary framing: wide establishing shot, medium action shot, close-up detail, low angle, slight top-down, night scene.
+- Do not repeat a centered-character-plus-icons template.
+- No floating reaction cards, no icon rings, no UI boxes, no infographic boards, no split-screen unless explicitly requested.
+- Backgrounds should feel like simplified locations, not empty color fields when a location helps the story.
+- Full 9:16 composition; no artificial subtitle-safe empty band.
+
+TEXT RULES
+Visible text is German only and only when explicitly requested in the current image section. Use the exact requested phrase once. Never duplicate the headline. Never add English visible text, pseudo-text, logos, watermarks, workflow labels, image numbers, filenames or technical labels.
+
+FORBIDDEN
+No human heads on ball bodies, no humanoid cartoon people, no oval/bean/egg-shaped characters, no stick figures, no photorealistic people, no realistic photo faces, no anime, no manga, no clay, no glossy 3D, no cinematic realism, no Pixar-like rendering, no 16:9 YouTube visual world, no Ink-Explainer-like longform style.
+
+DATEINAMEN
+Bild 00.png
+Bild 01.png
+Bild 02.png
+Bild 03.png
+Bild 04.png
+Bild 05.png
+Bild 06.png
+Bild 07.png
+Bild 08.png
+Bild 09.png
+Bild 10.png
+Bild 11.png
+Bild 12.png
+Bild 13.png
+
+ARBEITSLABELS WIE BILD, COVER, SZENE, DATEINAME ODER GOOGLE FLOW SIND NIE BILDINHALT.
+
+=== BILD 00 — COVER ===
+Create the visual anchor for the reel. Show a fortified medieval city behind a massive warm-sandstone wall with two strong towers and one heavy wooden gate. View the wall from slightly below so it feels powerful and protective. Inside the wall, show a compact cluster of terracotta-roofed houses and one taller civic/church-like tower. On the battlement, place the recurring city defender ball: a round red-and-cream ball character with a small white castle emblem, simple white expressive eyes and a small medieval helmet. Outside the wall in the lower foreground, show only a few round charcoal-coloured attacker balls with simple steel helmets, one spear, one torch and one wooden ladder. Make the contrast instantly clear: safe city above/inside, danger below/outside. Keep the composition clean, not crowded. Add exactly one large bold German headline at the bottom: "WARUM HATTEN STÄDTE MAUERN?" No other readable text.
+
+=== BILD 01 — STADT ALS GESCHLOSSENER RAUM ===
+Create a wide elevated establishing shot of the same medieval city completely enclosed by its stone wall. Show the wall forming a clear ring around tightly grouped houses, a market lane, a few trees and one central tower. Outside the wall: open fields and one road leading to the main gate. Use only a few tiny round resident balls for scale. The wall itself is the dominant subject. Morning light, warm parchment sky, muted earthy palette. Add exactly one short German text near the lower third: "MEHR ALS SCHUTZ" No other readable text.
+
+=== BILD 02 — ANGRIFF WIRD GESTOPPT ===
+Show a real siege moment from outside the wall. In the foreground, three or four round charcoal-coloured attacker balls with steel helmets approach with a ladder and spears. The ladder reaches toward the wall, but the tall stone barrier dominates the scene and clearly blocks them. On top of the battlement, the recurring city defender ball and two smaller defender balls look down from safety. Use a diagonal composition from attackers low in the foreground to defenders high above. Add exactly one bold German text at the bottom: "SCHUTZ VOR ANGRIFFEN" No other readable text.
+
+=== BILD 03 — KONTROLLE AM STADTTOR ===
+Show the main gate as a practical checkpoint, not as an abstract symbol. Use a three-quarter angle on the open stone arch. A round earth-tone merchant ball arrives with a small wooden cart carrying sacks, a barrel and one crate. A round guard ball with a small helmet stands at the gate and physically checks the cargo with small simple arms while the city street is visible beyond the doors. A second round traveler ball waits behind on the road. Keep the gate architecture large and important in the frame. Add exactly one bold German text at the bottom: "KONTROLLE AM TOR" No other readable text.
+
+=== BILD 04 — ABGABEN UND ZÖLLE ===
+Create a closer crop at the same gate. Show the merchant ball handing two or three coins with small simple arms directly to a gate-official ball. The coins and the small arms should be visible enough to make the exchange immediately clear. The cart, sack and barrel remain partly visible so the trade context is obvious. A small wooden counting table or chest sits beside the gate with a few coins on it. No floating money icons. The exchange must happen physically between the ball characters. Keep warm ochre and sandstone tones. Add exactly one short German text: "ABGABEN AM TOR" No other readable text.
+
+=== BILD 05 — NACHTS WIRD GESCHLOSSEN ===
+Create a deep-blue night scene at the same city gate. The large wooden doors are almost completely shut. A round guard ball is pulling one door closed from inside with small simple arms while a single late traveler ball approaches from the dark road outside. One warm lantern above the arch and a few glowing windows inside the city create a strong safety-versus-darkness contrast. The city wall should still match the same stone and roof design from Bild 00. Add exactly one bold German text at the bottom: "NACHTS TOR ZU" No other readable text.
+
+=== BILD 06 — MAUER ALS MACHTSYMBOL ===
+Show two or three round traveler balls arriving and looking up at an impressive fortified entrance in daylight. Use a low-angle view that exaggerates the height of two stone towers and the gate. The recurring city defender ball sits small but confident on the battlement. Add simple non-readable heraldic banners as color accents only, with no letters or pseudo-text. The scene should communicate wealth, authority and prestige through architecture and the small scale of the ball characters. Add exactly one bold German text: "MACHT AUS STEIN" No other readable text.
+
+=== BILD 07 — HÖHENVORTEIL ===
+Show the wall during an attack from a low outside angle. Two round defender balls sit high on the battlement while attacker balls remain far below. One defender ball holds a simple bow with small arms and can clearly see over the surrounding land. Important rooftops remain safely visible behind the wall. Emphasize vertical distance and visibility, not chaos. No readable text in this image.
+
+=== BILD 08 — WENN DIE MAUER ZUM PROBLEM WIRD ===
+Move inside the same walled city. Show a narrow cramped street with tightly packed houses, a small cart trying to pass, laundry lines, barrels and several round resident balls squeezing through limited space. At the end of the street, the tall stone wall visibly blocks further expansion. Use a slight top-down perspective and compressed framing so the scene feels crowded. Add exactly one bold German text at the bottom: "PLATZ WIRD KNAPP" No other readable text.
+
+=== BILD 09 — DIE STADT WÄCHST NACH AUSSEN ===
+Show the old wall running across the middle of the frame while new homes and workshops are being built outside it in the foreground. Two round worker balls carry timber and stone with small simple arms. A new road continues beyond the former compact city. The old dense roofs remain behind the wall, while fresh construction spreads outward. Use a clear left-to-right or back-to-front growth direction without arrows. Add exactly one bold German text: "DIE STADT WÄCHST" No other readable text.
+
+=== BILD 10 — KANONEN MACHEN MAUERN VERWUNDBAR ===
+Create a dramatic but clean action scene. A large early cannon dominates the lower foreground at a three-quarter angle. It has just fired toward a section of the medieval wall; smoke expands from the barrel and a visible chunk of stone cracks and breaks where the shot lands. Small round defender balls react on the battlement. Do not use explosion icons or arrows. Show the physical reason the old wall is losing military value. Add exactly one bold German text: "KANONEN ÄNDERN ALLES" No other readable text.
+
+=== BILD 11 — MAUER WIRD ABGETRAGEN ===
+Show round worker balls dismantling an obsolete section of the same wall. Several large stone blocks are being lowered with a rope while two worker balls load rubble into a wooden cart with small simple arms. Through the growing opening, a broad road and more open land become visible. Keep one surviving tower at the side to show continuity with the old fortification. Warm late-afternoon light. Add exactly one bold German text: "MAUERN VERSCHWINDEN" No other readable text.
+
+=== BILD 12 — PLATZ FÜR VERKEHR UND NEUE STADT ===
+Show the former wall line transformed into a broad urban route. A wide road passes through where the wall once stood. Keep a short stone remnant or old gate at one side as a historical trace. Farther back, show simple railway tracks or a station roof and newer blocks of buildings extending outward. Include only a few small round pedestrian balls for scale. Keep the same illustration style, but let the architecture gradually feel later and more open. No split-screen. Add exactly one bold German text: "PLATZ FÜR NEUES" No other readable text.
+
+=== BILD 13 — SCHLUSSBILD ===
+Create a calm sunset final scene. Show one surviving old stone city gate standing inside a much larger expanded city. Streets and buildings continue far beyond the former wall line. A few round resident balls pass naturally through the old gate. The image should communicate that the old boundary became a historical monument while the city outgrew it. Balanced warm composition, same linework, ball geometry and texture as Bild 00. Add exactly one bold German final text at the bottom: "SCHUTZ. KONTROLLE. GRENZE." No other readable text.
+
+ENDE

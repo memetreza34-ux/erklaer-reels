@@ -7,21 +7,21 @@ async function text(file) {
   return readFile(path.resolve(file), 'utf8');
 }
 
-test('Neue Reels verankern das verpflichtende Quellen-Schema außerhalb von sources.md', async () => {
+test('Neue Reels verankern Quellen-Schema und feste Bildwelt direkt im Workspace-Core', async () => {
+  const workspace = await text('src/core/workspace.js');
   const creator = await text('src/cli/create-reel.js');
-  assert.match(creator, /sourceQualitySchemaVersion = 2/);
-  assert.match(creator, /buildSourcesTemplate/);
-});
+  const fixedWorld = await text('src/shared/fixed-visual-world.js');
 
-test('Word-Sync-CLI bindet Audio und verlangt eine aktuelle audio-synced Timeline', async () => {
-  const source = await text('src/cli/sync-words.js');
-  assert.match(source, /verifyAudioPacingFileBinding/);
-  assert.match(source, /verifyWordSyncTimelineReadiness/);
-  assert.match(source, /invalidateStaleWordSyncWorkbench/);
-  assert.match(source, /stampPreparedWordSyncAudioBinding/);
-  assert.match(source, /verifyPreparedWordSyncAudioBinding/);
-  assert.match(source, /stampAppliedWordSyncAudioBinding/);
-  assert.match(source, /audio-synced/);
+  assert.match(workspace, /FIXED_VISUAL_STYLE_ID/);
+  assert.match(workspace, /visualStyleId:\s*FIXED_VISUAL_STYLE_ID/);
+  assert.match(workspace, /visualStyleReason:\s*FIXED_VISUAL_STYLE_REASON/);
+  assert.match(fixedWorld, /modern-countryball-explainer/);
+  assert.match(fixedWorld, /modern minimalist countryball-inspired style/i);
+  assert.match(workspace, /sourceQualitySchemaVersion:\s*3/);
+  assert.match(workspace, /buildSourcesTemplate/);
+
+  assert.doesNotMatch(creator, /sourceQualitySchemaVersion\s*=\s*3/);
+  assert.doesNotMatch(creator, /buildSourcesTemplate/);
 });
 
 test('Audio-Pacing-CLI bindet die echte Lautheitsmessung an die Ausgabedatei', async () => {
@@ -31,29 +31,29 @@ test('Audio-Pacing-CLI bindet die echte Lautheitsmessung an die Ausgabedatei', a
   assert.match(source, /SHA-256-Fingerprint/);
 });
 
-test('Finalisierung, Render-CLI und Core-Renderer prüfen alle verpflichtenden Gates', async () => {
-  const finalizer = await text('src/cli/finalize-reel.js');
+test('Finalisierung und Renderer prüfen Quellen und Audio, aber keinen Word-Sync', async () => {
+  const cliFinalizer = await text('src/cli/finalize-reel.js');
   const renderer = await text('src/cli/render-reel.js');
   const coreRenderer = await text('src/core/remotion-renderer.js');
+  const finalizer = await text('src/core/finalize-reel.js');
 
-  for (const source of [finalizer, renderer, coreRenderer]) {
+  for (const source of [cliFinalizer, renderer, coreRenderer, finalizer]) {
     assert.match(source, /verifyRequiredSourceQuality/);
     assert.match(source, /verifyAudioPacingFileBinding/);
-    assert.match(source, /verifyAppliedWordSyncAudioBinding/);
+    assert.doesNotMatch(source, /verifyAppliedWordSyncAudioBinding/);
   }
   assert.match(renderer, /auch mit --force blockiert/);
   assert.match(coreRenderer, /veralteten Lautheitsmesswerte/);
-  assert.match(coreRenderer, /veralteten Wortzeiten/);
+  assert.match(finalizer, /wordSyncRequired:\s*false/);
 });
 
-test('Statusanzeige berücksichtigt Quellen-, Pacing- und Word-Sync-Gates', async () => {
+test('Statusanzeige berücksichtigt Quellen- und Pacing-Gates und markiert Untertitel deaktiviert', async () => {
   const status = await text('src/cli/reel-status.js');
   assert.match(status, /verifyRequiredSourceQuality/);
   assert.match(status, /verifyAudioPacingFileBinding/);
-  assert.match(status, /verifyAppliedWordSyncAudioBinding/);
-  assert.match(status, /sourceQualityGatePassed/);
-  assert.match(status, /audioPacingFileBindingPassed/);
-  assert.match(status, /wordSyncAudioBindingPassed/);
+  assert.doesNotMatch(status, /verifyAppliedWordSyncAudioBinding/);
+  assert.match(status, /subtitlesEnabled:\s*false/);
+  assert.match(status, /wordSyncRequired:\s*false/);
 });
 
 test('aktuelle Produktions-CLI-Beispiele verwenden reels statt content', async () => {
@@ -62,7 +62,6 @@ test('aktuelle Produktions-CLI-Beispiele verwenden reels statt content', async (
     'src/cli/finalize-reel.js',
     'src/cli/render-reel.js',
     'src/cli/reel-status.js',
-    'src/cli/sync-words.js',
     'src/cli/trim-pauses.js'
   ]) {
     const source = await text(file);
@@ -79,27 +78,17 @@ test('strenges Content-Gate verwendet das verpflichtende Quellen-Schema', async 
   assert.match(source, /hasMalformedUrlField/);
 });
 
-test('Fingerprint-Guards prüfen Manifest und Render-Plan und halten Legacy kompatibel', async () => {
+test('Legacy-Word-Sync-Hilfen dürfen bestehen, sind aber nicht Teil des normalen Renderpfads', async () => {
   const wordSyncGuard = await text('src/core/word-sync-audio-guard.js');
-  const pacingGuard = await text('src/core/audio-pacing-file-guard.js');
+  const wordSyncCli = await text('src/cli/sync-words.js');
+  const renderCli = await text('src/cli/render-reel.js');
+  const finalizer = await text('src/core/finalize-reel.js');
+  const packageJson = JSON.parse(await text('package.json'));
 
-  for (const source of [wordSyncGuard, pacingGuard]) {
-    assert.match(source, /assets-manifest\.json/);
-    assert.match(source, /render-plan\.json/);
-    assert.match(source, /audioFingerprintSha256/);
-  }
-  assert.match(wordSyncGuard, /version = Math\.max\(4/);
-  assert.match(wordSyncGuard, /legacy: Boolean\(report\)/);
-  assert.match(pacingGuard, /version = Math\.max\(6/);
-  assert.match(pacingGuard, /legacy: Boolean\(report\)/);
-});
-
-test('Timeline-Guard erzwingt moderne Reihenfolge ohne Legacy-Reels pauschal zu blockieren', async () => {
-  const guard = await text('src/core/word-sync-timeline-guard.js');
-  assert.match(guard, /needs-rebuild-after-audio-pacing/);
-  assert.match(guard, /needs-rebuild-after-word-sync-invalidation/);
-  assert.match(guard, /version \?\? 0\) >= 6/);
-  assert.match(guard, /timeline\?\.timingStatus === 'audio-synced'/);
-  assert.match(guard, /required: false/);
-  assert.match(guard, /legacy: true/);
+  assert.match(wordSyncGuard, /audioFingerprintSha256/);
+  assert.match(wordSyncCli, /verifyWordSyncTimelineReadiness/);
+  assert.doesNotMatch(renderCli, /sync:words|Word-Sync-Audio|Wortzeiten/);
+  assert.doesNotMatch(finalizer, /sync:words|wordSyncAudioBinding/);
+  assert.equal(packageJson.scripts['sync:words'], undefined);
+  assert.equal(packageJson.scripts['legacy:sync:words'], 'node src/cli/sync-words.js');
 });

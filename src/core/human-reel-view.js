@@ -9,8 +9,7 @@ export const HUMAN_REEL_FOLDERS = Object.freeze([
   '00-bildprompts',
   '01-voice-script',
   '02-audio',
-  '03-caption',
-  '04-video',
+  '03-export',
   '99-technik'
 ]);
 
@@ -19,16 +18,23 @@ const LEGACY_HUMAN_REEL_FOLDERS = Object.freeze([
   '03-szenen',
   '04-caption',
   '05-review',
-  '06-video'
+  '06-video',
+  '03-caption',
+  '04-video',
+  '05-export'
+]);
+
+const LEGACY_TECHNICAL_REEL_ENTRIES = Object.freeze([
+  'all-image-prompts'
 ]);
 
 export const TECHNICAL_REEL_ENTRIES = Object.freeze([
-  'all-image-prompts',
   'assets-manifest.json',
   'audio',
   'caption',
   'cover',
   'effects',
+  'export',
   'inbox',
   'output',
   'production',
@@ -86,9 +92,9 @@ async function ensureSymlink(linkPath, target, type) {
   }
 }
 
-async function removeLegacyHumanView(reelDirectory) {
+async function removeLegacyEntries(reelDirectory) {
   const removed = [];
-  for (const folder of LEGACY_HUMAN_REEL_FOLDERS) {
+  for (const folder of [...LEGACY_HUMAN_REEL_FOLDERS, ...LEGACY_TECHNICAL_REEL_ENTRIES]) {
     const folderPath = path.join(reelDirectory, folder);
     if (!(await exists(folderPath))) continue;
     await rm(folderPath, { recursive: true, force: true });
@@ -99,6 +105,7 @@ async function removeLegacyHumanView(reelDirectory) {
 
 async function listSceneDirectories(reelDirectory) {
   const scenesDirectory = path.join(reelDirectory, 'scenes');
+  if (!(await exists(scenesDirectory))) return [];
   const entries = await readdir(scenesDirectory, { withFileTypes: true });
   return entries
     .filter((entry) => entry.isDirectory() && /^scene-\d+$/.test(entry.name))
@@ -107,9 +114,7 @@ async function listSceneDirectories(reelDirectory) {
 }
 
 async function applyMacFinderVisibility(reelDirectory, sceneDirectories) {
-  if (process.platform !== 'darwin') {
-    return { applied: false, reason: 'not-macos' };
-  }
+  if (process.platform !== 'darwin') return { applied: false, reason: 'not-macos' };
 
   const visiblePaths = HUMAN_REEL_FOLDERS.map((entry) => path.join(reelDirectory, entry));
   const technicalPaths = [];
@@ -141,49 +146,51 @@ export async function ensureHumanReelView(reelDirectory, { hideTechnicalInFinder
     throw new Error(`Kein gültiger Reel-Ordner: reel.json fehlt unter ${absoluteReelDirectory}.`);
   }
 
-  const removedLegacyFolders = await removeLegacyHumanView(absoluteReelDirectory);
+  const removedLegacyFolders = await removeLegacyEntries(absoluteReelDirectory);
   const sceneDirectories = await listSceneDirectories(absoluteReelDirectory);
 
   await Promise.all([
     ...HUMAN_REEL_FOLDERS.map((folder) => mkdir(path.join(absoluteReelDirectory, folder), { recursive: true })),
     mkdir(path.join(absoluteReelDirectory, 'output'), { recursive: true }),
+    mkdir(path.join(absoluteReelDirectory, 'export'), { recursive: true }),
     mkdir(path.join(absoluteReelDirectory, 'inbox', 'numbered-images'), { recursive: true })
   ]);
 
   await Promise.all([
     writeIfMissing(
       path.join(absoluteReelDirectory, '00-bildprompts', 'README.md'),
-      '# 00 – Bildprompts und Bilder\n\nVerbindliche aktuelle Regeln stehen in `CURRENT_WORKFLOW.md` im Repository. Für Google Flow verwendest du die komplette Datei `99-alle-bildprompts.txt`. Google Flow erzeugt die Bilder streng einzeln: ein Bild vollständig fertigstellen → sofort `Bild XX.png` benennen → ohne weiteres Go automatisch mit dem nächsten Bild fortfahren. `Bild 00.png` ist Cover und Style-Master. Erst wenn wirklich alle Bilder fertig und korrekt benannt sind, legst du sie gemeinsam in `00-ALLE-BILDER-HIER-REIN`. Bevorzugte Benennung: `Bild 00.png` = Cover, `Bild 01.png` = Szene 1, `Bild 02.png` = Szene 2 usw.\n'
+      '# 00 – Bildprompts und Bilder\n\nFür Google Flow gibt es genau eine Masterdatei: `99-alle-bildprompts.txt`. Es gibt keine zweite Kopie unter `all-image-prompts/`. Google Flow erzeugt streng seriell: ein Bild fertigstellen → prüfen → `Bild XX.png` benennen → in den gemeinsamen Bildordner legen → erst danach das nächste Bild starten. `Bild 00.png` ist das Cover.\n'
     ),
     writeIfMissing(
       path.join(absoluteReelDirectory, 'inbox', 'numbered-images', 'README.md'),
-      '# Nummerierter Bild-Schnellimport\n\nDieser Ordner wird erst verwendet, wenn die komplette Bildreihe fertig erzeugt und jedes Bild bereits korrekt benannt ist. Bevorzugter Standard: `Bild 00.png` = Cover, `Bild 01.png` = Szene 1, `Bild 02.png` = Szene 2 usw. Kompatibilitätsnamen wie `00.png`, `bild-00.png`, `bild_02.webp` oder `03-meine-szene.jpg` werden ebenfalls erkannt. Die Dateinummer bestimmt nur das vorgeschlagene Ziel; vor der endgültigen Übernahme muss jedes Bild weiterhin visuell geprüft werden.\n'
+      '# Nummerierter Bild-Schnellimport\n\nHier kommen die vollständig erzeugten und bereits korrekt als `Bild 00.png`, `Bild 01.png` usw. benannten Bilder gemeinsam hinein. `Bild 00.png` ist das Cover.\n'
     ),
     writeIfMissing(path.join(absoluteReelDirectory, '01-voice-script', 'README.md'), '# 01 – Voice-Script\n\nHier liegt der endgültige Text für das Voice-over.\n'),
     writeIfMissing(path.join(absoluteReelDirectory, '02-audio', 'README.md'), '# 02 – Audio\n\nUnbearbeitetes Voice-over nach `AUDIO-HIER-EINFUEGEN`. Das optimierte Audio erscheint später unter `FINAL-AUDIO`.\n'),
-    writeIfMissing(path.join(absoluteReelDirectory, '03-caption', 'README.md'), '# 03 – Caption\n\nHier liegt die fertige Social-Media-Caption.\n'),
-    writeIfMissing(path.join(absoluteReelDirectory, '04-video', 'README.md'), '# 04 – Fertiges Video\n\nDie finale MP4 erscheint nach dem Rendern unter `FERTIGES-VIDEO`.\n'),
+    writeIfMissing(
+      path.join(absoluteReelDirectory, '03-export', 'README.md'),
+      '# 03 – Export\n\nHier liegt am Ende alles, was du zum Hochladen auf deine Social-Media-Accounts brauchst:\n\n- `FERTIGES-REEL.mp4` – finales Reel\n- `UNIVERSELLE-CAPTION.txt` – plattformneutrale, zum Video passende Caption mit starkem und klarem Einstieg\n\nEs gibt keinen separaten sichtbaren Video- oder Caption-Ordner mehr.\n'
+    ),
     writeIfMissing(
       path.join(absoluteReelDirectory, '99-technik', 'README.md'),
-      '# 99 – Technik\n\nHier sind Quellen, Prüfberichte, Untertitel-, Effekt- und Produktionsdateien gesammelt. Diesen Ordner musst du normalerweise nicht öffnen.\n'
+      '# 99 – Technik\n\nHier sind Quellen, Prüfberichte, Effekt-, Produktions- und Kompatibilitätsdateien gesammelt. Diesen Ordner musst du normalerweise nicht öffnen. Untertitel sind für neue Reels deaktiviert.\n'
     ),
-    writeIfMissing(path.join(absoluteReelDirectory, 'output', 'README.md'), '# Render-Ausgabe\n\nDie finale MP4 wird lokal in diesem Ordner erzeugt. Videodateien werden nicht in Git gespeichert.\n')
+    writeIfMissing(path.join(absoluteReelDirectory, 'output', 'README.md'), '# Legacy-Render-Ausgabe\n\nTechnischer Kompatibilitätsordner. Der normale finale Export liegt unter `export/` bzw. sichtbar unter `03-export/`.\n'),
+    writeIfMissing(path.join(absoluteReelDirectory, 'export', 'README.md'), '# Finaler Export\n\nDer Renderer schreibt hier `FERTIGES-REEL.mp4` und `UNIVERSELLE-CAPTION.txt`. Videodateien werden nicht in Git gespeichert.\n')
   ]);
 
   const linkResults = [];
   const links = [
     ['00-bildprompts/00-ALLE-BILDER-HIER-REIN', '../inbox/numbered-images', 'dir'],
     ['00-bildprompts/00-cover', '../cover', 'dir'],
-    ['00-bildprompts/99-alle-bildprompts.txt', '../all-image-prompts/all-image-prompts.txt', 'file'],
     ['01-voice-script/voice-script.txt', '../script/voice-script.txt', 'file'],
     ['02-audio/AUDIO-HIER-EINFUEGEN', '../inbox/audio', 'dir'],
     ['02-audio/FINAL-AUDIO', '../audio', 'dir'],
-    ['03-caption/caption.txt', '../caption/caption.txt', 'file'],
-    ['04-video/FERTIGES-VIDEO', '../output', 'dir'],
+    ['03-export/FERTIGES-REEL.mp4', '../export/FERTIGES-REEL.mp4', 'file'],
+    ['03-export/UNIVERSELLE-CAPTION.txt', '../export/UNIVERSELLE-CAPTION.txt', 'file'],
     ['99-technik/QUELLEN.md', '../sources/sources.md', 'file'],
     ['99-technik/PRUEFBERICHTE', '../review', 'dir'],
     ['99-technik/PRODUKTION', '../production', 'dir'],
-    ['99-technik/UNTERTITEL', '../subtitles', 'dir'],
     ['99-technik/EFFEKTE', '../effects', 'dir'],
     ['99-technik/REEL-DATEN.json', '../reel.json', 'file'],
     ['99-technik/STATUS.json', '../status.json', 'file'],

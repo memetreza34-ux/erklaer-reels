@@ -1,0 +1,12 @@
+{
+  "version": 4,
+  "generatedBy": "",
+  "assignments": [],
+  "unmatched": [],
+  "instructions": [
+    "Bild 00 ist das Cover; Bild 01 bis Bild 18 entsprechen der globalen Bildphasen-Reihenfolge.",
+    "Nummerierung ist nur Routing-Hilfe und ersetzt keine visuelle Prüfung.",
+    "Jede Bildphase muss gegen Narration, visualIdea, imageText und den konkreten Prompt geprüft werden.",
+    "Unter 0,90 Konfidenz nicht raten."
+  ]
+}

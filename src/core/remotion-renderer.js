@@ -1,4 +1,4 @@
-import { mkdir, readFile, stat, writeFile } from 'node:fs/promises';
+import { copyFile, mkdir, readFile, stat, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -6,10 +6,17 @@ import { verifyAudioPacingFileBinding } from './audio-pacing-file-guard.js';
 import { ensureHumanReelView } from './human-reel-view.js';
 import { validateRendererInput } from './render-validator.js';
 import { verifyRequiredSourceQuality } from './source-quality-file-guard.js';
-import { verifyAppliedWordSyncAudioBinding } from './word-sync-audio-guard.js';
 
 const currentDirectory = path.dirname(fileURLToPath(import.meta.url));
 const entryPoint = path.resolve(currentDirectory, '..', 'renderer', 'index.jsx');
+const EXPORT_VIDEO_NAME = 'FERTIGES-REEL.mp4';
+const EXPORT_CAPTION_NAME = 'UNIVERSELLE-CAPTION.txt';
+const CAPTION_MIN_WORDS = 60;
+const CAPTION_MAX_WORDS = 130;
+const HOOK_MIN_WORDS = 4;
+const HOOK_MAX_WORDS = 24;
+const HASHTAG_MINIMUM = 3;
+const HASHTAG_MAXIMUM = 6;
 
 async function readJson(filePath) {
   return JSON.parse(await readFile(filePath, 'utf8'));
@@ -20,10 +27,78 @@ async function writeJson(filePath, value) {
   await writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
 }
 
-function outputPathFor(reelDirectory, plan, requestedOutput) {
+function exportVideoPathFor(reelDirectory) {
+  return path.join(reelDirectory, 'export', EXPORT_VIDEO_NAME);
+}
+
+function exportCaptionPathFor(reelDirectory) {
+  return path.join(reelDirectory, 'export', EXPORT_CAPTION_NAME);
+}
+
+function outputPathFor(reelDirectory, requestedOutput) {
   if (requestedOutput) return path.resolve(requestedOutput);
-  const fileName = `${plan.reelId ?? path.basename(reelDirectory)}.mp4`;
-  return path.join(reelDirectory, 'output', fileName);
+  return exportVideoPathFor(reelDirectory);
+}
+
+function wordsIn(text) {
+  return String(text ?? '').match(/[\p{L}\p{N}]+(?:[’'-][\p{L}\p{N}]+)*/gu) ?? [];
+}
+
+function validateUniversalCaption(caption) {
+  const text = String(caption ?? '').trim();
+  if (!text) {
+    throw new Error('caption/caption.txt ist leer. Vor dem Rendern ist eine individuelle Universal-Caption Pflicht.');
+  }
+
+  const wordCount = wordsIn(text).length;
+  if (wordCount < CAPTION_MIN_WORDS || wordCount > CAPTION_MAX_WORDS) {
+    throw new Error(`Die Universal-Caption muss ${CAPTION_MIN_WORDS}–${CAPTION_MAX_WORDS} Wörter haben; aktuell sind es ${wordCount}.`);
+  }
+
+  const firstLine = text.split(/\r?\n/).map((line) => line.trim()).find(Boolean) ?? '';
+  const hookWordCount = wordsIn(firstLine).length;
+  if (hookWordCount < HOOK_MIN_WORDS || hookWordCount > HOOK_MAX_WORDS) {
+    throw new Error(`Die erste Caption-Zeile muss eine klare Hook mit ${HOOK_MIN_WORDS}–${HOOK_MAX_WORDS} Wörtern sein; aktuell sind es ${hookWordCount}.`);
+  }
+
+  const hashtags = text.match(/#[\p{L}\p{N}_]+/gu) ?? [];
+  if (hashtags.length < HASHTAG_MINIMUM || hashtags.length > HASHTAG_MAXIMUM) {
+    throw new Error(`Die Universal-Caption braucht ${HASHTAG_MINIMUM}–${HASHTAG_MAXIMUM} passende Hashtags; aktuell sind es ${hashtags.length}.`);
+  }
+
+  const platformSpecific = /\b(link in bio|duett|remix|story teilen|instagram|tiktok|youtube|facebook)\b/i;
+  if (platformSpecific.test(text)) {
+    throw new Error('Die Universal-Caption enthält plattformspezifische Formulierungen oder Plattformnamen. Sie muss für alle Social-Media-Accounts neutral bleiben.');
+  }
+
+  return { text, wordCount, hookWordCount, hashtags };
+}
+
+async function writeUniversalCaption(reelDirectory) {
+  const sourcePath = path.join(reelDirectory, 'caption', 'caption.txt');
+  const exportPath = exportCaptionPathFor(reelDirectory);
+  let sourceCaption;
+  try {
+    sourceCaption = await readFile(sourcePath, 'utf8');
+  } catch (error) {
+    if (error?.code === 'ENOENT') {
+      throw new Error('caption/caption.txt fehlt. Vor dem Rendern ist eine individuelle Universal-Caption Pflicht.');
+    }
+    throw error;
+  }
+
+  const validation = validateUniversalCaption(sourceCaption);
+  await mkdir(path.dirname(exportPath), { recursive: true });
+  await writeFile(exportPath, `${validation.text}\n`, 'utf8');
+
+  return {
+    file: exportPath,
+    source: 'caption/caption.txt',
+    fallbackUsed: false,
+    wordCount: validation.wordCount,
+    hookWordCount: validation.hookWordCount,
+    hashtagCount: validation.hashtags.length
+  };
 }
 
 export async function renderReel(reelDirectory, {
@@ -36,10 +111,6 @@ export async function renderReel(reelDirectory, {
 } = {}) {
   const startedAt = new Date().toISOString();
 
-  // Auch bei Reels, die direkt über GitHub/Agenten angelegt wurden, muss die
-  // sichtbare Nutzeransicht vor dem Render vorhanden sein. Dadurch ist die
-  // finale MP4 über 04-video/FERTIGES-VIDEO direkt neben Bildprompts, Audio
-  // und Caption erreichbar, während die technische Datei in output/ liegt.
   await ensureHumanReelView(reelDirectory);
 
   const sourceGate = await verifyRequiredSourceQuality(reelDirectory);
@@ -50,11 +121,6 @@ export async function renderReel(reelDirectory, {
   const pacingBinding = await verifyAudioPacingFileBinding(reelDirectory);
   if (pacingBinding.required && !pacingBinding.passed) {
     throw new Error(`${pacingBinding.reason} Der Renderer verwendet keine veralteten Lautheitsmesswerte.`);
-  }
-
-  const wordSyncBinding = await verifyAppliedWordSyncAudioBinding(reelDirectory);
-  if (wordSyncBinding.required && !wordSyncBinding.passed) {
-    throw new Error(`${wordSyncBinding.reason} Der Renderer verwendet keine veralteten Wortzeiten.`);
   }
 
   const validation = await validateRendererInput(reelDirectory, {
@@ -71,9 +137,12 @@ export async function renderReel(reelDirectory, {
     throw new Error(`Renderer-Eingabe ist nicht bereit:\n- ${messages}`);
   }
 
+  const captionExport = await writeUniversalCaption(reelDirectory);
   const plan = validation.plan;
-  const outputLocation = outputPathFor(reelDirectory, plan, output);
+  const outputLocation = outputPathFor(reelDirectory, output);
+  const canonicalExportVideo = exportVideoPathFor(reelDirectory);
   await mkdir(path.dirname(outputLocation), { recursive: true });
+  await mkdir(path.dirname(canonicalExportVideo), { recursive: true });
 
   const reportPath = path.join(reelDirectory, 'review', 'render-execution-report.json');
   try {
@@ -121,9 +190,13 @@ export async function renderReel(reelDirectory, {
 
     await renderMedia(renderOptions);
 
-    const fileStats = await stat(outputLocation);
+    if (path.resolve(outputLocation) !== path.resolve(canonicalExportVideo)) {
+      await copyFile(outputLocation, canonicalExportVideo);
+    }
+
+    const fileStats = await stat(canonicalExportVideo);
     const report = {
-      version: 1,
+      version: 4,
       startedAt,
       finishedAt: new Date().toISOString(),
       passed: true,
@@ -132,8 +205,15 @@ export async function renderReel(reelDirectory, {
       codec,
       crf: Number(crf),
       reelDirectory: path.resolve(reelDirectory),
-      outputFile: outputLocation,
+      outputFile: canonicalExportVideo,
+      renderedOutputFile: outputLocation,
+      exportVideoFile: canonicalExportVideo,
+      exportCaptionFile: captionExport.file,
+      exportCaptionSource: captionExport.source,
+      exportCaptionFallbackUsed: false,
+      exportCaptionWordCount: captionExport.wordCount,
       outputBytes: fileStats.size,
+      subtitlesEnabled: false,
       composition: plan.composition,
       renderedSoundEffects: plan.scenes.reduce(
         (sum, scene) => sum + (scene.soundEffects ?? []).filter((sound) => sound.file).length,
@@ -145,23 +225,32 @@ export async function renderReel(reelDirectory, {
 
     const statusPath = path.join(reelDirectory, 'status.json');
     const status = await readJson(statusPath);
+    status.subtitles = 'disabled';
+    status.wordSync = 'not-required';
     status.render = 'complete';
-    status.renderedFile = path.relative(reelDirectory, outputLocation).split(path.sep).join('/');
-    status.visibleRenderedFile = '04-video/FERTIGES-VIDEO';
+    status.export = 'complete';
+    status.renderedFile = path.relative(reelDirectory, canonicalExportVideo).split(path.sep).join('/');
+    status.exportedVideoFile = path.relative(reelDirectory, canonicalExportVideo).split(path.sep).join('/');
+    status.exportedCaptionFile = path.relative(reelDirectory, captionExport.file).split(path.sep).join('/');
+    status.visibleRenderedFile = '03-export/FERTIGES-REEL.mp4';
+    status.visibleCaptionFile = '03-export/UNIVERSELLE-CAPTION.txt';
     status.qualityControl = 'render-complete';
     await writeJson(statusPath, status);
 
     return report;
   } catch (error) {
     const report = {
-      version: 1,
+      version: 4,
       startedAt,
       finishedAt: new Date().toISOString(),
       passed: false,
       renderer: 'remotion',
       codec,
       reelDirectory: path.resolve(reelDirectory),
-      outputFile: outputLocation,
+      outputFile: canonicalExportVideo,
+      renderedOutputFile: outputLocation,
+      exportCaptionFile: captionExport.file,
+      subtitlesEnabled: false,
       error: error.message
     };
     await writeJson(reportPath, report);

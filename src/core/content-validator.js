@@ -2,7 +2,9 @@ import { access, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
 import { inspectSourcesMarkdown } from './source-quality.js';
-import { SUBTITLE_STYLE } from '../shared/subtitle-style.js';
+import { normalizeSceneImagePhases, plannedImageCount } from '../shared/visual-moments.js';
+
+const VISUAL_WORLD_RESET_DATE = '2026-08-26';
 
 async function exists(filePath) {
   try {
@@ -45,18 +47,26 @@ function comparableScene(scene) {
     continuityNotes: String(scene.continuityNotes ?? '').trim(),
     audioCue: String(scene.audioCue ?? '').trim(),
     leadInSeconds: Number(scene.leadInSeconds ?? 0),
-    subtitleCues: Array.isArray(scene.subtitleCues) ? scene.subtitleCues : [],
-    subtitlePosition: String(scene.subtitlePosition ?? '').trim(),
     durationSeconds: Number(scene.durationSeconds ?? 0),
-    expectedImageFileName: String(scene.expectedImageFileName ?? '').trim()
+    expectedImageFileName: String(scene.expectedImageFileName ?? '').trim(),
+    imageCount: scene.imageCount ?? null,
+    imagePhases: Array.isArray(scene.imagePhases) ? scene.imagePhases : null
   };
+}
+
+function phasePromptPath(sceneDirectory, phase) {
+  return path.join(sceneDirectory, phase.promptFileName);
+}
+
+function isPostVisualResetReel(reel) {
+  const date = String(reel?.date ?? '').trim();
+  return Boolean(date) && date >= VISUAL_WORLD_RESET_DATE;
 }
 
 export async function validateReelContent(reelDirectory, { strict = false } = {}) {
   const checks = [];
   const reelPath = path.join(reelDirectory, 'reel.json');
   const sceneIndexPath = path.join(reelDirectory, 'scenes', 'scene-index.json');
-  const stylesPath = path.resolve('config', 'image-styles.json');
   const effectsRulesPath = path.resolve('config', 'effects-rules.json');
   const subtitlePlanPath = path.join(reelDirectory, 'subtitles', 'subtitle-plan.json');
   const effectsPlanPath = path.join(reelDirectory, 'effects', 'effects-plan.json');
@@ -72,22 +82,37 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
 
   const reel = await readJson(reelPath);
   const sceneIndex = await readJson(sceneIndexPath, []);
-  const styleConfig = await readJson(stylesPath, { styles: [] });
   const effectsRules = await readJson(effectsRulesPath, {});
-  const validStyleIds = new Set(styleConfig.styles.map((style) => style.id));
+  const totalPlannedImages = plannedImageCount(sceneIndex);
+  const postVisualReset = isPostVisualResetReel(reel);
+  const styleId = String(reel.visualStyleId ?? '').trim();
+  const styleReason = String(reel.visualStyleReason ?? '').trim();
 
   addCheck(checks, 'scene-count-range', Number.isInteger(reel.sceneCount) && reel.sceneCount >= 12 && reel.sceneCount <= 14,
-    'Die Szenenanzahl muss zwischen 12 und 14 liegen.');
+    'Die narrative Szenenanzahl muss zwischen 12 und 14 liegen.');
   addCheck(checks, 'scene-count-match', sceneIndex.length === reel.sceneCount,
-    `scene-index.json enthält ${sceneIndex.length} statt ${reel.sceneCount} Szenen.`);
+    `scene-index.json enthält ${sceneIndex.length} statt ${reel.sceneCount} narrativen Szenen.`);
   addCheck(checks, 'topic-area', String(reel.topicArea ?? '').trim().length >= 5,
     'reel.json.topicArea fehlt.');
-  addCheck(checks, 'visual-style', Boolean(reel.visualStyleId) && validStyleIds.has(reel.visualStyleId),
-    'reel.json.visualStyleId fehlt oder ist nicht in config/image-styles.json definiert.');
-  addCheck(checks, 'visual-style-reason', String(reel.visualStyleReason ?? '').trim().length >= 20,
-    'reel.json.visualStyleReason sollte die Stilentscheidung kurz begründen.');
-  addCheck(checks, 'subtitles-enabled', reel.subtitlesEnabled !== false,
-    'Untertitel sollten für dieses Format standardmäßig aktiviert sein.', 'warning');
+
+  if (postVisualReset) {
+    addCheck(checks, 'visual-world-unassigned', styleId.length === 0,
+      'Neue Reels ab 2026-08-26 müssen ohne feste Bildwelt starten: visualStyleId muss leer/null sein.');
+    addCheck(checks, 'visual-world-reason-empty', styleReason.length === 0,
+      'Neue Reels ab 2026-08-26 dürfen keine alte Stilbegründung automatisch übernehmen.');
+  } else {
+    addCheck(checks, 'legacy-visual-world-nonblocking', true,
+      'Historische Reels dürfen ihre alten Stilfelder als Archivdaten behalten.', 'warning');
+  }
+
+  addCheck(checks, 'subtitles-disabled', reel.subtitlesEnabled === false,
+    'Untertitel müssen für dieses Format deaktiviert sein.');
+  addCheck(checks, 'image-count-mode', !reel.imageCountMode || reel.imageCountMode === 'individual-per-reel',
+    'imageCountMode darf nur individual-per-reel oder bei alten Reels leer sein.');
+  addCheck(checks, 'image-count-range', totalPlannedImages >= sceneIndex.length && totalPlannedImages <= sceneIndex.length * 3,
+    `Geplant sind ${totalPlannedImages} Bilder für ${sceneIndex.length} Szenen; erlaubt sind ein bis drei Bildphasen pro Szene.`);
+  addCheck(checks, 'planned-image-count-match', reel.plannedImageCount == null || Number(reel.plannedImageCount) === totalPlannedImages,
+    `reel.json.plannedImageCount stimmt nicht mit den ${totalPlannedImages} geplanten Bildphasen überein.`, reel.plannedImageCount == null ? 'warning' : 'error');
   addCheck(checks, 'motion-effects-enabled', reel.motionEffectsEnabled !== false,
     'Die Bewegungsplanung sollte standardmäßig aktiviert sein.', 'warning');
   addCheck(checks, 'sound-effects-enabled', reel.soundEffectsEnabled !== false,
@@ -111,6 +136,7 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
     'final-script.txt und voice-script.txt müssen denselben finalen Sprechertext enthalten.', 'warning');
 
   let totalDuration = 0;
+  let validatedPromptCount = 0;
   const usedImageTexts = new Map();
 
   for (let index = 0; index < sceneIndex.length; index += 1) {
@@ -121,7 +147,6 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
 
     const sceneDirectory = path.join(reelDirectory, 'scenes', expectedId);
     const scenePath = path.join(sceneDirectory, 'scene.json');
-    const promptPath = path.join(sceneDirectory, 'image-prompt.txt');
 
     if (!(await exists(scenePath))) {
       addCheck(checks, `${expectedId}-json`, false, `${expectedId}/scene.json fehlt.`);
@@ -129,10 +154,8 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
     }
 
     const scene = await readJson(scenePath, {});
-    const prompt = (await exists(promptPath)) ? await readText(promptPath) : '';
     const duration = Number(scene.durationSeconds ?? 0);
     const leadInSeconds = Number(scene.leadInSeconds ?? 0);
-    const subtitleCues = Array.isArray(scene.subtitleCues) ? scene.subtitleCues : [];
     totalDuration += Number.isFinite(duration) ? duration : 0;
 
     addCheck(checks, `${expectedId}-index-sync`,
@@ -147,49 +170,67 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
     addCheck(checks, `${expectedId}-continuity`, String(scene.continuityNotes ?? '').trim().length >= 10,
       `${expectedId}: continuityNotes fehlen oder sind zu kurz.`);
     addCheck(checks, `${expectedId}-audio-cue`, String(scene.audioCue ?? '').trim().length >= 2,
-      `${expectedId}: audioCue fehlt. Der Bildwechsel kann dadurch nicht sauber am Sprechertext ausgerichtet werden.`, 'warning');
+      `${expectedId}: audioCue fehlt. Der Szenenwechsel kann dadurch nicht sauber am Sprechertext ausgerichtet werden.`, 'warning');
     addCheck(checks, `${expectedId}-lead-in`, Number.isFinite(leadInSeconds) && leadInSeconds >= 0.1 && leadInSeconds <= 0.3,
       `${expectedId}: leadInSeconds sollte zwischen 0,1 und 0,3 liegen.`, 'warning');
-    addCheck(checks, `${expectedId}-subtitle-cues`, subtitleCues.length > 0,
-      `${expectedId}: subtitleCues fehlen.`, 'warning');
-    addCheck(checks, `${expectedId}-subtitle-position`, String(scene.subtitlePosition ?? '') === SUBTITLE_STYLE.position,
-      `${expectedId}: subtitlePosition muss ${SUBTITLE_STYLE.position} sein.`, strict ? 'error' : 'warning');
     addCheck(checks, `${expectedId}-duration`, Number.isFinite(duration) && duration >= 2.5 && duration <= 8,
       `${expectedId}: durationSeconds muss zwischen 2,5 und 8 liegen.`);
-    addCheck(checks, `${expectedId}-preferred-duration`, Number.isFinite(duration) && duration >= 3.5 && duration <= 5.5,
-      `${expectedId}: Für den gewünschten Rhythmus sind ungefähr 3,5–5,5 Sekunden empfehlenswert.`, 'warning');
-    addCheck(checks, `${expectedId}-prompt`, prompt.length >= 180,
-      `${expectedId}: image-prompt.txt fehlt oder ist nicht detailliert genug.`);
-    addCheck(checks, `${expectedId}-prompt-format`, /vertical\s+9:16|9:16/i.test(prompt),
-      `${expectedId}: Der Bildprompt sollte das Format 9:16 ausdrücklich nennen.`, 'warning');
-    addCheck(checks, `${expectedId}-expected-file`, String(scene.expectedImageFileName ?? '').startsWith(expectedId),
-      `${expectedId}: expectedImageFileName muss mit der Szenen-ID beginnen.`);
+    addCheck(checks, `${expectedId}-preferred-duration`, Number.isFinite(duration) && duration >= 3.2 && duration <= 5.5,
+      `${expectedId}: Für den gewünschten Rhythmus sind ungefähr 3,2–5,5 Sekunden empfehlenswert.`, 'warning');
 
-    const imageText = String(scene.imageText ?? '').trim().toUpperCase();
-    if (imageText) {
-      const previousScene = usedImageTexts.get(imageText);
-      addCheck(checks, `${expectedId}-image-text-unique`, !previousScene,
-        `${expectedId}: Der sichtbare Bildtext wurde bereits in ${previousScene ?? 'keiner Szene'} verwendet.`, 'warning');
-      usedImageTexts.set(imageText, expectedId);
-      addCheck(checks, `${expectedId}-image-text-prompt`, prompt.toUpperCase().includes(imageText),
-        `${expectedId}: imageText steht nicht exakt im Bildprompt.`, 'warning');
-      const subtitleText = subtitleCues.map((cue) => String(cue?.text ?? cue ?? '')).join(' ').toUpperCase();
-      addCheck(checks, `${expectedId}-subtitle-does-not-repeat-image-text`, !subtitleText.includes(imageText),
-        `${expectedId}: Untertitel sollten den integrierten Bildtext nicht wortgleich wiederholen.`, 'warning');
+    const phases = normalizeSceneImagePhases(scene);
+    addCheck(checks, `${expectedId}-image-phase-count`, phases.length >= 1 && phases.length <= 3,
+      `${expectedId}: Eine Szene darf ein bis drei Bildphasen besitzen.`);
+    addCheck(checks, `${expectedId}-image-count-field`, scene.imageCount == null || Number(scene.imageCount) === phases.length,
+      `${expectedId}: imageCount stimmt nicht mit imagePhases überein.`, scene.imageCount == null ? 'warning' : 'error');
+    addCheck(checks, `${expectedId}-first-phase-at-zero`, phases[0]?.startPercent === 0,
+      `${expectedId}: Die erste Bildphase muss bei startPercent 0 beginnen.`);
+
+    for (let phaseIndex = 0; phaseIndex < phases.length; phaseIndex += 1) {
+      const phase = phases[phaseIndex];
+      const phaseLabel = `${expectedId}-image-${String(phaseIndex + 1).padStart(2, '0')}`;
+      const promptPath = phasePromptPath(sceneDirectory, phase);
+      const prompt = (await exists(promptPath)) ? await readText(promptPath) : '';
+      const previousStart = phaseIndex === 0 ? -1 : phases[phaseIndex - 1].startPercent;
+
+      addCheck(checks, `${phaseLabel}-start-percent`, phase.startPercent >= 0 && phase.startPercent < 1 && phase.startPercent > previousStart,
+        `${phaseLabel}: startPercent muss innerhalb der Szene streng ansteigen.`);
+      addCheck(checks, `${phaseLabel}-prompt`, prompt.length >= 180,
+        `${phaseLabel}: ${phase.promptFileName} fehlt oder ist nicht detailliert genug.`);
+      addCheck(checks, `${phaseLabel}-prompt-format`, /vertical\s+9:16|9:16/i.test(prompt),
+        `${phaseLabel}: Der Bildprompt sollte das Format 9:16 ausdrücklich nennen.`, 'warning');
+      addCheck(checks, `${phaseLabel}-visual-idea`, String(phase.visualIdea || scene.visualIdea || '').trim().length >= 20,
+        `${phaseLabel}: visualIdea fehlt oder ist zu kurz.`);
+      addCheck(checks, `${phaseLabel}-expected-file`, String(phase.expectedImageFileName ?? '').length >= 5,
+        `${phaseLabel}: expectedImageFileName fehlt.`);
+      if (prompt.length >= 180) validatedPromptCount += 1;
+
+      const imageText = String(phase.imageText || '').trim().toUpperCase();
+      if (imageText) {
+        const previousVisual = usedImageTexts.get(imageText);
+        addCheck(checks, `${phaseLabel}-image-text-unique`, !previousVisual,
+          `${phaseLabel}: Der sichtbare Bildtext wurde bereits in ${previousVisual ?? 'keinem Bild'} verwendet.`, 'warning');
+        usedImageTexts.set(imageText, phaseLabel);
+        addCheck(checks, `${phaseLabel}-image-text-prompt`, prompt.toUpperCase().includes(imageText),
+          `${phaseLabel}: imageText steht nicht exakt im Bildprompt.`, 'warning');
+      }
     }
+
+    addCheck(checks, `${expectedId}-long-static-review`, !(duration >= 4 && phases.length === 1),
+      `${expectedId}: Das einzige Bild würde ungefähr ${duration.toFixed(1)} Sekunden stehen. Prüfe aktiv, ob eine zweite Bildphase Verständnis oder Rhythmus verbessert.`, 'warning');
   }
 
   addCheck(checks, 'total-duration', totalDuration >= 55 && totalDuration <= 60,
     `Die geschätzte Gesamtdauer beträgt ${totalDuration.toFixed(1)} Sekunden; Ziel sind 55–60 Sekunden.`);
-  addCheck(checks, 'one-minute-scene-density', sceneIndex.length >= 12 && sceneIndex.length <= 14,
-    'Ein-Minuten-Reels benötigen normalerweise 12–14 klare visuelle Momente.');
+  addCheck(checks, 'all-image-prompts-covered', validatedPromptCount === totalPlannedImages,
+    `Es sind ${validatedPromptCount} von ${totalPlannedImages} geplanten Bildprompts ausreichend ausgearbeitet.`);
 
   const endingScenes = sceneIndex.slice(-2);
   const endingNarration = endingScenes.map((scene) => String(scene.narration ?? '').trim()).join(' ');
   const finalNarration = String(sceneIndex.at(-1)?.narration ?? '').trim();
   const reflectionPattern = /\?|würdest|frag|prüf|entscheide|entscheidung/i;
   addCheck(checks, 'ending-two-scenes', endingScenes.length === 2,
-    'Das Ende benötigt mindestens zwei getrennte Szenen für Erkenntnis und Auflösung.');
+    'Das Ende benötigt zwei getrennte Szenen für Erkenntnis und Auflösung.');
   addCheck(checks, 'ending-reflection', reflectionPattern.test(endingNarration),
     'Die letzten zwei Szenen benötigen eine klare Prüf-, Erkenntnis- oder Entscheidungsfrage.');
   addCheck(checks, 'ending-final-line', wordCount(finalNarration) >= 5 && wordCount(finalNarration) <= 45,
@@ -202,27 +243,10 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
   addCheck(checks, 'subtitle-plan-present', Boolean(subtitlePlan),
     'subtitles/subtitle-plan.json fehlt.', strict ? 'error' : 'warning');
   if (subtitlePlan) {
-    const subtitleLevel = strict ? 'error' : 'warning';
-    addCheck(checks, 'subtitle-plan-enabled', subtitlePlan.enabled !== false,
-      'Der Untertitelplan sollte standardmäßig aktiviert sein.', 'warning');
-    addCheck(checks, 'subtitle-plan-position', subtitlePlan.position === SUBTITLE_STYLE.position,
-      `Der Untertitelplan muss die Position ${SUBTITLE_STYLE.position} verwenden.`, subtitleLevel);
-    addCheck(checks, 'subtitle-plan-vertical-position', Number(subtitlePlan.verticalPositionPercent) === SUBTITLE_STYLE.verticalPositionPercent,
-      `Die Untertitelposition muss exakt ${SUBTITLE_STYLE.verticalPositionPercent} Prozent der Bildhöhe betragen.`, subtitleLevel);
-    addCheck(checks, 'subtitle-plan-safe-range-min', Number(subtitlePlan.safeVerticalRangePercent?.min) === SUBTITLE_STYLE.safeVerticalRangePercent.min,
-      `Die minimale Untertitelhöhe muss exakt ${SUBTITLE_STYLE.safeVerticalRangePercent.min} Prozent betragen.`, subtitleLevel);
-    addCheck(checks, 'subtitle-plan-safe-range-max', Number(subtitlePlan.safeVerticalRangePercent?.max) === SUBTITLE_STYLE.safeVerticalRangePercent.max,
-      `Die maximale Untertitelhöhe muss exakt ${SUBTITLE_STYLE.safeVerticalRangePercent.max} Prozent betragen.`, subtitleLevel);
-    addCheck(checks, 'subtitle-plan-text-color', String(subtitlePlan.textColor ?? '').toUpperCase() === SUBTITLE_STYLE.textColor,
-      `Die normale Untertitelfarbe muss ${SUBTITLE_STYLE.textColor} sein.`, subtitleLevel);
-    addCheck(checks, 'subtitle-plan-highlight-color', String(subtitlePlan.highlightColor ?? '').toUpperCase() === SUBTITLE_STYLE.highlightColor,
-      `Die Synchronfarbe muss ${SUBTITLE_STYLE.highlightColor} sein.`, subtitleLevel);
-    addCheck(checks, 'subtitle-plan-background-color', subtitlePlan.backgroundColor === SUBTITLE_STYLE.backgroundColor,
-      `Der Untertitelhintergrund muss ${SUBTITLE_STYLE.backgroundColor} verwenden.`, subtitleLevel);
-    addCheck(checks, 'subtitle-plan-max-lines', Number(subtitlePlan.maxLines) <= SUBTITLE_STYLE.maxLines,
-      `Untertitel sollten höchstens ${SUBTITLE_STYLE.maxLines} Zeilen verwenden.`, 'warning');
-    addCheck(checks, 'subtitle-plan-cues', Array.isArray(subtitlePlan.cues) && subtitlePlan.cues.length > 0,
-      'Der Untertitelplan enthält noch keine Cues.', 'warning');
+    addCheck(checks, 'subtitle-plan-disabled', subtitlePlan.enabled === false,
+      'Der Untertitelplan muss deaktiviert sein.');
+    addCheck(checks, 'subtitle-plan-empty', Array.isArray(subtitlePlan.cues) && subtitlePlan.cues.length === 0,
+      'Der deaktivierte Untertitelplan darf keine Cues enthalten.');
   }
 
   const effectsPlan = await readJson(effectsPlanPath, null);
@@ -247,7 +271,7 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
     addCheck(checks, 'effects-background-music-disabled', effectsPlan.backgroundMusic?.enabled !== true,
       'Hintergrundmusik sollte standardmäßig ausgeschaltet sein.', 'warning');
     addCheck(checks, 'effects-scene-count', effectScenes.length === sceneIndex.length,
-      `effects-plan.json enthält ${effectScenes.length} statt ${sceneIndex.length} Szeneneinträge.`, strict ? 'error' : 'warning');
+      `effects-plan.json enthält ${effectScenes.length} statt ${sceneIndex.length} narrativen Szeneneinträge.`, strict ? 'error' : 'warning');
 
     let movingScenes = 0;
     for (let index = 0; index < sceneIndex.length; index += 1) {
@@ -332,7 +356,7 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
     }
   }
 
-  return finalize(reelDirectory, checks, { totalDuration, strict, sourceQuality });
+  return finalize(reelDirectory, checks, { totalDuration, totalPlannedImages, strict, sourceQuality });
 }
 
 async function finalize(reelDirectory, checks, metadata = {}) {
@@ -359,7 +383,10 @@ async function finalize(reelDirectory, checks, metadata = {}) {
   const status = await readJson(statusPath, {});
   status.content = passed ? 'ready' : 'needs-review';
   status.imagePrompts = passed ? 'ready' : 'needs-review';
-  status.subtitles = passed ? 'planned' : (status.subtitles ?? 'needs-review');
+  status.imageDensity = passed ? 'planned' : (status.imageDensity ?? 'needs-review');
+  status.plannedImageCount = metadata.totalPlannedImages ?? status.plannedImageCount;
+  status.subtitles = 'disabled';
+  status.wordSync = 'not-required';
   status.effects = passed ? 'planned' : (status.effects ?? 'needs-review');
   status.cover = passed ? 'prompt-ready' : (status.cover ?? 'missing');
   status.qualityControl = passed ? 'content-passed' : 'content-failed';
@@ -368,6 +395,8 @@ async function finalize(reelDirectory, checks, metadata = {}) {
   const reelPath = path.join(reelDirectory, 'reel.json');
   const reel = await readJson(reelPath, null);
   if (reel) {
+    reel.imageCountMode = 'individual-per-reel';
+    reel.plannedImageCount = metadata.totalPlannedImages ?? reel.plannedImageCount;
     reel.status = passed ? 'content-ready' : 'content-needs-review';
     await writeJson(reelPath, reel);
   }

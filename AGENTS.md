@@ -1,239 +1,184 @@
 # AGENTS.md
 
-## Pflicht: zuerst die aktuelle Repo-Regel lesen
+`CURRENT_WORKFLOW.md` ist die verbindliche Single Source of Truth. Bei Widersprüchen gilt immer die dort definierte Priorität.
 
-Vor jeder Reel-Erstellung oder Änderung zuerst **`CURRENT_WORKFLOW.md`** lesen.
+## Neues Reel
 
-`CURRENT_WORKFLOW.md` ist die verbindliche Single Source of Truth. Wenn ältere Dokumente, Beispieltexte, historische Reel-Dateien oder frühere Produktionsaufträge widersprechen, gilt die Prioritätsreihenfolge aus `CURRENT_WORKFLOW.md`.
+Bei „Mach ein neues Reel“ autonom:
 
-Ein normaler Auftrag wie „Mach ein neues Reel“ darf globale Regeln **nicht** nebenbei verändern.
+1. nächsten freien Slot bestimmen
+2. starkes Thema aus dem offenen Themenuniversum wählen
+3. deutsches Voice-over mit 155–175 Wörtern schreiben
+4. 12–14 narrative Szenen planen, Standard 13
+5. für Cover und jede Bildphase ausschließlich **Modern Countryball Explainer** verwenden
+6. Bildanzahl pro Reel und Szene individuell planen
+7. Cover + Bildphasen-Prompts + einen seriellen Google-Flow-Gesamtprompt + Universal-Caption + Quellen fertigstellen
+8. keine Untertitel erzeugen
+9. externe Assets zuerst suchen, bevor etwas als fehlend gemeldet wird
+10. Assets visuell prüfen, Audio synchronisieren und nur nach echten QC-Gates rendern
 
----
+## Reels und YouTube strikt trennen
 
-## Pflichttrigger: „Mach ein neues Reel“
+Reels verwenden ausschließlich **Modern Countryball Explainer** (`modern-countryball-explainer`) in 9:16.
 
-Bei „Mach ein neues Reel“, „Erstelle das nächste Reel“ oder sinngleichen Imperativen erstellt Codex selbstständig das vollständige Produktionspaket. Nicht nach Datum oder Thema fragen und nicht nach der Ordnererstellung stoppen.
+YouTube verwendet ausschließlich:
 
-1. `CURRENT_WORKFLOW.md`, `docs/autonomous-reel.md` und `CODEX_TASK.md` lesen.
-2. `npm run next:slot -- --json` ausführen.
-3. Wiederholungen vermeiden und ein Thema aus den erlaubten Säulen wählen.
-4. Ein deutsches Voice-over mit genau einem Erzähler schreiben.
-5. Reel mit `npm run create:reel -- --next-free` anlegen.
-6. `production/agent-task.md` vollständig bearbeiten.
-7. Cover, 12–14 Szenen, Bildprompts, Sammeldatei, Untertitel-/Effektplanung, Caption und Quellen fertigstellen.
-8. `npm run export:prompts -- --dir "<reel-ordner>" --strict` ausführen.
-9. `validate:reel` und `check:content --strict` ausführen, soweit die Umgebung dies tatsächlich erlaubt.
-10. Wenn Bilder oder Audio scheinbar fehlen, **nicht sofort anhalten**, sondern zuerst `npm run discover:assets -- --dir "<reel-ordner>"` bzw. den normalen `organize:assets`-Lauf verwenden und die definierten Suchorte prüfen.
-11. Gefundene ZIP-Dateien mit vollständiger `Bild 00 ... Bild XX`-Serie automatisch sicher entpacken und in `inbox/numbered-images/` übernehmen; danach weiterhin echte visuelle Zwei-Pass-QC durchführen.
-12. Erst wenn die Asset-Suche nachweislich nichts Passendes findet oder mehrere unklare Kandidaten nicht sicher unterschieden werden können, den Nutzer informieren.
-13. Sind alle Assets vorhanden und geprüft, ohne unnötige Pause bis zur tatsächlich geprüften MP4 weiterarbeiten.
-
----
-
-## Kanal und Themen
-
-Leitidee: **Warum Menschen, Länder und Gesellschaften so funktionieren.**
-
-Erlaubt:
-- Politik und Gesellschaft
-- Länder, Geografie und Geschichte
-- Psychologie und menschliches Verhalten
-
-Nicht autonom verwenden:
-- Körper und Biologie
-- Finanzen
-- Elektrotechnik
-- KI-News
-- tägliche politische Nachrichten
-- Parteienwerbung
-
-Politische Inhalte neutral erklären und Unsicherheiten in `sources/sources.md` dokumentieren.
-
----
-
-## Verbindlicher Reel-Standard
-
-Die aktuellen Werte stehen in `CURRENT_WORKFLOW.md`. Zentrale technische Grenzwerte liegen zusätzlich in `config/production-quality-gates.json`.
-
-Kurzfassung:
-- 155–175 Wörter
-- 55–60 Sekunden Voice-over
-- 12–14 Szenen, Standard 13
-- exakt 1,10x Audio
-- −16 LUFS, max. −1,5 dBTP
-- Untertitel bei exakt 58 % Bildhöhe
-- Grundtext `#F5F7FA`
-- aktuell gesprochenes Wort exakt nach akustischen Wortzeiten in Braun `#B7794A`
-- 100 % des gesprochenen Voice-Scripts müssen in derselben Wortreihenfolge als Untertitel vorhanden sein; kein Wort und kein Satz darf fehlen
-- keine Untertitelbox, kein Springen, Zoomen oder sonstige Karaoke-Animation; nur die Farbe des aktiven Wortes wechselt
-- nur harte Schnitte
-- 0,7 Sekunden Schlussbild-Nachlauf
-- Bildwelt erst nach dem Script auswählen und innerhalb des Reels konsistent halten
-
-Die letzten zwei Szenen bilden ein starkes Ende:
-1. persönliche Prüf-, Erkenntnis- oder Entscheidungsfrage
-2. konkrete Lösung und kurzer einprägsamer Abschlusssatz
-
----
-
-## Bildprompts und Google Flow
-
-Jeder Szenenprompt liegt unter `scenes/scene-XX/image-prompt.txt`. Cover-Prompt liegt unter `cover/cover-prompt.txt`.
-
-Danach zwingend:
-
-```bash
-npm run export:prompts -- --dir "<reel-ordner>" --strict
+```text
+youtube/YOUTUBE_WORKFLOW.md
+youtube/YOUTUBE_VISUAL_WORLD.md
 ```
 
-Die erzeugte `all-image-prompts/all-image-prompts.txt` muss dem aktuellen Google-Flow-Vertrag aus `CURRENT_WORKFLOW.md` entsprechen:
+Nie automatisch übertragen:
+- YouTube-Stick-Figuren auf Reels
+- Reel-Countryball-Regeln auf YouTube
+- 16:9 auf Reels
+- 9:16-Reel-Regeln auf YouTube
 
-- Nutzer startet Google Flow einmal mit der kompletten Datei.
-- Google Flow erzeugt streng **ein Bild nach dem anderen**.
-- Kein Parallelisieren, kein Batch, keine Queue.
-- Jedes Bild vollständig abwarten und sofort `Bild XX` nennen.
-- Danach automatisch ohne weiteres `Go` mit dem nächsten Bild fortfahren.
-- `Bild 00` ist Cover, sichtbare Hook und verbindlicher Style-Master.
-- Erst nach dem letzten Bild alle fertigen Bilder gemeinsam in `00-bildprompts/00-ALLE-BILDER-HIER-REIN/` legen.
+## Eine einzige Reel-Bildwelt
 
-Antigravity, Codex und andere Repo-Agenten erzeugen selbst keine Cover- oder Szenenbilder.
+Verbindlich definiert in:
+- `knowledge/fixed-visual-world.md`
+- `config/image-styles.json`
+- `src/shared/fixed-visual-world.js`
 
----
+Es gibt **genau eine** aktive Reel-Bildwelt. Keine Menschen-/Köpfe-Welt, keine zweite Clarity-Welt und keine themenspezifischen Unter-Bildwelten.
 
-## Fehlende Assets suchen, ZIPs entpacken und danach weiterarbeiten
+### Kugelfiguren
 
-Ein fehlendes Asset im Reel-Ordner bedeutet **nicht automatisch**, dass der Nutzer es noch nicht erstellt hat.
+Wenn ein Akteur sinnvoll ist, muss er eindeutig als runde Kugelfigur lesbar sein:
+- exakt runder Kreis- bzw. Kugelkörper ohne separaten Kopf
+- einfache weiße expressive Augen mit schwarzen Pupillen
+- minimale Gesichtselemente, nur wenn sie die Aussage tragen
+- höchstens kleine einfache Arme, Hände oder Füße für konkrete Handlungen
+- Flaggen-/Regionsmuster nur bei echter geografischer Relevanz, sonst neutrale einfarbige Kugeln
+- einzelne Kugel, kleine Kugelgruppe, Kugel plus Objekt oder Kartenansicht je nach Szene
 
-Vor jeder Meldung „Bilder fehlen“ oder „Audio fehlt“ muss der Agent zuerst suchen:
+Eine Kugelfigur ist **nicht in jedem Bild Pflicht**. Wenn ein Objekt, Mechanismus, Dokument, Gebäude, Karte, Pflanze, Landschaft oder physischer Prozess klarer erklärt, darf dieses Motiv alleine verwendet werden — in derselben Kontur- und Formsprache. Keine Kugelfigur nur zur Dekoration hinzufügen.
 
-```bash
-npm run discover:assets -- --dir "<reel-ordner>"
+### Verboten
+
+- menschliche Köpfe auf Kugelfiguren
+- humanoide Cartoonmenschen als Akteure
+- Stick-Figuren
+- ovale, bohnenförmige oder eiförmige Figurenkörper
+- Fotorealismus
+- Anime/Manga
+- Clay/Knetstil
+- glänzendes 3D / Pixar-Look
+- technische Cutaway-/Blueprint-Welt als Standard
+- eigene Unter-Bildwelt pro Thema
+- generische Icon-Boards, Floating Cards und wiederholte Figur-mittig-plus-Icons-Kompositionen
+
+Länder, Regierungen und Institutionen werden durch flaggenmarkierte oder neutrale Kugeln mit Karten, Grenzen, Dokumenten oder Gebäuden dargestellt, nicht durch realistische Menschen.
+
+### Gestaltung
+
+- 9:16
+- sauberer flacher 2D-Vektor-/Comic-Look
+- dicke schwarze Konturen
+- niedrige bis mittlere Detaildichte
+- flächige oder sehr leicht schattierte Farben
+- ruhiger einfarbiger oder sanft texturierter Hintergrund
+- normalerweise klare helle grafische Beleuchtung
+- ein dominantes Hauptmotiv
+- eine sichtbare Handlung oder Ursache-Folge-Beziehung
+- 1–3 unterstützende Elemente
+- möglichst innerhalb einer Sekunde verständlich
+
+**Erst konkrete Szene, dann zusätzliche Symbole.**
+
+## Bildprompts
+
+Jeder Cover-/Szenenprompt ist Englisch und beschreibt den konkreten physischen Moment. Sichtbarer Bildtext ist ausschließlich Deutsch.
+
+Jeder Prompt enthält:
+1. 9:16
+2. Kernaussage
+3. Hauptmotiv
+4. Ort/Umgebung
+5. sichtbare Handlung
+6. passenden Bildausschnitt: einzelne Kugel, Kugelgruppe, Kugel plus Objekt, Kartenansicht, Close-up, Objekt oder Umgebung
+7. wenige Requisiten
+8. exakt erlaubten deutschen Text, falls vorhanden
+9. kein zusätzlicher lesbarer Text, keine Logos/Wasserzeichen
+
+## Narrative Szenen ≠ Bildanzahl
+
+Pro narrativer Szene normalerweise 1 Bildphase, 2 bei echtem visuellen Fortschritt, 3 nur selten. Wenn ein Still ca. 3,5–4 Sekunden oder länger stehen würde, zusätzliche Phase aktiv prüfen. Keine feste Gesamtbildzahl erzwingen.
+
+## Google Flow — nur eine Masterdatei
+
+Verbindliche Nutzerdatei:
+
+```text
+00-bildprompts/99-alle-bildprompts.txt
 ```
 
-Der normale Befehl
+Es gibt keine zweite Kopie unter `all-image-prompts/`. Der alte Doppelordner ist Legacy und wird entfernt.
 
-```bash
-npm run organize:assets -- --dir "<reel-ordner>"
+Der separate `google-flow-controller.txt` ist deaktiviert. Alle Steuerregeln stehen in der einen Masterdatei.
+
+### Hard Serial Lock
+
+```text
+nur aktuellen Bildabschnitt ausführen
+→ genau 1 Bildgenerator-Aufruf
+→ vollständig warten
+→ gegen Prompt UND Modern Countryball Explainer prüfen
+→ exakt als Bild NN.png umbenennen
+→ in den gemeinsamen Reel-Ausgabeordner legen
+→ Ablage prüfen
+→ erst dann nächstes Bild
 ```
 
-führt diese Discovery ebenfalls automatisch vor der Zuordnung aus.
+Keine Queue, kein Batch, keine Parallelgenerierung, keine Mehrfachvarianten.
 
-Standard-Suchorte:
-- aktueller Reel-Ordner
-- `~/Downloads`
-- `~/Desktop`
+## Workflow-Metadaten nie im Bild
 
-Dabei gilt:
+Verboten als sichtbarer Bildtext:
+- Bildnummern
+- COVER / SZENE / BILDPHASE
+- DATEINAME und Dateinamen
+- GOOGLE FLOW / PROMPT / STYLE-REFERENZ / ZIEL
 
-1. Nach losen unterstützten Bildern und Audio-Dateien suchen.
-2. Besonders nach ZIP-Dateien suchen, weil Google Flow bzw. Downloads die komplette Bildserie als ZIP liefern können.
-3. Eine ZIP nur automatisch verwenden, wenn sie eine **vollständige und eindeutige** nummerierte Serie für dieses Reel enthält: `Bild 00` bis zur letzten Szene.
-4. Vor dem Entpacken Archivpfade auf unsichere `..`-/absolute Pfade prüfen.
-5. ZIP in einen temporären Ordner entpacken und die Bilder standardisiert nach `inbox/numbered-images/Bild XX.<ext>` übernehmen.
-6. Bereits vorhandene Bildnummern nicht überschreiben und keine doppelten Nummern erzeugen.
-7. Auch nach einer erfolgreichen ZIP-Erkennung bleibt die Nummerierung nur Routing-Hilfe. Jedes Bild muss weiterhin tatsächlich visuell geprüft werden.
-8. Bei Audio darf nur ein eindeutig plausibler einzelner Kandidat automatisch bereitgestellt werden. Mehrere/unklare Audio-Kandidaten müssen geprüft werden; niemals raten.
-9. Wenn passende Assets gefunden und geprüft sind, automatisch mit Zuordnung, Audio-Pacing, Sync, Finalisierung und Render fortfahren.
-10. Erst wenn die echte Suche nichts Passendes findet oder eine sichere Entscheidung unmöglich ist, den Nutzer um Hilfe bitten.
+`imageText` gesetzt → nur exakt dieser deutsche Text. Leer → kein lesbarer Text.
 
-Die Suchdiagnose wird unter `inbox/asset-discovery.json` dokumentiert.
+## Quellen-QC
 
----
+Neue Reels:
+- mindestens zwei echte HTTPS-Quellen
+- unterschiedliche Hosts
+- möglichst mindestens eine Primär-/offizielle oder wissenschaftliche Originalquelle
+- mindestens eine unabhängige Sekundär-/Fachquelle
+- konkret dokumentieren, welche Reel-Aussage belegt wird
 
-## Deutscher Bildtext
+## Untertitel und Audio
 
-Wo es zur Aussage passt, kurzer deutscher Text direkt in die Illustration integrieren.
+- keine Untertitel
+- kein aktiver Word-Sync
+- `sync:words` ist für neue Reels nicht erforderlich und bleibt Legacy (`npm run legacy:sync:words`, siehe `LEGACY_TOOLS.md`)
+- keine Subtitle-Safe-Zone
+- finales Audio ist einzige Zeitquelle
+- Pausen straffen
+- 1,10x, Pitch erhalten
+- −16 LUFS
+- max. −1,5 dBTP
+- Szenen über echte Audio-Cues synchronisieren
 
-- bevorzugt ungefähr 55–85 % der Szenen
-- meist 1–5 Wörter
-- `scene.imageText` enthält den exakten Wortlaut
-- derselbe Wortlaut steht exakt im englischen Prompt
-- kein englischer sichtbarer Text, keine Fantasieschrift oder zufälligen Wörter
-- Bildtext und Untertitel nicht wortgleich doppeln
-- Text weglassen, wenn das Bild ohne Text besser funktioniert
+## Asset-Zuordnung
 
----
+Dateinummer ist nur Routing-Hilfe. Bilder tatsächlich gegen Narration, Bildtext, Prompt, Modern Countryball Explainer und benachbarte Bildphasen prüfen. Unter 0,90 Konfidenz nicht raten.
 
-## Sichere Bildzuordnung
+## Finaler Reel-Export
 
-Die feste Nummerierung darf nur das **vorgeschlagene Ziel vorsortieren**. Sie ist nie die finale inhaltliche Bestätigung.
-
-Für jedes Bild:
-
-### Durchgang 1
-1. Bild tatsächlich öffnen.
-2. Dateinamen zunächst ignorieren.
-3. `visibleSummary` neutral beschreiben.
-4. Mit `narration`, `audioCue`, `visualIdea`, `imageText` und `imagePrompt` vergleichen.
-5. Konkrete `reason` schreiben.
-
-### Durchgang 2
-1. Gegen vorherige und nächste Szene prüfen.
-2. `confirmedTarget` und `confirmedSceneOrder` eintragen.
-3. Erst dann `sceneOrderConfirmed: true` und `secondPassConfirmed: true`.
-4. Unter 0,90 Konfidenz `unmatched` lassen.
-
-Erlaubte `matchMethod`:
-- `visual-content-review`
-- `visual-text-and-content-review`
-
-`filename-only` ist verboten.
-
----
-
-## Audio und Untertitel
-
-Zentrale Quellen:
-- `src/shared/subtitle-style.js`
-- `src/shared/audio-pacing-style.js`
-
-```bash
-npm run trim:pauses -- --dir "<reel-ordner>" --speed 1.10
-npm run build:timeline -- --dir "<reel-ordner>"
-npm run sync:audio -- --dir "<reel-ordner>" --strict
-npm run sync:words -- --dir "<reel-ordner>"
-# production/codex-word-sync-task.md akustisch vollständig bearbeiten
-npm run sync:words -- --dir "<reel-ordner>" --apply --strict
+```text
+03-export/
+├── FERTIGES-REEL.mp4
+└── UNIVERSELLE-CAPTION.txt
 ```
 
-Verbindlich:
-- keine geschätzten oder gleichmäßig verteilten Wortzeiten als final akzeptieren (ein manuelles "Mocking" oder rechnerisches Schätzen der Wortzeiten ist strengstens verboten!)
-- **WICHTIG:** Nutze immer das Skript `node scripts/sync-whisper.js <whisper_out.json> <reel-dir>`, um die mit Whisper erzeugten Wortzeiten mikrosekundengenau mit den Untertiteln abzugleichen!
-- jedes Wort des tatsächlichen Voice-overs akustisch abhören und mit Start-/Endzeit bestätigen
-- 100 % Wortabdeckung; `unassignedWords` muss exakt `0` sein
-- die komplette gerenderte Untertitel-Wortfolge muss exakt der Wortfolge von `script/voice-script.txt` entsprechen
-- das aktuell gesprochene Wort wird mit `#B7794A` markiert, alle anderen Wörter bleiben `#F5F7FA`
-- bei einer Pause darf kein falsches Folgewort vorzeitig braun werden
-- fehlt auch nur ein gesprochenes Wort, bleibt `wordSync = needs-review` und der Render ist blockiert
+Kein separater sichtbarer Caption- oder Video-Ordner.
 
----
+## Render
 
-## Finale Prüfung
-
-```bash
-npm run organize:assets -- --dir "<reel-ordner>" --apply
-npm run check:visuals -- --dir "<reel-ordner>" --strict
-npm run build:timeline -- --dir "<reel-ordner>"
-npm run sync:audio -- --dir "<reel-ordner>" --strict
-npm run sync:words -- --dir "<reel-ordner>" --apply --strict
-npm run finalize:reel -- --dir "<reel-ordner>" --strict
-npm run validate:render -- --dir "<reel-ordner>"
-npm run render:reel -- --dir "<reel-ordner>"
-```
-
-Ein Reel darf nur als fertig gelten, wenn Inhalt, Audio, Lautheit, Audio-Sync, **100-%-Untertitelabdeckung**, exakte akustische Wort-Synchronisierung, braune Sprecher-Markierung, sichere Bildzuordnung, visuelle Prüfung, Szenenrhythmus, Schlussbild-Nachlauf und Renderer-Eingabe **tatsächlich** bestanden sind.
-
----
-
-## Technische Schutzregeln
-
-- **NIEMALS** interne Quality-Checks (wie `validate:render` oder `sync:words --strict`) mithilfe von `--force` oder durch temporäre Code-Anpassungen (Bypasses) überspringen! Die Pipeline hat immer recht.
-- stabile IDs wie `scene-01`
-- `scene-index.json` und jede `scene.json` synchron halten
-- Rohscript nicht überschreiben
-- API-Schlüssel niemals committen
-- fehlende/unsichere Assets im Status sichtbar halten
-- Pipeline-Stufen einzeln wiederholbar halten
-- zentrale Logik testen
-- keine Tests, CI-Läufe, Bilder, Audios oder Render als erfolgreich behaupten, wenn sie nicht tatsächlich erzeugt/geprüft wurden
-- Issue #19 zur Lockdatei/CI nicht durch eine erfundene `package-lock.json` umgehen
+Nur nach tatsächlich bestandenen Prüfungen. Nicht ausgeführte Tests, QC-Stufen oder Render niemals als bestanden melden.

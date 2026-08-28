@@ -5,7 +5,6 @@ import os from 'node:os';
 import path from 'node:path';
 
 import { runVisualQualityCheck } from '../src/core/visual-qc.js';
-import { SUBTITLE_STYLE } from '../src/shared/subtitle-style.js';
 
 async function writeJson(filePath, value) {
   await mkdir(path.dirname(filePath), { recursive: true });
@@ -16,7 +15,7 @@ async function readJson(filePath) {
   return JSON.parse(await readFile(filePath, 'utf8'));
 }
 
-async function createFixture() {
+async function createFixture({ twoImages = false } = {}) {
   const root = await mkdtemp(path.join(os.tmpdir(), 'erklaer-visual-context-'));
   const scene = {
     sceneId: 'scene-01',
@@ -26,33 +25,52 @@ async function createFixture() {
     audioCue: 'folgen Flüssen',
     visualIdea: 'Ein Fluss und ein Gebirge bilden eine natürliche Grenzlinie.',
     imageText: 'NATÜRLICHE GRENZE',
-    expectedImageFileName: 'scene-01.png'
+    expectedImageFileName: 'scene-01.png',
+    ...(twoImages ? {
+      imageCount: 2,
+      imagePhases: [
+        {
+          phaseId: 'scene-01-image-01', order: 1, startPercent: 0,
+          promptFileName: 'image-prompt.txt', expectedImageFileName: 'scene-01.png',
+          visualIdea: 'Überblick über einen Fluss zwischen zwei Regionen.', imageText: 'NATÜRLICHE GRENZE'
+        },
+        {
+          phaseId: 'scene-01-image-02', order: 2, startPercent: 0.55,
+          promptFileName: 'image-prompt-02.txt', expectedImageFileName: 'scene-01-image-02.png',
+          visualIdea: 'Nahansicht eines Gebirges, das die Grenzlinie fortsetzt.', imageText: 'GEBIRGE'
+        }
+      ]
+    } : {})
   };
 
   await writeJson(path.join(root, 'reel.json'), {
     reelId: 'reel-01_test',
     title: 'Warum haben Länder Grenzen?',
-    visualStyleId: 'round-country-characters',
-    visualStyleReason: 'Runde Länderfiguren und Karten erklären Staaten und Grenzen besonders klar.'
+    date: '2026-08-26',
+    subtitlesEnabled: false,
+    imageCountMode: 'individual-per-reel',
+    plannedImageCount: twoImages ? 2 : 1,
+    visualStyleId: null,
+    visualStyleReason: ''
   });
   await writeJson(path.join(root, 'scenes', 'scene-index.json'), [scene]);
   await mkdir(path.join(root, 'scenes', 'scene-01'), { recursive: true });
   await writeFile(path.join(root, 'scenes', 'scene-01', 'image-prompt.txt'), 'Vertical 9:16 scene with the exact German text "NATÜRLICHE GRENZE".', 'utf8');
+  if (twoImages) {
+    await writeFile(path.join(root, 'scenes', 'scene-01', 'image-prompt-02.txt'), 'Vertical 9:16 close detail scene with the exact German text "GEBIRGE".', 'utf8');
+  }
   await writeJson(path.join(root, 'assets-manifest.json'), {
+    visuals: twoImages ? [
+      { targetId: 'scene-01', expectedFile: 'scenes/scene-01/scene-01.png', status: 'missing' },
+      { targetId: 'scene-01-image-02', expectedFile: 'scenes/scene-01/scene-01-image-02.png', status: 'missing' }
+    ] : [],
     scenes: [{ sceneId: 'scene-01', expectedFile: 'scenes/scene-01/scene-01.png', status: 'missing' }],
     cover: { expectedFile: 'cover/cover.png', status: 'missing' }
   });
   await writeJson(path.join(root, 'effects', 'effects-plan.json'), { scenes: [] });
-  await writeJson(path.join(root, 'subtitles', 'subtitle-plan.json'), {
-    verticalPositionPercent: SUBTITLE_STYLE.verticalPositionPercent,
-    textColor: SUBTITLE_STYLE.textColor,
-    highlightColor: SUBTITLE_STYLE.highlightColor,
-    highlightCurrentWord: false,
-    backgroundColor: SUBTITLE_STYLE.backgroundColor
-  });
   await writeJson(path.join(root, 'cover', 'cover.json'), {
     headline: 'LÄNDERGRENZEN',
-    visualIdea: 'Zwei Länderfiguren stehen an einer Grenzlinie.'
+    visualIdea: 'Zwei Regionen werden durch eine klare sichtbare Grenzlinie getrennt.'
   });
   await writeFile(path.join(root, 'cover', 'cover-prompt.txt'), 'Vertical 9:16 cover with the exact German headline "LÄNDERGRENZEN".', 'utf8');
   await writeJson(path.join(root, 'status.json'), {});
@@ -60,17 +78,20 @@ async function createFixture() {
   return { root, scene };
 }
 
-test('visuelle Prüfung zeigt für jedes Bild die erwartete Szenenbedeutung und Reihenfolge', async () => {
+test('visuelle Prüfung zeigt Szenenbedeutung und verlangt keine Untertitelzone oder feste Bildwelt', async () => {
   const { root, scene } = await createFixture();
 
   await runVisualQualityCheck(root, { strict: false });
   const inspection = await readJson(path.join(root, 'review', 'visual-inspection.json'));
   const sceneEntry = inspection.assets.find((entry) => entry.assetId === 'scene-01');
 
-  assert.equal(inspection.version, 7);
-  assert.equal(inspection.visualStyleId, 'round-country-characters');
-  assert.ok(inspection.instructions.some((instruction) => instruction.includes(`${SUBTITLE_STYLE.verticalPositionPercent} Prozent Bildhöhe`)));
-  assert.equal(inspection.safeZones.subtitleVerticalPercent.default, SUBTITLE_STYLE.verticalPositionPercent);
+  assert.equal(inspection.version, 10);
+  assert.equal(inspection.subtitlesEnabled, false);
+  assert.equal(Object.hasOwn(inspection, 'visualStyleId'), false);
+  assert.equal(inspection.plannedImageCount, 1);
+  assert.ok(inspection.instructions.some((instruction) => /ohne künstlich freigehaltene Untertitelzone/i.test(instruction)));
+  assert.ok(inspection.instructions.some((instruction) => /keine feste Repo-Bildwelt/i.test(instruction)));
+  assert.equal(Object.hasOwn(inspection.safeZones, 'subtitleVerticalPercent'), false);
   assert.equal(sceneEntry.expected.narration, scene.narration);
   assert.equal(sceneEntry.expected.audioCue, scene.audioCue);
   assert.equal(sceneEntry.expected.visualIdea, scene.visualIdea);
@@ -81,8 +102,23 @@ test('visuelle Prüfung zeigt für jedes Bild die erwartete Szenenbedeutung und 
   assert.equal(sceneEntry.reviewFingerprint.length, 64);
   assert.ok(Object.hasOwn(sceneEntry.checks, 'sceneMeaningMatchesNarration'));
   assert.ok(Object.hasOwn(sceneEntry.checks, 'sceneOrderConfirmed'));
-  assert.ok(Object.hasOwn(sceneEntry.checks, 'visualWorldMatch'));
+  assert.equal(Object.hasOwn(sceneEntry.checks, 'visualWorldMatch'), false);
   assert.ok(Object.hasOwn(sceneEntry.checks, 'plannedGermanTextExact'));
+  assert.equal(Object.hasOwn(sceneEntry.checks, 'subtitleCollisionFree'), false);
+});
+
+test('legt bei zwei Bildphasen zwei getrennte visuelle Prüfobjekte an', async () => {
+  const { root } = await createFixture({ twoImages: true });
+  await runVisualQualityCheck(root, { strict: false });
+  const inspection = await readJson(path.join(root, 'review', 'visual-inspection.json'));
+
+  assert.equal(inspection.plannedImageCount, 2);
+  assert.ok(inspection.assets.some((entry) => entry.assetId === 'scene-01'));
+  const second = inspection.assets.find((entry) => entry.assetId === 'scene-01-image-02');
+  assert.ok(second);
+  assert.equal(second.expected.phaseOrder, 2);
+  assert.equal(second.expected.visualIdea, 'Nahansicht eines Gebirges, das die Grenzlinie fortsetzt.');
+  assert.equal(second.expected.previousTargetId, 'scene-01');
 });
 
 test('setzt eine alte Freigabe zurück, sobald sich die Szenenbedeutung ändert', async () => {
@@ -96,15 +132,13 @@ test('setzt eine alte Freigabe zurück, sobald sich die Szenenbedeutung ändert'
   firstSceneEntry.visibleSummary = 'Ein Fluss und ein Gebirge trennen zwei farbige Regionen sichtbar voneinander.';
   firstSceneEntry.matchReason = 'Die sichtbaren Landschaftselemente entsprechen exakt der geplanten natürlichen Grenzlinie.';
   firstSceneEntry.secondPassConfirmed = true;
-  firstSceneEntry.checks = Object.fromEntries(
-    Object.keys(firstSceneEntry.checks).map((key) => [key, true])
-  );
+  firstSceneEntry.checks = Object.fromEntries(Object.keys(firstSceneEntry.checks).map((key) => [key, true]));
   await writeJson(inspectionPath, firstInspection);
 
   const changedScene = {
     ...scene,
     narration: 'Andere Grenzen wurden durch Verträge und politische Entscheidungen festgelegt.',
-    visualIdea: 'Mehrere runde Länderfiguren unterschreiben gemeinsam einen Grenzvertrag.'
+    visualIdea: 'Mehrere Vertreter unterschreiben gemeinsam einen Grenzvertrag.'
   };
   await writeJson(path.join(root, 'scenes', 'scene-index.json'), [changedScene]);
 
@@ -118,8 +152,5 @@ test('setzt eine alte Freigabe zurück, sobald sich die Szenenbedeutung ändert'
   assert.equal(secondSceneEntry.visibleSummary, '');
   assert.equal(secondSceneEntry.matchReason, '');
   assert.equal(secondSceneEntry.secondPassConfirmed, false);
-  assert.equal(
-    Object.values(secondSceneEntry.checks).every((value) => value === null),
-    true
-  );
+  assert.equal(Object.values(secondSceneEntry.checks).every((value) => value === null), true);
 });

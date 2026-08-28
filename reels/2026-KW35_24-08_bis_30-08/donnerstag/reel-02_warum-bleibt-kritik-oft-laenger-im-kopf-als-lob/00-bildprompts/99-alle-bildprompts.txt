@@ -1,0 +1,66 @@
+GOOGLE FLOW – KOMPLETTER SERIELLER BILDLAUF
+
+AUFTRAG
+Erzeuge Bild 00 bis Bild 17 in exakt dieser Reihenfolge.
+
+STRENG SERIELL – NIE PARALLEL
+Nur den aktuellen Bildabschnitt ausführen → exakt EINEN Bildgenerator-Aufruf starten → vollständig warten → gegen Bildprompt und feste Bildwelt prüfen → exakt als Bild NN.png benennen → erst danach das nächste Bild starten. Keine Queue, kein Batch, keine Parallelgenerierung, keine Mehrfachvarianten.
+
+FESTE BILDWELT – gilt für jedes Bild
+Vertical 9:16, smartphone-first. Modern minimalist countryball-inspired explainer illustration. Clean flat 2D vector/cartoon look, thick black outlines, simple round ball characters for people or social actors, simple white expressive eyes, minimal facial features, tiny arms/hands only when needed, neutral colors unless country identity is actually relevant. One dominant symbolic moment, very few props, solid or gently textured high-contrast background, subtle soft shadows, simple readable shapes. No realistic humans, photorealism, anime, manga, clay, glossy 3D, cinematic realism, stock-photo look, complex realistic rooms, busy icon collages, logos or watermarks. Prompts are English. Visible text only when explicitly requested and then only the exact German phrase. Never add other readable text, English text, pseudo-text, workflow labels or filenames.
+
+ARBEITSLABELS WIE BILD, COVER, SZENE, DATEINAME ODER GOOGLE FLOW SIND NIE BILDINHALT.
+
+=== BILD 00 — COVER ===
+Create a powerful cover. Show one neutral round character overwhelmed by a single huge red criticism card hanging like a heavy weight above its head, while ten much smaller soft green praise cards float around it. The character is tense and fixated on the red card. Bold red background, very simple composition. Add the exact German headline: "WARUM BLEIBT KRITIK HÄNGEN?" No other readable text.
+
+=== BILD 01 — SZENE 1 ===
+Show one neutral round character surrounded by ten small soft green praise speech bubbles and one large red criticism speech bubble. The character ignores the green bubbles and stares intensely at the single red bubble. Muted yellow background. Add the exact German text: "WARUM BLEIBT KRITIK HÄNGEN?" No other readable text.
+
+=== BILD 02 — SZENE 2 ===
+Show many pale neutral cards in a row, with one vivid red warning card pulling a spotlight toward itself. A neutral round character turns its eyes toward the red card. Clean blue background. Add the exact German text: "NEGATIVES FÄLLT AUF" No other readable text.
+
+=== BILD 03 — SZENE 3 / PHASE 1 ===
+Show a neutral round character next to a large simplified alarm bell and triangular warning symbol. The character looks alert, with raised eyes and tense posture. Warm orange background. Add the exact German text: "WARNSIGNAL" No other readable text.
+
+=== BILD 04 — SZENE 3 / PHASE 2 ===
+Close-up of the warning mechanism: a large red warning triangle and alarm bell dominate the frame while the neutral round character appears smaller behind them, showing how potential problems capture attention. Same orange background family. No readable text anywhere.
+
+=== BILD 05 — SZENE 4 ===
+Show a large magnifying glass sharply enlarging one red criticism note in the foreground while several green praise notes drift smaller and softer into the background. A neutral round character looks through the magnifying glass. Muted violet background. Add the exact German text: "KRITIK IM FOKUS" No other readable text.
+
+=== BILD 06 — SZENE 5 / PHASE 1 ===
+Show one neutral round character receiving a red criticism speech bubble from another neutral round character. Around the receiver add a simplified eye-focus icon and a heartbeat-like line to symbolize increased attention and regulation. Calm teal background. Add the exact German text: "MEHR AUFMERKSAMKEIT" No other readable text.
+
+=== BILD 07 — SZENE 5 / PHASE 2 ===
+Close-up of the receiver after criticism: widened white eyes, subtle heartbeat line beside it, and the red criticism bubble lingering nearby. Keep the scene minimal on the same teal background family. No readable text anywhere.
+
+=== BILD 08 — SZENE 6 ===
+Show a red criticism note stopping in front of a simplified memory filing cabinet instead of automatically entering it. Add a small non-text question mark above the cabinet. A neutral round character watches. Soft gray-blue background. Add the exact German text: "NICHT AUTOMATISCH" No other readable text.
+
+=== BILD 09 — SZENE 7 / PHASE 1 ===
+Show three neutral round characters side by side reacting differently to the exact same red comment card: one worried, one calm, one thoughtful. Give each character a different soft color halo to symbolize mood and context. Simple beige background. Add the exact German text: "KONTEXT ZÄHLT" No other readable text.
+
+=== BILD 10 — SZENE 7 / PHASE 2 ===
+Show the same red comment card in the center with three reaction paths branching toward three neutral round characters: worried, calm, and thoughtful. Use simple arrows and different soft color halos to show context and individual differences. No readable text anywhere.
+
+=== BILD 11 — SZENE 8 ===
+Show one huge red criticism card physically covering a stack of ten smaller green praise cards. A neutral round character peeks around the red card and looks overwhelmed. Strong red-orange background. Add the exact German text: "EINER ÜBERDECKT ZEHN" No other readable text.
+
+=== BILD 12 — SZENE 9 / PHASE 1 ===
+Show a neutral round character with one red criticism note circling repeatedly around its head along a thick looping arrow. Each loop leaves a deeper red track, symbolizing repetition strengthening the thought. Dark blue background. Add the exact German text: "WIEDERHOLUNG VERSTÄRKT" No other readable text.
+
+=== BILD 13 — SZENE 9 / PHASE 2 ===
+Close-up of repeated red comment cards leaving deeper circular tracks around the neutral round character, like a thought loop becoming more established. Keep the dark blue background and strong contrast. No readable text anywhere.
+
+=== BILD 14 — SZENE 10 ===
+Show a balance scale. On one side place one red criticism card attached to a large megaphone; on the other side place several ordinary green praise cards. The megaphone makes criticism look louder without making it objectively heavier. A neutral round character studies the scale. Warm yellow background. Add the exact German text: "WICHTIGER ODER LAUTER?" No other readable text.
+
+=== BILD 15 — SZENE 11 ===
+Show a simple filter machine with one red criticism card entering from the left and passing through three clean checkpoint symbols: target, check mark, wrench. A neutral round character waits on the other side. Muted green background. Add the exact German text: "IST SIE NÜTZLICH?" No other readable text.
+
+=== BILD 16 — SZENE 12 ===
+Show a neutral round character spreading a full set of feedback cards across a table: many green and neutral cards plus one red criticism card. The character looks at the whole set instead of only the red card. Calm blue background. Add the exact German text: "DAS GANZE FEEDBACK" No other readable text.
+
+=== BILD 17 — SZENE 13 ===
+Show a large simple mosaic made of many feedback tiles forming a complete picture. One tile is red but only one small part of the whole mosaic. A neutral round character stands beside the completed image looking calmer. Soft purple background. Add the exact German text: "NICHT DAS GANZE BILD" No other readable text.

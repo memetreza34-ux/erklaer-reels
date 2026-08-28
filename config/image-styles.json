@@ -1,78 +1,177 @@
 {
-  "mandatoryPolicyFile": "VISUAL_WORLD_POLICY.md",
+  "visualWorldMode": "fixed",
+  "fixedVisualWorld": "modern-countryball-explainer",
   "newReelAllowedStyleIds": [
-    "human-editorial-cartoon",
-    "round-country-characters",
-    "visual-metaphor"
+    "modern-countryball-explainer"
   ],
   "styles": [
     {
-      "id": "human-editorial-cartoon",
-      "name": "Menschliche Cartoonfiguren / Köpfe",
-      "allowedForNewReels": true,
-      "bestFor": ["Psychologie", "Gesellschaft", "Verhalten", "Wahrnehmung", "Emotionen", "soziale Situationen"],
-      "description": "Reifer handgezeichneter 2D-Editorial-Cartoon mit vereinfachten Menschen, starken Gesichtsausdrücken, großen klar lesbaren Köpfen und Gesichtern, Close-ups, Körpersprache und bei Bedarf Gedanken- oder Kopfmetaphern. Besonders stark, wenn menschliche Gefühle, Irrtümer, Wahrnehmung oder Verhalten der Kern des Themas sind."
-    },
-    {
-      "id": "round-country-characters",
-      "name": "Runde Länder- und Kugelfiguren",
-      "allowedForNewReels": true,
-      "bestFor": ["Politik", "Länder", "Geografie", "Geschichte", "Grenzen", "Bündnisse", "internationale Beziehungen"],
-      "description": "Die komplette Figur ist eine runde Kugel mit einfachen weißen Augen und höchstens kleinen Armen und Beinen. Bei Ländern liegt die passende Flaggen- oder Regionsgestaltung direkt auf der Kugel. Keine menschlichen Köpfe, Hälse oder Oberkörper. Reifer sauberer 2D-Editorial-Stil mit kräftigen Konturen, klaren Karten, Grenzen und Beziehungen zwischen Staaten."
-    },
-    {
-      "id": "visual-metaphor",
-      "name": "Starke visuelle Metapher",
-      "allowedForNewReels": true,
-      "bestFor": ["abstrakte Begriffe", "unsichtbare Mechanismen", "Ursache-Wirkung", "Systeme", "soziale Zusammenhänge"],
-      "description": "Ein klarer Gegenstand oder eine starke Szene erklärt den Begriff sofort, zum Beispiel Anker, Magnet, Waage, Domino, Labyrinth, Mauer, Kette, Puzzle, Trichter oder Brücke. Nur wählen, wenn die Metapher das konkrete Thema tatsächlich schneller und stärker erklärt als die beiden anderen Top-3-Welten. Kein Standard-Fallback."
-    },
-    {
-      "id": "personified-biology",
-      "name": "Personifizierte Organe und Zellen",
-      "allowedForNewReels": false,
-      "legacyOnly": true,
-      "bestFor": ["Körper", "Biologie", "Gesundheitsgrundlagen"],
-      "description": "Legacy-Stil. Darf bei bestehenden älteren Reels weiter lesbar bleiben, ist für neue Reels aber nicht autonom erlaubt."
-    },
-    {
-      "id": "comparison-panels",
-      "name": "Panel- und Vergleichsstil",
-      "allowedForNewReels": false,
-      "legacyOnly": true,
-      "bestFor": ["Vergleiche", "Kategorien", "Systeme"],
-      "description": "Legacy-Stil. Darf bei bestehenden älteren Reels weiter lesbar bleiben, ist für neue Reels aber nicht autonom erlaubt. Vergleiche müssen bei neuen Reels innerhalb einer der drei Top-Welten gelöst werden."
-    },
-    {
-      "id": "progressive-build-up",
-      "name": "Build-up-Sequenz",
-      "allowedForNewReels": false,
-      "legacyOnly": true,
-      "bestFor": ["Prozesse", "Kombinationen", "schrittweise Entwicklungen"],
-      "description": "Legacy-Stil. Darf bei bestehenden älteren Reels weiter lesbar bleiben, ist für neue Reels aber nicht autonom erlaubt. Ein Build-up darf nur als Kompositionsprinzip innerhalb einer der drei Top-Welten vorkommen."
+      "id": "modern-countryball-explainer",
+      "name": "Modern Countryball Explainer",
+      "active": true,
+      "scope": "all-new-reels-all-topics",
+      "promptLanguage": "en",
+      "visibleTextLanguage": "de",
+      "description": "Genau eine feste 9:16-Reel-Bildwelt. Wenn Akteure vorkommen, sind es runde Kugelfiguren mit einfachen weißen Augen, dicken schwarzen Konturen und flächigen Farben. Eine Kugelfigur ist nicht in jedem Bild Pflicht; Objekte, Mechanismen, Karten und Umgebungen dürfen die Szene tragen, wenn sie die Aussage besser erklären.",
+      "characterSystem": {
+        "defaultActor": "round-countryball-sphere-when-actor-is-useful",
+        "characterAnchor": "perfectly-round-ball-body-with-simple-eyes",
+        "allowedActorTypes": [
+          "single-round-ball-character",
+          "small-group-of-ball-characters",
+          "ball-character-with-object-or-mechanism",
+          "map-with-borders-arrows-or-regions",
+          "concrete-object-or-mechanism",
+          "document-building-or-tool",
+          "simple-contextual-environment"
+        ],
+        "actorNotMandatoryWhenObjectIsClearer": true,
+        "doNotForceDecorativeActor": true,
+        "roundBallGeometryRequiredWhenActorAppears": true,
+        "ballBodyShape": "perfect-circle-or-sphere-never-oval-bean-or-egg",
+        "separateHeadForbidden": true,
+        "ballFace": "simple-white-expressive-eyes-with-black-pupils-minimal-features",
+        "limbs": "optional-small-simple-arms-hands-or-feet-only-when-action-requires",
+        "flagsOnlyWhenGeographicallyRelevant": true,
+        "neutralSolidColourBallsForNonGeographicActors": true,
+        "humanHeadCharactersForbidden": true,
+        "humanoidCartoonPeopleForbidden": true,
+        "ovalOrBeanShapedBodiesForbidden": true,
+        "stickFiguresForbidden": true,
+        "preferConcreteObjectOrEnvironmentWhenNoActorIsNeeded": true,
+        "objectsMustShareSameOutlineAndShapeLanguage": true
+      },
+      "rendering": {
+        "dimension": "2d",
+        "look": "clean-flat-2d-vector-countryball-cartoon",
+        "outlines": "thick-confident-black",
+        "detailDensity": "low-to-medium",
+        "colors": "flat-or-very-lightly-shaded-readable",
+        "shadows": "subtle-soft",
+        "texture": "none-or-very-light-paper-grain",
+        "lightingDefault": "clear-graphic-not-cinematic",
+        "photorealism": false,
+        "glossy3d": false,
+        "sterileVectorInfographic": false,
+        "painterlyConceptArt": false
+      },
+      "composition": {
+        "aspectRatio": "9:16",
+        "smartphoneFirst": true,
+        "sceneFirst": true,
+        "clarityFirst": true,
+        "oneClearMoment": true,
+        "oneDominantFocalSubject": true,
+        "supportingPropsMax": 3,
+        "singleBallCloseUpAllowed": true,
+        "ballGroupAllowed": true,
+        "mapViewAllowed": true,
+        "objectOnlySceneAllowed": true,
+        "closeUpsAllowed": true,
+        "offCenterFramingAllowed": true,
+        "simpleDepthAllowed": true,
+        "simpleWideShotsAllowed": true,
+        "fullFrame": true,
+        "noSubtitleSafeZone": true,
+        "avoidMultiPanel": true,
+        "avoidRepeatedCenteredTemplate": true,
+        "understandableWithinSeconds": 1,
+        "simplifyWhenMeaningRequiresStudy": true
+      },
+      "background": {
+        "type": "calm-solid-colour-field-or-lightly-textured-flat-colour",
+        "colorMayVaryByScene": true,
+        "minimalContextualElementAllowed": true,
+        "realisticDetailedInteriorDefault": false,
+        "complexRealisticScenery": false,
+        "darkCinematicLightingDefault": false
+      },
+      "topicAdaptation": {
+        "topicMayChangeSubjectMatter": true,
+        "topicMayChangeVisualWorld": false,
+        "topicSpecificSubWorldsForbidden": true,
+        "technicalCutawayDefault": false,
+        "engineeringSchematicDefault": false,
+        "blueprintDefault": false,
+        "technicalDetailAllowedOnlyWhenRequiredByExplanation": true,
+        "technicalDetailMustRemainSimplified": true,
+        "countryOrInstitutionRepresentation": "flag-marked-or-neutral-balls-with-maps-borders-documents-buildings"
+      },
+      "visibleText": {
+        "language": "de",
+        "preferredWords": {
+          "min": 1,
+          "max": 5
+        },
+        "style": "bold-high-contrast-high-readability",
+        "preferredPlacement": "composition-dependent",
+        "exactOnly": true,
+        "noTextWhenUnrequested": true,
+        "neverDuplicateSameHeadlineTopAndBottom": true
+      },
+      "forbidden": [
+        "human-heads-on-ball-bodies",
+        "humanoid-cartoon-people",
+        "oval-bean-or-egg-shaped-characters",
+        "stick-figures",
+        "photorealistic-people",
+        "realistic-photo-faces",
+        "anime",
+        "manga",
+        "clay-style",
+        "glossy-3d",
+        "pixar-like-rendering",
+        "cinematic-photorealism",
+        "painterly-concept-art",
+        "stock-photo-aesthetic",
+        "complex-realistic-scenery",
+        "highly-detailed-interiors-as-default",
+        "technical-cutaway-world-as-default",
+        "engineering-blueprint-world-as-default",
+        "topic-specific-sub-visual-worlds",
+        "generic-icon-collage",
+        "generic-floating-reaction-cards",
+        "generic-praise-criticism-cards",
+        "speech-bubble-ring-layout",
+        "ui-like-box-layout",
+        "repeated-centered-character-plus-icons-template",
+        "unnecessary-arrow-chains",
+        "excessive-small-details",
+        "unrequested-readable-text",
+        "english-visible-text",
+        "duplicated-headline",
+        "youtube-stick-figure-look",
+        "16:9-composition",
+        "logos",
+        "watermarks"
+      ]
     }
   ],
-  "selectionRule": "Für jedes neue Reel zuerst das vollständige Script schreiben. Danach zwingend VISUAL_WORLD_POLICY.md lesen und ausschließlich human-editorial-cartoon, round-country-characters oder visual-metaphor gegeneinander prüfen. Mindestens die letzten 5 Reels und deren visualStyleId berücksichtigen. Die thematisch stärkste, am schnellsten verständliche und scroll-stoppendste Welt wählen, dabei Wiederholungen aktiv vermeiden. visual-metaphor ist ausdrücklich kein Standard-Fallback. Dieselbe Welt wie im direkt vorherigen Reel nur wählen, wenn sie klar besser passt; die konkrete Begründung muss in visualStyleReason dokumentiert werden.",
+  "selectionRule": "Für jedes Reel gilt genau eine Bildwelt: Modern Countryball Explainer. Wenn ein Akteur vorkommt, ist er eine runde Kugelfigur mit einfachen weißen Augen und ohne separaten Kopf; Flaggen nur bei echter geografischer Relevanz, sonst neutrale Kugeln. Eine Kugelfigur ist nicht in jedem Bild Pflicht. Wenn ein konkretes Objekt, ein Mechanismus, eine Karte oder eine Umgebung klarer erklärt, trägt dieses Motiv die Szene allein und behält dieselbe Kontur- und Formsprache. Es gibt keine zweite Reel-Welt und keine themenspezifischen Unter-Bildwelten.",
+  "goldenReferencePaths": [],
+  "styleBiblePath": "knowledge/fixed-visual-world.md",
   "diversityRule": {
     "recentReelsToInspect": 5,
     "avoidImmediateRepeat": true,
-    "dominanceThresholdInLastFive": 3,
     "forcedRotation": false,
-    "sameStyleRepeatRequiresSpecificReason": true,
-    "defaultFallbackStyle": null
+    "fixedVisualWorldOverridesDiversity": true,
+    "guidance": "Nur Motiv, Perspektive, Bildausschnitt und Umgebung variieren. Die eine Modern-Countryball-Explainer-Formsprache bleibt immer gleich."
   },
   "selectionCriteria": [
-    "Themenpassung",
     "1-Sekunden-Verständlichkeit",
-    "Cover-und-Hook-Stärke",
-    "Emotionalität-und-Wiedererkennung",
-    "Szenenvielfalt",
-    "visuelle Klarheit",
-    "Abwechslung-zu-den-letzten-Reels"
+    "perfekt runde Kugelgeometrie wenn ein Akteur vorkommt",
+    "keine Kugelfigur erzwingen wenn Objekt oder Umgebung klarer ist",
+    "keine menschlichen Köpfe, humanoiden Figuren oder Stick-Figuren",
+    "eine dominante Kernaussage",
+    "einfache physische Szene oder klare Ursache-Folge-Beziehung",
+    "niedrige bis mittlere Detaildichte",
+    "starke Social-Media-Lesbarkeit",
+    "keine themenbedingte Unter-Bildwelt",
+    "klare Trennung von der YouTube-Bildwelt"
   ],
   "crossStyleTextRule": {
     "preferred": true,
     "language": "de",
-    "guidance": "Wo es die Aussage verbessert, integriere sehr kurzen deutschen Bildtext. Ein einzelnes Wort oder 1–5 Wörter reichen. Der Text darf je nach Szene klein, mittel oder groß sein und natürlich auf Schildern, Karten, Dokumenten, Displays, Gegenständen oder als kurze Überschrift erscheinen. Nicht in jede Szene zwingen und Untertitel nicht wortgleich wiederholen."
+    "guidance": "Wo es die Aussage verbessert, integriere kurzen deutschen Bildtext. Ein einzelnes Wort oder 1–5 Wörter reichen. Sichtbarer Text ist ausschließlich Deutsch; Prompts bleiben Englisch. Text nicht erzwingen und dieselbe Headline nie doppeln."
   }
 }

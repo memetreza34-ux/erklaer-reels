@@ -1,5 +1,5 @@
 {
-  "version": 8,
+  "version": 12,
   "composition": {
     "width": 1080,
     "height": 1920,
@@ -13,29 +13,14 @@
     "leftPercent": 6,
     "rightPercent": 6,
     "topPercent": 8,
-    "bottomPercent": 18,
-    "subtitleVerticalPercent": {
-      "min": 58,
-      "max": 58,
-      "default": 58
-    }
+    "bottomPercent": 18
   },
-  "subtitlePalette": {
-    "textColor": "#F5F7FA",
-    "highlightColor": "#B7794A",
-    "highlightCurrentWord": true,
-    "speakerSyncedWordHighlight": true,
-    "completeSpokenTextCoverageRequired": true,
-    "backgroundColor": "transparent",
-    "textStrokeColor": "rgba(0, 0, 0, 0.92)"
-  },
+  "subtitlesEnabled": false,
   "manualChecksByKind": {
     "scene": [
       "sceneMeaningMatchesNarration",
       "sceneMatchesVisualIdea",
       "sceneOrderConfirmed",
-      "visualWorldMatch",
-      "characterModelConsistent",
       "mainSubjectSafe",
       "naturalContinuousComposition",
       "oneClearMoment",
@@ -43,22 +28,17 @@
       "noArtificialCenterGap",
       "plannedGermanTextExact",
       "noUnexpectedReadableText",
-      "subtitleCollisionFree",
-      "subtitleReadableWithoutBox",
       "platformUiSafe",
-      "motionSafe",
-      "styleConsistent"
+      "motionSafe"
     ],
     "cover": [
       "coverMatchesTopic",
       "headlineExactAndReadable",
-      "visualWorldMatch",
       "mainSubjectSafe",
       "naturalContinuousComposition",
       "noArtificialCenterGap",
       "noUnexpectedReadableText",
-      "platformUiSafe",
-      "styleConsistent"
+      "platformUiSafe"
     ]
   },
   "manualEvidence": {

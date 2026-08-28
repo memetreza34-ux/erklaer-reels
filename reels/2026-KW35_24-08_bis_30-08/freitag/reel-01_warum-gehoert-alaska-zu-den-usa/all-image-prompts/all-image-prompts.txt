@@ -1,0 +1,129 @@
+GOOGLE FLOW – KOMPLETTER SERIELLER BILDLAUF
+
+AUFTRAG
+Erzeuge für dieses Reel genau 18 Bilder: Bild 00 als Cover und danach Bild 01 bis Bild 17 für die 17 geplanten Bildmomente der 13 Szenen.
+
+WICHTIG – DIESE EINE NACHRICHT IST DIE KOMPLETTE FREIGABE
+Sobald dieser Gesamtprompt einmal abgesendet wurde, arbeitest du selbstständig bis Bild 17 fertig ist. Frage NICHT nach Go, Weiter, OK, Bestätigung oder Erlaubnis.
+
+STRENG SERIELL – NIE PARALLEL
+Zu jedem Zeitpunkt darf genau EINE Bildgenerierung aktiv, ausstehend, queued oder in Bearbeitung sein.
+Für jedes Bild zwingend:
+1. Nur den aktuellen Bildabschnitt bearbeiten.
+2. Genau EINEN Bildgenerator-Aufruf auslösen. Niemals zwei oder mehr Generierungsaktionen im selben Agent-Schritt, Tool-Batch oder Turn.
+3. Warten, bis dieses eine Bild sichtbar vollständig fertig ist. Solange der Status unklar ist oder noch eine Generierung läuft: WARTEN, nicht das nächste Bild starten.
+4. Sofort exakt in den vorgesehenen Namen umbenennen.
+5. Prüfen, dass die Umbenennung erfolgreich ist und genau dieses Bild fertig vorliegt.
+6. Erst NACH dieser Bestätigung automatisch den nächsten Bildabschnitt ausführen.
+Die späteren Bildprompts stehen zwar bereits in dieser Nachricht, sind aber bis zum Abschluss des aktuellen Bildes NICHT zur Ausführung freigegeben.
+Keine Batches, keine Queue, kein paralleles Tool-Batching, kein gleichzeitiges Starten, keine Mehrfach-Generierung und keine Ansammlung unbenannter Bilder.
+Falls versehentlich ein zweiter oder dritter Job gestartet wurde: keine weiteren Jobs starten; spätere parallele Jobs abbrechen und beim ersten noch nicht sauber abgeschlossenen Bild fortsetzen.
+
+DATEINAMEN
+Bild 00.png = Cover
+Bild 01.png = Szene 1
+Bild 02.png = Szene 2
+Bild 03.png = Szene 3, Bildphase 1
+Bild 04.png = Szene 3, Bildphase 2
+Bild 05.png = Szene 4
+Bild 06.png = Szene 5, Bildphase 1
+Bild 07.png = Szene 5, Bildphase 2
+Bild 08.png = Szene 6
+Bild 09.png = Szene 7, Bildphase 1
+Bild 10.png = Szene 7, Bildphase 2
+Bild 11.png = Szene 8
+Bild 12.png = Szene 9, Bildphase 1
+Bild 13.png = Szene 9, Bildphase 2
+Bild 14.png = Szene 10
+Bild 15.png = Szene 11
+Bild 16.png = Szene 12
+Bild 17.png = Szene 13
+
+STYLE-MASTER
+Bild 00.png wird zuerst vollständig erzeugt. Das fertige Bild 00.png ist danach die verbindliche visuelle Referenz für ALLE weiteren Bilder: gleiche Palette, Papiertextur, Konturstärke, Lichtstimmung, Detailqualität und dasselbe perfekt runde Kugel-/Country-Ball-Charakterdesign. Der Cover-Hook darf NICHT automatisch auf spätere Bilder kopiert werden.
+
+ARBEITSLABELS SIND NIEMALS BILDINHALT
+BILD-Nummern, COVER, SZENE, BILDPHASE, DATEINAME, Dateinamen und diese Workflow-Anweisungen sind nur Steuertext. Sie dürfen niemals im generierten Bild erscheinen.
+
+TEXTREGEL
+Nur der im jeweiligen Prompt ausdrücklich verlangte deutsche Text darf sichtbar erscheinen. Kein zusätzlicher englischer Text, keine Fantasiewörter, keine technischen Labels, keine Logos und keine Wasserzeichen.
+
+WELTREGEL
+Jede anthropomorphe Länderfigur ist eine vollständige perfekt runde Country-Ball-/Kugelfigur mit vereinfachtem Flaggenmuster, einfachen weißen Augen und höchstens winzigen Armen/Beinen. Länderumrisse, Kartenformen und territoriale Silhouetten dürfen nur gesichtslose Hintergrund-/Erklärgrafik sein. Niemals Augen, Mund oder Gliedmaßen auf einer Kartenform.
+
+ENDE
+Erst nachdem Bild 00 bis Bild 17 vollständig erzeugt, korrekt umbenannt und die Nummerierung geprüft wurden, alle fertigen Bilder gemeinsam in den vorgesehenen Sammelordner legen. Nicht während der laufenden Generierung einzelne Bilder dorthin verschieben.
+
+────────────────────────────────────────
+
+BILD 00 – COVER
+DATEINAME NACH FERTIGSTELLUNG: Bild 00.png
+Vertical 9:16 premium mature 2D editorial country-character cover illustration for a German explainer Reel about why Alaska belongs to the United States even though Canada lies between Alaska and the contiguous United States. Warm off-white textured paper background, deep navy borders and map shapes, muted rust, mustard, cobalt and forest-green accents, bold clean hand-inked outlines, flat geometric shading, subtle grain, high contrast, sophisticated documentary tone, not childish. Show a clear faceless North America map with the lower 48 United States at the bottom, Canada dominating the center and Alaska separated in the northwest. Use clearly COMPLETE PERFECTLY ROUND USA country balls at the lower 48 and Alaska, visually connected across Canada with one strong route/history motif. Canada may appear as a faceless map area or as its own separate perfectly round Canada country ball, never as a map-shaped character. Add one large perfectly readable German headline exactly: "WARUM GEHÖRT ALASKA ZU DEN USA?" No other readable text, no English, no logos, no watermark. No human heads or torsos, no 3D, no photorealism. Use the full 9:16 composition naturally; no subtitle safe-zone or empty subtitle band. This finished Bild 00.png is the binding master reference for palette, round country-ball design, paper texture, outline weight, lighting and detail quality of all later images.
+
+BILD 01 – SZENE 1
+DATEINAME NACH FERTIGSTELLUNG: Bild 01.png
+Match Bild 00.png exactly. Vertical 9:16 premium mature 2D editorial country-character illustration with the same warm off-white paper texture, deep navy map shapes, muted rust, mustard, cobalt and forest-green accents, bold hand-inked outlines, flat geometric shading and subtle grain. A simplified faceless North America map shows the contiguous United States at the bottom, Canada in the middle and Alaska far northwest, with separate perfectly round USA country balls linked across Canada. Make the geographic separation instantly readable in one second. Integrate the exact German text "USA – KANADA – ALASKA?" as the only readable phrase. No other readable text, no English, no logos, no watermark, no 3D, no photorealism, no subtitle band.
+
+BILD 02 – SZENE 2
+DATEINAME NACH FERTIGSTELLUNG: Bild 02.png
+Match Bild 00.png exactly. Vertical 9:16 premium mature 2D editorial country-character illustration. Show Alaska highlighted on an old-style faceless North Pacific map while a separate perfectly round Russia country ball reaches visually east across the Bering region. Make the former Russian ownership unmistakable without turning any map outline into a character. Integrate the exact German text "FRÜHER RUSSISCH" as the only readable phrase. No other readable text, no English, no logos, no watermark, no 3D, no photorealism, no subtitle band.
+
+BILD 03 – SZENE 3 – BILDPHASE 1
+DATEINAME NACH FERTIGSTELLUNG: Bild 03.png
+Match Bild 00.png exactly. Vertical 9:16 premium mature 2D editorial country-character illustration. A perfectly round Russia country ball looks across a huge icy distance toward sparse trading posts in Alaska. Emphasize remoteness, cold, ocean distance and very limited settlement with one strong composition rather than a busy infographic. Integrate the exact German text "WEIT WEG" as the only readable phrase. No other readable text, no English, no logos, no watermark, no 3D, no photorealism, no subtitle band.
+
+BILD 04 – SZENE 3 – BILDPHASE 2
+DATEINAME NACH FERTIGSTELLUNG: Bild 04.png
+Match Bild 00.png exactly. Vertical 9:16 premium mature 2D editorial country-character illustration. Zoom into a few small coastal trading posts surrounded by vast empty Alaskan territory, with supply crates, a long sea route and difficult logistics showing the expense of maintaining Russian presence. If Russia appears as a character, it remains a complete perfectly round country ball. Integrate the exact German text "HOHE KOSTEN" as the only readable phrase. No other readable text, no English, no logos, no watermark, no 3D, no photorealism, no subtitle band.
+
+BILD 05 – SZENE 4
+DATEINAME NACH FERTIGSTELLUNG: Bild 05.png
+Match Bild 00.png exactly. Vertical 9:16 premium mature 2D editorial country-character illustration. A perfectly round Russia country ball studies a restrained post-Crimean-War strategy map: Alaska appears distant, expensive and exposed across the Pacific, while Britain/Canada is geographically closer. Maps remain faceless support graphics; any country characters are separate round spheres. Integrate the exact German text "WENIGER ATTRAKTIV" as the only readable phrase. No other readable text, no English, no logos, no watermark, no 3D, no photorealism, no subtitle band.
+
+BILD 06 – SZENE 5 – BILDPHASE 1
+DATEINAME NACH FERTIGSTELLUNG: Bild 06.png
+Match Bild 00.png exactly. Vertical 9:16 premium mature 2D editorial country-character illustration. Perfectly round Russia and United States country balls face each other across a treaty table with a clear faceless Alaska map placed between them. Make the 1867 sale feel like a restrained historical diplomatic transaction. Integrate the exact German text "VERKAUF 1867" as the only readable phrase. No other readable text, no English, no logos, no watermark, no 3D, no photorealism, no subtitle band.
+
+BILD 07 – SZENE 5 – BILDPHASE 2
+DATEINAME NACH FERTIGSTELLUNG: Bild 07.png
+Match Bild 00.png exactly. Vertical 9:16 premium mature 2D editorial country-character illustration. The faceless Alaska map visibly changes from Russian control to United States control through a clean handover arrow and treaty-document motif. Russia and USA, if shown, remain separate complete perfectly round country balls. Integrate the exact German text "RUSSLAND → USA" as the only readable phrase. No other readable text, no English, no logos, no watermark, no 3D, no photorealism, no subtitle band.
+
+BILD 08 – SZENE 6
+DATEINAME NACH FERTIGSTELLUNG: Bild 08.png
+Match Bild 00.png exactly. Vertical 9:16 premium mature 2D editorial country-character illustration. A large faceless Alaska silhouette fills much of the frame while a small historical payment document and restrained money motif emphasize the purchase price. Do not put a face on the Alaska map shape; if a character is needed, add a separate complete perfectly round USA/Alaska country ball. Integrate the exact German text "7,2 MILLIONEN $" as the only readable phrase. No other readable text, no English, no logos, no watermark, no 3D, no photorealism, no subtitle band.
+
+BILD 09 – SZENE 7 – BILDPHASE 1
+DATEINAME NACH FERTIGSTELLUNG: Bild 09.png
+Match Bild 00.png exactly. Vertical 9:16 premium mature 2D editorial country-character illustration. A clear faceless North America map visually sandwiches Canada between the contiguous United States and Alaska. Use separate perfectly round USA country balls for the lower 48 and Alaska so both areas are clearly the same country while remaining geographically separated. Integrate the exact German text "KANADA DAZWISCHEN" as the only readable phrase. No other readable text, no English, no logos, no watermark, no 3D, no photorealism, no subtitle band.
+
+BILD 10 – SZENE 7 – BILDPHASE 2
+DATEINAME NACH FERTIGSTELLUNG: Bild 10.png
+Match Bild 00.png exactly. Vertical 9:16 premium mature 2D editorial country-character illustration. Zoom onto the land route from the lower 48 states to Alaska, which must cross Canada, with one bold directional path and clear border crossings. Maps remain faceless; any country characters are separate complete perfectly round balls. Integrate the exact German text "DURCH KANADA" as the only readable phrase. No other readable text, no English, no logos, no watermark, no 3D, no photorealism, no subtitle band.
+
+BILD 11 – SZENE 8
+DATEINAME NACH FERTIGSTELLUNG: Bild 11.png
+Match Bild 00.png exactly. Vertical 9:16 premium mature 2D editorial country-character illustration. Explain the geographic idea of an exclave with a main territory and a detached territory separated by another country. Use faceless map pieces for geography and a separate perfectly round country ball as the character. Make the detached relationship instantly understandable without childish diagram styling. Integrate the exact German text "EXKLAVE" as the only readable phrase. No other readable text, no English, no logos, no watermark, no 3D, no photorealism, no subtitle band.
+
+BILD 12 – SZENE 9 – BILDPHASE 1
+DATEINAME NACH FERTIGSTELLUNG: Bild 12.png
+Match Bild 00.png exactly. Vertical 9:16 premium mature 2D editorial country-character illustration. A perfectly round United States country ball stands beside Alaska with three clean visual cues: access to the North Pacific, natural resources and a strategic northern position. Keep the composition editorial and readable, not a generic icon grid. Integrate the exact German text "PAZIFIK + ROHSTOFFE" as the only readable phrase. No other readable text, no English, no logos, no watermark, no 3D, no photorealism, no subtitle band.
+
+BILD 13 – SZENE 9 – BILDPHASE 2
+DATEINAME NACH FERTIGSTELLUNG: Bild 13.png
+Match Bild 00.png exactly. Vertical 9:16 premium mature 2D editorial country-character illustration. A wider faceless northern-Pacific map shows Alaska projecting toward Asia with restrained shipping, defense and resource cues, emphasizing its strategic location. Any USA or Russia characters remain separate complete perfectly round country balls. Integrate the exact German text "STRATEGISCHE LAGE" as the only readable phrase. No other readable text, no English, no logos, no watermark, no 3D, no photorealism, no subtitle band.
+
+BILD 14 – SZENE 10
+DATEINAME NACH FERTIGSTELLUNG: Bild 14.png
+Match Bild 00.png exactly. Vertical 9:16 premium mature 2D editorial country-character historical illustration. At Sitka, show perfectly round Russia and United States country balls beside two flags and a faceless Alaska map changing administrative control. Keep the handover restrained, documentary and clearly historical. Integrate the exact German text "18. OKTOBER 1867" as the only readable phrase. No other readable text, no English, no logos, no watermark, no 3D, no photorealism, no subtitle band.
+
+BILD 15 – SZENE 11
+DATEINAME NACH FERTIGSTELLUNG: Bild 15.png
+Match Bild 00.png exactly. Vertical 9:16 premium mature 2D editorial country-character illustration. Show a clean timeline from 1867 territory status to a prominent 1959 star joining the United States, with a complete perfectly round Alaska/USA country ball entering the statehood lineup. Keep the timeline integrated into the editorial scene rather than looking like a flat slide. Integrate the exact German text "BUNDESSTAAT SEIT 1959" as the only readable phrase. No other readable text, no English, no logos, no watermark, no 3D, no photorealism, no subtitle band.
+
+BILD 16 – SZENE 12
+DATEINAME NACH FERTIGSTELLUNG: Bild 16.png
+Match Bild 00.png exactly. Vertical 9:16 premium mature 2D editorial country-character illustration. Create a mature map analogy showing a detached regional area far from its home country, with the route forced through a neighboring country. Use complete perfectly round country balls as characters and faceless map areas only as geography. Make the viewer immediately feel how unusual the separation is. Integrate the exact German text "WIE WÜRDE SICH DAS ANFÜHLEN?" as the only readable phrase. No other readable text, no English, no logos, no watermark, no 3D, no photorealism, no subtitle band.
+
+BILD 17 – SZENE 13
+DATEINAME NACH FERTIGSTELLUNG: Bild 17.png
+Match Bild 00.png exactly. Vertical 9:16 premium mature 2D editorial country-character illustration. A final faceless North America map overlays the 1867 treaty route and modern borders, visually connecting the Alaska-USA relationship to history rather than distance. Use separate complete perfectly round USA and Russia country balls only if needed; never place a face on the map. Create a satisfying documentary ending with one dominant visual idea. Integrate the exact German text "GESCHICHTE FORMT GRENZEN" as the only readable phrase. No other readable text, no English, no logos, no watermark, no 3D, no photorealism, no subtitle band.

@@ -1,13 +1,3 @@
-// Überträgt echte Wortzeitstempel aus einem Whisper-Lauf in die Word-Sync-Arbeitsdatei
-// und leitet daraus die Szenen-Cues ab.
-//
-// Grundregeln:
-//   - Es werden ausschließlich gemessene Zeiten übernommen. Wörter ohne sichere
-//     Zuordnung bleiben null und gelten als nicht bestätigt; sie werden gemeldet,
-//     nicht geraten.
-//   - Wortzeiten werden nicht an Szenengrenzen beschnitten. Die Szenengrenzen
-//     folgen den Wortzeiten, nicht umgekehrt.
-
 import fs from 'fs';
 import path from 'path';
 
@@ -21,53 +11,60 @@ const reelDir = process.argv[3];
 const codexPath = path.join(reelDir, 'subtitles/codex-word-sync.json');
 const audioPath = path.join(reelDir, 'timeline/audio-sync.json');
 
+const whisperRaw = JSON.parse(fs.readFileSync(whisperPath, 'utf8'));
 const codex = JSON.parse(fs.readFileSync(codexPath, 'utf8'));
 const audio = JSON.parse(fs.readFileSync(audioPath, 'utf8'));
-const whisperRaw = JSON.parse(fs.readFileSync(whisperPath, 'utf8'));
 
-const normalize = (text) => String(text ?? '').toLowerCase().replace(/[^a-z0-9äöüß]/g, '');
+const normalize = (text) => String(text || '')
+  .toLocaleLowerCase('de-DE')
+  .replace(/[^a-z0-9äöüß]/g, '');
 
-function whisperWords(source) {
+// Number(null) und Number('') sind 0, nicht NaN. Ohne diese Vorprüfung würde ein
+// fehlender Zeitstempel als gültige Sekunde 0 durchgehen und die Guards unten wirkungslos machen.
+const finite = (value) => {
+  if (value === null || value === undefined || value === '') return null;
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? parsed : null;
+};
+
+function whisperWordList(source) {
   if (Array.isArray(source)) return source;
   if (Array.isArray(source?.words)) return source.words;
   if (Array.isArray(source?.segments)) return source.segments.flatMap((segment) => segment.words ?? []);
   return [];
 }
 
-const spoken = whisperWords(whisperRaw)
+const spoken = whisperWordList(whisperRaw)
   .map((word) => ({
-    text: normalize(word.word ?? word.text),
-    startSeconds: Number(word.start ?? word.startSeconds),
-    endSeconds: Number(word.end ?? word.endSeconds)
+    normalized: normalize(word.word ?? word.text),
+    start: finite(word.start ?? word.startSeconds),
+    end: finite(word.end ?? word.endSeconds)
   }))
-  .filter((word) => word.text && Number.isFinite(word.startSeconds) && Number.isFinite(word.endSeconds));
+  .filter((word) => word.normalized && word.start !== null && word.end !== null && word.end > word.start);
 
-if (!spoken.length) {
-  console.error('Die Whisper-Datei enthält keine verwertbaren Wortzeitstempel.');
-  process.exit(1);
-}
-
-function levenshtein(a, b) {
-  if (!a.length) return b.length;
-  if (!b.length) return a.length;
+const distance = (a, b) => {
+  if (a.length === 0) return b.length;
+  if (b.length === 0) return a.length;
   let previous = Array.from({ length: a.length + 1 }, (_, index) => index);
   for (let i = 1; i <= b.length; i += 1) {
     const current = [i];
     for (let j = 1; j <= a.length; j += 1) {
-      current[j] = b[i - 1] === a[j - 1]
+      current[j] = b.charAt(i - 1) === a.charAt(j - 1)
         ? previous[j - 1]
         : Math.min(previous[j - 1] + 1, current[j - 1] + 1, previous[j] + 1);
     }
     previous = current;
   }
   return previous[a.length];
-}
+};
 
-const isFuzzyMatch = (a, b) => {
-  if (!a || !b) return false;
-  if (a === b) return true;
-  const distance = levenshtein(a, b);
-  return distance <= 1 || (a.length > 5 && distance <= 2) || (a.length > 8 && distance <= 3);
+const fuzzyConfidence = (target, candidate) => {
+  if (!target || !candidate) return 0;
+  if (target === candidate) return 1;
+  const dist = distance(target, candidate);
+  const longest = Math.max(target.length, candidate.length, 1);
+  const score = 1 - dist / longest;
+  return score >= 0.85 ? Math.max(0.85, Math.min(0.99, score)) : 0;
 };
 
 // Längste gemeinsame Teilfolge als Gerüst. Anders als eine laufende Suche mit festem
@@ -88,22 +85,27 @@ function longestCommonSubsequence(scriptTokens, spokenTokens) {
   let i = 0;
   let j = 0;
   while (i < n && j < m) {
-    if (scriptTokens[i] === spokenTokens[j]) { pairs.push([i, j]); i += 1; j += 1; }
-    else if (table[i + 1][j] >= table[i][j + 1]) i += 1;
-    else j += 1;
+    if (scriptTokens[i] === spokenTokens[j]) {
+      pairs.push([i, j]);
+      i += 1;
+      j += 1;
+    } else if (table[i + 1][j] >= table[i][j + 1]) {
+      i += 1;
+    } else {
+      j += 1;
+    }
   }
   return pairs;
 }
 
-const scriptTokens = codex.words.map((word) => normalize(word.text));
-const spokenTokens = spoken.map((word) => word.text);
-const anchors = longestCommonSubsequence(scriptTokens, spokenTokens);
+const codexWords = codex.words ?? [];
 
-for (const word of codex.words) {
+for (const word of codexWords) {
   word.startSeconds = null;
   word.endSeconds = null;
-  word.confidence = null;
   word.reviewed = false;
+  word.confidence = null;
+  word.note = 'Whisper candidate only; acoustic review still required.';
 }
 
 // Ein Script-Wort kann sich über mehrere Transkript-Tokens erstrecken, weil die
@@ -111,19 +113,26 @@ for (const word of codex.words) {
 // meridian"). Start und Ende stammen dann weiterhin aus der Messung.
 const MAXIMUM_TOKEN_SPAN = 3;
 
-const assign = (scriptIndex, fromSpokenIndex, toSpokenIndex = fromSpokenIndex) => {
-  const target = codex.words[scriptIndex];
-  target.startSeconds = spoken[fromSpokenIndex].startSeconds;
-  target.endSeconds = spoken[toSpokenIndex].endSeconds;
-  target.confidence = 1;
-  target.reviewed = true;
+const scriptTokens = codexWords.map((word) => normalize(word.text));
+const spokenTokens = spoken.map((word) => word.normalized);
+const anchors = longestCommonSubsequence(scriptTokens, spokenTokens);
+
+// Zeiten stammen immer aus echten Whisper-Messungen, gelten aber nie als bestätigt.
+// Die Timeline liest ausschließlich verifizierte Werte, daher bleibt reviewed false.
+const assign = (scriptIndex, fromSpokenIndex, toSpokenIndex, confidence) => {
+  const target = codexWords[scriptIndex];
+  target.startSeconds = spoken[fromSpokenIndex].start;
+  target.endSeconds = spoken[toSpokenIndex].end;
+  target.confidence = confidence;
+  target.reviewed = false;
+  target.note = 'Whisper timestamp candidate; must be acoustically reviewed before strict apply.';
 };
 
-for (const [scriptIndex, spokenIndex] of anchors) assign(scriptIndex, spokenIndex);
+for (const [scriptIndex, spokenIndex] of anchors) assign(scriptIndex, spokenIndex, spokenIndex, 1);
 
 // Lücken zwischen zwei Ankern nur dann füllen, wenn sich ein Wort eindeutig
 // wiedererkennen lässt. Übrige Wörter bleiben ohne Zeit und damit unbestätigt.
-const boundaries = [[-1, -1], ...anchors, [codex.words.length, spoken.length]];
+const boundaries = [[-1, -1], ...anchors, [codexWords.length, spoken.length]];
 for (let index = 1; index < boundaries.length; index += 1) {
   const [previousScript, previousSpoken] = boundaries[index - 1];
   const [nextScript, nextSpoken] = boundaries[index];
@@ -135,8 +144,9 @@ for (let index = 1; index < boundaries.length; index += 1) {
       let combined = '';
       for (let span = 0; span < MAXIMUM_TOKEN_SPAN && start + span < nextSpoken; span += 1) {
         combined += spokenTokens[start + span];
-        if (isFuzzyMatch(scriptTokens[scriptIndex], combined)) {
-          assign(scriptIndex, start, start + span);
+        const confidence = fuzzyConfidence(scriptTokens[scriptIndex], combined);
+        if (confidence > 0) {
+          assign(scriptIndex, start, start + span, confidence);
           cursorSpoken = start + span + 1;
           matched = true;
           break;
@@ -146,77 +156,70 @@ for (let index = 1; index < boundaries.length; index += 1) {
   }
 }
 
-const timed = codex.words.filter((word) => word.startSeconds !== null);
-const untimed = codex.words.filter((word) => word.startSeconds === null);
-
 // Reihenfolge prüfen, statt sie durch Verschieben zu erzwingen. Überlappungen weisen
 // auf eine falsche Zuordnung hin und müssen sichtbar bleiben.
 const outOfOrder = [];
 let previousEnd = -Infinity;
-for (const word of timed) {
-  if (word.startSeconds < previousEnd - 0.03) outOfOrder.push(word);
-  previousEnd = word.endSeconds;
+for (const word of codexWords) {
+  const start = finite(word.startSeconds);
+  const end = finite(word.endSeconds);
+  if (start === null || end === null) continue;
+  if (start < previousEnd - 0.03) outOfOrder.push(word);
+  previousEnd = end;
 }
 
-codex.status = untimed.length === 0 ? 'reviewed' : 'pending-codex-audio-review';
-codex.updatedAt = new Date().toISOString();
-codex.timingSource = 'whisper-word-timestamps';
-codex.notes = [
-  ...(Array.isArray(codex.notes) ? codex.notes : []),
-  `${new Date().toISOString()}: ${timed.length}/${codex.words.length} Wörter aus Whisper übernommen.`
-];
-fs.writeFileSync(codexPath, `${JSON.stringify(codex, null, 2)}\n`, 'utf8');
+const findCueTime = (audioCue, startIndex = 0) => {
+  const cueWords = String(audioCue ?? '').split(/\s+/).map(normalize).filter(Boolean);
+  if (cueWords.length === 0) return null;
 
-// Szenen-Cues aus den gemessenen Wortzeiten ableiten. Findet sich der Einsatztext
-// einer Szene nicht wieder, bleibt der Zeitpunkt leer und die Timeline meldet die
-// Szene als noch nicht synchronisiert.
-const findCueTime = (audioCue, startIndex) => {
-  const cueTokens = String(audioCue ?? '').split(/\s+/).map(normalize).filter(Boolean);
-  if (!cueTokens.length) return null;
-  for (let index = startIndex; index <= codex.words.length - cueTokens.length; index += 1) {
-    let matched = true;
-    for (let offset = 0; offset < cueTokens.length; offset += 1) {
-      if (normalize(codex.words[index + offset].text) !== cueTokens[offset]) { matched = false; break; }
-    }
-    if (matched && codex.words[index].startSeconds !== null) {
-      return { time: codex.words[index].startSeconds, nextIndex: index + cueTokens.length };
+  for (let i = startIndex; i <= codexWords.length - cueWords.length; i += 1) {
+    const matchesText = cueWords.every((word, offset) => normalize(codexWords[i + offset]?.text) === word);
+    const allTimed = cueWords.every((_, offset) => finite(codexWords[i + offset]?.startSeconds) !== null);
+    if (matchesText && allTimed) {
+      return { time: Number(codexWords[i].startSeconds), nextIndex: i + cueWords.length };
     }
   }
   return null;
 };
 
-let cursor = 0;
-const unresolvedCues = [];
-audio.cueTimings = (audio.cueTimings ?? []).map((cue, index) => {
-  if (index === 0) return { ...cue, cueTimeSeconds: 0, confidence: 1 };
-  const found = findCueTime(cue.audioCue, cursor);
-  if (!found) {
-    unresolvedCues.push(cue.sceneId);
-    return { ...cue, cueTimeSeconds: null, confidence: null };
+let currentIndex = 0;
+for (const cue of audio.cueTimings ?? []) {
+  const result = findCueTime(cue.audioCue, currentIndex);
+  if (result) {
+    // Keep the machine result separate from the verified scene anchor.
+    // The timeline only uses cueTimeSeconds, so an unreviewed Whisper result can never silently mark scene sync as exact.
+    cue.candidateCueTimeSeconds = result.time;
+    cue.cueTimeSeconds = null;
+    cue.reviewed = false;
+    cue.confidence = null;
+    cue.timingSource = 'whisper-candidate';
+    currentIndex = result.nextIndex;
+  } else {
+    cue.candidateCueTimeSeconds = null;
+    cue.cueTimeSeconds = null;
+    cue.reviewed = false;
+    cue.confidence = null;
+    cue.timingSource = 'missing';
   }
-  cursor = found.nextIndex;
-  return { ...cue, cueTimeSeconds: Number(found.time.toFixed(3)), confidence: 1 };
-});
-
-const lastTimed = timed.at(-1);
-if (lastTimed) audio.audioDurationSeconds = Math.max(Number(audio.audioDurationSeconds ?? 0), lastTimed.endSeconds);
-audio.audioFile = codex.audioFile ?? audio.audioFile;
-audio.source = 'whisper-word-timestamps';
-audio.timingStatus = untimed.length === 0 && unresolvedCues.length === 0 ? 'audio-synced' : 'requires-new-cue-sync';
-fs.writeFileSync(audioPath, `${JSON.stringify(audio, null, 2)}\n`, 'utf8');
-
-console.log(`Wortzeiten übernommen: ${timed.length}/${codex.words.length}`);
-if (untimed.length) {
-  console.log(`Ohne gemessene Zeit (${untimed.length}): ${untimed.map((word) => word.text).join(' ')}`);
-  console.log('Diese Wörter gelten als unbestätigt. Der strenge Lauf bleibt blockiert, bis sie zugeordnet sind.');
-}
-if (outOfOrder.length) {
-  console.log(`Zeitlich überlappende Zuordnungen (${outOfOrder.length}): ${outOfOrder.map((word) => word.text).join(' ')}`);
-}
-if (unresolvedCues.length) {
-  console.log(`Szenen ohne wiedergefundenen Einsatztext: ${unresolvedCues.join(', ')}`);
 }
 
-const exitCode = untimed.length || unresolvedCues.length || outOfOrder.length ? 1 : 0;
-if (exitCode === 0) console.log('Alle Wörter und Szeneneinsätze sind an gemessenen Zeiten verankert.');
-process.exit(exitCode);
+const unresolvedWords = codexWords.filter((word) => finite(word.startSeconds) === null || finite(word.endSeconds) === null);
+const missingCueCandidates = (audio.cueTimings ?? []).filter((cue) => finite(cue.candidateCueTimeSeconds) === null);
+
+codex.status = 'pending-acoustic-review';
+codex.updatedAt = new Date().toISOString();
+codex.timingSource = 'whisper-word-timestamps';
+codex.notes = [
+  ...(Array.isArray(codex.notes) ? codex.notes : []),
+  `${new Date().toISOString()}: ${codexWords.length - unresolvedWords.length}/${codexWords.length} Wörter als Whisper-Kandidaten übernommen.`
+];
+
+fs.writeFileSync(codexPath, `${JSON.stringify(codex, null, 2)}\n`);
+fs.writeFileSync(audioPath, `${JSON.stringify(audio, null, 2)}\n`);
+
+if (unresolvedWords.length || missingCueCandidates.length || outOfOrder.length) {
+  console.error(`Whisper alignment incomplete: ${unresolvedWords.length} word(s), ${missingCueCandidates.length} scene cue candidate(s) unresolved, ${outOfOrder.length} word(s) out of order. No synthetic timings were created.`);
+  process.exitCode = 1;
+} else {
+  console.log('Whisper candidates came only from real timestamps. Word timings and scene anchors remain unreviewed until acoustic confirmation.');
+}

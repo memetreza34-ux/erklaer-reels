@@ -21,7 +21,7 @@
     "trim:pauses": "node src/cli/trim-pauses.js",
     "build:timeline": "node src/cli/build-timeline.js",
     "sync:audio": "node src/cli/build-timeline.js",
-    "sync:words": "node src/cli/sync-words.js",
+    "legacy:sync:words": "node src/cli/sync-words.js",
     "render:reel": "node src/cli/render-reel.js",
     "studio": "remotion studio src/renderer/index.jsx",
     "test": "node --test"

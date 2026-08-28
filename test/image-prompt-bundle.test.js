@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdir, mkdtemp, readFile, writeFile } from 'node:fs/promises';
+import { access, mkdir, mkdtemp, readFile, writeFile } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 
@@ -9,145 +9,120 @@ import {
   ensureImagePromptBundleDirectory,
   validateImagePromptBundle
 } from '../src/core/image-prompt-bundle.js';
+import { FIXED_VISUAL_WORLD_LABEL } from '../src/shared/fixed-visual-world.js';
 
 async function writeJson(filePath, value) {
   await mkdir(path.dirname(filePath), { recursive: true });
   await writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
 }
 
-async function createFixture({ missingCoverPrompt = false, missingSecondPrompt = false } = {}) {
+async function exists(filePath) {
+  try {
+    await access(filePath);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+const NEUTRAL_BASE = 'Vertical 9:16 illustration. Use one clear physical moment, readable smartphone composition and no reserved subtitle safe-zone.';
+
+async function createFixture({ missingCoverPrompt = false, missingSecondPrompt = false, missingExtraPrompt = false } = {}) {
   const root = await mkdtemp(path.join(os.tmpdir(), 'prompt-bundle-'));
   await writeJson(path.join(root, 'status.json'), { imagePrompts: 'ready' });
+  await writeJson(path.join(root, 'reel.json'), { visualStyleId: 'modern-countryball-explainer' });
+  await writeJson(path.join(root, 'cover', 'cover.json'), { headline: 'NUR DIESE HOOK' });
   await writeJson(path.join(root, 'scenes', 'scene-index.json'), [
-    { sceneId: 'scene-02', order: 2 },
-    { sceneId: 'scene-01', order: 1 },
-    { sceneId: 'scene-03', order: 3 }
+    { sceneId: 'scene-01', order: 1, imageText: 'ERSTE SZENE' },
+    {
+      sceneId: 'scene-02',
+      order: 2,
+      imageText: 'SZENE ZWEI',
+      imagePhases: [
+        { phaseId: 'scene-02-image-01', order: 1, startPercent: 0, promptFileName: 'image-prompt.txt', imageText: 'SZENE ZWEI' },
+        { phaseId: 'scene-02-image-02', order: 2, startPercent: 0.55, promptFileName: 'image-prompt-02.txt', imageText: '' }
+      ]
+    },
+    { sceneId: 'scene-03', order: 3, imageText: 'DRITTE SZENE' }
   ]);
 
   await mkdir(path.join(root, 'cover'), { recursive: true });
-  if (!missingCoverPrompt) {
-    await writeFile(path.join(root, 'cover', 'cover-prompt.txt'), 'Prompt für das Cover mit sichtbarer Hook.', 'utf8');
-  }
+  if (!missingCoverPrompt) await writeFile(path.join(root, 'cover', 'cover-prompt.txt'), `${NEUTRAL_BASE} Show a recognizably human person in a strong cover scene. Integrate exactly "NUR DIESE HOOK".`, 'utf8');
 
-  for (const sceneId of ['scene-01', 'scene-02', 'scene-03']) {
-    await mkdir(path.join(root, 'scenes', sceneId), { recursive: true });
-  }
-
-  await writeFile(path.join(root, 'scenes', 'scene-01', 'image-prompt.txt'), 'Prompt für die erste Szene.', 'utf8');
-  if (!missingSecondPrompt) {
-    await writeFile(path.join(root, 'scenes', 'scene-02', 'image-prompt.txt'), 'Prompt für die zweite Szene.', 'utf8');
-  }
-  await writeFile(path.join(root, 'scenes', 'scene-03', 'image-prompt.txt'), 'Prompt für die dritte Szene.', 'utf8');
+  for (const sceneId of ['scene-01', 'scene-02', 'scene-03']) await mkdir(path.join(root, 'scenes', sceneId), { recursive: true });
+  await writeFile(path.join(root, 'scenes', 'scene-01', 'image-prompt.txt'), `${NEUTRAL_BASE} Show a recognizably human person performing one clear action. Integrate exactly "ERSTE SZENE".`, 'utf8');
+  if (!missingSecondPrompt) await writeFile(path.join(root, 'scenes', 'scene-02', 'image-prompt.txt'), `${NEUTRAL_BASE} Show a clear human action. Integrate exactly "SZENE ZWEI".`, 'utf8');
+  if (!missingExtraPrompt) await writeFile(path.join(root, 'scenes', 'scene-02', 'image-prompt-02.txt'), `${NEUTRAL_BASE} Show one concrete object close-up. No readable text.`, 'utf8');
+  await writeFile(path.join(root, 'scenes', 'scene-03', 'image-prompt.txt'), `${NEUTRAL_BASE} Show a strong final human scene. Integrate exactly "DRITTE SZENE".`, 'utf8');
   return root;
 }
 
-test('legt Hinweise fuer seriellen autonomen Durchlauf ohne weiteres Nutzer-Go an', async () => {
+test('README erklärt genau eine Google-Flow-Masterdatei', async () => {
   const root = await createFixture();
   const paths = await ensureImagePromptBundleDirectory(root);
-  const placeholder = await readFile(paths.file, 'utf8');
-  const readme = await readFile(paths.readme, 'utf8');
+  const readme = await readFile(paths.userReadme, 'utf8');
 
-  assert.match(paths.file, /all-image-prompts[\\/]all-image-prompts\.txt$/);
-  assert.match(placeholder, /Cover und Szenen/);
-  assert.match(readme, /Bild 00 = Cover/);
-  assert.match(readme, /harte serielle Sperre und autonomem Durchlauf/);
-  assert.match(readme, /nur \*\*eine einzige Bildgenerierung aktiv\*\*/);
-  assert.match(readme, /kein weiteres `Go`, `Weiter`/);
-  assert.match(readme, /automatisch ohne Nutzerinteraktion Bild 01 starten/);
-  assert.match(readme, /keine Pause zum Warten auf den Nutzer/);
-  assert.match(readme, /Freigabe des nächsten Blocks erfolgt \*\*automatisch/);
-  assert.match(readme, /Bild 00 ist zusätzlich die verbindliche visuelle Stilvorlage/);
+  assert.match(readme, /genau \*\*eine\*\* verbindliche Masterdatei/i);
+  assert.match(readme, /99-alle-bildprompts\.txt/);
+  assert.match(readme, /keine zweite Spiegelkopie/i);
+  assert.ok(readme.includes(FIXED_VISUAL_WORLD_LABEL));
+  assert.match(readme, /runde Kugelfiguren/i);
+  assert.match(readme, /Stick-Figuren sind nicht Teil/i);
 });
 
-test('exportiert Google-Flow-Gesamtauftrag seriell und autonom ohne weiteres Go', async () => {
+test('exportiert nur den einen seriellen Gesamtprompt im sichtbaren Bildprompt-Ordner', async () => {
   const root = await createFixture();
+  await mkdir(path.join(root, 'all-image-prompts'), { recursive: true });
+  await writeFile(path.join(root, 'all-image-prompts', 'all-image-prompts.txt'), 'legacy\n', 'utf8');
+
   const result = await buildImagePromptBundle(root, { strict: true });
-  const content = await readFile(result.outputFile, 'utf8');
+  const bundle = await readFile(result.outputFile, 'utf8');
 
-  const execution = content.indexOf('GOOGLE FLOW – HARTE SERIELLE SPERRE + AUTONOMER DURCHLAUF');
-  const cover = content.indexOf('BILD 00 – COVER – GOOGLE-FLOW-PROMPT');
-  const first = content.indexOf('BILD 01 – SZENE 1 – GOOGLE-FLOW-PROMPT');
-  const second = content.indexOf('BILD 02 – SZENE 2 – GOOGLE-FLOW-PROMPT');
-  const third = content.indexOf('BILD 03 – SZENE 3 – GOOGLE-FLOW-PROMPT');
-  const numbering = content.indexOf('ABSCHLUSS – ERST JETZT GEMEINSAM IN EINEN ORDNER');
-
-  assert.ok(execution >= 0);
-  assert.ok(cover > execution);
-  assert.ok(first > cover);
-  assert.ok(second > first);
-  assert.ok(third > second);
-  assert.ok(numbering > third);
-
-  assert.match(content, /ALLE BILDPROMPTS – GOOGLE FLOW – STRENG EINZELN \+ AUTONOM OHNE WEITERES GO \+ COVER ALS STYLE-VORLAGE/);
-  assert.match(content, /DAS EINMALIGE ABSENDEN DIESER KOMPLETTEN NACHRICHT IST DIE VOLLSTÄNDIGE FREIGABE/);
-  assert.match(content, /FRAGE AB JETZT NICHT MEHR NACH GO, WEITER, BESTÄTIGUNG, FREIGABE, ERLAUBNIS ODER EINER WEITEREN NUTZERANTWORT/);
-  assert.match(content, /WARTE ZWISCHEN DEN BILDERN NIEMALS AUF EINE NACHRICHT DES NUTZERS/);
-  assert.match(content, /FERTIGSTELLUNG UND KORREKTE UMBENENNUNG DES AKTUELLEN BILDES IST AUTOMATISCH DAS STARTSIGNAL/);
-  assert.match(content, /ZU JEDEM ZEITPUNKT DARF GENAU EINE EINZIGE BILDGENERIERUNG AKTIV SEIN/);
-  assert.match(content, /SOFORT SELBSTSTÄNDIG MIT DEM NÄCHSTEN BILD WEITERMACHEN/);
-  assert.match(content, /NICHT auf `Go`, `Weiter`, `OK` oder irgendeine Nutzerantwort warten/);
-  assert.match(content, /Keine weitere Nutzerbestätigung verlangen/);
-
-  assert.match(content, /BILD 00 = COVER \+ VERBINDLICHE STILVORLAGE/);
-  assert.match(content, /sichtbare deutsche Text ist der HOOK des Reels/);
-  assert.match(content, /verwende genau dieses fertige Cover als visuelle Referenz\/Vorlage für ALLE folgenden Szenen/i);
-  assert.match(content, /denselben Zeichen-\/Renderstil, dieselbe Farbwelt, dieselben Figurenmerkmale/);
-
-  assert.match(content, /BILD 00 – COVER – GOOGLE-FLOW-PROMPT\nZIEL: COVER \+ STYLE-VORLAGE FÜR DAS GESAMTE REEL\nDATEINAME: Bild 00\.png/);
-  assert.match(content, /BILD 01 – SZENE 1 – GOOGLE-FLOW-PROMPT\nZIEL: SZENE 1\nDATEINAME: Bild 01\.png/);
-  assert.match(content, /BILD 02 – SZENE 2 – GOOGLE-FLOW-PROMPT\nZIEL: SZENE 2\nDATEINAME: Bild 02\.png/);
-  assert.match(content, /BILD 03 – SZENE 3 – GOOGLE-FLOW-PROMPT\nZIEL: SZENE 3\nDATEINAME: Bild 03\.png/);
-
-  assert.match(content, /FREIGABE: Dies ist der einzige jetzt freigegebene Bildblock\. Das einmalige Absenden des Gesamtprompts ist bereits die Freigabe/);
-  assert.match(content, /FREIGABE-BEDINGUNG: Dieser Block wird AUTOMATISCH freigegeben, sobald BILD 00 vollständig fertig erzeugt/);
-  assert.match(content, /KEIN weiteres Go und KEINE Nutzerantwort abwarten/);
-  assert.match(content, /SOBALD DIESE PRÜFUNG ERFOLGREICH IST: den direkt nächsten nummerierten Bildblock SOFORT AUTOMATISCH starten/);
-  assert.match(content, /Während diese Generierung läuft: KEIN anderes Bild starten/);
-  assert.match(content, /sofort exakt in `Bild 03\.png` umbenennen und prüfen/);
-
-  assert.match(content, /Prompt für das Cover mit sichtbarer Hook\./);
-  assert.match(content, /Prompt für die erste Szene\./);
-  assert.match(content, /Prompt für die zweite Szene\./);
-  assert.match(content, /Prompt für die dritte Szene\./);
-  assert.match(content, /Bild 00 = COVER → Dateiname `Bild 00\.png`/);
-  assert.match(content, /Bild 03 = SZENE 3 → Dateiname `Bild 03\.png`/);
-  assert.match(content, /Für diesen Abschluss ist KEIN neues Go/);
-  assert.match(content, /00-ALLE-BILDER-HIER-REIN/);
-
-  assert.doesNotMatch(content, /3ER-STEPS|3er-Step|3er-Batches/);
+  assert.equal(result.outputFile, path.join(root, '00-bildprompts', '99-alle-bildprompts.txt'));
+  assert.equal(result.technicalMirrorFile, null);
+  assert.equal(result.individualPromptsDirectory, null);
+  assert.equal(await exists(path.join(root, 'all-image-prompts')), false);
+  assert.match(bundle, /^GOOGLE FLOW – KOMPLETTER SERIELLER BILDLAUF/);
+  assert.match(bundle, /STRENG SERIELL – NIE PARALLEL/);
+  assert.ok(bundle.includes(`VERBINDLICHE EINE REEL-BILDWELT – ${FIXED_VISUAL_WORLD_LABEL.toUpperCase()}`));
+  assert.match(bundle, /round countryball-style character/i);
+  assert.match(bundle, /never bean-shaped, oval, egg-shaped, human-headed or humanoid/i);
+  assert.match(bundle, /An actor is NOT mandatory in every image/i);
+  assert.match(bundle, /FIXED VISUAL STYLE FOR THIS IMAGE — MANDATORY:/);
+  assert.match(bundle, /DATEINAME NACH FERTIGSTELLUNG: Bild 03\.png/);
+  assert.equal(result.controllerFile, null);
   assert.equal(result.coverIncluded, true);
   assert.equal(result.sceneCount, 3);
-  assert.equal(result.totalPromptCount, 4);
+  assert.equal(result.plannedImageCount, 4);
+  assert.equal(result.totalPromptCount, 5);
+  assert.equal(result.visualWorldLabel, FIXED_VISUAL_WORLD_LABEL);
 
   const validation = await validateImagePromptBundle(root);
   assert.equal(validation.passed, true);
-  assert.equal(validation.coverIncluded, true);
+  assert.equal(validation.filePresent, true);
+  assert.equal(validation.technicalMirrorPresent, false);
+  assert.equal(validation.individualPromptFiles.length, 0);
+  assert.ok(validation.message.includes(FIXED_VISUAL_WORLD_LABEL));
 });
 
-test('blockiert im strengen Modus einen fehlenden Cover-Prompt', async () => {
-  const root = await createFixture({ missingCoverPrompt: true });
+test('blockiert fehlende Prompts im strengen Modus', async () => {
+  const noCover = await createFixture({ missingCoverPrompt: true });
+  await assert.rejects(() => buildImagePromptBundle(noCover, { strict: true }), /cover/);
 
-  await assert.rejects(
-    () => buildImagePromptBundle(root, { strict: true }),
-    /cover/
-  );
+  const noPrimary = await createFixture({ missingSecondPrompt: true });
+  await assert.rejects(() => buildImagePromptBundle(noPrimary, { strict: true }), /scene-02/);
+
+  const noExtra = await createFixture({ missingExtraPrompt: true });
+  await assert.rejects(() => buildImagePromptBundle(noExtra, { strict: true }), /scene-02-image-02/);
 });
 
-test('blockiert im strengen Modus fehlende Szenenprompts', async () => {
-  const root = await createFixture({ missingSecondPrompt: true });
-
-  await assert.rejects(
-    () => buildImagePromptBundle(root, { strict: true }),
-    /scene-02/
-  );
-});
-
-test('erkennt eine veraltete Sammeldatei', async () => {
+test('erkennt Legacy-Doppelordner als veraltet', async () => {
   const root = await createFixture();
-  const result = await buildImagePromptBundle(root, { strict: true });
-  await writeFile(result.outputFile, 'veraltet\n', 'utf8');
+  await buildImagePromptBundle(root, { strict: true });
+  await mkdir(path.join(root, 'all-image-prompts'), { recursive: true });
+  await writeFile(path.join(root, 'all-image-prompts', 'all-image-prompts.txt'), 'legacy\n', 'utf8');
 
   const validation = await validateImagePromptBundle(root);
   assert.equal(validation.passed, false);
-  assert.equal(validation.current, false);
+  assert.equal(validation.technicalMirrorPresent, true);
 });

@@ -6,7 +6,6 @@ import { verifyAudioPacingFileBinding } from '../core/audio-pacing-file-guard.js
 import { renderReel } from '../core/remotion-renderer.js';
 import { validateRendererInput } from '../core/render-validator.js';
 import { verifyRequiredSourceQuality } from '../core/source-quality-file-guard.js';
-import { verifyAppliedWordSyncAudioBinding } from '../core/word-sync-audio-guard.js';
 
 function getArgument(name) {
   const index = process.argv.indexOf(name);
@@ -15,7 +14,8 @@ function getArgument(name) {
 
 function showUsage() {
   console.log(`
-Erzeugt aus render/render-plan.json eine fertige MP4-Datei mit Remotion.
+Erzeugt aus render/render-plan.json eine fertige MP4-Datei mit Remotion – ohne Untertitel.
+Der sichtbare Standard-Export liegt direkt im Reel-Ordner unter 03-export mit fertiger MP4 und universeller Caption.
 
 Rendern:
   npm run render:reel -- --dir "reels/.../reel-01_titel"
@@ -25,7 +25,7 @@ Nur prüfen:
 
 Optionen:
   --dir          Reel-Ordner
-  --output       Ausgabepfad der MP4-Datei
+  --output       Optionaler zusätzlicher Ausgabepfad der MP4-Datei; der kanonische Export wird trotzdem unter export/FERTIGES-REEL.mp4 abgelegt
   --codec        Remotion-Codec, Standard: h264
   --crf          Qualitätswert, Standard: 18
   --concurrency  Anzahl paralleler Renderprozesse
@@ -70,11 +70,6 @@ async function main() {
     throw new Error(`${pacingBinding.reason} Rendern mit veralteten Lautheitswerten ist auch mit --force blockiert.`);
   }
 
-  const wordSyncBinding = await verifyAppliedWordSyncAudioBinding(reelDirectory);
-  if (wordSyncBinding.required && !wordSyncBinding.passed) {
-    throw new Error(`${wordSyncBinding.reason} Rendern mit veralteten Wortzeiten ist auch mit --force blockiert.`);
-  }
-
   if (validateOnly) {
     const report = await validateRendererInput(reelDirectory, {
       requireFinalReadiness: !force
@@ -82,7 +77,7 @@ async function main() {
     printValidation(report);
     if (sourceGate.required) console.log('Quellen-QC: verpflichtendes Schema bestanden');
     if (pacingBinding.required) console.log('Audio-Pacing-Datei: Fingerprint unverändert');
-    if (wordSyncBinding.required) console.log('Word-Sync-Audio: Fingerprint unverändert');
+    console.log('Untertitel: deaktiviert');
     if (!report.passed) process.exitCode = 1;
     return;
   }
@@ -103,11 +98,12 @@ async function main() {
     }
   });
 
-  console.log('MP4 erfolgreich erzeugt.');
+  console.log('MP4 erfolgreich ohne Untertitel erzeugt.');
   if (sourceGate.required) console.log('Quellen-QC: verpflichtendes Schema bestanden');
   if (pacingBinding.required) console.log('Audio-Pacing-Datei: Fingerprint unverändert');
-  if (wordSyncBinding.required) console.log('Word-Sync-Audio: Fingerprint unverändert');
-  console.log(`Datei: ${path.resolve(report.outputFile)}`);
+  console.log(`Export-Video: ${path.resolve(report.exportVideoFile ?? report.outputFile)}`);
+  console.log(`Universal-Caption: ${path.resolve(report.exportCaptionFile)}`);
+  console.log('Sichtbarer Upload-Bereich: 03-export/');
   console.log(`Größe: ${(report.outputBytes / 1024 / 1024).toFixed(2)} MB`);
 }
 

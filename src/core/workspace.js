@@ -1,7 +1,10 @@
 import { mkdir, readdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
+import { FIXED_VISUAL_STYLE_ID, FIXED_VISUAL_STYLE_REASON } from '../shared/fixed-visual-world.js';
 import { SUBTITLE_STYLE } from '../shared/subtitle-style.js';
+import { normalizeSceneImagePhases } from '../shared/visual-moments.js';
+import { buildSourcesTemplate } from './source-quality.js';
 
 const WEEKDAYS_DE = [
   'sonntag',
@@ -139,6 +142,19 @@ export async function createReelWorkspace({
       subtitleCues: [],
       subtitlePosition: SUBTITLE_STYLE.position,
       durationSeconds: 0,
+      imageCount: 1,
+      imagePhases: [{
+        phaseId: `${sceneId}-image-01`,
+        order: 1,
+        startPercent: 0,
+        promptFileName: 'image-prompt.txt',
+        expectedImageFileName: `${sceneId}.png`,
+        visualIdea: '',
+        imageText: '',
+        rationale: '',
+        imageStatus: 'missing',
+        assetVerification: null
+      }],
       expectedImageFileName: `${sceneId}.png`,
       promptStatus: 'missing',
       imageStatus: 'missing',
@@ -162,14 +178,29 @@ export async function createReelWorkspace({
     targetDurationSeconds: 58,
     endingHoldSeconds: 0.7,
     sceneCount,
-    visualStyleId: '',
-    visualStyleReason: '',
-    subtitlesEnabled: true,
+    imageCountMode: 'individual-per-reel',
+    plannedImageCount: sceneCount,
+    imageDensityReason: '',
+    visualStyleId: FIXED_VISUAL_STYLE_ID,
+    visualStyleReason: FIXED_VISUAL_STYLE_REASON,
+    sourceQualitySchemaVersion: 3,
+    subtitlesEnabled: false,
     motionEffectsEnabled: true,
     soundEffectsEnabled: true,
     backgroundMusicEnabled: false,
     status: 'workspace-created'
   };
+
+  const visuals = sceneIndex.flatMap((scene) => normalizeSceneImagePhases(scene).map((phase) => ({
+    targetId: phase.targetId,
+    sceneId: scene.sceneId,
+    sceneOrder: scene.order,
+    phaseId: phase.phaseId,
+    phaseOrder: phase.phaseOrder,
+    expectedFile: `scenes/${scene.sceneId}/${phase.expectedImageFileName}`,
+    verification: null,
+    status: 'missing'
+  })));
 
   await writeJson(path.join(reelDirectory, 'reel.json'), reel);
   await writeJson(path.join(reelDirectory, 'status.json'), {
@@ -177,8 +208,11 @@ export async function createReelWorkspace({
     content: 'draft',
     script: 'provided',
     scenes: 'planned',
-    subtitles: 'waiting-for-exact-sync',
-    wordSync: 'waiting-for-audio',
+    imageDensity: 'individual-planning-required',
+    plannedImageCount: sceneCount,
+    visualWorld: `fixed-${FIXED_VISUAL_STYLE_ID}`,
+    subtitles: 'disabled',
+    wordSync: 'not-required',
     effects: 'planned',
     audio: 'missing',
     imagePrompts: 'missing',
@@ -190,6 +224,7 @@ export async function createReelWorkspace({
   });
   await writeJson(path.join(reelDirectory, 'assets-manifest.json'), {
     audio: { expectedFile: 'audio/voiceover.mp3', status: 'missing' },
+    visuals,
     scenes: sceneIndex.map((scene) => ({
       sceneId: scene.sceneId,
       expectedFile: `scenes/${scene.sceneId}/${scene.expectedImageFileName}`,
@@ -205,8 +240,9 @@ export async function createReelWorkspace({
   await writeText(path.join(reelDirectory, 'audio', '.gitkeep'));
   await writeJson(path.join(reelDirectory, 'scenes', 'scene-index.json'), sceneIndex);
   await writeJson(path.join(reelDirectory, 'subtitles', 'subtitle-plan.json'), {
-    version: 7,
-    enabled: true,
+    version: 8,
+    enabled: false,
+    reason: 'Globale Nutzerregel: Erklär-Reels werden ohne Untertitel gerendert.',
     language: 'de',
     position: SUBTITLE_STYLE.position,
     verticalPositionPercent: SUBTITLE_STYLE.verticalPositionPercent,
@@ -214,25 +250,11 @@ export async function createReelWorkspace({
     textColor: SUBTITLE_STYLE.textColor,
     highlightCurrentWord: SUBTITLE_STYLE.highlightCurrentWord,
     highlightColor: SUBTITLE_STYLE.highlightColor,
-    speakerSyncedWordHighlight: true,
-    highlightAnimation: 'color-only',
     backgroundColor: SUBTITLE_STYLE.backgroundColor,
-    textStrokeColor: SUBTITLE_STYLE.textStrokeColor,
     maxLines: SUBTITLE_STYLE.maxLines,
-    wordsPerCue: { min: 3, max: 6 },
-    wordByWordKaraoke: true,
-    exactWordTimingsRequired: true,
-    completeSpokenTextCoverageRequired: true,
-    minimumWordCoverage: 1,
-    requireZeroUnassignedWords: true,
-    requireExactVoiceScriptWordSequence: true,
-    fallbackWordTiming: 'blocked-until-codex-word-sync',
-    avoidRepeatingImageText: true,
-    timingStatus: 'waiting-for-codex-word-sync',
-    timingProvider: 'codex-local-audio-review',
     cues: []
   });
-  await writeText(path.join(reelDirectory, 'subtitles', 'README.md'), `# Untertitel\n\nUntertitel stehen bei exakt ${SUBTITLE_STYLE.verticalPositionPercent} % der Bildhöhe.\nGrundtext: ${SUBTITLE_STYLE.textColor}. Nur das aktuell gesprochene Wort wird anhand echter akustischer Wortzeiten in Braun ${SUBTITLE_STYLE.highlightColor} markiert.\nKeine schwarze Box, kein sichtbarer Hintergrundbalken und keine Spring-/Zoom-/Größenanimation; nur der Farbwechsel des aktiven Wortes.\nNormalerweise 3–6 Wörter pro Einblendung und höchstens zwei Zeilen.\n100 % des gesprochenen Voice-Scripts müssen enthalten sein: coverage = 1, timedWords = totalWords und unassignedWords = 0.\nDie Untertitel dürfen erst nach lokaler akustischer Prüfung und exakter Wortzeitsynchronisierung gerendert werden. Fehlt ein Wort, ist der Render blockiert.\nNach dem letzten gesprochenen Wort endet der Untertitel; das Schlussbild bleibt ungefähr 0,7 Sekunden sauber sichtbar.\n`);
+  await writeText(path.join(reelDirectory, 'subtitles', 'README.md'), '# Untertitel\n\nUntertitel sind für dieses Format global deaktiviert. Die verbleibende Plan-Datei dient nur der Abwärtskompatibilität; der Renderer darf keine Untertitel einblenden.\n');
   await writeJson(path.join(reelDirectory, 'effects', 'effects-plan.json'), {
     version: 1,
     enabled: true,
@@ -280,7 +302,7 @@ export async function createReelWorkspace({
     status: 'planned'
   });
   await writeText(path.join(reelDirectory, 'caption', 'caption.txt'));
-  await writeText(path.join(reelDirectory, 'sources', 'sources.md'), '# Quellen\n\n');
+  await writeText(path.join(reelDirectory, 'sources', 'sources.md'), buildSourcesTemplate());
   await writeText(path.join(reelDirectory, 'review', 'notes.md'), '# Review-Notizen\n\n');
   await writeJson(path.join(reelDirectory, 'review', 'quality-report.json'), {
     passed: false,
@@ -288,12 +310,14 @@ export async function createReelWorkspace({
     notes: []
   });
   await writeJson(path.join(reelDirectory, 'review', 'scene-asset-verification.json'), {
-    version: 1,
+    version: 2,
     passed: false,
-    scenes: sceneIndex.map((scene) => ({
-      sceneId: scene.sceneId,
-      order: scene.order,
-      title: scene.title,
+    visuals: visuals.map((visual) => ({
+      targetId: visual.targetId,
+      sceneId: visual.sceneId,
+      sceneOrder: visual.sceneOrder,
+      phaseId: visual.phaseId,
+      phaseOrder: visual.phaseOrder,
       expectedFile: null,
       verification: null,
       passed: false
@@ -302,9 +326,9 @@ export async function createReelWorkspace({
   await writeText(path.join(reelDirectory, 'inbox', 'images', '.gitkeep'));
   await writeText(path.join(reelDirectory, 'inbox', 'audio', '.gitkeep'));
   await writeText(path.join(reelDirectory, 'inbox', 'processed', '.gitkeep'));
-  await writeText(path.join(reelDirectory, 'inbox', 'README.md'), `# Externe Dateien und sichere Zuordnung\n\nLege Bilder bevorzugt direkt in den passenden Ordner \`scenes/scene-XX/\` und benenne sie \`scene-XX.png\`. Auch dann muss Codex jedes Bild tatsächlich öffnen und gegen Sprechertext, Audio-Cue, visuelle Idee, Bildtext und Prompt prüfen.\n\nBei unsortierten Bildern in \`inbox/images/\` gilt zwingend:\n\n1. Sichtbaren Inhalt ohne Dateinamen beschreiben.\n2. Mit allen Szenenfeldern vergleichen.\n3. Gewählte Szene gegen vorherige und nächste Szene prüfen.\n4. Niemals nach Upload-Reihenfolge oder Dateinummer zuordnen.\n5. Unter 0,90 Konfidenz nicht raten.\n6. \`visualReviewed\`, \`secondPassConfirmed\`, \`sceneOrderConfirmed\`, \`visibleSummary\`, \`reason\`, \`comparedFields\`, \`confirmedTarget\` und \`confirmedSceneOrder\` eintragen.\n\nNach der Zuordnung müssen \`review/scene-asset-verification.json\` und die strenge visuelle Prüfung vollständig bestanden sein.\n\nLege das Cover nach \`cover/cover.png\` und das ursprüngliche Voice-over nach \`audio/\`.\n`);
+  await writeText(path.join(reelDirectory, 'inbox', 'README.md'), `# Externe Dateien und sichere Zuordnung\n\nJede narrative Szene kann ab jetzt **eine, zwei oder selten drei Bildphasen** besitzen. Die Bildanzahl wird pro Reel individuell geplant. Die erste Bildphase einer Szene nutzt \`image-prompt.txt\`; zusätzliche Phasen nutzen \`image-prompt-02.txt\`, \`image-prompt-03.txt\` usw.\n\nBei unsortierten Bildern gilt zwingend:\n\n1. Sichtbaren Inhalt ohne Dateinamen beschreiben.\n2. Mit der konkreten Bildphase und ihren Szenenfeldern vergleichen.\n3. Gewählte Bildphase gegen vorherige und nächste Bildphase prüfen.\n4. Niemals allein nach Upload-Reihenfolge oder Dateinummer zuordnen.\n5. Unter 0,90 Konfidenz nicht raten.\n6. \`visualReviewed\`, \`secondPassConfirmed\`, \`sceneOrderConfirmed\`, \`visibleSummary\`, \`reason\`, \`comparedFields\`, \`confirmedTarget\` und \`confirmedSceneOrder\` eintragen.\n\nDie fortlaufende Google-Flow-Nummer beschreibt die **Bildreihenfolge**, nicht mehr automatisch die Szenennummer. Beispiel: Wenn Szene 2 zwei Bilder hat, kann Bild 02 die erste Phase von Szene 2 und Bild 03 die zweite Phase von Szene 2 sein.\n\nNach der Zuordnung müssen \`review/scene-asset-verification.json\` und die strenge visuelle Prüfung vollständig bestanden sein.\n\nLege das Cover nach \`cover/cover.png\` und das ursprüngliche Voice-over nach \`audio/\`.\n`);
   await writeJson(path.join(reelDirectory, 'inbox', 'asset-map.json'), {
-    version: 2,
+    version: 4,
     generatedBy: '',
     assignmentSchema: {
       imageSceneExample: {
@@ -317,7 +341,7 @@ export async function createReelWorkspace({
         confirmedTarget: 'scene-01',
         confirmedSceneOrder: 1,
         visibleSummary: 'Kurze neutrale Beschreibung des tatsächlich sichtbaren Bildinhalts.',
-        reason: 'Konkrete sichtbare Objekte und Handlung entsprechen Narration, visueller Idee und Prompt dieser Szene.',
+        reason: 'Konkrete sichtbare Objekte und Handlung entsprechen Narration, visueller Idee und Prompt dieser Bildphase.',
         comparedFields: ['narration', 'visualIdea', 'imageText', 'imagePrompt'],
         matchMethod: 'visual-content-review',
         reviewedAt: null

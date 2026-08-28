@@ -1,0 +1,318 @@
+GOOGLE FLOW – EIN MASTERPROMPT FÜR DAS KOMPLETTE REEL
+
+AUFTRAG
+Erzeuge für dieses Reel genau 14 finale Bilder: Bild 00 als Cover und danach Bild 01 bis Bild 13.
+
+WICHTIG – DIESE EINE NACHRICHT IST DIE KOMPLETTE FREIGABE
+Du bekommst alle Bildprompts in genau dieser einen Nachricht. Arbeite danach selbstständig bis Bild 13 fertig ist. Frage NICHT nach „Weiter“, „Go“, „OK“, Bestätigung oder weiterer Freigabe.
+
+ABER: DIES IST KEIN BATCH- ODER SERIEN-GENERIERUNGSAUFTRAG.
+Die Prompts müssen streng nacheinander abgearbeitet werden. Zu jedem Zeitpunkt darf nur genau EIN Bild generiert werden.
+
+==================================================
+SCHRITT 0 – ZUERST DEN GEMEINSAMEN ORDNER ANLEGEN
+==================================================
+
+Bevor du Bild 00 generierst:
+
+1. Erstelle in diesem Flow-Projekt genau EINEN gemeinsamen Ordner bzw. eine Medien-Sammlung mit dem exakten Namen:
+
+00-FERTIGE-REEL-BILDER
+
+2. Dieser Ordner ist der einzige Zielordner für alle final akzeptierten Bilder dieses Reels.
+3. Jedes fertige Bild muss SOFORT nach der Generierung, Prüfung und Umbenennung in diesen Ordner gelegt/verschoben/einsortiert werden.
+4. Nicht erst am Ende sortieren.
+5. Wenn dieser Ordner nicht angelegt werden kann, STOPPE. Erzeuge dann kein einziges Bild.
+
+==================================================
+HARTE SERIELLE AUSFÜHRUNG – IMMER NUR EIN BILD
+==================================================
+
+Arbeite wie eine Zustandsmaschine:
+
+current = 00
+
+Für jede aktuelle Bildnummer gilt zwingend:
+
+1. Lies NUR den Promptabschnitt für die aktuelle Bildnummer.
+2. Ignoriere alle späteren Bildabschnitte vollständig, bis das aktuelle Bild abgeschlossen ist.
+3. Starte genau EINEN einzigen Bildgenerator-Aufruf für genau EIN Bild.
+4. Keine Batch-Funktion.
+5. Keine Serienfunktion.
+6. Keine Galerie-Funktion.
+7. Keine Mehrfachvarianten.
+8. Keine parallelen Tool-Aufrufe.
+9. Keine Queue mehrerer Bilder.
+10. Warte vollständig, bis dieses EINE Bild sichtbar fertig ist.
+11. Prüfe das fertige Bild sichtbar gegen:
+   - den aktuellen Bildprompt
+   - die feste Reel-Bildwelt
+   - den erlaubten deutschen Bildtext
+   - 9:16
+12. Wenn das Bild falsch ist, erzeuge NUR dieses aktuelle Bild erneut. Noch nicht zum nächsten Bild gehen.
+13. Wenn das Bild korrekt ist, benenne es sofort exakt um in:
+
+Bild NN.png
+
+14. Prüfe sichtbar, dass die Umbenennung erfolgreich war.
+15. Lege/verschiebe/sortiere das korrekt benannte Bild sofort in:
+
+00-FERTIGE-REEL-BILDER
+
+16. Prüfe sichtbar, dass Bild NN.png dort vorhanden ist.
+17. Erst jetzt ist dieses Bild abgeschlossen.
+18. Erst jetzt erhöhe current um 1 und beginne mit dem nächsten Promptabschnitt.
+
+WICHTIGE STOPP-REGEL:
+Wenn du ein fertiges Bild nicht umbenennen kannst ODER nicht im Ordner 00-FERTIGE-REEL-BILDER bestätigen kannst, STOPPE sofort. Erzeuge keine späteren Bilder.
+
+Die späteren Prompts stehen zwar bereits in dieser Nachricht, sind aber NICHT zur Ausführung freigegeben, solange das aktuelle Bild nicht vollständig erzeugt, geprüft, umbenannt und im Ordner bestätigt ist.
+
+==================================================
+ABSCHLUSSKONTROLLE
+==================================================
+
+Nach Bild 13:
+
+Öffne bzw. prüfe den Ordner 00-FERTIGE-REEL-BILDER.
+Er muss exakt diese 14 finalen Bilder enthalten:
+
+Bild 00.png
+Bild 01.png
+Bild 02.png
+Bild 03.png
+Bild 04.png
+Bild 05.png
+Bild 06.png
+Bild 07.png
+Bild 08.png
+Bild 09.png
+Bild 10.png
+Bild 11.png
+Bild 12.png
+Bild 13.png
+
+Keine fehlende Nummer.
+Keine doppelte Nummer.
+Keine unbenannten finalen Bilder.
+Keine späteren Bilder außerhalb des Ordners liegen lassen.
+Erst danach ist der Auftrag abgeschlossen.
+
+==================================================
+VERBINDLICHE REEL-BILDWELT – FÜR JEDES BILD IDENTISCH
+==================================================
+
+Create a vertical 9:16 educational explainer illustration in a modern scene-first countryball-inspired editorial cartoon world made specifically for short-form Reels. Use a polished hand-drawn 2D vector-cartoon hybrid with thick slightly organic black outlines, clear simple geometry, flat cel-like color blocks, subtle soft shading, very light paper/grain texture, strong readable silhouettes, and clear foreground-midground-background separation.
+
+Build a concrete physical mini-scene first. The scene itself must explain the idea before any symbols are added. Prefer real objects, rooms, machinery, vehicles, structures and actions over floating icon boards. Use round cartoon characters only when an actor is needed. They have expressive white eyes and tiny simple limbs only when useful. Do not automatically use country flags; use neutral colors unless geographic identity is actually relevant.
+
+For this reel, keep a coherent aviation design system across all images: clean white and light-gray aircraft fuselage, muted blue sky, dark navy accents, warm amber/orange warning details, pale metallic structural parts, simple engineering cutaways, consistent window-frame shape and consistent line thickness. Aircraft must have no airline logo, no brand name and no readable registration.
+
+IMPORTANT CONTINUITY RULE:
+Bild 00 establishes the reel-specific aviation look. From Bild 01 onward preserve the same line thickness, shading level, texture strength, aircraft fuselage treatment, window-frame design, neutral-character eye style and overall color treatment. Vary the composition and camera angle, but keep the visual DNA consistent.
+
+DO NOT USE:
+- photorealism
+- realistic humans or faces
+- anime or manga
+- clay style
+- glossy 3D/Pixar rendering
+- YouTube stick-figure longform style
+- 16:9 composition
+- floating reaction-card rings
+- generic icon grids
+- sterile UI infographic boards
+- duplicated headlines
+- English visible text
+- fake text
+- logos
+- watermarks
+
+Visible text is German only and only when explicitly requested for the current image. Use it exactly once. If no text is requested, show no readable text.
+
+Workflow labels such as BILD, COVER, SZENE, DATEINAME, PROMPT, GOOGLE FLOW or the filenames below are NEVER image content.
+
+==================================================
+BILD 00 – COVER
+DATEINAME NACH FERTIGSTELLUNG: Bild 00.png
+DANACH SOFORT IN ORDNER: 00-FERTIGE-REEL-BILDER
+==================================================
+
+Create the visual anchor for the reel. Show a close three-quarter view of a modern passenger-aircraft fuselage with a row of smooth oval windows. One window is emphasized as the main focal point. Beside it, integrate a simplified cutaway hint of the fuselage structure so the viewer immediately understands this is about engineering, not decoration. In the lower foreground, show one discarded square-window frame with a visible crack starting from one sharp corner as a contrast. Keep the aircraft clean, logo-free and highly readable. Bright sky, light-gray fuselage, muted navy structural accents, one warm orange warning detail.
+
+Add exactly one large bold German headline at the bottom:
+„WARUM SIND FLUGZEUGFENSTER RUND?“
+
+No other readable text.
+
+==================================================
+BILD 01 – DRUCKUNTERSCHIED
+DATEINAME NACH FERTIGSTELLUNG: Bild 01.png
+DANACH SOFORT IN ORDNER: 00-FERTIGE-REEL-BILDER
+==================================================
+
+Show a physical cutaway of the same aircraft fuselage at cruising altitude. Inside the cabin, show a comfortable pressurized interior with one small neutral round passenger character. Outside the fuselage is thin high-altitude air and sky. Make the aircraft skin subtly bow outward to communicate internal pressure pushing against the fuselage. Use a clean engineering-style cutaway without complex labels.
+
+Add exactly one bold German text:
+„DRUCK IN DER KABINE“
+
+No other readable text.
+
+==================================================
+BILD 02 – WIEDERHOLTE BELASTUNG
+DATEINAME NACH FERTIGSTELLUNG: Bild 02.png
+DANACH SOFORT IN ORDNER: 00-FERTIGE-REEL-BILDER
+==================================================
+
+Show the same fuselage section in a simple aircraft structural test setup. The cylindrical fuselage segment is repeatedly pressurized while mounted in a clean workshop-like test frame. Show subtle repeated flex marks in the metal skin and one simple pressure hose entering the test section. Make the idea of repeated loading physical and obvious, not an abstract infographic.
+
+Add exactly one bold German text:
+„IMMER WIEDER BELASTET“
+
+No other readable text.
+
+==================================================
+BILD 03 – SCHARFE ECKEN
+DATEINAME NACH FERTIGSTELLUNG: Bild 03.png
+DANACH SOFORT IN ORDNER: 00-FERTIGE-REEL-BILDER
+==================================================
+
+Create a close-up of a flat aircraft fuselage panel with an old-fashioned square window opening. The metal around the opening is slightly deformed, and one sharp corner clearly shows the first tiny crack. Keep the square opening large in frame so the viewer immediately sees the problematic corner. No floating arrows or generic warning icons unless absolutely minimal.
+
+Add exactly one bold German text:
+„ECKEN SIND SCHWACHSTELLEN“
+
+No other readable text.
+
+==================================================
+BILD 04 – SPANNUNG KONZENTRIERT SICH
+DATEINAME NACH FERTIGSTELLUNG: Bild 04.png
+DANACH SOFORT IN ORDNER: 00-FERTIGE-REEL-BILDER
+==================================================
+
+Show the same square window panel from an even closer engineering view. The corner of the opening is visibly taking more deformation than the straight edges. Use a subtle warm-orange glow or short stress marks concentrated only around the sharp corner, while the rest of the panel stays calm. This should look like a physical structural illustration, not a digital heatmap UI.
+
+Add exactly one bold German text:
+„SPANNUNG AN DEN ECKEN“
+
+No other readable text.
+
+==================================================
+BILD 05 – FRÜHE DRUCKKABINEN
+DATEINAME NACH FERTIGSTELLUNG: Bild 05.png
+DANACH SOFORT IN ORDNER: 00-FERTIGE-REEL-BILDER
+==================================================
+
+Show a stylized early-generation pressurized passenger jet parked beside a maintenance hangar, using the same reel illustration style. Its fuselage has visibly more rectangular window openings than the modern aircraft. Two neutral round engineer characters inspect one window area from a small maintenance platform. Keep the aircraft generic and historically suggestive, with no real airline branding or readable markings.
+
+Add exactly one bold German text:
+„FRÜHE DRUCKKABINEN“
+
+No other readable text.
+
+==================================================
+BILD 06 – KLEINER RISS WIRD GRÖSSER
+DATEINAME NACH FERTIGSTELLUNG: Bild 06.png
+DANACH SOFORT IN ORDNER: 00-FERTIGE-REEL-BILDER
+==================================================
+
+Show a close physical progression in one continuous fuselage panel: a tiny crack begins at the corner of a square window opening and extends farther into the surrounding metal. Keep one clear crack path as the dominant subject. The rest of the panel is uncluttered. Use subtle orange emphasis only along the crack.
+
+Add exactly one bold German text:
+„KLEINE RISSE WACHSEN“
+
+No other readable text.
+
+==================================================
+BILD 07 – GERUNDETE ÖFFNUNG
+DATEINAME NACH FERTIGSTELLUNG: Bild 07.png
+DANACH SOFORT IN ORDNER: 00-FERTIGE-REEL-BILDER
+==================================================
+
+Show a modern rounded/oval aircraft window opening in a clean fuselage panel, viewed close-up. The surrounding metal follows the smooth curve without any sharp corner. Use a neat structural frame around the opening and subtle smooth stress-flow marks following the rounded shape. Keep it elegant and easy to understand.
+
+No readable text in this image.
+
+==================================================
+BILD 08 – LASTEN VERTEILEN SICH
+DATEINAME NACH FERTIGSTELLUNG: Bild 08.png
+DANACH SOFORT IN ORDNER: 00-FERTIGE-REEL-BILDER
+==================================================
+
+Create a clear engineering-style close-up of the oval window and its surrounding frame under cabin pressure. Show the structural load spreading smoothly around the curved perimeter using a few clean curved force marks integrated into the metal, not floating infographic arrows. The frame and fuselage should visibly share the load.
+
+Add exactly one bold German text:
+„LASTEN VERTEILEN SICH“
+
+No other readable text.
+
+==================================================
+BILD 09 – MODERNE FENSTERFORM
+DATEINAME NACH FERTIGSTELLUNG: Bild 09.png
+DANACH SOFORT IN ORDNER: 00-FERTIGE-REEL-BILDER
+==================================================
+
+Show a clean side view of a modern passenger aircraft in flight with a clearly visible row of consistent oval windows. Use a slightly low camera angle so the fuselage and window row dominate the frame. Keep the sky simple and the aircraft logo-free. The repeated rounded openings should be the main visual pattern.
+
+Add exactly one bold German text:
+„DESHALB OVAL“
+
+No other readable text.
+
+==================================================
+BILD 10 – MEHRERE TRANSPARENTE SCHICHTEN
+DATEINAME NACH FERTIGSTELLUNG: Bild 10.png
+DANACH SOFORT IN ORDNER: 00-FERTIGE-REEL-BILDER
+==================================================
+
+Show a simplified exploded cutaway of one aircraft passenger window assembly. Separate the transparent panes slightly in depth so the viewer can see that more than one clear layer exists, while keeping the surrounding frame visible. Use clean transparent blue-gray layers with thick black outlines and subtle shading. Do not add technical labels.
+
+Add exactly one bold German text:
+„MEHRERE SCHICHTEN“
+
+No other readable text.
+
+==================================================
+BILD 11 – FENSTER UND RAHMEN ALS SYSTEM
+DATEINAME NACH FERTIGSTELLUNG: Bild 11.png
+DANACH SOFORT IN ORDNER: 00-FERTIGE-REEL-BILDER
+==================================================
+
+Show a cutaway of the oval window seated firmly inside its structural frame and attached to the surrounding fuselage skin. The frame should visibly connect the opening to the aircraft structure. Use a few simplified rivet/fastener details and curved structural members, but keep the image uncluttered and readable.
+
+Add exactly one bold German text:
+„FENSTER + RAHMEN“
+
+No other readable text.
+
+==================================================
+BILD 12 – NICHT NUR AUSSICHT
+DATEINAME NACH FERTIGSTELLUNG: Bild 12.png
+DANACH SOFORT IN ORDNER: 00-FERTIGE-REEL-BILDER
+==================================================
+
+Show the inside of the same aircraft cabin. A neutral round passenger character looks out through the oval window at clouds, while a subtle cutaway around the window reveals the strong surrounding frame and fuselage structure. The emotional foreground is the view outside, but the engineering structure around it must remain clearly visible.
+
+Add exactly one bold German text:
+„NICHT NUR FÜR DIE AUSSICHT“
+
+No other readable text.
+
+==================================================
+BILD 13 – SCHLUSSBILD
+DATEINAME NACH FERTIGSTELLUNG: Bild 13.png
+DANACH SOFORT IN ORDNER: 00-FERTIGE-REEL-BILDER
+==================================================
+
+Create a calm final hero shot of the same modern passenger aircraft flying above clouds at sunset. The row of oval windows catches warm light. In the lower foreground, include one simple clean close-up inset-like physical window frame element without using a UI box, showing the smooth rounded structure as a final visual callback. Keep the same linework, fuselage treatment and aviation palette from Bild 00.
+
+Add exactly one bold German final text at the bottom:
+„FORM = SICHERHEIT“
+
+No other readable text.
+
+==================================================
+ENDE DES MASTERPROMPTS
+==================================================
+
+Beginne jetzt mit SCHRITT 0: Erstelle zuerst den Ordner 00-FERTIGE-REEL-BILDER. Danach erzeuge ausschließlich Bild 00. Erst wenn Bild 00 fertig, geprüft, exakt umbenannt und im Ordner bestätigt ist, darf Bild 01 gestartet werden. Fahre nach genau demselben Muster bis Bild 13 fort.

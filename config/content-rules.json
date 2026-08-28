@@ -1,21 +1,41 @@
 {
   "allowedTopics": [
-    "Politik und Gesellschaft",
-    "Länder, Geografie und Geschichte",
-    "Psychologie und menschliches Verhalten"
+    "Psychologie und menschliches Verhalten",
+    "Alltag und Gewohnheiten",
+    "Beziehungen und soziale Dynamiken",
+    "Gesellschaft und Kultur",
+    "Geschichte",
+    "Länder und Geografie",
+    "Politik und staatliche Systeme",
+    "Wissenschaft und Naturphänomene",
+    "Technik und digitale Welt",
+    "Internet und Social Media",
+    "Lernen, Schule und Gedächtnis",
+    "Arbeit und Beruf",
+    "Wirtschaft und Geldmechanismen",
+    "Gesundheit und Ernährung",
+    "Sprache und Kommunikation",
+    "Denkfehler, Mythen und kuriose Warum-Fragen"
   ],
   "excludedTopics": [
-    "Körper und Biologie",
-    "Finanzen",
-    "Elektrotechnik",
-    "KI-News",
-    "tägliche politische Nachrichten",
-    "Parteienwerbung"
+    "reine tägliche Breaking-News-Zusammenfassungen",
+    "Parteienwerbung oder politische Propaganda",
+    "reine Produktwerbung ohne Erklärwert"
   ],
   "topicFocus": {
-    "statement": "Warum Menschen, Länder und Gesellschaften so funktionieren.",
-    "autonomousSelectionLimitedToAllowedTopics": true,
-    "bodyAndBiologyExcludedAsContentPillar": true
+    "statement": "Das Themenuniversum ist offen. Alle neuen Reels verwenden genau eine feste Bildwelt: Modern Countryball Explainer. Die separate YouTube-Bildwelt wird niemals auf Reels übertragen.",
+    "openTopicUniverse": true,
+    "autonomousSelectionLimitedToAllowedTopics": false,
+    "allowedTopicsAreExamplesNotHardLimit": true,
+    "avoidRepeatedCountryHistoryBias": true,
+    "selectionCriteria": [
+      "starker Hook und sofortige Neugier",
+      "klarer Aha-Moment in unter 60 Sekunden",
+      "faktisch sauber erklärbar",
+      "visuell stark und klar umsetzbar",
+      "abwechslungsreich gegenüber den letzten Reels",
+      "teilbar, überraschend oder alltagsrelevant"
+    ]
   },
   "hookRules": {
     "preferredPattern": "THEMA einfach erklärt:",
@@ -34,10 +54,10 @@
       "leicht verständlich"
     ],
     "preferredExamples": [
-      "Sozialismus einfach erklärt:",
-      "Demokratie einfach erklärt:",
-      "Gruppendruck einfach erklärt:",
-      "Warum haben Länder Grenzen? Einfach erklärt:"
+      "Warum schieben wir Aufgaben auf? Einfach erklärt:",
+      "Warum erinnern wir uns falsch? Einfach erklärt:",
+      "Warum gehört Alaska zu den USA? Einfach erklärt:",
+      "Warum macht Social Media so schnell abhängig? Einfach erklärt:"
     ],
     "avoid": [
       "Heute erkläre ich dir ...",
@@ -100,7 +120,7 @@
         "loudnessRangeLra": 11
       },
       "rerunTimelineAfterward": true,
-      "rerunWordSyncAfterward": true
+      "rerunWordSyncAfterward": false
     }
   },
   "visualRules": {
@@ -127,8 +147,13 @@
       "default": 0.2
     },
     "consistentStyleWithinReel": true,
-    "creativeStyleBetweenReels": true,
-    "selectVisualWorldAfterScript": true,
+    "creativeStyleBetweenReels": false,
+    "visualWorldMode": "fixed",
+    "fixedVisualWorld": "modern-countryball-explainer",
+    "fixedVisualWorldLabel": "Modern Countryball Explainer",
+    "selectVisualWorldAfterScript": false,
+    "styleBiblePath": "knowledge/fixed-visual-world.md",
+    "promptLanguage": "en",
     "integratedGermanKeywordsAllowed": true,
     "integratedGermanTextPreferred": true,
     "embeddedTextRules": {
@@ -151,21 +176,39 @@
         "kurze Schlussaussage"
       ],
       "mustAppearExactlyInPrompt": true,
-      "mustNotRepeatSubtitleVerbatim": true,
-      "mayBeOmittedWhen": "Text würde die Szene überladen, die Aussage doppeln oder die Bildgenerierung unnötig verschlechtern.",
+      "mayBeOmittedWhen": "Text würde die Szene überladen oder die Bildgenerierung unnötig verschlechtern.",
       "forbidden": [
         "englischer sichtbarer Text",
         "zufällige oder erfundene Wörter",
         "lange Absätze",
         "unnötig viel Text",
-        "erzwungener Text in jeder einzelnen Szene"
+        "erzwungener Text in jeder einzelnen Szene",
+        "Workflow-Labels wie BILD, COVER, SZENE oder DATEINAME",
+        "dieselbe Headline oben und unten doppelt"
       ]
     },
     "fixedBuildUpRequired": false,
     "naturalContinuousCompositionRequired": true,
     "oneClearMomentPerScene": true,
-    "mainSubjectMayUseCenter": true,
-    "mainSubjectMayAppearBehindSubtitles": true,
+    "sceneFirstCompositionRequired": true,
+    "concretePhysicalMomentRequired": true,
+    "genericIconBoardForbidden": true,
+    "genericFloatingCardsForbidden": true,
+    "repeatedCenteredCharacterPlusIconsForbidden": true,
+    "preferConcreteEnvironmentWhenUseful": true,
+    "ballCharacterPreferredWhenActorIsUseful": true,
+    "roundBallGeometryRequiredWhenActorAppears": true,
+    "singleBallGroupOrMapViewAllowed": true,
+    "actorNotRequiredWhenObjectOrMechanismIsClearer": true,
+    "doNotForceDecorativeActor": true,
+    "humanHeadCharactersForbidden": true,
+    "humanoidCartoonPeopleForbidden": true,
+    "ovalOrBeanShapedBodiesForbidden": true,
+    "stickFiguresForbidden": true,
+    "topicSpecificSubVisualWorldsForbidden": true,
+    "youtubeVisualWorldInheritanceForbidden": true,
+    "useFullFrameComposition": true,
+    "reserveSubtitleSafeZone": false,
     "forbidArtificialSubtitleGap": true,
     "forbidEmptyHorizontalStripe": true,
     "forbidDisconnectedTopBottomLayout": true,
@@ -173,54 +216,41 @@
     "forbidUnrequestedReadableText": true,
     "visibleTextLanguage": "de",
     "noWatermarks": true,
-    "noLogosUnlessEditoriallyNecessary": true
+    "noLogosUnlessEditoriallyNecessary": true,
+    "fixedVisualWorldRequirements": [
+      "genau eine feste 9:16 Modern-Countryball-Explainer-Bildwelt ausschließlich für Reels",
+      "wenn Akteure vorkommen, sind sie runde Kugelfiguren mit einfachen weißen Augen und schwarzen Pupillen",
+      "Kugelkörper bleiben exakt rund und werden niemals oval, bohnenförmig, eiförmig oder humanoid",
+      "kein separater Kopf, kein Hals, keine Frisur und kein menschliches Gesicht auf einer Kugelfigur",
+      "höchstens kleine einfache Arme, Hände oder Füße, wenn eine Handlung sie braucht",
+      "Länder-/Regionsflaggen nur bei tatsächlicher geografischer Relevanz, sonst neutrale einfarbige Kugeln",
+      "je nach Szene einzelne Kugel, kleine Kugelgruppe, Kugel plus Objekt oder Kartenansicht erlaubt",
+      "eine Kugelfigur ist nicht in jedem Bild Pflicht und wird nicht dekorativ erzwungen",
+      "wenn keine Kugelfigur nötig ist, konkrete Objekte, Mechanismen, Dokumente, Karten, Gebäude oder Umgebungen verwenden",
+      "Objekte ohne Kugelfigur behalten dieselbe Kontur-, Vereinfachungs- und 2D-Formsprache",
+      "keine menschlichen Köpfe auf Kugelkörpern, keine humanoiden Cartoonmenschen und keine Stick-Figuren",
+      "Länder, Regierungen und Institutionen durch flaggenmarkierte oder neutrale Kugeln mit Karten, Grenzen, Dokumenten oder Gebäuden darstellen",
+      "sauberer flacher 2D-Vektor-/Comic-Look mit dicken schwarzen Konturen",
+      "zuerst konkrete Mini-Szene mit Handlung und Kontext, erst danach zusätzliche Symbole",
+      "ein dominantes Hauptmotiv und höchstens wenige unterstützende Requisiten",
+      "niedrige bis mittlere Detaildichte und Bedeutung möglichst innerhalb einer Sekunde verständlich",
+      "ruhiger einfarbiger oder sanft texturierter Hintergrund",
+      "keine generischen schwebenden Reaktionskarten, Sprechblasenringe, Icon-Gitter oder UI-Boxen als Standardlösung",
+      "keine wiederholte Figur-mittig-plus-Icons-Komposition",
+      "keine themenspezifischen Unter-Bildwelten für Technik, Geschichte, Medizin oder andere Themen",
+      "keine technische Cutaway-/Blueprint-Welt als Standard",
+      "keine doppelten identischen Headlines oben und unten",
+      "kein Fotorealismus, kein Anime, kein glänzendes 3D und kein Pixar-Look",
+      "keine Übernahme der separaten YouTube-Bildwelt und keine 16:9-Komposition",
+      "sichtbarer Text ausschließlich Deutsch"
+    ]
   },
   "subtitleRules": {
-    "defaultEnabled": true,
-    "separateFromImagePrompts": true,
-    "position": "center",
-    "verticalPositionPercent": {
-      "min": 58,
-      "max": 58,
-      "default": 58
-    },
-    "fixedExactCenterPosition": false,
-    "fixedVerticalPosition": true,
-    "palette": {
-      "textColor": "#F5F7FA",
-      "highlightColor": "#B7794A",
-      "backgroundColor": "transparent",
-      "textStrokeColor": "rgba(0, 0, 0, 0.92)",
-      "reason": "Weißer Grundtext bleibt auf den Illustrationen gut lesbar; nur das exakt aktuell gesprochene Wort wechselt synchron in ein warmes Braun."
-    },
-    "wordsPerCue": {
-      "min": 3,
-      "max": 6
-    },
-    "maxLines": 2,
-    "wordByWordKaraoke": true,
-    "highlightCurrentWord": true,
-    "speakerSyncedWordHighlight": true,
-    "highlightAnimation": "color-only",
-    "forbidScaleBounceOrBoxAnimation": true,
-    "exactWordTimingsRequired": true,
-    "completeSpokenTextCoverageRequired": true,
-    "minimumWordCoverage": 1,
-    "requireZeroUnassignedWords": true,
-    "requireExactVoiceScriptWordSequence": true,
-    "wordTimingWorkflow": {
-      "enabled": true,
-      "provider": "codex-local-audio-review",
-      "prepareCommand": "npm run sync:words -- --dir REEL_ORDNER",
-      "applyCommand": "npm run sync:words -- --dir REEL_ORDNER --apply --strict",
-      "localAudioReviewRequired": true,
-      "estimatedDistributionForbidden": true,
-      "reason": "Untertitel müssen dem echten Voice-over wortgenau folgen. Kein gesprochenes Wort darf fehlen; das aktive Wort wird anhand echter akustischer Zeiten braun markiert."
-    },
-    "fallbackWordTiming": "blocked-until-codex-word-sync",
-    "repeatIntegratedImageText": false,
-    "avoidPlatformUiSafeZones": true,
-    "allowPositionAdjustmentForVisualConflicts": false,
-    "doNotCreateBlankBandInImage": true
+    "defaultEnabled": false,
+    "globallyDisabled": true,
+    "renderSubtitles": false,
+    "generateSubtitleCues": false,
+    "wordTimingWorkflowRequired": false,
+    "reason": "Globale Nutzerregel: Erklär-Reels werden ohne Untertitel produziert und gerendert."
   }
 }
