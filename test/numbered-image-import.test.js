@@ -53,7 +53,6 @@ test('erkennt die vereinbarten Dateinamen', () => {
 test('ordnet Nummern nach globaler Bildreihenfolge zu', async () => {
   const root = await createFixture(3, { secondSceneHasTwoImages: true });
   const drop = path.join(root, 'inbox', 'numbered-images');
-  await writeFile(path.join(drop, 'bild-00.png'), 'cover');
   await writeFile(path.join(drop, '01.png'), 'scene1');
   await writeFile(path.join(drop, 'Bild 02.webp'), 'scene2a');
   await writeFile(path.join(drop, '03-meine-szene.jpg'), 'scene2b');
@@ -62,20 +61,20 @@ test('ordnet Nummern nach globaler Bildreihenfolge zu', async () => {
   const report = await prepareNumberedImageAssignments(root);
   const assetMap = await readJson(path.join(root, 'inbox', 'asset-map.json'));
 
-  assert.equal(report.assignedCount, 5);
+  assert.equal(report.assignedCount, 4);
   assert.equal(report.plannedImageCount, 4);
   assert.equal(report.unmatchedCount, 0);
   assert.equal(assetMap.version, 4);
   assert.equal(assetMap.assignments[0].target, 'audio');
   assert.deepEqual(
     assetMap.assignments.slice(1).map((assignment) => assignment.target),
-    ['cover', 'scene-01', 'scene-02', 'scene-02-image-02', 'scene-03']
+    ['scene-01', 'scene-02', 'scene-02-image-02', 'scene-03']
   );
+  assert.equal(assetMap.assignments[2].suggestedSceneOrder, 2);
   assert.equal(assetMap.assignments[3].suggestedSceneOrder, 2);
-  assert.equal(assetMap.assignments[4].suggestedSceneOrder, 2);
-  assert.equal(assetMap.assignments[4].suggestedPhaseOrder, 2);
-  assert.equal(assetMap.assignments[4].confirmedSceneOrder, null);
-  assert.equal(assetMap.assignments[4].matchMethod, '');
+  assert.equal(assetMap.assignments[3].suggestedPhaseOrder, 2);
+  assert.equal(assetMap.assignments[3].confirmedSceneOrder, null);
+  assert.equal(assetMap.assignments[3].matchMethod, '');
 });
 
 test('blockiert doppelte Nummern statt willkürlich eine Datei zu wählen', async () => {

@@ -104,12 +104,11 @@ async function main() {
   console.log(`Bildwelt festgelegt: ${yesNo(progress.details.styleReady)}`);
   console.log(`Szenen geplant: ${progress.details.scenesReady}`);
   console.log(`Bildprompts fertig: ${progress.details.promptsReady}`);
-  console.log(`Cover-Prompt fertig: ${yesNo(progress.details.coverPromptReady)}`);
+  console.log(`Titelbild-Prompt fertig (Szene 1): ${yesNo(progress.details.titleImagePromptReady)}`);
   console.log(`Inhaltsprüfung bestanden: ${yesNo(progress.details.contentCheckReady)}`);
   if (sourceGate.required) console.log(`Pflicht-Quellen-QC bestanden: ${yesNo(sourceGate.passed)}`);
   console.log(`Szenenbilder übernommen: ${progress.details.sceneImagesReady}`);
   console.log(`Audio übernommen: ${yesNo(progress.details.audioReady)}`);
-  console.log(`Cover übernommen: ${yesNo(progress.details.coverImageReady)}`);
   console.log(`Pausen und Tempo optimiert: ${yesNo(progress.details.audioPacingPassed)}`);
   console.log(`Voice-over-Tempo: ${Number(progress.details.audioPacingRate ?? 0).toFixed(2)}x`);
   if (pacingBinding.required) console.log(`Gemessene Audio-Datei unverändert: ${yesNo(pacingBinding.passed)}`);

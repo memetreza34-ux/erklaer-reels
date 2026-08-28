@@ -64,7 +64,7 @@ Verbindliche Nutzerdatei:
 
 Der Exporter ergänzt `modern-countryball-explainer` global und zusätzlich direkt vor jedem einzelnen Bildabschnitt. Dadurch bleibt die Bildwelt auch bei komplett unterschiedlichen Themen stabil.
 
-`Bild 00.png` ist das Cover, aber nicht der alleinige Style-Master. Die globale Repo-Bildwelt ist der Style-Master.
+`Bild 01.png` ist die erste Szene und zugleich das Titelbild, aber nicht der alleinige Style-Master. Die globale Repo-Bildwelt ist der Style-Master.
 
 Danach bezeichnet die Nummer die **globale Bildreihenfolge**, nicht automatisch die Szenennummer.
 

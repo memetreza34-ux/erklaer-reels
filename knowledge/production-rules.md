@@ -82,7 +82,7 @@ Pflicht:
 
 Beim Export ergänzt das System den festen Style-Lock global und direkt vor jedem einzelnen Bildabschnitt. Widersprechende Stilbegriffe in einem Quellprompt werden dadurch überstimmt, ohne den konkreten Inhalt zu verändern.
 
-`Bild 00` ist das Cover, aber nicht der alleinige Style-Master. Die globale Repo-Bildwelt ist der Style-Master.
+`Bild 01` ist die erste Szene und zugleich das Titelbild, aber nicht der alleinige Style-Master. Die globale Repo-Bildwelt ist der Style-Master.
 
 ## Starkes Ende
 
@@ -176,7 +176,7 @@ Formale Felder ersetzen keine inhaltliche Prüfung.
 
 ## Sichere Bildzuordnung
 
-Die Nummerierung `Bild 00`, `Bild 01` usw. ist nur Routing-Hilfe. Die finale Zuordnung erfordert echte Sichtprüfung.
+Die Nummerierung `Bild 01`, `Bild 02` usw. ist nur Routing-Hilfe. Die finale Zuordnung erfordert echte Sichtprüfung.
 
 ### Erster Durchgang
 - Bild tatsächlich öffnen

@@ -70,24 +70,8 @@ export async function collectImagePrompts(reelDirectory) {
   const scenes = await readJson(sceneIndexPath);
   if (!Array.isArray(scenes) || scenes.length === 0) throw new Error('scenes/scene-index.json enthält keine Szenen.');
 
-  const cover = await readJsonIfExists(path.join(reelDirectory, 'cover', 'cover.json'), {});
-  const coverPromptPath = path.join(reelDirectory, 'cover', 'cover-prompt.txt');
-  const coverPromptPresent = await exists(coverPromptPath);
-  const coverPrompt = coverPromptPresent ? (await readFile(coverPromptPath, 'utf8')).trim() : '';
-
-  const prompts = [{
-    kind: 'cover',
-    promptId: 'cover',
-    targetId: 'cover',
-    sceneId: null,
-    sceneOrder: null,
-    phaseOrder: null,
-    order: 0,
-    promptPath: coverPromptPath,
-    prompt: coverPrompt,
-    allowedVisibleText: String(cover.headline ?? '').trim(),
-    missing: !coverPrompt
-  }];
+  // Kein separates Cover mehr: Die erste Szene ist zugleich das Titelbild.
+  const prompts = [];
 
   for (const phase of flattenSceneImagePhases(scenes)) {
     const promptPath = path.join(reelDirectory, 'scenes', phase.sceneId, phase.promptFileName);
@@ -134,15 +118,15 @@ function formatStyledGenerationPrompt(entry) {
 }
 
 function imageRole(entry) {
-  if (entry.kind === 'cover') return 'Cover';
   if (Number(entry.phaseOrder ?? 1) > 1) return `Szene ${entry.sceneOrder}, Bildphase ${entry.phaseOrder}`;
+  if (Number(entry.sceneOrder) === 1) return 'Szene 1 – zugleich Titelbild';
   return `Szene ${entry.sceneOrder}`;
 }
 
 function imageHeading(entry) {
   const number = padImageNumber(entry.order);
-  if (entry.kind === 'cover') return `BILD ${number} – COVER`;
   if (Number(entry.phaseOrder ?? 1) > 1) return `BILD ${number} – SZENE ${entry.sceneOrder} – BILDPHASE ${entry.phaseOrder}`;
+  if (Number(entry.sceneOrder) === 1) return `BILD ${number} – SZENE 1 – TITELBILD`;
   return `BILD ${number} – SZENE ${entry.sceneOrder}`;
 }
 
@@ -157,21 +141,22 @@ function formatCompleteSerialBundle(prompts) {
     'GOOGLE FLOW – KOMPLETTER SERIELLER BILDLAUF',
     '',
     'AUFTRAG',
-    `Erzeuge für dieses Reel genau ${total} Bilder: Bild 00 als Cover und danach Bild 01 bis Bild ${last} für die geplanten Bildmomente der ${sceneCount} Szenen.`,
+    `Erzeuge für dieses Reel genau ${total} Bilder: Bild 01 bis Bild ${last} für die geplanten Bildmomente der ${sceneCount} Szenen.`,
+    'Es gibt kein separates Cover. Bild 01 ist die erste Szene und dient zugleich als Titelbild des Reels.',
     '',
     'WICHTIG – DIESE EINE NACHRICHT IST DIE KOMPLETTE FREIGABE',
     `Sobald dieser Gesamtprompt einmal abgesendet wurde, arbeitest du selbstständig bis Bild ${last} fertig ist. Frage NICHT nach Go, Weiter, OK, Bestätigung oder Erlaubnis.`,
     'Die Nachricht enthält alle Prompts, muss aber streng als Zustandsmaschine abgearbeitet werden: immer nur genau ein aktuell freigegebenes Bild.',
     '',
     'SCHRITT 0 – ZUERST EINEN GEMEINSAMEN AUSGABEORDNER ANLEGEN',
-    `Bevor du Bild 00 generierst, erstelle genau EINEN Ordner bzw. eine Medien-Sammlung mit dem Namen "${FLOW_OUTPUT_FOLDER}".`,
+    `Bevor du Bild 01 generierst, erstelle genau EINEN Ordner bzw. eine Medien-Sammlung mit dem Namen "${FLOW_OUTPUT_FOLDER}".`,
     `Alle final akzeptierten Bilder dieses Reels werden ausschließlich in "${FLOW_OUTPUT_FOLDER}" gesammelt.`,
     `Wenn der Ordner nicht angelegt werden kann oder ein fertiges Bild nicht umbenannt bzw. dort abgelegt werden kann, STOPPE den Lauf und erzeuge keine späteren Bilder.`,
     '',
     'STRENG SERIELL – NIE PARALLEL',
     'Zu jedem Zeitpunkt darf genau EINE Bildgenerierung aktiv, ausstehend, queued oder in Bearbeitung sein.',
     'Für jedes Bild zwingend:',
-    '1. Nimm die nächste noch nicht abgeschlossene Bildnummer. Starte bei Bild 00.',
+    '1. Nimm die nächste noch nicht abgeschlossene Bildnummer. Starte bei Bild 01.',
     '2. Verwende NUR den Promptabschnitt dieser Bildnummer.',
     '3. Starte genau EINEN Bildgenerator-Aufruf.',
     '4. Keine Serienfunktion, kein Multi-Prompt-Aufruf, kein Batch, keine Galerie und keine Parallelgenerierung.',
@@ -198,17 +183,17 @@ function formatCompleteSerialBundle(prompts) {
 
   lines.push(
     '',
-    'BILD 00',
-    `Bild 00.png ist das Cover. Die globale Bildwelt ${FIXED_VISUAL_WORLD_LABEL} bleibt für alle folgenden Bilder identisch.`,
+    'BILD 01 – TITELBILD',
+    `Bild 01.png ist die erste Szene und zugleich das Titelbild des Reels. Es trägt die stärkste visuelle Idee und muss ohne Ton neugierig machen. Die globale Bildwelt ${FIXED_VISUAL_WORLD_LABEL} bleibt für alle folgenden Bilder identisch.`,
     '',
     'ARBEITSLABELS SIND NIEMALS BILDINHALT',
-    'BILD-Nummern, COVER, SZENE, BILDPHASE, DATEINAME, Dateinamen und Workflow-Anweisungen dürfen niemals im Bild erscheinen.',
+    'BILD-Nummern, TITELBILD, SZENE, BILDPHASE, DATEINAME, Dateinamen und Workflow-Anweisungen dürfen niemals im Bild erscheinen.',
     '',
     'TEXTREGEL',
     'Nur der im jeweiligen Prompt ausdrücklich verlangte deutsche Text darf sichtbar erscheinen. Kein zusätzlicher englischer Text, keine Fantasiewörter, keine technischen Labels, Logos oder Wasserzeichen. Wenn kein sichtbarer Text verlangt wird, bleibt das Bild vollständig textfrei.',
     '',
     'ABSCHLUSSKONTROLLE',
-    `Nach Bild ${last}: Prüfe "${FLOW_OUTPUT_FOLDER}". Der Ordner muss exakt ${total} finale Bilder enthalten: Bild 00.png bis Bild ${last}.png, ohne fehlende oder doppelte Nummern.`,
+    `Nach Bild ${last}: Prüfe "${FLOW_OUTPUT_FOLDER}". Der Ordner muss exakt ${total} finale Bilder enthalten: Bild 01.png bis Bild ${last}.png, ohne fehlende oder doppelte Nummern.`,
     'Erst danach ist der Auftrag abgeschlossen.',
     '',
     '────────────────────────────────────────'
@@ -268,7 +253,7 @@ export async function buildImagePromptBundle(reelDirectory, { strict = false } =
     sceneCount: new Set(prompts.filter((entry) => entry.kind === 'scene').map((entry) => entry.sceneId)).size,
     plannedImageCount: prompts.filter((entry) => entry.kind === 'scene').length,
     totalPromptCount: prompts.length,
-    coverIncluded: prompts.some((entry) => entry.kind === 'cover' && !entry.missing),
+    titleImageIncluded: prompts.some((entry) => Number(entry.sceneOrder) === 1 && !entry.missing),
     missingPromptIds: missingIds,
     missingSceneIds: prompts.filter((entry) => entry.kind === 'scene' && entry.missing).map((entry) => entry.sceneId),
     complete: missingIds.length === 0,
@@ -295,7 +280,7 @@ export async function validateImagePromptBundle(reelDirectory) {
     sceneCount: new Set(prompts.filter((entry) => entry.kind === 'scene').map((entry) => entry.sceneId)).size,
     plannedImageCount: prompts.filter((entry) => entry.kind === 'scene').length,
     totalPromptCount: prompts.length,
-    coverIncluded: prompts.some((entry) => entry.kind === 'cover' && !entry.missing),
+    titleImageIncluded: prompts.some((entry) => Number(entry.sceneOrder) === 1 && !entry.missing),
     missingPromptIds: missingIds,
     missingSceneIds: prompts.filter((entry) => entry.kind === 'scene' && entry.missing).map((entry) => entry.sceneId),
     filePresent: actualUser !== null,

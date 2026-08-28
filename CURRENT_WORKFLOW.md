@@ -131,7 +131,7 @@ Der separate `google-flow-controller.txt` ist deaktiviert. Alle Steuerregeln ste
 
 ### Serielle Flow-Regel
 
-Vor Bild 00 erstellt Flow genau einen gemeinsamen Ausgabeordner für das Reel.
+Vor Bild 01 erstellt Flow genau einen gemeinsamen Ausgabeordner für das Reel.
 
 Für jedes Bild:
 1. nur aktuellen Bildabschnitt verwenden

@@ -124,7 +124,6 @@ async function applyMacFinderVisibility(reelDirectory, sceneDirectories) {
   }
 
   const internalMetadataPaths = [
-    path.join(reelDirectory, 'cover', 'cover.json'),
     ...sceneDirectories.map((sceneDirectory) => path.join(reelDirectory, 'scenes', sceneDirectory, 'scene.json'))
   ];
   for (const entryPath of internalMetadataPaths) {
@@ -159,11 +158,11 @@ export async function ensureHumanReelView(reelDirectory, { hideTechnicalInFinder
   await Promise.all([
     writeIfMissing(
       path.join(absoluteReelDirectory, '00-bildprompts', 'README.md'),
-      '# 00 – Bildprompts und Bilder\n\nFür Google Flow gibt es genau eine Masterdatei: `99-alle-bildprompts.txt`. Es gibt keine zweite Kopie unter `all-image-prompts/`. Google Flow erzeugt streng seriell: ein Bild fertigstellen → prüfen → `Bild XX.png` benennen → in den gemeinsamen Bildordner legen → erst danach das nächste Bild starten. `Bild 00.png` ist das Cover.\n'
+      '# 00 – Bildprompts und Bilder\n\nFür Google Flow gibt es genau eine Masterdatei: `99-alle-bildprompts.txt`. Es gibt keine zweite Kopie unter `all-image-prompts/`. Google Flow erzeugt streng seriell: ein Bild fertigstellen → prüfen → `Bild XX.png` benennen → in den gemeinsamen Bildordner legen → erst danach das nächste Bild starten. `Bild 01.png` ist die erste Szene und zugleich das Titelbild.\n'
     ),
     writeIfMissing(
       path.join(absoluteReelDirectory, 'inbox', 'numbered-images', 'README.md'),
-      '# Nummerierter Bild-Schnellimport\n\nHier kommen die vollständig erzeugten und bereits korrekt als `Bild 00.png`, `Bild 01.png` usw. benannten Bilder gemeinsam hinein. `Bild 00.png` ist das Cover.\n'
+      '# Nummerierter Bild-Schnellimport\n\nHier kommen die vollständig erzeugten und bereits korrekt als `Bild 01.png`, `Bild 02.png` usw. benannten Bilder gemeinsam hinein. `Bild 01.png` ist die erste Szene und zugleich das Titelbild.\n'
     ),
     writeIfMissing(path.join(absoluteReelDirectory, '01-voice-script', 'README.md'), '# 01 – Voice-Script\n\nHier liegt der endgültige Text für das Voice-over.\n'),
     writeIfMissing(path.join(absoluteReelDirectory, '02-audio', 'README.md'), '# 02 – Audio\n\nUnbearbeitetes Voice-over nach `AUDIO-HIER-EINFUEGEN`. Das optimierte Audio erscheint später unter `FINAL-AUDIO`.\n'),
@@ -182,7 +181,6 @@ export async function ensureHumanReelView(reelDirectory, { hideTechnicalInFinder
   const linkResults = [];
   const links = [
     ['00-bildprompts/00-ALLE-BILDER-HIER-REIN', '../inbox/numbered-images', 'dir'],
-    ['00-bildprompts/00-cover', '../cover', 'dir'],
     ['01-voice-script/voice-script.txt', '../script/voice-script.txt', 'file'],
     ['02-audio/AUDIO-HIER-EINFUEGEN', '../inbox/audio', 'dir'],
     ['02-audio/FINAL-AUDIO', '../audio', 'dir'],

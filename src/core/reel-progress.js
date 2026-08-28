@@ -61,10 +61,11 @@ export async function calculateReelProgress(reelDirectory) {
   const sources = (await exists(path.join(reelDirectory, 'sources', 'sources.md')))
     ? await readText(path.join(reelDirectory, 'sources', 'sources.md'))
     : '';
-  const coverPrompt = (await exists(path.join(reelDirectory, 'cover', 'cover-prompt.txt')))
-    ? await readText(path.join(reelDirectory, 'cover', 'cover-prompt.txt'))
-    : '';
-  const cover = await readJson(path.join(reelDirectory, 'cover', 'cover.json'), {});
+  // Kein separates Cover: Szene 1 ist zugleich das Titelbild.
+  const titleScene = scenes.find((scene) => Number(scene.order) === 1) ?? scenes[0] ?? {};
+  const titleSceneId = String(titleScene.sceneId ?? 'scene-01');
+  const titlePromptPath = path.join(reelDirectory, 'scenes', titleSceneId, 'image-prompt.txt');
+  const titlePrompt = (await exists(titlePromptPath)) ? await readText(titlePromptPath) : '';
 
   const scriptsReady = finalScript.length >= 120 && voiceScript.length >= 120;
   const visualWorldUnassigned = !String(reel.visualStyleId ?? '').trim();
@@ -82,9 +83,9 @@ export async function calculateReelProgress(reelDirectory) {
     if ((await exists(promptPath)) && (await readText(promptPath)).length >= 180) promptCount += 1;
   }
 
-  const coverReady = coverPrompt.length >= 180 &&
-    String(cover.headline ?? cover.title ?? '').trim().length >= 5 &&
-    String(cover.visualIdea ?? '').trim().length >= 20;
+  const titleImageReady = titlePrompt.length >= 180 &&
+    String(titleScene.imageText ?? '').trim().length >= 5 &&
+    String(titleScene.visualIdea ?? '').trim().length >= 20;
   const captionReady = caption.length >= 80;
   const sourcesReady = sources.length >= 40 && sources !== '# Quellen';
   const contentCheckReady = readiness?.passed === true;
@@ -96,7 +97,7 @@ export async function calculateReelProgress(reelDirectory) {
     (styleReady ? 10 : 0) +
     sceneRatio * 25 +
     promptRatio * 25 +
-    (coverReady ? 10 : 0) +
+    (titleImageReady ? 10 : 0) +
     (captionReady ? 5 : 0) +
     (sourcesReady ? 5 : 0) +
     (contentCheckReady ? 5 : 0)
@@ -108,12 +109,11 @@ export async function calculateReelProgress(reelDirectory) {
   const readySceneImages = manifestVisuals.filter((visual) => visual.status === 'ready').length;
   const sceneImageRatio = visualPhases.length > 0 ? readySceneImages / visualPhases.length : 0;
   const audioReady = manifest.audio?.status === 'ready';
-  const coverImageReady = manifest.cover?.status === 'ready';
   const assetReportReady = Boolean(matchingReport);
+  // Ohne separates Cover tragen die Szenenbilder dessen Gewicht mit.
   const assets = clamp(
     (audioReady ? 20 : 0) +
-    sceneImageRatio * 60 +
-    (coverImageReady ? 15 : 0) +
+    sceneImageRatio * 75 +
     (assetReportReady ? 5 : 0)
   );
 
@@ -225,7 +225,7 @@ export async function calculateReelProgress(reelDirectory) {
   if (preProduction < 100) {
     nextStep = 'Codex muss Script, Szenen und die individuell gewählte Bilddichte fertigstellen und die strenge Inhaltsprüfung bestehen.';
   } else if (assets < 100) {
-    nextStep = 'Voice-over, Cover und alle geplanten Bildphasen bereitstellen und visuell prüfen.';
+    nextStep = 'Voice-over und alle geplanten Bildphasen bereitstellen und visuell prüfen. Szene 1 ist zugleich das Titelbild.';
   } else if (audioPacing < 100) {
     nextStep = `Mit trim:pauses das Voice-over auf ${AUDIO_PACING_STYLE.playbackRate.toFixed(2)}x beschleunigen, Pausen kürzen und auf ${AUDIO_PACING_STYLE.loudnessTargetLufs} LUFS normalisieren und nachmessen.`;
   } else if (timelineProgress < 100) {
@@ -261,13 +261,12 @@ export async function calculateReelProgress(reelDirectory) {
       scenesReady: `${completeScenes}/${scenes.length}`,
       plannedImageCount: visualPhases.length,
       promptsReady: `${promptCount}/${visualPhases.length}`,
-      coverPromptReady: coverReady,
+      titleImagePromptReady: titleImageReady,
       captionReady,
       sourcesReady,
       contentCheckReady,
       audioReady,
       sceneImagesReady: `${readySceneImages}/${visualPhases.length}`,
-      coverImageReady,
       assetReportReady,
       audioPacingCreated,
       audioPacingPassed,

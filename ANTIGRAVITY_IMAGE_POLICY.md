@@ -10,7 +10,7 @@ Diese Regel gilt für **Antigravity** bei jeder Reel-Erstellung, jeder Reparatur
 
 Das bedeutet ausdrücklich:
 
-- keine Coverbilder generieren
+- keine Titelbilder generieren
 - keine Szenenbilder generieren
 - keinen eingebauten oder externen Bildgenerator selbst starten
 - keine Bildgenerierungs-API für Reel-Bilder aufrufen
@@ -27,10 +27,9 @@ Antigravity erstellt bzw. bearbeitet vollständig:
 - Thema und Script
 - Szenenplanung
 - individuelle Bilddichte und Bildphasen
-- Cover-Prompt
-- einzelne Szenen-/Bildphasen-Prompts
+- einzelne Szenen-/Bildphasen-Prompts (Szene 1 ist zugleich das Titelbild)
 - den vollständigen seriellen Google-Flow-Gesamtprompt
-- Nummerierung `Bild 00`, `Bild 01`, ...
+- Nummerierung `Bild 01`, `Bild 02`, ...
 - Caption und Quellen
 - Produktions- und Statusdateien
 - Suche nach bereits vorhandenen Bildern
@@ -73,7 +72,7 @@ Diese eine Nachricht enthält:
 
 Trotzdem ist die Ausführung **streng seriell** und niemals als Mehrbild-/Serien-Generierung zu behandeln.
 
-### Vor Bild 00
+### Vor Bild 01
 
 Google Flow muss zuerst genau einen gemeinsamen Medienordner / eine Sammlung anlegen:
 
@@ -117,9 +116,9 @@ Wenn Flow ein Bild **nicht** korrekt umbenennen oder **nicht** im vorgesehenen O
 Der Auftrag ist erst abgeschlossen, wenn der gemeinsame Ordner exakt die geplante Anzahl finaler Bilder enthält:
 
 ```text
-Bild 00.png
 Bild 01.png
 Bild 02.png
+Bild 03.png
 ...
 ```
 

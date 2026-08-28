@@ -27,9 +27,9 @@ Bei „Mach ein neues Reel“ autonom:
 2. starkes Thema aus dem offenen Themenuniversum wählen
 3. deutsches Voice-over mit 155–175 Wörtern schreiben
 4. 12–14 narrative Szenen planen, Standard 13
-5. für Cover und jede Bildphase ausschließlich **Modern Countryball Explainer** verwenden
+5. für jede Bildphase ausschließlich **Modern Countryball Explainer** verwenden
 6. Bildanzahl pro Reel und Szene individuell planen
-7. Cover + Bildphasen-Prompts + einen seriellen Google-Flow-Gesamtprompt + Universal-Caption + Quellen fertigstellen
+7. Bildphasen-Prompts + einen seriellen Google-Flow-Gesamtprompt + Universal-Caption + Quellen fertigstellen; Szene 1 ist zugleich das Titelbild
 8. keine Untertitel erzeugen
 9. externe Assets zuerst suchen, bevor etwas als fehlend gemeldet wird
 10. Assets visuell prüfen, Audio synchronisieren und nur nach echten QC-Gates rendern
@@ -106,7 +106,7 @@ Länder, Regierungen und Institutionen werden durch flaggenmarkierte oder neutra
 
 ## Bildprompts
 
-Jeder Cover-/Szenenprompt ist Englisch und beschreibt den konkreten physischen Moment. Sichtbarer Bildtext ist ausschließlich Deutsch.
+Jeder Szenenprompt ist Englisch und beschreibt den konkreten physischen Moment. Sichtbarer Bildtext ist ausschließlich Deutsch.
 
 Jeder Prompt enthält:
 1. 9:16
@@ -154,7 +154,7 @@ Keine Queue, kein Batch, keine Parallelgenerierung, keine Mehrfachvarianten.
 
 Verboten als sichtbarer Bildtext:
 - Bildnummern
-- COVER / SZENE / BILDPHASE
+- TITELBILD / SZENE / BILDPHASE
 - DATEINAME und Dateinamen
 - GOOGLE FLOW / PROMPT / STYLE-REFERENZ / ZIEL
 

@@ -53,9 +53,8 @@ export async function ensureNumberedImageDropDirectory(reelDirectory) {
   await writeFile(
     readmePath,
     '# Alle Bilder hier hinein\n\n' +
-    'Lege Cover und alle Szenen-Bildphasen gemeinsam in diesen Ordner. Die zweistellige Nummer bestimmt nur das vorgeschlagene Ziel in der **globalen Bildreihenfolge**:\n\n' +
-    '- `00.png` oder `Bild 00.png` → Cover\n' +
-    '- `01.png` → erste Bildphase des Reels\n' +
+    'Lege alle Szenen-Bildphasen gemeinsam in diesen Ordner. Es gibt kein separates Cover: Szene 1 ist zugleich das Titelbild. Die zweistellige Nummer bestimmt nur das vorgeschlagene Ziel in der **globalen Bildreihenfolge**:\n\n' +
+    '- `01.png` oder `Bild 01.png` → erste Bildphase des Reels, zugleich Titelbild\n' +
     '- `02.png` → zweite Bildphase des Reels\n' +
     '- usw. bis zum letzten geplanten Bild\n\n' +
     '**Wichtig:** Bild 03 bedeutet nicht automatisch Szene 3. Wenn Szene 2 zwei Bilder besitzt, können Bild 02 und Bild 03 beide zu Szene 2 gehören.\n\n' +
@@ -82,12 +81,10 @@ function emptyVisualFields(target, sceneOrder, phaseOrder) {
     matchMethod: ''
   };
 
-  if (target !== 'cover') {
-    assignment.sceneOrderConfirmed = false;
-    assignment.confirmedSceneOrder = null;
-    assignment.suggestedSceneOrder = sceneOrder;
-    assignment.suggestedPhaseOrder = phaseOrder;
-  }
+  assignment.sceneOrderConfirmed = false;
+  assignment.confirmedSceneOrder = null;
+  assignment.suggestedSceneOrder = sceneOrder;
+  assignment.suggestedPhaseOrder = phaseOrder;
 
   return assignment;
 }
@@ -141,17 +138,6 @@ export async function prepareNumberedImageAssignments(reelDirectory, { skipWhenE
     const candidate = candidates[0];
     const source = sourceRelativeToInbox(candidate.name);
 
-    if (number === 0) {
-      assignments.push({
-        source,
-        target: 'cover',
-        suggestedBy: 'numbered-global-image-order',
-        importNumber: 0,
-        ...emptyVisualFields('cover', null, null)
-      });
-      continue;
-    }
-
     const visual = imageTargetsByNumber.get(number);
     if (!visual) {
       unmatched.push({
@@ -183,7 +169,7 @@ export async function prepareNumberedImageAssignments(reelDirectory, { skipWhenE
     assignmentMode: 'global-image-order-suggestion-with-required-visual-review',
     plannedImageCount: imageTargetsByNumber.size,
     instructions: [
-      'Die zweistellige Dateinummer beschreibt die globale Bildreihenfolge: 00=Cover, danach alle geplanten Bildphasen fortlaufend.',
+      'Die zweistellige Dateinummer beschreibt die globale Bildreihenfolge: 01 ist die erste Bildphase und zugleich das Titelbild, danach alle geplanten Bildphasen fortlaufend.',
       'Eine Bildnummer ist nicht automatisch identisch mit einer Szenennummer, wenn Szenen mehrere Bilder besitzen.',
       'Vor --apply jedes Bild öffnen und den sichtbaren Inhalt tatsächlich gegen die vorgeschlagene Bildphase prüfen.',
       'Nach der Sichtprüfung confidence, visualReviewed, secondPassConfirmed, visibleSummary, reason, comparedFields und matchMethod ausfüllen.',

@@ -21,8 +21,8 @@ npm run status:reel -- \
 
 Der Status trennt insbesondere:
 
-- **Vorproduktion:** Script, offene Themenentscheidung, narrative Szenen, individuelle Bildphasen, konkrete Bildprompts, Cover-Prompt, Flow-Gesamtprompt, Caption, Quellen und Inhaltsprüfung. Eine feste Bildwelt gehört aktuell ausdrücklich nicht zur Vorproduktion.
-- **Externe Assets:** alle tatsächlich geplanten Bildphasen, Cover, Voice-over und sichere Zuordnung.
+- **Vorproduktion:** Script, offene Themenentscheidung, narrative Szenen, individuelle Bildphasen, konkrete Bildprompts, Flow-Gesamtprompt, Caption, Quellen und Inhaltsprüfung. Eine feste Bildwelt gehört aktuell ausdrücklich nicht zur Vorproduktion.
+- **Externe Assets:** alle tatsächlich geplanten Bildphasen, Voice-over und sichere Zuordnung.
 - **Postproduktion:** reales Audio-Pacing, verifizierte narrative Audio-Cues, visuelle Zwei-Pass-QC, Timeline, Finalizer, Render-Validierung und echte MP4.
 
 Die genaue Prozentgewichtung wird vom aktuellen Status-Code bestimmt. Dokumentation darf keine feste Prozentzahl als Wahrheit annehmen, wenn der Code sie ändert.

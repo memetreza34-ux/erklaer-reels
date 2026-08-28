@@ -109,7 +109,6 @@ export async function createReelWorkspace({
     'scenes',
     'subtitles',
     'effects',
-    'cover',
     'caption',
     'sources',
     'review',
@@ -217,7 +216,6 @@ export async function createReelWorkspace({
     audio: 'missing',
     imagePrompts: 'missing',
     images: 'missing',
-    cover: 'missing',
     assetMatching: 'waiting-for-files',
     endingHold: 'planned',
     qualityControl: 'pending'
@@ -230,8 +228,7 @@ export async function createReelWorkspace({
       expectedFile: `scenes/${scene.sceneId}/${scene.expectedImageFileName}`,
       verification: null,
       status: 'missing'
-    })),
-    cover: { expectedFile: 'cover/cover.png', verification: null, status: 'missing' }
+    }))
   });
 
   await writeText(path.join(reelDirectory, 'script', 'raw-script.txt'), `${script.trim()}\n`);
@@ -291,16 +288,6 @@ export async function createReelWorkspace({
     }))
   });
   await writeText(path.join(reelDirectory, 'effects', 'README.md'), `# Bewegungen und Soundeffekte\n\nPlane Zooms, Schwenks, Übergänge und Soundeffekte getrennt von den Bildprompts in \`effects-plan.json\`.\nNicht jedes Bild braucht Bewegung. Ein Zoom verändert die Größe normalerweise nur um 2–6 Prozent und höchstens um 8 Prozent.\nDie Hook startet ohne Übergang; danach sind ausschließlich direkte harte Schnitte mit Dauer 0 erlaubt. Soundeffekte werden sparsam eingesetzt, normalerweise null bis zwei pro Szene.\nDas Voice-over hat Vorrang; Hintergrundmusik ist standardmäßig ausgeschaltet.\nNach Einfügen des echten Voice-overs werden alle Zeitpunkte erneut geprüft.\n`);
-  await writeText(path.join(reelDirectory, 'cover', 'cover-prompt.txt'));
-  await writeJson(path.join(reelDirectory, 'cover', 'cover.json'), {
-    headline: '',
-    visualIdea: '',
-    expectedImageFileName: 'cover.png',
-    promptStatus: 'missing',
-    imageStatus: 'missing',
-    assetVerification: null,
-    status: 'planned'
-  });
   await writeText(path.join(reelDirectory, 'caption', 'caption.txt'));
   await writeText(path.join(reelDirectory, 'sources', 'sources.md'), buildSourcesTemplate());
   await writeText(path.join(reelDirectory, 'review', 'notes.md'), '# Review-Notizen\n\n');
@@ -326,7 +313,7 @@ export async function createReelWorkspace({
   await writeText(path.join(reelDirectory, 'inbox', 'images', '.gitkeep'));
   await writeText(path.join(reelDirectory, 'inbox', 'audio', '.gitkeep'));
   await writeText(path.join(reelDirectory, 'inbox', 'processed', '.gitkeep'));
-  await writeText(path.join(reelDirectory, 'inbox', 'README.md'), `# Externe Dateien und sichere Zuordnung\n\nJede narrative Szene kann ab jetzt **eine, zwei oder selten drei Bildphasen** besitzen. Die Bildanzahl wird pro Reel individuell geplant. Die erste Bildphase einer Szene nutzt \`image-prompt.txt\`; zusätzliche Phasen nutzen \`image-prompt-02.txt\`, \`image-prompt-03.txt\` usw.\n\nBei unsortierten Bildern gilt zwingend:\n\n1. Sichtbaren Inhalt ohne Dateinamen beschreiben.\n2. Mit der konkreten Bildphase und ihren Szenenfeldern vergleichen.\n3. Gewählte Bildphase gegen vorherige und nächste Bildphase prüfen.\n4. Niemals allein nach Upload-Reihenfolge oder Dateinummer zuordnen.\n5. Unter 0,90 Konfidenz nicht raten.\n6. \`visualReviewed\`, \`secondPassConfirmed\`, \`sceneOrderConfirmed\`, \`visibleSummary\`, \`reason\`, \`comparedFields\`, \`confirmedTarget\` und \`confirmedSceneOrder\` eintragen.\n\nDie fortlaufende Google-Flow-Nummer beschreibt die **Bildreihenfolge**, nicht mehr automatisch die Szenennummer. Beispiel: Wenn Szene 2 zwei Bilder hat, kann Bild 02 die erste Phase von Szene 2 und Bild 03 die zweite Phase von Szene 2 sein.\n\nNach der Zuordnung müssen \`review/scene-asset-verification.json\` und die strenge visuelle Prüfung vollständig bestanden sein.\n\nLege das Cover nach \`cover/cover.png\` und das ursprüngliche Voice-over nach \`audio/\`.\n`);
+  await writeText(path.join(reelDirectory, 'inbox', 'README.md'), `# Externe Dateien und sichere Zuordnung\n\nJede narrative Szene kann ab jetzt **eine, zwei oder selten drei Bildphasen** besitzen. Die Bildanzahl wird pro Reel individuell geplant. Die erste Bildphase einer Szene nutzt \`image-prompt.txt\`; zusätzliche Phasen nutzen \`image-prompt-02.txt\`, \`image-prompt-03.txt\` usw.\n\nBei unsortierten Bildern gilt zwingend:\n\n1. Sichtbaren Inhalt ohne Dateinamen beschreiben.\n2. Mit der konkreten Bildphase und ihren Szenenfeldern vergleichen.\n3. Gewählte Bildphase gegen vorherige und nächste Bildphase prüfen.\n4. Niemals allein nach Upload-Reihenfolge oder Dateinummer zuordnen.\n5. Unter 0,90 Konfidenz nicht raten.\n6. \`visualReviewed\`, \`secondPassConfirmed\`, \`sceneOrderConfirmed\`, \`visibleSummary\`, \`reason\`, \`comparedFields\`, \`confirmedTarget\` und \`confirmedSceneOrder\` eintragen.\n\nDie fortlaufende Google-Flow-Nummer beschreibt die **Bildreihenfolge**, nicht mehr automatisch die Szenennummer. Beispiel: Wenn Szene 2 zwei Bilder hat, kann Bild 02 die erste Phase von Szene 2 und Bild 03 die zweite Phase von Szene 2 sein.\n\nNach der Zuordnung müssen \`review/scene-asset-verification.json\` und die strenge visuelle Prüfung vollständig bestanden sein.\n\nEs gibt kein separates Cover mehr: Die erste Szene ist zugleich das Titelbild. Lege das ursprüngliche Voice-over nach \`audio/\`.\n`);
   await writeJson(path.join(reelDirectory, 'inbox', 'asset-map.json'), {
     version: 4,
     generatedBy: '',

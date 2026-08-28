@@ -28,7 +28,6 @@ async function main() {
     const report = await applyAssetMap(reelDirectory);
     console.log(`Scenes: ${report.summary.assignedScenes}/${report.summary.totalScenes}`);
     console.log(`Audio: ${report.summary.audioReady ? 'ready' : 'missing'}`);
-    console.log(`Cover: ${report.summary.coverReady ? 'ready' : 'missing'}`);
     console.log(`Skipped: ${report.skipped.length}`);
     return;
   }
@@ -63,7 +62,7 @@ async function main() {
     console.log(`Numbered images found: ${numbered.candidateCount}`);
     console.log(`Targets preassigned: ${numbered.assignedCount}`);
     console.log(`Unmatched/conflicts: ${numbered.unmatchedCount}`);
-    console.log('Mapping: 00 -> cover, 01 -> scene 1, 02 -> scene 2, ...');
+    console.log('Mapping: 01 -> Szene 1 (zugleich Titelbild), 02 -> Szene 2, ...');
     console.log('The filename only preselects the target. Open every image and complete the visual QC fields in inbox/asset-map.json before --apply.');
     return;
   }

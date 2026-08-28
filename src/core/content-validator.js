@@ -314,18 +314,21 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
       'Die Hook sollte ab Sekunde 0 ohne Übergang starten.', 'warning');
   }
 
-  const coverPromptPath = path.join(reelDirectory, 'cover', 'cover-prompt.txt');
-  const coverJsonPath = path.join(reelDirectory, 'cover', 'cover.json');
-  const coverPrompt = (await exists(coverPromptPath)) ? await readText(coverPromptPath) : '';
-  const cover = await readJson(coverJsonPath, {});
-  const headline = String(cover.headline ?? cover.title ?? '').trim();
-  addCheck(checks, 'cover-prompt', coverPrompt.length >= 180, 'cover/cover-prompt.txt fehlt oder ist nicht detailliert genug.');
-  addCheck(checks, 'cover-headline', headline.length >= 5,
-    'cover/cover.json benötigt eine klare headline.');
-  addCheck(checks, 'cover-headline-prompt', !headline || coverPrompt.toUpperCase().includes(headline.toUpperCase()),
-    'Die Cover-Headline steht nicht exakt im Cover-Prompt.', 'warning');
-  addCheck(checks, 'cover-visual-idea', String(cover.visualIdea ?? '').trim().length >= 20,
-    'cover/cover.json benötigt eine visualIdea.');
+  // Es gibt kein separates Cover: Szene 1 ist zugleich das Titelbild und trägt
+  // deshalb dieselben Anforderungen, die früher am Cover hingen.
+  const titleScene = sceneIndex.find((scene) => Number(scene.order) === 1) ?? sceneIndex[0] ?? {};
+  const titleSceneId = String(titleScene.sceneId ?? 'scene-01');
+  const titlePromptPath = path.join(reelDirectory, 'scenes', titleSceneId, 'image-prompt.txt');
+  const titlePrompt = (await exists(titlePromptPath)) ? await readText(titlePromptPath) : '';
+  const headline = String(titleScene.imageText ?? '').trim();
+  addCheck(checks, 'title-image-prompt', titlePrompt.length >= 180,
+    `scenes/${titleSceneId}/image-prompt.txt fehlt oder ist nicht detailliert genug. Szene 1 ist zugleich das Titelbild.`);
+  addCheck(checks, 'title-image-text', headline.length >= 5,
+    `scenes/${titleSceneId}/scene.json benötigt einen imageText als sichtbaren Hook.`);
+  addCheck(checks, 'title-image-text-in-prompt', !headline || titlePrompt.toUpperCase().includes(headline.toUpperCase()),
+    'Der Hook-Text von Szene 1 steht nicht exakt im Bildprompt.', 'warning');
+  addCheck(checks, 'title-image-visual-idea', String(titleScene.visualIdea ?? '').trim().length >= 20,
+    `scenes/${titleSceneId}/scene.json benötigt eine visualIdea.`);
 
   let sourceQuality = null;
   if (strict) {
@@ -388,7 +391,6 @@ async function finalize(reelDirectory, checks, metadata = {}) {
   status.subtitles = 'disabled';
   status.wordSync = 'not-required';
   status.effects = passed ? 'planned' : (status.effects ?? 'needs-review');
-  status.cover = passed ? 'prompt-ready' : (status.cover ?? 'missing');
   status.qualityControl = passed ? 'content-passed' : 'content-failed';
   await writeJson(statusPath, status);
 

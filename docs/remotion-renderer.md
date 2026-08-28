@@ -21,7 +21,7 @@ Das Audio wird von der ursprünglichen Datei auf exakt 1,10x verarbeitet, die To
 
 ## Bilder und visuelle Shots
 
-- `Bild 00` ist das Cover
+- `Bild 01` ist die erste Szene und zugleich das Titelbild
 - 12–14 narrative Szenen bleiben die Erzählstruktur
 - jede Szene besitzt 1, 2 oder selten 3 Bildphasen
 - der Renderer verarbeitet die daraus entstehenden `visualShots`

@@ -56,7 +56,7 @@ export async function prepareReelProduction(reelDirectory) {
     visualStyleId: FIXED_VISUAL_STYLE_ID,
     tasks: [
       { id: 'script-final', label: 'Voice-over mit 155–175 Wörtern und starkem Ende fertigstellen', status: 'pending' },
-      { id: 'visual-world-fixed', label: `Feste Reel-Bildwelt ${FIXED_VISUAL_WORLD_LABEL} für Cover und jede Bildphase beibehalten; keine Stilrotation`, status: 'pending' },
+      { id: 'visual-world-fixed', label: `Feste Reel-Bildwelt ${FIXED_VISUAL_WORLD_LABEL} für jede Bildphase beibehalten; keine Stilrotation`, status: 'pending' },
       { id: 'visual-world-separated', label: 'YouTube-Bildwelt strikt getrennt halten; keine Stick-Figuren, kein 16:9-Longform-Look in Reels', status: 'pending' },
       { id: 'scene-first-visuals', label: 'Jede Bildphase zuerst als konkrete physische Mini-Szene planen; generische Karten-/Icon-Boards vermeiden', status: 'pending' },
       { id: 'scenes-fill', label: `${scenes.length} narrative Szenen mit klaren Audio-Cues planen`, status: 'pending' },
@@ -65,11 +65,11 @@ export async function prepareReelProduction(reelDirectory) {
       { id: 'image-text-plan', label: `In ungefähr ${preferredImageTextMinimum}–${preferredImageTextMaximum} passenden narrativen Szenen kurzen deutschen Bildtext planen; keine doppelte Headline oben und unten`, status: 'pending' },
       { id: 'ending-check', label: 'Prüffrage und einprägsamen Abschlusssatz auf zwei Szenen verteilen', status: 'pending' },
       { id: 'prompts-write', label: `Für jede geplante Bildphase einen vollständigen englischen 9:16-Bildprompt im festen Stil ${FIXED_VISUAL_STYLE_ID} schreiben; konkrete Szene, Handlung, Umgebung und Perspektive angeben`, status: 'pending' },
-      { id: 'prompts-export', label: 'Cover und alle Bildphasen in globaler Bildreihenfolge als kompletten seriellen Google-Flow-Gesamtprompt mit globalem und per-Bild Style-Lock exportieren', status: 'pending' },
+      { id: 'prompts-export', label: 'Alle Bildphasen in globaler Bildreihenfolge als kompletten seriellen Google-Flow-Gesamtprompt mit globalem und per-Bild Style-Lock exportieren', status: 'pending' },
       { id: 'subtitles-disabled', label: 'Untertitel deaktiviert lassen; keine Subtitle-Cues und keinen Word-Sync erzeugen', status: 'pending' },
       { id: 'effects-write', label: 'Dezente Bewegungen, harte Schnitte und Soundeffekte planen', status: 'pending' },
       { id: 'asset-matching-plan', label: `Zweistufige visuelle Zuordnung jeder Bildphase mit mindestens ${matching.minimumConfidence} Konfidenz vorbereiten`, status: 'pending' },
-      { id: 'cover-write', label: 'Cover-Idee und Cover-Prompt als starke konkrete Szene in derselben festen Reel-Bildwelt schreiben', status: 'pending' },
+      { id: 'title-image-write', label: 'Szene 1 als Titelbild ausarbeiten: stärkste visuelle Idee, sichtbarer Hook-Text in imageText, in derselben festen Reel-Bildwelt', status: 'pending' },
       { id: 'caption-write', label: 'Caption erstellen', status: 'pending' },
       { id: 'sources-write', label: 'Schema-3-Quellen mit Primär-/Offiziell- und unabhängiger Sekundärrolle dokumentieren', status: 'pending' },
       { id: 'content-check', label: 'npm run check:content --strict erfolgreich ausführen', status: 'pending' }
@@ -83,7 +83,7 @@ export async function prepareReelProduction(reelDirectory) {
 
 Erstelle ein vollständiges Erklär-Reel mit ungefähr einer Minute Voice-over-Laufzeit. Bilder und Audio werden extern erzeugt. **Narrative Szenen und Bildanzahl sind getrennt:** Eine Szene kann ein, zwei oder selten drei aufeinanderfolgende Bilder besitzen. Die Bilddichte wird für jedes Reel individuell entschieden. Das Reel wird vollständig ohne Untertitel produziert und gerendert.
 
-**Verbindliche Reel-Bildwelt: ${FIXED_VISUAL_WORLD_LABEL} (\`${FIXED_VISUAL_STYLE_ID}\`).** Sie gilt für Cover und jede Bildphase. Die separate YouTube-Bildwelt darf niemals automatisch auf Reels übertragen werden.
+**Verbindliche Reel-Bildwelt: ${FIXED_VISUAL_WORLD_LABEL} (\`${FIXED_VISUAL_STYLE_ID}\`).** Sie gilt für jede Bildphase. Die separate YouTube-Bildwelt darf niemals automatisch auf Reels übertragen werden.
 
 ## Ausgangsdaten
 
@@ -154,10 +154,10 @@ Erstelle ein vollständiges Erklär-Reel mit ungefähr einer Minute Voice-over-L
 - natürliche zusammenhängende Komposition über die volle 9:16-Fläche
 - keine künstliche Untertitelzone
 - jeder Bildwechsel braucht einen sichtbaren neuen Informationsschritt oder klaren Rhythmusgewinn
-- technische Labels wie BILD, COVER, SZENE, BILDPHASE oder DATEINAME dürfen niemals im Bild erscheinen
-- Bild 00 ist das Cover, aber nicht der alleinige Style-Master; der globale Style-Master ist \`${FIXED_VISUAL_STYLE_ID}\`
+- technische Labels wie BILD, TITELBILD, SZENE, BILDPHASE oder DATEINAME dürfen niemals im Bild erscheinen
+- Bild 01 ist die erste Szene und zugleich das Titelbild, aber nicht der alleinige Style-Master; der globale Style-Master ist \`${FIXED_VISUAL_STYLE_ID}\`
 
-16. Exportiere Cover und alle geplanten Bildphasen:
+16. Exportiere alle geplanten Bildphasen:
 
 \`\`\`bash
 npm run export:prompts -- --dir "${normalizedDirectory}" --strict
@@ -167,7 +167,7 @@ Die verbindliche Nutzerdatei ist danach \`00-bildprompts/99-alle-bildprompts.txt
 
 17. Stelle sicher, dass \`reel.json\` \`subtitlesEnabled: false\` setzt und der Untertitelplan deaktiviert bleibt. Kein \`sync:words\`.
 18. Fülle \`effects/effects-plan.json\`: Hook \`none\`, danach nur \`cut\` mit Dauer 0; Zoom maximal 8 %, Schwenk maximal 4 %.
-19. Fülle Cover und Caption aus.
+19. Fülle die Caption aus.
 20. Fülle \`sources/sources.md\` nach Schema 3 aus: mindestens zwei HTTPS-Quellen auf unterschiedlichen Hosts, mindestens eine Primär-/offizielle oder wissenschaftliche Originalquelle und mindestens eine unabhängige Sekundär-/Fachquelle. Unter \`Belegt\` muss die konkrete gestützte Reel-Aussage stehen.
 21. Prüfe streng:
 

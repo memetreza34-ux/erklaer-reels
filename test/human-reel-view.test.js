@@ -40,8 +40,6 @@ async function createMinimalReel() {
   await writeFile(path.join(reelDirectory, 'reel.json'), '{"reelId":"test-reel"}\n', 'utf8');
   await writeFile(path.join(reelDirectory, 'status.json'), '{}\n', 'utf8');
   await writeFile(path.join(reelDirectory, 'assets-manifest.json'), '{}\n', 'utf8');
-  await writeFile(path.join(reelDirectory, 'cover', 'cover-prompt.txt'), 'Cover prompt\n', 'utf8');
-  await writeFile(path.join(reelDirectory, 'cover', 'cover.json'), '{}\n', 'utf8');
   await writeFile(path.join(reelDirectory, 'script', 'voice-script.txt'), 'Voice script\n', 'utf8');
   await writeFile(path.join(reelDirectory, '00-bildprompts', '99-alle-bildprompts.txt'), 'Prompts\n', 'utf8');
   await writeFile(path.join(reelDirectory, 'all-image-prompts', 'all-image-prompts.txt'), 'Legacy copy\n', 'utf8');
@@ -80,7 +78,6 @@ test('behält genau einen echten Google-Flow-Masterprompt und entfernt die Legac
   assert.equal((await lstat(path.join(reelDirectory, '00-bildprompts', '99-alle-bildprompts.txt'))).isSymbolicLink(), false);
   assert.equal(await exists(path.join(reelDirectory, 'all-image-prompts')), false);
 
-  assert.equal(await readlink(path.join(reelDirectory, '00-bildprompts', '00-cover')), '../cover');
   assert.equal(await readlink(path.join(reelDirectory, '00-bildprompts', '01-scene-01')), '../scenes/scene-01');
   assert.equal(await readlink(path.join(reelDirectory, '00-bildprompts', '02-scene-02')), '../scenes/scene-02');
 });

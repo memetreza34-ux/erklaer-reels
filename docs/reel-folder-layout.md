@@ -17,12 +17,11 @@ Es gibt keinen separaten sichtbaren Caption- oder Video-Ordner mehr.
 
 ## 00-bildprompts
 
-Cover und narrative Szenen liegen gemeinsam in einem klaren Bereich. Zusätzlich gibt es einen Sammelordner für den schnellen Bildimport:
+Die narrativen Szenen liegen gemeinsam in einem klaren Bereich. Ein separates Cover gibt es nicht: Szene 1 ist zugleich das Titelbild. Zusätzlich gibt es einen Sammelordner für den schnellen Bildimport:
 
 ```text
 00-bildprompts/
 ├── 00-ALLE-BILDER-HIER-REIN/
-├── 00-cover/
 ├── 01-scene-01/
 ├── 02-scene-02/
 ├── ...
@@ -37,7 +36,7 @@ Für Google Flow wird genau diese eine Datei verwendet:
 00-bildprompts/99-alle-bildprompts.txt
 ```
 
-Sie enthält den vollständigen seriellen Gesamtprompt mit Cover und **allen individuell geplanten Bildphasen**. Der Nutzer schickt die Datei einmal vollständig an den Google-Flow-Agenten.
+Sie enthält den vollständigen seriellen Gesamtprompt mit **allen individuell geplanten Bildphasen**. Der Nutzer schickt die Datei einmal vollständig an den Google-Flow-Agenten.
 
 `all-image-prompts/all-image-prompts.txt` ist die identische technische Spiegeldatei.
 
@@ -47,13 +46,13 @@ Der Gesamtprompt muss Flow dazu anweisen, den Lauf selbstständig vollständig a
 
 ```text
 einen gemeinsamen Ausgabeordner für das Reel anlegen
-→ nur Bild 00 erzeugen
+→ nur Bild 01 erzeugen
 → vollständig warten
 → Ergebnis prüfen
-→ exakt als Bild 00.png umbenennen
+→ exakt als Bild 01.png umbenennen
 → in den gemeinsamen Ausgabeordner legen
 → Ablage prüfen
-→ erst dann Bild 01 erzeugen
+→ erst dann Bild 02 erzeugen
 → ...
 → bis zum letzten geplanten Bild
 ```
@@ -67,15 +66,14 @@ Die Nummerierung ist die **globale Bildreihenfolge**, nicht automatisch die Szen
 Beispiel bei zusätzlichen Bildphasen:
 
 ```text
-Bild 00.png  → Cover
-Bild 01.png  → Szene 1 / Phase 1
+Bild 01.png  → Szene 1 / Phase 1 (zugleich Titelbild)
 Bild 02.png  → Szene 2 / Phase 1
 Bild 03.png  → Szene 2 / Phase 2
 Bild 04.png  → Szene 3 / Phase 1
 ...
 ```
 
-Die Reihe läuft dynamisch bis zum letzten geplanten Bild. `reel.json.plannedImageCount` beschreibt die Zahl der Szenenbilder ohne Cover.
+Die Reihe läuft dynamisch bis zum letzten geplanten Bild. `reel.json.plannedImageCount` beschreibt die Zahl der Szenenbilder.
 
 Nach dem Flow-Lauf kommen alle fertigen Bilder gemeinsam nach:
 
@@ -83,7 +81,7 @@ Nach dem Flow-Lauf kommen alle fertigen Bilder gemeinsam nach:
 00-bildprompts/00-ALLE-BILDER-HIER-REIN/
 ```
 
-Der empfohlene Standard bleibt `Bild 00.png`, `Bild 01.png`, `Bild 02.png` usw.
+Der empfohlene Standard bleibt `Bild 01.png`, `Bild 02.png`, `Bild 03.png` usw.
 
 Der normale Befehl erkennt diesen Sammelordner automatisch:
 

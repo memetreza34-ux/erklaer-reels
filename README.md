@@ -92,7 +92,7 @@ Bild erzeugen → vollständig warten → prüfen → umbenennen → in gemeinsa
 
 Keine Queue, kein Batch, keine Parallelgenerierung.
 
-Fertige Bilder werden als `Bild 00.png`, `Bild 01.png` usw. gemeinsam importiert nach:
+Fertige Bilder werden als `Bild 01.png`, `Bild 02.png` usw. gemeinsam importiert nach:
 
 ```text
 00-bildprompts/00-ALLE-BILDER-HIER-REIN/

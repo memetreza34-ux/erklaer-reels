@@ -155,11 +155,8 @@ export async function runVisualQualityCheck(reelDirectory, { strict = false } = 
 
   const reel = await readJson(path.join(reelDirectory, 'reel.json'), {});
   const scenes = await readJson(path.join(reelDirectory, 'scenes', 'scene-index.json'), []);
-  const manifest = await readJson(path.join(reelDirectory, 'assets-manifest.json'), { visuals: [], scenes: [], cover: {} });
+  const manifest = await readJson(path.join(reelDirectory, 'assets-manifest.json'), { visuals: [], scenes: [] });
   const effects = await readJson(path.join(reelDirectory, 'effects', 'effects-plan.json'), { scenes: [] });
-  const cover = await readJson(path.join(reelDirectory, 'cover', 'cover.json'), {});
-  const coverPromptPath = path.join(reelDirectory, 'cover', 'cover-prompt.txt');
-  const coverPrompt = await exists(coverPromptPath) ? (await readFile(coverPromptPath, 'utf8')).trim() : '';
   const statusPath = path.join(reelDirectory, 'status.json');
   const status = await readJson(statusPath, {});
 
@@ -200,19 +197,8 @@ export async function runVisualQualityCheck(reelDirectory, { strict = false } = 
     });
   }
 
-  assets.push({
-    assetId: 'cover',
-    file: manifest.cover?.expectedFile ?? 'cover/cover.png',
-    kind: 'cover',
-    parentSceneId: null,
-    scene: null,
-    expected: {
-      headline: cover.headline ?? '',
-      visualIdea: cover.visualIdea ?? '',
-      imagePrompt: coverPrompt,
-      reelTitle: reel.title ?? ''
-    }
-  });
+  // Kein separates Cover-Asset mehr: Szene 1 ist zugleich das Titelbild und wird
+  // bereits als normale Bildphase geprüft.
 
   for (const asset of assets) {
     asset.reviewFingerprint = await buildReviewFingerprint(reelDirectory, asset);

@@ -19,7 +19,7 @@ async function writeJson(filePath, value) {
   await writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
 }
 
-test('prüft 12 Szenenbilder plus Cover und verlangt im strengen Modus die visuelle Freigabe', async () => {
+test('prüft 12 Szenenbilder und verlangt im strengen Modus die visuelle Freigabe', async () => {
   const outputRoot = await mkdtemp(path.join(os.tmpdir(), 'erklaer-visuals-'));
   const result = await createReelWorkspace({
     title: 'Warum wirkt Warten so lang?',
@@ -35,14 +35,13 @@ test('prüft 12 Szenenbilder plus Cover und verlangt im strengen Modus die visue
     await writeFile(path.join(result.reelDirectory, scene.expectedFile), fakePng(1080, 1920));
     scene.status = 'ready';
   }
-  await writeFile(path.join(result.reelDirectory, manifest.cover.expectedFile), fakePng(1080, 1920));
-  manifest.cover.status = 'ready';
   await writeJson(manifestPath, manifest);
 
   const firstReport = await runVisualQualityCheck(result.reelDirectory, { strict: false });
   assert.equal(firstReport.passed, true);
-  assert.equal(firstReport.summary.assetsChecked, 13);
-  assert.ok(firstReport.summary.warnings >= 13);
+  // Kein separates Cover mehr: Szene 1 ist zugleich das Titelbild.
+  assert.equal(firstReport.summary.assetsChecked, 12);
+  assert.ok(firstReport.summary.warnings >= 12);
 
   const inspectionPath = path.join(result.reelDirectory, 'review', 'visual-inspection.json');
   const inspection = JSON.parse(await readFile(inspectionPath, 'utf8'));
@@ -50,12 +49,8 @@ test('prüft 12 Szenenbilder plus Cover und verlangt im strengen Modus die visue
     asset.reviewer = 'codex-vision';
     asset.reviewedAt = '2026-07-31T10:00:00.000Z';
     asset.status = 'passed';
-    asset.visibleSummary = asset.kind === 'scene'
-      ? 'Das Bild zeigt den geplanten klaren Szenenmoment mit den erwarteten sichtbaren Motiven.'
-      : 'Das Cover zeigt das Thema mit einem klaren Hauptmotiv und gut lesbarer Überschrift.';
-    asset.matchReason = asset.kind === 'scene'
-      ? 'Die sichtbaren Motive und die Handlung entsprechen Narration, visueller Idee und geplantem Bildinhalt.'
-      : 'Hauptmotiv und Überschrift entsprechen dem geplanten Cover und dem Thema des Reels.';
+    asset.visibleSummary = 'Das Bild zeigt den geplanten klaren Szenenmoment mit den erwarteten sichtbaren Motiven.';
+    asset.matchReason = 'Die sichtbaren Motive und die Handlung entsprechen Narration, visueller Idee und geplantem Bildinhalt.';
     asset.comparedAssetId = asset.assetId;
     if (asset.kind === 'scene') asset.secondPassConfirmed = true;
     for (const key of Object.keys(asset.checks)) asset.checks[key] = true;
@@ -83,11 +78,11 @@ test('erkennt ein falsches Seitenverhältnis im strengen Modus', async () => {
     await writeFile(path.join(result.reelDirectory, scene.expectedFile), fakePng(1080, 1920));
     scene.status = 'ready';
   }
-  await writeFile(path.join(result.reelDirectory, manifest.cover.expectedFile), fakePng(1080, 1080));
-  manifest.cover.status = 'ready';
+  // Szene 1 ist zugleich das Titelbild und bekommt hier ein falsches Seitenverhältnis.
+  await writeFile(path.join(result.reelDirectory, manifest.scenes[0].expectedFile), fakePng(1080, 1080));
   await writeJson(manifestPath, manifest);
 
   const report = await runVisualQualityCheck(result.reelDirectory, { strict: true });
   assert.equal(report.passed, false);
-  assert.ok(report.checks.some((check) => check.id === 'cover-aspect-ratio' && check.passed === false));
+  assert.ok(report.checks.some((check) => check.id === 'scene-01-aspect-ratio' && check.passed === false));
 });

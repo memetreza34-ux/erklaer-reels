@@ -45,7 +45,7 @@ Der strenge Modus ist nur erfolgreich, wenn:
 - die Voice-over-Dauer bekannt ist,
 - echte Audio-Pacing-/Lautheitsmessungen zum final verwendeten Audio passen,
 - alle erforderlichen narrativen Audio-Cues verifiziert sind,
-- alle geplanten Bildphasen und das Cover vorhanden sind,
+- alle geplanten Bildphasen vorhanden sind,
 - jede Bildphase die technische und visuelle Zwei-Pass-QC bestanden hat,
 - interne Bildphasen korrekt innerhalb ihrer narrativen Szenen liegen,
 - der Render-Plan keine Lücken/Überlappungen oder unzulässigen Übergänge enthält,

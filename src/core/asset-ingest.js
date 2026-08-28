@@ -42,7 +42,6 @@ async function readQualityGates() {
       requireVisibleSummary: true,
       minimumVisibleSummaryLength: 15,
       requiredSceneComparedFields: ['narration', 'visualIdea', 'imageText', 'imagePrompt'],
-      requiredCoverComparedFields: ['headline', 'coverVisualIdea', 'coverPrompt'],
       forbidFilenameOnlyMatching: true,
       allowedMatchMethods: ['visual-content-review', 'visual-text-and-content-review']
     }
@@ -109,7 +108,7 @@ function validateVisualAssignment(assignment, target, scene, rules) {
   const comparedFields = normalizeComparedFields(assignment.comparedFields);
   const requiredFields = scene
     ? (rules.requiredSceneComparedFields ?? rules.requiredComparedFields ?? [])
-    : (rules.requiredCoverComparedFields ?? []);
+    : [];
   const missingComparedFields = requiredFields.filter((field) => !comparedFields.includes(field));
   if (missingComparedFields.length > 0) {
     return `nicht mit allen Pflichtfeldern verglichen: ${missingComparedFields.join(', ')}`;
@@ -283,7 +282,7 @@ export async function applyAssetMap(reelDirectory) {
   const scenesById = new Map(sceneIndex.map((scene) => [scene.sceneId, scene]));
   const targets = visualTargetMap(sceneIndex);
   const manifestPath = path.join(reelDirectory, 'assets-manifest.json');
-  const manifest = await readJson(manifestPath, { audio: {}, visuals: [], scenes: [], cover: {} });
+  const manifest = await readJson(manifestPath, { audio: {}, visuals: [], scenes: [] });
   seedVisualManifest(manifest, sceneIndex);
   const statusPath = path.join(reelDirectory, 'status.json');
   const status = await readJson(statusPath, {});
@@ -336,46 +335,6 @@ export async function applyAssetMap(reelDirectory) {
         status: 'ready'
       };
       status.audio = 'ready';
-    } else if (target === 'cover') {
-      if (!IMAGE_EXTENSIONS.has(extension)) {
-        skipped.push({ assignment, reason: 'Datei ist kein unterstütztes Bildformat' });
-        continue;
-      }
-
-      const visualError = validateVisualAssignment(assignment, target, null, matchingRules);
-      if (visualError) {
-        skipped.push({ assignment, reason: visualError });
-        continue;
-      }
-
-      verification = {
-        visualReviewed: true,
-        secondPassConfirmed: true,
-        visibleSummary: String(assignment.visibleSummary).trim(),
-        reason: String(assignment.reason).trim(),
-        comparedFields: normalizeComparedFields(assignment.comparedFields),
-        matchMethod: assignment.matchMethod,
-        reviewedAt: assignment.reviewedAt ?? new Date().toISOString()
-      };
-
-      destinationPath = path.join(reelDirectory, 'cover', `cover${extension}`);
-      expectedRelativePath = `cover/cover${extension}`;
-      const coverPath = path.join(reelDirectory, 'cover', 'cover.json');
-      const cover = await readJson(coverPath, {});
-      cover.expectedImageFileName = `cover${extension}`;
-      cover.status = 'ready';
-      cover.source = source;
-      cover.confidence = confidence;
-      cover.assetVerification = verification;
-      await writeJson(coverPath, cover);
-      manifest.cover = {
-        expectedFile: expectedRelativePath,
-        source,
-        confidence,
-        verification,
-        status: 'ready'
-      };
-      status.cover = 'ready';
     } else if (targets.has(target)) {
       if (!IMAGE_EXTENSIONS.has(extension)) {
         skipped.push({ assignment, reason: 'Datei ist kein unterstütztes Bildformat' });
@@ -531,7 +490,6 @@ export async function applyAssetMap(reelDirectory) {
       totalImages: expectedVisualTargets.length,
       totalScenes: refreshedScenes.length,
       audioReady: status.audio === 'ready',
-      coverReady: status.cover === 'ready',
       visualVerificationPassed: verificationReport.passed
     }
   };

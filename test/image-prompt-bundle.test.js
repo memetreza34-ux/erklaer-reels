@@ -27,11 +27,10 @@ async function exists(filePath) {
 
 const NEUTRAL_BASE = 'Vertical 9:16 illustration. Use one clear physical moment, readable smartphone composition and no reserved subtitle safe-zone.';
 
-async function createFixture({ missingCoverPrompt = false, missingSecondPrompt = false, missingExtraPrompt = false } = {}) {
+async function createFixture({ missingFirstPrompt = false, missingSecondPrompt = false, missingExtraPrompt = false } = {}) {
   const root = await mkdtemp(path.join(os.tmpdir(), 'prompt-bundle-'));
   await writeJson(path.join(root, 'status.json'), { imagePrompts: 'ready' });
   await writeJson(path.join(root, 'reel.json'), { visualStyleId: 'modern-countryball-explainer' });
-  await writeJson(path.join(root, 'cover', 'cover.json'), { headline: 'NUR DIESE HOOK' });
   await writeJson(path.join(root, 'scenes', 'scene-index.json'), [
     { sceneId: 'scene-01', order: 1, imageText: 'ERSTE SZENE' },
     {
@@ -46,11 +45,9 @@ async function createFixture({ missingCoverPrompt = false, missingSecondPrompt =
     { sceneId: 'scene-03', order: 3, imageText: 'DRITTE SZENE' }
   ]);
 
-  await mkdir(path.join(root, 'cover'), { recursive: true });
-  if (!missingCoverPrompt) await writeFile(path.join(root, 'cover', 'cover-prompt.txt'), `${NEUTRAL_BASE} Show a recognizably human person in a strong cover scene. Integrate exactly "NUR DIESE HOOK".`, 'utf8');
-
   for (const sceneId of ['scene-01', 'scene-02', 'scene-03']) await mkdir(path.join(root, 'scenes', sceneId), { recursive: true });
-  await writeFile(path.join(root, 'scenes', 'scene-01', 'image-prompt.txt'), `${NEUTRAL_BASE} Show a recognizably human person performing one clear action. Integrate exactly "ERSTE SZENE".`, 'utf8');
+  // Szene 1 ist zugleich das Titelbild; ein separates Cover gibt es nicht mehr.
+  if (!missingFirstPrompt) await writeFile(path.join(root, 'scenes', 'scene-01', 'image-prompt.txt'), `${NEUTRAL_BASE} Show one round ball character performing one clear action. Integrate exactly "ERSTE SZENE".`, 'utf8');
   if (!missingSecondPrompt) await writeFile(path.join(root, 'scenes', 'scene-02', 'image-prompt.txt'), `${NEUTRAL_BASE} Show a clear human action. Integrate exactly "SZENE ZWEI".`, 'utf8');
   if (!missingExtraPrompt) await writeFile(path.join(root, 'scenes', 'scene-02', 'image-prompt-02.txt'), `${NEUTRAL_BASE} Show one concrete object close-up. No readable text.`, 'utf8');
   await writeFile(path.join(root, 'scenes', 'scene-03', 'image-prompt.txt'), `${NEUTRAL_BASE} Show a strong final human scene. Integrate exactly "DRITTE SZENE".`, 'utf8');
@@ -91,10 +88,10 @@ test('exportiert nur den einen seriellen Gesamtprompt im sichtbaren Bildprompt-O
   assert.match(bundle, /FIXED VISUAL STYLE FOR THIS IMAGE — MANDATORY:/);
   assert.match(bundle, /DATEINAME NACH FERTIGSTELLUNG: Bild 03\.png/);
   assert.equal(result.controllerFile, null);
-  assert.equal(result.coverIncluded, true);
+  assert.equal(result.titleImageIncluded, true);
   assert.equal(result.sceneCount, 3);
   assert.equal(result.plannedImageCount, 4);
-  assert.equal(result.totalPromptCount, 5);
+  assert.equal(result.totalPromptCount, 4);
   assert.equal(result.visualWorldLabel, FIXED_VISUAL_WORLD_LABEL);
 
   const validation = await validateImagePromptBundle(root);
@@ -106,8 +103,8 @@ test('exportiert nur den einen seriellen Gesamtprompt im sichtbaren Bildprompt-O
 });
 
 test('blockiert fehlende Prompts im strengen Modus', async () => {
-  const noCover = await createFixture({ missingCoverPrompt: true });
-  await assert.rejects(() => buildImagePromptBundle(noCover, { strict: true }), /cover/);
+  const noTitle = await createFixture({ missingFirstPrompt: true });
+  await assert.rejects(() => buildImagePromptBundle(noTitle, { strict: true }), /scene-01/);
 
   const noPrimary = await createFixture({ missingSecondPrompt: true });
   await assert.rejects(() => buildImagePromptBundle(noPrimary, { strict: true }), /scene-02/);

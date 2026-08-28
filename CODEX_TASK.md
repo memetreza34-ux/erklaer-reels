@@ -128,7 +128,7 @@ Verbindlich:
 
 Der Exporter ergänzt den Style-Lock global und erneut direkt vor jedem einzelnen Bildabschnitt. Falls ein konkreter Quellprompt widersprechende Stilbegriffe enthält, überstimmt der feste Lock nur diese Stilbegriffe; die konkrete inhaltliche Szene bleibt bestehen.
 
-`Bild 00` ist das Cover, aber nicht der alleinige Style-Master. Die globale Bildwelt ist der Style-Master.
+`Bild 01` ist die erste Szene und zugleich das Titelbild, aber nicht der alleinige Style-Master. Die globale Bildwelt ist der Style-Master.
 
 ## Quellen-QC
 
@@ -146,7 +146,7 @@ Die formale Prüfung ersetzt keine inhaltliche Quellenbewertung. Bestehende Sche
 
 ## Google Flow
 
-`Bild 00` = Cover.
+`Bild 01` = Szene 1 und zugleich Titelbild. Ein separates Cover gibt es nicht.
 
 Danach folgen alle Bildphasen in globaler Reihenfolge. Die Bildnummer ist nicht automatisch die Szenennummer.
 
@@ -178,7 +178,7 @@ Der frühere separate `google-flow-controller.txt` ist deaktiviert.
 npm run discover:assets -- --dir "PFAD-ZUM-REEL"
 ```
 
-Die Discovery erwartet automatisch `Bild 00` bis zur letzten **geplanten Bildphase**.
+Die Discovery erwartet automatisch `Bild 01` bis zur letzten **geplanten Bildphase**.
 
 Vor `--apply` jede Bildphase sichtbar prüfen. Dateinummern sind nur Routing-Hilfe. Zusätzlich prüfen, ob die feste Bildwelt eingehalten ist.
 

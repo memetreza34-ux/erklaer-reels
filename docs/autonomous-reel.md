@@ -103,7 +103,7 @@ Die verbindliche Nutzerdatei ist:
 00-bildprompts/99-alle-bildprompts.txt
 ```
 
-`Bild 00` ist aktuell nur Cover und nicht automatisch Style-Master. Danach folgen alle Bildphasen fortlaufend in globaler Bildreihenfolge.
+`Bild 01` ist die erste Szene und zugleich das Titelbild, aber nicht automatisch Style-Master. Danach folgen alle weiteren Bildphasen fortlaufend in globaler Bildreihenfolge.
 
 Flow arbeitet nach dem einmaligen Start vollständig selbstständig, aber streng seriell. Vor der ersten Generierung wird genau **ein gemeinsamer Ausgabeordner für dieses Reel** erstellt. Danach gilt für jedes Bild:
 

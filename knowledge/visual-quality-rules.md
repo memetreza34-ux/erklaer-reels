@@ -4,7 +4,7 @@
 
 ## Ziel
 
-Fertige Cover- und Szenenbilder müssen auf einem Smartphone sofort verständlich, technisch geeignet, inhaltlich eindeutig dem jeweiligen Bildmoment zugeordnet und sichtbar Teil derselben festen Bildwelt sein.
+Fertige Szenenbilder müssen auf einem Smartphone sofort verständlich, technisch geeignet, inhaltlich eindeutig dem jeweiligen Bildmoment zugeordnet und sichtbar Teil derselben festen Bildwelt sein.
 
 **Aktive Repo-Bildwelt: `modern-countryball-explainer`.**
 
@@ -16,7 +16,7 @@ Untertitel sind deaktiviert. Es wird **keine Untertitelzone reserviert oder gepr
 - Mindestauflösung: 720 × 1280 Pixel
 - unterstützte Formate: PNG, JPG, JPEG und WEBP
 - Bilder mit falschem Seitenverhältnis dürfen nicht unbemerkt in den Schnitt gelangen
-- Cover und jede einzelne Bildphase werden separat geprüft
+- jede einzelne Bildphase wird separat geprüft
 
 ## Feste Stil-QC
 
@@ -35,9 +35,9 @@ Für jedes Bild sichtbar prüfen:
 - klare visuelle Metapher, möglichst innerhalb ungefähr einer Sekunde verständlich
 - keine realistischen Menschen oder Gesichter
 - kein Fotorealismus, Anime/Manga, Clay, glänzendes 3D, cinematic realism oder Stockfoto-Look
-- kein Stilwechsel zwischen Cover und Szenen oder zwischen Themen
+- kein Stilwechsel zwischen den Szenen oder zwischen Themen
 
-`Bild 00` ist das Cover, aber nicht der alleinige Style-Master. Die globale Style-Bibel `knowledge/fixed-visual-world.md` ist der Style-Master.
+`Bild 01` ist die erste Szene und zugleich das Titelbild, aber nicht der alleinige Style-Master. Die globale Style-Bibel `knowledge/fixed-visual-world.md` ist der Style-Master.
 
 ## Sichere Bereiche
 
@@ -48,18 +48,18 @@ Die volle 9:16-Komposition wird natürlich genutzt.
 - oben ungefähr 8 % und unten ungefähr 18 % für typische Plattform-UI berücksichtigen, wenn dort kritischer Text oder kleine Details liegen
 - **keine künstliche horizontale Untertitelzone** freihalten
 - Hauptmotiv darf die Bildmitte normal und groß besetzen
-- Cover-/Bildtext muss auf Smartphone-Größe lesbar bleiben
+- Bildtext muss auf Smartphone-Größe lesbar bleiben
 
 ## Sichtbarer Text
 
 Pro Bild gilt eine harte Whitelist:
 
-- `imageText`/Cover-Headline gesetzt → nur exakt dieser **deutsche** lesbare Text ist erlaubt
+- `imageText` gesetzt → nur exakt dieser **deutsche** lesbare Text ist erlaubt
 - `imageText` leer → keinerlei lesbarer Text
 
 Immer verboten:
-- `BILD 00`, `BILD 01` usw.
-- `COVER`
+- `BILD 01`, `BILD 02` usw.
+- `TITELBILD`
 - `SZENE`, `SCENE`
 - `BILDPHASE`, `IMAGE PHASE`
 - Dateinamen, `DATEINAME`
