@@ -154,7 +154,21 @@ Die verbindliche Nutzerdatei ist `00-bildprompts/99-alle-bildprompts.txt` mit de
 
 Der Gesamtprompt enthält `modern-countryball-explainer` global und zusätzlich vor jedem Bildabschnitt.
 
-Flow arbeitet streng seriell: ein Bild → vollständig warten → gegen aktuellen Bildprompt **und feste Bildwelt** prüfen → umbenennen → nächstes Bild. Keine Queue, kein Batch, kein Parallelisieren und kein weiteres `Go`.
+Vor der ersten Generierung erstellt Flow genau **einen gemeinsamen Ausgabeordner für dieses Reel**. Danach arbeitet Flow streng seriell:
+
+```text
+ein Bild erzeugen
+→ vollständig warten
+→ gegen aktuellen Bildprompt UND feste Bildwelt prüfen
+→ exakt als Bild NN.png umbenennen
+→ in den gemeinsamen Reel-Ausgabeordner legen
+→ Dateiname und Ablage prüfen
+→ erst dann nächstes Bild
+```
+
+Keine Queue, kein Batch, kein Parallelisieren, keine Mehrfachvarianten und kein weiteres `Go`. Wenn Umbenennen oder Ablage nicht bestätigt werden kann, stoppt der Lauf statt weiterzugenerieren.
+
+Nach Abschluss liegen alle Bilder des Reels zusammen in diesem einen Flow-Ausgabeordner. Für den Repo-Import werden sie gesammelt nach `00-bildprompts/00-ALLE-BILDER-HIER-REIN/` übernommen.
 
 Der frühere separate `google-flow-controller.txt` ist deaktiviert.
 
@@ -179,6 +193,18 @@ npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
 Narrative Szenen werden mit echten akustisch bestätigten Audio-Cues synchronisiert. Zusätzliche Bildphasen werden innerhalb der Szene anhand `startPercent` als harte Schnitte verteilt.
 
 Keine geschätzten Szenenanker. Keine Untertitel. `sync:words` ist nicht erforderlich und im aktiven Produktionsworkflow verboten; historische Helfer liegen nur noch unter dem Legacy-Namensraum.
+
+## Finaler Reel-Export
+
+Der einzige sichtbare finale Upload-Bereich ist:
+
+```text
+03-export/
+├── FERTIGES-REEL.mp4
+└── UNIVERSELLE-CAPTION.txt
+```
+
+Es gibt keinen separaten sichtbaren Caption- oder Video-Ordner. Die Universal-Caption muss reel-spezifisch sein und `UNIVERSAL_CAPTION_POLICY.md` erfüllen.
 
 ## Visuelle Prüfung und Render
 
