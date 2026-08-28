@@ -10,9 +10,9 @@ Test-Reel für die **feste, strikt von YouTube getrennte Reel-Bildwelt**.
 - Szenenbilder: Bild 01 bis Bild 13
 - Gesamt: 14 Bilder
 - Format: 9:16
-- Bildwelt: Human Editorial Explainer
-- Figuren: vereinfachte, eindeutig menschliche Personen; je nach Szene Kopf, Oberkörper oder Ganzkörper
-- Menschen sind nicht in jedem Bild Pflicht: Objekt, Gebäude, Mechanismus oder Umgebung darf das Hauptmotiv sein, wenn es klarer erklärt
+- Bildwelt: Modern Countryball Explainer (`modern-countryball-explainer`)
+- Figuren: runde Kugelfiguren mit einfachen weißen Augen, ohne separaten Kopf; Kleidung als Farbe oder Muster auf der Kugel
+- Kugelfiguren sind nicht in jedem Bild Pflicht: Objekt, Gebäude, Mechanismus oder Umgebung darf das Hauptmotiv sein, wenn es klarer erklärt
 - Countryballs/Kugelmenschen: verboten
 - Prompts: Englisch
 - sichtbarer Bildtext: Deutsch

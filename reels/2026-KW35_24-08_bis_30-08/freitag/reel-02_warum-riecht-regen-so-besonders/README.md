@@ -1,6 +1,6 @@
 # Warum riecht Regen so besonders?
 
-Test-Reel für die **eine feste Reel-Bildwelt Human Head Editorial Reel** (`human-head-editorial-reel`).
+Test-Reel für die **eine feste Reel-Bildwelt Modern Countryball Explainer** (`modern-countryball-explainer`).
 
 - Datum: 28.08.2026
 - Thema: Alltag / Wissenschaft / Natur
@@ -13,9 +13,9 @@ Test-Reel für die **eine feste Reel-Bildwelt Human Head Editorial Reel** (`huma
 - Prompts: Englisch
 - sichtbarer Bildtext: Deutsch
 - Untertitel: aus
-- Bildwelt: `Human Head Editorial Reel`
+- Bildwelt: `Modern Countryball Explainer`
 
-Wenn Menschen vorkommen, sind sie vereinfachte, eindeutig erkennbare echte Menschen. Die menschliche Kopf-/Gesichtslogik ist der Figurenanker: Kopf/Close-up, Portrait, Oberkörper oder Ganzkörper je nach Szene. Ein Mensch oder Kopf ist aber **nicht in jedem Bild Pflicht**. Wenn Objekt, Naturprozess oder Umgebung die Aussage besser erklärt, bleibt die Szene ohne Menschen. Countryballs, Kugelmenschen und Stick-Figuren sind verboten.
+Wenn Akteure vorkommen, sind sie runde Kugelfiguren mit einfachen weißen Augen und ohne separaten Kopf. Die Kugelgeometrie ist der Figurenanker: einzelne Kugel, kleine Kugelgruppe oder Kugel plus Objekt je nach Szene. Eine Kugelfigur ist aber **nicht in jedem Bild Pflicht**. Wenn Objekt, Naturprozess oder Umgebung die Aussage besser erklärt, bleibt die Szene ohne Akteur — in derselben Kontur- und Formsprache. Menschliche Köpfe auf Kugelkörpern, humanoide Cartoonmenschen und Stick-Figuren sind verboten.
 
 Es gibt keine zweite Reel-Bildwelt und keine themenspezifische Unter-Bildwelt.
 

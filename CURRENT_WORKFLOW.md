@@ -35,7 +35,7 @@ Die Themenwahl ist offen. Hook, Aha-Moment, Faktentreue, visuelle Klarheit, Abwe
 
 ## 2. Reels und YouTube bleiben vollständig getrennt
 
-Für Reels gilt ausschließlich **eine** Bildwelt: **Human Head Editorial Reel** (`human-head-editorial-reel`).
+Für Reels gilt ausschließlich **eine** Bildwelt: **Modern Countryball Explainer** (`modern-countryball-explainer`).
 
 Verbindliche Reel-Quellen:
 - `knowledge/fixed-visual-world.md`
@@ -48,25 +48,26 @@ Für YouTube gelten ausschließlich:
 
 YouTube-Stick-Figuren/16:9 dürfen nicht auf Reels übertragen werden. Reel-Regeln dürfen nicht auf YouTube übertragen werden.
 
-## 3. Eine einzige Reel-Bildwelt: Human Head Editorial Reel
+## 3. Eine einzige Reel-Bildwelt: Modern Countryball Explainer
 
 Es gibt **keine mehreren Reel-Welten und keine themenspezifischen Unter-Bildwelten**.
 
-Wenn eine Person sinnvoll ist, zeigt das Bild einen vereinfachten, eindeutig erkennbaren **echten Menschen**:
-- natürliche ovale oder weich gerundete menschliche Kopfform
-- Kopf darf editorial leicht betont sein, bleibt aber eindeutig menschlich
-- Hals und Oberkörper bei Portrait-/Oberkörperszenen
-- vereinfachte normale menschliche Körperproportionen
-- einfache Augen, Brauen, Nase, Mund und Haare, wenn passend
-- Kopf/Close-up, Portrait, Oberkörper, Hände oder Ganzkörper je nach Szene
-- klare menschliche Körpersprache und Kleidung
+Wenn ein Akteur sinnvoll ist, zeigt das Bild eine eindeutig erkennbare **runde Kugelfigur**:
+- exakt runder Kreis- bzw. Kugelkörper ohne separaten Kopf
+- einfache weiße expressive Augen mit schwarzen Pupillen
+- minimale Gesichtselemente, nur wenn sie die Aussage tragen
+- höchstens kleine einfache Arme, Hände oder Füße für konkrete Handlungen
+- Flaggen-/Regionsmuster nur bei echter geografischer Relevanz, sonst neutrale einfarbige Kugeln
+- einzelne Kugel, kleine Kugelgruppe, Kugel plus Objekt oder Kartenansicht je nach Szene
+- klare Emotion über Augen und Körperhaltung
 
-Ein Mensch oder Kopf ist **nicht in jedem Bild Pflicht**. Wenn ein Gegenstand, Mechanismus, Dokument, Gebäude, Pflanze, Landschaft oder physischer Prozess die Aussage klarer erklärt, darf dieses Motiv alleine verwendet werden. Es wird kein Mensch nur zur Dekoration erzwungen.
+Eine Kugelfigur ist **nicht in jedem Bild Pflicht**. Wenn ein Gegenstand, Mechanismus, Dokument, Gebäude, Karte, Pflanze, Landschaft oder physischer Prozess die Aussage klarer erklärt, darf dieses Motiv alleine verwendet werden — in derselben Kontur- und Formsprache. Es wird keine Kugelfigur nur zur Dekoration erzwungen.
 
 Verboten in Reels:
-- Countryballs / Länderbälle
-- kugelförmige Menschen oder Ball-Maskottchen
+- menschliche Köpfe auf Kugelfiguren
+- humanoide Cartoonmenschen als Akteure
 - Stick-Figuren
+- ovale, bohnenförmige oder eiförmige Figurenkörper
 - Fotorealismus
 - Anime/Manga
 - Clay/Knetstil
@@ -75,14 +76,15 @@ Verboten in Reels:
 - technische Cutaway-/Blueprint-Welt als Standard
 - eigene Bildwelt für Flugzeuge, Technik, Medizin, Geschichte usw.
 
-Bei Ländern, Regierungen und Institutionen werden Menschen, Karten, Flaggen, Dokumente oder Gebäude verwendet — keine Länderbälle.
+Bei Ländern, Regierungen und Institutionen werden flaggenmarkierte oder neutrale Kugeln mit Karten, Grenzen, Dokumenten oder Gebäuden verwendet — keine realistischen Menschen.
 
 Gestaltung:
 - vertikal 9:16
-- clean hand-drawn 2D editorial cartoon
-- klare schwarze Konturen
-- flächige oder leicht cel-geschattete Farben
+- sauberer flacher 2D-Vektor-/Comic-Look
+- dicke schwarze Konturen
 - niedrige bis mittlere Detaildichte
+- flächige oder sehr leicht schattierte Farben
+- ruhiger einfarbiger oder sanft texturierter Hintergrund
 - normalerweise klares, helles, grafisches Licht
 - eine dominante Kernaussage
 - eine klare sichtbare Handlung/Ursache-Folge-Beziehung
@@ -100,7 +102,7 @@ Jeder Prompt beantwortet:
 2. Wer oder was ist das Hauptmotiv?
 3. Was passiert sichtbar?
 4. Welche wenigen Requisiten/Umgebung sind nötig?
-5. Welcher Bildausschnitt passt: Kopf, Portrait, Oberkörper, Ganzkörper, Close-up, Objekt oder Umgebung?
+5. Welcher Bildausschnitt passt: einzelne Kugel, Kugelgruppe, Kugel plus Objekt, Kartenansicht, Close-up, Objekt oder Umgebung?
 6. Welcher exakte deutsche Text ist erlaubt?
 
 Wenn kein Text geplant ist, darf keinerlei lesbarer Text erscheinen. Keine Logos, Wasserzeichen, Workflow-Labels oder Dateinamen im Bild.
@@ -135,7 +137,7 @@ Für jedes Bild:
 1. nur aktuellen Bildabschnitt verwenden
 2. genau einen Bildgenerator-Aufruf starten
 3. vollständig warten
-4. Inhalt + Human Head Editorial Reel prüfen
+4. Inhalt + Modern Countryball Explainer prüfen
 5. bei Fehler nur dasselbe Bild neu erzeugen
 6. `Bild NN.png` exakt umbenennen
 7. sofort in den gemeinsamen Reel-Ordner legen
@@ -180,10 +182,10 @@ Neue Reels brauchen mindestens zwei echte HTTPS-Quellen mit unterschiedlichen Ho
 Bild-QC prüft:
 - konkrete Narration und Bildphase
 - sichtbaren deutschen Text
-- Human Head Editorial Reel
-- eindeutig menschliche Figur, wenn eine Person vorkommt
-- kein Mensch dekorativ erzwungen, wenn Objekt/Mechanismus klarer ist
-- keine Countryballs/Kugelmenschen/Stick-Figuren
+- Modern Countryball Explainer
+- exakt runde Kugelgeometrie, wenn ein Akteur vorkommt
+- keine Kugelfigur dekorativ erzwungen, wenn Objekt/Mechanismus klarer ist
+- keine menschlichen Köpfe, humanoiden Figuren oder Stick-Figuren
 - keine unerlaubte technische, themenspezifische oder cinematic Unter-Bildwelt
 - 9:16
 - keine ungeplanten Texte/Logos/Wasserzeichen

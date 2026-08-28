@@ -4,7 +4,7 @@
 
 ## Aktueller Stand: Produktionsbaseline
 
-Die Produktionspipeline besitzt offene Themenwahl, individuelle Bilddichte und harte QC-Gates. Die frühere feste Bildwelt wurde am 2026-08-26 bewusst zurückgesetzt und ist derzeit **unassigned**.
+Die Produktionspipeline besitzt offene Themenwahl, individuelle Bilddichte und harte QC-Gates. Die Bildwelt ist seit 2026-08-28 wieder fest: **`modern-countryball-explainer`** (Modern Countryball Explainer).
 
 ### Produktionskern
 
@@ -15,9 +15,9 @@ Die Produktionspipeline besitzt offene Themenwahl, individuelle Bilddichte und h
 - [x] 12–14 **narrative Szenen**, Standard 13
 - [x] individuelle Bildanzahl über 1–3 `imagePhases` pro Szene
 - [x] offenes Themenuniversum ohne feste Pillar-Quote
-- [x] frühere feste Countryball-/Kugel-Bildwelt aus dem aktiven Workflow entfernt
-- [x] neue Workspaces starten mit `visualStyleId: null`
-- [x] Prompt-Exporter injiziert keine alte Bildwelt oder Golden Reference mehr
+- [x] eine einzige feste Bildwelt `modern-countryball-explainer` im aktiven Workflow verankert
+- [x] neue Workspaces starten mit `visualStyleId: "modern-countryball-explainer"`
+- [x] Prompt-Exporter injiziert den festen Style-Lock global und vor jedem Bildabschnitt
 - [x] kompletter serieller Google-Flow-Gesamtprompt unter `00-bildprompts/99-alle-bildprompts.txt`
 - [x] Workflow-Metadaten aus generierten Bildern ausgeschlossen
 - [x] Quellen-QC für neue Reels auf Schema 3 erweitert
@@ -41,8 +41,8 @@ Die Produktionspipeline besitzt offene Themenwahl, individuelle Bilddichte und h
 - [x] Mindestkonfidenz 0,90
 - [x] unsichere Bilder bleiben unzugeordnet
 - [x] technische Bildprüfung auf Format, Auflösung und Seitenverhältnis
-- [x] alte Countryball-/Geometrie-/Golden-Reference-QC entfernt
-- [x] visuelle QC prüft aktuell den konkreten Szeneninhalt und Bildprompt statt eine feste Bildwelt
+- [x] Golden-Reference-QC entfernt
+- [x] visuelle QC prüft den konkreten Szeneninhalt, den Bildprompt und die feste Bildwelt
 - [x] sichtbare Text-Whitelist pro Bild
 - [x] keine künstliche Untertitelzone
 - [x] Render-Freigabe nur nach real bestandenen Qualitäts-Gates
@@ -70,8 +70,7 @@ Bekannte Infrastrukturgrenze: GitHub Actions hatte zuletzt einzelne Läufe mit l
 
 ## Nächste sinnvolle Verbesserungen
 
-- [ ] neue Bildwelt erst nach ausdrücklicher Nutzerentscheidung definieren und anschließend als eigenes klar versioniertes System einbauen
-- [ ] E2E-Test: neuer Workspace bleibt ohne alte Bildwelt und Prompt-Exporter injiziert keine historischen Stilregeln
+- [ ] E2E-Test: neuer Workspace erbt die feste Bildwelt und der Prompt-Exporter injiziert keine abweichenden Stilregeln
 - [ ] automatischer Topic-Score für Hook, Aha-Moment, Faktenbasis, visuelle Klarheit, Abwechslung und Teilbarkeit
 - [ ] feinere Quellenklassifizierung für medizinische/wissenschaftliche/aktuelle Themen
 - [ ] robuste lokale/CI Smoke-Tests für kompletten neuen Reel-Workspace

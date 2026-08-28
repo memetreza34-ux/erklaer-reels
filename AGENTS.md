@@ -10,7 +10,7 @@ Bei „Mach ein neues Reel“ autonom:
 2. starkes Thema aus dem offenen Themenuniversum wählen
 3. deutsches Voice-over mit 155–175 Wörtern schreiben
 4. 12–14 narrative Szenen planen, Standard 13
-5. für Cover und jede Bildphase ausschließlich **Human Head Editorial Reel** verwenden
+5. für Cover und jede Bildphase ausschließlich **Modern Countryball Explainer** verwenden
 6. Bildanzahl pro Reel und Szene individuell planen
 7. Cover + Bildphasen-Prompts + einen seriellen Google-Flow-Gesamtprompt + Universal-Caption + Quellen fertigstellen
 8. keine Untertitel erzeugen
@@ -19,7 +19,7 @@ Bei „Mach ein neues Reel“ autonom:
 
 ## Reels und YouTube strikt trennen
 
-Reels verwenden ausschließlich **Human Head Editorial Reel** (`human-head-editorial-reel`) in 9:16.
+Reels verwenden ausschließlich **Modern Countryball Explainer** (`modern-countryball-explainer`) in 9:16.
 
 YouTube verwendet ausschließlich:
 
@@ -30,7 +30,7 @@ youtube/YOUTUBE_VISUAL_WORLD.md
 
 Nie automatisch übertragen:
 - YouTube-Stick-Figuren auf Reels
-- Reel-Human-Head-Editorial-Regeln auf YouTube
+- Reel-Countryball-Regeln auf YouTube
 - 16:9 auf Reels
 - 9:16-Reel-Regeln auf YouTube
 
@@ -41,25 +41,26 @@ Verbindlich definiert in:
 - `config/image-styles.json`
 - `src/shared/fixed-visual-world.js`
 
-Es gibt **genau eine** aktive Reel-Bildwelt. Keine Legacy-Countryball-Welt, keine zweite Clarity-Welt und keine themenspezifischen Unter-Bildwelten.
+Es gibt **genau eine** aktive Reel-Bildwelt. Keine Menschen-/Köpfe-Welt, keine zweite Clarity-Welt und keine themenspezifischen Unter-Bildwelten.
 
-### Menschen / Köpfe
+### Kugelfiguren
 
-Wenn eine Person sinnvoll ist, muss sie eindeutig als vereinfachter echter Mensch lesbar sein:
-- natürlicher ovaler oder weich gerundeter menschlicher Kopf
-- Kopf darf editorial leicht betont sein, bleibt aber eindeutig menschlich
-- Hals/Oberkörper, wenn sichtbar
-- normale vereinfachte menschliche Proportionen
-- einfache Augen, Brauen, Nase, Mund, Haare und Kleidung nach Bedarf
-- Kopf/Close-up, Portrait, Oberkörper, Hände oder Ganzkörper je nach Szene
+Wenn ein Akteur sinnvoll ist, muss er eindeutig als runde Kugelfigur lesbar sein:
+- exakt runder Kreis- bzw. Kugelkörper ohne separaten Kopf
+- einfache weiße expressive Augen mit schwarzen Pupillen
+- minimale Gesichtselemente, nur wenn sie die Aussage tragen
+- höchstens kleine einfache Arme, Hände oder Füße für konkrete Handlungen
+- Flaggen-/Regionsmuster nur bei echter geografischer Relevanz, sonst neutrale einfarbige Kugeln
+- einzelne Kugel, kleine Kugelgruppe, Kugel plus Objekt oder Kartenansicht je nach Szene
 
-Ein Mensch oder Kopf ist **nicht in jedem Bild Pflicht**. Wenn ein Objekt, Mechanismus, Dokument, Gebäude, Pflanze, Landschaft oder physischer Prozess klarer erklärt, darf dieses Motiv alleine verwendet werden. Keinen Menschen nur zur Dekoration hinzufügen.
+Eine Kugelfigur ist **nicht in jedem Bild Pflicht**. Wenn ein Objekt, Mechanismus, Dokument, Gebäude, Karte, Pflanze, Landschaft oder physischer Prozess klarer erklärt, darf dieses Motiv alleine verwendet werden — in derselben Kontur- und Formsprache. Keine Kugelfigur nur zur Dekoration hinzufügen.
 
 ### Verboten
 
-- Countryballs / Länderbälle
-- Kugelmenschen / Ball-Maskottchen
+- menschliche Köpfe auf Kugelfiguren
+- humanoide Cartoonmenschen als Akteure
 - Stick-Figuren
+- ovale, bohnenförmige oder eiförmige Figurenkörper
 - Fotorealismus
 - Anime/Manga
 - Clay/Knetstil
@@ -68,15 +69,16 @@ Ein Mensch oder Kopf ist **nicht in jedem Bild Pflicht**. Wenn ein Objekt, Mecha
 - eigene Unter-Bildwelt pro Thema
 - generische Icon-Boards, Floating Cards und wiederholte Figur-mittig-plus-Icons-Kompositionen
 
-Länder, Regierungen und Institutionen werden durch Menschen, Karten, Flaggen, Dokumente oder Gebäude dargestellt, nicht durch Bälle.
+Länder, Regierungen und Institutionen werden durch flaggenmarkierte oder neutrale Kugeln mit Karten, Grenzen, Dokumenten oder Gebäuden dargestellt, nicht durch realistische Menschen.
 
 ### Gestaltung
 
 - 9:16
-- clean hand-drawn 2D editorial cartoon
-- klare schwarze Konturen
+- sauberer flacher 2D-Vektor-/Comic-Look
+- dicke schwarze Konturen
 - niedrige bis mittlere Detaildichte
-- flächige oder leicht cel-geschattete Farben
+- flächige oder sehr leicht schattierte Farben
+- ruhiger einfarbiger oder sanft texturierter Hintergrund
 - normalerweise klare helle grafische Beleuchtung
 - ein dominantes Hauptmotiv
 - eine sichtbare Handlung oder Ursache-Folge-Beziehung
@@ -95,7 +97,7 @@ Jeder Prompt enthält:
 3. Hauptmotiv
 4. Ort/Umgebung
 5. sichtbare Handlung
-6. passenden Bildausschnitt: Kopf, Portrait, Oberkörper, Ganzkörper, Close-up, Objekt oder Umgebung
+6. passenden Bildausschnitt: einzelne Kugel, Kugelgruppe, Kugel plus Objekt, Kartenansicht, Close-up, Objekt oder Umgebung
 7. wenige Requisiten
 8. exakt erlaubten deutschen Text, falls vorhanden
 9. kein zusätzlicher lesbarer Text, keine Logos/Wasserzeichen
@@ -122,7 +124,7 @@ Der separate `google-flow-controller.txt` ist deaktiviert. Alle Steuerregeln ste
 nur aktuellen Bildabschnitt ausführen
 → genau 1 Bildgenerator-Aufruf
 → vollständig warten
-→ gegen Prompt UND Human Head Editorial Reel prüfen
+→ gegen Prompt UND Modern Countryball Explainer prüfen
 → exakt als Bild NN.png umbenennen
 → in den gemeinsamen Reel-Ausgabeordner legen
 → Ablage prüfen
@@ -164,7 +166,7 @@ Neue Reels:
 
 ## Asset-Zuordnung
 
-Dateinummer ist nur Routing-Hilfe. Bilder tatsächlich gegen Narration, Bildtext, Prompt, Human Head Editorial Reel und benachbarte Bildphasen prüfen. Unter 0,90 Konfidenz nicht raten.
+Dateinummer ist nur Routing-Hilfe. Bilder tatsächlich gegen Narration, Bildtext, Prompt, Modern Countryball Explainer und benachbarte Bildphasen prüfen. Unter 0,90 Konfidenz nicht raten.
 
 ## Finaler Reel-Export
 

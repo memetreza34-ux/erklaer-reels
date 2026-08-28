@@ -1,49 +1,52 @@
 {
   "visualWorldMode": "fixed",
-  "fixedVisualWorld": "human-head-editorial-reel",
+  "fixedVisualWorld": "modern-countryball-explainer",
   "newReelAllowedStyleIds": [
-    "human-head-editorial-reel"
+    "modern-countryball-explainer"
   ],
   "styles": [
     {
-      "id": "human-head-editorial-reel",
-      "name": "Human Head Editorial Reel",
+      "id": "modern-countryball-explainer",
+      "name": "Modern Countryball Explainer",
       "active": true,
       "scope": "all-new-reels-all-topics",
       "promptLanguage": "en",
       "visibleTextLanguage": "de",
-      "description": "Genau eine feste 9:16-Reel-Bildwelt. Wenn Menschen vorkommen, sind es vereinfachte, eindeutig menschliche Figuren mit klarer menschlicher Kopf- und Körperlogik. Ein Kopf oder Mensch ist nicht in jedem Bild Pflicht; Objekte, Mechanismen und Umgebungen dürfen die Szene tragen, wenn sie die Aussage besser erklären.",
+      "description": "Genau eine feste 9:16-Reel-Bildwelt. Wenn Akteure vorkommen, sind es runde Kugelfiguren mit einfachen weißen Augen, dicken schwarzen Konturen und flächigen Farben. Eine Kugelfigur ist nicht in jedem Bild Pflicht; Objekte, Mechanismen, Karten und Umgebungen dürfen die Szene tragen, wenn sie die Aussage besser erklären.",
       "characterSystem": {
-        "defaultActor": "simplified-recognizably-human-person-when-human-is-useful",
-        "characterAnchor": "recognizable-human-head-and-face",
+        "defaultActor": "round-countryball-sphere-when-actor-is-useful",
+        "characterAnchor": "perfectly-round-ball-body-with-simple-eyes",
         "allowedActorTypes": [
-          "human-head-or-portrait",
-          "human-head-and-upper-body",
-          "human-full-body",
-          "human-hands-or-body-detail",
-          "small-human-group",
+          "single-round-ball-character",
+          "small-group-of-ball-characters",
+          "ball-character-with-object-or-mechanism",
+          "map-with-borders-arrows-or-regions",
           "concrete-object-or-mechanism",
+          "document-building-or-tool",
           "simple-contextual-environment"
         ],
-        "humanNotMandatoryWhenObjectIsClearer": true,
-        "doNotForceDecorativeHuman": true,
-        "recognizablyHumanRequiredWhenPersonAppears": true,
-        "humanHeadShape": "natural-oval-or-softly-rounded-human-head-not-sphere",
-        "humanHeadMayBeEditoriallyEmphasized": true,
-        "humanBody": "simplified-normal-human-anatomy-with-neck-and-limbs-when-visible",
-        "humanFace": "simple-human-eyes-brows-nose-mouth-and-optional-hair",
-        "countryballCharactersForbidden": true,
-        "flagPaintedBallCharactersForbidden": true,
-        "sphericalMascotPeopleForbidden": true,
+        "actorNotMandatoryWhenObjectIsClearer": true,
+        "doNotForceDecorativeActor": true,
+        "roundBallGeometryRequiredWhenActorAppears": true,
+        "ballBodyShape": "perfect-circle-or-sphere-never-oval-bean-or-egg",
+        "separateHeadForbidden": true,
+        "ballFace": "simple-white-expressive-eyes-with-black-pupils-minimal-features",
+        "limbs": "optional-small-simple-arms-hands-or-feet-only-when-action-requires",
+        "flagsOnlyWhenGeographicallyRelevant": true,
+        "neutralSolidColourBallsForNonGeographicActors": true,
+        "humanHeadCharactersForbidden": true,
+        "humanoidCartoonPeopleForbidden": true,
+        "ovalOrBeanShapedBodiesForbidden": true,
         "stickFiguresForbidden": true,
-        "preferConcreteObjectOrEnvironmentWhenNoHumanIsNeeded": true
+        "preferConcreteObjectOrEnvironmentWhenNoActorIsNeeded": true,
+        "objectsMustShareSameOutlineAndShapeLanguage": true
       },
       "rendering": {
         "dimension": "2d",
-        "look": "clean-hand-drawn-human-head-editorial-cartoon",
-        "outlines": "clear-confident-black",
+        "look": "clean-flat-2d-vector-countryball-cartoon",
+        "outlines": "thick-confident-black",
         "detailDensity": "low-to-medium",
-        "colors": "flat-or-lightly-cel-shaded-readable",
+        "colors": "flat-or-very-lightly-shaded-readable",
         "shadows": "subtle-soft",
         "texture": "none-or-very-light-paper-grain",
         "lightingDefault": "clear-graphic-not-cinematic",
@@ -60,10 +63,9 @@
         "oneClearMoment": true,
         "oneDominantFocalSubject": true,
         "supportingPropsMax": 3,
-        "headCloseUpAllowed": true,
-        "portraitAllowed": true,
-        "upperBodyAllowed": true,
-        "fullBodyAllowed": true,
+        "singleBallCloseUpAllowed": true,
+        "ballGroupAllowed": true,
+        "mapViewAllowed": true,
         "objectOnlySceneAllowed": true,
         "closeUpsAllowed": true,
         "offCenterFramingAllowed": true,
@@ -77,9 +79,9 @@
         "simplifyWhenMeaningRequiresStudy": true
       },
       "background": {
-        "type": "simple-contextual-environment-or-strong-color-field",
+        "type": "calm-solid-colour-field-or-lightly-textured-flat-colour",
         "colorMayVaryByScene": true,
-        "simpleContextualSceneryPreferredWhenUseful": true,
+        "minimalContextualElementAllowed": true,
         "realisticDetailedInteriorDefault": false,
         "complexRealisticScenery": false,
         "darkCinematicLightingDefault": false
@@ -93,7 +95,7 @@
         "blueprintDefault": false,
         "technicalDetailAllowedOnlyWhenRequiredByExplanation": true,
         "technicalDetailMustRemainSimplified": true,
-        "countryOrInstitutionRepresentation": "humans-maps-flags-documents-buildings-not-balls"
+        "countryOrInstitutionRepresentation": "flag-marked-or-neutral-balls-with-maps-borders-documents-buildings"
       },
       "visibleText": {
         "language": "de",
@@ -108,9 +110,9 @@
         "neverDuplicateSameHeadlineTopAndBottom": true
       },
       "forbidden": [
-        "countryballs",
-        "flag-painted-ball-characters",
-        "spherical-mascot-people",
+        "human-heads-on-ball-bodies",
+        "humanoid-cartoon-people",
+        "oval-bean-or-egg-shaped-characters",
         "stick-figures",
         "photorealistic-people",
         "realistic-photo-faces",
@@ -145,7 +147,7 @@
       ]
     }
   ],
-  "selectionRule": "Für jedes Reel gilt genau eine Bildwelt: Human Head Editorial Reel. Wenn eine Person vorkommt, ist sie ein vereinfachter, eindeutig menschlicher Charakter mit erkennbarem menschlichem Kopf und Gesicht; Kopf/Portrait, Oberkörper, Hände oder Ganzkörper je nach Szene. Ein Mensch ist nicht in jedem Bild Pflicht. Wenn ein konkretes Objekt, ein Mechanismus oder eine Umgebung klarer erklärt, trägt dieses Motiv die Szene allein. Es gibt keine zweite Reel-Welt und keine themenspezifischen Unter-Bildwelten.",
+  "selectionRule": "Für jedes Reel gilt genau eine Bildwelt: Modern Countryball Explainer. Wenn ein Akteur vorkommt, ist er eine runde Kugelfigur mit einfachen weißen Augen und ohne separaten Kopf; Flaggen nur bei echter geografischer Relevanz, sonst neutrale Kugeln. Eine Kugelfigur ist nicht in jedem Bild Pflicht. Wenn ein konkretes Objekt, ein Mechanismus, eine Karte oder eine Umgebung klarer erklärt, trägt dieses Motiv die Szene allein und behält dieselbe Kontur- und Formsprache. Es gibt keine zweite Reel-Welt und keine themenspezifischen Unter-Bildwelten.",
   "goldenReferencePaths": [],
   "styleBiblePath": "knowledge/fixed-visual-world.md",
   "diversityRule": {
@@ -153,13 +155,13 @@
     "avoidImmediateRepeat": true,
     "forcedRotation": false,
     "fixedVisualWorldOverridesDiversity": true,
-    "guidance": "Nur Motiv, Perspektive, Bildausschnitt und Umgebung variieren. Die eine Human-Head-Editorial-Formsprache bleibt immer gleich."
+    "guidance": "Nur Motiv, Perspektive, Bildausschnitt und Umgebung variieren. Die eine Modern-Countryball-Explainer-Formsprache bleibt immer gleich."
   },
   "selectionCriteria": [
     "1-Sekunden-Verständlichkeit",
-    "eindeutig menschlicher Kopf und Körper wenn eine Person vorkommt",
-    "kein Mensch erzwingen wenn Objekt oder Umgebung klarer ist",
-    "keine Countryballs, Kugelmenschen oder Stick-Figuren",
+    "perfekt runde Kugelgeometrie wenn ein Akteur vorkommt",
+    "keine Kugelfigur erzwingen wenn Objekt oder Umgebung klarer ist",
+    "keine menschlichen Köpfe, humanoiden Figuren oder Stick-Figuren",
     "eine dominante Kernaussage",
     "einfache physische Szene oder klare Ursache-Folge-Beziehung",
     "niedrige bis mittlere Detaildichte",

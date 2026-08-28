@@ -19,24 +19,25 @@ Produktionspipeline für visuelle Erklär-Reels mit offenem Themenuniversum und 
 - keine Hintergrundmusik
 - Schlussbild 0,7 Sekunden nach dem letzten gesprochenen Wort halten
 
-## Eine feste Reel-Bildwelt — Human Head Editorial Reel
+## Eine feste Reel-Bildwelt — Modern Countryball Explainer
 
-Für alle neuen Reels gilt **genau eine** Bildwelt: **Human Head Editorial Reel** (`human-head-editorial-reel`).
+Für alle neuen Reels gilt **genau eine** Bildwelt: **Modern Countryball Explainer** (`modern-countryball-explainer`).
 
-Wenn eine Person vorkommt, ist sie eine vereinfachte, eindeutig erkennbare menschliche Figur:
-- natürlicher ovaler oder weich gerundeter menschlicher Kopf
-- Kopf darf editorial leicht betont sein, bleibt aber eindeutig menschlich
-- Hals und Oberkörper, wenn sichtbar
-- vereinfachte normale menschliche Proportionen
-- einfache Augen, Brauen, Nase, Mund und Haare nach Bedarf
-- Kopf/Close-up, Portrait, Oberkörper, Hände oder Ganzkörper je nach Szene
+Wenn ein Akteur vorkommt, ist er eine runde Kugelfigur:
+- exakt runder Kreis- bzw. Kugelkörper ohne separaten Kopf
+- einfache weiße expressive Augen mit schwarzen Pupillen
+- minimale Gesichtselemente
+- höchstens kleine einfache Arme, Hände oder Füße für konkrete Handlungen
+- Flaggen-/Regionsmuster nur bei echter geografischer Relevanz, sonst neutrale einfarbige Kugeln
+- einzelne Kugel, kleine Kugelgruppe, Kugel plus Objekt oder Kartenansicht je nach Szene
 
-Ein Mensch oder Kopf ist **nicht in jedem Bild Pflicht**. Ein Objekt, Mechanismus, Dokument, Gebäude, Pflanze, Landschaft oder physischer Prozess darf Hauptmotiv sein, wenn die Aussage dadurch klarer wird. Es wird kein Mensch nur zur Dekoration erzwungen.
+Eine Kugelfigur ist **nicht in jedem Bild Pflicht**. Ein Objekt, Mechanismus, Dokument, Gebäude, Karte, Pflanze, Landschaft oder physischer Prozess darf Hauptmotiv sein, wenn die Aussage dadurch klarer wird — in derselben Kontur- und Formsprache. Es wird keine Kugelfigur nur zur Dekoration erzwungen.
 
 Nicht Teil der Reel-Bildwelt:
-- Countryballs / Länderbälle
-- Kugelmenschen / Ball-Maskottchen
+- menschliche Köpfe auf Kugelfiguren
+- humanoide Cartoonmenschen als Akteure
 - Stick-Figuren
+- ovale, bohnenförmige oder eiförmige Figurenkörper
 - Fotorealismus
 - Anime/Manga
 - Clay/Knetstil
@@ -44,14 +45,15 @@ Nicht Teil der Reel-Bildwelt:
 - technische Cutaway-/Blueprint-Welt als Standard
 - eigene Unter-Bildwelt für Technik, Flugzeuge, Medizin, Geschichte usw.
 
-Länder, Regierungen und Institutionen werden durch Menschen, Karten, Flaggen, Dokumente oder Gebäude dargestellt — nicht durch Länderbälle.
+Länder, Regierungen und Institutionen werden durch flaggenmarkierte oder neutrale Kugeln mit Karten, Grenzen, Dokumenten oder Gebäuden dargestellt — nicht durch realistische Menschen.
 
 Gestaltung:
 - 9:16, Smartphone-first
-- clean hand-drawn 2D editorial cartoon
-- klare schwarze Konturen
+- sauberer flacher 2D-Vektor-/Comic-Look
+- dicke schwarze Konturen
 - niedrige bis mittlere Detaildichte
-- flächige oder leicht cel-geschattete Farben
+- flächige oder sehr leicht schattierte Farben
+- ruhiger einfarbiger oder sanft texturierter Hintergrund
 - klare, normalerweise helle grafische Beleuchtung
 - eine dominante Kernaussage
 - eine sichtbare Handlung oder Ursache-Folge-Beziehung
@@ -70,7 +72,7 @@ Maschinenlesbare Konfiguration:
 config/image-styles.json
 ```
 
-Es gibt **keinen zweiten Reel-Style-ID und keine Legacy-Countryball-Bildwelt**. Die aktive Reel-ID ist ausschließlich `human-head-editorial-reel`.
+Es gibt **keine zweite Reel-Style-ID und keine Legacy-Menschen-/Köpfe-Bildwelt**. Die aktive Reel-ID ist ausschließlich `modern-countryball-explainer`.
 
 ## Google Flow — nur eine Datei
 

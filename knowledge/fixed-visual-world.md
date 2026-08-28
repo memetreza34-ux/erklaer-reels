@@ -1,8 +1,8 @@
-# Feste Bildwelt — Human Head Editorial Reel
+# Feste Bildwelt — Modern Countryball Explainer
 
 Diese Datei definiert die **eine und einzige verbindliche Reel-Bildwelt** für alle neuen Erklär-Reels.
 
-Style-ID: `human-head-editorial-reel`
+Style-ID: `modern-countryball-explainer`
 
 Es gibt keine zweite Reel-Bildwelt, keine Themen-Unterwelt und keinen wechselnden Stil pro Reel. Das Thema ändert nur den Inhalt der Szene.
 
@@ -12,64 +12,64 @@ Diese Datei gilt ausschließlich für Reels. Die YouTube-Langvideo-Bildwelt unte
 
 Für Reels gilt:
 - 9:16
-- Human Head Editorial Reel
+- Modern Countryball Explainer
 - keine YouTube-Stick-Figuren
 - kein Ink-Explainer-/Longform-Look
 - keine 16:9-Komposition
 
 ## Die eine Reel-Bildwelt
 
-Die Reel-Bildwelt heißt **Human Head Editorial Reel**.
+Die Reel-Bildwelt heißt **Modern Countryball Explainer**.
 
-Die Grundästhetik ist eine klare, handgezeichnete 2D-Editorial-Cartoon-Welt für Kurzvideos. Wenn ein Mensch vorkommt, muss er **eindeutig wie ein stilisierter echter Mensch** aussehen.
+Die Grundästhetik ist eine moderne, minimalistische 2D-Vektor-Comic-Welt für Kurzvideos. Wenn ein Akteur vorkommt, muss er **eindeutig eine runde Kugelfigur** sein.
 
-Die menschliche Kopf- und Gesichtslogik ist der wichtigste Figurenanker:
-- natürliche ovale oder weich gerundete menschliche Kopfform
-- der Kopf darf für Editorial-Lesbarkeit leicht vereinfacht oder etwas betont sein
-- einfache menschliche Augen, Brauen, Nase und Mund
-- einfache Frisur, wenn sinnvoll
-- sichtbarer Hals bei Portrait-/Oberkörperszenen
-- vereinfachter menschlicher Oberkörper und normale vereinfachte Gliedmaßen, wenn sichtbar
-- klare menschliche Kleidung und Körpersprache
+Die Kugelgeometrie ist der wichtigste Figurenanker:
+- exakt runder Kreis bzw. Kugelkörper
+- **kein separater Kopf**, kein Hals, keine Frisur
+- einfache weiße expressive Augen mit schwarzen Pupillen
+- minimale Gesichtselemente, nur wenn sie die Aussage tragen
+- höchstens kleine einfache Arme, Hände oder Füße, wenn eine Handlung sie braucht
+- Flaggen- oder Regionsmuster direkt auf der Kugel, wenn geografische Identität inhaltlich relevant ist
+- sonst neutrale einfarbige Kugeln für Menschen, Gruppen, Institutionen oder abstrakte Akteure
 
-Der Kopf darf **niemals** wie eine Kugel, ein Countryball oder ein rundes Maskottchen wirken.
+Die Kugel darf **niemals** bohnenförmig, oval, eiförmig oder humanoid werden und niemals einen menschlichen Kopf tragen.
 
-## Nicht in jedem Bild muss ein Kopf oder Mensch vorkommen
+## Nicht in jedem Bild muss eine Kugelfigur vorkommen
 
-Ein Reel gehört trotzdem zur gleichen Bildwelt, wenn eine Szene gar keinen Menschen zeigt.
+Ein Reel gehört trotzdem zur gleichen Bildwelt, wenn eine Szene gar keinen Akteur zeigt.
 
 Ein Bild darf zeigen:
-- nur einen menschlichen Kopf / Close-up
-- Portrait mit Kopf und Oberkörper
-- Ganzkörperfigur
-- Hände oder Körperausschnitte
-- mehrere vereinfachte Menschen
-- oder keinen Menschen, wenn ein Objekt, Mechanismus, Gebäude, Dokument, Pflanze, Landschaft oder physischer Prozess die Aussage besser erklärt
+- eine einzelne Kugelfigur
+- eine kleine Gruppe Kugelfiguren
+- Kugelfigur plus Objekt oder Mechanismus
+- eine Karte mit Grenzen, Pfeilen oder Regionen
+- ein Objekt, Dokument, Gebäude oder Werkzeug allein
+- einen physikalischen Prozess oder ein Ursache-Folge-Bild
+- oder gar keinen Akteur, wenn ein Gegenstand die Aussage besser erklärt
 
-Wichtig: **Keinen Menschen dekorativ erzwingen.** Wenn eine Regentropfen-Szene ohne Person klarer ist, bleibt sie trotzdem dieselbe Human-Head-Editorial-Reel-Welt.
+Wichtig: **Keine Kugelfigur dekorativ erzwingen.** Wenn eine Regentropfen-Szene ohne Figur klarer ist, bleibt sie trotzdem dieselbe Modern-Countryball-Explainer-Welt.
+
+Reine Objekte, Mechanismen und Diagramme müssen dieselbe Kontur-, Vereinfachungs- und 2D-Formsprache verwenden wie die Kugelfiguren.
 
 ## Figuren-System
 
-Wenn eine Person sinnvoll ist:
-- eindeutig menschlicher Kopf und Gesicht
-- Hals bei sichtbarem Oberkörper
-- vereinfachte normale menschliche Anatomie
-- Hände und Arme für konkrete Handlungen
-- Kleidung passend zur Situation
-- einfache, gut lesbare Emotion
+Wenn ein Akteur sinnvoll ist:
+- perfekt runder Kugelkörper
+- einfache weiße Augen mit schwarzen Pupillen
+- höchstens kleine Arme, Hände oder Füße für konkrete Handlungen
+- Flagge nur bei echter geografischer Relevanz
+- einfache, gut lesbare Emotion über Augen und Körperhaltung
 
 Nicht verwenden:
-- Countryballs
-- Länderbälle
-- Flaggen auf Kugelfiguren
-- kugelförmige Personen
-- Ball-Maskottchen
+- menschliche Köpfe auf Kugelkörpern
+- humanoide Cartoonmenschen
 - Stick-Figuren
+- ovale, bohnenförmige oder eiförmige Körper
 - fotorealistische Menschen oder Gesichter
 
-Bei Ländern, Regierungen, Institutionen oder historischen Akteuren werden Menschen, Karten, Flaggen, Dokumente, Gebäude oder andere reale Kontextobjekte verwendet — keine Länderbälle.
+Bei Ländern, Regierungen, Institutionen oder historischen Akteuren werden flaggenmarkierte oder neutrale Kugeln zusammen mit Karten, Grenzen, Pfeilen, Dokumenten oder einfachen Gebäuden verwendet — keine realistischen Politikerfiguren.
 
-## Wenn kein Mensch nötig ist
+## Wenn keine Kugelfigur nötig ist
 
 Wenn die Aussage schneller mit einem konkreten Motiv verständlich wird, hat dieses Vorrang, zum Beispiel:
 - Gegenstand
@@ -85,12 +85,13 @@ Objekte brauchen nicht automatisch Augen oder Gesichter.
 ## Gestaltung
 
 - vertikal 9:16, Smartphone-first
-- clean hand-drawn 2D editorial cartoon
-- klare, selbstbewusste schwarze Konturen
+- sauberer flacher 2D-Vektor-/Comic-Look
+- dicke saubere schwarze Konturen
 - einfache gut lesbare Formen
-- flächige oder leicht cel-geschattete Farben
+- flächige oder sehr leicht schattierte Farben
 - dezente weiche Schatten
 - höchstens leichte Papier-/Korntextur
+- ruhiger einfarbiger oder sanft texturierter Hintergrund
 - niedrige bis mittlere Detaildichte
 - eine dominante Kernaussage
 - eine klare sichtbare Handlung oder Ursache-Folge-Beziehung
@@ -103,10 +104,10 @@ Objekte brauchen nicht automatisch Augen oder Gesichter.
 **Erst die konkrete Szene, dann zusätzliche Symbole.**
 
 Ein Bild soll wie ein eingefrorener verständlicher Moment wirken, zum Beispiel:
-- ein menschliches Gesicht reagiert auf einen Geruch
-- eine Person öffnet oder schließt eine Tür
-- ein Arbeiter prüft ein Gerät
-- Verkäufer und Kunde handeln auf einem Markt
+- eine Kugelfigur reagiert sichtbar auf ein Ereignis
+- zwei Kugeln stehen in einem klaren Verhältnis zueinander
+- eine Kugel öffnet oder blockiert einen Weg
+- eine Grenze trennt zwei Regionen auf einer Karte
 - ein Riss entsteht sichtbar an einer Ecke
 - Wasser trifft Boden und löst einen sichtbaren Effekt aus
 - ein Objekt wird durch Gewicht belastet
@@ -115,7 +116,7 @@ Keine dekorative Icon-Sammlung um eine Figur herum.
 
 ## Hintergrund, Licht und Farbe
 
-- Hintergründe einfach und kontextbezogen
+- Hintergründe einfach: ruhiges Farbfeld oder leicht texturierte Fläche
 - Umgebung nur so detailliert wie für die Aussage nötig
 - Licht normalerweise hell, klar und grafisch
 - dunkle cinematic Beleuchtung nur, wenn Nacht oder Dunkelheit selbst zum Inhalt gehören
@@ -126,7 +127,7 @@ Keine dekorative Icon-Sammlung um eine Figur herum.
 
 **Das Thema ändert nie die Bildwelt.**
 
-Flugzeuge, Elektrotechnik, Medizin, Geschichte, Politik, Psychologie, Ernährung, Natur und Alltag verwenden alle dieselbe Human Head Editorial Reel Formsprache.
+Flugzeuge, Elektrotechnik, Medizin, Geschichte, Politik, Psychologie, Ernährung, Natur und Alltag verwenden alle dieselbe Modern Countryball Explainer Formsprache.
 
 Nicht als Standard:
 - technische Cutaways
@@ -156,9 +157,10 @@ Prompts sind Englisch. Sichtbarer Bildtext ist Deutsch.
 
 ## Nicht verwenden
 
-- Countryballs oder Länderbälle
-- Kugelmenschen / Ball-Maskottchen
+- menschliche Köpfe auf Kugelfiguren
+- humanoide Cartoonmenschen als Akteure
 - Stick-Figuren
+- ovale, bohnenförmige oder eiförmige Figurenkörper
 - Fotorealismus
 - realistische Foto-Gesichter
 - Anime/Manga
@@ -183,10 +185,10 @@ Prompts sind Englisch. Sichtbarer Bildtext ist Deutsch.
 Vor der Freigabe jedes Bildes:
 
 1. Ist die Kernaussage sofort verständlich?
-2. Wenn eine Person vorkommt: sieht Kopf, Gesicht und Körper eindeutig wie ein vereinfachter echter Mensch aus?
-3. Wurde kein Countryball-/Kugelmenschen-/Stick-Figure-Look verwendet?
-4. Wenn kein Mensch vorkommt: ist er tatsächlich unnötig und erklärt das Hauptmotiv die Szene klarer?
-5. Bleibt die Szene in derselben Human Head Editorial Reel Formsprache?
+2. Wenn ein Akteur vorkommt: ist sein Körper eine saubere runde Kugel mit einfachen Augen?
+3. Wurde kein menschlicher Kopf, kein humanoider Körper und kein Stick-Figure-Look verwendet?
+4. Wenn keine Kugelfigur vorkommt: ist sie tatsächlich unnötig und erklärt das Hauptmotiv die Szene klarer?
+5. Bleibt die Szene in derselben Modern Countryball Explainer Formsprache?
 6. Wurde keine themenspezifische zweite Bildwelt erzeugt?
 7. Bleibt Reels klar von der YouTube-Bildwelt getrennt?
 

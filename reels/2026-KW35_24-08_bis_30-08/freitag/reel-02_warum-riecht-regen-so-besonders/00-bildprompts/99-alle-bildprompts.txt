@@ -45,21 +45,23 @@ Bild 12.png = Szene 12
 Bild 13.png = Szene 13
 
 GLOBAL REEL STYLE LOCK – MANDATORY FOR EVERY IMAGE
-Use exactly ONE fixed Reel visual world: "Human Head Editorial Reel". Never create or switch to any second visual world during this Reel.
+Use exactly ONE fixed Reel visual world: "Modern Countryball Explainer". Never create or switch to any second visual world during this Reel.
 
 - vertical 9:16, smartphone-first
-- clean hand-drawn 2D editorial cartoon
-- clear confident black outlines
+- clean flat 2D vector cartoon, modern minimalist countryball-inspired style
+- thick confident black outlines
 - simplified readable forms and low-to-medium detail
-- flat or lightly cel-shaded colors, subtle soft shadows
+- flat or very lightly shaded colors, subtle soft shadows
+- calm solid colour background or lightly textured flat colour
 - normally bright, clear and graphic lighting, not cinematic concept art
-- when a PERSON appears, the person must be recognizably HUMAN: a natural oval or softly rounded human head, simple human eyes/brows/nose/mouth, hair when useful, a neck when the upper body is visible, and normal simplified human anatomy
-- the head may be slightly simplified or editorially emphasized, but it must never become a ball, sphere, countryball or mascot orb
-- depending on the scene, show only a head/close-up, portrait, head plus upper body, hands or a full human body; all are allowed
-- a human or head is NOT required in every image; if an object, mechanism, plant, document, landscape or physical process explains the point more clearly, use that instead
-- do NOT add a decorative person just to satisfy the visual style
-- NEVER use countryballs, flag-painted balls, spherical mascot people or stick figures
-- countries, institutions or historical actors must be represented with humans, maps, flags, documents or buildings, never countryballs
+- when an ACTOR appears, it must be a round countryball-style character: a clean perfect circle or sphere body with NO separate head, simple expressive white eyes with black pupils, and at most small simple arms, hands or feet when an action requires them
+- ball bodies must stay geometrically round and must never become bean-shaped, oval, egg-shaped, human-headed or humanoid
+- use flag patterns on the ball only when geographic identity actually matters; otherwise use neutral solid-colour balls
+- an actor is NOT required in every image; if an object, mechanism, plant, document, landscape or physical process explains the point more clearly, use that instead
+- objects shown without a ball character must keep exactly the same thick outline weight, flat colour treatment and simplified 2D shape language
+- do NOT add a decorative ball just to satisfy the visual style
+- NEVER use human heads on ball bodies, humanoid cartoon people or stick figures
+- countries, institutions or historical actors must be represented with flag-marked or neutral balls together with maps, borders, documents or buildings
 - one dominant visual idea and one clear physical action per image
 - only one to three supporting elements
 - the core meaning should be understandable in about one second
@@ -75,7 +77,7 @@ Use exactly ONE fixed Reel visual world: "Human Head Editorial Reel". Never crea
 - no logos, watermarks, pseudo-text, workflow labels, image numbers or filenames inside generated images
 
 LOCAL CONTINUITY LOCK
-Bild 00 establishes the local color treatment, line weight, human-head/face design and text treatment for this Reel. Preserve that exact visual DNA from Bild 01 through Bild 13. Do not create a second visual world later in the sequence. Images without a human must still use the same line weight, palette, texture and simplified editorial drawing language.
+Bild 00 establishes the local color treatment, line weight, ball geometry and text treatment for this Reel. Preserve that exact visual DNA from Bild 01 through Bild 13. Do not create a second visual world later in the sequence. Images without a ball character must still use the same line weight, palette, texture and simplified flat drawing language.
 
 TEXT FIREWALL
 Only the exact German phrase stated for the current image may be visible. If a prompt says “No readable text”, there must be no readable text anywhere.
@@ -83,7 +85,7 @@ Only the exact German phrase stated for the current image may be visible. If a p
 ====================
 BILD 00 – COVER
 ====================
-Create a vertical 9:16 Human Head Editorial Reel cover. Show a simple dry city-park or garden path just as the first raindrops begin to fall. In the foreground, one large raindrop hits a patch of dry brown soil and tiny clean aroma wisps rise from the ground. From the side, show one simplified recognizably human person in rain clothes leaning slightly toward the smell. Give the person a clearly human oval/softly rounded head, simple eyes, eyebrows, nose, mouth and hair under or around the hood, a visible neck where appropriate, and simplified human upper-body/body anatomy. The person may have slightly editorial proportions but must never look like a ball or mascot. Keep the scene bright, simple, bold and immediately readable. Use only a few elements: dry soil, first raindrops, one small plant and the human figure. No technical diagrams.
+Create a vertical 9:16 Modern Countryball Explainer cover. Show a simple dry city-park or garden path just as the first raindrops begin to fall. In the foreground, one large raindrop hits a patch of dry brown soil and tiny clean aroma wisps rise from the ground. From the side, show one round neutral-coloured ball character leaning slightly toward the smell, with simple white expressive eyes and a small pleased look. The ball body must be a clean perfect circle with no separate head, no neck and no hair; small simple arms are allowed. Keep the scene bright, simple, bold and immediately readable. Use only a few elements: dry soil, first raindrops, one small plant and the ball character. No technical diagrams.
 
 Visible text exactly once, large and bold:
 "WARUM RIECHT REGEN SO?"
@@ -95,7 +97,7 @@ After completion: rename exactly to Bild 00.png, place it in 00-FERTIGE-REEL-BIL
 ====================
 BILD 01 – NICHT DAS WASSER
 ====================
-Create a vertical 9:16 scene in the same Human Head Editorial Reel style. Show a clean close-up contrast: transparent raindrops falling toward dry soil, while the smell visibly rises from the ground rather than from the falling water. Make the soil the clear source of the aroma using only a few simple curved scent wisps. No human is needed in this image. Keep the composition minimal and bold and preserve the same linework, palette and texture as Bild 00.
+Create a vertical 9:16 scene in the same Modern Countryball Explainer style. Show a clean close-up contrast: transparent raindrops falling toward dry soil, while the smell visibly rises from the ground rather than from the falling water. Make the soil the clear source of the aroma using only a few simple curved scent wisps. No ball character is needed in this image. Keep the composition minimal and bold and preserve the same linework, palette and texture as Bild 00.
 
 Visible text exactly once:
 "NICHT DAS WASSER"
@@ -107,7 +109,7 @@ After completion: rename exactly to Bild 01.png, place it in the shared folder, 
 ====================
 BILD 02 – NACH TROCKENHEIT
 ====================
-Create a vertical 9:16 scene in the same Human Head Editorial Reel style. Show a simple sun-baked patch of earth after several dry days: small cracks in the soil, dry leaves, one plant, warm daylight. A few subtle stored scent marks rest close to the soil and plant surfaces, but do not turn the image into an infographic. No person is needed. The physical dry environment must tell the story. Preserve the same linework, palette and editorial simplicity as Bild 00.
+Create a vertical 9:16 scene in the same Modern Countryball Explainer style. Show a simple sun-baked patch of earth after several dry days: small cracks in the soil, dry leaves, one plant, warm daylight. A few subtle stored scent marks rest close to the soil and plant surfaces, but do not turn the image into an infographic. No ball character is needed. The physical dry environment must tell the story. Preserve the same linework, palette and editorial simplicity as Bild 00.
 
 Visible text exactly once:
 "NACH TROCKENHEIT"
@@ -119,7 +121,7 @@ After completion: rename exactly to Bild 02.png, place it in the shared folder, 
 ====================
 BILD 03 – GEOSMIN
 ====================
-Create a vertical 9:16 scene in the same Human Head Editorial Reel style. Show a simplified cutaway of one small chunk of dry soil, not a technical blueprint: above ground a tiny plant, below ground a few very simple microbe-like shapes among soil grains. One or two small scent wisps emerge upward from the soil. Keep the underground area simple and cartoon-like with very low detail. No person is needed.
+Create a vertical 9:16 scene in the same Modern Countryball Explainer style. Show a simplified cutaway of one small chunk of dry soil, not a technical blueprint: above ground a tiny plant, below ground a few very simple microbe-like shapes among soil grains. One or two small scent wisps emerge upward from the soil. Keep the underground area simple and cartoon-like with very low detail. No ball character is needed.
 
 Visible text exactly once:
 "GEOSMIN"
@@ -131,7 +133,7 @@ After completion: rename exactly to Bild 03.png, place it in the shared folder, 
 ====================
 BILD 04 – LUFTBLÄSCHEN
 ====================
-Create a vertical 9:16 macro-style cartoon scene in the same Human Head Editorial Reel visual world. Show one large raindrop just hitting porous dry soil. Directly under the center of the droplet, one small trapped air bubble is clearly visible. Keep the physics visually simple: soil, droplet, one bubble. No person, labels, arrows or engineering diagram.
+Create a vertical 9:16 macro-style cartoon scene in the same Modern Countryball Explainer visual world. Show one large raindrop just hitting porous dry soil. Directly under the center of the droplet, one small trapped air bubble is clearly visible. Keep the physics visually simple: soil, droplet, one bubble. No ball character, labels, arrows or engineering diagram.
 
 Visible text exactly once:
 "LUFTBLÄSCHEN"
@@ -143,7 +145,7 @@ After completion: rename exactly to Bild 04.png, place it in the shared folder, 
 ====================
 BILD 05 – WINZIGE TRÖPFCHEN
 ====================
-Create a vertical 9:16 continuation in the same Human Head Editorial Reel style. Show the trapped bubble rising through the raindrop and bursting at the top, throwing a small spray of tiny aerosol droplets upward. Make the burst the dominant physical action. Keep it clean, simple and readable, with no person and no scientific interface graphics.
+Create a vertical 9:16 continuation in the same Modern Countryball Explainer style. Show the trapped bubble rising through the raindrop and bursting at the top, throwing a small spray of tiny aerosol droplets upward. Make the burst the dominant physical action. Keep it clean, simple and readable, with no ball character and no scientific interface graphics.
 
 Visible text exactly once:
 "WINZIGE TRÖPFCHEN"
@@ -155,7 +157,7 @@ After completion: rename exactly to Bild 05.png, place it in the shared folder, 
 ====================
 BILD 06 – DUFT IN DER LUFT
 ====================
-Create a vertical 9:16 scene in the same Human Head Editorial Reel style. Show several tiny aerosol droplets drifting upward from freshly hit soil after the first rain. A few soft aroma wisps travel with them into the air. Use a simple outdoor background with one plant and light rain. The movement from ground to air must be instantly clear. No person is needed.
+Create a vertical 9:16 scene in the same Modern Countryball Explainer style. Show several tiny aerosol droplets drifting upward from freshly hit soil after the first rain. A few soft aroma wisps travel with them into the air. Use a simple outdoor background with one plant and light rain. The movement from ground to air must be instantly clear. No ball character is needed.
 
 Visible text exactly once:
 "DUFT IN DER LUFT"
@@ -167,7 +169,7 @@ After completion: rename exactly to Bild 06.png, place it in the shared folder, 
 ====================
 BILD 07 – UNSERE NASE MERKT ES
 ====================
-Create a vertical 9:16 scene in the same Human Head Editorial Reel style. Show a recognizably human person in profile outdoors after the first rain, noticing the smell with a surprised, pleasant expression. Emphasize the human head/face clearly: natural oval or softly rounded head, visible human nose, eyes, eyebrows, mouth and simple hair, with neck and upper body in normal simplified human anatomy. A few clean aroma wisps travel from the wet soil toward the person’s nose. The person must never look like a ball, mascot or stick figure.
+Create a vertical 9:16 scene in the same Modern Countryball Explainer style. Show one round neutral-coloured ball character outdoors after the first rain, noticing the smell with a surprised, pleasant expression carried entirely by the simple white eyes and a slight tilt of the whole ball. Keep the body a clean perfect circle with no separate head, no nose and no hair. A few clean aroma wisps travel from the wet soil toward the ball character. Small simple arms are allowed if they help show the reaction.
 
 Visible text exactly once:
 "UNSERE NASE MERKT ES"
@@ -179,7 +181,7 @@ After completion: rename exactly to Bild 07.png, place it in the shared folder, 
 ====================
 BILD 08 – PFLANZENÖLE
 ====================
-Create a vertical 9:16 scene in the same Human Head Editorial Reel style. Show a close-up of a dry leaf, a small rock and dry soil after a long dry period. Use a few subtle shiny droplets or residue marks resting naturally on the plant and surface to suggest plant oils. The image must still look like a physical scene, not a chemistry chart. No person is needed.
+Create a vertical 9:16 scene in the same Modern Countryball Explainer style. Show a close-up of a dry leaf, a small rock and dry soil after a long dry period. Use a few subtle shiny droplets or residue marks resting naturally on the plant and surface to suggest plant oils. The image must still look like a physical scene, not a chemistry chart. No ball character is needed.
 
 Visible text exactly once:
 "PFLANZENÖLE"
@@ -191,7 +193,7 @@ After completion: rename exactly to Bild 08.png, place it in the shared folder, 
 ====================
 BILD 09 – PETRICHOR
 ====================
-Create a vertical 9:16 scene in the same Human Head Editorial Reel style. Show the first gentle rain over a simple garden path or patch of soil. Aroma wisps rise from the ground while a small plant, wet stones and a few raindrops create a clean recognizable rainy scene. Make this feel like the payoff: the familiar fresh-earth smell has formed. No person is needed.
+Create a vertical 9:16 scene in the same Modern Countryball Explainer style. Show the first gentle rain over a simple garden path or patch of soil. Aroma wisps rise from the ground while a small plant, wet stones and a few raindrops create a clean recognizable rainy scene. Make this feel like the payoff: the familiar fresh-earth smell has formed. No ball character is needed.
 
 Visible text exactly once, bold:
 "PETRICHOR"
@@ -203,7 +205,7 @@ After completion: rename exactly to Bild 09.png, place it in the shared folder, 
 ====================
 BILD 10 – LEICHTER REGEN
 ====================
-Create a vertical 9:16 scene in the same Human Head Editorial Reel style. Show gentle, separated raindrops landing on dry-to-damp soil and several small aerosol sprays rising. Keep the rain light and the aerosol release clearly visible. Use a simple bright-gray sky and a small patch of earth; no storm drama and no person needed.
+Create a vertical 9:16 scene in the same Modern Countryball Explainer style. Show gentle, separated raindrops landing on dry-to-damp soil and several small aerosol sprays rising. Keep the rain light and the aerosol release clearly visible. Use a simple bright-gray sky and a small patch of earth; no storm drama and no ball character needed.
 
 Visible text exactly once:
 "LEICHTER REGEN"
@@ -215,7 +217,7 @@ After completion: rename exactly to Bild 10.png, place it in the shared folder, 
 ====================
 BILD 11 – STARKER REGEN
 ====================
-Create a vertical 9:16 scene in the same Human Head Editorial Reel style. Show the same kind of soil now completely wet under much heavier rain. The ground is saturated and there are noticeably fewer aroma wisps or aerosol sprays than in the previous image. Keep the comparison understandable through the physical scene, not through charts or arrows. No person is needed.
+Create a vertical 9:16 scene in the same Modern Countryball Explainer style. Show the same kind of soil now completely wet under much heavier rain. The ground is saturated and there are noticeably fewer aroma wisps or aerosol sprays than in the previous image. Keep the comparison understandable through the physical scene, not through charts or arrows. No ball character is needed.
 
 Visible text exactly once:
 "STARKER REGEN"
@@ -227,7 +229,7 @@ After completion: rename exactly to Bild 11.png, place it in the shared folder, 
 ====================
 BILD 12 – ERSTE TROPFEN
 ====================
-Create a vertical 9:16 scene in the same Human Head Editorial Reel style. Show a recognizably human person stepping outside after several dry days just as the first raindrops hit a dusty path. Give the person a clearly human head and face with natural oval/softly rounded head shape, eyes, brows, nose, mouth and simple hair, plus neck, torso, arms and legs in normal simplified human anatomy. The person pauses and notices the scent rising from the ground. Keep the moment relatable and immediately understandable; never use a ball-shaped mascot or stick figure.
+Create a vertical 9:16 scene in the same Modern Countryball Explainer style. Show one round neutral-coloured ball character stepping outside through a simple doorway after several dry days, just as the first raindrops hit a dusty path. Keep the body a clean perfect circle with simple white eyes and small simple arms and feet for the stepping motion. The ball character pauses and notices the scent rising from the ground. Keep the moment relatable and immediately understandable; never give the ball a separate human head, hair or face.
 
 Visible text exactly once:
 "ERSTE TROPFEN"
@@ -239,7 +241,7 @@ After completion: rename exactly to Bild 12.png, place it in the shared folder, 
 ====================
 BILD 13 – FINAL
 ====================
-Create a vertical 9:16 final scene in the same Human Head Editorial Reel style. Show a calm close view of the first rain touching dry earth, with a small green plant, a few fresh droplets and clean aroma wisps rising. In the background, show a simplified recognizably human person enjoying the smell, with a clearly human head/face, neck and simplified human body rather than a ball mascot. Keep the image bright, satisfying and minimal, with the same line weight, face logic and color treatment as Bild 00.
+Create a vertical 9:16 final scene in the same Modern Countryball Explainer style. Show a calm close view of the first rain touching dry earth, with a small green plant, a few fresh droplets and clean aroma wisps rising. In the background, show one round neutral-coloured ball character enjoying the smell, with simple white content eyes and a clean perfect circle body. Keep the image bright, satisfying and minimal, with the same line weight, ball geometry and color treatment as Bild 00.
 
 Visible text exactly once, bold:
 "JETZT RIECHST DU'S"
@@ -254,9 +256,9 @@ Nach Bild 13:
 - keine Nummer darf fehlen
 - alle 14 Dateien müssen im selben Ordner 00-FERTIGE-REEL-BILDER liegen
 - alle Bilder müssen 9:16 sein
-- alle Bilder müssen dieselbe und einzige Human Head Editorial Reel Bildwelt verwenden
-- wenn Menschen vorkommen, müssen Kopf, Gesicht und Körper eindeutig menschlich aussehen; keine Countryballs, Kugelmenschen oder Stick-Figuren
-- ein Mensch muss nicht in jedem Bild vorkommen und darf nicht dekorativ erzwungen werden
+- alle Bilder müssen dieselbe und einzige Modern Countryball Explainer Bildwelt verwenden
+- wenn Akteure vorkommen, müssen sie exakt runde Kugelfiguren mit einfachen weißen Augen sein; keine menschlichen Köpfe, humanoiden Figuren oder Stick-Figuren
+- eine Kugelfigur muss nicht in jedem Bild vorkommen und darf nicht dekorativ erzwungen werden
 - keine spätere Szene darf eine zweite technische, realistische, themenspezifische oder cinematic Bildwelt entwickeln
 - sichtbarer Text muss pro Bild exakt der Vorgabe entsprechen
 

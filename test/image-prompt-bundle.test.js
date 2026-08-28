@@ -9,6 +9,7 @@ import {
   ensureImagePromptBundleDirectory,
   validateImagePromptBundle
 } from '../src/core/image-prompt-bundle.js';
+import { FIXED_VISUAL_WORLD_LABEL } from '../src/shared/fixed-visual-world.js';
 
 async function writeJson(filePath, value) {
   await mkdir(path.dirname(filePath), { recursive: true });
@@ -64,8 +65,9 @@ test('README erklärt genau eine Google-Flow-Masterdatei', async () => {
   assert.match(readme, /genau \*\*eine\*\* verbindliche Masterdatei/i);
   assert.match(readme, /99-alle-bildprompts\.txt/);
   assert.match(readme, /keine zweite Spiegelkopie/i);
-  assert.match(readme, /Human Editorial Explainer/i);
-  assert.match(readme, /Countryballs.*nicht Teil/i);
+  assert.ok(readme.includes(FIXED_VISUAL_WORLD_LABEL));
+  assert.match(readme, /runde Kugelfiguren/i);
+  assert.match(readme, /Stick-Figuren sind nicht Teil/i);
 });
 
 test('exportiert nur den einen seriellen Gesamtprompt im sichtbaren Bildprompt-Ordner', async () => {
@@ -82,10 +84,10 @@ test('exportiert nur den einen seriellen Gesamtprompt im sichtbaren Bildprompt-O
   assert.equal(await exists(path.join(root, 'all-image-prompts')), false);
   assert.match(bundle, /^GOOGLE FLOW – KOMPLETTER SERIELLER BILDLAUF/);
   assert.match(bundle, /STRENG SERIELL – NIE PARALLEL/);
-  assert.match(bundle, /VERBINDLICHE EINE REEL-BILDWELT – HUMAN EDITORIAL EXPLAINER/);
-  assert.match(bundle, /recognizably HUMAN/i);
-  assert.match(bundle, /never as a ball, sphere, countryball or stick figure/i);
-  assert.match(bundle, /A human is NOT mandatory in every image/i);
+  assert.ok(bundle.includes(`VERBINDLICHE EINE REEL-BILDWELT – ${FIXED_VISUAL_WORLD_LABEL.toUpperCase()}`));
+  assert.match(bundle, /round countryball-style character/i);
+  assert.match(bundle, /never bean-shaped, oval, egg-shaped, human-headed or humanoid/i);
+  assert.match(bundle, /An actor is NOT mandatory in every image/i);
   assert.match(bundle, /FIXED VISUAL STYLE FOR THIS IMAGE — MANDATORY:/);
   assert.match(bundle, /DATEINAME NACH FERTIGSTELLUNG: Bild 03\.png/);
   assert.equal(result.controllerFile, null);
@@ -93,14 +95,14 @@ test('exportiert nur den einen seriellen Gesamtprompt im sichtbaren Bildprompt-O
   assert.equal(result.sceneCount, 3);
   assert.equal(result.plannedImageCount, 4);
   assert.equal(result.totalPromptCount, 5);
-  assert.equal(result.visualWorldLabel, 'Human Editorial Explainer');
+  assert.equal(result.visualWorldLabel, FIXED_VISUAL_WORLD_LABEL);
 
   const validation = await validateImagePromptBundle(root);
   assert.equal(validation.passed, true);
   assert.equal(validation.filePresent, true);
   assert.equal(validation.technicalMirrorPresent, false);
   assert.equal(validation.individualPromptFiles.length, 0);
-  assert.match(validation.message, /Human Editorial Explainer/);
+  assert.ok(validation.message.includes(FIXED_VISUAL_WORLD_LABEL));
 });
 
 test('blockiert fehlende Prompts im strengen Modus', async () => {

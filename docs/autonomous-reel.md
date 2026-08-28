@@ -48,26 +48,25 @@ npm run create:reel -- \
 
 Die 13 sind **narrative Szenen**, nicht automatisch 13 Bilder.
 
-Neue Reels verwenden automatisch Quellen-Schema 3 und starten aktuell ohne feste Bildwelt:
+Neue Reels verwenden automatisch Quellen-Schema 3 und die eine feste Bildwelt:
 
 ```text
-visualStyleId = null
-visualStyleReason = ""
+visualStyleId = "modern-countryball-explainer"
+visualStyleReason = "Globale feste Bildwelt für alle neuen Erklär-Reels: moderner minimalistischer Countryball-Erklärstil."
 ```
 
-### 5. Keine alte Bildwelt übernehmen
+### 5. Keine zweite Bildwelt einführen
 
-Bis der Nutzer ausdrücklich eine neue Bildwelt definiert, keine frühere Stilwelt autonom auswählen oder aus historischen Reels ableiten.
+Die Bildwelt wird nicht pro Thema gewählt und nicht zwischen Reels rotiert. Verbindliche Style-Bibel: `knowledge/fixed-visual-world.md`.
 
-Nicht automatisch aktivieren:
+Nicht autonom aktivieren:
 
-- `round-country-characters`
-- Countryball-/Kugel-Regeln
-- Golden References
-- `human-editorial-cartoon`
-- `visual-metaphor`
-- feste Figuren-Geometrie
-- feste Farbpalette oder Papiertextur
+- `round-country-characters` (abgeschaltet)
+- `human-editorial-cartoon` (abgeschaltet)
+- `human-head-editorial-reel` (abgeschaltet)
+- `visual-metaphor` (abgeschaltet)
+- themenspezifische Unter-Bildwelten
+- die separate YouTube-Bildwelt
 - alten Premium-Editorial-Look
 
 Historische Reels sind Archivmaterial.
