@@ -148,10 +148,10 @@ all-image-prompts/all-image-prompts.txt
 Flow arbeitet streng seriell:
 
 ```text
-Bild erzeugen → vollständig warten → gegen aktuellen Prompt UND feste Bildwelt prüfen → umbenennen → nächstes Bild
+Bild erzeugen → vollständig warten → gegen aktuellen Prompt UND feste Bildwelt prüfen → umbenennen → in den gemeinsamen Ausgabeordner legen → Ablage prüfen → nächstes Bild
 ```
 
-Keine Queue, kein Batch und keine Parallelgenerierung.
+Keine Queue, kein Batch und keine Parallelgenerierung. Alle fertigen, korrekt als `Bild 00.png`, `Bild 01.png` usw. benannten Bilder bleiben gemeinsam in genau einem Ausgabeordner des Flow-Laufs. Für den Repo-Import kommen sie gesammelt nach `00-bildprompts/00-ALLE-BILDER-HIER-REIN/`.
 
 Danach bezeichnet die Nummer die **globale Bildreihenfolge**. Sie entspricht bei mehreren Bildphasen nicht automatisch der Szenennummer.
 
@@ -168,16 +168,15 @@ reel-01_thema/
 ├── 00-bildprompts/
 ├── 01-voice-script/
 ├── 02-audio/
-├── 03-caption/
-├── 04-video/
+├── 03-export/
+│   ├── FERTIGES-REEL.mp4
+│   └── UNIVERSELLE-CAPTION.txt
 └── 99-technik/
 ```
 
-Finales Video:
+`03-export/` ist der einzige sichtbare finale Upload-Bereich. Es gibt keinen separaten sichtbaren Caption- oder Video-Ordner mehr.
 
-```text
-04-video/FERTIGES-VIDEO/
-```
+Die Universal-Caption ist eine zum konkreten Reel passende, plattformneutrale Copy-Paste-Caption für die unterstützten Kurzvideo-Social-Media-Accounts. Die verbindlichen Caption-Regeln stehen in `UNIVERSAL_CAPTION_POLICY.md`.
 
 ## Fehlende Assets suchen
 
