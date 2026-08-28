@@ -7,53 +7,78 @@
   "styles": [
     {
       "id": "modern-countryball-explainer",
-      "name": "Editorial Countryball Explainer",
+      "name": "Clarity-First Editorial Reel",
       "active": true,
       "scope": "all-new-reels-all-topics",
       "promptLanguage": "en",
       "visibleTextLanguage": "de",
-      "description": "Szenischer Editorial-Countryball-Erklärstil für 9:16-Reels: konkrete Mini-Szenen, dicke organische Konturen, hand-drawn 2D vector-cartoon hybrid, klare physische Metaphern und kurzer deutscher Bildtext statt steriler Icon-/Kartenlayouts.",
+      "description": "Clarity-first 9:16 Reel-Bildwelt: einfache szenische 2D-Editorial-Cartoons mit dicken schwarzen Konturen, niedriger bis mittlerer Detaildichte, einer sofort lesbaren Hauptidee und optionalen Countryball-, Objekt- oder einfachen Cartoonfiguren.",
       "characterSystem": {
-        "defaultActor": "scene-dependent-countryball-or-concrete-object",
+        "defaultActor": "choose-clearest-simple-actor-for-the-idea",
+        "allowedActorTypes": [
+          "simple-cartoon-person",
+          "anthropomorphic-object",
+          "concrete-object-or-mechanism",
+          "countryball-like-character",
+          "small-simple-group"
+        ],
         "countryFlagOnlyWhenSemanticallyRelevant": true,
+        "countryballMandatory": false,
         "neutralBallForGeneralTopics": false,
         "preferConcreteObjectOrEnvironmentForAbstractTopics": true,
-        "eyes": "simple-white-expressive-eyes-with-black-outline",
+        "eyes": "simple-white-expressive-eyes-with-black-outline-when-ball-character-is-used",
         "mouth": "optional-only-when-needed",
         "limbs": "minimal-only-when-action-needs-them"
       },
       "rendering": {
         "dimension": "2d",
-        "look": "hand-drawn-vector-cartoon-hybrid",
+        "look": "clean-hand-drawn-editorial-cartoon",
         "outlines": "thick-slightly-organic-black",
-        "shadows": "subtle-soft-cel-like",
-        "texture": "very-light-paper-or-grain",
+        "detailDensity": "low-to-medium",
+        "colors": "flat-or-lightly-cel-shaded-readable",
+        "shadows": "subtle-soft",
+        "texture": "none-or-very-light-paper-grain",
+        "lightingDefault": "clear-graphic-not-cinematic",
         "photorealism": false,
         "glossy3d": false,
-        "sterileVectorInfographic": false
+        "sterileVectorInfographic": false,
+        "painterlyConceptArt": false
       },
       "composition": {
         "aspectRatio": "9:16",
         "smartphoneFirst": true,
         "sceneFirst": true,
+        "clarityFirst": true,
         "oneClearMoment": true,
         "oneDominantFocalSubject": true,
         "supportingPropsMax": 3,
         "simpleDepthAllowed": true,
         "offCenterFramingAllowed": true,
         "closeUpsAllowed": true,
-        "environmentalWideShotsAllowed": true,
+        "simpleWideShotsAllowed": true,
         "fullFrame": true,
         "noSubtitleSafeZone": true,
         "avoidMultiPanel": true,
         "avoidRepeatedCenteredTemplate": true,
-        "understandableWithinSeconds": 1
+        "understandableWithinSeconds": 1,
+        "simplifyWhenMeaningRequiresStudy": true
       },
       "background": {
-        "type": "contextual-simple-environment-or-strong-textured-color-field",
+        "type": "simple-contextual-environment-or-strong-color-field",
         "colorMayVaryByScene": true,
         "simpleContextualSceneryPreferredWhenUseful": true,
-        "complexRealisticScenery": false
+        "realisticDetailedInteriorDefault": false,
+        "complexRealisticScenery": false,
+        "darkCinematicLightingDefault": false
+      },
+      "topicAdaptation": {
+        "topicMayChangeSubjectMatter": true,
+        "topicMayChangeVisualWorld": false,
+        "technicalCutawayDefault": false,
+        "engineeringSchematicDefault": false,
+        "blueprintDefault": false,
+        "technicalDetailAllowedOnlyWhenRequiredByExplanation": true,
+        "technicalDetailMustRemainSimplified": true
       },
       "visibleText": {
         "language": "de",
@@ -61,8 +86,8 @@
           "min": 1,
           "max": 5
         },
-        "style": "bold-high-contrast-sans-serif-often-uppercase",
-        "preferredPlacement": "lower-third-or-naturally-integrated",
+        "style": "bold-high-contrast-high-readability",
+        "preferredPlacement": "composition-dependent",
         "exactOnly": true,
         "noTextWhenUnrequested": true,
         "neverDuplicateSameHeadlineTopAndBottom": true
@@ -76,8 +101,12 @@
         "clay-style",
         "glossy-3d",
         "cinematic-photorealism",
+        "painterly-concept-art",
         "stock-photo-aesthetic",
         "complex-realistic-scenery",
+        "highly-detailed-interiors-as-default",
+        "technical-cutaway-world-as-default",
+        "engineering-blueprint-world-as-default",
         "generic-icon-collage",
         "generic-floating-reaction-cards",
         "generic-praise-criticism-cards",
@@ -96,7 +125,7 @@
       ]
     }
   ],
-  "selectionRule": "Für jedes neue Reel und jedes Thema muss ausschließlich modern-countryball-explainer verwendet werden. Zuerst eine konkrete physische Mini-Szene mit Handlung und Kontext bauen; erst danach Symbole ergänzen. Countryballs nur wenn ein Akteur personifiziert werden muss, Flaggen nur bei relevanter geografischer Identität. Bei abstrakten Allgemeinthemen konkrete Objekte, Mechanismen oder Umgebungen einer neutralen leeren Kugel vorziehen. Generische Karten-, Sprechblasen- und Icon-Layouts sind keine Standardlösung.",
+  "selectionRule": "Für jedes neue Reel und jedes Thema muss ausschließlich modern-countryball-explainer verwendet werden, ausgeführt als Clarity-First Editorial Reel. Zuerst die eine Kernaussage bestimmen, dann eine einfache physische Mini-Szene, einen direkten Kontrast oder eine klare Metapher bauen. Countryballs sind optional und vor allem für Länder, Regionen, Institutionen, Gruppen oder gesellschaftliche Akteure geeignet. Bei Alltag, Technik, Gesundheit, Wissenschaft oder anderen Allgemeinthemen die jeweils klarste einfache Person, das klarste Objekt, den klarsten Mechanismus oder die klarste Umgebung wählen. Das Thema darf niemals eine neue technische oder cinematic Unter-Bildwelt erzeugen.",
   "goldenReferencePaths": [],
   "styleBiblePath": "knowledge/fixed-visual-world.md",
   "diversityRule": {
@@ -104,20 +133,21 @@
     "avoidImmediateRepeat": true,
     "forcedRotation": false,
     "fixedVisualWorldOverridesDiversity": true,
-    "guidance": "Die Formsprache bleibt fest, aber Perspektive, Szene, Umgebung, Metapher, Hauptmotiv und Hintergrund dürfen deutlich variieren. Vermeide wiederholte centered-character-plus-icons-Kompositionen."
+    "guidance": "Die Formsprache bleibt fest, aber Hauptmotiv, Perspektive, Szene, Metapher und Hintergrund dürfen variieren. Abwechslung darf nie auf Kosten der 1-Sekunden-Verständlichkeit gehen."
   },
   "selectionCriteria": [
     "1-Sekunden-Verständlichkeit",
-    "konkreter Story-Moment statt Icon-Board",
-    "Cover-und-Hook-Stärke",
-    "visuelle Klarheit",
-    "abwechslungsreiche Komposition innerhalb derselben Bildwelt",
+    "eine dominante Kernaussage",
+    "einfache physische Szene oder klare Metapher statt Icon-Board",
+    "niedrige bis mittlere Detaildichte",
+    "starke Social-Media-Lesbarkeit",
+    "keine themenbedingte technische Unter-Bildwelt",
     "klare Trennung von der YouTube-Bildwelt",
-    "Übereinstimmung mit modern-countryball-explainer"
+    "Übereinstimmung mit modern-countryball-explainer als Clarity-First Editorial Reel"
   ],
   "crossStyleTextRule": {
     "preferred": true,
     "language": "de",
-    "guidance": "Wo es die Aussage verbessert, integriere sehr kurzen deutschen Bildtext. Ein einzelnes Wort oder 1–5 Wörter reichen. Sichtbarer Text ist ausschließlich Deutsch; Prompts bleiben Englisch. Nicht in jede Szene zwingen; Untertitel bleiben deaktiviert; dieselbe Headline nie oben und unten doppeln."
+    "guidance": "Wo es die Aussage verbessert, integriere sehr kurzen deutschen Bildtext. Ein einzelnes Wort oder 1–5 Wörter reichen. Sichtbarer Text ist ausschließlich Deutsch; Prompts bleiben Englisch. Text nicht erzwingen und dieselbe Headline nie doppeln."
   }
 }
