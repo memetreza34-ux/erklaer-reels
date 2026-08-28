@@ -35,7 +35,7 @@ Die Themenwahl ist offen. Hook, Aha-Moment, Faktentreue, visuelle Klarheit, Abwe
 
 ## 2. Reels und YouTube bleiben vollständig getrennt
 
-Für Reels gilt ausschließlich die Bildwelt **Human Editorial Explainer**.
+Für Reels gilt ausschließlich **eine** Bildwelt: **Human Head Editorial Reel** (`human-head-editorial-reel`).
 
 Verbindliche Reel-Quellen:
 - `knowledge/fixed-visual-world.md`
@@ -48,19 +48,20 @@ Für YouTube gelten ausschließlich:
 
 YouTube-Stick-Figuren/16:9 dürfen nicht auf Reels übertragen werden. Reel-Regeln dürfen nicht auf YouTube übertragen werden.
 
-## 3. Eine einzige Reel-Bildwelt: Human Editorial Explainer
+## 3. Eine einzige Reel-Bildwelt: Human Head Editorial Reel
 
 Es gibt **keine mehreren Reel-Welten und keine themenspezifischen Unter-Bildwelten**.
 
 Wenn eine Person sinnvoll ist, zeigt das Bild einen vereinfachten, eindeutig erkennbaren **echten Menschen**:
-- natürliche ovale oder leicht runde menschliche Kopfform
+- natürliche ovale oder weich gerundete menschliche Kopfform
+- Kopf darf editorial leicht betont sein, bleibt aber eindeutig menschlich
 - Hals und Oberkörper bei Portrait-/Oberkörperszenen
 - vereinfachte normale menschliche Körperproportionen
 - einfache Augen, Brauen, Nase, Mund und Haare, wenn passend
-- Kopf/Portrait, Oberkörper, Hände oder Ganzkörper je nach Szene
+- Kopf/Close-up, Portrait, Oberkörper, Hände oder Ganzkörper je nach Szene
 - klare menschliche Körpersprache und Kleidung
 
-Ein Mensch ist **nicht in jedem Bild Pflicht**. Wenn ein Gegenstand, Mechanismus, Dokument, Gebäude, Pflanze, Landschaft oder physischer Prozess die Aussage klarer erklärt, darf dieses Motiv alleine verwendet werden.
+Ein Mensch oder Kopf ist **nicht in jedem Bild Pflicht**. Wenn ein Gegenstand, Mechanismus, Dokument, Gebäude, Pflanze, Landschaft oder physischer Prozess die Aussage klarer erklärt, darf dieses Motiv alleine verwendet werden. Es wird kein Mensch nur zur Dekoration erzwungen.
 
 Verboten in Reels:
 - Countryballs / Länderbälle
@@ -134,7 +135,7 @@ Für jedes Bild:
 1. nur aktuellen Bildabschnitt verwenden
 2. genau einen Bildgenerator-Aufruf starten
 3. vollständig warten
-4. Inhalt + Human Editorial Explainer prüfen
+4. Inhalt + Human Head Editorial Reel prüfen
 5. bei Fehler nur dasselbe Bild neu erzeugen
 6. `Bild NN.png` exakt umbenennen
 7. sofort in den gemeinsamen Reel-Ordner legen
@@ -179,10 +180,11 @@ Neue Reels brauchen mindestens zwei echte HTTPS-Quellen mit unterschiedlichen Ho
 Bild-QC prüft:
 - konkrete Narration und Bildphase
 - sichtbaren deutschen Text
-- Human Editorial Explainer
+- Human Head Editorial Reel
 - eindeutig menschliche Figur, wenn eine Person vorkommt
+- kein Mensch dekorativ erzwungen, wenn Objekt/Mechanismus klarer ist
 - keine Countryballs/Kugelmenschen/Stick-Figuren
-- keine unerlaubte technische oder cinematic Unter-Bildwelt
+- keine unerlaubte technische, themenspezifische oder cinematic Unter-Bildwelt
 - 9:16
 - keine ungeplanten Texte/Logos/Wasserzeichen
 
