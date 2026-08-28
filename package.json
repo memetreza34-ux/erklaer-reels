@@ -24,7 +24,7 @@
     "legacy:sync:words": "node src/cli/sync-words.js",
     "render:reel": "node src/cli/render-reel.js",
     "studio": "remotion studio src/renderer/index.jsx",
-    "test": "node --test",
+    "test": "node --test test/*.test.js",
     "hooks:install": "git config core.hooksPath scripts/hooks",
     "prepare": "git config core.hooksPath scripts/hooks || true"
   },
