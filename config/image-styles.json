@@ -1,24 +1,24 @@
 {
   "visualWorldMode": "fixed",
-  "fixedVisualWorld": "modern-countryball-explainer",
+  "fixedVisualWorld": "human-head-editorial-reel",
   "newReelAllowedStyleIds": [
-    "modern-countryball-explainer"
+    "human-head-editorial-reel"
   ],
   "styles": [
     {
-      "id": "modern-countryball-explainer",
-      "name": "Human Editorial Explainer",
+      "id": "human-head-editorial-reel",
+      "name": "Human Head Editorial Reel",
       "active": true,
       "scope": "all-new-reels-all-topics",
-      "legacyIdOnly": true,
       "promptLanguage": "en",
       "visibleTextLanguage": "de",
-      "description": "Eine einzige feste 9:16-Reel-Bildwelt mit vereinfachten echten Menschen als Standardfiguren, klaren 2D-Editorial-Szenen, niedriger bis mittlerer Detaildichte und sofort lesbarer Kernaussage. Countryballs und Kugelmenschen sind nicht Teil der aktiven Bildwelt.",
+      "description": "Genau eine feste 9:16-Reel-Bildwelt. Wenn Menschen vorkommen, sind es vereinfachte, eindeutig menschliche Figuren mit klarer menschlicher Kopf- und Körperlogik. Ein Kopf oder Mensch ist nicht in jedem Bild Pflicht; Objekte, Mechanismen und Umgebungen dürfen die Szene tragen, wenn sie die Aussage besser erklären.",
       "characterSystem": {
-        "defaultActor": "simplified-recognizably-human-person",
+        "defaultActor": "simplified-recognizably-human-person-when-human-is-useful",
+        "characterAnchor": "recognizable-human-head-and-face",
         "allowedActorTypes": [
           "human-head-or-portrait",
-          "human-upper-body",
+          "human-head-and-upper-body",
           "human-full-body",
           "human-hands-or-body-detail",
           "small-human-group",
@@ -26,10 +26,12 @@
           "simple-contextual-environment"
         ],
         "humanNotMandatoryWhenObjectIsClearer": true,
+        "doNotForceDecorativeHuman": true,
         "recognizablyHumanRequiredWhenPersonAppears": true,
-        "humanHeadShape": "natural-oval-or-rounded-not-spherical-mascot",
-        "humanBody": "simplified-normal-human-proportions",
-        "humanFace": "simple-eyes-brows-nose-mouth-and-optional-hair",
+        "humanHeadShape": "natural-oval-or-softly-rounded-human-head-not-sphere",
+        "humanHeadMayBeEditoriallyEmphasized": true,
+        "humanBody": "simplified-normal-human-anatomy-with-neck-and-limbs-when-visible",
+        "humanFace": "simple-human-eyes-brows-nose-mouth-and-optional-hair",
         "countryballCharactersForbidden": true,
         "flagPaintedBallCharactersForbidden": true,
         "sphericalMascotPeopleForbidden": true,
@@ -38,7 +40,7 @@
       },
       "rendering": {
         "dimension": "2d",
-        "look": "clean-hand-drawn-human-editorial-cartoon",
+        "look": "clean-hand-drawn-human-head-editorial-cartoon",
         "outlines": "clear-confident-black",
         "detailDensity": "low-to-medium",
         "colors": "flat-or-lightly-cel-shaded-readable",
@@ -58,9 +60,11 @@
         "oneClearMoment": true,
         "oneDominantFocalSubject": true,
         "supportingPropsMax": 3,
+        "headCloseUpAllowed": true,
         "portraitAllowed": true,
         "upperBodyAllowed": true,
         "fullBodyAllowed": true,
+        "objectOnlySceneAllowed": true,
         "closeUpsAllowed": true,
         "offCenterFramingAllowed": true,
         "simpleDepthAllowed": true,
@@ -83,6 +87,7 @@
       "topicAdaptation": {
         "topicMayChangeSubjectMatter": true,
         "topicMayChangeVisualWorld": false,
+        "topicSpecificSubWorldsForbidden": true,
         "technicalCutawayDefault": false,
         "engineeringSchematicDefault": false,
         "blueprintDefault": false,
@@ -108,7 +113,7 @@
         "spherical-mascot-people",
         "stick-figures",
         "photorealistic-people",
-        "realistic-faces",
+        "realistic-photo-faces",
         "anime",
         "manga",
         "clay-style",
@@ -121,6 +126,7 @@
         "highly-detailed-interiors-as-default",
         "technical-cutaway-world-as-default",
         "engineering-blueprint-world-as-default",
+        "topic-specific-sub-visual-worlds",
         "generic-icon-collage",
         "generic-floating-reaction-cards",
         "generic-praise-criticism-cards",
@@ -139,7 +145,7 @@
       ]
     }
   ],
-  "selectionRule": "Für jedes neue Reel gilt genau eine Bildwelt: Human Editorial Explainer. Wenn Menschen vorkommen, sind es vereinfachte, eindeutig menschliche Figuren mit normaler Kopf-/Körperlogik; Kopf, Oberkörper oder Ganzkörper je nach Szene. Menschen sind nicht in jedem Bild Pflicht: ein Objekt, Mechanismus oder eine Umgebung darf Hauptmotiv sein, wenn das klarer erklärt. Countryballs, Kugelmenschen und themenspezifische Unter-Bildwelten sind verboten.",
+  "selectionRule": "Für jedes Reel gilt genau eine Bildwelt: Human Head Editorial Reel. Wenn eine Person vorkommt, ist sie ein vereinfachter, eindeutig menschlicher Charakter mit erkennbarem menschlichem Kopf und Gesicht; Kopf/Portrait, Oberkörper, Hände oder Ganzkörper je nach Szene. Ein Mensch ist nicht in jedem Bild Pflicht. Wenn ein konkretes Objekt, ein Mechanismus oder eine Umgebung klarer erklärt, trägt dieses Motiv die Szene allein. Es gibt keine zweite Reel-Welt und keine themenspezifischen Unter-Bildwelten.",
   "goldenReferencePaths": [],
   "styleBiblePath": "knowledge/fixed-visual-world.md",
   "diversityRule": {
@@ -147,12 +153,13 @@
     "avoidImmediateRepeat": true,
     "forcedRotation": false,
     "fixedVisualWorldOverridesDiversity": true,
-    "guidance": "Die eine Formsprache bleibt fest. Perspektive, menschlicher Bildausschnitt, Hauptmotiv, Szene und Hintergrund dürfen variieren, ohne eine neue Bildwelt zu bilden."
+    "guidance": "Nur Motiv, Perspektive, Bildausschnitt und Umgebung variieren. Die eine Human-Head-Editorial-Formsprache bleibt immer gleich."
   },
   "selectionCriteria": [
     "1-Sekunden-Verständlichkeit",
-    "erkennbare echte Menschen wenn Personen vorkommen",
-    "keine Countryballs oder Kugelmenschen",
+    "eindeutig menschlicher Kopf und Körper wenn eine Person vorkommt",
+    "kein Mensch erzwingen wenn Objekt oder Umgebung klarer ist",
+    "keine Countryballs, Kugelmenschen oder Stick-Figuren",
     "eine dominante Kernaussage",
     "einfache physische Szene oder klare Ursache-Folge-Beziehung",
     "niedrige bis mittlere Detaildichte",
