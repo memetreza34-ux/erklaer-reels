@@ -19,18 +19,19 @@ Produktionspipeline für visuelle Erklär-Reels mit offenem Themenuniversum und 
 - keine Hintergrundmusik
 - Schlussbild 0,7 Sekunden nach dem letzten gesprochenen Wort halten
 
-## Eine feste Reel-Bildwelt — Human Editorial Explainer
+## Eine feste Reel-Bildwelt — Human Head Editorial Reel
 
-Für alle neuen Reels gilt **Human Editorial Explainer**.
+Für alle neuen Reels gilt **genau eine** Bildwelt: **Human Head Editorial Reel** (`human-head-editorial-reel`).
 
 Wenn eine Person vorkommt, ist sie eine vereinfachte, eindeutig erkennbare menschliche Figur:
-- natürlicher ovaler oder leicht runder menschlicher Kopf
+- natürlicher ovaler oder weich gerundeter menschlicher Kopf
+- Kopf darf editorial leicht betont sein, bleibt aber eindeutig menschlich
 - Hals und Oberkörper, wenn sichtbar
 - vereinfachte normale menschliche Proportionen
 - einfache Augen, Brauen, Nase, Mund und Haare nach Bedarf
-- Kopf/Portrait, Oberkörper, Hände oder Ganzkörper je nach Szene
+- Kopf/Close-up, Portrait, Oberkörper, Hände oder Ganzkörper je nach Szene
 
-Ein Mensch ist nicht in jedem Bild Pflicht. Ein Objekt, Mechanismus, Dokument, Gebäude, Pflanze, Landschaft oder physischer Prozess darf Hauptmotiv sein, wenn die Aussage dadurch klarer wird.
+Ein Mensch oder Kopf ist **nicht in jedem Bild Pflicht**. Ein Objekt, Mechanismus, Dokument, Gebäude, Pflanze, Landschaft oder physischer Prozess darf Hauptmotiv sein, wenn die Aussage dadurch klarer wird. Es wird kein Mensch nur zur Dekoration erzwungen.
 
 Nicht Teil der Reel-Bildwelt:
 - Countryballs / Länderbälle
@@ -69,7 +70,7 @@ Maschinenlesbare Konfiguration:
 config/image-styles.json
 ```
 
-Der technische Legacy-ID `modern-countryball-explainer` bleibt intern nur aus Kompatibilitätsgründen bestehen. Er ist **keine Countryball-Stilanweisung mehr**.
+Es gibt **keinen zweiten Reel-Style-ID und keine Legacy-Countryball-Bildwelt**. Die aktive Reel-ID ist ausschließlich `human-head-editorial-reel`.
 
 ## Google Flow — nur eine Datei
 
