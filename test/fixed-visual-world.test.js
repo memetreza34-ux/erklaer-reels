@@ -5,6 +5,7 @@ import { readFile } from 'node:fs/promises';
 import {
   FIXED_VISUAL_STYLE_ID,
   FIXED_VISUAL_STYLE_REASON,
+  FIXED_VISUAL_WORLD_LABEL,
   FIXED_VISUAL_WORLD_PROMPT
 } from '../src/shared/fixed-visual-world.js';
 
@@ -13,61 +14,52 @@ test('feste Bildwelt ist in Runtime und Config identisch verdrahtet', async () =
   const contentRules = JSON.parse(await readFile(new URL('../config/content-rules.json', import.meta.url), 'utf8'));
 
   assert.equal(FIXED_VISUAL_STYLE_ID, 'modern-countryball-explainer');
-  assert.match(FIXED_VISUAL_STYLE_REASON, /Globale feste Bildwelt/);
-  assert.match(FIXED_VISUAL_STYLE_REASON, /clarity-first/i);
+  assert.equal(FIXED_VISUAL_WORLD_LABEL, 'Human Editorial Explainer');
+  assert.match(FIXED_VISUAL_STYLE_REASON, /Human Editorial Explainer/);
   assert.equal(styles.visualWorldMode, 'fixed');
   assert.equal(styles.fixedVisualWorld, FIXED_VISUAL_STYLE_ID);
   assert.deepEqual(styles.newReelAllowedStyleIds, [FIXED_VISUAL_STYLE_ID]);
-  assert.equal(styles.styles[0].name, 'Clarity-First Editorial Reel');
+  assert.equal(styles.styles[0].name, 'Human Editorial Explainer');
+  assert.equal(styles.styles[0].characterSystem.recognizablyHumanRequiredWhenPersonAppears, true);
+  assert.equal(styles.styles[0].characterSystem.countryballCharactersForbidden, true);
   assert.equal(styles.styles[0].composition.clarityFirst, true);
   assert.equal(styles.styles[0].topicAdaptation.topicMayChangeVisualWorld, false);
   assert.equal(styles.styles[0].topicAdaptation.technicalCutawayDefault, false);
   assert.equal(contentRules.visualRules.visualWorldMode, 'fixed');
   assert.equal(contentRules.visualRules.fixedVisualWorld, FIXED_VISUAL_STYLE_ID);
-  assert.equal(contentRules.visualRules.promptLanguage, 'en');
-  assert.equal(contentRules.visualRules.visibleTextLanguage, 'de');
-  assert.equal(contentRules.visualRules.sceneFirstCompositionRequired, true);
-  assert.equal(contentRules.visualRules.genericIconBoardForbidden, true);
-  assert.equal(contentRules.visualRules.genericFloatingCardsForbidden, true);
+  assert.equal(contentRules.visualRules.fixedVisualWorldLabel, 'Human Editorial Explainer');
+  assert.equal(contentRules.visualRules.recognizablyHumanRequiredWhenPersonAppears, true);
+  assert.equal(contentRules.visualRules.countryballCharactersForbidden, true);
   assert.equal(contentRules.visualRules.youtubeVisualWorldInheritanceForbidden, true);
 });
 
-test('Style-Lock enthält die zentralen verbesserten Reel-Regeln', () => {
+test('Style-Lock erzwingt Menschen statt Countryballs und bleibt scene-first', () => {
   assert.match(FIXED_VISUAL_WORLD_PROMPT, /vertical 9:16/i);
-  assert.match(FIXED_VISUAL_WORLD_PROMPT, /scene-first editorial countryball-inspired/i);
-  assert.match(FIXED_VISUAL_WORLD_PROMPT, /hand-drawn 2D editorial cartoon/i);
-  assert.match(FIXED_VISUAL_WORLD_PROMPT, /concrete mini-scene/i);
-  assert.match(FIXED_VISUAL_WORLD_PROMPT, /round countryball-like character/i);
-  assert.match(FIXED_VISUAL_WORLD_PROMPT, /thick slightly organic black outlines/i);
-  assert.match(FIXED_VISUAL_WORLD_PROMPT, /detail low to medium/i);
-  assert.match(FIXED_VISUAL_WORLD_PROMPT, /understandable in about one second/i);
-  assert.match(FIXED_VISUAL_WORLD_PROMPT, /Do not let the topic redefine the visual world/i);
-  assert.match(FIXED_VISUAL_WORLD_PROMPT, /Technical cutaways.*NOT the default visual style/i);
-  assert.match(FIXED_VISUAL_WORLD_PROMPT, /Do not use cinematic concept-art lighting as a default look/i);
-  assert.match(FIXED_VISUAL_WORLD_PROMPT, /Avoid generic floating reaction cards/i);
-  assert.match(FIXED_VISUAL_WORLD_PROMPT, /Never use generic praise\/criticism cards as a default/i);
-  assert.match(FIXED_VISUAL_WORLD_PROMPT, /Never duplicate the same headline/i);
+  assert.match(FIXED_VISUAL_WORLD_PROMPT, /Human Editorial Explainer/i);
+  assert.match(FIXED_VISUAL_WORLD_PROMPT, /recognizably HUMAN/i);
+  assert.match(FIXED_VISUAL_WORLD_PROMPT, /head, necks?, torsos?, arms?, hands? and legs?/i);
+  assert.match(FIXED_VISUAL_WORLD_PROMPT, /head, portrait, upper body, hands or a full body/i);
+  assert.match(FIXED_VISUAL_WORLD_PROMPT, /never as a ball, sphere, countryball or stick figure/i);
+  assert.match(FIXED_VISUAL_WORLD_PROMPT, /A human is NOT mandatory in every image/i);
+  assert.match(FIXED_VISUAL_WORLD_PROMPT, /Do not use countryball characters/i);
+  assert.match(FIXED_VISUAL_WORLD_PROMPT, /topic create a new visual world/i);
+  assert.match(FIXED_VISUAL_WORLD_PROMPT, /Technical cutaways.*not the default/i);
   assert.match(FIXED_VISUAL_WORLD_PROMPT, /German only/i);
   assert.match(FIXED_VISUAL_WORLD_PROMPT, /No English visible text/i);
-  assert.match(FIXED_VISUAL_WORLD_PROMPT, /Do not use realistic humans/i);
   assert.match(FIXED_VISUAL_WORLD_PROMPT, /Do not borrow the separate YouTube visual world/i);
-  assert.match(FIXED_VISUAL_WORLD_PROMPT, /no thin-line stick figures/i);
 });
 
-test('Style-Bibel dokumentiert Clarity-First, Anti-Generic-Regeln und YouTube-Trennung', async () => {
+test('Style-Bibel dokumentiert genau eine menschliche Reel-Welt und YouTube-Trennung', async () => {
   const bible = await readFile(new URL('../knowledge/fixed-visual-world.md', import.meta.url), 'utf8');
 
-  assert.match(bible, /verbindliche globale Bildwelt/i);
-  assert.match(bible, /unabhängig vom Thema/i);
-  assert.match(bible, /Kernaussage.*einer Sekunde/i);
-  assert.match(bible, /Erst eine konkrete Szene bauen/i);
-  assert.match(bible, /Szenen statt Icon-Karten/i);
-  assert.match(bible, /Anti-Generic-Regeln/i);
-  assert.match(bible, /Nicht automatisch eine leere beige Kugel/i);
-  assert.match(bible, /technische Schnittzeichnungen/i);
-  assert.match(bible, /Thema darf die Bildwelt.*nicht.*Unter-Bildwelt/is);
+  assert.match(bible, /eine verbindliche globale Bildwelt/i);
+  assert.match(bible, /Human Editorial Explainer/i);
+  assert.match(bible, /vereinfachte echte Menschen/i);
+  assert.match(bible, /Kopf oder ein Portrait/i);
+  assert.match(bible, /Ganzkörperfigur/i);
+  assert.match(bible, /gar keinen Menschen/i);
+  assert.match(bible, /nicht als Kugeln, Countryballs, Ball-Maskottchen oder Stick-Figuren/i);
+  assert.match(bible, /Das Thema ändert nie die Bildwelt/i);
+  assert.match(bible, /technische Cutaways/i);
   assert.match(bible, /YouTube-Langvideo-Bildwelt.*vollständig getrennt/i);
-  assert.match(bible, /sichtbarer Bildtext ist immer Deutsch/i);
-  assert.match(bible, /Prompts werden auf Englisch/i);
-  assert.match(bible, /realistische Menschen/i);
 });
