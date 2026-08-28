@@ -3,6 +3,7 @@ import { createHash } from 'node:crypto';
 import path from 'node:path';
 
 import { buildMasterTimeline } from './timeline.js';
+import { analyzeWordTimingPlausibility } from './word-timing-plausibility.js';
 import { validateExactWordTimings } from '../renderer/subtitle-timing.js';
 import { SUBTITLE_STYLE } from '../shared/subtitle-style.js';
 
@@ -145,6 +146,28 @@ function assignWordsToScenes(words, inputScenes) {
   return { assigned, unassigned };
 }
 
+// Ein Untertitel gehört zu der Szene, in der die meisten seiner Wörter gesprochen
+// werden. Läuft ein Satz über einen Bildschnitt, bleibt er dadurch ein Untertitel
+// und wird nur einer Szene zugeordnet.
+function sceneForChunk(chunk, scenes, sceneByWord) {
+  const counts = new Map();
+  for (const word of chunk) {
+    const sceneId = sceneByWord.get(word);
+    if (sceneId) counts.set(sceneId, (counts.get(sceneId) ?? 0) + 1);
+  }
+
+  let bestSceneId = null;
+  let bestCount = 0;
+  for (const [sceneId, count] of counts) {
+    if (count > bestCount) { bestSceneId = sceneId; bestCount = count; }
+  }
+  if (bestSceneId) return bestSceneId;
+
+  const start = Number(chunk[0].startSeconds);
+  const containing = scenes.find((scene) => start >= Number(scene.startSeconds) && start < Number(scene.endSeconds));
+  return (containing ?? scenes.at(-1))?.sceneId ?? null;
+}
+
 export function buildSubtitleCuesFromCodexWords(words, scenes, options = {}) {
   const position = options.position ?? SUBTITLE_STYLE.position;
   const verticalPositionPercent = Number(options.verticalPositionPercent ?? SUBTITLE_STYLE.verticalPositionPercent);
@@ -153,62 +176,78 @@ export function buildSubtitleCuesFromCodexWords(words, scenes, options = {}) {
   const backgroundColor = options.backgroundColor ?? SUBTITLE_STYLE.backgroundColor;
   const preRoll = Number(options.preRollSeconds ?? 0.035);
   const postRoll = Number(options.postRollSeconds ?? 0.1);
+  const maximumEndSeconds = Number.isFinite(Number(options.maximumEndSeconds))
+    ? Number(options.maximumEndSeconds)
+    : Infinity;
   const { assigned, unassigned } = assignWordsToScenes(words, scenes);
-  const cues = [];
-  const sceneSummary = [];
 
-  for (const scene of scenes) {
-    const sceneStart = Number(scene.startSeconds);
-    const sceneEnd = Number(scene.endSeconds);
-    const sceneWords = assigned.get(scene.sceneId) ?? [];
-    const chunks = chunkTimedWords(sceneWords, options);
-    let previousCueEnd = sceneStart;
-
-    chunks.forEach((chunk, index) => {
-      const nextChunk = chunks[index + 1];
-      const first = chunk[0];
-      const last = chunk.at(-1);
-      const gapBefore = Math.max(0, Number(first.startSeconds) - previousCueEnd);
-      const allowedPreRoll = gapBefore >= preRoll + 0.01 ? preRoll : Math.max(0, gapBefore - 0.01);
-      const startSeconds = Math.max(sceneStart, Number(first.startSeconds) - allowedPreRoll, previousCueEnd + (index ? 0.005 : 0));
-      const nextWordStart = nextChunk?.[0]?.startSeconds ?? null;
-      const latestEnd = nextWordStart === null ? sceneEnd : Math.max(Number(last.endSeconds), Number(nextWordStart) - 0.01);
-      const endSeconds = Math.min(sceneEnd, Math.max(Number(last.endSeconds), Math.min(Number(last.endSeconds) + postRoll, latestEnd)));
-
-      const cue = {
-        id: `${scene.sceneId}-subtitle-${String(index + 1).padStart(2, '0')}`,
-        sceneId: scene.sceneId,
-        text: smartJoin(chunk),
-        startSeconds: round(startSeconds),
-        endSeconds: round(Math.max(startSeconds + 0.05, endSeconds)),
-        position,
-        verticalPositionPercent,
-        textColor,
-        backgroundColor,
-        highlightCurrentWord: true,
-        highlightColor,
-        speakerSyncedWordHighlight: true,
-        timingStatus: 'codex-word-synced',
-        timingSource: 'codex-local-audio-review',
-        wordTimings: chunk.map((word) => ({
-          text: word.text,
-          startSeconds: round(word.startSeconds),
-          endSeconds: round(word.endSeconds),
-          confidence: Number.isFinite(Number(word.confidence)) ? Number(word.confidence) : null
-        }))
-      };
-      cues.push(cue);
-      previousCueEnd = cue.endSeconds;
-    });
-
-    sceneSummary.push({
-      sceneId: scene.sceneId,
-      startSeconds: scene.startSeconds,
-      endSeconds: scene.endSeconds,
-      wordCount: sceneWords.length,
-      cueCount: chunks.length
-    });
+  const sceneByWord = new Map();
+  for (const [sceneId, sceneWords] of assigned) {
+    for (const word of sceneWords) sceneByWord.set(word, sceneId);
   }
+
+  // Der Umbruch folgt Satzenden und Sprechpausen über den gesamten Text hinweg.
+  // Würde je Szene umgebrochen, zerschnitte jeder Bildwechsel den laufenden Satz.
+  const chunks = chunkTimedWords(words, options);
+  const cues = [];
+  const cueCountByScene = new Map();
+  let previousCueEnd = -Infinity;
+
+  chunks.forEach((chunk, index) => {
+    const nextChunk = chunks[index + 1];
+    const first = chunk[0];
+    const last = chunk.at(-1);
+    const sceneId = sceneForChunk(chunk, scenes, sceneByWord);
+    const sequence = (cueCountByScene.get(sceneId) ?? 0) + 1;
+    cueCountByScene.set(sceneId, sequence);
+
+    const gapBefore = Math.max(0, Number(first.startSeconds) - previousCueEnd);
+    const allowedPreRoll = gapBefore >= preRoll + 0.01 ? preRoll : Math.max(0, gapBefore - 0.01);
+    // Die Untertitelzeiten folgen ausschließlich den gemessenen Wortzeiten. Ein
+    // Beschnitt auf Szenengrenzen würde das erste oder letzte Wort abschneiden.
+    // Der Einblendzeitpunkt hängt am ersten Wort; ausweichen muss das Cue-Ende.
+    const startSeconds = Math.max(0, Number(first.startSeconds) - allowedPreRoll);
+    const nextWordStart = nextChunk?.[0]?.startSeconds ?? null;
+    const latestEnd = nextWordStart === null
+      ? maximumEndSeconds
+      : Math.min(maximumEndSeconds, Number(nextWordStart) - 0.005);
+    const endSeconds = Math.max(
+      startSeconds + 0.05,
+      Math.min(Number(last.endSeconds) + postRoll, latestEnd)
+    );
+
+    cues.push({
+      id: `${sceneId}-subtitle-${String(sequence).padStart(2, '0')}`,
+      sceneId,
+      text: smartJoin(chunk),
+      startSeconds: round(startSeconds),
+      endSeconds: round(endSeconds),
+      position,
+      verticalPositionPercent,
+      textColor,
+      backgroundColor,
+      highlightCurrentWord: true,
+      highlightColor,
+      speakerSyncedWordHighlight: true,
+      timingStatus: 'codex-word-synced',
+      timingSource: 'codex-local-audio-review',
+      wordTimings: chunk.map((word) => ({
+        text: word.text,
+        startSeconds: round(word.startSeconds),
+        endSeconds: round(word.endSeconds),
+        confidence: Number.isFinite(Number(word.confidence)) ? Number(word.confidence) : null
+      }))
+    });
+    previousCueEnd = cues.at(-1).endSeconds;
+  });
+
+  const sceneSummary = scenes.map((scene) => ({
+    sceneId: scene.sceneId,
+    startSeconds: scene.startSeconds,
+    endSeconds: scene.endSeconds,
+    wordCount: (assigned.get(scene.sceneId) ?? []).length,
+    cueCount: cueCountByScene.get(scene.sceneId) ?? 0
+  }));
 
   return { cues, sceneSummary, unassigned };
 }
@@ -272,6 +311,19 @@ export function validateCodexWorkbench(workbench, { strict = false } = {}) {
   const actualHash = hash(words.map((word) => word.text).join(' '));
   checks.push({ id: 'script-text-unchanged', passed: !expectedHash || expectedHash === actualHash, level: 'error', message: 'Der Wortlaut der Codex-Arbeitsdatei wurde verändert.' });
 
+  // Gleichmäßig über die Szenendauer verteilte Wortzeiten tragen dieselben Felder wie
+  // echte, sind aber nie synchron. Sie werden anhand messbarer Eigenschaften erkannt,
+  // nicht anhand der selbst gesetzten Angaben reviewed und confidence.
+  const plausibility = analyzeWordTimingPlausibility(timed);
+  checks.push({
+    id: 'word-timings-not-evenly-distributed',
+    passed: !plausibility.suspicious,
+    level: 'error',
+    message: plausibility.suspicious
+      ? `Die Wortzeiten wirken gleichmäßig verteilt statt am Audio gemessen: ${plausibility.triggered.join(' ')}`
+      : 'Die Wortzeiten wirken am Audio gemessen.'
+  });
+
   const errors = checks.filter((check) => !check.passed && check.level === 'error');
   const warnings = checks.filter((check) => !check.passed && check.level === 'warning');
   return {
@@ -279,6 +331,7 @@ export function validateCodexWorkbench(workbench, { strict = false } = {}) {
     coverage: round(coverage, 4),
     totalWords: words.length,
     timedWords: timed.length,
+    plausibility,
     checks,
     summary: {
       passedChecks: checks.filter((check) => check.passed).length,
@@ -381,7 +434,10 @@ export async function applyCodexWordSync(reelDirectory, { strict = false, valida
   if (!scenes.length) throw new Error('Die Master-Timeline enthält keine Szenen.');
 
   const timedWords = workbench.words.filter((word) => Number.isFinite(Number(word.startSeconds)) && Number.isFinite(Number(word.endSeconds)) && Number(word.endSeconds) > Number(word.startSeconds));
-  const built = buildSubtitleCuesFromCodexWords(timedWords, scenes);
+  // Der Nachlauf des Schlussbildes bleibt frei von Untertiteln.
+  const built = buildSubtitleCuesFromCodexWords(timedWords, scenes, {
+    maximumEndSeconds: Number(timeline.audio?.durationSeconds) || undefined
+  });
   const emptyScenes = built.sceneSummary.filter((scene) => scene.wordCount === 0);
   const invalidCues = built.cues
     .map((cue) => ({ cue, result: validateExactWordTimings(cue) }))

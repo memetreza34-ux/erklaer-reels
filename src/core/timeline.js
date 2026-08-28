@@ -272,7 +272,8 @@ function qualityReport(
   strict,
   sceneTimingRules,
   endingHoldSeconds,
-  audioDurationSeconds
+  audioDurationSeconds,
+  declaredDurationDeviation
 ) {
   const balanceLevel = 'warning';
   const holdRange = sceneTimingRules.postVoiceHoldRangeSeconds ?? { min: 0.6, max: 0.8 };
@@ -286,7 +287,10 @@ function qualityReport(
     ['ending-hold-range', endingHoldSeconds >= holdRange.min && endingHoldSeconds <= holdRange.max,
       `Das Schlussbild muss nach dem letzten gesprochenen Wort ${holdRange.min}–${holdRange.max} Sekunden stehen bleiben.`, balanceLevel],
     ['subtitles-end-with-voiceover', subtitles.length === 0 || subtitles.at(-1).endSeconds <= audioDurationSeconds + 0.01,
-      'Untertitel dürfen nicht in den ruhigen Schlussbild-Nachlauf hineinragen.', balanceLevel]
+      'Untertitel dürfen nicht in den ruhigen Schlussbild-Nachlauf hineinragen.', balanceLevel],
+    ['declared-audio-duration-matches-file', declaredDurationDeviation === null || declaredDurationDeviation <= 0.15,
+      `Die in audio-sync.json eingetragene Audiodauer weicht um ${Number(declaredDurationDeviation ?? 0).toFixed(2)} Sekunden von der gemessenen Datei ab. Die Timeline folgt der Messung.`,
+      'error']
   ].map(([id, passed, message, level]) => ({ id, passed, message, level }));
 
   timelineScenes.forEach((scene, index) => {
@@ -367,12 +371,18 @@ export async function buildMasterTimeline(reelDirectory, { audioDurationSeconds 
   const audioSync = await ensureAudioSync(reelDirectory, scenes);
   const audioPath = await findAudioPath(reelDirectory, manifest);
 
-  const explicit = numberOrNull(audioDurationSeconds) ?? numberOrNull(audioSync.audioDurationSeconds);
-  const probed = explicit === null && probeAudio ? await probeAudioDuration(audioPath) : null;
+  // Die gemessene Dauer geht der eingetragenen vor. Ein veralteter Eintrag in
+  // audio-sync.json würde sonst die gesamte Timeline gegen das echte Audio verschieben,
+  // ohne dass es auffällt.
+  const requested = numberOrNull(audioDurationSeconds);
+  const declared = numberOrNull(audioSync.audioDurationSeconds);
+  const probed = probeAudio ? await probeAudioDuration(audioPath) : null;
   const planned = scenes.reduce((sum, scene) => sum + Math.max(0, numberOrNull(scene.durationSeconds) ?? 0), 0);
-  const voiceDuration = explicit ?? probed ?? (planned > 0 ? planned : numberOrNull(reel.targetDurationSeconds) ?? 58);
+  const voiceDuration = requested ?? probed ?? declared ?? (planned > 0 ? planned : numberOrNull(reel.targetDurationSeconds) ?? 58);
   const compositionDuration = voiceDuration + endingHoldSeconds;
-  const durationKnown = explicit !== null || probed !== null;
+  const durationKnown = requested !== null || probed !== null || declared !== null;
+  const explicit = requested ?? declared;
+  const declaredDurationDeviation = declared !== null && probed !== null ? Math.abs(declared - probed) : null;
   const baseTiming = createTimings(scenes, voiceDuration, audioSync);
   const extendedTimingScenes = addEndingHold(baseTiming.scenes, endingHoldSeconds);
   const effectByScene = new Map((effectsPlan.scenes ?? []).map((scene) => [scene.sceneId, scene]));
@@ -409,7 +419,9 @@ export async function buildMasterTimeline(reelDirectory, { audioDurationSeconds 
     audio: {
       file: relativeAudio,
       durationSeconds: round(voiceDuration),
-      durationSource: explicit !== null ? 'audio-sync-or-cli' : probed !== null ? 'ffprobe' : 'planned-scenes',
+      durationSource: requested !== null ? 'cli' : probed !== null ? 'ffprobe' : declared !== null ? 'audio-sync' : 'planned-scenes',
+      declaredDurationSeconds: declared,
+      measuredDurationSeconds: probed,
       exactDurationKnown: durationKnown
     },
     composition: {
@@ -469,7 +481,8 @@ export async function buildMasterTimeline(reelDirectory, { audioDurationSeconds 
     strict,
     sceneTimingRules,
     endingHoldSeconds,
-    voiceDuration
+    voiceDuration,
+    declaredDurationDeviation
   );
 
   await writeJson(path.join(reelDirectory, 'timeline', 'timeline-plan.json'), timeline);

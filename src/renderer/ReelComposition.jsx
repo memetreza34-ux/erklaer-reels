@@ -85,14 +85,18 @@ const SceneLayer = ({ scene }) => {
   );
 };
 
-const Subtitle = ({ cue }) => {
+const Subtitle = ({ cue, cueFrameOffset = 0 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const vertical = normalizeSubtitleVerticalPosition(cue.verticalPositionPercent);
   const textColor = normalizeSubtitleColor(cue.textColor, SUBTITLE_STYLE.textColor);
   const words = buildWordTimings(cue);
+  // Der Sequenzstart liegt auf einem ganzen Frame, der Cue-Start dagegen auf der
+  // gemessenen Sekunde. Ohne diese Korrektur läge die Wortmarkierung um bis zu
+  // einen halben Frame neben der Stimme.
+  const elapsedSeconds = (cueFrameOffset + frame) / fps - Number(cue.startSeconds);
   const active = SUBTITLE_STYLE.highlightCurrentWord
-    ? activeWordIndex(words, frame / fps)
+    ? activeWordIndex(words, elapsedSeconds)
     : -1;
 
   return (
@@ -197,7 +201,7 @@ export const ReelComposition = ({ plan }) => {
             durationInFrames={Math.max(1, end - from)}
             style={{ zIndex: scenes.length + 10 }}
           >
-            <Subtitle cue={cue} />
+            <Subtitle cue={cue} cueFrameOffset={from} />
           </Sequence>
         );
       })}

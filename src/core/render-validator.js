@@ -2,6 +2,7 @@ import { access, readFile } from 'node:fs/promises';
 import path from 'node:path';
 
 import { validateExactWordTimings } from '../renderer/subtitle-timing.js';
+import { analyzeWordTimingPlausibility } from './word-timing-plausibility.js';
 import { SUBTITLE_STYLE, isHexColor } from '../shared/subtitle-style.js';
 import {
   AUDIO_PACING_STYLE,
@@ -92,6 +93,7 @@ export async function validateRendererInput(reelDirectory, {
   const voiceScript = await exists(voiceScriptPath) ? await readFile(voiceScriptPath, 'utf8') : '';
   const expectedSubtitleTokens = tokensFromText(voiceScript);
   const renderedSubtitleTokens = [];
+  const renderedWordTimings = [];
   const effectsByScene = new Map((effectsPlan.scenes ?? []).map((scene) => [scene.sceneId, scene]));
 
   push(checks, 'render-plan-present', Boolean(plan), 'render/render-plan.json fehlt.');
@@ -256,6 +258,11 @@ export async function validateRendererInput(reelDirectory, {
       if (exact.valid) {
         renderedSubtitleTokens.push(...exact.words.map((word) => normalizeSubtitleToken(word.text)).filter(Boolean));
       }
+      // Für die planweite Plausibilitätsprüfung werden die absoluten Wortzeiten benötigt,
+      // nicht die auf den Cue-Start bezogenen aus validateExactWordTimings.
+      for (const word of cue.wordTimings ?? cue.words ?? []) {
+        renderedWordTimings.push(word);
+      }
       push(checks, `${cueId}-timing-status`, cue.timingStatus === 'codex-word-synced',
         `${cueId}: timingStatus muss "codex-word-synced" sein.`,
         requireFinalReadiness ? 'error' : 'warning');
@@ -293,6 +300,14 @@ export async function validateRendererInput(reelDirectory, {
   push(checks, 'subtitle-full-spoken-text-coverage',
     expectedSubtitleTokens.length > 0 && sameTokenSequence(expectedSubtitleTokens, renderedSubtitleTokens),
     `Die gerenderten Untertitel müssen 100 % des Voice-Scripts in exakt derselben Wortreihenfolge enthalten. Erwartet: ${expectedSubtitleTokens.length} Wörter, gerendert: ${renderedSubtitleTokens.length}.`);
+
+  // Letzte Verteidigungslinie vor dem Render: gleichmäßig verteilte Wortzeiten tragen
+  // dieselben Labels wie echte und würden alle bisherigen Prüfungen bestehen.
+  const wordTimingPlausibility = analyzeWordTimingPlausibility(renderedWordTimings);
+  push(checks, 'subtitle-word-timings-measured',
+    !wordTimingPlausibility.suspicious,
+    `Die Untertitel-Wortzeiten wirken gleichmäßig verteilt statt am Audio gemessen und können deshalb nicht synchron sein: ${wordTimingPlausibility.triggered.join(' ')}`,
+    requireFinalReadiness ? 'error' : 'warning');
 
   push(checks, 'last-frame', scenes.length === 0 || previousEnd === Number(composition.durationFrames),
     'Die letzte Szene endet nicht exakt am letzten Kompositionsframe.');
