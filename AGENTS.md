@@ -169,6 +169,20 @@ Neue Reels:
 - mindestens eine unabhängige Sekundär-/Fachquelle
 - konkret dokumentieren, welche Reel-Aussage belegt wird
 
+## Soundeffekte
+
+Sounds werden **nur als `type`** aus `config/sound-library.json` geplant, niemals als Dateiname. Verfügbare Typen anzeigen:
+
+```bash
+npm run sync:sounds -- --types
+```
+
+- null bis zwei pro narrativer Szene, oft null
+- nur an einem **sichtbaren** Ereignis, nicht an einer bloßen Aussage
+- `visualEvent` und `reason` sind Pflicht
+- `file` und `volume` trägt das System ein
+- Zuordnungstabelle in `knowledge/effects-rules.md`
+
 ## Untertitel und Audio
 
 - keine Untertitel

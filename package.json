@@ -20,6 +20,7 @@
     "organize:finder": "node src/cli/organize-finder.js",
     "trim:pauses": "node src/cli/trim-pauses.js",
     "build:timeline": "node src/cli/build-timeline.js",
+    "sync:sounds": "node src/cli/sync-sounds.js",
     "sync:audio": "node src/cli/build-timeline.js",
     "legacy:sync:words": "node src/cli/sync-words.js",
     "render:reel": "node src/cli/render-reel.js",

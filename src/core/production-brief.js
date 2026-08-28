@@ -67,7 +67,7 @@ export async function prepareReelProduction(reelDirectory) {
       { id: 'prompts-write', label: `Für jede geplante Bildphase einen vollständigen englischen 9:16-Bildprompt im festen Stil ${FIXED_VISUAL_STYLE_ID} schreiben; konkrete Szene, Handlung, Umgebung und Perspektive angeben`, status: 'pending' },
       { id: 'prompts-export', label: 'Alle Bildphasen in globaler Bildreihenfolge als kompletten seriellen Google-Flow-Gesamtprompt mit globalem und per-Bild Style-Lock exportieren', status: 'pending' },
       { id: 'subtitles-disabled', label: 'Untertitel deaktiviert lassen; keine Subtitle-Cues und keinen Word-Sync erzeugen', status: 'pending' },
-      { id: 'effects-write', label: 'Dezente Bewegungen, harte Schnitte und Soundeffekte planen', status: 'pending' },
+      { id: 'effects-write', label: 'Dezente Bewegungen, harte Schnitte und Soundeffekte planen; Sounds nur als type aus config/sound-library.json und nur an sichtbaren Ereignissen', status: 'pending' },
       { id: 'asset-matching-plan', label: `Zweistufige visuelle Zuordnung jeder Bildphase mit mindestens ${matching.minimumConfidence} Konfidenz vorbereiten`, status: 'pending' },
       { id: 'title-image-write', label: 'Szene 1 als Titelbild ausarbeiten: stärkste visuelle Idee, sichtbarer Hook-Text in imageText, in derselben festen Reel-Bildwelt', status: 'pending' },
       { id: 'caption-write', label: 'Caption erstellen', status: 'pending' },

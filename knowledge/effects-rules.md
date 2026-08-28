@@ -38,6 +38,45 @@ Zooms, Kamerabewegungen und Soundeffekte sollen das Verständnis unterstützen. 
 - keine lauten Meme-Sounds, Jumpscares oder übertriebenen Effekte
 - Lautstärke normalerweise zwischen 0,12 und 0,30; Standard ungefähr 0,20 relativ zur Voice-over-Mischung
 - Soundeffekte dürfen wichtige Wörter des Voice-overs nicht verdecken
+
+### Welcher Sound für welches Ereignis
+
+Der Agent wählt **niemals einen Dateinamen**, sondern ausschließlich einen `type` aus
+`config/sound-library.json`. Die Auflösung zur Datei übernimmt `npm run sync:sounds`
+bzw. automatisch der Timeline-Bau.
+
+| type | Ereignis im Bild |
+|---|---|
+| `soft-whoosh` | Bildwechsel mit deutlichem Themensprung, höchstens zweimal pro Reel |
+| `pop` | ein Objekt oder eine Figur erscheint sichtbar neu |
+| `click` | eine konkrete Zahl oder ein Schlüsselbegriff wird betont |
+| `tick` | Zeit, Zählen, Abfolge, Kalender, Uhr |
+| `soft-impact` | etwas fällt, trifft auf oder wird sichtbar belastet |
+| `paper` | Dokument, Vertrag, Karte, Blättern |
+| `swoosh-reveal` | der Aha-Moment, genau einmal pro Reel |
+| `door` | Tür, Tor oder Grenze öffnet oder schließt sich sichtbar |
+| `coin` | Geld wechselt sichtbar den Besitzer |
+| `water-drop` | ein Tropfen oder Wasser trifft sichtbar auf |
+
+**Grundregel:** Ein Sound gehört an ein **sichtbares Ereignis**, nicht an eine Aussage.
+Wenn das Voice-over über Geld spricht, im Bild aber keine Münze zu sehen ist, kommt
+kein `coin`. Ohne sichtbaren Anlass bleibt `soundEffects` leer.
+
+Jeder Eintrag braucht eine Begründung in `reason` und einen Bezug in `visualEvent`.
+Ein Eintrag sieht so aus:
+
+```json
+{
+  "type": "pop",
+  "atPercent": 0.35,
+  "visualEvent": "Die zweite Länderkugel erscheint neben der ersten",
+  "reason": "Markiert den Moment, in dem der Vergleich sichtbar wird"
+}
+```
+
+`file` und `volume` trägt das System selbst ein. Der Zeitpunkt kommt wahlweise über
+`atPercent` (Anteil der Szenendauer), `offsetSeconds` (ab Szenenbeginn) oder
+`timeSeconds` (absolut).
 - keine urheberrechtlich geschützte Musik oder ungeklärten Audioausschnitte verwenden
 
 ## Audio-Pacing

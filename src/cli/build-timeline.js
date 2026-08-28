@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { buildMasterTimeline } from '../core/timeline.js';
+import { syncReelSounds } from '../core/sound-library.js';
 
 function getArgument(name) {
   const index = process.argv.indexOf(name);
@@ -42,6 +43,17 @@ async function main() {
   const audioDurationSeconds = rawDuration === undefined ? null : Number(rawDuration);
   if (rawDuration !== undefined && (!Number.isFinite(audioDurationSeconds) || audioDurationSeconds <= 0)) {
     throw new Error('--audio-duration muss eine positive Zahl sein.');
+  }
+
+  // Geplante Sound-Typen gegen die zentrale Bibliothek auflösen, bevor die Timeline
+  // die Effekte übernimmt. Fehlende Dateien blockieren nur im strengen Lauf.
+  const sounds = await syncReelSounds(reelDirectory, { strict: process.argv.includes('--strict') });
+  if (sounds.copied.length > 0) console.log(`Sounds übernommen: ${sounds.copied.join(', ')}`);
+  for (const item of sounds.unknownTypes) {
+    console.log(`Warnung: ${item.sceneId} nutzt den unbekannten Sound-Typ "${item.type}".`);
+  }
+  for (const item of sounds.missingFiles) {
+    console.log(`Warnung: Datei fehlt für "${item.type}" — erwartet unter ${item.expected}.`);
   }
 
   const result = await buildMasterTimeline(reelDirectory, {
