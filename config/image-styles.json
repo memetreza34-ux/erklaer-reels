@@ -7,33 +7,39 @@
   "styles": [
     {
       "id": "modern-countryball-explainer",
-      "name": "Clarity-First Editorial Reel",
+      "name": "Human Editorial Explainer",
       "active": true,
       "scope": "all-new-reels-all-topics",
+      "legacyIdOnly": true,
       "promptLanguage": "en",
       "visibleTextLanguage": "de",
-      "description": "Clarity-first 9:16 Reel-Bildwelt: einfache szenische 2D-Editorial-Cartoons mit dicken schwarzen Konturen, niedriger bis mittlerer Detaildichte, einer sofort lesbaren Hauptidee und optionalen Countryball-, Objekt- oder einfachen Cartoonfiguren.",
+      "description": "Eine einzige feste 9:16-Reel-Bildwelt mit vereinfachten echten Menschen als Standardfiguren, klaren 2D-Editorial-Szenen, niedriger bis mittlerer Detaildichte und sofort lesbarer Kernaussage. Countryballs und Kugelmenschen sind nicht Teil der aktiven Bildwelt.",
       "characterSystem": {
-        "defaultActor": "choose-clearest-simple-actor-for-the-idea",
+        "defaultActor": "simplified-recognizably-human-person",
         "allowedActorTypes": [
-          "simple-cartoon-person",
-          "anthropomorphic-object",
+          "human-head-or-portrait",
+          "human-upper-body",
+          "human-full-body",
+          "human-hands-or-body-detail",
+          "small-human-group",
           "concrete-object-or-mechanism",
-          "countryball-like-character",
-          "small-simple-group"
+          "simple-contextual-environment"
         ],
-        "countryFlagOnlyWhenSemanticallyRelevant": true,
-        "countryballMandatory": false,
-        "neutralBallForGeneralTopics": false,
-        "preferConcreteObjectOrEnvironmentForAbstractTopics": true,
-        "eyes": "simple-white-expressive-eyes-with-black-outline-when-ball-character-is-used",
-        "mouth": "optional-only-when-needed",
-        "limbs": "minimal-only-when-action-needs-them"
+        "humanNotMandatoryWhenObjectIsClearer": true,
+        "recognizablyHumanRequiredWhenPersonAppears": true,
+        "humanHeadShape": "natural-oval-or-rounded-not-spherical-mascot",
+        "humanBody": "simplified-normal-human-proportions",
+        "humanFace": "simple-eyes-brows-nose-mouth-and-optional-hair",
+        "countryballCharactersForbidden": true,
+        "flagPaintedBallCharactersForbidden": true,
+        "sphericalMascotPeopleForbidden": true,
+        "stickFiguresForbidden": true,
+        "preferConcreteObjectOrEnvironmentWhenNoHumanIsNeeded": true
       },
       "rendering": {
         "dimension": "2d",
-        "look": "clean-hand-drawn-editorial-cartoon",
-        "outlines": "thick-slightly-organic-black",
+        "look": "clean-hand-drawn-human-editorial-cartoon",
+        "outlines": "clear-confident-black",
         "detailDensity": "low-to-medium",
         "colors": "flat-or-lightly-cel-shaded-readable",
         "shadows": "subtle-soft",
@@ -52,9 +58,12 @@
         "oneClearMoment": true,
         "oneDominantFocalSubject": true,
         "supportingPropsMax": 3,
-        "simpleDepthAllowed": true,
-        "offCenterFramingAllowed": true,
+        "portraitAllowed": true,
+        "upperBodyAllowed": true,
+        "fullBodyAllowed": true,
         "closeUpsAllowed": true,
+        "offCenterFramingAllowed": true,
+        "simpleDepthAllowed": true,
         "simpleWideShotsAllowed": true,
         "fullFrame": true,
         "noSubtitleSafeZone": true,
@@ -78,7 +87,8 @@
         "engineeringSchematicDefault": false,
         "blueprintDefault": false,
         "technicalDetailAllowedOnlyWhenRequiredByExplanation": true,
-        "technicalDetailMustRemainSimplified": true
+        "technicalDetailMustRemainSimplified": true,
+        "countryOrInstitutionRepresentation": "humans-maps-flags-documents-buildings-not-balls"
       },
       "visibleText": {
         "language": "de",
@@ -93,13 +103,17 @@
         "neverDuplicateSameHeadlineTopAndBottom": true
       },
       "forbidden": [
-        "photorealism",
-        "realistic-humans",
+        "countryballs",
+        "flag-painted-ball-characters",
+        "spherical-mascot-people",
+        "stick-figures",
+        "photorealistic-people",
         "realistic-faces",
         "anime",
         "manga",
         "clay-style",
         "glossy-3d",
+        "pixar-like-rendering",
         "cinematic-photorealism",
         "painterly-concept-art",
         "stock-photo-aesthetic",
@@ -125,7 +139,7 @@
       ]
     }
   ],
-  "selectionRule": "Für jedes neue Reel und jedes Thema muss ausschließlich modern-countryball-explainer verwendet werden, ausgeführt als Clarity-First Editorial Reel. Zuerst die eine Kernaussage bestimmen, dann eine einfache physische Mini-Szene, einen direkten Kontrast oder eine klare Metapher bauen. Countryballs sind optional und vor allem für Länder, Regionen, Institutionen, Gruppen oder gesellschaftliche Akteure geeignet. Bei Alltag, Technik, Gesundheit, Wissenschaft oder anderen Allgemeinthemen die jeweils klarste einfache Person, das klarste Objekt, den klarsten Mechanismus oder die klarste Umgebung wählen. Das Thema darf niemals eine neue technische oder cinematic Unter-Bildwelt erzeugen.",
+  "selectionRule": "Für jedes neue Reel gilt genau eine Bildwelt: Human Editorial Explainer. Wenn Menschen vorkommen, sind es vereinfachte, eindeutig menschliche Figuren mit normaler Kopf-/Körperlogik; Kopf, Oberkörper oder Ganzkörper je nach Szene. Menschen sind nicht in jedem Bild Pflicht: ein Objekt, Mechanismus oder eine Umgebung darf Hauptmotiv sein, wenn das klarer erklärt. Countryballs, Kugelmenschen und themenspezifische Unter-Bildwelten sind verboten.",
   "goldenReferencePaths": [],
   "styleBiblePath": "knowledge/fixed-visual-world.md",
   "diversityRule": {
@@ -133,21 +147,22 @@
     "avoidImmediateRepeat": true,
     "forcedRotation": false,
     "fixedVisualWorldOverridesDiversity": true,
-    "guidance": "Die Formsprache bleibt fest, aber Hauptmotiv, Perspektive, Szene, Metapher und Hintergrund dürfen variieren. Abwechslung darf nie auf Kosten der 1-Sekunden-Verständlichkeit gehen."
+    "guidance": "Die eine Formsprache bleibt fest. Perspektive, menschlicher Bildausschnitt, Hauptmotiv, Szene und Hintergrund dürfen variieren, ohne eine neue Bildwelt zu bilden."
   },
   "selectionCriteria": [
     "1-Sekunden-Verständlichkeit",
+    "erkennbare echte Menschen wenn Personen vorkommen",
+    "keine Countryballs oder Kugelmenschen",
     "eine dominante Kernaussage",
-    "einfache physische Szene oder klare Metapher statt Icon-Board",
+    "einfache physische Szene oder klare Ursache-Folge-Beziehung",
     "niedrige bis mittlere Detaildichte",
     "starke Social-Media-Lesbarkeit",
-    "keine themenbedingte technische Unter-Bildwelt",
-    "klare Trennung von der YouTube-Bildwelt",
-    "Übereinstimmung mit modern-countryball-explainer als Clarity-First Editorial Reel"
+    "keine themenbedingte Unter-Bildwelt",
+    "klare Trennung von der YouTube-Bildwelt"
   ],
   "crossStyleTextRule": {
     "preferred": true,
     "language": "de",
-    "guidance": "Wo es die Aussage verbessert, integriere sehr kurzen deutschen Bildtext. Ein einzelnes Wort oder 1–5 Wörter reichen. Sichtbarer Text ist ausschließlich Deutsch; Prompts bleiben Englisch. Text nicht erzwingen und dieselbe Headline nie doppeln."
+    "guidance": "Wo es die Aussage verbessert, integriere kurzen deutschen Bildtext. Ein einzelnes Wort oder 1–5 Wörter reichen. Sichtbarer Text ist ausschließlich Deutsch; Prompts bleiben Englisch. Text nicht erzwingen und dieselbe Headline nie doppeln."
   }
 }
