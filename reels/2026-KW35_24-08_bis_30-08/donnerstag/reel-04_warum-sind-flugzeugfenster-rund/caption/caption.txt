@@ -1,5 +1,7 @@
-Warum sind Flugzeugfenster rund?
+Warum sind Flugzeugfenster eigentlich rund – und nicht einfach eckig?
 
-Die Form ist kein Design-Zufall: Abgerundete Fenster verteilen Belastungen besser und vermeiden kritische Spannungsspitzen an scharfen Ecken.
+Die Form ist kein Design-Zufall, sondern ein wichtiges Sicherheitsdetail. In großer Höhe steht die Druckkabine immer wieder unter Belastung. Scharfe Ecken würden Spannungen stärker an einzelnen Punkten bündeln und könnten dadurch Risse begünstigen. Abgerundete Fenster verteilen diese Kräfte gleichmäßiger über die umgebende Struktur. Deshalb arbeiten Fenster, Rahmen und Flugzeughaut als gemeinsames System – und die typische ovale Form ist heute ein fester Teil moderner Druckkabinen.
 
-#Wissen #Technik #Luftfahrt #Erklärt
+Speichern, wenn du solche Technikdetails spannend findest.
+
+#Wissen #Technik #Luftfahrt #Ingenieurwissen #Erklärt
