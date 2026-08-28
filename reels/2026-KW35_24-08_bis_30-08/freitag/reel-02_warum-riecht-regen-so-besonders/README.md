@@ -1,6 +1,6 @@
 # Warum riecht Regen so besonders?
 
-Test-Reel für die feste Reel-Bildwelt **Human Editorial Explainer**.
+Test-Reel für die **eine feste Reel-Bildwelt Human Head Editorial Reel** (`human-head-editorial-reel`).
 
 - Datum: 28.08.2026
 - Thema: Alltag / Wissenschaft / Natur
@@ -13,9 +13,11 @@ Test-Reel für die feste Reel-Bildwelt **Human Editorial Explainer**.
 - Prompts: Englisch
 - sichtbarer Bildtext: Deutsch
 - Untertitel: aus
-- Bildwelt: `Human Editorial Explainer`
+- Bildwelt: `Human Head Editorial Reel`
 
-Wenn Menschen vorkommen, sind sie vereinfachte, eindeutig erkennbare echte Menschen — je nach Szene als Kopf/Portrait, Oberkörper oder Ganzkörper. Es gibt keine Countryballs oder Kugelmenschen. Nicht jedes Bild braucht einen Menschen, wenn Objekt, Naturprozess oder Umgebung die Aussage besser erklärt.
+Wenn Menschen vorkommen, sind sie vereinfachte, eindeutig erkennbare echte Menschen. Die menschliche Kopf-/Gesichtslogik ist der Figurenanker: Kopf/Close-up, Portrait, Oberkörper oder Ganzkörper je nach Szene. Ein Mensch oder Kopf ist aber **nicht in jedem Bild Pflicht**. Wenn Objekt, Naturprozess oder Umgebung die Aussage besser erklärt, bleibt die Szene ohne Menschen. Countryballs, Kugelmenschen und Stick-Figuren sind verboten.
+
+Es gibt keine zweite Reel-Bildwelt und keine themenspezifische Unter-Bildwelt.
 
 ## Google Flow
 
