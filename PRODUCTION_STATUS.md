@@ -68,9 +68,35 @@ Der Exporter ergänzt `modern-countryball-explainer` global und zusätzlich dire
 
 Danach bezeichnet die Nummer die **globale Bildreihenfolge**, nicht automatisch die Szenennummer.
 
-Flow arbeitet streng seriell: genau ein Bild erzeugen, vollständig warten, gegen den aktuellen Bildprompt **und die feste Bildwelt** prüfen, umbenennen, nächstes Bild starten. Kein Batch, keine Queue, kein Parallelisieren.
+Flow arbeitet nach dem einmaligen Start vollständig selbstständig, aber streng seriell. Zuerst wird genau **ein gemeinsamer Ausgabeordner für das Reel** erstellt. Danach gilt:
+
+```text
+genau ein Bild erzeugen
+→ vollständig warten
+→ gegen den aktuellen Bildprompt und die feste Bildwelt prüfen
+→ exakt als Bild NN.png umbenennen
+→ in den gemeinsamen Ausgabeordner legen
+→ Dateiname und Ablage prüfen
+→ erst dann das nächste Bild starten
+```
+
+Kein Batch, keine Queue, kein Parallelisieren und keine Mehrfachvarianten. Wenn Umbenennen oder Ablage nicht bestätigt werden kann, stoppt Flow statt weitere Bilder zu erzeugen.
+
+Nach Abschluss liegen alle Bilder gemeinsam in diesem einen Flow-Ordner und werden für den Repo-Import gesammelt nach `00-bildprompts/00-ALLE-BILDER-HIER-REIN/` übernommen.
 
 Der separate `google-flow-controller.txt` ist deaktiviert.
+
+## Sichtbarer finaler Reel-Export
+
+Der einzige sichtbare finale Upload-Bereich ist:
+
+```text
+03-export/
+├── FERTIGES-REEL.mp4
+└── UNIVERSELLE-CAPTION.txt
+```
+
+Es gibt keinen separaten sichtbaren Caption- oder Video-Ordner. Die Universal-Caption muss die Regeln aus `UNIVERSAL_CAPTION_POLICY.md` erfüllen und zum konkreten Reel passen.
 
 ## Quellen-QC
 
@@ -93,8 +119,10 @@ Ein Reel ist erst fertig, wenn:
 - das finale Voice-over real gemessen wurde
 - narrative Szenen am finalen Audio synchronisiert sind
 - interne Bildphasen passend innerhalb der Szenen liegen
+- die Universal-Caption vollständig und gültig ist
 - Finalizer und Renderer-Prüfung tatsächlich bestanden sind
 - die echte MP4 erzeugt wurde
+- finale MP4 und Universal-Caption unter `03-export/` verfügbar sind
 
 Nicht ausgeführte Tests oder geplante Produktionsstufen niemals als bestanden melden. Messwerte und Readiness-Reports dürfen niemals künstlich erzeugt oder erzwungen werden.
 
@@ -106,10 +134,12 @@ Nach Aktivierung der festen Bildwelt muss der nächste vollständige E2E-Test in
 - `config/image-styles.json` und `config/content-rules.json` zeigen dieselbe feste Bildwelt
 - individuelle Bildphasen werden korrekt geplant und exportiert
 - Google-Flow-Gesamtprompt enthält den globalen Style-Lock und wiederholt ihn direkt vor jedem Bildabschnitt
+- Google Flow legt alle seriell erzeugten und korrekt umbenannten Bilder in genau einem gemeinsamen Ausgabeordner ab
 - sichtbarer Bildtext bleibt Deutsch; Prompttext bleibt Englisch
 - konkrete Themen ändern nur Inhalt, Metapher und ggf. Hintergrundfarbe, nicht die grundlegende Bildsprache
 - echte Bilder werden visuell zugeordnet und zweifach gegen konkrete Prompts geprüft
 - echtes Voice-over wird verarbeitet, gemessen und als einzige Timeline-Quelle verwendet
+- Universal-Caption wird vor dem Render geprüft und zusammen mit der finalen MP4 nach `03-export/` ausgegeben
 - Finalizer und Render-Validator blockieren fehlende oder ungeprüfte Voraussetzungen
 - finale MP4 wird tatsächlich erzeugt
 
