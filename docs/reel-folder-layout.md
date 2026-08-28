@@ -2,17 +2,18 @@
 
 > Bei Widersprüchen gilt `CURRENT_WORKFLOW.md`.
 
-Im macOS Finder sind nur die Bereiche sichtbar, die für die tägliche Produktion wichtig sind:
+Im normalen Arbeitsbereich sind nur die fünf Bereiche sichtbar, die für die tägliche Produktion wichtig sind:
 
 ```text
 reel-01_thema/
 ├── 00-bildprompts/
 ├── 01-voice-script/
 ├── 02-audio/
-├── 03-caption/
-├── 04-video/
+├── 03-export/
 └── 99-technik/
 ```
+
+Es gibt keinen separaten sichtbaren Caption- oder Video-Ordner mehr.
 
 ## 00-bildprompts
 
@@ -30,15 +31,34 @@ Cover und narrative Szenen liegen gemeinsam in einem klaren Bereich. Zusätzlich
 
 ### Verbindliche Google-Flow-Datei
 
-Für Google Flow wird normalerweise genau diese Datei verwendet:
+Für Google Flow wird genau diese eine Datei verwendet:
 
 ```text
 00-bildprompts/99-alle-bildprompts.txt
 ```
 
-Sie enthält den vollständigen seriellen Gesamtprompt mit Cover und **allen individuell geplanten Bildphasen**.
+Sie enthält den vollständigen seriellen Gesamtprompt mit Cover und **allen individuell geplanten Bildphasen**. Der Nutzer schickt die Datei einmal vollständig an den Google-Flow-Agenten.
 
-`all-image-prompts/all-image-prompts.txt` ist die identische technische Spiegeldatei. Einzelprompt-Dateien unter `all-image-prompts/image-prompts/` sind nur interne Sicherung.
+`all-image-prompts/all-image-prompts.txt` ist die identische technische Spiegeldatei.
+
+### Verbindlicher serieller Flow-Ablauf
+
+Der Gesamtprompt muss Flow dazu anweisen, den Lauf selbstständig vollständig abzuarbeiten, aber immer nur **ein Bild gleichzeitig**:
+
+```text
+einen gemeinsamen Ausgabeordner für das Reel anlegen
+→ nur Bild 00 erzeugen
+→ vollständig warten
+→ Ergebnis prüfen
+→ exakt als Bild 00.png umbenennen
+→ in den gemeinsamen Ausgabeordner legen
+→ Ablage prüfen
+→ erst dann Bild 01 erzeugen
+→ ...
+→ bis zum letzten geplanten Bild
+```
+
+Keine Queue, kein Batch, keine Parallelgenerierung und keine Mehrfachvarianten. Alle Bilder eines Reel-Laufs bleiben zusammen in genau einem Flow-Ausgabeordner.
 
 ### Schneller Bildimport
 
@@ -57,15 +77,13 @@ Bild 04.png  → Szene 3 / Phase 1
 
 Die Reihe läuft dynamisch bis zum letzten geplanten Bild. `reel.json.plannedImageCount` beschreibt die Zahl der Szenenbilder ohne Cover.
 
-Alle fertigen Bilder können gemeinsam in
+Nach dem Flow-Lauf kommen alle fertigen Bilder gemeinsam nach:
 
 ```text
 00-bildprompts/00-ALLE-BILDER-HIER-REIN/
 ```
 
-gelegt werden.
-
-Zusätzlich werden aus Kompatibilitätsgründen verschiedene Nummerierungsformen erkannt. Der empfohlene Standard bleibt `Bild 00.png`, `Bild 01.png`, `Bild 02.png` usw.
+Der empfohlene Standard bleibt `Bild 00.png`, `Bild 01.png`, `Bild 02.png` usw.
 
 Der normale Befehl erkennt diesen Sammelordner automatisch:
 
@@ -93,15 +111,41 @@ image-prompt-03.txt
 
 Die finale technische Asset-Zuordnung kann daher mehrere Bilder zu derselben narrativen Szene enthalten.
 
-## Weitere Ordner
+## 01-voice-script
 
-- `01-voice-script`: endgültiger Voice-over-Text
-- `02-audio`: unbearbeitetes und optimiertes Voice-over
-- `03-caption`: fertige Social-Media-Caption
-- `04-video`: finale MP4-Ausgabe
-- `99-technik`: Quellen, Prüfberichte, deaktivierte Kompatibilitätsmetadaten für Untertitel, Effekte, Produktionsdateien, Timeline, Renderdaten und JSON-Dateien; normalerweise nicht öffnen
+Hier liegt der endgültige Voice-over-Text:
 
-Untertitel sind global deaktiviert. Historische `subtitles/`-Dateien dürfen als Kompatibilitätsmetadaten existieren, enthalten für neue Reels aber keine aktiven Cues.
+```text
+01-voice-script/voice-script.txt
+```
+
+## 02-audio
+
+Hier liegen der sichtbare Audio-Eingang und die finale optimierte Audiofassung:
+
+```text
+02-audio/
+├── AUDIO-HIER-EINFUEGEN/
+└── FINAL-AUDIO/
+```
+
+## 03-export
+
+Das ist der einzige sichtbare finale Upload-Bereich eines Reels:
+
+```text
+03-export/
+├── FERTIGES-REEL.mp4
+└── UNIVERSELLE-CAPTION.txt
+```
+
+Die Universal-Caption ist individuell zum konkreten Reel geschrieben und plattformneutral für die unterstützten Kurzvideo-Social-Media-Accounts. Die verbindlichen Regeln stehen in `UNIVERSAL_CAPTION_POLICY.md`.
+
+## 99-technik
+
+Hier liegen Quellen, Prüfberichte, Effekte, Produktionsdateien, Timeline-/Renderdaten und JSON-Metadaten. Diesen Bereich muss der Nutzer im normalen Produktionsablauf nicht öffnen.
+
+Untertitel sind global deaktiviert. Historische `subtitles/`-Dateien dürfen als technische Kompatibilitätsmetadaten existieren, enthalten für neue Reels aber keine aktiven Cues.
 
 ## Bestehendes Reel aufräumen
 
