@@ -10,7 +10,7 @@ Bei „Mach ein neues Reel“ autonom:
 2. starkes Thema aus dem offenen Themenuniversum wählen
 3. deutsches Voice-over mit 155–175 Wörtern schreiben
 4. 12–14 narrative Szenen planen, Standard 13
-5. für Cover und jede Bildphase ausschließlich **Human Editorial Explainer** verwenden
+5. für Cover und jede Bildphase ausschließlich **Human Head Editorial Reel** verwenden
 6. Bildanzahl pro Reel und Szene individuell planen
 7. Cover + Bildphasen-Prompts + einen seriellen Google-Flow-Gesamtprompt + Universal-Caption + Quellen fertigstellen
 8. keine Untertitel erzeugen
@@ -19,7 +19,7 @@ Bei „Mach ein neues Reel“ autonom:
 
 ## Reels und YouTube strikt trennen
 
-Reels verwenden ausschließlich **Human Editorial Explainer** in 9:16.
+Reels verwenden ausschließlich **Human Head Editorial Reel** (`human-head-editorial-reel`) in 9:16.
 
 YouTube verwendet ausschließlich:
 
@@ -30,7 +30,7 @@ youtube/YOUTUBE_VISUAL_WORLD.md
 
 Nie automatisch übertragen:
 - YouTube-Stick-Figuren auf Reels
-- Reel-Human-Editorial-Regeln auf YouTube
+- Reel-Human-Head-Editorial-Regeln auf YouTube
 - 16:9 auf Reels
 - 9:16-Reel-Regeln auf YouTube
 
@@ -41,18 +41,19 @@ Verbindlich definiert in:
 - `config/image-styles.json`
 - `src/shared/fixed-visual-world.js`
 
-Der technische Legacy-ID `modern-countryball-explainer` bleibt nur zur Kompatibilität. Er ist **keine Countryball-Stilanweisung**.
+Es gibt **genau eine** aktive Reel-Bildwelt. Keine Legacy-Countryball-Welt, keine zweite Clarity-Welt und keine themenspezifischen Unter-Bildwelten.
 
-### Menschen
+### Menschen / Köpfe
 
 Wenn eine Person sinnvoll ist, muss sie eindeutig als vereinfachter echter Mensch lesbar sein:
-- natürlicher ovaler oder leicht runder menschlicher Kopf
+- natürlicher ovaler oder weich gerundeter menschlicher Kopf
+- Kopf darf editorial leicht betont sein, bleibt aber eindeutig menschlich
 - Hals/Oberkörper, wenn sichtbar
 - normale vereinfachte menschliche Proportionen
 - einfache Augen, Brauen, Nase, Mund, Haare und Kleidung nach Bedarf
-- Kopf/Portrait, Oberkörper, Hände oder Ganzkörper je nach Szene
+- Kopf/Close-up, Portrait, Oberkörper, Hände oder Ganzkörper je nach Szene
 
-Ein Mensch ist nicht in jedem Bild Pflicht. Wenn ein Objekt, Mechanismus, Dokument, Gebäude, Pflanze, Landschaft oder physischer Prozess klarer erklärt, darf dieses Motiv alleine verwendet werden.
+Ein Mensch oder Kopf ist **nicht in jedem Bild Pflicht**. Wenn ein Objekt, Mechanismus, Dokument, Gebäude, Pflanze, Landschaft oder physischer Prozess klarer erklärt, darf dieses Motiv alleine verwendet werden. Keinen Menschen nur zur Dekoration hinzufügen.
 
 ### Verboten
 
@@ -121,7 +122,7 @@ Der separate `google-flow-controller.txt` ist deaktiviert. Alle Steuerregeln ste
 nur aktuellen Bildabschnitt ausführen
 → genau 1 Bildgenerator-Aufruf
 → vollständig warten
-→ gegen Prompt UND Human Editorial Explainer prüfen
+→ gegen Prompt UND Human Head Editorial Reel prüfen
 → exakt als Bild NN.png umbenennen
 → in den gemeinsamen Reel-Ausgabeordner legen
 → Ablage prüfen
@@ -163,7 +164,7 @@ Neue Reels:
 
 ## Asset-Zuordnung
 
-Dateinummer ist nur Routing-Hilfe. Bilder tatsächlich gegen Narration, Bildtext, Prompt, Human Editorial Explainer und benachbarte Bildphasen prüfen. Unter 0,90 Konfidenz nicht raten.
+Dateinummer ist nur Routing-Hilfe. Bilder tatsächlich gegen Narration, Bildtext, Prompt, Human Head Editorial Reel und benachbarte Bildphasen prüfen. Unter 0,90 Konfidenz nicht raten.
 
 ## Finaler Reel-Export
 
