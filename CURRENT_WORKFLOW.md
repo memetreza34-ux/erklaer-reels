@@ -1,6 +1,6 @@
 # CURRENT WORKFLOW — VERBINDLICHE SINGLE SOURCE OF TRUTH
 
-**Stand: 2026-08-27**
+**Stand: 2026-08-28**
 
 Diese Datei ist die verbindliche Repo-weite Produktionsregel für neue Chats, Codex, Antigravity und andere Repo-Agenten.
 
@@ -259,6 +259,8 @@ Der Gesamtprompt enthält:
 5. Text-/Workflow-Regeln
 6. für jedes Bild erneut den Style-Lock plus konkreten Visual-Prompt
 
+Vor der ersten Generierung muss Google Flow genau **einen gemeinsamen Ausgabeordner für dieses Reel** erstellen. Alle fertigen Bilder dieses Laufs werden ausschließlich dort gesammelt.
+
 ### Hard Serial Lock
 
 Für jedes Bild zwingend:
@@ -268,11 +270,14 @@ Für jedes Bild zwingend:
 3. vollständig warten
 4. Ergebnis gegen konkreten Prompt **und Reel-Bildwelt** prüfen
 5. bei falschem Inhalt oder Stil dasselbe Bild neu erzeugen
-6. korrekt umbenennen
-7. Umbenennung prüfen
-8. erst dann nächstes Bild
+6. korrekt und fortlaufend als `Bild NN.png` umbenennen
+7. das umbenannte Bild in den gemeinsamen Reel-Ausgabeordner legen
+8. Dateiname und Ablage im gemeinsamen Ordner prüfen
+9. erst dann nächstes Bild starten
 
-Keine Queue, kein Batch, keine Parallelgenerierung, keine Mehrfachvarianten.
+Keine Queue, kein Batch, keine Parallelgenerierung, keine Mehrfachvarianten. Wenn Umbenennen oder Ablage nicht bestätigt werden kann, stoppt der Lauf statt weitere Bilder zu erzeugen.
+
+Nach Abschluss müssen alle fertigen Bilder vollständig und lückenlos in diesem einen gemeinsamen Ausgabeordner liegen.
 
 ---
 
@@ -410,6 +415,16 @@ npm run render:reel -- --dir "<reel-ordner>"
 
 ## 14. Abschlussprinzip
 
-Ein Reel ist erst fertig, wenn Script/Quellen geprüft, alle Bildphasen vorhanden und visuell bestätigt, die **verbesserte scene-first Reel-Bildwelt** eingehalten, finales Audio gemessen und synchronisiert, keine Untertitel vorhanden und Finalizer/Render-Validator bestanden sind.
+Ein Reel ist erst fertig, wenn Script/Quellen geprüft, alle Bildphasen vorhanden und visuell bestätigt, die **verbesserte scene-first Reel-Bildwelt** eingehalten, finales Audio gemessen und synchronisiert, keine Untertitel vorhanden, die Universal-Caption gültig und Finalizer/Render-Validator bestanden sind.
+
+Der einzige sichtbare finale Upload-Bereich ist:
+
+```text
+03-export/
+├── FERTIGES-REEL.mp4
+└── UNIVERSELLE-CAPTION.txt
+```
+
+Es gibt keinen separaten sichtbaren Caption- oder Video-Ordner. Die Universal-Caption muss zum konkreten Reel passen und `UNIVERSAL_CAPTION_POLICY.md` erfüllen.
 
 Nicht ausgeführte Stufen niemals als bestanden melden.
