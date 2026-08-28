@@ -106,13 +106,25 @@ Die verbindliche Nutzerdatei ist:
 
 `Bild 00` ist aktuell nur Cover und nicht automatisch Style-Master. Danach folgen alle Bildphasen fortlaufend in globaler Bildreihenfolge.
 
-Flow arbeitet streng seriell und fragt nach dem einmaligen Start nicht erneut nach `Go`:
+Flow arbeitet nach dem einmaligen Start vollständig selbstständig, aber streng seriell. Vor der ersten Generierung wird genau **ein gemeinsamer Ausgabeordner für dieses Reel** erstellt. Danach gilt für jedes Bild:
 
 ```text
-genau ein Bild → vollständig warten → gegen aktuellen Prompt prüfen → umbenennen → nächstes Bild
+genau ein Bild erzeugen
+→ vollständig warten
+→ gegen aktuellen Prompt prüfen
+→ exakt als Bild NN.png umbenennen
+→ in den gemeinsamen Reel-Ausgabeordner legen
+→ Ablage und Dateiname prüfen
+→ erst dann das nächste Bild erzeugen
 ```
 
-Keine Queue, kein Batch, keine Parallelgenerierung.
+Keine Queue, kein Batch, keine Parallelgenerierung, keine Mehrfachvarianten und kein erneutes `Go` zwischen den Bildern. Wenn Umbenennen oder Ablage nicht bestätigt werden kann, stoppt der Lauf statt weitere Bilder zu starten.
+
+Nach Abschluss liegen alle fertigen Bilder gemeinsam in diesem einen Flow-Ausgabeordner. Für den Repo-Import werden sie gesammelt nach folgendem sichtbaren Ordner gelegt:
+
+```text
+00-bildprompts/00-ALLE-BILDER-HIER-REIN/
+```
 
 ### 8. Quellen ausfüllen
 
@@ -179,6 +191,16 @@ npm run render:reel -- --dir "PFAD-ZUM-REEL"
 ```
 
 Jede geplante Bildphase muss die visuelle QC gegen ihren konkreten Inhalt und Prompt bestehen. Die letzte sichtbare Phase bleibt 0,7 Sekunden nach Sprecherende stehen.
+
+Der einzige sichtbare finale Upload-Bereich ist:
+
+```text
+03-export/
+├── FERTIGES-REEL.mp4
+└── UNIVERSELLE-CAPTION.txt
+```
+
+Die Universal-Caption muss vor dem finalen Export die Regeln aus `UNIVERSAL_CAPTION_POLICY.md` erfüllen.
 
 ## Keine Standardrückfragen
 
