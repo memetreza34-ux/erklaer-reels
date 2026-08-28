@@ -2,6 +2,23 @@
 
 `CURRENT_WORKFLOW.md` ist die verbindliche Single Source of Truth. Bei Widersprüchen gilt immer die dort definierte Priorität.
 
+## Pflicht vor jedem Commit
+
+`npm test` ausführen. **Die Suite muss grün sein.** Wer eine Regel ändert, zieht
+den zugehörigen Test mit — Test und Code dürfen nie gegenläufige Aussagen treffen.
+
+Wer eine Bildwelt-, Untertitel- oder Workflow-Regel anfasst, ändert sie an **allen**
+Stellen gleichzeitig: Runtime unter `src/shared/`, beide Configs unter `config/`,
+die Style-Bibel unter `knowledge/` sowie `AGENTS.md`, `CURRENT_WORKFLOW.md`,
+`README.md`, `CODEX_TASK.md`, `PRODUCTION_STATUS.md` und `docs/`. Eine halb
+umgestellte Regel ist schlimmer als gar keine: Im August 2026 trug das Repo drei
+widersprüchliche Bildwelt-Definitionen gleichzeitig, und jeder Agent baute je nach
+gelesener Datei ein anderes Reel. `test/visual-world-single-source.test.js` fängt
+genau diesen Fall ab.
+
+Die GitHub-Actions-CI startet nicht (Billing), daher greift serverseitig nichts.
+Der `pre-push`-Hook unter `scripts/hooks/` ist das einzige Netz.
+
 ## Neues Reel
 
 Bei „Mach ein neues Reel“ autonom:

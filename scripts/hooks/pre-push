@@ -1,0 +1,41 @@
+#!/bin/sh
+#
+# Blockiert einen Push, wenn die Testsuite nicht grün ist.
+#
+# Hintergrund: Die GitHub-Actions-CI dieses Repos startet nicht (Billing), daher
+# gibt es keinerlei serverseitiges Netz. Ohne diesen Hook fällt gar nicht auf,
+# wenn ein Lauf die Suite rot hinterlässt — genau so sind im August 2026
+# hunderte Commits mit roter Suite und drei widersprüchlichen Bildwelt-
+# Definitionen auf main gelandet.
+#
+# Umgehen im Notfall: git push --no-verify
+
+if [ -n "$ERKLAER_SKIP_PREPUSH" ]; then
+  echo "pre-push: übersprungen (ERKLAER_SKIP_PREPUSH gesetzt)"
+  exit 0
+fi
+
+repo_root=$(git rev-parse --show-toplevel) || exit 0
+cd "$repo_root" || exit 0
+
+if [ ! -d node_modules ]; then
+  echo "pre-push: node_modules fehlt — bitte zuerst 'npm ci' ausführen."
+  exit 1
+fi
+
+echo "pre-push: Testsuite läuft…"
+if npm test >/tmp/erklaer-prepush.log 2>&1; then
+  passed=$(grep -m1 '^# pass' /tmp/erklaer-prepush.log || grep -m1 'pass ' /tmp/erklaer-prepush.log)
+  echo "pre-push: Tests grün. $passed"
+  exit 0
+fi
+
+echo ""
+echo "  PUSH GESTOPPT — die Testsuite ist rot."
+echo ""
+grep -E '^.[[:space:]]*fail |^✖ ' /tmp/erklaer-prepush.log | grep -v 'failing tests' | sed 's/ ([0-9.]*ms)$//' | sort -u | head -20
+echo ""
+echo "  Vollständige Ausgabe: /tmp/erklaer-prepush.log"
+echo "  Trotzdem pushen:      git push --no-verify"
+echo ""
+exit 1

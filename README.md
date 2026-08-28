@@ -169,3 +169,36 @@ Keine nicht ausgeführte Stufe als bestanden ausgeben.
 - Node.js 20 oder neuer
 - FFmpeg und optional `ffprobe`
 - Remotion-Pakete in identischer Version
+
+## Tests und Schutz vor Regressionen
+
+Die vollständige Suite läuft mit:
+
+```bash
+npm test
+```
+
+**Die Suite muss vor jedem Commit grün sein.** Sie ist kein Beiwerk: mehrere
+Tests halten Regeln fest, die sonst still auseinanderlaufen — etwa
+`visual-world-single-source`, der prüft, dass Runtime, Configs und alle
+Policy-Dateien dieselbe Bildwelt nennen.
+
+### Warum das lokal abgesichert ist
+
+Die GitHub-Actions-CI dieses Repos **startet nicht**. Die Jobs brechen sofort mit
+„The job was not started because recent account payments have failed or your
+spending limit needs to be increased" ab; von 200 Läufen war keiner erfolgreich.
+Solange das Billing in den GitHub-Einstellungen nicht geklärt ist, gibt es kein
+serverseitiges Netz — und Branch Protection ist für private Repos ohne GitHub Pro
+ebenfalls nicht verfügbar.
+
+Deshalb liegt der Schutz in einem versionierten `pre-push`-Hook unter
+`scripts/hooks/`. Er lässt die Suite laufen und blockiert den Push, wenn sie rot
+ist. `npm install` aktiviert ihn automatisch; von Hand:
+
+```bash
+npm run hooks:install
+```
+
+Im Notfall umgehbar mit `git push --no-verify`. Das sollte die Ausnahme bleiben:
+Ohne diesen Hook fällt eine rote Suite überhaupt nicht auf.
