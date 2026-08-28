@@ -24,8 +24,11 @@ const LEGACY_HUMAN_REEL_FOLDERS = Object.freeze([
   '05-export'
 ]);
 
+const LEGACY_TECHNICAL_REEL_ENTRIES = Object.freeze([
+  'all-image-prompts'
+]);
+
 export const TECHNICAL_REEL_ENTRIES = Object.freeze([
-  'all-image-prompts',
   'assets-manifest.json',
   'audio',
   'caption',
@@ -89,9 +92,9 @@ async function ensureSymlink(linkPath, target, type) {
   }
 }
 
-async function removeLegacyHumanView(reelDirectory) {
+async function removeLegacyEntries(reelDirectory) {
   const removed = [];
-  for (const folder of LEGACY_HUMAN_REEL_FOLDERS) {
+  for (const folder of [...LEGACY_HUMAN_REEL_FOLDERS, ...LEGACY_TECHNICAL_REEL_ENTRIES]) {
     const folderPath = path.join(reelDirectory, folder);
     if (!(await exists(folderPath))) continue;
     await rm(folderPath, { recursive: true, force: true });
@@ -102,6 +105,7 @@ async function removeLegacyHumanView(reelDirectory) {
 
 async function listSceneDirectories(reelDirectory) {
   const scenesDirectory = path.join(reelDirectory, 'scenes');
+  if (!(await exists(scenesDirectory))) return [];
   const entries = await readdir(scenesDirectory, { withFileTypes: true });
   return entries
     .filter((entry) => entry.isDirectory() && /^scene-\d+$/.test(entry.name))
@@ -142,7 +146,7 @@ export async function ensureHumanReelView(reelDirectory, { hideTechnicalInFinder
     throw new Error(`Kein gültiger Reel-Ordner: reel.json fehlt unter ${absoluteReelDirectory}.`);
   }
 
-  const removedLegacyFolders = await removeLegacyHumanView(absoluteReelDirectory);
+  const removedLegacyFolders = await removeLegacyEntries(absoluteReelDirectory);
   const sceneDirectories = await listSceneDirectories(absoluteReelDirectory);
 
   await Promise.all([
@@ -155,7 +159,7 @@ export async function ensureHumanReelView(reelDirectory, { hideTechnicalInFinder
   await Promise.all([
     writeIfMissing(
       path.join(absoluteReelDirectory, '00-bildprompts', 'README.md'),
-      '# 00 – Bildprompts und Bilder\n\nFür Google Flow verwendest du die komplette Datei `99-alle-bildprompts.txt`. Google Flow erzeugt die Bilder streng einzeln: ein Bild fertigstellen → prüfen → sofort `Bild XX.png` benennen → in den gemeinsamen Bildordner legen → erst danach automatisch das nächste Bild starten. `Bild 00.png` ist das Cover.\n'
+      '# 00 – Bildprompts und Bilder\n\nFür Google Flow gibt es genau eine Masterdatei: `99-alle-bildprompts.txt`. Es gibt keine zweite Kopie unter `all-image-prompts/`. Google Flow erzeugt streng seriell: ein Bild fertigstellen → prüfen → `Bild XX.png` benennen → in den gemeinsamen Bildordner legen → erst danach das nächste Bild starten. `Bild 00.png` ist das Cover.\n'
     ),
     writeIfMissing(
       path.join(absoluteReelDirectory, 'inbox', 'numbered-images', 'README.md'),
@@ -165,7 +169,7 @@ export async function ensureHumanReelView(reelDirectory, { hideTechnicalInFinder
     writeIfMissing(path.join(absoluteReelDirectory, '02-audio', 'README.md'), '# 02 – Audio\n\nUnbearbeitetes Voice-over nach `AUDIO-HIER-EINFUEGEN`. Das optimierte Audio erscheint später unter `FINAL-AUDIO`.\n'),
     writeIfMissing(
       path.join(absoluteReelDirectory, '03-export', 'README.md'),
-      '# 03 – Export\n\nHier liegt am Ende alles, was du zum Hochladen auf deine Social-Media-Accounts brauchst:\n\n- `FERTIGES-REEL.mp4` – finales Reel\n- `UNIVERSELLE-CAPTION.txt` – eine plattformneutrale, zum konkreten Video passende Caption mit starkem und klarem Einstieg\n\nEs gibt keinen separaten sichtbaren Video- oder Caption-Ordner mehr.\n'
+      '# 03 – Export\n\nHier liegt am Ende alles, was du zum Hochladen auf deine Social-Media-Accounts brauchst:\n\n- `FERTIGES-REEL.mp4` – finales Reel\n- `UNIVERSELLE-CAPTION.txt` – plattformneutrale, zum Video passende Caption mit starkem und klarem Einstieg\n\nEs gibt keinen separaten sichtbaren Video- oder Caption-Ordner mehr.\n'
     ),
     writeIfMissing(
       path.join(absoluteReelDirectory, '99-technik', 'README.md'),
@@ -179,7 +183,6 @@ export async function ensureHumanReelView(reelDirectory, { hideTechnicalInFinder
   const links = [
     ['00-bildprompts/00-ALLE-BILDER-HIER-REIN', '../inbox/numbered-images', 'dir'],
     ['00-bildprompts/00-cover', '../cover', 'dir'],
-    ['00-bildprompts/99-alle-bildprompts.txt', '../all-image-prompts/all-image-prompts.txt', 'file'],
     ['01-voice-script/voice-script.txt', '../script/voice-script.txt', 'file'],
     ['02-audio/AUDIO-HIER-EINFUEGEN', '../inbox/audio', 'dir'],
     ['02-audio/FINAL-AUDIO', '../audio', 'dir'],
