@@ -1,6 +1,6 @@
 # Warum riecht Regen so besonders?
 
-Komplett neues Test-Reel für die neue feste Reel-Bildwelt **Clarity-First Editorial Reel**.
+Test-Reel für die feste Reel-Bildwelt **Human Editorial Explainer**.
 
 - Datum: 28.08.2026
 - Thema: Alltag / Wissenschaft / Natur
@@ -13,16 +13,19 @@ Komplett neues Test-Reel für die neue feste Reel-Bildwelt **Clarity-First Edito
 - Prompts: Englisch
 - sichtbarer Bildtext: Deutsch
 - Untertitel: aus
-- Style-ID aus Kompatibilitätsgründen weiterhin: `modern-countryball-explainer`
-- verbindliche Ausführung: `Clarity-First Editorial Reel`
+- Bildwelt: `Human Editorial Explainer`
+
+Wenn Menschen vorkommen, sind sie vereinfachte, eindeutig erkennbare echte Menschen — je nach Szene als Kopf/Portrait, Oberkörper oder Ganzkörper. Es gibt keine Countryballs oder Kugelmenschen. Nicht jedes Bild braucht einen Menschen, wenn Objekt, Naturprozess oder Umgebung die Aussage besser erklärt.
 
 ## Google Flow
 
-Für die komplette Bildgenerierung genau diese eine Datei verwenden:
+Für die komplette Bildgenerierung gibt es genau eine Datei:
 
 `00-bildprompts/99-alle-bildprompts.txt`
 
-Flow muss streng seriell arbeiten: genau ein Bild erzeugen, vollständig warten, prüfen, umbenennen, sofort in den gemeinsamen Ordner `00-FERTIGE-REEL-BILDER` legen und erst danach das nächste Bild starten.
+Es gibt keine zweite `all-image-prompts`-Spiegelkopie.
+
+Flow arbeitet streng seriell: genau ein Bild erzeugen, vollständig warten, prüfen, umbenennen, sofort in den gemeinsamen Ordner `00-FERTIGE-REEL-BILDER` legen und erst danach das nächste Bild starten.
 
 ## Export
 
