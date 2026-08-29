@@ -34,6 +34,19 @@ jobs:
           p.write_text(text.replace(old, new, 1), encoding='utf-8')
           PY
           python scripts/fix-four-production-points.py
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('src/core/production-brief.js')
+          text = p.read_text(encoding='utf-8')
+          tokens = [
+            'audioCue', 'startPercent', 'imageCount', 'imagePhases',
+            'timingBasis: "narration-audio-cue"', 'image-prompt.txt',
+            'image-prompt-02.txt', 'visualIdea', 'rationale', 'imageText'
+          ]
+          for token in tokens:
+              text = text.replace(f'`{token}`', f'\\`{token}\\`')
+          p.write_text(text, encoding='utf-8')
+          PY
       - name: Verify repository and current reel
         shell: bash
         run: |
