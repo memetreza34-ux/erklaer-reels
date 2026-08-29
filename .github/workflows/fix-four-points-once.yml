@@ -1,4 +1,4 @@
-name: Fix four production points once
+name: Finish exact image phase audio sync once
 
 on:
   push:
@@ -20,66 +20,303 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - name: Apply production fixes
+      - name: Bind internal image cues to real audio timestamps
         shell: bash
         run: |
           python - <<'PY'
           from pathlib import Path
-          p = Path('scripts/fix-four-production-points.py')
+
+          p = Path('src/core/timeline.js')
           text = p.read_text(encoding='utf-8')
-          old = "for scene in example['scenes']:\n    for index, image in enumerate(scene['images']):"
-          new = "for scene in example['scenes']:\n    if 'images' not in scene:\n        continue\n    for index, image in enumerate(scene['images']):"
-          if old not in text:
-              raise SystemExit('Beispiel-Migrationsblock nicht gefunden')
-          p.write_text(text.replace(old, new, 1), encoding='utf-8')
-          PY
-          python scripts/fix-four-production-points.py
-          python - <<'PY'
-          from pathlib import Path
-          p = Path('src/core/production-brief.js')
-          text = p.read_text(encoding='utf-8')
-          tokens = [
-            'audioCue', 'startPercent', 'imageCount', 'imagePhases',
-            'timingBasis: "narration-audio-cue"', 'image-prompt.txt',
-            'image-prompt-02.txt', 'visualIdea', 'rationale', 'imageText'
-          ]
-          for token in tokens:
-              text = text.replace(f'`{token}`', f'\\`{token}\\`')
+
+          start = text.index('async function ensureAudioSync(reelDirectory, scenes) {')
+          end = text.index('\nfunction createTimings(', start)
+          replacement = r'''async function ensureAudioSync(reelDirectory, scenes) {
+            const filePath = path.join(reelDirectory, 'timeline', 'audio-sync.json');
+            const current = await readJson(filePath, null);
+            const sceneCueById = new Map((current?.cueTimings ?? []).map((cue) => [cue.sceneId, cue]));
+            const phaseCueByTarget = new Map((current?.phaseCueTimings ?? []).map((cue) => [cue.targetId, cue]));
+            const phaseDefinitions = scenes.flatMap((scene) =>
+              normalizeSceneImagePhases(scene)
+                .filter((phase) => !phase.primary && String(phase.audioCue ?? '').trim())
+                .map((phase) => ({ ...phase, sceneId: scene.sceneId }))
+            );
+
+            const next = {
+              ...(current ?? {}),
+              version: 3,
+              audioDurationSeconds: numberOrNull(current?.audioDurationSeconds),
+              audioFile: current?.audioFile ?? null,
+              source: current?.source ?? 'pending',
+              timingStatus: current?.timingStatus ?? 'waiting-for-audio',
+              instructions: [
+                'Trage die echte Audiodauer ein.',
+                'cueTimings enthält die echten Zeitpunkte der narrativen Szenen-Cues.',
+                'phaseCueTimings enthält die echten Zeitpunkte der internen Bildwechsel-Cues.',
+                'cueTimeSeconds ist jeweils der Zeitpunkt im finalen Voice-over, an dem der angegebene audioCue tatsächlich gesprochen wird.',
+                'Das erste Bild einer Szene beginnt normalerweise leadInSeconds vor dem Szenen-Cue.',
+                'Eine zweite Bildphase beginnt exakt an ihrem phaseCueTimings.cueTimeSeconds; startPercent dient nur als Planungs-Fallback, solange dieser echte Zeitpunkt fehlt.',
+                'Prüfe jeden Szenen- und Bildwechsel gegen das finale Voice-over und den sichtbaren Bildinhalt.',
+                'Nach dem letzten gesprochenen Wort bleibt das letzte Bild automatisch kurz stehen.'
+              ],
+              cueTimings: scenes.map((scene, index) => {
+                const previous = sceneCueById.get(scene.sceneId) ?? {};
+                return {
+                  sceneId: scene.sceneId,
+                  audioCue: scene.audioCue ?? previous.audioCue ?? '',
+                  cueTimeSeconds: index === 0 ? 0 : numberOrNull(previous.cueTimeSeconds),
+                  leadInSeconds: numberOrNull(previous.leadInSeconds) ?? numberOrNull(scene.leadInSeconds) ?? 0.2,
+                  confidence: index === 0 ? 1 : numberOrNull(previous.confidence)
+                };
+              }),
+              phaseCueTimings: phaseDefinitions.map((phase) => {
+                const previous = phaseCueByTarget.get(phase.targetId) ?? {};
+                return {
+                  targetId: phase.targetId,
+                  sceneId: phase.sceneId,
+                  phaseId: phase.phaseId,
+                  audioCue: phase.audioCue,
+                  cueTimeSeconds: numberOrNull(previous.cueTimeSeconds),
+                  confidence: numberOrNull(previous.confidence)
+                };
+              })
+            };
+
+            if (!current || JSON.stringify(current) !== JSON.stringify(next)) await writeJson(filePath, next);
+            return next;
+          }
+          '''
+          text = text[:start] + replacement + text[end:]
+
+          start = text.index('function visualPhasesForScene(')
+          end = text.index('\nfunction qualityReport(', start)
+          replacement = r'''function visualPhasesForScene(scene, baseTiming, extendedTiming, manifest, legacyAsset, audioSync) {
+            const manifestByTarget = new Map((manifest.visuals ?? []).map((entry) => [entry.targetId, entry]));
+            const phaseCueByTarget = new Map((audioSync?.phaseCueTimings ?? []).map((entry) => [entry.targetId, entry]));
+            const definitions = normalizeSceneImagePhases(scene);
+            const starts = definitions.map((phase, index) => {
+              if (index === 0) return round(baseTiming.startSeconds);
+              const cue = phaseCueByTarget.get(phase.targetId);
+              const exactCueTime = numberOrNull(cue?.cueTimeSeconds);
+              const insideScene = exactCueTime !== null && exactCueTime > baseTiming.startSeconds && exactCueTime < baseTiming.endSeconds;
+              return insideScene
+                ? round(exactCueTime)
+                : round(baseTiming.startSeconds + baseTiming.durationSeconds * phase.startPercent);
+            });
+
+            return definitions.map((phase, index) => {
+              const asset = manifestByTarget.get(phase.targetId) ?? (phase.primary ? legacyAsset : null) ?? {};
+              const cue = phaseCueByTarget.get(phase.targetId);
+              const exactCueTime = numberOrNull(cue?.cueTimeSeconds);
+              const usesExactCue = index > 0 && exactCueTime !== null &&
+                exactCueTime > baseTiming.startSeconds && exactCueTime < baseTiming.endSeconds;
+              const startSeconds = starts[index];
+              const endSeconds = index < starts.length - 1 ? starts[index + 1] : round(extendedTiming.endSeconds);
+              return {
+                targetId: phase.targetId,
+                phaseId: phase.phaseId,
+                phaseOrder: phase.phaseOrder,
+                startPercent: phase.startPercent,
+                startSeconds,
+                endSeconds,
+                durationSeconds: round(Math.max(0, endSeconds - startSeconds)),
+                audioCue: phase.audioCue ?? '',
+                cueTimeSeconds: exactCueTime,
+                timingBasis: phase.timingBasis ?? (phase.primary ? 'scene-start' : 'planned-start-percent'),
+                timingStatus: phase.primary ? 'scene-start' : usesExactCue ? 'exact-audio-cue' : 'planned-cue-fallback',
+                imageFile: asset.expectedFile ?? `scenes/${scene.sceneId}/${phase.expectedImageFileName}`,
+                imageStatus: asset.status ?? phase.imageStatus ?? 'missing',
+                assetVerification: asset.verification ?? phase.assetVerification ?? null,
+                visualIdea: phase.visualIdea || scene.visualIdea || '',
+                imageText: phase.imageText || scene.imageText || ''
+              };
+            });
+          }
+          '''
+          text = text[:start] + replacement + text[end:]
+
+          text = text.replace(
+            "  const holdRange = sceneTimingRules.postVoiceHoldRangeSeconds ?? { min: 0.6, max: 0.8 };\n  const checks = [",
+            "  const holdRange = sceneTimingRules.postVoiceHoldRangeSeconds ?? { min: 0.6, max: 0.8 };\n  const cueTimedImagePhases = timelineScenes.flatMap((scene) => (scene.imagePhases ?? []).filter((phase) => phase.phaseOrder > 1 && String(phase.audioCue ?? '').trim()));\n  const exactImagePhaseSync = cueTimedImagePhases.every((phase) => phase.timingStatus === 'exact-audio-cue');\n  const checks = ["
+          )
+          text = text.replace(
+            "    ['exact-audio-sync', timingStatus === 'audio-synced', 'Nicht alle Audio-Cues besitzen verifizierte Zeitstempel.', strict ? 'error' : 'warning'],",
+            "    ['exact-audio-sync', timingStatus === 'audio-synced', 'Nicht alle Audio-Cues besitzen verifizierte Zeitstempel.', strict ? 'error' : 'warning'],\n    ['exact-image-phase-audio-sync', exactImagePhaseSync, 'Nicht alle internen Bildphasen-Cues besitzen echte Zeitstempel aus dem finalen Voice-over.', strict ? 'error' : 'warning'],"
+          )
+          text = text.replace(
+            '    const imagePhases = visualPhasesForScene(scene, baseTiming.scenes[index], item, manifest, legacyAsset);',
+            '    const imagePhases = visualPhasesForScene(scene, baseTiming.scenes[index], item, manifest, legacyAsset, audioSync);'
+          )
+          text = text.replace(
+            "  const allCuesExact = baseTiming.totalCueCount === 0 || baseTiming.exactCueCount === baseTiming.totalCueCount;\n  const timingStatus = durationKnown && allCuesExact ? 'audio-synced' : durationKnown ? 'audio-duration-synced' : 'estimated';",
+            "  const allCuesExact = baseTiming.totalCueCount === 0 || baseTiming.exactCueCount === baseTiming.totalCueCount;\n  const requiredPhaseCues = timelineScenes.flatMap((scene) => (scene.imagePhases ?? []).filter((phase) => phase.phaseOrder > 1 && String(phase.audioCue ?? '').trim()));\n  const allPhaseCuesExact = requiredPhaseCues.every((phase) => phase.timingStatus === 'exact-audio-cue');\n  const timingStatus = durationKnown && allCuesExact && allPhaseCuesExact ? 'audio-synced' : durationKnown ? 'audio-duration-synced' : 'estimated';"
+          )
+          text = text.replace('    version: 5,\n    reelId: reel.reelId,\n    createdAt:', '    version: 6,\n    reelId: reel.reelId,\n    createdAt:', 1)
+          text = text.replace("    imageCountMode: 'individual-per-reel',", "    imageCountMode: reel.imageCountMode ?? 'one-hook-two-standard',", 1)
+          text = text.replace("    imageCountMode: 'individual-per-reel',", "    imageCountMode: reel.imageCountMode ?? 'one-hook-two-standard',", 1)
           p.write_text(text, encoding='utf-8')
+
+          for doc in ['CURRENT_WORKFLOW.md', 'WORKFLOW_PHASEN.md', 'PRODUCTION_STATUS.md']:
+            p = Path(doc)
+            text = p.read_text(encoding='utf-8')
+            marker = 'startPercent wird aus der Position dieses Cues im Sprechertext abgeleitet'
+            if doc == 'CURRENT_WORKFLOW.md' and marker in text and 'phaseCueTimings' not in text:
+              text = text.replace(
+                marker + ' — **kein pauschales `0.5`-Raster**.',
+                marker + ' — **kein pauschales `0.5`-Raster**. Sobald das echte Voice-over vorliegt, trägt Phase 3 den tatsächlich gehörten Zeitpunkt zusätzlich unter `timeline/audio-sync.json -> phaseCueTimings[].cueTimeSeconds` ein; der finale Bildschnitt verwendet diesen echten Audio-Zeitpunkt.'
+              )
+            if doc == 'WORKFLOW_PHASEN.md' and 'internen Bildwechsel folgen den' in text and 'phaseCueTimings' not in text:
+              text = text.replace(
+                'in Phase 1 geplanten Narrations-Cues statt einem starren Mittelpunkt und lösen dabei die geplanten Sound-Typen gegen `assets/sfx/` auf',
+                'in Phase 1 geplanten Narrations-Cues statt einem starren Mittelpunkt; für den finalen strikten Lauf werden ihre echten Zeitpunkte in `timeline/audio-sync.json -> phaseCueTimings[]` eingetragen. Erst danach werden die geplanten Sound-Typen gegen `assets/sfx/` aufgelöst'
+              )
+            if doc == 'PRODUCTION_STATUS.md' and 'Der zweite Bildmoment einer Szene setzt an einem eigenen `audioCue`' in text and 'phaseCueTimings' not in text:
+              text = text.replace(
+                'Der zweite Bildmoment einer Szene setzt an einem eigenen `audioCue` aus tatsächlich gesprochenen Wörtern an; `startPercent` wird aus dessen Position in der Narration abgeleitet und steht mindestens 3 Sekunden.',
+                'Der zweite Bildmoment einer Szene setzt an einem eigenen `audioCue` aus tatsächlich gesprochenen Wörtern an. Phase 1 leitet daraus `startPercent` als Planungswert ab; Phase 3 trägt nach dem echten Voice-over den tatsächlich gehörten Zeitpunkt unter `timeline/audio-sync.json -> phaseCueTimings[].cueTimeSeconds` ein. Der finale Schnitt benutzt diesen Audio-Zeitpunkt und jede Bildphase steht mindestens 3 Sekunden.'
+              )
+            p.write_text(text, encoding='utf-8')
           PY
-      - name: Verify repository and current reel
+
+          cat > test/hook-and-phase-cue-policy.test.js <<'EOF'
+          import test from 'node:test';
+          import assert from 'node:assert/strict';
+          import { mkdtemp, mkdir, readFile, writeFile } from 'node:fs/promises';
+          import os from 'node:os';
+          import path from 'node:path';
+
+          import { inspectReelHook } from '../src/shared/reel-hook-quality.js';
+          import { findNarrationCueStartPercent } from '../src/shared/image-phase-cue.js';
+          import { buildMasterTimeline } from '../src/core/timeline.js';
+
+          async function writeJson(filePath, value) {
+            await mkdir(path.dirname(filePath), { recursive: true });
+            await writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
+          }
+
+          test('Hook-Gate akzeptiert Neugier und blockiert generische Einleitung', () => {
+            assert.equal(inspectReelHook({
+              narration: 'Südafrika hat nicht nur eine Hauptstadt. Tatsächlich verteilt das Land seine wichtigsten Staatsaufgaben auf drei verschiedene Städte.',
+              imageText: 'WARUM DREI HAUPTSTÄDTE?'
+            }).passed, true);
+            assert.equal(inspectReelHook({
+              narration: 'In diesem Video schauen wir uns heute ein interessantes Thema aus der Geografie einmal genauer an.',
+              imageText: 'DAS THEMA'
+            }).passed, false);
+          });
+
+          test('Planungswert einer Bildphase stammt aus ihrem gesprochenen Cue', () => {
+            const narration = 'Pretoria wurde zum Verwaltungszentrum. Dort sitzen heute die nationale Regierung, viele Ministerien und die Präsidentschaft in den Union Buildings.';
+            const value = findNarrationCueStartPercent(narration, 'Regierung, viele');
+            assert.ok(value > 0.4 && value < 0.55);
+            assert.equal(findNarrationCueStartPercent(narration, 'nicht gesprochen'), null);
+          });
+
+          async function buildAudioSyncedFixture(withExactPhaseCue) {
+            const root = await mkdtemp(path.join(os.tmpdir(), 'erklaer-phase-audio-'));
+            const durations = [5.5, 6.5, 6.5, 6.5, 6.5, 6.5, 6.5, 6.5, 7];
+            const starts = [];
+            let cursor = 0;
+            for (const duration of durations) { starts.push(cursor); cursor += duration; }
+            const scenes = durations.map((duration, index) => {
+              const sceneId = `scene-${String(index + 1).padStart(2, '0')}`;
+              const scene = {
+                sceneId,
+                order: index + 1,
+                title: index === 0 ? 'Hook' : `Szene ${index + 1}`,
+                narration: index === 1
+                  ? 'Erster Teil erklärt die Ausgangslage. Zweiter Moment zeigt den wichtigen Wechsel klar.'
+                  : `Sprechertext für ${sceneId} mit genügend Wörtern für diesen Testlauf.`,
+                audioCue: index === 0 ? 'Sprechertext für' : index === 1 ? 'Erster Teil' : `Sprechertext für`,
+                leadInSeconds: 0.2,
+                durationSeconds: duration,
+                subtitleCues: [],
+                expectedImageFileName: `${sceneId}.png`,
+                imageStatus: 'ready'
+              };
+              if (index === 1) {
+                scene.imagePhases = [
+                  {
+                    phaseId: 'scene-02-image-01', order: 1, startPercent: 0,
+                    expectedImageFileName: 'scene-02.png', imageStatus: 'ready', audioCue: 'Erster Teil', timingBasis: 'scene-start'
+                  },
+                  {
+                    phaseId: 'scene-02-image-02', order: 2, startPercent: 0.5,
+                    expectedImageFileName: 'scene-02-2.png', imageStatus: 'ready', audioCue: 'Zweiter Moment', timingBasis: 'narration-audio-cue'
+                  }
+                ];
+              }
+              return scene;
+            });
+
+            await mkdir(path.join(root, 'audio'), { recursive: true });
+            await writeFile(path.join(root, 'audio', 'voiceover.wav'), 'dummy');
+            await writeJson(path.join(root, 'reel.json'), { reelId: 'reel-01_test', targetDurationSeconds: 58, subtitlesEnabled: false, imageCountMode: 'one-hook-two-standard' });
+            await writeJson(path.join(root, 'scenes', 'scene-index.json'), scenes);
+            await writeJson(path.join(root, 'subtitles', 'subtitle-plan.json'), { enabled: false, cues: [] });
+            await writeJson(path.join(root, 'effects', 'effects-plan.json'), { scenes: [] });
+            await writeJson(path.join(root, 'assets-manifest.json'), {
+              audio: { expectedFile: 'audio/voiceover.wav', status: 'ready' },
+              scenes: scenes.map((scene) => ({ sceneId: scene.sceneId, expectedFile: `scenes/${scene.sceneId}/${scene.expectedImageFileName}`, status: 'ready' })),
+              visuals: [
+                { targetId: 'scene-02', expectedFile: 'scenes/scene-02/scene-02.png', status: 'ready' },
+                { targetId: 'scene-02-image-02', expectedFile: 'scenes/scene-02/scene-02-2.png', status: 'ready' }
+              ]
+            });
+            await writeJson(path.join(root, 'status.json'), {});
+            await writeJson(path.join(root, 'timeline', 'audio-sync.json'), {
+              version: 3,
+              audioDurationSeconds: 58,
+              cueTimings: scenes.map((scene, index) => ({
+                sceneId: scene.sceneId,
+                audioCue: scene.audioCue,
+                cueTimeSeconds: index === 0 ? 0 : starts[index] + 0.2,
+                leadInSeconds: 0.2,
+                confidence: 1
+              })),
+              phaseCueTimings: withExactPhaseCue ? [{
+                targetId: 'scene-02-image-02', sceneId: 'scene-02', phaseId: 'scene-02-image-02',
+                audioCue: 'Zweiter Moment', cueTimeSeconds: 8.8, confidence: 1
+              }] : []
+            });
+            return root;
+          }
+
+          test('finaler interner Bildschnitt nutzt den echten Audio-Zeitpunkt', async () => {
+            const root = await buildAudioSyncedFixture(true);
+            const result = await buildMasterTimeline(root, { probeAudio: false });
+            const phase = result.timeline.scenes[1].imagePhases[1];
+            assert.equal(phase.startSeconds, 8.8);
+            assert.equal(phase.timingStatus, 'exact-audio-cue');
+            assert.equal(result.timeline.timingStatus, 'audio-synced');
+            assert.equal(result.timeline.imageCountMode, 'one-hook-two-standard');
+            const saved = JSON.parse(await readFile(path.join(root, 'timeline', 'audio-sync.json'), 'utf8'));
+            assert.equal(saved.version, 3);
+            assert.equal(saved.phaseCueTimings[0].audioCue, 'Zweiter Moment');
+          });
+
+          test('fehlender echter Bildphasen-Zeitpunkt verhindert audio-synced', async () => {
+            const root = await buildAudioSyncedFixture(false);
+            const result = await buildMasterTimeline(root, { probeAudio: false });
+            const phase = result.timeline.scenes[1].imagePhases[1];
+            assert.equal(phase.timingStatus, 'planned-cue-fallback');
+            assert.equal(result.timeline.timingStatus, 'audio-duration-synced');
+            const check = result.qualityReport.checks.find((entry) => entry.id === 'exact-image-phase-audio-sync');
+            assert.equal(check.passed, false);
+          });
+          EOF
+      - name: Verify exact phase sync and repository
         shell: bash
         run: |
           npm test
           npm run import:reel -- --file input/reel-paket.json --check
           npm run export:prompts -- --dir "reels/2026-KW35_24-08_bis_30-08/sonntag/reel-01_warum-hat-sudafrika-drei-hauptstadte" --strict
           npm run check:content -- --dir "reels/2026-KW35_24-08_bis_30-08/sonntag/reel-01_warum-hat-sudafrika-drei-hauptstadte" --strict
-          node --input-type=module <<'NODE'
-          import assert from 'node:assert/strict';
-          import { inspectReelHook } from './src/shared/reel-hook-quality.js';
-          import { findNarrationCueStartPercent } from './src/shared/image-phase-cue.js';
-          assert.equal(inspectReelHook({
-            narration: 'Südafrika hat nicht nur eine Hauptstadt. Tatsächlich verteilt das Land seine wichtigsten Staatsaufgaben auf drei verschiedene Städte.',
-            imageText: 'WARUM DREI HAUPTSTÄDTE?'
-          }).passed, true);
-          assert.equal(inspectReelHook({
-            narration: 'In diesem Video schauen wir uns heute ein interessantes Thema aus der Geografie einmal genauer an.',
-            imageText: 'DAS THEMA'
-          }).passed, false);
-          const cut = findNarrationCueStartPercent(
-            'Pretoria wurde zum Verwaltungszentrum. Dort sitzen heute die nationale Regierung, viele Ministerien und die Präsidentschaft in den Union Buildings.',
-            'Regierung, viele'
-          );
-          assert.ok(cut > 0.4 && cut < 0.55);
-          NODE
-          ! grep -Rqi "No readable text" "reels/2026-KW35_24-08_bis_30-08/sonntag/reel-01_warum-hat-sudafrika-drei-hauptstadte/scenes"
-          ! grep -q "image-prompt-03.txt" PRODUCTION_STATUS.md
-          grep -q 'kein pauschales `0.5`-Raster' CURRENT_WORKFLOW.md
-      - name: Commit verified fixes
+      - name: Commit verified exact phase sync
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
-          git commit -m "Bildwechsel an Sprach-Cues binden und Hook absichern"
+          git commit -m "Bildphasen am echten Voice-over synchronisieren"
           git push
