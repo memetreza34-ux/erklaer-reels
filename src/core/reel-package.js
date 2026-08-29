@@ -31,8 +31,43 @@ export function validateReelPackage(paket) {
   if (!Array.isArray(szenen) || szenen.length < 8 || szenen.length > 10) {
     probleme.push(`scenes braucht 8 bis 10 Einträge, hat aber ${Array.isArray(szenen) ? szenen.length : 0}.`);
   }
-  if (!Array.isArray(paket.sources) || paket.sources.length < 2) {
+  // Dieselben Anforderungen wie die Quellen-QC, nur früher: Ein Paket mit schwachen
+  // Quellen soll gar kein Reel erzeugen, statt später am Render zu scheitern.
+  const quellen = Array.isArray(paket.sources) ? paket.sources : [];
+  if (quellen.length < 2) {
     probleme.push('sources braucht mindestens zwei Quellen.');
+  } else {
+    const hosts = new Set();
+    quellen.forEach((quelle, index) => {
+      const nr = index + 1;
+      for (const feld of ['title', 'url', 'accessed', 'type', 'supports']) {
+        if (!text(quelle[feld])) probleme.push(`Quelle ${nr}: Feld "${feld}" fehlt.`);
+      }
+      const url = text(quelle.url);
+      if (url && !url.startsWith('https://')) {
+        probleme.push(`Quelle ${nr}: URL muss mit https:// beginnen.`);
+      }
+      if (url) {
+        try {
+          hosts.add(new URL(url).hostname.replace(/^www\./, ''));
+        } catch {
+          probleme.push(`Quelle ${nr}: URL ist keine gültige Adresse.`);
+        }
+      }
+      if (text(quelle.supports).length < 20) {
+        probleme.push(`Quelle ${nr}: "supports" muss konkret nennen, welche Aussage die Quelle stützt.`);
+      }
+    });
+    if (hosts.size < 2) {
+      probleme.push('Die Quellen müssen von mindestens zwei verschiedenen Hosts stammen.');
+    }
+    const typen = quellen.map((quelle) => text(quelle.type).toLowerCase()).join(' ');
+    if (!/primär|offiziell|wissenschaft|studie|original/.test(typen)) {
+      probleme.push('Mindestens eine Primär-, offizielle oder wissenschaftliche Quelle ist nötig.');
+    }
+    if (!/sekundär|fach|unabhängig|enzyklopäd|journal/.test(typen)) {
+      probleme.push('Mindestens eine unabhängige Sekundär- oder Fachquelle ist nötig.');
+    }
   }
 
   (Array.isArray(szenen) ? szenen : []).forEach((szene, index) => {

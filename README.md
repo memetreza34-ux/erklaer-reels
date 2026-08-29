@@ -9,8 +9,8 @@ Produktionspipeline für visuelle Erklär-Reels mit offenem Themenuniversum und 
 - 55–60 Sekunden Voice-over
 - 155–175 deutsche Wörter
 - 8–10 narrative Szenen, Standard 9
-- Bildanzahl individuell pro Reel
-- pro Szene 1, 2 oder selten 3 Bildphasen
+- Hook mit einem Bildmoment, jede weitere Szene mit zwei
+- bei 9 Szenen ergibt das 17 Bilder
 - Voice-over 1,10x bei erhaltener Tonhöhe
 - −16 LUFS, höchstens −1,5 dBTP
 - keine Untertitel
@@ -183,18 +183,14 @@ Tests halten Regeln fest, die sonst still auseinanderlaufen — etwa
 `visual-world-single-source`, der prüft, dass Runtime, Configs und alle
 Policy-Dateien dieselbe Bildwelt nennen.
 
-### Warum das lokal abgesichert ist
+### Zwei Netze
 
-Die GitHub-Actions-CI dieses Repos **startet nicht**. Die Jobs brechen sofort mit
-„The job was not started because recent account payments have failed or your
-spending limit needs to be increased" ab; von 200 Läufen war keiner erfolgreich.
-Solange das Billing in den GitHub-Einstellungen nicht geklärt ist, gibt es kein
-serverseitiges Netz — und Branch Protection ist für private Repos ohne GitHub Pro
-ebenfalls nicht verfügbar.
+**GitHub Actions** ist die serverseitige Pflichtkontrolle: Jeder Push auf `main` und
+jeder Pull Request lässt die vollständige Suite laufen.
 
-Deshalb liegt der Schutz in einem versionierten `pre-push`-Hook unter
-`scripts/hooks/`. Er lässt die Suite laufen und blockiert den Push, wenn sie rot
-ist. `npm install` aktiviert ihn automatisch; von Hand:
+**Der `pre-push`-Hook** ist die lokale Schutzschicht davor. Er lässt die Suite schon
+vor dem Push laufen, damit eine rote Suite gar nicht erst im Remote landet.
+`npm install` aktiviert ihn automatisch; von Hand:
 
 ```bash
 npm run hooks:install

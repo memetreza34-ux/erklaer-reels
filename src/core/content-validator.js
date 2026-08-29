@@ -110,8 +110,10 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
 
   addCheck(checks, 'subtitles-disabled', reel.subtitlesEnabled === false,
     'Untertitel müssen für dieses Format deaktiviert sein.');
-  addCheck(checks, 'image-count-mode', !reel.imageCountMode || reel.imageCountMode === 'individual-per-reel',
-    'imageCountMode darf nur individual-per-reel oder bei alten Reels leer sein.');
+  // 'individual-per-reel' bleibt für Archiv-Reels gültig, neue tragen den festen Modus.
+  addCheck(checks, 'image-count-mode',
+    !reel.imageCountMode || ['one-hook-two-standard', 'individual-per-reel'].includes(reel.imageCountMode),
+    'imageCountMode muss one-hook-two-standard sein (Archiv-Reels: individual-per-reel).');
   addCheck(checks, 'image-count-range', totalPlannedImages >= sceneIndex.length && totalPlannedImages <= sceneIndex.length * 3,
     `Geplant sind ${totalPlannedImages} Bilder für ${sceneIndex.length} Szenen; erlaubt sind ein bis drei Bildphasen pro Szene.`);
   addCheck(checks, 'planned-image-count-match', reel.plannedImageCount == null || Number(reel.plannedImageCount) === totalPlannedImages,
@@ -400,7 +402,7 @@ async function finalize(reelDirectory, checks, metadata = {}) {
   const reelPath = path.join(reelDirectory, 'reel.json');
   const reel = await readJson(reelPath, null);
   if (reel) {
-    reel.imageCountMode = 'individual-per-reel';
+    reel.imageCountMode = 'one-hook-two-standard';
     reel.plannedImageCount = metadata.totalPlannedImages ?? reel.plannedImageCount;
     reel.status = passed ? 'content-ready' : 'content-needs-review';
     await writeJson(reelPath, reel);

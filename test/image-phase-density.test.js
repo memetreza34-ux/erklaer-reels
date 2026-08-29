@@ -119,3 +119,33 @@ test('Regelwerk und Gate beschreiben dieselbe Untergrenze', async () => {
   // Ohne schnellen Wechsel bekäme jede Szene wieder nur ein Bild.
   assert.ok(interval.max <= 4.5, 'Ein Bild darf nicht beliebig lange stehen bleiben');
 });
+
+test('reel.json nennt die tatsächliche Bildanzahl, nicht die Szenenzahl', async () => {
+  const { createReelWorkspace } = await import('../src/core/workspace.js');
+  const { mkdtemp, readFile, rm } = await import('node:fs/promises');
+  const os = await import('node:os');
+
+  const outputRoot = await mkdtemp(path.join(os.tmpdir(), 'erklaer-count-'));
+  try {
+    const result = await createReelWorkspace({
+      title: 'Warum haben manche Länder zwei Hauptstädte?',
+      script: 'Dieses Rohscript wird später zu einem vollständigen Ein-Minuten-Reel erweitert und dient als Platzhalter.',
+      date: new Date('2026-09-21T12:00:00'),
+      outputRoot
+    });
+
+    const reel = JSON.parse(await readFile(path.join(result.reelDirectory, 'reel.json'), 'utf8'));
+    const scenes = JSON.parse(await readFile(path.join(result.reelDirectory, 'scenes', 'scene-index.json'), 'utf8'));
+    const tatsaechlich = scenes.reduce((summe, szene) => summe + szene.imagePhases.length, 0);
+
+    // Vorher stand hier die Szenenzahl, obwohl doppelt so viele Bildphasen angelegt wurden.
+    assert.equal(reel.plannedImageCount, tatsaechlich);
+    assert.equal(reel.plannedImageCount, 1 + (reel.sceneCount - 1) * 2);
+    assert.equal(reel.imageCountMode, 'one-hook-two-standard');
+
+    const status = JSON.parse(await readFile(path.join(result.reelDirectory, 'status.json'), 'utf8'));
+    assert.equal(status.plannedImageCount, tatsaechlich);
+  } finally {
+    await rm(outputRoot, { recursive: true, force: true });
+  }
+});

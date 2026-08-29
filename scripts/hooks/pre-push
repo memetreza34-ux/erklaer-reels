@@ -2,11 +2,10 @@
 #
 # Blockiert einen Push, wenn die Testsuite nicht grün ist.
 #
-# Hintergrund: Die GitHub-Actions-CI dieses Repos startet nicht (Billing), daher
-# gibt es keinerlei serverseitiges Netz. Ohne diesen Hook fällt gar nicht auf,
-# wenn ein Lauf die Suite rot hinterlässt — genau so sind im August 2026
-# hunderte Commits mit roter Suite und drei widersprüchlichen Bildwelt-
-# Definitionen auf main gelandet.
+# GitHub Actions prüft jeden Push serverseitig. Dieser Hook ist die Schicht davor:
+# Er hält eine rote Suite lokal auf, statt sie erst im Remote sichtbar werden zu
+# lassen. Wichtig bleibt er auch deshalb, weil ein direkter Push auf main von der
+# CI nicht mehr zurückgerollt werden kann — sie meldet den Fehler erst danach.
 #
 # Umgehen im Notfall: git push --no-verify
 

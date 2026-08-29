@@ -100,7 +100,7 @@ async function ensureInspectionFile(reelDirectory, assets, rules) {
   const byId = new Map((current?.assets ?? []).map((entry) => [entry.assetId, entry]));
   const next = {
     version: 10,
-    imageCountMode: 'individual-per-reel',
+    imageCountMode: 'one-hook-two-standard',
     plannedImageCount: assets.filter((asset) => asset.kind === 'scene').length,
     subtitlesEnabled: false,
     instructions: [

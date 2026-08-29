@@ -117,3 +117,27 @@ test('die Beispielvorlage im Repo passt zum erwarteten Format', async () => {
   assert.ok(echteSzenen[0].images.length === 1, 'Die Hook hat einen Bildmoment');
   assert.ok(echteSzenen[1].images.length === 2, 'Standardszenen haben zwei Bildmomente');
 });
+
+test('lehnt schwache Quellen ab, bevor ein Reel entsteht', () => {
+  const paket = bauePaket();
+
+  const ohneHttps = structuredClone(paket);
+  ohneHttps.sources[0].url = 'http://www.gov.za/beispiel';
+  assert.match(validateReelPackage(ohneHttps).join(' '), /https:\/\//);
+
+  const gleicherHost = structuredClone(paket);
+  gleicherHost.sources[1].url = 'https://www.gov.za/anderes';
+  assert.match(validateReelPackage(gleicherHost).join(' '), /verschiedenen Hosts/);
+
+  const ohneSekundaer = structuredClone(paket);
+  ohneSekundaer.sources[1].type = 'Primärquelle';
+  assert.match(validateReelPackage(ohneSekundaer).join(' '), /Sekundär- oder Fachquelle/);
+
+  const leeresFeld = structuredClone(paket);
+  leeresFeld.sources[0].accessed = '';
+  assert.match(validateReelPackage(leeresFeld).join(' '), /"accessed" fehlt/);
+
+  const vageBegruendung = structuredClone(paket);
+  vageBegruendung.sources[0].supports = 'Belegt.';
+  assert.match(validateReelPackage(vageBegruendung).join(' '), /supports/);
+});

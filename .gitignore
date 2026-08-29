@@ -94,7 +94,9 @@ content/**/inbox/audio/*.m4a
 content/**/inbox/audio/*.aac
 content/**/inbox/audio/*.flac
 content/**/inbox/audio/*.ogg
-# Die Sounds unter assets/sfx/ sind selbst erzeugt (scripts/generate-sfx.js) und
-# deshalb bewusst eingecheckt. Nur die Kopien in den Reels bleiben draußen.
+# Die MP3s unter assets/sfx/ sind selbst erzeugt (scripts/generate-sfx.js) und
+# bewusst eingecheckt. Ausgeschlossen bleiben nur die WAV-Zwischenstufen des
+# Generators und die Kopien, die beim Timeline-Bau in die Reels wandern.
 assets/sfx/*.wav
 reels/**/sfx/
+ki_app_script.txt

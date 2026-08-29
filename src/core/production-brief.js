@@ -51,7 +51,7 @@ export async function prepareReelProduction(reelDirectory) {
     createdAt: new Date().toISOString(),
     phase: 'content-production',
     subtitlesEnabled: false,
-    imageCountMode: 'individual-per-reel',
+    imageCountMode: 'one-hook-two-standard',
     visualWorldMode: 'fixed',
     visualStyleId: FIXED_VISUAL_STYLE_ID,
     tasks: [
@@ -125,7 +125,7 @@ Erstelle ein vollständiges Erklär-Reel mit ungefähr einer Minute Voice-over-L
 7. Plane danach die Bilddichte **für jede Szene einzeln**. Jede Szene bekommt normalerweise 1 Bild, 2 Bilder bei echtem visuellem Fortschritt und 3 nur selten.
 8. Wenn ein einziges Still-Bild ungefähr 3,5–4 Sekunden oder länger stehen würde, prüfe aktiv eine zweite Bildphase. Das ist ein Prüftrigger, keine starre Pflicht.
 9. Wähle Bildphasen nach Inhalt, nicht nach Quote. Sinnvolle Wechsel sind Überblick → Detail, Ursache → Folge, Ausgangslage → Konsequenz oder äußere Handlung → Mechanismus-Detail.
-10. Keine feste Gesamtzahl wie 13, 16 oder 18 erzwingen. Schreibe die tatsächliche Summe nach \`reel.json.plannedImageCount\` und setze \`imageCountMode: "individual-per-reel"\`.
+10. Die Hook bekommt einen Bildmoment, jede weitere Szene zwei. Schreibe die tatsächliche Summe nach \`reel.json.plannedImageCount\` und setze \`imageCountMode: "one-hook-two-standard"\`.
 11. Hinterlege pro Szene \`imageCount\` und \`imagePhases\`. Die erste Phase beginnt mit \`startPercent: 0\`; weitere Phasen liegen streng aufsteigend innerhalb 0–1.
 12. Die erste Bildphase nutzt \`image-prompt.txt\`. Zusätzliche Phasen nutzen \`image-prompt-02.txt\`, \`image-prompt-03.txt\`. Jede Phase bekommt eigene \`visualIdea\`, optional eigenen \`imageText\` und \`rationale\`.
 13. Aktualisiere \`scenes/scene-index.json\` und jede \`scene.json\` synchron.

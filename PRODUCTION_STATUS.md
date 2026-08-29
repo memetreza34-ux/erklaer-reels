@@ -1,6 +1,24 @@
 # Produktionsstatus
 
-**Status: PRODUKTIONSLOGIK BEREIT — FESTE BILDWELT AKTIV — E2E-PRODUKTIONSTEST AUSSTEHEND**
+**Status: PRODUKTIONSLOGIK BEREIT — FESTE BILDWELT AKTIV — TECHNISCHER E2E BESTANDEN — GOLDEN-E2E MIT ECHTEN ASSETS AUSSTEHEND**
+
+## Was der E2E-Durchlauf am 2026-08-29 gezeigt hat
+
+Die vollständige Kette wurde einmal durchlaufen: Reel anlegen, Script und alle
+Bildprompts ausschreiben, Quellen belegen, Assets zuordnen, Audio-Pacing messen,
+Timeline bauen, visuelle Freigabe eintragen, finalisieren und rendern.
+
+Ergebnis: `03-export/FERTIGES-REEL.mp4`, H.264, 1080x1920, 30 fps, 58,75 Sekunden,
+AAC-Ton, 9 Szenen, 17 Bilder.
+
+Dabei kamen zwei Blocker ans Licht, die inzwischen behoben sind: Die Inhaltsprüfung
+verlangte noch eine leere `visualStyleId` und lehnte damit jedes neue Reel ab, und
+der Renderer scheiterte am eigenen Ausgabe-Symlink, weil Remotion beim Bündeln
+`realpath` auf jeden Eintrag im Reel-Ordner ruft.
+
+**Noch offen ist der Golden-E2E mit echten Assets:** Bilder aus Google Flow statt
+Platzhaltern und ein echtes Voice-over statt eines Testsignals. Erst danach gilt der
+Status als vollständig produktionsvalidiert.
 
 ## Verbindliche Quelle
 
