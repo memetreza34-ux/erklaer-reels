@@ -4,6 +4,16 @@
 
 Diese Datei ist die verbindliche Repo-weite Produktionsregel für neue Chats, Codex, Antigravity und andere Repo-Agenten.
 
+## Drei Produktionsphasen
+
+Jedes Reel entsteht in drei Phasen mit klar getrennten Rollen:
+
+1. **ChatGPT** legt das Reel an und schreibt Script, Bildprompts und Effektplan
+2. **Arman** erzeugt Voice-over und Bilder und legt beide im Reel-Ordner ab
+3. **Antigravity** führt alles zusammen und rendert die MP4
+
+Ausführlich in `WORKFLOW_PHASEN.md`.
+
 ## Priorität
 
 1. aktuelle ausdrückliche Nutzeranweisung

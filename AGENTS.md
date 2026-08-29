@@ -2,6 +2,12 @@
 
 `CURRENT_WORKFLOW.md` ist die verbindliche Single Source of Truth. Bei Widersprüchen gilt immer die dort definierte Priorität.
 
+## Drei Produktionsphasen
+
+Phase 1 ChatGPT (Anlegen, Script, Prompts, Effekte) → Phase 2 Arman (Audio, Bilder) →
+Phase 3 Antigravity (Zusammenführen, Rendern). Wer welche Befehle ausführt, steht in
+`WORKFLOW_PHASEN.md`. Keine Phase überspringt oder übernimmt die Aufgaben einer anderen.
+
 ## Pflicht vor jedem Commit
 
 `npm test` ausführen. **Die Suite muss grün sein.** Wer eine Regel ändert, zieht
