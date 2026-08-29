@@ -109,6 +109,17 @@ export function validateReelPackage(paket) {
         if (text(bild.prompt).length < 180) {
           probleme.push(`Szene ${nr}, Bild ${bildIndex + 1}: prompt fehlt oder ist unter 180 Zeichen.`);
         }
+        // Ein Bild ganz ohne Text wirkt im Feed leer. Jeder Bildmoment bekommt ein
+        // kurzes deutsches Stichwort; das Titelbild trägt die Überschrift des Reels.
+        const bildText = text(bild.imageText);
+        if (!bildText) {
+          probleme.push(`Szene ${nr}, Bild ${bildIndex + 1}: imageText fehlt. Jedes Bild braucht ein kurzes deutsches Stichwort.`);
+        } else {
+          const woerter = bildText.split(/\s+/).filter(Boolean).length;
+          if (woerter > 5) {
+            probleme.push(`Szene ${nr}, Bild ${bildIndex + 1}: imageText hat ${woerter} Wörter, erlaubt sind 1 bis 5.`);
+          }
+        }
       });
     }
   });

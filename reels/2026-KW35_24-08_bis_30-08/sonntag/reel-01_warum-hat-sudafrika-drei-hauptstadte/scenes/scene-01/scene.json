@@ -3,7 +3,7 @@
   "order": 1,
   "title": "Hook",
   "narration": "Südafrika hat nicht nur eine Hauptstadt. Tatsächlich verteilt das Land seine wichtigsten Staatsaufgaben auf drei verschiedene Städte.",
-  "imageText": "DREI HAUPTSTÄDTE?",
+  "imageText": "WARUM DREI HAUPTSTÄDTE?",
   "visualIdea": "Eine Südafrika-Kugel steht vor drei klar getrennten Stadtmarkern für Pretoria, Kapstadt und Bloemfontein.",
   "continuityNotes": "Hook bleibt statisch und setzt sofort die überraschende Kernfrage.",
   "audioCue": "Südafrika hat nicht",
@@ -20,7 +20,7 @@
       "promptFileName": "image-prompt.txt",
       "expectedImageFileName": "scene-01.png",
       "visualIdea": "A surprised South Africa countryball centered beneath three separate city markers labeled Pretoria, Kapstadt and Bloemfontein, each marker visually equal.",
-      "imageText": "DREI HAUPTSTÄDTE?",
+      "imageText": "WARUM DREI HAUPTSTÄDTE?",
       "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
       "imageStatus": "missing",
       "assetVerification": null

@@ -71,6 +71,10 @@ Vollständig zu füllen sind:
 - `script/voice-script.txt` — 155–175 Wörter, ein deutscher Erzähler
 - pro Szene `narration`, `imageText`, `visualIdea`, `continuityNotes`, `audioCue`
 - pro Bildphase ein englischer Bildprompt in `image-prompt.txt` bzw. `image-prompt-02.txt`
+- pro Bildphase ein kurzer deutscher `imageText` mit 1–5 Wörtern — **kein Bild bleibt
+  ohne Text**, sonst wirkt es im Feed leer
+- der `imageText` von Szene 1 ist die **Überschrift des Reels** und steht im fertigen
+  Bild groß im oberen Bereich
 - `effects/effects-plan.json` — Kamerabewegung und Soundeffekte je Szene
 - `caption/caption.txt` — Text plus 3–6 Hashtags
 - `sources/sources.md` — mindestens zwei unabhängige Quellen mit unterschiedlichen Domains

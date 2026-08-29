@@ -1,11 +1,11 @@
 {
-  "createdAt": "2026-08-29T11:08:03.984Z",
+  "createdAt": "2026-08-29T11:10:49.621Z",
   "passed": true,
   "summary": {
     "passedChecks": 339,
     "failedChecks": 0,
-    "warnings": 0,
-    "totalChecks": 339
+    "warnings": 6,
+    "totalChecks": 345
   },
   "metadata": {
     "totalDuration": 58,
@@ -258,7 +258,7 @@
     },
     {
       "id": "scene-01-image-01-image-text-prompt",
-      "passed": true,
+      "passed": false,
       "level": "warning",
       "message": "scene-01-image-01: imageText steht nicht exakt im Bildprompt."
     },
@@ -419,6 +419,18 @@
       "message": "scene-02-image-02: expectedImageFileName fehlt."
     },
     {
+      "id": "scene-02-image-02-image-text-unique",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-02-image-02: Der sichtbare Bildtext wurde bereits in keinem Bild verwendet."
+    },
+    {
+      "id": "scene-02-image-02-image-text-prompt",
+      "passed": false,
+      "level": "warning",
+      "message": "scene-02-image-02: imageText steht nicht exakt im Bildprompt."
+    },
+    {
       "id": "scene-02-long-static-review",
       "passed": true,
       "level": "warning",
@@ -573,6 +585,18 @@
       "passed": true,
       "level": "error",
       "message": "scene-03-image-02: expectedImageFileName fehlt."
+    },
+    {
+      "id": "scene-03-image-02-image-text-unique",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-03-image-02: Der sichtbare Bildtext wurde bereits in keinem Bild verwendet."
+    },
+    {
+      "id": "scene-03-image-02-image-text-prompt",
+      "passed": false,
+      "level": "warning",
+      "message": "scene-03-image-02: imageText steht nicht exakt im Bildprompt."
     },
     {
       "id": "scene-03-long-static-review",
@@ -1236,9 +1260,9 @@
     },
     {
       "id": "scene-07-image-02-image-text-unique",
-      "passed": true,
+      "passed": false,
       "level": "warning",
-      "message": "scene-07-image-02: Der sichtbare Bildtext wurde bereits in keinem Bild verwendet."
+      "message": "scene-07-image-02: Der sichtbare Bildtext wurde bereits in scene-03-image-02 verwendet."
     },
     {
       "id": "scene-07-image-02-image-text-prompt",
@@ -1401,6 +1425,18 @@
       "passed": true,
       "level": "error",
       "message": "scene-08-image-02: expectedImageFileName fehlt."
+    },
+    {
+      "id": "scene-08-image-02-image-text-unique",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-08-image-02: Der sichtbare Bildtext wurde bereits in keinem Bild verwendet."
+    },
+    {
+      "id": "scene-08-image-02-image-text-prompt",
+      "passed": false,
+      "level": "warning",
+      "message": "scene-08-image-02: imageText steht nicht exakt im Bildprompt."
     },
     {
       "id": "scene-08-long-static-review",
@@ -2010,7 +2046,7 @@
     },
     {
       "id": "title-image-text-in-prompt",
-      "passed": true,
+      "passed": false,
       "level": "warning",
       "message": "Der Hook-Text von Szene 1 steht nicht exakt im Bildprompt."
     },

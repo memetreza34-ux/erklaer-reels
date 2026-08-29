@@ -146,14 +146,26 @@ Technische Details sind nur dann erlaubt, wenn sie für die Erklärung notwendig
 
 Prompts sind Englisch. Sichtbarer Bildtext ist Deutsch.
 
+**Fast jedes Bild trägt Text.** Ein Bild ohne jedes Wort wirkt im Feed leer und
+verschenkt die Fläche. Regel: ein kurzes deutsches Stichwort pro Bildmoment.
+
 - nur exakt geplanter Text
-- meist 1–5 Wörter
+- 1–5 Wörter
 - stark und gut lesbar
 - nur einmal im Bild
 - kein zusätzlicher englischer Text
 - keine Fantasiewörter oder Pseudo-Schrift
-- wenn kein Text geplant ist: keinerlei lesbarer Text
 - keine doppelte Headline oben und unten
+
+### Das Titelbild
+
+Bild 01 ist die erste Szene und zugleich das Cover. Es trägt die **Überschrift des
+gesamten Reels** als kräftige Zeile im oberen Bereich, klar abgesetzt von der
+Illustration darunter. Sie muss auf einem kleinen Smartphone-Display sofort lesbar
+sein und ohne Ton neugierig machen.
+
+Die übrigen Bilder integrieren ihr Stichwort in die Komposition, ohne das Hauptmotiv
+zu verdecken.
 
 ## Nicht verwenden
 

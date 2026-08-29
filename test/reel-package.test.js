@@ -22,7 +22,7 @@ function baueSzene(index, woerter) {
     soundEffects: index === 0 ? [] : [{ type: 'pop', atPercent: 0.05, visualEvent: 'Wechsel', reason: 'Markiert den Schnitt.' }],
     images: Array.from({ length: anzahl }, (_, j) => ({
       prompt: `Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. ${'Detailbeschreibung '.repeat(12)}Szene ${index + 1} Bild ${j + 1}.`,
-      imageText: j === 0 ? `TEXT ${index + 1}` : '',
+      imageText: j === 0 ? `TEXT ${index + 1}` : `DETAIL ${index + 1}`,
       startPercent: j === 0 ? 0 : 0.5
     }))
   };
@@ -160,4 +160,15 @@ test('lehnt eine Caption ab, die der Renderer später zurückweisen würde', () 
   const ohneHook = structuredClone(paket);
   ohneHook.caption = `Kurz.\n\n${'Wort '.repeat(70)}\n\n#a #b #c`;
   assert.match(validateReelPackage(ohneHook).join(' '), /Hook/);
+});
+
+test('verlangt für jedes Bild ein kurzes deutsches Stichwort', () => {
+  const ohneText = bauePaket();
+  ohneText.scenes[3].images[1].imageText = '';
+  // Ein Bild ohne Wort wirkt im Feed leer — das soll schon im Paket auffallen.
+  assert.match(validateReelPackage(ohneText).join(' '), /imageText fehlt/);
+
+  const zuLang = bauePaket();
+  zuLang.scenes[2].images[0].imageText = 'Dieser Bildtext ist deutlich zu lang für ein Reel';
+  assert.match(validateReelPackage(zuLang).join(' '), /erlaubt sind 1 bis 5/);
 });

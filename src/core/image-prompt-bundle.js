@@ -98,9 +98,17 @@ export async function collectImagePrompts(reelDirectory) {
 }
 
 function visibleTextRule(entry) {
+  const istTitelbild = Number(entry.sceneOrder) === 1 && Number(entry.phaseOrder ?? 1) === 1;
+
   if (entry.allowedVisibleText) {
-    return `Visible text rule for this image: the ONLY readable text allowed is exactly the German phrase "${entry.allowedVisibleText}". Keep the spelling exact. No other readable text and no English visible text.`;
+    // Das Titelbild trägt die Überschrift des Reels und braucht sie oben und groß —
+    // sie muss als Cover im Feed sofort lesbar sein.
+    const platzierung = istTitelbild
+      ? ' Place it as a bold headline across the upper area of the image, clearly separated from the illustration below, large enough to read on a small phone screen.'
+      : ' Integrate it cleanly into the composition without covering the main subject.';
+    return `Visible text rule for this image: the ONLY readable text allowed is exactly the German phrase "${entry.allowedVisibleText}".${platzierung} Keep the spelling exact. No other readable text and no English visible text.`;
   }
+
   return 'Visible text rule for this image: no readable text anywhere in the image. No English, pseudo-text, labels, logos or watermark.';
 }
 
