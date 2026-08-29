@@ -46,7 +46,12 @@
       "min": 0.6,
       "max": 0.8
     },
-    "strictTimelineBalance": true
+    "strictTimelineBalance": true,
+    "minimumImagePhaseSeconds": 1.2,
+    "recommendedImagePhaseSeconds": {
+      "min": 1.4,
+      "max": 3.2
+    }
   },
   "visualContinuity": {
     "requireSceneMeaningMatch": true,

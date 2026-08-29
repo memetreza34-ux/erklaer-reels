@@ -107,15 +107,34 @@ Jeder Prompt beantwortet:
 
 Wenn kein Text geplant ist, darf keinerlei lesbarer Text erscheinen. Keine Logos, Wasserzeichen, Workflow-Labels oder Dateinamen im Bild.
 
-## 5. Bildanzahl ist individuell
+## 5. Bildanzahl folgt dem Satzbau
 
 Narrative Szenenzahl und Bildanzahl sind getrennt.
 
+**Grundregel: Jeder Hauptsatz und jeder eigenständige Nebensatz bekommt möglichst
+einen eigenen Bildmoment.** Die Bildanzahl richtet sich nach dem Satzbau, nicht nach
+einer festen Sekundenzahl.
+
 - 12–14 narrative Szenen
-- pro Szene 1, 2 oder selten 3 Bildphasen
-- keine feste Gesamtbildzahl erzwingen
-- weitere Bildphase nur bei echtem visuellen Fortschritt
-- wenn ein Still ca. 3,5–4 Sekunden oder länger stehen würde, zusätzliche Bildphase aktiv prüfen
+- pro Szene 2 oder 3 Bildphasen als Normalfall, 1 nur bei einem sehr kurzen Gedanken
+- ein Bild steht 1,4 bis 3,2 Sekunden, im Schnitt etwa 2
+- bei rund 58 Sekunden ergibt das ungefähr **20 bis 30 Bilder**
+- keine feste Gesamtbildzahl erzwingen; ein langer Satz mit mehreren Teilaussagen
+  bekommt mehr Bilder als ein kurzer
+
+### Nicht zu schnell
+
+Unter **1,2 Sekunden** ist ein Bild nicht mehr erfassbar. Das ist eine harte Grenze:
+Der Timeline-Check `<szene>-image-phase-duration` blockiert kürzere Phasen.
+
+Wenn ein Satz so kurz ist, dass sein Bild unter 1,4 Sekunden fiele, gehört er mit dem
+Nachbarsatz in einen gemeinsamen Bildmoment.
+
+### Bildphasen verteilen
+
+Die Phasen einer Szene werden über `startPercent` gesetzt — als Anteil der
+Szenendauer. Drei gleichmäßige Phasen liegen bei `0`, `0.34` und `0.67`. Der Schnitt
+sollte auf den Satzanfang fallen, nicht auf ein gleichmäßiges Raster.
 
 ## 6. Google Flow — genau eine Masterdatei
 

@@ -71,12 +71,17 @@ Reine Objekte, Mechanismen oder Diagramme dürfen ohne Kugelfigur Hauptmotiv sei
 
 Die Anzahl der Bilder ist **nicht** an die Szenenzahl gekoppelt.
 
-Für jede narrative Szene separat entscheiden:
-- 1 Bild, wenn ein starkes Motiv reicht
-- 2 Bilder bei echtem Mehrwert durch Überblick/Detail, Ursache/Folge, Mechanismus/Auswirkung oder Ausgangslage/Auflösung
-- 3 Bilder nur selten
+**Grundregel: Jeder Hauptsatz und jeder eigenständige Nebensatz bekommt möglichst einen eigenen Bildmoment.**
 
-Wenn ein einzelnes Still-Bild ungefähr 3,5–4 Sekunden oder länger stehen würde, eine zweite Bildphase aktiv prüfen. Keine Bildphase nur zur Erfüllung einer Quote hinzufügen.
+Für jede narrative Szene separat entscheiden:
+- 2 oder 3 Bilder als Normalfall, entsprechend den Satzteilen
+- 1 Bild nur, wenn die Szene aus einem einzigen kurzen Gedanken besteht
+
+Ein Bild steht 1,4 bis 3,2 Sekunden, im Schnitt etwa 2. Bei rund 58 Sekunden ergibt das ungefähr **20 bis 30 Bilder**.
+
+Harte Untergrenze: **1,2 Sekunden**. Der Timeline-Check `<szene>-image-phase-duration` blockiert kürzere Phasen. Ein Satz, dessen Bild darunter fiele, gehört mit dem Nachbarsatz in einen gemeinsamen Bildmoment.
+
+`startPercent` legt den Schnitt auf den Satzanfang, nicht auf ein gleichmäßiges Raster.
 
 Pflichtfelder:
 

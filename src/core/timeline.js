@@ -337,6 +337,19 @@ function qualityReport(
       level: balanceLevel,
       message: `${scene.sceneId}: ${range.label} dauert ${scene.durationSeconds.toFixed(2)} Sekunden; erlaubt sind ${range.min}–${range.max} Sekunden.`
     });
+    // Bildphasen werden über startPercent verteilt; ohne diese Prüfung könnte eine
+    // Phase auf wenige Zehntelsekunden zusammenschrumpfen und wäre nicht mehr lesbar.
+    const minimumPhaseSeconds = Number(sceneTimingRules.minimumImagePhaseSeconds ?? 1.2);
+    const shortestPhase = (scene.imagePhases ?? [])
+      .reduce((shortest, phase) => Math.min(shortest, Number(phase.durationSeconds ?? Infinity)), Infinity);
+    if (Number.isFinite(shortestPhase)) {
+      checks.push({
+        id: `${scene.sceneId}-image-phase-duration`,
+        passed: shortestPhase >= minimumPhaseSeconds,
+        level: 'error',
+        message: `${scene.sceneId}: Die kürzeste Bildphase dauert ${shortestPhase.toFixed(2)} Sekunden; mindestens ${minimumPhaseSeconds} Sekunden sind nötig, damit ein Bild erfassbar bleibt.`
+      });
+    }
     checks.push({
       id: `${scene.sceneId}-visual-phases-present`,
       passed: Array.isArray(scene.imagePhases) && scene.imagePhases.length >= 1 && scene.imagePhases.length <= 3,

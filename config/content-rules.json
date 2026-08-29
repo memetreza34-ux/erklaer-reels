@@ -136,8 +136,9 @@
       }
     ],
     "visualChangeIntervalSeconds": {
-      "min": 3.5,
-      "max": 5
+      "min": 1.4,
+      "max": 3.2,
+      "recommended": 2.0
     },
     "hookVisibleFromSecond": 0,
     "audioCueRequired": true,
@@ -243,7 +244,9 @@
       "kein Fotorealismus, kein Anime, kein glänzendes 3D und kein Pixar-Look",
       "keine Übernahme der separaten YouTube-Bildwelt und keine 16:9-Komposition",
       "sichtbarer Text ausschließlich Deutsch"
-    ]
+    ],
+    "imageMomentPerClause": true,
+    "imageDensityGuidance": "Jeder Hauptsatz und jeder eigenständige Nebensatz bekommt möglichst einen eigenen Bildmoment. Die Bildanzahl folgt dem Satzbau, nicht einer festen Sekundenzahl. Ein Bild steht normalerweise 1,4 bis 3,2 Sekunden, im Schnitt etwa 2. Bei rund 58 Sekunden ergibt das ungefähr 20 bis 30 Bilder auf 12 bis 14 narrativen Szenen, also meist zwei bis drei Bildphasen je Szene."
   },
   "subtitleRules": {
     "defaultEnabled": false,

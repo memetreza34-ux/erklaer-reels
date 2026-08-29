@@ -121,7 +121,13 @@ Jeder Prompt enthält:
 
 ## Narrative Szenen ≠ Bildanzahl
 
-Pro narrativer Szene normalerweise 1 Bildphase, 2 bei echtem visuellen Fortschritt, 3 nur selten. Wenn ein Still ca. 3,5–4 Sekunden oder länger stehen würde, zusätzliche Phase aktiv prüfen. Keine feste Gesamtbildzahl erzwingen.
+**Jeder Hauptsatz und jeder eigenständige Nebensatz bekommt möglichst einen eigenen Bildmoment.**
+
+Pro narrativer Szene sind 2 oder 3 Bildphasen der Normalfall, 1 nur bei einem sehr kurzen Gedanken. Ein Bild steht 1,4 bis 3,2 Sekunden, im Schnitt etwa 2 — bei rund 58 Sekunden ergibt das ungefähr 20 bis 30 Bilder. Keine feste Gesamtbildzahl erzwingen.
+
+Harte Untergrenze: **1,2 Sekunden** pro Bild. Kürzere Phasen blockiert der Timeline-Check. Ein Satz, dessen Bild darunter fiele, gehört mit dem Nachbarsatz in einen Bildmoment.
+
+`startPercent` setzt den Schnitt auf den Satzanfang, nicht auf ein gleichmäßiges Raster.
 
 ## Google Flow — nur eine Masterdatei
 

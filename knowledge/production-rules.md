@@ -100,11 +100,14 @@ Zentrale Quelle: `config/production-quality-gates.json`.
 - 12–14 **narrative Szenen**, Standard 13
 - Hook ab Sekunde 0
 - narrative Szenen werden später über echte Audio-Cues synchronisiert
-- jede Szene erhält 1, 2 oder selten 3 Bildphasen
+- **jeder Hauptsatz und jeder eigenständige Nebensatz bekommt möglichst einen eigenen Bildmoment**
+- jede Szene erhält 2 oder 3 Bildphasen als Normalfall, 1 nur bei einem sehr kurzen Gedanken
 - Bildanzahl und Szenenzahl sind nicht gleichgesetzt
-- keine feste Gesamtbildzahl erzwingen
-- bei ungefähr 3,5–4 Sekunden Stillstand aktiv prüfen, ob eine zweite Bildphase echten Mehrwert bringt
-- Zusatzbilder nur bei Informations-, Fokus- oder Rhythmusgewinn
+- keine feste Gesamtbildzahl erzwingen; der Satzbau bestimmt die Dichte
+- ein Bild steht 1,4 bis 3,2 Sekunden, im Schnitt etwa 2; bei rund 58 Sekunden ergibt das ungefähr 20 bis 30 Bilder
+- **harte Untergrenze 1,2 Sekunden** pro Bild — darunter blockiert der Timeline-Check
+- ein Satz, dessen Bild darunter fiele, gehört mit dem Nachbarsatz in einen Bildmoment
+- `startPercent` setzt den Schnitt auf den Satzanfang, nicht auf ein gleichmäßiges Raster
 
 Technisch:
 
