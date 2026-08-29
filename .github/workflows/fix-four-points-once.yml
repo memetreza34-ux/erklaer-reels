@@ -21,7 +21,19 @@ jobs:
           cache: npm
       - run: npm ci
       - name: Apply production fixes
-        run: python scripts/fix-four-production-points.py
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('scripts/fix-four-production-points.py')
+          text = p.read_text(encoding='utf-8')
+          old = "for scene in example['scenes']:\n    for index, image in enumerate(scene['images']):"
+          new = "for scene in example['scenes']:\n    if 'images' not in scene:\n        continue\n    for index, image in enumerate(scene['images']):"
+          if old not in text:
+              raise SystemExit('Beispiel-Migrationsblock nicht gefunden')
+          p.write_text(text.replace(old, new, 1), encoding='utf-8')
+          PY
+          python scripts/fix-four-production-points.py
       - name: Verify repository and current reel
         shell: bash
         run: |
