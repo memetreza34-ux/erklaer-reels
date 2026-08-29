@@ -1,0 +1,46 @@
+{
+  "sceneId": "scene-03",
+  "order": 3,
+  "title": "Bildmoment 3",
+  "narration": "Bei dieser Vereinigung sollte kein früheres Machtzentrum alles verlieren. Deshalb wurde die staatliche Macht räumlich auf mehrere Orte verteilt.",
+  "imageText": "EIN KOMPROMISS",
+  "visualIdea": "Drei frühere Machtzentren ziehen gleichzeitig an einem zentralen Regierungssymbol, das anschließend aufgeteilt wird.",
+  "continuityNotes": "Den politischen Kompromiss als klare Ursache-Folge-Metapher zeigen.",
+  "audioCue": "Bei dieser Vereinigung",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [],
+  "subtitlePosition": "center",
+  "durationSeconds": 6.5,
+  "imageCount": 2,
+  "imagePhases": [
+    {
+      "phaseId": "scene-03-image-01",
+      "order": 1,
+      "startPercent": 0,
+      "promptFileName": "image-prompt.txt",
+      "expectedImageFileName": "scene-03.png",
+      "visualIdea": "Three competing civic center icons pull a central government symbol in different directions, showing that no single center receives everything.",
+      "imageText": "EIN KOMPROMISS",
+      "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null
+    },
+    {
+      "phaseId": "scene-03-image-02",
+      "order": 2,
+      "startPercent": 0.5,
+      "promptFileName": "image-prompt-02.txt",
+      "expectedImageFileName": "scene-03-2.png",
+      "visualIdea": "The central government symbol splits into three clean function icons: administration, parliament and justice, each moving toward a different city marker.",
+      "imageText": "",
+      "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null
+    }
+  ],
+  "expectedImageFileName": "scene-03.png",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "planned"
+}

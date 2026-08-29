@@ -1,0 +1,46 @@
+{
+  "sceneId": "scene-04",
+  "order": 4,
+  "title": "Bildmoment 4",
+  "narration": "Pretoria wurde zum Verwaltungszentrum. Dort sitzen heute die nationale Regierung, viele Ministerien und die Präsidentschaft in den Union Buildings.",
+  "imageText": "PRETORIA",
+  "visualIdea": "Pretoria wird auf einer vereinfachten Südafrika-Karte hervorgehoben und mit den Union Buildings verbunden.",
+  "continuityNotes": "Erste der drei Rollen klar verankern und dieselbe Kartenlogik beibehalten.",
+  "audioCue": "Pretoria wurde",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [],
+  "subtitlePosition": "center",
+  "durationSeconds": 6.5,
+  "imageCount": 2,
+  "imagePhases": [
+    {
+      "phaseId": "scene-04-image-01",
+      "order": 1,
+      "startPercent": 0,
+      "promptFileName": "image-prompt.txt",
+      "expectedImageFileName": "scene-04.png",
+      "visualIdea": "A simplified South Africa map with Pretoria highlighted in the north-east and a clean pointer from the city marker to a government icon.",
+      "imageText": "PRETORIA",
+      "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null
+    },
+    {
+      "phaseId": "scene-04-image-02",
+      "order": 2,
+      "startPercent": 0.5,
+      "promptFileName": "image-prompt-02.txt",
+      "expectedImageFileName": "scene-04-2.png",
+      "visualIdea": "The Union Buildings as a simplified flat landmark, supported by small ministry folders and an executive government symbol, with no people.",
+      "imageText": "VERWALTUNG",
+      "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null
+    }
+  ],
+  "expectedImageFileName": "scene-04.png",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "planned"
+}

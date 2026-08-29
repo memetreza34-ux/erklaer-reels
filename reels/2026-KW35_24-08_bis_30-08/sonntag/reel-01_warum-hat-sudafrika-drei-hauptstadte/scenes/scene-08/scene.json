@@ -1,0 +1,46 @@
+{
+  "sceneId": "scene-08",
+  "order": 8,
+  "title": "Bildmoment 8",
+  "narration": "Eine zusätzliche Besonderheit: Das Verfassungsgericht sitzt heute in Johannesburg. Würdest du Johannesburg deshalb ebenfalls als Hauptstadt bezeichnen?",
+  "imageText": "JOHANNESBURG?",
+  "visualIdea": "Johannesburg erscheint als zusätzlicher Punkt mit dem Verfassungsgericht, während die drei Hauptstadtrollen sichtbar bleiben.",
+  "continuityNotes": "Aha-Moment als Zusatznuance, ohne die Hauptstruktur zu verwischen.",
+  "audioCue": "Eine zusätzliche Besonderheit",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [],
+  "subtitlePosition": "center",
+  "durationSeconds": 6.5,
+  "imageCount": 2,
+  "imagePhases": [
+    {
+      "phaseId": "scene-08-image-01",
+      "order": 1,
+      "startPercent": 0,
+      "promptFileName": "image-prompt.txt",
+      "expectedImageFileName": "scene-08.png",
+      "visualIdea": "A simplified South Africa map adds Johannesburg as a fourth highlighted city marker with a small Constitutional Court symbol and a question mark.",
+      "imageText": "JOHANNESBURG?",
+      "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null
+    },
+    {
+      "phaseId": "scene-08-image-02",
+      "order": 2,
+      "startPercent": 0.5,
+      "promptFileName": "image-prompt-02.txt",
+      "expectedImageFileName": "scene-08-2.png",
+      "visualIdea": "Johannesburg remains visible as the Constitutional Court location, while Pretoria, Cape Town and Bloemfontein stay grouped separately as the three capital roles.",
+      "imageText": "",
+      "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null
+    }
+  ],
+  "expectedImageFileName": "scene-08.png",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "planned"
+}

@@ -1,0 +1,46 @@
+{
+  "sceneId": "scene-07",
+  "order": 7,
+  "title": "Bildmoment 7",
+  "narration": "Das bedeutet also nicht, dass Südafrika drei identische Hauptstädte besitzt. Jede Stadt erfüllt vor allem eine andere staatliche Funktion.",
+  "imageText": "DREI ROLLEN",
+  "visualIdea": "Drei nebeneinanderstehende Funktionskarten zeigen Verwaltung, Parlament und Justiz statt drei identische Hauptstädte.",
+  "continuityNotes": "Missverständnis aktiv auflösen und die drei Rollen zusammenführen.",
+  "audioCue": "Das bedeutet also",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [],
+  "subtitlePosition": "center",
+  "durationSeconds": 6.5,
+  "imageCount": 2,
+  "imagePhases": [
+    {
+      "phaseId": "scene-07-image-01",
+      "order": 1,
+      "startPercent": 0,
+      "promptFileName": "image-prompt.txt",
+      "expectedImageFileName": "scene-07.png",
+      "visualIdea": "Three identical generic capital icons are shown side by side and crossed out with one clear red X, rejecting the misconception of three identical capitals.",
+      "imageText": "NICHT DREIMAL GLEICH",
+      "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null
+    },
+    {
+      "phaseId": "scene-07-image-02",
+      "order": 2,
+      "startPercent": 0.5,
+      "promptFileName": "image-prompt-02.txt",
+      "expectedImageFileName": "scene-07-2.png",
+      "visualIdea": "Three clean role cards replace the false model: administration, legislation and justice, each with a distinct icon and city association.",
+      "imageText": "DREI ROLLEN",
+      "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null
+    }
+  ],
+  "expectedImageFileName": "scene-07.png",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "planned"
+}

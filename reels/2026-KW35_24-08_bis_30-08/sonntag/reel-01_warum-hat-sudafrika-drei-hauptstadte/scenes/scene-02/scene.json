@@ -1,0 +1,46 @@
+{
+  "sceneId": "scene-02",
+  "order": 2,
+  "title": "Bildmoment 2",
+  "narration": "Das klingt ungewöhnlich, hat aber einen historischen Grund: 1910 wurden vier Kolonien zur Union von Südafrika zusammengeschlossen.",
+  "imageText": "1910",
+  "visualIdea": "Vier getrennte Kolonie-Flächen werden sichtbar zu einer einzigen Südafrika-Karte zusammengeführt.",
+  "continuityNotes": "Historischen Ursprung einfach und ohne unnötige Detailfülle zeigen.",
+  "audioCue": "Das klingt ungewöhnlich",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [],
+  "subtitlePosition": "center",
+  "durationSeconds": 6.5,
+  "imageCount": 2,
+  "imagePhases": [
+    {
+      "phaseId": "scene-02-image-01",
+      "order": 1,
+      "startPercent": 0,
+      "promptFileName": "image-prompt.txt",
+      "expectedImageFileName": "scene-02.png",
+      "visualIdea": "Four separate colonial territory blocks arranged like puzzle pieces around a simplified outline of southern Africa, clearly about to merge into one state.",
+      "imageText": "1910",
+      "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null
+    },
+    {
+      "phaseId": "scene-02-image-02",
+      "order": 2,
+      "startPercent": 0.5,
+      "promptFileName": "image-prompt-02.txt",
+      "expectedImageFileName": "scene-02-2.png",
+      "visualIdea": "The four territory blocks now lock together into one unified South Africa map, with no labels or readable text.",
+      "imageText": "",
+      "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null
+    }
+  ],
+  "expectedImageFileName": "scene-02.png",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "planned"
+}

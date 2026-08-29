@@ -1,0 +1,46 @@
+{
+  "sceneId": "scene-05",
+  "order": 5,
+  "title": "Bildmoment 5",
+  "narration": "Kapstadt übernahm die gesetzgebende Rolle. Dort tagt das südafrikanische Parlament und berät die Gesetze des Landes.",
+  "imageText": "KAPSTADT",
+  "visualIdea": "Kapstadt wird hervorgehoben; ein vereinfachtes Parlamentsgebäude und ein Gesetzesdokument stehen im Fokus.",
+  "continuityNotes": "Zweite Staatsfunktion deutlich von Pretoria unterscheiden.",
+  "audioCue": "Kapstadt übernahm",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [],
+  "subtitlePosition": "center",
+  "durationSeconds": 6.5,
+  "imageCount": 2,
+  "imagePhases": [
+    {
+      "phaseId": "scene-05-image-01",
+      "order": 1,
+      "startPercent": 0,
+      "promptFileName": "image-prompt.txt",
+      "expectedImageFileName": "scene-05.png",
+      "visualIdea": "A simplified South Africa map with Cape Town highlighted at the south-western coast and a clear pointer to a parliament building icon.",
+      "imageText": "KAPSTADT",
+      "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null
+    },
+    {
+      "phaseId": "scene-05-image-02",
+      "order": 2,
+      "startPercent": 0.5,
+      "promptFileName": "image-prompt-02.txt",
+      "expectedImageFileName": "scene-05-2.png",
+      "visualIdea": "A clean parliamentary chamber and a large law document with a check mark, communicating debate and lawmaking without realistic politicians.",
+      "imageText": "PARLAMENT",
+      "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null
+    }
+  ],
+  "expectedImageFileName": "scene-05.png",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "planned"
+}

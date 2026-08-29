@@ -1,0 +1,46 @@
+{
+  "sceneId": "scene-09",
+  "order": 9,
+  "title": "Starker Abschluss",
+  "narration": "Die beste Antwort bleibt deshalb: Pretoria verwaltet, Kapstadt macht Gesetze und Bloemfontein steht für die Justiz. Drei Städte, drei Rollen.",
+  "imageText": "DREI STÄDTE, DREI ROLLEN",
+  "visualIdea": "Abschlussübersicht mit Pretoria Verwaltung, Kapstadt Parlament und Bloemfontein Justiz in drei klaren Spalten.",
+  "continuityNotes": "Ruhiger finaler Merksatz und eindeutige visuelle Zusammenfassung.",
+  "audioCue": "Die beste Antwort",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [],
+  "subtitlePosition": "center",
+  "durationSeconds": 7,
+  "imageCount": 2,
+  "imagePhases": [
+    {
+      "phaseId": "scene-09-image-01",
+      "order": 1,
+      "startPercent": 0,
+      "promptFileName": "image-prompt.txt",
+      "expectedImageFileName": "scene-09.png",
+      "visualIdea": "A central question card asks which state function is meant, while three arrows point toward Pretoria, Cape Town and Bloemfontein.",
+      "imageText": "WELCHE FUNKTION?",
+      "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null
+    },
+    {
+      "phaseId": "scene-09-image-02",
+      "order": 2,
+      "startPercent": 0.5,
+      "promptFileName": "image-prompt-02.txt",
+      "expectedImageFileName": "scene-09-2.png",
+      "visualIdea": "Final summary card with three equal columns: Pretoria with administration icon, Cape Town with parliament icon, Bloemfontein with justice icon.",
+      "imageText": "DREI STÄDTE, DREI ROLLEN",
+      "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null
+    }
+  ],
+  "expectedImageFileName": "scene-09.png",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "planned"
+}

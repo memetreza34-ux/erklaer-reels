@@ -1,0 +1,46 @@
+{
+  "sceneId": "scene-06",
+  "order": 6,
+  "title": "Bildmoment 6",
+  "narration": "Bloemfontein gilt als Justizhauptstadt, weil dort der Supreme Court of Appeal, eines der höchsten Gerichte Südafrikas, seinen Sitz hat.",
+  "imageText": "BLOEMFONTEIN",
+  "visualIdea": "Bloemfontein wird hervorgehoben; ein klares Gerichtsgebäude und eine Waage symbolisieren die Justiz.",
+  "continuityNotes": "Dritte Staatsfunktion mit derselben visuellen Grammatik abschließen.",
+  "audioCue": "Bloemfontein gilt",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [],
+  "subtitlePosition": "center",
+  "durationSeconds": 6.5,
+  "imageCount": 2,
+  "imagePhases": [
+    {
+      "phaseId": "scene-06-image-01",
+      "order": 1,
+      "startPercent": 0,
+      "promptFileName": "image-prompt.txt",
+      "expectedImageFileName": "scene-06.png",
+      "visualIdea": "A simplified South Africa map with Bloemfontein highlighted in the central interior and a pointer toward a judicial building.",
+      "imageText": "BLOEMFONTEIN",
+      "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null
+    },
+    {
+      "phaseId": "scene-06-image-02",
+      "order": 2,
+      "startPercent": 0.5,
+      "promptFileName": "image-prompt-02.txt",
+      "expectedImageFileName": "scene-06-2.png",
+      "visualIdea": "A flat court building paired with balanced scales and a small legal document, clearly communicating the judicial role with minimal detail.",
+      "imageText": "JUSTIZ",
+      "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null
+    }
+  ],
+  "expectedImageFileName": "scene-06.png",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "planned"
+}
