@@ -30,18 +30,24 @@ jobs:
       - name: Phase-1-Paket prüfen
         run: npm run import:reel -- --file input/reel-paket.json --check
 
-      - name: Reel für Sonntag anlegen
-        run: npm run import:reel -- --file input/reel-paket.json --date 2026-08-30
-
-      - name: Masterprompt erzeugen und Reel streng prüfen
+      - name: Reel bestimmen oder anlegen
         shell: bash
         run: |
           set -euo pipefail
-          REEL_DIR=$(find reels/2026-KW35_24-08_bis_30-08/sonntag -mindepth 1 -maxdepth 1 -type d | sort | head -1)
-          test -n "$REEL_DIR"
+          REEL_DIR="reels/2026-KW35_24-08_bis_30-08/sonntag/reel-01_warum-hat-sudafrika-drei-hauptstadte"
+          if [ ! -f "$REEL_DIR/reel.json" ]; then
+            npm run import:reel -- --file input/reel-paket.json --date 2026-08-30
+          fi
+          test -f "$REEL_DIR/reel.json"
           echo "REEL_DIR=$REEL_DIR" >> "$GITHUB_ENV"
+
+      - name: Phase 1 vollständig abschließen
+        shell: bash
+        run: |
+          set -euo pipefail
           npm run export:prompts -- --dir "$REEL_DIR" --strict
           npm run check:content -- --dir "$REEL_DIR" --strict
+          npm run organize:finder -- --dir "$REEL_DIR" --show-technical
 
       - name: Phase 1 ins Repository schreiben
         shell: bash
@@ -54,5 +60,5 @@ jobs:
             echo "Keine neuen Dateien zu committen."
             exit 0
           fi
-          git commit -m "Phase 1: Südafrika-Reel vollständig anlegen"
+          git commit -m "Phase 1: sichtbare Übergabeordner vervollständigen"
           git push origin HEAD:main
