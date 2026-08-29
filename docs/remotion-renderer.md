@@ -2,7 +2,7 @@
 
 > Bei Widersprüchen gilt `CURRENT_WORKFLOW.md`.
 
-Der Renderer erzeugt aus `render/render-plan.json` eine fertige MP4 mit 12–14 narrativen Szenen, **individuell vielen visuellen Shots/Bildphasen**, optimiertem Voice-over, harten Schnitten, dezenten Bewegungen und optionalen Soundeffekten.
+Der Renderer erzeugt aus `render/render-plan.json` eine fertige MP4 mit 8–10 narrativen Szenen, **individuell vielen visuellen Shots/Bildphasen**, optimiertem Voice-over, harten Schnitten, dezenten Bewegungen und optionalen Soundeffekten.
 
 Untertitel und Word-Sync sind im aktuellen Renderpfad deaktiviert.
 
@@ -22,7 +22,7 @@ Das Audio wird von der ursprünglichen Datei auf exakt 1,10x verarbeitet, die To
 ## Bilder und visuelle Shots
 
 - `Bild 01` ist die erste Szene und zugleich das Titelbild
-- 12–14 narrative Szenen bleiben die Erzählstruktur
+- 8–10 narrative Szenen bleiben die Erzählstruktur
 - jede Szene besitzt 1, 2 oder selten 3 Bildphasen
 - der Renderer verarbeitet die daraus entstehenden `visualShots`
 - interne Bildphasen wechseln innerhalb der narrativen Szene über ihre `startPercent`-Position

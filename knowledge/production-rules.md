@@ -97,16 +97,16 @@ Nach dem letzten gesprochenen Wort bleibt das letzte Bild 0,7 Sekunden unveränd
 
 Zentrale Quelle: `config/production-quality-gates.json`.
 
-- 12–14 **narrative Szenen**, Standard 13
+- 8–10 **narrative Szenen**, Standard 9
 - Hook ab Sekunde 0
 - narrative Szenen werden später über echte Audio-Cues synchronisiert
-- **jeder Hauptsatz und jeder eigenständige Nebensatz bekommt möglichst einen eigenen Bildmoment**
-- jede Szene erhält 2 oder 3 Bildphasen als Normalfall, 1 nur bei einem sehr kurzen Gedanken
+- **jede Standardszene bekommt zwei Bildmomente, die Hook einen**
+- der zweite Bildmoment setzt beim nächsten Hauptsatz oder Nebensatz an
 - Bildanzahl und Szenenzahl sind nicht gleichgesetzt
-- keine feste Gesamtbildzahl erzwingen; der Satzbau bestimmt die Dichte
-- ein Bild steht 1,4 bis 3,2 Sekunden, im Schnitt etwa 2; bei rund 58 Sekunden ergibt das ungefähr 20 bis 30 Bilder
-- **harte Untergrenze 1,2 Sekunden** pro Bild — darunter blockiert der Timeline-Check
-- ein Satz, dessen Bild darunter fiele, gehört mit dem Nachbarsatz in einen Bildmoment
+- keine feste Gesamtbildzahl erzwingen
+- ein Bild steht 3 bis 4 Sekunden, im Schnitt etwa 3,25; bei rund 58 Sekunden ergibt das ungefähr 17 bis 19 Bilder
+- **harte Untergrenze 3 Sekunden** pro Bild — darunter blockiert der Timeline-Check
+- eine Szene, die inhaltlich drei Bildmomente braucht, gehört in zwei Szenen aufgeteilt
 - `startPercent` setzt den Schnitt auf den Satzanfang, nicht auf ein gleichmäßiges Raster
 
 Technisch:
@@ -237,7 +237,7 @@ Zentrale Quelle: `src/shared/audio-pacing-style.js`.
 
 Vor Freigabe prüfen:
 - 155–175 Wörter und 55–60 Sekunden Voice-over
-- 12–14 narrative Szenen mit sinnvoller individueller Bilddichte
+- 8–10 narrative Szenen mit zwei Bildmomenten je Standardszene
 - Hook sofort sichtbar
 - jedes Bild erklärt exakt seine Bildphase
 - jedes Bild hält `modern-countryball-explainer` ein

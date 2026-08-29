@@ -10,7 +10,7 @@
 
 - 55–60 Sekunden Voice-over
 - 155–175 deutsche Wörter
-- 12–14 **narrative Szenen**, Standard 13
+- 8–10 **narrative Szenen**, Standard 9
 - Hook ab Sekunde 0
 - Voice-over exakt 1,10x, Pitch erhalten
 - −16 LUFS, max. −1,5 dBTP

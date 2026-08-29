@@ -26,7 +26,7 @@ Bei „Mach ein neues Reel“ autonom:
 1. nächsten freien Slot bestimmen
 2. starkes Thema aus dem offenen Themenuniversum wählen
 3. deutsches Voice-over mit 155–175 Wörtern schreiben
-4. 12–14 narrative Szenen planen, Standard 13
+4. 8–10 narrative Szenen planen, Standard 9
 5. für jede Bildphase ausschließlich **Modern Countryball Explainer** verwenden
 6. Bildanzahl pro Reel und Szene individuell planen
 7. Bildphasen-Prompts + einen seriellen Google-Flow-Gesamtprompt + Universal-Caption + Quellen fertigstellen; Szene 1 ist zugleich das Titelbild
@@ -121,13 +121,13 @@ Jeder Prompt enthält:
 
 ## Narrative Szenen ≠ Bildanzahl
 
-**Jeder Hauptsatz und jeder eigenständige Nebensatz bekommt möglichst einen eigenen Bildmoment.**
+**Jede Standardszene bekommt zwei Bildmomente, die Hook einen.**
 
-Pro narrativer Szene sind 2 oder 3 Bildphasen der Normalfall, 1 nur bei einem sehr kurzen Gedanken. Ein Bild steht 1,4 bis 3,2 Sekunden, im Schnitt etwa 2 — bei rund 58 Sekunden ergibt das ungefähr 20 bis 30 Bilder. Keine feste Gesamtbildzahl erzwingen.
+8–10 narrative Szenen, Standard 9. Hook 4,5–6 Sekunden mit einem Bild, Standardszene 6–7,5 Sekunden mit zwei Bildern. Ein Bild steht 3 bis 4 Sekunden, im Schnitt 3,25 — bei rund 58 Sekunden ergibt das ungefähr 17 bis 19 Bilder.
 
-Harte Untergrenze: **1,2 Sekunden** pro Bild. Kürzere Phasen blockiert der Timeline-Check. Ein Satz, dessen Bild darunter fiele, gehört mit dem Nachbarsatz in einen Bildmoment.
+Harte Untergrenze: **3 Sekunden** pro Bild. Kürzere Phasen blockiert der Timeline-Check. Drei Bilder in einer 6,5-Sekunden-Szene fallen darunter; eine Szene, die drei Bildmomente braucht, gehört aufgeteilt.
 
-`startPercent` setzt den Schnitt auf den Satzanfang, nicht auf ein gleichmäßiges Raster.
+`startPercent` setzt den Schnitt auf den nächsten Satzanfang, nicht auf ein gleichmäßiges Raster.
 
 ## Google Flow — nur eine Masterdatei
 

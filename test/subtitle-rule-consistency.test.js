@@ -19,7 +19,7 @@ test('neue Arbeitsordner deaktivieren Untertitel und Word-Sync global', async ()
       title: 'Ohne Untertitel',
       script: 'Dieses Rohscript wird zu einem vollständigen Ein-Minuten-Reel ohne eingeblendete Untertitel ausgebaut.',
       date: new Date('2026-08-03T12:00:00'),
-      sceneCount: 13,
+      sceneCount: 9,
       outputRoot
     });
 
@@ -48,7 +48,7 @@ test('deaktivierter Plan bleibt nur als rückwärtskompatible Metadatei vorhande
       title: 'Kompatibilitätsplan',
       script: 'Dieses Rohscript prüft ausschließlich die deaktivierte Kompatibilitätsdatei für Untertitel im neuen Workflow.',
       date: new Date('2026-08-04T12:00:00'),
-      sceneCount: 13,
+      sceneCount: 9,
       outputRoot
     });
 

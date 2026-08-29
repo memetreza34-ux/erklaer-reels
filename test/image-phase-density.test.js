@@ -17,7 +17,7 @@ async function writeJson(filePath, value) {
 // Baut ein vollständiges Reel, bei dem eine Szene die angegebenen Bildphasen trägt.
 async function buildReel(phaseStarts) {
   const root = await mkdtemp(path.join(os.tmpdir(), 'erklaer-density-'));
-  const starts = [0, 5, 10, 15, 20, 25, 30, 35, 40, 44, 48, 52];
+  const starts = [0, 5.5, 12, 18.5, 25, 31.5, 38, 44.5, 51];
   const scenes = starts.map((_, index) => {
     const sceneId = `scene-${String(index + 1).padStart(2, '0')}`;
     const base = {
@@ -27,7 +27,7 @@ async function buildReel(phaseStarts) {
       narration: `Sprechertext für ${sceneId}`,
       audioCue: `Cue ${index + 1}`,
       leadInSeconds: 0.2,
-      durationSeconds: index === starts.length - 1 ? 5 : 4.4,
+      durationSeconds: index === 0 ? 5.5 : index === starts.length - 1 ? 7 : 6.5,
       subtitleCues: [],
       expectedImageFileName: `${sceneId}.png`
     };
@@ -81,13 +81,13 @@ async function buildReel(phaseStarts) {
   return root;
 }
 
-test('mehrere Bildphasen pro Szene sind der Normalfall und laufen sauber durch', async () => {
-  // Drei Bilder auf 4,4 Sekunden: rund 1,5 Sekunden je Bild.
-  const root = await buildReel([0, 0.34, 0.67]);
+test('zwei Bildphasen pro Szene sind der Normalfall und laufen sauber durch', async () => {
+  // Zwei Bilder auf 6,5 Sekunden: rund 3,25 Sekunden je Bild.
+  const root = await buildReel([0, 0.5]);
   const result = await buildMasterTimeline(root, { strict: false, probeAudio: false });
 
   const scene = result.timeline.scenes.find((entry) => entry.sceneId === 'scene-02');
-  assert.equal(scene.imagePhases.length, 3);
+  assert.equal(scene.imagePhases.length, 2);
 
   const check = result.qualityReport.checks.find((entry) => entry.id === 'scene-02-image-phase-duration');
   assert.ok(check, 'Die Phasendauer muss geprüft werden');
@@ -95,15 +95,15 @@ test('mehrere Bildphasen pro Szene sind der Normalfall und laufen sauber durch',
 });
 
 test('blockiert eine Bildphase, die zu kurz zum Erfassen ist', async () => {
-  // Vier Phasen dicht gedrängt: die letzte bleibt weit unter einer Sekunde stehen.
-  const root = await buildReel([0, 0.9, 0.94, 0.98]);
+  // Drei Phasen auf 6,5 Sekunden: gut zwei Sekunden je Bild, unter der Grenze von drei.
+  const root = await buildReel([0, 0.34, 0.67]);
   const result = await buildMasterTimeline(root, { strict: false, probeAudio: false });
 
   const check = result.qualityReport.checks.find((entry) => entry.id === 'scene-02-image-phase-duration');
   assert.ok(check);
   assert.equal(check.passed, false);
   assert.equal(check.level, 'error');
-  assert.match(check.message, /mindestens 1\.2 Sekunden/);
+  assert.match(check.message, /mindestens 3 Sekunden/);
 });
 
 test('Regelwerk und Gate beschreiben dieselbe Untergrenze', async () => {
@@ -117,5 +117,5 @@ test('Regelwerk und Gate beschreiben dieselbe Untergrenze', async () => {
   assert.ok(interval.min >= minimum, 'Das empfohlene Minimum darf nicht unter der harten Grenze liegen');
   assert.ok(interval.recommended >= interval.min && interval.recommended <= interval.max);
   // Ohne schnellen Wechsel bekäme jede Szene wieder nur ein Bild.
-  assert.ok(interval.max <= 3.5, 'Der Wechsel muss schnell genug für mehrere Bilder pro Szene bleiben');
+  assert.ok(interval.max <= 4.5, 'Ein Bild darf nicht beliebig lange stehen bleiben');
 });

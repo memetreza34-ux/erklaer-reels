@@ -80,13 +80,13 @@ export async function createReelWorkspace({
   title,
   script,
   date = new Date(),
-  sceneCount = 13,
+  sceneCount = 9,
   outputRoot = 'reels'
 }) {
   if (!title?.trim()) throw new Error('Ein Titel ist erforderlich.');
   if (!script?.trim()) throw new Error('Ein Script ist erforderlich.');
-  if (!Number.isInteger(sceneCount) || sceneCount < 12 || sceneCount > 14) {
-    throw new Error('sceneCount muss zwischen 12 und 14 liegen.');
+  if (!Number.isInteger(sceneCount) || sceneCount < 8 || sceneCount > 10) {
+    throw new Error('sceneCount muss zwischen 8 und 10 liegen.');
   }
 
   const parsedDate = date instanceof Date ? date : new Date(date);
@@ -141,19 +141,21 @@ export async function createReelWorkspace({
       subtitleCues: [],
       subtitlePosition: SUBTITLE_STYLE.position,
       durationSeconds: 0,
-      imageCount: 1,
-      imagePhases: [{
-        phaseId: `${sceneId}-image-01`,
-        order: 1,
-        startPercent: 0,
-        promptFileName: 'image-prompt.txt',
-        expectedImageFileName: `${sceneId}.png`,
+      // Die Hook trägt ein ruhiges, sofort lesbares Bild. Jede weitere Szene bekommt
+      // zwei Bildmomente; der zweite setzt beim nächsten Satz an.
+      imageCount: index === 1 ? 1 : 2,
+      imagePhases: (index === 1 ? [0] : [0, 0.5]).map((startPercent, phaseIndex) => ({
+        phaseId: `${sceneId}-image-${String(phaseIndex + 1).padStart(2, '0')}`,
+        order: phaseIndex + 1,
+        startPercent,
+        promptFileName: phaseIndex === 0 ? 'image-prompt.txt' : `image-prompt-${String(phaseIndex + 1).padStart(2, '0')}.txt`,
+        expectedImageFileName: phaseIndex === 0 ? `${sceneId}.png` : `${sceneId}-${phaseIndex + 1}.png`,
         visualIdea: '',
         imageText: '',
         rationale: '',
         imageStatus: 'missing',
         assetVerification: null
-      }],
+      })),
       expectedImageFileName: `${sceneId}.png`,
       promptStatus: 'missing',
       imageStatus: 'missing',
@@ -163,7 +165,11 @@ export async function createReelWorkspace({
 
     sceneIndex.push(scene);
     await writeJson(path.join(sceneDirectory, 'scene.json'), scene);
-    await writeText(path.join(sceneDirectory, 'image-prompt.txt'), '');
+    // Für jede geplante Bildphase eine leere Promptdatei anlegen, damit der Agent
+    // nur noch füllen muss und der Export nichts vermisst.
+    for (const phase of scene.imagePhases) {
+      await writeText(path.join(sceneDirectory, phase.promptFileName), '');
+    }
   }
 
   const reel = {

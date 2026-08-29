@@ -43,7 +43,7 @@ npm run create:reel -- \
   --title "GEWÄHLTER TITEL" \
   --script-file "PFAD-ZUM-SCRIPT" \
   --next-free \
-  --scenes 13
+  --scenes 9
 ```
 
 Die 13 sind **narrative Szenen**, nicht automatisch 13 Bilder.

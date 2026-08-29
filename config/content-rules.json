@@ -124,21 +124,21 @@
     }
   },
   "visualRules": {
-    "minimumSceneCount": 12,
-    "maximumSceneCount": 14,
-    "defaultSceneCount": 13,
+    "minimumSceneCount": 8,
+    "maximumSceneCount": 10,
+    "defaultSceneCount": 9,
     "sceneCountByDuration": [
       {
         "durationSecondsMin": 55,
         "durationSecondsMax": 60,
-        "recommendedScenesMin": 12,
-        "recommendedScenesMax": 14
+        "recommendedScenesMin": 8,
+        "recommendedScenesMax": 10
       }
     ],
     "visualChangeIntervalSeconds": {
-      "min": 1.4,
-      "max": 3.2,
-      "recommended": 2.0
+      "min": 3.0,
+      "max": 4.0,
+      "recommended": 3.25
     },
     "hookVisibleFromSecond": 0,
     "audioCueRequired": true,
@@ -245,8 +245,8 @@
       "keine Übernahme der separaten YouTube-Bildwelt und keine 16:9-Komposition",
       "sichtbarer Text ausschließlich Deutsch"
     ],
-    "imageMomentPerClause": true,
-    "imageDensityGuidance": "Jeder Hauptsatz und jeder eigenständige Nebensatz bekommt möglichst einen eigenen Bildmoment. Die Bildanzahl folgt dem Satzbau, nicht einer festen Sekundenzahl. Ein Bild steht normalerweise 1,4 bis 3,2 Sekunden, im Schnitt etwa 2. Bei rund 58 Sekunden ergibt das ungefähr 20 bis 30 Bilder auf 12 bis 14 narrativen Szenen, also meist zwei bis drei Bildphasen je Szene."
+    "imageMomentPerClause": false,
+    "imageDensityGuidance": "Jede Standardszene bekommt zwei Bildmomente, die Hook einen. Ein Bild steht mindestens 3 Sekunden, im Schnitt etwa 3,25. Bei rund 58 Sekunden ergibt das ungefähr 17 bis 19 Bilder auf 8 bis 10 narrativen Szenen. Der zweite Bildmoment einer Szene setzt beim nächsten Hauptsatz oder Nebensatz an, nicht auf einem gleichmäßigen Raster."
   },
   "subtitleRules": {
     "defaultEnabled": false,

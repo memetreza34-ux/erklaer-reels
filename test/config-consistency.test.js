@@ -18,14 +18,14 @@ test('App- und Inhaltskonfiguration verwenden denselben Ein-Minuten-Standard', a
   const rules = await readJson('config/content-rules.json');
 
   assert.deepEqual(app.targetDurationSeconds, { min: 55, preferred: 58, max: 60 });
-  assert.deepEqual(app.sceneCount, { min: 12, preferred: 13, max: 14 });
-  assert.deepEqual(app.visualChangeEverySeconds, { min: 3.5, max: 5 });
+  assert.deepEqual(app.sceneCount, { min: 8, preferred: 9, max: 10 });
+  assert.deepEqual(app.visualChangeEverySeconds, { min: 3.0, max: 4.0 });
   assert.equal(app.outputRoot, 'reels');
 
   assert.deepEqual(rules.scriptRules.targetDurationSeconds, { min: 55, max: 60, preferred: 58 });
-  assert.equal(rules.visualRules.minimumSceneCount, 12);
-  assert.equal(rules.visualRules.maximumSceneCount, 14);
-  assert.equal(rules.visualRules.defaultSceneCount, 13);
+  assert.equal(rules.visualRules.minimumSceneCount, 8);
+  assert.equal(rules.visualRules.maximumSceneCount, 10);
+  assert.equal(rules.visualRules.defaultSceneCount, 9);
   assert.equal(rules.scriptRules.audioPacing.rerunWordSyncAfterward, false);
 });
 

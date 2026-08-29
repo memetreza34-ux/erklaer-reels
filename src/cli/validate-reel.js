@@ -73,8 +73,8 @@ async function main() {
   let reel;
   if (await exists(reelPath)) reel = JSON.parse(await readFile(reelPath, 'utf8'));
 
-  if (reel && (reel.sceneCount < 8 || reel.sceneCount > 12)) {
-    missing.push('reel.json: sceneCount muss zwischen 8 und 12 liegen');
+  if (reel && (reel.sceneCount < 8 || reel.sceneCount > 10)) {
+    missing.push('reel.json: sceneCount muss zwischen 8 und 10 liegen');
   }
 
   if (reel) {

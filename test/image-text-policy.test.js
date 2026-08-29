@@ -30,7 +30,7 @@ test('Codex-Auftrag berechnet Bildtext-Zielbereich und erzwingt die getrennte sc
       title: 'Warum entstehen Grenzen?',
       script: 'Warum entstehen Grenzen? Dieses ausreichend lange Rohscript dient nur dazu, einen vollständigen Produktionsauftrag mit dreizehn Szenen und den neuen Regeln für kurzen deutschen Bildtext zu erzeugen.',
       date: new Date('2026-08-26T12:00:00'),
-      sceneCount: 13,
+      sceneCount: 9,
       outputRoot
     });
 

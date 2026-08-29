@@ -18,7 +18,7 @@ Diese Datei ist die verbindliche Repo-weite Produktionsregel für neue Chats, Co
 
 - 55–60 Sekunden Voice-over, Ziel ca. 58 Sekunden
 - 155–175 deutsche Wörter, Ziel ca. 165
-- 12–14 narrative Szenen, Standard 13
+- 8–10 narrative Szenen, Standard 9
 - ein deutscher Erzähler
 - Hook ab Sekunde 0
 - letzte zwei Szenen: Erkenntnis-/Prüffrage → konkrete Lösung/Abschlusssatz
@@ -111,30 +111,29 @@ Wenn kein Text geplant ist, darf keinerlei lesbarer Text erscheinen. Keine Logos
 
 Narrative Szenenzahl und Bildanzahl sind getrennt.
 
-**Grundregel: Jeder Hauptsatz und jeder eigenständige Nebensatz bekommt möglichst
-einen eigenen Bildmoment.** Die Bildanzahl richtet sich nach dem Satzbau, nicht nach
-einer festen Sekundenzahl.
+**Jede Standardszene bekommt zwei Bildmomente, die Hook einen.** Der zweite Bildmoment
+setzt beim nächsten Hauptsatz oder Nebensatz an.
 
-- 12–14 narrative Szenen
-- pro Szene 2 oder 3 Bildphasen als Normalfall, 1 nur bei einem sehr kurzen Gedanken
-- ein Bild steht 1,4 bis 3,2 Sekunden, im Schnitt etwa 2
-- bei rund 58 Sekunden ergibt das ungefähr **20 bis 30 Bilder**
-- keine feste Gesamtbildzahl erzwingen; ein langer Satz mit mehreren Teilaussagen
-  bekommt mehr Bilder als ein kurzer
+- 8–10 narrative Szenen, Standard 9
+- Hook 4,5–6 Sekunden mit einem Bild, Standardszene 6–7,5 Sekunden mit zwei Bildern
+- ein Bild steht 3 bis 4 Sekunden, im Schnitt etwa 3,25
+- bei rund 58 Sekunden ergibt das ungefähr **17 bis 19 Bilder**
+- keine feste Gesamtbildzahl erzwingen
 
 ### Nicht zu schnell
 
-Unter **1,2 Sekunden** ist ein Bild nicht mehr erfassbar. Das ist eine harte Grenze:
-Der Timeline-Check `<szene>-image-phase-duration` blockiert kürzere Phasen.
+**Mindestens 3 Sekunden** pro Bild. Das ist eine harte Grenze: Der Timeline-Check
+`<szene>-image-phase-duration` blockiert kürzere Phasen.
 
-Wenn ein Satz so kurz ist, dass sein Bild unter 1,4 Sekunden fiele, gehört er mit dem
-Nachbarsatz in einen gemeinsamen Bildmoment.
+Eine Szene mit drei Bildern fiele bei 6,5 Sekunden auf 2,2 Sekunden je Bild und wird
+deshalb blockiert. Wenn eine Szene inhaltlich drei Bildmomente braucht, gehört sie in
+zwei Szenen aufgeteilt.
 
 ### Bildphasen verteilen
 
 Die Phasen einer Szene werden über `startPercent` gesetzt — als Anteil der
-Szenendauer. Drei gleichmäßige Phasen liegen bei `0`, `0.34` und `0.67`. Der Schnitt
-sollte auf den Satzanfang fallen, nicht auf ein gleichmäßiges Raster.
+Szenendauer. Zwei gleichmäßige Phasen liegen bei `0` und `0.5`. Der Schnitt sollte auf
+den Satzanfang fallen, nicht auf ein gleichmäßiges Raster.
 
 ## 6. Google Flow — genau eine Masterdatei
 

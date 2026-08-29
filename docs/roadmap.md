@@ -12,7 +12,7 @@ Die Produktionspipeline besitzt offene Themenwahl, individuelle Bilddichte und h
 - [x] Wochen- und Tages-Slots automatisch bestimmen
 - [x] 55–60 Sekunden Voice-over, Ziel ungefähr 58 Sekunden
 - [x] 155–175 deutsche Wörter
-- [x] 12–14 **narrative Szenen**, Standard 13
+- [x] 8–10 **narrative Szenen**, Standard 9
 - [x] individuelle Bildanzahl über 1–3 `imagePhases` pro Szene
 - [x] offenes Themenuniversum ohne feste Pillar-Quote
 - [x] eine einzige feste Bildwelt `modern-countryball-explainer` im aktiven Workflow verankert

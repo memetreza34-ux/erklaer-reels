@@ -29,16 +29,16 @@
   },
   "sceneTiming": {
     "hookSeconds": {
-      "min": 4.2,
-      "max": 5.5
+      "min": 4.5,
+      "max": 6.0
     },
     "standardSeconds": {
-      "min": 3.2,
-      "max": 5.5
+      "min": 6.0,
+      "max": 7.5
     },
     "finalSceneSecondsIncludingHold": {
-      "min": 4.0,
-      "max": 6.5
+      "min": 6.0,
+      "max": 8.5
     },
     "maximumAdjacentDifferenceSeconds": 2.5,
     "postVoiceHoldSeconds": 0.7,
@@ -47,10 +47,10 @@
       "max": 0.8
     },
     "strictTimelineBalance": true,
-    "minimumImagePhaseSeconds": 1.2,
+    "minimumImagePhaseSeconds": 3.0,
     "recommendedImagePhaseSeconds": {
-      "min": 1.4,
-      "max": 3.2
+      "min": 3.0,
+      "max": 4.0
     }
   },
   "visualContinuity": {

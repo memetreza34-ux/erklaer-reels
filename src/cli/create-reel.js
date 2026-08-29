@@ -27,7 +27,7 @@ Optionen:
   --script-file   Pfad zum deutschen Sprechertext
   --date          Produktionsdatum im Format YYYY-MM-DD
   --next-free     Chronologisch nächsten freien Tag der neuesten Woche verwenden
-  --scenes        Anzahl narrativer Szenen: 12 bis 14 (optional, Standard: 13)
+  --scenes        Anzahl narrativer Szenen: 8 bis 10 (optional, Standard: 9)
                   Die tatsächliche Bildanzahl wird danach individuell über imagePhases geplant.
                   Ziel: 55–60 Sekunden bei ungefähr 1,10x
   --output        Ausgabeordner (optional, Standard: reels)
@@ -44,7 +44,7 @@ async function main() {
   const scriptFile = getArgument('--script-file');
   const dateValue = getArgument('--date');
   const useNextFree = process.argv.includes('--next-free');
-  const sceneCount = Number(getArgument('--scenes') ?? 13);
+  const sceneCount = Number(getArgument('--scenes') ?? 9);
   const outputRoot = getArgument('--output') ?? 'reels';
 
   if (!title || !scriptFile) {

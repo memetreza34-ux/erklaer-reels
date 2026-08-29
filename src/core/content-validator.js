@@ -88,8 +88,8 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
   const styleId = String(reel.visualStyleId ?? '').trim();
   const styleReason = String(reel.visualStyleReason ?? '').trim();
 
-  addCheck(checks, 'scene-count-range', Number.isInteger(reel.sceneCount) && reel.sceneCount >= 12 && reel.sceneCount <= 14,
-    'Die narrative Szenenanzahl muss zwischen 12 und 14 liegen.');
+  addCheck(checks, 'scene-count-range', Number.isInteger(reel.sceneCount) && reel.sceneCount >= 8 && reel.sceneCount <= 10,
+    'Die narrative Szenenanzahl muss zwischen 8 und 10 liegen.');
   addCheck(checks, 'scene-count-match', sceneIndex.length === reel.sceneCount,
     `scene-index.json enthält ${sceneIndex.length} statt ${reel.sceneCount} narrativen Szenen.`);
   addCheck(checks, 'topic-area', String(reel.topicArea ?? '').trim().length >= 5,

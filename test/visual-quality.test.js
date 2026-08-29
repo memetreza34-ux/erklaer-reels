@@ -19,29 +19,30 @@ async function writeJson(filePath, value) {
   await writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
 }
 
-test('prüft 12 Szenenbilder und verlangt im strengen Modus die visuelle Freigabe', async () => {
+test('prüft alle Bildphasen und verlangt im strengen Modus die visuelle Freigabe', async () => {
   const outputRoot = await mkdtemp(path.join(os.tmpdir(), 'erklaer-visuals-'));
   const result = await createReelWorkspace({
     title: 'Warum wirkt Warten so lang?',
     script: 'Dieses Rohscript wird später zu einem vollständigen Ein-Minuten-Reel erweitert.',
     date: new Date('2026-07-31T12:00:00'),
-    sceneCount: 12,
+    sceneCount: 9,
     outputRoot
   });
 
   const manifestPath = path.join(result.reelDirectory, 'assets-manifest.json');
   const manifest = JSON.parse(await readFile(manifestPath, 'utf8'));
-  for (const scene of manifest.scenes) {
-    await writeFile(path.join(result.reelDirectory, scene.expectedFile), fakePng(1080, 1920));
-    scene.status = 'ready';
+  // Jede Standardszene hat zwei Bildphasen, die Hook eine: 9 Szenen ergeben 17 Bilder.
+  for (const visual of manifest.visuals ?? manifest.scenes) {
+    await writeFile(path.join(result.reelDirectory, visual.expectedFile), fakePng(1080, 1920));
+    visual.status = 'ready';
   }
+  for (const scene of manifest.scenes) scene.status = 'ready';
   await writeJson(manifestPath, manifest);
 
   const firstReport = await runVisualQualityCheck(result.reelDirectory, { strict: false });
   assert.equal(firstReport.passed, true);
-  // Kein separates Cover mehr: Szene 1 ist zugleich das Titelbild.
-  assert.equal(firstReport.summary.assetsChecked, 12);
-  assert.ok(firstReport.summary.warnings >= 12);
+  assert.equal(firstReport.summary.assetsChecked, 17);
+  assert.ok(firstReport.summary.warnings >= 17);
 
   const inspectionPath = path.join(result.reelDirectory, 'review', 'visual-inspection.json');
   const inspection = JSON.parse(await readFile(inspectionPath, 'utf8'));
@@ -68,7 +69,7 @@ test('erkennt ein falsches Seitenverhältnis im strengen Modus', async () => {
     title: 'Was ist Gruppendruck?',
     script: 'Dieses Rohscript wird später zu einem vollständigen Ein-Minuten-Reel erweitert.',
     date: new Date('2026-07-31T12:00:00'),
-    sceneCount: 12,
+    sceneCount: 9,
     outputRoot
   });
 

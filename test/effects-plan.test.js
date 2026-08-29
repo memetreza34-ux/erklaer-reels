@@ -12,7 +12,7 @@ test('erstellt für jede Szene einen sicheren Bewegungs- und Soundplan', async (
     title: 'Warum fühlt sich Warten so lang an?',
     script: 'Beim Warten achten Menschen besonders stark auf die Zeit. Dadurch wirkt jeder einzelne Moment länger als in einer beschäftigten Situation.',
     date: new Date('2026-07-31T12:00:00'),
-    sceneCount: 13,
+    sceneCount: 9,
     outputRoot
   });
 
@@ -22,7 +22,7 @@ test('erstellt für jede Szene einen sicheren Bewegungs- und Soundplan', async (
   assert.equal(effectPlan.enabled, true);
   assert.equal(effectPlan.voiceoverPriority, true);
   assert.equal(effectPlan.backgroundMusic.enabled, false);
-  assert.equal(effectPlan.scenes.length, 13);
+  assert.equal(effectPlan.scenes.length, 9);
   assert.equal(effectPlan.scenes[0].sceneId, 'scene-01');
   assert.equal(effectPlan.scenes[0].transitionIn.type, 'none');
   assert.equal(effectPlan.scenes[0].cameraMotion.type, 'subtle-push-in');

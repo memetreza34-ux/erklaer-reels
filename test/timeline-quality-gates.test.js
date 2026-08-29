@@ -73,5 +73,5 @@ test('blockiert im strengen Lauf eine nur zwei Sekunden lange Erklärungsszene',
   assert.ok(shortSceneCheck);
   assert.equal(shortSceneCheck.passed, false);
   assert.equal(shortSceneCheck.level, 'error');
-  assert.match(shortSceneCheck.message, /3\.2–5\.5 Sekunden/);
+  assert.match(shortSceneCheck.message, /6–7\.5 Sekunden/);
 });

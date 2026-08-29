@@ -8,7 +8,7 @@ Dieses Repository produziert vollständige visuelle Erklär-Reels. Der Nutzer er
 
 - 55–60 Sekunden Voice-over
 - 155–175 deutsche Wörter
-- 12–14 **narrative Szenen**, Standard 13
+- 8–10 **narrative Szenen**, Standard 9
 - genau ein deutscher Erzähler
 - Voice-over exakt 1,10x
 - −16 LUFS, max. −1,5 dBTP
@@ -71,15 +71,15 @@ Reine Objekte, Mechanismen oder Diagramme dürfen ohne Kugelfigur Hauptmotiv sei
 
 Die Anzahl der Bilder ist **nicht** an die Szenenzahl gekoppelt.
 
-**Grundregel: Jeder Hauptsatz und jeder eigenständige Nebensatz bekommt möglichst einen eigenen Bildmoment.**
+**Grundregel: Jede Standardszene bekommt zwei Bildmomente, die Hook einen.**
 
 Für jede narrative Szene separat entscheiden:
-- 2 oder 3 Bilder als Normalfall, entsprechend den Satzteilen
-- 1 Bild nur, wenn die Szene aus einem einzigen kurzen Gedanken besteht
+- 2 Bilder als Normalfall; der zweite setzt beim nächsten Hauptsatz oder Nebensatz an
+- 1 Bild bei der Hook und bei Szenen aus einem einzigen kurzen Gedanken
 
-Ein Bild steht 1,4 bis 3,2 Sekunden, im Schnitt etwa 2. Bei rund 58 Sekunden ergibt das ungefähr **20 bis 30 Bilder**.
+Ein Bild steht 3 bis 4 Sekunden, im Schnitt etwa 3,25. Bei rund 58 Sekunden ergibt das ungefähr **17 bis 19 Bilder** auf 8 bis 10 Szenen.
 
-Harte Untergrenze: **1,2 Sekunden**. Der Timeline-Check `<szene>-image-phase-duration` blockiert kürzere Phasen. Ein Satz, dessen Bild darunter fiele, gehört mit dem Nachbarsatz in einen gemeinsamen Bildmoment.
+Harte Untergrenze: **3 Sekunden**. Der Timeline-Check `<szene>-image-phase-duration` blockiert kürzere Phasen. Eine Szene, die drei Bildmomente braucht, gehört in zwei Szenen aufgeteilt.
 
 `startPercent` legt den Schnitt auf den Satzanfang, nicht auf ein gleichmäßiges Raster.
 
@@ -104,7 +104,7 @@ npm run create:reel -- \
   --title "TITEL" \
   --script-file input/script.txt \
   --next-free \
-  --scenes 13
+  --scenes 9
 ```
 
 `--scenes` bezeichnet **narrative Szenen**, nicht die endgültige Bildanzahl.

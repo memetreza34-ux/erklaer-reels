@@ -8,7 +8,7 @@ Produktionspipeline für visuelle Erklär-Reels mit offenem Themenuniversum und 
 
 - 55–60 Sekunden Voice-over
 - 155–175 deutsche Wörter
-- 12–14 narrative Szenen, Standard 13
+- 8–10 narrative Szenen, Standard 9
 - Bildanzahl individuell pro Reel
 - pro Szene 1, 2 oder selten 3 Bildphasen
 - Voice-over 1,10x bei erhaltener Tonhöhe
