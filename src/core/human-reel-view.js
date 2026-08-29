@@ -68,6 +68,30 @@ async function writeIfMissing(filePath, content) {
 async function ensureSymlink(linkPath, target, type) {
   await mkdir(path.dirname(linkPath), { recursive: true });
 
+  // Ein Datei-Symlink auf ein noch nicht erzeugtes Ziel bleibt tot. Remotion ruft beim
+  // Bündeln realpath auf jeden Eintrag im Reel-Ordner und bricht daran ab — der Render
+  // scheiterte deshalb an der Verknüpfung auf die MP4, die er selbst erst erzeugt.
+  // Solange das Ziel fehlt, wird kein Link angelegt und ein toter entfernt.
+  if (type === 'file') {
+    const targetPath = path.resolve(path.dirname(linkPath), target);
+    let targetExists = true;
+    try {
+      await lstat(targetPath);
+    } catch (error) {
+      if (error?.code !== 'ENOENT') throw error;
+      targetExists = false;
+    }
+    if (!targetExists) {
+      try {
+        const existing = await lstat(linkPath);
+        if (existing.isSymbolicLink()) await rm(linkPath, { force: true });
+      } catch (error) {
+        if (error?.code !== 'ENOENT') throw error;
+      }
+      return { status: 'skipped-missing-target', linkPath, target };
+    }
+  }
+
   try {
     const stat = await lstat(linkPath);
     if (!stat.isSymbolicLink()) return { status: 'kept-existing', linkPath };

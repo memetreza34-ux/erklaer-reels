@@ -1,10 +1,13 @@
 import { access, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import { FIXED_VISUAL_STYLE_ID } from '../shared/fixed-visual-world.js';
 
 import { inspectSourcesMarkdown } from './source-quality.js';
 import { normalizeSceneImagePhases, plannedImageCount } from '../shared/visual-moments.js';
 
-const VISUAL_WORLD_RESET_DATE = '2026-08-26';
+// Reels vor diesem Datum stammen aus der Zeit, in der die Bildwelt bewusst
+// unbesetzt war oder noch eine der alten IDs trug. Ab hier gilt die eine feste Welt.
+const FIXED_VISUAL_WORLD_SINCE = '2026-08-28';
 
 async function exists(filePath) {
   try {
@@ -58,9 +61,9 @@ function phasePromptPath(sceneDirectory, phase) {
   return path.join(sceneDirectory, phase.promptFileName);
 }
 
-function isPostVisualResetReel(reel) {
+function usesFixedVisualWorld(reel) {
   const date = String(reel?.date ?? '').trim();
-  return Boolean(date) && date >= VISUAL_WORLD_RESET_DATE;
+  return Boolean(date) && date >= FIXED_VISUAL_WORLD_SINCE;
 }
 
 export async function validateReelContent(reelDirectory, { strict = false } = {}) {
@@ -84,7 +87,7 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
   const sceneIndex = await readJson(sceneIndexPath, []);
   const effectsRules = await readJson(effectsRulesPath, {});
   const totalPlannedImages = plannedImageCount(sceneIndex);
-  const postVisualReset = isPostVisualResetReel(reel);
+  const fixedVisualWorldRequired = usesFixedVisualWorld(reel);
   const styleId = String(reel.visualStyleId ?? '').trim();
   const styleReason = String(reel.visualStyleReason ?? '').trim();
 
@@ -95,11 +98,11 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
   addCheck(checks, 'topic-area', String(reel.topicArea ?? '').trim().length >= 5,
     'reel.json.topicArea fehlt.');
 
-  if (postVisualReset) {
-    addCheck(checks, 'visual-world-unassigned', styleId.length === 0,
-      'Neue Reels ab 2026-08-26 müssen ohne feste Bildwelt starten: visualStyleId muss leer/null sein.');
-    addCheck(checks, 'visual-world-reason-empty', styleReason.length === 0,
-      'Neue Reels ab 2026-08-26 dürfen keine alte Stilbegründung automatisch übernehmen.');
+  if (fixedVisualWorldRequired) {
+    addCheck(checks, 'visual-world-fixed', styleId === FIXED_VISUAL_STYLE_ID,
+      `Neue Reels müssen die eine feste Bildwelt tragen: visualStyleId muss "${FIXED_VISUAL_STYLE_ID}" sein.`);
+    addCheck(checks, 'visual-world-reason-present', styleReason.length >= 20,
+      'reel.json.visualStyleReason muss die feste Bildwelt kurz begründen.');
   } else {
     addCheck(checks, 'legacy-visual-world-nonblocking', true,
       'Historische Reels dürfen ihre alten Stilfelder als Archivdaten behalten.', 'warning');

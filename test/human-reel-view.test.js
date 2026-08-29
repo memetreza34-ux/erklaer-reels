@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { access, lstat, mkdir, mkdtemp, readFile, readlink, writeFile } from 'node:fs/promises';
+import { access, lstat, mkdir, mkdtemp, readFile, readlink, rm, writeFile } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 
@@ -94,6 +94,10 @@ test('stellt Sammelordner für nummerierte Flow-Bilder bereit', async () => {
 
 test('sammelt fertiges Reel und Universal-Caption nur im sichtbaren Exportbereich', async () => {
   const reelDirectory = await createMinimalReel();
+  // Verknüpfungen auf Dateien entstehen erst, wenn das Ziel existiert.
+  await mkdir(path.join(reelDirectory, 'export'), { recursive: true });
+  await writeFile(path.join(reelDirectory, 'export', 'FERTIGES-REEL.mp4'), 'video', 'utf8');
+  await writeFile(path.join(reelDirectory, 'export', 'UNIVERSELLE-CAPTION.txt'), 'caption', 'utf8');
   await ensureHumanReelView(reelDirectory);
 
   assert.equal(await readlink(path.join(reelDirectory, '01-voice-script', 'voice-script.txt')), '../script/voice-script.txt');
@@ -126,4 +130,34 @@ test('entfernt alte sichtbare Ordner und den all-image-prompts-Doppelordner', as
   assert.equal(await exists(path.join(reelDirectory, 'all-image-prompts')), false);
   assert.ok(result.removedLegacyFolders.includes('all-image-prompts'));
   assert.equal((await lstat(path.join(reelDirectory, '03-export'))).isDirectory(), true);
+});
+
+test('legt keinen Datei-Symlink auf ein noch fehlendes Ziel an', async () => {
+  const reelDirectory = await createMinimalReel();
+
+  // Vor dem Render gibt es keine MP4. Ein Symlink darauf wäre tot, und Remotion
+  // ruft beim Bündeln realpath auf jeden Eintrag im Reel-Ordner.
+  await ensureHumanReelView(reelDirectory, { hideTechnicalInFinder: false });
+  await assert.rejects(() => lstat(path.join(reelDirectory, '03-export', 'FERTIGES-REEL.mp4')));
+
+  // Sobald die Datei existiert, entsteht die Verknüpfung.
+  await mkdir(path.join(reelDirectory, 'export'), { recursive: true });
+  await writeFile(path.join(reelDirectory, 'export', 'FERTIGES-REEL.mp4'), 'video', 'utf8');
+  await ensureHumanReelView(reelDirectory, { hideTechnicalInFinder: false });
+  assert.equal(
+    await readlink(path.join(reelDirectory, '03-export', 'FERTIGES-REEL.mp4')),
+    '../export/FERTIGES-REEL.mp4'
+  );
+});
+
+test('entfernt eine tote Verknüpfung, wenn das Ziel verschwindet', async () => {
+  const reelDirectory = await createMinimalReel();
+  await mkdir(path.join(reelDirectory, 'export'), { recursive: true });
+  await writeFile(path.join(reelDirectory, 'export', 'FERTIGES-REEL.mp4'), 'video', 'utf8');
+  await ensureHumanReelView(reelDirectory, { hideTechnicalInFinder: false });
+
+  await rm(path.join(reelDirectory, 'export', 'FERTIGES-REEL.mp4'), { force: true });
+  await ensureHumanReelView(reelDirectory, { hideTechnicalInFinder: false });
+
+  await assert.rejects(() => lstat(path.join(reelDirectory, '03-export', 'FERTIGES-REEL.mp4')));
 });

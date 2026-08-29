@@ -194,6 +194,10 @@ export async function renderReel(reelDirectory, {
       await copyFile(outputLocation, canonicalExportVideo);
     }
 
+    // Die sichtbare Verknüpfung unter 03-export/ entsteht erst jetzt: Vor dem Render
+    // zeigte sie auf eine noch nicht existierende Datei und hätte das Bündeln gebrochen.
+    await ensureHumanReelView(reelDirectory);
+
     const fileStats = await stat(canonicalExportVideo);
     const report = {
       version: 4,

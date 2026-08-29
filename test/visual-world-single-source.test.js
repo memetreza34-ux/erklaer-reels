@@ -125,3 +125,33 @@ test('Style-Bibel liegt dort, wo Config und Produktionsregeln sie erwarten', asy
   const knowledgeFiles = await readdir(path.join(REPO_ROOT, 'knowledge'));
   assert.ok(knowledgeFiles.includes('fixed-visual-world.md'));
 });
+
+test('ein frisch angelegtes Reel besteht die Bildwelt-Prüfung der Inhaltskontrolle', async () => {
+  const { createReelWorkspace } = await import('../src/core/workspace.js');
+  const { validateReelContent } = await import('../src/core/content-validator.js');
+  const { mkdtemp, rm } = await import('node:fs/promises');
+  const os = await import('node:os');
+
+  const outputRoot = await mkdtemp(path.join(os.tmpdir(), 'erklaer-world-gate-'));
+  try {
+    const result = await createReelWorkspace({
+      title: 'Warum haben manche Länder zwei Hauptstädte?',
+      script: 'Dieses Rohscript wird später zu einem vollständigen Ein-Minuten-Reel erweitert und dient hier nur als Platzhalter.',
+      date: new Date('2026-09-10T12:00:00'),
+      outputRoot
+    });
+
+    const report = await validateReelContent(result.reelDirectory);
+    const worldChecks = report.checks.filter((check) => check.id.startsWith('visual-world-'));
+
+    // createReelWorkspace setzt die feste Bildwelt. Wenn die Inhaltsprüfung sie
+    // ablehnt, kann kein einziges neues Reel je fertig werden — genau dieser
+    // Widerspruch bestand, solange der Validator eine leere visualStyleId verlangte.
+    assert.ok(worldChecks.length > 0, 'Die Bildwelt muss geprüft werden');
+    for (const check of worldChecks) {
+      assert.equal(check.passed, true, `${check.id}: ${check.message}`);
+    }
+  } finally {
+    await rm(outputRoot, { recursive: true, force: true });
+  }
+});
