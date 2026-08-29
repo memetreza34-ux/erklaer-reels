@@ -71,6 +71,7 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
   const reelPath = path.join(reelDirectory, 'reel.json');
   const sceneIndexPath = path.join(reelDirectory, 'scenes', 'scene-index.json');
   const effectsRulesPath = path.resolve('config', 'effects-rules.json');
+  const qualityGatesPath = path.resolve('config', 'production-quality-gates.json');
   const subtitlePlanPath = path.join(reelDirectory, 'subtitles', 'subtitle-plan.json');
   const effectsPlanPath = path.join(reelDirectory, 'effects', 'effects-plan.json');
 
@@ -86,6 +87,9 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
   const reel = await readJson(reelPath);
   const sceneIndex = await readJson(sceneIndexPath, []);
   const effectsRules = await readJson(effectsRulesPath, {});
+  // Die Szenendauern stehen in den Quality-Gates. Vorher waren sie hier hartkodiert
+  // und widersprachen der Single Source of Truth.
+  const sceneTiming = (await readJson(qualityGatesPath, {})).sceneTiming ?? {};
   const totalPlannedImages = plannedImageCount(sceneIndex);
   const fixedVisualWorldRequired = usesFixedVisualWorld(reel);
   const styleId = String(reel.visualStyleId ?? '').trim();
@@ -110,12 +114,21 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
 
   addCheck(checks, 'subtitles-disabled', reel.subtitlesEnabled === false,
     'Untertitel müssen für dieses Format deaktiviert sein.');
-  // 'individual-per-reel' bleibt für Archiv-Reels gültig, neue tragen den festen Modus.
   addCheck(checks, 'image-count-mode',
-    !reel.imageCountMode || ['one-hook-two-standard', 'individual-per-reel'].includes(reel.imageCountMode),
-    'imageCountMode muss one-hook-two-standard sein (Archiv-Reels: individual-per-reel).');
-  addCheck(checks, 'image-count-range', totalPlannedImages >= sceneIndex.length && totalPlannedImages <= sceneIndex.length * 3,
-    `Geplant sind ${totalPlannedImages} Bilder für ${sceneIndex.length} Szenen; erlaubt sind ein bis drei Bildphasen pro Szene.`);
+    fixedVisualWorldRequired
+      ? reel.imageCountMode === 'one-hook-two-standard'
+      : !reel.imageCountMode || ['one-hook-two-standard', 'individual-per-reel'].includes(reel.imageCountMode),
+    fixedVisualWorldRequired
+      ? 'Neue Reels müssen imageCountMode: "one-hook-two-standard" tragen.'
+      : 'imageCountMode darf bei Archiv-Reels individual-per-reel oder leer sein.');
+  const erwarteteBilder = sceneIndex.length > 0 ? 1 + (sceneIndex.length - 1) * 2 : 0;
+  addCheck(checks, 'image-count-range',
+    fixedVisualWorldRequired
+      ? totalPlannedImages === erwarteteBilder
+      : totalPlannedImages >= sceneIndex.length && totalPlannedImages <= sceneIndex.length * 3,
+    fixedVisualWorldRequired
+      ? `Bei ${sceneIndex.length} Szenen sind ${erwarteteBilder} Bilder vorgesehen (Hook eins, jede weitere Szene zwei); geplant sind ${totalPlannedImages}.`
+      : `Geplant sind ${totalPlannedImages} Bilder für ${sceneIndex.length} Szenen; Archiv-Reels erlauben ein bis drei Bildphasen pro Szene.`);
   addCheck(checks, 'planned-image-count-match', reel.plannedImageCount == null || Number(reel.plannedImageCount) === totalPlannedImages,
     `reel.json.plannedImageCount stimmt nicht mit den ${totalPlannedImages} geplanten Bildphasen überein.`, reel.plannedImageCount == null ? 'warning' : 'error');
   addCheck(checks, 'motion-effects-enabled', reel.motionEffectsEnabled !== false,
@@ -180,12 +193,27 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
       `${expectedId}: leadInSeconds sollte zwischen 0,1 und 0,3 liegen.`, 'warning');
     addCheck(checks, `${expectedId}-duration`, Number.isFinite(duration) && duration >= 2.5 && duration <= 8,
       `${expectedId}: durationSeconds muss zwischen 2,5 und 8 liegen.`);
-    addCheck(checks, `${expectedId}-preferred-duration`, Number.isFinite(duration) && duration >= 3.2 && duration <= 5.5,
-      `${expectedId}: Für den gewünschten Rhythmus sind ungefähr 3,2–5,5 Sekunden empfehlenswert.`, 'warning');
+    // Hook, Standardszene und Schluss haben eigene Spannen — eine Pauschalregel
+    // würde genau die Dauern anmahnen, die der Workflow vorschreibt.
+    const spanne = index === 0
+      ? (sceneTiming.hookSeconds ?? { min: 4.5, max: 6 })
+      : index === sceneIndex.length - 1
+        ? (sceneTiming.finalSceneSecondsIncludingHold ?? { min: 6, max: 8.5 })
+        : (sceneTiming.standardSeconds ?? { min: 6, max: 7.5 });
+    const spannenName = index === 0 ? 'Hook' : index === sceneIndex.length - 1 ? 'Schlussszene' : 'Standardszene';
+    addCheck(checks, `${expectedId}-preferred-duration`,
+      Number.isFinite(duration) && duration >= Number(spanne.min) && duration <= Number(spanne.max),
+      `${expectedId}: ${spannenName} sollte ${spanne.min}–${spanne.max} Sekunden dauern.`, 'warning');
 
     const phases = normalizeSceneImagePhases(scene);
-    addCheck(checks, `${expectedId}-image-phase-count`, phases.length >= 1 && phases.length <= 3,
-      `${expectedId}: Eine Szene darf ein bis drei Bildphasen besitzen.`);
+    if (fixedVisualWorldRequired) {
+      const erwartet = index === 0 ? 1 : 2;
+      addCheck(checks, `${expectedId}-image-phase-count`, phases.length === erwartet,
+        `${expectedId}: ${index === 0 ? 'Die Hook' : 'Eine Standardszene'} braucht genau ${erwartet} Bildphase${erwartet === 1 ? '' : 'n'}, hat aber ${phases.length}.`);
+    } else {
+      addCheck(checks, `${expectedId}-image-phase-count`, phases.length >= 1 && phases.length <= 3,
+        `${expectedId}: Archiv-Reels dürfen ein bis drei Bildphasen besitzen.`);
+    }
     addCheck(checks, `${expectedId}-image-count-field`, scene.imageCount == null || Number(scene.imageCount) === phases.length,
       `${expectedId}: imageCount stimmt nicht mit imagePhases überein.`, scene.imageCount == null ? 'warning' : 'error');
     addCheck(checks, `${expectedId}-first-phase-at-zero`, phases[0]?.startPercent === 0,

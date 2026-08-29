@@ -59,14 +59,14 @@ Prompts sind Englisch, sichtbarer Bildtext ist ausschließlich Deutsch.
 Die alte Gleichsetzung `13 Szenen = 13 Bilder` ist aufgehoben.
 
 Ab sofort:
-- jede narrative Szene besitzt 1, 2 oder selten 3 Bildphasen
+- die Hook besitzt eine Bildphase, jede weitere Szene genau zwei
 - die Gesamtzahl der Bilder wird pro Reel individuell gewählt
 - keine fixe Sollzahl pro Reel
 - ein Stillstand von ungefähr 3,5–4 Sekunden ist ein Trigger, eine zweite Bildphase zu prüfen, aber keine automatische Pflicht
 - jedes Zusatzbild braucht einen echten Informations-, Fokus- oder Rhythmusgewinn
 
 Technisch:
-- `imageCountMode: "individual-per-reel"`
+- `imageCountMode: "one-hook-two-standard"`
 - `plannedImageCount`
 - `scene.imageCount`
 - `scene.imagePhases[]`

@@ -149,3 +149,65 @@ test('reel.json nennt die tatsächliche Bildanzahl, nicht die Szenenzahl', async
     await rm(outputRoot, { recursive: true, force: true });
   }
 });
+
+test('neue Reels dürfen die Bildregel nicht unterlaufen', async () => {
+  const { createReelWorkspace } = await import('../src/core/workspace.js');
+  const { validateReelContent } = await import('../src/core/content-validator.js');
+  const { mkdtemp, readFile, writeFile, rm } = await import('node:fs/promises');
+  const os = await import('node:os');
+
+  const outputRoot = await mkdtemp(path.join(os.tmpdir(), 'erklaer-haertung-'));
+  try {
+    const result = await createReelWorkspace({
+      title: 'Warum haben manche Länder zwei Hauptstädte?',
+      script: 'Dieses Rohscript wird später zu einem vollständigen Ein-Minuten-Reel erweitert und dient als Platzhalter.',
+      date: new Date('2026-10-05T12:00:00'),
+      outputRoot
+    });
+
+    const indexPath = path.join(result.reelDirectory, 'scenes', 'scene-index.json');
+    const scenes = JSON.parse(await readFile(indexPath, 'utf8'));
+
+    // Eine dritte Bildphase und der alte Modus: früher hätte der Validator beides
+    // durchgewinkt, weil er 1 bis 3 Phasen und individual-per-reel erlaubte.
+    scenes[2].imagePhases.push({
+      phaseId: `${scenes[2].sceneId}-image-03`,
+      order: 3,
+      startPercent: 0.75,
+      promptFileName: 'image-prompt-03.txt',
+      expectedImageFileName: `${scenes[2].sceneId}-3.png`,
+      visualIdea: '', imageText: '', rationale: '', imageStatus: 'missing', assetVerification: null
+    });
+    scenes[2].imageCount = 3;
+    await writeFile(indexPath, `${JSON.stringify(scenes, null, 2)}\n`, 'utf8');
+    await writeFile(path.join(result.reelDirectory, 'scenes', scenes[2].sceneId, 'scene.json'),
+      `${JSON.stringify(scenes[2], null, 2)}\n`, 'utf8');
+
+    const reelPath = path.join(result.reelDirectory, 'reel.json');
+    const reel = JSON.parse(await readFile(reelPath, 'utf8'));
+    reel.imageCountMode = 'individual-per-reel';
+    await writeFile(reelPath, `${JSON.stringify(reel, null, 2)}\n`, 'utf8');
+
+    const bericht = await validateReelContent(result.reelDirectory);
+    const fehler = bericht.checks.filter((check) => check.passed === false && check.level === 'error');
+    const meldungen = fehler.map((check) => check.message).join(' ');
+
+    assert.match(meldungen, /genau 2 Bildphasen/, 'Die dritte Bildphase muss auffallen');
+    assert.match(meldungen, /one-hook-two-standard/, 'Der alte Modus muss abgelehnt werden');
+    assert.match(meldungen, /17 Bilder vorgesehen/, 'Die Gesamtzahl muss geprüft werden');
+  } finally {
+    await rm(outputRoot, { recursive: true, force: true });
+  }
+});
+
+test('die Szenendauer-Erwartung stammt aus den Quality-Gates, nicht aus fest verdrahteten Zahlen', async () => {
+  const { readFile } = await import('node:fs/promises');
+  const validator = await readFile(path.join(REPO_ROOT, 'src', 'core', 'content-validator.js'), 'utf8');
+  const gates = JSON.parse(await readFile(path.join(REPO_ROOT, 'config', 'production-quality-gates.json'), 'utf8'));
+
+  assert.match(validator, /sceneTiming/, 'Der Validator muss die Quality-Gates lesen');
+  // Die alte Pauschalspanne widersprach der Single Source of Truth.
+  assert.ok(!/duration >= 3\.2 && duration <= 5\.5/.test(validator), 'Keine fest verdrahtete 3,2–5,5-Spanne mehr');
+  assert.equal(gates.sceneTiming.standardSeconds.min, 6);
+  assert.equal(gates.sceneTiming.hookSeconds.max, 6);
+});
