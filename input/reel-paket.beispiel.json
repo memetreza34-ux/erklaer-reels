@@ -1,0 +1,104 @@
+{
+  "title": "Warum haben manche Länder zwei Hauptstädte?",
+  "topicArea": "Länder, Geografie und Geschichte",
+  "caption": "Warum haben manche Länder zwei oder sogar drei Hauptstädte?\n\nSüdafrika verteilt seine Staatsmacht bewusst: Pretoria regiert, Kapstadt tagt, Bloemfontein spricht Recht. Der Grund liegt in der Gründung von 1910.\n\n#erklärt #geografie #hauptstadt #südafrika #wissen",
+  "sources": [
+    {
+      "title": "Südafrikanische Regierung — South Africa at a glance",
+      "url": "https://www.gov.za/about-sa/south-africa-glance",
+      "accessed": "2026-08-29",
+      "type": "offizielle Primärquelle",
+      "supports": "Pretoria ist Regierungssitz, Kapstadt Parlamentssitz, Bloemfontein Sitz des obersten Berufungsgerichts."
+    },
+    {
+      "title": "Encyclopaedia Britannica — South Africa, Government and society",
+      "url": "https://www.britannica.com/place/South-Africa",
+      "accessed": "2026-08-29",
+      "type": "unabhängige Fachquelle",
+      "supports": "Die Aufteilung geht auf den Zusammenschluss der vier Kolonien 1910 zurück."
+    }
+  ],
+  "scenes": [
+    {
+      "narration": "Warum haben manche Länder eigentlich gleich zwei oder sogar drei Hauptstädte, obwohl eine einzige doch völlig ausreichen würde?",
+      "imageText": "ZWEI HAUPTSTÄDTE",
+      "visualIdea": "Zwei runde Länderkugeln stehen auf einer flachen Landkarte, getrennt durch eine gestrichelte Grenzlinie.",
+      "continuityNotes": "Gleiche Konturstärke, gleiche Farbwelt und derselbe ruhige Hintergrund wie in der Szene davor.",
+      "durationSeconds": 5.5,
+      "cameraMotion": {
+        "type": "none"
+      },
+      "soundEffects": [],
+      "images": [
+        {
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Round ball characters with simple white eyes on a flat map shape, thick confident black outlines, flat colours on a calm ochre background field. Scene 1, image 1: Zwei runde Länderkugeln stehen auf einer flachen Landkarte, getrennt durch eine gestrichelte Grenzlinie. Low detail, one dominant idea, readable in one second on a phone. Integrate exactly \"ZWEI HAUPTSTÄDTE\" once, large and bold.",
+          "imageText": "ZWEI HAUPTSTÄDTE",
+          "startPercent": 0
+        }
+      ]
+    },
+    {
+      "narration": "Ein Land, eine Hauptstadt, das klingt für die allermeisten Menschen zunächst völlig logisch, selbstverständlich und auch ziemlich praktisch.",
+      "imageText": "EIN LAND, EINE STADT",
+      "visualIdea": "Eine einzelne Kugelfigur zeigt auf einen einzigen markierten Punkt auf einer schlichten Landkarte.",
+      "continuityNotes": "Gleiche Konturstärke, gleiche Farbwelt und derselbe ruhige Hintergrund wie in der Szene davor.",
+      "durationSeconds": 6.5,
+      "cameraMotion": {
+        "type": "ken-burns"
+      },
+      "soundEffects": [
+        {
+          "type": "whoosh-up",
+          "atPercent": 0.05,
+          "visualEvent": "Szenenwechsel zu Eine einzelne Kugelfigur zeigt auf einen",
+          "reason": "Markiert den Schnitt hörbar."
+        }
+      ],
+      "images": [
+        {
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Round ball characters with simple white eyes on a flat map shape, thick confident black outlines, flat colours on a calm ochre background field. Scene 2, image 1: Eine einzelne Kugelfigur zeigt auf einen einzigen markierten Punkt auf einer schlichten Landkarte. Low detail, one dominant idea, readable in one second on a phone. Integrate exactly \"EIN LAND, EINE STADT\" once, large and bold.",
+          "imageText": "EIN LAND, EINE STADT",
+          "startPercent": 0
+        },
+        {
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Round ball characters with simple white eyes on a flat map shape, thick confident black outlines, flat colours on a calm ochre background field. Scene 2, image 2: Eine einzelne Kugelfigur zeigt auf einen einzigen markierten Punkt auf einer schlichten Landkarte. Low detail, one dominant idea, readable in one second on a phone. No readable text in this image.",
+          "imageText": "",
+          "startPercent": 0.5
+        }
+      ]
+    },
+    {
+      "…": "weitere Szenen bis insgesamt 9; die letzten beiden sind Prüffrage und Abschluss"
+    },
+    {
+      "narration": "Hauptstädte sind also selten reine Geografie, sondern fast immer ein Kompromiss. Achte beim nächsten Blick auf eine Landkarte bewusst darauf.",
+      "imageText": "SCHAU GENAUER HIN",
+      "visualIdea": "Ruhige Schlussansicht der Karte mit einer klar markierten Hauptstadt und den Regionen ringsum.",
+      "continuityNotes": "Gleiche Konturstärke, gleiche Farbwelt und derselbe ruhige Hintergrund wie in der Szene davor.",
+      "durationSeconds": 7,
+      "cameraMotion": {
+        "type": "subtle-pull-out"
+      },
+      "soundEffects": [
+        {
+          "type": "swoosh-reveal",
+          "atPercent": 0.05,
+          "visualEvent": "Szenenwechsel zu Ruhige Schlussansicht der Karte mit eine",
+          "reason": "Markiert den Schnitt hörbar."
+        }
+      ],
+      "images": [
+        {
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Round ball characters with simple white eyes on a flat map shape, thick confident black outlines, flat colours on a calm ochre background field. Scene 9, image 1: Ruhige Schlussansicht der Karte mit einer klar markierten Hauptstadt und den Regionen ringsum. Low detail, one dominant idea, readable in one second on a phone. Integrate exactly \"SCHAU GENAUER HIN\" once, large and bold.",
+          "imageText": "SCHAU GENAUER HIN",
+          "startPercent": 0
+        },
+        {
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Round ball characters with simple white eyes on a flat map shape, thick confident black outlines, flat colours on a calm ochre background field. Scene 9, image 2: Ruhige Schlussansicht der Karte mit einer klar markierten Hauptstadt und den Regionen ringsum. Low detail, one dominant idea, readable in one second on a phone. No readable text in this image.",
+          "imageText": "",
+          "startPercent": 0.5
+        }
+      ]
+    }
+  ]
+}

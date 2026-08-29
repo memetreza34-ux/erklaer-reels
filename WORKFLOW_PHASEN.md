@@ -38,14 +38,31 @@ Breaking-News, Parteienwerbung und reine Produktwerbung.
 Entscheidend sind Hook, klarer Aha-Moment, Belegbarkeit, visuelle Klarheit und
 Abwechslung zu den letzten Reels.
 
-### Anlegen
+### Anlegen — zwei Wege
+
+**Weg A: ohne Repo-Zugriff (empfohlen für ChatGPT im Browser)**
+
+Das Sprachmodell schreibt das komplette Reel als **eine JSON-Datei** und braucht
+dafür weder Schreibrechte noch eine Shell. Format und ausgefülltes Beispiel:
+`input/reel-paket.beispiel.json`.
+
+```bash
+npm run import:reel -- --file reel-paket.json --check   # nur prüfen
+npm run import:reel -- --file reel-paket.json           # anlegen
+```
+
+Der Import prüft vorab Szenen- und Bildanzahl, Wortzahl, Promptlänge und den
+Abschluss mit Prüffrage. Fehlt etwas, entsteht kein halbes Reel, sondern eine
+Liste dessen, was nachzubessern ist.
+
+**Weg B: mit Repo-Zugriff**
 
 ```bash
 npm run create:reel -- --title "Warum …?" --script-file input/script.txt --next-free
 ```
 
 Das Gerüst entsteht mit 9 Szenen, der festen Bildwelt und je zwei Bildphasen
-(Hook: eine).
+(Hook: eine) und wird danach von Hand ausgefüllt.
 
 ### Ausschreiben
 
