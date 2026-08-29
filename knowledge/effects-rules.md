@@ -8,15 +8,46 @@ Zooms, Kamerabewegungen und Soundeffekte sollen das Verständnis unterstützen. 
 
 ## Zooms und Kamerabewegungen
 
-- nicht jedes Bild braucht Bewegung
-- Standard ist ein ruhiges Bild oder ein sehr dezenter Effekt
-- für statische Bilder eignen sich langsame Zooms, leichte Push-ins, Pull-outs oder kleine Schwenks
-- Zoom normalerweise ungefähr 2–6 %, niemals mehr als 8 %
+**Bewegung ist der Normalfall.** Ein Standbild ohne jede Bewegung wirkt auf einem
+Smartphone tot. Etwa jede vierte Szene bleibt trotzdem bewusst ruhig, damit die
+Bewegung nicht zum Dauerzustand wird.
+
+### Bevorzugt: `ken-burns`
+
+Kombiniert einen leichten Zoom mit einem leichten Schwenk. Das wirkt deutlich
+lebendiger als ein reiner Zoom, ohne mehr Bewegung ins Bild zu bringen. Ohne eigene
+Werte fährt er von Skalierung 1,02 auf 1,06 und schwenkt dabei um 3 % der Bildbreite.
+
+### Alle Typen
+
+| Typ | Wirkung |
+|---|---|
+| `ken-burns` | Zoom plus Schwenk, der hochwertigste Standard |
+| `subtle-push-in` | ruhiges Herangehen, gut bei Gesichtern und Details |
+| `subtle-pull-out` | Kontext öffnet sich, gut beim Einordnen |
+| `slow-zoom-in` | etwas stärkeres Heranfahren für einen Höhepunkt |
+| `slow-zoom-out` | Rückzug, gut vor einem Themenwechsel |
+| `pan-left` / `pan-right` | horizontale Bewegung, gut bei Karten und Vergleichen |
+| `pan-up` / `pan-down` | vertikale Bewegung, gut bei Höhe, Tiefe oder Schichten |
+| `none` | bewusste Ruhe |
+
+### Grenzen
+
+- Zoom normalerweise 2–6 %, niemals mehr als 8 %
 - Schwenk höchstens 4 % der Bildbreite oder Bildhöhe
-- **Hook standardmäßig `cameraMotion.type: "none"`**, damit sie sofort klar und stabil lesbar ist
+- **Hook bleibt `none`**, damit sie sofort klar und stabil lesbar ist
 - keine schnellen, pumpenden oder wiederholten Zooms
 - wichtiger Bildtext, Kugelfiguren und Symbole müssen während der gesamten Bewegung sicher bleiben
-- ein Effekt benötigt immer eine kurze Begründung; ohne inhaltlichen Nutzen bleibt `cameraMotion.type` auf `none`
+- nicht dieselbe Bewegung über viele Szenen hintereinander
+
+### Weiches Ein- und Auslaufen
+
+Jede Bewegung läuft standardmäßig mit `ease-in-out`: Sie beschleunigt sanft an und
+läuft weich aus. Eine lineare Fahrt startet und stoppt hart und wirkt dadurch
+mechanisch — das ist der häufigste Grund, warum Zooms billig aussehen.
+
+Über das Feld `easing` sind auch `ease-out`, `ease-in`, `ease` und `linear` möglich.
+Ohne Angabe gilt `ease-in-out`.
 
 ## Übergänge
 
@@ -31,10 +62,27 @@ Zooms, Kamerabewegungen und Soundeffekte sollen das Verständnis unterstützen. 
 
 - Voice-over hat immer Vorrang
 - Hintergrundmusik ist ausgeschaltet
-- pro narrativer Szene normalerweise null bis zwei Soundeffekte
-- Soundeffekte nur an einem konkreten visuellen Ereignis oder passenden Audio-Cue einsetzen
+- **jeder Szenenwechsel bekommt einen Sound** — der harte Schnitt wird dadurch hörbar markiert
+- höchstens drei Soundeffekte pro Szene
 - geeignet sind dezente Whooshes, Pops, Klicks, Ticks, weiche Impacts, Papiergeräusche oder objektbezogene Geräusche
-- nicht jeden Bildwechsel mit einem Whoosh versehen
+
+### Welcher Sound am Schnitt
+
+**Erste Wahl ist immer ein inhaltlich passender Effekt** zum sichtbaren Ereignis der
+neuen Szene: erscheint ein Objekt, kommt `pop`; wechselt Geld den Besitzer, `coin`;
+öffnet sich eine Tür, `door`.
+
+Nur wenn kein sichtbares Ereignis passt, kommt eine der vier Transition-Varianten:
+
+| Typ | wann |
+|---|---|
+| `whoosh-up` | die neue Szene steigert oder spitzt zu |
+| `whoosh-down` | die neue Szene löst auf oder ordnet ein |
+| `soft-whoosh` | deutlicher Themensprung |
+| `soft-swipe` | neutraler Schnitt ohne eigene Aussage |
+
+**Dieselbe Transition-Variante darf nie zweimal hintereinander stehen.** Sonst klingt
+das Reel nach Vorlage. Zwischen den vier Varianten wird bewusst gewechselt.
 - keine lauten Meme-Sounds, Jumpscares oder übertriebenen Effekte
 - Lautstärke normalerweise zwischen 0,12 und 0,30; Standard ungefähr 0,20 relativ zur Voice-over-Mischung
 - Soundeffekte dürfen wichtige Wörter des Voice-overs nicht verdecken
@@ -47,7 +95,10 @@ bzw. automatisch der Timeline-Bau.
 
 | type | Ereignis im Bild |
 |---|---|
-| `soft-whoosh` | Bildwechsel mit deutlichem Themensprung, höchstens zweimal pro Reel |
+| `soft-whoosh` | Szenenwechsel mit deutlichem Themensprung |
+| `whoosh-up` | Szenenwechsel, der steigert oder zuspitzt |
+| `whoosh-down` | Szenenwechsel, der auflöst oder einordnet |
+| `soft-swipe` | neutraler Szenenwechsel ohne eigene Aussage |
 | `pop` | ein Objekt oder eine Figur erscheint sichtbar neu |
 | `click` | eine konkrete Zahl oder ein Schlüsselbegriff wird betont |
 | `tick` | Zeit, Zählen, Abfolge, Kalender, Uhr |

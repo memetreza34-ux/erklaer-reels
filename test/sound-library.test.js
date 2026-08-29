@@ -5,7 +5,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { knownSoundTypes, loadSoundLibrary, syncReelSounds } from '../src/core/sound-library.js';
+import { knownSoundTypes, loadSoundLibrary, reviewSoundDramaturgy, syncReelSounds } from '../src/core/sound-library.js';
 
 const REPO_ROOT = fileURLToPath(new URL('..', import.meta.url));
 
@@ -128,5 +128,43 @@ test('lässt Szenen ohne geplante Sounds unangetastet', async () => {
     assert.deepEqual(result.missingFiles, []);
   } finally {
     await rm(root, { recursive: true, force: true });
+  }
+});
+
+test('meldet fehlende Sounds am Szenenwechsel und direkte Wiederholungen', async () => {
+  const rules = JSON.parse(await readFile(path.join(REPO_ROOT, 'config', 'effects-rules.json'), 'utf8'));
+
+  const gut = reviewSoundDramaturgy({
+    scenes: [
+      { sceneId: 'scene-01', soundEffects: [] },
+      { sceneId: 'scene-02', soundEffects: [{ type: 'whoosh-up' }] },
+      { sceneId: 'scene-03', soundEffects: [{ type: 'pop' }, { type: 'soft-swipe' }] },
+      { sceneId: 'scene-04', soundEffects: [{ type: 'whoosh-down' }] }
+    ]
+  }, rules);
+  assert.equal(gut.passed, true, JSON.stringify(gut.findings));
+
+  const schlecht = reviewSoundDramaturgy({
+    scenes: [
+      { sceneId: 'scene-01', soundEffects: [] },
+      { sceneId: 'scene-02', soundEffects: [{ type: 'soft-whoosh' }] },
+      { sceneId: 'scene-03', soundEffects: [{ type: 'soft-whoosh' }] },
+      { sceneId: 'scene-04', soundEffects: [] }
+    ]
+  }, rules);
+  assert.equal(schlecht.passed, false);
+  assert.ok(schlecht.findings.some((f) => f.issue === 'repeated-transition-sound' && f.sceneId === 'scene-03'));
+  assert.ok(schlecht.findings.some((f) => f.issue === 'no-sound-on-scene-change' && f.sceneId === 'scene-04'));
+});
+
+test('alle Transition-Varianten der Effektregeln stehen in der Bibliothek', async () => {
+  const rules = JSON.parse(await readFile(path.join(REPO_ROOT, 'config', 'effects-rules.json'), 'utf8'));
+  const library = await loadSoundLibrary();
+  const types = new Set(knownSoundTypes(library));
+
+  const transitions = rules.soundEffects.transitionSoundTypes ?? [];
+  assert.ok(transitions.length >= 3, 'Ohne mehrere Varianten klingt jeder Schnitt gleich');
+  for (const type of transitions) {
+    assert.ok(types.has(type), `Transition-Sound "${type}" fehlt in der Bibliothek`);
   }
 });

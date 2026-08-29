@@ -4,7 +4,7 @@
   "reelSoundDirectory": "sfx",
   "defaultVolume": 0.2,
   "maxSoundsPerScene": 2,
-  "note": "Der Produktions-Agent wählt ausschließlich einen dieser type-Werte. Dateinamen kennt er nicht; die Auflösung übernimmt src/core/sound-library.js beim Timeline-Bau.",
+  "note": "Der Produktions-Agent wählt ausschließlich einen dieser type-Werte. Dateinamen kennt er nicht; die Auflösung übernimmt src/core/sound-library.js beim Timeline-Bau. Jeder Szenenwechsel bekommt einen Sound: bevorzugt einen inhaltlich passenden, sonst eine der Transition-Varianten aus config/effects-rules.json.",
   "types": [
     {
       "type": "soft-whoosh",
@@ -85,6 +85,30 @@
       "useWhen": "Ein Tropfen oder Wasser trifft sichtbar auf etwas.",
       "avoidWhen": "Für Wetterthemen ohne sichtbares Wasser.",
       "volume": 0.18
+    },
+    {
+      "type": "whoosh-up",
+      "file": "whoosh-up.mp3",
+      "purpose": "Szenenwechsel, der eine Steigerung oder Zuspitzung einleitet",
+      "useWhen": "Die neue Szene erhöht die Spannung oder führt zur Frage hin.",
+      "avoidWhen": "Zweimal hintereinander. Zwischen Transition-Varianten abwechseln.",
+      "volume": 0.17
+    },
+    {
+      "type": "whoosh-down",
+      "file": "whoosh-down.mp3",
+      "purpose": "Szenenwechsel, der beruhigt oder eine Erklärung abschließt",
+      "useWhen": "Die neue Szene löst auf, ordnet ein oder senkt das Tempo.",
+      "avoidWhen": "Zweimal hintereinander. Zwischen Transition-Varianten abwechseln.",
+      "volume": 0.17
+    },
+    {
+      "type": "soft-swipe",
+      "file": "soft-swipe.mp3",
+      "purpose": "Neutraler kurzer Szenenwechsel ohne eigene Aussage",
+      "useWhen": "Der Schnitt braucht eine hörbare Markierung, aber keine Betonung.",
+      "avoidWhen": "Zweimal hintereinander. Zwischen Transition-Varianten abwechseln.",
+      "volume": 0.15
     }
   ]
 }

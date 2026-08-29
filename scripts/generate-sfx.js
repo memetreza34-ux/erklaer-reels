@@ -184,6 +184,32 @@ const recipes = {
     }
     return finish(out, 0.55);
   },
+  'whoosh-up': () => {
+    const n = samples(0.38);
+    // Aufsteigender Bandpass: liest sich als Steigerung, ohne lauter zu werden.
+    const swept = svf(noise(n, 191), (t) => 300 + 3200 * Math.pow(t, 1.5), 1.2, 'band');
+    for (let i = 0; i < n; i += 1) {
+      const t = i / n;
+      swept[i] *= Math.pow(t, 0.8) * (1 - Math.pow(t, 5));
+    }
+    return finish(swept, 0.52);
+  },
+  'whoosh-down': () => {
+    const n = samples(0.38);
+    const swept = svf(noise(n, 211), (t) => 3200 - 2700 * Math.pow(t, 1.2), 1.2, 'band');
+    for (let i = 0; i < n; i += 1) {
+      const t = i / n;
+      swept[i] *= Math.pow(1 - t, 0.5) * Math.min(1, t * 12);
+    }
+    return finish(swept, 0.52);
+  },
+  'soft-swipe': () => {
+    const n = samples(0.18);
+    // Kurz und trocken: markiert den Schnitt, ohne eine Richtung zu behaupten.
+    const swipe = svf(noise(n, 233), (t) => 1400 + 900 * Math.sin(Math.PI * t), 1.4, 'band');
+    for (let i = 0; i < n; i += 1) swipe[i] *= Math.sin(Math.PI * (i / n)) ** 1.3;
+    return finish(swipe, 0.45);
+  },
   'water-drop': () => {
     const n = samples(0.16);
     // Aufwärts-Bend ist das, was ein Tropfen hörbar von einem Pop unterscheidet.

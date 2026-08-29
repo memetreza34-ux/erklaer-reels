@@ -4,6 +4,7 @@
     "defaultType": "none",
     "allowedTypes": [
       "none",
+      "ken-burns",
       "slow-zoom-in",
       "slow-zoom-out",
       "subtle-push-in",
@@ -21,9 +22,23 @@
     },
     "maximumPanPercent": 4,
     "defaultEasing": "ease-in-out",
-    "avoidMotionOnEveryScene": true,
+    "avoidMotionOnEveryScene": false,
     "protectSubtitleSafeZone": true,
-    "protectIntegratedImageText": true
+    "protectIntegratedImageText": true,
+    "preferredType": "ken-burns",
+    "allowedEasings": [
+      "ease-in-out",
+      "ease-out",
+      "ease-in",
+      "ease",
+      "linear"
+    ],
+    "motionOnMostScenes": true,
+    "staticSceneShare": {
+      "min": 0.15,
+      "max": 0.35
+    },
+    "guidance": "Bewegung ist der Normalfall, nicht die Ausnahme. ken-burns kombiniert Zoom und leichten Schwenk und wirkt am hochwertigsten. Etwa jede vierte Szene bleibt bewusst ruhig, damit die Bewegung nicht zum Dauerzustand wird. Die Hook bleibt statisch, damit sie sofort lesbar ist."
   },
   "transitions": {
     "defaultType": "cut",
@@ -43,7 +58,7 @@
     "defaultEnabled": true,
     "backgroundMusicDefaultEnabled": false,
     "voiceoverHasPriority": true,
-    "maximumPerScene": 2,
+    "maximumPerScene": 3,
     "recommendedVolume": {
       "min": 0.12,
       "max": 0.3,
@@ -60,9 +75,18 @@
       "ambient-light",
       "object-specific"
     ],
-    "avoidSoundOnEveryCut": true,
+    "avoidSoundOnEveryCut": false,
     "avoidMemeSounds": true,
     "avoidCopyrightedMusic": true,
-    "syncToAudioCueOrVisualEvent": true
+    "syncToAudioCueOrVisualEvent": true,
+    "soundOnEverySceneChange": true,
+    "transitionSoundTypes": [
+      "soft-whoosh",
+      "whoosh-up",
+      "whoosh-down",
+      "soft-swipe"
+    ],
+    "neverRepeatTransitionSoundBackToBack": true,
+    "guidance": "Jeder Szenenwechsel bekommt einen Sound. Erste Wahl ist immer ein inhaltlich passender Effekt zum sichtbaren Ereignis der neuen Szene, zum Beispiel pop, coin oder door. Nur wenn kein sichtbares Ereignis passt, kommt eine der vier Transition-Varianten. Dieselbe Variante darf nie zweimal hintereinander stehen."
   }
 }

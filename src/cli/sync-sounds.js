@@ -1,6 +1,12 @@
 #!/usr/bin/env node
 
-import { knownSoundTypes, loadSoundLibrary, syncReelSounds } from '../core/sound-library.js';
+import { readFile } from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+import { knownSoundTypes, loadSoundLibrary, reviewSoundDramaturgy, syncReelSounds } from '../core/sound-library.js';
+
+const REPO_ROOT = fileURLToPath(new URL('../..', import.meta.url));
 
 function getArgument(name) {
   const index = process.argv.indexOf(name);
@@ -55,6 +61,20 @@ Optionen:
 
   if (result.unknownTypes.length === 0 && result.missingFiles.length === 0) {
     console.log('Alle geplanten Sounds sind aufgelöst.');
+  }
+
+  if (result.planPath) {
+    const plan = JSON.parse(await readFile(result.planPath, 'utf8'));
+    const rules = JSON.parse(await readFile(path.join(REPO_ROOT, 'config', 'effects-rules.json'), 'utf8'));
+    const review = reviewSoundDramaturgy(plan, rules);
+    for (const finding of review.findings) {
+      if (finding.issue === 'no-sound-on-scene-change') {
+        console.log(`Hinweis: ${finding.sceneId} hat keinen Sound am Szenenwechsel.`);
+      } else {
+        console.log(`Hinweis: ${finding.sceneId} wiederholt den Übergangssound "${finding.type}" direkt.`);
+      }
+    }
+    if (review.passed) console.log('Sound-Dramaturgie: keine Wiederholungen, jeder Wechsel klingt.');
   }
 }
 

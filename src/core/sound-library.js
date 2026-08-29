@@ -22,6 +22,38 @@ export async function loadSoundLibrary() {
   return { ...library, byType };
 }
 
+/**
+ * Prüft die Sound-Dramaturgie über das ganze Reel:
+ *  - bekommt jeder Szenenwechsel einen Sound?
+ *  - steht dieselbe Transition-Variante zweimal hintereinander?
+ *
+ * Beides ist keine harte Regelverletzung, sondern hörbare Monotonie — deshalb
+ * Warnungen, keine Fehler.
+ */
+export function reviewSoundDramaturgy(plan, effectsRules = {}) {
+  const rules = effectsRules.soundEffects ?? {};
+  const transitionTypes = new Set(rules.transitionSoundTypes ?? []);
+  const scenes = plan.scenes ?? [];
+  const findings = [];
+
+  let previousTransition = null;
+  for (const [index, scene] of scenes.entries()) {
+    const sounds = scene.soundEffects ?? [];
+    // Die erste Szene ist kein Wechsel: davor kommt nichts.
+    if (index > 0 && sounds.length === 0 && rules.soundOnEverySceneChange) {
+      findings.push({ sceneId: scene.sceneId, issue: 'no-sound-on-scene-change' });
+    }
+
+    const transition = sounds.map((sound) => String(sound.type ?? '')).find((type) => transitionTypes.has(type));
+    if (transition && transition === previousTransition && rules.neverRepeatTransitionSoundBackToBack) {
+      findings.push({ sceneId: scene.sceneId, issue: 'repeated-transition-sound', type: transition });
+    }
+    if (transition) previousTransition = transition;
+  }
+
+  return { passed: findings.length === 0, findings };
+}
+
 export function knownSoundTypes(library) {
   return (library.types ?? []).map((entry) => entry.type);
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import {
   AbsoluteFill,
   Audio,
+  Easing,
   Img,
   Sequence,
   interpolate,
@@ -14,26 +15,45 @@ const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 
 const assetUrl = (file) => staticFile(String(file).replaceAll('\\', '/').replace(/^\/+/, ''));
 
+// Eine lineare Kamerafahrt startet und stoppt hart und wirkt dadurch mechanisch.
+// Die Kurven beschleunigen sanft an und laufen weich aus.
+const EASING_CURVES = {
+  linear: Easing.linear,
+  ease: Easing.bezier(0.25, 0.1, 0.25, 1),
+  'ease-in': Easing.bezier(0.42, 0, 1, 1),
+  'ease-out': Easing.bezier(0, 0, 0.58, 1),
+  'ease-in-out': Easing.bezier(0.42, 0, 0.58, 1)
+};
+
+const easingFor = (name) => EASING_CURVES[name] ?? EASING_CURVES['ease-in-out'];
+
 const motionDefaults = (motion = {}) => {
   const type = motion.type ?? 'none';
   const defaults = {
     none: [1, 1],
     'subtle-push-in': [1, 1.04],
+    'subtle-pull-out': [1.04, 1],
     'slow-zoom-in': [1, 1.05],
     'slow-zoom-out': [1.05, 1],
     'pan-left': [1.04, 1.04],
     'pan-right': [1.04, 1.04],
     'pan-up': [1.04, 1.04],
-    'pan-down': [1.04, 1.04]
+    'pan-down': [1.04, 1.04],
+    // Ken Burns kombiniert Zoom und Schwenk und wirkt dadurch deutlich lebendiger
+    // als ein reiner Zoom, ohne mehr Bewegung im Bild zu erzeugen.
+    'ken-burns': [1.02, 1.06]
   };
   const [defaultStart, defaultEnd] = defaults[type] ?? defaults.none;
+  // Ken Burns bekommt einen leichten Standardschwenk, wenn keiner geplant ist.
+  const kenBurnsPan = type === 'ken-burns' ? 1.5 : 0;
   return {
     type,
+    easing: easingFor(motion.easing),
     startScale: Number(motion.startScale) || defaultStart,
     endScale: Number(motion.endScale) || defaultEnd,
-    startPanXPercent: Number(motion.startPanXPercent) || 0,
+    startPanXPercent: Number(motion.startPanXPercent) || (type === 'ken-burns' ? -kenBurnsPan : 0),
     startPanYPercent: Number(motion.startPanYPercent) || 0,
-    endPanXPercent: Number(motion.panXPercent) || 0,
+    endPanXPercent: Number(motion.panXPercent) || (type === 'ken-burns' ? kenBurnsPan : 0),
     endPanYPercent: Number(motion.panYPercent) || 0
   };
 };
@@ -43,24 +63,12 @@ const SceneLayer = ({ scene }) => {
   const duration = Math.max(1, Number(scene.endFrame) - Number(scene.startFrame));
   const motion = motionDefaults(scene.cameraMotion);
 
-  const scale = interpolate(
-    frame,
-    [0, Math.max(1, duration - 1)],
-    [motion.startScale, motion.endScale],
-    { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' }
-  );
-  const panX = interpolate(
-    frame,
-    [0, Math.max(1, duration - 1)],
-    [motion.startPanXPercent, motion.endPanXPercent],
-    { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' }
-  );
-  const panY = interpolate(
-    frame,
-    [0, Math.max(1, duration - 1)],
-    [motion.startPanYPercent, motion.endPanYPercent],
-    { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' }
-  );
+  const range = [0, Math.max(1, duration - 1)];
+  const options = { easing: motion.easing, extrapolateLeft: 'clamp', extrapolateRight: 'clamp' };
+
+  const scale = interpolate(frame, range, [motion.startScale, motion.endScale], options);
+  const panX = interpolate(frame, range, [motion.startPanXPercent, motion.endPanXPercent], options);
+  const panY = interpolate(frame, range, [motion.startPanYPercent, motion.endPanYPercent], options);
 
   return (
     <AbsoluteFill style={{ backgroundColor: '#000', overflow: 'hidden' }}>
