@@ -172,3 +172,17 @@ test('verlangt für jedes Bild ein kurzes deutsches Stichwort', () => {
   zuLang.scenes[2].images[0].imageText = 'Dieser Bildtext ist deutlich zu lang für ein Reel';
   assert.match(validateReelPackage(zuLang).join(' '), /erlaubt sind 1 bis 5/);
 });
+
+test('die Beispielvorlage gibt kein Bild ohne Text vor', async () => {
+  const vorlage = JSON.parse(await readFile(path.join(REPO_ROOT, 'input', 'reel-paket.beispiel.json'), 'utf8'));
+
+  // ChatGPT orientiert sich an dieser Datei. Ein textloses Beispielbild würde
+  // die Regel unterlaufen, bevor sie überhaupt greift.
+  for (const [index, szene] of vorlage.scenes.entries()) {
+    for (const [bildIndex, bild] of (szene.images ?? []).entries()) {
+      const text = String(bild.imageText ?? '').trim();
+      assert.ok(text, `Vorlage: Szene ${index + 1}, Bild ${bildIndex + 1} hat keinen imageText`);
+      assert.ok(text.split(/\s+/).length <= 5, `Vorlage: "${text}" hat mehr als 5 Wörter`);
+    }
+  }
+});

@@ -58,3 +58,13 @@ test('die genannten Kennzahlen stimmen mit der Konfiguration überein', async ()
   const minimum = gates.sceneTiming.minimumImagePhaseSeconds;
   assert.ok(doc.includes(`unter ${minimum} Sekunden`), `Die Doku muss die Untergrenze ${minimum} s nennen`);
 });
+
+test('der erzeugte Produktionsauftrag macht Bildtext verbindlich', async () => {
+  const { buildProductionBrief } = await import('../src/core/production-brief.js').catch(() => ({}));
+  const quelle = await read('src/core/production-brief.js');
+
+  // Der Auftrag landet in jedem neuen Reel unter production/agent-task.md.
+  assert.match(quelle, /zwingend einen eigenen/, 'Bildtext muss als Pflicht formuliert sein');
+  assert.match(quelle, /Überschrift des ganzen Reels/, 'Das Titelbild muss als Überschrift beschrieben sein');
+  assert.ok(!/optional eigenen `imageText`/.test(quelle), 'Bildtext darf nicht mehr als optional gelten');
+});

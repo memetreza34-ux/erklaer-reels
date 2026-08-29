@@ -127,10 +127,10 @@ Erstelle ein vollständiges Erklär-Reel mit ungefähr einer Minute Voice-over-L
 9. Wähle Bildphasen nach Inhalt, nicht nach Quote. Sinnvolle Wechsel sind Überblick → Detail, Ursache → Folge, Ausgangslage → Konsequenz oder äußere Handlung → Mechanismus-Detail.
 10. Die Hook bekommt einen Bildmoment, jede weitere Szene zwei. Schreibe die tatsächliche Summe nach \`reel.json.plannedImageCount\` und setze \`imageCountMode: "one-hook-two-standard"\`.
 11. Hinterlege pro Szene \`imageCount\` und \`imagePhases\`. Die erste Phase beginnt mit \`startPercent: 0\`; weitere Phasen liegen streng aufsteigend innerhalb 0–1.
-12. Die erste Bildphase nutzt \`image-prompt.txt\`. Zusätzliche Phasen nutzen \`image-prompt-02.txt\`, \`image-prompt-03.txt\`. Jede Phase bekommt eigene \`visualIdea\`, optional eigenen \`imageText\` und \`rationale\`.
+12. Die erste Bildphase nutzt \`image-prompt.txt\`, die zweite \`image-prompt-02.txt\`. Jede Phase bekommt eigene \`visualIdea\`, eine eigene \`rationale\` und **zwingend einen eigenen \`imageText\`** mit 1–5 deutschen Wörtern. Kein Bild bleibt ohne Text, sonst wirkt es im Feed leer.
 13. Aktualisiere \`scenes/scene-index.json\` und jede \`scene.json\` synchron.
 14. Hook ${timing.hookSeconds.min}–${timing.hookSeconds.max}s, normale narrative Szenen ${timing.standardSeconds.min}–${timing.standardSeconds.max}s, letzte Szene inklusive Nachlauf ${timing.finalSceneSecondsIncludingHold.min}–${timing.finalSceneSecondsIncludingHold.max}s.
-15. Schreibe für **jede** geplante Bildphase einen vollständigen englischen 9:16-Bildprompt. Der Prompt muss zuerst den **konkreten physischen Bildmoment** beschreiben: Hauptmotiv, Ort/Umgebung, Handlung, wenige Requisiten und Perspektive. Erst danach Symbole ergänzen. Wenn \`imageText\` gesetzt ist, fordere nur den exakten deutschen Text an.
+15. Schreibe für **jede** geplante Bildphase einen vollständigen englischen 9:16-Bildprompt. Der Prompt muss zuerst den **konkreten physischen Bildmoment** beschreiben: Hauptmotiv, Ort/Umgebung, Handlung, wenige Requisiten und Perspektive. Erst danach Symbole ergänzen. Fordere immer genau den geplanten deutschen \`imageText\` an, nichts anderes.
 
 ### Pflichtregeln für die feste Reel-Bildwelt
 
@@ -155,7 +155,7 @@ Erstelle ein vollständiges Erklär-Reel mit ungefähr einer Minute Voice-over-L
 - keine künstliche Untertitelzone
 - jeder Bildwechsel braucht einen sichtbaren neuen Informationsschritt oder klaren Rhythmusgewinn
 - technische Labels wie BILD, TITELBILD, SZENE, BILDPHASE oder DATEINAME dürfen niemals im Bild erscheinen
-- Bild 01 ist die erste Szene und zugleich das Titelbild, aber nicht der alleinige Style-Master; der globale Style-Master ist \`${FIXED_VISUAL_STYLE_ID}\`
+- Bild 01 ist die erste Szene und zugleich das Titelbild. Sein \`imageText\` ist die **Überschrift des ganzen Reels** und steht im Bild groß im oberen Bereich. Style-Master bleibt trotzdem \`${FIXED_VISUAL_STYLE_ID}\`
 
 16. Exportiere alle geplanten Bildphasen:
 

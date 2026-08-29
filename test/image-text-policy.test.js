@@ -44,7 +44,10 @@ test('Codex-Auftrag berechnet Bildtext-Zielbereich und erzwingt die getrennte sc
     assert.match(task, /konkreten physischen Bildmoment/i);
     assert.match(task, /generischen schwebenden Karten/i);
     assert.match(task, /keine YouTube-Stick-Figuren/i);
-    assert.match(task, /exakten deutschen Text/i);
+    // Bildtext ist seit dem Feedback aus dem ersten Flow-Durchlauf Pflicht, nicht optional.
+    assert.match(task, /genau den geplanten deutschen/i);
+    assert.match(task, /zwingend einen eigenen/i);
+    assert.match(task, /Überschrift des ganzen Reels/i);
     assert.match(task, /Bildprompts: \*\*Englisch\*\*/i);
     assert.match(task, /sichtbarer Bildtext: \*\*Deutsch\*\*/i);
     assert.ok(checklist.tasks.some((entry) => entry.id === 'image-text-plan'));

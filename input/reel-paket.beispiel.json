@@ -62,7 +62,7 @@
         },
         {
           "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Round ball characters with simple white eyes on a flat map shape, thick confident black outlines, flat colours on a calm ochre background field. Scene 2, image 2: Eine einzelne Kugelfigur zeigt auf einen einzigen markierten Punkt auf einer schlichten Landkarte. Low detail, one dominant idea, readable in one second on a phone. No readable text in this image.",
-          "imageText": "",
+          "imageText": "WIRKLICH IMMER?",
           "startPercent": 0.5
         }
       ]
@@ -95,10 +95,11 @@
         },
         {
           "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Round ball characters with simple white eyes on a flat map shape, thick confident black outlines, flat colours on a calm ochre background field. Scene 9, image 2: Ruhige Schlussansicht der Karte mit einer klar markierten Hauptstadt und den Regionen ringsum. Low detail, one dominant idea, readable in one second on a phone. No readable text in this image.",
-          "imageText": "",
+          "imageText": "DETAIL",
           "startPercent": 0.5
         }
       ]
     }
-  ]
+  ],
+  "_hinweis": "Jede Bildphase braucht einen imageText mit 1 bis 5 deutschen Wörtern. Der imageText der ersten Szene ist die Überschrift des Reels und wird im Bild groß im oberen Bereich gesetzt. Kein Bild bleibt ohne Text."
 }
