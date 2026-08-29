@@ -71,7 +71,7 @@ Es gilt:
 | 9 | 17 |
 | 10 | 19 |
 
-Der zweite Bildmoment einer Szene setzt an einem eigenen `audioCue` aus tatsächlich gesprochenen Wörtern an; `startPercent` wird aus dessen Position in der Narration abgeleitet und steht mindestens 3 Sekunden. `check:content --strict` weist jede Abweichung
+Der zweite Bildmoment einer Szene setzt an einem eigenen `audioCue` aus tatsächlich gesprochenen Wörtern an. Phase 1 leitet daraus `startPercent` als Planungswert ab; Phase 3 trägt nach dem echten Voice-over den tatsächlich gehörten Zeitpunkt unter `timeline/audio-sync.json -> phaseCueTimings[].cueTimeSeconds` ein. Der finale Schnitt benutzt diesen Audio-Zeitpunkt und jede Bildphase steht mindestens 3 Sekunden. `check:content --strict` weist jede Abweichung
 für neue Reels als Fehler zurück; Archiv-Reels behalten ihre frühere Struktur.
 
 Technisch:

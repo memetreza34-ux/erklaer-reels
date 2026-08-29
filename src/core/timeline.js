@@ -76,31 +76,57 @@ export async function probeAudioDuration(audioPath) {
 
 async function ensureAudioSync(reelDirectory, scenes) {
   const filePath = path.join(reelDirectory, 'timeline', 'audio-sync.json');
-  if (!(await exists(filePath))) {
-    await writeJson(filePath, {
-      version: 2,
-      audioDurationSeconds: null,
-      audioFile: null,
-      source: 'pending',
-      timingStatus: 'waiting-for-audio',
-      instructions: [
-        'Trage die echte Audiodauer ein.',
-        'cueTimeSeconds ist der Zeitpunkt, an dem audioCue gesprochen wird.',
-        'Das erste Bild einer Szene beginnt normalerweise leadInSeconds vor cueTimeSeconds.',
-        'Zusätzliche Bildphasen wechseln innerhalb der bestätigten Szenendauer anhand ihres geplanten startPercent.',
-        'Prüfe jeden Szenenwechsel gegen den sichtbaren Bildinhalt.',
-        'Nach dem letzten gesprochenen Wort bleibt das letzte Bild automatisch kurz stehen.'
-      ],
-      cueTimings: scenes.map((scene, index) => ({
+  const current = await readJson(filePath, null);
+  const sceneCueById = new Map((current?.cueTimings ?? []).map((cue) => [cue.sceneId, cue]));
+  const phaseCueByTarget = new Map((current?.phaseCueTimings ?? []).map((cue) => [cue.targetId, cue]));
+  const phaseDefinitions = scenes.flatMap((scene) =>
+    normalizeSceneImagePhases(scene)
+      .filter((phase) => !phase.primary && String(phase.audioCue ?? '').trim())
+      .map((phase) => ({ ...phase, sceneId: scene.sceneId }))
+  );
+
+  const next = {
+    ...(current ?? {}),
+    version: 3,
+    audioDurationSeconds: numberOrNull(current?.audioDurationSeconds),
+    audioFile: current?.audioFile ?? null,
+    source: current?.source ?? 'pending',
+    timingStatus: current?.timingStatus ?? 'waiting-for-audio',
+    instructions: [
+      'Trage die echte Audiodauer ein.',
+      'cueTimings enthält die echten Zeitpunkte der narrativen Szenen-Cues.',
+      'phaseCueTimings enthält die echten Zeitpunkte der internen Bildwechsel-Cues.',
+      'cueTimeSeconds ist jeweils der Zeitpunkt im finalen Voice-over, an dem der angegebene audioCue tatsächlich gesprochen wird.',
+      'Das erste Bild einer Szene beginnt normalerweise leadInSeconds vor dem Szenen-Cue.',
+      'Eine zweite Bildphase beginnt exakt an ihrem phaseCueTimings.cueTimeSeconds; startPercent dient nur als Planungs-Fallback, solange dieser echte Zeitpunkt fehlt.',
+      'Prüfe jeden Szenen- und Bildwechsel gegen das finale Voice-over und den sichtbaren Bildinhalt.',
+      'Nach dem letzten gesprochenen Wort bleibt das letzte Bild automatisch kurz stehen.'
+    ],
+    cueTimings: scenes.map((scene, index) => {
+      const previous = sceneCueById.get(scene.sceneId) ?? {};
+      return {
         sceneId: scene.sceneId,
-        audioCue: scene.audioCue ?? '',
-        cueTimeSeconds: index === 0 ? 0 : null,
-        leadInSeconds: numberOrNull(scene.leadInSeconds) ?? 0.2,
-        confidence: index === 0 ? 1 : null
-      }))
-    });
-  }
-  return readJson(filePath, { cueTimings: [] });
+        audioCue: scene.audioCue ?? previous.audioCue ?? '',
+        cueTimeSeconds: index === 0 ? 0 : numberOrNull(previous.cueTimeSeconds),
+        leadInSeconds: numberOrNull(previous.leadInSeconds) ?? numberOrNull(scene.leadInSeconds) ?? 0.2,
+        confidence: index === 0 ? 1 : numberOrNull(previous.confidence)
+      };
+    }),
+    phaseCueTimings: phaseDefinitions.map((phase) => {
+      const previous = phaseCueByTarget.get(phase.targetId) ?? {};
+      return {
+        targetId: phase.targetId,
+        sceneId: phase.sceneId,
+        phaseId: phase.phaseId,
+        audioCue: phase.audioCue,
+        cueTimeSeconds: numberOrNull(previous.cueTimeSeconds),
+        confidence: numberOrNull(previous.confidence)
+      };
+    })
+  };
+
+  if (!current || JSON.stringify(current) !== JSON.stringify(next)) await writeJson(filePath, next);
+  return next;
 }
 
 function createTimings(scenes, totalDuration, audioSync) {
@@ -265,17 +291,28 @@ function timingRangeForScene(index, sceneCount, rules) {
   return { ...rules.standardSeconds, label: 'Standardszene' };
 }
 
-function visualPhasesForScene(scene, baseTiming, extendedTiming, manifest, legacyAsset) {
+function visualPhasesForScene(scene, baseTiming, extendedTiming, manifest, legacyAsset, audioSync) {
   const manifestByTarget = new Map((manifest.visuals ?? []).map((entry) => [entry.targetId, entry]));
+  const phaseCueByTarget = new Map((audioSync?.phaseCueTimings ?? []).map((entry) => [entry.targetId, entry]));
   const definitions = normalizeSceneImagePhases(scene);
+  const starts = definitions.map((phase, index) => {
+    if (index === 0) return round(baseTiming.startSeconds);
+    const cue = phaseCueByTarget.get(phase.targetId);
+    const exactCueTime = numberOrNull(cue?.cueTimeSeconds);
+    const insideScene = exactCueTime !== null && exactCueTime > baseTiming.startSeconds && exactCueTime < baseTiming.endSeconds;
+    return insideScene
+      ? round(exactCueTime)
+      : round(baseTiming.startSeconds + baseTiming.durationSeconds * phase.startPercent);
+  });
 
   return definitions.map((phase, index) => {
     const asset = manifestByTarget.get(phase.targetId) ?? (phase.primary ? legacyAsset : null) ?? {};
-    const startSeconds = round(baseTiming.startSeconds + baseTiming.durationSeconds * phase.startPercent);
-    const next = definitions[index + 1];
-    const endSeconds = next
-      ? round(baseTiming.startSeconds + baseTiming.durationSeconds * next.startPercent)
-      : round(extendedTiming.endSeconds);
+    const cue = phaseCueByTarget.get(phase.targetId);
+    const exactCueTime = numberOrNull(cue?.cueTimeSeconds);
+    const usesExactCue = index > 0 && exactCueTime !== null &&
+      exactCueTime > baseTiming.startSeconds && exactCueTime < baseTiming.endSeconds;
+    const startSeconds = starts[index];
+    const endSeconds = index < starts.length - 1 ? starts[index + 1] : round(extendedTiming.endSeconds);
     return {
       targetId: phase.targetId,
       phaseId: phase.phaseId,
@@ -284,6 +321,10 @@ function visualPhasesForScene(scene, baseTiming, extendedTiming, manifest, legac
       startSeconds,
       endSeconds,
       durationSeconds: round(Math.max(0, endSeconds - startSeconds)),
+      audioCue: phase.audioCue ?? '',
+      cueTimeSeconds: exactCueTime,
+      timingBasis: phase.timingBasis ?? (phase.primary ? 'scene-start' : 'planned-start-percent'),
+      timingStatus: phase.primary ? 'scene-start' : usesExactCue ? 'exact-audio-cue' : 'planned-cue-fallback',
       imageFile: asset.expectedFile ?? `scenes/${scene.sceneId}/${phase.expectedImageFileName}`,
       imageStatus: asset.status ?? phase.imageStatus ?? 'missing',
       assetVerification: asset.verification ?? phase.assetVerification ?? null,
@@ -310,12 +351,15 @@ function qualityReport(
   // übrigen Gates auch. Ohne strict bleibt es eine Warnung.
   const balanceLevel = strict ? 'error' : 'warning';
   const holdRange = sceneTimingRules.postVoiceHoldRangeSeconds ?? { min: 0.6, max: 0.8 };
+  const cueTimedImagePhases = timelineScenes.flatMap((scene) => (scene.imagePhases ?? []).filter((phase) => phase.phaseOrder > 1 && String(phase.audioCue ?? '').trim()));
+  const exactImagePhaseSync = cueTimedImagePhases.every((phase) => phase.timingStatus === 'exact-audio-cue');
   const checks = [
     ['hook-starts-at-zero', timelineScenes[0]?.startSeconds === 0, 'Das Hook-Bild muss bei Sekunde 0 beginnen.', 'error'],
     ['scene-count-match', timelineScenes.length === scenes.length, 'Die Timeline benötigt genau einen narrativen Eintrag pro Szene.', 'error'],
     ['audio-present', Boolean(audioPath), 'Die Voice-over-Datei fehlt.', strict ? 'error' : 'warning'],
     ['audio-duration-known', durationKnown, 'Die Audiodauer ist noch nicht exakt bekannt.', strict ? 'error' : 'warning'],
     ['exact-audio-sync', timingStatus === 'audio-synced', 'Nicht alle Audio-Cues besitzen verifizierte Zeitstempel.', strict ? 'error' : 'warning'],
+    ['exact-image-phase-audio-sync', exactImagePhaseSync, 'Nicht alle internen Bildphasen-Cues besitzen echte Zeitstempel aus dem finalen Voice-over.', strict ? 'error' : 'warning'],
     ['all-scene-images-ready', timelineScenes.every((scene) => scene.imageStatus === 'ready'), 'Noch nicht alle geplanten Bildphasen sind bereit.', strict ? 'error' : 'warning'],
     ['ending-hold-range', endingHoldSeconds >= holdRange.min && endingHoldSeconds <= holdRange.max,
       `Das Schlussbild muss nach dem letzten gesprochenen Wort ${holdRange.min}–${holdRange.max} Sekunden stehen bleiben.`, balanceLevel],
@@ -426,7 +470,7 @@ export async function buildMasterTimeline(reelDirectory, { audioDurationSeconds 
     const scene = scenes[index];
     const effect = effectByScene.get(scene.sceneId) ?? {};
     const legacyAsset = manifestByScene.get(scene.sceneId) ?? {};
-    const imagePhases = visualPhasesForScene(scene, baseTiming.scenes[index], item, manifest, legacyAsset);
+    const imagePhases = visualPhasesForScene(scene, baseTiming.scenes[index], item, manifest, legacyAsset, audioSync);
     return {
       ...item,
       title: scene.title ?? '',
@@ -445,10 +489,12 @@ export async function buildMasterTimeline(reelDirectory, { audioDurationSeconds 
   });
 
   const allCuesExact = baseTiming.totalCueCount === 0 || baseTiming.exactCueCount === baseTiming.totalCueCount;
-  const timingStatus = durationKnown && allCuesExact ? 'audio-synced' : durationKnown ? 'audio-duration-synced' : 'estimated';
+  const requiredPhaseCues = timelineScenes.flatMap((scene) => (scene.imagePhases ?? []).filter((phase) => phase.phaseOrder > 1 && String(phase.audioCue ?? '').trim()));
+  const allPhaseCuesExact = requiredPhaseCues.every((phase) => phase.timingStatus === 'exact-audio-cue');
+  const timingStatus = durationKnown && allCuesExact && allPhaseCuesExact ? 'audio-synced' : durationKnown ? 'audio-duration-synced' : 'estimated';
   const relativeAudio = audioPath ? path.relative(reelDirectory, audioPath).split(path.sep).join('/') : null;
   const timeline = {
-    version: 5,
+    version: 6,
     reelId: reel.reelId,
     createdAt: new Date().toISOString(),
     timingStatus,
@@ -465,7 +511,7 @@ export async function buildMasterTimeline(reelDirectory, { audioDurationSeconds 
       durationSeconds: round(compositionDuration),
       endingHoldSeconds: round(endingHoldSeconds)
     },
-    imageCountMode: 'individual-per-reel',
+    imageCountMode: reel.imageCountMode ?? 'one-hook-two-standard',
     plannedImageCount: timelineScenes.reduce((sum, scene) => sum + scene.imagePhases.length, 0),
     subtitles: {
       enabled: false,
@@ -509,7 +555,7 @@ export async function buildMasterTimeline(reelDirectory, { audioDurationSeconds 
     version: 5,
     reelId: reel.reelId,
     status: shots.every((shot) => shot.imageStatus === 'ready') && relativeAudio ? 'ready-for-renderer' : 'waiting-for-assets',
-    imageCountMode: 'individual-per-reel',
+    imageCountMode: reel.imageCountMode ?? 'one-hook-two-standard',
     plannedImageCount: shots.length,
     composition: {
       width: 1080,
