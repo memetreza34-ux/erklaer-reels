@@ -31,6 +31,25 @@ export function validateReelPackage(paket) {
   if (!Array.isArray(szenen) || szenen.length < 8 || szenen.length > 10) {
     probleme.push(`scenes braucht 8 bis 10 Einträge, hat aber ${Array.isArray(szenen) ? szenen.length : 0}.`);
   }
+  // Die Caption-Regeln des Renderers, nur früher geprüft. Sonst fällt eine zu kurze
+  // Caption erst nach Bildern und Voice-over auf, direkt vor dem Rendern.
+  const caption = text(paket.caption);
+  if (caption) {
+    const woerter = (caption.match(/[\p{L}\p{N}]+(?:[’'-][\p{L}\p{N}]+)*/gu) ?? []).length;
+    if (woerter < 60 || woerter > 130) {
+      probleme.push(`Die Caption braucht 60 bis 130 Wörter, hat aber ${woerter}.`);
+    }
+    const ersteZeile = caption.split(/\r?\n/).map((zeile) => zeile.trim()).find(Boolean) ?? '';
+    const hookWoerter = (ersteZeile.match(/[\p{L}\p{N}]+(?:[’'-][\p{L}\p{N}]+)*/gu) ?? []).length;
+    if (hookWoerter < 4 || hookWoerter > 24) {
+      probleme.push(`Die erste Caption-Zeile ist die Hook und braucht 4 bis 24 Wörter, hat aber ${hookWoerter}.`);
+    }
+    const hashtags = (caption.match(/#[\p{L}\p{N}_]+/gu) ?? []).length;
+    if (hashtags < 3 || hashtags > 6) {
+      probleme.push(`Die Caption braucht 3 bis 6 Hashtags, hat aber ${hashtags}.`);
+    }
+  }
+
   // Dieselben Anforderungen wie die Quellen-QC, nur früher: Ein Paket mit schwachen
   // Quellen soll gar kein Reel erzeugen, statt später am Render zu scheitern.
   const quellen = Array.isArray(paket.sources) ? paket.sources : [];

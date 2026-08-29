@@ -32,7 +32,11 @@ function bauePaket({ szenenzahl = 9, woerterProSzene = 18 } = {}) {
   return {
     title: 'Warum haben manche Länder zwei Hauptstädte?',
     topicArea: 'Länder, Geografie und Geschichte',
-    caption: 'Eine kurze Erklärung dazu, warum Staatsmacht manchmal auf mehrere Städte verteilt wird.\n\n#erklärt #geografie #wissen',
+    caption: `Warum verteilen manche Länder ihre Staatsmacht auf mehrere Städte?
+
+${'Erklärender Fließtext zur Aufteilung der Hauptstadtfunktionen im Land. '.repeat(14)}
+
+#erklärt #geografie #wissen`,
     sources: [
       { title: 'Offizielle Quelle', url: 'https://www.gov.za/beispiel', accessed: '2026-08-29', type: 'Primärquelle', supports: 'Belegt die Aufteilung der Hauptstadtfunktionen.' },
       { title: 'Fachquelle', url: 'https://www.britannica.com/beispiel', accessed: '2026-08-29', type: 'Sekundärquelle', supports: 'Belegt den historischen Hintergrund.' }
@@ -140,4 +144,20 @@ test('lehnt schwache Quellen ab, bevor ein Reel entsteht', () => {
   const vageBegruendung = structuredClone(paket);
   vageBegruendung.sources[0].supports = 'Belegt.';
   assert.match(validateReelPackage(vageBegruendung).join(' '), /supports/);
+});
+
+test('lehnt eine Caption ab, die der Renderer später zurückweisen würde', () => {
+  const paket = bauePaket();
+
+  const zuKurz = structuredClone(paket);
+  zuKurz.caption = 'Viel zu kurze Caption ohne Substanz.\n\n#a #b #c';
+  assert.match(validateReelPackage(zuKurz).join(' '), /60 bis 130 Wörter/);
+
+  const zuVieleHashtags = structuredClone(paket);
+  zuVieleHashtags.caption = `${'Wort '.repeat(70)}\n\n#a #b #c #d #e #f #g`;
+  assert.match(validateReelPackage(zuVieleHashtags).join(' '), /3 bis 6 Hashtags/);
+
+  const ohneHook = structuredClone(paket);
+  ohneHook.caption = `Kurz.\n\n${'Wort '.repeat(70)}\n\n#a #b #c`;
+  assert.match(validateReelPackage(ohneHook).join(' '), /Hook/);
 });
