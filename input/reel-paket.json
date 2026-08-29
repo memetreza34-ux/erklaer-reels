@@ -67,9 +67,9 @@
           "startPercent": 0
         },
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 2, image 2: The four territory blocks now lock together into one unified South Africa map, with a simple date marker 1910 as the only readable text. No readable text anywhere in the image. Keep all visible text German only and keep the composition uncluttered.",
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 2, image 2: The four territory blocks now lock together into one unified South Africa map, clearly showing political unification without labels. No readable text anywhere in the image. Keep the composition uncluttered.",
           "imageText": "",
-          "visualIdea": "The four territory blocks now lock together into one unified South Africa map, with a simple date marker 1910 as the only readable text.",
+          "visualIdea": "The four territory blocks now lock together into one unified South Africa map, with no labels or readable text.",
           "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
           "startPercent": 0.5
         }
