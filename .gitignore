@@ -94,7 +94,7 @@ content/**/inbox/audio/*.m4a
 content/**/inbox/audio/*.aac
 content/**/inbox/audio/*.flac
 content/**/inbox/audio/*.ogg
-assets/sfx/*.mp3
+# Die Sounds unter assets/sfx/ sind selbst erzeugt (scripts/generate-sfx.js) und
+# deshalb bewusst eingecheckt. Nur die Kopien in den Reels bleiben draußen.
 assets/sfx/*.wav
-assets/sfx/*.m4a
 reels/**/sfx/
