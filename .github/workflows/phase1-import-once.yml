@@ -1,0 +1,58 @@
+name: Phase 1 Import Once
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/phase1-import-once.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  import-reel:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Node.js einrichten
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Abhängigkeiten installieren
+        run: npm ci --no-audit --no-fund
+
+      - name: Phase-1-Paket prüfen
+        run: npm run import:reel -- --file input/reel-paket.json --check
+
+      - name: Reel für Sonntag anlegen
+        run: npm run import:reel -- --file input/reel-paket.json --date 2026-08-30
+
+      - name: Reel finden und streng prüfen
+        shell: bash
+        run: |
+          set -euo pipefail
+          REEL_DIR=$(find reels/2026-KW35_24-08_bis_30-08/sonntag -mindepth 1 -maxdepth 1 -type d | sort | head -1)
+          test -n "$REEL_DIR"
+          echo "REEL_DIR=$REEL_DIR" >> "$GITHUB_ENV"
+          npm run check:content -- --dir "$REEL_DIR" --strict
+          npm run export:prompts -- --dir "$REEL_DIR" --strict
+
+      - name: Phase 1 ins Repository schreiben
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reels/2026-KW35_24-08_bis_30-08/sonntag
+          if git diff --cached --quiet; then
+            echo "Keine neuen Dateien zu committen."
+            exit 0
+          fi
+          git commit -m "Phase 1: Südafrika-Reel vollständig anlegen"
+          git push origin HEAD:main
