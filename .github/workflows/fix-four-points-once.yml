@@ -1,0 +1,419 @@
+name: Fix four production points once
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Apply targeted production fixes
+        shell: bash
+        run: |
+          python <<'PY'
+          from pathlib import Path
+          import json
+          import re
+
+          ROOT = Path('.')
+          REEL = ROOT / 'reels/2026-KW35_24-08_bis_30-08/sonntag/reel-01_warum-hat-sudafrika-drei-hauptstadte'
+
+          def write(path, content):
+              path = Path(path)
+              path.write_text(content, encoding='utf-8')
+
+          def replace_once(path, old, new):
+              path = Path(path)
+              text = path.read_text(encoding='utf-8')
+              if old not in text:
+                  raise SystemExit(f'Expected text not found in {path}: {old[:120]!r}')
+              path.write_text(text.replace(old, new, 1), encoding='utf-8')
+
+          # 1) Shared hard hook gate.
+          write('src/shared/reel-hook-quality.js', r'''const GENERIC_INTRO = /\b(in diesem (video|reel)|heute (erkläre|zeigen|schauen)|willkommen|wir schauen uns|in diesem beitrag)\b/i;
+          const CURIOSITY_SIGNAL = /\b(warum|wieso|weshalb|wie|was|wer|wo|wann|nicht nur|tatsächlich|obwohl|aber|doch|kaum|niemand|ungewöhnlich|überrasch|mehr als|weniger als|ohne|trotz)\b/i;
+
+          function words(value) {
+            return String(value ?? '').trim().match(/[\p{L}\p{N}]+(?:[’'-][\p{L}\p{N}]+)*/gu) ?? [];
+          }
+
+          export function inspectReelHook({ narration = '', imageText = '' } = {}) {
+            const text = String(narration ?? '').trim();
+            const issues = [];
+            const count = words(text).length;
+            if (count < 8 || count > 28) issues.push(`Hook-Narration braucht 8–28 Wörter, hat aber ${count}.`);
+            if (GENERIC_INTRO.test(text)) issues.push('Hook startet mit einer generischen Video-Einleitung statt mit der Sache selbst.');
+            if (!text.includes('?') && !CURIOSITY_SIGNAL.test(text)) {
+              issues.push('Hook braucht eine klare Frage, Überraschung oder einen sichtbaren Kontrast/Neugierimpuls.');
+            }
+            const headlineWords = words(imageText).length;
+            if (headlineWords < 2 || headlineWords > 5) {
+              issues.push(`Titelbild-Headline braucht 2–5 Wörter, hat aber ${headlineWords}.`);
+            }
+            return { passed: issues.length === 0, issues, wordCount: count };
+          }
+          ''')
+
+          # 2) Shared narration-cue -> phase-position helper. This replaces arbitrary 0.5 planning.
+          write('src/shared/image-phase-cue.js', r'''function tokens(value) {
+            return String(value ?? '').trim().match(/[\p{L}\p{N}]+(?:[’'-][\p{L}\p{N}]+)*/gu) ?? [];
+          }
+
+          export function findNarrationCueStartPercent(narration, audioCue) {
+            const narrationTokens = tokens(narration).map((token) => token.toLocaleLowerCase('de-DE'));
+            const cueTokens = tokens(audioCue).map((token) => token.toLocaleLowerCase('de-DE'));
+            if (!narrationTokens.length || !cueTokens.length || cueTokens.length > narrationTokens.length) return null;
+            outer: for (let index = 0; index <= narrationTokens.length - cueTokens.length; index += 1) {
+              for (let offset = 0; offset < cueTokens.length; offset += 1) {
+                if (narrationTokens[index + offset] !== cueTokens[offset]) continue outer;
+              }
+              return Number((index / narrationTokens.length).toFixed(6));
+            }
+            return null;
+          }
+          ''')
+
+          # reel-package: hard hook validation + required secondary-image audioCue + cue-derived timing.
+          replace_once('src/core/reel-package.js',
+            "import { createReelWorkspace } from './workspace.js';",
+            "import { createReelWorkspace } from './workspace.js';\nimport { inspectReelHook } from '../shared/reel-hook-quality.js';\nimport { findNarrationCueStartPercent } from '../shared/image-phase-cue.js';")
+
+          replace_once('src/core/reel-package.js',
+          '''  if (!Array.isArray(szenen) || szenen.length < 8 || szenen.length > 10) {
+            probleme.push(`scenes braucht 8 bis 10 Einträge, hat aber ${Array.isArray(szenen) ? szenen.length : 0}.`);
+          }
+          ''',
+          '''  if (!Array.isArray(szenen) || szenen.length < 8 || szenen.length > 10) {
+            probleme.push(`scenes braucht 8 bis 10 Einträge, hat aber ${Array.isArray(szenen) ? szenen.length : 0}.`);
+          }
+          if (Array.isArray(szenen) && szenen[0]) {
+            const hook = inspectReelHook({ narration: szenen[0].narration, imageText: szenen[0].imageText });
+            if (!hook.passed) probleme.push(`Szene 1: Hook-Gate nicht bestanden: ${hook.issues.join(' ')}`);
+          }
+          ''')
+
+          old_image_text = '''        const bildText = text(bild.imageText);
+                  if (!bildText) {
+                    probleme.push(`Szene ${nr}, Bild ${bildIndex + 1}: imageText fehlt. Jedes Bild braucht ein kurzes deutsches Stichwort.`);
+                  } else {
+                    const woerter = bildText.split(/\\s+/).filter(Boolean).length;
+                    if (woerter > 5) {
+                      probleme.push(`Szene ${nr}, Bild ${bildIndex + 1}: imageText hat ${woerter} Wörter, erlaubt sind 1 bis 5.`);
+                    }
+                  }
+          '''
+          new_image_text = old_image_text + '''        if (bildIndex > 0) {
+                    const phaseCue = text(bild.audioCue);
+                    const cueStart = findNarrationCueStartPercent(szene.narration, phaseCue);
+                    if (!phaseCue) {
+                      probleme.push(`Szene ${nr}, Bild ${bildIndex + 1}: audioCue fehlt. Der Bildwechsel muss an gesprochenen Wörtern hängen.`);
+                    } else if (cueStart === null) {
+                      probleme.push(`Szene ${nr}, Bild ${bildIndex + 1}: audioCue "${phaseCue}" kommt in der Narration nicht vor.`);
+                    }
+                  }
+          '''
+          replace_once('src/core/reel-package.js', old_image_text, new_image_text)
+
+          old_map = '''    szene.imagePhases = bilder.map((bild, j) => ({
+                ...szene.imagePhases[j],
+                phaseId: `${szene.sceneId}-image-${String(j + 1).padStart(2, '0')}`,
+                order: j + 1,
+                startPercent: Number.isFinite(Number(bild.startPercent)) ? Number(bild.startPercent) : (j === 0 ? 0 : 0.5),
+                promptFileName: j === 0 ? 'image-prompt.txt' : `image-prompt-${String(j + 1).padStart(2, '0')}.txt`,
+                expectedImageFileName: j === 0 ? `${szene.sceneId}.png` : `${szene.sceneId}-${j + 1}.png`,
+                visualIdea: text(bild.visualIdea) || szene.visualIdea,
+                imageText: text(bild.imageText),
+                rationale: text(bild.rationale) || 'Eigener Bildmoment für diesen Satzteil.',
+                imageStatus: 'missing',
+                assetVerification: null
+              }));'''
+          new_map = '''    szene.imagePhases = bilder.map((bild, j) => {
+                const phaseCue = j === 0 ? szene.audioCue : text(bild.audioCue);
+                const cueStart = j === 0 ? 0 : findNarrationCueStartPercent(quelle.narration, phaseCue);
+                return {
+                  ...szene.imagePhases[j],
+                  phaseId: `${szene.sceneId}-image-${String(j + 1).padStart(2, '0')}`,
+                  order: j + 1,
+                  startPercent: j === 0 ? 0 : cueStart,
+                  audioCue: phaseCue,
+                  timingBasis: j === 0 ? 'scene-start' : 'narration-audio-cue',
+                  promptFileName: j === 0 ? 'image-prompt.txt' : `image-prompt-${String(j + 1).padStart(2, '0')}.txt`,
+                  expectedImageFileName: j === 0 ? `${szene.sceneId}.png` : `${szene.sceneId}-${j + 1}.png`,
+                  visualIdea: text(bild.visualIdea) || szene.visualIdea,
+                  imageText: text(bild.imageText),
+                  rationale: text(bild.rationale) || 'Eigener Bildmoment für diesen gesprochenen Satzteil.',
+                  imageStatus: 'missing',
+                  assetVerification: null
+                };
+              });'''
+          replace_once('src/core/reel-package.js', old_map, new_map)
+          replace_once('src/core/reel-package.js',
+            "  reel.plannedImageCount = index.reduce((summe, szene) => summe + szene.imagePhases.length, 0);",
+            "  reel.plannedImageCount = index.reduce((summe, szene) => summe + szene.imagePhases.length, 0);\n  reel.imagePhaseTimingMode = 'narration-audio-cue';")
+
+          # visual-moments preserves the cue metadata everywhere.
+          replace_once('src/shared/visual-moments.js',
+            "      imageText: String(rawPhase?.imageText ?? (primary ? scene.imageText ?? '' : '')).trim(),\n      rationale:",
+            "      imageText: String(rawPhase?.imageText ?? (primary ? scene.imageText ?? '' : '')).trim(),\n      audioCue: String(rawPhase?.audioCue ?? (primary ? scene.audioCue ?? '' : '')).trim(),\n      timingBasis: String(rawPhase?.timingBasis ?? (primary ? 'scene-start' : 'narration-audio-cue')).trim(),\n      rationale:")
+          replace_once('src/shared/visual-moments.js',
+            "    imageText: phase.imageText ?? (index === 0 ? scene.imageText ?? '' : ''),\n    rationale:",
+            "    imageText: phase.imageText ?? (index === 0 ? scene.imageText ?? '' : ''),\n    audioCue: phase.audioCue ?? (index === 0 ? scene.audioCue ?? '' : ''),\n    timingBasis: phase.timingBasis ?? (index === 0 ? 'scene-start' : 'narration-audio-cue'),\n    rationale:")
+
+          # content-validator: hard gate for current/future cue-timed reels and hook quality.
+          replace_once('src/core/content-validator.js',
+            "import { FIXED_VISUAL_STYLE_ID } from '../shared/fixed-visual-world.js';",
+            "import { FIXED_VISUAL_STYLE_ID } from '../shared/fixed-visual-world.js';\nimport { inspectReelHook } from '../shared/reel-hook-quality.js';\nimport { findNarrationCueStartPercent } from '../shared/image-phase-cue.js';")
+          replace_once('src/core/content-validator.js',
+            "  const fixedVisualWorldRequired = usesFixedVisualWorld(reel);\n  const styleId",
+            "  const fixedVisualWorldRequired = usesFixedVisualWorld(reel);\n  const cueTimedPhasesRequired = reel.imagePhaseTimingMode === 'narration-audio-cue' || String(reel.date ?? '') >= '2026-08-30';\n  const styleId")
+          replace_once('src/core/content-validator.js',
+            "  addCheck(checks, 'topic-area', String(reel.topicArea ?? '').trim().length >= 5,\n    'reel.json.topicArea fehlt.');",
+            "  addCheck(checks, 'topic-area', String(reel.topicArea ?? '').trim().length >= 5,\n    'reel.json.topicArea fehlt.');\n\n  if (cueTimedPhasesRequired && sceneIndex[0]) {\n    const hook = inspectReelHook({ narration: sceneIndex[0].narration, imageText: sceneIndex[0].imageText });\n    addCheck(checks, 'hook-quality', hook.passed, `Hook-Gate nicht bestanden: ${hook.issues.join(' ')}`);\n  }")
+          start_check = '''      addCheck(checks, `${phaseLabel}-start-percent`, phase.startPercent >= 0 && phase.startPercent < 1 && phase.startPercent > previousStart,
+                  `${phaseLabel}: startPercent muss innerhalb der Szene streng ansteigen.`);
+          '''
+          cue_check = start_check + '''      if (cueTimedPhasesRequired && phaseIndex > 0) {
+                  const phaseCue = String(phase.audioCue ?? '').trim();
+                  const cueStart = findNarrationCueStartPercent(scene.narration, phaseCue);
+                  addCheck(checks, `${phaseLabel}-audio-cue`, phaseCue.length >= 2,
+                    `${phaseLabel}: audioCue fehlt. Der Bildwechsel muss an konkret gesprochenen Wörtern hängen.`);
+                  addCheck(checks, `${phaseLabel}-audio-cue-in-narration`, cueStart !== null,
+                    `${phaseLabel}: audioCue "${phaseCue}" kommt nicht in der Narration vor.`);
+                  addCheck(checks, `${phaseLabel}-cue-derived-start`, cueStart === null || Math.abs(Number(phase.startPercent) - cueStart) <= 0.01,
+                    `${phaseLabel}: startPercent muss aus der Position des audioCue in der Narration abgeleitet sein; kein pauschales 0,5-Raster.`);
+                }
+          '''
+          replace_once('src/core/content-validator.js', start_check, cue_check)
+
+          # production brief: remove outdated flexible-density/text-optional language and require hook/cues.
+          p = Path('src/core/production-brief.js')
+          text = p.read_text(encoding='utf-8')
+          replacements = {
+            "{ id: 'image-density-plan', label: 'Für jede Szene individuell 1, 2 oder selten 3 Bildphasen festlegen; keine starre Gleichsetzung Szenenanzahl = Bildanzahl', status: 'pending' }":
+              "{ id: 'image-density-plan', label: 'Hook exakt 1 Bildphase, jede weitere Szene exakt 2 Bildphasen; keine dritte Phase', status: 'pending' }",
+            "{ id: 'image-text-plan', label: `In ungefähr ${preferredImageTextMinimum}–${preferredImageTextMaximum} passenden narrativen Szenen kurzen deutschen Bildtext planen; keine doppelte Headline oben und unten`, status: 'pending' }":
+              "{ id: 'image-text-plan', label: 'Jede einzelne Bildphase bekommt 1–5 deutsche Wörter imageText; kein Bild ohne Text', status: 'pending' }",
+            "Eine Szene kann ein, zwei oder selten drei aufeinanderfolgende Bilder besitzen. Die Bilddichte wird für jedes Reel individuell entschieden.":
+              "Die Hook besitzt exakt einen Bildmoment; jede weitere narrative Szene besitzt exakt zwei aufeinanderfolgende Bildmomente.",
+            "- aktuell initialisierte Bilder: **${currentPlannedImages}**; diese Zahl ist ausdrücklich noch nicht automatisch final":
+              "- geplante Bilder nach fester Regel: **${currentPlannedImages}**",
+            "- Bildanzahl-Modus: **individuell pro Reel**":
+              "- Bildanzahl-Modus: **one-hook-two-standard**",
+            "2. Überarbeite das Script auf 155–175 Wörter und ungefähr 55–60 Sekunden bei 1,10x.":
+              "2. Überarbeite das Script auf 155–175 Wörter und ungefähr 55–60 Sekunden bei 1,10x. Szene 1 muss sofort mit Frage, Überraschung oder klarem Kontrast starten; generische Einleitungen wie \"In diesem Video...\" sind verboten.",
+            "5. Plane ${scenes.length} **narrative Szenen**. Diese Zahl bestimmt nicht automatisch die Bildanzahl.":
+              "5. Plane ${scenes.length} **narrative Szenen**. Daraus folgt die Bildanzahl zwingend: 1 + (Szenen − 1) × 2.",
+            "7. Plane danach die Bilddichte **für jede Szene einzeln**. Jede Szene bekommt normalerweise 1 Bild, 2 Bilder bei echtem visuellem Fortschritt und 3 nur selten.\n8. Wenn ein einziges Still-Bild ungefähr 3,5–4 Sekunden oder länger stehen würde, prüfe aktiv eine zweite Bildphase. Das ist ein Prüftrigger, keine starre Pflicht.\n9. Wähle Bildphasen nach Inhalt, nicht nach Quote. Sinnvolle Wechsel sind Überblick → Detail, Ursache → Folge, Ausgangslage → Konsequenz oder äußere Handlung → Mechanismus-Detail.":
+              "7. Die Hook bekommt exakt 1 Bild; jede weitere Szene exakt 2. Eine dritte Bildphase ist im aktiven Standard verboten.\n8. Das zweite Bild wird nicht pauschal bei 50 % gesetzt. Gib ihm ein eigenes `audioCue`: 2–5 exakt gesprochene Wörter aus der Narration, bei denen der neue Bildmoment beginnen soll.\n9. Leite `startPercent` aus der Position dieses `audioCue` in der Narration ab. Wähle den Cue so, dass beide Bildphasen mindestens 3 Sekunden stehen und der sichtbare Informationsschritt zum gesprochenen Inhalt passt.",
+            "11. Hinterlege pro Szene `imageCount` und `imagePhases`. Die erste Phase beginnt mit `startPercent: 0`; weitere Phasen liegen streng aufsteigend innerhalb 0–1.":
+              "11. Hinterlege pro Szene `imageCount` und `imagePhases`. Die erste Phase beginnt bei `startPercent: 0`; die zweite trägt `audioCue`, `timingBasis: \"narration-audio-cue\"` und einen daraus berechneten `startPercent`.",
+            "12. Die erste Bildphase nutzt `image-prompt.txt`, die zweite `image-prompt-02.txt`. Jede Phase bekommt eigene `visualIdea`, eine eigene `rationale` und **zwingend einen eigenen `imageText`** mit 1–5 deutschen Wörtern. Kein Bild bleibt ohne Text, sonst wirkt es im Feed leer.":
+              "12. Die erste Bildphase nutzt `image-prompt.txt`, die zweite `image-prompt-02.txt`. Jede Phase bekommt eigene `visualIdea`, `rationale` und **zwingend eigenen `imageText`** mit 1–5 deutschen Wörtern. Die zweite Phase braucht zusätzlich ihr eigenes `audioCue`. Kein Bild bleibt ohne Text."
+          }
+          for old, new in replacements.items():
+              if old not in text:
+                  raise SystemExit(f'production-brief replacement missing: {old[:100]}')
+              text = text.replace(old, new, 1)
+          p.write_text(text, encoding='utf-8')
+
+          # CURRENT_WORKFLOW: make the policy consistent and cue-driven.
+          p = Path('CURRENT_WORKFLOW.md')
+          text = p.read_text(encoding='utf-8')
+          text = text.replace('**Stand: 2026-08-28**', '**Stand: 2026-08-29**', 1)
+          text = text.replace('Die Themenwahl ist offen. Hook, Aha-Moment, Faktentreue, visuelle Klarheit, Abwechslung und Teilbarkeit entscheiden.',
+            'Die Themenwahl ist offen. Hook, Aha-Moment, Faktentreue, visuelle Klarheit, Abwechslung und Teilbarkeit entscheiden. **Hook-Gate:** Szene 1 startet ohne Einleitung direkt mit Frage, Überraschung oder klarem Kontrast; generische Einstiege wie „In diesem Video …“ sind nicht zulässig.')
+          text = text.replace('Wenn kein Text geplant ist, darf keinerlei lesbarer Text erscheinen. Keine Logos, Wasserzeichen, Workflow-Labels oder Dateinamen im Bild.',
+            'Jede Bildphase trägt genau einen geplanten deutschen `imageText` mit 1–5 Wörtern. Außer diesem Text darf keinerlei lesbarer Text erscheinen: keine zusätzlichen Ortslabels, Logos, Wasserzeichen, Workflow-Labels oder Dateinamen.')
+          text = text.replace('- bei rund 58 Sekunden ergibt das ungefähr **17 bis 19 Bilder**\n- keine feste Gesamtbildzahl erzwingen',
+            '- feste Formel: `1 + (Szenen − 1) × 2` → 8 Szenen = 15 Bilder, 9 = 17, 10 = 19\n- eine dritte Bildphase ist im aktiven Standard nicht vorgesehen')
+          text = text.replace('Die Phasen einer Szene werden über `startPercent` gesetzt — als Anteil der\nSzenendauer. Zwei gleichmäßige Phasen liegen bei `0` und `0.5`. Der Schnitt sollte auf\nden Satzanfang fallen, nicht auf ein gleichmäßiges Raster.',
+            'Die zweite Phase besitzt ein eigenes `audioCue`: 2–5 tatsächlich gesprochene Wörter aus der Narration. `startPercent` wird aus der Position dieses Cues im Sprechertext abgeleitet — **kein pauschales `0.5`-Raster**. Der Cue wird so gewählt, dass beide Bilder mindestens 3 Sekunden sichtbar bleiben. Szene 1 beginnt weiterhin bei `startPercent: 0`.')
+          p.write_text(text, encoding='utf-8')
+
+          # WORKFLOW_PHASEN: phase 1 and phase 3 know about internal image cues.
+          p = Path('WORKFLOW_PHASEN.md')
+          text = p.read_text(encoding='utf-8')
+          text = text.replace('- pro Bildphase ein kurzer deutscher `imageText` mit 1–5 Wörtern — **kein Bild bleibt\n  ohne Text**, sonst wirkt es im Feed leer',
+            '- pro Bildphase ein kurzer deutscher `imageText` mit 1–5 Wörtern — **kein Bild bleibt\n  ohne Text**, sonst wirkt es im Feed leer\n- jede zweite Bildphase einer Standardszene bekommt zusätzlich ein eigenes `audioCue`\n  aus 2–5 gesprochenen Wörtern; daraus wird ihr `startPercent` berechnet, nicht pauschal 0,5')
+          text = text.replace('- `build:timeline` synchronisiert Szenen an echten Audio-Cues und löst dabei die\n  geplanten Sound-Typen gegen `assets/sfx/` auf',
+            '- `build:timeline` synchronisiert Szenen an echten Audio-Cues; interne Bildwechsel folgen den\n  in Phase 1 geplanten Narrations-Cues statt einem starren Mittelpunkt und lösen dabei die geplanten Sound-Typen gegen `assets/sfx/` auf')
+          p.write_text(text, encoding='utf-8')
+
+          # PRODUCTION_STATUS: remove third prompt from active docs and document cue timing.
+          p = Path('PRODUCTION_STATUS.md')
+          text = p.read_text(encoding='utf-8')
+          text = text.replace('- zusätzliche Prompts als `image-prompt-02.txt`, `image-prompt-03.txt`',
+            '- zweiter Prompt als `image-prompt-02.txt`; eine dritte Bildphase ist im aktiven Standard nicht vorgesehen')
+          text = text.replace('Der zweite Bildmoment einer Szene setzt beim nächsten Hauptsatz oder Nebensatz an\nund steht mindestens 3 Sekunden.',
+            'Der zweite Bildmoment einer Szene setzt an einem eigenen `audioCue` aus tatsächlich gesprochenen Wörtern an; `startPercent` wird aus dessen Position in der Narration abgeleitet und steht mindestens 3 Sekunden.')
+          p.write_text(text, encoding='utf-8')
+
+          # Helpers for JSON prompt/cue cleanup.
+          TOKEN_RE = re.compile(r"[\wÄÖÜäöüß]+(?:[’'-][\wÄÖÜäöüß]+)*", re.UNICODE)
+          def tokens(value):
+              return TOKEN_RE.findall(str(value or ''))
+          def cue_percent(narration, cue):
+              n = [x.casefold() for x in tokens(narration)]
+              c = [x.casefold() for x in tokens(cue)]
+              for i in range(0, len(n) - len(c) + 1):
+                  if n[i:i+len(c)] == c:
+                      return round(i / len(n), 6)
+              raise ValueError(f'Cue not found: {cue!r} in {narration!r}')
+          def clean_prompt(prompt, image_text):
+              prompt = re.sub(r'\s*No readable text(?: anywhere)? in this image\.?', '', prompt, flags=re.I)
+              prompt = re.sub(r'\s*No readable text anywhere in the image\.?', '', prompt, flags=re.I)
+              prompt = prompt.replace('with no labels or readable text', 'with no extra written labels')
+              prompt = prompt.replace('without labels', 'without extra written labels')
+              if image_text and image_text.casefold() not in prompt.casefold():
+                  prompt = prompt.rstrip() + f' Integrate exactly the German text "{image_text}" once, large and bold. Render no other readable words, labels or numbers.'
+              return re.sub(r'\s{2,}', ' ', prompt).strip()
+
+          # Fix the active input package, including the stale textless images.
+          package_path = Path('input/reel-paket.json')
+          package = json.loads(package_path.read_text(encoding='utf-8'))
+          second_text = {
+              2: 'EIN LAND', 3: 'DREI ROLLEN', 4: 'VERWALTUNG', 5: 'PARLAMENT',
+              6: 'JUSTIZ', 7: 'DREI ROLLEN', 8: 'VERFASSUNG', 9: 'DREI STÄDTE, DREI ROLLEN'
+          }
+          second_cue = {
+              2: '1910 wurden', 3: 'Deshalb wurde', 4: 'Regierung, viele', 5: 'südafrikanische Parlament',
+              6: 'of Appeal', 7: 'Jede Stadt', 8: 'Johannesburg. Würdest', 9: 'Bloemfontein steht'
+          }
+          package['scenes'][0]['imageText'] = 'WARUM DREI HAUPTSTÄDTE?'
+          package['scenes'][0]['images'][0]['imageText'] = 'WARUM DREI HAUPTSTÄDTE?'
+          package['scenes'][0]['images'][0]['prompt'] = package['scenes'][0]['images'][0]['prompt'].replace('DREI HAUPTSTÄDTE?', 'WARUM DREI HAUPTSTÄDTE?')
+          for nr, scene in enumerate(package['scenes'], 1):
+              scene['images'][0]['audioCue'] = scene.get('audioCue') or ' '.join(tokens(scene['narration'])[:3])
+              scene['images'][0]['startPercent'] = 0
+              scene['images'][0]['prompt'] = clean_prompt(scene['images'][0]['prompt'], scene['images'][0]['imageText'])
+              if nr > 1:
+                  image = scene['images'][1]
+                  image['imageText'] = second_text[nr]
+                  image['audioCue'] = second_cue[nr]
+                  image['startPercent'] = cue_percent(scene['narration'], image['audioCue'])
+                  image['prompt'] = clean_prompt(image['prompt'], image['imageText'])
+          package_path.write_text(json.dumps(package, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+
+          # Make the example self-consistent: every image has text, secondary images have spoken cues,
+          # and no prompt simultaneously asks for text and forbids readable text.
+          example_path = Path('input/reel-paket.beispiel.json')
+          example = json.loads(example_path.read_text(encoding='utf-8'))
+          for nr, scene in enumerate(example['scenes'], 1):
+              for idx, image in enumerate(scene['images']):
+                  image['prompt'] = clean_prompt(image['prompt'], image['imageText'])
+                  if idx == 0:
+                      image['audioCue'] = scene.get('audioCue') or ' '.join(tokens(scene['narration'])[:3])
+                      image['startPercent'] = 0
+                  else:
+                      n = tokens(scene['narration'])
+                      midpoint = max(1, min(len(n)-2, len(n)//2))
+                      image['audioCue'] = ' '.join(n[midpoint:midpoint+2])
+                      image['startPercent'] = cue_percent(scene['narration'], image['audioCue'])
+          example['_hinweis'] = 'Jede Bildphase braucht 1–5 deutsche Wörter imageText. Die zweite Bildphase einer Standardszene braucht zusätzlich ein audioCue aus gesprochenen Wörtern; startPercent wird daraus abgeleitet, nicht pauschal auf 0,5 gesetzt.'
+          example_path.write_text(json.dumps(example, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+
+          # Update the already-created Sunday reel to the new cue-timed schema.
+          scene_index_path = REEL / 'scenes/scene-index.json'
+          scenes = json.loads(scene_index_path.read_text(encoding='utf-8'))
+          for scene in scenes:
+              scene_id = scene['sceneId']
+              scene['imagePhases'][0]['audioCue'] = scene.get('audioCue', '')
+              scene['imagePhases'][0]['timingBasis'] = 'scene-start'
+              scene['imagePhases'][0]['startPercent'] = 0
+              if len(scene['imagePhases']) > 1:
+                  nr = int(scene_id.split('-')[1])
+                  cue = second_cue[nr]
+                  scene['imagePhases'][1]['audioCue'] = cue
+                  scene['imagePhases'][1]['timingBasis'] = 'narration-audio-cue'
+                  scene['imagePhases'][1]['startPercent'] = cue_percent(scene['narration'], cue)
+              (REEL / 'scenes' / scene_id / 'scene.json').write_text(json.dumps(scene, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          scene_index_path.write_text(json.dumps(scenes, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          reel_json_path = REEL / 'reel.json'
+          reel_json = json.loads(reel_json_path.read_text(encoding='utf-8'))
+          reel_json['imagePhaseTimingMode'] = 'narration-audio-cue'
+          reel_json_path.write_text(json.dumps(reel_json, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+
+          # New regression tests.
+          write('test/hook-and-phase-cue-policy.test.js', r'''import test from 'node:test';
+          import assert from 'node:assert/strict';
+          import { readFile } from 'node:fs/promises';
+
+          import { inspectReelHook } from '../src/shared/reel-hook-quality.js';
+          import { findNarrationCueStartPercent } from '../src/shared/image-phase-cue.js';
+          import { validateReelPackage } from '../src/core/reel-package.js';
+
+          test('Hook-Gate akzeptiert Neugier und blockiert generische Einleitungen', () => {
+            assert.equal(inspectReelHook({
+              narration: 'Südafrika hat nicht nur eine Hauptstadt. Tatsächlich verteilt das Land seine wichtigsten Staatsaufgaben auf drei verschiedene Städte.',
+              imageText: 'WARUM DREI HAUPTSTÄDTE?'
+            }).passed, true);
+            assert.equal(inspectReelHook({
+              narration: 'In diesem Video schauen wir uns heute ein interessantes Thema aus der Geografie einmal genauer an.',
+              imageText: 'DAS THEMA'
+            }).passed, false);
+          });
+
+          test('Bildphasen-Cue bestimmt den Schnitt aus dem Sprechertext statt pauschal 0,5', () => {
+            const narration = 'Pretoria wurde zum Verwaltungszentrum. Dort sitzen heute die nationale Regierung, viele Ministerien und die Präsidentschaft in den Union Buildings.';
+            const start = findNarrationCueStartPercent(narration, 'Regierung, viele');
+            assert.ok(start > 0.4 && start < 0.55);
+            assert.equal(findNarrationCueStartPercent(narration, 'nicht gesprochen'), null);
+          });
+
+          test('Paketvalidator verlangt für jede zweite Bildphase ein gesprochenes audioCue', async () => {
+            const paket = JSON.parse(await readFile('input/reel-paket.beispiel.json', 'utf8'));
+            assert.deepEqual(validateReelPackage(paket), []);
+            delete paket.scenes[1].images[1].audioCue;
+            assert.match(validateReelPackage(paket).join(' '), /audioCue fehlt/i);
+          });
+
+          test('aktive Beispielprompts widersprechen dem Pflicht-Bildtext nicht mehr', async () => {
+            const paket = JSON.parse(await readFile('input/reel-paket.beispiel.json', 'utf8'));
+            for (const scene of paket.scenes) {
+              scene.images.forEach((image, index) => {
+                assert.ok(image.imageText);
+                assert.ok(image.prompt.toLocaleUpperCase('de-DE').includes(image.imageText.toLocaleUpperCase('de-DE')));
+                assert.doesNotMatch(image.prompt, /No readable text/i);
+                if (index > 0) {
+                  assert.ok(image.audioCue);
+                  assert.notEqual(image.startPercent, undefined);
+                }
+              });
+            }
+          });
+
+          test('aktive Doku nennt keine dritte Bildphase und kein pauschales 0,5-Raster mehr', async () => {
+            const status = await readFile('PRODUCTION_STATUS.md', 'utf8');
+            const workflow = await readFile('CURRENT_WORKFLOW.md', 'utf8');
+            assert.doesNotMatch(status, /image-prompt-03\.txt/);
+            assert.match(workflow, /kein pauschales `0\.5`-Raster/i);
+            assert.match(workflow, /Hook-Gate/i);
+          });
+          ''')
+          PY
+      - name: Test package and repository
+        run: |
+          npm test
+          npm run import:reel -- --file input/reel-paket.json --check
+          npm run check:content -- --dir "reels/2026-KW35_24-08_bis_30-08/sonntag/reel-01_warum-hat-sudafrika-drei-hauptstadte" --strict
+      - name: Commit fixes
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Bildwechsel an Sprach-Cues binden und Hook absichern"
+          git push
