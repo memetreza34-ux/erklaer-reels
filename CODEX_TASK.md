@@ -2,7 +2,16 @@
 
 `CURRENT_WORKFLOW.md` ist bei Widersprüchen maßgeblich.
 
-Dieses Repository produziert vollständige visuelle Erklär-Reels. Der Nutzer erzeugt Voice-over und Bilder extern. Codex übernimmt Planung, individuelle Bilddichte, Prompts, Quellen, Asset-Suche, QC, Audio-Pacing, sichere Bildzuordnung, Timeline und Remotion-Render.
+Dieses Repository produziert vollständige visuelle Erklär-Reels in drei Phasen
+(`WORKFLOW_PHASEN.md`).
+
+**Dieser Auftrag ist Phase 1.** Er endet mit dem fertig ausgeschriebenen Reel-Ordner:
+Slot bestimmen, Thema wählen, Script schreiben, Szenen und Bilddichte planen, alle
+Bildprompts, den Effekt- und Soundplan, Caption und Quellen ausschreiben, dann
+`check:content --strict` und `export:prompts --strict`.
+
+Nicht Teil dieses Auftrags: Voice-over und Bilder erzeugt der Nutzer in Phase 2;
+Asset-Zuordnung, Audio-Pacing, Timeline und Render macht Antigravity in Phase 3.
 
 ## Reel-Standard
 
