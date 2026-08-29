@@ -23,19 +23,23 @@
       "imageText": "WELCHE FUNKTION?",
       "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
       "imageStatus": "missing",
-      "assetVerification": null
+      "assetVerification": null,
+      "audioCue": "Die beste Antwort",
+      "timingBasis": "scene-start"
     },
     {
       "phaseId": "scene-09-image-02",
       "order": 2,
-      "startPercent": 0.5,
+      "startPercent": 0.55,
       "promptFileName": "image-prompt-02.txt",
       "expectedImageFileName": "scene-09-2.png",
       "visualIdea": "Final summary card with three equal columns: Pretoria with administration icon, Cape Town with parliament icon, Bloemfontein with justice icon.",
       "imageText": "DREI STÄDTE, DREI ROLLEN",
       "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
       "imageStatus": "missing",
-      "assetVerification": null
+      "assetVerification": null,
+      "audioCue": "Bloemfontein steht",
+      "timingBasis": "narration-audio-cue"
     }
   ],
   "expectedImageFileName": "scene-09.png",

@@ -189,6 +189,8 @@ package_path.write_text(json.dumps(package, ensure_ascii=False, indent=2) + '\n'
 example_path = Path('input/reel-paket.beispiel.json')
 example = json.loads(example_path.read_text(encoding='utf-8'))
 for scene in example['scenes']:
+    if 'images' not in scene:
+        continue
     for index, image in enumerate(scene['images']):
         image['prompt'] = clean_prompt(image['prompt'], image['imageText'])
         if index == 0:

@@ -60,9 +60,9 @@ export async function prepareReelProduction(reelDirectory) {
       { id: 'visual-world-separated', label: 'YouTube-Bildwelt strikt getrennt halten; keine Stick-Figuren, kein 16:9-Longform-Look in Reels', status: 'pending' },
       { id: 'scene-first-visuals', label: 'Jede Bildphase zuerst als konkrete physische Mini-Szene planen; generische Karten-/Icon-Boards vermeiden', status: 'pending' },
       { id: 'scenes-fill', label: `${scenes.length} narrative Szenen mit klaren Audio-Cues planen`, status: 'pending' },
-      { id: 'image-density-plan', label: 'Für jede Szene individuell 1, 2 oder selten 3 Bildphasen festlegen; keine starre Gleichsetzung Szenenanzahl = Bildanzahl', status: 'pending' },
+      { id: 'image-density-plan', label: 'Hook exakt 1 Bildphase, jede weitere Szene exakt 2 Bildphasen; keine dritte Phase', status: 'pending' },
       { id: 'scene-timing-balance', label: `Hook ${timing.hookSeconds.min}–${timing.hookSeconds.max}s, normale Szenen ${timing.standardSeconds.min}–${timing.standardSeconds.max}s und Schlussbild-Nachlauf ${timing.postVoiceHoldSeconds}s planen`, status: 'pending' },
-      { id: 'image-text-plan', label: `In ungefähr ${preferredImageTextMinimum}–${preferredImageTextMaximum} passenden narrativen Szenen kurzen deutschen Bildtext planen; keine doppelte Headline oben und unten`, status: 'pending' },
+      { id: 'image-text-plan', label: 'Jede einzelne Bildphase bekommt 1–5 deutsche Wörter imageText; kein Bild ohne Text', status: 'pending' },
       { id: 'ending-check', label: 'Prüffrage und einprägsamen Abschlusssatz auf zwei Szenen verteilen', status: 'pending' },
       { id: 'prompts-write', label: `Für jede geplante Bildphase einen vollständigen englischen 9:16-Bildprompt im festen Stil ${FIXED_VISUAL_STYLE_ID} schreiben; konkrete Szene, Handlung, Umgebung und Perspektive angeben`, status: 'pending' },
       { id: 'prompts-export', label: 'Alle Bildphasen in globaler Bildreihenfolge als kompletten seriellen Google-Flow-Gesamtprompt mit globalem und per-Bild Style-Lock exportieren', status: 'pending' },
@@ -81,7 +81,7 @@ export async function prepareReelProduction(reelDirectory) {
 
 ## Ziel
 
-Erstelle ein vollständiges Erklär-Reel mit ungefähr einer Minute Voice-over-Laufzeit. Bilder und Audio werden extern erzeugt. **Narrative Szenen und Bildanzahl sind getrennt:** Eine Szene kann ein, zwei oder selten drei aufeinanderfolgende Bilder besitzen. Die Bilddichte wird für jedes Reel individuell entschieden. Das Reel wird vollständig ohne Untertitel produziert und gerendert.
+Erstelle ein vollständiges Erklär-Reel mit ungefähr einer Minute Voice-over-Laufzeit. Bilder und Audio werden extern erzeugt. **Narrative Szenen und Bildanzahl sind getrennt:** Die Hook besitzt exakt einen Bildmoment; jede weitere narrative Szene besitzt exakt zwei aufeinanderfolgende Bildmomente. Das Reel wird vollständig ohne Untertitel produziert und gerendert.
 
 **Verbindliche Reel-Bildwelt: ${FIXED_VISUAL_WORLD_LABEL} (\`${FIXED_VISUAL_STYLE_ID}\`).** Sie gilt für jede Bildphase. Die separate YouTube-Bildwelt darf niemals automatisch auf Reels übertragen werden.
 
@@ -90,8 +90,8 @@ Erstelle ein vollständiges Erklär-Reel mit ungefähr einer Minute Voice-over-L
 - Reel-ID: \`${reel.reelId}\`
 - Titel: **${reel.title}**
 - narrative Szenen: **${scenes.length}**
-- aktuell initialisierte Bilder: **${currentPlannedImages}**; diese Zahl ist ausdrücklich noch nicht automatisch final
-- Bildanzahl-Modus: **individuell pro Reel**
+- geplante Bilder nach fester Regel: **${currentPlannedImages}**
+- Bildanzahl-Modus: **one-hook-two-standard**
 - feste Reel-Bildwelt: **${FIXED_VISUAL_WORLD_LABEL} / ${FIXED_VISUAL_STYLE_ID}**
 - Voice-over-Zieldauer: **55–60 Sekunden**
 - Zieltext: **155–175 Wörter**
@@ -117,14 +117,14 @@ Erstelle ein vollständiges Erklär-Reel mit ungefähr einer Minute Voice-over-L
 ## Verbindlicher Ablauf
 
 1. Lies \`CURRENT_WORKFLOW.md\`, \`AGENTS.md\`, \`CODEX_TASK.md\`, \`knowledge/fixed-visual-world.md\`, \`knowledge/production-rules.md\`, \`config/image-styles.json\` und \`config/production-quality-gates.json\`.
-2. Überarbeite das Script auf 155–175 Wörter und ungefähr 55–60 Sekunden bei 1,10x.
+2. Überarbeite das Script auf 155–175 Wörter und ungefähr 55–60 Sekunden bei 1,10x. Szene 1 startet sofort mit Frage, Überraschung oder klarem Kontrast; generische Einleitungen wie „In diesem Video …“ sind verboten.
 3. Das Ende benötigt zwei getrennte Stufen: eine persönliche Prüf- oder Erkenntnisfrage und danach eine konkrete Lösung mit kurzem einprägsamem Abschlusssatz.
 4. Schreibe denselben finalen Text nach \`script/final-script.txt\` und \`script/voice-script.txt\`.
-5. Plane ${scenes.length} **narrative Szenen**. Diese Zahl bestimmt nicht automatisch die Bildanzahl.
+5. Plane ${scenes.length} **narrative Szenen**. Daraus folgt die Bildanzahl zwingend: 1 + (Szenen − 1) × 2.
 6. **Keine Bildwelt auswählen oder rotieren.** Setze und behalte \`visualStyleId: "${FIXED_VISUAL_STYLE_ID}"\`. Reels bleiben 9:16 und verwenden niemals die separate YouTube-Stick-Figure-/16:9-Welt.
-7. Plane danach die Bilddichte **für jede Szene einzeln**. Jede Szene bekommt normalerweise 1 Bild, 2 Bilder bei echtem visuellem Fortschritt und 3 nur selten.
-8. Wenn ein einziges Still-Bild ungefähr 3,5–4 Sekunden oder länger stehen würde, prüfe aktiv eine zweite Bildphase. Das ist ein Prüftrigger, keine starre Pflicht.
-9. Wähle Bildphasen nach Inhalt, nicht nach Quote. Sinnvolle Wechsel sind Überblick → Detail, Ursache → Folge, Ausgangslage → Konsequenz oder äußere Handlung → Mechanismus-Detail.
+7. Die Hook bekommt exakt 1 Bild; jede weitere Szene exakt 2. Eine dritte Bildphase ist im aktiven Standard verboten.
+8. Das zweite Bild wird nicht pauschal bei 50 % gesetzt. Gib ihm ein eigenes \`audioCue\`: 2–5 exakt gesprochene Wörter aus der Narration, bei denen der neue Bildmoment beginnen soll.
+9. Leite \`startPercent\` aus der Position dieses \`audioCue\` in der Narration ab. Wähle den Cue so, dass beide Bildphasen mindestens 3 Sekunden stehen und der sichtbare Informationsschritt zum gesprochenen Inhalt passt.
 10. Die Hook bekommt einen Bildmoment, jede weitere Szene zwei. Schreibe die tatsächliche Summe nach \`reel.json.plannedImageCount\` und setze \`imageCountMode: "one-hook-two-standard"\`.
 11. Hinterlege pro Szene \`imageCount\` und \`imagePhases\`. Die erste Phase beginnt mit \`startPercent: 0\`; weitere Phasen liegen streng aufsteigend innerhalb 0–1.
 12. Die erste Bildphase nutzt \`image-prompt.txt\`, die zweite \`image-prompt-02.txt\`. Jede Phase bekommt eigene \`visualIdea\`, eine eigene \`rationale\` und **zwingend einen eigenen \`imageText\`** mit 1–5 deutschen Wörtern. Kein Bild bleibt ohne Text, sonst wirkt es im Feed leer.

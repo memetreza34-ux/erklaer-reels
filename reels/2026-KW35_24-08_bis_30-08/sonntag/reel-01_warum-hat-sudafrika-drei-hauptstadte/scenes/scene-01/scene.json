@@ -23,7 +23,9 @@
       "imageText": "WARUM DREI HAUPTSTÄDTE?",
       "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
       "imageStatus": "missing",
-      "assetVerification": null
+      "assetVerification": null,
+      "audioCue": "Südafrika hat nicht",
+      "timingBasis": "scene-start"
     }
   ],
   "expectedImageFileName": "scene-01.png",

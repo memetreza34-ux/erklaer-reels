@@ -11,7 +11,7 @@
   "sceneCount": 9,
   "imageCountMode": "one-hook-two-standard",
   "plannedImageCount": 17,
-  "imageDensityReason": "Hook mit einem Bildmoment, jede weitere Szene mit zwei; der zweite setzt beim nächsten Satzteil an.",
+  "imageDensityReason": "Hook mit einem Bildmoment, jede weitere Szene mit zwei; der zweite beginnt an einem eigenen gesprochenen audioCue.",
   "visualStyleId": "modern-countryball-explainer",
   "visualStyleReason": "Globale feste Bildwelt für alle neuen Erklär-Reels: moderner minimalistischer Countryball-Erklärstil. Die eine Reel-Bildwelt Modern Countryball Explainer nutzt runde Kugelfiguren, dicke schwarze Konturen, flächige Farben und hohe Social-Media-Lesbarkeit.",
   "sourceQualitySchemaVersion": 3,
@@ -19,5 +19,6 @@
   "motionEffectsEnabled": true,
   "soundEffectsEnabled": true,
   "backgroundMusicEnabled": false,
-  "status": "content-ready"
+  "status": "content-ready",
+  "imagePhaseTimingMode": "narration-audio-cue"
 }

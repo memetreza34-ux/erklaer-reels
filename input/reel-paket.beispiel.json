@@ -31,9 +31,10 @@
       "soundEffects": [],
       "images": [
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Round ball characters with simple white eyes on a flat map shape, thick confident black outlines, flat colours on a calm ochre background field. Scene 1, image 1: Zwei runde Länderkugeln stehen auf einer flachen Landkarte, getrennt durch eine gestrichelte Grenzlinie. Low detail, one dominant idea, readable in one second on a phone. Integrate exactly \"ZWEI HAUPTSTÄDTE\" once, large and bold.",
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Round ball characters with simple white eyes on a flat map shape, thick confident black outlines, flat colours on a calm ochre background field. Scene 1, image 1: Zwei runde Länderkugeln stehen auf einer flachen Landkarte, getrennt durch eine gestrichelte Grenzlinie. Low detail, one dominant idea, readable in one second on a phone. Integrate exactly \"ZWEI HAUPTSTÄDTE\" once, large and bold. Render no other readable words, labels or numbers.",
           "imageText": "ZWEI HAUPTSTÄDTE",
-          "startPercent": 0
+          "startPercent": 0,
+          "audioCue": "Warum haben manche"
         }
       ]
     },
@@ -56,14 +57,16 @@
       ],
       "images": [
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Round ball characters with simple white eyes on a flat map shape, thick confident black outlines, flat colours on a calm ochre background field. Scene 2, image 1: Eine einzelne Kugelfigur zeigt auf einen einzigen markierten Punkt auf einer schlichten Landkarte. Low detail, one dominant idea, readable in one second on a phone. Integrate exactly \"EIN LAND, EINE STADT\" once, large and bold.",
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Round ball characters with simple white eyes on a flat map shape, thick confident black outlines, flat colours on a calm ochre background field. Scene 2, image 1: Eine einzelne Kugelfigur zeigt auf einen einzigen markierten Punkt auf einer schlichten Landkarte. Low detail, one dominant idea, readable in one second on a phone. Integrate exactly \"EIN LAND, EINE STADT\" once, large and bold. Render no other readable words, labels or numbers.",
           "imageText": "EIN LAND, EINE STADT",
-          "startPercent": 0
+          "startPercent": 0,
+          "audioCue": "Ein Land eine"
         },
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Round ball characters with simple white eyes on a flat map shape, thick confident black outlines, flat colours on a calm ochre background field. Scene 2, image 2: Eine einzelne Kugelfigur zeigt auf einen einzigen markierten Punkt auf einer schlichten Landkarte. Low detail, one dominant idea, readable in one second on a phone. No readable text in this image.",
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Round ball characters with simple white eyes on a flat map shape, thick confident black outlines, flat colours on a calm ochre background field. Scene 2, image 2: Eine einzelne Kugelfigur zeigt auf einen einzigen markierten Punkt auf einer schlichten Landkarte. Low detail, one dominant idea, readable in one second on a phone. Integrate exactly the German text \"WIRKLICH IMMER?\" once, large and bold. Render no other readable words, labels or numbers.",
           "imageText": "WIRKLICH IMMER?",
-          "startPercent": 0.5
+          "startPercent": 0.5,
+          "audioCue": "Menschen zunächst"
         }
       ]
     },
@@ -89,17 +92,19 @@
       ],
       "images": [
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Round ball characters with simple white eyes on a flat map shape, thick confident black outlines, flat colours on a calm ochre background field. Scene 9, image 1: Ruhige Schlussansicht der Karte mit einer klar markierten Hauptstadt und den Regionen ringsum. Low detail, one dominant idea, readable in one second on a phone. Integrate exactly \"SCHAU GENAUER HIN\" once, large and bold.",
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Round ball characters with simple white eyes on a flat map shape, thick confident black outlines, flat colours on a calm ochre background field. Scene 9, image 1: Ruhige Schlussansicht der Karte mit einer klar markierten Hauptstadt und den Regionen ringsum. Low detail, one dominant idea, readable in one second on a phone. Integrate exactly \"SCHAU GENAUER HIN\" once, large and bold. Render no other readable words, labels or numbers.",
           "imageText": "SCHAU GENAUER HIN",
-          "startPercent": 0
+          "startPercent": 0,
+          "audioCue": "Hauptstädte sind also"
         },
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Round ball characters with simple white eyes on a flat map shape, thick confident black outlines, flat colours on a calm ochre background field. Scene 9, image 2: Ruhige Schlussansicht der Karte mit einer klar markierten Hauptstadt und den Regionen ringsum. Low detail, one dominant idea, readable in one second on a phone. No readable text in this image.",
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Round ball characters with simple white eyes on a flat map shape, thick confident black outlines, flat colours on a calm ochre background field. Scene 9, image 2: Ruhige Schlussansicht der Karte mit einer klar markierten Hauptstadt und den Regionen ringsum. Low detail, one dominant idea, readable in one second on a phone. Render no other readable words, labels or numbers.",
           "imageText": "DETAIL",
-          "startPercent": 0.5
+          "startPercent": 0.5,
+          "audioCue": "Kompromiss Achte"
         }
       ]
     }
   ],
-  "_hinweis": "Jede Bildphase braucht einen imageText mit 1 bis 5 deutschen Wörtern. Der imageText der ersten Szene ist die Überschrift des Reels und wird im Bild groß im oberen Bereich gesetzt. Kein Bild bleibt ohne Text."
+  "_hinweis": "Jede Bildphase braucht 1–5 deutsche Wörter imageText. Die zweite Bildphase einer Standardszene braucht zusätzlich ein audioCue aus gesprochenen Wörtern; startPercent wird daraus abgeleitet, nicht pauschal auf 0,5 gesetzt."
 }

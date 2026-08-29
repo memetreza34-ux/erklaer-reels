@@ -23,19 +23,23 @@
       "imageText": "JOHANNESBURG?",
       "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
       "imageStatus": "missing",
-      "assetVerification": null
+      "assetVerification": null,
+      "audioCue": "Eine zusätzliche Besonderheit",
+      "timingBasis": "scene-start"
     },
     {
       "phaseId": "scene-08-image-02",
       "order": 2,
-      "startPercent": 0.5,
+      "startPercent": 0.470588,
       "promptFileName": "image-prompt-02.txt",
       "expectedImageFileName": "scene-08-2.png",
       "visualIdea": "Johannesburg remains visible as the Constitutional Court location, while Pretoria, Cape Town and Bloemfontein stay grouped separately as the three capital roles.",
       "imageText": "VERFASSUNG",
       "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
       "imageStatus": "missing",
-      "assetVerification": null
+      "assetVerification": null,
+      "audioCue": "Johannesburg. Würdest",
+      "timingBasis": "narration-audio-cue"
     }
   ],
   "expectedImageFileName": "scene-08.png",

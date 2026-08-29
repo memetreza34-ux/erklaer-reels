@@ -23,19 +23,23 @@
       "imageText": "1910",
       "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
       "imageStatus": "missing",
-      "assetVerification": null
+      "assetVerification": null,
+      "audioCue": "Das klingt ungewöhnlich",
+      "timingBasis": "scene-start"
     },
     {
       "phaseId": "scene-02-image-02",
       "order": 2,
-      "startPercent": 0.5,
+      "startPercent": 0.470588,
       "promptFileName": "image-prompt-02.txt",
       "expectedImageFileName": "scene-02-2.png",
       "visualIdea": "The four territory blocks now lock together into one unified South Africa map, with no labels or readable text.",
       "imageText": "EIN LAND",
       "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
       "imageStatus": "missing",
-      "assetVerification": null
+      "assetVerification": null,
+      "audioCue": "1910 wurden",
+      "timingBasis": "narration-audio-cue"
     }
   ],
   "expectedImageFileName": "scene-02.png",

@@ -1,6 +1,6 @@
 # CURRENT WORKFLOW — VERBINDLICHE SINGLE SOURCE OF TRUTH
 
-**Stand: 2026-08-28**
+**Stand: 2026-08-29**
 
 Diese Datei ist die verbindliche Repo-weite Produktionsregel für neue Chats, Codex, Antigravity und andere Repo-Agenten.
 
@@ -41,7 +41,7 @@ Ausführlich in `WORKFLOW_PHASEN.md`.
 - keine Hintergrundmusik
 - 0–2 dezente SFX pro narrativer Szene
 
-Die Themenwahl ist offen. Hook, Aha-Moment, Faktentreue, visuelle Klarheit, Abwechslung und Teilbarkeit entscheiden.
+Die Themenwahl ist offen. Hook, Aha-Moment, Faktentreue, visuelle Klarheit, Abwechslung und Teilbarkeit entscheiden. **Hook-Gate:** Szene 1 startet ohne Einleitung direkt mit Frage, Überraschung oder klarem Kontrast; generische Einstiege wie „In diesem Video …“ sind nicht zulässig.
 
 ## 2. Reels und YouTube bleiben vollständig getrennt
 
@@ -115,7 +115,7 @@ Jeder Prompt beantwortet:
 5. Welcher Bildausschnitt passt: einzelne Kugel, Kugelgruppe, Kugel plus Objekt, Kartenansicht, Close-up, Objekt oder Umgebung?
 6. Welcher exakte deutsche Text ist erlaubt?
 
-Wenn kein Text geplant ist, darf keinerlei lesbarer Text erscheinen. Keine Logos, Wasserzeichen, Workflow-Labels oder Dateinamen im Bild.
+Jede Bildphase trägt genau einen geplanten deutschen `imageText` mit 1–5 Wörtern. Außer diesem Text darf keinerlei lesbarer Text erscheinen: keine zusätzlichen Ortslabels, Logos, Wasserzeichen, Workflow-Labels oder Dateinamen.
 
 ## 5. Bildanzahl folgt dem Satzbau
 
@@ -127,8 +127,8 @@ setzt beim nächsten Hauptsatz oder Nebensatz an.
 - 8–10 narrative Szenen, Standard 9
 - Hook 4,5–6 Sekunden mit einem Bild, Standardszene 6–7,5 Sekunden mit zwei Bildern
 - ein Bild steht 3 bis 4 Sekunden, im Schnitt etwa 3,25
-- bei rund 58 Sekunden ergibt das ungefähr **17 bis 19 Bilder**
-- keine feste Gesamtbildzahl erzwingen
+- feste Formel: `1 + (Szenen − 1) × 2` → 8 Szenen = 15 Bilder, 9 = 17, 10 = 19
+- eine dritte Bildphase ist im aktiven Standard nicht vorgesehen
 
 ### Nicht zu schnell
 
@@ -141,9 +141,7 @@ zwei Szenen aufgeteilt.
 
 ### Bildphasen verteilen
 
-Die Phasen einer Szene werden über `startPercent` gesetzt — als Anteil der
-Szenendauer. Zwei gleichmäßige Phasen liegen bei `0` und `0.5`. Der Schnitt sollte auf
-den Satzanfang fallen, nicht auf ein gleichmäßiges Raster.
+Die zweite Phase besitzt ein eigenes `audioCue`: 2–5 tatsächlich gesprochene Wörter aus der Narration. `startPercent` wird aus der Position dieses Cues im Sprechertext abgeleitet — **kein pauschales `0.5`-Raster**. Der Cue wird so gewählt, dass beide Bilder mindestens 3 Sekunden sichtbar bleiben. Szene 1 beginnt weiterhin bei `startPercent: 0`.
 
 ## 6. Google Flow — genau eine Masterdatei
 

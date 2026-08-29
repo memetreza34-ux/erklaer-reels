@@ -73,6 +73,8 @@ Vollständig zu füllen sind:
 - pro Bildphase ein englischer Bildprompt in `image-prompt.txt` bzw. `image-prompt-02.txt`
 - pro Bildphase ein kurzer deutscher `imageText` mit 1–5 Wörtern — **kein Bild bleibt
   ohne Text**, sonst wirkt es im Feed leer
+- jede zweite Bildphase einer Standardszene bekommt zusätzlich ein eigenes `audioCue`
+  aus 2–5 gesprochenen Wörtern; daraus wird ihr `startPercent` berechnet, nicht pauschal 0,5
 - der `imageText` von Szene 1 ist die **Überschrift des Reels** und steht im fertigen
   Bild groß im oberen Bereich
 - `effects/effects-plan.json` — Kamerabewegung und Soundeffekte je Szene
@@ -145,8 +147,8 @@ npm run render:reel    -- --dir "<reel-ordner>"
   allein**, sondern über sichtbaren Inhalt, mit Konfidenz ab 0,90
 - `check:visuals --strict` verlangt die eingetragene visuelle Freigabe je Bild
 - `trim:pauses` strafft Pausen, setzt 1,10x und normalisiert auf −16 LUFS / −1,5 dBTP
-- `build:timeline` synchronisiert Szenen an echten Audio-Cues und löst dabei die
-  geplanten Sound-Typen gegen `assets/sfx/` auf
+- `build:timeline` synchronisiert Szenen an echten Audio-Cues; interne Bildwechsel folgen den
+  in Phase 1 geplanten Narrations-Cues statt einem starren Mittelpunkt und lösen dabei die geplanten Sound-Typen gegen `assets/sfx/` auf
 - `finalize:reel --strict` gibt frei; ohne `--strict` bleibt `Renderer-bereit: nein`
 - `render:reel` erzeugt die MP4
 

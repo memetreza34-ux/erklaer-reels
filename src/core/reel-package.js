@@ -2,6 +2,8 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
 import { createReelWorkspace } from './workspace.js';
+import { inspectReelHook } from '../shared/reel-hook-quality.js';
+import { findNarrationCueStartPercent } from '../shared/image-phase-cue.js';
 
 /**
  * Baut ein vollständiges Reel aus einem einzelnen JSON-Paket.
@@ -31,6 +33,11 @@ export function validateReelPackage(paket) {
   if (!Array.isArray(szenen) || szenen.length < 8 || szenen.length > 10) {
     probleme.push(`scenes braucht 8 bis 10 Einträge, hat aber ${Array.isArray(szenen) ? szenen.length : 0}.`);
   }
+  if (Array.isArray(szenen) && szenen[0]) {
+    const hook = inspectReelHook({ narration: szenen[0].narration, imageText: szenen[0].imageText });
+    if (!hook.passed) probleme.push(`Szene 1: Hook-Gate nicht bestanden: ${hook.issues.join(' ')}`);
+  }
+
   // Die Caption-Regeln des Renderers, nur früher geprüft. Sonst fällt eine zu kurze
   // Caption erst nach Bildern und Voice-over auf, direkt vor dem Rendern.
   const caption = text(paket.caption);
@@ -106,6 +113,15 @@ export function validateReelPackage(paket) {
         probleme.push(`Szene ${nr}: erwartet ${erwartet} Bild(er), geliefert ${bilder.length}.`);
       }
       bilder.forEach((bild, bildIndex) => {
+        if (bildIndex > 0) {
+          const phaseCue = text(bild.audioCue);
+          const cueStart = findNarrationCueStartPercent(szene.narration, phaseCue);
+          if (!phaseCue) {
+            probleme.push(`Szene ${nr}, Bild ${bildIndex + 1}: audioCue fehlt. Der Bildwechsel muss an gesprochenen Wörtern hängen.`);
+          } else if (cueStart === null) {
+            probleme.push(`Szene ${nr}, Bild ${bildIndex + 1}: audioCue \"${phaseCue}\" kommt in der Narration nicht vor.`);
+          }
+        }
         if (text(bild.prompt).length < 180) {
           probleme.push(`Szene ${nr}, Bild ${bildIndex + 1}: prompt fehlt oder ist unter 180 Zeichen.`);
         }
@@ -197,19 +213,25 @@ export async function importReelPackage(paket, { outputRoot = 'reels', date = ne
     if (Number.isFinite(Number(quelle.durationSeconds))) szene.durationSeconds = Number(quelle.durationSeconds);
 
     const bilder = quelle.images;
-    szene.imagePhases = bilder.map((bild, j) => ({
-      ...szene.imagePhases[j],
-      phaseId: `${szene.sceneId}-image-${String(j + 1).padStart(2, '0')}`,
-      order: j + 1,
-      startPercent: Number.isFinite(Number(bild.startPercent)) ? Number(bild.startPercent) : (j === 0 ? 0 : 0.5),
-      promptFileName: j === 0 ? 'image-prompt.txt' : `image-prompt-${String(j + 1).padStart(2, '0')}.txt`,
-      expectedImageFileName: j === 0 ? `${szene.sceneId}.png` : `${szene.sceneId}-${j + 1}.png`,
-      visualIdea: text(bild.visualIdea) || szene.visualIdea,
-      imageText: text(bild.imageText),
-      rationale: text(bild.rationale) || 'Eigener Bildmoment für diesen Satzteil.',
-      imageStatus: 'missing',
-      assetVerification: null
-    }));
+    szene.imagePhases = bilder.map((bild, j) => {
+      const phaseCue = j === 0 ? szene.audioCue : text(bild.audioCue);
+      const cueStart = j === 0 ? 0 : findNarrationCueStartPercent(quelle.narration, phaseCue);
+      return {
+        ...szene.imagePhases[j],
+        phaseId: `${szene.sceneId}-image-${String(j + 1).padStart(2, '0')}`,
+        order: j + 1,
+        startPercent: j === 0 ? 0 : cueStart,
+        audioCue: phaseCue,
+        timingBasis: j === 0 ? 'scene-start' : 'narration-audio-cue',
+        promptFileName: j === 0 ? 'image-prompt.txt' : `image-prompt-${String(j + 1).padStart(2, '0')}.txt`,
+        expectedImageFileName: j === 0 ? `${szene.sceneId}.png` : `${szene.sceneId}-${j + 1}.png`,
+        visualIdea: text(bild.visualIdea) || szene.visualIdea,
+        imageText: text(bild.imageText),
+        rationale: text(bild.rationale) || 'Eigener Bildmoment für diesen gesprochenen Satzteil.',
+        imageStatus: 'missing',
+        assetVerification: null
+      };
+    });
     szene.imageCount = szene.imagePhases.length;
 
     effektSzenen.push({
@@ -243,6 +265,7 @@ export async function importReelPackage(paket, { outputRoot = 'reels', date = ne
   const reel = await lesen('reel.json');
   reel.topicArea = text(paket.topicArea);
   reel.plannedImageCount = index.reduce((summe, szene) => summe + szene.imagePhases.length, 0);
+  reel.imagePhaseTimingMode = 'narration-audio-cue';
   await schreibenJson('reel.json', reel);
 
   return {

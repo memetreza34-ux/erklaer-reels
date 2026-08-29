@@ -13,7 +13,9 @@ const REPO_ROOT = fileURLToPath(new URL('..', import.meta.url));
 function baueSzene(index, woerter) {
   const anzahl = index === 0 ? 1 : 2;
   return {
-    narration: Array.from({ length: woerter }, (_, i) => `Wort${i + 1}`).join(' '),
+    narration: index === 0
+      ? `Warum ${Array.from({ length: woerter - 1 }, (_, i) => `Wort${i + 2}`).join(' ')}?`
+      : Array.from({ length: woerter }, (_, i) => `Wort${i + 1}`).join(' '),
     imageText: `TEXT ${index + 1}`,
     visualIdea: 'Runde Kugelfiguren auf einer flachen Landkarte zeigen den Zusammenhang deutlich.',
     continuityNotes: 'Gleiche Konturstärke und Farbwelt wie in der Szene davor.',
@@ -23,6 +25,7 @@ function baueSzene(index, woerter) {
     images: Array.from({ length: anzahl }, (_, j) => ({
       prompt: `Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. ${'Detailbeschreibung '.repeat(12)}Szene ${index + 1} Bild ${j + 1}.`,
       imageText: j === 0 ? `TEXT ${index + 1}` : `DETAIL ${index + 1}`,
+      audioCue: j === 0 ? '' : `Wort10 Wort11`,
       startPercent: j === 0 ? 0 : 0.5
     }))
   };

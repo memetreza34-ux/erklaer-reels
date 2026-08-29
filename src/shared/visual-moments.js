@@ -46,6 +46,8 @@ export function normalizeSceneImagePhases(scene) {
       ).trim(),
       visualIdea: String(rawPhase?.visualIdea ?? (primary ? scene.visualIdea ?? '' : '')).trim(),
       imageText: String(rawPhase?.imageText ?? (primary ? scene.imageText ?? '' : '')).trim(),
+      audioCue: String(rawPhase?.audioCue ?? (primary ? scene.audioCue ?? '' : '')).trim(),
+      timingBasis: String(rawPhase?.timingBasis ?? (primary ? 'scene-start' : 'narration-audio-cue')).trim(),
       rationale: String(rawPhase?.rationale ?? '').trim(),
       imageStatus: String(rawPhase?.imageStatus ?? (primary ? scene.imageStatus ?? 'missing' : 'missing')).trim() || 'missing',
       assetVerification: rawPhase?.assetVerification ?? (primary ? scene.assetVerification ?? null : null)
@@ -116,6 +118,8 @@ export function syncSceneImagePhases(scene, phases) {
     expectedImageFileName: phase.expectedImageFileName ?? (index === 0 ? scene.expectedImageFileName ?? `${scene.sceneId}.png` : `${scene.sceneId}-image-${pad(index + 1)}.png`),
     visualIdea: phase.visualIdea ?? (index === 0 ? scene.visualIdea ?? '' : ''),
     imageText: phase.imageText ?? (index === 0 ? scene.imageText ?? '' : ''),
+    audioCue: phase.audioCue ?? (index === 0 ? scene.audioCue ?? '' : ''),
+    timingBasis: phase.timingBasis ?? (index === 0 ? 'scene-start' : 'narration-audio-cue'),
     rationale: phase.rationale ?? '',
     imageStatus: phase.imageStatus ?? 'missing',
     assetVerification: phase.assetVerification ?? null

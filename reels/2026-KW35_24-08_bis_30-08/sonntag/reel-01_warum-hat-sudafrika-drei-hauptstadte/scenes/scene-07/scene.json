@@ -23,19 +23,23 @@
       "imageText": "NICHT DREIMAL GLEICH",
       "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
       "imageStatus": "missing",
-      "assetVerification": null
+      "assetVerification": null,
+      "audioCue": "Das bedeutet also",
+      "timingBasis": "scene-start"
     },
     {
       "phaseId": "scene-07-image-02",
       "order": 2,
-      "startPercent": 0.5,
+      "startPercent": 0.526316,
       "promptFileName": "image-prompt-02.txt",
       "expectedImageFileName": "scene-07-2.png",
       "visualIdea": "Three clean role cards replace the false model: administration, legislation and justice, each with a distinct icon and city association.",
       "imageText": "DREI ROLLEN",
       "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
       "imageStatus": "missing",
-      "assetVerification": null
+      "assetVerification": null,
+      "audioCue": "Jede Stadt",
+      "timingBasis": "narration-audio-cue"
     }
   ],
   "expectedImageFileName": "scene-07.png",

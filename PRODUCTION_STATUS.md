@@ -71,8 +71,7 @@ Es gilt:
 | 9 | 17 |
 | 10 | 19 |
 
-Der zweite Bildmoment einer Szene setzt beim nächsten Hauptsatz oder Nebensatz an
-und steht mindestens 3 Sekunden. `check:content --strict` weist jede Abweichung
+Der zweite Bildmoment einer Szene setzt an einem eigenen `audioCue` aus tatsächlich gesprochenen Wörtern an; `startPercent` wird aus dessen Position in der Narration abgeleitet und steht mindestens 3 Sekunden. `check:content --strict` weist jede Abweichung
 für neue Reels als Fehler zurück; Archiv-Reels behalten ihre frühere Struktur.
 
 Technisch:
@@ -80,7 +79,7 @@ Technisch:
 - `plannedImageCount`
 - `scene.imageCount`
 - `scene.imagePhases[]`
-- zusätzliche Prompts als `image-prompt-02.txt`, `image-prompt-03.txt`
+- zweiter Prompt als `image-prompt-02.txt`; eine dritte Bildphase ist im aktiven Standard nicht vorgesehen
 
 ## Google Flow
 

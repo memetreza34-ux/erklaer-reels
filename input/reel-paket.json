@@ -28,7 +28,7 @@
   "scenes": [
     {
       "narration": "Südafrika hat nicht nur eine Hauptstadt. Tatsächlich verteilt das Land seine wichtigsten Staatsaufgaben auf drei verschiedene Städte.",
-      "imageText": "DREI HAUPTSTÄDTE?",
+      "imageText": "WARUM DREI HAUPTSTÄDTE?",
       "visualIdea": "Eine Südafrika-Kugel steht vor drei klar getrennten Stadtmarkern für Pretoria, Kapstadt und Bloemfontein.",
       "continuityNotes": "Hook bleibt statisch und setzt sofort die überraschende Kernfrage.",
       "audioCue": "Südafrika hat nicht",
@@ -39,11 +39,12 @@
       "soundEffects": [],
       "images": [
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 1, image 1: A surprised South Africa countryball centered beneath three separate city markers labeled Pretoria, Kapstadt and Bloemfontein, each marker visually equal. Integrate exactly the German text \"DREI HAUPTSTÄDTE?\" once, large and bold. Keep all visible text German only and keep the composition uncluttered.",
-          "imageText": "DREI HAUPTSTÄDTE?",
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 1, image 1: A surprised South Africa countryball centered beneath three separate city markers representing Pretoria, Kapstadt and Bloemfontein without written city labels, each marker visually equal. Integrate exactly the German text \"WARUM DREI HAUPTSTÄDTE?\" once, large and bold. Keep all visible text German only and keep the composition uncluttered. Render no other readable words, labels or numbers.",
+          "imageText": "WARUM DREI HAUPTSTÄDTE?",
           "visualIdea": "A surprised South Africa countryball centered beneath three separate city markers labeled Pretoria, Kapstadt and Bloemfontein, each marker visually equal.",
           "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
-          "startPercent": 0
+          "startPercent": 0,
+          "audioCue": "Südafrika hat nicht"
         }
       ]
     },
@@ -60,18 +61,20 @@
       "soundEffects": [],
       "images": [
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 2, image 1: Four separate colonial territory blocks arranged like puzzle pieces around a simplified outline of southern Africa, clearly about to merge into one state. Integrate exactly the German text \"1910\" once, large and bold. Keep all visible text German only and keep the composition uncluttered.",
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 2, image 1: Four separate colonial territory blocks arranged like puzzle pieces around a simplified outline of southern Africa, clearly about to merge into one state. Integrate exactly the German text \"1910\" once, large and bold. Keep all visible text German only and keep the composition uncluttered. Render no other readable words, labels or numbers.",
           "imageText": "1910",
           "visualIdea": "Four separate colonial territory blocks arranged like puzzle pieces around a simplified outline of southern Africa, clearly about to merge into one state.",
           "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
-          "startPercent": 0
+          "startPercent": 0,
+          "audioCue": "Das klingt ungewöhnlich"
         },
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 2, image 2: The four territory blocks now lock together into one unified South Africa map, clearly showing political unification without labels. No readable text anywhere in the image. Keep the composition uncluttered.",
-          "imageText": "",
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 2, image 2: The four territory blocks now lock together into one unified South Africa map, clearly showing political unification without extra written labels. Keep the composition uncluttered. Integrate exactly the German text \"EIN LAND\" once, large and bold. Render no other readable words, labels or numbers.",
+          "imageText": "EIN LAND",
           "visualIdea": "The four territory blocks now lock together into one unified South Africa map, with no labels or readable text.",
           "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
-          "startPercent": 0.5
+          "startPercent": 0.470588,
+          "audioCue": "1910 wurden"
         }
       ]
     },
@@ -88,18 +91,20 @@
       "soundEffects": [],
       "images": [
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 3, image 1: Three competing civic center icons pull a central government symbol in different directions, showing that no single center receives everything. Integrate exactly the German text \"EIN KOMPROMISS\" once, large and bold. Keep all visible text German only and keep the composition uncluttered.",
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 3, image 1: Three competing civic center icons pull a central government symbol in different directions, showing that no single center receives everything. Integrate exactly the German text \"EIN KOMPROMISS\" once, large and bold. Keep all visible text German only and keep the composition uncluttered. Render no other readable words, labels or numbers.",
           "imageText": "EIN KOMPROMISS",
           "visualIdea": "Three competing civic center icons pull a central government symbol in different directions, showing that no single center receives everything.",
           "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
-          "startPercent": 0
+          "startPercent": 0,
+          "audioCue": "Bei dieser Vereinigung"
         },
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 3, image 2: The central government symbol splits into three clean function icons: administration, parliament and justice, each moving toward a different city marker. No readable text anywhere in the image. Keep all visible text German only and keep the composition uncluttered.",
-          "imageText": "",
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 3, image 2: The central government symbol splits into three clean function icons: administration, parliament and justice, each moving toward a different city marker. Keep all visible text German only and keep the composition uncluttered. Integrate exactly the German text \"DREI ROLLEN\" once, large and bold. Render no other readable words, labels or numbers.",
+          "imageText": "DREI ROLLEN",
           "visualIdea": "The central government symbol splits into three clean function icons: administration, parliament and justice, each moving toward a different city marker.",
           "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
-          "startPercent": 0.5
+          "startPercent": 0.473684,
+          "audioCue": "Deshalb wurde"
         }
       ]
     },
@@ -116,18 +121,20 @@
       "soundEffects": [],
       "images": [
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 4, image 1: A simplified South Africa map with Pretoria highlighted in the north-east and a clean pointer from the city marker to a government icon. Integrate exactly the German text \"PRETORIA\" once, large and bold. Keep all visible text German only and keep the composition uncluttered.",
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 4, image 1: A simplified South Africa map with Pretoria highlighted in the north-east and a clean pointer from the city marker to a government icon. Integrate exactly the German text \"PRETORIA\" once, large and bold. Keep all visible text German only and keep the composition uncluttered. Render no other readable words, labels or numbers.",
           "imageText": "PRETORIA",
           "visualIdea": "A simplified South Africa map with Pretoria highlighted in the north-east and a clean pointer from the city marker to a government icon.",
           "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
-          "startPercent": 0
+          "startPercent": 0,
+          "audioCue": "Pretoria wurde"
         },
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 4, image 2: The Union Buildings as a simplified flat landmark, supported by small ministry folders and an executive government symbol, with no people. Integrate exactly the German text \"VERWALTUNG\" once, large and bold. Keep all visible text German only and keep the composition uncluttered.",
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 4, image 2: The Union Buildings as a simplified flat landmark, supported by small ministry folders and an executive government symbol, with no people. Integrate exactly the German text \"VERWALTUNG\" once, large and bold. Keep all visible text German only and keep the composition uncluttered. Render no other readable words, labels or numbers.",
           "imageText": "VERWALTUNG",
           "visualIdea": "The Union Buildings as a simplified flat landmark, supported by small ministry folders and an executive government symbol, with no people.",
           "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
-          "startPercent": 0.5
+          "startPercent": 0.473684,
+          "audioCue": "Regierung, viele"
         }
       ]
     },
@@ -144,18 +151,20 @@
       "soundEffects": [],
       "images": [
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 5, image 1: A simplified South Africa map with Cape Town highlighted at the south-western coast and a clear pointer to a parliament building icon. Integrate exactly the German text \"KAPSTADT\" once, large and bold. Keep all visible text German only and keep the composition uncluttered.",
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 5, image 1: A simplified South Africa map with Cape Town highlighted at the south-western coast and a clear pointer to a parliament building icon. Integrate exactly the German text \"KAPSTADT\" once, large and bold. Keep all visible text German only and keep the composition uncluttered. Render no other readable words, labels or numbers.",
           "imageText": "KAPSTADT",
           "visualIdea": "A simplified South Africa map with Cape Town highlighted at the south-western coast and a clear pointer to a parliament building icon.",
           "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
-          "startPercent": 0
+          "startPercent": 0,
+          "audioCue": "Kapstadt übernahm"
         },
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 5, image 2: A clean parliamentary chamber and a large law document with a check mark, communicating debate and lawmaking without realistic politicians. Integrate exactly the German text \"PARLAMENT\" once, large and bold. Keep all visible text German only and keep the composition uncluttered.",
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 5, image 2: A clean parliamentary chamber and a large law document with a check mark, communicating debate and lawmaking without realistic politicians. Integrate exactly the German text \"PARLAMENT\" once, large and bold. Keep all visible text German only and keep the composition uncluttered. Render no other readable words, labels or numbers.",
           "imageText": "PARLAMENT",
           "visualIdea": "A clean parliamentary chamber and a large law document with a check mark, communicating debate and lawmaking without realistic politicians.",
           "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
-          "startPercent": 0.5
+          "startPercent": 0.5,
+          "audioCue": "südafrikanische Parlament"
         }
       ]
     },
@@ -172,18 +181,20 @@
       "soundEffects": [],
       "images": [
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 6, image 1: A simplified South Africa map with Bloemfontein highlighted in the central interior and a pointer toward a judicial building. Integrate exactly the German text \"BLOEMFONTEIN\" once, large and bold. Keep all visible text German only and keep the composition uncluttered.",
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 6, image 1: A simplified South Africa map with Bloemfontein highlighted in the central interior and a pointer toward a judicial building. Integrate exactly the German text \"BLOEMFONTEIN\" once, large and bold. Keep all visible text German only and keep the composition uncluttered. Render no other readable words, labels or numbers.",
           "imageText": "BLOEMFONTEIN",
           "visualIdea": "A simplified South Africa map with Bloemfontein highlighted in the central interior and a pointer toward a judicial building.",
           "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
-          "startPercent": 0
+          "startPercent": 0,
+          "audioCue": "Bloemfontein gilt"
         },
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 6, image 2: A flat court building paired with balanced scales and a small legal document, clearly communicating the judicial role with minimal detail. Integrate exactly the German text \"JUSTIZ\" once, large and bold. Keep all visible text German only and keep the composition uncluttered.",
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 6, image 2: A flat court building paired with balanced scales and a small legal document, clearly communicating the judicial role with minimal detail. Integrate exactly the German text \"JUSTIZ\" once, large and bold. Keep all visible text German only and keep the composition uncluttered. Render no other readable words, labels or numbers.",
           "imageText": "JUSTIZ",
           "visualIdea": "A flat court building paired with balanced scales and a small legal document, clearly communicating the judicial role with minimal detail.",
           "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
-          "startPercent": 0.5
+          "startPercent": 0.473684,
+          "audioCue": "of Appeal"
         }
       ]
     },
@@ -200,18 +211,20 @@
       "soundEffects": [],
       "images": [
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 7, image 1: Three identical generic capital icons are shown side by side and crossed out with one clear red X, rejecting the misconception of three identical capitals. Integrate exactly the German text \"NICHT DREIMAL GLEICH\" once, large and bold. Keep all visible text German only and keep the composition uncluttered.",
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 7, image 1: Three identical generic capital icons are shown side by side and crossed out with one clear red X, rejecting the misconception of three identical capitals. Integrate exactly the German text \"NICHT DREIMAL GLEICH\" once, large and bold. Keep all visible text German only and keep the composition uncluttered. Render no other readable words, labels or numbers.",
           "imageText": "NICHT DREIMAL GLEICH",
           "visualIdea": "Three identical generic capital icons are shown side by side and crossed out with one clear red X, rejecting the misconception of three identical capitals.",
           "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
-          "startPercent": 0
+          "startPercent": 0,
+          "audioCue": "Das bedeutet also"
         },
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 7, image 2: Three clean role cards replace the false model: administration, legislation and justice, each with a distinct icon and city association. Integrate exactly the German text \"DREI ROLLEN\" once, large and bold. Keep all visible text German only and keep the composition uncluttered.",
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 7, image 2: Three clean role cards replace the false model: administration, legislation and justice, each with a distinct icon and city association. Integrate exactly the German text \"DREI ROLLEN\" once, large and bold. Keep all visible text German only and keep the composition uncluttered. Render no other readable words, labels or numbers.",
           "imageText": "DREI ROLLEN",
           "visualIdea": "Three clean role cards replace the false model: administration, legislation and justice, each with a distinct icon and city association.",
           "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
-          "startPercent": 0.5
+          "startPercent": 0.526316,
+          "audioCue": "Jede Stadt"
         }
       ]
     },
@@ -228,18 +241,20 @@
       "soundEffects": [],
       "images": [
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 8, image 1: A simplified South Africa map adds Johannesburg as a fourth highlighted city marker with a small Constitutional Court symbol and a question mark. Integrate exactly the German text \"JOHANNESBURG?\" once, large and bold. Keep all visible text German only and keep the composition uncluttered.",
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 8, image 1: A simplified South Africa map adds Johannesburg as a fourth highlighted city marker with a small Constitutional Court symbol and a question mark. Integrate exactly the German text \"JOHANNESBURG?\" once, large and bold. Keep all visible text German only and keep the composition uncluttered. Render no other readable words, labels or numbers.",
           "imageText": "JOHANNESBURG?",
           "visualIdea": "A simplified South Africa map adds Johannesburg as a fourth highlighted city marker with a small Constitutional Court symbol and a question mark.",
           "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
-          "startPercent": 0
+          "startPercent": 0,
+          "audioCue": "Eine zusätzliche Besonderheit"
         },
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 8, image 2: Johannesburg remains visible as the Constitutional Court location, while Pretoria, Cape Town and Bloemfontein stay grouped separately as the three capital roles. No readable text anywhere in the image. Keep all visible text German only and keep the composition uncluttered.",
-          "imageText": "",
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 8, image 2: Johannesburg remains visible as the Constitutional Court location, while Pretoria, Cape Town and Bloemfontein stay grouped separately as the three capital roles. Keep all visible text German only and keep the composition uncluttered. Integrate exactly the German text \"VERFASSUNG\" once, large and bold. Render no other readable words, labels or numbers.",
+          "imageText": "VERFASSUNG",
           "visualIdea": "Johannesburg remains visible as the Constitutional Court location, while Pretoria, Cape Town and Bloemfontein stay grouped separately as the three capital roles.",
           "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
-          "startPercent": 0.5
+          "startPercent": 0.470588,
+          "audioCue": "Johannesburg. Würdest"
         }
       ]
     },
@@ -256,18 +271,20 @@
       "soundEffects": [],
       "images": [
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 9, image 1: A central question card asks which state function is meant, while three arrows point toward Pretoria, Cape Town and Bloemfontein. Integrate exactly the German text \"WELCHE FUNKTION?\" once, large and bold. Keep all visible text German only and keep the composition uncluttered.",
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 9, image 1: A central question card asks which state function is meant, while three arrows point toward Pretoria, Cape Town and Bloemfontein. Integrate exactly the German text \"WELCHE FUNKTION?\" once, large and bold. Keep all visible text German only and keep the composition uncluttered. Render no other readable words, labels or numbers.",
           "imageText": "WELCHE FUNKTION?",
           "visualIdea": "A central question card asks which state function is meant, while three arrows point toward Pretoria, Cape Town and Bloemfontein.",
           "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
-          "startPercent": 0
+          "startPercent": 0,
+          "audioCue": "Die beste Antwort"
         },
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 9, image 2: Final summary card with three equal columns: Pretoria with administration icon, Cape Town with parliament icon, Bloemfontein with justice icon. Integrate exactly the German text \"DREI STÄDTE, DREI ROLLEN\" once, large and bold. Keep all visible text German only and keep the composition uncluttered.",
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 9, image 2: Final summary card with three equal columns: Pretoria with administration icon, Cape Town with parliament icon, Bloemfontein with justice icon. Integrate exactly the German text \"DREI STÄDTE, DREI ROLLEN\" once, large and bold. Keep all visible text German only and keep the composition uncluttered. Render no other readable words, labels or numbers.",
           "imageText": "DREI STÄDTE, DREI ROLLEN",
           "visualIdea": "Final summary card with three equal columns: Pretoria with administration icon, Cape Town with parliament icon, Bloemfontein with justice icon.",
           "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
-          "startPercent": 0.5
+          "startPercent": 0.55,
+          "audioCue": "Bloemfontein steht"
         }
       ]
     }

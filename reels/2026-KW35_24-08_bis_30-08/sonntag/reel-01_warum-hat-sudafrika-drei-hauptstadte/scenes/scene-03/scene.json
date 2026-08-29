@@ -23,19 +23,23 @@
       "imageText": "EIN KOMPROMISS",
       "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
       "imageStatus": "missing",
-      "assetVerification": null
+      "assetVerification": null,
+      "audioCue": "Bei dieser Vereinigung",
+      "timingBasis": "scene-start"
     },
     {
       "phaseId": "scene-03-image-02",
       "order": 2,
-      "startPercent": 0.5,
+      "startPercent": 0.473684,
       "promptFileName": "image-prompt-02.txt",
       "expectedImageFileName": "scene-03-2.png",
       "visualIdea": "The central government symbol splits into three clean function icons: administration, parliament and justice, each moving toward a different city marker.",
       "imageText": "DREI ROLLEN",
       "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
       "imageStatus": "missing",
-      "assetVerification": null
+      "assetVerification": null,
+      "audioCue": "Deshalb wurde",
+      "timingBasis": "narration-audio-cue"
     }
   ],
   "expectedImageFileName": "scene-03.png",

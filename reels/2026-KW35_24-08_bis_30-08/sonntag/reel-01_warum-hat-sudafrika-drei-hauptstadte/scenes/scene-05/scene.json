@@ -23,7 +23,9 @@
       "imageText": "KAPSTADT",
       "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
       "imageStatus": "missing",
-      "assetVerification": null
+      "assetVerification": null,
+      "audioCue": "Kapstadt übernahm",
+      "timingBasis": "scene-start"
     },
     {
       "phaseId": "scene-05-image-02",
@@ -35,7 +37,9 @@
       "imageText": "PARLAMENT",
       "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
       "imageStatus": "missing",
-      "assetVerification": null
+      "assetVerification": null,
+      "audioCue": "südafrikanische Parlament",
+      "timingBasis": "narration-audio-cue"
     }
   ],
   "expectedImageFileName": "scene-05.png",

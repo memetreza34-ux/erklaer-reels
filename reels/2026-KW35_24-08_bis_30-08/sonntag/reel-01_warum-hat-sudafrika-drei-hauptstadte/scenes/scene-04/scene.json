@@ -23,19 +23,23 @@
       "imageText": "PRETORIA",
       "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
       "imageStatus": "missing",
-      "assetVerification": null
+      "assetVerification": null,
+      "audioCue": "Pretoria wurde",
+      "timingBasis": "scene-start"
     },
     {
       "phaseId": "scene-04-image-02",
       "order": 2,
-      "startPercent": 0.5,
+      "startPercent": 0.473684,
       "promptFileName": "image-prompt-02.txt",
       "expectedImageFileName": "scene-04-2.png",
       "visualIdea": "The Union Buildings as a simplified flat landmark, supported by small ministry folders and an executive government symbol, with no people.",
       "imageText": "VERWALTUNG",
       "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
       "imageStatus": "missing",
-      "assetVerification": null
+      "assetVerification": null,
+      "audioCue": "Regierung, viele",
+      "timingBasis": "narration-audio-cue"
     }
   ],
   "expectedImageFileName": "scene-04.png",

@@ -1,6 +1,8 @@
 import { access, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { FIXED_VISUAL_STYLE_ID } from '../shared/fixed-visual-world.js';
+import { inspectReelHook } from '../shared/reel-hook-quality.js';
+import { findNarrationCueStartPercent } from '../shared/image-phase-cue.js';
 
 import { inspectSourcesMarkdown } from './source-quality.js';
 import { normalizeSceneImagePhases, plannedImageCount } from '../shared/visual-moments.js';
@@ -92,6 +94,7 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
   const sceneTiming = (await readJson(qualityGatesPath, {})).sceneTiming ?? {};
   const totalPlannedImages = plannedImageCount(sceneIndex);
   const fixedVisualWorldRequired = usesFixedVisualWorld(reel);
+  const cueTimedPhasesRequired = reel.imagePhaseTimingMode === 'narration-audio-cue' || String(reel.date ?? '') >= '2026-08-30';
   const styleId = String(reel.visualStyleId ?? '').trim();
   const styleReason = String(reel.visualStyleReason ?? '').trim();
 
@@ -101,6 +104,11 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
     `scene-index.json enthält ${sceneIndex.length} statt ${reel.sceneCount} narrativen Szenen.`);
   addCheck(checks, 'topic-area', String(reel.topicArea ?? '').trim().length >= 5,
     'reel.json.topicArea fehlt.');
+
+  if (cueTimedPhasesRequired && sceneIndex[0]) {
+    const hook = inspectReelHook({ narration: sceneIndex[0].narration, imageText: sceneIndex[0].imageText });
+    addCheck(checks, 'hook-quality', hook.passed, `Hook-Gate nicht bestanden: ${hook.issues.join(' ')}`);
+  }
 
   if (fixedVisualWorldRequired) {
     addCheck(checks, 'visual-world-fixed', styleId === FIXED_VISUAL_STYLE_ID,
@@ -225,6 +233,17 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
       const promptPath = phasePromptPath(sceneDirectory, phase);
       const prompt = (await exists(promptPath)) ? await readText(promptPath) : '';
       const previousStart = phaseIndex === 0 ? -1 : phases[phaseIndex - 1].startPercent;
+
+      if (cueTimedPhasesRequired && phaseIndex > 0) {
+        const phaseCue = String(phase.audioCue ?? '').trim();
+        const cueStart = findNarrationCueStartPercent(scene.narration, phaseCue);
+        addCheck(checks, `${phaseLabel}-audio-cue`, phaseCue.length >= 2,
+          `${phaseLabel}: audioCue fehlt. Der Bildwechsel muss an konkret gesprochenen Wörtern hängen.`);
+        addCheck(checks, `${phaseLabel}-audio-cue-in-narration`, cueStart !== null,
+          `${phaseLabel}: audioCue \"${phaseCue}\" kommt nicht in der Narration vor.`);
+        addCheck(checks, `${phaseLabel}-cue-derived-start`, cueStart === null || Math.abs(Number(phase.startPercent) - cueStart) <= 0.01,
+          `${phaseLabel}: startPercent muss aus der Position des audioCue in der Narration abgeleitet sein; kein pauschales 0,5-Raster.`);
+      }
 
       addCheck(checks, `${phaseLabel}-start-percent`, phase.startPercent >= 0 && phase.startPercent < 1 && phase.startPercent > previousStart,
         `${phaseLabel}: startPercent muss innerhalb der Szene streng ansteigen.`);

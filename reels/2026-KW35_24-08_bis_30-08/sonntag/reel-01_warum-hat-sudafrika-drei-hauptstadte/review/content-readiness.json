@@ -1,11 +1,11 @@
 {
-  "createdAt": "2026-08-29T11:10:49.621Z",
+  "createdAt": "2026-08-29T16:27:35.382Z",
   "passed": true,
   "summary": {
-    "passedChecks": 339,
+    "passedChecks": 369,
     "failedChecks": 0,
-    "warnings": 6,
-    "totalChecks": 345
+    "warnings": 1,
+    "totalChecks": 370
   },
   "metadata": {
     "totalDuration": 58,
@@ -57,6 +57,12 @@
       "passed": true,
       "level": "error",
       "message": "reel.json.topicArea fehlt."
+    },
+    {
+      "id": "hook-quality",
+      "passed": true,
+      "level": "error",
+      "message": "Hook-Gate nicht bestanden: "
     },
     {
       "id": "visual-world-fixed",
@@ -258,7 +264,7 @@
     },
     {
       "id": "scene-01-image-01-image-text-prompt",
-      "passed": false,
+      "passed": true,
       "level": "warning",
       "message": "scene-01-image-01: imageText steht nicht exakt im Bildprompt."
     },
@@ -389,6 +395,24 @@
       "message": "scene-02-image-01: imageText steht nicht exakt im Bildprompt."
     },
     {
+      "id": "scene-02-image-02-audio-cue",
+      "passed": true,
+      "level": "error",
+      "message": "scene-02-image-02: audioCue fehlt. Der Bildwechsel muss an konkret gesprochenen Wörtern hängen."
+    },
+    {
+      "id": "scene-02-image-02-audio-cue-in-narration",
+      "passed": true,
+      "level": "error",
+      "message": "scene-02-image-02: audioCue \"1910 wurden\" kommt nicht in der Narration vor."
+    },
+    {
+      "id": "scene-02-image-02-cue-derived-start",
+      "passed": true,
+      "level": "error",
+      "message": "scene-02-image-02: startPercent muss aus der Position des audioCue in der Narration abgeleitet sein; kein pauschales 0,5-Raster."
+    },
+    {
       "id": "scene-02-image-02-start-percent",
       "passed": true,
       "level": "error",
@@ -426,7 +450,7 @@
     },
     {
       "id": "scene-02-image-02-image-text-prompt",
-      "passed": false,
+      "passed": true,
       "level": "warning",
       "message": "scene-02-image-02: imageText steht nicht exakt im Bildprompt."
     },
@@ -557,6 +581,24 @@
       "message": "scene-03-image-01: imageText steht nicht exakt im Bildprompt."
     },
     {
+      "id": "scene-03-image-02-audio-cue",
+      "passed": true,
+      "level": "error",
+      "message": "scene-03-image-02: audioCue fehlt. Der Bildwechsel muss an konkret gesprochenen Wörtern hängen."
+    },
+    {
+      "id": "scene-03-image-02-audio-cue-in-narration",
+      "passed": true,
+      "level": "error",
+      "message": "scene-03-image-02: audioCue \"Deshalb wurde\" kommt nicht in der Narration vor."
+    },
+    {
+      "id": "scene-03-image-02-cue-derived-start",
+      "passed": true,
+      "level": "error",
+      "message": "scene-03-image-02: startPercent muss aus der Position des audioCue in der Narration abgeleitet sein; kein pauschales 0,5-Raster."
+    },
+    {
       "id": "scene-03-image-02-start-percent",
       "passed": true,
       "level": "error",
@@ -594,7 +636,7 @@
     },
     {
       "id": "scene-03-image-02-image-text-prompt",
-      "passed": false,
+      "passed": true,
       "level": "warning",
       "message": "scene-03-image-02: imageText steht nicht exakt im Bildprompt."
     },
@@ -723,6 +765,24 @@
       "passed": true,
       "level": "warning",
       "message": "scene-04-image-01: imageText steht nicht exakt im Bildprompt."
+    },
+    {
+      "id": "scene-04-image-02-audio-cue",
+      "passed": true,
+      "level": "error",
+      "message": "scene-04-image-02: audioCue fehlt. Der Bildwechsel muss an konkret gesprochenen Wörtern hängen."
+    },
+    {
+      "id": "scene-04-image-02-audio-cue-in-narration",
+      "passed": true,
+      "level": "error",
+      "message": "scene-04-image-02: audioCue \"Regierung, viele\" kommt nicht in der Narration vor."
+    },
+    {
+      "id": "scene-04-image-02-cue-derived-start",
+      "passed": true,
+      "level": "error",
+      "message": "scene-04-image-02: startPercent muss aus der Position des audioCue in der Narration abgeleitet sein; kein pauschales 0,5-Raster."
     },
     {
       "id": "scene-04-image-02-start-percent",
@@ -893,6 +953,24 @@
       "message": "scene-05-image-01: imageText steht nicht exakt im Bildprompt."
     },
     {
+      "id": "scene-05-image-02-audio-cue",
+      "passed": true,
+      "level": "error",
+      "message": "scene-05-image-02: audioCue fehlt. Der Bildwechsel muss an konkret gesprochenen Wörtern hängen."
+    },
+    {
+      "id": "scene-05-image-02-audio-cue-in-narration",
+      "passed": true,
+      "level": "error",
+      "message": "scene-05-image-02: audioCue \"südafrikanische Parlament\" kommt nicht in der Narration vor."
+    },
+    {
+      "id": "scene-05-image-02-cue-derived-start",
+      "passed": true,
+      "level": "error",
+      "message": "scene-05-image-02: startPercent muss aus der Position des audioCue in der Narration abgeleitet sein; kein pauschales 0,5-Raster."
+    },
+    {
       "id": "scene-05-image-02-start-percent",
       "passed": true,
       "level": "error",
@@ -1059,6 +1137,24 @@
       "passed": true,
       "level": "warning",
       "message": "scene-06-image-01: imageText steht nicht exakt im Bildprompt."
+    },
+    {
+      "id": "scene-06-image-02-audio-cue",
+      "passed": true,
+      "level": "error",
+      "message": "scene-06-image-02: audioCue fehlt. Der Bildwechsel muss an konkret gesprochenen Wörtern hängen."
+    },
+    {
+      "id": "scene-06-image-02-audio-cue-in-narration",
+      "passed": true,
+      "level": "error",
+      "message": "scene-06-image-02: audioCue \"of Appeal\" kommt nicht in der Narration vor."
+    },
+    {
+      "id": "scene-06-image-02-cue-derived-start",
+      "passed": true,
+      "level": "error",
+      "message": "scene-06-image-02: startPercent muss aus der Position des audioCue in der Narration abgeleitet sein; kein pauschales 0,5-Raster."
     },
     {
       "id": "scene-06-image-02-start-percent",
@@ -1229,6 +1325,24 @@
       "message": "scene-07-image-01: imageText steht nicht exakt im Bildprompt."
     },
     {
+      "id": "scene-07-image-02-audio-cue",
+      "passed": true,
+      "level": "error",
+      "message": "scene-07-image-02: audioCue fehlt. Der Bildwechsel muss an konkret gesprochenen Wörtern hängen."
+    },
+    {
+      "id": "scene-07-image-02-audio-cue-in-narration",
+      "passed": true,
+      "level": "error",
+      "message": "scene-07-image-02: audioCue \"Jede Stadt\" kommt nicht in der Narration vor."
+    },
+    {
+      "id": "scene-07-image-02-cue-derived-start",
+      "passed": true,
+      "level": "error",
+      "message": "scene-07-image-02: startPercent muss aus der Position des audioCue in der Narration abgeleitet sein; kein pauschales 0,5-Raster."
+    },
+    {
       "id": "scene-07-image-02-start-percent",
       "passed": true,
       "level": "error",
@@ -1397,6 +1511,24 @@
       "message": "scene-08-image-01: imageText steht nicht exakt im Bildprompt."
     },
     {
+      "id": "scene-08-image-02-audio-cue",
+      "passed": true,
+      "level": "error",
+      "message": "scene-08-image-02: audioCue fehlt. Der Bildwechsel muss an konkret gesprochenen Wörtern hängen."
+    },
+    {
+      "id": "scene-08-image-02-audio-cue-in-narration",
+      "passed": true,
+      "level": "error",
+      "message": "scene-08-image-02: audioCue \"Johannesburg. Würdest\" kommt nicht in der Narration vor."
+    },
+    {
+      "id": "scene-08-image-02-cue-derived-start",
+      "passed": true,
+      "level": "error",
+      "message": "scene-08-image-02: startPercent muss aus der Position des audioCue in der Narration abgeleitet sein; kein pauschales 0,5-Raster."
+    },
+    {
       "id": "scene-08-image-02-start-percent",
       "passed": true,
       "level": "error",
@@ -1434,7 +1566,7 @@
     },
     {
       "id": "scene-08-image-02-image-text-prompt",
-      "passed": false,
+      "passed": true,
       "level": "warning",
       "message": "scene-08-image-02: imageText steht nicht exakt im Bildprompt."
     },
@@ -1563,6 +1695,24 @@
       "passed": true,
       "level": "warning",
       "message": "scene-09-image-01: imageText steht nicht exakt im Bildprompt."
+    },
+    {
+      "id": "scene-09-image-02-audio-cue",
+      "passed": true,
+      "level": "error",
+      "message": "scene-09-image-02: audioCue fehlt. Der Bildwechsel muss an konkret gesprochenen Wörtern hängen."
+    },
+    {
+      "id": "scene-09-image-02-audio-cue-in-narration",
+      "passed": true,
+      "level": "error",
+      "message": "scene-09-image-02: audioCue \"Bloemfontein steht\" kommt nicht in der Narration vor."
+    },
+    {
+      "id": "scene-09-image-02-cue-derived-start",
+      "passed": true,
+      "level": "error",
+      "message": "scene-09-image-02: startPercent muss aus der Position des audioCue in der Narration abgeleitet sein; kein pauschales 0,5-Raster."
     },
     {
       "id": "scene-09-image-02-start-percent",
@@ -2046,7 +2196,7 @@
     },
     {
       "id": "title-image-text-in-prompt",
-      "passed": false,
+      "passed": true,
       "level": "warning",
       "message": "Der Hook-Text von Szene 1 steht nicht exakt im Bildprompt."
     },
