@@ -161,3 +161,33 @@ test('entfernt eine tote Verknüpfung, wenn das Ziel verschwindet', async () => 
 
   await assert.rejects(() => lstat(path.join(reelDirectory, '03-export', 'FERTIGES-REEL.mp4')));
 });
+
+test('blendet nach dem Aufräumen genau die technischen Einträge aus', async (t) => {
+  if (process.platform !== 'darwin') {
+    t.skip('Die Finder-Ausblendung gibt es nur unter macOS');
+    return;
+  }
+
+  const reelDirectory = await createMinimalReel();
+  const result = await ensureHumanReelView(reelDirectory, { hideTechnicalInFinder: true });
+
+  assert.equal(result.finder.applied, true, `Ausblendung fehlgeschlagen: ${result.finder.reason ?? ''}`);
+  assert.ok(result.finder.hiddenCount > 0);
+
+  // Gegenprobe direkt am Dateisystem: Die fünf Arbeitsordner dürfen nicht versteckt sein.
+  const { execFile } = await import('node:child_process');
+  const { promisify } = await import('node:util');
+  const execFileAsync = promisify(execFile);
+  const { stdout } = await execFileAsync('ls', ['-lO', reelDirectory]);
+
+  for (const zeile of stdout.split('\n')) {
+    for (const sichtbar of HUMAN_REEL_FOLDERS) {
+      if (zeile.trim().endsWith(` ${sichtbar}`)) {
+        assert.ok(!zeile.includes('hidden'), `${sichtbar} darf nicht ausgeblendet sein`);
+      }
+    }
+    if (zeile.trim().endsWith(' scenes') || zeile.trim().endsWith(' script')) {
+      assert.ok(zeile.includes('hidden'), 'Technische Ordner müssen ausgeblendet sein');
+    }
+  }
+});

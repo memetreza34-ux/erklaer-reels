@@ -1,5 +1,0 @@
-Die verbindliche vollständige Google-Flow-Datei liegt unter:
-
-../00-bildprompts/99-alle-bildprompts.txt
-
-Umfang: Bild 00 (Cover) + Bild 01 bis Bild 17 (17 individuell geplante Szenenbilder) in der festen Bildwelt `modern-countryball-explainer`.

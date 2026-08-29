@@ -150,6 +150,26 @@ npm run render:reel    -- --dir "<reel-ordner>"
 
 ---
 
+## Ordner aufräumen
+
+Ein Reel-Ordner enthält 22 Einträge, von denen du nur fünf brauchst. Die technischen
+werden im Finder ausgeblendet — das passiert beim Anlegen automatisch. Für ältere
+Reels oder nach manuellen Eingriffen:
+
+```bash
+npm run organize:finder -- --all
+```
+
+Danach zeigt der Finder nur noch `00-bildprompts`, `01-voice-script`, `02-audio`,
+`03-export` und `99-technik`. Alles andere bleibt vorhanden, nur unsichtbar.
+
+Wer die technischen Ordner sehen will: `--show-technical` macht sie wieder sichtbar.
+Ein einzelnes Reel geht mit `--dir "<reel-ordner>"`.
+
+**Wenn trotzdem alles zu sehen ist:** Dann zeigt der Finder versteckte Dateien an.
+Das schaltet **Cmd + Shift + Punkt** um — die Einstellung gilt systemweit und hat
+nichts mit dem Repo zu tun.
+
 ## Was jede Phase blockiert
 
 Die Gates lassen nichts durch, was unfertig ist:

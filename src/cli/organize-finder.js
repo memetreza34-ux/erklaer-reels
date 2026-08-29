@@ -1,5 +1,8 @@
 #!/usr/bin/env node
 
+import { readdir } from 'node:fs/promises';
+import path from 'node:path';
+
 import { ensureHumanReelView } from '../core/human-reel-view.js';
 
 function getArgument(name) {
@@ -7,30 +10,112 @@ function getArgument(name) {
   return index >= 0 ? process.argv[index + 1] : undefined;
 }
 
-async function main() {
-  const reelDirectory = getArgument('--dir');
-  const showTechnical = process.argv.includes('--show-technical');
+/** Sucht alle Reel-Ordner unter reels/<woche>/<wochentag>/reel-*. */
+async function findeAlleReels(wurzel) {
+  const gefunden = [];
+  let wochen = [];
+  try {
+    wochen = await readdir(wurzel, { withFileTypes: true });
+  } catch {
+    return gefunden;
+  }
 
-  if (!reelDirectory) {
-    console.log('Verwendung: npm run organize:finder -- --dir "content/.../reel-01_titel"');
+  for (const woche of wochen.filter((eintrag) => eintrag.isDirectory())) {
+    const wochenPfad = path.join(wurzel, woche.name);
+    const tage = await readdir(wochenPfad, { withFileTypes: true });
+    for (const tag of tage.filter((eintrag) => eintrag.isDirectory())) {
+      const tagPfad = path.join(wochenPfad, tag.name);
+      const reels = await readdir(tagPfad, { withFileTypes: true });
+      for (const reel of reels.filter((eintrag) => eintrag.isDirectory() && eintrag.name.startsWith('reel-'))) {
+        gefunden.push(path.join(tagPfad, reel.name));
+      }
+    }
+  }
+  return gefunden;
+}
+
+function usage() {
+  console.log(`
+Räumt die Reel-Ansicht auf: sichtbar bleiben nur die fünf nummerierten Arbeitsordner,
+alle technischen Einträge werden im macOS Finder ausgeblendet.
+
+Beispiele:
+  npm run organize:finder -- --all
+  npm run organize:finder -- --dir "reels/.../reel-01_titel"
+  npm run organize:finder -- --all --show-technical
+
+Optionen:
+  --all              alle Reels unter reels/ auf einmal aufräumen
+  --dir              einzelner Reel-Ordner
+  --root             abweichende Wurzel für --all (Standard: reels)
+  --show-technical   technische Einträge wieder sichtbar machen
+`);
+}
+
+async function main() {
+  if (process.argv.includes('--help')) return usage();
+
+  const showTechnical = process.argv.includes('--show-technical');
+  const alle = process.argv.includes('--all');
+  const reelDirectory = getArgument('--dir');
+
+  if (!alle && !reelDirectory) {
+    usage();
     process.exitCode = 1;
     return;
   }
 
-  const result = await ensureHumanReelView(reelDirectory, {
-    hideTechnicalInFinder: !showTechnical
-  });
+  const ordner = alle
+    ? await findeAlleReels(getArgument('--root') ?? 'reels')
+    : [reelDirectory];
 
-  console.log('Übersichtliche Reel-Ansicht erstellt:');
-  for (const folder of result.visibleFolders) console.log(`- ${folder}`);
-
-  if (result.finder.applied) {
-    console.log(`Technische Einträge wurden im macOS Finder ausgeblendet: ${result.finder.hiddenCount}`);
-  } else if (showTechnical) {
-    console.log('Technische Einträge bleiben sichtbar.');
-  } else {
-    console.log(`Finder-Ausblendung nicht angewendet: ${result.finder.reason}`);
+  if (ordner.length === 0) {
+    console.log('Keine Reel-Ordner gefunden.');
+    return;
   }
+
+  let versteckt = 0;
+  let ohneAusblendung = 0;
+
+  const uebersprungen = [];
+
+  for (const verzeichnis of ordner) {
+    let result;
+    try {
+      result = await ensureHumanReelView(verzeichnis, { hideTechnicalInFinder: !showTechnical });
+    } catch (error) {
+      // Ein unvollständiger Ordner darf den Sammellauf nicht abbrechen.
+      uebersprungen.push({ verzeichnis, grund: error.message });
+      if (ordner.length > 1) console.log(`  ${path.basename(verzeichnis)} — übersprungen`);
+      continue;
+    }
+
+    if (result.finder.applied) {
+      versteckt += result.finder.hiddenCount;
+    } else if (!showTechnical) {
+      ohneAusblendung += 1;
+      if (ordner.length === 1) console.log(`Finder-Ausblendung nicht angewendet: ${result.finder.reason}`);
+    }
+    if (ordner.length > 1) console.log(`  ${path.basename(verzeichnis)}`);
+  }
+
+  console.log('');
+  const erledigt = ordner.length - uebersprungen.length;
+  console.log(`Aufgeräumt: ${erledigt} Reel${erledigt === 1 ? '' : 's'}`);
+  if (uebersprungen.length > 0) {
+    console.log(`Übersprungen: ${uebersprungen.length} (unvollständig, z. B. ohne reel.json)`);
+    for (const eintrag of uebersprungen.slice(0, 5)) {
+      console.log(`  ${path.basename(eintrag.verzeichnis)}`);
+    }
+  }
+  if (showTechnical) {
+    console.log('Technische Einträge sind jetzt sichtbar.');
+  } else {
+    console.log(`Im Finder ausgeblendet: ${versteckt} Einträge`);
+    if (ohneAusblendung > 0) console.log(`Ohne Ausblendung geblieben: ${ohneAusblendung}`);
+  }
+  console.log('');
+  console.log('Sichtbar bleiben: 00-bildprompts, 01-voice-script, 02-audio, 03-export, 99-technik');
 }
 
 main().catch((error) => {

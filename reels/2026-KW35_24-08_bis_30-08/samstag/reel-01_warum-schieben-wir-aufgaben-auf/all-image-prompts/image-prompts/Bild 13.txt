@@ -1,1 +1,0 @@
-../../scenes/scene-09/image-prompt.txt
