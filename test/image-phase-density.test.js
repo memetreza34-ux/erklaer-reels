@@ -211,3 +211,41 @@ test('die Szenendauer-Erwartung stammt aus den Quality-Gates, nicht aus fest ver
   assert.equal(gates.sceneTiming.standardSeconds.min, 6);
   assert.equal(gates.sceneTiming.hookSeconds.max, 6);
 });
+
+test('eine planmäßige Hook bekommt keine Warnung zu einem zweiten Bild', async () => {
+  const { createReelWorkspace } = await import('../src/core/workspace.js');
+  const { validateReelContent } = await import('../src/core/content-validator.js');
+  const { mkdtemp, readFile, writeFile, rm } = await import('node:fs/promises');
+  const os = await import('node:os');
+
+  const outputRoot = await mkdtemp(path.join(os.tmpdir(), 'erklaer-hook-'));
+  try {
+    const result = await createReelWorkspace({
+      title: 'Warum haben manche Länder zwei Hauptstädte?',
+      script: 'Dieses Rohscript wird später zu einem vollständigen Ein-Minuten-Reel erweitert und dient als Platzhalter.',
+      date: new Date('2026-10-12T12:00:00'),
+      outputRoot
+    });
+
+    const indexPath = path.join(result.reelDirectory, 'scenes', 'scene-index.json');
+    const scenes = JSON.parse(await readFile(indexPath, 'utf8'));
+    scenes.forEach((szene, i) => {
+      szene.durationSeconds = i === 0 ? 5.5 : i === scenes.length - 1 ? 7 : 6.5;
+    });
+    await writeFile(indexPath, `${JSON.stringify(scenes, null, 2)}\n`, 'utf8');
+    for (const szene of scenes) {
+      await writeFile(path.join(result.reelDirectory, 'scenes', szene.sceneId, 'scene.json'),
+        `${JSON.stringify(szene, null, 2)}\n`, 'utf8');
+    }
+
+    const bericht = await validateReelContent(result.reelDirectory);
+    const hookWarnung = bericht.checks.find((check) => check.id === 'scene-01-long-static-review');
+
+    // Die Hook hat planmäßig ein Bild bei 4,5 bis 6 Sekunden. Eine Warnung, die ein
+    // zweites Bild anregt, widerspräche der Regel, die sie erfüllt.
+    assert.ok(hookWarnung, 'Der Check muss weiterhin existieren');
+    assert.equal(hookWarnung.passed, true, hookWarnung.message);
+  } finally {
+    await rm(outputRoot, { recursive: true, force: true });
+  }
+});

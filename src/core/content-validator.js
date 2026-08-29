@@ -249,7 +249,9 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
       }
     }
 
-    addCheck(checks, `${expectedId}-long-static-review`, !(duration >= 4 && phases.length === 1),
+    // Die Hook hat planmäßig genau ein Bild und dauert 4,5 bis 6 Sekunden. Ohne diese
+    // Ausnahme bekäme jede korrekte Hook eine Warnung, die ins Leere zeigt.
+    addCheck(checks, `${expectedId}-long-static-review`, index === 0 || !(duration >= 4 && phases.length === 1),
       `${expectedId}: Das einzige Bild würde ungefähr ${duration.toFixed(1)} Sekunden stehen. Prüfe aktiv, ob eine zweite Bildphase Verständnis oder Rhythmus verbessert.`, 'warning');
   }
 

@@ -54,16 +54,26 @@ Der Stil bleibt über alle Themen identisch: moderner minimalistischer Countryba
 
 Prompts sind Englisch, sichtbarer Bildtext ist ausschließlich Deutsch.
 
-## Bildanzahl — individuell
+## Bildanzahl — feste Regel
 
-Die alte Gleichsetzung `13 Szenen = 13 Bilder` ist aufgehoben.
+Die alte Gleichsetzung `13 Szenen = 13 Bilder` ist aufgehoben, ebenso die frühere
+freie Wahl der Bilddichte.
 
-Ab sofort:
-- die Hook besitzt eine Bildphase, jede weitere Szene genau zwei
-- die Gesamtzahl der Bilder wird pro Reel individuell gewählt
-- keine fixe Sollzahl pro Reel
-- ein Stillstand von ungefähr 3,5–4 Sekunden ist ein Trigger, eine zweite Bildphase zu prüfen, aber keine automatische Pflicht
-- jedes Zusatzbild braucht einen echten Informations-, Fokus- oder Rhythmusgewinn
+Es gilt:
+- die Hook besitzt genau eine Bildphase
+- jede weitere Szene besitzt genau zwei
+- eine dritte Bildphase ist nicht vorgesehen
+- die Gesamtzahl ergibt sich daraus zwingend: `1 + (Szenen − 1) × 2`
+
+| Szenen | Bilder |
+|---|---|
+| 8 | 15 |
+| 9 | 17 |
+| 10 | 19 |
+
+Der zweite Bildmoment einer Szene setzt beim nächsten Hauptsatz oder Nebensatz an
+und steht mindestens 3 Sekunden. `check:content --strict` weist jede Abweichung
+für neue Reels als Fehler zurück; Archiv-Reels behalten ihre frühere Struktur.
 
 Technisch:
 - `imageCountMode: "one-hook-two-standard"`
@@ -131,7 +141,7 @@ Bestehende Schema-2-Reels bleiben rückwärtskompatibel.
 
 Ein Reel ist erst fertig, wenn:
 - Script und Quellen tatsächlich geprüft wurden
-- alle individuell geplanten Bildphasen vorhanden sind
+- alle geplanten Bildphasen vorhanden sind
 - jede Bildphase zweifach visuell gegen ihren konkreten Inhalt und Prompt geprüft wurde
 - die feste Bildwelt sichtbar eingehalten wird
 - das finale Voice-over real gemessen wurde
@@ -150,7 +160,7 @@ Nach Aktivierung der festen Bildwelt muss der nächste vollständige E2E-Test in
 
 - neuer Workspace startet mit `visualStyleId: "modern-countryball-explainer"`
 - `config/image-styles.json` und `config/content-rules.json` zeigen dieselbe feste Bildwelt
-- individuelle Bildphasen werden korrekt geplant und exportiert
+- die feste Bildregel wird geplant und exportiert: Hook eins, jede weitere Szene zwei
 - Google-Flow-Gesamtprompt enthält den globalen Style-Lock und wiederholt ihn direkt vor jedem Bildabschnitt
 - Google Flow legt alle seriell erzeugten und korrekt umbenannten Bilder in genau einem gemeinsamen Ausgabeordner ab
 - sichtbarer Bildtext bleibt Deutsch; Prompttext bleibt Englisch
