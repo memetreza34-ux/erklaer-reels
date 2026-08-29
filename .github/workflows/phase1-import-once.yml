@@ -33,15 +33,15 @@ jobs:
       - name: Reel für Sonntag anlegen
         run: npm run import:reel -- --file input/reel-paket.json --date 2026-08-30
 
-      - name: Reel finden und streng prüfen
+      - name: Masterprompt erzeugen und Reel streng prüfen
         shell: bash
         run: |
           set -euo pipefail
           REEL_DIR=$(find reels/2026-KW35_24-08_bis_30-08/sonntag -mindepth 1 -maxdepth 1 -type d | sort | head -1)
           test -n "$REEL_DIR"
           echo "REEL_DIR=$REEL_DIR" >> "$GITHUB_ENV"
-          npm run check:content -- --dir "$REEL_DIR" --strict
           npm run export:prompts -- --dir "$REEL_DIR" --strict
+          npm run check:content -- --dir "$REEL_DIR" --strict
 
       - name: Phase 1 ins Repository schreiben
         shell: bash
