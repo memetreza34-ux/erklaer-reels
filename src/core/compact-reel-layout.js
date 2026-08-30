@@ -192,15 +192,25 @@ async function refreshVisibleCompatibilityLinks(outerDirectory, technicalDirecto
 
 async function removeObsoleteAliases(technicalDirectory) {
   const removed = [];
+  const preserved = [];
+
   for (const name of OBSOLETE_TECHNICAL_ALIASES) {
     const aliasPath = path.join(technicalDirectory, name);
     const stat = await statOrNull(aliasPath);
     if (!stat) continue;
-    if (!stat.isSymbolicLink() && name === 'STATUS.json') continue;
-    await rm(aliasPath, { recursive: true, force: true });
+
+    // Harte Datensicherheitsregel: Nur Verknüpfungen dürfen automatisch entfernt werden.
+    // Ein echter Ordner oder eine echte Datei kann Nutzerinhalt enthalten und bleibt unangetastet.
+    if (!stat.isSymbolicLink()) {
+      preserved.push(name);
+      continue;
+    }
+
+    await rm(aliasPath, { force: true });
     removed.push(name);
   }
-  return removed;
+
+  return { removed, preserved };
 }
 
 export async function compactReelLayout(reelDirectory) {
@@ -223,7 +233,7 @@ export async function compactReelLayout(reelDirectory) {
     if (sourceStat.isSymbolicLink()) {
       const currentTarget = await readlink(sourcePath).catch(() => '');
       if (destinationStat || currentTarget.includes(TECHNICAL_DIRECTORY_NAME)) {
-        await rm(sourcePath, { recursive: true, force: true });
+        await rm(sourcePath, { force: true });
         removedCompatibilityLinks.push(entry);
         continue;
       }
@@ -231,14 +241,17 @@ export async function compactReelLayout(reelDirectory) {
 
     if (destinationStat) {
       if (destinationStat.isSymbolicLink()) {
-        await rm(destinationPath, { recursive: true, force: true });
+        await rm(destinationPath, { force: true });
       } else {
         throw new Error(
-          `Kompakte Reel-Struktur kann ${entry} nicht verschieben: Ziel existiert bereits unter ${destinationPath}.`
+          `Kompakte Reel-Struktur kann ${entry} nicht verschieben: Ziel existiert bereits unter ${destinationPath}. ` +
+          'Es wird absichtlich nichts überschrieben oder gelöscht.'
         );
       }
     }
 
+    // rename wird nur innerhalb desselben Reels für technische Struktureinträge verwendet.
+    // Nutzerassets aus anderen Reels werden von diesem Modul nie angefasst.
     await rename(sourcePath, destinationPath);
     movedEntries.push(entry);
   }
@@ -247,7 +260,7 @@ export async function compactReelLayout(reelDirectory) {
     throw new Error(`Kompakte Reel-Struktur fehlgeschlagen: ${technicalDirectory}/reel.json fehlt.`);
   }
 
-  const removedAliases = await removeObsoleteAliases(technicalDirectory);
+  const aliasCleanup = await removeObsoleteAliases(technicalDirectory);
   const refreshedVisibleLinks = await refreshVisibleCompatibilityLinks(outerDirectory, technicalDirectory);
 
   return {
@@ -256,7 +269,8 @@ export async function compactReelLayout(reelDirectory) {
     compact: true,
     movedEntries,
     removedCompatibilityLinks,
-    removedAliases,
+    removedAliases: aliasCleanup.removed,
+    preservedPhysicalAliases: aliasCleanup.preserved,
     refreshedVisibleLinks
   };
 }
