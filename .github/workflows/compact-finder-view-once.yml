@@ -1,0 +1,133 @@
+name: Compact Reel Finder view once
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  compact-view:
+    if: github.event.head_commit.message == 'Kompakte Reel-Finderansicht vorbereiten'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Make human Reel view compact and persistent
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          p = Path('src/core/human-reel-view.js')
+          text = p.read_text(encoding='utf-8')
+          text = text.replace(
+              "export async function ensureHumanReelView(reelDirectory, { hideTechnicalInFinder = false } = {}) {",
+              "export async function ensureHumanReelView(reelDirectory, { hideTechnicalInFinder = process.platform === 'darwin' } = {}) {"
+          )
+
+          old_readme = "# 99 – Technik\\n\\nHier sind Quellen, Prüfberichte, Effekt-, Produktions- und Kompatibilitätsdateien gesammelt. Diesen Ordner musst du normalerweise nicht öffnen. Untertitel sind für neue Reels deaktiviert.\\n"
+          new_readme = "# 99 – Technik\\n\\nHier steckt gesammelt alles Interne, das du für die normale Reel-Produktion nicht sehen musst: Quellen, Prüfberichte, Szenendaten, internes Script, Audio-/Caption-/Effekt-/Export-/Inbox-/Output-/Produktionsdaten sowie Status und Manifest. Im Reel-Hauptordner sollen nur die fünf Arbeitsordner sichtbar sein. Untertitel sind für neue Reels deaktiviert.\\n"
+          if old_readme not in text:
+              raise SystemExit('99-technik README fragment not found')
+          text = text.replace(old_readme, new_readme)
+
+          old_links = """    ['99-technik/QUELLEN.md', '../sources/sources.md', 'file'],
+    ['99-technik/PRUEFBERICHTE', '../review', 'dir'],
+    ['99-technik/PRODUKTION', '../production', 'dir'],
+    ['99-technik/EFFEKTE', '../effects', 'dir'],
+    ['99-technik/REEL-DATEN.json', '../reel.json', 'file'],
+    ['99-technik/STATUS.json', '../status.json', 'file'],
+    ['99-technik/ASSET-MANIFEST.json', '../assets-manifest.json', 'file']"""
+          new_links = """    ['99-technik/ASSET-MANIFEST.json', '../assets-manifest.json', 'file'],
+    ['99-technik/AUDIO-INTERN', '../audio', 'dir'],
+    ['99-technik/CAPTION-INTERN', '../caption', 'dir'],
+    ['99-technik/EFFEKTE', '../effects', 'dir'],
+    ['99-technik/EXPORT-INTERN', '../export', 'dir'],
+    ['99-technik/INBOX', '../inbox', 'dir'],
+    ['99-technik/OUTPUT-INTERN', '../output', 'dir'],
+    ['99-technik/PRODUKTION', '../production', 'dir'],
+    ['99-technik/PRUEFBERICHTE', '../review', 'dir'],
+    ['99-technik/QUELLEN.md', '../sources/sources.md', 'file'],
+    ['99-technik/REEL-DATEN.json', '../reel.json', 'file'],
+    ['99-technik/SZENEN', '../scenes', 'dir'],
+    ['99-technik/SCRIPT-INTERN', '../script', 'dir'],
+    ['99-technik/STATUS.json', '../status.json', 'file']"""
+          if old_links not in text:
+              raise SystemExit('technical links fragment not found')
+          text = text.replace(old_links, new_links)
+          p.write_text(text, encoding='utf-8')
+
+          p = Path('src/cli/organize-finder.js')
+          text = p.read_text(encoding='utf-8')
+          text = text.replace(
+              "Räumt die Reel-Ansicht auf: sichtbar bleiben nur die fünf nummerierten Arbeitsordner,\nalle technischen Einträge werden im macOS Finder ausgeblendet.",
+              "Räumt die Reel-Ansicht auf: sichtbar bleiben nur die fünf nummerierten Arbeitsordner.\nAlle technischen Einträge werden im macOS Finder ausgeblendet und sind gesammelt über 99-technik erreichbar."
+          )
+          text = text.replace(
+              "console.log('Sichtbar bleiben: 00-bildprompts, 01-voice-script, 02-audio, 03-export, 99-technik');",
+              "console.log('Sichtbar bleiben nur: 00-bildprompts, 01-voice-script, 02-audio, 03-export, 99-technik');\n  console.log('Alles Interne ist gesammelt über 99-technik erreichbar.');"
+          )
+          p.write_text(text, encoding='utf-8')
+
+          hook = """#!/usr/bin/env sh
+# Auf macOS nach Checkout/Pull automatisch die kompakte Reel-Ansicht wiederherstellen.
+if [ \"$(uname -s 2>/dev/null)\" = \"Darwin\" ] && [ -d reels ] && command -v node >/dev/null 2>&1; then
+  node src/cli/organize-finder.js --all >/dev/null 2>&1 || true
+fi
+exit 0
+"""
+          Path('scripts/hooks/post-checkout').write_text(hook, encoding='utf-8')
+          Path('scripts/hooks/post-merge').write_text(hook, encoding='utf-8')
+
+          p = Path('test/human-reel-view.test.js')
+          text = p.read_text(encoding='utf-8')
+          anchor = """test('entfernt alte sichtbare Ordner und den all-image-prompts-Doppelordner', async () => {"""
+          addition = r'''test('bündelt alle normalen technischen Bereiche unter 99-technik', async () => {
+  const reelDirectory = await createMinimalReel();
+  await mkdir(path.join(reelDirectory, 'output'), { recursive: true });
+  await ensureHumanReelView(reelDirectory);
+
+  const expectedLinks = {
+    'AUDIO-INTERN': '../audio',
+    'CAPTION-INTERN': '../caption',
+    'EFFEKTE': '../effects',
+    'EXPORT-INTERN': '../export',
+    'INBOX': '../inbox',
+    'OUTPUT-INTERN': '../output',
+    'PRODUKTION': '../production',
+    'PRUEFBERICHTE': '../review',
+    'SZENEN': '../scenes',
+    'SCRIPT-INTERN': '../script'
+  };
+
+  for (const [name, target] of Object.entries(expectedLinks)) {
+    assert.equal(await readlink(path.join(reelDirectory, '99-technik', name)), target);
+  }
+});
+
+'''
+          if anchor not in text:
+              raise SystemExit('test anchor not found')
+          text = text.replace(anchor, addition + anchor)
+          p.write_text(text, encoding='utf-8')
+          PY
+
+          chmod +x scripts/hooks/post-checkout scripts/hooks/post-merge
+          npm run organize:finder -- --all --show-technical
+          npm test
+      - name: Commit compact view
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Reel-Ordneransicht dauerhaft kompakt machen"
+          git push
