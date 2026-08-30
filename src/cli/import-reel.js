@@ -3,6 +3,8 @@
 import { readFile } from 'node:fs/promises';
 
 import { importReelPackage, validateReelPackage } from '../core/reel-package.js';
+import { ensureHumanReelView } from '../core/human-reel-view.js';
+import { compactReelLayout } from '../core/compact-reel-layout.js';
 
 function getArgument(name) {
   const index = process.argv.indexOf(name);
@@ -61,8 +63,15 @@ async function main() {
     date: datum
   });
 
+  // Import-Pakete werden zunächst im technischen Legacy-Layout aufgebaut, damit
+  // alle bestehenden Core-Funktionen unverändert arbeiten. Direkt danach wird
+  // die Benutzeransicht dauerhaft auf genau fünf Root-Ordner verdichtet.
+  await ensureHumanReelView(ergebnis.reelDirectory, { hideTechnicalInFinder: false });
+  const compactLayout = await compactReelLayout(ergebnis.reelDirectory);
+
   console.log(`Reel angelegt: ${ergebnis.reelDirectory}`);
   console.log(`Szenen: ${ergebnis.sceneCount} | Bilder: ${ergebnis.plannedImageCount} | Wörter: ${ergebnis.wordCount}`);
+  console.log(`Technik physisch gesammelt unter: ${compactLayout.technicalDirectory}`);
   console.log('');
   console.log('Nächste Schritte:');
   console.log(`  npm run check:content  -- --dir "${ergebnis.reelDirectory}" --strict`);
