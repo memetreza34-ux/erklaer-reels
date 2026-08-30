@@ -1,37 +1,37 @@
 {
-  "title": "Warum hat Südafrika drei Hauptstädte?",
-  "topicArea": "Länder, Geografie und Geschichte",
-  "caption": "Warum hat Südafrika gleich drei Hauptstädte?\n\nDie Antwort steckt in der Aufteilung staatlicher Aufgaben. Pretoria ist das Verwaltungszentrum, Kapstadt der Sitz des Parlaments und Bloemfontein die klassische Justizhauptstadt. Diese ungewöhnliche Struktur entstand beim Zusammenschluss zur Union von Südafrika im Jahr 1910 und ist bis heute sichtbar. Sogar Johannesburg spielt mit dem Verfassungsgericht eine besondere Rolle. So zeigt Südafrika, dass eine Hauptstadtfrage manchmal mehr als eine richtige Antwort haben kann.\n\n#Südafrika #Geografie #Weltwissen #Geschichte #Politik",
+  "title": "Warum riecht Regen so besonders?",
+  "topicArea": "Alltag, Chemie und Naturwissenschaft",
+  "caption": "Warum riecht Regen eigentlich so besonders?\n\nDer typische Geruch nach einem Schauer heißt Petrichor. Ein wichtiger Bestandteil ist Geosmin, ein intensiv erdig riechender Stoff aus Mikroorganismen im Boden. Treffen Regentropfen auf porösen Boden, können winzige Luftblasen und Aerosole entstehen. Diese transportieren Stoffe aus dem Boden in die Luft – genau dorthin, wo unsere extrem empfindliche Nase sie wahrnimmt. Deshalb riechst du nach Regen oft weniger den Regen selbst als das, was er aus seiner Umgebung freisetzt.\n\n#Wissenschaft #Alltagswissen #Petrichor #Regen #Chemie",
   "sources": [
     {
-      "title": "South African Government — South Africa's provinces",
-      "url": "https://www.gov.za/about-sa/south-africas-provinces",
-      "accessed": "2026-08-29",
-      "type": "offizielle Primärquelle",
-      "supports": "Bestätigt Pretoria als administrative, Kapstadt als gesetzgebende und Bloemfontein als gerichtliche Hauptstadt sowie die zugehörigen Institutionen."
+      "title": "Joung & Buie — Aerosol generation by raindrop impact on soil, Nature Communications",
+      "url": "https://www.nature.com/articles/ncomms7083",
+      "accessed": "2026-08-30",
+      "type": "wissenschaftliche Originalstudie",
+      "supports": "Zeigt mit Hochgeschwindigkeitsaufnahmen, dass Regentropfen auf porösem Boden Luftblasen und Aerosole erzeugen können; besonders unter Bedingungen von leichtem und mäßigem Regen."
     },
     {
-      "title": "The Presidency — Union Buildings",
-      "url": "https://www.thepresidency.gov.za/union-buildings",
-      "accessed": "2026-08-29",
-      "type": "offizielle Primärquelle",
-      "supports": "Bestätigt die Union Buildings in Pretoria als offiziellen Regierungssitz und Sitz der Präsidentschaft."
-    },
-    {
-      "title": "South African History Online — Die Suid-Afrikaanse Oorlog en Unie, 1899–1910",
-      "url": "https://sahistory.org.za/af/classroom/grade-10/die-suid-afrikaanse-oorlog-en-unie-1899-1910",
-      "accessed": "2026-08-29",
+      "title": "American Chemical Society — What's That After-Rain Smell Made Of?",
+      "url": "https://www.acs.org/pressroom/reactions/library/whats-that-after-rain-smell-made-of.html",
+      "accessed": "2026-08-30",
       "type": "unabhängige Fachquelle",
-      "supports": "Belegt den Zusammenschluss der vier Kolonien 1910 und beschreibt die Aufteilung auf Pretoria, Kapstadt und Bloemfontein als Ergebnis des kolonialen Verhandlungskompromisses."
+      "supports": "Erklärt Petrichor als typischen Geruch nach Regen und nennt Geosmin, Bodenmikroorganismen sowie durch Regentropfen freigesetzte Stoffe als zentrale Bestandteile."
+    },
+    {
+      "title": "American Chemical Society — Geosmin",
+      "url": "https://www.acs.org/molecule-of-the-week/archive/g/geosmin.html",
+      "accessed": "2026-08-30",
+      "type": "unabhängige Fachquelle",
+      "supports": "Beschreibt Geosmin als natürliches Molekül mit stark erdigem Geruch, seine Bildung durch Mikroorganismen und die sehr niedrige menschliche Geruchsschwelle."
     }
   ],
   "scenes": [
     {
-      "narration": "Südafrika hat nicht nur eine Hauptstadt. Tatsächlich verteilt das Land seine wichtigsten Staatsaufgaben auf drei verschiedene Städte.",
-      "imageText": "WARUM DREI HAUPTSTÄDTE?",
-      "visualIdea": "Eine Südafrika-Kugel steht vor drei klar getrennten Stadtmarkern für Pretoria, Kapstadt und Bloemfontein.",
-      "continuityNotes": "Hook bleibt statisch und setzt sofort die überraschende Kernfrage.",
-      "audioCue": "Südafrika hat nicht",
+      "narration": "Warum riecht die Luft nach einem Regenschauer plötzlich so erdig und frisch, obwohl Regen selbst fast geruchlos ist?",
+      "imageText": "WARUM RIECHT REGEN?",
+      "visualIdea": "Ein Regentropfen trifft trockenen Boden und löst sichtbar eine erdige Duftwolke aus.",
+      "continuityNotes": "Direkter Frage-Hook ohne Einleitung; wissenschaftlicher Prozess sofort sichtbar.",
+      "audioCue": "Warum riecht die Luft",
       "durationSeconds": 5.5,
       "cameraMotion": {
         "type": "none"
@@ -39,21 +39,51 @@
       "soundEffects": [],
       "images": [
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 1, image 1: A surprised South Africa countryball centered beneath three separate city markers representing Pretoria, Kapstadt and Bloemfontein without written city labels, each marker visually equal. Integrate exactly the German text \"WARUM DREI HAUPTSTÄDTE?\" once, large and bold. Keep all visible text German only and keep the composition uncluttered. Render no other readable words, labels or numbers.",
-          "imageText": "WARUM DREI HAUPTSTÄDTE?",
-          "visualIdea": "A surprised South Africa countryball centered beneath three separate city markers labeled Pretoria, Kapstadt and Bloemfontein, each marker visually equal.",
-          "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant visual idea, clear cause-and-effect, instantly readable on a phone. Use exactly round countryball-style actors only when an actor is needed; otherwise let the object or scientific process be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 1, image 1: A fresh raindrop has just hit dry brown soil while a surprised neutral round countryball watches an earthy scent cloud rise from the ground; the visual question is clearly why the smell appears after rain. Integrate exactly the German text \"WARUM RIECHT REGEN?\" once, large and bold. Render no other readable words, labels or numbers. Keep all visible text German only and keep the composition uncluttered.",
+          "imageText": "WARUM RIECHT REGEN?",
+          "visualIdea": "A fresh raindrop has just hit dry brown soil while a surprised neutral round countryball watches an earthy scent cloud rise from the ground; the visual question is clearly why the smell appears after rain.",
+          "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
           "startPercent": 0,
-          "audioCue": "Südafrika hat nicht"
+          "audioCue": "Warum riecht die Luft"
         }
       ]
     },
     {
-      "narration": "Das klingt ungewöhnlich, hat aber einen historischen Grund: 1910 wurden vier Kolonien zur Union von Südafrika zusammengeschlossen.",
-      "imageText": "1910",
-      "visualIdea": "Vier getrennte Kolonie-Flächen werden sichtbar zu einer einzigen Südafrika-Karte zusammengeführt.",
-      "continuityNotes": "Historischen Ursprung einfach und ohne unnötige Detailfülle zeigen.",
-      "audioCue": "Das klingt ungewöhnlich",
+      "narration": "Der Geruch heißt Petrichor. Besonders auffällig wird er, wenn Regen nach einer längeren trockenen Phase auf trockenen Boden trifft.",
+      "imageText": "PETRICHOR",
+      "visualIdea": "Trockener Boden wird vom ersten Regen getroffen; der typische Geruch beginnt sichtbar aufzusteigen.",
+      "continuityNotes": "Vom Hook direkt zum Namen des Phänomens; gleiche flache 2D-Welt beibehalten.",
+      "audioCue": "Der Geruch heißt",
+      "durationSeconds": 6.5,
+      "cameraMotion": {
+        "type": "subtle-push-in"
+      },
+      "soundEffects": [],
+      "images": [
+        {
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant visual idea, clear cause-and-effect, instantly readable on a phone. Use exactly round countryball-style actors only when an actor is needed; otherwise let the object or scientific process be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 2, image 1: A close view of cracked dry soil receiving the first few raindrops, with a subtle earthy scent plume beginning to rise; emphasize the named phenomenon, not a storm scene. Integrate exactly the German text \"PETRICHOR\" once, large and bold. Render no other readable words, labels or numbers. Keep all visible text German only and keep the composition uncluttered.",
+          "imageText": "PETRICHOR",
+          "visualIdea": "A close view of cracked dry soil receiving the first few raindrops, with a subtle earthy scent plume beginning to rise; emphasize the named phenomenon, not a storm scene.",
+          "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
+          "startPercent": 0,
+          "audioCue": "Der Geruch heißt"
+        },
+        {
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant visual idea, clear cause-and-effect, instantly readable on a phone. Use exactly round countryball-style actors only when an actor is needed; otherwise let the object or scientific process be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 2, image 2: Show a simple before-and-after split of the same soil: long dry phase on the left and first wet patches on the right, with the scent becoming visible only after the rain arrives. Integrate exactly the German text \"NACH TROCKENHEIT\" once, large and bold. Render no other readable words, labels or numbers. Keep all visible text German only and keep the composition uncluttered.",
+          "imageText": "NACH TROCKENHEIT",
+          "visualIdea": "Show a simple before-and-after split of the same soil: long dry phase on the left and first wet patches on the right, with the scent becoming visible only after the rain arrives.",
+          "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
+          "startPercent": 0.5,
+          "audioCue": "Regen nach"
+        }
+      ]
+    },
+    {
+      "narration": "Im Boden leben Mikroorganismen, darunter Streptomyces-Bakterien. Sie bilden Geosmin, einen Stoff mit sehr intensivem erdigem Geruch.",
+      "imageText": "GEOSMIN",
+      "visualIdea": "Bodenquerschnitt zeigt Mikroorganismen und den Stoff Geosmin als Quelle des erdigen Geruchs.",
+      "continuityNotes": "Mikrobiologie stark vereinfachen; keine menschlichen Figuren und keine unnötigen Fachlabels.",
+      "audioCue": "Im Boden leben",
       "durationSeconds": 6.5,
       "cameraMotion": {
         "type": "ken-burns"
@@ -61,29 +91,29 @@
       "soundEffects": [],
       "images": [
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 2, image 1: Four separate colonial territory blocks arranged like puzzle pieces around a simplified outline of southern Africa, clearly about to merge into one state. Integrate exactly the German text \"1910\" once, large and bold. Keep all visible text German only and keep the composition uncluttered. Render no other readable words, labels or numbers.",
-          "imageText": "1910",
-          "visualIdea": "Four separate colonial territory blocks arranged like puzzle pieces around a simplified outline of southern Africa, clearly about to merge into one state.",
-          "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant visual idea, clear cause-and-effect, instantly readable on a phone. Use exactly round countryball-style actors only when an actor is needed; otherwise let the object or scientific process be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 3, image 1: A cutaway of dark soil containing tiny stylized microorganism shapes that release a few highlighted molecular dots upward; focus on the earthy-smelling compound produced in soil. Integrate exactly the German text \"GEOSMIN\" once, large and bold. Render no other readable words, labels or numbers. Keep all visible text German only and keep the composition uncluttered.",
+          "imageText": "GEOSMIN",
+          "visualIdea": "A cutaway of dark soil containing tiny stylized microorganism shapes that release a few highlighted molecular dots upward; focus on the earthy-smelling compound produced in soil.",
+          "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
           "startPercent": 0,
-          "audioCue": "Das klingt ungewöhnlich"
+          "audioCue": "Im Boden leben"
         },
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 2, image 2: The four territory blocks now lock together into one unified South Africa map, clearly showing political unification without extra written labels. Keep the composition uncluttered. Integrate exactly the German text \"EIN LAND\" once, large and bold. Render no other readable words, labels or numbers.",
-          "imageText": "EIN LAND",
-          "visualIdea": "The four territory blocks now lock together into one unified South Africa map, with no labels or readable text.",
-          "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
-          "startPercent": 0.470588,
-          "audioCue": "1910 wurden"
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant visual idea, clear cause-and-effect, instantly readable on a phone. Use exactly round countryball-style actors only when an actor is needed; otherwise let the object or scientific process be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 3, image 2: A magnified soil cross-section with several simple rod-like soil bacteria and one highlighted Streptomyces-style colony, all clearly microscopic and not human-like characters. Integrate exactly the German text \"BODENBAKTERIEN\" once, large and bold. Render no other readable words, labels or numbers. Keep all visible text German only and keep the composition uncluttered.",
+          "imageText": "BODENBAKTERIEN",
+          "visualIdea": "A magnified soil cross-section with several simple rod-like soil bacteria and one highlighted Streptomyces-style colony, all clearly microscopic and not human-like characters.",
+          "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
+          "startPercent": 0.5,
+          "audioCue": "Geosmin, einen"
         }
       ]
     },
     {
-      "narration": "Bei dieser Vereinigung sollte kein früheres Machtzentrum alles verlieren. Deshalb wurde die staatliche Macht räumlich auf mehrere Orte verteilt.",
-      "imageText": "EIN KOMPROMISS",
-      "visualIdea": "Drei frühere Machtzentren ziehen gleichzeitig an einem zentralen Regierungssymbol, das anschließend aufgeteilt wird.",
-      "continuityNotes": "Den politischen Kompromiss als klare Ursache-Folge-Metapher zeigen.",
-      "audioCue": "Bei dieser Vereinigung",
+      "narration": "Unsere Nase reagiert extrem empfindlich auf Geosmin. Schon winzige Mengen reichen aus, damit wir diesen typischen Bodengeruch wahrnehmen.",
+      "imageText": "EXTREM EMPFINDLICH",
+      "visualIdea": "Eine winzige Geosmin-Menge löst eine deutlich sichtbare starke Geruchswahrnehmung aus.",
+      "continuityNotes": "Den Größenkontrast zwischen winziger Menge und starker Wahrnehmung zum Hauptmotiv machen.",
+      "audioCue": "Unsere Nase reagiert",
       "durationSeconds": 6.5,
       "cameraMotion": {
         "type": "slow-zoom-in"
@@ -91,149 +121,29 @@
       "soundEffects": [],
       "images": [
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 3, image 1: Three competing civic center icons pull a central government symbol in different directions, showing that no single center receives everything. Integrate exactly the German text \"EIN KOMPROMISS\" once, large and bold. Keep all visible text German only and keep the composition uncluttered. Render no other readable words, labels or numbers.",
-          "imageText": "EIN KOMPROMISS",
-          "visualIdea": "Three competing civic center icons pull a central government symbol in different directions, showing that no single center receives everything.",
-          "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant visual idea, clear cause-and-effect, instantly readable on a phone. Use exactly round countryball-style actors only when an actor is needed; otherwise let the object or scientific process be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 4, image 1: A neutral round countryball reacts strongly to one extremely tiny scent particle floating toward it, visually showing that only a minuscule amount is needed to be noticed. Integrate exactly the German text \"EXTREM EMPFINDLICH\" once, large and bold. Render no other readable words, labels or numbers. Keep all visible text German only and keep the composition uncluttered.",
+          "imageText": "EXTREM EMPFINDLICH",
+          "visualIdea": "A neutral round countryball reacts strongly to one extremely tiny scent particle floating toward it, visually showing that only a minuscule amount is needed to be noticed.",
+          "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
           "startPercent": 0,
-          "audioCue": "Bei dieser Vereinigung"
+          "audioCue": "Unsere Nase reagiert"
         },
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 3, image 2: The central government symbol splits into three clean function icons: administration, parliament and justice, each moving toward a different city marker. Keep all visible text German only and keep the composition uncluttered. Integrate exactly the German text \"DREI ROLLEN\" once, large and bold. Render no other readable words, labels or numbers.",
-          "imageText": "DREI ROLLEN",
-          "visualIdea": "The central government symbol splits into three clean function icons: administration, parliament and justice, each moving toward a different city marker.",
-          "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
-          "startPercent": 0.473684,
-          "audioCue": "Deshalb wurde"
-        }
-      ]
-    },
-    {
-      "narration": "Pretoria wurde zum Verwaltungszentrum. Dort sitzen heute die nationale Regierung, viele Ministerien und die Präsidentschaft in den Union Buildings.",
-      "imageText": "PRETORIA",
-      "visualIdea": "Pretoria wird auf einer vereinfachten Südafrika-Karte hervorgehoben und mit den Union Buildings verbunden.",
-      "continuityNotes": "Erste der drei Rollen klar verankern und dieselbe Kartenlogik beibehalten.",
-      "audioCue": "Pretoria wurde",
-      "durationSeconds": 6.5,
-      "cameraMotion": {
-        "type": "ken-burns"
-      },
-      "soundEffects": [],
-      "images": [
-        {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 4, image 1: A simplified South Africa map with Pretoria highlighted in the north-east and a clean pointer from the city marker to a government icon. Integrate exactly the German text \"PRETORIA\" once, large and bold. Keep all visible text German only and keep the composition uncluttered. Render no other readable words, labels or numbers.",
-          "imageText": "PRETORIA",
-          "visualIdea": "A simplified South Africa map with Pretoria highlighted in the north-east and a clean pointer from the city marker to a government icon.",
-          "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
-          "startPercent": 0,
-          "audioCue": "Pretoria wurde"
-        },
-        {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 4, image 2: The Union Buildings as a simplified flat landmark, supported by small ministry folders and an executive government symbol, with no people. Integrate exactly the German text \"VERWALTUNG\" once, large and bold. Keep all visible text German only and keep the composition uncluttered. Render no other readable words, labels or numbers.",
-          "imageText": "VERWALTUNG",
-          "visualIdea": "The Union Buildings as a simplified flat landmark, supported by small ministry folders and an executive government symbol, with no people.",
-          "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
-          "startPercent": 0.473684,
-          "audioCue": "Regierung, viele"
-        }
-      ]
-    },
-    {
-      "narration": "Kapstadt übernahm die gesetzgebende Rolle. Dort tagt das südafrikanische Parlament und berät die Gesetze des Landes.",
-      "imageText": "KAPSTADT",
-      "visualIdea": "Kapstadt wird hervorgehoben; ein vereinfachtes Parlamentsgebäude und ein Gesetzesdokument stehen im Fokus.",
-      "continuityNotes": "Zweite Staatsfunktion deutlich von Pretoria unterscheiden.",
-      "audioCue": "Kapstadt übernahm",
-      "durationSeconds": 6.5,
-      "cameraMotion": {
-        "type": "subtle-push-in"
-      },
-      "soundEffects": [],
-      "images": [
-        {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 5, image 1: A simplified South Africa map with Cape Town highlighted at the south-western coast and a clear pointer to a parliament building icon. Integrate exactly the German text \"KAPSTADT\" once, large and bold. Keep all visible text German only and keep the composition uncluttered. Render no other readable words, labels or numbers.",
-          "imageText": "KAPSTADT",
-          "visualIdea": "A simplified South Africa map with Cape Town highlighted at the south-western coast and a clear pointer to a parliament building icon.",
-          "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
-          "startPercent": 0,
-          "audioCue": "Kapstadt übernahm"
-        },
-        {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 5, image 2: A clean parliamentary chamber and a large law document with a check mark, communicating debate and lawmaking without realistic politicians. Integrate exactly the German text \"PARLAMENT\" once, large and bold. Keep all visible text German only and keep the composition uncluttered. Render no other readable words, labels or numbers.",
-          "imageText": "PARLAMENT",
-          "visualIdea": "A clean parliamentary chamber and a large law document with a check mark, communicating debate and lawmaking without realistic politicians.",
-          "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant visual idea, clear cause-and-effect, instantly readable on a phone. Use exactly round countryball-style actors only when an actor is needed; otherwise let the object or scientific process be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 4, image 2: A single tiny highlighted Geosmin particle sits beside a large sensitivity gauge with the indicator already high, making the contrast between tiny amount and strong perception obvious. Integrate exactly the German text \"WINZIGE MENGEN\" once, large and bold. Render no other readable words, labels or numbers. Keep all visible text German only and keep the composition uncluttered.",
+          "imageText": "WINZIGE MENGEN",
+          "visualIdea": "A single tiny highlighted Geosmin particle sits beside a large sensitivity gauge with the indicator already high, making the contrast between tiny amount and strong perception obvious.",
+          "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
           "startPercent": 0.5,
-          "audioCue": "südafrikanische Parlament"
+          "audioCue": "Mengen reichen"
         }
       ]
     },
     {
-      "narration": "Bloemfontein gilt als Justizhauptstadt, weil dort der Supreme Court of Appeal, eines der höchsten Gerichte Südafrikas, seinen Sitz hat.",
-      "imageText": "BLOEMFONTEIN",
-      "visualIdea": "Bloemfontein wird hervorgehoben; ein klares Gerichtsgebäude und eine Waage symbolisieren die Justiz.",
-      "continuityNotes": "Dritte Staatsfunktion mit derselben visuellen Grammatik abschließen.",
-      "audioCue": "Bloemfontein gilt",
-      "durationSeconds": 6.5,
-      "cameraMotion": {
-        "type": "ken-burns"
-      },
-      "soundEffects": [],
-      "images": [
-        {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 6, image 1: A simplified South Africa map with Bloemfontein highlighted in the central interior and a pointer toward a judicial building. Integrate exactly the German text \"BLOEMFONTEIN\" once, large and bold. Keep all visible text German only and keep the composition uncluttered. Render no other readable words, labels or numbers.",
-          "imageText": "BLOEMFONTEIN",
-          "visualIdea": "A simplified South Africa map with Bloemfontein highlighted in the central interior and a pointer toward a judicial building.",
-          "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
-          "startPercent": 0,
-          "audioCue": "Bloemfontein gilt"
-        },
-        {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 6, image 2: A flat court building paired with balanced scales and a small legal document, clearly communicating the judicial role with minimal detail. Integrate exactly the German text \"JUSTIZ\" once, large and bold. Keep all visible text German only and keep the composition uncluttered. Render no other readable words, labels or numbers.",
-          "imageText": "JUSTIZ",
-          "visualIdea": "A flat court building paired with balanced scales and a small legal document, clearly communicating the judicial role with minimal detail.",
-          "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
-          "startPercent": 0.473684,
-          "audioCue": "of Appeal"
-        }
-      ]
-    },
-    {
-      "narration": "Das bedeutet also nicht, dass Südafrika drei identische Hauptstädte besitzt. Jede Stadt erfüllt vor allem eine andere staatliche Funktion.",
-      "imageText": "DREI ROLLEN",
-      "visualIdea": "Drei nebeneinanderstehende Funktionskarten zeigen Verwaltung, Parlament und Justiz statt drei identische Hauptstädte.",
-      "continuityNotes": "Missverständnis aktiv auflösen und die drei Rollen zusammenführen.",
-      "audioCue": "Das bedeutet also",
-      "durationSeconds": 6.5,
-      "cameraMotion": {
-        "type": "slow-zoom-out"
-      },
-      "soundEffects": [],
-      "images": [
-        {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 7, image 1: Three identical generic capital icons are shown side by side and crossed out with one clear red X, rejecting the misconception of three identical capitals. Integrate exactly the German text \"NICHT DREIMAL GLEICH\" once, large and bold. Keep all visible text German only and keep the composition uncluttered. Render no other readable words, labels or numbers.",
-          "imageText": "NICHT DREIMAL GLEICH",
-          "visualIdea": "Three identical generic capital icons are shown side by side and crossed out with one clear red X, rejecting the misconception of three identical capitals.",
-          "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
-          "startPercent": 0,
-          "audioCue": "Das bedeutet also"
-        },
-        {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 7, image 2: Three clean role cards replace the false model: administration, legislation and justice, each with a distinct icon and city association. Integrate exactly the German text \"DREI ROLLEN\" once, large and bold. Keep all visible text German only and keep the composition uncluttered. Render no other readable words, labels or numbers.",
-          "imageText": "DREI ROLLEN",
-          "visualIdea": "Three clean role cards replace the false model: administration, legislation and justice, each with a distinct icon and city association.",
-          "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
-          "startPercent": 0.526316,
-          "audioCue": "Jede Stadt"
-        }
-      ]
-    },
-    {
-      "narration": "Eine zusätzliche Besonderheit: Das Verfassungsgericht sitzt heute in Johannesburg. Würdest du Johannesburg deshalb ebenfalls als Hauptstadt bezeichnen?",
-      "imageText": "JOHANNESBURG?",
-      "visualIdea": "Johannesburg erscheint als zusätzlicher Punkt mit dem Verfassungsgericht, während die drei Hauptstadtrollen sichtbar bleiben.",
-      "continuityNotes": "Aha-Moment als Zusatznuance, ohne die Hauptstruktur zu verwischen.",
-      "audioCue": "Eine zusätzliche Besonderheit",
+      "narration": "Beim Aufprall eines Regentropfens entstehen auf porösem Boden winzige Luftblasen. Sie steigen im Tropfen nach oben und platzen.",
+      "imageText": "REGENTROPFEN",
+      "visualIdea": "Nahaufnahme eines Regentropfens auf porösem Boden mit entstehenden und aufsteigenden Luftblasen.",
+      "continuityNotes": "Mechanismus schrittweise erklären; Bild eins Aufprall, Bild zwei Blasenbildung.",
+      "audioCue": "Beim Aufprall eines",
       "durationSeconds": 6.5,
       "cameraMotion": {
         "type": "subtle-push-in"
@@ -241,29 +151,119 @@
       "soundEffects": [],
       "images": [
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 8, image 1: A simplified South Africa map adds Johannesburg as a fourth highlighted city marker with a small Constitutional Court symbol and a question mark. Integrate exactly the German text \"JOHANNESBURG?\" once, large and bold. Keep all visible text German only and keep the composition uncluttered. Render no other readable words, labels or numbers.",
-          "imageText": "JOHANNESBURG?",
-          "visualIdea": "A simplified South Africa map adds Johannesburg as a fourth highlighted city marker with a small Constitutional Court symbol and a question mark.",
-          "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant visual idea, clear cause-and-effect, instantly readable on a phone. Use exactly round countryball-style actors only when an actor is needed; otherwise let the object or scientific process be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 5, image 1: A single raindrop is frozen just as it strikes a porous patch of soil, with the impact zone enlarged and the soil texture simple enough to read instantly. Integrate exactly the German text \"REGENTROPFEN\" once, large and bold. Render no other readable words, labels or numbers. Keep all visible text German only and keep the composition uncluttered.",
+          "imageText": "REGENTROPFEN",
+          "visualIdea": "A single raindrop is frozen just as it strikes a porous patch of soil, with the impact zone enlarged and the soil texture simple enough to read instantly.",
+          "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
           "startPercent": 0,
-          "audioCue": "Eine zusätzliche Besonderheit"
+          "audioCue": "Beim Aufprall eines"
         },
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 8, image 2: Johannesburg remains visible as the Constitutional Court location, while Pretoria, Cape Town and Bloemfontein stay grouped separately as the three capital roles. Keep all visible text German only and keep the composition uncluttered. Integrate exactly the German text \"VERFASSUNG\" once, large and bold. Render no other readable words, labels or numbers.",
-          "imageText": "VERFASSUNG",
-          "visualIdea": "Johannesburg remains visible as the Constitutional Court location, while Pretoria, Cape Town and Bloemfontein stay grouped separately as the three capital roles.",
-          "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
-          "startPercent": 0.470588,
-          "audioCue": "Johannesburg. Würdest"
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant visual idea, clear cause-and-effect, instantly readable on a phone. Use exactly round countryball-style actors only when an actor is needed; otherwise let the object or scientific process be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 5, image 2: Inside the impacted droplet, several tiny trapped air bubbles rise toward the upper surface, one about to burst; make the bubble process the only scientific focus. Integrate exactly the German text \"LUFTBLASEN\" once, large and bold. Render no other readable words, labels or numbers. Keep all visible text German only and keep the composition uncluttered.",
+          "imageText": "LUFTBLASEN",
+          "visualIdea": "Inside the impacted droplet, several tiny trapped air bubbles rise toward the upper surface, one about to burst; make the bubble process the only scientific focus.",
+          "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
+          "startPercent": 0.5,
+          "audioCue": "Luftblasen. Sie"
         }
       ]
     },
     {
-      "narration": "Die beste Antwort bleibt deshalb: Pretoria verwaltet, Kapstadt macht Gesetze und Bloemfontein steht für die Justiz. Drei Städte, drei Rollen.",
-      "imageText": "DREI STÄDTE, DREI ROLLEN",
-      "visualIdea": "Abschlussübersicht mit Pretoria Verwaltung, Kapstadt Parlament und Bloemfontein Justiz in drei klaren Spalten.",
-      "continuityNotes": "Ruhiger finaler Merksatz und eindeutige visuelle Zusammenfassung.",
-      "audioCue": "Die beste Antwort",
+      "narration": "Dabei schleudern sie feinste Tröpfchen als Aerosole in die Luft. Diese können Geosmin und andere Stoffe aus dem Boden mitnehmen.",
+      "imageText": "AEROSOLE",
+      "visualIdea": "Platzende Luftblasen schleudern winzige Tröpfchen aus dem Bodenbereich in die Luft.",
+      "continuityNotes": "Direkte Ursache-Folge-Fortsetzung aus Szene fünf; Aerosole klar nach oben bewegen.",
+      "audioCue": "Dabei schleudern sie",
+      "durationSeconds": 6.5,
+      "cameraMotion": {
+        "type": "ken-burns"
+      },
+      "soundEffects": [],
+      "images": [
+        {
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant visual idea, clear cause-and-effect, instantly readable on a phone. Use exactly round countryball-style actors only when an actor is needed; otherwise let the object or scientific process be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 6, image 1: One bubble bursts at the top of a raindrop resting on soil and ejects many microscopic droplets upward as a clean spray of tiny aerosol particles. Integrate exactly the German text \"AEROSOLE\" once, large and bold. Render no other readable words, labels or numbers. Keep all visible text German only and keep the composition uncluttered.",
+          "imageText": "AEROSOLE",
+          "visualIdea": "One bubble bursts at the top of a raindrop resting on soil and ejects many microscopic droplets upward as a clean spray of tiny aerosol particles.",
+          "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
+          "startPercent": 0,
+          "audioCue": "Dabei schleudern sie"
+        },
+        {
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant visual idea, clear cause-and-effect, instantly readable on a phone. Use exactly round countryball-style actors only when an actor is needed; otherwise let the object or scientific process be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 6, image 2: Tiny airborne droplets rise above soil carrying a few highlighted earthy scent particles with them, visually linking the ground to the surrounding air without extra labels. Integrate exactly the German text \"DUFT IN DER LUFT\" once, large and bold. Render no other readable words, labels or numbers. Keep all visible text German only and keep the composition uncluttered.",
+          "imageText": "DUFT IN DER LUFT",
+          "visualIdea": "Tiny airborne droplets rise above soil carrying a few highlighted earthy scent particles with them, visually linking the ground to the surrounding air without extra labels.",
+          "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
+          "startPercent": 0.5,
+          "audioCue": "Diese können"
+        }
+      ]
+    },
+    {
+      "narration": "Deshalb kann leichter oder mäßiger Regen den Geruch besonders gut freisetzen. Sehr heftiger Regen erzeugt diesen Mechanismus nicht unbedingt genauso stark.",
+      "imageText": "LEICHTER REGEN",
+      "visualIdea": "Leichter bis mäßiger Regen wird mit heftigem Regen verglichen, um den Aerosolmechanismus verständlich einzuordnen.",
+      "continuityNotes": "Vergleich klar und sachlich halten; nicht behaupten, dass starker Regen keinen Geruch erzeugt.",
+      "audioCue": "Deshalb kann leichter",
+      "durationSeconds": 6.5,
+      "cameraMotion": {
+        "type": "subtle-pull-out"
+      },
+      "soundEffects": [],
+      "images": [
+        {
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant visual idea, clear cause-and-effect, instantly readable on a phone. Use exactly round countryball-style actors only when an actor is needed; otherwise let the object or scientific process be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 7, image 1: Light to moderate rainfall lands on porous soil and produces many small upward aerosol droplets, with a calm rain cloud and clear upward motion rather than dramatic weather. Integrate exactly the German text \"LEICHTER REGEN\" once, large and bold. Render no other readable words, labels or numbers. Keep all visible text German only and keep the composition uncluttered.",
+          "imageText": "LEICHTER REGEN",
+          "visualIdea": "Light to moderate rainfall lands on porous soil and produces many small upward aerosol droplets, with a calm rain cloud and clear upward motion rather than dramatic weather.",
+          "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
+          "startPercent": 0,
+          "audioCue": "Deshalb kann leichter"
+        },
+        {
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant visual idea, clear cause-and-effect, instantly readable on a phone. Use exactly round countryball-style actors only when an actor is needed; otherwise let the object or scientific process be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 7, image 2: A contrasting heavy downpour splashes forcefully onto the same soil with fewer clearly formed bubble-burst aerosol jets, emphasizing that stronger rain is not automatically the same mechanism. Integrate exactly the German text \"HEFTIGER REGEN\" once, large and bold. Render no other readable words, labels or numbers. Keep all visible text German only and keep the composition uncluttered.",
+          "imageText": "HEFTIGER REGEN",
+          "visualIdea": "A contrasting heavy downpour splashes forcefully onto the same soil with fewer clearly formed bubble-burst aerosol jets, emphasizing that stronger rain is not automatically the same mechanism.",
+          "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
+          "startPercent": 0.5,
+          "audioCue": "Sehr heftiger"
+        }
+      ]
+    },
+    {
+      "narration": "Und was riechst du dann eigentlich: den Regen selbst oder Stoffe, die durch den Regen aus Boden und Pflanzen freigesetzt werden?",
+      "imageText": "REGEN SELBST?",
+      "visualIdea": "Prüffrage trennt Regenwasser als vermeintliche Quelle vom Boden und seinen freigesetzten Stoffen.",
+      "continuityNotes": "Reflexionsszene; zwei klar gegensätzliche Bildmomente statt Wiederholung der Erklärung.",
+      "audioCue": "Und was riechst",
+      "durationSeconds": 6.5,
+      "cameraMotion": {
+        "type": "none"
+      },
+      "soundEffects": [],
+      "images": [
+        {
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant visual idea, clear cause-and-effect, instantly readable on a phone. Use exactly round countryball-style actors only when an actor is needed; otherwise let the object or scientific process be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 8, image 1: A simple rain cloud and falling drop are centered above dry-to-wet soil with a large visual question mark, asking whether the water itself is the source of the familiar smell. Integrate exactly the German text \"REGEN SELBST?\" once, large and bold. Render no other readable words, labels or numbers. Keep all visible text German only and keep the composition uncluttered.",
+          "imageText": "REGEN SELBST?",
+          "visualIdea": "A simple rain cloud and falling drop are centered above dry-to-wet soil with a large visual question mark, asking whether the water itself is the source of the familiar smell.",
+          "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
+          "startPercent": 0,
+          "audioCue": "Und was riechst"
+        },
+        {
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant visual idea, clear cause-and-effect, instantly readable on a phone. Use exactly round countryball-style actors only when an actor is needed; otherwise let the object or scientific process be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 8, image 2: The focus shifts from the raindrop to the soil below, where earthy scent particles and a few plant-oil style droplets rise upward after impact, creating the alternative explanation. Integrate exactly the German text \"ODER DER BODEN?\" once, large and bold. Render no other readable words, labels or numbers. Keep all visible text German only and keep the composition uncluttered.",
+          "imageText": "ODER DER BODEN?",
+          "visualIdea": "The focus shifts from the raindrop to the soil below, where earthy scent particles and a few plant-oil style droplets rise upward after impact, creating the alternative explanation.",
+          "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
+          "startPercent": 0.5,
+          "audioCue": "Stoffe, die"
+        }
+      ]
+    },
+    {
+      "narration": "Die Antwort ist vor allem Letzteres. Petrichor entsteht, weil Regentropfen erdige Duftstoffe wie Geosmin aus ihrer Umgebung in die Luft bringen.",
+      "imageText": "DIE ANTWORT",
+      "visualIdea": "Abschlusskette zeigt Boden, Regentropfen, Aerosole und Geosmin in der Luft als klare Lösung.",
+      "continuityNotes": "Konkrete Auflösung der Prüffrage; letzter Bildmoment ruhig für den Schlussbild-Nachlauf.",
+      "audioCue": "Die Antwort ist",
       "durationSeconds": 7.0,
       "cameraMotion": {
         "type": "subtle-pull-out"
@@ -271,20 +271,20 @@
       "soundEffects": [],
       "images": [
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 9, image 1: A central question card asks which state function is meant, while three arrows point toward Pretoria, Cape Town and Bloemfontein. Integrate exactly the German text \"WELCHE FUNKTION?\" once, large and bold. Keep all visible text German only and keep the composition uncluttered. Render no other readable words, labels or numbers.",
-          "imageText": "WELCHE FUNKTION?",
-          "visualIdea": "A central question card asks which state function is meant, while three arrows point toward Pretoria, Cape Town and Bloemfontein.",
-          "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant visual idea, clear cause-and-effect, instantly readable on a phone. Use exactly round countryball-style actors only when an actor is needed; otherwise let the object or scientific process be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 9, image 1: A clean four-step visual chain shows dry soil, a raindrop impact, tiny aerosol droplets, and an earthy scent cloud reaching the air, summarizing the cause-and-effect in one frame. Integrate exactly the German text \"DIE ANTWORT\" once, large and bold. Render no other readable words, labels or numbers. Keep all visible text German only and keep the composition uncluttered.",
+          "imageText": "DIE ANTWORT",
+          "visualIdea": "A clean four-step visual chain shows dry soil, a raindrop impact, tiny aerosol droplets, and an earthy scent cloud reaching the air, summarizing the cause-and-effect in one frame.",
+          "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
           "startPercent": 0,
-          "audioCue": "Die beste Antwort"
+          "audioCue": "Die Antwort ist"
         },
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant idea, clear cause-and-effect, instantly readable on a phone. If an actor is needed, use an exactly round countryball with simple white expressive eyes; otherwise let the object, map or institution be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 9, image 2: Final summary card with three equal columns: Pretoria with administration icon, Cape Town with parliament icon, Bloemfontein with justice icon. Integrate exactly the German text \"DREI STÄDTE, DREI ROLLEN\" once, large and bold. Keep all visible text German only and keep the composition uncluttered. Render no other readable words, labels or numbers.",
-          "imageText": "DREI STÄDTE, DREI ROLLEN",
-          "visualIdea": "Final summary card with three equal columns: Pretoria with administration icon, Cape Town with parliament icon, Bloemfontein with justice icon.",
-          "rationale": "Eigener klarer Bildmoment für diesen Satzteil.",
-          "startPercent": 0.55,
-          "audioCue": "Bloemfontein steht"
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant visual idea, clear cause-and-effect, instantly readable on a phone. Use exactly round countryball-style actors only when an actor is needed; otherwise let the object or scientific process be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 9, image 2: Final calm summary: tiny Geosmin scent particles ride upward in aerosol droplets above freshly wet soil while a neutral round countryball recognizes the smell; leave a clear final-hold composition. Integrate exactly the German text \"GEOSMIN IN DER LUFT\" once, large and bold. Render no other readable words, labels or numbers. Keep all visible text German only and keep the composition uncluttered.",
+          "imageText": "GEOSMIN IN DER LUFT",
+          "visualIdea": "Final calm summary: tiny Geosmin scent particles ride upward in aerosol droplets above freshly wet soil while a neutral round countryball recognizes the smell; leave a clear final-hold composition.",
+          "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
+          "startPercent": 0.5,
+          "audioCue": "erdige Duftstoffe"
         }
       ]
     }

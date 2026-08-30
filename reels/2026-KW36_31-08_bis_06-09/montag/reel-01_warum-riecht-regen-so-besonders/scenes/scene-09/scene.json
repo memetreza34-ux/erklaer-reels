@@ -1,0 +1,50 @@
+{
+  "sceneId": "scene-09",
+  "order": 9,
+  "title": "Starker Abschluss",
+  "narration": "Die Antwort ist vor allem Letzteres. Petrichor entsteht, weil Regentropfen erdige Duftstoffe wie Geosmin aus ihrer Umgebung in die Luft bringen.",
+  "imageText": "DIE ANTWORT",
+  "visualIdea": "Abschlusskette zeigt Boden, Regentropfen, Aerosole und Geosmin in der Luft als klare Lösung.",
+  "continuityNotes": "Konkrete Auflösung der Prüffrage; letzter Bildmoment ruhig für den Schlussbild-Nachlauf.",
+  "audioCue": "Die Antwort ist",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [],
+  "subtitlePosition": "center",
+  "durationSeconds": 7,
+  "imageCount": 2,
+  "imagePhases": [
+    {
+      "phaseId": "scene-09-image-01",
+      "order": 1,
+      "startPercent": 0,
+      "promptFileName": "image-prompt.txt",
+      "expectedImageFileName": "scene-09.png",
+      "visualIdea": "A clean four-step visual chain shows dry soil, a raindrop impact, tiny aerosol droplets, and an earthy scent cloud reaching the air, summarizing the cause-and-effect in one frame.",
+      "imageText": "DIE ANTWORT",
+      "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "Die Antwort ist",
+      "timingBasis": "scene-start"
+    },
+    {
+      "phaseId": "scene-09-image-02",
+      "order": 2,
+      "startPercent": 0.47619,
+      "promptFileName": "image-prompt-02.txt",
+      "expectedImageFileName": "scene-09-2.png",
+      "visualIdea": "Final calm summary: tiny Geosmin scent particles ride upward in aerosol droplets above freshly wet soil while a neutral round countryball recognizes the smell; leave a clear final-hold composition.",
+      "imageText": "GEOSMIN IN DER LUFT",
+      "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "erdige Duftstoffe",
+      "timingBasis": "narration-audio-cue"
+    }
+  ],
+  "expectedImageFileName": "scene-09.png",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "planned"
+}

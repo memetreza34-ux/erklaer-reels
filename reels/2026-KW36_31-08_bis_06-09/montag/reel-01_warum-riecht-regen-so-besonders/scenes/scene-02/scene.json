@@ -1,0 +1,50 @@
+{
+  "sceneId": "scene-02",
+  "order": 2,
+  "title": "Bildmoment 2",
+  "narration": "Der Geruch heißt Petrichor. Besonders auffällig wird er, wenn Regen nach einer längeren trockenen Phase auf trockenen Boden trifft.",
+  "imageText": "PETRICHOR",
+  "visualIdea": "Trockener Boden wird vom ersten Regen getroffen; der typische Geruch beginnt sichtbar aufzusteigen.",
+  "continuityNotes": "Vom Hook direkt zum Namen des Phänomens; gleiche flache 2D-Welt beibehalten.",
+  "audioCue": "Der Geruch heißt",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [],
+  "subtitlePosition": "center",
+  "durationSeconds": 6.5,
+  "imageCount": 2,
+  "imagePhases": [
+    {
+      "phaseId": "scene-02-image-01",
+      "order": 1,
+      "startPercent": 0,
+      "promptFileName": "image-prompt.txt",
+      "expectedImageFileName": "scene-02.png",
+      "visualIdea": "A close view of cracked dry soil receiving the first few raindrops, with a subtle earthy scent plume beginning to rise; emphasize the named phenomenon, not a storm scene.",
+      "imageText": "PETRICHOR",
+      "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "Der Geruch heißt",
+      "timingBasis": "scene-start"
+    },
+    {
+      "phaseId": "scene-02-image-02",
+      "order": 2,
+      "startPercent": 0.473684,
+      "promptFileName": "image-prompt-02.txt",
+      "expectedImageFileName": "scene-02-2.png",
+      "visualIdea": "Show a simple before-and-after split of the same soil: long dry phase on the left and first wet patches on the right, with the scent becoming visible only after the rain arrives.",
+      "imageText": "NACH TROCKENHEIT",
+      "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "Regen nach",
+      "timingBasis": "narration-audio-cue"
+    }
+  ],
+  "expectedImageFileName": "scene-02.png",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "planned"
+}

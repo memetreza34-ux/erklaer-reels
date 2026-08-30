@@ -1,0 +1,50 @@
+{
+  "sceneId": "scene-08",
+  "order": 8,
+  "title": "Bildmoment 8",
+  "narration": "Und was riechst du dann eigentlich: den Regen selbst oder Stoffe, die durch den Regen aus Boden und Pflanzen freigesetzt werden?",
+  "imageText": "REGEN SELBST?",
+  "visualIdea": "Prüffrage trennt Regenwasser als vermeintliche Quelle vom Boden und seinen freigesetzten Stoffen.",
+  "continuityNotes": "Reflexionsszene; zwei klar gegensätzliche Bildmomente statt Wiederholung der Erklärung.",
+  "audioCue": "Und was riechst",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [],
+  "subtitlePosition": "center",
+  "durationSeconds": 6.5,
+  "imageCount": 2,
+  "imagePhases": [
+    {
+      "phaseId": "scene-08-image-01",
+      "order": 1,
+      "startPercent": 0,
+      "promptFileName": "image-prompt.txt",
+      "expectedImageFileName": "scene-08.png",
+      "visualIdea": "A simple rain cloud and falling drop are centered above dry-to-wet soil with a large visual question mark, asking whether the water itself is the source of the familiar smell.",
+      "imageText": "REGEN SELBST?",
+      "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "Und was riechst",
+      "timingBasis": "scene-start"
+    },
+    {
+      "phaseId": "scene-08-image-02",
+      "order": 2,
+      "startPercent": 0.47619,
+      "promptFileName": "image-prompt-02.txt",
+      "expectedImageFileName": "scene-08-2.png",
+      "visualIdea": "The focus shifts from the raindrop to the soil below, where earthy scent particles and a few plant-oil style droplets rise upward after impact, creating the alternative explanation.",
+      "imageText": "ODER DER BODEN?",
+      "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "Stoffe, die",
+      "timingBasis": "narration-audio-cue"
+    }
+  ],
+  "expectedImageFileName": "scene-08.png",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "planned"
+}

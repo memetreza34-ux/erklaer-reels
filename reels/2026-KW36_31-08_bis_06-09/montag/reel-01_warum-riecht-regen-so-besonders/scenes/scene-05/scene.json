@@ -1,0 +1,50 @@
+{
+  "sceneId": "scene-05",
+  "order": 5,
+  "title": "Bildmoment 5",
+  "narration": "Beim Aufprall eines Regentropfens entstehen auf porösem Boden winzige Luftblasen. Sie steigen im Tropfen nach oben und platzen.",
+  "imageText": "REGENTROPFEN",
+  "visualIdea": "Nahaufnahme eines Regentropfens auf porösem Boden mit entstehenden und aufsteigenden Luftblasen.",
+  "continuityNotes": "Mechanismus schrittweise erklären; Bild eins Aufprall, Bild zwei Blasenbildung.",
+  "audioCue": "Beim Aufprall eines",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [],
+  "subtitlePosition": "center",
+  "durationSeconds": 6.5,
+  "imageCount": 2,
+  "imagePhases": [
+    {
+      "phaseId": "scene-05-image-01",
+      "order": 1,
+      "startPercent": 0,
+      "promptFileName": "image-prompt.txt",
+      "expectedImageFileName": "scene-05.png",
+      "visualIdea": "A single raindrop is frozen just as it strikes a porous patch of soil, with the impact zone enlarged and the soil texture simple enough to read instantly.",
+      "imageText": "REGENTROPFEN",
+      "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "Beim Aufprall eines",
+      "timingBasis": "scene-start"
+    },
+    {
+      "phaseId": "scene-05-image-02",
+      "order": 2,
+      "startPercent": 0.5,
+      "promptFileName": "image-prompt-02.txt",
+      "expectedImageFileName": "scene-05-2.png",
+      "visualIdea": "Inside the impacted droplet, several tiny trapped air bubbles rise toward the upper surface, one about to burst; make the bubble process the only scientific focus.",
+      "imageText": "LUFTBLASEN",
+      "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "Luftblasen. Sie",
+      "timingBasis": "narration-audio-cue"
+    }
+  ],
+  "expectedImageFileName": "scene-05.png",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "planned"
+}

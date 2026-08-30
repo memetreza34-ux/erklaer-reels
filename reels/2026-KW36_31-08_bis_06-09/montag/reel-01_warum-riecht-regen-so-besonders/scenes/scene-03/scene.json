@@ -1,0 +1,50 @@
+{
+  "sceneId": "scene-03",
+  "order": 3,
+  "title": "Bildmoment 3",
+  "narration": "Im Boden leben Mikroorganismen, darunter Streptomyces-Bakterien. Sie bilden Geosmin, einen Stoff mit sehr intensivem erdigem Geruch.",
+  "imageText": "GEOSMIN",
+  "visualIdea": "Bodenquerschnitt zeigt Mikroorganismen und den Stoff Geosmin als Quelle des erdigen Geruchs.",
+  "continuityNotes": "Mikrobiologie stark vereinfachen; keine menschlichen Figuren und keine unnötigen Fachlabels.",
+  "audioCue": "Im Boden leben",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [],
+  "subtitlePosition": "center",
+  "durationSeconds": 6.5,
+  "imageCount": 2,
+  "imagePhases": [
+    {
+      "phaseId": "scene-03-image-01",
+      "order": 1,
+      "startPercent": 0,
+      "promptFileName": "image-prompt.txt",
+      "expectedImageFileName": "scene-03.png",
+      "visualIdea": "A cutaway of dark soil containing tiny stylized microorganism shapes that release a few highlighted molecular dots upward; focus on the earthy-smelling compound produced in soil.",
+      "imageText": "GEOSMIN",
+      "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "Im Boden leben",
+      "timingBasis": "scene-start"
+    },
+    {
+      "phaseId": "scene-03-image-02",
+      "order": 2,
+      "startPercent": 0.5,
+      "promptFileName": "image-prompt-02.txt",
+      "expectedImageFileName": "scene-03-2.png",
+      "visualIdea": "A magnified soil cross-section with several simple rod-like soil bacteria and one highlighted Streptomyces-style colony, all clearly microscopic and not human-like characters.",
+      "imageText": "BODENBAKTERIEN",
+      "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "Geosmin, einen",
+      "timingBasis": "narration-audio-cue"
+    }
+  ],
+  "expectedImageFileName": "scene-03.png",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "planned"
+}

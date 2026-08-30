@@ -1,0 +1,50 @@
+{
+  "sceneId": "scene-04",
+  "order": 4,
+  "title": "Bildmoment 4",
+  "narration": "Unsere Nase reagiert extrem empfindlich auf Geosmin. Schon winzige Mengen reichen aus, damit wir diesen typischen Bodengeruch wahrnehmen.",
+  "imageText": "EXTREM EMPFINDLICH",
+  "visualIdea": "Eine winzige Geosmin-Menge löst eine deutlich sichtbare starke Geruchswahrnehmung aus.",
+  "continuityNotes": "Den Größenkontrast zwischen winziger Menge und starker Wahrnehmung zum Hauptmotiv machen.",
+  "audioCue": "Unsere Nase reagiert",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [],
+  "subtitlePosition": "center",
+  "durationSeconds": 6.5,
+  "imageCount": 2,
+  "imagePhases": [
+    {
+      "phaseId": "scene-04-image-01",
+      "order": 1,
+      "startPercent": 0,
+      "promptFileName": "image-prompt.txt",
+      "expectedImageFileName": "scene-04.png",
+      "visualIdea": "A neutral round countryball reacts strongly to one extremely tiny scent particle floating toward it, visually showing that only a minuscule amount is needed to be noticed.",
+      "imageText": "EXTREM EMPFINDLICH",
+      "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "Unsere Nase reagiert",
+      "timingBasis": "scene-start"
+    },
+    {
+      "phaseId": "scene-04-image-02",
+      "order": 2,
+      "startPercent": 0.5,
+      "promptFileName": "image-prompt-02.txt",
+      "expectedImageFileName": "scene-04-2.png",
+      "visualIdea": "A single tiny highlighted Geosmin particle sits beside a large sensitivity gauge with the indicator already high, making the contrast between tiny amount and strong perception obvious.",
+      "imageText": "WINZIGE MENGEN",
+      "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "Mengen reichen",
+      "timingBasis": "narration-audio-cue"
+    }
+  ],
+  "expectedImageFileName": "scene-04.png",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "planned"
+}

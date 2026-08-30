@@ -1,0 +1,50 @@
+{
+  "sceneId": "scene-06",
+  "order": 6,
+  "title": "Bildmoment 6",
+  "narration": "Dabei schleudern sie feinste Tröpfchen als Aerosole in die Luft. Diese können Geosmin und andere Stoffe aus dem Boden mitnehmen.",
+  "imageText": "AEROSOLE",
+  "visualIdea": "Platzende Luftblasen schleudern winzige Tröpfchen aus dem Bodenbereich in die Luft.",
+  "continuityNotes": "Direkte Ursache-Folge-Fortsetzung aus Szene fünf; Aerosole klar nach oben bewegen.",
+  "audioCue": "Dabei schleudern sie",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [],
+  "subtitlePosition": "center",
+  "durationSeconds": 6.5,
+  "imageCount": 2,
+  "imagePhases": [
+    {
+      "phaseId": "scene-06-image-01",
+      "order": 1,
+      "startPercent": 0,
+      "promptFileName": "image-prompt.txt",
+      "expectedImageFileName": "scene-06.png",
+      "visualIdea": "One bubble bursts at the top of a raindrop resting on soil and ejects many microscopic droplets upward as a clean spray of tiny aerosol particles.",
+      "imageText": "AEROSOLE",
+      "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "Dabei schleudern sie",
+      "timingBasis": "scene-start"
+    },
+    {
+      "phaseId": "scene-06-image-02",
+      "order": 2,
+      "startPercent": 0.5,
+      "promptFileName": "image-prompt-02.txt",
+      "expectedImageFileName": "scene-06-2.png",
+      "visualIdea": "Tiny airborne droplets rise above soil carrying a few highlighted earthy scent particles with them, visually linking the ground to the surrounding air without extra labels.",
+      "imageText": "DUFT IN DER LUFT",
+      "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "Diese können",
+      "timingBasis": "narration-audio-cue"
+    }
+  ],
+  "expectedImageFileName": "scene-06.png",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "planned"
+}

@@ -1,0 +1,50 @@
+{
+  "sceneId": "scene-07",
+  "order": 7,
+  "title": "Bildmoment 7",
+  "narration": "Deshalb kann leichter oder mäßiger Regen den Geruch besonders gut freisetzen. Sehr heftiger Regen erzeugt diesen Mechanismus nicht unbedingt genauso stark.",
+  "imageText": "LEICHTER REGEN",
+  "visualIdea": "Leichter bis mäßiger Regen wird mit heftigem Regen verglichen, um den Aerosolmechanismus verständlich einzuordnen.",
+  "continuityNotes": "Vergleich klar und sachlich halten; nicht behaupten, dass starker Regen keinen Geruch erzeugt.",
+  "audioCue": "Deshalb kann leichter",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [],
+  "subtitlePosition": "center",
+  "durationSeconds": 6.5,
+  "imageCount": 2,
+  "imagePhases": [
+    {
+      "phaseId": "scene-07-image-01",
+      "order": 1,
+      "startPercent": 0,
+      "promptFileName": "image-prompt.txt",
+      "expectedImageFileName": "scene-07.png",
+      "visualIdea": "Light to moderate rainfall lands on porous soil and produces many small upward aerosol droplets, with a calm rain cloud and clear upward motion rather than dramatic weather.",
+      "imageText": "LEICHTER REGEN",
+      "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "Deshalb kann leichter",
+      "timingBasis": "scene-start"
+    },
+    {
+      "phaseId": "scene-07-image-02",
+      "order": 2,
+      "startPercent": 0.52381,
+      "promptFileName": "image-prompt-02.txt",
+      "expectedImageFileName": "scene-07-2.png",
+      "visualIdea": "A contrasting heavy downpour splashes forcefully onto the same soil with fewer clearly formed bubble-burst aerosol jets, emphasizing that stronger rain is not automatically the same mechanism.",
+      "imageText": "HEFTIGER REGEN",
+      "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "Sehr heftiger",
+      "timingBasis": "narration-audio-cue"
+    }
+  ],
+  "expectedImageFileName": "scene-07.png",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "planned"
+}

@@ -1,0 +1,36 @@
+{
+  "sceneId": "scene-01",
+  "order": 1,
+  "title": "Hook",
+  "narration": "Warum riecht die Luft nach einem Regenschauer plötzlich so erdig und frisch, obwohl Regen selbst fast geruchlos ist?",
+  "imageText": "WARUM RIECHT REGEN?",
+  "visualIdea": "Ein Regentropfen trifft trockenen Boden und löst sichtbar eine erdige Duftwolke aus.",
+  "continuityNotes": "Direkter Frage-Hook ohne Einleitung; wissenschaftlicher Prozess sofort sichtbar.",
+  "audioCue": "Warum riecht die Luft",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [],
+  "subtitlePosition": "center",
+  "durationSeconds": 5.5,
+  "imageCount": 1,
+  "imagePhases": [
+    {
+      "phaseId": "scene-01-image-01",
+      "order": 1,
+      "startPercent": 0,
+      "promptFileName": "image-prompt.txt",
+      "expectedImageFileName": "scene-01.png",
+      "visualIdea": "A fresh raindrop has just hit dry brown soil while a surprised neutral round countryball watches an earthy scent cloud rise from the ground; the visual question is clearly why the smell appears after rain.",
+      "imageText": "WARUM RIECHT REGEN?",
+      "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "Warum riecht die Luft",
+      "timingBasis": "scene-start"
+    }
+  ],
+  "expectedImageFileName": "scene-01.png",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "planned"
+}
