@@ -36,8 +36,9 @@ async function findeAlleReels(wurzel) {
 
 function usage() {
   console.log(`
-Räumt die Reel-Ansicht auf: sichtbar bleiben nur die fünf nummerierten Arbeitsordner,
-alle technischen Einträge werden im macOS Finder ausgeblendet.
+Räumt die Reel-Ansicht auf. Im normalen macOS-Finder bleiben außen nur diese fünf Arbeitsordner sichtbar:
+00-bildprompts, 01-voice-script, 02-audio, 03-export und 99-technik.
+Alle internen Produktionsdaten sind gesammelt über 99-technik erreichbar.
 
 Beispiele:
   npm run organize:finder -- --all
@@ -48,7 +49,7 @@ Optionen:
   --all              alle Reels unter reels/ auf einmal aufräumen
   --dir              einzelner Reel-Ordner
   --root             abweichende Wurzel für --all (Standard: reels)
-  --show-technical   technische Einträge wieder sichtbar machen
+  --show-technical   technische Root-Einträge nur für Debugging wieder sichtbar machen
 `);
 }
 
@@ -76,7 +77,6 @@ async function main() {
 
   let versteckt = 0;
   let ohneAusblendung = 0;
-
   const uebersprungen = [];
 
   for (const verzeichnis of ordner) {
@@ -109,13 +109,14 @@ async function main() {
     }
   }
   if (showTechnical) {
-    console.log('Technische Einträge sind jetzt sichtbar.');
+    console.log('Technische Root-Einträge sind nur für Debugging sichtbar.');
   } else {
-    console.log(`Im Finder ausgeblendet: ${versteckt} Einträge`);
-    if (ohneAusblendung > 0) console.log(`Ohne Ausblendung geblieben: ${ohneAusblendung}`);
+    console.log(`Im Finder ausgeblendet: ${versteckt} interne Einträge`);
+    if (ohneAusblendung > 0) console.log(`Ohne Finder-Ausblendung geblieben: ${ohneAusblendung}`);
   }
   console.log('');
-  console.log('Sichtbar bleiben: 00-bildprompts, 01-voice-script, 02-audio, 03-export, 99-technik');
+  console.log('Sichtbar bleiben nur: 00-bildprompts, 01-voice-script, 02-audio, 03-export, 99-technik');
+  console.log('Alles Interne ist gesammelt über 99-technik erreichbar.');
 }
 
 main().catch((error) => {
