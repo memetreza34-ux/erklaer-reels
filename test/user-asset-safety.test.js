@@ -37,7 +37,7 @@ test('blockiert Nutzerassets aus einem anderen Reel', async () => {
   const classification = classifyUserAssetSource(targetReel, source);
   assert.equal(classification.allowed, false);
   assert.equal(classification.reason, 'cross-reel-source-forbidden');
-  assert.throws(() => assertUserAssetSourceAllowed(targetReel, source), /anderes Reel/);
+  assert.throws(() => assertUserAssetSourceAllowed(targetReel, source), /anderen Reel/);
 });
 
 test('sicherer Import kopiert und lässt das Original unverändert', async () => {
