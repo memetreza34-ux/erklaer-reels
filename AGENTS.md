@@ -8,6 +8,21 @@ Phase 1 ChatGPT (Anlegen, Script, Prompts, Effekte) → Phase 2 Arman (Audio, Bi
 Phase 3 Antigravity (Zusammenführen, Rendern). Wer welche Befehle ausführt, steht in
 `WORKFLOW_PHASEN.md`. Keine Phase überspringt oder übernimmt die Aufgaben einer anderen.
 
+## Harte Datensicherheitsregel für Nutzerassets
+
+Von Menschen erzeugte oder hochgeladene Medien sind **unveränderliche Originale**. Das gilt besonders für ZIPs, Bilder, Audio- und Videodateien in `00-bildprompts/00-ALLE-BILDER-HIER-REIN/`, `02-audio/AUDIO-HIER-EINFUEGEN/`, `inbox/` und `99-technik/inbox/`.
+
+Verbindlich:
+- Nutzerassets **niemals mit `mv` aus einem anderen Reel übernehmen**.
+- Ein früheres Reel ist **niemals** eine Quelle für fehlende Assets des aktuellen Reels, selbst wenn Dateiname oder Dateityp passen.
+- Nutzerassets niemals mit `rm`, `rm -rf`, `git clean`, `git checkout` oder vergleichbaren Aufräumbefehlen entfernen oder zurücksetzen.
+- Für manuelle Importe ausschließlich **kopieren**, Quelle unverändert lassen und kein bestehendes Ziel überschreiben.
+- Dafür bevorzugt `npm run import:user-asset -- --dir "<aktuelles-reel>" --source "<datei>" --kind images|audio` verwenden. Der Befehl blockiert Quellen aus anderen Reels und Überschreiben.
+- Bei fehlenden Dateien nicht in alten Reels nach Ersatz suchen. Stattdessen die aktuellen Eingabeordner, Downloads/Desktop über die vorhandene Discovery prüfen; bleibt das Asset fehlend, als fehlend melden.
+- Technische Aufräumlogik darf automatisch nur eigene Symlinks/temporäre Verknüpfungen löschen. Physische Dateien oder Ordner mit möglichem Nutzerinhalt bleiben bestehen.
+
+Diese Regel hat Vorrang vor Bequemlichkeit oder Aufräumzielen. Ein unordentlicher Ordner ist akzeptabel; verlorene Nutzerdaten sind es nicht.
+
 ## Pflicht vor jedem Commit
 
 `npm test` ausführen. **Die Suite muss grün sein.** Wer eine Regel ändert, zieht

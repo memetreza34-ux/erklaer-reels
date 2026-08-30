@@ -1,1 +1,1 @@
-../script/voice-script.txt
+../99-technik/script/voice-script.txt

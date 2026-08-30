@@ -6,6 +6,7 @@ import { prepareReelProduction } from '../core/production-brief.js';
 import { findNextFreeProductionSlot } from '../core/next-slot.js';
 import { ensureImagePromptBundleDirectory } from '../core/image-prompt-bundle.js';
 import { ensureHumanReelView } from '../core/human-reel-view.js';
+import { compactReelLayout } from '../core/compact-reel-layout.js';
 
 function getArgument(name) {
   const index = process.argv.indexOf(name);
@@ -70,7 +71,8 @@ async function main() {
   const result = await createReelWorkspace({ title, script, date, sceneCount, outputRoot });
   const promptBundle = await ensureImagePromptBundleDirectory(result.reelDirectory);
   const production = await prepareReelProduction(result.reelDirectory);
-  const humanView = await ensureHumanReelView(result.reelDirectory, { hideTechnicalInFinder: true });
+  const humanView = await ensureHumanReelView(result.reelDirectory, { hideTechnicalInFinder: false });
+  const compactLayout = await compactReelLayout(result.reelDirectory);
 
   if (selectedSlot) {
     console.log(`Automatisch gewählter Termin: ${selectedSlot.weekday}, ${selectedSlot.dateValue}`);
@@ -81,13 +83,13 @@ async function main() {
   console.log(`Zieldauer: ${result.reel.targetDurationSeconds} Sekunden`);
   console.log(`Bildwelt: ${result.reel.visualStyleId}`);
   console.log(`Quellen-QC: Schema ${result.reel.sourceQualitySchemaVersion} ist für dieses neue Reel verpflichtend.`);
-  console.log(`Codex-Auftrag: ${production.taskFile}`);
+  console.log(`Codex-Auftrag vorbereitet: ${production.taskFile}`);
   console.log(`Google-Flow-Nutzerdatei: ${promptBundle.userFile}`);
   console.log(`Technische Prompt-Spiegeldatei: ${promptBundle.file}`);
   console.log(`Übersichtliche Ordner: ${humanView.visibleFolders.join(', ')}`);
-  if (humanView.finder.applied) console.log('Technische Ordner wurden im macOS Finder ausgeblendet.');
+  console.log(`Technik physisch gesammelt unter: ${compactLayout.technicalDirectory}`);
   console.log('Nach Fertigstellung aller Bildprompts verpflichtend export:prompts --strict ausführen.');
-  console.log('Pflicht: production/agent-task.md jetzt vollständig bearbeiten und check:content --strict ausführen. Nicht nach der Ordnererstellung stoppen.');
+  console.log('Pflicht: 99-technik/production/agent-task.md jetzt vollständig bearbeiten und check:content --strict ausführen. Nicht nach der Ordnererstellung stoppen.');
 }
 
 main().catch((error) => {

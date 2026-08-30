@@ -1,6 +1,6 @@
 # CURRENT WORKFLOW — VERBINDLICHE SINGLE SOURCE OF TRUTH
 
-**Stand: 2026-08-29**
+**Stand: 2026-08-30**
 
 Diese Datei ist die verbindliche Repo-weite Produktionsregel für neue Chats, Codex, Antigravity und andere Repo-Agenten.
 
@@ -23,6 +23,28 @@ Ausführlich in `WORKFLOW_PHASEN.md`.
 5. `PRODUCTION_STATUS.md`
 6. `docs/` und `knowledge/`
 7. ältere Reel-Dateien
+
+## 0. Datensicherheit für Nutzerassets — Hard Gate
+
+Nutzerdateien sind Originale und werden niemals als Wegwerf-Arbeitsdateien behandelt.
+
+- Keine ZIP-, Bild-, Audio- oder Videodatei aus einem **anderen Reel** als Quelle für das aktuelle Reel verwenden.
+- Nutzerassets niemals zwischen Reels mit `mv` verschieben.
+- Nutzerassets niemals mit `rm`, `rm -rf`, `git clean`, `git checkout` oder vergleichbaren Aufräumkommandos entfernen/zurücksetzen.
+- Manuelle Asset-Übernahme ausschließlich als **Kopie**; die Quelldatei bleibt bestehen.
+- Bestehende Zieldateien niemals still überschreiben.
+- Für einen manuellen Import bevorzugt:
+
+```bash
+npm run import:user-asset -- --dir "<aktuelles-reel>" --source "<datei>" --kind images
+npm run import:user-asset -- --dir "<aktuelles-reel>" --source "<datei>" --kind audio
+```
+
+Der sichere Import blockiert Quellen aus anderen Reels und verwendet exklusives Kopieren ohne Überschreiben.
+
+Wenn Assets im aktuellen Reel fehlen, dürfen alte Reels **nicht durchsucht und geplündert** werden. Zuerst die vorgesehenen Eingabeordner sowie die normale Asset-Discovery prüfen. Bleibt eine Datei fehlend, wird sie als fehlend gemeldet.
+
+Automatische Aufräumlogik darf nur eindeutig technische Symlinks/temporäre Verknüpfungen löschen. Ein echter physischer Ordner oder eine echte Datei mit möglichem Nutzerinhalt wird niemals automatisch rekursiv gelöscht.
 
 ## 1. Standard eines Erklär-Reels
 
