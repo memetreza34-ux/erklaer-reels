@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+# Auf macOS nach einem Pull/Merge automatisch wieder nur die fünf Benutzerordner zeigen.
+if [ "$(uname -s 2>/dev/null)" = "Darwin" ] && [ -d reels ] && command -v node >/dev/null 2>&1; then
+  node src/cli/organize-finder.js --all >/dev/null 2>&1 || true
+fi
+exit 0
