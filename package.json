@@ -24,7 +24,7 @@
     "build:timeline": "node src/cli/run-with-reel-layout.js src/cli/build-timeline.js",
     "sync:sounds": "node src/cli/run-with-reel-layout.js src/cli/sync-sounds.js",
     "sync:audio": "node src/cli/run-with-reel-layout.js src/cli/build-timeline.js",
-    "legacy:sync:words": "node src/cli/run-with-reel-layout.js src/cli/sync-words.js",
+    "legacy:sync:words": "node src/cli/sync-words.js",
     "render:reel": "node src/cli/run-with-reel-layout.js src/cli/render-reel.js",
     "studio": "remotion studio src/renderer/index.jsx",
     "test": "node --test test/*.test.js",
