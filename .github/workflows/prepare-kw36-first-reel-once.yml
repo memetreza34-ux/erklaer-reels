@@ -1,0 +1,227 @@
+name: Prepare KW36 first reel once
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  prepare:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Build verified Phase-1 package
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          style = (
+              'Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. '
+              'Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, '
+              'one dominant visual idea, clear cause-and-effect, instantly readable on a phone. '
+              'Use exactly round countryball-style actors only when an actor is needed; otherwise let the object or scientific process be the main subject. '
+              'No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. '
+          )
+
+          def image(scene, order, description, image_text, audio_cue):
+              return {
+                  'prompt': style + f'Scene {scene}, image {order}: {description} Integrate exactly the German text "{image_text}" once, large and bold. Render no other readable words, labels or numbers. Keep all visible text German only and keep the composition uncluttered.',
+                  'imageText': image_text,
+                  'visualIdea': description,
+                  'rationale': 'Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.',
+                  'startPercent': 0 if order == 1 else 0.5,
+                  'audioCue': audio_cue
+              }
+
+          scenes = [
+              {
+                  'narration': 'Warum riecht die Luft nach einem Regenschauer plötzlich so erdig und frisch, obwohl Regen selbst fast geruchlos ist?',
+                  'imageText': 'WARUM RIECHT REGEN?',
+                  'visualIdea': 'Ein Regentropfen trifft trockenen Boden und löst sichtbar eine erdige Duftwolke aus.',
+                  'continuityNotes': 'Direkter Frage-Hook ohne Einleitung; wissenschaftlicher Prozess sofort sichtbar.',
+                  'audioCue': 'Warum riecht die Luft',
+                  'durationSeconds': 5.5,
+                  'cameraMotion': {'type': 'none'},
+                  'soundEffects': [],
+                  'images': [image(1, 1, 'A fresh raindrop has just hit dry brown soil while a surprised neutral round countryball watches an earthy scent cloud rise from the ground; the visual question is clearly why the smell appears after rain.', 'WARUM RIECHT REGEN?', 'Warum riecht die Luft')]
+              },
+              {
+                  'narration': 'Der Geruch heißt Petrichor. Besonders auffällig wird er, wenn Regen nach einer längeren trockenen Phase auf trockenen Boden trifft.',
+                  'imageText': 'PETRICHOR',
+                  'visualIdea': 'Trockener Boden wird vom ersten Regen getroffen; der typische Geruch beginnt sichtbar aufzusteigen.',
+                  'continuityNotes': 'Vom Hook direkt zum Namen des Phänomens; gleiche flache 2D-Welt beibehalten.',
+                  'audioCue': 'Der Geruch heißt',
+                  'durationSeconds': 6.5,
+                  'cameraMotion': {'type': 'subtle-push-in'},
+                  'soundEffects': [],
+                  'images': [
+                      image(2, 1, 'A close view of cracked dry soil receiving the first few raindrops, with a subtle earthy scent plume beginning to rise; emphasize the named phenomenon, not a storm scene.', 'PETRICHOR', 'Der Geruch heißt'),
+                      image(2, 2, 'Show a simple before-and-after split of the same soil: long dry phase on the left and first wet patches on the right, with the scent becoming visible only after the rain arrives.', 'NACH TROCKENHEIT', 'Regen nach')
+                  ]
+              },
+              {
+                  'narration': 'Im Boden leben Mikroorganismen, darunter Streptomyces-Bakterien. Sie bilden Geosmin, einen Stoff mit sehr intensivem erdigem Geruch.',
+                  'imageText': 'GEOSMIN',
+                  'visualIdea': 'Bodenquerschnitt zeigt Mikroorganismen und den Stoff Geosmin als Quelle des erdigen Geruchs.',
+                  'continuityNotes': 'Mikrobiologie stark vereinfachen; keine menschlichen Figuren und keine unnötigen Fachlabels.',
+                  'audioCue': 'Im Boden leben',
+                  'durationSeconds': 6.5,
+                  'cameraMotion': {'type': 'ken-burns'},
+                  'soundEffects': [],
+                  'images': [
+                      image(3, 1, 'A cutaway of dark soil containing tiny stylized microorganism shapes that release a few highlighted molecular dots upward; focus on the earthy-smelling compound produced in soil.', 'GEOSMIN', 'Im Boden leben'),
+                      image(3, 2, 'A magnified soil cross-section with several simple rod-like soil bacteria and one highlighted Streptomyces-style colony, all clearly microscopic and not human-like characters.', 'BODENBAKTERIEN', 'Geosmin, einen')
+                  ]
+              },
+              {
+                  'narration': 'Unsere Nase reagiert extrem empfindlich auf Geosmin. Schon winzige Mengen reichen aus, damit wir diesen typischen Bodengeruch wahrnehmen.',
+                  'imageText': 'EXTREM EMPFINDLICH',
+                  'visualIdea': 'Eine winzige Geosmin-Menge löst eine deutlich sichtbare starke Geruchswahrnehmung aus.',
+                  'continuityNotes': 'Den Größenkontrast zwischen winziger Menge und starker Wahrnehmung zum Hauptmotiv machen.',
+                  'audioCue': 'Unsere Nase reagiert',
+                  'durationSeconds': 6.5,
+                  'cameraMotion': {'type': 'slow-zoom-in'},
+                  'soundEffects': [],
+                  'images': [
+                      image(4, 1, 'A neutral round countryball reacts strongly to one extremely tiny scent particle floating toward it, visually showing that only a minuscule amount is needed to be noticed.', 'EXTREM EMPFINDLICH', 'Unsere Nase reagiert'),
+                      image(4, 2, 'A single tiny highlighted Geosmin particle sits beside a large sensitivity gauge with the indicator already high, making the contrast between tiny amount and strong perception obvious.', 'WINZIGE MENGEN', 'Mengen reichen')
+                  ]
+              },
+              {
+                  'narration': 'Beim Aufprall eines Regentropfens entstehen auf porösem Boden winzige Luftblasen. Sie steigen im Tropfen nach oben und platzen.',
+                  'imageText': 'REGENTROPFEN',
+                  'visualIdea': 'Nahaufnahme eines Regentropfens auf porösem Boden mit entstehenden und aufsteigenden Luftblasen.',
+                  'continuityNotes': 'Mechanismus schrittweise erklären; Bild eins Aufprall, Bild zwei Blasenbildung.',
+                  'audioCue': 'Beim Aufprall eines',
+                  'durationSeconds': 6.5,
+                  'cameraMotion': {'type': 'subtle-push-in'},
+                  'soundEffects': [],
+                  'images': [
+                      image(5, 1, 'A single raindrop is frozen just as it strikes a porous patch of soil, with the impact zone enlarged and the soil texture simple enough to read instantly.', 'REGENTROPFEN', 'Beim Aufprall eines'),
+                      image(5, 2, 'Inside the impacted droplet, several tiny trapped air bubbles rise toward the upper surface, one about to burst; make the bubble process the only scientific focus.', 'LUFTBLASEN', 'Luftblasen. Sie')
+                  ]
+              },
+              {
+                  'narration': 'Dabei schleudern sie feinste Tröpfchen als Aerosole in die Luft. Diese können Geosmin und andere Stoffe aus dem Boden mitnehmen.',
+                  'imageText': 'AEROSOLE',
+                  'visualIdea': 'Platzende Luftblasen schleudern winzige Tröpfchen aus dem Bodenbereich in die Luft.',
+                  'continuityNotes': 'Direkte Ursache-Folge-Fortsetzung aus Szene fünf; Aerosole klar nach oben bewegen.',
+                  'audioCue': 'Dabei schleudern sie',
+                  'durationSeconds': 6.5,
+                  'cameraMotion': {'type': 'ken-burns'},
+                  'soundEffects': [],
+                  'images': [
+                      image(6, 1, 'One bubble bursts at the top of a raindrop resting on soil and ejects many microscopic droplets upward as a clean spray of tiny aerosol particles.', 'AEROSOLE', 'Dabei schleudern sie'),
+                      image(6, 2, 'Tiny airborne droplets rise above soil carrying a few highlighted earthy scent particles with them, visually linking the ground to the surrounding air without extra labels.', 'DUFT IN DER LUFT', 'Diese können')
+                  ]
+              },
+              {
+                  'narration': 'Deshalb kann leichter oder mäßiger Regen den Geruch besonders gut freisetzen. Sehr heftiger Regen erzeugt diesen Mechanismus nicht unbedingt genauso stark.',
+                  'imageText': 'LEICHTER REGEN',
+                  'visualIdea': 'Leichter bis mäßiger Regen wird mit heftigem Regen verglichen, um den Aerosolmechanismus verständlich einzuordnen.',
+                  'continuityNotes': 'Vergleich klar und sachlich halten; nicht behaupten, dass starker Regen keinen Geruch erzeugt.',
+                  'audioCue': 'Deshalb kann leichter',
+                  'durationSeconds': 6.5,
+                  'cameraMotion': {'type': 'subtle-pull-out'},
+                  'soundEffects': [],
+                  'images': [
+                      image(7, 1, 'Light to moderate rainfall lands on porous soil and produces many small upward aerosol droplets, with a calm rain cloud and clear upward motion rather than dramatic weather.', 'LEICHTER REGEN', 'Deshalb kann leichter'),
+                      image(7, 2, 'A contrasting heavy downpour splashes forcefully onto the same soil with fewer clearly formed bubble-burst aerosol jets, emphasizing that stronger rain is not automatically the same mechanism.', 'HEFTIGER REGEN', 'Sehr heftiger')
+                  ]
+              },
+              {
+                  'narration': 'Und was riechst du dann eigentlich: den Regen selbst oder Stoffe, die durch den Regen aus Boden und Pflanzen freigesetzt werden?',
+                  'imageText': 'REGEN SELBST?',
+                  'visualIdea': 'Prüffrage trennt Regenwasser als vermeintliche Quelle vom Boden und seinen freigesetzten Stoffen.',
+                  'continuityNotes': 'Reflexionsszene; zwei klar gegensätzliche Bildmomente statt Wiederholung der Erklärung.',
+                  'audioCue': 'Und was riechst',
+                  'durationSeconds': 6.5,
+                  'cameraMotion': {'type': 'none'},
+                  'soundEffects': [],
+                  'images': [
+                      image(8, 1, 'A simple rain cloud and falling drop are centered above dry-to-wet soil with a large visual question mark, asking whether the water itself is the source of the familiar smell.', 'REGEN SELBST?', 'Und was riechst'),
+                      image(8, 2, 'The focus shifts from the raindrop to the soil below, where earthy scent particles and a few plant-oil style droplets rise upward after impact, creating the alternative explanation.', 'ODER DER BODEN?', 'Stoffe, die')
+                  ]
+              },
+              {
+                  'narration': 'Die Antwort ist vor allem Letzteres. Petrichor entsteht, weil Regentropfen erdige Duftstoffe wie Geosmin aus ihrer Umgebung in die Luft bringen.',
+                  'imageText': 'DIE ANTWORT',
+                  'visualIdea': 'Abschlusskette zeigt Boden, Regentropfen, Aerosole und Geosmin in der Luft als klare Lösung.',
+                  'continuityNotes': 'Konkrete Auflösung der Prüffrage; letzter Bildmoment ruhig für den Schlussbild-Nachlauf.',
+                  'audioCue': 'Die Antwort ist',
+                  'durationSeconds': 7.0,
+                  'cameraMotion': {'type': 'subtle-pull-out'},
+                  'soundEffects': [],
+                  'images': [
+                      image(9, 1, 'A clean four-step visual chain shows dry soil, a raindrop impact, tiny aerosol droplets, and an earthy scent cloud reaching the air, summarizing the cause-and-effect in one frame.', 'DIE ANTWORT', 'Die Antwort ist'),
+                      image(9, 2, 'Final calm summary: tiny Geosmin scent particles ride upward in aerosol droplets above freshly wet soil while a neutral round countryball recognizes the smell; leave a clear final-hold composition.', 'GEOSMIN IN DER LUFT', 'erdige Duftstoffe')
+                  ]
+              }
+          ]
+
+          package = {
+              'title': 'Warum riecht Regen so besonders?',
+              'topicArea': 'Alltag, Chemie und Naturwissenschaft',
+              'caption': 'Warum riecht Regen eigentlich so besonders?\n\nDer typische Geruch nach einem Schauer heißt Petrichor. Ein wichtiger Bestandteil ist Geosmin, ein intensiv erdig riechender Stoff aus Mikroorganismen im Boden. Treffen Regentropfen auf porösen Boden, können winzige Luftblasen und Aerosole entstehen. Diese transportieren Stoffe aus dem Boden in die Luft – genau dorthin, wo unsere extrem empfindliche Nase sie wahrnimmt. Deshalb riechst du nach Regen oft weniger den Regen selbst als das, was er aus seiner Umgebung freisetzt.\n\n#Wissenschaft #Alltagswissen #Petrichor #Regen #Chemie',
+              'sources': [
+                  {
+                      'title': 'Joung & Buie — Aerosol generation by raindrop impact on soil, Nature Communications',
+                      'url': 'https://www.nature.com/articles/ncomms7083',
+                      'accessed': '2026-08-30',
+                      'type': 'wissenschaftliche Originalstudie',
+                      'supports': 'Zeigt mit Hochgeschwindigkeitsaufnahmen, dass Regentropfen auf porösem Boden Luftblasen und Aerosole erzeugen können; besonders unter Bedingungen von leichtem und mäßigem Regen.'
+                  },
+                  {
+                      'title': "American Chemical Society — What's That After-Rain Smell Made Of?",
+                      'url': 'https://www.acs.org/pressroom/reactions/library/whats-that-after-rain-smell-made-of.html',
+                      'accessed': '2026-08-30',
+                      'type': 'unabhängige Fachquelle',
+                      'supports': 'Erklärt Petrichor als typischen Geruch nach Regen und nennt Geosmin, Bodenmikroorganismen sowie durch Regentropfen freigesetzte Stoffe als zentrale Bestandteile.'
+                  },
+                  {
+                      'title': 'American Chemical Society — Geosmin',
+                      'url': 'https://www.acs.org/molecule-of-the-week/archive/g/geosmin.html',
+                      'accessed': '2026-08-30',
+                      'type': 'unabhängige Fachquelle',
+                      'supports': 'Beschreibt Geosmin als natürliches Molekül mit stark erdigem Geruch, seine Bildung durch Mikroorganismen und die sehr niedrige menschliche Geruchsschwelle.'
+                  }
+              ],
+              'scenes': scenes
+          }
+
+          Path('input/reel-paket.json').write_text(json.dumps(package, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          PY
+      - name: Validate and import Monday reel
+        shell: bash
+        run: |
+          npm run import:reel -- --file input/reel-paket.json --check
+          npm run import:reel -- --file input/reel-paket.json --date 2026-08-31
+          REEL_DIR="reels/2026-KW36_31-08_bis_06-09/montag/reel-01_warum-riecht-regen-so-besonders"
+          test -d "$REEL_DIR"
+          npm run export:prompts -- --dir "$REEL_DIR" --strict
+          npm run check:content -- --dir "$REEL_DIR" --strict
+          npm run organize:finder -- --dir "$REEL_DIR" --show-technical
+          npm run check:content -- --dir "$REEL_DIR" --strict
+          echo "REEL_DIR=$REEL_DIR" >> "$GITHUB_ENV"
+      - name: Run full tests
+        run: npm test
+      - name: Commit prepared reel
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "KW36: Regen-Petrichor-Reel vollständig vorbereiten"
+          git push
