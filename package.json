@@ -9,6 +9,7 @@
     "create:reel": "node src/cli/create-reel.js",
     "import:reel": "node src/cli/import-reel.js",
     "compact:reel": "node src/cli/compact-reel.js",
+    "import:user-asset": "node src/cli/import-user-asset.js",
     "prepare:reel": "node src/cli/run-with-reel-layout.js src/cli/prepare-reel.js",
     "export:prompts": "node src/cli/run-with-reel-layout.js src/cli/export-image-prompts.js",
     "check:content": "node src/cli/run-with-reel-layout.js src/cli/check-content.js",
