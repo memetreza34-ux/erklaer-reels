@@ -163,7 +163,10 @@ async function applyMacFinderVisibility(reelDirectory, sceneDirectories) {
   }
 }
 
-export async function ensureHumanReelView(reelDirectory, { hideTechnicalInFinder = false } = {}) {
+export async function ensureHumanReelView(
+  reelDirectory,
+  { hideTechnicalInFinder = process.platform === 'darwin' } = {}
+) {
   const absoluteReelDirectory = path.resolve(reelDirectory);
   if (!(await exists(path.join(absoluteReelDirectory, 'reel.json')))) {
     throw new Error(`Kein gültiger Reel-Ordner: reel.json fehlt unter ${absoluteReelDirectory}.`);
@@ -196,7 +199,7 @@ export async function ensureHumanReelView(reelDirectory, { hideTechnicalInFinder
     ),
     writeIfMissing(
       path.join(absoluteReelDirectory, '99-technik', 'README.md'),
-      '# 99 – Technik\n\nHier sind Quellen, Prüfberichte, Effekt-, Produktions- und Kompatibilitätsdateien gesammelt. Diesen Ordner musst du normalerweise nicht öffnen. Untertitel sind für neue Reels deaktiviert.\n'
+      '# 99 – Technik\n\nHier ist alles Interne gesammelt, das du für die normale Reel-Produktion nicht sehen musst: Quellen, Prüfberichte, Szenendaten, internes Script, Audio-/Caption-/Effekt-/Export-/Inbox-/Output-/Produktionsdaten sowie Status und Manifest. Im Reel-Hauptordner sollen nur `00-bildprompts`, `01-voice-script`, `02-audio`, `03-export` und `99-technik` sichtbar sein. Untertitel sind für neue Reels deaktiviert.\n'
     ),
     writeIfMissing(path.join(absoluteReelDirectory, 'output', 'README.md'), '# Legacy-Render-Ausgabe\n\nTechnischer Kompatibilitätsordner. Der normale finale Export liegt unter `export/` bzw. sichtbar unter `03-export/`.\n'),
     writeIfMissing(path.join(absoluteReelDirectory, 'export', 'README.md'), '# Finaler Export\n\nDer Renderer schreibt hier `FERTIGES-REEL.mp4` und `UNIVERSELLE-CAPTION.txt`. Videodateien werden nicht in Git gespeichert.\n')
@@ -210,13 +213,22 @@ export async function ensureHumanReelView(reelDirectory, { hideTechnicalInFinder
     ['02-audio/FINAL-AUDIO', '../audio', 'dir'],
     ['03-export/FERTIGES-REEL.mp4', '../export/FERTIGES-REEL.mp4', 'file'],
     ['03-export/UNIVERSELLE-CAPTION.txt', '../export/UNIVERSELLE-CAPTION.txt', 'file'],
-    ['99-technik/QUELLEN.md', '../sources/sources.md', 'file'],
-    ['99-technik/PRUEFBERICHTE', '../review', 'dir'],
-    ['99-technik/PRODUKTION', '../production', 'dir'],
+    ['99-technik/ASSET-MANIFEST.json', '../assets-manifest.json', 'file'],
+    ['99-technik/AUDIO-INTERN', '../audio', 'dir'],
+    ['99-technik/CAPTION-INTERN', '../caption', 'dir'],
     ['99-technik/EFFEKTE', '../effects', 'dir'],
+    ['99-technik/EXPORT-INTERN', '../export', 'dir'],
+    ['99-technik/INBOX', '../inbox', 'dir'],
+    ['99-technik/OUTPUT-INTERN', '../output', 'dir'],
+    ['99-technik/PRODUKTION', '../production', 'dir'],
+    ['99-technik/PRUEFBERICHTE', '../review', 'dir'],
+    ['99-technik/QUELLEN.md', '../sources/sources.md', 'file'],
     ['99-technik/REEL-DATEN.json', '../reel.json', 'file'],
+    ['99-technik/RENDER-INTERN', '../render', 'dir'],
+    ['99-technik/SZENEN', '../scenes', 'dir'],
+    ['99-technik/SCRIPT-INTERN', '../script', 'dir'],
     ['99-technik/STATUS.json', '../status.json', 'file'],
-    ['99-technik/ASSET-MANIFEST.json', '../assets-manifest.json', 'file']
+    ['99-technik/TIMELINE-INTERN', '../timeline', 'dir']
   ];
 
   for (const [index, sceneDirectory] of sceneDirectories.entries()) {
