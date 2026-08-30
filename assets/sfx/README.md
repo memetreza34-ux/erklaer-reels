@@ -1,51 +1,66 @@
 # Sound-Bibliothek
 
-Hier liegen die Soundeffekte **einmal zentral** für alle Reels. Ein Reel bekommt beim
-Timeline-Bau nur die Dateien kopiert, die es tatsächlich benutzt.
+Hier liegt das feste Sound-Pack **einmal zentral für alle Reels**. Die Dateien sind bereits im Repo vorhanden. Ein Reel bekommt beim Timeline-Bau nur die Effekte kopiert, die es tatsächlich benutzt.
 
-Der Produktions-Agent wählt niemals einen Dateinamen, sondern ausschließlich einen
-`type` aus `config/sound-library.json`. Die Zuordnung Typ → Datei passiert hier.
+Der Produktions-Agent wählt niemals Dateinamen, sondern ausschließlich einen `type` aus `config/sound-library.json`. Die Zuordnung Typ → Datei übernimmt `src/core/sound-library.js`.
 
-## Benötigte Dateien
+## Herkunft
 
-| Datei | Typ | wofür | Suchbegriff |
-|---|---|---|---|
-| `soft-whoosh.mp3` | soft-whoosh | Bildwechsel mit Themensprung | `soft whoosh`, `subtle transition` |
-| `pop.mp3` | pop | Objekt erscheint | `pop`, `bubble pop` |
-| `click.mp3` | click | Zahl oder Begriff betonen | `ui click`, `soft click` |
-| `tick.mp3` | tick | Zeit, Zählen, Abfolge | `clock tick`, `tick` |
-| `soft-impact.mp3` | soft-impact | etwas trifft auf | `soft impact`, `thud` |
-| `paper.mp3` | paper | Dokument, Karte, Blättern | `paper`, `page turn` |
-| `swoosh-reveal.mp3` | swoosh-reveal | Auflösung, Aha-Moment | `reveal`, `swoosh reveal` |
-| `door.mp3` | door | Öffnen, Schließen, Grenze | `door open`, `door close` |
-| `coin.mp3` | coin | Geld, Kosten, Handel | `coin`, `coins` |
-| `water-drop.mp3` | water-drop | Tropfen, Regen, Wasser | `water drop`, `droplet` |
+Die vorhandenen Effekte sind **projektintern synthetisch erzeugte Eigenproduktion**. Sie stammen nicht von Stockportalen. Dadurch gibt es für die normale Reel-Produktion keine externe Lizenz- oder Attributionsabhängigkeit.
 
-## Wo herunterladen
+Die reproduzierbare Erzeugung liegt unter:
 
-Alle drei Quellen erlauben kommerzielle Nutzung **ohne Namensnennung**:
+```text
+scripts/generate-sfx.js
+```
 
-- **[Pixabay](https://pixabay.com/sound-effects/)** — größte Auswahl, kein Login
-- **[Mixkit](https://mixkit.co/free-sound-effects/)** — kuratiert, kein Login
-- **[Freesound](https://freesound.org/)** — nur mit Lizenzfilter **CC0**; dort liegen auch
-  CC-BY-Sounds, die Namensnennung verlangen
+Für neue Reels gilt deshalb: **keine zusätzlichen Sounds aus dem Internet suchen**, solange einer der vorhandenen Typen passt.
 
-Nicht verwenden: YouTube Audio Library. Die Lizenz variiert pro Datei, viele Sounds
-verlangen Namensnennung, und außerhalb von YouTube ist die Nutzung nicht pauschal
-gedeckt.
+## Kern-Sounds – fast jedes Reel
 
-## Worauf beim Auswählen achten
+| Datei | Typ | Einsatz |
+|---|---|---|
+| `soft-whoosh.mp3` | `soft-whoosh` | normaler weicher Szenenwechsel |
+| `whoosh-up.mp3` | `whoosh-up` | Szenenwechsel mit Steigerung/Zuspitzung |
+| `whoosh-down.mp3` | `whoosh-down` | Szenenwechsel mit Einordnung/Auflösung |
+| `soft-swipe.mp3` | `soft-swipe` | neutraler kurzer Szenenwechsel |
+| `pop.mp3` | `pop` | sichtbares neues Element erscheint |
+| `click.mp3` | `click` | Zahl/Schlüsselbegriff wird betont |
+| `soft-impact.mp3` | `soft-impact` | sichtbarer Aufprall oder starker Faktenmoment |
+| `swoosh-reveal.mp3` | `swoosh-reveal` | Aha-Moment/Auflösung wird sichtbar |
 
-- kurz: möglichst unter einer Sekunde, sonst überdeckt der Effekt das Voice-over
-- dezent: keine Meme-Sounds, keine Jumpscares, keine langen Halleffekte
-- sauber: kein Hintergrundrauschen, kein Musikbett, kein Sprachanteil
-- Format: MP3 oder WAV; der Dateiname muss exakt der Tabelle oben entsprechen
+## Situative Zusatzsounds
+
+| Datei | Typ | Einsatz |
+|---|---|---|
+| `tick.mp3` | `tick` | Zeit, Zählen, Abfolge |
+| `paper.mp3` | `paper` | Dokument, Karte, Vertrag, Blättern |
+| `door.mp3` | `door` | Tür/Tor/Grenze öffnet oder schließt |
+| `coin.mp3` | `coin` | sichtbares Geld, Kosten, Bezahlung |
+| `water-drop.mp3` | `water-drop` | Tropfen, Regen, Wasser |
+
+## Feste Dramaturgie
+
+- Szene 1 braucht keinen Übergangssound davor.
+- **Jeder folgende narrative Szenenwechsel bekommt einen dezenten Sound.**
+- Wenn im neuen Bild ein konkretes Ereignis sichtbar ist, kann ein passender Inhalts-SFX genutzt werden.
+- Sonst rotiert die Pipeline zwischen `soft-whoosh`, `whoosh-up`, `whoosh-down` und `soft-swipe`.
+- Dieselbe Transition-Variante nie direkt zweimal hintereinander.
+- `swoosh-reveal` höchstens einmal pro Reel für den eigentlichen Aha-Moment.
+- Voice-over hat immer Priorität; Sounds bleiben kurz und leise.
+- Keine Meme-Sounds, keine Jumpscares und keine Hintergrundmusik.
+
+## Regenerieren
+
+```bash
+node scripts/generate-sfx.js --force
+```
 
 ## Prüfen
 
 ```bash
-npm run sync:sounds -- --dir "<reel-ordner>"
+npm run sync:sounds -- --types
+npm run sync:sounds -- --dir "<reel-ordner>" --strict
 ```
 
-Meldet, welche Dateien noch fehlen. Ohne `--strict` blockiert nichts — geplante Sounds
-ohne vorhandene Datei bleiben einfach stumm.
+Zusätzlich prüft die Testsuite, dass **jede in `config/sound-library.json` konfigurierte MP3 tatsächlich unter `assets/sfx/` vorhanden ist**. Damit kann künftig kein Reel auf einen Sound-Typ zeigen, dessen Datei im Repo fehlt.
