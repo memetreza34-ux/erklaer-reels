@@ -1,0 +1,189 @@
+{
+  "version": 1,
+  "enabled": true,
+  "timingStatus": "estimated-until-audio-arrives",
+  "voiceoverPriority": true,
+  "backgroundMusic": {
+    "enabled": false,
+    "reason": "Voice-over-first Erklärformat; Musik nur nach ausdrücklicher Entscheidung."
+  },
+  "defaults": {
+    "transition": "cut",
+    "cameraMotion": "none",
+    "soundEffectVolume": 0.2,
+    "maximumSoundEffectsPerScene": 2
+  },
+  "scenes": [
+    {
+      "sceneId": "scene-01",
+      "transitionIn": {
+        "type": "none",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none"
+      },
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-02",
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "ken-burns"
+      },
+      "soundEffects": [
+        {
+          "type": "soft-whoosh",
+          "atPercent": 0.04,
+          "visualEvent": "Wechsel vom Hook zum auseinandergezogenen Gelenk",
+          "reason": "Dezenter Standard-Szenenwechsel.",
+          "file": "sfx/soft-whoosh.mp3",
+          "volume": 0.18
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-03",
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "subtle-push-in"
+      },
+      "soundEffects": [
+        {
+          "type": "soft-swipe",
+          "atPercent": 0.04,
+          "visualEvent": "Wechsel zur mikroskopischen Erklärung in der Gelenkflüssigkeit",
+          "reason": "Neutraler Szenenwechsel ohne starke Betonung.",
+          "file": "sfx/soft-swipe.mp3",
+          "volume": 0.15
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-04",
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "ken-burns"
+      },
+      "soundEffects": [
+        {
+          "type": "soft-impact",
+          "atPercent": 0.04,
+          "visualEvent": "Knack-Moment wird als Schlüsselfakt gezeigt",
+          "reason": "Kurzer, weicher Impact betont den zentralen Aha-Punkt.",
+          "file": "sfx/soft-impact.mp3",
+          "volume": 0.22
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-05",
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "pan-right"
+      },
+      "soundEffects": [
+        {
+          "type": "whoosh-up",
+          "atPercent": 0.04,
+          "visualEvent": "Wechsel von MRT-Beleg zur Korrektur des alten Modells",
+          "reason": "Leichte Steigerung zum Mythos-vs.-Mechanismus-Moment.",
+          "file": "sfx/whoosh-up.mp3",
+          "volume": 0.17
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-06",
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "subtle-pull-out"
+      },
+      "soundEffects": [
+        {
+          "type": "whoosh-down",
+          "atPercent": 0.04,
+          "visualEvent": "Wechsel zur kurzen Phase nach dem Knacken",
+          "reason": "Beruhigender Übergang nach dem Hauptmechanismus.",
+          "file": "sfx/whoosh-down.mp3",
+          "volume": 0.17
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-07",
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "ken-burns"
+      },
+      "soundEffects": [
+        {
+          "type": "click",
+          "atPercent": 0.04,
+          "visualEvent": "Direkte Mythos-Frage zu Arthritis erscheint",
+          "reason": "Kurzer Klick betont die Prüf-/Mythosfrage.",
+          "file": "sfx/click.mp3",
+          "volume": 0.16
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-08",
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "pan-down"
+      },
+      "soundEffects": [
+        {
+          "type": "soft-swipe",
+          "atPercent": 0.04,
+          "visualEvent": "Wechsel von Fingerknacken zu anderen Gelenkgeräuschen",
+          "reason": "Neutraler Übergang für die Einordnung.",
+          "file": "sfx/soft-swipe.mp3",
+          "volume": 0.15
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-09",
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "subtle-pull-out"
+      },
+      "soundEffects": [
+        {
+          "type": "swoosh-reveal",
+          "atPercent": 0.04,
+          "visualEvent": "Abschluss fasst den Mechanismus als klare Kette zusammen",
+          "reason": "Einmaliger Reveal-Sound für die Schlussauflösung.",
+          "file": "sfx/swoosh-reveal.mp3",
+          "volume": 0.2
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "sceneId": "scene-08",
+  "order": 8,
+  "title": "Bildmoment 8",
+  "narration": "Aber kommt jedes Gelenkgeräusch vom selben Mechanismus? Nein: Andere Geräusche können auch von Sehnen oder Bändern kommen, die über Strukturen gleiten.",
+  "imageText": "NICHT JEDES KNACKEN",
+  "visualIdea": "Eine Sehne gleitet schematisch über eine Knochenkante und erzeugt ein anderes Klickgeräusch als die zuvor gezeigte Gelenkkavitation.",
+  "continuityNotes": "Prüffrage: Zuschauer soll erkennen, dass nicht jedes Gelenkgeräusch denselben Mechanismus hat.",
+  "audioCue": "Aber kommt jedes Gelenkgeräusch",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [],
+  "subtitlePosition": "center",
+  "durationSeconds": 6.5,
+  "imageCount": 2,
+  "imagePhases": [
+    {
+      "phaseId": "scene-08-image-01",
+      "order": 1,
+      "startPercent": 0,
+      "promptFileName": "image-prompt.txt",
+      "expectedImageFileName": "scene-08.png",
+      "visualIdea": "Eine Sehne gleitet schematisch über eine Knochenkante und erzeugt ein anderes Klickgeräusch als die zuvor gezeigte Gelenkkavitation.",
+      "imageText": "NICHT JEDES KNACKEN",
+      "rationale": "Eigener Bildmoment für diesen gesprochenen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "Aber kommt jedes Gelenkgeräusch",
+      "timingBasis": "scene-start"
+    },
+    {
+      "phaseId": "scene-08-image-02",
+      "order": 2,
+      "startPercent": 0.47619,
+      "promptFileName": "image-prompt-02.txt",
+      "expectedImageFileName": "scene-08-2.png",
+      "visualIdea": "Eine Sehne gleitet schematisch über eine Knochenkante und erzeugt ein anderes Klickgeräusch als die zuvor gezeigte Gelenkkavitation.",
+      "imageText": "SEHNEN KÖNNEN KLICKEN",
+      "rationale": "Eigener Bildmoment für diesen gesprochenen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "können auch von",
+      "timingBasis": "narration-audio-cue"
+    }
+  ],
+  "expectedImageFileName": "scene-08.png",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "planned"
+}

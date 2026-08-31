@@ -1,0 +1,50 @@
+{
+  "sceneId": "scene-06",
+  "order": 6,
+  "title": "Bildmoment 6",
+  "narration": "Direkt danach lässt sich dasselbe Gelenk meist nicht sofort wieder knacken, weil sich die Bedingungen im Gelenk erst erneut verändern müssen.",
+  "imageText": "NICHT SOFORT NOCHMAL",
+  "visualIdea": "Ein Gelenk direkt nach dem Knacken zeigt den verbliebenen Hohlraum und ein klares Wiederholungs-Stopp-Symbol, später normalisiert sich die Situation wieder.",
+  "continuityNotes": "Die Ursache als Erholungsphase zeigen, keine exakte Minutenangabe einblenden.",
+  "audioCue": "Direkt danach lässt sich",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [],
+  "subtitlePosition": "center",
+  "durationSeconds": 6.5,
+  "imageCount": 2,
+  "imagePhases": [
+    {
+      "phaseId": "scene-06-image-01",
+      "order": 1,
+      "startPercent": 0,
+      "promptFileName": "image-prompt.txt",
+      "expectedImageFileName": "scene-06.png",
+      "visualIdea": "Ein Gelenk direkt nach dem Knacken zeigt den verbliebenen Hohlraum und ein klares Wiederholungs-Stopp-Symbol, später normalisiert sich die Situation wieder.",
+      "imageText": "NICHT SOFORT NOCHMAL",
+      "rationale": "Eigener Bildmoment für diesen gesprochenen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "Direkt danach lässt sich",
+      "timingBasis": "scene-start"
+    },
+    {
+      "phaseId": "scene-06-image-02",
+      "order": 2,
+      "startPercent": 0.47619,
+      "promptFileName": "image-prompt-02.txt",
+      "expectedImageFileName": "scene-06-2.png",
+      "visualIdea": "Ein Gelenk direkt nach dem Knacken zeigt den verbliebenen Hohlraum und ein klares Wiederholungs-Stopp-Symbol, später normalisiert sich die Situation wieder.",
+      "imageText": "ERST WIEDER RESET",
+      "rationale": "Eigener Bildmoment für diesen gesprochenen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "knacken weil sich",
+      "timingBasis": "narration-audio-cue"
+    }
+  ],
+  "expectedImageFileName": "scene-06.png",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "planned"
+}

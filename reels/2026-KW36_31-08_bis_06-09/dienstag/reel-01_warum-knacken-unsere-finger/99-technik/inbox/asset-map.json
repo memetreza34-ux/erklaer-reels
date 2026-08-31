@@ -1,0 +1,28 @@
+{
+  "version": 4,
+  "generatedBy": "",
+  "assignmentSchema": {
+    "imageSceneExample": {
+      "source": "images/datei.png",
+      "target": "scene-01",
+      "confidence": 0.95,
+      "visualReviewed": true,
+      "secondPassConfirmed": true,
+      "sceneOrderConfirmed": true,
+      "confirmedTarget": "scene-01",
+      "confirmedSceneOrder": 1,
+      "visibleSummary": "Kurze neutrale Beschreibung des tatsächlich sichtbaren Bildinhalts.",
+      "reason": "Konkrete sichtbare Objekte und Handlung entsprechen Narration, visueller Idee und Prompt dieser Bildphase.",
+      "comparedFields": [
+        "narration",
+        "visualIdea",
+        "imageText",
+        "imagePrompt"
+      ],
+      "matchMethod": "visual-content-review",
+      "reviewedAt": null
+    }
+  },
+  "assignments": [],
+  "unmatched": []
+}

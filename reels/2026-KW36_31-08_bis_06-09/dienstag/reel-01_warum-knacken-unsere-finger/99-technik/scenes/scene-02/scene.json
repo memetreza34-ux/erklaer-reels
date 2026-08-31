@@ -1,0 +1,50 @@
+{
+  "sceneId": "scene-02",
+  "order": 2,
+  "title": "Bildmoment 2",
+  "narration": "Beim Ziehen oder Beugen eines Fingergelenks vergrößert sich der Abstand zwischen den Gelenkflächen. Dadurch fällt der Druck in der Gelenkflüssigkeit plötzlich ab.",
+  "imageText": "MEHR ABSTAND",
+  "visualIdea": "Ein vereinfachter Gelenkquerschnitt zeigt zwei Gelenkflächen, die sich voneinander entfernen, danach einen klar sichtbaren Druckabfall in der Gelenkflüssigkeit.",
+  "continuityNotes": "Gleiche Gelenkform und Farben wie im Hook; zuerst Bewegung, dann Druck als Ursache-Folge.",
+  "audioCue": "Beim Ziehen oder Beugen",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [],
+  "subtitlePosition": "center",
+  "durationSeconds": 6.5,
+  "imageCount": 2,
+  "imagePhases": [
+    {
+      "phaseId": "scene-02-image-01",
+      "order": 1,
+      "startPercent": 0,
+      "promptFileName": "image-prompt.txt",
+      "expectedImageFileName": "scene-02.png",
+      "visualIdea": "Ein vereinfachter Gelenkquerschnitt zeigt zwei Gelenkflächen, die sich voneinander entfernen, danach einen klar sichtbaren Druckabfall in der Gelenkflüssigkeit.",
+      "imageText": "MEHR ABSTAND",
+      "rationale": "Eigener Bildmoment für diesen gesprochenen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "Beim Ziehen oder Beugen",
+      "timingBasis": "scene-start"
+    },
+    {
+      "phaseId": "scene-02-image-02",
+      "order": 2,
+      "startPercent": 0.5,
+      "promptFileName": "image-prompt-02.txt",
+      "expectedImageFileName": "scene-02-2.png",
+      "visualIdea": "Ein vereinfachter Gelenkquerschnitt zeigt zwei Gelenkflächen, die sich voneinander entfernen, danach einen klar sichtbaren Druckabfall in der Gelenkflüssigkeit.",
+      "imageText": "DRUCK FÄLLT",
+      "rationale": "Eigener Bildmoment für diesen gesprochenen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "den Gelenkflächen Dadurch",
+      "timingBasis": "narration-audio-cue"
+    }
+  ],
+  "expectedImageFileName": "scene-02.png",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "planned"
+}
