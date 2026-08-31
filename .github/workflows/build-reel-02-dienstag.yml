@@ -38,8 +38,8 @@ jobs:
           REEL_DIR="$(find reels/2026-KW36_31-08_bis_06-09/dienstag -maxdepth 1 -type d -name 'reel-*' | sort | head -n 1)"
           test -n "$REEL_DIR"
           echo "REEL_DIR=$REEL_DIR" >> "$GITHUB_ENV"
-          npm run check:content -- --dir "$REEL_DIR" --strict
           npm run export:prompts -- --dir "$REEL_DIR" --strict
+          npm run check:content -- --dir "$REEL_DIR" --strict
           npm run sync:sounds -- --dir "$REEL_DIR" --strict
 
       - name: Gesamte Testsuite
