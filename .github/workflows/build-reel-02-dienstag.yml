@@ -1,0 +1,60 @@
+name: Build Reel 02 Dienstag
+
+on:
+  push:
+    branches: [production/reel-02-dienstag]
+    paths:
+      - input/reel-02-dienstag.json
+      - .github/workflows/build-reel-02-dienstag.yml
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    if: ${{ !contains(github.event.head_commit.message, '[skip reel build]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+        with:
+          ref: production/reel-02-dienstag
+
+      - name: Node.js einrichten
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Abhängigkeiten installieren
+        run: npm ci --no-audit --no-fund
+
+      - name: Paket prüfen und Reel erzeugen
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run import:reel -- --file input/reel-02-dienstag.json --check
+          npm run import:reel -- --file input/reel-02-dienstag.json --date 2026-09-01
+          REEL_DIR="$(find reels/2026-KW36_31-08_bis_06-09/dienstag -maxdepth 1 -type d -name 'reel-*' | sort | head -n 1)"
+          test -n "$REEL_DIR"
+          echo "REEL_DIR=$REEL_DIR" >> "$GITHUB_ENV"
+          npm run check:content -- --dir "$REEL_DIR" --strict
+          npm run export:prompts -- --dir "$REEL_DIR" --strict
+          npm run sync:sounds -- --dir "$REEL_DIR" --strict
+
+      - name: Gesamte Testsuite
+        run: npm test
+
+      - name: Generiertes Reel committen
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reels/2026-KW36_31-08_bis_06-09/dienstag
+          if git diff --cached --quiet; then
+            echo "Keine generierten Änderungen."
+            exit 0
+          fi
+          git commit -m "[generated] Reel 2 Dienstag vollständig anlegen"
+          git push origin HEAD:production/reel-02-dienstag
