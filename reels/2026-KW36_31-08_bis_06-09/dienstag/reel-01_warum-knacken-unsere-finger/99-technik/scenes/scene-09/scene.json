@@ -1,0 +1,50 @@
+{
+  "sceneId": "scene-09",
+  "order": 9,
+  "title": "Starker Abschluss",
+  "narration": "Die Kurzfassung: Beim typischen Fingerknacken entsteht durch Druckabfall ein Hohlraum. Ohne Schmerzen oder Schwellung ist das Geräusch allein meist kein Warnsignal.",
+  "imageText": "DRUCKABFALL → HOHLRAUM",
+  "visualIdea": "Eine ruhige Schlussgrafik fasst den Mechanismus in drei Bildern zusammen: Gelenk auseinander, Druck fällt, Hohlraum entsteht; daneben ein separates Warnsymbol für Schmerz oder Schwellung.",
+  "continuityNotes": "Klare Abschlusszusammenfassung, keine neue Fachinformation; Schlussbild ruhig halten.",
+  "audioCue": "Die Kurzfassung Beim typischen",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [],
+  "subtitlePosition": "center",
+  "durationSeconds": 7,
+  "imageCount": 2,
+  "imagePhases": [
+    {
+      "phaseId": "scene-09-image-01",
+      "order": 1,
+      "startPercent": 0,
+      "promptFileName": "image-prompt.txt",
+      "expectedImageFileName": "scene-09.png",
+      "visualIdea": "Eine ruhige Schlussgrafik fasst den Mechanismus in drei Bildern zusammen: Gelenk auseinander, Druck fällt, Hohlraum entsteht; daneben ein separates Warnsymbol für Schmerz oder Schwellung.",
+      "imageText": "DRUCKABFALL → HOHLRAUM",
+      "rationale": "Eigener Bildmoment für diesen gesprochenen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "Die Kurzfassung Beim typischen",
+      "timingBasis": "scene-start"
+    },
+    {
+      "phaseId": "scene-09-image-02",
+      "order": 2,
+      "startPercent": 0.47619,
+      "promptFileName": "image-prompt-02.txt",
+      "expectedImageFileName": "scene-09-2.png",
+      "visualIdea": "Eine ruhige Schlussgrafik fasst den Mechanismus in drei Bildern zusammen: Gelenk auseinander, Druck fällt, Hohlraum entsteht; daneben ein separates Warnsymbol für Schmerz oder Schwellung.",
+      "imageText": "SCHMERZ? PRÜFEN LASSEN",
+      "rationale": "Eigener Bildmoment für diesen gesprochenen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "Ohne Schmerzen oder",
+      "timingBasis": "narration-audio-cue"
+    }
+  ],
+  "expectedImageFileName": "scene-09.png",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "planned"
+}

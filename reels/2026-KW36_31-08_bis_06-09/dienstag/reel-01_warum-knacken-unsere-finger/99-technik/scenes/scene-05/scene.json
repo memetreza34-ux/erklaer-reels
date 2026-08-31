@@ -1,0 +1,50 @@
+{
+  "sceneId": "scene-05",
+  "order": 5,
+  "title": "Bildmoment 5",
+  "narration": "Deshalb ist die alte Erklärung von einer einfach platzenden Blase zu kurz gegriffen. Forschende sprechen bei dem Vorgang von Kavitation beziehungsweise Tribonukleation.",
+  "imageText": "NICHT EINFACH GEPLATZT",
+  "visualIdea": "Die alte platzende-Blase-Idee wird visuell durchgestrichen; daneben wird die tatsächliche schnelle Hohlraumbildung als korrekter Mechanismus gezeigt.",
+  "continuityNotes": "Kontrastbild ohne Fachwort-Wand; nur der geplante Bildtext darf lesbar sein.",
+  "audioCue": "Deshalb ist die alte",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [],
+  "subtitlePosition": "center",
+  "durationSeconds": 6.5,
+  "imageCount": 2,
+  "imagePhases": [
+    {
+      "phaseId": "scene-05-image-01",
+      "order": 1,
+      "startPercent": 0,
+      "promptFileName": "image-prompt.txt",
+      "expectedImageFileName": "scene-05.png",
+      "visualIdea": "Die alte platzende-Blase-Idee wird visuell durchgestrichen; daneben wird die tatsächliche schnelle Hohlraumbildung als korrekter Mechanismus gezeigt.",
+      "imageText": "NICHT EINFACH GEPLATZT",
+      "rationale": "Eigener Bildmoment für diesen gesprochenen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "Deshalb ist die alte",
+      "timingBasis": "scene-start"
+    },
+    {
+      "phaseId": "scene-05-image-02",
+      "order": 2,
+      "startPercent": 0.5,
+      "promptFileName": "image-prompt-02.txt",
+      "expectedImageFileName": "scene-05-2.png",
+      "visualIdea": "Die alte platzende-Blase-Idee wird visuell durchgestrichen; daneben wird die tatsächliche schnelle Hohlraumbildung als korrekter Mechanismus gezeigt.",
+      "imageText": "KAVITATION",
+      "rationale": "Eigener Bildmoment für diesen gesprochenen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "kurz gegriffen Forschende",
+      "timingBasis": "narration-audio-cue"
+    }
+  ],
+  "expectedImageFileName": "scene-05.png",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "planned"
+}

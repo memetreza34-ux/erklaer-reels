@@ -1,0 +1,50 @@
+{
+  "sceneId": "scene-07",
+  "order": 7,
+  "title": "Bildmoment 7",
+  "narration": "Und macht häufiges Fingerknacken Arthritis? Bisherige Untersuchungen zeigen dafür keinen zuverlässigen Zusammenhang.",
+  "imageText": "MACHT DAS ARTHRITIS?",
+  "visualIdea": "Ein häufig knackendes Fingergelenk steht einer Arthritis-Symbolik gegenüber; ein großes Fragezeichen trennt beides, danach wird der fehlende zuverlässige Zusammenhang gezeigt.",
+  "continuityNotes": "Keine Diagnosegrafik; Aussage bleibt eng auf den fehlenden zuverlässigen Zusammenhang begrenzt.",
+  "audioCue": "Und macht häufiges Fingerknacken",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [],
+  "subtitlePosition": "center",
+  "durationSeconds": 6.5,
+  "imageCount": 2,
+  "imagePhases": [
+    {
+      "phaseId": "scene-07-image-01",
+      "order": 1,
+      "startPercent": 0,
+      "promptFileName": "image-prompt.txt",
+      "expectedImageFileName": "scene-07.png",
+      "visualIdea": "Ein häufig knackendes Fingergelenk steht einer Arthritis-Symbolik gegenüber; ein großes Fragezeichen trennt beides, danach wird der fehlende zuverlässige Zusammenhang gezeigt.",
+      "imageText": "MACHT DAS ARTHRITIS?",
+      "rationale": "Eigener Bildmoment für diesen gesprochenen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "Und macht häufiges Fingerknacken",
+      "timingBasis": "scene-start"
+    },
+    {
+      "phaseId": "scene-07-image-02",
+      "order": 2,
+      "startPercent": 0.5,
+      "promptFileName": "image-prompt-02.txt",
+      "expectedImageFileName": "scene-07-2.png",
+      "visualIdea": "Ein häufig knackendes Fingergelenk steht einer Arthritis-Symbolik gegenüber; ein großes Fragezeichen trennt beides, danach wird der fehlende zuverlässige Zusammenhang gezeigt.",
+      "imageText": "KEIN KLARER ZUSAMMENHANG",
+      "rationale": "Eigener Bildmoment für diesen gesprochenen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "Untersuchungen zeigen dafür",
+      "timingBasis": "narration-audio-cue"
+    }
+  ],
+  "expectedImageFileName": "scene-07.png",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "planned"
+}

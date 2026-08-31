@@ -1,0 +1,36 @@
+{
+  "sceneId": "scene-01",
+  "order": 1,
+  "title": "Hook",
+  "narration": "Warum knacken unsere Finger eigentlich so laut, obwohl dabei meistens gar nichts kaputtgeht?",
+  "imageText": "WARUM KNACKEN FINGER?",
+  "visualIdea": "Ein stilisiertes Fingergelenk wird leicht auseinandergezogen, während ein deutliches Knack-Symbol erscheint, ohne Verletzung oder Schaden zu zeigen.",
+  "continuityNotes": "Direkter Frage-Hook; anatomisch vereinfacht, keine realistischen Menschen, klare 2D-Erklärgrafik.",
+  "audioCue": "Warum knacken unsere Finger",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [],
+  "subtitlePosition": "center",
+  "durationSeconds": 5.5,
+  "imageCount": 1,
+  "imagePhases": [
+    {
+      "phaseId": "scene-01-image-01",
+      "order": 1,
+      "startPercent": 0,
+      "promptFileName": "image-prompt.txt",
+      "expectedImageFileName": "scene-01.png",
+      "visualIdea": "Ein stilisiertes Fingergelenk wird leicht auseinandergezogen, während ein deutliches Knack-Symbol erscheint, ohne Verletzung oder Schaden zu zeigen.",
+      "imageText": "WARUM KNACKEN FINGER?",
+      "rationale": "Eigener Bildmoment für diesen gesprochenen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "Warum knacken unsere Finger",
+      "timingBasis": "scene-start"
+    }
+  ],
+  "expectedImageFileName": "scene-01.png",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "planned"
+}

@@ -1,0 +1,50 @@
+{
+  "sceneId": "scene-04",
+  "order": 4,
+  "title": "Bildmoment 4",
+  "narration": "Genau dieser Moment hängt mit dem typischen Knackgeräusch zusammen. MRT-Aufnahmen zeigten: Der Hohlraum entsteht beim Knacken und bleibt danach zunächst sichtbar.",
+  "imageText": "DAS IST DER KNACK",
+  "visualIdea": "Ein klarer Knack-Moment wird mit einer stilisierten MRT-Ansicht verbunden, in der der neu entstandene Hohlraum nach dem Geräusch sichtbar bleibt.",
+  "continuityNotes": "Keine echte medizinische Aufnahme imitieren; nur schematische MRT-Anmutung in derselben 2D-Welt.",
+  "audioCue": "Genau dieser Moment hängt",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [],
+  "subtitlePosition": "center",
+  "durationSeconds": 6.5,
+  "imageCount": 2,
+  "imagePhases": [
+    {
+      "phaseId": "scene-04-image-01",
+      "order": 1,
+      "startPercent": 0,
+      "promptFileName": "image-prompt.txt",
+      "expectedImageFileName": "scene-04.png",
+      "visualIdea": "Ein klarer Knack-Moment wird mit einer stilisierten MRT-Ansicht verbunden, in der der neu entstandene Hohlraum nach dem Geräusch sichtbar bleibt.",
+      "imageText": "DAS IST DER KNACK",
+      "rationale": "Eigener Bildmoment für diesen gesprochenen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "Genau dieser Moment hängt",
+      "timingBasis": "scene-start"
+    },
+    {
+      "phaseId": "scene-04-image-02",
+      "order": 2,
+      "startPercent": 0.52381,
+      "promptFileName": "image-prompt-02.txt",
+      "expectedImageFileName": "scene-04-2.png",
+      "visualIdea": "Ein klarer Knack-Moment wird mit einer stilisierten MRT-Ansicht verbunden, in der der neu entstandene Hohlraum nach dem Geräusch sichtbar bleibt.",
+      "imageText": "MRT ZEIGT ES",
+      "rationale": "Eigener Bildmoment für diesen gesprochenen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "Der Hohlraum entsteht",
+      "timingBasis": "narration-audio-cue"
+    }
+  ],
+  "expectedImageFileName": "scene-04.png",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "planned"
+}
