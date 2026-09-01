@@ -1,0 +1,121 @@
+name: Build Reel 03 Mittwoch
+
+on:
+  push:
+    branches: [production/reel-03-mittwoch]
+    paths:
+      - input/reel-03-mittwoch.json
+      - .github/workflows/build-reel-03-mittwoch.yml
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    if: ${{ !contains(github.event.head_commit.message, '[skip reel build]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+        with:
+          ref: production/reel-03-mittwoch
+
+      - name: Node.js einrichten
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Abhängigkeiten installieren
+        run: npm ci --no-audit --no-fund
+
+      - name: Feedback-Fixes dauerhaft einbauen
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          audio = Path('src/core/audio-tightener.js')
+          text = audio.read_text()
+          old = """  if (rate > 1.0001) filters.push(`atempo=${rate}`);\n  filters.push(buildLoudnessFilter({ loudnessTargetLufs, truePeakDbtp, loudnessRangeLra }));"""
+          new = """  if (rate > 1.0001) filters.push(`atempo=${rate}`);\n\n  // Letzte stille Sekunden nie als Voice-over-Dauer behandeln. Durch Umkehren wird\n  // die Endstille zu Anfangsstille, dort sauber entfernt und anschließend zurückgedreht.\n  // So endet die Komposition am letzten gesprochenen Inhalt + dem festen Schluss-Hold.\n  filters.push('areverse');\n  filters.push(`silenceremove=start_periods=1:start_duration=0.10:start_threshold=${Number(thresholdDb)}dB:start_silence=0.05:detection=rms`);\n  filters.push('areverse');\n  filters.push(buildLoudnessFilter({ loudnessTargetLufs, truePeakDbtp, loudnessRangeLra }));"""
+          if old not in text:
+              raise SystemExit('Audio-Patch-Anker nicht gefunden')
+          audio.write_text(text.replace(old, new))
+
+          timeline = Path('src/core/timeline.js')
+          text = timeline.read_text()
+          pattern = r"function soundTimeline\(effectScene, timing\) \{.*?\n\}\n\nfunction timingRangeForScene"
+          replacement = """function soundTimeline(effectScene, timing, audioSync) {\n  const phaseCueByTarget = new Map((audioSync?.phaseCueTimings ?? []).map((entry) => [entry.targetId, entry]));\n  return (effectScene?.soundEffects ?? []).map((sound, index) => {\n    const targetId = String(sound.targetId ?? '').trim();\n    const exactCueTime = targetId ? numberOrNull(phaseCueByTarget.get(targetId)?.cueTimeSeconds) : null;\n    let time = exactCueTime;\n    if (time === null) time = numberOrNull(sound.timeSeconds);\n    if (time === null && numberOrNull(sound.offsetSeconds) !== null) time = timing.startSeconds + Number(sound.offsetSeconds);\n    if (time === null && numberOrNull(sound.atPercent) !== null) time = timing.startSeconds + timing.durationSeconds * Number(sound.atPercent);\n    if (time === null) time = timing.startSeconds + Math.min(0.25, timing.durationSeconds * 0.1);\n    return {\n      id: sound.id ?? `${timing.sceneId}-sfx-${index + 1}`,\n      type: sound.type ?? 'unspecified',\n      timeSeconds: round(Math.max(timing.startSeconds, Math.min(timing.endSeconds, time))),\n      volume: numberOrNull(sound.volume) ?? 0.2,\n      targetId,\n      audioCue: sound.audioCue ?? '',\n      timingStatus: exactCueTime !== null ? 'exact-image-audio-cue' : 'planned-fallback',\n      visualEvent: sound.visualEvent ?? '',\n      reason: sound.reason ?? ''\n    };\n  });\n}\n\nfunction timingRangeForScene"""
+          text, count = re.subn(pattern, replacement, text, count=1, flags=re.S)
+          if count != 1:
+              raise SystemExit(f'Timeline-Sound-Patch fehlgeschlagen: {count}')
+          old_call = 'soundEffects: soundTimeline(effect, item)'
+          if old_call not in text:
+              raise SystemExit('Timeline-Aufruf-Anker nicht gefunden')
+          timeline.write_text(text.replace(old_call, 'soundEffects: soundTimeline(effect, item, audioSync)'))
+
+          doc = Path('WORKFLOW_PHASEN.md')
+          d = doc.read_text()
+          d = d.replace(
+              '- `trim:pauses` strafft Pausen, setzt 1,10x und normalisiert auf −16 LUFS / −1,5 dBTP',
+              '- `trim:pauses` strafft Pausen, entfernt auch Endstille, setzt 1,10x und normalisiert auf −16 LUFS / −1,5 dBTP'
+          )
+          d = d.replace(
+              '- `build:timeline` synchronisiert Szenen an echten Audio-Cues; interne Bildwechsel folgen den\n  in Phase 1 geplanten Narrations-Cues statt einem starren Mittelpunkt und lösen dabei die geplanten Sound-Typen gegen `assets/sfx/` auf',
+              '- `build:timeline` synchronisiert Szenen an echten Audio-Cues; interne Bildwechsel folgen den\n  in Phase 1 geplanten Narrations-Cues statt einem starren Mittelpunkt. Interne Bildwechsel-SFX mit `targetId` landen am selben echten Audio-Cue wie ihr Bild; geplante Sound-Typen werden gegen `assets/sfx/` aufgelöst'
+          )
+          doc.write_text(d)
+          PY
+
+          cat > test/future-reel-feedback.test.js <<'EOF'
+          import test from 'node:test';
+          import assert from 'node:assert/strict';
+          import { readFile } from 'node:fs/promises';
+          import { buildAudioPacingFilter } from '../src/core/audio-tightener.js';
+
+          test('Voice-Pacing entfernt Endstille vor dem festen Schluss-Hold', () => {
+            const filter = buildAudioPacingFilter();
+            assert.equal((filter.match(/areverse/g) ?? []).length, 2);
+            assert.match(filter, /start_silence=0\.05/);
+          });
+
+          test('interne Bildwechsel-SFX können am echten Bildphasen-Audio-Cue hängen', async () => {
+            const timeline = await readFile(new URL('../src/core/timeline.js', import.meta.url), 'utf8');
+            assert.match(timeline, /phaseCueByTarget/);
+            assert.match(timeline, /exact-image-audio-cue/);
+            assert.match(timeline, /soundTimeline\(effect, item, audioSync\)/);
+          });
+          EOF
+
+      - name: Paket prüfen und Reel erzeugen
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run import:reel -- --file input/reel-03-mittwoch.json --check
+          npm run import:reel -- --file input/reel-03-mittwoch.json --date 2026-09-02
+          REEL_DIR="$(find reels/2026-KW36_31-08_bis_06-09/mittwoch -maxdepth 1 -type d -name 'reel-*' | sort | head -n 1)"
+          test -n "$REEL_DIR"
+          echo "REEL_DIR=$REEL_DIR" >> "$GITHUB_ENV"
+          npm run export:prompts -- --dir "$REEL_DIR" --strict
+          npm run check:content -- --dir "$REEL_DIR" --strict
+          npm run sync:sounds -- --dir "$REEL_DIR" --strict
+
+      - name: Gesamte Testsuite
+        run: npm test
+
+      - name: Änderungen committen
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/core/audio-tightener.js src/core/timeline.js WORKFLOW_PHASEN.md test/future-reel-feedback.test.js reels/2026-KW36_31-08_bis_06-09/mittwoch
+          if git diff --cached --quiet; then
+            echo "Keine Änderungen."
+            exit 0
+          fi
+          git commit -m "[generated] Mittwoch-Reel mit SFX- und Endstille-Fix"
+          git push origin HEAD:production/reel-03-mittwoch
