@@ -1,0 +1,50 @@
+{
+  "sceneId": "scene-02",
+  "order": 2,
+  "title": "Bildmoment 2",
+  "narration": "Der Mond verschwindet tagsüber nicht. Er umkreist die Erde und steht oft auch bei Sonnenschein über unserem Horizont.",
+  "imageText": "IMMER NOCH DA",
+  "visualIdea": "Eine einfache Erde-Mond-Umlaufgrafik zeigt, dass der Mond unabhängig von Tag oder Nacht weiter um die Erde kreist und zeitweise über dem Tageshorizont steht.",
+  "continuityNotes": "Von der Überraschung zur räumlichen Erklärung; gleiche Sonne-, Erde- und Mondformen beibehalten.",
+  "audioCue": "Der Mond verschwindet tagsüber",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [],
+  "subtitlePosition": "center",
+  "durationSeconds": 6.5,
+  "imageCount": 2,
+  "imagePhases": [
+    {
+      "phaseId": "scene-02-image-01",
+      "order": 1,
+      "startPercent": 0,
+      "promptFileName": "image-prompt.txt",
+      "expectedImageFileName": "scene-02.png",
+      "visualIdea": "Eine einfache Erde-Mond-Umlaufgrafik zeigt, dass der Mond unabhängig von Tag oder Nacht weiter um die Erde kreist und zeitweise über dem Tageshorizont steht.",
+      "imageText": "IMMER NOCH DA",
+      "rationale": "Eigener Bildmoment für diesen gesprochenen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "Der Mond verschwindet tagsüber",
+      "timingBasis": "scene-start"
+    },
+    {
+      "phaseId": "scene-02-image-02",
+      "order": 2,
+      "startPercent": 0.5,
+      "promptFileName": "image-prompt-02.txt",
+      "expectedImageFileName": "scene-02-2.png",
+      "visualIdea": "Eine einfache Erde-Mond-Umlaufgrafik zeigt, dass der Mond unabhängig von Tag oder Nacht weiter um die Erde kreist und zeitweise über dem Tageshorizont steht.",
+      "imageText": "ÜBER DEM HORIZONT",
+      "rationale": "Eigener Bildmoment für diesen gesprochenen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "und steht oft",
+      "timingBasis": "narration-audio-cue"
+    }
+  ],
+  "expectedImageFileName": "scene-02.png",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "planned"
+}

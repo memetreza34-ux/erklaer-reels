@@ -1,0 +1,50 @@
+{
+  "sceneId": "scene-05",
+  "order": 5,
+  "title": "Bildmoment 5",
+  "narration": "Der Mond ist jedoch deutlich heller als diese Sterne und vergleichsweise nah. Deshalb hebt er sich trotzdem vom Tageshimmel ab.",
+  "imageText": "MOND BLEIBT SICHTBAR",
+  "visualIdea": "Der Mond bleibt als deutliches Objekt sichtbar, während schwächere Sternpunkte verschwinden; das zweite Bild betont Nähe und Helligkeitskontrast.",
+  "continuityNotes": "Direkte Fortsetzung von Szene vier; keine falschen Größenverhältnisse als exakte Messung darstellen.",
+  "audioCue": "Der Mond ist jedoch",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [],
+  "subtitlePosition": "center",
+  "durationSeconds": 6.5,
+  "imageCount": 2,
+  "imagePhases": [
+    {
+      "phaseId": "scene-05-image-01",
+      "order": 1,
+      "startPercent": 0,
+      "promptFileName": "image-prompt.txt",
+      "expectedImageFileName": "scene-05.png",
+      "visualIdea": "Der Mond bleibt als deutliches Objekt sichtbar, während schwächere Sternpunkte verschwinden; das zweite Bild betont Nähe und Helligkeitskontrast.",
+      "imageText": "MOND BLEIBT SICHTBAR",
+      "rationale": "Eigener Bildmoment für diesen gesprochenen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "Der Mond ist jedoch",
+      "timingBasis": "scene-start"
+    },
+    {
+      "phaseId": "scene-05-image-02",
+      "order": 2,
+      "startPercent": 0.5,
+      "promptFileName": "image-prompt-02.txt",
+      "expectedImageFileName": "scene-05-2.png",
+      "visualIdea": "Der Mond bleibt als deutliches Objekt sichtbar, während schwächere Sternpunkte verschwinden; das zweite Bild betont Nähe und Helligkeitskontrast.",
+      "imageText": "HELL UND NAH",
+      "rationale": "Eigener Bildmoment für diesen gesprochenen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "vergleichsweise nah Deshalb",
+      "timingBasis": "narration-audio-cue"
+    }
+  ],
+  "expectedImageFileName": "scene-05.png",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "planned"
+}

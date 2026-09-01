@@ -1,0 +1,50 @@
+{
+  "sceneId": "scene-07",
+  "order": 7,
+  "title": "Bildmoment 7",
+  "narration": "Bei Neumond steht er ungefähr Richtung Sonne und ist kaum sichtbar. Beim Vollmond steht er ihr gegenüber und erscheint vor allem nachts.",
+  "imageText": "NEUMOND KAUM SICHTBAR",
+  "visualIdea": "Neumond wird nahe der Sonnenrichtung und kaum sichtbar gezeigt; Vollmond wird auf der gegenüberliegenden Seite mit Nachtbezug erklärt.",
+  "continuityNotes": "Keine gefährliche Aufforderung, direkt in die Sonne zu schauen; Positionen nur schematisch zeigen.",
+  "audioCue": "Bei Neumond steht er",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [],
+  "subtitlePosition": "center",
+  "durationSeconds": 6.5,
+  "imageCount": 2,
+  "imagePhases": [
+    {
+      "phaseId": "scene-07-image-01",
+      "order": 1,
+      "startPercent": 0,
+      "promptFileName": "image-prompt.txt",
+      "expectedImageFileName": "scene-07.png",
+      "visualIdea": "Neumond wird nahe der Sonnenrichtung und kaum sichtbar gezeigt; Vollmond wird auf der gegenüberliegenden Seite mit Nachtbezug erklärt.",
+      "imageText": "NEUMOND KAUM SICHTBAR",
+      "rationale": "Eigener Bildmoment für diesen gesprochenen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "Bei Neumond steht er",
+      "timingBasis": "scene-start"
+    },
+    {
+      "phaseId": "scene-07-image-02",
+      "order": 2,
+      "startPercent": 0.5,
+      "promptFileName": "image-prompt-02.txt",
+      "expectedImageFileName": "scene-07-2.png",
+      "visualIdea": "Neumond wird nahe der Sonnenrichtung und kaum sichtbar gezeigt; Vollmond wird auf der gegenüberliegenden Seite mit Nachtbezug erklärt.",
+      "imageText": "VOLLMOND EHER NACHTS",
+      "rationale": "Eigener Bildmoment für diesen gesprochenen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "Beim Vollmond steht",
+      "timingBasis": "narration-audio-cue"
+    }
+  ],
+  "expectedImageFileName": "scene-07.png",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "planned"
+}

@@ -1,0 +1,50 @@
+{
+  "sceneId": "scene-04",
+  "order": 4,
+  "title": "Bildmoment 4",
+  "narration": "Tagsüber streut unsere Atmosphäre Sonnenlicht. Dadurch wird der Himmel hell und die meisten Sterne werden für unsere Augen überstrahlt.",
+  "imageText": "HELLER TAGESHIMMEL",
+  "visualIdea": "Die Atmosphäre streut Sonnenlicht über den Himmel; anschließend verblassen schwache Sterne im hellen Blau.",
+  "continuityNotes": "Atmosphärenstreuung stark vereinfacht, ohne Fachlabels; Sterne nur als Vergleich verwenden.",
+  "audioCue": "Tagsüber streut unsere Atmosphäre",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [],
+  "subtitlePosition": "center",
+  "durationSeconds": 6.5,
+  "imageCount": 2,
+  "imagePhases": [
+    {
+      "phaseId": "scene-04-image-01",
+      "order": 1,
+      "startPercent": 0,
+      "promptFileName": "image-prompt.txt",
+      "expectedImageFileName": "scene-04.png",
+      "visualIdea": "Die Atmosphäre streut Sonnenlicht über den Himmel; anschließend verblassen schwache Sterne im hellen Blau.",
+      "imageText": "HELLER TAGESHIMMEL",
+      "rationale": "Eigener Bildmoment für diesen gesprochenen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "Tagsüber streut unsere Atmosphäre",
+      "timingBasis": "scene-start"
+    },
+    {
+      "phaseId": "scene-04-image-02",
+      "order": 2,
+      "startPercent": 0.473684,
+      "promptFileName": "image-prompt-02.txt",
+      "expectedImageFileName": "scene-04-2.png",
+      "visualIdea": "Die Atmosphäre streut Sonnenlicht über den Himmel; anschließend verblassen schwache Sterne im hellen Blau.",
+      "imageText": "STERNE VERBLASSEN",
+      "rationale": "Eigener Bildmoment für diesen gesprochenen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "hell und die",
+      "timingBasis": "narration-audio-cue"
+    }
+  ],
+  "expectedImageFileName": "scene-04.png",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "planned"
+}

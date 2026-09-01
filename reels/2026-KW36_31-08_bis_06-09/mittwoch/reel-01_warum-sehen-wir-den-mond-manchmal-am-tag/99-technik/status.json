@@ -1,0 +1,21 @@
+{
+  "workspace": "ready",
+  "content": "ready",
+  "script": "provided",
+  "scenes": "planned",
+  "imageDensity": "planned",
+  "plannedImageCount": 17,
+  "visualWorld": "fixed-modern-countryball-explainer",
+  "subtitles": "disabled",
+  "wordSync": "not-required",
+  "effects": "planned",
+  "audio": "missing",
+  "imagePrompts": "ready",
+  "images": "missing",
+  "assetMatching": "waiting-for-files",
+  "endingHold": "planned",
+  "qualityControl": "content-passed",
+  "imagePromptBundle": "ready-single-canonical-serial-bundle-fixed-visual-world",
+  "googleFlowController": "disabled-use-complete-bundle",
+  "imagePromptMode": "single-canonical-complete-serial-bundle"
+}

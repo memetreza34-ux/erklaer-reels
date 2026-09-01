@@ -146,9 +146,9 @@ npm run render:reel    -- --dir "<reel-ordner>"
 - `organize:assets` ordnet die Bilder den Bildphasen zu — **niemals nach Dateinummer
   allein**, sondern über sichtbaren Inhalt, mit Konfidenz ab 0,90
 - `check:visuals --strict` verlangt die eingetragene visuelle Freigabe je Bild
-- `trim:pauses` strafft Pausen, setzt 1,10x und normalisiert auf −16 LUFS / −1,5 dBTP
+- `trim:pauses` strafft Pausen, entfernt auch Endstille, setzt 1,10x und normalisiert auf −16 LUFS / −1,5 dBTP
 - `build:timeline` synchronisiert Szenen an echten Audio-Cues; interne Bildwechsel folgen den
-  in Phase 1 geplanten Narrations-Cues statt einem starren Mittelpunkt und lösen dabei die geplanten Sound-Typen gegen `assets/sfx/` auf
+  in Phase 1 geplanten Narrations-Cues statt einem starren Mittelpunkt. Interne Bildwechsel-SFX mit `targetId` landen am selben echten Audio-Cue wie ihr Bild; geplante Sound-Typen werden gegen `assets/sfx/` aufgelöst
 - `finalize:reel --strict` gibt frei; ohne `--strict` bleibt `Renderer-bereit: nein`
 - `render:reel` erzeugt die MP4
 

@@ -1,0 +1,269 @@
+{
+  "version": 1,
+  "enabled": true,
+  "timingStatus": "estimated-until-audio-arrives",
+  "voiceoverPriority": true,
+  "backgroundMusic": {
+    "enabled": false,
+    "reason": "Voice-over-first Erklärformat; Musik nur nach ausdrücklicher Entscheidung."
+  },
+  "defaults": {
+    "transition": "cut",
+    "cameraMotion": "none",
+    "soundEffectVolume": 0.2,
+    "maximumSoundEffectsPerScene": 2
+  },
+  "scenes": [
+    {
+      "sceneId": "scene-01",
+      "transitionIn": {
+        "type": "none",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none"
+      },
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-02",
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "ken-burns"
+      },
+      "soundEffects": [
+        {
+          "type": "soft-whoosh",
+          "atPercent": 0.04,
+          "visualEvent": "Wechsel vom Hook zur Erde-Mond-Umlaufgrafik",
+          "reason": "Dezenter Szenenwechsel.",
+          "file": "sfx/soft-whoosh.mp3",
+          "volume": 0.18
+        },
+        {
+          "type": "click",
+          "targetId": "scene-02-image-02",
+          "audioCue": "und steht oft",
+          "atPercent": 0.5,
+          "visualEvent": "Interner Bildwechsel zum Tageshorizont",
+          "reason": "Leiser Akzent exakt am zweiten Bildmoment.",
+          "file": "sfx/click.mp3",
+          "volume": 0.16
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-03",
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "subtle-push-in"
+      },
+      "soundEffects": [
+        {
+          "type": "soft-swipe",
+          "atPercent": 0.04,
+          "visualEvent": "Wechsel zur Lichtreflexion am Mond",
+          "reason": "Neutraler Szenenwechsel.",
+          "file": "sfx/soft-swipe.mp3",
+          "volume": 0.15
+        },
+        {
+          "type": "pop",
+          "targetId": "scene-03-image-02",
+          "audioCue": "passiert genau dasselbe",
+          "atPercent": 0.5,
+          "visualEvent": "Interner Wechsel zum Nachtvergleich",
+          "reason": "Kurzer weicher Akzent auf den Vergleich.",
+          "file": "sfx/pop.mp3",
+          "volume": 0.2
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-04",
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "pan-down"
+      },
+      "soundEffects": [
+        {
+          "type": "whoosh-down",
+          "atPercent": 0.04,
+          "visualEvent": "Wechsel zur Atmosphäre und Tageshelligkeit",
+          "reason": "Weicher erklärender Szenenwechsel.",
+          "file": "sfx/whoosh-down.mp3",
+          "volume": 0.17
+        },
+        {
+          "type": "tick",
+          "targetId": "scene-04-image-02",
+          "audioCue": "hell und die",
+          "atPercent": 0.474,
+          "visualEvent": "Interner Wechsel zu überstrahlten Sternen",
+          "reason": "Sehr kurzer Akzent auf die Folge der Himmelshelligkeit.",
+          "file": "sfx/tick.mp3",
+          "volume": 0.15
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-05",
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "ken-burns"
+      },
+      "soundEffects": [
+        {
+          "type": "soft-impact",
+          "atPercent": 0.04,
+          "visualEvent": "Mond bleibt trotz Tageshimmel sichtbar",
+          "reason": "Sanfter Aha-Akzent.",
+          "file": "sfx/soft-impact.mp3",
+          "volume": 0.22
+        },
+        {
+          "type": "click",
+          "targetId": "scene-05-image-02",
+          "audioCue": "vergleichsweise nah Deshalb",
+          "atPercent": 0.5,
+          "visualEvent": "Interner Wechsel zu Nähe und Helligkeit",
+          "reason": "Leiser Fokus-Akzent.",
+          "file": "sfx/click.mp3",
+          "volume": 0.16
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-06",
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "pan-right"
+      },
+      "soundEffects": [
+        {
+          "type": "whoosh-up",
+          "atPercent": 0.04,
+          "visualEvent": "Wechsel zur Positions- und Phasenregel",
+          "reason": "Leichte Steigerung zum praktischen Aha-Moment.",
+          "file": "sfx/whoosh-up.mp3",
+          "volume": 0.17
+        },
+        {
+          "type": "pop",
+          "targetId": "scene-06-image-02",
+          "audioCue": "ab Besonders günstig",
+          "atPercent": 0.5,
+          "visualEvent": "Interner Wechsel zur Viertelphase",
+          "reason": "Leiser Reveal am hilfreichen Beobachtungstipp.",
+          "file": "sfx/pop.mp3",
+          "volume": 0.2
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-07",
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "subtle-pull-out"
+      },
+      "soundEffects": [
+        {
+          "type": "soft-swipe",
+          "atPercent": 0.04,
+          "visualEvent": "Wechsel zu Neumond und Vollmond",
+          "reason": "Neutraler Vergleichsübergang.",
+          "file": "sfx/soft-swipe.mp3",
+          "volume": 0.15
+        },
+        {
+          "type": "click",
+          "targetId": "scene-07-image-02",
+          "audioCue": "Beim Vollmond steht",
+          "atPercent": 0.5,
+          "visualEvent": "Interner Wechsel vom Neumond zum Vollmond",
+          "reason": "Kurzer Vergleichsakzent.",
+          "file": "sfx/click.mp3",
+          "volume": 0.16
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-08",
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "ken-burns"
+      },
+      "soundEffects": [
+        {
+          "type": "soft-whoosh",
+          "atPercent": 0.04,
+          "visualEvent": "Wechsel zur Erkenntnis, dass der Mond kein reines Nachtobjekt ist",
+          "reason": "Dezenter Erkenntniswechsel.",
+          "file": "sfx/soft-whoosh.mp3",
+          "volume": 0.18
+        },
+        {
+          "type": "pop",
+          "targetId": "scene-08-image-02",
+          "audioCue": "nach ihm suchen",
+          "atPercent": 0.476,
+          "visualEvent": "Interner Wechsel zur Beobachtungs-Challenge",
+          "reason": "Leiser motivierender Akzent.",
+          "file": "sfx/pop.mp3",
+          "volume": 0.2
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-09",
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "subtle-pull-out"
+      },
+      "soundEffects": [
+        {
+          "type": "swoosh-reveal",
+          "atPercent": 0.04,
+          "visualEvent": "Abschluss fasst die Erklärung zusammen",
+          "reason": "Einmaliger Reveal-Sound für die Merkhilfe.",
+          "file": "sfx/swoosh-reveal.mp3",
+          "volume": 0.2
+        },
+        {
+          "type": "tick",
+          "targetId": "scene-09-image-02",
+          "audioCue": "Sonnenlicht und steht",
+          "atPercent": 0.474,
+          "visualEvent": "Interner Wechsel zur finalen Phase-und-Position-Merkhilfe",
+          "reason": "Sehr dezenter Schlussakzent.",
+          "file": "sfx/tick.mp3",
+          "volume": 0.15
+        }
+      ]
+    }
+  ]
+}
