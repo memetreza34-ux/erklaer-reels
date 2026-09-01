@@ -150,6 +150,13 @@ export function buildAudioPacingFilter({
   const filters = [silenceFilter];
 
   if (rate > 1.0001) filters.push(`atempo=${rate}`);
+
+  // Letzte stille Sekunden nie als Voice-over-Dauer behandeln. Durch Umkehren wird
+  // die Endstille zu Anfangsstille, dort sauber entfernt und anschließend zurückgedreht.
+  // So endet die Komposition am letzten gesprochenen Inhalt + dem festen Schluss-Hold.
+  filters.push('areverse');
+  filters.push(`silenceremove=start_periods=1:start_duration=0.10:start_threshold=${Number(thresholdDb)}dB:start_silence=0.05:detection=rms`);
+  filters.push('areverse');
   filters.push(buildLoudnessFilter({ loudnessTargetLufs, truePeakDbtp, loudnessRangeLra }));
   filters.push(`aresample=${Number(outputSampleRateHz)}`);
 

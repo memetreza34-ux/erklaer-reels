@@ -1,0 +1,50 @@
+{
+  "sceneId": "scene-03",
+  "order": 3,
+  "title": "Bildmoment 3",
+  "narration": "Wir sehen ihn, weil seine Oberfläche Sonnenlicht reflektiert. Nachts passiert genau dasselbe, nur ist der Himmel viel dunkler.",
+  "imageText": "REFLEKTIERT SONNENLICHT",
+  "visualIdea": "Sonnenstrahlen treffen die Mondoberfläche und werden zur Erde reflektiert; das zweite Bild vergleicht denselben Mond vor Tages- und Nachthimmel.",
+  "continuityNotes": "Keine Behauptung von eigener Mondleuchtkraft; Reflexion mit klaren Pfeilen visualisieren.",
+  "audioCue": "Wir sehen ihn weil",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [],
+  "subtitlePosition": "center",
+  "durationSeconds": 6.5,
+  "imageCount": 2,
+  "imagePhases": [
+    {
+      "phaseId": "scene-03-image-01",
+      "order": 1,
+      "startPercent": 0,
+      "promptFileName": "image-prompt.txt",
+      "expectedImageFileName": "scene-03.png",
+      "visualIdea": "Sonnenstrahlen treffen die Mondoberfläche und werden zur Erde reflektiert; das zweite Bild vergleicht denselben Mond vor Tages- und Nachthimmel.",
+      "imageText": "REFLEKTIERT SONNENLICHT",
+      "rationale": "Eigener Bildmoment für diesen gesprochenen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "Wir sehen ihn weil",
+      "timingBasis": "scene-start"
+    },
+    {
+      "phaseId": "scene-03-image-02",
+      "order": 2,
+      "startPercent": 0.5,
+      "promptFileName": "image-prompt-02.txt",
+      "expectedImageFileName": "scene-03-2.png",
+      "visualIdea": "Sonnenstrahlen treffen die Mondoberfläche und werden zur Erde reflektiert; das zweite Bild vergleicht denselben Mond vor Tages- und Nachthimmel.",
+      "imageText": "NACHT = MEHR KONTRAST",
+      "rationale": "Eigener Bildmoment für diesen gesprochenen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "passiert genau dasselbe",
+      "timingBasis": "narration-audio-cue"
+    }
+  ],
+  "expectedImageFileName": "scene-03.png",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "planned"
+}

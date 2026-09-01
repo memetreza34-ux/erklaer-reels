@@ -1,0 +1,50 @@
+{
+  "sceneId": "scene-08",
+  "order": 8,
+  "title": "Bildmoment 8",
+  "narration": "Der Mond ist also kein Nachtobjekt. Würdest du morgen tagsüber nach ihm suchen, wüsstest du jetzt, wann deine Chancen besser sind.",
+  "imageText": "KEIN NACHTOBJEKT",
+  "visualIdea": "Der Mond wird gleichzeitig über einer stilisierten Tag-Nacht-Erde gezeigt; danach folgt eine klare Beobachtungs-Idee ohne Menschenfigur.",
+  "continuityNotes": "Prüffrage bleibt direkt im Sprechertext; keine neue wissenschaftliche Behauptung hinzufügen.",
+  "audioCue": "Der Mond ist also",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [],
+  "subtitlePosition": "center",
+  "durationSeconds": 6.5,
+  "imageCount": 2,
+  "imagePhases": [
+    {
+      "phaseId": "scene-08-image-01",
+      "order": 1,
+      "startPercent": 0,
+      "promptFileName": "image-prompt.txt",
+      "expectedImageFileName": "scene-08.png",
+      "visualIdea": "Der Mond wird gleichzeitig über einer stilisierten Tag-Nacht-Erde gezeigt; danach folgt eine klare Beobachtungs-Idee ohne Menschenfigur.",
+      "imageText": "KEIN NACHTOBJEKT",
+      "rationale": "Eigener Bildmoment für diesen gesprochenen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "Der Mond ist also",
+      "timingBasis": "scene-start"
+    },
+    {
+      "phaseId": "scene-08-image-02",
+      "order": 2,
+      "startPercent": 0.47619,
+      "promptFileName": "image-prompt-02.txt",
+      "expectedImageFileName": "scene-08-2.png",
+      "visualIdea": "Der Mond wird gleichzeitig über einer stilisierten Tag-Nacht-Erde gezeigt; danach folgt eine klare Beobachtungs-Idee ohne Menschenfigur.",
+      "imageText": "SUCH IHN MORGEN",
+      "rationale": "Eigener Bildmoment für diesen gesprochenen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "nach ihm suchen",
+      "timingBasis": "narration-audio-cue"
+    }
+  ],
+  "expectedImageFileName": "scene-08.png",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "planned"
+}

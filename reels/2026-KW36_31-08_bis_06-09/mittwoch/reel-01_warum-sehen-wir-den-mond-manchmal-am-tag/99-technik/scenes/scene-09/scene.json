@@ -1,0 +1,50 @@
+{
+  "sceneId": "scene-09",
+  "order": 9,
+  "title": "Starker Abschluss",
+  "narration": "Die Kurzfassung: Der Mond ist auch tagsüber da, reflektiert Sonnenlicht und steht je nach Phase sichtbar über unserem Horizont.",
+  "imageText": "AUCH TAGSÜBER DA",
+  "visualIdea": "Eine ruhige Schlussgrafik fasst drei Ursachen zusammen: Mond vorhanden, Sonnenlicht reflektiert, passende Phase und Position über dem Tageshorizont.",
+  "continuityNotes": "Ruhiger Abschluss ohne neue Information; letzte Bildphase als klare Merkhilfe gestalten.",
+  "audioCue": "Die Kurzfassung Der Mond",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [],
+  "subtitlePosition": "center",
+  "durationSeconds": 7,
+  "imageCount": 2,
+  "imagePhases": [
+    {
+      "phaseId": "scene-09-image-01",
+      "order": 1,
+      "startPercent": 0,
+      "promptFileName": "image-prompt.txt",
+      "expectedImageFileName": "scene-09.png",
+      "visualIdea": "Eine ruhige Schlussgrafik fasst drei Ursachen zusammen: Mond vorhanden, Sonnenlicht reflektiert, passende Phase und Position über dem Tageshorizont.",
+      "imageText": "AUCH TAGSÜBER DA",
+      "rationale": "Eigener Bildmoment für diesen gesprochenen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "Die Kurzfassung Der Mond",
+      "timingBasis": "scene-start"
+    },
+    {
+      "phaseId": "scene-09-image-02",
+      "order": 2,
+      "startPercent": 0.473684,
+      "promptFileName": "image-prompt-02.txt",
+      "expectedImageFileName": "scene-09-2.png",
+      "visualIdea": "Eine ruhige Schlussgrafik fasst drei Ursachen zusammen: Mond vorhanden, Sonnenlicht reflektiert, passende Phase und Position über dem Tageshorizont.",
+      "imageText": "PHASE + POSITION",
+      "rationale": "Eigener Bildmoment für diesen gesprochenen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "Sonnenlicht und steht",
+      "timingBasis": "narration-audio-cue"
+    }
+  ],
+  "expectedImageFileName": "scene-09.png",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "planned"
+}

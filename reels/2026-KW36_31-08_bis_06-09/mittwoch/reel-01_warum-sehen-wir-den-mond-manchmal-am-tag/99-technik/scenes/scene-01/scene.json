@@ -1,0 +1,36 @@
+{
+  "sceneId": "scene-01",
+  "order": 1,
+  "title": "Hook",
+  "narration": "Warum können wir den Mond mitten am Tag sehen, obwohl er angeblich nur nachts am Himmel steht?",
+  "imageText": "MOND AM TAG?",
+  "visualIdea": "Ein heller blauer Tageshimmel mit Sonne und deutlich sichtbarem Mond erzeugt sofort die Frage, warum beide gleichzeitig zu sehen sind.",
+  "continuityNotes": "Direkter Frage-Hook; keine Menschen, klare astronomische 2D-Welt, Mond und Sonne sofort erkennbar.",
+  "audioCue": "Warum können wir den Mond",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [],
+  "subtitlePosition": "center",
+  "durationSeconds": 5.5,
+  "imageCount": 1,
+  "imagePhases": [
+    {
+      "phaseId": "scene-01-image-01",
+      "order": 1,
+      "startPercent": 0,
+      "promptFileName": "image-prompt.txt",
+      "expectedImageFileName": "scene-01.png",
+      "visualIdea": "Ein heller blauer Tageshimmel mit Sonne und deutlich sichtbarem Mond erzeugt sofort die Frage, warum beide gleichzeitig zu sehen sind.",
+      "imageText": "MOND AM TAG?",
+      "rationale": "Eigener Bildmoment für diesen gesprochenen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "Warum können wir den Mond",
+      "timingBasis": "scene-start"
+    }
+  ],
+  "expectedImageFileName": "scene-01.png",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "planned"
+}

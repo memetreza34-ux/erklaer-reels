@@ -267,9 +267,13 @@ function subtitleTimeline(scenes, timings, subtitlePlan) {
   return output.sort((a, b) => a.startSeconds - b.startSeconds);
 }
 
-function soundTimeline(effectScene, timing) {
+function soundTimeline(effectScene, timing, audioSync) {
+  const phaseCueByTarget = new Map((audioSync?.phaseCueTimings ?? []).map((entry) => [entry.targetId, entry]));
   return (effectScene?.soundEffects ?? []).map((sound, index) => {
-    let time = numberOrNull(sound.timeSeconds);
+    const targetId = String(sound.targetId ?? '').trim();
+    const exactCueTime = targetId ? numberOrNull(phaseCueByTarget.get(targetId)?.cueTimeSeconds) : null;
+    let time = exactCueTime;
+    if (time === null) time = numberOrNull(sound.timeSeconds);
     if (time === null && numberOrNull(sound.offsetSeconds) !== null) time = timing.startSeconds + Number(sound.offsetSeconds);
     if (time === null && numberOrNull(sound.atPercent) !== null) time = timing.startSeconds + timing.durationSeconds * Number(sound.atPercent);
     if (time === null) time = timing.startSeconds + Math.min(0.25, timing.durationSeconds * 0.1);
@@ -278,7 +282,9 @@ function soundTimeline(effectScene, timing) {
       type: sound.type ?? 'unspecified',
       timeSeconds: round(Math.max(timing.startSeconds, Math.min(timing.endSeconds, time))),
       volume: numberOrNull(sound.volume) ?? 0.2,
+      targetId,
       audioCue: sound.audioCue ?? '',
+      timingStatus: exactCueTime !== null ? 'exact-image-audio-cue' : 'planned-fallback',
       visualEvent: sound.visualEvent ?? '',
       reason: sound.reason ?? ''
     };
@@ -484,7 +490,7 @@ export async function buildMasterTimeline(reelDirectory, { audioDurationSeconds 
       subtitleCueIds: [],
       transitionIn: effect.transitionIn ?? { type: index ? 'cut' : 'none', durationSeconds: 0 },
       cameraMotion: effect.cameraMotion ?? { type: 'none', startScale: 1, endScale: 1, panXPercent: 0, panYPercent: 0 },
-      soundEffects: soundTimeline(effect, item)
+      soundEffects: soundTimeline(effect, item, audioSync)
     };
   });
 

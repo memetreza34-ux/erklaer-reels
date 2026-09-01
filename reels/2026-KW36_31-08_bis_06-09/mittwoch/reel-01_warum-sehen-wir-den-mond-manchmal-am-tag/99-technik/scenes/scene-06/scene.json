@@ -1,0 +1,50 @@
+{
+  "sceneId": "scene-06",
+  "order": 6,
+  "title": "Bildmoment 6",
+  "narration": "Ob du ihn siehst, hängt von seiner Stellung zur Sonne ab. Besonders günstig sind viele Tage rund um die Viertelphasen.",
+  "imageText": "POSITION ENTSCHEIDET",
+  "visualIdea": "Erde, Sonne und Mond werden in unterschiedlichen Winkelstellungen gezeigt; danach wird eine Viertelmond-Stellung hervorgehoben.",
+  "continuityNotes": "Nur relative Positionen erklären, keine komplizierte Orbitgrafik oder zusätzliche Beschriftungen.",
+  "audioCue": "Ob du ihn siehst",
+  "leadInSeconds": 0.2,
+  "subtitleCues": [],
+  "subtitlePosition": "center",
+  "durationSeconds": 6.5,
+  "imageCount": 2,
+  "imagePhases": [
+    {
+      "phaseId": "scene-06-image-01",
+      "order": 1,
+      "startPercent": 0,
+      "promptFileName": "image-prompt.txt",
+      "expectedImageFileName": "scene-06.png",
+      "visualIdea": "Erde, Sonne und Mond werden in unterschiedlichen Winkelstellungen gezeigt; danach wird eine Viertelmond-Stellung hervorgehoben.",
+      "imageText": "POSITION ENTSCHEIDET",
+      "rationale": "Eigener Bildmoment für diesen gesprochenen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "Ob du ihn siehst",
+      "timingBasis": "scene-start"
+    },
+    {
+      "phaseId": "scene-06-image-02",
+      "order": 2,
+      "startPercent": 0.5,
+      "promptFileName": "image-prompt-02.txt",
+      "expectedImageFileName": "scene-06-2.png",
+      "visualIdea": "Erde, Sonne und Mond werden in unterschiedlichen Winkelstellungen gezeigt; danach wird eine Viertelmond-Stellung hervorgehoben.",
+      "imageText": "RUND UM VIERTELMOND",
+      "rationale": "Eigener Bildmoment für diesen gesprochenen Satzteil.",
+      "imageStatus": "missing",
+      "assetVerification": null,
+      "audioCue": "ab Besonders günstig",
+      "timingBasis": "narration-audio-cue"
+    }
+  ],
+  "expectedImageFileName": "scene-06.png",
+  "promptStatus": "missing",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "planned"
+}
