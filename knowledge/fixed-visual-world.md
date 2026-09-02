@@ -17,11 +17,31 @@ Für Reels gilt:
 - kein Ink-Explainer-/Longform-Look
 - keine 16:9-Komposition
 
+## Ziel der neuen Bildsprache
+
+Die Bilder sollen **nicht wie statische Lernposter** wirken. Jede Bildphase muss wie ein konkreter Moment einer visuellen Geschichte funktionieren.
+
+Pflicht für neue Bilder:
+- sichtbare Handlung, Reaktion, Veränderung, Ursache-Folge oder räumliche Beziehung
+- ein dominantes Hauptmotiv
+- wenn sinnvoll einfache Tiefe über Vordergrund, Mittelgrund und Hintergrund
+- stärkere, kontrollierte Farbkontraste statt matter Einheitsflächen
+- abwechslungsreiche Perspektiven zwischen direkt aufeinanderfolgenden Bildern
+- Kontext im Hintergrund, wenn er die Aussage stärkt
+- Text unterstützt das Bild, ersetzt es aber nie
+
+Nicht als Standard:
+- große Headline + einzelnes Symbol auf leerem Hintergrund
+- reine Posterkarte ohne Handlung
+- fast identische Center-Komposition in mehreren Bildern hintereinander
+- große Textblöcke als Hauptmotiv
+- leere monochrome Fläche, wenn eine kleine Umgebung die Aussage klarer machen würde
+
 ## Die eine Reel-Bildwelt
 
 Die Reel-Bildwelt heißt **Modern Countryball Explainer**.
 
-Die Grundästhetik ist eine moderne, minimalistische 2D-Vektor-Comic-Welt für Kurzvideos. Wenn ein Akteur vorkommt, muss er **eindeutig eine runde Kugelfigur** sein.
+Die Grundästhetik ist eine moderne, editoriale 2D-Vektor-Comic-Welt für Kurzvideos. Wenn ein Akteur vorkommt, muss er **eindeutig eine runde Kugelfigur** sein.
 
 Die Kugelgeometrie ist der wichtigste Figurenanker:
 - exakt runder Kreis bzw. Kugelkörper
@@ -85,13 +105,13 @@ Objekte brauchen nicht automatisch Augen oder Gesichter.
 ## Gestaltung
 
 - vertikal 9:16, Smartphone-first
-- sauberer flacher 2D-Vektor-/Comic-Look
+- sauberer editorialer 2D-Vektor-/Comic-Look
 - dicke saubere schwarze Konturen
 - einfache gut lesbare Formen
-- flächige oder sehr leicht schattierte Farben
+- kräftige, aber kontrollierte Farben
 - dezente weiche Schatten
+- einfache grafische Tiefenstaffelung erlaubt und erwünscht
 - höchstens leichte Papier-/Korntextur
-- ruhiger einfarbiger oder sanft texturierter Hintergrund
 - niedrige bis mittlere Detaildichte
 - eine dominante Kernaussage
 - eine klare sichtbare Handlung oder Ursache-Folge-Beziehung
@@ -114,14 +134,29 @@ Ein Bild soll wie ein eingefrorener verständlicher Moment wirken, zum Beispiel:
 
 Keine dekorative Icon-Sammlung um eine Figur herum.
 
+### Perspektivwechsel
+
+Direkt aufeinanderfolgende Bilder sollen sich sichtbar unterscheiden. Nutze je nach Inhalt:
+- Close-up
+- Medium Shot
+- einfache Weitaufnahme
+- Objekt-Detail
+- Kartenansicht
+- leichte Draufsicht
+- Off-Center-Komposition
+
+Nicht zwei oder drei Bilder hintereinander mit derselben Figur mittig, derselben Textposition und demselben Hintergrundschema.
+
 ## Hintergrund, Licht und Farbe
 
-- Hintergründe einfach: ruhiges Farbfeld oder leicht texturierte Fläche
+- Hintergrund bevorzugt als einfache kontextuelle Umgebung oder grafisches Farbfeld mit etwas Tiefe
+- eine kleine Umgebung ist besser als eine leere Fläche, wenn sie die Aussage stärkt
 - Umgebung nur so detailliert wie für die Aussage nötig
-- Licht normalerweise hell, klar und grafisch
+- Licht hell, klar und grafisch, mit sinnvoller Richtung oder Kontrast
 - dunkle cinematic Beleuchtung nur, wenn Nacht oder Dunkelheit selbst zum Inhalt gehören
 - keine komplexen realistischen Innenräume als Standard
 - keine überladene architektonische Kulisse
+- benachbarte Bilder dürfen unterschiedliche Hintergrundfarben verwenden, solange die globale Bildwelt gleich bleibt
 
 ## Alle Themen bleiben in derselben Welt
 
@@ -146,26 +181,23 @@ Technische Details sind nur dann erlaubt, wenn sie für die Erklärung notwendig
 
 Prompts sind Englisch. Sichtbarer Bildtext ist Deutsch.
 
-**Fast jedes Bild trägt Text.** Ein Bild ohne jedes Wort wirkt im Feed leer und
-verschenkt die Fläche. Regel: ein kurzes deutsches Stichwort pro Bildmoment.
+### Titelbild
 
+Bild 01 ist die erste Szene und zugleich das Cover. Es trägt die **Überschrift des gesamten Reels** als kräftige Zeile im oberen Bereich, klar abgesetzt von der Illustration. Sie muss auf einem kleinen Smartphone-Display sofort lesbar sein und ohne Ton neugierig machen.
+
+### Normale Bildphasen
+
+Bei allen späteren Bildern ist Text **optional**.
+
+- 0–4 deutsche Wörter
+- nur verwenden, wenn Text Verständnis oder Merkbarkeit wirklich verbessert
+- ungefähr 35–60 % der Nicht-Cover-Bilder dürfen Text tragen
+- ein starkes Bild ohne Text ist ausdrücklich erwünscht
+- das Motiv muss auch ohne den Text verständlich bleiben
 - nur exakt geplanter Text
-- 1–5 Wörter
-- stark und gut lesbar
-- nur einmal im Bild
 - kein zusätzlicher englischer Text
 - keine Fantasiewörter oder Pseudo-Schrift
 - keine doppelte Headline oben und unten
-
-### Das Titelbild
-
-Bild 01 ist die erste Szene und zugleich das Cover. Es trägt die **Überschrift des
-gesamten Reels** als kräftige Zeile im oberen Bereich, klar abgesetzt von der
-Illustration darunter. Sie muss auf einem kleinen Smartphone-Display sofort lesbar
-sein und ohne Ton neugierig machen.
-
-Die übrigen Bilder integrieren ihr Stichwort in die Komposition, ohne das Hauptmotiv
-zu verdecken.
 
 ## Nicht verwenden
 
@@ -185,6 +217,9 @@ zu verdecken.
 - Sprechblasenringe
 - UI-Boxen
 - Figur-mittig-plus-Icons als wiederholtes Standardschema
+- Headline-plus-ein-Symbol-Posterkarte
+- großer Text als dominantes Hauptmotiv
+- leere Fläche plus Label und Icon als Standard
 - extrem detaillierte Illustrationen
 - technische Cutaway-/Blueprint-Welt als Standard
 - themenspezifische Unter-Bildwelten
@@ -197,11 +232,15 @@ zu verdecken.
 Vor der Freigabe jedes Bildes:
 
 1. Ist die Kernaussage sofort verständlich?
-2. Wenn ein Akteur vorkommt: ist sein Körper eine saubere runde Kugel mit einfachen Augen?
-3. Wurde kein menschlicher Kopf, kein humanoider Körper und kein Stick-Figure-Look verwendet?
-4. Wenn keine Kugelfigur vorkommt: ist sie tatsächlich unnötig und erklärt das Hauptmotiv die Szene klarer?
-5. Bleibt die Szene in derselben Modern Countryball Explainer Formsprache?
-6. Wurde keine themenspezifische zweite Bildwelt erzeugt?
-7. Bleibt Reels klar von der YouTube-Bildwelt getrennt?
+2. Wirkt das Bild wie eine konkrete Szene statt wie eine statische Posterkarte?
+3. Ist das Hauptmotiv auch ohne Text verständlich?
+4. Wenn ein Akteur vorkommt: ist sein Körper eine saubere runde Kugel mit einfachen Augen?
+5. Wurde kein menschlicher Kopf, kein humanoider Körper und kein Stick-Figure-Look verwendet?
+6. Wenn keine Kugelfigur vorkommt: ist sie tatsächlich unnötig und erklärt das Hauptmotiv die Szene klarer?
+7. Gibt es bei sinnvoller Gelegenheit einfache visuelle Tiefe oder Kontext statt einer leeren Fläche?
+8. Unterscheidet sich die Perspektive ausreichend vom direkt vorherigen Bild?
+9. Bleibt die Szene in derselben Modern Countryball Explainer Formsprache?
+10. Wurde keine themenspezifische zweite Bildwelt erzeugt?
+11. Bleibt Reels klar von der YouTube-Bildwelt getrennt?
 
 Wenn eine dieser Fragen scheitert, wird das Bild vereinfacht oder neu erzeugt.
