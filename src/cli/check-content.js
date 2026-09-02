@@ -3,6 +3,7 @@
 import { validateReelContent } from '../core/content-validator.js';
 import { validateImagePromptBundle } from '../core/image-prompt-bundle.js';
 import { verifyRequiredSourceQuality } from '../core/source-quality-file-guard.js';
+import { verifyFutureEffectsCoverage } from '../core/effects-quality-file-guard.js';
 
 function getArgument(name) {
   const index = process.argv.indexOf(name);
@@ -22,7 +23,9 @@ async function main() {
   const report = await validateReelContent(reelDirectory, { strict });
   const promptBundle = await validateImagePromptBundle(reelDirectory);
   const sourceGate = await verifyRequiredSourceQuality(reelDirectory);
+  const effectsGate = await verifyFutureEffectsCoverage(reelDirectory);
   const strictSourceGatePassed = !strict || !sourceGate.required || sourceGate.passed === true;
+  const strictEffectsGatePassed = !strict || !effectsGate.required || effectsGate.passed === true;
   const sourceQuality = sourceGate.inspection;
 
   console.log(`Prüfungen bestanden: ${report.summary.passedChecks}/${report.summary.totalChecks}`);
@@ -45,6 +48,17 @@ async function main() {
     }
   }
 
+  if (strict && effectsGate.required) {
+    if (effectsGate.passed) {
+      console.log('SFX-Coverage: bestanden — jeder Szenen- und interne Bildwechsel ist akustisch geplant.');
+    } else {
+      console.log(`- FEHLER: ${effectsGate.reason}`);
+      for (const finding of effectsGate.findings) {
+        console.log(`  - ${finding.sceneId ?? 'Reel'}${finding.targetId ? ` / ${finding.targetId}` : ''}: ${finding.issue}`);
+      }
+    }
+  }
+
   if (!promptBundle.passed) {
     const prefix = strict ? 'FEHLER' : 'WARNUNG';
     console.log(`- ${prefix}: ${promptBundle.message}`);
@@ -53,7 +67,7 @@ async function main() {
     console.log(`Bildprompt-Sammeldatei vollständig: ${promptBundle.outputFile}`);
   }
 
-  if (!report.passed || !strictSourceGatePassed || (strict && !promptBundle.passed)) process.exitCode = 1;
+  if (!report.passed || !strictSourceGatePassed || !strictEffectsGatePassed || (strict && !promptBundle.passed)) process.exitCode = 1;
   else console.log('Inhaltspaket ist bereit für Audio- und Bilderstellung.');
 }
 
