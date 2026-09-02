@@ -78,6 +78,14 @@
     "avoidSchoolLikeIntro": true,
     "avoidPoliticalEndorsement": true,
     "stateUncertaintyClearly": true,
+    "narrationPerformance": {
+      "naturalDeliveryRequired": true,
+      "hookEnergy": "slightly-higher",
+      "emphasizeKeyWords": true,
+      "avoidFlatTtsCadence": true,
+      "avoidLongMicroPauses": true,
+      "voiceoverRemainsDominantOverSfx": true
+    },
     "targetDurationSeconds": {
       "min": 55,
       "max": 60,
@@ -91,6 +99,12 @@
     "endingRules": {
       "required": true,
       "minimumFinalScenes": 2,
+      "postVoiceHoldSeconds": {
+        "min": 0.5,
+        "max": 0.7,
+        "preferred": 0.6
+      },
+      "forbidMultiSecondSilentTail": true,
       "structure": [
         "klare persönliche Prüf- oder Erkenntnisfrage",
         "konkrete Handlung oder Lösung",
@@ -100,7 +114,8 @@
         "abruptes Ende direkt nach einer langen Aufzählung",
         "schulische Zusammenfassung ohne Erkenntnis",
         "mehrere Handlungsschritte in einem einzigen überladenen Bild",
-        "generischer Aufruf ohne Bezug zum Thema"
+        "generischer Aufruf ohne Bezug zum Thema",
+        "mehrsekündige Stille nach dem letzten gesprochenen Wort"
       ]
     },
     "maximumSentencePauseSeconds": 0.24,
@@ -113,6 +128,7 @@
       "retainedPauseFilterSeconds": 0.05,
       "playbackRate": 1.1,
       "preservePitch": true,
+      "trimLeadingAndTrailingSilence": true,
       "loudnessNormalization": {
         "enabled": true,
         "integratedLufs": -16,
@@ -143,10 +159,12 @@
     "hookVisibleFromSecond": 0,
     "audioCueRequired": true,
     "audioCueLeadSeconds": {
-      "min": 0.1,
-      "max": 0.3,
-      "default": 0.2
+      "min": 0.08,
+      "max": 0.12,
+      "default": 0.1
     },
+    "imageCueLeadSeconds": 0.08,
+    "sfxPreRollSeconds": 0.04,
     "consistentStyleWithinReel": true,
     "creativeStyleBetweenReels": false,
     "visualWorldMode": "fixed",
@@ -156,34 +174,38 @@
     "styleBiblePath": "knowledge/fixed-visual-world.md",
     "promptLanguage": "en",
     "integratedGermanKeywordsAllowed": true,
-    "integratedGermanTextPreferred": true,
+    "integratedGermanTextPreferred": false,
     "embeddedTextRules": {
+      "coverRequired": true,
+      "nonCoverOptional": true,
       "useWheneverItImprovesClarity": true,
       "language": "de",
       "preferredSceneCoveragePercent": {
-        "min": 55,
-        "max": 85
+        "min": 35,
+        "max": 60
       },
       "preferredWordsPerScene": {
-        "min": 1,
-        "max": 5
+        "min": 0,
+        "max": 4
       },
       "size": "contextual-small-medium-or-large",
+      "imageMustWorkWithoutText": true,
       "allowedUses": [
-        "kurze Überschrift",
+        "kurze Cover-Überschrift",
         "ein einzelnes Schlüsselwort",
         "kleines Schild oder Etikett",
         "Beschriftung auf Dokument, Karte, Display oder Gegenstand",
         "kurze Schlussaussage"
       ],
       "mustAppearExactlyInPrompt": true,
-      "mayBeOmittedWhen": "Text würde die Szene überladen oder die Bildgenerierung unnötig verschlechtern.",
+      "mayBeOmittedWhen": "Bei normalen Bildphasen ist Text optional. Wenn Handlung, Gegenstand oder räumliche Beziehung die Aussage allein verständlich machen, bleibt die Szene bewusst textfrei.",
       "forbidden": [
         "englischer sichtbarer Text",
         "zufällige oder erfundene Wörter",
         "lange Absätze",
         "unnötig viel Text",
         "erzwungener Text in jeder einzelnen Szene",
+        "große Headline als dominantes Hauptmotiv außerhalb des Covers",
         "Workflow-Labels wie BILD, COVER, SZENE oder DATEINAME",
         "dieselbe Headline oben und unten doppelt"
       ]
@@ -193,6 +215,15 @@
     "oneClearMomentPerScene": true,
     "sceneFirstCompositionRequired": true,
     "concretePhysicalMomentRequired": true,
+    "visibleActionOrCauseEffectPreferred": true,
+    "simpleDepthPreferredWhenUseful": true,
+    "foregroundMidgroundBackgroundAllowed": true,
+    "varyShotTypeAcrossAdjacentImages": true,
+    "strongControlledColorContrastPreferred": true,
+    "contextualBackgroundPreferredWhenUseful": true,
+    "posterCardLayoutForbiddenAsDefault": true,
+    "headlinePlusIsolatedIconForbiddenAsDefault": true,
+    "textDominantCompositionForbidden": true,
     "genericIconBoardForbidden": true,
     "genericFloatingCardsForbidden": true,
     "repeatedCenteredCharacterPlusIconsForbidden": true,
@@ -232,10 +263,15 @@
       "keine menschlichen Köpfe auf Kugelkörpern, keine humanoiden Cartoonmenschen und keine Stick-Figuren",
       "Länder, Regierungen und Institutionen durch flaggenmarkierte oder neutrale Kugeln mit Karten, Grenzen, Dokumenten oder Gebäuden darstellen",
       "sauberer flacher 2D-Vektor-/Comic-Look mit dicken schwarzen Konturen",
-      "zuerst konkrete Mini-Szene mit Handlung und Kontext, erst danach zusätzliche Symbole",
+      "zuerst konkrete lebendige Mini-Szene mit Handlung, Veränderung, Reaktion oder Ursache-Folge, erst danach zusätzliche Symbole",
       "ein dominantes Hauptmotiv und höchstens wenige unterstützende Requisiten",
+      "wenn sinnvoll einfache Tiefe über Vordergrund, Mittelgrund, Hintergrund, Überlagerung oder Größenunterschied",
+      "Perspektive zwischen benachbarten Bildern sichtbar variieren",
+      "kräftige, kontrollierte Farbkontraste verwenden",
+      "kleine kontextuelle Umgebung statt leerer Fläche verwenden, wenn sie die Aussage verbessert",
       "niedrige bis mittlere Detaildichte und Bedeutung möglichst innerhalb einer Sekunde verständlich",
-      "ruhiger einfarbiger oder sanft texturierter Hintergrund",
+      "keine statische Headline-plus-ein-Symbol-Posterkarte als Standardschema",
+      "Text unterstützt das Bild, ersetzt aber nicht die visuelle Aussage",
       "keine generischen schwebenden Reaktionskarten, Sprechblasenringe, Icon-Gitter oder UI-Boxen als Standardlösung",
       "keine wiederholte Figur-mittig-plus-Icons-Komposition",
       "keine themenspezifischen Unter-Bildwelten für Technik, Geschichte, Medizin oder andere Themen",
@@ -246,7 +282,7 @@
       "sichtbarer Text ausschließlich Deutsch"
     ],
     "imageMomentPerClause": false,
-    "imageDensityGuidance": "Jede Standardszene bekommt zwei Bildmomente, die Hook einen. Ein Bild steht mindestens 3 Sekunden, im Schnitt etwa 3,25. Bei rund 58 Sekunden ergibt das ungefähr 17 bis 19 Bilder auf 8 bis 10 narrativen Szenen. Der zweite Bildmoment einer Szene setzt beim nächsten Hauptsatz oder Nebensatz an, nicht auf einem gleichmäßigen Raster."
+    "imageDensityGuidance": "Jede Standardszene bekommt zwei Bildmomente, die Hook einen. Ein Bild steht mindestens 3 Sekunden, im Schnitt etwa 3,25. Bei rund 58 Sekunden ergibt das ungefähr 15 bis 19 Bilder auf 8 bis 10 narrativen Szenen. Der zweite Bildmoment einer Szene setzt am tatsächlich gesprochenen Audio-Cue an und erscheint im finalen Schnitt ungefähr 0,08 Sekunden davor."
   },
   "subtitleRules": {
     "defaultEnabled": false,
