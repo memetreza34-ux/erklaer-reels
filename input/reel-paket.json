@@ -1,290 +1,351 @@
 {
-  "title": "Warum riecht Regen so besonders?",
-  "topicArea": "Alltag, Chemie und Naturwissenschaft",
-  "caption": "Warum riecht Regen eigentlich so besonders?\n\nDer typische Geruch nach einem Schauer heißt Petrichor. Ein wichtiger Bestandteil ist Geosmin, ein intensiv erdig riechender Stoff aus Mikroorganismen im Boden. Treffen Regentropfen auf porösen Boden, können winzige Luftblasen und Aerosole entstehen. Diese transportieren Stoffe aus dem Boden in die Luft – genau dorthin, wo unsere extrem empfindliche Nase sie wahrnimmt. Deshalb riechst du nach Regen oft weniger den Regen selbst als das, was er aus seiner Umgebung freisetzt.\n\n#Wissenschaft #Alltagswissen #Petrichor #Regen #Chemie",
+  "title": "Warum schieben wir Aufgaben auf?",
+  "topicArea": "Psychologie und menschliches Verhalten",
+  "caption": "Warum schieben wir Dinge auf, obwohl wir genau wissen, dass es später nur stressiger wird?\n\nProkrastination hat oft weniger mit Faulheit zu tun als mit kurzfristiger Gefühlsvermeidung. Genau deshalb wirken Handy, Snacks oder Putzen plötzlich leichter, obwohl die eigentliche Aufgabe im Kopf immer größer wird. Der beste Ausweg ist nicht perfekte Motivation, sondern ein winziger erster Schritt: Datei öffnen, eine Zeile schreiben, zwei Minuten starten. Welchen Minischritt kannst du heute sofort machen?\n\n#prokrastination #psychologie #produktivität #selbstmanagement #einfacherklärt",
   "sources": [
     {
-      "title": "Joung & Buie — Aerosol generation by raindrop impact on soil, Nature Communications",
-      "url": "https://www.nature.com/articles/ncomms7083",
-      "accessed": "2026-08-30",
+      "title": "Zhou et al. — Beyond positive thinking: A randomized trial of mental contrasting with implementation intentions to curb academic procrastination",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0001691825014829",
+      "accessed": "2026-09-02",
       "type": "wissenschaftliche Originalstudie",
-      "supports": "Zeigt mit Hochgeschwindigkeitsaufnahmen, dass Regentropfen auf porösem Boden Luftblasen und Aerosole erzeugen können; besonders unter Bedingungen von leichtem und mäßigem Regen."
+      "supports": "Randomisierte Studie: konkrete volitionale Planung reduzierte Aufgabenaversion und erhöhte die Bereitschaft, akademische Aufgaben zu beginnen."
     },
     {
-      "title": "American Chemical Society — What's That After-Rain Smell Made Of?",
-      "url": "https://www.acs.org/pressroom/reactions/library/whats-that-after-rain-smell-made-of.html",
-      "accessed": "2026-08-30",
+      "title": "APA Dictionary of Psychology — procrastination",
+      "url": "https://dictionary.apa.org/procrastination",
+      "accessed": "2026-09-02",
       "type": "unabhängige Fachquelle",
-      "supports": "Erklärt Petrichor als typischen Geruch nach Regen und nennt Geosmin, Bodenmikroorganismen sowie durch Regentropfen freigesetzte Stoffe als zentrale Bestandteile."
+      "supports": "Definiert Prokrastination als freiwilliges Aufschieben trotz erwarteter Nachteile und ordnet sie als Strategie zur Regulation negativer Emotionen ein."
     },
     {
-      "title": "American Chemical Society — Geosmin",
-      "url": "https://www.acs.org/molecule-of-the-week/archive/g/geosmin.html",
-      "accessed": "2026-08-30",
-      "type": "unabhängige Fachquelle",
-      "supports": "Beschreibt Geosmin als natürliches Molekül mit stark erdigem Geruch, seine Bildung durch Mikroorganismen und die sehr niedrige menschliche Geruchsschwelle."
+      "title": "Sirois & Pychyl — Procrastination and the Priority of Short-Term Mood Regulation",
+      "url": "https://compass.onlinelibrary.wiley.com/doi/10.1111/spc3.12011",
+      "accessed": "2026-09-02",
+      "type": "wissenschaftliche Fach- und Übersichtsquelle",
+      "supports": "Fasst Forschung zusammen, nach der aversive Aufgaben kurzfristige Stimmungsregulation auslösen und Prokrastination deshalb unmittelbare emotionale Erleichterung verschaffen kann."
     }
   ],
   "scenes": [
     {
-      "narration": "Warum riecht die Luft nach einem Regenschauer plötzlich so erdig und frisch, obwohl Regen selbst fast geruchlos ist?",
-      "imageText": "WARUM RIECHT REGEN?",
-      "visualIdea": "Ein Regentropfen trifft trockenen Boden und löst sichtbar eine erdige Duftwolke aus.",
-      "continuityNotes": "Direkter Frage-Hook ohne Einleitung; wissenschaftlicher Prozess sofort sichtbar.",
-      "audioCue": "Warum riecht die Luft",
+      "narration": "Warum schieben wir wichtige Aufgaben oft genau dann auf, wenn wir wissen, dass sie später nur mehr Stress machen?",
+      "imageText": "WARUM AUFSCHIEBEN?",
+      "visualIdea": "Eine neutrale Kugelfigur sitzt an einem realen Schreibtisch vor Laptop, To-do-Zettel und Uhr; die wichtige Aufgabe liegt offen da, während die Figur sichtbar zögert.",
+      "continuityNotes": "Start mit konkreter Alltagsszene, klarer heller Look, kräftige Konturen und leichte Tiefe; dieselbe neutrale Kugelfigur bleibt über das Reel wiedererkennbar.",
+      "audioCue": "Warum schieben wir",
       "durationSeconds": 5.5,
       "cameraMotion": {
-        "type": "none"
-      },
-      "soundEffects": [],
-      "images": [
-        {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant visual idea, clear cause-and-effect, instantly readable on a phone. Use exactly round countryball-style actors only when an actor is needed; otherwise let the object or scientific process be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 1, image 1: A fresh raindrop has just hit dry brown soil while a surprised neutral round countryball watches an earthy scent cloud rise from the ground; the visual question is clearly why the smell appears after rain. Integrate exactly the German text \"WARUM RIECHT REGEN?\" once, large and bold. Render no other readable words, labels or numbers. Keep all visible text German only and keep the composition uncluttered.",
-          "imageText": "WARUM RIECHT REGEN?",
-          "visualIdea": "A fresh raindrop has just hit dry brown soil while a surprised neutral round countryball watches an earthy scent cloud rise from the ground; the visual question is clearly why the smell appears after rain.",
-          "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
-          "startPercent": 0,
-          "audioCue": "Warum riecht die Luft"
-        }
-      ]
-    },
-    {
-      "narration": "Der Geruch heißt Petrichor. Besonders auffällig wird er, wenn Regen nach einer längeren trockenen Phase auf trockenen Boden trifft.",
-      "imageText": "PETRICHOR",
-      "visualIdea": "Trockener Boden wird vom ersten Regen getroffen; der typische Geruch beginnt sichtbar aufzusteigen.",
-      "continuityNotes": "Vom Hook direkt zum Namen des Phänomens; gleiche flache 2D-Welt beibehalten.",
-      "audioCue": "Der Geruch heißt",
-      "durationSeconds": 6.5,
-      "cameraMotion": {
         "type": "subtle-push-in"
       },
       "soundEffects": [],
       "images": [
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant visual idea, clear cause-and-effect, instantly readable on a phone. Use exactly round countryball-style actors only when an actor is needed; otherwise let the object or scientific process be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 2, image 1: A close view of cracked dry soil receiving the first few raindrops, with a subtle earthy scent plume beginning to rise; emphasize the named phenomenon, not a storm scene. Integrate exactly the German text \"PETRICHOR\" once, large and bold. Render no other readable words, labels or numbers. Keep all visible text German only and keep the composition uncluttered.",
-          "imageText": "PETRICHOR",
-          "visualIdea": "A close view of cracked dry soil receiving the first few raindrops, with a subtle earthy scent plume beginning to rise; emphasize the named phenomenon, not a storm scene.",
-          "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
-          "startPercent": 0,
-          "audioCue": "Der Geruch heißt"
-        },
-        {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant visual idea, clear cause-and-effect, instantly readable on a phone. Use exactly round countryball-style actors only when an actor is needed; otherwise let the object or scientific process be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 2, image 2: Show a simple before-and-after split of the same soil: long dry phase on the left and first wet patches on the right, with the scent becoming visible only after the rain arrives. Integrate exactly the German text \"NACH TROCKENHEIT\" once, large and bold. Render no other readable words, labels or numbers. Keep all visible text German only and keep the composition uncluttered.",
-          "imageText": "NACH TROCKENHEIT",
-          "visualIdea": "Show a simple before-and-after split of the same soil: long dry phase on the left and first wet patches on the right, with the scent becoming visible only after the rain arrives.",
-          "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
-          "startPercent": 0.5,
-          "audioCue": "Regen nach"
+          "prompt": "Create a vertical 9:16 educational explainer illustration in exactly ONE fixed Reel visual world called Modern Countryball Explainer. Use a modern editorial countryball-inspired 2D style with thick confident black outlines, vivid but controlled colours, subtle soft shadows, simple depth and smartphone-first clarity. A neutral round ball character sits at a real desk with an open laptop, a simple to-do sheet and a wall clock. The unfinished important task is clearly visible in front of the character, while the character hesitates and looks tense. Use an off-center medium shot, foreground desk edge, midground character and a simple room background so the frame feels like a living moment, not a poster. Integrate exactly the German headline \"WARUM AUFSCHIEBEN?\" once, strong but not covering the action. No other readable text.",
+          "imageText": "WARUM AUFSCHIEBEN?",
+          "audioCue": "Warum schieben wir"
         }
       ]
     },
     {
-      "narration": "Im Boden leben Mikroorganismen, darunter Streptomyces-Bakterien. Sie bilden Geosmin, einen Stoff mit sehr intensivem erdigem Geruch.",
-      "imageText": "GEOSMIN",
-      "visualIdea": "Bodenquerschnitt zeigt Mikroorganismen und den Stoff Geosmin als Quelle des erdigen Geruchs.",
-      "continuityNotes": "Mikrobiologie stark vereinfachen; keine menschlichen Figuren und keine unnötigen Fachlabels.",
-      "audioCue": "Im Boden leben",
-      "durationSeconds": 6.5,
-      "cameraMotion": {
-        "type": "ken-burns"
-      },
-      "soundEffects": [],
-      "images": [
-        {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant visual idea, clear cause-and-effect, instantly readable on a phone. Use exactly round countryball-style actors only when an actor is needed; otherwise let the object or scientific process be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 3, image 1: A cutaway of dark soil containing tiny stylized microorganism shapes that release a few highlighted molecular dots upward; focus on the earthy-smelling compound produced in soil. Integrate exactly the German text \"GEOSMIN\" once, large and bold. Render no other readable words, labels or numbers. Keep all visible text German only and keep the composition uncluttered.",
-          "imageText": "GEOSMIN",
-          "visualIdea": "A cutaway of dark soil containing tiny stylized microorganism shapes that release a few highlighted molecular dots upward; focus on the earthy-smelling compound produced in soil.",
-          "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
-          "startPercent": 0,
-          "audioCue": "Im Boden leben"
-        },
-        {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant visual idea, clear cause-and-effect, instantly readable on a phone. Use exactly round countryball-style actors only when an actor is needed; otherwise let the object or scientific process be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 3, image 2: A magnified soil cross-section with several simple rod-like soil bacteria and one highlighted Streptomyces-style colony, all clearly microscopic and not human-like characters. Integrate exactly the German text \"BODENBAKTERIEN\" once, large and bold. Render no other readable words, labels or numbers. Keep all visible text German only and keep the composition uncluttered.",
-          "imageText": "BODENBAKTERIEN",
-          "visualIdea": "A magnified soil cross-section with several simple rod-like soil bacteria and one highlighted Streptomyces-style colony, all clearly microscopic and not human-like characters.",
-          "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
-          "startPercent": 0.5,
-          "audioCue": "Geosmin, einen"
-        }
-      ]
-    },
-    {
-      "narration": "Unsere Nase reagiert extrem empfindlich auf Geosmin. Schon winzige Mengen reichen aus, damit wir diesen typischen Bodengeruch wahrnehmen.",
-      "imageText": "EXTREM EMPFINDLICH",
-      "visualIdea": "Eine winzige Geosmin-Menge löst eine deutlich sichtbare starke Geruchswahrnehmung aus.",
-      "continuityNotes": "Den Größenkontrast zwischen winziger Menge und starker Wahrnehmung zum Hauptmotiv machen.",
-      "audioCue": "Unsere Nase reagiert",
-      "durationSeconds": 6.5,
-      "cameraMotion": {
-        "type": "slow-zoom-in"
-      },
-      "soundEffects": [],
-      "images": [
-        {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant visual idea, clear cause-and-effect, instantly readable on a phone. Use exactly round countryball-style actors only when an actor is needed; otherwise let the object or scientific process be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 4, image 1: A neutral round countryball reacts strongly to one extremely tiny scent particle floating toward it, visually showing that only a minuscule amount is needed to be noticed. Integrate exactly the German text \"EXTREM EMPFINDLICH\" once, large and bold. Render no other readable words, labels or numbers. Keep all visible text German only and keep the composition uncluttered.",
-          "imageText": "EXTREM EMPFINDLICH",
-          "visualIdea": "A neutral round countryball reacts strongly to one extremely tiny scent particle floating toward it, visually showing that only a minuscule amount is needed to be noticed.",
-          "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
-          "startPercent": 0,
-          "audioCue": "Unsere Nase reagiert"
-        },
-        {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant visual idea, clear cause-and-effect, instantly readable on a phone. Use exactly round countryball-style actors only when an actor is needed; otherwise let the object or scientific process be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 4, image 2: A single tiny highlighted Geosmin particle sits beside a large sensitivity gauge with the indicator already high, making the contrast between tiny amount and strong perception obvious. Integrate exactly the German text \"WINZIGE MENGEN\" once, large and bold. Render no other readable words, labels or numbers. Keep all visible text German only and keep the composition uncluttered.",
-          "imageText": "WINZIGE MENGEN",
-          "visualIdea": "A single tiny highlighted Geosmin particle sits beside a large sensitivity gauge with the indicator already high, making the contrast between tiny amount and strong perception obvious.",
-          "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
-          "startPercent": 0.5,
-          "audioCue": "Mengen reichen"
-        }
-      ]
-    },
-    {
-      "narration": "Beim Aufprall eines Regentropfens entstehen auf porösem Boden winzige Luftblasen. Sie steigen im Tropfen nach oben und platzen.",
-      "imageText": "REGENTROPFEN",
-      "visualIdea": "Nahaufnahme eines Regentropfens auf porösem Boden mit entstehenden und aufsteigenden Luftblasen.",
-      "continuityNotes": "Mechanismus schrittweise erklären; Bild eins Aufprall, Bild zwei Blasenbildung.",
-      "audioCue": "Beim Aufprall eines",
+      "narration": "Meist ist das keine Faulheit. Dein Gehirn will unangenehme Gefühle wie Druck, Unsicherheit oder Langeweile lieber sofort vermeiden.",
+      "imageText": "",
+      "visualIdea": "Die Figur ist nicht entspannt oder faul, sondern sichtbar blockiert; der zweite Bildmoment zeigt den emotionalen Widerstand konkreter als Druck, Unsicherheit und Langeweile.",
+      "continuityNotes": "Gleicher Schreibtisch und gleiche Figur, aber näherer Bildausschnitt und stärkerer Fokus auf Reaktion statt statischer Erklärung.",
+      "audioCue": "Meist ist das",
       "durationSeconds": 6.5,
       "cameraMotion": {
         "type": "subtle-push-in"
       },
-      "soundEffects": [],
-      "images": [
+      "soundEffects": [
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant visual idea, clear cause-and-effect, instantly readable on a phone. Use exactly round countryball-style actors only when an actor is needed; otherwise let the object or scientific process be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 5, image 1: A single raindrop is frozen just as it strikes a porous patch of soil, with the impact zone enlarged and the soil texture simple enough to read instantly. Integrate exactly the German text \"REGENTROPFEN\" once, large and bold. Render no other readable words, labels or numbers. Keep all visible text German only and keep the composition uncluttered.",
-          "imageText": "REGENTROPFEN",
-          "visualIdea": "A single raindrop is frozen just as it strikes a porous patch of soil, with the impact zone enlarged and the soil texture simple enough to read instantly.",
-          "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
-          "startPercent": 0,
-          "audioCue": "Beim Aufprall eines"
+          "type": "soft-swipe",
+          "atPercent": 0.02,
+          "visualEvent": "Cut vom Hook zur blockierten Aufgabe",
+          "reason": "Kurzer hörbarer Akzent für den harten Szenenwechsel."
         },
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant visual idea, clear cause-and-effect, instantly readable on a phone. Use exactly round countryball-style actors only when an actor is needed; otherwise let the object or scientific process be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 5, image 2: Inside the impacted droplet, several tiny trapped air bubbles rise toward the upper surface, one about to burst; make the bubble process the only scientific focus. Integrate exactly the German text \"LUFTBLASEN\" once, large and bold. Render no other readable words, labels or numbers. Keep all visible text German only and keep the composition uncluttered.",
-          "imageText": "LUFTBLASEN",
-          "visualIdea": "Inside the impacted droplet, several tiny trapped air bubbles rise toward the upper surface, one about to burst; make the bubble process the only scientific focus.",
-          "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
-          "startPercent": 0.5,
-          "audioCue": "Luftblasen. Sie"
+          "type": "pop",
+          "targetId": "scene-02-image-02",
+          "audioCue": "Gefühle wie",
+          "visualEvent": "Gefühle und innerer Widerstand werden sichtbar",
+          "reason": "Akzentuiert den internen Bildwechsel direkt am gesprochenen Cue."
+        }
+      ],
+      "images": [
+        {
+          "prompt": "Create a vertical 9:16 educational explainer illustration in the fixed Modern Countryball Explainer world. Show the same neutral round ball character sitting upright at the desk with the task open, clearly wanting to work but looking mentally blocked rather than lazy. Use a close-medium shot, tense posture, hands near the keyboard, simple room depth, thick black outlines and controlled bright colours. The image must communicate blocked action without relying on typography. No readable text anywhere.",
+          "imageText": "",
+          "audioCue": "Meist ist das"
+        },
+        {
+          "prompt": "Create a vertical 9:16 educational explainer illustration in the fixed Modern Countryball Explainer world. Cut to a closer, more dynamic angle: the same round ball character leans slightly away from the task while three simple visual pressures approach from different directions — pressure, uncertainty and boredom. Keep the scene concrete with overlap and depth, not floating infographic cards. Integrate exactly the German text \"NICHT FAUL\" once, small-to-medium and supportive. No other readable text.",
+          "imageText": "NICHT FAUL",
+          "audioCue": "Gefühle wie"
         }
       ]
     },
     {
-      "narration": "Dabei schleudern sie feinste Tröpfchen als Aerosole in die Luft. Diese können Geosmin und andere Stoffe aus dem Boden mitnehmen.",
-      "imageText": "AEROSOLE",
-      "visualIdea": "Platzende Luftblasen schleudern winzige Tröpfchen aus dem Bodenbereich in die Luft.",
-      "continuityNotes": "Direkte Ursache-Folge-Fortsetzung aus Szene fünf; Aerosole klar nach oben bewegen.",
-      "audioCue": "Dabei schleudern sie",
+      "narration": "Darum wirkt plötzlich alles andere leichter: Handy, Snacks, Nachrichten oder Putzen. Kurz fühlt sich das sogar erleichternd an.",
+      "imageText": "",
+      "visualIdea": "Die Figur wendet sich von der Aufgabe ab und nimmt eine einfache Ablenkung; im zweiten Bild ist die kurzfristige Erleichterung sichtbar, während die Aufgabe ungelöst im Hintergrund bleibt.",
+      "continuityNotes": "Seitlicher Kamerawinkel statt Frontansicht; mehr Bewegung durch Armrichtung und Blickwechsel zur Ablenkung.",
+      "audioCue": "Darum wirkt plötzlich",
       "durationSeconds": 6.5,
       "cameraMotion": {
-        "type": "ken-burns"
+        "type": "gentle-pan"
       },
-      "soundEffects": [],
-      "images": [
+      "soundEffects": [
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant visual idea, clear cause-and-effect, instantly readable on a phone. Use exactly round countryball-style actors only when an actor is needed; otherwise let the object or scientific process be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 6, image 1: One bubble bursts at the top of a raindrop resting on soil and ejects many microscopic droplets upward as a clean spray of tiny aerosol particles. Integrate exactly the German text \"AEROSOLE\" once, large and bold. Render no other readable words, labels or numbers. Keep all visible text German only and keep the composition uncluttered.",
-          "imageText": "AEROSOLE",
-          "visualIdea": "One bubble bursts at the top of a raindrop resting on soil and ejects many microscopic droplets upward as a clean spray of tiny aerosol particles.",
-          "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
-          "startPercent": 0,
-          "audioCue": "Dabei schleudern sie"
+          "type": "whoosh-up",
+          "atPercent": 0.02,
+          "visualEvent": "Cut von der Blockade zu Ablenkungen",
+          "reason": "Kurzer hörbarer Akzent für den harten Szenenwechsel."
         },
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant visual idea, clear cause-and-effect, instantly readable on a phone. Use exactly round countryball-style actors only when an actor is needed; otherwise let the object or scientific process be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 6, image 2: Tiny airborne droplets rise above soil carrying a few highlighted earthy scent particles with them, visually linking the ground to the surrounding air without extra labels. Integrate exactly the German text \"DUFT IN DER LUFT\" once, large and bold. Render no other readable words, labels or numbers. Keep all visible text German only and keep the composition uncluttered.",
-          "imageText": "DUFT IN DER LUFT",
-          "visualIdea": "Tiny airborne droplets rise above soil carrying a few highlighted earthy scent particles with them, visually linking the ground to the surrounding air without extra labels.",
-          "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
-          "startPercent": 0.5,
-          "audioCue": "Diese können"
+          "type": "pop",
+          "targetId": "scene-03-image-02",
+          "audioCue": "oder Putzen",
+          "visualEvent": "Kurze Erleichterung durch Ablenkung wird sichtbar",
+          "reason": "Akzentuiert den internen Bildwechsel direkt am gesprochenen Cue."
+        }
+      ],
+      "images": [
+        {
+          "prompt": "Create a vertical 9:16 educational explainer illustration in the fixed Modern Countryball Explainer world. Show the same round ball character turning away from the laptop and reaching for a smartphone while a snack and a cleaning cloth are nearby as alternative easy actions. Use a side-angle medium-wide shot with clear motion direction from the unfinished task toward the distractions, strong depth and a lively diagonal composition. No readable text anywhere.",
+          "imageText": "",
+          "audioCue": "Darum wirkt plötzlich"
+        },
+        {
+          "prompt": "Create a vertical 9:16 educational explainer illustration in the fixed Modern Countryball Explainer world. Show the character now briefly relaxed with the phone in hand and a small snack nearby, while the open unfinished task stays visibly behind it on the desk. Use a tighter crop and warmer expression to communicate immediate relief while keeping the unresolved work in the background. Integrate exactly the German text \"KURZE ERLEICHTERUNG\" once. No other readable text.",
+          "imageText": "KURZE ERLEICHTERUNG",
+          "audioCue": "oder Putzen"
         }
       ]
     },
     {
-      "narration": "Deshalb kann leichter oder mäßiger Regen den Geruch besonders gut freisetzen. Sehr heftiger Regen erzeugt diesen Mechanismus nicht unbedingt genauso stark.",
-      "imageText": "LEICHTER REGEN",
-      "visualIdea": "Leichter bis mäßiger Regen wird mit heftigem Regen verglichen, um den Aerosolmechanismus verständlich einzuordnen.",
-      "continuityNotes": "Vergleich klar und sachlich halten; nicht behaupten, dass starker Regen keinen Geruch erzeugt.",
-      "audioCue": "Deshalb kann leichter",
+      "narration": "Doch während du wartest, wächst die Aufgabe im Kopf. Aus etwas Kleinem wird gefühlt ein unangenehm großer Berg.",
+      "imageText": "DER BERG WÄCHST",
+      "visualIdea": "Die kleine Aufgabe beginnt als überschaubarer Zettel und wächst im Kopf der Figur zu einem riesigen Berg, der sie im zweiten Bild räumlich dominiert.",
+      "continuityNotes": "Die Metapher entsteht aus der konkreten Schreibtischszene und wechselt dann in eine simple räumliche Bergszene; gleiche Figur, Farben und Konturstärke.",
+      "audioCue": "Doch während du",
+      "durationSeconds": 6.5,
+      "cameraMotion": {
+        "type": "subtle-push-in"
+      },
+      "soundEffects": [
+        {
+          "type": "soft-whoosh",
+          "atPercent": 0.02,
+          "visualEvent": "Cut von Ablenkung zum wachsenden Aufgabenberg",
+          "reason": "Kurzer hörbarer Akzent für den harten Szenenwechsel."
+        },
+        {
+          "type": "soft-impact",
+          "targetId": "scene-04-image-02",
+          "audioCue": "Aus etwas",
+          "visualEvent": "Die kleine Aufgabe wird zum großen Berg",
+          "reason": "Akzentuiert den internen Bildwechsel direkt am gesprochenen Cue."
+        }
+      ],
+      "images": [
+        {
+          "prompt": "Create a vertical 9:16 educational explainer illustration in the fixed Modern Countryball Explainer world. At the desk, the small task sheet begins to visually rise into a simple hill shape directly in front of the same round ball character, showing the task growing in the mind. Use a low slightly tilted angle and foreground paper transforming into the hill. Keep the transformation graphic and instantly readable. Integrate exactly the German text \"DER BERG WÄCHST\" once. No other readable text.",
+          "imageText": "DER BERG WÄCHST",
+          "audioCue": "Doch während du"
+        },
+        {
+          "prompt": "Create a vertical 9:16 educational explainer illustration in the fixed Modern Countryball Explainer world. Cut to a simple wide shot where the once-small task has become a huge stylized mountain occupying most of the frame, while the same round ball character stands tiny at the base looking overwhelmed. Use strong scale contrast with foreground character, midground mountain and a simple distant background. No readable text anywhere.",
+          "imageText": "",
+          "audioCue": "Aus etwas"
+        }
+      ]
+    },
+    {
+      "narration": "Genau deshalb hilft reine Motivation selten zuerst. Wichtiger ist, die Einstiegshürde so klein und klar wie möglich zu machen.",
+      "imageText": "",
+      "visualIdea": "Die Figur versucht zunächst, sich mit bloßer Willenskraft über eine hohe Hürde zu zwingen; danach schrumpft die Hürde zu einer kleinen klaren Stufe.",
+      "continuityNotes": "Von der großen Bergmetapher zurück zu einer einfachen physischen Hürde; klarer Ursache-Lösungs-Wechsel.",
+      "audioCue": "Genau deshalb hilft",
       "durationSeconds": 6.5,
       "cameraMotion": {
         "type": "subtle-pull-out"
       },
-      "soundEffects": [],
-      "images": [
+      "soundEffects": [
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant visual idea, clear cause-and-effect, instantly readable on a phone. Use exactly round countryball-style actors only when an actor is needed; otherwise let the object or scientific process be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 7, image 1: Light to moderate rainfall lands on porous soil and produces many small upward aerosol droplets, with a calm rain cloud and clear upward motion rather than dramatic weather. Integrate exactly the German text \"LEICHTER REGEN\" once, large and bold. Render no other readable words, labels or numbers. Keep all visible text German only and keep the composition uncluttered.",
-          "imageText": "LEICHTER REGEN",
-          "visualIdea": "Light to moderate rainfall lands on porous soil and produces many small upward aerosol droplets, with a calm rain cloud and clear upward motion rather than dramatic weather.",
-          "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
-          "startPercent": 0,
-          "audioCue": "Deshalb kann leichter"
+          "type": "whoosh-down",
+          "atPercent": 0.02,
+          "visualEvent": "Cut vom Problem zur verkleinerten Einstiegshürde",
+          "reason": "Kurzer hörbarer Akzent für den harten Szenenwechsel."
         },
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant visual idea, clear cause-and-effect, instantly readable on a phone. Use exactly round countryball-style actors only when an actor is needed; otherwise let the object or scientific process be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 7, image 2: A contrasting heavy downpour splashes forcefully onto the same soil with fewer clearly formed bubble-burst aerosol jets, emphasizing that stronger rain is not automatically the same mechanism. Integrate exactly the German text \"HEFTIGER REGEN\" once, large and bold. Render no other readable words, labels or numbers. Keep all visible text German only and keep the composition uncluttered.",
-          "imageText": "HEFTIGER REGEN",
-          "visualIdea": "A contrasting heavy downpour splashes forcefully onto the same soil with fewer clearly formed bubble-burst aerosol jets, emphasizing that stronger rain is not automatically the same mechanism.",
-          "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
-          "startPercent": 0.5,
-          "audioCue": "Sehr heftiger"
+          "type": "click",
+          "targetId": "scene-05-image-02",
+          "audioCue": "die Einstiegshürde",
+          "visualEvent": "Die hohe Hürde schrumpft zu einer kleinen Stufe",
+          "reason": "Akzentuiert den internen Bildwechsel direkt am gesprochenen Cue."
+        }
+      ],
+      "images": [
+        {
+          "prompt": "Create a vertical 9:16 educational explainer illustration in the fixed Modern Countryball Explainer world. Show the same round ball character trying to push forward toward the task while a tall simple barrier blocks the path. The character strains, but the barrier is clearly too high to cross comfortably. Use a medium shot from slightly below with the barrier separating foreground and background. Keep the metaphor physical and simple. No readable text anywhere.",
+          "imageText": "",
+          "audioCue": "Genau deshalb hilft"
+        },
+        {
+          "prompt": "Create a vertical 9:16 educational explainer illustration in the fixed Modern Countryball Explainer world. Show the same barrier transformed into one small easy step that the round ball character can cross immediately. The character is already moving over it, creating visible action. Use brighter open space and a slightly higher camera angle to make the solution feel easier. Integrate exactly the German text \"HÜRDE VERKLEINERN\" once. No other readable text.",
+          "imageText": "HÜRDE VERKLEINERN",
+          "audioCue": "die Einstiegshürde"
         }
       ]
     },
     {
-      "narration": "Und was riechst du dann eigentlich: den Regen selbst oder Stoffe, die durch den Regen aus Boden und Pflanzen freigesetzt werden?",
-      "imageText": "REGEN SELBST?",
-      "visualIdea": "Prüffrage trennt Regenwasser als vermeintliche Quelle vom Boden und seinen freigesetzten Stoffen.",
-      "continuityNotes": "Reflexionsszene; zwei klar gegensätzliche Bildmomente statt Wiederholung der Erklärung.",
-      "audioCue": "Und was riechst",
+      "narration": "Sag nicht: Ich mache alles. Sag: Ich öffne nur die Datei, schreibe nur eine Zeile oder starte zwei Minuten.",
+      "imageText": "NUR DIE DATEI",
+      "visualIdea": "Die Aufgabe wird auf einen konkreten Start heruntergebrochen: zuerst nur die Datei öffnen, dann einen Zwei-Minuten-Timer und eine einzelne Zeile beginnen.",
+      "continuityNotes": "Zurück am Schreibtisch, aber jetzt aktive Hände und Nahaufnahmen; klare praktische Handlung statt abstrakter Symbole.",
+      "audioCue": "Sag nicht Ich",
       "durationSeconds": 6.5,
       "cameraMotion": {
-        "type": "none"
+        "type": "gentle-pan"
       },
-      "soundEffects": [],
-      "images": [
+      "soundEffects": [
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant visual idea, clear cause-and-effect, instantly readable on a phone. Use exactly round countryball-style actors only when an actor is needed; otherwise let the object or scientific process be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 8, image 1: A simple rain cloud and falling drop are centered above dry-to-wet soil with a large visual question mark, asking whether the water itself is the source of the familiar smell. Integrate exactly the German text \"REGEN SELBST?\" once, large and bold. Render no other readable words, labels or numbers. Keep all visible text German only and keep the composition uncluttered.",
-          "imageText": "REGEN SELBST?",
-          "visualIdea": "A simple rain cloud and falling drop are centered above dry-to-wet soil with a large visual question mark, asking whether the water itself is the source of the familiar smell.",
-          "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
-          "startPercent": 0,
-          "audioCue": "Und was riechst"
+          "type": "soft-swipe",
+          "atPercent": 0.02,
+          "visualEvent": "Cut zur praktischen Zwei-Minuten-Startmethode",
+          "reason": "Kurzer hörbarer Akzent für den harten Szenenwechsel."
         },
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant visual idea, clear cause-and-effect, instantly readable on a phone. Use exactly round countryball-style actors only when an actor is needed; otherwise let the object or scientific process be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 8, image 2: The focus shifts from the raindrop to the soil below, where earthy scent particles and a few plant-oil style droplets rise upward after impact, creating the alternative explanation. Integrate exactly the German text \"ODER DER BODEN?\" once, large and bold. Render no other readable words, labels or numbers. Keep all visible text German only and keep the composition uncluttered.",
-          "imageText": "ODER DER BODEN?",
-          "visualIdea": "The focus shifts from the raindrop to the soil below, where earthy scent particles and a few plant-oil style droplets rise upward after impact, creating the alternative explanation.",
-          "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
-          "startPercent": 0.5,
-          "audioCue": "Stoffe, die"
+          "type": "tick",
+          "targetId": "scene-06-image-02",
+          "audioCue": "die Datei",
+          "visualEvent": "Timer und erster kleiner Arbeitsschritt werden sichtbar",
+          "reason": "Akzentuiert den internen Bildwechsel direkt am gesprochenen Cue."
+        }
+      ],
+      "images": [
+        {
+          "prompt": "Create a vertical 9:16 educational explainer illustration in the fixed Modern Countryball Explainer world. Show a close-medium desk shot where the same round ball character does only one tiny action: opening the laptop file and placing hands on the keyboard. The rest of the project is visually de-emphasized. Use clear hand-to-keyboard motion, subtle screen glow without readable interface text, thick outlines and simple depth. Integrate exactly the German text \"NUR DIE DATEI\" once. No other readable text.",
+          "imageText": "NUR DIE DATEI",
+          "audioCue": "Sag nicht Ich"
+        },
+        {
+          "prompt": "Create a vertical 9:16 educational explainer illustration in the fixed Modern Countryball Explainer world. Cut to an object-focused close-up: a simple two-minute timer beside the keyboard while the character starts typing one short line. Make the tiny first action physically obvious, with a close focal point and subtle background blur in the same clean 2D language. Integrate exactly the German text \"NUR 2 MINUTEN\" once. No other readable text.",
+          "imageText": "NUR 2 MINUTEN",
+          "audioCue": "die Datei"
         }
       ]
     },
     {
-      "narration": "Die Antwort ist vor allem Letzteres. Petrichor entsteht, weil Regentropfen erdige Duftstoffe wie Geosmin aus ihrer Umgebung in die Luft bringen.",
-      "imageText": "DIE ANTWORT",
-      "visualIdea": "Abschlusskette zeigt Boden, Regentropfen, Aerosole und Geosmin in der Luft als klare Lösung.",
-      "continuityNotes": "Konkrete Auflösung der Prüffrage; letzter Bildmoment ruhig für den Schlussbild-Nachlauf.",
-      "audioCue": "Die Antwort ist",
+      "narration": "Sobald du begonnen hast, sinkt der innere Widerstand oft schnell. Dein Gehirn merkt dann, dass die Aufgabe machbar ist.",
+      "imageText": "",
+      "visualIdea": "Die Figur arbeitet nun tatsächlich; der Widerstand wird kleiner und die Aufgabe wirkt im zweiten Bild wieder überschaubar und kontrollierbar.",
+      "continuityNotes": "Ruhigere Szene mit mehr offenem Raum; Bewegung bleibt subtil, aber die Figur arbeitet sichtbar weiter.",
+      "audioCue": "Sobald du begonnen",
+      "durationSeconds": 6.5,
+      "cameraMotion": {
+        "type": "subtle-push-in"
+      },
+      "soundEffects": [
+        {
+          "type": "whoosh-up",
+          "atPercent": 0.02,
+          "visualEvent": "Cut vom Start zum sinkenden Widerstand",
+          "reason": "Kurzer hörbarer Akzent für den harten Szenenwechsel."
+        },
+        {
+          "type": "pop",
+          "targetId": "scene-07-image-02",
+          "audioCue": "schnell Dein",
+          "visualEvent": "Die Aufgabe wirkt plötzlich machbar",
+          "reason": "Akzentuiert den internen Bildwechsel direkt am gesprochenen Cue."
+        }
+      ],
+      "images": [
+        {
+          "prompt": "Create a vertical 9:16 educational explainer illustration in the fixed Modern Countryball Explainer world. Show the same round ball character actively working at the laptop while the previously heavy barrier behind it visibly shrinks into a small harmless shape. Use a three-quarter angle with the character in midground and the shrinking obstacle in background. The frame should communicate progress through action. No readable text anywhere.",
+          "imageText": "",
+          "audioCue": "Sobald du begonnen"
+        },
+        {
+          "prompt": "Create a vertical 9:16 educational explainer illustration in the fixed Modern Countryball Explainer world. Cut to a cleaner wider shot: the task is now a manageable small stack or simple checklist shape, and the same round ball character works calmly with relaxed eyes and posture. Use more breathing room and a brighter balanced composition. Integrate exactly the German text \"ES IST MACHBAR\" once. No other readable text.",
+          "imageText": "ES IST MACHBAR",
+          "audioCue": "schnell Dein"
+        }
+      ]
+    },
+    {
+      "narration": "Frag dich heute: Welchen ersten Schritt kann ich in weniger als zwei Minuten wirklich sofort anfangen?",
+      "imageText": "DEIN ERSTER SCHRITT?",
+      "visualIdea": "Die Figur betrachtet drei konkrete Mini-Starts und entscheidet sich für genau einen; der zweite Bildmoment zeigt die ausgewählte Aktion unmittelbar vor dem Start.",
+      "continuityNotes": "Interaktive Entscheidungs-Szene mit drei physischen Optionen statt Icon-Board; nur wenige konkrete Objekte.",
+      "audioCue": "Frag dich heute",
+      "durationSeconds": 6.5,
+      "cameraMotion": {
+        "type": "gentle-pan"
+      },
+      "soundEffects": [
+        {
+          "type": "whoosh-down",
+          "atPercent": 0.02,
+          "visualEvent": "Cut zur persönlichen Prüffrage",
+          "reason": "Kurzer hörbarer Akzent für den harten Szenenwechsel."
+        },
+        {
+          "type": "click",
+          "targetId": "scene-08-image-02",
+          "audioCue": "in weniger",
+          "visualEvent": "Eine konkrete Mini-Aktion wird ausgewählt",
+          "reason": "Akzentuiert den internen Bildwechsel direkt am gesprochenen Cue."
+        }
+      ],
+      "images": [
+        {
+          "prompt": "Create a vertical 9:16 educational explainer illustration in the fixed Modern Countryball Explainer world. Show the same round ball character at the desk considering three concrete tiny actions placed physically in front of it: a laptop ready to open, a single blank line on paper and a small timer object. Do not arrange them as floating cards or UI boxes; they are real objects on the desk. Use a top-down three-quarter shot for visual variety. Integrate exactly the German text \"DEIN ERSTER SCHRITT?\" once. No other readable text.",
+          "imageText": "DEIN ERSTER SCHRITT?",
+          "audioCue": "Frag dich heute"
+        },
+        {
+          "prompt": "Create a vertical 9:16 educational explainer illustration in the fixed Modern Countryball Explainer world. Cut closer to one chosen action: the character's hand reaches decisively toward the laptop keyboard or timer while the other options fall out of focus. Use a tight action crop and clear directional motion to show commitment. No readable text anywhere.",
+          "imageText": "",
+          "audioCue": "in weniger"
+        }
+      ]
+    },
+    {
+      "narration": "Wenn du diesen Minischritt jetzt machst, stoppst du das Aufschieben am Anfang. Genau dort gewinnt man meistens gegen Prokrastination.",
+      "imageText": "JETZT ANFANGEN",
+      "visualIdea": "Die Figur setzt den gewählten Minischritt sofort um; im letzten Bild ist der kleine Start geschafft und die große Aufgabe wirkt deutlich handhabbarer.",
+      "continuityNotes": "Ruhiger, aber aktiver Abschluss am selben Schreibtisch; finale Bildphase bleibt nach dem letzten Wort nur kurz stehen.",
+      "audioCue": "Wenn du diesen",
       "durationSeconds": 7.0,
       "cameraMotion": {
         "type": "subtle-pull-out"
       },
-      "soundEffects": [],
-      "images": [
+      "soundEffects": [
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant visual idea, clear cause-and-effect, instantly readable on a phone. Use exactly round countryball-style actors only when an actor is needed; otherwise let the object or scientific process be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 9, image 1: A clean four-step visual chain shows dry soil, a raindrop impact, tiny aerosol droplets, and an earthy scent cloud reaching the air, summarizing the cause-and-effect in one frame. Integrate exactly the German text \"DIE ANTWORT\" once, large and bold. Render no other readable words, labels or numbers. Keep all visible text German only and keep the composition uncluttered.",
-          "imageText": "DIE ANTWORT",
-          "visualIdea": "A clean four-step visual chain shows dry soil, a raindrop impact, tiny aerosol droplets, and an earthy scent cloud reaching the air, summarizing the cause-and-effect in one frame.",
-          "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
-          "startPercent": 0,
-          "audioCue": "Die Antwort ist"
+          "type": "swoosh-reveal",
+          "atPercent": 0.02,
+          "visualEvent": "Cut zum direkten Abschluss und Handlungsimpuls",
+          "reason": "Einmaliger Reveal-Sound für den Abschluss."
         },
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Clean flat 2D vector-comic look, thick confident black outlines, low-to-medium detail, calm solid background, one dominant visual idea, clear cause-and-effect, instantly readable on a phone. Use exactly round countryball-style actors only when an actor is needed; otherwise let the object or scientific process be the main subject. No humans, no stick figures, no photorealism, no anime, no glossy 3D, no logos, no watermarks. Scene 9, image 2: Final calm summary: tiny Geosmin scent particles ride upward in aerosol droplets above freshly wet soil while a neutral round countryball recognizes the smell; leave a clear final-hold composition. Integrate exactly the German text \"GEOSMIN IN DER LUFT\" once, large and bold. Render no other readable words, labels or numbers. Keep all visible text German only and keep the composition uncluttered.",
-          "imageText": "GEOSMIN IN DER LUFT",
-          "visualIdea": "Final calm summary: tiny Geosmin scent particles ride upward in aerosol droplets above freshly wet soil while a neutral round countryball recognizes the smell; leave a clear final-hold composition.",
-          "rationale": "Eigener klarer Bildmoment für den gesprochenen Satzteil und den dazugehörigen Audio-Cue.",
-          "startPercent": 0.5,
-          "audioCue": "erdige Duftstoffe"
+          "type": "click",
+          "targetId": "scene-09-image-02",
+          "audioCue": "Aufschieben am",
+          "visualEvent": "Der Minischritt ist getan und die Aufgabe wird handhabbar",
+          "reason": "Akzentuiert den letzten internen Bildwechsel direkt am gesprochenen Cue."
+        }
+      ],
+      "images": [
+        {
+          "prompt": "Create a vertical 9:16 educational explainer illustration in the fixed Modern Countryball Explainer world. Show the same round ball character immediately performing the chosen tiny first step at the desk — hands on keyboard, first action underway, no hesitation. Use a confident medium shot with bright directional light and clear forward motion. The previously intimidating task is present but now visually smaller. Integrate exactly the German text \"JETZT ANFANGEN\" once. No other readable text.",
+          "imageText": "JETZT ANFANGEN",
+          "audioCue": "Wenn du diesen"
+        },
+        {
+          "prompt": "Create a vertical 9:16 educational explainer illustration in the fixed Modern Countryball Explainer world. Final calm shot: the tiny first step is completed, the same round ball character keeps working, and the larger task is now represented as a manageable path of a few simple steps instead of a mountain. Use a gentle wider composition with foreground desk, midground character and a clean simple background. The image should feel satisfying and alive, not like an end card. No readable text anywhere.",
+          "imageText": "",
+          "audioCue": "Aufschieben am"
         }
       ]
     }
