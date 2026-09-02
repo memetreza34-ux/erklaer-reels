@@ -2,7 +2,7 @@ export const FIXED_VISUAL_STYLE_ID = 'modern-countryball-explainer';
 
 export const FIXED_VISUAL_WORLD_LABEL = 'Modern Countryball Explainer';
 
-export const FIXED_VISUAL_STYLE_REASON = 'Globale feste Bildwelt für alle neuen Erklär-Reels: moderner Countryball-Erklärstil mit klaren runden Figuren, kräftigen Konturen, lebendigen Mini-Szenen, kontrolliertem Farbkontrast und hoher Social-Media-Lesbarkeit.';
+export const FIXED_VISUAL_STYLE_REASON = 'Globale feste Bildwelt für alle neuen Erklär-Reels: Modern Countryball Explainer mit klaren runden Figuren, kräftigen Konturen, lebendigen Mini-Szenen, kontrolliertem Farbkontrast und hoher Social-Media-Lesbarkeit.';
 
 export const FIXED_VISUAL_WORLD_PROMPT = [
   'Create a vertical 9:16 educational explainer illustration in exactly ONE fixed Reel visual world called Modern Countryball Explainer: a modern editorial countryball-inspired 2D style built for fast visual storytelling.',
