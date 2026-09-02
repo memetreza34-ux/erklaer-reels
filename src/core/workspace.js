@@ -1,6 +1,7 @@
 import { mkdir, readdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
+import { EDIT_TIMING_STYLE } from '../shared/edit-timing-style.js';
 import { FIXED_VISUAL_STYLE_ID, FIXED_VISUAL_STYLE_REASON } from '../shared/fixed-visual-world.js';
 import { SUBTITLE_STYLE } from '../shared/subtitle-style.js';
 import { normalizeSceneImagePhases } from '../shared/visual-moments.js';
@@ -15,6 +16,10 @@ const WEEKDAYS_DE = [
   'freitag',
   'samstag'
 ];
+
+const TRANSITION_SOUNDS = ['soft-whoosh', 'soft-swipe', 'whoosh-up', 'whoosh-down'];
+const INTERNAL_SOUNDS = ['click', 'pop', 'tick'];
+const SCENE_MOTIONS = ['ken-burns', 'subtle-push-in', 'subtle-pull-out', 'pan-right', 'slow-zoom-in', 'pan-left'];
 
 export function slugify(value) {
   return value
@@ -74,6 +79,54 @@ async function nextReelNumber(dayDirectory) {
   } catch {
     return 1;
   }
+}
+
+function defaultSceneMotion(index) {
+  if (index === 0) {
+    return {
+      type: 'subtle-push-in',
+      startScale: 1,
+      endScale: 1.03,
+      panXPercent: 0,
+      panYPercent: 0,
+      easing: 'ease-in-out',
+      reason: 'Sehr dezenter Fokus auf die Hook; nach Bildprüfung anpassen.'
+    };
+  }
+
+  const type = SCENE_MOTIONS[(index - 1) % SCENE_MOTIONS.length];
+  return {
+    type,
+    startScale: type === 'subtle-pull-out' ? 1.03 : 1,
+    endScale: type === 'subtle-pull-out' ? 1 : type.includes('zoom') || type === 'subtle-push-in' || type === 'ken-burns' ? 1.03 : 1.02,
+    panXPercent: type === 'pan-right' ? 2 : type === 'pan-left' ? -2 : 0,
+    panYPercent: 0,
+    easing: 'ease-in-out',
+    reason: 'Lebendige, aber dezente Standardbewegung; nach finalem Bildinhalt feinjustieren.'
+  };
+}
+
+function defaultSoundEffects(scene, index) {
+  if (index === 0) return [];
+
+  return [
+    {
+      type: TRANSITION_SOUNDS[(index - 1) % TRANSITION_SOUNDS.length],
+      atPercent: 0,
+      visualEvent: 'Harter Wechsel in die neue narrative Szene',
+      reason: 'Kurzer sauberer Übergangsakzent; im finalen Render leicht vor den Cut gelegt.',
+      volume: 0.22
+    },
+    {
+      type: INTERNAL_SOUNDS[(index - 1) % INTERNAL_SOUNDS.length],
+      targetId: `${scene.sceneId}-image-02`,
+      audioCue: '',
+      atPercent: 0.5,
+      visualEvent: 'Interner Wechsel zur zweiten Bildphase',
+      reason: 'Kurzer Informationsakzent; wird nach dem echten Voice-over am Bild-Cue synchronisiert.',
+      volume: 0.2
+    }
+  ];
 }
 
 export async function createReelWorkspace({
@@ -137,12 +190,12 @@ export async function createReelWorkspace({
       visualIdea: '',
       continuityNotes: '',
       audioCue: '',
-      leadInSeconds: 0.2,
+      leadInSeconds: EDIT_TIMING_STYLE.sceneCueLeadSeconds,
       subtitleCues: [],
       subtitlePosition: SUBTITLE_STYLE.position,
       durationSeconds: 0,
-      // Die Hook trägt ein ruhiges, sofort lesbares Bild. Jede weitere Szene bekommt
-      // zwei Bildmomente; der zweite setzt beim nächsten Satz an.
+      // Hook: ein sofort lesbares Bild. Jede weitere Szene: zwei Bildmomente mit
+      // eigenem Sprach-Cue für den zweiten Informationsschritt.
       imageCount: index === 1 ? 1 : 2,
       imagePhases: (index === 1 ? [0] : [0, 0.5]).map((startPercent, phaseIndex) => ({
         phaseId: `${sceneId}-image-${String(phaseIndex + 1).padStart(2, '0')}`,
@@ -152,6 +205,7 @@ export async function createReelWorkspace({
         expectedImageFileName: phaseIndex === 0 ? `${sceneId}.png` : `${sceneId}-${phaseIndex + 1}.png`,
         visualIdea: '',
         imageText: '',
+        audioCue: '',
         rationale: '',
         imageStatus: 'missing',
         assetVerification: null
@@ -165,8 +219,6 @@ export async function createReelWorkspace({
 
     sceneIndex.push(scene);
     await writeJson(path.join(sceneDirectory, 'scene.json'), scene);
-    // Für jede geplante Bildphase eine leere Promptdatei anlegen, damit der Agent
-    // nur noch füllen muss und der Export nichts vermisst.
     for (const phase of scene.imagePhases) {
       await writeText(path.join(sceneDirectory, phase.promptFileName), '');
     }
@@ -181,12 +233,12 @@ export async function createReelWorkspace({
     promptLanguage: 'en',
     aspectRatio: '9:16',
     targetDurationSeconds: 58,
-    endingHoldSeconds: 0.7,
+    endingHoldSeconds: 0.6,
     sceneCount,
-    // Die Hook trägt einen Bildmoment, jede weitere Szene zwei: 9 Szenen ergeben 17 Bilder.
     imageCountMode: 'one-hook-two-standard',
+    imagePhaseTimingMode: 'narration-audio-cue',
     plannedImageCount: sceneIndex.reduce((summe, szene) => summe + szene.imagePhases.length, 0),
-    imageDensityReason: 'Hook mit einem Bildmoment, jede weitere Szene mit zwei; der zweite setzt beim nächsten Satzteil an.',
+    imageDensityReason: 'Hook mit einem Bildmoment, jede weitere Szene mit zwei; der zweite setzt an einem echten Sprach-Cue ein und erscheint im Render minimal davor.',
     visualStyleId: FIXED_VISUAL_STYLE_ID,
     visualStyleReason: FIXED_VISUAL_STYLE_REASON,
     sourceQualitySchemaVersion: 3,
@@ -219,12 +271,12 @@ export async function createReelWorkspace({
     visualWorld: `fixed-${FIXED_VISUAL_STYLE_ID}`,
     subtitles: 'disabled',
     wordSync: 'not-required',
-    effects: 'planned',
+    effects: 'planned-with-cut-sfx-defaults',
     audio: 'missing',
     imagePrompts: 'missing',
     images: 'missing',
     assetMatching: 'waiting-for-files',
-    endingHold: 'planned',
+    endingHold: 'planned-0.6s',
     qualityControl: 'pending'
   });
   await writeJson(path.join(reelDirectory, 'assets-manifest.json'), {
@@ -260,7 +312,7 @@ export async function createReelWorkspace({
   });
   await writeText(path.join(reelDirectory, 'subtitles', 'README.md'), '# Untertitel\n\nUntertitel sind für dieses Format global deaktiviert. Die verbleibende Plan-Datei dient nur der Abwärtskompatibilität; der Renderer darf keine Untertitel einblenden.\n');
   await writeJson(path.join(reelDirectory, 'effects', 'effects-plan.json'), {
-    version: 1,
+    version: 2,
     enabled: true,
     timingStatus: 'estimated-until-audio-arrives',
     voiceoverPriority: true,
@@ -270,31 +322,26 @@ export async function createReelWorkspace({
     },
     defaults: {
       transition: 'cut',
-      cameraMotion: 'none',
-      soundEffectVolume: 0.2,
-      maximumSoundEffectsPerScene: 2
+      cameraMotion: 'subtle-push-in',
+      soundEffectVolume: 0.22,
+      maximumSoundEffectsPerScene: 3,
+      sceneCueLeadSeconds: EDIT_TIMING_STYLE.sceneCueLeadSeconds,
+      imageCueLeadSeconds: EDIT_TIMING_STYLE.imageCueLeadSeconds,
+      sfxPreRollSeconds: EDIT_TIMING_STYLE.sfxPreRollSeconds
     },
     scenes: sceneIndex.map((scene, index) => ({
       sceneId: scene.sceneId,
       transitionIn: {
         type: index === 0 ? 'none' : 'cut',
         durationSeconds: 0,
-        reason: index === 0 ? 'Hook beginnt ab Sekunde 0.' : ''
+        reason: index === 0 ? 'Hook beginnt ab Sekunde 0.' : 'Harter Cut; im finalen Render leicht vor dem Sprach-Cue.'
       },
-      cameraMotion: {
-        type: index === 0 ? 'subtle-push-in' : 'none',
-        startScale: 1,
-        endScale: index === 0 ? 1.04 : 1,
-        panXPercent: 0,
-        panYPercent: 0,
-        easing: 'ease-in-out',
-        reason: index === 0 ? 'Dezenter Fokus auf die Hook; nach Bildprüfung anpassen.' : ''
-      },
-      soundEffects: [],
+      cameraMotion: defaultSceneMotion(index),
+      soundEffects: defaultSoundEffects(scene, index),
       timingStatus: 'estimated-until-audio-arrives'
     }))
   });
-  await writeText(path.join(reelDirectory, 'effects', 'README.md'), `# Bewegungen und Soundeffekte\n\nPlane Zooms, Schwenks, Übergänge und Soundeffekte getrennt von den Bildprompts in \`effects-plan.json\`.\nNicht jedes Bild braucht Bewegung. Ein Zoom verändert die Größe normalerweise nur um 2–6 Prozent und höchstens um 8 Prozent.\nDie Hook startet ohne Übergang; danach sind ausschließlich direkte harte Schnitte mit Dauer 0 erlaubt. Soundeffekte werden sparsam eingesetzt, normalerweise null bis zwei pro Szene.\nDas Voice-over hat Vorrang; Hintergrundmusik ist standardmäßig ausgeschaltet.\nNach Einfügen des echten Voice-overs werden alle Zeitpunkte erneut geprüft.\n`);
+  await writeText(path.join(reelDirectory, 'effects', 'README.md'), `# Bewegungen und Soundeffekte\n\nDas Voice-over bleibt dominant; Hintergrundmusik ist standardmäßig aus.\n\nFür neue Reels gilt:\n- Hook startet ohne Übergang; danach nur harte Cuts.\n- Szenen-Cut ungefähr ${EDIT_TIMING_STYLE.sceneCueLeadSeconds.toFixed(2)} s vor dem Szenen-Cue.\n- Interner Bild-Cut ungefähr ${EDIT_TIMING_STYLE.imageCueLeadSeconds.toFixed(2)} s vor dem echten Bild-Cue.\n- SFX startet ungefähr ${EDIT_TIMING_STYLE.sfxPreRollSeconds.toFixed(2)} s vor dem sichtbaren Cut.\n- Jeder Szenenwechsel und jeder interne Bildwechsel braucht einen kurzen SFX oder passenden Objekt-Sound.\n- Standardlautstärke ungefähr 0,22; Stimme bleibt klar im Vordergrund.\n- Bewegung ist auf fast jedem Bildmoment dezent aktiv; Zoom meist nur 2–4 Prozent, Pan ungefähr maximal 3 Prozent.\n- Auch zweite Bildphasen erhalten im Renderer automatisch eine subtile Bewegung, falls nichts Spezifisches geplant wurde.\n\nDie vorgefüllten SFX/Motions sind sichere Startwerte und sollen nach Script, Bildinhalt und finalem Voice-over inhaltlich angepasst werden.\n`);
   await writeText(path.join(reelDirectory, 'caption', 'caption.txt'));
   await writeText(path.join(reelDirectory, 'sources', 'sources.md'), buildSourcesTemplate());
   await writeText(path.join(reelDirectory, 'review', 'notes.md'), '# Review-Notizen\n\n');
