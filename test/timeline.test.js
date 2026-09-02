@@ -11,7 +11,7 @@ async function writeJson(filePath, value) {
   await writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
 }
 
-test('führt 14 Szenen ohne Untertitel und mit ruhigem Schlussbild-Nachlauf zusammen', async () => {
+test('führt 14 Szenen ohne Untertitel und mit kurzem Schlussbild-Nachlauf zusammen', async () => {
   const reelDirectory = await mkdtemp(path.join(os.tmpdir(), 'erklaer-timeline-'));
   const scenes = Array.from({ length: 14 }, (_, index) => {
     const sceneId = `scene-${String(index + 1).padStart(2, '0')}`;
@@ -66,15 +66,15 @@ test('führt 14 Szenen ohne Untertitel und mit ruhigem Schlussbild-Nachlauf zusa
   assert.equal(result.timeline.scenes.length, 14);
   assert.equal(result.timeline.scenes[0].startSeconds, 0);
   assert.equal(result.timeline.audio.durationSeconds, 56);
-  assert.equal(result.timeline.composition.endingHoldSeconds, 0.7);
-  assert.equal(result.timeline.scenes.at(-1).endSeconds, 56.7);
+  assert.equal(result.timeline.composition.endingHoldSeconds, 0.6);
+  assert.equal(result.timeline.scenes.at(-1).endSeconds, 56.6);
   assert.equal(result.timeline.subtitles.enabled, false);
   assert.deepEqual(result.timeline.subtitles.cues, []);
   assert.equal(result.renderPlan.subtitlesEnabled, false);
   assert.equal(result.renderPlan.scenes.every((scene) => scene.subtitles.length === 0), true);
-  assert.equal(result.renderPlan.composition.durationFrames, 1701);
+  assert.equal(result.renderPlan.composition.durationFrames, 1698);
   assert.equal(result.renderPlan.composition.audioDurationSeconds, 56);
-  assert.equal(result.renderPlan.composition.endingHoldSeconds, 0.7);
+  assert.equal(result.renderPlan.composition.endingHoldSeconds, 0.6);
 
   const savedTimeline = JSON.parse(await readFile(path.join(reelDirectory, 'timeline', 'timeline-plan.json'), 'utf8'));
   const savedRenderPlan = JSON.parse(await readFile(path.join(reelDirectory, 'render', 'render-plan.json'), 'utf8'));
@@ -82,6 +82,6 @@ test('führt 14 Szenen ohne Untertitel und mit ruhigem Schlussbild-Nachlauf zusa
   assert.equal(savedTimeline.subtitles.enabled, false);
   assert.equal(savedRenderPlan.scenes.every((scene) => scene.subtitles.length === 0), true);
   assert.equal(savedReport.stage, 'pre-render');
-  assert.equal(savedReport.endingHoldSeconds, 0.7);
+  assert.equal(savedReport.endingHoldSeconds, 0.6);
   assert.ok(savedReport.checks.some((check) => check.id === 'subtitles-disabled' && check.passed));
 });
