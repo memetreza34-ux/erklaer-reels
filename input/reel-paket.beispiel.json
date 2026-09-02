@@ -22,16 +22,16 @@
     {
       "narration": "Warum haben manche Länder eigentlich gleich zwei oder sogar drei Hauptstädte, obwohl eine einzige doch völlig ausreichen würde?",
       "imageText": "ZWEI HAUPTSTÄDTE",
-      "visualIdea": "Zwei runde Länderkugeln stehen auf einer flachen Landkarte, getrennt durch eine gestrichelte Grenzlinie.",
-      "continuityNotes": "Gleiche Konturstärke, gleiche Farbwelt und derselbe ruhige Hintergrund wie in der Szene davor.",
+      "visualIdea": "Zwei runde Länderkugeln stehen auf einer vereinfachten Karte; zwei weit voneinander entfernte Hauptstadtmarker erzeugen sofort die Frage, warum beide wichtig sind.",
+      "continuityNotes": "Modern Countryball Explainer, kräftige Konturen und klare Smartphone-Lesbarkeit; folgende Bilder variieren Perspektive und Hintergrund bewusst.",
       "durationSeconds": 5.5,
       "cameraMotion": {
-        "type": "none"
+        "type": "subtle-push-in"
       },
       "soundEffects": [],
       "images": [
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Round ball characters with simple white eyes on a flat map shape, thick confident black outlines, flat colours on a calm ochre background field. Scene 1, image 1: Zwei runde Länderkugeln stehen auf einer flachen Landkarte, getrennt durch eine gestrichelte Grenzlinie. Low detail, one dominant idea, readable in one second on a phone. Integrate exactly \"ZWEI HAUPTSTÄDTE\" once, large and bold. Render no other readable words, labels or numbers.",
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Create a lively cover scene, not a poster card: two perfectly round countryball-style country actors stand on a simplified map with two distant capital markers, one marker in the foreground and one farther back for simple depth. Thick confident black outlines, vivid controlled colours, subtle soft shadows, off-center composition, clear visual tension between the two marked cities. The scene must communicate multiple capitals even without text. Integrate exactly the German headline \"ZWEI HAUPTSTÄDTE\" once in the upper area without covering the action. Render no other readable words, labels or numbers.",
           "imageText": "ZWEI HAUPTSTÄDTE",
           "startPercent": 0,
           "audioCue": "Warum haben manche"
@@ -41,8 +41,8 @@
     {
       "narration": "Ein Land, eine Hauptstadt, das klingt für die allermeisten Menschen zunächst völlig logisch, selbstverständlich und auch ziemlich praktisch.",
       "imageText": "EIN LAND, EINE STADT",
-      "visualIdea": "Eine einzelne Kugelfigur zeigt auf einen einzigen markierten Punkt auf einer schlichten Landkarte.",
-      "continuityNotes": "Gleiche Konturstärke, gleiche Farbwelt und derselbe ruhige Hintergrund wie in der Szene davor.",
+      "visualIdea": "Eine einzelne Kugelfigur zeigt auf einen einzigen Hauptstadtmarker; die zweite Bildphase wechselt näher an die Karte und stellt das einfache Ein-Stadt-Modell sichtbar infrage.",
+      "continuityNotes": "Gleiche Formsprache, aber anderer Bildausschnitt als im Cover: erst Medium Shot, dann Karten-Close-up.",
       "durationSeconds": 6.5,
       "cameraMotion": {
         "type": "ken-burns"
@@ -51,20 +51,20 @@
         {
           "type": "whoosh-up",
           "atPercent": 0.05,
-          "visualEvent": "Szenenwechsel zu Eine einzelne Kugelfigur zeigt auf einen",
-          "reason": "Markiert den Schnitt hörbar."
+          "visualEvent": "Szenenwechsel zur Ein-Hauptstadt-Erwartung",
+          "reason": "Kurzer sauberer Wechselakzent; der Import ergänzt automatisch den internen Bildwechsel-SFX."
         }
       ],
       "images": [
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Round ball characters with simple white eyes on a flat map shape, thick confident black outlines, flat colours on a calm ochre background field. Scene 2, image 1: Eine einzelne Kugelfigur zeigt auf einen einzigen markierten Punkt auf einer schlichten Landkarte. Low detail, one dominant idea, readable in one second on a phone. Integrate exactly \"EIN LAND, EINE STADT\" once, large and bold. Render no other readable words, labels or numbers.",
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Medium shot: one perfectly round neutral ball character points toward a single highlighted capital marker on a simplified map table. Use a small foreground edge of the table, the map in the midground and a calm contextual wall shape in the background for simple depth. Thick confident black outlines, vivid controlled colours, clean editorial 2D vector-cartoon look. Integrate exactly the German text \"EIN LAND, EINE STADT\" once without making the text the main subject. Render no other readable words, labels or numbers.",
           "imageText": "EIN LAND, EINE STADT",
           "startPercent": 0,
           "audioCue": "Ein Land eine"
         },
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Round ball characters with simple white eyes on a flat map shape, thick confident black outlines, flat colours on a calm ochre background field. Scene 2, image 2: Eine einzelne Kugelfigur zeigt auf einen einzigen markierten Punkt auf einer schlichten Landkarte. Low detail, one dominant idea, readable in one second on a phone. Integrate exactly the German text \"WIRKLICH IMMER?\" once, large and bold. Render no other readable words, labels or numbers.",
-          "imageText": "WIRKLICH IMMER?",
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Cut to a closer top-down map view with the same single capital marker, while a second faint route and an empty second marker position enter from the edge of frame to visually challenge the one-capital assumption. No character is needed in this image. Thick black outlines, vivid controlled colours, subtle depth through overlap and scale, strong off-center composition. The visual must explain the doubt without any text. Render no readable words, labels, numbers, logos or watermarks.",
+          "imageText": "",
           "startPercent": 0.5,
           "audioCue": "Menschen zunächst"
         }
@@ -76,35 +76,35 @@
     {
       "narration": "Hauptstädte sind also selten reine Geografie, sondern fast immer ein Kompromiss. Achte beim nächsten Blick auf eine Landkarte bewusst darauf.",
       "imageText": "SCHAU GENAUER HIN",
-      "visualIdea": "Ruhige Schlussansicht der Karte mit einer klar markierten Hauptstadt und den Regionen ringsum.",
-      "continuityNotes": "Gleiche Konturstärke, gleiche Farbwelt und derselbe ruhige Hintergrund wie in der Szene davor.",
+      "visualIdea": "Ruhige Schlussansicht einer Karte mit mehreren funktionalen Stadtmarkern; danach ein textfreier näherer Blick, der ihre Verteilung als Kompromiss sichtbar macht.",
+      "continuityNotes": "Gleiche Konturstärke und Farbwelt, aber die Schlussbilder nutzen eine ruhigere Weite und anschließend ein Detail statt derselben Center-Komposition.",
       "durationSeconds": 7,
       "cameraMotion": {
         "type": "subtle-pull-out"
       },
       "soundEffects": [
         {
-          "type": "swoosh-reveal",
+          "type": "soft-swipe",
           "atPercent": 0.05,
-          "visualEvent": "Szenenwechsel zu Ruhige Schlussansicht der Karte mit eine",
-          "reason": "Markiert den Schnitt hörbar."
+          "visualEvent": "Szenenwechsel zur Schlusskarte",
+          "reason": "Markiert den Schlusswechsel dezent; die Stimme bleibt dominant."
         }
       ],
       "images": [
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Round ball characters with simple white eyes on a flat map shape, thick confident black outlines, flat colours on a calm ochre background field. Scene 9, image 1: Ruhige Schlussansicht der Karte mit einer klar markierten Hauptstadt und den Regionen ringsum. Low detail, one dominant idea, readable in one second on a phone. Integrate exactly \"SCHAU GENAUER HIN\" once, large and bold. Render no other readable words, labels or numbers.",
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Simple wide shot of a country map with several clearly separated city markers connected to different simplified institutions, arranged with foreground and background scale for gentle depth. Thick confident black outlines, vivid controlled colours, calm but not empty environment. Integrate exactly the German text \"SCHAU GENAUER HIN\" once as a supportive line, while the map relationship remains the main visual. Render no other readable words, labels or numbers.",
           "imageText": "SCHAU GENAUER HIN",
           "startPercent": 0,
           "audioCue": "Hauptstädte sind also"
         },
         {
-          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Round ball characters with simple white eyes on a flat map shape, thick confident black outlines, flat colours on a calm ochre background field. Scene 9, image 2: Ruhige Schlussansicht der Karte mit einer klar markierten Hauptstadt und den Regionen ringsum. Low detail, one dominant idea, readable in one second on a phone. Render no other readable words, labels or numbers.",
-          "imageText": "DETAIL",
+          "prompt": "Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. Close-up on the same map where two different institution symbols sit beside two different city markers, making the political compromise visible through spatial separation. Use overlap, a strong diagonal composition and subtle shadows for depth. No character is required. No visible text at all. Render no readable words, labels, numbers, logos or watermarks.",
+          "imageText": "",
           "startPercent": 0.5,
           "audioCue": "Kompromiss Achte"
         }
       ]
     }
   ],
-  "_hinweis": "Jede Bildphase braucht 1–5 deutsche Wörter imageText. Die zweite Bildphase einer Standardszene braucht zusätzlich ein audioCue aus gesprochenen Wörtern; startPercent wird daraus abgeleitet, nicht pauschal auf 0,5 gesetzt."
+  "_hinweis": "Bild 01 braucht eine starke deutsche Cover-Headline. Spätere Bildphasen dürfen bewusst textfrei sein; falls Text genutzt wird, maximal 4 deutsche Wörter. Jede Nicht-Hook-Szene braucht zwei Bildphasen. Die zweite Bildphase braucht ein audioCue aus gesprochenen Wörtern; startPercent wird daraus abgeleitet. Der Workspace ergänzt sichere Motion- und SFX-Defaults für Szenen- und interne Bildwechsel."
 }
