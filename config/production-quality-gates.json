@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "assetMatching": {
     "minimumConfidence": 0.9,
     "requireVisualReview": true,
@@ -37,14 +37,14 @@
       "max": 7.5
     },
     "finalSceneSecondsIncludingHold": {
-      "min": 6.0,
-      "max": 8.5
+      "min": 5.8,
+      "max": 8.2
     },
     "maximumAdjacentDifferenceSeconds": 2.5,
-    "postVoiceHoldSeconds": 0.7,
+    "postVoiceHoldSeconds": 0.6,
     "postVoiceHoldRangeSeconds": {
-      "min": 0.6,
-      "max": 0.8
+      "min": 0.5,
+      "max": 0.7
     },
     "strictTimelineBalance": true,
     "minimumImagePhaseSeconds": 3.0,
@@ -52,6 +52,14 @@
       "min": 3.0,
       "max": 4.0
     }
+  },
+  "editTiming": {
+    "sceneCueLeadSeconds": 0.1,
+    "imageCueLeadSeconds": 0.08,
+    "sfxPreRollSeconds": 0.04,
+    "sceneChangeSfxPreRollSeconds": 0.04,
+    "maximumCutLeadSeconds": 0.12,
+    "guidance": "Neue Bilder sollen am gesprochenen Cue oder minimal davor erscheinen. Standard: Bildschnitt 0,08 s vor dem Cue; ein kurzer Wechsel-SFX startet weitere 0,04 s davor, sodass sein hörbarer Akzent am Schnitt sitzt."
   },
   "visualContinuity": {
     "requireSceneMeaningMatch": true,
