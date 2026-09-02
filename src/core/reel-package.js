@@ -21,6 +21,19 @@ function text(wert) {
   return String(wert ?? '').trim();
 }
 
+function soundCoverageKey(sound) {
+  const targetId = text(sound?.targetId);
+  return targetId || '__scene-change__';
+}
+
+function mergeSoundEffects(defaultSounds, suppliedSounds) {
+  const supplied = Array.isArray(suppliedSounds) ? suppliedSounds : [];
+  const suppliedKeys = new Set(supplied.map(soundCoverageKey));
+  const defaults = (Array.isArray(defaultSounds) ? defaultSounds : [])
+    .filter((sound) => !suppliedKeys.has(soundCoverageKey(sound)));
+  return [...supplied, ...defaults];
+}
+
 export function validateReelPackage(paket) {
   const probleme = [];
   const pflicht = ['title', 'topicArea', 'caption', 'scenes', 'sources'];
@@ -119,21 +132,25 @@ export function validateReelPackage(paket) {
           if (!phaseCue) {
             probleme.push(`Szene ${nr}, Bild ${bildIndex + 1}: audioCue fehlt. Der Bildwechsel muss an gesprochenen Wörtern hängen.`);
           } else if (cueStart === null) {
-            probleme.push(`Szene ${nr}, Bild ${bildIndex + 1}: audioCue \"${phaseCue}\" kommt in der Narration nicht vor.`);
+            probleme.push(`Szene ${nr}, Bild ${bildIndex + 1}: audioCue "${phaseCue}" kommt in der Narration nicht vor.`);
           }
         }
         if (text(bild.prompt).length < 180) {
           probleme.push(`Szene ${nr}, Bild ${bildIndex + 1}: prompt fehlt oder ist unter 180 Zeichen.`);
         }
-        // Ein Bild ganz ohne Text wirkt im Feed leer. Jeder Bildmoment bekommt ein
-        // kurzes deutsches Stichwort; das Titelbild trägt die Überschrift des Reels.
+
+        // Nur das Cover braucht zwingend Text. Spätere Bildmomente sollen primär über
+        // Handlung und Motiv funktionieren und dürfen bewusst textfrei bleiben.
         const bildText = text(bild.imageText);
-        if (!bildText) {
-          probleme.push(`Szene ${nr}, Bild ${bildIndex + 1}: imageText fehlt. Jedes Bild braucht ein kurzes deutsches Stichwort.`);
-        } else {
+        const istCover = index === 0 && bildIndex === 0;
+        if (istCover && !bildText) {
+          probleme.push('Szene 1, Bild 1: imageText fehlt. Das Cover braucht eine starke deutsche Headline.');
+        }
+        if (bildText) {
           const woerter = bildText.split(/\s+/).filter(Boolean).length;
-          if (woerter > 5) {
-            probleme.push(`Szene ${nr}, Bild ${bildIndex + 1}: imageText hat ${woerter} Wörter, erlaubt sind 1 bis 5.`);
+          const maximum = istCover ? 7 : 4;
+          if (woerter > maximum) {
+            probleme.push(`Szene ${nr}, Bild ${bildIndex + 1}: imageText hat ${woerter} Wörter, erlaubt sind höchstens ${maximum}.`);
           }
         }
       });
@@ -199,8 +216,11 @@ export async function importReelPackage(paket, { outputRoot = 'reels', date = ne
     await writeFile(path.join(verzeichnis, relativ), `${JSON.stringify(wert, null, 2)}\n`, 'utf8');
   };
 
-  // Szenen füllen
+  // Szenen füllen. Die Workspace-Defaults bleiben die Sicherheitsbasis für Motion
+  // und SFX; ein Paket kann sie gezielt ergänzen oder pro Coverage-Ziel ersetzen.
   const index = await lesen(path.join('scenes', 'scene-index.json'));
+  const basisEffektplan = await lesen(path.join('effects', 'effects-plan.json'));
+  const basisEffektByScene = new Map((basisEffektplan.scenes ?? []).map((szene) => [szene.sceneId, szene]));
   const effektSzenen = [];
 
   index.forEach((szene, i) => {
@@ -234,11 +254,13 @@ export async function importReelPackage(paket, { outputRoot = 'reels', date = ne
     });
     szene.imageCount = szene.imagePhases.length;
 
+    const basis = basisEffektByScene.get(szene.sceneId) ?? {};
     effektSzenen.push({
+      ...basis,
       sceneId: szene.sceneId,
-      transitionIn: { type: i === 0 ? 'none' : 'cut', durationSeconds: 0 },
-      cameraMotion: quelle.cameraMotion ?? { type: i === 0 ? 'none' : 'ken-burns' },
-      soundEffects: Array.isArray(quelle.soundEffects) ? quelle.soundEffects : []
+      transitionIn: basis.transitionIn ?? { type: i === 0 ? 'none' : 'cut', durationSeconds: 0 },
+      cameraMotion: quelle.cameraMotion ?? basis.cameraMotion ?? { type: i === 0 ? 'subtle-push-in' : 'ken-burns' },
+      soundEffects: mergeSoundEffects(basis.soundEffects, quelle.soundEffects)
     });
   });
 
@@ -252,9 +274,8 @@ export async function importReelPackage(paket, { outputRoot = 'reels', date = ne
   }
 
   // Effektplan, Caption, Quellen, Script
-  const effektplan = await lesen(path.join('effects', 'effects-plan.json'));
-  effektplan.scenes = effektSzenen;
-  await schreibenJson(path.join('effects', 'effects-plan.json'), effektplan);
+  basisEffektplan.scenes = effektSzenen;
+  await schreibenJson(path.join('effects', 'effects-plan.json'), basisEffektplan);
 
   await writeFile(path.join(verzeichnis, 'caption', 'caption.txt'), `${text(paket.caption)}\n`, 'utf8');
   await writeFile(path.join(verzeichnis, 'sources', 'sources.md'), quellenMarkdown(paket.sources), 'utf8');
