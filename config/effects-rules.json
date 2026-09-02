@@ -1,7 +1,7 @@
 {
   "motionEffects": {
     "defaultEnabled": true,
-    "defaultType": "none",
+    "defaultType": "subtle-push-in",
     "allowedTypes": [
       "none",
       "ken-burns",
@@ -15,12 +15,12 @@
       "pan-down"
     ],
     "zoomScale": {
-      "min": 0.92,
-      "max": 1.08,
+      "min": 0.94,
+      "max": 1.06,
       "recommendedChangeMin": 0.02,
-      "recommendedChangeMax": 0.06
+      "recommendedChangeMax": 0.04
     },
-    "maximumPanPercent": 4,
+    "maximumPanPercent": 3,
     "defaultEasing": "ease-in-out",
     "avoidMotionOnEveryScene": false,
     "protectSubtitleSafeZone": true,
@@ -34,11 +34,12 @@
       "linear"
     ],
     "motionOnMostScenes": true,
+    "motionOnEveryImagePhaseByDefault": true,
     "staticSceneShare": {
-      "min": 0.15,
-      "max": 0.35
+      "min": 0.05,
+      "max": 0.15
     },
-    "guidance": "Bewegung ist der Normalfall, nicht die Ausnahme. ken-burns kombiniert Zoom und leichten Schwenk und wirkt am hochwertigsten. Etwa jede vierte Szene bleibt bewusst ruhig, damit die Bewegung nicht zum Dauerzustand wird. Die Hook bleibt statisch, damit sie sofort lesbar ist."
+    "guidance": "Jeder Bildmoment soll sich leicht lebendig anfühlen. Auch zweite Bildphasen bekommen standardmäßig eine sehr dezente Kamerabewegung. Nutze kleine Push-ins, Pull-outs oder Ken-Burns-Bewegungen mit weichem Easing; keine hektischen Zooms. Nur bewusst grafische oder sehr informationsdichte Bilder dürfen statisch bleiben."
   },
   "transitions": {
     "defaultType": "cut",
@@ -52,7 +53,9 @@
     "allowSlides": false,
     "forbidBlackFrames": true,
     "hookTransition": "none",
-    "allFollowingScenes": "cut"
+    "allFollowingScenes": "cut",
+    "imageCueLeadSeconds": 0.08,
+    "guidance": "Harte Schnitte bleiben Standard. Der neue Bildmoment erscheint normalerweise etwa 0,08 Sekunden bzw. 2–3 Frames vor dem gesprochenen Cue-Wort, damit Wort und Bild gemeinsam wahrgenommen werden statt der Schnitt hörbar hinterherzulaufen."
   },
   "soundEffects": {
     "defaultEnabled": true,
@@ -60,9 +63,9 @@
     "voiceoverHasPriority": true,
     "maximumPerScene": 3,
     "recommendedVolume": {
-      "min": 0.12,
-      "max": 0.3,
-      "default": 0.2
+      "min": 0.18,
+      "max": 0.28,
+      "default": 0.22
     },
     "allowedCategories": [
       "whoosh-soft",
@@ -80,6 +83,8 @@
     "avoidCopyrightedMusic": true,
     "syncToAudioCueOrVisualEvent": true,
     "soundOnEverySceneChange": true,
+    "soundOnEveryInternalImageChange": true,
+    "sfxPreRollBeforeCutSeconds": 0.04,
     "transitionSoundTypes": [
       "soft-whoosh",
       "whoosh-up",
@@ -87,6 +92,6 @@
       "soft-swipe"
     ],
     "neverRepeatTransitionSoundBackToBack": true,
-    "guidance": "Jeder Szenenwechsel bekommt einen Sound. Erste Wahl ist immer ein inhaltlich passender Effekt zum sichtbaren Ereignis der neuen Szene, zum Beispiel pop, coin oder door. Nur wenn kein sichtbares Ereignis passt, kommt eine der vier Transition-Varianten. Dieselbe Variante darf nie zweimal hintereinander stehen."
+    "guidance": "Jeder Szenenwechsel und jeder interne Bildwechsel bekommt einen kurzen sauberen SFX, sofern kein inhaltlich passender Objekt-Sound denselben Zweck übernimmt. Der Sound startet standardmäßig etwa 0,04 Sekunden vor dem Bildschnitt, sodass sein hörbarer Akzent am Cut liegt. Nutze zuerst inhaltlich passende Effekte; sonst dezente Whoosh/Swipe/Click/Pop-Varianten. Stimme bleibt klar dominant und dieselbe Transition-Variante darf nicht zweimal direkt hintereinander kommen."
   }
 }
