@@ -15,7 +15,7 @@ function getArgument(name) {
 
 function showUsage() {
   console.log(`
-Erstellt einen neuen Reel-Arbeitsordner und den dazugehörigen Codex-Produktionsauftrag.
+Erstellt einen neuen Reel-Arbeitsordner und den dazugehörigen Produktionsauftrag.
 
 Beispiel mit festem Datum:
   npm run create:reel -- --title "Was bedeutet links und rechts?" --script-file input/script.txt --date 2026-08-03
@@ -29,7 +29,8 @@ Optionen:
   --date          Produktionsdatum im Format YYYY-MM-DD
   --next-free     Chronologisch nächsten freien Tag der neuesten Woche verwenden
   --scenes        Anzahl narrativer Szenen: 8 bis 10 (optional, Standard: 9)
-                  Die tatsächliche Bildanzahl wird danach individuell über imagePhases geplant.
+                  Bildanzahl ist fest: Hook 1 Bild, jede weitere Szene 2 Bilder.
+                  8 Szenen = 15 Bilder, 9 = 17, 10 = 19.
                   Ziel: 55–60 Sekunden bei ungefähr 1,10x
   --output        Ausgabeordner (optional, Standard: reels)
 `);
@@ -79,11 +80,13 @@ async function main() {
   }
   console.log(`Reel-Arbeitsordner erstellt: ${result.reelDirectory}`);
   console.log(`Narrative Szenen: ${result.reel.sceneCount}`);
-  console.log('Bildanzahl: wird individuell über 1–3 imagePhases pro Szene geplant.');
+  console.log(`Geplante Bilder: ${result.reel.plannedImageCount} (Hook 1, danach je 2)`);
   console.log(`Zieldauer: ${result.reel.targetDurationSeconds} Sekunden`);
+  console.log(`Schluss-Hold: ${result.reel.endingHoldSeconds} Sekunden`);
   console.log(`Bildwelt: ${result.reel.visualStyleId}`);
+  console.log('Schnitt/SFX: Bildwechsel minimal vor Sprach-Cue; jeder relevante Wechsel mit kurzem SFX.');
   console.log(`Quellen-QC: Schema ${result.reel.sourceQualitySchemaVersion} ist für dieses neue Reel verpflichtend.`);
-  console.log(`Codex-Auftrag vorbereitet: ${production.taskFile}`);
+  console.log(`Produktionsauftrag vorbereitet: ${production.taskFile}`);
   console.log(`Google-Flow-Nutzerdatei: ${promptBundle.userFile}`);
   console.log(`Technische Prompt-Spiegeldatei: ${promptBundle.file}`);
   console.log(`Übersichtliche Ordner: ${humanView.visibleFolders.join(', ')}`);
