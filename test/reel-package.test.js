@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 
 import { importReelPackage, validateReelPackage } from '../src/core/reel-package.js';
 import { validateReelContent } from '../src/core/content-validator.js';
+import { verifyFutureEffectsCoverage } from '../src/core/effects-quality-file-guard.js';
 
 const REPO_ROOT = fileURLToPath(new URL('..', import.meta.url));
 
@@ -20,7 +21,7 @@ function baueSzene(index, woerter) {
     visualIdea: 'Runde Kugelfiguren auf einer flachen Landkarte zeigen den Zusammenhang deutlich.',
     continuityNotes: 'Gleiche Konturstärke und Farbwelt wie in der Szene davor.',
     durationSeconds: index === 0 ? 5.5 : 6.5,
-    cameraMotion: { type: index === 0 ? 'none' : 'ken-burns' },
+    cameraMotion: { type: index === 0 ? 'subtle-push-in' : 'ken-burns' },
     soundEffects: index === 0 ? [] : [{ type: 'pop', atPercent: 0.05, visualEvent: 'Wechsel', reason: 'Markiert den Schnitt.' }],
     images: Array.from({ length: anzahl }, (_, j) => ({
       prompt: `Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. ${'Detailbeschreibung '.repeat(12)}Szene ${index + 1} Bild ${j + 1}.`,
@@ -35,11 +36,7 @@ function bauePaket({ szenenzahl = 9, woerterProSzene = 18 } = {}) {
   return {
     title: 'Warum haben manche Länder zwei Hauptstädte?',
     topicArea: 'Länder, Geografie und Geschichte',
-    caption: `Warum verteilen manche Länder ihre Staatsmacht auf mehrere Städte?
-
-${'Erklärender Fließtext zur Aufteilung der Hauptstadtfunktionen im Land. '.repeat(14)}
-
-#erklärt #geografie #wissen`,
+    caption: `Warum verteilen manche Länder ihre Staatsmacht auf mehrere Städte?\n\n${'Erklärender Fließtext zur Aufteilung der Hauptstadtfunktionen im Land. '.repeat(14)}\n\n#erklärt #geografie #wissen`,
     sources: [
       { title: 'Offizielle Quelle', url: 'https://www.gov.za/beispiel', accessed: '2026-08-29', type: 'Primärquelle', supports: 'Belegt die Aufteilung der Hauptstadtfunktionen.' },
       { title: 'Fachquelle', url: 'https://www.britannica.com/beispiel', accessed: '2026-08-29', type: 'Sekundärquelle', supports: 'Belegt den historischen Hintergrund.' }
@@ -74,7 +71,6 @@ test('erkennt eine falsche Szenen- und Bildanzahl', () => {
 });
 
 test('erkennt eine verfehlte Wortzahl', () => {
-  // Ohne diese Prüfung fällt es erst in der Inhaltskontrolle auf, nach dem Anlegen.
   const zuKurz = validateReelPackage(bauePaket({ woerterProSzene: 8 }));
   assert.match(zuKurz.join(' '), /155 bis 175/);
 });
@@ -95,7 +91,6 @@ test('ein gültiges Paket ergibt ein Reel, das die strenge Inhaltsprüfung beste
     assert.equal(ergebnis.sceneCount, 9);
     assert.equal(ergebnis.plannedImageCount, 17);
 
-    // Alle Prompts müssen als Datei liegen, sonst bricht der Export.
     const index = JSON.parse(await readFile(path.join(ergebnis.reelDirectory, 'scenes', 'scene-index.json'), 'utf8'));
     for (const szene of index) {
       for (const phase of szene.imagePhases) {
@@ -104,9 +99,11 @@ test('ein gültiges Paket ergibt ein Reel, das die strenge Inhaltsprüfung beste
       }
     }
 
+    const effects = await verifyFutureEffectsCoverage(ergebnis.reelDirectory);
+    assert.equal(effects.passed, true, JSON.stringify(effects.findings, null, 2));
+
     const bericht = await validateReelContent(ergebnis.reelDirectory);
     const fehler = bericht.checks.filter((check) => check.passed === false && check.level === 'error');
-    // Der Flow-Masterprompt entsteht erst beim Export und darf hier noch fehlen.
     const echteFehler = fehler.filter((check) => !/Masterprompt/i.test(check.message ?? ''));
     assert.deepEqual(echteFehler.map((check) => check.message), []);
   } finally {
@@ -165,27 +162,36 @@ test('lehnt eine Caption ab, die der Renderer später zurückweisen würde', () 
   assert.match(validateReelPackage(ohneHook).join(' '), /Hook/);
 });
 
-test('verlangt für jedes Bild ein kurzes deutsches Stichwort', () => {
-  const ohneText = bauePaket();
-  ohneText.scenes[3].images[1].imageText = '';
-  // Ein Bild ohne Wort wirkt im Feed leer — das soll schon im Paket auffallen.
-  assert.match(validateReelPackage(ohneText).join(' '), /imageText fehlt/);
+test('Cover braucht Text, normale Bildphasen dürfen textfrei sein', () => {
+  const ohneTextSpaeter = bauePaket();
+  ohneTextSpaeter.scenes[3].images[1].imageText = '';
+  assert.equal(validateReelPackage(ohneTextSpaeter).some((problem) => /imageText/.test(problem)), false);
+
+  const ohneCover = bauePaket();
+  ohneCover.scenes[0].images[0].imageText = '';
+  assert.match(validateReelPackage(ohneCover).join(' '), /Cover braucht eine starke deutsche Headline/);
 
   const zuLang = bauePaket();
-  zuLang.scenes[2].images[0].imageText = 'Dieser Bildtext ist deutlich zu lang für ein Reel';
-  assert.match(validateReelPackage(zuLang).join(' '), /erlaubt sind 1 bis 5/);
+  zuLang.scenes[2].images[0].imageText = 'Eins zwei drei vier fünf';
+  assert.match(validateReelPackage(zuLang).join(' '), /höchstens 4/);
 });
 
-test('die Beispielvorlage gibt kein Bild ohne Text vor', async () => {
+test('die Beispielvorlage erlaubt bewusst textfreie Nicht-Cover-Bilder', async () => {
   const vorlage = JSON.parse(await readFile(path.join(REPO_ROOT, 'input', 'reel-paket.beispiel.json'), 'utf8'));
+  const echteSzenen = vorlage.scenes.filter((szene) => szene.narration);
 
-  // ChatGPT orientiert sich an dieser Datei. Ein textloses Beispielbild würde
-  // die Regel unterlaufen, bevor sie überhaupt greift.
-  for (const [index, szene] of vorlage.scenes.entries()) {
-    for (const [bildIndex, bild] of (szene.images ?? []).entries()) {
-      const text = String(bild.imageText ?? '').trim();
-      assert.ok(text, `Vorlage: Szene ${index + 1}, Bild ${bildIndex + 1} hat keinen imageText`);
-      assert.ok(text.split(/\s+/).length <= 5, `Vorlage: "${text}" hat mehr als 5 Wörter`);
+  const coverText = String(echteSzenen[0].images[0].imageText ?? '').trim();
+  assert.ok(coverText, 'Das Cover braucht eine Headline');
+
+  let textfreiesNichtCover = 0;
+  for (const [index, szene] of echteSzenen.entries()) {
+    for (const bild of szene.images ?? []) {
+      const bildText = String(bild.imageText ?? '').trim();
+      if (index > 0 && !bildText) textfreiesNichtCover += 1;
+      if (index > 0 && bildText) {
+        assert.ok(bildText.split(/\s+/).length <= 4, `Nicht-Cover-Text "${bildText}" hat mehr als 4 Wörter`);
+      }
     }
   }
+  assert.ok(textfreiesNichtCover >= 1, 'Die Vorlage soll mindestens ein bewusst textfreies Nicht-Cover-Bild zeigen.');
 });
