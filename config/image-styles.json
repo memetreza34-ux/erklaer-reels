@@ -12,7 +12,7 @@
       "scope": "all-new-reels-all-topics",
       "promptLanguage": "en",
       "visibleTextLanguage": "de",
-      "description": "Genau eine feste 9:16-Reel-Bildwelt. Wenn Akteure vorkommen, sind es runde Kugelfiguren mit einfachen weißen Augen, dicken schwarzen Konturen und flächigen Farben. Eine Kugelfigur ist nicht in jedem Bild Pflicht; Objekte, Mechanismen, Karten und Umgebungen dürfen die Szene tragen, wenn sie die Aussage besser erklären.",
+      "description": "Eine feste 9:16-Reel-Bildwelt mit lebendiger visueller Story statt statischer Posterkarte. Wenn Akteure vorkommen, sind es runde Kugelfiguren mit einfachen weißen Augen und dicken schwarzen Konturen. Objekte, Mechanismen, Karten und Umgebungen dürfen die Szene allein tragen, wenn sie die Aussage besser erklären. Jede Bildphase soll wie ein konkreter Moment einer Geschichte wirken, nicht wie Überschrift plus isoliertes Symbol.",
       "characterSystem": {
         "defaultActor": "round-countryball-sphere-when-actor-is-useful",
         "characterAnchor": "perfectly-round-ball-body-with-simple-eyes",
@@ -43,13 +43,13 @@
       },
       "rendering": {
         "dimension": "2d",
-        "look": "clean-flat-2d-vector-countryball-cartoon",
+        "look": "clean-editorial-2d-vector-countryball-cartoon",
         "outlines": "thick-confident-black",
-        "detailDensity": "low-to-medium",
-        "colors": "flat-or-very-lightly-shaded-readable",
-        "shadows": "subtle-soft",
+        "detailDensity": "medium",
+        "colors": "vivid-but-controlled-high-contrast-palette",
+        "shadows": "subtle-soft-with-simple-depth",
         "texture": "none-or-very-light-paper-grain",
-        "lightingDefault": "clear-graphic-not-cinematic",
+        "lightingDefault": "bright-graphic-with-purposeful-light-direction",
         "photorealism": false,
         "glossy3d": false,
         "sterileVectorInfographic": false,
@@ -70,18 +70,23 @@
         "closeUpsAllowed": true,
         "offCenterFramingAllowed": true,
         "simpleDepthAllowed": true,
+        "foregroundMidgroundBackgroundPreferred": true,
         "simpleWideShotsAllowed": true,
         "fullFrame": true,
         "noSubtitleSafeZone": true,
         "avoidMultiPanel": true,
         "avoidRepeatedCenteredTemplate": true,
+        "avoidPosterCardLayout": true,
+        "avoidHeadlinePlusIsolatedIcon": true,
+        "varyShotTypeAcrossAdjacentImages": true,
         "understandableWithinSeconds": 1,
         "simplifyWhenMeaningRequiresStudy": true
       },
       "background": {
-        "type": "calm-solid-colour-field-or-lightly-textured-flat-colour",
+        "type": "simple-contextual-environment-or-graphic-colour-field-with-depth",
         "colorMayVaryByScene": true,
         "minimalContextualElementAllowed": true,
+        "emptyMonochromeFieldAsDefault": false,
         "realisticDetailedInteriorDefault": false,
         "complexRealisticScenery": false,
         "darkCinematicLightingDefault": false
@@ -100,14 +105,21 @@
       "visibleText": {
         "language": "de",
         "preferredWords": {
-          "min": 1,
-          "max": 5
+          "min": 0,
+          "max": 4
         },
-        "style": "bold-high-contrast-high-readability",
+        "coverTextRequired": true,
+        "nonCoverTextOptional": true,
+        "targetShareOfNonCoverImagesWithText": {
+          "min": 0.35,
+          "max": 0.6
+        },
+        "style": "bold-high-contrast-high-readability-when-used",
         "preferredPlacement": "composition-dependent",
         "exactOnly": true,
         "noTextWhenUnrequested": true,
-        "neverDuplicateSameHeadlineTopAndBottom": true
+        "neverDuplicateSameHeadlineTopAndBottom": true,
+        "guidance": "Text unterstützt das Bild, ersetzt es aber nicht. Das Cover braucht eine starke Headline. Bei normalen Bildphasen Text nur nutzen, wenn er Verständnis oder Merkbarkeit wirklich verbessert; viele Bilder dürfen komplett ohne Text funktionieren."
       },
       "forbidden": [
         "human-heads-on-ball-bodies",
@@ -135,6 +147,9 @@
         "speech-bubble-ring-layout",
         "ui-like-box-layout",
         "repeated-centered-character-plus-icons-template",
+        "headline-plus-isolated-symbol-poster-card",
+        "large-text-dominating-most-of-the-frame",
+        "empty-background-with-only-label-and-icon",
         "unnecessary-arrow-chains",
         "excessive-small-details",
         "unrequested-readable-text",
@@ -147,7 +162,7 @@
       ]
     }
   ],
-  "selectionRule": "Für jedes Reel gilt genau eine Bildwelt: Modern Countryball Explainer. Wenn ein Akteur vorkommt, ist er eine runde Kugelfigur mit einfachen weißen Augen und ohne separaten Kopf; Flaggen nur bei echter geografischer Relevanz, sonst neutrale Kugeln. Eine Kugelfigur ist nicht in jedem Bild Pflicht. Wenn ein konkretes Objekt, ein Mechanismus, eine Karte oder eine Umgebung klarer erklärt, trägt dieses Motiv die Szene allein und behält dieselbe Kontur- und Formsprache. Es gibt keine zweite Reel-Welt und keine themenspezifischen Unter-Bildwelten.",
+  "selectionRule": "Für jedes Reel gilt genau eine Bildwelt: Modern Countryball Explainer. Der Stil bleibt gleich, aber jede Bildphase soll als lebendige konkrete Mini-Szene geplant werden. Wenn ein Akteur vorkommt, ist er eine runde Kugelfigur mit einfachen weißen Augen und ohne separaten Kopf; Flaggen nur bei echter geografischer Relevanz. Wenn Objekt, Mechanismus, Karte oder Umgebung klarer erklärt, trägt dieses Motiv die Szene allein. Keine statischen Posterkarten als Standard.",
   "goldenReferencePaths": [],
   "styleBiblePath": "knowledge/fixed-visual-world.md",
   "diversityRule": {
@@ -155,23 +170,26 @@
     "avoidImmediateRepeat": true,
     "forcedRotation": false,
     "fixedVisualWorldOverridesDiversity": true,
-    "guidance": "Nur Motiv, Perspektive, Bildausschnitt und Umgebung variieren. Die eine Modern-Countryball-Explainer-Formsprache bleibt immer gleich."
+    "guidance": "Motiv, Perspektive, Bildausschnitt, Farbkontrast und Umgebung sichtbar variieren. Aufeinanderfolgende Bilder sollen nicht dieselbe Poster-/Center-Komposition wiederholen. Die Modern-Countryball-Explainer-Formsprache bleibt trotzdem identisch."
   },
   "selectionCriteria": [
     "1-Sekunden-Verständlichkeit",
+    "konkrete sichtbare Handlung statt Posterkarte",
     "perfekt runde Kugelgeometrie wenn ein Akteur vorkommt",
     "keine Kugelfigur erzwingen wenn Objekt oder Umgebung klarer ist",
     "keine menschlichen Köpfe, humanoiden Figuren oder Stick-Figuren",
     "eine dominante Kernaussage",
-    "einfache physische Szene oder klare Ursache-Folge-Beziehung",
+    "Vordergrund-Mittelgrund-Hintergrund oder andere einfache Tiefenstaffelung wenn sinnvoll",
+    "abwechslungsreiche Perspektiven zwischen benachbarten Bildern",
+    "starker kontrollierter Farbkontrast",
     "niedrige bis mittlere Detaildichte",
     "starke Social-Media-Lesbarkeit",
     "keine themenbedingte Unter-Bildwelt",
     "klare Trennung von der YouTube-Bildwelt"
   ],
   "crossStyleTextRule": {
-    "preferred": true,
+    "preferred": false,
     "language": "de",
-    "guidance": "Wo es die Aussage verbessert, integriere kurzen deutschen Bildtext. Ein einzelnes Wort oder 1–5 Wörter reichen. Sichtbarer Text ist ausschließlich Deutsch; Prompts bleiben Englisch. Text nicht erzwingen und dieselbe Headline nie doppeln."
+    "guidance": "Covertext ist Pflicht. In normalen Bildphasen ist kurzer deutscher Text optional und soll nur erscheinen, wenn er die visuelle Erklärung verbessert. Ein starkes Bild ohne Text ist ausdrücklich erwünscht. Sichtbarer Text bleibt ausschließlich Deutsch; Prompts bleiben Englisch."
   }
 }
