@@ -43,6 +43,8 @@ npm run import:user-asset -- --dir "<reel>" --source "<datei>" --kind images|aud
 - ein deutscher Erzähler
 - letzte zwei Szenen: Erkenntnis-/Prüffrage → konkrete Lösung/Abschluss
 - keine Untertitel, kein aktiver Word-Sync
+- **es gibt keinen Untertitel- oder Word-Sync-Schritt** im aktiven Reel-Workflow
+- `sync:words` gehört **nicht zum aktiven Workflow** und bleibt Legacy
 - keine Hintergrundmusik
 - Voice-over 1,10x, Pitch erhalten
 - −16 LUFS, höchstens −1,5 dBTP
@@ -70,9 +72,9 @@ Originalaudio
 
 Das finale Voice-over darf vor dem separaten Schlussbild-Hold höchstens **0,25 s messbare Endstille** enthalten. Mehrsekündige Endstille blockiert Finalizer und Renderer — auch mit `--force`.
 
-## 3. Eine feste Reel-Bildwelt
+## 3. Eine feste Reel-Bildwelt — Modern Countryball Explainer
 
-Alle neuen Reels verwenden ausschließlich:
+Alle neuen Reels verwenden ausschließlich **Modern Countryball Explainer**:
 
 ```text
 modern-countryball-explainer
