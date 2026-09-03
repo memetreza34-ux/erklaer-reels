@@ -3,9 +3,12 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { verifyAudioPacingFileBinding } from './audio-pacing-file-guard.js';
+import { verifyFutureEffectsCoverage } from './effects-quality-file-guard.js';
 import { ensureHumanReelView } from './human-reel-view.js';
 import { validateRendererInput } from './render-validator.js';
+import { syncReelSounds } from './sound-library.js';
 import { verifyRequiredSourceQuality } from './source-quality-file-guard.js';
+import { verifyTrailingVoiceoverSilence } from './trailing-silence-guard.js';
 
 const currentDirectory = path.dirname(fileURLToPath(import.meta.url));
 const entryPoint = path.resolve(currentDirectory, '..', 'renderer', 'index.jsx');
@@ -118,9 +121,23 @@ export async function renderReel(reelDirectory, {
     throw new Error(`${sourceGate.reason} Der Renderer benötigt die verpflichtende Quellen-QC.`);
   }
 
+  const effectsGate = await verifyFutureEffectsCoverage(reelDirectory);
+  if (effectsGate.required && !effectsGate.passed) {
+    throw new Error(`${effectsGate.reason} Der Renderer blockiert statische Bildmomente, ungültige Motion-Typen und stumme Bildwechsel.`);
+  }
+
+  // Auch direkte Core-Aufrufe dürfen die Sound-Auflösung nicht umgehen. Dadurch
+  // liegen die echten SFX-Dateien garantiert im publicDir des Reel-Renderers.
+  await syncReelSounds(reelDirectory, { strict: true });
+
   const pacingBinding = await verifyAudioPacingFileBinding(reelDirectory);
   if (pacingBinding.required && !pacingBinding.passed) {
     throw new Error(`${pacingBinding.reason} Der Renderer verwendet keine veralteten Lautheitsmesswerte.`);
+  }
+
+  const trailingSilence = await verifyTrailingVoiceoverSilence(reelDirectory);
+  if (trailingSilence.required && !trailingSilence.passed) {
+    throw new Error(`${trailingSilence.reason} Der Renderer lässt nur den separaten Schlussbild-Hold nach dem gesprochenen Inhalt zu.`);
   }
 
   const validation = await validateRendererInput(reelDirectory, {
@@ -194,13 +211,11 @@ export async function renderReel(reelDirectory, {
       await copyFile(outputLocation, canonicalExportVideo);
     }
 
-    // Die sichtbare Verknüpfung unter 03-export/ entsteht erst jetzt: Vor dem Render
-    // zeigte sie auf eine noch nicht existierende Datei und hätte das Bündeln gebrochen.
     await ensureHumanReelView(reelDirectory);
 
     const fileStats = await stat(canonicalExportVideo);
     const report = {
-      version: 4,
+      version: 5,
       startedAt,
       finishedAt: new Date().toISOString(),
       passed: true,
@@ -219,8 +234,10 @@ export async function renderReel(reelDirectory, {
       outputBytes: fileStats.size,
       subtitlesEnabled: false,
       composition: plan.composition,
+      effectsHardGatePassed: effectsGate.passed,
+      trailingVoiceoverSilenceSeconds: trailingSilence.trailingSilenceSeconds,
       renderedSoundEffects: plan.scenes.reduce(
-        (sum, scene) => sum + (scene.soundEffects ?? []).filter((sound) => sound.file).length,
+        (sum, scene) => sum + (scene.soundEffects ?? []).length,
         0
       ),
       validationReport: path.relative(reelDirectory, validationReportPath).split(path.sep).join('/')
@@ -231,6 +248,7 @@ export async function renderReel(reelDirectory, {
     const status = await readJson(statusPath);
     status.subtitles = 'disabled';
     status.wordSync = 'not-required';
+    status.effects = 'motion-and-sfx-hard-gates-passed';
     status.render = 'complete';
     status.export = 'complete';
     status.renderedFile = path.relative(reelDirectory, canonicalExportVideo).split(path.sep).join('/');
@@ -244,7 +262,7 @@ export async function renderReel(reelDirectory, {
     return report;
   } catch (error) {
     const report = {
-      version: 4,
+      version: 5,
       startedAt,
       finishedAt: new Date().toISOString(),
       passed: false,
@@ -255,6 +273,8 @@ export async function renderReel(reelDirectory, {
       renderedOutputFile: outputLocation,
       exportCaptionFile: captionExport.file,
       subtitlesEnabled: false,
+      effectsHardGatePassed: effectsGate.passed,
+      trailingVoiceoverSilenceSeconds: trailingSilence.trailingSilenceSeconds,
       error: error.message
     };
     await writeJson(reportPath, report);
