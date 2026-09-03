@@ -1,18 +1,8 @@
 # CURRENT WORKFLOW — VERBINDLICHE SINGLE SOURCE OF TRUTH
 
-**Stand: 2026-09-02**
+**Stand: 2026-09-03**
 
 Diese Datei ist die verbindliche Repo-weite Produktionsregel für neue Chats, Codex, Antigravity und andere Repo-Agenten.
-
-## Drei Produktionsphasen
-
-Jedes Reel entsteht in drei Phasen mit klar getrennten Rollen:
-
-1. **ChatGPT** legt das Reel an und schreibt Script, Bildprompts und Effektplan
-2. **Arman** erzeugt Voice-over und Bilder und legt beide im Reel-Ordner ab
-3. **Antigravity** führt alles zusammen, synchronisiert Bildwechsel/SFX am finalen Voice-over und rendert die MP4
-
-Ausführlich in `WORKFLOW_PHASEN.md`.
 
 ## Priorität
 
@@ -24,321 +14,269 @@ Ausführlich in `WORKFLOW_PHASEN.md`.
 6. `docs/` und `knowledge/`
 7. ältere Reel-Dateien
 
-## 0. Datensicherheit für Nutzerassets — Hard Gate
+## Drei Produktionsphasen
 
-Nutzerdateien sind Originale und werden niemals als Wegwerf-Arbeitsdateien behandelt.
+1. **ChatGPT**: Reel anlegen, Script, Bildprompts, Motion-/SFX-Plan, Caption und Quellen fertigstellen.
+2. **Arman**: Voice-over und Bilder erzeugen und im Reel-Ordner ablegen.
+3. **Antigravity**: Assets zuordnen, Audio optimieren, echte Cue-Zeiten setzen, Motion/SFX binden, QC und Render.
 
-- Keine ZIP-, Bild-, Audio- oder Videodatei aus einem **anderen Reel** als Quelle für das aktuelle Reel verwenden.
+Details: `WORKFLOW_PHASEN.md`.
+
+## 0. Nutzerassets sind unveränderliche Originale
+
+- Keine ZIP-, Bild-, Audio- oder Videodatei aus einem anderen Reel als Ersatz verwenden.
 - Nutzerassets niemals zwischen Reels mit `mv` verschieben.
-- Nutzerassets niemals mit `rm`, `rm -rf`, `git clean`, `git checkout` oder vergleichbaren Aufräumkommandos entfernen/zurücksetzen.
-- Manuelle Asset-Übernahme ausschließlich als **Kopie**; die Quelldatei bleibt bestehen.
-- Bestehende Zieldateien niemals still überschreiben.
-- Für einen manuellen Import bevorzugt:
+- Nutzerassets niemals per `rm`, `git clean`, `git checkout` oder ähnlichem löschen/zurücksetzen.
+- Manuelle Übernahme nur als Kopie; vorhandene Ziele nicht still überschreiben.
+- Bevorzugt:
 
 ```bash
-npm run import:user-asset -- --dir "<aktuelles-reel>" --source "<datei>" --kind images
-npm run import:user-asset -- --dir "<aktuelles-reel>" --source "<datei>" --kind audio
+npm run import:user-asset -- --dir "<reel>" --source "<datei>" --kind images|audio
 ```
 
-Der sichere Import blockiert Quellen aus anderen Reels und verwendet exklusives Kopieren ohne Überschreiben.
+## 1. Reel-Standard
 
-## 1. Standard eines Erklär-Reels
-
-- 55–60 Sekunden Voice-over, Ziel ca. 58 Sekunden
+- 55–60 Sekunden Voice-over, Ziel ca. 58 s
 - 155–175 deutsche Wörter, Ziel ca. 165
 - 8–10 narrative Szenen, Standard 9
-- ein deutscher Erzähler
 - Hook ab Sekunde 0
-- letzte zwei Szenen: Erkenntnis-/Prüffrage → konkrete Lösung/Abschlusssatz
-- Schlussbild **0,6 Sekunden** nach Sprecherende halten; erlaubt 0,5–0,7 Sekunden
-- Voice-over 1,10x bei erhaltener Tonhöhe
-- −16 LUFS, höchstens −1,5 dBTP
-- keine Untertitel
-- kein aktiver Word-Sync für Untertitel
-- harte Schnitte
+- ein deutscher Erzähler
+- letzte zwei Szenen: Erkenntnis-/Prüffrage → konkrete Lösung/Abschluss
+- keine Untertitel, kein aktiver Word-Sync
 - keine Hintergrundmusik
-- jeder Szenenwechsel bekommt einen sauberen kurzen SFX
-- jeder interne Bildwechsel bekommt ebenfalls einen kurzen SFX oder einen inhaltlich passenden Objekt-Sound
+- Voice-over 1,10x, Pitch erhalten
+- −16 LUFS, höchstens −1,5 dBTP
+- harte Cuts, keine Crossfades
+- nach dem gesprochenen Inhalt nur 0,5–0,7 s Schlussbild-Hold, Ziel 0,6 s
 
-Die Themenwahl ist offen. Hook, Aha-Moment, Faktentreue, visuelle Klarheit, Abwechslung und Teilbarkeit entscheiden.
+## 2. Voice-over und Endstille — Hard Gate
 
-**Hook-Gate:** Szene 1 startet ohne Einleitung direkt mit Frage, Überraschung oder klarem Kontrast; generische Einstiege wie „In diesem Video …“ sind nicht zulässig.
-
-## 2. Voice-over — lebendiger statt TTS-neutral
-
-Die Stimme soll nicht wie ein gleichförmiger Vorlesetext klingen.
-
-Für neue Reels gilt:
-- Hook neugierig und etwas energischer sprechen
+Der Vortrag soll natürlich und nicht TTS-flach klingen:
+- Hook etwas energischer/neugieriger
 - Schlüsselwörter leicht betonen
-- Satzenden nicht immer gleich abfallen lassen
-- keine künstlichen langen Mikropausen zwischen kurzen Sätzen
-- Erklärteile ruhig und klar, Aha-Momente merklich akzentuieren
-- keine übertriebene Werbung, kein Radiomoderator-Stil
-- die Stimme bleibt natürlicher Hauptfokus über allen SFX
+- keine künstlichen langen Mikropausen
+- Erklärteile ruhig, Aha-Momente hörbar akzentuieren
 
-Audio wird technisch nachbearbeitet:
-1. Anfangs-/Endstille und überlange Pausen straffen
-2. 1,10x bei erhaltener Tonhöhe
-3. auf −16 LUFS normalisieren
-4. True Peak höchstens −1,5 dBTP
-5. finale Audiodauer messen
+Technische Reihenfolge:
 
-Ein Reel darf nicht mehrere Sekunden still weiterlaufen. Nach dem letzten gesprochenen Inhalt folgt ausschließlich der definierte 0,5–0,7-s-Schluss-Hold.
+```text
+Originalaudio
+→ Anfangs-/überlange Pausen straffen
+→ Endstille entfernen
+→ 1,10x bei erhaltener Tonhöhe
+→ −16 LUFS / max. −1,5 dBTP
+→ echte Dauer und Lautheit messen
+```
 
-## 3. Reels und YouTube bleiben vollständig getrennt
+Das finale Voice-over darf vor dem separaten Schlussbild-Hold höchstens **0,25 s messbare Endstille** enthalten. Mehrsekündige Endstille blockiert Finalizer und Renderer — auch mit `--force`.
 
-Für Reels gilt ausschließlich **eine** Bildwelt: **Modern Countryball Explainer** (`modern-countryball-explainer`).
+## 3. Eine feste Reel-Bildwelt
 
-Verbindliche Reel-Quellen:
+Alle neuen Reels verwenden ausschließlich:
+
+```text
+modern-countryball-explainer
+```
+
+Verbindlich:
 - `knowledge/fixed-visual-world.md`
 - `config/image-styles.json`
 - `src/shared/fixed-visual-world.js`
 
-Für YouTube gelten ausschließlich:
-- `youtube/YOUTUBE_WORKFLOW.md`
-- `youtube/YOUTUBE_VISUAL_WORLD.md`
+YouTube bleibt vollständig getrennt (`youtube/YOUTUBE_WORKFLOW.md`, `youtube/YOUTUBE_VISUAL_WORLD.md`).
 
-YouTube-Stick-Figuren/16:9 dürfen nicht auf Reels übertragen werden. Reel-Regeln dürfen nicht auf YouTube übertragen werden.
+### Bildwirkung
 
-## 4. Eine einzige Reel-Bildwelt — aber deutlich lebendiger
+Jede Bildphase ist eine konkrete visuelle Mini-Szene, keine Lernposterkarte:
+- sichtbare Handlung, Reaktion, Veränderung oder Ursache-Folge
+- ein dominantes Motiv, 1–3 unterstützende Elemente
+- einfache Tiefe und Kontext, wenn sinnvoll
+- klare Farbkontraste
+- Perspektive zwischen benachbarten Bildern variieren
+- Smartphone-first, in etwa einer Sekunde erfassbar
 
-Der Stil bleibt Modern Countryball Explainer, **die bisherige Poster-Anmutung ist jedoch nicht mehr erwünscht**.
+Nicht als Standard:
+- große Headline + einzelnes Symbol auf leerem Hintergrund
+- textdominante Poster
+- wiederholte zentrierte Figur-plus-Icons-Komposition
+- Floating Cards/UI-Boards
+- Fotorealismus, Anime, Clay, glänzendes 3D/Pixar
+- humanoide Cartoonmenschen oder Stick-Figuren
 
-Wenn ein Akteur sinnvoll ist, zeigt das Bild eine eindeutig erkennbare runde Kugelfigur:
-- exakt runder Kreis- bzw. Kugelkörper ohne separaten Kopf
-- einfache weiße expressive Augen mit schwarzen Pupillen
-- minimale Gesichtselemente
-- höchstens kleine einfache Arme/Hände/Füße für echte Handlungen
-- Flaggen-/Regionsmuster nur bei echter geografischer Relevanz
-- sonst neutrale einfarbige Kugeln
+Wenn ein Akteur vorkommt, ist er eine klar runde Kugelfigur ohne separaten menschlichen Kopf. Ein Akteur ist nicht in jedem Bild Pflicht.
 
-Eine Kugelfigur ist nicht in jedem Bild Pflicht. Wenn Gegenstand, Mechanismus, Dokument, Gebäude, Karte, Pflanze, Landschaft oder physischer Prozess klarer erklärt, trägt dieses Motiv die Szene allein.
+## 4. Bildtext
 
-### Neue Pflicht für die Bildwirkung
-
-Jede Bildphase soll wie ein **konkreter Moment einer visuellen Story** wirken:
-- eine sichtbare Handlung, Reaktion, Veränderung oder Ursache-Folge-Beziehung
-- ein dominantes Hauptmotiv
-- 1–3 unterstützende Elemente
-- wenn sinnvoll einfache Tiefe durch Vordergrund/Mittelgrund/Hintergrund
-- kräftige, kontrollierte Farbkontraste
-- kleine kontextuelle Umgebung statt leerer Fläche, wenn sie die Aussage verbessert
-- abwechslungsreiche Perspektiven zwischen direkt aufeinanderfolgenden Bildern
-
-Bevorzugte Perspektiven im Wechsel:
-- Close-up
-- Medium Shot
-- einfache Weitaufnahme
-- Objekt-Detail
-- Kartenansicht
-- leichte Draufsicht
-- Off-Center-Komposition
-
-**Verbot als wiederholtes Standardschema:** große Headline + einzelnes Symbol auf leerem Hintergrund.
-
-Weitere Verbote:
-- humanoide Cartoonmenschen
-- menschliche Köpfe auf Kugeln
-- Stick-Figuren
-- Fotorealismus
-- Anime/Manga
-- Clay/Knetstil
-- glänzendes 3D / Pixar-Look
-- Stockfoto-/Concept-Art-Look
-- sterile Icon-Boards
-- UI-Karten und schwebende Reaktionskarten
-- derselbe Center-Aufbau in mehreren direkt aufeinanderfolgenden Bildern
-
-## 5. Bildtext — Cover Pflicht, danach nur wenn sinnvoll
-
-Der alte Grundsatz „fast jedes Bild braucht Text“ ist aufgehoben.
-
-### Bild 01 / Cover
-
-- starke deutsche Headline Pflicht
-- kurze, sofort lesbare Formulierung
-- Headline darf nicht die eigentliche Illustration ersetzen
-
-### Alle späteren Bilder
-
-- `imageText` darf leer sein
-- wenn Text verwendet wird: 1–4 deutsche Wörter
+- Prompts: Englisch
+- sichtbarer Text: ausschließlich Deutsch
+- Bild 01/Cover: starke Headline Pflicht
+- spätere Bilder: Text optional
+- wenn Nicht-Cover-Text: maximal 4 Wörter
 - ungefähr 35–60 % der Nicht-Cover-Bilder dürfen Text tragen
-- ein starkes Bild ohne Text ist ausdrücklich erwünscht
-- die Kernaussage muss auch ohne Text visuell erkennbar sein
-- kein zusätzlicher lesbarer Text, keine Logos, keine Wasserzeichen
+- ein textfreies starkes Bild ist ausdrücklich erwünscht
+- `imageText` leer → kein lesbarer Text
 
-## 6. Bildanzahl folgt dem Satzbau
+## 5. Bildanzahl
 
-Narrative Szenenzahl und Bildanzahl sind getrennt.
+Feste Formel:
 
-- 8–10 narrative Szenen, Standard 9
-- Hook exakt 1 Bildphase
-- jede weitere Szene exakt 2 Bildphasen
-- eine dritte Bildphase ist im aktiven Standard nicht vorgesehen
-- feste Formel: `1 + (Szenen − 1) × 2`
+```text
+Bilder = 1 + (Szenen − 1) × 2
+```
+
 - 8 Szenen = 15 Bilder
 - 9 Szenen = 17 Bilder
 - 10 Szenen = 19 Bilder
-- jedes Bild mindestens 3 Sekunden sichtbar
+- Hook exakt 1 Bildphase
+- jede weitere Szene exakt 2
+- keine dritte Bildphase
+- jede Bildphase mindestens 3 Sekunden
 
-Der zweite Bildmoment einer Szene besitzt ein eigenes `audioCue` aus 2–5 tatsächlich gesprochenen Wörtern.
+Jede zweite Bildphase erhält ein eigenes `audioCue` aus tatsächlich gesprochenen Wörtern. `startPercent` ist nur Planungswert; nach dem echten Voice-over entscheidet `phaseCueTimings[].cueTimeSeconds`.
 
-`startPercent` bleibt Planungswert. Sobald das echte Voice-over vorliegt, bestimmt der gemessene Audio-Cue den finalen Schnitt.
+## 6. Schnitt-Timing
 
-## 7. Schnitt-Timing — Bild minimal vor dem Wort
+- Szenencut ca. **0,10 s vor dem Szenen-Cue**
+- interner Bildcut ca. **0,08 s vor dem Bild-Cue**
+- bei 30 fps ca. 2–3 Frames vor dem Schlüsselwort
+- harter Cut
+- Mindestdauer der Bildphase hat Vorrang
 
-Ein Bildwechsel soll nicht hörbar hinter dem Sprecher herlaufen.
+Ziel: Das neue Bild ist bereits sichtbar, wenn das Cue-Wort fällt.
 
-Verbindlicher Standard:
-- tatsächlicher Cue-Zeitpunkt = Moment, an dem die Cue-Wörter im finalen Voice-over beginnen
-- interner Bildschnitt standardmäßig **0,08 Sekunden vor dem Cue**
-- das entspricht bei 30 fps ungefähr **2–3 Frames vor dem Wort**
-- Szenenwechsel liegen standardmäßig ungefähr **0,10 Sekunden vor ihrem Szenen-Cue**
-- falls dadurch eine Bildphase unter 3 Sekunden fallen würde, hat die Mindestdauer Vorrang und der Cue muss sinnvoller gewählt werden
-- kein weicher Crossfade; harter Cut bleibt Standard
+## 7. Bewegung/Zoom — ab 2026-09-02 Hard Gate
 
-Ziel: Das neue Bild ist bereits sichtbar, wenn das Schlüsselwort gesprochen wird.
+**Jeder einzelne Bildmoment muss sichtbar, aber dezent bewegt sein. Kein längerer statischer Stillframe.**
 
-## 8. Sounddesign — jeder relevante Wechsel muss hörbar unterstützt werden
+Erlaubte kanonische Typen:
+- `ken-burns`
+- `subtle-push-in`
+- `subtle-pull-out`
+- `slow-zoom-in`
+- `slow-zoom-out`
+- `pan-left`, `pan-right`, `pan-up`, `pan-down`
 
-Für neue Reels gilt:
-- jeder Szenenwechsel: ein kurzer SFX
-- jeder interne Bildwechsel: ein kurzer SFX oder ein passender Objekt-Sound
-- SFX beginnt normalerweise **0,04 Sekunden vor dem Bildschnitt**
-- hörbarer Akzent soll am Cut liegen
-- Standardlautstärke ungefähr 0,22; sinnvoller Bereich 0,18–0,28
-- Stimme bleibt deutlich dominant
-- dieselbe Transition-Variante niemals zweimal direkt hintereinander
-- Meme-Sounds und aufdringliche Effekte vermeiden
+Bekannte beschreibende Aliase wie `gentle-pan` werden kanonisch aufgelöst, damit sie nicht versehentlich statisch werden. Wirklich unbekannte Motion-Typen blockieren den Workflow.
 
-Bevorzugt:
-1. inhaltlich passender Sound zum sichtbaren Ereignis
-2. sonst Click/Pop/Tick für kleine Informationswechsel
-3. sonst dezenter Whoosh/Swipe für reine Übergänge
+Richtwerte:
+- Zoomänderung meist 2–4 %
+- Pan meist 1–3 %
+- weiches `ease-in-out`
+- Hook bewegt sich ebenfalls dezent
+- zweite Bildphase bewegt sich ebenfalls
+- `none` ist für neue Reels nicht zulässig; nur Legacy-Kompatibilität
 
-Kein Bildwechsel soll versehentlich komplett stumm bleiben, wenn dort sichtbar ein neuer Informationsmoment beginnt.
+Der Renderer besitzt zusätzlich einen Motion-Fallback, damit ein unvollständiger Plan nicht still als Standbild gerendert wird. Der Hard Gate bleibt trotzdem verpflichtend.
 
-## 9. Bewegung — auch zweite Bildphasen leben
+## 8. Sounddesign — ab 2026-09-02 Hard Gate
 
-Statische Einzelbilder wirken schnell wie Slides. Deshalb:
-- leichte Bewegung ist der Normalfall
-- Ken Burns, subtiler Push-in/Pull-out oder kleiner Pan
-- Zoomänderung meist nur 2–4 %
-- Pan meist maximal ca. 3 %
-- weiches Easing
-- keine hektischen Zooms
-- auch die **zweite Bildphase einer Szene** bekommt standardmäßig eine dezente Bewegung
-- nur bewusst grafische/komplexe Bilder dürfen statisch bleiben
+**Kein visueller Informationswechsel darf stumm durchrutschen.**
 
-Die Bewegung darf integrierten Bildtext nicht aus dem sicheren Bereich schieben.
+Pflicht:
+- jeder Szenenwechsel nach der Hook: ein kurzer SFX
+- jeder interne Bildwechsel: ein eigener kurzer SFX oder passender Objekt-Sound
+- SFX beginnt ca. **0,04 s vor dem sichtbaren Cut**
+- Stimme bleibt dominant
+- typische Lautstärke 0,18–0,30, Standard ca. 0,22
+- `visualEvent` und `reason` sind Pflicht
+- interne SFX werden über `targetId` an die konkrete zweite Bildphase gebunden
+- `audioCue` des internen SFX muss zum Bildphasen-Cue passen
 
-## 10. Google Flow — genau eine Masterdatei
+Der Agent verwendet **nur `type` aus `config/sound-library.json`**, niemals erfundene Dateinamen. `sync:sounds` löst Typ → Datei auf und kopiert die Datei in den Reel-Ordner.
 
-Die einzige Nutzerdatei mit allen Bildprompts ist:
+Bevorzugte Typen:
+- Übergang: `soft-whoosh`, `soft-swipe`, `whoosh-up`, `whoosh-down`
+- kleiner Informationswechsel: `click`, `pop`, `tick`
+- inhaltlich passend: `soft-impact`, `paper`, `door`, `coin`, `water-drop`
+- Aha-Moment: `swoosh-reveal` höchstens einmal
+
+Der Renderer kann einen bekannten Typ notfalls erneut auf die kanonische Datei auflösen, falls ein Zwischenplan das `file`-Feld verliert. Unbekannte Typen und fehlende Library-Dateien blockieren vor Render.
+
+## 9. Hard-Gates müssen auf jedem Einstiegspfad gelten
+
+Für neue Reels werden Motion/SFX und Endstille nicht nur dokumentiert, sondern technisch geprüft:
+
+- `check:content --strict`: Motion-/SFX-Coverage
+- `build:timeline --strict`: Motion-/SFX-Coverage + Soundbibliothek
+- `finalize:reel`: Motion-/SFX-Coverage + Soundbibliothek + Audio-Endstille
+- `validate:render` / `render:reel`: dieselben Gates erneut
+- `finalizeReel()` und `renderReel()` Core-Pfade: dieselben Gates erneut
+
+`--force` darf Quellen-, Motion/SFX-, Audio-Dateibindungs- oder Endstille-Gates nicht umgehen.
+
+## 10. Google Flow
+
+Einzige verbindliche Nutzerdatei:
 
 ```text
 00-bildprompts/99-alle-bildprompts.txt
 ```
 
-Der separate `google-flow-controller.txt` bleibt deaktiviert. Alle Steuerregeln stehen direkt im Masterprompt.
-
-### Serielle Flow-Regel
-
-Vor Bild 01 erstellt Flow genau einen gemeinsamen Ausgabeordner für das Reel.
-
-Für jedes Bild:
-1. nur aktuellen Bildabschnitt verwenden
-2. genau einen Bildgenerator-Aufruf starten
-3. vollständig warten
-4. Inhalt + Modern Countryball Explainer prüfen
-5. zusätzlich prüfen: keine Posterkarte, kein textdominantes Bild, genug visueller Kontext/Tiefe wenn sinnvoll
-6. bei Fehler nur dasselbe Bild neu erzeugen
-7. `Bild NN.png` exakt umbenennen
-8. sofort in den gemeinsamen Reel-Ordner legen
-9. Ablage prüfen
-10. erst dann nächstes Bild starten
-
-Keine Queue, kein Batch, keine Parallelgenerierung und keine Mehrfachvarianten.
-
-## 11. Sichtbare Reel-Struktur
+Flow arbeitet streng seriell:
 
 ```text
-reel-XX_thema/
-├── 00-bildprompts/
-│   ├── 99-alle-bildprompts.txt
-│   └── 00-ALLE-BILDER-HIER-REIN/
-├── 01-voice-script/
-├── 02-audio/
-├── 03-export/
-│   ├── FERTIGES-REEL.mp4
-│   └── UNIVERSELLE-CAPTION.txt
-└── 99-technik/
+aktuellen Bildabschnitt verwenden
+→ genau 1 Bild erzeugen
+→ vollständig warten
+→ Inhalt + feste Bildwelt + Anti-Poster-QC prüfen
+→ exakt Bild NN.png benennen
+→ in gemeinsamen Reel-Ausgabeordner legen
+→ Ablage prüfen
+→ erst dann nächstes Bild
 ```
 
-Kein separater sichtbarer Caption- oder Video-Ordner. Kein `all-image-prompts/`-Doppelordner.
+Keine Queue, kein Batch, keine Parallelgenerierung, keine Mehrfachvarianten.
 
-## 12. Universal-Caption
+## 11. Quellen-QC
 
-Die Universal-Caption liegt nur unter `03-export/UNIVERSELLE-CAPTION.txt`.
+Neue Reels:
+- mindestens zwei echte HTTPS-Quellen
+- unterschiedliche Hosts
+- mindestens eine Primär-/offizielle oder wissenschaftliche Originalquelle
+- mindestens eine unabhängige Sekundär-/Fachquelle
+- konkret dokumentieren, welche Reel-Aussage belegt wird
 
-- plattformneutral für Kurzvideo-Social-Media
-- passend zum konkreten Reel
-- starker klarer Einstieg
-- sinnvoll ausführlich
-- 60–130 Wörter
-- 3–6 passende Hashtags
-- keine plattformspezifischen Funktionen wie Duett/Remix/Link in Bio
-
-## 13. Quellen und QC
-
-Neue Reels brauchen mindestens zwei echte HTTPS-Quellen mit unterschiedlichen Hosts. Möglichst eine Primär-/offizielle oder wissenschaftliche Quelle und eine unabhängige Sekundär-/Fachquelle.
-
-Bild-QC prüft:
-- konkrete Narration und Bildphase
-- Modern Countryball Explainer
-- keine Poster-/Headline-plus-Icon-Komposition als Standard
-- Text dominiert die Szene nicht
-- Perspektive unterscheidet sich sinnvoll vom vorherigen Bild
-- sichtbarer deutscher Text exakt, falls Text geplant ist
-- keine ungeplanten Texte/Logos/Wasserzeichen
-- exakt runde Kugelgeometrie, wenn ein Akteur vorkommt
-- keine menschlichen Köpfe, humanoiden Figuren oder Stick-Figuren
-- 9:16
-
-Unter 0,90 Zuordnungskonfidenz nicht raten.
-
-## 14. Audio, Timeline und Render
-
-Das finale Voice-over ist die einzige Zeitquelle.
-
-1. Audio importieren
-2. Pausen und Endstille straffen
-3. 1,10x bei erhaltener Tonhöhe
-4. −16 LUFS / max. −1,5 dBTP messen
-5. Szenen anhand echter Audio-Cues synchronisieren
-6. interne Bildphasen ca. 0,08 s vor ihrem echten Cue schneiden
-7. SFX ca. 0,04 s vor dem jeweiligen Cut starten
-8. visuelle QC
-9. letztes Bild nur 0,5–0,7 s nach Sprecherende halten; Ziel 0,6 s
-10. final validieren und rendern
-
-Der aktive Workflow enthält keinen Untertitel- oder Word-Sync-Schritt. `npm run legacy:sync:words` ist Legacy.
-
-## 15. Standardbefehle
+## 12. Phase-3-Reihenfolge
 
 ```bash
-npm run export:prompts -- --dir "<reel-ordner>" --strict
-npm run validate:reel -- --dir "<reel-ordner>"
-npm run discover:assets -- --dir "<reel-ordner>"
-npm run organize:assets -- --dir "<reel-ordner>" --apply
-npm run trim:pauses -- --dir "<reel-ordner>" --speed 1.10
-npm run build:timeline -- --dir "<reel-ordner>"
-npm run check:visuals -- --dir "<reel-ordner>" --strict
-npm run finalize:reel -- --dir "<reel-ordner>" --strict
-npm run validate:render -- --dir "<reel-ordner>"
-npm run render:reel -- --dir "<reel-ordner>"
+npm run discover:assets -- --dir "<reel>"
+npm run organize:assets -- --dir "<reel>" --apply
+npm run check:visuals -- --dir "<reel>" --strict
+npm run trim:pauses -- --dir "<reel>" --speed 1.10
+npm run sync:sounds -- --dir "<reel>" --strict
+npm run build:timeline -- --dir "<reel>" --strict
+npm run finalize:reel -- --dir "<reel>" --strict
+npm run validate:render -- --dir "<reel>"
+npm run render:reel -- --dir "<reel>"
 ```
 
-Keine nicht ausgeführte Stufe als bestanden markieren.
+Nicht ausgeführte Tests/QC-Schritte niemals als bestanden melden.
+
+## 13. Sichtbarer finaler Export
+
+```text
+03-export/
+├── FERTIGES-REEL.mp4
+└── UNIVERSELLE-CAPTION.txt
+```
+
+Universal-Caption:
+- 60–130 Wörter
+- klarer Einstieg
+- 3–6 passende Hashtags
+- plattformneutral
+
+## 14. Definition of Done
+
+Ein Reel ist erst fertig, wenn:
+- Script und Quellen geprüft sind
+- alle Bildphasen vorhanden und visuell geprüft sind
+- feste Bildwelt eingehalten ist
+- **jede Bildphase sichtbar bewegt wird**
+- **jeder Szenen- und interne Bildwechsel einen gerenderten SFX besitzt**
+- finales Voice-over 1,10x / −16 LUFS / max. −1,5 dBTP geprüft ist
+- **Endstille im Voice-over höchstens 0,25 s** beträgt
+- finale Cue-Zeiten gesetzt sind
+- nach Sprecherende nur 0,5–0,7 s Schlussbild-Hold folgt
+- Finalizer und Renderer-Validierung tatsächlich bestanden sind
+- MP4 und Caption unter `03-export/` existieren
