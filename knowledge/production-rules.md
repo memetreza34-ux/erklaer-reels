@@ -4,245 +4,170 @@
 
 ## Ziel
 
-Jedes Reel erklärt einen Begriff, ein System, ein Verhalten oder einen Zusammenhang so einfach, dass Zuschauer ihn ohne Vorwissen verstehen.
-
-Die **Themenwelt ist offen**. Die **Bildwelt ist fest: `modern-countryball-explainer`**.
+Jedes Reel erklärt einen Begriff, ein System, ein Verhalten oder einen Zusammenhang ohne Vorwissen verständlich. Themenwelt offen, Bildwelt fest: `modern-countryball-explainer`.
 
 ## Script
 
-- ein durchgehender deutscher Erzähler
-- direkte Hook ohne lange Einleitung
+- ein deutscher Erzähler
+- direkte Hook
 - 155–175 Wörter
-- 55–60 Sekunden Voice-over nach Optimierung auf exakt 1,10x
-- einfache, erwachsene und neutrale Sprache
-- keine Dialogrollen
-- politische Inhalte neutral und ohne Parteienwerbung
-- Unsicherheit klar kennzeichnen
-- letzte zwei narrative Szenen: persönliche Prüf-/Erkenntnisfrage → konkrete Lösung/Abschlusssatz
+- 55–60 s finales Voice-over
+- einfache erwachsene Sprache
+- letzte zwei Szenen: Prüf-/Erkenntnisfrage → konkrete Lösung/Abschluss
 
-## Themenwahl
+## Bildwelt
 
-Es gibt keine feste Pillar-Quote und keine Beschränkung auf Länder, Geschichte, Politik oder Psychologie.
+Neue Reels verwenden ausschließlich `modern-countryball-explainer`.
 
-Geeignet sind grundsätzlich alle starken Erklärthemen, z. B. Alltag, Verhalten, Beziehungen, Gesellschaft, Kultur, Wissenschaft, Technik, Internet, Lernen, Arbeit, Wirtschaft, Gesundheit, Ernährung, Sprache, Geschichte, Geografie, Politik, Mythen oder kuriose Warum-Fragen.
+- 9:16
+- runde Kugelfiguren, wenn Akteure sinnvoll sind
+- konkrete Handlung oder Ursache-Folge
+- dicke schwarze Konturen
+- kontrollierte Farben
+- einfache Tiefe und kontextuelle Umgebung
+- niedrige bis mittlere Detaildichte
+- Perspektiven zwischen benachbarten Bildern variieren
+- keine textdominanten Poster, Floating Cards oder wiederholten Center-Layouts
+- keine realistischen Menschen, Stick-Figuren, Anime-, Clay- oder glossy-3D-Welt
 
-Bei autonomer Auswahl zählen:
-- Hook/Neugier
-- klarer Aha-Moment
-- faktische Belegbarkeit
-- visuelle Klarheit
-- Abwechslung gegenüber den letzten Reels
-- Teilbarkeit oder Alltagsrelevanz
+Ein Objekt/Mechanismus/Karte/Dokument darf die Szene ohne Kugelfigur tragen, wenn es klarer erklärt.
 
-## Bildwelt — fest
+## Bildprompts und Bildtext
 
-Neue Reels verwenden:
+- Bildprompts Englisch
+- sichtbarer Text ausschließlich Deutsch
+- Bild 01: starke Headline Pflicht
+- spätere Bilder: `imageText` optional, maximal 4 Wörter
+- ungefähr 35–60 % der Nicht-Cover-Bilder dürfen Text tragen
+- textfreie starke Bilder sind erwünscht
+- kein zusätzlicher lesbarer Text, keine Logos/Wasserzeichen
 
-```text
-visualStyleId = "modern-countryball-explainer"
-visualStyleReason = "Globale feste Bildwelt für alle neuen Erklär-Reels: moderner minimalistischer Countryball-Erklärstil."
-```
+## Bildanzahl
 
-Verbindliche Style-Bibel: `knowledge/fixed-visual-world.md`.
-
-Die Bildwelt wird nicht pro Thema ausgewählt und nicht zwischen Reels rotiert.
-
-### Kernregeln
-
-- moderner minimalistischer Countryball-inspirierter 2D-Erklärgrafik-Stil
-- runde Kugelfiguren für Menschen, Gruppen, Institutionen oder Länder
-- Länder-/Regionsflaggen nur bei tatsächlicher geografischer Relevanz; sonst neutrale Kugeln
-- einfache weiße expressive Augen, minimale Gesichtselemente
-- dicke saubere schwarze Konturen
-- sauberer flacher Vektor-/Comic-Look
-- dezente weiche Schatten, höchstens sehr leichte Textur
-- ein dominantes Hauptmotiv, wenige unterstützende Requisiten
-- einfarbiger oder sanft texturierter Hintergrund
-- klare Metapher, möglichst innerhalb ungefähr einer Sekunde verständlich
-- keine realistischen Menschen, kein Fotorealismus, kein Anime, kein Clay, kein glänzendes 3D, keine Stockfoto-Ästhetik
-- Prompts Englisch; sichtbarer Bildtext ausschließlich Deutsch
-
-Reine Mechanismen, Gegenstände, Diagramme oder wissenschaftliche Symbole dürfen ohne Kugelfigur Hauptmotiv sein, müssen aber dieselbe Kontur-, Vereinfachungs- und 2D-Formsprache verwenden.
-
-Historische Reels und Prompts bleiben Archivmaterial und dürfen keine abweichende Bildwelt reaktivieren.
-
-## Bildprompts
-
-Jeder visuelle Quellprompt ist konkret, eindeutig, auf Englisch und mit `modern-countryball-explainer` kompatibel.
-
-Pflicht:
-
-1. 9:16
-2. konkrete Bildkomposition und Handlung
-3. feste Bildwelt `modern-countryball-explainer`
-4. exakt erlaubter deutscher Bildtext, falls vorgesehen
-5. keine unerwarteten lesbaren Wörter
-6. keine Workflow-Labels im Bild
-7. volle 9:16-Fläche ohne künstliche Untertitelzone
-
-Beim Export ergänzt das System den festen Style-Lock global und direkt vor jedem einzelnen Bildabschnitt. Widersprechende Stilbegriffe in einem Quellprompt werden dadurch überstimmt, ohne den konkreten Inhalt zu verändern.
-
-`Bild 01` ist die erste Szene und zugleich das Titelbild, aber nicht der alleinige Style-Master. Die globale Repo-Bildwelt ist der Style-Master.
-
-## Starkes Ende
-
-Die letzten zwei narrativen Szenen müssen eine echte Auflösung bilden:
-
-1. persönliche Prüf-, Erkenntnis- oder Entscheidungsfrage
-2. konkrete Lösung und kurzer einprägsamer Abschlusssatz
-
-Nach dem letzten gesprochenen Wort bleibt das letzte Bild 0,7 Sekunden unverändert stehen.
-
-## Narrative Szenen und Bilddichte
-
-Zentrale Quelle: `config/production-quality-gates.json`.
-
-- 8–10 **narrative Szenen**, Standard 9
-- Hook ab Sekunde 0
-- narrative Szenen werden später über echte Audio-Cues synchronisiert
-- **jede Standardszene bekommt zwei Bildmomente, die Hook einen**
-- der zweite Bildmoment setzt beim nächsten Hauptsatz oder Nebensatz an
-- Bildanzahl und Szenenzahl sind nicht gleichgesetzt
-- keine feste Gesamtbildzahl erzwingen
-- ein Bild steht 3 bis 4 Sekunden, im Schnitt etwa 3,25; bei rund 58 Sekunden ergibt das ungefähr 17 bis 19 Bilder
-- **harte Untergrenze 3 Sekunden** pro Bild — darunter blockiert der Timeline-Check
-- eine Szene, die inhaltlich drei Bildmomente braucht, gehört in zwei Szenen aufgeteilt
-- `startPercent` setzt den Schnitt auf den Satzanfang, nicht auf ein gleichmäßiges Raster
-
-Technisch:
+Feste Formel:
 
 ```text
-reel.json.imageCountMode = individual-per-reel
-reel.json.plannedImageCount
-scene.imageCount
-scene.imagePhases[]
+Bilder = 1 + (Szenen − 1) × 2
 ```
 
-## Deutscher Text im Bild
+- 8 Szenen = 15 Bilder
+- 9 Szenen = 17 Bilder
+- 10 Szenen = 19 Bilder
+- Hook genau 1 Bildphase
+- jede weitere Szene genau 2
+- keine dritte Bildphase
+- mindestens 3 s pro Bildphase
 
-Wo es zur Szene passt, wird kurzer deutscher Text direkt in das Bild integriert. Normalerweise 1–5 Wörter, exakter Wortlaut in `imageText` und im englischen Prompt.
+Die zweite Bildphase besitzt einen eigenen `audioCue`. `startPercent` ist Planungswert; das finale Voice-over liefert später den echten Cue-Zeitpunkt.
 
-- kein zusätzlicher englischer Text
-- keine erfundene Schrift
-- keine unnötigen Textblöcke
-- keine Workflow-Metadaten im Bild
-- wenn `imageText` leer ist: kein lesbarer Text
+## Schnitt
 
-## Natürliche Komposition
+- Szenencut ca. 0,10 s vor dem Szenen-Cue
+- interner Bildcut ca. 0,08 s vor dem Bild-Cue
+- harter Cut, kein Crossfade
+- SFX ca. 0,04 s vor dem sichtbaren Cut
 
-- volle 9:16-Fläche natürlich nutzen
-- keine künstliche Untertitelzone oder leeren horizontalen Streifen reservieren
-- Hauptmotive dürfen die Bildmitte normal nutzen
-- Illustration muss ohne Overlay vollständig funktionieren
-- Plattform-UI-Sicherheitsabstände beachten, ohne das Motiv unnötig zusammenzudrücken
+## Bewegung/Zoom — Hard Gate
+
+**Jeder Bildmoment eines neuen Reels bewegt sich sichtbar.**
+
+Kanonische Typen:
+- `ken-burns`
+- `subtle-push-in`, `subtle-pull-out`
+- `slow-zoom-in`, `slow-zoom-out`
+- `pan-left/right/up/down`
+
+Richtwerte:
+- Zoom meist 2–4 %
+- Scale sicher 0,94–1,06
+- Pan 1–3 %, max. 3 %
+- weiches Easing
+- Hook und zweite Bildphase bewegen sich ebenfalls
+- `none` ist für neue Reels nicht zulässig
+
+Bekannte ältere Aliasnamen werden kanonisch aufgelöst, damit sie nicht versehentlich statisch rendern. Unbekannte Typen blockieren. Renderer-Safety-Fallback verhindert zusätzlich statische Ausreißer.
+
+## SFX — Hard Gate
+
+- jeder Szenenwechsel ab Szene 2 braucht einen SFX
+- jeder interne Bildwechsel braucht eigenen zielgebundenen SFX
+- ausschließlich `type` aus `config/sound-library.json`
+- `targetId`, `visualEvent` und `reason` korrekt setzen
+- interner `audioCue` soll dem Cue der Bildphase entsprechen
+- typische Lautstärke 0,18–0,30
+- maximal drei SFX pro narrativer Szene
+- Hintergrundmusik aus
+- Voice-over bleibt dominant
+
+`sync:sounds --strict` bindet Typen an echte Dateien. Unbekannte Typen oder fehlende Dateien blockieren. Der Renderer kann bekannte Typen als letzte Sicherheitsstufe erneut zur kanonischen Datei auflösen, falls ein Zwischenplan das `file`-Feld verliert.
+
+Details: `knowledge/effects-rules.md`.
+
+## Audio
+
+- Originalaudio verarbeiten
+- Anfangs-/überlange Pausen und Endstille straffen
+- exakt 1,10x, Pitch erhalten
+- −16 LUFS
+- max. −1,5 dBTP
+- echte Nachmessung
+- danach Timeline/Cues neu synchronisieren
+
+Das finale Voice-over darf höchstens **0,25 s Endstille** enthalten. Danach folgt ausschließlich der separate visuelle Schluss-Hold von 0,5–0,7 s, Ziel 0,6 s.
 
 ## Google Flow
 
-Verbindliche Nutzerdatei:
+Einzige Nutzerdatei:
 
 ```text
 00-bildprompts/99-alle-bildprompts.txt
 ```
 
-Sie enthält den kompletten seriellen Gesamtprompt mit Auftrag, Serienregeln, Dateinamen, dem festen globalen Style-Lock und allen vollständigen konkreten Bildprompts. Vor jedem Bildabschnitt wird derselbe Style-Lock erneut gesetzt.
+Strikt seriell: ein Bild → warten → prüfen → korrekt benennen/ablegen → prüfen → nächstes. Kein Batch/Parallelisieren.
 
-`all-image-prompts/all-image-prompts.txt` ist die identische technische Spiegeldatei.
-
-Der separate `google-flow-controller.txt` ist deaktiviert.
-
-Flow muss streng seriell arbeiten:
-
-```text
-genau ein Bild generieren
-→ vollständig warten
-→ gegen aktuellen Bildprompt UND feste Bildwelt prüfen
-→ korrekt umbenennen
-→ erst dann nächstes Bild
-```
-
-Keine Queue, kein Batch, keine Parallelgenerierung.
-
-## Quellen-QC
+## Quellen
 
 Neue Reels verwenden Quellen-Schema 3:
-
-- mindestens zwei echte HTTPS-Quellen
+- mindestens zwei HTTPS-Quellen
 - unterschiedliche Hosts
-- vollständige Felder `Titel/Institution`, `URL`, `Datum/Zugriff`, `Quellentyp`, `Belegt`
 - mindestens eine Primär-/offizielle oder wissenschaftliche Originalquelle
 - mindestens eine unabhängige Sekundär-/Fachquelle
-- `Belegt` nennt konkret die gestützte Reel-Aussage
+- konkrete Aussage-Zuordnung unter `Belegt`
 
-Bestehende Schema-2-Reels bleiben rückwärtskompatibel.
+## Bildzuordnung
 
-Formale Felder ersetzen keine inhaltliche Prüfung.
-
-## Sichere Bildzuordnung
-
-Die Nummerierung `Bild 01`, `Bild 02` usw. ist nur Routing-Hilfe. Die finale Zuordnung erfordert echte Sichtprüfung.
-
-### Erster Durchgang
-- Bild tatsächlich öffnen
-- sichtbaren Inhalt neutral in `visibleSummary` beschreiben
-- mit `narration`, `audioCue`, `visualIdea`, `imageText` und `imagePrompt` vergleichen
-- feste Bildwelt `modern-countryball-explainer` sichtbar prüfen
-- konkrete `reason` schreiben
-
-### Zweiter Durchgang
-- gegen vorherige und nächste Bildphase prüfen
-- `confirmedTarget` und Zielreihenfolge eintragen
-- erst danach Bestätigung setzen
-- unter 0,90 Konfidenz unmatched lassen
-
-`filename-only` ist verboten.
+Dateinummer nur als Routing-Hilfe. Tatsächlichen sichtbaren Inhalt gegen Narration, Bildphase, Prompt und feste Bildwelt prüfen. Unter 0,90 Konfidenz nicht raten.
 
 ## Untertitel
 
-Global deaktiviert.
+Global deaktiviert. Kein aktiver Word-Sync und keine Subtitle-Safe-Zone.
 
-- keine Untertitel
-- keine Karaoke-/Wortmarkierung
-- keine Subtitle-Cues
-- kein aktiver `sync:words`-Schritt
-- keine Untertitel-Safe-Zone
+## Hard-Gate-Kette
 
-Historische Word-Sync-Helfer sind ausschließlich Legacy-Diagnosewerkzeuge; siehe `LEGACY_TOOLS.md`.
+```bash
+npm run check:content -- --dir "<reel>" --strict
+npm run trim:pauses -- --dir "<reel>" --speed 1.10
+npm run sync:sounds -- --dir "<reel>" --strict
+npm run build:timeline -- --dir "<reel>" --strict
+npm run check:visuals -- --dir "<reel>" --strict
+npm run finalize:reel -- --dir "<reel>" --strict
+npm run validate:render -- --dir "<reel>"
+npm run render:reel -- --dir "<reel>"
+```
 
-## Audio
+Motion/SFX-, Quellen-, Audio-Dateibindungs- und Endstille-Gates dürfen nicht per `--force` umgangen werden.
 
-Zentrale Quelle: `src/shared/audio-pacing-style.js`.
+## Definition of Done
 
-- immer die ursprüngliche Audiodatei verarbeiten
-- Pausen ab ungefähr 0,24 Sekunden kürzen
-- exakt 1,10x, Tonhöhe erhalten
-- −16 LUFS integrierte Lautheit
-- höchstens −1,5 dBTP True Peak
-- optimiertes Audio niemals erneut beschleunigen
-- danach Timeline und Szenen-Cues neu synchronisieren
-- Szenenanker müssen auf echten akustischen Cues beruhen
-- gleichmäßig verteilte oder erfundene Zeiten sind verboten
+- Script/Quellen geprüft
+- alle Bildphasen vorhanden und visuell freigegeben
+- jede Bildphase sichtbar bewegt
+- jeder Szenen-/interne Bildwechsel mit gerendertem SFX
+- echtes finales Voice-over gemessen
+- Endstille <= 0,25 s
+- echte Cue-Zeiten gesetzt
+- Schluss-Hold 0,5–0,7 s
+- Finalizer/Renderer tatsächlich bestanden
+- MP4 + Caption unter `03-export/`
 
-## Bewegung, Übergänge und Sound
-
-- nicht jedes Bild bewegen
-- Zoom normalerweise 2–6 %, maximal 8 %
-- Schwenk maximal 4 %
-- Hook `none`, danach nur `cut`, Dauer 0
-- keine Crossfades oder schwarzen Zwischenbilder
-- Hintergrundmusik aus
-- null bis zwei dezente Soundeffekte pro narrativer Szene
-- Voice-over hat Vorrang
-
-## Qualitätskontrolle
-
-Vor Freigabe prüfen:
-- 155–175 Wörter und 55–60 Sekunden Voice-over
-- 8–10 narrative Szenen mit zwei Bildmomenten je Standardszene
-- Hook sofort sichtbar
-- jedes Bild erklärt exakt seine Bildphase
-- jedes Bild hält `modern-countryball-explainer` ein
-- sichtbare Bildbeschreibung, Zuordnungsgrund und zweite Prüfung vorhanden
-- keine Untertitel
-- Voice-over exakt 1,10x, −16 LUFS und höchstens −1,5 dBTP real gemessen
-- ausschließlich direkte harte Schnitte
-- keine erfundenen QC-, Timing- oder Readiness-Werte
+Nicht ausgeführte Prüfungen niemals als bestanden melden.
