@@ -1,0 +1,376 @@
+{
+  "title": "Warum riecht Regen so besonders?",
+  "topicArea": "Naturwissenschaft und Alltag",
+  "caption": "Warum riecht Regen, obwohl Wasser selbst kaum riecht?\n\nDer typische Duft nach einem Schauer heißt Petrichor. Dahinter steckt ein Zusammenspiel aus Stoffen im Boden, Pflanzenölen und Geosmin. Treffen Regentropfen auf trockenen, porösen Boden, können winzige Luftblasen entstehen. Beim Platzen schleudern sie feine Aerosole mit Duftstoffen in die Luft – bis zu unserer Nase. Besonders nach längerer Trockenheit fällt dieser erdige Geruch oft stark auf. Beim nächsten Sommerregen weißt du also: Du riechst nicht einfach Wasser, sondern einen kleinen chemisch-physikalischen Prozess direkt über dem Boden.\n\n#petrichor #regen #wissenschaft #natur #einfacherklärt",
+  "sources": [
+    {
+      "title": "Bear & Thomas — Nature of Argillaceous Odour",
+      "url": "https://www.nature.com/articles/201993a0",
+      "accessed": "2026-09-03",
+      "type": "wissenschaftliche Originalstudie",
+      "supports": "Die Originalarbeit von 1964 beschreibt den charakteristischen Geruch nach dem Befeuchten trockener Böden und Gesteine und prägte dafür den Begriff Petrichor."
+    },
+    {
+      "title": "Joung & Buie — Aerosol generation by raindrop impact on soil",
+      "url": "https://www.nature.com/articles/ncomms7083",
+      "accessed": "2026-09-03",
+      "type": "wissenschaftliche Originalstudie",
+      "supports": "Die Studie zeigt mit Hochgeschwindigkeitsaufnahmen, dass Regentropfen auf porösen Oberflächen Luftblasen und anschließend Aerosole erzeugen können, die Stoffe aus dem Boden in die Luft transportieren."
+    },
+    {
+      "title": "CSIRO — The smell of rain: how our scientists invented a new word",
+      "url": "https://www.csiro.au/en/news/All/Articles/2015/March/the-smell-of-rain-how-our-scientists-invented-a-new-word",
+      "accessed": "2026-09-03",
+      "type": "offizielle Forschungs- und Fachquelle",
+      "supports": "CSIRO erklärt die Herkunft des Begriffs Petrichor sowie die Rolle von in Boden und Gestein gespeicherten pflanzlichen Ölen, die bei Feuchtigkeit wieder freigesetzt werden."
+    },
+    {
+      "title": "NDR — Darum riecht Sommerregen",
+      "url": "https://www.ndr.de/n-joy/leben/Darum-riecht-Sommerregen%2Cregenimsommer100.html",
+      "accessed": "2026-09-03",
+      "type": "unabhängige Fach-/Sekundärquelle",
+      "supports": "Die Fachredaktion erklärt die Beteiligung von Geosmin aus Bodenmikroorganismen sowie das Zusammenspiel mit Pflanzenstoffen beim typischen erdigen Regengeruch."
+    }
+  ],
+  "scenes": [
+    {
+      "narration": "Warum riecht Regen so stark, obwohl Wasser selbst kaum riecht? Der typische Duft kommt nämlich nicht aus den Wolken.",
+      "imageText": "WARUM RIECHT REGEN?",
+      "visualIdea": "Ein erster Regentropfen fällt auf staubtrockenen Boden, während eine neutrale runde Kugelfigur den aufsteigenden Duft überrascht wahrnimmt; sofort sichtbarer Kontrast zwischen Wasser und Geruch.",
+      "continuityNotes": "Start in einer warmen, trockenen Außenumgebung. Objekt- und Prozessdarstellung stehen im Vordergrund; dieselbe kleine neutrale Kugelfigur wird nur dort genutzt, wo die menschliche Wahrnehmung erklärt wird.",
+      "audioCue": "Warum riecht Regen",
+      "durationSeconds": 5.8,
+      "cameraMotion": {
+        "type": "subtle-push-in"
+      },
+      "soundEffects": [],
+      "images": [
+        {
+          "prompt": "Create a vertical 9:16 educational explainer illustration in the fixed Modern Countryball Explainer world. Show a dramatic first raindrop falling toward visibly dry, cracked soil in a warm outdoor setting. A small neutral round ball character stands off-center in the midground and reacts with curious surprise as a subtle illustrated scent trail begins to rise from the ground. Use a low macro-like angle, strong foreground soil texture, simple background depth, thick confident black outlines, vivid but controlled colors and clear directional lighting. The scene must feel like a real moment, not a poster card. Integrate exactly the German headline \"WARUM RIECHT REGEN?\" once without covering the action. No other readable text.",
+          "imageText": "WARUM RIECHT REGEN?",
+          "audioCue": "Warum riecht Regen"
+        }
+      ]
+    },
+    {
+      "narration": "Dieser Geruch heißt Petrichor. Nach warmen, trockenen Tagen liegen auf Boden, Steinen und Pflanzen verschiedene geruchsaktive Stoffe bereit.",
+      "imageText": "PETRICHOR",
+      "visualIdea": "Die trockene Umgebung wird als Quelle gezeigt: Boden, Stein und Pflanzenmaterial tragen unsichtbare bzw. dezent visualisierte Duftstoffe, bevor der Regen einsetzt.",
+      "continuityNotes": "Gleiche warme Außenwelt, aber breiterer Blick auf Boden, Stein und Pflanze. Keine schwebenden Infokarten; Stoffe werden direkt an realen Oberflächen visualisiert.",
+      "audioCue": "Dieser Geruch heißt",
+      "durationSeconds": 6.2,
+      "cameraMotion": {
+        "type": "pan-right"
+      },
+      "soundEffects": [
+        {
+          "type": "soft-swipe",
+          "atPercent": 0.02,
+          "volume": 0.22,
+          "visualEvent": "Harter Cut vom ersten Tropfen zur trockenen Umgebung vor dem Regen",
+          "reason": "Markiert den Themenwechsel vom Rätsel zur Bezeichnung Petrichor."
+        },
+        {
+          "type": "click",
+          "targetId": "scene-02-image-02",
+          "audioCue": "trockenen Tagen",
+          "volume": 0.2,
+          "visualEvent": "Nahaufnahme zeigt die gespeicherten Stoffe direkt an Boden, Stein und Pflanzenmaterial",
+          "reason": "Betont den zweiten visuellen Informationsschritt über die Quellen des Geruchs."
+        }
+      ],
+      "images": [
+        {
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer illustration. Show a dry summer ground scene with porous soil, one exposed stone and a small plant in the same frame, all under warm dry light before rain. The composition should be environmental and story-first, with foreground soil, midground rock and plant, and a simple distant background. Use thick black outlines, controlled vivid colors and subtle depth. Integrate exactly the German word \"PETRICHOR\" once as a concise label that supports the scene rather than dominating it. No other readable text.",
+          "imageText": "PETRICHOR",
+          "audioCue": "Dieser Geruch heißt"
+        },
+        {
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer illustration. Cut to a closer object-detail view of the same dry soil, stone surface and plant material. Show tiny stylized aromatic particles or a thin oily film clinging directly to these surfaces, visually embedded in the environment rather than floating in UI cards. Use a diagonal composition and shallow visual depth so the surfaces feel tangible. No readable text anywhere.",
+          "imageText": "",
+          "audioCue": "trockenen Tagen"
+        }
+      ]
+    },
+    {
+      "narration": "Dazu gehören Pflanzenöle, die während trockener Phasen an Oberflächen haften und von Boden und Gestein aufgenommen werden.",
+      "imageText": "",
+      "visualIdea": "Pflanzen geben während der Trockenphase Stoffe an ihre Umgebung ab; der zweite Bildmoment zeigt, wie ein dünner Ölfilm an porösem Boden und Gestein haftet.",
+      "continuityNotes": "Makro- und Objektperspektive statt Figuren. Farbwelt bleibt warm und trocken; der Prozess wird räumlich und physisch gezeigt.",
+      "audioCue": "Dazu gehören Pflanzenöle",
+      "durationSeconds": 6.1,
+      "cameraMotion": {
+        "type": "ken-burns"
+      },
+      "soundEffects": [
+        {
+          "type": "whoosh-up",
+          "atPercent": 0.02,
+          "volume": 0.22,
+          "visualEvent": "Cut zur Nahaufnahme der Pflanze als eine Quelle der gespeicherten Stoffe",
+          "reason": "Leitet den konkreten chemischen Bestandteil der Erklärung ein."
+        },
+        {
+          "type": "paper",
+          "targetId": "scene-03-image-02",
+          "audioCue": "Boden und Gestein",
+          "volume": 0.2,
+          "visualEvent": "Der dünne Pflanzenölfilm wird auf porösen Boden- und Steinoberflächen sichtbar",
+          "reason": "Ein weicher texturaler Effekt unterstützt den sichtbaren Wechsel zu den aufnehmenden Oberflächen."
+        }
+      ],
+      "images": [
+        {
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer illustration focused on a small plant during a dry warm period. Show leaves and nearby soil under dry sunlight, with a very subtle stylized oily sheen or aromatic trace moving from plant material toward the surrounding surfaces. Keep the effect physical and grounded, not magical and not an infographic. Use a close three-quarter angle, strong foreground leaf edge, midground soil and simple depth. No readable text anywhere.",
+          "imageText": "",
+          "audioCue": "Dazu gehören Pflanzenöle"
+        },
+        {
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer macro illustration of porous dry soil and a rough stone absorbing and holding a thin stylized oily film from nearby plant material. Make the pores and surface texture simple but clearly visible, using thick outlines and controlled warm colors. Show the film following the contours of the surfaces rather than floating above them. Integrate exactly the German text \"PFLANZENÖLE\" once, small and supportive. No other readable text.",
+          "imageText": "PFLANZENÖLE",
+          "audioCue": "Boden und Gestein"
+        }
+      ]
+    },
+    {
+      "narration": "Im Boden entsteht außerdem Geosmin. Dieser erdige Duftstoff wird von Mikroorganismen gebildet und fällt unserer Nase schon in kleinen Mengen auf.",
+      "imageText": "GEOSMIN",
+      "visualIdea": "Ein stilisierter Bodenquerschnitt zeigt Mikroorganismen als Quelle von Geosmin; danach steigt ein kleiner Anteil des Stoffes aus dem Bodenbereich auf.",
+      "continuityNotes": "Wechsel in einfachen Bodenquerschnitt mit derselben 2D-Formsprache. Keine wissenschaftliche Blueprint-Optik, sondern klare organische Mini-Szene.",
+      "audioCue": "Im Boden entsteht",
+      "durationSeconds": 6.5,
+      "cameraMotion": {
+        "type": "slow-zoom-in"
+      },
+      "soundEffects": [
+        {
+          "type": "soft-whoosh",
+          "atPercent": 0.02,
+          "volume": 0.22,
+          "visualEvent": "Cut von Pflanzenölen in einen einfachen Bodenquerschnitt",
+          "reason": "Markiert den Wechsel zum zweiten wichtigen Duftstoff Geosmin."
+        },
+        {
+          "type": "pop",
+          "targetId": "scene-04-image-02",
+          "audioCue": "erdige Duftstoff",
+          "volume": 0.22,
+          "visualEvent": "Geosmin-Partikel werden als konkreter Duftstoff im Bodenbereich sichtbar",
+          "reason": "Akzentuiert die neue Substanz im zweiten Bildmoment."
+        }
+      ],
+      "images": [
+        {
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer illustration with a simple cutaway of dark soil, roots and a few stylized microscopic soil organisms embedded naturally between soil particles. Avoid a technical blueprint or laboratory poster. Use rounded organic shapes, thick outlines, clear layers and gentle depth. Show a few small aromatic particles forming near the microorganisms. Integrate exactly the German word \"GEOSMIN\" once in a concise position. No other readable text.",
+          "imageText": "GEOSMIN",
+          "audioCue": "Im Boden entsteht"
+        },
+        {
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer close-up of the same soil cross-section. Focus on a small cluster of stylized geosmin particles moving from the microbial soil zone toward tiny air spaces between soil grains. Use an off-center macro composition with clear cause-and-effect and no floating cards. No readable text anywhere.",
+          "imageText": "",
+          "audioCue": "erdige Duftstoff"
+        }
+      ]
+    },
+    {
+      "narration": "Dann trifft ein Regentropfen auf trockenen, porösen Boden. Dabei können winzige Luftblasen direkt unter dem Tropfen eingeschlossen werden.",
+      "imageText": "",
+      "visualIdea": "Ein Regentropfen schlägt in Makroansicht auf porösen Boden; der zweite Moment zeigt unter der Tropfenoberfläche eingeschlossene winzige Luftblasen.",
+      "continuityNotes": "Dynamischer Makroprozess mit klarer Bewegungsrichtung von oben nach unten. Objekt statt Figur; hohe visuelle Verständlichkeit.",
+      "audioCue": "Dann trifft ein",
+      "durationSeconds": 6.2,
+      "cameraMotion": {
+        "type": "pan-left"
+      },
+      "soundEffects": [
+        {
+          "type": "water-drop",
+          "atPercent": 0.02,
+          "volume": 0.2,
+          "visualEvent": "Der erste Regentropfen trifft sichtbar auf den trockenen Boden",
+          "reason": "Inhaltlich passender Objekt-Sound ersetzt einen generischen Übergangs-Whoosh."
+        },
+        {
+          "type": "pop",
+          "targetId": "scene-05-image-02",
+          "audioCue": "winzige Luftblasen",
+          "volume": 0.22,
+          "visualEvent": "Unter dem aufgeschlagenen Tropfen werden kleine eingeschlossene Luftblasen sichtbar",
+          "reason": "Markiert das entscheidende physikalische Detail im zweiten Bildmoment."
+        }
+      ],
+      "images": [
+        {
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer macro action scene of one raindrop hitting dry porous soil. Freeze the instant of impact with the droplet spreading outward over rough soil grains, small splash edges and visible pores. Use a dramatic low macro angle, thick outlines, crisp controlled blues against warm earth colors and strong directional action. No readable text anywhere.",
+          "imageText": "",
+          "audioCue": "Dann trifft ein"
+        },
+        {
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer extreme close-up immediately after raindrop impact. Show the thin water layer sitting over porous soil while several tiny round air bubbles are visibly trapped just beneath the droplet surface between soil pores. Keep the physics simple and clear, with one dominant bubble cluster and no infographic panels. Integrate exactly the German text \"LUFTBLASEN\" once. No other readable text.",
+          "imageText": "LUFTBLASEN",
+          "audioCue": "winzige Luftblasen"
+        }
+      ]
+    },
+    {
+      "narration": "Die Bläschen steigen auf und platzen. So schleudern sie winzige Tröpfchen mit Duftstoffen als Aerosole in die Luft.",
+      "imageText": "",
+      "visualIdea": "Die eingeschlossenen Luftblasen steigen in der dünnen Wasserschicht nach oben; beim Platzen schießen mikroskopische Tröpfchen mit Duftstoffen in die Luft.",
+      "continuityNotes": "Direkte Fortsetzung von Szene 5. Bewegungsrichtung jetzt von unten nach oben; stärkerer visueller Aha-Moment.",
+      "audioCue": "Die Bläschen steigen",
+      "durationSeconds": 6.0,
+      "cameraMotion": {
+        "type": "subtle-pull-out"
+      },
+      "soundEffects": [
+        {
+          "type": "whoosh-up",
+          "atPercent": 0.02,
+          "volume": 0.22,
+          "visualEvent": "Cut zur aufsteigenden Luftblase unmittelbar nach dem Tropfenaufprall",
+          "reason": "Die aufwärts gerichtete Transition unterstützt die sichtbare Bewegungsrichtung."
+        },
+        {
+          "type": "swoosh-reveal",
+          "targetId": "scene-06-image-02",
+          "audioCue": "als Aerosole",
+          "volume": 0.24,
+          "visualEvent": "Die Blase platzt und ein feiner Aerosolnebel wird über dem Boden sichtbar",
+          "reason": "Dies ist der zentrale Aha-Moment des Reels und bekommt den einmaligen Reveal-Sound."
+        }
+      ],
+      "images": [
+        {
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer macro illustration continuing the previous soil-and-water scene. Show one trapped air bubble rising upward through the shallow water film above porous soil, with a clear vertical motion path and smaller bubbles behind it. Use strong depth, an off-center bubble and a clean physical sequence rather than diagram arrows. No readable text anywhere.",
+          "imageText": "",
+          "audioCue": "Die Bläschen steigen"
+        },
+        {
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer extreme macro action scene of the bubble bursting at the water surface. Show a tiny crown-like break and many microscopic droplets launching upward into the air as a fine aerosol plume, carrying a few stylized aromatic particles. Keep the plume visually elegant and easy to read, not explosive. Integrate exactly the German word \"AEROSOLE\" once. No other readable text.",
+          "imageText": "AEROSOLE",
+          "audioCue": "als Aerosole"
+        }
+      ]
+    },
+    {
+      "narration": "Mit der Luft gelangen Geosmin und andere Bestandteile zu deiner Nase. Deshalb riecht plötzlich die ganze Umgebung nach feuchter Erde.",
+      "imageText": "",
+      "visualIdea": "Der Aerosolnebel wird vom Luftstrom vom Boden weggetragen; im zweiten Bild erreicht er die Nase derselben neutralen Kugelfigur aus der Hook.",
+      "continuityNotes": "Rückkehr zur menschlichen Wahrnehmung. Dieselbe kleine neutrale Kugelfigur wie in Bild 01; Prozess bleibt visuell im Vordergrund.",
+      "audioCue": "Mit der Luft",
+      "durationSeconds": 6.3,
+      "cameraMotion": {
+        "type": "pan-right"
+      },
+      "soundEffects": [
+        {
+          "type": "soft-swipe",
+          "atPercent": 0.02,
+          "volume": 0.2,
+          "visualEvent": "Cut vom Aerosol-Makro zu einem seitlichen Luftstrom über dem Boden",
+          "reason": "Neutraler Übergang vom Entstehen zum Transport der Duftstoffe."
+        },
+        {
+          "type": "click",
+          "targetId": "scene-07-image-02",
+          "audioCue": "zu deiner Nase",
+          "volume": 0.2,
+          "visualEvent": "Der Duftstrom erreicht sichtbar die Nase der neutralen Kugelfigur",
+          "reason": "Betont den Moment, in dem der physikalische Prozess zur Wahrnehmung wird."
+        }
+      ],
+      "images": [
+        {
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer wide-to-medium environmental shot. Show the fine aerosol plume leaving damp soil and being carried sideways by a gentle air current through the warm outdoor scene. Use visible directional flow through the particle trail, foreground wet soil and a simple midground landscape. No readable text anywhere.",
+          "imageText": "",
+          "audioCue": "Mit der Luft"
+        },
+        {
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer medium close shot of the same neutral round ball character from the opening scene. The character stands near the damp ground while the subtle aerosol-and-scent trail reaches its face, clearly connecting soil to smell. Use expressive eyes, simple clean depth and a side angle so the flow direction remains obvious. Integrate exactly the German text \"ZUR NASE\" once. No other readable text.",
+          "imageText": "ZUR NASE",
+          "audioCue": "zu deiner Nase"
+        }
+      ]
+    },
+    {
+      "narration": "Warum fällt der Geruch nach längerer Trockenheit oft stärker auf? Weil sich Stoffe ansammeln und die ersten Tropfen sie freisetzen.",
+      "imageText": "NACH TROCKENHEIT",
+      "visualIdea": "Eine visuelle Vorher-Nachher-Situation zeigt lange trockene Oberfläche mit angesammelten Stoffen und danach die ersten Tropfen, die einen deutlich sichtbaren Duftnebel freisetzen.",
+      "continuityNotes": "Prüffrage als konkrete Vergleichsszene, keine Textkarte. Die Trockenphase und der erste Regen werden räumlich nacheinander erzählt.",
+      "audioCue": "Warum fällt der",
+      "durationSeconds": 6.2,
+      "cameraMotion": {
+        "type": "slow-zoom-in"
+      },
+      "soundEffects": [
+        {
+          "type": "whoosh-down",
+          "atPercent": 0.02,
+          "volume": 0.22,
+          "visualEvent": "Cut zur ruhigen Prüf- und Vergleichsszene nach längerer Trockenheit",
+          "reason": "Senkt nach dem Aha-Moment das Tempo und leitet die Einordnung ein."
+        },
+        {
+          "type": "water-drop",
+          "targetId": "scene-08-image-02",
+          "audioCue": "Weil sich Stoffe",
+          "volume": 0.2,
+          "visualEvent": "Die ersten Tropfen treffen die zuvor trockene Oberfläche und setzen einen stärkeren Duftnebel frei",
+          "reason": "Inhaltlich passender Sound verbindet Trockenphase und sichtbare Freisetzung."
+        }
+      ],
+      "images": [
+        {
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer scene showing a long dry spell through one sun-baked patch of soil, rough stone and dry plant material, with a visibly accumulated but subtle aromatic film on surfaces. Use a slightly elevated angle and warm dry light. Integrate exactly the German text \"NACH TROCKENHEIT\" once. No other readable text.",
+          "imageText": "NACH TROCKENHEIT",
+          "audioCue": "Warum fällt der"
+        },
+        {
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer action scene of the very first raindrops striking that same previously dry surface. Show several small impact points releasing a noticeably richer but still elegant fine aerosol-and-scent plume upward. Use a wider composition than the earlier macro shot to communicate the whole patch activating at once. No readable text anywhere.",
+          "imageText": "",
+          "audioCue": "Weil sich Stoffe"
+        }
+      ]
+    },
+    {
+      "narration": "Beim nächsten Schauer riechst du also nicht einfach Regen. Du riechst, wie Wasser Stoffe aus Boden und Umgebung in die Luft bringt.",
+      "imageText": "DU RIECHST DEN BODEN",
+      "visualIdea": "Abschluss: Die Kugelfigur steht nach dem Schauer in einer frischen Umgebung; ein klarer visueller Pfad verbindet nassen Boden, feine Duftpartikel und die Wahrnehmung.",
+      "continuityNotes": "Ruhiger, befriedigender Abschluss ohne Endkarte. Das letzte Bild bleibt aktiv und natürlich; später nur 0,6 Sekunden visueller Hold nach dem letzten Wort.",
+      "audioCue": "Beim nächsten Schauer",
+      "durationSeconds": 6.7,
+      "cameraMotion": {
+        "type": "subtle-pull-out"
+      },
+      "soundEffects": [
+        {
+          "type": "soft-whoosh",
+          "atPercent": 0.02,
+          "volume": 0.22,
+          "visualEvent": "Cut von der Prüfantwort zum zusammenfassenden Regenschauer",
+          "reason": "Führt in die abschließende Gesamtsicht des Prozesses."
+        },
+        {
+          "type": "click",
+          "targetId": "scene-09-image-02",
+          "audioCue": "nicht einfach Regen",
+          "volume": 0.2,
+          "visualEvent": "Der finale Blick verbindet nassen Boden, Duftpartikel und die Wahrnehmung ohne zusätzliche Erklärungselemente",
+          "reason": "Setzt den letzten Informationsakzent vor dem kurzen Schluss-Hold."
+        }
+      ],
+      "images": [
+        {
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer medium-wide final scene after a fresh shower. Show the same neutral round ball character standing beside darkened wet soil and a few rain-damp plants, while a subtle scent trail rises naturally from the ground toward the character. The atmosphere feels fresh and clear, with soft post-rain light and visible depth. Integrate exactly the German text \"DU RIECHST DEN BODEN\" once, supportive rather than poster-like. No other readable text.",
+          "imageText": "DU RIECHST DEN BODEN",
+          "audioCue": "Beim nächsten Schauer"
+        },
+        {
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer final wide shot that visually completes the mechanism: wet soil in the foreground, a few tiny aerosol droplets rising, the same neutral round ball character in the midground noticing the scent, and a simple freshly rained-on landscape behind. Use a calm subtle pull-back feeling, balanced depth and no end-card design. The scene must remain alive and natural for the final 0.6-second hold. No readable text anywhere.",
+          "imageText": "",
+          "audioCue": "nicht einfach Regen"
+        }
+      ]
+    }
+  ]
+}
