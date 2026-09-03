@@ -4,167 +4,136 @@
 
 ## Grundsatz
 
-Zooms, Kamerabewegungen und Soundeffekte sollen das Verständnis unterstützen. Sie dürfen nicht vom Voice-over oder vom Bildinhalt ablenken.
+Für neue Reels sind Zoom/Kamerabewegung und SFX keine optionale Dekoration mehr. Sie gehören zum verbindlichen Schnittsystem:
 
-## Zooms und Kamerabewegungen
+- **jeder Bildmoment bewegt sich sichtbar, aber dezent**
+- **jeder Szenenwechsel nach der Hook besitzt einen SFX**
+- **jeder interne Bildwechsel besitzt einen eigenen SFX oder passenden Objekt-Sound**
+- Stimme bleibt immer dominant
 
-**Bewegung ist der Normalfall.** Ein Standbild ohne jede Bewegung wirkt auf einem
-Smartphone tot. Etwa jede vierte Szene bleibt trotzdem bewusst ruhig, damit die
-Bewegung nicht zum Dauerzustand wird.
+Ab 2026-09-02 werden diese Punkte technisch als Hard Gates geprüft.
 
-### Bevorzugt: `ken-burns`
+## Bewegung/Zoom — kein statischer Stillframe
 
-Kombiniert einen leichten Zoom mit einem leichten Schwenk. Das wirkt deutlich
-lebendiger als ein reiner Zoom, ohne mehr Bewegung ins Bild zu bringen. Ohne eigene
-Werte fährt er von Skalierung 1,02 auf 1,06 und schwenkt dabei um 3 % der Bildbreite.
+Ein Bild darf nicht mehrere Sekunden wie eine unbewegte Slide stehen. Hook, erste Bildphase und zweite Bildphase erhalten Bewegung.
 
-### Alle Typen
+### Kanonische Typen
 
 | Typ | Wirkung |
 |---|---|
-| `ken-burns` | Zoom plus Schwenk, der hochwertigste Standard |
-| `subtle-push-in` | ruhiges Herangehen, gut bei Gesichtern und Details |
-| `subtle-pull-out` | Kontext öffnet sich, gut beim Einordnen |
-| `slow-zoom-in` | etwas stärkeres Heranfahren für einen Höhepunkt |
-| `slow-zoom-out` | Rückzug, gut vor einem Themenwechsel |
-| `pan-left` / `pan-right` | horizontale Bewegung, gut bei Karten und Vergleichen |
-| `pan-up` / `pan-down` | vertikale Bewegung, gut bei Höhe, Tiefe oder Schichten |
-| `none` | bewusste Ruhe |
+| `ken-burns` | leichter Zoom plus kleiner Schwenk; hochwertiger Standard |
+| `subtle-push-in` | ruhiges Herangehen |
+| `subtle-pull-out` | Kontext öffnet sich |
+| `slow-zoom-in` | etwas stärkeres Heranfahren |
+| `slow-zoom-out` | ruhiger Rückzug |
+| `pan-left` / `pan-right` | horizontaler Fokuswechsel |
+| `pan-up` / `pan-down` | vertikaler Fokuswechsel |
 
-### Grenzen
+`none` bleibt nur für Legacy-Kompatibilität im Schema. Für neue Reels blockiert der Hard Gate statische Motion.
 
-- Zoom normalerweise 2–6 %, niemals mehr als 8 %
-- Schwenk höchstens 4 % der Bildbreite oder Bildhöhe
-- **Hook bleibt `none`**, damit sie sofort klar und stabil lesbar ist
-- keine schnellen, pumpenden oder wiederholten Zooms
-- wichtiger Bildtext, Kugelfiguren und Symbole müssen während der gesamten Bewegung sicher bleiben
-- nicht dieselbe Bewegung über viele Szenen hintereinander
+Bekannte ältere/beschreibende Aliase werden vor der Ausführung kanonisch aufgelöst, damit sie nicht versehentlich statisch rendern, z. B. `gentle-pan` → `ken-burns`. Wirklich unbekannte Typen blockieren.
 
-### Weiches Ein- und Auslaufen
+### Richtwerte
 
-Jede Bewegung läuft standardmäßig mit `ease-in-out`: Sie beschleunigt sanft an und
-läuft weich aus. Eine lineare Fahrt startet und stoppt hart und wirkt dadurch
-mechanisch — das ist der häufigste Grund, warum Zooms billig aussehen.
+- Zoomänderung normalerweise 2–4 %
+- erlaubter sicherer Scale-Bereich 0,94–1,06
+- Pan normalerweise 1–3 %, maximal 3 %
+- Standard-Easing `ease-in-out`
+- keine schnellen, pumpenden oder hektischen Zooms
+- Bewegung darf wichtigen Bildtext oder das Hauptmotiv nicht aus dem Frame schieben
+- benachbarte Bilder möglichst nicht immer identisch bewegen
 
-Über das Feld `easing` sind auch `ease-out`, `ease-in`, `ease` und `linear` möglich.
-Ohne Angabe gilt `ease-in-out`.
+Der Renderer besitzt zusätzlich einen Safety-Fallback: Fehlt Motion im Renderplan oder steht dort `none`, wird ein dezenter Push-in/Pull-out gerendert. Das ersetzt nicht den Planungs-Hard-Gate, sondern verhindert einen statischen Ausreißer als letzte Sicherheitsstufe.
 
-## Übergänge
+## Übergänge und Cue-Timing
 
-- Hook-Bild beginnt ohne Übergang ab Sekunde 0
-- zwischen allen weiteren visuellen Shots ausschließlich direkter harter Schnitt
-- keine Crossfades, Schwarzblenden, Dip-to-dark-, Slide-, Glitch-, Spin-, Flash- oder 3D-Übergänge
-- kein schwarzes Zwischenbild und keine Ein-/Ausblendung am Bildwechsel
-- neuer Bildmoment ist ab dem ersten Frame des Schnitts vollständig sichtbar
-- auch interne `imagePhases` innerhalb derselben narrativen Szene wechseln per hartem Schnitt
+- Hook beginnt ab Sekunde 0
+- danach nur harte Cuts
+- kein Crossfade, Dip-to-dark, Slide, Glitch, Spin oder schwarzes Zwischenbild
+- Szenenwechsel ca. **0,10 s vor dem gesprochenen Szenen-Cue**
+- interne Bildwechsel ca. **0,08 s vor dem gesprochenen Bild-Cue**
+- bei 30 fps entspricht 0,08 s ungefähr 2–3 Frames
 
-## Soundeffekte
+Ziel: Das neue Bild ist schon sichtbar, wenn das Schlüsselwort gesprochen wird.
 
-- Voice-over hat immer Vorrang
-- Hintergrundmusik ist ausgeschaltet
-- **jeder Szenenwechsel bekommt einen Sound** — der harte Schnitt wird dadurch hörbar markiert
-- höchstens drei Soundeffekte pro Szene
-- geeignet sind dezente Whooshes, Pops, Klicks, Ticks, weiche Impacts, Papiergeräusche oder objektbezogene Geräusche
+## Soundeffekte — jeder Wechsel klingt
 
-### Welcher Sound am Schnitt
+Der Agent plant niemals beliebige Dateinamen, sondern nur einen `type` aus `config/sound-library.json`. `sync:sounds --strict` löst Typ → Datei auf und kopiert die benötigte Datei in den Reel-Ordner.
 
-**Erste Wahl ist immer ein inhaltlich passender Effekt** zum sichtbaren Ereignis der
-neuen Szene: erscheint ein Objekt, kommt `pop`; wechselt Geld den Besitzer, `coin`;
-öffnet sich eine Tür, `door`.
+### Pflicht-Coverage
 
-Nur wenn kein sichtbares Ereignis passt, kommt eine der vier Transition-Varianten:
+- Szene 1 startet ohne Übergangs-SFX vor dem Video.
+- Jede narrative Szene ab Szene 2 braucht mindestens einen nicht zielgebundenen Übergangs-SFX.
+- Jede zweite Bildphase braucht einen SFX mit `targetId` auf genau diese Bildphase.
+- Der interne SFX trägt denselben `audioCue` wie die Bildphase.
+- `visualEvent` und `reason` sind Pflicht.
+- Maximal drei SFX pro narrativer Szene.
 
-| Typ | wann |
+### Timing und Lautstärke
+
+- SFX startet standardmäßig **0,04 s vor dem sichtbaren Cut**.
+- Der hörbare Akzent soll am Schnitt liegen.
+- typische Lautstärke 0,18–0,30
+- Standard ungefähr 0,22
+- Voice-over darf niemals verdeckt werden
+- dieselbe Transition-Variante nicht direkt zweimal hintereinander
+
+### Zentrale Soundtypen
+
+| type | Einsatz |
 |---|---|
-| `whoosh-up` | die neue Szene steigert oder spitzt zu |
-| `whoosh-down` | die neue Szene löst auf oder ordnet ein |
 | `soft-whoosh` | deutlicher Themensprung |
-| `soft-swipe` | neutraler Schnitt ohne eigene Aussage |
+| `whoosh-up` | Steigerung/Zuspitzung |
+| `whoosh-down` | Auflösung/Einordnung |
+| `soft-swipe` | neutraler Szenenwechsel |
+| `pop` | neues Objekt/Element erscheint |
+| `click` | kleiner klarer Fokuswechsel |
+| `tick` | Zeit/Schritt/Abfolge |
+| `soft-impact` | sichtbare Belastung/Aufprall/Gewicht |
+| `paper` | Papier, Dokument, Karte |
+| `swoosh-reveal` | Aha-/Reveal-Moment, höchstens einmal |
+| `door` | Tür/Tor/Barriere öffnet oder schließt |
+| `coin` | sichtbares Geld/Kostenereignis |
+| `water-drop` | sichtbarer Tropfen/Wasserereignis |
 
-**Dieselbe Transition-Variante darf nie zweimal hintereinander stehen.** Sonst klingt
-das Reel nach Vorlage. Zwischen den vier Varianten wird bewusst gewechselt.
-- keine lauten Meme-Sounds, Jumpscares oder übertriebenen Effekte
-- Lautstärke normalerweise zwischen 0,12 und 0,30; Standard ungefähr 0,20 relativ zur Voice-over-Mischung
-- Soundeffekte dürfen wichtige Wörter des Voice-overs nicht verdecken
+Inhaltlich passender Sound ist besser als ein generischer Whoosh. Wenn kein spezielles Objektgeräusch passt, wird trotzdem ein kurzer sauberer Transition-/Informations-SFX verwendet — ein sichtbarer Wechsel bleibt nicht stumm.
 
-### Welcher Sound für welches Ereignis
+## Warum Sounds früher verschwinden konnten
 
-Der Agent wählt **niemals einen Dateinamen**, sondern ausschließlich einen `type` aus
-`config/sound-library.json`. Die Auflösung zur Datei übernimmt `npm run sync:sounds`
-bzw. automatisch der Timeline-Bau.
+Zwischen Effektplan, Timeline und Renderplan kann ein `file`-Feld verloren gehen. Deshalb gelten jetzt mehrere Sicherheitsstufen:
 
-| type | Ereignis im Bild |
-|---|---|
-| `soft-whoosh` | Szenenwechsel mit deutlichem Themensprung |
-| `whoosh-up` | Szenenwechsel, der steigert oder zuspitzt |
-| `whoosh-down` | Szenenwechsel, der auflöst oder einordnet |
-| `soft-swipe` | neutraler Szenenwechsel ohne eigene Aussage |
-| `pop` | ein Objekt oder eine Figur erscheint sichtbar neu |
-| `click` | eine konkrete Zahl oder ein Schlüsselbegriff wird betont |
-| `tick` | Zeit, Zählen, Abfolge, Kalender, Uhr |
-| `soft-impact` | etwas fällt, trifft auf oder wird sichtbar belastet |
-| `paper` | Dokument, Vertrag, Karte, Blättern |
-| `swoosh-reveal` | der Aha-Moment, genau einmal pro Reel |
-| `door` | Tür, Tor oder Grenze öffnet oder schließt sich sichtbar |
-| `coin` | Geld wechselt sichtbar den Besitzer |
-| `water-drop` | ein Tropfen oder Wasser trifft sichtbar auf |
+1. `sync:sounds --strict` bindet jeden bekannten `type` an seine echte Library-Datei.
+2. Motion-/SFX-Hard-Gate prüft Typ, Coverage und Metadaten.
+3. Finalizer und Renderer synchronisieren die Soundbibliothek erneut.
+4. `ReelComposition.jsx` kann einen bekannten Soundtyp als letzten Safety-Fallback erneut auf `sfx/<datei>` auflösen.
 
-**Grundregel:** Ein Sound gehört an ein **sichtbares Ereignis**, nicht an eine Aussage.
-Wenn das Voice-over über Geld spricht, im Bild aber keine Münze zu sehen ist, kommt
-kein `coin`. Ohne sichtbaren Anlass bleibt `soundEffects` leer.
+Unbekannte Typen oder fehlende Library-Dateien blockieren den Render.
 
-Jeder Eintrag braucht eine Begründung in `reason` und einen Bezug in `visualEvent`.
-Ein Eintrag sieht so aus:
-
-```json
-{
-  "type": "pop",
-  "atPercent": 0.35,
-  "visualEvent": "Die zweite Länderkugel erscheint neben der ersten",
-  "reason": "Markiert den Moment, in dem der Vergleich sichtbar wird"
-}
-```
-
-`file` und `volume` trägt das System selbst ein. Der Zeitpunkt kommt wahlweise über
-`atPercent` (Anteil der Szenendauer), `offsetSeconds` (ab Szenenbeginn) oder
-`timeSeconds` (absolut).
-- keine urheberrechtlich geschützte Musik oder ungeklärten Audioausschnitte verwenden
-
-## Audio-Pacing
-
-Nach dem Einfügen des echten Voice-overs wird das Audio vor der finalen Timeline optimiert:
+## Audio-Pacing und Endstille
 
 ```bash
-npm run trim:pauses -- --dir "PFAD-ZUM-REEL" --speed 1.10
+npm run trim:pauses -- --dir "<reel>" --speed 1.10
 ```
 
 Verbindlich:
+- Anfangs- und überlange Pausen straffen
+- Endstille entfernen
+- exakt 1,10x, Pitch erhalten
+- −16 LUFS
+- max. −1,5 dBTP
+- echte Nachmessung
 
-- Pausen ab ungefähr 0,24 Sekunden kürzen
-- kurze natürliche Restpause behalten
-- Voice-over exakt auf 1,10x beschleunigen
-- Tonhöhe erhalten
-- auf −16 LUFS integrierte Lautheit normalisieren
-- höchstens −1,5 dBTP True Peak
-- immer von der ursprünglichen Audiodatei ausgehen
+Das finale Voice-over darf höchstens **0,25 s Endstille** besitzen. Danach folgt nur der separate visuelle Schluss-Hold von 0,5–0,7 s, Ziel 0,6 s. Finalizer und Renderer messen/prüfen dies als Hard Gate.
 
-Danach müssen Timeline und narrative Audio-Cues neu synchronisiert werden:
+## Verbindliche Phase-3-Reihenfolge
 
 ```bash
-npm run build:timeline -- --dir "PFAD-ZUM-REEL"
-npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
+npm run trim:pauses -- --dir "<reel>" --speed 1.10
+npm run sync:sounds -- --dir "<reel>" --strict
+npm run build:timeline -- --dir "<reel>" --strict
+npm run finalize:reel -- --dir "<reel>" --strict
+npm run validate:render -- --dir "<reel>"
+npm run render:reel -- --dir "<reel>"
 ```
 
-Kein Word-Sync- oder Untertitelschritt.
-
-## Planung
-
-Die Planung wird getrennt von den Bildprompts in `effects/effects-plan.json` gespeichert. Ein Eintrag bezieht sich auf die jeweilige narrative Szene bzw. den vorgesehenen visuellen Shot und enthält:
-
-- `sceneId`
-- `transitionIn`
-- `cameraMotion`
-- `soundEffects`
-- kurze Begründung
-
-Für den ersten visuellen Shot gilt `transitionIn.type: "none"`. Für alle weiteren Wechsel gilt `transitionIn.type: "cut"` und `durationSeconds: 0`.
+`--force` darf die Motion/SFX-, Soundbibliothek-, Audio-Dateibindungs- und Endstille-Hard-Gates nicht umgehen.
