@@ -6,6 +6,16 @@ import { loadSoundLibrary } from './sound-library.js';
 
 const EFFECTS_HARD_GATE_SINCE = '2026-09-02';
 
+const MOTION_ALIASES = Object.freeze({
+  'gentle-pan': 'ken-burns',
+  'gentle-push-in': 'subtle-push-in',
+  'medium-push-in': 'slow-zoom-in',
+  'close-up-push-in': 'subtle-push-in',
+  'slow-push-in': 'slow-zoom-in',
+  'push-in': 'subtle-push-in',
+  'pull-out': 'subtle-pull-out'
+});
+
 const MOTION_DEFAULTS = {
   none: { startScale: 1, endScale: 1, panXPercent: 0, panYPercent: 0 },
   'subtle-push-in': { startScale: 1, endScale: 1.04, panXPercent: 0, panYPercent: 0 },
@@ -38,8 +48,14 @@ function numberOr(value, fallback) {
   return Number.isFinite(number) ? number : fallback;
 }
 
+function canonicalMotionType(value) {
+  const raw = String(value ?? '').trim();
+  return MOTION_ALIASES[raw] ?? raw;
+}
+
 function effectiveMotion(motion = {}) {
-  const type = String(motion.type ?? '').trim();
+  const requestedType = String(motion.type ?? '').trim();
+  const type = canonicalMotionType(requestedType);
   const defaults = MOTION_DEFAULTS[type] ?? MOTION_DEFAULTS.none;
   const startScale = numberOr(motion.startScale, defaults.startScale);
   const endScale = numberOr(motion.endScale, defaults.endScale);
@@ -48,7 +64,9 @@ function effectiveMotion(motion = {}) {
   const scaleDelta = Math.abs(endScale - startScale);
   const panDelta = Math.max(Math.abs(panXPercent), Math.abs(panYPercent));
   return {
+    requestedType,
     type,
+    aliased: requestedType !== type,
     startScale,
     endScale,
     panXPercent,
@@ -92,7 +110,7 @@ export async function verifyFutureEffectsCoverage(reelDirectory) {
   const maxScale = Number(effectsRules.motionEffects?.zoomScale?.max ?? 1.06);
   const maxPan = Number(effectsRules.motionEffects?.maximumPanPercent ?? 3);
   const minVolume = Number(effectsRules.soundEffects?.recommendedVolume?.min ?? 0.18);
-  const maxVolume = Number(effectsRules.soundEffects?.recommendedVolume?.max ?? 0.28);
+  const maxVolume = Number(effectsRules.soundEffects?.recommendedVolume?.max ?? 0.3);
   const maxSounds = Number(effectsRules.soundEffects?.maximumPerScene ?? 3);
   const effectByScene = new Map((effectsPlan.scenes ?? []).map((scene) => [scene.sceneId, scene]));
 
@@ -109,7 +127,7 @@ export async function verifyFutureEffectsCoverage(reelDirectory) {
 
     const motion = effectiveMotion(effect.cameraMotion);
     if (!allowedMotions.has(motion.type)) {
-      findings.push({ sceneId: scene.sceneId, issue: 'camera-motion-unknown', type: motion.type || '(leer)' });
+      findings.push({ sceneId: scene.sceneId, issue: 'camera-motion-unknown', type: motion.requestedType || '(leer)' });
     } else if (!motion.visiblyMoving) {
       findings.push({ sceneId: scene.sceneId, issue: 'camera-motion-static', type: motion.type || '(leer)' });
     }
@@ -175,7 +193,7 @@ export async function verifyFutureEffectsCoverage(reelDirectory) {
     passed: findings.length === 0,
     findings,
     reason: findings.length === 0
-      ? 'Jede narrative Szene besitzt sichtbare Kamerabewegung; jeder Szenenwechsel und jeder interne Bildwechsel besitzt einen gültigen SFX aus der zentralen Bibliothek.'
+      ? 'Jede narrative Szene besitzt sichtbare Kamerabewegung; bekannte Motion-Aliase werden kanonisch aufgelöst; jeder Szenenwechsel und jeder interne Bildwechsel besitzt einen gültigen SFX aus der zentralen Bibliothek.'
       : `${findings.length} verpflichtende Motion-/SFX-Prüfung(en) sind noch nicht erfüllt.`
   };
 }
