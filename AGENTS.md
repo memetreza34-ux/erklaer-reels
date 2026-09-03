@@ -29,12 +29,14 @@ Bei „Mach ein neues Reel“ autonom:
 2. starkes, belegbares Thema wählen
 3. 155–175 deutsche Wörter schreiben
 4. 8–10 narrative Szenen planen, Standard 9
-5. ausschließlich **Modern Countryball Explainer** verwenden
+5. für jede Bildphase ausschließlich **Modern Countryball Explainer** verwenden
 6. Hook 1 Bild, jede weitere Szene 2; Standard 9 Szenen = 17 Bilder
 7. lebendige Bildprompts, Motion-Plan, SFX-Plan, Caption und Quellen fertigstellen
-8. keine Untertitel
+8. keine Untertitel erzeugen
 9. `check:content --strict` muss Quellen, Bildstruktur sowie Motion-/SFX-Hard-Gate bestehen
 10. nach echten Assets Audio/Timeline/QC und Render nur über bestandene Hard-Gates
+
+`sync:words` ist für neue Reels **nicht erforderlich** und gehört nicht zum aktiven Workflow.
 
 ## Reel-Bildwelt
 
