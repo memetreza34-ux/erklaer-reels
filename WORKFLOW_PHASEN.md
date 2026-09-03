@@ -1,190 +1,203 @@
 # Die drei Produktionsphasen
 
-**Verbindliche Rollenverteilung für jedes Reel.** Jede Phase hat genau einen
-Verantwortlichen und ein klar definiertes Übergabeergebnis.
+**Verbindliche Rollenverteilung für jedes Reel.** `CURRENT_WORKFLOW.md` hat bei Widersprüchen Vorrang.
 
 | Phase | Wer | Ergebnis |
 |---|---|---|
-| 1 | ChatGPT | Reel-Ordner mit Script, Bildprompts, Szenen- und Effektplan |
-| 2 | Arman | Audio als MP3/M4A und alle Bilder als ZIP im Reel-Ordner |
-| 3 | Antigravity | fertige MP4 im Upload-Bereich |
+| 1 | ChatGPT | Reel-Ordner mit Script, Bildprompts, Motion-/SFX-Plan, Caption und Quellen |
+| 2 | Arman | echtes Voice-over und alle Bilder im aktuellen Reel-Ordner |
+| 3 | Antigravity | synchronisiertes, geprüftes Reel mit MP4 + Caption |
 
-Niemand überspringt eine Phase und niemand übernimmt die Aufgabe einer anderen.
-Insbesondere gilt weiterhin: **Antigravity erzeugt niemals selbst Bilder**
-(`ANTIGRAVITY_IMAGE_POLICY.md`).
+Niemand übernimmt Nutzerassets aus einem anderen Reel. Antigravity erzeugt keine Ersatzbilder.
 
 ---
 
-## Phase 1 — ChatGPT: Reel anlegen und vollständig ausschreiben
+## Phase 1 — ChatGPT
 
-### Slot bestimmen
+### Slot und Thema
 
-Die Reels liegen in Wochenordnern (`2026-KW35_24-08_bis_30-08`) und darin in
-Wochentagsordnern. Den nächsten freien Tag ermittelt:
+Chronologisch nächsten freien Wochentag verwenden. Themenuniversum ist offen; entscheidend sind Hook, Aha-Moment, Belegbarkeit, visuelle Stärke und Abwechslung.
 
-```bash
-npm run next:slot
-```
+### Reel-Paket
 
-Der Befehl nennt Wochentag, Datum, Wochenordner und Zielpfad. Es wird immer der
-chronologisch nächste freie Tag genommen, keine Lücke übersprungen.
-
-### Thema wählen
-
-Die Themenwelt ist offen — Psychologie, Länder, Technik, Alltag, Natur, Geschichte,
-Wirtschaft und alles andere mit Erklärwert. Ausgeschlossen sind nur tägliche
-Breaking-News, Parteienwerbung und reine Produktwerbung.
-
-Entscheidend sind Hook, klarer Aha-Moment, Belegbarkeit, visuelle Klarheit und
-Abwechslung zu den letzten Reels.
-
-### Anlegen — zwei Wege
-
-**Weg A: ohne Repo-Zugriff (empfohlen für ChatGPT im Browser)**
-
-Das Sprachmodell schreibt das komplette Reel als **eine JSON-Datei** und braucht
-dafür weder Schreibrechte noch eine Shell. Format und ausgefülltes Beispiel:
-`input/reel-paket.beispiel.json`.
+Das vollständige Paket kann über `input/reel-paket.json` importiert werden:
 
 ```bash
-npm run import:reel -- --file reel-paket.json --check   # nur prüfen
-npm run import:reel -- --file reel-paket.json           # anlegen
+npm run import:reel -- --file input/reel-paket.json --check
+npm run import:reel -- --file input/reel-paket.json
 ```
 
-Der Import prüft vorab Szenen- und Bildanzahl, Wortzahl, Promptlänge und den
-Abschluss mit Prüffrage. Fehlt etwas, entsteht kein halbes Reel, sondern eine
-Liste dessen, was nachzubessern ist.
-
-**Weg B: mit Repo-Zugriff**
+Alternativ Workspace direkt anlegen:
 
 ```bash
-npm run create:reel -- --title "Warum …?" --script-file input/script.txt --next-free
+npm run create:reel -- --title "Warum …?" --script-file input/script.txt --next-free --scenes 9
 ```
 
-Das Gerüst entsteht mit 9 Szenen, der festen Bildwelt und je zwei Bildphasen
-(Hook: eine) und wird danach von Hand ausgefüllt.
+### Inhaltspflichten
 
-### Ausschreiben
+- 155–175 deutsche Wörter
+- 8–10 narrative Szenen, Standard 9
+- Hook exakt 1 Bild
+- jede weitere Szene exakt 2 Bilder
+- 9 Szenen = 17 Bildphasen
+- zweite Bildphase mit eigenem gesprochenen `audioCue`
+- jede Bildphase mindestens 3 s
+- Bildprompts Englisch
+- Bild 01 mit deutscher Headline
+- spätere `imageText` optional, wenn vorhanden max. 4 Wörter
+- mindestens zwei hochwertige HTTPS-Quellen auf verschiedenen Hosts
+- plattformneutrale Caption mit 60–130 Wörtern und 3–6 Hashtags
 
-Vollständig zu füllen sind:
+### Bildwelt
 
-- `script/voice-script.txt` — 155–175 Wörter, ein deutscher Erzähler
-- pro Szene `narration`, `imageText`, `visualIdea`, `continuityNotes`, `audioCue`
-- pro Bildphase ein englischer Bildprompt in `image-prompt.txt` bzw. `image-prompt-02.txt`
-- pro Bildphase ein kurzer deutscher `imageText` mit 1–5 Wörtern — **kein Bild bleibt
-  ohne Text**, sonst wirkt es im Feed leer
-- jede zweite Bildphase einer Standardszene bekommt zusätzlich ein eigenes `audioCue`
-  aus 2–5 gesprochenen Wörtern; daraus wird ihr `startPercent` berechnet, nicht pauschal 0,5
-- der `imageText` von Szene 1 ist die **Überschrift des Reels** und steht im fertigen
-  Bild groß im oberen Bereich
-- `effects/effects-plan.json` — Kamerabewegung und Soundeffekte je Szene
-- `caption/caption.txt` — Text plus 3–6 Hashtags
-- `sources/sources.md` — mindestens zwei unabhängige Quellen mit unterschiedlichen Domains
+Ausschließlich **Modern Countryball Explainer** (`modern-countryball-explainer`). Bilder sollen konkrete lebendige Mini-Szenen sein, keine statischen Lernposter.
 
-Die letzten zwei Szenen brauchen eine Prüffrage und einen Abschlusssatz mit
-zwei unterschiedlichen Bildideen.
+### Motion — Pflicht
 
-### Abschließen
+Jeder Bildmoment bekommt sichtbare dezente Bewegung:
+- `ken-burns`
+- `subtle-push-in` / `subtle-pull-out`
+- `slow-zoom-in` / `slow-zoom-out`
+- `pan-left/right/up/down`
+
+Zoom meist 2–4 %, Pan 1–3 %, weiches Easing. Hook und zweite Bildphase bewegen sich ebenfalls. `none` ist für neue Reels nicht zulässig. Bekannte Aliasnamen werden kanonisch aufgelöst; unbekannte Motion-Typen blockieren.
+
+### SFX — Pflicht
+
+- jeder Szenenwechsel ab Szene 2: SFX
+- jeder interne Bildwechsel: eigener SFX mit `targetId`
+- interne SFX möglichst mit demselben `audioCue` wie die Bildphase
+- `visualEvent` und `reason` Pflicht
+- ausschließlich `type` aus `config/sound-library.json`
+- typische Lautstärke 0,18–0,30
+
+Vor Übergabe:
 
 ```bash
-npm run check:content -- --dir "<reel-ordner>" --strict
-npm run export:prompts -- --dir "<reel-ordner>" --strict
+npm run check:content -- --dir "<reel>" --strict
+npm run export:prompts -- --dir "<reel>" --strict
 ```
 
-**Übergabe an Phase 2:** `00-bildprompts/99-alle-bildprompts.txt` und
-`01-voice-script/voice-script.txt` sind fertig.
+`check:content --strict` blockiert fehlende Motion-/SFX-Coverage.
+
+**Übergabe an Phase 2:** `00-bildprompts/99-alle-bildprompts.txt` und `01-voice-script/voice-script.txt` sind fertig.
 
 ---
 
-## Phase 2 — Arman: Audio und Bilder erzeugen
+## Phase 2 — Arman
 
 ### Voice-over
 
-`01-voice-script/voice-script.txt` in die Sprachausgabe geben und die fertige Datei
-als MP3 oder M4A ablegen unter:
+`01-voice-script/voice-script.txt` sprechen/generieren und Original unter
 
 ```text
 02-audio/AUDIO-HIER-EINFUEGEN/
 ```
 
-Das Original bleibt unbearbeitet — Tempo, Lautheit und Pausen macht Phase 3.
+ablegen. Original nicht überschreiben.
 
 ### Bilder
 
-`00-bildprompts/99-alle-bildprompts.txt` **einmal vollständig** an Google Flow
-schicken. Flow arbeitet streng seriell und legt alle Bilder in den gemeinsamen
-Ordner `00-FERTIGE-REEL-BILDER`.
+`00-bildprompts/99-alle-bildprompts.txt` einmal vollständig an Google Flow geben. Flow arbeitet streng seriell:
 
-Bei 9 Szenen sind das 17 Bilder: `Bild 01.png` bis `Bild 17.png`. Bild 01 ist die
-erste Szene und zugleich das Titelbild.
+```text
+1 Bild erzeugen → warten → prüfen → Bild NN.png → ablegen → prüfen → nächstes
+```
 
-Die fertigen Bilder als ZIP oder einzeln ablegen unter:
+Bei 9 Szenen: `Bild 01.png` bis `Bild 17.png`.
+
+Bilder gesammelt nach:
 
 ```text
 00-bildprompts/00-ALLE-BILDER-HIER-REIN/
 ```
 
-**Übergabe an Phase 3:** Audio und Bilder liegen im Reel-Ordner.
+**Übergabe an Phase 3:** aktuelles Reel enthält echtes Audio und alle Bilder.
 
 ---
 
-## Phase 3 — Antigravity: alles zu einem Reel machen
+## Phase 3 — Antigravity
 
-Antigravity erzeugt **keine** Inhalte, sondern führt zusammen und rendert.
+Antigravity führt ausschließlich die echten aktuellen Assets zusammen.
+
+### 1. Assets finden und prüfen
 
 ```bash
-npm run discover:assets -- --dir "<reel-ordner>"
-npm run organize:assets -- --dir "<reel-ordner>"
-npm run check:visuals  -- --dir "<reel-ordner>" --strict
-npm run trim:pauses    -- --dir "<reel-ordner>"
-npm run build:timeline -- --dir "<reel-ordner>"
-npm run finalize:reel  -- --dir "<reel-ordner>" --strict
-npm run render:reel    -- --dir "<reel-ordner>"
+npm run discover:assets -- --dir "<reel>"
+npm run organize:assets -- --dir "<reel>" --apply
+npm run check:visuals -- --dir "<reel>" --strict
 ```
 
-- `discover:assets` findet die ZIP und entpackt sie
-- `organize:assets` ordnet die Bilder den Bildphasen zu — **niemals nach Dateinummer
-  allein**, sondern über sichtbaren Inhalt, mit Konfidenz ab 0,90
-- `check:visuals --strict` verlangt die eingetragene visuelle Freigabe je Bild
-- `trim:pauses` strafft Pausen, entfernt auch Endstille, setzt 1,10x und normalisiert auf −16 LUFS / −1,5 dBTP
-- `build:timeline` synchronisiert Szenen an echten Audio-Cues; interne Bildwechsel folgen den
-  in Phase 1 geplanten Narrations-Cues statt einem starren Mittelpunkt. Interne Bildwechsel-SFX mit `targetId` landen am selben echten Audio-Cue wie ihr Bild; geplante Sound-Typen werden gegen `assets/sfx/` aufgelöst
-- `finalize:reel --strict` gibt frei; ohne `--strict` bleibt `Renderer-bereit: nein`
-- `render:reel` erzeugt die MP4
+Bilder nicht nur nach Dateinummer zuordnen, sondern gegen Prompt/Narration/Bildphase prüfen. Unter 0,90 Konfidenz nicht raten.
 
-**Ergebnis:** `03-export/FERTIGES-REEL.mp4` und `03-export/UNIVERSELLE-CAPTION.txt`.
+### 2. Audio wirklich fertig machen
+
+```bash
+npm run trim:pauses -- --dir "<reel>" --speed 1.10
+```
+
+Pflicht:
+- Anfangs-/lange Pausen straffen
+- Endstille entfernen
+- 1,10x bei erhaltener Tonhöhe
+- −16 LUFS
+- max. −1,5 dBTP
+- echte Nachmessung
+
+Das finale Voice-over darf höchstens **0,25 s Endstille** enthalten. Der separate Schlussbild-Hold kommt erst in der Timeline und beträgt 0,5–0,7 s, Ziel 0,6 s.
+
+### 3. Sounds binden
+
+```bash
+npm run sync:sounds -- --dir "<reel>" --strict
+```
+
+Jeder geplante Soundtyp muss eine reale Datei aus der zentralen Library besitzen. Unbekannte Typen oder fehlende Dateien blockieren.
+
+### 4. Timeline
+
+```bash
+npm run build:timeline -- --dir "<reel>" --strict
+```
+
+- Szenencut ca. 0,10 s vor echtem Szenen-Cue
+- interner Bildcut ca. 0,08 s vor echtem Bild-Cue
+- SFX ca. 0,04 s vor sichtbarem Cut
+- Hook und alle Bildphasen mit sichtbarer Motion
+- keine Crossfades
+
+### 5. Finalisieren und rendern
+
+```bash
+npm run finalize:reel -- --dir "<reel>" --strict
+npm run validate:render -- --dir "<reel>"
+npm run render:reel -- --dir "<reel>"
+```
+
+Finalizer und Renderer prüfen Motion-/SFX-Coverage, Soundbibliothek, aktuelle Audio-Dateibindung und Endstille erneut. Diese Gates gelten auch bei `--force`.
+
+**Ergebnis:**
+
+```text
+03-export/FERTIGES-REEL.mp4
+03-export/UNIVERSELLE-CAPTION.txt
+```
 
 ---
 
-## Ordner aufräumen
+## Definition der Übergaben
 
-Ein Reel-Ordner enthält 22 Einträge, von denen du nur fünf brauchst. Die technischen
-werden im Finder ausgeblendet — das passiert beim Anlegen automatisch. Für ältere
-Reels oder nach manuellen Eingriffen:
+Phase 1 ist nicht fertig, wenn Motion oder Wechsel-SFX nur „später geplant“ sind.
 
-```bash
-npm run organize:finder -- --all
-```
+Phase 2 ist nicht fertig, wenn Audio/Bilder aus einem anderen Reel stammen oder Dateien fehlen.
 
-Danach zeigt der Finder nur noch `00-bildprompts`, `01-voice-script`, `02-audio`,
-`03-export` und `99-technik`. Alles andere bleibt vorhanden, nur unsichtbar.
+Phase 3 ist nicht fertig, wenn:
+- ein Bildmoment statisch bleibt
+- ein visueller Wechsel stumm bleibt
+- ein Soundtyp keine echte Library-Datei besitzt
+- Voice-over mehrere Sekunden Endstille enthält
+- Cue-Zeiten nicht am echten finalen Audio liegen
+- visuelle QC nicht bestanden ist
+- finale MP4/Caption nicht existieren
 
-Wer die technischen Ordner sehen will: `--show-technical` macht sie wieder sichtbar.
-Ein einzelnes Reel geht mit `--dir "<reel-ordner>"`.
-
-**Wenn trotzdem alles zu sehen ist:** Dann zeigt der Finder versteckte Dateien an.
-Das schaltet **Cmd + Shift + Punkt** um — die Einstellung gilt systemweit und hat
-nichts mit dem Repo zu tun.
-
-## Was jede Phase blockiert
-
-Die Gates lassen nichts durch, was unfertig ist:
-
-- ohne zwei belegte Quellen auf verschiedenen Domains kein Render
-- ohne gemessene Lautheit kein Render
-- ohne visuelle Freigabe im strengen Modus kein Render
-- Caption ohne 3–6 Hashtags blockiert
-- Bildphasen unter 3 Sekunden blockieren
-- eine Szene ohne Sound am Wechsel wird gemeldet
-
-Diese Blockaden sind gewollt. Sie lassen sich auch mit `--force` nicht umgehen.
+Nicht ausgeführte Tests oder QC-Stufen niemals als bestanden melden.
