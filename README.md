@@ -1,6 +1,6 @@
 # Erklär-Reels
 
-Produktionspipeline für visuelle Erklär-Reels mit offenem Themenuniversum und **einer einzigen festen Reel-Bildwelt**.
+Produktionspipeline für visuelle 9:16-Erklär-Reels mit offenem Themenuniversum und **einer einzigen festen Reel-Bildwelt**.
 
 **`CURRENT_WORKFLOW.md` ist die Single Source of Truth.**
 
@@ -9,102 +9,91 @@ Produktionspipeline für visuelle Erklär-Reels mit offenem Themenuniversum und 
 - 55–60 Sekunden Voice-over
 - 155–175 deutsche Wörter
 - 8–10 narrative Szenen, Standard 9
-- Hook mit einem Bildmoment, jede weitere Szene mit zwei
-- bei 9 Szenen ergibt das 17 Bilder
-- Voice-over 1,10x bei erhaltener Tonhöhe
+- Hook 1 Bild, jede weitere Szene 2
+- 9 Szenen = 17 Bilder
+- Voice-over 1,10x, Pitch erhalten
 - −16 LUFS, höchstens −1,5 dBTP
 - keine Untertitel
-- kein aktiver Word-Sync-Workflow
-- harte Schnitte
 - keine Hintergrundmusik
-- Schlussbild 0,7 Sekunden nach dem letzten gesprochenen Wort halten
+- harte Cuts
+- Szenencut ca. 0,10 s vor Cue
+- interner Bildcut ca. 0,08 s vor Cue
+- SFX ca. 0,04 s vor Cut
+- nach Sprecherende nur 0,5–0,7 s Schlussbild-Hold, Ziel 0,6 s
 
-## Eine feste Reel-Bildwelt — Modern Countryball Explainer
+## Modern Countryball Explainer
 
-Für alle neuen Reels gilt **genau eine** Bildwelt: **Modern Countryball Explainer** (`modern-countryball-explainer`).
+Alle neuen Reels verwenden ausschließlich **Modern Countryball Explainer** (`modern-countryball-explainer`).
 
-Wenn ein Akteur vorkommt, ist er eine runde Kugelfigur:
-- exakt runder Kreis- bzw. Kugelkörper ohne separaten Kopf
-- einfache weiße expressive Augen mit schwarzen Pupillen
-- minimale Gesichtselemente
-- höchstens kleine einfache Arme, Hände oder Füße für konkrete Handlungen
-- Flaggen-/Regionsmuster nur bei echter geografischer Relevanz, sonst neutrale einfarbige Kugeln
-- einzelne Kugel, kleine Kugelgruppe, Kugel plus Objekt oder Kartenansicht je nach Szene
-
-Eine Kugelfigur ist **nicht in jedem Bild Pflicht**. Ein Objekt, Mechanismus, Dokument, Gebäude, Karte, Pflanze, Landschaft oder physischer Prozess darf Hauptmotiv sein, wenn die Aussage dadurch klarer wird — in derselben Kontur- und Formsprache. Es wird keine Kugelfigur nur zur Dekoration erzwungen.
-
-Nicht Teil der Reel-Bildwelt:
-- menschliche Köpfe auf Kugelfiguren
-- humanoide Cartoonmenschen als Akteure
-- Stick-Figuren
-- ovale, bohnenförmige oder eiförmige Figurenkörper
-- Fotorealismus
-- Anime/Manga
-- Clay/Knetstil
-- glänzendes 3D / Pixar-Look
-- technische Cutaway-/Blueprint-Welt als Standard
-- eigene Unter-Bildwelt für Technik, Flugzeuge, Medizin, Geschichte usw.
-
-Länder, Regierungen und Institutionen werden durch flaggenmarkierte oder neutrale Kugeln mit Karten, Grenzen, Dokumenten oder Gebäuden dargestellt — nicht durch realistische Menschen.
-
-Gestaltung:
 - 9:16, Smartphone-first
-- sauberer flacher 2D-Vektor-/Comic-Look
+- klare runde Kugelfiguren, wenn ein Akteur nötig ist
+- keine Kugelfigur nur zur Dekoration erzwingen
 - dicke schwarze Konturen
-- niedrige bis mittlere Detaildichte
-- flächige oder sehr leicht schattierte Farben
-- ruhiger einfarbiger oder sanft texturierter Hintergrund
-- klare, normalerweise helle grafische Beleuchtung
-- eine dominante Kernaussage
-- eine sichtbare Handlung oder Ursache-Folge-Beziehung
-- 1–3 unterstützende Elemente
-- möglichst in etwa einer Sekunde verständlich
+- einfache 2D-Formen
+- lebendige Mini-Szene statt statischer Posterkarte
+- sichtbare Handlung/Reaktion/Ursache-Folge
+- einfache Tiefe und Kontext
+- Perspektiven zwischen benachbarten Bildern variieren
+- Bild 01 mit deutscher Headline; spätere Bilder dürfen textfrei sein
+- Prompts Englisch, sichtbarer Text ausschließlich Deutsch
 
-Vollständige Style-Bibel:
+Keine realistischen Menschen, humanoiden Cartoonmenschen, Stick-Figuren, Anime-, Clay- oder glänzende 3D/Pixar-Welt.
 
-```text
-knowledge/fixed-visual-world.md
-```
+Vollständige Style-Bibel: `knowledge/fixed-visual-world.md`.
 
-Maschinenlesbare Konfiguration:
+## Motion/Zoom — Hard Gate
 
-```text
-config/image-styles.json
-```
+Für neue Reels ab 2026-09-02 ist **jeder Bildmoment sichtbar bewegt**. Keine längeren statischen Slides.
 
-Es gibt **keine zweite Reel-Style-ID und keine Legacy-Menschen-/Köpfe-Bildwelt**. Die aktive Reel-ID ist ausschließlich `modern-countryball-explainer`.
+Kanonische Typen:
+- `ken-burns`
+- `subtle-push-in`, `subtle-pull-out`
+- `slow-zoom-in`, `slow-zoom-out`
+- `pan-left/right/up/down`
 
-## Google Flow — nur eine Datei
+Zoom meist 2–4 %, Pan 1–3 %, weiches Easing. Hook und zweite Bildphasen bewegen sich ebenfalls. `none` ist für neue Reels nicht zulässig.
 
-Die einzige Masterdatei mit allen Bildprompts ist:
+Bekannte Motion-Aliase werden kanonisch aufgelöst; unbekannte Typen blockieren. Der Renderer besitzt zusätzlich einen Safety-Fallback gegen statische Frames.
+
+## Sounddesign — Hard Gate
+
+Kein visueller Wechsel darf stumm durchrutschen:
+- jeder Szenenwechsel ab Szene 2 braucht SFX
+- jeder interne Bildwechsel braucht eigenen SFX/Objekt-Sound
+- SFX beginnt ca. 0,04 s vor dem Cut
+- typische Lautstärke 0,18–0,30, Standard ca. 0,22
+- nur `type` aus `config/sound-library.json`
+- interne SFX über `targetId` an die konkrete Bildphase binden
+
+`sync:sounds --strict` bindet die Typen an echte Dateien. Finalizer und Renderer prüfen die Soundbibliothek erneut. Falls ein Zwischenplan ein `file`-Feld verliert, kann der Renderer einen bekannten Typ als Safety-Fallback erneut auf die kanonische SFX-Datei auflösen.
+
+## Audio-Ende — Hard Gate
+
+`trim:pauses` entfernt auch Endstille. Das finale Voice-over darf höchstens **0,25 s Endstille** enthalten. Danach folgt ausschließlich der separate 0,5–0,7-s-Schlussbild-Hold.
+
+Mehrsekündige Endstille blockiert Finalizer und Renderer — auch mit `--force`.
+
+## Google Flow
+
+Einzige verbindliche Masterdatei:
 
 ```text
 00-bildprompts/99-alle-bildprompts.txt
 ```
 
-Es gibt keine zweite Spiegeldatei unter `all-image-prompts/`. Der alte Doppelordner ist Legacy und wird entfernt.
-
-Flow arbeitet streng seriell:
+Flow arbeitet strikt seriell:
 
 ```text
-Bild erzeugen → vollständig warten → prüfen → umbenennen → in gemeinsamen Ausgabeordner legen → Ablage prüfen → nächstes Bild
+1 Bild erzeugen → warten → prüfen → Bild NN.png → ablegen → prüfen → nächstes Bild
 ```
 
 Keine Queue, kein Batch, keine Parallelgenerierung.
-
-Fertige Bilder werden als `Bild 01.png`, `Bild 02.png` usw. gemeinsam importiert nach:
-
-```text
-00-bildprompts/00-ALLE-BILDER-HIER-REIN/
-```
 
 ## Sichtbare Reel-Struktur
 
 ```text
 reel-XX_thema/
 ├── 00-bildprompts/
-│   ├── 99-alle-bildprompts.txt
-│   └── 00-ALLE-BILDER-HIER-REIN/
 ├── 01-voice-script/
 ├── 02-audio/
 ├── 03-export/
@@ -113,88 +102,30 @@ reel-XX_thema/
 └── 99-technik/
 ```
 
-Kein separater sichtbarer Caption- oder Video-Ordner.
+## Quellen
 
-## Universal-Caption
+Mindestens zwei nachvollziehbare HTTPS-Quellen mit unterschiedlichen Hosts; möglichst eine Primär-/offizielle oder wissenschaftliche Quelle plus eine unabhängige Sekundär-/Fachquelle.
 
-`03-export/UNIVERSELLE-CAPTION.txt` ist die plattformneutrale Caption für Kurzvideo-Social-Media:
-- passend zum konkreten Video
-- starker klarer Einstieg
-- 60–130 Wörter
-- 3–6 passende Hashtags
-- keine plattformspezifischen Duett-/Remix-/Link-in-Bio-Hinweise
-
-## Reels und YouTube
-
-Reels und YouTube bleiben vollständig getrennt. Für YouTube gelten ausschließlich:
-
-```text
-youtube/YOUTUBE_WORKFLOW.md
-youtube/YOUTUBE_VISUAL_WORLD.md
-```
-
-Die YouTube-Stick-Figure-/16:9-Welt darf nicht auf Reels übertragen werden und umgekehrt.
-
-## Quellen, Assets und Render
-
-Mindestens zwei nachvollziehbare HTTPS-Quellen mit unterschiedlichen Hosts verwenden; möglichst eine Primär-/offizielle oder wissenschaftliche Quelle plus eine unabhängige Sekundärquelle.
-
-Vor einer Meldung, dass Assets fehlen:
+## Phase 3
 
 ```bash
-npm run discover:assets -- --dir "PFAD-ZUM-REEL"
+npm run discover:assets -- --dir "<reel>"
+npm run organize:assets -- --dir "<reel>" --apply
+npm run check:visuals -- --dir "<reel>" --strict
+npm run trim:pauses -- --dir "<reel>" --speed 1.10
+npm run sync:sounds -- --dir "<reel>" --strict
+npm run build:timeline -- --dir "<reel>" --strict
+npm run finalize:reel -- --dir "<reel>" --strict
+npm run validate:render -- --dir "<reel>"
+npm run render:reel -- --dir "<reel>"
 ```
 
-Sichere Zuordnung:
+Motion/SFX-, Quellen-, Audio-Dateibindungs- und Endstille-Hard-Gates dürfen nicht mit `--force` umgangen werden.
 
-```bash
-npm run organize:assets -- --dir "PFAD-ZUM-REEL" --apply
-```
-
-Audio und Render:
-
-```bash
-npm run trim:pauses -- --dir "PFAD-ZUM-REEL" --speed 1.10
-npm run build:timeline -- --dir "PFAD-ZUM-REEL"
-npm run check:visuals -- --dir "PFAD-ZUM-REEL" --strict
-npm run finalize:reel -- --dir "PFAD-ZUM-REEL" --strict
-npm run validate:render -- --dir "PFAD-ZUM-REEL"
-npm run render:reel -- --dir "PFAD-ZUM-REEL"
-```
-
-Keine nicht ausgeführte Stufe als bestanden ausgeben.
-
-## Voraussetzungen
-
-- Node.js 20 oder neuer
-- FFmpeg und optional `ffprobe`
-- Remotion-Pakete in identischer Version
-
-## Tests und Schutz vor Regressionen
-
-Die vollständige Suite läuft mit:
+## Tests
 
 ```bash
 npm test
 ```
 
-**Die Suite muss vor jedem Commit grün sein.** Sie ist kein Beiwerk: mehrere
-Tests halten Regeln fest, die sonst still auseinanderlaufen — etwa
-`visual-world-single-source`, der prüft, dass Runtime, Configs und alle
-Policy-Dateien dieselbe Bildwelt nennen.
-
-### Zwei Netze
-
-**GitHub Actions** ist die serverseitige Pflichtkontrolle: Jeder Push auf `main` und
-jeder Pull Request lässt die vollständige Suite laufen.
-
-**Der `pre-push`-Hook** ist die lokale Schutzschicht davor. Er lässt die Suite schon
-vor dem Push laufen, damit eine rote Suite gar nicht erst im Remote landet.
-`npm install` aktiviert ihn automatisch; von Hand:
-
-```bash
-npm run hooks:install
-```
-
-Im Notfall umgehbar mit `git push --no-verify`. Das sollte die Ausnahme bleiben:
-Ohne diesen Hook fällt eine rote Suite überhaupt nicht auf.
+Tests/QC niemals als bestanden melden, wenn sie nicht tatsächlich ausgeführt wurden.
