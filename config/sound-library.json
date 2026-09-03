@@ -1,18 +1,18 @@
 {
-  "version": 1,
+  "version": 2,
   "libraryDirectory": "assets/sfx",
   "reelSoundDirectory": "sfx",
-  "defaultVolume": 0.2,
-  "maxSoundsPerScene": 2,
-  "note": "Der Produktions-Agent wählt ausschließlich einen dieser type-Werte. Dateinamen kennt er nicht; die Auflösung übernimmt src/core/sound-library.js beim Timeline-Bau. Jeder Szenenwechsel bekommt einen Sound: bevorzugt einen inhaltlich passenden, sonst eine der Transition-Varianten aus config/effects-rules.json.",
+  "defaultVolume": 0.22,
+  "maxSoundsPerScene": 3,
+  "note": "Der Produktions-Agent wählt ausschließlich einen dieser type-Werte. Dateinamen kennt er nicht; die Auflösung übernimmt src/core/sound-library.js beim Timeline-Bau. Für neue Reels ist jeder Szenenwechsel nach der Hook und jeder interne Bildwechsel akustisch Pflicht. Die Pegel sind bewusst hörbar, aber unterhalb der Voice-over-Priorität gewählt.",
   "types": [
     {
       "type": "soft-whoosh",
       "file": "soft-whoosh.mp3",
       "purpose": "Bildwechsel mit spürbarem Themensprung",
       "useWhen": "Die neue Szene führt einen deutlich anderen Gedanken ein.",
-      "avoidWhen": "Bei jedem Bildwechsel. Höchstens zwei Whooshes pro Reel.",
-      "volume": 0.18
+      "avoidWhen": "Nicht zweimal direkt hintereinander; mit anderen Transition-Typen abwechseln.",
+      "volume": 0.22
     },
     {
       "type": "pop",
@@ -20,31 +20,31 @@
       "purpose": "Ein Objekt, eine Figur oder ein Element erscheint neu im Bild",
       "useWhen": "Im Bild taucht sichtbar etwas auf, das vorher nicht da war.",
       "avoidWhen": "Wenn sich nur die Kameraperspektive ändert.",
-      "volume": 0.2
+      "volume": 0.22
     },
     {
       "type": "click",
       "file": "click.mp3",
-      "purpose": "Eine Zahl, ein Wort oder ein Detail wird betont",
-      "useWhen": "Das Voice-over nennt genau jetzt eine konkrete Zahl oder einen Schlüsselbegriff.",
-      "avoidWhen": "Mehrfach in derselben Szene.",
-      "volume": 0.16
+      "purpose": "Ein Detail oder Schlüsselbegriff wird betont",
+      "useWhen": "Das Voice-over nennt genau jetzt einen konkreten visuellen Schlüsselbegriff.",
+      "avoidWhen": "Mehrfach in derselben Szene ohne sichtbaren Anlass.",
+      "volume": 0.2
     },
     {
       "type": "tick",
       "file": "tick.mp3",
       "purpose": "Zeit, Zählen, Schritt für Schritt",
-      "useWhen": "Es geht um Uhren, Kalender, Abfolgen oder eine Aufzählung.",
+      "useWhen": "Es geht um Uhren, Kalender, Abfolgen oder eine kurze Zeitmarke.",
       "avoidWhen": "Als Dauerrhythmus über mehrere Szenen.",
-      "volume": 0.15
+      "volume": 0.18
     },
     {
       "type": "soft-impact",
       "file": "soft-impact.mp3",
-      "purpose": "Etwas trifft auf, landet oder wird schwer",
+      "purpose": "Etwas trifft auf, landet, wächst schwer oder bekommt Gewicht",
       "useWhen": "Im Bild fällt, stößt oder belastet etwas sichtbar.",
       "avoidWhen": "Für abstrakte Aussagen ohne sichtbaren Aufprall.",
-      "volume": 0.22
+      "volume": 0.24
     },
     {
       "type": "paper",
@@ -52,7 +52,7 @@
       "purpose": "Dokument, Karte, Vertrag, Blättern",
       "useWhen": "Ein Papier, eine Urkunde oder eine Karte steht im Mittelpunkt.",
       "avoidWhen": "Wenn das Dokument nur Hintergrunddeko ist.",
-      "volume": 0.18
+      "volume": 0.2
     },
     {
       "type": "swoosh-reveal",
@@ -60,15 +60,15 @@
       "purpose": "Eine Auflösung oder Antwort wird sichtbar",
       "useWhen": "Der Aha-Moment des Reels, meist in den letzten Szenen.",
       "avoidWhen": "Mehr als einmal pro Reel.",
-      "volume": 0.2
+      "volume": 0.24
     },
     {
       "type": "door",
       "file": "door.mp3",
       "purpose": "Öffnen, Schließen, Zugang, Blockade",
-      "useWhen": "Eine Tür, ein Tor oder eine Grenze öffnet oder schließt sich sichtbar.",
-      "avoidWhen": "Als Metapher ohne sichtbare Tür.",
-      "volume": 0.2
+      "useWhen": "Eine Tür, ein Tor oder eine sichtbare Barriere öffnet oder schließt sich.",
+      "avoidWhen": "Als Metapher ohne sichtbare Tür oder Barriere.",
+      "volume": 0.22
     },
     {
       "type": "coin",
@@ -76,7 +76,7 @@
       "purpose": "Geld, Kosten, Handel, Bezahlung",
       "useWhen": "Im Bild wechselt Geld den Besitzer oder Kosten werden gezeigt.",
       "avoidWhen": "Für Wirtschaftsthemen ohne sichtbares Geld.",
-      "volume": 0.18
+      "volume": 0.2
     },
     {
       "type": "water-drop",
@@ -84,15 +84,15 @@
       "purpose": "Tropfen, Wasser, Regen, Flüssigkeit",
       "useWhen": "Ein Tropfen oder Wasser trifft sichtbar auf etwas.",
       "avoidWhen": "Für Wetterthemen ohne sichtbares Wasser.",
-      "volume": 0.18
+      "volume": 0.2
     },
     {
       "type": "whoosh-up",
       "file": "whoosh-up.mp3",
       "purpose": "Szenenwechsel, der eine Steigerung oder Zuspitzung einleitet",
-      "useWhen": "Die neue Szene erhöht die Spannung oder führt zur Frage hin.",
+      "useWhen": "Die neue Szene erhöht Spannung, Größenordnung oder Dringlichkeit.",
       "avoidWhen": "Zweimal hintereinander. Zwischen Transition-Varianten abwechseln.",
-      "volume": 0.17
+      "volume": 0.22
     },
     {
       "type": "whoosh-down",
@@ -100,15 +100,15 @@
       "purpose": "Szenenwechsel, der beruhigt oder eine Erklärung abschließt",
       "useWhen": "Die neue Szene löst auf, ordnet ein oder senkt das Tempo.",
       "avoidWhen": "Zweimal hintereinander. Zwischen Transition-Varianten abwechseln.",
-      "volume": 0.17
+      "volume": 0.22
     },
     {
       "type": "soft-swipe",
       "file": "soft-swipe.mp3",
       "purpose": "Neutraler kurzer Szenenwechsel ohne eigene Aussage",
-      "useWhen": "Der Schnitt braucht eine hörbare Markierung, aber keine Betonung.",
+      "useWhen": "Der Schnitt braucht eine hörbare Markierung, aber keine harte Betonung.",
       "avoidWhen": "Zweimal hintereinander. Zwischen Transition-Varianten abwechseln.",
-      "volume": 0.15
+      "volume": 0.2
     }
   ]
 }
