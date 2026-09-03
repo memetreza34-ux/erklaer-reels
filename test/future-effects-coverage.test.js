@@ -84,14 +84,24 @@ test('zukünftiges Reel wird ohne internen Bildwechsel-SFX blockiert', async () 
   });
 });
 
-test('unbekannte Motion-Namen dürfen nicht mehr still zu einem statischen Bild werden', async () => {
+test('bekannte beschreibende Motion-Aliase werden kanonisch als sichtbare Bewegung akzeptiert', async () => {
+  await withFixture([
+    transitionSound,
+    internalSound
+  ], (result) => {
+    assert.equal(result.passed, true);
+    assert.deepEqual(result.findings, []);
+  }, { scene2Motion: { type: 'gentle-pan' } });
+});
+
+test('wirklich unbekannte Motion-Namen werden blockiert', async () => {
   await withFixture([
     transitionSound,
     internalSound
   ], (result) => {
     assert.equal(result.passed, false);
     assert.equal(result.findings.some((item) => item.issue === 'camera-motion-unknown'), true);
-  }, { scene2Motion: { type: 'gentle-pan' } });
+  }, { scene2Motion: { type: 'mystery-motion' } });
 });
 
 test('cameraMotion none wird für zukünftige Reels blockiert', async () => {
