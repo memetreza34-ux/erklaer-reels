@@ -14,16 +14,19 @@
       "pan-up",
       "pan-down"
     ],
+    "futureReelsMayUseNone": false,
     "zoomScale": {
       "min": 0.94,
       "max": 1.06,
       "recommendedChangeMin": 0.02,
       "recommendedChangeMax": 0.04
     },
+    "minimumVisibleScaleDelta": 0.015,
+    "minimumVisiblePanPercent": 0.5,
     "maximumPanPercent": 3,
     "defaultEasing": "ease-in-out",
     "avoidMotionOnEveryScene": false,
-    "protectSubtitleSafeZone": true,
+    "protectSubtitleSafeZone": false,
     "protectIntegratedImageText": true,
     "preferredType": "ken-burns",
     "allowedEasings": [
@@ -33,13 +36,14 @@
       "ease",
       "linear"
     ],
-    "motionOnMostScenes": true,
+    "motionOnMostScenes": false,
+    "motionOnEveryNarrativeSceneRequired": true,
     "motionOnEveryImagePhaseByDefault": true,
     "staticSceneShare": {
-      "min": 0.05,
-      "max": 0.15
+      "min": 0,
+      "max": 0
     },
-    "guidance": "Jeder Bildmoment soll sich leicht lebendig anfühlen. Auch zweite Bildphasen bekommen standardmäßig eine sehr dezente Kamerabewegung. Nutze kleine Push-ins, Pull-outs oder Ken-Burns-Bewegungen mit weichem Easing; keine hektischen Zooms. Nur bewusst grafische oder sehr informationsdichte Bilder dürfen statisch bleiben."
+    "guidance": "Jeder einzelne Bildmoment eines neuen Reels muss sichtbar, aber dezent bewegt sein. Kein längerer statischer Stillframe. Nutze kleine Push-ins, Pull-outs, echte Pans oder Ken-Burns-Bewegungen mit weichem Easing. Zoom typischerweise 2–4 Prozent, Pan ungefähr 1–3 Prozent. Auch Hook und zweite Bildphasen bewegen sich. `none` bleibt nur für Legacy-Kompatibilität im Typenschema und ist für neue Reels im Hard Gate nicht zulässig."
   },
   "transitions": {
     "defaultType": "cut",
@@ -54,8 +58,9 @@
     "forbidBlackFrames": true,
     "hookTransition": "none",
     "allFollowingScenes": "cut",
+    "sceneCueLeadSeconds": 0.1,
     "imageCueLeadSeconds": 0.08,
-    "guidance": "Harte Schnitte bleiben Standard. Der neue Bildmoment erscheint normalerweise etwa 0,08 Sekunden bzw. 2–3 Frames vor dem gesprochenen Cue-Wort, damit Wort und Bild gemeinsam wahrgenommen werden statt der Schnitt hörbar hinterherzulaufen."
+    "guidance": "Harte Schnitte bleiben Standard. Ein neuer narrativer Bildmoment erscheint etwa 0,10 Sekunden vor seinem Szenen-Cue, ein interner Bildwechsel etwa 0,08 Sekunden bzw. 2–3 Frames vor dem gesprochenen Cue-Wort. Dadurch ist das neue Bild bereits sichtbar, wenn das Schlüsselwort fällt."
   },
   "soundEffects": {
     "defaultEnabled": true,
@@ -64,26 +69,16 @@
     "maximumPerScene": 3,
     "recommendedVolume": {
       "min": 0.18,
-      "max": 0.28,
+      "max": 0.3,
       "default": 0.22
     },
-    "allowedCategories": [
-      "whoosh-soft",
-      "pop-soft",
-      "click",
-      "tick",
-      "impact-soft",
-      "paper",
-      "notification-soft",
-      "ambient-light",
-      "object-specific"
-    ],
     "avoidSoundOnEveryCut": false,
     "avoidMemeSounds": true,
     "avoidCopyrightedMusic": true,
     "syncToAudioCueOrVisualEvent": true,
     "soundOnEverySceneChange": true,
     "soundOnEveryInternalImageChange": true,
+    "hardGateForFutureReels": true,
     "sfxPreRollBeforeCutSeconds": 0.04,
     "transitionSoundTypes": [
       "soft-whoosh",
@@ -92,6 +87,6 @@
       "soft-swipe"
     ],
     "neverRepeatTransitionSoundBackToBack": true,
-    "guidance": "Jeder Szenenwechsel und jeder interne Bildwechsel bekommt einen kurzen sauberen SFX, sofern kein inhaltlich passender Objekt-Sound denselben Zweck übernimmt. Der Sound startet standardmäßig etwa 0,04 Sekunden vor dem Bildschnitt, sodass sein hörbarer Akzent am Cut liegt. Nutze zuerst inhaltlich passende Effekte; sonst dezente Whoosh/Swipe/Click/Pop-Varianten. Stimme bleibt klar dominant und dieselbe Transition-Variante darf nicht zweimal direkt hintereinander kommen."
+    "guidance": "Jeder Szenenwechsel nach der Hook und jeder interne Bildwechsel bekommt einen kurzen sauberen SFX oder einen passenden Objekt-Sound. Kein visueller Wechsel darf stumm durchrutschen. Der Sound startet standardmäßig etwa 0,04 Sekunden vor dem sichtbaren Cut, sodass sein hörbarer Akzent am Schnitt liegt. Verwende ausschließlich Typen aus config/sound-library.json. Stimme bleibt klar dominant; Übergangssounds sollen hörbar, aber nicht aufdringlich sein."
   }
 }
