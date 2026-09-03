@@ -50,11 +50,12 @@ async function main() {
 
   if (strict && effectsGate.required) {
     if (effectsGate.passed) {
-      console.log('SFX-Coverage: bestanden — jeder Szenen- und interne Bildwechsel ist akustisch geplant.');
+      console.log('Motion/SFX-Hard-Gate: bestanden — jeder Bildmoment bewegt sich sichtbar und jeder visuelle Wechsel besitzt einen gültigen Sound.');
     } else {
       console.log(`- FEHLER: ${effectsGate.reason}`);
       for (const finding of effectsGate.findings) {
-        console.log(`  - ${finding.sceneId ?? 'Reel'}${finding.targetId ? ` / ${finding.targetId}` : ''}: ${finding.issue}`);
+        const location = `${finding.sceneId ?? 'Reel'}${finding.targetId ? ` / ${finding.targetId}` : ''}`;
+        console.log(`  - ${location}: ${finding.issue}`);
       }
     }
   }
