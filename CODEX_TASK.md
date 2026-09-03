@@ -2,234 +2,116 @@
 
 `CURRENT_WORKFLOW.md` ist bei Widersprüchen maßgeblich.
 
-Dieses Repository produziert vollständige visuelle Erklär-Reels in drei Phasen
-(`WORKFLOW_PHASEN.md`).
-
-**Dieser Auftrag ist Phase 1.** Er endet mit dem fertig ausgeschriebenen Reel-Ordner:
-Slot bestimmen, Thema wählen, Script schreiben, Szenen und Bilddichte planen, alle
-Bildprompts, den Effekt- und Soundplan, Caption und Quellen ausschreiben, dann
-`check:content --strict` und `export:prompts --strict`.
-
-Nicht Teil dieses Auftrags: Voice-over und Bilder erzeugt der Nutzer in Phase 2;
-Asset-Zuordnung, Audio-Pacing, Timeline und Render macht Antigravity in Phase 3.
+Codex übernimmt **Phase 1**: Slot, Thema, Script, Szenen, Bildprompts, Motion-/SFX-Plan, Caption und Quellen. Audio, Bilder und finaler Render gehören nicht zu Phase 1.
 
 ## Reel-Standard
 
-- 55–60 Sekunden Voice-over
+- 55–60 Sekunden
 - 155–175 deutsche Wörter
-- 8–10 **narrative Szenen**, Standard 9
-- genau ein deutscher Erzähler
-- Voice-over exakt 1,10x
-- −16 LUFS, max. −1,5 dBTP
+- 8–10 narrative Szenen, Standard 9
+- Hook ab Sekunde 0
 - keine Untertitel
-- kein aktiver Word-Sync-Workflow
-- harte Schnitte
-- 0,7 Sekunden Schlussbild-Nachlauf
+- keine Hintergrundmusik
+- Voice-over später exakt 1,10x / −16 LUFS / max. −1,5 dBTP
+- Schluss-Hold später 0,5–0,7 s, Ziel 0,6 s
 
-## Themenuniversum: offen
+## Bildwelt
 
-Die Themenwahl ist **nicht auf feste Säulen beschränkt**.
-
-Bei einem autonomen neuen Reel darf Codex aus jedem geeigneten Erklärbereich wählen, zum Beispiel Psychologie, Alltag, Verhalten, Beziehungen, Gesellschaft, Kultur, Geschichte, Länder, Geografie, Politik, Wissenschaft, Naturphänomene, Technik, Internet, Social Media, Lernen, Arbeit, Wirtschaft, Gesundheit, Ernährung, Sprache, Kommunikation, Denkfehler, Mythen und kuriose „Warum?“-Fragen.
-
-Entscheidend sind:
-- starke Neugier/Hook
-- klarer Aha-Moment
-- faktische Erklärbarkeit
-- visuelle Klarheit
-- Abwechslung gegenüber den zuletzt produzierten Reels
-- Teilbarkeit oder Alltagsrelevanz
-
-Keine feste Pillar-Quote und keine automatische Themenrotation.
-
-## Bildwelt: fest
-
-Für alle neuen Reels gilt ausschließlich:
+Für jedes neue Reel ausschließlich:
 
 ```text
 visualStyleId = "modern-countryball-explainer"
-visualStyleReason = "Globale feste Bildwelt für alle neuen Erklär-Reels: moderner minimalistischer Countryball-Erklärstil."
 ```
 
-Verbindliche Style-Bibel:
+Style-Bibel: `knowledge/fixed-visual-world.md`.
+
+Bilder müssen konkrete lebendige Mini-Szenen sein. Keine textdominanten Lernposter, keine wiederholten Center-Figur-plus-Icons-Kompositionen. Perspektive und räumlicher Aufbau zwischen benachbarten Bildern sichtbar variieren.
+
+Prompts Englisch, sichtbarer Text ausschließlich Deutsch. Bild 01 braucht eine starke Headline; späterer Text ist optional und auf maximal 4 Wörter begrenzt.
+
+## Bildanzahl
 
 ```text
-knowledge/fixed-visual-world.md
+Bilder = 1 + (Szenen − 1) × 2
 ```
 
-Die Bildwelt wird **nicht** nach dem Thema ausgewählt und nicht zwischen Reels rotiert.
+- Hook exakt 1 Bild
+- jede weitere Szene exakt 2
+- 9 Szenen = 17 Bilder
+- keine dritte Bildphase
+- jede Bildphase mindestens 3 Sekunden
+- zweite Bildphase mit eigenem `audioCue` aus gesprochenen Wörtern
 
-Kernmerkmale:
-- 9:16
-- moderner minimalistischer Countryball-inspirierter Social-Media-Erklärstil
-- runde Kugelfiguren für Menschen, Gruppen, Institutionen oder Länder
-- Länderflaggen nur wenn geografische Identität relevant ist; sonst neutrale Kugeln
-- dicke schwarze Konturen
-- einfache weiße expressive Augen, minimale Gesichtselemente
-- sauberer flacher 2D-Vektor-/Comic-Look
-- dezente Schatten und höchstens leichte Textur
-- ein Hauptmotiv, wenige unterstützende Requisiten
-- ruhiger einfarbiger oder sanft texturierter Hintergrund
-- eine klare visuelle Metapher pro Bild
-- keine realistischen Menschen, kein Fotorealismus, kein Anime, kein Clay, kein glänzendes 3D, keine Stockfoto-Ästhetik
-- Prompts auf Englisch, sichtbarer Bildtext ausschließlich Deutsch
+## Motion ist Pflicht
 
-Reine Objekte, Mechanismen oder Diagramme dürfen ohne Kugelfigur Hauptmotiv sein, wenn sie besser erklären. Sie müssen dieselbe 2D-Formsprache und Konturlogik behalten.
+Für neue Reels darf kein Bildmoment statisch geplant werden.
 
-## Bildanzahl: immer individuell
+Kanonische Motion-Typen:
+- `ken-burns`
+- `subtle-push-in`
+- `subtle-pull-out`
+- `slow-zoom-in`
+- `slow-zoom-out`
+- `pan-left`, `pan-right`, `pan-up`, `pan-down`
 
-Die Anzahl der Bilder ist **nicht** an die Szenenzahl gekoppelt.
+Richtwert: Zoom 2–4 %, Pan 1–3 %, weiches Easing. Hook und zweite Bildphase bewegen sich ebenfalls. `none` ist nicht zulässig.
 
-**Grundregel: Jede Standardszene bekommt zwei Bildmomente, die Hook einen.**
+Bekannte Aliasnamen können vom Runtime-Layer kanonisch aufgelöst werden, aber neue Pakete sollen bevorzugt direkt die kanonischen Typen verwenden.
 
-Für jede narrative Szene separat entscheiden:
-- 2 Bilder als Normalfall; der zweite setzt beim nächsten Hauptsatz oder Nebensatz an
-- 1 Bild bei der Hook und bei Szenen aus einem einzigen kurzen Gedanken
+## Soundeffekte sind Pflicht
 
-Ein Bild steht 3 bis 4 Sekunden, im Schnitt etwa 3,25. Bei rund 58 Sekunden ergibt das ungefähr **17 bis 19 Bilder** auf 8 bis 10 Szenen.
+Nur `type` aus `config/sound-library.json` verwenden.
 
-Harte Untergrenze: **3 Sekunden**. Der Timeline-Check `<szene>-image-phase-duration` blockiert kürzere Phasen. Eine Szene, die drei Bildmomente braucht, gehört in zwei Szenen aufgeteilt.
+Für jede Szene ab Szene 2:
+1. ein kurzer Szenenwechsel-SFX ohne `targetId`
+2. ein eigener interner SFX für Bildphase 2 mit `targetId`
 
-`startPercent` legt den Schnitt auf den Satzanfang, nicht auf ein gleichmäßiges Raster.
+Interner SFX:
+- `targetId` = konkrete zweite Bildphase
+- `audioCue` = derselbe Cue wie die Bildphase
+- `visualEvent` Pflicht
+- `reason` Pflicht
 
-Pflichtfelder:
+Typische Lautstärke 0,18–0,30. Stimme bleibt später dominant.
 
-```text
-reel.json.imageCountMode = individual-per-reel
-reel.json.plannedImageCount = tatsächliche Bildsumme
-scene.imageCount = 1..3
-scene.imagePhases[]
-```
+Bevorzugte Übergangstypen: `soft-whoosh`, `soft-swipe`, `whoosh-up`, `whoosh-down`. Kleine Informationswechsel: `click`, `pop`, `tick`. Inhaltliche Objekt-Sounds bevorzugen, wenn passend.
 
-Erste Phase: `image-prompt.txt`.
-Zusätzliche Phasen: `image-prompt-02.txt`, `image-prompt-03.txt`.
+## Schnitt-Timing für Phase 3 vorbereiten
 
-`startPercent` bestimmt den internen Bildwechsel innerhalb der bestätigten narrativen Szenendauer.
+- Szenencut später ca. 0,10 s vor Szenen-Cue
+- interner Bildcut später ca. 0,08 s vor Bild-Cue
+- SFX später ca. 0,04 s vor sichtbarem Cut
 
-## Neues Reel
+Phase 1 liefert dafür eindeutige Cues; Phase 3 setzt die echten Zeitwerte aus dem finalen Voice-over.
 
-```bash
-npm run create:reel -- \
-  --title "TITEL" \
-  --script-file input/script.txt \
-  --next-free \
-  --scenes 9
-```
+## Quellen
 
-`--scenes` bezeichnet **narrative Szenen**, nicht die endgültige Bildanzahl.
-
-Danach `production/agent-task.md` vollständig bearbeiten. Besonders `visual-world-fixed` und `image-density-plan` sind verpflichtend.
-
-```bash
-npm run export:prompts -- --dir "PFAD-ZUM-REEL" --strict
-npm run validate:reel -- --dir "PFAD-ZUM-REEL"
-npm run check:content -- --dir "PFAD-ZUM-REEL" --strict
-```
-
-## Bildprompts
-
-Jeder Bildprompt wird auf Englisch geschrieben und beschreibt den konkreten Bildmoment innerhalb der festen Bildwelt.
-
-Verbindlich:
-
-- 9:16
-- klare konkrete Szene und Komposition
-- `modern-countryball-explainer`
-- exakt geplanter deutscher Bildtext, falls vorhanden
-- kein unerwarteter lesbarer Text
-- keine Workflow-Metadaten als Bildinhalt
-- volle Bildfläche ohne künstliche Untertitelzone
-
-Der Exporter ergänzt den Style-Lock global und erneut direkt vor jedem einzelnen Bildabschnitt. Falls ein konkreter Quellprompt widersprechende Stilbegriffe enthält, überstimmt der feste Lock nur diese Stilbegriffe; die konkrete inhaltliche Szene bleibt bestehen.
-
-`Bild 01` ist die erste Szene und zugleich das Titelbild, aber nicht der alleinige Style-Master. Die globale Bildwelt ist der Style-Master.
-
-## Quellen-QC
-
-Neue Reels verwenden `sourceQualitySchemaVersion: 3`.
-
-Pflicht:
+Neue Reels brauchen:
 - mindestens zwei echte HTTPS-Quellen
-- unterschiedliche Hosts/Domains
-- vollständige Felder `Titel/Institution`, `URL`, `Datum/Zugriff`, `Quellentyp`, `Belegt`
-- mindestens eine Primär-/offizielle Quelle oder wissenschaftliche Originalquelle
-- mindestens eine davon unabhängige Sekundär-/Fachquelle
-- `Belegt` muss konkret die jeweilige Reel-Aussage benennen
-
-Die formale Prüfung ersetzt keine inhaltliche Quellenbewertung. Bestehende Schema-2-Reels bleiben rückwärtskompatibel.
+- unterschiedliche Hosts
+- mindestens eine Primär-/offizielle oder wissenschaftliche Originalquelle
+- mindestens eine unabhängige Sekundär-/Fachquelle
+- konkrete `Belegt`-/`supports`-Zuordnung
 
 ## Google Flow
 
-`Bild 01` = Szene 1 und zugleich Titelbild. Ein separates Cover gibt es nicht.
-
-Danach folgen alle Bildphasen in globaler Reihenfolge. Die Bildnummer ist nicht automatisch die Szenennummer.
-
-Die verbindliche Nutzerdatei ist `00-bildprompts/99-alle-bildprompts.txt` mit dem vollständigen seriellen Gesamtprompt. `all-image-prompts/all-image-prompts.txt` ist nur die identische technische Spiegeldatei.
-
-Der Gesamtprompt enthält `modern-countryball-explainer` global und zusätzlich vor jedem Bildabschnitt.
-
-Vor der ersten Generierung erstellt Flow genau **einen gemeinsamen Ausgabeordner für dieses Reel**. Danach arbeitet Flow streng seriell:
+Verbindliche Datei:
 
 ```text
-ein Bild erzeugen
-→ vollständig warten
-→ gegen aktuellen Bildprompt UND feste Bildwelt prüfen
-→ exakt als Bild NN.png umbenennen
-→ in den gemeinsamen Reel-Ausgabeordner legen
-→ Dateiname und Ablage prüfen
-→ erst dann nächstes Bild
+00-bildprompts/99-alle-bildprompts.txt
 ```
 
-Keine Queue, kein Batch, kein Parallelisieren, keine Mehrfachvarianten und kein weiteres `Go`. Wenn Umbenennen oder Ablage nicht bestätigt werden kann, stoppt der Lauf statt weiterzugenerieren.
+Flow arbeitet strikt seriell: genau ein Bild erzeugen → warten → prüfen → `Bild NN.png` → ablegen → prüfen → nächstes Bild. Kein Batch, keine Parallelgenerierung.
 
-Nach Abschluss liegen alle Bilder des Reels zusammen in diesem einen Flow-Ausgabeordner. Für den Repo-Import werden sie gesammelt nach `00-bildprompts/00-ALLE-BILDER-HIER-REIN/` übernommen.
+## Phase-1-Abschluss
 
-Der frühere separate `google-flow-controller.txt` ist deaktiviert.
-
-## Fehlende Assets
+Vor Übergabe an den Nutzer:
 
 ```bash
-npm run discover:assets -- --dir "PFAD-ZUM-REEL"
+npm run check:content -- --dir "<reel>" --strict
+npm run export:prompts -- --dir "<reel>" --strict
 ```
 
-Die Discovery erwartet automatisch `Bild 01` bis zur letzten **geplanten Bildphase**.
+`check:content --strict` muss insbesondere das **Motion-/SFX-Hard-Gate** bestehen. Ein Reel mit statischer Szene, fehlendem Wechsel-SFX, unbekanntem Motion-Typ oder unbekanntem Soundtyp ist nicht Phase-1-fertig.
 
-Vor `--apply` jede Bildphase sichtbar prüfen. Dateinummern sind nur Routing-Hilfe. Zusätzlich prüfen, ob die feste Bildwelt eingehalten ist.
-
-## Audio und Timeline
-
-```bash
-npm run trim:pauses -- --dir "PFAD-ZUM-REEL" --speed 1.10
-npm run build:timeline -- --dir "PFAD-ZUM-REEL"
-npm run sync:audio -- --dir "PFAD-ZUM-REEL" --strict
-```
-
-Narrative Szenen werden mit echten akustisch bestätigten Audio-Cues synchronisiert. Zusätzliche Bildphasen werden innerhalb der Szene anhand `startPercent` als harte Schnitte verteilt.
-
-Keine geschätzten Szenenanker. Keine Untertitel. `sync:words` ist nicht erforderlich und im aktiven Produktionsworkflow verboten; historische Helfer liegen nur noch unter dem Legacy-Namensraum.
-
-## Finaler Reel-Export
-
-Der einzige sichtbare finale Upload-Bereich ist:
-
-```text
-03-export/
-├── FERTIGES-REEL.mp4
-└── UNIVERSELLE-CAPTION.txt
-```
-
-Es gibt keinen separaten sichtbaren Caption- oder Video-Ordner. Die Universal-Caption muss reel-spezifisch sein und `UNIVERSAL_CAPTION_POLICY.md` erfüllen.
-
-## Visuelle Prüfung und Render
-
-```bash
-npm run organize:assets -- --dir "PFAD-ZUM-REEL" --apply
-npm run check:visuals -- --dir "PFAD-ZUM-REEL" --strict
-npm run finalize:reel -- --dir "PFAD-ZUM-REEL" --strict
-npm run validate:render -- --dir "PFAD-ZUM-REEL"
-npm run render:reel -- --dir "PFAD-ZUM-REEL"
-```
-
-Jede einzelne Bildphase muss die visuelle Zwei-Pass-QC gegen Inhalt, Prompt und die feste Bildwelt bestehen. Die letzte Bildphase bleibt nach dem letzten gesprochenen Wort 0,7 Sekunden stehen.
-
-Keine geplante Stufe als abgeschlossen bezeichnen und keine nicht ausgeführten Tests als bestanden melden.
+Nicht ausgeführte Prüfungen niemals als bestanden melden.
