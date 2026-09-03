@@ -1,181 +1,100 @@
 # Produktionsstatus
 
-**Status: PRODUKTIONSLOGIK BEREIT — FESTE BILDWELT AKTIV — TECHNISCHER E2E BESTANDEN — GOLDEN-E2E MIT ECHTEN ASSETS AUSSTEHEND**
+**Status: PRODUKTIONSLOGIK GEHÄRTET — MOTION/SFX/ENDSTILLE ALS HARD GATES — GOLDEN-E2E MIT ECHTEN ASSETS NOCH AUSSTEHEND**
 
-## Was der E2E-Durchlauf am 2026-08-29 gezeigt hat
+`CURRENT_WORKFLOW.md` ist die verbindliche Single Source of Truth.
 
-Die vollständige Kette wurde einmal durchlaufen: Reel anlegen, Script und alle
-Bildprompts ausschreiben, Quellen belegen, Assets zuordnen, Audio-Pacing messen,
-Timeline bauen, visuelle Freigabe eintragen, finalisieren und rendern.
+## Historischer technischer E2E
 
-Ergebnis: `03-export/FERTIGES-REEL.mp4`, H.264, 1080x1920, 30 fps, 58,75 Sekunden,
-AAC-Ton, 9 Szenen, 17 Bilder.
+Am 2026-08-29 wurde die vollständige technische Kette einmal mit Testassets durchlaufen: Workspace → Script/Prompts → Quellen → Assets → Audio-Pacing → Timeline → visuelle Freigabe → Finalizer → Render. Dabei entstand eine 1080x1920-H.264-MP4 mit 9 Szenen und 17 Bildern.
 
-Dabei kamen zwei Blocker ans Licht, die inzwischen behoben sind: Die Inhaltsprüfung
-verlangte noch eine leere `visualStyleId` und lehnte damit jedes neue Reel ab, und
-der Renderer scheiterte am eigenen Ausgabe-Symlink, weil Remotion beim Bündeln
-`realpath` auf jeden Eintrag im Reel-Ordner ruft.
+Dieser Lauf beweist die technische Grundkette, aber **nicht** den heutigen Qualitätsstandard mit echten Bildern, echter Stimme, verpflichtender Motion/SFX-Coverage und Endstille-Gate.
 
-**Noch offen ist der Golden-E2E mit echten Assets:** Bilder aus Google Flow statt
-Platzhaltern und ein echtes Voice-over statt eines Testsignals. Erst danach gilt der
-Status als vollständig produktionsvalidiert.
+## Feedback-Härtung 2026-09-03
 
-## Verbindliche Quelle
+Ein realer Reel-Export zeigte drei systemische Probleme, die für zukünftige Reels nicht mehr durchrutschen dürfen:
 
-`CURRENT_WORKFLOW.md` ist die Single Source of Truth.
+1. einzelne Bildphasen konnten statisch bleiben, wenn nicht-kanonische Motion-Namen verwendet wurden
+2. geplante SFX konnten im Weg Effektplan → Timeline → Renderplan ihr `file` verlieren und dadurch vom Renderer übersprungen werden
+3. eine lange stille Audio-Fahne konnte die Videodauer unnötig um mehrere Sekunden verlängern
 
-## Aktueller Reel-Standard
+Dafür wurden zusätzliche technische Sicherheitsstufen eingebaut.
 
-- 55–60 Sekunden Voice-over
+## Aktueller Pflichtstandard
+
+- 55–60 s Voice-over
 - 155–175 deutsche Wörter
-- 8–10 **narrative Szenen**, Standard 9
-- Hook ab Sekunde 0
-- Voice-over exakt 1,10x, Pitch erhalten
-- −16 LUFS, max. −1,5 dBTP
-- keine Untertitel und kein aktiver Word-Sync
-- harte Schnitte
-- 0,7 Sekunden Schlussbild-Nachlauf
+- 8–10 Szenen, Standard 9
+- Hook 1 Bild, jede weitere Szene 2
+- 9 Szenen = 17 Bilder
+- Modern Countryball Explainer
+- keine Untertitel
+- keine Hintergrundmusik
+- 1,10x Voice-over
+- −16 LUFS / max. −1,5 dBTP
+- Szenencut ca. 0,10 s vor Cue
+- interner Bildcut ca. 0,08 s vor Cue
+- SFX ca. 0,04 s vor Cut
+- visueller Schluss-Hold 0,5–0,7 s, Ziel 0,6 s
 
-## Themen und Bildwelt
+## Motion-Hard-Gate
 
-Die Themenwahl ist offen. Es gibt keine feste Pillar-Quote mehr.
+Für neue Reels ab 2026-09-02 muss **jeder Bildmoment sichtbar bewegt sein**.
 
-Für alle neuen Reels ist die feste Bildwelt aktiv:
+- kanonische Motion-Typen aus `config/effects-rules.json`
+- Zoom meist 2–4 %
+- Pan 1–3 %
+- Hook bewegt sich ebenfalls
+- zweite Bildphasen bewegen sich ebenfalls
+- `none` blockiert neue Reels
+- bekannte ältere Aliasnamen werden kanonisch aufgelöst
+- unbekannte Motion-Typen blockieren
+- Renderer besitzt zusätzlich einen Motion-Fallback gegen statische Frames
 
-```text
-visualWorldMode: fixed
-visualStyleId: modern-countryball-explainer
-visualStyleReason: "Globale feste Bildwelt für alle neuen Erklär-Reels: moderner minimalistischer Countryball-Erklärstil."
-```
+## SFX-Hard-Gate
 
-Verbindliche Style-Bibel: `knowledge/fixed-visual-world.md`.
+- jeder Szenenwechsel ab Szene 2 braucht SFX
+- jeder interne Bildwechsel braucht eigenen zielgebundenen SFX
+- ausschließlich Typen aus `config/sound-library.json`
+- `sync:sounds --strict` bindet Typen an echte Dateien
+- unbekannte Typen und fehlende Library-Dateien blockieren
+- Renderer besitzt einen Safety-Fallback Typ → kanonische SFX-Datei, falls ein Zwischenplan das `file`-Feld verliert
+- typische SFX-Lautstärke 0,18–0,30
 
-Der Stil bleibt über alle Themen identisch: moderner minimalistischer Countryball-inspirierter 2D-Erklärlook, dicke schwarze Konturen, runde Kugelfiguren für Akteure, ruhige einfarbige Hintergründe, wenige Requisiten und eine klare visuelle Metapher. Länderflaggen werden nur verwendet, wenn geografische Identität wirklich relevant ist; allgemeine Themen nutzen neutrale Kugeln oder passende Objekte in derselben Formsprache.
+## Audio-Endstille-Hard-Gate
 
-Prompts sind Englisch, sichtbarer Bildtext ist ausschließlich Deutsch.
+Das finale Voice-over darf höchstens **0,25 s Endstille** enthalten. Mehrsekündige Audio-Fahnen werden nicht als normale Videodauer akzeptiert.
 
-## Bildanzahl — feste Regel
+`trim:pauses` entfernt Endstille bereits aktiv. Zusätzlich messen Finalizer und Renderer die finale Voice-over-Datei erneut. Erst danach wird der separate visuelle Schluss-Hold angehängt.
 
-Die alte Gleichsetzung `13 Szenen = 13 Bilder` ist aufgehoben, ebenso die frühere
-freie Wahl der Bilddichte.
+## Mehrfach abgesicherte Einstiegspfade
 
-Es gilt:
-- die Hook besitzt genau eine Bildphase
-- jede weitere Szene besitzt genau zwei
-- eine dritte Bildphase ist nicht vorgesehen
-- die Gesamtzahl ergibt sich daraus zwingend: `1 + (Szenen − 1) × 2`
+Die neuen Regeln sind nicht nur Dokumentation:
 
-| Szenen | Bilder |
-|---|---|
-| 8 | 15 |
-| 9 | 17 |
-| 10 | 19 |
+- `check:content --strict` → Motion-/SFX-Coverage
+- `build:timeline --strict` → Motion-/SFX-Coverage + Soundbibliothek
+- `finalize:reel` / `finalizeReel()` → Motion/SFX + Soundbibliothek + Endstille
+- `validate:render` / `render:reel` / `renderReel()` → dieselben Gates erneut
 
-Der zweite Bildmoment einer Szene setzt an einem eigenen `audioCue` aus tatsächlich gesprochenen Wörtern an. Phase 1 leitet daraus `startPercent` als Planungswert ab; Phase 3 trägt nach dem echten Voice-over den tatsächlich gehörten Zeitpunkt unter `timeline/audio-sync.json -> phaseCueTimings[].cueTimeSeconds` ein. Der finale Schnitt benutzt diesen Audio-Zeitpunkt und jede Bildphase steht mindestens 3 Sekunden. `check:content --strict` weist jede Abweichung
-für neue Reels als Fehler zurück; Archiv-Reels behalten ihre frühere Struktur.
+`--force` darf diese zentralen Gates nicht umgehen.
 
-Technisch:
-- `imageCountMode: "one-hook-two-standard"`
-- `plannedImageCount`
-- `scene.imageCount`
-- `scene.imagePhases[]`
-- zweiter Prompt als `image-prompt-02.txt`; eine dritte Bildphase ist im aktiven Standard nicht vorgesehen
+## Noch offen
 
-## Google Flow
+Ein neuer **Golden-E2E mit echten aktuellen Assets** muss nach diesen Änderungen tatsächlich durchgeführt werden:
 
-Verbindliche Nutzerdatei:
+1. neues Reel importieren/anlegen
+2. echte Google-Flow-Bilder
+3. echtes Voice-over
+4. `trim:pauses`
+5. `sync:sounds --strict`
+6. echte Cue-Synchronisierung
+7. Motion-/SFX-/Visual-QC
+8. Finalizer
+9. Render
+10. finale MP4 technisch und sichtbar prüfen
 
-```text
-00-bildprompts/99-alle-bildprompts.txt
-```
+Erst wenn dieser Durchlauf tatsächlich bestanden ist, darf der neue Stand als vollständig produktionsvalidiert bezeichnet werden.
 
-Der Exporter ergänzt `modern-countryball-explainer` global und zusätzlich direkt vor jedem einzelnen Bildabschnitt. Dadurch bleibt die Bildwelt auch bei komplett unterschiedlichen Themen stabil.
+## Teststatus
 
-`Bild 01.png` ist die erste Szene und zugleich das Titelbild, aber nicht der alleinige Style-Master. Die globale Repo-Bildwelt ist der Style-Master.
-
-Danach bezeichnet die Nummer die **globale Bildreihenfolge**, nicht automatisch die Szenennummer.
-
-Flow arbeitet nach dem einmaligen Start vollständig selbstständig, aber streng seriell. Zuerst wird genau **ein gemeinsamer Ausgabeordner für das Reel** erstellt. Danach gilt:
-
-```text
-genau ein Bild erzeugen
-→ vollständig warten
-→ gegen den aktuellen Bildprompt und die feste Bildwelt prüfen
-→ exakt als Bild NN.png umbenennen
-→ in den gemeinsamen Ausgabeordner legen
-→ Dateiname und Ablage prüfen
-→ erst dann das nächste Bild starten
-```
-
-Kein Batch, keine Queue, kein Parallelisieren und keine Mehrfachvarianten. Wenn Umbenennen oder Ablage nicht bestätigt werden kann, stoppt Flow statt weitere Bilder zu erzeugen.
-
-Nach Abschluss liegen alle Bilder gemeinsam in diesem einen Flow-Ordner und werden für den Repo-Import gesammelt nach `00-bildprompts/00-ALLE-BILDER-HIER-REIN/` übernommen.
-
-Der separate `google-flow-controller.txt` ist deaktiviert.
-
-## Sichtbarer finaler Reel-Export
-
-Der einzige sichtbare finale Upload-Bereich ist:
-
-```text
-03-export/
-├── FERTIGES-REEL.mp4
-└── UNIVERSELLE-CAPTION.txt
-```
-
-Es gibt keinen separaten sichtbaren Caption- oder Video-Ordner. Die Universal-Caption muss die Regeln aus `UNIVERSAL_CAPTION_POLICY.md` erfüllen und zum konkreten Reel passen.
-
-## Quellen-QC
-
-Neue Reels verwenden Quellen-Schema 3:
-- mindestens zwei echte HTTPS-Quellen mit unterschiedlichen Hosts
-- vollständige Quellenfelder inklusive `Quellentyp`
-- mindestens eine Primär-/offizielle bzw. wissenschaftliche Originalquelle
-- mindestens eine unabhängige Sekundär-/Fachquelle
-- konkrete Zuordnung unter `Belegt`
-
-Bestehende Schema-2-Reels bleiben rückwärtskompatibel.
-
-## Qualitätsprinzip
-
-Ein Reel ist erst fertig, wenn:
-- Script und Quellen tatsächlich geprüft wurden
-- alle geplanten Bildphasen vorhanden sind
-- jede Bildphase zweifach visuell gegen ihren konkreten Inhalt und Prompt geprüft wurde
-- die feste Bildwelt sichtbar eingehalten wird
-- das finale Voice-over real gemessen wurde
-- narrative Szenen am finalen Audio synchronisiert sind
-- interne Bildphasen passend innerhalb der Szenen liegen
-- die Universal-Caption vollständig und gültig ist
-- Finalizer und Renderer-Prüfung tatsächlich bestanden sind
-- die echte MP4 erzeugt wurde
-- finale MP4 und Universal-Caption unter `03-export/` verfügbar sind
-
-Nicht ausgeführte Tests oder geplante Produktionsstufen niemals als bestanden melden. Messwerte und Readiness-Reports dürfen niemals künstlich erzeugt oder erzwungen werden.
-
-## Runtime-/E2E-Validierung
-
-Nach Aktivierung der festen Bildwelt muss der nächste vollständige E2E-Test insbesondere prüfen:
-
-- neuer Workspace startet mit `visualStyleId: "modern-countryball-explainer"`
-- `config/image-styles.json` und `config/content-rules.json` zeigen dieselbe feste Bildwelt
-- die feste Bildregel wird geplant und exportiert: Hook eins, jede weitere Szene zwei
-- Google-Flow-Gesamtprompt enthält den globalen Style-Lock und wiederholt ihn direkt vor jedem Bildabschnitt
-- Google Flow legt alle seriell erzeugten und korrekt umbenannten Bilder in genau einem gemeinsamen Ausgabeordner ab
-- sichtbarer Bildtext bleibt Deutsch; Prompttext bleibt Englisch
-- konkrete Themen ändern nur Inhalt, Metapher und ggf. Hintergrundfarbe, nicht die grundlegende Bildsprache
-- echte Bilder werden visuell zugeordnet und zweifach gegen konkrete Prompts geprüft
-- echtes Voice-over wird verarbeitet, gemessen und als einzige Timeline-Quelle verwendet
-- Universal-Caption wird vor dem Render geprüft und zusammen mit der finalen MP4 nach `03-export/` ausgegeben
-- Finalizer und Render-Validator blockieren fehlende oder ungeprüfte Voraussetzungen
-- finale MP4 wird tatsächlich erzeugt
-
-Erst nach diesem vollständigen Durchlauf darf der Status als vollständig E2E-produktionsvalidiert bezeichnet werden.
-
-## Legacy
-
-`sync:words` gehört nicht zum aktiven Workflow. Historische Word-Sync-Helfer sind nur unter dem expliziten Legacy-Namensraum zulässig. Historische Reel-Bildprompts definieren keine abweichende aktive Bildwelt.
-
-## Infrastruktur
-
-Die GitHub-Actions-CI hatte zuletzt Läufe mit leerer Step-Liste bzw. nicht abrufbaren Logs. Ein grüner CI-Status darf nur gemeldet werden, wenn ein Lauf tatsächlich erfolgreich abgeschlossen wurde.
+Repo-Änderungen enthalten zusätzliche Regressionstests für Motion/SFX und Endstille. **Die vollständige `npm test`-Suite ist nach den neuesten Änderungen noch nicht als ausgeführt/grün bestätigt.** Nicht ausgeführte Tests werden nicht als bestanden gemeldet.
