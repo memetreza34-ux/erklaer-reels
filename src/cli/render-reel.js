@@ -3,9 +3,12 @@
 import path from 'node:path';
 
 import { verifyAudioPacingFileBinding } from '../core/audio-pacing-file-guard.js';
+import { verifyFutureEffectsCoverage } from '../core/effects-quality-file-guard.js';
 import { renderReel } from '../core/remotion-renderer.js';
 import { validateRendererInput } from '../core/render-validator.js';
+import { syncReelSounds } from '../core/sound-library.js';
 import { verifyRequiredSourceQuality } from '../core/source-quality-file-guard.js';
+import { verifyTrailingVoiceoverSilence } from '../core/trailing-silence-guard.js';
 
 function getArgument(name) {
   const index = process.argv.indexOf(name);
@@ -29,7 +32,7 @@ Optionen:
   --codec        Remotion-Codec, Standard: h264
   --crf          Qualitätswert, Standard: 18
   --concurrency  Anzahl paralleler Renderprozesse
-  --force        Renderer trotz fehlender finaler Freigabe starten
+  --force        Renderer trotz fehlender finaler Freigabe starten; Quellen-, Motion/SFX-, Audio-Datei- und Endstille-Hard-Gates bleiben trotzdem aktiv
   --validate-only Nur Render-Plan und Assets prüfen
 `);
 }
@@ -65,9 +68,24 @@ async function main() {
     throw new Error(`${sourceGate.reason} Rendern mit unvollständiger verpflichtender Quellen-QC ist auch mit --force blockiert.`);
   }
 
+  const effectsGate = await verifyFutureEffectsCoverage(reelDirectory);
+  if (effectsGate.required && !effectsGate.passed) {
+    const details = effectsGate.findings.map((finding) => `${finding.sceneId ?? 'Reel'}${finding.targetId ? `/${finding.targetId}` : ''}: ${finding.issue}`).join(', ');
+    throw new Error(`${effectsGate.reason} Rendern mit statischen Bildmomenten oder stummen/ungültigen Wechsel-SFX ist auch mit --force blockiert. ${details}`);
+  }
+
+  // Vor jeder Validierung und jedem Render werden Soundtypen erneut strikt gegen
+  // die Library aufgelöst und die echten Dateien in den Reel-Ordner kopiert.
+  await syncReelSounds(reelDirectory, { strict: true });
+
   const pacingBinding = await verifyAudioPacingFileBinding(reelDirectory);
   if (pacingBinding.required && !pacingBinding.passed) {
     throw new Error(`${pacingBinding.reason} Rendern mit veralteten Lautheitswerten ist auch mit --force blockiert.`);
+  }
+
+  const trailingSilence = await verifyTrailingVoiceoverSilence(reelDirectory);
+  if (trailingSilence.required && !trailingSilence.passed) {
+    throw new Error(`${trailingSilence.reason} Rendern mit langem stillem Audio-Ende ist auch mit --force blockiert.`);
   }
 
   if (validateOnly) {
@@ -76,7 +94,9 @@ async function main() {
     });
     printValidation(report);
     if (sourceGate.required) console.log('Quellen-QC: verpflichtendes Schema bestanden');
+    if (effectsGate.required) console.log('Motion/SFX-Hard-Gate: bestanden');
     if (pacingBinding.required) console.log('Audio-Pacing-Datei: Fingerprint unverändert');
+    if (trailingSilence.required) console.log(`Voice-over-Endstille: ${trailingSilence.trailingSilenceSeconds.toFixed(2)} s`);
     console.log('Untertitel: deaktiviert');
     if (!report.passed) process.exitCode = 1;
     return;
@@ -100,7 +120,9 @@ async function main() {
 
   console.log('MP4 erfolgreich ohne Untertitel erzeugt.');
   if (sourceGate.required) console.log('Quellen-QC: verpflichtendes Schema bestanden');
+  if (effectsGate.required) console.log('Motion/SFX-Hard-Gate: bestanden');
   if (pacingBinding.required) console.log('Audio-Pacing-Datei: Fingerprint unverändert');
+  if (trailingSilence.required) console.log(`Voice-over-Endstille: ${trailingSilence.trailingSilenceSeconds.toFixed(2)} s`);
   console.log(`Export-Video: ${path.resolve(report.exportVideoFile ?? report.outputFile)}`);
   console.log(`Universal-Caption: ${path.resolve(report.exportCaptionFile)}`);
   console.log('Sichtbarer Upload-Bereich: 03-export/');
