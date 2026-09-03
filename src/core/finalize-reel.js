@@ -3,10 +3,13 @@ import path from 'node:path';
 
 import { verifyAudioPacingFileBinding } from './audio-pacing-file-guard.js';
 import { validateReelContent } from './content-validator.js';
-import { buildMasterTimeline } from './timeline.js';
-import { runVisualQualityCheck } from './visual-qc.js';
+import { verifyFutureEffectsCoverage } from './effects-quality-file-guard.js';
 import { calculateReelProgress } from './reel-progress.js';
+import { syncReelSounds } from './sound-library.js';
 import { verifyRequiredSourceQuality } from './source-quality-file-guard.js';
+import { buildMasterTimeline } from './timeline.js';
+import { verifyTrailingVoiceoverSilence } from './trailing-silence-guard.js';
+import { runVisualQualityCheck } from './visual-qc.js';
 import {
   AUDIO_PACING_STYLE,
   isMeasuredLoudnessWithinTolerance,
@@ -116,9 +119,45 @@ export async function finalizeReel(reelDirectory, {
   stages.sourceQuality = guardStage(sourceGate, 'source-quality-binding', 'Verpflichtende Quellen-QC');
   if (!sourceGate.passed) blockingIssues.push({ id: 'source-quality-binding', level: 'error', message: sourceGate.reason });
 
+  const effectsGate = await verifyFutureEffectsCoverage(reelDirectory);
+  stages.effectsHardGate = guardStage(effectsGate, 'motion-sfx-hard-gate', 'Verpflichtende Motion-/SFX-Coverage');
+  if (!effectsGate.passed) {
+    blockingIssues.push({ id: 'motion-sfx-hard-gate', level: 'error', message: effectsGate.reason });
+    for (const finding of effectsGate.findings ?? []) {
+      blockingIssues.push({
+        id: `effects-${finding.issue}`,
+        level: 'error',
+        message: `${finding.sceneId ?? 'Reel'}${finding.targetId ? `/${finding.targetId}` : ''}: ${finding.issue}`
+      });
+    }
+  }
+
+  let soundSync = null;
+  try {
+    soundSync = await syncReelSounds(reelDirectory, { strict: true });
+    stages.soundLibrary = {
+      passed: soundSync.unknownTypes.length === 0 && soundSync.missingFiles.length === 0,
+      required: effectsGate.required,
+      copied: soundSync.copied,
+      unknownTypes: soundSync.unknownTypes,
+      missingFiles: soundSync.missingFiles
+    };
+  } catch (error) {
+    stages.soundLibrary = { passed: false, required: effectsGate.required, error: error.message };
+    blockingIssues.push({ id: 'sound-library-binding', level: 'error', message: error.message });
+  }
+
   const pacingBinding = await verifyAudioPacingFileBinding(reelDirectory);
   stages.audioPacingFileBinding = guardStage(pacingBinding, 'audio-pacing-file-binding', 'Audio-Pacing-Dateibindung');
   if (!pacingBinding.passed) blockingIssues.push({ id: 'audio-pacing-file-binding', level: 'error', message: pacingBinding.reason });
+
+  const trailingSilence = await verifyTrailingVoiceoverSilence(reelDirectory);
+  stages.trailingSilence = guardStage(trailingSilence, 'trailing-voiceover-silence', 'Endstille des finalen Voice-overs');
+  stages.trailingSilence.trailingSilenceSeconds = trailingSilence.trailingSilenceSeconds ?? null;
+  stages.trailingSilence.maximumTrailingSilenceSeconds = trailingSilence.maximumTrailingSilenceSeconds ?? null;
+  if (!trailingSilence.passed) {
+    blockingIssues.push({ id: 'trailing-voiceover-silence', level: 'error', message: trailingSilence.reason });
+  }
 
   stages.subtitles = {
     passed: true,
@@ -187,7 +226,10 @@ export async function finalizeReel(reelDirectory, {
   const progress = await calculateReelProgress(reelDirectory);
   const readyForRenderer =
     stages.sourceQuality?.passed === true &&
+    stages.effectsHardGate?.passed === true &&
+    stages.soundLibrary?.passed === true &&
     stages.audioPacingFileBinding?.passed === true &&
+    stages.trailingSilence?.passed === true &&
     content.passed === true &&
     stages.audioPacing?.passed === true &&
     stages.audioPacing?.strict === true &&
@@ -199,7 +241,7 @@ export async function finalizeReel(reelDirectory, {
 
   const normalizedDirectory = reelDirectory.split(path.sep).join('/');
   const report = {
-    version: 11,
+    version: 12,
     createdAt,
     reelDirectory: normalizedDirectory,
     strict,
@@ -212,13 +254,17 @@ export async function finalizeReel(reelDirectory, {
     warnings,
     nextStep: readyForRenderer
       ? `Renderer prüfen und MP4 ohne Untertitel erzeugen: npm run validate:render -- --dir "${normalizedDirectory}" && npm run render:reel -- --dir "${normalizedDirectory}"`
-      : stages.sourceQuality?.passed !== true
-        ? `Quellen-QC korrigieren und erneut prüfen: npm run check:content -- --dir "${normalizedDirectory}" --strict.`
-        : stages.audioPacingFileBinding?.passed !== true
-          ? `Aktuelles Voice-over erneut verarbeiten und messen: npm run trim:pauses -- --dir "${normalizedDirectory}"; danach Timeline neu erstellen.`
-          : stages.audioPacing?.passed !== true
-            ? `Voice-over mit ${AUDIO_PACING_STYLE.playbackRate.toFixed(2)}x und Lautheitsnormalisierung neu erzeugen: npm run trim:pauses -- --dir "${normalizedDirectory}"; danach Timeline und Audio-Cues neu synchronisieren.`
-            : progress.nextStep
+      : stages.effectsHardGate?.passed !== true
+        ? `Motion-/SFX-Plan korrigieren: jeder Bildmoment braucht sichtbare Bewegung und jeder Wechsel einen gültigen Sound aus config/sound-library.json.`
+        : stages.soundLibrary?.passed !== true
+          ? `Soundbibliothek synchronisieren: npm run sync:sounds -- --dir "${normalizedDirectory}" --strict.`
+          : stages.sourceQuality?.passed !== true
+            ? `Quellen-QC korrigieren und erneut prüfen: npm run check:content -- --dir "${normalizedDirectory}" --strict.`
+            : stages.audioPacingFileBinding?.passed !== true || stages.trailingSilence?.passed !== true
+              ? `Aktuelles Voice-over erneut verarbeiten: npm run trim:pauses -- --dir "${normalizedDirectory}"; danach Timeline neu erstellen.`
+              : stages.audioPacing?.passed !== true
+                ? `Voice-over mit ${AUDIO_PACING_STYLE.playbackRate.toFixed(2)}x und Lautheitsnormalisierung neu erzeugen: npm run trim:pauses -- --dir "${normalizedDirectory}"; danach Timeline und Audio-Cues neu synchronisieren.`
+                : progress.nextStep
   };
 
   await writeJson(path.join(reelDirectory, 'review', 'final-readiness-report.json'), report);
@@ -226,6 +272,8 @@ export async function finalizeReel(reelDirectory, {
   const statusPath = path.join(reelDirectory, 'status.json');
   const status = await readJson(statusPath, {});
   status.audioPacing = stages.audioPacing?.passed && stages.audioPacingFileBinding?.passed ? 'complete' : 'needs-review';
+  status.effects = stages.effectsHardGate?.passed && stages.soundLibrary?.passed ? 'motion-and-sfx-hard-gates-passed' : 'needs-review';
+  status.trailingSilence = stages.trailingSilence?.passed ? 'passed' : 'needs-review';
   status.subtitles = 'disabled';
   status.wordSync = 'not-required';
   status.finalReadiness = readyForRenderer ? 'ready-for-renderer' : 'needs-review';
