@@ -2,6 +2,7 @@
 
 import { buildMasterTimeline } from '../core/timeline.js';
 import { syncReelSounds } from '../core/sound-library.js';
+import { verifyFutureEffectsCoverage } from '../core/effects-quality-file-guard.js';
 
 function getArgument(name) {
   const index = process.argv.indexOf(name);
@@ -19,7 +20,7 @@ Beispiele:
 Optionen:
   --dir             Pfad zum Reel-Ordner
   --audio-duration  Echte Voice-over-Dauer in Sekunden, falls ffprobe nicht verfügbar ist
-  --strict          Fehlende Assets, unsichere Cue-Zeiten oder unausgeglichene Szenendauern als Fehler behandeln
+  --strict          Fehlende Assets, unsichere Cue-Zeiten oder ungültige Motion-/SFX-Planung als Fehler behandeln
   --no-probe        ffprobe nicht zur automatischen Dauerermittlung verwenden
 
 Die Timeline hängt automatisch den in config/production-quality-gates.json festgelegten Schlussbild-Nachlauf an.
@@ -39,15 +40,26 @@ async function main() {
     return;
   }
 
+  const strict = process.argv.includes('--strict');
   const rawDuration = getArgument('--audio-duration');
   const audioDurationSeconds = rawDuration === undefined ? null : Number(rawDuration);
   if (rawDuration !== undefined && (!Number.isFinite(audioDurationSeconds) || audioDurationSeconds <= 0)) {
     throw new Error('--audio-duration muss eine positive Zahl sein.');
   }
 
+  const effectsGate = await verifyFutureEffectsCoverage(reelDirectory);
+  if (effectsGate.required && !effectsGate.passed) {
+    for (const finding of effectsGate.findings) {
+      console.log(`Motion/SFX: ${finding.sceneId ?? 'Reel'}${finding.targetId ? ` / ${finding.targetId}` : ''} — ${finding.issue}`);
+    }
+    if (strict) throw new Error(`${effectsGate.reason} Timeline wird nicht mit statischen Bildmomenten oder stummen Wechseln gebaut.`);
+  } else if (effectsGate.required) {
+    console.log('Motion/SFX-Hard-Gate: bestanden.');
+  }
+
   // Geplante Sound-Typen gegen die zentrale Bibliothek auflösen, bevor die Timeline
-  // die Effekte übernimmt. Fehlende Dateien blockieren nur im strengen Lauf.
-  const sounds = await syncReelSounds(reelDirectory, { strict: process.argv.includes('--strict') });
+  // die Effekte übernimmt. Im strengen Lauf blockieren unbekannte Typen oder fehlende Dateien.
+  const sounds = await syncReelSounds(reelDirectory, { strict });
   if (sounds.copied.length > 0) console.log(`Sounds übernommen: ${sounds.copied.join(', ')}`);
   for (const item of sounds.unknownTypes) {
     console.log(`Warnung: ${item.sceneId} nutzt den unbekannten Sound-Typ "${item.type}".`);
@@ -58,7 +70,7 @@ async function main() {
 
   const result = await buildMasterTimeline(reelDirectory, {
     audioDurationSeconds,
-    strict: process.argv.includes('--strict'),
+    strict,
     probeAudio: !process.argv.includes('--no-probe')
   });
 
@@ -73,7 +85,7 @@ async function main() {
   if (result.timeline.timingStatus !== 'audio-synced') {
     console.log('Nächster Schritt: timeline/audio-sync.json mit den echten audioCue-Zeitpunkten ergänzen und den Befehl erneut ausführen.');
   }
-  if (process.argv.includes('--strict') && !result.qualityReport.passed) process.exitCode = 1;
+  if (strict && (!result.qualityReport.passed || (effectsGate.required && !effectsGate.passed))) process.exitCode = 1;
 }
 
 main().catch((error) => {
