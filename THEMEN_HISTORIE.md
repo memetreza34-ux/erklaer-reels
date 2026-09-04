@@ -1,10 +1,12 @@
 # Themen-Historie
 
-Diese Datei ist die verbindliche Themenliste für neue Erklär-Reels.
+Diese Datei ist die verbindliche Themenliste für **alle Erklärformate in diesem Repository** — Reels und YouTube-Langvideos.
 
 **Regel:** Vor jeder neuen Themenwahl diese Liste prüfen. Ein bereits verwendetes oder inhaltlich nahezu identisches Thema darf nicht erneut geplant werden. Geplante Themen sind ebenfalls reserviert, bis sie verworfen oder veröffentlicht werden.
 
 ## Bereits verwendet
+
+### Reels
 
 - Warum haben Länder Grenzen?
 - Sozialismus einfach erklärt
@@ -21,11 +23,21 @@ Diese Datei ist die verbindliche Themenliste für neue Erklär-Reels.
 
 ## Geplant / reserviert
 
+### Reels
+
 - Donnerstag: Warum schieben wir Aufgaben auf?
 - Freitag: Warum bekommen wir Gänsehaut?
+
+### YouTube
+
+- Video 01: Warum hat ein Tag 24 Stunden – und nicht 10?
 
 ## Duplicate-Regel
 
 Nicht nur exakte Titel zählen als doppelt. Auch dieselbe Kernfrage mit anderer Formulierung ist gesperrt.
 
-Beispiel: `Warum riecht Regen gut?` ist ein Duplikat von `Warum riecht Regen so besonders?`.
+Beispiele:
+- `Warum riecht Regen gut?` ist ein Duplikat von `Warum riecht Regen so besonders?`.
+- `Wieso sieht man den Mond tagsüber?` ist ein Duplikat von `Warum sehen wir den Mond am Tag?`.
+
+Die Sperre gilt formatübergreifend: Ein bereits verwendetes Reel-Thema wird nicht einfach als YouTube-Langvideo wiederholt und umgekehrt, außer der Nutzer hebt diese Regel ausdrücklich für ein konkretes Thema auf.

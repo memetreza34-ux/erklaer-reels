@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "project": "video-01_warum-hat-ein-tag-24-stunden",
+  "updatedAt": "2026-09-04",
+  "phase1": {
+    "topic": "complete",
+    "duplicateCheck": "complete",
+    "research": "complete",
+    "title": "complete",
+    "thumbnailPlan": "complete",
+    "script": "complete",
+    "imagePrompts": "complete",
+    "uploadMetadata": "complete"
+  },
+  "assets": {
+    "voiceover": "pending-user-asset",
+    "images": "pending-user-assets",
+    "thumbnail": "pending-generation"
+  },
+  "edit": {
+    "timing": "pending",
+    "motion": "planned-not-rendered",
+    "soundDesign": "planned-not-rendered",
+    "qualityControl": "pending"
+  },
+  "export": {
+    "video": "pending",
+    "thumbnail": "pending",
+    "metadata": "prepared"
+  },
+  "readyForAssetGeneration": true,
+  "readyForRender": false,
+  "note": "Phase 1 ist vorbereitet. Keine echten Bilder, kein Voice-over, kein Thumbnail-PNG und keine MP4 wurden bisher erzeugt oder geprüft."
+}

@@ -1,37 +1,46 @@
 # YOUTUBE WORKFLOW — VERBINDLICHE REGEL FÜR LANGVIDEOS
 
-**Stand: 2026-08-28**
+**Stand: 2026-09-04**
 
 Diese Datei ist die verbindliche Regelquelle für den YouTube-Langvideo-Bereich dieses Repositories.
 
 ## Priorität
 
-Für YouTube gilt:
-
 1. aktuelle ausdrückliche Nutzeranweisung im laufenden Chat
 2. `youtube/YOUTUBE_WORKFLOW.md`
-3. `youtube/YOUTUBE_VISUAL_WORLD.md` für die feste YouTube-Bildwelt
-4. `CURRENT_WORKFLOW.md` nur für repo-weite Sicherheits- und Qualitätsprinzipien
-5. sonstige Dokumente und ältere YouTube-Projekte
+3. `youtube/YOUTUBE_VISUAL_WORLD.md`
+4. `THEMEN_HISTORIE.md` für die globale Duplicate-Prüfung
+5. `CURRENT_WORKFLOW.md` nur für repo-weite Sicherheits- und Qualitätsprinzipien
+6. ältere YouTube-Projekte
 
-Reel-spezifische Vorgaben dürfen nicht ungefragt auf Langvideos übertragen werden.
+Reel-spezifische Bildwelt-Regeln dürfen nicht ungefragt auf Langvideos übertragen werden.
 
 ## Grundprinzip
 
-- YouTube-Langvideos liegen ausschließlich unter `youtube/projects/`.
-- Jedes Video bekommt einen eigenen Projektordner.
-- Der normale sichtbare Projektbereich bleibt bewusst einfach: Bildprompts, Voice-Script, Audio, Export und Technik.
-- Recherche, Idee, Szenenplanung, Thumbnail-Plan, Edit-Plan, Status und Metadaten werden intern unter `99-technik/` gesammelt.
-- Ein neuer Chat liest zuerst diese Datei und danach `youtube/YOUTUBE_VISUAL_WORLD.md`, bevor er im YouTube-Bereich Änderungen vornimmt.
-- Ein einzelnes YouTube-Projekt darf globale YouTube-Regeln nicht nebenbei verändern.
+YouTube ist ein eigenes Longform-Format: inhaltlich ähnlich klar und visuell dicht wie ein Reel, aber deutlich länger, ruhiger erzählt und ausschließlich in der eigenen YouTube-Bildwelt.
 
-## Aktueller YouTube-Startstandard
+- alle YouTube-Langvideos liegen unter `youtube/projects/`
+- jedes Video bekommt einen eigenen Projektordner
+- vor jeder Themenwahl `THEMEN_HISTORIE.md` prüfen
+- ein bereits verwendetes oder nahezu identisches Thema ist formatübergreifend gesperrt
+- Titel und Thumbnail sind Pflichtbestandteile jedes Projekts, nicht nachträgliche Extras
+- Script, Szenen und Bildprompts werden vollständig vorbereitet, bevor Nutzerassets als fertig markiert werden
 
-- Neue YouTube-Langvideos sollen zunächst **ungefähr 5 bis 6 Minuten** lang sein.
-- Die Spanne ist ein Zielkorridor und keine sekundengenaue Pflicht.
-- Ein Video darf innerhalb dieses Bereichs natürlich enden; Inhalt wird nicht künstlich gestreckt oder gekürzt, nur um exakt eine Zahl zu treffen.
-- Eine andere Dauer gilt nur, wenn der Nutzer sie für ein konkretes Video oder als neuen globalen Standard ausdrücklich festlegt.
-- Aus der Dauer werden **keine feste Wortzahl und keine feste Szenenzahl automatisch erfunden**.
+## Neuer YouTube-Startstandard
+
+Ab 2026-09-04 gilt global:
+
+- **mindestens 10 Minuten** finales Voice-over
+- Startziel für neue Videos: ungefähr **10–12 Minuten**
+- keine künstliche Streckung; das Thema muss die Länge inhaltlich tragen
+- viele visuelle Wechsel statt minutenlanger Standbilder
+- für 10–12 Minuten standardmäßig ungefähr **50–80 eigenständige Bildmomente**, Zielwert etwa 60
+- Bildwechsel normalerweise alle **6–12 Sekunden**; einzelne Erklärbilder dürfen bewusst bis ungefähr 15 Sekunden stehen, wenn Motion/Zoom und Inhalt es rechtfertigen
+- jedes Bild erhält dezente Bewegung im Edit: Push-in, Pull-out, Pan oder Ken-Burns
+- keine hektische Reel-Schnittfrequenz, aber auch keine statische Slideshow
+- 16:9
+- finales Thumbnail ebenfalls 16:9
+- keine Hintergrundmusik als automatische Pflicht; Sounddesign wird projektbezogen entschieden
 
 ## Feste YouTube-Bildwelt
 
@@ -42,7 +51,7 @@ visualStyleId = "youtube-editorial-stick-explainer"
 visualStyleReason = "Feste YouTube-Bildwelt: hand-drawn editorial stick-figure explainer style für erzählerische Langvideos."
 ```
 
-Die verbindliche Style-Bibel liegt in:
+Verbindliche Style-Bibel:
 
 ```text
 youtube/YOUTUBE_VISUAL_WORLD.md
@@ -50,15 +59,13 @@ youtube/YOUTUBE_VISUAL_WORLD.md
 
 Die YouTube-Bildwelt ist vollständig von der Reel-Bildwelt getrennt.
 
-- `modern-countryball-explainer` gilt nur für Reels.
-- `youtube-editorial-stick-explainer` gilt für YouTube-Langvideos.
-- Reel-Countryballs dürfen nicht automatisch in YouTube-Projekte übernommen werden.
-- YouTube-Bildprompts werden auf Englisch geschrieben.
-- Sichtbarer Bildtext richtet sich nach der Sprache des jeweiligen YouTube-Projekts.
-- Standardformat für Szenenbilder ist 16:9.
+- `modern-countryball-explainer` gilt nur für Reels
+- `youtube-editorial-stick-explainer` gilt für YouTube-Langvideos
+- Prompts werden auf Englisch geschrieben
+- sichtbarer Bildtext richtet sich nach der Projektsprache
+- Szenenbilder 16:9
 
 Kernmerkmale:
-
 - hand-drawn 2D editorial explainer style
 - einfache Stick-Figure-ähnliche Menschen
 - runde oder leicht ovale Köpfe
@@ -68,15 +75,16 @@ Kernmerkmale:
 - ruhige erzählerische Komposition
 - einfache historische, natürliche oder reduzierte Umgebungen
 - keine fotorealistischen Menschen
-- keine 3D-/Pixar-/Clay-Optik
-- keine Countryballs als YouTube-Standard
+- kein 3D/Pixar/Clay
+- keine Countryballs
 
 ## Standard-Projektstruktur
 
 ```text
 video-XX_slug/
 ├── 00-bildprompts/
-│   └── 99-alle-bildprompts.txt
+│   ├── 99-alle-bildprompts.txt
+│   └── THUMBNAIL-PROMPT.txt
 ├── 01-voice-script/
 │   └── voice-script.txt
 ├── 02-audio/
@@ -94,72 +102,94 @@ video-XX_slug/
     └── video.json
 ```
 
-Es gibt keinen separaten sichtbaren `09-upload/`- oder `10-output/`-Bereich mehr. Upload-Metadaten und finale Artefakte werden gemeinsam unter `03-export/` gesammelt.
-
 ## Produktionsphasen
 
-1. **Idee und Recherche:** Thema, Kernfrage, Zielgruppe, Nutzen und belastbare Quellen intern unter `99-technik/` planen.
-2. **Script:** endgültiges Voice-over nach `01-voice-script/voice-script.txt` schreiben; interne Outline kann in `99-technik/PRODUKTIONSPLAN.md` bleiben.
-3. **Szenen und Bildprompts:** Szenen intern planen und den vollständigen Prompt-Satz unter `00-bildprompts/` ablegen.
-4. **Audio:** Voice-over und tatsächlich verwendete Audiodateien unter `02-audio/` verwalten.
-5. **Thumbnail und Edit:** Konzept, Schnitt, Timing, SFX und sonstige interne Produktionsentscheidungen unter `99-technik/` dokumentieren.
-6. **Upload-Metadaten:** genau einen finalen YouTube-Titel, die finale Beschreibung, Kapitel und optionale Tags für `03-export/` vorbereiten.
-7. **Export:** finale Videodatei und finales Thumbnail ebenfalls nach `03-export/` legen.
+1. **Thema + Duplicate-Prüfung:** Themen-Historie lesen, neues Thema reservieren.
+2. **Recherche:** belastbare Primär-/Fachquellen prüfen und Kernbehauptungen dokumentieren.
+3. **Packaging:** finalen YouTube-Titel und Thumbnail-Konzept festlegen.
+4. **Script:** mindestens 10 Minuten tragfähiges Voice-over nach `01-voice-script/voice-script.txt`.
+5. **Bildplanung:** viele einzelne Story-Bilder in der festen YouTube-Welt; vollständiger Prompt-Satz nach `00-bildprompts/99-alle-bildprompts.txt`.
+6. **Audio + Bilder:** echte Nutzerassets unter `02-audio/` bzw. im Projekt ablegen; nichts als fertig markieren, bevor es existiert.
+7. **Edit:** Bildwechsel, Motion, Zoom, SFX und Timing unter `99-technik/PRODUKTIONSPLAN.md` umsetzen.
+8. **Upload-Metadaten:** genau ein finaler Titel, Beschreibung, Kapitel und optionale Tags unter `03-export/`.
+9. **Export:** `FERTIGES-VIDEO.mp4` und `THUMBNAIL.png` unter `03-export/`.
 
-## YouTube-Export — verbindlich
+## Titel-Regel
 
-`03-export/` ist der einzige finale Upload-Bereich eines YouTube-Langvideos.
+Jedes Projekt braucht genau einen finalen Upload-Titel in `03-export/YOUTUBE-TITEL.txt`.
 
-Pflicht bzw. vorgesehene Dateien:
+Der Titel soll:
+- die Kernfrage sofort verständlich machen
+- Neugier erzeugen, ohne falsche Behauptung
+- möglichst kurz und mobil lesbar sein
+- mit dem Thumbnail zusammenarbeiten statt denselben Satz unnötig zu wiederholen
 
-- `FERTIGES-VIDEO.mp4` – finale geprüfte Videodatei
-- `THUMBNAIL.png` – finales Thumbnail
-- `YOUTUBE-TITEL.txt` – genau ein finaler Upload-Titel
-- `YOUTUBE-BESCHREIBUNG.txt` – finale YouTube-Beschreibung
-- `YOUTUBE-KAPITEL.txt` – finale Kapitel mit Zeitstempeln, wenn sinnvoll
-- `YOUTUBE-TAGS.txt` – optionale passende Tags
+## Thumbnail-Regel
 
-Für YouTube-Langvideos gibt es ausdrücklich **keine `UNIVERSELLE-CAPTION.txt`**. Reel-/Shorts-Captions dürfen nicht in YouTube-Projekte übernommen werden.
+Jedes Projekt braucht bereits in Phase 1 ein Thumbnail-Konzept und einen fertigen Prompt.
 
-## Interner Technikbereich
+- 16:9
+- ein dominantes Motiv
+- maximal wenige große Elemente
+- hohe Lesbarkeit auf Smartphone-Größe
+- wenn Text: sehr kurz, normalerweise 2–4 Wörter
+- stärkerer Kontrast als normale Szenenbilder
+- dieselbe YouTube-Figuren-/Zeichenwelt darf verwendet werden
+- kein überladenes Infografik-Thumbnail
 
-`99-technik/` enthält alles, was für Planung und Status wichtig ist, aber im normalen Upload-Workflow nicht als eigener sichtbarer Hauptbereich benötigt wird. Dazu gehören insbesondere:
+## Bilddichte und Motion
 
-- Idee und Recherche
-- Szenenplanung
-- Thumbnail-Plan
-- Edit-Plan
-- Produktionsstatus
-- interne Video-Metadaten
+Für 10–12 Minuten werden standardmäßig rund 60 eigenständige Bildmomente geplant.
 
-`99-technik/status.json` ist die kanonische Statusdatei des Projekts. `99-technik/video.json` ist die kanonische interne Projektmetadatei. Diese Dateien werden nicht zusätzlich noch einmal im Projektwurzelverzeichnis gespiegelt.
+- kein einzelnes Bild minutenlang halten
+- neue Bilder müssen echte Story-/Erklärfortschritte darstellen, nicht nur kosmetische Varianten
+- Perspektive, Entfernung und Fokus variieren
+- jedes Bild im Edit dezent bewegen
+- Motion darf das Bild nicht hektisch machen
+- bei Diagramm-/Prozessbildern sind kürzere Wechsel sinnvoll
+- bei ruhigen Story-Momenten dürfen Bilder länger wirken
 
-## Noch nicht global festgelegt
+## Google Flow
 
-Folgende Werte werden **nicht erfunden**, solange der Nutzer sie nicht ausdrücklich festlegt:
+`00-bildprompts/99-alle-bildprompts.txt` ist die Masterdatei.
 
-- feste Wortzahl
-- feste Szenenzahl
-- feste Upload-Frequenz
-- feste Thumbnail-Formel
-- feste Untertitelposition
-- feste Sprecherstimme
-- feste Musikregel
+Flow arbeitet streng seriell:
 
-Die **Bildwelt ist jetzt global festgelegt** und gehört nicht mehr in diese offene Liste.
+```text
+aktuellen Prompt verwenden
+→ genau 1 Bild erzeugen
+→ vollständig warten
+→ gegen Szene + feste YouTube-Bildwelt prüfen
+→ exakt benennen
+→ ablegen
+→ erst dann nächstes Bild
+```
 
-## Sicherheit gegen neue Chats
+Keine Queue, kein Batch, keine Parallelgenerierung.
+
+## YouTube-Export
+
+`03-export/` ist der einzige finale Upload-Bereich.
+
+Vorgesehen:
+- `FERTIGES-VIDEO.mp4`
+- `THUMBNAIL.png`
+- `YOUTUBE-TITEL.txt`
+- `YOUTUBE-BESCHREIBUNG.txt`
+- `YOUTUBE-KAPITEL.txt`
+- `YOUTUBE-TAGS.txt`
+
+Es gibt für YouTube keine `UNIVERSELLE-CAPTION.txt`.
+
+## Sicherheit
 
 Neue Chats dürfen nicht:
+- ein Thema auswählen, ohne vorher `THEMEN_HISTORIE.md` zu prüfen
+- ein Reel-Thema für YouTube wiederholen, wenn dieselbe Kernfrage bereits verwendet wurde
+- die Reel-Bildwelt auf YouTube anwenden
+- ein Video unter 10 Minuten als neuen Standard planen
+- wenige lange Standbilder als ausreichende Bildplanung behandeln
+- Thumbnail oder finalen Titel vergessen
+- Assets, Renderstatus oder Tests als fertig melden, wenn sie nicht tatsächlich vorliegen
 
-- Reel-Regeln automatisch auf YouTube übertragen
-- die Reel-Bildwelt `modern-countryball-explainer` als YouTube-Standard verwenden
-- die feste YouTube-Bildwelt ohne ausdrückliche Nutzerentscheidung ersetzen
-- die vereinfachte sichtbare YouTube-Projektstruktur ohne ausdrückliche Nutzerentscheidung wieder auf viele Hauptordner aufteilen
-- `09-upload/` oder `10-output/` wieder als parallele aktive Bereiche einführen
-- eine `UNIVERSELLE-CAPTION.txt` für YouTube-Langvideos erzeugen
-- globale YouTube-Regeln aus einem einzelnen Projekt ableiten
-- Quellenstatus, Audio-, Bild- oder Renderstatus als fertig markieren, wenn die Stufe nicht tatsächlich erledigt wurde
-- fehlende Assets oder Tests erfinden
-
-Bei Unsicherheit zuerst `youtube/YOUTUBE_WORKFLOW.md`, danach `youtube/YOUTUBE_VISUAL_WORLD.md` und anschließend `99-technik/status.json` des jeweiligen Projekts lesen.
+Bei Unsicherheit zuerst `youtube/YOUTUBE_WORKFLOW.md`, danach `youtube/YOUTUBE_VISUAL_WORLD.md`, `THEMEN_HISTORIE.md` und anschließend `99-technik/status.json` des Projekts lesen.
