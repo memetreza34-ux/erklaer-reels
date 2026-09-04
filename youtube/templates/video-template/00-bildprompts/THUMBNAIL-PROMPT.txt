@@ -1,0 +1,16 @@
+# THUMBNAIL-PROMPT
+
+Finaler Titel:
+
+Thumbnail-Text:
+
+Prompt:
+Create a 16:9 YouTube thumbnail in the fixed youtube-editorial-stick-explainer world. Use one dominant focal subject, strong mobile-readable contrast, simple stick-figure-like humans only when useful, clean black outlines, warm slightly muted colors, clear foreground/background separation and a curiosity-driven composition. If text is used, keep it to 2–4 large words and integrate it exactly once. The thumbnail must complement the title rather than repeat it word for word. No photorealism, no 3D, no Pixar, no countryballs, no watermark, no busy infographic layout.
+
+QC:
+- 16:9
+- ein dominantes Motiv
+- maximal wenige große Elemente
+- 2–4 Wörter Thumbnail-Text, wenn überhaupt
+- auf Smartphone-Größe sofort verständlich
+- Titel + Thumbnail erzeugen zusammen eine klare Frage/Spannung
