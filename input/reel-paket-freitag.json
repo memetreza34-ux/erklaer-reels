@@ -1,374 +1,252 @@
 {
-  "title": "Warum riecht Regen so besonders?",
-  "topicArea": "Naturwissenschaft und Alltag",
-  "caption": "Warum riecht Regen, obwohl Wasser selbst kaum riecht?\n\nDer typische Duft nach einem Schauer heißt Petrichor. Dahinter steckt ein Zusammenspiel aus Stoffen im Boden, Pflanzenölen und Geosmin. Treffen Regentropfen auf trockenen, porösen Boden, können winzige Luftblasen entstehen. Beim Platzen schleudern sie feine Aerosole mit Duftstoffen in die Luft – bis zu unserer Nase. Besonders nach längerer Trockenheit fällt dieser erdige Geruch oft stark auf. Beim nächsten Sommerregen weißt du also: Du riechst nicht einfach Wasser, sondern einen kleinen chemisch-physikalischen Prozess direkt über dem Boden.\n\n#petrichor #regen #wissenschaft #natur #einfacherklärt",
+  "title": "Warum bekommen wir Gänsehaut?",
+  "topicArea": "Biologie und menschlicher Körper",
+  "caption": "Warum bekommen wir plötzlich Gänsehaut – bei Kälte, Angst oder sogar Musik?\n\nUnter jedem Haarfollikel können winzige Haarbalgmuskeln reagieren. Das sympathische Nervensystem steuert diesen Reflex automatisch und richtet die Härchen auf. Bei dicht behaarten Tieren kann das zusätzliche Luft im Fell festhalten oder den Körper bei Gefahr größer wirken lassen. Beim Menschen ist das Körperhaar viel dünner, der alte Reflex läuft aber weiter. Deshalb kann ein kalter Wind genauso Gänsehaut auslösen wie ein intensiver Song oder ein emotionaler Moment.\n\nWann bekommst du am häufigsten Gänsehaut?\n\n#gänsehaut #biologie #körper #wissenschaft #einfacherklärt",
   "sources": [
     {
-      "title": "Bear & Thomas — Nature of Argillaceous Odour",
-      "url": "https://www.nature.com/articles/201993a0",
-      "accessed": "2026-09-03",
+      "title": "StatPearls — Anatomy, Hair Follicle",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK470321/",
+      "accessed": "2026-09-04",
+      "type": "medizinische Fachquelle",
+      "supports": "Beschreibt den Musculus arrector pili am Haarfollikel und erklärt, dass sympathische Stimulation seine Kontraktion auslöst, wodurch sich Haare aufrichten und Gänsehaut entsteht."
+    },
+    {
+      "title": "Shwartz et al. — Cell Types Promoting Goosebumps Form a Niche to Regulate Hair Follicle Stem Cells",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32679029/",
+      "accessed": "2026-09-04",
       "type": "wissenschaftliche Originalstudie",
-      "supports": "Die Originalarbeit von 1964 beschreibt den charakteristischen Geruch nach dem Befeuchten trockener Böden und Gesteine und prägte dafür den Begriff Petrichor."
+      "supports": "Zeigt das Zusammenspiel von Haarfollikel, Haarbalgmuskel und sympathischem Nerv bei der Piloerektion sowie die Reaktion auf Kälte."
     },
     {
-      "title": "Joung & Buie — Aerosol generation by raindrop impact on soil",
-      "url": "https://www.nature.com/articles/ncomms7083",
-      "accessed": "2026-09-03",
+      "title": "Diverse stimuli induce piloerection and yield varied autonomic responses in humans",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11391818/",
+      "accessed": "2026-09-04",
       "type": "wissenschaftliche Originalstudie",
-      "supports": "Die Studie zeigt mit Hochgeschwindigkeitsaufnahmen, dass Regentropfen auf porösen Oberflächen Luftblasen und anschließend Aerosole erzeugen können, die Stoffe aus dem Boden in die Luft transportieren."
+      "supports": "Untersucht menschliche Gänsehaut bei thermischen, taktilen und audiovisuellen Reizen und zeigt, dass unterschiedliche Reize Piloerektion auslösen können."
     },
     {
-      "title": "CSIRO — The smell of rain: how our scientists invented a new word",
-      "url": "https://www.csiro.au/en/news/All/Articles/2015/March/the-smell-of-rain-how-our-scientists-invented-a-new-word",
-      "accessed": "2026-09-03",
-      "type": "offizielle Forschungs- und Fachquelle",
-      "supports": "CSIRO erklärt die Herkunft des Begriffs Petrichor sowie die Rolle von in Boden und Gestein gespeicherten pflanzlichen Ölen, die bei Feuchtigkeit wieder freigesetzt werden."
-    },
-    {
-      "title": "NDR — Darum riecht Sommerregen",
-      "url": "https://www.ndr.de/n-joy/leben/Darum-riecht-Sommerregen%2Cregenimsommer100.html",
-      "accessed": "2026-09-03",
-      "type": "unabhängige Fach-/Sekundärquelle",
-      "supports": "Die Fachredaktion erklärt die Beteiligung von Geosmin aus Bodenmikroorganismen sowie das Zusammenspiel mit Pflanzenstoffen beim typischen erdigen Regengeruch."
+      "title": "The physiological study of emotional piloerection: A systematic review and guide for future research",
+      "url": "https://doi.org/10.1016/j.ijpsycho.2022.06.010",
+      "accessed": "2026-09-04",
+      "type": "wissenschaftliche Übersichtsarbeit",
+      "supports": "Fasst emotionale Piloerektion zusammen und beschreibt Funktionen der Piloerektion bei anderen Säugetieren, darunter Isolation und ein größeres Erscheinungsbild bei Bedrohung."
     }
   ],
   "scenes": [
     {
-      "narration": "Warum riecht Regen so stark, obwohl Wasser selbst kaum riecht? Der typische Duft kommt nämlich nicht aus den Wolken.",
-      "imageText": "WARUM RIECHT REGEN?",
-      "visualIdea": "Ein erster Regentropfen fällt auf staubtrockenen Boden, während eine neutrale runde Kugelfigur den aufsteigenden Duft überrascht wahrnimmt; sofort sichtbarer Kontrast zwischen Wasser und Geruch.",
-      "continuityNotes": "Start in einer warmen, trockenen Außenumgebung. Objekt- und Prozessdarstellung stehen im Vordergrund; dieselbe kleine neutrale Kugelfigur wird nur dort genutzt, wo die menschliche Wahrnehmung erklärt wird.",
-      "audioCue": "Warum riecht Regen",
-      "durationSeconds": 5.8,
-      "cameraMotion": {
-        "type": "subtle-push-in"
-      },
+      "narration": "Warum bekommst du bei Kälte, Musik oder einem gruseligen Moment plötzlich Gänsehaut? Dahinter steckt ein uralter Körperreflex.",
+      "imageText": "WARUM GÄNSEHAUT?",
+      "visualIdea": "Eine Figur reagiert sichtbar auf Kälte; im Vordergrund entstehen an einem Arm Gänsehaut und aufgerichtete Härchen. Musik- und Spannungsmoment werden nur als kleine Kontextreize angedeutet.",
+      "continuityNotes": "Dynamischer Hook mit klarer Ursache-Reaktion. Kein Poster, kein isoliertes Symbol. Kalte Außenwelt, tiefe Staffelung und starke Nahaufnahme.",
+      "audioCue": "Warum bekommst du",
+      "durationSeconds": 5.5,
+      "cameraMotion": {"type": "subtle-push-in"},
       "soundEffects": [],
       "images": [
         {
-          "prompt": "Create a vertical 9:16 educational explainer illustration in the fixed Modern Countryball Explainer world. Show a dramatic first raindrop falling toward visibly dry, cracked soil in a warm outdoor setting. A small neutral round ball character stands off-center in the midground and reacts with curious surprise as a subtle illustrated scent trail begins to rise from the ground. Use a low macro-like angle, strong foreground soil texture, simple background depth, thick confident black outlines, vivid but controlled colors and clear directional lighting. The scene must feel like a real moment, not a poster card. Integrate exactly the German headline \"WARUM RIECHT REGEN?\" once without covering the action. No other readable text.",
-          "imageText": "WARUM RIECHT REGEN?",
-          "audioCue": "Warum riecht Regen"
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer scene. In a cold evening street, show a small neutral round character off-center reacting with surprise while holding up one forearm. In the foreground, make visible goosebumps and tiny hairs rising on the stylized arm. Add subtle contextual hints of an emotional trigger in the environment, such as a distant music-wave glow and a dark suspenseful silhouette, but keep the cold air as the main trigger. Use foreground-midground-background depth, crisp thick black outlines, controlled vivid colors, directional blue evening light, dynamic low three-quarter framing, and clear cause-and-effect. This must feel like a cinematic mini-scene, never an infographic or poster card. Integrate exactly the German headline \"WARUM GÄNSEHAUT?\" once, readable but not covering the action. No other readable text.",
+          "imageText": "WARUM GÄNSEHAUT?",
+          "audioCue": "Warum bekommst du"
         }
       ]
     },
     {
-      "narration": "Dieser Geruch heißt Petrichor. Nach warmen, trockenen Tagen liegen auf Boden, Steinen und Pflanzen verschiedene geruchsaktive Stoffe bereit.",
-      "imageText": "PETRICHOR",
-      "visualIdea": "Die trockene Umgebung wird als Quelle gezeigt: Boden, Stein und Pflanzenmaterial tragen unsichtbare bzw. dezent visualisierte Duftstoffe, bevor der Regen einsetzt.",
-      "continuityNotes": "Gleiche warme Außenwelt, aber breiterer Blick auf Boden, Stein und Pflanze. Keine schwebenden Infokarten; Stoffe werden direkt an realen Oberflächen visualisiert.",
-      "audioCue": "Dieser Geruch heißt",
-      "durationSeconds": 6.2,
-      "cameraMotion": {
-        "type": "pan-right"
-      },
-      "soundEffects": [
-        {
-          "type": "soft-swipe",
-          "atPercent": 0.02,
-          "volume": 0.22,
-          "visualEvent": "Harter Cut vom ersten Tropfen zur trockenen Umgebung vor dem Regen",
-          "reason": "Markiert den Themenwechsel vom Rätsel zur Bezeichnung Petrichor."
-        },
-        {
-          "type": "click",
-          "targetId": "scene-02-image-02",
-          "audioCue": "trockenen Tagen",
-          "volume": 0.2,
-          "visualEvent": "Nahaufnahme zeigt die gespeicherten Stoffe direkt an Boden, Stein und Pflanzenmaterial",
-          "reason": "Betont den zweiten visuellen Informationsschritt über die Quellen des Geruchs."
-        }
-      ],
-      "images": [
-        {
-          "prompt": "Create a vertical 9:16 Modern Countryball Explainer illustration. Show a dry summer ground scene with porous soil, one exposed stone and a small plant in the same frame, all under warm dry light before rain. The composition should be environmental and story-first, with foreground soil, midground rock and plant, and a simple distant background. Use thick black outlines, controlled vivid colors and subtle depth. Integrate exactly the German word \"PETRICHOR\" once as a concise label that supports the scene rather than dominating it. No other readable text.",
-          "imageText": "PETRICHOR",
-          "audioCue": "Dieser Geruch heißt"
-        },
-        {
-          "prompt": "Create a vertical 9:16 Modern Countryball Explainer illustration. Cut to a closer object-detail view of the same dry soil, stone surface and plant material. Show tiny stylized aromatic particles or a thin oily film clinging directly to these surfaces, visually embedded in the environment rather than floating in UI cards. Use a diagonal composition and shallow visual depth so the surfaces feel tangible. No readable text anywhere.",
-          "imageText": "",
-          "audioCue": "trockenen Tagen"
-        }
-      ]
-    },
-    {
-      "narration": "Dazu gehören Pflanzenöle, die während trockener Phasen an Oberflächen haften und von Boden und Gestein aufgenommen werden.",
-      "imageText": "",
-      "visualIdea": "Pflanzen geben während der Trockenphase Stoffe an ihre Umgebung ab; der zweite Bildmoment zeigt, wie ein dünner Ölfilm an porösem Boden und Gestein haftet.",
-      "continuityNotes": "Makro- und Objektperspektive statt Figuren. Farbwelt bleibt warm und trocken; der Prozess wird räumlich und physisch gezeigt.",
-      "audioCue": "Dazu gehören Pflanzenöle",
-      "durationSeconds": 6.1,
-      "cameraMotion": {
-        "type": "ken-burns"
-      },
-      "soundEffects": [
-        {
-          "type": "whoosh-up",
-          "atPercent": 0.02,
-          "volume": 0.22,
-          "visualEvent": "Cut zur Nahaufnahme der Pflanze als eine Quelle der gespeicherten Stoffe",
-          "reason": "Leitet den konkreten chemischen Bestandteil der Erklärung ein."
-        },
-        {
-          "type": "paper",
-          "targetId": "scene-03-image-02",
-          "audioCue": "Boden und Gestein",
-          "volume": 0.2,
-          "visualEvent": "Der dünne Pflanzenölfilm wird auf porösen Boden- und Steinoberflächen sichtbar",
-          "reason": "Ein weicher texturaler Effekt unterstützt den sichtbaren Wechsel zu den aufnehmenden Oberflächen."
-        }
-      ],
-      "images": [
-        {
-          "prompt": "Create a vertical 9:16 Modern Countryball Explainer illustration focused on a small plant during a dry warm period. Show leaves and nearby soil under dry sunlight, with a very subtle stylized oily sheen or aromatic trace moving from plant material toward the surrounding surfaces. Keep the effect physical and grounded, not magical and not an infographic. Use a close three-quarter angle, strong foreground leaf edge, midground soil and simple depth. No readable text anywhere.",
-          "imageText": "",
-          "audioCue": "Dazu gehören Pflanzenöle"
-        },
-        {
-          "prompt": "Create a vertical 9:16 Modern Countryball Explainer macro illustration of porous dry soil and a rough stone absorbing and holding a thin stylized oily film from nearby plant material. Make the pores and surface texture simple but clearly visible, using thick outlines and controlled warm colors. Show the film following the contours of the surfaces rather than floating above them. Integrate exactly the German text \"PFLANZENÖLE\" once, small and supportive. No other readable text.",
-          "imageText": "PFLANZENÖLE",
-          "audioCue": "Boden und Gestein"
-        }
-      ]
-    },
-    {
-      "narration": "Im Boden entsteht außerdem Geosmin. Dieser erdige Duftstoff wird von Mikroorganismen gebildet und fällt unserer Nase schon in kleinen Mengen auf.",
-      "imageText": "GEOSMIN",
-      "visualIdea": "Ein stilisierter Bodenquerschnitt zeigt Mikroorganismen als Quelle von Geosmin; danach steigt ein kleiner Anteil des Stoffes aus dem Bodenbereich auf.",
-      "continuityNotes": "Wechsel in einfachen Bodenquerschnitt mit derselben 2D-Formsprache. Keine wissenschaftliche Blueprint-Optik, sondern klare organische Mini-Szene.",
-      "audioCue": "Im Boden entsteht",
-      "durationSeconds": 6.5,
-      "cameraMotion": {
-        "type": "slow-zoom-in"
-      },
-      "soundEffects": [
-        {
-          "type": "soft-whoosh",
-          "atPercent": 0.02,
-          "volume": 0.22,
-          "visualEvent": "Cut von Pflanzenölen in einen einfachen Bodenquerschnitt",
-          "reason": "Markiert den Wechsel zum zweiten wichtigen Duftstoff Geosmin."
-        },
-        {
-          "type": "pop",
-          "targetId": "scene-04-image-02",
-          "audioCue": "erdige Duftstoff",
-          "volume": 0.22,
-          "visualEvent": "Geosmin-Partikel werden als konkreter Duftstoff im Bodenbereich sichtbar",
-          "reason": "Akzentuiert die neue Substanz im zweiten Bildmoment."
-        }
-      ],
-      "images": [
-        {
-          "prompt": "Create a vertical 9:16 Modern Countryball Explainer illustration with a simple cutaway of dark soil, roots and a few stylized microscopic soil organisms embedded naturally between soil particles. Avoid a technical blueprint or laboratory poster. Use rounded organic shapes, thick outlines, clear layers and gentle depth. Show a few small aromatic particles forming near the microorganisms. Integrate exactly the German word \"GEOSMIN\" once in a concise position. No other readable text.",
-          "imageText": "GEOSMIN",
-          "audioCue": "Im Boden entsteht"
-        },
-        {
-          "prompt": "Create a vertical 9:16 Modern Countryball Explainer close-up of the same soil cross-section. Focus on a small cluster of stylized geosmin particles moving from the microbial soil zone toward tiny air spaces between soil grains. Use an off-center macro composition with clear cause-and-effect and no floating cards. No readable text anywhere.",
-          "imageText": "",
-          "audioCue": "erdige Duftstoff"
-        }
-      ]
-    },
-    {
-      "narration": "Dann trifft ein Regentropfen auf trockenen, porösen Boden. Dabei können winzige Luftblasen direkt unter dem Tropfen eingeschlossen werden.",
-      "imageText": "",
-      "visualIdea": "Ein Regentropfen schlägt in Makroansicht auf porösen Boden; der zweite Moment zeigt unter der Tropfenoberfläche eingeschlossene winzige Luftblasen.",
-      "continuityNotes": "Dynamischer Makroprozess mit klarer Bewegungsrichtung von oben nach unten. Objekt statt Figur; hohe visuelle Verständlichkeit.",
-      "audioCue": "Dann trifft ein",
-      "durationSeconds": 6.2,
-      "cameraMotion": {
-        "type": "pan-left"
-      },
-      "soundEffects": [
-        {
-          "type": "water-drop",
-          "atPercent": 0.02,
-          "volume": 0.2,
-          "visualEvent": "Der erste Regentropfen trifft sichtbar auf den trockenen Boden",
-          "reason": "Inhaltlich passender Objekt-Sound ersetzt einen generischen Übergangs-Whoosh."
-        },
-        {
-          "type": "pop",
-          "targetId": "scene-05-image-02",
-          "audioCue": "winzige Luftblasen",
-          "volume": 0.22,
-          "visualEvent": "Unter dem aufgeschlagenen Tropfen werden kleine eingeschlossene Luftblasen sichtbar",
-          "reason": "Markiert das entscheidende physikalische Detail im zweiten Bildmoment."
-        }
-      ],
-      "images": [
-        {
-          "prompt": "Create a vertical 9:16 Modern Countryball Explainer macro action scene of one raindrop hitting dry porous soil. Freeze the instant of impact with the droplet spreading outward over rough soil grains, small splash edges and visible pores. Use a dramatic low macro angle, thick outlines, crisp controlled blues against warm earth colors and strong directional action. No readable text anywhere.",
-          "imageText": "",
-          "audioCue": "Dann trifft ein"
-        },
-        {
-          "prompt": "Create a vertical 9:16 Modern Countryball Explainer extreme close-up immediately after raindrop impact. Show the thin water layer sitting over porous soil while several tiny round air bubbles are visibly trapped just beneath the droplet surface between soil pores. Keep the physics simple and clear, with one dominant bubble cluster and no infographic panels. Integrate exactly the German text \"LUFTBLASEN\" once. No other readable text.",
-          "imageText": "LUFTBLASEN",
-          "audioCue": "winzige Luftblasen"
-        }
-      ]
-    },
-    {
-      "narration": "Die Bläschen steigen auf und platzen. So schleudern sie winzige Tröpfchen mit Duftstoffen als Aerosole in die Luft.",
-      "imageText": "",
-      "visualIdea": "Die eingeschlossenen Luftblasen steigen in der dünnen Wasserschicht nach oben; beim Platzen schießen mikroskopische Tröpfchen mit Duftstoffen in die Luft.",
-      "continuityNotes": "Direkte Fortsetzung von Szene 5. Bewegungsrichtung jetzt von unten nach oben; stärkerer visueller Aha-Moment.",
-      "audioCue": "Die Bläschen steigen",
+      "narration": "Unter deiner Haut sitzen winzige Haarbalgmuskeln. Sie sind mit Haarfollikeln verbunden und können einzelne Härchen aufrichten.",
+      "imageText": "WINZIGE MUSKELN",
+      "visualIdea": "Makro-Schnitt durch Haut und Haarfollikel zeigt den winzigen Haarbalgmuskel; danach wird sichtbar, wie er direkt am Haarfollikel sitzt.",
+      "continuityNotes": "Anatomie als anschauliche Mini-Szene mit räumlicher Tiefe, nicht als medizinische Posterkarte.",
+      "audioCue": "Unter deiner Haut",
       "durationSeconds": 6.0,
-      "cameraMotion": {
-        "type": "subtle-pull-out"
-      },
+      "cameraMotion": {"type": "slow-zoom-in"},
       "soundEffects": [
-        {
-          "type": "whoosh-up",
-          "atPercent": 0.02,
-          "volume": 0.22,
-          "visualEvent": "Cut zur aufsteigenden Luftblase unmittelbar nach dem Tropfenaufprall",
-          "reason": "Die aufwärts gerichtete Transition unterstützt die sichtbare Bewegungsrichtung."
-        },
-        {
-          "type": "swoosh-reveal",
-          "targetId": "scene-06-image-02",
-          "audioCue": "als Aerosole",
-          "volume": 0.24,
-          "visualEvent": "Die Blase platzt und ein feiner Aerosolnebel wird über dem Boden sichtbar",
-          "reason": "Dies ist der zentrale Aha-Moment des Reels und bekommt den einmaligen Reveal-Sound."
-        }
+        {"type":"soft-whoosh","atPercent":0.02,"volume":0.22,"visualEvent":"Harter Cut von der kalten Außenwelt in eine Makroansicht unter die Haut.","reason":"Leitet von der Beobachtung zur körperlichen Ursache über."},
+        {"type":"click","targetId":"scene-02-image-02","audioCue":"Haarfollikeln verbunden","volume":0.2,"visualEvent":"Der zweite Makromoment zeigt die direkte Verbindung zwischen Muskel und Haarfollikel.","reason":"Betont die mechanische Verbindung."}
       ],
       "images": [
         {
-          "prompt": "Create a vertical 9:16 Modern Countryball Explainer macro illustration continuing the previous soil-and-water scene. Show one trapped air bubble rising upward through the shallow water film above porous soil, with a clear vertical motion path and smaller bubbles behind it. Use strong depth, an off-center bubble and a clean physical sequence rather than diagram arrows. No readable text anywhere.",
-          "imageText": "",
-          "audioCue": "Die Bläschen steigen"
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer macro cutaway scene of stylized human skin. Show one hair follicle descending into the skin and a tiny arrector pili muscle attached diagonally to it. Make the structures physically connected and easy to understand, with rounded organic shapes, foreground skin texture, mid-layer follicle and deeper tissue for depth. Use thick confident black outlines, clean medical-explainer clarity without looking like a textbook poster, and controlled warm skin tones. Integrate exactly the German text \"WINZIGE MUSKELN\" once as a small supportive label. No other readable text.",
+          "imageText": "WINZIGE MUSKELN",
+          "audioCue": "Unter deiner Haut"
         },
         {
-          "prompt": "Create a vertical 9:16 Modern Countryball Explainer extreme macro action scene of the bubble bursting at the water surface. Show a tiny crown-like break and many microscopic droplets launching upward into the air as a fine aerosol plume, carrying a few stylized aromatic particles. Keep the plume visually elegant and easy to read, not explosive. Integrate exactly the German word \"AEROSOLE\" once. No other readable text.",
-          "imageText": "AEROSOLE",
-          "audioCue": "als Aerosole"
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer close macro scene of the same hair follicle from a slightly different side angle. Focus on the tiny smooth muscle bundle physically anchored between the follicle and upper skin layer. Show the muscle under slight tension while the hair remains mostly flat, preparing the next action. Use shallow depth, strong contour lines and no diagram boxes, arrows or readable text anywhere.",
+          "imageText": "",
+          "audioCue": "Haarfollikeln verbunden"
         }
       ]
     },
     {
-      "narration": "Mit der Luft gelangen Geosmin und andere Bestandteile zu deiner Nase. Deshalb riecht plötzlich die ganze Umgebung nach feuchter Erde.",
-      "imageText": "",
-      "visualIdea": "Der Aerosolnebel wird vom Luftstrom vom Boden weggetragen; im zweiten Bild erreicht er die Nase derselben neutralen Kugelfigur aus der Hook.",
-      "continuityNotes": "Rückkehr zur menschlichen Wahrnehmung. Dieselbe kleine neutrale Kugelfigur wie in Bild 01; Prozess bleibt visuell im Vordergrund.",
-      "audioCue": "Mit der Luft",
-      "durationSeconds": 6.3,
-      "cameraMotion": {
-        "type": "pan-right"
-      },
+      "narration": "Gesteuert wird das automatisch vom sympathischen Nervensystem. Kälte, Angst, Aufregung oder starke Emotionen können den Reflex auslösen.",
+      "imageText": "AUTOMATISCHE REAKTION",
+      "visualIdea": "Ein autonomes Nervensignal erreicht den Haarbalgmuskel; der zweite Bildmoment verbindet Kälte, Angst und Musik als reale Situationen mit derselben automatischen Reaktion.",
+      "continuityNotes": "Gleiche anatomische Formsprache. Nervensignal wird als dezenter Lichtimpuls im Gewebe gezeigt, nicht als UI-Linie.",
+      "audioCue": "Gesteuert wird das",
+      "durationSeconds": 6.5,
+      "cameraMotion": {"type": "gentle-pan"},
       "soundEffects": [
-        {
-          "type": "soft-swipe",
-          "atPercent": 0.02,
-          "volume": 0.2,
-          "visualEvent": "Cut vom Aerosol-Makro zu einem seitlichen Luftstrom über dem Boden",
-          "reason": "Neutraler Übergang vom Entstehen zum Transport der Duftstoffe."
-        },
-        {
-          "type": "click",
-          "targetId": "scene-07-image-02",
-          "audioCue": "zu deiner Nase",
-          "volume": 0.2,
-          "visualEvent": "Der Duftstrom erreicht sichtbar die Nase der neutralen Kugelfigur",
-          "reason": "Betont den Moment, in dem der physikalische Prozess zur Wahrnehmung wird."
-        }
+        {"type":"soft-swipe","atPercent":0.02,"volume":0.22,"visualEvent":"Cut vom Haarbalgmuskel zu seiner nervlichen Steuerung.","reason":"Markiert den Wechsel von Anatomie zu Steuerung."},
+        {"type":"tick","targetId":"scene-03-image-02","audioCue":"starke Emotionen","volume":0.2,"visualEvent":"Wechsel vom Nervensignal zu mehreren konkreten Auslösern in einer zusammenhängenden Szene.","reason":"Akzentuiert, dass verschiedene Reize denselben Reflex auslösen können."}
       ],
       "images": [
         {
-          "prompt": "Create a vertical 9:16 Modern Countryball Explainer wide-to-medium environmental shot. Show the fine aerosol plume leaving damp soil and being carried sideways by a gentle air current through the warm outdoor scene. Use visible directional flow through the particle trail, foreground wet soil and a simple midground landscape. No readable text anywhere.",
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer skin cutaway scene. Show a subtle sympathetic nerve fiber approaching the tiny arrector pili muscle beside a hair follicle, with one small moving neural pulse traveling along the nerve toward the muscle. Keep the anatomy embedded in layered skin, with depth and tactile shapes rather than floating labels. Use a diagonal composition, strong outlines and controlled contrast. No readable text anywhere.",
           "imageText": "",
-          "audioCue": "Mit der Luft"
+          "audioCue": "Gesteuert wird das"
         },
         {
-          "prompt": "Create a vertical 9:16 Modern Countryball Explainer medium close shot of the same neutral round ball character from the opening scene. The character stands near the damp ground while the subtle aerosol-and-scent trail reaches its face, clearly connecting soil to smell. Use expressive eyes, simple clean depth and a side angle so the flow direction remains obvious. Integrate exactly the German text \"ZUR NASE\" once. No other readable text.",
-          "imageText": "ZUR NASE",
-          "audioCue": "zu deiner Nase"
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer environmental scene with the same neutral round character shown in one coherent sequence-like composition: cold wind on one side, a sudden spooky shadow in the midground, and music from headphones as another contextual trigger. The character's arm shows the same goosebump reaction. Keep it cinematic and scene-based, not a three-panel infographic. Use depth, directional lighting and varied scale. Integrate exactly the German text \"AUTOMATISCHE REAKTION\" once, small and supportive. No other readable text.",
+          "imageText": "AUTOMATISCHE REAKTION",
+          "audioCue": "starke Emotionen"
         }
       ]
     },
     {
-      "narration": "Warum fällt der Geruch nach längerer Trockenheit oft stärker auf? Weil sich Stoffe ansammeln und die ersten Tropfen sie freisetzen.",
-      "imageText": "NACH TROCKENHEIT",
-      "visualIdea": "Eine visuelle Vorher-Nachher-Situation zeigt lange trockene Oberfläche mit angesammelten Stoffen und danach die ersten Tropfen, die einen deutlich sichtbaren Duftnebel freisetzen.",
-      "continuityNotes": "Prüffrage als konkrete Vergleichsszene, keine Textkarte. Die Trockenphase und der erste Regen werden räumlich nacheinander erzählt.",
-      "audioCue": "Warum fällt der",
-      "durationSeconds": 6.2,
-      "cameraMotion": {
-        "type": "slow-zoom-in"
-      },
+      "narration": "Zieht sich so ein Muskel zusammen, richtet sich das Haar auf. Gleichzeitig hebt sich die Haut am Haarfollikel leicht an: Gänsehaut entsteht.",
+      "imageText": "HAARE RICHTEN SICH AUF",
+      "visualIdea": "Der Muskel zieht sich sichtbar zusammen und kippt das Haar auf; anschließend hebt sich die Haut rund um den Follikel.",
+      "continuityNotes": "Makro-Cause-and-effect mit deutlicher Bewegung. Zweites Bild näher und textfrei.",
+      "audioCue": "Zieht sich so",
+      "durationSeconds": 6.5,
+      "cameraMotion": {"type": "subtle-push-in"},
       "soundEffects": [
-        {
-          "type": "whoosh-down",
-          "atPercent": 0.02,
-          "volume": 0.22,
-          "visualEvent": "Cut zur ruhigen Prüf- und Vergleichsszene nach längerer Trockenheit",
-          "reason": "Senkt nach dem Aha-Moment das Tempo und leitet die Einordnung ein."
-        },
-        {
-          "type": "water-drop",
-          "targetId": "scene-08-image-02",
-          "audioCue": "Weil sich Stoffe",
-          "volume": 0.2,
-          "visualEvent": "Die ersten Tropfen treffen die zuvor trockene Oberfläche und setzen einen stärkeren Duftnebel frei",
-          "reason": "Inhaltlich passender Sound verbindet Trockenphase und sichtbare Freisetzung."
-        }
+        {"type":"whoosh-up","atPercent":0.02,"volume":0.22,"visualEvent":"Cut zur mechanischen Aktion des Muskels.","reason":"Eröffnet den zentralen Entstehungsprozess."},
+        {"type":"pop","targetId":"scene-04-image-02","audioCue":"Gleichzeitig hebt","volume":0.2,"visualEvent":"Extreme Nahaufnahme zeigt die kleine Hauterhebung am Haarfollikel.","reason":"Der Pop unterstützt den sichtbaren Gänsehaut-Moment."}
       ],
       "images": [
         {
-          "prompt": "Create a vertical 9:16 Modern Countryball Explainer scene showing a long dry spell through one sun-baked patch of soil, rough stone and dry plant material, with a visibly accumulated but subtle aromatic film on surfaces. Use a slightly elevated angle and warm dry light. Integrate exactly the German text \"NACH TROCKENHEIT\" once. No other readable text.",
-          "imageText": "NACH TROCKENHEIT",
-          "audioCue": "Warum fällt der"
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer macro action scene inside stylized skin. Show the arrector pili muscle visibly contracting and pulling on the hair follicle so the hair tilts from nearly flat to upright. Use a strong diagonal action line, slight motion indication, clear layered skin depth and crisp black outlines. Integrate exactly the German text \"HAARE RICHTEN SICH AUF\" once without blocking the mechanism. No other readable text.",
+          "imageText": "HAARE RICHTEN SICH AUF",
+          "audioCue": "Zieht sich so"
         },
         {
-          "prompt": "Create a vertical 9:16 Modern Countryball Explainer action scene of the very first raindrops striking that same previously dry surface. Show several small impact points releasing a noticeably richer but still elegant fine aerosol-and-scent plume upward. Use a wider composition than the earlier macro shot to communicate the whole patch activating at once. No readable text anywhere.",
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer extreme close-up of the skin surface immediately after the contraction. Show a single hair standing upright and a small rounded bump forming around the follicle, then several nearby bumps visible into the background. Use side lighting to make the raised skin readable, shallow perspective depth and no readable text anywhere.",
           "imageText": "",
-          "audioCue": "Weil sich Stoffe"
+          "audioCue": "Gleichzeitig hebt"
         }
       ]
     },
     {
-      "narration": "Beim nächsten Schauer riechst du also nicht einfach Regen. Du riechst, wie Wasser Stoffe aus Boden und Umgebung in die Luft bringt.",
-      "imageText": "DU RIECHST DEN BODEN",
-      "visualIdea": "Abschluss: Die Kugelfigur steht nach dem Schauer in einer frischen Umgebung; ein klarer visueller Pfad verbindet nassen Boden, feine Duftpartikel und die Wahrnehmung.",
-      "continuityNotes": "Ruhiger, befriedigender Abschluss ohne Endkarte. Das letzte Bild bleibt aktiv und natürlich; später nur 0,6 Sekunden visueller Hold nach dem letzten Wort.",
-      "audioCue": "Beim nächsten Schauer",
-      "durationSeconds": 6.7,
-      "cameraMotion": {
-        "type": "subtle-pull-out"
-      },
+      "narration": "Bei Tieren mit dichtem Fell ist das nützlich: Aufgerichtete Haare können mehr Luft festhalten und dadurch bei Kälte isolieren.",
+      "imageText": "LUFT HÄLT WARM",
+      "visualIdea": "Ein dicht behaartes Tier steht in kalter Umgebung; danach wird im Fell sichtbar, wie aufgerichtete Haare eine ruhende Luftschicht festhalten.",
+      "continuityNotes": "Tierbeispiel als echte Winterszene. Keine Vorher-Nachher-Karte; Perspektivwechsel übernimmt die Erklärung.",
+      "audioCue": "Bei Tieren mit",
+      "durationSeconds": 6.5,
+      "cameraMotion": {"type": "subtle-pull-out"},
       "soundEffects": [
-        {
-          "type": "soft-whoosh",
-          "atPercent": 0.02,
-          "volume": 0.22,
-          "visualEvent": "Cut von der Prüfantwort zum zusammenfassenden Regenschauer",
-          "reason": "Führt in die abschließende Gesamtsicht des Prozesses."
-        },
-        {
-          "type": "click",
-          "targetId": "scene-09-image-02",
-          "audioCue": "nicht einfach Regen",
-          "volume": 0.2,
-          "visualEvent": "Der finale Blick verbindet nassen Boden, Duftpartikel und die Wahrnehmung ohne zusätzliche Erklärungselemente",
-          "reason": "Setzt den letzten Informationsakzent vor dem kurzen Schluss-Hold."
-        }
+        {"type":"whoosh-down","atPercent":0.02,"volume":0.22,"visualEvent":"Cut von menschlicher Haut zu einem dicht behaarten Tier im Winter.","reason":"Markiert den evolutionären Funktionsvergleich."},
+        {"type":"click","targetId":"scene-05-image-02","audioCue":"mehr Luft","volume":0.2,"visualEvent":"Nahaufnahme fährt ins aufgerichtete Fell und zeigt die eingeschlossene Luftschicht.","reason":"Betont den Isolationsmechanismus."}
       ],
       "images": [
         {
-          "prompt": "Create a vertical 9:16 Modern Countryball Explainer medium-wide final scene after a fresh shower. Show the same neutral round ball character standing beside darkened wet soil and a few rain-damp plants, while a subtle scent trail rises naturally from the ground toward the character. The atmosphere feels fresh and clear, with soft post-rain light and visible depth. Integrate exactly the German text \"DU RIECHST DEN BODEN\" once, supportive rather than poster-like. No other readable text.",
-          "imageText": "DU RIECHST DEN BODEN",
-          "audioCue": "Beim nächsten Schauer"
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer winter scene of a small furry mammal standing in cold wind and light snow. Its dense coat visibly fluffs upward while its body remains warm. Place snow-covered ground in the foreground, the animal in the midground and a simple cold landscape behind it. Use thick outlines, clear fur volume, strong cold-to-warm contrast and no readable text anywhere.",
+          "imageText": "",
+          "audioCue": "Bei Tieren mit"
         },
         {
-          "prompt": "Create a vertical 9:16 Modern Countryball Explainer final wide shot that visually completes the mechanism: wet soil in the foreground, a few tiny aerosol droplets rising, the same neutral round ball character in the midground noticing the scent, and a simple freshly rained-on landscape behind. Use a calm subtle pull-back feeling, balanced depth and no end-card design. The scene must remain alive and natural for the final 0.6-second hold. No readable text anywhere.",
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer macro view moving into the same animal's raised fur. Show many hairs standing apart and a subtle calm layer of trapped air between them, represented by soft translucent pockets that remain physically inside the coat rather than floating as icons. Keep the skin below slightly warmer than the cold exterior. Integrate exactly the German text \"LUFT HÄLT WARM\" once. No other readable text.",
+          "imageText": "LUFT HÄLT WARM",
+          "audioCue": "mehr Luft"
+        }
+      ]
+    },
+    {
+      "narration": "Bei Gefahr kann aufgestelltes Fell außerdem größer und bedrohlicher wirken – wie bei einer Katze, die sich aufplustert.",
+      "imageText": "GRÖSSER WIRKEN",
+      "visualIdea": "Eine erschrockene Katze plustert ihr Fell auf und wirkt im Raum sofort größer; danach Seitenansicht des aufgestellten Fells bei einer Bedrohung.",
+      "continuityNotes": "Dramatische, aber sachliche Tier-Szene. Kein aggressiver Horrorlook.",
+      "audioCue": "Bei Gefahr kann",
+      "durationSeconds": 6.0,
+      "cameraMotion": {"type": "gentle-pan"},
+      "soundEffects": [
+        {"type":"soft-whoosh","atPercent":0.02,"volume":0.22,"visualEvent":"Cut vom Kälteschutz zu einer Bedrohungssituation bei einem Tier.","reason":"Markiert die zweite Funktion von Piloerektion bei Tieren."},
+        {"type":"tick","targetId":"scene-06-image-02","audioCue":"Katze","volume":0.2,"visualEvent":"Seitenansicht macht den vergrößerten Körperumriss durch aufgerichtetes Fell klar.","reason":"Unterstützt den Perspektivwechsel."}
+      ],
+      "images": [
+        {
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer scene of a startled cat in a dim but non-scary room, arching its back as its fur and tail visibly puff up while facing a distant larger silhouette near a doorway. Use low three-quarter perspective, foreground floor objects, cat in the midground and threat silhouette in the background. The cat's expanded outline should be immediately obvious. Integrate exactly the German text \"GRÖSSER WIRKEN\" once. No other readable text.",
+          "imageText": "GRÖSSER WIRKEN",
+          "audioCue": "Bei Gefahr kann"
+        },
+        {
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer side-angle close scene of the same cat with individual fur tufts standing outward along the back and tail, increasing its apparent outline against the background. Keep the distant threat out of focus and emphasize body silhouette, spatial depth and reaction. No readable text anywhere.",
           "imageText": "",
-          "audioCue": "nicht einfach Regen"
+          "audioCue": "Katze"
+        }
+      ]
+    },
+    {
+      "narration": "Beim Menschen läuft derselbe Reflex weiter, obwohl unser Körperfell viel dünner ist. Deshalb ist der ursprüngliche Effekt heute deutlich kleiner.",
+      "imageText": "ALTER REFLEX",
+      "visualIdea": "Vom dicht behaarten Säugetier geht es zurück zum modernen Menschen mit wenig Körperhaar; im zweiten Moment bleibt trotzdem Gänsehaut am Arm sichtbar.",
+      "continuityNotes": "Evolutionäre Kontinuität über Bildübergang, nicht als Stammbaum-Poster.",
+      "audioCue": "Beim Menschen läuft",
+      "durationSeconds": 6.5,
+      "cameraMotion": {"type": "subtle-push-in"},
+      "soundEffects": [
+        {"type":"soft-swipe","atPercent":0.02,"volume":0.22,"visualEvent":"Cut von der aufgestellten Tierbehaarung zurück zum Menschen.","reason":"Leitet zur heutigen menschlichen Reaktion über."},
+        {"type":"pop","targetId":"scene-07-image-02","audioCue":"Körperfell viel dünner","volume":0.2,"visualEvent":"Der moderne Arm zeigt trotz dünner Behaarung klar sichtbare Gänsehaut.","reason":"Akzentuiert den erhaltenen Reflex."}
+      ],
+      "images": [
+        {
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer transition scene showing a furry mammal in the foreground and a modern neutral round human-like character farther along the same cold landscape path, visually connecting the shared mammalian reflex without using a timeline or evolutionary chart. Emphasize the contrast between dense fur and sparse arm hair through scale and perspective. No readable text anywhere.",
+          "imageText": "",
+          "audioCue": "Beim Menschen läuft"
+        },
+        {
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer close-up of the modern character's sparsely haired forearm in cool air. Show clear goosebumps and a few tiny hairs standing despite the thin body hair. Keep the hand and torso softly visible in the background for context. Integrate exactly the German text \"ALTER REFLEX\" once, compact and supportive. No other readable text.",
+          "imageText": "ALTER REFLEX",
+          "audioCue": "Körperfell viel dünner"
+        }
+      ]
+    },
+    {
+      "narration": "Auch Musik, Erinnerungen oder intensive Momente können Gänsehaut auslösen. Das Nervensystem reagiert also nicht nur auf Kälte, sondern auch auf starke Emotionen.",
+      "imageText": "STARKE EMOTIONEN",
+      "visualIdea": "Ein Musikmoment löst sichtbar Gänsehaut aus; danach ein emotionaler Erinnerungsmoment mit derselben körperlichen Reaktion.",
+      "continuityNotes": "Warmerer Lichtwechsel zeigt emotionale statt thermische Auslöser. Keine Textkarten.",
+      "audioCue": "Auch Musik",
+      "durationSeconds": 7.0,
+      "cameraMotion": {"type": "gentle-pan"},
+      "soundEffects": [
+        {"type":"whoosh-up","atPercent":0.02,"volume":0.22,"visualEvent":"Cut von Kälte zu einem intensiven Musikmoment.","reason":"Markiert den Wechsel zu emotionalen Auslösern."},
+        {"type":"click","targetId":"scene-08-image-02","audioCue":"nicht nur auf Kälte","volume":0.2,"visualEvent":"Wechsel von Musik zu einem intensiven Erinnerungsmoment.","reason":"Zeigt einen zweiten emotionalen Kontext."}
+      ],
+      "images": [
+        {
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer concert-like scene. A neutral round character wearing headphones or standing near a small stage is visibly moved by music, with a close foreground arm showing goosebumps while soft sound waves and lights remain part of the real environment. Use dramatic depth, warm highlights, dark background atmosphere and an off-center composition. Integrate exactly the German text \"STARKE EMOTIONEN\" once. No other readable text.",
+          "imageText": "STARKE EMOTIONEN",
+          "audioCue": "Auch Musik"
+        },
+        {
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer intimate memory scene. Show the same character holding a small old photograph or keepsake near a window, emotionally absorbed, while a foreground close-up of the other arm subtly shows goosebumps. Use warm nostalgic backlight, layered depth and restrained expression. No readable text anywhere.",
+          "imageText": "",
+          "audioCue": "nicht nur auf Kälte"
+        }
+      ]
+    },
+    {
+      "narration": "Gänsehaut ist damit ein alter Reflex: winzige Muskeln, automatische Nervensignale und unsere evolutionäre Vergangenheit arbeiten für Sekunden zusammen.",
+      "imageText": "EVOLUTIONÄRER REST",
+      "visualIdea": "Zum Schluss werden Nerv, Muskel und Haarfollikel noch einmal als zusammenhängender Mechanismus gezeigt; letztes Bild endet ruhig auf dem Arm mit Gänsehaut.",
+      "continuityNotes": "Visueller Abschluss statt Poster-Zusammenfassung. Letztes Bild textfrei und für 0,6-Sekunden-Endhold geeignet.",
+      "audioCue": "Gänsehaut ist damit",
+      "durationSeconds": 7.5,
+      "cameraMotion": {"type": "subtle-pull-out"},
+      "soundEffects": [
+        {"type":"whoosh-down","atPercent":0.02,"volume":0.22,"visualEvent":"Cut von emotionaler Szene zurück zum biologischen Mechanismus.","reason":"Leitet die Zusammenfassung ein."},
+        {"type":"tick","targetId":"scene-09-image-02","audioCue":"evolutionäre Vergangenheit","volume":0.2,"visualEvent":"Finaler Wechsel vom Mechanismus zurück zur sichtbaren Gänsehaut am Arm.","reason":"Schließt Ursache und sichtbare Wirkung zusammen."}
+      ],
+      "images": [
+        {
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer layered biological scene combining one hair follicle, its tiny arrector pili muscle and a sympathetic nerve pulse in one connected skin cutaway. Show the nerve pulse reaching the muscle and the hair beginning to rise in a single cause-and-effect composition. Keep it spatial, tactile and cinematic rather than diagrammatic. Integrate exactly the German text \"EVOLUTIONÄRER REST\" once. No other readable text.",
+          "imageText": "EVOLUTIONÄRER REST",
+          "audioCue": "Gänsehaut ist damit"
+        },
+        {
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer final scene in the same world. Return to the neutral round character from the hook, now calm and looking at a forearm with subtle goosebumps as the cold evening and soft ambient light settle around them. Use a close foreground arm, character in midground and quiet city depth behind. Keep the frame visually satisfying for a short final hold, with no readable text anywhere.",
+          "imageText": "",
+          "audioCue": "evolutionäre Vergangenheit"
         }
       ]
     }
