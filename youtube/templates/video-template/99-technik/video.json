@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "videoId": "video-XX_slug",
   "title": "",
   "topic": "",
@@ -9,10 +9,23 @@
   "visualStyleId": "youtube-editorial-stick-explainer",
   "visualStyleReason": "Feste YouTube-Bildwelt: hand-drawn editorial stick-figure explainer style für erzählerische Langvideos.",
   "targetDurationMinutes": {
-    "min": 5,
-    "max": 6,
+    "min": 10,
+    "max": 12,
     "mode": "approximate"
   },
+  "plannedImageCount": {
+    "min": 50,
+    "max": 80,
+    "default": 60
+  },
+  "typicalImageHoldSeconds": {
+    "min": 6,
+    "max": 12,
+    "maximumNormal": 15
+  },
+  "titleRequired": true,
+  "thumbnailRequired": true,
+  "topicDuplicateCheckRequired": true,
   "createdAt": "",
   "updatedAt": ""
 }
