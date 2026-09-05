@@ -1,14 +1,19 @@
-# MASTER-BILDPROMPTS — VIDEO 01
+# MASTER-BILDPROMPTS — Warum hat ein Tag 24 Stunden – und nicht 10?
 
 Titel: Warum hat ein Tag 24 Stunden – und nicht 10?
 Format: 16:9
 Style-ID: youtube-editorial-stick-explainer
-Ziel: 60 eigenständige Bildmomente für ca. 10–12 Minuten.
+Ziel: 60 eigenständige Videobildmomente für ca. 10–12 Minuten.
 
-GLOBAL STYLE FOR EVERY IMAGE:
+WICHTIG:
+- Bild 00 ist ausschließlich das Thumbnail und liegt separat unter `00_thumbnail/`.
+- Die Videotimeline beginnt mit Bild 01.
+- Für den exakten Sprachbereich jedes Bildes gilt `99-technik/BILD_AUDIO_ZUORDNUNG.json`.
+
+GLOBAL STYLE FOR EVERY VIDEO IMAGE:
 16:9, hand-drawn 2D editorial explainer style, simple stick-figure-like humans with round or slightly oval heads, minimal facial features, clean black outlines, warm slightly muted colors, calm but engaging narrative composition, simple historical/natural/reduced environments, one clear scene focus, subtle paper-like texture, no photorealism, no 3D, no Pixar, no clay, no countryballs, no stock-photo look, no watermark. Use readable German text only when the individual prompt explicitly requests it; otherwise no readable text.
 
-Generate strictly one image at a time. Save exactly as `Bild 01.png` through `Bild 60.png`.
+Generate strictly one image at a time and only within the current 10-image package. Save exactly as `Bild 01.png` through `Bild 60.png`.
 
 ## 01–06 — Hook: Warum 24?
 
@@ -62,7 +67,7 @@ A farmer looks up at the Sun high in the sky while another person prepares food 
 A merchant and traveler agree to meet when the Sun is low near sunset, using gestures toward the horizon instead of a clock, simple narrative moment, no text.
 
 ### Bild 16
-Three panels blended into one continuous landscape showing sunrise, midday and sunset with the same small village changing activity through the day, no text.
+Three moments blended into one continuous landscape showing sunrise, midday and sunset with the same small village changing activity through the day, no text.
 
 ### Bild 17
 An increasingly busy ancient settlement with farmers, traders, temple activity and workers all needing better coordination, central person realizes rough Sun cues are no longer enough, no text.
@@ -76,16 +81,16 @@ A shadow from a simple upright stick falls across marked ground while several pe
 Ancient Egyptian setting with a simple T-shaped shadow clock under bright sunlight, an observer watches the shadow cross marked sections, hand-drawn historical scene, no text.
 
 ### Bild 20
-Close-up of the shadow clock with the daylight interval visibly divided into twelve broad sections, Sun moving across the sky in a subtle arc, add only the German text: "12 TEILE"
+Close-up of the shadow clock with the daylight interval visibly divided into twelve broad sections, Sun moving across the sky in a subtle arc. Add only: "12 TEILE"
 
 ### Bild 21
 Summer and winter versions of the same Egyptian shadow clock shown side by side: long summer daylight versus short winter daylight, illustrating that ancient hours changed length with the seasons, no text.
 
 ### Bild 22
-A hand counting finger joints with the thumb touching the three segments of four fingers, twelve points subtly highlighted, historical-neutral visual explanation. Add only: "12"
+A hand counting finger joints with the thumb touching the three segments of four fingers, twelve points subtly highlighted, presented as one possible explanation rather than certainty. Add only: "12"
 
 ### Bild 23
-Night sky above ancient Egypt with roughly twelve lunar-cycle symbols suggested across a year-like arc, presented as a possible explanation rather than certainty, no text.
+Night sky above ancient Egypt with roughly twelve lunar-cycle symbols suggested across a year-like arc, presented as another possible explanation rather than certainty, no text.
 
 ### Bild 24
 A large number 12 physically divides into equal groups of 2, 3, 4 and 6 using simple objects like stones, showing why twelve is convenient for fractions. Add only: "12"
@@ -102,7 +107,7 @@ An Egyptian observer looks from a daytime shadow clock toward the coming night s
 Ancient Egyptian astronomer at night watches groups of stars rise above the horizon from a quiet rooftop or desert edge, fire lamp nearby, no text.
 
 ### Bild 28
-A stylized but story-driven night sky with sequential star groups crossing the sky while an observer marks their passage on a simple board, no readable text.
+A story-driven night sky with sequential star groups crossing the sky while an observer marks their passage on a simple board, no readable text.
 
 ### Bild 29
 A simple water clock in ancient Egypt slowly draining while a night observer checks the water level, stars visible outside, no text.
@@ -122,90 +127,94 @@ Ancient Egyptian observer stands beside a rough 24-part cycle, while a modern di
 Same ancient town in summer and winter, with two clocks represented by unequal daylight hour lengths, people working longer in summer and shorter in winter, no text.
 
 ### Bild 34
-A Greek astronomer at a table struggles with calculations because hour lengths vary between seasons, scrolls and star chart visible, no text.
+Ordinary people organize daily work around sunlight, showing why flexible seasonal hours initially function well enough, no text.
 
 ### Bild 35
-Hipparchus-like Greek astronomer draws a clean circle divided into 24 equal sectors while observing an equinox sky, historical but not a portrait likeness, no readable text.
+A Greek astronomer begins studying the sky with scrolls and star charts, introducing the next historical step, no text.
 
 ### Bild 36
-A balanced day-and-night scene at equinox, Sun path and night path visually equal, with 24 identical markers forming around the full cycle. Add only: "24 GLEICHE STUNDEN"
+A Greek astronomer struggles with calculations because hour lengths vary between seasons, mathematical work visibly becoming awkward, no text.
 
 ### Bild 37
-Ordinary people still use sun-based flexible daily routines while astronomers in the background use equal mathematical hours, showing both systems coexisting, no text.
+Hellenistic astronomers compare a complete day circle and begin dividing it into equal mathematical sections, no readable text.
 
 ### Bild 38
-Transition scene from ancient sky observation to a medieval European town with a large clock tower under construction, timekeeping moving from astronomy toward machinery, no text.
+Hipparchus-like Greek astronomer draws a clean circle divided into 24 equal sectors while observing an equinox sky, historical but not a portrait likeness. Add only: "24 GLEICHE STUNDEN"
 
 ## 39–44 — Mechanische Uhren machen Stunden fest
 
 ### Bild 39
-Inside a medieval clock tower, large gears and weights move while a craftsperson adjusts the mechanism, simple hand-drawn engineering scene, no text.
+Ordinary people still use sun-based flexible daily routines while astronomers in the background use equal mathematical hours, showing both systems coexisting, no text.
 
 ### Bild 40
-Clock tower rings above a town square as merchants, workers and monks respond to the same shared hour, showing social coordination, no text.
+Transition toward medieval Europe: a town with a clock tower beginning to dominate shared daily time, no text.
 
 ### Bild 41
-Split visual: a flexible seasonal sun-hour on one side and a mechanical gear turning at a fixed rate on the other, illustrating why machines favor equal hours, no text.
+Inside a medieval clock tower, large gears and weights move while a craftsperson adjusts the mechanism, simple hand-drawn engineering scene, no text.
 
 ### Bild 42
-A monk and worker both hear a clock bell at the same moment from different parts of town, fixed hours coordinating routines, no text.
+Split visual: seasonal sun-hours changing length on one side while a mechanical gear keeps a fixed rhythm on the other, no text.
 
 ### Bild 43
-Close-up of a clock face with only hour divisions, no minute hand, emphasizing that early everyday clocks did not need precise minutes, no readable text.
+Clock tower rings above a town square as merchants, workers and monks respond to the same shared hour, showing fixed hours becoming practical, no text.
 
 ### Bild 44
-A timeline-like street scene gradually evolving from church bell to public clock to pocket watch, each step increasing time precision, no text.
+A large clock with 24-hour structure transitions visually into the unresolved numbers 60 and 60, setting up the next question. Add only: "WARUM 60?"
 
-## 45–51 — Warum 60 Minuten und 60 Sekunden?
+## 45–50 — Babylon, Minuten und Sekunden
 
 ### Bild 45
-Ancient Babylonian scholar in Mesopotamia writes numerical astronomy on a clay tablet under a starry sky, simple historical environment, no text.
+Ancient Babylonian scholar in Mesopotamia writes astronomical calculations on a clay tablet under a starry sky, introducing base-60 mathematics, no text.
 
 ### Bild 46
-The number 60 surrounded by evenly grouped stones demonstrating divisions into 2, 3, 4, 5, 6, 10 and 12, clean visual math scene. Add only: "60"
+The number 60 surrounded by evenly grouped stones demonstrating divisions into 2, 3, 4, 5, 6, 10, 12, 15, 20 and 30, showing why sixty is practical for fractions. Add only: "60"
 
 ### Bild 47
-A circular shape is divided into many equal sectors while a Babylonian-style mathematical tablet sits nearby, showing base-60 thinking applied to geometry, no text.
+Greek astronomers inherit older Mesopotamian mathematical ideas; a Babylonian clay tablet and Greek star chart connect visually across generations, with a circle divided into 360 degrees in the background, no text.
 
 ### Bild 48
-Greek astronomer receives and develops mathematical ideas from older Mesopotamian astronomy, represented as tablets and star charts passing across generations, no text.
+A large 360-degree circle with one degree magnified into 60 smaller parts and one of those divided again into 60, visually explaining first and second subdivisions. Add only: "60 × 60"
 
 ### Bild 49
-A large 360-degree circle with one degree magnified into 60 smaller pieces and one of those magnified again, simple educational composition. Add only: "60 × 60"
+Historical manuscript-to-clock transition: minute and second concepts exist in mathematics first, while ordinary clocks still show only rough hours, no readable text.
 
 ### Bild 50
-A medieval manuscript-style but clean scene with the concepts of first small division and second small division evolving toward modern minute and second, no Latin text required, no readable text.
+A late-16th-century-style mechanical clock gains a minute hand while a craftsperson watches, showing precise minutes becoming practical only when clock technology improves, no text.
+
+## 51–52 — Uhrzeit ist ein Standard, kein perfekter kosmischer Takt
 
 ### Bild 51
-A late-16th-century-style mechanical clock gains a minute hand while a curious craftsperson watches, showing why minutes become practical only with more precise clocks, no text.
-
-## 52–56 — Warum nicht einfach 10?
+Earth follows a slightly elliptical orbit with a tilted axis while two solar-noon markers do not line up perfectly day after day, clear visual explanation that apparent solar days vary slightly, no text.
 
 ### Bild 52
-Modern clean fictional decimal clock with 10 hours around the face, 100 minute divisions implied, a person finds the design visually simple at first glance. Add only: "10 STUNDEN?"
+A modern clock uses a smooth averaged time scale while the real Sun path fluctuates slightly around it, visualizing mean solar time as a practical standard rather than a perfect cosmic beat, no text.
+
+## 53–54 — Das historische Puzzle
 
 ### Bild 53
-Half of the fictional decimal day highlighted as exactly 5 hours, then a quarter as 2.5, showing decimal arithmetic convenience, no additional text.
+Four historical influences converge into one modern clock: Egyptian 24-hour division, Babylonian 60, Greek equal-hour astronomy and medieval mechanical gears, one coherent visual flow, no text.
 
 ### Bild 54
-Normal 60-minute hour shown being split cleanly into 30, 20, 15 and 10 minute chunks using everyday tasks like lunch, commute, meeting and break. Add only: "30 • 20 • 15 • 10"
+Four-layer composition labeled only with short German words: natural sky rhythm, mathematical numbers, timekeeping technology and connected society, all building upward into one shared modern clock. Add only: "NATUR • MATHE • TECHNIK • GESELLSCHAFT"
+
+## 55–57 — Warum nicht 10?
 
 ### Bild 55
-Huge modern network of train schedules, school bells, phones, computers, hospitals and flights all connected to the same 24-hour standard, one person imagines the chaos of changing every clock, no text.
+Modern fictional decimal clock with 10 hours around the face; a person compares it with a normal clock and sees the mathematical simplicity. Add only: "10 STUNDEN?"
 
 ### Bild 56
-A person tries to replace clocks across an entire city with a new decimal system while everyone else still uses the old one, humorous but realistic visual of coordination costs, no text.
-
-## 57–60 — Atomzeit und Fazit
+A huge modern network of schools, train schedules, phones, computers, hospitals, contracts and flights all connected to the same time standard, showing the enormous coordination cost of changing the system, no text.
 
 ### Bild 57
-Modern laboratory with an atomic clock apparatus represented simply and cleanly, scientist monitors a precise time signal, no text.
+A normal 60-minute hour is split cleanly into 30, 20, 15 and 10 minute chunks using everyday tasks such as lunch, commute, meeting and break. Add only: "30 • 20 • 15 • 10"
+
+## 58–60 — Atomzeit und Fazit
 
 ### Bild 58
-Visual comparison: Earth rotation wobbles very slightly while an atomic clock emits perfectly regular pulses, clear scientific storytelling. Add only: "ATOMZEIT"
+Modern laboratory with an atomic clock represented clearly; regular atomic pulses are contrasted with old sundials and mechanical clocks in the background, no text.
 
 ### Bild 59
-A modern digital clock reading 14:37:52 is surrounded by faint historical layers: Egyptian shadow clock, Babylonian tablet, Greek star chart and medieval gears, all converging into the display, no other text.
+Atomic clock emits perfectly regular pulses while Earth rotation wobbles very slightly; behind them, Egyptian, Babylonian, Greek and mechanical-clock layers show the long historical path. Add only: "ATOMZEIT"
 
 ### Bild 60
-Final calm scene: one person looks at a clock at sunset while behind them a visual timeline stretches from ancient Egypt through Babylon, Greece and medieval clockmakers to the modern world. Add only the closing German text: "DIE ERDE LIEFERT DEN TAG. WIR DIE 24."
+Final calm scene: one person looks at a modern clock at sunset while a visual timeline stretches from ancient Egypt through Babylon, Greece and medieval clockmakers to the present. Add only the closing German text: "DIE ERDE LIEFERT DEN TAG. WIR DIE 24."
