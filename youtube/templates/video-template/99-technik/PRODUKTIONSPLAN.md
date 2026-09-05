@@ -1,4 +1,8 @@
-# Interner YouTube-Produktionsplan
+# Interner YouTube-Produktionsplan — V2
+
+**Für neue Projekte mit `productionRulesVersion >= 2`.**
+
+Verbindlich zusätzlich lesen: `youtube/ADAPTIVE_PACING_V2.md`.
 
 ## Thema + Duplicate-Prüfung
 
@@ -14,8 +18,8 @@
 
 - mindestens 10 Minuten finales Voice-over
 - Ziel normalerweise 10–12 Minuten
-- ungefähr 50–80 Bildmomente, Standard etwa 60
-- Bildwechsel meist alle 6–12 Sekunden, **aber final ausschließlich nach echtem Voice-over-Timing**
+- Bildanzahl **adaptiv nach Scriptbedarf**, ungefähr 50–90 nur als Orientierung
+- kein fixes Ziel wie „immer 60 Bilder“
 - jedes Bild im Edit subtil bewegen
 - 16:9
 - feste Bildwelt `youtube-editorial-stick-explainer`
@@ -32,12 +36,12 @@ Für jede wichtige Aussage Quelle, Datum und kurze Begründung dokumentieren. Un
 
 ## Thumbnail
 
-- Bild 00 ist ausschließlich das Thumbnail
+- Bild 00 = ausschließlich Thumbnail
 - Thumbnail-Text:
 - Hauptmotiv:
 - Kontrastidee:
-- fertiger Prompt unter `00-bildprompts/00_thumbnail/Bild 00 - Thumbnail.txt`
-- fertiges PNG erst als vorhanden markieren, wenn es wirklich erzeugt wurde
+- fertiger Prompt unter `00-bildprompts/00_thumbnail/`
+- fertiges `Bild 00.png` erst als vorhanden markieren, wenn wirklich erzeugt
 
 ## Script-Planung
 
@@ -47,79 +51,137 @@ Für jede wichtige Aussage Quelle, Datum und kurze Begründung dokumentieren. Un
 - Wortzahl:
 - erwartete Sprechdauer:
 
-## Bildplanung
+### Adaptive Bildplanung
 
-Script in visuell klare Momente zerlegen. Jeder Bildmoment erhält einen echten Erklär-/Storyfortschritt und darf nicht nur eine kosmetische Variante des vorherigen Bildes sein.
+Script zuerst in echte visuelle Gedanken zerlegen. **1 Bild = 1 klarer visueller Zweck.**
 
-Pflicht:
-- `99-technik/BILD_AUDIO_ZUORDNUNG.json`
-- für jedes Videobild exakter `startAnchor` und `endAnchor`
-- chronologische, lückenlose Voice-over-Abdeckung
-- Bild 00 besitzt keine Audio-Zuordnung
+Neues Bild einplanen bei:
+- neuem Kerngedanken
+- neuem Beispiel
+- Ursache→Folge-Wechsel
+- neuer Epoche / neuem Ort / neuer Perspektive
+- Vergleich oder Reveal
+- Abschnitt wäre sonst zu lang oder müsste mehrere Erklärjobs gleichzeitig tragen
 
-## Google Flow
+Die Bildanzahl ergibt sich erst danach.
+
+### Pacing-Ziel
+
+- 5–12 s normal
+- 12–14 s bei ruhigem/einfachem Moment okay
+- ab 14 s Split prüfen
+- ab 16 s starke Split-Prüfung
+- **20,0 s oder länger verboten**
+- unter 4 s auf unnötige Hektik prüfen
+
+Nicht alle Bilder künstlich gleich lang machen.
+
+## Script-Parts passend zu 10er-Bildpaketen
+
+Neben `voice-script.txt` muss Phase 1 einzelne Script-Parts erstellen:
+
+```text
+01-voice-script/
+├── voice-script.txt
+├── 01_part-bilder-01-bis-10.txt
+├── 02_part-bilder-11-bis-20.txt
+├── 03_part-bilder-21-bis-30.txt
+└── ...
+```
+
+Regeln:
+- jeder Part gehört genau zu seinem Bildpaket
+- keine Textlücke
+- keine Textüberlappung
+- Part-Grenze an natürlicher Satz-/Gedankengrenze
+- letzter Part darf weniger als 10 Bilder abdecken
+- Master-Script = chronologische Zusammensetzung aller Parts
+
+## Bildplanung / Google Flow
 
 Masterdatei: `00-bildprompts/99-alle-bildprompts.txt`.
 
-Streng seriell und in 10er-Paketen:
+10er-Pakete sind nur Produktionsstruktur:
 
 ```text
-aktuelles 10er-Paket wählen
-→ genau 1 Bild erzeugen
-→ prüfen
-→ exakt Bild NN.png nennen
-→ in aktuellen Paketordner legen
-→ erst nächstes Bild
-→ erst nach vollständigem Paket nächster Ordner
+Bild 01–10 → vollständig erzeugen/prüfen/benennen/ablegen
+Bild 11–20 → erst danach
+...
 ```
 
-## Assets
+Die Gesamtbildzahl wird nicht auf eine durch zehn teilbare Zahl erzwungen.
 
-Nur tatsächlich verwendete Bilder, Grafiken und Audio dokumentieren. Fehlende Assets nicht als vorhanden markieren.
+## Audio — Nutzer darf in Parts arbeiten
 
-## Phase 3 — Audio ist Master
+Passend zu jedem Script-Part wird ein Audio-Part erzeugt:
 
-Antigravity darf **niemals** die Videolänge durch die Bildanzahl teilen und daraus gleich lange Holds erzeugen.
+```text
+02-audio/
+├── 01_part-bilder-01-bis-10.<audio>
+├── 02_part-bilder-11-bis-20.<audio>
+├── 03_part-bilder-21-bis-30.<audio>
+└── ...
+```
 
-Vor dem Render:
-1. finales Voice-over eindeutig bestimmen
-2. für jeden Mapping-Eintrag den echten `startAnchor` im finalen Audio finden
-3. `actualStartSeconds`, `actualEndSeconds`, `alignmentConfidence` eintragen
-4. unter 0,95 Konfidenz nicht raten
-5. `99-technik/FINAL_TIMELINE.json` aus den echten Audio-Zeiten erzeugen
-6. Bild 01 beginnt bei 0:00; spätere Bilder ca. 0,08 s vor ihrem echten Anchor
-7. jedes Bild endet am Start des nächsten Bildes
-8. letztes Bild endet nach Voice-over plus ca. 0,60 s sauberem Schluss-Hold
-9. danach zwingend:
+Eine einzige lange Nutzer-Audiodatei ist **nicht erforderlich**.
+
+## Bild↔Script↔Audio-Mapping
+
+`99-technik/BILD_AUDIO_ZUORDNUNG.json` muss pro Bild zusätzlich enthalten:
+- `audioPartId`
+- `scriptPartFile`
+- `audioPartFile`
+- `startAnchor`
+- `endAnchor`
+- später echte lokale/globale Audiozeiten
+
+Damit ist eindeutig, welches Bild zu welchem gesprochenen Abschnitt und Audio-Part gehört.
+
+## Phase 3 — Antigravity
+
+Antigravity:
+1. prüft alle Bild- und Audio-Parts
+2. analysiert jeden Audio-Part gegen den passenden Script-Part
+3. entfernt überlange Randstille
+4. misst Bild-Anker innerhalb des richtigen Audio-Parts
+5. setzt die Parts chronologisch zu einer Master-Timeline zusammen
+6. lässt keine ungeplante Part-Grenzen-Stille über 0,25 s zu
+7. baut `FINAL_TIMELINE.json` ausschließlich aus echten Audio-Ankern
+8. prüft adaptive Bilddauern
+9. rendert erst nach bestandenem Hard-Gate
+
+## Adaptive Pacing QC
+
+Vor Render für V2 zwingend:
 
 ```bash
-npm run validate:youtube-phase3 -- --dir "<projekt>"
+npm run validate:youtube-pacing-v2 -- --dir "youtube/<woche>/<thema>"
 ```
 
-**Nur Exit-Code 0 erlaubt den Render.**
+Nur Exit-Code 0 erlaubt bei V2 den Render.
+
+Zusätzlich bleiben die normalen YouTube-Gates Pflicht:
+
+```bash
+npm run validate:youtube-phase3 -- --dir "youtube/<woche>/<thema>"
+npm run validate:youtube-render -- --dir "youtube/<woche>/<thema>"
+```
 
 ## Edit
 
 - Motion/Zoom auf jedem Bild
-- Kapitelwechsel-SFX:
-- Objekt-/Informations-SFX:
-- Hintergrundmusik: projektbezogene Entscheidung
 - keine hektischen Reel-Zooms
-- keine minutenlangen Standbilder
+- keine langen statischen Slides
 - keine starre Slideshow mit identischen Bilddauern
+- Kapitelwechsel-SFX gezielt
+- Objekt-/Informations-SFX gezielt
+- Hintergrundmusik standardmäßig aus
+- Voice-over bleibt dominant
 
-## Post-Render-QC
+## Assets
 
-Nach dem Render zwingend:
-
-```bash
-npm run validate:youtube-render -- --dir "<projekt>"
-```
-
-Das Video ist erst fertig, wenn auch dieser Gate Exit-Code 0 liefert. Langer stiller Nachlauf nach dem Voice-over ist verboten.
-
-Details: `youtube/PHASE3_HARD_GATE.md`.
+Nur tatsächlich verwendete Bilder, Grafiken und Audios dokumentieren. Fehlende Assets nicht als vorhanden markieren.
 
 ## Upload
 
-Der Upload verwendet ausschließlich die finalen Dateien aus `03-export/`: YouTube-Titel, Beschreibung, Kapitel, optionale Tags, Thumbnail und Video. Keine Reel-Universal-Caption verwenden.
+Der Upload verwendet ausschließlich die finalen Dateien aus `03-export/`: YouTube-Titel, Beschreibung, Kapitel, optionale Tags, Thumbnail und Video.
