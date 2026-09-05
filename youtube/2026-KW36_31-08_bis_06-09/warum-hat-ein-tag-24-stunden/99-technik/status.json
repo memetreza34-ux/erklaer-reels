@@ -1,10 +1,13 @@
 {
-  "version": 2,
+  "version": 3,
   "project": "2026-KW36_31-08_bis_06-09/warum-hat-ein-tag-24-stunden",
   "weekFolder": "2026-KW36_31-08_bis_06-09",
   "topicSlug": "warum-hat-ein-tag-24-stunden",
   "updatedAt": "2026-09-05",
+  "currentPhase": 2,
   "phase1": {
+    "owner": "ChatGPT",
+    "status": "complete",
     "topic": "complete",
     "duplicateCheck": "complete",
     "research": "complete",
@@ -12,17 +15,32 @@
     "thumbnailPlan": "complete",
     "script": "complete",
     "imagePrompts": "complete",
+    "tenImageFolderStructure": "complete",
+    "editPlan": "complete",
     "uploadMetadata": "complete"
   },
-  "assets": {
+  "phase2": {
+    "owner": "user",
+    "status": "pending",
     "voiceover": "pending-user-asset",
-    "images": "pending-user-assets",
-    "thumbnail": "pending-generation"
+    "imageBatch01_01to10": "pending-user-assets",
+    "imageBatch02_11to20": "pending-user-assets",
+    "imageBatch03_21to30": "pending-user-assets",
+    "imageBatch04_31to40": "pending-user-assets",
+    "imageBatch05_41to50": "pending-user-assets",
+    "imageBatch06_51to60": "pending-user-assets",
+    "thumbnail": "pending-user-asset"
   },
-  "edit": {
-    "timing": "pending",
-    "motion": "planned-not-rendered",
-    "soundDesign": "planned-not-rendered",
+  "phase3": {
+    "owner": "Antigravity",
+    "status": "blocked-until-phase2-complete",
+    "assetValidation": "pending",
+    "audioAnalysis": "pending",
+    "voiceDrivenTiming": "pending",
+    "imageMapping": "pending",
+    "motion": "pending",
+    "soundDesign": "pending",
+    "render": "pending",
     "qualityControl": "pending"
   },
   "export": {
@@ -31,6 +49,7 @@
     "metadata": "prepared"
   },
   "readyForAssetGeneration": true,
+  "readyForAntigravity": false,
   "readyForRender": false,
-  "note": "Phase 1 ist vorbereitet. Keine echten Bilder, kein Voice-over, kein Thumbnail-PNG und keine MP4 wurden bisher erzeugt oder geprüft."
+  "note": "Phase 1 ist vollständig. Jetzt Phase 2: Nutzer erzeugt Voice-over, sechs 10er-Bildpakete und Thumbnail. Erst danach startet Antigravity Phase 3 mit Asset-QC, Voice-over-getriebener Timeline, Motion/Zoom, gezieltem SFX, Render und finaler QC."
 }
