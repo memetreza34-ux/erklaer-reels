@@ -9,6 +9,9 @@ Für YouTube zuerst lesen:
 1. `youtube/YOUTUBE_WORKFLOW.md`
 2. `youtube/PHASE3_HARD_GATE.md`
 3. `youtube/YOUTUBE_VISUAL_WORLD.md`
+4. **für neue Projekte mit `productionRulesVersion >= 2`: `youtube/ADAPTIVE_PACING_V2.md`**
+
+Wichtig: `ADAPTIVE_PACING_V2.md` gilt nur für kommende V2-Projekte. Das bestehende Projekt `youtube/2026-KW36_31-08_bis_06-09/warum-hat-ein-tag-24-stunden/` bleibt unverändert.
 
 ## Drei Phasen
 
@@ -24,6 +27,8 @@ Phase 3 — Antigravity
 → Assets prüfen, echte Audio-Anker messen, FINAL_TIMELINE.json daraus bauen,
   Pre-Render-Hard-Gate bestehen, rendern, Post-Render-Hard-Gate bestehen
 ```
+
+Bei neuen V2-Projekten wird das Voice-over zusätzlich in Script-/Audio-Parts aufgeteilt, wobei jeder Part exakt zu einem 10er-Bildpaket gehört.
 
 ## Ordnerprinzip
 
@@ -68,6 +73,8 @@ Sie legt für jedes `Bild NN` fest:
 - später `actualEndSeconds`
 - später `alignmentConfidence`
 
+Für V2 kommt zusätzlich die eindeutige Zuordnung zu `scriptPartFile`, `audioPartFile` und `audioPartId` dazu.
+
 ## Entscheidend: Phase 3 darf keine Slideshow bauen
 
 Das echte finale Voice-over ist die Timing-Masterspur.
@@ -107,6 +114,8 @@ Der Gate blockiert u. a.:
 - Timeline, die nicht den echten Audio-Ankern folgt
 - verdächtig gleichmäßige Slideshow-Dauern
 
+Für V2-Projekte kommt zusätzlich der adaptive Pacing-Check hinzu.
+
 ### Nach Render
 
 ```bash
@@ -119,8 +128,13 @@ Auch dieser Befehl muss Exit-Code 0 liefern. Ein langer stiller Nachlauf nach de
 
 - mindestens 10 Minuten
 - normalerweise 10–12 Minuten
-- 50–80 Videobilder, Bildanzahl nach Scriptbedarf
-- meist 6–12 s pro Bild als Planungsbereich, aber **final bestimmt das Audio**
+- Bildanzahl **nach Scriptbedarf**, nicht als feste Zielzahl
+- für neue V2-Projekte ungefähr 50–90 Bilder nur als Orientierung
+- meist 5–12 s pro Bild als Planungsbereich
+- 12–14 s bei ruhigen Momenten okay
+- ab 14 s bewusst prüfen
+- ab 16 s starke Split-Prüfung
+- **20,0 s oder länger ist bei V2 ein Hard Fail**
 - 16:9
 - `youtube-editorial-stick-explainer`
 - subtile Motion auf jedem Bild
@@ -137,6 +151,18 @@ Bild 01–10 → prüfen → benennen → Ordner 1 → kontrollieren
 Bild 11–20 → erst danach
 ...
 ```
+
+Bei V2 ist die 10er-Struktur **nur Produktionsstruktur**. Sie darf die inhaltlich nötige Gesamtbildzahl nicht künstlich auf 60 festlegen.
+
+Passend dazu wird das Script geteilt:
+
+```text
+01_part-bilder-01-bis-10.txt
+02_part-bilder-11-bis-20.txt
+...
+```
+
+und der Nutzer erzeugt die Audios ebenfalls partweise. Details stehen in `youtube/ADAPTIVE_PACING_V2.md`.
 
 ## Finaler Export
 
