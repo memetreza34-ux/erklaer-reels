@@ -1,5 +1,6 @@
 {
-  "schemaVersion": 4,
+  "schemaVersion": 5,
+  "productionRulesVersion": 2,
   "currentPhase": 1,
   "phase1": {
     "owner": "ChatGPT",
@@ -9,7 +10,9 @@
     "research": "pending",
     "title": "pending",
     "thumbnailBild00": "pending",
-    "script": "pending",
+    "scriptMaster": "pending",
+    "scriptParts": "pending",
+    "adaptiveImagePlanning": "pending",
     "imagePrompts": "pending",
     "tenImageFolderStructure": "pending",
     "imageAudioMapping": "pending",
@@ -19,7 +22,7 @@
   "phase2": {
     "owner": "user",
     "status": "blocked-until-phase1-complete",
-    "voiceover": "missing",
+    "audioParts": "missing",
     "imageBatches": "missing",
     "thumbnailBild00": "missing"
   },
@@ -27,10 +30,12 @@
     "owner": "Antigravity",
     "status": "blocked-until-phase2-complete",
     "assetValidation": "pending",
-    "audioAnalysis": "pending",
+    "audioPartValidation": "pending",
+    "audioPartAssembly": "pending",
     "plannedImageMapping": "pending",
     "actualAnchorAlignment": "pending",
     "alignmentConfidenceQC": "pending",
+    "adaptivePacingQC": "not-run",
     "finalTimeline": "missing",
     "preRenderHardGate": "not-run",
     "voiceDrivenTiming": "pending",
@@ -49,10 +54,14 @@
   "readyForAntigravity": false,
   "readyForRender": false,
   "renderBlockedIf": [
+    "script parts do not match image batches",
+    "audio parts are missing or out of order",
     "any actualStartSeconds is null",
     "any actualEndSeconds is null",
     "any alignmentConfidence is null or below 0.95",
+    "any image hold is 20.0 seconds or longer",
     "FINAL_TIMELINE.json is missing",
+    "adaptive pacing V2 gate does not exit 0",
     "pre-render hard gate does not exit 0"
   ]
 }
