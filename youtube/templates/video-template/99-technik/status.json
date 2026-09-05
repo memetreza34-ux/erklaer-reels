@@ -1,15 +1,45 @@
 {
-  "schemaVersion": 1,
-  "phase": "idea",
-  "idea": "pending",
-  "research": "pending",
-  "script": "pending",
-  "scenes": "pending",
-  "imagePrompts": "pending",
-  "assets": "missing",
-  "audio": "missing",
-  "thumbnail": "pending",
-  "edit": "pending",
-  "uploadMetadata": "pending",
-  "render": "pending"
+  "schemaVersion": 2,
+  "currentPhase": 1,
+  "phase1": {
+    "owner": "ChatGPT",
+    "status": "pending",
+    "topic": "pending",
+    "duplicateCheck": "pending",
+    "research": "pending",
+    "title": "pending",
+    "thumbnailPlan": "pending",
+    "script": "pending",
+    "imagePrompts": "pending",
+    "tenImageFolderStructure": "pending",
+    "editPlan": "pending",
+    "uploadMetadata": "pending"
+  },
+  "phase2": {
+    "owner": "user",
+    "status": "blocked-until-phase1-complete",
+    "voiceover": "missing",
+    "imageBatches": "missing",
+    "thumbnail": "missing"
+  },
+  "phase3": {
+    "owner": "Antigravity",
+    "status": "blocked-until-phase2-complete",
+    "assetValidation": "pending",
+    "audioAnalysis": "pending",
+    "voiceDrivenTiming": "pending",
+    "imageMapping": "pending",
+    "motion": "pending",
+    "soundDesign": "pending",
+    "render": "pending",
+    "qualityControl": "pending"
+  },
+  "export": {
+    "video": "pending",
+    "thumbnail": "pending",
+    "metadata": "pending"
+  },
+  "readyForAssetGeneration": false,
+  "readyForAntigravity": false,
+  "readyForRender": false
 }
