@@ -6,6 +6,21 @@ Dieser Bereich ist die eigenständige Produktionspipeline für YouTube-Langvideo
 
 Für YouTube zuerst `youtube/YOUTUBE_WORKFLOW.md` lesen, danach `youtube/YOUTUBE_VISUAL_WORLD.md`.
 
+## Die drei Phasen
+
+```text
+Phase 1 — ChatGPT
+→ Thema, Recherche, Titel, Thumbnail-Prompt, Script, Bildprompts, 10er-Ordner, Edit-Plan, Upload-Metadaten
+
+Phase 2 — Nutzer
+→ echtes Voice-over, Google-Flow-Bilder in 10er-Paketen, Thumbnail
+
+Phase 3 — Antigravity
+→ Assets prüfen, Audio-getriebene Timeline bauen, Bilder synchronisieren, Motion/Zoom, SFX, QC und finalen 16:9-Render erzeugen
+```
+
+Antigravity darf fehlende Bilder nicht erfinden und keine Assets aus einem anderen Projekt als Ersatz benutzen. Die genaue Phase-3-Anweisung steht in `YOUTUBE_WORKFLOW.md`.
+
 ## Ordnerprinzip: Woche → Thema
 
 Produktive YouTube-Videos liegen direkt unter einer Wochenmappe:
@@ -36,15 +51,16 @@ Verbindlich:
 - mindestens 10 Minuten
 - Zielbereich normalerweise ca. 10–12 Minuten
 - ungefähr 50–80 Bilder, Standard etwa 60
-- Bildwechsel meist alle 6–12 Sekunden
+- Bildwechsel meist alle 6–12 Sekunden, aber final nach Voice-over-Inhalt synchronisiert
 - 16:9
 - feste Bildwelt `youtube-editorial-stick-explainer`
+- jedes Bild mit subtiler Motion/Zoom im Edit
+- gezieltes Sounddesign, keine Meme-Sounds
+- Hintergrundmusik standardmäßig aus, außer ausdrücklich gewünscht
 - eigener starker YouTube-Titel
 - eigenes Thumbnail-Konzept und Thumbnail-Prompt
 
 ## Bilder: immer in 10er-Paketen
-
-Die Bildproduktion wird nicht mehr als ein großer 50–80-Bilder-Block behandelt.
 
 Bei 60 Bildern sieht `00-bildprompts/` so aus:
 
@@ -62,7 +78,21 @@ Bei 60 Bildern sieht `00-bildprompts/` so aus:
 
 Ablauf: erst genau ein 10er-Paket erzeugen, Bilder korrekt global nummerieren, prüfen und in seinen Ordner legen. Erst danach beginnt das nächste Paket. Das Thumbnail bleibt separat.
 
-Die vollständigen Regeln dazu stehen in `youtube/YOUTUBE_WORKFLOW.md`.
+## Phase 3 in Kurzform
+
+Antigravity arbeitet **nicht** einfach nach festen 10-Sekunden-Blöcken. Das echte Voice-over ist die Masterspur:
+
+1. Audio und alle 10er-Bildordner prüfen.
+2. Script gegen das echte Audio segmentieren.
+3. Bilder passend zu den gesprochenen Abschnitten zuordnen.
+4. Bildwechsel inhaltlich setzen; meist 6–12 s, maximal ungefähr 15 s ohne guten Grund.
+5. Jedes Bild subtil bewegen: Push-in, Pull-out, Pan oder Ken-Burns.
+6. Harte saubere Cuts als Standard.
+7. SFX nur gezielt an Kapitelwechseln, Reveals und sichtbaren Ereignissen.
+8. Voice-over immer dominant halten.
+9. 1920×1080, 30 fps, H.264 + AAC rendern.
+10. Dauer, Reihenfolge, Audio-Sync, Standbilder, schwarzes/stilles Ende und Bildwelt prüfen.
+11. Erst danach `03-export/FERTIGES-VIDEO.mp4` als fertig markieren.
 
 ## Projektstruktur pro Thema
 
