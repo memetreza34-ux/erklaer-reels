@@ -1,5 +1,6 @@
 {
-  "schemaVersion": 3,
+  "schemaVersion": 4,
+  "productionRulesVersion": 2,
   "videoId": "YYYY-KWNN_topic-slug",
   "weekFolder": "YYYY-KWNN_DD-MM_bis_DD-MM",
   "topicSlug": "topic-slug",
@@ -16,14 +17,34 @@
     "mode": "approximate"
   },
   "plannedImageCount": {
-    "min": 50,
-    "max": 80,
-    "default": 60
+    "mode": "adaptive",
+    "guidanceMin": 50,
+    "guidanceMax": 90,
+    "guidanceOnly": true,
+    "fixedTargetForbidden": true
   },
-  "typicalImageHoldSeconds": {
-    "min": 6,
-    "max": 12,
-    "maximumNormal": 15
+  "adaptivePacing": {
+    "typicalHoldSeconds": [5, 12],
+    "calmHoldSecondsMax": 14,
+    "reviewFromSeconds": 14,
+    "strongSplitReviewFromSeconds": 16,
+    "hardMaximumExclusiveSeconds": 20,
+    "reviewIfShorterThanSeconds": 4,
+    "normallyForbiddenShorterThanSeconds": 2,
+    "oneImageOneVisualPurpose": true,
+    "imageCountMustFollowContentDensity": true,
+    "uniformHoldDistributionForbidden": true
+  },
+  "scriptAudioParts": {
+    "enabled": true,
+    "imagesPerPart": 10,
+    "scriptMasterFile": "01-voice-script/voice-script.txt",
+    "scriptPartPattern": "01-voice-script/NN_part-bilder-XX-bis-YY.txt",
+    "audioPartPattern": "02-audio/NN_part-bilder-XX-bis-YY.<audio>",
+    "noTextGaps": true,
+    "noTextOverlaps": true,
+    "partBoundaryMustBeNatural": true,
+    "maxUnplannedGapBetweenAudioPartsSeconds": 0.25
   },
   "titleRequired": true,
   "thumbnailRequired": true,
