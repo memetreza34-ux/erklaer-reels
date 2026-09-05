@@ -1,6 +1,6 @@
 {
   "name": "erklaer-reels",
-  "version": "0.23.4",
+  "version": "0.23.5",
   "private": true,
   "type": "module",
   "description": "KI-gestützte Produktionspipeline für visuelle Erklär-Reels und YouTube-Langvideos.",
@@ -30,6 +30,7 @@
     "render:reel": "node src/cli/run-with-reel-layout.js src/cli/render-reel.js",
     "validate:youtube-phase3": "node src/cli/validate-youtube-phase3.js",
     "validate:youtube-render": "node src/cli/validate-youtube-phase3.js --post-render",
+    "validate:youtube-pacing-v2": "node src/cli/validate-youtube-adaptive-pacing.js",
     "studio": "remotion studio src/renderer/index.jsx",
     "test": "node --test test/*.test.js",
     "hooks:install": "git config core.hooksPath scripts/hooks",
