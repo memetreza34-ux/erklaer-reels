@@ -1,12 +1,12 @@
 # Die drei Produktionsphasen
 
-**Verbindliche Rollenverteilung für jedes Reel.** `CURRENT_WORKFLOW.md` hat bei Widersprüchen Vorrang.
+**Verbindliche Rollenverteilung für jedes Reel.** `CURRENT_WORKFLOW.md` hat bei Widersprüchen Vorrang. Für die exakte Bild↔Audio-Synchronisation gilt zusätzlich `REEL_BILD_AUDIO_ZUORDNUNG.md`.
 
 | Phase | Wer | Ergebnis |
 |---|---|---|
-| 1 | ChatGPT | Reel-Ordner mit Script, Bildprompts, Motion-/SFX-Plan, Caption und Quellen |
+| 1 | ChatGPT | Reel-Ordner mit Script, Bildprompts, exakter Bild↔Audio-Zuordnung, Motion-/SFX-Plan, Caption und Quellen |
 | 2 | Arman | echtes Voice-over und alle Bilder im aktuellen Reel-Ordner |
-| 3 | Antigravity | synchronisiertes, geprüftes Reel mit MP4 + Caption |
+| 3 | Antigravity | audio-getrieben synchronisiertes, geprüftes Reel mit MP4 + Caption |
 
 Niemand übernimmt Nutzerassets aus einem anderen Reel. Antigravity erzeugt keine Ersatzbilder.
 
@@ -16,11 +16,11 @@ Niemand übernimmt Nutzerassets aus einem anderen Reel. Antigravity erzeugt kein
 
 ### Slot und Thema
 
-Chronologisch nächsten freien Wochentag verwenden. Themenuniversum ist offen; entscheidend sind Hook, Aha-Moment, Belegbarkeit, visuelle Stärke und Abwechslung.
+Chronologisch nächsten freien Wochentag verwenden. Vor neuer Themenwahl `THEMEN_HISTORIE.md` prüfen. Themenuniversum ist offen; entscheidend sind Hook, Aha-Moment, Belegbarkeit, visuelle Stärke und Abwechslung.
 
 ### Reel-Paket
 
-Das vollständige Paket kann über `input/reel-paket.json` importiert werden:
+Bevorzugter Weg:
 
 ```bash
 npm run import:reel -- --file input/reel-paket.json --check
@@ -47,6 +47,40 @@ npm run create:reel -- --title "Warum …?" --script-file input/script.txt --nex
 - spätere `imageText` optional, wenn vorhanden max. 4 Wörter
 - mindestens zwei hochwertige HTTPS-Quellen auf verschiedenen Hosts
 - plattformneutrale Caption mit 60–130 Wörtern und 3–6 Hashtags
+
+### Bild↔Audio-Zuordnung — Pflicht
+
+Phase 1 muss für **jeden Bildmoment** eindeutig festlegen, welcher gesprochene Satz oder Satzabschnitt dazugehört.
+
+Kanonische Datei nach dem Import:
+
+```text
+99-technik/BILD_AUDIO_ZUORDNUNG.json
+```
+
+Der Paketimport erzeugt sie automatisch. Für jeden Bildmoment enthält sie u. a.:
+
+```text
+globalImageNumber
+sceneId
+phaseId
+spokenText
+startAnchor
+endAnchor
+actualStartSeconds
+actualEndSeconds
+alignmentConfidence
+```
+
+Regeln:
+- `spokenText` ist der exakte Sprachbereich dieses Bildes.
+- Die Bereiche dürfen sich nicht überlappen und keinen gesprochenen Text auslassen.
+- Das erste Bild einer Szene gehört ab Szenenbeginn bis zum internen Cue bzw. bis Szenenende.
+- Die zweite Bildphase beginnt exakt an ihrem gesprochenen `audioCue` und läuft bis Szenenende.
+- `actualStartSeconds` und `actualEndSeconds` bleiben in Phase 1 leer; sie werden erst in Phase 3 aus dem finalen Audio ermittelt.
+- Ein `audioCue`, das nicht in der Narration vorkommt, blockiert Phase 1.
+
+Details: `REEL_BILD_AUDIO_ZUORDNUNG.md`.
 
 ### Bildwelt
 
@@ -78,9 +112,7 @@ npm run check:content -- --dir "<reel>" --strict
 npm run export:prompts -- --dir "<reel>" --strict
 ```
 
-`check:content --strict` blockiert fehlende Motion-/SFX-Coverage.
-
-**Übergabe an Phase 2:** `00-bildprompts/99-alle-bildprompts.txt` und `01-voice-script/voice-script.txt` sind fertig.
+**Übergabe an Phase 2:** `00-bildprompts/99-alle-bildprompts.txt`, `01-voice-script/voice-script.txt` und `99-technik/BILD_AUDIO_ZUORDNUNG.json` sind fertig.
 
 ---
 
@@ -98,7 +130,7 @@ ablegen. Original nicht überschreiben.
 
 ### Bilder
 
-`00-bildprompts/99-alle-bildprompts.txt` einmal vollständig an Google Flow geben. Flow arbeitet streng seriell:
+`00-bildprompts/99-alle-bildprompts.txt` verwenden. Flow arbeitet streng seriell:
 
 ```text
 1 Bild erzeugen → warten → prüfen → Bild NN.png → ablegen → prüfen → nächstes
@@ -112,13 +144,15 @@ Bilder gesammelt nach:
 00-bildprompts/00-ALLE-BILDER-HIER-REIN/
 ```
 
+Die Datei `99-technik/BILD_AUDIO_ZUORDNUNG.json` wird in Phase 2 nicht umgeschrieben.
+
 **Übergabe an Phase 3:** aktuelles Reel enthält echtes Audio und alle Bilder.
 
 ---
 
 ## Phase 3 — Antigravity
 
-Antigravity führt ausschließlich die echten aktuellen Assets zusammen.
+Antigravity führt ausschließlich die echten aktuellen Assets zusammen. **Das finale Voice-over ist die Masterspur.** Die Bild↔Audio-Zuordnung ist keine grobe Empfehlung, sondern die inhaltliche Schnittgrundlage.
 
 ### 1. Assets finden und prüfen
 
@@ -128,7 +162,7 @@ npm run organize:assets -- --dir "<reel>" --apply
 npm run check:visuals -- --dir "<reel>" --strict
 ```
 
-Bilder nicht nur nach Dateinummer zuordnen, sondern gegen Prompt/Narration/Bildphase prüfen. Unter 0,90 Konfidenz nicht raten.
+Bilder nicht nur nach Dateinummer zuordnen, sondern gegen Prompt, `spokenText`, Narration und Bildphase prüfen. Bei unsicherer Zuordnung nicht raten.
 
 ### 2. Audio wirklich fertig machen
 
@@ -146,7 +180,23 @@ Pflicht:
 
 Das finale Voice-over darf höchstens **0,25 s Endstille** enthalten. Der separate Schlussbild-Hold kommt erst in der Timeline und beträgt 0,5–0,7 s, Ziel 0,6 s.
 
-### 3. Sounds binden
+### 3. Exakte Bild↔Audio-Ausrichtung
+
+Vor dem Timeline-Bau muss Antigravity:
+
+1. `99-technik/BILD_AUDIO_ZUORDNUNG.json` lesen.
+2. Für jeden Bildmoment `startAnchor` und `endAnchor` im **final optimierten Audio** finden.
+3. Prüfen, dass der erkannte Audiobereich tatsächlich `spokenText` enthält.
+4. `actualStartSeconds` und `actualEndSeconds` aus dem echten Audio ableiten.
+5. Bei nicht eindeutigem Anchor **stoppen und prüfen**, niemals schätzen.
+
+Nicht erlaubt:
+- Bilder pauschal alle X Sekunden wechseln
+- nur `startPercent` verwenden
+- einen Wechsel nach Gefühl setzen
+- einen Satz einem anderen Bild zuordnen, nur um eine gewünschte Dauer zu erreichen
+
+### 4. Sounds binden
 
 ```bash
 npm run sync:sounds -- --dir "<reel>" --strict
@@ -154,19 +204,22 @@ npm run sync:sounds -- --dir "<reel>" --strict
 
 Jeder geplante Soundtyp muss eine reale Datei aus der zentralen Library besitzen. Unbekannte Typen oder fehlende Dateien blockieren.
 
-### 4. Timeline
+### 5. Timeline
 
 ```bash
 npm run build:timeline -- --dir "<reel>" --strict
 ```
 
-- Szenencut ca. 0,10 s vor echtem Szenen-Cue
-- interner Bildcut ca. 0,08 s vor echtem Bild-Cue
+- Szenencut ca. 0,10 s vor echtem Szenen-/Mapping-Anker
+- interner Bildcut ca. 0,08 s vor echtem Bild-Anker
 - SFX ca. 0,04 s vor sichtbarem Cut
+- Mindestdauer einer Bildphase 3,0 s
 - Hook und alle Bildphasen mit sichtbarer Motion
 - keine Crossfades
 
-### 5. Finalisieren und rendern
+Wenn Mapping, echtes Audio und Mindestdauer kollidieren, darf Antigravity nicht blind verschieben. Erst die Zuordnung prüfen.
+
+### 6. Finalisieren und rendern
 
 ```bash
 npm run finalize:reel -- --dir "<reel>" --strict
@@ -187,7 +240,10 @@ Finalizer und Renderer prüfen Motion-/SFX-Coverage, Soundbibliothek, aktuelle A
 
 ## Definition der Übergaben
 
-Phase 1 ist nicht fertig, wenn Motion oder Wechsel-SFX nur „später geplant“ sind.
+Phase 1 ist nicht fertig, wenn:
+- Motion oder Wechsel-SFX nur „später geplant“ sind
+- `99-technik/BILD_AUDIO_ZUORDNUNG.json` fehlt
+- ein Bildmoment keinen eindeutigen `spokenText`-Bereich besitzt
 
 Phase 2 ist nicht fertig, wenn Audio/Bilder aus einem anderen Reel stammen oder Dateien fehlen.
 
@@ -197,6 +253,8 @@ Phase 3 ist nicht fertig, wenn:
 - ein Soundtyp keine echte Library-Datei besitzt
 - Voice-over mehrere Sekunden Endstille enthält
 - Cue-Zeiten nicht am echten finalen Audio liegen
+- Bildwechsel nicht mit `BILD_AUDIO_ZUORDNUNG.json` übereinstimmen
+- ein Bild sichtbar zu früh oder zu spät zum zugehörigen Satz erscheint
 - visuelle QC nicht bestanden ist
 - finale MP4/Caption nicht existieren
 
