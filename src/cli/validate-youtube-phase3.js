@@ -48,7 +48,10 @@ function fail(errors, message) {
 }
 
 function numeric(value) {
-  return Number.isFinite(Number(value)) ? Number(value) : null;
+  if (value === null || value === undefined) return null;
+  if (typeof value === 'string' && value.trim() === '') return null;
+  const number = Number(value);
+  return Number.isFinite(number) ? number : null;
 }
 
 function sameDurationShare(durations, tolerance = 0.12) {
@@ -146,13 +149,14 @@ async function main() {
   }
 
   for (let index = 0; index < images.length - 1; index += 1) {
+    const currentStart = numeric(images[index].actualStartSeconds);
     const currentEnd = numeric(images[index].actualEndSeconds);
     const nextStart = numeric(images[index + 1].actualStartSeconds);
     if (currentEnd !== null && nextStart !== null) {
       if (Math.abs(currentEnd - nextStart) > 0.20) {
         fail(errors, `Mapping-Lücke/Überlappung zwischen Bild ${images[index].imageNumber} und ${images[index + 1].imageNumber}: ${currentEnd} vs ${nextStart}.`);
       }
-      if (nextStart <= numeric(images[index].actualStartSeconds)) {
+      if (currentStart !== null && nextStart <= currentStart) {
         fail(errors, `Startzeiten sind bei Bild ${images[index + 1].imageNumber} nicht streng aufsteigend.`);
       }
     }
@@ -201,8 +205,9 @@ async function main() {
       if (Number(timeItem.imageNumber) !== number) fail(errors, `FINAL_TIMELINE Position ${index + 1}: erwartet Bild ${number}, gefunden ${timeItem.imageNumber}.`);
       const actualAnchor = numeric(mapItem.actualStartSeconds);
       const timelineStart = numeric(timeItem.startSeconds);
-      const expectedTimelineStart = index === 0 ? 0 : Math.max(0, actualAnchor - cutLead);
+      const expectedTimelineStart = index === 0 ? 0 : actualAnchor === null ? null : Math.max(0, actualAnchor - cutLead);
       if (timelineStart === null) fail(errors, `FINAL_TIMELINE Bild ${number}: startSeconds fehlt.`);
+      else if (expectedTimelineStart === null) fail(errors, `FINAL_TIMELINE Bild ${number}: kann ohne actualStartSeconds nicht gegen Audio geprüft werden.`);
       else if (Math.abs(timelineStart - expectedTimelineStart) > 0.15) {
         fail(errors, `FINAL_TIMELINE Bild ${number}: Start ${timelineStart} weicht vom Audio-Anker-Schnitt ${expectedTimelineStart.toFixed(3)} ab.`);
       }
