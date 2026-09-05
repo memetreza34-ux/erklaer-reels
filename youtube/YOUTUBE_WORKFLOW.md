@@ -41,6 +41,81 @@ Regeln:
 
 Vor jeder neuen Anlage wird zuerst `THEMEN_HISTORIE.md` geprüft und danach die passende Kalenderwoche bestimmt.
 
+## Die drei Produktionsphasen — verbindliche Rollen
+
+### Phase 1 — ChatGPT
+
+**Verantwortlich: ChatGPT.**
+
+ChatGPT baut das komplette Produktionspaket, bevor der Nutzer Bilder oder Audio erzeugt:
+- Thema auswählen und gegen `THEMEN_HISTORIE.md` prüfen
+- Fakten recherchieren und Quellen dokumentieren
+- starken finalen YouTube-Titel festlegen
+- Thumbnail-Konzept und `THUMBNAIL-PROMPT.txt` schreiben
+- vollständiges deutsches Voice-over-Script für mindestens 10 Minuten schreiben
+- 50–80 Bildmomente planen, Standard etwa 60
+- jeden Bildprompt auf Englisch und passend zur festen YouTube-Bildwelt schreiben
+- Bildprompts in globale Reihenfolge `Bild 01` bis `Bild NN` bringen
+- 10er-Paketstruktur anlegen
+- Edit-Idee, Motion, SFX, Kapitel und Upload-Metadaten vorbereiten
+- Status auf `phase1 complete / phase2 pending` setzen
+
+Phase 1 erzeugt **keine echten Nutzerbilder, kein echtes Voice-over und keinen finalen Render**.
+
+### Phase 2 — Nutzer / Arman
+
+**Verantwortlich: Nutzer.**
+
+Der Nutzer erzeugt die echten Assets:
+- Voice-over aus `01-voice-script/voice-script.txt` erzeugen/sprechen
+- echte Audiodatei unter `02-audio/` ablegen
+- Google-Flow-Bilder strikt in 10er-Paketen erzeugen
+- jedes Bild sofort prüfen und korrekt global benennen
+- Paket 1 vollständig ablegen, erst dann Paket 2 beginnen usw.
+- Thumbnail separat aus `THUMBNAIL-PROMPT.txt` erzeugen und als finales Asset bereitstellen
+
+Bei 60 Bildern:
+- Ordner 1 = Bild 01–10
+- Ordner 2 = Bild 11–20
+- Ordner 3 = Bild 21–30
+- Ordner 4 = Bild 31–40
+- Ordner 5 = Bild 41–50
+- Ordner 6 = Bild 51–60
+
+Phase 2 ist erst fertig, wenn:
+- alle erwarteten Bildnummern vorhanden sind
+- kein Bild fehlt oder doppelt ist
+- die Bilder im richtigen 10er-Ordner liegen
+- das finale Voice-over vorhanden ist
+- das Thumbnail vorhanden oder eindeutig als noch offen markiert ist
+
+### Phase 3 — Antigravity
+
+**Verantwortlich: Antigravity.**
+
+Antigravity baut aus den echten Assets das fertige YouTube-Video. Es darf keine fehlenden Nutzerbilder erfinden und keine Bilder aus anderen Projekten als Ersatz verwenden.
+
+Reihenfolge:
+1. `youtube/YOUTUBE_WORKFLOW.md`, `youtube/YOUTUBE_VISUAL_WORLD.md`, aktuellen `PRODUKTIONSPLAN.md` und `status.json` lesen.
+2. Alle 10er-Bildordner vollständig prüfen: erwartete Nummern, keine Duplikate, keine Lücken.
+3. Bildinhalte gegen Prompt und Scriptabschnitt prüfen; nicht nur nach Dateinamen vertrauen.
+4. Finales Voice-over prüfen und seine echte Dauer bestimmen.
+5. Script anhand des echten Voice-overs in Bildabschnitte/Cues aufteilen.
+6. Jedes Bild dem passenden gesprochenen Abschnitt zuordnen.
+7. Timeline voice-over-getrieben bauen: Bildwechsel nach Inhalt, nicht starr nach gleichen Sekundenwerten.
+8. Normalerweise etwa 6–12 Sekunden pro Bild; ruhige Storybilder bis etwa 15 Sekunden, schnellere Erklär-/Vergleichsbilder kürzer.
+9. Jedes Bild erhält subtile Bewegung: Push-in, Pull-out, Pan oder Ken-Burns. Keine längeren komplett statischen Frames.
+10. Harte saubere Cuts als Standard; keine unnötigen Crossfades oder Effektsprünge.
+11. SFX gezielt an sichtbare Ereignisse, Kapitelwechsel, Zahlen-Reveals oder Objekte setzen. Nicht jeder Cut braucht zwingend einen Sound wie bei Reels.
+12. Voice-over bleibt deutlich dominant. Keine Meme-Sounds. Hintergrundmusik standardmäßig aus, außer der Nutzer verlangt sie ausdrücklich.
+13. Keine automatischen Untertitel in das Bild brennen, außer der Nutzer verlangt sie ausdrücklich.
+14. Thumbnail nicht in die Videotimeline einbauen; es bleibt separates Upload-Asset.
+15. Finales Video in 16:9 als 1920×1080, 30 fps, H.264 mit sauberem AAC-Audio exportieren.
+16. Finale QC durchführen: mindestens 10:00, keine fehlenden Bilder, keine falsche Reihenfolge, keine unnötig langen Standbilder, keine langen stillen Enden, kein schwarzer Rest am Ende, Audio synchron, Bildwelt konsistent.
+17. Nur nach bestandener QC `03-export/FERTIGES-VIDEO.mp4` ablegen und `status.json` auf fertig setzen.
+
+**Phase 3 darf nichts als fertig melden, was nicht tatsächlich geprüft oder gerendert wurde.**
+
 ## YouTube-Längenstandard
 
 - Neue YouTube-Langvideos sind mindestens 10 Minuten lang.
@@ -108,7 +183,7 @@ themen-slug/
 
 ## 10-Bilder-Paketregel — verbindlich
 
-YouTube-Szenenbilder werden ab sofort immer in Arbeitsblöcken von maximal 10 Bildern erzeugt und abgelegt.
+YouTube-Szenenbilder werden immer in Arbeitsblöcken von maximal 10 Bildern erzeugt und abgelegt.
 
 Bei 60 Bildern ist die Struktur exakt:
 
@@ -137,19 +212,6 @@ Wichtig:
 - Der letzte Ordner darf weniger als 10 Bilder enthalten, wenn die Gesamtzahl nicht durch 10 teilbar ist.
 - Das Thumbnail zählt nicht zu diesen 10er-Paketen und bleibt separat.
 
-## Produktionsphasen
-
-1. Themenprüfung: `THEMEN_HISTORIE.md` lesen; keine gleiche oder nahezu gleiche Kernfrage wiederverwenden.
-2. Woche bestimmen: passende ISO-Wochenmappe nach dem Reel-Namensprinzip wählen oder anlegen.
-3. Recherche: wichtige Aussagen mit belastbaren Quellen prüfen und intern dokumentieren.
-4. Script: endgültiges Voice-over unter `01-voice-script/voice-script.txt` schreiben.
-5. Bilder planen: vollständige Flow-Prompts unter `00-bildprompts/` ablegen.
-6. Bilder erzeugen: strikt nach der 10-Bilder-Paketregel arbeiten und jedes fertige Paket sofort korrekt ablegen.
-7. Thumbnail: eigenes starkes Cover-Konzept plus finalen Thumbnail-Prompt erstellen.
-8. Edit: Schnitt, Bildwechsel, Zoom/Pan, SFX und Timing intern in `99-technik/` planen.
-9. Upload-Metadaten: genau einen finalen Titel, Beschreibung, Kapitel und optionale Tags vorbereiten.
-10. Export: finale MP4 und finales Thumbnail nach `03-export/` legen.
-
 ## Google Flow
 
 - Szenenbilder 16:9.
@@ -175,7 +237,7 @@ Thumbnail darf stärker, kontrastreicher und fokussierter als normale Szenenbild
 
 ## Interner Status
 
-`99-technik/status.json` ist die kanonische Statusdatei. `99-technik/video.json` enthält die internen Projektmetadaten. Nichts als fertig markieren, was nicht tatsächlich erzeugt oder geprüft wurde.
+`99-technik/status.json` ist die kanonische Statusdatei. Sie muss Phase 1/2/3 mit Verantwortlichem und tatsächlichem Stand abbilden. `99-technik/video.json` enthält die internen Projektmetadaten. Nichts als fertig markieren, was nicht tatsächlich erzeugt oder geprüft wurde.
 
 ## Schutz gegen Struktur-Rückfall
 
@@ -187,6 +249,8 @@ Neue Chats und Agenten dürfen nicht:
 - den 10-Minuten-Mindeststandard ohne ausdrückliche Nutzerentscheidung wieder auf 5–6 Minuten zurücksetzen
 - alle geplanten YouTube-Bilder erst komplett erzeugen und erst danach sortieren
 - die 10-Bilder-Paketgrenzen überspringen
+- Phase 1/2/3 vermischen
+- Antigravity fehlende Nutzerassets erfinden oder aus anderen Projekten übernehmen lassen
 - eine `UNIVERSELLE-CAPTION.txt` für YouTube erzeugen
 - fehlende Bilder, Audio, Thumbnail oder Renderstatus als fertig melden
 
