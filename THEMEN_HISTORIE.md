@@ -30,7 +30,7 @@ Diese Datei ist die verbindliche Themenliste für **alle Erklärformate in diese
 
 ### YouTube
 
-- Video 01: Warum hat ein Tag 24 Stunden – und nicht 10?
+- KW36 (31.08.–06.09.2026): Warum hat ein Tag 24 Stunden – und nicht 10?
 
 ## Duplicate-Regel
 
@@ -41,3 +41,5 @@ Beispiele:
 - `Wieso sieht man den Mond tagsüber?` ist ein Duplikat von `Warum sehen wir den Mond am Tag?`.
 
 Die Sperre gilt formatübergreifend: Ein bereits verwendetes Reel-Thema wird nicht einfach als YouTube-Langvideo wiederholt und umgekehrt, außer der Nutzer hebt diese Regel ausdrücklich für ein konkretes Thema auf.
+
+Für YouTube wird zusätzlich die Wochenzuordnung dokumentiert; die Produktionsordner liegen nach `youtube/<Woche>/<Thema>/`.

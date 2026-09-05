@@ -1,7 +1,9 @@
-# PRODUKTIONSPLAN — VIDEO 01
+# PRODUKTIONSPLAN — Warum hat ein Tag 24 Stunden – und nicht 10?
 
 ## Kern
 
+- Woche: `2026-KW36_31-08_bis_06-09`
+- Themenordner: `warum-hat-ein-tag-24-stunden`
 - Projekttitel: Warum hat ein Tag 24 Stunden – und nicht 10?
 - Format: YouTube Longform
 - Sprache: Deutsch

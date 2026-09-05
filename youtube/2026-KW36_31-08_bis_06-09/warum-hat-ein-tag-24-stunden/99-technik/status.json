@@ -1,7 +1,9 @@
 {
-  "version": 1,
-  "project": "video-01_warum-hat-ein-tag-24-stunden",
-  "updatedAt": "2026-09-04",
+  "version": 2,
+  "project": "2026-KW36_31-08_bis_06-09/warum-hat-ein-tag-24-stunden",
+  "weekFolder": "2026-KW36_31-08_bis_06-09",
+  "topicSlug": "warum-hat-ein-tag-24-stunden",
+  "updatedAt": "2026-09-05",
   "phase1": {
     "topic": "complete",
     "duplicateCheck": "complete",

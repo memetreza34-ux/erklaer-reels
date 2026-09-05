@@ -1,6 +1,8 @@
 {
-  "schemaVersion": 2,
-  "videoId": "video-XX_slug",
+  "schemaVersion": 3,
+  "videoId": "YYYY-KWNN_topic-slug",
+  "weekFolder": "YYYY-KWNN_DD-MM_bis_DD-MM",
+  "topicSlug": "topic-slug",
   "title": "",
   "topic": "",
   "status": "planned",
@@ -26,6 +28,7 @@
   "titleRequired": true,
   "thumbnailRequired": true,
   "topicDuplicateCheckRequired": true,
+  "folderRule": "youtube/<weekFolder>/<topicSlug>/",
   "createdAt": "",
   "updatedAt": ""
 }
