@@ -2,9 +2,13 @@
 
 Dieser Bereich ist die eigenständige Produktionspipeline für YouTube-Langvideos. Reels bleiben getrennt unter `reels/`.
 
-## Verbindliche Regel
+## Verbindliche Regeln
 
-Für YouTube zuerst `youtube/YOUTUBE_WORKFLOW.md` lesen, danach `youtube/YOUTUBE_VISUAL_WORLD.md`.
+Für YouTube zuerst lesen:
+
+1. `youtube/YOUTUBE_WORKFLOW.md`
+2. `youtube/PHASE3_HARD_GATE.md`
+3. `youtube/YOUTUBE_VISUAL_WORLD.md`
 
 ## Drei Phasen
 
@@ -17,8 +21,8 @@ Phase 2 — Nutzer
 → Voice-over, Bild 00 als Thumbnail und Google-Flow-Videobilder in 10er-Paketen
 
 Phase 3 — Antigravity
-→ Assets prüfen, echte Audio-Anker messen, Timeline exakt danach bauen,
-  Motion/Zoom, SFX, QC und finalen 16:9-Render erzeugen
+→ Assets prüfen, echte Audio-Anker messen, FINAL_TIMELINE.json daraus bauen,
+  Pre-Render-Hard-Gate bestehen, rendern, Post-Render-Hard-Gate bestehen
 ```
 
 ## Ordnerprinzip
@@ -49,41 +53,74 @@ Die eigentlichen Videobilder beginnen immer mit **Bild 01**.
 
 ## Bild↔Voice-over-Zuordnung
 
-Die wichtigste Datei für den späteren Schnitt ist:
+Kanonische Datei:
 
 ```text
 99-technik/BILD_AUDIO_ZUORDNUNG.json
 ```
 
 Sie legt für jedes `Bild NN` fest:
-- exakten `startAnchor` aus dem gesprochenen Script
-- `endAnchor` = Start des nächsten Bildes
+- exakten `startAnchor`
+- `endAnchor`
 - Bilddatei und 10er-Ordner
 - visuellen Zweck
-- später die echten Audio-Zeitstempel
-- Alignment-Sicherheit
+- später `actualStartSeconds`
+- später `actualEndSeconds`
+- später `alignmentConfidence`
 
-Dadurch weiß Antigravity exakt, **welcher Satz/Satzteil zu welchem Bild gehört**.
+## Entscheidend: Phase 3 darf keine Slideshow bauen
 
-## Phase 3 — entscheidende Timing-Regel
+Das echte finale Voice-over ist die Timing-Masterspur.
 
-Das echte Voice-over ist die Masterspur. Antigravity schneidet **nicht nach pauschalen 8/10/12 Sekunden**.
+**Verboten:**
 
-- Startanker im finalen Audio finden
-- echten Zeitstempel messen
-- Bildwechsel standardmäßig ca. 0,08 s vor diesem Anker setzen
-- Bild bleibt bis zum Start des nächsten Bildes aktiv
-- bei unsicherem Match nicht raten
-- bei zu langer Bildphase Mapping neu aufteilen, statt den Cut künstlich zu verschieben
+```text
+Videolänge ÷ Bildanzahl = feste Bilddauer
+```
 
-Ziel: Wenn der neue Satz beginnt, ist genau das passende Bild bereits minimal vorher sichtbar — weder deutlich zu früh noch zu spät.
+Also keine pauschalen 8-, 10-, 12- oder anderen gleichmäßigen Holds.
+
+Antigravity muss zuerst alle echten Audio-Anker messen und daraus erzeugen:
+
+```text
+99-technik/FINAL_TIMELINE.json
+```
+
+Erst danach darf gerendert werden.
+
+## Nicht umgehbare Render-Gates
+
+### Vor Render
+
+```bash
+npm run validate:youtube-phase3 -- --dir "youtube/<woche>/<thema>"
+```
+
+Nur **Exit-Code 0** erlaubt den Render.
+
+Der Gate blockiert u. a.:
+- fehlende Bilddateien
+- fehlende/falsche Bildnummern
+- `actualStartSeconds`, `actualEndSeconds` oder `alignmentConfidence` = `null`
+- Alignment unter 0,95
+- fehlende/falsche `FINAL_TIMELINE.json`
+- Timeline, die nicht den echten Audio-Ankern folgt
+- verdächtig gleichmäßige Slideshow-Dauern
+
+### Nach Render
+
+```bash
+npm run validate:youtube-render -- --dir "youtube/<woche>/<thema>"
+```
+
+Auch dieser Befehl muss Exit-Code 0 liefern. Ein langer stiller Nachlauf nach dem Voice-over ist verboten.
 
 ## YouTube-Standard
 
 - mindestens 10 Minuten
 - normalerweise 10–12 Minuten
 - 50–80 Videobilder, Bildanzahl nach Scriptbedarf
-- meist 6–12 s pro Bild, normal höchstens ca. 15 s
+- meist 6–12 s pro Bild als Planungsbereich, aber **final bestimmt das Audio**
 - 16:9
 - `youtube-editorial-stick-explainer`
 - subtile Motion auf jedem Bild
@@ -101,8 +138,6 @@ Bild 11–20 → erst danach
 ...
 ```
 
-Jeder 10er-Ordner darf zusätzlich `ZUORDNUNG.md` mit seinen zehn Voice-over-Ankern enthalten.
-
 ## Finaler Export
 
 ```text
@@ -115,7 +150,7 @@ Jeder 10er-Ordner darf zusätzlich `ZUORDNUNG.md` mit seinen zehn Voice-over-Ank
 └── YOUTUBE-TAGS.txt
 ```
 
-Für YouTube gibt es keine `UNIVERSELLE-CAPTION.txt`.
+Ein Video ist erst final, wenn **Pre-Render- und Post-Render-Hard-Gate tatsächlich bestanden wurden**.
 
 ## Themen-Duplikate
 
