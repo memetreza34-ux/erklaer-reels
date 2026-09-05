@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "currentPhase": 1,
   "phase1": {
     "owner": "ChatGPT",
@@ -8,10 +8,11 @@
     "duplicateCheck": "pending",
     "research": "pending",
     "title": "pending",
-    "thumbnailPlan": "pending",
+    "thumbnailBild00": "pending",
     "script": "pending",
     "imagePrompts": "pending",
     "tenImageFolderStructure": "pending",
+    "imageAudioMapping": "pending",
     "editPlan": "pending",
     "uploadMetadata": "pending"
   },
@@ -20,15 +21,17 @@
     "status": "blocked-until-phase1-complete",
     "voiceover": "missing",
     "imageBatches": "missing",
-    "thumbnail": "missing"
+    "thumbnailBild00": "missing"
   },
   "phase3": {
     "owner": "Antigravity",
     "status": "blocked-until-phase2-complete",
     "assetValidation": "pending",
     "audioAnalysis": "pending",
+    "plannedImageMapping": "pending",
+    "actualAnchorAlignment": "pending",
+    "alignmentConfidenceQC": "pending",
     "voiceDrivenTiming": "pending",
-    "imageMapping": "pending",
     "motion": "pending",
     "soundDesign": "pending",
     "render": "pending",
