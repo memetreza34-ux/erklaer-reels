@@ -6,12 +6,12 @@
 - Thema: `warum-hat-ein-tag-24-stunden`
 - Format: YouTube Longform, 16:9
 - Mindestlänge: 10:00
-- Ziel: ca. 10:30–11:15
 - Script: ca. 1.529 Wörter
 - Videobilder: 60
 - Bild 00: ausschließlich Thumbnail
 - Bildwelt: `youtube-editorial-stick-explainer`
-- Status: Phase 1 fertig, Phase 2 beim Nutzer, Phase 3 wartet auf echte Assets
+- Status: **Phase 3 muss neu aufgebaut werden; zuletzt geprüfter Render ist ungültig**
+- Fehlerdetails: `99-technik/RENDER_FEHLERANALYSE.md`
 
 ## Phase 1 — ChatGPT — fertig
 
@@ -19,18 +19,18 @@ Vorbereitet:
 - Thema + Duplicate-Check
 - Recherche + Quellen
 - finaler Titel
-- **Bild 00 / Thumbnail-Prompt** unter `00-bildprompts/00_thumbnail/Bild 00 - Thumbnail.txt`
+- Bild 00 / Thumbnail-Prompt
 - vollständiges Voice-over-Script
 - 60 Video-Bildprompts
 - sechs 10er-Ordner
-- pro 10er-Ordner `ZUORDNUNG.md`
-- **kanonische Datei `99-technik/BILD_AUDIO_ZUORDNUNG.json`**
+- pro 10er-Ordner Voice-over-Zuordnung
+- kanonische Datei `99-technik/BILD_AUDIO_ZUORDNUNG.json`
 - Upload-Metadaten
 - Motion-/SFX-Grundplan
 
 ## Phase 2 — Nutzer
 
-Der Nutzer erzeugt:
+Benötigte echte Assets:
 - finales Voice-over aus `01-voice-script/voice-script.txt`
 - `Bild 00.png` als Thumbnail
 - `Bild 01.png` bis `Bild 60.png` als Videobilder
@@ -49,47 +49,114 @@ Der Nutzer erzeugt:
 
 Bild 00 gehört nie in die Videotimeline.
 
-## Phase 3 — Antigravity — exakte Audio-Synchronisierung
+## Phase 3 — Antigravity — kompletter Neuaufbau erforderlich
 
-Antigravity benutzt **nicht** eine starre Bilddauer. Das finale Voice-over ist die Masterspur.
+Der zuletzt geprüfte Render ist **nicht verwendbar**. Antigravity darf ihn nicht weiterbearbeiten oder nur teilweise korrigieren.
 
-Pflichtablauf:
-1. `YOUTUBE_WORKFLOW.md`, `YOUTUBE_VISUAL_WORLD.md`, `status.json` und `BILD_AUDIO_ZUORDNUNG.json` lesen.
-2. Bild 00 vom Videoschnitt ausschließen.
-3. Alle Bilder 01–60 und deren 10er-Ordner prüfen.
-4. Bildinhalt gegen Prompt und zugeordneten Voice-over-Bereich prüfen.
-5. Finales Audio analysieren.
-6. Für jedes Bild den in `BILD_AUDIO_ZUORDNUNG.json` gespeicherten **exakten `startAnchor`** im echten Audio finden.
-7. Tatsächlichen Zeitstempel des gesprochenen Ankers messen.
-8. Bildwechsel standardmäßig ca. 0,08 s vor diesem echten Anker setzen.
-9. Bild bleibt bis zum nächsten Bildanker aktiv.
-10. Keine Schnitte nur aufgrund geschätzter 8/10/12-Sekunden-Dauern setzen.
-11. Bei Alignment-Sicherheit unter 0,95 nicht raten, sondern manuell prüfen.
-12. Wenn ein Voice-over-Bereich deutlich über ca. 15 s liegt, Mapping/Prompts neu aufteilen; den Cut nicht künstlich verschieben.
-13. Danach subtile Motion, gezielte SFX und finale QC.
-14. Export erst nach bestandener Prüfung.
+Neuaufbau erfolgt ausschließlich aus:
+- finalem Voice-over
+- Bild 01–60
+- `BILD_AUDIO_ZUORDNUNG.json`
 
-### Warum diese Zuordnung wichtig ist
+### Schritt 1 — echte Audio-Anker messen
 
-Beispiel:
+Für **jedes Bild 01–60**:
+1. `startAnchor` aus `BILD_AUDIO_ZUORDNUNG.json` im finalen Audio finden
+2. exakte Startzeit messen
+3. als `actualStartSeconds` eintragen
+4. `actualEndSeconds` auf den echten Start des nächsten Bildbereichs setzen
+5. beim letzten Bild `actualEndSeconds` auf das Voice-over-Ende setzen
+6. `alignmentConfidence` eintragen
+7. bei < 0,95 manuell prüfen und nicht raten
+
+**Keiner dieser Werte darf beim Render noch `null` sein.**
+
+### Schritt 2 — FINAL_TIMELINE.json erzeugen
+
+Pflichtdatei:
 
 ```text
-Bild 17
-startAnchor: "Doch je komplexer Gesellschaften wurden"
-endAnchor:   "Im alten Ägypten entstanden deshalb frühe Formen von Sonnenuhren und Schattenuhren."
+99-technik/FINAL_TIMELINE.json
 ```
 
-Damit ist eindeutig: **Der komplette gesprochene Bereich zwischen diesen beiden Ankern gehört zu Bild 17.** Sobald der nächste Anker beginnt, muss Bild 18 bereits minimal vorher sichtbar sein.
+Regeln:
+- genau 60 Einträge: Bild 01–60
+- Bild 00 ausgeschlossen
+- Bild 01 startet bei 0:00
+- Bild 02–60 starten standardmäßig ca. 0,08 s vor ihrem echten Audio-Anker
+- jedes Bild endet exakt beim Start des nächsten Bildes
+- letztes Bild endet ca. 0,60 s nach Voice-over-Ende
+- keine pauschalen gleichen Holds
+
+### Schritt 3 — PRE-RENDER-HARD-GATE
+
+Vor dem Render zwingend:
+
+```bash
+npm run validate:youtube-phase3 -- --dir "youtube/2026-KW36_31-08_bis_06-09/warum-hat-ein-tag-24-stunden"
+```
+
+**Exit-Code 0 ist Pflicht. Bei Fehler: kein Render.**
+
+Der Gate prüft insbesondere:
+- alle 60 Bilder vorhanden
+- lückenlose Nummerierung
+- Audio-Mapping vollständig
+- keine `null`-Zeitwerte
+- Alignment ≥ 0,95
+- `FINAL_TIMELINE.json` vorhanden und passend
+- Anti-Slideshow-Prüfung: keine nahezu identischen Dauern für den Großteil der Bilder
+- letztes Mapping-Ende passt zum echten Voice-over-Ende
+
+### Schritt 4 — Edit
+
+Erst nach bestandenem Gate:
+- subtile Motion auf jedem Bild
+- harte saubere Cuts
+- gezielte SFX
+- Voice-over dominant
+- keine Hintergrundmusik, solange nicht ausdrücklich gewünscht
+- keine eingebrannten Untertitel
+
+### Schritt 5 — Render
+
+- 1920×1080
+- 30 fps
+- H.264
+- AAC
+
+Der Render darf **nicht** aus einer Formel wie `Gesamtdauer / 60 Bilder` gebaut werden.
+
+### Schritt 6 — POST-RENDER-HARD-GATE
+
+Nach dem Render zwingend:
+
+```bash
+npm run validate:youtube-render -- --dir "youtube/2026-KW36_31-08_bis_06-09/warum-hat-ein-tag-24-stunden"
+```
+
+Nur Exit-Code 0 bedeutet fertig.
+
+Post-Render-QC blockiert insbesondere einen langen Nachlauf nach dem Voice-over. Erlaubt ist nur ein kurzer Schluss-Hold.
+
+## Bekannter Fehler des alten Renders
+
+Der geprüfte fehlerhafte Render zeigte ein typisches Slideshow-Muster:
+- fast gleich lange Bildphasen
+- Bildwechsel nicht an echten gesprochenen Satzwechseln
+- zunehmender Audio/Bild-Versatz
+- ungefähr 19,8 s Video-Nachlauf nach Voice-over
+- Abschlussbild nicht zuverlässig korrekt ausgespielt
+
+Dieser Zustand darf durch die neuen Gates nicht mehr renderbar sein.
 
 ## Timing-QC
 
-- Ziel meist 6–12 s pro Bild
-- normal höchstens etwa 15 s
-- Inhalt/Cue hat Vorrang vor einer Zielsekundenzahl
-- kein Bild mehrere Wörter oder Sätze zu früh
-- kein Bildwechsel erst nach Beginn des neuen Gedankens
-- Start standardmäßig ca. 0,08 s vor nächstem echten Audio-Anker
-- finale Zeiten werden erst nach Vorliegen des echten Voice-overs eingetragen
+- Inhalt/Cue hat Vorrang vor Zielsekunden
+- keine Bilddauer wird künstlich auf 8/10/12 s gebracht
+- ein Bild darf nicht mehrere Wörter/Sätze zu früh erscheinen
+- ein Bildwechsel darf nicht erst nach Beginn des neuen Gedankens kommen
+- bei zu langem Voice-over-Bereich Mapping/Bildplanung korrigieren, nicht Timeline fälschen
 
 ## Motion / Zoom
 
@@ -118,13 +185,6 @@ Keine langen statischen Slides, keine hektischen Reel-Zooms.
 - NASA — Reference Systems / Rotation and Revolution: https://science.nasa.gov/learn/basics-of-space-flight/chapter2-1/
 - NIST — Second: Introduction / The Past: https://www.nist.gov/si-redefinition/second-introduction
 
-## Fakten-QC
-
-- Fingerglieder-Erklärung für Zwölf nur als mögliche Erklärung, nicht als Gewissheit.
-- Siderischer Tag und mittlerer Sonnentag getrennt erklären.
-- 24 Stunden sind menschliche Unterteilung, keine Naturkonstante.
-- Basis 60 als historisch/mathematisch praktisch beschreiben, ohne unsichere Ursprungsbehauptung.
-
 ## Finaler Export
 
 ```text
@@ -137,4 +197,4 @@ Keine langen statischen Slides, keine hektischen Reel-Zooms.
 └── YOUTUBE-TAGS.txt
 ```
 
-Erst nach realem Audio-Alignment, Motion/SFX und QC als fertig markieren.
+Erst nach **bestandenem Pre-Render-Gate + neuem Render + bestandenem Post-Render-Gate** als fertig markieren.
