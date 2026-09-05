@@ -1,0 +1,20 @@
+# BILD 00 — THUMBNAIL
+
+Bild 00 ist ausschließlich das YouTube-Thumbnail.
+
+Regeln:
+- 16:9
+- eigener starker Thumbnail-Prompt
+- nach Erzeugung Dateiname `Bild 00.png`
+- niemals in die Videotimeline einbauen
+- zählt nicht zu den 10er-Videobildpaketen
+- Videobilder beginnen immer mit `Bild 01.png`
+
+FINALER TITEL:
+[eintragen]
+
+THUMBNAIL-TEXT:
+[eintragen]
+
+PROMPT:
+[englischen finalen Thumbnail-Prompt eintragen]
