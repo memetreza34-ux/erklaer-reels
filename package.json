@@ -19,7 +19,7 @@
     "validate:reel": "node src/cli/run-with-reel-layout.js src/cli/validate-reel.js",
     "validate:render": "node src/cli/run-with-reel-layout.js src/cli/render-reel.js --validate-only",
     "discover:assets": "node src/cli/run-with-reel-layout.js src/cli/discover-assets.js",
-    "organize:assets": "node src/cli/run-with-reel-layout.js src/cli/organize-assets.js --apply",
+    "organize:assets": "node src/cli/run-with-reel-layout.js src/cli/organize-assets.js",
     "organize:finder": "node src/cli/run-with-reel-layout.js src/cli/organize-finder.js",
     "trim:pauses": "node src/cli/run-with-reel-layout.js src/cli/trim-pauses.js",
     "sync:image-audio-map": "node src/cli/sync-image-audio-mapping.js",
