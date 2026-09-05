@@ -14,7 +14,59 @@
 - Bildwelt: `youtube-editorial-stick-explainer`
 - Format: 16:9
 - Thumbnail-Text: `WARUM 24?!`
-- Status: Phase 1 vollständig vorbereitet; echte Bilder, Audio, Thumbnail und Render noch ausstehend.
+- Status: Phase 1 fertig; Phase 2 wartet auf Nutzerassets; Phase 3 wartet auf Antigravity.
+
+## Verbindliche Rollen
+
+### Phase 1 — ChatGPT — fertig
+
+ChatGPT hat vorbereitet:
+- Thema + Duplicate-Check
+- Recherche + Quellen
+- finalen Titel
+- Thumbnail-Konzept + Prompt
+- vollständiges Voice-over-Script
+- 60 Bildprompts
+- sechs 10er-Bildordner
+- Upload-Metadaten
+- Edit-/Motion-/SFX-Grundplan
+
+### Phase 2 — Nutzer — als Nächstes
+
+Der Nutzer erzeugt:
+- echtes Voice-over nach `01-voice-script/voice-script.txt`
+- Bild 01–60 in Google Flow
+- immer genau ein 10er-Paket nach dem anderen
+- korrekte globale Dateinamen `Bild 01.png` bis `Bild 60.png`
+- Ablage in den sechs vorgesehenen Ordnern
+- Thumbnail separat aus `00-bildprompts/THUMBNAIL-PROMPT.txt`
+
+Erst wenn Audio und alle Bilder vollständig vorliegen, beginnt Phase 3.
+
+### Phase 3 — Antigravity — noch nicht gestartet
+
+Antigravity macht das eigentliche fertige Video.
+
+Arbeitsreihenfolge:
+1. Workflow, Bildwelt, diesen Produktionsplan und `status.json` lesen.
+2. Alle sechs 10er-Ordner prüfen: exakt die erwarteten Bildnummern, keine Lücke, kein Duplikat.
+3. Sichtbaren Bildinhalt gegen Prompt und Script prüfen.
+4. Echtes Voice-over laden, Dauer bestimmen und als Masterspur verwenden.
+5. Script nach dem realen gesprochenen Timing in passende Bildabschnitte aufteilen.
+6. Bild 01–60 inhaltlich den gesprochenen Abschnitten zuordnen.
+7. Timeline nicht starr nach identischen Sekunden bauen, sondern nach gesprochenem Inhalt.
+8. Normalerweise ungefähr 6–12 s pro Bild; ruhige Storybilder bis etwa 15 s, Erklär-/Vergleichsbilder kürzer.
+9. Auf jedes Bild subtile Motion setzen: abwechselnd Push-in, Pull-out, Pan oder Ken-Burns. Keine langen statischen Standbilder.
+10. Harte saubere Cuts als Standard; keine unnötigen Crossfades.
+11. SFX gezielt nutzen: Kapitelwechsel, Zahlen-/Diagramm-Reveal, Glocke/Uhr, Wasseruhr oder andere sichtbare Ereignisse. Nicht jeden Cut zwanghaft vertonen.
+12. Voice-over klar dominant halten; keine Meme-Sounds; Hintergrundmusik aus, solange der Nutzer sie nicht ausdrücklich verlangt.
+13. Keine eingebrannten Untertitel, solange der Nutzer sie nicht ausdrücklich verlangt.
+14. Thumbnail bleibt separates Upload-Asset und wird nicht in die Timeline eingebaut.
+15. Export: 1920×1080, 30 fps, H.264, AAC-Audio.
+16. Finale QC: mindestens 10:00, Audio-Sync korrekt, Bildreihenfolge korrekt, kein fehlendes Asset, keine langen statischen Stellen, kein unnötiger schwarzer oder stiller Nachlauf, konsistente Bildwelt.
+17. Erst nach bestandener QC `03-export/FERTIGES-VIDEO.mp4` als fertig markieren.
+
+Antigravity darf fehlende Bilder niemals selbst erfinden oder Assets aus einem anderen Video als Ersatz übernehmen.
 
 ## Warum dieses Thema
 
@@ -124,6 +176,7 @@ Für die tatsächliche Bildproduktion werden diese 60 Bilder strikt in sechs 10e
 ## Bildwechsel
 
 - Durchschnittlich ca. 9–11 Sekunden pro Bild bei 10–11 Minuten Laufzeit.
+- Final bestimmt aber das echte Voice-over die Schnittpunkte.
 - Ruhige Storybilder: ca. 10–14 Sekunden.
 - Diagramm-/Vergleichsbilder: ca. 6–9 Sekunden.
 - Kein Bild länger als ungefähr 15 Sekunden ohne bewussten Grund.
@@ -158,7 +211,7 @@ Empfehlung:
 - keine Meme-Sounds
 - Voice-over bleibt deutlich dominant
 
-Hintergrundmusik ist für dieses Projekt noch nicht als Pflicht festgelegt. Wenn Musik verwendet wird, dann sehr leise und dokumentarisch; sonst komplett ohne Musik.
+Hintergrundmusik bleibt standardmäßig aus, solange der Nutzer sie nicht ausdrücklich verlangt.
 
 ## Thumbnail
 
@@ -187,9 +240,9 @@ Noch nicht vorhanden und darf nicht als fertig gelten:
 - finales Thumbnail PNG
 - finale MP4
 
-## Google Flow — neue verbindliche Arbeitsweise
+## Google Flow — verbindliche Arbeitsweise in Phase 2
 
-Nicht mehr alle 60 Bilder hintereinander erzeugen und erst später sortieren.
+Nicht alle 60 Bilder hintereinander erzeugen und erst später sortieren.
 
 ### Paket 1
 1. Nur Bild 01 bis Bild 10 bearbeiten.
