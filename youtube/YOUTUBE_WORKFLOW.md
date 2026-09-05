@@ -8,10 +8,11 @@ Diese Datei ist die verbindliche Regelquelle für den YouTube-Langvideo-Bereich 
 
 1. aktuelle ausdrückliche Nutzeranweisung
 2. `youtube/YOUTUBE_WORKFLOW.md`
-3. `youtube/YOUTUBE_VISUAL_WORLD.md`
-4. `THEMEN_HISTORIE.md`
-5. `CURRENT_WORKFLOW.md` nur für repo-weite Sicherheitsprinzipien
-6. ältere YouTube-Projekte
+3. `youtube/PHASE3_HARD_GATE.md`
+4. `youtube/YOUTUBE_VISUAL_WORLD.md`
+5. `THEMEN_HISTORIE.md`
+6. `CURRENT_WORKFLOW.md` nur für repo-weite Sicherheitsprinzipien
+7. ältere YouTube-Projekte
 
 Reel-Regeln werden nicht automatisch auf YouTube übertragen.
 
@@ -58,7 +59,7 @@ Bei 60 Videobildern:
 00-bildprompts/
 ├── 00_thumbnail/
 │   ├── Bild 00 - Thumbnail.txt
-│   └── Bild 00.png                # sobald erzeugt
+│   └── Bild 00.png
 ├── 01_bilder-01-bis-10/
 ├── 02_bilder-11-bis-20/
 ├── 03_bilder-21-bis-30/
@@ -71,21 +72,97 @@ Bild 00 zählt **niemals** zu den Videobildern und niemals zu einem 10er-Paket.
 
 ### Phase 3 — Antigravity
 
-Antigravity baut aus den echten Assets das fertige Video. **Die Voice-over-Spur ist die Masterspur.** Antigravity darf Bildwechsel niemals nur nach geschätzten Sekunden oder nach Gefühl setzen.
+Antigravity baut aus den echten Assets das fertige Video. **Die Voice-over-Spur ist die Masterspur.** Antigravity darf Bildwechsel niemals nur nach geschätzten Sekunden, Dateinummern oder nach Gefühl setzen.
 
 Verbindliche Reihenfolge:
-1. `YOUTUBE_WORKFLOW.md`, `YOUTUBE_VISUAL_WORLD.md`, `PRODUKTIONSPLAN.md`, `status.json` und `BILD_AUDIO_ZUORDNUNG.json` lesen.
+1. `YOUTUBE_WORKFLOW.md`, `PHASE3_HARD_GATE.md`, `YOUTUBE_VISUAL_WORLD.md`, `PRODUKTIONSPLAN.md`, `status.json` und `BILD_AUDIO_ZUORDNUNG.json` lesen.
 2. Bild 00 als Thumbnail erkennen und **niemals** in die Videotimeline einbauen.
 3. Alle 10er-Ordner prüfen: richtige Bildnummern, keine Lücke, kein Duplikat.
 4. Bildinhalt gegen den geplanten Prompt und den zugeordneten Voice-over-Abschnitt prüfen.
 5. Finales Voice-over laden und echte Audiodauer bestimmen.
 6. Für jeden Eintrag in `BILD_AUDIO_ZUORDNUNG.json` den `startAnchor` im **tatsächlich gesprochenen finalen Audio** suchen.
 7. Echten Zeitstempel des ersten gesprochenen Wortes dieses Ankers bestimmen und als `actualStartSeconds` übernehmen.
-8. `Bild NN` beginnt standardmäßig ca. **0,08 s vor** diesem echten Startanker. Bild 01 beginnt bei 0:00, sofern sein Anker direkt der erste Satz ist.
-9. `Bild NN` endet exakt dort, wo das nächste Bild beginnt. Das letzte Bild endet mit dem gesprochenen Inhalt plus kurzem sauberen Endhold.
-10. Niemals einen Cut verschieben, nur damit ein geschätzter Sekundenwert erreicht wird. **Inhalt/Cue schlägt Schätzung.**
-11. Wenn ein Anker im Audio nicht mit hoher Sicherheit gefunden wird, nicht raten: Stelle markieren und manuell prüfen.
-12. Danach Motion, SFX und finale QC durchführen.
+8. `actualEndSeconds` auf den echten Start des nächsten Bildabschnitts setzen; beim letzten Bild auf das tatsächliche Voice-over-Ende.
+9. `alignmentConfidence` für jedes Bild dokumentieren; unter 0,95 nicht raten, sondern manuell prüfen.
+10. Aus den echten Audio-Zeiten `99-technik/FINAL_TIMELINE.json` erzeugen.
+11. `Bild NN` beginnt standardmäßig ca. **0,08 s vor** diesem echten Startanker. Bild 01 beginnt bei 0:00, sofern sein Anker direkt der erste Satz ist.
+12. `Bild NN` endet exakt dort, wo das nächste Bild beginnt. Das letzte Bild endet mit Voice-over plus kurzem Schluss-Hold, Ziel 0,60 s.
+13. Niemals einen Cut verschieben, nur damit ein geschätzter Sekundenwert erreicht wird. **Inhalt/Cue schlägt Schätzung.**
+14. Danach Motion und SFX planen.
+15. **Vor jedem Render zwingend den Pre-Render-Hard-Gate ausführen.**
+16. Erst bei Exit-Code 0 rendern.
+17. Nach dem Render zwingend den Post-Render-Hard-Gate ausführen.
+
+## NICHT UMGANGBARER PRE-RENDER-HARD-GATE
+
+Vor einem YouTube-Render muss Antigravity zwingend ausführen:
+
+```bash
+npm run validate:youtube-phase3 -- --dir "youtube/<woche>/<thema>"
+```
+
+**Exit-Code ungleich 0 = Render verboten.**
+
+Der Gate blockiert unter anderem:
+- fehlende Bilder
+- falsche Bildnummerierung
+- Bild 00 in der Timeline
+- `actualStartSeconds: null`
+- `actualEndSeconds: null`
+- `alignmentConfidence: null`
+- Konfidenz < 0,95
+- Lücken/Überlappungen in der Bild↔Audio-Zuordnung
+- fehlende `FINAL_TIMELINE.json`
+- Timeline-Zeiten, die nicht zu den Audio-Ankern passen
+- eine verdächtig gleichmäßige Slideshow mit nahezu identischen Bilddauern
+- ein Mapping-Ende, das nicht zum tatsächlichen Voice-over-Ende passt
+
+Damit darf ein Agent **nicht mehr** einfach Videolänge ÷ Bildanzahl rechnen und alle Bilder gleich lang verteilen.
+
+## FINAL_TIMELINE.json — Pflicht vor Render
+
+Kanonische Datei:
+
+```text
+99-technik/FINAL_TIMELINE.json
+```
+
+Sie enthält die **tatsächlich zu rendernden** Bildzeiten und wird aus dem finalen Audio-Alignment erzeugt:
+
+```json
+{
+  "schemaVersion": 1,
+  "audioMaster": "02-audio/<finale-datei>",
+  "endHoldSeconds": 0.6,
+  "images": [
+    {"imageNumber": 1, "startSeconds": 0, "endSeconds": 6.42},
+    {"imageNumber": 2, "startSeconds": 6.42, "endSeconds": 14.18}
+  ]
+}
+```
+
+Die Zahlen oben sind nur Formatbeispiele. Reale Zeiten müssen aus dem echten finalen Audio stammen.
+
+Regeln:
+- genau ein Timeline-Eintrag pro Videobild
+- Bildnummern lückenlos und chronologisch
+- kein Bild 00
+- Start jedes Bildes muss zum realen Audio-Anker passen
+- Ende jedes Bildes = Start des nächsten Bildes
+- letztes Bild = Voice-over-Ende + kurzer Schluss-Hold
+- eine starre Serie gleich langer Holds ist ausdrücklich verboten
+
+## POST-RENDER-HARD-GATE
+
+Nach jedem Render zwingend:
+
+```bash
+npm run validate:youtube-render -- --dir "youtube/<woche>/<thema>"
+```
+
+Der fertige Render ist erst gültig, wenn auch dieser Befehl Exit-Code 0 liefert.
+
+Post-Render-QC prüft zusätzlich die reale MP4-Dauer. Das Video darf nicht viele Sekunden nach dem Voice-over weiterlaufen. Erlaubt ist nur ein kurzer sauberer Schluss-Hold.
 
 ## Bild↔Voice-over-Zuordnung — Hard Gate
 
@@ -164,17 +241,6 @@ visualStyleId = "youtube-editorial-stick-explainer"
 
 Verbindlich: `youtube/YOUTUBE_VISUAL_WORLD.md`.
 
-Kern:
-- 16:9
-- hand-drawn 2D editorial explainer
-- einfache Stick-Figure-ähnliche Menschen
-- klare schwarze Linien
-- warme leicht gedämpfte Farben
-- ruhige erzählerische Komposition
-- kein Fotorealismus
-- kein 3D/Pixar/Clay
-- keine Countryballs als YouTube-Standard
-
 ## Standardstruktur
 
 ```text
@@ -183,23 +249,15 @@ themen-slug/
 │   ├── 00_thumbnail/
 │   │   └── Bild 00 - Thumbnail.txt
 │   ├── 01_bilder-01-bis-10/
-│   │   └── ZUORDNUNG.md
 │   ├── 02_bilder-11-bis-20/
-│   │   └── ZUORDNUNG.md
-│   ├── ...
 │   └── 99-alle-bildprompts.txt
 ├── 01-voice-script/
 │   └── voice-script.txt
 ├── 02-audio/
 ├── 03-export/
-│   ├── FERTIGES-VIDEO.mp4
-│   ├── THUMBNAIL.png
-│   ├── YOUTUBE-TITEL.txt
-│   ├── YOUTUBE-BESCHREIBUNG.txt
-│   ├── YOUTUBE-KAPITEL.txt
-│   └── YOUTUBE-TAGS.txt
 └── 99-technik/
     ├── BILD_AUDIO_ZUORDNUNG.json
+    ├── FINAL_TIMELINE.json
     ├── PRODUKTIONSPLAN.md
     ├── status.json
     └── video.json
@@ -246,11 +304,14 @@ Ein YouTube-Video ist erst fertig, wenn:
 - alle Videobilder paketweise vollständig sind
 - finales Voice-over vorhanden ist
 - jedes Bild eine eindeutige Script-/Audio-Zuordnung besitzt
-- alle Anchor-Zeitstempel gegen das echte Audio geprüft sind
+- **kein** `actualStartSeconds`, `actualEndSeconds` oder `alignmentConfidence` mehr `null` ist
+- `99-technik/FINAL_TIMELINE.json` existiert und vollständig ist
+- Pre-Render-Hard-Gate tatsächlich Exit-Code 0 geliefert hat
 - kein Bildwechsel zu früh oder zu spät gesetzt wurde
 - Motion/SFX/QC tatsächlich durchgeführt wurden
 - ≥10 Minuten Laufzeit erreicht sind
 - MP4 + Thumbnail + Upload-Metadaten tatsächlich existieren
+- Post-Render-Hard-Gate tatsächlich Exit-Code 0 geliefert hat
 
 ## Schutz gegen Rückfall
 
@@ -261,6 +322,10 @@ Neue Chats/Agenten dürfen nicht:
 - Bilder außerhalb der 10er-Pakete durcheinander erzeugen
 - Phase 1/2/3 vermischen
 - Bildwechsel nach pauschalen Sekundenwerten statt nach Voice-over-Anchor setzen
+- Videolänge durch Bildanzahl teilen und daraus feste Holds machen
 - `BILD_AUDIO_ZUORDNUNG.json` ignorieren
+- mit `null`-Alignmentwerten rendern
+- `FINAL_TIMELINE.json` auslassen
+- einen fehlgeschlagenen Pre- oder Post-Render-Gate ignorieren
 - fehlende Assets erfinden
 - nicht ausgeführte QC als bestanden melden
