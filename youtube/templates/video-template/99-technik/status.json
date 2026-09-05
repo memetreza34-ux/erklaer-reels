@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 3,
+  "schemaVersion": 4,
   "currentPhase": 1,
   "phase1": {
     "owner": "ChatGPT",
@@ -31,10 +31,13 @@
     "plannedImageMapping": "pending",
     "actualAnchorAlignment": "pending",
     "alignmentConfidenceQC": "pending",
+    "finalTimeline": "missing",
+    "preRenderHardGate": "not-run",
     "voiceDrivenTiming": "pending",
     "motion": "pending",
     "soundDesign": "pending",
     "render": "pending",
+    "postRenderHardGate": "not-run",
     "qualityControl": "pending"
   },
   "export": {
@@ -44,5 +47,12 @@
   },
   "readyForAssetGeneration": false,
   "readyForAntigravity": false,
-  "readyForRender": false
+  "readyForRender": false,
+  "renderBlockedIf": [
+    "any actualStartSeconds is null",
+    "any actualEndSeconds is null",
+    "any alignmentConfidence is null or below 0.95",
+    "FINAL_TIMELINE.json is missing",
+    "pre-render hard gate does not exit 0"
+  ]
 }
