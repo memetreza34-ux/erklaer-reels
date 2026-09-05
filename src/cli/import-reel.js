@@ -5,6 +5,7 @@ import { readFile } from 'node:fs/promises';
 import { importReelPackage, validateReelPackage } from '../core/reel-package.js';
 import { ensureHumanReelView } from '../core/human-reel-view.js';
 import { compactReelLayout } from '../core/compact-reel-layout.js';
+import { writeReelImageAudioMapping } from '../core/reel-image-audio-mapping.js';
 
 function getArgument(name) {
   const index = process.argv.indexOf(name);
@@ -69,9 +70,16 @@ async function main() {
   await ensureHumanReelView(ergebnis.reelDirectory, { hideTechnicalInFinder: false });
   const compactLayout = await compactReelLayout(ergebnis.reelDirectory);
 
+  // Phase 1 erzeugt zusätzlich eine explizite 1:1-Zuordnung zwischen jedem
+  // Bildmoment und seinem gesprochenen Satz-/Satzteil. Nach der Verdichtung liegt
+  // sie sichtbar unter 99-technik/BILD_AUDIO_ZUORDNUNG.json. Die tatsächlichen
+  // Sekundenwerte werden erst in Phase 3 am final optimierten Voice-over bestimmt.
+  const bildAudio = await writeReelImageAudioMapping(compactLayout.technicalDirectory);
+
   console.log(`Reel angelegt: ${ergebnis.reelDirectory}`);
   console.log(`Szenen: ${ergebnis.sceneCount} | Bilder: ${ergebnis.plannedImageCount} | Wörter: ${ergebnis.wordCount}`);
   console.log(`Technik physisch gesammelt unter: ${compactLayout.technicalDirectory}`);
+  console.log(`Bild↔Audio-Zuordnung: ${bildAudio.mapping.imageCount} Bildmomente → 99-technik/BILD_AUDIO_ZUORDNUNG.json`);
   console.log('');
   console.log('Nächste Schritte:');
   console.log(`  npm run check:content  -- --dir "${ergebnis.reelDirectory}" --strict`);
