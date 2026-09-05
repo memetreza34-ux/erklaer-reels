@@ -22,6 +22,7 @@
     "organize:assets": "node src/cli/run-with-reel-layout.js src/cli/organize-assets.js",
     "organize:finder": "node src/cli/run-with-reel-layout.js src/cli/organize-finder.js",
     "trim:pauses": "node src/cli/run-with-reel-layout.js src/cli/trim-pauses.js",
+    "sync:image-audio-map": "node src/cli/sync-image-audio-mapping.js",
     "build:timeline": "node src/cli/run-with-reel-layout.js src/cli/build-timeline.js",
     "sync:sounds": "node src/cli/run-with-reel-layout.js src/cli/sync-sounds.js",
     "sync:audio": "node src/cli/run-with-reel-layout.js src/cli/build-timeline.js",
