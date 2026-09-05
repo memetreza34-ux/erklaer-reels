@@ -97,7 +97,7 @@ Belegt:
 
 60 Bilder sind in `00-bildprompts/99-alle-bildprompts.txt` vollständig geplant.
 
-Empfohlene Verteilung:
+Inhaltliche Verteilung:
 - Bild 01–06: Hook und Zahlenrätsel
 - Bild 07–12: astronomischer Tag
 - Bild 13–18: Zeit vor Stunden
@@ -108,6 +108,18 @@ Empfohlene Verteilung:
 - Bild 45–51: Babylon / 60 / Minuten / Sekunden
 - Bild 52–56: Warum nicht 10?
 - Bild 57–60: Atomzeit und Fazit
+
+Für die tatsächliche Bildproduktion werden diese 60 Bilder strikt in sechs 10er-Pakete aufgeteilt:
+
+```text
+00-bildprompts/
+├── 01_bilder-01-bis-10/
+├── 02_bilder-11-bis-20/
+├── 03_bilder-21-bis-30/
+├── 04_bilder-31-bis-40/
+├── 05_bilder-41-bis-50/
+└── 06_bilder-51-bis-60/
+```
 
 ## Bildwechsel
 
@@ -159,6 +171,8 @@ Konzept:
 - schwacher historischer Hinweis auf Ägypten
 - Text nur `WARUM 24?!`
 
+Das Thumbnail wird separat erzeugt und zählt nicht zu den 60 Szenenbildern oder 10er-Paketen.
+
 ## Upload-Paket
 
 Vorbereitet:
@@ -173,15 +187,27 @@ Noch nicht vorhanden und darf nicht als fertig gelten:
 - finales Thumbnail PNG
 - finale MP4
 
-## Google Flow
+## Google Flow — neue verbindliche Arbeitsweise
 
-Streng seriell arbeiten:
+Nicht mehr alle 60 Bilder hintereinander erzeugen und erst später sortieren.
 
-1. Prompt für Bild 01 senden
-2. genau ein Bild erzeugen
-3. prüfen
-4. als `Bild 01.png` speichern
-5. erst dann Bild 02
-6. bis `Bild 60.png`
+### Paket 1
+1. Nur Bild 01 bis Bild 10 bearbeiten.
+2. Jedes Bild einzeln in Google Flow erzeugen und direkt prüfen.
+3. Dateien global korrekt als `Bild 01.png` bis `Bild 10.png` benennen.
+4. Alle 10 Dateien in `00-bildprompts/01_bilder-01-bis-10/` legen.
+5. Prüfen: genau Bild 01–10 vorhanden, nichts fehlt, nichts doppelt.
+6. Erst danach Paket 2 starten.
 
-Keine Parallelgenerierung und keine Batch-Queue.
+### Danach identisch
+- Paket 2: `Bild 11.png`–`Bild 20.png` → `02_bilder-11-bis-20/`
+- Paket 3: `Bild 21.png`–`Bild 30.png` → `03_bilder-21-bis-30/`
+- Paket 4: `Bild 31.png`–`Bild 40.png` → `04_bilder-31-bis-40/`
+- Paket 5: `Bild 41.png`–`Bild 50.png` → `05_bilder-41-bis-50/`
+- Paket 6: `Bild 51.png`–`Bild 60.png` → `06_bilder-51-bis-60/`
+
+Wichtig:
+- Innerhalb eines Pakets weiterhin seriell arbeiten: ein Bild erzeugen → prüfen → nächstes Bild.
+- Kein neues Paket beginnen, solange das vorherige nicht vollständig umbenannt und abgelegt ist.
+- Fehlerhafte Bilder zuerst ersetzen.
+- Keine parallelen 10er-Pakete.

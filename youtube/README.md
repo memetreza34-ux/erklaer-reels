@@ -1,6 +1,6 @@
 # YouTube
 
-Dieser Bereich ist die **eigenständige Produktionspipeline für YouTube-Langvideos**. Reels bleiben vollständig getrennt unter `reels/`.
+Dieser Bereich ist die eigenständige Produktionspipeline für YouTube-Langvideos. Reels bleiben vollständig getrennt unter `reels/`.
 
 ## Verbindliche Regel
 
@@ -8,7 +8,7 @@ Für YouTube zuerst `youtube/YOUTUBE_WORKFLOW.md` lesen, danach `youtube/YOUTUBE
 
 ## Ordnerprinzip: Woche → Thema
 
-Produktive YouTube-Videos liegen direkt unter einer Wochenmappe. Die Struktur folgt demselben Kalenderprinzip wie bei den Reels:
+Produktive YouTube-Videos liegen direkt unter einer Wochenmappe:
 
 ```text
 youtube/
@@ -27,35 +27,47 @@ youtube/
 Verbindlich:
 - zuerst die ISO-Kalenderwoche als `YYYY-KWNN_DD-MM_bis_DD-MM`
 - darunter direkt der eindeutige Themen-Slug
-- **keine `projects/`-Zwischenebene**
-- **kein `video-01_`, `video-02_` usw. vor dem Themenordner**
+- keine `projects/`-Zwischenebene
+- kein `video-01_`, `video-02_` usw. vor dem Themenordner
 - mehrere Videos derselben Woche liegen als mehrere Themenordner nebeneinander
-
-`templates/` und die globalen YouTube-Regeldateien bleiben als Infrastruktur direkt unter `youtube/`.
 
 ## YouTube-Standard
 
 - mindestens 10 Minuten
 - Zielbereich normalerweise ca. 10–12 Minuten
 - ungefähr 50–80 Bilder, Standard etwa 60
-- Bildwechsel meist alle 6–12 Sekunden, normale Einzelbilder höchstens ca. 15 Sekunden
+- Bildwechsel meist alle 6–12 Sekunden
 - 16:9
 - feste Bildwelt `youtube-editorial-stick-explainer`
 - eigener starker YouTube-Titel
 - eigenes Thumbnail-Konzept und Thumbnail-Prompt
 
-## Projektstruktur pro Thema
+## Bilder: immer in 10er-Paketen
+
+Die Bildproduktion wird nicht mehr als ein großer 50–80-Bilder-Block behandelt.
+
+Bei 60 Bildern sieht `00-bildprompts/` so aus:
 
 ```text
 00-bildprompts/
-01-voice-script/
-02-audio/
-03-export/
-99-technik/
+├── 01_bilder-01-bis-10/
+├── 02_bilder-11-bis-20/
+├── 03_bilder-21-bis-30/
+├── 04_bilder-31-bis-40/
+├── 05_bilder-41-bis-50/
+├── 06_bilder-51-bis-60/
+├── 99-alle-bildprompts.txt
+└── THUMBNAIL-PROMPT.txt
 ```
 
+Ablauf: erst genau ein 10er-Paket erzeugen, Bilder korrekt global nummerieren, prüfen und in seinen Ordner legen. Erst danach beginnt das nächste Paket. Das Thumbnail bleibt separat.
+
+Die vollständigen Regeln dazu stehen in `youtube/YOUTUBE_WORKFLOW.md`.
+
+## Projektstruktur pro Thema
+
 ### 00-bildprompts
-Vollständiger Google-Flow-Prompt-Satz für die YouTube-Szenenbilder.
+Vollständiger Google-Flow-Prompt-Satz plus die fertigen 10er-Bildpakete.
 
 ### 01-voice-script
 Endgültiges Voice-over-Script.
@@ -86,4 +98,4 @@ Vor jedem neuen YouTube-Video `THEMEN_HISTORIE.md` prüfen. Bereits verwendete o
 
 ## Vorlagen
 
-`youtube/templates/video-template/` bleibt die Strukturvorlage. Beim Erstellen eines Videos wird ihr Inhalt in den passenden **Wochenordner/Themenordner** übernommen; die Vorlage selbst ist kein Produktionsprojekt.
+`youtube/templates/video-template/` bleibt die Strukturvorlage. Beim Erstellen eines Videos wird ihr Inhalt in den passenden Wochenordner/Themenordner übernommen; die Vorlage selbst ist kein Produktionsprojekt.
