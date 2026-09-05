@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "project": "2026-KW36_31-08_bis_06-09/warum-hat-ein-tag-24-stunden",
   "weekFolder": "2026-KW36_31-08_bis_06-09",
   "topicSlug": "warum-hat-ein-tag-24-stunden",
@@ -12,10 +12,13 @@
     "duplicateCheck": "complete",
     "research": "complete",
     "title": "complete",
-    "thumbnailPlan": "complete",
+    "thumbnailBild00": "complete",
     "script": "complete",
     "imagePrompts": "complete",
     "tenImageFolderStructure": "complete",
+    "imageAudioMapping": "complete",
+    "mappingFile": "99-technik/BILD_AUDIO_ZUORDNUNG.json",
+    "batchMappingFiles": "complete",
     "editPlan": "complete",
     "uploadMetadata": "complete"
   },
@@ -23,21 +26,23 @@
     "owner": "user",
     "status": "pending",
     "voiceover": "pending-user-asset",
+    "thumbnailBild00": "pending-user-asset",
     "imageBatch01_01to10": "pending-user-assets",
     "imageBatch02_11to20": "pending-user-assets",
     "imageBatch03_21to30": "pending-user-assets",
     "imageBatch04_31to40": "pending-user-assets",
     "imageBatch05_41to50": "pending-user-assets",
-    "imageBatch06_51to60": "pending-user-assets",
-    "thumbnail": "pending-user-asset"
+    "imageBatch06_51to60": "pending-user-assets"
   },
   "phase3": {
     "owner": "Antigravity",
     "status": "blocked-until-phase2-complete",
     "assetValidation": "pending",
     "audioAnalysis": "pending",
-    "voiceDrivenTiming": "pending",
-    "imageMapping": "pending",
+    "plannedImageMapping": "complete",
+    "actualAnchorAlignment": "pending-final-audio",
+    "alignmentConfidenceQC": "pending-final-audio",
+    "voiceDrivenTiming": "pending-final-audio",
     "motion": "pending",
     "soundDesign": "pending",
     "render": "pending",
@@ -51,5 +56,5 @@
   "readyForAssetGeneration": true,
   "readyForAntigravity": false,
   "readyForRender": false,
-  "note": "Phase 1 ist vollständig. Jetzt Phase 2: Nutzer erzeugt Voice-over, sechs 10er-Bildpakete und Thumbnail. Erst danach startet Antigravity Phase 3 mit Asset-QC, Voice-over-getriebener Timeline, Motion/Zoom, gezieltem SFX, Render und finaler QC."
+  "note": "Phase 1 enthält jetzt für jedes Bild 01–60 einen exakten Voice-over-Startanker. Bild 00 ist ausschließlich das Thumbnail. In Phase 3 muss Antigravity die geplanten Anker gegen das echte finale Audio ausrichten und die echten Zeitstempel messen; Bildwechsel dürfen nicht nach pauschalen Sekundenwerten gesetzt werden."
 }
