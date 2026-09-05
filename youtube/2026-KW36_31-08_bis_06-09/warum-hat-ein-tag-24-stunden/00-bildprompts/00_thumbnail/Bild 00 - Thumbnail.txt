@@ -1,20 +1,21 @@
-# BILD 00 — THUMBNAIL
+# Bild 00 — Thumbnail
 
-Finaler Titel:
-Warum hat ein Tag 24 Stunden – und nicht 10?
+Bild 00 ist ausschließlich das YouTube-Thumbnail. Es gehört nicht zu Bild 01–60 und wird niemals in die Videotimeline eingebaut.
 
-Thumbnail-Text:
-WARUM 24?!
+Nach der Erzeugung:
+1. visuell prüfen
+2. exakt als `Bild 00.png` speichern
+3. in `00_thumbnail/` ablegen
+4. erst danach mit Paket 1 / Bild 01 beginnen
 
-Prompt:
-Create a 16:9 YouTube thumbnail in the fixed youtube-editorial-stick-explainer world. Show one large dramatic clock face dominating the composition, with the number 24 visually emphasized and a second smaller fictional 10-hour clock being pushed aside for contrast. In the foreground, a simple stick-figure-like person with a round head looks up in genuine confusion and points toward the 24. Behind the clock, subtly blend an ancient Egyptian shadow clock and a faint starry sky to hint at the historical mystery without clutter. Use clean black outlines, warm slightly muted colors with stronger thumbnail contrast than normal scenes, one dominant focal point, large readable shapes, strong separation between foreground and background, mobile-first composition. Integrate exactly the bold German thumbnail text "WARUM 24?!" once, large and highly readable. No other readable text, no photorealism, no 3D, no Pixar, no countryballs, no watermark, no busy infographic layout.
+PROMPT:
+Create a 16:9 YouTube thumbnail in the fixed hand-drawn 2D editorial stick-explainer world. Build one immediate visual conflict: a huge familiar clock dominated by the number 24 faces a smaller fictional 10-hour clock, while one simple round-headed stick-figure person stands between them and points upward in genuine disbelief. Behind the 24-hour clock, blend only two subtle historical clues—a simple ancient Egyptian shadow clock and a faint starry sky—so the image hints that the answer comes from history and astronomy without becoming busy. Strong mobile-first composition, oversized readable shapes, clear foreground/midground separation, stronger contrast than normal scene images, warm slightly muted colors, clean black outlines, minimal facial features, no clutter, no tiny details, no photorealism, no 3D, no Pixar, no clay, no countryballs, no watermark. Integrate exactly one large bold German text element: "WARUM 24?!". No other readable text.
 
-Thumbnail-QC:
-- Dateiname nach Erzeugung: `Bild 00.png`
+QC:
 - 16:9
-- ein dominanter großer Clock-Fokus
-- maximal 3 Hauptmotive: Uhr, Figur, historischer Hinweis
-- Text nur: WARUM 24?!
-- auf Smartphone-Größe sofort lesbar
-- Bild 00 gehört niemals in die Videotimeline
-- Bild 00 zählt nicht zu den 10er-Bildpaketen
+- auf Smartphone-Größe sofort verständlich
+- genau ein dominanter Konflikt: 24 gegen 10
+- Figur nur als Reaktion, nicht als Hauptchaos
+- historischer Hinweis dezent
+- Text exakt `WARUM 24?!`
+- keine weiteren Wörter, Logos oder Wasserzeichen
