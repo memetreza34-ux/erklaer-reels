@@ -110,7 +110,7 @@ Ancient Egyptian astronomer at night watches groups of stars rise above the hori
 A story-driven night sky with sequential star groups crossing the sky while an observer marks their passage on a simple board, no readable text.
 
 ### Bild 29
-A simple water clock in ancient Egypt slowly draining while a night observer checks the water level, stars visible outside, no text.
+Ancient Egyptian observer records the successive rising positions of specific star groups through the night on a simple board, clearly showing the stars themselves acting as time markers, no water clock, no readable text.
 
 ### Bild 30
 Daylight shown as twelve visual blocks on the left and night as twelve visual blocks on the right, both joining into one complete cycle. Add only: "12 + 12 = 24"
@@ -197,24 +197,24 @@ Four historical influences converge into one modern clock: Egyptian 24-hour divi
 ### Bild 54
 Four-layer composition labeled only with short German words: natural sky rhythm, mathematical numbers, timekeeping technology and connected society, all building upward into one shared modern clock. Add only: "NATUR • MATHE • TECHNIK • GESELLSCHAFT"
 
-## 55–57 — Warum nicht 10?
+## 55–58 — Warum nicht 10?
 
 ### Bild 55
-Modern fictional decimal clock with 10 hours around the face; a person compares it with a normal clock and sees the mathematical simplicity. Add only: "10 STUNDEN?"
+Modern fictional decimal clock with 10 hours around the face; a person compares it with a normal clock and realizes that the day could mathematically be divided differently. Add only: "10 STUNDEN?"
 
 ### Bild 56
-A huge modern network of schools, train schedules, phones, computers, hospitals, contracts and flights all connected to the same time standard, showing the enormous coordination cost of changing the system, no text.
+A clean fictional decimal-time scene: ten hours per day, a half-day highlighted as 5 hours and a quarter-day as 2.5 hours, showing why decimal arithmetic looks simple on paper. Add only: "5 • 2,5"
 
 ### Bild 57
-A normal 60-minute hour is split cleanly into 30, 20, 15 and 10 minute chunks using everyday tasks such as lunch, commute, meeting and break. Add only: "30 • 20 • 15 • 10"
-
-## 58–60 — Atomzeit und Fazit
+A huge modern network of schools, train schedules, phones, computers, hospitals, contracts and flights all connected to the same 24-hour standard, one person imagining the disruption of replacing all clocks, no readable text.
 
 ### Bild 58
-Modern laboratory with an atomic clock represented clearly; regular atomic pulses are contrasted with old sundials and mechanical clocks in the background, no text.
+A normal 60-minute hour is split cleanly into 30, 20, 15 and 10 minute chunks using everyday tasks such as lunch, commute, meeting and break, showing the practical divisibility of 60. Add only: "30 • 20 • 15 • 10"
+
+## 59–60 — Atomzeit und Fazit
 
 ### Bild 59
-Atomic clock emits perfectly regular pulses while Earth rotation wobbles very slightly; behind them, Egyptian, Babylonian, Greek and mechanical-clock layers show the long historical path. Add only: "ATOMZEIT"
+Modern laboratory with an atomic clock emitting perfectly regular pulses while Earth rotation in the background wobbles very slightly; subtle historical layers of sundial and mechanical clock show how far timekeeping has evolved. Add only: "ATOMZEIT"
 
 ### Bild 60
-Final calm scene: one person looks at a modern clock at sunset while a visual timeline stretches from ancient Egypt through Babylon, Greece and medieval clockmakers to the present. Add only the closing German text: "DIE ERDE LIEFERT DEN TAG. WIR DIE 24."
+Final calm scene: one person looks at a modern clock at sunset while a visual timeline stretches from ancient Egypt through Babylon, Greece and medieval clockmakers to the present, clearly summarizing the historical chain. Add only the closing German text: "DIE ERDE LIEFERT DEN TAG. WIR DIE 24."
