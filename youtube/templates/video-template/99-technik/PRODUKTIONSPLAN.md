@@ -15,7 +15,7 @@
 - mindestens 10 Minuten finales Voice-over
 - Ziel normalerweise 10–12 Minuten
 - ungefähr 50–80 Bildmomente, Standard etwa 60
-- Bildwechsel meist alle 6–12 Sekunden
+- Bildwechsel meist alle 6–12 Sekunden, **aber final ausschließlich nach echtem Voice-over-Timing**
 - jedes Bild im Edit subtil bewegen
 - 16:9
 - feste Bildwelt `youtube-editorial-stick-explainer`
@@ -32,11 +32,12 @@ Für jede wichtige Aussage Quelle, Datum und kurze Begründung dokumentieren. Un
 
 ## Thumbnail
 
+- Bild 00 ist ausschließlich das Thumbnail
 - Thumbnail-Text:
 - Hauptmotiv:
 - Kontrastidee:
-- fertiger Prompt nach `00-bildprompts/THUMBNAIL-PROMPT.txt`
-- fertiges `THUMBNAIL.png` erst als vorhanden markieren, wenn es wirklich erzeugt wurde
+- fertiger Prompt unter `00-bildprompts/00_thumbnail/Bild 00 - Thumbnail.txt`
+- fertiges PNG erst als vorhanden markieren, wenn es wirklich erzeugt wurde
 
 ## Script-Planung
 
@@ -50,20 +51,52 @@ Für jede wichtige Aussage Quelle, Datum und kurze Begründung dokumentieren. Un
 
 Script in visuell klare Momente zerlegen. Jeder Bildmoment erhält einen echten Erklär-/Storyfortschritt und darf nicht nur eine kosmetische Variante des vorherigen Bildes sein.
 
-- geplante Bilder:
-- durchschnittlicher Hold:
-- längster normaler Hold:
-- Perspektivwechsel ausreichend: ja/nein
+Pflicht:
+- `99-technik/BILD_AUDIO_ZUORDNUNG.json`
+- für jedes Videobild exakter `startAnchor` und `endAnchor`
+- chronologische, lückenlose Voice-over-Abdeckung
+- Bild 00 besitzt keine Audio-Zuordnung
 
 ## Google Flow
 
 Masterdatei: `00-bildprompts/99-alle-bildprompts.txt`.
 
-Streng seriell: ein Bild erzeugen → warten → prüfen → korrekt benennen → ablegen → erst dann das nächste.
+Streng seriell und in 10er-Paketen:
+
+```text
+aktuelles 10er-Paket wählen
+→ genau 1 Bild erzeugen
+→ prüfen
+→ exakt Bild NN.png nennen
+→ in aktuellen Paketordner legen
+→ erst nächstes Bild
+→ erst nach vollständigem Paket nächster Ordner
+```
 
 ## Assets
 
 Nur tatsächlich verwendete Bilder, Grafiken und Audio dokumentieren. Fehlende Assets nicht als vorhanden markieren.
+
+## Phase 3 — Audio ist Master
+
+Antigravity darf **niemals** die Videolänge durch die Bildanzahl teilen und daraus gleich lange Holds erzeugen.
+
+Vor dem Render:
+1. finales Voice-over eindeutig bestimmen
+2. für jeden Mapping-Eintrag den echten `startAnchor` im finalen Audio finden
+3. `actualStartSeconds`, `actualEndSeconds`, `alignmentConfidence` eintragen
+4. unter 0,95 Konfidenz nicht raten
+5. `99-technik/FINAL_TIMELINE.json` aus den echten Audio-Zeiten erzeugen
+6. Bild 01 beginnt bei 0:00; spätere Bilder ca. 0,08 s vor ihrem echten Anchor
+7. jedes Bild endet am Start des nächsten Bildes
+8. letztes Bild endet nach Voice-over plus ca. 0,60 s sauberem Schluss-Hold
+9. danach zwingend:
+
+```bash
+npm run validate:youtube-phase3 -- --dir "<projekt>"
+```
+
+**Nur Exit-Code 0 erlaubt den Render.**
 
 ## Edit
 
@@ -73,6 +106,19 @@ Nur tatsächlich verwendete Bilder, Grafiken und Audio dokumentieren. Fehlende A
 - Hintergrundmusik: projektbezogene Entscheidung
 - keine hektischen Reel-Zooms
 - keine minutenlangen Standbilder
+- keine starre Slideshow mit identischen Bilddauern
+
+## Post-Render-QC
+
+Nach dem Render zwingend:
+
+```bash
+npm run validate:youtube-render -- --dir "<projekt>"
+```
+
+Das Video ist erst fertig, wenn auch dieser Gate Exit-Code 0 liefert. Langer stiller Nachlauf nach dem Voice-over ist verboten.
+
+Details: `youtube/PHASE3_HARD_GATE.md`.
 
 ## Upload
 
