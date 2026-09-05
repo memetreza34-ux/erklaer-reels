@@ -54,6 +54,7 @@
     "qualityControl": "FAILED"
   },
   "requiredRecovery": [
+    "Re-verify final audio and all Bild 01-60 assets in the project workspace",
     "Use the final voice-over as the timing master",
     "Fill actualStartSeconds and actualEndSeconds for every Bild 01-60 from real audio anchors",
     "Set alignmentConfidence for every image and manually check anything below 0.95",
@@ -69,14 +70,16 @@
     "metadata": "prepared"
   },
   "readyForAssetGeneration": true,
-  "readyForAntigravity": true,
+  "readyForPhase3Recovery": true,
+  "readyForAntigravity": false,
   "readyForRender": false,
   "renderBlockers": [
+    "Current project assets have not been re-verified in the repo/workspace",
     "BILD_AUDIO_ZUORDNUNG actualStartSeconds contains null values",
     "BILD_AUDIO_ZUORDNUNG actualEndSeconds contains null values",
     "BILD_AUDIO_ZUORDNUNG alignmentConfidence contains null values",
     "99-technik/FINAL_TIMELINE.json does not yet exist",
     "pre-render hard gate has not passed"
   ],
-  "note": "The previous render is explicitly invalid. A new render must be built from real audio anchor timings, not equal-duration image slots. Phase 3 cannot be marked complete until both the pre-render and post-render hard gates return exit code 0."
+  "note": "The previous render is explicitly invalid. A new render must be built from re-verified assets and real audio anchor timings, not equal-duration image slots. Phase 3 cannot be marked complete until both the pre-render and post-render hard gates return exit code 0."
 }
