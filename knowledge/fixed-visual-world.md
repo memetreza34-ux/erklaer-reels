@@ -17,6 +17,25 @@ Für Reels gilt:
 - kein Ink-Explainer-/Longform-Look
 - keine 16:9-Komposition
 
+## NICHT VERHANDELBARER STYLE-LOCK
+
+**Das gesamte Bild muss in genau einer einheitlichen 2D-Illustrationswelt gerendert sein.**
+
+Verboten:
+- Foto/Realbild als Hintergrund + aufgeklebte Countryball-Figur
+- fotorealistische Hand/Finger/Haut + Cartoonfigur
+- realistisches Badezimmer/Labor/Pool + 2D-Figur
+- Stockfoto-Look
+- Mixed Media / Foto-plus-Sticker
+- realistische Poren, Hauttexturen, fotografische Falten oder realistische Körperteile
+- fotografische Tiefenschärfe, Kamera-Bokeh oder Photo-Lighting als Stil
+
+Wenn in einem Szenenprompt Wörter wie `real`, `realistic`, `real bathroom`, `real hand`, `natural light`, `cinematic` oder `realistic cause-and-effect` stehen, beziehen sie sich **nur auf die logische Situation**. Sie dürfen niemals als Freigabe für Fotorealismus interpretiert werden.
+
+Hände, Finger, Füße, Haut, Organe und anatomische Details sind vereinfachte **2D-Illustrationsobjekte** derselben Bildwelt: klare Formen, dicke schwarze Konturen, reduzierte Textur, grafische Schatten, keine fotorealistische Haut.
+
+Räume und Umgebungen sind ebenfalls stilisiert: vereinfachte Badewanne, Pool, Tisch, Labor, Straße oder Landschaft in derselben 2D-Vektor-/Comic-Sprache. Kein realistischer Foto-Hintergrund.
+
 ## Ziel der neuen Bildsprache
 
 Die Bilder sollen **nicht wie statische Lernposter** wirken. Jede Bildphase muss wie ein konkreter Moment einer visuellen Geschichte funktionieren.
@@ -53,6 +72,8 @@ Die Kugelgeometrie ist der wichtigste Figurenanker:
 - sonst neutrale einfarbige Kugeln für Menschen, Gruppen, Institutionen oder abstrakte Akteure
 
 Die Kugel darf **niemals** bohnenförmig, oval, eiförmig oder humanoid werden und niemals einen menschlichen Kopf tragen.
+
+**Wichtig:** Das Wort `Countryball` bedeutet nicht automatisch Länderflagge. Bei Alltags-, Medizin-, Psychologie- oder Naturthemen ohne geografische Bedeutung sind Figuren neutral und einfarbig. Keine Deutschland-, USA- oder andere Flagge nur als Dekoration.
 
 ## Nicht in jedem Bild muss eine Kugelfigur vorkommen
 
@@ -207,6 +228,9 @@ Bei allen späteren Bildern ist Text **optional**.
 - ovale, bohnenförmige oder eiförmige Figurenkörper
 - Fotorealismus
 - realistische Foto-Gesichter
+- fotorealistische Hände/Finger/Haut
+- fotografische Hintergründe
+- Foto-plus-Sticker-/Mixed-Media-Look
 - Anime/Manga
 - Clay/Knetstil
 - glänzendes 3D / Pixar-Look
@@ -242,5 +266,7 @@ Vor der Freigabe jedes Bildes:
 9. Bleibt die Szene in derselben Modern Countryball Explainer Formsprache?
 10. Wurde keine themenspezifische zweite Bildwelt erzeugt?
 11. Bleibt Reels klar von der YouTube-Bildwelt getrennt?
+12. Ist wirklich **jedes** sichtbare Element 2D-illustriert, ohne Foto-/Realbild-Anteil?
+13. Ist bei nicht-geografischen Themen jede Kugelfigur neutral statt unnötig mit einer Länderflagge versehen?
 
 Wenn eine dieser Fragen scheitert, wird das Bild vereinfacht oder neu erzeugt.
