@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "title": "Warum werden Finger im Wasser runzlig?",
+  "thumbnailImageNumber": null,
+  "videoFirstImageNumber": 1,
+  "videoLastImageNumber": 17,
+  "cutLeadSecondsDefault": 0.08,
+  "alignmentConfidenceMinimum": 0.95,
+  "images": [
+    {"imageNumber":1,"imageFile":"Bild 01.png","sceneId":"scene-01","phaseId":"scene-01-image-01","startAnchor":"Warum werden Finger","endAnchor":"Wasser gelangt","actualStartSeconds":null,"actualEndSeconds":null,"alignmentConfidence":null},
+    {"imageNumber":2,"imageFile":"Bild 02.png","sceneId":"scene-02","phaseId":"scene-02-image-01","startAnchor":"Wasser gelangt","endAnchor":"Dabei verändert sich","actualStartSeconds":null,"actualEndSeconds":null,"alignmentConfidence":null},
+    {"imageNumber":3,"imageFile":"Bild 03.png","sceneId":"scene-02","phaseId":"scene-02-image-02","startAnchor":"Dabei verändert sich","endAnchor":"Das sympathische","actualStartSeconds":null,"actualEndSeconds":null,"alignmentConfidence":null},
+    {"imageNumber":4,"imageFile":"Bild 04.png","sceneId":"scene-03","phaseId":"scene-03-image-01","startAnchor":"Das sympathische","endAnchor":"Es verengt","actualStartSeconds":null,"actualEndSeconds":null,"alignmentConfidence":null},
+    {"imageNumber":5,"imageFile":"Bild 05.png","sceneId":"scene-03","phaseId":"scene-03-image-02","startAnchor":"Es verengt","endAnchor":"Die Fingerkuppe","actualStartSeconds":null,"actualEndSeconds":null,"alignmentConfidence":null},
+    {"imageNumber":6,"imageFile":"Bild 06.png","sceneId":"scene-04","phaseId":"scene-04-image-01","startAnchor":"Die Fingerkuppe","endAnchor":"Die überschüssige Haut","actualStartSeconds":null,"actualEndSeconds":null,"alignmentConfidence":null},
+    {"imageNumber":7,"imageFile":"Bild 07.png","sceneId":"scene-04","phaseId":"scene-04-image-02","startAnchor":"Die überschüssige Haut","endAnchor":"Darum passiert","actualStartSeconds":null,"actualEndSeconds":null,"alignmentConfidence":null},
+    {"imageNumber":8,"imageFile":"Bild 08.png","sceneId":"scene-05","phaseId":"scene-05-image-01","startAnchor":"Darum passiert","endAnchor":"Dort sitzen viele","actualStartSeconds":null,"actualEndSeconds":null,"alignmentConfidence":null},
+    {"imageNumber":9,"imageFile":"Bild 09.png","sceneId":"scene-05","phaseId":"scene-05-image-02","startAnchor":"Dort sitzen viele","endAnchor":"Bei geschädigten","actualStartSeconds":null,"actualEndSeconds":null,"alignmentConfidence":null},
+    {"imageNumber":10,"imageFile":"Bild 10.png","sceneId":"scene-06","phaseId":"scene-06-image-01","startAnchor":"Bei geschädigten","endAnchor":"Deshalb wurde","actualStartSeconds":null,"actualEndSeconds":null,"alignmentConfidence":null},
+    {"imageNumber":11,"imageFile":"Bild 11.png","sceneId":"scene-06","phaseId":"scene-06-image-02","startAnchor":"Deshalb wurde","endAnchor":"Eine mögliche Funktion","actualStartSeconds":null,"actualEndSeconds":null,"alignmentConfidence":null},
+    {"imageNumber":12,"imageFile":"Bild 12.png","sceneId":"scene-07","phaseId":"scene-07-image-01","startAnchor":"Eine mögliche Funktion","endAnchor":"doch die Evolutions-Erklärung","actualStartSeconds":null,"actualEndSeconds":null,"alignmentConfidence":null},
+    {"imageNumber":13,"imageFile":"Bild 13.png","sceneId":"scene-07","phaseId":"scene-07-image-02","startAnchor":"doch die Evolutions-Erklärung","endAnchor":"Sind die Falten","actualStartSeconds":null,"actualEndSeconds":null,"alignmentConfidence":null},
+    {"imageNumber":14,"imageFile":"Bild 14.png","sceneId":"scene-08","phaseId":"scene-08-image-01","startAnchor":"Sind die Falten","endAnchor":"Entscheidend sind","actualStartSeconds":null,"actualEndSeconds":null,"alignmentConfidence":null},
+    {"imageNumber":15,"imageFile":"Bild 15.png","sceneId":"scene-08","phaseId":"scene-08-image-02","startAnchor":"Entscheidend sind","endAnchor":"Beim nächsten Bad","actualStartSeconds":null,"actualEndSeconds":null,"alignmentConfidence":null},
+    {"imageNumber":16,"imageFile":"Bild 16.png","sceneId":"scene-09","phaseId":"scene-09-image-01","startAnchor":"Beim nächsten Bad","endAnchor":"außerhalb des Wassers","actualStartSeconds":null,"actualEndSeconds":null,"alignmentConfidence":null},
+    {"imageNumber":17,"imageFile":"Bild 17.png","sceneId":"scene-09","phaseId":"scene-09-image-02","startAnchor":"außerhalb des Wassers","endAnchor":null,"actualStartSeconds":null,"actualEndSeconds":null,"alignmentConfidence":null}
+  ],
+  "note": "Phase 1 defines the exact spoken anchor for every image. Phase 3 must resolve real timings from the final voice-over before rendering."
+}

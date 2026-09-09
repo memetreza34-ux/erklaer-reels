@@ -1,0 +1,383 @@
+{
+  "title": "Warum werden Finger im Wasser runzlig?",
+  "topicArea": "Biologie und menschlicher Körper",
+  "caption": "Warum werden deine Finger im Wasser plötzlich runzlig?\n\nDie Falten entstehen nicht einfach nur, weil sich die Haut mit Wasser vollsaugt. Dein sympathisches Nervensystem verengt winzige Blutgefäße in den Fingerkuppen. Dadurch verliert das Gewebe etwas Volumen, während die Hautfläche fast gleich bleibt – sie legt sich in Falten. Dieser Reflex hängt sogar von intakten Nerven ab. Ob die Runzeln zusätzlich den Griff bei Nässe verbessern, wird wissenschaftlich diskutiert.\n\nBeim nächsten Bad kannst du den Effekt selbst beobachten.\n\n#biologie #körper #wissenschaft #finger #einfacherklärt",
+  "sources": [
+    {
+      "title": "Wilder-Smith & Chow — Water-immersion wrinkling is due to vasoconstriction",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/12635117/",
+      "accessed": "2026-09-07",
+      "type": "wissenschaftliche Originalstudie",
+      "supports": "Zeigt, dass Wasser-Runzeln mit deutlich verringerter Durchblutung und Vasokonstriktion der Fingerkuppe einhergeht und damit kein rein passives Aufquellen der Haut ist."
+    },
+    {
+      "title": "Wilder-Smith — Water immersion wrinkling: physiology and use as an indicator of sympathetic function",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/15095056/",
+      "accessed": "2026-09-07",
+      "type": "wissenschaftliche Übersichtsarbeit",
+      "supports": "Beschreibt den sympathischen Nervenreflex, die Rolle von Schweißkanälen und Elektrolytveränderungen sowie den Volumenverlust der Fingerkuppe als Mechanismus der Faltenbildung."
+    },
+    {
+      "title": "Cleveland Clinic — Why Water Turns Fingers and Toes Into Prunes",
+      "url": "https://health.clevelandclinic.org/why-water-makes-your-skin-look-like-a-prune-and-not-a-plum",
+      "accessed": "2026-09-07",
+      "type": "unabhängige medizinische Fachquelle",
+      "supports": "Erklärt für Laien, dass das Runzeln ein aktiver Prozess des sympathischen Nervensystems mit schrumpfenden Blutgefäßen ist und nach dem Wasserbad wieder zurückgeht."
+    },
+    {
+      "title": "Kareklas et al. — Water-induced finger wrinkles improve handling of wet objects",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23302867/",
+      "accessed": "2026-09-07",
+      "type": "wissenschaftliche Originalstudie",
+      "supports": "Fand in einem Experiment Vorteile beim Umgang mit nassen Gegenständen; stützt die Grip-Hypothese, ohne zu beweisen, dass dies die endgültige evolutionäre Ursache des Reflexes ist."
+    },
+    {
+      "title": "Haseleu et al. — Water-Induced Finger Wrinkles Do Not Affect Touch Acuity or Dexterity in Handling Wet Objects",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3885627/",
+      "accessed": "2026-09-07",
+      "type": "wissenschaftliche Originalstudie",
+      "supports": "Fand in einer anderen Untersuchung keinen Vorteil bei der Handhabung nasser Objekte und begründet deshalb die vorsichtige Formulierung, dass die funktionelle bzw. evolutionäre Erklärung nicht abschließend geklärt ist."
+    }
+  ],
+  "scenes": [
+    {
+      "narration": "Warum werden Finger im Wasser runzlig? Früher dachte man, die Haut saugt sich einfach voll. Tatsächlich steckt ein aktiver Nervenreflex dahinter.",
+      "imageText": "WARUM RUNZLIGE FINGER?",
+      "visualIdea": "Eine nasse Hand taucht aus einer Badewanne auf; die Fingerkuppen sind sichtbar runzlig, während eine runde Figur überrascht darauf schaut.",
+      "continuityNotes": "Starker Hook als echte Badszene mit Nahaufnahme im Vordergrund, Figur nur als Reaktion. Kein Poster, keine Infografik.",
+      "audioCue": "Warum werden Finger",
+      "durationSeconds": 6,
+      "cameraMotion": {
+        "type": "subtle-push-in"
+      },
+      "soundEffects": [],
+      "images": [
+        {
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer scene in a real bathroom setting. In the extreme foreground, a wet hand has just lifted out of a bathtub and the fingertips show clear water-induced wrinkles. In the midground, one simple round character reacts with curiosity and points toward the fingertips. Use strong foreground-midground-background depth, crisp thick black outlines, warm bathroom light with cool water reflections, and a clear cause-and-effect composition. Integrate exactly the German headline \"WARUM RUNZLIGE FINGER?\" once, large but not covering the hand. No other readable text.",
+          "imageText": "WARUM RUNZLIGE FINGER?",
+          "audioCue": "Warum werden Finger"
+        }
+      ]
+    },
+    {
+      "narration": "Wasser gelangt über die äußere Haut und Schweißkanäle hinein. Dabei verändert sich lokal das Salzgleichgewicht an den Nervenenden.",
+      "imageText": "WASSER STARTET SIGNAL",
+      "visualIdea": "Makroansicht einer Fingerkuppe zeigt Wasser an der Hautoberfläche und Schweißkanäle; danach erreicht der Reiz Nervenenden tiefer im Gewebe.",
+      "continuityNotes": "Makro-Cause-and-effect statt Lehrposter. Gleiche Fingerkuppe in zwei Perspektiven, klare Tiefe in den Hautschichten.",
+      "audioCue": "Wasser gelangt",
+      "durationSeconds": 6,
+      "cameraMotion": {
+        "type": "slow-zoom-in"
+      },
+      "soundEffects": [
+        {
+          "type": "soft-whoosh",
+          "atPercent": 0.02,
+          "volume": 0.22,
+          "visualEvent": "Cut von der sichtbaren Fingerkuppe in die Makroansicht der Haut.",
+          "reason": "Leitet von der Beobachtung zum Mechanismus über."
+        },
+        {
+          "type": "water-drop",
+          "targetId": "scene-02-image-02",
+          "audioCue": "Dabei verändert sich",
+          "volume": 0.2,
+          "visualEvent": "Wasser erreicht die Schweißkanäle und der lokale Reiz wird tiefer sichtbar.",
+          "reason": "Passt zum Wassereintritt und markiert den internen Erklärschritt."
+        }
+      ],
+      "images": [
+        {
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer macro cutaway of a fingertip touching water. Show the outer skin surface in the foreground, several sweat-duct openings, and water entering those tiny channels without turning the image into a textbook diagram. Use layered skin depth, organic shapes, thick black outlines, controlled blue water reflections and warm skin tones. Integrate exactly the German text \"WASSER STARTET SIGNAL\" once as a small supportive label. No arrows, no UI cards, no other readable text.",
+          "imageText": "WASSER STARTET SIGNAL",
+          "audioCue": "Wasser gelangt"
+        },
+        {
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer deeper macro scene of the same fingertip from a slightly lower side angle. Show subtle changes around the sweat ducts reaching a dense network of tiny nerve endings embedded in the tissue, visualized as a gentle localized pulse rather than a floating infographic. Keep real spatial depth with skin layers above and tissue below, strong outlines and no readable text anywhere.",
+          "imageText": "",
+          "audioCue": "Dabei verändert sich"
+        }
+      ]
+    },
+    {
+      "narration": "Das sympathische Nervensystem reagiert automatisch. Es verengt winzige Blutgefäße in den Fingerkuppen, sodass dort weniger Blutvolumen bleibt.",
+      "imageText": "GEFÄSSE VERENGEN SICH",
+      "visualIdea": "Ein Nervensignal erreicht kleine Gefäße; im zweiten Bild ziehen sich die Gefäße sichtbar zusammen und enthalten weniger Blut.",
+      "continuityNotes": "Anatomische Mini-Szene mit klarer Aktion. Keine schwebenden Nervensystem-Icons.",
+      "audioCue": "Das sympathische",
+      "durationSeconds": 6,
+      "cameraMotion": {
+        "type": "gentle-pan"
+      },
+      "soundEffects": [
+        {
+          "type": "soft-swipe",
+          "atPercent": 0.02,
+          "volume": 0.22,
+          "visualEvent": "Cut vom lokalen Hautreiz zur nervlichen Steuerung tiefer im Finger.",
+          "reason": "Markiert den Wechsel von Auslöser zu Reaktion."
+        },
+        {
+          "type": "soft-impact",
+          "targetId": "scene-03-image-02",
+          "audioCue": "Es verengt",
+          "volume": 0.2,
+          "visualEvent": "Die kleinen Blutgefäße werden sichtbar enger.",
+          "reason": "Akzentuiert den zentralen Vasokonstriktions-Schritt."
+        }
+      ],
+      "images": [
+        {
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer internal fingertip scene. Show a subtle sympathetic nerve signal traveling through a small nerve fiber toward several tiny blood vessels inside the fingertip pulp. The vessels are still open at this moment. Use a diagonal composition, layered tissue depth, thick confident outlines and a cinematic biological explainer look, not a floating diagram. No readable text anywhere.",
+          "imageText": "",
+          "audioCue": "Das sympathische"
+        },
+        {
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer close internal view of the same fingertip one moment later. Show the small blood vessels visibly constricting, their inner space narrowing and the fingertip tissue receiving less blood volume. Make the contraction physically obvious through shape change, not arrows or charts. Integrate exactly the German text \"GEFÄSSE VERENGEN SICH\" once. No other readable text.",
+          "imageText": "GEFÄSSE VERENGEN SICH",
+          "audioCue": "Es verengt"
+        }
+      ]
+    },
+    {
+      "narration": "Die Fingerkuppe wird dadurch minimal kleiner, während die Hautfläche fast gleich bleibt. Die überschüssige Haut legt sich in sichtbare Falten.",
+      "imageText": "FINGERKUPPE SCHRUMPFT",
+      "visualIdea": "Querschnitt zeigt geringeres Volumen in der Fingerkuppe; danach faltet sich die darüberliegende Haut sichtbar.",
+      "continuityNotes": "Mechanik Schritt für Schritt. Zweites Bild als starke Oberflächen-Nahaufnahme.",
+      "audioCue": "Die Fingerkuppe",
+      "durationSeconds": 6.5,
+      "cameraMotion": {
+        "type": "subtle-push-in"
+      },
+      "soundEffects": [
+        {
+          "type": "whoosh-down",
+          "atPercent": 0.02,
+          "volume": 0.22,
+          "visualEvent": "Cut zur sichtbaren Volumenänderung der Fingerkuppe.",
+          "reason": "Leitet von den Gefäßen zur Formänderung über."
+        },
+        {
+          "type": "paper",
+          "targetId": "scene-04-image-02",
+          "audioCue": "Die überschüssige Haut",
+          "volume": 0.19,
+          "visualEvent": "Die Haut legt sich in mehrere Falten.",
+          "reason": "Ein dezentes Faltgeräusch unterstützt die sichtbare Oberflächenveränderung."
+        }
+      ],
+      "images": [
+        {
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer cross-section of a fingertip after vasoconstriction. Show the inner fingertip pulp slightly reduced in volume while the outer skin shell still covers nearly the same surface area, creating a subtle mismatch between inside and outside. Use a clean side profile, layered depth and thick black outlines. Integrate exactly the German text \"FINGERKUPPE SCHRUMPFT\" once. No other readable text.",
+          "imageText": "FINGERKUPPE SCHRUMPFT",
+          "audioCue": "Die Fingerkuppe"
+        },
+        {
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer extreme surface close-up of the same fingertip as the looser outer skin buckles into several visible wrinkles. Use side lighting and perspective so the grooves cast small shadows and feel three-dimensional, while the wet skin remains clearly recognizable. No infographic panels, no arrows, and no readable text anywhere.",
+          "imageText": "",
+          "audioCue": "Die überschüssige Haut"
+        }
+      ]
+    },
+    {
+      "narration": "Darum passiert das besonders an Fingern und Zehen. Dort sitzen viele Schweißdrüsen, Blutgefäße und dicht verzweigte Nerven.",
+      "imageText": "NUR HIER BESONDERS",
+      "visualIdea": "Hand und Fuß werden als nasse Körperstellen gezeigt; danach Makroansicht der spezialisierten Haut mit vielen Strukturen.",
+      "continuityNotes": "Kein Ganzkörper-Mensch. Runde Figur kann im Hintergrund schwimmen; Fokus bleibt auf Händen/Füßen.",
+      "audioCue": "Darum passiert",
+      "durationSeconds": 6,
+      "cameraMotion": {
+        "type": "subtle-pull-out"
+      },
+      "soundEffects": [
+        {
+          "type": "soft-whoosh",
+          "atPercent": 0.02,
+          "volume": 0.22,
+          "visualEvent": "Cut von der einzelnen Fingerkuppe zu Händen und Füßen als typische Stellen.",
+          "reason": "Weitet die Erklärung auf die betroffenen Körperbereiche aus."
+        },
+        {
+          "type": "click",
+          "targetId": "scene-05-image-02",
+          "audioCue": "Dort sitzen viele",
+          "volume": 0.2,
+          "visualEvent": "Makroansicht zeigt die dichte Ausstattung der Haut.",
+          "reason": "Markiert den anatomischen Grund für die Ortsgebundenheit."
+        }
+      ],
+      "images": [
+        {
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer poolside scene focused on a wet hand and wet toes in the foreground, both showing clear wrinkling after water exposure. A simple round character sits at the pool edge in the midground, but the skin reaction remains the visual focus. Use bright natural light, water reflections, depth and varied scale. No readable text anywhere.",
+          "imageText": "",
+          "audioCue": "Darum passiert"
+        },
+        {
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer macro cutaway comparing the specialized skin of a fingertip with nearby ordinary skin in one continuous scene, not a split infographic. Make the fingertip side visibly richer in sweat ducts, tiny blood vessels and nerve fibers embedded in the tissue. Integrate exactly the German text \"NUR HIER BESONDERS\" once. Keep the anatomy simple, spatial and readable. No other readable text.",
+          "imageText": "NUR HIER BESONDERS",
+          "audioCue": "Dort sitzen viele"
+        }
+      ]
+    },
+    {
+      "narration": "Bei geschädigten sympathischen Nerven kann dieser Runzelreflex schwächer ausfallen. Deshalb wurde er sogar als Test der Nervenfunktion untersucht.",
+      "imageText": "NERVENREFLEX",
+      "visualIdea": "Ein normal versorgter Finger runzelt im Wasser; danach bleibt ein Finger mit unterbrochenem Nervensignal deutlich glatter.",
+      "continuityNotes": "Sachlicher medizinischer Vergleich, keine Diagnosebehauptung. Unterschied über Handlung zeigen, nicht über rote Warnkarten.",
+      "audioCue": "Bei geschädigten",
+      "durationSeconds": 6,
+      "cameraMotion": {
+        "type": "pan-right"
+      },
+      "soundEffects": [
+        {
+          "type": "soft-swipe",
+          "atPercent": 0.02,
+          "volume": 0.22,
+          "visualEvent": "Cut von normaler Anatomie zu einem Funktionsvergleich der Nervenversorgung.",
+          "reason": "Markiert den medizinischen Beleg für einen aktiven Reflex."
+        },
+        {
+          "type": "click",
+          "targetId": "scene-06-image-02",
+          "audioCue": "Deshalb wurde",
+          "volume": 0.2,
+          "visualEvent": "Ein einfacher klinischer Vergleich der Runzelreaktion wird sichtbar.",
+          "reason": "Unterstützt den Hinweis auf die untersuchte Testfunktion."
+        }
+      ],
+      "images": [
+        {
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer clinical-style but scene-based comparison. In one water bowl, a normally innervated fingertip develops clear wrinkles while a subtle glowing nerve path remains intact beneath the skin. Keep the setting like a simple examination table with depth, not a medical poster. Integrate exactly the German label \"NERVENREFLEX\" once. No other readable text.",
+          "imageText": "NERVENREFLEX",
+          "audioCue": "Bei geschädigten"
+        },
+        {
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer follow-up scene on the same examination table. Show another fingertip in water with a visibly interrupted sympathetic nerve path beneath the skin and much weaker wrinkling at the surface, while a clinician-like round character observes without dramatic alarm. No diagnosis symbols, no charts, and no readable text anywhere.",
+          "imageText": "",
+          "audioCue": "Deshalb wurde"
+        }
+      ]
+    },
+    {
+      "narration": "Eine mögliche Funktion ist besserer Halt bei Nässe. Einige Studien fanden Vorteile beim Greifen, doch die Evolutions-Erklärung ist nicht endgültig geklärt.",
+      "imageText": "BESSERER NASSGRIFF?",
+      "visualIdea": "Runzlige Finger greifen einen nassen Gegenstand; danach wird die Hypothese bewusst als noch nicht abschließend geklärt dargestellt.",
+      "continuityNotes": "Hypothese klar als Hypothese markieren. Kein Satz wie 'Evolution hat das dafür erfunden'.",
+      "audioCue": "Eine mögliche Funktion",
+      "durationSeconds": 7,
+      "cameraMotion": {
+        "type": "ken-burns"
+      },
+      "soundEffects": [
+        {
+          "type": "water-drop",
+          "atPercent": 0.02,
+          "volume": 0.2,
+          "visualEvent": "Cut zu einer nassen Greifsituation.",
+          "reason": "Leitet in die mögliche praktische Funktion über."
+        },
+        {
+          "type": "tick",
+          "targetId": "scene-07-image-02",
+          "audioCue": "doch die Evolutions-Erklärung",
+          "volume": 0.19,
+          "visualEvent": "Die Szene wechselt von positivem Grip-Hinweis zu bewusst offener wissenschaftlicher Frage.",
+          "reason": "Betont die Unsicherheit statt eine Evolutionsbehauptung als Fakt zu verkaufen."
+        }
+      ],
+      "images": [
+        {
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer action scene of wrinkled wet fingertips gripping a slippery glass object above a sink. Water is running off the object while the fingertip grooves make strong contact with the wet surface. Use close perspective, dynamic diagonal framing, crisp outlines and realistic cause-and-effect within the stylized world. No readable text anywhere.",
+          "imageText": "",
+          "audioCue": "Eine mögliche Funktion"
+        },
+        {
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer research scene where a round scientist character compares wet-object grip trials while two different result sheets remain visually ambiguous rather than declaring a final evolutionary answer. Keep papers mostly symbolic with no pseudo-writing. Integrate exactly the German text \"BESSERER NASSGRIFF?\" once, including the question mark. No other readable text.",
+          "imageText": "BESSERER NASSGRIFF?",
+          "audioCue": "doch die Evolutions-Erklärung"
+        }
+      ]
+    },
+    {
+      "narration": "Sind die Falten also nur aufgeweichte Haut? Nein. Entscheidend sind Nerven und Blutgefäße, die deine Fingerkuppen aktiv verändern.",
+      "imageText": "NICHT NUR WASSER",
+      "visualIdea": "Prüffrage kontrastiert die alte Aufweich-Idee mit dem tatsächlichen Nerven-Gefäß-Mechanismus.",
+      "continuityNotes": "Erkenntnisszene als Ursache-Folge, nicht als Textposter. Sichtbarer Kontrast zwischen falscher und richtiger Erklärung.",
+      "audioCue": "Sind die Falten",
+      "durationSeconds": 6.5,
+      "cameraMotion": {
+        "type": "slow-zoom-in"
+      },
+      "soundEffects": [
+        {
+          "type": "swoosh-reveal",
+          "atPercent": 0.02,
+          "volume": 0.22,
+          "visualEvent": "Cut zur zentralen Erkenntnisfrage.",
+          "reason": "Einmaliger Aha-Sound für die Auflösung."
+        },
+        {
+          "type": "soft-impact",
+          "targetId": "scene-08-image-02",
+          "audioCue": "Entscheidend sind",
+          "volume": 0.2,
+          "visualEvent": "Die tatsächliche Kette Nervenreaktion zu Gefäßverengung und Falten wird sichtbar.",
+          "reason": "Betont die richtige Erklärung."
+        }
+      ],
+      "images": [
+        {
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer scene showing a soaked fingertip in the foreground while a simple misleading idea of passive swelling is visually pushed aside by the active internal mechanism beginning beneath the skin. Keep the contrast embedded in one continuous scene instead of two poster panels. Integrate exactly the German text \"NICHT NUR WASSER\" once. No other readable text.",
+          "imageText": "NICHT NUR WASSER",
+          "audioCue": "Sind die Falten"
+        },
+        {
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer cause-and-effect close-up of a fingertip: a sympathetic nerve pulse reaches tiny blood vessels, the vessels constrict, inner fingertip volume decreases, and the surface forms wrinkles. Arrange these changes along one spatial flow through the tissue with depth and motion, not separate boxes. No readable text anywhere.",
+          "imageText": "",
+          "audioCue": "Entscheidend sind"
+        }
+      ]
+    },
+    {
+      "narration": "Beim nächsten Bad kannst du es beobachten: Nach einigen Minuten entstehen Falten, außerhalb des Wassers verschwinden sie wieder. Der Reflex wird zurückgeschaltet.",
+      "imageText": "REFLEX AUS",
+      "visualIdea": "Finger werden nach dem Bad noch runzlig gezeigt; danach glätten sie sich beim Abtrocknen sichtbar wieder.",
+      "continuityNotes": "Konkreter Abschluss mit beobachtbarer Alltagssituation und klarer Rückkehr zum Normalzustand.",
+      "audioCue": "Beim nächsten Bad",
+      "durationSeconds": 8,
+      "cameraMotion": {
+        "type": "subtle-pull-out"
+      },
+      "soundEffects": [
+        {
+          "type": "soft-whoosh",
+          "atPercent": 0.02,
+          "volume": 0.22,
+          "visualEvent": "Cut zurück in die Alltagsszene im Bad.",
+          "reason": "Schließt den Mechanismus mit einer beobachtbaren Situation ab."
+        },
+        {
+          "type": "soft-swipe",
+          "targetId": "scene-09-image-02",
+          "audioCue": "außerhalb des Wassers",
+          "volume": 0.19,
+          "visualEvent": "Die Finger trocknen und glätten sich wieder.",
+          "reason": "Unterstützt die sichtbare Rückkehr zum Ausgangszustand."
+        }
+      ],
+      "images": [
+        {
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer bathroom scene after a bath. In the foreground, a hand rests above a towel with clearly wrinkled wet fingertips, while a round character in the midground looks closely and compares both hands. Use warm light, droplets, foreground depth and a calm concluding composition. No readable text anywhere.",
+          "imageText": "",
+          "audioCue": "Beim nächsten Bad"
+        },
+        {
+          "prompt": "Create a vertical 9:16 Modern Countryball Explainer final scene a short time later. The same hand is now dry and the fingertip skin has visibly smoothed back toward normal while the towel and bathtub remain in the background for continuity. Use a gentle resolved composition with subtle warm light. Integrate exactly the German text \"REFLEX AUS\" once. No other readable text.",
+          "imageText": "REFLEX AUS",
+          "audioCue": "außerhalb des Wassers"
+        }
+      ]
+    }
+  ]
+}

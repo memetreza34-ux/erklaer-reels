@@ -1,0 +1,56 @@
+# ALLE BILDPROMPTS — Warum werden Finger im Wasser runzlig?
+
+Format: 9:16 · Modern Countryball Explainer · 17 Bildmomente
+
+Flow-Regel: immer genau 1 Bild erzeugen, prüfen, korrekt benennen und ablegen; erst dann das nächste.
+
+## Bild 01
+Create a vertical 9:16 Modern Countryball Explainer scene in a real bathroom setting. In the extreme foreground, a wet hand has just lifted out of a bathtub and the fingertips show clear water-induced wrinkles. In the midground, one simple round character reacts with curiosity and points toward the fingertips. Use strong foreground-midground-background depth, crisp thick black outlines, warm bathroom light with cool water reflections, and a clear cause-and-effect composition. Integrate exactly the German headline "WARUM RUNZLIGE FINGER?" once, large but not covering the hand. No other readable text.
+
+## Bild 02
+Create a vertical 9:16 Modern Countryball Explainer macro cutaway of a fingertip touching water. Show the outer skin surface in the foreground, several sweat-duct openings, and water entering those tiny channels without turning the image into a textbook diagram. Use layered skin depth, organic shapes, thick black outlines, controlled blue water reflections and warm skin tones. Integrate exactly the German text "WASSER STARTET SIGNAL" once as a small supportive label. No arrows, no UI cards, no other readable text.
+
+## Bild 03
+Create a vertical 9:16 Modern Countryball Explainer deeper macro scene of the same fingertip from a slightly lower side angle. Show subtle changes around the sweat ducts reaching a dense network of tiny nerve endings embedded in the tissue, visualized as a gentle localized pulse rather than a floating infographic. Keep real spatial depth with skin layers above and tissue below, strong outlines and no readable text anywhere.
+
+## Bild 04
+Create a vertical 9:16 Modern Countryball Explainer internal fingertip scene. Show a subtle sympathetic nerve signal traveling through a small nerve fiber toward several tiny blood vessels inside the fingertip pulp. The vessels are still open at this moment. Use a diagonal composition, layered tissue depth, thick confident outlines and a cinematic biological explainer look, not a floating diagram. No readable text anywhere.
+
+## Bild 05
+Create a vertical 9:16 Modern Countryball Explainer close internal view of the same fingertip one moment later. Show the small blood vessels visibly constricting, their inner space narrowing and the fingertip tissue receiving less blood volume. Make the contraction physically obvious through shape change, not arrows or charts. Integrate exactly the German text "GEFÄSSE VERENGEN SICH" once. No other readable text.
+
+## Bild 06
+Create a vertical 9:16 Modern Countryball Explainer cross-section of a fingertip after vasoconstriction. Show the inner fingertip pulp slightly reduced in volume while the outer skin shell still covers nearly the same surface area, creating a subtle mismatch between inside and outside. Use a clean side profile, layered depth and thick black outlines. Integrate exactly the German text "FINGERKUPPE SCHRUMPFT" once. No other readable text.
+
+## Bild 07
+Create a vertical 9:16 Modern Countryball Explainer extreme surface close-up of the same fingertip as the looser outer skin buckles into several visible wrinkles. Use side lighting and perspective so the grooves cast small shadows and feel three-dimensional, while the wet skin remains clearly recognizable. No infographic panels, no arrows, and no readable text anywhere.
+
+## Bild 08
+Create a vertical 9:16 Modern Countryball Explainer poolside scene focused on a wet hand and wet toes in the foreground, both showing clear wrinkling after water exposure. A simple round character sits at the pool edge in the midground, but the skin reaction remains the visual focus. Use bright natural light, water reflections, depth and varied scale. No readable text anywhere.
+
+## Bild 09
+Create a vertical 9:16 Modern Countryball Explainer macro cutaway comparing the specialized skin of a fingertip with nearby ordinary skin in one continuous scene, not a split infographic. Make the fingertip side visibly richer in sweat ducts, tiny blood vessels and nerve fibers embedded in the tissue. Integrate exactly the German text "NUR HIER BESONDERS" once. Keep the anatomy simple, spatial and readable. No other readable text.
+
+## Bild 10
+Create a vertical 9:16 Modern Countryball Explainer clinical-style but scene-based comparison. In one water bowl, a normally innervated fingertip develops clear wrinkles while a subtle glowing nerve path remains intact beneath the skin. Keep the setting like a simple examination table with depth, not a medical poster. Integrate exactly the German label "NERVENREFLEX" once. No other readable text.
+
+## Bild 11
+Create a vertical 9:16 Modern Countryball Explainer follow-up scene on the same examination table. Show another fingertip in water with a visibly interrupted sympathetic nerve path beneath the skin and much weaker wrinkling at the surface, while a clinician-like round character observes without dramatic alarm. No diagnosis symbols, no charts, and no readable text anywhere.
+
+## Bild 12
+Create a vertical 9:16 Modern Countryball Explainer action scene of wrinkled wet fingertips gripping a slippery glass object above a sink. Water is running off the object while the fingertip grooves make strong contact with the wet surface. Use close perspective, dynamic diagonal framing, crisp outlines and realistic cause-and-effect within the stylized world. No readable text anywhere.
+
+## Bild 13
+Create a vertical 9:16 Modern Countryball Explainer research scene where a round scientist character compares wet-object grip trials while two different result sheets remain visually ambiguous rather than declaring a final evolutionary answer. Keep papers mostly symbolic with no pseudo-writing. Integrate exactly the German text "BESSERER NASSGRIFF?" once, including the question mark. No other readable text.
+
+## Bild 14
+Create a vertical 9:16 Modern Countryball Explainer scene showing a soaked fingertip in the foreground while a simple misleading idea of passive swelling is visually pushed aside by the active internal mechanism beginning beneath the skin. Keep the contrast embedded in one continuous scene instead of two poster panels. Integrate exactly the German text "NICHT NUR WASSER" once. No other readable text.
+
+## Bild 15
+Create a vertical 9:16 Modern Countryball Explainer cause-and-effect close-up of a fingertip: a sympathetic nerve pulse reaches tiny blood vessels, the vessels constrict, inner fingertip volume decreases, and the surface forms wrinkles. Arrange these changes along one spatial flow through the tissue with depth and motion, not separate boxes. No readable text anywhere.
+
+## Bild 16
+Create a vertical 9:16 Modern Countryball Explainer bathroom scene after a bath. In the foreground, a hand rests above a towel with clearly wrinkled wet fingertips, while a round character in the midground looks closely and compares both hands. Use warm light, droplets, foreground depth and a calm concluding composition. No readable text anywhere.
+
+## Bild 17
+Create a vertical 9:16 Modern Countryball Explainer final scene a short time later. The same hand is now dry and the fingertip skin has visibly smoothed back toward normal while the towel and bathtub remain in the background for continuity. Use a gentle resolved composition with subtle warm light. Integrate exactly the German text "REFLEX AUS" once. No other readable text.
