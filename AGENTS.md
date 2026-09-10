@@ -6,6 +6,26 @@
 
 Phase 1 ChatGPT (Anlegen, Script, Prompts, Motion/SFX) → Phase 2 Arman (Audio, Bilder) → Phase 3 Antigravity (Zuordnung, Sync, QC, Render). Details stehen in `WORKFLOW_PHASEN.md`.
 
+## Antigravity-Autopilot — keine unnötigen Zwischenfragen
+
+Für Phase 3 gilt zusätzlich `ANTIGRAVITY_AUTOPILOT.md`.
+
+Wenn der Nutzer sinngemäß „Mach das Reel fertig“, „Phase 3 starten“, „rendern“ oder „mach weiter bis fertig“ sagt, ist der komplette normale **nicht-destruktive** Phase-3-Lauf freigegeben. Antigravity fragt danach nicht vor jedem einzelnen Routinebefehl erneut um Erlaubnis.
+
+Ohne Zwischenfrage ausführen: Asset-Discovery, sichere Organisation/Kopien, visuelle QC, Audio-Optimierung, Bild↔Audio-Ausrichtung, Sound-Bindung, Timeline, Finalizer, Render-QC, Render und Status-Updates. Eindeutig automatisch behebbaren Fehler zuerst selbst reparieren und den Check wiederholen.
+
+Nur bei echten Blockern stoppen: Reel-Ziel unklar, Pflichtasset fehlt nach vollständiger Suche, destruktiver Eingriff in Nutzeroriginale wäre nötig, Bild-/Audio-Zuordnung bleibt wirklich mehrdeutig, ein Hard Gate lässt sich nicht mit vorhandenen Assets automatisch beheben oder eine externe irreversible/kostenpflichtige Aktion wäre nötig.
+
+Routine-Phase-3 braucht keine Zwischencommits. Kein Commit nur wegen Asset-Suche, Audio-Trim, Timeline oder Render. Wenn wirklich committed wird, bleibt `npm test` vorher Pflicht.
+
+Technischer Fast-Path:
+
+```bash
+npm run phase3:reel -- --dir "<reel>"
+```
+
+Dieser Lauf ist nicht-interaktiv und stoppt nur bei einem echten fehlgeschlagenen Gate/technischen Fehler. Plattform-/IDE-Sicherheitsdialoge können Repo-Regeln nicht abschalten und müssen weiterhin beachtet werden.
+
 ## Nutzerassets schützen
 
 - Nutzerassets sind unveränderliche Originale.
@@ -147,11 +167,23 @@ Streng seriell: ein Bild → warten → prüfen → `Bild NN.png` → ablegen �
 
 ## Phase 3 / Render
 
+Bevorzugt nach der inhaltlichen Bild↔Audio-Ausrichtung den Ein-Kommando-Fast-Path verwenden:
+
 ```bash
+npm run phase3:reel -- --dir "<reel>"
+```
+
+Der Fast-Path führt seriell Asset-Discovery/-Organisation, visuelle QC, Audio-Optimierung, Sound-Bindung, Timeline, Finalizer, Render-Validierung und Render aus. Bei einem echten Hard-Gate-Fehler stoppt er mit Blockermeldung statt interaktiver Zwischenfrage.
+
+Einzelschritte für Diagnose/Reparatur bleiben verfügbar:
+
+```bash
+npm run discover:assets -- --dir "<reel>"
+npm run organize:assets -- --dir "<reel>" --apply
+npm run check:visuals -- --dir "<reel>" --strict
 npm run trim:pauses -- --dir "<reel>" --speed 1.10
 npm run sync:sounds -- --dir "<reel>" --strict
 npm run build:timeline -- --dir "<reel>" --strict
-npm run check:visuals -- --dir "<reel>" --strict
 npm run finalize:reel -- --dir "<reel>" --strict
 npm run validate:render -- --dir "<reel>"
 npm run render:reel -- --dir "<reel>"
