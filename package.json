@@ -27,6 +27,7 @@
     "sync:sounds": "node src/cli/run-with-reel-layout.js src/cli/sync-sounds.js",
     "sync:audio": "node src/cli/run-with-reel-layout.js src/cli/build-timeline.js",
     "legacy:sync:words": "node src/cli/sync-words.js",
+    "phase3:reel": "node src/cli/phase3-reel.js",
     "render:reel": "node src/cli/run-with-reel-layout.js src/cli/render-reel.js",
     "validate:youtube-phase3": "node src/cli/validate-youtube-phase3.js",
     "validate:youtube-render": "node src/cli/validate-youtube-phase3.js --post-render",
