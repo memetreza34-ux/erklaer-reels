@@ -52,11 +52,31 @@ test('Qualitätskonfiguration verlangt Bewegung auf jedem neuen Bildmoment', asy
   assert.equal(rules.soundEffects.soundOnEveryInternalImageChange, true);
 });
 
-test('Qualitätskonfiguration passt zum Renderer-Timing', async () => {
+test('Qualitätskonfiguration passt zum Renderer-Timing und dichterem Bildrhythmus', async () => {
   const raw = await readFile(new URL('../config/production-quality-gates.json', import.meta.url), 'utf8');
   const gates = JSON.parse(raw);
   assert.equal(gates.editTiming.sceneCueLeadSeconds, EDIT_TIMING_STYLE.sceneCueLeadSeconds);
   assert.equal(gates.editTiming.imageCueLeadSeconds, EDIT_TIMING_STYLE.imageCueLeadSeconds);
   assert.equal(gates.editTiming.sfxPreRollSeconds, EDIT_TIMING_STYLE.sfxPreRollSeconds);
   assert.equal(gates.sceneTiming.postVoiceHoldSeconds, 0.6);
+  assert.equal(gates.sceneTiming.minimumImagePhaseSeconds, 2.2);
+  assert.deepEqual(gates.sceneTiming.recommendedImagePhaseSeconds, { min: 2.5, max: 3.8 });
+  assert.equal(gates.sceneTiming.splitReviewThresholdSeconds, 4.8);
+});
+
+test('Adaptive Dense V2 plant für neue Reels mehr Bilder ohne starre Gleichverteilung', async () => {
+  const raw = await readFile(new URL('../config/content-rules.json', import.meta.url), 'utf8');
+  const rules = JSON.parse(raw).visualRules;
+  assert.equal(rules.imageCountMode, 'adaptive-dense-v2');
+  assert.equal(rules.visualDensityVersion, 2);
+  assert.equal(rules.effectiveSince, '2026-09-11');
+  assert.deepEqual(rules.adaptiveImageTargets['8'], { min: 19, max: 21 });
+  assert.deepEqual(rules.adaptiveImageTargets['9'], { min: 20, max: 22 });
+  assert.deepEqual(rules.adaptiveImageTargets['10'], { min: 21, max: 24 });
+  assert.equal(rules.hookImagePhases, 2);
+  assert.deepEqual(rules.standardSceneImagePhases, { min: 2, max: 3 });
+  assert.equal(rules.imageMomentPerSpokenIdea, true);
+  assert.equal(rules.globalWorldLockRequiredBeforeImage01, true);
+  assert.equal(rules.forbidTinyDecorativeBallActor, true);
+  assert.equal(rules.ballActorMustHaveNarrativeFunction, true);
 });
