@@ -13,12 +13,22 @@ import { findNarrationCueStartPercent } from '../shared/image-phase-cue.js';
  * Ordnerstruktur mit Script, Szenen, Bildprompts, Effektplan, Caption und Quellen.
  */
 
+const DENSE_IMAGE_TARGETS = {
+  8: { min: 19, max: 21 },
+  9: { min: 20, max: 22 },
+  10: { min: 21, max: 24 }
+};
+
 function fehler(nachricht) {
   throw new Error(nachricht);
 }
 
 function text(wert) {
   return String(wert ?? '').trim();
+}
+
+function usesAdaptiveDenseV2(paket) {
+  return Number(paket?.visualDensityVersion ?? 0) >= 2 || text(paket?.imageCountMode) === 'adaptive-dense-v2';
 }
 
 function soundCoverageKey(sound) {
@@ -43,6 +53,7 @@ export function validateReelPackage(paket) {
   if (probleme.length > 0) return probleme;
 
   const szenen = paket.scenes;
+  const denseV2 = usesAdaptiveDenseV2(paket);
   if (!Array.isArray(szenen) || szenen.length < 8 || szenen.length > 10) {
     probleme.push(`scenes braucht 8 bis 10 Einträge, hat aber ${Array.isArray(szenen) ? szenen.length : 0}.`);
   }
@@ -51,8 +62,6 @@ export function validateReelPackage(paket) {
     if (!hook.passed) probleme.push(`Szene 1: Hook-Gate nicht bestanden: ${hook.issues.join(' ')}`);
   }
 
-  // Die Caption-Regeln des Renderers, nur früher geprüft. Sonst fällt eine zu kurze
-  // Caption erst nach Bildern und Voice-over auf, direkt vor dem Rendern.
   const caption = text(paket.caption);
   if (caption) {
     const woerter = (caption.match(/[\p{L}\p{N}]+(?:[’'-][\p{L}\p{N}]+)*/gu) ?? []).length;
@@ -70,8 +79,6 @@ export function validateReelPackage(paket) {
     }
   }
 
-  // Dieselben Anforderungen wie die Quellen-QC, nur früher: Ein Paket mit schwachen
-  // Quellen soll gar kein Reel erzeugen, statt später am Render zu scheitern.
   const quellen = Array.isArray(paket.sources) ? paket.sources : [];
   if (quellen.length < 2) {
     probleme.push('sources braucht mindestens zwei Quellen.');
@@ -109,6 +116,7 @@ export function validateReelPackage(paket) {
     }
   }
 
+  let totalImages = 0;
   (Array.isArray(szenen) ? szenen : []).forEach((szene, index) => {
     const nr = index + 1;
     if (text(szene.narration).split(/\s+/).filter(Boolean).length < 5) {
@@ -118,13 +126,24 @@ export function validateReelPackage(paket) {
     if (text(szene.continuityNotes).length < 10) probleme.push(`Szene ${nr}: continuityNotes fehlen.`);
 
     const bilder = szene.images;
-    const erwartet = index === 0 ? 1 : 2;
     if (!Array.isArray(bilder) || bilder.length === 0) {
       probleme.push(`Szene ${nr}: images fehlt.`);
     } else {
-      if (bilder.length !== erwartet) {
-        probleme.push(`Szene ${nr}: erwartet ${erwartet} Bild(er), geliefert ${bilder.length}.`);
+      totalImages += bilder.length;
+      if (denseV2) {
+        if (index === 0 && bilder.length !== 2) {
+          probleme.push(`Szene 1: Adaptive Dense V2 braucht genau 2 Hook-Bilder, geliefert ${bilder.length}.`);
+        }
+        if (index > 0 && (bilder.length < 2 || bilder.length > 3)) {
+          probleme.push(`Szene ${nr}: Adaptive Dense V2 braucht 2 oder 3 Bilder, geliefert ${bilder.length}.`);
+        }
+      } else {
+        const erwartet = index === 0 ? 1 : 2;
+        if (bilder.length !== erwartet) {
+          probleme.push(`Szene ${nr}: Legacy-Dichte erwartet ${erwartet} Bild(er), geliefert ${bilder.length}.`);
+        }
       }
+
       bilder.forEach((bild, bildIndex) => {
         if (bildIndex > 0) {
           const phaseCue = text(bild.audioCue);
@@ -139,8 +158,6 @@ export function validateReelPackage(paket) {
           probleme.push(`Szene ${nr}, Bild ${bildIndex + 1}: prompt fehlt oder ist unter 180 Zeichen.`);
         }
 
-        // Nur das Cover braucht zwingend Text. Spätere Bildmomente sollen primär über
-        // Handlung und Motiv funktionieren und dürfen bewusst textfrei bleiben.
         const bildText = text(bild.imageText);
         const istCover = index === 0 && bildIndex === 0;
         if (istCover && !bildText) {
@@ -157,8 +174,13 @@ export function validateReelPackage(paket) {
     }
   });
 
-  // Dieselben Endregeln wie in der Inhaltskontrolle, nur früher: So erfährt Phase 1
-  // schon beim Schreiben, dass ein Abschluss fehlt, statt erst nach dem Anlegen.
+  if (denseV2 && Array.isArray(szenen) && DENSE_IMAGE_TARGETS[szenen.length]) {
+    const ziel = DENSE_IMAGE_TARGETS[szenen.length];
+    if (totalImages < ziel.min || totalImages > ziel.max) {
+      probleme.push(`Adaptive Dense V2: Bei ${szenen.length} Szenen sind ${ziel.min} bis ${ziel.max} Bilder vorgesehen; geliefert ${totalImages}.`);
+    }
+  }
+
   const letzteZwei = (Array.isArray(szenen) ? szenen : []).slice(-2);
   if (letzteZwei.length === 2) {
     const endText = letzteZwei.map((szene) => text(szene.narration)).join(' ');
@@ -199,6 +221,7 @@ export async function importReelPackage(paket, { outputRoot = 'reels', date = ne
   if (probleme.length > 0) fehler(`Paket unvollständig:\n- ${probleme.join('\n- ')}`);
 
   const szenen = paket.scenes;
+  const denseV2 = usesAdaptiveDenseV2(paket);
   const skript = szenen.map((szene) => text(szene.narration)).join(' ');
 
   const ergebnis = await createReelWorkspace({
@@ -216,8 +239,6 @@ export async function importReelPackage(paket, { outputRoot = 'reels', date = ne
     await writeFile(path.join(verzeichnis, relativ), `${JSON.stringify(wert, null, 2)}\n`, 'utf8');
   };
 
-  // Szenen füllen. Die Workspace-Defaults bleiben die Sicherheitsbasis für Motion
-  // und SFX; ein Paket kann sie gezielt ergänzen oder pro Coverage-Ziel ersetzen.
   const index = await lesen(path.join('scenes', 'scene-index.json'));
   const basisEffektplan = await lesen(path.join('effects', 'effects-plan.json'));
   const basisEffektByScene = new Map((basisEffektplan.scenes ?? []).map((szene) => [szene.sceneId, szene]));
@@ -273,7 +294,6 @@ export async function importReelPackage(paket, { outputRoot = 'reels', date = ne
     }
   }
 
-  // Effektplan, Caption, Quellen, Script
   basisEffektplan.scenes = effektSzenen;
   await schreibenJson(path.join('effects', 'effects-plan.json'), basisEffektplan);
 
@@ -287,12 +307,15 @@ export async function importReelPackage(paket, { outputRoot = 'reels', date = ne
   reel.topicArea = text(paket.topicArea);
   reel.plannedImageCount = index.reduce((summe, szene) => summe + szene.imagePhases.length, 0);
   reel.imagePhaseTimingMode = 'narration-audio-cue';
+  reel.imageCountMode = denseV2 ? 'adaptive-dense-v2' : 'one-hook-two-standard';
+  reel.visualDensityVersion = denseV2 ? 2 : 1;
   await schreibenJson('reel.json', reel);
 
   return {
     reelDirectory: verzeichnis,
     sceneCount: index.length,
     plannedImageCount: reel.plannedImageCount,
+    imageCountMode: reel.imageCountMode,
     wordCount: skript.split(/\s+/).filter(Boolean).length
   };
 }
