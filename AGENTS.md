@@ -50,11 +50,17 @@ Bei „Mach ein neues Reel“ autonom:
 3. 155–175 deutsche Wörter schreiben
 4. 8–10 narrative Szenen planen, Standard 9
 5. für jede Bildphase ausschließlich **Modern Countryball Explainer** verwenden
-6. Hook 1 Bild, jede weitere Szene 2; Standard 9 Szenen = 17 Bilder
-7. lebendige Bildprompts, Motion-Plan, SFX-Plan, Caption und Quellen fertigstellen
-8. keine Untertitel erzeugen
-9. `check:content --strict` muss Quellen, Bildstruktur sowie Motion-/SFX-Hard-Gate bestehen
-10. nach echten Assets Audio/Timeline/QC und Render nur über bestandene Hard-Gates
+6. für neue Pakete `imageCountMode: "adaptive-dense-v2"` und `visualDensityVersion: 2` setzen
+7. Hook mit 2 Bildern planen; spätere Szenen mit 2 oder 3 Bildern je nach gesprochenem Inhalt
+8. Ziel: 8 Szenen 19–21 Bilder, 9 Szenen 20–22, 10 Szenen 21–24
+9. **ein Bild = eine klare gesprochene visuelle Kernaussage**; komplexe Ursache→Wirkung-/Anatomie-/Technik-/Studienabschnitte gezielt splitten
+10. jede interne Bildphase mit eigenem tatsächlich gesprochenem `audioCue` planen
+11. lebendige Bildprompts, Motion-Plan, SFX-Plan, Caption und Quellen fertigstellen
+12. keine Untertitel erzeugen
+13. `check:content --strict` muss Quellen, Bildstruktur sowie Motion-/SFX-Hard-Gate bestehen
+14. nach echten Assets Audio/Timeline/QC und Render nur über bestandene Hard-Gates
+
+Legacy-Pakete mit `one-hook-two-standard` bleiben unterstützt. Neue Phase-1-Reels sollen jedoch Adaptive Dense V2 verwenden.
 
 `sync:words` ist für neue Reels **nicht erforderlich** und gehört nicht zum aktiven Workflow.
 
@@ -62,18 +68,32 @@ Bei „Mach ein neues Reel“ autonom:
 
 Reels: ausschließlich **Modern Countryball Explainer** (`modern-countryball-explainer`) in 9:16. YouTube-Regeln niemals auf Reels übertragen.
 
+### World-Lock vor Bild 01
+
+Der KI-Agent muss vor dem ersten Bild die **eine feste Projektwelt** setzen und danach beibehalten. Einzelprompts dürfen Motiv, Handlung, Perspektive und Umgebung verändern, aber niemals Konturstärke, Formsprache, Farbcharakter, grafische Schatten, Detailgrad, 2D-Rendering, Tiefenlogik oder Charakterlogik neu erfinden.
+
+### Kugelfiguren nur mit Funktion
+
 Wenn Akteure vorkommen:
 - exakt runde Kugelfiguren ohne separaten menschlichen Kopf
 - einfache weiße Augen
 - Flaggen nur bei echter geografischer Relevanz
 - neutrale Kugeln für allgemeine Akteure
+- keine zufälligen Zungen/Grimassen ohne inhaltlichen Grund
 
-Ein Akteur ist nicht Pflicht. Objekte, Mechanismen, Karten, Dokumente oder Umgebungen dürfen die Szene allein tragen.
+Ein Akteur ist **nicht Pflicht**. Objekte, Mechanismen, Anatomie, Karten, Dokumente oder Umgebungen dürfen die Szene allein tragen.
+
+Hard-Guidance:
+- keine winzige dekorative Kugel als Stil-Sticker
+- Kugel nur, wenn sie Handlung, Reaktion, Vergleich oder Perspektive wirklich verbessert
+- wenn Anatomie/Mechanismus/Objekt/Prozess klarer allein erklärt: **keine Kugel hinzufügen**
+- wenn eine Kugel vorkommt, muss sie als bewusster Akteur lesbar und nicht zufällig klein sein
 
 ### Bildwirkung
 
 Jede Bildphase ist eine konkrete Mini-Szene:
 - sichtbare Handlung/Reaktion/Ursache-Folge
+- ein Bild = eine visuelle Kernaussage
 - ein dominantes Motiv
 - wenige unterstützende Elemente
 - einfache Tiefe/Umgebung, wenn sinnvoll
@@ -91,19 +111,26 @@ Keine humanoiden Cartoonmenschen, Stick-Figuren, Fotorealismus, Anime, Clay oder
 - Starke textfreie Bilder sind erwünscht.
 - `imageText` leer → kein lesbarer Text.
 
-## Bildanzahl und Cue-Timing
+## Bildanzahl und Cue-Timing — Adaptive Dense V2
+
+Für neue Phase-1-Pakete:
 
 ```text
-Bilder = 1 + (Szenen − 1) × 2
+8 Szenen  → 19–21 Bilder
+9 Szenen  → 20–22 Bilder
+10 Szenen → 21–24 Bilder
 ```
 
-- Hook exakt 1 Bildphase
-- jede weitere Szene exakt 2
-- keine dritte Phase
-- mindestens 3 s pro Bildphase
-- zweite Phase mit eigenem gesprochenen `audioCue`
+- Hook exakt 2 Bildphasen
+- jede weitere Szene 2 oder 3
+- dritte Phase nur bei echtem neuen visuellen Gedanken
+- harte technische Untergrenze ca. 2,2 s pro Bildphase
+- häufig guter Bereich 2,5–3,8 s
+- ab ca. 4,8 s aktiv Split prüfen
+- jede interne Phase mit eigenem gesprochenem `audioCue`
 - finaler interner Cut ca. 0,08 s vor Cue
 - Szenencut ca. 0,10 s vor Cue
+- keine pauschal gleich langen Bildblöcke
 
 ## Bewegung/Zoom — Hard Gate
 
@@ -119,7 +146,7 @@ Richtwerte:
 - Zoom 2–4 %
 - Pan 1–3 %
 - weiches Easing
-- Hook und zweite Bildphase bewegen sich ebenfalls
+- Hook und alle internen Bildphasen bewegen sich ebenfalls
 - `none` ist für neue Reels verboten
 
 Bekannte Aliasnamen werden kanonisch aufgelöst; unbekannte Motion-Typen blockieren. Der Renderer besitzt zusätzlich einen Safety-Fallback gegen statische Frames.
@@ -130,12 +157,12 @@ Sounds werden ausschließlich als `type` aus `config/sound-library.json` geplant
 
 Pflicht:
 - jeder Szenenwechsel nach der Hook: SFX
-- jeder interne Bildwechsel: eigener SFX oder passender Objekt-Sound
+- **jeder** interne Bildwechsel: eigener SFX oder passender Objekt-Sound
 - SFX ca. 0,04 s vor dem sichtbaren Cut starten
 - typische Lautstärke 0,18–0,30, Standard ca. 0,22
 - Stimme bleibt dominant
 - `visualEvent` und `reason` Pflicht
-- interne SFX über `targetId` an die Bildphase binden
+- interne SFX über `targetId` an die konkrete Bildphase binden, auch Bildphase 3
 - interne `audioCue`-Angabe muss zur Bildphase passen
 - unbekannte Typen oder fehlende Sounddateien blockieren
 
@@ -151,11 +178,25 @@ Pflicht:
 - danach ausschließlich 0,5–0,7 s visueller Schluss-Hold, Ziel 0,6 s
 - mehrsekündiger stiller Video-Nachlauf ist verboten und blockiert Finalizer/Renderer, auch mit `--force`
 
-## Google Flow
+## Google Flow / KI-Agent
 
 Einzige Nutzerdatei: `00-bildprompts/99-alle-bildprompts.txt`.
 
-Streng seriell: ein Bild → warten → prüfen → `Bild NN.png` → ablegen → prüfen → nächstes. Keine Queue, kein Batch, keine Parallelgenerierung.
+Vor Bild 01: globale Bildwelt einmal festsetzen. Danach streng seriell:
+
+```text
+World-Lock lesen
+→ ein Bild erzeugen
+→ warten
+→ Inhalt + World-Lock prüfen
+→ unnötige Mini-Kugel ablehnen
+→ Bild NN.png
+→ ablegen
+→ prüfen
+→ nächstes
+```
+
+Keine Queue, kein Batch, keine Parallelgenerierung.
 
 ## Quellen-QC
 
