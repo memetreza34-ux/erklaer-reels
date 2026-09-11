@@ -4,7 +4,7 @@ Diese Datei definiert die **eine und einzige verbindliche Reel-Bildwelt** für a
 
 Style-ID: `modern-countryball-explainer`
 
-Es gibt keine zweite Reel-Bildwelt, keine Themen-Unterwelt und keinen wechselnden Stil pro Reel. Das Thema ändert nur den Inhalt der Szene.
+Das Thema ändert nur **was** gezeigt wird. Die künstlerische Welt bleibt für das gesamte Reel gleich.
 
 ## Trennung zu YouTube
 
@@ -17,111 +17,115 @@ Für Reels gilt:
 - kein Ink-Explainer-/Longform-Look
 - keine 16:9-Komposition
 
-## NICHT VERHANDELBARER STYLE-LOCK
+## Projekt-World-Lock — vor Bild 01 Pflicht
+
+Bevor ein KI-Agent Bild 01 erzeugt, legt er die Bildwelt **einmal für das komplette Reel** fest.
+
+Konstant bleiben:
+- dicke, saubere schwarze Konturen
+- vereinfachte 2D-Formsprache
+- kräftige, kontrollierte Farbpalette
+- dezente grafische Schatten
+- niedrige bis mittlere Detaildichte
+- einfache, klare Tiefenstaffelung
+- Charakterlogik
+- Smartphone-first-Lesbarkeit
+
+Einzelprompts dürfen Motiv, Perspektive, Handlung, Ort und Fachinhalt ändern. Sie dürfen **keine neue Unter-Bildwelt** eröffnen.
+
+Der Agent soll vor jedem weiteren Bild prüfen:
+
+> Gehört dieses Bild sichtbar zur selben Serie wie die bereits akzeptierten Bilder?
+
+Wenn nein: Stil korrigieren, nicht den Inhalt neu erfinden.
+
+## Nicht verhandelbarer Style-Lock
 
 **Das gesamte Bild muss in genau einer einheitlichen 2D-Illustrationswelt gerendert sein.**
 
 Verboten:
-- Foto/Realbild als Hintergrund + aufgeklebte Countryball-Figur
+- Foto/Realbild als Hintergrund + aufgeklebte Kugelfigur
 - fotorealistische Hand/Finger/Haut + Cartoonfigur
 - realistisches Badezimmer/Labor/Pool + 2D-Figur
 - Stockfoto-Look
 - Mixed Media / Foto-plus-Sticker
-- realistische Poren, Hauttexturen, fotografische Falten oder realistische Körperteile
+- realistische Poren, Hauttexturen oder fotografische Falten
 - fotografische Tiefenschärfe, Kamera-Bokeh oder Photo-Lighting als Stil
 
-Wenn in einem Szenenprompt Wörter wie `real`, `realistic`, `real bathroom`, `real hand`, `natural light`, `cinematic` oder `realistic cause-and-effect` stehen, beziehen sie sich **nur auf die logische Situation**. Sie dürfen niemals als Freigabe für Fotorealismus interpretiert werden.
+Wörter wie `real`, `realistic`, `cinematic`, `natural light`, `real bathroom` oder `real hand` beschreiben nur die **logische Situation**, niemals einen Foto-Look.
 
-Hände, Finger, Füße, Haut, Organe und anatomische Details sind vereinfachte **2D-Illustrationsobjekte** derselben Bildwelt: klare Formen, dicke schwarze Konturen, reduzierte Textur, grafische Schatten, keine fotorealistische Haut.
+Hände, Finger, Füße, Haut, Organe und anatomische Details sind vereinfachte 2D-Illustrationsobjekte derselben Welt. Räume und Umgebungen bleiben ebenfalls vollständig stilisiert.
 
-Räume und Umgebungen sind ebenfalls stilisiert: vereinfachte Badewanne, Pool, Tisch, Labor, Straße oder Landschaft in derselben 2D-Vektor-/Comic-Sprache. Kein realistischer Foto-Hintergrund.
+## Ziel der Bildsprache
 
-## Ziel der neuen Bildsprache
+Die Bilder sollen **nicht wie statische Lernposter** wirken. Jede Bildphase ist ein konkreter Moment einer visuellen Geschichte.
 
-Die Bilder sollen **nicht wie statische Lernposter** wirken. Jede Bildphase muss wie ein konkreter Moment einer visuellen Geschichte funktionieren.
-
-Pflicht für neue Bilder:
+Pflicht:
 - sichtbare Handlung, Reaktion, Veränderung, Ursache-Folge oder räumliche Beziehung
+- **ein Bild = eine klare gesprochene visuelle Kernaussage**
 - ein dominantes Hauptmotiv
-- wenn sinnvoll einfache Tiefe über Vordergrund, Mittelgrund und Hintergrund
-- stärkere, kontrollierte Farbkontraste statt matter Einheitsflächen
-- abwechslungsreiche Perspektiven zwischen direkt aufeinanderfolgenden Bildern
-- Kontext im Hintergrund, wenn er die Aussage stärkt
-- Text unterstützt das Bild, ersetzt es aber nie
+- höchstens wenige unterstützende Elemente
+- wenn sinnvoll Vordergrund, Mittelgrund und Hintergrund
+- kontrollierte Farbkontraste
+- Perspektivwechsel zwischen direkt aufeinanderfolgenden Bildern
+- Kontext im Hintergrund, wenn er die Aussage verbessert
+- Text unterstützt das Bild, ersetzt es nie
 
 Nicht als Standard:
 - große Headline + einzelnes Symbol auf leerem Hintergrund
 - reine Posterkarte ohne Handlung
-- fast identische Center-Komposition in mehreren Bildern hintereinander
+- gleiche Center-Komposition in mehreren Bildern hintereinander
 - große Textblöcke als Hauptmotiv
-- leere monochrome Fläche, wenn eine kleine Umgebung die Aussage klarer machen würde
+- leere Fläche, wenn eine einfache Umgebung die Aussage klarer macht
 
-## Die eine Reel-Bildwelt
+## Kugelfiguren: optional, nicht Pflicht
 
-Die Reel-Bildwelt heißt **Modern Countryball Explainer**.
-
-Die Grundästhetik ist eine moderne, editoriale 2D-Vektor-Comic-Welt für Kurzvideos. Wenn ein Akteur vorkommt, muss er **eindeutig eine runde Kugelfigur** sein.
-
-Die Kugelgeometrie ist der wichtigste Figurenanker:
-- exakt runder Kreis bzw. Kugelkörper
-- **kein separater Kopf**, kein Hals, keine Frisur
+Wenn ein Akteur sinnvoll ist, ist er eine **perfekt runde Kugelfigur**:
+- exakt runder Kreis/Kugelkörper
+- kein separater Kopf, kein Hals, keine Frisur
 - einfache weiße expressive Augen mit schwarzen Pupillen
-- minimale Gesichtselemente, nur wenn sie die Aussage tragen
-- höchstens kleine einfache Arme, Hände oder Füße, wenn eine Handlung sie braucht
-- Flaggen- oder Regionsmuster direkt auf der Kugel, wenn geografische Identität inhaltlich relevant ist
-- sonst neutrale einfarbige Kugeln für Menschen, Gruppen, Institutionen oder abstrakte Akteure
-
-Die Kugel darf **niemals** bohnenförmig, oval, eiförmig oder humanoid werden und niemals einen menschlichen Kopf tragen.
-
-**Wichtig:** Das Wort `Countryball` bedeutet nicht automatisch Länderflagge. Bei Alltags-, Medizin-, Psychologie- oder Naturthemen ohne geografische Bedeutung sind Figuren neutral und einfarbig. Keine Deutschland-, USA- oder andere Flagge nur als Dekoration.
-
-## Nicht in jedem Bild muss eine Kugelfigur vorkommen
-
-Ein Reel gehört trotzdem zur gleichen Bildwelt, wenn eine Szene gar keinen Akteur zeigt.
-
-Ein Bild darf zeigen:
-- eine einzelne Kugelfigur
-- eine kleine Gruppe Kugelfiguren
-- Kugelfigur plus Objekt oder Mechanismus
-- eine Karte mit Grenzen, Pfeilen oder Regionen
-- ein Objekt, Dokument, Gebäude oder Werkzeug allein
-- einen physikalischen Prozess oder ein Ursache-Folge-Bild
-- oder gar keinen Akteur, wenn ein Gegenstand die Aussage besser erklärt
-
-Wichtig: **Keine Kugelfigur dekorativ erzwingen.** Wenn eine Regentropfen-Szene ohne Figur klarer ist, bleibt sie trotzdem dieselbe Modern-Countryball-Explainer-Welt.
-
-Reine Objekte, Mechanismen und Diagramme müssen dieselbe Kontur-, Vereinfachungs- und 2D-Formsprache verwenden wie die Kugelfiguren.
-
-## Figuren-System
-
-Wenn ein Akteur sinnvoll ist:
-- perfekt runder Kugelkörper
-- einfache weiße Augen mit schwarzen Pupillen
-- höchstens kleine Arme, Hände oder Füße für konkrete Handlungen
+- minimale Gesichtselemente
+- kleine Arme/Hände/Füße nur, wenn eine Handlung sie braucht
 - Flagge nur bei echter geografischer Relevanz
-- einfache, gut lesbare Emotion über Augen und Körperhaltung
+- sonst neutrale einfarbige Kugel
 
-Nicht verwenden:
-- menschliche Köpfe auf Kugelkörpern
-- humanoide Cartoonmenschen
-- Stick-Figuren
-- ovale, bohnenförmige oder eiförmige Körper
-- fotorealistische Menschen oder Gesichter
+### Ganz wichtig
 
-Bei Ländern, Regierungen, Institutionen oder historischen Akteuren werden flaggenmarkierte oder neutrale Kugeln zusammen mit Karten, Grenzen, Pfeilen, Dokumenten oder einfachen Gebäuden verwendet — keine realistischen Politikerfiguren.
+Eine Kugelfigur ist **kein Logo-Sticker**, der in jedes Bild muss.
+
+Verboten bzw. unerwünscht:
+- winzige Kugel irgendwo in Ecke oder Hintergrund ohne Funktion
+- Kugel neben Anatomie/Mechanismus nur „damit die Bildwelt drin ist“
+- zufällige Deutschland-/USA-/andere Flagge bei allgemeinen Themen
+- zufällige Zunge, übertriebene Grimasse oder Gag-Gesicht ohne inhaltlichen Grund
+- Kugel so klein, dass sie eher Deko als Akteur ist
+
+Eine Kugel soll nur vorkommen, wenn sie mindestens eine echte Funktion erfüllt:
+- Handlung ausführen
+- Reaktion zeigen
+- Vergleich verkörpern
+- Perspektive/Beobachterrolle geben
+- sozialen oder geografischen Akteur darstellen
+
+Wenn sie keine dieser Funktionen erfüllt: **weglassen**.
 
 ## Wenn keine Kugelfigur nötig ist
 
-Wenn die Aussage schneller mit einem konkreten Motiv verständlich wird, hat dieses Vorrang, zum Beispiel:
-- Gegenstand
+Dann hat das eigentliche Fachmotiv Vorrang, z. B.:
+- Hand/Finger/Hautdetail
+- Organ oder Nerv
+- Blutgefäß
+- physischer Prozess
 - Maschine oder vereinfachter Mechanismus
-- Tür, Straße, Gebäude oder Raum
-- Pflanze, Tier oder Landschaft
+- Gegenstand
 - Karte oder Dokument
-- physische Ursache-Folge-Szene
+- Tier/Pflanze/Landschaft
+- Raum oder Umwelt
 - Close-up eines relevanten Details
 
-Objekte brauchen nicht automatisch Augen oder Gesichter.
+Gerade bei Anatomie, Medizin, Technik und Ursache-Folge-Bildern ist eine reine Fachszene oft besser als eine zusätzliche Figur.
+
+Objekte und Fachmotive müssen trotzdem dieselbe Kontur-, Farb-, Schatten- und Vereinfachungssprache tragen wie die restliche Reel-Welt.
 
 ## Gestaltung
 
@@ -129,9 +133,9 @@ Objekte brauchen nicht automatisch Augen oder Gesichter.
 - sauberer editorialer 2D-Vektor-/Comic-Look
 - dicke saubere schwarze Konturen
 - einfache gut lesbare Formen
-- kräftige, aber kontrollierte Farben
-- dezente weiche Schatten
-- einfache grafische Tiefenstaffelung erlaubt und erwünscht
+- kräftige, kontrollierte Farben
+- dezente grafische Schatten
+- einfache Tiefenstaffelung
 - höchstens leichte Papier-/Korntextur
 - niedrige bis mittlere Detaildichte
 - eine dominante Kernaussage
@@ -140,24 +144,10 @@ Objekte brauchen nicht automatisch Augen oder Gesichter.
 - keine künstliche Untertitelzone
 - Bedeutung möglichst innerhalb einer Sekunde verständlich
 
-## Szenenlogik
+## Perspektivwechsel
 
-**Erst die konkrete Szene, dann zusätzliche Symbole.**
-
-Ein Bild soll wie ein eingefrorener verständlicher Moment wirken, zum Beispiel:
-- eine Kugelfigur reagiert sichtbar auf ein Ereignis
-- zwei Kugeln stehen in einem klaren Verhältnis zueinander
-- eine Kugel öffnet oder blockiert einen Weg
-- eine Grenze trennt zwei Regionen auf einer Karte
-- ein Riss entsteht sichtbar an einer Ecke
-- Wasser trifft Boden und löst einen sichtbaren Effekt aus
-- ein Objekt wird durch Gewicht belastet
-
-Keine dekorative Icon-Sammlung um eine Figur herum.
-
-### Perspektivwechsel
-
-Direkt aufeinanderfolgende Bilder sollen sich sichtbar unterscheiden. Nutze je nach Inhalt:
+Direkt aufeinanderfolgende Bilder sollen sich sichtbar unterscheiden. Je nach Inhalt:
+- Extreme Close-up
 - Close-up
 - Medium Shot
 - einfache Weitaufnahme
@@ -170,33 +160,29 @@ Nicht zwei oder drei Bilder hintereinander mit derselben Figur mittig, derselben
 
 ## Hintergrund, Licht und Farbe
 
-- Hintergrund bevorzugt als einfache kontextuelle Umgebung oder grafisches Farbfeld mit etwas Tiefe
-- eine kleine Umgebung ist besser als eine leere Fläche, wenn sie die Aussage stärkt
-- Umgebung nur so detailliert wie für die Aussage nötig
-- Licht hell, klar und grafisch, mit sinnvoller Richtung oder Kontrast
-- dunkle cinematic Beleuchtung nur, wenn Nacht oder Dunkelheit selbst zum Inhalt gehören
-- keine komplexen realistischen Innenräume als Standard
-- keine überladene architektonische Kulisse
-- benachbarte Bilder dürfen unterschiedliche Hintergrundfarben verwenden, solange die globale Bildwelt gleich bleibt
+- einfache kontextuelle Umgebung oder grafisches Farbfeld mit Tiefe
+- kleine Umgebung statt leerer Fläche, wenn sie die Aussage stärkt
+- nur so detailliert wie nötig
+- helles, klares grafisches Licht
+- dunkle Beleuchtung nur, wenn Dunkelheit/Nacht Inhalt ist
+- keine komplexen realistischen Innenräume
+- benachbarte Bilder dürfen andere Hintergrundfarben haben, solange Rendering und Formsprache gleich bleiben
 
 ## Alle Themen bleiben in derselben Welt
 
 **Das Thema ändert nie die Bildwelt.**
 
-Flugzeuge, Elektrotechnik, Medizin, Geschichte, Politik, Psychologie, Ernährung, Natur und Alltag verwenden alle dieselbe Modern Countryball Explainer Formsprache.
+Elektrotechnik, Medizin, Geschichte, Politik, Psychologie, Ernährung, Natur und Alltag verwenden dieselbe Modern-Countryball-Explainer-Formsprache.
 
 Nicht als Standard:
-- technische Cutaways
-- Blueprint-Optik
-- CAD-Look
-- hochdetaillierte Maschinenquerschnitte
+- eigene Medizin-Welt
+- eigene Technik-Welt
+- eigene Geschichts-Welt
+- Blueprint/CAD-Look
+- hochdetaillierte technische Cutaways
 - wissenschaftliche Posterwelt
-- Geschichts-Unterwelt
-- Medizin-Unterwelt
-- Technik-Unterwelt
-- irgendeine andere eigene Unter-Bildwelt
 
-Technische Details sind nur dann erlaubt, wenn sie für die Erklärung notwendig sind, und bleiben vereinfacht.
+Technische Details sind nur erlaubt, wenn sie für die Erklärung nötig sind, und bleiben vereinfacht.
 
 ## Deutscher Bildtext
 
@@ -204,69 +190,34 @@ Prompts sind Englisch. Sichtbarer Bildtext ist Deutsch.
 
 ### Titelbild
 
-Bild 01 ist die erste Szene und zugleich das Cover. Es trägt die **Überschrift des gesamten Reels** als kräftige Zeile im oberen Bereich, klar abgesetzt von der Illustration. Sie muss auf einem kleinen Smartphone-Display sofort lesbar sein und ohne Ton neugierig machen.
+Bild 01 ist zugleich Cover und trägt die starke Reel-Headline. Sie muss auf einem kleinen Smartphone-Display sofort lesbar sein.
 
 ### Normale Bildphasen
 
-Bei allen späteren Bildern ist Text **optional**.
-
+Text ist optional:
 - 0–4 deutsche Wörter
-- nur verwenden, wenn Text Verständnis oder Merkbarkeit wirklich verbessert
+- nur wenn er Verständnis/Merkbarkeit verbessert
 - ungefähr 35–60 % der Nicht-Cover-Bilder dürfen Text tragen
-- ein starkes Bild ohne Text ist ausdrücklich erwünscht
-- das Motiv muss auch ohne den Text verständlich bleiben
-- nur exakt geplanter Text
-- kein zusätzlicher englischer Text
-- keine Fantasiewörter oder Pseudo-Schrift
-- keine doppelte Headline oben und unten
+- starke textfreie Bilder sind erwünscht
+- Motiv muss auch ohne Text funktionieren
+- kein englischer Text
+- keine Fantasiewörter
+- keine doppelte Headline
 
-## Nicht verwenden
-
-- menschliche Köpfe auf Kugelfiguren
-- humanoide Cartoonmenschen als Akteure
-- Stick-Figuren
-- ovale, bohnenförmige oder eiförmige Figurenkörper
-- Fotorealismus
-- realistische Foto-Gesichter
-- fotorealistische Hände/Finger/Haut
-- fotografische Hintergründe
-- Foto-plus-Sticker-/Mixed-Media-Look
-- Anime/Manga
-- Clay/Knetstil
-- glänzendes 3D / Pixar-Look
-- Stockfoto-Look
-- painterly concept art
-- generische Icon-Collagen
-- schwebende Reaktionskarten
-- Sprechblasenringe
-- UI-Boxen
-- Figur-mittig-plus-Icons als wiederholtes Standardschema
-- Headline-plus-ein-Symbol-Posterkarte
-- großer Text als dominantes Hauptmotiv
-- leere Fläche plus Label und Icon als Standard
-- extrem detaillierte Illustrationen
-- technische Cutaway-/Blueprint-Welt als Standard
-- themenspezifische Unter-Bildwelten
-- YouTube-Stick-Figure-Look
-- 16:9
-- Logos oder Wasserzeichen
-
-## Qualitätsprüfung
-
-Vor der Freigabe jedes Bildes:
+## Qualitätsprüfung vor Freigabe
 
 1. Ist die Kernaussage sofort verständlich?
-2. Wirkt das Bild wie eine konkrete Szene statt wie eine statische Posterkarte?
-3. Ist das Hauptmotiv auch ohne Text verständlich?
-4. Wenn ein Akteur vorkommt: ist sein Körper eine saubere runde Kugel mit einfachen Augen?
-5. Wurde kein menschlicher Kopf, kein humanoider Körper und kein Stick-Figure-Look verwendet?
-6. Wenn keine Kugelfigur vorkommt: ist sie tatsächlich unnötig und erklärt das Hauptmotiv die Szene klarer?
-7. Gibt es bei sinnvoller Gelegenheit einfache visuelle Tiefe oder Kontext statt einer leeren Fläche?
-8. Unterscheidet sich die Perspektive ausreichend vom direkt vorherigen Bild?
-9. Bleibt die Szene in derselben Modern Countryball Explainer Formsprache?
-10. Wurde keine themenspezifische zweite Bildwelt erzeugt?
-11. Bleibt Reels klar von der YouTube-Bildwelt getrennt?
-12. Ist wirklich **jedes** sichtbare Element 2D-illustriert, ohne Foto-/Realbild-Anteil?
-13. Ist bei nicht-geografischen Themen jede Kugelfigur neutral statt unnötig mit einer Länderflagge versehen?
+2. Ist genau **eine** gesprochene visuelle Idee klar dargestellt?
+3. Wirkt es wie eine konkrete Szene statt wie eine Posterkarte?
+4. Gehört das Rendering sichtbar zur selben Welt wie die vorherigen Bilder?
+5. Wurde keine themenspezifische zweite Bildwelt erzeugt?
+6. Ist jedes sichtbare Element vollständig 2D-illustriert?
+7. Wenn eine Kugel vorkommt: ist sie exakt rund, sinnvoll groß und hat sie eine echte narrative Funktion?
+8. Wenn eine Kugel nicht nötig ist: wurde sie konsequent weggelassen?
+9. Sind Flaggen nur dort vorhanden, wo Geografie wirklich relevant ist?
+10. Gibt es keine zufällige Zunge/Grimasse/Gag-Mimik ohne Aussage?
+11. Gibt es einfache Tiefe oder Kontext statt unnötig leerer Fläche?
+12. Unterscheidet sich die Perspektive ausreichend vom vorherigen Bild?
+13. Bleibt Reels klar von der YouTube-Bildwelt getrennt?
 
-Wenn eine dieser Fragen scheitert, wird das Bild vereinfacht oder neu erzeugt.
+Wenn eine dieser Fragen scheitert, wird **dieses Bild** korrigiert oder neu erzeugt; die globale Welt bleibt bestehen.
