@@ -7,9 +7,12 @@ import { findNarrationCueStartPercent } from '../shared/image-phase-cue.js';
 import { inspectSourcesMarkdown } from './source-quality.js';
 import { normalizeSceneImagePhases, plannedImageCount } from '../shared/visual-moments.js';
 
-// Reels vor diesem Datum stammen aus der Zeit, in der die Bildwelt bewusst
-// unbesetzt war oder noch eine der alten IDs trug. Ab hier gilt die eine feste Welt.
 const FIXED_VISUAL_WORLD_SINCE = '2026-08-28';
+const DENSE_IMAGE_TARGETS = {
+  8: { min: 19, max: 21 },
+  9: { min: 20, max: 22 },
+  10: { min: 21, max: 24 }
+};
 
 async function exists(filePath) {
   try {
@@ -68,6 +71,11 @@ function usesFixedVisualWorld(reel) {
   return Boolean(date) && date >= FIXED_VISUAL_WORLD_SINCE;
 }
 
+function usesAdaptiveDenseV2(reel) {
+  return String(reel?.imageCountMode ?? '').trim() === 'adaptive-dense-v2'
+    || Number(reel?.visualDensityVersion ?? 0) >= 2;
+}
+
 export async function validateReelContent(reelDirectory, { strict = false } = {}) {
   const checks = [];
   const reelPath = path.join(reelDirectory, 'reel.json');
@@ -89,11 +97,11 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
   const reel = await readJson(reelPath);
   const sceneIndex = await readJson(sceneIndexPath, []);
   const effectsRules = await readJson(effectsRulesPath, {});
-  // Die Szenendauern stehen in den Quality-Gates. Vorher waren sie hier hartkodiert
-  // und widersprachen der Single Source of Truth.
-  const sceneTiming = (await readJson(qualityGatesPath, {})).sceneTiming ?? {};
+  const qualityGates = await readJson(qualityGatesPath, {});
+  const sceneTiming = qualityGates.sceneTiming ?? {};
   const totalPlannedImages = plannedImageCount(sceneIndex);
   const fixedVisualWorldRequired = usesFixedVisualWorld(reel);
+  const denseVisualsRequired = usesAdaptiveDenseV2(reel);
   const cueTimedPhasesRequired = reel.imagePhaseTimingMode === 'narration-audio-cue' || String(reel.date ?? '') >= '2026-08-30';
   const styleId = String(reel.visualStyleId ?? '').trim();
   const styleReason = String(reel.visualStyleReason ?? '').trim();
@@ -122,21 +130,34 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
 
   addCheck(checks, 'subtitles-disabled', reel.subtitlesEnabled === false,
     'Untertitel müssen für dieses Format deaktiviert sein.');
+
   addCheck(checks, 'image-count-mode',
     fixedVisualWorldRequired
-      ? reel.imageCountMode === 'one-hook-two-standard'
-      : !reel.imageCountMode || ['one-hook-two-standard', 'individual-per-reel'].includes(reel.imageCountMode),
-    fixedVisualWorldRequired
-      ? 'Neue Reels müssen imageCountMode: "one-hook-two-standard" tragen.'
-      : 'imageCountMode darf bei Archiv-Reels individual-per-reel oder leer sein.');
-  const erwarteteBilder = sceneIndex.length > 0 ? 1 + (sceneIndex.length - 1) * 2 : 0;
-  addCheck(checks, 'image-count-range',
-    fixedVisualWorldRequired
-      ? totalPlannedImages === erwarteteBilder
-      : totalPlannedImages >= sceneIndex.length && totalPlannedImages <= sceneIndex.length * 3,
-    fixedVisualWorldRequired
-      ? `Bei ${sceneIndex.length} Szenen sind ${erwarteteBilder} Bilder vorgesehen (Hook eins, jede weitere Szene zwei); geplant sind ${totalPlannedImages}.`
-      : `Geplant sind ${totalPlannedImages} Bilder für ${sceneIndex.length} Szenen; Archiv-Reels erlauben ein bis drei Bildphasen pro Szene.`);
+      ? (denseVisualsRequired ? reel.imageCountMode === 'adaptive-dense-v2' : reel.imageCountMode === 'one-hook-two-standard')
+      : !reel.imageCountMode || ['one-hook-two-standard', 'individual-per-reel', 'adaptive-dense-v2'].includes(reel.imageCountMode),
+    denseVisualsRequired
+      ? 'Adaptive-Dense-V2-Reels müssen imageCountMode: "adaptive-dense-v2" tragen.'
+      : fixedVisualWorldRequired
+        ? 'Legacy-Reels der festen Bildwelt müssen imageCountMode: "one-hook-two-standard" tragen.'
+        : 'imageCountMode darf bei Archiv-Reels leer oder ein bekannter Modus sein.');
+
+  if (denseVisualsRequired) {
+    const ziel = DENSE_IMAGE_TARGETS[sceneIndex.length];
+    addCheck(checks, 'image-count-range', Boolean(ziel) && totalPlannedImages >= ziel.min && totalPlannedImages <= ziel.max,
+      ziel
+        ? `Adaptive Dense V2: Bei ${sceneIndex.length} Szenen sind ${ziel.min}–${ziel.max} Bilder vorgesehen; geplant sind ${totalPlannedImages}.`
+        : `Adaptive Dense V2 unterstützt 8 bis 10 Szenen; gefunden ${sceneIndex.length}.`);
+  } else {
+    const erwarteteBilder = sceneIndex.length > 0 ? 1 + (sceneIndex.length - 1) * 2 : 0;
+    addCheck(checks, 'image-count-range',
+      fixedVisualWorldRequired
+        ? totalPlannedImages === erwarteteBilder
+        : totalPlannedImages >= sceneIndex.length && totalPlannedImages <= sceneIndex.length * 3,
+      fixedVisualWorldRequired
+        ? `Legacy-Dichte: Bei ${sceneIndex.length} Szenen sind ${erwarteteBilder} Bilder vorgesehen; geplant sind ${totalPlannedImages}.`
+        : `Geplant sind ${totalPlannedImages} Bilder für ${sceneIndex.length} Szenen; Archiv-Reels erlauben ein bis drei Bildphasen pro Szene.`);
+  }
+
   addCheck(checks, 'planned-image-count-match', reel.plannedImageCount == null || Number(reel.plannedImageCount) === totalPlannedImages,
     `reel.json.plannedImageCount stimmt nicht mit den ${totalPlannedImages} geplanten Bildphasen überein.`, reel.plannedImageCount == null ? 'warning' : 'error');
   addCheck(checks, 'motion-effects-enabled', reel.motionEffectsEnabled !== false,
@@ -201,8 +222,7 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
       `${expectedId}: leadInSeconds sollte zwischen 0,1 und 0,3 liegen.`, 'warning');
     addCheck(checks, `${expectedId}-duration`, Number.isFinite(duration) && duration >= 2.5 && duration <= 8,
       `${expectedId}: durationSeconds muss zwischen 2,5 und 8 liegen.`);
-    // Hook, Standardszene und Schluss haben eigene Spannen — eine Pauschalregel
-    // würde genau die Dauern anmahnen, die der Workflow vorschreibt.
+
     const spanne = index === 0
       ? (sceneTiming.hookSeconds ?? { min: 4.5, max: 6 })
       : index === sceneIndex.length - 1
@@ -214,14 +234,21 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
       `${expectedId}: ${spannenName} sollte ${spanne.min}–${spanne.max} Sekunden dauern.`, 'warning');
 
     const phases = normalizeSceneImagePhases(scene);
-    if (fixedVisualWorldRequired) {
+    if (denseVisualsRequired) {
+      const passed = index === 0 ? phases.length === 2 : phases.length >= 2 && phases.length <= 3;
+      addCheck(checks, `${expectedId}-image-phase-count`, passed,
+        index === 0
+          ? `${expectedId}: Adaptive Dense V2 braucht genau 2 Hook-Bildphasen, hat aber ${phases.length}.`
+          : `${expectedId}: Adaptive Dense V2 braucht 2 oder 3 Bildphasen, hat aber ${phases.length}.`);
+    } else if (fixedVisualWorldRequired) {
       const erwartet = index === 0 ? 1 : 2;
       addCheck(checks, `${expectedId}-image-phase-count`, phases.length === erwartet,
-        `${expectedId}: ${index === 0 ? 'Die Hook' : 'Eine Standardszene'} braucht genau ${erwartet} Bildphase${erwartet === 1 ? '' : 'n'}, hat aber ${phases.length}.`);
+        `${expectedId}: Legacy-Dichte braucht genau ${erwartet} Bildphase${erwartet === 1 ? '' : 'n'}, hat aber ${phases.length}.`);
     } else {
       addCheck(checks, `${expectedId}-image-phase-count`, phases.length >= 1 && phases.length <= 3,
         `${expectedId}: Archiv-Reels dürfen ein bis drei Bildphasen besitzen.`);
     }
+
     addCheck(checks, `${expectedId}-image-count-field`, scene.imageCount == null || Number(scene.imageCount) === phases.length,
       `${expectedId}: imageCount stimmt nicht mit imagePhases überein.`, scene.imageCount == null ? 'warning' : 'error');
     addCheck(checks, `${expectedId}-first-phase-at-zero`, phases[0]?.startPercent === 0,
@@ -240,9 +267,9 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
         addCheck(checks, `${phaseLabel}-audio-cue`, phaseCue.length >= 2,
           `${phaseLabel}: audioCue fehlt. Der Bildwechsel muss an konkret gesprochenen Wörtern hängen.`);
         addCheck(checks, `${phaseLabel}-audio-cue-in-narration`, cueStart !== null,
-          `${phaseLabel}: audioCue \"${phaseCue}\" kommt nicht in der Narration vor.`);
+          `${phaseLabel}: audioCue "${phaseCue}" kommt nicht in der Narration vor.`);
         addCheck(checks, `${phaseLabel}-cue-derived-start`, cueStart === null || Math.abs(Number(phase.startPercent) - cueStart) <= 0.01,
-          `${phaseLabel}: startPercent muss aus der Position des audioCue in der Narration abgeleitet sein; kein pauschales 0,5-Raster.`);
+          `${phaseLabel}: startPercent muss aus der Position des audioCue in der Narration abgeleitet sein; kein pauschales Raster.`);
       }
 
       addCheck(checks, `${phaseLabel}-start-percent`, phase.startPercent >= 0 && phase.startPercent < 1 && phase.startPercent > previousStart,
@@ -268,10 +295,15 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
       }
     }
 
-    // Die Hook hat planmäßig genau ein Bild und dauert 4,5 bis 6 Sekunden. Ohne diese
-    // Ausnahme bekäme jede korrekte Hook eine Warnung, die ins Leere zeigt.
-    addCheck(checks, `${expectedId}-long-static-review`, index === 0 || !(duration >= 4 && phases.length === 1),
-      `${expectedId}: Das einzige Bild würde ungefähr ${duration.toFixed(1)} Sekunden stehen. Prüfe aktiv, ob eine zweite Bildphase Verständnis oder Rhythmus verbessert.`, 'warning');
+    if (denseVisualsRequired) {
+      const averagePhaseDuration = phases.length > 0 ? duration / phases.length : duration;
+      const splitReviewThreshold = Number(sceneTiming.splitReviewThresholdSeconds ?? 4.8);
+      addCheck(checks, `${expectedId}-dense-pacing-review`, averagePhaseDuration <= splitReviewThreshold,
+        `${expectedId}: Im Mittel würde eine Bildphase etwa ${averagePhaseDuration.toFixed(1)} Sekunden stehen. Prüfe, ob ein weiterer echter visueller Gedanke sinnvoll ist.`, 'warning');
+    } else {
+      addCheck(checks, `${expectedId}-long-static-review`, index === 0 || !(duration >= 4 && phases.length === 1),
+        `${expectedId}: Das einzige Bild würde ungefähr ${duration.toFixed(1)} Sekunden stehen. Prüfe aktiv, ob eine zweite Bildphase Verständnis oder Rhythmus verbessert.`, 'warning');
+    }
   }
 
   addCheck(checks, 'total-duration', totalDuration >= 55 && totalDuration <= 60,
@@ -314,7 +346,7 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
     const minScale = Number(effectsRules.motionEffects?.zoomScale?.min ?? 0.92);
     const maxScale = Number(effectsRules.motionEffects?.zoomScale?.max ?? 1.08);
     const maxPan = Number(effectsRules.motionEffects?.maximumPanPercent ?? 4);
-    const maxSounds = Number(effectsRules.soundEffects?.maximumPerScene ?? 2);
+    const maxSounds = Number(effectsRules.soundEffects?.maximumPerScene ?? 3);
     const minVolume = Number(effectsRules.soundEffects?.recommendedVolume?.min ?? 0.12);
     const maxVolume = Number(effectsRules.soundEffects?.recommendedVolume?.max ?? 0.3);
 
@@ -363,13 +395,11 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
     }
 
     addCheck(checks, 'effects-not-every-scene-moving', sceneIndex.length === 0 || movingScenes < sceneIndex.length,
-      'Nicht jede Szene sollte automatisch einen Zoom oder Schwenk erhalten.', 'warning');
+      'Nicht jede Szene sollte automatisch denselben Zoom oder Schwenk erhalten; Motion-Typen sichtbar variieren.', 'warning');
     addCheck(checks, 'hook-no-transition', effectScenes[0]?.transitionIn?.type === 'none',
       'Die Hook sollte ab Sekunde 0 ohne Übergang starten.', 'warning');
   }
 
-  // Es gibt kein separates Cover: Szene 1 ist zugleich das Titelbild und trägt
-  // deshalb dieselben Anforderungen, die früher am Cover hingen.
   const titleScene = sceneIndex.find((scene) => Number(scene.order) === 1) ?? sceneIndex[0] ?? {};
   const titleSceneId = String(titleScene.sceneId ?? 'scene-01');
   const titlePromptPath = path.join(reelDirectory, 'scenes', titleSceneId, 'image-prompt.txt');
@@ -413,7 +443,14 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
     }
   }
 
-  return finalize(reelDirectory, checks, { totalDuration, totalPlannedImages, strict, sourceQuality });
+  return finalize(reelDirectory, checks, {
+    totalDuration,
+    totalPlannedImages,
+    strict,
+    sourceQuality,
+    imageCountMode: denseVisualsRequired ? 'adaptive-dense-v2' : 'one-hook-two-standard',
+    visualDensityVersion: denseVisualsRequired ? 2 : 1
+  });
 }
 
 async function finalize(reelDirectory, checks, metadata = {}) {
@@ -451,7 +488,10 @@ async function finalize(reelDirectory, checks, metadata = {}) {
   const reelPath = path.join(reelDirectory, 'reel.json');
   const reel = await readJson(reelPath, null);
   if (reel) {
-    reel.imageCountMode = 'one-hook-two-standard';
+    const dense = String(reel.imageCountMode ?? '').trim() === 'adaptive-dense-v2'
+      || Number(reel.visualDensityVersion ?? metadata.visualDensityVersion ?? 0) >= 2;
+    reel.imageCountMode = dense ? 'adaptive-dense-v2' : 'one-hook-two-standard';
+    reel.visualDensityVersion = dense ? 2 : (reel.visualDensityVersion ?? 1);
     reel.plannedImageCount = metadata.totalPlannedImages ?? reel.plannedImageCount;
     reel.status = passed ? 'content-ready' : 'content-needs-review';
     await writeJson(reelPath, reel);
