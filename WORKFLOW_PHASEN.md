@@ -27,7 +27,16 @@ npm run import:reel -- --file input/reel-paket.json --check
 npm run import:reel -- --file input/reel-paket.json
 ```
 
-Alternativ Workspace direkt anlegen:
+Neue Pakete ab 2026-09-11 setzen zusätzlich:
+
+```json
+{
+  "imageCountMode": "adaptive-dense-v2",
+  "visualDensityVersion": 2
+}
+```
+
+Der direkte Workspace-Befehl bleibt als Scaffold verfügbar, ist aber für neue Reels erst Phase-1-fertig, nachdem die adaptive Bilddichte geplant wurde:
 
 ```bash
 npm run create:reel -- --title "Warum …?" --script-file input/script.txt --next-free --scenes 9
@@ -37,16 +46,22 @@ npm run create:reel -- --title "Warum …?" --script-file input/script.txt --nex
 
 - 155–175 deutsche Wörter
 - 8–10 narrative Szenen, Standard 9
-- Hook exakt 1 Bild
-- jede weitere Szene exakt 2 Bilder
-- 9 Szenen = 17 Bildphasen
-- zweite Bildphase mit eigenem gesprochenen `audioCue`
-- jede Bildphase mindestens 3 s
+- neue V2-Hook: exakt 2 Bildmomente
+- jede weitere Szene: 2 oder 3 Bildmomente je nach gesprochenem Inhalt
+- Zielkorridor: 8 Szenen 19–21 Bilder, 9 Szenen 20–22, 10 Szenen 21–24
+- **ein Bild = eine klare gesprochene visuelle Kernaussage**
+- komplexe Ursache→Wirkung-, Anatomie-, Technik-, Studien- und Vergleichsabschnitte bei echtem Gedankenwechsel splitten
+- einfache Aussagen nicht künstlich aufblasen
+- jede interne Bildphase mit eigenem gesprochenen `audioCue`
+- harte technische Untergrenze ca. 2,2 s; häufig guter Bereich 2,5–3,8 s
+- ab ca. 4,8 s pro Bild aktiv Split prüfen statt lange Standbilder automatisch zu akzeptieren
 - Bildprompts Englisch
 - Bild 01 mit deutscher Headline
 - spätere `imageText` optional, wenn vorhanden max. 4 Wörter
 - mindestens zwei hochwertige HTTPS-Quellen auf verschiedenen Hosts
 - plattformneutrale Caption mit 60–130 Wörtern und 3–6 Hashtags
+
+Legacy-Reels mit `one-hook-two-standard` bleiben unverändert unterstützt.
 
 ### Bild↔Audio-Zuordnung — Pflicht
 
@@ -75,16 +90,25 @@ alignmentConfidence
 Regeln:
 - `spokenText` ist der exakte Sprachbereich dieses Bildes.
 - Die Bereiche dürfen sich nicht überlappen und keinen gesprochenen Text auslassen.
-- Das erste Bild einer Szene gehört ab Szenenbeginn bis zum internen Cue bzw. bis Szenenende.
-- Die zweite Bildphase beginnt exakt an ihrem gesprochenen `audioCue` und läuft bis Szenenende.
+- Das erste Bild einer Szene gehört ab Szenenbeginn bis zum nächsten internen Cue bzw. bis Szenenende.
+- **jede weitere Bildphase** beginnt an ihrem eigenen gesprochenen `audioCue` und läuft bis zum nächsten Cue bzw. Szenenende.
 - `actualStartSeconds` und `actualEndSeconds` bleiben in Phase 1 leer; sie werden erst in Phase 3 aus dem finalen Audio ermittelt.
 - Ein `audioCue`, das nicht in der Narration vorkommt, blockiert Phase 1.
 
 Details: `REEL_BILD_AUDIO_ZUORDNUNG.md`.
 
-### Bildwelt
+### Bildwelt / World-Lock
 
 Ausschließlich **Modern Countryball Explainer** (`modern-countryball-explainer`). Bilder sollen konkrete lebendige Mini-Szenen sein, keine statischen Lernposter.
+
+Vor Bild 01 muss der KI-Agent die eine Projektwelt festsetzen. Danach dürfen Einzelprompts nur Motiv, Handlung, Perspektive und Umgebung ändern — nicht Konturen, Formsprache, Palette, grafische Schatten, Detailgrad, 2D-Rendering, Tiefe oder Charakterlogik.
+
+Kugelfiguren sind **optional**:
+- keine winzige dekorative Kugel als Stil-Sticker
+- nur einsetzen, wenn sie Handlung, Reaktion, Vergleich oder Perspektive wirklich trägt
+- bei Anatomie, Mechanismus, Objekt oder physischem Prozess das Fachmotiv ohne Kugel zeigen, wenn es klarer ist
+- Flaggen nur bei geografischer Relevanz
+- keine zufälligen Zungen/Grimassen/Gimmicks ohne inhaltlichen Grund
 
 ### Motion — Pflicht
 
@@ -94,13 +118,14 @@ Jeder Bildmoment bekommt sichtbare dezente Bewegung:
 - `slow-zoom-in` / `slow-zoom-out`
 - `pan-left/right/up/down`
 
-Zoom meist 2–4 %, Pan 1–3 %, weiches Easing. Hook und zweite Bildphase bewegen sich ebenfalls. `none` ist für neue Reels nicht zulässig. Bekannte Aliasnamen werden kanonisch aufgelöst; unbekannte Motion-Typen blockieren.
+Zoom meist 2–4 %, Pan 1–3 %, weiches Easing. Hook und **alle internen Bildphasen** bewegen sich ebenfalls. `none` ist für neue Reels nicht zulässig. Bekannte Aliasnamen werden kanonisch aufgelöst; unbekannte Motion-Typen blockieren.
 
 ### SFX — Pflicht
 
 - jeder Szenenwechsel ab Szene 2: SFX
 - jeder interne Bildwechsel: eigener SFX mit `targetId`
 - interne SFX möglichst mit demselben `audioCue` wie die Bildphase
+- eine dritte Bildphase braucht genauso einen eigenen Wechsel-SFX
 - `visualEvent` und `reason` Pflicht
 - ausschließlich `type` aus `config/sound-library.json`
 - typische Lautstärke 0,18–0,30
@@ -130,13 +155,17 @@ ablegen. Original nicht überschreiben.
 
 ### Bilder
 
-`00-bildprompts/99-alle-bildprompts.txt` verwenden. Flow arbeitet streng seriell:
+`00-bildprompts/99-alle-bildprompts.txt` verwenden.
+
+Vor Bild 01 liest der KI-Agent zuerst den globalen World-Lock und hält ihn für **alle** Bilder fest. Danach streng seriell:
 
 ```text
-1 Bild erzeugen → warten → prüfen → Bild NN.png → ablegen → prüfen → nächstes
+1 Bild erzeugen → warten → Inhalt + feste Welt prüfen → Bild NN.png → ablegen → prüfen → nächstes
 ```
 
-Bei 9 Szenen: `Bild 01.png` bis `Bild 17.png`.
+Keine Queue und keine Parallelgenerierung. Eine Kugelfigur wird nicht automatisch als Deko ergänzt.
+
+Bei einem neuen 9-Szenen-V2-Reel werden typischerweise **20 bis 22** Bilder erzeugt; maßgeblich ist die im Projekt tatsächlich geplante Bildanzahl.
 
 Bilder gesammelt nach:
 
@@ -146,7 +175,7 @@ Bilder gesammelt nach:
 
 Die Datei `99-technik/BILD_AUDIO_ZUORDNUNG.json` wird in Phase 2 nicht umgeschrieben.
 
-**Übergabe an Phase 3:** aktuelles Reel enthält echtes Audio und alle Bilder.
+**Übergabe an Phase 3:** aktuelles Reel enthält echtes Audio und alle laut Mapping erwarteten Bilder.
 
 ---
 
@@ -195,6 +224,7 @@ Nicht erlaubt:
 - nur `startPercent` verwenden
 - einen Wechsel nach Gefühl setzen
 - einen Satz einem anderen Bild zuordnen, nur um eine gewünschte Dauer zu erreichen
+- Adaptive Dense V2 in gleich lange 2,5-/3-/4-Sekunden-Blöcke pressen
 
 ### 4. Sounds binden
 
@@ -213,7 +243,8 @@ npm run build:timeline -- --dir "<reel>" --strict
 - Szenencut ca. 0,10 s vor echtem Szenen-/Mapping-Anker
 - interner Bildcut ca. 0,08 s vor echtem Bild-Anker
 - SFX ca. 0,04 s vor sichtbarem Cut
-- Mindestdauer einer Bildphase 3,0 s
+- technische Mindestdauer einer V2-Bildphase ca. 2,2 s
+- häufig guter Bereich 2,5–3,8 s; ab ca. 4,8 s Split prüfen, aber Audio-/Inhaltszuordnung hat Vorrang
 - Hook und alle Bildphasen mit sichtbarer Motion
 - keine Crossfades
 
@@ -241,9 +272,11 @@ Finalizer und Renderer prüfen Motion-/SFX-Coverage, Soundbibliothek, aktuelle A
 ## Definition der Übergaben
 
 Phase 1 ist nicht fertig, wenn:
+- ein neues V2-Reel außerhalb seines Bildkorridors liegt
 - Motion oder Wechsel-SFX nur „später geplant“ sind
 - `99-technik/BILD_AUDIO_ZUORDNUNG.json` fehlt
 - ein Bildmoment keinen eindeutigen `spokenText`-Bereich besitzt
+- ein interner Bildmoment kein eigenes gesprochenes `audioCue` besitzt
 
 Phase 2 ist nicht fertig, wenn Audio/Bilder aus einem anderen Reel stammen oder Dateien fehlen.
 
