@@ -1,0 +1,155 @@
+# ALLE BILDPROMPTS — Warum ist Gähnen ansteckend?
+
+Format: 9:16 · Modern Countryball Explainer · Adaptive Dense V2 · 21 Bildmomente
+
+## VERBINDLICHER WORLD-LOCK FÜR ALLE 21 BILDER
+
+Der KI-Agent muss vor Bild 01 diese eine Bildwelt für das komplette Reel festschreiben und danach unverändert beibehalten.
+
+**Fixed visual world:** `modern-countryball-explainer`
+
+Create every image as part of ONE single premium vertical 9:16 Modern Countryball Explainer universe. The complete frame must be a unified stylized 2D editorial vector/cartoon illustration with clean thick black outlines, controlled vivid colors, soft graphic shadows, low-to-medium detail, strong smartphone readability, and simple foreground/midground/background depth when useful.
+
+Characters are OPTIONAL. If an actor is needed, use one or two LARGE intentional neutral solid-color round characters with simple white eyes and only minimal face elements required by the action. Never use tiny decorative balls in corners or backgrounds. Never add a country flag unless geographic identity is actually relevant. For brains, mechanisms, research setups or other explanatory objects, show the actual subject directly in the same 2D language instead of forcing a character into the frame.
+
+The topic, object, perspective and environment may change from image to image. The artistic world may NOT change. Keep outline weight, shape language, palette character, graphic shadow style, detail level and 2D rendering consistent across all images.
+
+STRICTLY FORBIDDEN: photorealism, realistic human skin, realistic human faces, photo backgrounds, photo-plus-cartoon mixed media, humanoid cartoon people, stick figures, anime, clay, glossy 3D/Pixar, stock-photo aesthetics, painterly concept art, floating UI boards, random icon collages, tiny decorative ball characters, logos, watermarks and pseudo-writing.
+
+Visible text is German only and only when explicitly requested below. If no text is requested, generate no readable text.
+
+## PRODUKTIONSABLAUF FÜR FLOW
+
+Streng seriell arbeiten:
+
+`Bild 01 erzeugen → warten → prüfen → exakt als Bild 01.png benennen → ablegen → erst dann Bild 02`
+
+So bis Bild 21. Nie mehrere Bilder gleichzeitig starten. Bei einem fehlerhaften Bild auf derselben Bildnummer bleiben und neu erzeugen.
+
+---
+
+## Bild 01
+Dateiname: `Bild 01.png`
+Satzbezug: „Warum musst du gähnen, wenn“
+
+Create a vertical 9:16 Modern Countryball Explainer hook scene in one unified premium 2D illustration world. Show two LARGE neutral solid-color round characters at conversational distance in a simple cozy room; the foreground character is caught mid-yawn with one simple open mouth, while the second character notices it with widening eyes. Use thick clean black outlines, controlled warm colors, soft graphic shadows, clear foreground-midground depth, and strong smartphone-first framing. Integrate exactly the German headline "WARUM GÄHNEN WIR MIT?" once in the upper area. No tiny decorative characters, no photorealism, no humanoid people, no extra readable text.
+
+## Bild 02
+Dateiname: `Bild 02.png`
+Satzbezug: „jemand anderes gähnt?“
+
+Create a vertical 9:16 Modern Countryball Explainer continuation in exactly the same visual world, palette, outline thickness and room as the previous image. The first large round character is finishing its yawn while the second large round character now involuntarily starts yawning too, making the cause-and-effect handoff immediately readable. Use a slightly tighter side angle and stronger focus on the reacting character. No tiny background balls, no flags, no text, no photorealism, no 3D and no mixed media.
+
+## Bild 03
+Dateiname: `Bild 03.png`
+Satzbezug: „Manchmal reicht sogar ein Video, ein Geräusch,“
+
+Create a vertical 9:16 Modern Countryball Explainer scene in the same fixed premium 2D world. A LARGE neutral round character holds a smartphone close enough to clearly see a second round character yawning on the screen; the viewer's own mouth is just beginning to open in response. Keep the phone, hands and room fully stylized with the same thick black outlines, controlled colors and soft graphic shadows. Add only the German text "SCHON EIN VIDEO" once. No photorealistic phone, no tiny characters, no extra labels or pseudo-writing.
+
+## Bild 04
+Dateiname: `Bild 04.png`
+Satzbezug: „das Lesen über Gähnen oder nur der Gedanke daran.“
+
+Create a vertical 9:16 Modern Countryball Explainer follow-up using the exact same rendering language. Show one large neutral round character reading a simple illustrated page that contains a clear yawning-face drawing without readable words; the character pauses and starts to yawn as the idea is mentally triggered. Use an over-the-shoulder angle, simple desk context, clean depth and cohesive palette. No floating UI cards, no tiny decorative balls, no readable text, no humans, no photo elements and no 3D.
+
+## Bild 05
+Dateiname: `Bild 05.png`
+Satzbezug: „Ansteckendes Gähnen ist gut belegt,“
+
+Create a vertical 9:16 Modern Countryball Explainer research-observation scene in the SAME unified 2D reel world. Two LARGE neutral round participants sit in a simple test room separated by a low table; one yawns and the other visibly follows, while a stylized timing device records the response without readable UI. Keep thick black outlines, controlled colors, soft graphic shadows and clear spatial depth. Add only the German text "ECHT ANSTECKEND" once. No lab-coat humans, no tiny balls, no photorealism and no extra text.
+
+## Bild 06
+Dateiname: `Bild 06.png`
+Satzbezug: „aber der genaue Mechanismus ist noch nicht vollständig geklärt.“
+
+Create a vertical 9:16 Modern Countryball Explainer conceptual science scene in exactly the same art world. Make a large stylized 2D brain the dominant object, with several plausible neural pathways beginning to light up but not resolving into one single answer; a large neutral round observer studies it from the side without becoming the focus. Use layered depth and restrained uncertainty cues rather than a poster or icon collage. Add only the German text "MECHANISMUS NOCH OFFEN" once. No photorealism, no 3D brain render, no small decorative characters.
+
+## Bild 07
+Dateiname: `Bild 07.png`
+Satzbezug: „Hirnscans zeigen, dass beim Beobachten eines Gähnens“
+
+Create a vertical 9:16 Modern Countryball Explainer brain-observation scene in the same unified 2D world. Show one LARGE neutral round character watching another large round character yawn across the frame; behind the observer, a simplified cutaway of its brain becomes visible as a clean illustrated overlay integrated into the scene, not a floating UI panel. Use thick outlines, controlled color contrast and strong depth. Add only the German text "GEHIRN REAGIERT" once. No realistic faces, no tiny characters, no photorealism.
+
+## Bild 08
+Dateiname: `Bild 08.png`
+Satzbezug: „Netzwerke für soziale Signale und Handlungssteuerung reagieren.“
+
+Create a vertical 9:16 Modern Countryball Explainer close-up of a stylized 2D brain in the same visual world, with two connected activity zones lighting up to represent processing of social visual cues and motor/action control. The activation should appear as subtle glowing pathways embedded in the brain, not as floating icons or technical dashboard graphics. Use the same outline weight, color family and graphic shadows as the reel. No character is required. No readable text, no 3D, no photorealistic anatomy.
+
+## Bild 09
+Dateiname: `Bild 09.png`
+Satzbezug: „In einer TMS-Studie sagte die Erregbarkeit des motorischen Kortex voraus,“
+
+Create a vertical 9:16 Modern Countryball Explainer laboratory scene in the SAME fixed 2D world. A LARGE neutral round participant sits under a simplified TMS coil positioned above the head area; a stylized brain cutaway highlights the motor cortex while the apparatus remains clearly illustrative, not realistic medical equipment. Use clean thick outlines, warm-cool color contrast, soft graphic shadows and clear depth. Add only the German text "MOTORISCHER KORTEX" once. No human researcher, no tiny balls, no photorealism or 3D.
+
+## Bild 10
+Dateiname: `Bild 10.png`
+Satzbezug: „wie stark Menschen auf Gähnen reagierten.“
+
+Create a vertical 9:16 Modern Countryball Explainer cause-and-effect close-up in the same visual world. Show a stylized motor-cortex area producing a stronger pulse and, in the same continuous composition, a LARGE neutral round character beginning a stronger yawn response after seeing another yawn. Make the relationship readable through spatial flow and changing intensity, not charts or floating UI. Keep the established outlines, colors and shadows. No readable text, no realistic anatomy, no small decorative characters.
+
+## Bild 11
+Dateiname: `Bild 11.png`
+Satzbezug: „Das passt zu der Idee, dass dein Gehirn beobachtete Handlungen“
+
+Create a vertical 9:16 Modern Countryball Explainer action-observation scene in the SAME unified reel world. On the left, one LARGE neutral round character yawns; on the right, another large character watches closely. Connect the observer's eyes to a simplified internal brain view through natural composition and gaze direction rather than arrows or UI. Use strong depth, clean thick outlines and controlled colors. No text, no tiny background balls, no photorealism and no humanoid people.
+
+## Bild 12
+Dateiname: `Bild 12.png`
+Satzbezug: „automatisch in eigene Bewegungsbereitschaft übersetzt.“
+
+Create a vertical 9:16 Modern Countryball Explainer internal-response scene in exactly the same visual world. Make the observing character's stylized brain and simple mouth/jaw motor pathway the dominant focus as a subtle activation pulse travels toward movement readiness before the yawn fully happens. Keep anatomy simplified, 2D and integrated into one scene. Add only the German text "BEWEGUNG BEREIT" once. No floating infographic cards, no 3D brain, no realistic human anatomy and no decorative small character.
+
+## Bild 13
+Dateiname: `Bild 13.png`
+Satzbezug: „Oft wird das mit Empathie oder Spiegelneuronen erklärt.“
+
+Create a vertical 9:16 Modern Countryball Explainer hypothesis scene in the same fixed world. Show two LARGE neutral round characters facing each other, one yawning and one reacting, while a stylized brain-to-brain mirrored pattern appears between them as a tentative visual hypothesis. Use a clear question-like composition without presenting it as proven fact. Add only the German text "EMPATHIE? SPIEGELNEURONEN?" once. No hearts as proof, no tiny balls, no photorealism, no 3D and no extra text.
+
+## Bild 14
+Dateiname: `Bild 14.png`
+Satzbezug: „Doch Reviews zeigen: Die Belege dafür sind widersprüchlich“
+
+Create a vertical 9:16 Modern Countryball Explainer evidence-review scene in the SAME unified 2D world. Show several large illustrated research papers and result sheets physically spread across a desk, with some pointing toward a social explanation and others toward uncertainty; use visual contrast in shapes and marks without readable pseudo-text. A single LARGE neutral round researcher may examine them from the side. Add only the German text "BELEGE WIDERSPRÜCHLICH" once. No UI dashboard, no photorealistic papers, no tiny figures.
+
+## Bild 15
+Dateiname: `Bild 15.png`
+Satzbezug: „und reichen nicht für eine einfache Erklärung. Manche Studien finden stärkere Ansteckung bei vertrauten Menschen,“
+
+Create a vertical 9:16 Modern Countryball Explainer social-closeness scene in the same visual world. Two LARGE neutral round characters who are clearly familiar sit close together in a relaxed home setting; one yawns and the other begins to follow, with body orientation and proximity conveying familiarity rather than labels or icons. Use warm lighting, thick outlines, clean depth and no background crowd. Add only the German text "VERTRAUTE MENSCHEN" once. No tiny balls, no flags, no photorealism.
+
+## Bild 16
+Dateiname: `Bild 16.png`
+Satzbezug: „andere Ergebnisse passen weniger klar dazu.“
+
+Create a vertical 9:16 Modern Countryball Explainer contrasting-research scene in exactly the same fixed art world. Show two equally prominent test setups side by side within one coherent room: in one, a large observer character yawns after the stimulus; in the other, a large observer does not. The difference should read as inconsistent outcomes, not as a statistic board. Keep identical outline style, palette and shadows. No readable text, no tiny characters, no photorealism, no 3D.
+
+## Bild 17
+Dateiname: `Bild 17.png`
+Satzbezug: „Aufmerksamkeit, Müdigkeit, Alter und individuelle Unterschiede können ebenfalls beeinflussen, ob du reagierst.“
+
+Create a vertical 9:16 Modern Countryball Explainer comparison scene in the SAME unified 2D world. Two LARGE neutral round viewers see the same yawning stimulus on one shared screen: one is tired and highly focused and starts yawning, while the other is more alert or distracted and does not react. Make the differing state visible through posture, eyes and simple contextual cues, not icon clutter. Add only the German text "MEHR ALS EMPATHIE" once. No tiny balls, no humans, no photorealism or 3D.
+
+## Bild 18
+Dateiname: `Bild 18.png`
+Satzbezug: „Also: Gähnst du wegen Mitgefühl?“
+
+Create a vertical 9:16 Modern Countryball Explainer question scene in the same fixed world. Show one LARGE neutral round character just after catching a yawn, looking toward a stylized brain and a small restrained heart symbol positioned as competing possible explanations rather than a proven answer. Keep the composition clean, scene-like and visually uncertain. Add only the German text "WEGEN MITGEFÜHL?" once. No poster-card layout, no tiny decorative figures, no photorealism and no extra text.
+
+## Bild 19
+Dateiname: `Bild 19.png`
+Satzbezug: „Vielleicht manchmal, aber bewiesen ist das nicht.“
+
+Create a vertical 9:16 Modern Countryball Explainer cautious-answer scene in the SAME unified 2D world. Show a large stylized brain with an empathy-related pathway drawn only as a faint incomplete route that stops before a definitive conclusion, while a LARGE neutral round character observes thoughtfully from the side. The image should communicate uncertainty without becoming a diagram poster. Use the established outlines, palette and shadows. No readable text, no photorealism, no 3D and no tiny background figures.
+
+## Bild 20
+Dateiname: `Bild 20.png`
+Satzbezug: „Sicherer ist: Dein Gehirn verarbeitet fremdes Gähnen so stark,“
+
+Create a vertical 9:16 Modern Countryball Explainer evidence-based conclusion scene in exactly the same visual world. One LARGE neutral round character watches another large character yawn; inside the observer, a simplified stylized brain shows strong integrated processing from visual/social input toward motor readiness. Use clear cause-and-effect staging, depth and the established graphic style. Add only the German text "SICHERER IST" once. No tiny decorative balls, no realistic anatomy, no photorealism and no extra text.
+
+## Bild 21
+Dateiname: `Bild 21.png`
+Satzbezug: „dass daraus manchmal ganz automatisch dein eigenes wird.“
+
+Create a vertical 9:16 Modern Countryball Explainer final payoff scene in the SAME fixed room and visual world as the opening. The originally observing LARGE neutral round character now yawns automatically while the first character has already finished, completing the visual chain reaction. Use a slightly wider calm composition, consistent palette, thick outlines and soft graphic shadows so the ending clearly echoes Bild 01 without duplicating it. Add only the German text "AUTOMATISCHE REAKTION" once. No tiny characters, no flags, no photorealism, no 3D.
