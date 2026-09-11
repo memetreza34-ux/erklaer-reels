@@ -46,13 +46,7 @@
       "answerBeginsImmediately": true,
       "maximumIntroWordsBeforeExplanation": 5
     },
-    "tone": [
-      "klar",
-      "direkt",
-      "erwachsen",
-      "neutral",
-      "leicht verständlich"
-    ],
+    "tone": ["klar", "direkt", "erwachsen", "neutral", "leicht verständlich"],
     "preferredExamples": [
       "Warum schieben wir Aufgaben auf? Einfach erklärt:",
       "Warum erinnern wir uns falsch? Einfach erklärt:",
@@ -86,24 +80,12 @@
       "avoidLongMicroPauses": true,
       "voiceoverRemainsDominantOverSfx": true
     },
-    "targetDurationSeconds": {
-      "min": 55,
-      "max": 60,
-      "preferred": 58
-    },
-    "targetWordCount": {
-      "min": 155,
-      "max": 175,
-      "preferred": 165
-    },
+    "targetDurationSeconds": {"min": 55, "max": 60, "preferred": 58},
+    "targetWordCount": {"min": 155, "max": 175, "preferred": 165},
     "endingRules": {
       "required": true,
       "minimumFinalScenes": 2,
-      "postVoiceHoldSeconds": {
-        "min": 0.5,
-        "max": 0.7,
-        "preferred": 0.6
-      },
+      "postVoiceHoldSeconds": {"min": 0.5, "max": 0.7, "preferred": 0.6},
       "forbidMultiSecondSilentTail": true,
       "structure": [
         "klare persönliche Prüf- oder Erkenntnisfrage",
@@ -129,12 +111,7 @@
       "playbackRate": 1.1,
       "preservePitch": true,
       "trimLeadingAndTrailingSilence": true,
-      "loudnessNormalization": {
-        "enabled": true,
-        "integratedLufs": -16,
-        "truePeakDbtp": -1.5,
-        "loudnessRangeLra": 11
-      },
+      "loudnessNormalization": {"enabled": true, "integratedLufs": -16, "truePeakDbtp": -1.5, "loudnessRangeLra": 11},
       "rerunTimelineAfterward": true,
       "rerunWordSyncAfterward": false
     }
@@ -144,25 +121,28 @@
     "maximumSceneCount": 10,
     "defaultSceneCount": 9,
     "sceneCountByDuration": [
-      {
-        "durationSecondsMin": 55,
-        "durationSecondsMax": 60,
-        "recommendedScenesMin": 8,
-        "recommendedScenesMax": 10
-      }
+      {"durationSecondsMin": 55, "durationSecondsMax": 60, "recommendedScenesMin": 8, "recommendedScenesMax": 10}
     ],
-    "visualChangeIntervalSeconds": {
-      "min": 3.0,
-      "max": 4.0,
-      "recommended": 3.25
+    "imageCountMode": "adaptive-dense-v2",
+    "visualDensityVersion": 2,
+    "effectiveSince": "2026-09-11",
+    "adaptiveImageTargets": {
+      "8": {"min": 19, "max": 21},
+      "9": {"min": 20, "max": 22},
+      "10": {"min": 21, "max": 24}
     },
+    "hookImagePhases": 2,
+    "standardSceneImagePhases": {"min": 2, "max": 3},
+    "imageMomentPerSpokenIdea": true,
+    "splitComplexCauseEffect": true,
+    "splitAnatomyMechanismStudyComparison": true,
+    "doNotInflateSimpleStatements": true,
+    "visualChangeIntervalSeconds": {"min": 2.2, "max": 4.8, "recommendedMin": 2.5, "recommendedMax": 3.8},
+    "splitReviewThresholdSeconds": 4.8,
     "hookVisibleFromSecond": 0,
     "audioCueRequired": true,
-    "audioCueLeadSeconds": {
-      "min": 0.08,
-      "max": 0.12,
-      "default": 0.1
-    },
+    "audioCueRequiredForEveryInternalImagePhase": true,
+    "audioCueLeadSeconds": {"min": 0.08, "max": 0.12, "default": 0.1},
     "imageCueLeadSeconds": 0.08,
     "sfxPreRollSeconds": 0.04,
     "consistentStyleWithinReel": true,
@@ -175,19 +155,16 @@
     "promptLanguage": "en",
     "integratedGermanKeywordsAllowed": true,
     "integratedGermanTextPreferred": false,
+    "globalWorldLockRequiredBeforeImage01": true,
+    "individualPromptsMayChangeWorld": false,
+    "worldLockContinuityFields": ["outline-weight", "shape-language", "palette-family", "graphic-shading", "detail-density", "2d-rendering", "character-logic", "depth-language"],
     "embeddedTextRules": {
       "coverRequired": true,
       "nonCoverOptional": true,
       "useWheneverItImprovesClarity": true,
       "language": "de",
-      "preferredSceneCoveragePercent": {
-        "min": 35,
-        "max": 60
-      },
-      "preferredWordsPerScene": {
-        "min": 0,
-        "max": 4
-      },
+      "preferredSceneCoveragePercent": {"min": 35, "max": 60},
+      "preferredWordsPerScene": {"min": 0, "max": 4},
       "size": "contextual-small-medium-or-large",
       "imageMustWorkWithoutText": true,
       "allowedUses": [
@@ -233,6 +210,11 @@
     "singleBallGroupOrMapViewAllowed": true,
     "actorNotRequiredWhenObjectOrMechanismIsClearer": true,
     "doNotForceDecorativeActor": true,
+    "forbidTinyDecorativeBallActor": true,
+    "ballActorMustHaveNarrativeFunction": true,
+    "ballActorMustBeVisuallySubstantialWhenUsed": true,
+    "preferNoActorForAnatomyMechanismObjectProcessWhenClearer": true,
+    "forbidRandomTongueOrFacialGimmicks": true,
     "humanHeadCharactersForbidden": true,
     "humanoidCartoonPeopleForbidden": true,
     "ovalOrBeanShapedBodiesForbidden": true,
@@ -251,17 +233,20 @@
     "noLogosUnlessEditoriallyNecessary": true,
     "fixedVisualWorldRequirements": [
       "genau eine feste 9:16 Modern-Countryball-Explainer-Bildwelt ausschließlich für Reels",
+      "vor Bild 01 den globalen World-Lock festsetzen und für alle Bilder beibehalten",
+      "ein Bild entspricht einer klaren gesprochenen visuellen Kernaussage",
       "wenn Akteure vorkommen, sind sie runde Kugelfiguren mit einfachen weißen Augen und schwarzen Pupillen",
       "Kugelkörper bleiben exakt rund und werden niemals oval, bohnenförmig, eiförmig oder humanoid",
       "kein separater Kopf, kein Hals, keine Frisur und kein menschliches Gesicht auf einer Kugelfigur",
       "höchstens kleine einfache Arme, Hände oder Füße, wenn eine Handlung sie braucht",
       "Länder-/Regionsflaggen nur bei tatsächlicher geografischer Relevanz, sonst neutrale einfarbige Kugeln",
-      "je nach Szene einzelne Kugel, kleine Kugelgruppe, Kugel plus Objekt oder Kartenansicht erlaubt",
       "eine Kugelfigur ist nicht in jedem Bild Pflicht und wird nicht dekorativ erzwungen",
+      "keine winzigen dekorativen Kugeln ohne inhaltliche Funktion",
+      "bei Anatomie, Mechanismus, Objekt oder physischem Prozess das Fachmotiv allein zeigen, wenn es klarer ist",
+      "keine zufälligen Zungen, Grimassen oder Gimmicks ohne inhaltliche Funktion",
       "wenn keine Kugelfigur nötig ist, konkrete Objekte, Mechanismen, Dokumente, Karten, Gebäude oder Umgebungen verwenden",
       "Objekte ohne Kugelfigur behalten dieselbe Kontur-, Vereinfachungs- und 2D-Formsprache",
       "keine menschlichen Köpfe auf Kugelkörpern, keine humanoiden Cartoonmenschen und keine Stick-Figuren",
-      "Länder, Regierungen und Institutionen durch flaggenmarkierte oder neutrale Kugeln mit Karten, Grenzen, Dokumenten oder Gebäuden darstellen",
       "sauberer flacher 2D-Vektor-/Comic-Look mit dicken schwarzen Konturen",
       "zuerst konkrete lebendige Mini-Szene mit Handlung, Veränderung, Reaktion oder Ursache-Folge, erst danach zusätzliche Symbole",
       "ein dominantes Hauptmotiv und höchstens wenige unterstützende Requisiten",
@@ -282,7 +267,7 @@
       "sichtbarer Text ausschließlich Deutsch"
     ],
     "imageMomentPerClause": false,
-    "imageDensityGuidance": "Jede Standardszene bekommt zwei Bildmomente, die Hook einen. Ein Bild steht mindestens 3 Sekunden, im Schnitt etwa 3,25. Bei rund 58 Sekunden ergibt das ungefähr 15 bis 19 Bilder auf 8 bis 10 narrativen Szenen. Der zweite Bildmoment einer Szene setzt am tatsächlich gesprochenen Audio-Cue an und erscheint im finalen Schnitt ungefähr 0,08 Sekunden davor."
+    "imageDensityGuidance": "Adaptive Dense V2 ab 2026-09-11: 8 Szenen 19–21 Bilder, 9 Szenen 20–22, 10 Szenen 21–24. Die Hook hat zwei Bildmomente, Standardszenen zwei oder drei je nach tatsächlichem gesprochenem Inhalt. Jede interne Phase besitzt ein echtes audioCue. Häufig guter Bereich 2,5–3,8 Sekunden; ab etwa 4,8 Sekunden aktiv Split prüfen. Keine starren gleich langen Bildblöcke."
   },
   "subtitleRules": {
     "defaultEnabled": false,
