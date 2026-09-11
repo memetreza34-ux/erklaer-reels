@@ -1,0 +1,37 @@
+{
+  "version": 2,
+  "project": "2026-KW37_07-09_bis_13-09/dienstag/reel-01_warum-ist-gaehnen-ansteckend",
+  "title": "Warum ist Gähnen ansteckend?",
+  "imageCountMode": "adaptive-dense-v2",
+  "visualDensityVersion": 2,
+  "plannedImageCount": 21,
+  "currentPhase": 2,
+  "phase1": {
+    "owner": "ChatGPT",
+    "status": "complete",
+    "script": "complete-161-words",
+    "imagePrompts": "complete-21",
+    "worldLock": "complete",
+    "imageAudioMapping": "complete-planned-anchors-only",
+    "sources": "complete",
+    "caption": "complete"
+  },
+  "phase2": {
+    "owner": "user",
+    "status": "pending",
+    "voiceover": "missing",
+    "images01to21": "missing"
+  },
+  "phase3": {
+    "owner": "Antigravity",
+    "status": "blocked-until-phase2-complete",
+    "actualAnchorAlignment": "pending",
+    "motion": "pending",
+    "soundDesign": "pending",
+    "render": "pending",
+    "qualityControl": "pending"
+  },
+  "readyForAssetGeneration": true,
+  "readyForAntigravity": false,
+  "readyForRender": false
+}
