@@ -60,6 +60,48 @@ Beispiele:
 
 Die globale Nummerierung läuft immer lückenlos weiter.
 
+## Bildproduktion bleibt strikt seriell — auch bei „alle Bilder erstellen“
+
+Die 10er-Pakete sind Ordner- und Produktionsblöcke, **keine Erlaubnis zur Batch- oder Parallelgenerierung**.
+
+Wenn der Nutzer oder ein Agent sagt **„erstelle alle Bilder“**, **„mach das komplette Bildset“** oder z. B. **„erstelle Bild 01–67“**, wird der Gesamtauftrag zwar vollständig abgearbeitet, aber immer genau ein Bild nach dem anderen.
+
+Für jede Bildnummer gilt zwingend:
+
+```text
+nur den Prompt für Bild NN verwenden
+→ genau EIN Bild erzeugen
+→ vollständig auf die fertige Ausgabe warten
+→ Bild gegen Prompt + feste YouTube-Bildwelt prüfen
+→ bei Fehlern dieselbe Bildnummer neu erzeugen und NICHT weitergehen
+→ sofort exakt als Bild NN.png umbenennen
+→ sofort in den aktuell aktiven 10er-Ordner legen
+→ prüfen, dass die Datei dort korrekt vorhanden ist
+→ erst danach Bild NN+1 starten
+```
+
+Nach jeweils zehn Bildern:
+
+```text
+aktuellen Paketordner vollständig prüfen
+→ erwartete Bildnummern lückenlos?
+→ keine Duplikate?
+→ alle Dateien korrekt umbenannt?
+→ alle Bilder visuell geprüft?
+→ erst bei bestandenem Paketcheck den nächsten 10er-Ordner beginnen
+```
+
+Ausdrücklich verboten:
+- mehrere Bildgenerierungen gleichzeitig offen haben
+- Bilder parallel erzeugen
+- zehn Prompts auf einmal an die Bild-KI schicken
+- eine automatische Queue für mehrere Bilder starten
+- erst alle Bilder erzeugen und später gesammelt umbenennen
+- erst alle Bilder erzeugen und später in Ordner sortieren
+- trotz fehlerhaftem Bild zur nächsten Nummer springen
+
+Der letzte Paketordner darf weniger als zehn Bilder enthalten. Bild 00/Thumbnail bleibt separat und zählt nicht in diese Pakete.
+
 ## Script wird passend zu den 10er-Bildpaketen aufgeteilt
 
 Der Nutzer muss das lange Voice-over nicht in einer einzigen Datei erzeugen.
@@ -185,6 +227,9 @@ Für `productionRulesVersion >= 2` ist ausdrücklich verboten:
 - pauschal immer 60 Bilder planen
 - Bildanzahl gleichmäßig auf Kapitel verteilen
 - 10er-Pakete als inhaltliches Limit missverstehen
+- mehrere Bilder gleichzeitig oder parallel generieren
+- bei „alle Bilder erstellen“ mehrere Prompts auf einmal abarbeiten
+- Bilder erst gesammelt erzeugen und erst danach umbenennen oder sortieren
 - das gesamte Voice-over zwingend als eine einzige Nutzeraudiodatei verlangen
 - einen Script-Part über mehrere Bildpakete laufen lassen
 - Audio-Part und Bildpaket falsch koppeln
