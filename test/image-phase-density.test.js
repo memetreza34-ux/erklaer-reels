@@ -14,7 +14,8 @@ async function writeJson(filePath, value) {
   await writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
 }
 
-// Baut ein vollständiges Reel, bei dem eine Szene die angegebenen Bildphasen trägt.
+// Baut ein vollständiges Legacy-Reel, bei dem eine Szene die angegebenen Bildphasen trägt.
+// Adaptive Dense V2 wird separat über Reel-Pakete aktiviert; alte Workspaces bleiben kompatibel.
 async function buildReel(phaseStarts) {
   const root = await mkdtemp(path.join(os.tmpdir(), 'erklaer-density-'));
   const starts = [0, 5.5, 12, 18.5, 25, 31.5, 38, 44.5, 51];
@@ -31,7 +32,6 @@ async function buildReel(phaseStarts) {
       subtitleCues: [],
       expectedImageFileName: `${sceneId}.png`
     };
-    // Nur Szene 2 bekommt die zu prüfende Phasenaufteilung.
     if (index === 1) {
       base.imagePhases = phaseStarts.map((startPercent, phaseIndex) => ({
         phaseId: `${sceneId}-image-${String(phaseIndex + 1).padStart(2, '0')}`,
@@ -81,8 +81,7 @@ async function buildReel(phaseStarts) {
   return root;
 }
 
-test('zwei Bildphasen pro Szene sind der Normalfall und laufen sauber durch', async () => {
-  // Zwei Bilder auf 6,5 Sekunden: rund 3,25 Sekunden je Bild.
+test('zwei Bildphasen pro Szene laufen weiterhin sauber durch', async () => {
   const root = await buildReel([0, 0.5]);
   const result = await buildMasterTimeline(root, { strict: false, probeAudio: false });
 
@@ -94,33 +93,36 @@ test('zwei Bildphasen pro Szene sind der Normalfall und laufen sauber durch', as
   assert.equal(check.passed, true, check?.message);
 });
 
-test('blockiert eine Bildphase, die zu kurz zum Erfassen ist', async () => {
-  // Drei Phasen auf 6,5 Sekunden: gut zwei Sekunden je Bild, unter der Grenze von drei.
-  const root = await buildReel([0, 0.34, 0.67]);
+test('blockiert eine Bildphase unter der neuen technischen Untergrenze', async () => {
+  // 6,5 Sekunden mit Starts 0/25/50 % erzeugen zwei Phasen von rund 1,6 s: klar unter 2,2 s.
+  const root = await buildReel([0, 0.25, 0.5]);
   const result = await buildMasterTimeline(root, { strict: false, probeAudio: false });
 
   const check = result.qualityReport.checks.find((entry) => entry.id === 'scene-02-image-phase-duration');
   assert.ok(check);
   assert.equal(check.passed, false);
   assert.equal(check.level, 'error');
-  assert.match(check.message, /mindestens 3 Sekunden/);
+  assert.match(check.message, /mindestens 2[,.]2 Sekunden/);
 });
 
-test('Regelwerk und Gate beschreiben dieselbe Untergrenze', async () => {
+test('Regelwerk und Gate beschreiben denselben Adaptive-Dense-V2-Rhythmus', async () => {
   const gates = JSON.parse(await readFile(path.join(REPO_ROOT, 'config', 'production-quality-gates.json'), 'utf8'));
   const rules = JSON.parse(await readFile(path.join(REPO_ROOT, 'config', 'content-rules.json'), 'utf8'));
 
   const minimum = gates.sceneTiming.minimumImagePhaseSeconds;
+  const recommended = gates.sceneTiming.recommendedImagePhaseSeconds;
   const interval = rules.visualRules.visualChangeIntervalSeconds;
 
-  assert.ok(minimum > 0);
-  assert.ok(interval.min >= minimum, 'Das empfohlene Minimum darf nicht unter der harten Grenze liegen');
-  assert.ok(interval.recommended >= interval.min && interval.recommended <= interval.max);
-  // Ohne schnellen Wechsel bekäme jede Szene wieder nur ein Bild.
-  assert.ok(interval.max <= 4.5, 'Ein Bild darf nicht beliebig lange stehen bleiben');
+  assert.equal(minimum, 2.2);
+  assert.equal(interval.min, minimum);
+  assert.equal(interval.recommendedMin, recommended.min);
+  assert.equal(interval.recommendedMax, recommended.max);
+  assert.equal(interval.max, gates.sceneTiming.splitReviewThresholdSeconds);
+  assert.ok(interval.recommendedMin >= interval.min);
+  assert.ok(interval.recommendedMax <= interval.max);
 });
 
-test('reel.json nennt die tatsächliche Bildanzahl, nicht die Szenenzahl', async () => {
+test('Legacy-Workspace nennt weiterhin die tatsächliche Bildanzahl, nicht die Szenenzahl', async () => {
   const { createReelWorkspace } = await import('../src/core/workspace.js');
   const { mkdtemp, readFile, rm } = await import('node:fs/promises');
   const os = await import('node:os');
@@ -138,7 +140,6 @@ test('reel.json nennt die tatsächliche Bildanzahl, nicht die Szenenzahl', async
     const scenes = JSON.parse(await readFile(path.join(result.reelDirectory, 'scenes', 'scene-index.json'), 'utf8'));
     const tatsaechlich = scenes.reduce((summe, szene) => summe + szene.imagePhases.length, 0);
 
-    // Vorher stand hier die Szenenzahl, obwohl doppelt so viele Bildphasen angelegt wurden.
     assert.equal(reel.plannedImageCount, tatsaechlich);
     assert.equal(reel.plannedImageCount, 1 + (reel.sceneCount - 1) * 2);
     assert.equal(reel.imageCountMode, 'one-hook-two-standard');
@@ -150,7 +151,7 @@ test('reel.json nennt die tatsächliche Bildanzahl, nicht die Szenenzahl', async
   }
 });
 
-test('neue Reels dürfen die Bildregel nicht unterlaufen', async () => {
+test('Legacy-Workspace darf die alte Bildregel nicht unbemerkt unterlaufen', async () => {
   const { createReelWorkspace } = await import('../src/core/workspace.js');
   const { validateReelContent } = await import('../src/core/content-validator.js');
   const { mkdtemp, readFile, writeFile, rm } = await import('node:fs/promises');
@@ -168,8 +169,6 @@ test('neue Reels dürfen die Bildregel nicht unterlaufen', async () => {
     const indexPath = path.join(result.reelDirectory, 'scenes', 'scene-index.json');
     const scenes = JSON.parse(await readFile(indexPath, 'utf8'));
 
-    // Eine dritte Bildphase und der alte Modus: früher hätte der Validator beides
-    // durchgewinkt, weil er 1 bis 3 Phasen und individual-per-reel erlaubte.
     scenes[2].imagePhases.push({
       phaseId: `${scenes[2].sceneId}-image-03`,
       order: 3,
@@ -192,27 +191,25 @@ test('neue Reels dürfen die Bildregel nicht unterlaufen', async () => {
     const fehler = bericht.checks.filter((check) => check.passed === false && check.level === 'error');
     const meldungen = fehler.map((check) => check.message).join(' ');
 
-    assert.match(meldungen, /genau 2 Bildphasen/, 'Die dritte Bildphase muss auffallen');
-    assert.match(meldungen, /one-hook-two-standard/, 'Der alte Modus muss abgelehnt werden');
-    assert.match(meldungen, /17 Bilder vorgesehen/, 'Die Gesamtzahl muss geprüft werden');
+    assert.match(meldungen, /genau 2 Bildphase/, 'Die dritte Bildphase muss im Legacy-Modus auffallen');
+    assert.match(meldungen, /one-hook-two-standard/, 'Der unbekannte Modus muss abgelehnt werden');
+    assert.match(meldungen, /Legacy-Dichte.*17 Bilder/s, 'Die Legacy-Gesamtzahl muss geprüft werden');
   } finally {
     await rm(outputRoot, { recursive: true, force: true });
   }
 });
 
 test('die Szenendauer-Erwartung stammt aus den Quality-Gates, nicht aus fest verdrahteten Zahlen', async () => {
-  const { readFile } = await import('node:fs/promises');
   const validator = await readFile(path.join(REPO_ROOT, 'src', 'core', 'content-validator.js'), 'utf8');
   const gates = JSON.parse(await readFile(path.join(REPO_ROOT, 'config', 'production-quality-gates.json'), 'utf8'));
 
   assert.match(validator, /sceneTiming/, 'Der Validator muss die Quality-Gates lesen');
-  // Die alte Pauschalspanne widersprach der Single Source of Truth.
   assert.ok(!/duration >= 3\.2 && duration <= 5\.5/.test(validator), 'Keine fest verdrahtete 3,2–5,5-Spanne mehr');
   assert.equal(gates.sceneTiming.standardSeconds.min, 6);
   assert.equal(gates.sceneTiming.hookSeconds.max, 6);
 });
 
-test('eine planmäßige Hook bekommt keine Warnung zu einem zweiten Bild', async () => {
+test('eine planmäßige Legacy-Hook bekommt keine Warnung zu einem zweiten Bild', async () => {
   const { createReelWorkspace } = await import('../src/core/workspace.js');
   const { validateReelContent } = await import('../src/core/content-validator.js');
   const { mkdtemp, readFile, writeFile, rm } = await import('node:fs/promises');
@@ -241,9 +238,7 @@ test('eine planmäßige Hook bekommt keine Warnung zu einem zweiten Bild', async
     const bericht = await validateReelContent(result.reelDirectory);
     const hookWarnung = bericht.checks.find((check) => check.id === 'scene-01-long-static-review');
 
-    // Die Hook hat planmäßig ein Bild bei 4,5 bis 6 Sekunden. Eine Warnung, die ein
-    // zweites Bild anregt, widerspräche der Regel, die sie erfüllt.
-    assert.ok(hookWarnung, 'Der Check muss weiterhin existieren');
+    assert.ok(hookWarnung, 'Der Legacy-Check muss weiterhin existieren');
     assert.equal(hookWarnung.passed, true, hookWarnung.message);
   } finally {
     await rm(outputRoot, { recursive: true, force: true });
