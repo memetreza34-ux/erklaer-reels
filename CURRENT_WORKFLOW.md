@@ -1,6 +1,6 @@
 # CURRENT WORKFLOW — VERBINDLICHE SINGLE SOURCE OF TRUTH
 
-**Stand: 2026-09-03**
+**Stand: 2026-09-11**
 
 Diese Datei ist die verbindliche Repo-weite Produktionsregel für neue Chats, Codex, Antigravity und andere Repo-Agenten.
 
@@ -87,10 +87,36 @@ Verbindlich:
 
 YouTube bleibt vollständig getrennt (`youtube/YOUTUBE_WORKFLOW.md`, `youtube/YOUTUBE_VISUAL_WORLD.md`).
 
+### Globaler World-Lock vor Bild 01
+
+Bevor ein KI-Agent Bild 01 erzeugt, muss er die Bildwelt **einmal für das gesamte Reel festschreiben**. Danach ändern einzelne Bildprompts nur Motiv, Handlung, Perspektive und Umgebung — niemals die künstlerische Welt.
+
+Konstant bleiben insbesondere:
+- Konturstärke und Formsprache
+- Farbcharakter und grafische Schatten
+- Detailgrad und 2D-Rendering
+- Tiefenlogik und Social-Media-Lesbarkeit
+- Charakterlogik
+
+Der Agent darf nicht für Medizin, Geschichte, Technik oder Alltag jeweils eine neue Unter-Bildwelt erfinden.
+
+### Kugelfiguren sind optional und müssen eine Funktion haben
+
+Wenn ein Akteur vorkommt, ist er eine klar runde Kugelfigur ohne separaten menschlichen Kopf. **Ein Akteur ist nicht in jedem Bild Pflicht.**
+
+Neue Hard-Guidance:
+- keine winzige dekorative Kugel nur als Stil-Sticker in Ecke oder Hintergrund
+- Kugelfigur nur verwenden, wenn sie Handlung, Reaktion, Vergleich oder Perspektive wirklich verbessert
+- bei Anatomie, Mechanismen, Objekten, Karten oder physischen Prozessen das Fachmotiv allein zeigen, wenn es verständlicher ist
+- Flaggen nur bei echter geografischer Relevanz; sonst neutrale einfarbige Kugeln
+- keine zufälligen Zungen, Grimassen oder Gimmicks ohne inhaltlichen Grund
+- wenn eine Kugel vorkommt, muss sie groß genug und klar genug sein, um als bewusster Akteur zu lesen
+
 ### Bildwirkung
 
 Jede Bildphase ist eine konkrete visuelle Mini-Szene, keine Lernposterkarte:
 - sichtbare Handlung, Reaktion, Veränderung oder Ursache-Folge
+- **ein Bild = eine klare gesprochene visuelle Kernaussage**
 - ein dominantes Motiv, 1–3 unterstützende Elemente
 - einfache Tiefe und Kontext, wenn sinnvoll
 - klare Farbkontraste
@@ -105,8 +131,6 @@ Nicht als Standard:
 - Fotorealismus, Anime, Clay, glänzendes 3D/Pixar
 - humanoide Cartoonmenschen oder Stick-Figuren
 
-Wenn ein Akteur vorkommt, ist er eine klar runde Kugelfigur ohne separaten menschlichen Kopf. Ein Akteur ist nicht in jedem Bild Pflicht.
-
 ## 4. Bildtext
 
 - Prompts: Englisch
@@ -118,23 +142,41 @@ Wenn ein Akteur vorkommt, ist er eine klar runde Kugelfigur ohne separaten mensc
 - ein textfreies starkes Bild ist ausdrücklich erwünscht
 - `imageText` leer → kein lesbarer Text
 
-## 5. Bildanzahl
+## 5. Bildanzahl — Adaptive Dense V2 ab 2026-09-11
 
-Feste Formel:
+Für **neu geplante Reels** gilt nicht mehr die starre 17-Bilder-Formel. Neue Phase-1-Pakete tragen:
 
 ```text
-Bilder = 1 + (Szenen − 1) × 2
+imageCountMode: adaptive-dense-v2
+visualDensityVersion: 2
 ```
 
-- 8 Szenen = 15 Bilder
-- 9 Szenen = 17 Bilder
-- 10 Szenen = 19 Bilder
-- Hook exakt 1 Bildphase
-- jede weitere Szene exakt 2
-- keine dritte Bildphase
-- jede Bildphase mindestens 3 Sekunden
+Zielkorridor:
 
-Jede zweite Bildphase erhält ein eigenes `audioCue` aus tatsächlich gesprochenen Wörtern. `startPercent` ist nur Planungswert; nach dem echten Voice-over entscheidet `phaseCueTimings[].cueTimeSeconds`.
+```text
+8 Szenen  → 19–21 Bilder
+9 Szenen  → 20–22 Bilder
+10 Szenen → 21–24 Bilder
+```
+
+Regeln:
+- Hook standardmäßig **2 Bildphasen** statt eines langen Standbilds
+- jede weitere Szene **2 oder 3 Bildphasen**, abhängig vom gesprochenen Inhalt
+- dritte Bildphase nur, wenn innerhalb der Szene ein echter neuer visueller Gedanke beginnt
+- komplexe Ursache→Wirkung-, Anatomie-, Technik-, Studien- oder Vergleichsabschnitte bevorzugt splitten
+- einfache Aussagen nicht künstlich aufblasen
+- **1 Bild = 1 klare gesprochene Kernaussage**
+- jede zusätzliche Bildphase braucht ein eigenes `audioCue` aus tatsächlich gesprochenen Wörtern
+- `startPercent` ist nur Planungswert; nach dem echten Voice-over entscheidet das reale Cue-Timing
+- Bildwechsel dürfen nicht in gleichmäßige starre Sekundenblöcke gepresst werden
+
+Timing-Richtwerte für V2:
+- harte technische Untergrenze: ca. **2,2 s** pro Bildphase
+- häufig guter Bereich: **2,5–3,8 s**
+- ab ungefähr **4,8 s** aktiv prüfen, ob der gesprochene Inhalt sinnvoll auf einen zusätzlichen Bildmoment geteilt werden sollte
+- kein pauschales Maximaltempo: Inhalt und Audio entscheiden; weder hektisch noch unnötig statisch
+
+Legacy-Reels mit `one-hook-two-standard` bleiben unverändert und dürfen weiter mit ihrer alten Struktur gerendert werden. Das aktuelle bzw. bereits produzierte Reel wird durch diese Regel nicht umgebaut.
 
 ## 6. Schnitt-Timing
 
@@ -165,7 +207,7 @@ Richtwerte:
 - Pan meist 1–3 %
 - weiches `ease-in-out`
 - Hook bewegt sich ebenfalls dezent
-- zweite Bildphase bewegt sich ebenfalls
+- **jede interne Bildphase** bewegt sich ebenfalls
 - `none` ist für neue Reels nicht zulässig; nur Legacy-Kompatibilität
 
 Der Renderer besitzt zusätzlich einen Motion-Fallback, damit ein unvollständiger Plan nicht still als Standbild gerendert wird. Der Hard Gate bleibt trotzdem verpflichtend.
@@ -181,7 +223,7 @@ Pflicht:
 - Stimme bleibt dominant
 - typische Lautstärke 0,18–0,30, Standard ca. 0,22
 - `visualEvent` und `reason` sind Pflicht
-- interne SFX werden über `targetId` an die konkrete zweite Bildphase gebunden
+- interne SFX werden über `targetId` an die **konkrete interne Bildphase** gebunden — auch an eine dritte Phase
 - `audioCue` des internen SFX muss zum Bildphasen-Cue passen
 
 Der Agent verwendet **nur `type` aus `config/sound-library.json`**, niemals erfundene Dateinamen. `sync:sounds` löst Typ → Datei auf und kopiert die Datei in den Reel-Ordner.
@@ -196,9 +238,9 @@ Der Renderer kann einen bekannten Typ notfalls erneut auf die kanonische Datei a
 
 ## 9. Hard-Gates müssen auf jedem Einstiegspfad gelten
 
-Für neue Reels werden Motion/SFX und Endstille nicht nur dokumentiert, sondern technisch geprüft:
+Für neue Reels werden Bilddichte, Motion/SFX und Endstille nicht nur dokumentiert, sondern technisch geprüft:
 
-- `check:content --strict`: Motion-/SFX-Coverage
+- `check:content --strict`: Bildstruktur + Motion-/SFX-Coverage
 - `build:timeline --strict`: Motion-/SFX-Coverage + Soundbibliothek
 - `finalize:reel`: Motion-/SFX-Coverage + Soundbibliothek + Audio-Endstille
 - `validate:render` / `render:reel`: dieselben Gates erneut
@@ -206,7 +248,7 @@ Für neue Reels werden Motion/SFX und Endstille nicht nur dokumentiert, sondern 
 
 `--force` darf Quellen-, Motion/SFX-, Audio-Dateibindungs- oder Endstille-Gates nicht umgehen.
 
-## 10. Google Flow
+## 10. Google Flow / KI-Agent
 
 Einzige verbindliche Nutzerdatei:
 
@@ -214,13 +256,17 @@ Einzige verbindliche Nutzerdatei:
 00-bildprompts/99-alle-bildprompts.txt
 ```
 
+**Vor Bild 01 muss der Agent zuerst den globalen World-Lock aus dieser Datei lesen und für das komplette Projekt beibehalten.** Er darf den Stil nicht bei jedem Einzelprompt neu interpretieren.
+
 Flow arbeitet streng seriell:
 
 ```text
-aktuellen Bildabschnitt verwenden
+Globalen World-Lock einmal festsetzen
+→ aktuellen Bildabschnitt verwenden
 → genau 1 Bild erzeugen
 → vollständig warten
 → Inhalt + feste Bildwelt + Anti-Poster-QC prüfen
+→ Kugelfigur nur akzeptieren, wenn sie eine echte Funktion hat
 → exakt Bild NN.png benennen
 → in gemeinsamen Reel-Ausgabeordner legen
 → Ablage prüfen
@@ -272,8 +318,10 @@ Universal-Caption:
 
 Ein Reel ist erst fertig, wenn:
 - Script und Quellen geprüft sind
+- bei V2 die adaptive Bilddichte zum Inhalt passt und der Zielkorridor erreicht ist
 - alle Bildphasen vorhanden und visuell geprüft sind
 - feste Bildwelt eingehalten ist
+- unnötige/dekorative Mini-Kugelfiguren entfernt sind
 - **jede Bildphase sichtbar bewegt wird**
 - **jeder Szenen- und interne Bildwechsel einen gerenderten SFX besitzt**
 - finales Voice-over 1,10x / −16 LUFS / max. −1,5 dBTP geprüft ist
