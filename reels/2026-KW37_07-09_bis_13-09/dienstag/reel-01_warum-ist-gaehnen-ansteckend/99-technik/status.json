@@ -13,6 +13,8 @@
     "imagePrompts": "complete-21",
     "worldLock": "complete",
     "imageAudioMapping": "complete-planned-anchors-only",
+    "motionPlan": "complete",
+    "soundPlan": "complete",
     "sources": "complete",
     "caption": "complete"
   },
