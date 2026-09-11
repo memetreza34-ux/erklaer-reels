@@ -28,6 +28,7 @@ Diese Datei ist die verbindliche Themenliste für **alle Erklärformate in diese
 - Donnerstag: Warum schieben wir Aufgaben auf?
 - Freitag: Warum bekommen wir Gänsehaut?
 - Montag, 07.09.2026: Warum werden Finger im Wasser runzlig?
+- Dienstag, 08.09.2026: Warum ist Gähnen ansteckend?
 
 ### YouTube
 
