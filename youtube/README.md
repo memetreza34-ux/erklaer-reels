@@ -142,15 +142,48 @@ Auch dieser Befehl muss Exit-Code 0 liefern. Ein langer stiller Nachlauf nach de
 - Hintergrundmusik standardmäßig aus
 - starker Titel + eigenes Thumbnail
 
-## 10er-Paketregel
+## 10er-Paketregel — innerhalb des Pakets trotzdem immer nur EIN Bild gleichzeitig
 
-Immer nur ein Paket gleichzeitig:
+Auch wenn die Anweisung lautet **„erstelle alle Bilder“**, **„mach Bild 01–60“** oder sinngemäß das komplette Bildset zu erzeugen, bedeutet das **niemals**, mehrere Bilder gleichzeitig zu generieren oder zehn Bilder auf einmal anzufordern.
+
+Der Agent arbeitet den Gesamtauftrag vollständig ab, aber strikt seriell:
 
 ```text
-Bild 01–10 → prüfen → benennen → Ordner 1 → kontrollieren
-Bild 11–20 → erst danach
-...
+aktuellen Prompt für Bild NN lesen
+→ genau EIN Bild erzeugen
+→ vollständig auf das Ergebnis warten
+→ Bildinhalt + feste YouTube-Bildwelt prüfen
+→ falls fehlerhaft: genau dieselbe Bildnummer neu erzeugen, nicht weitergehen
+→ sofort exakt als Bild NN.png umbenennen
+→ sofort in den aktuell aktiven 10er-Ordner legen
+→ prüfen, dass die Datei wirklich im richtigen Ordner liegt
+→ erst dann Bild NN+1 beginnen
 ```
+
+Für ein 10er-Paket gilt danach zusätzlich:
+
+```text
+Bild 01 fertig + umbenannt + abgelegt + geprüft
+→ Bild 02
+→ ...
+→ Bild 10
+→ Ordner 01_bilder-01-bis-10 vollständig prüfen
+→ erst dann Bild 11 beginnen
+```
+
+Verbindlich:
+- immer nur **eine aktive Bildgenerierung** gleichzeitig
+- keine Queue mit mehreren Bildern
+- keine Parallelgenerierung
+- kein „erst alle 10 erzeugen, danach umbenennen“
+- kein „erst alle Bilder erzeugen, danach sortieren“
+- jedes Bild wird **direkt nach seiner Erzeugung** geprüft, umbenannt und abgelegt
+- bei einem fehlerhaften Bild bleibt der Prozess auf derselben Bildnummer, bis sie korrekt ist
+- nach jedem 10er-Paket prüfen: genau die erwarteten Bildnummern, keine Lücke, kein Duplikat, richtige Reihenfolge
+- erst nach bestandenem Paketcheck beginnt der nächste Ordner
+- globale Bildnummerierung niemals zurücksetzen
+- der letzte Ordner darf weniger als 10 Bilder enthalten
+- Bild 00/Thumbnail bleibt separat und zählt nicht in die Pakete
 
 Bei V2 ist die 10er-Struktur **nur Produktionsstruktur**. Sie darf die inhaltlich nötige Gesamtbildzahl nicht künstlich auf 60 festlegen.
 
