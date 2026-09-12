@@ -57,7 +57,7 @@ Vor jeder Themenwahl `THEMEN_HISTORIE.md` prüfen. Keine doppelte Kernfrage in n
 - Hook sofort, kein langer Intro-Block
 - keine Untertitel, kein aktiver Word-Sync
 - **Für neue Reels gibt es keinen Untertitel- oder Word-Sync-Schritt.**
-- `sync:words` bleibt Legacy und gehört nicht in den normalen Workflow
+- `sync:words` gehört nicht zum aktiven Workflow und bleibt ausschließlich Legacy.
 - keine Hintergrundmusik
 - Voice-over 1,10x bei erhaltener Tonhöhe
 - −16 LUFS, höchstens −1,5 dBTP
