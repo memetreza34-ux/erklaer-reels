@@ -99,16 +99,27 @@ Details: `REEL_BILD_AUDIO_ZUORDNUNG.md`.
 
 ### Bildwelt / World-Lock
 
-Ausschließlich **Modern Countryball Explainer** (`modern-countryball-explainer`). Bilder sollen konkrete lebendige Mini-Szenen sein, keine statischen Lernposter.
+Ausschließlich **Serious Minimal Countryball Explainer** (`serious-minimal-countryball-explainer`) für neue Reels. Die alte `modern-countryball-explainer`-Welt ist für neue Produktionen ersetzt. YouTube bleibt unverändert separat.
 
-Vor Bild 01 muss der KI-Agent die eine Projektwelt festsetzen. Danach dürfen Einzelprompts nur Motiv, Handlung, Perspektive und Umgebung ändern — nicht Konturen, Formsprache, Palette, grafische Schatten, Detailgrad, 2D-Rendering, Tiefe oder Charakterlogik.
+Vor Bild 01 setzt der KI-Agent die eine neue Projektwelt fest. Danach dürfen Einzelprompts nur Motiv, Requisiten, Hintergrundfarbe und Perspektive ändern — nicht die künstlerische Welt.
 
-Kugelfiguren sind **optional**:
-- keine winzige dekorative Kugel als Stil-Sticker
-- nur einsetzen, wenn sie Handlung, Reaktion, Vergleich oder Perspektive wirklich trägt
-- bei Anatomie, Mechanismus, Objekt oder physischem Prozess das Fachmotiv ohne Kugel zeigen, wenn es klarer ist
-- Flaggen nur bei geografischer Relevanz
-- keine zufälligen Zungen/Grimassen/Gimmicks ohne inhaltlichen Grund
+Verbindlich:
+- dicke saubere schwarze Konturen
+- flache 2D-Farben, minimale grafische Schatten
+- meist einfache einfarbige/gedämpfte Hintergründe
+- perfekt runde Kugelfiguren, wenn Akteure gebraucht werden
+- keine normalen illustrierten Menschen
+- Flaggen nur bei geografischer/politischer/kultureller Relevanz, sonst neutrale Kugeln
+- keine winzigen dekorativen Kugeln
+- seriöse, reduzierte Mimik
+- 0–3 passende Zusatzobjekte statt dekorativem Füllmaterial
+
+Drei Kompositionsmodi dürfen gemischt werden:
+1. `minimal-symbolic`
+2. `supported-explainer`
+3. `simple-mini-scene`
+
+Dadurch ist nicht jedes Bild nur „Kugel + leerer Hintergrund“: passende Elemente wie Tür, Buch, Thermometer, Spotlight, Grabstein, Maske, Musiknote, Sprechblase, Gehirnsymbol, Karte oder Screen sind erlaubt, wenn sie die Aussage klarer machen. Detaillierte realistische Räume bleiben verboten.
 
 ### Motion — Pflicht
 
@@ -157,13 +168,13 @@ ablegen. Original nicht überschreiben.
 
 `00-bildprompts/99-alle-bildprompts.txt` verwenden.
 
-Vor Bild 01 liest der KI-Agent zuerst den globalen World-Lock und hält ihn für **alle** Bilder fest. Danach streng seriell:
+Vor Bild 01 liest der KI-Agent zuerst den globalen Serious-Minimal-World-Lock und hält ihn für **alle** Bilder fest. Danach streng seriell:
 
 ```text
 1 Bild erzeugen → warten → Inhalt + feste Welt prüfen → Bild NN.png → ablegen → prüfen → nächstes
 ```
 
-Keine Queue und keine Parallelgenerierung. Eine Kugelfigur wird nicht automatisch als Deko ergänzt.
+Keine Queue und keine Parallelgenerierung. Kein normales Menschendesign, keine realistische Umgebung und keine zufälligen Mini-Kugeln akzeptieren.
 
 Bei einem neuen 9-Szenen-V2-Reel werden typischerweise **20 bis 22** Bilder erzeugt; maßgeblich ist die im Projekt tatsächlich geplante Bildanzahl.
 
