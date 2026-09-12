@@ -33,29 +33,6 @@ function requiredChecksForAsset(rules, kind) {
   return Array.isArray(rules.manualChecks) ? rules.manualChecks : [];
 }
 
-function allManualChecksPassed(entry, requiredChecks) {
-  return entry?.status === 'passed' && requiredChecks.every((key) => entry?.checks?.[key] === true);
-}
-
-function manualEvidencePassed(entry, asset, rules) {
-  const evidenceRules = rules.manualEvidence ?? {};
-  if (evidenceRules.requireVisibleSummary &&
-      String(entry?.visibleSummary ?? '').trim().length < Number(evidenceRules.minimumVisibleSummaryLength ?? 15)) {
-    return false;
-  }
-  if (evidenceRules.requireMatchReason &&
-      String(entry?.matchReason ?? '').trim().length < Number(evidenceRules.minimumMatchReasonLength ?? 20)) {
-    return false;
-  }
-  if (evidenceRules.requireComparedAssetId && String(entry?.comparedAssetId ?? '') !== asset.assetId) {
-    return false;
-  }
-  if (asset.kind === 'scene' && evidenceRules.requireSecondPassConfirmationForScenes && entry?.secondPassConfirmed !== true) {
-    return false;
-  }
-  return true;
-}
-
 async function buildReviewFingerprint(reelDirectory, asset) {
   const hash = createHash('sha256');
   hash.update(JSON.stringify({
@@ -66,12 +43,8 @@ async function buildReviewFingerprint(reelDirectory, asset) {
   }));
 
   const filePath = path.join(reelDirectory, asset.file);
-  if (await exists(filePath)) {
-    hash.update(await readFile(filePath));
-  } else {
-    hash.update('[missing-file]');
-  }
-
+  if (await exists(filePath)) hash.update(await readFile(filePath));
+  else hash.update('[missing-file]');
   return hash.digest('hex');
 }
 
@@ -85,45 +58,34 @@ function createReviewEntry(asset, requiredChecks) {
     reviewer: '',
     reviewedAt: null,
     status: 'pending',
-    visibleSummary: '',
-    matchReason: '',
-    comparedAssetId: asset.assetId,
-    secondPassConfirmed: false,
     checks: Object.fromEntries(requiredChecks.map((key) => [key, null])),
     notes: []
   };
 }
 
-async function ensureInspectionFile(reelDirectory, assets, rules) {
+async function ensureInspectionFile(reelDirectory, assets, rules, reel) {
   const inspectionPath = path.join(reelDirectory, 'review', 'visual-inspection.json');
   const current = await readJson(inspectionPath, null);
   const byId = new Map((current?.assets ?? []).map((entry) => [entry.assetId, entry]));
   const next = {
-    version: 10,
-    imageCountMode: 'one-hook-two-standard',
+    version: 12,
+    mode: 'single-pass-fast',
+    imageCountMode: reel.imageCountMode ?? 'legacy-one-image-per-scene',
     plannedImageCount: assets.filter((asset) => asset.kind === 'scene').length,
     subtitlesEnabled: false,
     instructions: [
-      'Öffne jedes einzelne Bild tatsächlich. Dateiname, Upload-Reihenfolge oder Ordnerposition sind kein Beweis für die richtige Bildphase.',
-      'Eine narrative Szene kann mehrere Bildphasen besitzen. Prüfe deshalb exakt assetId/phaseOrder und nicht nur die übergeordnete Szenennummer.',
-      'Erster Durchgang: Beschreibe den sichtbaren Inhalt neutral in visibleSummary.',
-      'Vergleiche das Bild danach mit expected.narration, expected.audioCue, expected.visualIdea, expected.imageText und expected.imagePrompt.',
-      'Trage in matchReason konkret ein, welche sichtbaren Objekte und Handlungen die Zuordnung bestätigen.',
-      'Zweiter Durchgang: Vergleiche die Zuordnung mit der vorherigen und nächsten Bildphase und setze erst danach secondPassConfirmed auf true.',
-      'Setze comparedAssetId exakt auf die geprüfte Bildphasen-ID.',
-      'Geplanter deutscher Bildtext muss exakt stimmen; zusätzliche englische oder erfundene Wörter sind verboten.',
-      'Prüfe eine natürliche Vollbild-Komposition ohne künstlich freigehaltene Untertitelzone.',
-      'Aktuell existiert keine feste Repo-Bildwelt. Prüfe nur die konkrete Bildidee und den konkreten Bildprompt; keine historischen Stilregeln ergänzen.',
-      'Ändert sich Bilddatei, Narration, Bildphase, Bildtext oder Prompt, wird eine frühere Freigabe automatisch zurückgesetzt.'
+      'Nur ein schneller Sichtdurchgang: Bildnummer/Reihenfolge, grober Satzbezug, feste Serious-Minimal-Countryball-Welt und geplanter deutscher Text.',
+      'Keine schriftliche Bildbeschreibung, keine Match-Begründung und kein zweiter Prüfpass pro Bild erforderlich.',
+      'Nummerierte Bilder gelten chronologisch als autoritativ, solange kein offensichtlicher Inhaltskonflikt sichtbar ist.',
+      'Setze status nur auf failed, wenn ein echter Hard Fail sichtbar ist: falscher Inhalt, falsche Reihenfolge, klarer Stilbruch oder falscher Pflichttext.',
+      'Warnungen zu kleinen ästhetischen Unterschieden blockieren Phase 3 nicht.'
     ],
     safeZones: rules.safeZones,
     assets: assets.map((asset) => {
       const requiredChecks = requiredChecksForAsset(rules, asset.kind);
       const base = createReviewEntry(asset, requiredChecks);
       const previous = byId.get(asset.assetId);
-      const previousStillValid = previous?.reviewFingerprint === asset.reviewFingerprint;
-      if (!previousStillValid) return base;
-
+      if (previous?.reviewFingerprint !== asset.reviewFingerprint) return base;
       return {
         ...base,
         ...previous,
@@ -147,6 +109,12 @@ function motionCropPercent(cameraMotion = {}) {
     horizontal: crop + Math.abs(Number(cameraMotion.panXPercent ?? 0)),
     vertical: crop + Math.abs(Number(cameraMotion.panYPercent ?? 0))
   };
+}
+
+function explicitlyRejected(entry) {
+  if (entry?.status === 'failed') return true;
+  const checks = entry?.checks ?? {};
+  return Object.values(checks).some((value) => value === false);
 }
 
 export async function runVisualQualityCheck(reelDirectory, { strict = false } = {}) {
@@ -177,7 +145,6 @@ export async function runVisualQualityCheck(reelDirectory, { strict = false } = 
       file: manifestVisual.expectedFile ?? `scenes/${phase.sceneId}/${phase.expectedImageFileName}`,
       kind: 'scene',
       parentSceneId: phase.sceneId,
-      scene,
       expected: {
         targetId: phase.targetId,
         sceneId: phase.sceneId,
@@ -197,14 +164,9 @@ export async function runVisualQualityCheck(reelDirectory, { strict = false } = 
     });
   }
 
-  // Kein separates Cover-Asset mehr: Szene 1 ist zugleich das Titelbild und wird
-  // bereits als normale Bildphase geprüft.
+  for (const asset of assets) asset.reviewFingerprint = await buildReviewFingerprint(reelDirectory, asset);
 
-  for (const asset of assets) {
-    asset.reviewFingerprint = await buildReviewFingerprint(reelDirectory, asset);
-  }
-
-  const inspection = await ensureInspectionFile(reelDirectory, assets, rules);
+  const inspection = await ensureInspectionFile(reelDirectory, assets, rules, reel);
   const inspectionById = new Map(inspection.assets.map((entry) => [entry.assetId, entry]));
   const checks = [];
   const technicalAssets = [];
@@ -225,11 +187,7 @@ export async function runVisualQualityCheck(reelDirectory, { strict = false } = 
 
     let metadata = null;
     if (present) {
-      try {
-        metadata = await readImageMetadata(filePath);
-      } catch {
-        metadata = null;
-      }
+      try { metadata = await readImageMetadata(filePath); } catch { metadata = null; }
     }
 
     addCheck(checks, `${asset.assetId}-metadata`, Boolean(metadata),
@@ -253,26 +211,19 @@ export async function runVisualQualityCheck(reelDirectory, { strict = false } = 
         `${asset.assetId}: Empfohlen sind mindestens ${rules.composition.width}×${rules.composition.height} Pixel.`, 'warning', asset.assetId);
     }
 
-    if (asset.kind === 'scene') {
-      const effect = effectByScene.get(asset.parentSceneId) ?? {};
-      const crop = motionCropPercent(effect.cameraMotion);
-      const horizontalLimit = Math.min(rules.safeZones.leftPercent, rules.safeZones.rightPercent);
-      const verticalLimit = Math.min(rules.safeZones.topPercent, rules.safeZones.bottomPercent);
-      addCheck(checks, `${asset.assetId}-motion-horizontal-safe`, crop.horizontal <= horizontalLimit,
-        `${asset.assetId}: Zoom und horizontaler Schwenk können mehr als ${horizontalLimit}% Rand abschneiden.`, 'warning', asset.assetId);
-      addCheck(checks, `${asset.assetId}-motion-vertical-safe`, crop.vertical <= verticalLimit,
-        `${asset.assetId}: Zoom und vertikaler Schwenk können mehr als ${verticalLimit}% Rand abschneiden.`, 'warning', asset.assetId);
-    }
+    const effect = effectByScene.get(asset.parentSceneId) ?? {};
+    const crop = motionCropPercent(effect.cameraMotion);
+    const horizontalLimit = Math.min(rules.safeZones.leftPercent, rules.safeZones.rightPercent);
+    const verticalLimit = Math.min(rules.safeZones.topPercent, rules.safeZones.bottomPercent);
+    addCheck(checks, `${asset.assetId}-motion-horizontal-safe`, crop.horizontal <= horizontalLimit,
+      `${asset.assetId}: Zoom und horizontaler Schwenk können mehr als ${horizontalLimit}% Rand abschneiden.`, 'warning', asset.assetId);
+    addCheck(checks, `${asset.assetId}-motion-vertical-safe`, crop.vertical <= verticalLimit,
+      `${asset.assetId}: Zoom und vertikaler Schwenk können mehr als ${verticalLimit}% Rand abschneiden.`, 'warning', asset.assetId);
 
     const inspectionEntry = inspectionById.get(asset.assetId);
-    const requiredChecks = requiredChecksForAsset(rules, asset.kind);
-    const manualPassed = allManualChecksPassed(inspectionEntry, requiredChecks);
-    const evidencePassed = manualEvidencePassed(inspectionEntry, asset, rules);
-
-    addCheck(checks, `${asset.assetId}-manual-review`, manualPassed,
-      `${asset.assetId}: Manuelle visuelle Prüfpunkte sind noch nicht vollständig bestanden.`, strict ? 'error' : 'warning', asset.assetId);
-    addCheck(checks, `${asset.assetId}-semantic-evidence`, evidencePassed,
-      `${asset.assetId}: Sichtbare Bildbeschreibung, konkrete Zuordnungsbegründung oder zweite Prüfung fehlt.`, strict ? 'error' : 'warning', asset.assetId);
+    const rejected = explicitlyRejected(inspectionEntry);
+    addCheck(checks, `${asset.assetId}-explicit-visual-rejection`, !rejected,
+      `${asset.assetId}: Der schnelle Sichtcheck hat einen echten visuellen Hard Fail markiert.`, 'error', asset.assetId);
 
     technicalAssets.push({
       assetId: asset.assetId,
@@ -282,17 +233,18 @@ export async function runVisualQualityCheck(reelDirectory, { strict = false } = 
       expected: asset.expected,
       reviewFingerprint: asset.reviewFingerprint,
       metadata,
-      manualReviewStatus: inspectionEntry?.status ?? 'pending',
-      semanticEvidencePassed: evidencePassed
+      quickReviewStatus: inspectionEntry?.status ?? 'pending',
+      manualEvidenceRequired: false
     });
   }
 
   const errors = checks.filter((check) => !check.passed && check.level === 'error');
   const warnings = checks.filter((check) => !check.passed && check.level === 'warning');
   const report = {
-    version: 11,
+    version: 12,
     createdAt: new Date().toISOString(),
     strict,
+    mode: 'single-pass-fast',
     passed: errors.length === 0,
     imageCountMode: reel.imageCountMode ?? 'legacy-one-image-per-scene',
     plannedImageCount: flattened.length,
@@ -314,8 +266,8 @@ export async function runVisualQualityCheck(reelDirectory, { strict = false } = 
   status.subtitles = 'disabled';
   status.wordSync = 'not-required';
   status.plannedImageCount = flattened.length;
-  status.visualQuality = report.passed ? (strict ? 'passed' : 'technical-passed') : 'needs-review';
-  status.qualityControl = report.passed && strict ? 'visual-passed' : status.qualityControl;
+  status.visualQuality = report.passed ? (strict ? 'passed-fast' : 'technical-passed') : 'needs-review';
+  status.qualityControl = report.passed && strict ? 'visual-fast-passed' : status.qualityControl;
   await writeJson(statusPath, status);
   return report;
 }

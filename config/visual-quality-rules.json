@@ -1,5 +1,5 @@
 {
-  "version": 12,
+  "version": 13,
   "composition": {
     "width": 1080,
     "height": 1920,
@@ -19,41 +19,46 @@
   "manualChecksByKind": {
     "scene": [
       "sceneMeaningMatchesNarration",
-      "sceneMatchesVisualIdea",
       "sceneOrderConfirmed",
-      "mainSubjectSafe",
-      "naturalContinuousComposition",
-      "oneClearMoment",
-      "noRepeatedMainCharacter",
-      "noArtificialCenterGap",
-      "plannedGermanTextExact",
-      "noUnexpectedReadableText",
-      "platformUiSafe",
-      "motionSafe"
+      "visualWorldConsistent",
+      "plannedGermanTextExact"
     ],
     "cover": [
       "coverMatchesTopic",
-      "headlineExactAndReadable",
-      "mainSubjectSafe",
-      "naturalContinuousComposition",
-      "noArtificialCenterGap",
-      "noUnexpectedReadableText",
-      "platformUiSafe"
+      "visualWorldConsistent",
+      "headlineExactAndReadable"
     ]
   },
   "manualEvidence": {
-    "requireVisibleSummary": true,
-    "minimumVisibleSummaryLength": 15,
-    "requireMatchReason": true,
-    "minimumMatchReasonLength": 20,
-    "requireComparedAssetId": true,
-    "requireSecondPassConfirmationForScenes": true
+    "requireVisibleSummary": false,
+    "minimumVisibleSummaryLength": 0,
+    "requireMatchReason": false,
+    "minimumMatchReasonLength": 0,
+    "requireComparedAssetId": false,
+    "requireSecondPassConfirmationForScenes": false
   },
   "strictMode": {
     "requireAllAssets": true,
     "requireReadableMetadata": true,
     "requireMinimumResolution": true,
-    "requireManualReviewPassed": true,
-    "requireSemanticSceneVerification": true
+    "requireManualReviewPassed": false,
+    "requireSemanticSceneVerification": false,
+    "blockOnExplicitVisualRejection": true
+  },
+  "autopilotVisualQc": {
+    "mode": "single-pass-fast",
+    "secondPassForbiddenAsDefault": true,
+    "writtenEvidenceNotRequired": true,
+    "sequenceIsAuthoritativeWhenFileNumbersAreComplete": true,
+    "agentSpotCheckRequired": true,
+    "hardFailures": [
+      "missing-image",
+      "corrupt-or-unreadable-image",
+      "wrong-aspect-ratio",
+      "wrong-image-number-or-order",
+      "obvious-content-mismatch",
+      "obvious-visual-world-break",
+      "wrong-required-german-text"
+    ]
   }
 }

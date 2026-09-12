@@ -1,24 +1,38 @@
-# Reel Bild↔Audio-Zuordnung — verbindliche Phase-3-Regel
+# Reel Bild↔Audio-Zuordnung — vereinfachte Phase-3-Regel
 
-Diese Datei gilt ausschließlich für **Reels**. YouTube hat seine eigene Regel unter `youtube/YOUTUBE_WORKFLOW.md`.
+Diese Datei gilt nur für **Reels**. YouTube bleibt unter `youtube/YOUTUBE_WORKFLOW.md` separat.
 
 ## Ziel
 
-Antigravity darf nicht selbst schätzen, welcher gesprochene Satz zu welchem Bild gehört. Für jedes Reel wird deshalb in Phase 1 eine kanonische Datei erzeugt:
+Für jedes Reel existiert weiterhin:
 
 ```text
 99-technik/BILD_AUDIO_ZUORDNUNG.json
 ```
 
-Sie ordnet **jeden einzelnen Bildmoment exakt einem gesprochenen Satz oder Satzabschnitt** zu.
+Sie legt vor Phase 2 bereits fest:
+- Bildnummer
+- Szene/Phase
+- exakten `spokenText`-Bereich
+- Start-/Endanker
+- Reihenfolge
 
-Bei einem Standard-Reel mit 9 Szenen sind das 17 Einträge:
-- Szene 1 / Hook: 1 Bildmoment
-- Szene 2–9: jeweils 2 Bildmomente
+Damit muss Antigravity in Phase 3 **nicht mehr neu entscheiden**, welcher Satz zu welchem Bild gehört.
 
-## Inhalt pro Bildmoment
+## Adaptive Dense V2
 
-Jeder Mapping-Eintrag enthält mindestens:
+Für neue Reels sind typischerweise etwa 19–24 Bildmomente vorgesehen, abhängig von 8–10 Szenen. Es gibt keine alte feste 17-Bilder-Regel mehr.
+
+Richtwerte:
+- 8 Szenen → 19–21 Bilder
+- 9 Szenen → 20–22 Bilder
+- 10 Szenen → 21–24 Bilder
+
+Die technische Mindestdauer pro Bildphase liegt bei ca. **2,2 s**, häufig sinnvoll sind etwa 2,5–3,8 s. Die frühere pauschale 3,0-s-Mindestregel ist aufgehoben.
+
+## Phase 1 — ChatGPT
+
+ChatGPT definiert vorab für jeden Bildmoment:
 
 ```text
 globalImageNumber
@@ -31,105 +45,95 @@ endAnchor
 existingAudioCue
 timingRole
 cutLeadSeconds
-actualStartSeconds
-actualEndSeconds
-alignmentConfidence
 ```
 
-### `spokenText`
+Die Bereiche müssen vollständig, chronologisch und ohne Lücken sein.
 
-Das ist der **exakte Textbereich**, der zu diesem Bild gehört.
+## Phase 2 — Nutzer
 
-Beispiel:
+Der Nutzer erzeugt Voice-over und Bilder. Die Bildnummern bleiben verbindlich:
 
 ```text
-Bild 05
-spokenText:
-„Der Körper reagiert zuerst automatisch. Dein Gehirn bewertet die Situation erst danach.“
+Bild 01.png
+Bild 02.png
+...
 ```
-
-Antigravity darf Bild 05 nicht schon beim vorherigen Satz zeigen und auch nicht bis weit in den nächsten Satz stehen lassen.
-
-### `startAnchor`
-
-Gesprochene Wörter, an denen der Bildbereich im finalen Voice-over eindeutig gefunden wird.
-
-### `endAnchor`
-
-Beginn des nächsten Bildbereichs bzw. der nächsten Szene. Beim letzten Bild gilt `VOICEOVER_END`.
-
-### `actualStartSeconds` / `actualEndSeconds`
-
-Diese Werte bleiben in Phase 1 leer (`null`). Sie dürfen erst in **Phase 3** anhand des tatsächlich optimierten Voice-overs gesetzt werden.
-
-## Phase 1 — ChatGPT
-
-ChatGPT muss vor Übergabe an Phase 2 sicherstellen:
-
-1. Jede Szene hat eine eindeutige Narration.
-2. Jede zweite Bildphase einer Standardszene besitzt ein `audioCue`, das tatsächlich in der Narration vorkommt.
-3. Die Narration wird anhand dieses Cues in zwei logische Sprachbereiche geteilt.
-4. Jeder Bildmoment erhält exakt einen `spokenText`-Bereich.
-5. Die Zuordnungen überlappen nicht und lassen keinen gesprochenen Text zwischen zwei Bildmomenten unzugeordnet.
-6. `99-technik/BILD_AUDIO_ZUORDNUNG.json` wird erzeugt.
-
-Der normale Paketimport erzeugt diese Datei automatisch.
-
-## Phase 2 — Arman
-
-Die Zuordnung wird nicht verändert. Arman erzeugt:
-- echtes Voice-over
-- die vorgesehenen Bilder
-
-Die Bildnummern müssen zur globalen Reihenfolge passen (`Bild 01.png`, `Bild 02.png` usw.).
 
 ## Phase 3 — Antigravity
 
-Das **final optimierte Voice-over ist die Masterspur**.
+Das final optimierte Voice-over ist die Masterspur.
 
-Antigravity arbeitet zwingend in dieser Reihenfolge:
-
-1. `99-technik/BILD_AUDIO_ZUORDNUNG.json` lesen.
-2. Finales Voice-over laden und erst vollständig optimieren: Pausen, 1,10x, Loudness, Endstille.
-3. Für jeden Eintrag `startAnchor` und `endAnchor` im **finalen** Audio auflösen.
-4. Tatsächliche Zeiten als `actualStartSeconds` und `actualEndSeconds` bestimmen.
-5. Prüfen, dass `spokenText` in genau diesem Audiobereich gesprochen wird.
-6. Erst danach die Bildtimeline bauen.
-7. Szenenbild minimal vor seinem echten Szenenbeginn sichtbar machen: Ziel ca. **0,10 s vorher**.
-8. Interne zweite Bildphase minimal vor ihrem echten Sprachanker sichtbar machen: Ziel ca. **0,08 s vorher**.
-9. Mindestdauer von 3,0 s pro Bildphase bleibt ein Hard Gate; bei Konflikt darf nicht blind verschoben werden, sondern die Zuordnung muss geprüft werden.
-10. SFX ca. 0,04 s vor dem sichtbaren Cut setzen.
-
-## Nicht erlaubt
-
-Antigravity darf nicht:
-- Bilder pauschal alle X Sekunden wechseln
-- nur nach Prozentwerten schneiden
-- `startPercent` als finale Wahrheit behandeln
-- einen Bildwechsel nach Gefühl vorziehen oder verspäten
-- einen nicht gefundenen Anchor raten
-- einen Satz einem anderen Bild zuordnen, nur damit die Dauer besser aussieht
-- alte oder fremde Bilder als Ersatz verwenden
-
-## Unsichere Zuordnung
-
-Wenn ein Anchor im Audio nicht eindeutig gefunden wird oder der erkannte Bereich nicht zum `spokenText` passt:
+Normaler Simple-Mode:
 
 ```text
-STOP → Zuordnung prüfen → nicht raten
+Voice-over optimieren
+→ finale Audiodauer messen
+→ BILD_AUDIO_ZUORDNUNG.json lesen
+→ auto-align:reel ausführen
+→ Timeline bauen
+→ finalen Render kurz prüfen
 ```
 
-`alignmentConfidence` bleibt solange leer oder wird als unsicher markiert. Erst nach eindeutiger Prüfung darf der Timeline-Schritt fortgesetzt werden.
+Befehl:
+
+```bash
+npm run auto-align:reel -- --dir "<reel>"
+```
+
+### Was Auto-Alignment macht
+
+Die bereits feste Bild-/Satz-Reihenfolge bleibt unangetastet. Die Startzeiten werden monoton aus der finalen Audiodauer und dem Gewicht der jeweiligen `spokenText`-Bereiche geschätzt. Satzzeichen bekommen kleine Zusatzgewichte, damit natürliche Pausen etwas besser berücksichtigt werden.
+
+Das Ergebnis wird in:
+- `BILD_AUDIO_ZUORDNUNG.json`
+- `timeline/audio-sync.json`
+
+geschrieben.
+
+Die Methode ist ein **automatischer Grundwert**, kein Grund für Rückfragen.
+
+## Schnittregeln
+
+- Szenencut etwa 0,10 s vor dem Sprachbeginn der neuen Szene
+- interner Bildcut etwa 0,08 s vor dem zugeordneten Sprachbeginn
+- SFX etwa 0,04 s vor dem sichtbaren Cut
+- technische Mindestdauer ca. 2,2 s
+- keine starren gleich langen Bildblöcke
+
+## Wann Antigravity nicht fragen soll
+
+Keine Rückfrage, wenn:
+- Bildnummern vollständig und eindeutig sind
+- Script und Voice-over in derselben Reihenfolge verlaufen
+- ein exakter Anchor nicht wortgenau gefunden wird, die chronologische Zuordnung aber klar bleibt
+- nur ein einzelner Cut nach dem Auto-Alignment leicht korrigiert werden muss
+
+Dann gilt:
+
+```text
+Auto-Alignment verwenden
+→ finalen Render ansehen
+→ auffällige Cuts selbst korrigieren
+→ erneut rendern
+```
+
+## Wann wirklich blockieren
+
+Nur wenn:
+- ein Bild fehlt oder doppelt ist und die Zuordnung nicht eindeutig lösbar ist
+- das Voice-over ganze Sätze auslässt, ergänzt oder stark umstellt
+- Bild und `spokenText` offensichtlich nicht zusammenpassen
+- die chronologische Reihenfolge nicht mehr rekonstruierbar ist
+
+Dann nicht raten.
 
 ## Finale QC
 
-Vor Render muss für jeden Bildmoment gelten:
-- Bildnummer korrekt
-- `spokenText` passt zum sichtbaren Bild
-- Start-/Endzeit aus finalem Audio abgeleitet
-- kein Bild wechselt erkennbar zu früh oder zu spät
-- keine Lücke zwischen zwei Sprachbereichen
-- keine ungewollte Überlappung
-- interne und Szenen-Cuts folgen ihren realen Audioankern
+Vor Abschluss reicht ein schneller Endcheck:
+- Bildreihenfolge stimmt
+- offensichtlicher Satz↔Bild-Bezug stimmt
+- kein Cut fällt sichtbar grob zu früh oder zu spät
+- kein langer statischer oder schwarzer Nachlauf
+- Audio bleibt dominant
 
-Die Mapping-Datei ist damit die inhaltliche Brücke zwischen **Script → Bild → echtem Voice-over → Timeline**.
+Die Mapping-Datei bleibt die Brücke **Script → Bild → Audio → Timeline**, aber Phase 3 soll sie automatisch nutzen statt jeden einzelnen Anchor mit dem Nutzer zu diskutieren.

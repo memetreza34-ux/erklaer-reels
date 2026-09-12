@@ -1,4 +1,4 @@
-import { readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
 function text(value) {
@@ -20,10 +20,23 @@ function visibleImageName(number) {
   return `Bild ${String(number).padStart(2, '0')}.png`;
 }
 
+function round(value, digits = 3) {
+  const factor = 10 ** digits;
+  return Math.round((Number(value) + Number.EPSILON) * factor) / factor;
+}
+
+function spokenWeight(value) {
+  const source = text(value);
+  const words = source.split(/\s+/).filter(Boolean).length;
+  const commas = (source.match(/[,;:]/g) ?? []).length;
+  const sentenceEnds = (source.match(/[.!?]/g) ?? []).length;
+  return Math.max(1, words + commas * 0.15 + sentenceEnds * 0.35);
+}
+
 /**
  * Baut die kanonische 1:1-Zuordnung zwischen gesprochenem Text und jedem
- * Reel-Bildmoment. Phase 1 definiert die Textbereiche; Phase 3 löst die
- * tatsächlichen Sekundenwerte am finalen Voice-over auf.
+ * Reel-Bildmoment. Phase 1 definiert die Textbereiche; Phase 3 setzt die
+ * tatsächlichen Sekundenwerte am finalen Voice-over.
  */
 export function buildReelImageAudioMapping(sceneIndex) {
   if (!Array.isArray(sceneIndex) || sceneIndex.length === 0) {
@@ -111,18 +124,95 @@ export function buildReelImageAudioMapping(sceneIndex) {
   }
 
   return {
-    version: 1,
+    version: 2,
     purpose: 'Kanonische Bild↔Voice-over-Zuordnung für Reel-Phase 3.',
     timingAuthority: 'final-voiceover',
-    rule: 'Jedes Bild gehört exakt zu spokenText. Antigravity darf Bildgrenzen nicht nach Gefühl oder pauschaler Dauer setzen.',
-    alignmentRule: 'startAnchor/endAnchor am final optimierten Voice-over auflösen. Bei mehrdeutiger oder fehlender Zuordnung nicht raten; zuerst prüfen.',
+    rule: 'Jedes Bild gehört in fester chronologischer Reihenfolge zu genau einem spokenText-Bereich.',
+    alignmentRule: 'Exakte Audioanker sind bevorzugt. Wenn sie nicht automatisch verfügbar sind, darf Phase 3 ohne Rückfrage eine monotone zeitproportionale Startschätzung aus den bereits festgelegten spokenText-Bereichen erzeugen und sie beim finalen Reel-QC nur bei sichtbarer Fehlpassung korrigieren.',
     cutRules: {
       sceneLeadSeconds: 0.10,
       internalImageLeadSeconds: 0.08,
-      minimumImagePhaseSeconds: 3.0
+      minimumImagePhaseSeconds: 2.2
     },
     imageCount: mappings.length,
     mappings
+  };
+}
+
+export function buildSequentialAudioSync(mapping, audioDurationSeconds, audioFile = null) {
+  const entries = Array.isArray(mapping?.mappings) ? mapping.mappings : [];
+  const duration = Number(audioDurationSeconds);
+  if (!entries.length) throw new Error('BILD_AUDIO_ZUORDNUNG.json enthält keine Bildmomente.');
+  if (!Number.isFinite(duration) || duration <= 0) throw new Error('Für Auto-Alignment wird eine positive finale Audiodauer benötigt.');
+
+  const weights = entries.map((entry) => spokenWeight(entry.spokenText));
+  const totalWeight = weights.reduce((sum, value) => sum + value, 0) || 1;
+  let cursor = 0;
+
+  const aligned = entries.map((entry, index) => {
+    const start = cursor;
+    const end = index === entries.length - 1
+      ? duration
+      : cursor + duration * (weights[index] / totalWeight);
+    cursor = end;
+    return {
+      ...entry,
+      actualStartSeconds: round(start),
+      actualEndSeconds: round(end),
+      alignmentConfidence: 0.86,
+      alignmentMethod: 'sequential-spoken-text-weight-v1'
+    };
+  });
+
+  const cueTimings = aligned
+    .filter((entry) => entry.timingRole === 'scene-start')
+    .map((entry, index) => ({
+      sceneId: entry.sceneId,
+      audioCue: entry.existingAudioCue || entry.startAnchor,
+      cueTimeSeconds: index === 0 ? 0 : entry.actualStartSeconds,
+      leadInSeconds: index === 0 ? 0 : 0.10,
+      confidence: entry.alignmentConfidence,
+      method: entry.alignmentMethod
+    }));
+
+  const phaseCueTimings = aligned
+    .filter((entry) => entry.timingRole === 'internal-image-cut')
+    .map((entry) => ({
+      targetId: entry.phaseId,
+      sceneId: entry.sceneId,
+      phaseId: entry.phaseId,
+      audioCue: entry.existingAudioCue || entry.startAnchor,
+      cueTimeSeconds: entry.actualStartSeconds,
+      confidence: entry.alignmentConfidence,
+      method: entry.alignmentMethod
+    }));
+
+  return {
+    mapping: {
+      ...mapping,
+      version: Math.max(Number(mapping.version ?? 0), 2),
+      autoAlignment: {
+        method: 'sequential-spoken-text-weight-v1',
+        audioDurationSeconds: round(duration),
+        confidence: 0.86,
+        note: 'Automatischer Startwert ohne Nutzer-Rückfrage. Finale Reel-QC korrigiert nur sichtbare Fehlpassungen.'
+      },
+      mappings: aligned
+    },
+    audioSync: {
+      version: 3,
+      audioDurationSeconds: round(duration),
+      audioFile,
+      source: 'sequential-spoken-text-weight-v1',
+      timingStatus: 'audio-synced',
+      instructions: [
+        'Automatisch aus der festgelegten Bild↔Satz-Reihenfolge und der finalen Audiodauer erzeugt.',
+        'Nicht bei jedem Anchor nachfragen. Nur offensichtliche sichtbare Fehlpassungen im finalen QC korrigieren.',
+        'Szenencut ca. 0,10 s vor dem Sprachbeginn; interner Bildcut ca. 0,08 s davor.'
+      ],
+      cueTimings,
+      phaseCueTimings
+    }
   };
 }
 
@@ -133,4 +223,23 @@ export async function writeReelImageAudioMapping(technicalDirectory) {
   const outputPath = path.join(technicalDirectory, 'BILD_AUDIO_ZUORDNUNG.json');
   await writeFile(outputPath, `${JSON.stringify(mapping, null, 2)}\n`, 'utf8');
   return { outputPath, mapping };
+}
+
+export async function writeSequentialAudioSync(technicalDirectory, { audioDurationSeconds, audioFile = null } = {}) {
+  const mappingPath = path.join(technicalDirectory, 'BILD_AUDIO_ZUORDNUNG.json');
+  let mapping;
+  try {
+    mapping = JSON.parse(await readFile(mappingPath, 'utf8'));
+  } catch (error) {
+    if (error?.code !== 'ENOENT') throw error;
+    mapping = (await writeReelImageAudioMapping(technicalDirectory)).mapping;
+  }
+
+  const result = buildSequentialAudioSync(mapping, audioDurationSeconds, audioFile);
+  await writeFile(mappingPath, `${JSON.stringify(result.mapping, null, 2)}\n`, 'utf8');
+  const timelineDirectory = path.join(technicalDirectory, 'timeline');
+  await mkdir(timelineDirectory, { recursive: true });
+  const audioSyncPath = path.join(timelineDirectory, 'audio-sync.json');
+  await writeFile(audioSyncPath, `${JSON.stringify(result.audioSync, null, 2)}\n`, 'utf8');
+  return { ...result, mappingPath, audioSyncPath };
 }

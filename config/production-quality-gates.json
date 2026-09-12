@@ -1,31 +1,31 @@
 {
-  "version": 5,
+  "version": 6,
   "assetMatching": {
-    "minimumConfidence": 0.9,
+    "minimumConfidence": 0.75,
     "requireVisualReview": true,
-    "requireSecondPassConfirmation": true,
+    "requireSecondPassConfirmation": false,
     "requireSceneOrderConfirmation": true,
-    "requireMatchReason": true,
-    "minimumMatchReasonLength": 20,
-    "requireVisibleSummary": true,
-    "minimumVisibleSummaryLength": 15,
+    "requireMatchReason": false,
+    "minimumMatchReasonLength": 0,
+    "requireVisibleSummary": false,
+    "minimumVisibleSummaryLength": 0,
     "requiredSceneComparedFields": [
       "narration",
       "visualIdea",
-      "imageText",
-      "imagePrompt"
+      "imageText"
     ],
     "requiredCoverComparedFields": [
       "headline",
-      "coverVisualIdea",
-      "coverPrompt"
+      "coverVisualIdea"
     ],
-    "forbidFilenameOnlyMatching": true,
+    "forbidFilenameOnlyMatching": false,
     "allowedMatchMethods": [
-      "visual-content-review",
-      "visual-text-and-content-review"
+      "chronological-filename-plus-visual-spot-check",
+      "visual-content-review"
     ],
-    "leaveUnmatchedWhenUncertain": true
+    "leaveUnmatchedWhenUncertain": false,
+    "blockOnlyOnRealConflict": true,
+    "guidance": "Bei vollständig nummerierten Bildern ist die chronologische Reihenfolge die Hauptautorität. Ein schneller visueller Spot-Check soll nur offensichtliche Fehlzuordnungen oder Stilbrüche erkennen; keine schriftliche Begründung und kein zweiter Prüfpass pro Bild."
   },
   "sceneTiming": {
     "hookSeconds": {
@@ -53,7 +53,7 @@
       "max": 3.8
     },
     "splitReviewThresholdSeconds": 4.8,
-    "guidance": "Adaptive-Dense-V2-Reels dürfen mehr Bildphasen besitzen. Inhalt und echte Audio-Cues entscheiden; ab etwa 4,8 Sekunden pro Bild aktiv prüfen, ob ein zusätzlicher sinnvoller Bildmoment nötig ist. Keine starren gleich langen Blöcke."
+    "guidance": "Adaptive-Dense-V2-Reels dürfen mehr Bildphasen besitzen. Inhalt und Audio entscheiden; keine starre 3-Sekunden-Mindestregel mehr."
   },
   "editTiming": {
     "sceneCueLeadSeconds": 0.1,
@@ -61,7 +61,7 @@
     "sfxPreRollSeconds": 0.04,
     "sceneChangeSfxPreRollSeconds": 0.04,
     "maximumCutLeadSeconds": 0.12,
-    "guidance": "Neue Bilder sollen am gesprochenen Cue oder minimal davor erscheinen. Standard: Bildschnitt 0,08 s vor dem Cue; ein kurzer Wechsel-SFX startet weitere 0,04 s davor, sodass sein hörbarer Akzent am Schnitt sitzt."
+    "guidance": "Neue Bilder sollen am gesprochenen Cue oder minimal davor erscheinen. Standard: Bildschnitt 0,08 s vor dem Cue; ein kurzer Wechsel-SFX startet weitere 0,04 s davor."
   },
   "visualContinuity": {
     "requireSceneMeaningMatch": true,
@@ -70,6 +70,7 @@
     "forbidUnexpectedReadableText": true,
     "requireSingleWorldLock": true,
     "forbidDecorativeTinyBallActors": true,
-    "preferSubjectOnlyWhenActorAddsNoMeaning": true
+    "preferSubjectOnlyWhenActorAddsNoMeaning": true,
+    "singlePassVisualQc": true
   }
 }

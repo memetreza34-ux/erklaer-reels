@@ -13,7 +13,7 @@ async function main() {
   const asJson = process.argv.includes('--json');
 
   if (!reelDirectory) {
-    console.log('Verwendung: npm run check:visuals -- --dir "content/.../reel-01_titel" [--strict] [--json]');
+    console.log('Verwendung: npm run check:visuals -- --dir "reels/.../reel-01_titel" [--strict] [--json]');
     process.exitCode = 1;
     return;
   }
@@ -22,12 +22,13 @@ async function main() {
   if (asJson) {
     console.log(JSON.stringify(report, null, 2));
   } else {
-    console.log(`Bilder geprüft: ${report.summary.assetsChecked}`);
+    console.log(`Bilder technisch geprüft: ${report.summary.assetsChecked}`);
     console.log(`Fehler: ${report.summary.failedChecks}`);
     console.log(`Warnungen: ${report.summary.warnings}`);
     console.log(`Ergebnis: ${report.passed ? 'bestanden' : 'nicht bestanden'}`);
+    console.log('QC-Modus: single-pass-fast');
     console.log('Bericht: review/visual-quality-report.json');
-    console.log('Manuelle Prüfliste: review/visual-inspection.json');
+    console.log('Optionaler Schnellcheck: review/visual-inspection.json');
   }
 
   if (!report.passed) process.exitCode = 1;
