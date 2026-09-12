@@ -1,0 +1,166 @@
+# ALLE BILDPROMPTS — Was ist Föderalismus?
+
+Format: 9:16 · Serious Minimal Countryball Explainer · Adaptive Dense V2 · 20 Bildmomente
+
+## VERBINDLICHER WORLD-LOCK FÜR ALLE 20 BILDER
+
+Vor Bild 01 diese eine Bildwelt einmal festsetzen und danach für das komplette Reel unverändert beibehalten.
+
+**Fixed visual world:** `serious-minimal-countryball-explainer`
+
+Create every image in ONE fixed clean, serious, minimal 2D countryball-style explainer universe for vertical 9:16 Reels.
+
+CORE LOOK:
+- thick, clean black outlines with consistent line weight
+- flat, controlled 2D colours with only light graphic shading
+- low-to-medium detail, never empty but never cluttered
+- perfectly round countryball-like actors when a country, state or political actor is useful
+- simple white eyes, restrained serious expressions, no goofy facial gimmicks
+- flags and flag colours are allowed here because geography and political identity are directly relevant
+- maps, borders, documents, ballot boxes, parliament buildings, school objects, police symbols, arrows and simple institutional props may be used when they strengthen the spoken idea
+- backgrounds should usually be solid or muted colour fields, subtle gradients, simplified map textures or very simple contextual environments
+- one dominant visual idea per image, supported by 0 to 3 meaningful elements
+- strong smartphone readability within about one second
+- naturally alternate between `minimal-symbolic`, `supported-explainer` and `simple-mini-scene`
+
+IMPORTANT:
+Do NOT make every frame only a ball on an empty background. Political and geographic explanations should use the visual strengths of this world: countryballs, Germany map silhouettes, Bundesland divisions, government buildings, law documents, arrows, border lines, school objects and institutional symbols. Every supporting element must have a direct explanatory purpose.
+
+CONSISTENCY RULE:
+The topic, camera angle, background colour and props may change. The art world may not change. Keep the same line weight, eye design, round geometry, flat colour logic, restrained shading, typography treatment and seriousness across all 20 images.
+
+STRICTLY FORBIDDEN:
+normal illustrated humans, humanoid cartoon people, stick figures, photorealism, realistic faces or hands, realistic detailed interiors, photography, mixed media, anime, manga, clay, glossy 3D/Pixar, stock-photo aesthetics, childish mascot posing, random tongue faces, tiny decorative balls, busy UI dashboards, giant icon clouds, watermarks, logos that are not necessary to explain the institution, and pseudo-writing.
+
+TEXT RULE:
+Visible text is German only and only when explicitly requested below. Use bold, clean, high-contrast uppercase sans-serif lettering with a strong outline when text is requested. If no text is requested, generate no readable text.
+
+## PRODUKTIONSABLAUF FÜR FLOW
+
+Streng seriell arbeiten:
+
+`Bild 01 erzeugen → vollständig warten → Inhalt + Bildwelt prüfen → exakt als Bild 01.png benennen → ablegen → Ablage prüfen → erst dann Bild 02`
+
+So bis Bild 20. Nie mehrere Bilder gleichzeitig starten. Bei einem fehlerhaften Bild auf derselben Bildnummer bleiben und neu erzeugen. Keine Queue, kein Batch, keine Parallelgenerierung.
+
+---
+
+## Bild 01
+Dateiname: `Bild 01.png`
+Satzbezug: „Was ist Föderalismus? Einfach erklärt: Macht liegt nicht nur in einer Hauptstadt.“
+
+Create a strong vertical 9:16 opening frame in the Serious Minimal Countryball Explainer world. Use a muted dark-blue background with a subtle paper-like texture. Place a LARGE Germany countryball in the lower center, clearly recognizable through the black-red-gold colour pattern, but keep the expression serious and neutral. Above it, show one oversized government-building silhouette in the capital area, then visually split the political power away from that single point using several clean branching lines toward different regions of a simplified Germany map behind the character. Add exactly the German headline `WAS IST FÖDERALISMUS?` in bold white uppercase with a thick black outline in the upper third. The image must immediately communicate that power is not concentrated only in one capital. Keep the map and branching lines simple, readable and integrated into the same flat 2D style. No extra text, no realistic cityscape, no tiny decorative balls.
+
+## Bild 02
+Dateiname: `Bild 02.png`
+Satzbezug: „In einem Bundesstaat teilen sich Gesamtstaat und Gliedstaaten Aufgaben.“
+
+Create a clean political-system explainer composition in exactly the same visual world. Use a muted teal background. Show one LARGE Germany countryball at the top-left representing the federal level and three LARGE simplified regional/state balls below and to the right representing constituent states. Do not use random flags on the state balls; instead use distinct solid colours with small simple shield-like marks so they read as subnational units without becoming visually noisy. Between the federal and state level, place three clear task cards represented only by symbols: a document, a school book and a small government building. Split these task symbols between the upper and lower level using clean black dividing lines. The composition should feel like political responsibility being deliberately shared, not like one side controlling the other. Add exactly the German text `GETEILTE AUFGABEN` once. No other readable text, no UI-dashboard look, no realistic people.
+
+## Bild 03
+Dateiname: `Bild 03.png`
+Satzbezug: „Deutschland besteht deshalb aus dem Bund und 16 Bundesländern.“
+
+Create a geography-focused vertical 9:16 explainer image. Use a warm muted beige background. Make a large simplified map of Germany the dominant object, divided visibly into 16 clean internal regions with thick black borders. Do not attempt realistic cartographic detail; keep the silhouette unmistakable but simple. Above the map place one compact black-red-gold Germany countryball representing the Bund. Around the map edges, use a few larger representative state markers rather than sixteen tiny decorative balls; the 16-region division itself must carry the main explanation. Add exactly the German headline `BUND + 16 LÄNDER` in bold high-contrast lettering near the top. Use subtle colour variation between the internal regions so the federal structure is obvious at a glance. No city labels, no pseudo-text, no realistic map textures, no crowded icons.
+
+## Bild 04
+Dateiname: `Bild 04.png`
+Satzbezug: „Beide Ebenen haben eigene Zuständigkeiten, die das Grundgesetz verteilt.“
+
+Create a serious symbolic legal explainer frame in the same style. Use a muted burgundy background. Show a LARGE open illustrated book in the center labelled only with the exact German title `GRUNDGESETZ` on its cover edge. From the left page, one thick arrow leads upward to a Germany countryball and a federal-building symbol. From the right page, another thick arrow leads downward to a simplified Germany map divided into state regions and a state-parliament symbol. The purpose is to show that constitutional rules distribute competences between the federal and state levels. Keep the book, arrows, buildings and balls all in the same thick-outline flat 2D language. Avoid scales of justice unless needed; the book itself should be the dominant symbol. No long text blocks, no fake paragraphs, no realistic legal-document texture.
+
+## Bild 05
+Dateiname: `Bild 05.png`
+Satzbezug: „Der Bund entscheidet zum Beispiel über die Außenpolitik.“
+
+Create a vertical 9:16 supported-explainer frame in the same fixed world. Use a muted deep green background. Place a LARGE Germany countryball in the center-left behind a simple federal government desk. On the right, show three large foreign-policy symbols arranged as a coherent mini-scene rather than an icon grid: a globe, two simplified foreign countryballs facing Germany across a table, and one treaty document between them. The Germany ball should appear calm and diplomatic, not aggressive. Add exactly the German text `AUSSENPOLITIK: BUND` near the top. Keep the foreign countryballs large enough to read as intentional actors, but use only two so the scene stays clean. No weapons, no military drama, no realistic diplomats, no flags unless they are simple and relevant.
+
+## Bild 06
+Dateiname: `Bild 06.png`
+Satzbezug: „Die Länder prägen dagegen Bereiche wie Schule und Polizei.“
+
+Create a vertical 9:16 political-responsibility explainer frame using the same art world. Use a muted orange background. Show one LARGE neutral state-level ball in the center, with a simple small state-parliament building behind it. Place a school book and pencil on one side and a simplified police badge and patrol-car silhouette on the other. These props should be large, clean and visually balanced, showing that the Länder shape these areas. Do not use realistic police uniforms or people. Keep the state ball serious and purposeful. Add exactly the German text `SCHULE • POLIZEI` once in bold white lettering with black outline. The background should remain simple; no full classroom, no realistic police station, no extra labels.
+
+## Bild 07
+Dateiname: `Bild 07.png`
+Satzbezug: „Darum können Schulregeln zwischen Bundesländern unterschiedlich sein.“
+
+Create a clear comparison frame in the same world. Use a muted blue-grey background split softly into left and right halves. On the left, show one LARGE state ball beside a school desk, a book and one grading paper with a simple symbolic checkmark. On the right, show a different LARGE state ball beside a similar desk but with a visibly different school-paper layout and a different coloured timetable card. The two sides must feel like the same school system category but with different rules, not like completely different countries. Add exactly the German headline `ANDERE SCHULREGELN` at the top. Keep all paper marks symbolic with no fake readable writing. No tiny students, no realistic classroom, no clutter.
+
+## Bild 08
+Dateiname: `Bild 08.png`
+Satzbezug: „Die Länder wirken außerdem über den Bundesrat an Bundesgesetzen mit.“
+
+Create a strong institutional mini-scene in the fixed Serious Minimal Countryball world. Use a dark muted red background inspired by a parliamentary chamber. Show a simplified curved Bundesrat-style chamber in the lower half, with several LARGE state balls seated in a broad arc. In front of them, place one large federal law document moving into the chamber from the left, and a clear collective voting gesture represented by raised simple paddles or hands. Do not crowd the frame with sixteen tiny balls; use five or six large representative state actors to symbolize the Länder collectively. Add exactly the German text `BUNDESRAT` once near the top. The scene should immediately communicate that state governments participate in federal legislation. No realistic politicians, no photo-like parliament interior, no party logos.
+
+## Bild 09
+Dateiname: `Bild 09.png`
+Satzbezug: „Föderalismus teilt politische Macht also auf mehrere Ebenen.“
+
+Create a clean vertical hierarchy frame with a muted dark-purple background. Build the composition around two large horizontal levels: `BUND` at the upper level and `LÄNDER` at the lower level, using only those exact German words. Place a LARGE Germany countryball on the upper level and three LARGE state balls on the lower level. A thick vertical line between them should split into balanced branches, showing that power is distributed rather than flowing only downward. Add one simple parliament-building symbol at each level to reinforce independent political institutions. Keep the composition graphic and serious, like a political diagram transformed into this Countryball world, not like a sterile infographic board. No extra text, no arrows suggesting command from top to bottom.
+
+## Bild 10
+Dateiname: `Bild 10.png`
+Satzbezug: „So soll nicht jede Entscheidung an einer Stelle fallen.“
+
+Create a symbolic anti-centralization frame in the same world. Use a muted charcoal-blue background. On the left, show one oversized single government building with many decision documents piling up in front of it, visually heavy and congested. On the right, show the same stack of decisions split cleanly across several smaller political institutions connected to large federal and state balls. A bold black dividing line separates the two models. Add exactly the German text `NICHT ALLES ZENTRAL` once. The right side should feel balanced and distributed, not chaotic. Keep all objects simple and flat. No realistic city, no tiny actors, no office UI, no excessive arrows.
+
+## Bild 11
+Dateiname: `Bild 11.png`
+Satzbezug: „Regionen bekommen Spielraum für Lösungen, die zu ihnen passen.“
+
+Create a geography-and-policy frame in the same visual world. Use a muted olive background. Show three LARGE state balls positioned over three different simplified regional environments: one coastal strip with a small harbour symbol, one urban area with a transit symbol, and one rural area with fields. Each state ball holds or points toward one different simple policy document that matches its regional context. The point is not to claim specific legal examples, but to show that regions can choose solutions suited to their circumstances. Add exactly the German text `REGIONALER SPIELRAUM` once. Keep each mini-environment extremely simple and consistent with the flat Countryball style. No photorealistic landscapes, no detailed cityscapes, no tiny filler characters.
+
+## Bild 12
+Dateiname: `Bild 12.png`
+Satzbezug: „Verschiedene Länder können dadurch unterschiedliche Wege ausprobieren.“
+
+Create a controlled experimental-comparison frame. Use a muted turquoise background. Place two LARGE state balls at the bottom, each facing its own simple policy path drawn as a thick line leading toward the same shared goal symbol at the top. One path uses a book and local parliament symbol; the other uses a different administrative document and local building. The paths should visibly differ but end at the same general destination, representing different political approaches within one federal system. Add exactly the German text `VERSCHIEDENE WEGE` at the top. Keep the state actors neutral and serious. No race-track comedy, no winners or losers, no random flags, no extra readable labels.
+
+## Bild 13
+Dateiname: `Bild 13.png`
+Satzbezug: „Das kann neue Ideen und politischen Wettbewerb ermöglichen.“
+
+Create a serious innovation-and-comparison frame in the same world. Use a warm muted yellow background. Show two LARGE state balls on opposite sides presenting two different policy folders on simple podiums. In the center, place a lightbulb symbol above a clean comparison arrow that points both ways, suggesting learning and competition between regional solutions. The scene should feel like institutional experimentation, not commercial competition. Add exactly the German text `IDEEN + WETTBEWERB` once. Keep the podiums, folders and lightbulb in the same thick-outline flat style. No money symbols, no sports trophies, no exaggerated smiling mascots.
+
+## Bild 14
+Dateiname: `Bild 14.png`
+Satzbezug: „Aber das System hat auch einen Preis.“
+
+Create a tonal transition image in the same visual world. Use a darker muted blue background. Show a LARGE Germany countryball in the center looking serious, with two thick paths around it: one path labelled only by a simple green check symbol and the other by a restrained warning triangle. Beside the warning side, place a stack of documents and two government-building silhouettes to foreshadow coordination costs. Add exactly the German text `ABER: KOMPLEXER` once. Do not make the scene dramatic or negative; it should simply signal that federalism has trade-offs. No skulls, no red alarm effects, no clutter.
+
+## Bild 15
+Dateiname: `Bild 15.png`
+Satzbezug: „Wenn mehrere Ebenen zusammenarbeiten müssen, wird Politik komplizierter.“
+
+Create a clear coordination mini-scene in the same fixed style. Use a muted slate background. Show one LARGE federal Germany ball at the top center and three LARGE state balls below. Between them, place one law document that must pass through several large connection points before reaching a final stamp. Use only a few thick arrows and one mediation-style table in the center to show negotiation and coordination. The visual should communicate multiple political levels interacting, not bureaucratic chaos. Add exactly the German text `MEHR ABSTIMMUNG` once. Keep all actors large and intentional. No tiny committees, no realistic officials, no complex flowchart UI.
+
+## Bild 16
+Dateiname: `Bild 16.png`
+Satzbezug: „Manche Entscheidungen dauern dadurch länger als in zentralistischen Staaten.“
+
+Create a clean comparison frame in the same world. Split the vertical canvas into two balanced halves. On the left, show a simplified centralist model: one large capital building, one decision document and one short direct arrow. On the right, show a federal model: one federal building, two state institutions and the same document moving through several steps. Add one simple clock symbol above each side, with the federal side showing more elapsed segments. Add exactly the German text `MANCHMAL LANGSAMER` once. Keep the comparison neutral and explanatory; do not imply that one system is always superior. No flags required, no realistic architecture, no excessive arrows.
+
+## Bild 17
+Dateiname: `Bild 17.png`
+Satzbezug: „Trotzdem ist Deutschlands föderaler Aufbau verfassungsrechtlich fest verankert.“
+
+Create a constitutional-stability frame in the same serious style. Use a deep muted red background. Place a LARGE illustrated copy of the German Basic Law in the center, with a strong black-red-gold ribbon element behind it. On the lower left place one Germany countryball; on the lower right place a simplified Germany map divided into state regions. Connect both to the book using two clean lines, showing that the federal structure is constitutionally anchored. Add exactly the German text `IM GRUNDGESETZ` once. Keep the book cover text limited to `GRUNDGESETZ`; no fake paragraphs, no seals copied from real documents, no photorealistic paper texture.
+
+## Bild 18
+Dateiname: `Bild 18.png`
+Satzbezug: „Artikel 20 nennt Deutschland ausdrücklich einen demokratischen und sozialen Bundesstaat.“
+
+Create a close-up legal explainer frame in the same world. Use a muted cream background for contrast. Show a large open illustrated Basic Law book, with a highlighted simple section marked only with the exact readable text `ARTIKEL 20` and beneath it the short phrase `BUNDESSTAAT`. A Germany countryball and a divided Germany map sit behind the book as supporting elements, partially overlapping but never obscuring the text. The purpose is to visually anchor the constitutional statement without reproducing a long legal quote. Use thick clean black outlines and restrained red/black/gold accents. No additional readable legal text, no realistic document scan, no courtroom imagery.
+
+## Bild 19
+Dateiname: `Bild 19.png`
+Satzbezug: „Die Länder sind also nicht unabhängig vom gemeinsamen Staat.“
+
+Create a clear unity-with-autonomy frame. Use a muted blue-green background. Show three LARGE state balls standing inside the outline of one large Germany map, each occupying a different region but all enclosed by the same national border. Above them, place one Germany countryball smaller than the full map but still clearly visible, symbolizing the shared federal state. Use a few simple connecting lines between states and federal level, but no chains or prison-like imagery. Add exactly the German text `NICHT UNABHÄNGIG` once. The image should communicate that Länder have their own state institutions but remain parts of one country. No secession imagery, no torn maps, no tiny decorative balls.
+
+## Bild 20
+Dateiname: `Bild 20.png`
+Satzbezug: „Föderalismus bedeutet: Deutschland bleibt eins, aber staatliche Macht wird geteilt.“
+
+Create the final payoff frame in the exact same Serious Minimal Countryball Explainer world. Use a strong dark-blue background with a subtle gradient. Make a large Germany map the central shape, visibly divided into its internal state regions but still enclosed by one clear national outline. Place one LARGE Germany countryball above the map and several large state-level institutional symbols around the regions: a school book, state parliament, police badge and local document. Connect these to one federal parliament symbol using balanced lines that show shared but divided authority. Add exactly the German final text `EIN STAAT • GETEILTE MACHT` in bold white uppercase with a thick black outline. The ending should feel clean, memorable and conclusive, not crowded. No extra text, no realistic people, no 3D, no style change.
