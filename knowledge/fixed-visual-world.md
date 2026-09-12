@@ -1,223 +1,259 @@
-# Feste Bildwelt — Modern Countryball Explainer
+# Feste Reel-Bildwelt — Serious Minimal Countryball Explainer
 
-Diese Datei definiert die **eine und einzige verbindliche Reel-Bildwelt** für alle neuen Erklär-Reels.
+Diese Datei definiert die **eine und einzige aktive Bildwelt für neue Reels**.
 
-Style-ID: `modern-countryball-explainer`
+Style-ID: `serious-minimal-countryball-explainer`
 
-Das Thema ändert nur **was** gezeigt wird. Die künstlerische Welt bleibt für das gesamte Reel gleich.
+Die bisherige `modern-countryball-explainer`-Welt ist für **neue Reels ersetzt**. Historische Reel-Dateien dürfen ihren alten Stand behalten; neue Produktionen verwenden nur noch die hier definierte Welt.
 
 ## Trennung zu YouTube
 
-Diese Datei gilt ausschließlich für Reels. Die YouTube-Langvideo-Bildwelt unter `youtube/YOUTUBE_VISUAL_WORLD.md` bleibt vollständig getrennt.
+Diese Datei gilt **nur für Reels**. Die YouTube-Langvideo-Bildwelt unter `youtube/YOUTUBE_VISUAL_WORLD.md` bleibt unverändert und vollständig getrennt.
 
 Für Reels gilt:
 - 9:16
-- Modern Countryball Explainer
+- Serious Minimal Countryball Explainer
 - keine YouTube-Stick-Figuren
-- kein Ink-Explainer-/Longform-Look
-- keine 16:9-Komposition
+- kein 16:9-Longform-Look
 
-## Projekt-World-Lock — vor Bild 01 Pflicht
+## Grundidee
 
-Bevor ein KI-Agent Bild 01 erzeugt, legt er die Bildwelt **einmal für das komplette Reel** fest.
+Die gewünschte Reel-Welt ist **clean, seriös, minimal und sofort lesbar**.
+
+Typische Wirkung:
+- kräftige, saubere schwarze Konturen
+- flache 2D-Farben mit nur leichter grafischer Schattierung
+- einfache runde Countryball-artige Figuren, wenn ein Akteur sinnvoll ist
+- meist einfarbige oder gedämpfte Hintergründe mit höchstens leichter Textur
+- ein dominantes Motiv
+- kurze, klare deutsche Headline oder Schlüsselwörter, wenn sinnvoll
+- 0–3 passende Zusatzobjekte
+- starke Symbolik statt realistischer Szenen
+- genug Variation, damit nicht jedes Bild nur aus Kugel + leerem Hintergrund besteht
+
+Die Welt soll **nicht kindisch, nicht albern und nicht generisch-KI-haft** wirken.
+
+## World-Lock vor Bild 01
+
+Vor Bild 01 setzt der KI-Agent die Welt einmal für das komplette Reel fest.
 
 Konstant bleiben:
-- dicke, saubere schwarze Konturen
-- vereinfachte 2D-Formsprache
-- kräftige, kontrollierte Farbpalette
-- dezente grafische Schatten
-- niedrige bis mittlere Detaildichte
-- einfache, klare Tiefenstaffelung
-- Charakterlogik
-- Smartphone-first-Lesbarkeit
+- dicke schwarze Konturen
+- perfekt runde Kugelgeometrie bei Figuren
+- einfache Augen-/Mimik-Sprache
+- flaches 2D-Rendering
+- geringe bis mittlere Detaildichte
+- minimale grafische Schatten
+- einfache Hintergrundlogik
+- Typografie-Behandlung
+- Dichte und Art der Zusatzobjekte
 
-Einzelprompts dürfen Motiv, Perspektive, Handlung, Ort und Fachinhalt ändern. Sie dürfen **keine neue Unter-Bildwelt** eröffnen.
+Danach dürfen wechseln:
+- Hintergrundfarbe
+- Motiv
+- Requisiten
+- Perspektive
+- Symbolik
+- Anzahl der Akteure
 
-Der Agent soll vor jedem weiteren Bild prüfen:
+Nicht wechseln darf die künstlerische Welt.
 
-> Gehört dieses Bild sichtbar zur selben Serie wie die bereits akzeptierten Bilder?
+## Figuren
 
-Wenn nein: Stil korrigieren, nicht den Inhalt neu erfinden.
+Wenn ein Akteur gebraucht wird:
+- perfekt runder Kugelkörper
+- keine getrennten menschlichen Köpfe
+- keine Haare, Hälse oder realistischen Gesichter
+- einfache weiße Augen
+- schwarze Konturen
+- reduzierte, kontrollierte Mimik
+- kleine Arme/Hände/Füße nur wenn die Handlung sie braucht
 
-## Nicht verhandelbarer Style-Lock
+### Flaggen
 
-**Das gesamte Bild muss in genau einer einheitlichen 2D-Illustrationswelt gerendert sein.**
+Flaggenmuster nur, wenn Nationalität, Geografie, Politik oder kulturelle Identität **inhaltlich relevant** sind.
+
+Bei allgemeinen Themen wie Psychologie, Biologie, Alltag oder Wissenschaft:
+- neutrale einfarbige Kugeln
+- keine zufälligen Länderflaggen
+
+### Keine Mini-Kugeln als Deko
 
 Verboten:
-- Foto/Realbild als Hintergrund + aufgeklebte Kugelfigur
-- fotorealistische Hand/Finger/Haut + Cartoonfigur
-- realistisches Badezimmer/Labor/Pool + 2D-Figur
-- Stockfoto-Look
-- Mixed Media / Foto-plus-Sticker
-- realistische Poren, Hauttexturen oder fotografische Falten
-- fotografische Tiefenschärfe, Kamera-Bokeh oder Photo-Lighting als Stil
+- winzige Figur in der Ecke nur als Markensticker
+- mehrere kleine Kugeln ohne Funktion
+- zufällige Zungen, übertriebene Grimassen oder Gag-Gesichter
 
-Wörter wie `real`, `realistic`, `cinematic`, `natural light`, `real bathroom` oder `real hand` beschreiben nur die **logische Situation**, niemals einen Foto-Look.
+Wenn eine Kugel vorkommt, muss sie Handlung, Reaktion, Vergleich, Perspektive oder sozialen/geografischen Akteur sichtbar tragen.
 
-Hände, Finger, Füße, Haut, Organe und anatomische Details sind vereinfachte 2D-Illustrationsobjekte derselben Welt. Räume und Umgebungen bleiben ebenfalls vollständig stilisiert.
+## Drei erlaubte Kompositionsmodi
 
-## Ziel der Bildsprache
+Damit die Bilder abwechslungsreich bleiben, aber nicht chaotisch werden, gibt es drei Standardtypen.
 
-Die Bilder sollen **nicht wie statische Lernposter** wirken. Jede Bildphase ist ein konkreter Moment einer visuellen Geschichte.
+### 1. Minimal Symbolic
 
-Pflicht:
-- sichtbare Handlung, Reaktion, Veränderung, Ursache-Folge oder räumliche Beziehung
-- **ein Bild = eine klare gesprochene visuelle Kernaussage**
-- ein dominantes Hauptmotiv
-- höchstens wenige unterstützende Elemente
-- wenn sinnvoll Vordergrund, Mittelgrund und Hintergrund
-- kontrollierte Farbkontraste
-- Perspektivwechsel zwischen direkt aufeinanderfolgenden Bildern
-- Kontext im Hintergrund, wenn er die Aussage verbessert
-- Text unterstützt das Bild, ersetzt es nie
+Ein großes Hauptmotiv + 0–1 unterstützendes Element.
 
-Nicht als Standard:
-- große Headline + einzelnes Symbol auf leerem Hintergrund
-- reine Posterkarte ohne Handlung
-- gleiche Center-Komposition in mehreren Bildern hintereinander
-- große Textblöcke als Hauptmotiv
-- leere Fläche, wenn eine einfache Umgebung die Aussage klarer macht
+Beispiele:
+- Kugel mit Thermometer und Schweiß
+- Kugel unter Spotlight
+- Kugel + Gehirnsymbol
+- Objekt + kurze Headline
 
-## Kugelfiguren: optional, nicht Pflicht
+### 2. Supported Explainer
 
-Wenn ein Akteur sinnvoll ist, ist er eine **perfekt runde Kugelfigur**:
-- exakt runder Kreis/Kugelkörper
-- kein separater Kopf, kein Hals, keine Frisur
-- einfache weiße expressive Augen mit schwarzen Pupillen
-- minimale Gesichtselemente
-- kleine Arme/Hände/Füße nur, wenn eine Handlung sie braucht
-- Flagge nur bei echter geografischer Relevanz
-- sonst neutrale einfarbige Kugel
+Ein großes Hauptmotiv + 1–3 relevante Requisiten/Symbole.
 
-### Ganz wichtig
+Beispiele:
+- Kugel + Theatermaske + Musiknote
+- zwei Kugeln + Sprechblasen
+- Kugel + Buch + Karte
+- Kugel + Symbol + einfaches Dokument
 
-Eine Kugelfigur ist **kein Logo-Sticker**, der in jedes Bild muss.
+### 3. Simple Mini Scene
 
-Verboten bzw. unerwünscht:
-- winzige Kugel irgendwo in Ecke oder Hintergrund ohne Funktion
-- Kugel neben Anatomie/Mechanismus nur „damit die Bildwelt drin ist“
-- zufällige Deutschland-/USA-/andere Flagge bei allgemeinen Themen
-- zufällige Zunge, übertriebene Grimasse oder Gag-Gesicht ohne inhaltlichen Grund
-- Kugel so klein, dass sie eher Deko als Akteur ist
+Eine kleine, stark reduzierte Szene mit nur einem einfachen Kontextobjekt oder einer einfachen Struktur.
 
-Eine Kugel soll nur vorkommen, wenn sie mindestens eine echte Funktion erfüllt:
-- Handlung ausführen
-- Reaktion zeigen
-- Vergleich verkörpern
-- Perspektive/Beobachterrolle geben
-- sozialen oder geografischen Akteur darstellen
+Beispiele:
+- Kugel verlässt eine offene Tür
+- Kugel liest an einem Tisch ein Buch
+- Grabstein mit Kugelmotiv und etwas Efeu
+- Spotlight auf eine Figur vor wenigen anderen Figuren
 
-Wenn sie keine dieser Funktionen erfüllt: **weglassen**.
+**Keine detaillierten realistischen Räume.** Eine Mini-Szene bleibt grafisch reduziert.
 
-## Wenn keine Kugelfigur nötig ist
+## Passende Zusatzobjekte
 
-Dann hat das eigentliche Fachmotiv Vorrang, z. B.:
-- Hand/Finger/Hautdetail
-- Organ oder Nerv
-- Blutgefäß
-- physischer Prozess
-- Maschine oder vereinfachter Mechanismus
-- Gegenstand
-- Karte oder Dokument
-- Tier/Pflanze/Landschaft
-- Raum oder Umwelt
-- Close-up eines relevanten Details
+Zusatzobjekte sind ausdrücklich erwünscht, **wenn sie die Aussage verbessern**.
 
-Gerade bei Anatomie, Medizin, Technik und Ursache-Folge-Bildern ist eine reine Fachszene oft besser als eine zusätzliche Figur.
+Typisch erlaubt:
+- Thermometer
+- Tür
+- Tisch
+- Buch
+- Papierrolle
+- Grabstein
+- Spotlight
+- Maske
+- Musiknote
+- Sprechblase
+- einfache Karte
+- Gehirnsymbol
+- Bildschirm
+- Totenköpfe als klare Mengenmetapher
+- ein einzelnes Werkzeug oder Dokument
 
-Objekte und Fachmotive müssen trotzdem dieselbe Kontur-, Farb-, Schatten- und Vereinfachungssprache tragen wie die restliche Reel-Welt.
+Regel:
+- normalerweise 0–3 Zusatzobjekte
+- jedes Objekt braucht einen inhaltlichen Grund
+- kein dekoratives Auffüllen
 
-## Gestaltung
+## Hintergründe
 
-- vertikal 9:16, Smartphone-first
-- sauberer editorialer 2D-Vektor-/Comic-Look
-- dicke saubere schwarze Konturen
-- einfache gut lesbare Formen
-- kräftige, kontrollierte Farben
-- dezente grafische Schatten
-- einfache Tiefenstaffelung
-- höchstens leichte Papier-/Korntextur
-- niedrige bis mittlere Detaildichte
-- eine dominante Kernaussage
-- eine klare sichtbare Handlung oder Ursache-Folge-Beziehung
-- normalerweise höchstens 1–3 unterstützende Elemente
-- keine künstliche Untertitelzone
-- Bedeutung möglichst innerhalb einer Sekunde verständlich
+Bevorzugt:
+- einfarbige Hintergründe
+- gedämpfte oder kräftige Farbflächen
+- leichter Farbverlauf
+- subtile Papier-/Korntextur
+- ein einfaches Kontextobjekt, wenn nötig
 
-## Perspektivwechsel
-
-Direkt aufeinanderfolgende Bilder sollen sich sichtbar unterscheiden. Je nach Inhalt:
-- Extreme Close-up
-- Close-up
-- Medium Shot
-- einfache Weitaufnahme
-- Objekt-Detail
-- Kartenansicht
-- leichte Draufsicht
-- Off-Center-Komposition
-
-Nicht zwei oder drei Bilder hintereinander mit derselben Figur mittig, derselben Textposition und demselben Hintergrundschema.
-
-## Hintergrund, Licht und Farbe
-
-- einfache kontextuelle Umgebung oder grafisches Farbfeld mit Tiefe
-- kleine Umgebung statt leerer Fläche, wenn sie die Aussage stärkt
-- nur so detailliert wie nötig
-- helles, klares grafisches Licht
-- dunkle Beleuchtung nur, wenn Dunkelheit/Nacht Inhalt ist
-- keine komplexen realistischen Innenräume
-- benachbarte Bilder dürfen andere Hintergrundfarben haben, solange Rendering und Formsprache gleich bleiben
-
-## Alle Themen bleiben in derselben Welt
-
-**Das Thema ändert nie die Bildwelt.**
-
-Elektrotechnik, Medizin, Geschichte, Politik, Psychologie, Ernährung, Natur und Alltag verwenden dieselbe Modern-Countryball-Explainer-Formsprache.
+Erlaubt sind unterschiedliche Hintergrundfarben innerhalb eines Reels. Die Einheitlichkeit kommt aus Figuren, Konturen, Rendering, Typografie und Detailgrad.
 
 Nicht als Standard:
-- eigene Medizin-Welt
-- eigene Technik-Welt
-- eigene Geschichts-Welt
-- Blueprint/CAD-Look
-- hochdetaillierte technische Cutaways
-- wissenschaftliche Posterwelt
+- komplette Küche
+- realistisches Badezimmer
+- detailliertes Labor
+- aufwendige Straßen-/Innenraumszene
+- cineastische Beleuchtung
 
-Technische Details sind nur erlaubt, wenn sie für die Erklärung nötig sind, und bleiben vereinfacht.
+## Seriöser Ton
+
+Die Welt darf leicht humorvoll und emotional sein, aber nicht albern.
+
+Bevorzugt:
+- reduzierte Mimik
+- klare Emotion
+- einfache visuelle Metapher
+- erwachsene, informative Wirkung
+
+Vermeiden:
+- übertriebene Cartoon-Gesichter
+- hyperaktive Posen
+- übermäßig süße Figuren
+- unnötige Gags
+
+## Anatomie, Medizin, Technik und abstrakte Themen
+
+Diese Themen bekommen **keine eigene realistische Unterwelt**.
+
+Wenn ein Fachmotiv nötig ist:
+- stark vereinfachen
+- symbolisch darstellen
+- dieselben schwarzen Konturen verwenden
+- dieselbe flache Farbbehandlung verwenden
+- keine fotorealistische Hand/Haut/Organe
+- keine 3D-Anatomie
+- keine normalen illustrierten Menschen
+
+Beispiel: Statt realistischer Hirnscan-Person → große Kugel + klar vereinfachtes Gehirnsymbol oder vereinfachter 2D-Kopf-/Gehirn-Cue in derselben Welt.
 
 ## Deutscher Bildtext
 
 Prompts sind Englisch. Sichtbarer Bildtext ist Deutsch.
 
-### Titelbild
+### Cover / Bild 01
 
-Bild 01 ist zugleich Cover und trägt die starke Reel-Headline. Sie muss auf einem kleinen Smartphone-Display sofort lesbar sein.
+- starke Headline Pflicht
+- groß und auf Smartphone sofort lesbar
+- klare Sans-Serif-/Condensed-Schrift
+- weiß oder schwarz mit deutlicher Gegenkontur
+- nicht über das Hauptmotiv legen
 
-### Normale Bildphasen
+### Spätere Bilder
 
-Text ist optional:
-- 0–4 deutsche Wörter
-- nur wenn er Verständnis/Merkbarkeit verbessert
+- Text optional
+- normalerweise 0–4 Wörter
 - ungefähr 35–60 % der Nicht-Cover-Bilder dürfen Text tragen
-- starke textfreie Bilder sind erwünscht
-- Motiv muss auch ohne Text funktionieren
-- kein englischer Text
+- starke textfreie Bilder bleiben erwünscht
+- kein englischer sichtbarer Text
 - keine Fantasiewörter
 - keine doppelte Headline
 
+## Was ausdrücklich verboten ist
+
+- normale illustrierte Menschen
+- generische Editorial-Human-Illustrationen
+- Stick-Figuren
+- fotorealistische Menschen
+- fotorealistische Hände/Haut
+- realistische Innenräume
+- Foto + Cartoon
+- Mixed Media
+- Anime/Manga
+- Clay
+- glänzendes 3D/Pixar
+- Stockfoto-Look
+- detaillierte medizinische 3D-Anatomie
+- überladene Icon-Collagen
+- Floating UI Boards
+- zufällige Mini-Kugeln
+- themenspezifische Stilwechsel
+- YouTube-Stick-Figure-Welt
+- 16:9-Komposition
+
 ## Qualitätsprüfung vor Freigabe
 
-1. Ist die Kernaussage sofort verständlich?
-2. Ist genau **eine** gesprochene visuelle Idee klar dargestellt?
-3. Wirkt es wie eine konkrete Szene statt wie eine Posterkarte?
-4. Gehört das Rendering sichtbar zur selben Welt wie die vorherigen Bilder?
-5. Wurde keine themenspezifische zweite Bildwelt erzeugt?
-6. Ist jedes sichtbare Element vollständig 2D-illustriert?
-7. Wenn eine Kugel vorkommt: ist sie exakt rund, sinnvoll groß und hat sie eine echte narrative Funktion?
-8. Wenn eine Kugel nicht nötig ist: wurde sie konsequent weggelassen?
-9. Sind Flaggen nur dort vorhanden, wo Geografie wirklich relevant ist?
-10. Gibt es keine zufällige Zunge/Grimasse/Gag-Mimik ohne Aussage?
-11. Gibt es einfache Tiefe oder Kontext statt unnötig leerer Fläche?
-12. Unterscheidet sich die Perspektive ausreichend vom vorherigen Bild?
-13. Bleibt Reels klar von der YouTube-Bildwelt getrennt?
+1. Ist die Aussage innerhalb ungefähr einer Sekunde verständlich?
+2. Gehört das Bild klar zur **Serious Minimal Countryball Explainer**-Welt?
+3. Gibt es genau ein dominantes Motiv?
+4. Sind höchstens 0–3 Zusatzobjekte vorhanden und alle sinnvoll?
+5. Ist die Szene clean, aber nicht langweilig leer?
+6. Ist der Hintergrund bewusst einfach?
+7. Wenn eine Kugel vorkommt: ist sie groß genug, perfekt rund und funktional?
+8. Sind Flaggen nur bei echter geografischer/kultureller Relevanz vorhanden?
+9. Wurden normale Menschen und realistische Umgebungen vermieden?
+10. Ist der deutsche Text kurz, korrekt und gut lesbar?
+11. Unterscheidet sich das Motiv/Arrangement genug vom vorherigen Bild, ohne die Welt zu wechseln?
+12. Bleibt YouTube vollständig getrennt?
 
-Wenn eine dieser Fragen scheitert, wird **dieses Bild** korrigiert oder neu erzeugt; die globale Welt bleibt bestehen.
+Wenn ein Bild scheitert, wird nur dieses Bild korrigiert. Die globale Reel-Welt bleibt unverändert.
