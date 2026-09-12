@@ -1,6 +1,6 @@
 # CURRENT WORKFLOW — VERBINDLICHE SINGLE SOURCE OF TRUTH
 
-**Stand: 2026-09-11**
+**Stand: 2026-09-12**
 
 Diese Datei ist die verbindliche Repo-weite Produktionsregel für neue Chats, Codex, Antigravity und andere Repo-Agenten.
 
@@ -72,64 +72,91 @@ Originalaudio
 
 Das finale Voice-over darf vor dem separaten Schlussbild-Hold höchstens **0,25 s messbare Endstille** enthalten. Mehrsekündige Endstille blockiert Finalizer und Renderer — auch mit `--force`.
 
-## 3. Eine feste Reel-Bildwelt — Modern Countryball Explainer
+## 3. Eine feste Reel-Bildwelt — Serious Minimal Countryball Explainer
 
-Alle neuen Reels verwenden ausschließlich **Modern Countryball Explainer**:
+Alle **neuen Reels** verwenden ausschließlich:
 
 ```text
-modern-countryball-explainer
+serious-minimal-countryball-explainer
 ```
+
+Die frühere aktive Reel-Welt `modern-countryball-explainer` ist für neue Reels **ersetzt**. Alte bereits produzierte/archivierte Reel-Dateien bleiben als Historie bestehen, dürfen aber nicht als Stilvorlage für neue Produktionen dienen.
 
 Verbindlich:
 - `knowledge/fixed-visual-world.md`
 - `config/image-styles.json`
 - `src/shared/fixed-visual-world.js`
 
-YouTube bleibt vollständig getrennt (`youtube/YOUTUBE_WORKFLOW.md`, `youtube/YOUTUBE_VISUAL_WORLD.md`).
+**YouTube bleibt vollständig unverändert und getrennt** (`youtube/YOUTUBE_WORKFLOW.md`, `youtube/YOUTUBE_VISUAL_WORLD.md`).
 
 ### Globaler World-Lock vor Bild 01
 
-Bevor ein KI-Agent Bild 01 erzeugt, muss er die Bildwelt **einmal für das gesamte Reel festschreiben**. Danach ändern einzelne Bildprompts nur Motiv, Handlung, Perspektive und Umgebung — niemals die künstlerische Welt.
+Vor Bild 01 muss der KI-Agent die neue Welt einmal für das komplette Reel festsetzen. Danach ändern Einzelprompts nur Motiv, Requisiten, Hintergrundfarbe, Perspektive und Aussage — niemals die künstlerische Grundwelt.
 
 Konstant bleiben insbesondere:
-- Konturstärke und Formsprache
-- Farbcharakter und grafische Schatten
-- Detailgrad und 2D-Rendering
-- Tiefenlogik und Social-Media-Lesbarkeit
-- Charakterlogik
+- dicke saubere schwarze Konturen
+- perfekt runde Kugelgeometrie bei Akteuren
+- einfache Augen-/Mimik-Sprache
+- flaches 2D-Rendering
+- geringe bis mittlere Detaildichte
+- minimale grafische Schatten
+- einfache Hintergrundlogik
+- Typografie-Behandlung
+- Dichte/Art der Zusatzobjekte
 
-Der Agent darf nicht für Medizin, Geschichte, Technik oder Alltag jeweils eine neue Unter-Bildwelt erfinden.
+### Figurenlogik
 
-### Kugelfiguren sind optional und müssen eine Funktion haben
+Wenn ein Akteur vorkommt:
+- perfekt runde Countryball-artige Kugelfigur
+- einfache weiße Augen
+- reduzierte kontrollierte Mimik
+- kein separater menschlicher Kopf, Hals, Haar oder realistisches Gesicht
+- Flaggen nur bei tatsächlicher geografischer, politischer oder kultureller Relevanz
+- sonst neutrale einfarbige Kugeln
+- keine zufälligen Zungen, Grimassen oder Gimmicks
 
-Wenn ein Akteur vorkommt, ist er eine klar runde Kugelfigur ohne separaten menschlichen Kopf. **Ein Akteur ist nicht in jedem Bild Pflicht.**
+Ein Akteur ist nicht in jedem Bild Pflicht. Abstrakte, technische oder medizinische Aussagen dürfen über stark vereinfachte Symbole/Objekte in derselben 2D-Welt erklärt werden.
 
-Neue Hard-Guidance:
-- keine winzige dekorative Kugel nur als Stil-Sticker in Ecke oder Hintergrund
-- Kugelfigur nur verwenden, wenn sie Handlung, Reaktion, Vergleich oder Perspektive wirklich verbessert
-- bei Anatomie, Mechanismen, Objekten, Karten oder physischen Prozessen das Fachmotiv allein zeigen, wenn es verständlicher ist
-- Flaggen nur bei echter geografischer Relevanz; sonst neutrale einfarbige Kugeln
-- keine zufälligen Zungen, Grimassen oder Gimmicks ohne inhaltlichen Grund
-- wenn eine Kugel vorkommt, muss sie groß genug und klar genug sein, um als bewusster Akteur zu lesen
+### Drei Kompositionsmodi — einheitlich, aber nicht langweilig
+
+Neue Reels mischen sinnvoll:
+
+1. **Minimal Symbolic**: großes Hauptmotiv + 0–1 sinnvolles Symbol
+2. **Supported Explainer**: Hauptmotiv + 1–3 passende Requisiten/Symbole
+3. **Simple Mini Scene**: Hauptmotiv + ein einfacher Kontext wie Tür, Tisch, Buch, Grabstein, Spotlight oder Screen
+
+Hard-Guidance:
+- nicht jedes Bild nur Kugel + leerer Hintergrund
+- aber keine detaillierten realistischen Räume oder cineastischen Umgebungen
+- normalerweise höchstens 0–3 Zusatzobjekte
+- jedes Zusatzobjekt braucht einen klaren inhaltlichen Grund
+- keine winzigen Deko-Kugeln
+- ein dominantes Motiv pro Bild
+- Hintergründe meist einfarbig/gedämpft, leichter Verlauf oder subtile Textur
+- seriös, clean und reduziert statt kindisch/übermäßig süß
 
 ### Bildwirkung
 
-Jede Bildphase ist eine konkrete visuelle Mini-Szene, keine Lernposterkarte:
-- sichtbare Handlung, Reaktion, Veränderung oder Ursache-Folge
+Jede Bildphase zeigt eine klare symbolische Erklärung oder eine einfache Mini-Szene:
 - **ein Bild = eine klare gesprochene visuelle Kernaussage**
-- ein dominantes Motiv, 1–3 unterstützende Elemente
-- einfache Tiefe und Kontext, wenn sinnvoll
-- klare Farbkontraste
-- Perspektive zwischen benachbarten Bildern variieren
-- Smartphone-first, in etwa einer Sekunde erfassbar
+- Smartphone-first, möglichst innerhalb einer Sekunde verständlich
+- starke schwarze Konturen
+- flache kontrollierte Farben
+- minimale grafische Schatten
+- kurze deutsche Headline/Schlüsselwörter nur wenn sinnvoll
+- Komposition zwischen benachbarten Bildern sichtbar variieren
 
-Nicht als Standard:
-- große Headline + einzelnes Symbol auf leerem Hintergrund
-- textdominante Poster
-- wiederholte zentrierte Figur-plus-Icons-Komposition
-- Floating Cards/UI-Boards
-- Fotorealismus, Anime, Clay, glänzendes 3D/Pixar
-- humanoide Cartoonmenschen oder Stick-Figuren
+Ausdrücklich verboten:
+- normale illustrierte Menschen
+- generische Editorial-Human-Figuren
+- Stick-Figuren
+- Fotorealismus
+- realistische Hände/Haut
+- realistische/detaillierte Innenräume
+- Foto + Cartoon / Mixed Media
+- Anime, Clay, glänzendes 3D/Pixar
+- detaillierte 3D-Anatomie
+- Floating UI Boards und überladene Icon-Collagen
 
 ## 4. Bildtext
 
@@ -141,6 +168,7 @@ Nicht als Standard:
 - ungefähr 35–60 % der Nicht-Cover-Bilder dürfen Text tragen
 - ein textfreies starkes Bild ist ausdrücklich erwünscht
 - `imageText` leer → kein lesbarer Text
+- Schrift: fett, klar, Smartphone-lesbar, weiß oder schwarz mit starker Gegenkontur
 
 ## 5. Bildanzahl — Adaptive Dense V2 ab 2026-09-11
 
@@ -176,7 +204,7 @@ Timing-Richtwerte für V2:
 - ab ungefähr **4,8 s** aktiv prüfen, ob der gesprochene Inhalt sinnvoll auf einen zusätzlichen Bildmoment geteilt werden sollte
 - kein pauschales Maximaltempo: Inhalt und Audio entscheiden; weder hektisch noch unnötig statisch
 
-Legacy-Reels mit `one-hook-two-standard` bleiben unverändert und dürfen weiter mit ihrer alten Struktur gerendert werden. Das aktuelle bzw. bereits produzierte Reel wird durch diese Regel nicht umgebaut.
+Legacy-Reels mit `one-hook-two-standard` bleiben unverändert und dürfen weiter mit ihrer alten Struktur gerendert werden.
 
 ## 6. Schnitt-Timing
 
@@ -261,12 +289,13 @@ Einzige verbindliche Nutzerdatei:
 Flow arbeitet streng seriell:
 
 ```text
-Globalen World-Lock einmal festsetzen
+Globalen Serious-Minimal-World-Lock einmal festsetzen
 → aktuellen Bildabschnitt verwenden
 → genau 1 Bild erzeugen
 → vollständig warten
-→ Inhalt + feste Bildwelt + Anti-Poster-QC prüfen
-→ Kugelfigur nur akzeptieren, wenn sie eine echte Funktion hat
+→ Inhalt + feste Bildwelt prüfen
+→ normale Menschendarstellung / realistische Umgebung ablehnen
+→ prüfen, ob 0–3 Zusatzobjekte sinnvoll und nicht dekorativ sind
 → exakt Bild NN.png benennen
 → in gemeinsamen Reel-Ausgabeordner legen
 → Ablage prüfen
@@ -320,8 +349,9 @@ Ein Reel ist erst fertig, wenn:
 - Script und Quellen geprüft sind
 - bei V2 die adaptive Bilddichte zum Inhalt passt und der Zielkorridor erreicht ist
 - alle Bildphasen vorhanden und visuell geprüft sind
-- feste Bildwelt eingehalten ist
-- unnötige/dekorative Mini-Kugelfiguren entfernt sind
+- **Serious Minimal Countryball Explainer** eingehalten ist
+- normale Menschen, realistische Umgebungen und zufällige Mini-Kugeln entfernt sind
+- Zusatzobjekte sinnvoll und nicht dekorativ überladen sind
 - **jede Bildphase sichtbar bewegt wird**
 - **jeder Szenen- und interne Bildwechsel einen gerenderten SFX besitzt**
 - finales Voice-over 1,10x / −16 LUFS / max. −1,5 dBTP geprüft ist
