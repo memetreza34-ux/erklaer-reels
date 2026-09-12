@@ -1,0 +1,42 @@
+{
+  "version": 3,
+  "project": "2026-KW37_07-09_bis_13-09/mittwoch/reel-01_warum-bekommen-wir-schluckauf",
+  "title": "Warum bekommen wir Schluckauf?",
+  "imageCountMode": "adaptive-dense-v2",
+  "visualDensityVersion": 2,
+  "visualWorld": "serious-minimal-countryball-explainer",
+  "plannedImageCount": 21,
+  "currentPhase": 1,
+  "phase1": {
+    "owner": "ChatGPT",
+    "status": "prepared-awaiting-strict-validation",
+    "script": "complete-174-words",
+    "imagePrompts": "complete-21-new-visual-world",
+    "worldLock": "complete-serious-minimal-countryball",
+    "imageAudioMapping": "complete-planned-anchors-only",
+    "motionPlan": "complete",
+    "soundPlan": "complete",
+    "sources": "complete",
+    "caption": "complete",
+    "strictValidation": "not-run-github-connector-cannot-run-npm"
+  },
+  "phase2": {
+    "owner": "user",
+    "status": "blocked-until-phase1-strict-validation",
+    "voiceover": "missing",
+    "images01to21": "missing"
+  },
+  "phase3": {
+    "owner": "Antigravity",
+    "status": "blocked-until-phase2-complete",
+    "actualAnchorAlignment": "pending",
+    "motion": "pending",
+    "soundDesign": "pending",
+    "render": "pending",
+    "qualityControl": "pending"
+  },
+  "readyForAssetGeneration": false,
+  "readyForAntigravity": false,
+  "readyForRender": false,
+  "note": "Inhaltliches Phase-1-Paket ist vollständig vorbereitet. Vor formaler Übergabe an Phase 2 müssen npm test und check:content --strict lokal tatsächlich ausgeführt und bestanden werden."
+}

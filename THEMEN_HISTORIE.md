@@ -29,6 +29,7 @@ Diese Datei ist die verbindliche Themenliste für **alle Erklärformate in diese
 - Freitag: Warum bekommen wir Gänsehaut?
 - Montag, 07.09.2026: Warum werden Finger im Wasser runzlig?
 - Dienstag, 08.09.2026: Warum ist Gähnen ansteckend?
+- Mittwoch, 09.09.2026: Warum bekommen wir Schluckauf?
 
 ### YouTube
 
