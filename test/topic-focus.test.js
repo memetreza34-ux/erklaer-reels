@@ -1,63 +1,49 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtemp, readFile, rm } from 'node:fs/promises';
-import os from 'node:os';
-import path from 'node:path';
+import { readFile } from 'node:fs/promises';
 
-import { createReelWorkspace } from '../src/core/workspace.js';
-import { prepareReelProduction } from '../src/core/production-brief.js';
+async function loadRules() {
+  return JSON.parse(await readFile(new URL('../config/content-rules.json', import.meta.url), 'utf8'));
+}
 
-test('Bildtext unterstützt die Serious-Minimal-Bildwelt statt sie zu dominieren', async () => {
-  const rules = JSON.parse(await readFile(path.resolve('config', 'content-rules.json'), 'utf8'));
-  const textRules = rules.visualRules.embeddedTextRules;
+test('automatische Themenwahl verwendet ein offenes Themenuniversum statt drei harter Säulen', async () => {
+  const rules = await loadRules();
 
-  assert.equal(rules.visualRules.visualWorldMode, 'fixed');
-  assert.equal(rules.visualRules.fixedVisualWorld, 'serious-minimal-countryball-explainer');
-  assert.equal(rules.visualRules.selectVisualWorldAfterScript, false);
-  assert.equal(rules.visualRules.promptLanguage, 'en');
-  assert.equal(textRules.language, 'de');
-  assert.equal(textRules.coverRequired, true);
-  assert.equal(textRules.nonCoverOptional, true);
-  assert.equal(textRules.imageMustWorkWithoutText, true);
-  assert.deepEqual(textRules.preferredWordsPerScene, { min: 0, max: 4 });
-  assert.deepEqual(textRules.preferredSceneCoveragePercent, { min: 35, max: 60 });
-  assert.equal(textRules.mustAppearExactlyInPrompt, true);
-  assert.equal(rules.visualRules.textDominantCompositionForbidden, true);
-  assert.equal(rules.visualRules.varyShotTypeAcrossAdjacentImages, true);
-  assert.deepEqual(rules.visualRules.allowedCompositionModes, ['minimal-symbolic', 'supported-explainer', 'simple-mini-scene']);
+  assert.equal(rules.topicFocus.openTopicUniverse, true);
+  assert.equal(rules.topicFocus.autonomousSelectionLimitedToAllowedTopics, false);
+  assert.equal(rules.topicFocus.allowedTopicsAreExamplesNotHardLimit, true);
+  assert.equal(rules.allowedTopics.includes('Alltag und Gewohnheiten'), true);
+  assert.equal(rules.allowedTopics.includes('Wissenschaft und Naturphänomene'), true);
+  assert.equal(rules.allowedTopics.includes('Technik und digitale Welt'), true);
+  assert.equal(rules.allowedTopics.includes('Gesundheit und Ernährung'), true);
+  assert.equal(rules.allowedTopics.includes('Wirtschaft und Geldmechanismen'), true);
 });
 
-test('Produktionsauftrag verlangt Adaptive Dense V2, neue Bildwelt und optionalen Nicht-Cover-Text', async () => {
-  const outputRoot = await mkdtemp(path.join(os.tmpdir(), 'erklaer-image-text-'));
-  try {
-    const { reelDirectory } = await createReelWorkspace({
-      title: 'Warum entstehen Grenzen?',
-      script: 'Warum entstehen Grenzen? Dieses ausreichend lange Rohscript dient nur dazu, einen vollständigen Produktionsauftrag mit den aktuellen Regeln zu erzeugen.',
-      date: new Date('2026-09-12T12:00:00'),
-      sceneCount: 9,
-      outputRoot
-    });
+test('verhindert Themen-Bias nur auf Länder, Geschichte und Politik', async () => {
+  const rules = await loadRules();
 
-    const result = await prepareReelProduction(reelDirectory);
-    const task = await readFile(result.taskFile, 'utf8');
-    const checklist = JSON.parse(await readFile(result.checklistFile, 'utf8'));
+  assert.equal(rules.topicFocus.avoidRepeatedCountryHistoryBias, true);
+  assert.ok(Array.isArray(rules.topicFocus.selectionCriteria));
+  assert.ok(rules.topicFocus.selectionCriteria.length >= 5);
+});
 
-    assert.match(task, /Serious Minimal Countryball Explainer/i);
-    assert.match(task, /serious-minimal-countryball-explainer/);
-    assert.match(task, /Adaptive Dense V2/i);
-    assert.match(task, /20–22 Bilder/);
-    assert.match(task, /Bild 01.*Headline/is);
-    assert.match(task, /spätere Bilder.*textfrei/is);
-    assert.match(task, /max\. 4 Wörter/i);
-    assert.match(task, /Prompts Englisch/i);
-    assert.match(task, /sichtbarer Text Deutsch/i);
-    assert.match(task, /Simple Mode/i);
-    assert.ok(checklist.tasks.some((entry) => entry.id === 'image-text-plan'));
-    assert.ok(checklist.tasks.some((entry) => entry.id === 'visual-world-fixed'));
-    assert.ok(checklist.tasks.some((entry) => entry.id === 'image-density-plan'));
-    assert.equal(checklist.visualStyleId, 'serious-minimal-countryball-explainer');
-    assert.equal(checklist.imageCountMode, 'adaptive-dense-v2');
-  } finally {
-    await rm(outputRoot, { recursive: true, force: true });
-  }
+test('Bildwelt ist fest und wird nicht nach dem Script neu ausgewählt', async () => {
+  const rules = await loadRules();
+
+  assert.equal(rules.visualRules.visualWorldMode, 'fixed');
+  assert.equal(rules.visualRules.fixedVisualWorld, 'modern-countryball-explainer');
+  assert.equal(rules.visualRules.selectVisualWorldAfterScript, false);
+  assert.equal(rules.visualRules.consistentStyleWithinReel, true);
+  assert.equal(rules.visualRules.creativeStyleBetweenReels, false);
+  assert.equal(rules.visualRules.styleBiblePath, 'knowledge/fixed-visual-world.md');
+});
+
+test('nur Format-Risiken bleiben als autonome Ausschlüsse erhalten', async () => {
+  const rules = await loadRules();
+
+  assert.equal(rules.excludedTopics.includes('Körper und Biologie'), false);
+  assert.equal(rules.excludedTopics.includes('Finanzen'), false);
+  assert.equal(rules.excludedTopics.includes('Elektrotechnik'), false);
+  assert.ok(rules.excludedTopics.some((value) => /Breaking-News/i.test(value)));
+  assert.ok(rules.excludedTopics.some((value) => /Parteienwerbung|Propaganda/i.test(value)));
 });

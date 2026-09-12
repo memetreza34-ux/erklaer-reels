@@ -1,107 +1,105 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { access, mkdir, mkdtemp, readFile, writeFile } from 'node:fs/promises';
-import os from 'node:os';
+import { access, readFile } from 'node:fs/promises';
 import path from 'node:path';
 
-import {
-  buildImagePromptBundle,
-  ensureImagePromptBundleDirectory,
-  validateImagePromptBundle
-} from '../src/core/image-prompt-bundle.js';
-import { FIXED_VISUAL_STYLE_ID, FIXED_VISUAL_WORLD_LABEL } from '../src/shared/fixed-visual-world.js';
-
-async function writeJson(filePath, value) {
-  await mkdir(path.dirname(filePath), { recursive: true });
-  await writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
+async function text(file) {
+  return readFile(path.resolve(file), 'utf8');
 }
 
-async function exists(filePath) {
-  try { await access(filePath); return true; } catch { return false; }
+async function exists(file) {
+  try {
+    await access(path.resolve(file));
+    return true;
+  } catch {
+    return false;
+  }
 }
 
-const NEUTRAL_BASE = 'Vertical 9:16 serious minimal countryball explainer illustration. One clear idea, no subtitle zone.';
+test('gefährliche Fake-QC- und Fake-Timing-Helfer sind aus dem aktiven Repo entfernt', async () => {
+  const forbiddenRootHelpers = [
+    'force-render-state.js',
+    'approve-visuals.js',
+    'confirm-assets.js',
+    'do-sync.js',
+    'auto-sync.js',
+    'auto-cues.js',
+    'fill-codex.js',
+    'fix-content.js',
+    'fix-narration.js',
+    'fix-reel.js',
+    'fill-ki-app-scenes.js'
+  ];
 
-async function createFixture({ missingFirstPrompt = false, missingSecondPrompt = false, missingExtraPrompt = false } = {}) {
-  const root = await mkdtemp(path.join(os.tmpdir(), 'prompt-bundle-'));
-  await writeJson(path.join(root, 'status.json'), { imagePrompts: 'ready' });
-  await writeJson(path.join(root, 'reel.json'), { visualStyleId: FIXED_VISUAL_STYLE_ID });
-  await writeJson(path.join(root, 'scenes', 'scene-index.json'), [
-    { sceneId: 'scene-01', order: 1, imageText: 'ERSTE SZENE' },
-    {
-      sceneId: 'scene-02', order: 2, imageText: 'SZENE ZWEI',
-      imagePhases: [
-        { phaseId: 'scene-02-image-01', order: 1, startPercent: 0, promptFileName: 'image-prompt.txt', imageText: 'SZENE ZWEI' },
-        { phaseId: 'scene-02-image-02', order: 2, startPercent: 0.55, promptFileName: 'image-prompt-02.txt', imageText: '', audioCue: 'zweiter Gedanke' }
-      ]
-    },
-    { sceneId: 'scene-03', order: 3, imageText: 'DRITTE SZENE' }
-  ]);
-
-  for (const sceneId of ['scene-01', 'scene-02', 'scene-03']) await mkdir(path.join(root, 'scenes', sceneId), { recursive: true });
-  if (!missingFirstPrompt) await writeFile(path.join(root, 'scenes', 'scene-01', 'image-prompt.txt'), `${NEUTRAL_BASE} Show one large round countryball actor with meaningful props. Integrate exactly "ERSTE SZENE".`, 'utf8');
-  if (!missingSecondPrompt) await writeFile(path.join(root, 'scenes', 'scene-02', 'image-prompt.txt'), `${NEUTRAL_BASE} Show one political or geographic symbol. Integrate exactly "SZENE ZWEI".`, 'utf8');
-  if (!missingExtraPrompt) await writeFile(path.join(root, 'scenes', 'scene-02', 'image-prompt-02.txt'), `${NEUTRAL_BASE} Show one clear supporting object. No readable text.`, 'utf8');
-  await writeFile(path.join(root, 'scenes', 'scene-03', 'image-prompt.txt'), `${NEUTRAL_BASE} Show a clean final symbolic scene. Integrate exactly "DRITTE SZENE".`, 'utf8');
-  return root;
-}
-
-test('README erklärt genau eine Google-Flow-Masterdatei', async () => {
-  const root = await createFixture();
-  const paths = await ensureImagePromptBundleDirectory(root);
-  const readme = await readFile(paths.userReadme, 'utf8');
-  assert.match(readme, /genau \*\*eine\*\* verbindliche Masterdatei/i);
-  assert.match(readme, /99-alle-bildprompts\.txt/);
-  assert.ok(readme.includes(FIXED_VISUAL_WORLD_LABEL));
+  for (const file of forbiddenRootHelpers) {
+    assert.equal(await exists(file), false, `${file} darf nicht wieder als aktiver Root-Helfer eingeführt werden.`);
+  }
 });
 
-test('exportiert nur den einen seriellen Gesamtprompt in der aktiven festen Bildwelt', async () => {
-  const root = await createFixture();
-  await mkdir(path.join(root, 'all-image-prompts'), { recursive: true });
-  await writeFile(path.join(root, 'all-image-prompts', 'all-image-prompts.txt'), 'legacy\n', 'utf8');
+test('aktiver npm-Workflow bietet keinen normalen sync:words-Befehl mehr an', async () => {
+  const packageJson = JSON.parse(await text('package.json'));
 
-  const result = await buildImagePromptBundle(root, { strict: true });
-  const bundle = await readFile(result.outputFile, 'utf8');
-
-  assert.equal(result.outputFile, path.join(root, '00-bildprompts', '99-alle-bildprompts.txt'));
-  assert.equal(result.technicalMirrorFile, null);
-  assert.equal(result.individualPromptsDirectory, null);
-  assert.equal(await exists(path.join(root, 'all-image-prompts')), false);
-  assert.match(bundle, /^GOOGLE FLOW – KOMPLETTER SERIELLER BILDLAUF/);
-  assert.match(bundle, /STRENG SERIELL – NIE PARALLEL/);
-  assert.ok(bundle.includes(FIXED_VISUAL_WORLD_LABEL.toUpperCase()));
-  assert.match(bundle, /Serious Minimal Countryball Explainer/i);
-  assert.match(bundle, /perfectly round countryball-like character/i);
-  assert.match(bundle, /A ball character is optional/i);
-  assert.match(bundle, /DATEINAME NACH FERTIGSTELLUNG: Bild 03\.png/);
-  assert.equal(result.titleImageIncluded, true);
-  assert.equal(result.sceneCount, 3);
-  assert.equal(result.plannedImageCount, 4);
-  assert.equal(result.totalPromptCount, 4);
-  assert.equal(result.visualWorldLabel, FIXED_VISUAL_WORLD_LABEL);
-
-  const validation = await validateImagePromptBundle(root);
-  assert.equal(validation.passed, true);
-  assert.equal(validation.filePresent, true);
-  assert.equal(validation.technicalMirrorPresent, false);
-  assert.equal(validation.individualPromptFiles.length, 0);
+  assert.equal(packageJson.scripts['sync:words'], undefined);
+  assert.equal(packageJson.scripts['legacy:sync:words'], 'node src/cli/sync-words.js');
 });
 
-test('blockiert fehlende Prompts im strengen Modus', async () => {
-  const noTitle = await createFixture({ missingFirstPrompt: true });
-  await assert.rejects(() => buildImagePromptBundle(noTitle, { strict: true }), /scene-01/);
-  const noPrimary = await createFixture({ missingSecondPrompt: true });
-  await assert.rejects(() => buildImagePromptBundle(noPrimary, { strict: true }), /scene-02/);
-  const noExtra = await createFixture({ missingExtraPrompt: true });
-  await assert.rejects(() => buildImagePromptBundle(noExtra, { strict: true }), /scene-02-image-02/);
+test('alte Visual-World-Policy und alter Countryball-Style-Master bleiben entfernt', async () => {
+  assert.equal(await exists('VISUAL_WORLD_POLICY.md'), false);
+  assert.equal(await exists('knowledge/countryball-style-master.md'), false);
+  assert.equal(await exists('test/kugelwelt-geometry-lock.test.js'), false);
+  assert.equal(await exists('knowledge/fixed-visual-world.md'), true);
 });
 
-test('erkennt Legacy-Doppelordner als veraltet', async () => {
-  const root = await createFixture();
-  await buildImagePromptBundle(root, { strict: true });
-  await mkdir(path.join(root, 'all-image-prompts'), { recursive: true });
-  await writeFile(path.join(root, 'all-image-prompts', 'all-image-prompts.txt'), 'legacy\n', 'utf8');
-  const validation = await validateImagePromptBundle(root);
-  assert.equal(validation.passed, false);
-  assert.equal(validation.technicalMirrorPresent, true);
+test('README friert offene Themenwelt und neue feste Bildwelt ein', async () => {
+  const readme = await text('README.md');
+
+  assert.match(readme, /offenem Themenuniversum/i);
+  assert.match(readme, /feste.*Bildwelt/i);
+  assert.match(readme, /modern-countryball-explainer/);
+  assert.match(readme, /00-bildprompts\/99-alle-bildprompts\.txt/);
+});
+
+test('Antigravity Policy enthält weder aktiven Word-Sync noch alten Flow-Einstieg', async () => {
+  const policy = await text('ANTIGRAVITY_IMAGE_POLICY.md');
+
+  assert.match(policy, /00-bildprompts\/99-alle-bildprompts\.txt/);
+  assert.match(policy, /sync:words.*nicht erforderlich/is);
+  assert.doesNotMatch(policy, /Untertitel-\/Word-Sync/);
+});
+
+test('Content-Regeln sind offen und besitzen die feste Bildwelt', async () => {
+  const rules = JSON.parse(await text('config/content-rules.json'));
+
+  assert.equal(rules.topicFocus.openTopicUniverse, true);
+  assert.equal(rules.topicFocus.autonomousSelectionLimitedToAllowedTopics, false);
+  assert.equal(rules.visualRules.visualWorldMode, 'fixed');
+  assert.equal(rules.visualRules.fixedVisualWorld, 'modern-countryball-explainer');
+  assert.equal(rules.visualRules.selectVisualWorldAfterScript, false);
+  assert.equal(rules.visualRules.consistentStyleWithinReel, true);
+});
+
+test('Image-Style-Konfiguration enthält genau die aktive feste Bildwelt', async () => {
+  const styles = JSON.parse(await text('config/image-styles.json'));
+
+  assert.equal(styles.visualWorldMode, 'fixed');
+  assert.equal(styles.fixedVisualWorld, 'modern-countryball-explainer');
+  assert.deepEqual(styles.newReelAllowedStyleIds, ['modern-countryball-explainer']);
+  assert.equal(styles.styles.length, 1);
+  assert.equal(styles.styles[0].id, 'modern-countryball-explainer');
+  assert.equal(styles.styles[0].promptLanguage, 'en');
+  assert.equal(styles.styles[0].visibleTextLanguage, 'de');
+  assert.equal(styles.styleBiblePath, 'knowledge/fixed-visual-world.md');
+});
+
+test('sichtbare Technikansicht bietet Untertitel nicht mehr als aktiven Arbeitsbereich an', async () => {
+  const humanView = await text('src/core/human-reel-view.js');
+
+  assert.doesNotMatch(humanView, /99-technik\/UNTERTITEL/);
+  assert.match(humanView, /Untertitel sind für neue Reels deaktiviert/);
+});
+
+test('Quality Gates enthalten keine tote Untertitel-Timing-Regel', async () => {
+  const gates = JSON.parse(await text('config/production-quality-gates.json'));
+
+  assert.equal(gates.sceneTiming.subtitlesEndWithVoiceover, undefined);
 });

@@ -1,103 +1,70 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdir, mkdtemp, readFile, writeFile } from 'node:fs/promises';
-import os from 'node:os';
+import { readFile } from 'node:fs/promises';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-import { applyAssetMap } from '../src/core/asset-ingest.js';
+const REPO_ROOT = fileURLToPath(new URL('..', import.meta.url));
 
-async function writeJson(filePath, value) {
-  await mkdir(path.dirname(filePath), { recursive: true });
-  await writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
+async function read(relativePath) {
+  return readFile(path.join(REPO_ROOT, relativePath), 'utf8');
 }
 
-async function readJson(filePath) {
-  return JSON.parse(await readFile(filePath, 'utf8'));
-}
+test('die Phasenbeschreibung nennt jede Rolle mit ihrem Ergebnis', async () => {
+  const doc = await read('WORKFLOW_PHASEN.md');
 
-async function createFixture({ twoImages = false } = {}) {
-  const root = await mkdtemp(path.join(os.tmpdir(), 'erklaer-assets-'));
-  const scene = {
-    sceneId: 'scene-01', order: 1, title: 'Natürliche Grenze',
-    narration: 'Manche Grenzen folgen Flüssen, Gebirgen oder Küsten.',
-    audioCue: 'Manche Grenzen', visualIdea: 'Fluss und Gebirge als Grenze.', imageText: 'NATÜRLICHE GRENZE',
-    expectedImageFileName: 'scene-01.png',
-    ...(twoImages ? {
-      imageCount: 2,
-      imagePhases: [
-        { phaseId: 'scene-01-image-01', order: 1, startPercent: 0, promptFileName: 'image-prompt.txt', expectedImageFileName: 'scene-01.png', visualIdea: 'Fluss', imageText: 'NATÜRLICHE GRENZE' },
-        { phaseId: 'scene-01-image-02', order: 2, startPercent: 0.55, promptFileName: 'image-prompt-02.txt', expectedImageFileName: 'scene-01-image-02.png', visualIdea: 'Gebirge', imageText: 'GEBIRGE', audioCue: 'Gebirgen' }
-      ]
-    } : {})
-  };
-
-  await writeJson(path.join(root, 'scenes', 'scene-index.json'), [scene]);
-  await writeJson(path.join(root, 'scenes', 'scene-01', 'scene.json'), scene);
-  await writeJson(path.join(root, 'assets-manifest.json'), { audio: {}, visuals: [], scenes: [{ sceneId: 'scene-01', expectedFile: 'scenes/scene-01/scene-01.png', status: 'missing' }] });
-  await writeJson(path.join(root, 'status.json'), {});
-  await mkdir(path.join(root, 'inbox', 'images'), { recursive: true });
-  await writeFile(path.join(root, 'inbox', 'images', 'upload.png'), 'dummy image bytes');
-  if (twoImages) await writeFile(path.join(root, 'inbox', 'images', 'upload2.png'), 'dummy image bytes 2');
-  return root;
-}
-
-function assignment(source, target, confidence = 1) {
-  return { source, target, confidence, matchMethod: 'numbered-global-image-order' };
-}
-
-test('Simple Mode übernimmt eindeutige nummerierte Zuordnung ohne zweite Prüfung oder Textbegründung', async () => {
-  const root = await createFixture();
-  await writeJson(path.join(root, 'inbox', 'asset-map.json'), {
-    version: 5,
-    assignments: [assignment('images/upload.png', 'scene-01')],
-    unmatched: []
-  });
-
-  const report = await applyAssetMap(root);
-  const status = await readJson(path.join(root, 'status.json'));
-  const verification = await readJson(path.join(root, 'review', 'scene-asset-verification.json'));
-
-  assert.equal(report.applied.length, 1);
-  assert.equal(report.skipped.length, 0);
-  assert.equal(report.summary.assignedImages, 1);
-  assert.equal(report.summary.visualVerificationPassed, true);
-  assert.equal(verification.visuals[0].passed, true);
-  assert.equal(status.images, 'ready');
-  assert.equal(status.assetMatching, 'numbered-routing-complete');
+  assert.match(doc, /Phase 1 — ChatGPT/);
+  assert.match(doc, /Phase 2 — Arman/);
+  assert.match(doc, /Phase 3 — Antigravity/);
+  // Ohne klare Übergabe weiß niemand, wann eine Phase fertig ist.
+  assert.equal((doc.match(/\*\*Übergabe an Phase/g) ?? []).length, 2);
+  assert.match(doc, /Antigravity erzeugt \*\*keine\*\* Inhalte/);
 });
 
-test('doppelte Verwendung desselben Ziels bleibt ein echter Blocker', async () => {
-  const root = await createFixture();
-  await writeFile(path.join(root, 'inbox', 'images', 'upload2.png'), 'other');
-  await writeJson(path.join(root, 'inbox', 'asset-map.json'), {
-    version: 5,
-    assignments: [
-      assignment('images/upload.png', 'scene-01'),
-      assignment('images/upload2.png', 'scene-01')
-    ],
-    unmatched: []
-  });
+test('jeder in der Phasenbeschreibung genannte npm-Befehl existiert wirklich', async () => {
+  const doc = await read('WORKFLOW_PHASEN.md');
+  const pkg = JSON.parse(await read('package.json'));
 
-  const report = await applyAssetMap(root);
-  assert.equal(report.applied.length, 1);
-  assert.equal(report.skipped.length, 1);
-  assert.match(report.skipped[0].reason, /doppelt/);
+  const genannt = [...doc.matchAll(/npm run ([a-z:]+)/g)].map((match) => match[1]);
+  assert.ok(genannt.length >= 8, 'Die Beschreibung muss die Befehlskette enthalten');
+
+  for (const skript of new Set(genannt)) {
+    assert.ok(pkg.scripts[skript], `npm run ${skript} steht in der Doku, fehlt aber in package.json`);
+  }
 });
 
-test('eine Szene mit zwei Bildphasen ist vollständig, sobald beide nummerierten Assets geroutet wurden', async () => {
-  const root = await createFixture({ twoImages: true });
-  await writeJson(path.join(root, 'inbox', 'asset-map.json'), {
-    version: 5,
-    assignments: [
-      assignment('images/upload.png', 'scene-01'),
-      assignment('images/upload2.png', 'scene-01-image-02')
-    ],
-    unmatched: []
-  });
+test('die Phasen sind aus den zentralen Regeldateien heraus auffindbar', async () => {
+  for (const datei of ['CURRENT_WORKFLOW.md', 'AGENTS.md']) {
+    const inhalt = await read(datei);
+    assert.match(inhalt, /WORKFLOW_PHASEN\.md/, `${datei} muss auf die Phasenbeschreibung verweisen`);
+  }
+});
 
-  const report = await applyAssetMap(root);
-  const scene = await readJson(path.join(root, 'scenes', 'scene-01', 'scene.json'));
-  assert.equal(report.summary.assignedImages, 2);
-  assert.equal(report.summary.totalImages, 2);
-  assert.equal(scene.imagePhases.every((phase) => phase.imageStatus === 'ready'), true);
+test('die genannten Kennzahlen stimmen mit der Konfiguration überein', async () => {
+  const doc = await read('WORKFLOW_PHASEN.md');
+  const rules = JSON.parse(await read('config/content-rules.json'));
+  const gates = JSON.parse(await read('config/production-quality-gates.json'));
+
+  // 9 Szenen mit je zwei Bildphasen, Hook eine: 17 Bilder.
+  const szenen = rules.visualRules.defaultSceneCount;
+  const bilder = 1 + (szenen - 1) * 2;
+  assert.ok(doc.includes(`${szenen} Szenen`), `Die Doku muss ${szenen} Szenen nennen`);
+  assert.ok(doc.includes(`${bilder} Bilder`), `Die Doku muss ${bilder} Bilder nennen`);
+  assert.ok(
+    doc.includes(`Bild ${String(bilder).padStart(2, '0')}.png`),
+    `Die Doku muss die letzte Bildnummer ${bilder} nennen`
+  );
+
+  const minimum = gates.sceneTiming.minimumImagePhaseSeconds;
+  assert.ok(doc.includes(`unter ${minimum} Sekunden`), `Die Doku muss die Untergrenze ${minimum} s nennen`);
+});
+
+test('der erzeugte Produktionsauftrag macht Bildtext verbindlich', async () => {
+  const { buildProductionBrief } = await import('../src/core/production-brief.js').catch(() => ({}));
+  const quelle = await read('src/core/production-brief.js');
+
+  // Der Auftrag landet in jedem neuen Reel unter production/agent-task.md.
+  assert.match(quelle, /zwingend einen eigenen/, 'Bildtext muss als Pflicht formuliert sein');
+  assert.match(quelle, /Überschrift des ganzen Reels/, 'Das Titelbild muss als Überschrift beschrieben sein');
+  assert.ok(!/optional eigenen `imageText`/.test(quelle), 'Bildtext darf nicht mehr als optional gelten');
 });

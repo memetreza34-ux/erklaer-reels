@@ -1,68 +1,89 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { mkdtemp, readFile, writeFile } from 'node:fs/promises';
+import os from 'node:os';
+import path from 'node:path';
 
-import { buildReelImageAudioMapping, buildSequentialAudioSync } from '../src/core/reel-image-audio-mapping.js';
+import { createReelWorkspace } from '../src/core/workspace.js';
+import { runVisualQualityCheck } from '../src/core/visual-qc.js';
 
-test('ordnet jeden Reel-Bildmoment exakt einem gesprochenen Textbereich zu', () => {
-  const sceneIndex = [
-    {
-      sceneId: 'scene-01', order: 1, audioCue: 'Warum passiert das',
-      narration: 'Warum passiert das eigentlich? Genau diese Frage klären wir jetzt.',
-      imagePhases: [{ phaseId: 'scene-01-image-01', order: 1, audioCue: 'Warum passiert das', expectedImageFileName: 'scene-01.png' }]
-    },
-    {
-      sceneId: 'scene-02', order: 2, audioCue: 'Der erste Grund',
-      narration: 'Der erste Grund liegt im Körper. Danach reagiert auch dein Gehirn automatisch.',
-      imagePhases: [
-        { phaseId: 'scene-02-image-01', order: 1, audioCue: 'Der erste Grund', expectedImageFileName: 'scene-02.png' },
-        { phaseId: 'scene-02-image-02', order: 2, audioCue: 'Danach reagiert', expectedImageFileName: 'scene-02-2.png' }
-      ]
-    }
-  ];
+function fakePng(width, height) {
+  const buffer = Buffer.alloc(24);
+  Buffer.from('89504e470d0a1a0a', 'hex').copy(buffer, 0);
+  buffer.writeUInt32BE(width, 16);
+  buffer.writeUInt32BE(height, 20);
+  return buffer;
+}
 
-  const mapping = buildReelImageAudioMapping(sceneIndex);
-  assert.equal(mapping.version, 2);
-  assert.equal(mapping.imageCount, 3);
-  assert.equal(mapping.mappings[0].visibleImageFileName, 'Bild 01.png');
-  assert.equal(mapping.mappings[0].spokenText, 'Warum passiert das eigentlich? Genau diese Frage klären wir jetzt.');
-  assert.equal(mapping.mappings[0].endAnchor, 'Der erste Grund liegt im Körper.');
-  assert.equal(mapping.mappings[1].spokenText, 'Der erste Grund liegt im Körper.');
-  assert.equal(mapping.mappings[1].timingRole, 'scene-start');
-  assert.equal(mapping.mappings[1].cutLeadSeconds, 0.10);
-  assert.equal(mapping.mappings[1].endAnchor, 'Danach reagiert');
-  assert.equal(mapping.mappings[2].spokenText, 'Danach reagiert auch dein Gehirn automatisch.');
-  assert.equal(mapping.mappings[2].timingRole, 'internal-image-cut');
-  assert.equal(mapping.mappings[2].cutLeadSeconds, 0.08);
-  assert.equal(mapping.mappings[2].endAnchor, 'VOICEOVER_END');
-  assert.equal(mapping.mappings[2].actualStartSeconds, null);
+async function writeJson(filePath, value) {
+  await writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
+}
+
+test('prüft alle Bildphasen und verlangt im strengen Modus die visuelle Freigabe', async () => {
+  const outputRoot = await mkdtemp(path.join(os.tmpdir(), 'erklaer-visuals-'));
+  const result = await createReelWorkspace({
+    title: 'Warum wirkt Warten so lang?',
+    script: 'Dieses Rohscript wird später zu einem vollständigen Ein-Minuten-Reel erweitert.',
+    date: new Date('2026-07-31T12:00:00'),
+    sceneCount: 9,
+    outputRoot
+  });
+
+  const manifestPath = path.join(result.reelDirectory, 'assets-manifest.json');
+  const manifest = JSON.parse(await readFile(manifestPath, 'utf8'));
+  // Jede Standardszene hat zwei Bildphasen, die Hook eine: 9 Szenen ergeben 17 Bilder.
+  for (const visual of manifest.visuals ?? manifest.scenes) {
+    await writeFile(path.join(result.reelDirectory, visual.expectedFile), fakePng(1080, 1920));
+    visual.status = 'ready';
+  }
+  for (const scene of manifest.scenes) scene.status = 'ready';
+  await writeJson(manifestPath, manifest);
+
+  const firstReport = await runVisualQualityCheck(result.reelDirectory, { strict: false });
+  assert.equal(firstReport.passed, true);
+  assert.equal(firstReport.summary.assetsChecked, 17);
+  assert.ok(firstReport.summary.warnings >= 17);
+
+  const inspectionPath = path.join(result.reelDirectory, 'review', 'visual-inspection.json');
+  const inspection = JSON.parse(await readFile(inspectionPath, 'utf8'));
+  for (const asset of inspection.assets) {
+    asset.reviewer = 'codex-vision';
+    asset.reviewedAt = '2026-07-31T10:00:00.000Z';
+    asset.status = 'passed';
+    asset.visibleSummary = 'Das Bild zeigt den geplanten klaren Szenenmoment mit den erwarteten sichtbaren Motiven.';
+    asset.matchReason = 'Die sichtbaren Motive und die Handlung entsprechen Narration, visueller Idee und geplantem Bildinhalt.';
+    asset.comparedAssetId = asset.assetId;
+    if (asset.kind === 'scene') asset.secondPassConfirmed = true;
+    for (const key of Object.keys(asset.checks)) asset.checks[key] = true;
+  }
+  await writeJson(inspectionPath, inspection);
+
+  const strictReport = await runVisualQualityCheck(result.reelDirectory, { strict: true });
+  assert.equal(strictReport.passed, true, JSON.stringify(strictReport.checks.filter((check) => !check.passed), null, 2));
+  assert.equal(strictReport.summary.failedChecks, 0);
 });
 
-test('bricht in Phase 1 weiter ab, wenn ein geplanter interner Cue gar nicht in der Narration vorkommt', () => {
-  assert.throws(() => buildReelImageAudioMapping([
-    {
-      sceneId: 'scene-01', order: 1, narration: 'Ein kurzer gültiger Satz.',
-      imagePhases: [
-        { phaseId: 'scene-01-image-01', order: 1, expectedImageFileName: 'scene-01.png' },
-        { phaseId: 'scene-01-image-02', order: 2, audioCue: 'kommt niemals vor', expectedImageFileName: 'scene-01-2.png' }
-      ]
-    }
-  ]), /kommt in der Narration nicht vor/);
-});
+test('erkennt ein falsches Seitenverhältnis im strengen Modus', async () => {
+  const outputRoot = await mkdtemp(path.join(os.tmpdir(), 'erklaer-visuals-ratio-'));
+  const result = await createReelWorkspace({
+    title: 'Was ist Gruppendruck?',
+    script: 'Dieses Rohscript wird später zu einem vollständigen Ein-Minuten-Reel erweitert.',
+    date: new Date('2026-07-31T12:00:00'),
+    sceneCount: 9,
+    outputRoot
+  });
 
-test('Phase 3 kann die feste Reihenfolge automatisch auf eine echte Audiodauer legen', () => {
-  const mapping = buildReelImageAudioMapping([
-    {
-      sceneId: 'scene-01', order: 1,
-      narration: 'Erste Aussage. Zweite Aussage mit etwas mehr Inhalt.',
-      imagePhases: [
-        { phaseId: 'scene-01-image-01', order: 1, expectedImageFileName: 'scene-01.png' },
-        { phaseId: 'scene-01-image-02', order: 2, audioCue: 'Zweite Aussage', expectedImageFileName: 'scene-01-2.png' }
-      ]
-    }
-  ]);
-  const result = buildSequentialAudioSync(mapping, 12, 'audio/voiceover.mp3');
-  assert.equal(result.audioSync.timingStatus, 'audio-synced');
-  assert.equal(result.mapping.mappings[0].actualStartSeconds, 0);
-  assert.equal(result.mapping.mappings[1].actualEndSeconds, 12);
-  assert.ok(result.mapping.mappings[1].actualStartSeconds > 0);
+  const manifestPath = path.join(result.reelDirectory, 'assets-manifest.json');
+  const manifest = JSON.parse(await readFile(manifestPath, 'utf8'));
+  for (const scene of manifest.scenes) {
+    await writeFile(path.join(result.reelDirectory, scene.expectedFile), fakePng(1080, 1920));
+    scene.status = 'ready';
+  }
+  // Szene 1 ist zugleich das Titelbild und bekommt hier ein falsches Seitenverhältnis.
+  await writeFile(path.join(result.reelDirectory, manifest.scenes[0].expectedFile), fakePng(1080, 1080));
+  await writeJson(manifestPath, manifest);
+
+  const report = await runVisualQualityCheck(result.reelDirectory, { strict: true });
+  assert.equal(report.passed, false);
+  assert.ok(report.checks.some((check) => check.id === 'scene-01-aspect-ratio' && check.passed === false));
 });

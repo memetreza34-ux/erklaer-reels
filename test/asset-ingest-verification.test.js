@@ -1,241 +1,158 @@
-# CURRENT WORKFLOW — VERBINDLICHE SINGLE SOURCE OF TRUTH
-
-**Stand: 2026-09-12**
-
-Diese Datei ist die verbindliche Repo-weite Regel für neue Reels, Codex und Antigravity.
-
-## Priorität
-
-1. aktuelle ausdrückliche Nutzeranweisung
-2. `CURRENT_WORKFLOW.md`
-3. `AGENTS.md`
-4. `WORKFLOW_PHASEN.md`
-5. weitere Docs/Knowledge-Dateien
-
-## Drei Phasen
-
-1. **ChatGPT** — Thema, Recherche, Script, Bildprompts, Bild↔Audio-Zuordnung, Motion/SFX, Caption, Quellen.
-2. **Arman** — echtes Voice-over und echte Bilder.
-3. **Antigravity** — Assets automatisch zusammenführen, Audio optimieren, Timing bauen, Motion/SFX, Render und kurze finale QC.
-
-Details: `WORKFLOW_PHASEN.md`.
-
-## Nutzerassets sind unveränderliche Originale
-
-- niemals Assets aus einem anderen Reel als Ersatz verwenden
-- niemals Nutzeroriginale zwischen Reels mit `mv` verschieben
-- niemals Nutzeroriginale mit `rm`, `rm -rf`, `git clean`, `git checkout` oder ähnlichen Befehlen löschen/zurücksetzen
-- niemals still überschreiben
-- manuelle Übernahme nur als sichere Kopie
-- bevorzugt:
-
-```bash
-npm run import:user-asset -- --dir "<reel>" --source "<datei>" --kind images|audio
-```
-
-## Themenfokus für neue Reels
-
-Vor jeder autonomen Themenwahl:
-
-1. `THEMEN_HISTORIE.md` auf Duplikate prüfen
-2. `REEL_THEMENFOKUS.md` / `config/reel-topic-focus.json` prüfen
-
-Kanal-Kern:
-
-> **Politik, Geschichte, Geografie und Systeme einfach erklärt.**
-
-Bevorzugt: Staatssysteme, Ideologien, Länder/Grenzen/Territorien, historische Wendepunkte, internationale Beziehungen/Geopolitik sowie passende Kultur-/Wirtschaftssysteme.
-
-Gesundheit, Medizin, Psychologie, Alltag, Lifestyle und ähnliche Off-Focus-Themen werden **nicht autonom gewählt**, außer der Nutzer verlangt ausdrücklich ein konkretes Thema daraus.
-
-Politische Inhalte sachlich, neutral und ohne Parteienwerbung/Wahlempfehlung erklären.
-
-## Reel-Standard
-
-- 55–60 s Voice-over, Ziel ca. 58 s
-- 155–175 deutsche Wörter, Ziel ca. 165
-- 8–10 narrative Szenen, Standard 9
-- ein deutscher Erzähler
-- keine Untertitel / kein aktiver Word-Sync
-- keine Hintergrundmusik
-- Voice-over 1,10x, Pitch erhalten
-- −16 LUFS, max. −1,5 dBTP
-- harte Cuts, keine Crossfades
-- Voice-over-Endstille höchstens 0,25 s
-- danach nur 0,5–0,7 s Schlussbild-Hold, Ziel 0,6 s
-
-## Feste Reel-Bildwelt
-
-Alle neuen Reels verwenden ausschließlich:
-
-```text
-serious-minimal-countryball-explainer
-```
-
-**Serious Minimal Countryball Explainer**, 9:16. YouTube bleibt vollständig getrennt.
-
-Verbindlich:
-- dicke saubere schwarze Konturen
-- flache kontrollierte 2D-Farben, minimale grafische Schatten
-- perfekt runde Countryball-artige Akteure, wenn ein Akteur sinnvoll ist
-- einfache weiße Augen, seriöse reduzierte Mimik
-- Flaggen/Karten/Institutionen natürlich einsetzen, wenn Politik/Geografie/Geschichte es verlangt
-- 0–3 sinnvolle Zusatzobjekte
-- drei Kompositionsmodi mischen: `minimal-symbolic`, `supported-explainer`, `simple-mini-scene`
-- nicht jedes Bild nur Kugel + leerer Hintergrund
-- keine normalen illustrierten Menschen, realistischen Räume/Hände/Haut, Foto-, Anime-, Clay- oder 3D/Pixar-Welt
-- Prompts Englisch, sichtbarer Text ausschließlich Deutsch
-- Bild 01 starke Headline; späterer Text optional und max. 4 Wörter
-
-Vor Bild 01 wird der World-Lock einmal gesetzt und danach nicht neu interpretiert.
-
-## Adaptive Dense V2 — Bildanzahl
-
-Neue Phase-1-Pakete:
-
-```text
-imageCountMode: adaptive-dense-v2
-visualDensityVersion: 2
-```
-
-Ziel:
-
-```text
-8 Szenen  → 19–21 Bilder
-9 Szenen  → 20–22 Bilder
-10 Szenen → 21–24 Bilder
-```
-
-Regeln:
-- Hook standardmäßig 2 Bildmomente
-- weitere Szenen 2 oder 3 je nach tatsächlichem gesprochenem Gedanken
-- 1 Bild = 1 klare gesprochene visuelle Kernaussage
-- jede interne Phase hat eigenes gesprochenes `audioCue`
-- technische Untergrenze ca. 2,2 s
-- häufig gut 2,5–3,8 s
-- ab ca. 4,8 s aktiv Split prüfen
-- keine starren gleich langen Bildblöcke
-
-Legacy-Reels bleiben renderbar.
-
-## Google Flow
-
-Einzige Nutzerdatei:
-
-```text
-00-bildprompts/99-alle-bildprompts.txt
-```
-
-Streng seriell:
-
-```text
-World-Lock lesen
-→ genau 1 Bild erzeugen
-→ warten
-→ prüfen
-→ Bild NN.png benennen
-→ ablegen
-→ erst dann nächstes Bild
-```
-
-Keine Queue, kein Batch, keine Parallelgenerierung.
-
-## Motion und SFX
-
-Jeder Bildmoment bewegt sich dezent. Erlaubt u. a. `ken-burns`, `subtle-push-in/out`, `slow-zoom-in/out`, `pan-*`.
-
-- Zoom meist 2–4 %, Pan 1–3 %
-- Szenencut ca. 0,10 s vor neuem Sprachbereich
-- interner Cut ca. 0,08 s davor
-- kurzer SFX ca. 0,04 s vor sichtbarem Cut
-- jeder Szenen-/interne Bildwechsel bekommt einen passenden SFX
-- nur Typen aus `config/sound-library.json`
-- Stimme bleibt dominant
-
-## Bild↔Audio-Zuordnung
-
-Phase 1 erzeugt:
-
-```text
-99-technik/BILD_AUDIO_ZUORDNUNG.json
-```
-
-Sie legt für Bild 01→NN bereits chronologisch den exakten `spokenText`-Bereich fest. Phase 3 erfindet keine neue Reihenfolge.
-
-Nach dem finalen Audio erzeugt:
-
-```bash
-npm run auto-align:reel -- --dir "<reel>"
-```
-
-eine automatische monotone Grundausrichtung aus finaler Audiodauer und den festgelegten Sprachbereichen. **Keine Einzel-Rückfragen zu jedem Anchor.** Im finalen Reel nur sichtbar schlechte Cuts selbst korrigieren. Blockieren nur bei echtem Script↔Audio-Konflikt.
-
-## Phase 3 — Simple Mode
-
-Normalerweise genau ein Befehl:
-
-```bash
-npm run phase3:reel -- --dir "<reel>"
-```
-
-Ablauf:
-
-```text
-Assets finden
-→ nummerierte Bilder automatisch routen
-→ schneller visueller Einmal-Check
-→ Voice-over optimieren
-→ Bild↔Audio automatisch grundausrichten
-→ Timeline + Sounds
-→ Finalizer
-→ Render
-→ finalen Export kurz ansehen
-```
-
-### Schnelle visuelle QC
-
-Nicht mehr pro Bild:
-- keine 12 Häkchen
-- keine schriftliche Bildbeschreibung
-- keine Match-Begründung
-- kein zweiter Prüfpass
-
-Nur prüfen:
-- Bild vorhanden / lesbar / 9:16
-- Nummer/Reihenfolge eindeutig
-- kein offensichtlicher Inhaltsfehler
-- kein offensichtlicher Bruch der festen Bildwelt
-- Pflichttext korrekt, falls vorhanden
-
-Nummerierte `Bild 01.png` → `Bild NN.png` sind nach vollständigem Import die chronologische Hauptautorität.
-
-### Antigravity fragt nur bei echten Blockern
-
-Nur stoppen, wenn z. B.:
-- Reel-Ziel wirklich unklar
-- Audio oder Pflichtbild fehlt/beschädigt
-- Bildnummern doppelt/mehrdeutig und nicht sicher lösbar
-- Voice-over lässt ganze Scriptteile aus oder stellt sie stark um
-- Nutzeroriginal müsste destruktiv verändert werden
-- ein technischer Hard Gate bleibt nach automatischer Reparatur bestehen
-- externe kostenpflichtige/irreversible Aktion wäre nötig
-
-Kleine Style-Abweichungen, ein nicht wortgenau gefundener Anchor oder neu berechenbare Timeline/SFX sind **keine** Gründe für eine Nutzerfrage.
-
-## Quellen
-
-Mindestens zwei echte HTTPS-Quellen auf unterschiedlichen Hosts, davon möglichst eine Primär-/offizielle/wissenschaftliche Quelle plus unabhängige Sekundär-/Fachquelle. Konkrete Belegzuordnung dokumentieren.
-
-## Definition of Done
-
-Fertig erst wenn:
-- Script/Quellen geprüft
-- alle erwarteten Bilder und echtes Audio vorhanden
-- Bildwelt grob konsistent und keine echten visuellen Hard Fails
-- Motion/SFX-Coverage vollständig
-- Audio 1,10x / −16 LUFS / max. −1,5 dBTP / Endstille ≤0,25 s
-- Bildreihenfolge und Audio-Timing im finalen Reel plausibel
-- kein schwarzer/langer stiller Nachlauf
-- `03-export/FERTIGES-REEL.mp4` und Caption existieren
-
-Nicht ausgeführte Tests/QC niemals als bestanden melden.
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { mkdir, mkdtemp, readFile, writeFile } from 'node:fs/promises';
+import os from 'node:os';
+import path from 'node:path';
+
+import { applyAssetMap } from '../src/core/asset-ingest.js';
+
+async function writeJson(filePath, value) {
+  await mkdir(path.dirname(filePath), { recursive: true });
+  await writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
+}
+
+async function readJson(filePath) {
+  return JSON.parse(await readFile(filePath, 'utf8'));
+}
+
+async function createFixture({ twoImages = false } = {}) {
+  const root = await mkdtemp(path.join(os.tmpdir(), 'erklaer-assets-'));
+  const scene = {
+    sceneId: 'scene-01',
+    order: 1,
+    title: 'Natürliche Grenze',
+    narration: 'Manche Grenzen folgen Flüssen, Gebirgen oder Küsten.',
+    audioCue: 'Manche Grenzen',
+    visualIdea: 'Ein Fluss trennt zwei Regionen und ein Gebirge führt die Linie weiter.',
+    imageText: 'NATÜRLICHE GRENZE',
+    expectedImageFileName: 'scene-01.png',
+    ...(twoImages ? {
+      imageCount: 2,
+      imagePhases: [
+        {
+          phaseId: 'scene-01-image-01', order: 1, startPercent: 0,
+          promptFileName: 'image-prompt.txt', expectedImageFileName: 'scene-01.png',
+          visualIdea: 'Überblick über den Fluss und beide Regionen.', imageText: 'NATÜRLICHE GRENZE'
+        },
+        {
+          phaseId: 'scene-01-image-02', order: 2, startPercent: 0.55,
+          promptFileName: 'image-prompt-02.txt', expectedImageFileName: 'scene-01-image-02.png',
+          visualIdea: 'Nahansicht des Gebirges, an dem die Grenze weiterläuft.', imageText: 'GEBIRGE'
+        }
+      ]
+    } : {})
+  };
+
+  await writeJson(path.join(root, 'scenes', 'scene-index.json'), [scene]);
+  await writeJson(path.join(root, 'scenes', 'scene-01', 'scene.json'), scene);
+  await writeJson(path.join(root, 'assets-manifest.json'), {
+    audio: {},
+    visuals: [],
+    scenes: [{ sceneId: 'scene-01', expectedFile: 'scenes/scene-01/scene-01.png', status: 'missing' }],
+    cover: {}
+  });
+  await writeJson(path.join(root, 'status.json'), {});
+  await mkdir(path.join(root, 'inbox', 'images'), { recursive: true });
+  await writeFile(path.join(root, 'inbox', 'images', 'upload.png'), 'dummy image bytes');
+  if (twoImages) await writeFile(path.join(root, 'inbox', 'images', 'upload2.png'), 'dummy image bytes 2');
+  return root;
+}
+
+function validAssignment(overrides = {}) {
+  return {
+    source: 'images/upload.png',
+    target: 'scene-01',
+    confidence: 0.95,
+    visualReviewed: true,
+    secondPassConfirmed: true,
+    sceneOrderConfirmed: true,
+    confirmedTarget: 'scene-01',
+    confirmedSceneOrder: 1,
+    visibleSummary: 'Ein Fluss und ein Gebirge trennen zwei farbige Regionen.',
+    reason: 'Fluss, Gebirge und Regionsaufteilung entsprechen exakt der Narration und der visuellen Idee.',
+    comparedFields: ['narration', 'visualIdea', 'imageText', 'imagePrompt'],
+    matchMethod: 'visual-text-and-content-review',
+    ...overrides
+  };
+}
+
+test('blockiert eine Bildzuordnung ohne zweite Prüfung', async () => {
+  const root = await createFixture();
+  await writeJson(path.join(root, 'inbox', 'asset-map.json'), {
+    version: 4,
+    assignments: [validAssignment({ secondPassConfirmed: false })],
+    unmatched: []
+  });
+
+  const report = await applyAssetMap(root);
+  assert.equal(report.applied.length, 0);
+  assert.equal(report.skipped.length, 1);
+  assert.match(report.skipped[0].reason, /zweite/i);
+  assert.equal(report.summary.assignedImages, 0);
+  assert.equal(report.summary.visualVerificationPassed, false);
+});
+
+test('blockiert eine widersprüchliche bestätigte Szenenreihenfolge', async () => {
+  const root = await createFixture();
+  await writeJson(path.join(root, 'inbox', 'asset-map.json'), {
+    version: 4,
+    assignments: [validAssignment({ confirmedSceneOrder: 2 })],
+    unmatched: []
+  });
+
+  const report = await applyAssetMap(root);
+  assert.equal(report.applied.length, 0);
+  assert.match(report.skipped[0].reason, /confirmedSceneOrder/);
+});
+
+test('übernimmt eine vollständig visuell bestätigte primäre Bildphase', async () => {
+  const root = await createFixture();
+  await writeJson(path.join(root, 'inbox', 'asset-map.json'), {
+    version: 4,
+    assignments: [validAssignment()],
+    unmatched: []
+  });
+
+  const report = await applyAssetMap(root);
+  const scene = await readJson(path.join(root, 'scenes', 'scene-01', 'scene.json'));
+  const verification = await readJson(path.join(root, 'review', 'scene-asset-verification.json'));
+  const status = await readJson(path.join(root, 'status.json'));
+
+  assert.equal(report.applied.length, 1);
+  assert.equal(report.summary.assignedImages, 1);
+  assert.equal(report.summary.totalImages, 1);
+  assert.equal(report.summary.visualVerificationPassed, true);
+  assert.equal(scene.assetVerification.confirmedTarget, 'scene-01');
+  assert.equal(scene.imageCount, 1);
+  assert.equal(verification.visuals[0].passed, true);
+  assert.equal(verification.scenes[0].passed, true);
+  assert.equal(status.assetMatching, 'verified');
+});
+
+test('eine Szene mit zwei Bildern ist erst nach beiden Bildphasen vollständig', async () => {
+  const root = await createFixture({ twoImages: true });
+  const extra = validAssignment({
+    source: 'images/upload2.png',
+    target: 'scene-01-image-02',
+    confirmedTarget: 'scene-01-image-02',
+    visibleSummary: 'Eine Nahansicht zeigt das Gebirge und die fortgesetzte Grenzlinie.',
+    reason: 'Das Gebirge und die fortlaufende Grenzlinie entsprechen exakt der zweiten geplanten Bildphase.'
+  });
+  await writeJson(path.join(root, 'inbox', 'asset-map.json'), {
+    version: 4,
+    assignments: [validAssignment(), extra],
+    unmatched: []
+  });
+
+  const report = await applyAssetMap(root);
+  const scene = await readJson(path.join(root, 'scenes', 'scene-01', 'scene.json'));
+  const verification = await readJson(path.join(root, 'review', 'scene-asset-verification.json'));
+
+  assert.equal(report.summary.assignedImages, 2);
+  assert.equal(report.summary.totalImages, 2);
+  assert.equal(report.summary.visualVerificationPassed, true);
+  assert.equal(scene.imageCount, 2);
+  assert.equal(scene.imagePhases.every((phase) => phase.imageStatus === 'ready'), true);
+  assert.equal(verification.visuals.length, 2);
+  assert.equal(verification.scenes[0].passed, true);
+});

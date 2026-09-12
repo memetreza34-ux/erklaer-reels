@@ -1,57 +1,305 @@
+# Die drei Produktionsphasen
+
+**Verbindliche Rollenverteilung für jedes Reel.** `CURRENT_WORKFLOW.md` hat bei Widersprüchen Vorrang. Für die exakte Bild↔Audio-Synchronisation gilt zusätzlich `REEL_BILD_AUDIO_ZUORDNUNG.md`.
+
+| Phase | Wer | Ergebnis |
+|---|---|---|
+| 1 | ChatGPT | Reel-Ordner mit Script, Bildprompts, exakter Bild↔Audio-Zuordnung, Motion-/SFX-Plan, Caption und Quellen |
+| 2 | Arman | echtes Voice-over und alle Bilder im aktuellen Reel-Ordner |
+| 3 | Antigravity | audio-getrieben synchronisiertes, geprüftes Reel mit MP4 + Caption |
+
+Niemand übernimmt Nutzerassets aus einem anderen Reel. Antigravity erzeugt keine Ersatzbilder.
+
+---
+
+## Phase 1 — ChatGPT
+
+### Slot und Thema
+
+Chronologisch nächsten freien Wochentag verwenden. Vor neuer Themenwahl `THEMEN_HISTORIE.md` prüfen. Themenuniversum ist offen; entscheidend sind Hook, Aha-Moment, Belegbarkeit, visuelle Stärke und Abwechslung.
+
+### Reel-Paket
+
+Bevorzugter Weg:
+
+```bash
+npm run import:reel -- --file input/reel-paket.json --check
+npm run import:reel -- --file input/reel-paket.json
+```
+
+Neue Pakete ab 2026-09-11 setzen zusätzlich:
+
+```json
 {
-  "version": 7,
-  "assetMatching": {
-    "minimumConfidence": 0.75,
-    "requireVisualReview": false,
-    "requireSecondPassConfirmation": false,
-    "requireSceneOrderConfirmation": false,
-    "requireMatchReason": false,
-    "minimumMatchReasonLength": 0,
-    "requireVisibleSummary": false,
-    "minimumVisibleSummaryLength": 0,
-    "requiredSceneComparedFields": [],
-    "requiredCoverComparedFields": [],
-    "forbidFilenameOnlyMatching": false,
-    "allowedMatchMethods": [
-      "numbered-global-image-order",
-      "chronological-filename-plus-visual-spot-check",
-      "filename-only",
-      "visual-content-review",
-      "visual-text-and-content-review"
-    ],
-    "leaveUnmatchedWhenUncertain": false,
-    "blockOnlyOnRealConflict": true,
-    "guidance": "Vollständige zweistellig nummerierte Bilder werden anhand ihrer globalen Bildreihenfolge automatisch geroutet. Danach reicht ein schneller visueller Spot-Check auf offensichtliche Inhalts-/Stilfehler. Keine schriftliche Begründung und kein zweiter Prüfpass pro Bild."
-  },
-  "sceneTiming": {
-    "hookSeconds": {"min": 4.5, "max": 6.0},
-    "standardSeconds": {"min": 6.0, "max": 7.5},
-    "finalSceneSecondsIncludingHold": {"min": 5.8, "max": 8.2},
-    "maximumAdjacentDifferenceSeconds": 2.5,
-    "postVoiceHoldSeconds": 0.6,
-    "postVoiceHoldRangeSeconds": {"min": 0.5, "max": 0.7},
-    "strictTimelineBalance": true,
-    "minimumImagePhaseSeconds": 2.2,
-    "recommendedImagePhaseSeconds": {"min": 2.5, "max": 3.8},
-    "splitReviewThresholdSeconds": 4.8,
-    "guidance": "Adaptive-Dense-V2-Reels dürfen mehr Bildphasen besitzen. Inhalt und Audio entscheiden; keine starre 3-Sekunden-Mindestregel mehr."
-  },
-  "editTiming": {
-    "sceneCueLeadSeconds": 0.1,
-    "imageCueLeadSeconds": 0.08,
-    "sfxPreRollSeconds": 0.04,
-    "sceneChangeSfxPreRollSeconds": 0.04,
-    "maximumCutLeadSeconds": 0.12,
-    "guidance": "Neue Bilder sollen am gesprochenen Cue oder minimal davor erscheinen. Standard: Bildschnitt 0,08 s vor dem Cue; ein kurzer Wechsel-SFX startet weitere 0,04 s davor."
-  },
-  "visualContinuity": {
-    "requireSceneMeaningMatch": true,
-    "requireSceneOrderConfirmed": true,
-    "requirePlannedGermanTextExact": true,
-    "forbidUnexpectedReadableText": true,
-    "requireSingleWorldLock": true,
-    "forbidDecorativeTinyBallActors": true,
-    "preferSubjectOnlyWhenActorAddsNoMeaning": true,
-    "singlePassVisualQc": true
-  }
+  "imageCountMode": "adaptive-dense-v2",
+  "visualDensityVersion": 2
 }
+```
+
+Der direkte Workspace-Befehl bleibt als Scaffold verfügbar, ist aber für neue Reels erst Phase-1-fertig, nachdem die adaptive Bilddichte geplant wurde:
+
+```bash
+npm run create:reel -- --title "Warum …?" --script-file input/script.txt --next-free --scenes 9
+```
+
+### Inhaltspflichten
+
+- 155–175 deutsche Wörter
+- 8–10 narrative Szenen, Standard 9
+- neue V2-Hook: exakt 2 Bildmomente
+- jede weitere Szene: 2 oder 3 Bildmomente je nach gesprochenem Inhalt
+- Zielkorridor: 8 Szenen 19–21 Bilder, 9 Szenen 20–22, 10 Szenen 21–24
+- **ein Bild = eine klare gesprochene visuelle Kernaussage**
+- komplexe Ursache→Wirkung-, Anatomie-, Technik-, Studien- und Vergleichsabschnitte bei echtem Gedankenwechsel splitten
+- einfache Aussagen nicht künstlich aufblasen
+- jede interne Bildphase mit eigenem gesprochenen `audioCue`
+- harte technische Untergrenze ca. 2,2 s; häufig guter Bereich 2,5–3,8 s
+- ab ca. 4,8 s pro Bild aktiv Split prüfen statt lange Standbilder automatisch zu akzeptieren
+- Bildprompts Englisch
+- Bild 01 mit deutscher Headline
+- spätere `imageText` optional, wenn vorhanden max. 4 Wörter
+- mindestens zwei hochwertige HTTPS-Quellen auf verschiedenen Hosts
+- plattformneutrale Caption mit 60–130 Wörtern und 3–6 Hashtags
+
+Legacy-Reels mit `one-hook-two-standard` bleiben unverändert unterstützt.
+
+### Bild↔Audio-Zuordnung — Pflicht
+
+Phase 1 muss für **jeden Bildmoment** eindeutig festlegen, welcher gesprochene Satz oder Satzabschnitt dazugehört.
+
+Kanonische Datei nach dem Import:
+
+```text
+99-technik/BILD_AUDIO_ZUORDNUNG.json
+```
+
+Der Paketimport erzeugt sie automatisch. Für jeden Bildmoment enthält sie u. a.:
+
+```text
+globalImageNumber
+sceneId
+phaseId
+spokenText
+startAnchor
+endAnchor
+actualStartSeconds
+actualEndSeconds
+alignmentConfidence
+```
+
+Regeln:
+- `spokenText` ist der exakte Sprachbereich dieses Bildes.
+- Die Bereiche dürfen sich nicht überlappen und keinen gesprochenen Text auslassen.
+- Das erste Bild einer Szene gehört ab Szenenbeginn bis zum nächsten internen Cue bzw. bis Szenenende.
+- **jede weitere Bildphase** beginnt an ihrem eigenen gesprochenen `audioCue` und läuft bis zum nächsten Cue bzw. Szenenende.
+- `actualStartSeconds` und `actualEndSeconds` bleiben in Phase 1 leer; sie werden erst in Phase 3 aus dem finalen Audio ermittelt.
+- Ein `audioCue`, das nicht in der Narration vorkommt, blockiert Phase 1.
+
+Details: `REEL_BILD_AUDIO_ZUORDNUNG.md`.
+
+### Bildwelt / World-Lock
+
+Ausschließlich **Serious Minimal Countryball Explainer** (`serious-minimal-countryball-explainer`) für neue Reels. Die alte `modern-countryball-explainer`-Welt ist für neue Produktionen ersetzt. YouTube bleibt unverändert separat.
+
+Vor Bild 01 setzt der KI-Agent die eine neue Projektwelt fest. Danach dürfen Einzelprompts nur Motiv, Requisiten, Hintergrundfarbe und Perspektive ändern — nicht die künstlerische Welt.
+
+Verbindlich:
+- dicke saubere schwarze Konturen
+- flache 2D-Farben, minimale grafische Schatten
+- meist einfache einfarbige/gedämpfte Hintergründe
+- perfekt runde Kugelfiguren, wenn Akteure gebraucht werden
+- keine normalen illustrierten Menschen
+- Flaggen nur bei geografischer/politischer/kultureller Relevanz, sonst neutrale Kugeln
+- keine winzigen dekorativen Kugeln
+- seriöse, reduzierte Mimik
+- 0–3 passende Zusatzobjekte statt dekorativem Füllmaterial
+
+Drei Kompositionsmodi dürfen gemischt werden:
+1. `minimal-symbolic`
+2. `supported-explainer`
+3. `simple-mini-scene`
+
+Dadurch ist nicht jedes Bild nur „Kugel + leerer Hintergrund“: passende Elemente wie Tür, Buch, Thermometer, Spotlight, Grabstein, Maske, Musiknote, Sprechblase, Gehirnsymbol, Karte oder Screen sind erlaubt, wenn sie die Aussage klarer machen. Detaillierte realistische Räume bleiben verboten.
+
+### Motion — Pflicht
+
+Jeder Bildmoment bekommt sichtbare dezente Bewegung:
+- `ken-burns`
+- `subtle-push-in` / `subtle-pull-out`
+- `slow-zoom-in` / `slow-zoom-out`
+- `pan-left/right/up/down`
+
+Zoom meist 2–4 %, Pan 1–3 %, weiches Easing. Hook und **alle internen Bildphasen** bewegen sich ebenfalls. `none` ist für neue Reels nicht zulässig. Bekannte Aliasnamen werden kanonisch aufgelöst; unbekannte Motion-Typen blockieren.
+
+### SFX — Pflicht
+
+- jeder Szenenwechsel ab Szene 2: SFX
+- jeder interne Bildwechsel: eigener SFX mit `targetId`
+- interne SFX möglichst mit demselben `audioCue` wie die Bildphase
+- eine dritte Bildphase braucht genauso einen eigenen Wechsel-SFX
+- `visualEvent` und `reason` Pflicht
+- ausschließlich `type` aus `config/sound-library.json`
+- typische Lautstärke 0,18–0,30
+
+Vor Übergabe:
+
+```bash
+npm run check:content -- --dir "<reel>" --strict
+npm run export:prompts -- --dir "<reel>" --strict
+```
+
+**Übergabe an Phase 2:** `00-bildprompts/99-alle-bildprompts.txt`, `01-voice-script/voice-script.txt` und `99-technik/BILD_AUDIO_ZUORDNUNG.json` sind fertig.
+
+---
+
+## Phase 2 — Arman
+
+### Voice-over
+
+`01-voice-script/voice-script.txt` sprechen/generieren und Original unter
+
+```text
+02-audio/AUDIO-HIER-EINFUEGEN/
+```
+
+ablegen. Original nicht überschreiben.
+
+### Bilder
+
+`00-bildprompts/99-alle-bildprompts.txt` verwenden.
+
+Vor Bild 01 liest der KI-Agent zuerst den globalen Serious-Minimal-World-Lock und hält ihn für **alle** Bilder fest. Danach streng seriell:
+
+```text
+1 Bild erzeugen → warten → Inhalt + feste Welt prüfen → Bild NN.png → ablegen → prüfen → nächstes
+```
+
+Keine Queue und keine Parallelgenerierung. Kein normales Menschendesign, keine realistische Umgebung und keine zufälligen Mini-Kugeln akzeptieren.
+
+Bei einem neuen 9-Szenen-V2-Reel werden typischerweise **20 bis 22** Bilder erzeugt; maßgeblich ist die im Projekt tatsächlich geplante Bildanzahl.
+
+Bilder gesammelt nach:
+
+```text
+00-bildprompts/00-ALLE-BILDER-HIER-REIN/
+```
+
+Die Datei `99-technik/BILD_AUDIO_ZUORDNUNG.json` wird in Phase 2 nicht umgeschrieben.
+
+**Übergabe an Phase 3:** aktuelles Reel enthält echtes Audio und alle laut Mapping erwarteten Bilder.
+
+---
+
+## Phase 3 — Antigravity
+
+Antigravity führt ausschließlich die echten aktuellen Assets zusammen. **Das finale Voice-over ist die Masterspur.** Die Bild↔Audio-Zuordnung ist keine grobe Empfehlung, sondern die inhaltliche Schnittgrundlage.
+
+### 1. Assets finden und prüfen
+
+```bash
+npm run discover:assets -- --dir "<reel>"
+npm run organize:assets -- --dir "<reel>" --apply
+npm run check:visuals -- --dir "<reel>" --strict
+```
+
+Bilder nicht nur nach Dateinummer zuordnen, sondern gegen Prompt, `spokenText`, Narration und Bildphase prüfen. Bei unsicherer Zuordnung nicht raten.
+
+### 2. Audio wirklich fertig machen
+
+```bash
+npm run trim:pauses -- --dir "<reel>" --speed 1.10
+```
+
+Pflicht:
+- Anfangs-/lange Pausen straffen
+- Endstille entfernen
+- 1,10x bei erhaltener Tonhöhe
+- −16 LUFS
+- max. −1,5 dBTP
+- echte Nachmessung
+
+Das finale Voice-over darf höchstens **0,25 s Endstille** enthalten. Der separate Schlussbild-Hold kommt erst in der Timeline und beträgt 0,5–0,7 s, Ziel 0,6 s.
+
+### 3. Exakte Bild↔Audio-Ausrichtung
+
+Vor dem Timeline-Bau muss Antigravity:
+
+1. `99-technik/BILD_AUDIO_ZUORDNUNG.json` lesen.
+2. Für jeden Bildmoment `startAnchor` und `endAnchor` im **final optimierten Audio** finden.
+3. Prüfen, dass der erkannte Audiobereich tatsächlich `spokenText` enthält.
+4. `actualStartSeconds` und `actualEndSeconds` aus dem echten Audio ableiten.
+5. Bei nicht eindeutigem Anchor **stoppen und prüfen**, niemals schätzen.
+
+Nicht erlaubt:
+- Bilder pauschal alle X Sekunden wechseln
+- nur `startPercent` verwenden
+- einen Wechsel nach Gefühl setzen
+- einen Satz einem anderen Bild zuordnen, nur um eine gewünschte Dauer zu erreichen
+- Adaptive Dense V2 in gleich lange 2,5-/3-/4-Sekunden-Blöcke pressen
+
+### 4. Sounds binden
+
+```bash
+npm run sync:sounds -- --dir "<reel>" --strict
+```
+
+Jeder geplante Soundtyp muss eine reale Datei aus der zentralen Library besitzen. Unbekannte Typen oder fehlende Dateien blockieren.
+
+### 5. Timeline
+
+```bash
+npm run build:timeline -- --dir "<reel>" --strict
+```
+
+- Szenencut ca. 0,10 s vor echtem Szenen-/Mapping-Anker
+- interner Bildcut ca. 0,08 s vor echtem Bild-Anker
+- SFX ca. 0,04 s vor sichtbarem Cut
+- technische Mindestdauer einer V2-Bildphase ca. 2,2 s
+- häufig guter Bereich 2,5–3,8 s; ab ca. 4,8 s Split prüfen, aber Audio-/Inhaltszuordnung hat Vorrang
+- Hook und alle Bildphasen mit sichtbarer Motion
+- keine Crossfades
+
+Wenn Mapping, echtes Audio und Mindestdauer kollidieren, darf Antigravity nicht blind verschieben. Erst die Zuordnung prüfen.
+
+### 6. Finalisieren und rendern
+
+```bash
+npm run finalize:reel -- --dir "<reel>" --strict
+npm run validate:render -- --dir "<reel>"
+npm run render:reel -- --dir "<reel>"
+```
+
+Finalizer und Renderer prüfen Motion-/SFX-Coverage, Soundbibliothek, aktuelle Audio-Dateibindung und Endstille erneut. Diese Gates gelten auch bei `--force`.
+
+**Ergebnis:**
+
+```text
+03-export/FERTIGES-REEL.mp4
+03-export/UNIVERSELLE-CAPTION.txt
+```
+
+---
+
+## Definition der Übergaben
+
+Phase 1 ist nicht fertig, wenn:
+- ein neues V2-Reel außerhalb seines Bildkorridors liegt
+- Motion oder Wechsel-SFX nur „später geplant“ sind
+- `99-technik/BILD_AUDIO_ZUORDNUNG.json` fehlt
+- ein Bildmoment keinen eindeutigen `spokenText`-Bereich besitzt
+- ein interner Bildmoment kein eigenes gesprochenes `audioCue` besitzt
+
+Phase 2 ist nicht fertig, wenn Audio/Bilder aus einem anderen Reel stammen oder Dateien fehlen.
+
+Phase 3 ist nicht fertig, wenn:
+- ein Bildmoment statisch bleibt
+- ein visueller Wechsel stumm bleibt
+- ein Soundtyp keine echte Library-Datei besitzt
+- Voice-over mehrere Sekunden Endstille enthält
+- Cue-Zeiten nicht am echten finalen Audio liegen
+- Bildwechsel nicht mit `BILD_AUDIO_ZUORDNUNG.json` übereinstimmen
+- ein Bild sichtbar zu früh oder zu spät zum zugehörigen Satz erscheint
+- visuelle QC nicht bestanden ist
+- finale MP4/Caption nicht existieren
+
+Nicht ausgeführte Tests oder QC-Stufen niemals als bestanden melden.

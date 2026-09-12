@@ -1,94 +1,156 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
+import { mkdir, mkdtemp, readFile, writeFile } from 'node:fs/promises';
+import os from 'node:os';
 import path from 'node:path';
 
-async function text(file) {
-  return readFile(path.resolve(file), 'utf8');
+import { runVisualQualityCheck } from '../src/core/visual-qc.js';
+
+async function writeJson(filePath, value) {
+  await mkdir(path.dirname(filePath), { recursive: true });
+  await writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
 }
 
-test('Neue Reels verankern Quellen-Schema und aktuelle feste Bildwelt direkt im Workspace-Core', async () => {
-  const workspace = await text('src/core/workspace.js');
-  const creator = await text('src/cli/create-reel.js');
-  const fixedWorld = await text('src/shared/fixed-visual-world.js');
+async function readJson(filePath) {
+  return JSON.parse(await readFile(filePath, 'utf8'));
+}
 
-  assert.match(workspace, /FIXED_VISUAL_STYLE_ID/);
-  assert.match(workspace, /visualStyleId:\s*FIXED_VISUAL_STYLE_ID/);
-  assert.match(workspace, /visualStyleReason:\s*FIXED_VISUAL_STYLE_REASON/);
-  assert.match(fixedWorld, /serious-minimal-countryball-explainer/);
-  assert.match(fixedWorld, /Serious Minimal Countryball Explainer/i);
-  assert.match(fixedWorld, /thick clean black outlines/i);
-  assert.match(workspace, /sourceQualitySchemaVersion:\s*3/);
-  assert.match(workspace, /buildSourcesTemplate/);
-  assert.doesNotMatch(creator, /sourceQualitySchemaVersion\s*=\s*3/);
-  assert.doesNotMatch(creator, /buildSourcesTemplate/);
-});
+async function createFixture({ twoImages = false } = {}) {
+  const root = await mkdtemp(path.join(os.tmpdir(), 'erklaer-visual-context-'));
+  const scene = {
+    sceneId: 'scene-01',
+    order: 1,
+    title: 'Natürliche Grenze',
+    narration: 'Manche Grenzen folgen Flüssen und Gebirgen.',
+    audioCue: 'folgen Flüssen',
+    visualIdea: 'Ein Fluss und ein Gebirge bilden eine natürliche Grenzlinie.',
+    imageText: 'NATÜRLICHE GRENZE',
+    expectedImageFileName: 'scene-01.png',
+    ...(twoImages ? {
+      imageCount: 2,
+      imagePhases: [
+        {
+          phaseId: 'scene-01-image-01', order: 1, startPercent: 0,
+          promptFileName: 'image-prompt.txt', expectedImageFileName: 'scene-01.png',
+          visualIdea: 'Überblick über einen Fluss zwischen zwei Regionen.', imageText: 'NATÜRLICHE GRENZE'
+        },
+        {
+          phaseId: 'scene-01-image-02', order: 2, startPercent: 0.55,
+          promptFileName: 'image-prompt-02.txt', expectedImageFileName: 'scene-01-image-02.png',
+          visualIdea: 'Nahansicht eines Gebirges, das die Grenzlinie fortsetzt.', imageText: 'GEBIRGE'
+        }
+      ]
+    } : {})
+  };
 
-test('Audio-Pacing-CLI bindet die echte Lautheitsmessung an die Ausgabedatei', async () => {
-  const source = await text('src/cli/trim-pauses.js');
-  assert.match(source, /stampAudioPacingFileBinding/);
-  assert.match(source, /Gemessen:/);
-  assert.match(source, /SHA-256-Fingerprint/);
-});
-
-test('Finalisierung und Renderer prüfen Quellen und Audio, aber keinen Word-Sync', async () => {
-  const cliFinalizer = await text('src/cli/finalize-reel.js');
-  const renderer = await text('src/cli/render-reel.js');
-  const coreRenderer = await text('src/core/remotion-renderer.js');
-  const finalizer = await text('src/core/finalize-reel.js');
-
-  for (const source of [cliFinalizer, renderer, coreRenderer, finalizer]) {
-    assert.match(source, /verifyRequiredSourceQuality/);
-    assert.match(source, /verifyAudioPacingFileBinding/);
-    assert.doesNotMatch(source, /verifyAppliedWordSyncAudioBinding/);
+  await writeJson(path.join(root, 'reel.json'), {
+    reelId: 'reel-01_test',
+    title: 'Warum haben Länder Grenzen?',
+    date: '2026-08-26',
+    subtitlesEnabled: false,
+    imageCountMode: 'individual-per-reel',
+    plannedImageCount: twoImages ? 2 : 1,
+    visualStyleId: null,
+    visualStyleReason: ''
+  });
+  await writeJson(path.join(root, 'scenes', 'scene-index.json'), [scene]);
+  await mkdir(path.join(root, 'scenes', 'scene-01'), { recursive: true });
+  await writeFile(path.join(root, 'scenes', 'scene-01', 'image-prompt.txt'), 'Vertical 9:16 scene with the exact German text "NATÜRLICHE GRENZE".', 'utf8');
+  if (twoImages) {
+    await writeFile(path.join(root, 'scenes', 'scene-01', 'image-prompt-02.txt'), 'Vertical 9:16 close detail scene with the exact German text "GEBIRGE".', 'utf8');
   }
-  assert.match(renderer, /auch mit --force blockiert/);
-  assert.match(coreRenderer, /veralteten Lautheitsmesswerte/);
-  assert.match(finalizer, /wordSyncRequired:\s*false/);
+  await writeJson(path.join(root, 'assets-manifest.json'), {
+    visuals: twoImages ? [
+      { targetId: 'scene-01', expectedFile: 'scenes/scene-01/scene-01.png', status: 'missing' },
+      { targetId: 'scene-01-image-02', expectedFile: 'scenes/scene-01/scene-01-image-02.png', status: 'missing' }
+    ] : [],
+    scenes: [{ sceneId: 'scene-01', expectedFile: 'scenes/scene-01/scene-01.png', status: 'missing' }],
+    cover: { expectedFile: 'cover/cover.png', status: 'missing' }
+  });
+  await writeJson(path.join(root, 'effects', 'effects-plan.json'), { scenes: [] });
+  await writeJson(path.join(root, 'cover', 'cover.json'), {
+    headline: 'LÄNDERGRENZEN',
+    visualIdea: 'Zwei Regionen werden durch eine klare sichtbare Grenzlinie getrennt.'
+  });
+  await writeFile(path.join(root, 'cover', 'cover-prompt.txt'), 'Vertical 9:16 cover with the exact German headline "LÄNDERGRENZEN".', 'utf8');
+  await writeJson(path.join(root, 'status.json'), {});
+  await mkdir(path.join(root, 'review'), { recursive: true });
+  return { root, scene };
+}
+
+test('visuelle Prüfung zeigt Szenenbedeutung und verlangt keine Untertitelzone oder feste Bildwelt', async () => {
+  const { root, scene } = await createFixture();
+
+  await runVisualQualityCheck(root, { strict: false });
+  const inspection = await readJson(path.join(root, 'review', 'visual-inspection.json'));
+  const sceneEntry = inspection.assets.find((entry) => entry.assetId === 'scene-01');
+
+  assert.equal(inspection.version, 10);
+  assert.equal(inspection.subtitlesEnabled, false);
+  assert.equal(Object.hasOwn(inspection, 'visualStyleId'), false);
+  assert.equal(inspection.plannedImageCount, 1);
+  assert.ok(inspection.instructions.some((instruction) => /ohne künstlich freigehaltene Untertitelzone/i.test(instruction)));
+  assert.ok(inspection.instructions.some((instruction) => /keine feste Repo-Bildwelt/i.test(instruction)));
+  assert.equal(Object.hasOwn(inspection.safeZones, 'subtitleVerticalPercent'), false);
+  assert.equal(sceneEntry.expected.narration, scene.narration);
+  assert.equal(sceneEntry.expected.audioCue, scene.audioCue);
+  assert.equal(sceneEntry.expected.visualIdea, scene.visualIdea);
+  assert.equal(sceneEntry.expected.imageText, scene.imageText);
+  assert.equal(sceneEntry.comparedAssetId, 'scene-01');
+  assert.equal(sceneEntry.secondPassConfirmed, false);
+  assert.equal(typeof sceneEntry.reviewFingerprint, 'string');
+  assert.equal(sceneEntry.reviewFingerprint.length, 64);
+  assert.ok(Object.hasOwn(sceneEntry.checks, 'sceneMeaningMatchesNarration'));
+  assert.ok(Object.hasOwn(sceneEntry.checks, 'sceneOrderConfirmed'));
+  assert.equal(Object.hasOwn(sceneEntry.checks, 'visualWorldMatch'), false);
+  assert.ok(Object.hasOwn(sceneEntry.checks, 'plannedGermanTextExact'));
+  assert.equal(Object.hasOwn(sceneEntry.checks, 'subtitleCollisionFree'), false);
 });
 
-test('Statusanzeige berücksichtigt Quellen- und Pacing-Gates und markiert Untertitel deaktiviert', async () => {
-  const status = await text('src/cli/reel-status.js');
-  assert.match(status, /verifyRequiredSourceQuality/);
-  assert.match(status, /verifyAudioPacingFileBinding/);
-  assert.doesNotMatch(status, /verifyAppliedWordSyncAudioBinding/);
-  assert.match(status, /subtitlesEnabled:\s*false/);
-  assert.match(status, /wordSyncRequired:\s*false/);
+test('legt bei zwei Bildphasen zwei getrennte visuelle Prüfobjekte an', async () => {
+  const { root } = await createFixture({ twoImages: true });
+  await runVisualQualityCheck(root, { strict: false });
+  const inspection = await readJson(path.join(root, 'review', 'visual-inspection.json'));
+
+  assert.equal(inspection.plannedImageCount, 2);
+  assert.ok(inspection.assets.some((entry) => entry.assetId === 'scene-01'));
+  const second = inspection.assets.find((entry) => entry.assetId === 'scene-01-image-02');
+  assert.ok(second);
+  assert.equal(second.expected.phaseOrder, 2);
+  assert.equal(second.expected.visualIdea, 'Nahansicht eines Gebirges, das die Grenzlinie fortsetzt.');
+  assert.equal(second.expected.previousTargetId, 'scene-01');
 });
 
-test('aktuelle Produktions-CLI-Beispiele verwenden reels statt content', async () => {
-  for (const file of [
-    'src/cli/check-content.js',
-    'src/cli/finalize-reel.js',
-    'src/cli/render-reel.js',
-    'src/cli/reel-status.js',
-    'src/cli/trim-pauses.js'
-  ]) {
-    const source = await text(file);
-    assert.match(source, /reels\/\.\.\.\/reel-01_titel/);
-    assert.doesNotMatch(source, /content\/\.\.\.\/reel-01_titel/);
-  }
-});
+test('setzt eine alte Freigabe zurück, sobald sich die Szenenbedeutung ändert', async () => {
+  const { root, scene } = await createFixture();
+  await runVisualQualityCheck(root, { strict: false });
 
-test('strenges Content-Gate verwendet das verpflichtende Quellen-Schema', async () => {
-  const source = await text('src/cli/check-content.js');
-  assert.match(source, /verifyRequiredSourceQuality/);
-  assert.match(source, /strictSourceGatePassed/);
-  assert.match(source, /sourceGate\.passed === true/);
-  assert.match(source, /hasMalformedUrlField/);
-});
+  const inspectionPath = path.join(root, 'review', 'visual-inspection.json');
+  const firstInspection = await readJson(inspectionPath);
+  const firstSceneEntry = firstInspection.assets.find((entry) => entry.assetId === 'scene-01');
+  firstSceneEntry.status = 'passed';
+  firstSceneEntry.visibleSummary = 'Ein Fluss und ein Gebirge trennen zwei farbige Regionen sichtbar voneinander.';
+  firstSceneEntry.matchReason = 'Die sichtbaren Landschaftselemente entsprechen exakt der geplanten natürlichen Grenzlinie.';
+  firstSceneEntry.secondPassConfirmed = true;
+  firstSceneEntry.checks = Object.fromEntries(Object.keys(firstSceneEntry.checks).map((key) => [key, true]));
+  await writeJson(inspectionPath, firstInspection);
 
-test('Legacy-Word-Sync-Hilfen dürfen bestehen, sind aber nicht Teil des normalen Renderpfads', async () => {
-  const wordSyncGuard = await text('src/core/word-sync-audio-guard.js');
-  const wordSyncCli = await text('src/cli/sync-words.js');
-  const renderCli = await text('src/cli/render-reel.js');
-  const finalizer = await text('src/core/finalize-reel.js');
-  const packageJson = JSON.parse(await text('package.json'));
+  const changedScene = {
+    ...scene,
+    narration: 'Andere Grenzen wurden durch Verträge und politische Entscheidungen festgelegt.',
+    visualIdea: 'Mehrere Vertreter unterschreiben gemeinsam einen Grenzvertrag.'
+  };
+  await writeJson(path.join(root, 'scenes', 'scene-index.json'), [changedScene]);
 
-  assert.match(wordSyncGuard, /audioFingerprintSha256/);
-  assert.match(wordSyncCli, /verifyWordSyncTimelineReadiness/);
-  assert.doesNotMatch(renderCli, /sync:words|Word-Sync-Audio|Wortzeiten/);
-  assert.doesNotMatch(finalizer, /sync:words|wordSyncAudioBinding/);
-  assert.equal(packageJson.scripts['sync:words'], undefined);
-  assert.equal(packageJson.scripts['legacy:sync:words'], 'node src/cli/sync-words.js');
+  await runVisualQualityCheck(root, { strict: false });
+  const secondInspection = await readJson(inspectionPath);
+  const secondSceneEntry = secondInspection.assets.find((entry) => entry.assetId === 'scene-01');
+
+  assert.notEqual(secondSceneEntry.reviewFingerprint, firstSceneEntry.reviewFingerprint);
+  assert.equal(secondSceneEntry.expected.narration, changedScene.narration);
+  assert.equal(secondSceneEntry.status, 'pending');
+  assert.equal(secondSceneEntry.visibleSummary, '');
+  assert.equal(secondSceneEntry.matchReason, '');
+  assert.equal(secondSceneEntry.secondPassConfirmed, false);
+  assert.equal(Object.values(secondSceneEntry.checks).every((value) => value === null), true);
 });
