@@ -1,150 +1,87 @@
-# ANTIGRAVITY — ABSOLUTES BILDGENERIERUNGSVERBOT
+# ANTIGRAVITY — REEL-PHASE-3 UND BILDREGEL
 
-**Verbindliche globale Repo-Regel.**
+**Verbindlich für alle Reels. YouTube bleibt separat.**
 
-Diese Regel gilt für **Antigravity** bei jeder Reel-Erstellung, jeder Reparatur, jedem neuen Chat und jedem automatischen Produktionslauf in diesem Repository.
+## Antigravity erzeugt keine Reel-Bilder
 
-## Verbot
+Antigravity darf keine fehlenden Reel-Bilder selbst generieren und keine Assets aus einem anderen Reel als Ersatz verwenden. Die Bilder werden in Phase 2 extern erzeugt und im aktuellen Reel abgelegt.
 
-**Antigravity darf niemals selbst Reel-Bilder erzeugen.**
-
-Das bedeutet ausdrücklich:
-
-- keine Titelbilder generieren
-- keine Szenenbilder generieren
-- keinen eingebauten oder externen Bildgenerator selbst starten
-- keine Bildgenerierungs-API für Reel-Bilder aufrufen
-- nicht stellvertretend für den Nutzer Google Flow starten oder dort die Generierung auslösen
-- keine Ersatzbilder selbst erzeugen, wenn Bilder fehlen, beschädigt oder falsch nummeriert sind
-- dieses Verbot nicht mit Zeitdruck, Bequemlichkeit oder Produktionsfortschritt umgehen
-
-Es gibt **keine automatische Ausnahme** von diesem Verbot.
-
-## Was Antigravity stattdessen tun darf und soll
-
-Antigravity erstellt bzw. bearbeitet vollständig:
-
-- Thema und Script
-- Szenenplanung
-- individuelle Bilddichte und Bildphasen
-- einzelne Szenen-/Bildphasen-Prompts (Szene 1 ist zugleich das Titelbild)
-- den vollständigen seriellen Google-Flow-Gesamtprompt
-- Nummerierung `Bild 01`, `Bild 02`, ...
-- Caption und Quellen
-- Produktions- und Statusdateien
-- Suche nach bereits vorhandenen Bildern
-- sichere ZIP-Suche und ZIP-Entpackung
-- visuelle Zwei-Pass-QC
-- Bildzuordnung
-- Audio-Pacing und Szenen-Synchronisierung
-- Finalizer, Render-Validierung und Video-Render, sobald die extern erzeugten Bilder und das Audio wirklich vorhanden und geprüft sind
-
-**Nicht Teil des aktiven Workflows:** Untertitel, Karaoke, Subtitle-Cues oder Word-Sync.
-
-## Wer die Bilder erzeugt
-
-Der **Nutzer startet Google Flow selbst** durch einmaliges Einfügen und Absenden der verbindlichen Datei:
+Verbindliche Nutzerdatei für Google Flow:
 
 ```text
 00-bildprompts/99-alle-bildprompts.txt
 ```
 
-`all-image-prompts/all-image-prompts.txt` ist nur die identische technische Spiegeldatei.
-
-Der frühere separate `google-flow-controller.txt` ist deaktiviert und nicht der normale Einstieg.
-
-Erst **nach diesem Nutzer-Start** darf Google Flow die Bilder gemäß dem seriellen Flow-Vertrag erzeugen.
-
-Antigravity darf die Prompts vorbereiten, aber **nicht selbst auf „Generieren“, „Senden“, „Start“, „Create“ oder eine vergleichbare Bildgenerierungsaktion klicken bzw. diese auslösen**.
-
-## Google-Flow-Vertrag: genau EIN Masterprompt für das ganze Reel
-
-Der Nutzer schickt **genau eine Nachricht** an den Google-Flow-Agenten: `00-bildprompts/99-alle-bildprompts.txt`.
-
-Diese eine Nachricht enthält:
-
-- alle Workflow-Anweisungen
-- die feste Reel-Bildwelt
-- die komplette Bildreihenfolge
-- alle einzelnen Bildprompts
-- die exakten Dateinamen
-- die Ordnerregel
-
-Trotzdem ist die Ausführung **streng seriell** und niemals als Mehrbild-/Serien-Generierung zu behandeln.
-
-### Vor Bild 01
-
-Google Flow muss zuerst genau einen gemeinsamen Medienordner / eine Sammlung anlegen:
+Die Bilder werden dort streng seriell erzeugt:
 
 ```text
-00-FERTIGE-REEL-BILDER
+1 Bild erzeugen → warten → prüfen → Bild NN.png → ablegen → erst dann nächstes Bild
 ```
 
-Dieser Ordner ist der einzige Zielordner für die final akzeptierten Bilder dieses Reels.
+Keine Queue, keine Parallelgenerierung, keine späteren Bilder vor Abschluss des aktuellen Bildes.
 
-### Für jedes einzelne Bild
+## Phase 3 arbeitet im Simple Mode
 
-```text
-genau 1 aktuellen Bildprompt lesen
-→ genau 1 Bildgenerator-Aufruf
-→ vollständig warten
-→ sichtbar gegen Prompt + Reel-Bildwelt prüfen
-→ falls falsch: nur dieses aktuelle Bild einzeln neu erzeugen
-→ exakt in Bild NN.png umbenennen
-→ Umbenennung prüfen
-→ sofort in 00-FERTIGE-REEL-BILDER legen/verschieben/einsortieren
-→ Ordnerablage prüfen
-→ erst dann den nächsten Bildprompt freigeben
+Normaler Einstieg:
+
+```bash
+npm run phase3:reel -- --dir "<reel>"
 ```
 
-**Verboten:**
+Antigravity soll danach **nicht bei jedem Zwischenschritt nachfragen**. Der Lauf arbeitet selbstständig bis zum Render, solange kein echter Hard Blocker vorliegt.
 
-- alle Bilder auf einmal generieren
-- mehrere Bildprompts in einem Generator-Aufruf
-- Batch-/Serien-/Galerie-Funktionen
-- parallele Bildgenerierung
-- mehrere queued Jobs
-- mehrere Varianten gleichzeitig
-- spätere Bilder starten, während das aktuelle Bild noch läuft
-- unbenannte Bilder ansammeln und erst am Ende sortieren
-- erst am Ende einen Ordner anlegen
+### Automatisches Routing
 
-Wenn Flow ein Bild **nicht** korrekt umbenennen oder **nicht** im vorgesehenen Ordner bestätigen kann, muss der Lauf **stoppen**. Es dürfen dann keine späteren Bilder erzeugt werden.
+`Bild 01`, `Bild 02`, `Bild 03` usw. bilden die bereits in Phase 1 festgelegte globale chronologische Bildreihenfolge. Diese Nummern dürfen Phase 3 direkt auf die geplanten Bildmomente routen.
 
-### Abschluss
+Nicht mehr erforderlich:
+- schriftliche Bildbeschreibung pro Bild
+- Match-Begründung pro Bild
+- zweite unabhängige Zuordnungsprüfung
+- manuelle Bestätigung jedes Sprachankers
+- Zwischenfreigabe nach jedem Pipeline-Schritt
 
-Der Auftrag ist erst abgeschlossen, wenn der gemeinsame Ordner exakt die geplante Anzahl finaler Bilder enthält:
+### Einmalige schnelle visuelle QC
 
-```text
-Bild 01.png
-Bild 02.png
-Bild 03.png
-...
-```
+Nach dem Routing prüft Antigravity die Bilder **einmal** auf:
+- Datei vorhanden und lesbar
+- 9:16 / technisch brauchbar
+- grob passend zum zugeordneten Satz/Bildmoment
+- gleiche `Serious Minimal Countryball Explainer`-Welt
+- Pflichttext korrekt, falls für das Bild vorgesehen
 
-Keine fehlende Nummer, keine doppelte Nummer und keine unbenannten finalen Bilder.
+Kleine ästhetische Unterschiede blockieren nicht. Nur offensichtlicher falscher Inhalt, falsche Reihenfolge, klarer Stilbruch, kaputte Datei oder falscher Pflichttext sind Hard Fails.
 
-## Wenn Bilder fehlen
+### Bild↔Audio
 
-Fehlende Bilder berechtigen Antigravity **nicht** zur Eigenproduktion.
+Das finale Voice-over ist die Masterspur. Phase 1 liefert bereits die feste Satz↔Bild-Reihenfolge. Phase 3 erzeugt daraus automatisch eine monotone zeitliche Grundausrichtung und baut die Timeline ohne Einzel-Rückfragen.
 
-Stattdessen zuerst die bestehende Asset-Discovery ausführen und nach bereits erzeugten Downloads/ZIPs suchen. Wenn wirklich keine passenden Bilder vorhanden sind, bleibt der Bildstatus offen und Antigravity informiert den Nutzer, dass der externe Google-Flow-Schritt noch fehlt.
+Richtwerte:
+- Szenencut ca. 0,10 s vor dem Szenenbeginn
+- interner Bildcut ca. 0,08 s vor dem Bild-Cue
+- SFX ca. 0,04 s vor dem sichtbaren Cut
+- Adaptive Dense V2: meist 2,5–3,8 s je Bildmoment, technische Untergrenze ca. 2,2 s
+- keine starren gleich langen Blöcke
 
-## Untertitel und Word-Sync
+### Hard Blocker — hier darf Antigravity stoppen
 
-Der aktuelle Reel-Standard ist untertitelfrei:
+Nur bei Problemen, die nicht sicher autonom lösbar sind:
+- erwartetes Bild fehlt
+- doppelte Bildnummer
+- mehrere unklare Voice-over-Dateien
+- Audio fehlt oder ist beschädigt
+- Bilddatei ist beschädigt/unlesbar
+- offensichtliche falsche Reihenfolge oder falscher Inhalt
+- schwerer Stilbruch
+- Pflichttext klar falsch
+- Render-/Toolfehler, der nicht automatisch behoben werden kann
 
-- keine Untertitel
-- keine Karaoke-Markierung
-- keine Subtitle-Cues
-- `sync:words` ist im aktiven Produktionsworkflow nicht erforderlich und darf nicht als Pflichtschritt eingeführt werden
+Dann den **konkreten Blocker** nennen. Keine allgemeinen Rückfragen und keine Freigabe für bereits klare Schritte einholen.
 
-Historische Word-Sync-Helfer sind nur Legacy-Diagnosewerkzeuge. Siehe `LEGACY_TOOLS.md`.
+## Untertitel
 
-## Priorität
+Neue Reels haben keine Untertitel und keinen aktiven Word-Sync. `sync:words` ist Legacy und gehört nicht in Phase 3.
 
-Diese Datei konkretisiert die bereits in `CURRENT_WORKFLOW.md` und `AGENTS.md` festgelegte Rollenverteilung und darf nicht als Lockerung anderer Regeln verstanden werden.
+## Kurzform
 
-Bei Widersprüchen gilt weiterhin die Prioritätsreihenfolge aus `CURRENT_WORKFLOW.md`. Eine normale Anweisung wie „Mach ein neues Reel“ hebt dieses Bildgenerierungsverbot **nicht** auf.
-
-**Kurzform: Antigravity schreibt EINEN kompletten Masterprompt für das ganze Reel; Google Flow erzeugt daraus streng Bild für Bild, benennt sofort um und sammelt jedes fertige Bild sofort im einen gemeinsamen Ordner. Antigravity erzeugt niemals selbst Reel-Bilder.**
+**Arman erzeugt Audio + Bilder. Antigravity routet sie automatisch nach Bildnummer, macht einen schnellen Sichtcheck, optimiert Audio, richtet Bild↔Audio automatisch aus, bindet SFX, baut die Timeline und rendert. Fragen nur bei echten Hard Blockern.**

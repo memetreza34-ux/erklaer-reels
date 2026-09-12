@@ -15,142 +15,67 @@ async function readJson(filePath) {
   return JSON.parse(await readFile(filePath, 'utf8'));
 }
 
-async function createFixture({ twoImages = false } = {}) {
+async function createFixture() {
   const root = await mkdtemp(path.join(os.tmpdir(), 'erklaer-visual-context-'));
   const scene = {
-    sceneId: 'scene-01',
-    order: 1,
-    title: 'Natürliche Grenze',
-    narration: 'Manche Grenzen folgen Flüssen und Gebirgen.',
-    audioCue: 'folgen Flüssen',
-    visualIdea: 'Ein Fluss und ein Gebirge bilden eine natürliche Grenzlinie.',
-    imageText: 'NATÜRLICHE GRENZE',
-    expectedImageFileName: 'scene-01.png',
-    ...(twoImages ? {
-      imageCount: 2,
-      imagePhases: [
-        {
-          phaseId: 'scene-01-image-01', order: 1, startPercent: 0,
-          promptFileName: 'image-prompt.txt', expectedImageFileName: 'scene-01.png',
-          visualIdea: 'Überblick über einen Fluss zwischen zwei Regionen.', imageText: 'NATÜRLICHE GRENZE'
-        },
-        {
-          phaseId: 'scene-01-image-02', order: 2, startPercent: 0.55,
-          promptFileName: 'image-prompt-02.txt', expectedImageFileName: 'scene-01-image-02.png',
-          visualIdea: 'Nahansicht eines Gebirges, das die Grenzlinie fortsetzt.', imageText: 'GEBIRGE'
-        }
-      ]
-    } : {})
+    sceneId: 'scene-01', order: 1, title: 'Föderalismus',
+    narration: 'Bund und Länder teilen sich politische Aufgaben.',
+    audioCue: 'Bund und Länder',
+    visualIdea: 'Bund und Länder als zwei politische Ebenen.',
+    imageText: 'FÖDERALISMUS',
+    imageCount: 1,
+    imagePhases: [{
+      phaseId: 'scene-01-image-01', order: 1, startPercent: 0,
+      promptFileName: 'image-prompt.txt', expectedImageFileName: 'scene-01.png',
+      visualIdea: 'Bund und Länder als zwei politische Ebenen.', imageText: 'FÖDERALISMUS'
+    }]
   };
-
   await writeJson(path.join(root, 'reel.json'), {
-    reelId: 'reel-01_test',
-    title: 'Warum haben Länder Grenzen?',
-    date: '2026-08-26',
-    subtitlesEnabled: false,
-    imageCountMode: 'individual-per-reel',
-    plannedImageCount: twoImages ? 2 : 1,
-    visualStyleId: null,
-    visualStyleReason: ''
+    reelId: 'reel-01_test', title: 'Was ist Föderalismus?', subtitlesEnabled: false,
+    imageCountMode: 'adaptive-dense-v2', plannedImageCount: 1,
+    visualStyleId: 'serious-minimal-countryball-explainer'
   });
   await writeJson(path.join(root, 'scenes', 'scene-index.json'), [scene]);
   await mkdir(path.join(root, 'scenes', 'scene-01'), { recursive: true });
-  await writeFile(path.join(root, 'scenes', 'scene-01', 'image-prompt.txt'), 'Vertical 9:16 scene with the exact German text "NATÜRLICHE GRENZE".', 'utf8');
-  if (twoImages) {
-    await writeFile(path.join(root, 'scenes', 'scene-01', 'image-prompt-02.txt'), 'Vertical 9:16 close detail scene with the exact German text "GEBIRGE".', 'utf8');
-  }
+  await writeFile(path.join(root, 'scenes', 'scene-01', 'image-prompt.txt'), 'Vertical 9:16 serious minimal countryball scene with exact German text "FÖDERALISMUS".', 'utf8');
   await writeJson(path.join(root, 'assets-manifest.json'), {
-    visuals: twoImages ? [
-      { targetId: 'scene-01', expectedFile: 'scenes/scene-01/scene-01.png', status: 'missing' },
-      { targetId: 'scene-01-image-02', expectedFile: 'scenes/scene-01/scene-01-image-02.png', status: 'missing' }
-    ] : [],
-    scenes: [{ sceneId: 'scene-01', expectedFile: 'scenes/scene-01/scene-01.png', status: 'missing' }],
-    cover: { expectedFile: 'cover/cover.png', status: 'missing' }
+    visuals: [{ targetId: 'scene-01', expectedFile: 'scenes/scene-01/scene-01.png', status: 'missing' }],
+    scenes: [{ sceneId: 'scene-01', expectedFile: 'scenes/scene-01/scene-01.png', status: 'missing' }]
   });
   await writeJson(path.join(root, 'effects', 'effects-plan.json'), { scenes: [] });
-  await writeJson(path.join(root, 'cover', 'cover.json'), {
-    headline: 'LÄNDERGRENZEN',
-    visualIdea: 'Zwei Regionen werden durch eine klare sichtbare Grenzlinie getrennt.'
-  });
-  await writeFile(path.join(root, 'cover', 'cover-prompt.txt'), 'Vertical 9:16 cover with the exact German headline "LÄNDERGRENZEN".', 'utf8');
   await writeJson(path.join(root, 'status.json'), {});
   await mkdir(path.join(root, 'review'), { recursive: true });
-  return { root, scene };
+  return root;
 }
 
-test('visuelle Prüfung zeigt Szenenbedeutung und verlangt keine Untertitelzone oder feste Bildwelt', async () => {
-  const { root, scene } = await createFixture();
-
+test('visuelle Prüfung erzeugt Single-Pass-Fast-QC ohne zweite Prüfpflicht', async () => {
+  const root = await createFixture();
   await runVisualQualityCheck(root, { strict: false });
   const inspection = await readJson(path.join(root, 'review', 'visual-inspection.json'));
-  const sceneEntry = inspection.assets.find((entry) => entry.assetId === 'scene-01');
-
-  assert.equal(inspection.version, 10);
+  assert.equal(inspection.version, 12);
+  assert.equal(inspection.mode, 'single-pass-fast');
   assert.equal(inspection.subtitlesEnabled, false);
-  assert.equal(Object.hasOwn(inspection, 'visualStyleId'), false);
-  assert.equal(inspection.plannedImageCount, 1);
-  assert.ok(inspection.instructions.some((instruction) => /ohne künstlich freigehaltene Untertitelzone/i.test(instruction)));
-  assert.ok(inspection.instructions.some((instruction) => /keine feste Repo-Bildwelt/i.test(instruction)));
-  assert.equal(Object.hasOwn(inspection.safeZones, 'subtitleVerticalPercent'), false);
-  assert.equal(sceneEntry.expected.narration, scene.narration);
-  assert.equal(sceneEntry.expected.audioCue, scene.audioCue);
-  assert.equal(sceneEntry.expected.visualIdea, scene.visualIdea);
-  assert.equal(sceneEntry.expected.imageText, scene.imageText);
-  assert.equal(sceneEntry.comparedAssetId, 'scene-01');
-  assert.equal(sceneEntry.secondPassConfirmed, false);
-  assert.equal(typeof sceneEntry.reviewFingerprint, 'string');
-  assert.equal(sceneEntry.reviewFingerprint.length, 64);
-  assert.ok(Object.hasOwn(sceneEntry.checks, 'sceneMeaningMatchesNarration'));
-  assert.ok(Object.hasOwn(sceneEntry.checks, 'sceneOrderConfirmed'));
-  assert.equal(Object.hasOwn(sceneEntry.checks, 'visualWorldMatch'), false);
-  assert.ok(Object.hasOwn(sceneEntry.checks, 'plannedGermanTextExact'));
-  assert.equal(Object.hasOwn(sceneEntry.checks, 'subtitleCollisionFree'), false);
+  assert.ok(inspection.instructions.some((entry) => /keine schriftliche Bildbeschreibung/i.test(entry)));
+  assert.ok(inspection.instructions.some((entry) => /kein zweiter Prüfpass/i.test(entry)));
+  assert.equal(inspection.assets.length, 1);
+  assert.equal(Object.hasOwn(inspection.assets[0], 'secondPassConfirmed'), false);
 });
 
-test('legt bei zwei Bildphasen zwei getrennte visuelle Prüfobjekte an', async () => {
-  const { root } = await createFixture({ twoImages: true });
+test('geänderte Szenenbedeutung erzeugt einen neuen Review-Fingerprint', async () => {
+  const root = await createFixture();
   await runVisualQualityCheck(root, { strict: false });
-  const inspection = await readJson(path.join(root, 'review', 'visual-inspection.json'));
-
-  assert.equal(inspection.plannedImageCount, 2);
-  assert.ok(inspection.assets.some((entry) => entry.assetId === 'scene-01'));
-  const second = inspection.assets.find((entry) => entry.assetId === 'scene-01-image-02');
-  assert.ok(second);
-  assert.equal(second.expected.phaseOrder, 2);
-  assert.equal(second.expected.visualIdea, 'Nahansicht eines Gebirges, das die Grenzlinie fortsetzt.');
-  assert.equal(second.expected.previousTargetId, 'scene-01');
-});
-
-test('setzt eine alte Freigabe zurück, sobald sich die Szenenbedeutung ändert', async () => {
-  const { root, scene } = await createFixture();
-  await runVisualQualityCheck(root, { strict: false });
-
   const inspectionPath = path.join(root, 'review', 'visual-inspection.json');
-  const firstInspection = await readJson(inspectionPath);
-  const firstSceneEntry = firstInspection.assets.find((entry) => entry.assetId === 'scene-01');
-  firstSceneEntry.status = 'passed';
-  firstSceneEntry.visibleSummary = 'Ein Fluss und ein Gebirge trennen zwei farbige Regionen sichtbar voneinander.';
-  firstSceneEntry.matchReason = 'Die sichtbaren Landschaftselemente entsprechen exakt der geplanten natürlichen Grenzlinie.';
-  firstSceneEntry.secondPassConfirmed = true;
-  firstSceneEntry.checks = Object.fromEntries(Object.keys(firstSceneEntry.checks).map((key) => [key, true]));
-  await writeJson(inspectionPath, firstInspection);
+  const first = await readJson(inspectionPath);
+  const firstFingerprint = first.assets[0].reviewFingerprint;
 
-  const changedScene = {
-    ...scene,
-    narration: 'Andere Grenzen wurden durch Verträge und politische Entscheidungen festgelegt.',
-    visualIdea: 'Mehrere Vertreter unterschreiben gemeinsam einen Grenzvertrag.'
-  };
-  await writeJson(path.join(root, 'scenes', 'scene-index.json'), [changedScene]);
+  const scenesPath = path.join(root, 'scenes', 'scene-index.json');
+  const scenes = await readJson(scenesPath);
+  scenes[0].narration = 'Die Länder haben in einigen Bereichen eigene Zuständigkeiten.';
+  scenes[0].visualIdea = 'Mehrere Länder mit eigenen Zuständigkeitskarten.';
+  await writeJson(scenesPath, scenes);
 
   await runVisualQualityCheck(root, { strict: false });
-  const secondInspection = await readJson(inspectionPath);
-  const secondSceneEntry = secondInspection.assets.find((entry) => entry.assetId === 'scene-01');
-
-  assert.notEqual(secondSceneEntry.reviewFingerprint, firstSceneEntry.reviewFingerprint);
-  assert.equal(secondSceneEntry.expected.narration, changedScene.narration);
-  assert.equal(secondSceneEntry.status, 'pending');
-  assert.equal(secondSceneEntry.visibleSummary, '');
-  assert.equal(secondSceneEntry.matchReason, '');
-  assert.equal(secondSceneEntry.secondPassConfirmed, false);
-  assert.equal(Object.values(secondSceneEntry.checks).every((value) => value === null), true);
+  const second = await readJson(inspectionPath);
+  assert.notEqual(second.assets[0].reviewFingerprint, firstFingerprint);
+  assert.equal(second.assets[0].status, 'pending');
 });

@@ -4,7 +4,9 @@ import path from 'node:path';
 import { collectImagePrompts } from './image-prompt-bundle.js';
 
 const IMAGE_EXTENSIONS = new Set(['.png', '.jpg', '.jpeg', '.webp']);
+const AUDIO_EXTENSIONS = new Set(['.mp3', '.wav', '.m4a', '.aac', '.flac', '.ogg']);
 const DROP_DIRECTORY = path.join('inbox', 'numbered-images');
+const AUDIO_DIRECTORY = path.join('inbox', 'audio');
 const SOURCE_DIRECTORY = 'numbered-images';
 const README_FILE = 'README.md';
 
@@ -35,10 +37,7 @@ export function parseNumberedImageFileName(fileName) {
   const match = stem.match(/^(?:(?:bild|image)[\s_-]*)?(\d{2})(?:[\s_-].*)?$/i);
   if (!match) return null;
 
-  return {
-    number: Number(match[1]),
-    extension
-  };
+  return { number: Number(match[1]), extension };
 }
 
 export function getNumberedImageDropDirectory(reelDirectory) {
@@ -49,16 +48,15 @@ export async function ensureNumberedImageDropDirectory(reelDirectory) {
   const directory = getNumberedImageDropDirectory(reelDirectory);
   await mkdir(directory, { recursive: true });
 
-  const readmePath = path.join(directory, README_FILE);
   await writeFile(
-    readmePath,
+    path.join(directory, README_FILE),
     '# Alle Bilder hier hinein\n\n' +
-    'Lege alle Szenen-Bildphasen gemeinsam in diesen Ordner. Es gibt kein separates Cover: Szene 1 ist zugleich das Titelbild. Die zweistellige Nummer bestimmt nur das vorgeschlagene Ziel in der **globalen Bildreihenfolge**:\n\n' +
-    '- `01.png` oder `Bild 01.png` → erste Bildphase des Reels, zugleich Titelbild\n' +
-    '- `02.png` → zweite Bildphase des Reels\n' +
-    '- usw. bis zum letzten geplanten Bild\n\n' +
-    '**Wichtig:** Bild 03 bedeutet nicht automatisch Szene 3. Wenn Szene 2 zwei Bilder besitzt, können Bild 02 und Bild 03 beide zu Szene 2 gehören.\n\n' +
-    'Unterstützt werden PNG, JPG, JPEG und WEBP. Die Nummerierung ist weiterhin nur Routing-Hilfe. Vor der endgültigen Übernahme muss jedes Bild sichtbar gegen seine konkrete Bildphase geprüft werden.\n',
+    'Lege die finalen Reel-Bilder in globaler Reihenfolge in diesen Ordner. Szene 1 ist zugleich das Titelbild; es gibt kein separates Reel-Thumbnail.\n\n' +
+    '- `Bild 01.png` → erster geplanter Bildmoment\n' +
+    '- `Bild 02.png` → zweiter geplanter Bildmoment\n' +
+    '- usw. bis zur tatsächlich geplanten Bildanzahl\n\n' +
+    'Die zweistellige Nummer ist für Phase 3 die verbindliche Routing-Reihenfolge. Bei mehreren Bildphasen pro Szene können mehrere aufeinanderfolgende Nummern zur gleichen Szene gehören.\n\n' +
+    'Unterstützt werden PNG, JPG, JPEG und WEBP. Nach dem automatischen Routing folgt genau ein schneller visueller QC-Durchgang. Es ist keine schriftliche Begründung und kein zweiter Prüfpass pro Bild nötig.\n',
     'utf8'
   );
 
@@ -69,24 +67,60 @@ function sourceRelativeToInbox(fileName) {
   return `${SOURCE_DIRECTORY}/${fileName}`;
 }
 
-function emptyVisualFields(target, sceneOrder, phaseOrder) {
-  const assignment = {
-    confidence: 0,
+async function collectSingleAudioAssignment(reelDirectory, previousAssignments) {
+  const preserved = previousAssignments.find((assignment) => String(assignment?.target ?? '') === 'audio');
+  if (preserved) return { assignment: preserved, conflict: null };
+
+  const directory = path.join(reelDirectory, AUDIO_DIRECTORY);
+  if (!(await exists(directory))) return { assignment: null, conflict: null };
+
+  const files = (await readdir(directory, { withFileTypes: true }))
+    .filter((entry) => entry.isFile() && AUDIO_EXTENSIONS.has(path.extname(entry.name).toLowerCase()))
+    .map((entry) => entry.name)
+    .sort((a, b) => a.localeCompare(b, 'de', { numeric: true }));
+
+  if (files.length === 0) return { assignment: null, conflict: null };
+  if (files.length > 1) {
+    return {
+      assignment: null,
+      conflict: {
+        source: 'audio/',
+        reason: `Mehrere Voice-over-Dateien gefunden (${files.join(', ')}). Das ist ein echter Hard Blocker; Phase 3 darf nicht raten.`
+      }
+    };
+  }
+
+  return {
+    assignment: {
+      source: `audio/${files[0]}`,
+      target: 'audio',
+      confidence: 1,
+      matchMethod: 'single-audio-candidate',
+      suggestedBy: 'single-current-reel-audio-file'
+    },
+    conflict: null
+  };
+}
+
+function automaticVisualAssignment(source, visual, number) {
+  return {
+    source,
+    target: visual.targetId,
+    parentSceneId: visual.sceneId,
+    importNumber: number,
+    suggestedBy: 'numbered-global-image-order',
+    confidence: 1,
     visualReviewed: false,
     secondPassConfirmed: false,
-    confirmedTarget: null,
+    sceneOrderConfirmed: true,
+    confirmedTarget: visual.targetId,
+    confirmedSceneOrder: visual.sceneOrder,
+    confirmedPhaseOrder: visual.phaseOrder,
     visibleSummary: '',
     reason: '',
     comparedFields: [],
-    matchMethod: ''
+    matchMethod: 'numbered-global-image-order'
   };
-
-  assignment.sceneOrderConfirmed = false;
-  assignment.confirmedSceneOrder = null;
-  assignment.suggestedSceneOrder = sceneOrder;
-  assignment.suggestedPhaseOrder = phaseOrder;
-
-  return assignment;
 }
 
 export async function prepareNumberedImageAssignments(reelDirectory, { skipWhenEmpty = false } = {}) {
@@ -112,7 +146,7 @@ export async function prepareNumberedImageAssignments(reelDirectory, { skipWhenE
     if (!candidate.parsed) {
       unmatched.push({
         source: sourceRelativeToInbox(candidate.name),
-        reason: 'Dateiname enthält keine eindeutige zweistellige Bildnummer im Format 00, 01, 02 ...'
+        reason: 'Dateiname enthält keine eindeutige zweistellige Bildnummer wie `Bild 01.png`.'
       });
       continue;
     }
@@ -129,7 +163,7 @@ export async function prepareNumberedImageAssignments(reelDirectory, { skipWhenE
       for (const candidate of candidates) {
         unmatched.push({
           source: sourceRelativeToInbox(candidate.name),
-          reason: `Mehrere Dateien verwenden dieselbe Nummer ${String(number).padStart(2, '0')}; keine automatische Auswahl.`
+          reason: `Mehrere Dateien verwenden Bildnummer ${String(number).padStart(2, '0')}. Das ist ein echter Hard Blocker.`
         });
       }
       continue;
@@ -137,8 +171,8 @@ export async function prepareNumberedImageAssignments(reelDirectory, { skipWhenE
 
     const candidate = candidates[0];
     const source = sourceRelativeToInbox(candidate.name);
-
     const visual = imageTargetsByNumber.get(number);
+
     if (!visual) {
       unmatched.push({
         source,
@@ -147,37 +181,39 @@ export async function prepareNumberedImageAssignments(reelDirectory, { skipWhenE
       continue;
     }
 
-    assignments.push({
-      source,
-      target: visual.targetId,
-      parentSceneId: visual.sceneId,
-      suggestedBy: 'numbered-global-image-order',
-      importNumber: number,
-      ...emptyVisualFields(visual.targetId, visual.sceneOrder, visual.phaseOrder)
+    assignments.push(automaticVisualAssignment(source, visual, number));
+  }
+
+  const expectedNumbers = [...imageTargetsByNumber.keys()].sort((a, b) => a - b);
+  const missingNumbers = expectedNumbers.filter((number) => !grouped.has(number));
+  for (const number of missingNumbers) {
+    unmatched.push({
+      source: null,
+      reason: `Bild ${String(number).padStart(2, '0')} fehlt.`
     });
   }
 
   const mapPath = path.join(reelDirectory, 'inbox', 'asset-map.json');
   const previousMap = await readJson(mapPath, { assignments: [] });
-  const preservedAssignments = Array.isArray(previousMap?.assignments)
-    ? previousMap.assignments.filter((assignment) => String(assignment?.target ?? '') === 'audio')
-    : [];
+  const previousAssignments = Array.isArray(previousMap?.assignments) ? previousMap.assignments : [];
+  const audio = await collectSingleAudioAssignment(reelDirectory, previousAssignments);
+  if (audio.conflict) unmatched.push(audio.conflict);
 
   const assetMap = {
-    version: 4,
-    generatedBy: 'numbered-image-import',
-    assignmentMode: 'global-image-order-suggestion-with-required-visual-review',
+    version: 5,
+    generatedBy: 'numbered-image-import-simple-mode',
+    assignmentMode: 'global-number-routing-plus-separate-fast-visual-qc',
     plannedImageCount: imageTargetsByNumber.size,
     instructions: [
-      'Die zweistellige Dateinummer beschreibt die globale Bildreihenfolge: 01 ist die erste Bildphase und zugleich das Titelbild, danach alle geplanten Bildphasen fortlaufend.',
-      'Eine Bildnummer ist nicht automatisch identisch mit einer Szenennummer, wenn Szenen mehrere Bilder besitzen.',
-      'Vor --apply jedes Bild öffnen und den sichtbaren Inhalt tatsächlich gegen die vorgeschlagene Bildphase prüfen.',
-      'Nach der Sichtprüfung confidence, visualReviewed, secondPassConfirmed, visibleSummary, reason, comparedFields und matchMethod ausfüllen.',
-      'Bei Szenen zusätzlich confirmedTarget, confirmedSceneOrder und sceneOrderConfirmed bestätigen.',
-      'matchMethod muss nach echter Sichtprüfung visual-content-review oder visual-text-and-content-review sein.',
-      'Unter der konfigurierten Mindestkonfidenz nicht anwenden.'
+      'Bildnummern bestimmen die globale chronologische Routing-Reihenfolge automatisch.',
+      'Keine manuelle Bildbeschreibung, keine Match-Begründung und keine zweite Zuordnungsprüfung ausfüllen.',
+      'Nach --apply läuft check:visuals --strict genau einmal als schneller visueller QC-Durchgang.',
+      'Nur fehlende/doppelte Nummern, mehrere Audio-Kandidaten oder andere echte Konflikte blockieren und rechtfertigen eine Rückfrage.'
     ],
-    assignments: [...preservedAssignments, ...assignments],
+    assignments: [
+      ...(audio.assignment ? [audio.assignment] : []),
+      ...assignments
+    ],
     unmatched
   };
 
@@ -189,8 +225,9 @@ export async function prepareNumberedImageAssignments(reelDirectory, { skipWhenE
     candidateCount: candidateFiles.length,
     plannedImageCount: imageTargetsByNumber.size,
     assignedCount: assignments.length,
-    preservedAudioAssignments: preservedAssignments.length,
+    audioAssigned: Boolean(audio.assignment),
     unmatchedCount: unmatched.length,
+    hardBlockerCount: unmatched.length,
     assignments,
     unmatched
   };

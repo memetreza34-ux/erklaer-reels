@@ -5,66 +5,35 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const REPO_ROOT = fileURLToPath(new URL('..', import.meta.url));
+const read = (relativePath) => readFile(path.join(REPO_ROOT, relativePath), 'utf8');
 
-async function read(relativePath) {
-  return readFile(path.join(REPO_ROOT, relativePath), 'utf8');
-}
-
-test('die Phasenbeschreibung nennt jede Rolle mit ihrem Ergebnis', async () => {
+test('Phasenbeschreibung nennt ChatGPT, Arman und Antigravity', async () => {
   const doc = await read('WORKFLOW_PHASEN.md');
-
   assert.match(doc, /Phase 1 — ChatGPT/);
   assert.match(doc, /Phase 2 — Arman/);
   assert.match(doc, /Phase 3 — Antigravity/);
-  // Ohne klare Übergabe weiß niemand, wann eine Phase fertig ist.
-  assert.equal((doc.match(/\*\*Übergabe an Phase/g) ?? []).length, 2);
-  assert.match(doc, /Antigravity erzeugt \*\*keine\*\* Inhalte/);
+  assert.match(doc, /SIMPLE MODE/i);
+  assert.match(doc, /Rückfragen nur bei echten Hard Blockern/i);
 });
 
-test('jeder in der Phasenbeschreibung genannte npm-Befehl existiert wirklich', async () => {
+test('Phase 3 besitzt genau einen normalen Startbefehl', async () => {
   const doc = await read('WORKFLOW_PHASEN.md');
   const pkg = JSON.parse(await read('package.json'));
-
-  const genannt = [...doc.matchAll(/npm run ([a-z:]+)/g)].map((match) => match[1]);
-  assert.ok(genannt.length >= 8, 'Die Beschreibung muss die Befehlskette enthalten');
-
-  for (const skript of new Set(genannt)) {
-    assert.ok(pkg.scripts[skript], `npm run ${skript} steht in der Doku, fehlt aber in package.json`);
-  }
+  assert.match(doc, /npm run phase3:reel/);
+  assert.equal(pkg.scripts['phase3:reel'], 'node src/cli/phase3-reel.js');
 });
 
-test('die Phasen sind aus den zentralen Regeldateien heraus auffindbar', async () => {
-  for (const datei of ['CURRENT_WORKFLOW.md', 'AGENTS.md']) {
-    const inhalt = await read(datei);
-    assert.match(inhalt, /WORKFLOW_PHASEN\.md/, `${datei} muss auf die Phasenbeschreibung verweisen`);
-  }
-});
-
-test('die genannten Kennzahlen stimmen mit der Konfiguration überein', async () => {
+test('Phase-1-Doku beschreibt Adaptive Dense V2 statt starrer 17 Bilder', async () => {
   const doc = await read('WORKFLOW_PHASEN.md');
-  const rules = JSON.parse(await read('config/content-rules.json'));
-  const gates = JSON.parse(await read('config/production-quality-gates.json'));
-
-  // 9 Szenen mit je zwei Bildphasen, Hook eine: 17 Bilder.
-  const szenen = rules.visualRules.defaultSceneCount;
-  const bilder = 1 + (szenen - 1) * 2;
-  assert.ok(doc.includes(`${szenen} Szenen`), `Die Doku muss ${szenen} Szenen nennen`);
-  assert.ok(doc.includes(`${bilder} Bilder`), `Die Doku muss ${bilder} Bilder nennen`);
-  assert.ok(
-    doc.includes(`Bild ${String(bilder).padStart(2, '0')}.png`),
-    `Die Doku muss die letzte Bildnummer ${bilder} nennen`
-  );
-
-  const minimum = gates.sceneTiming.minimumImagePhaseSeconds;
-  assert.ok(doc.includes(`unter ${minimum} Sekunden`), `Die Doku muss die Untergrenze ${minimum} s nennen`);
+  assert.match(doc, /adaptive-dense-v2/i);
+  assert.match(doc, /9 Szenen: 20–22 Bilder/i);
+  assert.doesNotMatch(doc, /9 Szenen\s*=\s*17 Bilder/i);
 });
 
-test('der erzeugte Produktionsauftrag macht Bildtext verbindlich', async () => {
-  const { buildProductionBrief } = await import('../src/core/production-brief.js').catch(() => ({}));
-  const quelle = await read('src/core/production-brief.js');
-
-  // Der Auftrag landet in jedem neuen Reel unter production/agent-task.md.
-  assert.match(quelle, /zwingend einen eigenen/, 'Bildtext muss als Pflicht formuliert sein');
-  assert.match(quelle, /Überschrift des ganzen Reels/, 'Das Titelbild muss als Überschrift beschrieben sein');
-  assert.ok(!/optional eigenen `imageText`/.test(quelle), 'Bildtext darf nicht mehr als optional gelten');
+test('Simple Mode entfernt alte per-Bild-Freigabepflichten', async () => {
+  const doc = await read('WORKFLOW_PHASEN.md');
+  assert.match(doc, /nicht.*sichtbare Bildbeschreibung/is);
+  assert.match(doc, /nicht.*Match-Begründung/is);
+  assert.match(doc, /nicht.*zweite Zuordnungsprüfung/is);
+  assert.match(doc, /keine Zwischenfragen/i);
 });

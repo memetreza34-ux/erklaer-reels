@@ -21,14 +21,30 @@ async function main() {
   }
 
   if (numberedOnly && shouldApply) {
-    throw new Error('--numbered und --apply nicht gleichzeitig verwenden. Erst nummeriert vorsortieren, dann visuell prüfen und danach --apply ausführen.');
+    throw new Error('--numbered und --apply getrennt ausführen: zuerst automatisch routen, danach übernehmen.');
   }
 
   if (shouldApply) {
     const report = await applyAssetMap(reelDirectory);
-    console.log(`Scenes: ${report.summary.assignedScenes}/${report.summary.totalScenes}`);
+    console.log(`Bilder übernommen: ${report.summary.assignedImages}/${report.summary.totalImages}`);
     console.log(`Audio: ${report.summary.audioReady ? 'ready' : 'missing'}`);
-    console.log(`Skipped: ${report.skipped.length}`);
+    console.log(`Übersprungen: ${report.skipped.length}`);
+    if (report.skipped.length > 0 || report.summary.assignedImages !== report.summary.totalImages) {
+      process.exitCode = 1;
+      console.error('Hard Blocker: Assets konnten nicht vollständig übernommen werden. Nur den konkreten Konflikt beheben; keine Einzel-Freigaben nötig.');
+    }
+    return;
+  }
+
+  if (numberedOnly) {
+    const numbered = await prepareNumberedImageAssignments(reelDirectory);
+    console.log(`Nummerierte Bilder: ${numbered.candidateCount}`);
+    console.log(`Automatisch geroutet: ${numbered.assignedCount}/${numbered.plannedImageCount}`);
+    console.log(`Audio automatisch zugeordnet: ${numbered.audioAssigned ? 'ja' : 'nein'}`);
+    console.log(`Hard Blocker: ${numbered.hardBlockerCount}`);
+    console.log('Routing-Regel: Bild 01 → erster geplanter Bildmoment, Bild 02 → zweiter usw.');
+    console.log('Keine per-Bild-Beschreibungen oder zweite Zuordnungsprüfung. Der visuelle Check erfolgt später einmal gesammelt.');
+    if (numbered.hardBlockerCount > 0) process.exitCode = 1;
     return;
   }
 
@@ -40,37 +56,22 @@ async function main() {
   } else if (discovery.imageDiscovery.ambiguousCompleteZips?.length > 0) {
     console.log(`Multiple complete ZIP candidates found: ${discovery.imageDiscovery.ambiguousCompleteZips.length}`);
     for (const candidate of discovery.imageDiscovery.ambiguousCompleteZips) console.log(`- ${candidate}`);
-    console.log('Agent must inspect the candidates and rerun discover:assets with --zip <verified-candidate>.');
   } else if (discovery.imageDiscovery.ambiguousLooseSets?.length > 0) {
     console.log(`Multiple complete loose image sets found: ${discovery.imageDiscovery.ambiguousLooseSets.length}`);
     for (const candidate of discovery.imageDiscovery.ambiguousLooseSets) console.log(`- ${candidate}`);
-  } else if (!discovery.imageDiscovery.alreadyComplete) {
-    console.log('No complete external numbered image set found after searching reel folder, Downloads and Desktop.');
   }
 
-  if (discovery.audioDiscovery?.staged) {
-    console.log(`External audio staged: ${discovery.audioDiscovery.staged.source}`);
-  } else if (discovery.audioDiscovery?.candidates?.length > 0) {
-    console.log(`Audio candidates found for review: ${discovery.audioDiscovery.candidates.length}`);
-  }
-
-  const numbered = await prepareNumberedImageAssignments(reelDirectory, {
-    skipWhenEmpty: !numberedOnly
-  });
-
+  const numbered = await prepareNumberedImageAssignments(reelDirectory, { skipWhenEmpty: true });
   if (numbered) {
-    console.log(`Numbered images found: ${numbered.candidateCount}`);
-    console.log(`Targets preassigned: ${numbered.assignedCount}`);
-    console.log(`Unmatched/conflicts: ${numbered.unmatchedCount}`);
-    console.log('Mapping: 01 -> Szene 1 (zugleich Titelbild), 02 -> Szene 2, ...');
-    console.log('The filename only preselects the target. Open every image and complete the visual QC fields in inbox/asset-map.json before --apply.');
+    console.log(`Automatische Nummernzuordnung vorbereitet: ${numbered.assignedCount}/${numbered.plannedImageCount}`);
+    console.log('Danach mit --apply übernehmen; keine manuellen QC-Felder ausfüllen.');
     return;
   }
 
   const inventory = await buildAssetInventory(reelDirectory);
   console.log(`Images found: ${inventory.candidates.images.length}`);
   console.log(`Audio files found: ${inventory.candidates.audio.length}`);
-  console.log('Fill inbox/asset-map.json, then run again with --apply.');
+  console.log('Keine vollständige nummerierte Serie gefunden. Nur bei einem echten Zuordnungskonflikt manuell eingreifen.');
 }
 
 main().catch((error) => {

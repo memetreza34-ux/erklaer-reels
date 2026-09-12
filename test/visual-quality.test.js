@@ -19,71 +19,48 @@ async function writeJson(filePath, value) {
   await writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
 }
 
-test('prüft alle Bildphasen und verlangt im strengen Modus die visuelle Freigabe', async () => {
+test('prüft alle geplanten Bildphasen technisch mit Single-Pass-Fast-QC', async () => {
   const outputRoot = await mkdtemp(path.join(os.tmpdir(), 'erklaer-visuals-'));
   const result = await createReelWorkspace({
-    title: 'Warum wirkt Warten so lang?',
-    script: 'Dieses Rohscript wird später zu einem vollständigen Ein-Minuten-Reel erweitert.',
-    date: new Date('2026-07-31T12:00:00'),
-    sceneCount: 9,
-    outputRoot
+    title: 'Was ist Föderalismus?',
+    script: 'Dieses Rohscript dient nur dazu, die technische visuelle Prüfung aller geplanten Bildphasen zu testen.',
+    date: new Date('2026-09-12T12:00:00'), sceneCount: 9, outputRoot
   });
 
   const manifestPath = path.join(result.reelDirectory, 'assets-manifest.json');
   const manifest = JSON.parse(await readFile(manifestPath, 'utf8'));
-  // Jede Standardszene hat zwei Bildphasen, die Hook eine: 9 Szenen ergeben 17 Bilder.
-  for (const visual of manifest.visuals ?? manifest.scenes) {
+  for (const visual of manifest.visuals) {
     await writeFile(path.join(result.reelDirectory, visual.expectedFile), fakePng(1080, 1920));
     visual.status = 'ready';
   }
   for (const scene of manifest.scenes) scene.status = 'ready';
   await writeJson(manifestPath, manifest);
 
-  const firstReport = await runVisualQualityCheck(result.reelDirectory, { strict: false });
-  assert.equal(firstReport.passed, true);
-  assert.equal(firstReport.summary.assetsChecked, 17);
-  assert.ok(firstReport.summary.warnings >= 17);
-
-  const inspectionPath = path.join(result.reelDirectory, 'review', 'visual-inspection.json');
-  const inspection = JSON.parse(await readFile(inspectionPath, 'utf8'));
-  for (const asset of inspection.assets) {
-    asset.reviewer = 'codex-vision';
-    asset.reviewedAt = '2026-07-31T10:00:00.000Z';
-    asset.status = 'passed';
-    asset.visibleSummary = 'Das Bild zeigt den geplanten klaren Szenenmoment mit den erwarteten sichtbaren Motiven.';
-    asset.matchReason = 'Die sichtbaren Motive und die Handlung entsprechen Narration, visueller Idee und geplantem Bildinhalt.';
-    asset.comparedAssetId = asset.assetId;
-    if (asset.kind === 'scene') asset.secondPassConfirmed = true;
-    for (const key of Object.keys(asset.checks)) asset.checks[key] = true;
-  }
-  await writeJson(inspectionPath, inspection);
-
-  const strictReport = await runVisualQualityCheck(result.reelDirectory, { strict: true });
-  assert.equal(strictReport.passed, true, JSON.stringify(strictReport.checks.filter((check) => !check.passed), null, 2));
-  assert.equal(strictReport.summary.failedChecks, 0);
+  const report = await runVisualQualityCheck(result.reelDirectory, { strict: true });
+  assert.equal(report.passed, true, JSON.stringify(report.checks.filter((check) => !check.passed && check.level === 'error'), null, 2));
+  assert.equal(report.mode, 'single-pass-fast');
+  assert.equal(report.summary.assetsChecked, manifest.visuals.length);
+  assert.equal(report.summary.failedChecks, 0);
 });
 
-test('erkennt ein falsches Seitenverhältnis im strengen Modus', async () => {
+test('falsches Seitenverhältnis bleibt ein echter Hard Fail', async () => {
   const outputRoot = await mkdtemp(path.join(os.tmpdir(), 'erklaer-visuals-ratio-'));
   const result = await createReelWorkspace({
-    title: 'Was ist Gruppendruck?',
-    script: 'Dieses Rohscript wird später zu einem vollständigen Ein-Minuten-Reel erweitert.',
-    date: new Date('2026-07-31T12:00:00'),
-    sceneCount: 9,
-    outputRoot
+    title: 'Was ist Föderalismus?',
+    script: 'Dieses Rohscript dient nur dazu, ein falsches Bildseitenverhältnis im strengen QC zu erkennen.',
+    date: new Date('2026-09-12T12:00:00'), sceneCount: 9, outputRoot
   });
 
   const manifestPath = path.join(result.reelDirectory, 'assets-manifest.json');
   const manifest = JSON.parse(await readFile(manifestPath, 'utf8'));
-  for (const scene of manifest.scenes) {
-    await writeFile(path.join(result.reelDirectory, scene.expectedFile), fakePng(1080, 1920));
-    scene.status = 'ready';
+  for (const visual of manifest.visuals) {
+    await writeFile(path.join(result.reelDirectory, visual.expectedFile), fakePng(1080, 1920));
+    visual.status = 'ready';
   }
-  // Szene 1 ist zugleich das Titelbild und bekommt hier ein falsches Seitenverhältnis.
-  await writeFile(path.join(result.reelDirectory, manifest.scenes[0].expectedFile), fakePng(1080, 1080));
+  await writeFile(path.join(result.reelDirectory, manifest.visuals[0].expectedFile), fakePng(1080, 1080));
   await writeJson(manifestPath, manifest);
 
   const report = await runVisualQualityCheck(result.reelDirectory, { strict: true });
   assert.equal(report.passed, false);
-  assert.ok(report.checks.some((check) => check.id === 'scene-01-aspect-ratio' && check.passed === false));
+  assert.ok(report.checks.some((check) => /aspect-ratio$/.test(check.id) && check.passed === false));
 });

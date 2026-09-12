@@ -2,48 +2,29 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 
-async function loadRules() {
-  return JSON.parse(await readFile(new URL('../config/content-rules.json', import.meta.url), 'utf8'));
+async function loadFocus() {
+  return JSON.parse(await readFile(new URL('../config/reel-topic-focus.json', import.meta.url), 'utf8'));
 }
 
-test('automatische Themenwahl verwendet ein offenes Themenuniversum statt drei harter Säulen', async () => {
-  const rules = await loadRules();
-
-  assert.equal(rules.topicFocus.openTopicUniverse, true);
-  assert.equal(rules.topicFocus.autonomousSelectionLimitedToAllowedTopics, false);
-  assert.equal(rules.topicFocus.allowedTopicsAreExamplesNotHardLimit, true);
-  assert.equal(rules.allowedTopics.includes('Alltag und Gewohnheiten'), true);
-  assert.equal(rules.allowedTopics.includes('Wissenschaft und Naturphänomene'), true);
-  assert.equal(rules.allowedTopics.includes('Technik und digitale Welt'), true);
-  assert.equal(rules.allowedTopics.includes('Gesundheit und Ernährung'), true);
-  assert.equal(rules.allowedTopics.includes('Wirtschaft und Geldmechanismen'), true);
+test('autonome Themenwahl ist auf Politik Geschichte Geografie und Systeme fokussiert', async () => {
+  const focus = await loadFocus();
+  assert.equal(focus.hardGateForAutonomousTopicSelection, true);
+  assert.match(focus.channelPositioning, /Politik, Geschichte, Geografie und Systeme/i);
+  assert.ok(focus.preferredCategories.some((value) => /Politik/i.test(value)));
+  assert.ok(focus.preferredCategories.some((value) => /Geschichte/i.test(value)));
+  assert.ok(focus.preferredCategories.some((value) => /Geografie/i.test(value)));
+  assert.ok(focus.preferredCategories.some((value) => /Ideologien/i.test(value)));
 });
 
-test('verhindert Themen-Bias nur auf Länder, Geschichte und Politik', async () => {
-  const rules = await loadRules();
-
-  assert.equal(rules.topicFocus.avoidRepeatedCountryHistoryBias, true);
-  assert.ok(Array.isArray(rules.topicFocus.selectionCriteria));
-  assert.ok(rules.topicFocus.selectionCriteria.length >= 5);
+test('Gesundheit Alltag und Psychologie sind autonom pausiert', async () => {
+  const focus = await loadFocus();
+  assert.ok(focus.pausedByDefault.some((value) => /Gesundheit|Medizin/i.test(value)));
+  assert.ok(focus.pausedByDefault.some((value) => /Psychologie/i.test(value)));
+  assert.ok(focus.pausedByDefault.some((value) => /Alltags/i.test(value)));
+  assert.equal(focus.explicitUserOverrideAllowed, true);
 });
 
-test('Bildwelt ist fest und wird nicht nach dem Script neu ausgewählt', async () => {
-  const rules = await loadRules();
-
-  assert.equal(rules.visualRules.visualWorldMode, 'fixed');
-  assert.equal(rules.visualRules.fixedVisualWorld, 'modern-countryball-explainer');
-  assert.equal(rules.visualRules.selectVisualWorldAfterScript, false);
-  assert.equal(rules.visualRules.consistentStyleWithinReel, true);
-  assert.equal(rules.visualRules.creativeStyleBetweenReels, false);
-  assert.equal(rules.visualRules.styleBiblePath, 'knowledge/fixed-visual-world.md');
-});
-
-test('nur Format-Risiken bleiben als autonome Ausschlüsse erhalten', async () => {
-  const rules = await loadRules();
-
-  assert.equal(rules.excludedTopics.includes('Körper und Biologie'), false);
-  assert.equal(rules.excludedTopics.includes('Finanzen'), false);
-  assert.equal(rules.excludedTopics.includes('Elektrotechnik'), false);
-  assert.ok(rules.excludedTopics.some((value) => /Breaking-News/i.test(value)));
-  assert.ok(rules.excludedTopics.some((value) => /Parteienwerbung|Propaganda/i.test(value)));
+test('YouTube bleibt von Reel-Themenfokus unverändert', async () => {
+  const focus = await loadFocus();
+  assert.equal(focus.youtubeUnchanged, true);
 });

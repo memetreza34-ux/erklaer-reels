@@ -1,57 +1,42 @@
 {
-  "version": 6,
+  "version": 7,
   "assetMatching": {
+    "mode": "ordered-fast-qc-v3",
     "minimumConfidence": 0.75,
-    "requireVisualReview": true,
+    "requireVisualReview": false,
     "requireSecondPassConfirmation": false,
-    "requireSceneOrderConfirmation": true,
+    "requireSceneOrderConfirmation": false,
     "requireMatchReason": false,
     "minimumMatchReasonLength": 0,
     "requireVisibleSummary": false,
     "minimumVisibleSummaryLength": 0,
-    "requiredSceneComparedFields": [
-      "narration",
-      "visualIdea",
-      "imageText"
-    ],
-    "requiredCoverComparedFields": [
-      "headline",
-      "coverVisualIdea"
-    ],
+    "requiredSceneComparedFields": [],
+    "requiredCoverComparedFields": [],
     "forbidFilenameOnlyMatching": false,
     "allowedMatchMethods": [
+      "numbered-global-image-order",
       "chronological-filename-plus-visual-spot-check",
-      "visual-content-review"
+      "ordered-number-plus-visual-spot-check",
+      "visual-content-review",
+      "visual-text-and-content-review"
     ],
+    "numberedGlobalOrderMayPreselectTarget": true,
+    "fastVisualQcRequiredBeforeRender": true,
     "leaveUnmatchedWhenUncertain": false,
     "blockOnlyOnRealConflict": true,
-    "guidance": "Bei vollständig nummerierten Bildern ist die chronologische Reihenfolge die Hauptautorität. Ein schneller visueller Spot-Check soll nur offensichtliche Fehlzuordnungen oder Stilbrüche erkennen; keine schriftliche Begründung und kein zweiter Prüfpass pro Bild."
+    "askUserOnlyOnHardBlocker": true,
+    "guidance": "Bild 01, Bild 02 usw. werden anhand der bereits in Phase 1 festgelegten globalen Reihenfolge automatisch geroutet. Keine schriftliche Begründung, keine Bildbeschreibung und kein zweiter Prüfpass pro Bild. Danach genügt ein schneller visueller QC-Durchgang; nur echte Konflikte blockieren."
   },
   "sceneTiming": {
-    "hookSeconds": {
-      "min": 4.5,
-      "max": 6.0
-    },
-    "standardSeconds": {
-      "min": 6.0,
-      "max": 7.5
-    },
-    "finalSceneSecondsIncludingHold": {
-      "min": 5.8,
-      "max": 8.2
-    },
+    "hookSeconds": {"min": 4.5, "max": 6.0},
+    "standardSeconds": {"min": 6.0, "max": 7.5},
+    "finalSceneSecondsIncludingHold": {"min": 5.8, "max": 8.2},
     "maximumAdjacentDifferenceSeconds": 2.5,
     "postVoiceHoldSeconds": 0.6,
-    "postVoiceHoldRangeSeconds": {
-      "min": 0.5,
-      "max": 0.7
-    },
+    "postVoiceHoldRangeSeconds": {"min": 0.5, "max": 0.7},
     "strictTimelineBalance": true,
     "minimumImagePhaseSeconds": 2.2,
-    "recommendedImagePhaseSeconds": {
-      "min": 2.5,
-      "max": 3.8
-    },
+    "recommendedImagePhaseSeconds": {"min": 2.5, "max": 3.8},
     "splitReviewThresholdSeconds": 4.8,
     "guidance": "Adaptive-Dense-V2-Reels dürfen mehr Bildphasen besitzen. Inhalt und Audio entscheiden; keine starre 3-Sekunden-Mindestregel mehr."
   },

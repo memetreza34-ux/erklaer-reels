@@ -9,15 +9,14 @@ function getArgument(name) {
 
 function usage() {
   console.log(`
-Autonomer vereinfachter Fast-Path für Reel-Phase 3.
+Antigravity Phase 3 — Simple Mode
 
 Verwendung:
   npm run phase3:reel -- --dir "reels/.../reel-01_thema"
 
-Ein Auftrag reicht. Der Lauf ist nicht-interaktiv und arbeitet bis zum Render,
-sofern kein echter Blocker vorliegt. Einzelne Bildanker werden nicht mehr
-interaktiv bestätigt; nach dem finalen Audio wird automatisch eine monotone
-Bild↔Audio-Grundausrichtung erzeugt.
+Ein Auftrag reicht. Der Lauf ist nicht-interaktiv und arbeitet selbstständig
+bis zum Render. Rückfragen sind nur bei echten Hard Blockern erlaubt, z. B.
+fehlenden/doppelten Bildern, mehreren unklaren Audio-Dateien oder kaputten Assets.
 `);
 }
 
@@ -44,7 +43,7 @@ function runNpmStep({ label, script, args = [] }, reelDirectory) {
 
   if (result.status !== 0) {
     console.error(`\nBLOCKIERT bei „${label}“ (Exit ${result.status}).`);
-    console.error('Nur echten Blocker beheben und denselben Fast-Path erneut starten. Keine Zwischenfreigabe nötig.');
+    console.error('Nur den konkreten Hard Blocker beheben und denselben Befehl erneut starten. Keine Zwischenfreigabe nötig.');
     process.exit(result.status || 1);
   }
 
@@ -63,23 +62,25 @@ function main() {
 
   const steps = [
     { label: 'Assets finden', script: 'discover:assets' },
-    { label: 'Assets sicher organisieren', script: 'organize:assets', args: ['--apply'] },
-    { label: 'Schnelle visuelle QC', script: 'check:visuals', args: ['--strict'] },
+    { label: 'Bildnummern und Voice-over automatisch routen', script: 'organize:assets', args: ['--numbered'] },
+    { label: 'Assets sicher übernehmen', script: 'organize:assets', args: ['--apply'] },
+    { label: 'Einmalige schnelle visuelle QC', script: 'check:visuals', args: ['--strict'] },
     { label: 'Voice-over optimieren', script: 'trim:pauses', args: ['--speed', '1.10'] },
     { label: 'Bild↔Audio automatisch ausrichten', script: 'auto-align:reel' },
-    { label: 'Timeline und Sounds bauen', script: 'build:timeline', args: ['--strict'] },
+    { label: 'SFX-Dateien automatisch binden', script: 'sync:sounds', args: ['--strict'] },
+    { label: 'Timeline bauen', script: 'build:timeline', args: ['--strict'] },
     { label: 'Reel finalisieren', script: 'finalize:reel', args: ['--strict'] },
     { label: 'Finales Reel rendern', script: 'render:reel' }
   ];
 
-  console.log('ANTIGRAVITY PHASE-3 FAST-PATH — SIMPLE MODE');
+  console.log('ANTIGRAVITY PHASE 3 — SIMPLE MODE');
   console.log(`Reel: ${reelDirectory}`);
-  console.log('Keine Zwischenfragen. Schnelle Einmal-QC, automatisches Bild↔Audio-Grundtiming, dann Render.');
+  console.log('Keine Zwischenfragen: chronologisches Routing, ein QC-Durchgang, automatisches Audio-Timing, SFX, Timeline und Render.');
 
   for (const step of steps) runNpmStep(step, reelDirectory);
 
   console.log('\nPHASE 3 ABGESCHLOSSEN.');
-  console.log('Nur den finalen Export kurz ansehen. Wenn kein sichtbarer Timing-/Inhaltsfehler auffällt, ist das Reel fertig.');
+  console.log('Export: 03-export/FERTIGES-REEL.mp4');
 }
 
 main();
