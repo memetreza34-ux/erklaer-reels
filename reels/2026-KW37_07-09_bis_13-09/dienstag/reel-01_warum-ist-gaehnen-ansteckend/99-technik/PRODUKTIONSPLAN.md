@@ -3,7 +3,7 @@
 ## Phase 1
 
 - Format: Reel 9:16
-- Bildwelt: `modern-countryball-explainer`
+- Bildwelt: `serious-minimal-countryball-explainer`
 - Dichte: `adaptive-dense-v2`
 - Szenen: 9
 - Bildmomente: 21
@@ -32,14 +32,20 @@ Die 3-Bild-Szenen besitzen jeweils drei echte gesprochene Gedanken. Keine zusät
 
 ## World-Lock
 
-Vor Bild 01 muss Flow die eine feste Reel-Welt übernehmen. Danach ändert sich nur das Motiv, niemals der Renderstil.
+Vor Bild 01 muss Flow die neue feste Reel-Welt übernehmen. Danach ändert sich nur das Motiv, niemals der Renderstil.
 
-Besonders wichtig bei diesem Reel:
-- Kugelfiguren nur groß und funktional einsetzen
-- niemals kleine Kugeln als Deko im Hintergrund
-- Hirn-, TMS- und Forschungsbilder dürfen ohne zusätzliche Figur auskommen
-- neutrale Kugeln, keine Länderflaggen
-- keine neue Medizin-/Labor-Unterwelt
+Verbindlich für dieses Reel:
+- Serious Minimal Countryball Explainer in 9:16
+- dicke schwarze Konturen, flache 2D-Farben, minimale grafische Schatten
+- neutrale runde Kugeln, keine Länderflaggen
+- keine normalen illustrierten Menschen
+- keine realistischen/detaillierten Räume oder Labors
+- Hintergründe meist einfache Farbflächen, leichte Verläufe oder subtile Textur
+- drei Kompositionsarten mischen: minimal-symbolic, supported-explainer, simple-mini-scene
+- nicht jedes Bild nur Kugel + leerer Hintergrund
+- 0–3 passende Requisiten/Symbole, aber nur mit inhaltlicher Funktion
+- Beispiele für dieses Reel: Smartphone, Gehirnsymbol, Buch/Seite, Stopwatch, TMS-Coil, Forschungspapiere, Herzsymbol, einfacher Screen
+- keine kleinen Deko-Kugeln
 - kein Foto-plus-Cartoon-Mix
 
 ## Motion-Plan
