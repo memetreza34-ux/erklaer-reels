@@ -34,7 +34,7 @@ test('Auto-Alignment erzeugt monotone Audio-Cues ohne Einzelbestätigung', () =>
   assert.equal(result.audioSync.phaseCueTimings.length, 1);
 });
 
-test('Visual-QC ist für Phase 3 auf schnellen Einmal-Check reduziert', async () => {
+test('Phase 3 ist auf einen nicht-interaktiven Simple-Mode reduziert', async () => {
   const visualRules = await readJson('config/visual-quality-rules.json');
   const qualityGates = await readJson('config/production-quality-gates.json');
   const phase3 = await readText('src/cli/phase3-reel.js');
@@ -47,8 +47,15 @@ test('Visual-QC ist für Phase 3 auf schnellen Einmal-Check reduziert', async ()
   assert.equal(visualRules.strictMode.requireSemanticSceneVerification, false);
   assert.equal(qualityGates.assetMatching.requireSecondPassConfirmation, false);
   assert.equal(qualityGates.assetMatching.requireMatchReason, false);
+  assert.equal(qualityGates.assetMatching.askUserOnlyOnHardBlocker, true);
   assert.equal(pkg.scripts['auto-align:reel'], 'node src/cli/auto-align-reel.js');
+  assert.equal(pkg.scripts['phase3:reel'], 'node src/cli/phase3-reel.js');
+
+  assert.match(phase3, /organize:assets/);
+  assert.match(phase3, /--numbered/);
+  assert.match(phase3, /check:visuals/);
   assert.match(phase3, /auto-align:reel/);
-  assert.doesNotMatch(phase3, /script: 'validate:render'/);
-  assert.doesNotMatch(phase3, /script: 'sync:sounds'/);
+  assert.match(phase3, /script: 'sync:sounds'/);
+  assert.match(phase3, /NONINTERACTIVE/);
+  assert.doesNotMatch(phase3, /sync:words/);
 });

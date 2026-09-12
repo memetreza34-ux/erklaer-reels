@@ -26,7 +26,7 @@ test('Antigravity Policy verbietet Eigenproduktion und alte Zwei-Pass-Pflicht', 
   const policy = await text('ANTIGRAVITY_IMAGE_POLICY.md');
   assert.match(policy, /erzeugt keine Reel-Bilder/i);
   assert.match(policy, /phase3:reel/);
-  assert.match(policy, /keine zweite Zuordnungsprüfung/i);
+  assert.match(policy, /zweite unabhängige Zuordnungsprüfung/i);
   assert.doesNotMatch(policy, /visuelle Zwei-Pass-QC/);
 });
 

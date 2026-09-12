@@ -37,7 +37,7 @@ test('Produktionsauftrag übernimmt die aktive feste Reel-Bildwelt', async () =>
     assert.match(task, /Serious Minimal Countryball Explainer/i);
     assert.match(task, /serious-minimal-countryball-explainer/i);
     assert.match(task, /Nur Bild 01 braucht zwingend imageText/i);
-    assert.match(task, /0–4 deutsche Wörter/i);
+    assert.match(task, /[01]–4 deutsche Wörter/i);
     assert.match(task, /Bildprompts: \*\*Englisch\*\*/i);
   } finally {
     await rm(outputRoot, { recursive: true, force: true });

@@ -56,6 +56,7 @@ Vor jeder Themenwahl `THEMEN_HISTORIE.md` prüfen. Keine doppelte Kernfrage in n
 - 8–10 narrative Szenen, Standard 9
 - Hook sofort, kein langer Intro-Block
 - keine Untertitel, kein aktiver Word-Sync
+- **Für neue Reels gibt es keinen Untertitel- oder Word-Sync-Schritt.**
 - `sync:words` bleibt Legacy und gehört nicht in den normalen Workflow
 - keine Hintergrundmusik
 - Voice-over 1,10x bei erhaltener Tonhöhe

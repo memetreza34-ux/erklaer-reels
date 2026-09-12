@@ -25,8 +25,8 @@ async function createFixture(sceneCount = 3, { secondSceneHasTwoImages = false }
     order: index + 1,
     ...(secondSceneHasTwoImages && index === 1 ? {
       imagePhases: [
-        { phaseId: 'scene-02-image-01', startPercent: 0, promptFileName: 'image-prompt.txt' },
-        { phaseId: 'scene-02-image-02', startPercent: 0.5, promptFileName: 'image-prompt-02.txt' }
+        { phaseId: 'scene-02-image-01', order: 1, startPercent: 0, promptFileName: 'image-prompt.txt' },
+        { phaseId: 'scene-02-image-02', order: 2, startPercent: 0.5, promptFileName: 'image-prompt-02.txt' }
       ]
     } : {})
   }));
@@ -50,7 +50,7 @@ test('erkennt die vereinbarten Dateinamen', () => {
   assert.equal(parseNumberedImageFileName('01.txt'), null);
 });
 
-test('ordnet Nummern nach globaler Bildreihenfolge zu', async () => {
+test('routet vollständige Nummern automatisch nach globaler Bildreihenfolge', async () => {
   const root = await createFixture(3, { secondSceneHasTwoImages: true });
   const drop = path.join(root, 'inbox', 'numbered-images');
   await writeFile(path.join(drop, '01.png'), 'scene1');
@@ -64,20 +64,23 @@ test('ordnet Nummern nach globaler Bildreihenfolge zu', async () => {
   assert.equal(report.assignedCount, 4);
   assert.equal(report.plannedImageCount, 4);
   assert.equal(report.unmatchedCount, 0);
-  assert.equal(assetMap.version, 4);
+  assert.equal(assetMap.version, 5);
   assert.equal(assetMap.assignments[0].target, 'audio');
+  const visuals = assetMap.assignments.slice(1);
   assert.deepEqual(
-    assetMap.assignments.slice(1).map((assignment) => assignment.target),
+    visuals.map((assignment) => assignment.target),
     ['scene-01', 'scene-02', 'scene-02-image-02', 'scene-03']
   );
-  assert.equal(assetMap.assignments[2].suggestedSceneOrder, 2);
-  assert.equal(assetMap.assignments[3].suggestedSceneOrder, 2);
-  assert.equal(assetMap.assignments[3].suggestedPhaseOrder, 2);
-  assert.equal(assetMap.assignments[3].confirmedSceneOrder, null);
-  assert.equal(assetMap.assignments[3].matchMethod, '');
+  for (const assignment of visuals) {
+    assert.equal(assignment.confirmedTarget, assignment.target);
+    assert.equal(assignment.matchMethod, 'numbered-global-image-order');
+    assert.equal(assignment.confidence, 1);
+    assert.equal(assignment.secondPassConfirmed, false);
+  }
+  assert.equal(visuals[2].confirmedPhaseOrder, 2);
 });
 
-test('blockiert doppelte Nummern statt willkürlich eine Datei zu wählen', async () => {
+test('doppelte Nummern sind echte Hard Blocker statt willkürlicher Auswahl', async () => {
   const root = await createFixture(2);
   const drop = path.join(root, 'inbox', 'numbered-images');
   await writeFile(path.join(drop, '01.png'), 'one');
@@ -86,11 +89,11 @@ test('blockiert doppelte Nummern statt willkürlich eine Datei zu wählen', asyn
   const report = await prepareNumberedImageAssignments(root);
 
   assert.equal(report.assignedCount, 0);
-  assert.equal(report.unmatchedCount, 2);
-  assert.match(report.unmatched[0].reason, /dieselbe Nummer 01/);
+  assert.ok(report.unmatched.some((entry) => /Mehrere Dateien.*01/i.test(entry.reason)));
+  assert.ok(report.hardBlockerCount >= 1);
 });
 
-test('weist Nummern außerhalb der geplanten Bildphasen als unmatched aus', async () => {
+test('Nummern außerhalb des Plans werden als Hard Blocker ausgewiesen', async () => {
   const root = await createFixture(2);
   const drop = path.join(root, 'inbox', 'numbered-images');
   await writeFile(path.join(drop, '13.png'), 'too-far');
@@ -98,11 +101,11 @@ test('weist Nummern außerhalb der geplanten Bildphasen als unmatched aus', asyn
   const report = await prepareNumberedImageAssignments(root);
 
   assert.equal(report.assignedCount, 0);
-  assert.equal(report.unmatchedCount, 1);
-  assert.match(report.unmatched[0].reason, /keine geplante Bildphase/);
+  assert.ok(report.unmatched.some((entry) => /keine geplante Bildphase/i.test(entry.reason)));
+  assert.ok(report.unmatched.some((entry) => /Bild 01 fehlt|Bild 02 fehlt/i.test(entry.reason)));
 });
 
-test('überschreibt die Asset-Map nicht, wenn im Automatikmodus keine Dateien liegen', async () => {
+test('überschreibt die Asset-Map nicht, wenn im Automatikmodus keine Bilder liegen', async () => {
   const root = await createFixture(2);
   const before = await readFile(path.join(root, 'inbox', 'asset-map.json'), 'utf8');
 

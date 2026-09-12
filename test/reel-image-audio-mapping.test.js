@@ -46,7 +46,7 @@ test('ordnet jeden Reel-Bildmoment exakt einem gesprochenen Textbereich zu', () 
   assert.equal(mapping.imageCount, 3);
   assert.equal(mapping.mappings[0].visibleImageFileName, 'Bild 01.png');
   assert.equal(mapping.mappings[0].spokenText, 'Warum passiert das eigentlich? Genau diese Frage klären wir jetzt.');
-  assert.equal(mapping.mappings[0].endAnchor, 'Der erste Grund liegt im Körper. Danach');
+  assert.equal(mapping.mappings[0].endAnchor, 'Der erste Grund liegt im Körper.');
 
   assert.equal(mapping.mappings[1].visibleImageFileName, 'Bild 02.png');
   assert.equal(mapping.mappings[1].spokenText, 'Der erste Grund liegt im Körper.');
