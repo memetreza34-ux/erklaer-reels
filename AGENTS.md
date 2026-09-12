@@ -49,7 +49,7 @@ Bei „Mach ein neues Reel“ autonom:
 2. starkes, belegbares Thema wählen
 3. 155–175 deutsche Wörter schreiben
 4. 8–10 narrative Szenen planen, Standard 9
-5. für jede Bildphase ausschließlich **Modern Countryball Explainer** verwenden
+5. für jede Bildphase ausschließlich **Serious Minimal Countryball Explainer** verwenden
 6. für neue Pakete `imageCountMode: "adaptive-dense-v2"` und `visualDensityVersion: 2` setzen
 7. Hook mit 2 Bildern planen; spätere Szenen mit 2 oder 3 Bildern je nach gesprochenem Inhalt
 8. Ziel: 8 Szenen 19–21 Bilder, 9 Szenen 20–22, 10 Szenen 21–24
@@ -66,42 +66,57 @@ Legacy-Pakete mit `one-hook-two-standard` bleiben unterstützt. Neue Phase-1-Ree
 
 ## Reel-Bildwelt
 
-Reels: ausschließlich **Modern Countryball Explainer** (`modern-countryball-explainer`) in 9:16. YouTube-Regeln niemals auf Reels übertragen.
+Reels: ausschließlich **Serious Minimal Countryball Explainer** (`serious-minimal-countryball-explainer`) in 9:16. Die frühere `modern-countryball-explainer`-Welt ist für neue Reels ersetzt. YouTube-Regeln niemals auf Reels übertragen.
 
 ### World-Lock vor Bild 01
 
-Der KI-Agent muss vor dem ersten Bild die **eine feste Projektwelt** setzen und danach beibehalten. Einzelprompts dürfen Motiv, Handlung, Perspektive und Umgebung verändern, aber niemals Konturstärke, Formsprache, Farbcharakter, grafische Schatten, Detailgrad, 2D-Rendering, Tiefenlogik oder Charakterlogik neu erfinden.
+Der KI-Agent setzt vor dem ersten Bild genau eine feste Projektwelt und behält sie danach bei. Einzelprompts ändern Motiv, Requisiten, Hintergrundfarbe und Perspektive, aber nicht Konturen, Kugelgeometrie, Augen-/Mimik-Sprache, flaches 2D-Rendering, minimale Schatten, Hintergrundlogik oder Typografie.
 
-### Kugelfiguren nur mit Funktion
+### Figurenlogik
 
 Wenn Akteure vorkommen:
-- exakt runde Kugelfiguren ohne separaten menschlichen Kopf
+- perfekt runde Kugelfiguren
 - einfache weiße Augen
-- Flaggen nur bei echter geografischer Relevanz
-- neutrale Kugeln für allgemeine Akteure
-- keine zufälligen Zungen/Grimassen ohne inhaltlichen Grund
+- reduzierte kontrollierte Mimik
+- kein separater Kopf, Hals, Haar oder menschliches Gesicht
+- Flaggen nur bei echter geografischer, politischer oder kultureller Relevanz
+- sonst neutrale einfarbige Kugeln
+- keine zufälligen Zungen, Grimassen oder Gimmicks ohne inhaltlichen Grund
 
-Ein Akteur ist **nicht Pflicht**. Objekte, Mechanismen, Anatomie, Karten, Dokumente oder Umgebungen dürfen die Szene allein tragen.
+Keine normalen illustrierten Menschen, keine humanoiden Cartoonmenschen und keine Stick-Figuren.
 
-Hard-Guidance:
-- keine winzige dekorative Kugel als Stil-Sticker
-- Kugel nur, wenn sie Handlung, Reaktion, Vergleich oder Perspektive wirklich verbessert
-- wenn Anatomie/Mechanismus/Objekt/Prozess klarer allein erklärt: **keine Kugel hinzufügen**
-- wenn eine Kugel vorkommt, muss sie als bewusster Akteur lesbar und nicht zufällig klein sein
+Ein Akteur ist nicht Pflicht. Bei abstrakten, technischen oder medizinischen Aussagen darf ein vereinfachtes Symbol/Objekt die Szene tragen, muss aber dieselbe 2D-Kontur- und Farbsprache behalten.
+
+### Drei Kompositionsmodi
+
+Damit die Serie einheitlich, aber nicht langweilig wird:
+
+1. `minimal-symbolic`: großes Hauptmotiv + 0–1 sinnvolles Symbol
+2. `supported-explainer`: Hauptmotiv + 1–3 passende Requisiten/Symbole
+3. `simple-mini-scene`: Hauptmotiv + ein einfacher Kontext wie Tür, Tisch, Buch, Grabstein, Spotlight oder Screen
+
+Regeln:
+- nicht jedes Bild nur Kugel + leerer Hintergrund
+- aber auch keine detaillierten realistischen Räume
+- 0–3 Zusatzobjekte sind normalerweise genug
+- jedes Zusatzobjekt muss die gesprochene Aussage sichtbar stärken
+- keine winzigen Deko-Kugeln
+- ein dominantes Motiv pro Bild
+- Hintergrund meist einfarbig/gedämpft, leichter Verlauf oder subtile Textur
+- seriös, clean, reduziert, nicht kindisch oder übermäßig süß
 
 ### Bildwirkung
 
-Jede Bildphase ist eine konkrete Mini-Szene:
-- sichtbare Handlung/Reaktion/Ursache-Folge
 - ein Bild = eine visuelle Kernaussage
-- ein dominantes Motiv
-- wenige unterstützende Elemente
-- einfache Tiefe/Umgebung, wenn sinnvoll
-- Perspektive zwischen benachbarten Bildern variieren
-- keine textdominante Posterkarte
-- keine wiederholte Center-Figur-plus-Icons-Komposition
+- starke Smartphone-Lesbarkeit
+- klare schwarze Konturen
+- flache kontrollierte Farben
+- minimale grafische Schatten
+- kurze symbolische Bildidee oder einfache Mini-Szene
+- Komposition zwischen benachbarten Bildern variieren
+- keine detaillierten Foto-/Editorial-Menschen-Szenen
 
-Keine humanoiden Cartoonmenschen, Stick-Figuren, Fotorealismus, Anime, Clay oder glänzendes 3D/Pixar.
+Verboten: Fotorealismus, realistische Hände/Haut, normale illustrierte Menschen, realistische Innenräume, Foto+Cartoon, Anime, Clay, 3D/Pixar, Stockfoto-Look, detaillierte 3D-Anatomie, Floating-UI-Boards und überladene Icon-Collagen.
 
 ## Bildtext
 
@@ -110,6 +125,7 @@ Keine humanoiden Cartoonmenschen, Stick-Figuren, Fotorealismus, Anime, Clay oder
 - Danach Text optional; wenn vorhanden maximal 4 Wörter.
 - Starke textfreie Bilder sind erwünscht.
 - `imageText` leer → kein lesbarer Text.
+- Text bevorzugt fett, klar, Smartphone-lesbar, weiß/schwarz mit deutlicher Gegenkontur.
 
 ## Bildanzahl und Cue-Timing — Adaptive Dense V2
 
@@ -182,14 +198,15 @@ Pflicht:
 
 Einzige Nutzerdatei: `00-bildprompts/99-alle-bildprompts.txt`.
 
-Vor Bild 01: globale Bildwelt einmal festsetzen. Danach streng seriell:
+Vor Bild 01: neue globale Bildwelt einmal festsetzen. Danach streng seriell:
 
 ```text
 World-Lock lesen
 → ein Bild erzeugen
 → warten
-→ Inhalt + World-Lock prüfen
-→ unnötige Mini-Kugel ablehnen
+→ Inhalt + Serious-Minimal-World prüfen
+→ normales Menschendesign / realistische Umgebung ablehnen
+→ 0–3 Zusatzobjekte nur wenn sinnvoll
 → Bild NN.png
 → ablegen
 → prüfen
