@@ -4,6 +4,22 @@ Diese Datei ist die verbindliche Themenliste für **alle Erklärformate in diese
 
 **Regel:** Vor jeder neuen Themenwahl diese Liste prüfen. Ein bereits verwendetes oder inhaltlich nahezu identisches Thema darf nicht erneut geplant werden. Geplante Themen sind ebenfalls reserviert, bis sie verworfen oder veröffentlicht werden.
 
+## Neuer Reel-Themenfokus ab 2026-09-12
+
+Für **neue Reels** zusätzlich immer `REEL_THEMENFOKUS.md` und `config/reel-topic-focus.json` prüfen.
+
+Autonome neue Reel-Themen konzentrieren sich ab jetzt auf:
+- Politik & Staatssysteme
+- Geschichte & historische Wendepunkte
+- Länder, Geografie, Grenzen & Territorien
+- Ideologien & Gesellschaftssysteme
+- internationale Beziehungen & Geopolitik
+- passende Kultur-/Identitäts- und Wirtschaftsthemen mit klarem Länder-/Geschichts-/Systembezug
+
+Gesundheit, Medizin, Körper, allgemeine Psychologie, Alltags-Warum-Fragen, Lifestyle und ähnliche Off-Focus-Bereiche werden **nicht mehr autonom als neue Reel-Themen gewählt**. Sie bleiben nur bei ausdrücklicher Nutzeranweisung möglich.
+
+Bereits verwendete oder reservierte Off-Focus-Reels bleiben unten als Historie dokumentiert und werden nicht gelöscht.
+
 ## Bereits verwendet
 
 ### Reels

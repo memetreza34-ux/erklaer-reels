@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "effectiveSince": "2026-09-12",
+  "scope": "new-reels-only",
+  "hardGateForAutonomousTopicSelection": true,
+  "channelPositioning": "Politik, Geschichte, Geografie und Systeme einfach erklärt",
+  "preferredCategories": [
+    "Politik und Staatssysteme",
+    "Geschichte und historische Wendepunkte",
+    "Länder, Geografie, Grenzen und Territorien",
+    "Ideologien und Gesellschaftssysteme",
+    "Internationale Beziehungen und Geopolitik",
+    "Gesellschaft, Kultur und nationale Identität mit Länder-/Geschichts-/Systembezug",
+    "Wirtschaftssysteme und staatliche Mechanismen mit Länder-/Systembezug"
+  ],
+  "adjacentTopicRule": {
+    "allowed": true,
+    "condition": "Nur wenn das Thema natürlich mit Ländern, Karten, Grenzen, Institutionen, Flaggen, historischen Symbolen oder Systemen erklärbar ist und die Serious-Minimal-Countryball-Bildwelt nicht künstlich aufgezwungen werden muss."
+  },
+  "pausedByDefault": [
+    "Gesundheit, Medizin, Körper und Ernährung",
+    "Psychologie, Selbsthilfe und Gewohnheiten",
+    "Beziehungen und Dating",
+    "allgemeine Alltags-Warum-Fragen",
+    "Naturwissenschaft ohne Länder-/Geschichts-/Systembezug",
+    "Technik und Gadgets ohne politischen oder historischen Bezug",
+    "generische Internet- und Social-Media-Themen",
+    "Beauty, Fitness und Lifestyle"
+  ],
+  "explicitUserOverrideAllowed": true,
+  "selectionRules": [
+    "THEMEN_HISTORIE.md vor jeder Themenwahl prüfen",
+    "keine doppelte Kernfrage in neuer Formulierung",
+    "Kernbereiche bei autonomer Auswahl klar bevorzugen",
+    "55 bis 60 Sekunden sauber erklärbar",
+    "natürliche visuelle Passung zur Serious-Minimal-Countryball-Welt",
+    "politische Inhalte neutral und ohne Parteienwerbung",
+    "stabile Erklärfragen statt reiner Breaking-News-Zusammenfassung bevorzugen"
+  ],
+  "goodExamples": [
+    "Was ist Föderalismus?",
+    "Warum ist die Schweiz neutral?",
+    "Warum gehört Kaliningrad zu Russland?",
+    "Was ist eine Exklave?",
+    "Warum gibt es zwei Koreas?",
+    "Wie entstehen neue Staaten?",
+    "Warum haben manche Länder keinen Zugang zum Meer?",
+    "Was ist Nationalismus?",
+    "Kapitalismus einfach erklärt",
+    "Was ist das Vetorecht im UN-Sicherheitsrat?",
+    "Warum zerfiel Jugoslawien?",
+    "Wie funktionieren Sanktionen?"
+  ],
+  "legacyOffFocusReelsRemainValidHistory": true,
+  "youtubeUnchanged": true,
+  "policyDocument": "REEL_THEMENFOKUS.md"
+}
