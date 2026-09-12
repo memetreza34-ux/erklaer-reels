@@ -9,8 +9,12 @@ Phase 1 — ChatGPT: **fertig**
 - 161 Wörter Voice-over
 - 9 narrative Szenen
 - 21 Bildmomente mit `adaptive-dense-v2`
-- fester World-Lock für `modern-countryball-explainer`
-- Kugelfiguren nur, wenn sie eine klare Funktion haben; keine kleinen Deko-Kugeln
+- fester World-Lock für `serious-minimal-countryball-explainer`
+- seriöse, cleane, minimalistische 2D-Countryball-Welt
+- drei Bildtypen erlaubt: minimal-symbolic, supported-explainer, simple-mini-scene
+- 0–3 passende Zusatzobjekte pro Bild, wenn sie die Aussage verbessern
+- keine normalen illustrierten Menschen und keine detaillierten realistischen Räume
+- keine kleinen Deko-Kugeln
 - exakte Bild↔Audio-Anker für Bild 01–21
 - Quellen und Caption fertig
 
