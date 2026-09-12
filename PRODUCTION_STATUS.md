@@ -1,6 +1,6 @@
 # Produktionsstatus
 
-**Status: PRODUKTIONSLOGIK GEHÄRTET — MOTION/SFX/ENDSTILLE ALS HARD GATES — GOLDEN-E2E MIT ECHTEN ASSETS NOCH AUSSTEHEND**
+**Status: ADAPTIVE-DENSE-V2 + NEUE SERIOUS-MINIMAL-REEL-WELT AKTIV — MOTION/SFX/ENDSTILLE ALS HARD GATES — GOLDEN-E2E MIT ECHTEN ASSETS NOCH AUSSTEHEND**
 
 `CURRENT_WORKFLOW.md` ist die verbindliche Single Source of Truth.
 
@@ -8,26 +8,34 @@
 
 Am 2026-08-29 wurde die vollständige technische Kette einmal mit Testassets durchlaufen: Workspace → Script/Prompts → Quellen → Assets → Audio-Pacing → Timeline → visuelle Freigabe → Finalizer → Render. Dabei entstand eine 1080x1920-H.264-MP4 mit 9 Szenen und 17 Bildern.
 
-Dieser Lauf beweist die technische Grundkette, aber **nicht** den heutigen Qualitätsstandard mit echten Bildern, echter Stimme, verpflichtender Motion/SFX-Coverage und Endstille-Gate.
+Dieser Lauf beweist die technische Grundkette, aber **nicht** den heutigen Qualitätsstandard mit Adaptive Dense V2, neuer Reel-Bildwelt, echten Bildern, echter Stimme, verpflichtender Motion/SFX-Coverage und Endstille-Gate.
 
-## Feedback-Härtung 2026-09-03
+## Feedback-Härtung
 
-Ein realer Reel-Export zeigte drei systemische Probleme, die für zukünftige Reels nicht mehr durchrutschen dürfen:
+Reale Reel-Tests zeigten mehrere systemische Probleme, die für zukünftige Reels nicht mehr durchrutschen dürfen:
 
 1. einzelne Bildphasen konnten statisch bleiben, wenn nicht-kanonische Motion-Namen verwendet wurden
 2. geplante SFX konnten im Weg Effektplan → Timeline → Renderplan ihr `file` verlieren und dadurch vom Renderer übersprungen werden
 3. eine lange stille Audio-Fahne konnte die Videodauer unnötig um mehrere Sekunden verlängern
+4. 17 Bilder waren bei komplexeren 55–60-s-Reels teilweise zu wenig
+5. die frühere Reel-Bildwelt erzeugte zu oft generische/komische Figuren, detaillierte Räume oder uneinheitliche Szenen
 
-Dafür wurden zusätzliche technische Sicherheitsstufen eingebaut.
+Dafür wurden zusätzliche technische und visuelle Sicherheitsstufen eingebaut.
 
 ## Aktueller Pflichtstandard
 
 - 55–60 s Voice-over
 - 155–175 deutsche Wörter
 - 8–10 Szenen, Standard 9
-- Hook 1 Bild, jede weitere Szene 2
-- 9 Szenen = 17 Bilder
-- Modern Countryball Explainer
+- Adaptive Dense V2
+- 8 Szenen: 19–21 Bilder
+- 9 Szenen: 20–22 Bilder
+- 10 Szenen: 21–24 Bilder
+- Hook: 2 Bildphasen
+- spätere Szenen: 2 oder 3 Bildphasen je nach gesprochenem Inhalt
+- **Serious Minimal Countryball Explainer** (`serious-minimal-countryball-explainer`)
+- frühere `modern-countryball-explainer`-Welt für neue Reels ersetzt
+- YouTube-Bildwelt unverändert separat
 - keine Untertitel
 - keine Hintergrundmusik
 - 1,10x Voice-over
@@ -37,6 +45,22 @@ Dafür wurden zusätzliche technische Sicherheitsstufen eingebaut.
 - SFX ca. 0,04 s vor Cut
 - visueller Schluss-Hold 0,5–0,7 s, Ziel 0,6 s
 
+## Aktuelle Reel-Bildwelt
+
+Neue Reels verwenden eine seriöse, cleane, minimalistische 2D-Countryball-Welt:
+- dicke schwarze Konturen
+- flache kontrollierte Farben
+- minimale grafische Schatten
+- Hintergründe meist einfache Farbflächen/leichte Verläufe/subtile Textur
+- perfekt runde Kugelfiguren bei Akteuren
+- Flaggen nur bei echter geografischer/politischer/kultureller Relevanz
+- keine normalen illustrierten Menschen
+- keine detaillierten realistischen Räume
+- keine kleinen dekorativen Kugeln
+- 0–3 passende Zusatzobjekte, wenn sie die Aussage verbessern
+
+Drei Kompositionsmodi: `minimal-symbolic`, `supported-explainer`, `simple-mini-scene`. Dadurch bleibt die Welt einheitlich, ohne dass jedes Bild nur aus Kugel + leerem Hintergrund besteht.
+
 ## Motion-Hard-Gate
 
 Für neue Reels ab 2026-09-02 muss **jeder Bildmoment sichtbar bewegt sein**.
@@ -45,7 +69,7 @@ Für neue Reels ab 2026-09-02 muss **jeder Bildmoment sichtbar bewegt sein**.
 - Zoom meist 2–4 %
 - Pan 1–3 %
 - Hook bewegt sich ebenfalls
-- zweite Bildphasen bewegen sich ebenfalls
+- alle internen Bildphasen bewegen sich ebenfalls
 - `none` blockiert neue Reels
 - bekannte ältere Aliasnamen werden kanonisch aufgelöst
 - unbekannte Motion-Typen blockieren
@@ -71,7 +95,7 @@ Das finale Voice-over darf höchstens **0,25 s Endstille** enthalten. Mehrsekün
 
 Die neuen Regeln sind nicht nur Dokumentation:
 
-- `check:content --strict` → Motion-/SFX-Coverage
+- `check:content --strict` → Bildstruktur + Motion-/SFX-Coverage
 - `build:timeline --strict` → Motion-/SFX-Coverage + Soundbibliothek
 - `finalize:reel` / `finalizeReel()` → Motion/SFX + Soundbibliothek + Endstille
 - `validate:render` / `render:reel` / `renderReel()` → dieselben Gates erneut
@@ -82,8 +106,8 @@ Die neuen Regeln sind nicht nur Dokumentation:
 
 Ein neuer **Golden-E2E mit echten aktuellen Assets** muss nach diesen Änderungen tatsächlich durchgeführt werden:
 
-1. neues Reel importieren/anlegen
-2. echte Google-Flow-Bilder
+1. neues Adaptive-Dense-V2-Reel anlegen/importieren
+2. echte Google-Flow-Bilder in der neuen Serious-Minimal-Countryball-Welt
 3. echtes Voice-over
 4. `trim:pauses`
 5. `sync:sounds --strict`
@@ -97,4 +121,4 @@ Erst wenn dieser Durchlauf tatsächlich bestanden ist, darf der neue Stand als v
 
 ## Teststatus
 
-Repo-Änderungen enthalten zusätzliche Regressionstests für Motion/SFX und Endstille. **Die vollständige `npm test`-Suite ist nach den neuesten Änderungen noch nicht als ausgeführt/grün bestätigt.** Nicht ausgeführte Tests werden nicht als bestanden gemeldet.
+Die vollständige `npm test`-Suite ist nach diesen neuesten Änderungen **noch nicht als ausgeführt/grün bestätigt**. Nicht ausgeführte Tests werden nicht als bestanden gemeldet.
