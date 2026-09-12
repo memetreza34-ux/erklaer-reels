@@ -1,125 +1,106 @@
-import test from 'node:test';
-import assert from 'node:assert/strict';
-import { access, mkdir, mkdtemp, readFile, writeFile } from 'node:fs/promises';
-import os from 'node:os';
-import path from 'node:path';
+# AGENTS.md
 
-import {
-  buildImagePromptBundle,
-  ensureImagePromptBundleDirectory,
-  validateImagePromptBundle
-} from '../src/core/image-prompt-bundle.js';
-import { FIXED_VISUAL_WORLD_LABEL } from '../src/shared/fixed-visual-world.js';
+`CURRENT_WORKFLOW.md` ist die verbindliche Single Source of Truth. Details der Rollen stehen in `WORKFLOW_PHASEN.md`.
 
-async function writeJson(filePath, value) {
-  await mkdir(path.dirname(filePath), { recursive: true });
-  await writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
-}
+## Neues Reel
 
-async function exists(filePath) {
-  try {
-    await access(filePath);
-    return true;
-  } catch {
-    return false;
-  }
-}
+Bei „Mach ein neues Reel“ autonom:
 
-const NEUTRAL_BASE = 'Vertical 9:16 illustration. Use one clear physical moment, readable smartphone composition and no reserved subtitle safe-zone.';
+1. `THEMEN_HISTORIE.md` prüfen
+2. `REEL_THEMENFOKUS.md` prüfen
+3. nächsten freien Slot bestimmen
+4. Thema aus Politik, Geschichte, Geografie, Ideologien/Systemen oder passender Geopolitik wählen
+5. 155–175 deutsche Wörter / 55–60 s / 8–10 Szenen
+6. `adaptive-dense-v2`, Ziel 19–24 Bilder je nach Szenenzahl
+7. **Serious Minimal Countryball Explainer** (`serious-minimal-countryball-explainer`) für jede Bildphase
+8. 1 Bild = 1 gesprochene visuelle Kernaussage
+9. Bild↔Audio-Mapping, Motion/SFX, Caption und Quellen fertigstellen
+10. Google-Flow-Masterprompt exportieren
+11. keine Untertitel, keine Hintergrundmusik
+12. Checks nur dann als bestanden markieren, wenn sie tatsächlich ausgeführt wurden
 
-async function createFixture({ missingFirstPrompt = false, missingSecondPrompt = false, missingExtraPrompt = false } = {}) {
-  const root = await mkdtemp(path.join(os.tmpdir(), 'prompt-bundle-'));
-  await writeJson(path.join(root, 'status.json'), { imagePrompts: 'ready' });
-  await writeJson(path.join(root, 'reel.json'), { visualStyleId: 'modern-countryball-explainer' });
-  await writeJson(path.join(root, 'scenes', 'scene-index.json'), [
-    { sceneId: 'scene-01', order: 1, imageText: 'ERSTE SZENE' },
-    {
-      sceneId: 'scene-02',
-      order: 2,
-      imageText: 'SZENE ZWEI',
-      imagePhases: [
-        { phaseId: 'scene-02-image-01', order: 1, startPercent: 0, promptFileName: 'image-prompt.txt', imageText: 'SZENE ZWEI' },
-        { phaseId: 'scene-02-image-02', order: 2, startPercent: 0.55, promptFileName: 'image-prompt-02.txt', imageText: '' }
-      ]
-    },
-    { sceneId: 'scene-03', order: 3, imageText: 'DRITTE SZENE' }
-  ]);
+Off-Focus-Themen wie Gesundheit/Psychologie/Alltag nicht autonom wählen, außer der Nutzer verlangt sie ausdrücklich.
 
-  for (const sceneId of ['scene-01', 'scene-02', 'scene-03']) await mkdir(path.join(root, 'scenes', sceneId), { recursive: true });
-  // Szene 1 ist zugleich das Titelbild; ein separates Cover gibt es nicht mehr.
-  if (!missingFirstPrompt) await writeFile(path.join(root, 'scenes', 'scene-01', 'image-prompt.txt'), `${NEUTRAL_BASE} Show one round ball character performing one clear action. Integrate exactly "ERSTE SZENE".`, 'utf8');
-  if (!missingSecondPrompt) await writeFile(path.join(root, 'scenes', 'scene-02', 'image-prompt.txt'), `${NEUTRAL_BASE} Show a clear human action. Integrate exactly "SZENE ZWEI".`, 'utf8');
-  if (!missingExtraPrompt) await writeFile(path.join(root, 'scenes', 'scene-02', 'image-prompt-02.txt'), `${NEUTRAL_BASE} Show one concrete object close-up. No readable text.`, 'utf8');
-  await writeFile(path.join(root, 'scenes', 'scene-03', 'image-prompt.txt'), `${NEUTRAL_BASE} Show a strong final human scene. Integrate exactly "DRITTE SZENE".`, 'utf8');
-  return root;
-}
+## Reel-Bildwelt
 
-test('README erklärt genau eine Google-Flow-Masterdatei', async () => {
-  const root = await createFixture();
-  const paths = await ensureImagePromptBundleDirectory(root);
-  const readme = await readFile(paths.userReadme, 'utf8');
+- 9:16
+- dicke schwarze Konturen
+- flache kontrollierte Farben, minimale Schatten
+- perfekt runde Countryball-artige Figuren, wenn Akteure sinnvoll sind
+- Flaggen/Karten/Grenzen/Institutionen besonders bei Politik/Geografie natürlich nutzen
+- 0–3 sinnvolle Zusatzobjekte
+- `minimal-symbolic`, `supported-explainer`, `simple-mini-scene` variieren
+- keine normalen illustrierten Menschen, realistischen Räume/Hände/Haut, Anime, Clay oder 3D/Pixar
+- Prompts Englisch, sichtbarer Text Deutsch
+- Bild 01 Headline Pflicht; danach Text optional max. 4 Wörter
 
-  assert.match(readme, /genau \*\*eine\*\* verbindliche Masterdatei/i);
-  assert.match(readme, /99-alle-bildprompts\.txt/);
-  assert.match(readme, /keine zweite Spiegelkopie/i);
-  assert.ok(readme.includes(FIXED_VISUAL_WORLD_LABEL));
-  assert.match(readme, /runde Kugelfiguren/i);
-  assert.match(readme, /Stick-Figuren sind nicht Teil/i);
-});
+YouTube-Regeln niemals auf Reels übertragen.
 
-test('exportiert nur den einen seriellen Gesamtprompt im sichtbaren Bildprompt-Ordner', async () => {
-  const root = await createFixture();
-  await mkdir(path.join(root, 'all-image-prompts'), { recursive: true });
-  await writeFile(path.join(root, 'all-image-prompts', 'all-image-prompts.txt'), 'legacy\n', 'utf8');
+## Adaptive Dense V2
 
-  const result = await buildImagePromptBundle(root, { strict: true });
-  const bundle = await readFile(result.outputFile, 'utf8');
+```text
+8 Szenen  → 19–21 Bilder
+9 Szenen  → 20–22 Bilder
+10 Szenen → 21–24 Bilder
+```
 
-  assert.equal(result.outputFile, path.join(root, '00-bildprompts', '99-alle-bildprompts.txt'));
-  assert.equal(result.technicalMirrorFile, null);
-  assert.equal(result.individualPromptsDirectory, null);
-  assert.equal(await exists(path.join(root, 'all-image-prompts')), false);
-  assert.match(bundle, /^GOOGLE FLOW – KOMPLETTER SERIELLER BILDLAUF/);
-  assert.match(bundle, /STRENG SERIELL – NIE PARALLEL/);
-  assert.ok(bundle.includes(`VERBINDLICHE EINE REEL-BILDWELT – ${FIXED_VISUAL_WORLD_LABEL.toUpperCase()}`));
-  assert.match(bundle, /round countryball-style character/i);
-  assert.match(bundle, /never bean-shaped, oval, egg-shaped, human-headed or humanoid/i);
-  assert.match(bundle, /An actor is NOT mandatory in every image/i);
-  assert.match(bundle, /FIXED VISUAL STYLE FOR THIS IMAGE — MANDATORY:/);
-  assert.match(bundle, /DATEINAME NACH FERTIGSTELLUNG: Bild 03\.png/);
-  assert.equal(result.controllerFile, null);
-  assert.equal(result.titleImageIncluded, true);
-  assert.equal(result.sceneCount, 3);
-  assert.equal(result.plannedImageCount, 4);
-  assert.equal(result.totalPromptCount, 4);
-  assert.equal(result.visualWorldLabel, FIXED_VISUAL_WORLD_LABEL);
+- Hook standardmäßig 2 Bildmomente
+- spätere Szenen 2 oder 3 nach Inhalt
+- min. ca. 2,2 s, häufig 2,5–3,8 s
+- ab ca. 4,8 s Split prüfen
+- jede interne Bildphase besitzt eigenes gesprochenes `audioCue`
 
-  const validation = await validateImagePromptBundle(root);
-  assert.equal(validation.passed, true);
-  assert.equal(validation.filePresent, true);
-  assert.equal(validation.technicalMirrorPresent, false);
-  assert.equal(validation.individualPromptFiles.length, 0);
-  assert.ok(validation.message.includes(FIXED_VISUAL_WORLD_LABEL));
-});
+## Phase 3 — Antigravity Simple Mode
 
-test('blockiert fehlende Prompts im strengen Modus', async () => {
-  const noTitle = await createFixture({ missingFirstPrompt: true });
-  await assert.rejects(() => buildImagePromptBundle(noTitle, { strict: true }), /scene-01/);
+Zusätzlich gilt `ANTIGRAVITY_AUTOPILOT.md`.
 
-  const noPrimary = await createFixture({ missingSecondPrompt: true });
-  await assert.rejects(() => buildImagePromptBundle(noPrimary, { strict: true }), /scene-02/);
+Wenn der Nutzer sinngemäß „Mach das Reel fertig“, „Phase 3 starten“, „rendern“ oder „mach weiter bis fertig“ sagt, ist der komplette normale nicht-destruktive Lauf freigegeben.
 
-  const noExtra = await createFixture({ missingExtraPrompt: true });
-  await assert.rejects(() => buildImagePromptBundle(noExtra, { strict: true }), /scene-02-image-02/);
-});
+Bevorzugt:
 
-test('erkennt Legacy-Doppelordner als veraltet', async () => {
-  const root = await createFixture();
-  await buildImagePromptBundle(root, { strict: true });
-  await mkdir(path.join(root, 'all-image-prompts'), { recursive: true });
-  await writeFile(path.join(root, 'all-image-prompts', 'all-image-prompts.txt'), 'legacy\n', 'utf8');
+```bash
+npm run phase3:reel -- --dir "<reel>"
+```
 
-  const validation = await validateImagePromptBundle(root);
-  assert.equal(validation.passed, false);
-  assert.equal(validation.technicalMirrorPresent, true);
-});
+Ablauf:
+
+```text
+Assets
+→ automatisches Routing Bild 01..NN
+→ schneller visueller Einmal-Check
+→ Audio
+→ auto-align:reel
+→ Timeline/Sounds
+→ Finalizer
+→ Render
+→ kurzer Endcheck
+```
+
+Keine Routine-Zwischenfragen. Keine schriftliche QC-Begründung pro Bild. Kein zweiter visueller Prüfpass.
+
+Nur bei echten Blockern stoppen: Pflichtasset fehlt/ist kaputt, Bildnummern bleiben unauflösbar mehrdeutig, Voice-over weicht strukturell stark vom Script ab, Nutzeroriginal müsste destruktiv verändert werden oder ein technischer Hard Gate bleibt nach automatischer Reparatur bestehen.
+
+Kleine Anchor-Unschärfen, neu berechenbare Timeline/SFX und kleine Style-Unterschiede selbstständig bearbeiten.
+
+## Nutzerassets schützen
+
+- Nutzerassets sind unveränderliche Originale.
+- Nie Assets aus einem **anderen Reel** als Ersatz verwenden.
+- Nie mit `mv` zwischen Reels verschieben.
+- Nie mit `rm`, `rm -rf`, `git clean`, `git checkout` oder ähnlichem entfernen/zurücksetzen.
+- Nie still überschreiben.
+- Manuelle Übernahme nur als Kopie.
+- Bevorzugt `npm run import:user-asset -- --dir "<reel>" --source "<datei>" --kind images|audio`.
+
+## Motion / SFX
+
+Jeder Bildmoment sichtbar, aber dezent bewegen. Jeder visuelle Wechsel bekommt einen geplanten SFX aus `config/sound-library.json`.
+
+Schnitt-Richtwerte:
+- Szene ca. 0,10 s vor neuem Sprachbereich
+- intern ca. 0,08 s davor
+- SFX ca. 0,04 s vor sichtbarem Cut
+
+## Commits
+
+Normale Phase-3-Produktion braucht keinen Zwischencommit. Wenn Code/Policy geändert oder ein Commit ausdrücklich verlangt wird, `npm test` ausführen. Nicht ausgeführte Tests niemals als bestanden melden.

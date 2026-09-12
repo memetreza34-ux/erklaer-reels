@@ -1,131 +1,166 @@
-# Erklär-Reels
+import { access, mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
+import path from 'node:path';
 
-Produktionspipeline für visuelle 9:16-Erklär-Reels mit offenem Themenuniversum und **einer einzigen festen Reel-Bildwelt**.
+import { collectImagePrompts } from './image-prompt-bundle.js';
 
-**`CURRENT_WORKFLOW.md` ist die Single Source of Truth.**
+const IMAGE_EXTENSIONS = new Set(['.png', '.jpg', '.jpeg', '.webp']);
+const DROP_DIRECTORY = path.join('inbox', 'numbered-images');
+const SOURCE_DIRECTORY = 'numbered-images';
+const README_FILE = 'README.md';
 
-## Produktionsstandard
+async function exists(filePath) {
+  try { await access(filePath); return true; } catch { return false; }
+}
 
-- 55–60 Sekunden Voice-over
-- 155–175 deutsche Wörter
-- 8–10 narrative Szenen, Standard 9
-- Hook 1 Bild, jede weitere Szene 2
-- 9 Szenen = 17 Bilder
-- Voice-over 1,10x, Pitch erhalten
-- −16 LUFS, höchstens −1,5 dBTP
-- keine Untertitel
-- keine Hintergrundmusik
-- harte Cuts
-- Szenencut ca. 0,10 s vor Cue
-- interner Bildcut ca. 0,08 s vor Cue
-- SFX ca. 0,04 s vor Cut
-- nach Sprecherende nur 0,5–0,7 s Schlussbild-Hold, Ziel 0,6 s
+async function readJson(filePath, fallback = null) {
+  if (!(await exists(filePath))) return fallback;
+  return JSON.parse(await readFile(filePath, 'utf8'));
+}
 
-## Modern Countryball Explainer
+async function writeJson(filePath, value) {
+  await mkdir(path.dirname(filePath), { recursive: true });
+  await writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
+}
 
-Alle neuen Reels verwenden ausschließlich **Modern Countryball Explainer** (`modern-countryball-explainer`).
+export function parseNumberedImageFileName(fileName) {
+  const extension = path.extname(String(fileName ?? '')).toLowerCase();
+  if (!IMAGE_EXTENSIONS.has(extension)) return null;
+  const stem = path.basename(String(fileName), extension).trim();
+  const match = stem.match(/^(?:(?:bild|image)[\s_-]*)?(\d{2})(?:[\s_-].*)?$/i);
+  if (!match) return null;
+  return { number: Number(match[1]), extension };
+}
 
-- 9:16, Smartphone-first
-- klare runde Kugelfiguren, wenn ein Akteur nötig ist
-- keine Kugelfigur nur zur Dekoration erzwingen
-- dicke schwarze Konturen
-- einfache 2D-Formen
-- lebendige Mini-Szene statt statischer Posterkarte
-- sichtbare Handlung/Reaktion/Ursache-Folge
-- einfache Tiefe und Kontext
-- Perspektiven zwischen benachbarten Bildern variieren
-- Bild 01 mit deutscher Headline; spätere Bilder dürfen textfrei sein
-- Prompts Englisch, sichtbarer Text ausschließlich Deutsch
+export function getNumberedImageDropDirectory(reelDirectory) {
+  return path.join(reelDirectory, DROP_DIRECTORY);
+}
 
-Keine realistischen Menschen, humanoiden Cartoonmenschen, Stick-Figuren, Anime-, Clay- oder glänzende 3D/Pixar-Welt.
+export async function ensureNumberedImageDropDirectory(reelDirectory) {
+  const directory = getNumberedImageDropDirectory(reelDirectory);
+  await mkdir(directory, { recursive: true });
+  const readmePath = path.join(directory, README_FILE);
+  await writeFile(
+    readmePath,
+    '# Alle Bilder hier hinein\n\n' +
+    'Lege alle Reel-Bilder gemeinsam hier ab. Die zweistellige Nummer ist die **verbindliche globale Bildreihenfolge**:\n\n' +
+    '- `01.png` oder `Bild 01.png` → erster Bildmoment / Titelbild\n' +
+    '- `02.png` → zweiter Bildmoment\n' +
+    '- usw. bis zum letzten geplanten Bild\n\n' +
+    'Bei mehreren Bildphasen pro Szene ist die Bildnummer nicht gleich der Szenennummer. Die Pipeline routet die vollständige Nummernfolge automatisch. Danach reicht ein schneller Sichtcheck auf offensichtliche Inhalts- oder Stilfehler.\n',
+    'utf8'
+  );
+  return directory;
+}
 
-Vollständige Style-Bibel: `knowledge/fixed-visual-world.md`.
+function sourceRelativeToInbox(fileName) {
+  return `${SOURCE_DIRECTORY}/${fileName}`;
+}
 
-## Motion/Zoom — Hard Gate
+function chronologicalAssignment(target, sceneOrder, phaseOrder) {
+  return {
+    confidence: 1,
+    visualReviewed: false,
+    secondPassConfirmed: false,
+    sceneOrderConfirmed: true,
+    confirmedTarget: target,
+    confirmedSceneOrder: sceneOrder,
+    suggestedSceneOrder: sceneOrder,
+    suggestedPhaseOrder: phaseOrder,
+    visibleSummary: '',
+    reason: '',
+    comparedFields: [],
+    matchMethod: 'numbered-global-image-order'
+  };
+}
 
-Für neue Reels ab 2026-09-02 ist **jeder Bildmoment sichtbar bewegt**. Keine längeren statischen Slides.
+export async function prepareNumberedImageAssignments(reelDirectory, { skipWhenEmpty = false } = {}) {
+  const directory = await ensureNumberedImageDropDirectory(reelDirectory);
+  const prompts = await collectImagePrompts(reelDirectory);
+  const imageTargetsByNumber = new Map(
+    prompts.filter((entry) => entry.kind === 'scene').map((entry) => [Number(entry.order), entry])
+  );
 
-Kanonische Typen:
-- `ken-burns`
-- `subtle-push-in`, `subtle-pull-out`
-- `slow-zoom-in`, `slow-zoom-out`
-- `pan-left/right/up/down`
+  const entries = await readdir(directory, { withFileTypes: true });
+  const candidateFiles = entries
+    .filter((entry) => entry.isFile() && !entry.name.startsWith('.') && entry.name !== README_FILE)
+    .map((entry) => ({ name: entry.name, parsed: parseNumberedImageFileName(entry.name) }));
 
-Zoom meist 2–4 %, Pan 1–3 %, weiches Easing. Hook und zweite Bildphasen bewegen sich ebenfalls. `none` ist für neue Reels nicht zulässig.
+  if (skipWhenEmpty && candidateFiles.length === 0) return null;
 
-Bekannte Motion-Aliase werden kanonisch aufgelöst; unbekannte Typen blockieren. Der Renderer besitzt zusätzlich einen Safety-Fallback gegen statische Frames.
+  const grouped = new Map();
+  const unmatched = [];
+  for (const candidate of candidateFiles) {
+    if (!candidate.parsed) {
+      unmatched.push({ source: sourceRelativeToInbox(candidate.name), reason: 'Keine eindeutige zweistellige Bildnummer gefunden.' });
+      continue;
+    }
+    const bucket = grouped.get(candidate.parsed.number) ?? [];
+    bucket.push(candidate);
+    grouped.set(candidate.parsed.number, bucket);
+  }
 
-## Sounddesign — Hard Gate
+  const assignments = [];
+  for (const [number, candidates] of [...grouped.entries()].sort((a, b) => a[0] - b[0])) {
+    if (candidates.length > 1) {
+      for (const candidate of candidates) {
+        unmatched.push({
+          source: sourceRelativeToInbox(candidate.name),
+          reason: `Mehrere Dateien verwenden dieselbe Nummer ${String(number).padStart(2, '0')}.`
+        });
+      }
+      continue;
+    }
 
-Kein visueller Wechsel darf stumm durchrutschen:
-- jeder Szenenwechsel ab Szene 2 braucht SFX
-- jeder interne Bildwechsel braucht eigenen SFX/Objekt-Sound
-- SFX beginnt ca. 0,04 s vor dem Cut
-- typische Lautstärke 0,18–0,30, Standard ca. 0,22
-- nur `type` aus `config/sound-library.json`
-- interne SFX über `targetId` an die konkrete Bildphase binden
+    const candidate = candidates[0];
+    const source = sourceRelativeToInbox(candidate.name);
+    const visual = imageTargetsByNumber.get(number);
+    if (!visual) {
+      unmatched.push({ source, reason: `Für Bildnummer ${String(number).padStart(2, '0')} existiert keine geplante Bildphase.` });
+      continue;
+    }
 
-`sync:sounds --strict` bindet die Typen an echte Dateien. Finalizer und Renderer prüfen die Soundbibliothek erneut. Falls ein Zwischenplan ein `file`-Feld verliert, kann der Renderer einen bekannten Typ als Safety-Fallback erneut auf die kanonische SFX-Datei auflösen.
+    assignments.push({
+      source,
+      target: visual.targetId,
+      parentSceneId: visual.sceneId,
+      suggestedBy: 'numbered-global-image-order',
+      importNumber: number,
+      ...chronologicalAssignment(visual.targetId, visual.sceneOrder, visual.phaseOrder)
+    });
+  }
 
-## Audio-Ende — Hard Gate
+  const mapPath = path.join(reelDirectory, 'inbox', 'asset-map.json');
+  const previousMap = await readJson(mapPath, { assignments: [] });
+  const preservedAssignments = Array.isArray(previousMap?.assignments)
+    ? previousMap.assignments.filter((assignment) => String(assignment?.target ?? '') === 'audio')
+    : [];
 
-`trim:pauses` entfernt auch Endstille. Das finale Voice-over darf höchstens **0,25 s Endstille** enthalten. Danach folgt ausschließlich der separate 0,5–0,7-s-Schlussbild-Hold.
+  const assetMap = {
+    version: 5,
+    generatedBy: 'numbered-image-import',
+    assignmentMode: 'global-image-order-authoritative-with-fast-spot-check',
+    plannedImageCount: imageTargetsByNumber.size,
+    instructions: [
+      'Die zweistellige Nummer ist die verbindliche globale Bildreihenfolge.',
+      'Vollständige eindeutige Nummern werden automatisch auf die geplanten Bildphasen geroutet.',
+      'Kein zweiter Prüfpass und keine schriftliche Match-Begründung erforderlich.',
+      'Nach dem Import führt check:visuals einen schnellen technischen/visuellen Einmal-Check durch.',
+      'Nur echte Konflikte wie fehlende, doppelte oder offensichtlich falsche Bilder blockieren.'
+    ],
+    assignments: [...preservedAssignments, ...assignments],
+    unmatched
+  };
 
-Mehrsekündige Endstille blockiert Finalizer und Renderer — auch mit `--force`.
-
-## Google Flow
-
-Einzige verbindliche Masterdatei:
-
-```text
-00-bildprompts/99-alle-bildprompts.txt
-```
-
-Flow arbeitet strikt seriell:
-
-```text
-1 Bild erzeugen → warten → prüfen → Bild NN.png → ablegen → prüfen → nächstes Bild
-```
-
-Keine Queue, kein Batch, keine Parallelgenerierung.
-
-## Sichtbare Reel-Struktur
-
-```text
-reel-XX_thema/
-├── 00-bildprompts/
-├── 01-voice-script/
-├── 02-audio/
-├── 03-export/
-│   ├── FERTIGES-REEL.mp4
-│   └── UNIVERSELLE-CAPTION.txt
-└── 99-technik/
-```
-
-## Quellen
-
-Mindestens zwei nachvollziehbare HTTPS-Quellen mit unterschiedlichen Hosts; möglichst eine Primär-/offizielle oder wissenschaftliche Quelle plus eine unabhängige Sekundär-/Fachquelle.
-
-## Phase 3
-
-```bash
-npm run discover:assets -- --dir "<reel>"
-npm run organize:assets -- --dir "<reel>" --apply
-npm run check:visuals -- --dir "<reel>" --strict
-npm run trim:pauses -- --dir "<reel>" --speed 1.10
-npm run sync:sounds -- --dir "<reel>" --strict
-npm run build:timeline -- --dir "<reel>" --strict
-npm run finalize:reel -- --dir "<reel>" --strict
-npm run validate:render -- --dir "<reel>"
-npm run render:reel -- --dir "<reel>"
-```
-
-Motion/SFX-, Quellen-, Audio-Dateibindungs- und Endstille-Hard-Gates dürfen nicht mit `--force` umgangen werden.
-
-## Tests
-
-```bash
-npm test
-```
-
-Tests/QC niemals als bestanden melden, wenn sie nicht tatsächlich ausgeführt wurden.
+  await writeJson(mapPath, assetMap);
+  return {
+    directory,
+    mapPath,
+    candidateCount: candidateFiles.length,
+    plannedImageCount: imageTargetsByNumber.size,
+    assignedCount: assignments.length,
+    preservedAudioAssignments: preservedAssignments.length,
+    unmatchedCount: unmatched.length,
+    assignments,
+    unmatched
+  };
+}

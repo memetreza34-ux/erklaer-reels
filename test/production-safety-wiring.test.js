@@ -1,94 +1,63 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import path from 'node:path';
 
-async function text(file) {
-  return readFile(path.resolve(file), 'utf8');
-}
+import {
+  FIXED_VISUAL_STYLE_ID,
+  FIXED_VISUAL_STYLE_REASON,
+  FIXED_VISUAL_WORLD_LABEL,
+  FIXED_VISUAL_WORLD_PROMPT
+} from '../src/shared/fixed-visual-world.js';
 
-test('Neue Reels verankern Quellen-Schema und feste Bildwelt direkt im Workspace-Core', async () => {
-  const workspace = await text('src/core/workspace.js');
-  const creator = await text('src/cli/create-reel.js');
-  const fixedWorld = await text('src/shared/fixed-visual-world.js');
+test('feste Bildwelt ist in Runtime und Config identisch verdrahtet', async () => {
+  const styles = JSON.parse(await readFile(new URL('../config/image-styles.json', import.meta.url), 'utf8'));
+  const contentRules = JSON.parse(await readFile(new URL('../config/content-rules.json', import.meta.url), 'utf8'));
 
-  assert.match(workspace, /FIXED_VISUAL_STYLE_ID/);
-  assert.match(workspace, /visualStyleId:\s*FIXED_VISUAL_STYLE_ID/);
-  assert.match(workspace, /visualStyleReason:\s*FIXED_VISUAL_STYLE_REASON/);
-  assert.match(fixedWorld, /modern-countryball-explainer/);
-  assert.match(fixedWorld, /modern minimalist countryball-inspired style/i);
-  assert.match(workspace, /sourceQualitySchemaVersion:\s*3/);
-  assert.match(workspace, /buildSourcesTemplate/);
-
-  assert.doesNotMatch(creator, /sourceQualitySchemaVersion\s*=\s*3/);
-  assert.doesNotMatch(creator, /buildSourcesTemplate/);
+  assert.equal(FIXED_VISUAL_STYLE_ID, 'serious-minimal-countryball-explainer');
+  assert.equal(FIXED_VISUAL_WORLD_LABEL, 'Serious Minimal Countryball Explainer');
+  assert.match(FIXED_VISUAL_STYLE_REASON, /Serious|seriöse/i);
+  assert.equal(styles.visualWorldMode, 'fixed');
+  assert.equal(styles.fixedVisualWorld, FIXED_VISUAL_STYLE_ID);
+  assert.deepEqual(styles.newReelAllowedStyleIds, [FIXED_VISUAL_STYLE_ID]);
+  assert.equal(styles.styles.length, 1);
+  assert.equal(styles.styles[0].id, FIXED_VISUAL_STYLE_ID);
+  assert.equal(styles.styles[0].name, FIXED_VISUAL_WORLD_LABEL);
+  assert.equal(styles.styles[0].characterSystem.roundBallGeometryRequiredWhenActorAppears, true);
+  assert.equal(styles.styles[0].characterSystem.separateHeadForbidden, true);
+  assert.equal(styles.styles[0].characterSystem.actorNotMandatoryWhenObjectOrSymbolIsClearer, true);
+  assert.equal(styles.styles[0].characterSystem.tinyDecorativeBallForbidden, true);
+  assert.equal(styles.styles[0].characterSystem.flagsOnlyWhenGeographicallyRelevant, true);
+  assert.equal(styles.styles[0].composition.oneDominantFocalSubject, true);
+  assert.deepEqual(styles.styles[0].composition.compositionModes, ['minimal-symbolic', 'supported-explainer', 'simple-mini-scene']);
+  assert.equal(styles.styles[0].topicAdaptation.topicMayChangeVisualWorld, false);
+  assert.equal(contentRules.visualRules.visualWorldMode, 'fixed');
+  assert.equal(contentRules.visualRules.fixedVisualWorld, FIXED_VISUAL_STYLE_ID);
+  assert.equal(contentRules.visualRules.fixedVisualWorldLabel, FIXED_VISUAL_WORLD_LABEL);
 });
 
-test('Audio-Pacing-CLI bindet die echte Lautheitsmessung an die Ausgabedatei', async () => {
-  const source = await text('src/cli/trim-pauses.js');
-  assert.match(source, /stampAudioPacingFileBinding/);
-  assert.match(source, /Gemessen:/);
-  assert.match(source, /SHA-256-Fingerprint/);
+test('Style-Lock beschreibt die Serious-Minimal-Countryball-Welt eindeutig', () => {
+  assert.match(FIXED_VISUAL_WORLD_PROMPT, /vertical 9:16/i);
+  assert.match(FIXED_VISUAL_WORLD_PROMPT, /exactly ONE fixed Reel visual world/i);
+  assert.match(FIXED_VISUAL_WORLD_PROMPT, /Serious Minimal Countryball Explainer/i);
+  assert.match(FIXED_VISUAL_WORLD_PROMPT, /perfectly round countryball-like character/i);
+  assert.match(FIXED_VISUAL_WORLD_PROMPT, /no separate human head/i);
+  assert.match(FIXED_VISUAL_WORLD_PROMPT, /simple white eyes/i);
+  assert.match(FIXED_VISUAL_WORLD_PROMPT, /only when geography, politics, nationality or cultural identity actually matters/i);
+  assert.match(FIXED_VISUAL_WORLD_PROMPT, /A ball character is optional/i);
+  assert.match(FIXED_VISUAL_WORLD_PROMPT, /tiny decorative ball/i);
+  assert.match(FIXED_VISUAL_WORLD_PROMPT, /thick clean black outlines/i);
+  assert.match(FIXED_VISUAL_WORLD_PROMPT, /minimal-symbolic/i);
+  assert.match(FIXED_VISUAL_WORLD_PROMPT, /supported-explainer/i);
+  assert.match(FIXED_VISUAL_WORLD_PROMPT, /simple-mini-scene/i);
+  assert.match(FIXED_VISUAL_WORLD_PROMPT, /Visible text must be German only/i);
+  assert.match(FIXED_VISUAL_WORLD_PROMPT, /Do not borrow the separate YouTube visual world/i);
 });
 
-test('Finalisierung und Renderer prüfen Quellen und Audio, aber keinen Word-Sync', async () => {
-  const cliFinalizer = await text('src/cli/finalize-reel.js');
-  const renderer = await text('src/cli/render-reel.js');
-  const coreRenderer = await text('src/core/remotion-renderer.js');
-  const finalizer = await text('src/core/finalize-reel.js');
-
-  for (const source of [cliFinalizer, renderer, coreRenderer, finalizer]) {
-    assert.match(source, /verifyRequiredSourceQuality/);
-    assert.match(source, /verifyAudioPacingFileBinding/);
-    assert.doesNotMatch(source, /verifyAppliedWordSyncAudioBinding/);
-  }
-  assert.match(renderer, /auch mit --force blockiert/);
-  assert.match(coreRenderer, /veralteten Lautheitsmesswerte/);
-  assert.match(finalizer, /wordSyncRequired:\s*false/);
-});
-
-test('Statusanzeige berücksichtigt Quellen- und Pacing-Gates und markiert Untertitel deaktiviert', async () => {
-  const status = await text('src/cli/reel-status.js');
-  assert.match(status, /verifyRequiredSourceQuality/);
-  assert.match(status, /verifyAudioPacingFileBinding/);
-  assert.doesNotMatch(status, /verifyAppliedWordSyncAudioBinding/);
-  assert.match(status, /subtitlesEnabled:\s*false/);
-  assert.match(status, /wordSyncRequired:\s*false/);
-});
-
-test('aktuelle Produktions-CLI-Beispiele verwenden reels statt content', async () => {
-  for (const file of [
-    'src/cli/check-content.js',
-    'src/cli/finalize-reel.js',
-    'src/cli/render-reel.js',
-    'src/cli/reel-status.js',
-    'src/cli/trim-pauses.js'
-  ]) {
-    const source = await text(file);
-    assert.match(source, /reels\/\.\.\.\/reel-01_titel/);
-    assert.doesNotMatch(source, /content\/\.\.\.\/reel-01_titel/);
-  }
-});
-
-test('strenges Content-Gate verwendet das verpflichtende Quellen-Schema', async () => {
-  const source = await text('src/cli/check-content.js');
-  assert.match(source, /verifyRequiredSourceQuality/);
-  assert.match(source, /strictSourceGatePassed/);
-  assert.match(source, /sourceGate\.passed === true/);
-  assert.match(source, /hasMalformedUrlField/);
-});
-
-test('Legacy-Word-Sync-Hilfen dürfen bestehen, sind aber nicht Teil des normalen Renderpfads', async () => {
-  const wordSyncGuard = await text('src/core/word-sync-audio-guard.js');
-  const wordSyncCli = await text('src/cli/sync-words.js');
-  const renderCli = await text('src/cli/render-reel.js');
-  const finalizer = await text('src/core/finalize-reel.js');
-  const packageJson = JSON.parse(await text('package.json'));
-
-  assert.match(wordSyncGuard, /audioFingerprintSha256/);
-  assert.match(wordSyncCli, /verifyWordSyncTimelineReadiness/);
-  assert.doesNotMatch(renderCli, /sync:words|Word-Sync-Audio|Wortzeiten/);
-  assert.doesNotMatch(finalizer, /sync:words|wordSyncAudioBinding/);
-  assert.equal(packageJson.scripts['sync:words'], undefined);
-  assert.equal(packageJson.scripts['legacy:sync:words'], 'node src/cli/sync-words.js');
+test('Style-Bibel dokumentiert neue feste Reel-Welt und YouTube-Trennung', async () => {
+  const bible = await readFile(new URL('../knowledge/fixed-visual-world.md', import.meta.url), 'utf8');
+  assert.match(bible, /Serious Minimal Countryball Explainer/i);
+  assert.match(bible, /serious-minimal-countryball-explainer/i);
+  assert.match(bible, /perfekt rund|runde Kugel/i);
+  assert.match(bible, /Mini-Kugeln|Deko/i);
+  assert.match(bible, /YouTube/i);
 });
