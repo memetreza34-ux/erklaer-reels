@@ -9,11 +9,7 @@ import { validateRendererInput } from '../core/render-validator.js';
 import { syncReelSounds } from '../core/sound-library.js';
 import { verifyRequiredSourceQuality } from '../core/source-quality-file-guard.js';
 import { verifyTrailingVoiceoverSilence } from '../core/trailing-silence-guard.js';
-
-function getArgument(name) {
-  const index = process.argv.indexOf(name);
-  return index >= 0 ? process.argv[index + 1] : undefined;
-}
+import { getArgument } from '../shared/cli-args.js';
 
 function showUsage() {
   console.log(`

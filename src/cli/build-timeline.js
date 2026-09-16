@@ -3,11 +3,7 @@
 import { buildMasterTimeline } from '../core/timeline.js';
 import { syncReelSounds } from '../core/sound-library.js';
 import { verifyFutureEffectsCoverage } from '../core/effects-quality-file-guard.js';
-
-function getArgument(name) {
-  const index = process.argv.indexOf(name);
-  return index >= 0 ? process.argv[index + 1] : undefined;
-}
+import { getArgument } from '../shared/cli-args.js';
 
 function usage() {
   console.log(`

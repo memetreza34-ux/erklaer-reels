@@ -2,11 +2,7 @@
 
 import { getReelLayout, compactReelLayout } from '../core/compact-reel-layout.js';
 import { ensureHumanReelView } from '../core/human-reel-view.js';
-
-function getArgument(name) {
-  const index = process.argv.indexOf(name);
-  return index >= 0 ? process.argv[index + 1] : undefined;
-}
+import { getArgument } from '../shared/cli-args.js';
 
 async function main() {
   const reelDirectory = getArgument('--dir');

@@ -6,13 +6,9 @@ import path from 'node:path';
 import { getReelLayout } from '../core/compact-reel-layout.js';
 import { writeSequentialAudioSync } from '../core/reel-image-audio-mapping.js';
 import { probeAudioDuration } from '../core/timeline.js';
+import { getArgument } from '../shared/cli-args.js';
 
 const AUDIO_EXTENSIONS = new Set(['.mp3', '.wav', '.m4a', '.aac', '.flac', '.ogg']);
-
-function getArgument(name) {
-  const index = process.argv.indexOf(name);
-  return index >= 0 ? process.argv[index + 1] : undefined;
-}
 
 async function exists(filePath) {
   try { await access(filePath); return true; } catch { return false; }

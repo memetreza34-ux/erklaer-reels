@@ -3,11 +3,7 @@
 import { verifyAudioPacingFileBinding } from '../core/audio-pacing-file-guard.js';
 import { calculateReelProgress } from '../core/reel-progress.js';
 import { verifyRequiredSourceQuality } from '../core/source-quality-file-guard.js';
-
-function getArgument(name) {
-  const index = process.argv.indexOf(name);
-  return index >= 0 ? process.argv[index + 1] : undefined;
-}
+import { getArgument } from '../shared/cli-args.js';
 
 function yesNo(value) {
   return value ? 'ja' : 'nein';

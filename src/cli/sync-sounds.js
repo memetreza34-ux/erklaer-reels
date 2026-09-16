@@ -5,13 +5,9 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { knownSoundTypes, loadSoundLibrary, reviewSoundDramaturgy, syncReelSounds } from '../core/sound-library.js';
+import { getArgument } from '../shared/cli-args.js';
 
 const REPO_ROOT = fileURLToPath(new URL('../..', import.meta.url));
-
-function getArgument(name) {
-  const index = process.argv.indexOf(name);
-  return index >= 0 ? process.argv[index + 1] : undefined;
-}
 
 async function main() {
   if (process.argv.includes('--types')) {

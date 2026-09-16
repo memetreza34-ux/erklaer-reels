@@ -7,11 +7,7 @@ import { findNextFreeProductionSlot } from '../core/next-slot.js';
 import { ensureImagePromptBundleDirectory } from '../core/image-prompt-bundle.js';
 import { ensureHumanReelView } from '../core/human-reel-view.js';
 import { compactReelLayout } from '../core/compact-reel-layout.js';
-
-function getArgument(name) {
-  const index = process.argv.indexOf(name);
-  return index >= 0 ? process.argv[index + 1] : undefined;
-}
+import { getArgument } from '../shared/cli-args.js';
 
 function showUsage() {
   console.log(`

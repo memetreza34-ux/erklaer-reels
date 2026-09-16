@@ -64,9 +64,37 @@ Legacy-Pakete mit `one-hook-two-standard` bleiben unterstützt. Neue Phase-1-Ree
 
 `sync:words` ist für neue Reels **nicht erforderlich** und gehört nicht zum aktiven Workflow.
 
-## Reel-Bildwelt
+## Bildwelten — zwei getrennte Kanäle
 
-Reels: ausschließlich **Serious Minimal Countryball Explainer** (`serious-minimal-countryball-explainer`) in 9:16. Die frühere `modern-countryball-explainer`-Welt ist für neue Reels ersetzt. YouTube-Regeln niemals auf Reels übertragen.
+Verbindliche Quelle ist **`config/visual-worlds.json`**. Keine Style-ID wird irgendwo sonst neu definiert; Doku und Code lesen ausschließlich von dort.
+
+| Kanal | Bildwelt | Format | Figuren | Ordner |
+|---|---|---|---|---|
+| Reel | `serious-minimal-countryball-explainer` | 9:16 | Countryball | `reels/` |
+| YouTube | `youtube-editorial-stick-explainer` | 16:9 | Stick-Figure | `youtube/` |
+
+Die frühere `modern-countryball-explainer`-Welt ist stillgelegt und in keinem Kanal mehr gültig.
+
+**Die Trennung ist hart.** Eine Bildwelt im falschen Kanal ist ein Hard Blocker, kein Stilfehler:
+
+- keine Countryballs in YouTube-Bildern, keine Stick-Figures in Reel-Bildern
+- kein 16:9 im Reel-Ordner, kein 9:16 im YouTube-Ordner
+- ein Bild aus einem Kanal wird nie im anderen wiederverwendet
+- `assertVisualWorldForChannel()` aus `src/shared/visual-worlds.js` prüft das im Code
+
+Zuordnung prüfen: `npm run check:worlds`
+
+## Themen — jedes Thema genau einmal
+
+Verbindliche Quelle ist **`config/topics.json`**; `THEMEN_HISTORIE.md` ist die Ansicht davon.
+
+Vor jedem neuen Reel und jedem neuen YouTube-Video:
+
+```bash
+npm run check:topic -- "<Thementitel>"
+```
+
+Identischer Slug oder identische Kernaussage = Hard Blocker, kanalübergreifend. Hohe Ähnlichkeit wird als Verdachtsfall gemeldet und vom Nutzer entschieden — der Agent entscheidet das nicht selbst. Ein neu gewähltes Thema wird sofort in `config/topics.json` **und** `THEMEN_HISTORIE.md` eingetragen.
 
 ### World-Lock vor Bild 01
 

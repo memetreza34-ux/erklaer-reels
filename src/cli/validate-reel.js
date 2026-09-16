@@ -2,11 +2,7 @@
 
 import { access, readFile } from 'node:fs/promises';
 import path from 'node:path';
-
-function getArgument(name) {
-  const index = process.argv.indexOf(name);
-  return index >= 0 ? process.argv[index + 1] : undefined;
-}
+import { getArgument } from '../shared/cli-args.js';
 
 async function exists(filePath) {
   try {
