@@ -1,0 +1,138 @@
+{
+  "$comment": "Maschinenlesbare Themenliste über alle Kanäle. THEMEN_HISTORIE.md ist die menschenlesbare Ansicht davon. Ein Thema darf nie zweimal vorkommen - auch nicht in anderer Formulierung und auch nicht in einem anderen Kanal. Geprüft von src/core/topic-registry.js.",
+  "registryVersion": 1,
+  "crossChannelUniqueness": true,
+  "similarityWarningThreshold": 0.5,
+  "topics": [
+    {
+      "slug": "warum-haben-laender-grenzen",
+      "title": "Warum haben Länder Grenzen?",
+      "channel": "reel",
+      "status": "used",
+      "aliases": []
+    },
+    {
+      "slug": "sozialismus-einfach-erklaert",
+      "title": "Sozialismus einfach erklärt",
+      "channel": "reel",
+      "status": "used",
+      "aliases": []
+    },
+    {
+      "slug": "gruppendruck-einfach-erklaert",
+      "title": "Gruppendruck einfach erklärt",
+      "channel": "reel",
+      "status": "used",
+      "aliases": []
+    },
+    {
+      "slug": "warum-schliessen-laender-buendnisse",
+      "title": "Warum schließen Länder Bündnisse?",
+      "channel": "reel",
+      "status": "used",
+      "aliases": []
+    },
+    {
+      "slug": "warum-verfolgen-dich-peinliche-erinnerungen",
+      "title": "Warum verfolgen dich peinliche Erinnerungen?",
+      "channel": "reel",
+      "status": "used",
+      "aliases": []
+    },
+    {
+      "slug": "warum-kann-keine-weltkarte-die-erde-richtig-zeigen",
+      "title": "Warum kann keine Weltkarte die Erde richtig zeigen?",
+      "channel": "reel",
+      "status": "used",
+      "aliases": []
+    },
+    {
+      "slug": "warum-folgen-menschen-der-gruppe-obwohl-sie-falsch-liegt",
+      "title": "Warum folgen Menschen der Gruppe, obwohl sie falsch liegt?",
+      "channel": "reel",
+      "status": "used",
+      "aliases": []
+    },
+    {
+      "slug": "warum-bleibt-negative-kritik-laenger-haengen",
+      "title": "Warum bleibt negative Kritik länger hängen?",
+      "channel": "reel",
+      "status": "used",
+      "aliases": []
+    },
+    {
+      "slug": "usa-china-taiwan-konflikt-einfach-erklaert",
+      "title": "USA-China-Taiwan-Konflikt einfach erklärt",
+      "channel": "reel",
+      "status": "used",
+      "aliases": []
+    },
+    {
+      "slug": "hitzewellen-in-europa-warum-werden-sie-immer-schlimmer",
+      "title": "Hitzewellen in Europa: Warum werden sie immer schlimmer?",
+      "channel": "reel",
+      "status": "used",
+      "aliases": []
+    },
+    {
+      "slug": "warum-riecht-regen-so-besonders",
+      "title": "Warum riecht Regen so besonders?",
+      "channel": "reel",
+      "status": "used",
+      "aliases": []
+    },
+    {
+      "slug": "warum-sehen-wir-den-mond-am-tag",
+      "title": "Warum sehen wir den Mond am Tag?",
+      "channel": "reel",
+      "status": "used",
+      "aliases": []
+    },
+    {
+      "slug": "warum-schieben-wir-aufgaben-auf",
+      "title": "Warum schieben wir Aufgaben auf?",
+      "channel": "reel",
+      "status": "planned",
+      "aliases": []
+    },
+    {
+      "slug": "warum-bekommen-wir-gaensehaut",
+      "title": "Warum bekommen wir Gänsehaut?",
+      "channel": "reel",
+      "status": "planned",
+      "aliases": []
+    },
+    {
+      "slug": "warum-werden-finger-im-wasser-runzlig",
+      "title": "Warum werden Finger im Wasser runzlig?",
+      "channel": "reel",
+      "status": "planned",
+      "scheduledFor": "2026-09-07",
+      "aliases": []
+    },
+    {
+      "slug": "warum-ist-gaehnen-ansteckend",
+      "title": "Warum ist Gähnen ansteckend?",
+      "channel": "reel",
+      "status": "planned",
+      "scheduledFor": "2026-09-08",
+      "aliases": []
+    },
+    {
+      "slug": "was-ist-foederalismus",
+      "title": "Was ist Föderalismus?",
+      "channel": "reel",
+      "status": "planned",
+      "scheduledFor": "2026-09-09",
+      "aliases": []
+    },
+    {
+      "slug": "warum-hat-ein-tag-24-stunden-und-nicht-10",
+      "title": "Warum hat ein Tag 24 Stunden – und nicht 10?",
+      "channel": "youtube",
+      "status": "planned",
+      "scheduledFor": "2026-08-31",
+      "aliases": []
+    }
+  ]
+}

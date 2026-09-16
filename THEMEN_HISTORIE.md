@@ -2,7 +2,17 @@
 
 Diese Datei ist die verbindliche Themenliste für **alle Erklärformate in diesem Repository** — Reels und YouTube-Langvideos.
 
+**Maschinenlesbare Quelle: `config/topics.json`.** Diese Markdown-Datei ist die menschenlesbare Ansicht. Wer ein Thema hinzufügt, trägt es in beide ein.
+
 **Regel:** Vor jeder neuen Themenwahl diese Liste prüfen. Ein bereits verwendetes oder inhaltlich nahezu identisches Thema darf nicht erneut geplant werden. Geplante Themen sind ebenfalls reserviert, bis sie verworfen oder veröffentlicht werden.
+
+Prüfung vor dem Anlegen:
+
+```bash
+npm run check:topic -- "Warum ist der Himmel blau?"
+```
+
+Ein identischer Slug oder eine identische Kernaussage ist ein Hard Blocker. Hohe Ähnlichkeit wird als Verdachtsfall gemeldet und von dir entschieden — eine automatische semantische Prüfung kann das nicht sicher trennen.
 
 Für **neue Reels** gilt zusätzlich `REEL_THEMENFOKUS.md`: autonom ausgewählt werden vor allem Politik, Geschichte, Geografie, Ideologien/Systeme und passende internationale bzw. staatliche Mechanismen. Ältere Off-Focus-Reels bleiben nur als Historie bestehen.
 
@@ -48,3 +58,9 @@ Beispiele:
 Die Sperre gilt formatübergreifend: Ein bereits verwendetes Reel-Thema wird nicht einfach als YouTube-Langvideo wiederholt und umgekehrt, außer der Nutzer hebt diese Regel ausdrücklich für ein konkretes Thema auf.
 
 Für YouTube wird zusätzlich die Wochenzuordnung dokumentiert; die Produktionsordner liegen nach `youtube/<Woche>/<Thema>/`.
+
+Die gesamte Liste auf Duplikate prüfen:
+
+```bash
+npm run check:topic -- --audit
+```
