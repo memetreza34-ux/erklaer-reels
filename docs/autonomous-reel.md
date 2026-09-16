@@ -51,8 +51,8 @@ Die 13 sind **narrative Szenen**, nicht automatisch 13 Bilder.
 Neue Reels verwenden automatisch Quellen-Schema 3 und die eine feste Bildwelt:
 
 ```text
-visualStyleId = "modern-countryball-explainer"
-visualStyleReason = "Globale feste Bildwelt für alle neuen Erklär-Reels: moderner minimalistischer Countryball-Erklärstil."
+visualStyleId = "serious-minimal-countryball-explainer"
+visualStyleReason = "Globale feste Bildwelt für alle neuen Erklär-Reels: seriöser, cleaner, minimalistischer 2D-Countryball-Erklärstil."
 ```
 
 ### 5. Keine zweite Bildwelt einführen

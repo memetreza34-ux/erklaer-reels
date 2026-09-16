@@ -4,7 +4,7 @@
 
 ## Ziel
 
-Jedes Reel erklärt einen Begriff, ein System, ein Verhalten oder einen Zusammenhang ohne Vorwissen verständlich. Themenwelt offen, Bildwelt fest: `modern-countryball-explainer`.
+Jedes Reel erklärt einen Begriff, ein System, ein Verhalten oder einen Zusammenhang ohne Vorwissen verständlich. Themenwelt offen, Bildwelt fest: `serious-minimal-countryball-explainer` (9:16, Kanal `reel`).
 
 ## Script
 
@@ -17,7 +17,9 @@ Jedes Reel erklärt einen Begriff, ein System, ein Verhalten oder einen Zusammen
 
 ## Bildwelt
 
-Neue Reels verwenden ausschließlich `modern-countryball-explainer`.
+Neue Reels verwenden ausschließlich `serious-minimal-countryball-explainer`.
+
+Verbindliche Kanal-Zuordnung: `config/visual-worlds.json`. Die YouTube-Welt `youtube-editorial-stick-explainer` (16:9) gilt hier nie.
 
 - 9:16
 - runde Kugelfiguren, wenn Akteure sinnvoll sind

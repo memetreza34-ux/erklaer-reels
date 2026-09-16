@@ -1,6 +1,22 @@
-export const FIXED_VISUAL_STYLE_ID = 'serious-minimal-countryball-explainer';
+/**
+ * Reel-Bildwelt (9:16).
+ *
+ * ID und Label kommen aus config/visual-worlds.json und werden hier nicht mehr
+ * eigenständig definiert. Die YouTube-Welt liegt getrennt in
+ * src/shared/youtube-visual-world.js und darf hier niemals einfließen.
+ */
 
-export const FIXED_VISUAL_WORLD_LABEL = 'Serious Minimal Countryball Explainer';
+import { getVisualWorld } from './visual-worlds.js';
+
+const REEL_WORLD = getVisualWorld('reel');
+
+export const REEL_VISUAL_CHANNEL = 'reel';
+
+export const FIXED_VISUAL_STYLE_ID = REEL_WORLD.id;
+
+export const FIXED_VISUAL_WORLD_LABEL = REEL_WORLD.label;
+
+export const FIXED_VISUAL_ASPECT_RATIO = REEL_WORLD.aspectRatio;
 
 export const FIXED_VISUAL_STYLE_REASON = 'Globale feste Bildwelt für alle neuen Erklär-Reels: seriöse, cleane, minimalistische 2D-Countryball-Bildsprache mit starken schwarzen Konturen, einfachen Farbfeldern, kurzen deutschen Headlines und wenigen passenden Requisiten. Die alte Modern-Countryball-Explainer-Welt ist für neue Reels ersetzt.';
 
