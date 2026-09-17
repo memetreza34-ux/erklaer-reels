@@ -7,7 +7,7 @@ Phase 1 ist fertig. Du brauchst jetzt zwei Dinge: das Voice-over und 20 Bilder.
 1) VOICE-OVER
 ------------------------------------------------------------
 Text zum Vertonen:   01-voice-script/voice-script.txt
-Ziel:                55-60 Sekunden, geplant sind 57,0 s
+Ziel:                55-60 Sekunden, geplant sind 56,5 s
 Fertige Datei in:    02-audio/AUDIO-HIER-EINFUEGEN/
 
 Nur EINE Audiodatei dort ablegen. Format: mp3, wav oder m4a.
@@ -19,64 +19,63 @@ Prompts:             00-bildprompts/99-alle-bildprompts.txt
 Fertige Bilder in:   00-bildprompts/00-ALLE-BILDER-HIER-REIN/
 
 Benennung verbindlich:  Bild 01.png  bis  Bild 20.png
-(PNG, JPG, JPEG oder WEBP. Die Nummer bestimmt die Reihenfolge.)
-
-Google Flow arbeitet streng seriell:
-  1 Bild erzeugen -> warten -> gegen den Prompt pruefen -> als Bild NN.png
-  ablegen -> erst dann das naechste Bild.
-
 Keine Nummer ueberspringen. Fehlt eine, stoppt Phase 3.
+
+WICHTIG: Bild 02 und Bild 20 sind fast dasselbe Motiv. Das ist Absicht -
+das Schlussbild greift den Anfang wieder auf, damit das Reel sauber loopt.
+Nur der Text unterscheidet sich: "14 ZU 1" am Anfang, "IMMER NOCH 14 ZU 1"
+am Ende.
 
 
 3) WAS WELCHES BILD ZEIGT
 ------------------------------------------------------------
-  scene-01  (5.0s)  Hook
-    Bild 01.png   Ein einzelner roter Countryball hebt die Hand, darüber die Headline.
-                  Text im Bild: DAS VETORECHT
-    Bild 02.png   Viele zustimmende Bälle, einer blockiert trotzdem alles.
-                  (kein Text im Bild)
+  scene-01  (5.5s)  Hook
+    Bild 01.png   Vierzehn kleine grüne Bälle gegen einen grossen roten, darüber die Headline.
+                  Text im Bild: VETORECHT ERKLÄRT
+    Bild 02.png   Der rote Ball steht, die grünen kippen um.
+                  Text im Bild: 14 ZU 1
 
   scene-02  (6.5s)  Einleitung: Der Ort
     Bild 03.png   Ein stark vereinfachtes UN-Gebäude mit hellblauer Flagge.
                   Text im Bild: SICHERHEITSRAT
-    Bild 04.png   Durchgestrichene Handelskiste neben einem einfachen Helm.
+    Bild 04.png   Ein Beschluss legt sich als Band um eine einfache Weltkugel.
                   (kein Text im Bild)
 
   scene-03  (6.0s)  Einleitung: Der Tisch
     Bild 05.png   Fünfzehn gleich große neutrale Bälle um einen runden Tisch.
                   Text im Bild: 15 LÄNDER
-    Bild 06.png   Zehn Bälle sind blass und mit einem Kreispfeil als wechselnd markiert.
+    Bild 06.png   Zehn Bälle verblassen mit Kreispfeil, fünf bleiben fest.
                   (kein Text im Bild)
 
-  scene-04  (7.0s)  Hauptteil: Die Fünf
+  scene-04  (6.5s)  Hauptteil: Die Fünf
     Bild 07.png   Fünf Flaggen-Bälle stehen fest nebeneinander.
                   Text im Bild: DIE STÄNDIGEN FÜNF
-    Bild 08.png   Dieselben fünf Bälle, jetzt fest auf einem Sockel.
-                  (kein Text im Bild)
-    Bild 09.png   Ein historischer Marker: Jahreszahl mit einfacher Urkunde.
+    Bild 08.png   Die fünf stehen auf einem Sockel mit der Jahreszahl.
                   Text im Bild: 1945
 
-  scene-05  (6.0s)  Hauptteil: Die Regel
-    Bild 10.png   Neun grüne Häkchen in einem Raster aus fünfzehn Feldern.
+  scene-05  (6.0s)  Hauptteil: Die normale Regel
+    Bild 09.png   Neun grüne Häkchen in einem Raster aus fünfzehn Feldern.
                   Text im Bild: 9 VON 15
-    Bild 11.png   Ein einfacher grüner Haken, der Beschluss geht durch.
+    Bild 10.png   Ein grüner Haken, alles wirkt normal und erledigt.
                   (kein Text im Bild)
 
-  scene-06  (7.5s)  Hauptteil: Die Blockade
-    Bild 12.png   Fünf Flaggen-Bälle heben sich farblich von zehn blassen Bällen ab.
+  scene-06  (7.5s)  Hauptteil: Der Bruch
+    Bild 11.png   Der grüne Haken zerbricht.
                   (kein Text im Bild)
-    Bild 13.png   Ein Dokument zerbricht in zwei Teile.
+    Bild 12.png   Ein Flaggen-Ball hebt die Hand, ein rotes Stoppzeichen erscheint.
                   (kein Text im Bild)
-    Bild 14.png   Eine Waage kippt durch ein einziges kleines Gewicht.
+    Bild 13.png   Eine Waage kippt durch ein einziges rotes Gewicht.
                   Text im Bild: EINE STIMME REICHT
 
-  scene-07  (6.5s)  Hauptteil: Die Enthaltung
-    Bild 15.png   Zwei Bälle nebeneinander: einer senkt die Hand, einer hebt sie.
+  scene-07  (6.5s)  Hauptteil: Die Ausnahme
+    Bild 14.png   Zwei Bälle: einer senkt die Hand, einer hebt sie.
                   Text im Bild: ENTHALTUNG IST KEIN NEIN
-    Bild 16.png   Ein einfaches Gerichtsgebäude mit Waage bestätigt die Regel.
+    Bild 15.png   Am grauen Ball läuft ein grüner Pfeil ungehindert vorbei.
+                  (kein Text im Bild)
+    Bild 16.png   Am roten Ball stoppt derselbe Pfeil an einem Stoppzeichen.
                   (kein Text im Bild)
 
-  scene-08  (6.5s)  Schluss: Der Ursprung
+  scene-08  (6.0s)  Schluss: Der Preis
     Bild 17.png   Ein Gebäude entsteht, daneben ein Preisschild.
                   Text im Bild: DER PREIS
     Bild 18.png   Fünf Flaggen-Bälle drehen sich zum Ausgang.
@@ -85,8 +84,8 @@ Keine Nummer ueberspringen. Fehlt eine, stoppt Phase 3.
   scene-09  (6.0s)  Schluss: Das Paradox
     Bild 19.png   Ein Dokument mit fünf Schlössern.
                   (kein Text im Bild)
-    Bild 20.png   Ein geschlossener Kreis aus fünf Bällen, der sich selbst prüft.
-                  Text im Bild: SIE ENTSCHEIDEN SELBST
+    Bild 20.png   Dasselbe Bild wie am Anfang: der eine rote Ball steht, die vierzehn liegen.
+                  Text im Bild: IMMER NOCH 14 ZU 1
 
 
 4) WENN BEIDES DRIN IST
@@ -97,8 +96,13 @@ Keine Nummer ueberspringen. Fehlt eine, stoppt Phase 3.
 
 AUFBAU DES SCRIPTS
 ------------------------------------------------------------
-Hook (Frage) -> Einleitung -> Hauptteil -> Schluss.
-Jedes Reel beginnt mit der Frage, die es beantwortet.
+Hook (Frage + "einfach erklärt" + sofortiger Konflikt)
+  -> Einleitung (wo es passiert, warum es zaehlt)
+  -> Hauptteil (die Regel, dann der Bruch, dann die Ausnahme)
+  -> Schluss (warum es bleibt, zurueck zum Anfangsbild)
+
+Der Bruch in Szene 6 ist der staerkste Moment: Szene 5 baut die Erwartung
+"normale Mehrheit" auf, Szene 6 zerstoert sie.
 
 
 HINWEISE

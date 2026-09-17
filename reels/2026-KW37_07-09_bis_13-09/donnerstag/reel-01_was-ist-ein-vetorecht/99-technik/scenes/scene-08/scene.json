@@ -1,16 +1,16 @@
 {
   "sceneId": "scene-08",
   "order": 8,
-  "title": "Schluss: Der Ursprung",
-  "narration": "Warum gibt es diese Regel? Sie war 1945 der Preis für die Gründung. Ohne Vetorecht hätten die Großmächte die UNO nie mitgetragen.",
+  "title": "Schluss: Der Preis",
+  "narration": "Warum das so ist? 1945 war es der Preis. Ohne dieses Recht wären die Großmächte der UNO nie beigetreten.",
   "imageText": "DER PREIS",
-  "visualIdea": "Das Vetorecht als Preis für die Gründung der UNO.",
+  "visualIdea": "Das Vetorecht als Preis fuer die Gruendung der UNO.",
   "continuityNotes": "Gleiche Bildwelt. Historischer Kontext bleibt symbolisch, nie realistisch.",
-  "audioCue": "Warum gibt es diese Regel",
+  "audioCue": "Warum das so ist",
   "leadInSeconds": 0.1,
   "subtitleCues": [],
   "subtitlePosition": "center",
-  "durationSeconds": 6.5,
+  "durationSeconds": 6.0,
   "imageCount": 2,
   "imagePhases": [
     {
@@ -21,21 +21,21 @@
       "expectedImageFileName": "scene-08.png",
       "visualIdea": "Ein Gebäude entsteht, daneben ein Preisschild.",
       "imageText": "DER PREIS",
-      "audioCue": "Warum gibt es diese Regel",
-      "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"Warum gibt es diese Regel\".",
+      "audioCue": "Warum das so ist",
+      "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"Warum das so ist\".",
       "imageStatus": "missing",
       "assetVerification": null
     },
     {
       "phaseId": "scene-08-image-02",
       "order": 2,
-      "startPercent": 0.681818,
+      "startPercent": 0.631579,
       "promptFileName": "image-prompt-02.txt",
       "expectedImageFileName": "scene-08-2.png",
       "visualIdea": "Fünf Flaggen-Bälle drehen sich zum Ausgang.",
       "imageText": "",
-      "audioCue": "hätten die Großmächte die UNO nie mitgetragen",
-      "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"hätten die Großmächte die UNO nie mitgetragen\".",
+      "audioCue": "wären die Großmächte der UNO nie beigetreten",
+      "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"wären die Großmächte der UNO nie beigetreten\".",
       "imageStatus": "missing",
       "assetVerification": null
     }
