@@ -84,6 +84,32 @@ Die frühere `modern-countryball-explainer`-Welt ist stillgelegt und in keinem K
 
 Zuordnung prüfen: `npm run check:worlds`
 
+## Script-Aufbau — Frage zuerst
+
+**Jedes Reel beginnt mit der Frage, die es beantwortet.** Der erste Satz startet mit einem
+Fragewort und endet mit einem Fragezeichen:
+
+```text
+Was ist ein Vetorecht? Ein einziges Land sagt Nein — und niemand kann es überstimmen.
+Warum haben Länder Grenzen? Sie wirken selbstverständlich — sind es aber nicht.
+```
+
+Nicht erlaubt: mit einer Aussage beginnen und die Frage erst später nachschieben. Der
+Zuschauer muss im ersten Satz wissen, worum es geht. Geprüft von
+`opensWithQuestion()` in `src/shared/reel-hook-quality.js`; ein Verstoß ist ein Hard Blocker.
+
+Danach folgt immer dieselbe Gliederung:
+
+| Teil | Szenen | Aufgabe |
+|---|---|---|
+| Hook | 1 | Die Frage stellen |
+| Einleitung | 2–3 | Worum es geht und wo es passiert |
+| Hauptteil | 3–5 | Wie es funktioniert, Schritt für Schritt |
+| Schluss | 2 | Warum das zählt, mit einem Satz, der bleibt |
+
+Die Szenentitel tragen ihren Strukturteil als Präfix (`Hook`, `Einleitung: …`,
+`Hauptteil: …`, `Schluss: …`), damit die Gliederung im Reel-Ordner sichtbar bleibt.
+
 ## Themen — jedes Thema genau einmal
 
 Verbindliche Quelle ist **`config/topics.json`**; `THEMEN_HISTORIE.md` ist die Ansicht davon.

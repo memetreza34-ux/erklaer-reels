@@ -15,6 +15,8 @@
 Vor neuer Themenwahl `THEMEN_HISTORIE.md` und `config/reel-topic-focus.json` prüfen.
 
 Für neue Reels gilt:
+- Hook ist immer eine Frage mit Fragezeichen ("Was ist ein Vetorecht?")
+- Gliederung: Hook, Einleitung, Hauptteil, Schluss
 - 55–60 s Voice-over
 - 155–175 deutsche Wörter
 - 8–10 narrative Szenen, Standard 9

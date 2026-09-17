@@ -46,7 +46,13 @@
       "answerBeginsImmediately": true,
       "maximumIntroWordsBeforeExplanation": 5
     },
-    "tone": ["klar", "direkt", "erwachsen", "neutral", "leicht verständlich"],
+    "tone": [
+      "klar",
+      "direkt",
+      "erwachsen",
+      "neutral",
+      "leicht verständlich"
+    ],
     "preferredExamples": [
       "Warum schieben wir Aufgaben auf? Einfach erklärt:",
       "Warum erinnern wir uns falsch? Einfach erklärt:",
@@ -80,12 +86,24 @@
       "avoidLongMicroPauses": true,
       "voiceoverRemainsDominantOverSfx": true
     },
-    "targetDurationSeconds": {"min": 55, "max": 60, "preferred": 58},
-    "targetWordCount": {"min": 155, "max": 175, "preferred": 165},
+    "targetDurationSeconds": {
+      "min": 55,
+      "max": 60,
+      "preferred": 58
+    },
+    "targetWordCount": {
+      "min": 155,
+      "max": 175,
+      "preferred": 165
+    },
     "endingRules": {
       "required": true,
       "minimumFinalScenes": 2,
-      "postVoiceHoldSeconds": {"min": 0.5, "max": 0.7, "preferred": 0.6},
+      "postVoiceHoldSeconds": {
+        "min": 0.5,
+        "max": 0.7,
+        "preferred": 0.6
+      },
       "forbidMultiSecondSilentTail": true,
       "structure": [
         "klare persönliche Prüf- oder Erkenntnisfrage",
@@ -111,9 +129,42 @@
       "playbackRate": 1.1,
       "preservePitch": true,
       "trimLeadingAndTrailingSilence": true,
-      "loudnessNormalization": {"enabled": true, "integratedLufs": -16, "truePeakDbtp": -1.5, "loudnessRangeLra": 11},
+      "loudnessNormalization": {
+        "enabled": true,
+        "integratedLufs": -16,
+        "truePeakDbtp": -1.5,
+        "loudnessRangeLra": 11
+      },
       "rerunTimelineAfterward": true,
       "rerunWordSyncAfterward": false
+    },
+    "hookMustOpenWithQuestion": true,
+    "hookQuestionGuidance": "Jedes Reel startet mit der Frage, die es beantwortet, zum Beispiel \"Was ist ein Vetorecht?\" oder \"Warum haben Länder Grenzen?\". Der erste Satz beginnt mit einem Fragewort und endet mit einem Fragezeichen. Eine Frage erst mitten im Hook reicht nicht.",
+    "narrativeStructure": {
+      "required": true,
+      "parts": [
+        {
+          "part": "hook",
+          "scenes": 1,
+          "purpose": "Die Frage stellen, die das Reel beantwortet."
+        },
+        {
+          "part": "einleitung",
+          "scenes": "2-3",
+          "purpose": "Worum es geht und wo es passiert."
+        },
+        {
+          "part": "hauptteil",
+          "scenes": "3-5",
+          "purpose": "Wie es funktioniert, Schritt für Schritt."
+        },
+        {
+          "part": "schluss",
+          "scenes": 2,
+          "purpose": "Warum das zählt, mit einem Satz, der bleibt."
+        }
+      ],
+      "guidance": "Szenentitel tragen ihren Strukturteil als Präfix, damit die Gliederung sichtbar bleibt."
     }
   },
   "visualRules": {
@@ -121,28 +172,54 @@
     "maximumSceneCount": 10,
     "defaultSceneCount": 9,
     "sceneCountByDuration": [
-      {"durationSecondsMin": 55, "durationSecondsMax": 60, "recommendedScenesMin": 8, "recommendedScenesMax": 10}
+      {
+        "durationSecondsMin": 55,
+        "durationSecondsMax": 60,
+        "recommendedScenesMin": 8,
+        "recommendedScenesMax": 10
+      }
     ],
     "imageCountMode": "adaptive-dense-v2",
     "visualDensityVersion": 2,
     "effectiveSince": "2026-09-11",
     "adaptiveImageTargets": {
-      "8": {"min": 19, "max": 21},
-      "9": {"min": 20, "max": 22},
-      "10": {"min": 21, "max": 24}
+      "8": {
+        "min": 19,
+        "max": 21
+      },
+      "9": {
+        "min": 20,
+        "max": 22
+      },
+      "10": {
+        "min": 21,
+        "max": 24
+      }
     },
     "hookImagePhases": 2,
-    "standardSceneImagePhases": {"min": 2, "max": 3},
+    "standardSceneImagePhases": {
+      "min": 2,
+      "max": 3
+    },
     "imageMomentPerSpokenIdea": true,
     "splitComplexCauseEffect": true,
     "splitAnatomyMechanismStudyComparison": true,
     "doNotInflateSimpleStatements": true,
-    "visualChangeIntervalSeconds": {"min": 2.2, "max": 4.8, "recommendedMin": 2.5, "recommendedMax": 3.8},
+    "visualChangeIntervalSeconds": {
+      "min": 2.2,
+      "max": 4.8,
+      "recommendedMin": 2.5,
+      "recommendedMax": 3.8
+    },
     "splitReviewThresholdSeconds": 4.8,
     "hookVisibleFromSecond": 0,
     "audioCueRequired": true,
     "audioCueRequiredForEveryInternalImagePhase": true,
-    "audioCueLeadSeconds": {"min": 0.08, "max": 0.12, "default": 0.1},
+    "audioCueLeadSeconds": {
+      "min": 0.08,
+      "max": 0.12,
+      "default": 0.1
+    },
     "imageCueLeadSeconds": 0.08,
     "sfxPreRollSeconds": 0.04,
     "consistentStyleWithinReel": true,
@@ -157,14 +234,30 @@
     "integratedGermanTextPreferred": false,
     "globalWorldLockRequiredBeforeImage01": true,
     "individualPromptsMayChangeWorld": false,
-    "worldLockContinuityFields": ["outline-weight", "round-character-geometry", "eye-and-face-language", "flat-2d-rendering", "palette-treatment", "minimal-shading", "background-simplicity", "headline-treatment", "supporting-element-density"],
+    "worldLockContinuityFields": [
+      "outline-weight",
+      "round-character-geometry",
+      "eye-and-face-language",
+      "flat-2d-rendering",
+      "palette-treatment",
+      "minimal-shading",
+      "background-simplicity",
+      "headline-treatment",
+      "supporting-element-density"
+    ],
     "embeddedTextRules": {
       "coverRequired": true,
       "nonCoverOptional": true,
       "useWheneverItImprovesClarity": true,
       "language": "de",
-      "preferredSceneCoveragePercent": {"min": 35, "max": 60},
-      "preferredWordsPerScene": {"min": 0, "max": 4},
+      "preferredSceneCoveragePercent": {
+        "min": 35,
+        "max": 60
+      },
+      "preferredWordsPerScene": {
+        "min": 0,
+        "max": 4
+      },
       "size": "contextual-small-medium-or-large",
       "imageMustWorkWithoutText": true,
       "allowedUses": [
@@ -220,8 +313,15 @@
     "stickFiguresForbidden": true,
     "normalIllustratedHumansForbidden": true,
     "realisticDetailedInteriorsForbidden": true,
-    "supportingElementsTypical": {"min": 0, "max": 3},
-    "allowedCompositionModes": ["minimal-symbolic", "supported-explainer", "simple-mini-scene"],
+    "supportingElementsTypical": {
+      "min": 0,
+      "max": 3
+    },
+    "allowedCompositionModes": [
+      "minimal-symbolic",
+      "supported-explainer",
+      "simple-mini-scene"
+    ],
     "topicSpecificSubVisualWorldsForbidden": true,
     "youtubeVisualWorldInheritanceForbidden": true,
     "useFullFrameComposition": true,

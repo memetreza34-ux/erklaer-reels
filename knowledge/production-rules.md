@@ -8,8 +8,11 @@ Jedes Reel erklärt einen Begriff, ein System, ein Verhalten oder einen Zusammen
 
 ## Script
 
+**Der erste Satz ist immer die Frage, die das Reel beantwortet** — mit Fragewort und
+Fragezeichen, zum Beispiel "Was ist ein Vetorecht?". Danach: Einleitung, Hauptteil, Schluss.
+
 - ein deutscher Erzähler
-- direkte Hook
+- Hook als Frage, nie als Aussage
 - 155–175 Wörter
 - 55–60 s finales Voice-over
 - einfache erwachsene Sprache
