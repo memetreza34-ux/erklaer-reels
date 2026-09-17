@@ -8,6 +8,7 @@ import { ensureImagePromptBundleDirectory } from '../core/image-prompt-bundle.js
 import { ensureHumanReelView } from '../core/human-reel-view.js';
 import { compactReelLayout } from '../core/compact-reel-layout.js';
 import { getArgument } from '../shared/cli-args.js';
+import { assertTopicIsUnique } from '../core/topic-registry.js';
 
 function showUsage() {
   console.log(`
@@ -29,6 +30,7 @@ Optionen:
                   8 Szenen = 15 Bilder, 9 = 17, 10 = 19.
                   Ziel: 55–60 Sekunden bei ungefähr 1,10x
   --output        Ausgabeordner (optional, Standard: reels)
+  --skip-topic-check  Themenpruefung ueberspringen (nur nach bewusster Freigabe)
 `);
 }
 
@@ -52,6 +54,18 @@ async function main() {
   }
   if (dateValue && useNextFree) {
     throw new Error('Verwende entweder --date oder --next-free, nicht beides.');
+  }
+
+  // Themen-Eindeutigkeit vor dem Anlegen pruefen, nicht erst im Nachhinein.
+  // Eine Pruefung, die man vergessen kann, ist keine.
+  if (!process.argv.includes('--skip-topic-check')) {
+    const topicCheck = await assertTopicIsUnique(title);
+    for (const { topic, similarity } of topicCheck.warnings) {
+      console.warn(`Hinweis: ${similarity} Ähnlichkeit zu "${topic.title}" (${topic.channel}, ${topic.status}).`);
+    }
+    if (topicCheck.warnings.length > 0) {
+      console.warn('Wenn das dasselbe Thema ist, jetzt abbrechen. Sonst weiter.\n');
+    }
   }
 
   const script = await readFile(scriptFile, 'utf8');
