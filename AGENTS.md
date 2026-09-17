@@ -110,6 +110,39 @@ Danach folgt immer dieselbe Gliederung:
 Die Szenentitel tragen ihren Strukturteil als Präfix (`Hook`, `Einleitung: …`,
 `Hauptteil: …`, `Schluss: …`), damit die Gliederung im Reel-Ordner sichtbar bleibt.
 
+## Was ein gutes Script ausmacht
+
+**Klarheitstest:** Wenn jemand den Hook hört und nach zehn Sekunden nicht weiß,
+worum es geht, ist er zu schwammig. Zu weich, zu allgemein, zu lang sind die
+drei häufigsten Fehler.
+
+**Erklär am Beispiel, nicht an der Definition.** Ein abstrakter Satz wie
+"vierzehn Länder dafür, eines dagegen" ist eine Zahl, kein Bild im Kopf. Das
+Beispiel muss aus dem Thema selbst kommen, nicht aus einer fremden Welt — für
+das Vetorecht also ein Krisenfall im Sicherheitsrat, keine Pizzabestellung.
+
+**Bewährte Hook-Formen:**
+
+| Form | Muster |
+|---|---|
+| Myth | "Alle denken X. Stimmt aber nicht." |
+| Problem | "Wenn dein X so aussieht, liegt es daran…" |
+| Contra | "Mach diesen Fehler nicht bei X" |
+| Mini-Story | "Ich dachte jahrelang X, bis…" |
+
+**Erwartung aufbauen, dann brechen.** Der stärkste Moment entsteht, wenn eine
+Szene bewusst eine falsche Erwartung setzt ("klingt nach normaler Abstimmung")
+und die nächste sie zerstört ("ist es aber nicht"). Dieser Moment bekommt drei
+Bildphasen statt zwei.
+
+**Das Schlussbild greift das Anfangsbild wieder auf.** Wiederholungen und Loops
+werden vom Algorithmus stark gewichtet. Nur der Bildtext ändert sich, damit die
+Prüfung auf doppelte Bildtexte nicht anschlägt.
+
+**Sprache:** gesprochenes Deutsch. Keine Konjunktive, kein Amtsdeutsch, keine
+Inversionen. "Damit etwas durchgeht" statt "für einen Beschluss", "wer einfach
+nichts sagt" statt "wer sich enthält".
+
 ## Themen — jedes Thema genau einmal
 
 Verbindliche Quelle ist **`config/topics.json`**; `THEMEN_HISTORIE.md` ist die Ansicht davon.

@@ -13,6 +13,10 @@ Fragezeichen, zum Beispiel "Was ist ein Vetorecht?". Danach: Einleitung, Hauptte
 
 - ein deutscher Erzähler
 - Hook als Frage, nie als Aussage
+- Klarheitstest: nach zehn Sekunden muss klar sein, worum es geht
+- Beispiel aus dem Thema selbst, nie eine fremde Alltagsanalogie
+- eine Szene baut eine Erwartung auf, die nächste bricht sie
+- das Schlussbild greift das Anfangsbild wieder auf (Loop)
 - 170–200 Wörter
 - 60–72 s finales Voice-over
 - einfache erwachsene Sprache
