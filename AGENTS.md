@@ -47,7 +47,7 @@ Bei „Mach ein neues Reel“ autonom:
 
 1. nächsten freien Slot bestimmen
 2. starkes, belegbares Thema wählen
-3. 155–175 deutsche Wörter schreiben
+3. 170–200 deutsche Wörter schreiben
 4. 8–10 narrative Szenen planen, Standard 9
 5. für jede Bildphase ausschließlich **Serious Minimal Countryball Explainer** verwenden
 6. für neue Pakete `imageCountMode: "adaptive-dense-v2"` und `visualDensityVersion: 2` setzen

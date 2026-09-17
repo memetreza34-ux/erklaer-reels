@@ -28,7 +28,7 @@ Optionen:
   --scenes        Anzahl narrativer Szenen: 8 bis 10 (optional, Standard: 9)
                   Bildanzahl ist fest: Hook 1 Bild, jede weitere Szene 2 Bilder.
                   8 Szenen = 15 Bilder, 9 = 17, 10 = 19.
-                  Ziel: 55–60 Sekunden bei ungefähr 1,10x
+                  Ziel: 60–72 Sekunden bei ungefähr 1,10x, nie unter einer Minute
   --output        Ausgabeordner (optional, Standard: reels)
   --skip-topic-check  Themenpruefung ueberspringen (nur nach bewusster Freigabe)
 `);

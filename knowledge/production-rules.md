@@ -13,8 +13,8 @@ Fragezeichen, zum Beispiel "Was ist ein Vetorecht?". Danach: Einleitung, Hauptte
 
 - ein deutscher Erzähler
 - Hook als Frage, nie als Aussage
-- 155–175 Wörter
-- 55–60 s finales Voice-over
+- 170–200 Wörter
+- 60–72 s finales Voice-over
 - einfache erwachsene Sprache
 - letzte zwei Szenen: Prüf-/Erkenntnisfrage → konkrete Lösung/Abschluss
 

@@ -1,0 +1,61 @@
+{
+  "sceneId": "scene-10",
+  "order": 10,
+  "leadInSeconds": 0.1,
+  "subtitleCues": [],
+  "subtitlePosition": "center",
+  "assetVerification": null,
+  "title": "Schluss: Zurück zum Anfang",
+  "narration": "Und man wird es nicht mehr los. Denn abschaffen können es nur genau diese fünf. Deshalb gilt bis heute: In der UNO entscheidet nicht die Mehrheit.",
+  "visualIdea": "Das Paradox, aufgeloest im Bild vom Anfang.",
+  "continuityNotes": "Schlussbild greift die Komposition des Hooks auf und schliesst den Kreis fuer den Loop.",
+  "audioCue": "Und man wird es nicht mehr los",
+  "durationSeconds": 7.0,
+  "imageText": "",
+  "imageCount": 3,
+  "status": "planned",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "imagePhases": [
+    {
+      "phaseId": "scene-10-image-01",
+      "order": 1,
+      "startPercent": 0.0,
+      "promptFileName": "image-prompt.txt",
+      "expectedImageFileName": "scene-10.png",
+      "visualIdea": "Ein Dokument mit fünf Schlössern.",
+      "imageText": "",
+      "audioCue": "Und man wird es nicht mehr los",
+      "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"Und man wird es nicht mehr los\".",
+      "imageStatus": "missing",
+      "assetVerification": null
+    },
+    {
+      "phaseId": "scene-10-image-02",
+      "order": 2,
+      "startPercent": 0.307692,
+      "promptFileName": "image-prompt-02.txt",
+      "expectedImageFileName": "scene-10-2.png",
+      "visualIdea": "Ein Kreis aus fünf Bällen, der sich selbst prüft.",
+      "imageText": "",
+      "audioCue": "abschaffen können es nur genau diese fünf",
+      "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"abschaffen können es nur genau diese fünf\".",
+      "imageStatus": "missing",
+      "assetVerification": null
+    },
+    {
+      "phaseId": "scene-10-image-03",
+      "order": 3,
+      "startPercent": 0.730769,
+      "promptFileName": "image-prompt-03.txt",
+      "expectedImageFileName": "scene-10-3.png",
+      "visualIdea": "Dasselbe Bild wie am Anfang: der rote Strich durch die Mehrheit.",
+      "imageText": "ENTSCHEIDET NICHT DIE MEHRHEIT",
+      "audioCue": "In der UNO entscheidet nicht die Mehrheit",
+      "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"In der UNO entscheidet nicht die Mehrheit\".",
+      "imageStatus": "missing",
+      "assetVerification": null
+    }
+  ],
+  "expectedImageFileName": "scene-10.png"
+}

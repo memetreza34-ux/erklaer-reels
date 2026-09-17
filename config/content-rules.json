@@ -87,14 +87,13 @@
       "voiceoverRemainsDominantOverSfx": true
     },
     "targetDurationSeconds": {
-      "min": 55,
-      "max": 60,
-      "preferred": 58
+      "min": 60,
+      "max": 72,
+      "preferred": 66
     },
     "targetWordCount": {
-      "min": 155,
-      "max": 175,
-      "preferred": 165
+      "min": 170,
+      "max": 200
     },
     "endingRules": {
       "required": true,
@@ -165,7 +164,8 @@
         }
       ],
       "guidance": "Szenentitel tragen ihren Strukturteil als Präfix, damit die Gliederung sichtbar bleibt."
-    }
+    },
+    "minimumDurationGuidance": "Ein Reel ist nie kuerzer als eine Minute. Gemessen wird das fertige Voice-over bei 1,10x. Kuerzer reicht fuer eine saubere Erklaerung mit Hook, Einleitung, Hauptteil und Schluss nicht aus."
   },
   "visualRules": {
     "minimumSceneCount": 8,

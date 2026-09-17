@@ -176,8 +176,8 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
     scriptContents[scriptName] = content;
     addCheck(checks, `script-${scriptName}`, present && content.length >= 120,
       `${scriptName} fehlt oder ist zu kurz.`);
-    addCheck(checks, `script-${scriptName}-word-count`, words >= 155 && words <= 175,
-      `${scriptName} enthält ${words} Wörter; Ziel sind 155–175 Wörter für ungefähr eine Minute bei 1,10x.`);
+    addCheck(checks, `script-${scriptName}-word-count`, words >= 170 && words <= 200,
+      `${scriptName} enthält ${words} Wörter; Ziel sind 170–200 Wörter für mindestens eine Minute bei 1,10x.`);
   }
   addCheck(checks, 'scripts-identical', scriptContents['final-script.txt'] === scriptContents['voice-script.txt'],
     'final-script.txt und voice-script.txt müssen denselben finalen Sprechertext enthalten.', 'warning');
@@ -306,8 +306,8 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
     }
   }
 
-  addCheck(checks, 'total-duration', totalDuration >= 55 && totalDuration <= 60,
-    `Die geschätzte Gesamtdauer beträgt ${totalDuration.toFixed(1)} Sekunden; Ziel sind 55–60 Sekunden.`);
+  addCheck(checks, 'total-duration', totalDuration >= 60 && totalDuration <= 72,
+    `Die geschätzte Gesamtdauer beträgt ${totalDuration.toFixed(1)} Sekunden; Ziel sind 60–72 Sekunden, nie unter einer Minute.`);
   addCheck(checks, 'all-image-prompts-covered', validatedPromptCount === totalPlannedImages,
     `Es sind ${validatedPromptCount} von ${totalPlannedImages} geplanten Bildprompts ausreichend ausgearbeitet.`);
 

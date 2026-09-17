@@ -30,8 +30,8 @@ Keine feste Pillar-Quote und keine Beschränkung auf Geschichte, Politik, Lände
 ### 3. Script schreiben
 
 - genau ein deutscher Erzähler
-- 155–175 Wörter
-- 55–60 Sekunden nach Audiooptimierung
+- 170–200 Wörter
+- 60–72 Sekunden (nie unter einer Minute) nach Audiooptimierung
 - Hook sofort
 - erwachsene einfache Sprache
 - starkes Ende über zwei narrative Szenen

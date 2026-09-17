@@ -51,8 +51,8 @@ Vor jeder Themenwahl `THEMEN_HISTORIE.md` prüfen. Keine doppelte Kernfrage in n
 
 ## Reel-Standard
 
-- 55–60 Sekunden Voice-over, Ziel ca. 58 s
-- 155–175 deutsche Wörter, Ziel ca. 165
+- 60–72 Sekunden (nie unter einer Minute) Voice-over, Ziel ca. 58 s
+- 170–200 deutsche Wörter, Ziel ca. 165
 - 8–10 narrative Szenen, Standard 9
 - Hook sofort, kein langer Intro-Block
 - keine Untertitel, kein aktiver Word-Sync

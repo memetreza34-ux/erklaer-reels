@@ -1,15 +1,15 @@
 {
-  "createdAt": "2026-09-17T03:51:23.155Z",
+  "createdAt": "2026-09-17T04:01:10.987Z",
   "passed": true,
   "summary": {
-    "passedChecks": 402,
+    "passedChecks": 457,
     "failedChecks": 0,
     "warnings": 1,
-    "totalChecks": 403
+    "totalChecks": 458
   },
   "metadata": {
-    "totalDuration": 57,
-    "totalPlannedImages": 20,
+    "totalDuration": 67,
+    "totalPlannedImages": 24,
     "strict": true,
     "sourceQuality": {
       "schemaVersion": 3,
@@ -55,7 +55,7 @@
       "id": "scene-count-match",
       "passed": true,
       "level": "error",
-      "message": "scene-index.json enthält 9 statt 9 narrativen Szenen."
+      "message": "scene-index.json enthält 10 statt 10 narrativen Szenen."
     },
     {
       "id": "topic-area",
@@ -97,13 +97,13 @@
       "id": "image-count-range",
       "passed": true,
       "level": "error",
-      "message": "Adaptive Dense V2: Bei 9 Szenen sind 20–22 Bilder vorgesehen; geplant sind 20."
+      "message": "Adaptive Dense V2: Bei 10 Szenen sind 21–24 Bilder vorgesehen; geplant sind 24."
     },
     {
       "id": "planned-image-count-match",
       "passed": true,
       "level": "error",
-      "message": "reel.json.plannedImageCount stimmt nicht mit den 20 geplanten Bildphasen überein."
+      "message": "reel.json.plannedImageCount stimmt nicht mit den 24 geplanten Bildphasen überein."
     },
     {
       "id": "motion-effects-enabled",
@@ -133,7 +133,7 @@
       "id": "script-final-script.txt-word-count",
       "passed": true,
       "level": "error",
-      "message": "final-script.txt enthält 171 Wörter; Ziel sind 155–175 Wörter für ungefähr eine Minute bei 1,10x."
+      "message": "final-script.txt enthält 193 Wörter; Ziel sind 170–200 Wörter für mindestens eine Minute bei 1,10x."
     },
     {
       "id": "script-voice-script.txt",
@@ -145,7 +145,7 @@
       "id": "script-voice-script.txt-word-count",
       "passed": true,
       "level": "error",
-      "message": "voice-script.txt enthält 171 Wörter; Ziel sind 155–175 Wörter für ungefähr eine Minute bei 1,10x."
+      "message": "voice-script.txt enthält 193 Wörter; Ziel sind 170–200 Wörter für mindestens eine Minute bei 1,10x."
     },
     {
       "id": "scripts-identical",
@@ -283,7 +283,7 @@
       "id": "scene-01-image-02-audio-cue-in-narration",
       "passed": true,
       "level": "error",
-      "message": "scene-01-image-02: audioCue \"Es gibt keine Pizza\" kommt nicht in der Narration vor."
+      "message": "scene-01-image-02: audioCue \"Stimmt aber nicht\" kommt nicht in der Narration vor."
     },
     {
       "id": "scene-01-image-02-cue-derived-start",
@@ -403,7 +403,7 @@
       "id": "scene-02-image-phase-count",
       "passed": true,
       "level": "error",
-      "message": "scene-02: Adaptive Dense V2 braucht 2 oder 3 Bildphasen, hat aber 2."
+      "message": "scene-02: Adaptive Dense V2 braucht 2 oder 3 Bildphasen, hat aber 3."
     },
     {
       "id": "scene-02-image-count-field",
@@ -457,7 +457,7 @@
       "id": "scene-02-image-02-audio-cue-in-narration",
       "passed": true,
       "level": "error",
-      "message": "scene-02-image-02: audioCue \"Das ist ein Veto\" kommt nicht in der Narration vor."
+      "message": "scene-02-image-02: audioCue \"Vierzehn Länder stimmen dafür\" kommt nicht in der Narration vor."
     },
     {
       "id": "scene-02-image-02-cue-derived-start",
@@ -496,22 +496,70 @@
       "message": "scene-02-image-02: expectedImageFileName fehlt."
     },
     {
-      "id": "scene-02-image-02-image-text-unique",
+      "id": "scene-02-image-03-audio-cue",
       "passed": true,
-      "level": "warning",
-      "message": "scene-02-image-02: Der sichtbare Bildtext wurde bereits in keinem Bild verwendet."
+      "level": "error",
+      "message": "scene-02-image-03: audioCue fehlt. Der Bildwechsel muss an konkret gesprochenen Wörtern hängen."
     },
     {
-      "id": "scene-02-image-02-image-text-prompt",
+      "id": "scene-02-image-03-audio-cue-in-narration",
+      "passed": true,
+      "level": "error",
+      "message": "scene-02-image-03: audioCue \"Und es passiert nichts\" kommt nicht in der Narration vor."
+    },
+    {
+      "id": "scene-02-image-03-cue-derived-start",
+      "passed": true,
+      "level": "error",
+      "message": "scene-02-image-03: startPercent muss aus der Position des audioCue in der Narration abgeleitet sein; kein pauschales Raster."
+    },
+    {
+      "id": "scene-02-image-03-start-percent",
+      "passed": true,
+      "level": "error",
+      "message": "scene-02-image-03: startPercent muss innerhalb der Szene streng ansteigen."
+    },
+    {
+      "id": "scene-02-image-03-prompt",
+      "passed": true,
+      "level": "error",
+      "message": "scene-02-image-03: image-prompt-03.txt fehlt oder ist nicht detailliert genug."
+    },
+    {
+      "id": "scene-02-image-03-prompt-format",
       "passed": true,
       "level": "warning",
-      "message": "scene-02-image-02: imageText steht nicht exakt im Bildprompt."
+      "message": "scene-02-image-03: Der Bildprompt sollte das Format 9:16 ausdrücklich nennen."
+    },
+    {
+      "id": "scene-02-image-03-visual-idea",
+      "passed": true,
+      "level": "error",
+      "message": "scene-02-image-03: visualIdea fehlt oder ist zu kurz."
+    },
+    {
+      "id": "scene-02-image-03-expected-file",
+      "passed": true,
+      "level": "error",
+      "message": "scene-02-image-03: expectedImageFileName fehlt."
+    },
+    {
+      "id": "scene-02-image-03-image-text-unique",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-02-image-03: Der sichtbare Bildtext wurde bereits in keinem Bild verwendet."
+    },
+    {
+      "id": "scene-02-image-03-image-text-prompt",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-02-image-03: imageText steht nicht exakt im Bildprompt."
     },
     {
       "id": "scene-02-dense-pacing-review",
       "passed": true,
       "level": "warning",
-      "message": "scene-02: Im Mittel würde eine Bildphase etwa 3.3 Sekunden stehen. Prüfe, ob ein weiterer echter visueller Gedanke sinnvoll ist."
+      "message": "scene-02: Im Mittel würde eine Bildphase etwa 2.5 Sekunden stehen. Prüfe, ob ein weiterer echter visueller Gedanke sinnvoll ist."
     },
     {
       "id": "scene-03-stable-id",
@@ -643,7 +691,7 @@
       "id": "scene-03-image-02-audio-cue-in-narration",
       "passed": true,
       "level": "error",
-      "message": "scene-03-image-02: audioCue \"nicht um Pizza, sondern um Krieg und Frieden\" kommt nicht in der Narration vor."
+      "message": "scene-03-image-02: audioCue \"Es darf sie einfach überstimmen\" kommt nicht in der Narration vor."
     },
     {
       "id": "scene-03-image-02-cue-derived-start",
@@ -685,7 +733,7 @@
       "id": "scene-03-dense-pacing-review",
       "passed": true,
       "level": "warning",
-      "message": "scene-03: Im Mittel würde eine Bildphase etwa 3.0 Sekunden stehen. Prüfe, ob ein weiterer echter visueller Gedanke sinnvoll ist."
+      "message": "scene-03: Im Mittel würde eine Bildphase etwa 3.3 Sekunden stehen. Prüfe, ob ein weiterer echter visueller Gedanke sinnvoll ist."
     },
     {
       "id": "scene-04-stable-id",
@@ -856,18 +904,6 @@
       "message": "scene-04-image-02: expectedImageFileName fehlt."
     },
     {
-      "id": "scene-04-image-02-image-text-unique",
-      "passed": true,
-      "level": "warning",
-      "message": "scene-04-image-02: Der sichtbare Bildtext wurde bereits in keinem Bild verwendet."
-    },
-    {
-      "id": "scene-04-image-02-image-text-prompt",
-      "passed": true,
-      "level": "warning",
-      "message": "scene-04-image-02: imageText steht nicht exakt im Bildprompt."
-    },
-    {
       "id": "scene-04-dense-pacing-review",
       "passed": true,
       "level": "warning",
@@ -1003,7 +1039,7 @@
       "id": "scene-05-image-02-audio-cue-in-narration",
       "passed": true,
       "level": "error",
-      "message": "scene-05-image-02: audioCue \"Klingt nach normaler Mehrheit\" kommt nicht in der Narration vor."
+      "message": "scene-05-image-02: audioCue \"Die Gewinner des Zweiten Weltkriegs\" kommt nicht in der Narration vor."
     },
     {
       "id": "scene-05-image-02-cue-derived-start",
@@ -1042,10 +1078,22 @@
       "message": "scene-05-image-02: expectedImageFileName fehlt."
     },
     {
+      "id": "scene-05-image-02-image-text-unique",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-05-image-02: Der sichtbare Bildtext wurde bereits in keinem Bild verwendet."
+    },
+    {
+      "id": "scene-05-image-02-image-text-prompt",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-05-image-02: imageText steht nicht exakt im Bildprompt."
+    },
+    {
       "id": "scene-05-dense-pacing-review",
       "passed": true,
       "level": "warning",
-      "message": "scene-05: Im Mittel würde eine Bildphase etwa 3.0 Sekunden stehen. Prüfe, ob ein weiterer echter visueller Gedanke sinnvoll ist."
+      "message": "scene-05: Im Mittel würde eine Bildphase etwa 3.5 Sekunden stehen. Prüfe, ob ein weiterer echter visueller Gedanke sinnvoll ist."
     },
     {
       "id": "scene-06-stable-id",
@@ -1111,7 +1159,7 @@
       "id": "scene-06-image-phase-count",
       "passed": true,
       "level": "error",
-      "message": "scene-06: Adaptive Dense V2 braucht 2 oder 3 Bildphasen, hat aber 3."
+      "message": "scene-06: Adaptive Dense V2 braucht 2 oder 3 Bildphasen, hat aber 2."
     },
     {
       "id": "scene-06-image-count-field",
@@ -1156,6 +1204,18 @@
       "message": "scene-06-image-01: expectedImageFileName fehlt."
     },
     {
+      "id": "scene-06-image-01-image-text-unique",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-06-image-01: Der sichtbare Bildtext wurde bereits in keinem Bild verwendet."
+    },
+    {
+      "id": "scene-06-image-01-image-text-prompt",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-06-image-01: imageText steht nicht exakt im Bildprompt."
+    },
+    {
       "id": "scene-06-image-02-audio-cue",
       "passed": true,
       "level": "error",
@@ -1165,7 +1225,7 @@
       "id": "scene-06-image-02-audio-cue-in-narration",
       "passed": true,
       "level": "error",
-      "message": "scene-06-image-02: audioCue \"wenn eines dieser fünf Länder Nein sagt\" kommt nicht in der Narration vor."
+      "message": "scene-06-image-02: audioCue \"Klingt nach einer ganz normalen Abstimmung\" kommt nicht in der Narration vor."
     },
     {
       "id": "scene-06-image-02-cue-derived-start",
@@ -1204,70 +1264,10 @@
       "message": "scene-06-image-02: expectedImageFileName fehlt."
     },
     {
-      "id": "scene-06-image-03-audio-cue",
-      "passed": true,
-      "level": "error",
-      "message": "scene-06-image-03: audioCue fehlt. Der Bildwechsel muss an konkret gesprochenen Wörtern hängen."
-    },
-    {
-      "id": "scene-06-image-03-audio-cue-in-narration",
-      "passed": true,
-      "level": "error",
-      "message": "scene-06-image-03: audioCue \"Auch wenn vierzehn dafür sind\" kommt nicht in der Narration vor."
-    },
-    {
-      "id": "scene-06-image-03-cue-derived-start",
-      "passed": true,
-      "level": "error",
-      "message": "scene-06-image-03: startPercent muss aus der Position des audioCue in der Narration abgeleitet sein; kein pauschales Raster."
-    },
-    {
-      "id": "scene-06-image-03-start-percent",
-      "passed": true,
-      "level": "error",
-      "message": "scene-06-image-03: startPercent muss innerhalb der Szene streng ansteigen."
-    },
-    {
-      "id": "scene-06-image-03-prompt",
-      "passed": true,
-      "level": "error",
-      "message": "scene-06-image-03: image-prompt-03.txt fehlt oder ist nicht detailliert genug."
-    },
-    {
-      "id": "scene-06-image-03-prompt-format",
-      "passed": true,
-      "level": "warning",
-      "message": "scene-06-image-03: Der Bildprompt sollte das Format 9:16 ausdrücklich nennen."
-    },
-    {
-      "id": "scene-06-image-03-visual-idea",
-      "passed": true,
-      "level": "error",
-      "message": "scene-06-image-03: visualIdea fehlt oder ist zu kurz."
-    },
-    {
-      "id": "scene-06-image-03-expected-file",
-      "passed": true,
-      "level": "error",
-      "message": "scene-06-image-03: expectedImageFileName fehlt."
-    },
-    {
-      "id": "scene-06-image-03-image-text-unique",
-      "passed": true,
-      "level": "warning",
-      "message": "scene-06-image-03: Der sichtbare Bildtext wurde bereits in keinem Bild verwendet."
-    },
-    {
-      "id": "scene-06-image-03-image-text-prompt",
-      "passed": true,
-      "level": "warning",
-      "message": "scene-06-image-03: imageText steht nicht exakt im Bildprompt."
-    },
-    {
       "id": "scene-06-dense-pacing-review",
       "passed": true,
       "level": "warning",
-      "message": "scene-06: Im Mittel würde eine Bildphase etwa 2.3 Sekunden stehen. Prüfe, ob ein weiterer echter visueller Gedanke sinnvoll ist."
+      "message": "scene-06: Im Mittel würde eine Bildphase etwa 3.0 Sekunden stehen. Prüfe, ob ein weiterer echter visueller Gedanke sinnvoll ist."
     },
     {
       "id": "scene-07-stable-id",
@@ -1378,18 +1378,6 @@
       "message": "scene-07-image-01: expectedImageFileName fehlt."
     },
     {
-      "id": "scene-07-image-01-image-text-unique",
-      "passed": true,
-      "level": "warning",
-      "message": "scene-07-image-01: Der sichtbare Bildtext wurde bereits in keinem Bild verwendet."
-    },
-    {
-      "id": "scene-07-image-01-image-text-prompt",
-      "passed": true,
-      "level": "warning",
-      "message": "scene-07-image-01: imageText steht nicht exakt im Bildprompt."
-    },
-    {
       "id": "scene-07-image-02-audio-cue",
       "passed": true,
       "level": "error",
@@ -1399,7 +1387,7 @@
       "id": "scene-07-image-02-audio-cue-in-narration",
       "passed": true,
       "level": "error",
-      "message": "scene-07-image-02: audioCue \"Wer einfach nichts sagt\" kommt nicht in der Narration vor."
+      "message": "scene-07-image-02: audioCue \"wenn eines dieser fünf Länder Nein sagt\" kommt nicht in der Narration vor."
     },
     {
       "id": "scene-07-image-02-cue-derived-start",
@@ -1438,18 +1426,6 @@
       "message": "scene-07-image-02: expectedImageFileName fehlt."
     },
     {
-      "id": "scene-07-image-02-image-text-unique",
-      "passed": true,
-      "level": "warning",
-      "message": "scene-07-image-02: Der sichtbare Bildtext wurde bereits in keinem Bild verwendet."
-    },
-    {
-      "id": "scene-07-image-02-image-text-prompt",
-      "passed": true,
-      "level": "warning",
-      "message": "scene-07-image-02: imageText steht nicht exakt im Bildprompt."
-    },
-    {
       "id": "scene-07-image-03-audio-cue",
       "passed": true,
       "level": "error",
@@ -1459,7 +1435,7 @@
       "id": "scene-07-image-03-audio-cue-in-narration",
       "passed": true,
       "level": "error",
-      "message": "scene-07-image-03: audioCue \"Man muss das Nein wirklich aussprechen\" kommt nicht in der Narration vor."
+      "message": "scene-07-image-03: audioCue \"Auch wenn alle anderen dafür sind\" kommt nicht in der Narration vor."
     },
     {
       "id": "scene-07-image-03-cue-derived-start",
@@ -1496,6 +1472,18 @@
       "passed": true,
       "level": "error",
       "message": "scene-07-image-03: expectedImageFileName fehlt."
+    },
+    {
+      "id": "scene-07-image-03-image-text-unique",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-07-image-03: Der sichtbare Bildtext wurde bereits in keinem Bild verwendet."
+    },
+    {
+      "id": "scene-07-image-03-image-text-prompt",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-07-image-03: imageText steht nicht exakt im Bildprompt."
     },
     {
       "id": "scene-07-dense-pacing-review",
@@ -1567,7 +1555,7 @@
       "id": "scene-08-image-phase-count",
       "passed": true,
       "level": "error",
-      "message": "scene-08: Adaptive Dense V2 braucht 2 oder 3 Bildphasen, hat aber 2."
+      "message": "scene-08: Adaptive Dense V2 braucht 2 oder 3 Bildphasen, hat aber 3."
     },
     {
       "id": "scene-08-image-count-field",
@@ -1633,7 +1621,7 @@
       "id": "scene-08-image-02-audio-cue-in-narration",
       "passed": true,
       "level": "error",
-      "message": "scene-08-image-02: audioCue \"hätten die großen Länder nicht mitgemacht\" kommt nicht in der Narration vor."
+      "message": "scene-08-image-02: audioCue \"Wer einfach nichts sagt\" kommt nicht in der Narration vor."
     },
     {
       "id": "scene-08-image-02-cue-derived-start",
@@ -1672,10 +1660,70 @@
       "message": "scene-08-image-02: expectedImageFileName fehlt."
     },
     {
+      "id": "scene-08-image-02-image-text-unique",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-08-image-02: Der sichtbare Bildtext wurde bereits in keinem Bild verwendet."
+    },
+    {
+      "id": "scene-08-image-02-image-text-prompt",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-08-image-02: imageText steht nicht exakt im Bildprompt."
+    },
+    {
+      "id": "scene-08-image-03-audio-cue",
+      "passed": true,
+      "level": "error",
+      "message": "scene-08-image-03: audioCue fehlt. Der Bildwechsel muss an konkret gesprochenen Wörtern hängen."
+    },
+    {
+      "id": "scene-08-image-03-audio-cue-in-narration",
+      "passed": true,
+      "level": "error",
+      "message": "scene-08-image-03: audioCue \"Man muss das Nein wirklich aussprechen\" kommt nicht in der Narration vor."
+    },
+    {
+      "id": "scene-08-image-03-cue-derived-start",
+      "passed": true,
+      "level": "error",
+      "message": "scene-08-image-03: startPercent muss aus der Position des audioCue in der Narration abgeleitet sein; kein pauschales Raster."
+    },
+    {
+      "id": "scene-08-image-03-start-percent",
+      "passed": true,
+      "level": "error",
+      "message": "scene-08-image-03: startPercent muss innerhalb der Szene streng ansteigen."
+    },
+    {
+      "id": "scene-08-image-03-prompt",
+      "passed": true,
+      "level": "error",
+      "message": "scene-08-image-03: image-prompt-03.txt fehlt oder ist nicht detailliert genug."
+    },
+    {
+      "id": "scene-08-image-03-prompt-format",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-08-image-03: Der Bildprompt sollte das Format 9:16 ausdrücklich nennen."
+    },
+    {
+      "id": "scene-08-image-03-visual-idea",
+      "passed": true,
+      "level": "error",
+      "message": "scene-08-image-03: visualIdea fehlt oder ist zu kurz."
+    },
+    {
+      "id": "scene-08-image-03-expected-file",
+      "passed": true,
+      "level": "error",
+      "message": "scene-08-image-03: expectedImageFileName fehlt."
+    },
+    {
       "id": "scene-08-dense-pacing-review",
       "passed": true,
       "level": "warning",
-      "message": "scene-08: Im Mittel würde eine Bildphase etwa 3.0 Sekunden stehen. Prüfe, ob ein weiterer echter visueller Gedanke sinnvoll ist."
+      "message": "scene-08: Im Mittel würde eine Bildphase etwa 2.5 Sekunden stehen. Prüfe, ob ein weiterer echter visueller Gedanke sinnvoll ist."
     },
     {
       "id": "scene-09-stable-id",
@@ -1735,7 +1783,7 @@
       "id": "scene-09-preferred-duration",
       "passed": true,
       "level": "warning",
-      "message": "scene-09: Schlussszene sollte 5.8–8.2 Sekunden dauern."
+      "message": "scene-09: Standardszene sollte 6–7.5 Sekunden dauern."
     },
     {
       "id": "scene-09-image-phase-count",
@@ -1786,6 +1834,18 @@
       "message": "scene-09-image-01: expectedImageFileName fehlt."
     },
     {
+      "id": "scene-09-image-01-image-text-unique",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-09-image-01: Der sichtbare Bildtext wurde bereits in keinem Bild verwendet."
+    },
+    {
+      "id": "scene-09-image-01-image-text-prompt",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-09-image-01: imageText steht nicht exakt im Bildprompt."
+    },
+    {
       "id": "scene-09-image-02-audio-cue",
       "passed": true,
       "level": "error",
@@ -1795,7 +1855,7 @@
       "id": "scene-09-image-02-audio-cue-in-narration",
       "passed": true,
       "level": "error",
-      "message": "scene-09-image-02: audioCue \"Es ist wie mit der Pizza\" kommt nicht in der Narration vor."
+      "message": "scene-09-image-02: audioCue \"hätten die großen Länder nicht mitgemacht\" kommt nicht in der Narration vor."
     },
     {
       "id": "scene-09-image-02-cue-derived-start",
@@ -1834,34 +1894,244 @@
       "message": "scene-09-image-02: expectedImageFileName fehlt."
     },
     {
-      "id": "scene-09-image-02-image-text-unique",
-      "passed": true,
-      "level": "warning",
-      "message": "scene-09-image-02: Der sichtbare Bildtext wurde bereits in keinem Bild verwendet."
-    },
-    {
-      "id": "scene-09-image-02-image-text-prompt",
-      "passed": true,
-      "level": "warning",
-      "message": "scene-09-image-02: imageText steht nicht exakt im Bildprompt."
-    },
-    {
       "id": "scene-09-dense-pacing-review",
       "passed": true,
       "level": "warning",
       "message": "scene-09: Im Mittel würde eine Bildphase etwa 3.3 Sekunden stehen. Prüfe, ob ein weiterer echter visueller Gedanke sinnvoll ist."
     },
     {
+      "id": "scene-10-stable-id",
+      "passed": true,
+      "level": "error",
+      "message": "Erwartet wurde scene-10, gefunden wurde scene-10."
+    },
+    {
+      "id": "scene-10-index-sync",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10: scene-index.json und scene.json enthalten unterschiedliche Szenendaten."
+    },
+    {
+      "id": "scene-10-title",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10: title fehlt."
+    },
+    {
+      "id": "scene-10-narration",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10: narration fehlt oder ist zu kurz."
+    },
+    {
+      "id": "scene-10-visual-idea",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10: visualIdea fehlt oder ist zu kurz."
+    },
+    {
+      "id": "scene-10-continuity",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10: continuityNotes fehlen oder sind zu kurz."
+    },
+    {
+      "id": "scene-10-audio-cue",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-10: audioCue fehlt. Der Szenenwechsel kann dadurch nicht sauber am Sprechertext ausgerichtet werden."
+    },
+    {
+      "id": "scene-10-lead-in",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-10: leadInSeconds sollte zwischen 0,1 und 0,3 liegen."
+    },
+    {
+      "id": "scene-10-duration",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10: durationSeconds muss zwischen 2,5 und 8 liegen."
+    },
+    {
+      "id": "scene-10-preferred-duration",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-10: Schlussszene sollte 5.8–8.2 Sekunden dauern."
+    },
+    {
+      "id": "scene-10-image-phase-count",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10: Adaptive Dense V2 braucht 2 oder 3 Bildphasen, hat aber 3."
+    },
+    {
+      "id": "scene-10-image-count-field",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10: imageCount stimmt nicht mit imagePhases überein."
+    },
+    {
+      "id": "scene-10-first-phase-at-zero",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10: Die erste Bildphase muss bei startPercent 0 beginnen."
+    },
+    {
+      "id": "scene-10-image-01-start-percent",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10-image-01: startPercent muss innerhalb der Szene streng ansteigen."
+    },
+    {
+      "id": "scene-10-image-01-prompt",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10-image-01: image-prompt.txt fehlt oder ist nicht detailliert genug."
+    },
+    {
+      "id": "scene-10-image-01-prompt-format",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-10-image-01: Der Bildprompt sollte das Format 9:16 ausdrücklich nennen."
+    },
+    {
+      "id": "scene-10-image-01-visual-idea",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10-image-01: visualIdea fehlt oder ist zu kurz."
+    },
+    {
+      "id": "scene-10-image-01-expected-file",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10-image-01: expectedImageFileName fehlt."
+    },
+    {
+      "id": "scene-10-image-02-audio-cue",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10-image-02: audioCue fehlt. Der Bildwechsel muss an konkret gesprochenen Wörtern hängen."
+    },
+    {
+      "id": "scene-10-image-02-audio-cue-in-narration",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10-image-02: audioCue \"abschaffen können es nur genau diese fünf\" kommt nicht in der Narration vor."
+    },
+    {
+      "id": "scene-10-image-02-cue-derived-start",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10-image-02: startPercent muss aus der Position des audioCue in der Narration abgeleitet sein; kein pauschales Raster."
+    },
+    {
+      "id": "scene-10-image-02-start-percent",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10-image-02: startPercent muss innerhalb der Szene streng ansteigen."
+    },
+    {
+      "id": "scene-10-image-02-prompt",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10-image-02: image-prompt-02.txt fehlt oder ist nicht detailliert genug."
+    },
+    {
+      "id": "scene-10-image-02-prompt-format",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-10-image-02: Der Bildprompt sollte das Format 9:16 ausdrücklich nennen."
+    },
+    {
+      "id": "scene-10-image-02-visual-idea",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10-image-02: visualIdea fehlt oder ist zu kurz."
+    },
+    {
+      "id": "scene-10-image-02-expected-file",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10-image-02: expectedImageFileName fehlt."
+    },
+    {
+      "id": "scene-10-image-03-audio-cue",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10-image-03: audioCue fehlt. Der Bildwechsel muss an konkret gesprochenen Wörtern hängen."
+    },
+    {
+      "id": "scene-10-image-03-audio-cue-in-narration",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10-image-03: audioCue \"In der UNO entscheidet nicht die Mehrheit\" kommt nicht in der Narration vor."
+    },
+    {
+      "id": "scene-10-image-03-cue-derived-start",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10-image-03: startPercent muss aus der Position des audioCue in der Narration abgeleitet sein; kein pauschales Raster."
+    },
+    {
+      "id": "scene-10-image-03-start-percent",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10-image-03: startPercent muss innerhalb der Szene streng ansteigen."
+    },
+    {
+      "id": "scene-10-image-03-prompt",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10-image-03: image-prompt-03.txt fehlt oder ist nicht detailliert genug."
+    },
+    {
+      "id": "scene-10-image-03-prompt-format",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-10-image-03: Der Bildprompt sollte das Format 9:16 ausdrücklich nennen."
+    },
+    {
+      "id": "scene-10-image-03-visual-idea",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10-image-03: visualIdea fehlt oder ist zu kurz."
+    },
+    {
+      "id": "scene-10-image-03-expected-file",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10-image-03: expectedImageFileName fehlt."
+    },
+    {
+      "id": "scene-10-image-03-image-text-unique",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-10-image-03: Der sichtbare Bildtext wurde bereits in keinem Bild verwendet."
+    },
+    {
+      "id": "scene-10-image-03-image-text-prompt",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-10-image-03: imageText steht nicht exakt im Bildprompt."
+    },
+    {
+      "id": "scene-10-dense-pacing-review",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-10: Im Mittel würde eine Bildphase etwa 2.3 Sekunden stehen. Prüfe, ob ein weiterer echter visueller Gedanke sinnvoll ist."
+    },
+    {
       "id": "total-duration",
       "passed": true,
       "level": "error",
-      "message": "Die geschätzte Gesamtdauer beträgt 57.0 Sekunden; Ziel sind 55–60 Sekunden."
+      "message": "Die geschätzte Gesamtdauer beträgt 67.0 Sekunden; Ziel sind 60–72 Sekunden, nie unter einer Minute."
     },
     {
       "id": "all-image-prompts-covered",
       "passed": true,
       "level": "error",
-      "message": "Es sind 20 von 20 geplanten Bildprompts ausreichend ausgearbeitet."
+      "message": "Es sind 24 von 24 geplanten Bildprompts ausreichend ausgearbeitet."
     },
     {
       "id": "ending-two-scenes",
@@ -1933,7 +2203,7 @@
       "id": "effects-scene-count",
       "passed": true,
       "level": "error",
-      "message": "effects-plan.json enthält 9 statt 9 narrativen Szeneneinträge."
+      "message": "effects-plan.json enthält 10 statt 10 narrativen Szeneneinträge."
     },
     {
       "id": "scene-01-effect-entry",
@@ -1951,7 +2221,7 @@
       "id": "scene-01-camera-type",
       "passed": true,
       "level": "warning",
-      "message": "scene-01: Unbekannter Kamerabewegungstyp ken-burns."
+      "message": "scene-01: Unbekannter Kamerabewegungstyp subtle-push-in."
     },
     {
       "id": "scene-01-zoom-range",
@@ -1993,7 +2263,7 @@
       "id": "scene-02-camera-type",
       "passed": true,
       "level": "warning",
-      "message": "scene-02: Unbekannter Kamerabewegungstyp slow-zoom-in."
+      "message": "scene-02: Unbekannter Kamerabewegungstyp ken-burns."
     },
     {
       "id": "scene-02-zoom-range",
@@ -2026,6 +2296,12 @@
       "message": "scene-02: Soundeffekt-Lautstärke sollte zwischen 0.18 und 0.3 liegen."
     },
     {
+      "id": "scene-02-sound-3-volume",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-02: Soundeffekt-Lautstärke sollte zwischen 0.18 und 0.3 liegen."
+    },
+    {
       "id": "scene-03-effect-entry",
       "passed": true,
       "level": "error",
@@ -2041,7 +2317,7 @@
       "id": "scene-03-camera-type",
       "passed": true,
       "level": "warning",
-      "message": "scene-03: Unbekannter Kamerabewegungstyp subtle-push-in."
+      "message": "scene-03: Unbekannter Kamerabewegungstyp slow-zoom-in."
     },
     {
       "id": "scene-03-zoom-range",
@@ -2218,12 +2494,6 @@
       "message": "scene-06: Soundeffekt-Lautstärke sollte zwischen 0.18 und 0.3 liegen."
     },
     {
-      "id": "scene-06-sound-3-volume",
-      "passed": true,
-      "level": "warning",
-      "message": "scene-06: Soundeffekt-Lautstärke sollte zwischen 0.18 und 0.3 liegen."
-    },
-    {
       "id": "scene-07-effect-entry",
       "passed": true,
       "level": "error",
@@ -2326,6 +2596,12 @@
       "message": "scene-08: Soundeffekt-Lautstärke sollte zwischen 0.18 und 0.3 liegen."
     },
     {
+      "id": "scene-08-sound-3-volume",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-08: Soundeffekt-Lautstärke sollte zwischen 0.18 und 0.3 liegen."
+    },
+    {
       "id": "scene-09-effect-entry",
       "passed": true,
       "level": "error",
@@ -2341,7 +2617,7 @@
       "id": "scene-09-camera-type",
       "passed": true,
       "level": "warning",
-      "message": "scene-09: Unbekannter Kamerabewegungstyp subtle-push-in."
+      "message": "scene-09: Unbekannter Kamerabewegungstyp pan-up."
     },
     {
       "id": "scene-09-zoom-range",
@@ -2372,6 +2648,60 @@
       "passed": true,
       "level": "warning",
       "message": "scene-09: Soundeffekt-Lautstärke sollte zwischen 0.18 und 0.3 liegen."
+    },
+    {
+      "id": "scene-10-effect-entry",
+      "passed": true,
+      "level": "error",
+      "message": "scene-10: Im Effektplan fehlt ein Eintrag."
+    },
+    {
+      "id": "scene-10-transition-type",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-10: Unbekannter Übergangstyp cut."
+    },
+    {
+      "id": "scene-10-camera-type",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-10: Unbekannter Kamerabewegungstyp subtle-push-in."
+    },
+    {
+      "id": "scene-10-zoom-range",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-10: Zoom-Skalierung muss zwischen 0.94 und 1.06 liegen."
+    },
+    {
+      "id": "scene-10-pan-range",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-10: Schwenk darf höchstens 3 Prozent betragen."
+    },
+    {
+      "id": "scene-10-sound-count",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-10: Höchstens 3 Soundeffekte pro Szene verwenden."
+    },
+    {
+      "id": "scene-10-sound-1-volume",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-10: Soundeffekt-Lautstärke sollte zwischen 0.18 und 0.3 liegen."
+    },
+    {
+      "id": "scene-10-sound-2-volume",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-10: Soundeffekt-Lautstärke sollte zwischen 0.18 und 0.3 liegen."
+    },
+    {
+      "id": "scene-10-sound-3-volume",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-10: Soundeffekt-Lautstärke sollte zwischen 0.18 und 0.3 liegen."
     },
     {
       "id": "effects-not-every-scene-moving",

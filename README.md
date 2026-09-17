@@ -10,8 +10,8 @@ Für die autonome Reel-Themenwahl gilt `config/reel-topic-focus.json`: Schwerpun
 
 ## Produktionsstandard
 
-- 55–60 Sekunden Voice-over
-- 155–175 deutsche Wörter
+- 60–72 Sekunden (nie unter einer Minute) Voice-over
+- 170–200 deutsche Wörter
 - 8–10 narrative Szenen, Standard 9
 - Adaptive Dense V2 statt starrer 17-Bilder-Formel
 - 9 Szenen normalerweise 20–22 Bilder
