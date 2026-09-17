@@ -1,7 +1,7 @@
 {
   "sceneId": "scene-04",
   "order": 4,
-  "title": "Die Fünf",
+  "title": "Hauptteil: Die Fünf",
   "narration": "Fünf bleiben dauerhaft: die USA, Russland, China, Frankreich und Großbritannien. Die Siegermächte des Zweiten Weltkriegs.",
   "imageText": "DIE STÄNDIGEN FÜNF",
   "visualIdea": "Die fünf ständigen Mitglieder als Flaggen-Countryballs.",
@@ -32,7 +32,7 @@
       "startPercent": 0.2,
       "promptFileName": "image-prompt-02.txt",
       "expectedImageFileName": "scene-04-2.png",
-      "visualIdea": "Dieselben fünf Bälle, jetzt fest auf einem Sockel stehend.",
+      "visualIdea": "Dieselben fünf Bälle, jetzt fest auf einem Sockel.",
       "imageText": "",
       "audioCue": "die USA, Russland, China",
       "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"die USA, Russland, China\".",
