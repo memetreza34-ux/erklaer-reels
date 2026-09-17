@@ -1,0 +1,48 @@
+{
+  "sceneId": "scene-03",
+  "order": 3,
+  "title": "Der Tisch",
+  "narration": "Fünfzehn Länder sitzen an diesem Tisch. Zehn davon wechseln alle zwei Jahre.",
+  "imageText": "15 LÄNDER",
+  "visualIdea": "Fünfzehn Bälle am Tisch, zehn davon als wechselnd markiert.",
+  "continuityNotes": "Gleiche Kugelgeometrie. Zahlen bleiben klar lesbar.",
+  "audioCue": "Fünfzehn Länder sitzen",
+  "leadInSeconds": 0.1,
+  "subtitleCues": [],
+  "subtitlePosition": "center",
+  "durationSeconds": 6.0,
+  "imageCount": 2,
+  "imagePhases": [
+    {
+      "phaseId": "scene-03-image-01",
+      "order": 1,
+      "startPercent": 0.0,
+      "promptFileName": "image-prompt.txt",
+      "expectedImageFileName": "scene-03.png",
+      "visualIdea": "Fünfzehn gleich große neutrale Bälle um einen runden Tisch.",
+      "imageText": "15 LÄNDER",
+      "audioCue": "Fünfzehn Länder sitzen",
+      "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"Fünfzehn Länder sitzen\".",
+      "imageStatus": "missing",
+      "assetVerification": null
+    },
+    {
+      "phaseId": "scene-03-image-02",
+      "order": 2,
+      "startPercent": 0.5,
+      "promptFileName": "image-prompt-02.txt",
+      "expectedImageFileName": "scene-03-2.png",
+      "visualIdea": "Zehn Bälle sind halbtransparent und mit einem Kreispfeil als wechselnd markiert.",
+      "imageText": "",
+      "audioCue": "Zehn davon wechseln",
+      "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"Zehn davon wechseln\".",
+      "imageStatus": "missing",
+      "assetVerification": null
+    }
+  ],
+  "expectedImageFileName": "scene-03.png",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "planned"
+}

@@ -1,0 +1,61 @@
+{
+  "sceneId": "scene-05",
+  "order": 5,
+  "title": "Das Sonderrecht",
+  "narration": "Diese fünf haben etwas, das sonst niemand hat. Das Vetorecht. Für einen Beschluss braucht der Rat neun Ja-Stimmen von fünfzehn.",
+  "imageText": "",
+  "visualIdea": "Das Sonderrecht der Fünf und die normale Mehrheitsregel.",
+  "continuityNotes": "Gleiche Bildwelt. Zahlen groß und sofort lesbar.",
+  "audioCue": "Diese fünf haben etwas",
+  "leadInSeconds": 0.1,
+  "subtitleCues": [],
+  "subtitlePosition": "center",
+  "durationSeconds": 7.0,
+  "imageCount": 3,
+  "imagePhases": [
+    {
+      "phaseId": "scene-05-image-01",
+      "order": 1,
+      "startPercent": 0.0,
+      "promptFileName": "image-prompt.txt",
+      "expectedImageFileName": "scene-05.png",
+      "visualIdea": "Fünf Flaggen-Bälle heben sich farblich von zehn blassen Bällen ab.",
+      "imageText": "",
+      "audioCue": "Diese fünf haben etwas",
+      "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"Diese fünf haben etwas\".",
+      "imageStatus": "missing",
+      "assetVerification": null
+    },
+    {
+      "phaseId": "scene-05-image-02",
+      "order": 2,
+      "startPercent": 0.4,
+      "promptFileName": "image-prompt-02.txt",
+      "expectedImageFileName": "scene-05-2.png",
+      "visualIdea": "Ein einfacher Stempel mit dem Wort VETO.",
+      "imageText": "VETO",
+      "audioCue": "Das Vetorecht",
+      "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"Das Vetorecht\".",
+      "imageStatus": "missing",
+      "assetVerification": null
+    },
+    {
+      "phaseId": "scene-05-image-03",
+      "order": 3,
+      "startPercent": 0.8,
+      "promptFileName": "image-prompt-03.txt",
+      "expectedImageFileName": "scene-05-3.png",
+      "visualIdea": "Neun grüne Häkchen gegen fünfzehn Felder.",
+      "imageText": "9 VON 15",
+      "audioCue": "neun Ja-Stimmen",
+      "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"neun Ja-Stimmen\".",
+      "imageStatus": "missing",
+      "assetVerification": null
+    }
+  ],
+  "expectedImageFileName": "scene-05.png",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "planned"
+}

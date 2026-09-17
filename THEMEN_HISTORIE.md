@@ -42,6 +42,7 @@ Für **neue Reels** gilt zusätzlich `REEL_THEMENFOKUS.md`: autonom ausgewählt 
 - Montag, 07.09.2026: Warum werden Finger im Wasser runzlig?
 - Dienstag, 08.09.2026: Warum ist Gähnen ansteckend?
 - Mittwoch, 09.09.2026: Was ist Föderalismus?
+- Donnerstag, 10.09.2026: Was ist ein Vetorecht?
 
 ### YouTube
 

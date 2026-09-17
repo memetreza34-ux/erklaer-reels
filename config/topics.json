@@ -133,6 +133,14 @@
       "status": "planned",
       "scheduledFor": "2026-08-31",
       "aliases": []
+    },
+    {
+      "slug": "was-ist-ein-vetorecht",
+      "title": "Was ist ein Vetorecht?",
+      "channel": "reel",
+      "status": "planned",
+      "scheduledFor": "2026-09-10",
+      "aliases": []
     }
   ]
 }

@@ -1,0 +1,48 @@
+{
+  "sceneId": "scene-07",
+  "order": 7,
+  "title": "Die Enthaltung",
+  "narration": "Entscheidend ist der Unterschied zur Enthaltung. Wer sich enthält, blockiert nicht. Nur ein ausdrückliches Nein stoppt alles.",
+  "imageText": "ENTHALTUNG IST KEIN NEIN",
+  "visualIdea": "Enthaltung und Nein werden klar gegenübergestellt.",
+  "continuityNotes": "Gleiche Bildwelt. Zwei Zustände direkt nebeneinander, gleiche Kugelgröße.",
+  "audioCue": "Entscheidend ist der Unterschied",
+  "leadInSeconds": 0.1,
+  "subtitleCues": [],
+  "subtitlePosition": "center",
+  "durationSeconds": 6.5,
+  "imageCount": 2,
+  "imagePhases": [
+    {
+      "phaseId": "scene-07-image-01",
+      "order": 1,
+      "startPercent": 0.0,
+      "promptFileName": "image-prompt.txt",
+      "expectedImageFileName": "scene-07.png",
+      "visualIdea": "Zwei Bälle nebeneinander: einer senkt die Hand, einer hebt sie.",
+      "imageText": "ENTHALTUNG IST KEIN NEIN",
+      "audioCue": "Entscheidend ist der Unterschied",
+      "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"Entscheidend ist der Unterschied\".",
+      "imageStatus": "missing",
+      "assetVerification": null
+    },
+    {
+      "phaseId": "scene-07-image-02",
+      "order": 2,
+      "startPercent": 0.647059,
+      "promptFileName": "image-prompt-02.txt",
+      "expectedImageFileName": "scene-07-2.png",
+      "visualIdea": "Nur der rote Ball löst ein Stoppsignal aus.",
+      "imageText": "",
+      "audioCue": "Nur ein ausdrückliches Nein",
+      "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"Nur ein ausdrückliches Nein\".",
+      "imageStatus": "missing",
+      "assetVerification": null
+    }
+  ],
+  "expectedImageFileName": "scene-07.png",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "planned"
+}

@@ -1,0 +1,61 @@
+{
+  "sceneId": "scene-04",
+  "order": 4,
+  "title": "Die Fünf",
+  "narration": "Fünf bleiben dauerhaft: die USA, Russland, China, Frankreich und Großbritannien. Die Siegermächte des Zweiten Weltkriegs.",
+  "imageText": "DIE STÄNDIGEN FÜNF",
+  "visualIdea": "Die fünf ständigen Mitglieder als Flaggen-Countryballs.",
+  "continuityNotes": "Flaggenmuster nur hier, weil echte geografische Relevanz besteht.",
+  "audioCue": "Fünf bleiben dauerhaft",
+  "leadInSeconds": 0.1,
+  "subtitleCues": [],
+  "subtitlePosition": "center",
+  "durationSeconds": 7.0,
+  "imageCount": 3,
+  "imagePhases": [
+    {
+      "phaseId": "scene-04-image-01",
+      "order": 1,
+      "startPercent": 0.0,
+      "promptFileName": "image-prompt.txt",
+      "expectedImageFileName": "scene-04.png",
+      "visualIdea": "Fünf Flaggen-Bälle stehen fest nebeneinander.",
+      "imageText": "DIE STÄNDIGEN FÜNF",
+      "audioCue": "Fünf bleiben dauerhaft",
+      "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"Fünf bleiben dauerhaft\".",
+      "imageStatus": "missing",
+      "assetVerification": null
+    },
+    {
+      "phaseId": "scene-04-image-02",
+      "order": 2,
+      "startPercent": 0.2,
+      "promptFileName": "image-prompt-02.txt",
+      "expectedImageFileName": "scene-04-2.png",
+      "visualIdea": "Dieselben fünf Bälle, jetzt fest auf einem Sockel stehend.",
+      "imageText": "",
+      "audioCue": "die USA, Russland, China",
+      "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"die USA, Russland, China\".",
+      "imageStatus": "missing",
+      "assetVerification": null
+    },
+    {
+      "phaseId": "scene-04-image-03",
+      "order": 3,
+      "startPercent": 0.666667,
+      "promptFileName": "image-prompt-03.txt",
+      "expectedImageFileName": "scene-04-3.png",
+      "visualIdea": "Ein historischer Marker: Jahreszahl mit einfacher Urkunde.",
+      "imageText": "1945",
+      "audioCue": "Die Siegermächte",
+      "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"Die Siegermächte\".",
+      "imageStatus": "missing",
+      "assetVerification": null
+    }
+  ],
+  "expectedImageFileName": "scene-04.png",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "planned"
+}

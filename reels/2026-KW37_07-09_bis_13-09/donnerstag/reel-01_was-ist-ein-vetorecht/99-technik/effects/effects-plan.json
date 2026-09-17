@@ -1,0 +1,369 @@
+{
+  "version": 2,
+  "enabled": true,
+  "timingStatus": "estimated-until-audio-arrives",
+  "voiceoverPriority": true,
+  "backgroundMusic": {
+    "enabled": false,
+    "reason": "Voice-over-first Erklärformat; Musik nur nach ausdrücklicher Entscheidung."
+  },
+  "defaults": {
+    "transition": "cut",
+    "cameraMotion": "subtle-push-in",
+    "soundEffectVolume": 0.22,
+    "maximumSoundEffectsPerScene": 3,
+    "sceneCueLeadSeconds": 0.1,
+    "imageCueLeadSeconds": 0.08,
+    "sfxPreRollSeconds": 0.04
+  },
+  "scenes": [
+    {
+      "sceneId": "scene-01",
+      "transitionIn": {
+        "type": "none",
+        "durationSeconds": 0,
+        "reason": "Die Hook ist ab Sekunde 0 sichtbar, kein Einblenden."
+      },
+      "cameraMotion": {
+        "type": "ken-burns",
+        "startScale": 1.0,
+        "endScale": 1.03,
+        "panXPercent": 0,
+        "panYPercent": 0,
+        "easing": "ease-in-out",
+        "reason": "Bewegungsrichtung wechselt bewusst gegenueber der Nachbarszene."
+      },
+      "soundEffects": [
+        {
+          "type": "click",
+          "targetId": "scene-01-image-02",
+          "audioCue": "niemand kann es überstimmen",
+          "atPercent": 0.4,
+          "visualEvent": "Interner Bildwechsel bei \"niemand kann es überstimmen\"",
+          "reason": "Leiser Akzent exakt am internen Bildmoment.",
+          "file": "sfx/click.mp3",
+          "volume": 0.2
+        }
+      ],
+      "timingStatus": "estimated-until-audio-arrives"
+    },
+    {
+      "sceneId": "scene-02",
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0,
+        "reason": "Harter Cut; im finalen Render leicht vor dem Sprach-Cue."
+      },
+      "cameraMotion": {
+        "type": "slow-zoom-in",
+        "startScale": 1.04,
+        "endScale": 1.0,
+        "panXPercent": 0,
+        "panYPercent": 0,
+        "easing": "ease-in-out",
+        "reason": "Bewegungsrichtung wechselt bewusst gegenueber der Nachbarszene."
+      },
+      "soundEffects": [
+        {
+          "type": "soft-whoosh",
+          "atPercent": 0,
+          "visualEvent": "Harter Wechsel in die neue narrative Szene",
+          "reason": "Kurzer sauberer Übergangsakzent; im finalen Render leicht vor den Cut gelegt.",
+          "volume": 0.22
+        },
+        {
+          "type": "click",
+          "targetId": "scene-02-image-02",
+          "audioCue": "Sanktionen verhängen",
+          "atPercent": 0.6,
+          "visualEvent": "Interner Bildwechsel bei \"Sanktionen verhängen\"",
+          "reason": "Kurzer Informationsakzent; wird nach dem echten Voice-over am Bild-Cue synchronisiert.",
+          "volume": 0.2
+        }
+      ],
+      "timingStatus": "estimated-until-audio-arrives"
+    },
+    {
+      "sceneId": "scene-03",
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0,
+        "reason": "Harter Cut; im finalen Render leicht vor dem Sprach-Cue."
+      },
+      "cameraMotion": {
+        "type": "subtle-push-in",
+        "startScale": 1.0,
+        "endScale": 1.03,
+        "panXPercent": 2,
+        "panYPercent": 0,
+        "easing": "ease-in-out",
+        "reason": "Bewegungsrichtung wechselt bewusst gegenueber der Nachbarszene."
+      },
+      "soundEffects": [
+        {
+          "type": "soft-swipe",
+          "atPercent": 0,
+          "visualEvent": "Harter Wechsel in die neue narrative Szene",
+          "reason": "Kurzer sauberer Übergangsakzent; im finalen Render leicht vor den Cut gelegt.",
+          "volume": 0.22
+        },
+        {
+          "type": "pop",
+          "targetId": "scene-03-image-02",
+          "audioCue": "Zehn davon wechseln",
+          "atPercent": 0.5,
+          "visualEvent": "Interner Bildwechsel bei \"Zehn davon wechseln\"",
+          "reason": "Kurzer Informationsakzent; wird nach dem echten Voice-over am Bild-Cue synchronisiert.",
+          "volume": 0.2
+        }
+      ],
+      "timingStatus": "estimated-until-audio-arrives"
+    },
+    {
+      "sceneId": "scene-04",
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0,
+        "reason": "Harter Cut; im finalen Render leicht vor dem Sprach-Cue."
+      },
+      "cameraMotion": {
+        "type": "pan-left",
+        "startScale": 1.03,
+        "endScale": 1.0,
+        "panXPercent": -2,
+        "panYPercent": 0,
+        "easing": "ease-in-out",
+        "reason": "Bewegungsrichtung wechselt bewusst gegenueber der Nachbarszene."
+      },
+      "soundEffects": [
+        {
+          "type": "whoosh-up",
+          "atPercent": 0,
+          "visualEvent": "Harter Wechsel in die neue narrative Szene",
+          "reason": "Kurzer sauberer Übergangsakzent; im finalen Render leicht vor den Cut gelegt.",
+          "volume": 0.22
+        },
+        {
+          "type": "tick",
+          "targetId": "scene-04-image-02",
+          "audioCue": "die USA, Russland, China",
+          "atPercent": 0.2,
+          "visualEvent": "Interner Bildwechsel bei \"die USA, Russland, China\"",
+          "reason": "Kurzer Informationsakzent; wird nach dem echten Voice-over am Bild-Cue synchronisiert.",
+          "volume": 0.2
+        },
+        {
+          "type": "tick",
+          "targetId": "scene-04-image-03",
+          "audioCue": "Die Siegermächte",
+          "atPercent": 0.666667,
+          "visualEvent": "Interner Bildwechsel bei \"Die Siegermächte\"",
+          "reason": "Leiser Akzent exakt am internen Bildmoment.",
+          "file": "sfx/tick.mp3",
+          "volume": 0.2
+        }
+      ],
+      "timingStatus": "estimated-until-audio-arrives"
+    },
+    {
+      "sceneId": "scene-05",
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0,
+        "reason": "Harter Cut; im finalen Render leicht vor dem Sprach-Cue."
+      },
+      "cameraMotion": {
+        "type": "slow-zoom-out",
+        "startScale": 1.0,
+        "endScale": 1.04,
+        "panXPercent": 0,
+        "panYPercent": 2,
+        "easing": "ease-in-out",
+        "reason": "Bewegungsrichtung wechselt bewusst gegenueber der Nachbarszene."
+      },
+      "soundEffects": [
+        {
+          "type": "whoosh-down",
+          "atPercent": 0,
+          "visualEvent": "Harter Wechsel in die neue narrative Szene",
+          "reason": "Kurzer sauberer Übergangsakzent; im finalen Render leicht vor den Cut gelegt.",
+          "volume": 0.22
+        },
+        {
+          "type": "click",
+          "targetId": "scene-05-image-02",
+          "audioCue": "Das Vetorecht",
+          "atPercent": 0.4,
+          "visualEvent": "Interner Bildwechsel bei \"Das Vetorecht\"",
+          "reason": "Kurzer Informationsakzent; wird nach dem echten Voice-over am Bild-Cue synchronisiert.",
+          "volume": 0.2
+        },
+        {
+          "type": "pop",
+          "targetId": "scene-05-image-03",
+          "audioCue": "neun Ja-Stimmen",
+          "atPercent": 0.8,
+          "visualEvent": "Interner Bildwechsel bei \"neun Ja-Stimmen\"",
+          "reason": "Leiser Akzent exakt am internen Bildmoment.",
+          "file": "sfx/pop.mp3",
+          "volume": 0.2
+        }
+      ],
+      "timingStatus": "estimated-until-audio-arrives"
+    },
+    {
+      "sceneId": "scene-06",
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0,
+        "reason": "Harter Cut; im finalen Render leicht vor dem Sprach-Cue."
+      },
+      "cameraMotion": {
+        "type": "subtle-pull-out",
+        "startScale": 1.04,
+        "endScale": 1.01,
+        "panXPercent": 0,
+        "panYPercent": -2,
+        "easing": "ease-in-out",
+        "reason": "Bewegungsrichtung wechselt bewusst gegenueber der Nachbarszene."
+      },
+      "soundEffects": [
+        {
+          "type": "soft-whoosh",
+          "atPercent": 0,
+          "visualEvent": "Harter Wechsel in die neue narrative Szene",
+          "reason": "Kurzer sauberer Übergangsakzent; im finalen Render leicht vor den Cut gelegt.",
+          "volume": 0.22
+        },
+        {
+          "type": "pop",
+          "targetId": "scene-06-image-02",
+          "audioCue": "ist der Beschluss tot",
+          "atPercent": 0.625,
+          "visualEvent": "Interner Bildwechsel bei \"ist der Beschluss tot\"",
+          "reason": "Kurzer Informationsakzent; wird nach dem echten Voice-over am Bild-Cue synchronisiert.",
+          "volume": 0.2
+        },
+        {
+          "type": "soft-swipe",
+          "targetId": "scene-06-image-03",
+          "audioCue": "Egal wie viele dafür sind",
+          "atPercent": 0.791667,
+          "visualEvent": "Interner Bildwechsel bei \"Egal wie viele dafür sind\"",
+          "reason": "Leiser Akzent exakt am internen Bildmoment.",
+          "file": "sfx/soft-swipe.mp3",
+          "volume": 0.2
+        }
+      ],
+      "timingStatus": "estimated-until-audio-arrives"
+    },
+    {
+      "sceneId": "scene-07",
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0,
+        "reason": "Harter Cut; im finalen Render leicht vor dem Sprach-Cue."
+      },
+      "cameraMotion": {
+        "type": "pan-right",
+        "startScale": 1.0,
+        "endScale": 1.03,
+        "panXPercent": -2,
+        "panYPercent": 0,
+        "easing": "ease-in-out",
+        "reason": "Bewegungsrichtung wechselt bewusst gegenueber der Nachbarszene."
+      },
+      "soundEffects": [
+        {
+          "type": "soft-swipe",
+          "atPercent": 0,
+          "visualEvent": "Harter Wechsel in die neue narrative Szene",
+          "reason": "Kurzer sauberer Übergangsakzent; im finalen Render leicht vor den Cut gelegt.",
+          "volume": 0.22
+        },
+        {
+          "type": "tick",
+          "targetId": "scene-07-image-02",
+          "audioCue": "Nur ein ausdrückliches Nein",
+          "atPercent": 0.647059,
+          "visualEvent": "Interner Bildwechsel bei \"Nur ein ausdrückliches Nein\"",
+          "reason": "Kurzer Informationsakzent; wird nach dem echten Voice-over am Bild-Cue synchronisiert.",
+          "volume": 0.2
+        }
+      ],
+      "timingStatus": "estimated-until-audio-arrives"
+    },
+    {
+      "sceneId": "scene-08",
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0,
+        "reason": "Harter Cut; im finalen Render leicht vor dem Sprach-Cue."
+      },
+      "cameraMotion": {
+        "type": "ken-burns",
+        "startScale": 1.03,
+        "endScale": 1.0,
+        "panXPercent": 2,
+        "panYPercent": 0,
+        "easing": "ease-in-out",
+        "reason": "Bewegungsrichtung wechselt bewusst gegenueber der Nachbarszene."
+      },
+      "soundEffects": [
+        {
+          "type": "whoosh-up",
+          "atPercent": 0,
+          "visualEvent": "Harter Wechsel in die neue narrative Szene",
+          "reason": "Kurzer sauberer Übergangsakzent; im finalen Render leicht vor den Cut gelegt.",
+          "volume": 0.22
+        },
+        {
+          "type": "click",
+          "targetId": "scene-08-image-02",
+          "audioCue": "hätten die Großmächte nicht mitgemacht",
+          "atPercent": 0.75,
+          "visualEvent": "Interner Bildwechsel bei \"hätten die Großmächte nicht mitgemacht\"",
+          "reason": "Kurzer Informationsakzent; wird nach dem echten Voice-over am Bild-Cue synchronisiert.",
+          "volume": 0.2
+        }
+      ],
+      "timingStatus": "estimated-until-audio-arrives"
+    },
+    {
+      "sceneId": "scene-09",
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0,
+        "reason": "Harter Cut; im finalen Render leicht vor dem Sprach-Cue."
+      },
+      "cameraMotion": {
+        "type": "subtle-push-in",
+        "startScale": 1.0,
+        "endScale": 1.02,
+        "panXPercent": 0,
+        "panYPercent": 0,
+        "easing": "ease-in-out",
+        "reason": "Ruhigste zulaessige Bewegung fuer das Schlussbild; das Motion-Gate verlangt sichtbare Bewegung in jeder Szene."
+      },
+      "soundEffects": [
+        {
+          "type": "whoosh-down",
+          "atPercent": 0,
+          "visualEvent": "Harter Wechsel in die neue narrative Szene",
+          "reason": "Kurzer sauberer Übergangsakzent; im finalen Render leicht vor den Cut gelegt.",
+          "volume": 0.22
+        },
+        {
+          "type": "pop",
+          "targetId": "scene-09-image-02",
+          "audioCue": "braucht die Zustimmung derer",
+          "atPercent": 0.758621,
+          "visualEvent": "Interner Bildwechsel bei \"braucht die Zustimmung derer\"",
+          "reason": "Kurzer Informationsakzent; wird nach dem echten Voice-over am Bild-Cue synchronisiert.",
+          "volume": 0.2
+        }
+      ],
+      "timingStatus": "estimated-until-audio-arrives"
+    }
+  ]
+}

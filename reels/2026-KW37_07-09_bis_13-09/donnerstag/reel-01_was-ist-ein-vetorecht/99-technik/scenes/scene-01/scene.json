@@ -1,0 +1,48 @@
+{
+  "sceneId": "scene-01",
+  "order": 1,
+  "title": "Hook",
+  "narration": "Ein einziges Land sagt Nein — und niemand kann es überstimmen. Nicht einmal alle anderen zusammen.",
+  "imageText": "DAS VETORECHT",
+  "visualIdea": "Ein roter Ball hebt die Hand und stoppt einen ganzen Raum voller Bälle.",
+  "continuityNotes": "Serious Minimal Countryball Explainer. Gleiche Kugelgeometrie und Konturstärke wie im gesamten Reel.",
+  "audioCue": "Ein einziges Land",
+  "leadInSeconds": 0.1,
+  "subtitleCues": [],
+  "subtitlePosition": "center",
+  "durationSeconds": 5.0,
+  "imageCount": 2,
+  "imagePhases": [
+    {
+      "phaseId": "scene-01-image-01",
+      "order": 1,
+      "startPercent": 0.0,
+      "promptFileName": "image-prompt.txt",
+      "expectedImageFileName": "scene-01.png",
+      "visualIdea": "Ein einzelner roter Countryball hebt die Hand, darüber die deutsche Headline.",
+      "imageText": "DAS VETORECHT",
+      "audioCue": "Ein einziges Land",
+      "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"Ein einziges Land\".",
+      "imageStatus": "missing",
+      "assetVerification": null
+    },
+    {
+      "phaseId": "scene-01-image-02",
+      "order": 2,
+      "startPercent": 0.4,
+      "promptFileName": "image-prompt-02.txt",
+      "expectedImageFileName": "scene-01-2.png",
+      "visualIdea": "Alle anderen Bälle heben zustimmend die Hand, der rote blockiert trotzdem.",
+      "imageText": "",
+      "audioCue": "niemand kann es überstimmen",
+      "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"niemand kann es überstimmen\".",
+      "imageStatus": "missing",
+      "assetVerification": null
+    }
+  ],
+  "expectedImageFileName": "scene-01.png",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "planned"
+}

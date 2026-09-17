@@ -1,0 +1,48 @@
+{
+  "sceneId": "scene-02",
+  "order": 2,
+  "title": "Der Ort",
+  "narration": "Das passiert im Sicherheitsrat der Vereinten Nationen. Er darf Sanktionen verhängen und sogar Militäreinsätze beschließen.",
+  "imageText": "SICHERHEITSRAT",
+  "visualIdea": "Das UN-Gebäude und die Machtmittel des Sicherheitsrats als einfache Symbole.",
+  "continuityNotes": "Gleiche Bildwelt. Gebäude bleibt stark vereinfacht und grafisch, kein realistischer Raum.",
+  "audioCue": "Das passiert im Sicherheitsrat",
+  "leadInSeconds": 0.1,
+  "subtitleCues": [],
+  "subtitlePosition": "center",
+  "durationSeconds": 6.5,
+  "imageCount": 2,
+  "imagePhases": [
+    {
+      "phaseId": "scene-02-image-01",
+      "order": 1,
+      "startPercent": 0.0,
+      "promptFileName": "image-prompt.txt",
+      "expectedImageFileName": "scene-02.png",
+      "visualIdea": "Ein stark vereinfachtes UN-Gebäude mit hellblauer Flagge.",
+      "imageText": "SICHERHEITSRAT",
+      "audioCue": "Das passiert im Sicherheitsrat",
+      "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"Das passiert im Sicherheitsrat\".",
+      "imageStatus": "missing",
+      "assetVerification": null
+    },
+    {
+      "phaseId": "scene-02-image-02",
+      "order": 2,
+      "startPercent": 0.6,
+      "promptFileName": "image-prompt-02.txt",
+      "expectedImageFileName": "scene-02-2.png",
+      "visualIdea": "Zwei Symbole nebeneinander: durchgestrichene Handelskiste und ein einfacher Helm.",
+      "imageText": "",
+      "audioCue": "Sanktionen verhängen",
+      "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"Sanktionen verhängen\".",
+      "imageStatus": "missing",
+      "assetVerification": null
+    }
+  ],
+  "expectedImageFileName": "scene-02.png",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "planned"
+}

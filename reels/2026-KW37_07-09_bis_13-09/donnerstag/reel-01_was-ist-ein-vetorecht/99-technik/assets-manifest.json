@@ -1,0 +1,234 @@
+{
+  "audio": {
+    "expectedFile": "audio/voiceover.mp3",
+    "status": "missing"
+  },
+  "visuals": [
+    {
+      "targetId": "scene-01",
+      "sceneId": "scene-01",
+      "sceneOrder": 1,
+      "phaseId": "scene-01-image-01",
+      "phaseOrder": 1,
+      "expectedFile": "scenes/scene-01/scene-01.png",
+      "verification": null,
+      "status": "missing"
+    },
+    {
+      "targetId": "scene-02",
+      "sceneId": "scene-02",
+      "sceneOrder": 2,
+      "phaseId": "scene-02-image-01",
+      "phaseOrder": 1,
+      "expectedFile": "scenes/scene-02/scene-02.png",
+      "verification": null,
+      "status": "missing"
+    },
+    {
+      "targetId": "scene-02-image-02",
+      "sceneId": "scene-02",
+      "sceneOrder": 2,
+      "phaseId": "scene-02-image-02",
+      "phaseOrder": 2,
+      "expectedFile": "scenes/scene-02/scene-02-2.png",
+      "verification": null,
+      "status": "missing"
+    },
+    {
+      "targetId": "scene-03",
+      "sceneId": "scene-03",
+      "sceneOrder": 3,
+      "phaseId": "scene-03-image-01",
+      "phaseOrder": 1,
+      "expectedFile": "scenes/scene-03/scene-03.png",
+      "verification": null,
+      "status": "missing"
+    },
+    {
+      "targetId": "scene-03-image-02",
+      "sceneId": "scene-03",
+      "sceneOrder": 3,
+      "phaseId": "scene-03-image-02",
+      "phaseOrder": 2,
+      "expectedFile": "scenes/scene-03/scene-03-2.png",
+      "verification": null,
+      "status": "missing"
+    },
+    {
+      "targetId": "scene-04",
+      "sceneId": "scene-04",
+      "sceneOrder": 4,
+      "phaseId": "scene-04-image-01",
+      "phaseOrder": 1,
+      "expectedFile": "scenes/scene-04/scene-04.png",
+      "verification": null,
+      "status": "missing"
+    },
+    {
+      "targetId": "scene-04-image-02",
+      "sceneId": "scene-04",
+      "sceneOrder": 4,
+      "phaseId": "scene-04-image-02",
+      "phaseOrder": 2,
+      "expectedFile": "scenes/scene-04/scene-04-2.png",
+      "verification": null,
+      "status": "missing"
+    },
+    {
+      "targetId": "scene-05",
+      "sceneId": "scene-05",
+      "sceneOrder": 5,
+      "phaseId": "scene-05-image-01",
+      "phaseOrder": 1,
+      "expectedFile": "scenes/scene-05/scene-05.png",
+      "verification": null,
+      "status": "missing"
+    },
+    {
+      "targetId": "scene-05-image-02",
+      "sceneId": "scene-05",
+      "sceneOrder": 5,
+      "phaseId": "scene-05-image-02",
+      "phaseOrder": 2,
+      "expectedFile": "scenes/scene-05/scene-05-2.png",
+      "verification": null,
+      "status": "missing"
+    },
+    {
+      "targetId": "scene-06",
+      "sceneId": "scene-06",
+      "sceneOrder": 6,
+      "phaseId": "scene-06-image-01",
+      "phaseOrder": 1,
+      "expectedFile": "scenes/scene-06/scene-06.png",
+      "verification": null,
+      "status": "missing"
+    },
+    {
+      "targetId": "scene-06-image-02",
+      "sceneId": "scene-06",
+      "sceneOrder": 6,
+      "phaseId": "scene-06-image-02",
+      "phaseOrder": 2,
+      "expectedFile": "scenes/scene-06/scene-06-2.png",
+      "verification": null,
+      "status": "missing"
+    },
+    {
+      "targetId": "scene-07",
+      "sceneId": "scene-07",
+      "sceneOrder": 7,
+      "phaseId": "scene-07-image-01",
+      "phaseOrder": 1,
+      "expectedFile": "scenes/scene-07/scene-07.png",
+      "verification": null,
+      "status": "missing"
+    },
+    {
+      "targetId": "scene-07-image-02",
+      "sceneId": "scene-07",
+      "sceneOrder": 7,
+      "phaseId": "scene-07-image-02",
+      "phaseOrder": 2,
+      "expectedFile": "scenes/scene-07/scene-07-2.png",
+      "verification": null,
+      "status": "missing"
+    },
+    {
+      "targetId": "scene-08",
+      "sceneId": "scene-08",
+      "sceneOrder": 8,
+      "phaseId": "scene-08-image-01",
+      "phaseOrder": 1,
+      "expectedFile": "scenes/scene-08/scene-08.png",
+      "verification": null,
+      "status": "missing"
+    },
+    {
+      "targetId": "scene-08-image-02",
+      "sceneId": "scene-08",
+      "sceneOrder": 8,
+      "phaseId": "scene-08-image-02",
+      "phaseOrder": 2,
+      "expectedFile": "scenes/scene-08/scene-08-2.png",
+      "verification": null,
+      "status": "missing"
+    },
+    {
+      "targetId": "scene-09",
+      "sceneId": "scene-09",
+      "sceneOrder": 9,
+      "phaseId": "scene-09-image-01",
+      "phaseOrder": 1,
+      "expectedFile": "scenes/scene-09/scene-09.png",
+      "verification": null,
+      "status": "missing"
+    },
+    {
+      "targetId": "scene-09-image-02",
+      "sceneId": "scene-09",
+      "sceneOrder": 9,
+      "phaseId": "scene-09-image-02",
+      "phaseOrder": 2,
+      "expectedFile": "scenes/scene-09/scene-09-2.png",
+      "verification": null,
+      "status": "missing"
+    }
+  ],
+  "scenes": [
+    {
+      "sceneId": "scene-01",
+      "expectedFile": "scenes/scene-01/scene-01.png",
+      "verification": null,
+      "status": "missing"
+    },
+    {
+      "sceneId": "scene-02",
+      "expectedFile": "scenes/scene-02/scene-02.png",
+      "verification": null,
+      "status": "missing"
+    },
+    {
+      "sceneId": "scene-03",
+      "expectedFile": "scenes/scene-03/scene-03.png",
+      "verification": null,
+      "status": "missing"
+    },
+    {
+      "sceneId": "scene-04",
+      "expectedFile": "scenes/scene-04/scene-04.png",
+      "verification": null,
+      "status": "missing"
+    },
+    {
+      "sceneId": "scene-05",
+      "expectedFile": "scenes/scene-05/scene-05.png",
+      "verification": null,
+      "status": "missing"
+    },
+    {
+      "sceneId": "scene-06",
+      "expectedFile": "scenes/scene-06/scene-06.png",
+      "verification": null,
+      "status": "missing"
+    },
+    {
+      "sceneId": "scene-07",
+      "expectedFile": "scenes/scene-07/scene-07.png",
+      "verification": null,
+      "status": "missing"
+    },
+    {
+      "sceneId": "scene-08",
+      "expectedFile": "scenes/scene-08/scene-08.png",
+      "verification": null,
+      "status": "missing"
+    },
+    {
+      "sceneId": "scene-09",
+      "expectedFile": "scenes/scene-09/scene-09.png",
+      "verification": null,
+      "status": "missing"
+    }
+  ]
+}

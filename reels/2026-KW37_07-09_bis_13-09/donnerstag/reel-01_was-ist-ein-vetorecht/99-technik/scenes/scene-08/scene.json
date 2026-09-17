@@ -1,0 +1,48 @@
+{
+  "sceneId": "scene-08",
+  "order": 8,
+  "title": "Der Ursprung",
+  "narration": "Warum gibt es diese Sonderregel? Sie war 1945 der Preis für die Gründung. Ohne Vetorecht hätten die Großmächte nicht mitgemacht.",
+  "imageText": "DER PREIS",
+  "visualIdea": "Das Vetorecht als Preis für die Gründung der UN.",
+  "continuityNotes": "Gleiche Bildwelt. Historischer Kontext bleibt symbolisch, nie realistisch.",
+  "audioCue": "Warum gibt es diese Sonderregel",
+  "leadInSeconds": 0.1,
+  "subtitleCues": [],
+  "subtitlePosition": "center",
+  "durationSeconds": 6.5,
+  "imageCount": 2,
+  "imagePhases": [
+    {
+      "phaseId": "scene-08-image-01",
+      "order": 1,
+      "startPercent": 0.0,
+      "promptFileName": "image-prompt.txt",
+      "expectedImageFileName": "scene-08.png",
+      "visualIdea": "Ein Gebäude entsteht, daneben ein Preisschild.",
+      "imageText": "DER PREIS",
+      "audioCue": "Warum gibt es diese Sonderregel",
+      "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"Warum gibt es diese Sonderregel\".",
+      "imageStatus": "missing",
+      "assetVerification": null
+    },
+    {
+      "phaseId": "scene-08-image-02",
+      "order": 2,
+      "startPercent": 0.75,
+      "promptFileName": "image-prompt-02.txt",
+      "expectedImageFileName": "scene-08-2.png",
+      "visualIdea": "Fünf Flaggen-Bälle drehen sich zum Ausgang.",
+      "imageText": "",
+      "audioCue": "hätten die Großmächte nicht mitgemacht",
+      "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"hätten die Großmächte nicht mitgemacht\".",
+      "imageStatus": "missing",
+      "assetVerification": null
+    }
+  ],
+  "expectedImageFileName": "scene-08.png",
+  "promptStatus": "ready",
+  "imageStatus": "missing",
+  "assetVerification": null,
+  "status": "planned"
+}
