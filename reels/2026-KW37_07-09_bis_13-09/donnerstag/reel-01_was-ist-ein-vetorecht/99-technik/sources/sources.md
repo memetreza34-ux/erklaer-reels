@@ -36,3 +36,10 @@ Quellenrolle für Schema 3:
 - Datum/Zugriff: 2026-09-17
 - Quellentyp: unabhängige Primärquelle, internationale Rechtsprechung
 - Belegt: Die freiwillige Enthaltung eines ständigen Mitglieds hindert die Annahme einer Resolution nicht; nur eine Gegenstimme verhindert sie. Belegt Szene 7.
+
+## Quelle 5
+- Titel/Institution: The Veto — Security Council Report
+- URL: https://www.securitycouncilreport.org/un-security-council-working-methods/the-veto.php
+- Datum/Zugriff: 2026-09-17
+- Quellentyp: unabhängige Fachquelle, spezialisierte Forschungsorganisation zum Sicherheitsrat
+- Belegt: Seit dem ersten Veto am 16. Februar 1946 wurde das Vetorecht 293 Mal eingelegt. Belegt die Aussage "fast dreihundert Mal" in Szene 7.

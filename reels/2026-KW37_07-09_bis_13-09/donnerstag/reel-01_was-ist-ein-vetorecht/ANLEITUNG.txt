@@ -7,7 +7,7 @@ Phase 1 ist fertig. Du brauchst jetzt zwei Dinge: das Voice-over und 20 Bilder.
 1) VOICE-OVER
 ------------------------------------------------------------
 Text zum Vertonen:   01-voice-script/voice-script.txt
-Ziel:                55-60 Sekunden, geplant sind 56,5 s
+Ziel:                55-60 Sekunden, geplant sind 57,0 s
 Fertige Datei in:    02-audio/AUDIO-HIER-EINFUEGEN/
 
 Nur EINE Audiodatei dort ablegen. Format: mp3, wav oder m4a.
@@ -21,57 +21,58 @@ Fertige Bilder in:   00-bildprompts/00-ALLE-BILDER-HIER-REIN/
 Benennung verbindlich:  Bild 01.png  bis  Bild 20.png
 Keine Nummer ueberspringen. Fehlt eine, stoppt Phase 3.
 
-WICHTIG: Bild 02 und Bild 20 sind fast dasselbe Motiv. Das ist Absicht -
-das Schlussbild greift den Anfang wieder auf, damit das Reel sauber loopt.
-Nur der Text unterscheidet sich: "14 ZU 1" am Anfang, "IMMER NOCH 14 ZU 1"
+WICHTIG: Bild 02 und Bild 20 sind fast dasselbe Motiv (leerer Teller,
+roter Ball mit erhobener Hand). Das ist Absicht - das Schlussbild greift
+den Anfang wieder auf, damit das Reel sauber loopt. Nur der Text
+unterscheidet sich: "KEINE PIZZA" am Anfang, "IMMER NOCH KEINE PIZZA"
 am Ende.
 
 
 3) WAS WELCHES BILD ZEIGT
 ------------------------------------------------------------
-  scene-01  (5.5s)  Hook
-    Bild 01.png   Vierzehn kleine grüne Bälle gegen einen grossen roten, darüber die Headline.
+  scene-01  (5.5s)  Hook: Die Analogie
+    Bild 01.png   Zehn bunte Bälle um eine Pizza, einer hebt die Hand.
                   Text im Bild: VETORECHT ERKLÄRT
-    Bild 02.png   Der rote Ball steht, die grünen kippen um.
-                  Text im Bild: 14 ZU 1
+    Bild 02.png   Die Pizza ist verschwunden, nur der rote Ball steht noch aufrecht.
+                  Text im Bild: KEINE PIZZA
 
-  scene-02  (6.5s)  Einleitung: Der Ort
-    Bild 03.png   Ein stark vereinfachtes UN-Gebäude mit hellblauer Flagge.
+  scene-02  (6.5s)  Einleitung: Das Prinzip
+    Bild 03.png   Neun Sprechblasen gegen eine - und die eine gewinnt trotzdem.
+                  (kein Text im Bild)
+    Bild 04.png   Ein einfacher Stempel mit dem Wort VETO.
+                  Text im Bild: VETO
+
+  scene-03  (6.0s)  Einleitung: Die Übertragung
+    Bild 05.png   Ein stark vereinfachtes UN-Gebäude mit hellblauer Flagge.
                   Text im Bild: SICHERHEITSRAT
-    Bild 04.png   Ein Beschluss legt sich als Band um eine einfache Weltkugel.
+    Bild 06.png   Die Pizza wird durch eine Weltkugel ersetzt.
                   (kein Text im Bild)
 
-  scene-03  (6.0s)  Einleitung: Der Tisch
-    Bild 05.png   Fünfzehn gleich große neutrale Bälle um einen runden Tisch.
+  scene-04  (6.5s)  Hauptteil: Wer entscheidet
+    Bild 07.png   Fünfzehn neutrale Bälle um einen runden Tisch.
                   Text im Bild: 15 LÄNDER
-    Bild 06.png   Zehn Bälle verblassen mit Kreispfeil, fünf bleiben fest.
-                  (kein Text im Bild)
-
-  scene-04  (6.5s)  Hauptteil: Die Fünf
-    Bild 07.png   Fünf Flaggen-Bälle stehen fest nebeneinander.
+    Bild 08.png   Fünf Flaggen-Bälle auf festen Sockeln, die anderen blass.
                   Text im Bild: DIE STÄNDIGEN FÜNF
-    Bild 08.png   Die fünf stehen auf einem Sockel mit der Jahreszahl.
-                  Text im Bild: 1945
 
   scene-05  (6.0s)  Hauptteil: Die normale Regel
     Bild 09.png   Neun grüne Häkchen in einem Raster aus fünfzehn Feldern.
                   Text im Bild: 9 VON 15
-    Bild 10.png   Ein grüner Haken, alles wirkt normal und erledigt.
+    Bild 10.png   Ein grüner Haken, alles wirkt erledigt.
                   (kein Text im Bild)
 
-  scene-06  (7.5s)  Hauptteil: Der Bruch
+  scene-06  (7.0s)  Hauptteil: Der Bruch
     Bild 11.png   Der grüne Haken zerbricht.
                   (kein Text im Bild)
     Bild 12.png   Ein Flaggen-Ball hebt die Hand, ein rotes Stoppzeichen erscheint.
                   (kein Text im Bild)
     Bild 13.png   Eine Waage kippt durch ein einziges rotes Gewicht.
-                  Text im Bild: EINE STIMME REICHT
+                  Text im Bild: 14 ZU 1
 
-  scene-07  (6.5s)  Hauptteil: Die Ausnahme
-    Bild 14.png   Zwei Bälle: einer senkt die Hand, einer hebt sie.
+  scene-07  (7.0s)  Hauptteil: Wie oft und die Ausnahme
+    Bild 14.png   Eine große Zahl über einem Stapel abgelehnter Dokumente.
+                  Text im Bild: FAST 300 MAL
+    Bild 15.png   Ein grauer Ball senkt die Hand, ein Pfeil läuft ungehindert vorbei.
                   Text im Bild: ENTHALTUNG IST KEIN NEIN
-    Bild 15.png   Am grauen Ball läuft ein grüner Pfeil ungehindert vorbei.
-                  (kein Text im Bild)
     Bild 16.png   Am roten Ball stoppt derselbe Pfeil an einem Stoppzeichen.
                   (kein Text im Bild)
 
@@ -81,11 +82,11 @@ am Ende.
     Bild 18.png   Fünf Flaggen-Bälle drehen sich zum Ausgang.
                   (kein Text im Bild)
 
-  scene-09  (6.0s)  Schluss: Das Paradox
+  scene-09  (6.5s)  Schluss: Zurück zur Pizza
     Bild 19.png   Ein Dokument mit fünf Schlössern.
                   (kein Text im Bild)
-    Bild 20.png   Dasselbe Bild wie am Anfang: der eine rote Ball steht, die vierzehn liegen.
-                  Text im Bild: IMMER NOCH 14 ZU 1
+    Bild 20.png   Dasselbe Bild wie am Anfang: leerer Teller, roter Ball hebt die Hand.
+                  Text im Bild: IMMER NOCH KEINE PIZZA
 
 
 4) WENN BEIDES DRIN IST
@@ -94,15 +95,20 @@ am Ende.
   npm run phase3:reel -- --dir "reels/2026-KW37_07-09_bis_13-09/donnerstag/reel-01_was-ist-ein-vetorecht"
 
 
-AUFBAU DES SCRIPTS
+WIE DAS SCRIPT AUFGEBAUT IST
 ------------------------------------------------------------
-Hook (Frage + "einfach erklärt" + sofortiger Konflikt)
-  -> Einleitung (wo es passiert, warum es zaehlt)
-  -> Hauptteil (die Regel, dann der Bruch, dann die Ausnahme)
-  -> Schluss (warum es bleibt, zurueck zum Anfangsbild)
+Szene 1-2  HOOK        Alltagsbeispiel statt Definition: zehn Freunde,
+                       eine Pizza, einer blockiert. Das Prinzip ist in
+                       fuenf Sekunden verstanden.
+Szene 3    EINLEITUNG  Uebertragung vom Beispiel auf die echte Welt.
+                       Gleiche Regel, viel hoeherer Einsatz.
+Szene 4-7  HAUPTTEIL   Wer entscheidet, die normale Regel, der Bruch,
+                       die Zahl und die Ausnahme.
+Szene 8-9  SCHLUSS     Warum es das gibt, warum es bleibt - und zurueck
+                       zum Bild vom Anfang.
 
-Der Bruch in Szene 6 ist der staerkste Moment: Szene 5 baut die Erwartung
-"normale Mehrheit" auf, Szene 6 zerstoert sie.
+Der staerkste Moment ist Szene 6: Szene 5 baut die Erwartung "normale
+Mehrheit" auf, Szene 6 zerstoert sie. Deshalb drei Bildphasen dort.
 
 
 HINWEISE
@@ -110,6 +116,8 @@ HINWEISE
 - Sichtbarer Text in den Bildern ist ausschliesslich Deutsch.
 - Bildwelt fest: serious-minimal-countryball-explainer, 9:16.
   Keine Stick-Figures, kein 16:9 - das ist die YouTube-Welt.
+- In Szene 1-2 bewusst NEUTRALE einfarbige Kugeln ohne Flaggen:
+  dort geht es um das Prinzip, nicht um Laender. Flaggen erst ab Szene 4.
 - Untertitel und Hintergrundmusik sind bewusst aus.
-- Quellen: 99-technik/sources/sources.md
+- Quellen: 99-technik/sources/sources.md  (5 Quellen, 4 Domains)
 - Caption:  99-technik/caption/caption.txt

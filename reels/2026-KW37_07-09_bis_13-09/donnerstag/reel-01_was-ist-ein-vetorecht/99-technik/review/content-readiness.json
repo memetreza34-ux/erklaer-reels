@@ -1,37 +1,39 @@
 {
-  "createdAt": "2026-09-17T03:43:20.169Z",
+  "createdAt": "2026-09-17T03:48:29.803Z",
   "passed": true,
   "summary": {
-    "passedChecks": 400,
+    "passedChecks": 402,
     "failedChecks": 0,
     "warnings": 1,
-    "totalChecks": 401
+    "totalChecks": 403
   },
   "metadata": {
-    "totalDuration": 56.5,
+    "totalDuration": 57,
     "totalPlannedImages": 20,
     "strict": true,
     "sourceQuality": {
       "schemaVersion": 3,
-      "urlFieldCount": 4,
-      "urlCount": 4,
-      "httpsUrlCount": 4,
-      "distinctHostCount": 3,
+      "urlFieldCount": 5,
+      "urlCount": 5,
+      "httpsUrlCount": 5,
+      "distinctHostCount": 4,
       "hosts": [
         "un.org",
         "bpb.de",
-        "icj-cij.org"
+        "icj-cij.org",
+        "securitycouncilreport.org"
       ],
-      "titleCount": 4,
-      "dateCount": 4,
-      "sourceTypeCount": 4,
+      "titleCount": 5,
+      "dateCount": 5,
+      "sourceTypeCount": 5,
       "sourceTypes": [
         "Primärquelle, offizieller Vertragstext der Vereinten Nationen",
         "unabhängige Sekundär-/Fachquelle, staatliche Bildungseinrichtung",
         "Primärquelle, offizieller Vertragstext",
-        "unabhängige Primärquelle, internationale Rechtsprechung"
+        "unabhängige Primärquelle, internationale Rechtsprechung",
+        "unabhängige Fachquelle, spezialisierte Forschungsorganisation zum Sicherheitsrat"
       ],
-      "evidenceCount": 4,
+      "evidenceCount": 5,
       "hasPrimaryOrOfficial": true,
       "hasIndependentSecondary": true,
       "hasPlaceholder": false,
@@ -131,7 +133,7 @@
       "id": "script-final-script.txt-word-count",
       "passed": true,
       "level": "error",
-      "message": "final-script.txt enthält 158 Wörter; Ziel sind 155–175 Wörter für ungefähr eine Minute bei 1,10x."
+      "message": "final-script.txt enthält 166 Wörter; Ziel sind 155–175 Wörter für ungefähr eine Minute bei 1,10x."
     },
     {
       "id": "script-voice-script.txt",
@@ -143,7 +145,7 @@
       "id": "script-voice-script.txt-word-count",
       "passed": true,
       "level": "error",
-      "message": "voice-script.txt enthält 158 Wörter; Ziel sind 155–175 Wörter für ungefähr eine Minute bei 1,10x."
+      "message": "voice-script.txt enthält 166 Wörter; Ziel sind 155–175 Wörter für ungefähr eine Minute bei 1,10x."
     },
     {
       "id": "scripts-identical",
@@ -281,7 +283,7 @@
       "id": "scene-01-image-02-audio-cue-in-narration",
       "passed": true,
       "level": "error",
-      "message": "scene-01-image-02: audioCue \"Und das eine gewinnt\" kommt nicht in der Narration vor."
+      "message": "scene-01-image-02: audioCue \"Es gibt keine Pizza\" kommt nicht in der Narration vor."
     },
     {
       "id": "scene-01-image-02-cue-derived-start",
@@ -446,18 +448,6 @@
       "message": "scene-02-image-01: expectedImageFileName fehlt."
     },
     {
-      "id": "scene-02-image-01-image-text-unique",
-      "passed": true,
-      "level": "warning",
-      "message": "scene-02-image-01: Der sichtbare Bildtext wurde bereits in keinem Bild verwendet."
-    },
-    {
-      "id": "scene-02-image-01-image-text-prompt",
-      "passed": true,
-      "level": "warning",
-      "message": "scene-02-image-01: imageText steht nicht exakt im Bildprompt."
-    },
-    {
       "id": "scene-02-image-02-audio-cue",
       "passed": true,
       "level": "error",
@@ -467,7 +457,7 @@
       "id": "scene-02-image-02-audio-cue-in-narration",
       "passed": true,
       "level": "error",
-      "message": "scene-02-image-02: audioCue \"für alle Staaten bindend\" kommt nicht in der Narration vor."
+      "message": "scene-02-image-02: audioCue \"Das ist ein Veto\" kommt nicht in der Narration vor."
     },
     {
       "id": "scene-02-image-02-cue-derived-start",
@@ -504,6 +494,18 @@
       "passed": true,
       "level": "error",
       "message": "scene-02-image-02: expectedImageFileName fehlt."
+    },
+    {
+      "id": "scene-02-image-02-image-text-unique",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-02-image-02: Der sichtbare Bildtext wurde bereits in keinem Bild verwendet."
+    },
+    {
+      "id": "scene-02-image-02-image-text-prompt",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-02-image-02: imageText steht nicht exakt im Bildprompt."
     },
     {
       "id": "scene-02-dense-pacing-review",
@@ -641,7 +643,7 @@
       "id": "scene-03-image-02-audio-cue-in-narration",
       "passed": true,
       "level": "error",
-      "message": "scene-03-image-02: audioCue \"Fünf sitzen für immer\" kommt nicht in der Narration vor."
+      "message": "scene-03-image-02: audioCue \"nicht um Pizza, sondern um Krieg und Frieden\" kommt nicht in der Narration vor."
     },
     {
       "id": "scene-03-image-02-cue-derived-start",
@@ -815,7 +817,7 @@
       "id": "scene-04-image-02-audio-cue-in-narration",
       "passed": true,
       "level": "error",
-      "message": "scene-04-image-02: audioCue \"Die Sieger von 1945\" kommt nicht in der Narration vor."
+      "message": "scene-04-image-02: audioCue \"Fünf davon dauerhaft\" kommt nicht in der Narration vor."
     },
     {
       "id": "scene-04-image-02-cue-derived-start",
@@ -1001,7 +1003,7 @@
       "id": "scene-05-image-02-audio-cue-in-narration",
       "passed": true,
       "level": "error",
-      "message": "scene-05-image-02: audioCue \"Klingt nach Mehrheit\" kommt nicht in der Narration vor."
+      "message": "scene-05-image-02: audioCue \"Klingt nach normaler Mehrheit\" kommt nicht in der Narration vor."
     },
     {
       "id": "scene-05-image-02-cue-derived-start",
@@ -1163,7 +1165,7 @@
       "id": "scene-06-image-02-audio-cue-in-narration",
       "passed": true,
       "level": "error",
-      "message": "scene-06-image-02: audioCue \"sagt eines dieser fünf Länder Nein\" kommt nicht in der Narration vor."
+      "message": "scene-06-image-02: audioCue \"Sagt eines dieser fünf Länder Nein\" kommt nicht in der Narration vor."
     },
     {
       "id": "scene-06-image-02-cue-derived-start",
@@ -1211,7 +1213,7 @@
       "id": "scene-06-image-03-audio-cue-in-narration",
       "passed": true,
       "level": "error",
-      "message": "scene-06-image-03: audioCue \"Vierzehn zu eins\" kommt nicht in der Narration vor."
+      "message": "scene-06-image-03: audioCue \"Egal ob vierzehn dafür sind\" kommt nicht in der Narration vor."
     },
     {
       "id": "scene-06-image-03-cue-derived-start",
@@ -1265,7 +1267,7 @@
       "id": "scene-06-dense-pacing-review",
       "passed": true,
       "level": "warning",
-      "message": "scene-06: Im Mittel würde eine Bildphase etwa 2.5 Sekunden stehen. Prüfe, ob ein weiterer echter visueller Gedanke sinnvoll ist."
+      "message": "scene-06: Im Mittel würde eine Bildphase etwa 2.3 Sekunden stehen. Prüfe, ob ein weiterer echter visueller Gedanke sinnvoll ist."
     },
     {
       "id": "scene-07-stable-id",
@@ -1397,7 +1399,7 @@
       "id": "scene-07-image-02-audio-cue-in-narration",
       "passed": true,
       "level": "error",
-      "message": "scene-07-image-02: audioCue \"Wer sich nur enthält\" kommt nicht in der Narration vor."
+      "message": "scene-07-image-02: audioCue \"Nur wer sich enthält\" kommt nicht in der Narration vor."
     },
     {
       "id": "scene-07-image-02-cue-derived-start",
@@ -1436,6 +1438,18 @@
       "message": "scene-07-image-02: expectedImageFileName fehlt."
     },
     {
+      "id": "scene-07-image-02-image-text-unique",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-07-image-02: Der sichtbare Bildtext wurde bereits in keinem Bild verwendet."
+    },
+    {
+      "id": "scene-07-image-02-image-text-prompt",
+      "passed": true,
+      "level": "warning",
+      "message": "scene-07-image-02: imageText steht nicht exakt im Bildprompt."
+    },
+    {
       "id": "scene-07-image-03-audio-cue",
       "passed": true,
       "level": "error",
@@ -1445,7 +1459,7 @@
       "id": "scene-07-image-03-audio-cue-in-narration",
       "passed": true,
       "level": "error",
-      "message": "scene-07-image-03: audioCue \"Nur ein ausgesprochenes Nein\" kommt nicht in der Narration vor."
+      "message": "scene-07-image-03: audioCue \"Es braucht ein ausgesprochenes Nein\" kommt nicht in der Narration vor."
     },
     {
       "id": "scene-07-image-03-cue-derived-start",
@@ -1487,7 +1501,7 @@
       "id": "scene-07-dense-pacing-review",
       "passed": true,
       "level": "warning",
-      "message": "scene-07: Im Mittel würde eine Bildphase etwa 2.2 Sekunden stehen. Prüfe, ob ein weiterer echter visueller Gedanke sinnvoll ist."
+      "message": "scene-07: Im Mittel würde eine Bildphase etwa 2.3 Sekunden stehen. Prüfe, ob ein weiterer echter visueller Gedanke sinnvoll ist."
     },
     {
       "id": "scene-08-stable-id",
@@ -1619,7 +1633,7 @@
       "id": "scene-08-image-02-audio-cue-in-narration",
       "passed": true,
       "level": "error",
-      "message": "scene-08-image-02: audioCue \"wären die Großmächte der UNO nie beigetreten\" kommt nicht in der Narration vor."
+      "message": "scene-08-image-02: audioCue \"wären die Großmächte nie beigetreten\" kommt nicht in der Narration vor."
     },
     {
       "id": "scene-08-image-02-cue-derived-start",
@@ -1781,7 +1795,7 @@
       "id": "scene-09-image-02-audio-cue-in-narration",
       "passed": true,
       "level": "error",
-      "message": "scene-09-image-02: audioCue \"braucht das Ja von denen\" kommt nicht in der Narration vor."
+      "message": "scene-09-image-02: audioCue \"Es ist wie mit der Pizza\" kommt nicht in der Narration vor."
     },
     {
       "id": "scene-09-image-02-cue-derived-start",
@@ -1835,13 +1849,13 @@
       "id": "scene-09-dense-pacing-review",
       "passed": true,
       "level": "warning",
-      "message": "scene-09: Im Mittel würde eine Bildphase etwa 3.0 Sekunden stehen. Prüfe, ob ein weiterer echter visueller Gedanke sinnvoll ist."
+      "message": "scene-09: Im Mittel würde eine Bildphase etwa 3.3 Sekunden stehen. Prüfe, ob ein weiterer echter visueller Gedanke sinnvoll ist."
     },
     {
       "id": "total-duration",
       "passed": true,
       "level": "error",
-      "message": "Die geschätzte Gesamtdauer beträgt 56.5 Sekunden; Ziel sind 55–60 Sekunden."
+      "message": "Die geschätzte Gesamtdauer beträgt 57.0 Sekunden; Ziel sind 55–60 Sekunden."
     },
     {
       "id": "all-image-prompts-covered",

@@ -2,7 +2,7 @@
   "sceneId": "scene-05",
   "order": 5,
   "title": "Hauptteil: Die normale Regel",
-  "narration": "Für einen Beschluss braucht es neun von fünfzehn Stimmen. Klingt nach Mehrheit.",
+  "narration": "Für einen Beschluss braucht es neun Ja-Stimmen. Klingt nach normaler Mehrheit.",
   "imageText": "9 VON 15",
   "visualIdea": "Die scheinbar normale Mehrheitsregel - bewusst als Erwartung aufgebaut.",
   "continuityNotes": "Ruhiges, sachliches Bild. Der Bruch kommt erst in der naechsten Szene.",
@@ -29,13 +29,13 @@
     {
       "phaseId": "scene-05-image-02",
       "order": 2,
-      "startPercent": 0.75,
+      "startPercent": 0.636364,
       "promptFileName": "image-prompt-02.txt",
       "expectedImageFileName": "scene-05-2.png",
-      "visualIdea": "Ein grüner Haken, alles wirkt normal und erledigt.",
+      "visualIdea": "Ein grüner Haken, alles wirkt erledigt.",
       "imageText": "",
-      "audioCue": "Klingt nach Mehrheit",
-      "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"Klingt nach Mehrheit\".",
+      "audioCue": "Klingt nach normaler Mehrheit",
+      "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"Klingt nach normaler Mehrheit\".",
       "imageStatus": "missing",
       "assetVerification": null
     }
