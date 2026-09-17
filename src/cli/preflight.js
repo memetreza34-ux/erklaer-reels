@@ -8,6 +8,7 @@
  */
 
 import { spawnSync } from 'node:child_process';
+import { pathToFileURL } from 'node:url';
 
 const REQUIRED_TOOLS = [
   { command: 'ffmpeg', args: ['-version'], purpose: 'Audio schneiden, normalisieren und rendern' },
@@ -52,4 +53,7 @@ function main() {
   process.exitCode = 1;
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) main();
+// pathToFileURL loest beides: relative argv-Pfade und Sonderzeichen im Pfad.
+// Ein direkter Stringvergleich scheitert z. B. bei Umlauten, weil import.meta.url
+// sie prozentkodiert (Erkl%C3%A4r-Reels), process.argv[1] aber nicht.
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) main();
