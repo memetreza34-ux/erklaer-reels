@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdir, mkdtemp, readFile, writeFile, readdir } from 'node:fs/promises';
+import { access, mkdir, mkdtemp, readFile, writeFile, readdir } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 
@@ -8,6 +8,28 @@ import { compactReelLayout } from '../src/core/compact-reel-layout.js';
 
 const reelPath = (root, name) =>
   path.join(root, 'reels', '2026-KW36_31-08_bis_06-09', 'montag', name);
+
+async function exists(target) {
+  try {
+    await access(target);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Ermittelt zur Laufzeit, ob das Dateisystem Groß-/Kleinschreibung unterscheidet.
+ * macOS (APFS) und Windows tun es nicht, die Linux-CI schon - und genau diese
+ * Differenz hat die Suite vorher auf einer der beiden Seiten rot gemacht.
+ */
+async function isCaseInsensitiveFilesystem() {
+  const probe = await mkdtemp(path.join(os.tmpdir(), 'case-probe-'));
+  await mkdir(path.join(probe, 'PROBE'));
+  return exists(path.join(probe, 'probe'));
+}
+
+const CASE_INSENSITIVE = await isCaseInsensitiveFilesystem();
 
 async function buildReel(root, name) {
   const reelDirectory = reelPath(root, name);
@@ -22,11 +44,19 @@ async function buildReel(root, name) {
 }
 
 /**
- * Auf APFS/HFS+/NTFS ist 99-technik/INBOX derselbe physische Ordner wie
- * 99-technik/inbox. Ohne Sonderbehandlung bricht compactReelLayout dort ab -
- * die Suite war auf macOS rot, in der Linux-CI aber grün.
+ * Sammelt alle Dateinamen unterhalb eines Verzeichnisses, unabhängig davon,
+ * unter welchem Ordnernamen sie am Ende liegen.
  */
-test('Legacy-Alias in anderer Schreibweise blockiert den Lauf nicht', async () => {
+async function collectFileNames(directory) {
+  const names = [];
+  const entries = await readdir(directory, { withFileTypes: true, recursive: true }).catch(() => []);
+  for (const entry of entries) {
+    if (entry.isFile()) names.push(entry.name);
+  }
+  return names;
+}
+
+test('ein Legacy-Alias in anderer Schreibweise kostet keinen Nutzerinhalt', async () => {
   const root = await mkdtemp(path.join(os.tmpdir(), 'case-collision-'));
   const reelDirectory = await buildReel(root, 'reel-01_test');
 
@@ -34,33 +64,43 @@ test('Legacy-Alias in anderer Schreibweise blockiert den Lauf nicht', async () =
   await writeFile(path.join(reelDirectory, '99-technik', 'INBOX', 'user-original.zip'), 'keep-me');
   await writeFile(path.join(reelDirectory, 'inbox', 'neu.txt'), 'neu');
 
+  // Der Lauf darf auf keiner Plattform abbrechen.
   const result = await compactReelLayout(reelDirectory);
-
   assert.equal(result.compact, true);
 
-  // Nutzerinhalt im bestehenden Ordner bleibt unangetastet.
-  const alias = path.join(reelDirectory, '99-technik', 'INBOX', 'user-original.zip');
-  assert.equal(await readFile(alias, 'utf8'), 'keep-me');
+  // Zusicherung auf beiden Dateisystemen: nichts geht verloren.
+  const technicalDirectory = path.join(reelDirectory, '99-technik');
+  const names = await collectFileNames(technicalDirectory);
+  assert.ok(names.includes('user-original.zip'), `Nutzerdatei verloren: ${names.join(', ')}`);
+  assert.ok(names.includes('neu.txt'), `Neue Datei verloren: ${names.join(', ')}`);
 
-  // Neuer Inhalt ist dazugekommen, nicht verloren gegangen.
-  const merged = await readdir(path.join(reelDirectory, '99-technik', 'inbox'));
-  assert.ok(merged.includes('neu.txt'), `Inhalt fehlt: ${merged.join(', ')}`);
-  assert.ok(merged.includes('user-original.zip'));
+  if (CASE_INSENSITIVE) {
+    // INBOX und inbox sind derselbe Ordner - der Inhalt wird zusammengeführt.
+    const merged = await readdir(path.join(technicalDirectory, 'inbox'));
+    assert.ok(merged.includes('neu.txt'));
+    assert.ok(merged.includes('user-original.zip'));
+    assert.ok(result.mergedEntries.some((entry) => entry.entry === 'inbox'));
+  } else {
+    // Getrennte Ordner: inbox wird normal verschoben, INBOX bleibt als Alias stehen.
+    assert.ok(await exists(path.join(technicalDirectory, 'INBOX', 'user-original.zip')));
+    assert.ok(await exists(path.join(technicalDirectory, 'inbox', 'neu.txt')));
+  }
 });
 
 test('beim Zusammenführen gewinnt der vorhandene Inhalt', async () => {
   const root = await mkdtemp(path.join(os.tmpdir(), 'case-collision-'));
   const reelDirectory = await buildReel(root, 'reel-02_test');
 
-  // Legacy-Alias mit einer Datei, die es auch in der Quelle gibt.
   await mkdir(path.join(reelDirectory, '99-technik', 'INBOX'), { recursive: true });
   await writeFile(path.join(reelDirectory, '99-technik', 'INBOX', 'gleich.txt'), 'ziel');
   await writeFile(path.join(reelDirectory, 'inbox', 'gleich.txt'), 'quelle');
 
   const result = await compactReelLayout(reelDirectory);
 
-  // Nichts wird überschrieben: der bestehende Stand bleibt.
+  // Auf beiden Dateisystemen gilt: der bestehende Stand wird nie überschrieben.
   assert.equal(await readFile(path.join(reelDirectory, '99-technik', 'INBOX', 'gleich.txt'), 'utf8'), 'ziel');
+
+  if (!CASE_INSENSITIVE) return;
 
   const merged = result.mergedEntries.find((entry) => entry.entry === 'inbox');
   assert.ok(merged, 'Der Merge muss gemeldet werden.');
