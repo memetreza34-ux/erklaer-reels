@@ -2,7 +2,7 @@
   "sceneId": "scene-08",
   "order": 8,
   "title": "Schluss: Der Preis",
-  "narration": "Warum gibt es das? 1945 war es der Preis. Ohne dieses Recht wären die Großmächte nie beigetreten.",
+  "narration": "Warum gibt es das? 1945 war es der Preis. Ohne dieses Recht hätten die großen Länder nicht mitgemacht.",
   "imageText": "DER PREIS",
   "visualIdea": "Das Vetorecht als Preis fuer die Gruendung der UNO.",
   "continuityNotes": "Gleiche Bildwelt. Historischer Kontext bleibt symbolisch, nie realistisch.",
@@ -29,13 +29,13 @@
     {
       "phaseId": "scene-08-image-02",
       "order": 2,
-      "startPercent": 0.705882,
+      "startPercent": 0.666667,
       "promptFileName": "image-prompt-02.txt",
       "expectedImageFileName": "scene-08-2.png",
       "visualIdea": "Fünf Flaggen-Bälle drehen sich zum Ausgang.",
       "imageText": "",
-      "audioCue": "wären die Großmächte nie beigetreten",
-      "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"wären die Großmächte nie beigetreten\".",
+      "audioCue": "hätten die großen Länder nicht mitgemacht",
+      "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"hätten die großen Länder nicht mitgemacht\".",
       "imageStatus": "missing",
       "assetVerification": null
     }

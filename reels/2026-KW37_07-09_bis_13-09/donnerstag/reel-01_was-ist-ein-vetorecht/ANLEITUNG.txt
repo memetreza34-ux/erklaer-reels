@@ -98,17 +98,20 @@ am Ende.
 WIE DAS SCRIPT AUFGEBAUT IST
 ------------------------------------------------------------
 Szene 1-2  HOOK        Alltagsbeispiel statt Definition: zehn Freunde,
-                       eine Pizza, einer blockiert. Das Prinzip ist in
-                       fuenf Sekunden verstanden.
-Szene 3    EINLEITUNG  Uebertragung vom Beispiel auf die echte Welt.
-                       Gleiche Regel, viel hoeherer Einsatz.
+                       eine Pizza, einer blockiert.
+Szene 3    EINLEITUNG  Uebertragung auf die echte Welt. Gleiche Regel,
+                       viel hoeherer Einsatz.
 Szene 4-7  HAUPTTEIL   Wer entscheidet, die normale Regel, der Bruch,
                        die Zahl und die Ausnahme.
 Szene 8-9  SCHLUSS     Warum es das gibt, warum es bleibt - und zurueck
                        zum Bild vom Anfang.
 
 Der staerkste Moment ist Szene 6: Szene 5 baut die Erwartung "normale
-Mehrheit" auf, Szene 6 zerstoert sie. Deshalb drei Bildphasen dort.
+Mehrheit" auf, Szene 6 zerstoert sie.
+
+Sprache: bewusst gesprochenes Deutsch fuer Jugendliche. Keine Konjunktive,
+kein Amtsdeutsch. "Damit etwas durchgeht" statt "fuer einen Beschluss",
+"wer einfach nichts sagt" statt "wer sich enthaelt".
 
 
 HINWEISE

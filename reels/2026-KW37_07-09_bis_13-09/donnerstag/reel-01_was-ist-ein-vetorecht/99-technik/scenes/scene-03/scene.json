@@ -2,7 +2,7 @@
   "sceneId": "scene-03",
   "order": 3,
   "title": "Einleitung: Die Übertragung",
-  "narration": "Genau so läuft es im Sicherheitsrat der Vereinten Nationen. Nur geht es dort nicht um Pizza, sondern um Krieg und Frieden.",
+  "narration": "Genau so läuft es im Sicherheitsrat der UNO. Nur geht es dort nicht um Pizza, sondern um Krieg und Frieden.",
   "imageText": "SICHERHEITSRAT",
   "visualIdea": "Von der Pizza zum Sicherheitsrat - der Einsatz wird ernst.",
   "continuityNotes": "Gleiche Bildwelt. Gebaeude bleibt stark vereinfacht und grafisch.",
@@ -29,7 +29,7 @@
     {
       "phaseId": "scene-03-image-02",
       "order": 2,
-      "startPercent": 0.619048,
+      "startPercent": 0.6,
       "promptFileName": "image-prompt-02.txt",
       "expectedImageFileName": "scene-03-2.png",
       "visualIdea": "Die Pizza wird durch eine Weltkugel ersetzt.",

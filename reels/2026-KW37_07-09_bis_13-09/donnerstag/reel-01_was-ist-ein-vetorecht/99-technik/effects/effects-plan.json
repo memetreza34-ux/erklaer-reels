@@ -75,7 +75,7 @@
           "type": "click",
           "targetId": "scene-02-image-02",
           "audioCue": "Das ist ein Veto",
-          "atPercent": 0.789474,
+          "atPercent": 0.764706,
           "visualEvent": "Interner Bildwechsel bei \"Das ist ein Veto\"",
           "reason": "Kurzer Informationsakzent; wird nach dem echten Voice-over am Bild-Cue synchronisiert.",
           "volume": 0.2
@@ -111,7 +111,7 @@
           "type": "pop",
           "targetId": "scene-03-image-02",
           "audioCue": "nicht um Pizza, sondern um Krieg und Frieden",
-          "atPercent": 0.619048,
+          "atPercent": 0.6,
           "visualEvent": "Interner Bildwechsel bei \"nicht um Pizza, sondern um Krieg und Frieden\"",
           "reason": "Kurzer Informationsakzent; wird nach dem echten Voice-over am Bild-Cue synchronisiert.",
           "volume": 0.2
@@ -146,9 +146,9 @@
         {
           "type": "tick",
           "targetId": "scene-04-image-02",
-          "audioCue": "Fünf davon dauerhaft",
-          "atPercent": 0.222222,
-          "visualEvent": "Interner Bildwechsel bei \"Fünf davon dauerhaft\"",
+          "audioCue": "Fünf sind immer dabei",
+          "atPercent": 0.2,
+          "visualEvent": "Interner Bildwechsel bei \"Fünf sind immer dabei\"",
           "reason": "Kurzer Informationsakzent; wird nach dem echten Voice-over am Bild-Cue synchronisiert.",
           "volume": 0.2
         }
@@ -218,18 +218,18 @@
         {
           "type": "pop",
           "targetId": "scene-06-image-02",
-          "audioCue": "Sagt eines dieser fünf Länder Nein",
-          "atPercent": 0.210526,
-          "visualEvent": "Interner Bildwechsel bei \"Sagt eines dieser fünf Länder Nein\"",
+          "audioCue": "wenn eines dieser fünf Länder Nein sagt",
+          "atPercent": 0.25,
+          "visualEvent": "Interner Bildwechsel bei \"wenn eines dieser fünf Länder Nein sagt\"",
           "reason": "Kurzer Informationsakzent; wird nach dem echten Voice-over am Bild-Cue synchronisiert.",
           "volume": 0.2
         },
         {
           "type": "soft-swipe",
           "targetId": "scene-06-image-03",
-          "audioCue": "Egal ob vierzehn dafür sind",
-          "atPercent": 0.736842,
-          "visualEvent": "Interner Bildwechsel bei \"Egal ob vierzehn dafür sind\"",
+          "audioCue": "Auch wenn vierzehn dafür sind",
+          "atPercent": 0.75,
+          "visualEvent": "Interner Bildwechsel bei \"Auch wenn vierzehn dafür sind\"",
           "reason": "Leiser Akzent exakt am internen Bildmoment.",
           "file": "sfx/soft-swipe.mp3",
           "volume": 0.2
@@ -264,18 +264,18 @@
         {
           "type": "tick",
           "targetId": "scene-07-image-02",
-          "audioCue": "Nur wer sich enthält",
-          "atPercent": 0.421053,
-          "visualEvent": "Interner Bildwechsel bei \"Nur wer sich enthält\"",
+          "audioCue": "Wer einfach nichts sagt",
+          "atPercent": 0.380952,
+          "visualEvent": "Interner Bildwechsel bei \"Wer einfach nichts sagt\"",
           "reason": "Kurzer Informationsakzent; wird nach dem echten Voice-over am Bild-Cue synchronisiert.",
           "volume": 0.2
         },
         {
           "type": "click",
           "targetId": "scene-07-image-03",
-          "audioCue": "Es braucht ein ausgesprochenes Nein",
-          "atPercent": 0.736842,
-          "visualEvent": "Interner Bildwechsel bei \"Es braucht ein ausgesprochenes Nein\"",
+          "audioCue": "Man muss das Nein wirklich aussprechen",
+          "atPercent": 0.714286,
+          "visualEvent": "Interner Bildwechsel bei \"Man muss das Nein wirklich aussprechen\"",
           "reason": "Leiser Akzent exakt am internen Bildmoment.",
           "file": "sfx/click.mp3",
           "volume": 0.2
@@ -310,9 +310,9 @@
         {
           "type": "click",
           "targetId": "scene-08-image-02",
-          "audioCue": "wären die Großmächte nie beigetreten",
-          "atPercent": 0.705882,
-          "visualEvent": "Interner Bildwechsel bei \"wären die Großmächte nie beigetreten\"",
+          "audioCue": "hätten die großen Länder nicht mitgemacht",
+          "atPercent": 0.666667,
+          "visualEvent": "Interner Bildwechsel bei \"hätten die großen Länder nicht mitgemacht\"",
           "reason": "Kurzer Informationsakzent; wird nach dem echten Voice-over am Bild-Cue synchronisiert.",
           "volume": 0.2
         }
@@ -347,7 +347,7 @@
           "type": "pop",
           "targetId": "scene-09-image-02",
           "audioCue": "Es ist wie mit der Pizza",
-          "atPercent": 0.5,
+          "atPercent": 0.538462,
           "visualEvent": "Interner Bildwechsel bei \"Es ist wie mit der Pizza\"",
           "reason": "Kurzer Informationsakzent; wird nach dem echten Voice-over am Bild-Cue synchronisiert.",
           "volume": 0.2
