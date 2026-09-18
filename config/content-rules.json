@@ -165,7 +165,17 @@
       ],
       "guidance": "Szenentitel tragen ihren Strukturteil als Präfix, damit die Gliederung sichtbar bleibt."
     },
-    "minimumDurationGuidance": "Ein Reel ist nie kuerzer als eine Minute. Gemessen wird das fertige Voice-over bei 1,10x. Kuerzer reicht fuer eine saubere Erklaerung mit Hook, Einleitung, Hauptteil und Schluss nicht aus."
+    "minimumDurationGuidance": "Ein Reel ist nie kuerzer als eine Minute. Gemessen wird das fertige Voice-over bei 1,10x. Kuerzer reicht fuer eine saubere Erklaerung mit Hook, Einleitung, Hauptteil und Schluss nicht aus.",
+    "coverImage": {
+      "isFirstScene": true,
+      "headlineMustNameTopic": true,
+      "derivedFromReelTitle": true,
+      "headlineWords": {
+        "min": 2,
+        "max": 5
+      },
+      "guidance": "Bild 01 ist zugleich das Cover und der erste Frame im Feed. Es muss ohne Ton sagen, worum es geht, und traegt deshalb das Thema als Headline - abgeleitet aus dem Reel-Titel, nicht eine Zwischenaussage aus dem Hook. Beispiel: Titel \"Was ist ein Vetorecht?\" -> Headline \"WAS IST EIN VETORECHT?\"."
+    }
   },
   "visualRules": {
     "minimumSceneCount": 8,

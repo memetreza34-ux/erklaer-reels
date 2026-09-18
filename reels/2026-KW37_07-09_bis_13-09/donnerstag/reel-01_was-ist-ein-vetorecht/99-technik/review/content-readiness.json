@@ -1,11 +1,11 @@
 {
-  "createdAt": "2026-09-18T10:16:33.360Z",
+  "createdAt": "2026-09-18T10:18:41.389Z",
   "passed": true,
   "summary": {
-    "passedChecks": 457,
+    "passedChecks": 458,
     "failedChecks": 0,
     "warnings": 1,
-    "totalChecks": 458
+    "totalChecks": 459
   },
   "metadata": {
     "totalDuration": 67,
@@ -2726,6 +2726,12 @@
       "passed": true,
       "level": "error",
       "message": "scenes/scene-01/scene.json benötigt einen imageText als sichtbaren Hook."
+    },
+    {
+      "id": "title-image-is-cover",
+      "passed": true,
+      "level": "error",
+      "message": "Das Titelbild ist zugleich das Cover und muss das Thema benennen. \"WAS IST EIN VETORECHT?\" passt nicht zum Reel-Titel \"Was ist ein Vetorecht?\". Vorschlag: \"WAS IST EIN VETORECHT?\"."
     },
     {
       "id": "title-image-text-in-prompt",

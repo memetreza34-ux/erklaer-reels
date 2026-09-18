@@ -121,6 +121,19 @@ drei häufigsten Fehler.
 Beispiel muss aus dem Thema selbst kommen, nicht aus einer fremden Welt — für
 das Vetorecht also ein Krisenfall im Sicherheitsrat, keine Pizzabestellung.
 
+**Bild 01 ist immer das Cover.** Es ist der erste Frame im Feed und muss ohne Ton
+sagen, worum es geht. Seine Headline benennt deshalb das Thema und wird aus dem
+Reel-Titel abgeleitet — nicht eine Zwischenaussage aus dem Hook:
+
+```text
+Titel "Was ist ein Vetorecht?"  ->  Headline "WAS IST EIN VETORECHT?"
+Titel "Warum haben Länder Grenzen?"  ->  "WARUM HABEN LÄNDER GRENZEN?"
+```
+
+`deriveCoverHeadline()` schlägt die Headline vor, `coverHeadlineMatchesTopic()` prüft
+sie. Eine Headline ohne Themenbezug ist ein Hard Blocker. Die Bilder danach dürfen
+freie Zwischenaussagen tragen — Bild 02 löst den Hook auf.
+
 **Bewährte Hook-Formen:**
 
 | Form | Muster |

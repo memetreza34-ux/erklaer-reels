@@ -26,11 +26,18 @@ durch die Mehrheit. Das ist Absicht: Das Schlussbild greift den Anfang
 wieder auf, damit das Reel sauber loopt. Nur der Text unterscheidet sich.
 
 
+HINWEIS ZUM COVER
+--------------------------------------------------------------
+Bild 01 ist zugleich das Cover - der erste Frame im Feed. Es traegt
+deshalb die Themenfrage, nicht eine Zwischenaussage. Bild 02 loest
+den Hook dann auf ("STIMMT NICHT").
+
+
 3) WAS WELCHES BILD ZEIGT
 --------------------------------------------------------------
   scene-01  (5.5s)  Hook: Der Irrtum
-    Bild 01.png   Viele grüne Bälle gegen wenige rote, die Mehrheit wirkt klar überlegen.
-                  Text im Bild: ENTSCHEIDET DIE MEHRHEIT?
+    Bild 01.png   Titelbild und Cover: die Mehrheit gegen den einen
+                Text im Bild: WAS IST EIN VETORECHT?
     Bild 02.png   Ein dicker roter Strich fährt durch die Mehrheit.
                   Text im Bild: STIMMT NICHT
 

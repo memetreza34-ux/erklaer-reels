@@ -68,3 +68,73 @@ export function inspectReelHook({ narration = '', imageText = '' } = {}) {
 
   return { passed: issues.length === 0, issues, wordCount: count };
 }
+
+/**
+ * Leitet die Headline des Titelbilds aus dem Reel-Titel ab.
+ *
+ * Bild 01 ist zugleich das Cover: Es ist der erste Frame im Feed und muss ohne Ton
+ * sagen, worum es geht. Deshalb traegt es das Thema, nicht eine Zwischenaussage aus
+ * dem Hook.
+ *
+ * @param {string} title Reel-Titel, z. B. "Was ist ein Vetorecht?"
+ * @returns {string} Headline in Grossbuchstaben, z. B. "WAS IST EIN VETORECHT?"
+ */
+export function deriveCoverHeadline(title) {
+  const text = String(title ?? '').trim();
+  if (!text) return '';
+
+  const frage = text.endsWith('?');
+  const woerter = words(text);
+  if (woerter.length === 0) return '';
+
+  // Bis zu fuenf Woerter passen als Headline; laengere Titel werden auf den Kern gekuerzt.
+  if (woerter.length <= 5) {
+    return (woerter.join(' ') + (frage ? '?' : '')).toLocaleUpperCase('de-DE');
+  }
+
+  const fuellwoerter = new Set(['der', 'die', 'das', 'den', 'dem', 'des', 'ein', 'eine', 'einen',
+    'einem', 'einer', 'und', 'oder', 'so', 'auch', 'noch', 'nur', 'im', 'in', 'am', 'an', 'zu',
+    'von', 'mit', 'fuer', 'für', 'bei', 'aus', 'wir', 'du', 'man', 'sie', 'es', 'sich',
+    'haben', 'hat', 'ist', 'sind', 'wird', 'werden', 'kann', 'können']);
+  const kern = woerter.filter((wort) => !fuellwoerter.has(wort.toLocaleLowerCase('de-DE')));
+  if (kern.length <= 5) {
+    return (kern.join(' ') + (frage ? '?' : '')).toLocaleUpperCase('de-DE');
+  }
+
+  // Im Deutschen steht das inhaltstragende Wort oft am Satzende ("… zwei HAUPTSTÄDTE?").
+  // Ein simples Abschneiden nach vorn würde genau dieses Wort verlieren. Deshalb: Fragewort
+  // behalten und aus dem Rest die längsten Wörter wählen, danach wieder in Satzreihenfolge.
+  const [erstes, ...rest] = kern;
+  const behalten = new Set(
+    [...rest].sort((links, rechts) => rechts.length - links.length).slice(0, 4)
+  );
+  const auswahl = [erstes, ...rest.filter((wort) => behalten.has(wort))];
+  return (auswahl.join(' ') + (frage ? '?' : '')).toLocaleUpperCase('de-DE');
+}
+
+/**
+ * Prüft, ob die Cover-Headline das Thema des Reels benennt.
+ * Verlangt keine wörtliche Gleichheit, aber ein gemeinsames inhaltstragendes Wort.
+ *
+ * @param {string} title
+ * @param {string} coverHeadline
+ * @returns {boolean}
+ */
+export function coverHeadlineMatchesTopic(title, coverHeadline) {
+  const normalisieren = (value) => words(value)
+    .map((wort) => wort.toLocaleLowerCase('de-DE')
+      .replaceAll('ä', 'ae').replaceAll('ö', 'oe').replaceAll('ü', 'ue').replaceAll('ß', 'ss'))
+    .filter((wort) => wort.length > 3);
+
+  const ausTitel = normalisieren(title);
+  const ausHeadline = new Set(normalisieren(coverHeadline));
+  if (ausTitel.length === 0) return true;
+
+  return ausTitel.some((wort) => {
+    for (const kandidat of ausHeadline) {
+      const [kurz, lang] = wort.length <= kandidat.length ? [wort, kandidat] : [kandidat, wort];
+      if (lang.startsWith(kurz)) return true;
+    }
+    return false;
+  });
+}

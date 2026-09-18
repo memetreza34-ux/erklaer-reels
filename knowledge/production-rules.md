@@ -17,6 +17,7 @@ Fragezeichen, zum Beispiel "Was ist ein Vetorecht?". Danach: Einleitung, Hauptte
 - Beispiel aus dem Thema selbst, nie eine fremde Alltagsanalogie
 - eine Szene baut eine Erwartung auf, die nächste bricht sie
 - das Schlussbild greift das Anfangsbild wieder auf (Loop)
+- Bild 01 ist zugleich das Cover und trägt das Thema als Headline
 - 170–200 Wörter
 - 60–72 s finales Voice-over
 - einfache erwachsene Sprache

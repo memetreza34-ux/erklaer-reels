@@ -1,7 +1,7 @@
 import { access, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { FIXED_VISUAL_STYLE_ID } from '../shared/fixed-visual-world.js';
-import { inspectReelHook } from '../shared/reel-hook-quality.js';
+import { inspectReelHook, coverHeadlineMatchesTopic, deriveCoverHeadline } from '../shared/reel-hook-quality.js';
 import { findNarrationCueStartPercent } from '../shared/image-phase-cue.js';
 
 import { inspectSourcesMarkdown } from './source-quality.js';
@@ -409,6 +409,12 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
     `scenes/${titleSceneId}/image-prompt.txt fehlt oder ist nicht detailliert genug. Szene 1 ist zugleich das Titelbild.`);
   addCheck(checks, 'title-image-text', headline.length >= 5,
     `scenes/${titleSceneId}/scene.json benötigt einen imageText als sichtbaren Hook.`);
+
+  // Bild 01 ist zugleich das Cover: der erste Frame im Feed. Er muss ohne Ton sagen,
+  // worum es geht, und trägt deshalb das Thema - nicht eine Zwischenaussage aus dem Hook.
+  addCheck(checks, 'title-image-is-cover', !headline || coverHeadlineMatchesTopic(reel.title, headline),
+    `Das Titelbild ist zugleich das Cover und muss das Thema benennen. ` +
+    `"${headline}" passt nicht zum Reel-Titel "${reel.title}". Vorschlag: "${deriveCoverHeadline(reel.title)}".`);
   addCheck(checks, 'title-image-text-in-prompt', !headline || titlePrompt.toUpperCase().includes(headline.toUpperCase()),
     'Der Hook-Text von Szene 1 steht nicht exakt im Bildprompt.', 'warning');
   addCheck(checks, 'title-image-visual-idea', String(titleScene.visualIdea ?? '').trim().length >= 20,
