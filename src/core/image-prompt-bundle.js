@@ -4,7 +4,8 @@ import path from 'node:path';
 import {
   FIXED_VISUAL_STYLE_ID,
   FIXED_VISUAL_WORLD_LABEL,
-  FIXED_VISUAL_WORLD_PROMPT
+  FIXED_VISUAL_WORLD_PROMPT,
+  FIXED_VISUAL_WORLD_COMPACT_PROMPT
 } from '../shared/fixed-visual-world.js';
 import { flattenSceneImagePhases } from '../shared/visual-moments.js';
 
@@ -112,11 +113,20 @@ function visibleTextRule(entry) {
   return 'Visible text rule for this image: no readable text anywhere in the image. No English, pseudo-text, labels, logos or watermark.';
 }
 
+/**
+ * Baut den Prompt fuer ein einzelnes Bild.
+ *
+ * Hier steht bewusst der kompakte World-Lock, nicht der vollstaendige: Der volle Block
+ * wiederholte sich sonst vor jedem der rund zwanzig Bilder und machte vier Fuenftel der
+ * Sammeldatei aus - das eigentliche Bildmotiv ging darin unter. Der kompakte Block
+ * enthaelt alle harten Regeln, die auf das einzelne Bild wirken; die Reel-uebergreifenden
+ * Planungsregeln stehen vollstaendig einmal am Kopf der Datei.
+ */
 function formatStyledGenerationPrompt(entry) {
   const specificPrompt = entry.prompt || '[BILDPROMPT FEHLT]';
   return [
     'FIXED VISUAL STYLE FOR THIS IMAGE — MANDATORY:',
-    FIXED_VISUAL_WORLD_PROMPT,
+    FIXED_VISUAL_WORLD_COMPACT_PROMPT,
     'If the specific image content below contains style wording that conflicts with this fixed visual world, ignore only the conflicting style wording. Preserve its factual subject, composition, action and requested German text.',
     visibleTextRule(entry),
     '',

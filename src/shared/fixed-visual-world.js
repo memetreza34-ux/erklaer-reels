@@ -20,6 +20,32 @@ export const FIXED_VISUAL_ASPECT_RATIO = REEL_WORLD.aspectRatio;
 
 export const FIXED_VISUAL_STYLE_REASON = 'Globale feste Bildwelt für alle neuen Erklär-Reels: seriöse, cleane, minimalistische 2D-Countryball-Bildsprache mit starken schwarzen Konturen, einfachen Farbfeldern, kurzen deutschen Headlines und wenigen passenden Requisiten. Die alte Modern-Countryball-Explainer-Welt ist für neue Reels ersetzt.';
 
+/**
+ * Kompakter World-Lock, der vor JEDEN einzelnen Bildprompt gesetzt wird.
+ *
+ * Google Flow arbeitet seriell: Jeder Prompt wird einzeln kopiert, deshalb muss die
+ * Bildwelt in jedem Prompt stehen. Der vollstaendige FIXED_VISUAL_WORLD_PROMPT ist dafuer
+ * aber zu lang - bei 24 Bildern standen 120.000 Zeichen Stilanweisung gegen 9.000 Zeichen
+ * Motiv, sodass das eigentliche Bildmotiv untergeht.
+ *
+ * Dieser Block enthaelt alles, was auf das EINZELNE Bild wirkt: Format, Rendering,
+ * Figurenlogik, Textregeln und saemtliche harten Verbote. Weggelassen sind nur die
+ * Reel-uebergreifenden Planungsregeln (Kompositionsrotation ueber mehrere Bilder,
+ * World-Lock-Anweisung vor Bild 01, Selbstpruefung am Ende) - die stehen weiterhin
+ * vollstaendig einmal am Kopf der Sammeldatei.
+ */
+export const FIXED_VISUAL_WORLD_COMPACT_PROMPT = [
+  'Vertical 9:16 educational explainer image in the fixed Reel visual world Serious Minimal Countryball Explainer.',
+  'Clean serious minimal flat 2D illustration with thick clean black outlines, simple readable shapes, controlled flat colours, very light graphic shading and low-to-medium detail.',
+  'Background is a solid or muted colour field, a subtle gradient or light paper grain. At most one simple contextual structure when it genuinely helps. Never a detailed realistic room.',
+  'If an actor is useful, use a large perfectly round countryball-like character with simple white eyes and a restrained black-line expression. No separate human head, neck, hair or face. A character is optional when an object or symbol is clearer.',
+  'Use flag patterns only when geography, politics, nationality or cultural identity actually matters. Otherwise use neutral solid-colour balls.',
+  'One dominant focal idea per image, readable within about one second on a phone screen. Do not fill space decoratively.',
+  'Visible text is German only and must be spelled exactly as given. Bold high-contrast sans-serif or condensed treatment, white or black with a strong opposite outline, clearly separated from the main subject. If no text is requested, include no readable text at all and never invent pseudo-writing, English labels, logos or watermarks.',
+  'STRICTLY FORBIDDEN: normal illustrated humans, humanoid cartoon people, stick figures, photorealism, realistic people, realistic hands or skin, realistic interiors, cinematic photo lighting, photo backgrounds, mixed photo-plus-cartoon media, anime, manga, clay, glossy 3D, Pixar-like rendering, stock-photo aesthetics, painterly concept art, detailed medical 3D anatomy, busy icon collages, floating UI boards, random tiny decorative countryballs, and 16:9 composition.',
+  'Do not borrow the separate YouTube visual world. Reels stay 9:16 Serious Minimal Countryball Explainer.'
+].join(' ');
+
 export const FIXED_VISUAL_WORLD_PROMPT = [
   'Create a vertical 9:16 educational explainer image in exactly ONE fixed Reel visual world called Serious Minimal Countryball Explainer.',
   'PROJECT WORLD LOCK: lock this exact visual world before Image 01 and keep it for the complete Reel. Individual prompts may change the topic, props, symbols, background colour and composition, but must never change the core art direction.',
