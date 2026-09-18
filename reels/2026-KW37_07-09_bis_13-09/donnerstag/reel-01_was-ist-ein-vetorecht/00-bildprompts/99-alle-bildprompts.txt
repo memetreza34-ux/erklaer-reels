@@ -84,7 +84,7 @@ If the specific image content below contains style wording that conflicts with t
 Visible text rule for this image: the ONLY readable text allowed is exactly the German phrase "ENTSCHEIDET DIE MEHRHEIT?". Place it as a bold headline across the upper area of the image, clearly separated from the illustration below, large enough to read on a small phone screen. Keep the spelling exact. No other readable text and no English visible text.
 
 SPECIFIC IMAGE CONTENT:
-Serious Minimal Countryball Explainer world. Vertical 9:16 smartphone-first composition. Clean flat 2D illustration, thick clean black outlines, controlled flat colours, very light graphic shading, low-to-medium detail. Solid or softly textured colour-field background. No realistic people, no realistic hands or skin, no photographic lighting, no 3D, no anime, no clay. A large group of about fourteen small green countryballs filling the left two thirds of the frame and one single deep-red countryball alone on the right, all simple white eyes and calm expressions. The green group visually dominates. German headline text reading exactly ENTSCHEIDET DIE MEHRHEIT? in bold condensed white sans-serif with thick black outline in the upper third. Deep navy background.
+Serious Minimal Countryball Explainer, vertical 9:16. Flat 2D, flat colours, simple colour-field background. A large group of about fourteen small green countryballs filling the left two thirds of the frame and one single deep-red countryball alone on the right, all simple white eyes and calm expressions. The green group visually dominates. German text ENTSCHEIDET DIE MEHRHEIT? in bold type, upper third. Deep navy background.
 
 BILD 02 – SZENE 1 – BILDPHASE 2
 DATEINAME NACH FERTIGSTELLUNG: Bild 02.png
@@ -96,7 +96,7 @@ If the specific image content below contains style wording that conflicts with t
 Visible text rule for this image: the ONLY readable text allowed is exactly the German phrase "STIMMT NICHT". Integrate it cleanly into the composition without covering the main subject. Keep the spelling exact. No other readable text and no English visible text.
 
 SPECIFIC IMAGE CONTENT:
-Serious Minimal Countryball Explainer world. Vertical 9:16 smartphone-first composition. Clean flat 2D illustration, thick clean black outlines, controlled flat colours, very light graphic shading, low-to-medium detail. Solid or softly textured colour-field background. No realistic people, no realistic hands or skin, no photographic lighting, no 3D, no anime, no clay. The same arrangement of fourteen green countryballs and one deep-red one, but now a single thick bold red diagonal line is struck straight through the green group, cancelling it, while the red countryball stays untouched and clean. German text reading exactly STIMMT NICHT in large bold condensed white lettering with black outline in the upper third. Deep navy background.
+Serious Minimal Countryball Explainer, vertical 9:16. Flat 2D, flat colours, simple colour-field background. The same arrangement of fourteen green countryballs and one deep-red one, but now a single thick bold red diagonal line is struck straight through the green group, cancelling it, while the red countryball stays untouched and clean. German text reading exactly STIMMT NICHT in large bold condensed white lettering with black outline in the upper third. Deep navy background.
 
 BILD 03 – SZENE 2
 DATEINAME NACH FERTIGSTELLUNG: Bild 03.png
@@ -108,7 +108,7 @@ If the specific image content below contains style wording that conflicts with t
 Visible text rule for this image: no readable text anywhere in the image. No English, pseudo-text, labels, logos or watermark.
 
 SPECIFIC IMAGE CONTENT:
-Serious Minimal Countryball Explainer world. Vertical 9:16 smartphone-first composition. Clean flat 2D illustration, thick clean black outlines, controlled flat colours, very light graphic shading, low-to-medium detail. Solid or softly textured colour-field background. No realistic people, no realistic hands or skin, no photographic lighting, no 3D, no anime, no clay. One simple flat globe shape with a plain continent silhouette and one bold red warning marker pulsing on one region, plus two small simple smoke shapes rising from it. No text, no characters. Thick black outlines, muted background, single clear idea: a crisis somewhere in the world. Include no readable text anywhere in the image.
+Serious Minimal Countryball Explainer, vertical 9:16. Flat 2D, flat colours, simple colour-field background. One flat globe with a plain continent silhouette and one bold red warning marker pulsing on one region, plus two small smoke shapes rising from it. No text. Thick black outlines, muted background, single clear idea: a crisis somewhere in the world. Include no readable text anywhere in the image.
 
 BILD 04 – SZENE 2 – BILDPHASE 2
 DATEINAME NACH FERTIGSTELLUNG: Bild 04.png
@@ -120,7 +120,7 @@ If the specific image content below contains style wording that conflicts with t
 Visible text rule for this image: no readable text anywhere in the image. No English, pseudo-text, labels, logos or watermark.
 
 SPECIFIC IMAGE CONTENT:
-Serious Minimal Countryball Explainer world. Vertical 9:16 smartphone-first composition. Clean flat 2D illustration, thick clean black outlines, controlled flat colours, very light graphic shading, low-to-medium detail. Solid or softly textured colour-field background. No realistic people, no realistic hands or skin, no photographic lighting, no 3D, no anime, no clay. Fourteen small green countryballs with small arms raised in agreement arranged around a simple dark round table, and one deep-red countryball at the front with its arm firmly raised in a different, blocking gesture. No text. Thick black outlines, flat controlled colours, slight top-down angle. Include no readable text anywhere in the image.
+Serious Minimal Countryball Explainer, vertical 9:16. Flat 2D, flat colours, simple colour-field background. Fourteen small green countryballs with small arms raised in agreement arranged around a simple dark round table, and one deep-red countryball at the front with its arm firmly raised in a different, blocking gesture. No text. Thick black outlines, slight top-down angle. Include no readable text anywhere in the image.
 
 BILD 05 – SZENE 2 – BILDPHASE 3
 DATEINAME NACH FERTIGSTELLUNG: Bild 05.png
@@ -132,7 +132,7 @@ If the specific image content below contains style wording that conflicts with t
 Visible text rule for this image: the ONLY readable text allowed is exactly the German phrase "NICHTS PASSIERT". Integrate it cleanly into the composition without covering the main subject. Keep the spelling exact. No other readable text and no English visible text.
 
 SPECIFIC IMAGE CONTENT:
-Serious Minimal Countryball Explainer world. Vertical 9:16 smartphone-first composition. Clean flat 2D illustration, thick clean black outlines, controlled flat colours, very light graphic shading, low-to-medium detail. Solid or softly textured colour-field background. No realistic people, no realistic hands or skin, no photographic lighting, no 3D, no anime, no clay. The same globe shape with the same red warning marker still burning, now with a simple flat closed barrier or gate shape standing in front of it, blocking access. German text reading exactly NICHTS PASSIERT in bold condensed white lettering with black outline in the upper third. Muted background.
+Serious Minimal Countryball Explainer, vertical 9:16. Flat 2D, flat colours, simple colour-field background. The same globe with the same red warning marker still burning, now with a flat closed barrier or gate standing in front of it, blocking access. German text NICHTS PASSIERT in bold type, upper third. Muted background.
 
 BILD 06 – SZENE 3
 DATEINAME NACH FERTIGSTELLUNG: Bild 06.png
@@ -144,7 +144,7 @@ If the specific image content below contains style wording that conflicts with t
 Visible text rule for this image: the ONLY readable text allowed is exactly the German phrase "VETO". Integrate it cleanly into the composition without covering the main subject. Keep the spelling exact. No other readable text and no English visible text.
 
 SPECIFIC IMAGE CONTENT:
-Serious Minimal Countryball Explainer world. Vertical 9:16 smartphone-first composition. Clean flat 2D illustration, thick clean black outlines, controlled flat colours, very light graphic shading, low-to-medium detail. Solid or softly textured colour-field background. No realistic people, no realistic hands or skin, no photographic lighting, no 3D, no anime, no clay. One simple flat rubber stamp shape pressing down onto a plain document shape and leaving a bold red imprint reading exactly VETO in strong condensed lettering. No characters. Thick black outlines, single dominant object, clean negative space around it.
+Serious Minimal Countryball Explainer, vertical 9:16. Flat 2D, flat colours, simple colour-field background. One flat rubber stamp pressing down onto a plain document shape and leaving a bold red imprint reading exactly VETO in strong condensed lettering. No characters. Thick black outlines, single dominant object, clean negative space around it.
 
 BILD 07 – SZENE 3 – BILDPHASE 2
 DATEINAME NACH FERTIGSTELLUNG: Bild 07.png
@@ -156,7 +156,7 @@ If the specific image content below contains style wording that conflicts with t
 Visible text rule for this image: no readable text anywhere in the image. No English, pseudo-text, labels, logos or watermark.
 
 SPECIFIC IMAGE CONTENT:
-Serious Minimal Countryball Explainer world. Vertical 9:16 smartphone-first composition. Clean flat 2D illustration, thick clean black outlines, controlled flat colours, very light graphic shading, low-to-medium detail. Solid or softly textured colour-field background. No realistic people, no realistic hands or skin, no photographic lighting, no 3D, no anime, no clay. Fourteen small empty speech bubbles clustered on the left and one single deep-red speech bubble on the right that is far larger than all of them together, visually outweighing the group. No characters, no text inside the bubbles. Thick black outlines, flat controlled colours, plain background. Include no readable text anywhere in the image.
+Serious Minimal Countryball Explainer, vertical 9:16. Flat 2D, flat colours, simple colour-field background. Fourteen small empty speech bubbles clustered on the left and one single deep-red speech bubble on the right that is far larger than all of them together, visually outweighing the group. No characters, no text inside the bubbles. Thick black outlines, plain background. Include no readable text anywhere in the image.
 
 BILD 08 – SZENE 4
 DATEINAME NACH FERTIGSTELLUNG: Bild 08.png
@@ -168,7 +168,7 @@ If the specific image content below contains style wording that conflicts with t
 Visible text rule for this image: the ONLY readable text allowed is exactly the German phrase "15 LÄNDER". Integrate it cleanly into the composition without covering the main subject. Keep the spelling exact. No other readable text and no English visible text.
 
 SPECIFIC IMAGE CONTENT:
-Serious Minimal Countryball Explainer world. Vertical 9:16 smartphone-first composition. Clean flat 2D illustration, thick clean black outlines, controlled flat colours, very light graphic shading, low-to-medium detail. Solid or softly textured colour-field background. No realistic people, no realistic hands or skin, no photographic lighting, no 3D, no anime, no clay. Fifteen small identical neutral grey-blue countryballs evenly arranged around one simple dark round table, seen from a slight top-down angle, thick black outlines. German text reading exactly 15 LÄNDER in bold condensed white sans-serif with black outline in the upper third. Plain muted background.
+Serious Minimal Countryball Explainer, vertical 9:16. Flat 2D, flat colours, simple colour-field background. Fifteen small identical neutral grey-blue countryballs evenly arranged around one dark round table, seen from a slight top-down angle. German text reading exactly 15 LÄNDER in bold condensed white sans-serif with black outline in the upper third. Plain muted background.
 
 BILD 09 – SZENE 4 – BILDPHASE 2
 DATEINAME NACH FERTIGSTELLUNG: Bild 09.png
@@ -180,7 +180,7 @@ If the specific image content below contains style wording that conflicts with t
 Visible text rule for this image: no readable text anywhere in the image. No English, pseudo-text, labels, logos or watermark.
 
 SPECIFIC IMAGE CONTENT:
-Serious Minimal Countryball Explainer world. Vertical 9:16 smartphone-first composition. Clean flat 2D illustration, thick clean black outlines, controlled flat colours, very light graphic shading, low-to-medium detail. Solid or softly textured colour-field background. No realistic people, no realistic hands or skin, no photographic lighting, no 3D, no anime, no clay. The same round table, but ten countryballs are drawn in a faded lighter tone with one simple circular rotation arrow curving around them, while five countryballs stay in full solid colour and sit on small fixed stone pedestals. No text. Flat 2D, thick black outlines. Include no readable text anywhere in the image.
+Serious Minimal Countryball Explainer, vertical 9:16. Flat 2D, flat colours, simple colour-field background. The same round table, but ten countryballs are drawn in a faded lighter tone with one circular rotation arrow curving around them, while five countryballs stay in full solid colour and sit on small fixed stone pedestals. No text. Flat 2D. Include no readable text anywhere in the image.
 
 BILD 10 – SZENE 5
 DATEINAME NACH FERTIGSTELLUNG: Bild 10.png
@@ -192,7 +192,7 @@ If the specific image content below contains style wording that conflicts with t
 Visible text rule for this image: the ONLY readable text allowed is exactly the German phrase "DIE STÄNDIGEN FÜNF". Integrate it cleanly into the composition without covering the main subject. Keep the spelling exact. No other readable text and no English visible text.
 
 SPECIFIC IMAGE CONTENT:
-Serious Minimal Countryball Explainer world. Vertical 9:16 smartphone-first composition. Clean flat 2D illustration, thick clean black outlines, controlled flat colours, very light graphic shading, low-to-medium detail. Solid or softly textured colour-field background. No realistic people, no realistic hands or skin, no photographic lighting, no 3D, no anime, no clay. Five large countryballs in one clean horizontal row, each with a simple flat flag pattern: United States stars and stripes, Russian white-blue-red bands, Chinese red with yellow stars, French blue-white-red vertical bands, British union pattern. Simple white eyes, calm expressions, thick black outlines. German text reading exactly DIE STÄNDIGEN FÜNF in the upper third, bold condensed white with black outline.
+Serious Minimal Countryball Explainer, vertical 9:16. Flat 2D, flat colours, simple colour-field background. Five large countryballs in one clean horizontal row, each with a flat flag pattern: United States stars and stripes, Russian white-blue-red bands, Chinese red with yellow stars, French blue-white-red vertical bands, British union pattern. Simple white eyes, calm expressions. German text reading exactly DIE STÄNDIGEN FÜNF in the upper third, bold condensed white with black outline.
 
 BILD 11 – SZENE 5 – BILDPHASE 2
 DATEINAME NACH FERTIGSTELLUNG: Bild 11.png
@@ -204,7 +204,7 @@ If the specific image content below contains style wording that conflicts with t
 Visible text rule for this image: the ONLY readable text allowed is exactly the German phrase "1945". Integrate it cleanly into the composition without covering the main subject. Keep the spelling exact. No other readable text and no English visible text.
 
 SPECIFIC IMAGE CONTENT:
-Serious Minimal Countryball Explainer world. Vertical 9:16 smartphone-first composition. Clean flat 2D illustration, thick clean black outlines, controlled flat colours, very light graphic shading, low-to-medium detail. Solid or softly textured colour-field background. No realistic people, no realistic hands or skin, no photographic lighting, no 3D, no anime, no clay. The same five flag-patterned countryballs standing on one solid stone-grey plinth spanning the full width, with German text reading exactly 1945 carved in large bold condensed lettering on the front of the plinth. Slight low angle, muted sepia-toned background, thick black outlines.
+Serious Minimal Countryball Explainer, vertical 9:16. Flat 2D, flat colours, simple colour-field background. The same five flag-patterned countryballs standing on one solid stone-grey plinth spanning the full width, with German text reading exactly 1945 carved in large bold condensed lettering on the front of the plinth. Slight low angle, muted sepia-toned background.
 
 BILD 12 – SZENE 6
 DATEINAME NACH FERTIGSTELLUNG: Bild 12.png
@@ -216,7 +216,7 @@ If the specific image content below contains style wording that conflicts with t
 Visible text rule for this image: the ONLY readable text allowed is exactly the German phrase "9 VON 15". Integrate it cleanly into the composition without covering the main subject. Keep the spelling exact. No other readable text and no English visible text.
 
 SPECIFIC IMAGE CONTENT:
-Serious Minimal Countryball Explainer world. Vertical 9:16 smartphone-first composition. Clean flat 2D illustration, thick clean black outlines, controlled flat colours, very light graphic shading, low-to-medium detail. Solid or softly textured colour-field background. No realistic people, no realistic hands or skin, no photographic lighting, no 3D, no anime, no clay. A clean simple grid of fifteen identical rounded squares, nine filled with a bold green check mark, six left empty with thin outlines. German text reading exactly 9 VON 15 in bold condensed dark lettering in the upper third. No characters. Flat graphic style, thick black outlines, plain light background.
+Serious Minimal Countryball Explainer, vertical 9:16. Flat 2D, flat colours, simple colour-field background. A clean simple grid of fifteen identical rounded squares, nine filled with a bold green check mark, six left empty with thin outlines. German text 9 VON 15 in bold type, upper third. No characters. Flat graphic style, plain light background.
 
 BILD 13 – SZENE 6 – BILDPHASE 2
 DATEINAME NACH FERTIGSTELLUNG: Bild 13.png
@@ -228,7 +228,7 @@ If the specific image content below contains style wording that conflicts with t
 Visible text rule for this image: no readable text anywhere in the image. No English, pseudo-text, labels, logos or watermark.
 
 SPECIFIC IMAGE CONTENT:
-Serious Minimal Countryball Explainer world. Vertical 9:16 smartphone-first composition. Clean flat 2D illustration, thick clean black outlines, controlled flat colours, very light graphic shading, low-to-medium detail. Solid or softly textured colour-field background. No realistic people, no realistic hands or skin, no photographic lighting, no 3D, no anime, no clay. One single large bold green check mark centred on a plain light background with a simple flat document shape behind it. Deliberately calm and unremarkable. No text. Thick black outlines, flat 2D. Include no readable text anywhere in the image.
+Serious Minimal Countryball Explainer, vertical 9:16. Flat 2D, flat colours, simple colour-field background. One single large bold green check mark centred on a plain light background with a flat document shape behind it. Deliberately calm and unremarkable. No text. Thick black outlines. Include no readable text anywhere in the image.
 
 BILD 14 – SZENE 7
 DATEINAME NACH FERTIGSTELLUNG: Bild 14.png
@@ -240,7 +240,7 @@ If the specific image content below contains style wording that conflicts with t
 Visible text rule for this image: no readable text anywhere in the image. No English, pseudo-text, labels, logos or watermark.
 
 SPECIFIC IMAGE CONTENT:
-Serious Minimal Countryball Explainer world. Vertical 9:16 smartphone-first composition. Clean flat 2D illustration, thick clean black outlines, controlled flat colours, very light graphic shading, low-to-medium detail. Solid or softly textured colour-field background. No realistic people, no realistic hands or skin, no photographic lighting, no 3D, no anime, no clay. The same large green check mark from the previous image, now cracked and breaking into two pieces with a thin red fracture line running through it. Plain light background. No text, no characters. Thick black outlines, one clear moment of something breaking. Include no readable text anywhere in the image.
+Serious Minimal Countryball Explainer, vertical 9:16. Flat 2D, flat colours, simple colour-field background. The same large green check mark from the previous image, now cracked and breaking into two pieces with a thin red fracture line running through it. Plain light background. No text. Thick black outlines, one clear moment of something breaking. Include no readable text anywhere in the image.
 
 BILD 15 – SZENE 7 – BILDPHASE 2
 DATEINAME NACH FERTIGSTELLUNG: Bild 15.png
@@ -252,7 +252,7 @@ If the specific image content below contains style wording that conflicts with t
 Visible text rule for this image: no readable text anywhere in the image. No English, pseudo-text, labels, logos or watermark.
 
 SPECIFIC IMAGE CONTENT:
-Serious Minimal Countryball Explainer world. Vertical 9:16 smartphone-first composition. Clean flat 2D illustration, thick clean black outlines, controlled flat colours, very light graphic shading, low-to-medium detail. Solid or softly textured colour-field background. No realistic people, no realistic hands or skin, no photographic lighting, no 3D, no anime, no clay. One flag-patterned countryball on the right with a small arm raised firmly and a bold red octagonal stop shape above it. On the left, many small green countryballs visibly pushed back by the gesture. No text. Thick black outlines, flat controlled colours. Include no readable text anywhere in the image.
+Serious Minimal Countryball Explainer, vertical 9:16. Flat 2D, flat colours, simple colour-field background. One flag-patterned countryball on the right with a small arm raised firmly and a bold red octagonal stop shape above it. On the left, many small green countryballs visibly pushed back by the gesture. No text. Thick black outlines. Include no readable text anywhere in the image.
 
 BILD 16 – SZENE 7 – BILDPHASE 3
 DATEINAME NACH FERTIGSTELLUNG: Bild 16.png
@@ -264,7 +264,7 @@ If the specific image content below contains style wording that conflicts with t
 Visible text rule for this image: the ONLY readable text allowed is exactly the German phrase "14 ZU 1". Integrate it cleanly into the composition without covering the main subject. Keep the spelling exact. No other readable text and no English visible text.
 
 SPECIFIC IMAGE CONTENT:
-Serious Minimal Countryball Explainer world. Vertical 9:16 smartphone-first composition. Clean flat 2D illustration, thick clean black outlines, controlled flat colours, very light graphic shading, low-to-medium detail. Solid or softly textured colour-field background. No realistic people, no realistic hands or skin, no photographic lighting, no 3D, no anime, no clay. One simple flat balance scale where the heavily loaded side holding fourteen small green dots is lifted high, and the other side holds exactly one solid red block pushing it firmly down. German text reading exactly 14 ZU 1 in bold condensed dark lettering in the upper third. Thick black outlines.
+Serious Minimal Countryball Explainer, vertical 9:16. Flat 2D, flat colours, simple colour-field background. One flat balance scale where the heavily loaded side holding fourteen small green dots is lifted high, and the other side holds exactly one solid red block pushing it firmly down. German text 14 ZU 1 in bold type, upper third. Thick black outlines.
 
 BILD 17 – SZENE 8
 DATEINAME NACH FERTIGSTELLUNG: Bild 17.png
@@ -276,7 +276,7 @@ If the specific image content below contains style wording that conflicts with t
 Visible text rule for this image: the ONLY readable text allowed is exactly the German phrase "FAST 300 MAL". Integrate it cleanly into the composition without covering the main subject. Keep the spelling exact. No other readable text and no English visible text.
 
 SPECIFIC IMAGE CONTENT:
-Serious Minimal Countryball Explainer world. Vertical 9:16 smartphone-first composition. Clean flat 2D illustration, thick clean black outlines, controlled flat colours, very light graphic shading, low-to-medium detail. Solid or softly textured colour-field background. No realistic people, no realistic hands or skin, no photographic lighting, no 3D, no anime, no clay. One tall stack of simple flat document shapes, each stamped with a small red cross, on a plain muted background. German text reading exactly FAST 300 MAL in large bold condensed dark lettering in the upper third. No characters. Thick black outlines.
+Serious Minimal Countryball Explainer, vertical 9:16. Flat 2D, flat colours, simple colour-field background. One tall stack of flat document shapes, each stamped with a small red cross, on a plain muted background. German text FAST 300 MAL in bold type, upper third. No characters. Thick black outlines.
 
 BILD 18 – SZENE 8 – BILDPHASE 2
 DATEINAME NACH FERTIGSTELLUNG: Bild 18.png
@@ -288,7 +288,7 @@ If the specific image content below contains style wording that conflicts with t
 Visible text rule for this image: the ONLY readable text allowed is exactly the German phrase "NICHTS SAGEN HEISST NICHT NEIN". Integrate it cleanly into the composition without covering the main subject. Keep the spelling exact. No other readable text and no English visible text.
 
 SPECIFIC IMAGE CONTENT:
-Serious Minimal Countryball Explainer world. Vertical 9:16 smartphone-first composition. Clean flat 2D illustration, thick clean black outlines, controlled flat colours, very light graphic shading, low-to-medium detail. Solid or softly textured colour-field background. No realistic people, no realistic hands or skin, no photographic lighting, no 3D, no anime, no clay. One neutral grey countryball with its small arm hanging down and calm closed eyes, while a thin green arrow passes by it freely and unhindered from left to right. German text reading exactly NICHTS SAGEN HEISST NICHT NEIN in bold condensed white sans-serif with thick black outline in the upper third. Plain background.
+Serious Minimal Countryball Explainer, vertical 9:16. Flat 2D, flat colours, simple colour-field background. One neutral grey countryball with its small arm hanging down and calm closed eyes, while a thin green arrow passes by it freely and unhindered from left to right. German text NICHTS SAGEN HEISST NICHT NEIN in bold type, upper third. Plain background.
 
 BILD 19 – SZENE 8 – BILDPHASE 3
 DATEINAME NACH FERTIGSTELLUNG: Bild 19.png
@@ -300,7 +300,7 @@ If the specific image content below contains style wording that conflicts with t
 Visible text rule for this image: no readable text anywhere in the image. No English, pseudo-text, labels, logos or watermark.
 
 SPECIFIC IMAGE CONTENT:
-Serious Minimal Countryball Explainer world. Vertical 9:16 smartphone-first composition. Clean flat 2D illustration, thick clean black outlines, controlled flat colours, very light graphic shading, low-to-medium detail. Solid or softly textured colour-field background. No realistic people, no realistic hands or skin, no photographic lighting, no 3D, no anime, no clay. One deep-red countryball with its small arm raised firmly, and the same thin green arrow now stopped dead against a bold red octagonal stop shape in front of it. No text. Plain background, flat 2D, thick black outlines. Direct visual echo of the previous image, but blocked. Include no readable text anywhere in the image.
+Serious Minimal Countryball Explainer, vertical 9:16. Flat 2D, flat colours, simple colour-field background. One deep-red countryball with its small arm raised firmly, and the same thin green arrow now stopped dead against a bold red octagonal stop in front of it. No text. Plain background. Direct visual echo of the previous image, but blocked. Include no readable text anywhere in the image.
 
 BILD 20 – SZENE 9
 DATEINAME NACH FERTIGSTELLUNG: Bild 20.png
@@ -312,7 +312,7 @@ If the specific image content below contains style wording that conflicts with t
 Visible text rule for this image: the ONLY readable text allowed is exactly the German phrase "DER PREIS". Integrate it cleanly into the composition without covering the main subject. Keep the spelling exact. No other readable text and no English visible text.
 
 SPECIFIC IMAGE CONTENT:
-Serious Minimal Countryball Explainer world. Vertical 9:16 smartphone-first composition. Clean flat 2D illustration, thick clean black outlines, controlled flat colours, very light graphic shading, low-to-medium detail. Solid or softly textured colour-field background. No realistic people, no realistic hands or skin, no photographic lighting, no 3D, no anime, no clay. One simple flat institutional building shape being assembled from a few large blocks, with one simple price-tag shape hanging from its corner. German text reading exactly DER PREIS in bold condensed dark lettering in the upper third. Muted warm background, thick black outlines, no characters.
+Serious Minimal Countryball Explainer, vertical 9:16. Flat 2D, flat colours, simple colour-field background. One flat institutional building being assembled from a few large blocks, with one price-tag shape hanging from its corner. German text DER PREIS in bold type, upper third. Muted warm background, no characters.
 
 BILD 21 – SZENE 9 – BILDPHASE 2
 DATEINAME NACH FERTIGSTELLUNG: Bild 21.png
@@ -324,7 +324,7 @@ If the specific image content below contains style wording that conflicts with t
 Visible text rule for this image: no readable text anywhere in the image. No English, pseudo-text, labels, logos or watermark.
 
 SPECIFIC IMAGE CONTENT:
-Serious Minimal Countryball Explainer world. Vertical 9:16 smartphone-first composition. Clean flat 2D illustration, thick clean black outlines, controlled flat colours, very light graphic shading, low-to-medium detail. Solid or softly textured colour-field background. No realistic people, no realistic hands or skin, no photographic lighting, no 3D, no anime, no clay. Five flag-patterned countryballs turned away from a simple open door shape on the right edge, as if about to leave, seen from behind at a slight angle. No text. Muted background, thick black outlines. Include no readable text anywhere in the image.
+Serious Minimal Countryball Explainer, vertical 9:16. Flat 2D, flat colours, simple colour-field background. Five flag-patterned countryballs turned away from a simple open door on the right edge, as if about to leave, seen from behind at a slight angle. No text. Muted background. Include no readable text anywhere in the image.
 
 BILD 22 – SZENE 10
 DATEINAME NACH FERTIGSTELLUNG: Bild 22.png
@@ -336,7 +336,7 @@ If the specific image content below contains style wording that conflicts with t
 Visible text rule for this image: no readable text anywhere in the image. No English, pseudo-text, labels, logos or watermark.
 
 SPECIFIC IMAGE CONTENT:
-Serious Minimal Countryball Explainer world. Vertical 9:16 smartphone-first composition. Clean flat 2D illustration, thick clean black outlines, controlled flat colours, very light graphic shading, low-to-medium detail. Solid or softly textured colour-field background. No realistic people, no realistic hands or skin, no photographic lighting, no 3D, no anime, no clay. One simple flat document shape in the centre with exactly five small closed padlock shapes along its edge, each padlock carrying a tiny simple flag pattern. No text. Plain muted background, thick black outlines. Include no readable text anywhere in the image.
+Serious Minimal Countryball Explainer, vertical 9:16. Flat 2D, flat colours, simple colour-field background. One flat document in the centre with exactly five small closed padlock shapes along its edge, each padlock carrying a tiny simple flag pattern. No text. Plain muted background. Include no readable text anywhere in the image.
 
 BILD 23 – SZENE 10 – BILDPHASE 2
 DATEINAME NACH FERTIGSTELLUNG: Bild 23.png
@@ -348,7 +348,7 @@ If the specific image content below contains style wording that conflicts with t
 Visible text rule for this image: no readable text anywhere in the image. No English, pseudo-text, labels, logos or watermark.
 
 SPECIFIC IMAGE CONTENT:
-Serious Minimal Countryball Explainer world. Vertical 9:16 smartphone-first composition. Clean flat 2D illustration, thick clean black outlines, controlled flat colours, very light graphic shading, low-to-medium detail. Solid or softly textured colour-field background. No realistic people, no realistic hands or skin, no photographic lighting, no 3D, no anime, no clay. Five flag-patterned countryballs arranged in one closed circle facing inward, with a single simple circular arrow running between them, forming a loop with no way out. No text. Plain muted background, thick black outlines, flat controlled colours. Include no readable text anywhere in the image.
+Serious Minimal Countryball Explainer, vertical 9:16. Flat 2D, flat colours, simple colour-field background. Five flag-patterned countryballs arranged in one closed circle facing inward, with a single simple circular arrow running between them, forming a loop with no way out. No text. Plain muted background. Include no readable text anywhere in the image.
 
 BILD 24 – SZENE 10 – BILDPHASE 3
 DATEINAME NACH FERTIGSTELLUNG: Bild 24.png
@@ -360,4 +360,4 @@ If the specific image content below contains style wording that conflicts with t
 Visible text rule for this image: the ONLY readable text allowed is exactly the German phrase "ENTSCHEIDET NICHT DIE MEHRHEIT". Integrate it cleanly into the composition without covering the main subject. Keep the spelling exact. No other readable text and no English visible text.
 
 SPECIFIC IMAGE CONTENT:
-Serious Minimal Countryball Explainer world. Vertical 9:16 smartphone-first composition. Clean flat 2D illustration, thick clean black outlines, controlled flat colours, very light graphic shading, low-to-medium detail. Solid or softly textured colour-field background. No realistic people, no realistic hands or skin, no photographic lighting, no 3D, no anime, no clay. The exact same composition as the second image of the reel: fourteen small green countryballs with one thick bold red diagonal line struck straight through them, and one deep-red countryball standing untouched on the right. German text reading exactly ENTSCHEIDET NICHT DIE MEHRHEIT in bold condensed white lettering with black outline in the upper third. Deep navy background, calm final composition mirroring the opening.
+Serious Minimal Countryball Explainer, vertical 9:16. Flat 2D, flat colours, simple colour-field background. The exact same composition as the second image of the reel: fourteen small green countryballs with one thick bold red diagonal line struck straight through them, and one deep-red countryball standing untouched on the right. German text ENTSCHEIDET NICHT DIE MEHRHEIT in bold type, upper third. Deep navy background, calm final composition mirroring the opening.
