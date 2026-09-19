@@ -4,9 +4,9 @@
   "promptLanguage": "en",
   "aspectRatio": "9:16",
   "targetDurationSeconds": {
-    "min": 55,
-    "preferred": 58,
-    "max": 60
+    "min": 60,
+    "max": 72,
+    "preferred": 66
   },
   "sceneCount": {
     "min": 8,

@@ -1,12 +1,13 @@
 {
-  "version": 13,
+  "version": 16,
   "composition": {
     "width": 1080,
     "height": 1920,
     "aspectRatio": "9:16",
     "aspectRatioTolerance": 0.015,
-    "minimumWidth": 720,
-    "minimumHeight": 1280
+    "minimumWidth": 1080,
+    "minimumHeight": 1920,
+    "nativeResolutionHardGateSince": "2026-09-19"
   },
   "supportedFormats": ["png", "jpg", "jpeg", "webp"],
   "safeZones": {
@@ -16,6 +17,24 @@
     "bottomPercent": 18
   },
   "subtitlesEnabled": false,
+  "backgroundPalette": {
+    "hardGateSince": "2026-09-19",
+    "maximumDeltaE": 12,
+    "colours": [
+      { "name": "Tiefes Navy", "hex": "#222C4C" },
+      { "name": "Warmes Creme", "hex": "#FAF3DC" },
+      { "name": "Schiefer-Blaugrau", "hex": "#8A9FA6" },
+      { "name": "Gedaempftes Salbei", "hex": "#8AB0A8" },
+      { "name": "Warmer Ton", "hex": "#A08878" }
+    ],
+    "guidance": "Die Hintergrundfarbe jedes Bildes wird am Bildrand gemessen und gegen die feste Palette geprueft. Die Werte stammen aus den Toenen, die das Bildmodell nachweislich trifft: Im Vetorecht-Reel lagen 14 von 21 Bildern bereits innerhalb, die 7 Ausreisser (Lachs, Oliv, Violett, Hellblau, Rosa) darueber."
+  },
+  "renderedImageText": {
+    "hardGateSince": "2026-09-19",
+    "verifyPlannedTextIsVisible": true,
+    "warnOnUnplannedText": true,
+    "guidance": "Der geplante deutsche Bildtext wird per OCR im gelieferten Bild nachgewiesen, nicht nur im Prompt. Ein Bild mit abweichender Headline ist ein Hard Fail, auch wenn Prompt und Plan stimmen."
+  },
   "manualChecksByKind": {
     "scene": [
       "sceneMeaningMatchesNarration",

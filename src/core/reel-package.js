@@ -195,8 +195,8 @@ export function validateReelPackage(paket) {
   const gesamtWorte = (Array.isArray(szenen) ? szenen : [])
     .map((szene) => text(szene.narration).split(/\s+/).filter(Boolean).length)
     .reduce((summe, wert) => summe + wert, 0);
-  if (gesamtWorte < 155 || gesamtWorte > 175) {
-    probleme.push(`Die Narrationen ergeben ${gesamtWorte} Wörter; nötig sind 155 bis 175.`);
+  if (gesamtWorte < 170 || gesamtWorte > 200) {
+    probleme.push(`Die Narrationen ergeben ${gesamtWorte} Wörter; nötig sind 170 bis 200 für mindestens eine Minute bei 1,10x.`);
   }
 
   return probleme;

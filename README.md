@@ -10,8 +10,8 @@ Für die autonome Reel-Themenwahl gilt `config/reel-topic-focus.json`: Schwerpun
 
 ## Produktionsstandard
 
-- 55–60 Sekunden Voice-over
-- 155–175 deutsche Wörter
+- 60–72 Sekunden (nie unter einer Minute) Voice-over
+- 170–200 deutsche Wörter
 - 8–10 narrative Szenen, Standard 9
 - Adaptive Dense V2 statt starrer 17-Bilder-Formel
 - 9 Szenen normalerweise 20–22 Bilder
@@ -49,7 +49,28 @@ serious-minimal-countryball-explainer
 
 Vollständige Style-Bibel: `knowledge/fixed-visual-world.md`.
 
-**YouTube verwendet weiterhin seine eigene separate 16:9-Bildwelt.**
+## Zwei getrennte Bildwelten
+
+Verbindliche Kanal-Zuordnung: **`config/visual-worlds.json`**. Kein anderer Ort definiert eine Bildwelt.
+
+| Kanal | Bildwelt | Format | Figuren | Ordner |
+|---|---|---|---|---|
+| Reel | `serious-minimal-countryball-explainer` | 9:16 | Countryball | `reels/` |
+| YouTube | `youtube-editorial-stick-explainer` | 16:9 | Stick-Figure | `youtube/` |
+
+Die Welten teilen sich weder Seitenverhältnis noch Figurensystem. Ein Bild aus einem Kanal darf nie im anderen landen; der Versuch ist ein Hard Blocker, kein Stilfehler.
+
+```bash
+npm run check:worlds
+```
+
+## Themen
+
+Jedes Thema existiert genau einmal — kanalübergreifend. Quelle: **`config/topics.json`**, Ansicht: `THEMEN_HISTORIE.md`.
+
+```bash
+npm run check:topic -- "Warum ist der Himmel blau?"
+```
 
 ## Google Flow
 

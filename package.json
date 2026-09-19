@@ -6,6 +6,9 @@
   "description": "KI-gestützte Produktionspipeline für visuelle Erklär-Reels und YouTube-Langvideos.",
   "scripts": {
     "next:slot": "node src/cli/next-reel-slot.js",
+    "preflight": "node src/cli/preflight.js",
+    "check:topic": "node src/cli/check-topic.js",
+    "check:worlds": "node src/cli/check-visual-worlds.js",
     "create:reel": "node src/cli/create-reel.js",
     "import:reel": "node src/cli/import-reel.js",
     "compact:reel": "node src/cli/compact-reel.js",
@@ -47,6 +50,6 @@
     "remotion": "4.0.500"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=24"
   }
 }

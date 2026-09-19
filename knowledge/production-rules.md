@@ -4,20 +4,30 @@
 
 ## Ziel
 
-Jedes Reel erklärt einen Begriff, ein System, ein Verhalten oder einen Zusammenhang ohne Vorwissen verständlich. Themenwelt offen, Bildwelt fest: `modern-countryball-explainer`.
+Jedes Reel erklärt einen Begriff, ein System, ein Verhalten oder einen Zusammenhang ohne Vorwissen verständlich. Themenwelt offen, Bildwelt fest: `serious-minimal-countryball-explainer` (9:16, Kanal `reel`).
 
 ## Script
 
+**Der erste Satz ist immer die Frage, die das Reel beantwortet** — mit Fragewort und
+Fragezeichen, zum Beispiel "Was ist ein Vetorecht?". Danach: Einleitung, Hauptteil, Schluss.
+
 - ein deutscher Erzähler
-- direkte Hook
-- 155–175 Wörter
-- 55–60 s finales Voice-over
+- Hook als Frage, nie als Aussage
+- Klarheitstest: nach zehn Sekunden muss klar sein, worum es geht
+- Beispiel aus dem Thema selbst, nie eine fremde Alltagsanalogie
+- eine Szene baut eine Erwartung auf, die nächste bricht sie
+- das Schlussbild greift das Anfangsbild wieder auf (Loop)
+- Bild 01 ist zugleich das Cover und trägt das Thema als Headline
+- 170–200 Wörter
+- 60–72 s finales Voice-over
 - einfache erwachsene Sprache
 - letzte zwei Szenen: Prüf-/Erkenntnisfrage → konkrete Lösung/Abschluss
 
 ## Bildwelt
 
-Neue Reels verwenden ausschließlich `modern-countryball-explainer`.
+Neue Reels verwenden ausschließlich `serious-minimal-countryball-explainer`.
+
+Verbindliche Kanal-Zuordnung: `config/visual-worlds.json`. Die YouTube-Welt `youtube-editorial-stick-explainer` (16:9) gilt hier nie.
 
 - 9:16
 - runde Kugelfiguren, wenn Akteure sinnvoll sind

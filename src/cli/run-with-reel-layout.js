@@ -86,11 +86,32 @@ async function prepareCompatibility(reelDirectories) {
   return prepared;
 }
 
+/**
+ * Raeumt die temporaeren Kompatibilitaetslinks wieder ab.
+ *
+ * Das Aufraeumen darf den eigentlichen Lauf nie ueberschreiben: Wenn hier etwas
+ * schiefgeht, waehrend zuvor schon der Zielbefehl fehlgeschlagen ist, muss der
+ * urspruengliche Fehler sichtbar bleiben. Deshalb werden Aufraeumfehler
+ * gesammelt und zurueckgegeben statt geworfen.
+ *
+ * @param {Array<{layout: object, compatibility: object}>} prepared
+ * @returns {Promise<Error[]>} Aufgetretene Aufraeumfehler.
+ */
 async function cleanupCompatibility(prepared) {
+  const failures = [];
+
   for (const { layout, compatibility } of prepared.reverse()) {
-    await compatibility.cleanup();
-    await compactReelLayout(layout.outerDirectory);
+    try {
+      await compatibility.cleanup();
+      await compactReelLayout(layout.outerDirectory);
+    } catch (error) {
+      failures.push(
+        new Error(`Aufraeumen fehlgeschlagen fuer ${layout.outerDirectory}: ${error.message}`, { cause: error })
+      );
+    }
   }
+
+  return failures;
 }
 
 async function main() {
@@ -119,10 +140,25 @@ async function main() {
   }
 
   let exitCode = 1;
+  let runError = null;
   try {
     exitCode = await runChild(targetScript, args);
-  } finally {
-    await cleanupCompatibility(prepared);
+  } catch (error) {
+    runError = error;
+  }
+
+  const cleanupFailures = await cleanupCompatibility(prepared);
+  for (const failure of cleanupFailures) {
+    console.error(`Warnung: ${failure.message}`);
+  }
+
+  // Der Fehler des eigentlichen Befehls hat immer Vorrang vor Aufraeumproblemen.
+  if (runError) throw runError;
+  if (exitCode === 0 && cleanupFailures.length > 0) {
+    console.error('Der Lauf war erfolgreich, aber das Reel-Layout konnte nicht vollstaendig zurueckgesetzt werden.');
+    console.error('Bitte "npm run compact:reel -- --dir <reel>" ausfuehren, bevor der naechste Schritt startet.');
+    process.exitCode = 1;
+    return;
   }
 
   process.exitCode = exitCode;

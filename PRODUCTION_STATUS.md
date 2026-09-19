@@ -24,8 +24,8 @@ Dafür wurden zusätzliche technische und visuelle Sicherheitsstufen eingebaut.
 
 ## Aktueller Pflichtstandard
 
-- 55–60 s Voice-over
-- 155–175 deutsche Wörter
+- 60–72 s Voice-over
+- 170–200 deutsche Wörter
 - 8–10 Szenen, Standard 9
 - Adaptive Dense V2
 - 8 Szenen: 19–21 Bilder

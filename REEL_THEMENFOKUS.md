@@ -98,7 +98,7 @@ Diese Bereiche sind nicht grundsätzlich verboten. Sie werden nur dann verwendet
 - Vor jeder neuen Themenwahl zuerst `THEMEN_HISTORIE.md` prüfen.
 - Keine Wiederholung derselben Kernfrage in anderer Formulierung.
 - Bei autonomer Themenwahl Kernbereiche klar bevorzugen.
-- Thema muss in 55–60 Sekunden sauber erklärbar sein.
+- Thema muss in 60–72 Sekunden (nie unter einer Minute) sauber erklärbar sein.
 - Thema muss visuell natürlich zur Serious-Minimal-Countryball-Welt passen.
 - Politische Inhalte neutral, sachlich und ohne Wahlempfehlung/Parteienwerbung behandeln.
 - Aktuelle Breaking News sind kein Standardformat; lieber stabile Erklärfragen mit längerem Nutzwert.

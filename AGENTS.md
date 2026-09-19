@@ -47,7 +47,7 @@ Bei „Mach ein neues Reel“ autonom:
 
 1. nächsten freien Slot bestimmen
 2. starkes, belegbares Thema wählen
-3. 155–175 deutsche Wörter schreiben
+3. 170–200 deutsche Wörter schreiben
 4. 8–10 narrative Szenen planen, Standard 9
 5. für jede Bildphase ausschließlich **Serious Minimal Countryball Explainer** verwenden
 6. für neue Pakete `imageCountMode: "adaptive-dense-v2"` und `visualDensityVersion: 2` setzen
@@ -64,9 +64,109 @@ Legacy-Pakete mit `one-hook-two-standard` bleiben unterstützt. Neue Phase-1-Ree
 
 `sync:words` ist für neue Reels **nicht erforderlich** und gehört nicht zum aktiven Workflow.
 
-## Reel-Bildwelt
+## Bildwelten — zwei getrennte Kanäle
 
-Reels: ausschließlich **Serious Minimal Countryball Explainer** (`serious-minimal-countryball-explainer`) in 9:16. Die frühere `modern-countryball-explainer`-Welt ist für neue Reels ersetzt. YouTube-Regeln niemals auf Reels übertragen.
+Verbindliche Quelle ist **`config/visual-worlds.json`**. Keine Style-ID wird irgendwo sonst neu definiert; Doku und Code lesen ausschließlich von dort.
+
+| Kanal | Bildwelt | Format | Figuren | Ordner |
+|---|---|---|---|---|
+| Reel | `serious-minimal-countryball-explainer` | 9:16 | Countryball | `reels/` |
+| YouTube | `youtube-editorial-stick-explainer` | 16:9 | Stick-Figure | `youtube/` |
+
+Die frühere `modern-countryball-explainer`-Welt ist stillgelegt und in keinem Kanal mehr gültig.
+
+**Die Trennung ist hart.** Eine Bildwelt im falschen Kanal ist ein Hard Blocker, kein Stilfehler:
+
+- keine Countryballs in YouTube-Bildern, keine Stick-Figures in Reel-Bildern
+- kein 16:9 im Reel-Ordner, kein 9:16 im YouTube-Ordner
+- ein Bild aus einem Kanal wird nie im anderen wiederverwendet
+- `assertVisualWorldForChannel()` aus `src/shared/visual-worlds.js` prüft das im Code
+
+Zuordnung prüfen: `npm run check:worlds`
+
+## Script-Aufbau — Frage zuerst
+
+**Jedes Reel beginnt mit der Frage, die es beantwortet.** Der erste Satz startet mit einem
+Fragewort und endet mit einem Fragezeichen:
+
+```text
+Was ist ein Vetorecht? Ein einziges Land sagt Nein — und niemand kann es überstimmen.
+Warum haben Länder Grenzen? Sie wirken selbstverständlich — sind es aber nicht.
+```
+
+Nicht erlaubt: mit einer Aussage beginnen und die Frage erst später nachschieben. Der
+Zuschauer muss im ersten Satz wissen, worum es geht. Geprüft von
+`opensWithQuestion()` in `src/shared/reel-hook-quality.js`; ein Verstoß ist ein Hard Blocker.
+
+Danach folgt immer dieselbe Gliederung:
+
+| Teil | Szenen | Aufgabe |
+|---|---|---|
+| Hook | 1 | Die Frage stellen |
+| Einleitung | 2–3 | Worum es geht und wo es passiert |
+| Hauptteil | 3–5 | Wie es funktioniert, Schritt für Schritt |
+| Schluss | 2 | Warum das zählt, mit einem Satz, der bleibt |
+
+Die Szenentitel tragen ihren Strukturteil als Präfix (`Hook`, `Einleitung: …`,
+`Hauptteil: …`, `Schluss: …`), damit die Gliederung im Reel-Ordner sichtbar bleibt.
+
+## Was ein gutes Script ausmacht
+
+**Klarheitstest:** Wenn jemand den Hook hört und nach zehn Sekunden nicht weiß,
+worum es geht, ist er zu schwammig. Zu weich, zu allgemein, zu lang sind die
+drei häufigsten Fehler.
+
+**Erklär am Beispiel, nicht an der Definition.** Ein abstrakter Satz wie
+"vierzehn Länder dafür, eines dagegen" ist eine Zahl, kein Bild im Kopf. Das
+Beispiel muss aus dem Thema selbst kommen, nicht aus einer fremden Welt — für
+das Vetorecht also ein Krisenfall im Sicherheitsrat, keine Pizzabestellung.
+
+**Bild 01 ist immer das Cover.** Es ist der erste Frame im Feed und muss ohne Ton
+sagen, worum es geht. Seine Headline benennt deshalb das Thema und wird aus dem
+Reel-Titel abgeleitet — nicht eine Zwischenaussage aus dem Hook:
+
+```text
+Titel "Was ist ein Vetorecht?"  ->  Headline "WAS IST EIN VETORECHT?"
+Titel "Warum haben Länder Grenzen?"  ->  "WARUM HABEN LÄNDER GRENZEN?"
+```
+
+`deriveCoverHeadline()` schlägt die Headline vor, `coverHeadlineMatchesTopic()` prüft
+sie. Eine Headline ohne Themenbezug ist ein Hard Blocker. Die Bilder danach dürfen
+freie Zwischenaussagen tragen — Bild 02 löst den Hook auf.
+
+**Bewährte Hook-Formen:**
+
+| Form | Muster |
+|---|---|
+| Myth | "Alle denken X. Stimmt aber nicht." |
+| Problem | "Wenn dein X so aussieht, liegt es daran…" |
+| Contra | "Mach diesen Fehler nicht bei X" |
+| Mini-Story | "Ich dachte jahrelang X, bis…" |
+
+**Erwartung aufbauen, dann brechen.** Der stärkste Moment entsteht, wenn eine
+Szene bewusst eine falsche Erwartung setzt ("klingt nach normaler Abstimmung")
+und die nächste sie zerstört ("ist es aber nicht"). Dieser Moment bekommt drei
+Bildphasen statt zwei.
+
+**Das Schlussbild greift das Anfangsbild wieder auf.** Wiederholungen und Loops
+werden vom Algorithmus stark gewichtet. Nur der Bildtext ändert sich, damit die
+Prüfung auf doppelte Bildtexte nicht anschlägt.
+
+**Sprache:** gesprochenes Deutsch. Keine Konjunktive, kein Amtsdeutsch, keine
+Inversionen. "Damit etwas durchgeht" statt "für einen Beschluss", "wer einfach
+nichts sagt" statt "wer sich enthält".
+
+## Themen — jedes Thema genau einmal
+
+Verbindliche Quelle ist **`config/topics.json`**; `THEMEN_HISTORIE.md` ist die Ansicht davon.
+
+Vor jedem neuen Reel und jedem neuen YouTube-Video:
+
+```bash
+npm run check:topic -- "<Thementitel>"
+```
+
+Identischer Slug oder identische Kernaussage = Hard Blocker, kanalübergreifend. Hohe Ähnlichkeit wird als Verdachtsfall gemeldet und vom Nutzer entschieden — der Agent entscheidet das nicht selbst. Ein neu gewähltes Thema wird sofort in `config/topics.json` **und** `THEMEN_HISTORIE.md` eingetragen.
 
 ### World-Lock vor Bild 01
 
@@ -121,11 +221,23 @@ Verboten: Fotorealismus, realistische Hände/Haut, normale illustrierte Menschen
 ## Bildtext
 
 - Prompts Englisch, sichtbarer Text Deutsch.
+- **Flaggen immer einzeln benennen.** "Five flag-patterned countryballs" reicht nicht — das
+  Bildmodell erfindet dann Länder. Im Vetorecht-Reel kamen so Deutschland und Brasilien in ein
+  Bild über die fünf Vetomächte. Richtig ist die Aufzählung: "United States stars and stripes,
+  Russian white-blue-red bands, Chinese red with yellow stars, French blue-white-red vertical
+  bands, British union pattern". `check:content` blockiert Prompts, die Flaggen ohne Länder
+  verlangen oder deren Länderzahl nicht zur geforderten Ballzahl passt.
 - Bild 01 braucht eine starke Headline.
 - Danach Text optional; wenn vorhanden maximal 4 Wörter.
 - Starke textfreie Bilder sind erwünscht.
 - `imageText` leer → kein lesbarer Text.
 - Text bevorzugt fett, klar, Smartphone-lesbar, weiß/schwarz mit deutlicher Gegenkontur.
+
+**Hard Gate ab 2026-09-19:** Der geplante `imageText` wird per OCR **im gelieferten Bild**
+nachgewiesen, nicht nur im Prompt. Weicht die Headline ab, blockiert das Reel — auch mit
+`--force`. Anlass: Das Vetorecht-Cover trug "ENTSCHEIDET DIE MEHRHEIT?" statt der geplanten
+Themenfrage "WAS IST EIN VETORECHT?", und jede Prüfung meldete bestanden, weil sie nur den
+Prompt gelesen hatte.
 
 ## Bildanzahl und Cue-Timing — Adaptive Dense V2
 
@@ -148,6 +260,55 @@ Für neue Phase-1-Pakete:
 - Szenencut ca. 0,10 s vor Cue
 - keine pauschal gleich langen Bildblöcke
 
+## Bildschnitte — am Wort gemessen, nicht geschätzt
+
+Ab 2026-09-19 stammen alle Bildzeitpunkte aus einer Whisper-Wortmessung am **finalen**
+Voice-over:
+
+```bash
+npm run auto-align:reel -- --dir "<reel>"
+```
+
+Der Befehl transkribiert das Voice-over mit Wortzeitstempeln, sucht jeden `audioCue` im
+gemessenen Wortstrom und schreibt den echten Zeitpunkt nach `timeline/audio-sync.json`
+(`source: "measured-word-timings-v1"`). Das Transkript liegt unter
+`timeline/voice-word-timings.json` und ist gegen den SHA-256 der Audiodatei gebunden —
+nach jeder Audioänderung misst der Befehl automatisch neu.
+
+Die Suche läuft **monoton**: Ein späterer Bildmoment kann nie vor einem früheren liegen,
+sonst zieht eine im Script wiederholte Formulierung den Schnitt an die falsche Stelle.
+Deutsche Zahlwörter und Ziffern gelten als dasselbe Wort, weil der Plan "fünfzehn" schreibt
+und Whisper "15".
+
+Findet die Messung einen Cue nicht, bricht der Befehl ab und nennt ihn. Dann ist der
+`audioCue` an den tatsächlich gesprochenen Wortlaut anzupassen — nicht die Messung zu
+umgehen.
+
+**Warum das ein Hard Gate ist:** Bis hierher verteilte `buildSequentialAudioSync` die
+Gesamtdauer proportional zum Wortgewicht der Textabschnitte und schrieb das Ergebnis
+trotzdem als `audio-synced` und `exact-audio-cue` weg. Am Vetorecht-Reel gegen die echte
+Messung geprüft:
+
+```
+mittlere Abweichung  1,44 s
+größte Abweichung    2,94 s
+über 0,25 s daneben  15 von 16 Schnitten
+Richtung             durchgehend ZU FRÜH
+```
+
+Beim geplanten Schnitt auf "Damit etwas durchgeht" (30,36 s) lief noch der Satz davor
+("Die Gewinner des Zweiten Weltkriegs"); das Wort fällt erst bei 33,30 s. Über weite
+Strecken sah man also bereits das nächste Bild zum vorherigen Satz.
+
+`--estimate` erzwingt notfalls die alte Schätzung, das Reel gilt dann aber nicht als
+audio-synchron und der Render bleibt blockiert.
+
+Nebenwirkung der Messung: Echte Sprechpausen verteilen sich anders als die Schätzung sie
+verteilt hat. Bildphasen können dadurch unter die Mindestdauer von 2,2 s fallen — im
+Vetorecht-Reel drei Stück bei 1,86 s. Das ist kein neuer Fehler, sondern einer, den die
+Schätzung mit gleichmäßigen Dauern kaschiert hat. Behoben wird er in der Planung: in
+diesen Szenen eine Bildphase weniger oder einen späteren Cue wählen.
+
 ## Bewegung/Zoom — Hard Gate
 
 Für neue Reels ab 2026-09-02 gilt: **Jeder Bildmoment bewegt sich sichtbar.** Kein längerer statischer Stillframe.
@@ -166,6 +327,13 @@ Richtwerte:
 - `none` ist für neue Reels verboten
 
 Bekannte Aliasnamen werden kanonisch aufgelöst; unbekannte Motion-Typen blockieren. Der Renderer besitzt zusätzlich einen Safety-Fallback gegen statische Frames.
+
+**Die Zahlen müssen zum Typnamen passen.** Ein `pan-left` mit `panXPercent: 0` und ein
+`slow-zoom-out` mit `1.0 → 1.03` blockieren jetzt. Vorher trug das Vetorecht-Reel zehn
+verschiedene Bewegungsnamen und renderte zehnmal denselben 3-Prozent-Push-in.
+Tabelle und Richtungsprüfung liegen gemeinsam in `src/shared/camera-motion.js`; Renderer,
+Effects-Guard und Timeline benutzen ausschließlich diese eine Quelle. Interne Bildphasen
+bekommen automatisch die Gegenbewegung zur Szenenbewegung.
 
 ## Soundeffekte — Hard Gate
 
@@ -247,7 +415,49 @@ npm run validate:render -- --dir "<reel>"
 npm run render:reel -- --dir "<reel>"
 ```
 
-Motion/SFX-, Quellen-, Audio-Dateibindungs- und Endstille-Gates dürfen nicht per `--force` umgangen werden.
+### Gates, die `--force` nicht übergeht
+
+| Gate | Blockiert |
+|---|---|
+| Quellen-QC | fehlende oder unbelegte Quellen |
+| Motion/SFX | statische Bildmomente, stumme Wechsel, Bewegung passt nicht zum Typnamen |
+| Audio-Dateibindung | Timeline gegen ein anderes Voice-over als das gemessene |
+| Endstille | langes stilles Audio-Ende |
+| **Bildschnitt** | Zeitpunkte geschätzt statt am Voice-over gemessen, oder Schnitt > 0,25 s neben dem Cue-Wort |
+| **Bildstand** | Manifest, Timeline und Bilddateien beschreiben verschiedene Bildfolgen |
+| **Bildtext** | geplanter deutscher Text steht nicht im gelieferten Bild (OCR) |
+
+Die letzten drei Gates sind neu. Sie decken die Fehler ab, die im Vetorecht-Reel unbemerkt
+bis ins fertige Video durchgelaufen sind: Bildwechsel im Mittel 1,44 s vor dem passenden
+Satz, drei importierte Bilder, die in keiner Bildphase vorkamen (Manifest führte 24,
+Timeline zeigte 21), und ein Cover mit der falschen Headline.
+
+### Bildwelt — messbar statt erbeten
+
+Der World-Lock nennt fünf Hintergrundfarben, und die visuelle QC misst sie am Bildrand
+nach (ΔE ≤ 12 gegen `config/visual-quality-rules.json` → `backgroundPalette`):
+
+```
+Tiefes Navy        #222C4C
+Warmes Creme       #FAF3DC
+Schiefer-Blaugrau  #8A9FA6
+Gedämpftes Salbei  #8AB0A8
+Warmer Ton         #A08878
+```
+
+Die Werte stammen aus den Tönen, die das Bildmodell nachweislich trifft: Im Vetorecht-Reel
+lagen 14 von 21 Bildern bereits innerhalb (ΔE 1–9), die 7 Ausreißer bei ΔE 14–25. Ohne
+Palette wanderten die Hintergründe über 64 Sekunden durch Navy, Creme, Violett, Rosa,
+Lachs, Hellblau und Oliv.
+
+Zusätzlich prüft die QC per OCR, ob sichtbarer Text in der Safe Zone bleibt
+(seitlich 6 %, oben 8 %, unten 18 %) — unten liegen im Feed Caption und Buttons darüber.
+
+### Bildauflösung
+
+Bilder müssen **nativ 1080×1920** liefern. Das alte Minimum von 720×1280 hat 768×1376-Bilder
+durchgelassen, die der Renderer auf 1080×1920 hochskaliert und die Kamerafahrt noch einmal
+vergrößert — das gesamte Vetorecht-Reel läuft dadurch bei rund 69 % der Zielauflösung.
 
 ## Finaler Export
 

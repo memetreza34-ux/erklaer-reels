@@ -13,16 +13,18 @@ async function readText(relativePath) {
   return readFile(path.resolve(relativePath), 'utf8');
 }
 
-test('App- und Inhaltskonfiguration verwenden denselben Ein-Minuten-Standard', async () => {
+test('App- und Inhaltskonfiguration verlangen mindestens eine Minute', async () => {
   const app = await readJson('config/app.config.json');
   const rules = await readJson('config/content-rules.json');
 
-  assert.deepEqual(app.targetDurationSeconds, { min: 55, preferred: 58, max: 60 });
+  assert.deepEqual(app.targetDurationSeconds, { min: 60, max: 72, preferred: 66 });
   assert.deepEqual(app.sceneCount, { min: 8, preferred: 9, max: 10 });
   assert.deepEqual(app.visualChangeEverySeconds, { min: 3.0, max: 4.0 });
   assert.equal(app.outputRoot, 'reels');
 
-  assert.deepEqual(rules.scriptRules.targetDurationSeconds, { min: 55, max: 60, preferred: 58 });
+  assert.deepEqual(rules.scriptRules.targetDurationSeconds, { min: 60, max: 72, preferred: 66 });
+  assert.deepEqual(rules.scriptRules.targetWordCount, { min: 170, max: 200 });
+  assert.ok(rules.scriptRules.targetDurationSeconds.min >= 60, 'Ein Reel ist nie kuerzer als eine Minute.');
   assert.equal(rules.visualRules.minimumSceneCount, 8);
   assert.equal(rules.visualRules.maximumSceneCount, 10);
   assert.equal(rules.visualRules.defaultSceneCount, 9);

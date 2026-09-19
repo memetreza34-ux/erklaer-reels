@@ -17,22 +17,25 @@ function baueSzene(index, woerter) {
     narration: index === 0
       ? `Warum ${Array.from({ length: woerter - 1 }, (_, i) => `Wort${i + 2}`).join(' ')}?`
       : Array.from({ length: woerter }, (_, i) => `Wort${i + 1}`).join(' '),
-    imageText: `TEXT ${index + 1}`,
+    // Szene 1 ist zugleich das Cover und muss das Thema benennen.
+    imageText: index === 0 ? 'WARUM ZWEI HAUPTSTÄDTE?' : `TEXT ${index + 1}`,
     visualIdea: 'Runde Kugelfiguren auf einer flachen Landkarte zeigen den Zusammenhang deutlich.',
     continuityNotes: 'Gleiche Konturstärke und Farbwelt wie in der Szene davor.',
-    durationSeconds: index === 0 ? 5.5 : 6.5,
+    durationSeconds: index === 0 ? 5.5 : 7.5,
     cameraMotion: { type: index === 0 ? 'subtle-push-in' : 'ken-burns' },
     soundEffects: index === 0 ? [] : [{ type: 'pop', atPercent: 0.05, visualEvent: 'Wechsel', reason: 'Markiert den Schnitt.' }],
     images: Array.from({ length: anzahl }, (_, j) => ({
-      prompt: `Vertical 9:16 explainer illustration in the fixed Modern Countryball Explainer world. ${'Detailbeschreibung '.repeat(12)}Szene ${index + 1} Bild ${j + 1}.`,
-      imageText: j === 0 ? `TEXT ${index + 1}` : `DETAIL ${index + 1}`,
+      prompt: `Vertical 9:16 explainer illustration in the fixed Serious Minimal Countryball Explainer world. ${'Detailbeschreibung '.repeat(12)}Szene ${index + 1} Bild ${j + 1}.`,
+      imageText: j === 0
+        ? (index === 0 ? 'WARUM ZWEI HAUPTSTÄDTE?' : `TEXT ${index + 1}`)
+        : `DETAIL ${index + 1}`,
       audioCue: j === 0 ? '' : `Wort10 Wort11`,
       startPercent: j === 0 ? 0 : 0.5
     }))
   };
 }
 
-function bauePaket({ szenenzahl = 9, woerterProSzene = 18 } = {}) {
+function bauePaket({ szenenzahl = 9, woerterProSzene = 20 } = {}) {
   return {
     title: 'Warum haben manche Länder zwei Hauptstädte?',
     topicArea: 'Länder, Geografie und Geschichte',
@@ -72,7 +75,7 @@ test('erkennt eine falsche Szenen- und Bildanzahl', () => {
 
 test('erkennt eine verfehlte Wortzahl', () => {
   const zuKurz = validateReelPackage(bauePaket({ woerterProSzene: 8 }));
-  assert.match(zuKurz.join(' '), /155 bis 175/);
+  assert.match(zuKurz.join(' '), /170 bis 200/);
 });
 
 test('erkennt einen zu knappen Bildprompt', () => {

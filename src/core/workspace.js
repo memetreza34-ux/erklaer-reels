@@ -232,7 +232,7 @@ export async function createReelWorkspace({
     language: 'de',
     promptLanguage: 'en',
     aspectRatio: '9:16',
-    targetDurationSeconds: 58,
+    targetDurationSeconds: 66,
     endingHoldSeconds: 0.6,
     sceneCount,
     imageCountMode: 'one-hook-two-standard',

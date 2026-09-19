@@ -8,7 +8,9 @@ Style-ID: `youtube-editorial-stick-explainer`
 
 Die YouTube-Bildwelt ist ein ruhiger, erzählerischer **2D hand-drawn Editorial-Explainer-Stil** mit einfachen menschlichen Figuren, klaren Story-Momenten und reduzierten historischen oder natürlichen Umgebungen.
 
-Sie ist bewusst vollständig von der Reel-Bildwelt getrennt. Die Reel-Bildwelt `modern-countryball-explainer` gilt **nicht** für YouTube-Langvideos.
+Sie ist bewusst vollständig von der Reel-Bildwelt getrennt. Die aktive Reel-Bildwelt `serious-minimal-countryball-explainer` gilt **nicht** für YouTube-Langvideos.
+
+Die verbindliche Kanal-Zuordnung steht in `config/visual-worlds.json`. Diese Datei beschreibt nur noch die gestalterischen Details.
 
 ## Verbindliche Gestaltung
 

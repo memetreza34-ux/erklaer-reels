@@ -4,11 +4,7 @@ import { readdir } from 'node:fs/promises';
 import path from 'node:path';
 
 import { ensureHumanReelView } from '../core/human-reel-view.js';
-
-function getArgument(name) {
-  const index = process.argv.indexOf(name);
-  return index >= 0 ? process.argv[index + 1] : undefined;
-}
+import { getArgument } from '../shared/cli-args.js';
 
 /** Sucht alle Reel-Ordner unter reels/<woche>/<wochentag>/reel-*. */
 async function findeAlleReels(wurzel) {

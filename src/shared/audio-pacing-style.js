@@ -4,8 +4,11 @@ export const AUDIO_PACING_STYLE = Object.freeze({
   thresholdDb: -35,
   minimumLongPauseSeconds: 0.24,
   retainedPauseSeconds: 0.05,
-  loudnessTargetLufs: -16,
-  truePeakDbtp: -1.5,
+  // Instagram und TikTok normalisieren den Feed auf rund -14 LUFS. Mit dem alten
+  // Podcast-Ziel von -16 lief das fertige Reel messbar leiser als alles
+  // drumherum (Vetorecht gemessen: -16,9 LUFS integriert).
+  loudnessTargetLufs: -14,
+  truePeakDbtp: -1,
   loudnessRangeLra: 11,
   loudnessMeasurementToleranceLu: 1,
   truePeakMeasurementToleranceDb: 0.2,

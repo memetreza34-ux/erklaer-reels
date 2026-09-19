@@ -1,0 +1,67 @@
+{
+  "$comment": "Einzige verbindliche Zuordnung von Kanal zu Bildwelt. Jede andere Datei - Doku, Prompt-Bundle, Workspace - leitet ihre Werte hiervon ab und definiert nichts eigenes.",
+  "registryVersion": 1,
+  "effectiveSince": "2026-09-16",
+  "channels": {
+    "reel": {
+      "label": "Erklär-Reel",
+      "visualWorldId": "serious-minimal-countryball-explainer",
+      "aspectRatio": "9:16",
+      "orientation": "vertical",
+      "format": "reel-short",
+      "productionRoot": "reels",
+      "styleBible": "knowledge/fixed-visual-world.md",
+      "promptModule": "src/shared/fixed-visual-world.js"
+    },
+    "youtube": {
+      "label": "YouTube-Langvideo",
+      "visualWorldId": "youtube-editorial-stick-explainer",
+      "aspectRatio": "16:9",
+      "orientation": "horizontal",
+      "format": "youtube-longform",
+      "productionRoot": "youtube",
+      "styleBible": "youtube/YOUTUBE_VISUAL_WORLD.md",
+      "promptModule": "src/shared/youtube-visual-world.js"
+    }
+  },
+  "worlds": [
+    {
+      "id": "serious-minimal-countryball-explainer",
+      "label": "Serious Minimal Countryball Explainer",
+      "channel": "reel",
+      "aspectRatio": "9:16",
+      "active": true,
+      "characterSystem": "countryball",
+      "summary": "Seriöse, cleane 2D-Countryball-Bildsprache mit dicken schwarzen Konturen, flachen Farbfeldern und 0–3 passenden Requisiten.",
+      "forbiddenCharacterSystems": ["stick-figure", "illustrated-human", "photorealistic-person"],
+      "neverUseFor": ["youtube"]
+    },
+    {
+      "id": "youtube-editorial-stick-explainer",
+      "label": "YouTube Editorial Stick Explainer",
+      "channel": "youtube",
+      "aspectRatio": "16:9",
+      "active": true,
+      "characterSystem": "stick-figure",
+      "summary": "Ruhiger 2D-Hand-drawn-Editorial-Stil mit einfachen Stick-Figure-Menschen, warmen gedämpften Farben und reduzierten Umgebungen.",
+      "forbiddenCharacterSystems": ["countryball", "photorealistic-person"],
+      "neverUseFor": ["reel"]
+    }
+  ],
+  "retired": [
+    {
+      "id": "modern-countryball-explainer",
+      "formerChannel": "reel",
+      "replacedBy": "serious-minimal-countryball-explainer",
+      "retiredOn": "2026-09-11",
+      "note": "Darf in keiner aktiven Regel, Doku oder Prompt-Datei mehr als gültige Bildwelt auftauchen."
+    }
+  ],
+  "separationRules": {
+    "oneWorldPerChannel": true,
+    "crossChannelInheritanceForbidden": true,
+    "aspectRatiosMustDiffer": true,
+    "characterSystemsMustDiffer": true,
+    "guidance": "Reel und YouTube teilen sich keine Bildwelt, kein Figurensystem und kein Seitenverhältnis. Ein Bild aus einem Kanal darf nie im anderen wiederverwendet werden."
+  }
+}

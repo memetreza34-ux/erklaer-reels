@@ -34,15 +34,15 @@ async function createFixture(playbackRate, loudnessNormalized = true) {
     playbackRate,
     loudnessNormalized,
     loudnessSettings: {
-      loudnessTargetLufs: -16,
-      truePeakDbtp: -1.5,
+      loudnessTargetLufs: -14,
+      truePeakDbtp: -1,
       loudnessRangeLra: 11
     }
   });
   return root;
 }
 
-test('wertet 1.10x mit -16 LUFS als vollständiges Legacy-Audio-Pacing', async () => {
+test('wertet 1.10x mit -14 LUFS als vollständiges Legacy-Audio-Pacing', async () => {
   const root = await createFixture(1.1);
   const progress = await calculateReelProgress(root);
 
@@ -72,8 +72,8 @@ test('moderne Reports benötigen echte Messwerte innerhalb der Toleranz', async 
     version: 5,
     loudnessMeasured: true,
     loudnessMeasurement: {
-      integratedLufs: -16.2,
-      truePeakDbtp: -1.7,
+      integratedLufs: -14.2,
+      truePeakDbtp: -1.1,
       passed: true
     }
   });

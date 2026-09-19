@@ -1,0 +1,108 @@
+{
+  "version": 24,
+  "reelId": "reel-01_was-ist-ein-vetorecht",
+  "title": "Was ist ein Vetorecht?",
+  "createdAt": "2026-09-17T03:28:14.804Z",
+  "phase": "content-production",
+  "subtitlesEnabled": false,
+  "imageCountMode": "one-hook-two-standard",
+  "visualWorldMode": "fixed",
+  "visualStyleId": "serious-minimal-countryball-explainer",
+  "tasks": [
+    {
+      "id": "script-final",
+      "label": "Voice-over mit 155–175 Wörtern, natürlicher Betonung und starkem Ende fertigstellen",
+      "status": "pending"
+    },
+    {
+      "id": "visual-world-fixed",
+      "label": "Feste Reel-Bildwelt Serious Minimal Countryball Explainer für jede Bildphase beibehalten; keine Stilrotation",
+      "status": "pending"
+    },
+    {
+      "id": "visual-world-separated",
+      "label": "YouTube-Bildwelt strikt getrennt halten; keine Stick-Figuren, kein 16:9-Longform-Look in Reels",
+      "status": "pending"
+    },
+    {
+      "id": "scene-first-visuals",
+      "label": "Jede Bildphase als konkrete lebendige Mini-Szene planen; Posterkarte, Headline-plus-Icon und sterile Icon-Boards vermeiden",
+      "status": "pending"
+    },
+    {
+      "id": "visual-depth-variety",
+      "label": "Perspektive, Farbkontrast und einfache Tiefenstaffelung zwischen benachbarten Bildern bewusst variieren",
+      "status": "pending"
+    },
+    {
+      "id": "scenes-fill",
+      "label": "9 narrative Szenen mit klaren Audio-Cues planen",
+      "status": "pending"
+    },
+    {
+      "id": "image-density-plan",
+      "label": "Hook exakt 1 Bildphase, jede weitere Szene exakt 2 Bildphasen; keine dritte Phase",
+      "status": "pending"
+    },
+    {
+      "id": "scene-timing-balance",
+      "label": "Hook 4.5–6s, normale Szenen 6–7.5s und Schlussbild-Nachlauf 0.6s planen",
+      "status": "pending"
+    },
+    {
+      "id": "image-text-plan",
+      "label": "Cover mit starkem deutschem Hook-Text; danach imageText nur wenn hilfreich, 0–4 Wörter und viele Bildphasen bewusst ohne Text",
+      "status": "pending"
+    },
+    {
+      "id": "ending-check",
+      "label": "Prüffrage und einprägsamen Abschlusssatz auf zwei Szenen verteilen",
+      "status": "pending"
+    },
+    {
+      "id": "prompts-write",
+      "label": "Für jede Bildphase einen vollständigen englischen 9:16-Prompt im Stil serious-minimal-countryball-explainer schreiben; Handlung, Umgebung, Perspektive, Tiefe und Farbkontrast konkret angeben",
+      "status": "pending"
+    },
+    {
+      "id": "prompts-export",
+      "label": "Alle Bildphasen in globaler Bildreihenfolge als seriellen Google-Flow-Gesamtprompt exportieren",
+      "status": "pending"
+    },
+    {
+      "id": "subtitles-disabled",
+      "label": "Untertitel deaktiviert lassen; keine Subtitle-Cues und keinen Word-Sync erzeugen",
+      "status": "pending"
+    },
+    {
+      "id": "effects-write",
+      "label": "Harte Cuts, dezente Bewegung auf fast jedem Bildmoment und SFX für jeden Szenen-/internen Bildwechsel planen; Bildschnitt ca. 0.08s vor Cue, SFX weitere 0.04s davor",
+      "status": "pending"
+    },
+    {
+      "id": "asset-matching-plan",
+      "label": "Zweistufige visuelle Zuordnung jeder Bildphase mit mindestens 0.75 Konfidenz vorbereiten",
+      "status": "pending"
+    },
+    {
+      "id": "title-image-write",
+      "label": "Szene 1 als Titelbild ausarbeiten: stärkste visuelle Idee plus klare Headline, nicht nur Text auf leerer Fläche",
+      "status": "pending"
+    },
+    {
+      "id": "caption-write",
+      "label": "Caption erstellen",
+      "status": "pending"
+    },
+    {
+      "id": "sources-write",
+      "label": "Schema-3-Quellen mit Primär-/Offiziell- und unabhängiger Sekundärrolle dokumentieren",
+      "status": "pending"
+    },
+    {
+      "id": "content-check",
+      "label": "npm run check:content --strict erfolgreich ausführen",
+      "status": "pending"
+    }
+  ]
+}

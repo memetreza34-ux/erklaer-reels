@@ -1,0 +1,33 @@
+{
+  "version": 5,
+  "startedAt": "2026-09-19T07:07:54.040Z",
+  "finishedAt": "2026-09-19T07:09:29.618Z",
+  "passed": true,
+  "renderer": "remotion",
+  "compositionId": "ErklaerReel",
+  "codec": "h264",
+  "crf": 18,
+  "reelDirectory": "/Users/arman/Erklär-Reels-Claud/reels/2026-KW37_07-09_bis_13-09/donnerstag/reel-01_was-ist-ein-vetorecht",
+  "outputFile": "reels/2026-KW37_07-09_bis_13-09/donnerstag/reel-01_was-ist-ein-vetorecht/export/FERTIGES-REEL.mp4",
+  "renderedOutputFile": "reels/2026-KW37_07-09_bis_13-09/donnerstag/reel-01_was-ist-ein-vetorecht/export/FERTIGES-REEL.mp4",
+  "exportVideoFile": "reels/2026-KW37_07-09_bis_13-09/donnerstag/reel-01_was-ist-ein-vetorecht/export/FERTIGES-REEL.mp4",
+  "exportCaptionFile": "reels/2026-KW37_07-09_bis_13-09/donnerstag/reel-01_was-ist-ein-vetorecht/export/UNIVERSELLE-CAPTION.txt",
+  "exportCaptionSource": "caption/caption.txt",
+  "exportCaptionFallbackUsed": false,
+  "exportCaptionWordCount": 117,
+  "outputBytes": 36334824,
+  "subtitlesEnabled": false,
+  "composition": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationSeconds": 64.351,
+    "durationFrames": 1931,
+    "audioDurationSeconds": 63.751,
+    "endingHoldSeconds": 0.6
+  },
+  "effectsHardGatePassed": true,
+  "trailingVoiceoverSilenceSeconds": 0,
+  "renderedSoundEffects": 20,
+  "validationReport": "review/renderer-input-report.json"
+}

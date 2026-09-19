@@ -1,7 +1,8 @@
 import { access, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import { analyzeFlagPrompt } from '../shared/image-prompt-entities.js';
 import { FIXED_VISUAL_STYLE_ID } from '../shared/fixed-visual-world.js';
-import { inspectReelHook } from '../shared/reel-hook-quality.js';
+import { inspectReelHook, coverHeadlineMatchesTopic, deriveCoverHeadline } from '../shared/reel-hook-quality.js';
 import { findNarrationCueStartPercent } from '../shared/image-phase-cue.js';
 
 import { inspectSourcesMarkdown } from './source-quality.js';
@@ -176,8 +177,8 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
     scriptContents[scriptName] = content;
     addCheck(checks, `script-${scriptName}`, present && content.length >= 120,
       `${scriptName} fehlt oder ist zu kurz.`);
-    addCheck(checks, `script-${scriptName}-word-count`, words >= 155 && words <= 175,
-      `${scriptName} enthält ${words} Wörter; Ziel sind 155–175 Wörter für ungefähr eine Minute bei 1,10x.`);
+    addCheck(checks, `script-${scriptName}-word-count`, words >= 170 && words <= 200,
+      `${scriptName} enthält ${words} Wörter; Ziel sind 170–200 Wörter für mindestens eine Minute bei 1,10x.`);
   }
   addCheck(checks, 'scripts-identical', scriptContents['final-script.txt'] === scriptContents['voice-script.txt'],
     'final-script.txt und voice-script.txt müssen denselben finalen Sprechertext enthalten.', 'warning');
@@ -278,6 +279,13 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
         `${phaseLabel}: ${phase.promptFileName} fehlt oder ist nicht detailliert genug.`);
       addCheck(checks, `${phaseLabel}-prompt-format`, /vertical\s+9:16|9:16/i.test(prompt),
         `${phaseLabel}: Der Bildprompt sollte das Format 9:16 ausdrücklich nennen.`, 'warning');
+
+      // Ein Prompt, der Flaggen verlangt ohne sie zu benennen, lässt das Bildmodell
+      // Länder erfinden. Im Vetorecht-Reel kamen so Deutschland und Brasilien in
+      // ein Bild über die fünf Vetomächte.
+      const flagPrompt = analyzeFlagPrompt(prompt);
+      addCheck(checks, `${phaseLabel}-prompt-named-flags`, !flagPrompt.issue,
+        `${phaseLabel}: ${flagPrompt.issue ?? ''}`);
       addCheck(checks, `${phaseLabel}-visual-idea`, String(phase.visualIdea || scene.visualIdea || '').trim().length >= 20,
         `${phaseLabel}: visualIdea fehlt oder ist zu kurz.`);
       addCheck(checks, `${phaseLabel}-expected-file`, String(phase.expectedImageFileName ?? '').length >= 5,
@@ -306,8 +314,8 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
     }
   }
 
-  addCheck(checks, 'total-duration', totalDuration >= 55 && totalDuration <= 60,
-    `Die geschätzte Gesamtdauer beträgt ${totalDuration.toFixed(1)} Sekunden; Ziel sind 55–60 Sekunden.`);
+  addCheck(checks, 'total-duration', totalDuration >= 60 && totalDuration <= 72,
+    `Die geschätzte Gesamtdauer beträgt ${totalDuration.toFixed(1)} Sekunden; Ziel sind 60–72 Sekunden, nie unter einer Minute.`);
   addCheck(checks, 'all-image-prompts-covered', validatedPromptCount === totalPlannedImages,
     `Es sind ${validatedPromptCount} von ${totalPlannedImages} geplanten Bildprompts ausreichend ausgearbeitet.`);
 
@@ -409,6 +417,12 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
     `scenes/${titleSceneId}/image-prompt.txt fehlt oder ist nicht detailliert genug. Szene 1 ist zugleich das Titelbild.`);
   addCheck(checks, 'title-image-text', headline.length >= 5,
     `scenes/${titleSceneId}/scene.json benötigt einen imageText als sichtbaren Hook.`);
+
+  // Bild 01 ist zugleich das Cover: der erste Frame im Feed. Er muss ohne Ton sagen,
+  // worum es geht, und trägt deshalb das Thema - nicht eine Zwischenaussage aus dem Hook.
+  addCheck(checks, 'title-image-is-cover', !headline || coverHeadlineMatchesTopic(reel.title, headline),
+    `Das Titelbild ist zugleich das Cover und muss das Thema benennen. ` +
+    `"${headline}" passt nicht zum Reel-Titel "${reel.title}". Vorschlag: "${deriveCoverHeadline(reel.title)}".`);
   addCheck(checks, 'title-image-text-in-prompt', !headline || titlePrompt.toUpperCase().includes(headline.toUpperCase()),
     'Der Hook-Text von Szene 1 steht nicht exakt im Bildprompt.', 'warning');
   addCheck(checks, 'title-image-visual-idea', String(titleScene.visualIdea ?? '').trim().length >= 20,

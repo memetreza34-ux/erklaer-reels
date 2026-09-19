@@ -8,10 +8,13 @@ const REPO_ROOT = fileURLToPath(new URL('..', import.meta.url));
 const text = (file) => readFile(path.join(REPO_ROOT, file), 'utf8');
 
 test('Workspace-Core verankert aktuelle Bildwelt und Quellen-Schema', async () => {
+  // Verhalten pruefen, nicht den Quelltext: die ID kommt aus config/visual-worlds.json
+  // und steht deshalb bewusst nicht mehr als Literal in fixed-visual-world.js.
+  const { FIXED_VISUAL_STYLE_ID } = await import('../src/shared/fixed-visual-world.js');
+  assert.equal(FIXED_VISUAL_STYLE_ID, 'serious-minimal-countryball-explainer');
+
   const workspace = await text('src/core/workspace.js');
-  const fixedWorld = await text('src/shared/fixed-visual-world.js');
   assert.match(workspace, /FIXED_VISUAL_STYLE_ID/);
-  assert.match(fixedWorld, /serious-minimal-countryball-explainer/);
   assert.match(workspace, /sourceQualitySchemaVersion:\s*3/);
 });
 

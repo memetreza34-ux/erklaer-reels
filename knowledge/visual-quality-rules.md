@@ -6,7 +6,9 @@
 
 Fertige Szenenbilder müssen auf einem Smartphone sofort verständlich, technisch geeignet, inhaltlich eindeutig dem jeweiligen Bildmoment zugeordnet und sichtbar Teil derselben festen Bildwelt sein.
 
-**Aktive Repo-Bildwelt: `modern-countryball-explainer`.**
+**Aktive Reel-Bildwelt: `serious-minimal-countryball-explainer` (9:16).**
+
+Quelle: `config/visual-worlds.json`. YouTube-Langvideos nutzen die getrennte Welt `youtube-editorial-stick-explainer` (16:9) und werden von diesen Reel-Regeln nicht erfasst.
 
 Untertitel sind deaktiviert. Es wird **keine Untertitelzone reserviert oder geprüft**.
 
@@ -89,7 +91,7 @@ Für jede Bildphase prüfen und dokumentieren:
 - `sceneMeaningMatchesNarration`: sichtbarer Inhalt passt zur Narration
 - `sceneMatchesVisualIdea`: Bild erklärt die konkrete visuelle Idee
 - `oneClearMoment`: ein klar lesbarer Bildmoment statt unverständlicher Überladung
-- Stilkonformität mit `modern-countryball-explainer`
+- Stilkonformität mit `serious-minimal-countryball-explainer`
 
 ### Pass 2
 Danach gegen vorherige und nächste Bildphase prüfen:
