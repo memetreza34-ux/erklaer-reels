@@ -130,8 +130,8 @@
       "trimLeadingAndTrailingSilence": true,
       "loudnessNormalization": {
         "enabled": true,
-        "integratedLufs": -16,
-        "truePeakDbtp": -1.5,
+        "integratedLufs": -14,
+        "truePeakDbtp": -1,
         "loudnessRangeLra": 11
       },
       "rerunTimelineAfterward": true,

@@ -33,7 +33,7 @@ async function createReadyFixture() {
     afterSeconds: 2,
     playbackRate: 1.1,
     loudnessNormalized: true,
-    loudnessSettings: { loudnessTargetLufs: -16, truePeakDbtp: -1.5, loudnessRangeLra: 11 }
+    loudnessSettings: { loudnessTargetLufs: -14, truePeakDbtp: -1, loudnessRangeLra: 11 }
   });
   await writeJson(path.join(root, 'review', 'final-readiness-report.json'), { readyForRenderer: true });
   await writeJson(path.join(root, 'render', 'render-plan.json'), {
@@ -101,8 +101,8 @@ test('akzeptiert Version 5 nur mit bestandener echter Lautheitsmessung', async (
     loudnessMeasured: true,
     loudnessMeasurement: {
       measured: true,
-      integratedLufs: -16.1,
-      truePeakDbtp: -1.7,
+      integratedLufs: -14.1,
+      truePeakDbtp: -1.1,
       passed: true
     }
   });

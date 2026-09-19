@@ -34,8 +34,8 @@ async function fixture() {
     outputFile: 'audio/voiceover-tight.m4a',
     loudnessMeasured: true,
     loudnessMeasurement: {
-      integratedLufs: -16.1,
-      truePeakDbtp: -1.7,
+      integratedLufs: -14.1,
+      truePeakDbtp: -1.1,
       passed: true
     }
   });
