@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { buildAudioPacingFilter } from '../src/core/audio-tightener.js';
+import { MOTION_ALIASES, canonicalMotionType, motionDirectionMismatch, phaseCameraMotion } from '../src/shared/camera-motion.js';
 import { EDIT_TIMING_STYLE } from '../src/shared/edit-timing-style.js';
 
 test('Voice-Pacing entfernt Endstille vor dem festen Schluss-Hold', () => {
@@ -30,9 +31,38 @@ test('jeder Bildmoment bekommt selbst bei unvollständigem Plan einen Motion-Fal
 });
 
 test('bekannte alte Motion-Aliasnamen werden nicht mehr versehentlich statisch gerendert', async () => {
+  assert.equal(MOTION_ALIASES['gentle-pan'], 'ken-burns');
+  assert.equal(MOTION_ALIASES['medium-push-in'], 'slow-zoom-in');
+  assert.equal(canonicalMotionType('pull-out'), 'subtle-pull-out');
+
+  // Renderer, Effects-Guard und Timeline müssen dieselbe Tabelle benutzen, sonst
+  // fällt eine Bewegung in der Prüfung durch und im Render wieder heraus.
   const renderer = await readFile(new URL('../src/renderer/ReelComposition.jsx', import.meta.url), 'utf8');
-  assert.match(renderer, /gentle-pan.*ken-burns/s);
-  assert.match(renderer, /medium-push-in.*slow-zoom-in/s);
+  assert.match(renderer, /from '\.\.\/shared\/camera-motion\.js'/);
+  const guard = await readFile(new URL('../src/core/effects-quality-file-guard.js', import.meta.url), 'utf8');
+  assert.match(guard, /from '\.\.\/shared\/camera-motion\.js'/);
+  const timeline = await readFile(new URL('../src/core/timeline.js', import.meta.url), 'utf8');
+  assert.match(timeline, /from '\.\.\/shared\/camera-motion\.js'/);
+});
+
+test('ein Bewegungstyp muss auch das tun, was sein Name verspricht', () => {
+  // Genau dieser Fall stand im Vetorecht-Reel: zehn verschiedene Bewegungsnamen,
+  // zehnmal derselbe 3-Prozent-Push-in.
+  assert.ok(motionDirectionMismatch({ type: 'pan-left', startScale: 1, endScale: 1.03, panXPercent: 0, panYPercent: 0 }));
+  assert.ok(motionDirectionMismatch({ type: 'slow-zoom-out', startScale: 1, endScale: 1.03, panXPercent: 0, panYPercent: 0 }));
+  assert.ok(motionDirectionMismatch({ type: 'pan-up', startScale: 1, endScale: 1.03, panXPercent: 0, panYPercent: 0 }));
+  assert.equal(motionDirectionMismatch({ type: 'pan-left', startScale: 1.04, endScale: 1.04, panXPercent: -2, panYPercent: 0 }), null);
+  assert.equal(motionDirectionMismatch({ type: 'slow-zoom-out', startScale: 1.05, endScale: 1, panXPercent: 0, panYPercent: 0 }), null);
+  assert.equal(motionDirectionMismatch({ type: 'subtle-push-in', startScale: 1, endScale: 1.04, panXPercent: 0, panYPercent: 0 }), null);
+});
+
+test('interne Bildphasen laufen gegen die Szenenbewegung statt statisch zu bleiben', () => {
+  const scene = { type: 'subtle-push-in', startScale: 1, endScale: 1.04 };
+  const second = phaseCameraMotion(scene, 1);
+  assert.equal(second.type, 'subtle-pull-out');
+  assert.equal(motionDirectionMismatch(second), null);
+  assert.equal(phaseCameraMotion(scene, 2).type, 'subtle-push-in');
+  assert.notEqual(second.type, 'none');
 });
 
 test('Renderer kann einen aufgelösten SFX notfalls auch aus seinem zentral geprüften Typ ableiten', async () => {

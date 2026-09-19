@@ -3,6 +3,7 @@ import { execFile } from 'node:child_process';
 import path from 'node:path';
 import { promisify } from 'node:util';
 
+import { phaseCameraMotion } from '../shared/camera-motion.js';
 import { SUBTITLE_STYLE } from '../shared/subtitle-style.js';
 import { normalizeSceneImagePhases } from '../shared/visual-moments.js';
 
@@ -548,9 +549,12 @@ export async function buildMasterTimeline(reelDirectory, { audioDurationSeconds 
         startFrame: Math.round(phase.startSeconds * 30),
         endFrame: Math.round(phase.endSeconds * 30),
         transitionIn: { type: firstShot ? 'none' : 'cut', durationSeconds: 0 },
+        // Interne Bildphasen bekommen eine echte Gegenbewegung. Vorher stand hier
+        // `none`; der Renderer erfand dann still eine Fallback-Fahrt, sodass der
+        // Planungsfehler in keinem Report auftauchte.
         cameraMotion: phaseIndex === 0
           ? scene.cameraMotion
-          : { type: 'none', startScale: 1, endScale: 1, panXPercent: 0, panYPercent: 0 },
+          : phaseCameraMotion(scene.cameraMotion, phaseIndex),
         subtitles: [],
         soundEffects: phaseIndex === 0 ? scene.soundEffects : []
       });

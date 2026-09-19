@@ -2,7 +2,9 @@ import { createHash } from 'node:crypto';
 import { access, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
+import { checkBackgroundPalette } from './background-palette.js';
 import { readImageMetadata } from './image-metadata.js';
+import { normalizeImageText, readImageTexts } from './image-text-ocr.js';
 import { flattenSceneImagePhases } from '../shared/visual-moments.js';
 
 async function exists(filePath) {
@@ -172,6 +174,37 @@ export async function runVisualQualityCheck(reelDirectory, { strict = false } = 
   const technicalAssets = [];
   const expectedRatio = rules.composition.width / rules.composition.height;
 
+  // Bilder unter der Kompositionsgröße werden im Render hochskaliert und durch die
+  // Kamerafahrt ein zweites Mal vergrößert. Das ist über die volle Laufzeit sichtbar
+  // weich und darf für neue Reels kein bloßer Hinweis mehr sein.
+  const nativeResolutionGateSince = String(rules.composition.nativeResolutionHardGateSince ?? '');
+  const nativeResolutionRequired = Boolean(nativeResolutionGateSince) && String(reel?.date ?? '') >= nativeResolutionGateSince;
+  const resolutionLevel = strict || nativeResolutionRequired ? 'error' : 'warning';
+
+  // Bis hierher prüfte die QC nur JSON und Prompts. Der geplante deutsche Bildtext
+  // wird jetzt im gelieferten Bild selbst nachgewiesen.
+  const imageTextRules = rules.renderedImageText ?? {};
+  const imageTextGateSince = String(imageTextRules.hardGateSince ?? '');
+  const imageTextRequired = imageTextRules.verifyPlannedTextIsVisible === true
+    && Boolean(imageTextGateSince)
+    && String(reel?.date ?? '') >= imageTextGateSince;
+  const imageTextLevel = imageTextRequired ? 'error' : 'warning';
+
+  // Die Palette im Prompt ist eine Bitte; erst die Messung am Bildrand macht sie
+  // verbindlich. Sonst driftet die Serie farblich auseinander wie beim Vetorecht-Reel.
+  const paletteRules = rules.backgroundPalette ?? {};
+  const paletteGateSince = String(paletteRules.hardGateSince ?? '');
+  const paletteRequired = Boolean(paletteGateSince) && String(reel?.date ?? '') >= paletteGateSince;
+  const paletteLevel = paletteRequired ? 'error' : 'warning';
+
+  let ocr = { available: false, reason: 'Bildtext-Prüfung nicht angefordert.', byFile: new Map() };
+  if (imageTextRules.verifyPlannedTextIsVisible === true) {
+    ocr = await readImageTexts(assets.map((asset) => path.resolve(reelDirectory, asset.file)));
+    addCheck(checks, 'rendered-image-text-available', ocr.available,
+      `Der sichtbare Bildtext konnte nicht geprüft werden: ${ocr.reason ?? 'unbekannter Grund'}`,
+      imageTextRequired ? 'error' : 'warning');
+  }
+
   addCheck(checks, 'subtitles-disabled-config', rules.subtitlesEnabled === false,
     'config/visual-quality-rules.json muss Untertitel explizit deaktivieren.', 'error');
   addCheck(checks, 'reel-subtitles-disabled', reel.subtitlesEnabled === false,
@@ -206,9 +239,50 @@ export async function runVisualQualityCheck(reelDirectory, { strict = false } = 
       addCheck(checks, `${asset.assetId}-aspect-ratio`, ratioDifference <= rules.composition.aspectRatioTolerance,
         `${asset.assetId}: Seitenverhältnis ist ${metadata.width}:${metadata.height} statt 9:16.`, strict ? 'error' : 'warning', asset.assetId);
       addCheck(checks, `${asset.assetId}-minimum-resolution`, minimumResolution,
-        `${asset.assetId}: Mindestauflösung ${rules.composition.minimumWidth}×${rules.composition.minimumHeight} wird nicht erreicht.`, strict ? 'error' : 'warning', asset.assetId);
+        `${asset.assetId}: Mindestauflösung ${rules.composition.minimumWidth}×${rules.composition.minimumHeight} wird nicht erreicht.`, resolutionLevel, asset.assetId);
       addCheck(checks, `${asset.assetId}-target-resolution`, targetResolution,
         `${asset.assetId}: Empfohlen sind mindestens ${rules.composition.width}×${rules.composition.height} Pixel.`, 'warning', asset.assetId);
+    }
+
+    if (present && Array.isArray(paletteRules.colours) && paletteRules.colours.length > 0) {
+      const palette = await checkBackgroundPalette(filePath, paletteRules);
+      if (palette.available) {
+        addCheck(checks, `${asset.assetId}-background-palette`, palette.withinPalette,
+          `${asset.assetId}: Hintergrund ${palette.hex} liegt ΔE ${palette.deltaE} neben der Bildwelt-Palette (nächste: ${palette.nearest} ${palette.nearestHex}, erlaubt ${palette.maximumDeltaE}).`,
+          paletteLevel, asset.assetId);
+      } else {
+        addCheck(checks, `${asset.assetId}-background-palette-readable`, false,
+          `${asset.assetId}: ${palette.reason}`, 'warning', asset.assetId);
+      }
+    }
+
+    if (ocr.available && present) {
+      const recognized = ocr.byFile.get(path.resolve(reelDirectory, asset.file));
+      const seenText = recognized?.text ?? '';
+
+      // Instagram und TikTok legen Caption und Buttons über das untere Fünftel.
+      // Text, der dort sitzt, ist im Feed nicht lesbar. Die Safe Zones standen
+      // bisher nur in der Konfiguration, ohne dass sie jemand gegen Text prüfte.
+      const outside = (recognized?.boxes ?? []).filter((box) =>
+        box.left < rules.safeZones.leftPercent / 100
+        || box.right > 1 - rules.safeZones.rightPercent / 100
+        || box.top < rules.safeZones.topPercent / 100
+        || box.bottom > 1 - rules.safeZones.bottomPercent / 100);
+      if (recognized?.boxes?.length) {
+        addCheck(checks, `${asset.assetId}-text-safe-zone`, outside.length === 0,
+          `${asset.assetId}: ${outside.map((box) => `"${box.text}"`).join(', ')} liegt außerhalb der sichtbaren Safe Zone (links/rechts ${rules.safeZones.leftPercent}%, oben ${rules.safeZones.topPercent}%, unten ${rules.safeZones.bottomPercent}%).`,
+          'warning', asset.assetId);
+      }
+      const plannedText = normalizeImageText(asset.expected?.imageText ?? '');
+      if (plannedText) {
+        addCheck(checks, `${asset.assetId}-rendered-image-text`, seenText.includes(plannedText),
+          `${asset.assetId}: Im Bild steht "${recognized?.lines?.join(' / ') || '(kein Text erkannt)'}" statt des geplanten Textes "${asset.expected.imageText}".`,
+          imageTextLevel, asset.assetId);
+      } else if (imageTextRules.warnOnUnplannedText === true) {
+        addCheck(checks, `${asset.assetId}-unplanned-image-text`, seenText.length === 0,
+          `${asset.assetId}: Für dieses Bild war kein Text geplant, erkannt wurde "${recognized?.lines?.join(' / ')}". Prüfen, ob das ein gewolltes Requisit ist.`,
+          'warning', asset.assetId);
+      }
     }
 
     const effect = effectByScene.get(asset.parentSceneId) ?? {};

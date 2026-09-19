@@ -1,6 +1,8 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
+import { verifyAssetPlanConsistency } from './asset-plan-consistency.js';
+import { verifyMeasuredCueTiming } from './measured-timing-guard.js';
 import { verifyAudioPacingFileBinding } from './audio-pacing-file-guard.js';
 import { validateReelContent } from './content-validator.js';
 import { verifyFutureEffectsCoverage } from './effects-quality-file-guard.js';
@@ -151,6 +153,31 @@ export async function finalizeReel(reelDirectory, {
   stages.audioPacingFileBinding = guardStage(pacingBinding, 'audio-pacing-file-binding', 'Audio-Pacing-Dateibindung');
   if (!pacingBinding.passed) blockingIssues.push({ id: 'audio-pacing-file-binding', level: 'error', message: pacingBinding.reason });
 
+  // Geschätzte Bildzeitpunkte dürfen sich nicht länger "audio-synced" nennen.
+  const cueTiming = await verifyMeasuredCueTiming(reelDirectory);
+  stages.measuredCueTiming = guardStage(cueTiming, 'measured-cue-timing', 'Bildschnitte am gesprochenen Wort gemessen');
+  stages.measuredCueTiming.statistics = cueTiming.statistics ?? null;
+  if (cueTiming.required && !cueTiming.passed) {
+    blockingIssues.push({ id: 'measured-cue-timing', level: 'error', message: cueTiming.reason });
+    for (const finding of cueTiming.findings ?? []) {
+      blockingIssues.push({ id: `cue-${finding.issue}`, level: 'error', message: finding.detail ?? `${finding.id ?? 'Reel'}: ${finding.issue}` });
+    }
+  }
+
+  const assetConsistency = await verifyAssetPlanConsistency(reelDirectory);
+  stages.assetPlanConsistency = guardStage(assetConsistency, 'asset-plan-consistency', 'Abgleich Manifest/Timeline/Bilddateien');
+  stages.assetPlanConsistency.findings = assetConsistency.findings ?? [];
+  if (assetConsistency.required && !assetConsistency.passed) {
+    blockingIssues.push({ id: 'asset-plan-consistency', level: 'error', message: assetConsistency.reason });
+    for (const finding of assetConsistency.findings ?? []) {
+      blockingIssues.push({
+        id: `asset-${finding.issue}`,
+        level: 'error',
+        message: `${finding.targetId || finding.file || 'Reel'}: ${finding.detail}`
+      });
+    }
+  }
+
   const trailingSilence = await verifyTrailingVoiceoverSilence(reelDirectory);
   stages.trailingSilence = guardStage(trailingSilence, 'trailing-voiceover-silence', 'Endstille des finalen Voice-overs');
   stages.trailingSilence.trailingSilenceSeconds = trailingSilence.trailingSilenceSeconds ?? null;
@@ -230,6 +257,8 @@ export async function finalizeReel(reelDirectory, {
     stages.soundLibrary?.passed === true &&
     stages.audioPacingFileBinding?.passed === true &&
     stages.trailingSilence?.passed === true &&
+    stages.assetPlanConsistency?.passed === true &&
+    stages.measuredCueTiming?.passed === true &&
     content.passed === true &&
     stages.audioPacing?.passed === true &&
     stages.audioPacing?.strict === true &&
@@ -241,7 +270,7 @@ export async function finalizeReel(reelDirectory, {
 
   const normalizedDirectory = reelDirectory.split(path.sep).join('/');
   const report = {
-    version: 12,
+    version: 14,
     createdAt,
     reelDirectory: normalizedDirectory,
     strict,

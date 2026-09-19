@@ -4,6 +4,7 @@ import { access, readdir, readFile } from 'node:fs/promises';
 import path from 'node:path';
 
 import { getReelLayout } from '../core/compact-reel-layout.js';
+import { alignCuesToMeasuredAudio } from '../core/measured-cue-alignment.js';
 import { writeSequentialAudioSync } from '../core/reel-image-audio-mapping.js';
 import { probeAudioDuration } from '../core/timeline.js';
 import { getArgument } from '../shared/cli-args.js';
@@ -43,9 +44,14 @@ Automatische Bild↔Audio-Grundausrichtung für Reels.
 Verwendung:
   npm run auto-align:reel -- --dir "reels/.../reel-01_thema"
 
-Die feste Bildreihenfolge und die bereits in Phase 1 definierten spokenText-
-Bereiche werden auf die echte finale Audiodauer verteilt. Dadurch muss
-Antigravity nicht jeden einzelnen Sprachanker interaktiv bestätigen.
+Jeder Bildmoment wird auf den Zeitpunkt gesetzt, an dem sein Cue tatsächlich
+gesprochen wird. Die Wortzeiten kommen aus einer Whisper-Messung am finalen
+Voice-over und werden gegen dessen Fingerprint gecacht.
+
+Optionen:
+  --model      Whisper-Modell, Standard: small
+  --refresh    Messung erzwingen, auch wenn der Cache passt
+  --estimate   Notfall-Rückfall auf die alte Textgewichts-Schätzung
 `);
 }
 
@@ -67,16 +73,46 @@ async function main() {
   if (!duration) throw new Error('Die finale Audiodauer konnte mit ffprobe nicht bestimmt werden.');
 
   const audioFile = path.relative(layout.technicalDirectory, audioPath).split(path.sep).join('/');
+  const estimateOnly = process.argv.includes('--estimate');
+
+  if (!estimateOnly) {
+    const measured = await alignCuesToMeasuredAudio(layout.technicalDirectory, {
+      audioFile,
+      audioDurationSeconds: duration,
+      model: getArgument('--model') ?? undefined,
+      refresh: process.argv.includes('--refresh')
+    });
+
+    if (measured.available) {
+      console.log('Bild↔Audio-Alignment am gesprochenen Wort gemessen.');
+      console.log(`Audio: ${audioFile}`);
+      console.log(`Dauer: ${duration.toFixed(2)} s`);
+      console.log(`Bildmomente: ${measured.total}${measured.cached ? ' (Messung aus dem Cache)' : ''}`);
+      console.log(`Gemessene Cues: ${measured.matched}/${measured.total}`);
+      for (const miss of measured.unmatched) {
+        console.log(`- Nicht gefunden: ${miss.phaseId} "${miss.audioCue}" — Cue an den tatsächlich gesprochenen Wortlaut anpassen.`);
+      }
+      console.log(`Audio-Sync: ${measured.audioSyncPath}`);
+      if (measured.unmatched.length > 0) process.exitCode = 1;
+      return;
+    }
+
+    console.error(`Messung nicht möglich: ${measured.reason}`);
+    console.error('Mit --estimate lässt sich die alte Textgewichts-Schätzung erzwingen; sie gilt dann aber nicht als audio-synchron.');
+    process.exitCode = 1;
+    return;
+  }
+
   const result = await writeSequentialAudioSync(layout.technicalDirectory, {
     audioDurationSeconds: duration,
     audioFile
   });
 
-  console.log('Bild↔Audio-Auto-Alignment erstellt.');
+  console.log('Bild↔Audio-Alignment GESCHÄTZT (nicht gemessen).');
   console.log(`Audio: ${audioFile}`);
   console.log(`Dauer: ${duration.toFixed(2)} s`);
   console.log(`Bildmomente: ${result.mapping.mappings.length}`);
-  console.log('Methode: sequenziell nach gesprochenem Textgewicht; keine Einzel-Rückfragen nötig.');
+  console.log('Methode: sequenziell nach gesprochenem Textgewicht. Am Vetorecht-Reel lag diese Schätzung im Mittel 1,44 s daneben.');
   console.log(`Audio-Sync: ${result.audioSyncPath}`);
 }
 

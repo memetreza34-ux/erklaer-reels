@@ -1,5 +1,6 @@
 import { access, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import { analyzeFlagPrompt } from '../shared/image-prompt-entities.js';
 import { FIXED_VISUAL_STYLE_ID } from '../shared/fixed-visual-world.js';
 import { inspectReelHook, coverHeadlineMatchesTopic, deriveCoverHeadline } from '../shared/reel-hook-quality.js';
 import { findNarrationCueStartPercent } from '../shared/image-phase-cue.js';
@@ -278,6 +279,13 @@ export async function validateReelContent(reelDirectory, { strict = false } = {}
         `${phaseLabel}: ${phase.promptFileName} fehlt oder ist nicht detailliert genug.`);
       addCheck(checks, `${phaseLabel}-prompt-format`, /vertical\s+9:16|9:16/i.test(prompt),
         `${phaseLabel}: Der Bildprompt sollte das Format 9:16 ausdrücklich nennen.`, 'warning');
+
+      // Ein Prompt, der Flaggen verlangt ohne sie zu benennen, lässt das Bildmodell
+      // Länder erfinden. Im Vetorecht-Reel kamen so Deutschland und Brasilien in
+      // ein Bild über die fünf Vetomächte.
+      const flagPrompt = analyzeFlagPrompt(prompt);
+      addCheck(checks, `${phaseLabel}-prompt-named-flags`, !flagPrompt.issue,
+        `${phaseLabel}: ${flagPrompt.issue ?? ''}`);
       addCheck(checks, `${phaseLabel}-visual-idea`, String(phase.visualIdea || scene.visualIdea || '').trim().length >= 20,
         `${phaseLabel}: visualIdea fehlt oder ist zu kurz.`);
       addCheck(checks, `${phaseLabel}-expected-file`, String(phase.expectedImageFileName ?? '').length >= 5,
