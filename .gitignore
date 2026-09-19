@@ -9,6 +9,18 @@ reels/**/output/*.mp4
 reels/**/output/*.webm
 reels/**/output/*.mov
 
+# Der fertige Export ist ein Build-Output und wird bei jedem Render neu erzeugt
+# (99-technik/export plus der Symlink im sichtbaren 03-export-Ordner). Ohne diese
+# Regeln wandert pro Reel ein ~35-MB-MP4 dauerhaft in die Git-History; das
+# Vetorecht-Reel allein hat .git auf 148 MB gebracht. Rohmaterial unter
+# 01-voice-script und 02-audio bleibt bewusst versioniert.
+reels/**/export/*.mp4
+reels/**/export/*.webm
+reels/**/export/*.mov
+reels/**/03-export/*.mp4
+reels/**/03-export/*.webm
+reels/**/03-export/*.mov
+
 reels/**/audio/*.mp3
 reels/**/audio/*.wav
 reels/**/audio/*.m4a
