@@ -16,33 +16,71 @@
     {
       "phaseId": "scene-03-image-01",
       "order": 1,
-      "startPercent": 0.0,
+      "startPercent": 0,
       "promptFileName": "image-prompt.txt",
-      "expectedImageFileName": "scene-03.png",
+      "expectedImageFileName": "scene-03.jpeg",
       "visualIdea": "Ein Stempel drückt das Wort VETO auf ein Dokument.",
       "imageText": "VETO",
       "audioCue": "Dieses eine Land hat ein Vetorecht",
+      "timingBasis": "scene-start",
       "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"Dieses eine Land hat ein Vetorecht\".",
-      "imageStatus": "missing",
-      "assetVerification": null
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-03",
+        "confirmedSceneOrder": 3,
+        "confirmedPhaseOrder": 1,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.686Z"
+      }
     },
     {
       "phaseId": "scene-03-image-02",
       "order": 2,
-      "startPercent": 0.705882,
+      "startPercent": 0.470588,
       "promptFileName": "image-prompt-02.txt",
-      "expectedImageFileName": "scene-03-2.png",
+      "expectedImageFileName": "scene-03-2.jpeg",
       "visualIdea": "Vierzehn kleine Sprechblasen gegen eine große rote.",
       "imageText": "",
-      "audioCue": "Es darf sie einfach überstimmen",
+      "audioCue": "die anderen nicht überzeugen",
+      "timingBasis": "narration-audio-cue",
       "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"Es darf sie einfach überstimmen\".",
-      "imageStatus": "missing",
-      "assetVerification": null
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-03-image-02",
+        "confirmedSceneOrder": 3,
+        "confirmedPhaseOrder": 2,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.688Z"
+      }
     }
   ],
-  "expectedImageFileName": "scene-03.png",
+  "expectedImageFileName": "scene-03.jpeg",
   "promptStatus": "ready",
-  "imageStatus": "missing",
-  "assetVerification": null,
-  "status": "planned"
+  "imageStatus": "ready",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-03",
+    "confirmedSceneOrder": 3,
+    "confirmedPhaseOrder": 1,
+    "visibleSummary": "",
+    "reason": "",
+    "comparedFields": [],
+    "matchMethod": "numbered-global-image-order",
+    "reviewedAt": "2026-09-19T07:01:17.686Z"
+  },
+  "status": "image-ready"
 }

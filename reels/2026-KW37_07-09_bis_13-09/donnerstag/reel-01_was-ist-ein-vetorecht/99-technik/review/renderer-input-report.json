@@ -1,0 +1,3501 @@
+{
+  "createdAt": "2026-09-19T07:07:54.858Z",
+  "passed": true,
+  "summary": {
+    "passedChecks": 334,
+    "failedChecks": 0,
+    "warnings": 1,
+    "totalChecks": 335
+  },
+  "plan": {
+    "version": 5,
+    "reelId": "reel-01_was-ist-ein-vetorecht",
+    "status": "ready-for-renderer",
+    "imageCountMode": "adaptive-dense-v2",
+    "plannedImageCount": 21,
+    "composition": {
+      "width": 1080,
+      "height": 1920,
+      "fps": 30,
+      "durationSeconds": 64.351,
+      "durationFrames": 1931,
+      "audioDurationSeconds": 63.751,
+      "endingHoldSeconds": 0.6
+    },
+    "voiceover": {
+      "file": "audio/voiceover-tight.m4a",
+      "volume": 1
+    },
+    "backgroundMusic": {
+      "enabled": false,
+      "reason": "Voice-over-first Erklärformat; Musik nur nach ausdrücklicher Entscheidung."
+    },
+    "subtitlesEnabled": false,
+    "scenes": [
+      {
+        "sceneId": "scene-01",
+        "shotId": "scene-01",
+        "parentSceneId": "scene-01",
+        "parentSceneOrder": 1,
+        "phaseId": "scene-01-image-01",
+        "phaseOrder": 1,
+        "imageFile": "scenes/scene-01/scene-01.jpeg",
+        "imageStatus": "ready",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-01",
+          "confirmedSceneOrder": 1,
+          "confirmedPhaseOrder": 1,
+          "visibleSummary": "",
+          "reason": "",
+          "comparedFields": [],
+          "matchMethod": "numbered-global-image-order",
+          "reviewedAt": "2026-09-19T07:01:17.674Z"
+        },
+        "startSeconds": 0,
+        "endSeconds": 2.637,
+        "startFrame": 0,
+        "endFrame": 79,
+        "transitionIn": {
+          "type": "none",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "subtle-push-in",
+          "startScale": 1,
+          "endScale": 1.03,
+          "panXPercent": 0,
+          "panYPercent": 0,
+          "easing": "ease-in-out",
+          "reason": "Bewegungsrichtung wechselt bewusst gegenueber der Nachbarszene."
+        },
+        "subtitles": [],
+        "soundEffects": [
+          {
+            "id": "scene-01-sfx-1",
+            "type": "click",
+            "timeSeconds": 2.637,
+            "volume": 0.2,
+            "targetId": "scene-01-image-02",
+            "audioCue": "UNO entscheidet die Mehrheit",
+            "timingStatus": "exact-image-audio-cue",
+            "visualEvent": "Interner Bildwechsel bei \"UNO entscheidet die Mehrheit\"",
+            "reason": "Leiser Akzent exakt am internen Bildmoment."
+          }
+        ]
+      },
+      {
+        "sceneId": "scene-01-image-02",
+        "shotId": "scene-01-image-02",
+        "parentSceneId": "scene-01",
+        "parentSceneOrder": 1,
+        "phaseId": "scene-01-image-02",
+        "phaseOrder": 2,
+        "imageFile": "scenes/scene-01/scene-01-2.jpeg",
+        "imageStatus": "ready",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-01-image-02",
+          "confirmedSceneOrder": 1,
+          "confirmedPhaseOrder": 2,
+          "visibleSummary": "",
+          "reason": "",
+          "comparedFields": [],
+          "matchMethod": "numbered-global-image-order",
+          "reviewedAt": "2026-09-19T07:01:17.677Z"
+        },
+        "startSeconds": 2.637,
+        "endSeconds": 5.655,
+        "startFrame": 79,
+        "endFrame": 170,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "none",
+          "startScale": 1,
+          "endScale": 1,
+          "panXPercent": 0,
+          "panYPercent": 0
+        },
+        "subtitles": [],
+        "soundEffects": []
+      },
+      {
+        "sceneId": "scene-02",
+        "shotId": "scene-02",
+        "parentSceneId": "scene-02",
+        "parentSceneOrder": 2,
+        "phaseId": "scene-02-image-01",
+        "phaseOrder": 1,
+        "imageFile": "scenes/scene-02/scene-02.jpeg",
+        "imageStatus": "ready",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-02",
+          "confirmedSceneOrder": 2,
+          "confirmedPhaseOrder": 1,
+          "visibleSummary": "",
+          "reason": "",
+          "comparedFields": [],
+          "matchMethod": "numbered-global-image-order",
+          "reviewedAt": "2026-09-19T07:01:17.678Z"
+        },
+        "startSeconds": 5.655,
+        "endSeconds": 9.741,
+        "startFrame": 170,
+        "endFrame": 292,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "ken-burns",
+          "startScale": 1,
+          "endScale": 1.03,
+          "panXPercent": 0,
+          "panYPercent": 0,
+          "easing": "ease-in-out",
+          "reason": "Bewegungsrichtung wechselt bewusst gegenueber der Nachbarszene."
+        },
+        "subtitles": [],
+        "soundEffects": [
+          {
+            "id": "scene-02-sfx-1",
+            "type": "soft-whoosh",
+            "timeSeconds": 5.655,
+            "volume": 0.2,
+            "targetId": "",
+            "audioCue": "",
+            "timingStatus": "planned-fallback",
+            "visualEvent": "Harter Wechsel in die neue narrative Szene",
+            "reason": "Kurzer sauberer Uebergangsakzent."
+          },
+          {
+            "id": "scene-02-sfx-2",
+            "type": "click",
+            "timeSeconds": 9.741,
+            "volume": 0.2,
+            "targetId": "scene-02-image-02",
+            "audioCue": "Vierzehn Länder stimmen dafür",
+            "timingStatus": "exact-image-audio-cue",
+            "visualEvent": "Interner Bildwechsel bei \"Vierzehn Länder stimmen dafür\"",
+            "reason": "Leiser Akzent exakt am internen Bildmoment."
+          }
+        ]
+      },
+      {
+        "sceneId": "scene-02-image-02",
+        "shotId": "scene-02-image-02",
+        "parentSceneId": "scene-02",
+        "parentSceneOrder": 2,
+        "phaseId": "scene-02-image-02",
+        "phaseOrder": 2,
+        "imageFile": "scenes/scene-02/scene-02-2.jpeg",
+        "imageStatus": "ready",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-02-image-02",
+          "confirmedSceneOrder": 2,
+          "confirmedPhaseOrder": 2,
+          "visibleSummary": "",
+          "reason": "",
+          "comparedFields": [],
+          "matchMethod": "numbered-global-image-order",
+          "reviewedAt": "2026-09-19T07:01:17.681Z"
+        },
+        "startSeconds": 9.741,
+        "endSeconds": 13.007,
+        "startFrame": 292,
+        "endFrame": 390,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "none",
+          "startScale": 1,
+          "endScale": 1,
+          "panXPercent": 0,
+          "panYPercent": 0
+        },
+        "subtitles": [],
+        "soundEffects": []
+      },
+      {
+        "sceneId": "scene-03",
+        "shotId": "scene-03",
+        "parentSceneId": "scene-03",
+        "parentSceneOrder": 3,
+        "phaseId": "scene-03-image-01",
+        "phaseOrder": 1,
+        "imageFile": "scenes/scene-03/scene-03.jpeg",
+        "imageStatus": "ready",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-03",
+          "confirmedSceneOrder": 3,
+          "confirmedPhaseOrder": 1,
+          "visibleSummary": "",
+          "reason": "",
+          "comparedFields": [],
+          "matchMethod": "numbered-global-image-order",
+          "reviewedAt": "2026-09-19T07:01:17.686Z"
+        },
+        "startSeconds": 13.007,
+        "endSeconds": 15.697,
+        "startFrame": 390,
+        "endFrame": 471,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "slow-zoom-in",
+          "startScale": 1,
+          "endScale": 1.03,
+          "panXPercent": 0,
+          "panYPercent": 0,
+          "easing": "ease-in-out",
+          "reason": "Bewegungsrichtung wechselt bewusst gegenueber der Nachbarszene."
+        },
+        "subtitles": [],
+        "soundEffects": [
+          {
+            "id": "scene-03-sfx-1",
+            "type": "soft-whoosh",
+            "timeSeconds": 13.007,
+            "volume": 0.2,
+            "targetId": "",
+            "audioCue": "",
+            "timingStatus": "planned-fallback",
+            "visualEvent": "Harter Wechsel in die neue narrative Szene",
+            "reason": "Kurzer sauberer Uebergangsakzent."
+          },
+          {
+            "id": "scene-03-sfx-2",
+            "type": "click",
+            "timeSeconds": 15.697,
+            "volume": 0.2,
+            "targetId": "scene-03-image-02",
+            "audioCue": "die anderen nicht überzeugen",
+            "timingStatus": "exact-image-audio-cue",
+            "visualEvent": "Interner Bildwechsel bei \"die anderen nicht überzeugen\"",
+            "reason": "Leiser Akzent exakt am internen Bildmoment."
+          }
+        ]
+      },
+      {
+        "sceneId": "scene-03-image-02",
+        "shotId": "scene-03-image-02",
+        "parentSceneId": "scene-03",
+        "parentSceneOrder": 3,
+        "phaseId": "scene-03-image-02",
+        "phaseOrder": 2,
+        "imageFile": "scenes/scene-03/scene-03-2.jpeg",
+        "imageStatus": "ready",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-03-image-02",
+          "confirmedSceneOrder": 3,
+          "confirmedPhaseOrder": 2,
+          "visibleSummary": "",
+          "reason": "",
+          "comparedFields": [],
+          "matchMethod": "numbered-global-image-order",
+          "reviewedAt": "2026-09-19T07:01:17.688Z"
+        },
+        "startSeconds": 15.697,
+        "endSeconds": 18.606,
+        "startFrame": 471,
+        "endFrame": 558,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "none",
+          "startScale": 1,
+          "endScale": 1,
+          "panXPercent": 0,
+          "panYPercent": 0
+        },
+        "subtitles": [],
+        "soundEffects": []
+      },
+      {
+        "sceneId": "scene-04",
+        "shotId": "scene-04",
+        "parentSceneId": "scene-04",
+        "parentSceneOrder": 4,
+        "phaseId": "scene-04-image-01",
+        "phaseOrder": 1,
+        "imageFile": "scenes/scene-04/scene-04.jpeg",
+        "imageStatus": "ready",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-04",
+          "confirmedSceneOrder": 4,
+          "confirmedPhaseOrder": 1,
+          "visibleSummary": "",
+          "reason": "",
+          "comparedFields": [],
+          "matchMethod": "numbered-global-image-order",
+          "reviewedAt": "2026-09-19T07:01:17.690Z"
+        },
+        "startSeconds": 18.606,
+        "endSeconds": 20.987,
+        "startFrame": 558,
+        "endFrame": 630,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "pan-left",
+          "startScale": 1,
+          "endScale": 1.03,
+          "panXPercent": 0,
+          "panYPercent": 0,
+          "easing": "ease-in-out",
+          "reason": "Bewegungsrichtung wechselt bewusst gegenueber der Nachbarszene."
+        },
+        "subtitles": [],
+        "soundEffects": [
+          {
+            "id": "scene-04-sfx-1",
+            "type": "soft-whoosh",
+            "timeSeconds": 18.606,
+            "volume": 0.2,
+            "targetId": "",
+            "audioCue": "",
+            "timingStatus": "planned-fallback",
+            "visualEvent": "Harter Wechsel in die neue narrative Szene",
+            "reason": "Kurzer sauberer Uebergangsakzent."
+          },
+          {
+            "id": "scene-04-sfx-2",
+            "type": "click",
+            "timeSeconds": 20.987,
+            "volume": 0.2,
+            "targetId": "scene-04-image-02",
+            "audioCue": "wechseln alle zwei Jahre",
+            "timingStatus": "exact-image-audio-cue",
+            "visualEvent": "Interner Bildwechsel bei \"wechseln alle zwei Jahre\"",
+            "reason": "Leiser Akzent exakt am internen Bildmoment."
+          }
+        ]
+      },
+      {
+        "sceneId": "scene-04-image-02",
+        "shotId": "scene-04-image-02",
+        "parentSceneId": "scene-04",
+        "parentSceneOrder": 4,
+        "phaseId": "scene-04-image-02",
+        "phaseOrder": 2,
+        "imageFile": "scenes/scene-04/scene-04-2.jpeg",
+        "imageStatus": "ready",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-04-image-02",
+          "confirmedSceneOrder": 4,
+          "confirmedPhaseOrder": 2,
+          "visibleSummary": "",
+          "reason": "",
+          "comparedFields": [],
+          "matchMethod": "numbered-global-image-order",
+          "reviewedAt": "2026-09-19T07:01:17.692Z"
+        },
+        "startSeconds": 20.987,
+        "endSeconds": 23.586,
+        "startFrame": 630,
+        "endFrame": 708,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "none",
+          "startScale": 1,
+          "endScale": 1,
+          "panXPercent": 0,
+          "panYPercent": 0
+        },
+        "subtitles": [],
+        "soundEffects": []
+      },
+      {
+        "sceneId": "scene-05",
+        "shotId": "scene-05",
+        "parentSceneId": "scene-05",
+        "parentSceneOrder": 5,
+        "phaseId": "scene-05-image-01",
+        "phaseOrder": 1,
+        "imageFile": "scenes/scene-05/scene-05.jpeg",
+        "imageStatus": "ready",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-05",
+          "confirmedSceneOrder": 5,
+          "confirmedPhaseOrder": 1,
+          "visibleSummary": "",
+          "reason": "",
+          "comparedFields": [],
+          "matchMethod": "numbered-global-image-order",
+          "reviewedAt": "2026-09-19T07:01:17.694Z"
+        },
+        "startSeconds": 23.586,
+        "endSeconds": 27.036,
+        "startFrame": 708,
+        "endFrame": 811,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "slow-zoom-out",
+          "startScale": 1,
+          "endScale": 1.03,
+          "panXPercent": 0,
+          "panYPercent": 0,
+          "easing": "ease-in-out",
+          "reason": "Bewegungsrichtung wechselt bewusst gegenueber der Nachbarszene."
+        },
+        "subtitles": [],
+        "soundEffects": [
+          {
+            "id": "scene-05-sfx-1",
+            "type": "soft-whoosh",
+            "timeSeconds": 23.586,
+            "volume": 0.2,
+            "targetId": "",
+            "audioCue": "",
+            "timingStatus": "planned-fallback",
+            "visualEvent": "Harter Wechsel in die neue narrative Szene",
+            "reason": "Kurzer sauberer Uebergangsakzent."
+          },
+          {
+            "id": "scene-05-sfx-2",
+            "type": "click",
+            "timeSeconds": 27.036,
+            "volume": 0.2,
+            "targetId": "scene-05-image-02",
+            "audioCue": "Die Gewinner des Zweiten",
+            "timingStatus": "exact-image-audio-cue",
+            "visualEvent": "Interner Bildwechsel bei \"Die Gewinner des Zweiten\"",
+            "reason": "Leiser Akzent exakt am internen Bildmoment."
+          }
+        ]
+      },
+      {
+        "sceneId": "scene-05-image-02",
+        "shotId": "scene-05-image-02",
+        "parentSceneId": "scene-05",
+        "parentSceneOrder": 5,
+        "phaseId": "scene-05-image-02",
+        "phaseOrder": 2,
+        "imageFile": "scenes/scene-05/scene-05-2.jpeg",
+        "imageStatus": "ready",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-05-image-02",
+          "confirmedSceneOrder": 5,
+          "confirmedPhaseOrder": 2,
+          "visibleSummary": "",
+          "reason": "",
+          "comparedFields": [],
+          "matchMethod": "numbered-global-image-order",
+          "reviewedAt": "2026-09-19T07:01:17.695Z"
+        },
+        "startSeconds": 27.036,
+        "endSeconds": 30.255,
+        "startFrame": 811,
+        "endFrame": 908,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "none",
+          "startScale": 1,
+          "endScale": 1,
+          "panXPercent": 0,
+          "panYPercent": 0
+        },
+        "subtitles": [],
+        "soundEffects": []
+      },
+      {
+        "sceneId": "scene-06",
+        "shotId": "scene-06",
+        "parentSceneId": "scene-06",
+        "parentSceneOrder": 6,
+        "phaseId": "scene-06-image-01",
+        "phaseOrder": 1,
+        "imageFile": "scenes/scene-06/scene-06.jpeg",
+        "imageStatus": "ready",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-06",
+          "confirmedSceneOrder": 6,
+          "confirmedPhaseOrder": 1,
+          "visibleSummary": "",
+          "reason": "",
+          "comparedFields": [],
+          "matchMethod": "numbered-global-image-order",
+          "reviewedAt": "2026-09-19T07:01:17.697Z"
+        },
+        "startSeconds": 30.255,
+        "endSeconds": 32.263,
+        "startFrame": 908,
+        "endFrame": 968,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "subtle-pull-out",
+          "startScale": 1,
+          "endScale": 1.03,
+          "panXPercent": 0,
+          "panYPercent": 0,
+          "easing": "ease-in-out",
+          "reason": "Bewegungsrichtung wechselt bewusst gegenueber der Nachbarszene."
+        },
+        "subtitles": [],
+        "soundEffects": [
+          {
+            "id": "scene-06-sfx-1",
+            "type": "soft-whoosh",
+            "timeSeconds": 30.255,
+            "volume": 0.2,
+            "targetId": "",
+            "audioCue": "",
+            "timingStatus": "planned-fallback",
+            "visualEvent": "Harter Wechsel in die neue narrative Szene",
+            "reason": "Kurzer sauberer Uebergangsakzent."
+          },
+          {
+            "id": "scene-06-sfx-2",
+            "type": "click",
+            "timeSeconds": 32.263,
+            "volume": 0.2,
+            "targetId": "scene-06-image-02",
+            "audioCue": "Ja-Stimmen von fünfzehn",
+            "timingStatus": "exact-image-audio-cue",
+            "visualEvent": "Interner Bildwechsel bei \"Ja-Stimmen von fünfzehn\"",
+            "reason": "Leiser Akzent exakt am internen Bildmoment."
+          }
+        ]
+      },
+      {
+        "sceneId": "scene-06-image-02",
+        "shotId": "scene-06-image-02",
+        "parentSceneId": "scene-06",
+        "parentSceneOrder": 6,
+        "phaseId": "scene-06-image-02",
+        "phaseOrder": 2,
+        "imageFile": "scenes/scene-06/scene-06-2.jpeg",
+        "imageStatus": "ready",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-06-image-02",
+          "confirmedSceneOrder": 6,
+          "confirmedPhaseOrder": 2,
+          "visibleSummary": "",
+          "reason": "",
+          "comparedFields": [],
+          "matchMethod": "numbered-global-image-order",
+          "reviewedAt": "2026-09-19T07:01:17.699Z"
+        },
+        "startSeconds": 32.263,
+        "endSeconds": 35.172,
+        "startFrame": 968,
+        "endFrame": 1055,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "none",
+          "startScale": 1,
+          "endScale": 1,
+          "panXPercent": 0,
+          "panYPercent": 0
+        },
+        "subtitles": [],
+        "soundEffects": []
+      },
+      {
+        "sceneId": "scene-07",
+        "shotId": "scene-07",
+        "parentSceneId": "scene-07",
+        "parentSceneOrder": 7,
+        "phaseId": "scene-07-image-01",
+        "phaseOrder": 1,
+        "imageFile": "scenes/scene-07/scene-07.jpeg",
+        "imageStatus": "ready",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-07",
+          "confirmedSceneOrder": 7,
+          "confirmedPhaseOrder": 1,
+          "visibleSummary": "",
+          "reason": "",
+          "comparedFields": [],
+          "matchMethod": "numbered-global-image-order",
+          "reviewedAt": "2026-09-19T07:01:17.701Z"
+        },
+        "startSeconds": 35.172,
+        "endSeconds": 38.173,
+        "startFrame": 1055,
+        "endFrame": 1145,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "pan-right",
+          "startScale": 1,
+          "endScale": 1.03,
+          "panXPercent": 0,
+          "panYPercent": 0,
+          "easing": "ease-in-out",
+          "reason": "Bewegungsrichtung wechselt bewusst gegenueber der Nachbarszene."
+        },
+        "subtitles": [],
+        "soundEffects": [
+          {
+            "id": "scene-07-sfx-1",
+            "type": "soft-whoosh",
+            "timeSeconds": 35.172,
+            "volume": 0.2,
+            "targetId": "",
+            "audioCue": "",
+            "timingStatus": "planned-fallback",
+            "visualEvent": "Harter Wechsel in die neue narrative Szene",
+            "reason": "Kurzer sauberer Uebergangsakzent."
+          },
+          {
+            "id": "scene-07-sfx-2",
+            "type": "click",
+            "timeSeconds": 38.173,
+            "volume": 0.2,
+            "targetId": "scene-07-image-02",
+            "audioCue": "Länder Nein sagt",
+            "timingStatus": "exact-image-audio-cue",
+            "visualEvent": "Interner Bildwechsel bei \"Länder Nein sagt\"",
+            "reason": "Leiser Akzent exakt am internen Bildmoment."
+          }
+        ]
+      },
+      {
+        "sceneId": "scene-07-image-02",
+        "shotId": "scene-07-image-02",
+        "parentSceneId": "scene-07",
+        "parentSceneOrder": 7,
+        "phaseId": "scene-07-image-02",
+        "phaseOrder": 2,
+        "imageFile": "scenes/scene-07/scene-07-2.jpeg",
+        "imageStatus": "ready",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-07-image-02",
+          "confirmedSceneOrder": 7,
+          "confirmedPhaseOrder": 2,
+          "visibleSummary": "",
+          "reason": "",
+          "comparedFields": [],
+          "matchMethod": "numbered-global-image-order",
+          "reviewedAt": "2026-09-19T07:01:17.704Z"
+        },
+        "startSeconds": 38.173,
+        "endSeconds": 42.059,
+        "startFrame": 1145,
+        "endFrame": 1262,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "none",
+          "startScale": 1,
+          "endScale": 1,
+          "panXPercent": 0,
+          "panYPercent": 0
+        },
+        "subtitles": [],
+        "soundEffects": []
+      },
+      {
+        "sceneId": "scene-08",
+        "shotId": "scene-08",
+        "parentSceneId": "scene-08",
+        "parentSceneOrder": 8,
+        "phaseId": "scene-08-image-01",
+        "phaseOrder": 1,
+        "imageFile": "scenes/scene-08/scene-08.jpeg",
+        "imageStatus": "ready",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-08",
+          "confirmedSceneOrder": 8,
+          "confirmedPhaseOrder": 1,
+          "visibleSummary": "",
+          "reason": "",
+          "comparedFields": [],
+          "matchMethod": "numbered-global-image-order",
+          "reviewedAt": "2026-09-19T07:01:17.710Z"
+        },
+        "startSeconds": 42.059,
+        "endSeconds": 45.727,
+        "startFrame": 1262,
+        "endFrame": 1372,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "ken-burns",
+          "startScale": 1,
+          "endScale": 1.03,
+          "panXPercent": 0,
+          "panYPercent": 0,
+          "easing": "ease-in-out",
+          "reason": "Bewegungsrichtung wechselt bewusst gegenueber der Nachbarszene."
+        },
+        "subtitles": [],
+        "soundEffects": [
+          {
+            "id": "scene-08-sfx-1",
+            "type": "soft-whoosh",
+            "timeSeconds": 42.059,
+            "volume": 0.2,
+            "targetId": "",
+            "audioCue": "",
+            "timingStatus": "planned-fallback",
+            "visualEvent": "Harter Wechsel in die neue narrative Szene",
+            "reason": "Kurzer sauberer Uebergangsakzent."
+          },
+          {
+            "id": "scene-08-sfx-2",
+            "type": "click",
+            "timeSeconds": 45.727,
+            "volume": 0.2,
+            "targetId": "scene-08-image-02",
+            "audioCue": "einfach nichts sagt",
+            "timingStatus": "exact-image-audio-cue",
+            "visualEvent": "Interner Bildwechsel bei \"einfach nichts sagt\"",
+            "reason": "Leiser Akzent exakt am internen Bildmoment."
+          }
+        ]
+      },
+      {
+        "sceneId": "scene-08-image-02",
+        "shotId": "scene-08-image-02",
+        "parentSceneId": "scene-08",
+        "parentSceneOrder": 8,
+        "phaseId": "scene-08-image-02",
+        "phaseOrder": 2,
+        "imageFile": "scenes/scene-08/scene-08-2.jpeg",
+        "imageStatus": "ready",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-08-image-02",
+          "confirmedSceneOrder": 8,
+          "confirmedPhaseOrder": 2,
+          "visibleSummary": "",
+          "reason": "",
+          "comparedFields": [],
+          "matchMethod": "numbered-global-image-order",
+          "reviewedAt": "2026-09-19T07:01:17.712Z"
+        },
+        "startSeconds": 45.727,
+        "endSeconds": 49.303,
+        "startFrame": 1372,
+        "endFrame": 1479,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "none",
+          "startScale": 1,
+          "endScale": 1,
+          "panXPercent": 0,
+          "panYPercent": 0
+        },
+        "subtitles": [],
+        "soundEffects": []
+      },
+      {
+        "sceneId": "scene-09",
+        "shotId": "scene-09",
+        "parentSceneId": "scene-09",
+        "parentSceneOrder": 9,
+        "phaseId": "scene-09-image-01",
+        "phaseOrder": 1,
+        "imageFile": "scenes/scene-09/scene-09.jpeg",
+        "imageStatus": "ready",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-09",
+          "confirmedSceneOrder": 9,
+          "confirmedPhaseOrder": 1,
+          "visibleSummary": "",
+          "reason": "",
+          "comparedFields": [],
+          "matchMethod": "numbered-global-image-order",
+          "reviewedAt": "2026-09-19T07:01:17.715Z"
+        },
+        "startSeconds": 49.303,
+        "endSeconds": 52.412,
+        "startFrame": 1479,
+        "endFrame": 1572,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "pan-up",
+          "startScale": 1,
+          "endScale": 1.03,
+          "panXPercent": 0,
+          "panYPercent": 0,
+          "easing": "ease-in-out",
+          "reason": "Bewegungsrichtung wechselt bewusst gegenueber der Nachbarszene."
+        },
+        "subtitles": [],
+        "soundEffects": [
+          {
+            "id": "scene-09-sfx-1",
+            "type": "soft-whoosh",
+            "timeSeconds": 49.303,
+            "volume": 0.2,
+            "targetId": "",
+            "audioCue": "",
+            "timingStatus": "planned-fallback",
+            "visualEvent": "Harter Wechsel in die neue narrative Szene",
+            "reason": "Kurzer sauberer Uebergangsakzent."
+          },
+          {
+            "id": "scene-09-sfx-2",
+            "type": "click",
+            "timeSeconds": 52.412,
+            "volume": 0.2,
+            "targetId": "scene-09-image-02",
+            "audioCue": "Ohne dieses Recht hätten",
+            "timingStatus": "exact-image-audio-cue",
+            "visualEvent": "Interner Bildwechsel bei \"Ohne dieses Recht hätten\"",
+            "reason": "Leiser Akzent exakt am internen Bildmoment."
+          }
+        ]
+      },
+      {
+        "sceneId": "scene-09-image-02",
+        "shotId": "scene-09-image-02",
+        "parentSceneId": "scene-09",
+        "parentSceneOrder": 9,
+        "phaseId": "scene-09-image-02",
+        "phaseOrder": 2,
+        "imageFile": "scenes/scene-09/scene-09-2.jpeg",
+        "imageStatus": "ready",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-09-image-02",
+          "confirmedSceneOrder": 9,
+          "confirmedPhaseOrder": 2,
+          "visibleSummary": "",
+          "reason": "",
+          "comparedFields": [],
+          "matchMethod": "numbered-global-image-order",
+          "reviewedAt": "2026-09-19T07:01:17.718Z"
+        },
+        "startSeconds": 52.412,
+        "endSeconds": 55.213,
+        "startFrame": 1572,
+        "endFrame": 1656,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "none",
+          "startScale": 1,
+          "endScale": 1,
+          "panXPercent": 0,
+          "panYPercent": 0
+        },
+        "subtitles": [],
+        "soundEffects": []
+      },
+      {
+        "sceneId": "scene-10",
+        "shotId": "scene-10",
+        "parentSceneId": "scene-10",
+        "parentSceneOrder": 10,
+        "phaseId": "scene-10-image-01",
+        "phaseOrder": 1,
+        "imageFile": "scenes/scene-10/scene-10.jpeg",
+        "imageStatus": "ready",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-10",
+          "confirmedSceneOrder": 10,
+          "confirmedPhaseOrder": 1,
+          "visibleSummary": "",
+          "reason": "",
+          "comparedFields": [],
+          "matchMethod": "numbered-global-image-order",
+          "reviewedAt": "2026-09-19T07:01:17.720Z"
+        },
+        "startSeconds": 55.213,
+        "endSeconds": 58.214,
+        "startFrame": 1656,
+        "endFrame": 1746,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "subtle-push-in",
+          "startScale": 1,
+          "endScale": 1.03,
+          "panXPercent": 0,
+          "panYPercent": 0,
+          "easing": "ease-in-out",
+          "reason": "Bewegungsrichtung wechselt bewusst gegenueber der Nachbarszene."
+        },
+        "subtitles": [],
+        "soundEffects": [
+          {
+            "id": "scene-10-sfx-1",
+            "type": "soft-whoosh",
+            "timeSeconds": 55.213,
+            "volume": 0.2,
+            "targetId": "",
+            "audioCue": "",
+            "timingStatus": "planned-fallback",
+            "visualEvent": "Harter Wechsel in die neue narrative Szene",
+            "reason": "Kurzer sauberer Uebergangsakzent."
+          },
+          {
+            "id": "scene-10-sfx-2",
+            "type": "click",
+            "timeSeconds": 58.214,
+            "volume": 0.2,
+            "targetId": "scene-10-image-02",
+            "audioCue": "können es nur genau",
+            "timingStatus": "exact-image-audio-cue",
+            "visualEvent": "Interner Bildwechsel bei \"können es nur genau\"",
+            "reason": "Leiser Akzent exakt am internen Bildmoment."
+          },
+          {
+            "id": "scene-10-sfx-3",
+            "type": "tick",
+            "timeSeconds": 60.494,
+            "volume": 0.2,
+            "targetId": "scene-10-image-03",
+            "audioCue": "gilt bis heute",
+            "timingStatus": "exact-image-audio-cue",
+            "visualEvent": "Interner Bildwechsel bei \"gilt bis heute\"",
+            "reason": "Leiser Akzent exakt am internen Bildmoment."
+          }
+        ]
+      },
+      {
+        "sceneId": "scene-10-image-02",
+        "shotId": "scene-10-image-02",
+        "parentSceneId": "scene-10",
+        "parentSceneOrder": 10,
+        "phaseId": "scene-10-image-02",
+        "phaseOrder": 2,
+        "imageFile": "scenes/scene-10/scene-10-2.jpeg",
+        "imageStatus": "ready",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-10-image-02",
+          "confirmedSceneOrder": 10,
+          "confirmedPhaseOrder": 2,
+          "visibleSummary": "",
+          "reason": "",
+          "comparedFields": [],
+          "matchMethod": "numbered-global-image-order",
+          "reviewedAt": "2026-09-19T07:01:17.722Z"
+        },
+        "startSeconds": 58.214,
+        "endSeconds": 60.494,
+        "startFrame": 1746,
+        "endFrame": 1815,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "none",
+          "startScale": 1,
+          "endScale": 1,
+          "panXPercent": 0,
+          "panYPercent": 0
+        },
+        "subtitles": [],
+        "soundEffects": []
+      },
+      {
+        "sceneId": "scene-10-image-03",
+        "shotId": "scene-10-image-03",
+        "parentSceneId": "scene-10",
+        "parentSceneOrder": 10,
+        "phaseId": "scene-10-image-03",
+        "phaseOrder": 3,
+        "imageFile": "scenes/scene-10/scene-10-3.jpeg",
+        "imageStatus": "ready",
+        "assetVerification": {
+          "visualReviewed": true,
+          "secondPassConfirmed": true,
+          "sceneOrderConfirmed": true,
+          "confirmedTarget": "scene-10-image-03",
+          "confirmedSceneOrder": 10,
+          "confirmedPhaseOrder": 3,
+          "visibleSummary": "",
+          "reason": "",
+          "comparedFields": [],
+          "matchMethod": "numbered-global-image-order",
+          "reviewedAt": "2026-09-19T07:01:17.724Z"
+        },
+        "startSeconds": 60.494,
+        "endSeconds": 64.351,
+        "startFrame": 1815,
+        "endFrame": 1931,
+        "transitionIn": {
+          "type": "cut",
+          "durationSeconds": 0
+        },
+        "cameraMotion": {
+          "type": "none",
+          "startScale": 1,
+          "endScale": 1,
+          "panXPercent": 0,
+          "panYPercent": 0
+        },
+        "subtitles": [],
+        "soundEffects": []
+      }
+    ]
+  },
+  "readiness": {
+    "version": 12,
+    "createdAt": "2026-09-19T07:07:52.561Z",
+    "reelDirectory": "reels/2026-KW37_07-09_bis_13-09/donnerstag/reel-01_was-ist-ein-vetorecht",
+    "strict": false,
+    "readyForRenderer": false,
+    "subtitlesEnabled": false,
+    "wordSyncRequired": false,
+    "stages": {
+      "sourceQuality": {
+        "passed": true,
+        "required": true,
+        "legacy": false,
+        "reason": null,
+        "checks": [
+          {
+            "id": "source-quality-binding",
+            "passed": true,
+            "level": "error",
+            "message": "Verpflichtende Quellen-QC: bestanden."
+          }
+        ]
+      },
+      "effectsHardGate": {
+        "passed": true,
+        "required": true,
+        "legacy": false,
+        "reason": "Jede narrative Szene besitzt sichtbare Kamerabewegung; bekannte Motion-Aliase werden kanonisch aufgelöst; jeder Szenenwechsel und jeder interne Bildwechsel besitzt einen gültigen SFX aus der zentralen Bibliothek.",
+        "checks": [
+          {
+            "id": "motion-sfx-hard-gate",
+            "passed": true,
+            "level": "error",
+            "message": "Verpflichtende Motion-/SFX-Coverage: bestanden."
+          }
+        ]
+      },
+      "soundLibrary": {
+        "passed": true,
+        "required": true,
+        "copied": [],
+        "unknownTypes": [],
+        "missingFiles": []
+      },
+      "audioPacingFileBinding": {
+        "passed": true,
+        "required": true,
+        "legacy": false,
+        "reason": null,
+        "checks": [
+          {
+            "id": "audio-pacing-file-binding",
+            "passed": true,
+            "level": "error",
+            "message": "Audio-Pacing-Dateibindung: bestanden."
+          }
+        ]
+      },
+      "trailingSilence": {
+        "passed": true,
+        "required": true,
+        "legacy": false,
+        "reason": "Voice-over-Endstille 0.00 s — innerhalb des Limits.",
+        "checks": [
+          {
+            "id": "trailing-voiceover-silence",
+            "passed": true,
+            "level": "error",
+            "message": "Endstille des finalen Voice-overs: bestanden."
+          }
+        ],
+        "trailingSilenceSeconds": 0,
+        "maximumTrailingSilenceSeconds": 0.25
+      },
+      "subtitles": {
+        "passed": true,
+        "required": false,
+        "enabled": false,
+        "checks": [
+          {
+            "id": "subtitles-disabled",
+            "passed": true,
+            "level": "info",
+            "message": "Untertitel sind global deaktiviert und kein Word-Sync ist erforderlich."
+          }
+        ]
+      },
+      "content": {
+        "passed": true,
+        "reportFile": "review/content-readiness.json",
+        "summary": {
+          "passedChecks": 429,
+          "failedChecks": 0,
+          "warnings": 3,
+          "totalChecks": 432
+        }
+      },
+      "audioPacing": {
+        "passed": true,
+        "strict": false,
+        "playbackRate": 1.1,
+        "loudnessTargetLufs": -16,
+        "truePeakDbtp": -1.5,
+        "loudnessMeasured": true,
+        "measuredIntegratedLufs": -16.85,
+        "measuredTruePeakDbtp": -1.3,
+        "beforeSeconds": 91.306667,
+        "afterSeconds": 63.7,
+        "reportFile": "review/audio-pacing-report.json",
+        "summary": {
+          "passedChecks": 12,
+          "failedChecks": 0,
+          "warnings": 0,
+          "totalChecks": 12
+        }
+      },
+      "timeline": {
+        "passed": false,
+        "timingStatus": "audio-synced",
+        "renderStatus": "ready-for-renderer",
+        "reportFile": "review/final-video-report.json",
+        "summary": {
+          "passedChecks": 60,
+          "failedChecks": 1,
+          "warnings": 6,
+          "totalChecks": 67
+        }
+      },
+      "visualQuality": {
+        "passed": true,
+        "strict": false,
+        "reportFile": "review/visual-quality-report.json",
+        "inspectionFile": "review/visual-inspection.json",
+        "summary": {
+          "assetsChecked": 21,
+          "sceneImagesChecked": 21,
+          "passedChecks": 192,
+          "failedChecks": 0,
+          "warnings": 21,
+          "totalChecks": 213
+        }
+      }
+    },
+    "progress": {
+      "reelId": "reel-01_was-ist-ein-vetorecht",
+      "title": "Was ist ein Vetorecht?",
+      "preProduction": 100,
+      "assets": 100,
+      "audioPacing": 100,
+      "timeline": 90,
+      "wordSync": 100,
+      "visualQuality": 50,
+      "productionReady": 94,
+      "rendering": 30,
+      "overall": 88,
+      "details": {
+        "scriptsReady": true,
+        "styleReady": true,
+        "visualWorldUnassigned": false,
+        "scenesReady": "10/10",
+        "plannedImageCount": 21,
+        "promptsReady": "21/21",
+        "titleImagePromptReady": true,
+        "captionReady": true,
+        "sourcesReady": true,
+        "contentCheckReady": true,
+        "audioReady": true,
+        "sceneImagesReady": "24/21",
+        "assetReportReady": true,
+        "audioPacingCreated": true,
+        "audioPacingPassed": true,
+        "audioPacingRate": 1.1,
+        "audioPacingRateSafe": true,
+        "audioLoudnessNormalized": true,
+        "audioLoudnessTargetSafe": true,
+        "audioTruePeakSafe": true,
+        "audioMeasurementRequired": true,
+        "audioMeasurementPresent": true,
+        "audioMeasurementSafe": true,
+        "measuredIntegratedLufs": -16.85,
+        "measuredTruePeakDbtp": -1.3,
+        "audioPacingDurationReduced": true,
+        "timelineBuilt": true,
+        "audioDurationKnown": true,
+        "audioSynced": true,
+        "renderReady": true,
+        "timelineCheckReady": false,
+        "wordSyncRequired": false,
+        "wordSyncCreated": false,
+        "wordSyncPassed": true,
+        "wordSyncProvider": "not-required",
+        "wordCoverage": 1,
+        "visualReportCreated": true,
+        "visualTechnicalReady": true,
+        "visualAssetsReviewed": "0/22",
+        "visualStrictReady": false,
+        "rendererValidated": true,
+        "renderComplete": false
+      },
+      "nextStep": "Master-Timeline mit dem optimierten Audio erzeugen, echte Szenen-Cues eintragen und alle internen Bildphasen prüfen."
+    },
+    "blockingIssues": [
+      {
+        "id": "scene-06-image-phase-duration",
+        "level": "error",
+        "message": "scene-06: Die kürzeste Bildphase dauert 2.01 Sekunden; mindestens 2.2 Sekunden sind nötig, damit ein Bild erfassbar bleibt."
+      }
+    ],
+    "warnings": [
+      {
+        "id": "scene-02-image-02-image-text-prompt",
+        "level": "warning",
+        "message": "scene-02-image-02: imageText steht nicht exakt im Bildprompt."
+      },
+      {
+        "id": "scene-07-image-02-image-text-prompt",
+        "level": "warning",
+        "message": "scene-07-image-02: imageText steht nicht exakt im Bildprompt."
+      },
+      {
+        "id": "effects-not-every-scene-moving",
+        "level": "warning",
+        "message": "Nicht jede Szene sollte automatisch denselben Zoom oder Schwenk erhalten; Motion-Typen sichtbar variieren."
+      },
+      {
+        "id": "scene-03-balanced-duration",
+        "level": "warning",
+        "message": "scene-03: Standardszene dauert 5.60 Sekunden; erlaubt sind 6–7.5 Sekunden."
+      },
+      {
+        "id": "scene-04-balanced-duration",
+        "level": "warning",
+        "message": "scene-04: Standardszene dauert 4.98 Sekunden; erlaubt sind 6–7.5 Sekunden."
+      },
+      {
+        "id": "scene-06-balanced-duration",
+        "level": "warning",
+        "message": "scene-06: Standardszene dauert 4.92 Sekunden; erlaubt sind 6–7.5 Sekunden."
+      },
+      {
+        "id": "scene-09-balanced-duration",
+        "level": "warning",
+        "message": "scene-09: Standardszene dauert 5.91 Sekunden; erlaubt sind 6–7.5 Sekunden."
+      },
+      {
+        "id": "scene-10-balanced-duration",
+        "level": "warning",
+        "message": "scene-10: Schlussszene inklusive Nachlauf dauert 9.14 Sekunden; erlaubt sind 5.8–8.2 Sekunden."
+      },
+      {
+        "id": "scene-10-adjacent-duration-balance",
+        "level": "warning",
+        "message": "scene-10: Der Dauersprung zur vorherigen Szene ist zu groß."
+      },
+      {
+        "id": "scene-01-target-resolution",
+        "level": "warning",
+        "message": "scene-01: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-01-image-02-target-resolution",
+        "level": "warning",
+        "message": "scene-01-image-02: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-02-target-resolution",
+        "level": "warning",
+        "message": "scene-02: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-02-image-02-target-resolution",
+        "level": "warning",
+        "message": "scene-02-image-02: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-03-target-resolution",
+        "level": "warning",
+        "message": "scene-03: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-03-image-02-target-resolution",
+        "level": "warning",
+        "message": "scene-03-image-02: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-04-target-resolution",
+        "level": "warning",
+        "message": "scene-04: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-04-image-02-target-resolution",
+        "level": "warning",
+        "message": "scene-04-image-02: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-05-target-resolution",
+        "level": "warning",
+        "message": "scene-05: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-05-image-02-target-resolution",
+        "level": "warning",
+        "message": "scene-05-image-02: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-06-target-resolution",
+        "level": "warning",
+        "message": "scene-06: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-06-image-02-target-resolution",
+        "level": "warning",
+        "message": "scene-06-image-02: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-07-target-resolution",
+        "level": "warning",
+        "message": "scene-07: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-07-image-02-target-resolution",
+        "level": "warning",
+        "message": "scene-07-image-02: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-08-target-resolution",
+        "level": "warning",
+        "message": "scene-08: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-08-image-02-target-resolution",
+        "level": "warning",
+        "message": "scene-08-image-02: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-09-target-resolution",
+        "level": "warning",
+        "message": "scene-09: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-09-image-02-target-resolution",
+        "level": "warning",
+        "message": "scene-09-image-02: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-10-target-resolution",
+        "level": "warning",
+        "message": "scene-10: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-10-image-02-target-resolution",
+        "level": "warning",
+        "message": "scene-10-image-02: Empfohlen sind mindestens 1080×1920 Pixel."
+      },
+      {
+        "id": "scene-10-image-03-target-resolution",
+        "level": "warning",
+        "message": "scene-10-image-03: Empfohlen sind mindestens 1080×1920 Pixel."
+      }
+    ],
+    "nextStep": "Master-Timeline mit dem optimierten Audio erzeugen, echte Szenen-Cues eintragen und alle internen Bildphasen prüfen."
+  },
+  "checks": [
+    {
+      "id": "render-plan-present",
+      "passed": true,
+      "message": "render/render-plan.json fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "subtitles-disabled-in-reel",
+      "passed": true,
+      "message": "reel.json muss subtitlesEnabled: false setzen.",
+      "level": "error"
+    },
+    {
+      "id": "audio-pacing-report",
+      "passed": true,
+      "message": "review/audio-pacing-report.json fehlt oder das Voice-over-Pacing wurde nicht erfolgreich optimiert.",
+      "level": "warning"
+    },
+    {
+      "id": "audio-playback-rate",
+      "passed": true,
+      "message": "Das finale Voice-over muss mit exakt 1.10x verarbeitet sein.",
+      "level": "warning"
+    },
+    {
+      "id": "audio-loudness-normalized",
+      "passed": true,
+      "message": "Das finale Voice-over muss lautheitsnormalisiert sein.",
+      "level": "warning"
+    },
+    {
+      "id": "audio-lufs-target",
+      "passed": true,
+      "message": "Die Ziellautheit muss -16 LUFS betragen.",
+      "level": "warning"
+    },
+    {
+      "id": "audio-true-peak-target",
+      "passed": true,
+      "message": "Der True-Peak-Zielwert muss -1.5 dBTP betragen.",
+      "level": "warning"
+    },
+    {
+      "id": "audio-loudness-measured",
+      "passed": true,
+      "message": "Audio-Pacing-Reports ab Version 5 müssen eine echte Lautheitsnachmessung enthalten.",
+      "level": "warning"
+    },
+    {
+      "id": "audio-loudness-measurement-passed",
+      "passed": true,
+      "message": "Die nachgelagerte LUFS-/True-Peak-Messung muss bestanden sein.",
+      "level": "warning"
+    },
+    {
+      "id": "audio-measured-lufs-present",
+      "passed": true,
+      "message": "Im Audio-Pacing-Report fehlt der tatsächlich gemessene Integrated-LUFS-Wert.",
+      "level": "warning"
+    },
+    {
+      "id": "audio-measured-true-peak-present",
+      "passed": true,
+      "message": "Im Audio-Pacing-Report fehlt der tatsächlich gemessene True-Peak-Wert.",
+      "level": "warning"
+    },
+    {
+      "id": "audio-measured-values-within-tolerance",
+      "passed": true,
+      "message": "Die gespeicherten LUFS-/True-Peak-Messwerte liegen außerhalb der zentralen Produktionstoleranz.",
+      "level": "warning"
+    },
+    {
+      "id": "composition-width",
+      "passed": true,
+      "message": "Der Renderer erwartet 1080 Pixel Breite.",
+      "level": "error"
+    },
+    {
+      "id": "composition-height",
+      "passed": true,
+      "message": "Der Renderer erwartet 1920 Pixel Höhe.",
+      "level": "error"
+    },
+    {
+      "id": "composition-fps",
+      "passed": true,
+      "message": "Der Renderer erwartet 30 FPS.",
+      "level": "error"
+    },
+    {
+      "id": "composition-duration",
+      "passed": true,
+      "message": "composition.durationFrames muss eine positive Ganzzahl sein.",
+      "level": "error"
+    },
+    {
+      "id": "scenes-present",
+      "passed": true,
+      "message": "Der Render-Plan enthält keine Szenen.",
+      "level": "error"
+    },
+    {
+      "id": "render-status",
+      "passed": true,
+      "message": "render-plan.json besitzt noch nicht den Status ready-for-renderer.",
+      "level": "warning"
+    },
+    {
+      "id": "final-readiness",
+      "passed": false,
+      "message": "review/final-readiness-report.json gibt das Reel noch nicht für den Renderer frei.",
+      "level": "warning"
+    },
+    {
+      "id": "no-subtitles-in-render-plan",
+      "passed": true,
+      "message": "Der Render-Plan enthält 0 Untertitel-Cue(s). Für dieses Format sind Untertitel vollständig deaktiviert.",
+      "level": "error"
+    },
+    {
+      "id": "voiceover-file",
+      "passed": true,
+      "message": "Im Render-Plan fehlt die Voice-over-Datei.",
+      "level": "error"
+    },
+    {
+      "id": "voiceover-format",
+      "passed": true,
+      "message": "Nicht unterstütztes Voice-over-Format: .m4a.",
+      "level": "error"
+    },
+    {
+      "id": "voiceover-present",
+      "passed": true,
+      "message": "Voice-over-Datei wurde nicht gefunden: audio/voiceover-tight.m4a.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-frame-range",
+      "passed": true,
+      "message": "scene-01: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-continuous",
+      "passed": true,
+      "message": "scene-01: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-image-file",
+      "passed": true,
+      "message": "scene-01: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-image-format",
+      "passed": true,
+      "message": "scene-01: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-image-present",
+      "passed": true,
+      "message": "scene-01: Bilddatei wurde nicht gefunden: scenes/scene-01/scene-01.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-transition",
+      "passed": true,
+      "message": "scene-01: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-direct-cut",
+      "passed": true,
+      "message": "scene-01: Erwartet wird transitionIn.type = \"none\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-transition-duration",
+      "passed": true,
+      "message": "scene-01: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-scale-safe",
+      "passed": true,
+      "message": "scene-01: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-pan-safe",
+      "passed": true,
+      "message": "scene-01: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-no-subtitles",
+      "passed": true,
+      "message": "scene-01: Szenen dürfen keine Untertitel enthalten.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-sfx-1-time",
+      "passed": true,
+      "message": "scene-01-sfx-1: timeSeconds fehlt oder ist ungültig.",
+      "level": "warning"
+    },
+    {
+      "id": "scene-01-sfx-1-volume",
+      "passed": true,
+      "message": "scene-01-sfx-1: Lautstärke sollte zwischen 0 und 0,5 liegen.",
+      "level": "warning"
+    },
+    {
+      "id": "scene-01-sfx-1-format",
+      "passed": true,
+      "message": "scene-01-sfx-1: Nicht unterstütztes Audioformat .mp3.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-sfx-1-present",
+      "passed": true,
+      "message": "scene-01-sfx-1: Sounddatei wurde nicht gefunden: sfx/click.mp3.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-image-02-frame-range",
+      "passed": true,
+      "message": "scene-01-image-02: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-image-02-continuous",
+      "passed": true,
+      "message": "scene-01-image-02: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-image-02-image-file",
+      "passed": true,
+      "message": "scene-01-image-02: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-image-02-image-format",
+      "passed": true,
+      "message": "scene-01-image-02: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-image-02-image-present",
+      "passed": true,
+      "message": "scene-01-image-02: Bilddatei wurde nicht gefunden: scenes/scene-01/scene-01-2.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-image-02-transition",
+      "passed": true,
+      "message": "scene-01-image-02: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-image-02-direct-cut",
+      "passed": true,
+      "message": "scene-01-image-02: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-image-02-transition-duration",
+      "passed": true,
+      "message": "scene-01-image-02: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-image-02-scale-safe",
+      "passed": true,
+      "message": "scene-01-image-02: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-image-02-pan-safe",
+      "passed": true,
+      "message": "scene-01-image-02: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-01-image-02-no-subtitles",
+      "passed": true,
+      "message": "scene-01-image-02: Szenen dürfen keine Untertitel enthalten.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-frame-range",
+      "passed": true,
+      "message": "scene-02: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-continuous",
+      "passed": true,
+      "message": "scene-02: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-image-file",
+      "passed": true,
+      "message": "scene-02: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-image-format",
+      "passed": true,
+      "message": "scene-02: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-image-present",
+      "passed": true,
+      "message": "scene-02: Bilddatei wurde nicht gefunden: scenes/scene-02/scene-02.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-transition",
+      "passed": true,
+      "message": "scene-02: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-direct-cut",
+      "passed": true,
+      "message": "scene-02: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-transition-duration",
+      "passed": true,
+      "message": "scene-02: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-scale-safe",
+      "passed": true,
+      "message": "scene-02: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-pan-safe",
+      "passed": true,
+      "message": "scene-02: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-no-subtitles",
+      "passed": true,
+      "message": "scene-02: Szenen dürfen keine Untertitel enthalten.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-sfx-1-time",
+      "passed": true,
+      "message": "scene-02-sfx-1: timeSeconds fehlt oder ist ungültig.",
+      "level": "warning"
+    },
+    {
+      "id": "scene-02-sfx-1-volume",
+      "passed": true,
+      "message": "scene-02-sfx-1: Lautstärke sollte zwischen 0 und 0,5 liegen.",
+      "level": "warning"
+    },
+    {
+      "id": "scene-02-sfx-1-format",
+      "passed": true,
+      "message": "scene-02-sfx-1: Nicht unterstütztes Audioformat .mp3.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-sfx-1-present",
+      "passed": true,
+      "message": "scene-02-sfx-1: Sounddatei wurde nicht gefunden: sfx/soft-whoosh.mp3.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-sfx-2-time",
+      "passed": true,
+      "message": "scene-02-sfx-2: timeSeconds fehlt oder ist ungültig.",
+      "level": "warning"
+    },
+    {
+      "id": "scene-02-sfx-2-volume",
+      "passed": true,
+      "message": "scene-02-sfx-2: Lautstärke sollte zwischen 0 und 0,5 liegen.",
+      "level": "warning"
+    },
+    {
+      "id": "scene-02-sfx-2-format",
+      "passed": true,
+      "message": "scene-02-sfx-2: Nicht unterstütztes Audioformat .mp3.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-sfx-2-present",
+      "passed": true,
+      "message": "scene-02-sfx-2: Sounddatei wurde nicht gefunden: sfx/click.mp3.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-image-02-frame-range",
+      "passed": true,
+      "message": "scene-02-image-02: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-image-02-continuous",
+      "passed": true,
+      "message": "scene-02-image-02: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-image-02-image-file",
+      "passed": true,
+      "message": "scene-02-image-02: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-image-02-image-format",
+      "passed": true,
+      "message": "scene-02-image-02: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-image-02-image-present",
+      "passed": true,
+      "message": "scene-02-image-02: Bilddatei wurde nicht gefunden: scenes/scene-02/scene-02-2.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-image-02-transition",
+      "passed": true,
+      "message": "scene-02-image-02: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-image-02-direct-cut",
+      "passed": true,
+      "message": "scene-02-image-02: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-image-02-transition-duration",
+      "passed": true,
+      "message": "scene-02-image-02: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-image-02-scale-safe",
+      "passed": true,
+      "message": "scene-02-image-02: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-image-02-pan-safe",
+      "passed": true,
+      "message": "scene-02-image-02: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-02-image-02-no-subtitles",
+      "passed": true,
+      "message": "scene-02-image-02: Szenen dürfen keine Untertitel enthalten.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-frame-range",
+      "passed": true,
+      "message": "scene-03: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-continuous",
+      "passed": true,
+      "message": "scene-03: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-image-file",
+      "passed": true,
+      "message": "scene-03: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-image-format",
+      "passed": true,
+      "message": "scene-03: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-image-present",
+      "passed": true,
+      "message": "scene-03: Bilddatei wurde nicht gefunden: scenes/scene-03/scene-03.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-transition",
+      "passed": true,
+      "message": "scene-03: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-direct-cut",
+      "passed": true,
+      "message": "scene-03: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-transition-duration",
+      "passed": true,
+      "message": "scene-03: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-scale-safe",
+      "passed": true,
+      "message": "scene-03: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-pan-safe",
+      "passed": true,
+      "message": "scene-03: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-no-subtitles",
+      "passed": true,
+      "message": "scene-03: Szenen dürfen keine Untertitel enthalten.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-sfx-1-time",
+      "passed": true,
+      "message": "scene-03-sfx-1: timeSeconds fehlt oder ist ungültig.",
+      "level": "warning"
+    },
+    {
+      "id": "scene-03-sfx-1-volume",
+      "passed": true,
+      "message": "scene-03-sfx-1: Lautstärke sollte zwischen 0 und 0,5 liegen.",
+      "level": "warning"
+    },
+    {
+      "id": "scene-03-sfx-1-format",
+      "passed": true,
+      "message": "scene-03-sfx-1: Nicht unterstütztes Audioformat .mp3.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-sfx-1-present",
+      "passed": true,
+      "message": "scene-03-sfx-1: Sounddatei wurde nicht gefunden: sfx/soft-whoosh.mp3.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-sfx-2-time",
+      "passed": true,
+      "message": "scene-03-sfx-2: timeSeconds fehlt oder ist ungültig.",
+      "level": "warning"
+    },
+    {
+      "id": "scene-03-sfx-2-volume",
+      "passed": true,
+      "message": "scene-03-sfx-2: Lautstärke sollte zwischen 0 und 0,5 liegen.",
+      "level": "warning"
+    },
+    {
+      "id": "scene-03-sfx-2-format",
+      "passed": true,
+      "message": "scene-03-sfx-2: Nicht unterstütztes Audioformat .mp3.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-sfx-2-present",
+      "passed": true,
+      "message": "scene-03-sfx-2: Sounddatei wurde nicht gefunden: sfx/click.mp3.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-image-02-frame-range",
+      "passed": true,
+      "message": "scene-03-image-02: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-image-02-continuous",
+      "passed": true,
+      "message": "scene-03-image-02: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-image-02-image-file",
+      "passed": true,
+      "message": "scene-03-image-02: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-image-02-image-format",
+      "passed": true,
+      "message": "scene-03-image-02: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-image-02-image-present",
+      "passed": true,
+      "message": "scene-03-image-02: Bilddatei wurde nicht gefunden: scenes/scene-03/scene-03-2.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-image-02-transition",
+      "passed": true,
+      "message": "scene-03-image-02: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-image-02-direct-cut",
+      "passed": true,
+      "message": "scene-03-image-02: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-image-02-transition-duration",
+      "passed": true,
+      "message": "scene-03-image-02: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-image-02-scale-safe",
+      "passed": true,
+      "message": "scene-03-image-02: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-image-02-pan-safe",
+      "passed": true,
+      "message": "scene-03-image-02: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-03-image-02-no-subtitles",
+      "passed": true,
+      "message": "scene-03-image-02: Szenen dürfen keine Untertitel enthalten.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-frame-range",
+      "passed": true,
+      "message": "scene-04: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-continuous",
+      "passed": true,
+      "message": "scene-04: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-image-file",
+      "passed": true,
+      "message": "scene-04: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-image-format",
+      "passed": true,
+      "message": "scene-04: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-image-present",
+      "passed": true,
+      "message": "scene-04: Bilddatei wurde nicht gefunden: scenes/scene-04/scene-04.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-transition",
+      "passed": true,
+      "message": "scene-04: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-direct-cut",
+      "passed": true,
+      "message": "scene-04: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-transition-duration",
+      "passed": true,
+      "message": "scene-04: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-scale-safe",
+      "passed": true,
+      "message": "scene-04: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-pan-safe",
+      "passed": true,
+      "message": "scene-04: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-no-subtitles",
+      "passed": true,
+      "message": "scene-04: Szenen dürfen keine Untertitel enthalten.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-sfx-1-time",
+      "passed": true,
+      "message": "scene-04-sfx-1: timeSeconds fehlt oder ist ungültig.",
+      "level": "warning"
+    },
+    {
+      "id": "scene-04-sfx-1-volume",
+      "passed": true,
+      "message": "scene-04-sfx-1: Lautstärke sollte zwischen 0 und 0,5 liegen.",
+      "level": "warning"
+    },
+    {
+      "id": "scene-04-sfx-1-format",
+      "passed": true,
+      "message": "scene-04-sfx-1: Nicht unterstütztes Audioformat .mp3.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-sfx-1-present",
+      "passed": true,
+      "message": "scene-04-sfx-1: Sounddatei wurde nicht gefunden: sfx/soft-whoosh.mp3.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-sfx-2-time",
+      "passed": true,
+      "message": "scene-04-sfx-2: timeSeconds fehlt oder ist ungültig.",
+      "level": "warning"
+    },
+    {
+      "id": "scene-04-sfx-2-volume",
+      "passed": true,
+      "message": "scene-04-sfx-2: Lautstärke sollte zwischen 0 und 0,5 liegen.",
+      "level": "warning"
+    },
+    {
+      "id": "scene-04-sfx-2-format",
+      "passed": true,
+      "message": "scene-04-sfx-2: Nicht unterstütztes Audioformat .mp3.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-sfx-2-present",
+      "passed": true,
+      "message": "scene-04-sfx-2: Sounddatei wurde nicht gefunden: sfx/click.mp3.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-image-02-frame-range",
+      "passed": true,
+      "message": "scene-04-image-02: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-image-02-continuous",
+      "passed": true,
+      "message": "scene-04-image-02: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-image-02-image-file",
+      "passed": true,
+      "message": "scene-04-image-02: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-image-02-image-format",
+      "passed": true,
+      "message": "scene-04-image-02: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-image-02-image-present",
+      "passed": true,
+      "message": "scene-04-image-02: Bilddatei wurde nicht gefunden: scenes/scene-04/scene-04-2.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-image-02-transition",
+      "passed": true,
+      "message": "scene-04-image-02: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-image-02-direct-cut",
+      "passed": true,
+      "message": "scene-04-image-02: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-image-02-transition-duration",
+      "passed": true,
+      "message": "scene-04-image-02: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-image-02-scale-safe",
+      "passed": true,
+      "message": "scene-04-image-02: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-image-02-pan-safe",
+      "passed": true,
+      "message": "scene-04-image-02: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-04-image-02-no-subtitles",
+      "passed": true,
+      "message": "scene-04-image-02: Szenen dürfen keine Untertitel enthalten.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-frame-range",
+      "passed": true,
+      "message": "scene-05: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-continuous",
+      "passed": true,
+      "message": "scene-05: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-image-file",
+      "passed": true,
+      "message": "scene-05: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-image-format",
+      "passed": true,
+      "message": "scene-05: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-image-present",
+      "passed": true,
+      "message": "scene-05: Bilddatei wurde nicht gefunden: scenes/scene-05/scene-05.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-transition",
+      "passed": true,
+      "message": "scene-05: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-direct-cut",
+      "passed": true,
+      "message": "scene-05: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-transition-duration",
+      "passed": true,
+      "message": "scene-05: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-scale-safe",
+      "passed": true,
+      "message": "scene-05: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-pan-safe",
+      "passed": true,
+      "message": "scene-05: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-no-subtitles",
+      "passed": true,
+      "message": "scene-05: Szenen dürfen keine Untertitel enthalten.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-sfx-1-time",
+      "passed": true,
+      "message": "scene-05-sfx-1: timeSeconds fehlt oder ist ungültig.",
+      "level": "warning"
+    },
+    {
+      "id": "scene-05-sfx-1-volume",
+      "passed": true,
+      "message": "scene-05-sfx-1: Lautstärke sollte zwischen 0 und 0,5 liegen.",
+      "level": "warning"
+    },
+    {
+      "id": "scene-05-sfx-1-format",
+      "passed": true,
+      "message": "scene-05-sfx-1: Nicht unterstütztes Audioformat .mp3.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-sfx-1-present",
+      "passed": true,
+      "message": "scene-05-sfx-1: Sounddatei wurde nicht gefunden: sfx/soft-whoosh.mp3.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-sfx-2-time",
+      "passed": true,
+      "message": "scene-05-sfx-2: timeSeconds fehlt oder ist ungültig.",
+      "level": "warning"
+    },
+    {
+      "id": "scene-05-sfx-2-volume",
+      "passed": true,
+      "message": "scene-05-sfx-2: Lautstärke sollte zwischen 0 und 0,5 liegen.",
+      "level": "warning"
+    },
+    {
+      "id": "scene-05-sfx-2-format",
+      "passed": true,
+      "message": "scene-05-sfx-2: Nicht unterstütztes Audioformat .mp3.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-sfx-2-present",
+      "passed": true,
+      "message": "scene-05-sfx-2: Sounddatei wurde nicht gefunden: sfx/click.mp3.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-image-02-frame-range",
+      "passed": true,
+      "message": "scene-05-image-02: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-image-02-continuous",
+      "passed": true,
+      "message": "scene-05-image-02: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-image-02-image-file",
+      "passed": true,
+      "message": "scene-05-image-02: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-image-02-image-format",
+      "passed": true,
+      "message": "scene-05-image-02: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-image-02-image-present",
+      "passed": true,
+      "message": "scene-05-image-02: Bilddatei wurde nicht gefunden: scenes/scene-05/scene-05-2.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-image-02-transition",
+      "passed": true,
+      "message": "scene-05-image-02: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-image-02-direct-cut",
+      "passed": true,
+      "message": "scene-05-image-02: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-image-02-transition-duration",
+      "passed": true,
+      "message": "scene-05-image-02: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-image-02-scale-safe",
+      "passed": true,
+      "message": "scene-05-image-02: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-image-02-pan-safe",
+      "passed": true,
+      "message": "scene-05-image-02: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-05-image-02-no-subtitles",
+      "passed": true,
+      "message": "scene-05-image-02: Szenen dürfen keine Untertitel enthalten.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-frame-range",
+      "passed": true,
+      "message": "scene-06: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-continuous",
+      "passed": true,
+      "message": "scene-06: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-image-file",
+      "passed": true,
+      "message": "scene-06: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-image-format",
+      "passed": true,
+      "message": "scene-06: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-image-present",
+      "passed": true,
+      "message": "scene-06: Bilddatei wurde nicht gefunden: scenes/scene-06/scene-06.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-transition",
+      "passed": true,
+      "message": "scene-06: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-direct-cut",
+      "passed": true,
+      "message": "scene-06: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-transition-duration",
+      "passed": true,
+      "message": "scene-06: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-scale-safe",
+      "passed": true,
+      "message": "scene-06: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-pan-safe",
+      "passed": true,
+      "message": "scene-06: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-no-subtitles",
+      "passed": true,
+      "message": "scene-06: Szenen dürfen keine Untertitel enthalten.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-sfx-1-time",
+      "passed": true,
+      "message": "scene-06-sfx-1: timeSeconds fehlt oder ist ungültig.",
+      "level": "warning"
+    },
+    {
+      "id": "scene-06-sfx-1-volume",
+      "passed": true,
+      "message": "scene-06-sfx-1: Lautstärke sollte zwischen 0 und 0,5 liegen.",
+      "level": "warning"
+    },
+    {
+      "id": "scene-06-sfx-1-format",
+      "passed": true,
+      "message": "scene-06-sfx-1: Nicht unterstütztes Audioformat .mp3.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-sfx-1-present",
+      "passed": true,
+      "message": "scene-06-sfx-1: Sounddatei wurde nicht gefunden: sfx/soft-whoosh.mp3.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-sfx-2-time",
+      "passed": true,
+      "message": "scene-06-sfx-2: timeSeconds fehlt oder ist ungültig.",
+      "level": "warning"
+    },
+    {
+      "id": "scene-06-sfx-2-volume",
+      "passed": true,
+      "message": "scene-06-sfx-2: Lautstärke sollte zwischen 0 und 0,5 liegen.",
+      "level": "warning"
+    },
+    {
+      "id": "scene-06-sfx-2-format",
+      "passed": true,
+      "message": "scene-06-sfx-2: Nicht unterstütztes Audioformat .mp3.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-sfx-2-present",
+      "passed": true,
+      "message": "scene-06-sfx-2: Sounddatei wurde nicht gefunden: sfx/click.mp3.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-image-02-frame-range",
+      "passed": true,
+      "message": "scene-06-image-02: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-image-02-continuous",
+      "passed": true,
+      "message": "scene-06-image-02: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-image-02-image-file",
+      "passed": true,
+      "message": "scene-06-image-02: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-image-02-image-format",
+      "passed": true,
+      "message": "scene-06-image-02: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-image-02-image-present",
+      "passed": true,
+      "message": "scene-06-image-02: Bilddatei wurde nicht gefunden: scenes/scene-06/scene-06-2.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-image-02-transition",
+      "passed": true,
+      "message": "scene-06-image-02: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-image-02-direct-cut",
+      "passed": true,
+      "message": "scene-06-image-02: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-image-02-transition-duration",
+      "passed": true,
+      "message": "scene-06-image-02: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-image-02-scale-safe",
+      "passed": true,
+      "message": "scene-06-image-02: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-image-02-pan-safe",
+      "passed": true,
+      "message": "scene-06-image-02: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-06-image-02-no-subtitles",
+      "passed": true,
+      "message": "scene-06-image-02: Szenen dürfen keine Untertitel enthalten.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-frame-range",
+      "passed": true,
+      "message": "scene-07: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-continuous",
+      "passed": true,
+      "message": "scene-07: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-image-file",
+      "passed": true,
+      "message": "scene-07: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-image-format",
+      "passed": true,
+      "message": "scene-07: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-image-present",
+      "passed": true,
+      "message": "scene-07: Bilddatei wurde nicht gefunden: scenes/scene-07/scene-07.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-transition",
+      "passed": true,
+      "message": "scene-07: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-direct-cut",
+      "passed": true,
+      "message": "scene-07: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-transition-duration",
+      "passed": true,
+      "message": "scene-07: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-scale-safe",
+      "passed": true,
+      "message": "scene-07: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-pan-safe",
+      "passed": true,
+      "message": "scene-07: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-no-subtitles",
+      "passed": true,
+      "message": "scene-07: Szenen dürfen keine Untertitel enthalten.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-sfx-1-time",
+      "passed": true,
+      "message": "scene-07-sfx-1: timeSeconds fehlt oder ist ungültig.",
+      "level": "warning"
+    },
+    {
+      "id": "scene-07-sfx-1-volume",
+      "passed": true,
+      "message": "scene-07-sfx-1: Lautstärke sollte zwischen 0 und 0,5 liegen.",
+      "level": "warning"
+    },
+    {
+      "id": "scene-07-sfx-1-format",
+      "passed": true,
+      "message": "scene-07-sfx-1: Nicht unterstütztes Audioformat .mp3.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-sfx-1-present",
+      "passed": true,
+      "message": "scene-07-sfx-1: Sounddatei wurde nicht gefunden: sfx/soft-whoosh.mp3.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-sfx-2-time",
+      "passed": true,
+      "message": "scene-07-sfx-2: timeSeconds fehlt oder ist ungültig.",
+      "level": "warning"
+    },
+    {
+      "id": "scene-07-sfx-2-volume",
+      "passed": true,
+      "message": "scene-07-sfx-2: Lautstärke sollte zwischen 0 und 0,5 liegen.",
+      "level": "warning"
+    },
+    {
+      "id": "scene-07-sfx-2-format",
+      "passed": true,
+      "message": "scene-07-sfx-2: Nicht unterstütztes Audioformat .mp3.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-sfx-2-present",
+      "passed": true,
+      "message": "scene-07-sfx-2: Sounddatei wurde nicht gefunden: sfx/click.mp3.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-image-02-frame-range",
+      "passed": true,
+      "message": "scene-07-image-02: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-image-02-continuous",
+      "passed": true,
+      "message": "scene-07-image-02: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-image-02-image-file",
+      "passed": true,
+      "message": "scene-07-image-02: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-image-02-image-format",
+      "passed": true,
+      "message": "scene-07-image-02: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-image-02-image-present",
+      "passed": true,
+      "message": "scene-07-image-02: Bilddatei wurde nicht gefunden: scenes/scene-07/scene-07-2.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-image-02-transition",
+      "passed": true,
+      "message": "scene-07-image-02: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-image-02-direct-cut",
+      "passed": true,
+      "message": "scene-07-image-02: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-image-02-transition-duration",
+      "passed": true,
+      "message": "scene-07-image-02: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-image-02-scale-safe",
+      "passed": true,
+      "message": "scene-07-image-02: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-image-02-pan-safe",
+      "passed": true,
+      "message": "scene-07-image-02: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-07-image-02-no-subtitles",
+      "passed": true,
+      "message": "scene-07-image-02: Szenen dürfen keine Untertitel enthalten.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-frame-range",
+      "passed": true,
+      "message": "scene-08: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-continuous",
+      "passed": true,
+      "message": "scene-08: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-image-file",
+      "passed": true,
+      "message": "scene-08: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-image-format",
+      "passed": true,
+      "message": "scene-08: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-image-present",
+      "passed": true,
+      "message": "scene-08: Bilddatei wurde nicht gefunden: scenes/scene-08/scene-08.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-transition",
+      "passed": true,
+      "message": "scene-08: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-direct-cut",
+      "passed": true,
+      "message": "scene-08: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-transition-duration",
+      "passed": true,
+      "message": "scene-08: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-scale-safe",
+      "passed": true,
+      "message": "scene-08: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-pan-safe",
+      "passed": true,
+      "message": "scene-08: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-no-subtitles",
+      "passed": true,
+      "message": "scene-08: Szenen dürfen keine Untertitel enthalten.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-sfx-1-time",
+      "passed": true,
+      "message": "scene-08-sfx-1: timeSeconds fehlt oder ist ungültig.",
+      "level": "warning"
+    },
+    {
+      "id": "scene-08-sfx-1-volume",
+      "passed": true,
+      "message": "scene-08-sfx-1: Lautstärke sollte zwischen 0 und 0,5 liegen.",
+      "level": "warning"
+    },
+    {
+      "id": "scene-08-sfx-1-format",
+      "passed": true,
+      "message": "scene-08-sfx-1: Nicht unterstütztes Audioformat .mp3.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-sfx-1-present",
+      "passed": true,
+      "message": "scene-08-sfx-1: Sounddatei wurde nicht gefunden: sfx/soft-whoosh.mp3.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-sfx-2-time",
+      "passed": true,
+      "message": "scene-08-sfx-2: timeSeconds fehlt oder ist ungültig.",
+      "level": "warning"
+    },
+    {
+      "id": "scene-08-sfx-2-volume",
+      "passed": true,
+      "message": "scene-08-sfx-2: Lautstärke sollte zwischen 0 und 0,5 liegen.",
+      "level": "warning"
+    },
+    {
+      "id": "scene-08-sfx-2-format",
+      "passed": true,
+      "message": "scene-08-sfx-2: Nicht unterstütztes Audioformat .mp3.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-sfx-2-present",
+      "passed": true,
+      "message": "scene-08-sfx-2: Sounddatei wurde nicht gefunden: sfx/click.mp3.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-image-02-frame-range",
+      "passed": true,
+      "message": "scene-08-image-02: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-image-02-continuous",
+      "passed": true,
+      "message": "scene-08-image-02: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-image-02-image-file",
+      "passed": true,
+      "message": "scene-08-image-02: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-image-02-image-format",
+      "passed": true,
+      "message": "scene-08-image-02: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-image-02-image-present",
+      "passed": true,
+      "message": "scene-08-image-02: Bilddatei wurde nicht gefunden: scenes/scene-08/scene-08-2.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-image-02-transition",
+      "passed": true,
+      "message": "scene-08-image-02: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-image-02-direct-cut",
+      "passed": true,
+      "message": "scene-08-image-02: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-image-02-transition-duration",
+      "passed": true,
+      "message": "scene-08-image-02: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-image-02-scale-safe",
+      "passed": true,
+      "message": "scene-08-image-02: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-image-02-pan-safe",
+      "passed": true,
+      "message": "scene-08-image-02: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-08-image-02-no-subtitles",
+      "passed": true,
+      "message": "scene-08-image-02: Szenen dürfen keine Untertitel enthalten.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-frame-range",
+      "passed": true,
+      "message": "scene-09: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-continuous",
+      "passed": true,
+      "message": "scene-09: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-image-file",
+      "passed": true,
+      "message": "scene-09: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-image-format",
+      "passed": true,
+      "message": "scene-09: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-image-present",
+      "passed": true,
+      "message": "scene-09: Bilddatei wurde nicht gefunden: scenes/scene-09/scene-09.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-transition",
+      "passed": true,
+      "message": "scene-09: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-direct-cut",
+      "passed": true,
+      "message": "scene-09: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-transition-duration",
+      "passed": true,
+      "message": "scene-09: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-scale-safe",
+      "passed": true,
+      "message": "scene-09: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-pan-safe",
+      "passed": true,
+      "message": "scene-09: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-no-subtitles",
+      "passed": true,
+      "message": "scene-09: Szenen dürfen keine Untertitel enthalten.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-sfx-1-time",
+      "passed": true,
+      "message": "scene-09-sfx-1: timeSeconds fehlt oder ist ungültig.",
+      "level": "warning"
+    },
+    {
+      "id": "scene-09-sfx-1-volume",
+      "passed": true,
+      "message": "scene-09-sfx-1: Lautstärke sollte zwischen 0 und 0,5 liegen.",
+      "level": "warning"
+    },
+    {
+      "id": "scene-09-sfx-1-format",
+      "passed": true,
+      "message": "scene-09-sfx-1: Nicht unterstütztes Audioformat .mp3.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-sfx-1-present",
+      "passed": true,
+      "message": "scene-09-sfx-1: Sounddatei wurde nicht gefunden: sfx/soft-whoosh.mp3.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-sfx-2-time",
+      "passed": true,
+      "message": "scene-09-sfx-2: timeSeconds fehlt oder ist ungültig.",
+      "level": "warning"
+    },
+    {
+      "id": "scene-09-sfx-2-volume",
+      "passed": true,
+      "message": "scene-09-sfx-2: Lautstärke sollte zwischen 0 und 0,5 liegen.",
+      "level": "warning"
+    },
+    {
+      "id": "scene-09-sfx-2-format",
+      "passed": true,
+      "message": "scene-09-sfx-2: Nicht unterstütztes Audioformat .mp3.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-sfx-2-present",
+      "passed": true,
+      "message": "scene-09-sfx-2: Sounddatei wurde nicht gefunden: sfx/click.mp3.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-image-02-frame-range",
+      "passed": true,
+      "message": "scene-09-image-02: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-image-02-continuous",
+      "passed": true,
+      "message": "scene-09-image-02: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-image-02-image-file",
+      "passed": true,
+      "message": "scene-09-image-02: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-image-02-image-format",
+      "passed": true,
+      "message": "scene-09-image-02: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-image-02-image-present",
+      "passed": true,
+      "message": "scene-09-image-02: Bilddatei wurde nicht gefunden: scenes/scene-09/scene-09-2.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-image-02-transition",
+      "passed": true,
+      "message": "scene-09-image-02: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-image-02-direct-cut",
+      "passed": true,
+      "message": "scene-09-image-02: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-image-02-transition-duration",
+      "passed": true,
+      "message": "scene-09-image-02: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-image-02-scale-safe",
+      "passed": true,
+      "message": "scene-09-image-02: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-image-02-pan-safe",
+      "passed": true,
+      "message": "scene-09-image-02: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-09-image-02-no-subtitles",
+      "passed": true,
+      "message": "scene-09-image-02: Szenen dürfen keine Untertitel enthalten.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-frame-range",
+      "passed": true,
+      "message": "scene-10: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-continuous",
+      "passed": true,
+      "message": "scene-10: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-image-file",
+      "passed": true,
+      "message": "scene-10: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-image-format",
+      "passed": true,
+      "message": "scene-10: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-image-present",
+      "passed": true,
+      "message": "scene-10: Bilddatei wurde nicht gefunden: scenes/scene-10/scene-10.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-transition",
+      "passed": true,
+      "message": "scene-10: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-direct-cut",
+      "passed": true,
+      "message": "scene-10: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-transition-duration",
+      "passed": true,
+      "message": "scene-10: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-scale-safe",
+      "passed": true,
+      "message": "scene-10: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-pan-safe",
+      "passed": true,
+      "message": "scene-10: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-no-subtitles",
+      "passed": true,
+      "message": "scene-10: Szenen dürfen keine Untertitel enthalten.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-sfx-1-time",
+      "passed": true,
+      "message": "scene-10-sfx-1: timeSeconds fehlt oder ist ungültig.",
+      "level": "warning"
+    },
+    {
+      "id": "scene-10-sfx-1-volume",
+      "passed": true,
+      "message": "scene-10-sfx-1: Lautstärke sollte zwischen 0 und 0,5 liegen.",
+      "level": "warning"
+    },
+    {
+      "id": "scene-10-sfx-1-format",
+      "passed": true,
+      "message": "scene-10-sfx-1: Nicht unterstütztes Audioformat .mp3.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-sfx-1-present",
+      "passed": true,
+      "message": "scene-10-sfx-1: Sounddatei wurde nicht gefunden: sfx/soft-whoosh.mp3.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-sfx-2-time",
+      "passed": true,
+      "message": "scene-10-sfx-2: timeSeconds fehlt oder ist ungültig.",
+      "level": "warning"
+    },
+    {
+      "id": "scene-10-sfx-2-volume",
+      "passed": true,
+      "message": "scene-10-sfx-2: Lautstärke sollte zwischen 0 und 0,5 liegen.",
+      "level": "warning"
+    },
+    {
+      "id": "scene-10-sfx-2-format",
+      "passed": true,
+      "message": "scene-10-sfx-2: Nicht unterstütztes Audioformat .mp3.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-sfx-2-present",
+      "passed": true,
+      "message": "scene-10-sfx-2: Sounddatei wurde nicht gefunden: sfx/click.mp3.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-sfx-3-time",
+      "passed": true,
+      "message": "scene-10-sfx-3: timeSeconds fehlt oder ist ungültig.",
+      "level": "warning"
+    },
+    {
+      "id": "scene-10-sfx-3-volume",
+      "passed": true,
+      "message": "scene-10-sfx-3: Lautstärke sollte zwischen 0 und 0,5 liegen.",
+      "level": "warning"
+    },
+    {
+      "id": "scene-10-sfx-3-format",
+      "passed": true,
+      "message": "scene-10-sfx-3: Nicht unterstütztes Audioformat .mp3.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-sfx-3-present",
+      "passed": true,
+      "message": "scene-10-sfx-3: Sounddatei wurde nicht gefunden: sfx/tick.mp3.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-image-02-frame-range",
+      "passed": true,
+      "message": "scene-10-image-02: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-image-02-continuous",
+      "passed": true,
+      "message": "scene-10-image-02: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-image-02-image-file",
+      "passed": true,
+      "message": "scene-10-image-02: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-image-02-image-format",
+      "passed": true,
+      "message": "scene-10-image-02: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-image-02-image-present",
+      "passed": true,
+      "message": "scene-10-image-02: Bilddatei wurde nicht gefunden: scenes/scene-10/scene-10-2.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-image-02-transition",
+      "passed": true,
+      "message": "scene-10-image-02: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-image-02-direct-cut",
+      "passed": true,
+      "message": "scene-10-image-02: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-image-02-transition-duration",
+      "passed": true,
+      "message": "scene-10-image-02: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-image-02-scale-safe",
+      "passed": true,
+      "message": "scene-10-image-02: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-image-02-pan-safe",
+      "passed": true,
+      "message": "scene-10-image-02: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-image-02-no-subtitles",
+      "passed": true,
+      "message": "scene-10-image-02: Szenen dürfen keine Untertitel enthalten.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-image-03-frame-range",
+      "passed": true,
+      "message": "scene-10-image-03: startFrame und endFrame sind ungültig.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-image-03-continuous",
+      "passed": true,
+      "message": "scene-10-image-03: Es gibt eine Lücke oder Überlappung im Render-Plan.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-image-03-image-file",
+      "passed": true,
+      "message": "scene-10-image-03: imageFile fehlt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-image-03-image-format",
+      "passed": true,
+      "message": "scene-10-image-03: Nicht unterstütztes Bildformat .jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-image-03-image-present",
+      "passed": true,
+      "message": "scene-10-image-03: Bilddatei wurde nicht gefunden: scenes/scene-10/scene-10-3.jpeg.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-image-03-transition",
+      "passed": true,
+      "message": "scene-10-image-03: Nur none für die Hook und cut für alle weiteren Szenen sind erlaubt.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-image-03-direct-cut",
+      "passed": true,
+      "message": "scene-10-image-03: Erwartet wird transitionIn.type = \"cut\" ohne Fade oder Schwarzbild.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-image-03-transition-duration",
+      "passed": true,
+      "message": "scene-10-image-03: Direkte Schnitte müssen durationSeconds: 0 besitzen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-image-03-scale-safe",
+      "passed": true,
+      "message": "scene-10-image-03: Zoom liegt außerhalb des sicheren Bereichs von 0,92 bis 1,08.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-image-03-pan-safe",
+      "passed": true,
+      "message": "scene-10-image-03: Schwenk darf höchstens 4 Prozent betragen.",
+      "level": "error"
+    },
+    {
+      "id": "scene-10-image-03-no-subtitles",
+      "passed": true,
+      "message": "scene-10-image-03: Szenen dürfen keine Untertitel enthalten.",
+      "level": "error"
+    },
+    {
+      "id": "last-frame",
+      "passed": true,
+      "message": "Die letzte Szene endet nicht exakt am letzten Kompositionsframe.",
+      "level": "error"
+    }
+  ]
+}

@@ -10,39 +10,77 @@
   "leadInSeconds": 0.1,
   "subtitleCues": [],
   "subtitlePosition": "center",
-  "durationSeconds": 6.0,
+  "durationSeconds": 6,
   "imageCount": 2,
   "imagePhases": [
     {
       "phaseId": "scene-06-image-01",
       "order": 1,
-      "startPercent": 0.0,
+      "startPercent": 0,
       "promptFileName": "image-prompt.txt",
-      "expectedImageFileName": "scene-06.png",
+      "expectedImageFileName": "scene-06.jpeg",
       "visualIdea": "Neun grüne Häkchen in einem Raster aus fünfzehn Feldern.",
       "imageText": "9 VON 15",
       "audioCue": "Damit etwas durchgeht",
+      "timingBasis": "scene-start",
       "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"Damit etwas durchgeht\".",
-      "imageStatus": "missing",
-      "assetVerification": null
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-06",
+        "confirmedSceneOrder": 6,
+        "confirmedPhaseOrder": 1,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.697Z"
+      }
     },
     {
       "phaseId": "scene-06-image-02",
       "order": 2,
-      "startPercent": 0.6,
+      "startPercent": 0.4,
       "promptFileName": "image-prompt-02.txt",
-      "expectedImageFileName": "scene-06-2.png",
+      "expectedImageFileName": "scene-06-2.jpeg",
       "visualIdea": "Ein grüner Haken, alles wirkt erledigt.",
       "imageText": "",
-      "audioCue": "Klingt nach einer ganz normalen Abstimmung",
+      "audioCue": "Ja-Stimmen von fünfzehn",
+      "timingBasis": "narration-audio-cue",
       "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"Klingt nach einer ganz normalen Abstimmung\".",
-      "imageStatus": "missing",
-      "assetVerification": null
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-06-image-02",
+        "confirmedSceneOrder": 6,
+        "confirmedPhaseOrder": 2,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.699Z"
+      }
     }
   ],
-  "expectedImageFileName": "scene-06.png",
+  "expectedImageFileName": "scene-06.jpeg",
   "promptStatus": "ready",
-  "imageStatus": "missing",
-  "assetVerification": null,
-  "status": "planned"
+  "imageStatus": "ready",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-06",
+    "confirmedSceneOrder": 6,
+    "confirmedPhaseOrder": 1,
+    "visibleSummary": "",
+    "reason": "",
+    "comparedFields": [],
+    "matchMethod": "numbered-global-image-order",
+    "reviewedAt": "2026-09-19T07:01:17.697Z"
+  },
+  "status": "image-ready"
 }

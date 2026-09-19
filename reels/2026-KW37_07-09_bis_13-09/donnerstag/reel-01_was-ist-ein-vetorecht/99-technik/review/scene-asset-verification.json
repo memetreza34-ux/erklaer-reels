@@ -1,6 +1,8 @@
 {
   "version": 2,
-  "passed": false,
+  "createdAt": "2026-09-19T07:01:17.726Z",
+  "passed": true,
+  "minimumConfidence": 0.75,
   "visuals": [
     {
       "targetId": "scene-01",
@@ -8,9 +10,43 @@
       "sceneOrder": 1,
       "phaseId": "scene-01-image-01",
       "phaseOrder": 1,
-      "expectedFile": null,
-      "verification": null,
-      "passed": false
+      "expectedFile": "scenes/scene-01/scene-01.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-01",
+        "confirmedSceneOrder": 1,
+        "confirmedPhaseOrder": 1,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.674Z"
+      },
+      "passed": true
+    },
+    {
+      "targetId": "scene-01-image-02",
+      "sceneId": "scene-01",
+      "sceneOrder": 1,
+      "phaseId": "scene-01-image-02",
+      "phaseOrder": 2,
+      "expectedFile": "scenes/scene-01/scene-01-2.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-01-image-02",
+        "confirmedSceneOrder": 1,
+        "confirmedPhaseOrder": 2,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.677Z"
+      },
+      "passed": true
     },
     {
       "targetId": "scene-02",
@@ -18,9 +54,21 @@
       "sceneOrder": 2,
       "phaseId": "scene-02-image-01",
       "phaseOrder": 1,
-      "expectedFile": null,
-      "verification": null,
-      "passed": false
+      "expectedFile": "scenes/scene-02/scene-02.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-02",
+        "confirmedSceneOrder": 2,
+        "confirmedPhaseOrder": 1,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.678Z"
+      },
+      "passed": true
     },
     {
       "targetId": "scene-02-image-02",
@@ -28,9 +76,43 @@
       "sceneOrder": 2,
       "phaseId": "scene-02-image-02",
       "phaseOrder": 2,
-      "expectedFile": null,
-      "verification": null,
-      "passed": false
+      "expectedFile": "scenes/scene-02/scene-02-2.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-02-image-02",
+        "confirmedSceneOrder": 2,
+        "confirmedPhaseOrder": 2,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.681Z"
+      },
+      "passed": true
+    },
+    {
+      "targetId": "scene-02-image-03",
+      "sceneId": "scene-02",
+      "sceneOrder": 2,
+      "phaseId": "scene-02-image-03",
+      "phaseOrder": 3,
+      "expectedFile": "scenes/scene-02/scene-02-3.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-02-image-03",
+        "confirmedSceneOrder": 2,
+        "confirmedPhaseOrder": 3,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.683Z"
+      },
+      "passed": true
     },
     {
       "targetId": "scene-03",
@@ -38,9 +120,21 @@
       "sceneOrder": 3,
       "phaseId": "scene-03-image-01",
       "phaseOrder": 1,
-      "expectedFile": null,
-      "verification": null,
-      "passed": false
+      "expectedFile": "scenes/scene-03/scene-03.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-03",
+        "confirmedSceneOrder": 3,
+        "confirmedPhaseOrder": 1,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.686Z"
+      },
+      "passed": true
     },
     {
       "targetId": "scene-03-image-02",
@@ -48,9 +142,21 @@
       "sceneOrder": 3,
       "phaseId": "scene-03-image-02",
       "phaseOrder": 2,
-      "expectedFile": null,
-      "verification": null,
-      "passed": false
+      "expectedFile": "scenes/scene-03/scene-03-2.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-03-image-02",
+        "confirmedSceneOrder": 3,
+        "confirmedPhaseOrder": 2,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.688Z"
+      },
+      "passed": true
     },
     {
       "targetId": "scene-04",
@@ -58,9 +164,21 @@
       "sceneOrder": 4,
       "phaseId": "scene-04-image-01",
       "phaseOrder": 1,
-      "expectedFile": null,
-      "verification": null,
-      "passed": false
+      "expectedFile": "scenes/scene-04/scene-04.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-04",
+        "confirmedSceneOrder": 4,
+        "confirmedPhaseOrder": 1,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.690Z"
+      },
+      "passed": true
     },
     {
       "targetId": "scene-04-image-02",
@@ -68,9 +186,21 @@
       "sceneOrder": 4,
       "phaseId": "scene-04-image-02",
       "phaseOrder": 2,
-      "expectedFile": null,
-      "verification": null,
-      "passed": false
+      "expectedFile": "scenes/scene-04/scene-04-2.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-04-image-02",
+        "confirmedSceneOrder": 4,
+        "confirmedPhaseOrder": 2,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.692Z"
+      },
+      "passed": true
     },
     {
       "targetId": "scene-05",
@@ -78,9 +208,21 @@
       "sceneOrder": 5,
       "phaseId": "scene-05-image-01",
       "phaseOrder": 1,
-      "expectedFile": null,
-      "verification": null,
-      "passed": false
+      "expectedFile": "scenes/scene-05/scene-05.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-05",
+        "confirmedSceneOrder": 5,
+        "confirmedPhaseOrder": 1,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.694Z"
+      },
+      "passed": true
     },
     {
       "targetId": "scene-05-image-02",
@@ -88,9 +230,21 @@
       "sceneOrder": 5,
       "phaseId": "scene-05-image-02",
       "phaseOrder": 2,
-      "expectedFile": null,
-      "verification": null,
-      "passed": false
+      "expectedFile": "scenes/scene-05/scene-05-2.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-05-image-02",
+        "confirmedSceneOrder": 5,
+        "confirmedPhaseOrder": 2,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.695Z"
+      },
+      "passed": true
     },
     {
       "targetId": "scene-06",
@@ -98,9 +252,21 @@
       "sceneOrder": 6,
       "phaseId": "scene-06-image-01",
       "phaseOrder": 1,
-      "expectedFile": null,
-      "verification": null,
-      "passed": false
+      "expectedFile": "scenes/scene-06/scene-06.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-06",
+        "confirmedSceneOrder": 6,
+        "confirmedPhaseOrder": 1,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.697Z"
+      },
+      "passed": true
     },
     {
       "targetId": "scene-06-image-02",
@@ -108,9 +274,21 @@
       "sceneOrder": 6,
       "phaseId": "scene-06-image-02",
       "phaseOrder": 2,
-      "expectedFile": null,
-      "verification": null,
-      "passed": false
+      "expectedFile": "scenes/scene-06/scene-06-2.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-06-image-02",
+        "confirmedSceneOrder": 6,
+        "confirmedPhaseOrder": 2,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.699Z"
+      },
+      "passed": true
     },
     {
       "targetId": "scene-07",
@@ -118,9 +296,21 @@
       "sceneOrder": 7,
       "phaseId": "scene-07-image-01",
       "phaseOrder": 1,
-      "expectedFile": null,
-      "verification": null,
-      "passed": false
+      "expectedFile": "scenes/scene-07/scene-07.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-07",
+        "confirmedSceneOrder": 7,
+        "confirmedPhaseOrder": 1,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.701Z"
+      },
+      "passed": true
     },
     {
       "targetId": "scene-07-image-02",
@@ -128,9 +318,43 @@
       "sceneOrder": 7,
       "phaseId": "scene-07-image-02",
       "phaseOrder": 2,
-      "expectedFile": null,
-      "verification": null,
-      "passed": false
+      "expectedFile": "scenes/scene-07/scene-07-2.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-07-image-02",
+        "confirmedSceneOrder": 7,
+        "confirmedPhaseOrder": 2,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.704Z"
+      },
+      "passed": true
+    },
+    {
+      "targetId": "scene-07-image-03",
+      "sceneId": "scene-07",
+      "sceneOrder": 7,
+      "phaseId": "scene-07-image-03",
+      "phaseOrder": 3,
+      "expectedFile": "scenes/scene-07/scene-07-3.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-07-image-03",
+        "confirmedSceneOrder": 7,
+        "confirmedPhaseOrder": 3,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.706Z"
+      },
+      "passed": true
     },
     {
       "targetId": "scene-08",
@@ -138,9 +362,21 @@
       "sceneOrder": 8,
       "phaseId": "scene-08-image-01",
       "phaseOrder": 1,
-      "expectedFile": null,
-      "verification": null,
-      "passed": false
+      "expectedFile": "scenes/scene-08/scene-08.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-08",
+        "confirmedSceneOrder": 8,
+        "confirmedPhaseOrder": 1,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.710Z"
+      },
+      "passed": true
     },
     {
       "targetId": "scene-08-image-02",
@@ -148,9 +384,43 @@
       "sceneOrder": 8,
       "phaseId": "scene-08-image-02",
       "phaseOrder": 2,
-      "expectedFile": null,
-      "verification": null,
-      "passed": false
+      "expectedFile": "scenes/scene-08/scene-08-2.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-08-image-02",
+        "confirmedSceneOrder": 8,
+        "confirmedPhaseOrder": 2,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.712Z"
+      },
+      "passed": true
+    },
+    {
+      "targetId": "scene-08-image-03",
+      "sceneId": "scene-08",
+      "sceneOrder": 8,
+      "phaseId": "scene-08-image-03",
+      "phaseOrder": 3,
+      "expectedFile": "scenes/scene-08/scene-08-3.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-08-image-03",
+        "confirmedSceneOrder": 8,
+        "confirmedPhaseOrder": 3,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.714Z"
+      },
+      "passed": true
     },
     {
       "targetId": "scene-09",
@@ -158,9 +428,21 @@
       "sceneOrder": 9,
       "phaseId": "scene-09-image-01",
       "phaseOrder": 1,
-      "expectedFile": null,
-      "verification": null,
-      "passed": false
+      "expectedFile": "scenes/scene-09/scene-09.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-09",
+        "confirmedSceneOrder": 9,
+        "confirmedPhaseOrder": 1,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.715Z"
+      },
+      "passed": true
     },
     {
       "targetId": "scene-09-image-02",
@@ -168,9 +450,208 @@
       "sceneOrder": 9,
       "phaseId": "scene-09-image-02",
       "phaseOrder": 2,
-      "expectedFile": null,
-      "verification": null,
-      "passed": false
+      "expectedFile": "scenes/scene-09/scene-09-2.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-09-image-02",
+        "confirmedSceneOrder": 9,
+        "confirmedPhaseOrder": 2,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.718Z"
+      },
+      "passed": true
+    },
+    {
+      "targetId": "scene-10",
+      "sceneId": "scene-10",
+      "sceneOrder": 10,
+      "phaseId": "scene-10-image-01",
+      "phaseOrder": 1,
+      "expectedFile": "scenes/scene-10/scene-10.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-10",
+        "confirmedSceneOrder": 10,
+        "confirmedPhaseOrder": 1,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.720Z"
+      },
+      "passed": true
+    },
+    {
+      "targetId": "scene-10-image-02",
+      "sceneId": "scene-10",
+      "sceneOrder": 10,
+      "phaseId": "scene-10-image-02",
+      "phaseOrder": 2,
+      "expectedFile": "scenes/scene-10/scene-10-2.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-10-image-02",
+        "confirmedSceneOrder": 10,
+        "confirmedPhaseOrder": 2,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.722Z"
+      },
+      "passed": true
+    },
+    {
+      "targetId": "scene-10-image-03",
+      "sceneId": "scene-10",
+      "sceneOrder": 10,
+      "phaseId": "scene-10-image-03",
+      "phaseOrder": 3,
+      "expectedFile": "scenes/scene-10/scene-10-3.jpeg",
+      "verification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-10-image-03",
+        "confirmedSceneOrder": 10,
+        "confirmedPhaseOrder": 3,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.724Z"
+      },
+      "passed": true
     }
+  ],
+  "scenes": [
+    {
+      "sceneId": "scene-01",
+      "order": 1,
+      "title": "Hook: Der Irrtum",
+      "imageCount": 2,
+      "targetIds": [
+        "scene-01",
+        "scene-01-image-02"
+      ],
+      "passed": true
+    },
+    {
+      "sceneId": "scene-02",
+      "order": 2,
+      "title": "Einleitung: Das Szenario",
+      "imageCount": 3,
+      "targetIds": [
+        "scene-02",
+        "scene-02-image-02",
+        "scene-02-image-03"
+      ],
+      "passed": true
+    },
+    {
+      "sceneId": "scene-03",
+      "order": 3,
+      "title": "Einleitung: Das Prinzip",
+      "imageCount": 2,
+      "targetIds": [
+        "scene-03",
+        "scene-03-image-02"
+      ],
+      "passed": true
+    },
+    {
+      "sceneId": "scene-04",
+      "order": 4,
+      "title": "Hauptteil: Wer sitzt dort",
+      "imageCount": 2,
+      "targetIds": [
+        "scene-04",
+        "scene-04-image-02"
+      ],
+      "passed": true
+    },
+    {
+      "sceneId": "scene-05",
+      "order": 5,
+      "title": "Hauptteil: Die Fünf",
+      "imageCount": 2,
+      "targetIds": [
+        "scene-05",
+        "scene-05-image-02"
+      ],
+      "passed": true
+    },
+    {
+      "sceneId": "scene-06",
+      "order": 6,
+      "title": "Hauptteil: Die normale Regel",
+      "imageCount": 2,
+      "targetIds": [
+        "scene-06",
+        "scene-06-image-02"
+      ],
+      "passed": true
+    },
+    {
+      "sceneId": "scene-07",
+      "order": 7,
+      "title": "Hauptteil: Der Bruch",
+      "imageCount": 3,
+      "targetIds": [
+        "scene-07",
+        "scene-07-image-02",
+        "scene-07-image-03"
+      ],
+      "passed": true
+    },
+    {
+      "sceneId": "scene-08",
+      "order": 8,
+      "title": "Hauptteil: Wie oft und die Ausnahme",
+      "imageCount": 3,
+      "targetIds": [
+        "scene-08",
+        "scene-08-image-02",
+        "scene-08-image-03"
+      ],
+      "passed": true
+    },
+    {
+      "sceneId": "scene-09",
+      "order": 9,
+      "title": "Schluss: Der Preis",
+      "imageCount": 2,
+      "targetIds": [
+        "scene-09",
+        "scene-09-image-02"
+      ],
+      "passed": true
+    },
+    {
+      "sceneId": "scene-10",
+      "order": 10,
+      "title": "Schluss: Zurück zum Anfang",
+      "imageCount": 3,
+      "targetIds": [
+        "scene-10",
+        "scene-10-image-02",
+        "scene-10-image-03"
+      ],
+      "passed": true
+    }
+  ],
+  "instructions": [
+    "Jede Bildphase muss anhand ihres sichtbaren Inhalts und nicht allein anhand des Dateinamens zugeordnet sein.",
+    "Die zweite Prüfung muss die gewählte Bildphase gegen die vorherige und nächste Bildphase bestätigen.",
+    "Bei einem Zweifel bleibt das Bild unmatched und blockiert den finalen Render."
   ]
 }

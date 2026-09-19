@@ -16,33 +16,71 @@
     {
       "phaseId": "scene-01-image-01",
       "order": 1,
-      "startPercent": 0.0,
+      "startPercent": 0,
       "promptFileName": "image-prompt.txt",
-      "expectedImageFileName": "scene-01.png",
+      "expectedImageFileName": "scene-01.jpeg",
       "visualIdea": "Titelbild: die Mehrheit gegen den einen, darüber die Themenfrage.",
       "imageText": "WAS IST EIN VETORECHT?",
       "audioCue": "Was ist ein Vetorecht",
+      "timingBasis": "scene-start",
       "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"Was ist ein Vetorecht\".",
-      "imageStatus": "missing",
-      "assetVerification": null
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-01",
+        "confirmedSceneOrder": 1,
+        "confirmedPhaseOrder": 1,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.674Z"
+      }
     },
     {
       "phaseId": "scene-01-image-02",
       "order": 2,
-      "startPercent": 0.823529,
+      "startPercent": 0.470588,
       "promptFileName": "image-prompt-02.txt",
-      "expectedImageFileName": "scene-01-2.png",
+      "expectedImageFileName": "scene-01-2.jpeg",
       "visualIdea": "Ein dicker roter Strich fährt durch die Mehrheit.",
       "imageText": "STIMMT NICHT",
-      "audioCue": "Stimmt aber nicht",
+      "audioCue": "UNO entscheidet die Mehrheit",
+      "timingBasis": "narration-audio-cue",
       "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"Stimmt aber nicht\".",
-      "imageStatus": "missing",
-      "assetVerification": null
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-01-image-02",
+        "confirmedSceneOrder": 1,
+        "confirmedPhaseOrder": 2,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.677Z"
+      }
     }
   ],
-  "expectedImageFileName": "scene-01.png",
+  "expectedImageFileName": "scene-01.jpeg",
   "promptStatus": "ready",
-  "imageStatus": "missing",
-  "assetVerification": null,
-  "status": "planned"
+  "imageStatus": "ready",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-01",
+    "confirmedSceneOrder": 1,
+    "confirmedPhaseOrder": 1,
+    "visibleSummary": "",
+    "reason": "",
+    "comparedFields": [],
+    "matchMethod": "numbered-global-image-order",
+    "reviewedAt": "2026-09-19T07:01:17.674Z"
+  },
+  "status": "image-ready"
 }

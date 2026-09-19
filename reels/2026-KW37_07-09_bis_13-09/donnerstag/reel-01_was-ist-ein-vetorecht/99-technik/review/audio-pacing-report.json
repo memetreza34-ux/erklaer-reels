@@ -1,0 +1,52 @@
+{
+  "version": 6,
+  "createdAt": "2026-09-19T07:06:32.667Z",
+  "passed": true,
+  "sourceFile": "audio/voiceover.m4a",
+  "outputFile": "audio/voiceover-tight.m4a",
+  "beforeSeconds": 91.306667,
+  "afterSeconds": 63.7,
+  "removedSeconds": 27.606667,
+  "reductionPercent": 30.23510539487768,
+  "playbackRate": 1.1,
+  "speedIncreasePercent": 10.000000000000009,
+  "loudnessNormalized": true,
+  "loudnessMeasured": true,
+  "loudnessSettings": {
+    "loudnessTargetLufs": -16,
+    "truePeakDbtp": -1.5,
+    "loudnessRangeLra": 11,
+    "outputSampleRateHz": 48000
+  },
+  "loudnessMeasurement": {
+    "measured": true,
+    "integratedLufs": -16.85,
+    "truePeakDbtp": -1.3,
+    "loudnessRange": 2.8,
+    "threshold": -27.02,
+    "loudnessTargetLufs": -16,
+    "truePeakTargetDbtp": -1.5,
+    "loudnessToleranceLu": 1,
+    "truePeakToleranceDb": 0.2,
+    "loudnessDifferenceLu": 0.8500000000000014,
+    "passed": true
+  },
+  "filter": "silenceremove=start_periods=1:start_duration=0.12:start_threshold=-38dB:start_silence=0.02:stop_periods=-1:stop_duration=0.24:stop_threshold=-35dB:stop_silence=0.05:detection=rms,atempo=1.1,areverse,silenceremove=start_periods=1:start_duration=0.10:start_threshold=-35dB:start_silence=0.05:detection=rms,areverse,loudnorm=I=-16:TP=-1.5:LRA=11,aresample=48000",
+  "settings": {
+    "thresholdDb": -35,
+    "minimumLongPauseSeconds": 0.24,
+    "retainedPauseSeconds": 0.05,
+    "playbackRate": 1.1,
+    "loudnessTargetLufs": -16,
+    "truePeakDbtp": -1.5,
+    "loudnessRangeLra": 11,
+    "outputSampleRateHz": 48000
+  },
+  "subtitlesEnabled": false,
+  "wordSyncRequired": false,
+  "sceneTimelineInvalidated": true,
+  "note": "Lautheit wurde nach der Verarbeitung erneut gemessen. Danach müssen nur Timeline und Szenen-Cues mit der neuen Audiodatei synchronisiert werden; Untertitel sind deaktiviert.",
+  "audioFingerprintSha256": "c190f20874b8c437c6658b42269c64a1ee0a7d7f8b1c1251b13634dcc1a0a11d",
+  "audioBindingStatus": "verified-after-measurement",
+  "measuredFile": "audio/voiceover-tight.m4a"
+}

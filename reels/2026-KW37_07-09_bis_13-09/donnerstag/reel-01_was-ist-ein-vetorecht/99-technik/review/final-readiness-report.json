@@ -1,0 +1,362 @@
+{
+  "version": 12,
+  "createdAt": "2026-09-19T07:07:52.561Z",
+  "reelDirectory": "reels/2026-KW37_07-09_bis_13-09/donnerstag/reel-01_was-ist-ein-vetorecht",
+  "strict": false,
+  "readyForRenderer": false,
+  "subtitlesEnabled": false,
+  "wordSyncRequired": false,
+  "stages": {
+    "sourceQuality": {
+      "passed": true,
+      "required": true,
+      "legacy": false,
+      "reason": null,
+      "checks": [
+        {
+          "id": "source-quality-binding",
+          "passed": true,
+          "level": "error",
+          "message": "Verpflichtende Quellen-QC: bestanden."
+        }
+      ]
+    },
+    "effectsHardGate": {
+      "passed": true,
+      "required": true,
+      "legacy": false,
+      "reason": "Jede narrative Szene besitzt sichtbare Kamerabewegung; bekannte Motion-Aliase werden kanonisch aufgelöst; jeder Szenenwechsel und jeder interne Bildwechsel besitzt einen gültigen SFX aus der zentralen Bibliothek.",
+      "checks": [
+        {
+          "id": "motion-sfx-hard-gate",
+          "passed": true,
+          "level": "error",
+          "message": "Verpflichtende Motion-/SFX-Coverage: bestanden."
+        }
+      ]
+    },
+    "soundLibrary": {
+      "passed": true,
+      "required": true,
+      "copied": [],
+      "unknownTypes": [],
+      "missingFiles": []
+    },
+    "audioPacingFileBinding": {
+      "passed": true,
+      "required": true,
+      "legacy": false,
+      "reason": null,
+      "checks": [
+        {
+          "id": "audio-pacing-file-binding",
+          "passed": true,
+          "level": "error",
+          "message": "Audio-Pacing-Dateibindung: bestanden."
+        }
+      ]
+    },
+    "trailingSilence": {
+      "passed": true,
+      "required": true,
+      "legacy": false,
+      "reason": "Voice-over-Endstille 0.00 s — innerhalb des Limits.",
+      "checks": [
+        {
+          "id": "trailing-voiceover-silence",
+          "passed": true,
+          "level": "error",
+          "message": "Endstille des finalen Voice-overs: bestanden."
+        }
+      ],
+      "trailingSilenceSeconds": 0,
+      "maximumTrailingSilenceSeconds": 0.25
+    },
+    "subtitles": {
+      "passed": true,
+      "required": false,
+      "enabled": false,
+      "checks": [
+        {
+          "id": "subtitles-disabled",
+          "passed": true,
+          "level": "info",
+          "message": "Untertitel sind global deaktiviert und kein Word-Sync ist erforderlich."
+        }
+      ]
+    },
+    "content": {
+      "passed": true,
+      "reportFile": "review/content-readiness.json",
+      "summary": {
+        "passedChecks": 429,
+        "failedChecks": 0,
+        "warnings": 3,
+        "totalChecks": 432
+      }
+    },
+    "audioPacing": {
+      "passed": true,
+      "strict": false,
+      "playbackRate": 1.1,
+      "loudnessTargetLufs": -16,
+      "truePeakDbtp": -1.5,
+      "loudnessMeasured": true,
+      "measuredIntegratedLufs": -16.85,
+      "measuredTruePeakDbtp": -1.3,
+      "beforeSeconds": 91.306667,
+      "afterSeconds": 63.7,
+      "reportFile": "review/audio-pacing-report.json",
+      "summary": {
+        "passedChecks": 12,
+        "failedChecks": 0,
+        "warnings": 0,
+        "totalChecks": 12
+      }
+    },
+    "timeline": {
+      "passed": false,
+      "timingStatus": "audio-synced",
+      "renderStatus": "ready-for-renderer",
+      "reportFile": "review/final-video-report.json",
+      "summary": {
+        "passedChecks": 60,
+        "failedChecks": 1,
+        "warnings": 6,
+        "totalChecks": 67
+      }
+    },
+    "visualQuality": {
+      "passed": true,
+      "strict": false,
+      "reportFile": "review/visual-quality-report.json",
+      "inspectionFile": "review/visual-inspection.json",
+      "summary": {
+        "assetsChecked": 21,
+        "sceneImagesChecked": 21,
+        "passedChecks": 192,
+        "failedChecks": 0,
+        "warnings": 21,
+        "totalChecks": 213
+      }
+    }
+  },
+  "progress": {
+    "reelId": "reel-01_was-ist-ein-vetorecht",
+    "title": "Was ist ein Vetorecht?",
+    "preProduction": 100,
+    "assets": 100,
+    "audioPacing": 100,
+    "timeline": 90,
+    "wordSync": 100,
+    "visualQuality": 50,
+    "productionReady": 94,
+    "rendering": 30,
+    "overall": 88,
+    "details": {
+      "scriptsReady": true,
+      "styleReady": true,
+      "visualWorldUnassigned": false,
+      "scenesReady": "10/10",
+      "plannedImageCount": 21,
+      "promptsReady": "21/21",
+      "titleImagePromptReady": true,
+      "captionReady": true,
+      "sourcesReady": true,
+      "contentCheckReady": true,
+      "audioReady": true,
+      "sceneImagesReady": "24/21",
+      "assetReportReady": true,
+      "audioPacingCreated": true,
+      "audioPacingPassed": true,
+      "audioPacingRate": 1.1,
+      "audioPacingRateSafe": true,
+      "audioLoudnessNormalized": true,
+      "audioLoudnessTargetSafe": true,
+      "audioTruePeakSafe": true,
+      "audioMeasurementRequired": true,
+      "audioMeasurementPresent": true,
+      "audioMeasurementSafe": true,
+      "measuredIntegratedLufs": -16.85,
+      "measuredTruePeakDbtp": -1.3,
+      "audioPacingDurationReduced": true,
+      "timelineBuilt": true,
+      "audioDurationKnown": true,
+      "audioSynced": true,
+      "renderReady": true,
+      "timelineCheckReady": false,
+      "wordSyncRequired": false,
+      "wordSyncCreated": false,
+      "wordSyncPassed": true,
+      "wordSyncProvider": "not-required",
+      "wordCoverage": 1,
+      "visualReportCreated": true,
+      "visualTechnicalReady": true,
+      "visualAssetsReviewed": "0/22",
+      "visualStrictReady": false,
+      "rendererValidated": true,
+      "renderComplete": false
+    },
+    "nextStep": "Master-Timeline mit dem optimierten Audio erzeugen, echte Szenen-Cues eintragen und alle internen Bildphasen prüfen."
+  },
+  "blockingIssues": [
+    {
+      "id": "scene-06-image-phase-duration",
+      "level": "error",
+      "message": "scene-06: Die kürzeste Bildphase dauert 2.01 Sekunden; mindestens 2.2 Sekunden sind nötig, damit ein Bild erfassbar bleibt."
+    }
+  ],
+  "warnings": [
+    {
+      "id": "scene-02-image-02-image-text-prompt",
+      "level": "warning",
+      "message": "scene-02-image-02: imageText steht nicht exakt im Bildprompt."
+    },
+    {
+      "id": "scene-07-image-02-image-text-prompt",
+      "level": "warning",
+      "message": "scene-07-image-02: imageText steht nicht exakt im Bildprompt."
+    },
+    {
+      "id": "effects-not-every-scene-moving",
+      "level": "warning",
+      "message": "Nicht jede Szene sollte automatisch denselben Zoom oder Schwenk erhalten; Motion-Typen sichtbar variieren."
+    },
+    {
+      "id": "scene-03-balanced-duration",
+      "level": "warning",
+      "message": "scene-03: Standardszene dauert 5.60 Sekunden; erlaubt sind 6–7.5 Sekunden."
+    },
+    {
+      "id": "scene-04-balanced-duration",
+      "level": "warning",
+      "message": "scene-04: Standardszene dauert 4.98 Sekunden; erlaubt sind 6–7.5 Sekunden."
+    },
+    {
+      "id": "scene-06-balanced-duration",
+      "level": "warning",
+      "message": "scene-06: Standardszene dauert 4.92 Sekunden; erlaubt sind 6–7.5 Sekunden."
+    },
+    {
+      "id": "scene-09-balanced-duration",
+      "level": "warning",
+      "message": "scene-09: Standardszene dauert 5.91 Sekunden; erlaubt sind 6–7.5 Sekunden."
+    },
+    {
+      "id": "scene-10-balanced-duration",
+      "level": "warning",
+      "message": "scene-10: Schlussszene inklusive Nachlauf dauert 9.14 Sekunden; erlaubt sind 5.8–8.2 Sekunden."
+    },
+    {
+      "id": "scene-10-adjacent-duration-balance",
+      "level": "warning",
+      "message": "scene-10: Der Dauersprung zur vorherigen Szene ist zu groß."
+    },
+    {
+      "id": "scene-01-target-resolution",
+      "level": "warning",
+      "message": "scene-01: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-01-image-02-target-resolution",
+      "level": "warning",
+      "message": "scene-01-image-02: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-02-target-resolution",
+      "level": "warning",
+      "message": "scene-02: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-02-image-02-target-resolution",
+      "level": "warning",
+      "message": "scene-02-image-02: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-03-target-resolution",
+      "level": "warning",
+      "message": "scene-03: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-03-image-02-target-resolution",
+      "level": "warning",
+      "message": "scene-03-image-02: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-04-target-resolution",
+      "level": "warning",
+      "message": "scene-04: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-04-image-02-target-resolution",
+      "level": "warning",
+      "message": "scene-04-image-02: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-05-target-resolution",
+      "level": "warning",
+      "message": "scene-05: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-05-image-02-target-resolution",
+      "level": "warning",
+      "message": "scene-05-image-02: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-06-target-resolution",
+      "level": "warning",
+      "message": "scene-06: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-06-image-02-target-resolution",
+      "level": "warning",
+      "message": "scene-06-image-02: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-07-target-resolution",
+      "level": "warning",
+      "message": "scene-07: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-07-image-02-target-resolution",
+      "level": "warning",
+      "message": "scene-07-image-02: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-08-target-resolution",
+      "level": "warning",
+      "message": "scene-08: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-08-image-02-target-resolution",
+      "level": "warning",
+      "message": "scene-08-image-02: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-09-target-resolution",
+      "level": "warning",
+      "message": "scene-09: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-09-image-02-target-resolution",
+      "level": "warning",
+      "message": "scene-09-image-02: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-10-target-resolution",
+      "level": "warning",
+      "message": "scene-10: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-10-image-02-target-resolution",
+      "level": "warning",
+      "message": "scene-10-image-02: Empfohlen sind mindestens 1080×1920 Pixel."
+    },
+    {
+      "id": "scene-10-image-03-target-resolution",
+      "level": "warning",
+      "message": "scene-10-image-03: Empfohlen sind mindestens 1080×1920 Pixel."
+    }
+  ],
+  "nextStep": "Master-Timeline mit dem optimierten Audio erzeugen, echte Szenen-Cues eintragen und alle internen Bildphasen prüfen."
+}

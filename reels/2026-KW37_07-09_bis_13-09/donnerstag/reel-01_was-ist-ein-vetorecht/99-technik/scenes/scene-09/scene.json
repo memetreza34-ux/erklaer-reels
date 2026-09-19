@@ -16,33 +16,71 @@
     {
       "phaseId": "scene-09-image-01",
       "order": 1,
-      "startPercent": 0.0,
+      "startPercent": 0,
       "promptFileName": "image-prompt.txt",
-      "expectedImageFileName": "scene-09.png",
+      "expectedImageFileName": "scene-09.jpeg",
       "visualIdea": "Ein Gebäude entsteht, daneben ein Preisschild.",
       "imageText": "DER PREIS",
       "audioCue": "Warum gibt es das",
+      "timingBasis": "scene-start",
       "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"Warum gibt es das\".",
-      "imageStatus": "missing",
-      "assetVerification": null
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-09",
+        "confirmedSceneOrder": 9,
+        "confirmedPhaseOrder": 1,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.715Z"
+      }
     },
     {
       "phaseId": "scene-09-image-02",
       "order": 2,
-      "startPercent": 0.666667,
+      "startPercent": 0.5,
       "promptFileName": "image-prompt-02.txt",
-      "expectedImageFileName": "scene-09-2.png",
+      "expectedImageFileName": "scene-09-2.jpeg",
       "visualIdea": "Fünf Flaggen-Bälle drehen sich zum Ausgang.",
       "imageText": "",
-      "audioCue": "hätten die großen Länder nicht mitgemacht",
+      "audioCue": "Ohne dieses Recht hätten",
+      "timingBasis": "narration-audio-cue",
       "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"hätten die großen Länder nicht mitgemacht\".",
-      "imageStatus": "missing",
-      "assetVerification": null
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-09-image-02",
+        "confirmedSceneOrder": 9,
+        "confirmedPhaseOrder": 2,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.718Z"
+      }
     }
   ],
-  "expectedImageFileName": "scene-09.png",
+  "expectedImageFileName": "scene-09.jpeg",
   "promptStatus": "ready",
-  "imageStatus": "missing",
-  "assetVerification": null,
-  "status": "planned"
+  "imageStatus": "ready",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-09",
+    "confirmedSceneOrder": 9,
+    "confirmedPhaseOrder": 1,
+    "visibleSummary": "",
+    "reason": "",
+    "comparedFields": [],
+    "matchMethod": "numbered-global-image-order",
+    "reviewedAt": "2026-09-19T07:01:17.715Z"
+  },
+  "status": "image-ready"
 }

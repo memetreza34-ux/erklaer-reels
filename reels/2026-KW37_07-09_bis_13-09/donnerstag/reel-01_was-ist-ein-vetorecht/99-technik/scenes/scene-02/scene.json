@@ -11,20 +11,33 @@
   "subtitleCues": [],
   "subtitlePosition": "center",
   "durationSeconds": 7.5,
-  "imageCount": 3,
+  "imageCount": 2,
   "imagePhases": [
     {
       "phaseId": "scene-02-image-01",
       "order": 1,
-      "startPercent": 0.0,
+      "startPercent": 0,
       "promptFileName": "image-prompt.txt",
       "expectedImageFileName": "scene-02.png",
       "visualIdea": "Eine Weltkugel mit einem roten Krisenpunkt.",
       "imageText": "",
       "audioCue": "Stell dir vor, irgendwo bricht ein Krieg aus",
+      "timingBasis": "scene-start",
       "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"Stell dir vor, irgendwo bricht ein Krieg aus\".",
-      "imageStatus": "missing",
-      "assetVerification": null
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-02",
+        "confirmedSceneOrder": 2,
+        "confirmedPhaseOrder": 1,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.678Z"
+      }
     },
     {
       "phaseId": "scene-02-image-02",
@@ -32,30 +45,42 @@
       "startPercent": 0.545455,
       "promptFileName": "image-prompt-02.txt",
       "expectedImageFileName": "scene-02-2.png",
-      "visualIdea": "Vierzehn Bälle heben die Hand, einer nicht.",
-      "imageText": "",
-      "audioCue": "Vierzehn Länder stimmen dafür",
-      "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"Vierzehn Länder stimmen dafür\".",
-      "imageStatus": "missing",
-      "assetVerification": null
-    },
-    {
-      "phaseId": "scene-02-image-03",
-      "order": 3,
-      "startPercent": 0.818182,
-      "promptFileName": "image-prompt-03.txt",
-      "expectedImageFileName": "scene-02-3.png",
       "visualIdea": "Die Weltkugel bleibt unverändert, die Krise läuft weiter.",
       "imageText": "NICHTS PASSIERT",
-      "audioCue": "Und es passiert nichts",
+      "audioCue": "Vierzehn Länder stimmen dafür",
+      "timingBasis": "narration-audio-cue",
       "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"Und es passiert nichts\".",
-      "imageStatus": "missing",
-      "assetVerification": null
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-02-image-03",
+        "confirmedSceneOrder": 2,
+        "confirmedPhaseOrder": 3,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.683Z"
+      }
     }
   ],
-  "expectedImageFileName": "scene-02.png",
+  "expectedImageFileName": "scene-02.jpeg",
   "promptStatus": "ready",
-  "imageStatus": "missing",
-  "assetVerification": null,
-  "status": "planned"
+  "imageStatus": "ready",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-02",
+    "confirmedSceneOrder": 2,
+    "confirmedPhaseOrder": 1,
+    "visibleSummary": "",
+    "reason": "",
+    "comparedFields": [],
+    "matchMethod": "numbered-global-image-order",
+    "reviewedAt": "2026-09-19T07:01:17.678Z"
+  },
+  "status": "image-ready"
 }

@@ -16,33 +16,71 @@
     {
       "phaseId": "scene-04-image-01",
       "order": 1,
-      "startPercent": 0.0,
+      "startPercent": 0,
       "promptFileName": "image-prompt.txt",
-      "expectedImageFileName": "scene-04.png",
+      "expectedImageFileName": "scene-04.jpeg",
       "visualIdea": "Fünfzehn neutrale Bälle um einen runden Tisch.",
       "imageText": "15 LÄNDER",
       "audioCue": "Im Sicherheitsrat sitzen fünfzehn Länder",
+      "timingBasis": "scene-start",
       "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"Im Sicherheitsrat sitzen fünfzehn Länder\".",
-      "imageStatus": "missing",
-      "assetVerification": null
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-04",
+        "confirmedSceneOrder": 4,
+        "confirmedPhaseOrder": 1,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.690Z"
+      }
     },
     {
       "phaseId": "scene-04-image-02",
       "order": 2,
-      "startPercent": 0.733333,
+      "startPercent": 0.466667,
       "promptFileName": "image-prompt-02.txt",
-      "expectedImageFileName": "scene-04-2.png",
+      "expectedImageFileName": "scene-04-2.jpeg",
       "visualIdea": "Zehn Bälle verblassen mit Kreispfeil, fünf sitzen auf festen Sockeln.",
       "imageText": "",
-      "audioCue": "Fünf sind immer dabei",
+      "audioCue": "wechseln alle zwei Jahre",
+      "timingBasis": "narration-audio-cue",
       "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"Fünf sind immer dabei\".",
-      "imageStatus": "missing",
-      "assetVerification": null
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-04-image-02",
+        "confirmedSceneOrder": 4,
+        "confirmedPhaseOrder": 2,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.692Z"
+      }
     }
   ],
-  "expectedImageFileName": "scene-04.png",
+  "expectedImageFileName": "scene-04.jpeg",
   "promptStatus": "ready",
-  "imageStatus": "missing",
-  "assetVerification": null,
-  "status": "planned"
+  "imageStatus": "ready",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-04",
+    "confirmedSceneOrder": 4,
+    "confirmedPhaseOrder": 1,
+    "visibleSummary": "",
+    "reason": "",
+    "comparedFields": [],
+    "matchMethod": "numbered-global-image-order",
+    "reviewedAt": "2026-09-19T07:01:17.690Z"
+  },
+  "status": "image-ready"
 }

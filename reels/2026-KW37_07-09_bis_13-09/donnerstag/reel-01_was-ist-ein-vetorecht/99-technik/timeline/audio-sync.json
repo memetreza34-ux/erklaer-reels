@@ -1,0 +1,179 @@
+{
+  "version": 3,
+  "audioDurationSeconds": 63.751,
+  "audioFile": "audio/voiceover-tight.m4a",
+  "source": "sequential-spoken-text-weight-v1",
+  "timingStatus": "audio-synced",
+  "instructions": [
+    "Trage die echte Audiodauer ein.",
+    "cueTimings enthält die echten Zeitpunkte der narrativen Szenen-Cues.",
+    "phaseCueTimings enthält die echten Zeitpunkte der internen Bildwechsel-Cues.",
+    "cueTimeSeconds ist jeweils der Zeitpunkt im finalen Voice-over, an dem der angegebene audioCue tatsächlich gesprochen wird.",
+    "Das erste Bild einer Szene beginnt normalerweise leadInSeconds vor dem Szenen-Cue.",
+    "Eine zweite Bildphase beginnt exakt an ihrem phaseCueTimings.cueTimeSeconds; startPercent dient nur als Planungs-Fallback, solange dieser echte Zeitpunkt fehlt.",
+    "Prüfe jeden Szenen- und Bildwechsel gegen das finale Voice-over und den sichtbaren Bildinhalt.",
+    "Nach dem letzten gesprochenen Wort bleibt das letzte Bild automatisch kurz stehen."
+  ],
+  "cueTimings": [
+    {
+      "sceneId": "scene-01",
+      "audioCue": "Was ist ein Vetorecht",
+      "cueTimeSeconds": 0,
+      "leadInSeconds": 0,
+      "confidence": 1
+    },
+    {
+      "sceneId": "scene-02",
+      "audioCue": "Stell dir vor, irgendwo bricht ein Krieg aus",
+      "cueTimeSeconds": 5.755,
+      "leadInSeconds": 0.1,
+      "confidence": 0.86
+    },
+    {
+      "sceneId": "scene-03",
+      "audioCue": "Dieses eine Land hat ein Vetorecht",
+      "cueTimeSeconds": 13.107,
+      "leadInSeconds": 0.1,
+      "confidence": 0.86
+    },
+    {
+      "sceneId": "scene-04",
+      "audioCue": "Im Sicherheitsrat sitzen fünfzehn Länder",
+      "cueTimeSeconds": 18.706,
+      "leadInSeconds": 0.1,
+      "confidence": 0.86
+    },
+    {
+      "sceneId": "scene-05",
+      "audioCue": "Diese fünf sind die USA",
+      "cueTimeSeconds": 23.686,
+      "leadInSeconds": 0.1,
+      "confidence": 0.86
+    },
+    {
+      "sceneId": "scene-06",
+      "audioCue": "Damit etwas durchgeht",
+      "cueTimeSeconds": 30.355,
+      "leadInSeconds": 0.1,
+      "confidence": 0.86
+    },
+    {
+      "sceneId": "scene-07",
+      "audioCue": "Ist es aber nicht",
+      "cueTimeSeconds": 35.272,
+      "leadInSeconds": 0.1,
+      "confidence": 0.86
+    },
+    {
+      "sceneId": "scene-08",
+      "audioCue": "Fast dreihundert Mal",
+      "cueTimeSeconds": 42.159,
+      "leadInSeconds": 0.1,
+      "confidence": 0.86
+    },
+    {
+      "sceneId": "scene-09",
+      "audioCue": "Warum gibt es das",
+      "cueTimeSeconds": 49.403,
+      "leadInSeconds": 0.1,
+      "confidence": 0.86
+    },
+    {
+      "sceneId": "scene-10",
+      "audioCue": "Und man wird es nicht mehr los",
+      "cueTimeSeconds": 55.313,
+      "leadInSeconds": 0.1,
+      "confidence": 0.86
+    }
+  ],
+  "phaseCueTimings": [
+    {
+      "targetId": "scene-01-image-02",
+      "sceneId": "scene-01",
+      "phaseId": "scene-01-image-02",
+      "audioCue": "UNO entscheidet die Mehrheit",
+      "cueTimeSeconds": 2.637,
+      "confidence": 0.86
+    },
+    {
+      "targetId": "scene-02-image-02",
+      "sceneId": "scene-02",
+      "phaseId": "scene-02-image-02",
+      "audioCue": "Vierzehn Länder stimmen dafür",
+      "cueTimeSeconds": 9.741,
+      "confidence": 0.86
+    },
+    {
+      "targetId": "scene-03-image-02",
+      "sceneId": "scene-03",
+      "phaseId": "scene-03-image-02",
+      "audioCue": "die anderen nicht überzeugen",
+      "cueTimeSeconds": 15.697,
+      "confidence": 0.86
+    },
+    {
+      "targetId": "scene-04-image-02",
+      "sceneId": "scene-04",
+      "phaseId": "scene-04-image-02",
+      "audioCue": "wechseln alle zwei Jahre",
+      "cueTimeSeconds": 20.987,
+      "confidence": 0.86
+    },
+    {
+      "targetId": "scene-05-image-02",
+      "sceneId": "scene-05",
+      "phaseId": "scene-05-image-02",
+      "audioCue": "Die Gewinner des Zweiten",
+      "cueTimeSeconds": 27.036,
+      "confidence": 0.86
+    },
+    {
+      "targetId": "scene-06-image-02",
+      "sceneId": "scene-06",
+      "phaseId": "scene-06-image-02",
+      "audioCue": "Ja-Stimmen von fünfzehn",
+      "cueTimeSeconds": 32.263,
+      "confidence": 0.86
+    },
+    {
+      "targetId": "scene-07-image-02",
+      "sceneId": "scene-07",
+      "phaseId": "scene-07-image-02",
+      "audioCue": "Länder Nein sagt",
+      "cueTimeSeconds": 38.173,
+      "confidence": 0.86
+    },
+    {
+      "targetId": "scene-08-image-02",
+      "sceneId": "scene-08",
+      "phaseId": "scene-08-image-02",
+      "audioCue": "einfach nichts sagt",
+      "cueTimeSeconds": 45.727,
+      "confidence": 0.86
+    },
+    {
+      "targetId": "scene-09-image-02",
+      "sceneId": "scene-09",
+      "phaseId": "scene-09-image-02",
+      "audioCue": "Ohne dieses Recht hätten",
+      "cueTimeSeconds": 52.412,
+      "confidence": 0.86
+    },
+    {
+      "targetId": "scene-10-image-02",
+      "sceneId": "scene-10",
+      "phaseId": "scene-10-image-02",
+      "audioCue": "können es nur genau",
+      "cueTimeSeconds": 58.214,
+      "confidence": 0.86
+    },
+    {
+      "targetId": "scene-10-image-03",
+      "sceneId": "scene-10",
+      "phaseId": "scene-10-image-03",
+      "audioCue": "gilt bis heute",
+      "cueTimeSeconds": 60.494,
+      "confidence": 0.86
+    }
+  ]
+}

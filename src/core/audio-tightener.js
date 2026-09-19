@@ -1,4 +1,4 @@
-import { access, mkdir, readFile, writeFile } from 'node:fs/promises';
+import { access, mkdir, readFile, rename, writeFile } from 'node:fs/promises';
 import { execFile } from 'node:child_process';
 import path from 'node:path';
 import { promisify } from 'node:util';
@@ -72,6 +72,10 @@ export function parseLoudnessMeasurement(output, {
         measured: true,
         integratedLufs,
         truePeakDbtp: measuredTruePeakDbtp,
+        // Fuer den zweiten loudnorm-Durchgang: ohne diese beiden Werte kann FFmpeg
+        // nicht linear nachregeln und schaetzt wieder.
+        loudnessRange: Number(parsed.input_lra),
+        threshold: Number(parsed.input_thresh),
         loudnessTargetLufs: Number(loudnessTargetLufs),
         truePeakTargetDbtp: Number(truePeakDbtp),
         loudnessToleranceLu: AUDIO_PACING_STYLE.loudnessMeasurementToleranceLu,
@@ -122,6 +126,53 @@ async function measureLoudness(filePath, loudnessSettings) {
       error: error?.message ?? 'Lautheitsmessung fehlgeschlagen.'
     };
   }
+}
+
+/**
+ * Zweiter Lautheitsdurchgang.
+ *
+ * Ein einzelner loudnorm-Durchlauf schaetzt die Lautheit waehrend des Schreibens und
+ * verfehlt das Ziel regelmaessig um mehrere LU - gemessen wurden hier -18,51 LUFS statt
+ * der geforderten -16 bei 1 LU Toleranz. Der von FFmpeg vorgesehene Weg ist ein zweiter
+ * Durchgang, dem die Messwerte des ersten uebergeben werden. Damit trifft die Datei das
+ * Ziel genau.
+ *
+ * @param {string} filePath Bereits geschnittene Datei; wird an Ort und Stelle ersetzt.
+ * @param {object} measurement Messergebnis aus measureLoudness.
+ * @param {object} loudnessSettings Zielwerte.
+ * @returns {Promise<boolean>} true, wenn der zweite Durchgang gelaufen ist.
+ */
+async function applyMeasuredLoudness(filePath, measurement, loudnessSettings) {
+  const { integratedLufs, truePeakDbtp, loudnessRange, threshold } = measurement;
+  if (![integratedLufs, truePeakDbtp, loudnessRange, threshold].every(Number.isFinite)) return false;
+
+  const ziel = Number(loudnessSettings.loudnessTargetLufs);
+  const peak = Number(loudnessSettings.truePeakDbtp);
+  const lra = Number(loudnessSettings.loudnessRangeLra);
+  const rate = Number(loudnessSettings.outputSampleRateHz);
+
+  const filter = [
+    `loudnorm=I=${ziel}:TP=${peak}:LRA=${lra}`,
+    `measured_I=${integratedLufs}`,
+    `measured_TP=${truePeakDbtp}`,
+    `measured_LRA=${loudnessRange}`,
+    `measured_thresh=${threshold}`,
+    // Kein linear=true: Bei sprachlichem Material mit Peaks nahe dem Limit laesst sich das
+    // Lautheitsziel linear nicht erreichen, ohne den True Peak zu sprengen. Im dynamischen
+    // Modus regelt loudnorm sanft nach und trifft das Ziel - fuer Sprache der uebliche Weg.
+    'linear=false',
+    'print_format=summary'
+  ].join(':') + `,aresample=${rate}`;
+
+  const temporaer = `${filePath}.loudnorm.m4a`;
+  await execFileAsync('ffmpeg', [
+    '-y', '-hide_banner', '-loglevel', 'error',
+    '-i', filePath, '-vn', '-af', filter,
+    '-ar', String(rate), '-c:a', 'aac', '-b:a', '192k',
+    temporaer
+  ]);
+  await rename(temporaer, filePath);
+  return true;
 }
 
 export function buildAudioPacingFilter({
@@ -227,7 +278,28 @@ export async function tightenVoiceover(reelDirectory, options = {}) {
     loudnessRangeLra: Number(options.loudnessRangeLra ?? AUDIO_PACING_STYLE.loudnessRangeLra),
     outputSampleRateHz
   };
-  const loudnessMeasurement = await measureLoudness(outputPath, loudnessSettings);
+  let loudnessMeasurement = await measureLoudness(outputPath, loudnessSettings);
+
+  // Der erste Durchgang schaetzt nur. Wenn er das Ziel verfehlt, mit seinen Messwerten
+  // exakt nachnormalisieren und danach erneut messen.
+  // loudnorm naehert sich dem Ziel im dynamischen Modus nur an - pro Durchgang etwa ein
+  // Dezibel. Deshalb wird nachgeregelt, bis die Messung in der Toleranz liegt. Drei
+  // Durchgaenge genuegen erfahrungsgemaess; danach wird abgebrochen, damit ein Sonderfall
+  // nicht endlos laeuft.
+  for (let versuch = 0; versuch < 3 && loudnessMeasurement.measured && !loudnessMeasurement.passed; versuch += 1) {
+    const vorher = loudnessMeasurement.integratedLufs;
+    const nachgeregelt = await applyMeasuredLoudness(outputPath, loudnessMeasurement, loudnessSettings)
+      .catch((error) => {
+        console.error(`Lautheits-Nachregelung fehlgeschlagen: ${error.message}`);
+        return false;
+      });
+    if (!nachgeregelt) break;
+
+    loudnessMeasurement = await measureLoudness(outputPath, loudnessSettings);
+    // Ohne Fortschritt bringt ein weiterer Durchgang nichts.
+    if (Number.isFinite(vorher) && Math.abs(loudnessMeasurement.integratedLufs - vorher) < 0.05) break;
+  }
+
   const pacingPassed = Boolean(afterSeconds && beforeSeconds && afterSeconds < beforeSeconds && loudnessMeasurement.passed);
 
   manifest.audio = {

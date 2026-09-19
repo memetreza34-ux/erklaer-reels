@@ -11,51 +11,76 @@
   "subtitleCues": [],
   "subtitlePosition": "center",
   "durationSeconds": 7.5,
-  "imageCount": 3,
+  "imageCount": 2,
   "imagePhases": [
     {
       "phaseId": "scene-08-image-01",
       "order": 1,
-      "startPercent": 0.0,
+      "startPercent": 0,
       "promptFileName": "image-prompt.txt",
       "expectedImageFileName": "scene-08.png",
       "visualIdea": "Ein Stapel abgelehnter Dokumente mit roten Kreuzen.",
       "imageText": "FAST 300 MAL",
       "audioCue": "Fast dreihundert Mal",
+      "timingBasis": "scene-start",
       "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"Fast dreihundert Mal\".",
-      "imageStatus": "missing",
-      "assetVerification": null
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-08",
+        "confirmedSceneOrder": 8,
+        "confirmedPhaseOrder": 1,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.710Z"
+      }
     },
     {
       "phaseId": "scene-08-image-02",
       "order": 2,
-      "startPercent": 0.454545,
+      "startPercent": 0.5,
       "promptFileName": "image-prompt-02.txt",
       "expectedImageFileName": "scene-08-2.png",
       "visualIdea": "Ein grauer Ball senkt die Hand, ein Pfeil läuft ungehindert vorbei.",
       "imageText": "NICHTS SAGEN HEISST NICHT NEIN",
-      "audioCue": "Wer einfach nichts sagt",
+      "audioCue": "einfach nichts sagt",
+      "timingBasis": "narration-audio-cue",
       "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"Wer einfach nichts sagt\".",
-      "imageStatus": "missing",
-      "assetVerification": null
-    },
-    {
-      "phaseId": "scene-08-image-03",
-      "order": 3,
-      "startPercent": 0.727273,
-      "promptFileName": "image-prompt-03.txt",
-      "expectedImageFileName": "scene-08-3.png",
-      "visualIdea": "Am roten Ball stoppt derselbe Pfeil an einem Stoppzeichen.",
-      "imageText": "",
-      "audioCue": "Man muss das Nein wirklich aussprechen",
-      "rationale": "Eigenes Bild fuer die gesprochene Kernaussage \"Man muss das Nein wirklich aussprechen\".",
-      "imageStatus": "missing",
-      "assetVerification": null
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-08-image-02",
+        "confirmedSceneOrder": 8,
+        "confirmedPhaseOrder": 2,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.712Z"
+      }
     }
   ],
-  "expectedImageFileName": "scene-08.png",
+  "expectedImageFileName": "scene-08.jpeg",
   "promptStatus": "ready",
-  "imageStatus": "missing",
-  "assetVerification": null,
-  "status": "planned"
+  "imageStatus": "ready",
+  "assetVerification": {
+    "visualReviewed": true,
+    "secondPassConfirmed": true,
+    "sceneOrderConfirmed": true,
+    "confirmedTarget": "scene-08",
+    "confirmedSceneOrder": 8,
+    "confirmedPhaseOrder": 1,
+    "visibleSummary": "",
+    "reason": "",
+    "comparedFields": [],
+    "matchMethod": "numbered-global-image-order",
+    "reviewedAt": "2026-09-19T07:01:17.710Z"
+  },
+  "status": "image-ready"
 }
