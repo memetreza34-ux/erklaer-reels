@@ -59,7 +59,7 @@ test('Neue V2-Regeln verlangen keine sichtbaren Script- oder Audio-Parts', async
     readFile('youtube/ADAPTIVE_PACING_V2.md', 'utf8')
   ]);
 
-  assert.match(readme, /EIN Masterprompt/i);
+  assert.match(readme, /EIN (?:Google-Flow-)?Masterprompt/i);
   assert.match(readme, /EIN Gesamtskript/i);
   assert.match(workflow, /eine einzige finale Voice-over-Datei/i);
   assert.match(pacing, /keine sichtbaren Script- oder Audio-Parts/i);
