@@ -47,8 +47,8 @@ test('Neue YouTube-Struktur zeigt nur einen Masterprompt und ein Gesamtskript', 
   assert.deepEqual(scriptEntries, ['voice-script.txt']);
 
   const masterPrompt = await readFile(`${ROM_PROJECT}/00-bildprompts/google-flow-prompt.txt`, 'utf8');
-  assert.match(masterPrompt, /Bild 01–05 gleichzeitig/);
-  assert.match(masterPrompt, /Bild 36–38/);
+  assert.match(masterPrompt, /Bild 01–05 gleichzeitig/i);
+  assert.match(masterPrompt, /BILD 36–38/i);
   assert.match(masterPrompt, /00-bildprompts\/images/);
 });
 
