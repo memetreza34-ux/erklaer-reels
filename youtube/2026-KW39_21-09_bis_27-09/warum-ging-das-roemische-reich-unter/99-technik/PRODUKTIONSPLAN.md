@@ -4,25 +4,37 @@
 - Thema geprüft und reserviert
 - Recherche abgeschlossen
 - Titel final
-- Thumbnail-Prompt final
-- Voice-over: 877 Wörter
-- geplante Dauer: 5:20 min
-- 38 Videobilder aus dem Inhalt abgeleitet
-- A–E-Pacing vollständig vergeben
-- Mapping vollständig
-- 4 Script-/Audio-Parts vorbereitet
-- Google-Flow-Wellen: 01–05, 06–10, 11–15, 16–20, 21–25, 26–30, 31–35, 36–38
+- ein Google-Flow-Masterprompt für Bild 00–38
+- ein vollständiges Voice-over-Skript mit 877 Wörtern
+- geplante Dauer: ca. 5:20 min
+- 38 Videobilder aus Inhalt und A–E-Pacing abgeleitet
+- internes Bild↔Audio-Mapping vollständig
 - Edit-/Motion-/SFX-Plan vorhanden
 - Upload-Metadaten vorhanden
 
+## Sichtbare Arbeitsdateien
+
+```text
+00-bildprompts/google-flow-prompt.txt
+01-voice-script/voice-script.txt
+02-audio/voiceover-final.*
+```
+
+Keine sichtbaren Prompt-, Script- oder Audio-Pakete. Segmentierung bleibt intern.
+
 ## Phase 2 — PENDING
-1. Bild 00 separat generieren und prüfen.
-2. Bilder 01–05 parallel generieren.
-3. Alle 5 prüfen, Fehler korrigieren, umbenennen, ablegen.
-4. Erst dann 06–10.
-5. Gleiches Muster bis 36–38.
-6. Vier Voice-over-Parts exakt aus den Script-Parts erzeugen.
+1. Masterprompt einmal an Google Flow geben.
+2. Bild 00 separat erzeugen.
+3. Flow arbeitet selbstständig: 01–05 → Check → 06–10 → Check → ... → 36–38.
+4. Alle Bilder flach unter `00-bildprompts/images/` als `Bild NN.png` ablegen.
+5. Aus `voice-script.txt` eine vollständige finale Voice-over-Datei erzeugen und unter `02-audio/` ablegen.
 
 ## Phase 3 — BLOCKED bis Phase 2 vollständig
-Danach genau:
-`npm run phase3:youtube -- --dir "youtube/2026-KW39_21-09_bis_27-09/warum-ging-das-roemische-reich-unter"`
+
+Danach:
+
+```bash
+npm run phase3:youtube -- --dir "youtube/2026-KW39_21-09_bis_27-09/warum-ging-das-roemische-reich-unter"
+```
+
+Phase 3 erledigt Wortmessung, interne Segmentierung, Timeline, Render und QC automatisch.

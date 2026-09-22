@@ -15,28 +15,24 @@ Neues Bild bei:
 - eigenständiger Zahl/Diagramm/Reveal
 - zu langem oder inhaltlich überladenem Sprachabschnitt
 
-## A–E-Komplexitätssteuerung — verbindlich für neue Videos
-
-Jeder Bildmoment wird bereits in Phase 1 nach seiner visuellen und gedanklichen Komplexität eingestuft. Die Klasse steuert, wie lange der Zuschauer ungefähr Zeit bekommen soll, bevor zum nächsten Bild gewechselt wird.
+## A–E-Komplexitätssteuerung
 
 | Klasse | Bildtyp | geplanter Bereich | Standard-Ziel |
 | --- | --- | ---: | ---: |
-| A | sehr einfach: ein Objekt, ein Symbol, ein sehr klarer Reveal | 4–5 s | 5 s |
-| B | einfach: eine klare Szene oder eine einzelne Aussage | 5–7 s | 6 s |
+| A | sehr einfach: ein Objekt, ein Symbol, ein klarer Reveal | 4–5 s | 5 s |
+| B | einfach: eine klare Szene oder einzelne Aussage | 5–7 s | 6 s |
 | C | mittel: mehrere Elemente, Ursache/Folge oder kleiner Vergleich | 7–9 s | 8 s |
 | D | komplex: Karte, historische Szene, Diagramm oder mehrere Zusammenhänge | 9–12 s | 10 s |
-| E | sehr komplex: mehrere relevante Details, große Übersicht oder mehrstufiger Zusammenhang | 12–15 s | 13 s |
+| E | sehr komplex: mehrere relevante Details oder große Übersicht | 12–15 s | 13 s |
 
-Verbindliche Planungsregel:
-- Phase 1 trägt für jedes Bild `complexityLevel`, `complexityReason` und `plannedHoldSeconds` in `BILD_AUDIO_ZUORDNUNG.json` ein.
+Verbindlich:
+- Phase 1 trägt `complexityLevel`, `complexityReason` und `plannedHoldSeconds` ins technische Mapping ein.
 - Ein simples A-/B-Bild wird nicht künstlich 10–15 Sekunden gehalten.
-- Braucht der zugehörige Sprechabschnitt länger als die sinnvolle Klasse, wird der Inhalt in einen weiteren klaren Bildmoment geteilt.
-- Ein komplexes D-/E-Bild darf bewusst länger lesbar bleiben, aber niemals nur deshalb komplex genannt werden, um einen langen Hold zu rechtfertigen.
-- Die Klassen bestimmen die **Anchor-Dichte in Phase 1**. In Phase 3 bleibt das tatsächlich gesprochene Audio die exakte Timing-Masterquelle; geschnitten wird am gemessenen nächsten Anchor.
+- Ist der zugehörige Sprechabschnitt zu lang, wird ein weiterer sinnvoller Bildmoment geplant.
+- D-/E-Bilder dürfen länger lesbar bleiben, aber Komplexität darf nicht erfunden werden, um einen langen Hold zu rechtfertigen.
+- Phase 3 schneidet trotzdem am tatsächlich gemessenen Audio.
 
-Dadurch rotiert das Bildsystem automatisch schneller bei einfachen Motiven und langsamer bei komplexen Motiven, ohne starre Einheitsdauer.
-
-## Adaptive Bilddauer
+## Globale Timing-Grenzen
 
 - 5–12 s: normal
 - 12–14 s: okay bei ruhigen oder komplexen Momenten
@@ -44,66 +40,75 @@ Dadurch rotiert das Bildsystem automatisch schneller bei einfachen Motiven und l
 - ab 16 s: starke Split-Prüfung
 - >=20,0 s: Hard Fail
 - unter 4 s: auf unnötige Hektik prüfen
-- unter 2 s: nur begründeter kurzer Reveal/Übergang
-
-Die A–E-Klasse ist die primäre Planungsorientierung; diese globalen Grenzen bleiben das Sicherheitsnetz für die gemessene finale Timeline.
+- unter 2 s: nur begründeter Reveal/Übergang
 
 ## Gesamtbildzahl
 
-Es gibt **keine feste Soll-Bildzahl**. Sie ergibt sich aus Skript, visuellen Zwecken und A–E-Komplexität. Für 10–12 Minuten sind ungefähr 50–90 Videobilder nur Orientierung. Für kürzere Videos wird genauso individuell geplant.
+Es gibt **keine feste Soll-Bildzahl**. Sie ergibt sich aus Skript, visuellen Zwecken und A–E-Komplexität.
+
+## Einfache sichtbare Dateien
+
+Neue V2-Projekte verwenden standardmäßig genau diese menschlich relevanten Produktionsdateien:
+
+```text
+00-bildprompts/google-flow-prompt.txt
+01-voice-script/voice-script.txt
+02-audio/voiceover-final.*
+```
+
+Es werden **keine sichtbaren Script- oder Audio-Parts** mehr benötigt. Die technische Unterteilung wird aus `BILD_AUDIO_ZUORDNUNG.json`, den Sprachankern und den gemessenen Wortzeiten intern abgeleitet.
+
+Legacy-Projekte mit mehreren Parts bleiben kompatibel, definieren aber nicht mehr die Struktur neuer Projekte.
 
 ## Google Flow: 5 Bilder gleichzeitig
 
-Die 10er-Ordner bleiben Produktions-/Dateiblöcke, aber Google Flow arbeitet innerhalb dieser Ordner in **5er-Wellen**.
-
-Beispiel bei Bild 21–30:
+Die 5er-Wellen stehen im **einen Masterprompt** und sind reine Ausführungslogik.
 
 ```text
-Welle 1: Bild 21–25 gleichzeitig
-→ warten
-→ alle fünf prüfen
-→ Fehler korrigieren
-→ umbenennen und ablegen
-→ Paketcheck 21–25
+Bild 00 separat
 
-Welle 2: erst danach Bild 26–30 gleichzeitig
+Welle 1: Bild 01–05 gleichzeitig
+→ warten
+→ prüfen
+→ Fehler korrigieren
+→ als Bild 01.png bis Bild 05.png ablegen
+
+Welle 2: erst danach Bild 06–10
 → gleicher Ablauf
-→ abschließender Check 21–30
+
+Welle 3: 11–15
+→ usw.
 ```
 
 Verboten:
 - mehr als fünf aktive Generierungen gleichzeitig
-- gesamten 10er-Ordner gleichzeitig generieren
 - mehrere 5er-Wellen gleichzeitig offen halten
 - nächste Welle starten, solange die aktuelle nicht vollständig geprüft ist
+- sichtbare 10er-Promptordner nur wegen der Wellenlogik anlegen
 - erst alles erzeugen und später gesammelt sortieren
 
 Der letzte Block darf weniger als fünf Bilder enthalten. Bild 00 bleibt separat.
 
-## Script- und Audio-Parts
+Alle Bilder werden flach unter `00-bildprompts/images/` abgelegt.
 
-Zu jedem 10er-Bildpaket existiert ein Script-Part und später ein Audio-Part. Der letzte Part darf kleiner sein.
+## Mapping
 
-```text
-01-voice-script/01_part-bilder-01-bis-10.txt
-02-audio/01_part-bilder-01-bis-10.<audio>
-```
-
-`BILD_AUDIO_ZUORDNUNG.json` verbindet jedes Bild eindeutig mit:
-- `audioPartId`
-- `scriptPartFile`
-- `audioPartFile`
+`99-technik/BILD_AUDIO_ZUORDNUNG.json` verbindet intern jedes Bild mit:
 - `startAnchor`
 - `endAnchor`
 - `complexityLevel`
 - `complexityReason`
 - `plannedHoldSeconds`
 
+Legacy-Felder wie `audioPartId`, `scriptPartFile` oder `audioPartFile` dürfen bei alten Projekten noch existieren, sind aber für neue Single-Audio-Projekte nicht erforderlich.
+
 ## Phase 3
 
-V2-Audio-Parts werden nicht nach geschätzten Längen verteilt. Jeder Part wird separat mit echten Wortzeitstempeln gemessen. Danach werden die absoluten Zeiten über die chronologischen Part-Offets zusammengesetzt.
+Neue V2-Projekte verwenden eine finale Voice-over-Datei. Sie wird vollständig mit echten Wortzeitstempeln gemessen. Alle Bildanker werden monoton in diesem einen Wortstrom gefunden.
 
-Der normale Befehl ist:
+Falls ein Legacy-Projekt ausschließlich mehrere Audio-Parts besitzt, darf die bestehende Mehrpart-Logik weiterhin verwendet werden.
+
+Normalstart:
 
 ```bash
 npm run phase3:youtube -- --dir "youtube/<woche>/<thema>"
