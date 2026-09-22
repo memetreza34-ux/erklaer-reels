@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { access, readdir, readFile } from 'node:fs/promises';
+import { access, readFile } from 'node:fs/promises';
 import path from 'node:path';
 
 function arg(name) {
@@ -22,23 +22,13 @@ function numberOrNull(value) {
   return Number.isFinite(number) ? number : null;
 }
 
-function pad(value) {
-  return String(value).padStart(2, '0');
-}
-
-function partInfo(partId, imageCount) {
-  const start = (partId - 1) * 10 + 1;
-  const end = Math.min(partId * 10, imageCount);
-  const prefix = `${pad(partId)}_part-bilder-${pad(start)}-bis-${pad(end)}`;
-  return { partId, start, end, prefix };
-}
-
-async function listFiles(directory) {
-  if (!(await exists(directory))) return [];
-  return (await readdir(directory, { withFileTypes: true }))
-    .filter((entry) => entry.isFile())
-    .map((entry) => entry.name);
-}
+const COMPLEXITY_RANGES = Object.freeze({
+  A: [4, 5],
+  B: [5, 7],
+  C: [7, 9],
+  D: [9, 12],
+  E: [12, 15]
+});
 
 async function main() {
   const rawDir = arg('--dir');
@@ -49,7 +39,8 @@ async function main() {
   }
 
   const projectDir = path.resolve(rawDir);
-  const metaPath = path.join(projectDir, '99-technik', 'video.json');
+  const techDir = path.join(projectDir, '99-technik');
+  const metaPath = path.join(techDir, 'video.json');
 
   if (!(await exists(metaPath))) {
     console.error('BLOCKER: 99-technik/video.json fehlt.');
@@ -59,8 +50,6 @@ async function main() {
 
   const meta = await readJson(metaPath);
   const rulesVersion = numberOrNull(meta.productionRulesVersion) ?? 1;
-
-  // Absichtlich grandfathered: alte Projekte werden durch V2 nicht rückwirkend verändert.
   if (rulesVersion < 2) {
     console.log(`Adaptive Pacing V2: SKIP — productionRulesVersion=${rulesVersion}. Bestehendes V1-Projekt bleibt unverändert.`);
     return;
@@ -68,11 +57,13 @@ async function main() {
 
   const errors = [];
   const warnings = [];
-  const mappingPath = path.join(projectDir, '99-technik', 'BILD_AUDIO_ZUORDNUNG.json');
-  const timelinePath = path.join(projectDir, '99-technik', 'FINAL_TIMELINE.json');
+  const mappingPath = path.join(techDir, 'BILD_AUDIO_ZUORDNUNG.json');
+  const timelinePath = path.join(techDir, 'FINAL_TIMELINE.json');
+  const masterScriptPath = path.join(projectDir, '01-voice-script', 'voice-script.txt');
 
   if (!(await exists(mappingPath))) errors.push('BILD_AUDIO_ZUORDNUNG.json fehlt.');
   if (!(await exists(timelinePath))) errors.push('FINAL_TIMELINE.json fehlt.');
+  if (!(await exists(masterScriptPath))) errors.push('01-voice-script/voice-script.txt fehlt. Neue V2-Projekte verwenden ein Gesamtskript.');
 
   if (errors.length) {
     console.error(`Adaptive Pacing V2: FEHLGESCHLAGEN (${errors.length} Blocker)`);
@@ -91,32 +82,6 @@ async function main() {
     errors.push(`FINAL_TIMELINE enthält ${timeline.length} Bilder, Mapping aber ${images.length}.`);
   }
 
-  const imageCount = images.length;
-  const expectedParts = Math.ceil(imageCount / 10);
-  const scriptDir = path.join(projectDir, '01-voice-script');
-  const audioDir = path.join(projectDir, '02-audio');
-  const scriptFiles = await listFiles(scriptDir);
-  const audioFiles = await listFiles(audioDir);
-
-  if (!scriptFiles.includes('voice-script.txt')) {
-    errors.push('01-voice-script/voice-script.txt fehlt.');
-  }
-
-  for (let partId = 1; partId <= expectedParts; partId += 1) {
-    const info = partInfo(partId, imageCount);
-    const scriptName = `${info.prefix}.txt`;
-    if (!scriptFiles.includes(scriptName)) {
-      errors.push(`Script-Part fehlt: 01-voice-script/${scriptName}`);
-    }
-
-    const matchingAudio = audioFiles.filter((name) => name.startsWith(`${info.prefix}.`) && !name.endsWith('.txt'));
-    if (matchingAudio.length === 0) {
-      errors.push(`Audio-Part fehlt für ${info.prefix}.`);
-    } else if (matchingAudio.length > 1) {
-      errors.push(`Mehrere Audio-Parts für ${info.prefix} gefunden: ${matchingAudio.join(', ')}`);
-    }
-  }
-
   for (let index = 0; index < images.length; index += 1) {
     const item = images[index];
     const imageNumber = Number(item.imageNumber);
@@ -126,21 +91,22 @@ async function main() {
       continue;
     }
 
-    const expectedPartId = Math.ceil(imageNumber / 10);
-    const info = partInfo(expectedPartId, imageCount);
-    const audioPartId = numberOrNull(item.audioPartId);
-    if (audioPartId !== expectedPartId) {
-      errors.push(`Bild ${imageNumber}: audioPartId muss ${expectedPartId} sein, ist ${item.audioPartId ?? 'fehlend'}.`);
+    const level = String(item.complexityLevel ?? '').toUpperCase();
+    if (!COMPLEXITY_RANGES[level]) {
+      errors.push(`Bild ${imageNumber}: complexityLevel A–E fehlt oder ist ungültig.`);
+      continue;
     }
-
-    const expectedScriptPart = `01-voice-script/${info.prefix}.txt`;
-    if (String(item.scriptPartFile ?? '') !== expectedScriptPart) {
-      errors.push(`Bild ${imageNumber}: scriptPartFile muss ${expectedScriptPart} sein.`);
+    if (!String(item.complexityReason ?? '').trim()) {
+      errors.push(`Bild ${imageNumber}: complexityReason fehlt.`);
     }
-
-    const audioPartFile = String(item.audioPartFile ?? '');
-    if (!audioPartFile.startsWith(`02-audio/${info.prefix}.`)) {
-      errors.push(`Bild ${imageNumber}: audioPartFile muss zum Part ${info.prefix} gehören.`);
+    const planned = numberOrNull(item.plannedHoldSeconds);
+    if (planned === null) {
+      errors.push(`Bild ${imageNumber}: plannedHoldSeconds fehlt.`);
+    } else {
+      const [min, max] = COMPLEXITY_RANGES[level];
+      if (planned < min || planned > max) {
+        errors.push(`Bild ${imageNumber}: geplante ${planned.toFixed(2)} s passen nicht zu Klasse ${level} (${min}–${max} s).`);
+      }
     }
   }
 
@@ -182,7 +148,8 @@ async function main() {
     return;
   }
 
-  console.log(`Adaptive Pacing V2: BESTANDEN — ${imageCount} Bilder, ${expectedParts} Script-/Audio-Part(s), kein Hold >= ${hardMax.toFixed(2)} s.`);
+  console.log(`Adaptive Pacing V2: BESTANDEN — ${images.length} Bilder, A–E-Planung vollständig, kein Hold >= ${hardMax.toFixed(2)} s.`);
+  console.log('Sichtbare Script-/Audio-Parts sind nicht erforderlich; technische Segmentierung bleibt intern.');
 }
 
 main().catch((error) => {
