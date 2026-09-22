@@ -1,0 +1,200 @@
+GOOGLE FLOW MASTER PROMPT — Warum ging das Römische Reich wirklich unter?
+
+ZIEL
+Erzeuge Bild 00 als Thumbnail und danach Bild 01 bis Bild 38 für ein deutsches YouTube-Langvideo.
+
+WICHTIG: Du arbeitest selbstständig in kontrollierten 5er-Wellen. Diese Unterteilung ist nur interne Arbeitslogik. Es gibt nur dieses eine Prompt-Dokument.
+
+ABLAUF
+1. Bild 00 separat erzeugen, prüfen und als `Bild 00.png` speichern.
+2. Bild 01–05 gleichzeitig erzeugen.
+3. Warten, bis alle fünf fertig sind. Alle fünf gegen Prompt, Stil und Nummer prüfen. Fehler innerhalb derselben Welle korrigieren. Erst wenn 01–05 vollständig korrekt sind, weiter.
+4. Bild 06–10 gleichzeitig erzeugen und genauso prüfen.
+5. Danach 11–15, 16–20, 21–25, 26–30, 31–35 und zuletzt 36–38.
+6. Niemals zwei Wellen gleichzeitig offen halten. Niemals mehr als fünf aktive Bildgenerierungen.
+7. Alle fertigen Videobilder flach unter `00-bildprompts/images/` als `Bild NN.png` ablegen. Keine 10er-Unterordner anlegen.
+8. Bild 00 ist nur Thumbnail und darf nie in die Videotimeline.
+
+GLOBAL STYLE FÜR ALLE BILDER
+16:9, hand-drawn 2D editorial explainer style, simple stick-figure-like humans with round or slightly oval heads, minimal facial features, clean black outlines, warm slightly muted colors, subtle paper texture, calm professional educational storytelling, simple historical environments, one clear visual purpose, no photorealism, no 3D, no Pixar, no clay, no countryballs, no watermark. Readable German text only when explicitly requested.
+
+A–E-PACING
+A = sehr einfach, ca. 4–5 s
+B = einfach, ca. 5–7 s
+C = mittel, ca. 7–9 s
+D = komplex, ca. 9–12 s
+E = sehr komplex, ca. 12–15 s
+Die Klasse ist nur Planungslogik für die spätere Bilddichte. Die echte Schnittzeit wird später aus dem finalen Voice-over gemessen.
+
+==================================================
+BILD 00 — THUMBNAIL
+==================================================
+A dramatic but clean YouTube thumbnail in the established editorial stick-explainer world: the Western Roman Empire represented by a monumental Roman eagle and column cracking apart, one shocked simplified Roman figure in the foreground, a map of the western Mediterranean fading behind it, strong visual contrast, instantly readable at small size, no clutter. Add one large German headline only: "ROM FÄLLT". Keep the eastern side faintly intact in the far background to hint that Rome did not vanish everywhere. 16:9, hand-drawn 2D editorial explainer style, simple stick-figure-like humans with round or slightly oval heads, minimal facial features, clean black outlines, warm slightly muted colors, subtle paper texture, calm professional educational storytelling, simple historical environments, one clear visual purpose, no photorealism, no 3D, no Pixar, no clay, no countryballs, no watermark.
+
+==================================================
+WELLE 1 — BILD 01–05
+==================================================
+
+Bild 01 · B · 6 s
+A vast simplified Roman map stretches from the Atlantic to the eastern Mediterranean while the western half visibly fades and cracks away; one small Roman figure looks shocked at the disappearing territory, dramatic but clean opening composition. Add only the German headline: "WARUM FIEL ROM?"
+
+Bild 02 · D · 10 s
+Wide clean map of the Roman Empire near its greatest territorial extent, with a few simplified roads, ports, tax coin symbols and legion markers linking Europe, North Africa and the Mediterranean into one network; strong readable geography, no tiny labels.
+
+Bild 03 · C · 8 s
+Split but unified map of the late Roman world: the western half is dimming while the eastern half around Constantinople stays bright and intact; a clean dividing line emphasizes West versus East. Add only the German labels "WEST" and "OST".
+
+Bild 04 · B · 6 s
+A large stone calendar tile marked "476" sits beside a Roman column, while several separate cracks approach the column from different directions instead of one single blow; simple symbolic composition. Add only: "476 ≠ EIN GRUND".
+
+Bild 05 · D · 10 s
+Late third-century Roman crisis scene with a throne in the center, two rival Roman commanders pulling toward it, frontier watchtowers under attack at the edges, and worried citizens in the background; one coherent historical tableau, not chaotic.
+
+STOP: 01–05 vollständig prüfen und korrigieren. Erst danach 06–10.
+
+==================================================
+WELLE 2 — BILD 06–10
+==================================================
+
+Bild 06 · C · 8 s
+Roman soldiers march away from an exposed frontier fort to fight another Roman army in the distance; the now-thin border garrison watches nervously as threats gather beyond the river, clear cause-and-effect composition.
+
+Bild 07 · D · 10 s
+A Roman treasury table with shrinking coin piles, a worn coin, a stalled merchant cart and a tax collector holding a nearly empty ledger; military helmets loom in the background, visually connecting war costs to economic strain.
+
+Bild 08 · C · 8 s
+A damaged Roman administrative machine is being repaired: organized soldiers return to formation, officials sort documents, and a stabilized city rises behind them; hopeful but restrained historical scene, showing recovery rather than collapse.
+
+Bild 09 · C · 8 s
+A large balance scale: on one side coins and tax sacks, on the other side soldiers, officials, frontier forts and multiple imperial residences; the coin side is visibly strained, clean explanatory composition.
+
+Bild 10 · D · 10 s
+Map focused on the Western Roman Empire with the Rhine and Danube frontiers highlighted as long defensive lines and several restrained warning markers across Britain, Gaul, Hispania, Italy and North Africa; clear strategic overview.
+
+STOP: 06–10 vollständig prüfen. Erst danach 11–15.
+
+==================================================
+WELLE 3 — BILD 11–15
+==================================================
+
+Bild 11 · B · 6 s
+A mixed Roman military unit stands together at a frontier camp, with Roman equipment shared across soldiers of different backgrounds; they train side by side under the same standard, calm scene emphasizing service rather than hostility.
+
+Bild 12 · D · 10 s
+Broad steppe-to-Danube migration map blended with a landscape: mounted Hunnic riders move westward in the far background while several displaced groups shift toward the Roman frontier; arrows are few, large and easy to follow.
+
+Bild 13 · C · 8 s
+Families, carts and armed Gothic groups cross the Danube by boats and shallow crossings toward a guarded Roman bank; Roman officials watch and register arrivals, emphasizing a controlled entry rather than a battle. Add only: "376".
+
+Bild 14 · C · 8 s
+A food distribution point near a Roman camp turns tense: hungry families wait while corrupt officials hoard supplies, and armed tension begins at the edge of the crowd; show escalation without graphic violence.
+
+Bild 15 · D · 10 s
+Battle of Adrianople in 378 shown as a clean editorial battlefield overview: Roman formations buckle under pressure from Gothic forces, an imperial standard falls, and a distant emperor figure is isolated; no gore. Add only: "ADRIANOPEL 378".
+
+STOP: 11–15 vollständig prüfen. Erst danach 16–20.
+
+==================================================
+WELLE 4 — BILD 16–20
+==================================================
+
+Bild 16 · C · 8 s
+Inside a Roman map boundary, a large autonomous armed group now occupies visible space while imperial officials negotiate from a smaller position; the empire still exists, but control is visibly shared and weakened.
+
+Bild 17 · C · 8 s
+A Roman imperial map is carefully divided into western and eastern administrative halves, with two young imperial figures standing at separate courts; the East looks denser and wealthier, the West more exposed. Add only: "395".
+
+Bild 18 · D · 10 s
+Eastern Roman overview centered on prosperous Constantinople behind strong walls, busy eastern Mediterranean ports and Egypt sending grain and tax wealth; several elements arranged cleanly around one strong eastern focal point.
+
+Bild 19 · C · 8 s
+Western Roman map with one province fading away; a connected line leads from the lost province to a shrinking tax chest and then to an underfunded frontier soldier, simple three-step visual chain.
+
+Bild 20 · C · 8 s
+A western imperial throne is surrounded by an emperor, court officials and two powerful generals, each tugging on symbolic levers represented by army, office and treasury icons; tense political scene without readable labels.
+
+STOP: 16–20 vollständig prüfen. Erst danach 21–25.
+
+==================================================
+WELLE 5 — BILD 21–25
+==================================================
+
+Bild 21 · D · 10 s
+Winter Rhine frontier around 406: several migrating armed groups with families and carts cross into Roman Gaul while a thin Roman defense watches from a distant fort; behind them, new regional power markers begin appearing. Add only: "406".
+
+Bild 22 · C · 8 s
+Two side-by-side simplified maps of the Western Roman Empire: one official map still looks broad, while the real-control map beside it has large faded zones in Gaul and Hispania; one Roman official compares them in concern.
+
+Bild 23 · D · 10 s
+Rome in 410 with city gates breached and Visigothic troops entering while citizens react in shock; iconic Roman monuments remain recognizable but simplified, no gore, focus on the psychological shock. Add only: "ROM 410".
+
+Bild 24 · B · 6 s
+A simple continuity scene: damaged Rome sits on the left, while a functioning imperial court in fortified Ravenna continues on the right with clerks still working; a connecting line shows the state survived the sack.
+
+Bild 25 · D · 10 s
+North African Mediterranean map centered on Carthage: Vandal forces take control of the major port while Roman authority symbols are lowered; ships and grain warehouses emphasize the city's strategic value. Add only: "KARTHAGO 439".
+
+STOP: 21–25 vollständig prüfen. Erst danach 26–30.
+
+==================================================
+WELLE 6 — BILD 26–30
+==================================================
+
+Bild 26 · C · 8 s
+Carthage's grain ships and tax coin streams that once flowed toward Italy are visibly cut off; on the Italian side a treasury chest and supply warehouse become emptier, clear economic cause-and-effect.
+
+Bild 27 · D · 10 s
+A huge late Roman expedition fleet sails toward North Africa in 468, then the composition shows ships scattered and burning at a distance while a treasury meter drops sharply; no graphic casualties. Add only: "468".
+
+Bild 28 · C · 8 s
+A nearly empty Roman pay chest sits beside a shrinking regular unit, while a larger allied warrior contingent and a powerful commander step forward to fill the gap; clear shift in military dependence.
+
+Bild 29 · C · 8 s
+A commander stands between a Roman imperial standard and his own loyal warrior retinue; both sides overlap visually rather than oppose each other, showing blurred loyalty and regional power.
+
+Bild 30 · C · 8 s
+A row of imperial crowns rapidly changes hands in front of the same throne, while a large shadow of a military general remains behind the throne throughout; symbolic but historically grounded political instability.
+
+STOP: 26–30 vollständig prüfen. Erst danach 31–35.
+
+==================================================
+WELLE 7 — BILD 31–35
+==================================================
+
+Bild 31 · C · 8 s
+Odoacer calmly removes the imperial insignia from a young Romulus Augustulus in a sparse palace room; no execution, no battle, just a formal transfer of power. Add only the large year: "476".
+
+Bild 32 · A · 5 s
+The morning after 476: a Roman-style town continues normal daily life, a clerk writes, a market operates and a church stands open; calm continuity, one simple message: life did not suddenly stop.
+
+Bild 33 · C · 8 s
+Constantinople remains bright behind massive walls while a clean timeline runs from 476 toward 1453; an eastern Roman emperor stands above the city, emphasizing continued Roman imperial rule. Add only: "476 → 1453".
+
+Bild 34 · D · 10 s
+Sixth-century eastern Roman map under Justinian with arrows from Constantinople toward North Africa and Italy, several western territories lighting up again under Roman control; clean strategic map, not overloaded.
+
+Bild 35 · E · 13 s
+Central Western Roman eagle surrounded by five large, clearly separated visual forces: rival throne claimants, expensive army and treasury, migrating and invading groups, shrinking territory map, and falling tax coins; all arrows converge on weakening state power. Add only: "NICHT NUR EIN GRUND".
+
+STOP: 31–35 vollständig prüfen. Erst danach letzte Welle 36–38.
+
+==================================================
+WELLE 8 — BILD 36–38
+==================================================
+
+Bild 36 · C · 8 s
+Simple circular causal diagram made from illustrations rather than dense text: shrinking Roman map leads to fewer tax coins, fewer tax coins lead to a smaller army, smaller army leads back to more lost territory; strong loop composition.
+
+Bild 37 · B · 6 s
+A long timeline from the late fourth to late fifth century shows Roman western authority gradually fading in stages rather than collapsing at one point; a few regions fade earlier and others later, minimal clean visual.
+
+Bild 38 · C · 8 s
+Final hopeful transformation scene: old Roman road continues forward into several early medieval kingdoms while a law scroll, Latin inscription, city arches and a church remain along the route; the Roman eagle fades but its legacy continues.
+
+FINALER CHECK
+- exakt Bild 00 bis Bild 38
+- Bild 00 nur Thumbnail
+- Videobilder 01–38 lückenlos
+- keine Duplikate
+- alle Dateien `Bild NN.png`
+- alle Videobilder unter `00-bildprompts/images/`
