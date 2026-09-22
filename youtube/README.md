@@ -1,201 +1,111 @@
 # YouTube
 
-Dieser Bereich ist die eigenständige Produktionspipeline für YouTube-Langvideos. Reels bleiben getrennt unter `reels/`.
+Dieser Bereich ist die eigenständige Produktionspipeline für YouTube-Langvideos. **Reels bleiben vollständig getrennt unter `reels/` und werden durch diese Regeln nicht verändert.**
 
-## Verbindliche Regeln
-
-Für YouTube zuerst lesen:
+## Verbindliche Reihenfolge
 
 1. `youtube/YOUTUBE_WORKFLOW.md`
 2. `youtube/PHASE3_HARD_GATE.md`
 3. `youtube/YOUTUBE_VISUAL_WORLD.md`
-4. **für neue Projekte mit `productionRulesVersion >= 2`: `youtube/ADAPTIVE_PACING_V2.md`**
-
-Wichtig: `ADAPTIVE_PACING_V2.md` gilt nur für kommende V2-Projekte. Das bestehende Projekt `youtube/2026-KW36_31-08_bis_06-09/warum-hat-ein-tag-24-stunden/` bleibt unverändert.
+4. bei `productionRulesVersion >= 2`: `youtube/ADAPTIVE_PACING_V2.md`
 
 ## Drei Phasen
 
 ```text
 Phase 1 — ChatGPT
-→ Thema, Recherche, Titel, Bild 00/Thumbnail, Script, Bildprompts, 10er-Ordner,
-  exakte Bild↔Voice-over-Zuordnung, Edit-Plan und Upload-Metadaten
+→ Thema, Recherche, Titel, Thumbnail/Bild 00, Script, Bildprompts,
+  Bild↔Voice-over-Zuordnung, Edit-Plan und Upload-Metadaten
 
-Phase 2 — Nutzer
-→ Voice-over, Bild 00 als Thumbnail und Google-Flow-Videobilder in 10er-Paketen
+Phase 2 — Nutzer + Google Flow
+→ Voice-over und Bilder erzeugen. Videobilder werden in 5er-Wellen produziert.
 
-Phase 3 — Antigravity
-→ Assets prüfen, echte Audio-Anker messen, FINAL_TIMELINE.json daraus bauen,
-  Pre-Render-Hard-Gate bestehen, rendern, Post-Render-Hard-Gate bestehen
+Phase 3 — Antigravity / Repo-CLI
+→ echte Whisper-Wortzeiten messen, Audio-Fingerprints sichern,
+  FINAL_TIMELINE automatisch bauen, Gates prüfen, rendern, Post-QC prüfen
 ```
 
-Bei neuen V2-Projekten wird das Voice-over zusätzlich in Script-/Audio-Parts aufgeteilt, wobei jeder Part exakt zu einem 10er-Bildpaket gehört.
+## Google Flow — ab sofort verbindlich: 5 Bilder gleichzeitig
 
-## Ordnerprinzip
+Die 10er-Ordner bleiben als Dateistruktur bestehen, bestimmen aber **nicht** mehr die Parallelität.
+
+Beispiel für `01_bilder-01-bis-10/`:
 
 ```text
-youtube/YYYY-KWNN_DD-MM_bis_DD-MM/themen-slug/
-```
+Welle A: Bild 01–05 gleichzeitig starten
+→ auf ALLE fünf Ergebnisse warten
+→ jedes Bild gegen Prompt + Bildwelt prüfen
+→ fehlerhafte Bilder innerhalb derselben Welle neu erzeugen
+→ alle fünf exakt umbenennen und ablegen
+→ prüfen: 01–05 vollständig, keine Lücke, kein Duplikat
 
-Keine `projects/`-Zwischenebene und kein `video-01_`-Präfix.
-
-## Bild 00
-
-**Bild 00 ist immer das Thumbnail.** Es gehört nie in die Videotimeline und nie in ein 10er-Paket.
-
-```text
-00-bildprompts/
-├── 00_thumbnail/
-│   ├── Bild 00 - Thumbnail.txt
-│   └── Bild 00.png
-├── 01_bilder-01-bis-10/
-├── 02_bilder-11-bis-20/
-├── 03_bilder-21-bis-30/
-├── ...
-└── 99-alle-bildprompts.txt
-```
-
-Die eigentlichen Videobilder beginnen immer mit **Bild 01**.
-
-## Bild↔Voice-over-Zuordnung
-
-Kanonische Datei:
-
-```text
-99-technik/BILD_AUDIO_ZUORDNUNG.json
-```
-
-Sie legt für jedes `Bild NN` fest:
-- exakten `startAnchor`
-- `endAnchor`
-- Bilddatei und 10er-Ordner
-- visuellen Zweck
-- später `actualStartSeconds`
-- später `actualEndSeconds`
-- später `alignmentConfidence`
-
-Für V2 kommt zusätzlich die eindeutige Zuordnung zu `scriptPartFile`, `audioPartFile` und `audioPartId` dazu.
-
-## Entscheidend: Phase 3 darf keine Slideshow bauen
-
-Das echte finale Voice-over ist die Timing-Masterspur.
-
-**Verboten:**
-
-```text
-Videolänge ÷ Bildanzahl = feste Bilddauer
-```
-
-Also keine pauschalen 8-, 10-, 12- oder anderen gleichmäßigen Holds.
-
-Antigravity muss zuerst alle echten Audio-Anker messen und daraus erzeugen:
-
-```text
-99-technik/FINAL_TIMELINE.json
-```
-
-Erst danach darf gerendert werden.
-
-## Nicht umgehbare Render-Gates
-
-### Vor Render
-
-```bash
-npm run validate:youtube-phase3 -- --dir "youtube/<woche>/<thema>"
-```
-
-Nur **Exit-Code 0** erlaubt den Render.
-
-Der Gate blockiert u. a.:
-- fehlende Bilddateien
-- fehlende/falsche Bildnummern
-- `actualStartSeconds`, `actualEndSeconds` oder `alignmentConfidence` = `null`
-- Alignment unter 0,95
-- fehlende/falsche `FINAL_TIMELINE.json`
-- Timeline, die nicht den echten Audio-Ankern folgt
-- verdächtig gleichmäßige Slideshow-Dauern
-
-Für V2-Projekte kommt zusätzlich der adaptive Pacing-Check hinzu.
-
-### Nach Render
-
-```bash
-npm run validate:youtube-render -- --dir "youtube/<woche>/<thema>"
-```
-
-Auch dieser Befehl muss Exit-Code 0 liefern. Ein langer stiller Nachlauf nach dem Voice-over ist verboten.
-
-## YouTube-Standard
-
-- mindestens 10 Minuten
-- normalerweise 10–12 Minuten
-- Bildanzahl **nach Scriptbedarf**, nicht als feste Zielzahl
-- für neue V2-Projekte ungefähr 50–90 Bilder nur als Orientierung
-- meist 5–12 s pro Bild als Planungsbereich
-- 12–14 s bei ruhigen Momenten okay
-- ab 14 s bewusst prüfen
-- ab 16 s starke Split-Prüfung
-- **20,0 s oder länger ist bei V2 ein Hard Fail**
-- 16:9
-- `youtube-editorial-stick-explainer`
-- subtile Motion auf jedem Bild
-- gezielte SFX, keine Meme-Sounds
-- Hintergrundmusik standardmäßig aus
-- starker Titel + eigenes Thumbnail
-
-## 10er-Paketregel — innerhalb des Pakets trotzdem immer nur EIN Bild gleichzeitig
-
-Auch wenn die Anweisung lautet **„erstelle alle Bilder“**, **„mach Bild 01–60“** oder sinngemäß das komplette Bildset zu erzeugen, bedeutet das **niemals**, mehrere Bilder gleichzeitig zu generieren oder zehn Bilder auf einmal anzufordern.
-
-Der Agent arbeitet den Gesamtauftrag vollständig ab, aber strikt seriell:
-
-```text
-aktuellen Prompt für Bild NN lesen
-→ genau EIN Bild erzeugen
-→ vollständig auf das Ergebnis warten
-→ Bildinhalt + feste YouTube-Bildwelt prüfen
-→ falls fehlerhaft: genau dieselbe Bildnummer neu erzeugen, nicht weitergehen
-→ sofort exakt als Bild NN.png umbenennen
-→ sofort in den aktuell aktiven 10er-Ordner legen
-→ prüfen, dass die Datei wirklich im richtigen Ordner liegt
-→ erst dann Bild NN+1 beginnen
-```
-
-Für ein 10er-Paket gilt danach zusätzlich:
-
-```text
-Bild 01 fertig + umbenannt + abgelegt + geprüft
-→ Bild 02
-→ ...
-→ Bild 10
-→ Ordner 01_bilder-01-bis-10 vollständig prüfen
-→ erst dann Bild 11 beginnen
+Welle B: erst danach Bild 06–10 gleichzeitig starten
+→ gleicher Prüfablauf
+→ danach den vollständigen 10er-Ordner prüfen
 ```
 
 Verbindlich:
-- immer nur **eine aktive Bildgenerierung** gleichzeitig
-- keine Queue mit mehreren Bildern
-- keine Parallelgenerierung
-- kein „erst alle 10 erzeugen, danach umbenennen“
-- kein „erst alle Bilder erzeugen, danach sortieren“
-- jedes Bild wird **direkt nach seiner Erzeugung** geprüft, umbenannt und abgelegt
-- bei einem fehlerhaften Bild bleibt der Prozess auf derselben Bildnummer, bis sie korrekt ist
-- nach jedem 10er-Paket prüfen: genau die erwarteten Bildnummern, keine Lücke, kein Duplikat, richtige Reihenfolge
-- erst nach bestandenem Paketcheck beginnt der nächste Ordner
-- globale Bildnummerierung niemals zurücksetzen
-- der letzte Ordner darf weniger als 10 Bilder enthalten
-- Bild 00/Thumbnail bleibt separat und zählt nicht in die Pakete
+- maximal **5 aktive Bildgenerierungen gleichzeitig**
+- niemals Bild 01–10 oder das komplette Set gleichzeitig starten
+- nächste 5er-Welle erst, wenn die vorherige vollständig fertig und geprüft ist
+- bei einem fehlerhaften Bild bleibt die aktuelle 5er-Welle offen; die nächste Welle startet noch nicht
+- Bildnummerierung global lückenlos
+- letzter 5er-Block darf weniger als fünf Bilder enthalten
+- Bild 00/Thumbnail bleibt separat und zählt nicht zu den 5er-Wellen
 
-Bei V2 ist die 10er-Struktur **nur Produktionsstruktur**. Sie darf die inhaltlich nötige Gesamtbildzahl nicht künstlich auf 60 festlegen.
+## Bild 00
 
-Passend dazu wird das Script geteilt:
+**Bild 00 ist ausschließlich das Thumbnail.** Es gehört nie in die Videotimeline.
 
-```text
-01_part-bilder-01-bis-10.txt
-02_part-bilder-11-bis-20.txt
-...
+## Audio-Synchronisation
+
+Die finale Stimme ist die Timing-Masterspur. Geschätzte Zeiten oder `Videolänge ÷ Bildanzahl` sind verboten.
+
+Phase 3 verwendet:
+
+```bash
+npm run auto-align:youtube -- --dir "youtube/<woche>/<thema>"
+npm run build:youtube-timeline -- --dir "youtube/<woche>/<thema>"
 ```
 
-und der Nutzer erzeugt die Audios ebenfalls partweise. Details stehen in `youtube/ADAPTIVE_PACING_V2.md`.
+`auto-align:youtube`:
+- transkribiert das echte Audio mit Whisper-Wortzeitstempeln
+- sucht jeden `startAnchor` monoton im gesprochenen Wortstrom
+- schreibt `actualStartSeconds`, `actualEndSeconds`, `alignmentConfidence`
+- bindet die Messung per SHA-256 an die echte Audiodatei
+- erzeugt bei V2 aus den Audio-Parts eine interne Master-Audiospur
+
+`build:youtube-timeline` erzeugt daraus `99-technik/FINAL_TIMELINE.json`.
+
+## Ein normaler Phase-3-Start
+
+```bash
+npm run phase3:youtube -- --dir "youtube/<woche>/<thema>"
+```
+
+Dieser Ablauf führt automatisch aus:
+1. echtes Audio-Alignment
+2. FINAL_TIMELINE
+3. Adaptive-Pacing-V2-Gate (bei V2)
+4. Pre-Render-Hard-Gate
+5. YouTube-Render
+6. Post-Render-Hard-Gate
+
+Nur wenn alle Schritte erfolgreich sind, ist `03-export/FERTIGES-VIDEO.mp4` gültig.
+
+## YouTube-Standard
+
+- 16:9, 1920×1080, 30 fps
+- normalerweise 10–12 Minuten
+- Bildanzahl nach Inhalt, nicht nach starrer Zielzahl
+- V2: ungefähr 50–90 Bilder nur als Orientierung
+- meist 5–12 s pro Bild
+- ab 14 s bewusst prüfen
+- ab 16 s starke Split-Prüfung
+- >=20,0 s bei V2 = Hard Fail
+- `youtube-editorial-stick-explainer`
+- subtile Motion auf jedem Bild
+- keine eingebrannten Untertitel standardmäßig
+- Hintergrundmusik standardmäßig aus
 
 ## Finaler Export
 
@@ -208,9 +118,3 @@ und der Nutzer erzeugt die Audios ebenfalls partweise. Details stehen in `youtub
 ├── YOUTUBE-KAPITEL.txt
 └── YOUTUBE-TAGS.txt
 ```
-
-Ein Video ist erst final, wenn **Pre-Render- und Post-Render-Hard-Gate tatsächlich bestanden wurden**.
-
-## Themen-Duplikate
-
-Vor jedem neuen Video `THEMEN_HISTORIE.md` prüfen. Bereits verwendete oder nahezu identische Kernfragen werden nicht erneut verwendet, außer der Nutzer hebt die Sperre ausdrücklich auf.
