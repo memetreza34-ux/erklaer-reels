@@ -19,22 +19,43 @@ Diese Datei gilt ausschließlich für YouTube-Langvideos. Reel-Regeln und Reel-C
 youtube/YYYY-KWNN_DD-MM_bis_DD-MM/themen-slug/
 ```
 
+Für neue Videos ist die sichtbare Struktur bewusst minimal:
+
+```text
+00-bildprompts/google-flow-prompt.txt
+00-bildprompts/images/Bild NN.png
+01-voice-script/voice-script.txt
+02-audio/voiceover-final.*
+03-export/
+99-technik/
+```
+
+### Harte Strukturregel
+
+Neue Projekte bekommen **keine sichtbaren**:
+- `01_part-bilder-...txt`
+- `02_part-bilder-...wav`
+- `01_bilder-01-bis-10/`
+- `02_bilder-11-bis-20/`
+- sonstigen Paketdateien für den Nutzer
+
+Wenn technische Segmentierung nötig ist, wird sie aus Mapping und Sprachankern intern abgeleitet und unter `99-technik/` behandelt.
+
 ## Phase 1 — ChatGPT
 
 Erstellt:
 - Thema + Duplicate-Check
 - Recherche + Quellen
 - finalen Titel
-- Bild 00 / Thumbnail-Prompt
-- Voice-over-Script
-- Bildprompts
-- exakte `startAnchor`/`endAnchor`-Zuordnung pro Bild
-- **A–E-Komplexitätsklasse pro Bild**
-- **geplante Bilddauer passend zur Komplexität**
+- **einen** Google-Flow-Masterprompt inklusive Bild 00 und aller Szenenbilder
+- **ein** vollständiges Voice-over-Skript
+- exakte `startAnchor`/`endAnchor`-Zuordnung pro Bild intern
+- A–E-Komplexitätsklasse pro Bild
+- geplante Bilddauer passend zur Komplexität
 - Edit-/Motion-/SFX-Plan
 - Upload-Metadaten
 
-Kanonische Zuordnung:
+Kanonische technische Zuordnung:
 
 ```text
 99-technik/BILD_AUDIO_ZUORDNUNG.json
@@ -42,50 +63,62 @@ Kanonische Zuordnung:
 
 ### Phase-1-Pacing ist inhaltsgetrieben
 
-Die Bildanzahl wird niemals vorab festgesetzt. Für jeden geplanten Bildmoment wird entschieden:
+Die Bildanzahl wird niemals vorab festgesetzt. Für jeden Bildmoment gilt:
 
 ```text
 A = sehr einfach → 4–5 s
 B = einfach      → 5–7 s
 C = mittel       → 7–9 s
 D = komplex      → 9–12 s
-E = sehr komplex→ 12–15 s
+E = sehr komplex → 12–15 s
 ```
 
-Danach werden die Sprachanker entsprechend dicht gesetzt. Wenn ein einfacher visueller Moment länger gesprochen würde, wird **sofort ein zusätzlicher Bildmoment** eingeplant. Wenn ein komplexer Moment mehr Lesezeit braucht, darf er entsprechend länger stehen. Keine künstliche Bildvermehrung und keine künstlich langen Holds.
+Wenn ein einfacher visueller Moment länger gesprochen würde, wird ein zusätzlicher sinnvoller Bildmoment eingeplant. Komplexe Bilder dürfen länger stehen, wenn ihre Inhalte echte Betrachtungszeit brauchen.
 
-Jeder Mapping-Eintrag neuer V2-Projekte enthält deshalb:
+Jeder Mapping-Eintrag neuer V2-Projekte enthält:
 - `complexityLevel`
 - `complexityReason`
 - `plannedHoldSeconds`
 
-Die exakte finale Dauer bestimmt weiterhin Phase 3 aus dem echten Audio.
+Die exakte finale Dauer bestimmt Phase 3 aus dem echten Audio.
 
 ## Phase 2 — Nutzer + Google Flow
 
-### Neue 5er-Parallelregel
-
-Google Flow arbeitet ab sofort in **kontrollierten 5er-Wellen**.
+Der Nutzer arbeitet mit **einer einzigen Datei**:
 
 ```text
-Bild 01–05 gleichzeitig
-→ warten bis alle fünf fertig sind
-→ alle fünf prüfen
-→ Fehler innerhalb derselben Welle korrigieren
-→ umbenennen + ablegen + Vollständigkeit prüfen
-→ erst dann Bild 06–10 gleichzeitig
-→ danach nächsten 10er-Ordner
+00-bildprompts/google-flow-prompt.txt
+```
+
+Der Prompt enthält selbst die 5er-Steuerung:
+
+```text
+Bild 00 separat
+01–05 gleichzeitig → warten → prüfen → korrigieren → ablegen
+06–10 gleichzeitig → warten → prüfen → korrigieren → ablegen
+11–15 ...
 ```
 
 Harte Regeln:
 - höchstens 5 aktive Bildgenerierungen gleichzeitig
-- nicht weniger streng werden, wenn der Auftrag „alle Bilder erstellen“ lautet
-- nie 10, 20 oder das ganze Set gleichzeitig starten
-- nächste 5er-Welle erst nach abgeschlossenem Check der vorherigen
-- fehlerhafte Bilder blockieren den Übergang zur nächsten Welle
-- 10er-Ordner bleiben Dateistruktur; jeder volle 10er-Ordner besteht aus zwei 5er-Wellen
+- nie zwei 5er-Wellen gleichzeitig offen halten
+- nächste Welle erst nach abgeschlossenem Check
 - letzter Block darf 1–5 Bilder enthalten
 - Bild 00 bleibt separat
+- Bilder werden flach unter `00-bildprompts/images/` gespeichert
+- keine 10er-Unterordner als sichtbare Arbeitsstruktur
+
+### Voice-over
+
+Der Nutzer erzeugt aus:
+
+```text
+01-voice-script/voice-script.txt
+```
+
+**eine einzige finale Voice-over-Datei** und legt sie unter `02-audio/` ab.
+
+Neue Projekte sollen nicht mehrere Audio-Parts verlangen. Legacy-Projekte mit Parts bleiben technisch lesbar.
 
 ## Phase 3 — gemessene statt geschätzte Synchronisation
 
@@ -99,10 +132,10 @@ npm run phase3:youtube -- --dir "youtube/<woche>/<thema>"
 
 Technische Reihenfolge:
 1. Assets und Mapping laden
-2. V1: finale Audiodatei bestimmen; V2: alle Audio-Parts chronologisch bestimmen
-3. jede Audiodatei mit Whisper + Wortzeitstempeln messen
+2. genau eine finale Audiodatei unter `02-audio/` bevorzugen
+3. Audio mit Whisper + Wortzeitstempeln messen
 4. Messung per SHA-256 an die aktuelle Audiodatei binden
-5. jeden `startAnchor` monoton im tatsächlich gesprochenen Wortstrom finden
+5. jeden `startAnchor` monoton im vollständigen gesprochenen Wortstrom finden
 6. echte `actualStartSeconds`, `actualEndSeconds`, `alignmentConfidence` schreiben
 7. interne Master-Audiospur für den Render erzeugen
 8. `FINAL_TIMELINE.json` automatisch aus den Messzeiten bauen
@@ -111,12 +144,15 @@ Technische Reihenfolge:
 11. mit eigenem 16:9-YouTube-Renderer rendern
 12. Post-Render-Hard-Gate bestehen
 
+Falls ein altes Projekt mehrere Audio-Parts besitzt und keine einzelne finale Datei vorhanden ist, darf die Legacy-Mehrpart-Logik weiterhin verwendet werden.
+
 ### Verboten
 
 - `Videolänge ÷ Bildanzahl`
 - gleichmäßige 8/10/12-Sekunden-Holds
 - Anchor-Zeiten per Gefühl eintragen
 - `alignmentConfidence` erfinden
+- sichtbare Paketdateien nur aus technischen Gründen erzeugen
 - Rendern ohne `YOUTUBE_WORD_TIMINGS.json`
 - Rendern, wenn Audio-Fingerprint und Messung nicht mehr zusammenpassen
 - Rendern ohne `FINAL_TIMELINE.json`
@@ -130,10 +166,10 @@ Phase 3 erzeugt:
 99-technik/YOUTUBE_AUDIO_MASTER.wav
 ```
 
-Der Hard-Gate prüft anschließend nicht nur JSON gegen JSON, sondern:
+Der Hard-Gate prüft:
 - Audio-Fingerprint gegen gemessene Datei
 - `startAnchor` gegen gespeicherten Wortstrom
-- gespeicherten `matchedWordIndex` gegen den Anchor
+- `matchedWordIndex` gegen den Anchor
 - `actualStartSeconds` gegen den echten Wortzeitpunkt
 - monotone Reihenfolge der Anchor-Treffer
 
@@ -154,9 +190,10 @@ Regeln:
 
 Bei `productionRulesVersion >= 2`:
 - Bildzahl entsteht aus Inhalt
-- A–E-Komplexität steuert bereits in Phase 1 die Anchor-Dichte
-- Script-/Audio-Parts bleiben an Bildpakete gekoppelt
-- V2-Pacing-Gate wird im normalen Phase-3-Ablauf ausgeführt
+- A–E-Komplexität steuert Phase-1-Anchor-Dichte
+- ein Masterprompt + ein Gesamtskript + eine finale Stimme sind Standard
+- technische Segmentierung bleibt intern
+- V2-Pacing-Gate läuft im normalen Phase-3-Ablauf
 - kein Bildhold >=20,0 s
 
 ## Definition of Done
@@ -167,7 +204,7 @@ Ein YouTube-Video ist nur fertig, wenn:
 - alle Anchors wirklich gemessen wurden
 - Audio-Fingerprints gültig sind
 - `FINAL_TIMELINE.json` existiert
-- Adaptive Pacing bei V2 bestanden ist
+- Adaptive Pacing bestanden ist
 - Pre-Render-Hard-Gate Exit 0 liefert
 - `03-export/FERTIGES-VIDEO.mp4` existiert
 - Post-Render-Hard-Gate Exit 0 liefert
