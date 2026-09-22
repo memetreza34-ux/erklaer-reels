@@ -16,7 +16,7 @@
   "scriptWordCount": 877,
   "plannedImageCount": 38,
   "imageCountMethod": "content-and-complexity-derived",
-  "complexityDistribution": {"B": 4, "D": 11, "C": 21, "A": 1, "E": 1},
+  "complexityDistribution": {"A": 1, "B": 5, "C": 19, "D": 12, "E": 1},
   "complexityTargetsSeconds": {"A": [4,5], "B": [5,7], "C": [7,9], "D": [9,12], "E": [12,15]},
   "thumbnailText": "ROM FÄLLT",
   "topicHistoryStatus": "reserved",
