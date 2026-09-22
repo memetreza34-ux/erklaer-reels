@@ -1,19 +1,27 @@
-# Phase 2 — finale Voice-over-Parts
+# Phase 2 — finales Voice-over
 
-Erzeuge exakt vier finale Audio-Parts aus den gleichnamigen Script-Parts:
+Für dieses Video wird **eine einzige finale Audiodatei** verwendet.
 
-1. `01_part-bilder-01-bis-10.wav`
-2. `02_part-bilder-11-bis-20.wav`
-3. `03_part-bilder-21-bis-30.wav`
-4. `04_part-bilder-31-bis-38.wav`
+Empfohlener Dateiname:
+
+```text
+voiceover-final.wav
+```
+
+Alternativ funktionieren auch MP3, M4A, AAC, FLAC, OGG oder OPUS.
 
 Regeln:
-- Script wortgetreu sprechen.
-- Keine zusätzliche Begrüßung, kein Outro außerhalb des Scripts.
-- Keine Musik in die Voice-over-Dateien mischen.
-- Keine künstlichen langen Pausen zwischen Absätzen.
-- Part-Anfang/-Ende sauber schneiden.
-- Nach Audioänderung Phase 3 komplett neu messen; alte Anchor-Messungen gelten nicht weiter.
+- das komplette `01-voice-script/voice-script.txt` wortgetreu sprechen
+- keine zusätzlichen Begrüßungen oder Outros außerhalb des Skripts
+- keine Musik in die Voice-over-Datei mischen
+- keine künstlich langen Pausen
+- Anfang und Ende sauber schneiden
+- nur **eine** finale Voice-over-Datei unter `02-audio/` ablegen
+
+Die frühere sichtbare Aufteilung in mehrere Audio-Parts wird nicht mehr benötigt. Phase 3 findet die Bildanker selbst im vollständigen Audio und erledigt die technische Unterteilung intern.
 
 Danach:
-`npm run phase3:youtube -- --dir "youtube/2026-KW39_21-09_bis_27-09/warum-ging-das-roemische-reich-unter"`
+
+```bash
+npm run phase3:youtube -- --dir "youtube/2026-KW39_21-09_bis_27-09/warum-ging-das-roemische-reich-unter"
+```
