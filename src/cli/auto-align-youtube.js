@@ -55,9 +55,11 @@ async function prepareSingleAudioV2(projectDirectory, explicitAudio = null) {
   const normalized = {
     ...mapping,
     userFacingAudioMode: 'single-final-voiceover',
+    userFacingImageDirectory: '00-bildprompts/images',
     sourceVoiceoverFile: relativeAudio,
     images: images.map((item) => ({
       ...item,
+      batchFolder: 'images',
       audioPartId: 1,
       scriptPartFile: '01-voice-script/voice-script.txt',
       audioPartFile: relativeAudio
