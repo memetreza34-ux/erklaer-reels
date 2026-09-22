@@ -1,0 +1,1117 @@
+{
+  "version": 5,
+  "reelId": "reel-01_was-ist-ein-vetorecht",
+  "status": "ready-for-renderer",
+  "imageCountMode": "adaptive-dense-v2",
+  "plannedImageCount": 21,
+  "composition": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "durationSeconds": 64.351,
+    "durationFrames": 1931,
+    "audioDurationSeconds": 63.751,
+    "endingHoldSeconds": 0.6
+  },
+  "voiceover": {
+    "file": "audio/voiceover-tight.m4a",
+    "volume": 1
+  },
+  "backgroundMusic": {
+    "enabled": false,
+    "reason": "Voice-over-first Erklärformat; Musik nur nach ausdrücklicher Entscheidung."
+  },
+  "subtitlesEnabled": false,
+  "scenes": [
+    {
+      "sceneId": "scene-01",
+      "shotId": "scene-01",
+      "parentSceneId": "scene-01",
+      "parentSceneOrder": 1,
+      "phaseId": "scene-01-image-01",
+      "phaseOrder": 1,
+      "imageFile": "scenes/scene-01/scene-01.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-01",
+        "confirmedSceneOrder": 1,
+        "confirmedPhaseOrder": 1,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.674Z"
+      },
+      "startSeconds": 0,
+      "endSeconds": 2.637,
+      "startFrame": 0,
+      "endFrame": 79,
+      "transitionIn": {
+        "type": "none",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "subtle-push-in",
+        "startScale": 1,
+        "endScale": 1.03,
+        "panXPercent": 0,
+        "panYPercent": 0,
+        "easing": "ease-in-out",
+        "reason": "Bewegungsrichtung wechselt bewusst gegenueber der Nachbarszene."
+      },
+      "subtitles": [],
+      "soundEffects": [
+        {
+          "id": "scene-01-sfx-1",
+          "type": "click",
+          "timeSeconds": 2.637,
+          "volume": 0.2,
+          "targetId": "scene-01-image-02",
+          "audioCue": "UNO entscheidet die Mehrheit",
+          "timingStatus": "exact-image-audio-cue",
+          "visualEvent": "Interner Bildwechsel bei \"UNO entscheidet die Mehrheit\"",
+          "reason": "Leiser Akzent exakt am internen Bildmoment."
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-01-image-02",
+      "shotId": "scene-01-image-02",
+      "parentSceneId": "scene-01",
+      "parentSceneOrder": 1,
+      "phaseId": "scene-01-image-02",
+      "phaseOrder": 2,
+      "imageFile": "scenes/scene-01/scene-01-2.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-01-image-02",
+        "confirmedSceneOrder": 1,
+        "confirmedPhaseOrder": 2,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.677Z"
+      },
+      "startSeconds": 2.637,
+      "endSeconds": 5.655,
+      "startFrame": 79,
+      "endFrame": 170,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [],
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-02",
+      "shotId": "scene-02",
+      "parentSceneId": "scene-02",
+      "parentSceneOrder": 2,
+      "phaseId": "scene-02-image-01",
+      "phaseOrder": 1,
+      "imageFile": "scenes/scene-02/scene-02.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-02",
+        "confirmedSceneOrder": 2,
+        "confirmedPhaseOrder": 1,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.678Z"
+      },
+      "startSeconds": 5.655,
+      "endSeconds": 9.741,
+      "startFrame": 170,
+      "endFrame": 292,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "ken-burns",
+        "startScale": 1,
+        "endScale": 1.03,
+        "panXPercent": 0,
+        "panYPercent": 0,
+        "easing": "ease-in-out",
+        "reason": "Bewegungsrichtung wechselt bewusst gegenueber der Nachbarszene."
+      },
+      "subtitles": [],
+      "soundEffects": [
+        {
+          "id": "scene-02-sfx-1",
+          "type": "soft-whoosh",
+          "timeSeconds": 5.655,
+          "volume": 0.2,
+          "targetId": "",
+          "audioCue": "",
+          "timingStatus": "planned-fallback",
+          "visualEvent": "Harter Wechsel in die neue narrative Szene",
+          "reason": "Kurzer sauberer Uebergangsakzent."
+        },
+        {
+          "id": "scene-02-sfx-2",
+          "type": "click",
+          "timeSeconds": 9.741,
+          "volume": 0.2,
+          "targetId": "scene-02-image-02",
+          "audioCue": "Vierzehn Länder stimmen dafür",
+          "timingStatus": "exact-image-audio-cue",
+          "visualEvent": "Interner Bildwechsel bei \"Vierzehn Länder stimmen dafür\"",
+          "reason": "Leiser Akzent exakt am internen Bildmoment."
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-02-image-02",
+      "shotId": "scene-02-image-02",
+      "parentSceneId": "scene-02",
+      "parentSceneOrder": 2,
+      "phaseId": "scene-02-image-02",
+      "phaseOrder": 2,
+      "imageFile": "scenes/scene-02/scene-02-2.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-02-image-02",
+        "confirmedSceneOrder": 2,
+        "confirmedPhaseOrder": 2,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.681Z"
+      },
+      "startSeconds": 9.741,
+      "endSeconds": 13.007,
+      "startFrame": 292,
+      "endFrame": 390,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [],
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-03",
+      "shotId": "scene-03",
+      "parentSceneId": "scene-03",
+      "parentSceneOrder": 3,
+      "phaseId": "scene-03-image-01",
+      "phaseOrder": 1,
+      "imageFile": "scenes/scene-03/scene-03.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-03",
+        "confirmedSceneOrder": 3,
+        "confirmedPhaseOrder": 1,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.686Z"
+      },
+      "startSeconds": 13.007,
+      "endSeconds": 15.697,
+      "startFrame": 390,
+      "endFrame": 471,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "slow-zoom-in",
+        "startScale": 1,
+        "endScale": 1.03,
+        "panXPercent": 0,
+        "panYPercent": 0,
+        "easing": "ease-in-out",
+        "reason": "Bewegungsrichtung wechselt bewusst gegenueber der Nachbarszene."
+      },
+      "subtitles": [],
+      "soundEffects": [
+        {
+          "id": "scene-03-sfx-1",
+          "type": "soft-whoosh",
+          "timeSeconds": 13.007,
+          "volume": 0.2,
+          "targetId": "",
+          "audioCue": "",
+          "timingStatus": "planned-fallback",
+          "visualEvent": "Harter Wechsel in die neue narrative Szene",
+          "reason": "Kurzer sauberer Uebergangsakzent."
+        },
+        {
+          "id": "scene-03-sfx-2",
+          "type": "click",
+          "timeSeconds": 15.697,
+          "volume": 0.2,
+          "targetId": "scene-03-image-02",
+          "audioCue": "die anderen nicht überzeugen",
+          "timingStatus": "exact-image-audio-cue",
+          "visualEvent": "Interner Bildwechsel bei \"die anderen nicht überzeugen\"",
+          "reason": "Leiser Akzent exakt am internen Bildmoment."
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-03-image-02",
+      "shotId": "scene-03-image-02",
+      "parentSceneId": "scene-03",
+      "parentSceneOrder": 3,
+      "phaseId": "scene-03-image-02",
+      "phaseOrder": 2,
+      "imageFile": "scenes/scene-03/scene-03-2.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-03-image-02",
+        "confirmedSceneOrder": 3,
+        "confirmedPhaseOrder": 2,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.688Z"
+      },
+      "startSeconds": 15.697,
+      "endSeconds": 18.606,
+      "startFrame": 471,
+      "endFrame": 558,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [],
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-04",
+      "shotId": "scene-04",
+      "parentSceneId": "scene-04",
+      "parentSceneOrder": 4,
+      "phaseId": "scene-04-image-01",
+      "phaseOrder": 1,
+      "imageFile": "scenes/scene-04/scene-04.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-04",
+        "confirmedSceneOrder": 4,
+        "confirmedPhaseOrder": 1,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.690Z"
+      },
+      "startSeconds": 18.606,
+      "endSeconds": 20.987,
+      "startFrame": 558,
+      "endFrame": 630,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "pan-left",
+        "startScale": 1,
+        "endScale": 1.03,
+        "panXPercent": 0,
+        "panYPercent": 0,
+        "easing": "ease-in-out",
+        "reason": "Bewegungsrichtung wechselt bewusst gegenueber der Nachbarszene."
+      },
+      "subtitles": [],
+      "soundEffects": [
+        {
+          "id": "scene-04-sfx-1",
+          "type": "soft-whoosh",
+          "timeSeconds": 18.606,
+          "volume": 0.2,
+          "targetId": "",
+          "audioCue": "",
+          "timingStatus": "planned-fallback",
+          "visualEvent": "Harter Wechsel in die neue narrative Szene",
+          "reason": "Kurzer sauberer Uebergangsakzent."
+        },
+        {
+          "id": "scene-04-sfx-2",
+          "type": "click",
+          "timeSeconds": 20.987,
+          "volume": 0.2,
+          "targetId": "scene-04-image-02",
+          "audioCue": "wechseln alle zwei Jahre",
+          "timingStatus": "exact-image-audio-cue",
+          "visualEvent": "Interner Bildwechsel bei \"wechseln alle zwei Jahre\"",
+          "reason": "Leiser Akzent exakt am internen Bildmoment."
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-04-image-02",
+      "shotId": "scene-04-image-02",
+      "parentSceneId": "scene-04",
+      "parentSceneOrder": 4,
+      "phaseId": "scene-04-image-02",
+      "phaseOrder": 2,
+      "imageFile": "scenes/scene-04/scene-04-2.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-04-image-02",
+        "confirmedSceneOrder": 4,
+        "confirmedPhaseOrder": 2,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.692Z"
+      },
+      "startSeconds": 20.987,
+      "endSeconds": 23.586,
+      "startFrame": 630,
+      "endFrame": 708,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [],
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-05",
+      "shotId": "scene-05",
+      "parentSceneId": "scene-05",
+      "parentSceneOrder": 5,
+      "phaseId": "scene-05-image-01",
+      "phaseOrder": 1,
+      "imageFile": "scenes/scene-05/scene-05.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-05",
+        "confirmedSceneOrder": 5,
+        "confirmedPhaseOrder": 1,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.694Z"
+      },
+      "startSeconds": 23.586,
+      "endSeconds": 27.036,
+      "startFrame": 708,
+      "endFrame": 811,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "slow-zoom-out",
+        "startScale": 1,
+        "endScale": 1.03,
+        "panXPercent": 0,
+        "panYPercent": 0,
+        "easing": "ease-in-out",
+        "reason": "Bewegungsrichtung wechselt bewusst gegenueber der Nachbarszene."
+      },
+      "subtitles": [],
+      "soundEffects": [
+        {
+          "id": "scene-05-sfx-1",
+          "type": "soft-whoosh",
+          "timeSeconds": 23.586,
+          "volume": 0.2,
+          "targetId": "",
+          "audioCue": "",
+          "timingStatus": "planned-fallback",
+          "visualEvent": "Harter Wechsel in die neue narrative Szene",
+          "reason": "Kurzer sauberer Uebergangsakzent."
+        },
+        {
+          "id": "scene-05-sfx-2",
+          "type": "click",
+          "timeSeconds": 27.036,
+          "volume": 0.2,
+          "targetId": "scene-05-image-02",
+          "audioCue": "Die Gewinner des Zweiten",
+          "timingStatus": "exact-image-audio-cue",
+          "visualEvent": "Interner Bildwechsel bei \"Die Gewinner des Zweiten\"",
+          "reason": "Leiser Akzent exakt am internen Bildmoment."
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-05-image-02",
+      "shotId": "scene-05-image-02",
+      "parentSceneId": "scene-05",
+      "parentSceneOrder": 5,
+      "phaseId": "scene-05-image-02",
+      "phaseOrder": 2,
+      "imageFile": "scenes/scene-05/scene-05-2.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-05-image-02",
+        "confirmedSceneOrder": 5,
+        "confirmedPhaseOrder": 2,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.695Z"
+      },
+      "startSeconds": 27.036,
+      "endSeconds": 30.255,
+      "startFrame": 811,
+      "endFrame": 908,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [],
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-06",
+      "shotId": "scene-06",
+      "parentSceneId": "scene-06",
+      "parentSceneOrder": 6,
+      "phaseId": "scene-06-image-01",
+      "phaseOrder": 1,
+      "imageFile": "scenes/scene-06/scene-06.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-06",
+        "confirmedSceneOrder": 6,
+        "confirmedPhaseOrder": 1,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.697Z"
+      },
+      "startSeconds": 30.255,
+      "endSeconds": 32.263,
+      "startFrame": 908,
+      "endFrame": 968,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "subtle-pull-out",
+        "startScale": 1,
+        "endScale": 1.03,
+        "panXPercent": 0,
+        "panYPercent": 0,
+        "easing": "ease-in-out",
+        "reason": "Bewegungsrichtung wechselt bewusst gegenueber der Nachbarszene."
+      },
+      "subtitles": [],
+      "soundEffects": [
+        {
+          "id": "scene-06-sfx-1",
+          "type": "soft-whoosh",
+          "timeSeconds": 30.255,
+          "volume": 0.2,
+          "targetId": "",
+          "audioCue": "",
+          "timingStatus": "planned-fallback",
+          "visualEvent": "Harter Wechsel in die neue narrative Szene",
+          "reason": "Kurzer sauberer Uebergangsakzent."
+        },
+        {
+          "id": "scene-06-sfx-2",
+          "type": "click",
+          "timeSeconds": 32.263,
+          "volume": 0.2,
+          "targetId": "scene-06-image-02",
+          "audioCue": "Ja-Stimmen von fünfzehn",
+          "timingStatus": "exact-image-audio-cue",
+          "visualEvent": "Interner Bildwechsel bei \"Ja-Stimmen von fünfzehn\"",
+          "reason": "Leiser Akzent exakt am internen Bildmoment."
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-06-image-02",
+      "shotId": "scene-06-image-02",
+      "parentSceneId": "scene-06",
+      "parentSceneOrder": 6,
+      "phaseId": "scene-06-image-02",
+      "phaseOrder": 2,
+      "imageFile": "scenes/scene-06/scene-06-2.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-06-image-02",
+        "confirmedSceneOrder": 6,
+        "confirmedPhaseOrder": 2,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.699Z"
+      },
+      "startSeconds": 32.263,
+      "endSeconds": 35.172,
+      "startFrame": 968,
+      "endFrame": 1055,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [],
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-07",
+      "shotId": "scene-07",
+      "parentSceneId": "scene-07",
+      "parentSceneOrder": 7,
+      "phaseId": "scene-07-image-01",
+      "phaseOrder": 1,
+      "imageFile": "scenes/scene-07/scene-07.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-07",
+        "confirmedSceneOrder": 7,
+        "confirmedPhaseOrder": 1,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.701Z"
+      },
+      "startSeconds": 35.172,
+      "endSeconds": 38.173,
+      "startFrame": 1055,
+      "endFrame": 1145,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "pan-right",
+        "startScale": 1,
+        "endScale": 1.03,
+        "panXPercent": 0,
+        "panYPercent": 0,
+        "easing": "ease-in-out",
+        "reason": "Bewegungsrichtung wechselt bewusst gegenueber der Nachbarszene."
+      },
+      "subtitles": [],
+      "soundEffects": [
+        {
+          "id": "scene-07-sfx-1",
+          "type": "soft-whoosh",
+          "timeSeconds": 35.172,
+          "volume": 0.2,
+          "targetId": "",
+          "audioCue": "",
+          "timingStatus": "planned-fallback",
+          "visualEvent": "Harter Wechsel in die neue narrative Szene",
+          "reason": "Kurzer sauberer Uebergangsakzent."
+        },
+        {
+          "id": "scene-07-sfx-2",
+          "type": "click",
+          "timeSeconds": 38.173,
+          "volume": 0.2,
+          "targetId": "scene-07-image-02",
+          "audioCue": "Länder Nein sagt",
+          "timingStatus": "exact-image-audio-cue",
+          "visualEvent": "Interner Bildwechsel bei \"Länder Nein sagt\"",
+          "reason": "Leiser Akzent exakt am internen Bildmoment."
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-07-image-02",
+      "shotId": "scene-07-image-02",
+      "parentSceneId": "scene-07",
+      "parentSceneOrder": 7,
+      "phaseId": "scene-07-image-02",
+      "phaseOrder": 2,
+      "imageFile": "scenes/scene-07/scene-07-2.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-07-image-02",
+        "confirmedSceneOrder": 7,
+        "confirmedPhaseOrder": 2,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.704Z"
+      },
+      "startSeconds": 38.173,
+      "endSeconds": 42.059,
+      "startFrame": 1145,
+      "endFrame": 1262,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [],
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-08",
+      "shotId": "scene-08",
+      "parentSceneId": "scene-08",
+      "parentSceneOrder": 8,
+      "phaseId": "scene-08-image-01",
+      "phaseOrder": 1,
+      "imageFile": "scenes/scene-08/scene-08.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-08",
+        "confirmedSceneOrder": 8,
+        "confirmedPhaseOrder": 1,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.710Z"
+      },
+      "startSeconds": 42.059,
+      "endSeconds": 45.727,
+      "startFrame": 1262,
+      "endFrame": 1372,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "ken-burns",
+        "startScale": 1,
+        "endScale": 1.03,
+        "panXPercent": 0,
+        "panYPercent": 0,
+        "easing": "ease-in-out",
+        "reason": "Bewegungsrichtung wechselt bewusst gegenueber der Nachbarszene."
+      },
+      "subtitles": [],
+      "soundEffects": [
+        {
+          "id": "scene-08-sfx-1",
+          "type": "soft-whoosh",
+          "timeSeconds": 42.059,
+          "volume": 0.2,
+          "targetId": "",
+          "audioCue": "",
+          "timingStatus": "planned-fallback",
+          "visualEvent": "Harter Wechsel in die neue narrative Szene",
+          "reason": "Kurzer sauberer Uebergangsakzent."
+        },
+        {
+          "id": "scene-08-sfx-2",
+          "type": "click",
+          "timeSeconds": 45.727,
+          "volume": 0.2,
+          "targetId": "scene-08-image-02",
+          "audioCue": "einfach nichts sagt",
+          "timingStatus": "exact-image-audio-cue",
+          "visualEvent": "Interner Bildwechsel bei \"einfach nichts sagt\"",
+          "reason": "Leiser Akzent exakt am internen Bildmoment."
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-08-image-02",
+      "shotId": "scene-08-image-02",
+      "parentSceneId": "scene-08",
+      "parentSceneOrder": 8,
+      "phaseId": "scene-08-image-02",
+      "phaseOrder": 2,
+      "imageFile": "scenes/scene-08/scene-08-2.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-08-image-02",
+        "confirmedSceneOrder": 8,
+        "confirmedPhaseOrder": 2,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.712Z"
+      },
+      "startSeconds": 45.727,
+      "endSeconds": 49.303,
+      "startFrame": 1372,
+      "endFrame": 1479,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [],
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-09",
+      "shotId": "scene-09",
+      "parentSceneId": "scene-09",
+      "parentSceneOrder": 9,
+      "phaseId": "scene-09-image-01",
+      "phaseOrder": 1,
+      "imageFile": "scenes/scene-09/scene-09.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-09",
+        "confirmedSceneOrder": 9,
+        "confirmedPhaseOrder": 1,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.715Z"
+      },
+      "startSeconds": 49.303,
+      "endSeconds": 52.412,
+      "startFrame": 1479,
+      "endFrame": 1572,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "pan-up",
+        "startScale": 1,
+        "endScale": 1.03,
+        "panXPercent": 0,
+        "panYPercent": 0,
+        "easing": "ease-in-out",
+        "reason": "Bewegungsrichtung wechselt bewusst gegenueber der Nachbarszene."
+      },
+      "subtitles": [],
+      "soundEffects": [
+        {
+          "id": "scene-09-sfx-1",
+          "type": "soft-whoosh",
+          "timeSeconds": 49.303,
+          "volume": 0.2,
+          "targetId": "",
+          "audioCue": "",
+          "timingStatus": "planned-fallback",
+          "visualEvent": "Harter Wechsel in die neue narrative Szene",
+          "reason": "Kurzer sauberer Uebergangsakzent."
+        },
+        {
+          "id": "scene-09-sfx-2",
+          "type": "click",
+          "timeSeconds": 52.412,
+          "volume": 0.2,
+          "targetId": "scene-09-image-02",
+          "audioCue": "Ohne dieses Recht hätten",
+          "timingStatus": "exact-image-audio-cue",
+          "visualEvent": "Interner Bildwechsel bei \"Ohne dieses Recht hätten\"",
+          "reason": "Leiser Akzent exakt am internen Bildmoment."
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-09-image-02",
+      "shotId": "scene-09-image-02",
+      "parentSceneId": "scene-09",
+      "parentSceneOrder": 9,
+      "phaseId": "scene-09-image-02",
+      "phaseOrder": 2,
+      "imageFile": "scenes/scene-09/scene-09-2.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-09-image-02",
+        "confirmedSceneOrder": 9,
+        "confirmedPhaseOrder": 2,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.718Z"
+      },
+      "startSeconds": 52.412,
+      "endSeconds": 55.213,
+      "startFrame": 1572,
+      "endFrame": 1656,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [],
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-10",
+      "shotId": "scene-10",
+      "parentSceneId": "scene-10",
+      "parentSceneOrder": 10,
+      "phaseId": "scene-10-image-01",
+      "phaseOrder": 1,
+      "imageFile": "scenes/scene-10/scene-10.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-10",
+        "confirmedSceneOrder": 10,
+        "confirmedPhaseOrder": 1,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.720Z"
+      },
+      "startSeconds": 55.213,
+      "endSeconds": 58.214,
+      "startFrame": 1656,
+      "endFrame": 1746,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "subtle-push-in",
+        "startScale": 1,
+        "endScale": 1.03,
+        "panXPercent": 0,
+        "panYPercent": 0,
+        "easing": "ease-in-out",
+        "reason": "Bewegungsrichtung wechselt bewusst gegenueber der Nachbarszene."
+      },
+      "subtitles": [],
+      "soundEffects": [
+        {
+          "id": "scene-10-sfx-1",
+          "type": "soft-whoosh",
+          "timeSeconds": 55.213,
+          "volume": 0.2,
+          "targetId": "",
+          "audioCue": "",
+          "timingStatus": "planned-fallback",
+          "visualEvent": "Harter Wechsel in die neue narrative Szene",
+          "reason": "Kurzer sauberer Uebergangsakzent."
+        },
+        {
+          "id": "scene-10-sfx-2",
+          "type": "click",
+          "timeSeconds": 58.214,
+          "volume": 0.2,
+          "targetId": "scene-10-image-02",
+          "audioCue": "können es nur genau",
+          "timingStatus": "exact-image-audio-cue",
+          "visualEvent": "Interner Bildwechsel bei \"können es nur genau\"",
+          "reason": "Leiser Akzent exakt am internen Bildmoment."
+        },
+        {
+          "id": "scene-10-sfx-3",
+          "type": "tick",
+          "timeSeconds": 60.494,
+          "volume": 0.2,
+          "targetId": "scene-10-image-03",
+          "audioCue": "gilt bis heute",
+          "timingStatus": "exact-image-audio-cue",
+          "visualEvent": "Interner Bildwechsel bei \"gilt bis heute\"",
+          "reason": "Leiser Akzent exakt am internen Bildmoment."
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-10-image-02",
+      "shotId": "scene-10-image-02",
+      "parentSceneId": "scene-10",
+      "parentSceneOrder": 10,
+      "phaseId": "scene-10-image-02",
+      "phaseOrder": 2,
+      "imageFile": "scenes/scene-10/scene-10-2.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-10-image-02",
+        "confirmedSceneOrder": 10,
+        "confirmedPhaseOrder": 2,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.722Z"
+      },
+      "startSeconds": 58.214,
+      "endSeconds": 60.494,
+      "startFrame": 1746,
+      "endFrame": 1815,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [],
+      "soundEffects": []
+    },
+    {
+      "sceneId": "scene-10-image-03",
+      "shotId": "scene-10-image-03",
+      "parentSceneId": "scene-10",
+      "parentSceneOrder": 10,
+      "phaseId": "scene-10-image-03",
+      "phaseOrder": 3,
+      "imageFile": "scenes/scene-10/scene-10-3.jpeg",
+      "imageStatus": "ready",
+      "assetVerification": {
+        "visualReviewed": true,
+        "secondPassConfirmed": true,
+        "sceneOrderConfirmed": true,
+        "confirmedTarget": "scene-10-image-03",
+        "confirmedSceneOrder": 10,
+        "confirmedPhaseOrder": 3,
+        "visibleSummary": "",
+        "reason": "",
+        "comparedFields": [],
+        "matchMethod": "numbered-global-image-order",
+        "reviewedAt": "2026-09-19T07:01:17.724Z"
+      },
+      "startSeconds": 60.494,
+      "endSeconds": 64.351,
+      "startFrame": 1815,
+      "endFrame": 1931,
+      "transitionIn": {
+        "type": "cut",
+        "durationSeconds": 0
+      },
+      "cameraMotion": {
+        "type": "none",
+        "startScale": 1,
+        "endScale": 1,
+        "panXPercent": 0,
+        "panYPercent": 0
+      },
+      "subtitles": [],
+      "soundEffects": []
+    }
+  ]
+}

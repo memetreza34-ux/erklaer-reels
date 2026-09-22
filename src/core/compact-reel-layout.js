@@ -72,6 +72,79 @@ async function exists(filePath) {
   }
 }
 
+/**
+ * Findet einen vorhandenen Verzeichniseintrag, der sich nur in der Groß-/Kleinschreibung
+ * von `name` unterscheidet.
+ *
+ * Auf case-insensitiven Dateisystemen (APFS, HFS+, NTFS) ist `99-technik/INBOX` derselbe
+ * physische Ordner wie `99-technik/inbox`. Ein alter GROSSGESCHRIEBENER Legacy-Alias ist
+ * dort also kein zweiter Ordner, sondern der aktuelle Zielordner unter altem Namen.
+ *
+ * @param {string} directory Verzeichnis, in dem gesucht wird.
+ * @param {string} name Gewünschter Eintragsname.
+ * @returns {Promise<string|null>} Abweichend geschriebener Name oder null.
+ */
+async function findCaseAliasEntry(directory, name) {
+  let entries = [];
+  try {
+    entries = await readdir(directory);
+  } catch {
+    return null;
+  }
+  const wanted = name.toLowerCase();
+  return entries.find((entry) => entry !== name && entry.toLowerCase() === wanted) ?? null;
+}
+
+/**
+ * Verschiebt den Inhalt von `source` nach `destination`, ohne im Ziel etwas zu
+ * überschreiben oder zu löschen. Einträge, die im Ziel bereits existieren, bleiben
+ * unangetastet und werden als Konflikt zurückgemeldet.
+ *
+ * @param {string} source Quellverzeichnis.
+ * @param {string} destination Zielverzeichnis.
+ * @returns {Promise<{moved: string[], conflicts: string[]}>}
+ */
+async function mergeDirectoryPreservingExisting(source, destination) {
+  const moved = [];
+  const conflicts = [];
+
+  let entries = [];
+  try {
+    entries = await readdir(source, { withFileTypes: true });
+  } catch {
+    return { moved, conflicts };
+  }
+
+  for (const entry of entries) {
+    const sourcePath = path.join(source, entry.name);
+    const destinationPath = path.join(destination, entry.name);
+
+    const destinationStat = await statOrNull(destinationPath);
+    if (!destinationStat) {
+      await rename(sourcePath, destinationPath);
+      moved.push(entry.name);
+      continue;
+    }
+
+    // Beide Seiten sind echte Ordner: eine Ebene tiefer weitermergen.
+    const sourceStat = await statOrNull(sourcePath);
+    if (sourceStat?.isDirectory() && destinationStat.isDirectory() && !destinationStat.isSymbolicLink()) {
+      const nested = await mergeDirectoryPreservingExisting(sourcePath, destinationPath);
+      moved.push(...nested.moved.map((name) => path.join(entry.name, name)));
+      conflicts.push(...nested.conflicts.map((name) => path.join(entry.name, name)));
+      continue;
+    }
+
+    // Im Ziel liegt bereits eine Datei: Nutzerinhalt hat Vorrang, Quelle bleibt liegen.
+    conflicts.push(entry.name);
+  }
+
+  // Der Quellordner wird nur entfernt, wenn wirklich nichts mehr darin liegt.
+  await rm(source, { recursive: false }).catch(() => {});
+
+  return { moved, conflicts };
+}
+
 export function normalizeOuterReelDirectory(reelDirectory) {
   const absolute = path.resolve(reelDirectory);
   return path.basename(absolute) === TECHNICAL_DIRECTORY_NAME
@@ -219,6 +292,7 @@ export async function compactReelLayout(reelDirectory) {
   await mkdir(technicalDirectory, { recursive: true });
 
   const movedEntries = [];
+  const mergedEntries = [];
   const removedCompatibilityLinks = [];
 
   for (const entry of COMPACT_TECHNICAL_ENTRIES) {
@@ -242,6 +316,17 @@ export async function compactReelLayout(reelDirectory) {
     if (destinationStat) {
       if (destinationStat.isSymbolicLink()) {
         await rm(destinationPath, { force: true });
+      } else if (
+        sourceStat.isDirectory() &&
+        destinationStat.isDirectory() &&
+        (await findCaseAliasEntry(technicalDirectory, entry))
+      ) {
+        // Case-insensitives Dateisystem: Der alte GROSS geschriebene Legacy-Alias
+        // (z. B. 99-technik/INBOX) ist physisch derselbe Ordner wie 99-technik/inbox.
+        // Der Inhalt wird zusammengeführt, ohne im Ziel etwas zu überschreiben.
+        const merge = await mergeDirectoryPreservingExisting(sourcePath, destinationPath);
+        mergedEntries.push({ entry, moved: merge.moved, conflicts: merge.conflicts });
+        continue;
       } else {
         throw new Error(
           `Kompakte Reel-Struktur kann ${entry} nicht verschieben: Ziel existiert bereits unter ${destinationPath}. ` +
@@ -268,6 +353,7 @@ export async function compactReelLayout(reelDirectory) {
     technicalDirectory,
     compact: true,
     movedEntries,
+    mergedEntries,
     removedCompatibilityLinks,
     removedAliases: aliasCleanup.removed,
     preservedPhysicalAliases: aliasCleanup.preserved,

@@ -11,6 +11,7 @@ import {
   useVideoConfig
 } from 'remotion';
 
+import { MOTION_DEFAULTS, canonicalMotionType, motionForType } from '../shared/camera-motion.js';
 import { EDIT_TIMING_STYLE, secondsToFrames } from '../shared/edit-timing-style.js';
 
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
@@ -36,25 +37,10 @@ const SOUND_FILES_BY_TYPE = Object.freeze({
   'soft-swipe': 'soft-swipe.mp3'
 });
 
-const MOTION_ALIASES = Object.freeze({
-  'gentle-pan': 'ken-burns',
-  'gentle-push-in': 'subtle-push-in',
-  'medium-push-in': 'slow-zoom-in',
-  'close-up-push-in': 'subtle-push-in',
-  'slow-push-in': 'slow-zoom-in',
-  'push-in': 'subtle-push-in',
-  'pull-out': 'subtle-pull-out'
-});
-
 const resolveSoundFile = (sound = {}) => {
   if (sound.file) return sound.file;
   const fileName = SOUND_FILES_BY_TYPE[String(sound.type ?? '').trim()];
   return fileName ? `sfx/${fileName}` : null;
-};
-
-const canonicalMotionType = (type) => {
-  const raw = String(type ?? '').trim();
-  return MOTION_ALIASES[raw] ?? raw;
 };
 
 // Eine lineare Kamerafahrt startet und stoppt hart und wirkt dadurch mechanisch.
@@ -81,38 +67,22 @@ const automaticMotion = (scene = {}) => {
   const phaseOrder = Number(scene.phaseOrder ?? 1);
   const sceneOrder = Number(scene.parentSceneOrder ?? 1);
   const pullOut = (sceneOrder + phaseOrder) % 2 === 0;
-  return pullOut
-    ? { type: 'subtle-pull-out', startScale: 1.04, endScale: 1, easing: 'ease-in-out' }
-    : { type: 'subtle-push-in', startScale: 1, endScale: 1.04, easing: 'ease-in-out' };
+  return motionForType(pullOut ? 'subtle-pull-out' : 'subtle-push-in');
 };
 
 const motionDefaults = (motion = {}) => {
   const type = canonicalMotionType(motion.type) || 'subtle-push-in';
-  const defaults = {
-    none: [1, 1],
-    'subtle-push-in': [1, 1.04],
-    'subtle-pull-out': [1.04, 1],
-    'slow-zoom-in': [1, 1.05],
-    'slow-zoom-out': [1.05, 1],
-    'pan-left': [1.04, 1.04],
-    'pan-right': [1.04, 1.04],
-    'pan-up': [1.04, 1.04],
-    'pan-down': [1.04, 1.04],
-    'ken-burns': [1.02, 1.06]
-  };
-  const [defaultStart, defaultEnd] = defaults[type] ?? defaults['subtle-push-in'];
-  const kenBurnsPan = type === 'ken-burns' ? 1.5 : 0;
-  const defaultPanX = type === 'pan-left' ? -2 : type === 'pan-right' ? 2 : kenBurnsPan;
-  const defaultPanY = type === 'pan-up' ? -2 : type === 'pan-down' ? 2 : 0;
+  const defaults = MOTION_DEFAULTS[type] ?? MOTION_DEFAULTS['subtle-push-in'];
+  const numberOr = (value, fallback) => (Number.isFinite(Number(value)) ? Number(value) : fallback);
   return {
     type,
     easing: easingFor(motion.easing),
-    startScale: Number.isFinite(Number(motion.startScale)) ? Number(motion.startScale) : defaultStart,
-    endScale: Number.isFinite(Number(motion.endScale)) ? Number(motion.endScale) : defaultEnd,
-    startPanXPercent: Number.isFinite(Number(motion.startPanXPercent)) ? Number(motion.startPanXPercent) : (type === 'ken-burns' ? -kenBurnsPan : 0),
-    startPanYPercent: Number.isFinite(Number(motion.startPanYPercent)) ? Number(motion.startPanYPercent) : 0,
-    endPanXPercent: Number.isFinite(Number(motion.panXPercent)) ? Number(motion.panXPercent) : defaultPanX,
-    endPanYPercent: Number.isFinite(Number(motion.panYPercent)) ? Number(motion.panYPercent) : defaultPanY
+    startScale: numberOr(motion.startScale, defaults.startScale),
+    endScale: numberOr(motion.endScale, defaults.endScale),
+    startPanXPercent: numberOr(motion.startPanXPercent, defaults.startPanXPercent),
+    startPanYPercent: numberOr(motion.startPanYPercent, defaults.startPanYPercent),
+    endPanXPercent: numberOr(motion.panXPercent, defaults.panXPercent),
+    endPanYPercent: numberOr(motion.panYPercent, defaults.panYPercent)
   };
 };
 

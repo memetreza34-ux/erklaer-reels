@@ -1,0 +1,141 @@
+ANLEITUNG — Reel "Was ist ein Vetorecht?"
+==============================================================
+
+Phase 1 ist fertig. Du brauchst jetzt zwei Dinge: das Voice-over und 24 Bilder.
+
+
+1) VOICE-OVER
+--------------------------------------------------------------
+Text zum Vertonen:   01-voice-script/voice-script.txt
+Ziel:                67 Sekunden bei 1,10x - nie unter einer Minute
+Fertige Datei in:    02-audio/AUDIO-HIER-EINFUEGEN/
+
+Nur EINE Audiodatei dort ablegen. Format: mp3, wav oder m4a.
+
+
+2) BILDER
+--------------------------------------------------------------
+Prompts:             00-bildprompts/99-alle-bildprompts.txt
+Fertige Bilder in:   00-bildprompts/00-ALLE-BILDER-HIER-REIN/
+
+Benennung verbindlich:  Bild 01.png  bis  Bild 24.png
+Keine Nummer ueberspringen. Fehlt eine, stoppt Phase 3.
+
+WICHTIG: Bild 02 und Bild 24 zeigen fast dasselbe Motiv - der rote Strich
+durch die Mehrheit. Das ist Absicht: Das Schlussbild greift den Anfang
+wieder auf, damit das Reel sauber loopt. Nur der Text unterscheidet sich.
+
+
+HINWEIS ZUM COVER
+--------------------------------------------------------------
+Bild 01 ist zugleich das Cover - der erste Frame im Feed. Es traegt
+deshalb die Themenfrage, nicht eine Zwischenaussage. Bild 02 loest
+den Hook dann auf ("STIMMT NICHT").
+
+
+3) WAS WELCHES BILD ZEIGT
+--------------------------------------------------------------
+  scene-01  (5.5s)  Hook: Der Irrtum
+    Bild 01.png   Titelbild und Cover: die Mehrheit gegen den einen
+                Text im Bild: WAS IST EIN VETORECHT?
+    Bild 02.png   Ein dicker roter Strich fährt durch die Mehrheit.
+                  Text im Bild: STIMMT NICHT
+
+  scene-02  (7.5s)  Einleitung: Das Szenario
+    Bild 03.png   Eine Weltkugel mit einem roten Krisenpunkt.
+                  (kein Text im Bild)
+    Bild 04.png   Vierzehn Bälle heben die Hand, einer nicht.
+                  (kein Text im Bild)
+    Bild 05.png   Die Weltkugel bleibt unverändert, die Krise läuft weiter.
+                  Text im Bild: NICHTS PASSIERT
+
+  scene-03  (6.5s)  Einleitung: Das Prinzip
+    Bild 06.png   Ein Stempel drückt das Wort VETO auf ein Dokument.
+                  Text im Bild: VETO
+    Bild 07.png   Vierzehn kleine Sprechblasen gegen eine große rote.
+                  (kein Text im Bild)
+
+  scene-04  (6.5s)  Hauptteil: Wer sitzt dort
+    Bild 08.png   Fünfzehn neutrale Bälle um einen runden Tisch.
+                  Text im Bild: 15 LÄNDER
+    Bild 09.png   Zehn Bälle verblassen mit Kreispfeil, fünf sitzen auf festen Sockeln.
+                  (kein Text im Bild)
+
+  scene-05  (7.0s)  Hauptteil: Die Fünf
+    Bild 10.png   Fünf Flaggen-Bälle stehen fest nebeneinander.
+                  Text im Bild: DIE STÄNDIGEN FÜNF
+    Bild 11.png   Die fünf stehen auf einem Sockel mit der Jahreszahl.
+                  Text im Bild: 1945
+
+  scene-06  (6.0s)  Hauptteil: Die normale Regel
+    Bild 12.png   Neun grüne Häkchen in einem Raster aus fünfzehn Feldern.
+                  Text im Bild: 9 VON 15
+    Bild 13.png   Ein grüner Haken, alles wirkt erledigt.
+                  (kein Text im Bild)
+
+  scene-07  (7.0s)  Hauptteil: Der Bruch
+    Bild 14.png   Der grüne Haken zerbricht.
+                  (kein Text im Bild)
+    Bild 15.png   Ein Flaggen-Ball hebt die Hand, ein rotes Stoppzeichen erscheint.
+                  (kein Text im Bild)
+    Bild 16.png   Eine Waage kippt durch ein einziges rotes Gewicht.
+                  Text im Bild: 14 ZU 1
+
+  scene-08  (7.5s)  Hauptteil: Wie oft und die Ausnahme
+    Bild 17.png   Ein Stapel abgelehnter Dokumente mit roten Kreuzen.
+                  Text im Bild: FAST 300 MAL
+    Bild 18.png   Ein grauer Ball senkt die Hand, ein Pfeil läuft ungehindert vorbei.
+                  Text im Bild: NICHTS SAGEN HEISST NICHT NEIN
+    Bild 19.png   Am roten Ball stoppt derselbe Pfeil an einem Stoppzeichen.
+                  (kein Text im Bild)
+
+  scene-09  (6.5s)  Schluss: Der Preis
+    Bild 20.png   Ein Gebäude entsteht, daneben ein Preisschild.
+                  Text im Bild: DER PREIS
+    Bild 21.png   Fünf Flaggen-Bälle drehen sich zum Ausgang.
+                  (kein Text im Bild)
+
+  scene-10  (7.0s)  Schluss: Zurück zum Anfang
+    Bild 22.png   Ein Dokument mit fünf Schlössern.
+                  (kein Text im Bild)
+    Bild 23.png   Ein Kreis aus fünf Bällen, der sich selbst prüft.
+                  (kein Text im Bild)
+    Bild 24.png   Dasselbe Bild wie am Anfang: der rote Strich durch die Mehrheit.
+                  Text im Bild: ENTSCHEIDET NICHT DIE MEHRHEIT
+
+
+4) WENN BEIDES DRIN IST
+--------------------------------------------------------------
+  npm run preflight
+  npm run phase3:reel -- --dir "reels/2026-KW37_07-09_bis_13-09/donnerstag/reel-01_was-ist-ein-vetorecht"
+
+
+WIE DAS SCRIPT AUFGEBAUT IST
+--------------------------------------------------------------
+Szene 1     HOOK         Myth-Hook: erst die verbreitete Annahme
+                         ("die Mehrheit entscheidet"), dann sofort kippen.
+                         Wer nach 3 Sekunden nicht weiss, worum es geht,
+                         ist der Hook zu schwammig.
+Szene 2-3   EINLEITUNG   Ein konkretes Szenario aus dem Thema selbst:
+                         Krieg bricht aus, der Rat soll handeln, nichts
+                         passiert. Danach der Satz, der das Prinzip
+                         benennt: nicht ueberzeugen, sondern ueberstimmen.
+Szene 4-8   HAUPTTEIL    Wer sitzt dort, wer hat das Recht, die normale
+                         Regel, der Bruch, die Zahl und die Ausnahme.
+Szene 9-10  SCHLUSS      Warum es das gibt, warum es bleibt - und zurueck
+                         zum Bild vom Anfang.
+
+Der staerkste Moment ist Szene 7: Szene 6 baut die Erwartung "normale
+Abstimmung" auf, Szene 7 zerstoert sie. Deshalb drei Bildphasen dort.
+
+
+HINWEISE
+--------------------------------------------------------------
+- Sichtbarer Text in den Bildern ist ausschliesslich Deutsch.
+- Bildwelt fest: serious-minimal-countryball-explainer, 9:16.
+  Keine Stick-Figures, kein 16:9 - das ist die YouTube-Welt.
+- Szene 1-4 nutzen NEUTRALE einfarbige Kugeln ohne Flaggen: dort geht es
+  um das Prinzip. Flaggen erst ab Szene 5, wenn es um die fuenf Laender geht.
+- Untertitel und Hintergrundmusik sind bewusst aus.
+- Quellen: 99-technik/sources/sources.md  (5 Quellen, 4 Domains)
+- Caption:  99-technik/caption/caption.txt

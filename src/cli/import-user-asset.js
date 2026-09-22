@@ -4,11 +4,7 @@ import path from 'node:path';
 
 import { getReelLayout } from '../core/compact-reel-layout.js';
 import { copyUserAssetSafely } from '../core/user-asset-safety.js';
-
-function getArgument(name) {
-  const index = process.argv.indexOf(name);
-  return index >= 0 ? process.argv[index + 1] : undefined;
-}
+import { getArgument } from '../shared/cli-args.js';
 
 function usage() {
   console.log(`

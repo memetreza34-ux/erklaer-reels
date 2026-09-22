@@ -9,6 +9,18 @@ reels/**/output/*.mp4
 reels/**/output/*.webm
 reels/**/output/*.mov
 
+# Der fertige Export ist ein Build-Output und wird bei jedem Render neu erzeugt
+# (99-technik/export plus der Symlink im sichtbaren 03-export-Ordner). Ohne diese
+# Regeln wandert pro Reel ein ~35-MB-MP4 dauerhaft in die Git-History; das
+# Vetorecht-Reel allein hat .git auf 148 MB gebracht. Rohmaterial unter
+# 01-voice-script und 02-audio bleibt bewusst versioniert.
+reels/**/export/*.mp4
+reels/**/export/*.webm
+reels/**/export/*.mov
+reels/**/03-export/*.mp4
+reels/**/03-export/*.webm
+reels/**/03-export/*.mov
+
 reels/**/audio/*.mp3
 reels/**/audio/*.wav
 reels/**/audio/*.m4a
@@ -26,16 +38,27 @@ reels/**/cover/*.jpg
 reels/**/cover/*.jpeg
 reels/**/cover/*.webp
 
-reels/**/inbox/images/*.png
-reels/**/inbox/images/*.jpg
-reels/**/inbox/images/*.jpeg
-reels/**/inbox/images/*.webp
-reels/**/inbox/audio/*.mp3
-reels/**/inbox/audio/*.wav
-reels/**/inbox/audio/*.m4a
-reels/**/inbox/audio/*.aac
-reels/**/inbox/audio/*.flac
-reels/**/inbox/audio/*.ogg
+# Rohmaterial des Nutzers im gesamten Inbox-Bereich - niemals versionieren.
+# Frueher waren nur inbox/images und inbox/audio erfasst. Dadurch sind
+# inbox/numbered-images/ und lose Dateien direkt in inbox/ im Repo gelandet.
+# Struktur-Dateien (.gitkeep, README.md, *.json) bleiben bewusst getrackt.
+reels/**/inbox/**/*.png
+reels/**/inbox/**/*.jpg
+reels/**/inbox/**/*.jpeg
+reels/**/inbox/**/*.webp
+reels/**/inbox/**/*.gif
+reels/**/inbox/**/*.mp3
+reels/**/inbox/**/*.wav
+reels/**/inbox/**/*.m4a
+reels/**/inbox/**/*.aac
+reels/**/inbox/**/*.flac
+reels/**/inbox/**/*.ogg
+reels/**/inbox/**/*.mp4
+reels/**/inbox/**/*.mov
+
+# Rohmaterial-Archive (Google-Flow-Downloads o. ae.) bleiben lokal.
+reels/**/*.zip
+youtube/**/*.zip
 
 # YouTube-Langvideo-Bereich: generierte Medien nicht versionieren
 youtube/**/output/*.mp4
@@ -100,3 +123,16 @@ content/**/inbox/audio/*.ogg
 assets/sfx/*.wav
 reels/**/sfx/
 ki_app_script.txt
+
+# Finder-Komfort-Symlinks aus src/core/human-reel-view.js.
+# Sie werden bei jedem post-checkout/post-merge lokal neu erzeugt und sind
+# reine Anzeigehilfen - sie gehoeren nicht in die Versionierung.
+reels/**/99-technik/AUDIO-INTERN
+reels/**/99-technik/CAPTION-INTERN
+reels/**/99-technik/EXPORT-INTERN
+reels/**/99-technik/INBOX
+reels/**/99-technik/OUTPUT-INTERN
+reels/**/99-technik/RENDER-INTERN
+reels/**/99-technik/SCRIPT-INTERN
+reels/**/99-technik/SZENEN
+reels/**/99-technik/TIMELINE-INTERN

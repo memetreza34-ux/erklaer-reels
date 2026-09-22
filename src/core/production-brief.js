@@ -57,7 +57,7 @@ export async function prepareReelProduction(reelDirectory) {
     visualWorldMode: 'fixed',
     visualStyleId: FIXED_VISUAL_STYLE_ID,
     tasks: [
-      { id: 'script-final', label: 'Voice-over mit 155–175 Wörtern, natürlicher Betonung und starkem Ende fertigstellen', status: 'pending' },
+      { id: 'script-final', label: 'Voice-over mit 170–200 Wörtern, natürlicher Betonung und starkem Ende fertigstellen', status: 'pending' },
       { id: 'visual-world-fixed', label: `Feste Reel-Bildwelt ${FIXED_VISUAL_WORLD_LABEL} für jede Bildphase beibehalten; keine Stilrotation`, status: 'pending' },
       { id: 'visual-world-separated', label: 'YouTube-Bildwelt strikt getrennt halten; keine Stick-Figuren, kein 16:9-Longform-Look in Reels', status: 'pending' },
       { id: 'scene-first-visuals', label: 'Jede Bildphase als konkrete lebendige Mini-Szene planen; Posterkarte, Headline-plus-Icon und sterile Icon-Boards vermeiden', status: 'pending' },
@@ -96,8 +96,8 @@ Erstelle ein vollständiges Erklär-Reel mit ungefähr einer Minute Voice-over-L
 - geplante Bilder: **${currentPlannedImages}**
 - Bildanzahl-Modus: **one-hook-two-standard**
 - feste Reel-Bildwelt: **${FIXED_VISUAL_WORLD_LABEL} / ${FIXED_VISUAL_STYLE_ID}**
-- Voice-over-Zieldauer: **55–60 Sekunden**
-- Zieltext: **155–175 Wörter**
+- Voice-over-Zieldauer: **60–72 Sekunden (nie unter einer Minute)**
+- Zieltext: **170–200 Wörter**
 - Format: **9:16**
 - Voice-over: **Deutsch**
 - Bildprompts: **Englisch**
@@ -123,7 +123,7 @@ Erstelle ein vollständiges Erklär-Reel mit ungefähr einer Minute Voice-over-L
 ## Verbindlicher Ablauf
 
 1. Lies \`CURRENT_WORKFLOW.md\`, \`AGENTS.md\`, \`CODEX_TASK.md\`, \`knowledge/fixed-visual-world.md\`, \`knowledge/production-rules.md\`, \`config/image-styles.json\`, \`config/effects-rules.json\` und \`config/production-quality-gates.json\`.
-2. Überarbeite das Script auf 155–175 Wörter und ungefähr 55–60 Sekunden bei 1,10x. Szene 1 startet sofort mit Frage, Überraschung oder Kontrast. Schreibe so, dass der Sprecher natürlich betonen kann: kurze klare Sätze, Schlüsselwörter, keine monotone Vorlesekadenz.
+2. Überarbeite das Script auf 170–200 Wörter und ungefähr 60–72 Sekunden (nie unter einer Minute) bei 1,10x. Szene 1 startet sofort mit Frage, Überraschung oder Kontrast. Schreibe so, dass der Sprecher natürlich betonen kann: kurze klare Sätze, Schlüsselwörter, keine monotone Vorlesekadenz.
 3. Das Ende benötigt zwei getrennte Stufen: persönliche Prüf-/Erkenntnisfrage und danach konkrete Lösung mit kurzem einprägsamem Abschlusssatz.
 4. Schreibe denselben finalen Text nach \`script/final-script.txt\` und \`script/voice-script.txt\`.
 5. Plane ${scenes.length} narrative Szenen. Bildanzahl: 1 + (Szenen − 1) × 2.

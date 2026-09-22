@@ -6,8 +6,8 @@ Codex übernimmt **Phase 1**: Slot, Thema, Script, Szenen, Bildprompts, Motion-/
 
 ## Reel-Standard
 
-- 55–60 Sekunden
-- 155–175 deutsche Wörter
+- 60–72 Sekunden (nie unter einer Minute)
+- 170–200 deutsche Wörter
 - 8–10 narrative Szenen, Standard 9
 - Hook ab Sekunde 0
 - keine Untertitel

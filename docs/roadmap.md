@@ -4,19 +4,19 @@
 
 ## Aktueller Stand: Produktionsbaseline
 
-Die Produktionspipeline besitzt offene Themenwahl, individuelle Bilddichte und harte QC-Gates. Die Bildwelt ist seit 2026-08-28 wieder fest: **`modern-countryball-explainer`** (Modern Countryball Explainer).
+Die Produktionspipeline besitzt offene Themenwahl, individuelle Bilddichte und harte QC-Gates. Die Reel-Bildwelt ist seit 2026-09-11 fest: **`serious-minimal-countryball-explainer`** (Serious Minimal Countryball Explainer, 9:16). YouTube-Langvideos laufen getrennt auf **`youtube-editorial-stick-explainer`** (16:9).
 
 ### Produktionskern
 
 - [x] Repository und stabile Reel-Ordnerstruktur
 - [x] Wochen- und Tages-Slots automatisch bestimmen
-- [x] 55–60 Sekunden Voice-over, Ziel ungefähr 58 Sekunden
-- [x] 155–175 deutsche Wörter
+- [x] 60–72 Sekunden (nie unter einer Minute) Voice-over, Ziel ungefähr 66 Sekunden
+- [x] 170–200 deutsche Wörter
 - [x] 8–10 **narrative Szenen**, Standard 9
 - [x] individuelle Bildanzahl über 1–3 `imagePhases` pro Szene
 - [x] offenes Themenuniversum ohne feste Pillar-Quote
-- [x] eine einzige feste Bildwelt `modern-countryball-explainer` im aktiven Workflow verankert
-- [x] neue Workspaces starten mit `visualStyleId: "modern-countryball-explainer"`
+- [x] genau eine feste Bildwelt pro Kanal, zentral in `config/visual-worlds.json` verankert
+- [x] neue Workspaces starten mit `visualStyleId: "serious-minimal-countryball-explainer"`
 - [x] Prompt-Exporter injiziert den festen Style-Lock global und vor jedem Bildabschnitt
 - [x] kompletter serieller Google-Flow-Gesamtprompt unter `00-bildprompts/99-alle-bildprompts.txt`
 - [x] Workflow-Metadaten aus generierten Bildern ausgeschlossen

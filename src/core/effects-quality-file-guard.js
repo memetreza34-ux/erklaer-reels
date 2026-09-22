@@ -1,33 +1,11 @@
 import { access, readFile } from 'node:fs/promises';
 import path from 'node:path';
 
+import { MOTION_DEFAULTS, motionDirectionMismatch, resolveMotion } from '../shared/camera-motion.js';
 import { normalizeSceneImagePhases } from '../shared/visual-moments.js';
 import { loadSoundLibrary } from './sound-library.js';
 
 const EFFECTS_HARD_GATE_SINCE = '2026-09-02';
-
-const MOTION_ALIASES = Object.freeze({
-  'gentle-pan': 'ken-burns',
-  'gentle-push-in': 'subtle-push-in',
-  'medium-push-in': 'slow-zoom-in',
-  'close-up-push-in': 'subtle-push-in',
-  'slow-push-in': 'slow-zoom-in',
-  'push-in': 'subtle-push-in',
-  'pull-out': 'subtle-pull-out'
-});
-
-const MOTION_DEFAULTS = {
-  none: { startScale: 1, endScale: 1, panXPercent: 0, panYPercent: 0 },
-  'subtle-push-in': { startScale: 1, endScale: 1.04, panXPercent: 0, panYPercent: 0 },
-  'subtle-pull-out': { startScale: 1.04, endScale: 1, panXPercent: 0, panYPercent: 0 },
-  'slow-zoom-in': { startScale: 1, endScale: 1.05, panXPercent: 0, panYPercent: 0 },
-  'slow-zoom-out': { startScale: 1.05, endScale: 1, panXPercent: 0, panYPercent: 0 },
-  'pan-left': { startScale: 1.04, endScale: 1.04, panXPercent: -2, panYPercent: 0 },
-  'pan-right': { startScale: 1.04, endScale: 1.04, panXPercent: 2, panYPercent: 0 },
-  'pan-up': { startScale: 1.04, endScale: 1.04, panXPercent: 0, panYPercent: -2 },
-  'pan-down': { startScale: 1.04, endScale: 1.04, panXPercent: 0, panYPercent: 2 },
-  'ken-burns': { startScale: 1.02, endScale: 1.06, panXPercent: 1.5, panYPercent: 0 }
-};
 
 async function exists(filePath) {
   try {
@@ -48,32 +26,12 @@ function numberOr(value, fallback) {
   return Number.isFinite(number) ? number : fallback;
 }
 
-function canonicalMotionType(value) {
-  const raw = String(value ?? '').trim();
-  return MOTION_ALIASES[raw] ?? raw;
-}
-
 function effectiveMotion(motion = {}) {
-  const requestedType = String(motion.type ?? '').trim();
-  const type = canonicalMotionType(requestedType);
-  const defaults = MOTION_DEFAULTS[type] ?? MOTION_DEFAULTS.none;
-  const startScale = numberOr(motion.startScale, defaults.startScale);
-  const endScale = numberOr(motion.endScale, defaults.endScale);
-  const panXPercent = numberOr(motion.panXPercent, defaults.panXPercent);
-  const panYPercent = numberOr(motion.panYPercent, defaults.panYPercent);
-  const scaleDelta = Math.abs(endScale - startScale);
-  const panDelta = Math.max(Math.abs(panXPercent), Math.abs(panYPercent));
+  const resolved = resolveMotion(motion);
   return {
-    requestedType,
-    type,
-    aliased: requestedType !== type,
-    startScale,
-    endScale,
-    panXPercent,
-    panYPercent,
-    scaleDelta,
-    panDelta,
-    visiblyMoving: type !== 'none' && (scaleDelta >= 0.015 || panDelta >= 0.5)
+    ...resolved,
+    panXPercent: resolved.endPanXPercent,
+    panYPercent: resolved.endPanYPercent
   };
 }
 
@@ -130,6 +88,22 @@ export async function verifyFutureEffectsCoverage(reelDirectory) {
       findings.push({ sceneId: scene.sceneId, issue: 'camera-motion-unknown', type: motion.requestedType || '(leer)' });
     } else if (!motion.visiblyMoving) {
       findings.push({ sceneId: scene.sceneId, issue: 'camera-motion-static', type: motion.type || '(leer)' });
+    } else {
+      // Ein Typname allein erzeugt keine Abwechslung. Ohne diese Prüfung kann der
+      // Plan zehn Bewegungsnamen tragen und trotzdem zehnmal dieselbe Fahrt rendern.
+      const mismatch = motionDirectionMismatch(effect.cameraMotion);
+      if (mismatch) {
+        findings.push({
+          sceneId: scene.sceneId,
+          issue: 'camera-motion-direction-mismatch',
+          type: motion.type,
+          detail: mismatch,
+          startScale: motion.startScale,
+          endScale: motion.endScale,
+          panXPercent: motion.panXPercent,
+          panYPercent: motion.panYPercent
+        });
+      }
     }
     if (motion.startScale < minScale || motion.startScale > maxScale || motion.endScale < minScale || motion.endScale > maxScale) {
       findings.push({ sceneId: scene.sceneId, issue: 'camera-motion-zoom-out-of-range', startScale: motion.startScale, endScale: motion.endScale });

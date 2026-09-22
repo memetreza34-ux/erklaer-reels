@@ -6,11 +6,7 @@ import { finalizeReel } from '../core/finalize-reel.js';
 import { syncReelSounds } from '../core/sound-library.js';
 import { verifyRequiredSourceQuality } from '../core/source-quality-file-guard.js';
 import { verifyTrailingVoiceoverSilence } from '../core/trailing-silence-guard.js';
-
-function getArgument(name) {
-  const index = process.argv.indexOf(name);
-  return index >= 0 ? process.argv[index + 1] : undefined;
-}
+import { getArgument } from '../shared/cli-args.js';
 
 async function main() {
   const reelDirectory = getArgument('--dir');

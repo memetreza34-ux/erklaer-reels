@@ -13,11 +13,18 @@ async function writeJson(filePath, value) {
   await writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
 }
 
-test('Hook-Gate akzeptiert Neugier und blockiert generische Einleitung', () => {
+test('Hook-Gate verlangt den Frage-Einstieg und blockiert generische Einleitungen', () => {
+  // Seit der Kanalregel "Frage zuerst" reicht ein Neugier-Einstieg als Aussage nicht mehr.
   assert.equal(inspectReelHook({
-    narration: 'Südafrika hat nicht nur eine Hauptstadt. Tatsächlich verteilt das Land seine wichtigsten Staatsaufgaben auf drei verschiedene Städte.',
-    imageText: 'WARUM DREI HAUPTSTÄDTE?'
+    narration: 'Warum hat Südafrika drei Hauptstädte? Das Land verteilt seine wichtigsten Staatsaufgaben auf drei verschiedene Städte.',
+    imageText: 'DREI HAUPTSTÄDTE'
   }).passed, true);
+
+  assert.equal(inspectReelHook({
+    narration: 'Südafrika hat nicht nur eine Hauptstadt. Tatsächlich verteilt das Land seine wichtigsten Staatsaufgaben auf drei Städte.',
+    imageText: 'DREI HAUPTSTÄDTE'
+  }).passed, false);
+
   assert.equal(inspectReelHook({
     narration: 'In diesem Video schauen wir uns heute ein interessantes Thema aus der Geografie einmal genauer an.',
     imageText: 'DAS THEMA'
