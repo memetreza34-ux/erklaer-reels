@@ -1,0 +1,13 @@
+{
+  "version": 6,
+  "updatedAt": "2026-09-22",
+  "currentPhase": 2,
+  "phase1": {"status":"COMPLETE","research":true,"script":true,"imagePrompts":true,"mapping":true,"complexityPacing":true,"uploadMetadata":true},
+  "phase2": {"status":"PENDING","thumbnail":false,"images":false,"audioParts":false,"flowWaveSize":5},
+  "phase3": {"status":"BLOCKED-WAITING-FOR-PHASE2","measuredAlignment":false,"finalTimeline":false,"preRenderGate":false,"render":false,"postRenderGate":false},
+  "readyForPhase2": true,
+  "readyForPhase3": false,
+  "readyForRender": false,
+  "knownBadRender": false,
+  "notes": ["Golden-V2 candidate: first new short YouTube test after measured Phase-3 pipeline.","Reel system is unrelated and must not be modified."]
+}
