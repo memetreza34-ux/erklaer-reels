@@ -29,6 +29,8 @@ Erstellt:
 - Voice-over-Script
 - Bildprompts
 - exakte `startAnchor`/`endAnchor`-Zuordnung pro Bild
+- **A–E-Komplexitätsklasse pro Bild**
+- **geplante Bilddauer passend zur Komplexität**
 - Edit-/Motion-/SFX-Plan
 - Upload-Metadaten
 
@@ -37,6 +39,27 @@ Kanonische Zuordnung:
 ```text
 99-technik/BILD_AUDIO_ZUORDNUNG.json
 ```
+
+### Phase-1-Pacing ist inhaltsgetrieben
+
+Die Bildanzahl wird niemals vorab festgesetzt. Für jeden geplanten Bildmoment wird entschieden:
+
+```text
+A = sehr einfach → 4–5 s
+B = einfach      → 5–7 s
+C = mittel       → 7–9 s
+D = komplex      → 9–12 s
+E = sehr komplex→ 12–15 s
+```
+
+Danach werden die Sprachanker entsprechend dicht gesetzt. Wenn ein einfacher visueller Moment länger gesprochen würde, wird **sofort ein zusätzlicher Bildmoment** eingeplant. Wenn ein komplexer Moment mehr Lesezeit braucht, darf er entsprechend länger stehen. Keine künstliche Bildvermehrung und keine künstlich langen Holds.
+
+Jeder Mapping-Eintrag neuer V2-Projekte enthält deshalb:
+- `complexityLevel`
+- `complexityReason`
+- `plannedHoldSeconds`
+
+Die exakte finale Dauer bestimmt weiterhin Phase 3 aus dem echten Audio.
 
 ## Phase 2 — Nutzer + Google Flow
 
@@ -131,6 +154,7 @@ Regeln:
 
 Bei `productionRulesVersion >= 2`:
 - Bildzahl entsteht aus Inhalt
+- A–E-Komplexität steuert bereits in Phase 1 die Anchor-Dichte
 - Script-/Audio-Parts bleiben an Bildpakete gekoppelt
 - V2-Pacing-Gate wird im normalen Phase-3-Ablauf ausgeführt
 - kein Bildhold >=20,0 s
