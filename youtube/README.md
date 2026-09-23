@@ -26,7 +26,7 @@ youtube/<woche>/<thema>/
 └── 99-technik/                  ← interne Dateien
 ```
 
-**Keine sichtbaren 10er-Promptordner, Script-Parts oder Audio-Parts mehr bei neuen Videos.** Technische Zuordnung, Anker und Timing liegen ausschließlich unter `99-technik/` oder werden während Phase 3 berechnet.
+Keine sichtbaren 10er-Promptordner, Script-Parts oder Audio-Parts mehr bei neuen Videos.
 
 ## Drei Phasen
 
@@ -34,42 +34,38 @@ youtube/<woche>/<thema>/
 Phase 1 — ChatGPT
 → Thema, Recherche, Titel, EIN Google-Flow-Masterprompt,
   EIN vollständiges Voice-over-Skript, internes Bild↔Voice-over-Mapping,
-  Edit-Plan und Upload-Metadaten
+  A–E-Pacing, Renderplan, Kapitelplan und Upload-Metadaten
 
 Phase 2 — Nutzer + Google Flow
-→ Masterprompt einmal an Flow geben.
-→ Flow erzeugt intern in 5er-Wellen.
-→ EIN vollständiges Voice-over erzeugen.
+→ Masterprompt einmal an Flow geben
+→ Flow erzeugt intern in 5er-Wellen
+→ EIN vollständiges Voice-over erzeugen
 
 Phase 3 — Repo-CLI
-→ echte Whisper-Wortzeiten messen, Bildanker im Gesamtaudio finden,
-  FINAL_TIMELINE bauen, Gates prüfen, rendern und Post-QC ausführen
+→ echte Whisper-Wortzeiten messen
+→ überlange Endstille nur im internen Master kürzen
+→ Bildanker im Gesamtaudio finden
+→ FINAL_TIMELINE bauen
+→ A–E gegen echte Zeiten prüfen
+→ Motion + SFX rendern
+→ Export finalisieren
+→ Post-QC
 ```
 
 ## Google Flow — maximal 5 Bilder gleichzeitig
 
-Die 5er-Regel ist **Arbeitslogik, keine Ordnerlogik**.
+Die 5er-Regel ist Arbeitslogik, keine Ordnerlogik.
 
 ```text
 Bild 00 separat
-
-01–05 gleichzeitig
-→ auf alle fünf warten
-→ alle prüfen
-→ Fehler korrigieren
-→ als Bild 01.png bis Bild 05.png ablegen
-→ erst dann weiter
-
-06–10
-→ prüfen
-→ 11–15
-→ usw.
+01–05 gleichzeitig → warten → prüfen → korrigieren → ablegen
+06–10 erst danach
+11–15 ...
 ```
 
 Verbindlich:
 - maximal **5 aktive Bildgenerierungen gleichzeitig**
-- niemals das komplette Set gleichzeitig starten
-- nächste Welle erst nach vollständiger Prüfung der vorherigen
+- niemals zwei 5er-Wellen gleichzeitig offen halten
 - letzter Block darf 1–5 Bilder enthalten
 - Bild 00 ist nur Thumbnail und nie Teil der Videotimeline
 - alle Bilder liegen flach unter `00-bildprompts/images/`
@@ -78,7 +74,7 @@ Verbindlich:
 
 Neue V2-Videos planen jedes Bild individuell:
 
-- A: sehr einfach → 4–5 s
+- A: sehr einfach → 4–5 s geplant
 - B: einfach → 5–7 s
 - C: mittel → 7–9 s
 - D: komplex → 9–12 s
@@ -86,39 +82,33 @@ Neue V2-Videos planen jedes Bild individuell:
 
 Die Bildanzahl entsteht aus dem Skript. Es gibt keine feste Sollzahl.
 
-## Audio-Synchronisation
+Phase 3 prüft zusätzlich die **echte** gemessene Bilddauer. Ein simples Bild darf nicht nur deshalb lange stehen, weil der zugehörige Sprachblock zu lang geplant wurde; dann muss ein weiterer sinnvoller Bildmoment entstehen.
 
-Die **eine finale Voice-over-Datei** ist die Timing-Masterquelle. Geschätzte Zeiten oder `Videolänge ÷ Bildanzahl` sind verboten.
+## Audio-Synchronisation + Endstille
 
-Normalstart:
+Die eine finale Voice-over-Datei ist die Timing-Masterquelle. Geschätzte Zeiten oder `Videolänge ÷ Bildanzahl` sind verboten.
+
+Das Nutzeroriginal unter `02-audio/` wird nicht verändert. Phase 3 misst mit Whisper das letzte gesprochene Wort. Überlange abschließende Stille wird nur im internen `99-technik/YOUTUBE_AUDIO_MASTER.wav` gekürzt.
+
+## Motion + SFX
+
+- Motion wird standardmäßig aus der A–E-Komplexität abgeleitet
+- A/B: ruhig und leicht
+- C: normaler narrativer Pan/Push
+- D: langsamere Scan-/Pull-Bewegung für komplexe Szenen
+- E: besonders ruhige Übersicht
+- gezielte SFX stehen in `99-technik/YOUTUBE_RENDER_PLAN.json`
+- Soundtypen müssen aus `config/sound-library.json` stammen
+- keine Hintergrundmusik standardmäßig
+- Stimme bleibt dominant
+
+## Normalstart Phase 3
 
 ```bash
 npm run phase3:youtube -- --dir "youtube/<woche>/<thema>"
 ```
 
-Phase 3:
-1. findet die finale Audiodatei unter `02-audio/`
-2. misst echte Whisper-Wortzeitstempel
-3. findet jeden `startAnchor` monoton im vollständigen Audio
-4. schreibt echte `actualStartSeconds`, `actualEndSeconds`, `alignmentConfidence`
-5. bindet die Messung per SHA-256 an genau diese Audiodatei
-6. erzeugt `99-technik/YOUTUBE_AUDIO_MASTER.wav`
-7. erzeugt `99-technik/FINAL_TIMELINE.json`
-8. prüft Adaptive Pacing und Hard-Gates
-9. rendert `03-export/FERTIGES-VIDEO.mp4`
-10. führt Post-Render-QC aus
-
-Legacy-Projekte mit mehreren Audio-Parts bleiben technisch kompatibel, aber neue Projekte verwenden standardmäßig eine Audiodatei.
-
-## YouTube-Standard
-
-- 16:9, 1920×1080, 30 fps
-- Länge je nach Auftrag; kurze Testvideos sind erlaubt
-- Bildanzahl nach Inhalt, nicht nach starrer Zielzahl
-- `youtube-editorial-stick-explainer`
-- subtile Motion
-- keine eingebrannten Untertitel standardmäßig
-- Hintergrundmusik standardmäßig aus
+Der Lauf erledigt Alignment, Timeline, Pacing-Gate, Hard-Gate, Render, Export-Finalisierung und Post-Render-QC.
 
 ## Finaler Export
 
@@ -131,3 +121,5 @@ Legacy-Projekte mit mehreren Audio-Parts bleiben technisch kompatibel, aber neue
 ├── YOUTUBE-KAPITEL.txt
 └── YOUTUBE-TAGS.txt
 ```
+
+Kapitel können über `99-technik/YOUTUBE_CHAPTERS.json` an Bildnummern gebunden werden. Der Finalizer nimmt dann die echten Startzeiten aus `FINAL_TIMELINE.json` statt geschätzter Phase-1-Zeitstempel.
