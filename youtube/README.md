@@ -31,7 +31,7 @@ Keine sichtbaren 10er-Promptordner, Script-Parts oder Audio-Parts bei neuen Vide
 ```text
 Phase 1 — ChatGPT
 → Thema, Recherche, Titel, EIN Google-Flow-Masterprompt,
-  EIN vollständiges Voice-over-Skript, internes Bild↔Voice-over-Mapping,
+  EIN Gesamtskript als vollständiges Voice-over-Skript, internes Bild↔Voice-over-Mapping,
   A–E-Pacing, Renderplan, Kapitelplan und Upload-Metadaten
 
 Phase 2 — Nutzer + Google Flow
