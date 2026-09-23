@@ -1,27 +1,62 @@
 GOOGLE FLOW MASTER PROMPT — [VIDEO-TITEL]
 
 ZIEL
-Erzeuge Bild 00 als Thumbnail und danach alle geplanten Videobilder für ein YouTube-Langvideo.
+Erzeuge Bild 00 als Thumbnail und danach alle geplanten Videobilder für ein deutsches YouTube-Langvideo.
 
 WICHTIG
 - Es gibt nur dieses eine Prompt-Dokument.
 - Bild 00 wird separat erzeugt.
-- Danach arbeitest du in kontrollierten 5er-Wellen.
-- Niemals mehr als fünf aktive Bildgenerierungen gleichzeitig.
+- Bild 01 wird danach separat als verbindlicher MASTER-STYLE-FRAME erzeugt und geprüft.
+- Ab Bild 02 wird Bild 01 bei jeder weiteren Generierung als visuelle Referenz angehängt.
+- Danach arbeitest du in kontrollierten 5er-Wellen mit maximal fünf aktiven Bildgenerierungen gleichzeitig.
 - Niemals die nächste Welle starten, bevor die aktuelle vollständig fertig, geprüft, korrigiert, benannt und abgelegt ist.
+
+MASTER-REFERENCE-REGEL
+The scene prompt determines WHAT is shown. The attached Bild 01 master reference determines HOW everything looks.
+Ab Bild 02 niemals Anatomie, Linienart, Farbintensität, Schattierung, Materialwirkung oder Gesamtästhetik neu interpretieren.
 
 ABLAUF
 1. Bild 00 separat erzeugen, prüfen und als `Bild 00.png` unter `00-bildprompts/images/` speichern.
-2. Bild 01–05 gleichzeitig erzeugen.
-3. Auf alle fünf warten. Inhalt, Stil, Nummerierung und Format prüfen. Fehler innerhalb derselben Welle korrigieren.
-4. Erst wenn 01–05 korrekt vorliegen, Bild 06–10 starten.
-5. Danach 11–15, 16–20 usw. bis zum letzten geplanten Bild.
-6. Der letzte Block darf 1–5 Bilder enthalten.
-7. Alle Dateien flach unter `00-bildprompts/images/` als `Bild NN.png` ablegen.
-8. Bild 00 ist ausschließlich Thumbnail und darf nie in die Videotimeline.
+2. Bild 01 separat erzeugen und auf den festen Style-Lock prüfen. Bei Abweichung regenerieren.
+3. Bild 01 als Master-Style-Referenz für das gesamte Video festlegen.
+4. Bild 02–05 gleichzeitig erzeugen, jeweils mit Bild 01 als Referenz.
+5. Auf alle warten. Inhalt, Stil, deutsche Textsprache, Nummerierung und Format prüfen. Fehler innerhalb derselben Welle korrigieren.
+6. Erst wenn Bild 01–05 korrekt vorliegen, Bild 06–10 starten.
+7. Danach 11–15, 16–20 usw. bis zum letzten geplanten Bild.
+8. Der letzte Block darf 1–5 Bilder enthalten.
+9. Alle Dateien flach unter `00-bildprompts/images/` als `Bild NN.png` ablegen.
+10. Bild 00 ist ausschließlich Thumbnail und darf nie in die Videotimeline.
 
-FESTE BILDWELT
-16:9, hand-drawn 2D editorial explainer style, simple stick-figure-like humans with round or slightly oval heads, minimal facial features, clean black outlines, warm slightly muted colors, subtle paper texture, calm professional educational storytelling, simple historical/natural/reduced environments, one clear visual purpose, no photorealism, no 3D, no Pixar, no clay, no countryballs, no watermark. Visible text only when explicitly requested and in the project language.
+FESTE BILDWELT — HARD LOCK
+Universal Editorial Stickman World v1.2, 16:9 horizontal, premium clean digital 2D editorial illustration, every visible human including background people is a minimalist stickman with a round or slightly oval head, tiny black eyes, minimal mouth, thin simplified limbs and strongly simplified body, richer believable environments with natural lighting and subtle 2D shading, moderate-to-vivid scene-appropriate colors, crisp modern composition, one clear visual purpose, no beige/sepia wash, no parchment texture, no historical-manuscript look, no old textbook-map aesthetic, no normal cartoon humans, no semi-realistic people, no photorealism, no 3D, no Pixar, no clay, no countryballs, no watermark.
+
+FIGUREN-HARD-LOCK
+- Jeder sichtbare Mensch ist Stickman, auch kleine Hintergrundfiguren.
+- Keine normalen Cartoon-Menschen.
+- Keine semi-realistischen Gesichter oder Körper.
+- Historische Kleidung nur stark vereinfacht über der Stickman-Anatomie.
+- Gemischte Figurenstile = STYLE FAIL → regenerieren.
+
+FARB-/UMGEBUNGS-LOCK
+- Moderate bis kräftige, szenengerechte Farben.
+- Reichere glaubwürdige Umgebungen sind erwünscht.
+- Natürliche Lichtwirkung und subtile 2D-Schattierung.
+- Keine ausgewaschene beige/braune Einheitswelt.
+- Keine Papier-/Pergamenttextur über dem Bild.
+
+DEUTSCH-HARD-LOCK FÜR SICHTBAREN TEXT
+Dieses Projekt ist Deutsch. Deshalb gilt ohne Ausnahme:
+- JEDER lesbare Text im erzeugten Bild muss Deutsch sein.
+- Das gilt auch für Kartenlabels, Schilder, Legenden, Diagramme, Callouts, Kalender, UI-Elemente und Hintergrundtext.
+- Keine englischen automatisch erzeugten Kartenlabels.
+- Kein Pseudo-Text und keine Fantasieschrift.
+- Wenn Text nicht ausdrücklich nötig ist, lieber gar keinen Text erzeugen.
+- Englischer sichtbarer Text = HARD FAIL → Bild regenerieren.
+
+Beispiele:
+`ATLANTIC OCEAN` = verboten → `ATLANTISCHER OZEAN`
+`MEDITERRANEAN SEA` = verboten → `MITTELMEER`
+`WEST / EAST` = verboten → `WEST / OST`
 
 A–E-PACING
 A = sehr einfach, geplant 4–5 s
@@ -38,11 +73,17 @@ BILD 00 — THUMBNAIL
 [THUMBNAIL-PROMPT]
 
 ==================================================
-WELLE 1 — BILD 01–05
+MASTER-FRAME — BILD 01
 ==================================================
 
 Bild 01 · [A–E] · [PLANZEIT]
 [PROMPT]
+
+STOP: Bild 01 auf exakte Bildwelt prüfen. Erst nach bestandenem Style-Check als Referenz für alle weiteren Bilder verwenden.
+
+==================================================
+ERSTE WELLE ERGÄNZEN — BILD 02–05
+==================================================
 
 Bild 02 · [A–E] · [PLANZEIT]
 [PROMPT]
@@ -62,8 +103,14 @@ STOP: 01–05 vollständig prüfen und korrigieren. Erst danach die nächste 5er
 
 FINALER CHECK
 - Bild 00 vorhanden und nur Thumbnail
+- Bild 01 ist Master-Style-Frame
+- jedes Bild ab 02 wurde mit Bild 01 als visueller Referenz erzeugt
 - Videobilder lückenlos nummeriert
 - keine Duplikate
 - jede Datei `Bild NN.png`
 - alle Bilder unter `00-bildprompts/images/`
 - nie mehr als fünf aktive Generierungen gleichzeitig
+- jeder sichtbare Mensch = Stickman
+- kein beige/sepia Historien-Cartoon-Look
+- jeder sichtbare Text im deutschen Projekt = Deutsch
+- kein englischer Text, kein Pseudo-Text
