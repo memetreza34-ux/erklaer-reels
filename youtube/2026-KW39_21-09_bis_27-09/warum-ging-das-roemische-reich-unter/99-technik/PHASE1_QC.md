@@ -14,10 +14,11 @@
 - Sichtbare Script-Parts: PASS — nicht vorhanden
 - Voice-over-Modus: PASS — eine finale Audiodatei vorgesehen
 - Bild 00 aus Timeline ausgeschlossen: PASS
-- internes Bild↔Audio-Mapping: PASS — bereits `batchFolder: images`, keine alten Part-Pfade
+- internes Bild↔Audio-Mapping: PASS — bereits `batchFolder: images`, keine alten 10er-Part-Pfade
 - maschinenlesbarer Renderplan: PASS — A–E-Motion + selektive SFX
 - Kapitelplan: PASS — an Bildnummern gebunden, finale Zeiten kommen später aus `FINAL_TIMELINE.json`
 - Endstille-Policy: PASS — Nutzeroriginal bleibt unverändert, internes Master wird bei Bedarf gekürzt
+- Projektmetadaten: PASS — `video.json` Schema 5 und `status.json` Schema 6 entsprechen dem aktuellen YouTube-Template
 - Upload-Metadaten: PASS
 
-**Ergebnis: Phase 1 COMPLETE. Phase 2 kann mit einem Masterprompt und einem Gesamtskript beginnen.**
+**Ergebnis: Phase 1 COMPLETE. Das konkrete Rom-Video ist auf dem aktuellen Golden-V2-Stand und Phase 2 kann beginnen.**
