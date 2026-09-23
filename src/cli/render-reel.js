@@ -4,6 +4,7 @@ import path from 'node:path';
 
 import { verifyAudioPacingFileBinding } from '../core/audio-pacing-file-guard.js';
 import { verifyFutureEffectsCoverage } from '../core/effects-quality-file-guard.js';
+import { verifyRenderedImageText } from '../core/image-text-guard.js';
 import { renderReel } from '../core/remotion-renderer.js';
 import { validateRendererInput } from '../core/render-validator.js';
 import { syncReelSounds } from '../core/sound-library.js';
@@ -32,7 +33,7 @@ Optionen:
   --codec        Remotion-Codec, Standard: h264
   --crf          Qualitätswert, Standard: 18
   --concurrency  Anzahl paralleler Renderprozesse
-  --force        Renderer trotz fehlender finaler Freigabe starten; Quellen-, Motion/SFX-, Audio-Datei- und Endstille-Hard-Gates bleiben trotzdem aktiv
+  --force        Renderer trotz fehlender finaler Freigabe starten; Quellen-, Motion/SFX-, Audio-, Endstille- und echter Bildtext-Hard-Gate bleiben aktiv
   --validate-only Nur Render-Plan und Assets prüfen
 `);
 }
@@ -74,8 +75,6 @@ async function main() {
     throw new Error(`${effectsGate.reason} Rendern mit statischen Bildmomenten oder stummen/ungültigen Wechsel-SFX ist auch mit --force blockiert. ${details}`);
   }
 
-  // Vor jeder Validierung und jedem Render werden Soundtypen erneut strikt gegen
-  // die Library aufgelöst und die echten Dateien in den Reel-Ordner kopiert.
   await syncReelSounds(reelDirectory, { strict: true });
 
   const pacingBinding = await verifyAudioPacingFileBinding(reelDirectory);
@@ -88,6 +87,12 @@ async function main() {
     throw new Error(`${trailingSilence.reason} Rendern mit langem stillem Audio-Ende ist auch mit --force blockiert.`);
   }
 
+  const imageTextGate = await verifyRenderedImageText(reelDirectory);
+  if (imageTextGate.required && !imageTextGate.passed) {
+    const details = imageTextGate.findings.map((finding) => `${finding.sceneId ?? finding.imageFile ?? 'Bild'}: ${finding.issue}${finding.planned !== undefined ? ` — geplant "${finding.planned}", erkannt "${finding.seen ?? ''}"` : ''}`).join('; ');
+    throw new Error(`${imageTextGate.reason} Tatsächlich gelieferter Bildtext ist ein Hard-Gate und kann auch mit --force nicht umgangen werden. ${details}`);
+  }
+
   if (validateOnly) {
     const report = await validateRendererInput(reelDirectory, {
       requireFinalReadiness: !force
@@ -97,6 +102,7 @@ async function main() {
     if (effectsGate.required) console.log('Motion/SFX-Hard-Gate: bestanden');
     if (pacingBinding.required) console.log('Audio-Pacing-Datei: Fingerprint unverändert');
     if (trailingSilence.required) console.log(`Voice-over-Endstille: ${trailingSilence.trailingSilenceSeconds.toFixed(2)} s`);
+    if (imageTextGate.required) console.log(`Echter Bildtext: ${imageTextGate.checkedImages} Bilddateien per OCR geprüft`);
     console.log('Untertitel: deaktiviert');
     if (!report.passed) process.exitCode = 1;
     return;
@@ -123,6 +129,7 @@ async function main() {
   if (effectsGate.required) console.log('Motion/SFX-Hard-Gate: bestanden');
   if (pacingBinding.required) console.log('Audio-Pacing-Datei: Fingerprint unverändert');
   if (trailingSilence.required) console.log(`Voice-over-Endstille: ${trailingSilence.trailingSilenceSeconds.toFixed(2)} s`);
+  if (imageTextGate.required) console.log(`Echter Bildtext: ${imageTextGate.checkedImages} Bilddateien per OCR geprüft`);
   console.log(`Export-Video: ${path.resolve(report.exportVideoFile ?? report.outputFile)}`);
   console.log(`Universal-Caption: ${path.resolve(report.exportCaptionFile)}`);
   console.log('Sichtbarer Upload-Bereich: 03-export/');
