@@ -7,9 +7,11 @@ import { verifyFutureEffectsCoverage } from '../core/effects-quality-file-guard.
 import { verifyRenderedImageText } from '../core/image-text-guard.js';
 import { renderReel } from '../core/remotion-renderer.js';
 import { validateRendererInput } from '../core/render-validator.js';
+import { verifySemanticVisualReview } from '../core/semantic-visual-review-guard.js';
 import { syncReelSounds } from '../core/sound-library.js';
 import { verifyRequiredSourceQuality } from '../core/source-quality-file-guard.js';
 import { verifyTrailingVoiceoverSilence } from '../core/trailing-silence-guard.js';
+import { runVisualQualityCheck } from '../core/visual-qc.js';
 
 function getArgument(name) {
   const index = process.argv.indexOf(name);
@@ -33,7 +35,7 @@ Optionen:
   --codec        Remotion-Codec, Standard: h264
   --crf          Qualitätswert, Standard: 18
   --concurrency  Anzahl paralleler Renderprozesse
-  --force        Renderer trotz fehlender finaler Freigabe starten; Quellen-, Motion/SFX-, Audio-, Endstille- und echter Bildtext-Hard-Gate bleiben aktiv
+  --force        Renderer trotz fehlender finaler Freigabe starten; Quellen-, Motion/SFX-, Audio-, Endstille-, Bildtext- und semantische Bild-Hard-Gates bleiben aktiv
   --validate-only Nur Render-Plan und Assets prüfen
 `);
 }
@@ -87,6 +89,18 @@ async function main() {
     throw new Error(`${trailingSilence.reason} Rendern mit langem stillem Audio-Ende ist auch mit --force blockiert.`);
   }
 
+  // Direkt vor jedem Render die aktuellen Dateien/Planwerte erneut fingerprinten.
+  // Ein Bildtausch oder eine Planänderung verwirft dadurch automatisch die alte Sichtfreigabe.
+  const currentVisuals = await runVisualQualityCheck(reelDirectory, { strict: true });
+  if (!currentVisuals.passed) {
+    throw new Error('Aktuelle technische Bild-QC ist fehlgeschlagen. Rendern ist auch mit --force blockiert.');
+  }
+  const semanticGate = await verifySemanticVisualReview(reelDirectory);
+  if (semanticGate.required && !semanticGate.passed) {
+    const details = semanticGate.findings.slice(0, 12).map((finding) => `${finding.assetId ?? 'Bild'}: ${finding.issue}${finding.check ? ` (${finding.check})` : ''}`).join('; ');
+    throw new Error(`${semanticGate.reason} Semantische Sichtprüfung ist fingerprint-gebunden und kann auch mit --force nicht umgangen werden. ${details}`);
+  }
+
   const imageTextGate = await verifyRenderedImageText(reelDirectory);
   if (imageTextGate.required && !imageTextGate.passed) {
     const details = imageTextGate.findings.map((finding) => `${finding.sceneId ?? finding.imageFile ?? 'Bild'}: ${finding.issue}${finding.planned !== undefined ? ` — geplant "${finding.planned}", erkannt "${finding.seen ?? ''}"` : ''}`).join('; ');
@@ -102,6 +116,7 @@ async function main() {
     if (effectsGate.required) console.log('Motion/SFX-Hard-Gate: bestanden');
     if (pacingBinding.required) console.log('Audio-Pacing-Datei: Fingerprint unverändert');
     if (trailingSilence.required) console.log(`Voice-over-Endstille: ${trailingSilence.trailingSilenceSeconds.toFixed(2)} s`);
+    if (semanticGate.required) console.log(`Semantische Sichtprüfung: ${semanticGate.checkedAssets} aktuelle Bilder bestätigt`);
     if (imageTextGate.required) console.log(`Echter Bildtext: ${imageTextGate.checkedImages} Bilddateien per OCR geprüft`);
     console.log('Untertitel: deaktiviert');
     if (!report.passed) process.exitCode = 1;
@@ -129,6 +144,7 @@ async function main() {
   if (effectsGate.required) console.log('Motion/SFX-Hard-Gate: bestanden');
   if (pacingBinding.required) console.log('Audio-Pacing-Datei: Fingerprint unverändert');
   if (trailingSilence.required) console.log(`Voice-over-Endstille: ${trailingSilence.trailingSilenceSeconds.toFixed(2)} s`);
+  if (semanticGate.required) console.log(`Semantische Sichtprüfung: ${semanticGate.checkedAssets} aktuelle Bilder bestätigt`);
   if (imageTextGate.required) console.log(`Echter Bildtext: ${imageTextGate.checkedImages} Bilddateien per OCR geprüft`);
   console.log(`Export-Video: ${path.resolve(report.exportVideoFile ?? report.outputFile)}`);
   console.log(`Universal-Caption: ${path.resolve(report.exportCaptionFile)}`);
