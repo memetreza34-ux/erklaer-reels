@@ -15,6 +15,11 @@ function exists(filePath) {
   return access(filePath).then(() => true).catch(() => false);
 }
 
+async function hasText(filePath) {
+  if (!(await exists(filePath))) return false;
+  return Boolean((await readFile(filePath, 'utf8')).trim());
+}
+
 async function readJson(filePath) {
   return JSON.parse(await readFile(filePath, 'utf8'));
 }
@@ -226,7 +231,8 @@ async function main() {
   }
 
   if (process.argv.includes('--post-render')) {
-    const rendered = path.join(projectDir, '03-export', 'FERTIGES-VIDEO.mp4');
+    const exportDir = path.join(projectDir, '03-export');
+    const rendered = path.join(exportDir, 'FERTIGES-VIDEO.mp4');
     if (!(await exists(rendered))) errors.push('Post-Render-QC: 03-export/FERTIGES-VIDEO.mp4 fehlt.');
     else if (audioDuration !== null) {
       try {
@@ -238,6 +244,18 @@ async function main() {
       } catch (error) {
         errors.push(error.message);
       }
+    }
+
+    const thumbnail = path.join(exportDir, 'THUMBNAIL.png');
+    if (!(await exists(thumbnail))) errors.push('Post-Render-QC: THUMBNAIL.png fehlt.');
+    const requiredTextFiles = [
+      ['YOUTUBE-TITEL.txt', 'Titel'],
+      ['YOUTUBE-BESCHREIBUNG.txt', 'Beschreibung'],
+      ['YOUTUBE-KAPITEL.txt', 'Kapitel'],
+      ['YOUTUBE-TAGS.txt', 'Tags']
+    ];
+    for (const [fileName, label] of requiredTextFiles) {
+      if (!(await hasText(path.join(exportDir, fileName)))) errors.push(`Post-Render-QC: ${label}-Datei ${fileName} fehlt oder ist leer.`);
     }
   }
 
@@ -252,6 +270,7 @@ async function main() {
   console.log(`Bilder: ${images.length}${plannedImageCount !== null ? ` / geplant ${plannedImageCount}` : ''}`);
   if (audioDuration !== null) console.log(`Voice-over-Dauer: ${audioDuration.toFixed(3)} s`);
   console.log('Audio-Anker wurden gegen echte Whisper-Wortzeiten und Audio-Fingerprints verifiziert.');
+  if (process.argv.includes('--post-render')) console.log('Finaler YouTube-Uploadsatz ist vollständig: Video, Thumbnail und Metadaten.');
 }
 
 main().catch((error) => {
