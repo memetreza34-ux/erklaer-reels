@@ -92,7 +92,7 @@ Bild 00 separat
 ```
 
 Harte Regeln:
-- höchstens fünf aktive Bildgenerierungen gleichzeitig
+- höchstens 5 aktive Bildgenerierungen gleichzeitig
 - niemals zwei Wellen gleichzeitig offen halten
 - letzter Block darf 1–5 Bilder enthalten
 - Bild 00 bleibt Thumbnail und kommt nie in die Timeline
