@@ -34,7 +34,7 @@ test('Auto-Alignment erzeugt monotone Audio-Cues ohne Einzelbestätigung', () =>
   assert.equal(result.audioSync.phaseCueTimings.length, 1);
 });
 
-test('Phase 3 ist auf einen nicht-interaktiven Simple-Mode reduziert', async () => {
+test('Phase 3 bleibt nicht-interaktiv, verlangt aber einen echten einzelnen Sichtdurchgang', async () => {
   const visualRules = await readJson('config/visual-quality-rules.json');
   const qualityGates = await readJson('config/production-quality-gates.json');
   const phase3 = await readText('src/cli/phase3-reel.js');
@@ -43,8 +43,10 @@ test('Phase 3 ist auf einen nicht-interaktiven Simple-Mode reduziert', async () 
   assert.equal(visualRules.manualEvidence.requireVisibleSummary, false);
   assert.equal(visualRules.manualEvidence.requireMatchReason, false);
   assert.equal(visualRules.manualEvidence.requireSecondPassConfirmationForScenes, false);
-  assert.equal(visualRules.strictMode.requireManualReviewPassed, false);
-  assert.equal(visualRules.strictMode.requireSemanticSceneVerification, false);
+  assert.equal(visualRules.strictMode.requireManualReviewPassed, true);
+  assert.equal(visualRules.strictMode.requireSemanticSceneVerification, true);
+  assert.equal(visualRules.semanticReview.singleVisualPass, true);
+  assert.equal(visualRules.semanticReview.fingerprintBound, true);
   assert.equal(qualityGates.assetMatching.requireSecondPassConfirmation, false);
   assert.equal(qualityGates.assetMatching.requireMatchReason, false);
   assert.equal(qualityGates.assetMatching.askUserOnlyOnHardBlocker, true);
