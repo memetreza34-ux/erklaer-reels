@@ -1,6 +1,6 @@
 {
-  "version": 7,
-  "updatedAt": "2026-09-22",
+  "version": 8,
+  "updatedAt": "2026-09-23",
   "currentPhase": 2,
   "phase1": {
     "status": "COMPLETE",
@@ -9,7 +9,10 @@
     "singleGoogleFlowPrompt": true,
     "imagePrompts": true,
     "mapping": true,
+    "mappingLegacyPartsRemoved": true,
     "complexityPacing": true,
+    "renderPlan": true,
+    "timelineBoundChapterPlan": true,
     "uploadMetadata": true
   },
   "phase2": {
@@ -23,9 +26,14 @@
   "phase3": {
     "status": "BLOCKED-WAITING-FOR-PHASE2",
     "measuredAlignment": false,
+    "audioEndSilenceQC": false,
     "finalTimeline": false,
+    "complexityFinalTimingQC": false,
     "preRenderGate": false,
+    "motion": "complexity-v1-ready",
+    "soundDesign": "machine-plan-ready",
     "render": false,
+    "exportFinalization": false,
     "postRenderGate": false
   },
   "readyForPhase2": true,
@@ -33,8 +41,11 @@
   "readyForRender": false,
   "knownBadRender": false,
   "notes": [
-    "Golden-V2 candidate: simple user-facing structure with one prompt, one script and one final voice-over.",
+    "Golden-V2 candidate with one prompt, one script and one final voice-over.",
     "Five-image waves are execution logic only, not visible file packages.",
+    "A-E pacing will be checked again against real measured audio timings.",
+    "Trailing silence is trimmed only in the internal master; user audio stays unchanged.",
+    "Motion and selected SFX are machine-readable and rendered in Phase 3.",
     "Reel system is unrelated and must not be modified."
   ]
 }
