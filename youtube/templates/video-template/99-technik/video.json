@@ -1,6 +1,7 @@
 {
-  "schemaVersion": 4,
+  "schemaVersion": 5,
   "productionRulesVersion": 2,
+  "complexityPacingVersion": 1,
   "videoId": "YYYY-KWNN_topic-slug",
   "weekFolder": "YYYY-KWNN_DD-MM_bis_DD-MM",
   "topicSlug": "topic-slug",
@@ -11,40 +12,58 @@
   "format": "youtube-longform",
   "visualStyleId": "youtube-editorial-stick-explainer",
   "visualStyleReason": "Feste YouTube-Bildwelt: hand-drawn editorial stick-figure explainer style für erzählerische Langvideos.",
-  "targetDurationMinutes": {
-    "min": 10,
-    "max": 12,
-    "mode": "approximate"
+  "targetDurationSeconds": null,
+  "targetDurationRangeSeconds": null,
+  "plannedImageCount": null,
+  "imageCountMethod": "content-and-complexity-derived",
+  "complexityTargetsSeconds": {
+    "A": [4, 5],
+    "B": [5, 7],
+    "C": [7, 9],
+    "D": [9, 12],
+    "E": [12, 15]
   },
-  "plannedImageCount": {
-    "mode": "adaptive",
-    "guidanceMin": 50,
-    "guidanceMax": 90,
-    "guidanceOnly": true,
-    "fixedTargetForbidden": true
+  "complexityFinalHardMaxSeconds": {
+    "A": 6.5,
+    "B": 8.5,
+    "C": 10.5,
+    "D": 13.5,
+    "E": 16
+  },
+  "complexityFinalShortReviewSeconds": {
+    "A": 3,
+    "B": 4,
+    "C": 5,
+    "D": 6.5,
+    "E": 8
   },
   "adaptivePacing": {
-    "typicalHoldSeconds": [5, 12],
-    "calmHoldSecondsMax": 14,
+    "hardMaximumExclusiveSeconds": 20,
     "reviewFromSeconds": 14,
     "strongSplitReviewFromSeconds": 16,
-    "hardMaximumExclusiveSeconds": 20,
     "reviewIfShorterThanSeconds": 4,
-    "normallyForbiddenShorterThanSeconds": 2,
     "oneImageOneVisualPurpose": true,
     "imageCountMustFollowContentDensity": true,
     "uniformHoldDistributionForbidden": true
   },
-  "scriptAudioParts": {
-    "enabled": true,
-    "imagesPerPart": 10,
-    "scriptMasterFile": "01-voice-script/voice-script.txt",
-    "scriptPartPattern": "01-voice-script/NN_part-bilder-XX-bis-YY.txt",
-    "audioPartPattern": "02-audio/NN_part-bilder-XX-bis-YY.<audio>",
-    "noTextGaps": true,
-    "noTextOverlaps": true,
-    "partBoundaryMustBeNatural": true,
-    "maxUnplannedGapBetweenAudioPartsSeconds": 0.25
+  "userFacingStructure": {
+    "googleFlowPrompt": "00-bildprompts/google-flow-prompt.txt",
+    "imageDirectory": "00-bildprompts/images",
+    "script": "01-voice-script/voice-script.txt",
+    "finalAudioPattern": "02-audio/voiceover-final.*",
+    "flowWaveSize": 5
+  },
+  "audioEndPolicy": {
+    "maxTrailingSilenceSeconds": 0.35,
+    "preserveAfterLastWordSeconds": 0.2,
+    "trimMasterAutomatically": true,
+    "neverModifyUserOriginal": true
+  },
+  "renderPolicy": {
+    "motionPolicy": "complexity-v1",
+    "soundPlanFile": "99-technik/YOUTUBE_RENDER_PLAN.json",
+    "backgroundMusic": false,
+    "endHoldSeconds": 0.6
   },
   "titleRequired": true,
   "thumbnailRequired": true,
