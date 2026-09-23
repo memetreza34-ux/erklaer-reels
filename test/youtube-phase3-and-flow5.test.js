@@ -63,7 +63,7 @@ test('YouTube-Dokumentation erzwingt 5er-Wellen statt Massen-Parallelgenerierung
     readFile('youtube/ADAPTIVE_PACING_V2.md', 'utf8')
   ]);
   for (const text of [readme, workflow, pacing]) {
-    assert.match(text, /5 Bilder gleichzeitig|5er-Wellen|5er-Steuerung|höchstens 5 aktive|mehr als fünf aktive/i);
+    assert.match(text, /5 Bilder gleichzeitig|5er-Wellen|5er-Steuerung|höchstens 5 aktive|mehr als fünf aktive|maximal \*\*5 aktive/i);
   }
   assert.doesNotMatch(readme, /immer nur \*\*eine aktive Bildgenerierung\*\*/i);
 });
@@ -80,7 +80,8 @@ test('Neue YouTube-Struktur zeigt nur einen Masterprompt und ein Gesamtskript', 
   assert.deepEqual(scriptEntries, ['voice-script.txt']);
 
   const masterPrompt = await readFile(`${ROM_PROJECT}/00-bildprompts/google-flow-prompt.txt`, 'utf8');
-  assert.match(masterPrompt, /Bild 01–05 gleichzeitig/i);
+  assert.match(masterPrompt, /Bild 01.*separat/i);
+  assert.match(masterPrompt, /Bild 02–05 gleichzeitig/i);
   assert.match(masterPrompt, /BILD 36–38/i);
   assert.match(masterPrompt, /00-bildprompts\/images/);
 });

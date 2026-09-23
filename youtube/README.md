@@ -37,8 +37,10 @@ Phase 1 — ChatGPT
   A–E-Pacing, Renderplan, Kapitelplan und Upload-Metadaten
 
 Phase 2 — Nutzer + Google Flow
-→ Masterprompt einmal an Flow geben
-→ Flow erzeugt intern in 5er-Wellen
+→ Bild 00 separat
+→ Bild 01 separat als Master-Style-Frame
+→ ab Bild 02 Bild 01 immer als Referenz anhängen
+→ danach kontrollierte 5er-Wellen
 → EIN vollständiges Voice-over erzeugen
 
 Phase 3 — Repo-CLI
@@ -52,13 +54,44 @@ Phase 3 — Repo-CLI
 → Post-QC
 ```
 
+## Feste YouTube-Bildwelt
+
+Aktiver Style-Lock: `universal-editorial-stickman-v1.2`
+
+- hochwertige digitale 2D-Editorial-Illustration
+- **jeder sichtbare Mensch ist Stickman**, auch Hintergrundfiguren
+- runde/ovale Köpfe, kleine schwarze Augen, minimaler Mund, dünne vereinfachte Gliedmaßen
+- reichere glaubwürdige Umgebungen mit natürlicher Lichtwirkung und subtiler 2D-Schattierung
+- moderate bis kräftige szenengerechte Farben
+- kein ausgewaschener Beige-/Sepia-/Pergament-Look
+- keine normalen oder semi-realistischen Cartoon-Menschen
+- kein 3D, kein Fotorealismus, keine Countryballs
+
+Bild 01 wird als Master-Style-Frame verwendet. Die Szene bestimmt, **was** gezeigt wird; Bild 01 bestimmt, **wie** das gesamte Video aussieht.
+
+## Sichtbarer Text in deutschen Videos
+
+**Jeder sichtbare lesbare Text muss Deutsch sein.**
+
+Das gilt auch für:
+- Kartenlabels
+- Schilder
+- Legenden
+- Diagramme
+- Callouts
+- Kalender
+- Hintergrundtext
+
+Englischer Text oder Pseudo-Schrift = Hard Fail und Regeneration. Wenn Text nicht nötig ist, lieber keinen Text erzeugen.
+
 ## Google Flow — maximal 5 Bilder gleichzeitig
 
 Die 5er-Regel ist Arbeitslogik, keine Ordnerlogik.
 
 ```text
 Bild 00 separat
-01–05 gleichzeitig → warten → prüfen → korrigieren → ablegen
+Bild 01 separat → Style prüfen → Master-Referenz
+02–05 mit Bild 01 als Referenz → prüfen
 06–10 erst danach
 11–15 ...
 ```
