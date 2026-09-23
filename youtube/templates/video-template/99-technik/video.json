@@ -10,14 +10,23 @@
   "status": "planned",
   "language": "de",
   "format": "youtube-longform",
-  "visualStyleId": "universal-editorial-stickman-v1.2",
-  "visualStyleReason": "Feste YouTube-Bildwelt: hochwertige digitale 2D Editorial-Stickman-Welt mit konsequenten Stickman-Menschen, reicheren Umgebungen, klaren Farben und Master-Reference-Lock.",
+  "visualStyleId": "serious-minimal-countryball-explainer-youtube-16x9",
+  "sourceVisualWorldId": "serious-minimal-countryball-explainer",
+  "visualStyleReason": "Exakt dieselbe Serious-Minimal-Countryball-Bildwelt wie bei den aktiven Reels; nur die Komposition wird für YouTube auf 16:9 horizontal angepasst.",
+  "aspectRatio": "16:9",
+  "visualWorldParityPolicy": {
+    "mustMatchReelVisualDNA": true,
+    "onlyAllowedFormatDifference": "16:9-horizontal-instead-of-9:16-vertical",
+    "stickFiguresForbidden": true,
+    "humanoidCartoonPeopleForbidden": true,
+    "roundCountryballGeometryRequiredWhenActorAppears": true,
+    "maxSupportingPropsTypical": 3
+  },
   "masterReferencePolicy": {
     "masterImageNumber": 1,
     "generateMasterSeparately": true,
     "attachMasterToAllLaterImages": true,
-    "mixedHumanStylesForbidden": true,
-    "beigeSepiaHistoricalCartoonForbidden": true
+    "visualWorldMayChange": false
   },
   "visibleTextPolicy": {
     "projectLanguageOnly": true,
