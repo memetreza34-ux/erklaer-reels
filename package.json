@@ -34,6 +34,7 @@
     "build:youtube-timeline": "node src/cli/build-youtube-timeline.js",
     "phase3:youtube": "node src/cli/phase3-youtube.js",
     "render:youtube": "node src/cli/render-youtube.js",
+    "finalize:youtube-export": "node src/cli/finalize-youtube-export.js",
     "validate:youtube-phase3": "node src/cli/validate-youtube-phase3.js",
     "validate:youtube-render": "node src/cli/validate-youtube-phase3.js --post-render",
     "validate:youtube-pacing-v2": "node src/cli/validate-youtube-adaptive-pacing.js",
