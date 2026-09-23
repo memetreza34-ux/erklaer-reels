@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 5,
+  "productionRulesVersion": 2,
+  "complexityPacingVersion": 1,
+  "videoId": "2026-KW39_warum-gibt-es-zeitzonen",
+  "weekFolder": "2026-KW39_21-09_bis_27-09",
+  "topicSlug": "warum-gibt-es-zeitzonen",
+  "title": "Warum gibt es Zeitzonen?",
+  "topic": "Warum gibt es Zeitzonen und wie funktionieren sie?",
+  "status": "phase2-pending",
+  "language": "de",
+  "format": "youtube-longform",
+  "visualStyleId": "serious-minimal-countryball-explainer-youtube-16x9",
+  "sourceVisualWorldId": "serious-minimal-countryball-explainer",
+  "visualStyleReason": "Exakt dieselbe Serious-Minimal-Countryball-Bildwelt wie bei den aktiven Reels; nur die Komposition wird für YouTube auf 16:9 horizontal angepasst.",
+  "aspectRatio": "16:9",
+  "visualWorldParityPolicy": {
+    "mustMatchReelVisualDNA": true,
+    "onlyAllowedFormatDifference": "16:9-horizontal-instead-of-9:16-vertical",
+    "stickFiguresForbidden": true,
+    "humanoidCartoonPeopleForbidden": true,
+    "roundCountryballGeometryRequiredWhenActorAppears": true,
+    "maxSupportingPropsTypical": 3
+  },
+  "masterReferencePolicy": {
+    "masterImageNumber": 1,
+    "generateMasterSeparately": true,
+    "attachMasterToAllLaterImages": true,
+    "visualWorldMayChange": false
+  },
+  "visibleTextPolicy": {
+    "projectLanguageOnly": true,
+    "germanProjectRequiresGermanOnly": true,
+    "englishVisibleTextHardFail": true,
+    "pseudoTextHardFail": true,
+    "preferNoTextWhenNotRequired": true
+  },
+  "minimumDurationSeconds": 110,
+  "targetDurationSeconds": 120,
+  "targetDurationRangeSeconds": [112, 128],
+  "scriptWordCount": 338,
+  "plannedImageCount": 19,
+  "imageCountMethod": "content-and-complexity-derived",
+  "complexityDistribution": {"A": 1, "B": 9, "C": 9, "D": 0, "E": 0},
+  "complexityTargetsSeconds": {"A": [4,5], "B": [5,7], "C": [7,9], "D": [9,12], "E": [12,15]},
+  "complexityFinalHardMaxSeconds": {"A": 6.5, "B": 8.5, "C": 10.5, "D": 13.5, "E": 16},
+  "complexityFinalShortReviewSeconds": {"A": 3, "B": 4, "C": 5, "D": 6.5, "E": 8},
+  "adaptivePacing": {
+    "hardMaximumExclusiveSeconds": 20,
+    "reviewFromSeconds": 14,
+    "strongSplitReviewFromSeconds": 16,
+    "reviewIfShorterThanSeconds": 4,
+    "oneImageOneVisualPurpose": true,
+    "imageCountMustFollowContentDensity": true,
+    "uniformHoldDistributionForbidden": true
+  },
+  "userFacingStructure": {
+    "googleFlowPrompt": "00-bildprompts/google-flow-prompt.txt",
+    "imageDirectory": "00-bildprompts/images",
+    "script": "01-voice-script/voice-script.txt",
+    "finalAudioPattern": "02-audio/voiceover-final.*",
+    "flowWaveSize": 5
+  },
+  "audioEndPolicy": {
+    "maxTrailingSilenceSeconds": 0.35,
+    "preserveAfterLastWordSeconds": 0.2,
+    "trimMasterAutomatically": true,
+    "neverModifyUserOriginal": true
+  },
+  "renderPolicy": {
+    "motionPolicy": "complexity-v1",
+    "soundPlanFile": "99-technik/YOUTUBE_RENDER_PLAN.json",
+    "backgroundMusic": false,
+    "endHoldSeconds": 0.6
+  },
+  "thumbnailText": "WARUM ZEITZONEN?",
+  "titleRequired": true,
+  "thumbnailRequired": true,
+  "topicDuplicateCheckRequired": true,
+  "topicHistoryStatus": "reserved",
+  "folderRule": "youtube/<weekFolder>/<topicSlug>/",
+  "sourcesChecked": true,
+  "phase1Ready": true,
+  "audioReady": false,
+  "imagesReady": false,
+  "thumbnailReady": false,
+  "renderReady": false,
+  "createdAt": "2026-09-23",
+  "updatedAt": "2026-09-23"
+}
