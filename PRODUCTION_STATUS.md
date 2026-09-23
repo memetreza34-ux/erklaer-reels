@@ -1,6 +1,6 @@
 # Produktionsstatus
 
-**Status: ADAPTIVE-DENSE-V2 + NEUE SERIOUS-MINIMAL-REEL-WELT AKTIV — MOTION/SFX/ENDSTILLE ALS HARD GATES — GOLDEN-E2E MIT ECHTEN ASSETS NOCH AUSSTEHEND**
+**Status: ADAPTIVE-DENSE-V2 + SERIOUS-MINIMAL-COUNTRYBALL-DNA FÜR REELS/YOUTUBE AKTIV — MOTION/SFX/ENDSTILLE ALS HARD GATES — GOLDEN-E2E MIT ECHTEN AKTUELLEN REEL-ASSETS NOCH AUSSTEHEND**
 
 `CURRENT_WORKFLOW.md` ist die verbindliche Single Source of Truth.
 
@@ -19,6 +19,7 @@ Reale Reel-Tests zeigten mehrere systemische Probleme, die für zukünftige Reel
 3. eine lange stille Audio-Fahne konnte die Videodauer unnötig um mehrere Sekunden verlängern
 4. 17 Bilder waren bei komplexeren 55–60-s-Reels teilweise zu wenig
 5. die frühere Reel-Bildwelt erzeugte zu oft generische/komische Figuren, detaillierte Räume oder uneinheitliche Szenen
+6. Phase 3 konnte technische Abhängigkeiten oder fehlerhaften Content erst spät melden; deshalb laufen Preflight und `check:content --strict` jetzt vor Produktionsschritten
 
 Dafür wurden zusätzliche technische und visuelle Sicherheitsstufen eingebaut.
 
@@ -35,7 +36,7 @@ Dafür wurden zusätzliche technische und visuelle Sicherheitsstufen eingebaut.
 - spätere Szenen: 2 oder 3 Bildphasen je nach gesprochenem Inhalt
 - **Serious Minimal Countryball Explainer** (`serious-minimal-countryball-explainer`)
 - frühere `modern-countryball-explainer`-Welt für neue Reels ersetzt
-- YouTube-Bildwelt unverändert separat
+- YouTube nutzt dieselbe Serious-Minimal-Countryball-Bild-DNA in einem separaten 16:9-Workflow
 - keine Untertitel
 - keine Hintergrundmusik
 - 1,10x Voice-over
@@ -91,6 +92,15 @@ Das finale Voice-over darf höchstens **0,25 s Endstille** enthalten. Mehrsekün
 
 `trim:pauses` entfernt Endstille bereits aktiv. Zusätzlich messen Finalizer und Renderer die finale Voice-over-Datei erneut. Erst danach wird der separate visuelle Schluss-Hold angehängt.
 
+## Phase-3-Fail-Fast und Wiedereinstieg
+
+Vor der eigentlichen Produktion laufen jetzt immer:
+
+1. Preflight für `ffmpeg`, `ffprobe`, `unzip` und zentrale Pflichtconfigs
+2. `check:content --strict`
+
+Nach einem späteren Hard Blocker kann mit `--from "<Schritt>"` gezielt wieder eingestiegen werden; diese beiden Pflicht-Gates werden trotzdem erneut ausgeführt. `--list-steps` zeigt die möglichen Wiedereinstiegspunkte.
+
 ## Mehrfach abgesicherte Einstiegspfade
 
 Die neuen Regeln sind nicht nur Dokumentation:
@@ -109,16 +119,17 @@ Ein neuer **Golden-E2E mit echten aktuellen Assets** muss nach diesen Änderunge
 1. neues Adaptive-Dense-V2-Reel anlegen/importieren
 2. echte Google-Flow-Bilder in der neuen Serious-Minimal-Countryball-Welt
 3. echtes Voice-over
-4. `trim:pauses`
-5. `sync:sounds --strict`
-6. echte Cue-Synchronisierung
-7. Motion-/SFX-/Visual-QC
-8. Finalizer
-9. Render
-10. finale MP4 technisch und sichtbar prüfen
+4. Preflight + `check:content --strict`
+5. `trim:pauses`
+6. `sync:sounds --strict`
+7. echte Cue-Synchronisierung
+8. Motion-/SFX-/Visual-QC
+9. Finalizer
+10. Render
+11. finale MP4 technisch und sichtbar prüfen
 
 Erst wenn dieser Durchlauf tatsächlich bestanden ist, darf der neue Stand als vollständig produktionsvalidiert bezeichnet werden.
 
 ## Teststatus
 
-Die vollständige `npm test`-Suite ist nach diesen neuesten Änderungen **noch nicht als ausgeführt/grün bestätigt**. Nicht ausgeführte Tests werden nicht als bestanden gemeldet.
+Der aktuelle `main`-Stand nach PR #103 wurde am **23.09.2026** in GitHub Actions erfolgreich getestet: **233 Tests, 232 bestanden, 0 fehlgeschlagen, 1 plattformbedingt übersprungen**. Für Änderungen nach diesem Stand gilt weiterhin: Tests erst nach einem tatsächlich erfolgreichen CI-/Lokal-Lauf als grün bezeichnen.
