@@ -1,48 +1,42 @@
-# 00 – Bildprompts und Bildpakete
+# 00 – Google-Flow-Masterprompt
 
-Hier liegen der vollständige Prompt-Satz für die YouTube-Szenenbilder sowie die fertig erzeugten Bildpakete.
-
-## Verbindliche 10er-Regel
-
-Bilder werden immer in Blöcken von maximal 10 organisiert. **Erzeugt werden sie innerhalb eines Blocks trotzdem immer einzeln und vollständig nacheinander.**
-
-Beispiel bei 60 Bildern:
+Für neue YouTube-V2-Projekte gibt es hier **genau einen** sichtbaren Produktionsprompt:
 
 ```text
-01_bilder-01-bis-10/
-02_bilder-11-bis-20/
-03_bilder-21-bis-30/
-04_bilder-31-bis-40/
-05_bilder-41-bis-50/
-06_bilder-51-bis-60/
+google-flow-prompt.txt
 ```
 
-Auch bei einem Auftrag wie **„erstelle alle Bilder“** arbeitet der Agent nicht parallel und erzeugt nicht zehn Bilder auf einmal.
+Der Masterprompt enthält Bild 00 (Thumbnail) und alle Videobilder in globaler Reihenfolge.
 
-Für jedes einzelne Bild gilt exakt:
+## Verbindliche 5er-Regel
+
+Die Wellen sind Ausführungslogik, keine Ordnerlogik:
 
 ```text
-Prompt für Bild NN lesen
-→ genau EIN Bild erzeugen
-→ vollständig warten
-→ Bild prüfen
-→ falls nötig dieselbe Bildnummer neu erzeugen
-→ sofort als Bild NN.png umbenennen
-→ sofort in den aktuellen 10er-Ordner legen
-→ Ablage prüfen
-→ erst dann das nächste Bild erzeugen
+Bild 00 separat erzeugen und prüfen
+
+Bild 01–05 gleichzeitig
+→ auf alle fünf warten
+→ alle fünf prüfen
+→ Fehler in derselben Welle korrigieren
+→ als Bild 01.png bis Bild 05.png unter images/ ablegen
+→ erst danach weiter
+
+Bild 06–10
+→ gleicher Ablauf
+
+11–15
+→ usw.
 ```
 
-Nach Bild 10 wird der erste Ordner vollständig geprüft. Erst wenn `Bild 01.png` bis `Bild 10.png` korrekt vorhanden sind, beginnt Bild 11. Dasselbe gilt für alle weiteren Pakete.
+Harte Regeln:
+- maximal fünf aktive Bildgenerierungen gleichzeitig
+- niemals zwei Wellen gleichzeitig offen halten
+- nächste Welle erst nach vollständigem Check der aktuellen
+- letzter Block darf 1–5 Bilder enthalten
+- Bild 00 ist ausschließlich Thumbnail und nie Teil der Videotimeline
+- alle fertigen Bilder liegen flach unter `00-bildprompts/images/`
+- keine 10er-Unterordner
+- keine separaten Promptdateien pro Paket
 
-Verboten:
-- mehrere Bilder gleichzeitig generieren
-- mehrere Bildaufträge parallel starten
-- eine Queue mit 10 oder mehr Bildern anlegen
-- erst alle 10 Bilder erzeugen und danach umbenennen
-- erst alle 50–90 Bilder erzeugen und danach sortieren
-- bei einem fehlerhaften Bild einfach zur nächsten Nummer weitergehen
-
-Die globale Nummerierung läuft lückenlos weiter. Der letzte Paketordner darf weniger als 10 Bilder enthalten. Bild 00/Thumbnail bleibt separat.
-
-Die vollständigen Bildregeln kommen aus `youtube/YOUTUBE_WORKFLOW.md`, `youtube/YOUTUBE_VISUAL_WORLD.md` und für kommende V2-Projekte zusätzlich aus `youtube/ADAPTIVE_PACING_V2.md`.
+Die Bildzahl wird aus Skript und A–E-Komplexität abgeleitet. Es gibt keine feste Sollzahl.
