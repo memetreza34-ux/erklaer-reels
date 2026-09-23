@@ -1,196 +1,173 @@
-# Feste Bildwelt — YouTube Editorial Stick Explainer
+# Feste Bildwelt — Universal Editorial Stickman World v1.2
 
 Diese Datei definiert die **verbindliche globale Bildwelt** für alle YouTube-Langvideos in diesem Repository.
 
-Style-ID: `youtube-editorial-stick-explainer`
+Style-ID: `universal-editorial-stickman-v1.2`
 
 ## Grundidee
 
-Die YouTube-Bildwelt ist ein ruhiger, erzählerischer **2D hand-drawn Editorial-Explainer-Stil** mit einfachen menschlichen Figuren, klaren Story-Momenten und reduzierten historischen oder natürlichen Umgebungen.
+Die YouTube-Bildwelt ist eine hochwertige digitale **2D Editorial-Stickman-Explainer-Welt**. Menschen bleiben konsequent minimalistische Stickman-Figuren, während Umgebungen, Karten, Objekte und historische Schauplätze deutlich reichhaltiger und glaubwürdiger gestaltet werden dürfen.
 
-Sie ist bewusst vollständig von der Reel-Bildwelt getrennt. Die aktuelle Reel-Bildwelt `serious-minimal-countryball-explainer` gilt **nicht** für YouTube-Langvideos.
+Die Bildwelt ist **nicht** der ausgewaschene beige historische Cartoon-/Schulbuch-Look. Sie ist außerdem vollständig von der Reel-Bildwelt getrennt.
 
 ## Verbindliche Gestaltung
 
-- Format grundsätzlich **16:9**
-- sauberer 2D-Illustrationsstil
-- hand-drawn / editorial cartoon feeling
-- klare schwarze Linien
-- eher dünne bis mittlere Outlines
-- einfache Formen und reduzierte Details
-- gut lesbare, ruhige Komposition
-- ein klarer erzählerischer Moment pro Bild
-- warme, leicht gedämpfte Farben
-- einfache historische, natürliche oder reduzierte Umgebungen
-- keine künstliche Untertitelzone
-- keine wechselnden Stilwelten zwischen Szenen
+- 16:9 horizontal
+- hochwertige digitale 2D-Editorial-Illustration
+- klare, saubere Linien
+- moderne, präzise Bildsprache
+- moderate bis kräftige, szenengerechte Farben
+- natürliche Lichtwirkung
+- subtile 2D-Schattierung und glaubwürdige Materialien
+- Umgebung darf detaillierter sein als die Figuren
+- klare räumliche Tiefe und gute Komposition
+- ein klarer visueller Zweck pro Bild
+- historische Szenen wirken wie moderne Editorial-Illustrationen, **nicht** wie alte Manuskripte, Pergamentzeichnungen oder Kinderbuchbilder
 
-## Figuren-System
+## Figuren-System — HARD LOCK
 
-Wenn Menschen gezeigt werden, gelten standardmäßig diese Regeln:
+**Jeder sichtbare Mensch muss Stickman bleiben**, auch kleine Hintergrundfiguren.
 
-- Stick-Figure-ähnliche Körper
+Verbindlich:
 - runder oder leicht ovaler Kopf
-- sehr einfache Gesichter
-- kleine schwarze Augen
-- minimaler Mund
-- einfache Haare, wenn nötig
-- einfache Kleidung, wenn nötig
-- bewusst vereinfachte Proportionen
-- Emotionen über Pose, Blick, Mund und Körpersprache
+- sehr einfacher heller Kopf ohne realistische Hautmodellierung
+- kleine schwarze Punktaugen
+- einfacher Mund nur wenn für Ausdruck nötig
+- dünne, vereinfachte Arme und Beine
+- stark vereinfachter Torso
+- historische Kleidung nur als reduzierte äußere Form, nicht als detaillierte normale Cartoon-Person
+- Emotion über Pose, Blickrichtung und minimale Gesichtselemente
 
-Menschen werden nicht fotorealistisch porträtiert. Sie bleiben stilisiert, reduziert und leicht wiedererkennbar.
+**STYLE FAIL:**
+- normale Cartoon-Menschen
+- semi-realistische Menschen
+- detaillierte Gesichter
+- realistische Körperproportionen
+- gemischte Figurenstile innerhalb eines Bildes
+- Hintergrundmenschen, die keine Stickmen sind
 
-## Vier Referenzrichtungen der Bildwelt
+Die Szene bestimmt **WAS** gezeigt wird. Die Master-Referenz bestimmt **WIE** alles aussieht.
 
-### 1. Menschen am Lagerfeuer bei Sonnenuntergang
+## Umgebung und Farben
 
-- drei einfache Figuren
-- offenes prähistorisches oder historisches Umfeld
-- ruhige Szene
-- warmes Licht
-- einfache Holzstrukturen oder Lager-Elemente im Hintergrund
+Umgebungen dürfen reichhaltig und glaubwürdig sein:
+- Städte, Straßen, Gebäude, Landschaften, Innenräume
+- Karten, Küsten, Flüsse, Berge und historische Architektur
+- Objekte mit klaren Materialien und natürlicher Lichtwirkung
+- moderate bis kräftige Farben mit gutem Kontrast
 
-### 2. Nacht-Szene mit Feuer und versteckter Gefahr
+Verboten als Standardlook:
+- beige/sepia-dominante Gesamtpalette
+- ausgewaschene Pastellfarben
+- Papier-/Pergamenttextur über dem ganzen Bild
+- antiker Manuskriptlook
+- Schulbuchkarten-Ästhetik
+- flache braun-orange Einheitswelt
 
-- dunkle Szene
-- kleines Lagerfeuer als Fokus
-- Ring aus Steinen
-- sehr reduzierter Aufbau
-- in der Ferne z. B. leuchtende Augen oder angedeutete Gefahr
+Beige, Braun oder Sand dürfen lokal vorkommen, aber nie die gesamte visuelle DNA dominieren.
 
-### 3. Menschen auf Reise durch Wüste oder offene Landschaft
+## Karten und Diagramme
 
-- einfache Figuren in Bewegung
-- Sand, Wind, Dünen oder offene Weite
-- klare Leserichtung
-- leicht humorvoll oder erzählerisch
-- wenige gezielte Hintergrundelemente
+Karten bleiben Teil derselben modernen Editorial-Welt:
+- klare Küsten und Grenzen
+- reduzierte, gut lesbare Flächen
+- moderne Farbkontraste
+- wenige gezielte Marker/Pfeile
+- keine überladenen historischen Atlas-Karten
+- keine automatisch erzeugten englischen Kartenlabels
+- keine pseudo-historischen Ornamente
 
-### 4. Ruhige historische Szene mit Menschen und Tieren
+## Master-Reference-Lock für Google Flow
 
-- offene Ebene oder Steppe
-- einfache historische Kleidung
-- Tiere wie Pferde können vorkommen
-- wenig Requisiten
-- ruhige, fast meditative Stimmung
+Für jedes neue Video gilt:
 
-Diese vier Richtungen bilden die Basis: **ruhig, erzählerisch, historisch/natürlich, reduziert, gezeichnet.**
+1. Bild 00 separat als Thumbnail erzeugen.
+2. **Bild 01 zuerst separat erzeugen und als Master-Style-Frame prüfen.**
+3. Bild 01 muss die richtige Figurenanatomie, Linienart, Farbintensität, Schattierung, Materialwirkung und Gesamtästhetik zeigen.
+4. Nach Freigabe wird Bild 01 bei **jedem weiteren Bild** als visuelle Referenz angehängt.
+5. Ab Bild 02 darf die Bildwelt nicht neu interpretiert werden.
 
-## Szenenlogik
+Merksatz:
 
-Bilder sollen wie Standbilder aus einer größeren Geschichte wirken.
+> The scene prompt determines WHAT is shown. The master image determines HOW everything looks.
 
-Typische Szenen:
+Die 5er-Regel bleibt erhalten: Nach dem separaten Master-Frame werden die restlichen Bilder in kontrollierten Wellen mit maximal fünf aktiven Generierungen erzeugt.
 
-- Menschen sitzen am Feuer
-- Menschen reisen, tragen, jagen, reden oder beobachten
-- Menschen in Wüste, Steppe, Lager, Höhle oder einfachem Innenraum
-- ruhige Zwischenszenen mit nur einem Fokus
-- symbolische Story-Momente
-- leere oder halb-leere Räume, wenn sie den Fokus stärken
+## Sichtbarer Text — DEUTSCH-HARD-LOCK
 
-Nicht jede Szene muss voll sein. Reduktion ist erwünscht, wenn sie die Aussage klarer macht.
+Für **jedes deutsche YouTube-Projekt** gilt ohne Ausnahme:
 
-## Visuelle Komplexität bestimmt die Wechselgeschwindigkeit
+- **Jeder sichtbare lesbare Text im Bild muss Deutsch sein.**
+- Das gilt für Überschriften, Kartenlabels, Schilder, Diagramme, Callouts, Legenden, Pfeilbeschriftungen, Kalendertexte, UI-artige Elemente und sonstige Wörter.
+- Flow darf keine englischen Standardlabels ergänzen.
+- Englischer sichtbarer Text = **HARD FAIL → Bild regenerieren**.
+- Pseudo-Schrift oder unleserlicher Text = **HARD FAIL → Bild regenerieren oder Text entfernen**.
+- Wenn ein Text nicht ausdrücklich benötigt wird, lieber **gar keinen Text** erzeugen.
+- Eigennamen, die im Deutschen identisch geschrieben werden, dürfen natürlich unverändert bleiben.
 
-Für neue YouTube-Videos bekommt **jedes Bild** eine A–E-Komplexitätsklasse.
+Beispiele:
+- `ATLANTIC OCEAN` → verboten
+- `ATLANTISCHER OZEAN` → erlaubt
+- `MEDITERRANEAN SEA` → verboten
+- `MITTELMEER` → erlaubt
+- `WEST / EAST` → verboten
+- `WEST / OST` → erlaubt
 
-- **A — sehr einfach:** 4–5 s geplant; echte Timeline maximal 6,5 s
-- **B — einfach:** 5–7 s geplant; echte Timeline maximal 8,5 s
-- **C — mittel:** 7–9 s geplant; echte Timeline maximal 10,5 s
-- **D — komplex:** 9–12 s geplant; echte Timeline maximal 13,5 s
-- **E — sehr komplex:** 12–15 s geplant; echte Timeline maximal 16,0 s
+## Thumbnail
 
-Komplexität bedeutet nicht, Bilder künstlich vollzustopfen. Ein Bild behält weiterhin **einen klaren visuellen Zweck**. Die Klasse beschreibt nur, wie viel visuelle/gedankliche Verarbeitung dieser eine Zweck braucht.
+Bild 00 nutzt dieselbe Bildwelt, darf aber:
+- stärkeren Kontrast
+- größere Motive
+- klarere Emotion
+- größere deutsche Headline
+verwenden.
 
-Wenn ein Sprechabschnitt länger dauert als die sinnvolle Klasse, wird ein zusätzlicher Bildmoment geplant. Die finale Millisekunden-Dauer kommt aus dem echten Voice-over und wird im V2-Gate gegen die Klasse geprüft.
+Bild 00 bleibt ausschließlich Thumbnail und kommt nie in die Videotimeline.
+
+## Visuelle Komplexität A–E
+
+- A — sehr einfach: 4–5 s geplant; echte Timeline max. 6,5 s
+- B — einfach: 5–7 s geplant; echte Timeline max. 8,5 s
+- C — mittel: 7–9 s geplant; echte Timeline max. 10,5 s
+- D — komplex: 9–12 s geplant; echte Timeline max. 13,5 s
+- E — sehr komplex: 12–15 s geplant; echte Timeline max. 16,0 s
+
+Komplexität bedeutet nicht, ein Bild künstlich vollzustopfen. Ein Bild behält einen klaren visuellen Zweck.
 
 ## Motion nach A–E
-
-Der Standard-Renderer verwendet `complexity-v1`:
 
 - A: sehr leichter Push
 - B: ruhiger Pan
 - C: narrativer Pan/Push
-- D: langsamer Scan/Pull für Karten und komplexe Szenen
+- D: langsamer Scan/Pull
 - E: besonders ruhige Übersicht
 
-Motion bleibt subtil. Sie soll das Bild lebendig halten, nicht vom Inhalt ablenken.
-
-## Hintergrund und Farbe
-
-- ruhige Hintergründe
-- einfache Landschaften oder einfache Innenräume
-- keine komplexen realistischen Texturen
-- warme, leicht gedämpfte Farben
-- häufig Beige, Braun, Sand, Ocker, helles Blau, gedämpftes Grün
-- dunkles Blau oder Schwarz für Nacht
-- Feuerlicht darf warm und leuchtend sein
-- Himmel und Boden dürfen stilisiert und vereinfacht sein
-
-## Objekte
-
-Objekte werden vereinfacht und klar lesbar gezeichnet, zum Beispiel:
-
-- Lagerfeuer
-- Speer
-- Fleisch am Stock
-- einfache Zelte oder Holzrahmen
-- Rauch
-- Tiere
-- Schalen und Werkzeuge
-- Stuhl und Tisch
-- historische Requisiten
-
-Objekte sollen klar, erzählerisch und nicht überdetailliert sein.
-
-## Text im Bild
-
-Bei normalen YouTube-Szenen gilt:
-
-- sichtbarer Text nur sparsam
-- nur wenn inhaltlich wirklich nötig
-- Text immer in der Sprache des Projekts
-- keine unnötigen Labels
-- keine Logos
-- keine Wasserzeichen
-- keine Pseudo-Schrift
-
-Standard:
-
-- englisches YouTube-Projekt → sichtbarer Bildtext Englisch
-- deutsches YouTube-Projekt → sichtbarer Bildtext Deutsch
-
-## Thumbnail-Hinweis
-
-Thumbnails dürfen dieselbe Figuren- und Zeichenwelt verwenden, aber mit stärkerem Fokus, höherem Kontrast und größerer Headline. Bild 00 bleibt ausschließlich Thumbnail und kommt nie in die Videotimeline.
+Motion bleibt subtil.
 
 ## Verbotene Stilabweichungen
 
 Nicht verwenden:
-
-- Countryballs als Standard
+- beige historische Cartoon-/Kinderbuch-Welt
+- normale oder semi-realistische Cartoon-Menschen
+- gemischte Menschenstile
+- Countryballs
 - Fotorealismus
-- realistische Menschen
 - Anime/Manga
 - 3D-/Pixar-Look
 - Clay-/Knetstil
 - Hochglanz-Render
 - Stockfoto-Ästhetik
 - überladene Infografiken
-- zu viele kleine Details
-- chaotische Szenen ohne klaren Fokus
+- alte Atlas-/Pergamentkarten
+- englischen sichtbaren Text in deutschen Projekten
 - harte Stilwechsel zwischen Szenen
 
 ## Prompt-Regel
 
-Jeder YouTube-Bildprompt beschreibt zuerst die konkrete Szene. Zusätzlich gilt immer die feste Bildwelt `youtube-editorial-stick-explainer`.
+Prompts selbst werden auf Englisch geschrieben. **Sichtbarer Text im erzeugten Bild folgt jedoch immer der Projektsprache; bei deutschen Videos ausschließlich Deutsch.**
 
-Prompts werden auf **Englisch** geschrieben.
-
-Der feste Stilblock trägt sinngemäß:
+Der feste Master-Prefix lautet sinngemäß:
 
 ```text
-16:9, hand-drawn 2D editorial explainer style, simple stick-figure-like humans, round heads, minimal facial features, clean black outlines, warm slightly muted colors, calm narrative composition, simple backgrounds, historical/natural/reduced environments, one clear scene focus, no photorealism, no 3D, no countryballs.
+Universal Editorial Stickman World v1.2, 16:9 horizontal, premium clean digital 2D editorial illustration, every visible human including background people is a minimalist stickman with a round or slightly oval head, tiny black eyes, minimal mouth, thin simplified limbs and strongly simplified body, richer believable environments with natural lighting and subtle 2D shading, moderate-to-vivid scene-appropriate colors, crisp modern composition, one clear visual purpose, no beige/sepia wash, no parchment texture, no historical-manuscript look, no normal cartoon humans, no semi-realistic people, no photorealism, no 3D, no countryballs. For German projects, every readable word visible anywhere in the image must be German; do not generate English labels or pseudo-text.
 ```
