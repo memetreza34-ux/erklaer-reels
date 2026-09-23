@@ -1,14 +1,17 @@
 {
-  "version": 4,
+  "schemaVersion": 5,
   "productionRulesVersion": 2,
   "complexityPacingVersion": 1,
   "videoId": "2026-KW39_warum-ging-das-roemische-reich-unter",
   "weekFolder": "2026-KW39_21-09_bis_27-09",
   "topicSlug": "warum-ging-das-roemische-reich-unter",
   "title": "Warum ging das Römische Reich wirklich unter?",
+  "topic": "Warum zerfiel das Weströmische Reich?",
+  "status": "phase2-pending",
   "language": "de",
   "format": "youtube-longform",
   "visualStyleId": "youtube-editorial-stick-explainer",
+  "visualStyleReason": "Feste YouTube-Bildwelt: hand-drawn editorial stick-figure explainer style für erzählerische Langvideos.",
   "aspectRatio": "16:9",
   "minimumDurationSeconds": 285,
   "targetDurationSeconds": 320,
@@ -16,20 +19,43 @@
   "scriptWordCount": 877,
   "plannedImageCount": 38,
   "imageCountMethod": "content-and-complexity-derived",
-  "complexityDistribution": {"A": 1, "B": 5, "C": 19, "D": 12, "E": 1},
-  "complexityTargetsSeconds": {"A": [4,5], "B": [5,7], "C": [7,9], "D": [9,12], "E": [12,15]},
-  "complexityFinalHardMaxSeconds": {"A": 6.5, "B": 8.5, "C": 10.5, "D": 13.5, "E": 16},
-  "complexityFinalShortReviewSeconds": {"A": 3, "B": 4, "C": 5, "D": 6.5, "E": 8},
-  "thumbnailText": "ROM FÄLLT",
-  "topicHistoryStatus": "reserved",
-  "createdAt": "2026-09-22",
-  "updatedAt": "2026-09-23",
-  "sourcesChecked": true,
-  "phase1Ready": true,
-  "audioReady": false,
-  "imagesReady": false,
-  "thumbnailReady": false,
-  "renderReady": false,
+  "complexityDistribution": {
+    "A": 1,
+    "B": 5,
+    "C": 19,
+    "D": 12,
+    "E": 1
+  },
+  "complexityTargetsSeconds": {
+    "A": [4, 5],
+    "B": [5, 7],
+    "C": [7, 9],
+    "D": [9, 12],
+    "E": [12, 15]
+  },
+  "complexityFinalHardMaxSeconds": {
+    "A": 6.5,
+    "B": 8.5,
+    "C": 10.5,
+    "D": 13.5,
+    "E": 16
+  },
+  "complexityFinalShortReviewSeconds": {
+    "A": 3,
+    "B": 4,
+    "C": 5,
+    "D": 6.5,
+    "E": 8
+  },
+  "adaptivePacing": {
+    "hardMaximumExclusiveSeconds": 20,
+    "reviewFromSeconds": 14,
+    "strongSplitReviewFromSeconds": 16,
+    "reviewIfShorterThanSeconds": 4,
+    "oneImageOneVisualPurpose": true,
+    "imageCountMustFollowContentDensity": true,
+    "uniformHoldDistributionForbidden": true
+  },
   "userFacingStructure": {
     "googleFlowPrompt": "00-bildprompts/google-flow-prompt.txt",
     "imageDirectory": "00-bildprompts/images",
@@ -49,5 +75,18 @@
     "backgroundMusic": false,
     "endHoldSeconds": 0.6
   },
-  "adaptivePacing": {"hardMaximumExclusiveSeconds":20,"reviewFromSeconds":14,"strongSplitReviewFromSeconds":16,"reviewIfShorterThanSeconds":4}
+  "thumbnailText": "ROM FÄLLT",
+  "titleRequired": true,
+  "thumbnailRequired": true,
+  "topicDuplicateCheckRequired": true,
+  "topicHistoryStatus": "reserved",
+  "folderRule": "youtube/<weekFolder>/<topicSlug>/",
+  "sourcesChecked": true,
+  "phase1Ready": true,
+  "audioReady": false,
+  "imagesReady": false,
+  "thumbnailReady": false,
+  "renderReady": false,
+  "createdAt": "2026-09-22",
+  "updatedAt": "2026-09-23"
 }
