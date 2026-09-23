@@ -10,12 +10,14 @@
 - Komplexitätsklassen: PASS — A:1, B:5, C:19, D:12, E:1
 - Kein geplanter Hold >15 s: PASS
 - 5er-Flow-Wellen: PASS — intern im Masterprompt
-- Sichtbare Paketordner: PASS — nicht erforderlich
-- Sichtbare Script-Parts: PASS — entfernt
-- Voice-over-Modus: PASS — eine finale Audiodatei
+- Sichtbare Paketordner: PASS — nicht vorhanden
+- Sichtbare Script-Parts: PASS — nicht vorhanden
+- Voice-over-Modus: PASS — eine finale Audiodatei vorgesehen
 - Bild 00 aus Timeline ausgeschlossen: PASS
-- internes Bild↔Audio-Mapping: PASS
-- Edit/Motion/SFX: PASS
+- internes Bild↔Audio-Mapping: PASS — bereits `batchFolder: images`, keine alten Part-Pfade
+- maschinenlesbarer Renderplan: PASS — A–E-Motion + selektive SFX
+- Kapitelplan: PASS — an Bildnummern gebunden, finale Zeiten kommen später aus `FINAL_TIMELINE.json`
+- Endstille-Policy: PASS — Nutzeroriginal bleibt unverändert, internes Master wird bei Bedarf gekürzt
 - Upload-Metadaten: PASS
 
 **Ergebnis: Phase 1 COMPLETE. Phase 2 kann mit einem Masterprompt und einem Gesamtskript beginnen.**
