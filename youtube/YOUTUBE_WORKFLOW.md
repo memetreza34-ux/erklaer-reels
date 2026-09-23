@@ -82,21 +82,37 @@ Der Nutzer benötigt nur:
 01-voice-script/voice-script.txt
 ```
 
-### Google Flow
+### Google Flow — Style-Anchor + 5er-Wellen
 
 ```text
 Bild 00 separat
-01–05 gleichzeitig → warten → prüfen → korrigieren → ablegen
-06–10 erst danach
+Bild 01 separat → Style prüfen → als Master-Referenz festlegen
+Bild 02–05 mit Bild 01 als Referenz → prüfen
+06–10 mit Bild 01 als Referenz
 11–15 ...
 ```
 
 Harte Regeln:
+- **Bild 01 ist der Master-Style-Frame** für das gesamte Video
+- ab Bild 02 wird Bild 01 bei jeder Generierung als visuelle Referenz angehängt
 - höchstens 5 aktive Bildgenerierungen gleichzeitig
 - niemals zwei Wellen gleichzeitig offen halten
 - letzter Block darf 1–5 Bilder enthalten
 - Bild 00 bleibt Thumbnail und kommt nie in die Timeline
 - Bilder liegen flach unter `00-bildprompts/images/`
+- feste Bildwelt: `universal-editorial-stickman-v1.2`
+- jeder sichtbare Mensch bleibt Stickman; normale/semi-realistische Cartoon-Menschen sind Style Fail
+- kein beige/sepia Historien-Cartoon-/Pergament-Look
+
+### Sichtbarer Text — Deutsch-Hard-Lock
+
+Bei einem deutschen Projekt gilt für **jedes Bild ohne Ausnahme**:
+- jeder lesbare sichtbare Text muss Deutsch sein
+- gilt auch für Kartenlabels, Schilder, Legenden, Diagramme, Kalender, Callouts und Hintergrundtext
+- Flow darf keine englischen Standardlabels ergänzen
+- englischer sichtbarer Text = Hard Fail und Regeneration
+- Pseudo-Schrift/unleserlicher Text = Hard Fail oder entfernen
+- wenn Text nicht nötig ist, keinen Text erzeugen
 
 ### Voice-over
 
@@ -191,6 +207,9 @@ Gezielte Sounds stehen ausschließlich in `99-technik/YOUTUBE_RENDER_PLAN.json` 
 
 Ein Video ist erst fertig, wenn:
 - alle Bilder + Thumbnail vorhanden sind
+- Bild 01 als Master-Style-Frame festgelegt wurde
+- alle weiteren Bilder dieselbe Bildwelt halten
+- bei deutschem Projekt jeder sichtbare Text Deutsch ist
 - genau eine finale Stimme vorhanden ist
 - alle Anchors real gemessen wurden
 - Audio-Fingerprints gültig sind
