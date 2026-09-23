@@ -1,111 +1,124 @@
-# Feste Bildwelt — Universal Editorial Stickman World v1.2
+# Feste Bildwelt — Serious Minimal Countryball Explainer · YouTube 16:9
 
-Diese Datei definiert die **verbindliche globale Bildwelt** für alle YouTube-Langvideos in diesem Repository.
+Diese Datei definiert die verbindliche Bildwelt für alle neuen YouTube-Langvideos.
 
-Style-ID: `universal-editorial-stickman-v1.2`
+YouTube übernimmt **dieselbe künstlerische Welt wie die aktiven Reels**.
 
-## Grundidee
+- Reel-Quellwelt: `serious-minimal-countryball-explainer`
+- YouTube-Style-ID: `serious-minimal-countryball-explainer-youtube-16x9`
+- einzige Formatabweichung: **16:9 horizontal statt 9:16 vertikal**
 
-Die YouTube-Bildwelt ist eine hochwertige digitale **2D Editorial-Stickman-Explainer-Welt**. Menschen bleiben konsequent minimalistische Stickman-Figuren, während Umgebungen, Karten, Objekte und historische Schauplätze deutlich reichhaltiger und glaubwürdiger gestaltet werden dürfen.
+Die visuelle DNA darf gegenüber der Reel-Welt nicht neu interpretiert werden.
 
-Die Bildwelt ist **nicht** der ausgewaschene beige historische Cartoon-/Schulbuch-Look. Sie ist außerdem vollständig von der Reel-Bildwelt getrennt.
+## Verbindliche visuelle DNA
 
-## Verbindliche Gestaltung
-
-- 16:9 horizontal
-- hochwertige digitale 2D-Editorial-Illustration
-- klare, saubere Linien
-- moderne, präzise Bildsprache
-- moderate bis kräftige, szenengerechte Farben
-- natürliche Lichtwirkung
-- subtile 2D-Schattierung und glaubwürdige Materialien
-- Umgebung darf detaillierter sein als die Figuren
-- klare räumliche Tiefe und gute Komposition
-- ein klarer visueller Zweck pro Bild
-- historische Szenen wirken wie moderne Editorial-Illustrationen, **nicht** wie alte Manuskripte, Pergamentzeichnungen oder Kinderbuchbilder
+- seriöse, cleane, minimalistische 2D-Countryball-Erklärwelt
+- kräftige, saubere schwarze Konturen
+- flache kontrollierte 2D-Farben
+- nur leichte grafische Schattierung
+- geringe bis mittlere kontrollierte Detaildichte
+- ein dominantes Hauptmotiv
+- normalerweise 0–3 sinnvolle Zusatzobjekte
+- einfacher einfarbiger oder gedämpfter Hintergrund, leichter Verlauf oder subtile Textur erlaubt
+- starke Symbolik statt realistischer Vollszenen
+- erwachsene informative Wirkung, nicht kindisch und nicht albern
+- 16:9-Komposition für YouTube, ansonsten dieselbe Welt wie Reels
 
 ## Figuren-System — HARD LOCK
 
-**Jeder sichtbare Mensch muss Stickman bleiben**, auch kleine Hintergrundfiguren.
+Wenn ein Akteur gebraucht wird:
 
-Verbindlich:
-- runder oder leicht ovaler Kopf
-- sehr einfacher heller Kopf ohne realistische Hautmodellierung
-- kleine schwarze Punktaugen
-- einfacher Mund nur wenn für Ausdruck nötig
-- dünne, vereinfachte Arme und Beine
-- stark vereinfachter Torso
-- historische Kleidung nur als reduzierte äußere Form, nicht als detaillierte normale Cartoon-Person
-- Emotion über Pose, Blickrichtung und minimale Gesichtselemente
+- perfekt runder Countryball-artiger Kugelkörper
+- niemals oval, bohnenförmig oder eiförmig
+- keine getrennten menschlichen Köpfe
+- einfache weiße Augen
+- kräftige schwarze Konturen
+- reduzierte kontrollierte Mimik
+- kleine einfache Arme/Hände/Füße nur wenn die Handlung sie wirklich braucht
+- keine Haare, Hälse oder realistischen Gesichter
 
-**STYLE FAIL:**
-- normale Cartoon-Menschen
-- semi-realistische Menschen
-- detaillierte Gesichter
-- realistische Körperproportionen
-- gemischte Figurenstile innerhalb eines Bildes
-- Hintergrundmenschen, die keine Stickmen sind
+Flaggenmuster nur, wenn Geografie, Politik oder kulturelle Identität inhaltlich relevant sind. Bei historischen Gruppen ohne moderne Flagge werden neutrale oder historisch passende Farbcodes und wenige Requisiten/Symbole verwendet; keine erfundenen modernen Nationalflaggen.
 
-Die Szene bestimmt **WAS** gezeigt wird. Die Master-Referenz bestimmt **WIE** alles aussieht.
+Wenn ein Objekt, eine Karte oder ein Symbol die Aussage klarer erklärt, ist kein Countryball zwingend nötig.
 
-## Umgebung und Farben
+### Verboten
 
-Umgebungen dürfen reichhaltig und glaubwürdig sein:
-- Städte, Straßen, Gebäude, Landschaften, Innenräume
-- Karten, Küsten, Flüsse, Berge und historische Architektur
-- Objekte mit klaren Materialien und natürlicher Lichtwirkung
-- moderate bis kräftige Farben mit gutem Kontrast
+- Stickfiguren
+- normale illustrierte Menschen
+- humanoide Cartoon-Personen
+- realistische Menschen
+- realistische Hände/Haut
+- Countryball mit getrenntem Menschenkopf
+- winzige dekorative Kugeln ohne Funktion
+- übertriebene Gag-Gesichter, Zungen oder kindische Mimik
 
-Verboten als Standardlook:
-- beige/sepia-dominante Gesamtpalette
-- ausgewaschene Pastellfarben
-- Papier-/Pergamenttextur über dem ganzen Bild
-- antiker Manuskriptlook
-- Schulbuchkarten-Ästhetik
-- flache braun-orange Einheitswelt
+## Drei Kompositionsmodi
 
-Beige, Braun oder Sand dürfen lokal vorkommen, aber nie die gesamte visuelle DNA dominieren.
+### 1. Minimal Symbolic
+Ein großes Hauptmotiv plus 0–1 sinnvolles Symbol.
+
+### 2. Supported Explainer
+Ein großes Hauptmotiv plus 1–3 relevante Requisiten, Symbole oder Cues.
+
+### 3. Simple Mini Scene
+Ein klarer Countryball-Akteur oder ein Objekt plus eine stark reduzierte Kontextstruktur.
+
+Auch bei historischen Themen keine überladenen realistischen Stadt- oder Schlachtszenen. Historische Inhalte werden in dieselbe reduzierte Countryball-Formsprache übersetzt.
+
+## Hintergrund
+
+Bevorzugt:
+
+- einfarbige oder gedämpfte Farbfläche
+- einfacher Farbverlauf
+- subtile Papier-/Korntextur
+- ein einzelnes Kontextobjekt oder eine stark vereinfachte Struktur
+
+Nicht als Standard:
+
+- detaillierte realistische Innenräume
+- cineastische Vollszenen
+- fotorealistische Landschaften
+- komplexe realistische Architekturkulissen
+- überladene historische Gemälde
 
 ## Karten und Diagramme
 
-Karten bleiben Teil derselben modernen Editorial-Welt:
-- klare Küsten und Grenzen
-- reduzierte, gut lesbare Flächen
-- moderne Farbkontraste
-- wenige gezielte Marker/Pfeile
-- keine überladenen historischen Atlas-Karten
+Karten und Diagramme werden in derselben Serious-Minimal-Countryball-Welt dargestellt:
+
+- klare dicke Konturen
+- einfache Flächen
+- wenige Farben
+- wenige Pfeile und Marker
+- Countryball-Symbole nur wenn sie einen echten Akteur darstellen
+- keine alten Atlas-Karten
+- keine realistischen Satellitenkarten
 - keine automatisch erzeugten englischen Kartenlabels
-- keine pseudo-historischen Ornamente
 
-## Master-Reference-Lock für Google Flow
-
-Für jedes neue Video gilt:
+## World-Lock / Master-Reference
 
 1. Bild 00 separat als Thumbnail erzeugen.
-2. **Bild 01 zuerst separat erzeugen und als Master-Style-Frame prüfen.**
-3. Bild 01 muss die richtige Figurenanatomie, Linienart, Farbintensität, Schattierung, Materialwirkung und Gesamtästhetik zeigen.
-4. Nach Freigabe wird Bild 01 bei **jedem weiteren Bild** als visuelle Referenz angehängt.
-5. Ab Bild 02 darf die Bildwelt nicht neu interpretiert werden.
+2. Bild 01 separat erzeugen und streng auf die Reel-Countryball-Welt prüfen.
+3. Bild 01 wird danach Master-Style-Frame.
+4. Ab Bild 02 wird Bild 01 bei jeder Generierung als visuelle Referenz angehängt.
+5. Motiv, Requisiten, Perspektive und Hintergrundfarbe dürfen wechseln; die künstlerische Welt nicht.
 
 Merksatz:
 
-> The scene prompt determines WHAT is shown. The master image determines HOW everything looks.
-
-Die 5er-Regel bleibt erhalten: Nach dem separaten Master-Frame werden die restlichen Bilder in kontrollierten Wellen mit maximal fünf aktiven Generierungen erzeugt.
+> The scene prompt determines WHAT is shown. The Reel Countryball visual world and the approved Bild 01 determine HOW it looks.
 
 ## Sichtbarer Text — DEUTSCH-HARD-LOCK
 
-Für **jedes deutsche YouTube-Projekt** gilt ohne Ausnahme:
+Für jedes deutsche YouTube-Projekt gilt:
 
-- **Jeder sichtbare lesbare Text im Bild muss Deutsch sein.**
-- Das gilt für Überschriften, Kartenlabels, Schilder, Diagramme, Callouts, Legenden, Pfeilbeschriftungen, Kalendertexte, UI-artige Elemente und sonstige Wörter.
-- Flow darf keine englischen Standardlabels ergänzen.
-- Englischer sichtbarer Text = **HARD FAIL → Bild regenerieren**.
-- Pseudo-Schrift oder unleserlicher Text = **HARD FAIL → Bild regenerieren oder Text entfernen**.
-- Wenn ein Text nicht ausdrücklich benötigt wird, lieber **gar keinen Text** erzeugen.
-- Eigennamen, die im Deutschen identisch geschrieben werden, dürfen natürlich unverändert bleiben.
+- jeder sichtbare lesbare Text muss Deutsch sein
+- gilt für Headlines, Kartenlabels, Schilder, Legenden, Diagramme, Callouts, Kalender und Hintergrundtext
+- englischer sichtbarer Text = HARD FAIL
+- Pseudo-Schrift/unleserlicher Text = HARD FAIL
+- wenn Text nicht nötig ist, keinen Text erzeugen
 
 Beispiele:
+
 - `ATLANTIC OCEAN` → verboten
 - `ATLANTISCHER OZEAN` → erlaubt
 - `MEDITERRANEAN SEA` → verboten
@@ -115,59 +128,24 @@ Beispiele:
 
 ## Thumbnail
 
-Bild 00 nutzt dieselbe Bildwelt, darf aber:
-- stärkeren Kontrast
-- größere Motive
-- klarere Emotion
-- größere deutsche Headline
-verwenden.
+Bild 00 verwendet dieselbe Countryball-Welt, darf aber stärkeren Kontrast, größere Motive und eine große deutsche Headline verwenden. Bild 00 kommt nie in die Videotimeline.
 
-Bild 00 bleibt ausschließlich Thumbnail und kommt nie in die Videotimeline.
+## A–E-Pacing
 
-## Visuelle Komplexität A–E
+- A: 4–5 s geplant; max. 6,5 s gemessen
+- B: 5–7 s geplant; max. 8,5 s
+- C: 7–9 s geplant; max. 10,5 s
+- D: 9–12 s geplant; max. 13,5 s
+- E: 12–15 s geplant; max. 16,0 s
 
-- A — sehr einfach: 4–5 s geplant; echte Timeline max. 6,5 s
-- B — einfach: 5–7 s geplant; echte Timeline max. 8,5 s
-- C — mittel: 7–9 s geplant; echte Timeline max. 10,5 s
-- D — komplex: 9–12 s geplant; echte Timeline max. 13,5 s
-- E — sehr komplex: 12–15 s geplant; echte Timeline max. 16,0 s
-
-Komplexität bedeutet nicht, ein Bild künstlich vollzustopfen. Ein Bild behält einen klaren visuellen Zweck.
-
-## Motion nach A–E
-
-- A: sehr leichter Push
-- B: ruhiger Pan
-- C: narrativer Pan/Push
-- D: langsamer Scan/Pull
-- E: besonders ruhige Übersicht
-
-Motion bleibt subtil.
-
-## Verbotene Stilabweichungen
-
-Nicht verwenden:
-- beige historische Cartoon-/Kinderbuch-Welt
-- normale oder semi-realistische Cartoon-Menschen
-- gemischte Menschenstile
-- Countryballs
-- Fotorealismus
-- Anime/Manga
-- 3D-/Pixar-Look
-- Clay-/Knetstil
-- Hochglanz-Render
-- Stockfoto-Ästhetik
-- überladene Infografiken
-- alte Atlas-/Pergamentkarten
-- englischen sichtbaren Text in deutschen Projekten
-- harte Stilwechsel zwischen Szenen
+Die Komplexitätsklasse ändert nicht die Bildwelt. Auch ein D-/E-Bild bleibt clean und kontrolliert.
 
 ## Prompt-Regel
 
-Prompts selbst werden auf Englisch geschrieben. **Sichtbarer Text im erzeugten Bild folgt jedoch immer der Projektsprache; bei deutschen Videos ausschließlich Deutsch.**
+Prompts werden auf Englisch geschrieben. Sichtbarer Bildtext folgt der Projektsprache; bei deutschen Projekten ausschließlich Deutsch.
 
-Der feste Master-Prefix lautet sinngemäß:
+Fester YouTube-Master-Prefix:
 
 ```text
-Universal Editorial Stickman World v1.2, 16:9 horizontal, premium clean digital 2D editorial illustration, every visible human including background people is a minimalist stickman with a round or slightly oval head, tiny black eyes, minimal mouth, thin simplified limbs and strongly simplified body, richer believable environments with natural lighting and subtle 2D shading, moderate-to-vivid scene-appropriate colors, crisp modern composition, one clear visual purpose, no beige/sepia wash, no parchment texture, no historical-manuscript look, no normal cartoon humans, no semi-realistic people, no photorealism, no 3D, no countryballs. For German projects, every readable word visible anywhere in the image must be German; do not generate English labels or pseudo-text.
+Serious Minimal Countryball Explainer visual world, exactly matching the active Reel visual DNA, adapted only to a 16:9 horizontal YouTube canvas: clean serious minimal 2D countryball explainer, perfectly round ball characters when an actor is useful, simple white eyes, thick clean black outlines, flat controlled colors, minimal soft graphic shading, low-to-medium controlled detail, one dominant focal subject, zero to three meaningful supporting props, simple solid or muted background with optional subtle texture or gradient, strong symbolic storytelling, not childish, no normal illustrated humans, no humanoid cartoon people, no stick figures, no photorealism, no realistic rooms, no glossy 3D, no Pixar, no clay, no anime, no busy icon collage. For German projects every readable visible word must be German; no English labels and no pseudo-text.
 ```
