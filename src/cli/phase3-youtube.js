@@ -31,13 +31,14 @@ async function main() {
   run('src/cli/validate-youtube-phase3.js', common);
 
   if (process.argv.includes('--prepare-only')) {
-    console.log('\nYouTube Phase 3 vorbereitet: echtes Audio-Alignment, FINAL_TIMELINE und alle Pre-Render-Gates bestanden.');
+    console.log('\nYouTube Phase 3 vorbereitet: echtes Audio-Alignment, Endstille-QC, FINAL_TIMELINE und alle Pre-Render-Gates bestanden.');
     return;
   }
 
   run('src/cli/render-youtube.js', common);
+  run('src/cli/finalize-youtube-export.js', common);
   run('src/cli/validate-youtube-phase3.js', [...common, '--post-render']);
-  console.log('\nYouTube Phase 3: BESTANDEN — Render und Post-Render-QC abgeschlossen.');
+  console.log('\nYouTube Phase 3: BESTANDEN — Render, Export-Finalisierung und Post-Render-QC abgeschlossen.');
 }
 
 main().catch((error) => {
