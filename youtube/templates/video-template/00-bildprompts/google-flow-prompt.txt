@@ -1,0 +1,69 @@
+GOOGLE FLOW MASTER PROMPT — [VIDEO-TITEL]
+
+ZIEL
+Erzeuge Bild 00 als Thumbnail und danach alle geplanten Videobilder für ein YouTube-Langvideo.
+
+WICHTIG
+- Es gibt nur dieses eine Prompt-Dokument.
+- Bild 00 wird separat erzeugt.
+- Danach arbeitest du in kontrollierten 5er-Wellen.
+- Niemals mehr als fünf aktive Bildgenerierungen gleichzeitig.
+- Niemals die nächste Welle starten, bevor die aktuelle vollständig fertig, geprüft, korrigiert, benannt und abgelegt ist.
+
+ABLAUF
+1. Bild 00 separat erzeugen, prüfen und als `Bild 00.png` unter `00-bildprompts/images/` speichern.
+2. Bild 01–05 gleichzeitig erzeugen.
+3. Auf alle fünf warten. Inhalt, Stil, Nummerierung und Format prüfen. Fehler innerhalb derselben Welle korrigieren.
+4. Erst wenn 01–05 korrekt vorliegen, Bild 06–10 starten.
+5. Danach 11–15, 16–20 usw. bis zum letzten geplanten Bild.
+6. Der letzte Block darf 1–5 Bilder enthalten.
+7. Alle Dateien flach unter `00-bildprompts/images/` als `Bild NN.png` ablegen.
+8. Bild 00 ist ausschließlich Thumbnail und darf nie in die Videotimeline.
+
+FESTE BILDWELT
+16:9, hand-drawn 2D editorial explainer style, simple stick-figure-like humans with round or slightly oval heads, minimal facial features, clean black outlines, warm slightly muted colors, subtle paper texture, calm professional educational storytelling, simple historical/natural/reduced environments, one clear visual purpose, no photorealism, no 3D, no Pixar, no clay, no countryballs, no watermark. Visible text only when explicitly requested and in the project language.
+
+A–E-PACING
+A = sehr einfach, geplant 4–5 s
+B = einfach, geplant 5–7 s
+C = mittel, geplant 7–9 s
+D = komplex, geplant 9–12 s
+E = sehr komplex, geplant 12–15 s
+
+Die Klasse bestimmt die sinnvolle Bilddichte. Wenn ein einfacher visueller Moment länger gesprochen wird, muss Phase 1 einen zusätzlichen Bildmoment planen statt das Bild künstlich lange stehen zu lassen. Die exakte finale Schnittzeit kommt später aus dem echten Voice-over.
+
+==================================================
+BILD 00 — THUMBNAIL
+==================================================
+[THUMBNAIL-PROMPT]
+
+==================================================
+WELLE 1 — BILD 01–05
+==================================================
+
+Bild 01 · [A–E] · [PLANZEIT]
+[PROMPT]
+
+Bild 02 · [A–E] · [PLANZEIT]
+[PROMPT]
+
+Bild 03 · [A–E] · [PLANZEIT]
+[PROMPT]
+
+Bild 04 · [A–E] · [PLANZEIT]
+[PROMPT]
+
+Bild 05 · [A–E] · [PLANZEIT]
+[PROMPT]
+
+STOP: 01–05 vollständig prüfen und korrigieren. Erst danach die nächste 5er-Welle.
+
+[WEITERE 5ER-WELLEN NACH DEMSELBEN MUSTER BIS ZUM LETZTEN GEPLANTEN BILD]
+
+FINALER CHECK
+- Bild 00 vorhanden und nur Thumbnail
+- Videobilder lückenlos nummeriert
+- keine Duplikate
+- jede Datei `Bild NN.png`
+- alle Bilder unter `00-bildprompts/images/`
+- nie mehr als fünf aktive Generierungen gleichzeitig
