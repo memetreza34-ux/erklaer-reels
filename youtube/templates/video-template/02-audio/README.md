@@ -1,28 +1,20 @@
 # 02 – Audio — V2
 
-Für neue Projekte mit `productionRulesVersion >= 2` darf und soll das Voice-over **in mehreren Teilen** erzeugt werden. Eine einzige lange Audiodatei ist nicht erforderlich.
-
-Benennung passend zu den Script-Parts:
+Für neue YouTube-Projekte wird **eine einzige finale Voice-over-Datei** verwendet:
 
 ```text
-01_part-bilder-01-bis-10.<audio>
-02_part-bilder-11-bis-20.<audio>
-03_part-bilder-21-bis-30.<audio>
-...
+voiceover-final.wav
 ```
 
+Andere gängige Audioformate sind technisch ebenfalls möglich, aber pro neuem V2-Projekt soll unter `02-audio/` nur **eine** finale Produktionsdatei liegen.
+
 Regeln:
-- jeder Audio-Part gehört exakt zum gleichnamigen Script-Part
-- Part 01 deckt Bild 01–10 ab
-- Part 02 deckt Bild 11–20 ab
-- usw.
-- letzter Part darf weniger als 10 Bilder abdecken
-- keine Parts überspringen oder doppelt anlegen
-- keine lange führende/abschließende Stille
-- Phase 3 setzt die Parts chronologisch zusammen
-- zwischen zwei Parts darf keine ungeplante hörbare Pause über 0,25 s entstehen
-- echte Bild-Anker werden innerhalb des jeweils richtigen Audio-Parts gemessen
+- vollständiges `01-voice-script/voice-script.txt` in einer zusammenhängenden Stimme einsprechen/erzeugen
+- keine sichtbaren Audio-Parts
+- keine unnötig lange führende oder abschließende Stille
+- Phase 3 misst echte Whisper-Wortzeitstempel
+- überlange Endstille wird erkannt und für das interne Master-Audio automatisch gekürzt
+- die Originaldatei unter `02-audio/` bleibt unverändert
+- das gekürzte Produktionsmaster liegt technisch unter `99-technik/YOUTUBE_AUDIO_MASTER.wav`
 
-Weitere tatsächlich verwendete Audiodateien müssen klar benannt bleiben.
-
-Details: `youtube/ADAPTIVE_PACING_V2.md`.
+Legacy-Projekte mit mehreren Audio-Parts bleiben lesbar, definieren aber nicht mehr den Standard für neue Videos.

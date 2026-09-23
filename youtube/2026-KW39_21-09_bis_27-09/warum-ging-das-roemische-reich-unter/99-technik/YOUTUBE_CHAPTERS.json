@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "timingSource": "FINAL_TIMELINE.json",
+  "chapters": [
+    {"imageNumber": 1, "title": "Ein Weltreich verschwindet"},
+    {"imageNumber": 5, "title": "Die Krise im Inneren"},
+    {"imageNumber": 11, "title": "Grenzen, Goten und Hunnen"},
+    {"imageNumber": 17, "title": "Warum Ost und West unterschiedlich stark waren"},
+    {"imageNumber": 21, "title": "Rom verliert seine Provinzen"},
+    {"imageNumber": 31, "title": "476 – das berühmte Ende"},
+    {"imageNumber": 35, "title": "Warum der Westen wirklich unterging"},
+    {"imageNumber": 38, "title": "Was von Rom blieb"}
+  ]
+}

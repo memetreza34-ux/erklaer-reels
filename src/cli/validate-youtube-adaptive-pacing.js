@@ -30,6 +30,26 @@ const COMPLEXITY_RANGES = Object.freeze({
   E: [12, 15]
 });
 
+const DEFAULT_FINAL_HARD_MAX = Object.freeze({
+  A: 6.5,
+  B: 8.5,
+  C: 10.5,
+  D: 13.5,
+  E: 16
+});
+
+const DEFAULT_FINAL_SHORT_REVIEW = Object.freeze({
+  A: 3,
+  B: 4,
+  C: 5,
+  D: 6.5,
+  E: 8
+});
+
+function configuredThreshold(config, level, fallback) {
+  return numberOrNull(config?.[level]) ?? fallback[level];
+}
+
 async function main() {
   const rawDir = arg('--dir');
   if (!rawDir) {
@@ -76,6 +96,7 @@ async function main() {
   const timelineJson = await readJson(timelinePath);
   const images = Array.isArray(mapping.images) ? mapping.images : [];
   const timeline = Array.isArray(timelineJson.images) ? timelineJson.images : [];
+  const mappingByNumber = new Map(images.map((item) => [Number(item.imageNumber), item]));
 
   if (!images.length) errors.push('Mapping enthält keine Videobilder.');
   if (timeline.length !== images.length) {
@@ -115,8 +136,11 @@ async function main() {
   const reviewFrom = numberOrNull(pacing.reviewFromSeconds) ?? 14;
   const strongReviewFrom = numberOrNull(pacing.strongSplitReviewFromSeconds) ?? 16;
   const shortReview = numberOrNull(pacing.reviewIfShorterThanSeconds) ?? 4;
+  const complexityHardMax = meta.complexityFinalHardMaxSeconds ?? {};
+  const complexityShortReview = meta.complexityFinalShortReviewSeconds ?? {};
+  const endHold = numberOrNull(timelineJson.endHoldSeconds) ?? 0.6;
 
-  for (const item of timeline) {
+  for (const [index, item] of timeline.entries()) {
     const start = numberOrNull(item.startSeconds);
     const end = numberOrNull(item.endSeconds);
     const imageNumber = Number(item.imageNumber);
@@ -125,6 +149,20 @@ async function main() {
       continue;
     }
     const hold = end - start;
+    const contentHold = index === timeline.length - 1 ? Math.max(0, hold - endHold) : hold;
+    const mapped = mappingByNumber.get(imageNumber);
+    const level = String(mapped?.complexityLevel ?? '').toUpperCase();
+
+    if (COMPLEXITY_RANGES[level]) {
+      const levelHardMax = configuredThreshold(complexityHardMax, level, DEFAULT_FINAL_HARD_MAX);
+      const levelShort = configuredThreshold(complexityShortReview, level, DEFAULT_FINAL_SHORT_REVIEW);
+      if (contentHold > levelHardMax + 0.01) {
+        errors.push(`Bild ${imageNumber}: echte ${contentHold.toFixed(2)} s sind für Klasse ${level} zu lang (Hard-Max ${levelHardMax.toFixed(2)} s). Zusätzlichen Bildmoment planen.`);
+      } else if (contentHold < levelShort) {
+        warnings.push(`Bild ${imageNumber}: echte ${contentHold.toFixed(2)} s sind für Klasse ${level} sehr kurz — auf hektischen Wechsel prüfen.`);
+      }
+    }
+
     if (hold >= hardMax) {
       errors.push(`Bild ${imageNumber}: Hold ${hold.toFixed(2)} s >= ${hardMax.toFixed(2)} s. V2-Hard-Fail: Bild muss aufgeteilt werden.`);
     } else if (hold >= strongReviewFrom) {
@@ -148,7 +186,7 @@ async function main() {
     return;
   }
 
-  console.log(`Adaptive Pacing V2: BESTANDEN — ${images.length} Bilder, A–E-Planung vollständig, kein Hold >= ${hardMax.toFixed(2)} s.`);
+  console.log(`Adaptive Pacing V2: BESTANDEN — ${images.length} Bilder, A–E-Planung + echte A–E-Timeline geprüft, kein Hold >= ${hardMax.toFixed(2)} s.`);
   console.log('Sichtbare Script-/Audio-Parts sind nicht erforderlich; technische Segmentierung bleibt intern.');
 }
 
