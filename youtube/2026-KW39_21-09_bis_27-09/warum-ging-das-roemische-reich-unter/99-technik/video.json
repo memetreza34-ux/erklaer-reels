@@ -10,8 +10,22 @@
   "status": "phase2-pending",
   "language": "de",
   "format": "youtube-longform",
-  "visualStyleId": "youtube-editorial-stick-explainer",
-  "visualStyleReason": "Feste YouTube-Bildwelt: hand-drawn editorial stick-figure explainer style für erzählerische Langvideos.",
+  "visualStyleId": "universal-editorial-stickman-v1.2",
+  "visualStyleReason": "Korrigierte feste YouTube-Bildwelt: hochwertige digitale 2D Editorial-Stickman-Welt mit konsequenten Stickman-Menschen, reicheren glaubwürdigen Umgebungen, moderaten bis kräftigen Farben und ohne beige/sepia Historien-Cartoon-Look.",
+  "masterReferencePolicy": {
+    "masterImageNumber": 1,
+    "generateMasterSeparately": true,
+    "attachMasterToAllLaterImages": true,
+    "mixedHumanStylesForbidden": true,
+    "beigeSepiaHistoricalCartoonForbidden": true
+  },
+  "visibleTextPolicy": {
+    "projectLanguageOnly": true,
+    "germanProjectRequiresGermanOnly": true,
+    "englishVisibleTextHardFail": true,
+    "pseudoTextHardFail": true,
+    "preferNoTextWhenNotRequired": true
+  },
   "aspectRatio": "16:9",
   "minimumDurationSeconds": 285,
   "targetDurationSeconds": 320,
