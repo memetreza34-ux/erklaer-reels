@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "motionPolicy": "complexity-v1",
+  "backgroundMusic": false,
+  "defaultSoundVolume": 0.18,
+  "motionOverrides": [],
+  "soundEffects": []
+}
