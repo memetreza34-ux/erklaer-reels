@@ -18,16 +18,23 @@
     "mappingLegacyPartsRemoved": true,
     "renderPlan": "complete",
     "timelineBoundChapterPlan": "complete",
-    "uploadMetadata": "complete"
+    "uploadMetadata": "complete",
+    "visualWorld": "serious-minimal-countryball-explainer-youtube-16x9",
+    "sourceVisualWorld": "serious-minimal-countryball-explainer",
+    "visualWorldParityWithReels": true,
+    "onlyVisualFormatDifference": "16:9-horizontal-instead-of-9:16-vertical",
+    "germanVisibleTextHardLock": true
   },
   "phase2": {
     "owner": "user",
-    "status": "PENDING",
+    "status": "PENDING-RESTART-WITH-COUNTRYBALL-PROMPT",
     "thumbnail": "missing",
     "images": "missing",
     "singleFinalAudio": "missing",
     "flowWaveSize": 5,
-    "flatImageDirectory": "00-bildprompts/images"
+    "flatImageDirectory": "00-bildprompts/images",
+    "discardPreviousStickmanAttempt": true,
+    "masterStyleImageNumber": 1
   },
   "phase3": {
     "owner": "Antigravity",
@@ -73,11 +80,14 @@
   ],
   "notes": [
     "Golden-V2 candidate with one prompt, one script and one final voice-over.",
+    "YouTube uses the same Serious Minimal Countryball visual DNA as active Reels; only canvas format changes to 16:9.",
+    "Previous Stickman Flow assets are invalid and must not be used.",
+    "Bild 01 is the master style frame for all later image generations.",
     "Five-image waves are execution logic only, not visible file packages.",
+    "Every readable visible word in this German project must be German.",
     "A-E pacing will be checked again against real measured audio timings.",
     "Trailing silence is trimmed only in the internal master; user audio stays unchanged.",
     "Motion and selected SFX are machine-readable and rendered in Phase 3.",
-    "Project metadata is aligned with the latest YouTube template schema.",
-    "Reel system is unrelated and must not be modified."
+    "Reel pipeline/code stays untouched; YouTube only references the Reel visual DNA."
   ]
 }

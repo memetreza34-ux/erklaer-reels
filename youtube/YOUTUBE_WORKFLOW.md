@@ -2,7 +2,7 @@
 
 **Stand: 2026-09-23**
 
-Diese Datei gilt ausschließlich für YouTube-Langvideos. Reel-Regeln und Reel-Code werden dadurch nicht verändert.
+Diese Datei gilt ausschließlich für YouTube-Langvideos. Reel-Code wird dadurch nicht verändert. Die YouTube-Bildwelt übernimmt aber bewusst dieselbe künstlerische Welt wie die aktiven Reels.
 
 ## Priorität
 
@@ -28,7 +28,7 @@ youtube/YYYY-KWNN_DD-MM_bis_DD-MM/themen-slug/
 └── 99-technik/
 ```
 
-Neue Projekte bekommen **keine sichtbaren** Script-Parts, Audio-Parts oder 10er-Bildpakete.
+Neue Projekte bekommen keine sichtbaren Script-Parts, Audio-Parts oder 10er-Bildpakete.
 
 ## Phase 1 — ChatGPT
 
@@ -36,8 +36,8 @@ Phase 1 erstellt:
 - Thema + Duplicate-Check
 - Recherche + Quellen
 - finalen Titel
-- **einen** Google-Flow-Masterprompt inklusive Bild 00 und aller Szenenbilder
-- **ein** vollständiges Voice-over-Skript
+- einen Google-Flow-Masterprompt inklusive Bild 00 und aller Szenenbilder
+- ein vollständiges Voice-over-Skript
 - `99-technik/BILD_AUDIO_ZUORDNUNG.json`
 - A–E-Komplexität für jedes Bild
 - `99-technik/YOUTUBE_RENDER_PLAN.json`
@@ -56,22 +56,7 @@ D = komplex      → 9–12 s
 E = sehr komplex → 12–15 s
 ```
 
-Wenn ein einfacher visueller Moment mehr Sprache tragen müsste, wird ein zusätzlicher sinnvoller Bildmoment geplant. Komplexität darf nicht künstlich erhöht werden, nur um ein Bild länger stehen zu lassen.
-
-### Interne Mapping-Felder
-
-Jeder Bildmoment enthält mindestens:
-- `imageNumber`
-- `imageFile`
-- `batchFolder: "images"`
-- `startAnchor`
-- `endAnchor`
-- `visualPurpose`
-- `complexityLevel`
-- `complexityReason`
-- `plannedHoldSeconds`
-
-Echte Sekundenwerte entstehen erst aus dem finalen Audio.
+Wenn ein einfacher visueller Moment mehr Sprache tragen müsste, wird ein zusätzlicher sinnvoller Bildmoment geplant.
 
 ## Phase 2 — Nutzer + Google Flow
 
@@ -82,31 +67,35 @@ Der Nutzer benötigt nur:
 01-voice-script/voice-script.txt
 ```
 
-### Google Flow — Style-Anchor + 5er-Wellen
+### Google Flow — Countryball-World-Lock + 5er-Wellen
 
 ```text
 Bild 00 separat
-Bild 01 separat → Style prüfen → als Master-Referenz festlegen
+Bild 01 separat → Countryball-Stil prüfen → Master-Referenz
 Bild 02–05 mit Bild 01 als Referenz → prüfen
 06–10 mit Bild 01 als Referenz
 11–15 ...
 ```
 
 Harte Regeln:
-- **Bild 01 ist der Master-Style-Frame** für das gesamte Video
+- Quellwelt: `serious-minimal-countryball-explainer`
+- YouTube-Anpassung: exakt dieselbe visuelle DNA, nur 16:9 horizontal
+- Bild 01 ist der Master-Style-Frame
 - ab Bild 02 wird Bild 01 bei jeder Generierung als visuelle Referenz angehängt
 - höchstens 5 aktive Bildgenerierungen gleichzeitig
 - niemals zwei Wellen gleichzeitig offen halten
 - letzter Block darf 1–5 Bilder enthalten
 - Bild 00 bleibt Thumbnail und kommt nie in die Timeline
 - Bilder liegen flach unter `00-bildprompts/images/`
-- feste Bildwelt: `universal-editorial-stickman-v1.2`
-- jeder sichtbare Mensch bleibt Stickman; normale/semi-realistische Cartoon-Menschen sind Style Fail
-- kein beige/sepia Historien-Cartoon-/Pergament-Look
+- Akteure sind perfekt runde Countryball-artige Kugeln mit weißen Augen und dicken schwarzen Konturen
+- Stickfiguren, normale Cartoon-Menschen und realistische Menschen sind Style Fail
+- normalerweise 0–3 sinnvolle Zusatzobjekte
+- einfache Hintergründe, flache 2D-Farben, minimale grafische Schattierung
+- nicht kindisch, nicht albern, nicht generisch-KI-haft
 
 ### Sichtbarer Text — Deutsch-Hard-Lock
 
-Bei einem deutschen Projekt gilt für **jedes Bild ohne Ausnahme**:
+Bei einem deutschen Projekt gilt für jedes Bild:
 - jeder lesbare sichtbare Text muss Deutsch sein
 - gilt auch für Kartenlabels, Schilder, Legenden, Diagramme, Kalender, Callouts und Hintergrundtext
 - Flow darf keine englischen Standardlabels ergänzen
@@ -116,9 +105,7 @@ Bei einem deutschen Projekt gilt für **jedes Bild ohne Ausnahme**:
 
 ### Voice-over
 
-Aus `voice-script.txt` wird **eine einzige finale Voice-over-Datei** erzeugt und unter `02-audio/` abgelegt.
-
-Das Nutzeroriginal wird von Phase 3 nicht überschrieben.
+Aus `voice-script.txt` wird eine einzige finale Voice-over-Datei erzeugt und unter `02-audio/` abgelegt. Das Nutzeroriginal wird von Phase 3 nicht überschrieben.
 
 ## Phase 3 — gemessene Produktion
 
@@ -132,12 +119,12 @@ Reihenfolge:
 1. aktuelle Bilder, Mapping und genau eine finale Stimme bestimmen
 2. Voice-over mit Whisper + Wortzeitstempeln messen
 3. überlange Endstille anhand des letzten gesprochenen Worts erkennen
-4. nur das interne `99-technik/YOUTUBE_AUDIO_MASTER.wav` kürzen; Nutzeroriginal unverändert lassen
+4. nur das interne `99-technik/YOUTUBE_AUDIO_MASTER.wav` kürzen
 5. Messung per SHA-256 an die aktuelle Audiodatei binden
 6. jeden `startAnchor` monoton im gesprochenen Wortstrom finden
 7. echte `actualStartSeconds`, `actualEndSeconds`, `alignmentConfidence` schreiben
 8. `99-technik/FINAL_TIMELINE.json` bauen
-9. A–E-Planung gegen die **echte** Timeline prüfen
+9. A–E-Planung gegen die echte Timeline prüfen
 10. Pre-Render-Hard-Gate bestehen
 11. 16:9-YouTube-Renderer mit A–E-Motion + gezielten SFX ausführen
 12. Thumbnail + Upload-Dateien finalisieren
@@ -157,8 +144,6 @@ Reihenfolge:
 
 ## A–E-Gate gegen echte Zeiten
 
-Zusätzlich zur Phase-1-Zielzeit gelten tolerante Hard-Max-Werte für die gemessene Timeline:
-
 ```text
 A: 6,5 s
 B: 8,5 s
@@ -175,22 +160,20 @@ Standard `complexity-v1`:
 - A: sehr leichte Push-Bewegung
 - B: ruhiger Pan
 - C: narrativer Pan/Push
-- D: langsamer Scan/Pull für Karten oder komplexe Szenen
+- D: langsamer Scan/Pull
 - E: besonders ruhige Übersicht
-
-Optional kann `YOUTUBE_RENDER_PLAN.json` einzelne Bilder überschreiben.
 
 ## SFX
 
 Gezielte Sounds stehen ausschließlich in `99-technik/YOUTUBE_RENDER_PLAN.json` und verwenden nur Typen aus `config/sound-library.json`.
 
-- selektiv, nicht bei jedem Bildwechsel
+- selektiv
 - leiser als Voice-over
 - keine Hintergrundmusik standardmäßig
 
 ## Kapitel
 
-`99-technik/YOUTUBE_CHAPTERS.json` bindet Kapitel an Bildnummern. Beim finalen Export kommen die Zeitstempel aus `FINAL_TIMELINE.json`; Phase-1-Schätzzeiten werden nicht als finale Kapitelzeiten übernommen.
+`99-technik/YOUTUBE_CHAPTERS.json` bindet Kapitel an Bildnummern. Finale Zeitstempel kommen aus `FINAL_TIMELINE.json`.
 
 ## Finaler Export
 
@@ -208,12 +191,13 @@ Gezielte Sounds stehen ausschließlich in `99-technik/YOUTUBE_RENDER_PLAN.json` 
 Ein Video ist erst fertig, wenn:
 - alle Bilder + Thumbnail vorhanden sind
 - Bild 01 als Master-Style-Frame festgelegt wurde
-- alle weiteren Bilder dieselbe Bildwelt halten
+- alle weiteren Bilder dieselbe Serious-Minimal-Countryball-Welt halten
+- 16:9 die einzige visuelle Formatabweichung zur Reel-Welt ist
 - bei deutschem Projekt jeder sichtbare Text Deutsch ist
 - genau eine finale Stimme vorhanden ist
 - alle Anchors real gemessen wurden
 - Audio-Fingerprints gültig sind
-- Endstille-Policy auf dem internen Master erfüllt ist
+- Endstille-Policy erfüllt ist
 - A–E-Pacing mit der echten Timeline bestanden ist
 - `FINAL_TIMELINE.json` existiert
 - Pre-Render-Gate Exit 0 liefert

@@ -4,29 +4,42 @@ ZIEL
 Erzeuge Bild 00 als Thumbnail und danach Bild 01 bis Bild 38 für ein deutsches YouTube-Langvideo.
 
 WICHTIG
-- Dieses Video verwendet ausschließlich die feste Bildwelt `universal-editorial-stickman-v1.2`.
-- Der bisherige beige/sepia historische Cartoon-/Schulbuch-Look ist FALSCH und darf nicht wieder erzeugt werden.
-- Es gibt nur dieses eine Prompt-Dokument.
-- Bild 00 wird separat erzeugt.
-- Bild 01 wird separat als MASTER-STYLE-FRAME erzeugt und streng geprüft.
-- Ab Bild 02 muss Bild 01 bei JEDER Generierung als visuelle Referenz angehängt werden.
-- Die Szene bestimmt WAS gezeigt wird; Bild 01 bestimmt WIE alles aussieht.
+- Dieses Video nutzt exakt dieselbe künstlerische Welt wie die aktiven Reels: `serious-minimal-countryball-explainer`.
+- Einzige Formatabweichung: 16:9 horizontal statt 9:16 vertikal.
+- KEINE Stickfiguren.
+- KEINE normalen Cartoon-Menschen.
+- KEINE realistischen Menschen.
+- Bild 00 separat erzeugen.
+- Bild 01 separat als MASTER-STYLE-FRAME erzeugen und streng prüfen.
+- Ab Bild 02 Bild 01 bei JEDER Generierung als visuelle Referenz anhängen.
 - Danach kontrollierte Wellen mit maximal fünf aktiven Bildgenerierungen gleichzeitig.
 - Niemals zwei Wellen gleichzeitig offen halten.
 
 ==================================================
-MASTER STYLE LOCK — UNIVERSAL EDITORIAL STICKMAN WORLD v1.2
+MASTER STYLE LOCK — SERIOUS MINIMAL COUNTRYBALL EXPLAINER
 ==================================================
 
-Use this exact visual DNA for every image:
-Universal Editorial Stickman World v1.2, 16:9 horizontal, premium clean digital 2D editorial illustration, every visible human including tiny background people is a minimalist stickman with a round or slightly oval head, tiny black dot eyes, minimal mouth, thin simplified arms and legs, strongly simplified body, historical clothing only as simplified outer shapes over the stickman anatomy, richer believable environments with natural lighting and subtle 2D shading, moderate-to-vivid scene-appropriate colors, crisp modern editorial composition, clear depth, one strong visual purpose.
+Use the exact active Reel visual DNA, adapted only to a 16:9 horizontal YouTube canvas:
+clean serious minimal 2D countryball explainer, perfectly round ball characters when an actor is useful, simple white eyes, thick clean black outlines, flat controlled colors, minimal soft graphic shading, low-to-medium controlled detail, one dominant focal subject, zero to three meaningful supporting props, simple solid or muted background with optional subtle texture or gradient, strong symbolic storytelling, instantly readable, adult informative tone, not childish.
 
 HARD NEGATIVES:
-no beige/sepia color wash, no parchment texture, no antique manuscript look, no washed-out pastel default, no old textbook-map aesthetic, no normal cartoon humans, no semi-realistic humans, no detailed realistic faces, no mixed human styles, no photorealism, no 3D, no Pixar, no clay, no countryballs, no watermark.
+no stick figures, no human-head characters, no humanoid cartoon people, no normal illustrated humans, no realistic humans, no realistic hands or skin, no detailed realistic rooms, no cinematic full-scene realism, no photo backgrounds, no mixed media, no glossy 3D, no Pixar, no clay, no anime, no manga, no stock-photo aesthetic, no busy icon collage, no tiny decorative countryballs, no random tongue or gag faces, no watermark.
 
-Every visible person MUST remain a stickman. If even a small background person becomes a normal cartoon or semi-realistic person, the image is a STYLE FAIL and must be regenerated.
+COUNTRYBALL HARD LOCK:
+- ball body is a perfect circle/sphere, never oval, bean-shaped or egg-shaped
+- no separate human head
+- simple white eyes with controlled expression
+- optional tiny simple arms/hands/feet only when action requires them
+- flag patterns only when geography/politics/cultural identity is genuinely relevant
+- for ancient/historical groups without a modern flag, use neutral or historically suitable solid colours plus one simple identifying prop/symbol; never invent a modern national flag
+- if an object, symbol or map explains the point more clearly, no countryball is required
 
-Environments may be richer and more detailed than the humans. Use clear modern colors, natural light, convincing simplified architecture, terrain, objects and materials. Beige/brown may occur locally where historically sensible but must never dominate the whole visual world.
+COMPOSITION HARD LOCK:
+- one dominant focal subject
+- usually 0–3 meaningful supporting elements
+- allowed modes: Minimal Symbolic, Supported Explainer, Simple Mini Scene
+- backgrounds stay simple and graphic
+- historical content must be translated into this same reduced Countryball visual language, not into realistic historical paintings
 
 ==================================================
 DEUTSCH-HARD-LOCK — JEDER SICHTBARE TEXT
@@ -63,16 +76,16 @@ ROMAN EMPIRE = forbidden → RÖMISCHES REICH
 ABLAUF
 ==================================================
 
-1. Bild 00 separat erzeugen, prüfen und als `Bild 00.png` speichern.
+1. Bild 00 separat erzeugen und als `Bild 00.png` speichern.
 2. Bild 01 separat erzeugen.
-3. Bild 01 streng prüfen: Stickman-Anatomie, moderne digitale 2D-Linien, klare Farben, keine Beige-/Sepia-Welt, keine normalen Cartoon-Menschen, deutscher sichtbarer Text.
-4. Nur wenn Bild 01 korrekt ist, wird es als MASTER-STYLE-FRAME festgelegt.
+3. Bild 01 streng prüfen: perfekte Countryball-Kugelgeometrie, dicke schwarze Konturen, flache 2D-Farben, einfache Augen, geringe bis mittlere Detaildichte, einfacher Hintergrund, kein Stickman-/Menschen-Look, deutscher sichtbarer Text.
+4. Nur wenn Bild 01 korrekt ist, als MASTER-STYLE-FRAME festlegen.
 5. Bild 02–05 gleichzeitig erzeugen und bei jedem Prompt Bild 01 als visuelle Referenz anhängen.
-6. Warten, bis alle fertig sind. Alle Bilder auf Inhalt, Bildwelt, Menschenstil und deutsche Textsprache prüfen. Fehler innerhalb derselben Welle korrigieren.
-7. Erst wenn Bild 01–05 vollständig korrekt sind, Bild 06–10 starten.
+6. Alle prüfen. Fehler innerhalb derselben Welle korrigieren.
+7. Erst wenn Bild 01–05 korrekt sind, Bild 06–10 starten.
 8. Danach 11–15, 16–20, 21–25, 26–30, 31–35 und zuletzt 36–38.
 9. Niemals mehr als fünf aktive Bildgenerierungen gleichzeitig.
-10. Alle fertigen Bilder flach unter `00-bildprompts/images/` als `Bild NN.png` ablegen. Keine 10er-Unterordner.
+10. Alle fertigen Bilder flach unter `00-bildprompts/images/` als `Bild NN.png` ablegen.
 11. Bild 00 ist nur Thumbnail und darf nie in die Videotimeline.
 
 A–E-PACING
@@ -81,37 +94,36 @@ B = einfach, ca. 5–7 s
 C = mittel, ca. 7–9 s
 D = komplex, ca. 9–12 s
 E = sehr komplex, ca. 12–15 s
-Die Klasse ist nur Planungslogik für die spätere Bilddichte. Die echte Schnittzeit wird später aus dem finalen Voice-over gemessen.
 
 ==================================================
 BILD 00 — THUMBNAIL
 ==================================================
-A dramatic but clean YouTube thumbnail in Universal Editorial Stickman World v1.2: a monumental Roman eagle and Roman column cracking apart, one shocked minimalist stickman Roman in the foreground, western Mediterranean map fading behind it, strong modern visual contrast, clear digital 2D editorial composition, richer environment, vivid but controlled colors, no beige wash. Add exactly one large German headline: "ROM FÄLLT". Keep the eastern side faintly intact in the far background. Every visible person is a minimalist stickman. No other text.
+A clean serious minimal 2D Countryball YouTube thumbnail in the exact active Reel visual world, adapted to 16:9: a large deep-red Roman countryball with simple white eyes and a small golden laurel/eagle cue reacts to a monumental Roman column cracking apart; behind it, a simple western Mediterranean map fades on one side. Thick clean black outlines, flat controlled colors, minimal graphic shading, very simple background, one dominant focal composition, no realistic people. Add exactly one large German headline: "ROM FÄLLT". No other text.
 
 ==================================================
 MASTER-FRAME — BILD 01
 ==================================================
 
 Bild 01 · B · 6 s
-A vast simplified Roman map stretches from the Atlantic to the eastern Mediterranean while the western half visibly fades and fractures away; one small minimalist stickman Roman looks shocked at the disappearing territory. Premium clean digital 2D editorial illustration, crisp modern color contrast, clear depth, richer map/environment treatment, no parchment, no sepia wash. Add exactly one German headline: "WARUM FIEL ROM?". Every visible human must be stickman.
+A large deep-red Roman countryball with simple white eyes stands beside a clean simplified map of the Roman Empire; the western half of the map visibly fades and fractures while the eastern side remains intact. Serious minimal 2D Countryball explainer, thick clean black outlines, flat controlled colors, simple background, one dominant focal idea, maximum two supporting elements. Add exactly one German headline: "WARUM FIEL ROM?". No other text.
 
-STOP: Bild 01 streng auf die feste Bildwelt prüfen. Erst nach Freigabe Bild 01 als visuelle Referenz für alle folgenden Bilder verwenden.
+STOP: Bild 01 streng prüfen. Nur wenn es exakt wie die Reel-Countryball-Welt aussieht, als Master-Referenz verwenden.
 
 ==================================================
-ERSTE WELLE ERGÄNZEN — BILD 02–05
+ERSTE WELLE — BILD 02–05
 ==================================================
 
 Bild 02 · D · 10 s
-Wide clean modern editorial map of the Roman Empire near its greatest territorial extent, with a few simplified roads, ports, tax coin symbols and legion markers linking Europe, North Africa and the Mediterranean into one network; strong readable geography, modern digital 2D colors, no old atlas style. If any geographic text appears, it must be German only; otherwise show no labels. Every visible human marker/figure must follow the stickman world.
+A simplified map of the Roman Empire near its greatest territorial extent with only a few clean visual connectors: one road line, one port symbol, tax coins and one legion helmet icon linking Europe, North Africa and the Mediterranean. Add one large Roman countryball as the main actor. Same Serious Minimal Countryball Reel visual world, 16:9, simple background, low-to-medium detail, no realistic atlas look. If any text appears, it must be German only.
 
 Bild 03 · C · 8 s
-Split but unified modern editorial map of the late Roman world: the western half is dimming while the eastern half around Constantinople stays bright and intact; a clean dividing line emphasizes West versus East. Add only the German labels "WEST" and "OST". No other text. Use the exact Bild 01 master style.
+A simple split map of the late Roman world with a western red-toned area dimming and an eastern purple-toned area staying bright; one western Roman countryball and one eastern Roman countryball face the two halves. Add only the German labels "WEST" and "OST". No other text.
 
 Bild 04 · B · 6 s
-A large clean calendar tile marked "476" sits beside a simplified Roman column, while several separate cracks approach the column from different directions instead of one single blow; simple symbolic modern editorial composition. Add only the German text: "476 ≠ EIN GRUND". No other text. Use the exact Bild 01 master style.
+Minimal symbolic composition: one large calendar tile marked "476" beside one simplified Roman column, with several separate cracks reaching the column from different directions. No character required. Add only the German text: "476 ≠ EIN GRUND".
 
 Bild 05 · D · 10 s
-Late third-century Roman crisis scene with a throne in the center, two rival minimalist stickman Roman commanders pulling toward it, frontier watchtowers under attack at the edges, and worried stickman citizens in the background; richer believable environment, modern digital 2D editorial look, clear colors, no beige historical cartoon style. No visible text.
+Supported explainer composition: one imperial throne in the center, two deep-red Roman countryballs pulling toward it from opposite sides, with a simple frontier watchtower icon and one warning symbol in the background. Serious, clean, minimal, no crowd scene. No visible text.
 
 STOP: 01–05 vollständig prüfen und korrigieren. Erst danach 06–10.
 
@@ -120,19 +132,19 @@ WELLE 2 — BILD 06–10
 ==================================================
 
 Bild 06 · C · 8 s
-Minimalist stickman Roman soldiers march away from an exposed frontier fort to fight another stickman Roman army in the distance; the now-thin border garrison watches nervously as threats gather beyond the river, clear cause-and-effect composition, richer modern 2D environment. No visible text.
+Two groups of red Roman countryballs move toward each other in a simplified conflict symbol while one small frontier fort behind them is left nearly empty; one threat marker waits beyond a simple river line. Clear cause-and-effect, minimal background, no realistic battle. No visible text.
 
 Bild 07 · D · 10 s
-A Roman treasury table with shrinking coin piles, a worn coin, a stalled merchant cart and a stickman tax collector holding a nearly empty ledger; military helmets loom in the background, visually connecting war costs to economic strain. Modern digital editorial composition, no readable text on the ledger.
+A worried Roman countryball beside a shrinking stack of coins, a worn coin, one stalled merchant cart icon and a nearly empty tax ledger. One military helmet symbol in the background links the economic strain to war costs. Maximum three supporting props. No readable text on the ledger.
 
 Bild 08 · C · 8 s
-A damaged Roman administrative system is being repaired: organized stickman soldiers return to formation, stickman officials sort documents, and a stabilized city rises behind them; hopeful but restrained historical scene, showing recovery rather than collapse. No visible text.
+A damaged symbolic Roman administration system being repaired: one Roman countryball soldier returns to formation, one official countryball organizes a document, and a simplified city icon stabilizes in the background. Clean supported-explainer composition. No visible text.
 
 Bild 09 · C · 8 s
-A large balance scale: on one side coins and tax sacks, on the other side simplified soldiers, officials, frontier forts and multiple imperial residences; the coin side is visibly strained, clean modern explanatory composition. No visible text.
+A large balance scale dominates the image: coins and tax sacks on one side, simplified soldier/fort/administration icons on the other. One Roman countryball watches the strained balance. No visible text.
 
 Bild 10 · D · 10 s
-Modern editorial map focused on the Western Roman Empire with the Rhine and Danube frontiers highlighted as long defensive lines and several restrained warning markers across Britain, Gaul, Hispania, Italy and North Africa; clear strategic overview, no old atlas aesthetic. If any labels appear, they must be German only; otherwise no text.
+A clean simplified map of the Western Roman Empire with the Rhine and Danube as two bold frontier lines and only a few warning markers across Britain, Gaul, Hispania, Italy and North Africa. One Roman countryball appears as the main actor. Any labels must be German only; otherwise no text.
 
 STOP: 06–10 vollständig prüfen. Erst danach 11–15.
 
@@ -141,19 +153,19 @@ WELLE 3 — BILD 11–15
 ==================================================
 
 Bild 11 · B · 6 s
-A mixed Roman military unit of minimalist stickman humans stands together at a frontier camp, with simplified Roman equipment shared across soldiers of different backgrounds; they train side by side under the same standard, calm scene emphasizing service rather than hostility. No visible text.
+Several differently coloured but stylistically identical round countryballs stand under one Roman military standard, all using the same simplified Roman helmet cue. The point is shared service inside the Roman army, not ethnic hostility. No visible text.
 
 Bild 12 · D · 10 s
-Broad steppe-to-Danube migration map blended with a richer landscape: minimalist stickman mounted Hunnic riders move westward in the far background while several displaced stickman groups shift toward the Roman frontier; arrows are few, large and easy to follow. Any map text must be German only; preferably no labels.
+A clean steppe-to-Danube map with one dark neutral Hunnic countryball and horse/bow cue moving west, while two displaced neutral countryballs shift toward the Roman frontier. Few large arrows only, simple background. Any text must be German only; preferably none.
 
 Bild 13 · C · 8 s
-Stickman families, carts and armed Gothic stickman groups cross the Danube by boats and shallow crossings toward a guarded Roman bank; stickman Roman officials watch and register arrivals, emphasizing a controlled entry rather than a battle. Add only: "376". No other text.
+Two or three neutral Gothic-coded countryballs with one cart and one boat symbol cross a simple Danube line toward one red Roman official countryball holding a small registration scroll. Add only: "376". No other text.
 
 Bild 14 · C · 8 s
-A food distribution point near a Roman camp turns tense: hungry stickman families wait while simplified stickman officials hoard supplies, and armed tension begins at the edge of the crowd; show escalation without graphic violence. No visible text.
+A simple food-distribution mini-scene: two hungry neutral countryballs wait by a small food crate while one Roman official countryball guards extra supplies. One tension symbol appears between them. No visible text.
 
 Bild 15 · D · 10 s
-Battle of Adrianople in 378 shown as a clean modern editorial battlefield overview: minimalist stickman Roman formations buckle under pressure from stickman Gothic forces, an imperial standard falls, and a distant stickman emperor figure is isolated; no gore. Add only the German headline: "ADRIANOPEL 378".
+Minimal symbolic battle overview: red Roman countryballs on one side, muted Gothic countryballs on the other, one fallen Roman standard in the center and one isolated Roman emperor countryball behind it. No gore, no detailed battlefield. Add only: "ADRIANOPEL 378".
 
 STOP: 11–15 vollständig prüfen. Erst danach 16–20.
 
@@ -162,19 +174,19 @@ WELLE 4 — BILD 16–20
 ==================================================
 
 Bild 16 · C · 8 s
-Inside a simplified Roman map boundary, a large autonomous armed stickman group now occupies visible space while stickman imperial officials negotiate from a smaller position; the empire still exists, but control is visibly shared and weakened. No visible text.
+Inside a simplified Roman map boundary, one large armed neutral countryball group occupies visible space while one smaller Roman official countryball negotiates beside it. The empire remains visible but control is shared. No text.
 
 Bild 17 · C · 8 s
-A modern editorial Roman imperial map is carefully divided into western and eastern administrative halves, with two young minimalist stickman imperial figures standing at separate courts; the East looks denser and wealthier, the West more exposed. Add only: "395". Any other map text is forbidden.
+A clean map divided into western and eastern administrative halves with one Roman countryball on each side; the eastern side has a few more coin/city symbols while the western side has one frontier-warning symbol. Add only: "395".
 
 Bild 18 · D · 10 s
-Eastern Roman overview centered on prosperous Constantinople behind strong walls, busy eastern Mediterranean ports and Egypt sending grain and tax wealth; several elements arranged cleanly around one strong eastern focal point, all people as minimalist stickmen. No readable text unless a German place label is essential.
+Supported explainer for the Eastern Roman Empire: one eastern Roman countryball in front of a simplified Constantinople wall icon, plus one port/ship symbol and one Egypt grain/coin symbol. Keep to three supporting elements. No visible text unless a German label is essential.
 
 Bild 19 · C · 8 s
-Western Roman map with one province fading away; a connected line leads from the lost province to a shrinking tax chest and then to an underfunded minimalist stickman frontier soldier, simple three-step visual chain. No visible text.
+Three-step symbolic chain: a western province on a simple map fades away → a tax chest loses coins → a red Roman soldier-countryball has an empty pay pouch. No text.
 
 Bild 20 · C · 8 s
-A western imperial throne is surrounded by a minimalist stickman emperor, stickman court officials and two powerful stickman generals, each tugging on symbolic levers represented by army, office and treasury icons; tense political scene without readable labels.
+One imperial throne in the center, with one emperor countryball, one court countryball and two powerful general countryballs connected to simple army/office/treasury symbols. Clean supported-explainer layout, no realistic room. No visible text.
 
 STOP: 16–20 vollständig prüfen. Erst danach 21–25.
 
@@ -183,19 +195,19 @@ WELLE 5 — BILD 21–25
 ==================================================
 
 Bild 21 · D · 10 s
-Winter Rhine frontier around 406: several migrating armed stickman groups with families and carts cross into Roman Gaul while a thin stickman Roman defense watches from a distant fort; behind them, new regional power markers begin appearing. Add only: "406". No English labels.
+A simple winter Rhine line across the image; three neutral migrating countryballs with one cart symbol cross into a faded Gaul area while one small red Roman defender countryball watches from a minimal fort icon. Add only: "406".
 
 Bild 22 · C · 8 s
-Two side-by-side simplified modern editorial maps of the Western Roman Empire: one official map still looks broad, while the real-control map beside it has large faded zones in Gaul and Hispania; one minimalist stickman Roman official compares them in concern. No visible text unless German labels are necessary.
+Two side-by-side simplified Western Roman maps: the left official map still looks broad, the right real-control map has large faded zones in Gaul and Hispania. One worried Roman countryball compares them. No visible text unless a short German label is necessary.
 
 Bild 23 · D · 10 s
-Rome in 410 with city gates breached and minimalist stickman Visigothic troops entering while stickman citizens react in shock; iconic Roman monuments remain recognizable but simplified, no gore, focus on the psychological shock. Add only: "ROM 410".
+A simplified Rome gate icon dominates the scene; two muted Visigoth countryballs enter while one red Roman countryball reacts in shock. Keep architecture reduced to one recognizable gate/monument cue. Add only: "ROM 410".
 
 Bild 24 · B · 6 s
-A simple continuity scene: damaged Rome sits on the left, while a functioning imperial court in fortified Ravenna continues on the right with minimalist stickman clerks still working; a connecting line shows the state survived the sack. No visible text.
+Split symbolic composition: damaged Rome icon on the left, functioning Ravenna court desk icon on the right with one Roman official countryball still working. One connecting arrow shows continuity. No text.
 
 Bild 25 · D · 10 s
-North African Mediterranean map centered on Carthage: minimalist stickman Vandal forces take control of the major port while Roman authority symbols are lowered; ships and grain warehouses emphasize the city's strategic value. Add only the German label: "KARTHAGO 439". No English map text.
+A simplified North Africa map centered on Carthage, with one Vandal-coded neutral countryball taking the port while a Roman authority symbol moves away; one grain ship and one warehouse symbol show strategic value. Add only: "KARTHAGO 439".
 
 STOP: 21–25 vollständig prüfen. Erst danach 26–30.
 
@@ -204,19 +216,19 @@ WELLE 6 — BILD 26–30
 ==================================================
 
 Bild 26 · C · 8 s
-Carthage's grain ships and tax coin streams that once flowed toward Italy are visibly cut off; on the Italian side a treasury chest and supply warehouse become emptier, clear economic cause-and-effect. All visible people are minimalist stickmen. No visible text.
+A simple grain ship and tax-coin flow from Carthage toward Italy is visibly cut in the middle; on the Italian side a treasury chest becomes empty. One worried Roman countryball reacts. No text.
 
 Bild 27 · D · 10 s
-A huge late Roman expedition fleet sails toward North Africa in 468, then the composition shows ships scattered and burning at a distance while a treasury meter drops sharply; no graphic casualties. Add only: "468". No other text.
+A simplified Roman fleet icon group sails toward North Africa; on the other side several ship icons break apart while a treasury meter drops. One Roman countryball observes the failed expedition. Add only: "468".
 
 Bild 28 · C · 8 s
-A nearly empty Roman pay chest sits beside a shrinking regular stickman unit, while a larger allied stickman warrior contingent and a powerful stickman commander step forward to fill the gap; clear shift in military dependence. No visible text.
+An almost empty Roman pay chest beside a small group of regular red Roman countryballs, while a larger group of allied neutral countryballs and one commander countryball step forward. Clear shift in military dependence. No text.
 
 Bild 29 · C · 8 s
-A minimalist stickman commander stands between a Roman imperial standard and his own loyal stickman warrior retinue; both sides overlap visually rather than oppose each other, showing blurred loyalty and regional power. No visible text.
+One commander countryball stands between a Roman imperial standard on one side and two loyal retinue countryballs on the other. Both sides overlap visually rather than oppose each other. No visible text.
 
 Bild 30 · C · 8 s
-A row of imperial crowns rapidly changes hands in front of the same throne, while a large shadow of a military stickman general remains behind the throne throughout; symbolic but historically grounded political instability. No visible text.
+A throne in the center with several imperial crown icons changing above it while the same large round general-countryball silhouette remains behind the throne. Minimal symbolic composition. No text.
 
 STOP: 26–30 vollständig prüfen. Erst danach 31–35.
 
@@ -225,34 +237,34 @@ WELLE 7 — BILD 31–35
 ==================================================
 
 Bild 31 · C · 8 s
-Minimalist stickman Odoacer calmly removes the imperial insignia from a young stickman Romulus Augustulus in a sparse but believable palace room; no execution, no battle, just a formal transfer of power. Add only the large year: "476".
+One Odoacer-coded neutral countryball calmly removes a simplified imperial insignia from a smaller young red Roman countryball beside a throne. No violence, no human anatomy. Add only the large year: "476".
 
 Bild 32 · A · 5 s
-The morning after 476: a Roman-style town continues normal daily life, a minimalist stickman clerk writes, a market operates and a church stands open; calm continuity, one simple message: life did not suddenly stop. No visible text.
+Simple mini-scene after 476: one Roman-style market stall, one clerk countryball writing at a small desk and one simple church silhouette. Calm normality, very low detail, one clear idea: daily life continues. No text.
 
 Bild 33 · C · 8 s
-Constantinople remains bright behind massive walls while a clean timeline runs from 476 toward 1453; a minimalist stickman eastern Roman emperor stands above the city, emphasizing continued Roman imperial rule. Add only: "476 → 1453".
+A bright Constantinople wall icon with one eastern Roman countryball in front; a clean timeline runs from 476 toward 1453. Add only: "476 → 1453".
 
 Bild 34 · D · 10 s
-Sixth-century eastern Roman map under Justinian with arrows from Constantinople toward North Africa and Italy, several western territories lighting up again under Roman control; clean modern strategic map, not overloaded, no old atlas style. Any text must be German only; preferably no extra labels.
+A simplified sixth-century map with one eastern Roman countryball near Constantinople and only a few bold arrows toward North Africa and Italy, where selected western territories light up again. No old atlas detail. Any text must be German only; preferably none.
 
 Bild 35 · E · 13 s
-Central Western Roman eagle surrounded by five large, clearly separated visual forces: stickman rival throne claimants, expensive army and treasury, migrating and invading stickman groups, shrinking territory map, and falling tax coins; all arrows converge on weakening state power. Add only: "NICHT NUR EIN GRUND".
+A large deep-red Western Roman countryball sits in the center looking weakened. Around it are exactly five clearly separated cause symbols: rival crowns, expensive army helmet plus coins, migrating group arrows, shrinking territory map, falling tax coins. All five point inward toward the weakened Roman countryball. Add only: "NICHT NUR EIN GRUND".
 
-STOP: 31–35 vollständig prüfen. Erst danach letzte Welle 36–38.
+STOP: 31–35 vollständig prüfen. Erst danach 36–38.
 
 ==================================================
 WELLE 8 — BILD 36–38
 ==================================================
 
 Bild 36 · C · 8 s
-Simple circular causal diagram made from illustrations rather than dense text: shrinking Roman map leads to fewer tax coins, fewer tax coins lead to a smaller stickman army, smaller army leads back to more lost territory; strong loop composition. No readable labels; communicate through symbols and arrows.
+A simple circular causal loop made from three large symbols: shrinking Roman map → fewer tax coins → smaller group of Roman soldier-countryballs → back to more lost territory. Use arrows, no readable labels.
 
 Bild 37 · B · 6 s
-A long timeline from the late fourth to late fifth century shows Roman western authority gradually fading in stages rather than collapsing at one point; a few regions fade earlier and others later, minimal clean visual. If dates or labels appear, German formatting only; no English words.
+A clean horizontal timeline from the late fourth to late fifth century; a red Western Roman countryball gradually loses colour and territory in several stages rather than disappearing at one point. No text except optional German-formatted years.
 
 Bild 38 · C · 8 s
-Final hopeful transformation scene: an old Roman road continues forward into several early medieval kingdoms while a law scroll, Latin legacy represented symbolically without readable Latin text, city arches and a church remain along the route; the Roman eagle fades but its legacy continues. All people are minimalist stickmen. No visible text.
+Final symbolic transformation: a simple Roman road continues forward while four legacy icons remain along it — law scroll, Latin-style letter symbol without readable Latin text, city arch, church silhouette. A fading Roman countryball remains at the start while the road continues. No visible text.
 
 ==================================================
 FINALER CHECK — HARD GATE
@@ -262,15 +274,17 @@ FINALER CHECK — HARD GATE
 - Bild 01 = freigegebener Master-Style-Frame
 - jedes Bild 02–38 mit Bild 01 als visueller Referenz erzeugt
 - Videobilder 01–38 lückenlos
-- keine Duplikate
 - alle Dateien `Bild NN.png`
-- alle Bilder unter `00-bildprompts/images/`
 - maximal fünf aktive Generierungen gleichzeitig
-- jeder sichtbare Mensch ist minimalistischer Stickman
-- keine normalen oder semi-realistischen Cartoon-Menschen
-- kein beige/sepia Historien-Cartoon-/Pergament-Look
-- moderne digitale 2D Editorial-Welt mit klareren Farben
+- Bildwelt exakt Serious Minimal Countryball Explainer wie bei den Reels
+- 16:9 ist die einzige Formatabweichung
+- Countryballs perfekt rund, weiße Augen, dicke schwarze Konturen
+- keine Stickfiguren
+- keine normalen Cartoon-Menschen
+- keine realistischen Menschen
+- ein dominantes Motiv, normalerweise höchstens 0–3 Zusatzobjekte
+- einfacher grafischer Hintergrund
 - JEDER sichtbare Text ist Deutsch
 - keine englischen Kartenlabels
 - kein Pseudo-Text
-- bei einem Verstoß das betroffene Bild regenerieren, nicht akzeptieren
+- bei einem Verstoß das betroffene Bild regenerieren
