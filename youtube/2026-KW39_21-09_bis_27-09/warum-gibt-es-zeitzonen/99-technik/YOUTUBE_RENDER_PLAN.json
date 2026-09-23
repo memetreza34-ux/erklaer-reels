@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "motionPolicy": "complexity-v1",
+  "backgroundMusic": false,
+  "defaultSoundVolume": 0.15,
+  "motionOverrides": [],
+  "soundEffects": [
+    {"imageNumber": 1, "type": "tick", "offsetSeconds": 0, "volume": 0.14},
+    {"imageNumber": 4, "type": "soft-whoosh", "offsetSeconds": -0.04, "volume": 0.13},
+    {"imageNumber": 5, "type": "tick", "offsetSeconds": -0.04, "volume": 0.12},
+    {"imageNumber": 6, "type": "swoosh-reveal", "offsetSeconds": -0.04, "volume": 0.14},
+    {"imageNumber": 8, "type": "click", "offsetSeconds": -0.04, "volume": 0.12},
+    {"imageNumber": 11, "type": "soft-swipe", "offsetSeconds": -0.04, "volume": 0.12},
+    {"imageNumber": 13, "type": "paper", "offsetSeconds": -0.04, "volume": 0.12},
+    {"imageNumber": 15, "type": "soft-whoosh", "offsetSeconds": -0.04, "volume": 0.13},
+    {"imageNumber": 18, "type": "soft-swipe", "offsetSeconds": -0.04, "volume": 0.11},
+    {"imageNumber": 19, "type": "whoosh-down", "offsetSeconds": -0.04, "volume": 0.12}
+  ]
+}

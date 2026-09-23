@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "timingSource": "FINAL_TIMELINE.json",
+  "chapters": [
+    {"imageNumber": 1, "title": "Als jede Stadt ihre eigene Zeit hatte"},
+    {"imageNumber": 4, "title": "Eisenbahn macht Zeit zum Problem"},
+    {"imageNumber": 6, "title": "Wie Zeitzonen funktionieren"},
+    {"imageNumber": 13, "title": "Greenwich und die Weltzeit"},
+    {"imageNumber": 15, "title": "Datumsgrenze und heutiges System"}
+  ]
+}

@@ -1,0 +1,37 @@
+Stell dir vor: In Berlin ist Mittag, aber wenige Kilometer weiter zeigt die Uhr schon eine andere Zeit. Genau so war es früher.
+
+Bevor es Zeitzonen gab, richtete fast jede Stadt ihre Uhr nach der Sonne. Stand sie am höchsten, war dort zwölf Uhr.
+
+Solange Menschen langsam reisten, störte das kaum. Ein Unterschied von einigen Minuten fiel im Alltag wenig auf.
+
+Dann kamen Eisenbahn und Telegraf. Fahrpläne, Nachrichten und Anschlüsse zwischen vielen Städten mussten plötzlich exakt zusammenpassen.
+
+Jetzt wurde die lokale Sonnenzeit zum Chaos. Ein Zug konnte nach einer Stadtzeit abfahren und nach einer anderen ankommen.
+
+Die Lösung war eine gemeinsame Zeitordnung. Große Gebiete wurden zu Zeitzonen zusammengefasst, statt jede Stadt einzeln rechnen zu lassen.
+
+Die Grundidee ist einfach: Die Erde dreht sich in ungefähr vierundzwanzig Stunden einmal um ihre eigene Achse.
+
+Ein voller Kreis hat 360 Grad. 360 geteilt durch 24 ergibt ungefähr fünfzehn Grad pro Stunde.
+
+Darum entspricht eine ideale Zeitzone ungefähr fünfzehn Längengraden. Nach Osten wird die Uhr meist eine Stunde vorgestellt.
+
+Nach Westen passiert das Gegenteil. Dort wird die Uhr meist eine Stunde zurückgestellt.
+
+Echte Zeitzonen sehen aber nicht wie perfekte Streifen aus. Ihre Grenzen folgen oft Staaten, Regionen und Inselgruppen.
+
+Deutschland liegt deshalb vollständig in derselben Zeitzone, obwohl der Sonnenstand im Osten und Westen nicht exakt gleichzeitig ist.
+
+Für die weltweite Orientierung brauchte man einen gemeinsamen Ausgangspunkt. 1884 wurde der Meridian durch Greenwich international als Nullmeridian festgelegt.
+
+Von dort lassen sich Längengrade und Zeitunterschiede ordnen. Heute wird die Weltzeit technisch über UTC koordiniert.
+
+Auf der gegenüberliegenden Erdseite liegt ungefähr die internationale Datumsgrenze. Wer sie überquert, wechselt nicht nur die Uhrzeit, sondern auch das Datum.
+
+Auch diese Linie ist nicht gerade. Sie weicht Inseln und Staatsgebieten aus, damit zusammengehörige Regionen denselben Kalendertag behalten.
+
+Zeitzonen sind also kein Naturgesetz mit perfekten Grenzen. Sie verbinden die Erdrotation mit Politik und praktischem Alltag.
+
+Ohne sie wären internationale Flüge, Videokonferenzen, Börsen, Server und Fahrpläne deutlich komplizierter.
+
+Wenn du deine Uhr umstellst, nutzt du ein weltweites Ordnungssystem für ein einfaches Problem: Die Sonne steht nicht überall gleichzeitig am höchsten.
