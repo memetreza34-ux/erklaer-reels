@@ -1,8 +1,8 @@
 # CURRENT WORKFLOW — VERBINDLICHE SINGLE SOURCE OF TRUTH
 
-**Stand: 2026-09-12**
+**Stand: 2026-09-23**
 
-Diese Datei ist die verbindliche Repo-weite Produktionsregel für neue Reels. YouTube besitzt einen eigenen separaten Workflow.
+Diese Datei ist die verbindliche Repo-weite Produktionsregel für neue Reels. YouTube besitzt einen eigenen Produktionsworkflow, nutzt aber dieselbe Serious-Minimal-Countryball-Bild-DNA in 16:9.
 
 ## Priorität
 
@@ -94,7 +94,7 @@ Vor Bild 01 gilt ein globaler World-Lock für das ganze Reel. Einzelprompts änd
 
 Vollständige Style-Bibel: `knowledge/fixed-visual-world.md`.
 
-**YouTube bleibt vollständig getrennt** und behält seine eigene 16:9-Langvideo-Bildwelt.
+**YouTube bleibt ein eigener 16:9-Produktionsworkflow, übernimmt aber dieselbe Serious-Minimal-Countryball-Bild-DNA. Die einzige beabsichtigte Formatabweichung ist 16:9 horizontal statt 9:16 vertikal.**
 
 ## Adaptive Dense V2 — Bildanzahl
 
@@ -207,6 +207,13 @@ Mehrsekündige Endstille blockiert den Render. Der separate 0,6-s-Schlussbild-Ho
 npm run phase3:reel -- --dir "<reel>"
 ```
 
+Jeder Start beginnt fail-fast mit zwei Pflicht-Gates, bevor Assets organisiert oder Audio verändert werden:
+
+```text
+Preflight: ffmpeg + ffprobe + unzip + zentrale Pflichtconfigs
+→ check:content --strict
+```
+
 Danach arbeitet Antigravity selbstständig bis zum Render:
 
 ```text
@@ -220,6 +227,13 @@ Assets finden
 → Timeline bauen
 → Finalizer
 → Render
+```
+
+Nach einem Hard Blocker kann gezielt ab einem späteren Produktionsschritt wiedereingestiegen werden. Preflight und `check:content --strict` werden dabei trotzdem immer erneut ausgeführt:
+
+```bash
+npm run phase3:reel -- --dir "<reel>" --from "Timeline bauen"
+npm run phase3:reel -- --list-steps
 ```
 
 Nicht mehr erforderlich:
@@ -237,6 +251,8 @@ Ein Durchgang prüft:
 - grob passend zum bereits zugeordneten Satz
 - Serious-Minimal-Countryball-Welt eingehalten
 - Pflichttext korrekt, falls vorgesehen
+
+Technische Checks allein ersetzen keine echte Sichtprüfung des erzeugten Bildinhalts. Ein unbekanntes oder ungeprüftes Bild darf nicht allein wegen korrekter Dateinummer, Auflösung oder Seitenverhältnis als semantisch bestätigt bezeichnet werden.
 
 ### Rückfragen nur bei Hard Blockern
 
@@ -265,6 +281,6 @@ Neue Reels benötigen mindestens zwei echte HTTPS-Quellen auf verschiedenen Host
 
 ## Hard Gates / Wahrheitspflicht
 
-`check:content --strict`, Timeline/Finalizer/Renderer sowie Audio-/SFX-Gates bleiben technische Schutzschichten. `--force` darf echte Quellen-, Audio-, Motion-/SFX- oder Assetfehler nicht verdecken.
+Preflight, `check:content --strict`, Timeline/Finalizer/Renderer sowie Audio-/SFX-Gates bleiben technische Schutzschichten. `--force` darf echte Quellen-, Audio-, Motion-/SFX- oder Assetfehler nicht verdecken.
 
 Nicht ausgeführte Tests oder QC-Stufen niemals als bestanden melden.

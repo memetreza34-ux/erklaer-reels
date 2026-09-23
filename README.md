@@ -49,7 +49,7 @@ serious-minimal-countryball-explainer
 
 Vollständige Style-Bibel: `knowledge/fixed-visual-world.md`.
 
-**YouTube verwendet weiterhin seine eigene separate 16:9-Bildwelt.**
+**YouTube hat einen eigenen Produktionsworkflow und ein eigenes 16:9-Style-ID, übernimmt aber dieselbe Serious-Minimal-Countryball-Bild-DNA. Die einzige beabsichtigte Formatabweichung ist 16:9 horizontal statt 9:16 vertikal.**
 
 ## Google Flow
 
@@ -84,13 +84,20 @@ reel-XX_thema/
 
 ## Phase 3 — Antigravity Simple Mode
 
-Nur ein normaler Startbefehl:
+Normaler Start:
 
 ```bash
 npm run phase3:reel -- --dir "<reel>"
 ```
 
-Danach läuft Antigravity selbstständig:
+Vor jeder Asset- oder Audioänderung laufen automatisch:
+
+```text
+Preflight: ffmpeg + ffprobe + unzip + Pflichtconfigs
+→ check:content --strict
+```
+
+Danach arbeitet Antigravity selbstständig:
 
 ```text
 Assets finden
@@ -102,6 +109,13 @@ Assets finden
 → Timeline
 → Finalizer
 → Render
+```
+
+Nach einem Hard Blocker kann gezielt ab dem betroffenen Produktionsschritt weitergemacht werden; Preflight und Inhaltsprüfung werden trotzdem erneut ausgeführt:
+
+```bash
+npm run phase3:reel -- --dir "<reel>" --from "Timeline bauen"
+npm run phase3:reel -- --list-steps
 ```
 
 Keine schriftliche Bildbeschreibung pro Bild, keine Match-Begründung pro Bild, keine zweite Zuordnungsprüfung und keine manuelle Freigabe jedes Audio-Ankers.

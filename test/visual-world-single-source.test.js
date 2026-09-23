@@ -50,7 +50,9 @@ test('Style-Bibel liegt am konfigurierten Ort', async () => {
   assert.ok(knowledgeFiles.includes('fixed-visual-world.md'));
 });
 
-test('YouTube bleibt als eigene Bildwelt getrennt', async () => {
+test('YouTube bleibt eigener Workflow, übernimmt aber dieselbe Countryball-Bild-DNA', async () => {
   const workflow = await read('CURRENT_WORKFLOW.md');
-  assert.match(workflow, /YouTube bleibt.*getrennt/i);
+  assert.match(workflow, /YouTube bleibt ein eigener 16:9-Produktionsworkflow/i);
+  assert.match(workflow, /dieselbe Serious-Minimal-Countryball-Bild-DNA/i);
+  assert.match(workflow, /16:9 horizontal statt 9:16 vertikal/i);
 });
