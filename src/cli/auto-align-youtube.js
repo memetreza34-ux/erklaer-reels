@@ -4,6 +4,7 @@ import { access, readFile, readdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
 import { alignYoutubeProject } from '../core/youtube-audio-alignment.js';
+import { optimizeYoutubeVoiceover } from '../core/youtube-audio-optimizer.js';
 
 const AUDIO_RE = /\.(mp3|wav|m4a|aac|flac|ogg|opus)$/i;
 
@@ -42,7 +43,6 @@ async function prepareSingleAudioV2(projectDirectory, explicitAudio = null) {
       throw new Error('Keine finale Voice-over-Datei unter 02-audio gefunden. Neue V2-Projekte erwarten genau eine vollständige Audiodatei.');
     }
     if (files.length > 1) {
-      // Legacy-Mehrpart-Projekt: bestehende audioPartFile-Zuordnung unverändert lassen.
       return { mode: 'legacy-multipart', count: files.length };
     }
   }
@@ -72,13 +72,18 @@ async function prepareSingleAudioV2(projectDirectory, explicitAudio = null) {
 
 function usage() {
   console.log(`
-Misst jeden YouTube-Bildanker am tatsächlich gesprochenen Wort.
+Optimiert zuerst das YouTube-Voice-over und misst danach jeden Bildanker am tatsächlich gesprochenen Wort.
 
 Verwendung:
   npm run auto-align:youtube -- --dir "youtube/<woche>/<thema>"
 
-Neue V2-Projekte verwenden standardmäßig EINE finale Voice-over-Datei unter
-02-audio/. Die sichtbare Aufteilung in Script-/Audio-Parts ist nicht nötig.
+Neue V2-Projekte verwenden EINE finale Voice-over-Datei unter 02-audio/.
+Phase 3 verändert dieses Nutzeroriginal niemals. Stattdessen wird intern:
+- überlange Pause gekürzt,
+- Endstille entfernt,
+- auf 1,10x bei erhaltener Tonhöhe beschleunigt,
+- auf -16 LUFS / max. -1,5 dBTP normalisiert,
+- und ERST DANACH mit Whisper vermessen.
 
 Optionen:
   --audio <datei>   explizite finale Audiodatei
@@ -97,15 +102,21 @@ async function main() {
   }
 
   const explicitAudio = arg('--audio') ?? null;
-  const prepared = await prepareSingleAudioV2(dir, explicitAudio);
-  if (prepared.mode === 'single-final-voiceover') {
-    console.log(`YouTube-Audio: eine finale Voice-over-Datei (${prepared.audioFile}).`);
-  } else if (prepared.mode === 'legacy-multipart') {
-    console.log(`YouTube-Audio: Legacy-Mehrpartmodus (${prepared.count} Audiodateien).`);
+  const initial = await prepareSingleAudioV2(dir, explicitAudio);
+
+  let alignmentAudio = explicitAudio;
+  if (initial.mode === 'single-final-voiceover') {
+    const optimized = await optimizeYoutubeVoiceover(dir, { audio: explicitAudio });
+    alignmentAudio = optimized.optimizedAbsolute;
+    await prepareSingleAudioV2(dir, alignmentAudio);
+    console.log(`YouTube-Audio: Nutzeroriginal unverändert (${optimized.sourceFile}).`);
+    console.log(`YouTube-Audio: intern optimiert auf 1,10x + kurze Pausen + Endstille entfernt (${optimized.optimizedFile}).`);
+  } else if (initial.mode === 'legacy-multipart') {
+    console.log(`YouTube-Audio: Legacy-Mehrpartmodus (${initial.count} Audiodateien). Neue 1,10x-Regel gilt für neue Single-Audio-V2-Projekte.`);
   }
 
   const result = await alignYoutubeProject(dir, {
-    audio: explicitAudio,
+    audio: alignmentAudio,
     model: arg('--model') ?? 'small',
     refresh: process.argv.includes('--refresh')
   });
