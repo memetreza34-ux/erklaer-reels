@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 3,
   "project": "",
   "voiceoverMaster": "01-voice-script/voice-script.txt",
   "thumbnailImageNumber": 0,
@@ -7,6 +7,10 @@
   "videoLastImageNumber": null,
   "cutLeadSecondsDefault": 0.08,
   "alignmentConfidenceMinimum": 0.95,
+  "complexityPacingVersion": 1,
+  "userFacingAudioMode": "single-final-voiceover",
+  "userFacingImageDirectory": "00-bildprompts/images",
+  "sourceVoiceoverFile": "02-audio/voiceover-final.wav",
   "rules": {
     "anchorTextMustBeExactFromScript": true,
     "audioIsFinalTimingAuthority": true,
@@ -14,16 +18,22 @@
     "noOverlaps": true,
     "image00ExcludedFromTimeline": true,
     "imageEndsAtNextImageStart": true,
-    "doNotGuessMissingAnchor": true
+    "doNotGuessMissingAnchor": true,
+    "phase1ComplexityControlsAnchorDensity": true
   },
   "images": [
     {
       "imageNumber": 1,
       "imageFile": "Bild 01.png",
-      "batchFolder": "01_bilder-01-bis-10",
+      "batchFolder": "images",
+      "scriptPartFile": "01-voice-script/voice-script.txt",
+      "audioPartFile": "02-audio/voiceover-final.wav",
       "startAnchor": "[exakte gesprochene Wörter aus voice-script.txt]",
       "endAnchor": "[startAnchor von Bild 02]",
       "visualPurpose": "[was Bild 01 während dieses Satzabschnitts erklärt]",
+      "complexityLevel": "B",
+      "complexityReason": "[warum dieses Bild einfach/mittel/komplex ist]",
+      "plannedHoldSeconds": 6,
       "actualStartSeconds": null,
       "actualEndSeconds": null,
       "alignmentConfidence": null
