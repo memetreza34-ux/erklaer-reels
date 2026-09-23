@@ -9,7 +9,13 @@
 - Bildanzahl: PASS — 38 aus Inhalt abgeleitet
 - Komplexitätsklassen: PASS — A:1, B:5, C:19, D:12, E:1
 - Kein geplanter Hold >15 s: PASS
-- 5er-Flow-Wellen: PASS — intern im Masterprompt
+- 5er-Flow-Wellen: PASS — maximal fünf aktive Generierungen
+- Master-Style-Frame: PASS — Bild 01 wird separat erzeugt und ab Bild 02 als Referenz verwendet
+- Bildwelt: PASS — `universal-editorial-stickman-v1.2`
+- Figuren-Hard-Lock: PASS — jeder sichtbare Mensch muss Stickman sein; normale/semi-realistische Cartoon-Menschen verboten
+- Farb-/Look-Hard-Lock: PASS — kein beige/sepia Historien-Cartoon-/Pergament-Look
+- Deutsch-Hard-Lock: PASS — jeder sichtbare lesbare Text im deutschen Projekt muss Deutsch sein
+- Englisch/Pseudo-Text: HARD FAIL — betroffenes Bild muss regeneriert werden
 - Sichtbare Paketordner: PASS — nicht vorhanden
 - Sichtbare Script-Parts: PASS — nicht vorhanden
 - Voice-over-Modus: PASS — eine finale Audiodatei vorgesehen
@@ -21,4 +27,4 @@
 - Projektmetadaten: PASS — `video.json` Schema 5 und `status.json` Schema 6 entsprechen dem aktuellen YouTube-Template
 - Upload-Metadaten: PASS
 
-**Ergebnis: Phase 1 COMPLETE. Das konkrete Rom-Video ist auf dem aktuellen Golden-V2-Stand und Phase 2 kann beginnen.**
+**Ergebnis: Phase 1 COMPLETE. Vor Phase 2 müssen die bereits falsch erzeugten beige/englisch beschrifteten Testbilder verworfen und mit dem korrigierten Masterprompt neu erzeugt werden. Danach kann Phase 2 regulär fortgesetzt werden.**
