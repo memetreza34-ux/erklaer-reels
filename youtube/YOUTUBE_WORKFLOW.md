@@ -105,7 +105,31 @@ Bei einem deutschen Projekt gilt für jedes Bild:
 
 ### Voice-over
 
-Aus `voice-script.txt` wird eine einzige finale Voice-over-Datei erzeugt und unter `02-audio/` abgelegt. Das Nutzeroriginal wird von Phase 3 nicht überschrieben.
+Aus `voice-script.txt` wird eine einzige finale Voice-over-Datei erzeugt und unter `02-audio/` abgelegt. Das Nutzeroriginal wird von Phase 3 niemals überschrieben.
+
+## Verbindliches YouTube-Audio-Pacing
+
+Für alle neuen Single-Audio-V2-YouTube-Videos gelten dieselben zentralen Sprecherregeln wie beim Reel:
+
+- überlange Sprechpausen automatisch kürzen
+- kurze natürliche Pausen erhalten
+- Anfangsstille straffen
+- Endstille entfernen
+- Voice-over exakt **1,10x** beschleunigen
+- Tonhöhe dabei erhalten
+- auf **−16 LUFS** normalisieren
+- True Peak höchstens **−1,5 dBTP**
+- 48 kHz Produktionsaudio
+- Nutzeroriginal unter `02-audio/` niemals verändern
+
+Phase 3 erzeugt dafür ausschließlich eine interne Arbeitsfassung unter:
+
+```text
+99-technik/YOUTUBE_AUDIO_OPTIMIZED.wav
+99-technik/YOUTUBE_AUDIO_PACING.json
+```
+
+**Wichtig:** Die Wortzeitmessung darf niemals auf dem langsameren Nutzeroriginal stattfinden. Zuerst wird das Audio optimiert; erst danach misst Whisper die 1,10x-/Pausen-bereinigte Fassung. Nur diese Zeiten dürfen Bildanker und Timeline steuern.
 
 ## Phase 3 — gemessene Produktion
 
@@ -116,19 +140,21 @@ npm run phase3:youtube -- --dir "youtube/<woche>/<thema>"
 ```
 
 Reihenfolge:
-1. aktuelle Bilder, Mapping und genau eine finale Stimme bestimmen
-2. Voice-over mit Whisper + Wortzeitstempeln messen
-3. überlange Endstille anhand des letzten gesprochenen Worts erkennen
-4. nur das interne `99-technik/YOUTUBE_AUDIO_MASTER.wav` kürzen
-5. Messung per SHA-256 an die aktuelle Audiodatei binden
+1. aktuelle Bilder, Mapping und genau eine finale Nutzerstimme bestimmen
+2. internes Voice-over erzeugen: lange Pausen kürzen, Endstille entfernen, 1,10x bei erhaltener Tonhöhe, −16 LUFS / max. −1,5 dBTP
+3. `YOUTUBE_AUDIO_PACING.json` mit Fingerprints schreiben
+4. **erst auf dieser optimierten Fassung** Whisper + Wortzeitstempel messen
+5. Messung per SHA-256 an die optimierte Audiodatei binden
 6. jeden `startAnchor` monoton im gesprochenen Wortstrom finden
 7. echte `actualStartSeconds`, `actualEndSeconds`, `alignmentConfidence` schreiben
-8. `99-technik/FINAL_TIMELINE.json` bauen
-9. A–E-Planung gegen die echte Timeline prüfen
-10. Pre-Render-Hard-Gate bestehen
-11. 16:9-YouTube-Renderer mit A–E-Motion + gezielten SFX ausführen
-12. Thumbnail + Upload-Dateien finalisieren
-13. Post-Render-Hard-Gate bestehen
+8. YouTube-Audio-Pacing-Hard-Gate bestehen
+9. `99-technik/FINAL_TIMELINE.json` bauen
+10. A–E-Planung gegen die echte Timeline prüfen
+11. Pre-Render-Hard-Gate bestehen
+12. 16:9-YouTube-Renderer mit A–E-Motion + gezielten SFX ausführen
+13. Thumbnail + Upload-Dateien finalisieren
+14. Audio-Pacing erneut gegen Fingerprints prüfen
+15. Post-Render-Hard-Gate bestehen
 
 ### Verboten
 
@@ -138,9 +164,12 @@ Reihenfolge:
 - `alignmentConfidence` erfinden
 - simples A-/B-Bild deutlich länger halten, statt sinnvoll zu splitten
 - Rendern ohne gemessene Wortzeiten
-- Rendern nach Änderung des Audios mit altem Messbeleg
+- Wortzeiten am unoptimierten Original messen und danach auf 1,10x beschleunigen
+- Rendern mit anderer Geschwindigkeit als 1,10x bei neuen V2-Videos
+- Rendern mit ungeprüften langen Pausen oder langer Endstille
+- Rendern nach Änderung des optimierten Audios mit altem Messbeleg
+- Nutzer-Voice-over überschreiben
 - Rendern ohne `FINAL_TIMELINE.json`
-- Nutzer-Voice-over beim Endstille-Trim überschreiben
 
 ## A–E-Gate gegen echte Zeiten
 
@@ -194,10 +223,13 @@ Ein Video ist erst fertig, wenn:
 - alle weiteren Bilder dieselbe Serious-Minimal-Countryball-Welt halten
 - 16:9 die einzige visuelle Formatabweichung zur Reel-Welt ist
 - bei deutschem Projekt jeder sichtbare Text Deutsch ist
-- genau eine finale Stimme vorhanden ist
-- alle Anchors real gemessen wurden
-- Audio-Fingerprints gültig sind
-- Endstille-Policy erfüllt ist
+- genau eine finale Nutzerstimme vorhanden ist
+- Nutzeroriginal unverändert geblieben ist
+- internes Audio lange Pausen und Endstille entfernt hat
+- internes Audio exakt 1,10x bei erhaltener Tonhöhe läuft
+- −16 LUFS / max. −1,5 dBTP als Produktionsziel angewendet wird
+- alle Anchors **nach** der Audio-Optimierung real gemessen wurden
+- Audio-Pacing- und Alignment-Fingerprints gültig sind
 - A–E-Pacing mit der echten Timeline bestanden ist
 - `FINAL_TIMELINE.json` existiert
 - Pre-Render-Gate Exit 0 liefert
