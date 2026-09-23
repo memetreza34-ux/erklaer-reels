@@ -1,0 +1,183 @@
+GOOGLE FLOW MASTER PROMPT — Warum gibt es Zeitzonen?
+
+ZIEL
+Erzeuge Bild 00 als Thumbnail und danach Bild 01 bis Bild 19 für ein deutsches YouTube-Erklärvideo von ungefähr 2 Minuten.
+
+WICHTIG
+- Aktive Bildwelt: `serious-minimal-countryball-explainer`.
+- YouTube nur als 16:9-Horizontalversion derselben Reel-Bildwelt.
+- KEINE Stickfiguren.
+- KEINE normalen Cartoon-Menschen.
+- KEINE realistischen Menschen.
+- Bild 00 separat erzeugen.
+- Bild 01 separat als MASTER-STYLE-FRAME erzeugen und streng prüfen.
+- Ab Bild 02 Bild 01 bei JEDER Generierung als visuelle Referenz anhängen.
+- Danach kontrollierte Wellen mit maximal fünf aktiven Bildgenerierungen gleichzeitig.
+- Niemals zwei Wellen gleichzeitig offen halten.
+
+==================================================
+MASTER STYLE LOCK — SERIOUS MINIMAL COUNTRYBALL EXPLAINER
+==================================================
+
+Use the exact active Reel visual DNA, adapted only to a 16:9 horizontal YouTube canvas:
+clean serious minimal 2D countryball explainer, perfectly round ball characters when an actor is useful, simple white eyes, thick clean black outlines, flat controlled colors, minimal soft graphic shading, low-to-medium controlled detail, one dominant focal subject, zero to three meaningful supporting props, simple solid or muted background with optional subtle texture or gradient, strong symbolic storytelling, instantly readable, adult informative tone, not childish.
+
+HARD NEGATIVES:
+no stick figures, no human-head characters, no humanoid cartoon people, no normal illustrated humans, no realistic humans, no realistic hands or skin, no realistic rooms, no cinematic realism, no photo backgrounds, no mixed media, no glossy 3D, no Pixar, no clay, no anime, no manga, no stock-photo aesthetic, no busy icon collage, no tiny decorative countryballs, no watermark.
+
+COUNTRYBALL HARD LOCK:
+- ball body is a perfect circle/sphere, never oval, bean-shaped or egg-shaped
+- simple white eyes with controlled expression
+- optional tiny simple arms only when an action truly needs them
+- flag patterns only when geography or state identity is relevant
+- if an object, map, clock or globe explains the point better, no countryball is required
+
+COMPOSITION HARD LOCK:
+- one dominant focal subject
+- usually 0–3 meaningful supporting elements
+- allowed modes: Minimal Symbolic, Supported Explainer, Simple Mini Scene
+- simple graphic backgrounds
+- no decorative clutter
+
+==================================================
+DEUTSCH-HARD-LOCK — JEDER SICHTBARE TEXT
+==================================================
+
+This is a GERMAN project. Every readable word visible anywhere in every image MUST be German.
+This includes map labels, diagrams, signs, clocks, callouts and legends.
+Do NOT generate English labels. Do NOT generate pseudo-text or fake writing.
+If text is not explicitly required, generate NO TEXT.
+Any English visible text = HARD FAIL and regenerate.
+Any pseudo-text = HARD FAIL and regenerate.
+
+==================================================
+ABLAUF
+==================================================
+
+1. Bild 00 separat erzeugen und als `Bild 00.png` speichern.
+2. Bild 01 separat erzeugen.
+3. Bild 01 streng auf Kugelgeometrie, dicke schwarze Konturen, flache 2D-Farben, geringe Detaildichte, einfachen Hintergrund und korrekten deutschen Text prüfen.
+4. Nur wenn Bild 01 korrekt ist, als MASTER-STYLE-FRAME festlegen.
+5. Bild 02–05 gleichzeitig erzeugen, immer mit Bild 01 als Referenz.
+6. Welle vollständig prüfen und Fehler regenerieren.
+7. Danach Bild 06–10.
+8. Danach Bild 11–15.
+9. Zuletzt Bild 16–19.
+10. Niemals mehr als fünf aktive Bildgenerierungen gleichzeitig.
+11. Alle fertigen Bilder flach unter `00-bildprompts/images/` als `Bild NN.png` ablegen.
+12. Bild 00 ist nur Thumbnail und kommt nie in die Timeline.
+
+A–E-PACING
+A = sehr einfach, ca. 4–5 s
+B = einfach, ca. 5–7 s
+C = mittel, ca. 7–9 s
+D = komplex, ca. 9–12 s
+E = sehr komplex, ca. 12–15 s
+
+==================================================
+BILD 00 — THUMBNAIL
+==================================================
+
+A clean serious minimal 2D Countryball YouTube thumbnail in 16:9. A large globe is split into several bold time-zone bands with three oversized clocks showing clearly different times. A Germany countryball with simple white eyes looks toward the clocks. Strong contrast, thick black outlines, flat controlled colors, minimal background, one dominant composition. Add exactly one large German headline: "WARUM ZEITZONEN?". No other text.
+
+==================================================
+MASTER-FRAME — BILD 01
+==================================================
+
+Bild 01 · C · ca. 8 s
+A serious minimal 2D Countryball explainer scene in 16:9: two nearby simplified European town icons under the same sun, each with a large clock showing a visibly different time. A small Germany countryball stands between them, confused but not comedic. Thick black outlines, flat colors, simple muted background, maximum three supporting elements. Add exactly one German headline: "FRÜHER HATTE JEDE STADT IHRE ZEIT". No other text.
+
+STOP: Bild 01 streng prüfen. Nur wenn es exakt wie die aktive Reel-Countryball-Welt aussieht, als Master-Referenz verwenden.
+
+==================================================
+ERSTE WELLE — BILD 02–05
+==================================================
+
+Bild 02 · C · ca. 8 s
+Two simplified town icons at different longitudes, each with a sun directly above at its own local noon and one large clock. Show that local time follows the sun. Keep the visual symbolic and clean. Add only the German label "SONNENZEIT". No other text.
+
+Bild 03 · B · ca. 6 s
+Minimal symbolic scene: two distant town icons connected by a slow horse-cart route, with two slightly different clocks above them. The small time difference feels unimportant because travel is slow. No visible text.
+
+Bild 04 · B · ca. 6 s
+A simple steam train and a telegraph pole dominate the frame, connecting several town icons with small clock symbols. The visual message is sudden need for exact coordination. Add only the German text "EISENBAHN + TELEGRAF".
+
+Bild 05 · C · ca. 7 s
+A train in the center with three large clocks around it all showing different times, plus one simple timetable sheet with no readable small print. The scene communicates scheduling chaos caused by local city times. Add exactly one German headline: "WELCHE UHR GILT?". No other text.
+
+STOP: 01–05 vollständig prüfen. Erst danach 06–10.
+
+==================================================
+WELLE 2 — BILD 06–10
+==================================================
+
+Bild 06 · C · ca. 7 s
+A clean globe divided into broad vertical time-zone bands, with several nearby town clocks now grouped into shared zones. One central world globe is the dominant subject. Add only the German headline "GEMEINSAME ZEITZONEN".
+
+Bild 07 · B · ca. 6 s
+Minimal scientific explainer: Earth rotating beside the Sun, one bold curved arrow around the Earth, day side and night side clearly separated. Flat 2D graphic style, no realistic space scene. Add only the German text "24 STUNDEN".
+
+Bild 08 · B · ca. 6 s
+A clean circular globe diagram with one 360-degree ring divided into 24 equal conceptual slices. Show a simple calculation prominently. Add exactly: "360° ÷ 24 = 15°". No other text.
+
+Bild 09 · B · ca. 6 s
+A simplified world strip with one clock in a central zone and a second clock one zone to the east. A clear arrow points east and the eastern clock is one hour later. Add only: "OSTEN: +1 STUNDE".
+
+Bild 10 · B · ca. 5 s
+Mirror the previous logic: one central zone clock and one neighboring zone to the west, with a clear west-pointing arrow and the western clock one hour earlier. Add only: "WESTEN: −1 STUNDE".
+
+STOP: 06–10 vollständig prüfen. Erst danach 11–15.
+
+==================================================
+WELLE 3 — BILD 11–15
+==================================================
+
+Bild 11 · B · ca. 6 s
+A simplified world map with several broad time-zone boundaries. Instead of perfect straight strips, some boundaries visibly bend around state borders and island groups. Keep the map schematic, not atlas-realistic. Add only the German headline "GRENZEN SIND NICHT GERADE".
+
+Bild 12 · C · ca. 7 s
+A simplified Germany map with one Germany countryball in the center. On the far west a sun is lower, on the far east the sun is slightly higher, but one large clock symbol covers the entire country. Add only: "EINE ZEITZONE".
+
+Bild 13 · C · ca. 7 s
+A clean globe focused on Europe with a bold vertical line passing through Greenwich, United Kingdom. A simple UK countryball stands beside the line. Add exactly two German text elements: "NULLMERIDIAN" and "1884". No other text.
+
+Bild 14 · B · ca. 6 s
+A simplified world clock system radiating outward from the zero-meridian line into several coordinated clocks. The main concept is one common reference for world time. Add only: "WELTZEIT UTC".
+
+Bild 15 · C · ca. 8 s
+Show the opposite side of the globe near the Pacific with a bold international date-line concept and two calendar cards on opposite sides showing consecutive dates. No realistic map complexity. Add only the German headline "DATUMSGRENZE".
+
+STOP: 11–15 vollständig prüfen. Erst danach 16–19.
+
+==================================================
+LETZTE WELLE — BILD 16–19
+==================================================
+
+Bild 16 · C · ca. 7 s
+A simplified Pacific map where the international date line visibly bends around a few island groups instead of running perfectly straight. Two nearby island countryballs remain on the same calendar side. Add only: "DIE LINIE MACHT UMWEGE".
+
+Bild 17 · B · ca. 6 s
+Supported explainer composition with one globe in the center, a sun/rotation symbol on one side and a simplified political border/map symbol on the other. The message is that time zones combine nature with human decisions. Add exactly: "NATUR + POLITIK".
+
+Bild 18 · A · ca. 4–5 s
+Minimal icon composition around one central world clock: airplane, server rack, video-call screen and train icon. No humans, no readable interface text, no clutter. The shared clock visually connects all four uses. No visible text.
+
+Bild 19 · C · ca. 8 s
+Final resolving image: a clean globe under the Sun with several large clocks around different regions, all visually coordinated as one system. One Germany countryball watches calmly. Strong final composition, simple background. Add exactly one German closing headline: "EINE WELT – VIELE UHRZEITEN". No other text.
+
+==================================================
+FINALER CHECK
+==================================================
+
+Vor Abschluss jedes Bildes prüfen:
+- 16:9 horizontal
+- Serious Minimal Countryball Explainer
+- keine Stickfiguren
+- keine normalen oder realistischen Menschen
+- runde Countryball-Geometrie, wenn Figuren vorkommen
+- maximal drei sinnvolle Zusatzobjekte, außer bei bewusstem Systemdiagramm
+- deutscher Pflichttext exakt wie angegeben
+- kein englischer sichtbarer Text
+- keine Pseudo-Schrift
+- keine Wasserzeichen
+- Bild 01 bleibt stilistische Referenz für Bild 02–19
