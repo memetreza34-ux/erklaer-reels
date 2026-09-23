@@ -1,5 +1,5 @@
 {
-  "version": 14,
+  "version": 15,
   "composition": {
     "width": 1080,
     "height": 1920,
@@ -22,6 +22,16 @@
     "hardGateSince": "2026-09-23",
     "forceCannotBypass": true,
     "productionEngine": "macos-vision-ocr"
+  },
+  "semanticReview": {
+    "hardGateSince": "2026-09-23",
+    "requirePassedStatus": true,
+    "requireReviewer": true,
+    "requireReviewedAt": true,
+    "requireAllChecksTrue": true,
+    "fingerprintBound": true,
+    "forceCannotBypass": true,
+    "singleVisualPass": true
   },
   "manualChecksByKind": {
     "scene": [
@@ -48,8 +58,8 @@
     "requireAllAssets": true,
     "requireReadableMetadata": true,
     "requireMinimumResolution": true,
-    "requireManualReviewPassed": false,
-    "requireSemanticSceneVerification": false,
+    "requireManualReviewPassed": true,
+    "requireSemanticSceneVerification": true,
     "blockOnExplicitVisualRejection": true
   },
   "autopilotVisualQc": {
@@ -63,6 +73,7 @@
       "corrupt-or-unreadable-image",
       "wrong-aspect-ratio",
       "wrong-image-number-or-order",
+      "semantic-review-missing-or-stale",
       "obvious-content-mismatch",
       "obvious-visual-world-break",
       "wrong-required-german-text",
