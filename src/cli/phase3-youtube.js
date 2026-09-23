@@ -25,20 +25,24 @@ async function main() {
   if (audio) alignArgs.push('--audio', audio);
   if (process.argv.includes('--refresh')) alignArgs.push('--refresh');
 
+  // Wichtig: auto-align optimiert das interne Audio ZUERST. Whisper misst danach
+  // exakt diese 1,10x-/Pausen-bereinigte Fassung, damit alle Bildanker stimmen.
   run('src/cli/auto-align-youtube.js', alignArgs);
+  run('src/cli/validate-youtube-audio.js', common);
   run('src/cli/build-youtube-timeline.js', common);
   run('src/cli/validate-youtube-adaptive-pacing.js', common);
   run('src/cli/validate-youtube-phase3.js', common);
 
   if (process.argv.includes('--prepare-only')) {
-    console.log('\nYouTube Phase 3 vorbereitet: echtes Audio-Alignment, Endstille-QC, FINAL_TIMELINE und alle Pre-Render-Gates bestanden.');
+    console.log('\nYouTube Phase 3 vorbereitet: Voice-over 1,10x, lange Pausen/Endstille gekürzt, echtes Audio-Alignment, FINAL_TIMELINE und alle Pre-Render-Gates bestanden.');
     return;
   }
 
   run('src/cli/render-youtube.js', common);
   run('src/cli/finalize-youtube-export.js', common);
+  run('src/cli/validate-youtube-audio.js', common);
   run('src/cli/validate-youtube-phase3.js', [...common, '--post-render']);
-  console.log('\nYouTube Phase 3: BESTANDEN — Render, Export-Finalisierung und Post-Render-QC abgeschlossen.');
+  console.log('\nYouTube Phase 3: BESTANDEN — Audio-Pacing, Render, Export-Finalisierung und Post-Render-QC abgeschlossen.');
 }
 
 main().catch((error) => {
