@@ -3,9 +3,11 @@
 import { verifyAudioPacingFileBinding } from '../core/audio-pacing-file-guard.js';
 import { verifyFutureEffectsCoverage } from '../core/effects-quality-file-guard.js';
 import { finalizeReel } from '../core/finalize-reel.js';
+import { verifySemanticVisualReview } from '../core/semantic-visual-review-guard.js';
 import { syncReelSounds } from '../core/sound-library.js';
 import { verifyRequiredSourceQuality } from '../core/source-quality-file-guard.js';
 import { verifyTrailingVoiceoverSilence } from '../core/trailing-silence-guard.js';
+import { runVisualQualityCheck } from '../core/visual-qc.js';
 
 function getArgument(name) {
   const index = process.argv.indexOf(name);
@@ -40,8 +42,6 @@ async function main() {
     throw new Error(`${effectsGate.reason} Finalisierung blockiert. ${details}`);
   }
 
-  // Finalisieren darf nie mit bloß geplanten, aber nicht aufgelösten Sounds erfolgen.
-  // Die zentrale Bibliothek wird deshalb hier noch einmal strikt gebunden.
   await syncReelSounds(reelDirectory, { strict: true });
 
   const pacingBinding = await verifyAudioPacingFileBinding(reelDirectory);
@@ -54,13 +54,25 @@ async function main() {
     throw new Error(`${trailingSilence.reason} Führe trim:pauses erneut aus; mehrsekündige Endstille darf nicht in die Videodauer eingehen.`);
   }
 
+  // Finalizer prüft die aktuellen Bildbytes und Planwerte erneut. Dadurch wird
+  // eine alte semantische Freigabe bei Bildtausch/Planänderung automatisch ungültig.
+  const currentVisuals = await runVisualQualityCheck(reelDirectory, { strict: true });
+  if (!currentVisuals.passed) {
+    throw new Error('Aktuelle technische Bild-QC ist fehlgeschlagen. Finalisierung blockiert.');
+  }
+  const semanticGate = await verifySemanticVisualReview(reelDirectory);
+  if (semanticGate.required && !semanticGate.passed) {
+    const details = semanticGate.findings.slice(0, 12).map((finding) => `${finding.assetId ?? 'Bild'}: ${finding.issue}${finding.check ? ` (${finding.check})` : ''}`).join('; ');
+    throw new Error(`${semanticGate.reason} Finalisierung verlangt eine echte, fingerprint-gebundene Sichtprüfung. ${details}`);
+  }
+
   const report = await finalizeReel(reelDirectory, {
     strict,
     audioDurationSeconds
   });
 
   if (asJson) {
-    console.log(JSON.stringify({ ...report, effectsHardGate: effectsGate, trailingSilence }, null, 2));
+    console.log(JSON.stringify({ ...report, effectsHardGate: effectsGate, trailingSilence, semanticReview: semanticGate }, null, 2));
   } else {
     console.log(`Inhalt: ${report.stages.content?.passed ? 'bestanden' : 'nicht bestanden'}`);
     console.log(`Timeline: ${report.stages.timeline?.passed ? 'bestanden' : 'nicht bestanden'}`);
@@ -70,6 +82,7 @@ async function main() {
     if (effectsGate.required) console.log('Motion/SFX-Hard-Gate: bestanden');
     if (pacingBinding.required) console.log('Audio-Pacing-Datei: Fingerprint unverändert');
     if (trailingSilence.required) console.log(`Endstille: ${trailingSilence.trailingSilenceSeconds.toFixed(2)} s — bestanden`);
+    if (semanticGate.required) console.log(`Semantische Sichtprüfung: ${semanticGate.checkedAssets} aktuelle Bilder bestätigt`);
     console.log(`Gesamtstand: ${report.progress.overall}%`);
     console.log(`Renderer-bereit: ${report.readyForRenderer ? 'ja' : 'nein'}`);
     console.log(`Nächster Schritt: ${report.nextStep}`);
