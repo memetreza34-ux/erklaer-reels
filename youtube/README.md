@@ -1,6 +1,6 @@
 # YouTube
 
-Dieser Bereich ist die eigenständige Produktionspipeline für YouTube-Langvideos. **Reels bleiben vollständig getrennt unter `reels/` und werden dadurch nicht verändert.**
+Dieser Bereich ist die eigenständige Produktionspipeline für YouTube-Langvideos. Reel-Code bleibt unter `reels/` getrennt und wird dadurch nicht verändert. Die **Bildwelt** ist dagegen bewusst dieselbe wie bei den aktiven Reels.
 
 ## Verbindliche Reihenfolge
 
@@ -9,24 +9,22 @@ Dieser Bereich ist die eigenständige Produktionspipeline für YouTube-Langvideo
 3. `youtube/YOUTUBE_VISUAL_WORLD.md`
 4. bei `productionRulesVersion >= 2`: `youtube/ADAPTIVE_PACING_V2.md`
 
-## Sichtbare Projektstruktur — absichtlich einfach
-
-Für neue YouTube-Projekte gilt:
+## Sichtbare Projektstruktur
 
 ```text
 youtube/<woche>/<thema>/
 ├── 00-bildprompts/
-│   ├── google-flow-prompt.txt   ← EIN Masterprompt
-│   └── images/                  ← Bild 00, Bild 01, Bild 02 ...
+│   ├── google-flow-prompt.txt
+│   └── images/
 ├── 01-voice-script/
-│   └── voice-script.txt         ← EIN Gesamtskript
+│   └── voice-script.txt
 ├── 02-audio/
-│   └── voiceover-final.*        ← EINE finale Stimme
+│   └── voiceover-final.*
 ├── 03-export/
-└── 99-technik/                  ← interne Dateien
+└── 99-technik/
 ```
 
-Keine sichtbaren 10er-Promptordner, Script-Parts oder Audio-Parts mehr bei neuen Videos.
+Keine sichtbaren 10er-Promptordner, Script-Parts oder Audio-Parts bei neuen Videos.
 
 ## Drei Phasen
 
@@ -38,17 +36,17 @@ Phase 1 — ChatGPT
 
 Phase 2 — Nutzer + Google Flow
 → Bild 00 separat
-→ Bild 01 separat als Master-Style-Frame
-→ ab Bild 02 Bild 01 immer als Referenz anhängen
+→ Bild 01 separat als Countryball-Master-Style-Frame
+→ ab Bild 02 Bild 01 als Referenz anhängen
 → danach kontrollierte 5er-Wellen
 → EIN vollständiges Voice-over erzeugen
 
 Phase 3 — Repo-CLI
 → echte Whisper-Wortzeiten messen
-→ überlange Endstille nur im internen Master kürzen
-→ Bildanker im Gesamtaudio finden
+→ Endstille nur im internen Master kürzen
+→ Bildanker finden
 → FINAL_TIMELINE bauen
-→ A–E gegen echte Zeiten prüfen
+→ A–E prüfen
 → Motion + SFX rendern
 → Export finalisieren
 → Post-QC
@@ -56,82 +54,72 @@ Phase 3 — Repo-CLI
 
 ## Feste YouTube-Bildwelt
 
-Aktiver Style-Lock: `universal-editorial-stickman-v1.2`
+Quellwelt der aktiven Reels: `serious-minimal-countryball-explainer`
 
-- hochwertige digitale 2D-Editorial-Illustration
-- **jeder sichtbare Mensch ist Stickman**, auch Hintergrundfiguren
-- runde/ovale Köpfe, kleine schwarze Augen, minimaler Mund, dünne vereinfachte Gliedmaßen
-- reichere glaubwürdige Umgebungen mit natürlicher Lichtwirkung und subtiler 2D-Schattierung
-- moderate bis kräftige szenengerechte Farben
-- kein ausgewaschener Beige-/Sepia-/Pergament-Look
-- keine normalen oder semi-realistischen Cartoon-Menschen
-- kein 3D, kein Fotorealismus, keine Countryballs
+YouTube-Style-ID: `serious-minimal-countryball-explainer-youtube-16x9`
 
-Bild 01 wird als Master-Style-Frame verwendet. Die Szene bestimmt, **was** gezeigt wird; Bild 01 bestimmt, **wie** das gesamte Video aussieht.
+**Es ist dieselbe künstlerische Welt wie bei den Reels. Die einzige Formatänderung ist 16:9 statt 9:16.**
+
+Verbindlich:
+- perfekt runde Countryball-artige Akteure, wenn ein Akteur sinnvoll ist
+- einfache weiße Augen
+- dicke saubere schwarze Konturen
+- flache kontrollierte 2D-Farben
+- minimale grafische Schattierung
+- geringe bis mittlere Detaildichte
+- ein dominantes Motiv
+- normalerweise 0–3 sinnvolle Zusatzobjekte
+- einfache Farbflächen, leichte Verläufe oder subtile Textur als Hintergrund
+- starke Symbolik statt realistischer Vollszenen
+- seriös, clean, nicht kindisch
+- keine Stickfiguren
+- keine normalen Cartoon-Menschen
+- keine realistischen Menschen
+- kein 3D/Pixar/Clay/Fotorealismus
+
+Bild 01 wird als Master-Style-Frame verwendet. Motiv und Hintergrundfarbe dürfen wechseln; die Countryball-Formsprache nicht.
 
 ## Sichtbarer Text in deutschen Videos
 
-**Jeder sichtbare lesbare Text muss Deutsch sein.**
+Jeder sichtbare lesbare Text muss Deutsch sein. Das gilt auch für Kartenlabels, Schilder, Legenden, Diagramme, Callouts, Kalender und Hintergrundtext.
 
-Das gilt auch für:
-- Kartenlabels
-- Schilder
-- Legenden
-- Diagramme
-- Callouts
-- Kalender
-- Hintergrundtext
-
-Englischer Text oder Pseudo-Schrift = Hard Fail und Regeneration. Wenn Text nicht nötig ist, lieber keinen Text erzeugen.
+Englischer Text oder Pseudo-Schrift = Hard Fail und Regeneration. Wenn Text nicht nötig ist, keinen Text erzeugen.
 
 ## Google Flow — maximal 5 Bilder gleichzeitig
 
-Die 5er-Regel ist Arbeitslogik, keine Ordnerlogik.
-
 ```text
 Bild 00 separat
-Bild 01 separat → Style prüfen → Master-Referenz
+Bild 01 separat → Countryball-Stil prüfen → Master-Referenz
 02–05 mit Bild 01 als Referenz → prüfen
 06–10 erst danach
 11–15 ...
 ```
 
 Verbindlich:
-- maximal **5 aktive Bildgenerierungen gleichzeitig**
-- niemals zwei 5er-Wellen gleichzeitig offen halten
+- maximal 5 aktive Bildgenerierungen gleichzeitig
+- niemals zwei Wellen gleichzeitig offen halten
 - letzter Block darf 1–5 Bilder enthalten
-- Bild 00 ist nur Thumbnail und nie Teil der Videotimeline
+- Bild 00 ist nur Thumbnail
 - alle Bilder liegen flach unter `00-bildprompts/images/`
 
 ## Adaptive Bilddichte
 
-Neue V2-Videos planen jedes Bild individuell:
+- A: 4–5 s geplant
+- B: 5–7 s
+- C: 7–9 s
+- D: 9–12 s
+- E: 12–15 s
 
-- A: sehr einfach → 4–5 s geplant
-- B: einfach → 5–7 s
-- C: mittel → 7–9 s
-- D: komplex → 9–12 s
-- E: sehr komplex → 12–15 s
-
-Die Bildanzahl entsteht aus dem Skript. Es gibt keine feste Sollzahl.
-
-Phase 3 prüft zusätzlich die **echte** gemessene Bilddauer. Ein simples Bild darf nicht nur deshalb lange stehen, weil der zugehörige Sprachblock zu lang geplant wurde; dann muss ein weiterer sinnvoller Bildmoment entstehen.
+Die Bildanzahl entsteht aus dem Skript und der visuellen Komplexität.
 
 ## Audio-Synchronisation + Endstille
 
-Die eine finale Voice-over-Datei ist die Timing-Masterquelle. Geschätzte Zeiten oder `Videolänge ÷ Bildanzahl` sind verboten.
-
-Das Nutzeroriginal unter `02-audio/` wird nicht verändert. Phase 3 misst mit Whisper das letzte gesprochene Wort. Überlange abschließende Stille wird nur im internen `99-technik/YOUTUBE_AUDIO_MASTER.wav` gekürzt.
+Die eine finale Voice-over-Datei ist die Timing-Masterquelle. Das Nutzeroriginal unter `02-audio/` wird nicht verändert. Phase 3 misst das letzte gesprochene Wort und kürzt unnötige Endstille nur im internen Master.
 
 ## Motion + SFX
 
-- Motion wird standardmäßig aus der A–E-Komplexität abgeleitet
-- A/B: ruhig und leicht
-- C: normaler narrativer Pan/Push
-- D: langsamere Scan-/Pull-Bewegung für komplexe Szenen
-- E: besonders ruhige Übersicht
+- Motion wird aus A–E abgeleitet
 - gezielte SFX stehen in `99-technik/YOUTUBE_RENDER_PLAN.json`
-- Soundtypen müssen aus `config/sound-library.json` stammen
 - keine Hintergrundmusik standardmäßig
 - Stimme bleibt dominant
 
@@ -140,8 +128,6 @@ Das Nutzeroriginal unter `02-audio/` wird nicht verändert. Phase 3 misst mit Wh
 ```bash
 npm run phase3:youtube -- --dir "youtube/<woche>/<thema>"
 ```
-
-Der Lauf erledigt Alignment, Timeline, Pacing-Gate, Hard-Gate, Render, Export-Finalisierung und Post-Render-QC.
 
 ## Finaler Export
 
@@ -154,5 +140,3 @@ Der Lauf erledigt Alignment, Timeline, Pacing-Gate, Hard-Gate, Render, Export-Fi
 ├── YOUTUBE-KAPITEL.txt
 └── YOUTUBE-TAGS.txt
 ```
-
-Kapitel können über `99-technik/YOUTUBE_CHAPTERS.json` an Bildnummern gebunden werden. Der Finalizer nimmt dann die echten Startzeiten aus `FINAL_TIMELINE.json` statt geschätzter Phase-1-Zeitstempel.
