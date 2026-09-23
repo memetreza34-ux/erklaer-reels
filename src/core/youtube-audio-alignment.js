@@ -88,6 +88,38 @@ function collectWords(transcript) {
   return words;
 }
 
+export function computeEffectiveAudioEnd(durationSeconds, words, {
+  maxTrailingSilenceSeconds = 0.35,
+  preserveAfterLastWordSeconds = 0.2
+} = {}) {
+  const duration = Number(durationSeconds);
+  if (!Number.isFinite(duration) || duration <= 0) throw new Error('Ungültige Audio-Gesamtdauer.');
+  const lastWordEnd = Number(words?.at(-1)?.end);
+  if (!Number.isFinite(lastWordEnd) || lastWordEnd <= 0 || lastWordEnd > duration + 0.5) {
+    return {
+      sourceDurationSeconds: round(duration),
+      lastSpokenWordEndSeconds: null,
+      trailingSilenceSeconds: null,
+      effectiveDurationSeconds: round(duration),
+      trimmedSeconds: 0,
+      trimmed: false
+    };
+  }
+  const trailing = Math.max(0, duration - lastWordEnd);
+  const shouldTrim = trailing > Number(maxTrailingSilenceSeconds);
+  const effective = shouldTrim
+    ? Math.min(duration, lastWordEnd + Math.max(0, Number(preserveAfterLastWordSeconds)))
+    : duration;
+  return {
+    sourceDurationSeconds: round(duration),
+    lastSpokenWordEndSeconds: round(lastWordEnd),
+    trailingSilenceSeconds: round(trailing),
+    effectiveDurationSeconds: round(effective),
+    trimmedSeconds: round(duration - effective),
+    trimmed: shouldTrim
+  };
+}
+
 const WHISPER_CANDIDATES = [
   ['whisper', []],
   ['python3', ['-m', 'whisper']],
@@ -158,12 +190,19 @@ async function discoverSingleAudio(projectDir, explicitAudio) {
   return files[0];
 }
 
+async function normalizeAudioSource(source, output) {
+  const args = ['-v', 'error', '-i', source.absolute];
+  if (Number.isFinite(source.effectiveDurationSeconds)) args.push('-t', String(source.effectiveDurationSeconds));
+  args.push('-ar', '48000', '-ac', '2', '-c:a', 'pcm_s16le', output, '-y');
+  await execFileAsync('ffmpeg', args, { timeout: 600_000 });
+}
+
 async function materializeMasterAudio(projectDir, sources) {
   const techDir = path.join(projectDir, '99-technik');
   await mkdir(techDir, { recursive: true });
   const output = path.join(techDir, MASTER_AUDIO_FILE);
   if (sources.length === 1) {
-    await execFileAsync('ffmpeg', ['-v', 'error', '-i', sources[0], '-ar', '48000', '-ac', '2', '-c:a', 'pcm_s16le', output, '-y'], { timeout: 600_000 });
+    await normalizeAudioSource(sources[0], output);
     return output;
   }
 
@@ -172,7 +211,7 @@ async function materializeMasterAudio(projectDir, sources) {
     const normalized = [];
     for (let index = 0; index < sources.length; index += 1) {
       const partOut = path.join(workspace, `part-${String(index + 1).padStart(2, '0')}.wav`);
-      await execFileAsync('ffmpeg', ['-v', 'error', '-i', sources[index], '-ar', '48000', '-ac', '2', '-c:a', 'pcm_s16le', partOut, '-y'], { timeout: 600_000 });
+      await normalizeAudioSource(sources[index], partOut);
       normalized.push(partOut);
     }
     const listPath = path.join(workspace, 'concat.txt');
@@ -199,6 +238,9 @@ export async function alignYoutubeProject(projectDirectory, { audio = null, mode
   const language = String(meta.language ?? 'de').slice(0, 2);
   const cached = (await exists(measurementPath)) ? await readJson(measurementPath) : null;
   const groups = [];
+  const endPolicy = meta.audioEndPolicy ?? {};
+  const maxTrailingSilenceSeconds = Number(endPolicy.maxTrailingSilenceSeconds ?? 0.35);
+  const preserveAfterLastWordSeconds = Number(endPolicy.preserveAfterLastWordSeconds ?? 0.2);
 
   if (rulesVersion >= 2) {
     const byFile = new Map();
@@ -227,7 +269,12 @@ export async function alignYoutubeProject(projectDirectory, { audio = null, mode
     const fingerprint = await sha256(group.absolute);
     const cachedPart = cached?.parts?.find((part) => part.audioFile === group.relative && part.audioFingerprintSha256 === fingerprint && part.model === model);
     const words = (!refresh && cachedPart?.words?.length) ? cachedPart.words : await transcribeAudio(group.absolute, { model, language });
-    const duration = await ffprobeDuration(group.absolute);
+    const sourceDuration = await ffprobeDuration(group.absolute);
+    const endInfo = computeEffectiveAudioEnd(sourceDuration, words, {
+      maxTrailingSilenceSeconds,
+      preserveAfterLastWordSeconds
+    });
+    group.effectiveDurationSeconds = endInfo.effectiveDurationSeconds;
     let cursor = 0;
 
     for (const [localIndex, item] of group.images.entries()) {
@@ -259,12 +306,18 @@ export async function alignYoutubeProject(projectDirectory, { audio = null, mode
       audioFile: group.relative,
       audioFingerprintSha256: fingerprint,
       model,
-      durationSeconds: duration,
+      durationSeconds: endInfo.effectiveDurationSeconds,
+      sourceDurationSeconds: endInfo.sourceDurationSeconds,
+      effectiveDurationSeconds: endInfo.effectiveDurationSeconds,
+      lastSpokenWordEndSeconds: endInfo.lastSpokenWordEndSeconds,
+      trailingSilenceSeconds: endInfo.trailingSilenceSeconds,
+      trailingSilenceTrimmedSeconds: endInfo.trimmedSeconds,
+      trailingSilenceTrimmed: endInfo.trimmed,
       absoluteOffsetSeconds: round(absoluteOffset),
       wordCount: words.length,
       words
     });
-    absoluteOffset += duration;
+    absoluteOffset += endInfo.effectiveDurationSeconds;
   }
 
   for (let index = 0; index < aligned.length; index += 1) {
@@ -274,20 +327,35 @@ export async function alignYoutubeProject(projectDirectory, { audio = null, mode
     current.actualEndSeconds = next ? next.actualStartSeconds : round(absoluteOffset);
   }
 
-  const masterAudio = await materializeMasterAudio(projectDir, groups.map((group) => group.absolute));
+  const masterAudio = await materializeMasterAudio(projectDir, groups.map((group) => ({
+    absolute: group.absolute,
+    effectiveDurationSeconds: group.effectiveDurationSeconds
+  })));
   const masterFingerprint = await sha256(masterAudio);
+  const masterDuration = await ffprobeDuration(masterAudio);
   const measurement = {
-    schemaVersion: 1,
+    schemaVersion: 2,
     createdAt: new Date().toISOString(),
     source: 'whisper-word-timestamps-v1',
     model,
     language,
+    endSilencePolicy: {
+      maxTrailingSilenceSeconds,
+      preserveAfterLastWordSeconds,
+      userOriginalsModified: false
+    },
     masterAudioFile: `99-technik/${MASTER_AUDIO_FILE}`,
     masterAudioFingerprintSha256: masterFingerprint,
-    totalDurationSeconds: round(absoluteOffset),
+    totalDurationSeconds: round(masterDuration),
     parts: measuredParts
   };
   await writeFile(measurementPath, `${JSON.stringify(measurement, null, 2)}\n`, 'utf8');
+
+  const finalAudioDuration = round(masterDuration);
+  const lastAligned = aligned.at(-1);
+  if (lastAligned?.actualStartSeconds !== null && lastAligned?.actualStartSeconds !== undefined) {
+    lastAligned.actualEndSeconds = finalAudioDuration;
+  }
 
   const updatedMapping = {
     ...mapping,
@@ -296,7 +364,7 @@ export async function alignYoutubeProject(projectDirectory, { audio = null, mode
     autoAlignment: {
       method: 'whisper-word-timestamps-v1',
       model,
-      totalDurationSeconds: round(absoluteOffset),
+      totalDurationSeconds: finalAudioDuration,
       matched: aligned.length - missing.length,
       total: aligned.length,
       complete: missing.length === 0
@@ -364,7 +432,13 @@ export async function validateYoutubeAlignmentEvidence(projectDirectory, mapping
 
   const masterPath = path.join(projectDir, String(evidence.masterAudioFile ?? ''));
   if (!(await exists(masterPath))) errors.push('Gemessene Master-Audiodatei fehlt.');
-  else if (await sha256(masterPath) !== evidence.masterAudioFingerprintSha256) errors.push('Master-Audio wurde nach der Messung verändert.');
+  else {
+    if (await sha256(masterPath) !== evidence.masterAudioFingerprintSha256) errors.push('Master-Audio wurde nach der Messung verändert.');
+    const currentMasterDuration = await ffprobeDuration(masterPath);
+    if (Math.abs(currentMasterDuration - Number(evidence.totalDurationSeconds)) > 0.3) {
+      errors.push('Master-Audiodauer stimmt nicht mehr mit dem Messbeleg überein.');
+    }
+  }
 
   return { passed: errors.length === 0, errors, evidence };
 }
