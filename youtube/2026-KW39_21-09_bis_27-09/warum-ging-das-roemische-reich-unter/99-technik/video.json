@@ -10,14 +10,23 @@
   "status": "phase2-pending",
   "language": "de",
   "format": "youtube-longform",
-  "visualStyleId": "universal-editorial-stickman-v1.2",
-  "visualStyleReason": "Korrigierte feste YouTube-Bildwelt: hochwertige digitale 2D Editorial-Stickman-Welt mit konsequenten Stickman-Menschen, reicheren glaubwürdigen Umgebungen, moderaten bis kräftigen Farben und ohne beige/sepia Historien-Cartoon-Look.",
+  "visualStyleId": "serious-minimal-countryball-explainer-youtube-16x9",
+  "sourceVisualWorldId": "serious-minimal-countryball-explainer",
+  "visualStyleReason": "Exakt dieselbe Serious-Minimal-Countryball-Bildwelt wie die aktiven Reels; für das YouTube-Langvideo nur auf 16:9 horizontal komponiert.",
+  "aspectRatio": "16:9",
+  "visualWorldParityPolicy": {
+    "mustMatchReelVisualDNA": true,
+    "onlyAllowedFormatDifference": "16:9-horizontal-instead-of-9:16-vertical",
+    "stickFiguresForbidden": true,
+    "humanoidCartoonPeopleForbidden": true,
+    "roundCountryballGeometryRequiredWhenActorAppears": true,
+    "maxSupportingPropsTypical": 3
+  },
   "masterReferencePolicy": {
     "masterImageNumber": 1,
     "generateMasterSeparately": true,
     "attachMasterToAllLaterImages": true,
-    "mixedHumanStylesForbidden": true,
-    "beigeSepiaHistoricalCartoonForbidden": true
+    "visualWorldMayChange": false
   },
   "visibleTextPolicy": {
     "projectLanguageOnly": true,
@@ -26,41 +35,16 @@
     "pseudoTextHardFail": true,
     "preferNoTextWhenNotRequired": true
   },
-  "aspectRatio": "16:9",
   "minimumDurationSeconds": 285,
   "targetDurationSeconds": 320,
   "targetDurationRangeSeconds": [295, 345],
   "scriptWordCount": 877,
   "plannedImageCount": 38,
   "imageCountMethod": "content-and-complexity-derived",
-  "complexityDistribution": {
-    "A": 1,
-    "B": 5,
-    "C": 19,
-    "D": 12,
-    "E": 1
-  },
-  "complexityTargetsSeconds": {
-    "A": [4, 5],
-    "B": [5, 7],
-    "C": [7, 9],
-    "D": [9, 12],
-    "E": [12, 15]
-  },
-  "complexityFinalHardMaxSeconds": {
-    "A": 6.5,
-    "B": 8.5,
-    "C": 10.5,
-    "D": 13.5,
-    "E": 16
-  },
-  "complexityFinalShortReviewSeconds": {
-    "A": 3,
-    "B": 4,
-    "C": 5,
-    "D": 6.5,
-    "E": 8
-  },
+  "complexityDistribution": {"A": 1, "B": 5, "C": 19, "D": 12, "E": 1},
+  "complexityTargetsSeconds": {"A": [4,5], "B": [5,7], "C": [7,9], "D": [9,12], "E": [12,15]},
+  "complexityFinalHardMaxSeconds": {"A": 6.5, "B": 8.5, "C": 10.5, "D": 13.5, "E": 16},
+  "complexityFinalShortReviewSeconds": {"A": 3, "B": 4, "C": 5, "D": 6.5, "E": 8},
   "adaptivePacing": {
     "hardMaximumExclusiveSeconds": 20,
     "reviewFromSeconds": 14,
