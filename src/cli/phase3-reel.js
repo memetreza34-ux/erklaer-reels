@@ -2,6 +2,8 @@
 
 import { spawnSync } from 'node:child_process';
 
+import { runPreflight } from './preflight.js';
+
 function getArgument(name) {
   const index = process.argv.indexOf(name);
   return index >= 0 ? process.argv[index + 1] : undefined;
@@ -13,6 +15,11 @@ Antigravity Phase 3 — Simple Mode
 
 Verwendung:
   npm run phase3:reel -- --dir "reels/.../reel-01_thema"
+  npm run phase3:reel -- --dir "<reel>" --from "Timeline bauen"
+  npm run phase3:reel -- --list-steps
+
+Preflight und check:content --strict laufen bei jedem Start zuerst. --from überspringt
+nur bereits erledigte Produktionsschritte nach diesen Pflicht-Gates.
 
 Ein Auftrag reicht. Der Lauf ist nicht-interaktiv und arbeitet selbstständig
 bis zum Render. Rückfragen sind nur bei echten Hard Blockern erlaubt, z. B.
@@ -20,7 +27,7 @@ fehlenden/doppelten Bildern, mehreren unklaren Audio-Dateien oder kaputten Asset
 `);
 }
 
-function runNpmStep({ label, script, args = [] }, reelDirectory) {
+function runNpmStep({ label, script, args = [], resumable = true }, reelDirectory) {
   console.log(`\n=== ${label} ===`);
   const npmCommand = process.platform === 'win32' ? 'npm.cmd' : 'npm';
   const commandArgs = ['run', script, '--', '--dir', reelDirectory, ...args];
@@ -43,22 +50,27 @@ function runNpmStep({ label, script, args = [] }, reelDirectory) {
 
   if (result.status !== 0) {
     console.error(`\nBLOCKIERT bei „${label}“ (Exit ${result.status}).`);
-    console.error('Nur den konkreten Hard Blocker beheben und denselben Befehl erneut starten. Keine Zwischenfreigabe nötig.');
+    if (resumable) {
+      console.error('Nur den konkreten Hard Blocker beheben. Danach genügt der Wiedereinstieg:');
+      console.error(`  npm run phase3:reel -- --dir "${reelDirectory}" --from "${label}"`);
+    } else {
+      console.error('Den Hard Blocker beheben und denselben Phase-3-Befehl erneut starten.');
+    }
     process.exit(result.status || 1);
   }
 
   console.log(`OK: ${label}`);
 }
 
-function main() {
-  if (process.argv.includes('--help')) return usage();
+function printPreflightFailure(report) {
+  console.error('\nBLOCKIERT vor Phase 3 — Preflight fehlgeschlagen.');
+  for (const tool of report.tools.missing) console.error(`  - ${tool.command} fehlt — ${tool.purpose}`);
+  for (const relativePath of report.repoFiles.missing) console.error(`  - Pflichtdatei fehlt: ${relativePath}`);
+  console.error('Es wurden noch keine Assets organisiert und kein Audio verändert.');
+}
 
-  const reelDirectory = getArgument('--dir');
-  if (!reelDirectory) {
-    usage();
-    process.exitCode = 1;
-    return;
-  }
+async function main() {
+  if (process.argv.includes('--help')) return usage();
 
   const steps = [
     { label: 'Assets finden', script: 'discover:assets' },
@@ -73,14 +85,56 @@ function main() {
     { label: 'Finales Reel rendern', script: 'render:reel' }
   ];
 
+  if (process.argv.includes('--list-steps')) {
+    console.log('Pflicht vor jedem Start: Preflight + check:content --strict');
+    for (const [index, step] of steps.entries()) console.log(`${index + 1}. ${step.label}`);
+    return;
+  }
+
+  const reelDirectory = getArgument('--dir');
+  if (!reelDirectory) {
+    usage();
+    process.exitCode = 1;
+    return;
+  }
+
+  const preflight = await runPreflight();
+  if (!preflight.passed) {
+    printPreflightFailure(preflight);
+    process.exitCode = 1;
+    return;
+  }
+
   console.log('ANTIGRAVITY PHASE 3 — SIMPLE MODE');
   console.log(`Reel: ${reelDirectory}`);
+  console.log('Preflight: bestanden.');
+
+  runNpmStep({
+    label: 'Inhalt strikt vorprüfen',
+    script: 'check:content',
+    args: ['--strict'],
+    resumable: false
+  }, reelDirectory);
+
+  const resumeFrom = getArgument('--from');
+  let startIndex = 0;
+  if (resumeFrom) {
+    startIndex = steps.findIndex((step) => step.label.toLowerCase().includes(resumeFrom.toLowerCase()));
+    if (startIndex < 0) {
+      console.error(`Unbekannter Schritt "${resumeFrom}". Verfügbare Schritte:`);
+      for (const [index, step] of steps.entries()) console.error(`  ${index + 1}. ${step.label}`);
+      process.exitCode = 1;
+      return;
+    }
+    console.log(`Wiedereinstieg ab Schritt ${startIndex + 1}: ${steps[startIndex].label}`);
+  }
+
   console.log('Keine Zwischenfragen: chronologisches Routing, ein QC-Durchgang, automatisches Audio-Timing, SFX, Timeline und Render.');
 
-  for (const step of steps) runNpmStep(step, reelDirectory);
+  for (const step of steps.slice(startIndex)) runNpmStep(step, reelDirectory);
 
   console.log('\nPHASE 3 ABGESCHLOSSEN.');
   console.log('Export: 03-export/FERTIGES-REEL.mp4');
 }
 
-main();
+await main();
