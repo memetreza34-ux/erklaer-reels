@@ -6,15 +6,16 @@ Style-ID: `serious-minimal-countryball-explainer`
 
 Die bisherige `modern-countryball-explainer`-Welt ist für **neue Reels ersetzt**. Historische Reel-Dateien dürfen ihren alten Stand behalten; neue Produktionen verwenden nur noch die hier definierte Welt.
 
-## Trennung zu YouTube
+## Beziehung zu YouTube
 
-Diese Datei gilt **nur für Reels**. Die YouTube-Langvideo-Bildwelt unter `youtube/YOUTUBE_VISUAL_WORLD.md` bleibt unverändert und vollständig getrennt.
+Diese Datei beschreibt die Reel-Ausprägung der gemeinsamen **Serious Minimal Countryball Explainer**-Bild-DNA.
 
 Für Reels gilt:
 - 9:16
-- Serious Minimal Countryball Explainer
-- keine YouTube-Stick-Figuren
-- kein 16:9-Longform-Look
+- Style-ID `serious-minimal-countryball-explainer`
+- Smartphone-first-Komposition
+
+Für YouTube gilt ein eigener Produktionsworkflow und eine eigene 16:9-Style-ID. Die künstlerische DNA bleibt jedoch dieselbe; die einzige beabsichtigte Formatabweichung ist 16:9 horizontal statt 9:16 vertikal. Die verbindlichen YouTube-Details stehen unter `youtube/YOUTUBE_VISUAL_WORLD.md`.
 
 ## Grundidee
 
@@ -238,8 +239,7 @@ Prompts sind Englisch. Sichtbarer Bildtext ist Deutsch.
 - Floating UI Boards
 - zufällige Mini-Kugeln
 - themenspezifische Stilwechsel
-- YouTube-Stick-Figure-Welt
-- 16:9-Komposition
+- 16:9-Komposition innerhalb eines Reels
 
 ## Qualitätsprüfung vor Freigabe
 
@@ -254,6 +254,6 @@ Prompts sind Englisch. Sichtbarer Bildtext ist Deutsch.
 9. Wurden normale Menschen und realistische Umgebungen vermieden?
 10. Ist der deutsche Text kurz, korrekt und gut lesbar?
 11. Unterscheidet sich das Motiv/Arrangement genug vom vorherigen Bild, ohne die Welt zu wechseln?
-12. Bleibt YouTube vollständig getrennt?
+12. Bleibt die Reel-Komposition 9:16, während die gemeinsame Bild-DNA mit YouTube konsistent bleibt?
 
 Wenn ein Bild scheitert, wird nur dieses Bild korrigiert. Die globale Reel-Welt bleibt unverändert.
