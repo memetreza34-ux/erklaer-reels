@@ -8,7 +8,7 @@ Style-ID: `youtube-editorial-stick-explainer`
 
 Die YouTube-Bildwelt ist ein ruhiger, erzählerischer **2D hand-drawn Editorial-Explainer-Stil** mit einfachen menschlichen Figuren, klaren Story-Momenten und reduzierten historischen oder natürlichen Umgebungen.
 
-Sie ist bewusst vollständig von der Reel-Bildwelt getrennt. Die Reel-Bildwelt `modern-countryball-explainer` gilt **nicht** für YouTube-Langvideos.
+Sie ist bewusst vollständig von der Reel-Bildwelt getrennt. Die aktuelle Reel-Bildwelt `serious-minimal-countryball-explainer` gilt **nicht** für YouTube-Langvideos.
 
 ## Verbindliche Gestaltung
 
@@ -42,8 +42,6 @@ Wenn Menschen gezeigt werden, gelten standardmäßig diese Regeln:
 Menschen werden nicht fotorealistisch porträtiert. Sie bleiben stilisiert, reduziert und leicht wiedererkennbar.
 
 ## Vier Referenzrichtungen der Bildwelt
-
-Die vom Nutzer bestätigte Basiswelt wird durch diese vier Szenentypen beschrieben:
 
 ### 1. Menschen am Lagerfeuer bei Sonnenuntergang
 
@@ -96,19 +94,29 @@ Nicht jede Szene muss voll sein. Reduktion ist erwünscht, wenn sie die Aussage 
 
 ## Visuelle Komplexität bestimmt die Wechselgeschwindigkeit
 
-Für neue YouTube-Videos bekommt **jedes Bild** eine A–E-Komplexitätsklasse. Diese Klasse beschreibt, wie schnell ein Zuschauer das Bild erfassen kann und steuert deshalb die geplante Bilddauer.
+Für neue YouTube-Videos bekommt **jedes Bild** eine A–E-Komplexitätsklasse.
 
-- **A — sehr einfach, 4–5 s:** ein Objekt, Symbol oder einzelner Reveal; sofort erfassbar.
-- **B — einfach, 5–7 s:** eine klare Handlung oder Aussage mit wenigen Elementen.
-- **C — mittel, 7–9 s:** mehrere relevante Elemente, kleiner Vergleich oder Ursache→Folge.
-- **D — komplex, 9–12 s:** Karte, historische Gruppenszene, Diagramm oder mehrere zusammenhängende Informationen.
-- **E — sehr komplex, 12–15 s:** große Übersicht oder mehrstufiger Zusammenhang mit mehreren Details, die bewusst gelesen werden sollen.
+- **A — sehr einfach:** 4–5 s geplant; echte Timeline maximal 6,5 s
+- **B — einfach:** 5–7 s geplant; echte Timeline maximal 8,5 s
+- **C — mittel:** 7–9 s geplant; echte Timeline maximal 10,5 s
+- **D — komplex:** 9–12 s geplant; echte Timeline maximal 13,5 s
+- **E — sehr komplex:** 12–15 s geplant; echte Timeline maximal 16,0 s
 
-**Wichtig:** Komplexität bedeutet nicht, Bilder künstlich vollzustopfen. Ein Bild behält weiterhin **einen klaren visuellen Zweck**. Die Klasse beschreibt nur, wie viel visuelle/gedankliche Verarbeitung dieser eine Zweck braucht.
+Komplexität bedeutet nicht, Bilder künstlich vollzustopfen. Ein Bild behält weiterhin **einen klaren visuellen Zweck**. Die Klasse beschreibt nur, wie viel visuelle/gedankliche Verarbeitung dieser eine Zweck braucht.
 
-Phase 1 plant die Anchors so, dass ein simples Bild schnell rotiert und ein komplexes Bild länger lesbar bleibt. Wenn ein Sprechabschnitt länger dauert als die sinnvolle Klasse, wird ein zusätzlicher Bildmoment geplant. Die finale Millisekunden-Dauer wird in Phase 3 weiterhin aus dem echten Voice-over gemessen.
+Wenn ein Sprechabschnitt länger dauert als die sinnvolle Klasse, wird ein zusätzlicher Bildmoment geplant. Die finale Millisekunden-Dauer kommt aus dem echten Voice-over und wird im V2-Gate gegen die Klasse geprüft.
 
-Die technische Detailregel steht in `youtube/ADAPTIVE_PACING_V2.md`.
+## Motion nach A–E
+
+Der Standard-Renderer verwendet `complexity-v1`:
+
+- A: sehr leichter Push
+- B: ruhiger Pan
+- C: narrativer Pan/Push
+- D: langsamer Scan/Pull für Karten und komplexe Szenen
+- E: besonders ruhige Übersicht
+
+Motion bleibt subtil. Sie soll das Bild lebendig halten, nicht vom Inhalt ablenken.
 
 ## Hintergrund und Farbe
 
@@ -123,7 +131,7 @@ Die technische Detailregel steht in `youtube/ADAPTIVE_PACING_V2.md`.
 
 ## Objekte
 
-Objekte werden ebenfalls vereinfacht und klar lesbar gezeichnet, zum Beispiel:
+Objekte werden vereinfacht und klar lesbar gezeichnet, zum Beispiel:
 
 - Lagerfeuer
 - Speer
@@ -156,7 +164,7 @@ Standard:
 
 ## Thumbnail-Hinweis
 
-Thumbnails dürfen dieselbe Figuren- und Zeichenwelt verwenden, aber mit stärkerem Fokus, höherem Kontrast und größerer Headline. Eine feste Thumbnail-Formel wird dadurch nicht automatisch festgelegt.
+Thumbnails dürfen dieselbe Figuren- und Zeichenwelt verwenden, aber mit stärkerem Fokus, höherem Kontrast und größerer Headline. Bild 00 bleibt ausschließlich Thumbnail und kommt nie in die Videotimeline.
 
 ## Verbotene Stilabweichungen
 
@@ -181,10 +189,8 @@ Jeder YouTube-Bildprompt beschreibt zuerst die konkrete Szene. Zusätzlich gilt 
 
 Prompts werden auf **Englisch** geschrieben.
 
-Der feste Stilblock muss sinngemäß diese Eigenschaften tragen:
+Der feste Stilblock trägt sinngemäß:
 
 ```text
 16:9, hand-drawn 2D editorial explainer style, simple stick-figure-like humans, round heads, minimal facial features, clean black outlines, warm slightly muted colors, calm narrative composition, simple backgrounds, historical/natural/reduced environments, one clear scene focus, no photorealism, no 3D, no countryballs.
 ```
-
-Die konkrete Szene darf stark variieren. Die Formsprache bleibt gleich.
