@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import { verifySemanticVisualReview } from '../core/semantic-visual-review-guard.js';
 import { runVisualQualityCheck } from '../core/visual-qc.js';
 
 function getArgument(name) {
@@ -18,20 +19,34 @@ async function main() {
     return;
   }
 
+  // Erzeugt/aktualisiert zuerst visual-inspection.json mit Fingerprints der
+  // AKTUELLEN Bilddateien und der AKTUELLEN geplanten Szenenbedeutung.
   const report = await runVisualQualityCheck(reelDirectory, { strict });
+  const semantic = strict ? await verifySemanticVisualReview(reelDirectory) : { required: false, passed: true, findings: [], checkedAssets: 0 };
+  const passed = report.passed && (!semantic.required || semantic.passed);
+
   if (asJson) {
-    console.log(JSON.stringify(report, null, 2));
+    console.log(JSON.stringify({ ...report, passed, semanticReview: semantic }, null, 2));
   } else {
     console.log(`Bilder technisch geprüft: ${report.summary.assetsChecked}`);
     console.log(`Fehler: ${report.summary.failedChecks}`);
     console.log(`Warnungen: ${report.summary.warnings}`);
-    console.log(`Ergebnis: ${report.passed ? 'bestanden' : 'nicht bestanden'}`);
-    console.log('QC-Modus: single-pass-fast');
+    if (semantic.required) {
+      console.log(`Semantisch geprüft: ${semantic.passed ? 'bestanden' : 'noch nicht bestätigt'} (${semantic.checkedAssets} Bilder)`);
+      if (!semantic.passed) {
+        console.log('Aktion für Antigravity: review/visual-inspection.json öffnen, jedes aktuelle Bild EINMAL wirklich ansehen und nur bestätigte Checks auf true/status passed setzen. Danach denselben QC-Schritt erneut starten.');
+        for (const finding of semantic.findings.slice(0, 12)) {
+          console.log(`- ${finding.assetId ?? 'Reel'}: ${finding.issue}${finding.check ? ` (${finding.check})` : ''}`);
+        }
+      }
+    }
+    console.log(`Ergebnis: ${passed ? 'bestanden' : 'nicht bestanden'}`);
+    console.log('QC-Modus: single-pass-fast + fingerprint-bound-semantic-review');
     console.log('Bericht: review/visual-quality-report.json');
-    console.log('Optionaler Schnellcheck: review/visual-inspection.json');
+    console.log('Sichtprüfung: review/visual-inspection.json');
   }
 
-  if (!report.passed) process.exitCode = 1;
+  if (!passed) process.exitCode = 1;
 }
 
 main().catch((error) => {
