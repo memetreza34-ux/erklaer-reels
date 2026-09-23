@@ -28,6 +28,7 @@
     "sync:sounds": "node src/cli/run-with-reel-layout.js src/cli/sync-sounds.js",
     "sync:audio": "node src/cli/run-with-reel-layout.js src/cli/build-timeline.js",
     "legacy:sync:words": "node src/cli/sync-words.js",
+    "preflight:reel": "node src/cli/preflight.js",
     "phase3:reel": "node src/cli/phase3-reel.js",
     "render:reel": "node src/cli/run-with-reel-layout.js src/cli/render-reel.js",
     "auto-align:youtube": "node src/cli/auto-align-youtube.js",
@@ -53,6 +54,6 @@
     "remotion": "4.0.500"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=24"
   }
 }
