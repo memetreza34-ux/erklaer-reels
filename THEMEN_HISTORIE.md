@@ -37,6 +37,7 @@ Für **neue Reels** gilt zusätzlich `REEL_THEMENFOKUS.md`: autonom ausgewählt 
 
 - KW36 (31.08.–06.09.2026): Warum hat ein Tag 24 Stunden – und nicht 10?
 - KW39 (21.09.–27.09.2026): Warum ging das Römische Reich wirklich unter? — Golden-V2-Test, Phase 1 komplett
+- KW39 (21.09.–27.09.2026): Warum gibt es Zeitzonen? — 2-Minuten-V2-Test, Phase 1 komplett
 
 ## Duplicate-Regel
 
