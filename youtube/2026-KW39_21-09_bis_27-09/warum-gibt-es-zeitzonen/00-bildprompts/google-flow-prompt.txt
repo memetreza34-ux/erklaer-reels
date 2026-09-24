@@ -1,22 +1,35 @@
 YOUTUBE_VISUAL_POLICY_VERSION: 3
+COVER_POLICY_VERSION: 1
 ACTIVE_STYLE_ID: premium-editorial-explainer-illustration-youtube-16x9
 
 GOOGLE FLOW MASTER PROMPT — Warum gibt es Zeitzonen?
 
 ZIEL
-Erzeuge Bild 00 als Thumbnail und danach Bild 01 bis Bild 19 für ein deutsches YouTube-Erklärvideo von ungefähr 2 Minuten.
+Erzeuge ausschließlich Bild 01 bis Bild 19 für ein deutsches YouTube-Erklärvideo von ungefähr 2 Minuten. Es gibt KEIN separates Bild 00.
+
+==================================================
+FIRST SCENE = COVER HARD LOCK
+==================================================
+
+- Bild 01 is the cover AND the first video scene.
+- Bild 01 starts the real video at 0.0 seconds.
+- Bild 01 must contain exactly one strong German cover headline: "WARUM ZEITZONEN?".
+- Bild 01 must simultaneously explain the opening narration: "Stell dir vor: In Berlin ist Mittag, aber wenige Kilometer weiter zeigt die Uhr schon eine andere Zeit. Genau so war es früher."
+- The exported YouTube thumbnail is copied directly from `Bild 01.png`.
+- Do NOT create Bild 00.
+- Do NOT create a separate thumbnail image outside the timeline.
 
 ==================================================
 SESSION RESET HARD LOCK
 ==================================================
 
 IMPORTANT BEFORE GENERATION:
-- Use a FRESH Google Flow session/project for this Visual Policy V3 production.
-- Do NOT continue any older Flow session containing Countryball, Master-Style-Frame, anchor-reference, stickman or other legacy style instructions.
+- Use a FRESH Google Flow session/project for this production.
+- Do NOT continue any older Flow session containing Countryball, Master-Style-Frame, anchor-reference, separate-Bild-00-thumbnail, stickman or other legacy instructions.
 - Ignore any legacy instruction that conflicts with this document.
 - The ONLY active visual style is `premium-editorial-explainer-illustration-youtube-16x9`.
 - Do not attach Bild 01 or any other generated image as a reference for later images.
-- Bild 01 is NOT a master reference.
+- Bild 01 is a cover, NOT a master reference.
 - If the current Flow session says otherwise: STOP, open a fresh session, and paste this document again.
 
 ==================================================
@@ -30,15 +43,15 @@ Premium editorial explainer illustration for a modern educational YouTube docume
 VISUAL STORYTELLING HARD LOCK
 ==================================================
 
-Do not merely place the nouns from the narration on screen. Show the relationship, consequence, conflict, transition or spatial idea.
+Do not merely place nouns from the narration on screen. Show relationships, consequences, transitions and spatial ideas.
 
 When appropriate:
 - use foreground, midground and background for depth;
 - use diagonals, leading lines, overlap, scale contrast, framing and asymmetry for visual energy;
 - make cause and effect visible;
-- use expressive but restrained editorial figures when people improve the story;
-- use lighting and palette to support historical period, urgency, confusion or resolution;
-- prefer a narrative or conceptual scene over a static infographic card when both could explain the same sentence.
+- use restrained editorial figures when people improve the story;
+- use lighting and palette to support historical period, confusion or resolution;
+- prefer a narrative or conceptual scene over a static infographic card when it explains better.
 
 ==================================================
 ANTI-LIFELESS HARD LOCK
@@ -63,10 +76,10 @@ INDIVIDUALITY HARD LOCK
 ==================================================
 
 - Create a fresh composition for every Bild NN.
-- Do not imitate or reuse the layout, perspective, object placement, background structure, architecture, dominant shapes or palette arrangement of any previous image unless continuity is genuinely needed.
+- Do not imitate or reuse layout, perspective, object placement, background structure, architecture, dominant shapes or palette arrangement of any previous image unless continuity is genuinely needed.
 - Do not use any previous generated image as a visual reference.
 - Do not repeat a mascot or recurring character without narrative reason.
-- Rotate intentionally between: editorial hero, historical narrative scene, conceptual metaphor, map/spatial explainer, scientific diagram, system illustration.
+- Rotate intentionally between editorial hero, historical narrative scene, conceptual metaphor, map/spatial explainer, scientific diagram and system illustration.
 - Adjacent images should normally change angle, spatial logic, composition mode and palette emphasis.
 
 HARD NEGATIVES:
@@ -77,7 +90,6 @@ DEUTSCH-HARD-LOCK — JEDER SICHTBARE TEXT
 ==================================================
 
 This is a GERMAN project. Every readable word visible anywhere in every image MUST be German.
-This includes map labels, diagrams, signs, clocks, callouts and legends.
 Do NOT generate English labels. Do NOT generate pseudo-text or fake writing.
 If text is not explicitly required, generate NO TEXT.
 Any English visible text = HARD FAIL and regenerate.
@@ -88,15 +100,14 @@ ABLAUF
 ==================================================
 
 1. Confirm a fresh/non-conflicting Flow session and restate the active Style-ID.
-2. Bild 00 separat aus seinem eigenen Prompt erzeugen und als `Bild 00.png` speichern.
-3. Bild 01 separat aus seinem eigenen Prompt erzeugen und prüfen.
-4. Bild 02–05 jeweils unabhängig aus ihrem jeweiligen Textprompt erzeugen. KEIN Referenzbild anhängen.
-5. Alle Bilder der Welle einzeln prüfen: Aussage, visuelle Energie, Tiefe, Art Direction, Individualität, deutscher Text, Nummerierung, 16:9.
-6. Fehler nur im betroffenen Bild regenerieren.
-7. Danach Bild 06–10, dann 11–15, dann 16–19.
-8. Niemals mehr als fünf aktive Bildgenerierungen gleichzeitig.
-9. Alle fertigen Bilder flach unter `00-bildprompts/images/` als `Bild NN.png` ablegen.
-10. Bild 00 ist nur Thumbnail und kommt nie in die Timeline.
+2. Bild 01 separat erzeugen und streng prüfen: COVER + ERSTE SZENE.
+3. Bild 02–05 jeweils unabhängig aus ihrem jeweiligen Textprompt erzeugen. KEIN Referenzbild anhängen.
+4. Alle Bilder einzeln prüfen: Aussage, visuelle Energie, Tiefe, Art Direction, Individualität, deutscher Text, Nummerierung, 16:9.
+5. Fehler nur im betroffenen Bild regenerieren.
+6. Danach Bild 06–10, dann 11–15, dann 16–19.
+7. Niemals mehr als fünf aktive Bildgenerierungen gleichzeitig.
+8. Alle fertigen Bilder flach unter `00-bildprompts/images/` als `Bild NN.png` ablegen.
+9. Niemals Bild 00 erzeugen.
 
 A–E-PACING
 A = sehr einfach, ca. 4–5 s
@@ -106,17 +117,11 @@ D = komplex, ca. 9–12 s
 E = sehr komplex, ca. 12–15 s
 
 ==================================================
-BILD 00 — THUMBNAIL
-==================================================
-
-Premium editorial documentary thumbnail, 16:9. Create a bold diagonal composition: Earth fills the lower-left and is split by sunrise and night, with luminous time-zone arcs wrapping around it. Three oversized analog clocks sweep upward across the right side, each showing a clearly different time. A passenger jet crosses the day-night boundary to add motion and scale. Deep midnight blue, electric teal, warm sunrise gold and crisp cream highlights. Strong depth, strong silhouette, dramatic contrast, premium magazine-cover finish. Add exactly one large German headline: "WARUM ZEITZONEN?". No other text. No mascot, no countryball, no clipart collage.
-
-==================================================
-BILD 01
+BILD 01 — COVER + ERSTE VIDEOSZENE
 ==================================================
 
 Bild 01 · C · ca. 8 s
-Historical editorial narrative scene, 16:9. Show one nineteenth-century town clock tower large in the foreground at early morning while, far across a valley, a second town sits under a slightly shifted sun position with its own different clock time. A road snakes through layered hills between the towns. Tiny period silhouettes and a market cart add believable life without becoming the focus. Use atmospheric depth, low-angle morning light, terracotta roofs, muted teal shadows and warm gold. The composition should feel like a documentary illustration, not a diagram. Add exactly: "JEDE STADT HATTE IHRE ZEIT". No other text.
+Premium editorial documentary cover scene, 16:9. Build a bold asymmetric composition that works both as a YouTube thumbnail and as the opening video shot. In the foreground, a large Berlin-style city clock and recognizable but simplified Berlin urban architecture sit under bright midday light. Across the frame, a nearby second town is connected by a road/rail line but its large clock clearly shows a slightly different local time. Use a sweeping sunlight arc and layered landscape to make the historical idea immediately understandable. Strong foreground-midground-background depth, premium magazine-cover hierarchy, deep navy and teal shadows with warm gold sunlight, crisp cream accents. Add exactly one large German headline: "WARUM ZEITZONEN?". No other readable text. No countryball, no mascot, no clipart collage. The image must visually support the opening narration about Berlin being at noon while a nearby place shows another time.
 
 ==================================================
 ERSTE WELLE — BILD 02–05
@@ -198,22 +203,24 @@ Final resolving documentary illustration, 16:9. Earth fills the lower center at 
 FINALER CHECK
 ==================================================
 
-Vor Abschluss jedes Bildes prüfen:
+Vor Abschluss prüfen:
+- Cover Policy V1 aktiv
+- Bild 01 ist Cover + erste Videoszene
+- Bild 01 zeigt exakt "WARUM ZEITZONEN?" und passt zum ersten Sprecherabschnitt
+- kein Bild 00 erzeugt
+- keine separate Thumbnail-Datei erzeugt
+- Thumbnail-Exportquelle später = Bild 01.png
 - Policy V3 aktiv
 - Style-ID exakt `premium-editorial-explainer-illustration-youtube-16x9`
-- frische Flow-Sitzung ohne widersprüchliche Legacy-Regeln
+- frische Flow-Sitzung ohne Legacy-Regeln
 - 16:9 horizontal
 - hochwertige Premium-Editorial-Erklärillustration
-- visuell lebendig: klare Tiefe, Richtung, Spannung oder Beziehung
-- nicht wie eine leere Präsentationsfolie
+- visuell lebendig: Tiefe, Richtung, Spannung oder Beziehung
 - jedes Bild eigenständig komponiert
 - keine sichtbare Copy-Paste-Schablone
 - KEIN vorheriges Bild als visuelle Referenz verwendet
-- kein Countryball-/Maskottchen-Zwang
+- keine Countryball-/Maskottchen-Pflicht
 - keine Stickfiguren
-- kein billiger Cartoon-/Clipart-Look
-- kein glänzendes 3D/Pixar/Clay/Anime/Fotorealismus
-- deutscher Pflichttext exakt wie angegeben
-- kein englischer sichtbarer Text
-- keine Pseudo-Schrift
-- keine Wasserzeichen
+- kein billiger/Kindercartoon-Look
+- jeder sichtbare Text Deutsch
+- kein englischer Text, kein Pseudo-Text
