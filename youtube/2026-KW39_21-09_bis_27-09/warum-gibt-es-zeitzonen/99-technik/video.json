@@ -1,7 +1,8 @@
 {
-  "schemaVersion": 6,
+  "schemaVersion": 7,
   "productionRulesVersion": 2,
   "visualPolicyVersion": 3,
+  "coverPolicyVersion": 1,
   "complexityPacingVersion": 1,
   "videoId": "2026-KW39_warum-gibt-es-zeitzonen",
   "weekFolder": "2026-KW39_21-09_bis_27-09",
@@ -18,6 +19,15 @@
   "sourceVisualWorldId": "premium-editorial-explainer-illustration",
   "visualStyleReason": "Hochwertige, lebendige und szenenspezifisch art-directed 16:9-Editorial-Erklärillustrationen. Jedes Bild wird unabhängig aus seinem eigenen Textprompt erzeugt; kein vorheriges Bild wird als visuelle Referenz verwendet.",
   "aspectRatio": "16:9",
+  "coverPolicy": {
+    "firstSceneIsCover": true,
+    "coverImageNumber": 1,
+    "coverMustBeFirstTimelineImage": true,
+    "coverMustAlsoBeThumbnailSource": true,
+    "separateThumbnailImageForbidden": true,
+    "image00Forbidden": true,
+    "headlineRequired": true
+  },
   "sessionPolicy": {
     "freshFlowSessionRequiredWhenVisualPolicyChanges": true,
     "continueSessionContainingLegacyStyleInstructionsForbidden": true,
