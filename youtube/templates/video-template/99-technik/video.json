@@ -1,19 +1,29 @@
 {
-  "schemaVersion": 5,
+  "schemaVersion": 6,
   "productionRulesVersion": 2,
+  "visualPolicyVersion": 3,
   "complexityPacingVersion": 1,
   "videoId": "YYYY-KWNN_topic-slug",
   "weekFolder": "YYYY-KWNN_DD-MM_bis_DD-MM",
   "topicSlug": "topic-slug",
   "title": "",
   "topic": "",
+  "topicCategory": "",
+  "topicCoreLink": "",
+  "explicitUserRequestedOutsideFocus": false,
   "status": "planned",
   "language": "de",
   "format": "youtube-longform",
   "visualStyleId": "premium-editorial-explainer-illustration-youtube-16x9",
   "sourceVisualWorldId": "premium-editorial-explainer-illustration",
-  "visualStyleReason": "YouTube nutzt eine eigenständige hochwertige 16:9-Editorial-Erklärillustration. Jedes Bild wird unabhängig aus seinem eigenen Textprompt erzeugt; kein vorheriges Bild dient als visuelle Referenz.",
+  "visualStyleReason": "YouTube nutzt hochwertige, lebendige 16:9-Editorial-Erklärillustrationen mit szenenspezifischer Art Direction. Jedes Bild wird unabhängig aus seinem eigenen Textprompt erzeugt; kein vorheriges Bild dient als visuelle Referenz.",
   "aspectRatio": "16:9",
+  "sessionPolicy": {
+    "freshFlowSessionRequiredWhenVisualPolicyChanges": true,
+    "continueSessionContainingLegacyStyleInstructionsForbidden": true,
+    "activeStyleIdMustBeRestatedBeforeGeneration": true,
+    "previousGeneratedImageAsReferenceForbidden": true
+  },
   "visualWorldParityPolicy": {
     "mustMatchReelVisualDNA": false,
     "independentYoutubeStyle": true,
@@ -36,6 +46,20 @@
     "freshCompositionRequired": true,
     "repeatLayoutWithoutNarrativeReasonForbidden": true,
     "varyPerspectiveLayoutAndBackgroundWhenUseful": true
+  },
+  "visualQualityPolicy": {
+    "visualStorytellingRequired": true,
+    "lifelessStaticCompositionForbidden": true,
+    "genericCenteredObjectOnBlankBackgroundForbiddenByDefault": true,
+    "genericIconCollageForbidden": true,
+    "sceneSpecificArtDirectionRequired": true,
+    "foregroundMidgroundBackgroundPreferredForNarrativeScenes": true,
+    "directionalEnergyPreferredWhenContentAllows": true,
+    "causeEffectOrContrastShouldBeVisibleWhenRelevant": true,
+    "controlledDepthRequired": true,
+    "paletteVariationAcrossAdjacentImagesRequired": true,
+    "adjacentCompositionModeRepeatForbiddenWithoutReason": true,
+    "childishCartoonLookForbidden": true
   },
   "visibleTextPolicy": {
     "projectLanguageOnly": true,

@@ -1,34 +1,76 @@
+YOUTUBE_VISUAL_POLICY_VERSION: 3
+ACTIVE_STYLE_ID: premium-editorial-explainer-illustration-youtube-16x9
+
 GOOGLE FLOW MASTER PROMPT — Warum gibt es Zeitzonen?
 
 ZIEL
 Erzeuge Bild 00 als Thumbnail und danach Bild 01 bis Bild 19 für ein deutsches YouTube-Erklärvideo von ungefähr 2 Minuten.
 
-WICHTIG
-- Neue aktive YouTube-Bildwelt: `premium-editorial-explainer-illustration-youtube-16x9`.
-- JEDES Bild wird unabhängig aus seinem eigenen Textprompt erzeugt.
-- KEIN vorheriges Bild darf als visuelle Referenz, Style-Referenz oder Image-to-Image-Vorlage verwendet werden.
-- Bild 01 ist KEIN Master-Style-Frame.
-- Kein Bild anhängen, um den Stil des nächsten Bildes zu bestimmen.
-- Die Bilder sollen hochwertig illustriert, erwachsen, klar und individuell komponiert sein.
-- Die 5er-Wellen sind nur eine Ausführungsregel: maximal fünf aktive Generierungen gleichzeitig.
+==================================================
+SESSION RESET HARD LOCK
+==================================================
+
+IMPORTANT BEFORE GENERATION:
+- Use a FRESH Google Flow session/project for this Visual Policy V3 production.
+- Do NOT continue any older Flow session containing Countryball, Master-Style-Frame, anchor-reference, stickman or other legacy style instructions.
+- Ignore any legacy instruction that conflicts with this document.
+- The ONLY active visual style is `premium-editorial-explainer-illustration-youtube-16x9`.
+- Do not attach Bild 01 or any other generated image as a reference for later images.
+- Bild 01 is NOT a master reference.
+- If the current Flow session says otherwise: STOP, open a fresh session, and paste this document again.
 
 ==================================================
 WRITTEN STYLE LOCK — PREMIUM EDITORIAL EXPLAINER
 ==================================================
 
 Apply this written style specification independently to EVERY image:
-Premium editorial explainer illustration for a modern educational YouTube video, 16:9 horizontal. High-quality sophisticated 2D illustration, crisp vector-like shapes, refined controlled linework, layered flat colors with subtle depth, tasteful limited palette, optional subtle paper grain, strong visual hierarchy, adult informative magazine-infographic aesthetic, clearly art-directed for the specific idea, polished but not sterile, clean but not empty, visually intelligent, not childish, not generic clipart.
+Premium editorial explainer illustration for a modern educational YouTube documentary, 16:9 horizontal. High-quality sophisticated 2D illustration with confident art direction, crisp vector-like shapes, refined controlled linework, layered flat colors with subtle depth, rich but disciplined color palettes, selective paper/print texture, intentional lighting accents, strong hierarchy and a clear focal story. Adult educational magazine / documentary-infographic aesthetic. Every image must feel authored for its exact idea, visually alive and memorable, never sterile or templated. No glossy 3D, no Pixar, no clay, no anime, no photorealism.
 
-INDIVIDUALITY HARD LOCK:
+==================================================
+VISUAL STORYTELLING HARD LOCK
+==================================================
+
+Do not merely place the nouns from the narration on screen. Show the relationship, consequence, conflict, transition or spatial idea.
+
+When appropriate:
+- use foreground, midground and background for depth;
+- use diagonals, leading lines, overlap, scale contrast, framing and asymmetry for visual energy;
+- make cause and effect visible;
+- use expressive but restrained editorial figures when people improve the story;
+- use lighting and palette to support historical period, urgency, confusion or resolution;
+- prefer a narrative or conceptual scene over a static infographic card when both could explain the same sentence.
+
+==================================================
+ANTI-LIFELESS HARD LOCK
+==================================================
+
+Reject and regenerate any image that feels flat, empty, generic, sterile or like a presentation slide.
+
+Hard failures:
+- one small centered object floating on a blank background;
+- icon + two decorative icons formula;
+- repeated clock/map layouts with only labels changed;
+- excessive empty pastel space without narrative purpose;
+- front-on composition with no depth, direction or focal tension;
+- generic icon collage;
+- repeated composition mode in adjacent images without a real reason;
+- decorative props that do not explain the narration.
+
+Clean does NOT mean empty. Minimal does NOT mean lifeless.
+
+==================================================
+INDIVIDUALITY HARD LOCK
+==================================================
+
 - Create a fresh composition for every Bild NN.
-- Do not imitate or reuse the layout, perspective, object placement, background structure, architecture, dominant shapes, or color arrangement of any previous image unless the spoken content itself requires continuity.
+- Do not imitate or reuse the layout, perspective, object placement, background structure, architecture, dominant shapes or palette arrangement of any previous image unless continuity is genuinely needed.
 - Do not use any previous generated image as a visual reference.
-- Do not repeat a mascot or recurring character without a real narrative reason.
-- Vary composition mode intentionally: editorial hero illustration, explainer diagram, narrative mini scene, map/spatial explainer, conceptual metaphor.
-- Each image must feel designed specifically for the sentence it explains.
+- Do not repeat a mascot or recurring character without narrative reason.
+- Rotate intentionally between: editorial hero, historical narrative scene, conceptual metaphor, map/spatial explainer, scientific diagram, system illustration.
+- Adjacent images should normally change angle, spatial logic, composition mode and palette emphasis.
 
 HARD NEGATIVES:
-no mandatory countryball mascot, no repeated center-character-plus-icons formula, no stick-figure style, no cheap cartoon look, no childish clipart, no generic AI template, no glossy 3D, no Pixar, no clay, no anime, no photorealistic stock-photo look, no watermark.
+no mandatory countryball mascot, no recurring countryball template, no stick figures, no cheap cartoon look, no childish clipart, no generic AI template, no empty presentation-card aesthetic, no glossy 3D, no Pixar, no clay, no anime, no photorealistic stock-photo look, no watermark.
 
 ==================================================
 DEUTSCH-HARD-LOCK — JEDER SICHTBARE TEXT
@@ -45,17 +87,16 @@ Any pseudo-text = HARD FAIL and regenerate.
 ABLAUF
 ==================================================
 
-1. Bild 00 separat aus seinem eigenen Prompt erzeugen und als `Bild 00.png` speichern.
-2. Bild 01 separat aus seinem eigenen Prompt erzeugen und prüfen.
-3. Bild 02–05 jeweils unabhängig aus dem jeweiligen Textprompt erzeugen. KEIN Referenzbild anhängen.
-4. Alle Bilder der Welle einzeln prüfen: Inhalt, Illustrationsqualität, Individualität, deutscher Text, Nummerierung, 16:9.
-5. Fehler nur im betroffenen Bild regenerieren.
-6. Danach Bild 06–10 auf dieselbe Weise.
-7. Danach Bild 11–15.
-8. Zuletzt Bild 16–19.
-9. Niemals mehr als fünf aktive Bildgenerierungen gleichzeitig.
-10. Alle fertigen Bilder flach unter `00-bildprompts/images/` als `Bild NN.png` ablegen.
-11. Bild 00 ist nur Thumbnail und kommt nie in die Timeline.
+1. Confirm a fresh/non-conflicting Flow session and restate the active Style-ID.
+2. Bild 00 separat aus seinem eigenen Prompt erzeugen und als `Bild 00.png` speichern.
+3. Bild 01 separat aus seinem eigenen Prompt erzeugen und prüfen.
+4. Bild 02–05 jeweils unabhängig aus ihrem jeweiligen Textprompt erzeugen. KEIN Referenzbild anhängen.
+5. Alle Bilder der Welle einzeln prüfen: Aussage, visuelle Energie, Tiefe, Art Direction, Individualität, deutscher Text, Nummerierung, 16:9.
+6. Fehler nur im betroffenen Bild regenerieren.
+7. Danach Bild 06–10, dann 11–15, dann 16–19.
+8. Niemals mehr als fünf aktive Bildgenerierungen gleichzeitig.
+9. Alle fertigen Bilder flach unter `00-bildprompts/images/` als `Bild NN.png` ablegen.
+10. Bild 00 ist nur Thumbnail und kommt nie in die Timeline.
 
 A–E-PACING
 A = sehr einfach, ca. 4–5 s
@@ -68,30 +109,30 @@ E = sehr komplex, ca. 12–15 s
 BILD 00 — THUMBNAIL
 ==================================================
 
-Premium editorial explainer thumbnail, 16:9. A dramatic tilted globe occupies the left two-thirds of the frame, divided by several clean luminous time-zone arcs. On the right, three oversized analog clocks show clearly different times, arranged with strong depth and rhythm. A thin sunrise glow wraps around the Earth edge. Sophisticated navy, warm amber and muted teal palette, crisp vector-like shapes, refined linework, subtle paper grain, high contrast, adult educational magazine aesthetic. Add exactly one large German headline: "WARUM ZEITZONEN?". No other text. No mascot, no countryball, no repeated template look.
+Premium editorial documentary thumbnail, 16:9. Create a bold diagonal composition: Earth fills the lower-left and is split by sunrise and night, with luminous time-zone arcs wrapping around it. Three oversized analog clocks sweep upward across the right side, each showing a clearly different time. A passenger jet crosses the day-night boundary to add motion and scale. Deep midnight blue, electric teal, warm sunrise gold and crisp cream highlights. Strong depth, strong silhouette, dramatic contrast, premium magazine-cover finish. Add exactly one large German headline: "WARUM ZEITZONEN?". No other text. No mascot, no countryball, no clipart collage.
 
 ==================================================
 BILD 01
 ==================================================
 
 Bild 01 · C · ca. 8 s
-Premium editorial narrative mini scene, 16:9. Show two neighboring nineteenth-century European towns as distinct illustrated silhouettes on opposite sides of the frame, each town tower carrying a large clock with a slightly different local time. A single sun sits high above them, and a thin curved path connects the towns. Use a wide cinematic editorial composition with atmospheric layering, warm morning light, muted terracotta and blue-green tones, crisp vector-like architecture, subtle grain. Add exactly one German headline: "JEDE STADT HATTE IHRE ZEIT". No other text. Do not resemble any previous image because none is used as reference.
+Historical editorial narrative scene, 16:9. Show one nineteenth-century town clock tower large in the foreground at early morning while, far across a valley, a second town sits under a slightly shifted sun position with its own different clock time. A road snakes through layered hills between the towns. Tiny period silhouettes and a market cart add believable life without becoming the focus. Use atmospheric depth, low-angle morning light, terracotta roofs, muted teal shadows and warm gold. The composition should feel like a documentary illustration, not a diagram. Add exactly: "JEDE STADT HATTE IHRE ZEIT". No other text.
 
 ==================================================
 ERSTE WELLE — BILD 02–05
 ==================================================
 
 Bild 02 · C · ca. 8 s
-Premium editorial explainer diagram, 16:9. Two town skylines sit at different longitudes along a gentle curved Earth surface. Above each town, the Sun reaches its highest point at a slightly different position, with one clean vertical light ray indicating local noon for each place. Two clocks below show different noon times. Sophisticated scientific-editorial layout, cool sky with warm sunlight accents, strong negative space. Add only the German label "SONNENZEIT". No other text.
+Scientific editorial cutaway, 16:9. Show the curved Earth surface from an oblique side angle with two distant towns placed at different longitudes. A single sun outside the frame casts two clearly angled light paths; local noon reaches each town at a different moment. Use layered atmosphere, a strong diagonal horizon and two subtle clock faces embedded near the towns. Make the geometry readable but visually cinematic. Cool blue atmosphere with concentrated amber sunlight. Add only: "SONNENZEIT".
 
 Bild 03 · B · ca. 6 s
-Premium editorial historical travel illustration, 16:9. A long winding road crosses a broad rural landscape from one small town to another. A horse-drawn carriage is tiny in the middle distance, emphasizing slow travel. Two clocks are integrated subtly into the town towers at opposite ends, showing slightly different times. Use an oblique landscape perspective, muted olive, sand and dusty blue palette, refined linework, subtle print texture. No visible text.
+Historical travel scene, 16:9. A horse-drawn carriage moves along a long winding road from a shadowed foreground town toward a sunlit town on the horizon. Foreground milestone, middle-distance carriage and distant destination create three clear depth layers. Clock towers at both ends show slightly different times. Use a low three-quarter perspective, dusty olive, ochre, blue-grey and late-afternoon light. No visible text.
 
 Bild 04 · B · ca. 6 s
-Premium editorial technology illustration, 16:9. A steam locomotive cuts diagonally across the foreground while telegraph wires sweep above it toward several distant station silhouettes. The composition is energetic and directional, very different from the previous rural landscape. Use deep charcoal, railway red, brass and pale sky tones. Add exactly: "EISENBAHN + TELEGRAF". No other text.
+Dynamic industrial-era editorial scene, 16:9. A steam locomotive rushes diagonally from lower-left toward upper-right while telegraph poles and wires converge toward the horizon. Steam and motion lines create controlled energy. A station clock in the midground visually links transport and time. Deep charcoal, railway red, brass, pale sky and warm steam highlights. Add exactly: "EISENBAHN + TELEGRAF". No other text.
 
 Bild 05 · C · ca. 7 s
-Premium editorial conceptual scene, 16:9. Inside a stylized railway station hall, a large central departures board has only abstract non-readable marks, while four large wall clocks around it all show different times. Train tracks converge in perspective toward the center, creating controlled visual tension. No human figures required. Use cool stone blue, cream and dark red accents. Add exactly one German headline: "WELCHE UHR GILT?". No other readable text.
+Narrative railway-station scene, 16:9. Inside a grand but stylized nineteenth-century station hall, several travelers and railway staff look toward four large wall clocks that disagree with each other. One train is ready to depart, another arrives in the background; converging tracks and roof beams lead the eye toward the clocks. Show confusion through body orientation and composition rather than exaggerated faces. Cool stone blue, cream, burgundy and warm lamp accents. Add exactly: "WELCHE UHR GILT?". No other readable text.
 
 STOP: Bild 01–05 vollständig prüfen. Erst danach 06–10.
 
@@ -100,19 +141,19 @@ WELLE 2 — BILD 06–10
 ==================================================
 
 Bild 06 · C · ca. 7 s
-Premium editorial world-map explainer, 16:9. A clean stylized globe/map dominates the frame, divided into broad vertical time-zone bands that gently wrap around the Earth. A small set of coordinated clocks sits along different bands. Use a modern atlas-editorial look with layered flat colors, deep blue oceans, muted ochre and teal land masses, subtle texture. Add only the German headline "GEMEINSAME ZEITZONEN".
+Editorial transition scene, 16:9. A historical rail network and telegraph lines in the lower foreground visually transform upward into broad coordinated time-zone bands wrapping around a stylized globe. The composition should show the transition from local chaos to shared standards, not just a static map. Use layered paper-map textures, deep navy ocean, ochre land, teal bands and a single red route accent. Add exactly: "GEMEINSAME ZEITZONEN".
 
 Bild 07 · B · ca. 6 s
-Premium editorial scientific illustration, 16:9. Earth and Sun appear in a simplified side-view space diagram: half the Earth is lit, half in shadow, with a clean curved rotation arrow. Use a dark navy background with restrained warm sunlight, precise geometry and minimal but elegant labeling space. Add only: "24 STUNDEN". No other text.
+Scientific hero illustration, 16:9. Earth dominates the frame at a dramatic three-quarter angle with a crisp day-night terminator. The Sun sits partly off-frame, casting a warm beam, while a sweeping curved rotation arrow wraps around Earth. Stars are minimal and graphic. Strong dark-to-light contrast, deep navy, cobalt, warm gold. Add only: "24 STUNDEN".
 
 Bild 08 · B · ca. 6 s
-Premium editorial geometric infographic, 16:9. A circular top-down Earth diagram fills most of the frame, surrounded by a 360-degree ring divided into 24 clean equal slices. One highlighted slice is emphasized with a precise angle marker. Use white/cream background, teal and navy geometry, one amber highlight. Add exactly: "360° ÷ 24 = 15°". No other text.
+Sophisticated geometric explainer, 16:9. A large top-down globe disc occupies the left side while a precise 360-degree ring expands outward and resolves into 24 segments across the right. One 15-degree wedge is pulled forward and highlighted as a dimensional paper-cut layer, creating depth without 3D gloss. Cream background, navy geometry, teal secondary lines, amber highlight. Add exactly: "360° ÷ 24 = 15°".
 
 Bild 09 · B · ca. 6 s
-Premium editorial split-panel explainer, 16:9. Left panel shows a central city clock at 12:00; right panel shows an eastern neighboring city clock at 13:00. A bold directional arrow travels left-to-right beneath a rising sun path. Use a clean modern grid composition, pale blue and warm yellow palette. Add only: "OSTEN: +1 STUNDE".
+Editorial eastward time-shift scene, 16:9. Two stylized city skylines sit on a curved landscape, one nearer the viewer and one farther east. A sunrise arc and a strong sweeping arrow move left-to-right. The eastern clock is one hour ahead. Use an energetic asymmetric composition with coral sunrise, pale blue atmosphere and deep navy silhouettes. Add only: "OSTEN: +1 STUNDE".
 
 Bild 10 · B · ca. 5 s
-Premium editorial diagonal composition, 16:9. A western city appears in the foreground left with a clock one hour earlier, while the reference city sits farther right. A strong west-pointing arrow and descending sun cue explain the shift. Use a different asymmetric layout from Bild 09, with dusk-purple and muted orange accents. Add only: "WESTEN: −1 STUNDE".
+Editorial westward counterpart with a completely different composition, 16:9. View the scene from above and slightly behind: a reference city sits in the upper-right while a western city lies lower-left in longer evening shadows. A broad curved arrow moves westward across the terrain and the western clock is one hour earlier. Dusk violet, burnt orange, muted teal. Add only: "WESTEN: −1 STUNDE".
 
 STOP: Bild 06–10 vollständig prüfen. Erst danach 11–15.
 
@@ -121,19 +162,19 @@ WELLE 3 — BILD 11–15
 ==================================================
 
 Bild 11 · B · ca. 6 s
-Premium editorial map illustration, 16:9. A flattened world map displays several time-zone borders as clean colored regions. Some borders visibly bend around national boundaries and coastlines instead of following straight meridians. Use a restrained map palette with one highlighted zigzag section. Add exactly: "GRENZEN SIND NICHT GERADE". No other text.
+Editorial political-map scene, 16:9. Show a stylized world map on a drafting table viewed at an angle. Straight theoretical meridian bands run faintly underneath, while actual time-zone borders bend sharply around countries, islands and coastlines above them. A few highlighted detours make the contrast obvious. Include a pencil/ruler only as subtle context, not decoration. Rich parchment cream, deep blue, muted red and teal. Add exactly: "GRENZEN SIND NICHT GERADE".
 
 Bild 12 · C · ca. 7 s
-Premium editorial Germany spatial explainer, 16:9. A clean silhouette map of Germany sits centered, with the western edge under a lower sun and the eastern edge under a slightly higher sun. One elegant oversized clock face overlays the country to show a single official time despite the solar difference. Use warm west-to-east light gradient, refined map styling. Add only: "EINE ZEITZONE".
+Germany spatial narrative, 16:9. Show Germany stretched diagonally across the frame from west foreground to east background under a sweeping sunrise gradient. The western edge remains cooler/darker while the eastern edge is brighter, yet one large official clock symbol spans the whole country to show shared civil time. Add a few recognizable but simplified city/landscape cues for life and scale. Add only: "EINE ZEITZONE".
 
 Bild 13 · C · ca. 7 s
-Premium editorial historical-scientific illustration, 16:9. A refined silhouette of the Royal Observatory at Greenwich occupies the lower-left, while a bold vertical meridian line cuts through the composition and continues over a simplified globe on the right. Use deep green, cream and brass accents with subtle engraving-inspired grain. Add exactly two German text elements: "NULLMERIDIAN" and "1884". No other text.
+Historical-scientific hero scene, 16:9. The Royal Observatory at Greenwich sits in a dramatic lower-left perspective at dusk. A bright vertical meridian beam rises through the building and continues across a partially visible globe in the sky, visually connecting place and global reference. Subtle engraving texture meets modern editorial color blocking. Deep green, cream, brass and midnight blue. Add exactly two text elements: "NULLMERIDIAN" and "1884".
 
 Bild 14 · B · ca. 6 s
-Premium editorial network infographic, 16:9. A single zero-meridian reference line sits at the center, with elegant radial connectors reaching to several world-city clock icons around the frame. The composition resembles a modern information-design poster rather than a map. Use dark blue background with crisp cream lines and amber clock accents. Add only: "WELTZEIT UTC".
+Global coordination scene, 16:9. A dark globe at night fills the center-left with a thin zero-meridian line glowing through it. From that line, elegant arcs connect outward to several distant city skylines and clocks around the edges, suggesting one reference system coordinating the world. Avoid icon-grid layout; make it spatial and cinematic. Deep blue, cream lines, amber city lights. Add only: "WELTZEIT UTC".
 
 Bild 15 · C · ca. 8 s
-Premium editorial conceptual Pacific illustration, 16:9. Show the opposite side of the globe with a bold date-line path running vertically but bending around island groups. Two large calendar cards sit on opposite sides of the line, one showing one date and the other the next date. Use turquoise ocean, coral accents and strong clean geometry. Add only the German headline "DATUMSGRENZE".
+Pacific narrative illustration, 16:9. A ship crosses a bold international date-line path in the Pacific while two calendar sheets on opposite sides of the line show consecutive dates. The line bends around island groups in the distance. Use a high oblique ocean perspective with wake lines, layered islands and a clear directional crossing. Turquoise, navy, coral and cream. Add only: "DATUMSGRENZE".
 
 STOP: Bild 11–15 vollständig prüfen. Erst danach 16–19.
 
@@ -142,24 +183,29 @@ LETZTE WELLE — BILD 16–19
 ==================================================
 
 Bild 16 · C · ca. 7 s
-Premium editorial Pacific map/spatial explainer, 16:9. Several small island groups are arranged across a broad ocean field while the international date line visibly zigzags around them. Use one magnified inset circle to show why the line detours around a specific island cluster. Elegant cartographic composition, ocean blue with warm coral highlight. Add only: "DIE LINIE MACHT UMWEGE".
+Cartographic editorial scene, 16:9. Show a broad Pacific map at an oblique angle with island chains as layered paper-cut shapes. The date line approaches one island group, then visibly bends around it. A magnified circular inset reveals the local detour and neighboring islands, connected by a clean leader line. Strong cartographic hierarchy, ocean blue, coral highlight, cream land. Add only: "DIE LINIE MACHT UMWEGE".
 
 Bild 17 · B · ca. 6 s
-Premium editorial conceptual metaphor, 16:9. The image is split by a vertical seam: left side shows Earth rotating under sunlight with clean astronomical geometry; right side shows a stylized political map with bent borders and administrative lines. In the center, both halves connect through one clock symbol. Use contrasting but harmonious palettes. Add exactly: "NATUR + POLITIK".
+Conceptual metaphor, 16:9. Split the frame diagonally rather than vertically: upper-left shows Earth rotating under sunlight with clean astronomical geometry; lower-right shows a political map where borders deliberately bend theoretical time-zone lines. At the diagonal seam, a single clock bridges both systems. The image should visibly communicate natural rotation being adapted by human borders. Add exactly: "NATUR + POLITIK".
 
 Bild 18 · A · ca. 4–5 s
-Premium editorial system illustration, 16:9. A large central world clock connects by four elegant lines to an airplane, a server rack, a video-call window and a high-speed train. Arrange the four use cases in an asymmetric orbit around the clock with generous negative space. Crisp modern infographic aesthetic, no people, no readable interface text, no clutter. No visible text.
+Energetic global-system montage, 16:9. A passenger jet crosses the upper foreground from night into day; below, a high-speed train moves in the opposite direction; in the midground a stylized server center and a live international video call appear as environmental elements, all synchronized around one subtle global clock motif. Use diagonal movement and layered depth, not four floating icons. Deep blue, bright teal, cream and warm orange accents. No visible text.
 
 Bild 19 · C · ca. 8 s
-Premium editorial final resolving illustration, 16:9. A polished globe sits centrally under a rising sun, surrounded by several large clocks positioned around different regions, all connected by subtle arcs that form one coordinated global system. Use a calm, confident closing composition with deep blue, teal, cream and warm gold accents, refined linework and subtle grain. Add exactly one German closing headline: "EINE WELT – VIELE UHRZEITEN". No other text.
+Final resolving documentary illustration, 16:9. Earth fills the lower center at blue-hour twilight, with sunrise glowing along one edge and night lights on the other. Several clocks emerge around different regions, connected by elegant arcs that wrap into one coordinated system. Use a calm but powerful closing composition with foreground clock edge, midground globe and distant orbital arcs for depth. Deep blue, teal, cream and warm gold. Add exactly: "EINE WELT – VIELE UHRZEITEN". No other text.
 
 ==================================================
 FINALER CHECK
 ==================================================
 
 Vor Abschluss jedes Bildes prüfen:
+- Policy V3 aktiv
+- Style-ID exakt `premium-editorial-explainer-illustration-youtube-16x9`
+- frische Flow-Sitzung ohne widersprüchliche Legacy-Regeln
 - 16:9 horizontal
 - hochwertige Premium-Editorial-Erklärillustration
+- visuell lebendig: klare Tiefe, Richtung, Spannung oder Beziehung
+- nicht wie eine leere Präsentationsfolie
 - jedes Bild eigenständig komponiert
 - keine sichtbare Copy-Paste-Schablone
 - KEIN vorheriges Bild als visuelle Referenz verwendet

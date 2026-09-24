@@ -1,193 +1,243 @@
 # YouTube-Bildwelt — Premium Editorial Explainer Illustration · 16:9
 
-**Stand: 2026-09-24**
+**Stand: 2026-09-24**  
+**Visual Policy Version: 3**
 
 Diese Datei definiert die verbindliche Bildwelt für alle **neuen** YouTube-Langvideos.
 
-YouTube ist visuell ab jetzt bewusst **vom Reel-Countryball-Stil getrennt**.
+YouTube ist visuell bewusst **vom Reel-Countryball-Stil getrennt**.
 
-- Reel-Bildwelt bleibt: `serious-minimal-countryball-explainer`
-- neue YouTube-Style-ID: `premium-editorial-explainer-illustration-youtube-16x9`
+- Reel-Bildwelt: `serious-minimal-countryball-explainer`
+- YouTube-Style-ID: `premium-editorial-explainer-illustration-youtube-16x9`
 - Format: **16:9 horizontal**
-- ältere bereits angelegte YouTube-Projekte dürfen ihren damaligen Stil behalten; neue Projekte und ausdrücklich migrierte Projekte folgen dieser Datei.
+- aktive Policy: **V3**
 
 ## Grundidee
 
-Jedes Bild soll wie eine hochwertige, eigens für den konkreten Satz entworfene Editorial-/Erklärillustration wirken.
+Jedes Bild soll wie eine hochwertige, eigens für den konkreten Satz art-directete Editorial-/Dokumentar-Erklärillustration wirken.
 
-Verbindliche Qualitätsmerkmale:
+Verbindlich:
 - hochwertige moderne 2D-Editorial-Illustration
 - erwachsener, informativer Look
-- klare, raffinierte Komposition statt Clipart-Anmutung
-- präzise vektorartige Formen mit kontrollierter Linienführung
-- flache bis leicht geschichtete Farben mit subtiler Tiefe
-- dezente Papier-/Korntextur erlaubt
-- saubere Licht-/Schattenakzente nur grafisch, nicht 3D-glänzend
-- starke visuelle Hierarchie mit einem klaren Hauptgedanken
-- genug Detail für Qualität, aber kein visuelles Chaos
-- moderne Magazin-/Infografik-Wirkung
-- keine generische KI-Standardkomposition
-- nicht kindisch, nicht albern, nicht kitschig
+- starke visuelle Hierarchie
+- raffinierte, szenenspezifische Komposition statt Clipart
+- präzise vektorartige Formen + kontrollierte Linienführung
+- geschichtete Flächen mit subtiler Tiefe
+- reichere, aber kontrollierte Farbpaletten
+- Licht-/Schattenakzente grafisch, nicht 3D-glänzend
+- subtile Papier-/Printtextur erlaubt
+- klare visuelle Aussage innerhalb weniger Sekunden
+- nicht steril, nicht leer, nicht generisch-KI-haft
 
-## Wichtigste Regel — JEDES BILD UNABHÄNGIG
+## Session-Schutz — HARD LOCK
+
+Wenn sich die Visual Policy geändert hat, wird für die neue Produktion eine **frische Google-Flow-Sitzung / ein frisches Flow-Projekt** verwendet.
+
+Verboten:
+- alte Flow-Sitzung fortsetzen, wenn sie Countryball-, Master-Reference-, Stickman- oder andere widersprüchliche Stilregeln enthält
+- veraltete Chat-/Projektanweisungen über den aktuellen Masterprompt stellen
+- Bild 01 oder irgendein anderes erzeugtes Bild als Stilanker weiterreichen
+
+Vor der ersten Generierung muss die aktuelle Style-ID sichtbar im Prompt stehen:
+
+`premium-editorial-explainer-illustration-youtube-16x9`
+
+Wenn eine laufende Flow-Sitzung etwas anderes behauptet: **STOP → frische Sitzung → aktuellen Masterprompt neu einfügen.**
+
+## Jedes Bild unabhängig — HARD LOCK
 
 **Kein erzeugtes Bild wird als visuelle Vorlage oder Image-to-Image-Referenz für ein späteres Bild verwendet.**
 
-Das bedeutet:
-- Bild 01 ist **kein** Master-Style-Frame mehr.
-- Bild 02 darf Bild 01 nicht als Referenzbild bekommen.
-- Kein vorheriges Bild wird an Google Flow angehängt, um den Stil zu erzwingen.
-- Jedes `Bild NN` wird separat aus seinem eigenen Textprompt erzeugt.
-- Stil-Konsistenz kommt ausschließlich aus dem wiederholten schriftlichen Style-Lock, nicht aus einem Referenzbild.
+- Bild 01 ist kein Master-Style-Frame.
+- Bild 02–NN bekommen kein vorheriges Bild als Referenz.
+- Stil-Konsistenz kommt ausschließlich aus dem schriftlichen Style-Lock.
+- Jedes Bild entsteht aus seinem eigenen Textprompt.
 
-Warum: Referenzbilder dürfen nicht dazu führen, dass Perspektive, Layout, Figuren, Architektur, Farbwelt oder Bildaufbau ungewollt kopiert werden.
+## Visual Storytelling — HARD LOCK
+
+Ein gutes Bild zeigt nicht nur Gegenstände aus dem Sprechertext, sondern die **Beziehung** zwischen ihnen.
+
+Bevorzugt sichtbar machen:
+- Ursache → Wirkung
+- vorher → nachher
+- Konflikt / Problem → Lösung
+- räumliche Beziehung
+- Richtung / Bewegung
+- Größenvergleich
+- zeitlicher Wandel
+- politische/natürliche Gegensätze
+
+Wenn eine narrative oder konzeptuelle Szene die Aussage besser erklärt als ein statisches Diagramm, wird die Szene bevorzugt.
+
+## Anti-Lifeless — HARD LOCK
+
+Ein Bild wird verworfen, wenn es trotz korrektem Inhalt **leer, flach, steril oder wie eine Präsentationsfolie** wirkt.
+
+Standardmäßig unerwünscht:
+- ein kleines Objekt mittig auf leerem Hintergrund
+- Symbol + zwei Deko-Icons
+- immer dieselbe Uhr-/Karten-/Figurenanordnung
+- zu viel ungenutzte Pastellfläche ohne Sinn
+- frontale, komplett flache Komposition ohne Tiefe oder Richtung
+- generische Icon-Collage
+- dekorative Objekte ohne Erklärfunktion
+- direkt aufeinanderfolgende Bilder mit praktisch derselben Kompositionslogik
+
+**Clean ≠ leer. Minimal ≠ leblos.**
+
+Auch einfache Bilder brauchen mindestens einen klaren Fokus und, wo sinnvoll, Tiefe, Richtung, Kontrast oder visuelle Spannung.
+
+## Tiefe und visuelle Energie
+
+Für narrative Szenen bevorzugt:
+- Vordergrund
+- Mittelgrund
+- Hintergrund
+- Überlagerungen
+- diagonale Blickführung
+- Leading Lines
+- Größenkontrast
+- asymmetrisches Framing
+- bewusstes Licht
+
+Nicht jedes Bild braucht alle Elemente. Aber eine reine flache Karte ist nur dann sinnvoll, wenn die Karte selbst die beste Erklärung ist.
 
 ## Individualität pro Bild — HARD LOCK
 
-Jedes Bild braucht eine eigene visuelle Lösung für den gesprochenen Gedanken.
-
-Zwischen aufeinanderfolgenden Bildern sollen sich — wenn inhaltlich sinnvoll — bewusst ändern:
+Zwischen aufeinanderfolgenden Bildern sollen sich, wenn inhaltlich sinnvoll, bewusst ändern:
 - Perspektive
 - Bildausschnitt
 - Maßstab
 - Kompositionsmodus
 - Hintergrundaufbau
 - dominante Formen
-- Requisiten
 - räumliche Anordnung
 - Akzentfarben
+- Lichtstimmung
 
-Verboten ist ein sichtbares Copy-Paste-Muster wie:
-- immer dieselbe Figur mittig + zwei Icons daneben
-- immer derselbe Stadt-Hintergrund
-- immer dieselbe Uhr-/Karten-Komposition mit nur anderen Labels
-- immer dieselbe Kameraposition
-- wiederkehrende Maskottchen ohne inhaltlichen Grund
+Verboten:
+- sichtbare Copy-Paste-Schablone
+- immer gleiche Figur in der Mitte
+- immer gleicher Stadt-/Kartenhintergrund
+- wiederkehrende Maskottchen ohne Grund
 
-**Konsistent bleiben nur:** Qualitätsniveau, 2D-Editorial-Medium, saubere Linien-/Flächenbehandlung, erwachsener Ton, Typografiequalität und allgemeine Farbdisziplin.
+Konsistent bleiben nur:
+- Qualitätsniveau
+- 2D-Editorial-Medium
+- Linien-/Flächenbehandlung
+- erwachsener Ton
+- Typografiequalität
+- Farbdisziplin
 
 ## Figuren
 
-Menschen oder Figuren sind **nicht Pflicht**.
+Figuren sind optional.
 
-Bevorzugt wird die klarste Lösung für den Inhalt:
+Bevorzugte Motive:
 - Objekt
 - Karte
-- Diagramm
 - Architektur
+- historische Szene
 - technische Illustration
 - symbolische Szene
-- stilisierte redaktionelle Figur, wenn wirklich nötig
+- stilisierte redaktionelle Figuren, wenn Menschen die Aussage verbessern
 
 Wenn Menschen vorkommen:
-- stilisiert, editorial, vereinfacht
-- natürliche Proportionen
+- stilisiert und editorial
+- natürliche vereinfachte Proportionen
 - keine Stickfiguren
-- keine Countryball-Pflicht
-- keine übertriebenen Cartoon-Gesichter
-- keine fotorealistischen Haut-/Gesichtsdetails
+- keine überzogenen Cartoon-Gesichter
+- keine fotorealistische Haut
 
-Countryballs können nur verwendet werden, wenn sie für ein konkretes geografisch-politisches Motiv wirklich die beste Lösung sind; sie sind **kein wiederkehrender Standardcharakter** für YouTube.
+**Countryballs sind kein Standardcharakter und kein Stil-Lock für YouTube.**
 
 ## Kompositionsmodi
 
-Je nach Aussage frei wählen:
+1. **Editorial Hero Illustration**
+2. **Narrative Mini Scene**
+3. **Historical Editorial Scene**
+4. **Map / Spatial Explainer**
+5. **Conceptual Metaphor**
+6. **Explainer Diagram**
 
-1. **Editorial Hero Illustration** — ein starkes Hauptmotiv mit wenigen unterstützenden Elementen.
-2. **Explainer Diagram** — klare grafische Erklärung mit Pfeilen, Karten, Skalen oder Systemelementen.
-3. **Narrative Mini Scene** — kleine illustrierte Situation mit klarer Handlung.
-4. **Map / Spatial Explainer** — vereinfachte hochwertige Karte oder räumlicher Zusammenhang.
-5. **Conceptual Metaphor** — visuelle Metapher für abstrakte Zusammenhänge.
-
-Nicht jedes Bild soll denselben Modus verwenden.
-
-## Hintergrund
-
-Hintergründe dürfen individuell variieren:
-- helle oder dunkle Farbfläche
-- dezenter Verlauf
-- subtile Textur
-- vereinfachte Stadt-/Landschaftsstruktur
-- diagrammatischer Hintergrund
-- bewusst viel Negativraum
-
-Der Hintergrund unterstützt die Aussage und wird nicht aus Gewohnheit kopiert.
+Direkt aufeinanderfolgende Bilder sollen den gleichen Modus nur wiederholen, wenn der Inhalt es wirklich verlangt.
 
 ## Karten und Diagramme
 
-- hochwertige vereinfachte Editorial-Karten
-- klare Konturen und gut lesbare Flächen
+- hochwertig vereinfacht
 - nur relevante Labels
-- keine zufälligen englischen Standardlabels
-- keine realistische Satellitenkarte, außer der Nutzer verlangt es ausdrücklich
-- keine überladenen Mini-Icons
+- klare Flächenhierarchie
+- keine zufälligen Mini-Icons
+- keine englischen Auto-Labels
+- keine Satellitenkarten außer ausdrücklich gewünscht
+
+Diagramme sollen keine billigen Präsentationskarten sein. Wo möglich, werden sie räumlich oder narrativ eingebettet.
 
 ## Sichtbarer Text — DEUTSCH-HARD-LOCK
 
 Für deutsche YouTube-Projekte gilt:
 - jeder sichtbare lesbare Text muss Deutsch sein
-- gilt für Headlines, Kartenlabels, Schilder, Legenden, Diagramme, Callouts, Kalender und UI-artige Elemente
-- englischer sichtbarer Text = HARD FAIL
-- Pseudo-Schrift/unleserlicher Text = HARD FAIL
-- wenn Text nicht nötig ist, lieber keinen Text erzeugen
-- ausdrücklich vorgegebener Text muss exakt übernommen werden
+- englischer Text = HARD FAIL
+- Pseudo-Schrift = HARD FAIL
+- vorgegebener Text exakt übernehmen
+- wenn Text nicht nötig ist: keinen Text erzeugen
 
 ## Thumbnail
 
 Bild 00 wird separat erzeugt und kommt nie in die Timeline.
 
-Thumbnail darf:
-- stärkeren Kontrast
+Thumbnail darf stärker sein als normale Szenen:
+- höherer Kontrast
 - größere Typografie
-- dramatischere visuelle Verdichtung
+- dramatischere Verdichtung
+- stärkere Lichtkante / Farbtrennung
+- klarere emotionale Spannung
 
-haben, bleibt aber hochwertige Editorial-Illustration und nicht generisches YouTube-Clipart.
+Aber weiterhin Premium-Editorial statt Clipart.
 
 ## Google Flow
 
-Die 5er-Wellen bleiben nur eine **Ausführungs-/Lastregel**:
+5er-Wellen sind nur Ausführungs-/Lastregel:
 
 ```text
 Bild 00 separat
 Bild 01 separat
-Bild 02–05 separat aus ihren eigenen Textprompts
+Bild 02–05 jeweils aus eigenem Prompt
 prüfen
-Bild 06–10 separat aus ihren eigenen Textprompts
+Bild 06–10 jeweils aus eigenem Prompt
 ...
 ```
 
-Maximal fünf aktive Generierungen gleichzeitig. **Keine Bild-zu-Bild-Referenzen innerhalb der Wellen.**
+Maximal fünf aktive Generierungen gleichzeitig. **Keine Bild-zu-Bild-Referenzen.**
 
-## A–E-Pacing
+## Prompt-Pflichtmarker
 
-- A: 4–5 s geplant; max. 6,5 s gemessen
-- B: 5–7 s geplant; max. 8,5 s
-- C: 7–9 s geplant; max. 10,5 s
-- D: 9–12 s geplant; max. 13,5 s
-- E: 12–15 s geplant; max. 16,0 s
-
-Die Komplexitätsklasse bestimmt die Informationsdichte, nicht einen festen Bildaufbau.
-
-## Prompt-Regel
-
-Prompts werden auf Englisch geschrieben. Sichtbarer Bildtext folgt der Projektsprache.
-
-Verbindlicher YouTube-Style-Prefix:
+Jeder neue YouTube-Masterprompt beginnt mit:
 
 ```text
-Premium editorial explainer illustration for a modern educational YouTube video, 16:9 horizontal. High-quality sophisticated 2D illustration, crisp vector-like shapes, refined controlled linework, layered flat colors with subtle depth, tasteful limited palette, optional subtle paper grain, strong visual hierarchy, adult informative magazine-infographic aesthetic, clearly designed for this specific idea, not childish, not generic clipart, not a repeated template, not glossy 3D, not Pixar, not clay, not anime, not photorealistic. Create a fresh composition for this image; do not imitate or reuse the layout, perspective, character placement, background, or palette of any previous image. Do not use any previous generated image as a visual reference. For German projects, every readable visible word must be German; no English labels and no pseudo-text.
+YOUTUBE_VISUAL_POLICY_VERSION: 3
+ACTIVE_STYLE_ID: premium-editorial-explainer-illustration-youtube-16x9
 ```
 
-## Qualitätsprüfung
+Zusätzlich müssen enthalten sein:
+- `SESSION RESET HARD LOCK`
+- `VISUAL STORYTELLING HARD LOCK`
+- `ANTI-LIFELESS HARD LOCK`
+- ausdrückliches Verbot vorheriger Bilder als Referenz
 
-Vor Freigabe jedes Bildes:
-1. Erklärt es genau den vorgesehenen Satz/Gedanken?
-2. Wirkt es wie eine hochwertige individuelle Editorial-Illustration?
-3. Ist die Komposition sichtbar eigenständig und nicht aus dem vorherigen Bild kopiert?
-4. Ist die Aussage schnell verständlich?
+## Qualitätsprüfung vor Freigabe
+
+1. Erklärt das Bild den vorgesehenen Gedanken?
+2. Ist die Beziehung/Ursache/Wirkung sichtbar, wenn relevant?
+3. Wirkt es hochwertig und art-directed?
+4. Wirkt es lebendig statt leer oder steril?
 5. Gibt es einen klaren Fokus?
-6. Ist der Detailgrad kontrolliert?
-7. Gibt es keine unnötigen Maskottchen oder wiederkehrenden Standardfiguren?
-8. Ist sichtbarer deutscher Text korrekt?
-9. Fehlen englischer Text, Pseudo-Schrift und Wasserzeichen?
-10. Wurde **kein vorheriges Bild als Referenz** verwendet?
+6. Gibt es sinnvolle Tiefe/Richtung/Spannung, wenn die Szene davon profitiert?
+7. Ist die Komposition eigenständig?
+8. Wiederholt sie nicht direkt das vorige Bild?
+9. Ist der deutsche Text korrekt?
+10. Fehlen englischer Text, Pseudo-Schrift und Wasserzeichen?
+11. Wurde kein vorheriges Bild als Referenz benutzt?
+12. Enthält die aktuelle Flow-Sitzung keine widersprüchlichen Legacy-Regeln?
+
+Wenn ein Bild scheitert, wird nur dieses Bild regeneriert.

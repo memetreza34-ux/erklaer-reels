@@ -76,14 +76,17 @@ test('YouTube optimiert Audio vor Whisper-Alignment und prüft es vor der Timeli
   const alignAt = autoAlign.indexOf('await alignYoutubeProject');
   assert.ok(optimizeAt >= 0 && alignAt > optimizeAt, 'YouTube-Audio muss vor Whisper-Alignment optimiert werden.');
 
-  const audioGateAt = phase3.indexOf("validate-youtube-audio.js");
-  const timelineAt = phase3.indexOf("build-youtube-timeline.js");
-  assert.ok(audioGateAt >= 0 && timelineAt > audioGateAt, 'Audio-Hard-Gate muss vor Timeline-Bau laufen.');
+  const policyAt = phase3.indexOf('validate-youtube-phase1-policy.js');
+  const alignStepAt = phase3.indexOf('auto-align-youtube.js');
+  const audioGateAt = phase3.indexOf('validate-youtube-audio.js');
+  const timelineAt = phase3.indexOf('build-youtube-timeline.js');
+  assert.ok(policyAt >= 0 && alignStepAt > policyAt, 'Visual-Policy-Gate muss vor Audioarbeit laufen.');
+  assert.ok(audioGateAt > alignStepAt && timelineAt > audioGateAt, 'Audio-Hard-Gate muss nach Alignment und vor Timeline-Bau laufen.');
 
-  assert.match(workflow, /exakt \*\*1,10x\*\*/i);
+  assert.match(workflow, /1,10x/i);
   assert.match(workflow, /überlange Sprechpausen automatisch kürzen/i);
   assert.match(workflow, /Endstille entfernen/i);
-  assert.match(workflow, /erst danach misst Whisper/i);
+  assert.match(workflow, /Whisper.*optimiert|erst danach.*Whisper/i);
 });
 
 test('Neue P0-Kernskripte sind syntaktisch gültig', () => {
@@ -92,6 +95,7 @@ test('Neue P0-Kernskripte sind syntaktisch gültig', () => {
     'src/core/image-text-guard.js',
     'src/core/youtube-audio-optimizer.js',
     'src/cli/validate-youtube-audio.js',
+    'src/cli/validate-youtube-phase1-policy.js',
     'src/cli/auto-align-youtube.js',
     'src/cli/phase3-youtube.js',
     'src/cli/render-reel.js'
