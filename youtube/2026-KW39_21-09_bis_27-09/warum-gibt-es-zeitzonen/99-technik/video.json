@@ -58,7 +58,8 @@
     "causeEffectOrContrastShouldBeVisibleWhenRelevant": true,
     "controlledDepthRequired": true,
     "paletteVariationAcrossAdjacentImagesRequired": true,
-    "adjacentCompositionModeRepeatForbiddenWithoutReason": true
+    "adjacentCompositionModeRepeatForbiddenWithoutReason": true,
+    "childishCartoonLookForbidden": true
   },
   "visibleTextPolicy": {
     "projectLanguageOnly": true,
