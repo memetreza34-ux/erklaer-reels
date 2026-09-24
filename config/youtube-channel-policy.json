@@ -40,6 +40,7 @@
     "adjacentCompositionModeRepeatForbiddenWithoutReason": true,
     "countryballAsDefaultForbidden": true,
     "stickFiguresForbidden": true,
+    "childishCartoonLookForbidden": true,
     "photorealismForbiddenByDefault": true,
     "glossy3dPixarClayAnimeForbidden": true
   },
