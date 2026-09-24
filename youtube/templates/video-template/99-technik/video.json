@@ -1,7 +1,8 @@
 {
-  "schemaVersion": 6,
+  "schemaVersion": 7,
   "productionRulesVersion": 2,
   "visualPolicyVersion": 3,
+  "coverPolicyVersion": 1,
   "complexityPacingVersion": 1,
   "videoId": "YYYY-KWNN_topic-slug",
   "weekFolder": "YYYY-KWNN_DD-MM_bis_DD-MM",
@@ -18,6 +19,15 @@
   "sourceVisualWorldId": "premium-editorial-explainer-illustration",
   "visualStyleReason": "YouTube nutzt hochwertige, lebendige 16:9-Editorial-Erklärillustrationen mit szenenspezifischer Art Direction. Jedes Bild wird unabhängig aus seinem eigenen Textprompt erzeugt; kein vorheriges Bild dient als visuelle Referenz.",
   "aspectRatio": "16:9",
+  "coverPolicy": {
+    "firstSceneIsCover": true,
+    "coverImageNumber": 1,
+    "coverMustBeFirstTimelineImage": true,
+    "coverMustAlsoBeThumbnailSource": true,
+    "separateThumbnailImageForbidden": true,
+    "image00Forbidden": true,
+    "headlineRequired": true
+  },
   "sessionPolicy": {
     "freshFlowSessionRequiredWhenVisualPolicyChanges": true,
     "continueSessionContainingLegacyStyleInstructionsForbidden": true,
