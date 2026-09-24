@@ -1,6 +1,14 @@
 # YouTube
 
-Dieser Bereich ist die eigenständige Produktionspipeline für YouTube-Langvideos. Reel-Code bleibt unter `reels/` getrennt und wird dadurch nicht verändert. Die **Bildwelt** ist dagegen bewusst dieselbe wie bei den aktiven Reels.
+Dieser Bereich ist die eigenständige Produktionspipeline für YouTube-Langvideos. Reel-Code und Reel-Bildwelt bleiben getrennt.
+
+Für **neue YouTube-Videos ab 2026-09-24** gilt eine eigene hochwertige 16:9-Editorial-Bildwelt:
+
+```text
+premium-editorial-explainer-illustration-youtube-16x9
+```
+
+Ältere bereits angelegte YouTube-Projekte dürfen ihren damaligen Stil behalten. Das aktuelle Zeitzonen-Projekt wurde ausdrücklich auf den neuen Standard migriert.
 
 ## Verbindliche Reihenfolge
 
@@ -31,19 +39,19 @@ Keine sichtbaren 10er-Promptordner, Script-Parts oder Audio-Parts bei neuen Vide
 ```text
 Phase 1 — ChatGPT
 → Thema, Recherche, Titel, EIN Google-Flow-Masterprompt,
-  EIN Gesamtskript als vollständiges Voice-over-Skript, internes Bild↔Voice-over-Mapping,
+  EIN Gesamtskript, internes Bild↔Voice-over-Mapping,
   A–E-Pacing, Renderplan, Kapitelplan und Upload-Metadaten
 
 Phase 2 — Nutzer + Google Flow
 → Bild 00 separat
-→ Bild 01 separat als Countryball-Master-Style-Frame
-→ ab Bild 02 Bild 01 als Referenz anhängen
-→ danach kontrollierte 5er-Wellen
+→ jedes Bild 01..NN separat aus dem eigenen Textprompt
+→ KEIN vorheriges Bild als visuelle Referenz
+→ kontrollierte 5er-Wellen nur als Ausführungsregel
 → EIN vollständiges Voice-over erzeugen
 
 Phase 3 — Repo-CLI
-→ echte Whisper-Wortzeiten messen
-→ Endstille nur im internen Master kürzen
+→ Audio intern optimieren: lange Pausen kürzen, Endstille entfernen, 1,10x, Pitch erhalten
+→ echte Whisper-Wortzeiten auf der optimierten Fassung messen
 → Bildanker finden
 → FINAL_TIMELINE bauen
 → A–E prüfen
@@ -54,30 +62,35 @@ Phase 3 — Repo-CLI
 
 ## Feste YouTube-Bildwelt
 
-Quellwelt der aktiven Reels: `serious-minimal-countryball-explainer`
+Neue YouTube-Style-ID:
 
-YouTube-Style-ID: `serious-minimal-countryball-explainer-youtube-16x9`
-
-**Es ist dieselbe künstlerische Welt wie bei den Reels. Die einzige Formatänderung ist 16:9 statt 9:16.**
+```text
+premium-editorial-explainer-illustration-youtube-16x9
+```
 
 Verbindlich:
-- perfekt runde Countryball-artige Akteure, wenn ein Akteur sinnvoll ist
-- einfache weiße Augen
-- dicke saubere schwarze Konturen
-- flache kontrollierte 2D-Farben
-- minimale grafische Schattierung
-- geringe bis mittlere Detaildichte
-- ein dominantes Motiv
-- normalerweise 0–3 sinnvolle Zusatzobjekte
-- einfache Farbflächen, leichte Verläufe oder subtile Textur als Hintergrund
-- starke Symbolik statt realistischer Vollszenen
-- seriös, clean, nicht kindisch
-- keine Stickfiguren
-- keine normalen Cartoon-Menschen
-- keine realistischen Menschen
-- kein 3D/Pixar/Clay/Fotorealismus
+- hochwertige moderne 2D-Editorial-/Erklärillustration
+- 16:9 horizontal
+- raffinierte, erwachsene Magazin-/Infografik-Wirkung
+- präzise vektorartige Formen und kontrollierte Linien
+- flache bis leicht geschichtete Farben mit subtiler Tiefe
+- dezente Textur erlaubt
+- jedes Bild bekommt eine eigene Komposition für genau seinen Inhalt
+- Perspektive, Hintergrund, Maßstab und Anordnung dürfen bewusst wechseln
+- keine generische Clipart-/KI-Schablone
+- kein glänzendes 3D/Pixar/Clay/Anime/Fotorealismus als Standard
+- Stickfiguren sind kein Standardstil
+- Countryballs sind kein wiederkehrender Standardcharakter
 
-Bild 01 wird als Master-Style-Frame verwendet. Motiv und Hintergrundfarbe dürfen wechseln; die Countryball-Formsprache nicht.
+## Unabhängige Bilder — HARD LOCK
+
+**Kein erzeugtes Bild wird als visuelle Vorlage für ein späteres Bild verwendet.**
+
+- Bild 01 ist kein Master-Style-Frame.
+- Bild 02–NN bekommen Bild 01 nicht als Referenz.
+- Kein vorheriges Bild wird an Google Flow angehängt.
+- Stil-Konsistenz kommt aus dem geschriebenen Style-Lock, nicht aus Image-to-Image-Vererbung.
+- Wiederholte Layouts/Perspektiven ohne inhaltlichen Grund gelten als Qualitätsfehler.
 
 ## Sichtbarer Text in deutschen Videos
 
@@ -89,8 +102,8 @@ Englischer Text oder Pseudo-Schrift = Hard Fail und Regeneration. Wenn Text nich
 
 ```text
 Bild 00 separat
-Bild 01 separat → Countryball-Stil prüfen → Master-Referenz
-02–05 mit Bild 01 als Referenz → prüfen
+Bild 01 separat
+02–05 jeweils separat aus eigenem Textprompt → prüfen
 06–10 erst danach
 11–15 ...
 ```
@@ -99,6 +112,7 @@ Verbindlich:
 - maximal 5 aktive Bildgenerierungen gleichzeitig
 - niemals zwei Wellen gleichzeitig offen halten
 - letzter Block darf 1–5 Bilder enthalten
+- **keine Bild-zu-Bild-Referenzen innerhalb oder zwischen Wellen**
 - Bild 00 ist nur Thumbnail
 - alle Bilder liegen flach unter `00-bildprompts/images/`
 
@@ -112,9 +126,19 @@ Verbindlich:
 
 Die Bildanzahl entsteht aus dem Skript und der visuellen Komplexität.
 
-## Audio-Synchronisation + Endstille
+## Audio-Synchronisation + Pacing
 
-Die eine finale Voice-over-Datei ist die Timing-Masterquelle. Das Nutzeroriginal unter `02-audio/` wird nicht verändert. Phase 3 misst das letzte gesprochene Wort und kürzt unnötige Endstille nur im internen Master.
+Die eine finale Voice-over-Datei ist die Timing-Quelle. Das Nutzeroriginal unter `02-audio/` wird nicht verändert.
+
+Phase 3 erzeugt intern:
+- lange Pausen gekürzt
+- Endstille entfernt
+- exakt 1,10x Geschwindigkeit
+- Tonhöhe erhalten
+- −16 LUFS
+- max. −1,5 dBTP
+
+Whisper misst **erst danach** die Wortzeiten.
 
 ## Motion + SFX
 
