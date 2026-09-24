@@ -1,19 +1,29 @@
 {
-  "schemaVersion": 5,
+  "schemaVersion": 6,
   "productionRulesVersion": 2,
+  "visualPolicyVersion": 3,
   "complexityPacingVersion": 1,
   "videoId": "2026-KW39_warum-gibt-es-zeitzonen",
   "weekFolder": "2026-KW39_21-09_bis_27-09",
   "topicSlug": "warum-gibt-es-zeitzonen",
   "title": "Warum gibt es Zeitzonen?",
   "topic": "Warum gibt es Zeitzonen und wie funktionieren sie?",
+  "topicCategory": "Länder, Geografie, Grenzen und Territorien",
+  "topicCoreLink": "Das Thema erklärt einen geografischen Weltstandard und seine historische Entstehung; es bleibt damit klar im Geografie-/Geschichtsprofil des Kanals.",
+  "explicitUserRequestedOutsideFocus": false,
   "status": "phase2-pending",
   "language": "de",
   "format": "youtube-longform",
   "visualStyleId": "premium-editorial-explainer-illustration-youtube-16x9",
   "sourceVisualWorldId": "premium-editorial-explainer-illustration",
-  "visualStyleReason": "Hochwertige eigenständige 16:9-Editorial-Erklärillustrationen. Jedes Bild wird unabhängig aus seinem eigenen Textprompt erzeugt; kein vorheriges Bild wird als visuelle Referenz verwendet.",
+  "visualStyleReason": "Hochwertige, lebendige und szenenspezifisch art-directed 16:9-Editorial-Erklärillustrationen. Jedes Bild wird unabhängig aus seinem eigenen Textprompt erzeugt; kein vorheriges Bild wird als visuelle Referenz verwendet.",
   "aspectRatio": "16:9",
+  "sessionPolicy": {
+    "freshFlowSessionRequiredWhenVisualPolicyChanges": true,
+    "continueSessionContainingLegacyStyleInstructionsForbidden": true,
+    "activeStyleIdMustBeRestatedBeforeGeneration": true,
+    "previousGeneratedImageAsReferenceForbidden": true
+  },
   "visualWorldParityPolicy": {
     "mustMatchReelVisualDNA": false,
     "independentYoutubeStyle": true,
@@ -36,6 +46,19 @@
     "freshCompositionRequired": true,
     "repeatLayoutWithoutNarrativeReasonForbidden": true,
     "varyPerspectiveLayoutAndBackgroundWhenUseful": true
+  },
+  "visualQualityPolicy": {
+    "visualStorytellingRequired": true,
+    "lifelessStaticCompositionForbidden": true,
+    "genericCenteredObjectOnBlankBackgroundForbiddenByDefault": true,
+    "genericIconCollageForbidden": true,
+    "sceneSpecificArtDirectionRequired": true,
+    "foregroundMidgroundBackgroundPreferredForNarrativeScenes": true,
+    "directionalEnergyPreferredWhenContentAllows": true,
+    "causeEffectOrContrastShouldBeVisibleWhenRelevant": true,
+    "controlledDepthRequired": true,
+    "paletteVariationAcrossAdjacentImagesRequired": true,
+    "adjacentCompositionModeRepeatForbiddenWithoutReason": true
   },
   "visibleTextPolicy": {
     "projectLanguageOnly": true,
