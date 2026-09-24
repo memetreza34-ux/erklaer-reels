@@ -1,124 +1,93 @@
 YOUTUBE_VISUAL_POLICY_VERSION: 3
+COVER_POLICY_VERSION: 1
 ACTIVE_STYLE_ID: premium-editorial-explainer-illustration-youtube-16x9
 
 GOOGLE FLOW MASTER PROMPT — [VIDEO-TITEL]
 
 ZIEL
-Erzeuge Bild 00 als Thumbnail und danach alle geplanten Videobilder für ein deutsches YouTube-Langvideo.
+Erzeuge ausschließlich Bild 01 bis Bild NN. Es gibt KEIN separates Bild 00.
+
+==================================================
+FIRST SCENE = COVER HARD LOCK
+==================================================
+
+- Bild 01 is the cover AND the first video scene.
+- Bild 01 starts the actual video at 0.0 seconds.
+- Bild 01 must contain a strong short German cover headline AND visually support the first spoken idea.
+- The exported YouTube thumbnail is copied from Bild 01.png.
+- Do NOT create Bild 00.
+- Do NOT create a separate thumbnail image outside the timeline.
 
 ==================================================
 SESSION RESET HARD LOCK
 ==================================================
 
-IMPORTANT BEFORE GENERATION:
-- Start a fresh Google Flow session/project for this production whenever the active visual policy changed.
-- Do NOT continue a Flow conversation/session that contains older Countryball, Master-Style-Frame, anchor-reference, stickman, or other conflicting style instructions.
-- Ignore any legacy instruction from an older session that conflicts with this document.
-- The ONLY active visual style is: `premium-editorial-explainer-illustration-youtube-16x9`.
-- No previously generated image may be attached as a visual/style reference for a later image.
-- Bild 01 is NOT a master reference image.
-- If the current Flow session says otherwise, STOP and open a fresh session before generating anything.
+- Use a fresh Google Flow session if older instructions conflict.
+- The ONLY active style is `premium-editorial-explainer-illustration-youtube-16x9`.
+- Do not use any previous generated image as a visual reference.
+- Bild 01 is a cover, NOT a master style reference.
 
 ==================================================
 WRITTEN STYLE LOCK — PREMIUM EDITORIAL EXPLAINER
 ==================================================
 
-Use this written style specification independently for EVERY image:
-Premium editorial explainer illustration for a modern educational YouTube video, 16:9 horizontal. High-quality sophisticated 2D illustration with confident editorial art direction, crisp vector-like shapes, refined controlled linework, layered flat colors with subtle depth, tasteful rich-but-controlled palette, selective texture, intentional lighting accents, strong hierarchy and a clear focal idea. Adult educational magazine / documentary-infographic aesthetic. The image should feel authored, specific and visually alive rather than sterile, generic or templated. Not childish, not stock clipart, not a repeated composition, not glossy 3D, not Pixar, not clay, not anime, not photorealistic.
+Premium editorial explainer illustration for a modern educational YouTube video, 16:9 horizontal. High-quality sophisticated 2D illustration, confident editorial art direction, crisp vector-like shapes, refined linework, layered colors with subtle depth, controlled rich palette, intentional lighting, strong hierarchy and clear visual storytelling. Adult documentary/magazine aesthetic. Not childish, not generic, not sterile, not stock clipart, not glossy 3D, not Pixar, not clay, not anime, not photorealistic.
 
 ==================================================
 VISUAL STORYTELLING HARD LOCK
 ==================================================
 
-Every image must communicate a visual story, relationship, tension, change, cause/effect, comparison or spatial idea — not merely display nouns from the narration.
-
-When the content allows it:
-- prefer a scene with direction, interaction or consequence over a static centered object;
-- use foreground, midground and background to create controlled depth;
-- use diagonals, leading lines, scale contrast, framing, overlap or asymmetry to create visual energy;
-- make the viewer immediately understand what is happening and why it matters;
-- show cause and effect visibly when the narration describes cause and effect;
-- use human/editorial figures only when they improve the explanation, never as filler;
-- let lighting, contrast and palette support the emotional or historical tone of the sentence.
+Every image must communicate a relationship, tension, change, cause/effect, comparison or spatial idea. Prefer scenes with direction, depth and consequence over static centered objects. Use foreground/midground/background, diagonals, scale contrast, overlap and asymmetry when useful.
 
 ==================================================
 ANTI-LIFELESS HARD LOCK
 ==================================================
 
-Reject and regenerate an image if it looks flat, empty, dull, sterile or like a generic AI explainer card.
-
-Default failures include:
-- one small centered object floating on a blank background;
-- a centered icon with two decorative icons beside it;
-- repeated clock/map/object layouts with only labels changed;
-- excessive empty pastel background without narrative purpose;
-- lifeless front-on compositions with no depth, direction or focal tension;
-- generic icon collage / presentation-slide look;
-- decorative elements that do not explain anything;
-- the same composition mode in adjacent images without a real narrative reason.
-
-Clean does NOT mean empty. Minimal does NOT mean lifeless. Simplicity must still have composition, depth, tension and visual intention.
+Reject and regenerate flat, empty, dull, sterile or generic AI explainer cards. No small centered object on blank background, no icon collage, no repeated layout, no excessive empty pastel space, no lifeless front-on presentation-slide composition.
 
 ==================================================
 INDIVIDUALITY HARD LOCK
 ==================================================
 
 - Create a fresh composition for every Bild NN.
-- Do not imitate or reuse the layout, perspective, character placement, background structure, architecture, dominant shapes, or palette of any previous image unless the content itself genuinely requires continuity.
+- Do not reuse layout, perspective, object placement, background structure or palette without narrative reason.
 - Do not use any previous generated image as a visual reference.
-- Do not repeat a mascot or recurring character without a real narrative reason.
-- Vary composition modes intentionally: editorial hero, narrative mini scene, historical editorial scene, map/spatial explainer, conceptual metaphor, explainer diagram.
-- Adjacent images should normally change composition mode, camera angle, spatial arrangement or palette emphasis.
-- Each image must feel specifically art-directed for the exact spoken idea.
+- Vary composition mode, angle, scale and spatial arrangement.
 
 HARD NEGATIVES:
-no generic AI template look, no stock clipart collage, no repetitive center-character-plus-icons formula, no mandatory countryball mascot, no stick-figure style, no lifeless blank-background card, no glossy 3D, no Pixar, no clay, no anime, no photorealistic stock-photo aesthetic, no watermark.
+no generic AI template, no stock clipart, no mandatory countryball, no stick figures, no childish cartoon look, no repeated centered-character formula, no glossy 3D, no Pixar, no clay, no anime, no photorealistic stock look, no watermark.
 
 ==================================================
-DEUTSCH-HARD-LOCK — JEDER SICHTBARE TEXT
+DEUTSCH-HARD-LOCK
 ==================================================
 
-This is a GERMAN project. Every readable word visible anywhere in every generated image MUST be German.
-This applies to headlines, map labels, signs, legends, diagrams, callouts, calendars, interface-like elements and background text.
-Do NOT generate English labels. Do NOT generate pseudo-text or fake writing.
-If text is not explicitly needed, generate NO TEXT.
-Any English visible text = HARD FAIL and regenerate.
-Any pseudo-text = HARD FAIL and regenerate.
+Every readable word must be German. English visible text or pseudo-text = HARD FAIL. If text is not needed, generate no text.
 
 ==================================================
 ABLAUF
 ==================================================
 
-1. Verify that this is a fresh/non-conflicting Flow session and restate the active Style-ID.
-2. Bild 00 separat erzeugen, prüfen und als `Bild 00.png` speichern.
-3. Bild 01 separat aus seinem eigenen Textprompt erzeugen und prüfen.
-4. Bild 02–05 jeweils separat aus ihrem eigenen Textprompt erzeugen. Kein Referenzbild anhängen.
-5. Auf die Welle warten und jedes Bild einzeln auf Inhalt, Art Direction, Lebendigkeit, Individualität, deutschen Text, Nummerierung und 16:9 prüfen.
-6. Fehler nur im betroffenen Bild regenerieren.
-7. Erst wenn die Welle korrekt ist, Bild 06–10 starten.
-8. Danach 11–15, 16–20 usw. bis zum letzten geplanten Bild.
-9. Der letzte Block darf 1–5 Bilder enthalten.
-10. Alle Dateien flach unter `00-bildprompts/images/` als `Bild NN.png` ablegen.
-11. Bild 00 ist ausschließlich Thumbnail und darf nie in die Videotimeline.
+1. Bild 01 separat erzeugen und streng prüfen: COVER + ERSTE SZENE.
+2. Bild 02–05 jeweils separat aus eigenem Textprompt erzeugen.
+3. Welle prüfen; Fehler nur im betroffenen Bild regenerieren.
+4. Danach 06–10, 11–15 usw.
+5. Maximal fünf aktive Generierungen gleichzeitig.
+6. Alle Dateien flach unter `00-bildprompts/images/` als `Bild NN.png` ablegen.
+7. Niemals Bild 00 erzeugen.
 
 A–E-PACING
-A = sehr einfach, geplant 4–5 s
-B = einfach, geplant 5–7 s
-C = mittel, geplant 7–9 s
-D = komplex, geplant 9–12 s
-E = sehr komplex, geplant 12–15 s
+A = 4–5 s
+B = 5–7 s
+C = 7–9 s
+D = 9–12 s
+E = 12–15 s
 
 ==================================================
-BILD 00 — THUMBNAIL
-==================================================
-[THUMBNAIL-PROMPT]
-
-==================================================
-BILD 01
+BILD 01 — COVER + ERSTE VIDEOSZENE
 ==================================================
 
 Bild 01 · [A–E] · [PLANZEIT]
-[PROMPT]
+[COVER-UND-SZENE-1-PROMPT]
 
 ==================================================
 ERSTE WELLE — BILD 02–05
@@ -136,27 +105,19 @@ Bild 04 · [A–E] · [PLANZEIT]
 Bild 05 · [A–E] · [PLANZEIT]
 [PROMPT]
 
-STOP: 01–05 vollständig prüfen und korrigieren. Erst danach die nächste 5er-Welle.
+STOP: Bild 01–05 vollständig prüfen. Erst danach die nächste 5er-Welle.
 
-[WEITERE 5ER-WELLEN NACH DEMSELBEN MUSTER BIS ZUM LETZTEN GEPLANTEN BILD]
+[WEITERE 5ER-WELLEN BIS ZUM LETZTEN BILD]
 
 FINALER CHECK
-- Policy marker = V3
-- aktive Style-ID = `premium-editorial-explainer-illustration-youtube-16x9`
-- keine widersprüchlichen Legacy-Anweisungen in der aktuellen Flow-Sitzung
-- Bild 00 vorhanden und nur Thumbnail
-- Videobilder lückenlos nummeriert
-- keine Duplikate
-- jede Datei `Bild NN.png`
-- alle Bilder unter `00-bildprompts/images/`
-- nie mehr als fünf aktive Generierungen gleichzeitig
-- KEIN vorheriges Bild als visuelle Referenz verwendet
-- jedes Bild besitzt eine eigenständige, inhaltlich passende Komposition
-- Bild wirkt lebendig und art-directed, nicht leer oder generisch
-- klare visuelle Hierarchie, kontrollierte Tiefe und sinnvoller Fokus
-- Ursache/Wirkung, Kontrast oder Bewegung sichtbar, wenn inhaltlich passend
-- keine wiederholte Kompositionsschablone
-- hochwertige Premium-Editorial-Illustrationsqualität
+- Cover Policy V1 aktiv
+- Bild 01 = Cover + erste Videoszene
+- Bild 01 enthält starke deutsche Überschrift und passt zum ersten Sprecherabschnitt
+- kein Bild 00
+- keine separate Thumbnail-Datei in der Bildproduktion
 - 16:9 horizontal
-- jeder sichtbare Text im deutschen Projekt = Deutsch
-- kein englischer Text, kein Pseudo-Text
+- hochwertige Premium-Editorial-Illustration
+- eigenständige Komposition pro Bild
+- keine Bild-zu-Bild-Referenzen
+- kein kindlicher/generischer Template-Look
+- jeder sichtbare Text Deutsch
