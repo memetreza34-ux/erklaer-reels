@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 7,
+  "productionRulesVersion": 2,
+  "visualPolicyVersion": 3,
+  "coverPolicyVersion": 1,
+  "complexityPacingVersion": 1,
+  "videoId": "2026-KW39_warum-gibt-es-zwei-koreas",
+  "weekFolder": "2026-KW39_21-09_bis_27-09",
+  "topicSlug": "warum-gibt-es-zwei-koreas",
+  "title": "Warum gibt es zwei Koreas?",
+  "topic": "Wie wurde aus einer koreanischen Halbinsel Nord- und Südkorea?",
+  "topicCategory": "internationale Beziehungen und Geopolitik",
+  "topicCoreLink": "Das Video verbindet Geschichte, Staatenbildung, Grenzen, Kalten Krieg und Geopolitik und liegt damit direkt im Kernprofil des YouTube-Kanals.",
+  "explicitUserRequestedOutsideFocus": false,
+  "status": "phase2-pending",
+  "language": "de",
+  "format": "youtube-longform",
+  "visualStyleId": "premium-editorial-explainer-illustration-youtube-16x9",
+  "sourceVisualWorldId": "premium-editorial-explainer-illustration",
+  "visualStyleReason": "Hochwertige, erwachsene 16:9-Editorial-Erklärillustrationen mit Karten, historischen Szenen und klarer Ursache-Wirkung. Jedes Bild wird unabhängig erzeugt; kein vorheriges Bild dient als Referenz.",
+  "aspectRatio": "16:9",
+  "coverPolicy": {
+    "firstSceneIsCover": true,
+    "coverImageNumber": 1,
+    "coverMustBeFirstTimelineImage": true,
+    "coverMustAlsoBeThumbnailSource": true,
+    "separateThumbnailImageForbidden": true,
+    "image00Forbidden": true,
+    "headlineRequired": true
+  },
+  "sessionPolicy": {
+    "freshFlowSessionRequiredWhenVisualPolicyChanges": true,
+    "continueSessionContainingLegacyStyleInstructionsForbidden": true,
+    "activeStyleIdMustBeRestatedBeforeGeneration": true,
+    "previousGeneratedImageAsReferenceForbidden": true
+  },
+  "visualWorldParityPolicy": {
+    "mustMatchReelVisualDNA": false,
+    "independentYoutubeStyle": true,
+    "stickFiguresForbidden": true,
+    "countryballAsDefaultForbidden": true,
+    "photorealismForbiddenByDefault": true,
+    "genericTemplateCompositionForbidden": true
+  },
+  "masterReferencePolicy": {
+    "masterImageNumber": null,
+    "generateMasterSeparately": false,
+    "attachMasterToAllLaterImages": false,
+    "visualWorldMayChange": false,
+    "consistencySource": "written-style-lock-only"
+  },
+  "independentImagePolicy": {
+    "eachImageGeneratedFromOwnTextPrompt": true,
+    "previousGeneratedImageAsReferenceForbidden": true,
+    "imageToImageStyleInheritanceForbidden": true,
+    "freshCompositionRequired": true,
+    "repeatLayoutWithoutNarrativeReasonForbidden": true,
+    "varyPerspectiveLayoutAndBackgroundWhenUseful": true
+  },
+  "visualQualityPolicy": {
+    "visualStorytellingRequired": true,
+    "lifelessStaticCompositionForbidden": true,
+    "genericCenteredObjectOnBlankBackgroundForbiddenByDefault": true,
+    "genericIconCollageForbidden": true,
+    "sceneSpecificArtDirectionRequired": true,
+    "foregroundMidgroundBackgroundPreferredForNarrativeScenes": true,
+    "directionalEnergyPreferredWhenContentAllows": true,
+    "causeEffectOrContrastShouldBeVisibleWhenRelevant": true,
+    "controlledDepthRequired": true,
+    "paletteVariationAcrossAdjacentImagesRequired": true,
+    "adjacentCompositionModeRepeatForbiddenWithoutReason": true,
+    "childishCartoonLookForbidden": true
+  },
+  "visibleTextPolicy": {
+    "projectLanguageOnly": true,
+    "germanProjectRequiresGermanOnly": true,
+    "englishVisibleTextHardFail": true,
+    "pseudoTextHardFail": true,
+    "preferNoTextWhenNotRequired": true
+  },
+  "minimumDurationSeconds": 140,
+  "targetDurationSeconds": 150,
+  "targetDurationRangeSeconds": [142, 158],
+  "scriptWordCount": 431,
+  "plannedImageCount": 24,
+  "imageCountMethod": "content-and-complexity-derived",
+  "complexityDistribution": {"A": 9, "B": 9, "C": 2, "D": 4, "E": 0},
+  "complexityTargetsSeconds": {"A": [4,5], "B": [5,7], "C": [7,9], "D": [9,12], "E": [12,15]},
+  "complexityFinalHardMaxSeconds": {"A": 6.5, "B": 8.5, "C": 10.5, "D": 13.5, "E": 16},
+  "complexityFinalShortReviewSeconds": {"A": 3, "B": 4, "C": 5, "D": 6.5, "E": 8},
+  "adaptivePacing": {
+    "hardMaximumExclusiveSeconds": 20,
+    "reviewFromSeconds": 14,
+    "strongSplitReviewFromSeconds": 16,
+    "reviewIfShorterThanSeconds": 4,
+    "oneImageOneVisualPurpose": true,
+    "imageCountMustFollowContentDensity": true,
+    "uniformHoldDistributionForbidden": true
+  },
+  "userFacingStructure": {
+    "googleFlowPrompt": "00-bildprompts/google-flow-prompt.txt",
+    "imageDirectory": "00-bildprompts/images",
+    "script": "01-voice-script/voice-script.txt",
+    "finalAudioPattern": "02-audio/voiceover-final.*",
+    "flowWaveSize": 5
+  },
+  "audioEndPolicy": {
+    "maxTrailingSilenceSeconds": 0.35,
+    "preserveAfterLastWordSeconds": 0.2,
+    "trimMasterAutomatically": true,
+    "neverModifyUserOriginal": true
+  },
+  "renderPolicy": {
+    "motionPolicy": "complexity-v1",
+    "soundPlanFile": "99-technik/YOUTUBE_RENDER_PLAN.json",
+    "backgroundMusic": false,
+    "endHoldSeconds": 0.6
+  },
+  "thumbnailText": "WARUM ZWEI KOREAS?",
+  "titleRequired": true,
+  "thumbnailRequired": true,
+  "topicDuplicateCheckRequired": true,
+  "topicHistoryStatus": "reserved",
+  "folderRule": "youtube/<weekFolder>/<topicSlug>/",
+  "sourcesChecked": true,
+  "phase1Ready": true,
+  "audioReady": false,
+  "imagesReady": false,
+  "thumbnailReady": false,
+  "renderReady": false,
+  "createdAt": "2026-09-24",
+  "updatedAt": "2026-09-24"
+}
