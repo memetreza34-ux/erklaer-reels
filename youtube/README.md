@@ -6,19 +6,22 @@ Für neue YouTube-Videos gilt:
 
 ```text
 Visual Policy V3
+Cover Policy V1
 premium-editorial-explainer-illustration-youtube-16x9
 ```
 
 ## Kanalfokus
 
-Autonom neue Themen bleiben in:
-- Politik und Staatssysteme
-- Geschichte
-- Länder, Geografie, Grenzen und Territorien
-- Ideologien und Gesellschaftssysteme
-- internationale Beziehungen und Geopolitik
+Autonom neue Themen bleiben in Politik/Staatssystemen, Geschichte, Ländern/Geografie/Grenzen, Ideologien/Gesellschaftssystemen und internationalen Beziehungen/Geopolitik. Außerhalb nur bei ausdrücklicher Nutzeranweisung.
 
-Außerhalb nur bei ausdrücklicher Nutzeranweisung.
+## Cover-Regel — HARD LOCK
+
+- **Bild 01 ist immer Cover UND erste Videoszene.**
+- Bild 01 beginnt bei 0,0 s.
+- Bild 01 trägt eine starke kurze deutsche Cover-Überschrift und erklärt zugleich den ersten Sprecherabschnitt.
+- `THUMBNAIL.png` wird direkt aus `Bild 01.png` exportiert.
+- Für neue Projekte gibt es **kein Bild 00** und kein separates Thumbnail außerhalb der Timeline.
+- Bild 01 ist kein Master-Style-Frame und keine Referenz für spätere Bilder.
 
 ## Verbindliche Reihenfolge
 
@@ -33,8 +36,8 @@ Außerhalb nur bei ausdrücklicher Nutzeranweisung.
 Erstellt werden:
 - Thema + Kanalfokus + Duplicate-Check
 - Recherche + Titel
-- EIN Google-Flow-Masterprompt
-- EIN Gesamtskript
+- **EIN Google-Flow-Masterprompt**
+- **EIN Gesamtskript**
 - internes Bild↔Audio-Mapping
 - A–E-Pacing
 - Renderplan + Kapitel + Upload-Metadaten
@@ -45,13 +48,11 @@ Vor Übergabe an Flow:
 npm run validate:youtube-phase1 -- --dir "youtube/<woche>/<thema>"
 ```
 
-Das Gate blockiert alte Countryball-/Master-Reference-Prompts, falsche Style-ID, fehlende Policy-V3-Marker und fehlenden Kanalfokus-Bezug.
+Das Gate blockiert alte Countryball-/Master-Reference-Regeln, falsche Style-ID, fehlende Policy-Marker sowie bei neuen Projekten ein separates Bild 00.
 
 ## Phase 2 — Google Flow
 
-### Session Reset
-
-Wenn eine bestehende Flow-Sitzung noch alte Regeln enthält, wird sie **nicht weiterverwendet**.
+Wenn eine bestehende Flow-Sitzung alte Stil- oder Coverregeln enthält, wird sie nicht weiterverwendet:
 
 ```text
 STOP
@@ -59,25 +60,17 @@ STOP
 → aktuellen google-flow-prompt.txt vollständig neu einfügen
 ```
 
-Veraltet und verboten sind u. a.:
-- YouTube = Countryball-Stil
-- Bild 01 = Master-Style-Frame
-- Bild 01 als Referenz für Bild 02–NN
-- Stickman als aktive Bildwelt
-
 ### Unabhängige Bilder
 
-- Bild 00 separat
-- Bild 01 separat
+- Bild 01 separat als **Cover + erste Szene**
 - Bild 02–NN jeweils aus eigenem Textprompt
 - keine Bild-zu-Bild-Referenzen
-- 5er-Wellen nur als Ausführungsregel
+- **5er-Wellen** nur als Ausführungsregel
+- kein Bild 00
 
 ## Visual Policy V3
 
-Style-ID:
-
-`premium-editorial-explainer-illustration-youtube-16x9`
+Style-ID: `premium-editorial-explainer-illustration-youtube-16x9`
 
 Verbindlich:
 - hochwertige 2D-Editorial-/Dokumentar-Erklärillustration
@@ -85,23 +78,18 @@ Verbindlich:
 - szenenspezifische Art Direction
 - erwachsene Magazin-/Dokumentarwirkung
 - geschichtete Tiefe
-- kontrollierte, reichere Farbpaletten
-- bewusste Lichtakzente
+- kontrollierte Farbpaletten und Lichtakzente
 - klare visuelle Hierarchie
 - Ursache/Wirkung, Bewegung, Kontrast oder räumliche Beziehung sichtbar, wenn relevant
 - keine Countryballs als Standard
 - keine Stickfiguren
 - kein generisches KI-Template
+- nicht kindisch
 - kein 3D/Pixar/Clay/Anime/Fotorealismus als Standard
 
 ## Anti-Lifeless — HARD LOCK
 
-Regenerieren, wenn ein Bild:
-- leer oder steril wirkt
-- nur ein kleines Objekt mittig auf leerem Grund zeigt
-- wie eine Präsentationskarte/Icon-Collage wirkt
-- fast dieselbe Komposition wie das vorige Bild wiederholt
-- trotz geeignetem Inhalt keine Tiefe, Richtung, Beziehung oder Spannung zeigt
+Regenerieren, wenn ein Bild leer oder steril wirkt, nur ein kleines Objekt mittig zeigt, wie eine Präsentationskarte/Icon-Collage wirkt, fast dieselbe Komposition wiederholt oder trotz geeignetem Inhalt keine Tiefe, Richtung, Beziehung oder Spannung zeigt.
 
 **Clean ≠ leer. Minimal ≠ leblos.**
 
@@ -128,14 +116,14 @@ Nutzeroriginal bleibt unverändert.
 npm run phase3:youtube -- --dir "youtube/<woche>/<thema>"
 ```
 
-Phase 3 beginnt erneut mit dem Visual-Policy-V3-Gate, erst danach Audio, Alignment, Timeline, Motion/SFX und Render.
+Phase 3 beginnt mit Policy-Gates. Danach Audio, Alignment, Timeline, Motion/SFX und Render. Für neue Projekte muss die Timeline mit Bild 01 bei 0,0 s beginnen und der Export kopiert Bild 01 als Thumbnail.
 
 ## Export
 
 ```text
 03-export/
 ├── FERTIGES-VIDEO.mp4
-├── THUMBNAIL.png
+├── THUMBNAIL.png        ← Kopie von Bild 01.png
 ├── YOUTUBE-TITEL.txt
 ├── YOUTUBE-BESCHREIBUNG.txt
 ├── YOUTUBE-KAPITEL.txt
