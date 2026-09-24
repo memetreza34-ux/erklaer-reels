@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "visualPolicyVersion": 3,
+  "channelFocus": {
+    "primaryTopics": [
+      "Politik und Staatssysteme",
+      "Geschichte",
+      "Länder, Geografie, Grenzen und Territorien",
+      "Ideologien und Gesellschaftssysteme",
+      "internationale Beziehungen und Geopolitik"
+    ],
+    "adjacentTopicsAllowedOnlyWithClearCoreLink": true,
+    "pausedWithoutExplicitUserRequest": [
+      "Gesundheit",
+      "Medizin",
+      "Psychologie",
+      "Lifestyle",
+      "allgemeine Alltags-Warum-Themen ohne Länder-, Geschichts- oder Systembezug"
+    ]
+  },
+  "visualStyleId": "premium-editorial-explainer-illustration-youtube-16x9",
+  "sessionPolicy": {
+    "freshFlowSessionRequiredWhenVisualPolicyChanges": true,
+    "continueSessionContainingLegacyStyleInstructionsForbidden": true,
+    "activeStyleIdMustBeRestatedBeforeGeneration": true,
+    "previousGeneratedImageAsReferenceForbidden": true
+  },
+  "qualityPolicy": {
+    "visualStorytellingRequired": true,
+    "lifelessStaticCompositionForbidden": true,
+    "genericCenteredObjectOnBlankBackgroundForbiddenByDefault": true,
+    "genericIconCollageForbidden": true,
+    "repeatedLayoutForbiddenWithoutNarrativeReason": true,
+    "sceneSpecificArtDirectionRequired": true,
+    "foregroundMidgroundBackgroundPreferredForNarrativeScenes": true,
+    "directionalEnergyPreferredWhenContentAllows": true,
+    "causeEffectOrContrastShouldBeVisibleWhenRelevant": true,
+    "controlledDepthRequired": true,
+    "paletteVariationAcrossAdjacentImagesRequired": true,
+    "adjacentCompositionModeRepeatForbiddenWithoutReason": true,
+    "countryballAsDefaultForbidden": true,
+    "stickFiguresForbidden": true,
+    "photorealismForbiddenByDefault": true,
+    "glossy3dPixarClayAnimeForbidden": true
+  },
+  "preferredCompositionModes": [
+    "editorial-hero",
+    "narrative-mini-scene",
+    "map-spatial-explainer",
+    "conceptual-metaphor",
+    "explainer-diagram",
+    "historical-editorial-scene"
+  ]
+}
