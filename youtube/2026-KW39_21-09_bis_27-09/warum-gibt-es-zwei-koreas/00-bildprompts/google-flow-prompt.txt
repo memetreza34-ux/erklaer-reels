@@ -1,0 +1,241 @@
+YOUTUBE_VISUAL_POLICY_VERSION: 3
+COVER_POLICY_VERSION: 1
+ACTIVE_STYLE_ID: premium-editorial-explainer-illustration-youtube-16x9
+
+GOOGLE FLOW MASTER PROMPT — Warum gibt es zwei Koreas?
+
+ZIEL
+Erzeuge ausschließlich Bild 01 bis Bild 24 für ein deutsches YouTube-Erklärvideo von ungefähr 2,5 Minuten.
+
+==================================================
+FIRST SCENE = COVER HARD LOCK
+==================================================
+
+- Bild 01 is the cover AND the first video scene.
+- Bild 01 starts the actual video at 0.0 seconds.
+- Bild 01 must contain a strong short German cover headline AND visually support the first spoken idea.
+- The exported YouTube thumbnail is copied from Bild 01.png.
+- Do NOT create Bild 00.
+- Do NOT create a separate cover image outside the timeline.
+
+==================================================
+SESSION RESET HARD LOCK
+==================================================
+
+- Use a fresh Google Flow session if older instructions conflict.
+- The ONLY active style is `premium-editorial-explainer-illustration-youtube-16x9`.
+- Do not use any previous generated image as a visual reference.
+- Bild 01 is a cover, NOT a master style reference.
+- Every image must be generated independently from its own text prompt.
+
+==================================================
+WRITTEN STYLE LOCK — PREMIUM EDITORIAL EXPLAINER
+==================================================
+
+Premium editorial explainer illustration for a modern educational YouTube documentary, 16:9 horizontal. High-quality sophisticated 2D illustration with confident art direction, crisp vector-like shapes, refined controlled linework, layered flat colors with subtle depth, rich but disciplined color palettes, selective paper/print texture, intentional lighting accents, strong hierarchy and a clear focal story. Adult educational magazine / documentary-infographic aesthetic. Every image must feel authored for its exact historical or geopolitical idea, visually alive and memorable, never sterile or templated. No glossy 3D, no Pixar, no clay, no anime, no photorealism.
+
+==================================================
+VISUAL STORYTELLING HARD LOCK
+==================================================
+
+Do not merely place nouns from the narration on screen. Show the relationship, consequence, conflict, transition or spatial idea.
+
+When useful:
+- use foreground, midground and background for depth;
+- use diagonals, leading lines, overlap, scale contrast, framing and asymmetry;
+- make cause and effect visible;
+- use expressive but restrained editorial figures when people improve the historical story;
+- use maps only when the geography itself is the explanation;
+- use lighting and palette to separate eras, political systems and military phases;
+- prefer a narrative or conceptual scene over a static infographic card when both can explain the same point.
+
+==================================================
+ANTI-LIFELESS HARD LOCK
+==================================================
+
+Reject and regenerate any image that feels flat, empty, generic, sterile or like a presentation slide.
+
+Hard failures:
+- one small centered object floating on a blank background;
+- generic icon collage;
+- repeated peninsula map with only labels changed;
+- excessive empty pastel space without narrative purpose;
+- front-on composition with no depth, direction or focal tension;
+- repeated composition mode in adjacent images without a real reason;
+- decorative props that do not explain the narration.
+
+Clean does NOT mean empty. Minimal does NOT mean lifeless.
+
+==================================================
+INDIVIDUALITY HARD LOCK
+==================================================
+
+- Create a fresh composition for every Bild NN.
+- Do not imitate or reuse the layout, perspective, object placement, background structure, architecture, dominant shapes or palette arrangement of the previous image unless continuity is genuinely needed.
+- Do not use any previous generated image as a visual reference.
+- Rotate intentionally between: editorial hero, historical narrative scene, map/spatial explainer, conceptual metaphor, military movement map, political contrast and documentary system illustration.
+- Adjacent images should normally change angle, scale, composition mode and palette emphasis.
+
+HARD NEGATIVES:
+no mandatory mascot, no countryball template, no stick figures, no childish cartoon look, no cheap clipart, no generic AI template, no empty presentation-card aesthetic, no glossy 3D, no Pixar, no clay, no anime, no photorealistic stock-photo look, no watermark.
+
+==================================================
+DEUTSCH-HARD-LOCK — JEDER SICHTBARE TEXT
+==================================================
+
+This is a GERMAN project. Every readable word visible anywhere in every image MUST be German.
+Do NOT generate English labels. Do NOT generate pseudo-text or fake writing.
+If text is not explicitly required, generate NO TEXT.
+Any English visible text = HARD FAIL and regenerate.
+Any pseudo-text = HARD FAIL and regenerate.
+
+==================================================
+ABLAUF
+==================================================
+
+1. Bild 01 separat erzeugen und streng prüfen: COVER + ERSTE SZENE.
+2. Bild 02–05 jeweils unabhängig aus ihrem eigenen Textprompt erzeugen.
+3. Alle Bilder einzeln prüfen: Aussage, Tiefe, Art Direction, Individualität, deutscher Text, Nummerierung, 16:9.
+4. Fehler nur im betroffenen Bild regenerieren.
+5. Danach 06–10, dann 11–15, dann 16–20, dann 21–24.
+6. Maximal fünf aktive Bildgenerierungen gleichzeitig.
+7. Alle fertigen Bilder flach unter `00-bildprompts/images/` als `Bild NN.png` ablegen.
+8. Niemals ein vorheriges Bild als Referenz anhängen.
+9. Niemals Bild 00 erzeugen.
+
+A–E-PACING
+A = sehr einfach, ca. 4–5 s
+B = einfach, ca. 5–7 s
+C = mittel, ca. 7–9 s
+D = komplex, ca. 9–12 s
+E = sehr komplex, ca. 12–15 s
+
+==================================================
+BILD 01 — COVER + ERSTE VIDEOSZENE
+==================================================
+
+Bild 01 · D · ca. 11 s
+Premium editorial geopolitical cover scene, 16:9. Show the Korean Peninsula large and slightly tilted across the frame, visually split into a cold northern half and a warmer southern half by a glowing horizontal fracture around the middle. In the background, the same cultural silhouette and landscape continues across both halves to make clear that one people became two states. Use dramatic layered depth, a restrained red-blue contrast, dark navy shadows, cream highlights and a strong documentary-magazine composition. Add exactly one large German headline: "WARUM ZWEI KOREAS?". No other readable text.
+
+==================================================
+ERSTE WELLE — BILD 02–05
+==================================================
+
+Bild 02 · D · ca. 9,5 s
+Historical editorial panorama, 16:9. Show the Korean Peninsula before political division as one continuous cultural landscape: traditional roofs, mountain ridges, farmland, coastal settlements and one uninterrupted road crossing the frame from north to south. The composition must communicate continuity rather than nationalism. Warm muted earth colors, layered misty mountains, subtle archival-paper texture. Add only: "EIN KOREA".
+
+Bild 03 · B · ca. 6 s
+Historical occupation scene, 16:9. Show Korea under Japanese colonial rule between 1910 and 1945 through an editorial street scene: Korean civilians in the foreground, administrative buildings and imposed imperial authority in the midground, with the peninsula map faintly integrated behind the scene. Keep it historically serious and non-caricatured. Muted charcoal, dusty cream, deep red accents. Add exactly: "1910–1945".
+
+Bild 04 · A · ca. 4,5 s
+Historical transition scene, 16:9. August 1945: a Japanese military flag is being lowered in the background while two opposing military columns approach the Korean Peninsula from north and south on a large table-map in the foreground. Strong diagonal composition, clear sense of sudden power vacuum and transition. Add only: "1945".
+
+Bild 05 · B · ca. 6 s
+Map-spatial explainer, 16:9. Show the Korean Peninsula from a high oblique angle. A bright horizontal line cuts across it at the 38th parallel. Soviet military presence approaches from the north, U.S. military presence from the south, but the line should look temporary and improvised rather than like an ancient border. Add exactly: "38. BREITENGRAD". No other text.
+
+STOP: Bild 01–05 vollständig prüfen. Erst danach 06–10.
+
+==================================================
+WELLE 2 — BILD 06–10
+==================================================
+
+Bild 06 · A · ca. 5 s
+Conceptual occupation scene, 16:9. Show one Korean town divided by the frame: Soviet soldiers and administrative structures in the distant northern side, U.S. soldiers and administration in the southern side, while ordinary Korean families and a road continue across the middle. The border line appears provisional, marked with simple temporary posts rather than permanent walls. No visible text.
+
+Bild 07 · C · ca. 8 s
+Cold War transformation scene, 16:9. The temporary 38th-parallel line hardens visually into two opposing political systems. On the north side, red industrial-state imagery and centralized authority; on the south side, a U.S.-aligned anti-communist government structure. In the far background, silhouettes of Moscow and Washington pull in opposite directions through long visual lines. Add exactly: "KALTER KRIEG".
+
+Bild 08 · B · ca. 6 s
+Historical political split scene, 16:9. Two separate government centers form on the peninsula. In the north, a restrained editorial portrait-style figure representing Kim Il-sung stands before a centralized state assembly; in the south, a restrained figure representing Syngman Rhee stands before a different government building. Keep figures stylized, not photorealistic and not heroic. Add only: "NORDEN" and "SÜDEN".
+
+Bild 09 · B · ca. 5,5 s
+Political foundation scene, 16:9. Show two official state proclamations emerging on opposite halves of the same peninsula in 1948, with two government buildings and two separate flagpoles. The center line becomes more formal. Add exactly: "1948: ZWEI STAATEN".
+
+Bild 10 · B · ca. 5,5 s
+Conceptual rivalry scene, 16:9. Two opposing government podiums face each other across a map of the whole peninsula. Each side points toward the entire peninsula rather than only its half, visually showing that both governments claimed all of Korea. Use tense diagonal sightlines and no comedy. Add only: "WER VERTRITT GANZ KOREA?".
+
+STOP: Bild 06–10 vollständig prüfen. Erst danach 11–15.
+
+==================================================
+WELLE 3 — BILD 11–15
+==================================================
+
+Bild 11 · A · ca. 4 s
+Dynamic military map scene, 16:9. On 25 June 1950, bold north-to-south arrows cross the 38th parallel while South Korean defensive lines recoil. Use a clean but cinematic battlefield-map hybrid with layered terrain and smoke, not a sterile strategy board. Add exactly: "25. JUNI 1950".
+
+Bild 12 · A · ca. 4,5 s
+Fast-moving campaign scene, 16:9. Show the Korean Peninsula with northern forces sweeping rapidly southward, compressing the remaining southern defensive area toward the southeast. Use depth, directional arrows integrated into terrain and a sense of rapid collapse. No visible text.
+
+Bild 13 · A · ca. 4,5 s
+Counteroffensive scene, 16:9. Show UN and South Korean forces pushing north after a dramatic coastal landing and counterattack, with military movement rising back across the peninsula. Use ships in the foreground, troops and vehicles in the midground, peninsula movement in the background. Add only: "UN-TRUPPEN".
+
+Bild 14 · C · ca. 7,5 s
+Geopolitical escalation scene, 16:9. Northern Korea fills the lower frame while the Chinese border and Yalu River dominate the upper edge. UN forces move north; from the opposite direction, large Chinese troop columns enter the scene, turning the momentum of the war. Strong converging diagonals, winter palette, dramatic but controlled lighting. Add exactly: "CHINA GREIFT EIN".
+
+Bild 15 · A · ca. 4,5 s
+Human-cost editorial scene, 16:9. A ruined Korean city street stretches into the distance with civilians carrying belongings, damaged rail lines, collapsed buildings and distant smoke. Show the scale of destruction without graphic injury. Somber slate blue, ash grey and muted amber. No visible text.
+
+STOP: Bild 11–15 vollständig prüfen. Erst danach 16–20.
+
+==================================================
+WELLE 4 — BILD 16–20
+==================================================
+
+Bild 16 · B · ca. 6,5 s
+Stalemate map scene, 16:9. Show the front line after years of fighting settling close to the center of the peninsula. Earlier sweeping arrows fade into a dense zigzag front, trenches and opposing positions. The composition should communicate enormous movement ending almost where it began. Add only: "FAST WIEDER AM ANFANG".
+
+Bild 17 · B · ca. 6,5 s
+Historical armistice scene, 16:9. Panmunjom, 1953: two negotiating delegations sit across a long table inside a simple armistice building while military guards and the divided landscape are visible outside through open doors. Serious editorial historical illustration. Add exactly: "WAFFENSTILLSTAND 1953".
+
+Bild 18 · B · ca. 5,5 s
+Spatial DMZ explainer, 16:9. Show a clean oblique cross-section of the Korean border: central military demarcation line, two kilometers of buffer on the north side and two kilometers on the south side, guard positions far apart, mountains and vegetation in between. Add exactly three German labels: "2 KM", "DEMILITARISIERTE ZONE", "2 KM". No other text.
+
+Bild 19 · A · ca. 5 s
+Conceptual legal-status scene, 16:9. A signed armistice document lies in the foreground, while behind it two closed government doors remain separated by the border. A large unfinished peace-treaty page remains blank and unsigned, making the distinction visual. Add exactly: "KEIN FRIEDENSVERTRAG".
+
+Bild 20 · A · ca. 4 s
+Modern unresolved-border scene, 16:9. View the DMZ from above at dusk: two heavily guarded sides face each other across a quiet strip of land. The scene feels frozen rather than actively at war. No visible text.
+
+STOP: Bild 16–20 vollständig prüfen. Erst danach 21–24.
+
+==================================================
+LETZTE WELLE — BILD 21–24
+==================================================
+
+Bild 21 · A · ca. 4,5 s
+Modern South Korea editorial scene, 16:9. Show Seoul as a layered modern democracy and industrial economy: National Assembly silhouette in the background, dense modern skyline, semiconductor factory elements, port cranes and citizens moving through the foreground. Avoid corporate-logo clutter. Add only: "SÜDKOREA".
+
+Bild 22 · B · ca. 6 s
+Modern North Korea editorial scene, 16:9. Show a highly centralized and isolated state through monumental government architecture, regimented formations, controlled information screens and darkened surrounding borders. Keep the depiction factual and serious, not sensational or caricatured. Add only: "NORDKOREA".
+
+Bild 23 · D · ca. 11,5 s
+Conceptual causal-chain illustration, 16:9. Build one flowing composition from left to right: Japan's 1945 surrender transitions into a temporary 38th-parallel occupation line, then into opposing Cold War blocs, then into the Korean War, and finally into the hardened DMZ. Use one continuous visual path rather than five floating icons. Strong editorial hierarchy and clear cause-and-effect. Add exactly: "1945 → KALTER KRIEG → KRIEG → TEILUNG".
+
+Bild 24 · D · ca. 10,5 s
+Final resolving documentary illustration, 16:9. Show the Korean Peninsula at night from an oblique orbital perspective, with the north and south visibly different but geographically continuous. The DMZ glows as a thin artificial line across one shared peninsula. In the foreground, an unfinished peace document and a restrained question mark shape suggest the unresolved future. Deep navy, muted red and cool teal with cream highlights. Add exactly: "EINE HALBINSEL – ZWEI STAATEN". No other text.
+
+==================================================
+FINALER CHECK
+==================================================
+
+Vor Abschluss jedes Bildes prüfen:
+- Visual Policy V3 aktiv
+- Cover Policy V1 aktiv
+- Style-ID exakt `premium-editorial-explainer-illustration-youtube-16x9`
+- Bild 01 = Cover + erste Videoszene
+- kein Bild 00
+- 16:9 horizontal
+- hochwertige Premium-Editorial-Erklärillustration
+- visuell lebendig: klare Tiefe, Richtung, Spannung oder Beziehung
+- nicht wie eine leere Präsentationsfolie
+- jedes Bild eigenständig komponiert
+- keine sichtbare Copy-Paste-Schablone
+- KEIN vorheriges Bild als visuelle Referenz verwendet
+- keine Countryball-/Maskottchen-Schablone
+- keine Stickfiguren
+- kein billiger Cartoon-/Clipart-Look
+- kein glänzendes 3D / Pixar / Clay / Anime / Fotorealismus
+- sichtbarer Text ausschließlich exakt wie vorgegeben und auf Deutsch
+- kein zusätzlicher Text
+- kein Pseudo-Text
+- kein Wasserzeichen

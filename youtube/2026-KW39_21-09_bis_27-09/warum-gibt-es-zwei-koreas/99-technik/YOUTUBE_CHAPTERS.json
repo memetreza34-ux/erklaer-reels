@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "timingSource": "FINAL_TIMELINE.json",
+  "chapters": [
+    {"imageNumber": 1, "title": "Warum Korea geteilt ist"},
+    {"imageNumber": 3, "title": "Japanische Kolonialherrschaft und 1945"},
+    {"imageNumber": 5, "title": "Die Teilung am 38. Breitengrad"},
+    {"imageNumber": 9, "title": "1948 entstehen zwei Staaten"},
+    {"imageNumber": 11, "title": "Der Koreakrieg beginnt"},
+    {"imageNumber": 17, "title": "Waffenstillstand und DMZ"},
+    {"imageNumber": 21, "title": "Zwei völlig verschiedene Systeme"},
+    {"imageNumber": 23, "title": "Warum die Teilung bis heute blieb"}
+  ]
+}
