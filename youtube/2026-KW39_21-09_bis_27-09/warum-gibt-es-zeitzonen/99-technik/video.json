@@ -10,23 +10,32 @@
   "status": "phase2-pending",
   "language": "de",
   "format": "youtube-longform",
-  "visualStyleId": "serious-minimal-countryball-explainer-youtube-16x9",
-  "sourceVisualWorldId": "serious-minimal-countryball-explainer",
-  "visualStyleReason": "Exakt dieselbe Serious-Minimal-Countryball-Bildwelt wie bei den aktiven Reels; nur die Komposition wird für YouTube auf 16:9 horizontal angepasst.",
+  "visualStyleId": "premium-editorial-explainer-illustration-youtube-16x9",
+  "sourceVisualWorldId": "premium-editorial-explainer-illustration",
+  "visualStyleReason": "Hochwertige eigenständige 16:9-Editorial-Erklärillustrationen. Jedes Bild wird unabhängig aus seinem eigenen Textprompt erzeugt; kein vorheriges Bild wird als visuelle Referenz verwendet.",
   "aspectRatio": "16:9",
   "visualWorldParityPolicy": {
-    "mustMatchReelVisualDNA": true,
-    "onlyAllowedFormatDifference": "16:9-horizontal-instead-of-9:16-vertical",
+    "mustMatchReelVisualDNA": false,
+    "independentYoutubeStyle": true,
     "stickFiguresForbidden": true,
-    "humanoidCartoonPeopleForbidden": true,
-    "roundCountryballGeometryRequiredWhenActorAppears": true,
-    "maxSupportingPropsTypical": 3
+    "countryballAsDefaultForbidden": true,
+    "photorealismForbiddenByDefault": true,
+    "genericTemplateCompositionForbidden": true
   },
   "masterReferencePolicy": {
-    "masterImageNumber": 1,
-    "generateMasterSeparately": true,
-    "attachMasterToAllLaterImages": true,
-    "visualWorldMayChange": false
+    "masterImageNumber": null,
+    "generateMasterSeparately": false,
+    "attachMasterToAllLaterImages": false,
+    "visualWorldMayChange": false,
+    "consistencySource": "written-style-lock-only"
+  },
+  "independentImagePolicy": {
+    "eachImageGeneratedFromOwnTextPrompt": true,
+    "previousGeneratedImageAsReferenceForbidden": true,
+    "imageToImageStyleInheritanceForbidden": true,
+    "freshCompositionRequired": true,
+    "repeatLayoutWithoutNarrativeReasonForbidden": true,
+    "varyPerspectiveLayoutAndBackgroundWhenUseful": true
   },
   "visibleTextPolicy": {
     "projectLanguageOnly": true,
@@ -86,5 +95,5 @@
   "thumbnailReady": false,
   "renderReady": false,
   "createdAt": "2026-09-23",
-  "updatedAt": "2026-09-23"
+  "updatedAt": "2026-09-24"
 }
