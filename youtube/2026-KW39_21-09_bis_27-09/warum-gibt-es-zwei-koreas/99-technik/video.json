@@ -81,7 +81,7 @@
   "minimumDurationSeconds": 140,
   "targetDurationSeconds": 150,
   "targetDurationRangeSeconds": [142, 158],
-  "scriptWordCount": 431,
+  "scriptWordCount": 445,
   "plannedImageCount": 24,
   "imageCountMethod": "content-and-complexity-derived",
   "complexityDistribution": {"A": 9, "B": 9, "C": 2, "D": 4, "E": 0},
