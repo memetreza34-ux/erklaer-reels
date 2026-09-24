@@ -10,123 +10,132 @@ async function readJson(file) {
 }
 
 test('neue YouTube-Projekte verwenden die eigene Premium-Editorial-Bildwelt', async () => {
-  const [visualWorld, workflow, templatePrompt, timezonePrompt, templateMeta, timezoneMeta] = await Promise.all([
-    readFile('youtube/YOUTUBE_VISUAL_WORLD.md', 'utf8'),
-    readFile('youtube/YOUTUBE_WORKFLOW.md', 'utf8'),
+  const [policy, templatePrompt, timezonePrompt, templateMeta, timezoneMeta] = await Promise.all([
+    readJson('config/youtube-channel-policy.json'),
     readFile(`${TEMPLATE}/00-bildprompts/google-flow-prompt.txt`, 'utf8'),
     readFile(`${TIMEZONE_PROJECT}/00-bildprompts/google-flow-prompt.txt`, 'utf8'),
     readJson(`${TEMPLATE}/99-technik/video.json`),
     readJson(`${TIMEZONE_PROJECT}/99-technik/video.json`)
   ]);
 
-  for (const text of [visualWorld, workflow, templatePrompt, timezonePrompt]) {
-    assert.match(text, /premium editorial|Premium Editorial|Editorial-Erklärillustration|Editorial-Illustration/i);
-    assert.match(text, /16:9/);
+  assert.equal(policy.visualPolicyVersion, 3);
+  assert.equal(policy.visualStyleId, 'premium-editorial-explainer-illustration-youtube-16x9');
+  for (const meta of [templateMeta, timezoneMeta]) {
+    assert.equal(meta.visualPolicyVersion, policy.visualPolicyVersion);
+    assert.equal(meta.visualStyleId, policy.visualStyleId);
+    assert.equal(meta.aspectRatio, '16:9');
+    assert.equal(meta.visualWorldParityPolicy.mustMatchReelVisualDNA, false);
   }
-
-  assert.equal(templateMeta.visualStyleId, 'premium-editorial-explainer-illustration-youtube-16x9');
-  assert.equal(timezoneMeta.visualStyleId, 'premium-editorial-explainer-illustration-youtube-16x9');
-  assert.equal(templateMeta.visualWorldParityPolicy.mustMatchReelVisualDNA, false);
-  assert.equal(timezoneMeta.visualWorldParityPolicy.mustMatchReelVisualDNA, false);
+  for (const prompt of [templatePrompt, timezonePrompt]) {
+    assert.match(prompt, /YOUTUBE_VISUAL_POLICY_VERSION: 3/);
+    assert.match(prompt, /ACTIVE_STYLE_ID: premium-editorial-explainer-illustration-youtube-16x9/);
+    assert.match(prompt, /16:9/);
+  }
 });
 
 test('neue YouTube-Bilder dürfen keine vorherigen Bilder als Referenz verwenden', async () => {
-  const [visualWorld, workflow, templatePrompt, timezonePrompt, templateMeta, timezoneMeta] = await Promise.all([
-    readFile('youtube/YOUTUBE_VISUAL_WORLD.md', 'utf8'),
-    readFile('youtube/YOUTUBE_WORKFLOW.md', 'utf8'),
+  const [policy, templatePrompt, timezonePrompt, templateMeta, timezoneMeta] = await Promise.all([
+    readJson('config/youtube-channel-policy.json'),
     readFile(`${TEMPLATE}/00-bildprompts/google-flow-prompt.txt`, 'utf8'),
     readFile(`${TIMEZONE_PROJECT}/00-bildprompts/google-flow-prompt.txt`, 'utf8'),
     readJson(`${TEMPLATE}/99-technik/video.json`),
     readJson(`${TIMEZONE_PROJECT}/99-technik/video.json`)
   ]);
 
-  for (const text of [visualWorld, workflow, templatePrompt, timezonePrompt]) {
-    assert.match(text, /kein.*Bild.*Referenz|no previous generated image as a visual reference|KEIN vorheriges Bild/i);
+  assert.equal(policy.sessionPolicy.previousGeneratedImageAsReferenceForbidden, true);
+  for (const meta of [templateMeta, timezoneMeta]) {
+    assert.equal(meta.masterReferencePolicy.masterImageNumber, null);
+    assert.equal(meta.masterReferencePolicy.attachMasterToAllLaterImages, false);
+    assert.equal(meta.independentImagePolicy.eachImageGeneratedFromOwnTextPrompt, true);
+    assert.equal(meta.independentImagePolicy.previousGeneratedImageAsReferenceForbidden, true);
   }
-
-  assert.equal(templateMeta.masterReferencePolicy.masterImageNumber, null);
-  assert.equal(templateMeta.masterReferencePolicy.attachMasterToAllLaterImages, false);
-  assert.equal(templateMeta.independentImagePolicy.eachImageGeneratedFromOwnTextPrompt, true);
-  assert.equal(templateMeta.independentImagePolicy.previousGeneratedImageAsReferenceForbidden, true);
-
-  assert.equal(timezoneMeta.masterReferencePolicy.masterImageNumber, null);
-  assert.equal(timezoneMeta.masterReferencePolicy.attachMasterToAllLaterImages, false);
-  assert.equal(timezoneMeta.independentImagePolicy.eachImageGeneratedFromOwnTextPrompt, true);
-  assert.equal(timezoneMeta.independentImagePolicy.previousGeneratedImageAsReferenceForbidden, true);
+  for (const prompt of [templatePrompt, timezonePrompt]) {
+    assert.match(prompt, /Do not use any previous generated image as a visual reference\./);
+    assert.match(prompt, /SESSION RESET HARD LOCK/);
+  }
 });
 
-test('jedes neue YouTube-Bild braucht eine eigenständige Komposition', async () => {
-  const [visualWorld, templatePrompt, timezonePrompt, templateMeta, timezoneMeta] = await Promise.all([
-    readFile('youtube/YOUTUBE_VISUAL_WORLD.md', 'utf8'),
+test('jedes neue YouTube-Bild braucht eine eigenständige Komposition und echte Art Direction', async () => {
+  const [policy, templatePrompt, timezonePrompt, templateMeta, timezoneMeta] = await Promise.all([
+    readJson('config/youtube-channel-policy.json'),
     readFile(`${TEMPLATE}/00-bildprompts/google-flow-prompt.txt`, 'utf8'),
     readFile(`${TIMEZONE_PROJECT}/00-bildprompts/google-flow-prompt.txt`, 'utf8'),
     readJson(`${TEMPLATE}/99-technik/video.json`),
     readJson(`${TIMEZONE_PROJECT}/99-technik/video.json`)
   ]);
 
-  for (const text of [visualWorld, templatePrompt, timezonePrompt]) {
-    assert.match(text, /fresh composition|eigenständige.*Komposition|individuell/i);
-    assert.match(text, /Perspektive|perspective/i);
-    assert.match(text, /Layout|layout/i);
-    assert.match(text, /Hintergrund|background/i);
+  assert.equal(policy.qualityPolicy.sceneSpecificArtDirectionRequired, true);
+  assert.equal(policy.qualityPolicy.repeatedLayoutForbiddenWithoutNarrativeReason, true);
+  for (const meta of [templateMeta, timezoneMeta]) {
+    assert.equal(meta.independentImagePolicy.freshCompositionRequired, true);
+    assert.equal(meta.independentImagePolicy.repeatLayoutWithoutNarrativeReasonForbidden, true);
+    assert.equal(meta.independentImagePolicy.varyPerspectiveLayoutAndBackgroundWhenUseful, true);
+    assert.equal(meta.visualQualityPolicy.sceneSpecificArtDirectionRequired, true);
   }
-
-  assert.equal(templateMeta.independentImagePolicy.freshCompositionRequired, true);
-  assert.equal(templateMeta.independentImagePolicy.repeatLayoutWithoutNarrativeReasonForbidden, true);
-  assert.equal(timezoneMeta.independentImagePolicy.freshCompositionRequired, true);
-  assert.equal(timezoneMeta.independentImagePolicy.repeatLayoutWithoutNarrativeReasonForbidden, true);
+  for (const prompt of [templatePrompt, timezonePrompt]) {
+    assert.match(prompt, /INDIVIDUALITY HARD LOCK/);
+    assert.match(prompt, /fresh composition/i);
+    assert.match(prompt, /perspective/i);
+    assert.match(prompt, /layout/i);
+    assert.match(prompt, /background/i);
+  }
 });
 
-test('YouTube-Illustrationen verbieten billige Template- und Stickman-Optik', async () => {
-  const [visualWorld, templatePrompt, timezonePrompt, templateMeta, timezoneMeta] = await Promise.all([
-    readFile('youtube/YOUTUBE_VISUAL_WORLD.md', 'utf8'),
+test('leblose, kindische und generische YouTube-Optik ist maschinenlesbar verboten', async () => {
+  const [policy, templatePrompt, timezonePrompt, templateMeta, timezoneMeta] = await Promise.all([
+    readJson('config/youtube-channel-policy.json'),
     readFile(`${TEMPLATE}/00-bildprompts/google-flow-prompt.txt`, 'utf8'),
     readFile(`${TIMEZONE_PROJECT}/00-bildprompts/google-flow-prompt.txt`, 'utf8'),
     readJson(`${TEMPLATE}/99-technik/video.json`),
     readJson(`${TIMEZONE_PROJECT}/99-technik/video.json`)
   ]);
 
-  for (const text of [visualWorld, templatePrompt, timezonePrompt]) {
-    assert.match(text, /Stickfigur|stick-figure/i);
-    assert.match(text, /generic.*template|generische.*Schablone|generisches KI-Template|generic AI template/i);
-    assert.match(text, /nicht kindisch|not childish/i);
+  assert.equal(policy.qualityPolicy.lifelessStaticCompositionForbidden, true);
+  assert.equal(policy.qualityPolicy.genericCenteredObjectOnBlankBackgroundForbiddenByDefault, true);
+  assert.equal(policy.qualityPolicy.genericIconCollageForbidden, true);
+  assert.equal(policy.qualityPolicy.childishCartoonLookForbidden, true);
+  assert.equal(policy.qualityPolicy.stickFiguresForbidden, true);
+
+  for (const meta of [templateMeta, timezoneMeta]) {
+    assert.equal(meta.visualWorldParityPolicy.stickFiguresForbidden, true);
+    assert.equal(meta.visualWorldParityPolicy.genericTemplateCompositionForbidden, true);
+    assert.equal(meta.visualQualityPolicy.lifelessStaticCompositionForbidden, true);
+    assert.equal(meta.visualQualityPolicy.genericCenteredObjectOnBlankBackgroundForbiddenByDefault, true);
+    assert.equal(meta.visualQualityPolicy.childishCartoonLookForbidden, true);
   }
 
-  assert.equal(templateMeta.visualWorldParityPolicy.stickFiguresForbidden, true);
-  assert.equal(templateMeta.visualWorldParityPolicy.genericTemplateCompositionForbidden, true);
-  assert.equal(timezoneMeta.visualWorldParityPolicy.stickFiguresForbidden, true);
-  assert.equal(timezoneMeta.visualWorldParityPolicy.genericTemplateCompositionForbidden, true);
+  for (const prompt of [templatePrompt, timezonePrompt]) {
+    assert.match(prompt, /ANTI-LIFELESS HARD LOCK/);
+    assert.match(prompt, /centered object/i);
+    assert.match(prompt, /generic.*template/i);
+    assert.match(prompt, /childish/i);
+    assert.match(prompt, /stick/i);
+  }
 });
 
 test('Countryballs sind bei neuen YouTube-Videos kein Standardcharakter mehr', async () => {
-  const [visualWorld, workflow, timezonePrompt, templateMeta, timezoneMeta] = await Promise.all([
-    readFile('youtube/YOUTUBE_VISUAL_WORLD.md', 'utf8'),
-    readFile('youtube/YOUTUBE_WORKFLOW.md', 'utf8'),
-    readFile(`${TIMEZONE_PROJECT}/00-bildprompts/google-flow-prompt.txt`, 'utf8'),
+  const [policy, templateMeta, timezoneMeta] = await Promise.all([
+    readJson('config/youtube-channel-policy.json'),
     readJson(`${TEMPLATE}/99-technik/video.json`),
     readJson(`${TIMEZONE_PROJECT}/99-technik/video.json`)
   ]);
 
-  for (const text of [visualWorld, workflow, timezonePrompt]) {
-    assert.match(text, /Countryball.*kein|kein Countryball|no mandatory countryball|Countryballs.*kein/i);
-  }
+  assert.equal(policy.qualityPolicy.countryballAsDefaultForbidden, true);
   assert.equal(templateMeta.visualWorldParityPolicy.countryballAsDefaultForbidden, true);
   assert.equal(timezoneMeta.visualWorldParityPolicy.countryballAsDefaultForbidden, true);
 });
 
 test('deutsche YouTube-Projekte erzwingen weiterhin deutschen sichtbaren Bildtext', async () => {
-  const [visualWorld, workflow, templatePrompt, timezonePrompt, templateMeta, timezoneMeta] = await Promise.all([
-    readFile('youtube/YOUTUBE_VISUAL_WORLD.md', 'utf8'),
-    readFile('youtube/YOUTUBE_WORKFLOW.md', 'utf8'),
+  const [templatePrompt, timezonePrompt, templateMeta, timezoneMeta] = await Promise.all([
     readFile(`${TEMPLATE}/00-bildprompts/google-flow-prompt.txt`, 'utf8'),
     readFile(`${TIMEZONE_PROJECT}/00-bildprompts/google-flow-prompt.txt`, 'utf8'),
     readJson(`${TEMPLATE}/99-technik/video.json`),
     readJson(`${TIMEZONE_PROJECT}/99-technik/video.json`)
   ]);
 
-  for (const text of [visualWorld, workflow, templatePrompt, timezonePrompt]) {
-    assert.match(text, /sichtbar.*Text.*Deutsch|readable word.*German|every readable.*German/i);
-    assert.match(text, /Hard Fail|HARD FAIL/i);
+  for (const prompt of [templatePrompt, timezonePrompt]) {
+    assert.match(prompt, /Every readable word.*German|Every readable.*German/i);
+    assert.match(prompt, /HARD FAIL/i);
   }
   assert.equal(templateMeta.visibleTextPolicy.germanProjectRequiresGermanOnly, true);
   assert.equal(templateMeta.visibleTextPolicy.englishVisibleTextHardFail, true);
