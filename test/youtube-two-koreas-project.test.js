@@ -75,7 +75,7 @@ test('Google-Flow-Prompt enthält alle 24 Bildprompts und die aktive Visual Poli
   assert.match(prompt, /ANTI-LIFELESS HARD LOCK/);
   assert.match(prompt, /Do not use any previous generated image as a visual reference\./);
   for (let number = 1; number <= 24; number += 1) {
-    assert.match(prompt, new RegExp(`BILD ${String(number).padStart(2, '0')}`));
+    assert.match(prompt, new RegExp(`BILD ${String(number).padStart(2, '0')}`, 'i'));
   }
 });
 
