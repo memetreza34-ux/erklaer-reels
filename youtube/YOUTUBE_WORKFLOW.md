@@ -98,6 +98,7 @@ Verbindlich:
 - individuelle Komposition pro Bild
 - keine generische Clipart-/KI-Template-Wirkung
 - keine Stickfiguren als Standardstil
+- **Countryballs sind für neue YouTube-Videos kein Standardcharakter und kein Stil-Lock.**
 - kein glänzendes 3D/Pixar/Clay/Anime/Fotorealismus
 - höchstens 5 aktive Bildgenerierungen gleichzeitig
 - niemals zwei Wellen gleichzeitig offen halten
