@@ -21,11 +21,15 @@
 ## Bilder
 
 - [x] Bild 00 ist ausschließlich Thumbnail
-- [x] Bild 01 ist Master-Style-Frame
 - [x] 19 Videobilder nach Inhaltsdichte statt starrer Anzahl
 - [x] A–E-Komplexität für jedes Bild vorhanden
-- [x] Countryball-Welt identisch zur Reel-DNA, nur 16:9
-- [x] Stickfiguren und normale/realistische Menschen verboten
+- [x] neue YouTube-Bildwelt = `premium-editorial-explainer-illustration-youtube-16x9`
+- [x] jedes Bild wird unabhängig aus seinem eigenen Textprompt erzeugt
+- [x] Bild 01 ist **kein** Master-Style-Frame
+- [x] kein vorheriges Bild darf als visuelle Referenz verwendet werden
+- [x] eigenständige Komposition pro Bild ist Pflicht
+- [x] Copy-Paste-Layouts ohne narrativen Grund sind verboten
+- [x] hochwertige Editorial-Illustrationsqualität statt Countryball-/Clipart-Zwang
 - [x] deutscher sichtbarer Text hart gesperrt
 - [x] Flow-Ausführung in maximal 5er-Wellen
 
@@ -48,4 +52,4 @@
 - [x] Kapitel an Bildnummern gebunden
 - [x] Upload-Titel, Beschreibung und Tags vorbereitet
 
-**Phase-1-Ergebnis: READY FOR PHASE 2**
+**Phase-1-Ergebnis: READY FOR PHASE 2 — BILDER MIT NEUEM EDITORIAL-PROMPT NEU GENERIEREN**
