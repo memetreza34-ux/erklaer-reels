@@ -1,8 +1,8 @@
 # YOUTUBE WORKFLOW — VERBINDLICHE REGEL FÜR LANGVIDEOS
 
-**Stand: 2026-09-23**
+**Stand: 2026-09-24**
 
-Diese Datei gilt ausschließlich für YouTube-Langvideos. Reel-Code wird dadurch nicht verändert. Die YouTube-Bildwelt übernimmt aber bewusst dieselbe künstlerische Welt wie die aktiven Reels.
+Diese Datei gilt ausschließlich für YouTube-Langvideos. Reel-Code und Reel-Bildwelt werden dadurch nicht verändert.
 
 ## Priorität
 
@@ -67,31 +67,45 @@ Der Nutzer benötigt nur:
 01-voice-script/voice-script.txt
 ```
 
-### Google Flow — Countryball-World-Lock + 5er-Wellen
+### Google Flow — unabhängige Editorial-Illustrationen + 5er-Wellen
 
 ```text
 Bild 00 separat
-Bild 01 separat → Countryball-Stil prüfen → Master-Referenz
-Bild 02–05 mit Bild 01 als Referenz → prüfen
-06–10 mit Bild 01 als Referenz
+Bild 01 separat
+Bild 02–05 separat aus ihren eigenen Textprompts → prüfen
+06–10 separat aus ihren eigenen Textprompts → prüfen
 11–15 ...
 ```
 
-Harte Regeln:
-- Quellwelt: `serious-minimal-countryball-explainer`
-- YouTube-Anpassung: exakt dieselbe visuelle DNA, nur 16:9 horizontal
-- Bild 01 ist der Master-Style-Frame
-- ab Bild 02 wird Bild 01 bei jeder Generierung als visuelle Referenz angehängt
+### HARD LOCK: kein Referenzbild zwischen Bildern
+
+- **Kein erzeugtes Bild darf als visuelle Vorlage für ein späteres Bild verwendet werden.**
+- Bild 01 ist kein Master-Style-Frame.
+- Bild 02–NN bekommen Bild 01 nicht als Referenz.
+- Kein vorheriges Bild wird an Flow angehängt.
+- Jedes Bild entsteht aus seinem eigenen Textprompt.
+- Stil-Konsistenz kommt ausschließlich aus dem schriftlichen Style-Lock in `youtube/YOUTUBE_VISUAL_WORLD.md`.
+
+### HARD LOCK: jedes Bild individuell
+
+Jedes Bild braucht eine eigenständige visuelle Lösung. Wiederholungen von Layout, Perspektive, Figurenposition, Hintergrund oder Farbaufbau ohne inhaltlichen Grund sind zu vermeiden.
+
+Verbindlich:
+- neue YouTube-Style-ID: `premium-editorial-explainer-illustration-youtube-16x9`
+- hochwertige moderne 2D-Editorial-/Erklärillustration
+- 16:9 horizontal
+- erwachsen, klar, hochwertig, nicht kindisch
+- individuelle Komposition pro Bild
+- keine generische Clipart-/KI-Template-Wirkung
+- keine Stickfiguren als Standardstil
+- kein glänzendes 3D/Pixar/Clay/Anime/Fotorealismus
 - höchstens 5 aktive Bildgenerierungen gleichzeitig
 - niemals zwei Wellen gleichzeitig offen halten
 - letzter Block darf 1–5 Bilder enthalten
 - Bild 00 bleibt Thumbnail und kommt nie in die Timeline
 - Bilder liegen flach unter `00-bildprompts/images/`
-- Akteure sind perfekt runde Countryball-artige Kugeln mit weißen Augen und dicken schwarzen Konturen
-- Stickfiguren, normale Cartoon-Menschen und realistische Menschen sind Style Fail
-- normalerweise 0–3 sinnvolle Zusatzobjekte
-- einfache Hintergründe, flache 2D-Farben, minimale grafische Schattierung
-- nicht kindisch, nicht albern, nicht generisch-KI-haft
+
+Die vollständige Bildregel steht in `youtube/YOUTUBE_VISUAL_WORLD.md`.
 
 ### Sichtbarer Text — Deutsch-Hard-Lock
 
@@ -170,6 +184,8 @@ Reihenfolge:
 - Rendern nach Änderung des optimierten Audios mit altem Messbeleg
 - Nutzer-Voice-over überschreiben
 - Rendern ohne `FINAL_TIMELINE.json`
+- ein generiertes YouTube-Bild als Stil-/Image-to-Image-Referenz für ein späteres Bild verwenden
+- identische Kompositionsschablonen durch ein ganzes Video wiederholen
 
 ## A–E-Gate gegen echte Zeiten
 
@@ -217,11 +233,12 @@ Gezielte Sounds stehen ausschließlich in `99-technik/YOUTUBE_RENDER_PLAN.json` 
 
 ## Definition of Done
 
-Ein Video ist erst fertig, wenn:
+Ein neues YouTube-Video ist erst fertig, wenn:
 - alle Bilder + Thumbnail vorhanden sind
-- Bild 01 als Master-Style-Frame festgelegt wurde
-- alle weiteren Bilder dieselbe Serious-Minimal-Countryball-Welt halten
-- 16:9 die einzige visuelle Formatabweichung zur Reel-Welt ist
+- jedes Videobild unabhängig aus seinem eigenen Textprompt erzeugt wurde
+- kein vorheriges Bild als visuelle Referenz verwendet wurde
+- jedes Bild eine inhaltlich passende, eigenständige Komposition besitzt
+- die Premium-Editorial-Illustrationsqualität durchgehend eingehalten wird
 - bei deutschem Projekt jeder sichtbare Text Deutsch ist
 - genau eine finale Nutzerstimme vorhanden ist
 - Nutzeroriginal unverändert geblieben ist
@@ -235,4 +252,4 @@ Ein Video ist erst fertig, wenn:
 - Pre-Render-Gate Exit 0 liefert
 - Motion/SFX-Render erfolgreich ist
 - kompletter Uploadsatz existiert
-- Post-Render-Gate Exit 0 liefert
+- Post-Render-Hard-Gate Exit 0 liefert
