@@ -25,6 +25,10 @@ async function main() {
   if (audio) alignArgs.push('--audio', audio);
   if (process.argv.includes('--refresh')) alignArgs.push('--refresh');
 
+  // Fail-fast: Keine Produktion mit veraltetem Countryball-/Master-Reference-Prompt,
+  // falschem Kanalfokus oder fehlenden Visual-Policy-V3-Regeln.
+  run('src/cli/validate-youtube-phase1-policy.js', common);
+
   // Wichtig: auto-align optimiert das interne Audio ZUERST. Whisper misst danach
   // exakt diese 1,10x-/Pausen-bereinigte Fassung, damit alle Bildanker stimmen.
   run('src/cli/auto-align-youtube.js', alignArgs);
@@ -34,7 +38,7 @@ async function main() {
   run('src/cli/validate-youtube-phase3.js', common);
 
   if (process.argv.includes('--prepare-only')) {
-    console.log('\nYouTube Phase 3 vorbereitet: Voice-over 1,10x, lange Pausen/Endstille gekürzt, echtes Audio-Alignment, FINAL_TIMELINE und alle Pre-Render-Gates bestanden.');
+    console.log('\nYouTube Phase 3 vorbereitet: Visual-Policy-V3-Gate, Voice-over 1,10x, lange Pausen/Endstille gekürzt, echtes Audio-Alignment, FINAL_TIMELINE und alle Pre-Render-Gates bestanden.');
     return;
   }
 
@@ -42,7 +46,7 @@ async function main() {
   run('src/cli/finalize-youtube-export.js', common);
   run('src/cli/validate-youtube-audio.js', common);
   run('src/cli/validate-youtube-phase3.js', [...common, '--post-render']);
-  console.log('\nYouTube Phase 3: BESTANDEN — Audio-Pacing, Render, Export-Finalisierung und Post-Render-QC abgeschlossen.');
+  console.log('\nYouTube Phase 3: BESTANDEN — Visual-Policy-V3, Audio-Pacing, Render, Export-Finalisierung und Post-Render-QC abgeschlossen.');
 }
 
 main().catch((error) => {
