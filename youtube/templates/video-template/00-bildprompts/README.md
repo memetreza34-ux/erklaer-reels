@@ -1,32 +1,38 @@
 # 00 – Google-Flow-Masterprompt
 
-Für neue YouTube-V2-Projekte gibt es hier **genau einen** sichtbaren Produktionsprompt:
+Für neue YouTube-Projekte gibt es hier **genau einen** sichtbaren Produktionsprompt:
 
 ```text
 google-flow-prompt.txt
 ```
 
-Der Masterprompt enthält Bild 00 (Thumbnail) und alle Videobilder in globaler Reihenfolge.
+Der Masterprompt enthält alle Videobilder in globaler Reihenfolge, beginnend mit **Bild 01**.
+
+## FIRST SCENE = COVER HARD LOCK
+
+- **Bild 01 ist Cover und erste Videoszene zugleich.**
+- Bild 01 beginnt bei 0,0 s in der Timeline.
+- Bild 01 enthält eine starke kurze deutsche Cover-Überschrift und passt zur ersten gesprochenen Aussage.
+- `03-export/THUMBNAIL.png` wird aus `Bild 01.png` kopiert.
+- Es gibt **kein Bild 00** und kein separates Thumbnail-Bild für neue Projekte.
 
 ## Verbindliche Bildregel
 
-Jedes Bild wird **unabhängig aus seinem eigenen Textprompt** erzeugt.
+Jedes Bild wird unabhängig aus seinem eigenen Textprompt erzeugt.
 
 HARD LOCK:
 - kein vorheriges Bild als visuelle Vorlage
-- kein Bild 01 als Master-Style-Frame
-- keine Image-to-Image-Stilvererbung zwischen Videobildern
+- Bild 01 ist Cover, aber **kein Master-Style-Frame**
+- keine Image-to-Image-Stilvererbung
 - jedes Bild braucht eine eigenständige, zum Inhalt passende Komposition
 - Stil-Konsistenz kommt ausschließlich aus dem schriftlichen Style-Lock in `youtube/YOUTUBE_VISUAL_WORLD.md`
 
 ## Verbindliche 5er-Regel
 
-Die Wellen sind nur Ausführungslogik, keine Ordner- oder Stilreferenzlogik:
+Die Wellen sind nur Ausführungslogik:
 
 ```text
-Bild 00 separat erzeugen und prüfen
-
-Bild 01 separat erzeugen
+Bild 01 separat erzeugen und streng prüfen: COVER + ERSTE SZENE
 Bild 02–05 jeweils aus eigenem Textprompt
 → auf die Welle warten
 → alle Bilder einzeln prüfen
@@ -46,7 +52,8 @@ Harte Regeln:
 - niemals zwei Wellen gleichzeitig offen halten
 - nächste Welle erst nach vollständigem Check der aktuellen
 - letzter Block darf 1–5 Bilder enthalten
-- Bild 00 ist ausschließlich Thumbnail und nie Teil der Videotimeline
+- **kein Bild 00**
+- `Bild 01.png` ist Cover + erste Timeline-Szene + spätere Thumbnail-Quelle
 - alle fertigen Bilder liegen flach unter `00-bildprompts/images/`
 - keine 10er-Unterordner
 - keine separaten Promptdateien pro Paket

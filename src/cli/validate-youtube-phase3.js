@@ -2,6 +2,7 @@
 
 import { access, readFile } from 'node:fs/promises';
 import path from 'node:path';
+import { createHash } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
 
 import { validateYoutubeAlignmentEvidence } from '../core/youtube-audio-alignment.js';
@@ -22,6 +23,10 @@ async function hasText(filePath) {
 
 async function readJson(filePath) {
   return JSON.parse(await readFile(filePath, 'utf8'));
+}
+
+async function sha256(filePath) {
+  return createHash('sha256').update(await readFile(filePath)).digest('hex');
 }
 
 function ffprobeDuration(filePath) {
@@ -52,9 +57,7 @@ function sameDurationShare(durations, tolerance = 0.12) {
 }
 
 function runV2PacingGate(projectDir) {
-  const result = spawnSync(process.execPath, ['src/cli/validate-youtube-adaptive-pacing.js', '--dir', projectDir], {
-    encoding: 'utf8'
-  });
+  const result = spawnSync(process.execPath, ['src/cli/validate-youtube-adaptive-pacing.js', '--dir', projectDir], { encoding: 'utf8' });
   if (result.stdout) process.stdout.write(result.stdout);
   if (result.stderr) process.stderr.write(result.stderr);
   return result.status === 0;
@@ -86,23 +89,40 @@ async function main() {
   const images = Array.isArray(mapping.images) ? mapping.images : [];
   if (!images.length) errors.push('Mapping enthält keine Videobilder.');
 
-  const expectedFirst = Number(mapping.videoFirstImageNumber ?? 1);
-  const expectedLast = Number(mapping.videoLastImageNumber ?? images.length);
-  const expectedCount = expectedLast - expectedFirst + 1;
-  if (images.length !== expectedCount) errors.push(`Mapping erwartet ${expectedCount} Bilder, enthält aber ${images.length}.`);
-  if (mapping.thumbnailImageNumber !== 0 || mapping.rules?.image00ExcludedFromTimeline !== true) {
-    errors.push('Bild 00 muss als Thumbnail markiert und aus der Timeline ausgeschlossen sein.');
-  }
-
   let plannedImageCount = null;
   let productionRulesVersion = 1;
+  let meta = {};
   if (await exists(videoMetaPath)) {
-    const meta = await readJson(videoMetaPath);
+    meta = await readJson(videoMetaPath);
     plannedImageCount = numeric(meta.plannedImageCount);
     productionRulesVersion = numeric(meta.productionRulesVersion) ?? 1;
     if (plannedImageCount !== null && plannedImageCount !== images.length) {
       errors.push(`video.json plant ${plannedImageCount} Videobilder, Mapping enthält ${images.length}.`);
     }
+  }
+
+  const usesFirstSceneCover = Number(meta.schemaVersion) >= 7;
+  const expectedFirst = Number(mapping.videoFirstImageNumber ?? 1);
+  const expectedLast = Number(mapping.videoLastImageNumber ?? images.length);
+  const expectedCount = expectedLast - expectedFirst + 1;
+  if (images.length !== expectedCount) errors.push(`Mapping erwartet ${expectedCount} Bilder, enthält aber ${images.length}.`);
+
+  if (usesFirstSceneCover) {
+    if (expectedFirst !== 1) errors.push('Cover Policy V1: videoFirstImageNumber muss 1 sein.');
+    if (Number(mapping.coverImageNumber) !== 1 || Number(mapping.thumbnailImageNumber) !== 1) {
+      errors.push('Cover Policy V1: Bild 01 muss Cover, Thumbnail-Quelle und erstes Videobild sein.');
+    }
+    if (mapping.rules?.firstSceneIsCover !== true || mapping.rules?.coverMustBeFirstTimelineImage !== true || mapping.rules?.coverAlsoUsedAsThumbnail !== true) {
+      errors.push('Cover Policy V1: Mapping muss Bild 01 ausdrücklich als Cover + erste Timeline-Szene + Thumbnail-Quelle markieren.');
+    }
+    if (mapping.rules?.separateThumbnailImageForbidden !== true || mapping.rules?.image00ForbiddenForNewProjects !== true) {
+      errors.push('Cover Policy V1: separates Thumbnail/Bild 00 muss verboten sein.');
+    }
+    if (meta.coverPolicy?.firstSceneIsCover !== true || Number(meta.coverPolicy?.coverImageNumber) !== 1 || meta.coverPolicy?.coverMustAlsoBeThumbnailSource !== true) {
+      errors.push('Cover Policy V1 fehlt oder ist in video.json inkonsistent.');
+    }
+  } else if (mapping.thumbnailImageNumber !== 0 || mapping.rules?.image00ExcludedFromTimeline !== true) {
+    errors.push('Legacy-Projekt: Bild 00 muss als Thumbnail markiert und aus der Timeline ausgeschlossen sein.');
   }
 
   const minConfidence = numeric(mapping.alignmentConfidenceMinimum) ?? 0.95;
@@ -112,9 +132,7 @@ async function main() {
   for (let index = 0; index < images.length; index += 1) {
     const item = images[index];
     const expectedNumber = expectedFirst + index;
-    if (Number(item.imageNumber) !== expectedNumber) {
-      errors.push(`Bildfolge beschädigt: Position ${index + 1} muss Bild ${expectedNumber} sein, ist aber ${item.imageNumber}.`);
-    }
+    if (Number(item.imageNumber) !== expectedNumber) errors.push(`Bildfolge beschädigt: Position ${index + 1} muss Bild ${expectedNumber} sein, ist aber ${item.imageNumber}.`);
     const start = numeric(item.actualStartSeconds);
     const end = numeric(item.actualEndSeconds);
     const confidence = numeric(item.alignmentConfidence);
@@ -137,25 +155,23 @@ async function main() {
     }
   }
 
+  if (usesFirstSceneCover && images.length && Number(images[0]?.imageNumber) !== 1) {
+    errors.push('Cover Policy V1: Die erste Mapping-Position muss Bild 01 sein.');
+  }
+
   for (let index = 0; index < images.length - 1; index += 1) {
     const currentStart = numeric(images[index].actualStartSeconds);
     const currentEnd = numeric(images[index].actualEndSeconds);
     const nextStart = numeric(images[index + 1].actualStartSeconds);
-    if (currentEnd !== null && nextStart !== null && Math.abs(currentEnd - nextStart) > 0.20) {
-      errors.push(`Mapping-Lücke/Überlappung zwischen Bild ${images[index].imageNumber} und ${images[index + 1].imageNumber}: ${currentEnd} vs ${nextStart}.`);
-    }
-    if (currentStart !== null && nextStart !== null && nextStart <= currentStart) {
-      errors.push(`Startzeiten sind bei Bild ${images[index + 1].imageNumber} nicht streng aufsteigend.`);
-    }
+    if (currentEnd !== null && nextStart !== null && Math.abs(currentEnd - nextStart) > 0.20) errors.push(`Mapping-Lücke/Überlappung zwischen Bild ${images[index].imageNumber} und ${images[index + 1].imageNumber}: ${currentEnd} vs ${nextStart}.`);
+    if (currentStart !== null && nextStart !== null && nextStart <= currentStart) errors.push(`Startzeiten sind bei Bild ${images[index + 1].imageNumber} nicht streng aufsteigend.`);
   }
 
   const uniformShare = sameDurationShare(durations);
   if (uniformShare >= 0.70) errors.push(`${Math.round(uniformShare * 100)} % der Bildbereiche haben nahezu dieselbe Dauer. Starre Slideshow ist blockiert.`);
 
   const evidence = await validateYoutubeAlignmentEvidence(projectDir, mapping);
-  if (!evidence.passed) {
-    for (const error of evidence.errors) errors.push(`Audio-Messbeleg: ${error}`);
-  }
+  if (!evidence.passed) for (const error of evidence.errors) errors.push(`Audio-Messbeleg: ${error}`);
 
   const audioRelative = String(mapping.audioMasterFile ?? evidence.evidence?.masterAudioFile ?? '').trim();
   const audioPath = audioRelative ? path.join(projectDir, audioRelative) : null;
@@ -166,12 +182,8 @@ async function main() {
     try {
       audioDuration = ffprobeDuration(audioPath);
       const lastEnd = numeric(images.at(-1)?.actualEndSeconds);
-      if (lastEnd !== null && Math.abs(lastEnd - audioDuration) > 0.75) {
-        errors.push(`Letztes Mapping-Ende (${lastEnd.toFixed(3)} s) passt nicht zur Master-Audio-Dauer (${audioDuration.toFixed(3)} s).`);
-      }
-    } catch (error) {
-      errors.push(error.message);
-    }
+      if (lastEnd !== null && Math.abs(lastEnd - audioDuration) > 0.75) errors.push(`Letztes Mapping-Ende (${lastEnd.toFixed(3)} s) passt nicht zur Master-Audio-Dauer (${audioDuration.toFixed(3)} s).`);
+    } catch (error) { errors.push(error.message); }
   }
 
   let timelineJson = null;
@@ -182,11 +194,10 @@ async function main() {
     const timeline = Array.isArray(timelineJson.images) ? timelineJson.images : [];
     const endHold = numeric(timelineJson.endHoldSeconds) ?? 0.6;
     if (timeline.length !== images.length) errors.push(`FINAL_TIMELINE enthält ${timeline.length} Bilder statt ${images.length}.`);
-    if (String(timelineJson.alignmentEvidence ?? '') !== String(mapping.alignmentEvidenceFile ?? '')) {
-      errors.push('FINAL_TIMELINE verweist nicht auf denselben Audio-Messbeleg wie das Mapping.');
-    }
-    if (String(timelineJson.audioMaster ?? '') !== String(mapping.audioMasterFile ?? '')) {
-      errors.push('FINAL_TIMELINE verweist nicht auf dieselbe Master-Audiodatei wie das Mapping.');
+    if (String(timelineJson.alignmentEvidence ?? '') !== String(mapping.alignmentEvidenceFile ?? '')) errors.push('FINAL_TIMELINE verweist nicht auf denselben Audio-Messbeleg wie das Mapping.');
+    if (String(timelineJson.audioMaster ?? '') !== String(mapping.audioMasterFile ?? '')) errors.push('FINAL_TIMELINE verweist nicht auf dieselbe Master-Audiodatei wie das Mapping.');
+    if (usesFirstSceneCover && (Number(timeline[0]?.imageNumber) !== 1 || Math.abs(Number(timeline[0]?.startSeconds) || 0) > 0.001)) {
+      errors.push('Cover Policy V1: FINAL_TIMELINE muss mit Bild 01 bei 0,0 s beginnen.');
     }
 
     for (let index = 0; index < Math.min(timeline.length, images.length); index += 1) {
@@ -199,21 +210,15 @@ async function main() {
       const expectedTimelineStart = index === 0 ? 0 : actualAnchor === null ? null : Math.max(0, actualAnchor - cutLead);
       if (timelineStart === null) errors.push(`FINAL_TIMELINE Bild ${number}: startSeconds fehlt.`);
       else if (expectedTimelineStart === null) errors.push(`FINAL_TIMELINE Bild ${number}: kein gemessener Audio-Anker.`);
-      else if (Math.abs(timelineStart - expectedTimelineStart) > 0.15) {
-        errors.push(`FINAL_TIMELINE Bild ${number}: Start ${timelineStart} weicht vom gemessenen Audio-Anker-Schnitt ${expectedTimelineStart.toFixed(3)} ab.`);
-      }
+      else if (Math.abs(timelineStart - expectedTimelineStart) > 0.15) errors.push(`FINAL_TIMELINE Bild ${number}: Start ${timelineStart} weicht vom gemessenen Audio-Anker-Schnitt ${expectedTimelineStart.toFixed(3)} ab.`);
       const timelineEnd = numeric(timeItem.endSeconds);
       if (timelineEnd === null) errors.push(`FINAL_TIMELINE Bild ${number}: endSeconds fehlt.`);
       if (index < timeline.length - 1) {
         const nextStart = numeric(timeline[index + 1]?.startSeconds);
-        if (timelineEnd !== null && nextStart !== null && Math.abs(timelineEnd - nextStart) > 0.08) {
-          errors.push(`FINAL_TIMELINE zwischen Bild ${number} und ${number + 1} hat Lücke/Überlappung.`);
-        }
+        if (timelineEnd !== null && nextStart !== null && Math.abs(timelineEnd - nextStart) > 0.08) errors.push(`FINAL_TIMELINE zwischen Bild ${number} und ${number + 1} hat Lücke/Überlappung.`);
       } else if (audioDuration !== null && timelineEnd !== null) {
         const expectedEnd = audioDuration + endHold;
-        if (Math.abs(timelineEnd - expectedEnd) > 0.30) {
-          errors.push(`Letztes Bild endet bei ${timelineEnd.toFixed(3)} s; erwartet ca. ${expectedEnd.toFixed(3)} s.`);
-        }
+        if (Math.abs(timelineEnd - expectedEnd) > 0.30) errors.push(`Letztes Bild endet bei ${timelineEnd.toFixed(3)} s; erwartet ca. ${expectedEnd.toFixed(3)} s.`);
       }
     }
 
@@ -226,9 +231,7 @@ async function main() {
     if (timelineUniformShare >= 0.70) errors.push(`FINAL_TIMELINE ist verdächtig gleichmäßig: ${Math.round(timelineUniformShare * 100)} % der Holds sind nahezu identisch.`);
   }
 
-  if (productionRulesVersion >= 2 && timelineJson && !runV2PacingGate(projectDir)) {
-    errors.push('Adaptive Pacing V2 Hard-Gate ist fehlgeschlagen.');
-  }
+  if (productionRulesVersion >= 2 && timelineJson && !runV2PacingGate(projectDir)) errors.push('Adaptive Pacing V2 Hard-Gate ist fehlgeschlagen.');
 
   if (process.argv.includes('--post-render')) {
     const exportDir = path.join(projectDir, '03-export');
@@ -238,16 +241,19 @@ async function main() {
       try {
         const videoDuration = ffprobeDuration(rendered);
         const trailing = videoDuration - audioDuration;
-        if (trailing < 0.35 || trailing > 1.00) {
-          errors.push(`Post-Render-QC: Video endet ${trailing.toFixed(3)} s nach dem Voice-over. Erlaubt sind 0,35–1,00 s.`);
-        }
-      } catch (error) {
-        errors.push(error.message);
-      }
+        if (trailing < 0.35 || trailing > 1.00) errors.push(`Post-Render-QC: Video endet ${trailing.toFixed(3)} s nach dem Voice-over. Erlaubt sind 0,35–1,00 s.`);
+      } catch (error) { errors.push(error.message); }
     }
 
     const thumbnail = path.join(exportDir, 'THUMBNAIL.png');
-    if (!(await exists(thumbnail))) errors.push('Post-Render-QC: THUMBNAIL.png fehlt.');
+    if (!(await exists(thumbnail))) {
+      errors.push('Post-Render-QC: THUMBNAIL.png fehlt.');
+    } else if (usesFirstSceneCover) {
+      const cover = path.join(projectDir, '00-bildprompts', 'images', 'Bild 01.png');
+      if (!(await exists(cover))) errors.push('Cover Policy V1: Bild 01.png fehlt.');
+      else if ((await sha256(thumbnail)) !== (await sha256(cover))) errors.push('Cover Policy V1: THUMBNAIL.png muss byte-identisch aus Bild 01.png stammen.');
+    }
+
     const requiredTextFiles = [
       ['YOUTUBE-TITEL.txt', 'Titel'],
       ['YOUTUBE-BESCHREIBUNG.txt', 'Beschreibung'],
@@ -268,6 +274,7 @@ async function main() {
 
   console.log('YouTube Phase-3-Hard-Gate: BESTANDEN');
   console.log(`Bilder: ${images.length}${plannedImageCount !== null ? ` / geplant ${plannedImageCount}` : ''}`);
+  if (usesFirstSceneCover) console.log('Cover Policy V1: Bild 01 = Cover + erste Timeline-Szene + Thumbnail-Quelle.');
   if (audioDuration !== null) console.log(`Voice-over-Dauer: ${audioDuration.toFixed(3)} s`);
   console.log('Audio-Anker wurden gegen echte Whisper-Wortzeiten und Audio-Fingerprints verifiziert.');
   if (process.argv.includes('--post-render')) console.log('Finaler YouTube-Uploadsatz ist vollständig: Video, Thumbnail und Metadaten.');
