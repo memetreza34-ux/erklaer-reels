@@ -5,64 +5,57 @@ Erzeuge Bild 00 als Thumbnail und danach alle geplanten Videobilder für ein deu
 
 WICHTIG
 - Es gibt nur dieses eine Prompt-Dokument.
-- Dieses YouTube-Video nutzt dieselbe künstlerische Welt wie die aktiven Reels: `serious-minimal-countryball-explainer`.
-- Einzige Formatabweichung: 16:9 horizontal statt 9:16 vertikal.
-- Bild 00 wird separat erzeugt.
-- Bild 01 wird separat als verbindlicher MASTER-STYLE-FRAME erzeugt und geprüft.
-- Ab Bild 02 wird Bild 01 bei jeder weiteren Generierung als visuelle Referenz angehängt.
-- Danach kontrollierte 5er-Wellen mit maximal fünf aktiven Bildgenerierungen gleichzeitig.
+- Neue YouTube-Bildwelt: `premium-editorial-explainer-illustration-youtube-16x9`.
+- Jedes Bild wird unabhängig aus seinem eigenen Textprompt erzeugt.
+- KEIN vorheriges Bild darf als visuelle Vorlage, Style-Referenz oder Image-to-Image-Eingabe verwendet werden.
+- Bild 01 ist KEIN Master-Style-Frame.
+- Die 5er-Wellen sind nur eine Ausführungs-/Lastregel.
+- Maximal fünf aktive Bildgenerierungen gleichzeitig.
 
-MASTER-REFERENCE-REGEL
-The scene prompt determines WHAT is shown. The Reel Countryball world and the attached Bild 01 master reference determine HOW everything looks.
-Ab Bild 02 niemals Kugelgeometrie, Konturen, Augen-/Mimik-Sprache, flaches 2D-Rendering, Detailgrad, Typografie-Behandlung oder Hintergrundlogik neu interpretieren.
+==================================================
+WRITTEN STYLE LOCK — PREMIUM EDITORIAL EXPLAINER
+==================================================
 
+Use this written style specification independently for EVERY image:
+Premium editorial explainer illustration for a modern educational YouTube video, 16:9 horizontal. High-quality sophisticated 2D illustration, crisp vector-like shapes, refined controlled linework, layered flat colors with subtle depth, tasteful limited palette, optional subtle paper grain, strong visual hierarchy, adult informative magazine-infographic aesthetic, clearly designed for this specific idea, not childish, not generic clipart, not a repeated template, not glossy 3D, not Pixar, not clay, not anime, not photorealistic.
+
+INDIVIDUALITY HARD LOCK:
+- Create a fresh composition for this image.
+- Do not imitate or reuse the layout, perspective, character placement, background, architecture, dominant shapes, or palette of any previous image unless the content itself requires continuity.
+- Do not use any previous generated image as a visual reference.
+- Do not repeat a mascot or recurring character without a real narrative reason.
+- Vary composition mode between editorial hero illustration, explainer diagram, narrative mini scene, map/spatial explainer, and conceptual metaphor as appropriate.
+- The image must feel intentionally art-directed for this exact spoken idea.
+
+HARD NEGATIVES:
+no generic AI template look, no stock clipart collage, no repetitive center-character-plus-icons formula, no mandatory countryball mascot, no stick-figure style, no glossy 3D, no Pixar, no clay, no anime, no photorealistic stock-photo aesthetic, no watermark.
+
+==================================================
+DEUTSCH-HARD-LOCK — JEDER SICHTBARE TEXT
+==================================================
+
+This is a GERMAN project. Every readable word visible anywhere in every generated image MUST be German.
+
+This applies to headlines, map labels, signs, legends, diagrams, callouts, calendars, interface-like elements and background text.
+Do NOT generate English labels. Do NOT generate pseudo-text or fake writing.
+If text is not explicitly needed, generate NO TEXT.
+Any English visible text = HARD FAIL and regenerate.
+Any pseudo-text = HARD FAIL and regenerate.
+
+==================================================
 ABLAUF
+==================================================
+
 1. Bild 00 separat erzeugen, prüfen und als `Bild 00.png` speichern.
-2. Bild 01 separat erzeugen und auf den festen Countryball-Style-Lock prüfen.
-3. Bild 01 als Master-Style-Referenz festlegen.
-4. Bild 02–05 gleichzeitig erzeugen, jeweils mit Bild 01 als Referenz.
-5. Auf alle warten. Inhalt, Stil, deutsche Textsprache, Nummerierung und Format prüfen.
-6. Erst wenn Bild 01–05 korrekt sind, Bild 06–10 starten.
+2. Bild 01 separat aus seinem eigenen Textprompt erzeugen und prüfen.
+3. Bild 02–05 jeweils separat aus ihrem eigenen Textprompt erzeugen. Kein Referenzbild anhängen.
+4. Auf die Welle warten und jedes Bild einzeln auf Inhalt, Illustrationsqualität, Individualität, deutschen Text, Nummerierung und 16:9 prüfen.
+5. Fehler nur im betroffenen Bild regenerieren.
+6. Erst wenn die Welle korrekt ist, Bild 06–10 starten.
 7. Danach 11–15, 16–20 usw. bis zum letzten geplanten Bild.
 8. Der letzte Block darf 1–5 Bilder enthalten.
 9. Alle Dateien flach unter `00-bildprompts/images/` als `Bild NN.png` ablegen.
 10. Bild 00 ist ausschließlich Thumbnail und darf nie in die Videotimeline.
-
-FESTE BILDWELT — HARD LOCK
-Serious Minimal Countryball Explainer visual world, exactly matching the active Reel visual DNA, adapted only to a 16:9 horizontal YouTube canvas: clean serious minimal 2D countryball explainer, perfectly round ball characters when an actor is useful, simple white eyes, thick clean black outlines, flat controlled colors, minimal soft graphic shading, low-to-medium controlled detail, one dominant focal subject, zero to three meaningful supporting props, simple solid or muted background with optional subtle texture or gradient, strong symbolic storytelling, not childish.
-
-FIGUREN-HARD-LOCK
-- Wenn ein Akteur vorkommt: perfekt runder Kugelkörper, niemals oval/bohnen-/eiförmig.
-- Einfache weiße Augen, dicke schwarze Konturen, reduzierte Mimik.
-- Kleine einfache Arme/Hände/Füße nur wenn für die Handlung nötig.
-- Keine getrennten menschlichen Köpfe.
-- Keine Stickfiguren.
-- Keine normalen oder humanoiden Cartoon-Menschen.
-- Keine realistischen Menschen/Hände/Haut.
-- Flaggenmuster nur bei echter geografischer/politischer/kultureller Relevanz.
-- Bei historischen Gruppen ohne moderne Flagge: neutrale/historisch passende Farbcodes und wenige Symbole/Requisiten, keine erfundenen modernen Flaggen.
-- Ein Countryball ist nicht Pflicht, wenn Karte, Objekt oder Symbol klarer ist.
-
-KOMPOSITIONS-LOCK
-- Ein dominantes Hauptmotiv.
-- Normalerweise 0–3 sinnvolle Zusatzobjekte.
-- Drei erlaubte Modi: Minimal Symbolic, Supported Explainer, Simple Mini Scene.
-- Keine detaillierten realistischen Räume oder cineastischen Vollszenen.
-- Historische Themen werden in dieselbe reduzierte Countryball-Symbolsprache übersetzt.
-
-DEUTSCH-HARD-LOCK FÜR SICHTBAREN TEXT
-Dieses Projekt ist Deutsch. Deshalb gilt ohne Ausnahme:
-- JEDER lesbare Text im erzeugten Bild muss Deutsch sein.
-- Das gilt auch für Kartenlabels, Schilder, Legenden, Diagramme, Callouts, Kalender, UI-Elemente und Hintergrundtext.
-- Keine englischen automatisch erzeugten Kartenlabels.
-- Kein Pseudo-Text und keine Fantasieschrift.
-- Wenn Text nicht nötig ist, lieber gar keinen Text erzeugen.
-- Englischer sichtbarer Text = HARD FAIL → Bild regenerieren.
-
-Beispiele:
-`ATLANTIC OCEAN` = verboten → `ATLANTISCHER OZEAN`
-`MEDITERRANEAN SEA` = verboten → `MITTELMEER`
-`WEST / EAST` = verboten → `WEST / OST`
 
 A–E-PACING
 A = sehr einfach, geplant 4–5 s
@@ -77,16 +70,14 @@ BILD 00 — THUMBNAIL
 [THUMBNAIL-PROMPT]
 
 ==================================================
-MASTER-FRAME — BILD 01
+BILD 01
 ==================================================
 
 Bild 01 · [A–E] · [PLANZEIT]
 [PROMPT]
 
-STOP: Bild 01 auf exakte Serious-Minimal-Countryball-Welt prüfen. Erst nach bestandenem Style-Check als Referenz für alle weiteren Bilder verwenden.
-
 ==================================================
-ERSTE WELLE ERGÄNZEN — BILD 02–05
+ERSTE WELLE — BILD 02–05
 ==================================================
 
 Bild 02 · [A–E] · [PLANZEIT]
@@ -107,15 +98,15 @@ STOP: 01–05 vollständig prüfen und korrigieren. Erst danach die nächste 5er
 
 FINALER CHECK
 - Bild 00 vorhanden und nur Thumbnail
-- Bild 01 ist Master-Style-Frame
-- jedes Bild ab 02 wurde mit Bild 01 als visueller Referenz erzeugt
 - Videobilder lückenlos nummeriert
 - keine Duplikate
 - jede Datei `Bild NN.png`
 - alle Bilder unter `00-bildprompts/images/`
 - nie mehr als fünf aktive Generierungen gleichzeitig
-- aktive Welt = Serious Minimal Countryball Explainer
-- 16:9 ist die einzige Formatabweichung zur Reel-Welt
-- keine Stickfiguren und keine normalen Cartoon-Menschen
+- KEIN vorheriges Bild als visuelle Referenz verwendet
+- jedes Bild besitzt eine eigenständige, inhaltlich passende Komposition
+- hochwertige Premium-Editorial-Illustrationsqualität
+- kein sichtbares Copy-Paste-Muster aus vorherigen Bildern
+- 16:9 horizontal
 - jeder sichtbare Text im deutschen Projekt = Deutsch
 - kein englischer Text, kein Pseudo-Text
