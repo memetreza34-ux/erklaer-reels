@@ -1,8 +1,8 @@
 # CURRENT WORKFLOW — VERBINDLICHE SINGLE SOURCE OF TRUTH
 
-**Stand: 2026-09-23**
+**Stand: 2026-09-24**
 
-Diese Datei ist die verbindliche Repo-weite Produktionsregel für neue Reels. YouTube besitzt einen eigenen Produktionsworkflow, nutzt aber dieselbe Serious-Minimal-Countryball-Bild-DNA in 16:9.
+Diese Datei ist die verbindliche Repo-weite Produktionsregel für neue Reels. YouTube besitzt einen eigenen Produktionsworkflow und ab 2026-09-24 eine **eigene unabhängige 16:9-Editorial-Bildwelt**; die Reel-Countryball-Welt wird nicht mehr automatisch auf neue YouTube-Videos übertragen.
 
 ## Priorität
 
@@ -94,7 +94,25 @@ Vor Bild 01 gilt ein globaler World-Lock für das ganze Reel. Einzelprompts änd
 
 Vollständige Style-Bibel: `knowledge/fixed-visual-world.md`.
 
-**YouTube bleibt ein eigener 16:9-Produktionsworkflow, übernimmt aber dieselbe Serious-Minimal-Countryball-Bild-DNA. Die einzige beabsichtigte Formatabweichung ist 16:9 horizontal statt 9:16 vertikal.**
+## Eigene YouTube-Bildwelt
+
+**Neue YouTube-Videos verwenden nicht mehr automatisch die Reel-Countryball-DNA.** Für neue YouTube-Projekte ab 2026-09-24 gilt:
+
+```text
+premium-editorial-explainer-illustration-youtube-16x9
+```
+
+Harte YouTube-Regeln:
+- hochwertige moderne 2D-Editorial-/Erklärillustration
+- jedes Bild wird **unabhängig aus seinem eigenen Textprompt** erzeugt
+- kein erzeugtes Bild wird als visuelle Vorlage/Referenz für ein späteres Bild verwendet
+- Bild 01 ist kein Master-Style-Frame
+- Konsistenz kommt nur aus dem geschriebenen Style-Lock
+- jedes Bild braucht eine eigenständige Komposition; Layout, Perspektive, Hintergrund und Farbaufbau sollen nicht mechanisch kopiert werden
+- 16:9 horizontal
+- sichtbarer Text in deutschen Projekten ausschließlich Deutsch
+
+Verbindliche Details: `youtube/YOUTUBE_WORKFLOW.md` und `youtube/YOUTUBE_VISUAL_WORLD.md`.
 
 ## Adaptive Dense V2 — Bildanzahl
 
@@ -163,13 +181,13 @@ Zoom meist 2–4 %, Pan 1–3 %, weiches Easing. Neue Reels dürfen keine länge
 
 ## Google Flow
 
-Einzige verbindliche Masterdatei:
+Einzige verbindliche Reel-Masterdatei:
 
 ```text
 00-bildprompts/99-alle-bildprompts.txt
 ```
 
-Ausführung streng seriell:
+Ausführung für Reels streng seriell:
 
 ```text
 World-Lock lesen
@@ -181,7 +199,9 @@ World-Lock lesen
 → erst dann nächstes Bild
 ```
 
-Keine Queue, kein Batch, keine parallele Bildgenerierung.
+Keine Queue, kein Batch, keine parallele Bildgenerierung bei Reels.
+
+YouTube folgt separat `youtube/YOUTUBE_WORKFLOW.md`: kontrollierte 5er-Wellen sind erlaubt, aber jedes Bild bleibt eine eigenständige Text-to-Image-Generierung ohne Referenzbild.
 
 ## Audio
 
