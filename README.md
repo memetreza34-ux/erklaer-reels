@@ -49,23 +49,42 @@ serious-minimal-countryball-explainer
 
 Vollständige Style-Bibel: `knowledge/fixed-visual-world.md`.
 
-**YouTube hat einen eigenen Produktionsworkflow und ein eigenes 16:9-Style-ID, übernimmt aber dieselbe Serious-Minimal-Countryball-Bild-DNA. Die einzige beabsichtigte Formatabweichung ist 16:9 horizontal statt 9:16 vertikal.**
+## Eigene YouTube-Bildwelt
 
-## Google Flow
+YouTube hat einen getrennten 16:9-Produktionsworkflow und für **neue Videos ab 2026-09-24** eine eigene Bildwelt:
 
-Einzige verbindliche Masterdatei:
+```text
+premium-editorial-explainer-illustration-youtube-16x9
+```
+
+Wichtigste YouTube-Regeln:
+- hochwertige moderne 2D-Editorial-/Erklärillustration
+- jedes Bild bekommt eine eigenständige Komposition
+- **kein erzeugtes Bild wird als visuelle Referenz für ein späteres Bild verwendet**
+- Bild 01 ist kein Master-Style-Frame
+- Stil-Konsistenz kommt aus einem schriftlichen Style-Lock
+- keine wiederkehrende Copy-Paste-Schablone
+- sichtbarer Text in deutschen Projekten ausschließlich Deutsch
+
+Details: `youtube/YOUTUBE_WORKFLOW.md` und `youtube/YOUTUBE_VISUAL_WORLD.md`.
+
+## Google Flow für Reels
+
+Einzige verbindliche Reel-Masterdatei:
 
 ```text
 00-bildprompts/99-alle-bildprompts.txt
 ```
 
-Flow arbeitet streng seriell:
+Flow arbeitet bei Reels streng seriell:
 
 ```text
 1 Bild erzeugen → warten → prüfen → Bild NN.png → ablegen → nächstes Bild
 ```
 
 Keine Queue, kein Batch, keine Parallelgenerierung.
+
+YouTube nutzt dagegen kontrollierte 5er-Wellen, aber **jedes Bild bleibt eine unabhängige Text-to-Image-Generierung ohne Bildreferenz**.
 
 ## Sichtbare Reel-Struktur
 

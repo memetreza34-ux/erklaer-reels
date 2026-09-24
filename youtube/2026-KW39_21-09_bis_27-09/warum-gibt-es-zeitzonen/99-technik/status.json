@@ -1,7 +1,7 @@
 {
   "schemaVersion": 6,
   "productionRulesVersion": 2,
-  "updatedAt": "2026-09-23",
+  "updatedAt": "2026-09-24",
   "currentPhase": 2,
   "phase1": {
     "owner": "ChatGPT",
@@ -19,21 +19,23 @@
     "renderPlan": "complete",
     "timelineBoundChapterPlan": "complete",
     "uploadMetadata": "complete",
-    "visualWorld": "serious-minimal-countryball-explainer-youtube-16x9",
-    "sourceVisualWorld": "serious-minimal-countryball-explainer",
-    "visualWorldParityWithReels": true,
-    "onlyVisualFormatDifference": "16:9-horizontal-instead-of-9:16-vertical",
+    "visualWorld": "premium-editorial-explainer-illustration-youtube-16x9",
+    "visualWorldParityWithReels": false,
+    "independentImageGeneration": true,
+    "previousImageReferenceForbidden": true,
+    "freshCompositionRequired": true,
     "germanVisibleTextHardLock": true
   },
   "phase2": {
     "owner": "user",
-    "status": "PENDING",
+    "status": "PENDING-REGENERATE-WITH-NEW-EDITORIAL-PROMPT",
     "thumbnail": "missing",
     "images": "missing",
     "singleFinalAudio": "missing",
     "flowWaveSize": 5,
     "flatImageDirectory": "00-bildprompts/images",
-    "masterStyleImageNumber": 1
+    "masterStyleImageNumber": null,
+    "attachPreviousImageAsReference": false
   },
   "phase3": {
     "owner": "Antigravity",
@@ -83,9 +85,11 @@
   ],
   "notes": [
     "Two-minute YouTube V2 test with one prompt, one script and one final voice-over.",
-    "YouTube uses the same Serious Minimal Countryball visual DNA as active Reels; only canvas format changes to 16:9.",
-    "Bild 01 is the master style frame for all later image generations.",
-    "Five-image waves are execution logic only, not visible file packages.",
+    "Migrated on 2026-09-24 to premium independent editorial illustration style.",
+    "No generated image may be used as a visual reference for a later image.",
+    "Bild 01 is not a master style frame.",
+    "Every image must use its own text prompt and a fresh composition.",
+    "Five-image waves are execution logic only, not style inheritance.",
     "Every readable visible word in this German project must be German.",
     "Phase 3 first trims long pauses/end silence and creates an internal 1.10x master with preserved pitch.",
     "Whisper alignment must run only on the optimized internal audio, never on the slower user original.",
