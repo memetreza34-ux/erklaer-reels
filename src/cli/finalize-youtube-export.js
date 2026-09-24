@@ -82,13 +82,28 @@ async function writeRequired(filePath, value, label) {
   await writeFile(filePath, `${text}\n`, 'utf8');
 }
 
+function coverImageNumberForMeta(meta) {
+  if (Number(meta?.schemaVersion) >= 7) {
+    const cover = Number(meta?.coverPolicy?.coverImageNumber);
+    if (cover !== 1 || meta?.coverPolicy?.firstSceneIsCover !== true || meta?.coverPolicy?.coverMustAlsoBeThumbnailSource !== true) {
+      throw new Error('Neue YouTube-Projekte müssen Bild 01 als Cover, erste Videoszene und Thumbnail-Quelle verwenden.');
+    }
+    return 1;
+  }
+  return 0;
+}
+
 export async function finalizeYoutubeExport(projectDirectory) {
   const projectDir = path.resolve(projectDirectory);
   const exportDir = path.join(projectDir, '03-export');
   await mkdir(exportDir, { recursive: true });
 
-  const thumbnailSource = path.join(projectDir, '00-bildprompts', 'images', 'Bild 00.png');
-  if (!(await exists(thumbnailSource))) throw new Error('Thumbnail fehlt: 00-bildprompts/images/Bild 00.png');
+  const metaPath = path.join(projectDir, '99-technik', 'video.json');
+  const meta = (await exists(metaPath)) ? await readJson(metaPath) : {};
+  const coverNumber = coverImageNumberForMeta(meta);
+  const coverFile = `Bild ${String(coverNumber).padStart(2, '0')}.png`;
+  const thumbnailSource = path.join(projectDir, '00-bildprompts', 'images', coverFile);
+  if (!(await exists(thumbnailSource))) throw new Error(`Thumbnail/Cover fehlt: 00-bildprompts/images/${coverFile}`);
   const thumbnailTarget = path.join(exportDir, 'THUMBNAIL.png');
   await copyFile(thumbnailSource, thumbnailTarget);
 
