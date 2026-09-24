@@ -1,12 +1,15 @@
 {
-  "schemaVersion": 6,
+  "schemaVersion": 7,
   "productionRulesVersion": 2,
+  "visualPolicyVersion": 3,
   "updatedAt": "2026-09-24",
   "currentPhase": 2,
   "phase1": {
     "owner": "ChatGPT",
     "status": "COMPLETE",
     "topic": "complete",
+    "topicFocus": "complete",
+    "topicCategory": "Länder, Geografie, Grenzen und Territorien",
     "duplicateCheck": "complete",
     "research": "complete",
     "title": "complete",
@@ -20,15 +23,20 @@
     "timelineBoundChapterPlan": "complete",
     "uploadMetadata": "complete",
     "visualWorld": "premium-editorial-explainer-illustration-youtube-16x9",
+    "visualPolicyGate": "ready",
     "visualWorldParityWithReels": false,
     "independentImageGeneration": true,
     "previousImageReferenceForbidden": true,
+    "freshFlowSessionRequired": true,
+    "staleLegacySessionForbidden": true,
     "freshCompositionRequired": true,
+    "visualStorytellingRequired": true,
+    "antiLifelessRequired": true,
     "germanVisibleTextHardLock": true
   },
   "phase2": {
     "owner": "user",
-    "status": "PENDING-REGENERATE-WITH-NEW-EDITORIAL-PROMPT",
+    "status": "PENDING-REGENERATE-IN-FRESH-FLOW-SESSION-WITH-V3",
     "thumbnail": "missing",
     "images": "missing",
     "singleFinalAudio": "missing",
@@ -40,6 +48,7 @@
   "phase3": {
     "owner": "Antigravity",
     "status": "BLOCKED-WAITING-FOR-PHASE2",
+    "phase1PolicyRecheck": "pending",
     "assetValidation": "pending",
     "audioOptimization": "pending",
     "audioPlaybackRate": 1.10,
@@ -71,6 +80,8 @@
   "readyForRender": false,
   "knownBadRender": false,
   "renderBlockedIf": [
+    "Visual Policy V3 gate does not exit 0",
+    "master prompt contains stale Countryball or Master-Reference instructions",
     "single final audio is missing",
     "any expected image is missing",
     "optimized internal audio was not produced at 1.10x with preserved pitch",
@@ -84,17 +95,16 @@
     "pre-render hard gate does not exit 0"
   ],
   "notes": [
-    "Two-minute YouTube V2 test with one prompt, one script and one final voice-over.",
-    "Migrated on 2026-09-24 to premium independent editorial illustration style.",
+    "Two-minute YouTube V2 test using Visual Policy V3.",
+    "Topic remains inside the channel focus through geography plus history.",
+    "Use a fresh Flow session because older sessions may retain Countryball/Master-Reference instructions.",
     "No generated image may be used as a visual reference for a later image.",
-    "Bild 01 is not a master style frame.",
-    "Every image must use its own text prompt and a fresh composition.",
+    "Every image must be scene-specific, visually alive and independently art-directed.",
+    "Lifeless centered-object cards, generic icon collages and repeated layouts must be regenerated.",
     "Five-image waves are execution logic only, not style inheritance.",
     "Every readable visible word in this German project must be German.",
-    "Phase 3 first trims long pauses/end silence and creates an internal 1.10x master with preserved pitch.",
-    "Whisper alignment must run only on the optimized internal audio, never on the slower user original.",
-    "A-E pacing will be checked again against real measured audio timings.",
-    "User audio remains unchanged.",
-    "Motion and selected SFX are machine-readable and rendered in Phase 3."
+    "Phase 3 first rechecks Visual Policy V3, then trims long pauses/end silence and creates an internal 1.10x master with preserved pitch.",
+    "Whisper alignment runs only on the optimized internal audio.",
+    "User audio remains unchanged."
   ]
 }
