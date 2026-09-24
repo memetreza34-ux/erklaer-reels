@@ -1,6 +1,7 @@
 # YOUTUBE WORKFLOW — VERBINDLICHE REGEL FÜR LANGVIDEOS
 
-**Stand: 2026-09-24**
+**Stand: 2026-09-24**  
+**Visual Policy Version: 3**
 
 Diese Datei gilt ausschließlich für YouTube-Langvideos. Reel-Code und Reel-Bildwelt werden dadurch nicht verändert.
 
@@ -8,10 +9,27 @@ Diese Datei gilt ausschließlich für YouTube-Langvideos. Reel-Code und Reel-Bil
 
 1. aktuelle ausdrückliche Nutzeranweisung
 2. `youtube/YOUTUBE_WORKFLOW.md`
-3. `youtube/PHASE3_HARD_GATE.md`
+3. `config/youtube-channel-policy.json`
 4. `youtube/YOUTUBE_VISUAL_WORLD.md`
-5. `youtube/ADAPTIVE_PACING_V2.md` für V2
-6. `THEMEN_HISTORIE.md`
+5. `youtube/PHASE3_HARD_GATE.md`
+6. `youtube/ADAPTIVE_PACING_V2.md`
+7. `THEMEN_HISTORIE.md`
+
+## Kanalfokus — HARD LOCK
+
+Autonom gewählte YouTube-Themen bleiben in diesen Kernbereichen:
+- Politik und Staatssysteme
+- Geschichte
+- Länder, Geografie, Grenzen und Territorien
+- Ideologien und Gesellschaftssysteme
+- internationale Beziehungen und Geopolitik
+
+Gesundheit, Medizin, Psychologie, Lifestyle und allgemeine Alltags-Warum-Themen ohne Länder-, Geschichts- oder Systembezug werden **nicht autonom gewählt**. Außerhalb des Fokus nur bei ausdrücklicher Nutzeranweisung.
+
+Jedes neue Projekt dokumentiert in `99-technik/video.json`:
+- `topicCategory`
+- `topicCoreLink`
+- `explicitUserRequestedOutsideFocus`
 
 ## Sichtbare Struktur neuer Videos
 
@@ -28,12 +46,11 @@ youtube/YYYY-KWNN_DD-MM_bis_DD-MM/themen-slug/
 └── 99-technik/
 ```
 
-Neue Projekte bekommen keine sichtbaren Script-Parts, Audio-Parts oder 10er-Bildpakete.
-
 ## Phase 1 — ChatGPT
 
 Phase 1 erstellt:
 - Thema + Duplicate-Check
+- Kanalfokus-Klassifikation
 - Recherche + Quellen
 - finalen Titel
 - einen Google-Flow-Masterprompt inklusive Bild 00 und aller Szenenbilder
@@ -44,9 +61,25 @@ Phase 1 erstellt:
 - `99-technik/YOUTUBE_CHAPTERS.json`
 - Upload-Metadaten
 
-### Bildplanung
+### Phase-1-Policy-Gate
 
-Die Bildanzahl ist niemals vorab fest. Ein Bild hat genau einen klaren visuellen Zweck.
+Vor Übergabe des Flow-Prompts muss gelten:
+
+```bash
+npm run validate:youtube-phase1 -- --dir "youtube/<woche>/<thema>"
+```
+
+Das Gate blockiert:
+- veraltete Countryball-/Master-Reference-Prompts
+- falsche/fehlende Visual-Policy-Version
+- falsche Style-ID
+- fehlenden Kanalfokus-Bezug
+- fehlende Session-Reset-Regel
+- fehlende Anti-Lifeless-/Visual-Storytelling-Regeln
+
+## Bildplanung
+
+Die Bildanzahl ist nicht starr. Ein Bild hat genau einen klaren visuellen Zweck.
 
 ```text
 A = sehr einfach → 4–5 s geplant
@@ -56,18 +89,21 @@ D = komplex      → 9–12 s
 E = sehr komplex → 12–15 s
 ```
 
-Wenn ein einfacher visueller Moment mehr Sprache tragen müsste, wird ein zusätzlicher sinnvoller Bildmoment geplant.
-
 ## Phase 2 — Nutzer + Google Flow
 
-Der Nutzer benötigt nur:
+### SESSION RESET HARD LOCK
 
-```text
-00-bildprompts/google-flow-prompt.txt
-01-voice-script/voice-script.txt
-```
+Wenn die Visual Policy geändert wurde oder die bestehende Flow-Sitzung alte Stilregeln enthält:
 
-### Google Flow — unabhängige Editorial-Illustrationen + 5er-Wellen
+**STOP → frische Flow-Sitzung / frisches Flow-Projekt öffnen → aktuellen Masterprompt vollständig neu einfügen.**
+
+Eine alte Sitzung darf nicht weiterlaufen, wenn dort noch Regeln stehen wie:
+- `serious-minimal-countryball-explainer-youtube-16x9`
+- Bild 01 als Master-Style-Frame
+- Bild 01 als Referenz für Bild 02–NN
+- Stickman als aktive YouTube-Bildwelt
+
+### Google Flow — unabhängige Bilder + 5er-Wellen
 
 ```text
 Bild 00 separat
@@ -77,74 +113,67 @@ Bild 02–05 separat aus ihren eigenen Textprompts → prüfen
 11–15 ...
 ```
 
-### HARD LOCK: kein Referenzbild zwischen Bildern
+Maximal fünf aktive Generierungen gleichzeitig. Wellen sind nur Last-/Arbeitslogik.
 
-- **Kein erzeugtes Bild darf als visuelle Vorlage für ein späteres Bild verwendet werden.**
+### HARD LOCK: kein Referenzbild
+
+- Kein erzeugtes Bild dient einem späteren Bild als visuelle Vorlage.
 - Bild 01 ist kein Master-Style-Frame.
-- Bild 02–NN bekommen Bild 01 nicht als Referenz.
-- Kein vorheriges Bild wird an Flow angehängt.
-- Jedes Bild entsteht aus seinem eigenen Textprompt.
-- Stil-Konsistenz kommt ausschließlich aus dem schriftlichen Style-Lock in `youtube/YOUTUBE_VISUAL_WORLD.md`.
+- kein vorheriges Bild an Flow anhängen
+- Konsistenz nur durch geschriebenen Style-Lock
 
-### HARD LOCK: jedes Bild individuell
+### HARD LOCK: Premium Editorial + Visual Storytelling
 
-Jedes Bild braucht eine eigenständige visuelle Lösung. Wiederholungen von Layout, Perspektive, Figurenposition, Hintergrund oder Farbaufbau ohne inhaltlichen Grund sind zu vermeiden.
+Aktive Style-ID:
+
+`premium-editorial-explainer-illustration-youtube-16x9`
 
 Verbindlich:
-- neue YouTube-Style-ID: `premium-editorial-explainer-illustration-youtube-16x9`
-- hochwertige moderne 2D-Editorial-/Erklärillustration
-- 16:9 horizontal
-- erwachsen, klar, hochwertig, nicht kindisch
-- individuelle Komposition pro Bild
-- keine generische Clipart-/KI-Template-Wirkung
-- keine Stickfiguren als Standardstil
-- **Countryballs sind für neue YouTube-Videos kein Standardcharakter und kein Stil-Lock.**
-- kein glänzendes 3D/Pixar/Clay/Anime/Fotorealismus
-- höchstens 5 aktive Bildgenerierungen gleichzeitig
-- niemals zwei Wellen gleichzeitig offen halten
-- letzter Block darf 1–5 Bilder enthalten
-- Bild 00 bleibt Thumbnail und kommt nie in die Timeline
-- Bilder liegen flach unter `00-bildprompts/images/`
+- hochwertige 2D-Editorial-/Dokumentar-Erklärillustration
+- erwachsen, klar, hochwertig
+- jedes Bild szenenspezifisch art-directed
+- Ursache/Wirkung, Bewegung, Kontrast oder räumliche Beziehung sichtbar, wenn relevant
+- für narrative Szenen sinnvolle Tiefenstaffelung bevorzugen
+- Perspektive, Layout, Farbgewichtung und Kompositionsmodus bewusst variieren
+- keine Countryballs als Standard
+- keine Stickfiguren
+- kein generisches KI-Template
+- kein 3D/Pixar/Clay/Anime/Fotorealismus als Standard
 
-Die vollständige Bildregel steht in `youtube/YOUTUBE_VISUAL_WORLD.md`.
+### ANTI-LIFELESS HARD LOCK
+
+Regenerieren, wenn ein Bild:
+- leer oder steril wirkt
+- nur ein kleines Objekt mittig auf leerem Grund zeigt
+- wie eine Präsentationskarte/Icon-Collage wirkt
+- praktisch dieselbe Komposition wie das vorherige Bild wiederholt
+- keinen klaren Fokus hat
+- trotz passendem Inhalt keine visuelle Beziehung, Tiefe, Richtung oder Spannung zeigt, obwohl der Inhalt das ermöglicht
+
+**Clean ≠ leer. Minimal ≠ leblos.**
 
 ### Sichtbarer Text — Deutsch-Hard-Lock
 
-Bei einem deutschen Projekt gilt für jedes Bild:
-- jeder lesbare sichtbare Text muss Deutsch sein
-- gilt auch für Kartenlabels, Schilder, Legenden, Diagramme, Kalender, Callouts und Hintergrundtext
-- Flow darf keine englischen Standardlabels ergänzen
-- englischer sichtbarer Text = Hard Fail und Regeneration
-- Pseudo-Schrift/unleserlicher Text = Hard Fail oder entfernen
-- wenn Text nicht nötig ist, keinen Text erzeugen
-
-### Voice-over
-
-Aus `voice-script.txt` wird eine einzige finale Voice-over-Datei erzeugt und unter `02-audio/` abgelegt. Das Nutzeroriginal wird von Phase 3 niemals überschrieben.
+Bei deutschen Projekten:
+- jeder lesbare Text Deutsch
+- englischer Text = Hard Fail
+- Pseudo-Schrift = Hard Fail
+- wenn Text nicht nötig ist: keinen Text erzeugen
 
 ## Verbindliches YouTube-Audio-Pacing
-
-Für alle neuen Single-Audio-V2-YouTube-Videos gelten dieselben zentralen Sprecherregeln wie beim Reel:
 
 - überlange Sprechpausen automatisch kürzen
 - kurze natürliche Pausen erhalten
 - Anfangsstille straffen
 - Endstille entfernen
-- Voice-over exakt **1,10x** beschleunigen
-- Tonhöhe dabei erhalten
-- auf **−16 LUFS** normalisieren
+- Voice-over exakt **1,10x**
+- Tonhöhe erhalten
+- **−16 LUFS**
 - True Peak höchstens **−1,5 dBTP**
-- 48 kHz Produktionsaudio
-- Nutzeroriginal unter `02-audio/` niemals verändern
+- 48 kHz
+- Nutzeroriginal nie verändern
 
-Phase 3 erzeugt dafür ausschließlich eine interne Arbeitsfassung unter:
-
-```text
-99-technik/YOUTUBE_AUDIO_OPTIMIZED.wav
-99-technik/YOUTUBE_AUDIO_PACING.json
-```
-
-**Wichtig:** Die Wortzeitmessung darf niemals auf dem langsameren Nutzeroriginal stattfinden. Zuerst wird das Audio optimiert; erst danach misst Whisper die 1,10x-/Pausen-bereinigte Fassung. Nur diese Zeiten dürfen Bildanker und Timeline steuern.
+**Whisper misst erst die optimierte 1,10x-/Pausen-bereinigte Fassung.**
 
 ## Phase 3 — gemessene Produktion
 
@@ -155,50 +184,30 @@ npm run phase3:youtube -- --dir "youtube/<woche>/<thema>"
 ```
 
 Reihenfolge:
-1. aktuelle Bilder, Mapping und genau eine finale Nutzerstimme bestimmen
-2. internes Voice-over erzeugen: lange Pausen kürzen, Endstille entfernen, 1,10x bei erhaltener Tonhöhe, −16 LUFS / max. −1,5 dBTP
-3. `YOUTUBE_AUDIO_PACING.json` mit Fingerprints schreiben
-4. **erst auf dieser optimierten Fassung** Whisper + Wortzeitstempel messen
-5. Messung per SHA-256 an die optimierte Audiodatei binden
-6. jeden `startAnchor` monoton im gesprochenen Wortstrom finden
-7. echte `actualStartSeconds`, `actualEndSeconds`, `alignmentConfidence` schreiben
-8. YouTube-Audio-Pacing-Hard-Gate bestehen
-9. `99-technik/FINAL_TIMELINE.json` bauen
-10. A–E-Planung gegen die echte Timeline prüfen
-11. Pre-Render-Hard-Gate bestehen
-12. 16:9-YouTube-Renderer mit A–E-Motion + gezielten SFX ausführen
-13. Thumbnail + Upload-Dateien finalisieren
-14. Audio-Pacing erneut gegen Fingerprints prüfen
-15. Post-Render-Hard-Gate bestehen
+1. `validate-youtube-phase1-policy.js` — Kanalfokus + Visual Policy V3 + stale-prompt gate
+2. aktuelle Bilder, Mapping und genau eine finale Nutzerstimme bestimmen
+3. internes Voice-over erzeugen: Pausen kürzen, Endstille entfernen, 1,10x, −16 LUFS / max. −1,5 dBTP
+4. erst danach Whisper-Wortzeiten messen
+5. echte Bildanker finden
+6. YouTube-Audio-Pacing-Hard-Gate
+7. `FINAL_TIMELINE.json`
+8. A–E-Pacing prüfen
+9. Pre-Render-Hard-Gate
+10. Motion + SFX rendern
+11. Export finalisieren
+12. Post-Render-Hard-Gate
 
 ### Verboten
 
-- `Videolänge ÷ Bildanzahl`
-- gleichmäßige pauschale Holds
-- Anchor-Zeiten per Gefühl eintragen
-- `alignmentConfidence` erfinden
-- simples A-/B-Bild deutlich länger halten, statt sinnvoll zu splitten
-- Rendern ohne gemessene Wortzeiten
-- Wortzeiten am unoptimierten Original messen und danach auf 1,10x beschleunigen
-- Rendern mit anderer Geschwindigkeit als 1,10x bei neuen V2-Videos
-- Rendern mit ungeprüften langen Pausen oder langer Endstille
-- Rendern nach Änderung des optimierten Audios mit altem Messbeleg
+- Wortzeiten am unoptimierten Original messen
+- Render mit anderer Geschwindigkeit als 1,10x
+- Render mit langer Endstille
 - Nutzer-Voice-over überschreiben
-- Rendern ohne `FINAL_TIMELINE.json`
-- ein generiertes YouTube-Bild als Stil-/Image-to-Image-Referenz für ein späteres Bild verwenden
+- Render ohne `FINAL_TIMELINE.json`
+- altes Flow-Projekt mit widersprüchlichen Stilregeln weiterverwenden
+- generiertes Bild als Stil-/Image-to-Image-Referenz für spätere Bilder verwenden
 - identische Kompositionsschablonen durch ein ganzes Video wiederholen
-
-## A–E-Gate gegen echte Zeiten
-
-```text
-A: 6,5 s
-B: 8,5 s
-C: 10,5 s
-D: 13,5 s
-E: 16,0 s
-```
-
-Darüber muss ein zusätzlicher Bildmoment geplant werden. Global bleiben 20,0 s oder länger immer Hard Fail.
+- leere, leblose Präsentationskarten als fertige Illustration akzeptieren
 
 ## Motion
 
@@ -211,15 +220,7 @@ Standard `complexity-v1`:
 
 ## SFX
 
-Gezielte Sounds stehen ausschließlich in `99-technik/YOUTUBE_RENDER_PLAN.json` und verwenden nur Typen aus `config/sound-library.json`.
-
-- selektiv
-- leiser als Voice-over
-- keine Hintergrundmusik standardmäßig
-
-## Kapitel
-
-`99-technik/YOUTUBE_CHAPTERS.json` bindet Kapitel an Bildnummern. Finale Zeitstempel kommen aus `FINAL_TIMELINE.json`.
+Nur Typen aus `config/sound-library.json`, selektiv, leiser als Voice-over, keine Hintergrundmusik standardmäßig.
 
 ## Finaler Export
 
@@ -235,22 +236,14 @@ Gezielte Sounds stehen ausschließlich in `99-technik/YOUTUBE_RENDER_PLAN.json` 
 ## Definition of Done
 
 Ein neues YouTube-Video ist erst fertig, wenn:
-- alle Bilder + Thumbnail vorhanden sind
-- jedes Videobild unabhängig aus seinem eigenen Textprompt erzeugt wurde
-- kein vorheriges Bild als visuelle Referenz verwendet wurde
-- jedes Bild eine inhaltlich passende, eigenständige Komposition besitzt
-- die Premium-Editorial-Illustrationsqualität durchgehend eingehalten wird
-- bei deutschem Projekt jeder sichtbare Text Deutsch ist
-- genau eine finale Nutzerstimme vorhanden ist
-- Nutzeroriginal unverändert geblieben ist
-- internes Audio lange Pausen und Endstille entfernt hat
-- internes Audio exakt 1,10x bei erhaltener Tonhöhe läuft
-- −16 LUFS / max. −1,5 dBTP als Produktionsziel angewendet wird
-- alle Anchors **nach** der Audio-Optimierung real gemessen wurden
-- Audio-Pacing- und Alignment-Fingerprints gültig sind
-- A–E-Pacing mit der echten Timeline bestanden ist
+- Thema den Kanalfokus erfüllt oder ausdrücklich vom Nutzer angefordert wurde
+- Visual Policy V3 bestanden ist
+- Flow-Sitzung keine Legacy-Stilregeln enthält
+- kein Bild ein vorheriges Bild als Referenz benutzt
+- jedes Bild eigenständig und szenenspezifisch art-directed ist
+- keine leblose/sterile Template-Komposition akzeptiert wurde
+- deutscher Text korrekt ist
+- Audio 1,10x / −16 LUFS / max. −1,5 dBTP besteht
+- alle Anchors nach Audio-Optimierung gemessen wurden
 - `FINAL_TIMELINE.json` existiert
-- Pre-Render-Gate Exit 0 liefert
-- Motion/SFX-Render erfolgreich ist
-- kompletter Uploadsatz existiert
-- Post-Render-Hard-Gate Exit 0 liefert
+- Pre-Render- und Post-Render-Gates Exit 0 liefern
