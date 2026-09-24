@@ -63,7 +63,7 @@ test('YouTube-Dokumentation erzwingt 5er-Wellen statt Massen-Parallelgenerierung
     readFile('youtube/ADAPTIVE_PACING_V2.md', 'utf8')
   ]);
   for (const text of [readme, workflow, pacing]) {
-    assert.match(text, /5 Bilder gleichzeitig|5er-Wellen|5er-Steuerung|höchstens 5 aktive|mehr als fünf aktive|maximal \*\*5 aktive/i);
+    assert.match(text, /5 Bilder gleichzeitig|5er-Wellen|5er-Steuerung|höchstens 5 aktive|mehr als fünf aktive|maximal \*\*5 aktive|maximal fünf aktive/i);
   }
   assert.doesNotMatch(readme, /immer nur \*\*eine aktive Bildgenerierung\*\*/i);
 });
@@ -122,15 +122,16 @@ test('Rom-Mapping ist bereits vor Phase 2 single-audio und flat-image sauber', a
 });
 
 test('Neue V2-Regeln verlangen keine sichtbaren Script- oder Audio-Parts', async () => {
-  const [readme, workflow, pacing] = await Promise.all([
+  const [readme, pacing, templateMeta] = await Promise.all([
     readFile('youtube/README.md', 'utf8'),
-    readFile('youtube/YOUTUBE_WORKFLOW.md', 'utf8'),
-    readFile('youtube/ADAPTIVE_PACING_V2.md', 'utf8')
+    readFile('youtube/ADAPTIVE_PACING_V2.md', 'utf8'),
+    readFile(`${TEMPLATE}/99-technik/video.json`, 'utf8').then(JSON.parse)
   ]);
 
   assert.match(readme, /EIN (?:Google-Flow-)?Masterprompt/i);
   assert.match(readme, /EIN Gesamtskript/i);
-  assert.match(workflow, /eine einzige finale Voice-over-Datei/i);
+  assert.equal(templateMeta.userFacingStructure.script, '01-voice-script/voice-script.txt');
+  assert.equal(templateMeta.userFacingStructure.finalAudioPattern, '02-audio/voiceover-final.*');
   assert.match(pacing, /keine sichtbaren Script- oder Audio-Parts/i);
 });
 
@@ -165,6 +166,7 @@ test('Neue YouTube-Kernskripte sind syntaktisch gültig', async () => {
   for (const file of [
     'src/core/youtube-audio-alignment.js',
     'src/core/youtube-remotion-renderer.js',
+    'src/cli/validate-youtube-phase1-policy.js',
     'src/cli/validate-youtube-adaptive-pacing.js',
     'src/cli/validate-youtube-phase3.js',
     'src/cli/finalize-youtube-export.js',
