@@ -135,7 +135,7 @@ Verbindlich:
 - Ursache/Wirkung, Bewegung, Kontrast oder räumliche Beziehung sichtbar, wenn relevant
 - für narrative Szenen sinnvolle Tiefenstaffelung bevorzugen
 - Perspektive, Layout, Farbgewichtung und Kompositionsmodus bewusst variieren
-- keine Countryballs als Standard
+- **Countryballs sind kein Standardcharakter und kein Stil-Lock für YouTube.**
 - keine Stickfiguren
 - kein generisches KI-Template
 - kein 3D/Pixar/Clay/Anime/Fotorealismus als Standard
