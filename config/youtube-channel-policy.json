@@ -1,6 +1,7 @@
 {
   "schemaVersion": 1,
   "visualPolicyVersion": 3,
+  "coverPolicyVersion": 1,
   "channelFocus": {
     "primaryTopics": [
       "Politik und Staatssysteme",
@@ -19,6 +20,15 @@
     ]
   },
   "visualStyleId": "premium-editorial-explainer-illustration-youtube-16x9",
+  "coverPolicy": {
+    "firstSceneIsCover": true,
+    "coverImageNumber": 1,
+    "coverMustBeFirstTimelineImage": true,
+    "coverMustAlsoBeThumbnailSource": true,
+    "separateThumbnailImageForbidden": true,
+    "image00ForbiddenForNewProjects": true,
+    "coverHeadlineRequired": true
+  },
   "sessionPolicy": {
     "freshFlowSessionRequiredWhenVisualPolicyChanges": true,
     "continueSessionContainingLegacyStyleInstructionsForbidden": true,
