@@ -2,6 +2,7 @@
 
 import { access, copyFile, mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import { pathToFileURL } from 'node:url';
 
 function arg(name) {
   const index = process.argv.indexOf(name);
@@ -148,7 +149,9 @@ async function main() {
   console.log(`- ${result.tags}`);
 }
 
-main().catch((error) => {
-  console.error(`YouTube Export: FEHLER — ${error.message}`);
-  process.exitCode = 1;
-});
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  main().catch((error) => {
+    console.error(`YouTube Export: FEHLER — ${error.message}`);
+    process.exitCode = 1;
+  });
+}
