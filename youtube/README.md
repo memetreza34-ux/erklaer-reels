@@ -33,7 +33,7 @@ Autonom neue Themen bleiben in Politik/Staatssystemen, Geschichte, Ländern/Geog
 - andere 2 Cover-Kandidaten verwerfen.
 - Bild 02–NN jeweils **exakt 1×** generieren.
 - keine manuellen Prüfstopps nach 5er-Blöcken.
-- maximal 5 aktive Generierungen gleichzeitig = nur Last-/Parallelitätsregel.
+- maximal fünf aktive Generierungen gleichzeitig = nur Last-/Parallelitätsregel.
 - alle finalen Bilder flach in `00-bildprompts/images/`.
 
 ## Verbindliche Reihenfolge
@@ -78,7 +78,7 @@ STOP bei alter Premium-Editorial-Sitzung
 - Bild 01 exakt 3× → einen Gewinner wählen
 - Bild 02–NN jeweils genau 1×
 - kein vorheriges Bild als Referenz
-- maximal 5 gleichzeitig
+- maximal fünf aktive Generierungen gleichzeitig
 - kein Review-Stop nach 5er-Gruppen
 - kein Bild 00
 
@@ -126,7 +126,7 @@ Bei deutschen Projekten muss jeder lesbare sichtbare Text Deutsch sein. Englisch
 ## Audio
 
 Phase 3 arbeitet mit internem Produktionsaudio:
-- lange Pausen kürzen
+- überlange Sprechpausen automatisch kürzen
 - Endstille entfernen
 - exakt 1,10x
 - Tonhöhe erhalten
