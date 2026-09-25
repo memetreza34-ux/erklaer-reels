@@ -66,6 +66,25 @@ youtube/**/inbox/audio/*.aac
 youtube/**/inbox/audio/*.flac
 youtube/**/inbox/audio/*.ogg
 
+# Aktuelle YouTube-V2/V3-Projektstruktur
+youtube/**/00-bildprompts/images/*.png
+youtube/**/00-bildprompts/images/*.jpg
+youtube/**/00-bildprompts/images/*.jpeg
+youtube/**/00-bildprompts/images/*.webp
+youtube/**/02-audio/*.mp3
+youtube/**/02-audio/*.wav
+youtube/**/02-audio/*.m4a
+youtube/**/02-audio/*.aac
+youtube/**/02-audio/*.flac
+youtube/**/02-audio/*.ogg
+youtube/**/02-audio/*.opus
+youtube/**/03-export/*.mp4
+youtube/**/03-export/*.webm
+youtube/**/03-export/*.mov
+youtube/**/03-export/THUMBNAIL.png
+youtube/**/99-technik/*.wav
+youtube/**/99-technik/sfx/
+
 # Legacy-Schutz für ältere lokale Arbeitsordner
 content/**/output/*.mp4
 content/**/output/*.webm

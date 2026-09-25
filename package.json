@@ -34,6 +34,7 @@
     "topic:youtube": "node src/cli/check-youtube-topic.js",
     "validate:youtube-phase1": "node src/cli/validate-youtube-phase1-policy.js",
     "validate:youtube-phase2": "node src/cli/validate-youtube-phase2-assets.js",
+    "preflight:youtube": "node src/cli/preflight-youtube.js",
     "auto-align:youtube": "node src/cli/auto-align-youtube.js",
     "build:youtube-timeline": "node src/cli/build-youtube-timeline.js",
     "phase3:youtube": "node src/cli/phase3-youtube.js",
