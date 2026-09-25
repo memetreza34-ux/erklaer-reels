@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "editorVersion": 1,
+  "candidateTitle": "Warum ist Kaliningrad von Russland getrennt?",
+  "decision": "APPROVED_NEW",
+  "checkedBeforeProjectCreation": true,
+  "checkedSources": [
+    "THEMEN_HISTORIE.md",
+    "config/youtube-topic-registry.json",
+    "youtube/**/99-technik/video.json"
+  ],
+  "distinctFrom": [
+    "Warum gibt es zwei Koreas?",
+    "Warum gibt es Zeitzonen?",
+    "Warum ging das Römische Reich wirklich unter?",
+    "Warum haben Länder Grenzen?"
+  ],
+  "reason": "Die Kernfrage ist spezifisch: Entstehung der russischen Exklave Kaliningrad durch Nachkriegsgrenzen und den Zerfall der Sowjetunion. Kein vorhandenes Thema behandelt diese konkrete historische und geografische Ursache-Wirkungs-Kette."
+}
