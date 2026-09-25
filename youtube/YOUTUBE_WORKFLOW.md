@@ -1,8 +1,9 @@
 # YOUTUBE WORKFLOW — VERBINDLICHE REGEL FÜR LANGVIDEOS
 
-**Stand: 2026-09-24**  
+**Stand: 2026-09-25**  
 **Visual Policy Version: 3**  
-**Cover Policy Version: 1**
+**Cover Policy Version: 1**  
+**Topic Editor Version: 1**
 
 Diese Datei gilt ausschließlich für YouTube-Langvideos. Reel-Code und Reel-Bildwelt werden dadurch nicht verändert.
 
@@ -11,14 +12,43 @@ Diese Datei gilt ausschließlich für YouTube-Langvideos. Reel-Code und Reel-Bil
 1. aktuelle ausdrückliche Nutzeranweisung
 2. `youtube/YOUTUBE_WORKFLOW.md`
 3. `config/youtube-channel-policy.json`
-4. `youtube/YOUTUBE_VISUAL_WORLD.md`
-5. `youtube/PHASE3_HARD_GATE.md`
-6. `youtube/ADAPTIVE_PACING_V2.md`
-7. `THEMEN_HISTORIE.md`
+4. `config/youtube-topic-registry.json`
+5. `youtube/YOUTUBE_VISUAL_WORLD.md`
+6. `youtube/PHASE3_HARD_GATE.md`
+7. `youtube/ADAPTIVE_PACING_V2.md`
+8. `THEMEN_HISTORIE.md`
 
 ## Kanalfokus — HARD LOCK
 
 Autonom gewählte YouTube-Themen bleiben in Politik/Staatssystemen, Geschichte, Ländern/Geografie/Grenzen, Ideologien/Gesellschaftssystemen sowie internationalen Beziehungen/Geopolitik. Außerhalb nur bei ausdrücklicher Nutzeranweisung.
+
+## SCHRITT 0 — THEMEN-EDITOR HARD LOCK
+
+**Bevor ein neuer YouTube-Projektordner, Skript oder Flow-Prompt erstellt wird**, muss der Kandidat durch den technischen Themen-Editor:
+
+```bash
+npm run topic:youtube -- --topic "NEUES THEMA"
+```
+
+Der Editor prüft gleichzeitig:
+
+1. `THEMEN_HISTORIE.md`
+2. `config/youtube-topic-registry.json` inklusive bekannter Umformulierungen/Aliase
+3. alle vorhandenen `youtube/**/99-technik/video.json`
+
+Entscheidungen:
+
+- `APPROVED_NEW` / `THEMEN-EDITOR: FREI` → Thema darf reserviert und produziert werden.
+- `REVIEW_SIMILAR` / `THEMEN-EDITOR: ÄHNLICH` → **STOP**. Kein Projekt automatisch anlegen; erst bewusst ein anderes Thema wählen oder Nutzerentscheidung einholen.
+- `BLOCKED_DUPLICATE` / `THEMEN-EDITOR: DOPPELT` → **STOP**. Thema nicht produzieren.
+
+Nicht nur identische Titel zählen. Auch dieselbe Kernfrage in anderer Form wird blockiert, z. B. `Wie wurde Korea geteilt?` gegen `Warum gibt es zwei Koreas?`.
+
+Für neue Schema-8-Projekte wird die Themenfreigabe in `99-technik/video.json` gespeichert und vom normalen Phase-1-Gate nochmals gegen Historie, Register und alle **anderen** Projektordner geprüft. Ein vergessenes manuelles History-Update kann damit keine Duplikate mehr unbemerkt erlauben.
+
+**Reihenfolge ist verbindlich:**
+
+`Thema vorschlagen → Themen-Editor → nur bei FREI reservieren → erst dann Recherche/Skript/Bilder planen.`
 
 ## FIRST SCENE = COVER HARD LOCK
 
@@ -54,7 +84,7 @@ Es gibt **eine einzige finale Voice-over-Datei**.
 
 ## Phase 1 — ChatGPT
 
-Phase 1 erstellt Thema, Recherche, Titel, einen Masterprompt, ein Gesamtskript, Bild↔Audio-Mapping, A–E-Pacing, Renderplan, Kapitel und Upload-Metadaten. **Bild 01 wird von Anfang an als Cover + erste Szene geplant.**
+Phase 1 beginnt **erst nach bestandenem Themen-Editor** und erstellt dann Recherche, Titel, einen Masterprompt, ein Gesamtskript, Bild↔Audio-Mapping, A–E-Pacing, Renderplan, Kapitel und Upload-Metadaten. **Bild 01 wird von Anfang an als Cover + erste Szene geplant.**
 
 Vor Übergabe an Flow:
 
@@ -62,7 +92,7 @@ Vor Übergabe an Flow:
 npm run validate:youtube-phase1 -- --dir "youtube/<woche>/<thema>"
 ```
 
-Das Gate blockiert veraltete Countryball-/Master-Reference-Prompts, falsche Style-ID, fehlende Policy-Marker, fehlenden Kanalfokus und bei neuen Projekten jede alte `Bild 00 = Thumbnail`-Regel.
+Das Gate blockiert bei neuen Schema-8-Projekten auch eine ungültige/überholte Themenfreigabe. Zusätzlich blockiert es veraltete Countryball-/Master-Reference-Prompts, falsche Style-ID, fehlende Policy-Marker, fehlenden Kanalfokus und jede alte `Bild 00 = Thumbnail`-Regel.
 
 ## Bildplanung
 
@@ -142,7 +172,7 @@ npm run phase3:youtube -- --dir "youtube/<woche>/<thema>"
 ```
 
 Reihenfolge:
-1. Phase-1-Policy-Gate einschließlich Cover Policy
+1. Phase-1-Policy-Gate einschließlich Themen-Editor und Cover Policy
 2. aktuelle Bilder, Mapping und genau eine finale Nutzerstimme bestimmen
 3. internes Voice-over optimieren: Pausen, Endstille, 1,10x, −16 LUFS / max. −1,5 dBTP
 4. erst danach Whisper-Wortzeiten messen
@@ -157,6 +187,9 @@ Reihenfolge:
 
 ## Verboten
 
+- neues Projekt vor Themen-Editor-Freigabe
+- automatisches Weiterarbeiten bei `REVIEW_SIMILAR`
+- Duplikat nur durch Umformulierung des Titels
 - separates Bild 00/Extra-Thumbnail bei neuen Projekten
 - Thumbnail, das nicht aus Bild 01 stammt
 - Timeline, deren erstes Bild nicht Bild 01 ist
@@ -180,4 +213,4 @@ Reihenfolge:
 
 ## Definition of Done
 
-Ein neues YouTube-Video ist erst fertig, wenn Bild 01 Cover + erste Timeline-Szene ist, THUMBNAIL.png daraus exportiert wird, kein Bild 00 existiert, Visual Policy V3/ Cover Policy V1 bestehen, Bilder hochwertig und individuell sind, deutscher Text stimmt, Audio 1,10x / −16 LUFS / max. −1,5 dBTP besteht und Pre-/Post-Render-Gates erfolgreich sind.
+Ein neues YouTube-Video ist erst fertig, wenn Themen-Editor `APPROVED_NEW` bestätigt, Bild 01 Cover + erste Timeline-Szene ist, THUMBNAIL.png daraus exportiert wird, kein Bild 00 existiert, Visual Policy V3 / Cover Policy V1 bestehen, Bilder hochwertig und individuell sind, deutscher Text stimmt, Audio 1,10x / −16 LUFS / max. −1,5 dBTP besteht und Pre-/Post-Render-Gates erfolgreich sind.

@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "note": "Maschinenlesbares Ergänzungsregister. Der Themen-Editor prüft zusätzlich THEMEN_HISTORIE.md und vorhandene YouTube-video.json-Dateien.",
+  "entries": [
+    {
+      "id": "2026-KW36_warum-hat-ein-tag-24-stunden",
+      "title": "Warum hat ein Tag 24 Stunden – und nicht 10?",
+      "aliases": ["Warum hat der Tag 24 Stunden?", "Woher kommen 24 Stunden am Tag?"],
+      "status": "reserved"
+    },
+    {
+      "id": "2026-KW39_warum-ging-das-roemische-reich-unter",
+      "title": "Warum ging das Römische Reich wirklich unter?",
+      "aliases": ["Warum zerfiel das Römische Reich?", "Wie ging das Römische Reich unter?"],
+      "status": "reserved"
+    },
+    {
+      "id": "2026-KW39_warum-gibt-es-zeitzonen",
+      "title": "Warum gibt es Zeitzonen?",
+      "aliases": ["Wie entstanden Zeitzonen?", "Warum hat die Welt verschiedene Uhrzeiten?"],
+      "status": "reserved"
+    },
+    {
+      "id": "2026-KW39_warum-gibt-es-zwei-koreas",
+      "title": "Warum gibt es zwei Koreas?",
+      "aliases": ["Warum wurde Korea geteilt?", "Wie wurde Korea geteilt?", "Wie entstanden Nord- und Südkorea?"],
+      "status": "reserved"
+    },
+    {
+      "id": "2026-KW39_warum-ist-kaliningrad-von-russland-getrennt",
+      "title": "Warum ist Kaliningrad von Russland getrennt?",
+      "aliases": ["Warum gehört Kaliningrad zu Russland?", "Warum ist Kaliningrad eine russische Exklave?", "Wie wurde Kaliningrad russisch?"],
+      "status": "reserved"
+    },
+    {
+      "id": "reel-grenzen",
+      "title": "Warum haben Länder Grenzen?",
+      "aliases": ["Warum gibt es Staatsgrenzen?"],
+      "status": "used"
+    },
+    {
+      "id": "reel-buendnisse",
+      "title": "Warum schließen Länder Bündnisse?",
+      "aliases": ["Warum bilden Staaten Bündnisse?"],
+      "status": "used"
+    },
+    {
+      "id": "reel-taiwan",
+      "title": "USA-China-Taiwan-Konflikt einfach erklärt",
+      "aliases": ["Warum streiten China und die USA um Taiwan?", "Taiwan-Konflikt erklärt"],
+      "status": "used"
+    },
+    {
+      "id": "reel-weltkarte",
+      "title": "Warum kann keine Weltkarte die Erde richtig zeigen?",
+      "aliases": ["Warum verzerren Weltkarten die Erde?"],
+      "status": "used"
+    },
+    {
+      "id": "reel-regen-geruch",
+      "title": "Warum riecht Regen so besonders?",
+      "aliases": ["Warum riecht Regen gut?", "Woher kommt der Geruch von Regen?"],
+      "status": "used"
+    }
+  ]
+}

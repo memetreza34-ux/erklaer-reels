@@ -2,6 +2,7 @@
 
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
+import { checkYoutubeTopic } from '../core/youtube-topic-editor.js';
 
 function arg(name) {
   const index = process.argv.indexOf(name);
@@ -35,6 +36,24 @@ async function main() {
     errors.push(`topicCategory "${meta.topicCategory ?? 'fehlend'}" liegt außerhalb des YouTube-Kanalfokus und wurde nicht ausdrücklich vom Nutzer angefordert.`);
   }
   if (!meta.topicCoreLink || typeof meta.topicCoreLink !== 'string') errors.push('topicCoreLink muss den Bezug zum Kanalfokus kurz dokumentieren.');
+
+  if (Number(meta.schemaVersion) >= 8) {
+    const proof = meta.topicEditor || {};
+    if (proof.version !== 1) errors.push('topicEditor.version muss 1 sein.');
+    if (proof.decision !== 'APPROVED_NEW') errors.push('topicEditor.decision muss APPROVED_NEW sein.');
+    if (proof.checkedBeforeProjectCreation !== true) errors.push('topicEditor.checkedBeforeProjectCreation muss true sein.');
+    if (proof.candidateTitle !== meta.title) errors.push('topicEditor.candidateTitle muss exakt dem Video-Titel entsprechen.');
+
+    const topicResult = await checkYoutubeTopic({
+      candidateTitle: meta.title,
+      repoRoot,
+      selfVideoId: meta.videoId || null,
+      excludeProjectDir: projectDir
+    });
+    if (topicResult.decision !== 'APPROVED_NEW') {
+      errors.push(`Themen-Editor blockiert dieses Projekt: ${topicResult.decision}; nächster Treffer: ${topicResult.closestMatch.title ?? 'unbekannt'}.`);
+    }
+  }
 
   requireTrue(errors, meta.sessionPolicy?.freshFlowSessionRequiredWhenVisualPolicyChanges, 'sessionPolicy.freshFlowSessionRequiredWhenVisualPolicyChanges');
   requireTrue(errors, meta.sessionPolicy?.continueSessionContainingLegacyStyleInstructionsForbidden, 'sessionPolicy.continueSessionContainingLegacyStyleInstructionsForbidden');
@@ -99,7 +118,8 @@ async function main() {
     return;
   }
 
-  console.log(`YouTube Phase-1-Policy: BESTANDEN — Visual Policy V${policy.visualPolicyVersion}, Cover Policy V${policy.coverPolicyVersion}, Kanalfokus, Session-Schutz und Anti-Lifeless-Regeln sind aktiv.`);
+  const topicText = Number(meta.schemaVersion) >= 8 ? ', Themen-Editor FREI' : '';
+  console.log(`YouTube Phase-1-Policy: BESTANDEN — Visual Policy V${policy.visualPolicyVersion}, Cover Policy V${policy.coverPolicyVersion}${topicText}, Kanalfokus, Session-Schutz und Anti-Lifeless-Regeln sind aktiv.`);
 }
 
 main().catch((error) => {
