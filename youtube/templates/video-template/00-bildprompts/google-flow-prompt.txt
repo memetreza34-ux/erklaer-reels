@@ -1,5 +1,6 @@
 YOUTUBE_VISUAL_POLICY_VERSION: 3
 COVER_POLICY_VERSION: 1
+ASSET_GENERATION_POLICY_VERSION: 1
 ACTIVE_STYLE_ID: premium-editorial-explainer-illustration-youtube-16x9
 
 GOOGLE FLOW MASTER PROMPT — [VIDEO-TITEL]
@@ -17,6 +18,40 @@ FIRST SCENE = COVER HARD LOCK
 - The exported YouTube thumbnail is copied from Bild 01.png.
 - Do NOT create Bild 00.
 - Do NOT create a separate thumbnail image outside the timeline.
+
+==================================================
+COVER = 3 CANDIDATES HARD LOCK
+==================================================
+
+- Generate Bild 01 exactly THREE times as three temporary cover candidates.
+- Compare only these three cover candidates.
+- Select exactly ONE winner.
+- Rename only the selected winner exactly once to `Bild 01.png`.
+- Discard the other two cover candidates completely.
+- No cover candidate may remain in the final image folder.
+
+==================================================
+NON-COVER = SINGLE GENERATION HARD LOCK
+==================================================
+
+- Every image from Bild 02 through Bild NN is generated exactly ONCE.
+- Do not create a second version of any non-cover image.
+- Do not stop for manual review after 02–05, 06–10 or any later five-image wave.
+- Do not regenerate non-cover images by default.
+- Rename each finished non-cover image exactly once to its final `Bild NN.png` name, then continue.
+- Maximum five active generations at the same time; this is concurrency only, never a review gate.
+
+==================================================
+FINAL IMAGE FOLDER HARD LOCK
+==================================================
+
+At the end, all final images must exist in exactly one flat folder:
+`00-bildprompts/images/`
+
+The folder may contain only:
+`Bild 01.png` through `Bild NN.png`
+
+No subfolders. No Bild 00. No cover candidates. No alternate versions. No extra PNG files.
 
 ==================================================
 SESSION RESET HARD LOCK
@@ -43,7 +78,7 @@ Every image must communicate a relationship, tension, change, cause/effect, comp
 ANTI-LIFELESS HARD LOCK
 ==================================================
 
-Reject and regenerate flat, empty, dull, sterile or generic AI explainer cards. No small centered object on blank background, no icon collage, no repeated layout, no excessive empty pastel space, no lifeless front-on presentation-slide composition.
+Avoid flat, empty, dull, sterile or generic AI explainer cards before generation. No small centered object on blank background, no icon collage, no repeated layout, no excessive empty pastel space, no lifeless front-on presentation-slide composition.
 
 Clean does NOT mean empty. Minimal does NOT mean lifeless.
 
@@ -63,19 +98,21 @@ no generic AI template, no stock clipart, no mandatory countryball, no stick fig
 DEUTSCH-HARD-LOCK
 ==================================================
 
-Every readable word must be German. English visible text or pseudo-text = HARD FAIL. If text is not needed, generate no text.
+Every readable word must be German. English visible text or pseudo-text = HARD FAIL for the planned image output. This HARD FAIL does NOT authorize a second non-cover generation: Bild 02 through Bild NN remain single-pass and are generated exactly once.
 
 ==================================================
 ABLAUF
 ==================================================
 
-1. Bild 01 separat erzeugen und streng prüfen: COVER + ERSTE SZENE.
-2. Bild 02–05 jeweils separat aus eigenem Textprompt erzeugen.
-3. Welle prüfen; Fehler nur im betroffenen Bild regenerieren.
-4. Danach 06–10, 11–15 usw.
+1. Bild 01 exakt dreimal als temporäre Cover-Kandidaten erzeugen.
+2. Genau einen Cover-Gewinner auswählen, einmal final zu `Bild 01.png` umbenennen, die anderen zwei verwerfen.
+3. Bild 02 bis Bild NN jeweils genau einmal aus dem eigenen Textprompt erzeugen.
+4. Keine manuellen Prüfstopps zwischen 5er-Wellen; direkt weiterarbeiten.
 5. Maximal fünf aktive Generierungen gleichzeitig.
-6. Alle Dateien flach unter `00-bildprompts/images/` als `Bild NN.png` ablegen.
-7. Niemals Bild 00 erzeugen.
+6. Jedes fertige Nicht-Cover-Bild einmal auf `Bild NN.png` benennen.
+7. Alle finalen Bilder flach unter `00-bildprompts/images/` sammeln.
+8. Am Ende dürfen dort nur `Bild 01.png` bis `Bild NN.png` liegen.
+9. Niemals Bild 00 erzeugen und niemals ein vorheriges Bild als Referenz anhängen.
 
 A–E-PACING
 A = 4–5 s
@@ -92,7 +129,7 @@ Bild 01 · [A–E] · [PLANZEIT]
 [COVER-UND-SZENE-1-PROMPT]
 
 ==================================================
-ERSTE WELLE — BILD 02–05
+BILD 02–NN — JEWEILS EINMAL
 ==================================================
 
 Bild 02 · [A–E] · [PLANZEIT]
@@ -101,20 +138,18 @@ Bild 02 · [A–E] · [PLANZEIT]
 Bild 03 · [A–E] · [PLANZEIT]
 [PROMPT]
 
-Bild 04 · [A–E] · [PLANZEIT]
-[PROMPT]
-
-Bild 05 · [A–E] · [PLANZEIT]
-[PROMPT]
-
-STOP: Bild 01–05 vollständig prüfen. Erst danach die nächste 5er-Welle.
-
-[WEITERE 5ER-WELLEN BIS ZUM LETZTEN BILD]
+[WEITERE BILDER BIS BILD NN — JEDES GENAU EINMAL]
 
 FINALER CHECK
+- Asset Generation Policy V1 aktiv
+- Bild 01 exakt 3 Cover-Kandidaten, genau 1 Gewinner
+- Gewinner final als Bild 01.png
+- Bild 02–NN jeweils genau einmal generiert
+- keine manuellen Prüfstopps nach 5er-Wellen
+- alle finalen Bilder in genau einem flachen Ordner `00-bildprompts/images/`
+- keine Cover-Kandidaten/Varianten/Extras im finalen Ordner
 - Cover Policy V1 aktiv
 - Bild 01 = Cover + erste Videoszene
-- Bild 01 enthält starke deutsche Überschrift und passt zum ersten Sprecherabschnitt
 - kein Bild 00
 - keine separate Thumbnail-Datei in der Bildproduktion
 - 16:9 horizontal

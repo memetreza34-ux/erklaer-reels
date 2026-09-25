@@ -44,7 +44,7 @@ Kaliningrad, Königsberg, Russland, Ostpreußen, Sowjetunion, Potsdam, Grenzen, 
 - 24 monotone Audioanker
 - jedes Bild eigener vollständiger Flow-Prompt
 - keine Bild-zu-Bild-Referenzen
-- Visual Policy V3 / Cover Policy V1
+- Visual Policy V3 / Cover Policy V1 / Asset Generation Policy V1
 - Premium-Editorial-Stil
 - A–E-Komplexität hinterlegt
 - SFX selektiv geplant
@@ -59,18 +59,28 @@ Benötigt:
 01-voice-script/voice-script.txt
 ```
 
-Flow-Reihenfolge:
+Verbindlicher Flow-Ablauf:
 
 ```text
-Bild 01 separat
-02–05 unabhängig
-06–10 unabhängig
-11–15 unabhängig
-16–20 unabhängig
-21–24 unabhängig
+Bild 01 exakt 3x erzeugen
+→ genau 1 Cover auswählen
+→ Gewinner einmal zu Bild 01.png umbenennen
+→ andere 2 Cover verwerfen
+
+Bild 02–24
+→ jedes Bild genau 1x erzeugen
+→ keine manuelle Wellenprüfung
+→ jedes Bild einmal final als Bild NN.png benennen
+→ maximal 5 Generierungen gleichzeitig
 ```
 
-Maximal fünf aktive Generierungen gleichzeitig. Die Wellen sind nur Arbeitslogik, keine Stil- oder Referenzvererbung.
+Am Ende müssen exakt diese 24 finalen Bilder gemeinsam flach unter `00-bildprompts/images/` liegen. Keine Cover-Kandidaten, Varianten, Unterordner, Zusatz-PNGs oder Bild 00.
+
+Danach:
+
+```bash
+npm run validate:youtube-phase2 -- --dir "youtube/2026-KW39_21-09_bis_27-09/warum-ist-kaliningrad-von-russland-getrennt"
+```
 
 ## Audio-Regel
 
@@ -87,10 +97,13 @@ Maximal fünf aktive Generierungen gleichzeitig. Die Wellen sind nur Arbeitslogi
 Fertig erst wenn:
 - Themen-Editor im Phase-1-Gate weiterhin `APPROVED_NEW` liefert
 - Bild 01 Cover + Timeline-Start + Thumbnail-Quelle ist
-- Bild 01–24 vollständig sind
+- Cover genau 3x erzeugt und genau 1 Gewinner behalten wurde
+- Bild 02–24 jeweils genau 1x erzeugt wurden
+- keine manuellen Prüfstopps nach 5er-Wellen stattfinden
+- jedes finale Bild genau einmal korrekt benannt ist
+- `00-bildprompts/images/` exakt Bild 01.png bis Bild 24.png enthält
 - keine Bild-zu-Bild-Referenz benutzt wurde
 - Bilder individuell, lebendig und szenenspezifisch sind
-- deutscher Bildtext korrekt ist
 - Audio-Hard-Gate bestanden ist
 - Timeline auf echten Wortzeiten basiert
 - Pre-/Post-Render-Gates Exit 0 liefern

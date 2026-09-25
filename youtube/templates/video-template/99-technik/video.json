@@ -1,8 +1,9 @@
 {
-  "schemaVersion": 7,
+  "schemaVersion": 9,
   "productionRulesVersion": 2,
   "visualPolicyVersion": 3,
   "coverPolicyVersion": 1,
+  "assetGenerationPolicyVersion": 1,
   "complexityPacingVersion": 1,
   "videoId": "YYYY-KWNN_topic-slug",
   "weekFolder": "YYYY-KWNN_DD-MM_bis_DD-MM",
@@ -27,6 +28,20 @@
     "separateThumbnailImageForbidden": true,
     "image00Forbidden": true,
     "headlineRequired": true
+  },
+  "assetGenerationPolicy": {
+    "coverCandidateCount": 3,
+    "coverSelectionRequired": true,
+    "selectedCoverFinalName": "Bild 01.png",
+    "discardUnselectedCoverCandidates": true,
+    "nonCoverGenerationCount": 1,
+    "nonCoverManualWaveReviewForbidden": true,
+    "nonCoverRegenerationByDefaultForbidden": true,
+    "maxConcurrentGenerations": 5,
+    "renameEachFinalImageExactlyOnce": true,
+    "finalImagesFlatInSingleFolder": true,
+    "finalImageDirectory": "00-bildprompts/images",
+    "temporaryCoverCandidatesForbiddenInFinalFolder": true
   },
   "sessionPolicy": {
     "freshFlowSessionRequiredWhenVisualPolicyChanges": true,

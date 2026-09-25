@@ -45,6 +45,20 @@
 - [x] Premium-Editorial-Illustrationswelt
 - [x] sichtbarer Text nur Deutsch
 
+## Asset Generation Policy V1
+
+- [x] Bild 01 wird exakt 3x als Cover-Kandidat erzeugt
+- [x] genau 1 Cover-Gewinner wird behalten und einmal zu `Bild 01.png` umbenannt
+- [x] die 2 verworfenen Cover-Kandidaten kommen nicht in den finalen Ordner
+- [x] Bild 02–24 jeweils exakt 1x
+- [x] keine manuellen Prüfstopps nach 5er-Wellen
+- [x] keine standardmäßige Regeneration von Nicht-Cover-Bildern
+- [x] maximal 5 aktive Generierungen gleichzeitig
+- [x] jedes finale Bild genau einmal korrekt benennen
+- [x] finale Bilder liegen gemeinsam flach unter `00-bildprompts/images/`
+- [x] keine Unterordner, Varianten, Zusatz-PNGs oder Bild 00
+- [x] Phase-2-Asset-Gate ist vor Phase 3 verpflichtend
+
 ## Audio / Phase 3
 
 - [x] genau eine finale Nutzerstimme
@@ -55,5 +69,6 @@
 - [x] −16 LUFS / max. −1,5 dBTP / 48 kHz
 - [x] Whisper erst nach Audiooptimierung
 - [x] Themen-Editor wird im Phase-1-Gate erneut geprüft
+- [x] Phase-2-Asset-Gate läuft vor Audio-/Renderarbeit
 
-**Phase-1-Ergebnis: READY FOR PHASE 2**
+**Phase-1-Ergebnis: READY FOR PHASE 2 — ASSET GENERATION POLICY V1 VERBINDLICH**

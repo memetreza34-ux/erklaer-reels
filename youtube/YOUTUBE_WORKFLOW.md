@@ -3,7 +3,8 @@
 **Stand: 2026-09-25**  
 **Visual Policy Version: 3**  
 **Cover Policy Version: 1**  
-**Topic Editor Version: 1**
+**Topic Editor Version: 1**  
+**Asset Generation Policy Version: 1**
 
 Diese Datei gilt ausschließlich für YouTube-Langvideos. Reel-Code und Reel-Bildwelt werden dadurch nicht verändert.
 
@@ -44,7 +45,7 @@ Entscheidungen:
 
 Nicht nur identische Titel zählen. Auch dieselbe Kernfrage in anderer Form wird blockiert, z. B. `Wie wurde Korea geteilt?` gegen `Warum gibt es zwei Koreas?`.
 
-Für neue Schema-8-Projekte wird die Themenfreigabe in `99-technik/video.json` gespeichert und vom normalen Phase-1-Gate nochmals gegen Historie, Register und alle **anderen** Projektordner geprüft. Ein vergessenes manuelles History-Update kann damit keine Duplikate mehr unbemerkt erlauben.
+Für neue Schema-8+-Projekte wird die Themenfreigabe in `99-technik/video.json` gespeichert und vom normalen Phase-1-Gate nochmals gegen Historie, Register und alle **anderen** Projektordner geprüft. Ein vergessenes manuelles History-Update kann damit keine Duplikate mehr unbemerkt erlauben.
 
 **Reihenfolge ist verbindlich:**
 
@@ -62,8 +63,6 @@ Für **jedes neue YouTube-Video** gilt ohne Ausnahme:
 - Es gibt **kein separates Bild 00** mehr.
 - Ein zusätzliches Thumbnail-Bild außerhalb der Timeline ist bei neuen Projekten verboten.
 - Cover und erste Szene sind **dieselbe Datei**, nicht nur dieselbe Idee.
-
-Dadurch kann nicht mehr passieren, dass Thumbnail und Videoanfang visuell auseinanderlaufen.
 
 ## Sichtbare Struktur neuer Videos
 
@@ -92,7 +91,7 @@ Vor Übergabe an Flow:
 npm run validate:youtube-phase1 -- --dir "youtube/<woche>/<thema>"
 ```
 
-Das Gate blockiert bei neuen Schema-8-Projekten auch eine ungültige/überholte Themenfreigabe. Zusätzlich blockiert es veraltete Countryball-/Master-Reference-Prompts, falsche Style-ID, fehlende Policy-Marker, fehlenden Kanalfokus und jede alte `Bild 00 = Thumbnail`-Regel.
+Das Gate blockiert bei neuen Schema-8+-Projekten auch eine ungültige/überholte Themenfreigabe. Ab Schema 9 prüft es zusätzlich Asset Generation Policy V1. Außerdem blockiert es veraltete Countryball-/Master-Reference-Prompts, falsche Style-ID, fehlende Policy-Marker, fehlenden Kanalfokus und jede alte `Bild 00 = Thumbnail`-Regel.
 
 ## Bildplanung
 
@@ -110,22 +109,67 @@ Bild 01 zählt normal zur Bildanzahl und zur Timeline. Es hat zusätzlich die Co
 
 ### SESSION RESET HARD LOCK
 
-Wenn die bestehende Flow-Sitzung alte Stil- oder Coverregeln enthält:
+Wenn die bestehende Flow-Sitzung alte Stil-, Cover- oder Generierungsregeln enthält:
 
 **STOP → frische Flow-Sitzung / frisches Flow-Projekt öffnen → aktuellen Masterprompt vollständig neu einfügen.**
 
-Veraltet sind insbesondere Countryball als YouTube-Standard, Bild 01 als Master-Style-Referenz, Bild-zu-Bild-Referenzen sowie **Bild 00 als separates Thumbnail**.
+Veraltet sind insbesondere Countryball als YouTube-Standard, Bild 01 als Master-Style-Referenz, Bild-zu-Bild-Referenzen, **Bild 00 als separates Thumbnail**, Prüfstopps nach 5er-Wellen und Mehrfachgenerierung normaler Bilder.
 
-### Google Flow — unabhängige Bilder + 5er-Wellen
+### COVER = 3 CANDIDATES HARD LOCK
+
+Nur das Cover bekommt mehrere Versuche:
+
+1. **Bild 01 exakt dreimal generieren.**
+2. Die drei Cover-Kandidaten vergleichen.
+3. Genau **einen** Kandidaten auswählen.
+4. Nur den Gewinner final **einmal** zu `Bild 01.png` umbenennen.
+5. Die zwei nicht gewählten Cover-Kandidaten verwerfen; sie dürfen nicht im finalen Bildordner bleiben.
+
+Die drei Cover-Kandidaten sind nur temporär. Es gibt weiterhin **kein Bild 00** und kein separates Thumbnail.
+
+### NON-COVER = SINGLE GENERATION HARD LOCK
+
+Für **Bild 02 bis Bild NN** gilt:
+
+- jedes Bild **genau einmal** generieren
+- keine zweite Variante
+- keine manuelle Prüfung nach 02–05, 06–10 usw.
+- kein Stop zwischen den 5er-Wellen
+- keine standardmäßige Regeneration eines normalen Bildes
+- jedes fertige Bild direkt **einmal** auf seinen finalen Namen `Bild NN.png` bringen
+- danach weiter bis zum letzten Bild
+
+Maximal fünf aktive Generierungen gleichzeitig. Die 5er-Grenze ist **nur Parallelitäts-/Lastlogik**, kein Prüfpunkt und keine Freigabestufe.
+
+### FINAL IMAGE FOLDER HARD LOCK
+
+Am Ende der Bildproduktion liegt **genau ein flacher finaler Bildordner** vor:
 
 ```text
-Bild 01 separat erzeugen und streng prüfen: COVER + ERSTE SZENE
-Bild 02–05 separat aus eigenen Textprompts → prüfen
-06–10 separat → prüfen
-11–15 ...
+00-bildprompts/images/
+├── Bild 01.png
+├── Bild 02.png
+├── Bild 03.png
+└── ... bis Bild NN.png
 ```
 
-Maximal fünf aktive Generierungen gleichzeitig. 5er-Wellen sind nur Last-/Arbeitslogik.
+Darin gilt:
+
+- jedes finale Bild genau einmal
+- keine Unterordner
+- keine Cover-Version A/B/C
+- keine verworfenen Varianten
+- kein `Bild 00.png`
+- keine zusätzlichen PNG-Dateien
+- alle finalen Dateinamen bereits korrekt; kein späteres zweites Umbenennen
+
+Nach Phase 2 prüft:
+
+```bash
+npm run validate:youtube-phase2 -- --dir "youtube/<woche>/<thema>"
+```
+
+Dieses Gate blockiert fehlende Bilder, Zusatzbilder, Cover-Kandidaten im finalen Ordner, Bild 00 und Unterordner.
 
 ### HARD LOCK: kein Referenzbild
 
@@ -142,13 +186,13 @@ Verbindlich: hochwertige 2D-Editorial-/Dokumentar-Erklärillustration, erwachsen
 
 ### ANTI-LIFELESS HARD LOCK
 
-Regenerieren, wenn ein Bild leer/steril wirkt, nur ein kleines Objekt mittig zeigt, wie eine Präsentationskarte wirkt, dieselbe Komposition wiederholt oder trotz geeignetem Inhalt keine Tiefe, Richtung, Beziehung oder Spannung besitzt.
+Die Prompts müssen leblose Ergebnisse **vor der Generierung vermeiden**: kein kleines Objekt mittig auf leerem Hintergrund, keine Präsentationskarte, keine mechanisch wiederholte Komposition und bei geeignetem Inhalt klare Tiefe, Richtung, Beziehung oder Spannung.
 
-**Clean ≠ leer. Minimal ≠ leblos.**
+**Clean ≠ leer. Minimal ≠ leblos.** Für Nicht-Cover-Bilder wird dafür nicht automatisch ein zweiter Generierungsversuch gestartet.
 
 ### Sichtbarer Text — Deutsch-Hard-Lock
 
-Bei deutschen Projekten ist jeder lesbare Text Deutsch. Englischer Text oder Pseudo-Schrift = Hard Fail.
+Bei deutschen Projekten ist jeder lesbare Text Deutsch. Englischer Text oder Pseudo-Schrift ist in der Promptplanung verboten; Nicht-Cover-Bilder werden trotzdem standardmäßig nur einmal generiert.
 
 ## Verbindliches YouTube-Audio-Pacing
 
@@ -172,18 +216,19 @@ npm run phase3:youtube -- --dir "youtube/<woche>/<thema>"
 ```
 
 Reihenfolge:
-1. Phase-1-Policy-Gate einschließlich Themen-Editor und Cover Policy
-2. aktuelle Bilder, Mapping und genau eine finale Nutzerstimme bestimmen
-3. internes Voice-over optimieren: Pausen, Endstille, 1,10x, −16 LUFS / max. −1,5 dBTP
-4. erst danach Whisper-Wortzeiten messen
-5. echte Bildanker finden
-6. Audio-Hard-Gate
-7. `FINAL_TIMELINE.json`; **Bild 01 beginnt bei 0,0 s**
-8. A–E-Pacing prüfen
-9. Pre-Render-Hard-Gate
-10. Motion + SFX rendern
-11. Export finalisieren; **THUMBNAIL.png = Kopie von Bild 01.png**
-12. Post-Render-Hard-Gate
+1. Phase-1-Policy-Gate einschließlich Themen-Editor, Cover Policy und Asset Generation Policy
+2. **Phase-2-Asset-Gate: genau Bild 01..NN im einen finalen Bildordner**
+3. aktuelle Bilder, Mapping und genau eine finale Nutzerstimme bestimmen
+4. internes Voice-over optimieren: Pausen, Endstille, 1,10x, −16 LUFS / max. −1,5 dBTP
+5. erst danach Whisper-Wortzeiten messen
+6. echte Bildanker finden
+7. Audio-Hard-Gate
+8. `FINAL_TIMELINE.json`; **Bild 01 beginnt bei 0,0 s**
+9. A–E-Pacing prüfen
+10. Pre-Render-Hard-Gate
+11. Motion + SFX rendern
+12. Export finalisieren; **THUMBNAIL.png = Kopie von Bild 01.png**
+13. Post-Render-Hard-Gate
 
 ## Verboten
 
@@ -191,6 +236,13 @@ Reihenfolge:
 - automatisches Weiterarbeiten bei `REVIEW_SIMILAR`
 - Duplikat nur durch Umformulierung des Titels
 - separates Bild 00/Extra-Thumbnail bei neuen Projekten
+- Cover weniger oder mehr als drei Kandidaten erzeugen
+- mehr als einen finalen Cover-Kandidaten behalten
+- normale Bilder 02..NN mehrfach generieren
+- manuelle Prüfstopps nach jeder 5er-Welle
+- Cover-Kandidaten oder Zusatzbilder im finalen Bildordner behalten
+- Unterordner im finalen Bildordner
+- ein finales Bild mehrfach umbenennen
 - Thumbnail, das nicht aus Bild 01 stammt
 - Timeline, deren erstes Bild nicht Bild 01 ist
 - Wortzeiten am unoptimierten Original messen
@@ -213,4 +265,4 @@ Reihenfolge:
 
 ## Definition of Done
 
-Ein neues YouTube-Video ist erst fertig, wenn Themen-Editor `APPROVED_NEW` bestätigt, Bild 01 Cover + erste Timeline-Szene ist, THUMBNAIL.png daraus exportiert wird, kein Bild 00 existiert, Visual Policy V3 / Cover Policy V1 bestehen, Bilder hochwertig und individuell sind, deutscher Text stimmt, Audio 1,10x / −16 LUFS / max. −1,5 dBTP besteht und Pre-/Post-Render-Gates erfolgreich sind.
+Ein neues YouTube-Video ist erst fertig, wenn Themen-Editor `APPROVED_NEW` bestätigt, **Cover genau dreimal erzeugt und genau ein Gewinner als Bild 01.png behalten wurde**, Bilder 02..NN jeweils nur einmal erzeugt wurden, alle finalen Bilder ohne Extras flach in `00-bildprompts/images/` liegen, Bild 01 Cover + erste Timeline-Szene ist, THUMBNAIL.png daraus exportiert wird, kein Bild 00 existiert, Visual Policy V3 / Cover Policy V1 / Asset Generation Policy V1 bestehen, Bilder hochwertig und individuell sind, Audio 1,10x / −16 LUFS / max. −1,5 dBTP besteht und Pre-/Post-Render-Gates erfolgreich sind.

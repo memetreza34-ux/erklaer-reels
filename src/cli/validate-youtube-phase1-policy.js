@@ -81,6 +81,25 @@ async function main() {
     if (Number(c.coverImageNumber) !== 1) errors.push('coverPolicy.coverImageNumber muss 1 sein.');
   }
 
+  if (Number(meta.schemaVersion) >= 9) {
+    if (meta.assetGenerationPolicyVersion !== policy.assetGenerationPolicyVersion) {
+      errors.push(`assetGenerationPolicyVersion ist ${meta.assetGenerationPolicyVersion ?? 'fehlend'}, erwartet ${policy.assetGenerationPolicyVersion}.`);
+    }
+    const a = meta.assetGenerationPolicy || {};
+    if (Number(a.coverCandidateCount) !== 3) errors.push('assetGenerationPolicy.coverCandidateCount muss 3 sein.');
+    requireTrue(errors, a.coverSelectionRequired, 'assetGenerationPolicy.coverSelectionRequired');
+    if (a.selectedCoverFinalName !== 'Bild 01.png') errors.push('assetGenerationPolicy.selectedCoverFinalName muss Bild 01.png sein.');
+    requireTrue(errors, a.discardUnselectedCoverCandidates, 'assetGenerationPolicy.discardUnselectedCoverCandidates');
+    if (Number(a.nonCoverGenerationCount) !== 1) errors.push('assetGenerationPolicy.nonCoverGenerationCount muss 1 sein.');
+    requireTrue(errors, a.nonCoverManualWaveReviewForbidden, 'assetGenerationPolicy.nonCoverManualWaveReviewForbidden');
+    requireTrue(errors, a.nonCoverRegenerationByDefaultForbidden, 'assetGenerationPolicy.nonCoverRegenerationByDefaultForbidden');
+    if (Number(a.maxConcurrentGenerations) !== 5) errors.push('assetGenerationPolicy.maxConcurrentGenerations muss 5 sein.');
+    requireTrue(errors, a.renameEachFinalImageExactlyOnce, 'assetGenerationPolicy.renameEachFinalImageExactlyOnce');
+    requireTrue(errors, a.finalImagesFlatInSingleFolder, 'assetGenerationPolicy.finalImagesFlatInSingleFolder');
+    if (a.finalImageDirectory !== '00-bildprompts/images') errors.push('assetGenerationPolicy.finalImageDirectory muss 00-bildprompts/images sein.');
+    requireTrue(errors, a.temporaryCoverCandidatesForbiddenInFinalFolder, 'assetGenerationPolicy.temporaryCoverCandidatesForbiddenInFinalFolder');
+  }
+
   const requiredPromptMarkers = [
     `YOUTUBE_VISUAL_POLICY_VERSION: ${policy.visualPolicyVersion}`,
     `ACTIVE_STYLE_ID: ${policy.visualStyleId}`,
@@ -96,6 +115,14 @@ async function main() {
       'Bild 01 is the cover AND the first video scene'
     );
   }
+  if (Number(meta.schemaVersion) >= 9) {
+    requiredPromptMarkers.push(
+      `ASSET_GENERATION_POLICY_VERSION: ${policy.assetGenerationPolicyVersion}`,
+      'COVER = 3 CANDIDATES HARD LOCK',
+      'NON-COVER = SINGLE GENERATION HARD LOCK',
+      'FINAL IMAGE FOLDER HARD LOCK'
+    );
+  }
   for (const marker of requiredPromptMarkers) if (!prompt.includes(marker)) errors.push(`Masterprompt fehlt Pflichtmarker: ${marker}`);
 
   const stalePatterns = [
@@ -109,7 +136,16 @@ async function main() {
   if (Number(meta.schemaVersion) >= 7) {
     stalePatterns.push(/BILD 00\s*[—-]\s*THUMBNAIL/i, /Bild 00.*Thumbnail/i, /Bild 00.*Timeline/i, /thumbnailImageNumber"\s*:\s*0/i);
   }
-  for (const pattern of stalePatterns) if (pattern.test(prompt)) errors.push(`Masterprompt enthält veraltete Bildwelt-/Coverregel: ${pattern}`);
+  if (Number(meta.schemaVersion) >= 9) {
+    stalePatterns.push(
+      /Welle prüfen/i,
+      /vollständig prüfen\. Erst danach/i,
+      /Fehler nur im betroffenen Bild regenerieren/i,
+      /Reject and regenerate any image/i,
+      /nächste Welle erst nach vollständigem Check/i
+    );
+  }
+  for (const pattern of stalePatterns) if (pattern.test(prompt)) errors.push(`Masterprompt enthält veraltete Bildwelt-/Cover-/Phase-2-Regel: ${pattern}`);
 
   if (errors.length > 0) {
     console.error('YouTube Phase-1-Policy: FEHLER');
@@ -119,7 +155,8 @@ async function main() {
   }
 
   const topicText = Number(meta.schemaVersion) >= 8 ? ', Themen-Editor FREI' : '';
-  console.log(`YouTube Phase-1-Policy: BESTANDEN — Visual Policy V${policy.visualPolicyVersion}, Cover Policy V${policy.coverPolicyVersion}${topicText}, Kanalfokus, Session-Schutz und Anti-Lifeless-Regeln sind aktiv.`);
+  const assetText = Number(meta.schemaVersion) >= 9 ? `, Asset Generation Policy V${policy.assetGenerationPolicyVersion}` : '';
+  console.log(`YouTube Phase-1-Policy: BESTANDEN — Visual Policy V${policy.visualPolicyVersion}, Cover Policy V${policy.coverPolicyVersion}${topicText}${assetText}, Kanalfokus, Session-Schutz und Anti-Lifeless-Regeln sind aktiv.`);
 }
 
 main().catch((error) => {
