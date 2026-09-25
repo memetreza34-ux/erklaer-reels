@@ -16,18 +16,22 @@ Der technische Themen-Editor hat das Thema **vor Projekterstellung als `APPROVED
 - Bild 01 = Cover + erste Videoszene + Thumbnail-Quelle
 - kein Bild 00
 - 16:9
-- Visual Policy V3
+- **Visual Policy V4**
+- **Serious Minimal Countryball Explainer**
+- Style-ID: `serious-minimal-countryball-explainer-youtube-16x9`
 - Cover Policy V1
 - Asset Generation Policy V1
-- jedes Bild unabhängig generieren
+- jedes Bild unabhängig aus seinem eigenen Textprompt
 - kein vorheriges Bild als Referenz
-- Premium-Editorial-Erklärillustration
+- keine normalen illustrierten Menschen / keine Stickfiguren / keine realistischen Vollszenen
 - sichtbarer Text ausschließlich Deutsch
 - keine Hintergrundmusik
 
+Die zuvor erzeugten Premium-Editorial-Bilder gehören zur verworfenen V3-Bildwelt und dürfen für dieses Projekt nicht verwendet werden.
+
 ## Phase 2
 
-Google Flow in einer frischen Sitzung:
+**Eine komplett frische Google-Flow-Sitzung verwenden.** Die alte Sitzung mit `premium-editorial-explainer-illustration-youtube-16x9` nicht fortsetzen.
 
 1. `00-bildprompts/google-flow-prompt.txt` vollständig einfügen.
 2. **Bild 01 exakt dreimal** als temporäre Cover-Kandidaten erzeugen.

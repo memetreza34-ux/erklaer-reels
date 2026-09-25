@@ -50,17 +50,20 @@ test('Reel-Style-Bibel liegt am konfigurierten Ort', async () => {
   assert.ok(knowledgeFiles.includes('fixed-visual-world.md'));
 });
 
-test('YouTube bleibt eigener Workflow und nutzt eine getrennte Editorial-Bildwelt', async () => {
-  const [workflow, readme, reelBible, youtubeWorld] = await Promise.all([
+test('YouTube bleibt eigener Workflow, nutzt aber wieder dieselbe Serious-Minimal-Countryball-DNA', async () => {
+  const [workflow, readme, reelBible, youtubeWorld, policy] = await Promise.all([
     read('CURRENT_WORKFLOW.md'),
     read('README.md'),
     read('knowledge/fixed-visual-world.md'),
-    read('youtube/YOUTUBE_VISUAL_WORLD.md')
+    read('youtube/YOUTUBE_VISUAL_WORLD.md'),
+    read('config/youtube-channel-policy.json').then(JSON.parse)
   ]);
 
-  assert.match(workflow, /eigene unabhängige 16:9-Editorial-Bildwelt|eigene YouTube-Bildwelt/i);
-  assert.match(readme, /premium-editorial-explainer-illustration-youtube-16x9/);
-  assert.match(reelBible, /YouTube.*nicht mehr automatisch|eigene 16:9-Bildwelt/i);
-  assert.match(youtubeWorld, /premium-editorial-explainer-illustration-youtube-16x9/);
-  assert.match(youtubeWorld, /kein.*Bild.*Referenz|no previous generated image as a visual reference/i);
+  assert.match(workflow, /serious-minimal-countryball-explainer-youtube-16x9/i);
+  assert.match(readme, /serious-minimal-countryball-explainer-youtube-16x9/i);
+  assert.match(reelBible, /dieselbe.*Countryball|gleiche.*Countryball|shared.*Countryball/i);
+  assert.match(youtubeWorld, /serious-minimal-countryball-explainer-youtube-16x9/i);
+  assert.equal(policy.visualStyleId, 'serious-minimal-countryball-explainer-youtube-16x9');
+  assert.equal(policy.sourceVisualWorldId, 'serious-minimal-countryball-explainer');
+  assert.match(youtubeWorld, /kein.*Referenz|do not use any previous generated image as a visual reference/i);
 });

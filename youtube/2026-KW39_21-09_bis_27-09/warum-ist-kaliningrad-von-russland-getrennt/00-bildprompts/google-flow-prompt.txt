@@ -1,7 +1,7 @@
-YOUTUBE_VISUAL_POLICY_VERSION: 3
+YOUTUBE_VISUAL_POLICY_VERSION: 4
 COVER_POLICY_VERSION: 1
 ASSET_GENERATION_POLICY_VERSION: 1
-ACTIVE_STYLE_ID: premium-editorial-explainer-illustration-youtube-16x9
+ACTIVE_STYLE_ID: serious-minimal-countryball-explainer-youtube-16x9
 
 GOOGLE FLOW MASTER PROMPT — Warum ist Kaliningrad von Russland getrennt?
 
@@ -55,70 +55,59 @@ No subfolders. No Bild 00. No cover candidates. No alternate versions. No extra 
 SESSION RESET HARD LOCK
 ==================================================
 
-- Use a fresh Google Flow session if older instructions conflict.
-- The ONLY active style is `premium-editorial-explainer-illustration-youtube-16x9`.
+- Use a completely fresh Google Flow session for this V4 prompt.
+- The ONLY active style is `serious-minimal-countryball-explainer-youtube-16x9`.
+- A session using `premium-editorial-explainer-illustration-youtube-16x9` is stale and must not be continued.
 - Do not use any previous generated image as a visual reference.
 - Bild 01 is a cover, NOT a master style reference.
 - Every image must be generated independently from its own complete text prompt.
 
 ==================================================
-WRITTEN STYLE LOCK — PREMIUM EDITORIAL EXPLAINER
+WRITTEN STYLE LOCK — SERIOUS MINIMAL COUNTRYBALL
 ==================================================
 
-Premium editorial explainer illustration for a modern educational YouTube documentary, 16:9 horizontal. Sophisticated high-quality 2D editorial illustration, crisp vector-like shapes, refined controlled linework, layered flat colors with subtle depth, selective paper/print texture, intentional light and shadow accents, strong hierarchy and a clear visual story. Adult documentary-magazine aesthetic. Historical scenes should feel authored and spatially believable without becoming photorealistic. Maps should be elegant editorial maps integrated into the story rather than sterile atlas screenshots. No glossy 3D, no Pixar, no clay, no anime, no photorealism.
+Serious Minimal Countryball Explainer visual world, exactly matching the active Reel visual DNA, adapted only to a 16:9 horizontal YouTube canvas. Clean serious minimal 2D countryball explainer. Perfectly round ball characters when an actor is useful, simple white eyes, thick clean black outlines, flat controlled colors, minimal soft graphic shading, low-to-medium controlled detail, one dominant focal subject, zero to three meaningful supporting props, simple solid or muted background with optional subtle paper texture or gradient, strong symbolic storytelling, adult and informative, never childish or goofy.
+
+Historical and geopolitical content must remain in this reduced visual language. Translate wars, conferences, migration and border changes into countryballs, simple maps, arrows, documents, trains, borders and symbols. Do NOT create realistic humans, realistic crowds, cinematic battle paintings, detailed conference-room people, photorealistic cities or realistic skin/hands.
+
+If a countryball actor is used:
+- perfectly round body
+- simple white eyes
+- thick clean black outline
+- restrained expression
+- tiny simple limbs only when needed
+- no hair, neck, realistic hands or human face
+
+If a map, object or symbol explains the idea more clearly, no countryball is required.
 
 ==================================================
 VISUAL STORYTELLING HARD LOCK
 ==================================================
 
-Do not merely place nouns from the narration on screen. Show the relationship, consequence, conflict, transition or spatial idea.
-
-When useful:
-- use foreground, midground and background;
-- use diagonals, leading lines, overlap, scale contrast and asymmetry;
-- make cause and effect visible;
-- use restrained editorial human figures for historical scenes when people improve understanding;
-- use maps only when geography itself is the explanation;
-- use different palette emphasis for pre-1945, wartime, Soviet era, 1991 and present day;
-- prefer a narrative scene over a generic card when both can explain the same idea.
+Stay minimal, but make the relationship instantly understandable. Use simple arrows, routes, borders, scale contrast, split maps, documents and a few purposeful props. Vary placement and arrangement while keeping exactly the same Countryball visual DNA.
 
 ==================================================
 ANTI-LIFELESS HARD LOCK
 ==================================================
 
-Avoid flat, empty, generic, sterile or presentation-slide-like results before generation.
+Avoid tiny isolated objects lost in huge empty backgrounds, meaningless icon collages and the exact same centered-countryball composition on every image. Use the canvas deliberately, but do not add realistic detail merely to make it busy.
 
-Hard failures to prevent in the prompt itself:
-- one small centered object floating on blank background;
-- generic icon collage;
-- repeated Baltic map with only labels changed;
-- excessive empty pastel space;
-- front-on composition with no depth or directional energy;
-- repeated composition mode in adjacent images without narrative reason;
-- decorative props that do not explain the narration.
-
-Clean does NOT mean empty. Minimal does NOT mean lifeless. Non-cover images still receive only one generation.
+Clean does NOT mean empty. Minimal does NOT mean lifeless.
 
 ==================================================
-INDIVIDUALITY HARD LOCK
+HARD NEGATIVES
 ==================================================
 
-- Create a fresh composition for every Bild NN.
-- Do not imitate or reuse the previous image's layout, camera angle, object placement, background structure, architecture, dominant shapes or palette arrangement.
-- Do not use any previous generated image as a visual reference.
-- Intentionally rotate between editorial hero, historical panorama, narrative mini-scene, diplomatic-table scene, map/spatial explainer, migration scene, before/after transformation and conceptual geography.
-- Adjacent images should normally change angle, scale, depth structure and palette emphasis.
-
-HARD NEGATIVES:
-no mandatory mascot, no countryball template, no stick figures, no childish cartoon look, no cheap clipart, no generic AI template, no empty presentation-card aesthetic, no glossy 3D, no Pixar, no clay, no anime, no photorealistic stock-photo look, no watermark.
+No normal illustrated humans. No humanoid cartoon people. No stick figures. No realistic people. No realistic hands or skin. No photorealism. No cinematic realistic full scenes. No glossy 3D. No Pixar. No clay. No anime. No childish gag faces. No busy icon collage. No watermark.
 
 ==================================================
-DEUTSCH-HARD-LOCK — JEDER SICHTBARE TEXT
+DEUTSCH-HARD-LOCK
 ==================================================
 
 This is a GERMAN project. Every readable word visible anywhere in every image MUST be German.
 Do NOT generate English labels. Do NOT generate pseudo-text or fake writing.
 If text is not explicitly required, generate NO TEXT.
+English visible text or pseudo-text = HARD FAIL in the planned output.
 Non-cover images are still generated exactly once.
 
 ==================================================
@@ -128,7 +117,7 @@ ABLAUF
 1. Bild 01 exakt dreimal als temporäre Cover-Kandidaten erzeugen.
 2. Genau einen Gewinner auswählen, einmal final zu `Bild 01.png` umbenennen, die zwei anderen Kandidaten verwerfen.
 3. Bild 02–24 jeweils genau einmal aus dem eigenen Textprompt erzeugen.
-4. Keine manuellen Prüfstopps zwischen den 5er-Wellen; automatisch bis Bild 24 weiterarbeiten.
+4. Keine manuellen Prüfstopps zwischen den 5er-Wellen; bis Bild 24 weiterarbeiten.
 5. Maximal fünf aktive Bildgenerierungen gleichzeitig.
 6. Jedes fertige Nicht-Cover-Bild genau einmal auf `Bild NN.png` benennen.
 7. Alle finalen Bilder flach unter `00-bildprompts/images/` sammeln.
@@ -148,119 +137,114 @@ BILD 01 — COVER + ERSTE VIDEOSZENE
 ==================================================
 
 Bild 01 · D · ca. 10 s
-Premium editorial geopolitical cover, 16:9. Show a wide Baltic-region map transformed into a dramatic spatial scene: Poland and Lithuania form the central land barrier, Kaliningrad is a compact highlighted Russian territory on the Baltic coast at left-center, while the much larger Russian mainland sits far to the right, visibly disconnected. Use layered coastlines, subtle relief, a strong diagonal visual route that stops at foreign borders, deep navy and muted sand with a controlled crimson accent on Kaliningrad. The image must instantly communicate "Russian territory cut off from Russia". Add exactly one large German headline: "KALININGRAD: WARUM RUSSISCH?". No other readable text.
+Serious Minimal Countryball Explainer, 16:9. Strong cover composition. Show a simplified Baltic-region map with thick black borders. A large round Russia countryball sits far right. A smaller matching Russia-marked Kaliningrad countryball sits isolated far left near the Baltic coast, visibly separated by Poland and Lithuania as two simple colored land blocks. A bold broken red route between Kaliningrad and the Russian mainland stops at the foreign borders. Dark muted navy background, controlled red accent, clean flat 2D shapes. Add exactly one large German headline: "KALININGRAD: WARUM RUSSISCH?". No other readable text. No humans, no realistic map texture.
 
 ==================================================
 BILD 02–05 — JEWEILS GENAU EINMAL
 ==================================================
 
 Bild 02 · A · ca. 4,5 s
-Conceptual geographic close-up, 16:9. Show Kaliningrad as a clearly isolated coastal territory separated from a distant Russian mainland by two layers of foreign land. Instead of a flat map card, create depth with a raised-paper terrain effect in 2D editorial style, a route line that attempts to continue east but crosses distinct borders, and the Baltic Sea opening behind the region. Add exactly: "GETRENNT VOM KERNLAND". Strong asymmetry, no repeated cover composition.
+Serious Minimal Countryball Explainer, 16:9. Place a small Kaliningrad territory block with a tiny Russia countryball on the left and a much larger Russia countryball on the far right. Between them, two clean foreign-border blocks form a visible barrier. A simple route arrow tries to connect both Russian areas but is interrupted twice. Muted background, thick outlines, minimal props. Add exactly: "GETRENNT VOM KERNLAND".
 
 Bild 03 · B · ca. 6 s
-Historical editorial panorama of prewar Königsberg and East Prussia, 16:9. View from slightly above a busy Baltic city with brick architecture, river, bridges, port activity and distant countryside, while an understated historical map contour of East Prussia is integrated into the sky/background like printed cartography. Warm sepia, deep teal water, muted brick red. Add only: "KÖNIGSBERG". The mood is established, prosperous and prewar, not military.
+Serious Minimal Countryball Explainer, 16:9. Historical Königsberg before 1945 represented symbolically: a black-white historically coded Prussian-style countryball beside a simplified brick-city silhouette, a river line and one small port crane, all inside a clean outline of East Prussia. Warm muted beige background, dark teal river, controlled brick-red accents. Add only: "KÖNIGSBERG". No modern German flag if historically inappropriate, no realistic people.
 
 Bild 04 · B · ca. 6 s
-Wartime historical narrative scene, 16:9. Show East Prussia in early 1945 becoming a battlefield: a winter landscape seen from a high diagonal perspective, civilian roads moving west in the foreground, military arrows and distant armored silhouettes advancing from the east in the midground, damaged towns on the horizon. Serious restrained editorial treatment, slate gray, snow white and muted red directional accents. Add only: "1945".
+Serious Minimal Countryball Explainer, 16:9. Show a simplified winter map of East Prussia. A red Soviet countryball advances from the east with one bold arrow; a black-white historically coded East-Prussia/Prussia countryball is pushed west. Add two or three tiny simplified snow/road cues, no battle realism. Strong directional composition. Add only: "1945".
 
 Bild 05 · B · ca. 6 s
-Historical siege aftermath scene, 16:9. Show Königsberg in April 1945 from street level with damaged brick facades framing the foreground and Soviet troops moving into the city through a deep central corridor. Keep violence non-graphic; focus on the decisive capture and devastated urban space. Use strong perspective, smoky blue-gray atmosphere, small red military accents. Add exactly: "APRIL 1945".
+Serious Minimal Countryball Explainer, 16:9. A simplified Königsberg city-block silhouette with one damaged tower icon sits center-left. A red Soviet countryball has reached the city from the right, marked by one decisive arrow. Keep destruction symbolic with two cracks/smoke shapes only, no realistic soldiers. Add exactly: "APRIL 1945".
 
 ==================================================
 BILD 06–10 — JEWEILS GENAU EINMAL
 ==================================================
 
 Bild 06 · C · ca. 8 s
-Diplomatic postwar scene, 16:9. A large table dominates the foreground with a detailed editorial map of central and eastern Europe spread across it. Three sets of hands and documents approach the map from different sides, while displaced border lines are being redrawn across the paper. In the background, war-damaged Europe fades into a calmer conference-room environment. No portraits needed. Add exactly: "EUROPA WIRD NEU GEORDNET". Sophisticated magazine composition, no icon collage.
+Serious Minimal Countryball Explainer, 16:9. A simple Europe map sheet lies in the center. Three large round countryballs representing USSR, USA and UK stand around it, each with one simple document card. Thick boundary lines on the map are being redrawn with two bold arrows. Background minimal conference color field, no realistic table or human hands. Add exactly: "EUROPA WIRD NEU GEORDNET".
 
 Bild 07 · C · ca. 8 s
-Potsdam Conference explainer scene, 16:9. Show a formal 1945 conference table with three restrained editorial statesman silhouettes around it, but make the real focal point a large East Prussia map in the center being divided by a bold line. Use papers, pencils and boundary markings to show decision-making. Deep green table, cream documents, dark suits, red boundary accent. Add exactly: "POTSDAM 1945". No other text.
+Serious Minimal Countryball Explainer, 16:9. USSR, USA and UK countryballs arranged around a simplified map of East Prussia. A thick dividing line splits the territory while a small document labeled only by the required headline sits below. Clear focus on the map, countryballs as decision-makers, no human statesmen. Add exactly: "POTSDAM 1945".
 
 Bild 08 · B · ca. 6 s
-Map-spatial transformation, 16:9. Show the former East Prussia as one territory splitting into two visually distinct administrative zones: the larger southern section flows downward into Poland, while the northern Königsberg section remains highlighted separately. Use a torn-map / sliding-territory editorial metaphor with clear geographic coastlines, not a sterile rectangular infographic. Add only the German labels "POLEN" and "NORDEN".
+Serious Minimal Countryball Explainer, 16:9. Show the East Prussia territory as one simple outlined shape splitting into two colored pieces. The large southern piece slides toward a Poland countryball below; the smaller northern piece remains separate above. Two clean arrows show the split. Add only the German labels "POLEN" and "NORDEN".
 
 Bild 09 · C · ca. 8 s
-Geopolitical decision scene, 16:9. Focus on the northern Königsberg area as a highlighted coastal piece on a map. From the east, a broad Soviet-red directional band reaches the territory; from the west, two smaller document markers representing U.S. and British support sit beside the Potsdam agreement, without flags dominating the scene. The composition should show transfer by diplomatic decision, not conquest alone. Add exactly: "AN DIE SOWJETUNION".
+Serious Minimal Countryball Explainer, 16:9. The northern Königsberg territory is centered as a small outlined land piece. A large Soviet countryball on the right points one bold arrow toward it. Smaller USA and UK countryballs on the left each hold a simple approval document/check symbol. Keep the transfer diplomatic and symbolic, not military. Add exactly: "AN DIE SOWJETUNION".
 
 Bild 10 · B · ca. 6 s
-Baltic territorial scene, 16:9. Show the newly Soviet-controlled northern part of former East Prussia as a coastal region integrated into a larger Soviet-colored map system, with port, rail and coastline elements extending into the Baltic. Use an oblique topographic perspective and cool blue sea against muted red-brown land. Add exactly: "SOWJETISCHES GEBIET".
+Serious Minimal Countryball Explainer, 16:9. Show the northern territory on the Baltic coast now filled in Soviet red and connected visually to a large Soviet countryball by one clean curved arrow. Add one tiny port symbol and one rail line as supporting props. Add exactly: "SOWJETISCHES GEBIET".
 
 ==================================================
 BILD 11–15 — JEWEILS GENAU EINMAL
 ==================================================
 
 Bild 11 · B · ca. 6 s
-Administrative-history illustration, 16:9. Show a 1946 Soviet administrative map on a large drafting table. The new coastal oblast is nested visually inside the Russian Soviet Republic, with surrounding Soviet republic boundaries rendered as internal lines rather than international barriers. Use stamps and clean cartographic hierarchy, but avoid fake unreadable documents. Add exactly two readable elements: "1946" and "RUSSISCHE SOWJETREPUBLIK".
+Serious Minimal Countryball Explainer, 16:9. A simple nested administrative diagram: large Soviet Union outline, inside it a highlighted Russian Soviet Republic area, and at its western edge the small Kaliningrad region. Use thick lines, three flat color levels and one stamp-like year cue. Add exactly: "1946" and "RUSSISCHE SOWJETREPUBLIK".
 
 Bild 12 · B · ca. 6 s
-Urban renaming scene, 16:9. A large old city sign reading "KÖNIGSBERG" is being physically replaced in the foreground by a new sign reading "KALININGRAD", with a rebuilt Soviet-era streetscape emerging behind it. Use a side-angle composition with workers and scaffolding as supporting action, not a centered sign card. Visible text must be exactly: "KÖNIGSBERG → KALININGRAD".
+Serious Minimal Countryball Explainer, 16:9. Center a simple city-sign transformation: old sign "KÖNIGSBERG" on the left slides away while new sign "KALININGRAD" slides in from the right. A red Soviet countryball stands beside the new sign with one tiny wrench/administrative document prop. No realistic workers. Visible text exactly: "KÖNIGSBERG → KALININGRAD".
 
 Bild 13 · C · ca. 8 s
-Postwar departure scene, 16:9. Show remaining German civilians leaving a damaged East Prussian railway station with suitcases and bundles, walking toward a train and away from the city. Keep faces simplified and respectful, no melodrama, no military heroism. Strong foreground silhouettes, station architecture in midground, receding tracks creating depth. Muted gray-brown palette. No visible text.
+Serious Minimal Countryball Explainer, 16:9. Symbolic postwar departure: two or three small black-white historically coded German/Prussian countryballs with tiny suitcases move along a simple arrow toward a train icon leaving the Kaliningrad region outline. The region remains behind with muted damaged-building symbols. Respectful restrained expressions, no crowd realism, no visible text.
 
 Bild 14 · B · ca. 6 s
-Postwar resettlement and rebuilding scene, 16:9. Show Soviet families arriving from different directions with luggage into the same region, while damaged buildings are being repaired and new housing rises in the background. Use a wide dynamic composition with movement inward rather than outward, brighter muted colors than Bild 13 to signal a new demographic phase. Add exactly: "NEUE BEWOHNER".
+Serious Minimal Countryball Explainer, 16:9. Reverse movement from Bild 13: several small Soviet-red or neutral Soviet-coded countryballs arrive by simple arrows toward the Kaliningrad region. Add one small suitcase, one simple rebuilt apartment-block icon and one crane icon. Brighter muted palette. Add exactly: "NEUE BEWOHNER".
 
 Bild 15 · B · ca. 6 s
-Soviet-era spatial explainer, 16:9. Show the USSR as one continuous political space with Kaliningrad at the western edge and the Russian core far east. Lithuania sits between them but is visually rendered as an internal Soviet republic with a dashed administrative boundary, while a continuous rail route crosses through without an international checkpoint. Add exactly: "EIN STAAT". Make it a lived transport scene integrated with the map, not a flat diagram.
+Serious Minimal Countryball Explainer, 16:9. A simplified USSR map spans the frame. Kaliningrad sits at the far west while the Russian core is far east. Lithuania is shown only as an internal Soviet area with a dashed internal boundary. One continuous train route crosses Lithuania with no checkpoint. A Soviet countryball anchors the composition. Add exactly: "EIN STAAT".
 
 ==================================================
 BILD 16–20 — JEWEILS GENAU EINMAL
 ==================================================
 
 Bild 16 · A · ca. 5 s
-Clean but spatial political map scene, 16:9. Focus tightly on Kaliningrad, Lithuania and the Russian core within the Soviet Union. The Lithuania boundary is visibly internal and permeable; a train line passes across it uninterrupted. Use one clear visual idea and strong diagonal route movement. Add exactly: "LITAUEN = TEIL DER UdSSR". No other text.
+Serious Minimal Countryball Explainer, 16:9. Tight simple map: Kaliningrad on left, Lithuania in middle, Russian core on right, all inside one Soviet outer border. A single rail line passes through Lithuania uninterrupted. Add exactly: "LITAUEN = TEIL DER UdSSR". No other text.
 
 Bild 17 · A · ca. 4,5 s
-Historical turning-point image, 16:9. Show a large printed map of the Soviet Union cracking into separate state-shaped pieces, with the year 1991 sharply centered at the fracture point. Kaliningrad remains attached by color to the Russian piece even as Lithuania separates geographically. Dramatic but clean editorial composition, dark background and bright fracture lines. Add only: "1991".
+Serious Minimal Countryball Explainer, 16:9. A large simple USSR shape cracks into several clean colored pieces. The crack runs between Lithuania and the Russian/Kaliningrad pieces. Kaliningrad remains the same red color as Russia. One bold year sits at the center: "1991". No extra labels.
 
 Bild 18 · C · ca. 7 s
-Before-and-after geopolitical transformation, 16:9. Left side: Soviet-era continuous internal route from Russia through Lithuania to Kaliningrad. Right side: after 1991, Lithuania is an independent state with a strong international border, while Kaliningrad remains Russian. Make the transformation flow across the frame with the same route becoming interrupted by checkpoints. Add exactly: "AUS BINNENGRENZE WIRD STAATSGRENZE".
+Serious Minimal Countryball Explainer, 16:9. Clear before/after split composition without realistic scenes. Left: one continuous Soviet outer border and uninterrupted route. Right: independent Lithuania appears as its own outlined block with border gates, while Kaliningrad remains Russia-colored. Use one transforming route line across the center. Add exactly: "AUS BINNENGRENZE WIRD STAATSGRENZE".
 
 Bild 19 · B · ca. 6 s
-Border-separation narrative scene, 16:9. View from a transport route leaving Kaliningrad toward the east. In the foreground the road and rail begin inside Russian territory; in the midground they meet a clearly foreign international border checkpoint; the distant Russian mainland lies far beyond. Strong depth and leading lines. Add exactly: "KEIN DIREKTER LANDWEG".
+Serious Minimal Countryball Explainer, 16:9. A Kaliningrad countryball stands on the left beside a road/rail route toward a distant Russia countryball on the right. Between them is one large foreign-border barrier/checkpoint symbol. Strong horizontal separation, few elements. Add exactly: "KEIN DIREKTER LANDWEG".
 
 Bild 20 · B · ca. 6 s
-Modern geopolitical neighborhood scene, 16:9. Show Kaliningrad physically enclosed on land by Poland and Lithuania as European states, using a sophisticated layered map blended with real-world border infrastructure, EU-style blue-gold visual cues and restrained NATO security symbolism in the surroundings. Do not turn it into a logo collage. No readable text required.
+Serious Minimal Countryball Explainer, 16:9. Kaliningrad countryball sits in a small territory between a Poland countryball below and a Lithuania countryball above/right. Use restrained EU blue/gold border accents around Poland and Lithuania plus one small shield/star security cue, but no logo collage. The Russia countryball remains far away. No visible text.
 
 ==================================================
 BILD 21–24 — JEWEILS GENAU EINMAL
 ==================================================
 
 Bild 21 · A · ca. 5 s
-Present-day geographic hero map, 16:9. Show Kaliningrad clearly between Poland to the south, Lithuania to the north/east and the Baltic Sea to the west, while the Russian mainland is visibly separate far to the east. Elegant modern editorial cartography with coastline depth and clean political boundaries. Add only the German labels "POLEN", "LITAUEN", "KALININGRAD" and "RUSSLAND".
+Serious Minimal Countryball Explainer, 16:9. Present-day simplified Baltic map with thick black borders and flat colors. Kaliningrad highlighted between Poland and Lithuania, Baltic Sea as one blue field, Russia far to the east. Use four clean German labels only: "POLEN", "LITAUEN", "KALININGRAD", "RUSSLAND".
 
 Bild 22 · A · ca. 5 s
-Route explainer, 16:9. Start with a vehicle/rail marker inside Kaliningrad on the left and trace a bold route toward the Russian mainland on the right. The route must visibly cross at least one foreign national territory and two international border gates before reaching Russia. Use a dynamic horizontal journey composition rather than a static map. Add exactly: "LANDWEG DURCH ANDERE STAATEN".
+Serious Minimal Countryball Explainer, 16:9. A small vehicle/rail icon starts inside Kaliningrad on the left and follows a bold route toward a Russia countryball on the right. The route visibly crosses a foreign territory block and two border gates. Minimal horizontal journey layout. Add exactly: "LANDWEG DURCH ANDERE STAATEN".
 
 Bild 23 · C · ca. 8 s
-Conceptual explainer of an exclave, 16:9. Kaliningrad appears as a detached puzzle-like territory that matches Russia's color and political identity but is physically surrounded by other states and sea. Behind it, three translucent historical layers show war in 1945, border redrawing after Potsdam and the Soviet breakup in 1991 converging into the present shape. Add one strong German term: "EXKLAVE". Rich depth, clear cause-and-effect, no generic icons.
+Serious Minimal Countryball Explainer, 16:9. Explain the term visually: a small Kaliningrad territory piece with a Russia countryball is detached from a much larger Russia territory on the opposite side. Around Kaliningrad sit simple Poland/Lithuania blocks and the Baltic Sea. Behind it, three tiny symbolic timeline cues — "1945", a border-split icon, and "1991" — point toward the present. Add one large German term: "EXKLAVE".
 
 Bild 24 · C · ca. 8 s
-Final editorial timeline scene, 16:9. Build one flowing left-to-right visual story: first Königsberg/East Prussia before 1945, then the 1945 postwar transfer to the Soviet sphere, then the 1991 breakup separating Lithuania, ending with present-day Kaliningrad isolated between Poland and Lithuania. Use one continuous coastline/map ribbon through all three eras, not separate boxed panels. Add exactly three German time labels: "1945", "1991", "HEUTE". The final frame should feel like a satisfying historical answer.
+Serious Minimal Countryball Explainer, 16:9. Final clean left-to-right visual chain with three connected stages, not boxed realistic scenes: first a black-white Königsberg/East-Prussia territory cue, then a Soviet-red Kaliningrad territory cue, then the present-day detached Russia-colored Kaliningrad beside Poland and Lithuania. Use one continuous arrow linking all stages. Add exactly three labels: "1945", "1991", "HEUTE". End with the present-day Kaliningrad/Russia separation as the strongest element.
 
 ==================================================
 FINALER CHECK
 ==================================================
 
-- Asset Generation Policy V1 aktiv
-- Bild 01 exakt dreimal als Cover-Kandidat erzeugt
-- genau ein Cover-Gewinner als Bild 01.png behalten
-- zwei verworfene Cover-Kandidaten nicht im finalen Ordner
-- Bild 02–24 jeweils genau einmal generiert
-- keine manuellen Prüfstopps nach 5er-Wellen
-- jedes finale Bild genau einmal korrekt benannt
-- alle 24 finalen Bilder gemeinsam flach unter `00-bildprompts/images/`
-- keine Unterordner, Varianten oder Zusatz-PNGs
-- Cover Policy V1 aktiv
+- Visual Policy V4 aktiv
+- ACTIVE_STYLE_ID = serious-minimal-countryball-explainer-youtube-16x9
+- alte Serious-Minimal-Countryball-Bildwelt konsequent erhalten
+- keine normalen Menschen, keine Stickfiguren, keine realistischen Vollszenen
 - Bild 01 = Cover + erste Videoszene
 - Bild 01 enthält "KALININGRAD: WARUM RUSSISCH?"
+- Cover exakt 3×, genau 1 Gewinner
+- Bild 02–24 jeweils exakt 1×
 - kein Bild 00
 - keine separate Thumbnail-Datei in der Bildproduktion
+- 24 finale Bilder vollständig
+- alle finalen Bilder flach in `00-bildprompts/images/`
+- keine Cover-Kandidaten/Varianten/Extras im finalen Ordner
 - 16:9 horizontal
-- hochwertige Premium-Editorial-Illustration
-- jede Szene eigene Bildidee und eigene Komposition
 - keine Bild-zu-Bild-Referenzen
-- kein Countryball-/Stickman-/Kinderlook
-- keine leblosen Präsentationskarten
 - jeder sichtbare Text ausschließlich Deutsch

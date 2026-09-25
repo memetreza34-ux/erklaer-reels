@@ -13,7 +13,7 @@ Geprüft gegen:
 - `config/youtube-topic-registry.json`
 - vorhandene `youtube/**/99-technik/video.json`
 
-Bei `REVIEW_SIMILAR` oder `BLOCKED_DUPLICATE` darf künftig kein neues Projekt automatisch angelegt werden.
+Bei `REVIEW_SIMILAR` oder `BLOCKED_DUPLICATE` darf kein neues Projekt automatisch angelegt werden.
 
 ## Titel
 
@@ -44,8 +44,12 @@ Kaliningrad, Königsberg, Russland, Ostpreußen, Sowjetunion, Potsdam, Grenzen, 
 - 24 monotone Audioanker
 - jedes Bild eigener vollständiger Flow-Prompt
 - keine Bild-zu-Bild-Referenzen
-- Visual Policy V3 / Cover Policy V1 / Asset Generation Policy V1
-- Premium-Editorial-Stil
+- **Visual Policy V4**
+- Cover Policy V1
+- Asset Generation Policy V1
+- aktive Bildwelt: `serious-minimal-countryball-explainer-youtube-16x9`
+- gleiche Serious-Minimal-Countryball-DNA wie die Reels, nur 16:9
+- historische Szenen symbolisch/reduziert statt realistische Menschen- oder Filmszenen
 - A–E-Komplexität hinterlegt
 - SFX selektiv geplant
 - Kapitel an Bildnummern gebunden
@@ -58,6 +62,8 @@ Benötigt:
 00-bildprompts/google-flow-prompt.txt
 01-voice-script/voice-script.txt
 ```
+
+**Frische Flow-Sitzung Pflicht.** Die bisherige Premium-Editorial-Sitzung und deren erzeugte Bilder werden nicht weiterverwendet.
 
 Verbindlicher Flow-Ablauf:
 
@@ -82,6 +88,20 @@ Danach:
 npm run validate:youtube-phase2 -- --dir "youtube/2026-KW39_21-09_bis_27-09/warum-ist-kaliningrad-von-russland-getrennt"
 ```
 
+## Bildwelt V4
+
+- cleane, seriöse 2D-Countryball-Erklärwelt
+- perfekt runde Akteure, wenn Akteure sinnvoll sind
+- weiße Augen, dicke schwarze Konturen, flache Farben
+- geringe bis mittlere Detaildichte
+- 0–3 sinnvolle Requisiten
+- Karten, Pfeile, Grenzen, Dokumente und Symbole statt realistischer Vollszenen
+- keine normalen illustrierten Menschen
+- keine humanoiden Cartoon-Personen
+- keine Stickfiguren
+- kein Fotorealismus / kein 3D/Pixar/Clay/Anime
+- sichtbarer Text nur Deutsch
+
 ## Audio-Regel
 
 1. Nutzeroriginal unverändert lassen.
@@ -95,15 +115,15 @@ npm run validate:youtube-phase2 -- --dir "youtube/2026-KW39_21-09_bis_27-09/waru
 ## Abnahme
 
 Fertig erst wenn:
-- Themen-Editor im Phase-1-Gate weiterhin `APPROVED_NEW` liefert
+- Themen-Editor weiterhin `APPROVED_NEW` liefert
+- Visual Policy V4 und Countryball-Style-ID bestehen
 - Bild 01 Cover + Timeline-Start + Thumbnail-Quelle ist
 - Cover genau 3x erzeugt und genau 1 Gewinner behalten wurde
 - Bild 02–24 jeweils genau 1x erzeugt wurden
 - keine manuellen Prüfstopps nach 5er-Wellen stattfinden
-- jedes finale Bild genau einmal korrekt benannt ist
 - `00-bildprompts/images/` exakt Bild 01.png bis Bild 24.png enthält
 - keine Bild-zu-Bild-Referenz benutzt wurde
-- Bilder individuell, lebendig und szenenspezifisch sind
+- keine Premium-Editorial-/realistische Menschenszene verwendet wird
 - Audio-Hard-Gate bestanden ist
 - Timeline auf echten Wortzeiten basiert
 - Pre-/Post-Render-Gates Exit 0 liefern

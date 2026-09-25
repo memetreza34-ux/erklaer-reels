@@ -40,6 +40,9 @@ test('Kaliningrad-Projekt hat 2,5-Minuten-Ziel, Themen-Proof, Asset Policy und 2
   ]);
 
   assert.equal(meta.schemaVersion, 9);
+  assert.equal(meta.visualPolicyVersion, 4);
+  assert.equal(meta.visualStyleId, 'serious-minimal-countryball-explainer-youtube-16x9');
+  assert.equal(meta.sourceVisualWorldId, 'serious-minimal-countryball-explainer');
   assert.equal(meta.assetGenerationPolicyVersion, 1);
   assert.equal(meta.assetGenerationPolicy.coverCandidateCount, 3);
   assert.equal(meta.assetGenerationPolicy.nonCoverGenerationCount, 1);
@@ -68,9 +71,11 @@ test('Kaliningrad-Projekt hat 2,5-Minuten-Ziel, Themen-Proof, Asset Policy und 2
   }
 });
 
-test('Flow-Prompt enthält alle 24 unabhängigen Bildprompts und Cover Policy', async () => {
+test('Flow-Prompt enthält alle 24 unabhängigen Bildprompts, Countryball V4 und Cover Policy', async () => {
   const prompt = await readFile(`${PROJECT}/00-bildprompts/google-flow-prompt.txt`, 'utf8');
-  assert.match(prompt, /YOUTUBE_VISUAL_POLICY_VERSION: 3/);
+  assert.match(prompt, /YOUTUBE_VISUAL_POLICY_VERSION: 4/);
+  assert.match(prompt, /ACTIVE_STYLE_ID: serious-minimal-countryball-explainer-youtube-16x9/);
+  assert.match(prompt, /WRITTEN STYLE LOCK — SERIOUS MINIMAL COUNTRYBALL/);
   assert.match(prompt, /COVER_POLICY_VERSION: 1/);
   assert.match(prompt, /ASSET_GENERATION_POLICY_VERSION: 1/);
   assert.match(prompt, /FIRST SCENE = COVER HARD LOCK/);
@@ -91,6 +96,7 @@ test('Kaliningrad-Projekt besteht das echte Phase-1-Gate inklusive Themen-Editor
     '--dir', PROJECT
   ], { encoding: 'utf8' });
   assert.equal(result.status, 0, result.stderr || result.stdout);
+  assert.match(result.stdout, /Serious-Minimal-Countryball V4/);
   assert.match(result.stdout, /Themen-Editor FREI/);
   assert.match(result.stdout, /Asset Generation Policy V1/);
 });

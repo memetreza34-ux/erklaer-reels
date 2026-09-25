@@ -1,13 +1,14 @@
 # YouTube
 
-Dieser Bereich ist die eigenständige Produktionspipeline für YouTube-Langvideos. Reel-Code und Reel-Bildwelt bleiben getrennt.
+Dieser Bereich ist die eigenständige Produktionspipeline für YouTube-Langvideos. Der Workflow ist getrennt, die visuelle DNA ist wieder mit den Reels geteilt.
 
 Für neue YouTube-Videos gilt:
 
 ```text
-Visual Policy V3
+Visual Policy V4
 Cover Policy V1
-premium-editorial-explainer-illustration-youtube-16x9
+Asset Generation Policy V1
+serious-minimal-countryball-explainer-youtube-16x9
 ```
 
 ## Kanalfokus
@@ -20,8 +21,20 @@ Autonom neue Themen bleiben in Politik/Staatssystemen, Geschichte, Ländern/Geog
 - Bild 01 beginnt bei 0,0 s.
 - Bild 01 trägt eine starke kurze deutsche Cover-Überschrift und erklärt zugleich den ersten Sprecherabschnitt.
 - `THUMBNAIL.png` wird direkt aus `Bild 01.png` exportiert.
-- Für neue Projekte gibt es **kein Bild 00** und kein separates Thumbnail außerhalb der Timeline.
+- kein Bild 00
+- kein separates Thumbnail außerhalb der Timeline
 - Bild 01 ist kein Master-Style-Frame und keine Referenz für spätere Bilder.
+
+## Asset Generation Policy V1
+
+- Bild 01 / Cover exakt **3×** generieren.
+- genau 1 Gewinner auswählen.
+- Gewinner einmal final zu `Bild 01.png` umbenennen.
+- andere 2 Cover-Kandidaten verwerfen.
+- Bild 02–NN jeweils **exakt 1×** generieren.
+- keine manuellen Prüfstopps nach 5er-Blöcken.
+- maximal fünf aktive Generierungen gleichzeitig = nur Last-/Parallelitätsregel.
+- alle finalen Bilder flach in `00-bildprompts/images/`.
 
 ## Verbindliche Reihenfolge
 
@@ -48,59 +61,72 @@ Vor Übergabe an Flow:
 npm run validate:youtube-phase1 -- --dir "youtube/<woche>/<thema>"
 ```
 
-Das Gate blockiert alte Countryball-/Master-Reference-Regeln, falsche Style-ID, fehlende Policy-Marker sowie bei neuen Projekten ein separates Bild 00.
+Neue Schema-9+-Projekte müssen Visual Policy V4 und die Serious-Minimal-Countryball-Bildwelt verwenden. Die zwischenzeitliche Premium-Editorial-Bildwelt ist dort nicht mehr aktiv.
 
 ## Phase 2 — Google Flow
 
-Wenn eine bestehende Flow-Sitzung alte Stil- oder Coverregeln enthält, wird sie nicht weiterverwendet:
+Da die Bildwelt auf V4 zurückgesetzt wurde, für aktuelle/neue Produktionen eine **frische Flow-Sitzung** verwenden.
 
 ```text
-STOP
+STOP bei alter Premium-Editorial-Sitzung
 → frische Flow-Sitzung / frisches Flow-Projekt
 → aktuellen google-flow-prompt.txt vollständig neu einfügen
 ```
 
-### Unabhängige Bilder
+### Bildproduktion
 
-- Bild 01 separat als **Cover + erste Szene**
-- Bild 02–NN jeweils aus eigenem Textprompt
-- keine Bild-zu-Bild-Referenzen
-- **5er-Wellen** nur als Ausführungsregel
+- Bild 01 exakt 3× → einen Gewinner wählen
+- Bild 02–NN jeweils genau 1×
+- kein vorheriges Bild als Referenz
+- maximal fünf aktive Generierungen gleichzeitig
+- kein Review-Stop nach 5er-Gruppen
 - kein Bild 00
 
-## Visual Policy V3
+Nach Abschluss:
 
-Style-ID: `premium-editorial-explainer-illustration-youtube-16x9`
+```bash
+npm run validate:youtube-phase2 -- --dir "youtube/<woche>/<thema>"
+```
+
+## Visual Policy V4 — Serious Minimal Countryball
+
+Style-ID: `serious-minimal-countryball-explainer-youtube-16x9`
+
+Quell-DNA: `serious-minimal-countryball-explainer`
 
 Verbindlich:
-- hochwertige 2D-Editorial-/Dokumentar-Erklärillustration
 - 16:9 horizontal
-- szenenspezifische Art Direction
-- erwachsene Magazin-/Dokumentarwirkung
-- geschichtete Tiefe
-- kontrollierte Farbpaletten und Lichtakzente
-- klare visuelle Hierarchie
-- Ursache/Wirkung, Bewegung, Kontrast oder räumliche Beziehung sichtbar, wenn relevant
-- keine Countryballs als Standard
+- seriöse, cleane, minimalistische 2D-Countryball-Erklärwelt
+- perfekt runde Countryball-Akteure, wenn Akteure sinnvoll sind
+- einfache weiße Augen
+- dicke schwarze Konturen
+- flache kontrollierte Farben
+- geringe bis mittlere Detaildichte
+- normalerweise 0–3 sinnvolle Zusatzobjekte
+- starke Symbolik statt realistischer Vollszenen
+- keine normalen illustrierten Menschen
+- keine humanoiden Cartoon-Personen
 - keine Stickfiguren
-- kein generisches KI-Template
-- nicht kindisch
-- kein 3D/Pixar/Clay/Anime/Fotorealismus als Standard
+- kein Fotorealismus
+- kein 3D/Pixar/Clay/Anime
+- nicht kindisch, nicht albern
+
+Historische Inhalte werden in diese reduzierte Formsprache übersetzt; keine realistischen Konferenz-, Kriegs- oder Menschenszenen als Standard.
 
 ## Anti-Lifeless — HARD LOCK
 
-Regenerieren, wenn ein Bild leer oder steril wirkt, nur ein kleines Objekt mittig zeigt, wie eine Präsentationskarte/Icon-Collage wirkt, fast dieselbe Komposition wiederholt oder trotz geeignetem Inhalt keine Tiefe, Richtung, Beziehung oder Spannung zeigt.
+Minimal bleibt minimal, aber nicht leer: keine winzigen Motive auf riesiger Leerfläche, keine sinnlose Icon-Collage und keine mechanisch identische Countryball-Anordnung in jedem Bild.
 
 **Clean ≠ leer. Minimal ≠ leblos.**
 
 ## Sichtbarer Text
 
-Bei deutschen Projekten muss jeder lesbare sichtbare Text Deutsch sein. Englischer Text oder Pseudo-Schrift = Hard Fail.
+Bei deutschen Projekten muss jeder lesbare sichtbare Text Deutsch sein. Englischer Text oder Pseudo-Schrift = Hard Fail in der Promptplanung.
 
 ## Audio
 
 Phase 3 arbeitet mit internem Produktionsaudio:
-- lange Pausen kürzen
+- überlange Sprechpausen automatisch kürzen
 - Endstille entfernen
 - exakt 1,10x
 - Tonhöhe erhalten
@@ -116,7 +142,7 @@ Nutzeroriginal bleibt unverändert.
 npm run phase3:youtube -- --dir "youtube/<woche>/<thema>"
 ```
 
-Phase 3 beginnt mit Policy-Gates. Danach Audio, Alignment, Timeline, Motion/SFX und Render. Für neue Projekte muss die Timeline mit Bild 01 bei 0,0 s beginnen und der Export kopiert Bild 01 als Thumbnail.
+Phase 3 beginnt mit Phase-1- und Phase-2-Gates. Danach Audio, Alignment, Timeline, Motion/SFX und Render. Die Timeline beginnt mit Bild 01 bei 0,0 s und der Export kopiert Bild 01 als Thumbnail.
 
 ## Export
 

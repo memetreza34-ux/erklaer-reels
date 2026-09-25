@@ -32,18 +32,31 @@
 - [x] Ziel nach 1,10x/Pausenoptimierung ca. 2,5 Minuten
 - [x] 24 monotone Bildanker
 
+## Bildwelt V4
+
+- [x] `serious-minimal-countryball-explainer-youtube-16x9`
+- [x] gleiche Serious-Minimal-Countryball-DNA wie die Reels, nur 16:9
+- [x] perfekt runde Countryball-Akteure, wenn Akteure gebraucht werden
+- [x] weiße Augen, dicke schwarze Konturen, flache kontrollierte Farben
+- [x] geringe bis mittlere Detaildichte
+- [x] starke Symbolik statt realistischer Vollszenen
+- [x] keine normalen illustrierten Menschen
+- [x] keine humanoiden Cartoon-Personen
+- [x] keine Stickfiguren
+- [x] kein kindlicher Gag-Look
+- [x] kein Fotorealismus / 3D / Pixar / Clay / Anime
+- [x] sichtbarer Text nur Deutsch
+- [x] Premium-Editorial-V3 ist für dieses Projekt verworfen
+
 ## Bilder
 
 - [x] Bild 01 = Cover + erste Szene
 - [x] kein Bild 00
 - [x] 24 Bildmomente nach Inhaltsdichte
 - [x] keine Bild-zu-Bild-Referenzen
-- [x] keine Countryball-/Stickman-Schablone
-- [x] kein kindlicher Cartoon-Look
-- [x] keine leblosen Präsentationskarten
-- [x] unterschiedliche Kompositionen und Perspektiven
-- [x] Premium-Editorial-Illustrationswelt
-- [x] sichtbarer Text nur Deutsch
+- [x] Bild 01 ist kein Master-Style-Frame
+- [x] jedes Bild eigener vollständiger Textprompt
+- [x] minimal, aber nicht leblos
 
 ## Asset Generation Policy V1
 
@@ -59,6 +72,12 @@
 - [x] keine Unterordner, Varianten, Zusatz-PNGs oder Bild 00
 - [x] Phase-2-Asset-Gate ist vor Phase 3 verpflichtend
 
+## Session Reset
+
+- [x] alte Premium-Editorial-Flow-Sitzung nicht weiterverwenden
+- [x] alte dort erzeugte Bilder nicht verwenden
+- [x] komplett frische Flow-Sitzung mit aktuellem V4-Prompt erforderlich
+
 ## Audio / Phase 3
 
 - [x] genau eine finale Nutzerstimme
@@ -71,4 +90,4 @@
 - [x] Themen-Editor wird im Phase-1-Gate erneut geprüft
 - [x] Phase-2-Asset-Gate läuft vor Audio-/Renderarbeit
 
-**Phase-1-Ergebnis: READY FOR PHASE 2 — ASSET GENERATION POLICY V1 VERBINDLICH**
+**Phase-1-Ergebnis: READY FOR PHASE 2 — VISUAL POLICY V4 + ASSET GENERATION POLICY V1 VERBINDLICH**

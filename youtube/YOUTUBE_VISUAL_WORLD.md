@@ -1,223 +1,198 @@
-# YouTube-Bildwelt — Premium Editorial Explainer Illustration · 16:9
+# Feste YouTube-Bildwelt — Serious Minimal Countryball Explainer · 16:9
 
-**Stand: 2026-09-24**  
-**Visual Policy Version: 3**  
-**Cover Policy Version: 1**
+**Stand: 2026-09-25**  
+**Visual Policy Version: 4**  
+**Cover Policy Version: 1**  
+**Asset Generation Policy Version: 1**
 
 Diese Datei definiert die verbindliche Bildwelt für alle **neuen** YouTube-Langvideos.
 
-YouTube ist visuell bewusst vom Reel-Countryball-Stil getrennt.
+YouTube übernimmt wieder die ursprüngliche aktive Reel-Bild-DNA und adaptiert sie nur auf 16:9.
 
-- YouTube-Style-ID: `premium-editorial-explainer-illustration-youtube-16x9`
-- Format: **16:9 horizontal**
-- Visual Policy: **V3**
-- Cover Policy: **V1**
+- Reel-Quellwelt: `serious-minimal-countryball-explainer`
+- YouTube-Style-ID: `serious-minimal-countryball-explainer-youtube-16x9`
+- einzige Formatabweichung: **16:9 horizontal statt 9:16 vertikal**
+
+Die Premium-Editorial-Bildwelt aus Visual Policy V3 ist für neue YouTube-Projekte **nicht mehr aktiv**.
+
+## Verbindliche visuelle DNA
+
+- seriöse, cleane, minimalistische 2D-Countryball-Erklärwelt
+- perfekt runde Countryball-artige Akteure, wenn ein Akteur sinnvoll ist
+- einfache weiße Augen
+- kräftige, saubere schwarze Konturen
+- flache kontrollierte 2D-Farben
+- nur leichte grafische Schattierung
+- geringe bis mittlere kontrollierte Detaildichte
+- ein dominantes Hauptmotiv
+- normalerweise 0–3 sinnvolle Zusatzobjekte
+- einfacher einfarbiger oder gedämpfter Hintergrund, leichter Verlauf oder subtile Textur erlaubt
+- starke Symbolik statt realistischer Vollszenen
+- erwachsene informative Wirkung, **nicht kindisch und nicht albern**
+- Karten, Diagramme und historische Inhalte werden in dieselbe reduzierte Formsprache übersetzt
+
+## Figuren-System — HARD LOCK
+
+Wenn ein Akteur gebraucht wird:
+
+- perfekt runder Kugelkörper
+- niemals oval, bohnenförmig oder eiförmig
+- keine getrennten menschlichen Köpfe
+- einfache weiße Augen
+- kräftige schwarze Konturen
+- reduzierte kontrollierte Mimik
+- kleine einfache Arme/Hände/Füße nur wenn die Handlung sie wirklich braucht
+- keine Haare, Hälse oder realistischen Gesichter
+
+Flaggenmuster nur, wenn Geografie, Politik oder kulturelle Identität inhaltlich relevant sind. Bei historischen Gruppen ohne passende moderne Flagge werden neutrale/historisch passende Farbcodes und wenige Symbole verwendet.
+
+Wenn ein Objekt, eine Karte oder ein Symbol die Aussage klarer erklärt, ist kein Countryball zwingend nötig.
+
+### Verboten
+
+- normale illustrierte Menschen
+- humanoide Cartoon-Personen
+- Stickfiguren
+- realistische Menschen
+- realistische Hände/Haut
+- fotorealistische Vollszenen
+- glossy 3D
+- Pixar/Clay/Anime
+- übertriebene Gag-Gesichter oder kindische Mimik
+
+## Drei Haupt-Kompositionsmodi
+
+### 1. Minimal Symbolic
+Ein großes Hauptmotiv + 0–1 sinnvolles Symbol.
+
+### 2. Supported Explainer
+Ein großes Hauptmotiv + 1–3 relevante Requisiten, Symbole oder Cues.
+
+### 3. Simple Mini Scene
+Ein klarer Countryball-Akteur oder ein Objekt + eine stark reduzierte Kontextstruktur.
+
+Ergänzend erlaubt: reduzierte Map/Spatial-Explainer und Conceptual Metaphor, solange die Serious-Minimal-Countryball-DNA erhalten bleibt.
+
+Historische Themen werden **nicht** als realistische Gemälde, cineastische Städte oder detaillierte Menschenszenen dargestellt, sondern in diese reduzierte Erklärwelt übersetzt.
+
+## Anti-Lifeless — ohne Stilwechsel
+
+Die alte Bildwelt bleibt bestehen, aber Prompts sollen trotzdem lebendig und verständlich sein.
+
+Vermeiden:
+- kleines Hauptmotiv verloren in riesiger leerer Fläche
+- generische Icon-Collage
+- mechanisch dieselbe Komposition in jedem Bild
+- dekorative Objekte ohne Aussage
+- immer derselbe Countryball mittig ohne Handlung
+
+Erlaubt und erwünscht:
+- klare Richtung durch Pfeile, Wege oder Blickführung
+- unterschiedliche Größenverhältnisse
+- Karten, Grenzen und Symbole mit klarer Funktion
+- einfache Vorder-/Hintergrund-Trennung, wenn sie hilft
+- unterschiedliche Anordnung der wenigen Elemente
+
+**Clean ≠ leer. Minimal ≠ leblos.** Aber die Lösung bleibt minimal und Countryball-basiert, statt in eine realistische Editorial-Szene zu wechseln.
 
 ## FIRST SCENE = COVER — HARD LOCK
 
-**Bild 01 ist immer Cover und erste Videoszene zugleich.**
-
-- Bild 01 steht bei 0,0 Sekunden als erstes Timeline-Bild.
+- **Bild 01 ist Cover und erste Videoszene zugleich.**
+- Bild 01 beginnt bei 0,0 s.
 - Bild 01 enthält eine starke kurze deutsche Cover-Überschrift.
-- Das Bild erklärt zugleich den ersten gesprochenen Gedanken.
-- `03-export/THUMBNAIL.png` wird aus derselben Datei `Bild 01.png` erzeugt.
-- Für neue Projekte gibt es **kein Bild 00** und kein separates Thumbnail-Bild.
-- Bild 01 ist trotz Cover-Funktion **kein Master-Style-Frame** und wird nie als Referenz an spätere Bilder gegeben.
+- `03-export/THUMBNAIL.png` wird direkt aus `Bild 01.png` kopiert.
+- kein Bild 00
+- kein separates Thumbnail
 
-## Grundidee
+## Asset Generation Policy V1
 
-Jedes Bild soll wie eine hochwertige, eigens für den konkreten Satz art-directete Editorial-/Dokumentar-Erklärillustration wirken.
-
-Verbindlich:
-- hochwertige moderne 2D-Editorial-Illustration
-- erwachsener, informativer Look
-- starke visuelle Hierarchie
-- raffinierte, szenenspezifische Komposition statt Clipart
-- präzise vektorartige Formen und kontrollierte Linienführung
-- geschichtete Flächen mit subtiler Tiefe
-- kontrollierte, reichere Farbpaletten
-- grafische Licht-/Schattenakzente statt 3D-Glanz
-- subtile Papier-/Printtextur erlaubt
-- klare visuelle Aussage innerhalb weniger Sekunden
-- **nicht kindisch**, nicht steril, nicht leer und nicht generisch-KI-haft
-
-## Session-Schutz — HARD LOCK
-
-Wenn sich die Visual- oder Cover-Policy geändert hat, wird eine **frische Google-Flow-Sitzung / ein frisches Flow-Projekt** verwendet.
-
-Verboten:
-- alte Flow-Sitzung mit Countryball-, Master-Reference-, Stickman- oder Bild-00-Thumbnail-Regeln fortsetzen
-- veraltete Projektanweisungen über den aktuellen Masterprompt stellen
-- Bild 01 oder irgendein anderes erzeugtes Bild als Stilanker weiterreichen
-
-Wenn eine laufende Flow-Sitzung etwas anderes behauptet: **STOP → frische Sitzung → aktuellen Masterprompt neu einfügen.**
+- Bild 01 wird **exakt 3-mal** als temporärer Cover-Kandidat erzeugt.
+- genau 1 Gewinner bleibt und wird final einmal zu `Bild 01.png` benannt.
+- die anderen 2 Cover-Kandidaten werden verworfen.
+- Bild 02–NN wird jeweils **exakt einmal** erzeugt.
+- keine manuellen Prüfstopps nach 5er-Wellen.
+- maximal 5 aktive Generierungen gleichzeitig = nur Parallelitätsregel.
+- alle finalen Bilder liegen flach in `00-bildprompts/images/`.
 
 ## Jedes Bild unabhängig — HARD LOCK
 
-**Kein erzeugtes Bild wird als visuelle Vorlage oder Image-to-Image-Referenz für ein späteres Bild verwendet.**
+Die **Bildwelt** ist zurückgesetzt, die problematische alte Referenzlogik jedoch nicht.
 
-- Bild 01 ist Cover, aber kein Master-Style-Frame.
-- Bild 02–NN bekommen kein vorheriges Bild als Referenz.
-- Stil-Konsistenz kommt ausschließlich aus dem schriftlichen Style-Lock.
-- Jedes Bild entsteht aus seinem eigenen Textprompt.
-- Jedes Bild braucht eine **eigenständige Komposition**.
+- kein erzeugtes Bild wird als Referenz an ein späteres Bild angehängt
+- Bild 01 ist kein Master-Style-Frame
+- jedes Bild wird aus seinem eigenen vollständigen Textprompt erzeugt
+- Konsistenz kommt aus dem geschriebenen Serious-Minimal-Countryball-Style-Lock
+- keine Image-to-Image-Stilvererbung
 
-## Visual Storytelling — HARD LOCK
+Damit bleibt die alte Bildwelt erhalten, ohne dass spätere Bilder Layout und Perspektive von Bild 01 kopieren.
 
-Ein gutes Bild zeigt nicht nur Gegenstände aus dem Sprechertext, sondern deren Beziehung.
+## Hintergrund
 
-Bevorzugt sichtbar machen:
-- Ursache → Wirkung
-- vorher → nachher
-- Konflikt / Problem → Lösung
-- räumliche Beziehung
-- Richtung / Bewegung
-- Größenvergleich
-- zeitlicher Wandel
-- politische oder natürliche Gegensätze
+Bevorzugt:
+- einfarbige oder gedämpfte Farbfläche
+- einfacher Farbverlauf
+- subtile Papier-/Korntextur
+- ein einzelnes Kontextobjekt oder stark vereinfachte Struktur
 
-Wenn eine narrative oder konzeptuelle Szene besser erklärt als eine statische Diagrammkarte, wird die Szene bevorzugt.
-
-## Anti-Lifeless — HARD LOCK
-
-Ein Bild wird verworfen, wenn es trotz korrektem Inhalt leer, flach, steril oder wie eine Präsentationsfolie wirkt.
-
-Standardmäßig unerwünscht:
-- kleines Objekt mittig auf leerem Hintergrund
-- Symbol + zwei Deko-Icons
-- immer dieselbe Uhr-/Karten-/Figurenanordnung
-- zu viel ungenutzte Pastellfläche
-- komplett frontale flache Komposition ohne Tiefe oder Richtung
-- generische Icon-Collage
-- **generisches KI-Template / generic AI template**
-- dekorative Objekte ohne Erklärfunktion
-- direkt aufeinanderfolgende Bilder mit praktisch derselben Kompositionslogik
-
-**Clean ≠ leer. Minimal ≠ leblos.**
-
-## Tiefe und visuelle Energie
-
-Für narrative Szenen bevorzugt:
-- Vordergrund, Mittelgrund, Hintergrund
-- Überlagerungen
-- diagonale Blickführung und Leading Lines
-- Größenkontrast
-- asymmetrisches Framing
-- bewusstes Licht
-
-Nicht jedes Bild braucht alle Elemente. Eine flache Karte ist nur sinnvoll, wenn die Karte selbst die beste Erklärung ist.
-
-## Individualität pro Bild — HARD LOCK
-
-Jedes neue Bild bekommt eine **eigenständige Komposition**. Zwischen aufeinanderfolgenden Bildern sollen sich, wenn sinnvoll, bewusst ändern:
-- Perspektive
-- Bildausschnitt
-- Maßstab
-- **Layout**
-- Kompositionsmodus
-- **Hintergrund**
-- dominante Formen
-- räumliche Anordnung
-- Akzentfarben
-- Lichtstimmung
-
-Verboten:
-- sichtbare Copy-Paste-Schablone
-- immer gleiche Figur in der Mitte
-- immer gleicher Stadt-/Kartenhintergrund
-- wiederkehrende Maskottchen ohne Grund
-
-Konsistent bleiben Qualitätsniveau, 2D-Editorial-Medium, Linien-/Flächenbehandlung, erwachsener Ton, Typografiequalität und Farbdisziplin.
-
-## Figuren
-
-Figuren sind optional. Bevorzugt werden Objekt, Karte, Architektur, historische Szene, technische Illustration, symbolische Szene oder stilisierte redaktionelle Figuren, wenn Menschen die Aussage verbessern.
-
-Wenn Menschen vorkommen:
-- stilisiert und editorial
-- natürliche vereinfachte Proportionen
-- **keine Stickfiguren / no stick-figure look**
-- keine überzogenen Cartoon-Gesichter
-- keine fotorealistische Haut
-
-**Countryballs sind kein Standardcharakter und kein Stil-Lock für YouTube.**
-
-## Kompositionsmodi
-
-1. Editorial Hero Illustration
-2. Narrative Mini Scene
-3. Historical Editorial Scene
-4. Map / Spatial Explainer
-5. Conceptual Metaphor
-6. Explainer Diagram
-
-Direkt aufeinanderfolgende Bilder sollen denselben Modus nur wiederholen, wenn der Inhalt es verlangt.
+Nicht als Standard:
+- detaillierte realistische Innenräume
+- cineastische Vollszenen
+- fotorealistische Landschaften
+- komplexe realistische Architekturkulissen
+- überladene historische Gemälde
 
 ## Karten und Diagramme
 
-- hochwertig vereinfacht
-- nur relevante Labels
-- klare Flächenhierarchie
-- keine zufälligen Mini-Icons
-- keine englischen Auto-Labels
-- keine Satellitenkarten außer ausdrücklich gewünscht
+- klare dicke Konturen
+- einfache Flächen
+- wenige kontrollierte Farben
+- wenige Pfeile und Marker
+- Countryball-Symbole nur bei echten Akteuren
+- keine alten realistischen Atlas-Karten
+- keine Satellitenkarten
+- keine automatisch erzeugten englischen Labels
 
 ## Sichtbarer Text — DEUTSCH-HARD-LOCK
 
-Für deutsche YouTube-Projekte gilt:
-- jeder **sichtbare Text muss Deutsch** sein
-- englischer Text = **HARD FAIL**
+Für deutsche Projekte:
+- jeder sichtbare lesbare Text muss Deutsch sein
+- englischer sichtbarer Text = **HARD FAIL**
 - Pseudo-Schrift = **HARD FAIL**
-- vorgegebener Text exakt übernehmen
-- wenn Text nicht nötig ist: keinen Text erzeugen
+- wenn Text nicht nötig ist, keinen Text erzeugen
+- ausdrücklich vorgegebener Text exakt übernehmen
 
-Bild 01 braucht zusätzlich eine starke kurze deutsche Cover-Überschrift.
+## Session-Schutz
 
-## Google Flow
+Da die Bildwelt mit Visual Policy V4 wieder geändert wurde, muss für aktuelle/neue Generierungen eine **frische Flow-Sitzung** verwendet werden.
 
-5er-Wellen sind nur Ausführungs-/Lastregel:
-
-```text
-Bild 01 separat: COVER + ERSTE SZENE
-Bild 02–05 jeweils aus eigenem Prompt
-prüfen
-Bild 06–10 jeweils aus eigenem Prompt
-...
-```
-
-Maximal fünf aktive Generierungen gleichzeitig. **Keine Bild-zu-Bild-Referenzen.** Kein Bild 00.
+Eine Sitzung mit `premium-editorial-explainer-illustration-youtube-16x9` ist für V4 veraltet.
 
 ## Prompt-Pflichtmarker
 
-Jeder neue YouTube-Masterprompt beginnt mit:
+Jeder neue Masterprompt beginnt mit:
 
 ```text
-YOUTUBE_VISUAL_POLICY_VERSION: 3
+YOUTUBE_VISUAL_POLICY_VERSION: 4
 COVER_POLICY_VERSION: 1
-ACTIVE_STYLE_ID: premium-editorial-explainer-illustration-youtube-16x9
+ASSET_GENERATION_POLICY_VERSION: 1
+ACTIVE_STYLE_ID: serious-minimal-countryball-explainer-youtube-16x9
 ```
 
-Zusätzlich müssen enthalten sein:
-- `FIRST SCENE = COVER HARD LOCK`
-- `Bild 01 is the cover AND the first video scene`
-- `SESSION RESET HARD LOCK`
-- `VISUAL STORYTELLING HARD LOCK`
-- `ANTI-LIFELESS HARD LOCK`
-- ausdrückliches Verbot vorheriger Bilder als Referenz
+Fester Style-Prefix:
 
-## Qualitätsprüfung vor Freigabe
+```text
+Serious Minimal Countryball Explainer visual world, exactly matching the active Reel visual DNA, adapted only to a 16:9 horizontal YouTube canvas: clean serious minimal 2D countryball explainer, perfectly round ball characters when an actor is useful, simple white eyes, thick clean black outlines, flat controlled colors, minimal soft graphic shading, low-to-medium controlled detail, one dominant focal subject, zero to three meaningful supporting props, simple solid or muted background with optional subtle texture or gradient, strong symbolic storytelling, adult and informative, not childish, no normal illustrated humans, no humanoid cartoon people, no stick figures, no photorealism, no realistic full scenes, no glossy 3D, no Pixar, no clay, no anime, no busy icon collage. For German projects every readable visible word must be German; no English labels and no pseudo-text. Generate this image independently from text only; do not use any previous generated image as a visual reference.
+```
 
-1. Ist Bild 01 Cover und zugleich die erste gesprochene Szene?
-2. Ist Bild 01 die einzige Thumbnail-Quelle?
-3. Existiert kein Bild 00?
-4. Erklärt jedes Bild den vorgesehenen Gedanken?
-5. Wirkt es hochwertig und art-directed statt leer oder steril?
-6. Gibt es einen klaren Fokus und sinnvolle Tiefe/Richtung/Spannung?
-7. Ist die Komposition eigenständig?
-8. Wiederholt sie nicht direkt das vorige Bild?
-9. Ist der deutsche Text korrekt?
-10. Fehlen englischer Text, Pseudo-Schrift und Wasserzeichen?
-11. Wurde kein vorheriges Bild als Referenz benutzt?
-12. Enthält die Flow-Sitzung keine widersprüchlichen Legacy-Regeln?
+## Qualitätsprüfung
 
-Wenn ein Bild scheitert, wird nur dieses Bild regeneriert.
+1. Entspricht das Bild eindeutig der Serious-Minimal-Countryball-Welt?
+2. Sind Akteure perfekt rund statt humanoid?
+3. Fehlen normale Menschen, Stickfiguren und realistische Vollszenen?
+4. Erklärt das Bild den vorgesehenen Gedanken schnell?
+5. Ist es minimal, aber nicht leer oder leblos?
+6. Sind nur sinnvolle Zusatzobjekte vorhanden?
+7. Ist sichtbarer Text ausschließlich Deutsch?
+8. Wurde kein vorheriges Bild als Referenz verwendet?
+9. Ist Bild 01 zugleich Cover + erste Szene?
+10. Liegen am Ende nur die finalen `Bild NN.png` im einen Bilderordner?

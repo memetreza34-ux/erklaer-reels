@@ -5,7 +5,8 @@ import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import test from 'node:test';
 
-const PROJECT = 'youtube/2026-KW39_21-09_bis_27-09/warum-gibt-es-zeitzonen';
+const CURRENT_PROJECT = 'youtube/2026-KW39_21-09_bis_27-09/warum-ist-kaliningrad-von-russland-getrennt';
+const LEGACY_V3_PROJECT = 'youtube/2026-KW39_21-09_bis_27-09/warum-gibt-es-zeitzonen';
 const TEMPLATE = 'youtube/templates/video-template';
 
 async function readJson(file) {
@@ -19,69 +20,100 @@ function runPolicy(dir) {
   });
 }
 
-test('aktuelle YouTube-Produktion besteht Visual Policy V3', () => {
-  const result = runPolicy(PROJECT);
+test('aktuelle YouTube-Produktion besteht restaurierte Countryball Visual Policy V4', () => {
+  const result = runPolicy(CURRENT_PROJECT);
   assert.equal(result.status, 0, result.stderr || result.stdout);
-  assert.match(result.stdout, /Visual Policy V3/i);
+  assert.match(result.stdout, /Serious-Minimal-Countryball V4/i);
 });
 
-test('Template und aktuelles Video tragen Anti-Lifeless- und Session-Schutz maschinenlesbar', async () => {
+test('älteres V3-Projekt bleibt reproduzierbar statt durch V4 zwangsweise migriert zu werden', () => {
+  const result = runPolicy(LEGACY_V3_PROJECT);
+  assert.equal(result.status, 0, result.stderr || result.stdout);
+  assert.match(result.stdout, /Legacy Visual Policy V3/i);
+});
+
+test('Template und aktuelles Projekt tragen Countryball V4 und Session-Schutz maschinenlesbar', async () => {
   const [templateMeta, projectMeta, templatePrompt, projectPrompt, policy] = await Promise.all([
     readJson(`${TEMPLATE}/99-technik/video.json`),
-    readJson(`${PROJECT}/99-technik/video.json`),
+    readJson(`${CURRENT_PROJECT}/99-technik/video.json`),
     readFile(`${TEMPLATE}/00-bildprompts/google-flow-prompt.txt`, 'utf8'),
-    readFile(`${PROJECT}/00-bildprompts/google-flow-prompt.txt`, 'utf8'),
+    readFile(`${CURRENT_PROJECT}/00-bildprompts/google-flow-prompt.txt`, 'utf8'),
     readJson('config/youtube-channel-policy.json')
   ]);
 
+  assert.equal(policy.visualPolicyVersion, 4);
+  assert.equal(policy.visualStyleId, 'serious-minimal-countryball-explainer-youtube-16x9');
+
   for (const meta of [templateMeta, projectMeta]) {
-    assert.equal(meta.visualPolicyVersion, 3);
+    assert.equal(meta.visualPolicyVersion, 4);
     assert.equal(meta.visualStyleId, policy.visualStyleId);
+    assert.equal(meta.sourceVisualWorldId, 'serious-minimal-countryball-explainer');
+    assert.equal(meta.visualWorldParityPolicy.mustMatchReelVisualDNA, true);
+    assert.equal(meta.visualWorldParityPolicy.independentYoutubeStyle, false);
+    assert.equal(meta.visualWorldParityPolicy.countryballVisualWorldRequired, true);
     assert.equal(meta.sessionPolicy.freshFlowSessionRequiredWhenVisualPolicyChanges, true);
-    assert.equal(meta.sessionPolicy.continueSessionContainingLegacyStyleInstructionsForbidden, true);
-    assert.equal(meta.visualQualityPolicy.visualStorytellingRequired, true);
-    assert.equal(meta.visualQualityPolicy.lifelessStaticCompositionForbidden, true);
-    assert.equal(meta.visualQualityPolicy.genericCenteredObjectOnBlankBackgroundForbiddenByDefault, true);
-    assert.equal(meta.visualQualityPolicy.sceneSpecificArtDirectionRequired, true);
-    assert.equal(meta.visualQualityPolicy.controlledDepthRequired, true);
+    assert.equal(meta.sessionPolicy.previousGeneratedImageAsReferenceForbidden, true);
+    assert.equal(meta.visualQualityPolicy.seriousMinimalCountryballWorldRequired, true);
+    assert.equal(meta.visualQualityPolicy.perfectlyRoundCountryballActorsRequired, true);
+    assert.equal(meta.visualQualityPolicy.normalIllustratedHumansForbidden, true);
   }
 
   for (const prompt of [templatePrompt, projectPrompt]) {
-    assert.match(prompt, /YOUTUBE_VISUAL_POLICY_VERSION: 3/);
+    assert.match(prompt, /YOUTUBE_VISUAL_POLICY_VERSION: 4/);
+    assert.match(prompt, /ACTIVE_STYLE_ID: serious-minimal-countryball-explainer-youtube-16x9/);
+    assert.match(prompt, /WRITTEN STYLE LOCK — SERIOUS MINIMAL COUNTRYBALL/);
     assert.match(prompt, /SESSION RESET HARD LOCK/);
-    assert.match(prompt, /VISUAL STORYTELLING HARD LOCK/);
-    assert.match(prompt, /ANTI-LIFELESS HARD LOCK/);
     assert.match(prompt, /Do not use any previous generated image as a visual reference\./);
     assert.match(prompt, /Clean does NOT mean empty|Clean ≠ leer/i);
   }
 });
 
-test('Kanalfokus ist für das Zeitzonen-Video explizit dokumentiert', async () => {
+test('Kanalfokus ist für das Kaliningrad-Video explizit dokumentiert', async () => {
   const [meta, policy] = await Promise.all([
-    readJson(`${PROJECT}/99-technik/video.json`),
+    readJson(`${CURRENT_PROJECT}/99-technik/video.json`),
     readJson('config/youtube-channel-policy.json')
   ]);
   assert.ok(policy.channelFocus.primaryTopics.includes(meta.topicCategory));
-  assert.match(meta.topicCoreLink, /Geografie|Geschichte/i);
+  assert.match(meta.topicCoreLink, /Geografie|Grenz|Nachkriegs|Sowjet/i);
   assert.equal(meta.explicitUserRequestedOutsideFocus, false);
 });
 
-test('veralteter Countryball-/Master-Reference-Prompt wird hart blockiert', async () => {
-  const temp = await mkdtemp(path.join(tmpdir(), 'youtube-policy-v3-'));
+test('alte Master-Reference-Regel bleibt trotz restaurierter Bildwelt hart blockiert', async () => {
+  const temp = await mkdtemp(path.join(tmpdir(), 'youtube-policy-v4-'));
   try {
     await mkdir(path.join(temp, '99-technik'), { recursive: true });
     await mkdir(path.join(temp, '00-bildprompts'), { recursive: true });
-    const meta = await readFile(`${PROJECT}/99-technik/video.json`, 'utf8');
-    const prompt = await readFile(`${PROJECT}/00-bildprompts/google-flow-prompt.txt`, 'utf8');
+    const meta = await readFile(`${CURRENT_PROJECT}/99-technik/video.json`, 'utf8');
+    const prompt = await readFile(`${CURRENT_PROJECT}/00-bildprompts/google-flow-prompt.txt`, 'utf8');
     await writeFile(path.join(temp, '99-technik/video.json'), meta);
     await writeFile(
       path.join(temp, '00-bildprompts/google-flow-prompt.txt'),
-      `${prompt}\nMASTER-REFERENCE-REGEL\nserious-minimal-countryball-explainer-youtube-16x9\nBild 01 als Master-Style-Referenz festlegen\n`
+      `${prompt}\nMASTER-REFERENCE-REGEL\nBild 01 als Master-Style-Referenz festlegen\n`
     );
 
     const result = runPolicy(temp);
     assert.notEqual(result.status, 0);
     assert.match(result.stderr, /veraltete Bildwelt|Referenzregel|MASTER-REFERENCE/i);
+  } finally {
+    await rm(temp, { recursive: true, force: true });
+  }
+});
+
+test('Premium-Editorial-V3 wird für neue Schema-9-Projekte blockiert', async () => {
+  const temp = await mkdtemp(path.join(tmpdir(), 'youtube-policy-v4-premium-'));
+  try {
+    await mkdir(path.join(temp, '99-technik'), { recursive: true });
+    await mkdir(path.join(temp, '00-bildprompts'), { recursive: true });
+    const meta = await readFile(`${CURRENT_PROJECT}/99-technik/video.json`, 'utf8');
+    const prompt = await readFile(`${CURRENT_PROJECT}/00-bildprompts/google-flow-prompt.txt`, 'utf8');
+    await writeFile(path.join(temp, '99-technik/video.json'), meta);
+    await writeFile(
+      path.join(temp, '00-bildprompts/google-flow-prompt.txt'),
+      prompt.replace('ACTIVE_STYLE_ID: serious-minimal-countryball-explainer-youtube-16x9', 'ACTIVE_STYLE_ID: premium-editorial-explainer-illustration-youtube-16x9')
+    );
+
+    const result = runPolicy(temp);
+    assert.notEqual(result.status, 0);
   } finally {
     await rm(temp, { recursive: true, force: true });
   }

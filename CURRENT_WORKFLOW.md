@@ -1,8 +1,8 @@
 # CURRENT WORKFLOW — VERBINDLICHE SINGLE SOURCE OF TRUTH
 
-**Stand: 2026-09-24**
+**Stand: 2026-09-25**
 
-Diese Datei ist die verbindliche Repo-weite Produktionsregel für neue Reels. YouTube besitzt einen eigenen Produktionsworkflow und ab 2026-09-24 eine **eigene unabhängige 16:9-Editorial-Bildwelt**; die Reel-Countryball-Welt wird nicht mehr automatisch auf neue YouTube-Videos übertragen.
+Diese Datei ist die verbindliche Repo-weite Produktionsregel für neue Reels. YouTube besitzt einen eigenen Produktionsworkflow, nutzt aber wieder dieselbe **Serious-Minimal-Countryball-Bild-DNA** in 16:9.
 
 ## Priorität
 
@@ -94,23 +94,33 @@ Vor Bild 01 gilt ein globaler World-Lock für das ganze Reel. Einzelprompts änd
 
 Vollständige Style-Bibel: `knowledge/fixed-visual-world.md`.
 
-## Eigene YouTube-Bildwelt
+## YouTube-Bildwelt
 
-**Neue YouTube-Videos verwenden nicht mehr automatisch die Reel-Countryball-DNA.** Für neue YouTube-Projekte ab 2026-09-24 gilt:
+YouTube bleibt ein eigener Produktionsworkflow, übernimmt aber wieder dieselbe künstlerische Serious-Minimal-Countryball-DNA:
 
 ```text
-premium-editorial-explainer-illustration-youtube-16x9
+serious-minimal-countryball-explainer-youtube-16x9
 ```
 
+Die einzige beabsichtigte Formatabweichung ist **16:9 horizontal statt 9:16 vertikal**.
+
 Harte YouTube-Regeln:
-- hochwertige moderne 2D-Editorial-/Erklärillustration
-- jedes Bild wird **unabhängig aus seinem eigenen Textprompt** erzeugt
-- kein erzeugtes Bild wird als visuelle Vorlage/Referenz für ein späteres Bild verwendet
-- Bild 01 ist kein Master-Style-Frame
-- Konsistenz kommt nur aus dem geschriebenen Style-Lock
-- jedes Bild braucht eine eigenständige Komposition; Layout, Perspektive, Hintergrund und Farbaufbau sollen nicht mechanisch kopiert werden
-- 16:9 horizontal
+- perfekt runde Countryball-Akteure, wenn Akteure gebraucht werden
+- dicke schwarze Konturen, flache kontrollierte Farben, geringe bis mittlere Detaildichte
+- starke Symbolik statt realistischer Vollszenen
+- keine normalen illustrierten Menschen, humanoiden Cartoon-Personen oder Stickfiguren
+- keine Foto-, Anime-, Clay-, 3D-/Pixar-Welt
+- historische Inhalte werden in dieselbe reduzierte Formsprache übersetzt
+- Bild 01 = Cover + erste Szene
+- Cover exakt 3× generieren, genau einen Gewinner behalten
+- Bild 02–NN jeweils exakt 1× generieren
+- maximal fünf aktive Generierungen gleichzeitig, nur als Lastregel
+- alle finalen Bilder flach in `00-bildprompts/images/`
+- kein Bild 00
+- **kein erzeugtes Bild als visuelle Referenz für ein späteres Bild verwenden**
 - sichtbarer Text in deutschen Projekten ausschließlich Deutsch
+
+Die zwischenzeitliche Premium-Editorial-Bildwelt ist für neue Schema-9+-Projekte nicht mehr aktiv.
 
 Verbindliche Details: `youtube/YOUTUBE_WORKFLOW.md` und `youtube/YOUTUBE_VISUAL_WORLD.md`.
 
@@ -201,7 +211,7 @@ World-Lock lesen
 
 Keine Queue, kein Batch, keine parallele Bildgenerierung bei Reels.
 
-YouTube folgt separat `youtube/YOUTUBE_WORKFLOW.md`: kontrollierte 5er-Wellen sind erlaubt, aber jedes Bild bleibt eine eigenständige Text-to-Image-Generierung ohne Referenzbild.
+YouTube folgt separat `youtube/YOUTUBE_WORKFLOW.md`: Bild 01 wird 3× als Cover erzeugt, danach Bild 02–NN je 1×; maximal fünf aktive Generierungen gleichzeitig, ohne Referenzbilder.
 
 ## Audio
 

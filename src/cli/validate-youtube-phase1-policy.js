@@ -27,9 +27,25 @@ async function main() {
   const meta = await readJson(path.join(projectDir, '99-technik/video.json'));
   const prompt = await readFile(path.join(projectDir, '00-bildprompts/google-flow-prompt.txt'), 'utf8');
   const errors = [];
+  const schema = Number(meta.schemaVersion) || 0;
+  const usesRestoredCountryballV4 = schema >= 9;
 
-  if (meta.visualPolicyVersion !== policy.visualPolicyVersion) errors.push(`visualPolicyVersion ist ${meta.visualPolicyVersion ?? 'fehlend'}, erwartet ${policy.visualPolicyVersion}.`);
-  if (meta.visualStyleId !== policy.visualStyleId) errors.push(`visualStyleId ist ${meta.visualStyleId ?? 'fehlend'}, erwartet ${policy.visualStyleId}.`);
+  // Schema 9+ uses the current central visual policy. Older projects stay reproducible
+  // with the visual policy they were created under instead of being retroactively rewritten.
+  if (usesRestoredCountryballV4) {
+    if (meta.visualPolicyVersion !== policy.visualPolicyVersion) {
+      errors.push(`visualPolicyVersion ist ${meta.visualPolicyVersion ?? 'fehlend'}, erwartet ${policy.visualPolicyVersion}.`);
+    }
+    if (meta.visualStyleId !== policy.visualStyleId) {
+      errors.push(`visualStyleId ist ${meta.visualStyleId ?? 'fehlend'}, erwartet ${policy.visualStyleId}.`);
+    }
+    if (meta.sourceVisualWorldId !== policy.sourceVisualWorldId) {
+      errors.push(`sourceVisualWorldId ist ${meta.sourceVisualWorldId ?? 'fehlend'}, erwartet ${policy.sourceVisualWorldId}.`);
+    }
+  } else {
+    if (!Number.isFinite(Number(meta.visualPolicyVersion))) errors.push('Legacy-Projekt: visualPolicyVersion fehlt.');
+    if (!String(meta.visualStyleId ?? '').trim()) errors.push('Legacy-Projekt: visualStyleId fehlt.');
+  }
 
   const allowedTopics = new Set(policy.channelFocus.primaryTopics);
   if (!allowedTopics.has(meta.topicCategory) && meta.explicitUserRequestedOutsideFocus !== true) {
@@ -37,7 +53,7 @@ async function main() {
   }
   if (!meta.topicCoreLink || typeof meta.topicCoreLink !== 'string') errors.push('topicCoreLink muss den Bezug zum Kanalfokus kurz dokumentieren.');
 
-  if (Number(meta.schemaVersion) >= 8) {
+  if (schema >= 8) {
     const proof = meta.topicEditor || {};
     if (proof.version !== 1) errors.push('topicEditor.version muss 1 sein.');
     if (proof.decision !== 'APPROVED_NEW') errors.push('topicEditor.decision muss APPROVED_NEW sein.');
@@ -65,11 +81,22 @@ async function main() {
   requireTrue(errors, q.genericCenteredObjectOnBlankBackgroundForbiddenByDefault, 'visualQualityPolicy.genericCenteredObjectOnBlankBackgroundForbiddenByDefault');
   requireTrue(errors, q.genericIconCollageForbidden, 'visualQualityPolicy.genericIconCollageForbidden');
   requireTrue(errors, q.sceneSpecificArtDirectionRequired, 'visualQualityPolicy.sceneSpecificArtDirectionRequired');
-  requireTrue(errors, q.controlledDepthRequired, 'visualQualityPolicy.controlledDepthRequired');
-  requireTrue(errors, q.adjacentCompositionModeRepeatForbiddenWithoutReason, 'visualQualityPolicy.adjacentCompositionModeRepeatForbiddenWithoutReason');
   requireTrue(errors, q.childishCartoonLookForbidden, 'visualQualityPolicy.childishCartoonLookForbidden');
 
-  if (Number(meta.schemaVersion) >= 7) {
+  if (usesRestoredCountryballV4) {
+    requireTrue(errors, q.seriousMinimalCountryballWorldRequired, 'visualQualityPolicy.seriousMinimalCountryballWorldRequired');
+    requireTrue(errors, q.perfectlyRoundCountryballActorsRequired, 'visualQualityPolicy.perfectlyRoundCountryballActorsRequired');
+    requireTrue(errors, q.normalIllustratedHumansForbidden, 'visualQualityPolicy.normalIllustratedHumansForbidden');
+    requireTrue(errors, meta.visualWorldParityPolicy?.mustMatchReelVisualDNA, 'visualWorldParityPolicy.mustMatchReelVisualDNA');
+    requireTrue(errors, meta.visualWorldParityPolicy?.countryballVisualWorldRequired, 'visualWorldParityPolicy.countryballVisualWorldRequired');
+    requireTrue(errors, meta.visualWorldParityPolicy?.normalIllustratedHumansForbidden, 'visualWorldParityPolicy.normalIllustratedHumansForbidden');
+    if (meta.visualWorldParityPolicy?.independentYoutubeStyle !== false) errors.push('visualWorldParityPolicy.independentYoutubeStyle muss bei Visual Policy V4 false sein.');
+  } else {
+    requireTrue(errors, q.controlledDepthRequired, 'visualQualityPolicy.controlledDepthRequired');
+    requireTrue(errors, q.adjacentCompositionModeRepeatForbiddenWithoutReason, 'visualQualityPolicy.adjacentCompositionModeRepeatForbiddenWithoutReason');
+  }
+
+  if (schema >= 7) {
     if (meta.coverPolicyVersion !== policy.coverPolicyVersion) errors.push(`coverPolicyVersion ist ${meta.coverPolicyVersion ?? 'fehlend'}, erwartet ${policy.coverPolicyVersion}.`);
     const c = meta.coverPolicy || {};
     requireTrue(errors, c.firstSceneIsCover, 'coverPolicy.firstSceneIsCover');
@@ -81,7 +108,7 @@ async function main() {
     if (Number(c.coverImageNumber) !== 1) errors.push('coverPolicy.coverImageNumber muss 1 sein.');
   }
 
-  if (Number(meta.schemaVersion) >= 9) {
+  if (schema >= 9) {
     if (meta.assetGenerationPolicyVersion !== policy.assetGenerationPolicyVersion) {
       errors.push(`assetGenerationPolicyVersion ist ${meta.assetGenerationPolicyVersion ?? 'fehlend'}, erwartet ${policy.assetGenerationPolicyVersion}.`);
     }
@@ -100,43 +127,57 @@ async function main() {
     requireTrue(errors, a.temporaryCoverCandidatesForbiddenInFinalFolder, 'assetGenerationPolicy.temporaryCoverCandidatesForbiddenInFinalFolder');
   }
 
+  const expectedVisualVersion = usesRestoredCountryballV4 ? policy.visualPolicyVersion : meta.visualPolicyVersion;
+  const expectedStyleId = usesRestoredCountryballV4 ? policy.visualStyleId : meta.visualStyleId;
   const requiredPromptMarkers = [
-    `YOUTUBE_VISUAL_POLICY_VERSION: ${policy.visualPolicyVersion}`,
-    `ACTIVE_STYLE_ID: ${policy.visualStyleId}`,
+    `YOUTUBE_VISUAL_POLICY_VERSION: ${expectedVisualVersion}`,
+    `ACTIVE_STYLE_ID: ${expectedStyleId}`,
     'SESSION RESET HARD LOCK',
     'VISUAL STORYTELLING HARD LOCK',
     'ANTI-LIFELESS HARD LOCK',
     'Do not use any previous generated image as a visual reference.'
   ];
-  if (Number(meta.schemaVersion) >= 7) {
+  if (schema >= 7) {
     requiredPromptMarkers.push(
       `COVER_POLICY_VERSION: ${policy.coverPolicyVersion}`,
       'FIRST SCENE = COVER HARD LOCK',
       'Bild 01 is the cover AND the first video scene'
     );
   }
-  if (Number(meta.schemaVersion) >= 9) {
+  if (schema >= 9) {
     requiredPromptMarkers.push(
       `ASSET_GENERATION_POLICY_VERSION: ${policy.assetGenerationPolicyVersion}`,
       'COVER = 3 CANDIDATES HARD LOCK',
       'NON-COVER = SINGLE GENERATION HARD LOCK',
-      'FINAL IMAGE FOLDER HARD LOCK'
+      'FINAL IMAGE FOLDER HARD LOCK',
+      'WRITTEN STYLE LOCK — SERIOUS MINIMAL COUNTRYBALL'
     );
   }
   for (const marker of requiredPromptMarkers) if (!prompt.includes(marker)) errors.push(`Masterprompt fehlt Pflichtmarker: ${marker}`);
 
   const stalePatterns = [
-    /serious-minimal-countryball-explainer-youtube-16x9/i,
     /MASTER-REFERENCE-REGEL/i,
     /verbindlicher MASTER-STYLE-FRAME erzeugt/i,
     /Bild 01 als Master-Style-Referenz festlegen/i,
     /jeweils mit Bild 01 als Referenz/i,
     /using it as our anchor reference/i
   ];
-  if (Number(meta.schemaVersion) >= 7) {
+
+  if (usesRestoredCountryballV4) {
+    stalePatterns.push(
+      /ACTIVE_STYLE_ID:\s*premium-editorial-explainer-illustration-youtube-16x9/i,
+      /WRITTEN STYLE LOCK\s*[—-]\s*PREMIUM EDITORIAL/i,
+      /no mandatory mascot, no countryball template/i
+    );
+  } else {
+    // V3 projects intentionally used the independent Editorial world.
+    stalePatterns.push(/ACTIVE_STYLE_ID:\s*serious-minimal-countryball-explainer-youtube-16x9/i);
+  }
+
+  if (schema >= 7) {
     stalePatterns.push(/BILD 00\s*[—-]\s*THUMBNAIL/i, /Bild 00.*Thumbnail/i, /Bild 00.*Timeline/i, /thumbnailImageNumber"\s*:\s*0/i);
   }
-  if (Number(meta.schemaVersion) >= 9) {
+  if (schema >= 9) {
     stalePatterns.push(
       /Welle prüfen/i,
       /vollständig prüfen\. Erst danach/i,
@@ -154,9 +195,10 @@ async function main() {
     return;
   }
 
-  const topicText = Number(meta.schemaVersion) >= 8 ? ', Themen-Editor FREI' : '';
-  const assetText = Number(meta.schemaVersion) >= 9 ? `, Asset Generation Policy V${policy.assetGenerationPolicyVersion}` : '';
-  console.log(`YouTube Phase-1-Policy: BESTANDEN — Visual Policy V${policy.visualPolicyVersion}, Cover Policy V${policy.coverPolicyVersion}${topicText}${assetText}, Kanalfokus, Session-Schutz und Anti-Lifeless-Regeln sind aktiv.`);
+  const topicText = schema >= 8 ? ', Themen-Editor FREI' : '';
+  const assetText = schema >= 9 ? `, Asset Generation Policy V${policy.assetGenerationPolicyVersion}` : '';
+  const visualLabel = usesRestoredCountryballV4 ? 'Serious-Minimal-Countryball V4' : `Legacy Visual Policy V${meta.visualPolicyVersion}`;
+  console.log(`YouTube Phase-1-Policy: BESTANDEN — ${visualLabel}, Cover Policy V${policy.coverPolicyVersion}${topicText}${assetText}, Kanalfokus und Session-Schutz sind aktiv.`);
 }
 
 main().catch((error) => {

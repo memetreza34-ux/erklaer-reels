@@ -8,14 +8,20 @@ Die bisherige `modern-countryball-explainer`-Welt ist für **neue Reels ersetzt*
 
 ## Beziehung zu YouTube
 
-Diese Datei gilt **nur für Reels**.
+Diese Datei beschreibt die Quell-DNA, die wieder von Reels **und neuen YouTube-Langvideos** geteilt wird.
 
 Für Reels gilt:
 - 9:16
 - Style-ID `serious-minimal-countryball-explainer`
 - Smartphone-first-Komposition
 
-Neue YouTube-Videos übernehmen diese Countryball-DNA **nicht mehr automatisch**. Für YouTube gilt ab 2026-09-24 die eigene 16:9-Bildwelt `premium-editorial-explainer-illustration-youtube-16x9` mit unabhängigen, individuell komponierten Bildern und ohne Bild-zu-Bild-Referenzen. Die verbindlichen YouTube-Details stehen unter `youtube/YOUTUBE_VISUAL_WORLD.md`.
+Für neue YouTube-Projekte gilt wieder dieselbe künstlerische DNA, nur als 16:9-Ausprägung:
+- 16:9 horizontal
+- Style-ID `serious-minimal-countryball-explainer-youtube-16x9`
+- dieselben runden Countryball-Akteure, Konturen, flachen Farben, Symbolik und reduzierten Szenen
+- keine normalen illustrierten Menschen oder realistischen Vollszenen
+
+Wichtig: YouTube übernimmt **nicht** die alte Bild-zu-Bild-Referenzlogik. Jedes Bild wird weiterhin unabhängig aus Text erzeugt. Die verbindlichen YouTube-Details stehen unter `youtube/YOUTUBE_VISUAL_WORLD.md`.
 
 ## Grundidee
 
