@@ -2,6 +2,7 @@
   "schemaVersion": 1,
   "visualPolicyVersion": 3,
   "coverPolicyVersion": 1,
+  "assetGenerationPolicyVersion": 1,
   "channelFocus": {
     "primaryTopics": [
       "Politik und Staatssysteme",
@@ -28,6 +29,20 @@
     "separateThumbnailImageForbidden": true,
     "image00ForbiddenForNewProjects": true,
     "coverHeadlineRequired": true
+  },
+  "assetGenerationPolicy": {
+    "coverCandidateCount": 3,
+    "coverSelectionRequired": true,
+    "selectedCoverFinalName": "Bild 01.png",
+    "discardUnselectedCoverCandidates": true,
+    "nonCoverGenerationCount": 1,
+    "nonCoverManualWaveReviewForbidden": true,
+    "nonCoverRegenerationByDefaultForbidden": true,
+    "maxConcurrentGenerations": 5,
+    "renameEachFinalImageExactlyOnce": true,
+    "finalImagesFlatInSingleFolder": true,
+    "finalImageDirectory": "00-bildprompts/images",
+    "temporaryCoverCandidatesForbiddenInFinalFolder": true
   },
   "sessionPolicy": {
     "freshFlowSessionRequiredWhenVisualPolicyChanges": true,
