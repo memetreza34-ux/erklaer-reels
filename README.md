@@ -49,52 +49,23 @@ serious-minimal-countryball-explainer
 
 Vollständige Style-Bibel: `knowledge/fixed-visual-world.md`.
 
-## YouTube-Bildwelt
+**YouTube hat einen eigenen Produktionsworkflow und ein eigenes 16:9-Style-ID, übernimmt aber dieselbe Serious-Minimal-Countryball-Bild-DNA. Die einzige beabsichtigte Formatabweichung ist 16:9 horizontal statt 9:16 vertikal.**
 
-YouTube bleibt ein eigener 16:9-Produktionsworkflow, verwendet aber wieder **dieselbe Serious-Minimal-Countryball-Bild-DNA** wie die Reels:
+## Google Flow
 
-```text
-serious-minimal-countryball-explainer-youtube-16x9
-```
-
-Die einzige beabsichtigte Formatabweichung ist **16:9 horizontal statt 9:16 vertikal**.
-
-Wichtigste YouTube-Regeln:
-- perfekt runde Countryball-Akteure, wenn Akteure sinnvoll sind
-- dicke schwarze Konturen, flache kontrollierte 2D-Farben, reduzierte Details
-- starke Symbolik statt realistischer Vollszenen
-- keine normalen illustrierten Menschen, Stickfiguren oder realistischen Menschen
-- keine Foto-, Anime-, Clay-, 3D-/Pixar-Welt
-- Bild 01 = Cover + erste Videoszene
-- Cover wird exakt 3× generiert, genau ein Gewinner bleibt
-- Bild 02–NN jeweils exakt 1×
-- maximal 5 aktive Generierungen gleichzeitig, nur als Parallelitätsregel
-- alle finalen Bilder flach in `00-bildprompts/images/`
-- kein Bild 00
-- kein erzeugtes Bild wird als visuelle Referenz für ein späteres Bild verwendet
-- sichtbarer Text in deutschen Projekten ausschließlich Deutsch
-
-Die zwischenzeitliche Premium-Editorial-Bildwelt ist für neue Schema-9+-YouTube-Projekte nicht mehr aktiv.
-
-Details: `youtube/YOUTUBE_WORKFLOW.md` und `youtube/YOUTUBE_VISUAL_WORLD.md`.
-
-## Google Flow für Reels
-
-Einzige verbindliche Reel-Masterdatei:
+Einzige verbindliche Masterdatei:
 
 ```text
 00-bildprompts/99-alle-bildprompts.txt
 ```
 
-Flow arbeitet bei Reels streng seriell:
+Flow arbeitet streng seriell:
 
 ```text
 1 Bild erzeugen → warten → prüfen → Bild NN.png → ablegen → nächstes Bild
 ```
 
 Keine Queue, kein Batch, keine Parallelgenerierung.
-
-YouTube arbeitet separat: Cover 3×, danach Bild 02–NN jeweils 1×; maximal fünf aktive Generierungen gleichzeitig. Es gibt keine Bild-zu-Bild-Referenzen.
 
 ## Sichtbare Reel-Struktur
 
