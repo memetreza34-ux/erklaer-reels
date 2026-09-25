@@ -1,5 +1,6 @@
 YOUTUBE_VISUAL_POLICY_VERSION: 3
 COVER_POLICY_VERSION: 1
+ASSET_GENERATION_POLICY_VERSION: 1
 ACTIVE_STYLE_ID: premium-editorial-explainer-illustration-youtube-16x9
 
 GOOGLE FLOW MASTER PROMPT — Warum ist Kaliningrad von Russland getrennt?
@@ -17,6 +18,38 @@ FIRST SCENE = COVER HARD LOCK
 - The exported YouTube thumbnail is copied from Bild 01.png.
 - Do NOT create Bild 00.
 - Do NOT create a separate cover or thumbnail image outside the timeline.
+
+==================================================
+COVER = 3 CANDIDATES HARD LOCK
+==================================================
+
+- Generate Bild 01 exactly THREE times as temporary cover candidates.
+- Compare ONLY those three cover candidates.
+- Select exactly ONE winner.
+- Rename only the selected winner exactly once to `Bild 01.png`.
+- Discard the other two candidates completely.
+- No temporary cover candidate may remain in the final image folder.
+
+==================================================
+NON-COVER = SINGLE GENERATION HARD LOCK
+==================================================
+
+- Generate every image from Bild 02 through Bild 24 exactly ONCE.
+- Do not create alternate versions of non-cover images.
+- Do not pause for manual review after 02–05, 06–10, 11–15, 16–20 or any other wave.
+- Do not regenerate non-cover images by default.
+- Rename each finished non-cover image exactly once to its final `Bild NN.png` filename and continue.
+- Maximum five active generations at once. This is concurrency only, never a review gate.
+
+==================================================
+FINAL IMAGE FOLDER HARD LOCK
+==================================================
+
+At the end, all final images must be together in exactly one flat folder:
+`00-bildprompts/images/`
+
+This folder may contain only `Bild 01.png` through `Bild 24.png`.
+No subfolders. No Bild 00. No cover candidates. No alternate versions. No extra PNG files.
 
 ==================================================
 SESSION RESET HARD LOCK
@@ -53,9 +86,9 @@ When useful:
 ANTI-LIFELESS HARD LOCK
 ==================================================
 
-Reject and regenerate any image that feels flat, empty, generic, sterile or like a presentation slide.
+Avoid flat, empty, generic, sterile or presentation-slide-like results before generation.
 
-Hard failures:
+Hard failures to prevent in the prompt itself:
 - one small centered object floating on blank background;
 - generic icon collage;
 - repeated Baltic map with only labels changed;
@@ -64,7 +97,7 @@ Hard failures:
 - repeated composition mode in adjacent images without narrative reason;
 - decorative props that do not explain the narration.
 
-Clean does NOT mean empty. Minimal does NOT mean lifeless.
+Clean does NOT mean empty. Minimal does NOT mean lifeless. Non-cover images still receive only one generation.
 
 ==================================================
 INDIVIDUALITY HARD LOCK
@@ -86,22 +119,22 @@ DEUTSCH-HARD-LOCK — JEDER SICHTBARE TEXT
 This is a GERMAN project. Every readable word visible anywhere in every image MUST be German.
 Do NOT generate English labels. Do NOT generate pseudo-text or fake writing.
 If text is not explicitly required, generate NO TEXT.
-Any English visible text = HARD FAIL and regenerate.
-Any pseudo-text = HARD FAIL and regenerate.
+Non-cover images are still generated exactly once.
 
 ==================================================
 ABLAUF
 ==================================================
 
-1. Bild 01 separat erzeugen und streng prüfen: COVER + ERSTE SZENE.
-2. Bild 02–05 jeweils unabhängig aus ihrem eigenen Textprompt erzeugen.
-3. Alle Bilder einzeln prüfen: Aussage, Tiefe, Art Direction, Individualität, deutscher Text, Nummerierung, 16:9.
-4. Fehler nur im betroffenen Bild regenerieren.
-5. Danach 06–10, dann 11–15, dann 16–20, dann 21–24.
-6. Maximal fünf aktive Bildgenerierungen gleichzeitig.
-7. Alle fertigen Bilder flach unter `00-bildprompts/images/` als `Bild NN.png` ablegen.
-8. Niemals ein vorheriges Bild als Referenz anhängen.
-9. Niemals Bild 00 erzeugen.
+1. Bild 01 exakt dreimal als temporäre Cover-Kandidaten erzeugen.
+2. Genau einen Gewinner auswählen, einmal final zu `Bild 01.png` umbenennen, die zwei anderen Kandidaten verwerfen.
+3. Bild 02–24 jeweils genau einmal aus dem eigenen Textprompt erzeugen.
+4. Keine manuellen Prüfstopps zwischen den 5er-Wellen; automatisch bis Bild 24 weiterarbeiten.
+5. Maximal fünf aktive Bildgenerierungen gleichzeitig.
+6. Jedes fertige Nicht-Cover-Bild genau einmal auf `Bild NN.png` benennen.
+7. Alle finalen Bilder flach unter `00-bildprompts/images/` sammeln.
+8. Am Ende müssen dort exakt `Bild 01.png` bis `Bild 24.png` liegen.
+9. Niemals ein vorheriges Bild als Referenz anhängen.
+10. Niemals Bild 00 erzeugen.
 
 A–E-PACING
 A = sehr einfach, ca. 4–5 s
@@ -118,7 +151,7 @@ Bild 01 · D · ca. 10 s
 Premium editorial geopolitical cover, 16:9. Show a wide Baltic-region map transformed into a dramatic spatial scene: Poland and Lithuania form the central land barrier, Kaliningrad is a compact highlighted Russian territory on the Baltic coast at left-center, while the much larger Russian mainland sits far to the right, visibly disconnected. Use layered coastlines, subtle relief, a strong diagonal visual route that stops at foreign borders, deep navy and muted sand with a controlled crimson accent on Kaliningrad. The image must instantly communicate "Russian territory cut off from Russia". Add exactly one large German headline: "KALININGRAD: WARUM RUSSISCH?". No other readable text.
 
 ==================================================
-ERSTE WELLE — BILD 02–05
+BILD 02–05 — JEWEILS GENAU EINMAL
 ==================================================
 
 Bild 02 · A · ca. 4,5 s
@@ -133,10 +166,8 @@ Wartime historical narrative scene, 16:9. Show East Prussia in early 1945 becomi
 Bild 05 · B · ca. 6 s
 Historical siege aftermath scene, 16:9. Show Königsberg in April 1945 from street level with damaged brick facades framing the foreground and Soviet troops moving into the city through a deep central corridor. Keep violence non-graphic; focus on the decisive capture and devastated urban space. Use strong perspective, smoky blue-gray atmosphere, small red military accents. Add exactly: "APRIL 1945".
 
-STOP: Bild 01–05 vollständig prüfen. Erst danach 06–10.
-
 ==================================================
-WELLE 2 — BILD 06–10
+BILD 06–10 — JEWEILS GENAU EINMAL
 ==================================================
 
 Bild 06 · C · ca. 8 s
@@ -154,10 +185,8 @@ Geopolitical decision scene, 16:9. Focus on the northern Königsberg area as a h
 Bild 10 · B · ca. 6 s
 Baltic territorial scene, 16:9. Show the newly Soviet-controlled northern part of former East Prussia as a coastal region integrated into a larger Soviet-colored map system, with port, rail and coastline elements extending into the Baltic. Use an oblique topographic perspective and cool blue sea against muted red-brown land. Add exactly: "SOWJETISCHES GEBIET".
 
-STOP: Bild 06–10 vollständig prüfen. Erst danach 11–15.
-
 ==================================================
-WELLE 3 — BILD 11–15
+BILD 11–15 — JEWEILS GENAU EINMAL
 ==================================================
 
 Bild 11 · B · ca. 6 s
@@ -175,10 +204,8 @@ Postwar resettlement and rebuilding scene, 16:9. Show Soviet families arriving f
 Bild 15 · B · ca. 6 s
 Soviet-era spatial explainer, 16:9. Show the USSR as one continuous political space with Kaliningrad at the western edge and the Russian core far east. Lithuania sits between them but is visually rendered as an internal Soviet republic with a dashed administrative boundary, while a continuous rail route crosses through without an international checkpoint. Add exactly: "EIN STAAT". Make it a lived transport scene integrated with the map, not a flat diagram.
 
-STOP: Bild 11–15 vollständig prüfen. Erst danach 16–20.
-
 ==================================================
-WELLE 4 — BILD 16–20
+BILD 16–20 — JEWEILS GENAU EINMAL
 ==================================================
 
 Bild 16 · A · ca. 5 s
@@ -196,10 +223,8 @@ Border-separation narrative scene, 16:9. View from a transport route leaving Kal
 Bild 20 · B · ca. 6 s
 Modern geopolitical neighborhood scene, 16:9. Show Kaliningrad physically enclosed on land by Poland and Lithuania as European states, using a sophisticated layered map blended with real-world border infrastructure, EU-style blue-gold visual cues and restrained NATO security symbolism in the surroundings. Do not turn it into a logo collage. No readable text required.
 
-STOP: Bild 16–20 vollständig prüfen. Erst danach 21–24.
-
 ==================================================
-WELLE 5 — BILD 21–24
+BILD 21–24 — JEWEILS GENAU EINMAL
 ==================================================
 
 Bild 21 · A · ca. 5 s
@@ -218,12 +243,20 @@ Final editorial timeline scene, 16:9. Build one flowing left-to-right visual sto
 FINALER CHECK
 ==================================================
 
+- Asset Generation Policy V1 aktiv
+- Bild 01 exakt dreimal als Cover-Kandidat erzeugt
+- genau ein Cover-Gewinner als Bild 01.png behalten
+- zwei verworfene Cover-Kandidaten nicht im finalen Ordner
+- Bild 02–24 jeweils genau einmal generiert
+- keine manuellen Prüfstopps nach 5er-Wellen
+- jedes finale Bild genau einmal korrekt benannt
+- alle 24 finalen Bilder gemeinsam flach unter `00-bildprompts/images/`
+- keine Unterordner, Varianten oder Zusatz-PNGs
 - Cover Policy V1 aktiv
 - Bild 01 = Cover + erste Videoszene
 - Bild 01 enthält "KALININGRAD: WARUM RUSSISCH?"
 - kein Bild 00
 - keine separate Thumbnail-Datei in der Bildproduktion
-- 24 Bilder vollständig
 - 16:9 horizontal
 - hochwertige Premium-Editorial-Illustration
 - jede Szene eigene Bildidee und eigene Komposition
