@@ -18,6 +18,7 @@ Der technische Themen-Editor hat das Thema **vor Projekterstellung als `APPROVED
 - 16:9
 - Visual Policy V3
 - Cover Policy V1
+- Asset Generation Policy V1
 - jedes Bild unabhängig generieren
 - kein vorheriges Bild als Referenz
 - Premium-Editorial-Erklärillustration
@@ -29,13 +30,21 @@ Der technische Themen-Editor hat das Thema **vor Projekterstellung als `APPROVED
 Google Flow in einer frischen Sitzung:
 
 1. `00-bildprompts/google-flow-prompt.txt` vollständig einfügen.
-2. Bild 01 separat erzeugen und als Cover + erste Szene prüfen.
-3. Bild 02–05 unabhängig erzeugen und prüfen.
-4. Danach 06–10, 11–15, 16–20, 21–24.
-5. Kein erzeugtes Bild an eine spätere Generierung anhängen.
-6. Fertige Bilder als `00-bildprompts/images/Bild NN.png` ablegen.
-7. `01-voice-script/voice-script.txt` einmal vollständig vertonen.
-8. Finale Stimme als `02-audio/voiceover-final.*` ablegen.
+2. **Bild 01 exakt dreimal** als temporäre Cover-Kandidaten erzeugen.
+3. Genau **einen** Cover-Gewinner auswählen und genau einmal zu `Bild 01.png` umbenennen; die anderen zwei verwerfen.
+4. **Bild 02–24 jeweils genau einmal** generieren.
+5. Keine manuelle Prüfung und kein Stop nach 02–05, 06–10 usw.; maximal fünf Generierungen gleichzeitig ist nur Parallelitätslogik.
+6. Jedes Nicht-Cover-Bild genau einmal auf seinen finalen Namen `Bild NN.png` bringen.
+7. Kein erzeugtes Bild an eine spätere Generierung anhängen.
+8. Am Ende müssen **exakt Bild 01.png bis Bild 24.png** gemeinsam flach unter `00-bildprompts/images/` liegen — keine Cover-Kandidaten, Varianten, Unterordner, Zusatz-PNGs oder Bild 00.
+9. `01-voice-script/voice-script.txt` einmal vollständig vertonen.
+10. Finale Stimme als `02-audio/voiceover-final.*` ablegen.
+
+Danach Asset-Gate:
+
+```bash
+npm run validate:youtube-phase2 -- --dir "youtube/2026-KW39_21-09_bis_27-09/warum-ist-kaliningrad-von-russland-getrennt"
+```
 
 ## Phase 3
 
@@ -43,4 +52,4 @@ Google Flow in einer frischen Sitzung:
 npm run phase3:youtube -- --dir "youtube/2026-KW39_21-09_bis_27-09/warum-ist-kaliningrad-von-russland-getrennt"
 ```
 
-Phase 3 prüft zuerst Themen-Editor/Visual/Cover-Policy, optimiert dann die Stimme auf 1,10x mit erhaltener Tonhöhe, kürzt lange Pausen, entfernt Endstille und misst erst danach die Whisper-Zeitanker.
+Phase 3 prüft zuerst Themen-Editor/Visual/Cover-/Asset-Policy sowie den finalen Bildordner, optimiert dann die Stimme auf 1,10x mit erhaltener Tonhöhe, kürzt lange Pausen, entfernt Endstille und misst erst danach die Whisper-Zeitanker.
