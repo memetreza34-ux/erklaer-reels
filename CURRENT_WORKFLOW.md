@@ -1,8 +1,8 @@
 # CURRENT WORKFLOW — VERBINDLICHE SINGLE SOURCE OF TRUTH
 
-**Stand: 2026-09-23**
+**Stand: 2026-09-25**
 
-Diese Datei ist die verbindliche Repo-weite Produktionsregel für neue Reels. YouTube besitzt einen eigenen Produktionsworkflow, nutzt aber dieselbe Serious-Minimal-Countryball-Bild-DNA in 16:9.
+Diese Datei ist die verbindliche Repo-weite Produktionsregel für neue Reels. YouTube besitzt einen eigenen Produktionsworkflow und darf die Reel-Bildwelt oder Reel-Produktionsregeln nicht verändern.
 
 ## Priorität
 
@@ -94,7 +94,7 @@ Vor Bild 01 gilt ein globaler World-Lock für das ganze Reel. Einzelprompts änd
 
 Vollständige Style-Bibel: `knowledge/fixed-visual-world.md`.
 
-**YouTube bleibt ein eigener 16:9-Produktionsworkflow, übernimmt aber dieselbe Serious-Minimal-Countryball-Bild-DNA. Die einzige beabsichtigte Formatabweichung ist 16:9 horizontal statt 9:16 vertikal.**
+**YouTube ist separat. Seine Bildwelt und seine Produktionspolicy stehen ausschließlich unter `youtube/` und dürfen diese Reel-Source-of-Truth nicht verändern oder erweitern.**
 
 ## Adaptive Dense V2 — Bildanzahl
 
