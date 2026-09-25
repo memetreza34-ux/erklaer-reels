@@ -98,7 +98,7 @@ no generic AI template, no stock clipart, no mandatory countryball, no stick fig
 DEUTSCH-HARD-LOCK
 ==================================================
 
-Every readable word must be German. English visible text or pseudo-text is forbidden in the prompt plan. Non-cover images are still generated only once.
+Every readable word must be German. English visible text or pseudo-text = HARD FAIL for the planned image output. This HARD FAIL does NOT authorize a second non-cover generation: Bild 02 through Bild NN remain single-pass and are generated exactly once.
 
 ==================================================
 ABLAUF
