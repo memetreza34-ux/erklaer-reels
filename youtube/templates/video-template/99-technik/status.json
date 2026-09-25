@@ -1,6 +1,7 @@
 {
-  "schemaVersion": 6,
+  "schemaVersion": 9,
   "productionRulesVersion": 2,
+  "assetGenerationPolicyVersion": 1,
   "currentPhase": 1,
   "phase1": {
     "owner": "ChatGPT",
@@ -15,20 +16,31 @@
     "complexityPacing": "pending",
     "imageAudioMapping": "pending",
     "renderPlan": "pending",
-    "uploadMetadata": "pending"
+    "uploadMetadata": "pending",
+    "assetGenerationPolicy": "pending"
   },
   "phase2": {
     "owner": "user",
     "status": "blocked-until-phase1-complete",
-    "thumbnail": "missing",
     "images": "missing",
     "singleFinalAudio": "missing",
-    "flowWaveSize": 5,
-    "flatImageDirectory": "00-bildprompts/images"
+    "coverCandidateCount": 3,
+    "coverSelectionRequired": true,
+    "selectedCoverFinalName": "Bild 01.png",
+    "discardUnselectedCoverCandidates": true,
+    "nonCoverGenerationCount": 1,
+    "manualWaveReview": false,
+    "nonCoverRegenerationByDefault": false,
+    "maxConcurrentGenerations": 5,
+    "renameEachFinalImageExactlyOnce": true,
+    "flatImageDirectory": "00-bildprompts/images",
+    "finalImagesFlatInSingleFolder": true,
+    "temporaryCoverCandidatesForbiddenInFinalFolder": true
   },
   "phase3": {
     "owner": "Antigravity",
     "status": "blocked-until-phase2-complete",
+    "phase2AssetGate": "pending",
     "assetValidation": "pending",
     "audioEndSilenceQC": "pending",
     "actualAnchorAlignment": "pending",
@@ -56,6 +68,7 @@
   "readyForAntigravity": false,
   "readyForRender": false,
   "renderBlockedIf": [
+    "phase2 asset gate does not exit 0",
     "single final audio is missing",
     "any expected image is missing",
     "any actualStartSeconds is null",
