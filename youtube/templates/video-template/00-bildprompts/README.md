@@ -16,6 +16,58 @@ Der Masterprompt enthält alle Videobilder in globaler Reihenfolge, beginnend mi
 - `03-export/THUMBNAIL.png` wird aus `Bild 01.png` kopiert.
 - Es gibt **kein Bild 00** und kein separates Thumbnail-Bild für neue Projekte.
 
+## COVER = 3 CANDIDATES HARD LOCK
+
+Nur das Cover wird mehrfach erzeugt:
+
+```text
+Bild 01 → genau 3 temporäre Kandidaten
+→ genau 1 Gewinner auswählen
+→ Gewinner genau einmal zu Bild 01.png umbenennen
+→ andere 2 Kandidaten vollständig verwerfen
+```
+
+Die verworfenen Kandidaten dürfen **nicht** unter `00-bildprompts/images/` liegen bleiben.
+
+## NON-COVER = SINGLE GENERATION HARD LOCK
+
+Für jedes Bild ab Bild 02 gilt:
+
+- genau **eine** Generierung
+- keine zweite Version
+- keine manuelle Prüfung nach 5er-Wellen
+- kein Stop nach 02–05, 06–10 usw.
+- keine standardmäßige Regeneration
+- finales Bild genau einmal zu `Bild NN.png` benennen
+- maximal fünf aktive Generierungen gleichzeitig
+
+Die 5er-Grenze ist ausschließlich Parallelitäts-/Lastlogik.
+
+## FINAL IMAGE FOLDER HARD LOCK
+
+Nach der Bildproduktion gibt es genau einen flachen finalen Bildordner:
+
+```text
+00-bildprompts/images/
+├── Bild 01.png
+├── Bild 02.png
+├── Bild 03.png
+└── ... bis Bild NN.png
+```
+
+Verboten im finalen Ordner:
+- Unterordner
+- `Bild 00.png`
+- Cover-Versionen A/B/C
+- verworfene Varianten
+- zusätzliche PNG-Dateien
+
+Danach prüfen mit:
+
+```bash
+npm run validate:youtube-phase2 -- --dir "youtube/<woche>/<thema>"
+```
+
 ## Verbindliche Bildregel
 
 Jedes Bild wird unabhängig aus seinem eigenen Textprompt erzeugt.
@@ -26,37 +78,5 @@ HARD LOCK:
 - keine Image-to-Image-Stilvererbung
 - jedes Bild braucht eine eigenständige, zum Inhalt passende Komposition
 - Stil-Konsistenz kommt ausschließlich aus dem schriftlichen Style-Lock in `youtube/YOUTUBE_VISUAL_WORLD.md`
-
-## Verbindliche 5er-Regel
-
-Die Wellen sind nur Ausführungslogik:
-
-```text
-Bild 01 separat erzeugen und streng prüfen: COVER + ERSTE SZENE
-Bild 02–05 jeweils aus eigenem Textprompt
-→ auf die Welle warten
-→ alle Bilder einzeln prüfen
-→ Fehler in derselben Welle korrigieren
-→ als Bild 01.png bis Bild 05.png unter images/ ablegen
-→ erst danach weiter
-
-Bild 06–10
-→ gleicher Ablauf, weiterhin ohne Referenzbild
-
-11–15
-→ usw.
-```
-
-Harte Regeln:
-- maximal fünf aktive Bildgenerierungen gleichzeitig
-- niemals zwei Wellen gleichzeitig offen halten
-- nächste Welle erst nach vollständigem Check der aktuellen
-- letzter Block darf 1–5 Bilder enthalten
-- **kein Bild 00**
-- `Bild 01.png` ist Cover + erste Timeline-Szene + spätere Thumbnail-Quelle
-- alle fertigen Bilder liegen flach unter `00-bildprompts/images/`
-- keine 10er-Unterordner
-- keine separaten Promptdateien pro Paket
-- keine Bild-zu-Bild-Referenzen
 
 Die Bildzahl wird aus Skript und A–E-Komplexität abgeleitet. Es gibt keine feste Sollzahl.
