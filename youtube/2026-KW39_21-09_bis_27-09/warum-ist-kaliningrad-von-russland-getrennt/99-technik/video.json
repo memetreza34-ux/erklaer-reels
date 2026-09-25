@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 8,
+  "productionRulesVersion": 2,
+  "visualPolicyVersion": 3,
+  "coverPolicyVersion": 1,
+  "complexityPacingVersion": 1,
+  "videoId": "2026-KW39_warum-ist-kaliningrad-von-russland-getrennt",
+  "weekFolder": "2026-KW39_21-09_bis_27-09",
+  "topicSlug": "warum-ist-kaliningrad-von-russland-getrennt",
+  "title": "Warum ist Kaliningrad von Russland getrennt?",
+  "topic": "Wie wurde Kaliningrad russisch und warum ist die Region heute vom restlichen Russland getrennt?",
+  "topicCategory": "Länder, Geografie, Grenzen und Territorien",
+  "topicCoreLink": "Das Video verbindet Grenzgeschichte, Nachkriegsordnung, Sowjetunion, Exklaven und europäische Geografie und liegt damit direkt im Kernprofil des Kanals.",
+  "explicitUserRequestedOutsideFocus": false,
+  "topicEditor": {
+    "version": 1,
+    "candidateTitle": "Warum ist Kaliningrad von Russland getrennt?",
+    "decision": "APPROVED_NEW",
+    "checkedBeforeProjectCreation": true,
+    "duplicateSources": ["THEMEN_HISTORIE.md", "config/youtube-topic-registry.json", "youtube/**/99-technik/video.json"],
+    "note": "Vor Projekterstellung gegen vorhandene Themen geprüft; kein bestehendes Video behandelt Kaliningrad als russische Exklave und ihre Entstehung."
+  },
+  "status": "phase2-pending",
+  "language": "de",
+  "format": "youtube-longform",
+  "visualStyleId": "premium-editorial-explainer-illustration-youtube-16x9",
+  "sourceVisualWorldId": "premium-editorial-explainer-illustration",
+  "visualStyleReason": "Hochwertige erwachsene Editorial-Erklärillustrationen mit historischen Szenen, Karten und räumlichen Exklaven-Erklärungen. Jedes Bild wird unabhängig erzeugt; kein vorheriges Bild dient als Referenz.",
+  "aspectRatio": "16:9",
+  "coverPolicy": {
+    "firstSceneIsCover": true,
+    "coverImageNumber": 1,
+    "coverMustBeFirstTimelineImage": true,
+    "coverMustAlsoBeThumbnailSource": true,
+    "separateThumbnailImageForbidden": true,
+    "image00Forbidden": true,
+    "headlineRequired": true
+  },
+  "sessionPolicy": {
+    "freshFlowSessionRequiredWhenVisualPolicyChanges": true,
+    "continueSessionContainingLegacyStyleInstructionsForbidden": true,
+    "activeStyleIdMustBeRestatedBeforeGeneration": true,
+    "previousGeneratedImageAsReferenceForbidden": true
+  },
+  "visualWorldParityPolicy": {
+    "mustMatchReelVisualDNA": false,
+    "independentYoutubeStyle": true,
+    "stickFiguresForbidden": true,
+    "countryballAsDefaultForbidden": true,
+    "photorealismForbiddenByDefault": true,
+    "genericTemplateCompositionForbidden": true
+  },
+  "masterReferencePolicy": {
+    "masterImageNumber": null,
+    "generateMasterSeparately": false,
+    "attachMasterToAllLaterImages": false,
+    "visualWorldMayChange": false,
+    "consistencySource": "written-style-lock-only"
+  },
+  "independentImagePolicy": {
+    "eachImageGeneratedFromOwnTextPrompt": true,
+    "previousGeneratedImageAsReferenceForbidden": true,
+    "imageToImageStyleInheritanceForbidden": true,
+    "freshCompositionRequired": true,
+    "repeatLayoutWithoutNarrativeReasonForbidden": true,
+    "varyPerspectiveLayoutAndBackgroundWhenUseful": true
+  },
+  "visualQualityPolicy": {
+    "visualStorytellingRequired": true,
+    "lifelessStaticCompositionForbidden": true,
+    "genericCenteredObjectOnBlankBackgroundForbiddenByDefault": true,
+    "genericIconCollageForbidden": true,
+    "sceneSpecificArtDirectionRequired": true,
+    "foregroundMidgroundBackgroundPreferredForNarrativeScenes": true,
+    "directionalEnergyPreferredWhenContentAllows": true,
+    "causeEffectOrContrastShouldBeVisibleWhenRelevant": true,
+    "controlledDepthRequired": true,
+    "paletteVariationAcrossAdjacentImagesRequired": true,
+    "adjacentCompositionModeRepeatForbiddenWithoutReason": true,
+    "childishCartoonLookForbidden": true
+  },
+  "visibleTextPolicy": {
+    "projectLanguageOnly": true,
+    "germanProjectRequiresGermanOnly": true,
+    "englishVisibleTextHardFail": true,
+    "pseudoTextHardFail": true,
+    "preferNoTextWhenNotRequired": true
+  },
+  "minimumDurationSeconds": 140,
+  "targetDurationSeconds": 150,
+  "targetDurationRangeSeconds": [142, 158],
+  "scriptWordCount": 442,
+  "plannedImageCount": 24,
+  "imageCountMethod": "content-and-complexity-derived",
+  "complexityDistribution": {"A": 5, "B": 11, "C": 7, "D": 1, "E": 0},
+  "complexityTargetsSeconds": {"A": [4,5], "B": [5,7], "C": [7,9], "D": [9,12], "E": [12,15]},
+  "complexityFinalHardMaxSeconds": {"A": 6.5, "B": 8.5, "C": 10.5, "D": 13.5, "E": 16},
+  "complexityFinalShortReviewSeconds": {"A": 3, "B": 4, "C": 5, "D": 6.5, "E": 8},
+  "adaptivePacing": {
+    "hardMaximumExclusiveSeconds": 20,
+    "reviewFromSeconds": 14,
+    "strongSplitReviewFromSeconds": 16,
+    "reviewIfShorterThanSeconds": 4,
+    "oneImageOneVisualPurpose": true,
+    "imageCountMustFollowContentDensity": true,
+    "uniformHoldDistributionForbidden": true
+  },
+  "userFacingStructure": {
+    "googleFlowPrompt": "00-bildprompts/google-flow-prompt.txt",
+    "imageDirectory": "00-bildprompts/images",
+    "script": "01-voice-script/voice-script.txt",
+    "finalAudioPattern": "02-audio/voiceover-final.*",
+    "flowWaveSize": 5
+  },
+  "audioEndPolicy": {
+    "maxTrailingSilenceSeconds": 0.35,
+    "preserveAfterLastWordSeconds": 0.2,
+    "trimMasterAutomatically": true,
+    "neverModifyUserOriginal": true
+  },
+  "renderPolicy": {
+    "motionPolicy": "complexity-v1",
+    "soundPlanFile": "99-technik/YOUTUBE_RENDER_PLAN.json",
+    "backgroundMusic": false,
+    "endHoldSeconds": 0.6
+  },
+  "thumbnailText": "KALININGRAD: WARUM RUSSISCH?",
+  "titleRequired": true,
+  "thumbnailRequired": true,
+  "topicDuplicateCheckRequired": true,
+  "topicHistoryStatus": "reserved",
+  "folderRule": "youtube/<weekFolder>/<topicSlug>/",
+  "sourcesChecked": true,
+  "phase1Ready": true,
+  "audioReady": false,
+  "imagesReady": false,
+  "thumbnailReady": false,
+  "renderReady": false,
+  "createdAt": "2026-09-25",
+  "updatedAt": "2026-09-25"
+}
