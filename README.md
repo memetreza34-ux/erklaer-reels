@@ -49,7 +49,7 @@ serious-minimal-countryball-explainer
 
 Vollständige Style-Bibel: `knowledge/fixed-visual-world.md`.
 
-**YouTube hat einen eigenen Produktionsworkflow und ein eigenes 16:9-Style-ID, übernimmt aber dieselbe Serious-Minimal-Countryball-Bild-DNA. Die einzige beabsichtigte Formatabweichung ist 16:9 horizontal statt 9:16 vertikal.**
+**YouTube ist eine getrennte Langvideo-Pipeline. Seine Bildwelt und Produktionsregeln stehen ausschließlich unter `youtube/` und dürfen die Reel-Bildwelt nicht verändern.**
 
 ## Google Flow
 
