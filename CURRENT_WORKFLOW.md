@@ -1,8 +1,8 @@
 # CURRENT WORKFLOW — VERBINDLICHE SINGLE SOURCE OF TRUTH
 
-**Stand: 2026-09-25**
+**Stand: 2026-09-23**
 
-Diese Datei ist die verbindliche Repo-weite Produktionsregel für neue Reels. YouTube besitzt einen eigenen Produktionsworkflow, nutzt aber wieder dieselbe **Serious-Minimal-Countryball-Bild-DNA** in 16:9.
+Diese Datei ist die verbindliche Repo-weite Produktionsregel für neue Reels. YouTube besitzt einen eigenen Produktionsworkflow, nutzt aber dieselbe Serious-Minimal-Countryball-Bild-DNA in 16:9.
 
 ## Priorität
 
@@ -94,35 +94,7 @@ Vor Bild 01 gilt ein globaler World-Lock für das ganze Reel. Einzelprompts änd
 
 Vollständige Style-Bibel: `knowledge/fixed-visual-world.md`.
 
-## YouTube-Bildwelt
-
-YouTube bleibt ein eigener Produktionsworkflow, übernimmt aber wieder dieselbe künstlerische Serious-Minimal-Countryball-DNA:
-
-```text
-serious-minimal-countryball-explainer-youtube-16x9
-```
-
-Die einzige beabsichtigte Formatabweichung ist **16:9 horizontal statt 9:16 vertikal**.
-
-Harte YouTube-Regeln:
-- perfekt runde Countryball-Akteure, wenn Akteure gebraucht werden
-- dicke schwarze Konturen, flache kontrollierte Farben, geringe bis mittlere Detaildichte
-- starke Symbolik statt realistischer Vollszenen
-- keine normalen illustrierten Menschen, humanoiden Cartoon-Personen oder Stickfiguren
-- keine Foto-, Anime-, Clay-, 3D-/Pixar-Welt
-- historische Inhalte werden in dieselbe reduzierte Formsprache übersetzt
-- Bild 01 = Cover + erste Szene
-- Cover exakt 3× generieren, genau einen Gewinner behalten
-- Bild 02–NN jeweils exakt 1× generieren
-- maximal fünf aktive Generierungen gleichzeitig, nur als Lastregel
-- alle finalen Bilder flach in `00-bildprompts/images/`
-- kein Bild 00
-- **kein erzeugtes Bild als visuelle Referenz für ein späteres Bild verwenden**
-- sichtbarer Text in deutschen Projekten ausschließlich Deutsch
-
-Die zwischenzeitliche Premium-Editorial-Bildwelt ist für neue Schema-9+-Projekte nicht mehr aktiv.
-
-Verbindliche Details: `youtube/YOUTUBE_WORKFLOW.md` und `youtube/YOUTUBE_VISUAL_WORLD.md`.
+**YouTube bleibt ein eigener 16:9-Produktionsworkflow, übernimmt aber dieselbe Serious-Minimal-Countryball-Bild-DNA. Die einzige beabsichtigte Formatabweichung ist 16:9 horizontal statt 9:16 vertikal.**
 
 ## Adaptive Dense V2 — Bildanzahl
 
@@ -191,13 +163,13 @@ Zoom meist 2–4 %, Pan 1–3 %, weiches Easing. Neue Reels dürfen keine länge
 
 ## Google Flow
 
-Einzige verbindliche Reel-Masterdatei:
+Einzige verbindliche Masterdatei:
 
 ```text
 00-bildprompts/99-alle-bildprompts.txt
 ```
 
-Ausführung für Reels streng seriell:
+Ausführung streng seriell:
 
 ```text
 World-Lock lesen
@@ -209,9 +181,7 @@ World-Lock lesen
 → erst dann nächstes Bild
 ```
 
-Keine Queue, kein Batch, keine parallele Bildgenerierung bei Reels.
-
-YouTube folgt separat `youtube/YOUTUBE_WORKFLOW.md`: Bild 01 wird 3× als Cover erzeugt, danach Bild 02–NN je 1×; maximal fünf aktive Generierungen gleichzeitig, ohne Referenzbilder.
+Keine Queue, kein Batch, keine parallele Bildgenerierung.
 
 ## Audio
 
