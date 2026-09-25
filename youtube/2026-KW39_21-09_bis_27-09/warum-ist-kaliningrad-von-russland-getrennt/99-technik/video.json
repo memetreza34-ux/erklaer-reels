@@ -1,7 +1,7 @@
 {
   "schemaVersion": 9,
   "productionRulesVersion": 2,
-  "visualPolicyVersion": 3,
+  "visualPolicyVersion": 4,
   "coverPolicyVersion": 1,
   "assetGenerationPolicyVersion": 1,
   "complexityPacingVersion": 1,
@@ -21,12 +21,12 @@
     "duplicateSources": ["THEMEN_HISTORIE.md", "config/youtube-topic-registry.json", "youtube/**/99-technik/video.json"],
     "note": "Vor Projekterstellung gegen vorhandene Themen geprüft; kein bestehendes Video behandelt Kaliningrad als russische Exklave und ihre Entstehung."
   },
-  "status": "phase2-pending",
+  "status": "phase2-pending-regenerate-countryball-v4",
   "language": "de",
   "format": "youtube-longform",
-  "visualStyleId": "premium-editorial-explainer-illustration-youtube-16x9",
-  "sourceVisualWorldId": "premium-editorial-explainer-illustration",
-  "visualStyleReason": "Hochwertige erwachsene Editorial-Erklärillustrationen mit historischen Szenen, Karten und räumlichen Exklaven-Erklärungen. Jedes Bild wird unabhängig erzeugt; kein vorheriges Bild dient als Referenz.",
+  "visualStyleId": "serious-minimal-countryball-explainer-youtube-16x9",
+  "sourceVisualWorldId": "serious-minimal-countryball-explainer",
+  "visualStyleReason": "Das Video nutzt wieder die ursprüngliche Serious-Minimal-Countryball-DNA der Reels, nur in 16:9. Historische und geopolitische Inhalte werden symbolisch und reduziert statt als realistische Editorial-Szenen dargestellt. Jedes Bild wird unabhängig aus Text erzeugt; kein vorheriges Bild dient als Referenz.",
   "aspectRatio": "16:9",
   "coverPolicy": {
     "firstSceneIsCover": true,
@@ -58,10 +58,11 @@
     "previousGeneratedImageAsReferenceForbidden": true
   },
   "visualWorldParityPolicy": {
-    "mustMatchReelVisualDNA": false,
-    "independentYoutubeStyle": true,
+    "mustMatchReelVisualDNA": true,
+    "independentYoutubeStyle": false,
     "stickFiguresForbidden": true,
-    "countryballAsDefaultForbidden": true,
+    "countryballVisualWorldRequired": true,
+    "normalIllustratedHumansForbidden": true,
     "photorealismForbiddenByDefault": true,
     "genericTemplateCompositionForbidden": true
   },
@@ -86,12 +87,9 @@
     "genericCenteredObjectOnBlankBackgroundForbiddenByDefault": true,
     "genericIconCollageForbidden": true,
     "sceneSpecificArtDirectionRequired": true,
-    "foregroundMidgroundBackgroundPreferredForNarrativeScenes": true,
-    "directionalEnergyPreferredWhenContentAllows": true,
-    "causeEffectOrContrastShouldBeVisibleWhenRelevant": true,
-    "controlledDepthRequired": true,
-    "paletteVariationAcrossAdjacentImagesRequired": true,
-    "adjacentCompositionModeRepeatForbiddenWithoutReason": true,
+    "seriousMinimalCountryballWorldRequired": true,
+    "perfectlyRoundCountryballActorsRequired": true,
+    "normalIllustratedHumansForbidden": true,
     "childishCartoonLookForbidden": true
   },
   "visibleTextPolicy": {
