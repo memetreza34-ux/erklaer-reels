@@ -8,20 +8,16 @@ Die bisherige `modern-countryball-explainer`-Welt ist für **neue Reels ersetzt*
 
 ## Beziehung zu YouTube
 
-Diese Datei beschreibt die Quell-DNA, die wieder von Reels **und neuen YouTube-Langvideos** geteilt wird.
+Diese Datei gilt **ausschließlich für Reels**.
 
 Für Reels gilt:
 - 9:16
 - Style-ID `serious-minimal-countryball-explainer`
 - Smartphone-first-Komposition
 
-Für neue YouTube-Projekte gilt wieder dieselbe künstlerische DNA, nur als 16:9-Ausprägung:
-- 16:9 horizontal
-- Style-ID `serious-minimal-countryball-explainer-youtube-16x9`
-- dieselben runden Countryball-Akteure, Konturen, flachen Farben, Symbolik und reduzierten Szenen
-- keine normalen illustrierten Menschen oder realistischen Vollszenen
+YouTube besitzt einen **eigenen** Langvideo-Workflow und eine **eigene** Bildwelt unter `youtube/`. YouTube-Regeln dürfen diese Reel-Bildwelt nicht umschreiben, erweitern oder als gemeinsame Source of Truth benutzen. Ebenso übernimmt ein Reel keine YouTube-Style-ID, Cover-/Asset-Policy oder YouTube-Promptregeln.
 
-Wichtig: YouTube übernimmt **nicht** die alte Bild-zu-Bild-Referenzlogik. Jedes Bild wird weiterhin unabhängig aus Text erzeugt. Die verbindlichen YouTube-Details stehen unter `youtube/YOUTUBE_VISUAL_WORLD.md`.
+Die verbindlichen YouTube-Details stehen ausschließlich unter `youtube/YOUTUBE_VISUAL_WORLD.md` und `youtube/YOUTUBE_WORKFLOW.md`.
 
 ## Grundidee
 
@@ -101,19 +97,54 @@ Damit die Bilder abwechslungsreich bleiben, aber nicht chaotisch werden, gibt es
 
 Ein großes Hauptmotiv + 0–1 unterstützendes Element.
 
+Beispiele:
+- Kugel mit Thermometer und Schweiß
+- Kugel unter Spotlight
+- Kugel + Gehirnsymbol
+- Objekt + kurze Headline
+
 ### 2. Supported Explainer
 
 Ein großes Hauptmotiv + 1–3 relevante Requisiten/Symbole.
 
+Beispiele:
+- Kugel + Theatermaske + Musiknote
+- zwei Kugeln + Sprechblasen
+- Kugel + Buch + Karte
+- Kugel + Symbol + einfaches Dokument
+
 ### 3. Simple Mini Scene
 
 Eine kleine, stark reduzierte Szene mit nur einem einfachen Kontextobjekt oder einer einfachen Struktur.
+
+Beispiele:
+- Kugel verlässt eine offene Tür
+- Kugel liest an einem Tisch ein Buch
+- Grabstein mit Kugelmotiv und etwas Efeu
+- Spotlight auf eine Figur vor wenigen anderen Figuren
 
 **Keine detaillierten realistischen Räume.** Eine Mini-Szene bleibt grafisch reduziert.
 
 ## Passende Zusatzobjekte
 
 Zusatzobjekte sind ausdrücklich erwünscht, **wenn sie die Aussage verbessern**.
+
+Typisch erlaubt:
+- Thermometer
+- Tür
+- Tisch
+- Buch
+- Papierrolle
+- Grabstein
+- Spotlight
+- Maske
+- Musiknote
+- Sprechblase
+- einfache Karte
+- Gehirnsymbol
+- Bildschirm
+- Totenköpfe als klare Mengenmetapher
+- ein einzelnes Werkzeug oder Dokument
 
 Regel:
 - normalerweise 0–3 Zusatzobjekte
@@ -166,6 +197,8 @@ Wenn ein Fachmotiv nötig ist:
 - keine fotorealistische Hand/Haut/Organe
 - keine 3D-Anatomie
 - keine normalen illustrierten Menschen
+
+Beispiel: Statt realistischer Hirnscan-Person → große Kugel + klar vereinfachtes Gehirnsymbol oder vereinfachter 2D-Kopf-/Gehirn-Cue in derselben Welt.
 
 ## Deutscher Bildtext
 
@@ -222,7 +255,7 @@ Prompts sind Englisch. Sichtbarer Bildtext ist Deutsch.
 8. Sind Flaggen nur bei echter geografischer/kultureller Relevanz vorhanden?
 9. Wurden normale Menschen und realistische Umgebungen vermieden?
 10. Ist der deutsche Text kurz, korrekt und gut lesbar?
-11. Unterscheidet sich das Motiv/Arrangement genug vom vorherigen Bild, ohne die Reel-Welt zu wechseln?
-12. Bleibt die Reel-Komposition konsequent 9:16?
+11. Unterscheidet sich das Motiv/Arrangement genug vom vorherigen Bild, ohne die Welt zu wechseln?
+12. Bleibt die Reel-Komposition konsequent 9:16 und unabhängig von YouTube-Regeln?
 
 Wenn ein Bild scheitert, wird nur dieses Bild korrigiert. Die globale Reel-Welt bleibt unverändert.
