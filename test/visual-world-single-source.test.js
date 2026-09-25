@@ -50,9 +50,20 @@ test('Style-Bibel liegt am konfigurierten Ort', async () => {
   assert.ok(knowledgeFiles.includes('fixed-visual-world.md'));
 });
 
-test('YouTube bleibt eigener Workflow, übernimmt aber dieselbe Countryball-Bild-DNA', async () => {
-  const workflow = await read('CURRENT_WORKFLOW.md');
-  assert.match(workflow, /YouTube bleibt ein eigener 16:9-Produktionsworkflow/i);
-  assert.match(workflow, /dieselbe Serious-Minimal-Countryball-Bild-DNA/i);
-  assert.match(workflow, /16:9 horizontal statt 9:16 vertikal/i);
+test('Reel-Bildwelt bleibt unabhängig von der separaten YouTube-Welt', async () => {
+  const [runtime, workflow, readme, reelBible, styles] = await Promise.all([
+    read('src/shared/fixed-visual-world.js'),
+    read('CURRENT_WORKFLOW.md'),
+    read('README.md'),
+    read('knowledge/fixed-visual-world.md'),
+    read('config/image-styles.json').then(JSON.parse)
+  ]);
+
+  assert.match(runtime, /Do not borrow the separate YouTube visual world/i);
+  assert.match(runtime, /YouTube keeps its own separate longform world/i);
+  assert.match(workflow, /YouTube.*eigenen Produktionsworkflow.*darf.*Reel-Bildwelt.*nicht verändern/i);
+  assert.match(readme, /YouTube ist eine getrennte Langvideo-Pipeline/i);
+  assert.match(reelBible, /Diese Datei gilt \*\*ausschließlich für Reels\*\*/i);
+  assert.match(reelBible, /YouTube-Regeln dürfen diese Reel-Bildwelt nicht umschreiben/i);
+  assert.ok(styles.selectionCriteria.includes('klare Trennung von der YouTube-Bildwelt'));
 });
