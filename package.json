@@ -31,6 +31,7 @@
     "preflight:reel": "node src/cli/preflight.js",
     "phase3:reel": "node src/cli/phase3-reel.js",
     "render:reel": "node src/cli/run-with-reel-layout.js src/cli/render-reel.js",
+    "topic:youtube": "node src/cli/check-youtube-topic.js",
     "validate:youtube-phase1": "node src/cli/validate-youtube-phase1-policy.js",
     "auto-align:youtube": "node src/cli/auto-align-youtube.js",
     "build:youtube-timeline": "node src/cli/build-youtube-timeline.js",
