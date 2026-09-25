@@ -233,7 +233,7 @@ Bei deutschen Projekten muss jeder sichtbare lesbare Text Deutsch sein. Englisch
 
 ## YouTube-Audio-Pacing
 
-- lange Sprechpausen automatisch kürzen
+- überlange Sprechpausen automatisch kürzen
 - kurze natürliche Pausen erhalten
 - Anfangsstille straffen
 - Endstille entfernen
