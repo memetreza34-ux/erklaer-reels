@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "timingSource": "FINAL_TIMELINE.json",
+  "chapters": [
+    {"imageNumber":1,"title":"Warum Kaliningrad getrennt liegt"},
+    {"imageNumber":3,"title":"Königsberg und Ostpreußen"},
+    {"imageNumber":6,"title":"Potsdam ordnet die Grenzen neu"},
+    {"imageNumber":11,"title":"Aus Königsberg wird Kaliningrad"},
+    {"imageNumber":15,"title":"Warum es in der UdSSR keine Exklave war"},
+    {"imageNumber":17,"title":"1991 verändert alles"},
+    {"imageNumber":21,"title":"Kaliningrad heute"}
+  ]
+}
