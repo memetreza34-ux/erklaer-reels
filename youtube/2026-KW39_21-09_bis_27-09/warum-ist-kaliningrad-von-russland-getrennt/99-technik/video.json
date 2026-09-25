@@ -1,8 +1,9 @@
 {
-  "schemaVersion": 8,
+  "schemaVersion": 9,
   "productionRulesVersion": 2,
   "visualPolicyVersion": 3,
   "coverPolicyVersion": 1,
+  "assetGenerationPolicyVersion": 1,
   "complexityPacingVersion": 1,
   "videoId": "2026-KW39_warum-ist-kaliningrad-von-russland-getrennt",
   "weekFolder": "2026-KW39_21-09_bis_27-09",
@@ -35,6 +36,20 @@
     "separateThumbnailImageForbidden": true,
     "image00Forbidden": true,
     "headlineRequired": true
+  },
+  "assetGenerationPolicy": {
+    "coverCandidateCount": 3,
+    "coverSelectionRequired": true,
+    "selectedCoverFinalName": "Bild 01.png",
+    "discardUnselectedCoverCandidates": true,
+    "nonCoverGenerationCount": 1,
+    "nonCoverManualWaveReviewForbidden": true,
+    "nonCoverRegenerationByDefaultForbidden": true,
+    "maxConcurrentGenerations": 5,
+    "renameEachFinalImageExactlyOnce": true,
+    "finalImagesFlatInSingleFolder": true,
+    "finalImageDirectory": "00-bildprompts/images",
+    "temporaryCoverCandidatesForbiddenInFinalFolder": true
   },
   "sessionPolicy": {
     "freshFlowSessionRequiredWhenVisualPolicyChanges": true,
