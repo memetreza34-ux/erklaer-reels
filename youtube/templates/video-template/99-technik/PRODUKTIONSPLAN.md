@@ -1,20 +1,18 @@
-# Interner YouTube-Produktionsplan — V2
+# Interner YouTube-Produktionsplan — V4
 
-**Für neue Projekte mit `productionRulesVersion >= 2`.**
+**Für neue Schema-9+-Projekte.**
 
 Verbindlich zusätzlich lesen: `youtube/YOUTUBE_WORKFLOW.md`, `youtube/YOUTUBE_VISUAL_WORLD.md`, `youtube/ADAPTIVE_PACING_V2.md`.
 
 ## Thema + Recherche
 
-- Thema/Kernfrage
-- Duplicate-Check gegen `THEMEN_HISTORIE.md`
+- Thema zuerst durch Themen-Editor
+- Duplicate-Check gegen Historie, Register und bestehende Projekte
 - belastbare Quellen
 - klare Unsicherheiten/Einordnungen
 - finaler klickbarer, aber sachlich korrekter Titel
 
 ## Sichtbare Nutzerstruktur
-
-Neue Projekte haben genau diese produktionsrelevanten Nutzerdokumente:
 
 ```text
 00-bildprompts/google-flow-prompt.txt
@@ -26,12 +24,12 @@ Keine sichtbaren Script-Parts, Audio-Parts oder 10er-Bildordner.
 
 ## Bildplanung
 
-- Bild 00 = ausschließlich Thumbnail
-- danach Bild 01 bis Bild NN
-- **1 Bild = 1 klarer visueller Zweck**
+- **Bild 01 = Cover + erste Videoszene**
+- kein Bild 00
+- Bild 01 bis Bild NN bilden die komplette Timeline
+- 1 Bild = 1 klarer visueller Zweck
 - Bildanzahl entsteht aus Skript und visueller Komplexität
 - keine feste Sollzahl
-- jedes Bild bekommt eine eigenständige, zum Inhalt passende Komposition
 
 A–E:
 - A sehr einfach: 4–5 s geplant
@@ -40,39 +38,71 @@ A–E:
 - D komplex: 9–12 s
 - E sehr komplex: 12–15 s
 
-Wenn ein einfacher Moment im gesprochenen Text länger dauert, wird ein weiterer sinnvoller Bildmoment geplant statt ein simples Bild künstlich lange stehen zu lassen.
+## Visual Policy V4
 
-## Google Flow — unabhängige Bilder
+Aktive YouTube-Style-ID:
 
-`google-flow-prompt.txt` enthält Bild 00 und alle Szenenbilder.
+```text
+serious-minimal-countryball-explainer-youtube-16x9
+```
+
+Quelle:
+
+```text
+serious-minimal-countryball-explainer
+```
+
+Verbindlich:
+- dieselbe Serious-Minimal-Countryball-DNA wie die Reels
+- 16:9 horizontal
+- perfekt runde Countryball-Akteure, wenn Akteure nötig sind
+- einfache weiße Augen, dicke schwarze Konturen
+- flache kontrollierte Farben
+- geringe bis mittlere Detaildichte
+- 0–3 sinnvolle Zusatzobjekte
+- starke Symbolik statt realistischer Vollszenen
+- keine normalen illustrierten Menschen
+- keine humanoiden Cartoon-Personen
+- keine Stickfiguren
+- kein Fotorealismus
+- kein 3D/Pixar/Clay/Anime
+- sichtbarer Text im deutschen Projekt ausschließlich Deutsch
+
+Historische Inhalte werden in dieselbe reduzierte Formsprache übersetzt.
+
+## Google Flow — Asset Generation Policy V1
+
+`google-flow-prompt.txt` enthält Bild 01 bis Bild NN.
+
+Cover:
+
+```text
+Bild 01 exakt 3× erzeugen
+→ genau 1 Gewinner auswählen
+→ Gewinner einmal zu Bild 01.png umbenennen
+→ andere 2 Kandidaten verwerfen
+```
+
+Nicht-Cover:
+
+```text
+Bild 02–NN jeweils exakt 1×
+→ keine Varianten
+→ keine manuellen Review-Stopps nach 5er-Gruppen
+→ jedes Bild einmal korrekt benennen
+```
+
+Maximal fünf aktive Generierungen gleichzeitig. Das ist nur Parallelitäts-/Lastlogik.
 
 **HARD LOCK:** Kein erzeugtes Bild darf als visuelle Vorlage oder Image-to-Image-Referenz für ein späteres Bild verwendet werden. Bild 01 ist kein Master-Style-Frame.
 
+Alle finalen Bilder flach unter:
+
 ```text
-Bild 00 separat
-Bild 01 separat
-Bild 02–05 jeweils separat aus eigenem Textprompt → warten → prüfen → korrigieren
-Bild 06–10 erst danach
-Bild 11–15 ...
+00-bildprompts/images/
 ```
 
-Maximal fünf aktive Generierungen. Die Wellen sind nur eine Last-/Ausführungsregel. Stil-Konsistenz kommt aus dem schriftlichen Style-Lock `premium-editorial-explainer-illustration-youtube-16x9`, nicht aus einem Referenzbild.
-
-Bilder flach unter `00-bildprompts/images/`.
-
-## Visual Quality
-
-Für neue YouTube-Projekte:
-- hochwertige moderne 2D-Editorial-/Erklärillustration
-- 16:9
-- erwachsene Magazin-/Infografik-Wirkung
-- präzise vektorartige Formen, kontrollierte Linien, subtile Tiefe
-- jedes Bild individuell art-direktiert
-- Layout/Perspektive/Hintergrund nicht mechanisch wiederholen
-- kein generisches KI-Template
-- kein Countryball-Zwang
-- keine Stickfiguren als Standardstil
-- sichtbarer Text in deutschen Projekten ausschließlich Deutsch
+Dort nur `Bild 01.png` bis `Bild NN.png`, keine Cover-Kandidaten, keine Extras, keine Unterordner.
 
 ## Voice-over
 
@@ -99,10 +129,10 @@ Erst Phase 3 ergänzt echte Audiozeiten und Konfidenz.
 
 `99-technik/YOUTUBE_RENDER_PLAN.json` ist die maschinenlesbare Quelle für Rendergestaltung.
 
-- Motion wird standardmäßig aus A–E abgeleitet
+- Motion standardmäßig aus A–E
 - Projekt kann pro Bild `motionOverride` setzen
 - SFX nur gezielt auf ausgewählten Bildern
-- SFX-Typen stammen aus der zentralen `config/sound-library.json`
+- SFX-Typen aus `config/sound-library.json`
 - keine Hintergrundmusik standardmäßig
 - Voice-over bleibt dominant
 
@@ -115,21 +145,21 @@ npm run phase3:youtube -- --dir "youtube/<woche>/<thema>"
 ```
 
 Ablauf:
-1. eine finale Audiodatei und alle Bilder prüfen
-2. langes Schweigen/Endstille intern kürzen und auf 1,10x bei erhaltener Tonhöhe optimieren
-3. −16 LUFS / max. −1,5 dBTP anwenden
-4. Whisper-Wortzeiten auf der optimierten Fassung messen
-5. alle `startAnchor` monoton im echten Audio finden
-6. `FINAL_TIMELINE.json` bauen
-7. A–E-Planung gegen die echte Timeline prüfen
-8. Hard-Gate
-9. Motion + SFX rendern
-10. Thumbnail und Upload-Metadaten finalisieren
-11. Post-Render-QC
+1. Phase-1-Policy-Gate
+2. Phase-2-Asset-Gate
+3. eine finale Audiodatei bestimmen
+4. langes Schweigen/Endstille intern kürzen
+5. exakt 1,10x bei erhaltener Tonhöhe
+6. −16 LUFS / max. −1,5 dBTP
+7. Whisper auf der optimierten Fassung
+8. Audioanker bestimmen
+9. `FINAL_TIMELINE.json`
+10. A–E-Pacing-Gate
+11. Render + SFX
+12. `THUMBNAIL.png` direkt aus `Bild 01.png`
+13. Post-Render-QC
 
 ## Export
-
-Am Ende müssen existieren:
 
 ```text
 03-export/FERTIGES-VIDEO.mp4
