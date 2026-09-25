@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "visualPolicyVersion": 3,
+  "visualPolicyVersion": 4,
   "coverPolicyVersion": 1,
   "assetGenerationPolicyVersion": 1,
   "channelFocus": {
@@ -20,7 +20,8 @@
       "allgemeine Alltags-Warum-Themen ohne Länder-, Geschichts- oder Systembezug"
     ]
   },
-  "visualStyleId": "premium-editorial-explainer-illustration-youtube-16x9",
+  "visualStyleId": "serious-minimal-countryball-explainer-youtube-16x9",
+  "sourceVisualWorldId": "serious-minimal-countryball-explainer",
   "coverPolicy": {
     "firstSceneIsCover": true,
     "coverImageNumber": 1,
@@ -57,24 +58,20 @@
     "genericIconCollageForbidden": true,
     "repeatedLayoutForbiddenWithoutNarrativeReason": true,
     "sceneSpecificArtDirectionRequired": true,
-    "foregroundMidgroundBackgroundPreferredForNarrativeScenes": true,
-    "directionalEnergyPreferredWhenContentAllows": true,
-    "causeEffectOrContrastShouldBeVisibleWhenRelevant": true,
-    "controlledDepthRequired": true,
-    "paletteVariationAcrossAdjacentImagesRequired": true,
-    "adjacentCompositionModeRepeatForbiddenWithoutReason": true,
-    "countryballAsDefaultForbidden": true,
+    "countryballVisualWorldRequired": true,
+    "perfectlyRoundCountryballActorsRequired": true,
+    "normalIllustratedHumansForbidden": true,
+    "humanoidCartoonPeopleForbidden": true,
     "stickFiguresForbidden": true,
     "childishCartoonLookForbidden": true,
     "photorealismForbiddenByDefault": true,
     "glossy3dPixarClayAnimeForbidden": true
   },
   "preferredCompositionModes": [
-    "editorial-hero",
-    "narrative-mini-scene",
+    "minimal-symbolic",
+    "supported-explainer",
+    "simple-mini-scene",
     "map-spatial-explainer",
-    "conceptual-metaphor",
-    "explainer-diagram",
-    "historical-editorial-scene"
+    "conceptual-metaphor"
   ]
 }
