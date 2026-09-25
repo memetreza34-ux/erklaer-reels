@@ -12,20 +12,23 @@ const REEL_OWNED_DOCS = [
 
 const YOUTUBE_IMPLEMENTATION_MARKERS = [
   /premium-editorial-explainer-illustration/i,
+  /serious-minimal-countryball-explainer-youtube-16x9/i,
   /ASSET_GENERATION_POLICY_VERSION/i,
   /COVER = 3 CANDIDATES/i,
   /NON-COVER = SINGLE GENERATION/i,
   /FINAL IMAGE FOLDER HARD LOCK/i,
   /coverCandidateCount/i,
-  /nonCoverGenerationCount/i
+  /nonCoverGenerationCount/i,
+  /dieselbe.*YouTube.*Bild-DNA/i,
+  /gemeinsame.*YouTube.*Bild-DNA/i
 ];
 
-test('Reel-eigene Dokumente bleiben frei von YouTube-Produktionspolicy', async () => {
+test('Reel-eigene Dokumente bleiben frei von YouTube-Bildwelt und Produktionspolicy', async () => {
   for (const file of REEL_OWNED_DOCS) {
     const content = await read(file);
     assert.match(content, /serious-minimal-countryball-explainer|Serious Minimal Countryball Explainer/i, `${file} muss die Reel-Bildwelt enthalten.`);
     for (const marker of YOUTUBE_IMPLEMENTATION_MARKERS) {
-      assert.doesNotMatch(content, marker, `${file} darf keine YouTube-Produktionspolicy übernehmen: ${marker}`);
+      assert.doesNotMatch(content, marker, `${file} darf keine YouTube-Bildwelt/Produktionspolicy übernehmen: ${marker}`);
     }
   }
 });
