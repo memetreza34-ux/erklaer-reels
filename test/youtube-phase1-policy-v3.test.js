@@ -20,52 +20,53 @@ function runPolicy(dir) {
   });
 }
 
-test('aktuelle YouTube-Produktion besteht restaurierte Countryball Visual Policy V4', () => {
+test('aktuelles Schema-9-Projekt bleibt als Countryball V4 reproduzierbar', () => {
   const result = runPolicy(CURRENT_PROJECT);
   assert.equal(result.status, 0, result.stderr || result.stdout);
-  assert.match(result.stdout, /Serious-Minimal-Countryball V4/i);
+  assert.match(result.stdout, /Serious-Minimal-Countryball V4 \(Legacy Schema 9\)/i);
 });
 
-test('älteres V3-Projekt bleibt reproduzierbar statt durch V4 zwangsweise migriert zu werden', () => {
+test('älteres V3-Projekt bleibt reproduzierbar', () => {
   const result = runPolicy(LEGACY_V3_PROJECT);
   assert.equal(result.status, 0, result.stderr || result.stdout);
   assert.match(result.stdout, /Legacy Visual Policy V3/i);
 });
 
-test('Template und aktuelles Projekt tragen Countryball V4 und Session-Schutz maschinenlesbar', async () => {
-  const [templateMeta, projectMeta, templatePrompt, projectPrompt, policy] = await Promise.all([
+test('Template trägt Schema 10, Countryball V5, Premium Design und Pacing V3', async () => {
+  const [templateMeta, projectMeta, templatePrompt, policy] = await Promise.all([
     readJson(`${TEMPLATE}/99-technik/video.json`),
     readJson(`${CURRENT_PROJECT}/99-technik/video.json`),
     readFile(`${TEMPLATE}/00-bildprompts/google-flow-prompt.txt`, 'utf8'),
-    readFile(`${CURRENT_PROJECT}/00-bildprompts/google-flow-prompt.txt`, 'utf8'),
     readJson('config/youtube-channel-policy.json')
   ]);
 
-  assert.equal(policy.visualPolicyVersion, 4);
+  assert.equal(policy.visualPolicyVersion, 5);
+  assert.equal(policy.designQualityVersion, 1);
+  assert.equal(policy.adaptivePacingVersion, 3);
   assert.equal(policy.visualStyleId, 'serious-minimal-countryball-explainer-youtube-16x9');
 
-  for (const meta of [templateMeta, projectMeta]) {
-    assert.equal(meta.visualPolicyVersion, 4);
-    assert.equal(meta.visualStyleId, policy.visualStyleId);
-    assert.equal(meta.sourceVisualWorldId, 'serious-minimal-countryball-explainer');
-    assert.equal(meta.visualWorldParityPolicy.mustMatchReelVisualDNA, true);
-    assert.equal(meta.visualWorldParityPolicy.independentYoutubeStyle, false);
-    assert.equal(meta.visualWorldParityPolicy.countryballVisualWorldRequired, true);
-    assert.equal(meta.sessionPolicy.freshFlowSessionRequiredWhenVisualPolicyChanges, true);
-    assert.equal(meta.sessionPolicy.previousGeneratedImageAsReferenceForbidden, true);
-    assert.equal(meta.visualQualityPolicy.seriousMinimalCountryballWorldRequired, true);
-    assert.equal(meta.visualQualityPolicy.perfectlyRoundCountryballActorsRequired, true);
-    assert.equal(meta.visualQualityPolicy.normalIllustratedHumansForbidden, true);
-  }
+  assert.equal(templateMeta.schemaVersion, 10);
+  assert.equal(templateMeta.visualPolicyVersion, 5);
+  assert.equal(templateMeta.designQualityVersion, 1);
+  assert.equal(templateMeta.adaptivePacingVersion, 3);
+  assert.equal(templateMeta.visualStyleId, policy.visualStyleId);
+  assert.equal(templateMeta.sourceVisualWorldId, 'serious-minimal-countryball-explainer');
+  assert.equal(templateMeta.visualWorldParityPolicy.mustMatchReelVisualDNA, true);
+  assert.equal(templateMeta.visualWorldParityPolicy.independentYoutubeStyle, false);
+  assert.equal(templateMeta.sessionPolicy.previousGeneratedImageAsReferenceForbidden, true);
+  assert.equal(templateMeta.visualQualityPolicy.premiumCompositionRequired, true);
+  assert.equal(templateMeta.imageDensityPolicy.allowMoreImagesWhenNarrativelyUseful, true);
 
-  for (const prompt of [templatePrompt, projectPrompt]) {
-    assert.match(prompt, /YOUTUBE_VISUAL_POLICY_VERSION: 4/);
-    assert.match(prompt, /ACTIVE_STYLE_ID: serious-minimal-countryball-explainer-youtube-16x9/);
-    assert.match(prompt, /WRITTEN STYLE LOCK — SERIOUS MINIMAL COUNTRYBALL/);
-    assert.match(prompt, /SESSION RESET HARD LOCK/);
-    assert.match(prompt, /Do not use any previous generated image as a visual reference\./);
-    assert.match(prompt, /Clean does NOT mean empty|Clean ≠ leer/i);
-  }
+  assert.equal(projectMeta.schemaVersion, 9);
+  assert.equal(projectMeta.visualPolicyVersion, 4);
+
+  assert.match(templatePrompt, /YOUTUBE_VISUAL_POLICY_VERSION: 5/);
+  assert.match(templatePrompt, /DESIGN_QUALITY_VERSION: 1/);
+  assert.match(templatePrompt, /ADAPTIVE_PACING_VERSION: 3/);
+  assert.match(templatePrompt, /WRITTEN STYLE LOCK — SERIOUS MINIMAL COUNTRYBALL/);
+  assert.match(templatePrompt, /PREMIUM DESIGN LAYER V1 — HARD LOCK/);
+  assert.match(templatePrompt, /ADAPTIVE IMAGE DENSITY V3 — HARD LOCK/);
+  assert.match(templatePrompt, /Do not use any previous generated image as a visual reference\./);
 });
 
 test('Kanalfokus ist für das Kaliningrad-Video explizit dokumentiert', async () => {
@@ -78,8 +79,8 @@ test('Kanalfokus ist für das Kaliningrad-Video explizit dokumentiert', async ()
   assert.equal(meta.explicitUserRequestedOutsideFocus, false);
 });
 
-test('alte Master-Reference-Regel bleibt trotz restaurierter Bildwelt hart blockiert', async () => {
-  const temp = await mkdtemp(path.join(tmpdir(), 'youtube-policy-v4-'));
+test('alte Master-Reference-Regel bleibt bei V4 und V5 hart blockiert', async () => {
+  const temp = await mkdtemp(path.join(tmpdir(), 'youtube-policy-reference-'));
   try {
     await mkdir(path.join(temp, '99-technik'), { recursive: true });
     await mkdir(path.join(temp, '00-bildprompts'), { recursive: true });
@@ -99,13 +100,13 @@ test('alte Master-Reference-Regel bleibt trotz restaurierter Bildwelt hart block
   }
 });
 
-test('Premium-Editorial-V3 wird für neue Schema-9-Projekte blockiert', async () => {
-  const temp = await mkdtemp(path.join(tmpdir(), 'youtube-policy-v4-premium-'));
+test('Premium-Editorial-Stil wird weiterhin blockiert', async () => {
+  const temp = await mkdtemp(path.join(tmpdir(), 'youtube-policy-v5-premium-editorial-'));
   try {
     await mkdir(path.join(temp, '99-technik'), { recursive: true });
     await mkdir(path.join(temp, '00-bildprompts'), { recursive: true });
-    const meta = await readFile(`${CURRENT_PROJECT}/99-technik/video.json`, 'utf8');
-    const prompt = await readFile(`${CURRENT_PROJECT}/00-bildprompts/google-flow-prompt.txt`, 'utf8');
+    const meta = await readFile(`${TEMPLATE}/99-technik/video.json`, 'utf8');
+    const prompt = await readFile(`${TEMPLATE}/00-bildprompts/google-flow-prompt.txt`, 'utf8');
     await writeFile(path.join(temp, '99-technik/video.json'), meta);
     await writeFile(
       path.join(temp, '00-bildprompts/google-flow-prompt.txt'),
@@ -114,6 +115,25 @@ test('Premium-Editorial-V3 wird für neue Schema-9-Projekte blockiert', async ()
 
     const result = runPolicy(temp);
     assert.notEqual(result.status, 0);
+  } finally {
+    await rm(temp, { recursive: true, force: true });
+  }
+});
+
+test('V5 blockiert fehlende Premium-Design- und Density-Regeln', async () => {
+  const temp = await mkdtemp(path.join(tmpdir(), 'youtube-policy-v5-quality-'));
+  try {
+    await mkdir(path.join(temp, '99-technik'), { recursive: true });
+    await mkdir(path.join(temp, '00-bildprompts'), { recursive: true });
+    const meta = await readJson(`${TEMPLATE}/99-technik/video.json`);
+    meta.visualQualityPolicy.premiumCompositionRequired = false;
+    meta.imageDensityPolicy.fixedImageCountForbidden = false;
+    await writeFile(path.join(temp, '99-technik/video.json'), JSON.stringify(meta, null, 2));
+    await writeFile(path.join(temp, '00-bildprompts/google-flow-prompt.txt'), await readFile(`${TEMPLATE}/00-bildprompts/google-flow-prompt.txt`, 'utf8'));
+
+    const result = runPolicy(temp);
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /premiumCompositionRequired|fixedImageCountForbidden/i);
   } finally {
     await rm(temp, { recursive: true, force: true });
   }
