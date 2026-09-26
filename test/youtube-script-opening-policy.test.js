@@ -29,7 +29,7 @@ test('blockiert Hook ohne kurze Antwort oder zweite Leitfrage', async () => {
   assert.ok(result.errors.some((error) => /Erstantwort/i.test(error)));
 });
 
-test('Template aktiviert Script Opening Policy V1 für zukünftige Projekte', async () => {
+test('Template aktiviert Script Opening Policy V1 für zukünftige Schema-12-Projekte', async () => {
   const [policy, meta, scriptTemplate, workflow] = await Promise.all([
     readJson('config/youtube-channel-policy.json'),
     readJson('youtube/templates/video-template/99-technik/video.json'),
@@ -38,7 +38,7 @@ test('Template aktiviert Script Opening Policy V1 für zukünftige Projekte', as
   ]);
 
   assert.equal(policy.scriptOpeningPolicyVersion, 1);
-  assert.equal(meta.schemaVersion, 11);
+  assert.equal(meta.schemaVersion, 12);
   assert.equal(meta.scriptOpeningPolicyVersion, 1);
   assert.equal(meta.explicitScriptOpeningOverride, false);
   assert.match(scriptTemplate, /^\[DIREKTE VIDEOFRAGE\]\? Denkst du dir gerade vielleicht\./);
