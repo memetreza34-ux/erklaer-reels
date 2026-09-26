@@ -48,7 +48,7 @@ Für **neue Reels** gilt zusätzlich `REEL_THEMENFOKUS.md`: autonom ausgewählt 
 - KW39 (21.09.–27.09.2026): Warum gibt es Zeitzonen? — bestehendes 2-Minuten-V2-Projekt; bleibt für Duplicate-Schutz reserviert
 - KW39 (21.09.–27.09.2026): Warum gibt es zwei Koreas? — Phase 1 komplett; bleibt für Duplicate-Schutz reserviert
 - KW39 (21.09.–27.09.2026): Warum ist Kaliningrad von Russland getrennt? — Themen-Editor FREI, neues 2,5-Minuten-Projekt reserviert
-- KW39 (21.09.–27.09.2026): Was ist Nationalismus? — Themen-Editor FREI, V5-Premium-Countryball-Projekt reserviert
+- KW39 (21.09.–27.09.2026): Nationalismus: Wie funktioniert diese Ideologie? — Themen-Editor FREI, V5-Premium-Countryball-Projekt reserviert
 
 ## Duplicate-Regel
 
