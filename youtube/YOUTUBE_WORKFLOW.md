@@ -283,6 +283,7 @@ Bei deutschen Projekten muss jeder sichtbare lesbare Text Deutsch sein. Englisch
 - True Peak max. −1,5 dBTP
 - 48 kHz
 - Nutzeroriginal nie verändern
+- Audio zuerst vollständig optimieren; **erst danach Whisper**-Wortzeiten erzeugen
 
 ## END HOLD V1 — HARD LOCK
 
