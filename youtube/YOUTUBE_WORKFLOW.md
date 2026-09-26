@@ -5,6 +5,9 @@
 **Design Quality Version: 1**  
 **Adaptive Pacing Version: 3**  
 **Script Opening Policy Version: 1**  
+**Scene Illustration Policy Version: 2**  
+**Topic Visual Relevance Policy Version: 1**  
+**End Hold Policy Version: 1**  
 **Cover Policy Version: 1**  
 **Topic Editor Version: 1**  
 **Asset Generation Policy Version: 1**
@@ -38,9 +41,9 @@ Nur `APPROVED_NEW / THEMEN-EDITOR: FREI` erlaubt die Produktion. `REVIEW_SIMILAR
 
 ## SCRIPT OPENING V1 — HARD LOCK
 
-Alle **neu angelegten Schema-11+-YouTube-Skripte** beginnen **nicht** mit einer abstrakten Definition oder einer allgemeinen Einleitung. Der Zuschauer soll sofort die Frage hören, wegen der er geklickt hat. Bestehende Schema-10-Projekte bleiben reproduzierbar und werden nicht rückwirkend gebrochen.
+Alle neu angelegten Schema-11+-YouTube-Skripte beginnen direkt mit der Frage, wegen der der Zuschauer geklickt hat.
 
-Verbindliche Reihenfolge, sofern der Nutzer nicht ausdrücklich für genau dieses Video einen anderen Einstieg verlangt:
+Standard:
 
 ```text
 [Direkte Videofrage]? Denkst du dir gerade vielleicht.
@@ -50,30 +53,17 @@ Aber [Leitfrage / Spannung für den Rest des Videos]?
 
 Erlaubt ist statt `Kurz gesagt:` auch `Einfach gesagt:`.
 
-Beispiel:
-
-```text
-Was ist Nationalismus? Denkst du dir gerade vielleicht.
-Kurz gesagt: Nationalismus ist die Idee, dass die eigene Nation eine besonders wichtige Rolle in der Politik spielen soll.
-Aber was bedeutet das genau – und wo liegt der Unterschied zu Patriotismus?
-```
-
 Pflicht:
-- die **erste Aussage ist eine echte Frage** und steht direkt am Anfang
-- vor dem ersten Fragezeichen höchstens ca. 120 Zeichen
-- direkt danach folgt die Zuschaueransprache `Denkst du dir gerade vielleicht.`
-- danach folgt eine sehr kurze erste Antwort mit `Kurz gesagt:` oder `Einfach gesagt:`
-- anschließend folgt eine zweite Frage oder klare Spannungsfrage, die ins Video führt
-- keine Sätze wie `X gehört zu den Begriffen ...`, `Seit Jahrhunderten ...` oder lange Definitionen **vor** der eigentlichen Videofrage
+- erste Aussage = echte Videofrage
+- direkt danach `Denkst du dir gerade vielleicht.`
+- kurze erste Antwort
+- anschließende Leit-/Spannungsfrage
+- kein abstrakter Schulbuch-Einstieg vor der eigentlichen Frage
 - kein generisches `In diesem Video erklären wir ...`
-
-Ziel: Der Einstieg soll sich so anfühlen, als beantworte das Video **sofort die Frage im Kopf des Zuschauers**.
-
-Das Phase-1-Gate prüft diese Struktur für Schema 11+ technisch. Ein abweichender Einstieg ist nur zulässig, wenn eine aktuelle ausdrückliche Nutzeranweisung ihn für das konkrete Video verlangt und dies im Projekt als Override dokumentiert wird.
 
 ## VERBINDLICHE YOUTUBE-BILDWELT — HARD LOCK
 
-Neue Schema-10+-Videos verwenden:
+Neue Videos verwenden:
 
 ```text
 serious-minimal-countryball-explainer-youtube-16x9
@@ -85,36 +75,87 @@ Quelle:
 serious-minimal-countryball-explainer
 ```
 
-Die **Bildwelt bleibt dieselbe wie bei den Reels**; nur das Format ist 16:9. V5 ist kein Stilwechsel, sondern ein Qualitätsupgrade innerhalb dieser Welt.
+Die Bildwelt bleibt dieselbe wie bei den Reels; nur das Format ist 16:9.
 
 Unverändert:
 - cleane, seriöse 2D-Countryball-Erklärwelt
-- perfekt runde Countryballs, wenn Akteure gebraucht werden
+- perfekt runde Countryballs
 - einfache weiße Augen
 - kräftige schwarze Konturen
-- flache kontrollierte Farben
+- flache 2D-Farben
 - keine normalen Menschen
+- keine humanoiden Cartoon-Menschen
+- keine menschlichen Silhouetten oder realistischen Hände
 - keine Stickfiguren
 - kein Fotorealismus
 - kein 3D/Pixar/Clay/Anime
-- nicht kindisch, nicht albern
+
+## SCENE ILLUSTRATION V2 — HARD LOCK
+
+Für neue Schema-12+-Videos gilt:
+
+**Anschauliche Illustration vor abstrakter Erklärtafel.**
+
+Bevorzugt:
+- erkennbare Orte oder Situationen
+- thematisch passende Institutionen und Umgebungen
+- Countryballs handeln sichtbar, wenn Akteure gebraucht werden
+- Objekte in der Szene statt schwebender Icon-Sammlungen
+- Vordergrund/Mittelgrund/Hintergrund
+- kontrolliert lebendigere und wechselnde Farbwelten
+
+Standardmäßig verboten:
+- abstrakte Poster-/Präsentationstafeln
+- Mehrspalten-Erklärbilder
+- Dashboard-/Kachel-Look
+- Icon-Raster als Hauptbild
+- viele kleine Symbole gleichzeitig
+- statisches Objekt auf leerem Hintergrund
+
+Infografik nur, wenn der Inhalt nicht sinnvoll als konkrete Szene darstellbar ist; dann maximal eine klare Beziehung, kein Dashboard.
+
+## TOPIC VISUAL RELEVANCE V1 — HARD LOCK
+
+Für jedes Bild gilt ab Schema 12:
+
+**Das Bild muss gleichzeitig zum gesprochenen Satz UND zum konkreten Videothema passen.**
+
+Jeder Bildmoment erhält deshalb in Phase 1:
+
+```text
+Visual Purpose: ...
+Topic Anchor: ...
+Composition Mode: ...
+Prompt: ...
+```
+
+`Topic Anchor` ist Pflicht und benennt das konkrete themenspezifische Element der Szene.
+
+Prüffrage:
+
+> Könnte dieses Bild nahezu unverändert in einem anderen Erklärvideo vorkommen?
+
+Wenn ja, ist es zu generisch und wird neu geplant.
+
+Regeln:
+- themenspezifische Orte, Institutionen, Dokumente, Konflikte und Objekte bevorzugen
+- generische Metapher nur, wenn keine bessere themenspezifische Szene existiert
+- zufällige Länder-/Flaggen-Countryballs verboten
+- Land/Flagge nur mit echtem narrativem oder historischem Grund
+- keine Deutschland-/Frankreich-/USA-Figuren nur damit ein abstraktes Konzept „politisch“ aussieht
+- letztes Bild fasst den **konkreten Themenkern** zusammen und endet nicht auf einer austauschbaren Moral
 
 ## PREMIUM COUNTRYBALL DESIGN V1 — HARD LOCK
 
-Neue Bilder müssen hochwertiger art-direktiert sein, ohne die Bildwelt zu verlassen.
-
-Pflicht:
+Premium bedeutet bessere Gestaltung innerhalb derselben Bildwelt:
 - klare Größen- und Blickhierarchie
-- ein dominantes Hauptmotiv
-- bewusste, ausgewogene negative Fläche
-- hochwertige kontrollierte Palette statt zufälliger Buntheit
-- normalerweise 1 dominante Grundfarbe + 1–2 Akzentfarben
-- sinnvolle Überlagerung und Layering
-- einfache Vordergrund-/Mittelgrund-/Hintergrund-Ebenen, wenn hilfreich
-- Text als Teil der Komposition, nicht bloß als Label
-- Karten mit klaren Grenzen, Routen und Prioritäten
-- Beziehungen zeigen: vorher/nachher, Ursache/Folge, Trennung, Bewegung, Vergleich
-- keine generische Icon-Liste als Ersatz für eine Szene
+- dominantes Hauptmotiv
+- bewusstes Layering
+- ausgewogene negative Fläche
+- kontrollierte, aber abwechslungsreiche Palette
+- hochwertige Typografie
+- saubere Karten/Grenzen/Routen
+- visuelle Beziehungen statt Objektlisten
 
 **Premium ≠ realistisch. Premium ≠ neue Bildwelt.**
 
@@ -148,7 +189,7 @@ Nach Themenfreigabe erstellt Phase 1:
 - Gesamtskript
 - Google-Flow-Masterprompt
 - Bild↔Audio-Mapping
-- adaptive Bildplanung nach V3
+- adaptive Bildplanung
 - Renderplan
 - Kapitel
 - Upload-Metadaten
@@ -159,118 +200,102 @@ Vor Flow:
 npm run validate:youtube-phase1 -- --dir "youtube/<woche>/<thema>"
 ```
 
-Für neue Schema-11+-Projekte prüft das Gate zusätzlich:
-- Script Opening Policy V1
+Für Schema-12+-Projekte prüft das Gate zusätzlich:
+- Scene Illustration Policy V2
+- Topic Visual Relevance Policy V1
+- `Topic Anchor` für jeden geplanten Bildmoment
+- End Hold Policy V1
 
-Für Schema-10+-Projekte prüft es weiterhin:
+Weiterhin geprüft:
+- Script Opening V1
 - Visual Policy V5
 - Design Quality V1
 - Adaptive Pacing V3
-- Serious-Minimal-Countryball-Style-ID
+- Countryball-Style-ID
 - Cover Policy V1
 - Asset Generation Policy V1
 - Themen-Editor
-- kein Bild 00
-- keine Bild-zu-Bild-Referenz
-- Premium-Design ohne Stilwechsel
+- keine Bild-zu-Bild-Referenzen
 
 ## ADAPTIVE IMAGE DENSITY V3 — HARD LOCK
 
-Es gibt **keine feste Bildzahl**.
+Es gibt keine feste Bildzahl.
 
 **1 Bild = 1 klare visuelle Kernaussage.**
 
-Ein zusätzliches Bild wird geplant, wenn mindestens eines zutrifft:
-- neuer Kerngedanke
+Zusätzliches Bild bei:
+- neuem Kerngedanken
 - Ursache → Folge
 - Vorher → Nachher
 - Orts-/Epochen-/Perspektivwechsel
-- neuer Akteur
-- eigenständiger Grenz-/Karten-/Routenschritt
-- eigenständige Zahl/Datenidee
-- Wechsel von Erklärung zu Beispiel
-- ein einfacher Bildmoment würde zu lange gehalten
+- neuem Akteur
+- eigenständigem Karten-/Grenz-/Routenschritt
+- Wechsel Erklärung → Beispiel
+- zu langem einfachen Hold
 
 Ziel:
-- durchschnittlich ca. **4,5–7,5 s pro Bild**
+- durchschnittlich ca. 4,5–7,5 s pro Bild
 - ab 9 s Split prüfen
 - ab 11 s Split stark bevorzugen
-- 16 s globaler Hard-Max
-- unter 2,5 s nur bei bewusstem Reveal/Übergang
-
-Komplexe Passage lieber in **mehrere hochwertige Bilder** teilen, statt ein Bild mit zu vielen Symbolen zu überladen.
-
-Verboten:
-- starre Zielzahl wie 20/24 Bilder
-- Füllbilder ohne neue Aussage
-- dasselbe Motiv nur leicht verschoben als neuer Bildmoment
-- redundante Karten ohne neuen Informationsschritt
-
-Details: `youtube/ADAPTIVE_PACING_V3.md`.
+- 16 s Hard-Max
+- keine Füllbilder
 
 ## Phase 2 — Nutzer + Google Flow
 
-### SESSION RESET HARD LOCK
-
-Für V5 neue Flow-Sitzung verwenden. V3-/V4-Sitzungen gelten für neue Schema-10+-Projekte als veraltet.
-
 ### COVER = 3 CANDIDATES HARD LOCK
 
-Nur Bild 01 bekommt mehrere Versuche:
+Nur Bild 01:
 1. exakt 3× generieren
 2. genau einen Gewinner auswählen
-3. Gewinner einmal zu `Bild 01.png` benennen
+3. Gewinner zu `Bild 01.png`
 4. andere zwei verwerfen
 
 ### NON-COVER = SINGLE GENERATION HARD LOCK
 
 Bild 02 bis Bild NN:
-- jedes Bild genau 1× generieren
+- jedes Bild exakt 1×
 - keine zweite Variante
-- keine manuellen Prüfstopps nach 5er-Wellen
-- jedes fertige Bild genau einmal final benennen
+- keine Prüfstopps nach 5er-Wellen
 - maximal 5 aktive Generierungen gleichzeitig
+- jedes Bild genau einmal final benennen
 
 ### FINAL IMAGE FOLDER HARD LOCK
 
-Am Ende nur:
+Nur:
 
 ```text
 00-bildprompts/images/Bild 01.png ... Bild NN.png
 ```
 
-Keine Unterordner, keine Cover-A/B/C-Versionen, keine Extras, kein Bild 00.
+Keine Unterordner, Varianten, Extras oder Bild 00.
 
-Prüfung:
+## Sichtbarer Text
 
-```bash
-npm run validate:youtube-phase2 -- --dir "youtube/<woche>/<thema>"
-```
-
-### HARD LOCK: kein Referenzbild
-
-- kein erzeugtes Bild als Vorlage für spätere Bilder
-- Bild 01 ist kein Master-Style-Frame
-- Konsistenz kommt aus vollständigem geschriebenem Style-Lock
-
-### Sichtbarer Text
-
-Bei deutschen Projekten muss jeder sichtbare lesbare Text Deutsch sein. Englisch/Pseudo-Schrift = Hard Fail in der Promptplanung.
+Bei deutschen Projekten muss jeder sichtbare lesbare Text Deutsch sein. Englisch/Pseudo-Schrift = Hard Fail.
 
 ## YouTube-Audio-Pacing
 
-- überlange Sprechpausen automatisch kürzen
-- kurze natürliche Pausen erhalten
-- Anfangsstille straffen
+- **überlange Sprechpausen automatisch kürzen**
+- natürliche kurze Pausen erhalten
 - Endstille entfernen
-- Voice-over exakt 1,10x
-- Tonhöhe erhalten
+- Voice-over 1,10x, Tonhöhe erhalten
 - −16 LUFS
 - True Peak max. −1,5 dBTP
 - 48 kHz
 - Nutzeroriginal nie verändern
+- Audio zuerst vollständig optimieren; **erst danach Whisper**-Wortzeiten erzeugen
 
-Whisper misst erst das optimierte Audio.
+## END HOLD V1 — HARD LOCK
+
+Neue Schema-12+-Videos enden nicht unmittelbar nach dem letzten Wort.
+
+- letztes Bild bleibt **1,2–1,5 Sekunden** nach dem letzten gesprochenen Wort sichtbar
+- Zielwert: **1,3 Sekunden**
+- dieser Hold gehört zur Timeline und wird nicht durch Stille im Voice-over simuliert
+- die Timeline liest den Wert aus `99-technik/video.json -> renderPolicy.endHoldSeconds`
+- Werte außerhalb 1,2–1,5 s blockieren Schema-12+-Timeline-Build
+
+Dadurch bekommt der letzte Gedanke sichtbar Zeit zu wirken und das Video endet nicht abgeschnitten.
 
 ## Phase 3
 
@@ -281,69 +306,58 @@ npm run phase3:youtube -- --dir "youtube/<woche>/<thema>"
 Reihenfolge:
 1. Phase-1-Gate
 2. Phase-2-Asset-Gate
-3. finale Bilder + genau eine Nutzerstimme bestimmen
+3. finale Bilder + genau eine Nutzerstimme
 4. Audio optimieren
 5. Whisper-Wortzeiten
 6. Bildanker
 7. Audio-Hard-Gate
 8. `FINAL_TIMELINE.json`, Bild 01 bei 0,0 s
-9. Adaptive Pacing V3 prüfen
+9. Adaptive Pacing prüfen
 10. Pre-Render-Hard-Gate
 11. Motion + SFX
-12. Export; `THUMBNAIL.png = Bild 01.png`
-13. Post-Render-Hard-Gate
+12. letzter Bildmoment mit konfiguriertem End Hold
+13. Export; `THUMBNAIL.png = Bild 01.png`
+14. Post-Render-Hard-Gate
 
 ## Verboten
 
 - neues Projekt vor Themenfreigabe
 - Duplikat nur umformulieren
-- bei neuen Schema-11+-Projekten: abstrakter Definitions-Einstieg vor der eigentlichen Videofrage
-- generisches `In diesem Video erklären wir ...`
+- abstrakter Definitions-Einstieg bei neuen Schema-11+-Projekten
 - Stilwechsel unter dem Wort „Premium“
-- realistische Editorial-/Menschenwelt statt Countryball-DNA
-- normales Mensch-/Stickman-Design
+- normale Menschen/Stickfiguren/Realismus
+- abstrakte Poster-/Dashboard-Bilder als Standard bei Schema 12+
+- generische austauschbare Bilder ohne Topic Anchor
+- zufällige Länder/Flaggen ohne narrativen Grund
+- generisches Schlussbild ohne Bezug zum konkreten Thema
 - separates Bild 00
 - Cover ≠ erste Szene
 - weniger/mehr als 3 Cover-Kandidaten
 - Bild 02..NN mehrfach generieren
-- Prüfstopps nach 5er-Wellen
-- Varianten/Extras im finalen Bilderordner
-- Bild-zu-Bild-Referenzen
-- starre Bildanzahl unabhängig vom Inhalt
-- lange einfache Holds nur um weniger Bilder zu erzeugen
-- überladene Einzelbilder statt sinnvoller Splits
-- Wortzeiten am unoptimierten Audio
-- andere Geschwindigkeit als 1,10x
-- Nutzeroriginal überschreiben
+- Referenzbilder
+- starre Bildanzahl
+- End Hold unter 1,2 s oder über 1,5 s bei Schema 12+
+- Audio-Stille als Ersatz für den Schlussbild-Hold
 
-## Finaler Export
-
-```text
-03-export/FERTIGES-VIDEO.mp4
-03-export/THUMBNAIL.png
-03-export/YOUTUBE-TITEL.txt
-03-export/YOUTUBE-BESCHREIBUNG.txt
-03-export/YOUTUBE-KAPITEL.txt
-03-export/YOUTUBE-TAGS.txt
-```
-
-## Definition of Done für neu angelegte Schema-11+-Projekte
+## Definition of Done für neue Schema-12+-Projekte
 
 Fertig erst wenn:
 - Themen-Editor `APPROVED_NEW`
-- Script Opening Policy V1 bestanden
+- Script Opening V1 bestanden
 - Visual Policy V5
 - Design Quality V1
+- Scene Illustration V2
+- Topic Visual Relevance V1
+- jeder Bildmoment besitzt einen konkreten Topic Anchor
+- keine beliebigen Länder-/Flaggen-Countryballs
 - Adaptive Pacing V3
-- gleiche Serious-Minimal-Countryball-DNA wie Reels
-- Premium-Komposition innerhalb dieser Welt
 - Bildzahl inhaltsgetrieben
-- komplexe Passagen sinnvoll gesplittet
 - Bild 01 = Cover + erste Szene
 - Cover 3× → 1 Gewinner
 - Bild 02..NN je 1×
 - alle finalen Bilder in einem flachen Ordner
-- kein Bild 00
 - keine Referenzbilder
 - Audio 1,10x / −16 LUFS / max. −1,5 dBTP
+- letztes Bild hält nach dem letzten Wort 1,2–1,5 s, Ziel 1,3 s
+- finale Szene fasst den konkreten Themenkern zusammen
 - Pre-/Post-Render-Gates bestanden

@@ -32,7 +32,7 @@ test('älteres V3-Projekt bleibt reproduzierbar', () => {
   assert.match(result.stdout, /Legacy Visual Policy V3/i);
 });
 
-test('Template trägt Schema 11, Countryball V5, Premium Design, Pacing V3 und Script Opening V1', async () => {
+test('Template trägt Schema 12, Countryball V5, Premium Design, Pacing, Topic Relevance und End Hold', async () => {
   const [templateMeta, projectMeta, templatePrompt, policy] = await Promise.all([
     readJson(`${TEMPLATE}/99-technik/video.json`),
     readJson(`${CURRENT_PROJECT}/99-technik/video.json`),
@@ -44,13 +44,19 @@ test('Template trägt Schema 11, Countryball V5, Premium Design, Pacing V3 und S
   assert.equal(policy.designQualityVersion, 1);
   assert.equal(policy.adaptivePacingVersion, 3);
   assert.equal(policy.scriptOpeningPolicyVersion, 1);
+  assert.equal(policy.sceneIllustrationPolicyVersion, 2);
+  assert.equal(policy.topicVisualRelevancePolicyVersion, 1);
+  assert.equal(policy.endHoldPolicyVersion, 1);
   assert.equal(policy.visualStyleId, 'serious-minimal-countryball-explainer-youtube-16x9');
 
-  assert.equal(templateMeta.schemaVersion, 11);
+  assert.equal(templateMeta.schemaVersion, 12);
   assert.equal(templateMeta.visualPolicyVersion, 5);
   assert.equal(templateMeta.designQualityVersion, 1);
   assert.equal(templateMeta.adaptivePacingVersion, 3);
   assert.equal(templateMeta.scriptOpeningPolicyVersion, 1);
+  assert.equal(templateMeta.sceneIllustrationPolicyVersion, 2);
+  assert.equal(templateMeta.topicVisualRelevancePolicyVersion, 1);
+  assert.equal(templateMeta.endHoldPolicyVersion, 1);
   assert.equal(templateMeta.explicitScriptOpeningOverride, false);
   assert.equal(templateMeta.visualStyleId, policy.visualStyleId);
   assert.equal(templateMeta.sourceVisualWorldId, 'serious-minimal-countryball-explainer');
@@ -59,6 +65,8 @@ test('Template trägt Schema 11, Countryball V5, Premium Design, Pacing V3 und S
   assert.equal(templateMeta.sessionPolicy.previousGeneratedImageAsReferenceForbidden, true);
   assert.equal(templateMeta.visualQualityPolicy.premiumCompositionRequired, true);
   assert.equal(templateMeta.imageDensityPolicy.allowMoreImagesWhenNarrativelyUseful, true);
+  assert.equal(templateMeta.topicVisualRelevancePolicy.topicAnchorRequiredPerImagePlan, true);
+  assert.equal(templateMeta.renderPolicy.endHoldSeconds, 1.3);
 
   assert.equal(projectMeta.schemaVersion, 9);
   assert.equal(projectMeta.visualPolicyVersion, 4);
@@ -66,9 +74,14 @@ test('Template trägt Schema 11, Countryball V5, Premium Design, Pacing V3 und S
   assert.match(templatePrompt, /YOUTUBE_VISUAL_POLICY_VERSION: 5/);
   assert.match(templatePrompt, /DESIGN_QUALITY_VERSION: 1/);
   assert.match(templatePrompt, /ADAPTIVE_PACING_VERSION: 3/);
+  assert.match(templatePrompt, /SCENE_ILLUSTRATION_POLICY_VERSION: 2/);
+  assert.match(templatePrompt, /TOPIC_VISUAL_RELEVANCE_POLICY_VERSION: 1/);
+  assert.match(templatePrompt, /END_HOLD_POLICY_VERSION: 1/);
   assert.match(templatePrompt, /WRITTEN STYLE LOCK — SERIOUS MINIMAL COUNTRYBALL/);
   assert.match(templatePrompt, /PREMIUM DESIGN LAYER V1 — HARD LOCK/);
   assert.match(templatePrompt, /ADAPTIVE IMAGE DENSITY V3 — HARD LOCK/);
+  assert.match(templatePrompt, /TOPIC VISUAL RELEVANCE V1 — HARD LOCK/);
+  assert.match(templatePrompt, /Topic Anchor:/);
   assert.match(templatePrompt, /Do not use any previous generated image as a visual reference\./);
 });
 

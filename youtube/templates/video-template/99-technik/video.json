@@ -1,10 +1,13 @@
 {
-  "schemaVersion": 11,
-  "productionRulesVersion": 3,
+  "schemaVersion": 12,
+  "productionRulesVersion": 4,
   "visualPolicyVersion": 5,
   "designQualityVersion": 1,
   "adaptivePacingVersion": 3,
   "scriptOpeningPolicyVersion": 1,
+  "sceneIllustrationPolicyVersion": 2,
+  "topicVisualRelevancePolicyVersion": 1,
+  "endHoldPolicyVersion": 1,
   "explicitScriptOpeningOverride": false,
   "coverPolicyVersion": 1,
   "assetGenerationPolicyVersion": 1,
@@ -95,6 +98,27 @@
     "visualRelationshipOverIconListingRequired": true,
     "premiumDoesNotAuthorizeStyleChange": true
   },
+  "sceneIllustrationPolicy": {
+    "concreteIllustratedScenePreferred": true,
+    "abstractInfographicPosterForbiddenByDefault": true,
+    "multiPanelDashboardForbiddenByDefault": true,
+    "iconGridAsPrimaryCompositionForbidden": true,
+    "recognizablePlaceOrSituationPreferred": true,
+    "actorsShouldDoSomethingWhenActorsAreUseful": true,
+    "sceneBasedColorVariationRequired": true,
+    "textMustSupportSceneNotReplaceScene": true
+  },
+  "topicVisualRelevancePolicy": {
+    "eachImageMustBeSpecificToVideoTopic": true,
+    "sentenceAndTopicDualMatchRequired": true,
+    "topicAnchorRequiredPerImagePlan": true,
+    "interchangeableGenericSceneForbidden": true,
+    "genericMetaphorForbiddenWhenTopicSpecificSceneExists": true,
+    "arbitraryCountryOrFlagUseForbidden": true,
+    "countryOrFlagRequiresNarrativeReason": true,
+    "topicSpecificInstitutionsObjectsPlacesPreferred": true,
+    "finalImageMustSummarizeCoreTopicNotGenericMoral": true
+  },
   "visibleTextPolicy": {
     "projectLanguageOnly": true,
     "germanProjectRequiresGermanOnly": true,
@@ -153,6 +177,13 @@
     "moreImagesAllowedWhenNarrativelyUseful": true,
     "fillerImagesForbidden": true
   },
+  "endHoldPolicy": {
+    "lastImageMustRemainVisibleAfterLastWord": true,
+    "minimumSeconds": 1.2,
+    "targetSeconds": 1.3,
+    "maximumSeconds": 1.5,
+    "audioSilenceMustNotBeUsedAsSubstitute": true
+  },
   "userFacingStructure": {
     "googleFlowPrompt": "00-bildprompts/google-flow-prompt.txt",
     "imageDirectory": "00-bildprompts/images",
@@ -170,7 +201,7 @@
     "motionPolicy": "complexity-v1",
     "soundPlanFile": "99-technik/YOUTUBE_RENDER_PLAN.json",
     "backgroundMusic": false,
-    "endHoldSeconds": 0.6
+    "endHoldSeconds": 1.3
   },
   "titleRequired": true,
   "thumbnailRequired": true,
