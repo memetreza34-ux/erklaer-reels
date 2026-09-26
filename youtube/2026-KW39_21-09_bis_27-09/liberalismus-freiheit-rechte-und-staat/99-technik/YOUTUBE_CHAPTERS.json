@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "timingSource": "FINAL_TIMELINE.json",
+  "chapters": [
+    {"imageNumber":1,"title":"Was Liberalismus bedeutet"},
+    {"imageNumber":6,"title":"Aufklärung und begrenzte Macht"},
+    {"imageNumber":9,"title":"Grundrechte und liberale Institutionen"},
+    {"imageNumber":13,"title":"Klassischer Liberalismus"},
+    {"imageNumber":16,"title":"Sozialliberale Sicht auf Freiheit"},
+    {"imageNumber":19,"title":"Wie viel Staat ist liberal?"},
+    {"imageNumber":21,"title":"Gleiche Rechte und Rechtsstaat"},
+    {"imageNumber":27,"title":"Liberale Ideen heute"},
+    {"imageNumber":29,"title":"Was Liberalismus im Kern bedeutet"}
+  ]
+}
