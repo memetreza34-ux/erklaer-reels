@@ -1,4 +1,6 @@
-YOUTUBE_VISUAL_POLICY_VERSION: 4
+YOUTUBE_VISUAL_POLICY_VERSION: 5
+DESIGN_QUALITY_VERSION: 1
+ADAPTIVE_PACING_VERSION: 3
 COVER_POLICY_VERSION: 1
 ASSET_GENERATION_POLICY_VERSION: 1
 ACTIVE_STYLE_ID: serious-minimal-countryball-explainer-youtube-16x9
@@ -7,6 +9,7 @@ GOOGLE FLOW MASTER PROMPT — [VIDEO-TITEL]
 
 ZIEL
 Erzeuge ausschließlich Bild 01 bis Bild NN. Es gibt KEIN separates Bild 00.
+Die Bildanzahl NN ist NICHT fest vorgegeben: Sie wird in Phase 1 aus dem Inhalt abgeleitet. Komplexe Passagen dürfen bewusst mehr Bildmomente erhalten.
 
 ==================================================
 FIRST SCENE = COVER HARD LOCK
@@ -23,7 +26,7 @@ FIRST SCENE = COVER HARD LOCK
 COVER = 3 CANDIDATES HARD LOCK
 ==================================================
 
-- Generate Bild 01 exactly THREE times as three temporary cover candidates.
+- Generate Bild 01 exactly THREE times as temporary cover candidates.
 - Compare only these three cover candidates.
 - Select exactly ONE winner.
 - Rename only the selected winner exactly once to `Bild 01.png`.
@@ -36,8 +39,7 @@ NON-COVER = SINGLE GENERATION HARD LOCK
 
 - Every image from Bild 02 through Bild NN is generated exactly ONCE.
 - Do not create a second version of any non-cover image.
-- Do not stop for manual review after 02–05, 06–10 or any later five-image wave.
-- Do not regenerate non-cover images by default.
+- Do not stop for manual review after five-image waves.
 - Rename each finished non-cover image exactly once to its final `Bild NN.png` name, then continue.
 - Maximum five active generations at the same time; this is concurrency only, never a review gate.
 
@@ -57,19 +59,56 @@ No subfolders. No Bild 00. No cover candidates. No alternate versions. No extra 
 SESSION RESET HARD LOCK
 ==================================================
 
-- Use a fresh Google Flow session if older instructions conflict.
+- Use a fresh Google Flow session for Visual Policy V5.
 - The ONLY active style is `serious-minimal-countryball-explainer-youtube-16x9`.
 - Do not use any previous generated image as a visual reference.
 - Bild 01 is a cover, NOT a master style reference.
-- Any session still using `premium-editorial-explainer-illustration-youtube-16x9` is stale and must not be continued.
+- Sessions containing older Premium-Editorial or V4 instructions are stale for new V5 projects.
 
 ==================================================
 WRITTEN STYLE LOCK — SERIOUS MINIMAL COUNTRYBALL
 ==================================================
 
-Serious Minimal Countryball Explainer visual world, exactly matching the active Reel visual DNA, adapted only to a 16:9 horizontal YouTube canvas: clean serious minimal 2D countryball explainer, perfectly round ball characters when an actor is useful, simple white eyes, thick clean black outlines, flat controlled colors, minimal soft graphic shading, low-to-medium controlled detail, one dominant focal subject, zero to three meaningful supporting props, simple solid or muted background with optional subtle texture or gradient, strong symbolic storytelling, adult and informative, not childish, no normal illustrated humans, no humanoid cartoon people, no stick figures, no photorealism, no realistic full scenes, no glossy 3D, no Pixar, no clay, no anime, no busy icon collage.
+Serious Minimal Countryball Explainer visual world, exactly matching the Reel visual DNA and adapted only to a 16:9 YouTube canvas. Clean serious minimal flat 2D countryball explainer. Perfectly round ball characters when an actor is useful, simple white eyes, thick clean black outlines, controlled flat colors, restrained soft graphic shading, adult and informative, never childish or goofy.
 
-Historical and political scenes must be translated into this same reduced visual language. Do NOT switch into realistic conference rooms, cinematic battle paintings, detailed crowds or realistic human scenes.
+No normal illustrated humans. No humanoid cartoon people. No stick figures. No photorealism. No realistic human scenes. No glossy 3D. No Pixar. No clay. No anime. No busy icon collage.
+
+==================================================
+PREMIUM DESIGN LAYER V1 — HARD LOCK
+==================================================
+
+Premium means BETTER DESIGN INSIDE THE SAME COUNTRYBALL WORLD, never a style change.
+
+For every image:
+- create one dominant focal subject with clear visual hierarchy
+- deliberately balance the 16:9 canvas; avoid random centering
+- use meaningful scale contrast
+- use purposeful overlaps and layering
+- when helpful, create simple foreground / midground / background depth using flat 2D layers
+- use one coherent main palette with normally one dominant base color and one or two controlled accent colors
+- use negative space intentionally, not as empty unused space
+- integrate arrows, routes, borders, documents and symbols into a single composition instead of listing icons
+- make maps simplified but elegant, legible and spatially clear
+- if text is requested, treat typography as part of the composition with strong hierarchy and clean spacing
+- vary composition mode, direction, scale and placement between adjacent images
+
+The result should feel polished, premium and art-directed while remaining unmistakably Serious Minimal Countryball Explainer.
+
+Clean does NOT mean empty. Minimal does NOT mean lifeless. Premium does NOT mean realistic.
+
+==================================================
+VISUAL STORYTELLING HARD LOCK
+==================================================
+
+Prefer relationships over object lists. When relevant, visualize:
+- before → after
+- cause → effect
+- divided → connected
+- route → border → obstacle
+- attack → counter-movement
+- center → periphery
+- system A → system B
+- old border → new border
 
 If a countryball actor is used:
 - perfectly round body
@@ -82,36 +121,52 @@ If a countryball actor is used:
 If a map, object or symbol explains the point more clearly, a countryball is not mandatory.
 
 ==================================================
-VISUAL STORYTELLING HARD LOCK
+ADAPTIVE IMAGE DENSITY V3 — HARD LOCK
 ==================================================
 
-Keep the world minimal but make the relationship clear. Show cause/effect, separation, movement, comparison or change using simple arrows, routes, boundaries, scale differences, object placement and restrained props. Do not solve visual energy by adding realistic human scenes or excessive detail.
+There is NO fixed target image count.
+One image = one clear visual purpose.
+
+Split into an additional image when the narration introduces:
+- a new core idea
+- cause and then consequence
+- before and after
+- a new place, era or perspective
+- a new actor
+- a separate border/map/route step
+- a separate number/data idea
+- a switch from explanation to example
+- a simple scene that would otherwise stay on screen too long
+
+Preferred average hold: about 4.5–7.5 seconds.
+Review any planned hold above 9 seconds.
+Strongly prefer a meaningful split above 11 seconds.
+Global hard maximum: 16 seconds.
+Do not add filler images without a new visual idea.
+Do not repeat the same map or composition with only tiny cosmetic changes.
+
+Complex information should be split across multiple elegant images rather than crammed into one overloaded frame.
 
 ==================================================
 ANTI-LIFELESS HARD LOCK
 ==================================================
 
-Avoid tiny isolated subjects lost in huge empty backgrounds, meaningless icon collages, and mechanically repeated centered-countryball layouts. Minimal must still feel intentional and readable.
-
-Clean does NOT mean empty. Minimal does NOT mean lifeless.
+Avoid tiny isolated subjects lost in huge empty backgrounds, meaningless icon collages, mechanically repeated centered-countryball layouts, and flat rows of unrelated objects.
 
 ==================================================
 INDIVIDUALITY HARD LOCK
 ==================================================
 
 - Create a fresh arrangement for every Bild NN while staying inside the SAME Serious Minimal Countryball visual world.
-- Vary object placement, scale, direction, map orientation, prop choice and background emphasis when useful.
+- Vary object placement, scale, direction, map orientation, prop choice, layering and background emphasis when useful.
 - Do not use any previous generated image as a visual reference.
 - Do not change medium or visual DNA between images.
-
-HARD NEGATIVES:
-no normal illustrated humans, no humanoid cartoon people, no stick figures, no realistic people, no photorealism, no cinematic realistic full scenes, no glossy 3D, no Pixar, no clay, no anime, no childish gag faces, no busy icon collage, no watermark.
 
 ==================================================
 DEUTSCH-HARD-LOCK
 ==================================================
 
-Every readable word must be German. English visible text or pseudo-text = HARD FAIL for the planned image output. This HARD FAIL does NOT authorize a second non-cover generation: Bild 02 through Bild NN remain single-pass and are generated exactly once.
+Every readable word must be German. English visible text or pseudo-text = HARD FAIL for the planned image output. If text is not explicitly required, generate no readable text.
 
 ==================================================
 ABLAUF
@@ -119,7 +174,7 @@ ABLAUF
 
 1. Bild 01 exakt dreimal als temporäre Cover-Kandidaten erzeugen.
 2. Genau einen Cover-Gewinner auswählen, einmal final zu `Bild 01.png` umbenennen, die anderen zwei verwerfen.
-3. Bild 02 bis Bild NN jeweils genau einmal aus dem eigenen Textprompt erzeugen.
+3. Bild 02 bis Bild NN jeweils genau einmal aus dem eigenen vollständigen Textprompt erzeugen.
 4. Keine manuellen Prüfstopps zwischen 5er-Wellen; direkt weiterarbeiten.
 5. Maximal fünf aktive Generierungen gleichzeitig.
 6. Jedes fertige Nicht-Cover-Bild einmal auf `Bild NN.png` benennen.
@@ -127,48 +182,56 @@ ABLAUF
 8. Am Ende dürfen dort nur `Bild 01.png` bis `Bild NN.png` liegen.
 9. Niemals Bild 00 erzeugen und niemals ein vorheriges Bild als Referenz anhängen.
 
-A–E-PACING
-A = 4–5 s
-B = 5–7 s
-C = 7–9 s
-D = 9–12 s
-E = 12–15 s
+==================================================
+BILDPLAN
+==================================================
+
+Für jedes Bild angeben:
+- Bildnummer
+- Satzbezug / Audio-Anker
+- Visual Purpose
+- Composition Mode
+- Complexity A–E
+- Planned Hold
+- bei bewusstem Split: Split Reason
+- vollständigen englischen Bildprompt mit exakt vorgegebenem deutschen Sichttext
 
 ==================================================
 BILD 01 — COVER + ERSTE VIDEOSZENE
 ==================================================
 
 Bild 01 · [A–E] · [PLANZEIT]
-[COVER-UND-SZENE-1-PROMPT IN SERIOUS MINIMAL COUNTRYBALL WORLD]
+Visual Purpose: [EINE KLARE AUSSAGE]
+Composition Mode: [MODUS]
+[COVER-UND-SZENE-1-PROMPT IN PREMIUM SERIOUS MINIMAL COUNTRYBALL WORLD]
 
 ==================================================
 BILD 02–NN — JEWEILS EINMAL
 ==================================================
 
 Bild 02 · [A–E] · [PLANZEIT]
-[PROMPT IN SERIOUS MINIMAL COUNTRYBALL WORLD]
+Visual Purpose: [EINE KLARE AUSSAGE]
+Composition Mode: [MODUS]
+[PROMPT]
 
-Bild 03 · [A–E] · [PLANZEIT]
-[PROMPT IN SERIOUS MINIMAL COUNTRYBALL WORLD]
-
-[WEITERE BILDER BIS BILD NN — JEDES GENAU EINMAL]
+[WEITERE BILDER BIS BILD NN — BILDZAHL INHALTSGETRIEBEN]
 
 FINALER CHECK
-- Visual Policy V4 aktiv
+- Visual Policy V5 aktiv
+- Design Quality V1 aktiv
+- Adaptive Pacing V3 aktiv
 - ACTIVE_STYLE_ID = serious-minimal-countryball-explainer-youtube-16x9
-- Serious Minimal Countryball visual DNA throughout
-- no normal illustrated humans / no stick figures / no realistic full scenes
-- Asset Generation Policy V1 aktiv
+- gleiche Countryball-Bildwelt wie Reels, nur 16:9
+- Premium Design Layer ohne Stilwechsel
+- klare Hierarchie, kontrollierte Palette, saubere Karten, bewusstes Layering
+- 1 Bild = 1 visuelle Kernaussage
+- keine starre Bildzahl
+- komplexe Passagen sinnvoll auf mehrere Bilder verteilt
+- keine Füllbilder
 - Bild 01 exakt 3 Cover-Kandidaten, genau 1 Gewinner
-- Gewinner final als Bild 01.png
 - Bild 02–NN jeweils genau einmal generiert
 - keine manuellen Prüfstopps nach 5er-Wellen
-- alle finalen Bilder in genau einem flachen Ordner `00-bildprompts/images/`
-- keine Cover-Kandidaten/Varianten/Extras im finalen Ordner
-- Cover Policy V1 aktiv
-- Bild 01 = Cover + erste Videoszene
+- alle finalen Bilder in `00-bildprompts/images/`
 - kein Bild 00
-- keine separate Thumbnail-Datei in der Bildproduktion
-- 16:9 horizontal
 - keine Bild-zu-Bild-Referenzen
 - jeder sichtbare Text Deutsch
