@@ -20,13 +20,15 @@ test('neue YouTube-Projekte verwenden Premium Countryball V5 ohne Stilwechsel', 
   assert.equal(policy.visualPolicyVersion, 5);
   assert.equal(policy.designQualityVersion, 1);
   assert.equal(policy.adaptivePacingVersion, 3);
+  assert.equal(policy.scriptOpeningPolicyVersion, 1);
   assert.equal(policy.visualStyleId, 'serious-minimal-countryball-explainer-youtube-16x9');
   assert.equal(policy.sourceVisualWorldId, 'serious-minimal-countryball-explainer');
 
-  assert.equal(templateMeta.schemaVersion, 10);
+  assert.equal(templateMeta.schemaVersion, 11);
   assert.equal(templateMeta.visualPolicyVersion, 5);
   assert.equal(templateMeta.designQualityVersion, 1);
   assert.equal(templateMeta.adaptivePacingVersion, 3);
+  assert.equal(templateMeta.scriptOpeningPolicyVersion, 1);
   assert.equal(templateMeta.visualStyleId, policy.visualStyleId);
   assert.equal(templateMeta.sourceVisualWorldId, policy.sourceVisualWorldId);
   assert.equal(templateMeta.aspectRatio, '16:9');
