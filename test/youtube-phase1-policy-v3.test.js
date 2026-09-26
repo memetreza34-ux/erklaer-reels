@@ -126,6 +126,18 @@ test('V5 blockiert fehlende Premium-Design- und Density-Regeln', async () => {
     await mkdir(path.join(temp, '99-technik'), { recursive: true });
     await mkdir(path.join(temp, '00-bildprompts'), { recursive: true });
     const meta = await readJson(`${TEMPLATE}/99-technik/video.json`);
+    const candidateTitle = 'V5 Testthema Einzigartig 987654';
+    meta.title = candidateTitle;
+    meta.topic = candidateTitle;
+    meta.topicCategory = 'Geschichte';
+    meta.topicCoreLink = 'Technischer V5-Test für die YouTube-Qualitätspolicy.';
+    meta.videoId = 'v5-testthema-einzigartig-987654';
+    meta.topicEditor = {
+      version: 1,
+      decision: 'APPROVED_NEW',
+      checkedBeforeProjectCreation: true,
+      candidateTitle
+    };
     meta.visualQualityPolicy.premiumCompositionRequired = false;
     meta.imageDensityPolicy.fixedImageCountForbidden = false;
     await writeFile(path.join(temp, '99-technik/video.json'), JSON.stringify(meta, null, 2));
