@@ -3,6 +3,7 @@
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { checkYoutubeTopic } from '../core/youtube-topic-editor.js';
+import { validateYoutubeScriptOpening } from '../core/youtube-script-opening.js';
 
 function arg(name) {
   const index = process.argv.indexOf(name);
@@ -26,6 +27,7 @@ async function main() {
   const policy = await readJson(path.join(repoRoot, 'config/youtube-channel-policy.json'));
   const meta = await readJson(path.join(projectDir, '99-technik/video.json'));
   const prompt = await readFile(path.join(projectDir, '00-bildprompts/google-flow-prompt.txt'), 'utf8');
+  const script = await readFile(path.join(projectDir, '01-voice-script/voice-script.txt'), 'utf8');
   const errors = [];
   const schema = Number(meta.schemaVersion) || 0;
   const usesCountryball = schema >= 9;
@@ -43,11 +45,19 @@ async function main() {
     if (meta.adaptivePacingVersion !== policy.adaptivePacingVersion) {
       errors.push(`adaptivePacingVersion ist ${meta.adaptivePacingVersion ?? 'fehlend'}, erwartet ${policy.adaptivePacingVersion}.`);
     }
+    if (meta.scriptOpeningPolicyVersion !== policy.scriptOpeningPolicyVersion) {
+      errors.push(`scriptOpeningPolicyVersion ist ${meta.scriptOpeningPolicyVersion ?? 'fehlend'}, erwartet ${policy.scriptOpeningPolicyVersion}.`);
+    }
     if (meta.visualStyleId !== policy.visualStyleId) {
       errors.push(`visualStyleId ist ${meta.visualStyleId ?? 'fehlend'}, erwartet ${policy.visualStyleId}.`);
     }
     if (meta.sourceVisualWorldId !== policy.sourceVisualWorldId) {
       errors.push(`sourceVisualWorldId ist ${meta.sourceVisualWorldId ?? 'fehlend'}, erwartet ${policy.sourceVisualWorldId}.`);
+    }
+
+    if (meta.explicitScriptOpeningOverride !== true) {
+      const openingResult = validateYoutubeScriptOpening(script, policy.scriptOpeningPolicy);
+      for (const error of openingResult.errors) errors.push(`Script Opening V${policy.scriptOpeningPolicyVersion}: ${error}`);
     }
   } else if (schema === 9) {
     if (Number(meta.visualPolicyVersion) !== 4) errors.push('Schema-9-Projekt muss Visual Policy V4 behalten.');
@@ -241,12 +251,13 @@ async function main() {
 
   const topicText = schema >= 8 ? ', Themen-Editor FREI' : '';
   const assetText = schema >= 9 ? `, Asset Generation Policy V${policy.assetGenerationPolicyVersion}` : '';
+  const openingText = usesPremiumCountryballV5 ? `, Script Opening V${policy.scriptOpeningPolicyVersion}` : '';
   const visualLabel = usesPremiumCountryballV5
     ? `Premium Serious-Minimal-Countryball V${policy.visualPolicyVersion}, Design V${policy.designQualityVersion}, Pacing V${policy.adaptivePacingVersion}`
     : schema === 9
       ? 'Serious-Minimal-Countryball V4 (Legacy Schema 9)'
       : `Legacy Visual Policy V${meta.visualPolicyVersion}`;
-  console.log(`YouTube Phase-1-Policy: BESTANDEN — ${visualLabel}, Cover Policy V${policy.coverPolicyVersion}${topicText}${assetText}, Kanalfokus und Session-Schutz sind aktiv.`);
+  console.log(`YouTube Phase-1-Policy: BESTANDEN — ${visualLabel}${openingText}, Cover Policy V${policy.coverPolicyVersion}${topicText}${assetText}, Kanalfokus und Session-Schutz sind aktiv.`);
 }
 
 main().catch((error) => {
