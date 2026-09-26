@@ -225,11 +225,10 @@ async function main() {
     );
   }
   if (usesPremiumCountryballV5) {
-    stalePatterns.push(
-      /plannedImageCount\s*(?:=|:)\s*24/i,
-      /fixed target image count/i,
-      /Premium.*realistic/i
-    );
+    // Only actual legacy values are stale. V5's required phrases such as
+    // "There is NO fixed target image count" and "Premium does NOT mean realistic"
+    // are intentional policy statements and must not self-trigger this gate.
+    stalePatterns.push(/plannedImageCount\s*(?:=|:)\s*24/i);
   }
   for (const pattern of stalePatterns) if (pattern.test(prompt)) errors.push(`Masterprompt enthält veraltete Bildwelt-/Cover-/Phase-2-Regel: ${pattern}`);
 
