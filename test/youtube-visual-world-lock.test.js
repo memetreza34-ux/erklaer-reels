@@ -9,38 +9,45 @@ async function readJson(file) {
   return JSON.parse(await readFile(file, 'utf8'));
 }
 
-test('neue YouTube-Projekte verwenden wieder die Serious-Minimal-Countryball-Bildwelt', async () => {
-  const [policy, templatePrompt, projectPrompt, templateMeta, projectMeta] = await Promise.all([
+test('neue YouTube-Projekte verwenden Premium Countryball V5 ohne Stilwechsel', async () => {
+  const [policy, templatePrompt, templateMeta, projectMeta] = await Promise.all([
     readJson('config/youtube-channel-policy.json'),
     readFile(`${TEMPLATE}/00-bildprompts/google-flow-prompt.txt`, 'utf8'),
-    readFile(`${CURRENT_PROJECT}/00-bildprompts/google-flow-prompt.txt`, 'utf8'),
     readJson(`${TEMPLATE}/99-technik/video.json`),
     readJson(`${CURRENT_PROJECT}/99-technik/video.json`)
   ]);
 
-  assert.equal(policy.visualPolicyVersion, 4);
+  assert.equal(policy.visualPolicyVersion, 5);
+  assert.equal(policy.designQualityVersion, 1);
+  assert.equal(policy.adaptivePacingVersion, 3);
   assert.equal(policy.visualStyleId, 'serious-minimal-countryball-explainer-youtube-16x9');
   assert.equal(policy.sourceVisualWorldId, 'serious-minimal-countryball-explainer');
 
-  for (const meta of [templateMeta, projectMeta]) {
-    assert.equal(meta.visualPolicyVersion, 4);
-    assert.equal(meta.visualStyleId, policy.visualStyleId);
-    assert.equal(meta.sourceVisualWorldId, policy.sourceVisualWorldId);
-    assert.equal(meta.aspectRatio, '16:9');
-    assert.equal(meta.visualWorldParityPolicy.mustMatchReelVisualDNA, true);
-    assert.equal(meta.visualWorldParityPolicy.independentYoutubeStyle, false);
-    assert.equal(meta.visualWorldParityPolicy.countryballVisualWorldRequired, true);
-  }
+  assert.equal(templateMeta.schemaVersion, 10);
+  assert.equal(templateMeta.visualPolicyVersion, 5);
+  assert.equal(templateMeta.designQualityVersion, 1);
+  assert.equal(templateMeta.adaptivePacingVersion, 3);
+  assert.equal(templateMeta.visualStyleId, policy.visualStyleId);
+  assert.equal(templateMeta.sourceVisualWorldId, policy.sourceVisualWorldId);
+  assert.equal(templateMeta.aspectRatio, '16:9');
+  assert.equal(templateMeta.visualWorldParityPolicy.mustMatchReelVisualDNA, true);
+  assert.equal(templateMeta.visualWorldParityPolicy.independentYoutubeStyle, false);
 
-  for (const prompt of [templatePrompt, projectPrompt]) {
-    assert.match(prompt, /YOUTUBE_VISUAL_POLICY_VERSION: 4/);
-    assert.match(prompt, /ACTIVE_STYLE_ID: serious-minimal-countryball-explainer-youtube-16x9/);
-    assert.match(prompt, /SERIOUS MINIMAL COUNTRYBALL/i);
-    assert.match(prompt, /16:9/);
-  }
+  // Existing Schema-9 project remains reproducible as V4.
+  assert.equal(projectMeta.schemaVersion, 9);
+  assert.equal(projectMeta.visualPolicyVersion, 4);
+  assert.equal(projectMeta.visualStyleId, policy.visualStyleId);
+  assert.equal(projectMeta.sourceVisualWorldId, policy.sourceVisualWorldId);
+
+  assert.match(templatePrompt, /YOUTUBE_VISUAL_POLICY_VERSION: 5/);
+  assert.match(templatePrompt, /DESIGN_QUALITY_VERSION: 1/);
+  assert.match(templatePrompt, /ADAPTIVE_PACING_VERSION: 3/);
+  assert.match(templatePrompt, /ACTIVE_STYLE_ID: serious-minimal-countryball-explainer-youtube-16x9/);
+  assert.match(templatePrompt, /PREMIUM DESIGN LAYER V1/i);
+  assert.match(templatePrompt, /Premium does NOT mean realistic/i);
 });
 
-test('alte Bildwelt ist zurück, aber Bild-zu-Bild-Referenzen bleiben verboten', async () => {
+test('Bild-zu-Bild-Referenzen bleiben auch in V5 verboten', async () => {
   const [policy, templatePrompt, projectPrompt, templateMeta, projectMeta] = await Promise.all([
     readJson('config/youtube-channel-policy.json'),
     readFile(`${TEMPLATE}/00-bildprompts/google-flow-prompt.txt`, 'utf8'),
@@ -62,11 +69,10 @@ test('alte Bildwelt ist zurück, aber Bild-zu-Bild-Referenzen bleiben verboten',
   }
 });
 
-test('Countryball-Akteure sind rund und normale Menschen bleiben verboten', async () => {
-  const [policy, templatePrompt, projectPrompt, templateMeta, projectMeta] = await Promise.all([
+test('Countryball-Akteure bleiben rund und normale Menschen verboten', async () => {
+  const [policy, templatePrompt, templateMeta, projectMeta] = await Promise.all([
     readJson('config/youtube-channel-policy.json'),
     readFile(`${TEMPLATE}/00-bildprompts/google-flow-prompt.txt`, 'utf8'),
-    readFile(`${CURRENT_PROJECT}/00-bildprompts/google-flow-prompt.txt`, 'utf8'),
     readJson(`${TEMPLATE}/99-technik/video.json`),
     readJson(`${CURRENT_PROJECT}/99-technik/video.json`)
   ]);
@@ -83,54 +89,71 @@ test('Countryball-Akteure sind rund und normale Menschen bleiben verboten', asyn
     assert.equal(meta.visualWorldParityPolicy.stickFiguresForbidden, true);
   }
 
-  for (const prompt of [templatePrompt, projectPrompt]) {
-    assert.match(prompt, /perfectly round/i);
-    assert.match(prompt, /no normal illustrated humans/i);
-    assert.match(prompt, /no stick figures/i);
-    assert.match(prompt, /thick clean black outline/i);
-  }
+  assert.match(templatePrompt, /perfectly round/i);
+  assert.match(templatePrompt, /No normal illustrated humans/i);
+  assert.match(templatePrompt, /No stick figures/i);
+  assert.match(templatePrompt, /thick clean black outline/i);
 });
 
-test('minimal bleibt lebendig ohne in Premium-Editorial oder Realismus zu wechseln', async () => {
-  const [policy, templatePrompt, projectPrompt, templateMeta, projectMeta] = await Promise.all([
+test('V5 erzwingt hochwertigere Gestaltung innerhalb derselben Bildwelt', async () => {
+  const [policy, templatePrompt, templateMeta] = await Promise.all([
     readJson('config/youtube-channel-policy.json'),
     readFile(`${TEMPLATE}/00-bildprompts/google-flow-prompt.txt`, 'utf8'),
-    readFile(`${CURRENT_PROJECT}/00-bildprompts/google-flow-prompt.txt`, 'utf8'),
-    readJson(`${TEMPLATE}/99-technik/video.json`),
-    readJson(`${CURRENT_PROJECT}/99-technik/video.json`)
+    readJson(`${TEMPLATE}/99-technik/video.json`)
   ]);
 
-  assert.equal(policy.qualityPolicy.lifelessStaticCompositionForbidden, true);
-  assert.equal(policy.qualityPolicy.genericCenteredObjectOnBlankBackgroundForbiddenByDefault, true);
-  assert.equal(policy.qualityPolicy.genericIconCollageForbidden, true);
-  assert.equal(policy.qualityPolicy.childishCartoonLookForbidden, true);
-
-  for (const meta of [templateMeta, projectMeta]) {
-    assert.equal(meta.visualQualityPolicy.lifelessStaticCompositionForbidden, true);
-    assert.equal(meta.visualQualityPolicy.genericCenteredObjectOnBlankBackgroundForbiddenByDefault, true);
-    assert.equal(meta.visualQualityPolicy.childishCartoonLookForbidden, true);
+  for (const key of [
+    'premiumCompositionRequired',
+    'intentionalPaletteRequired',
+    'typographyHierarchyRequiredWhenTextPresent',
+    'balancedNegativeSpaceRequired',
+    'mapLegibilityRequired',
+    'visualRelationshipOverIconListingRequired',
+    'premiumDoesNotAuthorizeStyleChange'
+  ]) {
+    assert.equal(policy.qualityPolicy[key], true, `Policy fehlt ${key}`);
+    assert.equal(templateMeta.visualQualityPolicy[key], true, `Template fehlt ${key}`);
   }
 
-  for (const prompt of [templatePrompt, projectPrompt]) {
-    assert.match(prompt, /ANTI-LIFELESS HARD LOCK/);
-    assert.match(prompt, /Minimal does NOT mean lifeless/i);
-    assert.doesNotMatch(prompt, /WRITTEN STYLE LOCK\s*[—-]\s*PREMIUM EDITORIAL/i);
-    assert.match(prompt, /No photorealism|no photorealism/i);
-  }
+  assert.match(templatePrompt, /clear visual hierarchy/i);
+  assert.match(templatePrompt, /one coherent main palette/i);
+  assert.match(templatePrompt, /foreground \/ midground \/ background/i);
+  assert.match(templatePrompt, /Premium does NOT mean realistic/i);
+  assert.doesNotMatch(templatePrompt, /WRITTEN STYLE LOCK\s*[—-]\s*PREMIUM EDITORIAL/i);
+});
+
+test('V5 erlaubt mehr Bilder bei dichterem Inhalt statt starrer Bildzahl', async () => {
+  const [policy, templatePrompt, templateMeta, pacing] = await Promise.all([
+    readJson('config/youtube-channel-policy.json'),
+    readFile(`${TEMPLATE}/00-bildprompts/google-flow-prompt.txt`, 'utf8'),
+    readJson(`${TEMPLATE}/99-technik/video.json`),
+    readFile('youtube/ADAPTIVE_PACING_V3.md', 'utf8')
+  ]);
+
+  assert.equal(policy.imageDensityPolicy.fixedImageCountForbidden, true);
+  assert.equal(policy.imageDensityPolicy.allowMoreImagesWhenNarrativelyUseful, true);
+  assert.equal(policy.imageDensityPolicy.doNotAddFillerImages, true);
+  assert.equal(templateMeta.imageCountMethod, 'adaptive-density-v3-content-derived');
+  assert.equal(templateMeta.imageDensityPolicy.fixedImageCountForbidden, true);
+  assert.deepEqual(templateMeta.imageDensityPolicy.targetAverageHoldSeconds, [4.5, 7.5]);
+  assert.equal(templateMeta.imageDensityPolicy.strongSplitReviewAboveSeconds, 11);
+  assert.equal(templateMeta.imageDensityPolicy.globalHardMaximumSeconds, 16);
+
+  assert.match(templatePrompt, /There is NO fixed target image count/i);
+  assert.match(templatePrompt, /Complex information should be split across multiple elegant images/i);
+  assert.match(pacing, /Mehr Bilder sind ausdrücklich erwünscht/i);
+  assert.match(pacing, /keine feste Bildzahl/i);
 });
 
 test('deutsche YouTube-Projekte erzwingen weiterhin deutschen sichtbaren Bildtext', async () => {
-  const [templatePrompt, projectPrompt, templateMeta, projectMeta] = await Promise.all([
+  const [templatePrompt, templateMeta, projectMeta] = await Promise.all([
     readFile(`${TEMPLATE}/00-bildprompts/google-flow-prompt.txt`, 'utf8'),
-    readFile(`${CURRENT_PROJECT}/00-bildprompts/google-flow-prompt.txt`, 'utf8'),
     readJson(`${TEMPLATE}/99-technik/video.json`),
     readJson(`${CURRENT_PROJECT}/99-technik/video.json`)
   ]);
 
-  for (const prompt of [templatePrompt, projectPrompt]) {
-    assert.match(prompt, /Every readable word.*German|Every readable.*German/i);
-    assert.match(prompt, /HARD FAIL/i);
-  }
+  assert.match(templatePrompt, /Every readable word must be German/i);
+  assert.match(templatePrompt, /HARD FAIL/i);
   assert.equal(templateMeta.visibleTextPolicy.germanProjectRequiresGermanOnly, true);
   assert.equal(templateMeta.visibleTextPolicy.englishVisibleTextHardFail, true);
   assert.equal(projectMeta.visibleTextPolicy.germanProjectRequiresGermanOnly, true);

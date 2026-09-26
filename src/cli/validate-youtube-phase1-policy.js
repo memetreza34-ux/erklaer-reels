@@ -28,13 +28,20 @@ async function main() {
   const prompt = await readFile(path.join(projectDir, '00-bildprompts/google-flow-prompt.txt'), 'utf8');
   const errors = [];
   const schema = Number(meta.schemaVersion) || 0;
-  const usesRestoredCountryballV4 = schema >= 9;
+  const usesCountryball = schema >= 9;
+  const usesPremiumCountryballV5 = schema >= 10;
 
-  // Schema 9+ uses the current central visual policy. Older projects stay reproducible
-  // with the visual policy they were created under instead of being retroactively rewritten.
-  if (usesRestoredCountryballV4) {
+  // Schema 10+ follows the current central V5 policy. Schema 9 remains reproducible
+  // as the prior Countryball V4 generation instead of being retroactively rewritten.
+  if (usesPremiumCountryballV5) {
     if (meta.visualPolicyVersion !== policy.visualPolicyVersion) {
       errors.push(`visualPolicyVersion ist ${meta.visualPolicyVersion ?? 'fehlend'}, erwartet ${policy.visualPolicyVersion}.`);
+    }
+    if (meta.designQualityVersion !== policy.designQualityVersion) {
+      errors.push(`designQualityVersion ist ${meta.designQualityVersion ?? 'fehlend'}, erwartet ${policy.designQualityVersion}.`);
+    }
+    if (meta.adaptivePacingVersion !== policy.adaptivePacingVersion) {
+      errors.push(`adaptivePacingVersion ist ${meta.adaptivePacingVersion ?? 'fehlend'}, erwartet ${policy.adaptivePacingVersion}.`);
     }
     if (meta.visualStyleId !== policy.visualStyleId) {
       errors.push(`visualStyleId ist ${meta.visualStyleId ?? 'fehlend'}, erwartet ${policy.visualStyleId}.`);
@@ -42,6 +49,10 @@ async function main() {
     if (meta.sourceVisualWorldId !== policy.sourceVisualWorldId) {
       errors.push(`sourceVisualWorldId ist ${meta.sourceVisualWorldId ?? 'fehlend'}, erwartet ${policy.sourceVisualWorldId}.`);
     }
+  } else if (schema === 9) {
+    if (Number(meta.visualPolicyVersion) !== 4) errors.push('Schema-9-Projekt muss Visual Policy V4 behalten.');
+    if (meta.visualStyleId !== 'serious-minimal-countryball-explainer-youtube-16x9') errors.push('Schema-9-Projekt muss die Countryball-V4-Style-ID behalten.');
+    if (meta.sourceVisualWorldId !== 'serious-minimal-countryball-explainer') errors.push('Schema-9-Projekt muss die Reel-Countryball-Quellwelt behalten.');
   } else {
     if (!Number.isFinite(Number(meta.visualPolicyVersion))) errors.push('Legacy-Projekt: visualPolicyVersion fehlt.');
     if (!String(meta.visualStyleId ?? '').trim()) errors.push('Legacy-Projekt: visualStyleId fehlt.');
@@ -83,17 +94,39 @@ async function main() {
   requireTrue(errors, q.sceneSpecificArtDirectionRequired, 'visualQualityPolicy.sceneSpecificArtDirectionRequired');
   requireTrue(errors, q.childishCartoonLookForbidden, 'visualQualityPolicy.childishCartoonLookForbidden');
 
-  if (usesRestoredCountryballV4) {
+  if (usesCountryball) {
     requireTrue(errors, q.seriousMinimalCountryballWorldRequired, 'visualQualityPolicy.seriousMinimalCountryballWorldRequired');
     requireTrue(errors, q.perfectlyRoundCountryballActorsRequired, 'visualQualityPolicy.perfectlyRoundCountryballActorsRequired');
     requireTrue(errors, q.normalIllustratedHumansForbidden, 'visualQualityPolicy.normalIllustratedHumansForbidden');
     requireTrue(errors, meta.visualWorldParityPolicy?.mustMatchReelVisualDNA, 'visualWorldParityPolicy.mustMatchReelVisualDNA');
     requireTrue(errors, meta.visualWorldParityPolicy?.countryballVisualWorldRequired, 'visualWorldParityPolicy.countryballVisualWorldRequired');
     requireTrue(errors, meta.visualWorldParityPolicy?.normalIllustratedHumansForbidden, 'visualWorldParityPolicy.normalIllustratedHumansForbidden');
-    if (meta.visualWorldParityPolicy?.independentYoutubeStyle !== false) errors.push('visualWorldParityPolicy.independentYoutubeStyle muss bei Visual Policy V4 false sein.');
+    if (meta.visualWorldParityPolicy?.independentYoutubeStyle !== false) errors.push('visualWorldParityPolicy.independentYoutubeStyle muss false sein.');
   } else {
     requireTrue(errors, q.controlledDepthRequired, 'visualQualityPolicy.controlledDepthRequired');
     requireTrue(errors, q.adjacentCompositionModeRepeatForbiddenWithoutReason, 'visualQualityPolicy.adjacentCompositionModeRepeatForbiddenWithoutReason');
+  }
+
+  if (usesPremiumCountryballV5) {
+    requireTrue(errors, q.premiumCompositionRequired, 'visualQualityPolicy.premiumCompositionRequired');
+    requireTrue(errors, q.intentionalPaletteRequired, 'visualQualityPolicy.intentionalPaletteRequired');
+    requireTrue(errors, q.typographyHierarchyRequiredWhenTextPresent, 'visualQualityPolicy.typographyHierarchyRequiredWhenTextPresent');
+    requireTrue(errors, q.balancedNegativeSpaceRequired, 'visualQualityPolicy.balancedNegativeSpaceRequired');
+    requireTrue(errors, q.mapLegibilityRequired, 'visualQualityPolicy.mapLegibilityRequired');
+    requireTrue(errors, q.visualRelationshipOverIconListingRequired, 'visualQualityPolicy.visualRelationshipOverIconListingRequired');
+    requireTrue(errors, q.premiumDoesNotAuthorizeStyleChange, 'visualQualityPolicy.premiumDoesNotAuthorizeStyleChange');
+
+    const density = meta.imageDensityPolicy || {};
+    requireTrue(errors, density.contentDrivenImageCountRequired, 'imageDensityPolicy.contentDrivenImageCountRequired');
+    requireTrue(errors, density.fixedImageCountForbidden, 'imageDensityPolicy.fixedImageCountForbidden');
+    requireTrue(errors, density.splitOnNewVisualIdeaRequired, 'imageDensityPolicy.splitOnNewVisualIdeaRequired');
+    requireTrue(errors, density.splitOnEraLocationPerspectiveChangeRequired, 'imageDensityPolicy.splitOnEraLocationPerspectiveChangeRequired');
+    requireTrue(errors, density.splitCauseEffectWhenDense, 'imageDensityPolicy.splitCauseEffectWhenDense');
+    requireTrue(errors, density.allowMoreImagesWhenNarrativelyUseful, 'imageDensityPolicy.allowMoreImagesWhenNarrativelyUseful');
+    requireTrue(errors, density.doNotAddFillerImages, 'imageDensityPolicy.doNotAddFillerImages');
+    if (density.globalHardMaximumSeconds !== 16) errors.push('imageDensityPolicy.globalHardMaximumSeconds muss 16 sein.');
+    if (density.softReviewAboveSeconds !== 9) errors.push('imageDensityPolicy.softReviewAboveSeconds muss 9 sein.');
+    if (density.strongSplitReviewAboveSeconds !== 11) errors.push('imageDensityPolicy.strongSplitReviewAboveSeconds muss 11 sein.');
   }
 
   if (schema >= 7) {
@@ -127,8 +160,8 @@ async function main() {
     requireTrue(errors, a.temporaryCoverCandidatesForbiddenInFinalFolder, 'assetGenerationPolicy.temporaryCoverCandidatesForbiddenInFinalFolder');
   }
 
-  const expectedVisualVersion = usesRestoredCountryballV4 ? policy.visualPolicyVersion : meta.visualPolicyVersion;
-  const expectedStyleId = usesRestoredCountryballV4 ? policy.visualStyleId : meta.visualStyleId;
+  const expectedVisualVersion = usesPremiumCountryballV5 ? policy.visualPolicyVersion : meta.visualPolicyVersion;
+  const expectedStyleId = usesPremiumCountryballV5 ? policy.visualStyleId : meta.visualStyleId;
   const requiredPromptMarkers = [
     `YOUTUBE_VISUAL_POLICY_VERSION: ${expectedVisualVersion}`,
     `ACTIVE_STYLE_ID: ${expectedStyleId}`,
@@ -153,6 +186,15 @@ async function main() {
       'WRITTEN STYLE LOCK — SERIOUS MINIMAL COUNTRYBALL'
     );
   }
+  if (usesPremiumCountryballV5) {
+    requiredPromptMarkers.push(
+      `DESIGN_QUALITY_VERSION: ${policy.designQualityVersion}`,
+      `ADAPTIVE_PACING_VERSION: ${policy.adaptivePacingVersion}`,
+      'PREMIUM DESIGN LAYER V1 — HARD LOCK',
+      'ADAPTIVE IMAGE DENSITY V3 — HARD LOCK',
+      'Premium does NOT mean realistic.'
+    );
+  }
   for (const marker of requiredPromptMarkers) if (!prompt.includes(marker)) errors.push(`Masterprompt fehlt Pflichtmarker: ${marker}`);
 
   const stalePatterns = [
@@ -163,17 +205,13 @@ async function main() {
     /using it as our anchor reference/i
   ];
 
-  if (usesRestoredCountryballV4) {
+  if (usesCountryball) {
     stalePatterns.push(
       /ACTIVE_STYLE_ID:\s*premium-editorial-explainer-illustration-youtube-16x9/i,
       /WRITTEN STYLE LOCK\s*[—-]\s*PREMIUM EDITORIAL/i,
       /no mandatory mascot, no countryball template/i
     );
-  } else {
-    // V3 projects intentionally used the independent Editorial world.
-    stalePatterns.push(/ACTIVE_STYLE_ID:\s*serious-minimal-countryball-explainer-youtube-16x9/i);
   }
-
   if (schema >= 7) {
     stalePatterns.push(/BILD 00\s*[—-]\s*THUMBNAIL/i, /Bild 00.*Thumbnail/i, /Bild 00.*Timeline/i, /thumbnailImageNumber"\s*:\s*0/i);
   }
@@ -184,6 +222,13 @@ async function main() {
       /Fehler nur im betroffenen Bild regenerieren/i,
       /Reject and regenerate any image/i,
       /nächste Welle erst nach vollständigem Check/i
+    );
+  }
+  if (usesPremiumCountryballV5) {
+    stalePatterns.push(
+      /plannedImageCount\s*(?:=|:)\s*24/i,
+      /fixed target image count/i,
+      /Premium.*realistic/i
     );
   }
   for (const pattern of stalePatterns) if (pattern.test(prompt)) errors.push(`Masterprompt enthält veraltete Bildwelt-/Cover-/Phase-2-Regel: ${pattern}`);
@@ -197,7 +242,11 @@ async function main() {
 
   const topicText = schema >= 8 ? ', Themen-Editor FREI' : '';
   const assetText = schema >= 9 ? `, Asset Generation Policy V${policy.assetGenerationPolicyVersion}` : '';
-  const visualLabel = usesRestoredCountryballV4 ? 'Serious-Minimal-Countryball V4' : `Legacy Visual Policy V${meta.visualPolicyVersion}`;
+  const visualLabel = usesPremiumCountryballV5
+    ? `Premium Serious-Minimal-Countryball V${policy.visualPolicyVersion}, Design V${policy.designQualityVersion}, Pacing V${policy.adaptivePacingVersion}`
+    : schema === 9
+      ? 'Serious-Minimal-Countryball V4 (Legacy Schema 9)'
+      : `Legacy Visual Policy V${meta.visualPolicyVersion}`;
   console.log(`YouTube Phase-1-Policy: BESTANDEN — ${visualLabel}, Cover Policy V${policy.coverPolicyVersion}${topicText}${assetText}, Kanalfokus und Session-Schutz sind aktiv.`);
 }
 

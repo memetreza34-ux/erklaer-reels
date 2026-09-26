@@ -1,40 +1,123 @@
 # Feste YouTube-Bildwelt — Serious Minimal Countryball Explainer · 16:9
 
-**Stand: 2026-09-25**  
-**Visual Policy Version: 4**  
+**Stand: 2026-09-26**  
+**Visual Policy Version: 5**  
+**Design Quality Version: 1**  
 **Cover Policy Version: 1**  
 **Asset Generation Policy Version: 1**
 
-Diese Datei definiert die verbindliche Bildwelt für alle **neuen** YouTube-Langvideos.
+Diese Datei definiert die verbindliche Bildwelt für alle **neuen** YouTube-Langvideos ab Schema 10.
 
-YouTube übernimmt wieder die ursprüngliche aktive Reel-Bild-DNA und adaptiert sie nur auf 16:9.
+Die Bildwelt bleibt dieselbe Serious-Minimal-Countryball-DNA wie bei den Reels. V5 ändert **nicht** den Zeichenstil. V5 erhöht ausschließlich Art Direction, Komposition, Farbkontrolle, Typografie, Kartenqualität und visuelle Dichte.
 
 - Reel-Quellwelt: `serious-minimal-countryball-explainer`
 - YouTube-Style-ID: `serious-minimal-countryball-explainer-youtube-16x9`
-- einzige Formatabweichung: **16:9 horizontal statt 9:16 vertikal**
+- Formatabweichung: **16:9 horizontal statt 9:16 vertikal**
+- neue Qualitätsstufe: **Premium Countryball Design Layer**
 
-Die Premium-Editorial-Bildwelt aus Visual Policy V3 ist für neue YouTube-Projekte **nicht mehr aktiv**.
-
-## Verbindliche visuelle DNA
+## Unveränderte visuelle DNA — HARD LOCK
 
 - seriöse, cleane, minimalistische 2D-Countryball-Erklärwelt
-- perfekt runde Countryball-artige Akteure, wenn ein Akteur sinnvoll ist
+- perfekt runde Countryball-Akteure, wenn ein Akteur sinnvoll ist
 - einfache weiße Augen
 - kräftige, saubere schwarze Konturen
 - flache kontrollierte 2D-Farben
 - nur leichte grafische Schattierung
-- geringe bis mittlere kontrollierte Detaildichte
+- keine normalen illustrierten Menschen
+- keine humanoiden Cartoon-Personen
+- keine Stickfiguren
+- kein Fotorealismus
+- kein 3D/Pixar/Clay/Anime
+- nicht kindisch, nicht albern
+
+**Premium bedeutet niemals Stilwechsel.** Premium bedeutet bessere Gestaltung innerhalb genau dieser Bildwelt.
+
+## PREMIUM DESIGN LAYER V1 — HARD LOCK
+
+Jeder neue Bildprompt muss wie ein bewusst art-direktiertes Erklärbild geplant werden, nicht wie eine lose Sammlung von Symbolen.
+
+### 1. Komposition
+
+Pflicht:
 - ein dominantes Hauptmotiv
-- normalerweise 0–3 sinnvolle Zusatzobjekte
-- einfacher einfarbiger oder gedämpfter Hintergrund, leichter Verlauf oder subtile Textur erlaubt
-- starke Symbolik statt realistischer Vollszenen
-- erwachsene informative Wirkung, **nicht kindisch und nicht albern**
-- Karten, Diagramme und historische Inhalte werden in dieselbe reduzierte Formsprache übersetzt
+- klare Blickführung
+- sichtbare Beziehung zwischen den Elementen
+- bewusste Größenhierarchie
+- ausgewogene negative Fläche
+- wichtige Elemente nicht zufällig mittig stapeln
+- bei geeigneten Szenen Vordergrund, Mittelgrund und Hintergrund als einfache 2D-Ebenen nutzen
+- Überlagerungen, diagonale Wege, Grenzlinien, Pfeile oder räumliche Trennung gezielt einsetzen
+
+Verboten:
+- kleines Motiv verloren auf leerer Fläche
+- starres „Countryball + Label + nichts sonst“-Template als Standard
+- wahllose Icon-Reihe
+- symmetrische Standardanordnung ohne inhaltlichen Grund
+
+### 2. Farbgestaltung
+
+- pro Bild eine bewusste Hauptpalette
+- normalerweise 1 dominante Grundfarbe + 1–2 kontrollierte Akzentfarben
+- Akzente dienen der Aussage, nicht der Dekoration
+- Kontrast so wählen, dass Karte, Figur und Text sofort lesbar bleiben
+- keine zufällig knallbunte Farbmischung
+- benachbarte Bilder dürfen Palette und Hintergrund bewusst variieren, ohne die Bildwelt zu verlassen
+
+### 3. Typografie
+
+Wenn Text vorgesehen ist:
+- kurze deutsche Aussage
+- klare visuelle Hierarchie
+- große, saubere Sans-Serif-/Condensed-Anmutung
+- genügend Abstand zum Hauptmotiv
+- hoher Kontrast
+- Text als Teil der Komposition statt nachträgliches Etikett
+- keine langen Sätze
+- keine Fake-Schrift oder englischen Labels
+
+### 4. Karten und Grenzen
+
+Bei Geografie-/Geschichtsthemen:
+- vereinfachte, aber eindeutige Silhouetten
+- saubere Grenzlinien
+- wenige kontrollierte Farben
+- Routen und Bewegungsrichtungen deutlich
+- Labels nur wenn wirklich nötig
+- relevante Region visuell priorisieren
+- keine überladene Atlas-Optik
+- keine winzigen unlesbaren Staaten-/Stadtlabels
+
+### 5. Visuelles Erzählen
+
+Bevorzugt werden Beziehungen statt Objektlisten:
+- vorher → nachher
+- Ursache → Folge
+- geteilt → verbunden
+- innen → außen
+- Angriff → Gegenbewegung
+- Grenze → Route → Hindernis
+- Zentrum → Peripherie
+- zwei Systeme im direkten Vergleich
+
+Ein Bild darf minimal sein, muss aber eine klare visuelle Aussage tragen.
+
+## Kompositionsmodi
+
+Primär:
+1. `minimal-symbolic`
+2. `supported-explainer`
+3. `simple-mini-scene`
+4. `map-spatial-explainer`
+5. `conceptual-metaphor`
+6. `before-after`
+7. `cause-effect`
+8. `route-progression`
+
+Benachbarte Bilder sollen nicht mechanisch dieselbe Komposition wiederholen.
 
 ## Figuren-System — HARD LOCK
 
 Wenn ein Akteur gebraucht wird:
-
 - perfekt runder Kugelkörper
 - niemals oval, bohnenförmig oder eiförmig
 - keine getrennten menschlichen Köpfe
@@ -44,56 +127,30 @@ Wenn ein Akteur gebraucht wird:
 - kleine einfache Arme/Hände/Füße nur wenn die Handlung sie wirklich braucht
 - keine Haare, Hälse oder realistischen Gesichter
 
-Flaggenmuster nur, wenn Geografie, Politik oder kulturelle Identität inhaltlich relevant sind. Bei historischen Gruppen ohne passende moderne Flagge werden neutrale/historisch passende Farbcodes und wenige Symbole verwendet.
+Flaggenmuster nur, wenn Geografie, Politik oder kulturelle Identität inhaltlich relevant sind. Historische Gruppen ohne passende moderne Flagge werden neutral oder historisch passend codiert.
 
-Wenn ein Objekt, eine Karte oder ein Symbol die Aussage klarer erklärt, ist kein Countryball zwingend nötig.
+Wenn Karte, Objekt oder Symbol die Aussage klarer erklärt, ist kein Countryball zwingend nötig.
 
-### Verboten
+## Anti-Lifeless
 
-- normale illustrierte Menschen
-- humanoide Cartoon-Personen
-- Stickfiguren
-- realistische Menschen
-- realistische Hände/Haut
-- fotorealistische Vollszenen
-- glossy 3D
-- Pixar/Clay/Anime
-- übertriebene Gag-Gesichter oder kindische Mimik
-
-## Drei Haupt-Kompositionsmodi
-
-### 1. Minimal Symbolic
-Ein großes Hauptmotiv + 0–1 sinnvolles Symbol.
-
-### 2. Supported Explainer
-Ein großes Hauptmotiv + 1–3 relevante Requisiten, Symbole oder Cues.
-
-### 3. Simple Mini Scene
-Ein klarer Countryball-Akteur oder ein Objekt + eine stark reduzierte Kontextstruktur.
-
-Ergänzend erlaubt: reduzierte Map/Spatial-Explainer und Conceptual Metaphor, solange die Serious-Minimal-Countryball-DNA erhalten bleibt.
-
-Historische Themen werden **nicht** als realistische Gemälde, cineastische Städte oder detaillierte Menschenszenen dargestellt, sondern in diese reduzierte Erklärwelt übersetzt.
-
-## Anti-Lifeless — ohne Stilwechsel
-
-Die alte Bildwelt bleibt bestehen, aber Prompts sollen trotzdem lebendig und verständlich sein.
+**Clean ≠ leer. Minimal ≠ leblos. Premium ≠ realistisch.**
 
 Vermeiden:
-- kleines Hauptmotiv verloren in riesiger leerer Fläche
+- zu viel leere Fläche ohne Funktion
 - generische Icon-Collage
-- mechanisch dieselbe Komposition in jedem Bild
-- dekorative Objekte ohne Aussage
-- immer derselbe Countryball mittig ohne Handlung
+- immer derselbe Countryball mittig
+- langweilige horizontale Aufreihung
+- gleichförmige Karten mit nur anderem Label
 
-Erlaubt und erwünscht:
-- klare Richtung durch Pfeile, Wege oder Blickführung
-- unterschiedliche Größenverhältnisse
-- Karten, Grenzen und Symbole mit klarer Funktion
-- einfache Vorder-/Hintergrund-Trennung, wenn sie hilft
-- unterschiedliche Anordnung der wenigen Elemente
-
-**Clean ≠ leer. Minimal ≠ leblos.** Aber die Lösung bleibt minimal und Countryball-basiert, statt in eine realistische Editorial-Szene zu wechseln.
+Erwünscht:
+- klare Richtung und Bewegung
+- Größenkontrast
+- Layering
+- Vorder-/Hintergrund-Trennung
+- kontrollierte Schatten
+- bewusst gesetzte Akzentfarbe
+- sinnvolle Überlappung
+- Karten, Grenzen und Dokumente mit klarer Funktion
 
 ## FIRST SCENE = COVER — HARD LOCK
 
@@ -106,93 +163,65 @@ Erlaubt und erwünscht:
 
 ## Asset Generation Policy V1
 
-- Bild 01 wird **exakt 3-mal** als temporärer Cover-Kandidat erzeugt.
+- Bild 01 wird exakt 3-mal als temporärer Cover-Kandidat erzeugt.
 - genau 1 Gewinner bleibt und wird final einmal zu `Bild 01.png` benannt.
 - die anderen 2 Cover-Kandidaten werden verworfen.
-- Bild 02–NN wird jeweils **exakt einmal** erzeugt.
+- Bild 02–NN wird jeweils exakt einmal erzeugt.
 - keine manuellen Prüfstopps nach 5er-Wellen.
 - maximal 5 aktive Generierungen gleichzeitig = nur Parallelitätsregel.
 - alle finalen Bilder liegen flach in `00-bildprompts/images/`.
 
 ## Jedes Bild unabhängig — HARD LOCK
 
-Die **Bildwelt** ist zurückgesetzt, die problematische alte Referenzlogik jedoch nicht.
-
 - kein erzeugtes Bild wird als Referenz an ein späteres Bild angehängt
 - Bild 01 ist kein Master-Style-Frame
 - jedes Bild wird aus seinem eigenen vollständigen Textprompt erzeugt
-- Konsistenz kommt aus dem geschriebenen Serious-Minimal-Countryball-Style-Lock
+- Konsistenz kommt aus dem geschriebenen Style-Lock
 - keine Image-to-Image-Stilvererbung
-
-Damit bleibt die alte Bildwelt erhalten, ohne dass spätere Bilder Layout und Perspektive von Bild 01 kopieren.
-
-## Hintergrund
-
-Bevorzugt:
-- einfarbige oder gedämpfte Farbfläche
-- einfacher Farbverlauf
-- subtile Papier-/Korntextur
-- ein einzelnes Kontextobjekt oder stark vereinfachte Struktur
-
-Nicht als Standard:
-- detaillierte realistische Innenräume
-- cineastische Vollszenen
-- fotorealistische Landschaften
-- komplexe realistische Architekturkulissen
-- überladene historische Gemälde
-
-## Karten und Diagramme
-
-- klare dicke Konturen
-- einfache Flächen
-- wenige kontrollierte Farben
-- wenige Pfeile und Marker
-- Countryball-Symbole nur bei echten Akteuren
-- keine alten realistischen Atlas-Karten
-- keine Satellitenkarten
-- keine automatisch erzeugten englischen Labels
 
 ## Sichtbarer Text — DEUTSCH-HARD-LOCK
 
 Für deutsche Projekte:
 - jeder sichtbare lesbare Text muss Deutsch sein
-- englischer sichtbarer Text = **HARD FAIL**
-- Pseudo-Schrift = **HARD FAIL**
+- englischer sichtbarer Text = HARD FAIL
+- Pseudo-Schrift = HARD FAIL
 - wenn Text nicht nötig ist, keinen Text erzeugen
 - ausdrücklich vorgegebener Text exakt übernehmen
 
 ## Session-Schutz
 
-Da die Bildwelt mit Visual Policy V4 wieder geändert wurde, muss für aktuelle/neue Generierungen eine **frische Flow-Sitzung** verwendet werden.
-
-Eine Sitzung mit `premium-editorial-explainer-illustration-youtube-16x9` ist für V4 veraltet.
+Bei Wechsel auf Visual Policy V5 eine frische Flow-Sitzung verwenden. Sitzungen mit V3-Premium-Editorial oder V4-Prompts gelten für neue V5-Projekte als veraltet.
 
 ## Prompt-Pflichtmarker
 
-Jeder neue Masterprompt beginnt mit:
+Jeder neue Schema-10+-Masterprompt beginnt mit:
 
 ```text
-YOUTUBE_VISUAL_POLICY_VERSION: 4
+YOUTUBE_VISUAL_POLICY_VERSION: 5
+DESIGN_QUALITY_VERSION: 1
+ADAPTIVE_PACING_VERSION: 3
 COVER_POLICY_VERSION: 1
 ASSET_GENERATION_POLICY_VERSION: 1
 ACTIVE_STYLE_ID: serious-minimal-countryball-explainer-youtube-16x9
 ```
 
-Fester Style-Prefix:
+## Fester Premium-Style-Prefix
 
 ```text
-Serious Minimal Countryball Explainer visual world, exactly matching the active Reel visual DNA, adapted only to a 16:9 horizontal YouTube canvas: clean serious minimal 2D countryball explainer, perfectly round ball characters when an actor is useful, simple white eyes, thick clean black outlines, flat controlled colors, minimal soft graphic shading, low-to-medium controlled detail, one dominant focal subject, zero to three meaningful supporting props, simple solid or muted background with optional subtle texture or gradient, strong symbolic storytelling, adult and informative, not childish, no normal illustrated humans, no humanoid cartoon people, no stick figures, no photorealism, no realistic full scenes, no glossy 3D, no Pixar, no clay, no anime, no busy icon collage. For German projects every readable visible word must be German; no English labels and no pseudo-text. Generate this image independently from text only; do not use any previous generated image as a visual reference.
+Serious Minimal Countryball Explainer visual world, exactly matching the Reel visual DNA and adapted only to a 16:9 YouTube canvas. Premium art direction inside the same flat 2D Countryball world: perfectly round ball actors when useful, simple white eyes, thick clean black outlines, controlled flat colors, restrained soft graphic shading, strong focal hierarchy, deliberate visual balance, intentional negative space, clear foreground/midground/background layering when useful, one dominant idea, meaningful scale contrast, purposeful overlaps, clean routes/borders/arrows, refined simplified maps, high-contrast German typography when requested, and one coherent palette with controlled accent colors. The result should feel polished, editorially composed and premium without becoming realistic, painterly, 3D or human-based. No normal illustrated humans, no humanoid cartoon people, no stick figures, no photorealism, no glossy 3D, no Pixar, no clay, no anime, no busy icon collage. Every visible readable word in German projects must be German. Generate independently from text only; never use a previous generated image as visual reference.
 ```
 
 ## Qualitätsprüfung
 
 1. Entspricht das Bild eindeutig der Serious-Minimal-Countryball-Welt?
-2. Sind Akteure perfekt rund statt humanoid?
-3. Fehlen normale Menschen, Stickfiguren und realistische Vollszenen?
-4. Erklärt das Bild den vorgesehenen Gedanken schnell?
-5. Ist es minimal, aber nicht leer oder leblos?
-6. Sind nur sinnvolle Zusatzobjekte vorhanden?
-7. Ist sichtbarer Text ausschließlich Deutsch?
-8. Wurde kein vorheriges Bild als Referenz verwendet?
-9. Ist Bild 01 zugleich Cover + erste Szene?
-10. Liegen am Ende nur die finalen `Bild NN.png` im einen Bilderordner?
+2. Wirkt die Komposition bewusst gestaltet statt zufällig zusammengestellt?
+3. Gibt es eine klare Größen- und Blickhierarchie?
+4. Ist die Farbpalette kontrolliert und hochwertig?
+5. Ist die negative Fläche ausgewogen statt leer?
+6. Erzählt das Bild eine Beziehung/Handlung statt nur Symbole aufzulisten?
+7. Sind Karten, Grenzen, Pfeile und Routen sauber lesbar?
+8. Ist Typografie sauber integriert, falls Text vorgesehen ist?
+9. Fehlen normale Menschen, Stickfiguren, Realismus und 3D?
+10. Wurde kein vorheriges Bild als Referenz verwendet?
+11. Ist Bild 01 zugleich Cover + erste Szene?
+12. Liegen am Ende nur die finalen `Bild NN.png` im einen Bilderordner?

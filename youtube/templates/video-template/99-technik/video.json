@@ -1,10 +1,12 @@
 {
-  "schemaVersion": 9,
-  "productionRulesVersion": 2,
-  "visualPolicyVersion": 4,
+  "schemaVersion": 10,
+  "productionRulesVersion": 3,
+  "visualPolicyVersion": 5,
+  "designQualityVersion": 1,
+  "adaptivePacingVersion": 3,
   "coverPolicyVersion": 1,
   "assetGenerationPolicyVersion": 1,
-  "complexityPacingVersion": 1,
+  "complexityPacingVersion": 2,
   "videoId": "YYYY-KWNN_topic-slug",
   "weekFolder": "YYYY-KWNN_DD-MM_bis_DD-MM",
   "topicSlug": "topic-slug",
@@ -18,7 +20,7 @@
   "format": "youtube-longform",
   "visualStyleId": "serious-minimal-countryball-explainer-youtube-16x9",
   "sourceVisualWorldId": "serious-minimal-countryball-explainer",
-  "visualStyleReason": "YouTube verwendet wieder dieselbe Serious-Minimal-Countryball-Bild-DNA wie die Reels, nur in 16:9. Jedes Bild wird weiterhin unabhängig aus Text erzeugt; kein vorheriges Bild dient als Referenz.",
+  "visualStyleReason": "YouTube nutzt dieselbe Serious-Minimal-Countryball-Bildwelt wie die Reels in 16:9. V5 erhöht ausschließlich Art Direction, Komposition, Palette, Typografie, Kartenqualität und visuelle Dichte; die Bildwelt selbst bleibt unverändert.",
   "aspectRatio": "16:9",
   "coverPolicy": {
     "firstSceneIsCover": true,
@@ -82,7 +84,14 @@
     "seriousMinimalCountryballWorldRequired": true,
     "perfectlyRoundCountryballActorsRequired": true,
     "normalIllustratedHumansForbidden": true,
-    "childishCartoonLookForbidden": true
+    "childishCartoonLookForbidden": true,
+    "premiumCompositionRequired": true,
+    "intentionalPaletteRequired": true,
+    "typographyHierarchyRequiredWhenTextPresent": true,
+    "balancedNegativeSpaceRequired": true,
+    "mapLegibilityRequired": true,
+    "visualRelationshipOverIconListingRequired": true,
+    "premiumDoesNotAuthorizeStyleChange": true
   },
   "visibleTextPolicy": {
     "projectLanguageOnly": true,
@@ -94,36 +103,53 @@
   "targetDurationSeconds": null,
   "targetDurationRangeSeconds": null,
   "plannedImageCount": null,
-  "imageCountMethod": "content-and-complexity-derived",
+  "imageCountMethod": "adaptive-density-v3-content-derived",
+  "imageDensityPolicy": {
+    "contentDrivenImageCountRequired": true,
+    "fixedImageCountForbidden": true,
+    "splitOnNewVisualIdeaRequired": true,
+    "splitOnEraLocationPerspectiveChangeRequired": true,
+    "splitCauseEffectWhenDense": true,
+    "allowMoreImagesWhenNarrativelyUseful": true,
+    "doNotAddFillerImages": true,
+    "targetAverageHoldSeconds": [4.5, 7.5],
+    "softReviewAboveSeconds": 9,
+    "strongSplitReviewAboveSeconds": 11,
+    "globalHardMaximumSeconds": 16,
+    "minimumUsefulHoldSeconds": 2.5
+  },
   "complexityTargetsSeconds": {
-    "A": [4, 5],
-    "B": [5, 7],
-    "C": [7, 9],
-    "D": [9, 12],
-    "E": [12, 15]
+    "A": [3, 4.5],
+    "B": [4, 6],
+    "C": [5.5, 7.5],
+    "D": [7, 9.5],
+    "E": [8.5, 11]
   },
   "complexityFinalHardMaxSeconds": {
-    "A": 6.5,
-    "B": 8.5,
-    "C": 10.5,
-    "D": 13.5,
-    "E": 16
+    "A": 5.5,
+    "B": 7,
+    "C": 8.5,
+    "D": 10.5,
+    "E": 12
   },
   "complexityFinalShortReviewSeconds": {
-    "A": 3,
-    "B": 4,
-    "C": 5,
-    "D": 6.5,
-    "E": 8
+    "A": 2.5,
+    "B": 3,
+    "C": 4,
+    "D": 5,
+    "E": 6
   },
   "adaptivePacing": {
-    "hardMaximumExclusiveSeconds": 20,
-    "reviewFromSeconds": 14,
-    "strongSplitReviewFromSeconds": 16,
-    "reviewIfShorterThanSeconds": 4,
+    "hardMaximumExclusiveSeconds": 16,
+    "reviewFromSeconds": 9,
+    "strongSplitReviewFromSeconds": 11,
+    "reviewIfShorterThanSeconds": 2.5,
+    "targetAverageHoldSeconds": [4.5, 7.5],
     "oneImageOneVisualPurpose": true,
     "imageCountMustFollowContentDensity": true,
-    "uniformHoldDistributionForbidden": true
+    "uniformHoldDistributionForbidden": true,
+    "moreImagesAllowedWhenNarrativelyUseful": true,
+    "fillerImagesForbidden": true
   },
   "userFacingStructure": {
     "googleFlowPrompt": "00-bildprompts/google-flow-prompt.txt",
