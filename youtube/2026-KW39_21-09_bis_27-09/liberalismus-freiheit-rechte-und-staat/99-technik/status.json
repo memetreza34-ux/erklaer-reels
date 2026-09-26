@@ -5,6 +5,7 @@
     "status": "COMPLETE",
     "topicEditor": "APPROVED_NEW",
     "scriptOpeningPolicyVersion": 1,
+    "sceneIllustrationPolicyVersion": 2,
     "researchComplete": true,
     "scriptComplete": true,
     "imagePlanComplete": true,
@@ -24,7 +25,10 @@
     "maxConcurrentGenerations": 5,
     "finalImageDirectory": "00-bildprompts/images",
     "imagesReady": false,
-    "audioReady": false
+    "audioReady": false,
+    "freshFlowSessionRequired": true,
+    "previousPromptImagesAccepted": false,
+    "requiredVisualRevision": "scene-illustration-v2"
   },
   "phase3": {
     "status": "BLOCKED-WAITING-PHASE2",
