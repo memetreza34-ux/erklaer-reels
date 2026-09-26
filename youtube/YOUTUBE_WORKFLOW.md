@@ -1,12 +1,14 @@
 # YOUTUBE WORKFLOW — VERBINDLICHE REGEL FÜR LANGVIDEOS
 
-**Stand: 2026-09-25**  
-**Visual Policy Version: 4**  
+**Stand: 2026-09-26**  
+**Visual Policy Version: 5**  
+**Design Quality Version: 1**  
+**Adaptive Pacing Version: 3**  
 **Cover Policy Version: 1**  
 **Topic Editor Version: 1**  
 **Asset Generation Policy Version: 1**
 
-Diese Datei gilt ausschließlich für YouTube-Langvideos.
+Diese Datei gilt ausschließlich für YouTube-Langvideos. Reels bleiben davon getrennt und werden nicht verändert.
 
 ## Priorität
 
@@ -15,8 +17,8 @@ Diese Datei gilt ausschließlich für YouTube-Langvideos.
 3. `config/youtube-channel-policy.json`
 4. `config/youtube-topic-registry.json`
 5. `youtube/YOUTUBE_VISUAL_WORLD.md`
-6. `youtube/PHASE3_HARD_GATE.md`
-7. `youtube/ADAPTIVE_PACING_V2.md`
+6. `youtube/ADAPTIVE_PACING_V3.md`
+7. `youtube/PHASE3_HARD_GATE.md`
 8. `THEMEN_HISTORIE.md`
 
 ## Kanalfokus — HARD LOCK
@@ -25,69 +27,69 @@ Autonom gewählte YouTube-Themen bleiben in Politik/Staatssystemen, Geschichte, 
 
 ## SCHRITT 0 — THEMEN-EDITOR HARD LOCK
 
-**Bevor ein neuer YouTube-Projektordner, Skript oder Flow-Prompt erstellt wird**, muss der Kandidat durch den technischen Themen-Editor:
+Vor neuem Projektordner, Skript oder Flow-Prompt:
 
 ```bash
 npm run topic:youtube -- --topic "NEUES THEMA"
 ```
 
-Der Editor prüft:
-1. `THEMEN_HISTORIE.md`
-2. `config/youtube-topic-registry.json`
-3. alle vorhandenen `youtube/**/99-technik/video.json`
-
-Entscheidungen:
-- `APPROVED_NEW` / `THEMEN-EDITOR: FREI` → produzieren erlaubt
-- `REVIEW_SIMILAR` / `THEMEN-EDITOR: ÄHNLICH` → STOP
-- `BLOCKED_DUPLICATE` / `THEMEN-EDITOR: DOPPELT` → STOP
-
-Auch dieselbe Kernfrage in anderer Form wird blockiert.
-
-**Reihenfolge:**
-`Thema vorschlagen → Themen-Editor → nur bei FREI reservieren → erst dann Recherche/Skript/Bilder planen.`
+Nur `APPROVED_NEW / THEMEN-EDITOR: FREI` erlaubt die Produktion. `REVIEW_SIMILAR` und `BLOCKED_DUPLICATE` stoppen das Thema.
 
 ## VERBINDLICHE YOUTUBE-BILDWELT — HARD LOCK
 
-Neue YouTube-Videos verwenden wieder die ursprüngliche Serious-Minimal-Countryball-DNA:
+Neue Schema-10+-Videos verwenden:
 
 ```text
 serious-minimal-countryball-explainer-youtube-16x9
 ```
 
 Quelle:
+
 ```text
 serious-minimal-countryball-explainer
 ```
 
-YouTube ist nur auf **16:9 horizontal** angepasst. Die künstlerische DNA bleibt dieselbe wie bei den Reels.
+Die **Bildwelt bleibt dieselbe wie bei den Reels**; nur das Format ist 16:9. V5 ist kein Stilwechsel, sondern ein Qualitätsupgrade innerhalb dieser Welt.
 
-Verbindlich:
-- cleane, seriöse, minimalistische 2D-Countryball-Erklärwelt
-- perfekt runde Countryball-Akteure, wenn Akteure gebraucht werden
+Unverändert:
+- cleane, seriöse 2D-Countryball-Erklärwelt
+- perfekt runde Countryballs, wenn Akteure gebraucht werden
 - einfache weiße Augen
 - kräftige schwarze Konturen
 - flache kontrollierte Farben
-- geringe bis mittlere Detaildichte
-- starke Symbolik statt realistischer Vollszenen
-- normalerweise 0–3 sinnvolle Zusatzobjekte
-- keine normalen illustrierten Menschen
-- keine humanoiden Cartoon-Personen
+- keine normalen Menschen
 - keine Stickfiguren
 - kein Fotorealismus
 - kein 3D/Pixar/Clay/Anime
 - nicht kindisch, nicht albern
 
-Die Premium-Editorial-Bildwelt aus Visual Policy V3 ist für neue Schema-9+-Produktionen nicht mehr aktiv.
+## PREMIUM COUNTRYBALL DESIGN V1 — HARD LOCK
+
+Neue Bilder müssen hochwertiger art-direktiert sein, ohne die Bildwelt zu verlassen.
+
+Pflicht:
+- klare Größen- und Blickhierarchie
+- ein dominantes Hauptmotiv
+- bewusste, ausgewogene negative Fläche
+- hochwertige kontrollierte Palette statt zufälliger Buntheit
+- normalerweise 1 dominante Grundfarbe + 1–2 Akzentfarben
+- sinnvolle Überlagerung und Layering
+- einfache Vordergrund-/Mittelgrund-/Hintergrund-Ebenen, wenn hilfreich
+- Text als Teil der Komposition, nicht bloß als Label
+- Karten mit klaren Grenzen, Routen und Prioritäten
+- Beziehungen zeigen: vorher/nachher, Ursache/Folge, Trennung, Bewegung, Vergleich
+- keine generische Icon-Liste als Ersatz für eine Szene
+
+**Premium ≠ realistisch. Premium ≠ neue Bildwelt.**
 
 ## FIRST SCENE = COVER HARD LOCK
 
-- **Bild 01 ist Cover UND erste Videoszene.**
-- Start bei **0,0 s**.
-- starke kurze deutsche Cover-Überschrift.
-- Bild 01 passt gleichzeitig zur ersten gesprochenen Aussage.
-- `03-export/THUMBNAIL.png` = Kopie von `Bild 01.png`.
-- kein Bild 00.
-- kein separates Thumbnail.
+- Bild 01 = Cover UND erste Videoszene
+- Start bei 0,0 s
+- starke kurze deutsche Cover-Überschrift
+- `03-export/THUMBNAIL.png` = Kopie von `Bild 01.png`
+- kein Bild 00
+- kein separates Thumbnail
 
 ## Sichtbare Struktur
 
@@ -96,30 +98,24 @@ youtube/YYYY-KWNN_DD-MM_bis_DD-MM/themen-slug/
 ├── 00-bildprompts/
 │   ├── google-flow-prompt.txt
 │   └── images/Bild 01.png ... Bild NN.png
-├── 01-voice-script/
-│   └── voice-script.txt
-├── 02-audio/
-│   └── voiceover-final.*
+├── 01-voice-script/voice-script.txt
+├── 02-audio/voiceover-final.*
 ├── 03-export/
 └── 99-technik/
 ```
 
-Es gibt genau eine finale Voice-over-Datei.
-
 ## Phase 1 — ChatGPT
 
-Nach bestandenem Themen-Editor erstellt Phase 1:
+Nach Themenfreigabe erstellt Phase 1:
 - Recherche
 - Titel
 - Gesamtskript
-- einen Google-Flow-Masterprompt
+- Google-Flow-Masterprompt
 - Bild↔Audio-Mapping
-- A–E-Pacing
+- adaptive Bildplanung nach V3
 - Renderplan
 - Kapitel
 - Upload-Metadaten
-
-Bild 01 wird von Anfang an als Cover + erste Szene geplant.
 
 Vor Flow:
 
@@ -127,44 +123,65 @@ Vor Flow:
 npm run validate:youtube-phase1 -- --dir "youtube/<woche>/<thema>"
 ```
 
-Für neue Schema-9+-Projekte prüft das Gate zusätzlich:
-- Visual Policy V4
+Für neue Schema-10+-Projekte prüft das Gate:
+- Visual Policy V5
+- Design Quality V1
+- Adaptive Pacing V3
 - Serious-Minimal-Countryball-Style-ID
 - Cover Policy V1
 - Asset Generation Policy V1
 - Themen-Editor
 - kein Bild 00
-- kein Referenzbild
-- keine Premium-Editorial-V3-Pflicht
+- keine Bild-zu-Bild-Referenz
+- Premium-Design ohne Stilwechsel
 
-## Bildplanung
+## ADAPTIVE IMAGE DENSITY V3 — HARD LOCK
 
-```text
-A = sehr einfach → 4–5 s geplant
-B = einfach      → 5–7 s
-C = mittel       → 7–9 s
-D = komplex      → 9–12 s
-E = sehr komplex → 12–15 s
-```
+Es gibt **keine feste Bildzahl**.
+
+**1 Bild = 1 klare visuelle Kernaussage.**
+
+Ein zusätzliches Bild wird geplant, wenn mindestens eines zutrifft:
+- neuer Kerngedanke
+- Ursache → Folge
+- Vorher → Nachher
+- Orts-/Epochen-/Perspektivwechsel
+- neuer Akteur
+- eigenständiger Grenz-/Karten-/Routenschritt
+- eigenständige Zahl/Datenidee
+- Wechsel von Erklärung zu Beispiel
+- ein einfacher Bildmoment würde zu lange gehalten
+
+Ziel:
+- durchschnittlich ca. **4,5–7,5 s pro Bild**
+- ab 9 s Split prüfen
+- ab 11 s Split stark bevorzugen
+- 16 s globaler Hard-Max
+- unter 2,5 s nur bei bewusstem Reveal/Übergang
+
+Komplexe Passage lieber in **mehrere hochwertige Bilder** teilen, statt ein Bild mit zu vielen Symbolen zu überladen.
+
+Verboten:
+- starre Zielzahl wie 20/24 Bilder
+- Füllbilder ohne neue Aussage
+- dasselbe Motiv nur leicht verschoben als neuer Bildmoment
+- redundante Karten ohne neuen Informationsschritt
+
+Details: `youtube/ADAPTIVE_PACING_V3.md`.
 
 ## Phase 2 — Nutzer + Google Flow
 
 ### SESSION RESET HARD LOCK
 
-Durch die Rückkehr zur alten Bildwelt ist für neue/aktuelle Generierungen eine **frische Flow-Sitzung** Pflicht.
-
-Wenn eine Sitzung noch `premium-editorial-explainer-illustration-youtube-16x9` als aktive Bildwelt nennt:
-
-**STOP → frische Sitzung → aktuellen Masterprompt neu einfügen.**
+Für V5 neue Flow-Sitzung verwenden. V3-/V4-Sitzungen gelten für neue Schema-10+-Projekte als veraltet.
 
 ### COVER = 3 CANDIDATES HARD LOCK
 
 Nur Bild 01 bekommt mehrere Versuche:
-1. Bild 01 exakt 3× generieren.
-2. drei Cover vergleichen.
-3. genau einen Gewinner auswählen.
-4. Gewinner einmal final zu `Bild 01.png` umbenennen.
-5. andere zwei verwerfen.
+1. exakt 3× generieren
+2. genau einen Gewinner auswählen
+3. Gewinner einmal zu `Bild 01.png` benennen
+4. andere zwei verwerfen
 
 ### NON-COVER = SINGLE GENERATION HARD LOCK
 
@@ -172,24 +189,18 @@ Bild 02 bis Bild NN:
 - jedes Bild genau 1× generieren
 - keine zweite Variante
 - keine manuellen Prüfstopps nach 5er-Wellen
-- kein Stop zwischen 02–05, 06–10 usw.
 - jedes fertige Bild genau einmal final benennen
-
-Maximal fünf aktive Generierungen gleichzeitig. Das ist nur Parallelitätslogik.
+- maximal 5 aktive Generierungen gleichzeitig
 
 ### FINAL IMAGE FOLDER HARD LOCK
 
-Am Ende:
+Am Ende nur:
 
 ```text
-00-bildprompts/images/
-├── Bild 01.png
-├── Bild 02.png
-├── Bild 03.png
-└── ... bis Bild NN.png
+00-bildprompts/images/Bild 01.png ... Bild NN.png
 ```
 
-Dort nur finale Bilder, keine Unterordner, keine Cover-A/B/C-Versionen, keine Extras, kein Bild 00.
+Keine Unterordner, keine Cover-A/B/C-Versionen, keine Extras, kein Bild 00.
 
 Prüfung:
 
@@ -199,35 +210,11 @@ npm run validate:youtube-phase2 -- --dir "youtube/<woche>/<thema>"
 
 ### HARD LOCK: kein Referenzbild
 
-Die alte **Bildwelt** ist zurück, aber die alte problematische Master-Reference-Regel bleibt abgeschafft:
 - kein erzeugtes Bild als Vorlage für spätere Bilder
 - Bild 01 ist kein Master-Style-Frame
-- kein vorheriges Bild an Flow anhängen
-- Konsistenz kommt aus dem geschriebenen Style-Lock
+- Konsistenz kommt aus vollständigem geschriebenem Style-Lock
 
-### HARD LOCK: Serious Minimal Countryball
-
-Aktive Style-ID:
-
-```text
-serious-minimal-countryball-explainer-youtube-16x9
-```
-
-Historische, politische und geografische Inhalte werden in dieselbe reduzierte 2D-Formsprache übersetzt. Keine realistischen Konferenzräume, Menschenmengen, cineastischen Kriegsszenen oder detailreichen Gemälde als Standard.
-
-Wenn ein Countryball-Akteur gebraucht wird: perfekt rund, einfache weiße Augen, kräftige schwarze Kontur, kontrollierte Mimik. Wenn Karte/Objekt/Symbol besser erklärt, darf das Bild auch ohne Countryball funktionieren.
-
-### ANTI-LIFELESS HARD LOCK
-
-Minimal bleibt minimal, aber nicht leblos:
-- kein winziges Motiv verloren auf riesiger Leerfläche
-- keine sinnlose Icon-Collage
-- keine mechanisch identische Anordnung in jedem Bild
-- unterschiedliche sinnvolle Positionierung, Größenverhältnisse, Pfeile, Wege und Symbole
-
-**Clean ≠ leer. Minimal ≠ leblos.**
-
-### Sichtbarer Text — Deutsch-Hard-Lock
+### Sichtbarer Text
 
 Bei deutschen Projekten muss jeder sichtbare lesbare Text Deutsch sein. Englisch/Pseudo-Schrift = Hard Fail in der Promptplanung.
 
@@ -237,10 +224,10 @@ Bei deutschen Projekten muss jeder sichtbare lesbare Text Deutsch sein. Englisch
 - kurze natürliche Pausen erhalten
 - Anfangsstille straffen
 - Endstille entfernen
-- Voice-over exakt **1,10x**
+- Voice-over exakt 1,10x
 - Tonhöhe erhalten
-- **−16 LUFS**
-- True Peak max. **−1,5 dBTP**
+- −16 LUFS
+- True Peak max. −1,5 dBTP
 - 48 kHz
 - Nutzeroriginal nie verändern
 
@@ -253,15 +240,15 @@ npm run phase3:youtube -- --dir "youtube/<woche>/<thema>"
 ```
 
 Reihenfolge:
-1. Phase-1-Gate inkl. Themen-, Visual-, Cover- und Asset-Policy
+1. Phase-1-Gate
 2. Phase-2-Asset-Gate
 3. finale Bilder + genau eine Nutzerstimme bestimmen
-4. Audio intern optimieren
-5. Whisper-Wortzeiten messen
-6. Bildanker bestimmen
+4. Audio optimieren
+5. Whisper-Wortzeiten
+6. Bildanker
 7. Audio-Hard-Gate
 8. `FINAL_TIMELINE.json`, Bild 01 bei 0,0 s
-9. A–E-Pacing
+9. Adaptive Pacing V3 prüfen
 10. Pre-Render-Hard-Gate
 11. Motion + SFX
 12. Export; `THUMBNAIL.png = Bild 01.png`
@@ -271,16 +258,19 @@ Reihenfolge:
 
 - neues Projekt vor Themenfreigabe
 - Duplikat nur umformulieren
-- Premium-Editorial-V3 als Bildwelt für neue Schema-9+-Projekte
-- normales Mensch-/Stickman-Design statt Countryball-DNA
+- Stilwechsel unter dem Wort „Premium“
+- realistische Editorial-/Menschenwelt statt Countryball-DNA
+- normales Mensch-/Stickman-Design
 - separates Bild 00
 - Cover ≠ erste Szene
 - weniger/mehr als 3 Cover-Kandidaten
-- mehrere finale Cover behalten
 - Bild 02..NN mehrfach generieren
 - Prüfstopps nach 5er-Wellen
 - Varianten/Extras im finalen Bilderordner
 - Bild-zu-Bild-Referenzen
+- starre Bildanzahl unabhängig vom Inhalt
+- lange einfache Holds nur um weniger Bilder zu erzeugen
+- überladene Einzelbilder statt sinnvoller Splits
 - Wortzeiten am unoptimierten Audio
 - andere Geschwindigkeit als 1,10x
 - Nutzeroriginal überschreiben
@@ -296,18 +286,22 @@ Reihenfolge:
 03-export/YOUTUBE-TAGS.txt
 ```
 
-## Definition of Done
+## Definition of Done für neue Schema-10+-Projekte
 
 Fertig erst wenn:
 - Themen-Editor `APPROVED_NEW`
-- Visual Policy V4 aktiv
-- `serious-minimal-countryball-explainer-youtube-16x9` aktiv
+- Visual Policy V5
+- Design Quality V1
+- Adaptive Pacing V3
+- gleiche Serious-Minimal-Countryball-DNA wie Reels
+- Premium-Komposition innerhalb dieser Welt
+- Bildzahl inhaltsgetrieben
+- komplexe Passagen sinnvoll gesplittet
 - Bild 01 = Cover + erste Szene
 - Cover 3× → 1 Gewinner
 - Bild 02..NN je 1×
-- alle finalen Bilder in genau einem flachen Ordner
+- alle finalen Bilder in einem flachen Ordner
 - kein Bild 00
 - keine Referenzbilder
-- Serious-Minimal-Countryball-DNA eingehalten
 - Audio 1,10x / −16 LUFS / max. −1,5 dBTP
 - Pre-/Post-Render-Gates bestanden
