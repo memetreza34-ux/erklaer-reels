@@ -27,7 +27,6 @@ async function main() {
   const policy = await readJson(path.join(repoRoot, 'config/youtube-channel-policy.json'));
   const meta = await readJson(path.join(projectDir, '99-technik/video.json'));
   const prompt = await readFile(path.join(projectDir, '00-bildprompts/google-flow-prompt.txt'), 'utf8');
-  const script = await readFile(path.join(projectDir, '01-voice-script/voice-script.txt'), 'utf8');
   const errors = [];
   const schema = Number(meta.schemaVersion) || 0;
   const usesCountryball = schema >= 9;
@@ -67,8 +66,16 @@ async function main() {
       errors.push(`scriptOpeningPolicyVersion ist ${meta.scriptOpeningPolicyVersion ?? 'fehlend'}, erwartet ${policy.scriptOpeningPolicyVersion}.`);
     }
     if (meta.explicitScriptOpeningOverride !== true) {
-      const openingResult = validateYoutubeScriptOpening(script, policy.scriptOpeningPolicy);
-      for (const error of openingResult.errors) errors.push(`Script Opening V${policy.scriptOpeningPolicyVersion}: ${error}`);
+      let script = '';
+      try {
+        script = await readFile(path.join(projectDir, '01-voice-script/voice-script.txt'), 'utf8');
+      } catch {
+        errors.push('Script Opening V1: 01-voice-script/voice-script.txt fehlt.');
+      }
+      if (script) {
+        const openingResult = validateYoutubeScriptOpening(script, policy.scriptOpeningPolicy);
+        for (const error of openingResult.errors) errors.push(`Script Opening V${policy.scriptOpeningPolicyVersion}: ${error}`);
+      }
     }
   }
 
