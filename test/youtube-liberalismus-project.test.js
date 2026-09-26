@@ -26,6 +26,7 @@ test('Liberalismus-Projekt nutzt Schema 11, Script Opening V1 und Premium Countr
   assert.equal(meta.schemaVersion, 11);
   assert.equal(meta.visualPolicyVersion, 5);
   assert.equal(meta.scriptOpeningPolicyVersion, 1);
+  assert.equal(meta.sceneIllustrationPolicyVersion, 2);
   assert.equal(meta.explicitScriptOpeningOverride, false);
   assert.equal(meta.visualStyleId, 'serious-minimal-countryball-explainer-youtube-16x9');
   assert.equal(meta.sourceVisualWorldId, 'serious-minimal-countryball-explainer');
@@ -33,6 +34,7 @@ test('Liberalismus-Projekt nutzt Schema 11, Script Opening V1 und Premium Countr
   assert.equal(meta.plannedImageCount, 32);
   assert.match(script, /^Was ist Liberalismus\? Denkst du dir gerade vielleicht\. Kurz gesagt:/);
   assert.match(prompt, /SCRIPT_OPENING_POLICY_VERSION: 1/);
+  assert.match(prompt, /SCENE_ILLUSTRATION_POLICY_VERSION: 2/);
   assert.match(prompt, /Bild 32/);
   assert.doesNotMatch(prompt, /Bild 33/);
 });
@@ -79,6 +81,31 @@ test('Liberalismus-Prompt verbietet Menschen und erzwingt die Asset-Regeln', asy
   assert.match(prompt, /NO human hands/i);
   assert.match(prompt, /Generate Bild 01 exactly THREE times/i);
   assert.match(prompt, /Bild 02 through Bild 32 are each generated exactly ONCE/i);
+});
+
+test('Liberalismus nutzt konkrete Illustrationsszenen statt abstrakter Posterwelt', async () => {
+  const [meta, prompt, status, qc] = await Promise.all([
+    readJson(`${PROJECT}/99-technik/video.json`),
+    readFile(`${PROJECT}/00-bildprompts/google-flow-prompt.txt`, 'utf8'),
+    readJson(`${PROJECT}/99-technik/status.json`),
+    readFile(`${PROJECT}/99-technik/PHASE1_QC.md`, 'utf8')
+  ]);
+
+  assert.equal(meta.visualQualityPolicy.concreteIllustratedScenePreferred, true);
+  assert.equal(meta.visualQualityPolicy.abstractPosterBoardsForbiddenByDefault, true);
+  assert.equal(meta.visualQualityPolicy.multiPanelInfographicLayoutsForbiddenByDefault, true);
+  assert.equal(meta.visualQualityPolicy.sceneBasedPaletteVariationRequired, true);
+  assert.equal(meta.visualQualityPolicy.beigeNavyMonotonyForbidden, true);
+  assert.equal(status.phase2.previousPromptImagesAccepted, false);
+  assert.equal(status.phase2.requiredVisualRevision, 'scene-illustration-v2');
+
+  assert.match(prompt, /SERIES OF CLEAR ILLUSTRATED SCENES, NOT LIKE ABSTRACT INFOGRAPHIC POSTERS/i);
+  assert.match(prompt, /NO infographic dashboard/i);
+  assert.match(prompt, /do not repeat beige\/navy/i);
+  assert.match(prompt, /market street/i);
+  assert.match(prompt, /courthouse plaza/i);
+  assert.match(prompt, /school/i);
+  assert.match(qc, /konkrete illustrierte Szenen statt abstrakter Poster-\/Infografik-Tafeln/i);
 });
 
 test('Liberalismus-Projekt besteht das echte Phase-1-Policy-Gate', () => {
