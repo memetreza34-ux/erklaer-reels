@@ -242,7 +242,7 @@ Ziel:
 
 ## Phase 2 — Nutzer + Google Flow
 
-### COVER = 3 CANDIDATES
+### COVER = 3 CANDIDATES HARD LOCK
 
 Nur Bild 01:
 1. exakt 3× generieren
@@ -250,7 +250,7 @@ Nur Bild 01:
 3. Gewinner zu `Bild 01.png`
 4. andere zwei verwerfen
 
-### NON-COVER = SINGLE GENERATION
+### NON-COVER = SINGLE GENERATION HARD LOCK
 
 Bild 02 bis Bild NN:
 - jedes Bild exakt 1×
@@ -259,7 +259,7 @@ Bild 02 bis Bild NN:
 - maximal 5 aktive Generierungen gleichzeitig
 - jedes Bild genau einmal final benennen
 
-### FINAL IMAGE FOLDER
+### FINAL IMAGE FOLDER HARD LOCK
 
 Nur:
 
@@ -275,7 +275,7 @@ Bei deutschen Projekten muss jeder sichtbare lesbare Text Deutsch sein. Englisch
 
 ## YouTube-Audio-Pacing
 
-- überlange Pausen kürzen
+- **überlange Sprechpausen automatisch kürzen**
 - natürliche kurze Pausen erhalten
 - Endstille entfernen
 - Voice-over 1,10x, Tonhöhe erhalten
