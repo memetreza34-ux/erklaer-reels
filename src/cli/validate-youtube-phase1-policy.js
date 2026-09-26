@@ -3,6 +3,7 @@
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { checkYoutubeTopic } from '../core/youtube-topic-editor.js';
+import { validateYoutubeScriptOpening } from '../core/youtube-script-opening.js';
 
 function arg(name) {
   const index = process.argv.indexOf(name);
@@ -30,8 +31,10 @@ async function main() {
   const schema = Number(meta.schemaVersion) || 0;
   const usesCountryball = schema >= 9;
   const usesPremiumCountryballV5 = schema >= 10;
+  const usesScriptOpeningV1 = schema >= 11;
 
-  // Schema 10+ follows the current central V5 policy. Schema 9 remains reproducible
+  // Schema 10+ follows the current central V5 visual policy. Schema 11+ additionally
+  // locks the direct viewer-question script opening. Schema 9 remains reproducible
   // as the prior Countryball V4 generation instead of being retroactively rewritten.
   if (usesPremiumCountryballV5) {
     if (meta.visualPolicyVersion !== policy.visualPolicyVersion) {
@@ -56,6 +59,24 @@ async function main() {
   } else {
     if (!Number.isFinite(Number(meta.visualPolicyVersion))) errors.push('Legacy-Projekt: visualPolicyVersion fehlt.');
     if (!String(meta.visualStyleId ?? '').trim()) errors.push('Legacy-Projekt: visualStyleId fehlt.');
+  }
+
+  if (usesScriptOpeningV1) {
+    if (meta.scriptOpeningPolicyVersion !== policy.scriptOpeningPolicyVersion) {
+      errors.push(`scriptOpeningPolicyVersion ist ${meta.scriptOpeningPolicyVersion ?? 'fehlend'}, erwartet ${policy.scriptOpeningPolicyVersion}.`);
+    }
+    if (meta.explicitScriptOpeningOverride !== true) {
+      let script = '';
+      try {
+        script = await readFile(path.join(projectDir, '01-voice-script/voice-script.txt'), 'utf8');
+      } catch {
+        errors.push('Script Opening V1: 01-voice-script/voice-script.txt fehlt.');
+      }
+      if (script) {
+        const openingResult = validateYoutubeScriptOpening(script, policy.scriptOpeningPolicy);
+        for (const error of openingResult.errors) errors.push(`Script Opening V${policy.scriptOpeningPolicyVersion}: ${error}`);
+      }
+    }
   }
 
   const allowedTopics = new Set(policy.channelFocus.primaryTopics);
@@ -241,12 +262,13 @@ async function main() {
 
   const topicText = schema >= 8 ? ', Themen-Editor FREI' : '';
   const assetText = schema >= 9 ? `, Asset Generation Policy V${policy.assetGenerationPolicyVersion}` : '';
+  const openingText = usesScriptOpeningV1 ? `, Script Opening V${policy.scriptOpeningPolicyVersion}` : '';
   const visualLabel = usesPremiumCountryballV5
     ? `Premium Serious-Minimal-Countryball V${policy.visualPolicyVersion}, Design V${policy.designQualityVersion}, Pacing V${policy.adaptivePacingVersion}`
     : schema === 9
       ? 'Serious-Minimal-Countryball V4 (Legacy Schema 9)'
       : `Legacy Visual Policy V${meta.visualPolicyVersion}`;
-  console.log(`YouTube Phase-1-Policy: BESTANDEN — ${visualLabel}, Cover Policy V${policy.coverPolicyVersion}${topicText}${assetText}, Kanalfokus und Session-Schutz sind aktiv.`);
+  console.log(`YouTube Phase-1-Policy: BESTANDEN — ${visualLabel}${openingText}, Cover Policy V${policy.coverPolicyVersion}${topicText}${assetText}, Kanalfokus und Session-Schutz sind aktiv.`);
 }
 
 main().catch((error) => {

@@ -1,9 +1,11 @@
 {
-  "schemaVersion": 10,
+  "schemaVersion": 11,
   "productionRulesVersion": 3,
   "visualPolicyVersion": 5,
   "designQualityVersion": 1,
   "adaptivePacingVersion": 3,
+  "scriptOpeningPolicyVersion": 1,
+  "explicitScriptOpeningOverride": false,
   "coverPolicyVersion": 1,
   "assetGenerationPolicyVersion": 1,
   "complexityPacingVersion": 2,

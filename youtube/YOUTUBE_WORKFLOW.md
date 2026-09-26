@@ -4,6 +4,7 @@
 **Visual Policy Version: 5**  
 **Design Quality Version: 1**  
 **Adaptive Pacing Version: 3**  
+**Script Opening Policy Version: 1**  
 **Cover Policy Version: 1**  
 **Topic Editor Version: 1**  
 **Asset Generation Policy Version: 1**
@@ -34,6 +35,41 @@ npm run topic:youtube -- --topic "NEUES THEMA"
 ```
 
 Nur `APPROVED_NEW / THEMEN-EDITOR: FREI` erlaubt die Produktion. `REVIEW_SIMILAR` und `BLOCKED_DUPLICATE` stoppen das Thema.
+
+## SCRIPT OPENING V1 — HARD LOCK
+
+Alle **neu angelegten Schema-11+-YouTube-Skripte** beginnen **nicht** mit einer abstrakten Definition oder einer allgemeinen Einleitung. Der Zuschauer soll sofort die Frage hören, wegen der er geklickt hat. Bestehende Schema-10-Projekte bleiben reproduzierbar und werden nicht rückwirkend gebrochen.
+
+Verbindliche Reihenfolge, sofern der Nutzer nicht ausdrücklich für genau dieses Video einen anderen Einstieg verlangt:
+
+```text
+[Direkte Videofrage]? Denkst du dir gerade vielleicht.
+Kurz gesagt: [sehr kurze erste Antwort].
+Aber [Leitfrage / Spannung für den Rest des Videos]?
+```
+
+Erlaubt ist statt `Kurz gesagt:` auch `Einfach gesagt:`.
+
+Beispiel:
+
+```text
+Was ist Nationalismus? Denkst du dir gerade vielleicht.
+Kurz gesagt: Nationalismus ist die Idee, dass die eigene Nation eine besonders wichtige Rolle in der Politik spielen soll.
+Aber was bedeutet das genau – und wo liegt der Unterschied zu Patriotismus?
+```
+
+Pflicht:
+- die **erste Aussage ist eine echte Frage** und steht direkt am Anfang
+- vor dem ersten Fragezeichen höchstens ca. 120 Zeichen
+- direkt danach folgt die Zuschaueransprache `Denkst du dir gerade vielleicht.`
+- danach folgt eine sehr kurze erste Antwort mit `Kurz gesagt:` oder `Einfach gesagt:`
+- anschließend folgt eine zweite Frage oder klare Spannungsfrage, die ins Video führt
+- keine Sätze wie `X gehört zu den Begriffen ...`, `Seit Jahrhunderten ...` oder lange Definitionen **vor** der eigentlichen Videofrage
+- kein generisches `In diesem Video erklären wir ...`
+
+Ziel: Der Einstieg soll sich so anfühlen, als beantworte das Video **sofort die Frage im Kopf des Zuschauers**.
+
+Das Phase-1-Gate prüft diese Struktur für Schema 11+ technisch. Ein abweichender Einstieg ist nur zulässig, wenn eine aktuelle ausdrückliche Nutzeranweisung ihn für das konkrete Video verlangt und dies im Projekt als Override dokumentiert wird.
 
 ## VERBINDLICHE YOUTUBE-BILDWELT — HARD LOCK
 
@@ -123,7 +159,10 @@ Vor Flow:
 npm run validate:youtube-phase1 -- --dir "youtube/<woche>/<thema>"
 ```
 
-Für neue Schema-10+-Projekte prüft das Gate:
+Für neue Schema-11+-Projekte prüft das Gate zusätzlich:
+- Script Opening Policy V1
+
+Für Schema-10+-Projekte prüft es weiterhin:
 - Visual Policy V5
 - Design Quality V1
 - Adaptive Pacing V3
@@ -258,6 +297,8 @@ Reihenfolge:
 
 - neues Projekt vor Themenfreigabe
 - Duplikat nur umformulieren
+- bei neuen Schema-11+-Projekten: abstrakter Definitions-Einstieg vor der eigentlichen Videofrage
+- generisches `In diesem Video erklären wir ...`
 - Stilwechsel unter dem Wort „Premium“
 - realistische Editorial-/Menschenwelt statt Countryball-DNA
 - normales Mensch-/Stickman-Design
@@ -286,10 +327,11 @@ Reihenfolge:
 03-export/YOUTUBE-TAGS.txt
 ```
 
-## Definition of Done für neue Schema-10+-Projekte
+## Definition of Done für neu angelegte Schema-11+-Projekte
 
 Fertig erst wenn:
 - Themen-Editor `APPROVED_NEW`
+- Script Opening Policy V1 bestanden
 - Visual Policy V5
 - Design Quality V1
 - Adaptive Pacing V3

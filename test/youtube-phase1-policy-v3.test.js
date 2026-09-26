@@ -32,7 +32,7 @@ test('älteres V3-Projekt bleibt reproduzierbar', () => {
   assert.match(result.stdout, /Legacy Visual Policy V3/i);
 });
 
-test('Template trägt Schema 10, Countryball V5, Premium Design und Pacing V3', async () => {
+test('Template trägt Schema 11, Countryball V5, Premium Design, Pacing V3 und Script Opening V1', async () => {
   const [templateMeta, projectMeta, templatePrompt, policy] = await Promise.all([
     readJson(`${TEMPLATE}/99-technik/video.json`),
     readJson(`${CURRENT_PROJECT}/99-technik/video.json`),
@@ -43,12 +43,15 @@ test('Template trägt Schema 10, Countryball V5, Premium Design und Pacing V3', 
   assert.equal(policy.visualPolicyVersion, 5);
   assert.equal(policy.designQualityVersion, 1);
   assert.equal(policy.adaptivePacingVersion, 3);
+  assert.equal(policy.scriptOpeningPolicyVersion, 1);
   assert.equal(policy.visualStyleId, 'serious-minimal-countryball-explainer-youtube-16x9');
 
-  assert.equal(templateMeta.schemaVersion, 10);
+  assert.equal(templateMeta.schemaVersion, 11);
   assert.equal(templateMeta.visualPolicyVersion, 5);
   assert.equal(templateMeta.designQualityVersion, 1);
   assert.equal(templateMeta.adaptivePacingVersion, 3);
+  assert.equal(templateMeta.scriptOpeningPolicyVersion, 1);
+  assert.equal(templateMeta.explicitScriptOpeningOverride, false);
   assert.equal(templateMeta.visualStyleId, policy.visualStyleId);
   assert.equal(templateMeta.sourceVisualWorldId, 'serious-minimal-countryball-explainer');
   assert.equal(templateMeta.visualWorldParityPolicy.mustMatchReelVisualDNA, true);
