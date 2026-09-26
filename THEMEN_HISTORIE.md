@@ -49,6 +49,7 @@ Für **neue Reels** gilt zusätzlich `REEL_THEMENFOKUS.md`: autonom ausgewählt 
 - KW39 (21.09.–27.09.2026): Warum gibt es zwei Koreas? — Phase 1 komplett; bleibt für Duplicate-Schutz reserviert
 - KW39 (21.09.–27.09.2026): Warum ist Kaliningrad von Russland getrennt? — Themen-Editor FREI, neues 2,5-Minuten-Projekt reserviert
 - KW39 (21.09.–27.09.2026): Nationalismus: Wie funktioniert diese Ideologie? — Themen-Editor FREI, V5-Premium-Countryball-Projekt reserviert
+- KW39 (21.09.–27.09.2026): Liberalismus: Freiheit, Rechte und Staat einfach erklärt — Themen-Editor FREI, Schema-11-Projekt mit Script Opening V1 reserviert
 
 ## Duplicate-Regel
 
