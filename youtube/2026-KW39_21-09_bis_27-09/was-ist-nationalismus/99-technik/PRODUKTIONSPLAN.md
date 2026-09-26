@@ -1,4 +1,4 @@
-# Produktionsplan — Was ist Nationalismus?
+# Produktionsplan — Nationalismus: Wie funktioniert diese Ideologie?
 
 ## Ziel
 
@@ -17,14 +17,14 @@ Das bereits vorhandene Reel `Sozialismus einfach erklärt` ist kein Duplicate: E
 
 ## Titel
 
-**Was ist Nationalismus?**
+**Nationalismus: Wie funktioniert diese Ideologie?**
 
 Cover-Text: **WAS IST NATIONALISMUS?**
 
 ## Upload-Metadaten
 
 **YouTube-Titel:**
-Was ist Nationalismus? In 2,5 Minuten einfach erklärt
+Nationalismus: Wie funktioniert diese Ideologie?
 
 **Beschreibung:**
 Was bedeutet Nationalismus eigentlich – und worin unterscheidet er sich von Patriotismus? Dieses Video erklärt Nation und Staat, die historische Entwicklung des Nationalismus seit dem späten 18. Jahrhundert, unterschiedliche Formen, Selbstbestimmung sowie die Risiken von Ausgrenzung und Überlegenheitsdenken.
