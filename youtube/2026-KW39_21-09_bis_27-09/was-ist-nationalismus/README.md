@@ -1,4 +1,4 @@
-# Was ist Nationalismus?
+# Nationalismus: Wie funktioniert diese Ideologie?
 
 YouTube-Langvideo · Ziel ca. 2,5 Minuten · Deutsch · Visual Policy V5.
 
