@@ -1,8 +1,10 @@
 {
-  "schemaVersion": 1,
-  "visualPolicyVersion": 4,
+  "schemaVersion": 2,
+  "visualPolicyVersion": 5,
   "coverPolicyVersion": 1,
   "assetGenerationPolicyVersion": 1,
+  "designQualityVersion": 1,
+  "adaptivePacingVersion": 3,
   "channelFocus": {
     "primaryTopics": [
       "Politik und Staatssysteme",
@@ -65,13 +67,39 @@
     "stickFiguresForbidden": true,
     "childishCartoonLookForbidden": true,
     "photorealismForbiddenByDefault": true,
-    "glossy3dPixarClayAnimeForbidden": true
+    "glossy3dPixarClayAnimeForbidden": true,
+    "premiumCompositionRequired": true,
+    "intentionalPaletteRequired": true,
+    "typographyHierarchyRequiredWhenTextPresent": true,
+    "foregroundMidgroundBackgroundDepthPreferred": true,
+    "balancedNegativeSpaceRequired": true,
+    "mapLegibilityRequired": true,
+    "visualRelationshipOverIconListingRequired": true,
+    "premiumDoesNotAuthorizeStyleChange": true
+  },
+  "imageDensityPolicy": {
+    "contentDrivenImageCountRequired": true,
+    "fixedImageCountForbidden": true,
+    "splitOnNewVisualIdeaRequired": true,
+    "splitOnEraLocationPerspectiveChangeRequired": true,
+    "splitCauseEffectWhenDense": true,
+    "splitLongSimpleHoldPreferred": true,
+    "targetAverageHoldSeconds": [4.5, 7.5],
+    "softReviewAboveSeconds": 9,
+    "strongSplitReviewAboveSeconds": 11,
+    "globalHardMaximumSeconds": 16,
+    "minimumUsefulHoldSeconds": 2.5,
+    "allowMoreImagesWhenNarrativelyUseful": true,
+    "doNotAddFillerImages": true
   },
   "preferredCompositionModes": [
     "minimal-symbolic",
     "supported-explainer",
     "simple-mini-scene",
     "map-spatial-explainer",
-    "conceptual-metaphor"
+    "conceptual-metaphor",
+    "before-after",
+    "cause-effect",
+    "route-progression"
   ]
 }
