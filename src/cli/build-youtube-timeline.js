@@ -17,17 +17,41 @@ function round(value) {
   return Number(Number(value).toFixed(3));
 }
 
+async function readOptionalJson(file) {
+  try {
+    return JSON.parse(await readFile(file, 'utf8'));
+  } catch {
+    return null;
+  }
+}
+
 async function main() {
   const rawDir = arg('--dir');
   if (!rawDir) throw new Error('Nutzung: npm run build:youtube-timeline -- --dir "youtube/<woche>/<thema>"');
   const projectDir = path.resolve(rawDir);
   const techDir = path.join(projectDir, '99-technik');
   const mapping = JSON.parse(await readFile(path.join(techDir, 'BILD_AUDIO_ZUORDNUNG.json'), 'utf8'));
+  const meta = await readOptionalJson(path.join(techDir, 'video.json'));
   const images = Array.isArray(mapping.images) ? mapping.images : [];
   if (!images.length) throw new Error('Mapping enthält keine Bilder.');
 
   const cutLead = numeric(mapping.cutLeadSecondsDefault) ?? 0.08;
-  const endHold = 0.6;
+  const configuredEndHold = numeric(meta?.renderPolicy?.endHoldSeconds);
+  const endHold = configuredEndHold ?? 0.6;
+  const schema = Number(meta?.schemaVersion) || 0;
+
+  if (schema >= 12) {
+    if (Number(meta?.endHoldPolicyVersion) !== 1) {
+      throw new Error('Schema-12+: endHoldPolicyVersion muss 1 sein.');
+    }
+    if (endHold < 1.2 || endHold > 1.5) {
+      throw new Error(`Schema-12+: renderPolicy.endHoldSeconds muss zwischen 1.2 und 1.5 liegen, ist ${endHold}.`);
+    }
+    if (meta?.endHoldPolicy?.lastImageMustRemainVisibleAfterLastWord !== true) {
+      throw new Error('Schema-12+: endHoldPolicy.lastImageMustRemainVisibleAfterLastWord muss true sein.');
+    }
+  }
+
   const totalAudio = numeric(mapping.autoAlignment?.totalDurationSeconds);
   if (totalAudio === null) throw new Error('autoAlignment.totalDurationSeconds fehlt. Erst auto-align:youtube ausführen.');
 
@@ -53,7 +77,7 @@ async function main() {
   }
 
   const output = {
-    schemaVersion: 2,
+    schemaVersion: 3,
     generatedAt: new Date().toISOString(),
     source: 'measured-youtube-word-timings',
     audioMaster: mapping.audioMasterFile,
@@ -65,7 +89,7 @@ async function main() {
   };
   await mkdir(techDir, { recursive: true });
   await writeFile(path.join(techDir, 'FINAL_TIMELINE.json'), `${JSON.stringify(output, null, 2)}\n`, 'utf8');
-  console.log(`FINAL_TIMELINE.json erstellt: ${timeline.length} Bilder, Audio ${totalAudio.toFixed(3)} s.`);
+  console.log(`FINAL_TIMELINE.json erstellt: ${timeline.length} Bilder, Audio ${totalAudio.toFixed(3)} s, Schluss-Hold ${endHold.toFixed(2)} s.`);
 }
 
 main().catch((error) => {
