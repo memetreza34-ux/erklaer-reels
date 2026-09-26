@@ -1,0 +1,268 @@
+YOUTUBE_VISUAL_POLICY_VERSION: 5
+DESIGN_QUALITY_VERSION: 1
+ADAPTIVE_PACING_VERSION: 3
+COVER_POLICY_VERSION: 1
+ASSET_GENERATION_POLICY_VERSION: 1
+ACTIVE_STYLE_ID: serious-minimal-countryball-explainer-youtube-16x9
+
+GOOGLE FLOW MASTER PROMPT — Was ist Nationalismus?
+
+ZIEL
+Erzeuge Bild 01 bis Bild 28 für ein deutsches YouTube-Erklärvideo von ungefähr 2,5 Minuten. Es gibt KEIN Bild 00.
+
+==================================================
+FIRST SCENE = COVER HARD LOCK
+==================================================
+- Bild 01 is the cover AND the first video scene and starts at 0.0 seconds.
+- Bild 01 must work both as thumbnail and as the first spoken idea.
+- No separate thumbnail image.
+
+==================================================
+COVER = 3 CANDIDATES HARD LOCK
+==================================================
+- Generate Bild 01 exactly THREE times as temporary cover candidates.
+- Compare only these three cover candidates and select exactly ONE winner.
+- Rename the winner exactly once to `Bild 01.png`.
+- Discard the other two completely.
+
+==================================================
+NON-COVER = SINGLE GENERATION HARD LOCK
+==================================================
+- Bild 02 through Bild 28 are each generated exactly ONCE.
+- No alternate versions, no manual review stop after five-image waves.
+- Maximum five active generations simultaneously; concurrency only.
+- Rename every final image exactly once to `Bild NN.png`.
+
+==================================================
+FINAL IMAGE FOLDER HARD LOCK
+==================================================
+All final images must be flat in `00-bildprompts/images/` and only `Bild 01.png` through `Bild 28.png` may remain there. No subfolders, no Bild 00, no cover candidates, no alternates.
+
+==================================================
+SESSION RESET HARD LOCK
+==================================================
+Use a fresh Google Flow session for V5. The ONLY active style is `serious-minimal-countryball-explainer-youtube-16x9`.
+Do not use any previous generated image as a visual reference.
+Bild 01 is NOT a master-style reference. Every image is generated independently from its own full text prompt.
+
+==================================================
+WRITTEN STYLE LOCK — SERIOUS MINIMAL COUNTRYBALL
+==================================================
+Serious Minimal Countryball Explainer visual world, exactly matching the Reel visual DNA and adapted only to a horizontal 16:9 YouTube canvas. Clean, serious, premium flat 2D countryball explainer. Perfectly round ball characters when an actor is useful, simple white eyes, thick clean black outlines, controlled flat colors, restrained soft graphic shading, adult and informative, never childish or goofy.
+
+No normal illustrated humans. No humanoid cartoon people. No stick figures. No photorealism. No realistic human scenes. No glossy 3D. No Pixar. No clay. No anime. No busy icon collage.
+
+==================================================
+PREMIUM DESIGN LAYER V1 — HARD LOCK
+==================================================
+Premium means BETTER DESIGN INSIDE THE SAME COUNTRYBALL WORLD, never a style change.
+For every image use clear visual hierarchy, meaningful scale contrast, deliberate 16:9 balance, purposeful overlaps, elegant flat foreground/midground/background layering when useful, one coherent palette with one dominant base color and one or two controlled accents, intentional negative space, clean typography, and maps/borders/routes that are simplified but elegant and instantly readable.
+Prefer relationships over object lists. Avoid random centering, weak empty backgrounds, generic icon grids and repeated layouts.
+Clean does NOT mean empty. Minimal does NOT mean lifeless. Premium does NOT mean realistic.
+
+==================================================
+VISUAL STORYTELLING HARD LOCK
+==================================================
+Use visual relationships such as before→after, center→periphery, group→border→outsider, crown→people, fragmented→unified, foreign control→self-rule, attachment→political claim, inclusion→exclusion and idea→consequence. Every image must communicate one clear idea within about one second.
+
+==================================================
+ADAPTIVE IMAGE DENSITY V3 — HARD LOCK
+==================================================
+There is NO fixed target image count as a global rule. This project contains 28 images because the narration has 28 distinct visual purposes. One image = one clear visual purpose. Complex ideas were split instead of overloaded. Preferred average hold is about 4.5–7.5 seconds. No filler images.
+
+==================================================
+ANTI-LIFELESS HARD LOCK
+==================================================
+Avoid tiny isolated subjects lost in huge empty backgrounds, meaningless icon collages, mechanically repeated centered-countryball layouts, flat rows of unrelated symbols, or the same map repeated without a new information step.
+
+==================================================
+DEUTSCH-HARD-LOCK
+==================================================
+Every readable word must be German. English visible text or pseudo-text = HARD FAIL. If a prompt says no visible text, generate no readable text.
+
+==================================================
+BILD 01 — COVER + ERSTE SZENE
+==================================================
+Bild 01 · D · ca. 8,5 s
+Audio: „Nationalismus gehört zu den Begriffen, die fast jeder kennt, aber nicht jeder gleich meint.“
+Visual Purpose: Begriff sofort als große politische Idee mit Spannung zwischen Gemeinschaft und Abgrenzung etablieren.
+Composition Mode: supported-explainer.
+Prompt: Create a premium 16:9 Serious Minimal Countryball Explainer cover. Deep muted navy background with a subtle paper-grain texture. In the center, place one large perfectly round neutral nation-countryball built from a tasteful abstract red-white-blue color scheme without copying a real flag. Behind it, a broad soft circular field of many smaller muted balls suggests a national community. On the right edge, a thick clean border line cuts through the background and creates tension without showing violence. Use elegant layered depth: foreground headline, midground main ball, background community. Add exactly one large German headline in the upper-left: `WAS IST NATIONALISMUS?` in bold condensed white sans-serif with a restrained warm-red accent bar. Strong thumbnail hierarchy, balanced negative space, no extra readable text, no humans, no realism, no 3D.
+
+Bild 02 · B · ca. 5 s
+Audio: „Ist Nationalismus einfach nur Liebe zum eigenen Land – oder steckt dahinter eine politische Ideologie?“
+Visual Purpose: Patriotismus versus politische Ideologie als offene Frage zeigen.
+Composition Mode: conceptual-metaphor.
+Prompt: Create a polished split-but-connected 16:9 frame. Left side: one round countryball calmly holding a small heart-shaped national-color ribbon, warm muted beige background. Right side: the same-size countryball facing a parliament silhouette and a bold political arrow, cool dark-blue background. A clean central question mark bridges both halves. Use premium editorial balance inside the flat Countryball world, with controlled cream, navy and burgundy palette. Add exactly: `LIEBE ODER IDEOLOGIE?` No other text.
+
+Bild 03 · A · ca. 4 s
+Audio: „Der Ausgangspunkt ist die Nation.“
+Visual Purpose: Nation als Grundbegriff isolieren.
+Composition Mode: minimal-symbolic.
+Prompt: Create a minimal premium 16:9 frame with a large circle of several equally sized neutral countryballs forming one cohesive ring around a shared central star-shaped community symbol. Muted warm-grey background, black outlines, restrained red accent. Add exactly: `DIE NATION`. Keep the frame elegant and uncluttered.
+
+Bild 04 · B · ca. 5,5 s
+Audio: „Ein Staat ist eine politische Ordnung mit Gebiet, Institutionen und Gesetzen.“
+Visual Purpose: Staat als institutionelle Ordnung erklären.
+Composition Mode: supported-explainer.
+Prompt: Show one simplified territory shape as a flat map base, a parliament/government building rising from its center, and one clean law document integrated into the foreground. Connect all three with one elegant structural line, not separate icons. Use deep teal background, cream map, charcoal outlines and one gold accent. Add exactly: `STAAT = GEBIET + INSTITUTIONEN + GESETZE`. Strong typography hierarchy, no pseudo-writing on the document.
+
+Bild 05 · C · ca. 6,5 s
+Audio: „Eine Nation ist dagegen eine vorgestellte politische oder kulturelle Gemeinschaft, deren Mitglieder sich durch Geschichte, Sprache, Kultur, Herkunft oder gemeinsame politische Werte verbunden fühlen können.“
+Visual Purpose: Nation als gemeinsame Identität und Zugehörigkeit zeigen.
+Composition Mode: simple-mini-scene.
+Prompt: Create a broad community scene with five large neutral countryballs arranged in a gentle arc, linked by one continuous ribbon that passes through a history-book symbol, a speech symbol, a cultural pattern, a family-tree motif and a small constitution card. Integrate these cues along the same ribbon instead of making an icon grid. Warm burgundy and cream palette, layered depth, premium spacing. Add exactly: `GEMEINSAME ZUGEHÖRIGKEIT`.
+
+Bild 06 · B · ca. 5,5 s
+Audio: „Nationalismus macht diese Nation zu einem zentralen politischen Bezugspunkt.“
+Visual Purpose: Nation rückt ins Zentrum politischer Ordnung.
+Composition Mode: conceptual-metaphor.
+Prompt: Show a large nation-countryball moving visually from the outer edge into the center of a circular political system. Parliament, law document and border line orbit around it on subtle curved tracks. Use dark slate background with controlled red-gold accents. Add exactly: `NATION IM ZENTRUM`. The composition should feel intentional and premium, not like a diagram board.
+
+Bild 07 · C · ca. 6,5 s
+Audio: „Typisch ist die Vorstellung, dass die Nation sich selbst bestimmen, ihre politische Gemeinschaft erhalten oder einen eigenen Staat bilden sollte.“
+Visual Purpose: Selbstbestimmung, Erhalt und Staatlichkeit als mögliche Ziele zeigen.
+Composition Mode: supported-explainer.
+Prompt: Place one strong nation-countryball at the left-center. From it, three elegant branching routes lead to: a ballot box representing self-determination, a protective ring around a community representing preservation, and a government building inside a territory outline representing statehood. Keep all branches part of one coherent composition with depth and controlled scale. Muted navy, cream, green and gold. Add exactly: `SELBSTBESTIMMUNG` as the only readable text.
+
+Bild 08 · B · ca. 5,5 s
+Audio: „Historisch wurde Nationalismus besonders seit dem späten 18. und im 19. Jahrhundert wichtig.“
+Visual Purpose: historischen Aufstieg um 1800 markieren.
+Composition Mode: simple-mini-scene.
+Prompt: Create a horizontal historical transition frame. On the left, a muted old-regime crown and dynasty banner recede into shadow; on the right, a larger community of countryballs rises around a simple national banner and printing press/newspaper sheet. Add a refined timeline line across the lower third with only `UM 1800`. Sepia, navy and burgundy palette, premium flat illustration, no human figures.
+
+Bild 09 · C · ca. 6,5 s
+Audio: „Mit Revolutionen und der Idee der Volkssouveränität entstand die Vorstellung, dass nicht nur Könige und Dynastien herrschen sollten, sondern ein Volk über seine politische Ordnung mitbestimmen könne.“
+Visual Purpose: Dynastische Herrschaft → Volkssouveränität.
+Composition Mode: before-after.
+Prompt: Create a dramatic but minimal before-after composition. Left: oversized crown above a small passive community of countryballs, heavy dark background. Right: crown pushed upward and smaller while the community becomes larger around a ballot box and parliament silhouette. A strong diagonal transition cuts through the frame. Add exactly: `VOLKSSOUVERÄNITÄT`. Use premium hierarchy, no realistic revolution scene.
+
+Bild 10 · B · ca. 5 s
+Audio: „Nationalistische Bewegungen konnten deshalb sehr verschiedene Ziele verfolgen.“
+Visual Purpose: unterschiedliche politische Zielrichtungen ankündigen.
+Composition Mode: conceptual-metaphor.
+Prompt: One central nation-countryball stands at a crossroads with three broad clean paths leading in different directions: unification, independence and self-government. Use landscape-like flat layers rather than signs floating in space. Muted charcoal, cream and red-green accents. Add exactly: `VERSCHIEDENE ZIELE`.
+
+Bild 11 · B · ca. 5,5 s
+Audio: „In Italien und Deutschland unterstützten sie im 19. Jahrhundert die staatliche Einigung.“
+Visual Purpose: staatliche Einigung als historischer Nationalismus-Typ.
+Composition Mode: map-spatial-explainer.
+Prompt: Create two simplified side-by-side map stories. Left: several Italian-region pieces slide together into one clean Italy silhouette with a round Italy countryball. Right: several German-region pieces slide together into a simplified Germany silhouette with a round Germany countryball. Use one elegant central arrow rhythm, parchment-beige background, muted green/red and black-red-gold accents. Add exactly: `STAATLICHE EINIGUNG`. No small labels.
+
+Bild 12 · B · ca. 5,5 s
+Audio: „In anderen Regionen kämpften Bewegungen gegen Fremdherrschaft oder für Unabhängigkeit.“
+Visual Purpose: Nationalismus als Unabhängigkeitsbewegung zeigen.
+Composition Mode: simple-mini-scene.
+Prompt: Show a smaller neutral nation-countryball inside a territory controlled from outside by a much larger distant empire-ball connected through a thick chain-like political line. The local ball cuts the line symbolically with a clean broken-link effect and moves toward its own ballot box/government building. Controlled deep-green and cream palette with one red accent. Add exactly: `UNABHÄNGIGKEIT`.
+
+Bild 13 · B · ca. 5,5 s
+Audio: „Später spielte Nationalismus auch in antikolonialen Bewegungen eine wichtige Rolle.“
+Visual Purpose: antikoloniale Selbstbestimmung als weiteren Kontext zeigen.
+Composition Mode: map-spatial-explainer.
+Prompt: Create a stylized flat world-map crop with one overseas territory linked by a long imperial route to a distant colonial-power countryball. The route breaks at the midpoint; the territory gains its own large local countryball and flag-colored field without using a specific real country. Use elegant map layers, warm sand background, dark teal sea, burgundy accents. Add exactly: `ANTIKOLONIALE BEWEGUNGEN`.
+
+Bild 14 · A · ca. 4,5 s
+Audio: „Dabei gibt es nicht nur eine Form von Nationalismus.“
+Visual Purpose: mehrere Varianten ankündigen.
+Composition Mode: minimal-symbolic.
+Prompt: Show one large neutral nation-countryball splitting visually into two equally weighted stylized paths, one toward a constitution/passport motif and one toward language/culture motifs. Keep the split clean and neutral, not good-versus-bad. Dark blue-grey background, cream and gold accents. Add exactly: `NICHT NUR EINE FORM`.
+
+Bild 15 · B · ca. 5 s
+Audio: „Manche Varianten betonen gemeinsame politische Regeln und Staatsbürgerschaft.“
+Visual Purpose: staatsbürgerlich-politische Nationsvorstellung erklären.
+Composition Mode: supported-explainer.
+Prompt: Several differently colored neutral countryballs stand together around one shared constitution document and passport-style citizenship card, all inside one territory outline. Use elegant circular composition, strong navy-and-cream palette, subtle gold accent. Add exactly: `REGELN + STAATSBÜRGERSCHAFT`. No flag dominance, no fake document text.
+
+Bild 16 · B · ca. 5 s
+Audio: „Andere legen stärker Wert auf Sprache, Abstammung, Religion oder Kultur. In der Realität vermischen sich solche Vorstellungen häufig.“
+Visual Purpose: kulturell-ethnische Nationsvorstellung und Mischformen zeigen.
+Composition Mode: supported-explainer.
+Prompt: Show a community of countryballs connected by one woven ribbon carrying four integrated cues: speech symbol, family-tree branch, simple faith/building symbol and cultural pattern. At the far right, the ribbon partially overlaps a constitution card to imply real-world mixing of models. Use muted wine, cream and forest-green palette. Add exactly: `SPRACHE • HERKUNFT • KULTUR`.
+
+Bild 17 · A · ca. 4 s
+Audio: „Und was ist dann Patriotismus?“
+Visual Purpose: Patriotismus-Vergleich öffnen.
+Composition Mode: minimal-symbolic.
+Prompt: Create a clean premium comparison opener: one countryball looks toward a small national landscape/flag ribbon with a restrained heart motif, while a large question mark sits behind it as a subtle shape. Warm cream background with navy and burgundy accents. Add exactly: `UND PATRIOTISMUS?`.
+
+Bild 18 · B · ca. 5 s
+Audio: „Patriotismus bedeutet vor allem Verbundenheit mit dem eigenen Land oder Gemeinwesen.“
+Visual Purpose: Patriotismus als Verbundenheit erklären.
+Composition Mode: simple-mini-scene.
+Prompt: Show one calm countryball standing in front of a simplified local landscape, parliament silhouette and community square, connected by a soft ribbon motif. No political arrows or border-expansion cues. Use warm muted gold and blue palette. Add exactly: `VERBUNDENHEIT`.
+
+Bild 19 · C · ca. 6 s
+Audio: „Nationalismus geht darüber hinaus, wenn aus dieser Verbundenheit ein politischer Anspruch über die Nation, ihre Selbstbestimmung oder ihre besondere Stellung entsteht.“
+Visual Purpose: zusätzliche politische Dimension erklären.
+Composition Mode: before-after.
+Prompt: Left side continues the calm attachment scene from conceptually—not as an image reference—with one countryball and landscape. Right side shows a larger nation-countryball directing a bold arrow toward a ballot box, parliament and border outline, representing political claims. Use a strong diagonal progression and premium layered depth. Add exactly: `POLITISCHER ANSPRUCH`.
+
+Bild 20 · A · ca. 4,5 s
+Audio: „Nationalismus kann Menschen verbinden und politische Selbstbestimmung unterstützen.“
+Visual Purpose: integrative Seite zeigen.
+Composition Mode: simple-mini-scene.
+Prompt: Show a broad circle of equally sized countryballs jointly lifting one ballot box and one shared local government building platform. Bright but muted teal and cream palette, subtle gold accent, uplifting without childish expressions. Add exactly: `ZUSAMMENHALT + SELBSTBESTIMMUNG`.
+
+Bild 21 · A · ca. 4 s
+Audio: „Er kann aber auch ausgrenzen.“
+Visual Purpose: Ausgrenzungsrisiko sofort zeigen.
+Composition Mode: conceptual-metaphor.
+Prompt: A clean circular national boundary encloses several countryballs while one equally styled ball stands just outside behind a thick black-red border gap. Use dark muted background, restrained red warning accent, strong negative space with intentional tension. Add exactly: `AUSGRENZUNG`.
+
+Bild 22 · B · ca. 5 s
+Audio: „Wenn nur eine bestimmte Gruppe als „wirkliche Nation“ gilt, können Minderheiten unter Druck geraten.“
+Visual Purpose: enge Nationsdefinition setzt Minderheiten unter Druck.
+Composition Mode: simple-mini-scene.
+Prompt: Show a dominant cluster of same-pattern countryballs under a large arch labeled by the exact requested text, while two differently patterned minority balls are squeezed toward the edge by narrowing flat walls. Keep expressions restrained and serious; no violence. Deep slate and burgundy palette. Add exactly: `WER GEHÖRT DAZU?`.
+
+Bild 23 · C · ca. 6 s
+Audio: „Wenn die eigene Nation zusätzlich als überlegen dargestellt wird, kann Nationalismus in Feindbilder, aggressive Außenpolitik oder Unterdrückung umschlagen.“
+Visual Purpose: Überlegenheitsdenken → Eskalationsrisiken.
+Composition Mode: cause-effect.
+Prompt: Create a three-stage diagonal cause-effect composition. Stage 1: one nation-countryball placed on an artificially raised pedestal above others. Stage 2: a dark dividing wall creates an enemy image. Stage 3: a border arrow pushes outward while a smaller internal minority ball is constrained. Keep everything symbolic and non-graphic. Dark navy, cream and controlled red accent. Add exactly: `ÜBERHÖHUNG → KONFLIKT`.
+
+Bild 24 · A · ca. 4,5 s
+Audio: „Auch heute ist Nationalismus politisch relevant.“
+Visual Purpose: Gegenwartsbezug markieren.
+Composition Mode: minimal-symbolic.
+Prompt: Show a modern ballot box, parliament silhouette and smartphone/news card orbiting around one large nation-countryball, all integrated into one circular contemporary composition. Clean deep-blue background, white and warm-red accents. Add exactly: `AUCH HEUTE`.
+
+Bild 25 · C · ca. 6 s
+Audio: „Er taucht etwa in Debatten über staatliche Souveränität, Unabhängigkeitsbewegungen, Migration, Grenzen oder das Verhältnis zu überstaatlichen Organisationen auf.“
+Visual Purpose: heutige politische Konfliktfelder verknüpfen.
+Composition Mode: supported-explainer.
+Prompt: Center one national parliament and countryball. Around it, integrate four connected spatial relationships rather than separate icons: a border gate with movement arrow, a smaller independence-region outline, a sovereignty shield over the parliament, and an outer ring representing a supranational organization. Use elegant layered arcs and routes. Muted navy, teal and burgundy palette. Add exactly: `SOUVERÄNITÄT • GRENZEN • UNABHÄNGIGKEIT`.
+
+Bild 26 · C · ca. 6 s
+Audio: „Dabei können sehr unterschiedliche Parteien und Bewegungen nationale Argumente verwenden, obwohl ihre konkreten Ziele stark voneinander abweichen.“
+Visual Purpose: unterschiedliche politische Lager können nationale Argumente verwenden.
+Composition Mode: comparison.
+Prompt: Show three clearly different political podium zones arranged left-center-right, each with differently colored neutral countryballs and distinct policy folders, but all pointing toward the same central nation symbol. Do not use real party colors/logos. Each group should visually pursue a different direction from the shared national reference. Add exactly: `GLEICHER BEZUG – ANDERE ZIELE`.
+
+Bild 27 · B · ca. 5,5 s
+Audio: „Deshalb ist Nationalismus nicht einfach nur ein anderes Wort für Stolz auf das eigene Land. Es ist eine politische Idee darüber, wer zu einer Nation gehört, welche Bedeutung diese Gemeinschaft haben soll und wie viel politische Selbstbestimmung sie beansprucht.“
+Visual Purpose: Definition auf drei Kernfragen verdichten.
+Composition Mode: conceptual-metaphor.
+Prompt: Create a premium triangular composition around one central nation-countryball. Three large integrated questions surround it as symbolic relationships: an open/closed membership gate, a balance scale showing political importance, and a ballot/parliament path representing self-determination. Add exactly three German labels: `WER GEHÖRT DAZU?`, `WIE WICHTIG IST DIE NATION?`, `WIE VIEL SELBSTBESTIMMUNG?`. Strong typographic hierarchy, no other text.
+
+Bild 28 · C · ca. 7 s
+Audio: „Genau deshalb kann Nationalismus in verschiedenen Zeiten sowohl als Bewegung für Unabhängigkeit auftreten als auch als Rechtfertigung für Ausgrenzung. Entscheidend ist, wie „Nation“ definiert wird, welche Rechte anderen Gruppen zugestanden werden und welche politischen Ziele daraus folgen.“
+Visual Purpose: neutrales Schlussbild mit zwei möglichen politischen Richtungen und drei Prüfkriterien.
+Composition Mode: balanced-duality.
+Prompt: Create a premium final 16:9 composition with one central nation-countryball and two broad paths. Left path leads toward a ballot box, broken external-control chain and self-government building, symbolizing independence/self-determination. Right path leads toward a narrowing membership gate and exclusion boundary, symbolizing restrictive nationalism. Above the central ball, place three small clean German labels in one line: `DEFINITION`, `RECHTE`, `ZIELE`. Use balanced navy, cream, teal and restrained burgundy palette. The two paths must feel analytical, not propagandistic. No other readable text.
+
+FINALER CHECK
+- Visual Policy V5 aktiv
+- Design Quality V1 aktiv
+- Adaptive Pacing V3 aktiv
+- ACTIVE_STYLE_ID = serious-minimal-countryball-explainer-youtube-16x9
+- gleiche Countryball-Bildwelt wie Reels, nur 16:9
+- Premium Design Layer ohne Stilwechsel
+- klare Hierarchie, kontrollierte Palette, saubere Karten, bewusstes Layering
+- 28 inhaltsgetriebene Bildmomente, keine Füllbilder
+- Bild 01 exakt 3 Cover-Kandidaten, genau 1 Gewinner
+- Bild 02–28 jeweils genau einmal generiert
+- alle finalen Bilder in `00-bildprompts/images/`
+- kein Bild 00
+- keine Bild-zu-Bild-Referenzen
+- jeder sichtbare Text Deutsch

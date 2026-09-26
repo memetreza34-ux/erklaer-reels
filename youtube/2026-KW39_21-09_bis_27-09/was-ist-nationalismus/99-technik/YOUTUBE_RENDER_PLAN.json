@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "motionPolicy": "complexity-v1",
+  "backgroundMusic": false,
+  "defaultSoundVolume": 0.15,
+  "motionOverrides": [],
+  "soundEffects": [
+    {"imageNumber":1,"type":"soft-impact","offsetSeconds":0,"volume":0.14},
+    {"imageNumber":2,"type":"soft-swipe","offsetSeconds":-0.04,"volume":0.11},
+    {"imageNumber":4,"type":"paper","offsetSeconds":-0.04,"volume":0.11},
+    {"imageNumber":8,"type":"whoosh-up","offsetSeconds":-0.04,"volume":0.12},
+    {"imageNumber":9,"type":"swoosh-reveal","offsetSeconds":-0.04,"volume":0.13},
+    {"imageNumber":11,"type":"soft-swipe","offsetSeconds":-0.04,"volume":0.11},
+    {"imageNumber":14,"type":"click","offsetSeconds":-0.04,"volume":0.11},
+    {"imageNumber":17,"type":"click","offsetSeconds":-0.04,"volume":0.11},
+    {"imageNumber":19,"type":"soft-impact","offsetSeconds":-0.04,"volume":0.12},
+    {"imageNumber":21,"type":"whoosh-down","offsetSeconds":-0.04,"volume":0.11},
+    {"imageNumber":23,"type":"soft-impact","offsetSeconds":-0.04,"volume":0.13},
+    {"imageNumber":24,"type":"swoosh-reveal","offsetSeconds":-0.04,"volume":0.12},
+    {"imageNumber":27,"type":"paper","offsetSeconds":-0.04,"volume":0.11},
+    {"imageNumber":28,"type":"whoosh-down","offsetSeconds":-0.04,"volume":0.12}
+  ]
+}
