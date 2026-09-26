@@ -5,6 +5,7 @@
   "assetGenerationPolicyVersion": 1,
   "designQualityVersion": 1,
   "adaptivePacingVersion": 3,
+  "scriptOpeningPolicyVersion": 1,
   "channelFocus": {
     "primaryTopics": [
       "Politik und Staatssysteme",
@@ -21,6 +22,18 @@
       "Lifestyle",
       "allgemeine Alltags-Warum-Themen ohne Länder-, Geschichts- oder Systembezug"
     ]
+  },
+  "scriptOpeningPolicy": {
+    "directQuestionRequiredAtStart": true,
+    "maxCharactersBeforeFirstQuestionMark": 120,
+    "viewerThoughtPhrase": "Denkst du dir gerade vielleicht.",
+    "viewerThoughtPhraseRequired": true,
+    "shortAnswerRequired": true,
+    "shortAnswerMarkers": ["Kurz gesagt:", "Einfach gesagt:"],
+    "bridgeQuestionRequired": true,
+    "openingWindowCharacters": 420,
+    "abstractDefinitionLeadForbidden": true,
+    "explicitUserOverrideAllowed": true
   },
   "visualStyleId": "serious-minimal-countryball-explainer-youtube-16x9",
   "sourceVisualWorldId": "serious-minimal-countryball-explainer",
