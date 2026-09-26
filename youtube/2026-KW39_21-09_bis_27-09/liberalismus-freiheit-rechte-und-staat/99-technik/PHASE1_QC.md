@@ -34,18 +34,29 @@
 - Menschen, menschliche Silhouetten, Hände und humanoide Figuren ausdrücklich verboten
 - sichtbarer Text ausschließlich Deutsch
 
-## Bildwelt
+## Bildwelt — überarbeitet nach Sichtprüfung
 
 - Visual Policy V5
 - Design Quality V1
 - Adaptive Pacing V3
+- Scene Illustration Policy V2
 - `serious-minimal-countryball-explainer-youtube-16x9`
 - Premium-Upgrade ohne Stilwechsel
+- konkrete illustrierte Szenen statt abstrakter Poster-/Infografik-Tafeln
+- erkennbare Orte und Situationen bevorzugt: Gericht, Straße, Markt, Schule, Platz, Brücke, Parlament, Bibliothek
+- abstrakte Boards, Icon-Raster, Mehrspalten-Erklärtafeln und Dashboard-Look standardmäßig verboten
+- breitere, anschaulichere Farbpalette; beige/dunkelblau darf nicht zur monotonen Standardpalette werden
+- Countryballs bleiben die einzigen Figuren
+- Text unterstützt die Szene, darf sie aber nicht in ein Poster verwandeln
+
+## Regenerationshinweis
+
+Bereits mit der früheren Promptfassung erzeugte Liberalismus-Bilder gelten **nicht** als finaler Phase-2-Satz. Für die neue Scene-Illustration-V2-Fassung ist eine frische Flow-Sitzung erforderlich.
 
 ## Phase 2
 
 Noch ausstehend:
-- 32 finale Bilder
+- 32 finale Bilder nach Scene Illustration V2
 - ein finales Voice-over
 
 Phase 3 bleibt bis dahin blockiert.
