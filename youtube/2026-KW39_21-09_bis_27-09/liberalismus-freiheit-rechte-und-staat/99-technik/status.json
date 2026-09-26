@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "project": "2026-KW39_21-09_bis_27-09/liberalismus-freiheit-rechte-und-staat",
+  "phase1": {
+    "status": "COMPLETE",
+    "topicEditor": "APPROVED_NEW",
+    "scriptOpeningPolicyVersion": 1,
+    "researchComplete": true,
+    "scriptComplete": true,
+    "imagePlanComplete": true,
+    "flowPromptComplete": true,
+    "mappingComplete": true,
+    "chaptersComplete": true,
+    "renderPlanComplete": true,
+    "qcComplete": true
+  },
+  "phase2": {
+    "status": "PENDING-ASSETS",
+    "expectedImageCount": 32,
+    "coverCandidateCount": 3,
+    "coverSelectionRequired": true,
+    "nonCoverGenerationCount": 1,
+    "manualWaveReview": false,
+    "maxConcurrentGenerations": 5,
+    "finalImageDirectory": "00-bildprompts/images",
+    "imagesReady": false,
+    "audioReady": false
+  },
+  "phase3": {
+    "status": "BLOCKED-WAITING-PHASE2",
+    "renderReady": false
+  },
+  "readyForAssetGeneration": true
+}
