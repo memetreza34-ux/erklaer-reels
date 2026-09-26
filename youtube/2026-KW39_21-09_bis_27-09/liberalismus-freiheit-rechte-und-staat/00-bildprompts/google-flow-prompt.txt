@@ -4,9 +4,10 @@ ADAPTIVE_PACING_VERSION: 3
 SCRIPT_OPENING_POLICY_VERSION: 1
 COVER_POLICY_VERSION: 1
 ASSET_GENERATION_POLICY_VERSION: 1
+SCENE_ILLUSTRATION_POLICY_VERSION: 2
 ACTIVE_STYLE_ID: serious-minimal-countryball-explainer-youtube-16x9
 
-GOOGLE FLOW MASTER PROMPT — Liberalismus: Freiheit, Rechte und Staat einfach erklärt
+GOOGLE FLOW MASTER PROMPT — Liberalismus: Freiheit, Rechte und begrenzte Macht
 
 ZIEL
 Erzeuge Bild 01 bis Bild 32 für ein deutsches YouTube-Erklärvideo von ungefähr 2,5 Minuten. Es gibt KEIN Bild 00.
@@ -49,7 +50,7 @@ Bild 01 is NOT a master-style reference. Every image is generated independently 
 ==================================================
 WRITTEN STYLE LOCK — SERIOUS MINIMAL COUNTRYBALL
 ==================================================
-Serious Minimal Countryball Explainer visual world, exactly matching the active Reel visual DNA and adapted only to horizontal 16:9. Clean, serious, premium flat 2D. Perfectly round Countryball actors, simple white eyes, thick clean black outlines, controlled flat colors, restrained soft graphic shading, adult and informative, never childish or goofy.
+Serious Minimal Countryball Explainer visual world, exactly matching the active Reel visual DNA and adapted only to horizontal 16:9. Clean, serious, premium flat 2D illustration. Perfectly round Countryball actors, simple white eyes, thick clean black outlines, controlled flat colors, restrained soft graphic shading, adult and informative, never childish or goofy.
 
 ABSOLUTE ACTOR LOCK:
 - ONLY Countryball-style figures may act as people or groups.
@@ -58,32 +59,76 @@ ABSOLUTE ACTOR LOCK:
 - NO human silhouettes.
 - NO human hands, arms, heads, faces, bodies or crowds.
 - If a scene normally needs a person, replace that person with a Countryball actor or symbolic object.
-- Buildings, documents, maps and objects may appear, but human figures may not.
+- Buildings, documents, maps, streets, rooms and objects may appear, but human figures may not.
 
-No photorealism. No realistic human scenes. No glossy 3D. No Pixar. No clay. No anime. No busy icon collage.
+No photorealism. No realistic human scenes. No glossy 3D. No Pixar. No clay. No anime.
+
+==================================================
+SCENE ILLUSTRATION V2 — HARD LOCK
+==================================================
+THIS VIDEO MUST LOOK LIKE A SERIES OF CLEAR ILLUSTRATED SCENES, NOT LIKE ABSTRACT INFOGRAPHIC POSTERS.
+
+Prefer:
+- a recognizable place or situation: courthouse, town square, parliament exterior, market street, school entrance, road, bridge, voting place, library, public square, home/property scene, city street
+- Countryballs visibly doing something inside that place
+- one clear action or relationship per image
+- colorful but controlled flat 2D illustration
+- visible environmental context around the main idea
+- simple depth through foreground, midground and background
+- scene-specific props integrated naturally into the environment
+
+Avoid as a default:
+- abstract symbol boards
+- presentation-slide layouts
+- split-panel infographic posters
+- multiple boxed explanations
+- rows of icons
+- giant diagram arrows floating in empty space
+- tiny Countryballs surrounded by labels
+- beige/navy monotony across many consecutive images
+- one static object centered on an empty background
+
+Use infographic structure ONLY when the spoken idea genuinely cannot be shown as a concrete scene. Even then, keep it to one relationship, not a dashboard.
+
+==================================================
+COLOR & ILLUSTRATION QUALITY — HARD LOCK
+==================================================
+The video should feel more vivid, approachable and visually rich while staying in the same Countryball world.
+
+- Use a broader scene-based palette across the video: sky blue, warm cream, soft green, terracotta, muted red, mustard yellow, teal and navy may all appear when appropriate.
+- Do NOT make every image beige + dark blue.
+- Each image should still have one dominant palette with 1–3 supporting accents.
+- Consecutive images should normally vary background hue and environment when the narration changes.
+- Buildings and environments should be simplified but attractive illustrated forms, not sterile symbols.
+- Countryballs remain the cleanest, most visually dominant actors.
+- Text must support the scene, not turn the scene into a poster.
 
 ==================================================
 PREMIUM DESIGN LAYER V1 — HARD LOCK
 ==================================================
 Premium means BETTER DESIGN INSIDE THE SAME COUNTRYBALL WORLD, never a style change.
-Use clear visual hierarchy, meaningful scale contrast, deliberate 16:9 balance, purposeful overlaps, elegant flat foreground/midground/background layering when useful, one coherent palette with one dominant base color and one or two controlled accents, intentional negative space and clean typography.
+Use clear visual hierarchy, meaningful scale contrast, deliberate 16:9 balance, purposeful overlaps, elegant flat foreground/midground/background layering when useful, intentional negative space and clean typography.
 Prefer visual relationships over object lists. Avoid random centering, weak empty backgrounds, generic icon grids and repeated layouts.
 Clean does NOT mean empty. Minimal does NOT mean lifeless. Premium does NOT mean realistic.
 
 ==================================================
 VISUAL STORYTELLING HARD LOCK
 ==================================================
-Use relationships such as freedom→limit, individual→state, right→protection, old order→constitutional order, market→rules, formal freedom→real opportunity, equal law→equal protection and personal freedom→rights of others. Every image must communicate one clear idea within about one second.
+Show the spoken idea through an action or situation whenever possible:
+- freedom = Countryball choosing or moving freely
+- state power = institution physically setting or enforcing a boundary
+- rights = legal protection inside a concrete scene
+- equality before law = different Countryballs entering the same courthouse process
+- opportunity = bridge, school, road or access becoming usable
+- market freedom = Countryballs buying, selling or choosing between stalls
+- conflict between freedoms = two paths meeting at one shared boundary
+
+Every image must communicate one clear idea within about one second.
 
 ==================================================
 ADAPTIVE IMAGE DENSITY V3 — HARD LOCK
 ==================================================
 There is NO fixed target image count as a global rule. This project contains 32 images because the narration has 32 distinct visual purposes. One image = one clear visual purpose. Dense ideas are split instead of overloaded. Preferred average hold is about 4.5–7.5 seconds. No filler images. Complex information should be split across multiple elegant images rather than compressed into one overloaded frame.
-
-==================================================
-ANTI-LIFELESS HARD LOCK
-==================================================
-Avoid tiny isolated subjects lost in huge empty backgrounds, meaningless icon collages, mechanically repeated centered-countryball layouts, flat rows of unrelated symbols, or repeated compositions with only labels changed.
 
 ==================================================
 DEUTSCH-HARD-LOCK
@@ -92,144 +137,153 @@ Every readable word must be German. English visible text or pseudo-text = HARD F
 
 BILD 01 — COVER + ERSTE SZENE
 Audio: „Was ist Liberalismus?“
-Prompt: Premium 16:9 Countryball cover. One large neutral Countryball inside an open circular freedom frame, broken lock on one side, constitution card on the other, deep navy/cream/gold palette, layered foreground-midground-background. Add exactly: `WAS IST LIBERALISMUS?`
+Prompt: Bright premium 16:9 illustrated city-square scene in the Serious Minimal Countryball world. A large neutral Countryball stands at an open gate leading into a colorful civic square with a courthouse, parliament-style building and open road visible behind it. A broken chain lies near the gate, but the scene should feel like a real place, not a symbolic poster. Strong sky-blue and warm-cream base with mustard and teal accents. Add exactly: `WAS IST LIBERALISMUS?`
 
 BILD 02
 Audio: „Kurz gesagt: Liberalismus ist“
-Prompt: Large Countryball at center with several open paths radiating outward while a restrained protective legal ring keeps the composition coherent. Add exactly: `FREIHEIT DES EINZELNEN`.
+Prompt: Illustrated open-road scene. One large Countryball stands at a fork with several inviting roads leading toward a home, workplace, school and public square. The roads are open and uncluttered, with a low legal boundary fence protecting the area rather than trapping the figure. Fresh green, blue and warm yellow palette. Add exactly: `FREIHEIT DES EINZELNEN`.
 
 BILD 03
 Audio: „Aber wie viel Freiheit“
-Prompt: Balanced triangle between Countryball, government building and rights document, connected by one elegant line rather than separate icons. Add exactly: `FREIHEIT • STAAT • RECHTE`.
+Prompt: Concrete civic-street illustration: one Countryball walks freely along a broad road while a courthouse on one side and a government building on the other define the public space. A constitution document is visible on a stone stand near the path. No triangle diagram, no floating icon layout. Add exactly: `FREIHEIT • STAAT • RECHTE`.
 
 BILD 04
 Audio: „Die Grundidee ist einfach:“
-Prompt: Countryball chooses freely between several open life paths; no authority blocks the routes. Layered but minimal landscape. Add exactly: `SELBST BESTIMMEN`.
+Prompt: Colorful illustrated neighborhood scene. A Countryball chooses between several ordinary life directions: entering a small shop, taking a study path, walking toward a home, or joining a public square. The choice is shown through the environment itself, not through floating arrows or boxes. Add exactly: `SELBST BESTIMMEN`.
 
 BILD 05
 Audio: „Der Staat darf Freiheit“
-Prompt: Government-building symbol sends a restriction barrier toward a Countryball, but the barrier must pass through a visible justification checkpoint. Add exactly: `MACHT BRAUCHT GRÜNDE`.
+Prompt: Illustrated street checkpoint outside a government building. A Countryball approaches a temporary barrier, while a clearly visible law document and courthouse seal determine whether the barrier may stay. The scene should visually show that state restrictions need legal justification. Terracotta, cream and blue palette. Add exactly: `MACHT BRAUCHT GRÜNDE`.
 
 BILD 06
 Audio: „Diese Idee wurde besonders während der Aufklärung wichtig.“
-Prompt: Before-after historical composition: closed dark old order on left, brighter open ideas/books/light space on right, only Countryballs and symbols. Add exactly: `AUFKLÄRUNG`.
+Prompt: Historical illustrated reading-room and public-square scene. Countryballs gather around open books, printed pages and a bright window while an old locked gate in the background stands open for the first time. Warm amber light, deep blue evening outside, rich but simple flat 2D details. Add exactly: `AUFKLÄRUNG`.
 
 BILD 07
 Audio: „Denker wie John Locke“
-Prompt: Three equal-sized Countryballs stand on one level platform around a rights document and a key symbol; do NOT depict Locke or any human portrait. Add exactly: `FREI • GLEICH • RECHTE`.
+Prompt: Three equal Countryballs sit around a simple wooden table in a bright study room with one rights document, one key and one small law book between them. No portrait, no human thinker, no icon board. The equality of the figures should be obvious from their equal size and seating. Add exactly: `FREI • GLEICH • RECHTE`.
 
 BILD 08
 Audio: „Regierung sollte deshalb nicht einfach herrschen“
-Prompt: Government building enclosed by a constitutional boundary and linked to a ballot box, showing consent and limits. Add exactly: `MACHT IST BEGRENZT`.
+Prompt: Illustrated government-building entrance. Countryballs enter through a voting gate before the road reaches the government building, while a low constitutional stone wall surrounds the building and visibly limits its reach. Show consent and limits through the architecture. Add exactly: `MACHT IST BEGRENZT`.
 
 BILD 09
 Audio: „Daraus entstanden zentrale liberale Forderungen:“
-Prompt: One Countryball community connected by a single ribbon to speech bubble, faith symbol, property key and ballot box. Add exactly: `GRUNDRECHTE`.
+Prompt: One lively civic-square illustration. Different Countryballs speak at a small public microphone, enter a house of worship, hold a property key near a home and place a ballot into a box, all within one coherent public square. Keep only four clear actions, not floating icons. Add exactly: `GRUNDRECHTE`.
 
 BILD 10
 Audio: „Später wurden liberale Ideen eng“
-Prompt: Three institutional towers with balanced arrows and a ballot box in foreground, all within the Countryball world. Add exactly: `VERFASSUNG • GEWALTENTEILUNG`.
+Prompt: Illustrated institutional district with three separate buildings arranged around one central square: parliament, government office and courthouse. Countryballs move between them while no building dominates the others. A ballot box sits naturally near the parliament entrance. Add exactly: `VERFASSUNG • GEWALTENTEILUNG`.
 
 BILD 11
 Audio: „Trotzdem ist Liberalismus keine einzige feste Lehre.“
-Prompt: One broad liberalism path splits into several clean branches of equal visual weight. Add exactly: `NICHT NUR EINE FORM`.
+Prompt: Wide illustrated boulevard that begins as one road and naturally branches into several colorful streets through a town, each with a different destination. Countryballs choose different routes while still starting from the same plaza. No flowchart, no poster board. Add exactly: `NICHT NUR EINE FORM`.
 
 BILD 12
 Audio: „Innerhalb der liberalen Tradition“
-Prompt: Two equal Countryballs face two different open-door concepts: freedom from interference versus freedom enabled by real opportunity. Add exactly: `WAS BEDEUTET FREIHEIT?`.
+Prompt: Two Countryballs stand at neighboring doorways in the same street. One doorway is already open and unobstructed; the other is open but reached only by a broken step that needs repair. Show two understandings of freedom through the physical scene. Add exactly: `WAS BEDEUTET FREIHEIT?`.
 
 BILD 13
 Audio: „Klassische Liberale betonen besonders“
-Prompt: Countryball stands in a protected personal sphere while a government arrow stops at a strong legal boundary. Add exactly: `SCHUTZ VOR EINGRIFFEN`.
+Prompt: Illustrated home-and-street scene. A Countryball stands peacefully inside its own garden while a government vehicle or official gate stops at a clearly marked legal property boundary outside. No human police or officials. Add exactly: `SCHUTZ VOR EINGRIFFEN`.
 
 BILD 14
 Audio: „Für sie soll der Staat“
-Prompt: Government building supports one integrated system of rights shield, contract paper and scales. Add exactly: `RECHTE • VERTRÄGE • RECHT`.
+Prompt: Illustrated courthouse scene with Countryballs signing a contract at a desk, a property key visible beside them and a judge's bench represented only by courthouse architecture and scales symbol. No humans, no floating dashboard. Add exactly: `RECHTE • VERTRÄGE • RECHT`.
 
 BILD 15
 Audio: „Wirtschaftlich verbinden sie Freiheit“
-Prompt: Several Countryballs exchange goods across a simple market line with property key and competing stalls. Add exactly: `EIGENTUM • WETTBEWERB`.
+Prompt: Lively illustrated market street with several Countryballs choosing between two or three colorful stalls, exchanging goods and comparing prices. Small storefronts and a property key on one shop sign create context. Bright teal, red, yellow and cream accents. Add exactly: `EIGENTUM • WETTBEWERB`.
 
 BILD 16
 Audio: „Andere Liberale sagen:“
-Prompt: Before-after: on left an open door exists but the path has a missing bridge; on right the bridge appears and makes the opportunity usable. Add exactly: `FREIHEIT BRAUCHT CHANCEN`.
+Prompt: Illustrated neighborhood scene with an open destination visible across a small river. A Countryball has a legal right to cross, but the bridge is incomplete; beside it, a second finished bridge makes the same opportunity actually usable. No split-panel poster. Add exactly: `FREIHEIT BRAUCHT CHANCEN`.
 
 BILD 17
 Audio: „Wer keine Bildung erhält“
-Prompt: Countryball holds a freedom document but faces a missing school bridge and a high barrier, symbolic and flat. Add exactly: `FREI AUF DEM PAPIER?`.
+Prompt: Illustrated street leading toward a school. A Countryball holds a document marked as a freedom right, but the school route is blocked by a missing bridge and a high step. The school building should be clearly visible in the distance. Add exactly: `FREI AUF DEM PAPIER?`.
 
 BILD 18
 Audio: „Deshalb können öffentliche Bildung“
-Prompt: Countryball moves along a stable path supported by a school symbol, safety net and fair-rule markers integrated into the terrain. Add exactly: `CHANCEN ERMÖGLICHEN`.
+Prompt: Bright illustrated town scene where a Countryball crosses a completed bridge toward a school and public library, with a simple safety net under the bridge and clear fair-rule road signs. The support should feel built into the environment, not shown as icons. Add exactly: `CHANCEN ERMÖGLICHEN`.
 
 BILD 19
 Audio: „Hier liegt ein großer Konflikt innerhalb des Liberalismus:“
-Prompt: Balanced scale between a small government building and a large freedom sphere; neither side visually declared correct. Add exactly: `WIE VIEL STAAT?`.
+Prompt: Illustrated public-square scene with a Countryball standing between a small government office and a large open park. The government side offers protection and services, while the park side represents personal space and freedom. Balanced scene, no scale infographic. Add exactly: `WIE VIEL STAAT?`.
 
 BILD 20
 Audio: „Wie stark darf der Staat eingreifen“
-Prompt: Two state arrows: one shields rights, the other risks narrowing a Countryball freedom space; analytical balanced composition. Add exactly: `SCHÜTZEN ODER EINGREIFEN?`.
+Prompt: One concrete street scene. A Countryball walks along a public road while one government barrier protects it from a dangerous drop on one side, but another oversized barrier unnecessarily narrows the road on the other. Show the tension through physical space. Add exactly: `SCHÜTZEN ODER EINGREIFEN?`.
 
 BILD 21
 Audio: „Ein weiterer wichtiger Punkt sind gleiche Rechte.“
-Prompt: Several differently patterned Countryballs stand on one equal legal platform beneath a single law line. Add exactly: `GLEICHE RECHTE`.
+Prompt: Colorful courthouse plaza. Several differently patterned Countryballs stand in the same queue on the same level pavement, each holding the same simple legal card. The courthouse entrance is centered in the background. Add exactly: `GLEICHE RECHTE`.
 
 BILD 22
 Audio: „Liberale Ordnungen sollen Regeln“
-Prompt: Different Countryballs enter the same courthouse gate and receive identical legal shields. Add exactly: `GLEICH VOR DEM RECHT`.
+Prompt: Illustrated courthouse interior entrance with several different Countryballs passing through the exact same gate and receiving identical blue legal shields from an automated institutional desk. No human clerk. Add exactly: `GLEICH VOR DEM RECHT`.
 
 BILD 23
 Audio: „Individuen sollen grundsätzlich“
-Prompt: One large legal shield covers several different Countryballs equally, simple premium composition. Add exactly: `GLEICHER SCHUTZ`.
+Prompt: Outdoor illustrated rain scene in front of a courthouse. Several different Countryballs stand together under one large legal canopy that protects all of them equally from heavy rain. Use the canopy as a concrete visual metaphor, not a floating shield icon. Add exactly: `GLEICHER SCHUTZ`.
 
 BILD 24
 Audio: „Das bedeutet aber nicht“
-Prompt: Open road for a Countryball is bordered by clean safety rails and law markers, showing freedom within rules. Add exactly: `FREIHEIT ≠ REGELLOSIGKEIT`.
+Prompt: Bright illustrated road scene. A Countryball drives or rolls along a broad open road with sensible guardrails, traffic markings and one speed sign; the road is free and usable precisely because basic rules keep it safe. No diagram. Add exactly: `FREIHEIT ≠ REGELLOSIGKEIT`.
 
 BILD 25
 Audio: „Die Freiheit einer Person endet“
-Prompt: Two Countryballs' freedom paths intersect; a clear rights boundary prevents one path from crushing the other. Add exactly: `DEINE FREIHEIT – MEINE RECHTE`.
+Prompt: Two Countryballs move along two colorful paths that cross in a public park. A clear shared crossing line prevents either path from blocking or crushing the other. The scene should look natural and readable, not schematic. Add exactly: `DEINE FREIHEIT – MEINE RECHTE`.
 
 BILD 26
 Audio: „Deshalb gehören Gerichte“
-Prompt: Courthouse, law book and independent institution pillars form a protective arc around Countryballs. Add exactly: `RECHTSSTAAT`.
+Prompt: Attractive illustrated courthouse district. Countryballs enter the courthouse, a law library stands beside it and an independent institution building faces it across a clean plaza. Use warm cream stone, blue sky, green landscaping and navy accents. Add exactly: `RECHTSSTAAT`.
 
 BILD 27
 Audio: „Heute findet man liberale Ideen“
-Prompt: Modern democratic scene made only of Countryballs, ballot box, constitution and minority shield integrated into one premium landscape. Add exactly: `GRUNDRECHTE • WAHLEN • MINDERHEITENSCHUTZ`.
+Prompt: Modern colorful democratic city-square illustration. Countryballs vote at a booth, read a constitution display and stand beneath a protected minority-rights banner integrated into the square. No humans and no collage of isolated icons. Add exactly: `GRUNDRECHTE • WAHLEN • MINDERHEITENSCHUTZ`.
 
 BILD 28
 Audio: „Trotzdem unterscheiden sich liberale Parteien“
-Prompt: Three Countryball groups stand on distinct policy paths for market, social protection and regulation; neutral balance, no party logos. Add exactly: `VERSCHIEDENE LIBERALE WEGE`.
+Prompt: One illustrated city intersection with three real streets leading toward different policy environments: a market district, a social-services district and a regulated civic district. Three Countryball groups choose different roads while sharing the same starting square. No three-column infographic. Add exactly: `VERSCHIEDENE LIBERALE WEGE`.
 
 BILD 29
 Audio: „Liberalismus bedeutet also nicht einfach“
-Prompt: Tiny-state symbol is crossed out while a balanced state-and-rights system remains as the main composition. Add exactly: `NICHT EINFACH „WENIG STAAT“`.
+Prompt: Illustrated small-town scene. On one side, an obviously under-equipped tiny government hut cannot maintain a broken road or protect a Countryball; in the center, a functioning courthouse, public road and rights boundary show that liberalism is not simply absence of government. No crossed-out poster panel. Add exactly: `NICHT EINFACH „WENIG STAAT“`.
 
 BILD 30
 Audio: „Der gemeinsame Kern ist“
-Prompt: Large Countryball freedom sphere protected by a constitution ring while a government building remains outside the ring but connected. Add exactly: `FREIHEIT + RECHTE`.
+Prompt: Warm illustrated neighborhood scene. A large Countryball moves freely through an open public space while a courthouse, constitution monument and low government building form a protective civic background without dominating the figure. Add exactly: `FREIHEIT + RECHTE`.
 
 BILD 31
 Audio: „Die entscheidende Frage lautet deshalb:“
-Prompt: Countryball approaches a fork where both routes are framed by laws; one protects rights, one over-constrains them. Add exactly: `WELCHE REGELN BRAUCHT FREIHEIT?`.
+Prompt: Illustrated fork in a city park. One route has sensible guardrails and remains wide and open; the other has too many barriers and becomes narrow. A Countryball pauses before choosing. Show the question through the environment rather than labels. Add exactly: `WELCHE REGELN BRAUCHT FREIHEIT?`.
 
 BILD 32
 Audio: „Welche Regeln brauchen wir“
-Prompt: Two equal Countryballs move freely on separate paths that meet at a shared rights boundary and continue toward an open horizon. Add exactly: `FREIHEIT MIT GRENZEN`.
+Prompt: Final hopeful illustrated landscape at sunset. Two equal Countryballs travel freely on separate paths through the same open civic landscape; the paths meet at one clearly marked shared rights crossing and continue toward a bright horizon. Rich sky colors, green terrain, warm buildings in the distance. Add exactly: `FREIHEIT MIT GRENZEN`.
 
 FOR EVERY SINGLE IMAGE ABOVE:
-Use only perfectly round Countryball-style actors where actors are needed. NO humans, NO humanoid people, NO human silhouettes, NO human hands or human crowds. Thick clean black outlines, flat controlled 2D colors, restrained soft graphic shading, one coherent premium palette, no 3D, no realism, no English text, no pseudo-text.
+- Use only perfectly round Countryball-style actors where actors are needed.
+- NO humans, NO humanoid people, NO human silhouettes, NO human hands or human crowds.
+- Prefer a concrete illustrated scene over an abstract diagram.
+- NO infographic dashboard, NO multi-box explainer poster, NO icon grid unless a prompt explicitly requires it.
+- Thick clean black outlines, flat controlled 2D colors, restrained soft graphic shading.
+- Use richer scene-based color variation; do not repeat beige/navy as the dominant palette across consecutive images.
+- Keep Countryballs visually dominant and environments simple but attractive.
+- No 3D, no realism, no English text, no pseudo-text.
 
 FINALER CHECK
 - Visual Policy V5 aktiv
 - Design Quality V1 aktiv
 - Adaptive Pacing V3 aktiv
 - Script Opening Policy V1 aktiv
+- Scene Illustration Policy V2 aktiv
 - ACTIVE_STYLE_ID = serious-minimal-countryball-explainer-youtube-16x9
 - gleiche Countryball-Bildwelt wie Reels, nur 16:9
 - absolut keine Menschen, menschlichen Silhouetten, Hände oder humanoiden Figuren
-- Premium Design Layer ohne Stilwechsel
+- konkrete anschauliche Illustration statt abstrakter Poster-/Infografik-Welt
+- mehr Farbvariation und echte Szenen, aber kein Stilwechsel
 - 32 inhaltsgetriebene Bildmomente, keine Füllbilder
 - Bild 01 exakt 3 Cover-Kandidaten, genau 1 Gewinner
 - Bild 02–32 jeweils genau einmal generiert
