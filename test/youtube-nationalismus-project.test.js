@@ -94,5 +94,5 @@ test('Nationalismus-Projekt besteht das echte Phase-1-Policy-Gate', () => {
   const result = runPhase1Gate();
   assert.equal(result.status, 0, result.stderr || result.stdout);
   assert.match(result.stdout, /BESTANDEN/i);
-  assert.match(result.stdout, /Premium Countryball V5/i);
+  assert.match(result.stdout, /Premium Serious-Minimal-Countryball V5/i);
 });
