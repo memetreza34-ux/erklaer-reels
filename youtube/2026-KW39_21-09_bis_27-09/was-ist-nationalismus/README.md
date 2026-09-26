@@ -26,12 +26,6 @@ Dieselbe Serious-Minimal-Countryball-DNA wie die Reels, nur 16:9. V5 ergänzt Pr
 ## Phase 3
 
 ```bash
-npm run phase3:youtube -- --dir "youtube/2026-KW39_21-09_bis_DD-MM/was-ist-nationalismus"
-```
-
-Korrekte Projektwoche:
-
-```bash
 npm run phase3:youtube -- --dir "youtube/2026-KW39_21-09_bis_27-09/was-ist-nationalismus"
 ```
 
