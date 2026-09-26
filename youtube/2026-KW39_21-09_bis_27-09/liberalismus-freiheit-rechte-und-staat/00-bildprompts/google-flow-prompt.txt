@@ -126,6 +126,11 @@ Show the spoken idea through an action or situation whenever possible:
 Every image must communicate one clear idea within about one second.
 
 ==================================================
+ANTI-LIFELESS HARD LOCK
+==================================================
+No lifeless poster frames, no tiny isolated Countryball on an empty background, no static symbol board and no repeated beige/navy template. Every image should feel like a small illustrated moment with a place, action or visible relationship. If a prompt starts to resemble a slide, infographic dashboard or classroom poster, convert it into a concrete scene before generating.
+
+==================================================
 ADAPTIVE IMAGE DENSITY V3 — HARD LOCK
 ==================================================
 There is NO fixed target image count as a global rule. This project contains 32 images because the narration has 32 distinct visual purposes. One image = one clear visual purpose. Dense ideas are split instead of overloaded. Preferred average hold is about 4.5–7.5 seconds. No filler images. Complex information should be split across multiple elegant images rather than compressed into one overloaded frame.
