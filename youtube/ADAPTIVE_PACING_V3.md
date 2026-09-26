@@ -4,7 +4,7 @@ Gültig für neue YouTube-Projekte mit `schemaVersion >= 10`.
 
 ## Ziel
 
-Die Bildanzahl folgt dem Inhalt, nicht einer festen Zielzahl. **Mehr Bilder sind ausdrücklich erwünscht, wenn ein Abschnitt mehrere klar unterscheidbare visuelle Gedanken enthält.** Füllbilder bleiben verboten.
+Die Bildanzahl folgt dem Inhalt, nicht einer festen Zielzahl. **Es gibt keine feste Bildzahl.** **Mehr Bilder sind ausdrücklich erwünscht, wenn ein Abschnitt mehrere klar unterscheidbare visuelle Gedanken enthält.** Füllbilder bleiben verboten.
 
 ## Kernregel
 
