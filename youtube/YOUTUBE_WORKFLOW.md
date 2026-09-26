@@ -38,7 +38,7 @@ Nur `APPROVED_NEW / THEMEN-EDITOR: FREI` erlaubt die Produktion. `REVIEW_SIMILAR
 
 ## SCRIPT OPENING V1 — HARD LOCK
 
-Neue Schema-10+-YouTube-Skripte beginnen **nicht** mit einer abstrakten Definition oder einer allgemeinen Einleitung. Der Zuschauer soll sofort die Frage hören, wegen der er geklickt hat.
+Alle **neu angelegten Schema-11+-YouTube-Skripte** beginnen **nicht** mit einer abstrakten Definition oder einer allgemeinen Einleitung. Der Zuschauer soll sofort die Frage hören, wegen der er geklickt hat. Bestehende Schema-10-Projekte bleiben reproduzierbar und werden nicht rückwirkend gebrochen.
 
 Verbindliche Reihenfolge, sofern der Nutzer nicht ausdrücklich für genau dieses Video einen anderen Einstieg verlangt:
 
@@ -69,7 +69,7 @@ Pflicht:
 
 Ziel: Der Einstieg soll sich so anfühlen, als beantworte das Video **sofort die Frage im Kopf des Zuschauers**.
 
-Das Phase-1-Gate prüft diese Struktur technisch. Ein abweichender Einstieg ist nur zulässig, wenn eine aktuelle ausdrückliche Nutzeranweisung ihn für das konkrete Video verlangt und dies im Projekt als Override dokumentiert wird.
+Das Phase-1-Gate prüft diese Struktur für Schema 11+ technisch. Ein abweichender Einstieg ist nur zulässig, wenn eine aktuelle ausdrückliche Nutzeranweisung ihn für das konkrete Video verlangt und dies im Projekt als Override dokumentiert wird.
 
 ## VERBINDLICHE YOUTUBE-BILDWELT — HARD LOCK
 
@@ -159,8 +159,10 @@ Vor Flow:
 npm run validate:youtube-phase1 -- --dir "youtube/<woche>/<thema>"
 ```
 
-Für neue Schema-10+-Projekte prüft das Gate:
+Für neue Schema-11+-Projekte prüft das Gate zusätzlich:
 - Script Opening Policy V1
+
+Für Schema-10+-Projekte prüft es weiterhin:
 - Visual Policy V5
 - Design Quality V1
 - Adaptive Pacing V3
@@ -295,7 +297,7 @@ Reihenfolge:
 
 - neues Projekt vor Themenfreigabe
 - Duplikat nur umformulieren
-- abstrakter Definitions-Einstieg vor der eigentlichen Videofrage
+- bei neuen Schema-11+-Projekten: abstrakter Definitions-Einstieg vor der eigentlichen Videofrage
 - generisches `In diesem Video erklären wir ...`
 - Stilwechsel unter dem Wort „Premium“
 - realistische Editorial-/Menschenwelt statt Countryball-DNA
@@ -325,7 +327,7 @@ Reihenfolge:
 03-export/YOUTUBE-TAGS.txt
 ```
 
-## Definition of Done für neue Schema-10+-Projekte
+## Definition of Done für neu angelegte Schema-11+-Projekte
 
 Fertig erst wenn:
 - Themen-Editor `APPROVED_NEW`
