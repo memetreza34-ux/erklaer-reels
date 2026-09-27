@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "timingSource": "FINAL_TIMELINE.json",
+  "chapters": [
+    {"imageNumber":1,"title":"Was Anarchismus bedeutet"},
+    {"imageNumber":4,"title":"Woher der Begriff kommt"},
+    {"imageNumber":7,"title":"Anarchismus im 19. Jahrhundert"},
+    {"imageNumber":8,"title":"Proudhon, Bakunin und Kropotkin"},
+    {"imageNumber":14,"title":"Wie Selbstorganisation funktionieren soll"},
+    {"imageNumber":19,"title":"Die offenen Probleme"},
+    {"imageNumber":23,"title":"Anarchismus und Gewalt"},
+    {"imageNumber":24,"title":"Regeln ohne Herrscher"},
+    {"imageNumber":25,"title":"Kann das im Großen funktionieren?"}
+  ]
+}
