@@ -1,0 +1,351 @@
+YOUTUBE_VISUAL_POLICY_VERSION: 5
+DESIGN_QUALITY_VERSION: 1
+ADAPTIVE_PACING_VERSION: 3
+SCRIPT_OPENING_POLICY_VERSION: 1
+SCENE_ILLUSTRATION_POLICY_VERSION: 2
+TOPIC_VISUAL_RELEVANCE_POLICY_VERSION: 1
+VISUAL_FLEXIBILITY_POLICY_VERSION: 1
+END_HOLD_POLICY_VERSION: 1
+COVER_POLICY_VERSION: 1
+ASSET_GENERATION_POLICY_VERSION: 1
+ACTIVE_STYLE_ID: serious-minimal-countryball-explainer-youtube-16x9
+
+GOOGLE FLOW MASTER PROMPT — Anarchismus: Kann eine Gesellschaft ohne Staat funktionieren?
+
+ZIEL
+Erzeuge ausschließlich Bild 01 bis Bild 25. Kein Bild 00. Die 25 Bildmomente wurden inhaltlich aus dem Sprechertext abgeleitet.
+
+==================================================
+FIRST SCENE = COVER HARD LOCK
+==================================================
+- Bild 01 is the cover AND the first video scene.
+- Bild 01 starts the actual video at 0.0 seconds.
+- Bild 01 must contain a strong short German cover headline AND visually support the first spoken idea.
+- The exported YouTube thumbnail is copied from Bild 01.png.
+- Do NOT create Bild 00.
+- Do NOT create a separate thumbnail image outside the timeline.
+
+==================================================
+COVER = 3 CANDIDATES HARD LOCK
+==================================================
+- Generate Bild 01 exactly THREE times as temporary cover candidates.
+- Compare only these three cover candidates.
+- Select exactly ONE winner.
+- Rename only the selected winner exactly once to `Bild 01.png`.
+- Discard the other two cover candidates completely.
+
+==================================================
+NON-COVER = SINGLE GENERATION HARD LOCK
+==================================================
+- Every image from Bild 02 through Bild 25 is generated exactly ONCE.
+- Do not create a second version of any non-cover image.
+- Do not stop for manual review after five-image waves.
+- Rename each finished non-cover image exactly once to its final `Bild NN.png` name.
+- Maximum five active generations at the same time.
+
+==================================================
+FINAL IMAGE FOLDER HARD LOCK
+==================================================
+At the end, all final images must exist in exactly one flat folder:
+`00-bildprompts/images/`
+Only `Bild 01.png` through `Bild 25.png`. No subfolders, no alternates, no Bild 00.
+
+==================================================
+SESSION RESET HARD LOCK
+==================================================
+- Use a fresh Google Flow session for this Schema-13 project.
+- The ONLY active style is `serious-minimal-countryball-explainer-youtube-16x9`.
+- Do not use any previous generated image as a visual reference.
+- Bild 01 is NOT a master style reference.
+
+==================================================
+WRITTEN STYLE LOCK — SERIOUS MINIMAL COUNTRYBALL
+==================================================
+Serious Minimal Countryball Explainer visual world, 16:9. Clean serious flat 2D explainer illustration, thick clean black outlines, controlled flat colors, restrained graphic shading, adult and informative. Countryballs belong to the world but are OPTIONAL per image. If used: perfectly round, simple white eyes, restrained expression, tiny simple limbs only when action requires them.
+
+No normal illustrated humans. No human silhouettes. No realistic hands. No stick figures. No photorealism. No glossy 3D. No Pixar. No clay. No anime.
+
+==================================================
+SCENE ILLUSTRATION V2 — HARD LOCK
+==================================================
+THIS VIDEO MUST LOOK LIKE A SERIES OF CLEAR ILLUSTRATIONS, NOT LIKE ABSTRACT INFOGRAPHIC POSTERS.
+Use the clearest visual form for each sentence: one object, one document, one simple schema, one Countryball action, several actors, several related elements, or a full environment.
+Do not force busy scenes. Do not force Countryballs. Do not force foreground/midground/background when a simple illustration is clearer.
+
+==================================================
+VISUAL FLEXIBILITY V1 — HARD LOCK
+==================================================
+COUNTRYBALLS ARE OPTIONAL PER IMAGE. DO NOT FORCE A CHARACTER INTO THE FRAME.
+
+Explicitly allowed:
+- object-only
+- document-only
+- map-only
+- simple-schema
+- countryball-action
+- multi-actor
+- multi-element
+- full-scene
+
+A single dominant object is allowed when it explains the point best. A short schema is allowed when structure is easier to understand than a staged scene. Multiple Countryballs or objects are allowed when the spoken idea genuinely needs interaction or comparison.
+
+Simplicity is NOT a quality failure. Unnecessary complexity is a quality failure.
+BEST VISUAL FORM > FORCED COUNTRYBALL > FORCED COMPLEX SCENE.
+
+==================================================
+TOPIC VISUAL RELEVANCE V1 — HARD LOCK
+==================================================
+EVERY IMAGE MUST MATCH BOTH THE CURRENT SPOKEN SENTENCE AND THE SPECIFIC VIDEO TOPIC.
+The specific topic is ANARCHISMUS: Kritik an dauerhafter Herrschaft, Staat und Hierarchie; freiwillige Kooperation, Föderation, Selbstverwaltung, gegenseitige Hilfe sowie die offenen Probleme einer staatenlosen Ordnung.
+
+Every Bild NN below has a `Topic Anchor:` and a `Visual Form:`. Do not replace them with generic political imagery. No random national flags or Countryballs. France/Russia only when historically relevant to the named thinker.
+
+==================================================
+PREMIUM DESIGN LAYER V1 — HARD LOCK
+==================================================
+Premium means better design inside the SAME visual world, never forced complexity. One clear reading order, controlled palette, clean spacing, strong hierarchy. Text supports the illustration and never replaces it. Premium does NOT mean realistic. Premium does NOT mean complicated.
+
+==================================================
+VISUAL STORYTELLING HARD LOCK
+==================================================
+Choose the visual grammar that explains the point fastest: single object, document, schema, relationship, comparison, or scene. If a map, object, document, building, institution or simple schema explains the point more clearly, use it WITHOUT forcing a Countryball.
+
+==================================================
+ADAPTIVE IMAGE DENSITY V3 — HARD LOCK
+==================================================
+There is NO fixed target image count in general. This project resolves to 25 meaningful image moments. One image = one clear visual purpose. Preferred average hold about 4.5–7.5 seconds. No filler images.
+
+==================================================
+ANTI-LIFELESS HARD LOCK
+==================================================
+Simple is allowed. Lifeless means generic, weak or unrelated. A strong topic-specific object, document, building or schema may intentionally stand alone.
+
+==================================================
+DEUTSCH-HARD-LOCK
+==================================================
+Every readable word must be German. English visible text or pseudo-text = HARD FAIL. If text is not explicitly requested, generate no readable text.
+
+==================================================
+BILDPLAN
+==================================================
+
+BILD 01 · D · 7.0 s
+Audio Anchor: "Was ist Anarchismus?"
+Visual Purpose: Starker Cover-Hook: Ordnung ohne zentralen Herrscher.
+Topic Anchor: Ein funktionierender Stadtplatz ohne zentrales Regierungsgebäude, mehrere lokale Einrichtungen sind horizontal verbunden.
+Visual Form: full-scene
+Composition Mode: supported-explainer
+Prompt: Create a premium 16:9 Serious Minimal Countryball Explainer cover. Show a clean functioning civic square with a cooperative workshop, local meeting hall, clinic and transit stop connected at the same level, while the usual dominant central government tower is absent. Use only a few small neutral Countryballs where useful, not as decoration. Flat 2D, thick black outlines, deep teal, warm stone and muted burgundy accents. Add exactly this large German headline: "WAS IST ANARCHISMUS?". No other readable text. No humans.
+
+BILD 02 · A · 3.5 s
+Audio Anchor: "Kurz gesagt: Anarchismus ist"
+Visual Purpose: Herrschaftskritik als einfache Struktur zeigen.
+Topic Anchor: Vertikale Befehlspyramide wird einer horizontalen Kooperation gegenübergestellt.
+Visual Form: simple-schema
+Composition Mode: simple-schema
+Prompt: Create a very simple 16:9 flat 2D schema in the same visual world. On the left, one tall hierarchy with a single top node commanding three lower nodes. On the right, four equal nodes connected horizontally with no top ruler. Clean thick black lines, restrained teal and burgundy accents, no Countryballs needed. Add exactly: "HIERARCHIE" on the left and "SELBSTORGANISATION" on the right. No other text.
+
+BILD 03 · B · 4.5 s
+Audio Anchor: "Aber wie soll Ordnung ohne Regierung funktionieren?"
+Visual Purpose: Die zentrale Leitfrage sichtbar machen.
+Topic Anchor: Eine Stadt funktioniert mit lokalen Einrichtungen, aber ohne zentrales Regierungszentrum.
+Visual Form: multi-element
+Composition Mode: supported-explainer
+Prompt: Show a simple illustrated city block from above with clinic, workshop, market, school and transit stop connected by streets, but no central government tower or command center. No characters are required. Keep the scene clean, colorful and easy to read. Add exactly: "ORDNUNG OHNE REGIERUNG?". No other text.
+
+BILD 04 · A · 3.5 s
+Audio Anchor: "Das Wort kommt aus dem Griechischen."
+Visual Purpose: Sprachlichen Ursprung kurz markieren.
+Topic Anchor: Antike griechische Inschrift-Idee für Herrschaft, ohne komplizierte Historienkulisse.
+Visual Form: object-only
+Composition Mode: single-object-illustration
+Prompt: Create one strong antique Greek stone tablet as the dominant object in the same flat 2D visual world, with a simple broken ruler's staff carved into it as a symbolic reference to absence of ruling power. Warm sandstone, dark teal background, thick clean outline. No Countryball. No readable text.
+
+BILD 05 · A · 4.0 s
+Audio Anchor: "Dabei heißt Anarchismus nicht automatisch Chaos"
+Visual Purpose: Anarchismus von Chaos unterscheiden.
+Topic Anchor: Geordnete Regeln ohne Staatssiegel.
+Visual Form: object-only
+Composition Mode: single-object-illustration
+Prompt: Show one clean open community rulebook on a desk, neatly organized with simple check marks and lines but no state seal, crown or government emblem. Same flat 2D world, strong black outline, cream paper, dark green cover, small burgundy accent. Add exactly: "REGELN OHNE HERRSCHER". No Countryballs, no other text.
+
+BILD 06 · B · 5.0 s
+Audio Anchor: "Viele anarchistische Ideen wollen Regeln und Zusammenarbeit"
+Visual Purpose: Freiwillige Zusammenarbeit konkret zeigen.
+Topic Anchor: Lokale Gemeinschaft beschließt gemeinsam einfache Regeln.
+Visual Form: multi-actor
+Composition Mode: simple-mini-scene
+Prompt: Show five neutral round Countryballs around one circular community table, all at equal height with no head position. A shared rule sheet lies in the center. They are calmly discussing and pointing to the same sheet. Flat 2D, thick outlines, green and warm orange accents. No readable text. No humans.
+
+BILD 07 · B · 4.5 s
+Audio Anchor: "Im 19. Jahrhundert wurde daraus eine politische Bewegung."
+Visual Purpose: Historische Entstehungsphase markieren.
+Topic Anchor: Anarchistische politische Schriften und Vereinsbewegung im 19. Jahrhundert.
+Visual Form: document-only
+Composition Mode: document-only
+Prompt: Show a stack of 19th-century political pamphlets and printing sheets on a wooden printing desk in flat 2D style. No people, no Countryballs. Include one clean German date label only: "19. JAHRHUNDERT". Restrained ink-black, cream, dark red and teal palette.
+
+BILD 08 · B · 4.5 s
+Audio Anchor: "Pierre-Joseph Proudhon war einer der ersten bekannten Denker"
+Visual Purpose: Proudhon als frühen Anarchismus-Denker markieren.
+Topic Anchor: Proudhons französischer 19.-Jahrhundert-Kontext.
+Visual Form: document-only
+Composition Mode: single-object-illustration
+Prompt: Create one elegant old political book as the main object, with a small historically relevant French tricolor ribbon beside it. On the book cover write exactly: "PROUDHON". Same flat 2D style, thick outlines, parchment cream and dark green. No human portrait, no Countryball.
+
+BILD 09 · C · 5.5 s
+Audio Anchor: "Er stellte sich eine Gesellschaft aus freiwilligen Vereinigungen"
+Visual Purpose: Proudhons Föderationsidee anschaulich zeigen.
+Topic Anchor: Freiwillige lokale Vereinigungen verbinden sich ohne zentrale Spitze.
+Visual Form: simple-schema
+Composition Mode: simple-schema
+Prompt: Create a clean horizontal federation schema: four distinct local association buildings — workshop, market cooperative, neighborhood hall and mutual-aid office — linked by equal lines to each other, with no top node. Use small building illustrations instead of abstract icons. Add exactly: "FREIWILLIGE VERBINDUNGEN". No Countryballs needed.
+
+BILD 10 · A · 3.5 s
+Audio Anchor: "Später entstanden sehr unterschiedliche Strömungen."
+Visual Purpose: Vielfalt des Anarchismus kurz öffnen.
+Topic Anchor: Mehrere Wege gehen vom gemeinsamen Herrschaftskritik-Kern aus.
+Visual Form: simple-schema
+Composition Mode: route-progression
+Prompt: Show one simple branching road diagram in the same 2D visual world. A single base labeled "ANARCHISMUS" branches into several differently colored paths without extra labels. Keep it minimal and elegant, no Countryballs. No other readable text.
+
+BILD 11 · B · 4.5 s
+Audio Anchor: "Michail Bakunin setzte auf kollektivistische Formen"
+Visual Purpose: Bakunin und kollektivistischen Anarchismus markieren.
+Topic Anchor: Bakunins Ablehnung zentraler Staatsmacht bei gemeinschaftlicher Organisation.
+Visual Form: document-only
+Composition Mode: single-object-illustration
+Prompt: Show one dark red 19th-century political pamphlet with a small historically relevant Russian-origin detail, such as a restrained old map corner, but no flag decoration. Write exactly "BAKUNIN" on the cover. A small crossed-out central government tower symbol may appear embossed below the name. Flat 2D, no person, no Countryball.
+
+BILD 12 · B · 4.5 s
+Audio Anchor: "Peter Kropotkin betonte gegenseitige Hilfe"
+Visual Purpose: Kropotkins Idee gegenseitiger Hilfe verankern.
+Topic Anchor: Gegenseitige Hilfe als organisierendes Prinzip.
+Visual Form: object-only
+Composition Mode: single-object-illustration
+Prompt: Create one strong book cover object in the same flat 2D world, titled exactly "GEGENSEITIGE HILFE" with the smaller name "KROPOTKIN" beneath it. Add a simple interlocking two-link motif integrated into the cover, not floating around it. No character, no humans.
+
+BILD 13 · C · 5.5 s
+Audio Anchor: "Der gemeinsame Kern ist deshalb weniger ein fertiger Bauplan"
+Visual Purpose: Gemeinsamen Kern als offene Herrschaftsfrage zeigen.
+Topic Anchor: Keine feste Staatsarchitektur, sondern Prüfung von Macht und Hierarchie.
+Visual Form: simple-schema
+Composition Mode: conceptual-metaphor
+Prompt: Show a clean blueprint-like layout of a city where a huge central command tower is outlined but visibly erased, while several equal local centers remain connected. Keep it one simple coherent schema, not a dashboard. Add exactly: "WER HERRSCHT?". No Countryballs.
+
+BILD 14 · B · 4.5 s
+Audio Anchor: "Viele Anarchisten antworten mit Selbstorganisation."
+Visual Purpose: Selbstorganisation praktisch zeigen.
+Topic Anchor: Lokale Gruppe organisiert eine Aufgabe ohne Chefposition.
+Visual Form: multi-actor
+Composition Mode: simple-mini-scene
+Prompt: Show four neutral Countryballs organizing a neighborhood food distribution table together. No one is elevated, no leader podium, each has one clear task. Same serious flat 2D world, colorful crates, clean composition. No readable text.
+
+BILD 15 · B · 4.5 s
+Audio Anchor: "Betriebe könnten von den Beschäftigten selbst verwaltet werden."
+Visual Purpose: Betriebliche Selbstverwaltung zeigen.
+Topic Anchor: Kooperativ geführte Werkstatt.
+Visual Form: full-scene
+Composition Mode: simple-mini-scene
+Prompt: Show a small cooperative workshop with three Countryball workers jointly checking a production board at the same level. No boss office, no elevated manager. Machines and workbenches are simple flat 2D shapes. Add exactly one sign: "SELBSTVERWALTET". No other text.
+
+BILD 16 · B · 4.5 s
+Audio Anchor: "Gemeinden könnten Entscheidungen lokal treffen."
+Visual Purpose: Lokale Entscheidungsfindung darstellen.
+Topic Anchor: Kommunale Versammlung auf lokaler Ebene.
+Visual Form: multi-actor
+Composition Mode: simple-mini-scene
+Prompt: Show a small local meeting hall with six neutral Countryballs seated in a circle around a simple neighborhood map. No leader chair, no stage. Flat 2D, warm civic palette. Add exactly: "LOKAL ENTSCHEIDEN". No other text.
+
+BILD 17 · B · 5.0 s
+Audio Anchor: "Mehrere Gemeinden könnten sich freiwillig zu Föderationen zusammenschließen."
+Visual Purpose: Föderation ohne zentrale Spitze erklären.
+Topic Anchor: Mehrere Gemeinden verbinden sich horizontal.
+Visual Form: simple-schema
+Composition Mode: simple-schema
+Prompt: Create a clean map-like schema of five small town illustrations connected by equal lines. No capital city, no top node, no arrows from above. Add exactly: "FÖDERATION". Use one controlled palette with each town slightly distinct. No Countryballs needed.
+
+BILD 18 · C · 5.5 s
+Audio Anchor: "Aufgaben wie Versorgung, Verkehr oder Bildung"
+Visual Purpose: Große Alltagsaufgaben dezentral koordinieren.
+Topic Anchor: Versorgung, Verkehr und Bildung als zusammenhängende öffentliche Funktionen.
+Visual Form: full-scene
+Composition Mode: supported-explainer
+Prompt: Show one coherent district with a school, local clinic, tram line and food cooperative all connected in the same city scene. Countryballs are optional; include only a few where needed for scale. No central government building. Flat 2D, clear streets, green, blue and warm orange accents. No readable text.
+
+BILD 19 · A · 3.5 s
+Audio Anchor: "Das klingt allerdings einfacher, als es ist."
+Visual Purpose: Übergang zu den offenen Problemen.
+Topic Anchor: Dezentrales Netzwerk stößt auf komplizierte Verbindungen.
+Visual Form: object-only
+Composition Mode: single-object-illustration
+Prompt: Show one large tangled junction box of equal community network lines as a strong single object, with several clean cables entering and one knot-like crossing in the middle. Same flat 2D visual world. No Countryballs, no text. It should suggest coordination difficulty without looking chaotic or broken.
+
+BILD 20 · C · 6.0 s
+Audio Anchor: "Wer löst Konflikte?"
+Visual Purpose: Kernprobleme Sicherheit, Konfliktlösung und gemeinsame Regeln zusammenfassen.
+Topic Anchor: Lokaler Streit ohne zentrale Polizei oder Gerichtshierarchie.
+Visual Form: multi-actor
+Composition Mode: simple-mini-scene
+Prompt: Show two Countryballs in a clear property or resource dispute at a neighborhood boundary, while three equal community mediators sit at a low round table nearby. No police uniform, no judge throne, no central authority. Add exactly: "WER ENTSCHEIDET?". Flat 2D, restrained serious palette.
+
+BILD 21 · C · 5.5 s
+Audio Anchor: "Anarchistische Antworten darauf sind unterschiedlich."
+Visual Purpose: Verschiedene Lösungsmechanismen ohne Dashboard zeigen.
+Topic Anchor: Konsens, Vertrag und Genossenschaft in einer zusammenhängenden Selbstverwaltungs-Szene.
+Visual Form: multi-element
+Composition Mode: supported-explainer
+Prompt: Show one community hall scene where a round table discussion, a signed voluntary agreement on the table and a cooperative service desk are naturally part of the same environment. Use a few Countryballs only where useful. Add exactly: "KONSENS · VERTRAG · HILFE" as one short line integrated above the table. No other text.
+
+BILD 22 · C · 6.0 s
+Audio Anchor: "Kritiker bezweifeln vor allem"
+Visual Purpose: Skalierungsproblem großer Gesellschaften darstellen.
+Topic Anchor: Sehr großes dezentrales Netz muss Millionen Menschen und Infrastruktur koordinieren.
+Visual Form: full-scene
+Composition Mode: supported-explainer
+Prompt: Show a wide 16:9 metropolis with many local districts, transit lines, utilities and service centers connected in a large decentralized network. No central tower. The network is visibly complex but still legible. No Countryballs required. Add exactly: "FUNKTIONIERT DAS IM GROSSEN?". No other text.
+
+BILD 23 · B · 5.0 s
+Audio Anchor: "Auch das Bild vom grundsätzlich gewalttätigen Anarchisten ist zu einfach."
+Visual Purpose: Gewalt-Stereotyp differenziert darstellen.
+Topic Anchor: Historisch gab es militante und gewaltfreie anarchistische Traditionen.
+Visual Form: multi-element
+Composition Mode: comparison
+Prompt: Create a restrained archival tabletop illustration with two historical pamphlets side by side: one marked by a simple broken barricade motif, the other by a mutual-aid meeting motif. No weapons, no gore, no human figures. Add one German heading above both: "NICHT NUR EIN WEG". Keep it serious and non-sensational.
+
+BILD 24 · B · 5.0 s
+Audio Anchor: "Anarchismus bedeutet also nicht einfach „keine Regeln“."
+Visual Purpose: Schlussdefinition klar verdichten.
+Topic Anchor: Regeln existieren, aber ohne dauerhaft übergeordnete Herrscherposition.
+Visual Form: simple-schema
+Composition Mode: simple-schema
+Prompt: Create a very clean horizontal rule system: several equal community nodes are connected to one shared rule document in the center, with no top ruler node. Add exactly: "REGELN JA · HERRSCHER NEIN". Same flat 2D visual DNA, no Countryballs needed.
+
+BILD 25 · D · 7.0 s
+Audio Anchor: "Die große Streitfrage bleibt bis heute dieselbe:"
+Visual Purpose: Finale offene Frage zur Funktionsfähigkeit einer komplexen staatenlosen Gesellschaft.
+Topic Anchor: Große dezentrale Stadt funktioniert sichtbar, während offen bleibt, ob neue Machtzentren entstehen.
+Visual Form: full-scene
+Composition Mode: supported-explainer
+Prompt: Create a strong final 16:9 illustrated decentralized city in the same Serious Minimal visual world. Several equal local centers are connected by transport, services and community networks. No central state tower. At one edge, one local hub is becoming visibly larger than the others, subtly raising the question of whether new power can emerge. Use very few Countryballs only for scale. Add exactly: "ORDNUNG OHNE STAAT?". No other readable text. Hold this final frame after the last spoken word.
+
+FINALER CHECK
+- Visual Policy V5
+- Design Quality V1
+- Adaptive Pacing V3
+- Scene Illustration V2
+- Topic Visual Relevance V1
+- Visual Flexibility V1
+- End Hold V1
+- Countryballs optional per image
+- no forced actor insertion
+- simple object/schema images are valid
+- complex scenes only where useful
+- every image has Topic Anchor + Visual Form
+- Bild 01 exactly 3 cover candidates; one winner
+- Bild 02–25 exactly once each
+- all final files only in `00-bildprompts/images/`
+- no Bild 00
+- no image-to-image reference
+- all readable text German
+- final frame remains visible 1.2–1.5 s after final word, target 1.3 s
