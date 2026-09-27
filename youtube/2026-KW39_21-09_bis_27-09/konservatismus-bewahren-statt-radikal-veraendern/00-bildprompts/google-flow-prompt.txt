@@ -101,7 +101,8 @@ Use infographic structure only when the spoken idea genuinely cannot be shown as
 ==================================================
 TOPIC VISUAL RELEVANCE V1 — HARD LOCK
 ==================================================
-EVERY IMAGE MUST MATCH BOTH THE CURRENT SPOKEN SENTENCE AND THE SPECIFIC VIDEO TOPIC: KONSERVATISMUS.
+EVERY IMAGE MUST MATCH BOTH THE CURRENT SPOKEN SENTENCE AND THE SPECIFIC VIDEO TOPIC.
+For this project, the specific video topic is KONSERVATISMUS.
 
 Before writing each image prompt, answer internally:
 1. What exactly does this sentence mean inside conservatism?
