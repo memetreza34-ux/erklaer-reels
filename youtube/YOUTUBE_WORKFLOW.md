@@ -1,18 +1,31 @@
 # YOUTUBE WORKFLOW — VERBINDLICHE REGEL FÜR LANGVIDEOS
 
-**Stand: 2026-09-26**  
+**Stand: 2026-09-27**  
 **Visual Policy Version: 5**  
 **Design Quality Version: 1**  
 **Adaptive Pacing Version: 3**  
 **Script Opening Policy Version: 1**  
 **Scene Illustration Policy Version: 2**  
 **Topic Visual Relevance Policy Version: 1**  
+**Visual Flexibility Policy Version: 1**  
 **End Hold Policy Version: 1**  
 **Cover Policy Version: 1**  
 **Topic Editor Version: 1**  
 **Asset Generation Policy Version: 1**
 
 Diese Datei gilt ausschließlich für YouTube-Langvideos. Reels bleiben davon getrennt und werden nicht verändert.
+
+## Status der Testphase
+
+Die YouTube-Testphase ist seit **27.09.2026 abgeschlossen**. Die Grundrichtung gilt als produktionsreif.
+
+Verbindliche Learnings und die Schnellprüfung stehen zusätzlich in:
+
+```text
+youtube/PRODUKTIONSSTANDARD_NACH_TESTPHASE.md
+```
+
+Neue Videos laufen ab jetzt als reguläre Produktion. Änderungen an der Grundbildwelt erfolgen nur bei ausdrücklicher Nutzeranweisung; normale Verbesserungen sind gezielte Feinanpassungen einzelner Bilder, Bilddichte, Visual Forms oder Kompositionen.
 
 ## Priorität
 
@@ -21,9 +34,10 @@ Diese Datei gilt ausschließlich für YouTube-Langvideos. Reels bleiben davon ge
 3. `config/youtube-channel-policy.json`
 4. `config/youtube-topic-registry.json`
 5. `youtube/YOUTUBE_VISUAL_WORLD.md`
-6. `youtube/ADAPTIVE_PACING_V3.md`
-7. `youtube/PHASE3_HARD_GATE.md`
-8. `THEMEN_HISTORIE.md`
+6. `youtube/PRODUKTIONSSTANDARD_NACH_TESTPHASE.md`
+7. `youtube/ADAPTIVE_PACING_V3.md`
+8. `youtube/PHASE3_HARD_GATE.md`
+9. `THEMEN_HISTORIE.md`
 
 ## Kanalfokus — HARD LOCK
 
@@ -79,7 +93,7 @@ Die Bildwelt bleibt dieselbe wie bei den Reels; nur das Format ist 16:9.
 
 Unverändert:
 - cleane, seriöse 2D-Countryball-Erklärwelt
-- perfekt runde Countryballs
+- perfekt runde Countryballs, **wenn ein Countryball gebraucht wird**
 - einfache weiße Augen
 - kräftige schwarze Konturen
 - flache 2D-Farben
@@ -101,18 +115,44 @@ Bevorzugt:
 - thematisch passende Institutionen und Umgebungen
 - Countryballs handeln sichtbar, wenn Akteure gebraucht werden
 - Objekte in der Szene statt schwebender Icon-Sammlungen
-- Vordergrund/Mittelgrund/Hintergrund
 - kontrolliert lebendigere und wechselnde Farbwelten
 
-Standardmäßig verboten:
+Standardmäßig vermeiden:
 - abstrakte Poster-/Präsentationstafeln
 - Mehrspalten-Erklärbilder
 - Dashboard-/Kachel-Look
 - Icon-Raster als Hauptbild
 - viele kleine Symbole gleichzeitig
-- statisches Objekt auf leerem Hintergrund
 
-Infografik nur, wenn der Inhalt nicht sinnvoll als konkrete Szene darstellbar ist; dann maximal eine klare Beziehung, kein Dashboard.
+Eine einfache Sachillustration, ein Einzelobjekt oder ein kurzes Schema ist ausdrücklich zulässig, wenn es die Aussage besser erklärt als eine vollständige Szene.
+
+## VISUAL FLEXIBILITY V1 — HARD LOCK
+
+Für neue Schema-13+-Videos gilt:
+
+**Inhalt vor Figur. So einfach wie möglich, so komplex wie nötig.**
+
+Countryballs sind pro Bild optional. Vor jedem Bild wird zuerst die beste Darstellungsform gewählt.
+
+Ausdrücklich erlaubt:
+- `object-only`
+- `map-only`
+- `document-only`
+- `simple-schema`
+- `countryball-action`
+- `multi-actor`
+- `multi-element`
+- `full-scene`
+
+Regeln:
+- Countryball niemals nur wegen der Kanaloptik einfügen
+- einzelne Objekte, Karten, Dokumente, Gebäude oder Schemata dürfen ein komplettes Bild tragen
+- mehrere Countryballs oder mehrere Elemente nur, wenn die Aussage sie wirklich braucht
+- keine zusätzliche Komplexität nur damit ein Bild „premium“ wirkt
+- Vordergrund/Mittelgrund/Hintergrund nur wenn hilfreich
+- einfache Komposition ist kein Qualitätsfehler
+- komplexe Szene ist erlaubt, wenn sie das Verständnis verbessert
+- gleiche visuelle DNA bleibt unabhängig von der gewählten Visual Form erhalten
 
 ## TOPIC VISUAL RELEVANCE V1 — HARD LOCK
 
@@ -125,11 +165,12 @@ Jeder Bildmoment erhält deshalb in Phase 1:
 ```text
 Visual Purpose: ...
 Topic Anchor: ...
+Visual Form: ...
 Composition Mode: ...
 Prompt: ...
 ```
 
-`Topic Anchor` ist Pflicht und benennt das konkrete themenspezifische Element der Szene.
+`Topic Anchor` ist Pflicht und benennt das konkrete themenspezifische Element der Szene. Für Schema 13 ist zusätzlich `Visual Form` Pflicht.
 
 Prüffrage:
 
@@ -139,25 +180,35 @@ Wenn ja, ist es zu generisch und wird neu geplant.
 
 Regeln:
 - themenspezifische Orte, Institutionen, Dokumente, Konflikte und Objekte bevorzugen
-- generische Metapher nur, wenn keine bessere themenspezifische Szene existiert
+- generische Metapher nur, wenn keine bessere themenspezifische Darstellung existiert
 - zufällige Länder-/Flaggen-Countryballs verboten
 - Land/Flagge nur mit echtem narrativem oder historischem Grund
 - keine Deutschland-/Frankreich-/USA-Figuren nur damit ein abstraktes Konzept „politisch“ aussieht
 - letztes Bild fasst den **konkreten Themenkern** zusammen und endet nicht auf einer austauschbaren Moral
 
+## DIE 5 FESTEN LEARNINGS AUS DER TESTPHASE
+
+1. **Inhalt vor Figur:** Countryball nur, wenn er wirklich hilft.
+2. **So einfach wie möglich, so komplex wie nötig:** Ein Objekt oder Schema kann völlig ausreichen.
+3. **Anschauliche Illustration vor abstrakter Tafel:** konkrete Darstellung statt Dashboard-/Poster-Look.
+4. **Jedes Bild muss zum konkreten Thema gehören:** Satz + Topic Anchor müssen gleichzeitig stimmen.
+5. **Dichte Stellen früher splitten:** lieber ein sinnvolles Zusatzbild als ein überladenes Bild oder zu langer Hold.
+
+Die ausführliche Fassung steht in `youtube/PRODUKTIONSSTANDARD_NACH_TESTPHASE.md`.
+
 ## PREMIUM COUNTRYBALL DESIGN V1 — HARD LOCK
 
 Premium bedeutet bessere Gestaltung innerhalb derselben Bildwelt:
 - klare Größen- und Blickhierarchie
-- dominantes Hauptmotiv
-- bewusstes Layering
+- dominantes Hauptmotiv, wenn mehrere Elemente vorkommen
+- bewusstes Layering nur wenn hilfreich
 - ausgewogene negative Fläche
 - kontrollierte, aber abwechslungsreiche Palette
 - hochwertige Typografie
 - saubere Karten/Grenzen/Routen
 - visuelle Beziehungen statt Objektlisten
 
-**Premium ≠ realistisch. Premium ≠ neue Bildwelt.**
+**Premium ≠ realistisch. Premium ≠ neue Bildwelt. Premium ≠ kompliziert.**
 
 ## FIRST SCENE = COVER HARD LOCK
 
@@ -200,10 +251,13 @@ Vor Flow:
 npm run validate:youtube-phase1 -- --dir "youtube/<woche>/<thema>"
 ```
 
-Für Schema-12+-Projekte prüft das Gate zusätzlich:
+Für Schema-13+-Projekte prüft das Gate zusätzlich:
 - Scene Illustration Policy V2
 - Topic Visual Relevance Policy V1
+- Visual Flexibility Policy V1
 - `Topic Anchor` für jeden geplanten Bildmoment
+- `Visual Form` für jeden geplanten Bildmoment
+- keine erzwungene Countryball-Pflicht
 - End Hold Policy V1
 
 Weiterhin geprüft:
@@ -230,6 +284,7 @@ Zusätzliches Bild bei:
 - Orts-/Epochen-/Perspektivwechsel
 - neuem Akteur
 - eigenständigem Karten-/Grenz-/Routenschritt
+- eigenständigem Objekt/Begriff
 - Wechsel Erklärung → Beispiel
 - zu langem einfachen Hold
 
@@ -239,6 +294,8 @@ Ziel:
 - ab 11 s Split stark bevorzugen
 - 16 s Hard-Max
 - keine Füllbilder
+
+Komplexe Passage = eher früher sinnvoll splitten. Einfache Passage = nicht künstlich aufblähen.
 
 ## Phase 2 — Nutzer + Google Flow
 
@@ -295,8 +352,6 @@ Neue Schema-12+-Videos enden nicht unmittelbar nach dem letzten Wort.
 - die Timeline liest den Wert aus `99-technik/video.json -> renderPolicy.endHoldSeconds`
 - Werte außerhalb 1,2–1,5 s blockieren Schema-12+-Timeline-Build
 
-Dadurch bekommt der letzte Gedanke sichtbar Zeit zu wirken und das Video endet nicht abgeschnitten.
-
 ## Phase 3
 
 ```bash
@@ -326,7 +381,9 @@ Reihenfolge:
 - abstrakter Definitions-Einstieg bei neuen Schema-11+-Projekten
 - Stilwechsel unter dem Wort „Premium“
 - normale Menschen/Stickfiguren/Realismus
-- abstrakte Poster-/Dashboard-Bilder als Standard bei Schema 12+
+- Countryball in jedem Bild erzwingen
+- komplexe Szene erzwingen, obwohl Objekt/Karte/Dokument/Schema klarer wäre
+- abstrakte Poster-/Dashboard-Bilder als Standard
 - generische austauschbare Bilder ohne Topic Anchor
 - zufällige Länder/Flaggen ohne narrativen Grund
 - generisches Schlussbild ohne Bezug zum konkreten Thema
@@ -336,10 +393,11 @@ Reihenfolge:
 - Bild 02..NN mehrfach generieren
 - Referenzbilder
 - starre Bildanzahl
+- dichte Passage unnötig in ein einziges überladenes Bild pressen
 - End Hold unter 1,2 s oder über 1,5 s bei Schema 12+
 - Audio-Stille als Ersatz für den Schlussbild-Hold
 
-## Definition of Done für neue Schema-12+-Projekte
+## Definition of Done für neue Schema-13+-Projekte
 
 Fertig erst wenn:
 - Themen-Editor `APPROVED_NEW`
@@ -348,7 +406,12 @@ Fertig erst wenn:
 - Design Quality V1
 - Scene Illustration V2
 - Topic Visual Relevance V1
+- Visual Flexibility V1
 - jeder Bildmoment besitzt einen konkreten Topic Anchor
+- jeder Bildmoment besitzt eine bewusst gewählte Visual Form
+- kein Countryball wurde nur wegen der Kanaloptik erzwungen
+- einfache Bilder dürfen einfach bleiben
+- komplexe Stellen wurden bei Bedarf sinnvoll auf zusätzliche Bilder verteilt
 - keine beliebigen Länder-/Flaggen-Countryballs
 - Adaptive Pacing V3
 - Bildzahl inhaltsgetrieben
