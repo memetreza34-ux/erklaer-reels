@@ -51,6 +51,7 @@ Für **neue Reels** gilt zusätzlich `REEL_THEMENFOKUS.md`: autonom ausgewählt 
 - KW39 (21.09.–27.09.2026): Nationalismus: Wie funktioniert diese Ideologie? — Themen-Editor FREI, V5-Premium-Countryball-Projekt reserviert
 - KW39 (21.09.–27.09.2026): Liberalismus: Freiheit, Rechte und Staat einfach erklärt — Themen-Editor FREI, Schema-11-Projekt mit Script Opening V1 reserviert
 - KW39 (21.09.–27.09.2026): Konservatismus: Bewahren statt radikal verändern? — Themen-Editor FREI, neues 2-Minuten-Schema-12-Projekt reserviert
+- KW39 (21.09.–27.09.2026): Anarchismus: Kann eine Gesellschaft ohne Staat funktionieren? — Themen-Editor FREI, neues 2-Minuten-Schema-13-Projekt mit Visual Flexibility V1 reserviert
 
 ## Duplicate-Regel
 
