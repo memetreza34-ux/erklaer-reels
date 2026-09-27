@@ -9,7 +9,7 @@ async function readJson(file) {
   return JSON.parse(await readFile(file, 'utf8'));
 }
 
-test('neue YouTube-Projekte verwenden Premium Countryball V5 ohne Stilwechsel', async () => {
+test('neue YouTube-Projekte verwenden Schema 13 mit Premium Countryball V5 ohne Stilwechsel', async () => {
   const [policy, templatePrompt, templateMeta, projectMeta] = await Promise.all([
     readJson('config/youtube-channel-policy.json'),
     readFile(`${TEMPLATE}/00-bildprompts/google-flow-prompt.txt`, 'utf8'),
@@ -23,17 +23,19 @@ test('neue YouTube-Projekte verwenden Premium Countryball V5 ohne Stilwechsel', 
   assert.equal(policy.scriptOpeningPolicyVersion, 1);
   assert.equal(policy.sceneIllustrationPolicyVersion, 2);
   assert.equal(policy.topicVisualRelevancePolicyVersion, 1);
+  assert.equal(policy.visualFlexibilityPolicyVersion, 1);
   assert.equal(policy.endHoldPolicyVersion, 1);
   assert.equal(policy.visualStyleId, 'serious-minimal-countryball-explainer-youtube-16x9');
   assert.equal(policy.sourceVisualWorldId, 'serious-minimal-countryball-explainer');
 
-  assert.equal(templateMeta.schemaVersion, 12);
+  assert.equal(templateMeta.schemaVersion, 13);
   assert.equal(templateMeta.visualPolicyVersion, 5);
   assert.equal(templateMeta.designQualityVersion, 1);
   assert.equal(templateMeta.adaptivePacingVersion, 3);
   assert.equal(templateMeta.scriptOpeningPolicyVersion, 1);
   assert.equal(templateMeta.sceneIllustrationPolicyVersion, 2);
   assert.equal(templateMeta.topicVisualRelevancePolicyVersion, 1);
+  assert.equal(templateMeta.visualFlexibilityPolicyVersion, 1);
   assert.equal(templateMeta.endHoldPolicyVersion, 1);
   assert.equal(templateMeta.visualStyleId, policy.visualStyleId);
   assert.equal(templateMeta.sourceVisualWorldId, policy.sourceVisualWorldId);
@@ -53,11 +55,14 @@ test('neue YouTube-Projekte verwenden Premium Countryball V5 ohne Stilwechsel', 
   assert.match(templatePrompt, /ADAPTIVE_PACING_VERSION: 3/);
   assert.match(templatePrompt, /SCENE_ILLUSTRATION_POLICY_VERSION: 2/);
   assert.match(templatePrompt, /TOPIC_VISUAL_RELEVANCE_POLICY_VERSION: 1/);
+  assert.match(templatePrompt, /VISUAL_FLEXIBILITY_POLICY_VERSION: 1/);
   assert.match(templatePrompt, /END_HOLD_POLICY_VERSION: 1/);
   assert.match(templatePrompt, /ACTIVE_STYLE_ID: serious-minimal-countryball-explainer-youtube-16x9/);
   assert.match(templatePrompt, /PREMIUM DESIGN LAYER V1/i);
   assert.match(templatePrompt, /TOPIC VISUAL RELEVANCE V1/i);
+  assert.match(templatePrompt, /VISUAL FLEXIBILITY V1/i);
   assert.match(templatePrompt, /Topic Anchor:/i);
+  assert.match(templatePrompt, /Visual Form:/i);
   assert.match(templatePrompt, /Premium does NOT mean realistic/i);
 });
 
@@ -129,14 +134,15 @@ test('V5 erzwingt hochwertigere Gestaltung innerhalb derselben Bildwelt', async 
     assert.equal(templateMeta.visualQualityPolicy[key], true, `Template fehlt ${key}`);
   }
 
-  assert.match(templatePrompt, /clear visual hierarchy/i);
+  assert.match(templatePrompt, /clear visual purpose/i);
   assert.match(templatePrompt, /one coherent main palette/i);
-  assert.match(templatePrompt, /foreground \/ midground \/ background/i);
+  assert.match(templatePrompt, /foreground \/ midground \/ background only when useful/i);
   assert.match(templatePrompt, /Premium does NOT mean realistic/i);
+  assert.match(templatePrompt, /Premium does NOT mean complicated/i);
   assert.doesNotMatch(templatePrompt, /WRITTEN STYLE LOCK\s*[—-]\s*PREMIUM EDITORIAL/i);
 });
 
-test('Schema 12 erzwingt anschauliche und themenspezifische Bilder', async () => {
+test('Schema 13 behält anschauliche und themenspezifische Bilder', async () => {
   const [policy, templatePrompt, templateMeta] = await Promise.all([
     readJson('config/youtube-channel-policy.json'),
     readFile(`${TEMPLATE}/00-bildprompts/google-flow-prompt.txt`, 'utf8'),
@@ -156,10 +162,57 @@ test('Schema 12 erzwingt anschauliche und themenspezifische Bilder', async () =>
   assert.equal(templateMeta.topicVisualRelevancePolicy.topicAnchorRequiredPerImagePlan, true);
   assert.equal(templateMeta.topicVisualRelevancePolicy.countryOrFlagRequiresNarrativeReason, true);
 
-  assert.match(templatePrompt, /SERIES OF CLEAR ILLUSTRATED SCENES/i);
+  assert.match(templatePrompt, /SERIES OF CLEAR ILLUSTRATIONS/i);
   assert.match(templatePrompt, /EVERY IMAGE MUST MATCH BOTH THE CURRENT SPOKEN SENTENCE AND THE SPECIFIC VIDEO TOPIC/i);
   assert.match(templatePrompt, /arbitrary countries, flags or national Countryballs are forbidden/i);
   assert.match(templatePrompt, /Topic Anchor:/i);
+});
+
+test('Schema 13 erlaubt einfache Bilder ohne erzwungenen Countryball oder erzwungene Komplexität', async () => {
+  const [policy, templatePrompt, templateMeta, visualWorld] = await Promise.all([
+    readJson('config/youtube-channel-policy.json'),
+    readFile(`${TEMPLATE}/00-bildprompts/google-flow-prompt.txt`, 'utf8'),
+    readJson(`${TEMPLATE}/99-technik/video.json`),
+    readFile('youtube/YOUTUBE_VISUAL_WORLD.md', 'utf8')
+  ]);
+
+  const keys = [
+    'countryballsOptionalPerImage',
+    'countryballOnlyWhenItImprovesExplanation',
+    'forcedActorInsertionForbidden',
+    'objectOnlyIllustrationAllowed',
+    'mapOnlyIllustrationAllowed',
+    'documentOnlyIllustrationAllowed',
+    'simpleDiagramOrSchemaAllowedWhenClearest',
+    'singleDominantObjectAllowed',
+    'multipleCountryballsAllowedWhenNarrativelyUseful',
+    'multipleRelevantElementsAllowedWhenNarrativelyUseful',
+    'simpleCompositionAllowed',
+    'complexSceneAllowedWhenNarrativelyUseful',
+    'forcedSceneComplexityForbidden',
+    'forcedForegroundMidgroundBackgroundForbidden',
+    'bestVisualFormMustBeChosenPerImage',
+    'clarityOverComplexityRequired',
+    'sameVisualWorldRequiredWithoutSameComposition'
+  ];
+  for (const key of keys) {
+    assert.equal(policy.visualFlexibilityPolicy[key], true, `Policy fehlt ${key}`);
+    assert.equal(templateMeta.visualFlexibilityPolicy[key], true, `Template fehlt ${key}`);
+  }
+
+  assert.equal(templateMeta.visualWorldParityPolicy.countryballRequiredInEveryImage, false);
+  assert.equal(templateMeta.visualQualityPolicy.genericCenteredObjectOnBlankBackgroundForbiddenByDefault, false);
+  assert.equal(templateMeta.visualQualityPolicy.singleObjectAllowedWhenItIsTheClearestVisual, true);
+
+  assert.match(templatePrompt, /COUNTRYBALLS ARE OPTIONAL PER IMAGE\. DO NOT FORCE A CHARACTER INTO THE FRAME\./i);
+  assert.match(templatePrompt, /one strong object only/i);
+  assert.match(templatePrompt, /one clean map only/i);
+  assert.match(templatePrompt, /one short simple schema/i);
+  assert.match(templatePrompt, /several Countryballs when comparison, conflict or interaction matters/i);
+  assert.match(templatePrompt, /Simplicity is NOT a quality failure/i);
+  assert.match(templatePrompt, /BEST VISUAL FORM > FORCED COUNTRYBALL > FORCED COMPLEX SCENE\./i);
+  assert.match(visualWorld, /So einfach wie möglich, so komplex wie nötig/i);
+  assert.match(visualWorld, /Countryballs sind optional/i);
 });
 
 test('V5 erlaubt mehr Bilder bei dichterem Inhalt statt starrer Bildzahl', async () => {
@@ -180,12 +233,13 @@ test('V5 erlaubt mehr Bilder bei dichterem Inhalt statt starrer Bildzahl', async
   assert.equal(templateMeta.imageDensityPolicy.globalHardMaximumSeconds, 16);
 
   assert.match(templatePrompt, /There is NO fixed target image count/i);
-  assert.match(templatePrompt, /Complex information should be split across multiple elegant images/i);
+  assert.match(templatePrompt, /Complex information should be split across multiple images/i);
+  assert.match(templatePrompt, /Simple information should stay simple/i);
   assert.match(pacing, /Mehr Bilder sind ausdrücklich erwünscht/i);
   assert.match(pacing, /keine feste Bildzahl/i);
 });
 
-test('Schema 12 hält das letzte Bild bewusst nach dem letzten Wort', async () => {
+test('Schema 13 hält das letzte Bild bewusst nach dem letzten Wort', async () => {
   const [policy, templateMeta] = await Promise.all([
     readJson('config/youtube-channel-policy.json'),
     readJson(`${TEMPLATE}/99-technik/video.json`)
