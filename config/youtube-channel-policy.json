@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 3,
+  "schemaVersion": 4,
   "visualPolicyVersion": 5,
   "coverPolicyVersion": 1,
   "assetGenerationPolicyVersion": 1,
@@ -8,6 +8,7 @@
   "scriptOpeningPolicyVersion": 1,
   "sceneIllustrationPolicyVersion": 2,
   "topicVisualRelevancePolicyVersion": 1,
+  "visualFlexibilityPolicyVersion": 1,
   "endHoldPolicyVersion": 1,
   "channelFocus": {
     "primaryTopics": [
@@ -114,6 +115,25 @@
     "topicSpecificInstitutionsObjectsPlacesPreferred": true,
     "finalImageMustSummarizeCoreTopicNotGenericMoral": true
   },
+  "visualFlexibilityPolicy": {
+    "countryballsOptionalPerImage": true,
+    "countryballOnlyWhenItImprovesExplanation": true,
+    "forcedActorInsertionForbidden": true,
+    "objectOnlyIllustrationAllowed": true,
+    "mapOnlyIllustrationAllowed": true,
+    "documentOnlyIllustrationAllowed": true,
+    "simpleDiagramOrSchemaAllowedWhenClearest": true,
+    "singleDominantObjectAllowed": true,
+    "multipleCountryballsAllowedWhenNarrativelyUseful": true,
+    "multipleRelevantElementsAllowedWhenNarrativelyUseful": true,
+    "simpleCompositionAllowed": true,
+    "complexSceneAllowedWhenNarrativelyUseful": true,
+    "forcedSceneComplexityForbidden": true,
+    "forcedForegroundMidgroundBackgroundForbidden": true,
+    "bestVisualFormMustBeChosenPerImage": true,
+    "clarityOverComplexityRequired": true,
+    "sameVisualWorldRequiredWithoutSameComposition": true
+  },
   "endHoldPolicy": {
     "lastImageMustRemainVisibleAfterLastWord": true,
     "minimumSeconds": 1.2,
@@ -137,6 +157,8 @@
     "doNotAddFillerImages": true
   },
   "preferredCompositionModes": [
+    "single-object-illustration",
+    "simple-schema",
     "minimal-symbolic",
     "supported-explainer",
     "simple-mini-scene",
