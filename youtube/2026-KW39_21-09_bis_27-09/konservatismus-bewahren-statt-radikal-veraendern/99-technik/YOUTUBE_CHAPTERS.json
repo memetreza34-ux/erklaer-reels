@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "timingSource": "FINAL_TIMELINE.json",
+  "chapters": [
+    {"imageNumber":1,"title":"Was Konservatismus bedeutet"},
+    {"imageNumber":5,"title":"Französische Revolution und Ursprung"},
+    {"imageNumber":8,"title":"Edmund Burke und gewachsene Ordnung"},
+    {"imageNumber":13,"title":"Warum schrittweise Reform?"},
+    {"imageNumber":18,"title":"Was Konservative bewahren wollen"},
+    {"imageNumber":21,"title":"Konservative Wirtschaftsvorstellungen"},
+    {"imageNumber":24,"title":"Konservativ oder reaktionär?"},
+    {"imageNumber":25,"title":"Konservatismus heute"},
+    {"imageNumber":26,"title":"Bewahren und verändern"}
+  ]
+}
