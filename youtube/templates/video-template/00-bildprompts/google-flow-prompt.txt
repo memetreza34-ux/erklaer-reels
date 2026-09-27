@@ -4,6 +4,7 @@ ADAPTIVE_PACING_VERSION: 3
 SCRIPT_OPENING_POLICY_VERSION: 1
 SCENE_ILLUSTRATION_POLICY_VERSION: 2
 TOPIC_VISUAL_RELEVANCE_POLICY_VERSION: 1
+VISUAL_FLEXIBILITY_POLICY_VERSION: 1
 END_HOLD_POLICY_VERSION: 1
 COVER_POLICY_VERSION: 1
 ASSET_GENERATION_POLICY_VERSION: 1
@@ -67,35 +68,70 @@ SESSION RESET HARD LOCK
 ==================================================
 WRITTEN STYLE LOCK — SERIOUS MINIMAL COUNTRYBALL
 ==================================================
-Serious Minimal Countryball Explainer visual world, exactly matching the Reel visual DNA and adapted only to a 16:9 YouTube canvas. Clean serious flat 2D countryball explainer. Perfectly round Countryball actors when an actor is useful, simple white eyes, thick clean black outlines, controlled flat colors, restrained soft graphic shading, adult and informative, never childish or goofy.
+Serious Minimal Countryball Explainer visual world, exactly matching the Reel visual DNA and adapted only to a 16:9 YouTube canvas. Clean serious flat 2D explainer illustration. Countryballs belong to this world and, when used, are perfectly round with simple white eyes, thick clean black outlines, controlled flat colors and restrained soft graphic shading. Adult and informative, never childish or goofy.
+
+IMPORTANT: the visual WORLD is Countryball-based, but a Countryball CHARACTER is NOT mandatory in every image.
 
 No normal illustrated humans. No humanoid cartoon people. No stick figures. No photorealism. No realistic human scenes. No glossy 3D. No Pixar. No clay. No anime.
 
 ==================================================
 SCENE ILLUSTRATION V2 — HARD LOCK
 ==================================================
-THIS VIDEO MUST LOOK LIKE A SERIES OF CLEAR ILLUSTRATED SCENES, NOT LIKE ABSTRACT INFOGRAPHIC POSTERS.
+THIS VIDEO MUST LOOK LIKE A SERIES OF CLEAR ILLUSTRATIONS, NOT LIKE ABSTRACT INFOGRAPHIC POSTERS.
 
-Prefer:
-- a recognizable place, institution, environment or situation tied to the spoken idea
-- Countryballs visibly doing something when actors are useful
-- one clear action or relationship per image
-- environmental context around the main idea
-- simple foreground / midground / background depth
-- scene-specific props integrated naturally into the environment
+Prefer the clearest visual form for the exact sentence:
+- a recognizable place, institution, environment or situation when a real scene helps
+- a single object when that object explains the idea best
+- a map when space, borders or geography are the point
+- a document, building or institution when it is the real subject
+- a short simple schema when sequence or structure is easier to understand that way
+- Countryballs visibly doing something only when actors improve the explanation
+- multiple relevant elements or multiple Countryballs when the sentence genuinely needs comparison, conflict or interaction
 - varied but controlled scene colors
 
 Avoid as the default:
-- abstract symbol boards
+- abstract symbol boards with no concrete topic connection
 - presentation-slide layouts
-- split-panel infographic posters
+- split-panel infographic posters that cram many unrelated ideas together
 - multiple boxed explanations
-- rows or grids of icons
-- giant diagram arrows floating in empty space
-- tiny Countryballs surrounded by labels
-- one static object centered on an empty background
+- rows or grids of decorative icons
+- giant diagram arrows floating in empty space without a clear topic-specific purpose
+- tiny Countryballs surrounded by labels merely because a figure was forced into the image
 
-Use infographic structure only when the spoken idea genuinely cannot be shown as a concrete scene. Even then, show one relationship, not a dashboard.
+A simple image is allowed. A complex image is allowed. The content decides.
+
+==================================================
+VISUAL FLEXIBILITY V1 — HARD LOCK
+==================================================
+COUNTRYBALLS ARE OPTIONAL PER IMAGE. DO NOT FORCE A CHARACTER INTO THE FRAME.
+
+For every Bild NN, first choose the simplest visual form that explains BOTH the current spoken idea and the concrete video topic clearly.
+
+Explicitly allowed visual forms inside the SAME visual world:
+- one strong object only
+- one building or institution only
+- one document only
+- one clean map only
+- one short simple schema / process diagram
+- one Countryball with a useful action
+- several Countryballs when comparison, conflict or interaction matters
+- several relevant objects when the relationship between them matters
+- a complete illustrated environment or scene when context is necessary
+
+Rules:
+- Do NOT add a Countryball just to make the image look like the channel.
+- Do NOT add extra props, depth layers, arrows, labels or background activity just to make the frame look more complex.
+- Do NOT require foreground + midground + background when a simpler composition is clearer.
+- A single centered or dominant object is allowed when it is topic-specific, visually strong and the clearest explanation.
+- A short schema is allowed when it explains order, structure, hierarchy or cause/effect faster than a staged scene.
+- Multiple elements in one image are allowed when they belong to ONE clear visual idea.
+- Several Countryballs in one image are allowed when the narration actually involves several actors or positions.
+- Simplicity is NOT a quality failure. Unnecessary complexity is a quality failure.
+- Complexity is allowed only when it earns its place by improving understanding.
+- Keep the same flat 2D, thick-outline, controlled-color visual DNA regardless of whether the frame contains zero, one or several Countryballs.
+
+Decision rule:
+BEST VISUAL FORM > FORCED COUNTRYBALL > FORCED COMPLEX SCENE.
 
 ==================================================
 TOPIC VISUAL RELEVANCE V1 — HARD LOCK
@@ -105,13 +141,15 @@ EVERY IMAGE MUST MATCH BOTH THE CURRENT SPOKEN SENTENCE AND THE SPECIFIC VIDEO T
 Before writing each image prompt, answer internally:
 1. What exactly does this sentence mean inside THIS topic?
 2. Which place, institution, object, conflict, actor, historical detail or situation is specific to THIS topic?
-3. Could this exact image be dropped into a different explainer with almost no change? If yes, it is too generic and must be redesigned.
+3. What is the simplest visual form that explains it clearly?
+4. Does this image need zero, one or several Countryballs?
+5. Could this exact image be dropped into a different explainer with almost no change? If yes, it is too generic and must be redesigned.
 
 Mandatory:
 - every Bild NN has a written `Topic Anchor:` in the image plan
 - the Topic Anchor names the concrete topic-specific element that makes the image belong to this video
 - prefer topic-specific institutions, objects, places, documents, historical situations and actions over generic metaphors
-- generic metaphors are allowed only when no clearer topic-specific scene exists
+- generic metaphors are allowed only when no clearer topic-specific illustration exists
 - arbitrary countries, flags or national Countryballs are forbidden
 - a country/flag may appear only when that country is actually part of the narration or historically necessary for the exact point
 - do not use Germany, France, USA or any other country merely to make a generic concept look political
@@ -119,34 +157,35 @@ Mandatory:
 
 Example logic:
 Bad: two random national Countryballs at a crossroads to represent "freedom with limits".
-Better for a Liberalismus video: Countryballs moving freely through a civic street while constitution, court and legal boundaries visibly protect equal freedom.
+Better for a Liberalismus video: a clean topic-specific illustration of constitution, court and protected civic freedom. Add Countryballs only if their action improves the explanation.
 
 ==================================================
 PREMIUM DESIGN LAYER V1 — HARD LOCK
 ==================================================
-Premium means BETTER DESIGN INSIDE THE SAME COUNTRYBALL WORLD, never a style change.
+Premium means BETTER DESIGN INSIDE THE SAME VISUAL WORLD, never a style change and never forced complexity.
 
 For every image:
-- create one dominant focal subject with clear visual hierarchy
-- deliberately balance the 16:9 canvas; avoid random centering
-- use meaningful scale contrast
-- use purposeful overlaps and layering
-- when helpful, create simple foreground / midground / background depth using flat 2D layers
+- create one clear visual purpose and one dominant reading order
+- deliberately balance the 16:9 canvas
+- use scale contrast, overlap and layering only when they improve the idea
+- use foreground / midground / background only when useful
 - use one coherent main palette with normally one dominant base color and one or two controlled accent colors
-- use negative space intentionally, not as empty unused space
-- integrate arrows, routes, borders, documents and symbols into a single composition instead of listing icons
+- use negative space intentionally; simple space around one strong object can be correct
+- use arrows, routes, borders, documents and symbols only when they carry real information
 - make maps simplified but elegant, legible and spatially clear
 - if text is requested, treat typography as part of the composition with strong hierarchy and clean spacing
-- vary composition mode, direction, scale and placement between adjacent images
+- vary visual form, direction, scale and placement between adjacent images when useful
 
 The result should feel polished, premium and art-directed while remaining unmistakably Serious Minimal Countryball Explainer.
 
-Clean does NOT mean empty. Minimal does NOT mean lifeless. Premium does NOT mean realistic.
+Clean does NOT mean empty. Minimal does NOT mean lifeless. Premium does NOT mean realistic. Premium does NOT mean complicated.
 
 ==================================================
 VISUAL STORYTELLING HARD LOCK
 ==================================================
-Prefer relationships over object lists. When relevant, visualize before→after, cause→effect, divided→connected, route→border→obstacle, institution→rule→effect, or one concrete action leading to another.
+Choose the visual grammar that explains the point fastest. This can be a relationship, a single object, a map, a simple schema, a document, a building, a comparison or a complete scene.
+
+When relevant, visualize before→after, cause→effect, divided→connected, route→border→obstacle, institution→rule→effect, or one concrete action leading to another.
 
 If a Countryball actor is used:
 - perfectly round body
@@ -156,7 +195,7 @@ If a Countryball actor is used:
 - tiny simple limbs only when needed for the action
 - no hair, neck, realistic hands or realistic face
 
-If a map, object or institution explains the point more clearly, a Countryball is not mandatory.
+If a map, object, document, building, institution or simple schema explains the point more clearly, use it WITHOUT forcing a Countryball.
 
 ==================================================
 ADAPTIVE IMAGE DENSITY V3 — HARD LOCK
@@ -173,7 +212,7 @@ Split into an additional image when the narration introduces:
 - a separate border/map/route step
 - a separate number/data idea
 - a switch from explanation to example
-- a simple scene that would otherwise stay on screen too long
+- a simple visual that would otherwise stay on screen too long
 
 Preferred average hold: about 4.5–7.5 seconds.
 Review any planned hold above 9 seconds.
@@ -182,20 +221,25 @@ Global hard maximum: 16 seconds.
 Do not add filler images without a new visual idea.
 Do not repeat the same map or composition with only tiny cosmetic changes.
 
-Complex information should be split across multiple elegant images rather than crammed into one overloaded frame.
+Complex information should be split across multiple images rather than crammed into one overloaded frame. Simple information should stay simple instead of being artificially expanded into a busy scene.
 
 ==================================================
 ANTI-LIFELESS HARD LOCK
 ==================================================
-Avoid tiny isolated subjects lost in huge empty backgrounds, meaningless icon collages, mechanically repeated centered-countryball layouts, flat rows of unrelated objects, and abstract poster boards replacing real scenes.
+Simple is allowed. Lifeless means visually weak, generic or unrelated — not merely minimal.
+
+Avoid meaningless icon collages, mechanically repeated layouts, unrelated object rows, generic empty posters and forced Countryballs with no explanatory role.
+
+A strong topic-specific object, map, document, building or schema can intentionally stand alone when that is the clearest image.
 
 ==================================================
 INDIVIDUALITY HARD LOCK
 ==================================================
 - Create a fresh arrangement for every Bild NN while staying inside the SAME Serious Minimal Countryball visual world.
-- Vary place, object placement, scale, direction, prop choice, layering and background emphasis when useful.
+- Vary visual form, object placement, scale, direction, prop choice, layering and background emphasis when useful.
 - Do not use any previous generated image as a visual reference.
 - Do not change medium or visual DNA between images.
+- Do not force every image into the same scene template.
 
 ==================================================
 DEUTSCH-HARD-LOCK
@@ -223,6 +267,7 @@ Für jedes Bild angeben:
 - Satzbezug / Audio-Anker
 - Visual Purpose
 - Topic Anchor
+- Visual Form
 - Composition Mode
 - Complexity A–E
 - Planned Hold
@@ -231,12 +276,15 @@ Für jedes Bild angeben:
 
 `Topic Anchor` ist Pflicht und muss konkret beschreiben, warum genau dieses Bild zum Videothema gehört.
 
+`Visual Form` wird frei nach Inhalt gewählt, z. B. `object-only`, `map-only`, `document-only`, `simple-schema`, `countryball-action`, `multi-actor`, `multi-element` oder `full-scene`.
+
 ==================================================
 BILD 01 — COVER + ERSTE VIDEOSZENE
 ==================================================
 Bild 01 · [A–E] · [PLANZEIT]
 Visual Purpose: [EINE KLARE AUSSAGE]
 Topic Anchor: [KONKRETES THEMENSPEZIFISCHES ELEMENT]
+Visual Form: [BESTE DARSTELLUNGSFORM]
 Composition Mode: [MODUS]
 [COVER-UND-SZENE-1-PROMPT]
 
@@ -246,6 +294,7 @@ BILD 02–NN — JEWEILS EINMAL
 Bild 02 · [A–E] · [PLANZEIT]
 Visual Purpose: [EINE KLARE AUSSAGE]
 Topic Anchor: [KONKRETES THEMENSPEZIFISCHES ELEMENT]
+Visual Form: [BESTE DARSTELLUNGSFORM]
 Composition Mode: [MODUS]
 [PROMPT]
 
@@ -257,10 +306,16 @@ FINALER CHECK
 - Adaptive Pacing V3 aktiv
 - Scene Illustration Policy V2 aktiv
 - Topic Visual Relevance Policy V1 aktiv
+- Visual Flexibility Policy V1 aktiv
 - End Hold Policy V1 aktiv
 - ACTIVE_STYLE_ID = serious-minimal-countryball-explainer-youtube-16x9
-- gleiche Countryball-Bildwelt wie Reels, nur 16:9
-- anschauliche Szenen statt abstrakter Poster als Standard
+- gleiche visuelle DNA wie Reels, nur 16:9
+- Countryballs sind pro Bild optional
+- keine Figur wird auf Zwang eingefügt
+- Objekt-only, Map-only, Dokument-only und einfache Schemata sind ausdrücklich erlaubt
+- mehrere Countryballs oder mehrere Elemente sind erlaubt, wenn die Aussage sie braucht
+- einfache Bilder müssen nicht künstlich kompliziert werden
+- komplexe Bilder dürfen komplex sein, wenn die Aussage es verlangt
 - jedes Bild passt zum Satz UND zum konkreten Videothema
 - jedes Bild besitzt einen konkreten Topic Anchor
 - keine zufälligen Länder/Flaggen ohne narrativen Grund
