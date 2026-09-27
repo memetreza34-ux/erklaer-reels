@@ -39,7 +39,7 @@ async function makeTimelineFixture(endHoldSeconds) {
   return root;
 }
 
-test('zukünftiges YouTube-Template verlangt Topic Anchor und konkrete Themenbindung', async () => {
+test('zukünftiges YouTube-Template verlangt Topic Anchor, Visual Form und konkrete Themenbindung', async () => {
   const [policy, meta, prompt, visualWorld] = await Promise.all([
     readJson('config/youtube-channel-policy.json'),
     readJson(`${TEMPLATE}/99-technik/video.json`),
@@ -47,16 +47,21 @@ test('zukünftiges YouTube-Template verlangt Topic Anchor und konkrete Themenbin
     readFile('youtube/YOUTUBE_VISUAL_WORLD.md', 'utf8')
   ]);
 
-  assert.equal(meta.schemaVersion, 12);
+  assert.equal(meta.schemaVersion, 13);
   assert.equal(meta.sceneIllustrationPolicyVersion, 2);
   assert.equal(meta.topicVisualRelevancePolicyVersion, 1);
+  assert.equal(meta.visualFlexibilityPolicyVersion, 1);
   assert.equal(meta.endHoldPolicyVersion, 1);
   assert.equal(policy.topicVisualRelevancePolicy.topicAnchorRequiredPerImagePlan, true);
   assert.equal(policy.topicVisualRelevancePolicy.arbitraryCountryOrFlagUseForbidden, true);
   assert.equal(policy.topicVisualRelevancePolicy.finalImageMustSummarizeCoreTopicNotGenericMoral, true);
+  assert.equal(policy.visualFlexibilityPolicy.countryballsOptionalPerImage, true);
+  assert.equal(policy.visualFlexibilityPolicy.bestVisualFormMustBeChosenPerImage, true);
   assert.match(prompt, /Topic Anchor:/);
+  assert.match(prompt, /Visual Form:/);
   assert.match(prompt, /Could this exact image be dropped into a different explainer/i);
   assert.match(prompt, /arbitrary countries, flags or national Countryballs are forbidden/i);
+  assert.match(prompt, /COUNTRYBALLS ARE OPTIONAL PER IMAGE/i);
   assert.match(visualWorld, /Könnte dieses Bild fast unverändert in einem anderen Erklärvideo vorkommen/i);
   assert.match(visualWorld, /letzte Bild.*konkreten Themenkern/is);
 });

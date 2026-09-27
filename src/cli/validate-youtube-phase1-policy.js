@@ -18,7 +18,7 @@ function requireTrue(errors, value, label) {
   if (value !== true) errors.push(`${label} muss true sein.`);
 }
 
-function validateTopicAnchors(errors, prompt, plannedImageCount) {
+function validateTopicAnchors(errors, prompt, plannedImageCount, { requireVisualForm = false } = {}) {
   const count = Number(plannedImageCount);
   if (!Number.isInteger(count) || count < 1) {
     errors.push('Schema-12+: plannedImageCount muss vor Phase 2 als positive Ganzzahl feststehen.');
@@ -39,6 +39,9 @@ function validateTopicAnchors(errors, prompt, plannedImageCount) {
     if (!/Topic Anchor:\s*[^\n\[]+/i.test(block)) {
       errors.push(`Topic Visual Relevance V1: Bild ${nn} braucht einen konkreten Topic Anchor.`);
     }
+    if (requireVisualForm && !/Visual Form:\s*[^\n\[]+/i.test(block)) {
+      errors.push(`Visual Flexibility V1: Bild ${nn} braucht eine konkrete Visual Form.`);
+    }
   }
 }
 
@@ -57,10 +60,12 @@ async function main() {
   const usesPremiumCountryballV5 = schema >= 10;
   const usesScriptOpeningV1 = schema >= 11;
   const usesTopicVisualRelevanceV1 = schema >= 12;
+  const usesVisualFlexibilityV1 = schema >= 13;
 
   // Schema 10+ follows the current V5 visual policy. Schema 11+ locks the direct
-  // viewer-question opening. Schema 12+ additionally locks concrete scene
-  // illustration, topic-specific visual relevance and a deliberate final hold.
+  // viewer-question opening. Schema 12+ additionally locks concrete illustration,
+  // topic-specific visual relevance and a deliberate final hold. Schema 13+
+  // allows the clearest per-image visual form without forcing Countryballs or complexity.
   if (usesPremiumCountryballV5) {
     if (meta.visualPolicyVersion !== policy.visualPolicyVersion) {
       errors.push(`visualPolicyVersion ist ${meta.visualPolicyVersion ?? 'fehlend'}, erwartet ${policy.visualPolicyVersion}.`);
@@ -135,7 +140,14 @@ async function main() {
   const q = meta.visualQualityPolicy || {};
   requireTrue(errors, q.visualStorytellingRequired, 'visualQualityPolicy.visualStorytellingRequired');
   requireTrue(errors, q.lifelessStaticCompositionForbidden, 'visualQualityPolicy.lifelessStaticCompositionForbidden');
-  requireTrue(errors, q.genericCenteredObjectOnBlankBackgroundForbiddenByDefault, 'visualQualityPolicy.genericCenteredObjectOnBlankBackgroundForbiddenByDefault');
+  if (usesVisualFlexibilityV1) {
+    if (q.genericCenteredObjectOnBlankBackgroundForbiddenByDefault !== false) {
+      errors.push('Schema-13+: visualQualityPolicy.genericCenteredObjectOnBlankBackgroundForbiddenByDefault muss false sein.');
+    }
+    requireTrue(errors, q.singleObjectAllowedWhenItIsTheClearestVisual, 'visualQualityPolicy.singleObjectAllowedWhenItIsTheClearestVisual');
+  } else {
+    requireTrue(errors, q.genericCenteredObjectOnBlankBackgroundForbiddenByDefault, 'visualQualityPolicy.genericCenteredObjectOnBlankBackgroundForbiddenByDefault');
+  }
   requireTrue(errors, q.genericIconCollageForbidden, 'visualQualityPolicy.genericIconCollageForbidden');
   requireTrue(errors, q.sceneSpecificArtDirectionRequired, 'visualQualityPolicy.sceneSpecificArtDirectionRequired');
   requireTrue(errors, q.childishCartoonLookForbidden, 'visualQualityPolicy.childishCartoonLookForbidden');
@@ -148,6 +160,9 @@ async function main() {
     requireTrue(errors, meta.visualWorldParityPolicy?.countryballVisualWorldRequired, 'visualWorldParityPolicy.countryballVisualWorldRequired');
     requireTrue(errors, meta.visualWorldParityPolicy?.normalIllustratedHumansForbidden, 'visualWorldParityPolicy.normalIllustratedHumansForbidden');
     if (meta.visualWorldParityPolicy?.independentYoutubeStyle !== false) errors.push('visualWorldParityPolicy.independentYoutubeStyle muss false sein.');
+    if (usesVisualFlexibilityV1 && meta.visualWorldParityPolicy?.countryballRequiredInEveryImage !== false) {
+      errors.push('Schema-13+: visualWorldParityPolicy.countryballRequiredInEveryImage muss false sein.');
+    }
   } else {
     requireTrue(errors, q.controlledDepthRequired, 'visualQualityPolicy.controlledDepthRequired');
     requireTrue(errors, q.adjacentCompositionModeRepeatForbiddenWithoutReason, 'visualQualityPolicy.adjacentCompositionModeRepeatForbiddenWithoutReason');
@@ -217,7 +232,35 @@ async function main() {
       errors.push(`renderPolicy.endHoldSeconds muss zwischen ${policy.endHoldPolicy.minimumSeconds} und ${policy.endHoldPolicy.maximumSeconds} liegen.`);
     }
 
-    validateTopicAnchors(errors, prompt, meta.plannedImageCount);
+    validateTopicAnchors(errors, prompt, meta.plannedImageCount, { requireVisualForm: usesVisualFlexibilityV1 });
+  }
+
+  if (usesVisualFlexibilityV1) {
+    if (meta.visualFlexibilityPolicyVersion !== policy.visualFlexibilityPolicyVersion) {
+      errors.push(`visualFlexibilityPolicyVersion ist ${meta.visualFlexibilityPolicyVersion ?? 'fehlend'}, erwartet ${policy.visualFlexibilityPolicyVersion}.`);
+    }
+    const flexibility = meta.visualFlexibilityPolicy || {};
+    for (const key of [
+      'countryballsOptionalPerImage',
+      'countryballOnlyWhenItImprovesExplanation',
+      'forcedActorInsertionForbidden',
+      'objectOnlyIllustrationAllowed',
+      'mapOnlyIllustrationAllowed',
+      'documentOnlyIllustrationAllowed',
+      'simpleDiagramOrSchemaAllowedWhenClearest',
+      'singleDominantObjectAllowed',
+      'multipleCountryballsAllowedWhenNarrativelyUseful',
+      'multipleRelevantElementsAllowedWhenNarrativelyUseful',
+      'simpleCompositionAllowed',
+      'complexSceneAllowedWhenNarrativelyUseful',
+      'forcedSceneComplexityForbidden',
+      'forcedForegroundMidgroundBackgroundForbidden',
+      'bestVisualFormMustBeChosenPerImage',
+      'clarityOverComplexityRequired',
+      'sameVisualWorldRequiredWithoutSameComposition'
+    ]) {
+      requireTrue(errors, flexibility[key], `visualFlexibilityPolicy.${key}`);
+    }
   }
 
   if (schema >= 7) {
@@ -297,6 +340,15 @@ async function main() {
       'Topic Anchor:'
     );
   }
+  if (usesVisualFlexibilityV1) {
+    requiredPromptMarkers.push(
+      `VISUAL_FLEXIBILITY_POLICY_VERSION: ${policy.visualFlexibilityPolicyVersion}`,
+      'VISUAL FLEXIBILITY V1 — HARD LOCK',
+      'COUNTRYBALLS ARE OPTIONAL PER IMAGE. DO NOT FORCE A CHARACTER INTO THE FRAME.',
+      'BEST VISUAL FORM > FORCED COUNTRYBALL > FORCED COMPLEX SCENE.',
+      'Visual Form:'
+    );
+  }
   for (const marker of requiredPromptMarkers) if (!prompt.includes(marker)) errors.push(`Masterprompt fehlt Pflichtmarker: ${marker}`);
 
   const stalePatterns = [
@@ -339,6 +391,14 @@ async function main() {
       /generic metaphor is preferred/i
     );
   }
+  if (usesVisualFlexibilityV1) {
+    stalePatterns.push(
+      /countryball (?:is|must be) mandatory in every image/i,
+      /every image must contain (?:a|one) countryball/i,
+      /foreground\s*\+\s*midground\s*\+\s*background (?:is|are) mandatory/i,
+      /every image must be a full scene/i
+    );
+  }
   for (const pattern of stalePatterns) if (pattern.test(prompt)) errors.push(`Masterprompt enthält veraltete Bildwelt-/Cover-/Phase-2-Regel: ${pattern}`);
 
   if (errors.length > 0) {
@@ -354,12 +414,13 @@ async function main() {
   const relevanceText = usesTopicVisualRelevanceV1
     ? `, Scene Illustration V${policy.sceneIllustrationPolicyVersion}, Topic Relevance V${policy.topicVisualRelevancePolicyVersion}, End Hold V${policy.endHoldPolicyVersion}`
     : '';
+  const flexibilityText = usesVisualFlexibilityV1 ? `, Visual Flexibility V${policy.visualFlexibilityPolicyVersion}` : '';
   const visualLabel = usesPremiumCountryballV5
     ? `Premium Serious-Minimal-Countryball V${policy.visualPolicyVersion}, Design V${policy.designQualityVersion}, Pacing V${policy.adaptivePacingVersion}`
     : schema === 9
       ? 'Serious-Minimal-Countryball V4 (Legacy Schema 9)'
       : `Legacy Visual Policy V${meta.visualPolicyVersion}`;
-  console.log(`YouTube Phase-1-Policy: BESTANDEN — ${visualLabel}${openingText}${relevanceText}, Cover Policy V${policy.coverPolicyVersion}${topicText}${assetText}, Kanalfokus und Session-Schutz sind aktiv.`);
+  console.log(`YouTube Phase-1-Policy: BESTANDEN — ${visualLabel}${openingText}${relevanceText}${flexibilityText}, Cover Policy V${policy.coverPolicyVersion}${topicText}${assetText}, Kanalfokus und Session-Schutz sind aktiv.`);
 }
 
 main().catch((error) => {
