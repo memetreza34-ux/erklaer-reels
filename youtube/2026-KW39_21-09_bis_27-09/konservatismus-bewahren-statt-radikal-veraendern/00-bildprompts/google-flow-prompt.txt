@@ -1,0 +1,385 @@
+YOUTUBE_VISUAL_POLICY_VERSION: 5
+DESIGN_QUALITY_VERSION: 1
+ADAPTIVE_PACING_VERSION: 3
+SCRIPT_OPENING_POLICY_VERSION: 1
+SCENE_ILLUSTRATION_POLICY_VERSION: 2
+TOPIC_VISUAL_RELEVANCE_POLICY_VERSION: 1
+END_HOLD_POLICY_VERSION: 1
+COVER_POLICY_VERSION: 1
+ASSET_GENERATION_POLICY_VERSION: 1
+ACTIVE_STYLE_ID: serious-minimal-countryball-explainer-youtube-16x9
+
+GOOGLE FLOW MASTER PROMPT — Konservatismus: Bewahren statt radikal verändern?
+
+ZIEL
+Erzeuge ausschließlich Bild 01 bis Bild 26. Es gibt KEIN separates Bild 00.
+Die 26 Bilder wurden in Phase 1 aus dem Inhalt abgeleitet. Neue Gedanken, historische Wendepunkte und eigenständige Beispiele erhalten eigene Bildmomente.
+
+==================================================
+FIRST SCENE = COVER HARD LOCK
+==================================================
+- Bild 01 is the cover AND the first video scene.
+- Bild 01 starts the actual video at 0.0 seconds.
+- Bild 01 must contain a strong short German cover headline AND visually support the first spoken idea.
+- The exported YouTube thumbnail is copied from Bild 01.png.
+- Do NOT create Bild 00.
+- Do NOT create a separate thumbnail image outside the timeline.
+
+==================================================
+COVER = 3 CANDIDATES HARD LOCK
+==================================================
+- Generate Bild 01 exactly THREE times as temporary cover candidates.
+- Compare only these three cover candidates.
+- Select exactly ONE winner.
+- Rename only the selected winner exactly once to `Bild 01.png`.
+- Discard the other two cover candidates completely.
+- No cover candidate may remain in the final image folder.
+
+==================================================
+NON-COVER = SINGLE GENERATION HARD LOCK
+==================================================
+- Every image from Bild 02 through Bild 26 is generated exactly ONCE.
+- Do not create a second version of any non-cover image.
+- Do not stop for manual review after five-image waves.
+- Rename each finished non-cover image exactly once to its final `Bild NN.png` name, then continue.
+- Maximum five active generations at the same time; this is concurrency only, never a review gate.
+
+==================================================
+FINAL IMAGE FOLDER HARD LOCK
+==================================================
+At the end, all final images must exist in exactly one flat folder:
+`00-bildprompts/images/`
+
+The folder may contain only:
+`Bild 01.png` through `Bild 26.png`
+
+No subfolders. No Bild 00. No cover candidates. No alternate versions. No extra PNG files.
+
+==================================================
+SESSION RESET HARD LOCK
+==================================================
+- Use a fresh Google Flow session for Visual Policy V5.
+- The ONLY active style is `serious-minimal-countryball-explainer-youtube-16x9`.
+- Do not use any previous generated image as a visual reference.
+- Bild 01 is a cover, NOT a master style reference.
+- Sessions containing older conflicting instructions are stale for new projects.
+
+==================================================
+WRITTEN STYLE LOCK — SERIOUS MINIMAL COUNTRYBALL
+==================================================
+Serious Minimal Countryball Explainer visual world, exactly matching the Reel visual DNA and adapted only to a 16:9 YouTube canvas. Clean serious flat 2D countryball explainer. Perfectly round Countryball actors when an actor is useful, simple white eyes, thick clean black outlines, controlled flat colors, restrained soft graphic shading, adult and informative, never childish or goofy.
+
+No normal illustrated humans. No humanoid cartoon people. No stick figures. No human silhouettes. No realistic human hands. No photorealism. No glossy 3D. No Pixar. No clay. No anime.
+
+==================================================
+SCENE ILLUSTRATION V2 — HARD LOCK
+==================================================
+THIS VIDEO MUST LOOK LIKE A SERIES OF CLEAR ILLUSTRATED SCENES, NOT LIKE ABSTRACT INFOGRAPHIC POSTERS.
+
+Prefer:
+- recognizable civic places, institutions, streets, courts, town halls, markets, archives and historical settings tied to conservatism
+- Countryballs visibly doing something when actors are useful
+- one clear action or relationship per image
+- environmental context around the main idea
+- simple foreground / midground / background depth
+- scene-specific props integrated naturally into the environment
+- varied but controlled scene colors: warm stone, civic green, burgundy, muted gold, slate blue, brick red, parchment cream and restrained accent colors
+
+Avoid as the default:
+- abstract symbol boards
+- presentation-slide layouts
+- split-panel infographic posters
+- multiple boxed explanations
+- rows or grids of icons
+- giant diagram arrows floating in empty space
+- tiny Countryballs surrounded by labels
+- one static object centered on an empty background
+- repetitive beige-and-navy boards
+
+Use infographic structure only when the spoken idea genuinely cannot be shown as a concrete scene. Even then, show one relationship, not a dashboard.
+
+==================================================
+TOPIC VISUAL RELEVANCE V1 — HARD LOCK
+==================================================
+EVERY IMAGE MUST MATCH BOTH THE CURRENT SPOKEN SENTENCE AND THE SPECIFIC VIDEO TOPIC: KONSERVATISMUS.
+
+Before writing each image prompt, answer internally:
+1. What exactly does this sentence mean inside conservatism?
+2. Which institution, place, reform, historical moment, tradition or civic situation is specific to this point?
+3. Could this exact image be dropped into a different explainer with almost no change? If yes, it is too generic and must be redesigned.
+
+Mandatory:
+- every Bild NN has a written `Topic Anchor:` below
+- prefer concrete institutions, historical situations, civic places, legal documents and gradual reform scenes over generic metaphors
+- France may appear only in the French-Revolution context
+- Britain may appear only in the Edmund-Burke context
+- no random national Countryballs merely to make the image look political
+- the final image must summarize the core tension of conservatism: preserve what works, reform what needs change, avoid unnecessary rupture
+
+==================================================
+PREMIUM DESIGN LAYER V1 — HARD LOCK
+==================================================
+Premium means BETTER DESIGN INSIDE THE SAME COUNTRYBALL WORLD, never a style change.
+
+For every image:
+- create one dominant focal subject with clear visual hierarchy
+- deliberately balance the 16:9 canvas; avoid random centering
+- use meaningful scale contrast
+- use purposeful overlaps and layering
+- when helpful, create simple foreground / midground / background depth using flat 2D layers
+- use one coherent main palette with normally one dominant base color and one or two controlled accent colors
+- use negative space intentionally, not as empty unused space
+- integrate documents, buildings, roads, scaffolding, market stalls and civic symbols naturally into the scene
+- if text is requested, treat typography as part of the composition with strong hierarchy and clean spacing
+- vary composition direction, scale, environment and placement between adjacent images
+
+Clean does NOT mean empty. Minimal does NOT mean lifeless. Premium does NOT mean realistic.
+
+==================================================
+VISUAL STORYTELLING HARD LOCK
+==================================================
+Prefer concrete relationships: institution → reform → continuity, old structure → careful repair, abrupt replacement → unintended consequence, law → stability, market → ownership, democratic institution → responsibility.
+
+If a Countryball actor is used:
+- perfectly round body
+- simple white eyes
+- thick clean black outline
+- restrained expression
+- tiny simple limbs only when needed for the action
+- no hair, neck, realistic hands or realistic face
+
+If a building, archive, bridge, court, market or civic street explains the point more clearly, a Countryball is not mandatory.
+
+==================================================
+ADAPTIVE IMAGE DENSITY V3 — HARD LOCK
+==================================================
+One image = one clear visual purpose.
+Complex information is split across multiple elegant images instead of being crammed into one frame.
+Preferred average hold: about 4.5–7.5 seconds.
+No filler images. No repeated scene with only cosmetic changes.
+
+==================================================
+ANTI-LIFELESS HARD LOCK
+==================================================
+Avoid tiny isolated subjects lost in huge empty backgrounds, meaningless icon collages, mechanically repeated centered-countryball layouts, flat rows of unrelated objects, and abstract poster boards replacing real scenes.
+
+==================================================
+INDIVIDUALITY HARD LOCK
+==================================================
+- Create a fresh arrangement for every Bild NN while staying inside the SAME Serious Minimal Countryball visual world.
+- Vary place, object placement, scale, direction, prop choice, layering and background emphasis when useful.
+- Do not use any previous generated image as a visual reference.
+- Do not change medium or visual DNA between images.
+
+==================================================
+DEUTSCH-HARD-LOCK
+==================================================
+Every readable word must be German. English visible text or pseudo-text = HARD FAIL. If text is not explicitly required, generate no readable text.
+
+==================================================
+BILDPLAN
+==================================================
+
+BILD 01 · D · 7.0 s
+Audio Anchor: "Was ist Konservatismus?"
+Visual Purpose: Cover-Hook: Konservatismus als Spannungsfeld zwischen Bewahren und vorsichtiger Veränderung zeigen.
+Topic Anchor: Ein historisches Regierungs-/Gerichtsgebäude wird nicht abgerissen, sondern sichtbar behutsam renoviert.
+Composition Mode: supported-explainer
+Prompt: Create a polished 16:9 Serious Minimal Countryball Explainer cover scene. A dignified old civic building with courthouse/parliament architecture dominates the left-center, while one side is under careful renovation with clean scaffolding and new stonework rather than demolition. In the foreground, one neutral perfectly round Countryball studies two clear plans on a low stand: preserve and repair, not destroy and replace. Warm stone, deep civic green and burgundy accents, flat 2D shapes, thick black outlines, clean depth with plaza foreground and building background. Add exactly this large German headline: "WAS IST KONSERVATISMUS?". No other readable text. No humans, no human silhouettes, no realistic hands, no 3D.
+
+BILD 02 · A · 3.5 s
+Audio Anchor: "Kurz gesagt: Konservatismus ist"
+Visual Purpose: Die kurze Erstantwort visualisieren: Bewährtes schützen und Wandel vorsichtig gestalten.
+Topic Anchor: Eine bestehende steinerne Brücke bleibt in Betrieb, während nur ein beschädigter Abschnitt sorgfältig erneuert wird.
+Composition Mode: simple-mini-scene
+Prompt: Show a concrete civic river bridge scene in the same 16:9 flat 2D Countryball world. The old stone bridge remains open and functional while a small clearly marked section is being carefully repaired with new stones and simple scaffolding. Two neutral Countryballs cross safely on the open side. The image should communicate preservation plus cautious improvement, not nostalgia. Use teal water, warm sandstone, muted red repair accents, thick black outlines. No readable text. No humans.
+
+BILD 03 · B · 4.0 s
+Audio Anchor: "Aber was genau soll bewahrt werden"
+Visual Purpose: Die Leitfrage öffnen: Was bewahren, was verändern?
+Topic Anchor: Ein Countryball steht auf einem Stadtplatz vor Rathaus, Gericht und einer geplanten Neubaufläche und wägt konkrete Institutionen ab.
+Composition Mode: simple-mini-scene
+Prompt: Create an illustrated civic square at golden morning light in flat 2D. A neutral Countryball stands beside a low planning table, looking toward three real parts of the same town: an old town hall, a courthouse and a small construction site for a needed new public building. The scene asks what should stay and what should change without using floating icons or panels. Strong depth, colorful but controlled palette of brick red, cream, green trees and slate blue roofs. No visible text. No humans.
+
+BILD 04 · A · 3.5 s
+Audio Anchor: "Der Begriff kommt vom lateinischen"
+Visual Purpose: "conservare" als Bewahren konkret und einfach verankern.
+Topic Anchor: Ein kommunales Archiv bewahrt alte Verfassungs- und Ratsdokumente, ohne abstrakte Symboltafel.
+Composition Mode: simple-mini-scene
+Prompt: Show a small elegant municipal archive room in the Serious Minimal Countryball style. One neutral Countryball carefully places a bound civic charter into a protective archive shelf using tiny cartoon limbs, while old sealed document boxes and a town seal sit naturally nearby. Flat 2D, thick black outlines, warm parchment cream, forest green shelves, muted gold details. Add exactly one German word on a simple wall plaque: "BEWAHREN". No other readable text. No humans or realistic hands.
+
+BILD 05 · C · 5.0 s
+Audio Anchor: "Politisch gewann konservatives Denken"
+Visual Purpose: Die Französische Revolution als historischen Entstehungskontext markieren.
+Topic Anchor: Frankreich 1789 als konkrete politische Umbruchsszene.
+Composition Mode: simple-mini-scene
+Prompt: Create a historical 1789 French civic square scene in flat 2D Countryball explainer style. A France Countryball is present because France is historically necessary here. Show a royal gate opened and partly dismantled, old institutional emblems being removed, papers and civic notices changing around a public building. The scene should feel like rapid political transformation without violence or human crowds. Strong blue-red-gold accents on warm stone. Add exactly: "1789". No other readable text. No humans.
+
+BILD 06 · B · 4.5 s
+Audio Anchor: "Die Revolution zeigte"
+Visual Purpose: Den vollständigen Umsturz alter Ordnung sichtbar machen.
+Topic Anchor: Alte monarchische und institutionelle Strukturen werden in Frankreich gleichzeitig abgebaut.
+Composition Mode: cause-effect
+Prompt: Show the same historical era from a new angle: a French civic district where a crown-topped gate, an old council sign and a formal state building are all visibly being replaced at once. A France Countryball watches the rapid transformation from the foreground. Keep it one coherent street scene, not a collage. Dust clouds stylized and clean, flat colors, strong black outlines, red and blue accents. No readable text. No humans.
+
+BILD 07 · C · 5.0 s
+Audio Anchor: "Für konservative Denker wurde daraus eine zentrale Frage"
+Visual Purpose: Die konservative Kernfrage als praktische Entscheidung zeigen.
+Topic Anchor: Nach einem politischen Umbruch steht die Entscheidung zwischen Totalabriss und gezielter Reparatur eines funktionsfähigen Gerichtsgebäudes.
+Composition Mode: comparison
+Prompt: Create one concrete post-upheaval civic scene, not a split panel. A sturdy old courthouse has one damaged wing. In front, a neutral Countryball stands beside two physical options placed on the ground: a demolition machine pointing at the entire building and a repair scaffold already stabilizing only the damaged wing. Make the repair path visually calmer and practical, without moralizing. Use cool slate, warm stone and amber repair lights. No readable text. No humans.
+
+BILD 08 · B · 4.0 s
+Audio Anchor: "Ein wichtiger früher Denker war Edmund Burke."
+Visual Purpose: Edmund Burke historisch markieren, ohne menschliche Figur zu zeigen.
+Topic Anchor: Burkes politische Revolutionskritik von 1790 als historisches Werk im britischen Kontext.
+Composition Mode: simple-mini-scene
+Prompt: Show an elegant late-18th-century British study desk with no human present. A closed dark green book, quill, sealed letter and a small model of Westminster sit on the desk; a restrained Britain Countryball is positioned beside the book because Burke was a British parliamentarian. Flat 2D, thick black outlines, warm candle-like amber but not realistic lighting. Add exactly: "1790". No other readable text. No humans or human hands.
+
+BILD 09 · B · 4.0 s
+Audio Anchor: "Er kritisierte nicht jede Reform."
+Visual Purpose: Konservatismus klar von vollständiger Veränderungsfeindlichkeit trennen.
+Topic Anchor: Eine alte öffentliche Brücke wird modernisiert, nicht eingefroren oder abgerissen.
+Composition Mode: simple-mini-scene
+Prompt: Show a colorful riverside town where an old public bridge receives a new safer railing and repaired paving while remaining recognizably the same bridge. A neutral Countryball inspector stands beside the finished section. This must visually say reform is allowed when it improves a working institution. Flat 2D, turquoise river, brick red roofs, green trees, black outlines. No readable text. No humans.
+
+BILD 10 · C · 5.0 s
+Audio Anchor: "Sein Grundgedanke war eher:"
+Visual Purpose: Gesellschaft als komplexes Geflecht konkreter Institutionen zeigen.
+Topic Anchor: Rathaus, Gericht, Markt, Schule und Wohnviertel funktionieren als zusammenhängende lokale Ordnung.
+Composition Mode: supported-explainer
+Prompt: Create a lively but clean illustrated town from a slightly elevated street-level perspective. Show a town hall, courthouse, school, market and homes connected by roads and public space, with a few neutral Countryballs naturally moving through the environment. The emphasis is that institutions interact in one living system. No floating icons, no labels, no dashboard. Use varied civic colors, thick black outlines, flat 2D depth. No readable text. No humans.
+
+BILD 11 · C · 5.0 s
+Audio Anchor: "Institutionen, Gesetze und Gewohnheiten"
+Visual Purpose: Lang gewachsene Institutionen konkret darstellen.
+Topic Anchor: Ein altes Rathaus mit sichtbaren späteren Erweiterungen zeigt institutionelle Entwicklung über Zeit.
+Composition Mode: simple-mini-scene
+Prompt: Show one historic town hall that has clearly evolved over generations: an older stone central section, a later brick side wing and a modern accessibility ramp integrated cleanly into the same building. Countryballs enter through the same public doorway. The scene should show continuity through accumulated changes. Flat 2D, warm stone, brick red, green and blue accents. No readable text. No humans.
+
+BILD 12 · B · 4.5 s
+Audio Anchor: "In ihnen steckt Erfahrung"
+Visual Purpose: Verborgene Erfahrung in bewährten Strukturen sichtbar machen.
+Topic Anchor: Die Tragstruktur einer alten Brücke zeigt, warum unsichtbare Erfahrung wichtig sein kann.
+Composition Mode: simple-mini-scene
+Prompt: Show a cross-angle view of a functioning old stone bridge where one side reveals sturdy hidden support arches and careful maintenance layers beneath the road. A neutral Countryball safely crosses above while another checks a small maintenance marker below. The bridge is a concrete example of knowledge embedded in a long-used structure. Flat 2D, clean black outlines, blue-green water, warm stone. No readable text. No humans.
+
+BILD 13 · C · 5.0 s
+Audio Anchor: "Wer alles auf einmal ersetzt"
+Visual Purpose: Unbeabsichtigte Folgen eines radikalen Komplettaustauschs zeigen.
+Topic Anchor: Der vollständige Abriss einer funktionierenden Stadtbrücke erzeugt Verkehrschaos und Umwege.
+Composition Mode: cause-effect
+Prompt: Create a concrete city transport scene after an entire working bridge has been demolished at once. The river crossing is gone, detour signs force several neutral Countryballs in simple vehicles onto a long crowded route around the river. Keep the image clear, not chaotic: one broken connection causing one visible consequence. Flat 2D, orange detour accents, cool city palette. No readable text. No humans.
+
+BILD 14 · B · 4.5 s
+Audio Anchor: "Darum bevorzugen viele konservative Traditionen"
+Visual Purpose: Schrittweise Veränderung als konservative Methode zeigen.
+Topic Anchor: Ein öffentlicher Bahnhof wird abschnittsweise modernisiert, während der Betrieb weiterläuft.
+Composition Mode: simple-mini-scene
+Prompt: Show a clean regional train station being upgraded one platform section at a time. One side has new lighting and paving, another older section still works, and Countryballs continue using the station. The construction is orderly, staged and practical. Flat 2D with cobalt blue, warm cream, green and orange accents. Add exactly: "SCHRITT FÜR SCHRITT". No other readable text. No humans.
+
+BILD 15 · B · 4.5 s
+Audio Anchor: "Wenn etwas nicht funktioniert"
+Visual Purpose: Defekte Strukturen sollen verbessert werden, nicht unangetastet bleiben.
+Topic Anchor: Ein beschädigtes Rathausdach und kaputte Stufen werden gezielt repariert.
+Composition Mode: simple-mini-scene
+Prompt: Show a town hall with a visibly leaking roof corner and cracked entrance steps being actively repaired. One neutral Countryball holds a simple maintenance checklist board with no readable writing. The rest of the building remains open and functional. Rich brick red, cream stone, green trees, flat 2D, thick outlines. No readable text. No humans or realistic hands.
+
+BILD 16 · B · 4.5 s
+Audio Anchor: "Aber funktionierende Strukturen"
+Visual Purpose: Funktionierende Strukturen nicht grundlos ersetzen.
+Topic Anchor: Eine gut funktionierende öffentliche Bibliothek bleibt erhalten, während daneben nur ein sinnvoller kleiner Anbau entsteht.
+Composition Mode: simple-mini-scene
+Prompt: Show a busy civic library in the Countryball world, clearly functioning well, with Countryballs entering and reading. Beside it, a small new accessible extension is being added without replacing the main building. Make the existing institution feel useful, not old-fashioned. Colorful book-window accents, warm terracotta, teal and cream. No readable text. No humans.
+
+BILD 17 · B · 4.5 s
+Audio Anchor: "Stabilität und Kontinuität"
+Visual Purpose: Stabilität und Kontinuität als eigenständigen politischen Wert zeigen.
+Topic Anchor: Ein funktionierender Stadtplatz mit Gericht, Rathaus und Markt bietet verlässliche tägliche Ordnung.
+Composition Mode: simple-mini-scene
+Prompt: Create a calm but active civic square during a normal day. The courthouse is open, the town hall clock runs, a small market operates and neutral Countryballs move through predictable public routines. Show stability as dependable functioning, not stillness. Use sunny blue sky, green trees, warm stone and colorful market accents. No readable text. No humans.
+
+BILD 18 · B · 5.0 s
+Audio Anchor: "Was Konservative konkret bewahren wollen"
+Visual Purpose: Zeigen, dass der Gegenstand des Bewahrens unterschiedlich sein kann.
+Topic Anchor: Eine konkrete Nachbarschaft enthält mehrere real existierende Institutionen statt abstrakter Symbole.
+Composition Mode: supported-explainer
+Prompt: Show one coherent neighborhood street containing a courthouse, a family home, a church or community building, a small local shop and a public meeting hall. Neutral Countryballs use the places naturally. Do not arrange them as icons; make it a believable illustrated street. Use varied but controlled red, green, cream and blue. No readable text. No humans.
+
+BILD 19 · C · 5.0 s
+Audio Anchor: "Das können Verfassung und Rechtsstaat sein"
+Visual Purpose: Verfassung, Rechtsstaat und Institutionen konkret in einer Demokratie zeigen.
+Topic Anchor: Gericht, Verfassungsdokument und geordneter Zugang zum Recht.
+Composition Mode: simple-mini-scene
+Prompt: Create a dignified courthouse plaza in flat 2D Countryball style. A large courthouse forms the background; in the foreground a protected civic document case and clear open steps lead neutral Countryballs toward the court entrance. Add exactly the German word "RECHTSSTAAT" integrated into the courthouse sign. No other readable text. Strong navy, sandstone and gold accents. No humans.
+
+BILD 20 · B · 4.0 s
+Audio Anchor: "Deshalb sieht Konservatismus in verschiedenen Ländern und Epochen unterschiedlich aus."
+Visual Purpose: Die Wandelbarkeit konservativer Inhalte über Zeit konkret zeigen.
+Topic Anchor: Dasselbe alte öffentliche Gebäude wird in einer modernen Stadt weitergenutzt und angepasst.
+Composition Mode: before-after
+Prompt: Show one continuous urban scene centered on an old civic building now surrounded by a modern city: historic stone façade preserved, solar panels added discreetly on a newer rear wing, accessible entrance, bicycles and public transit nearby. The building remains recognizable while its use adapts. This should communicate conservatism changing with context without a split panel. Flat 2D, varied modern colors. No readable text. No humans.
+
+BILD 21 · B · 4.5 s
+Audio Anchor: "Auch wirtschaftlich gibt es keine einzige konservative Position."
+Visual Purpose: Wirtschaftliche Vielfalt innerhalb konservativer Strömungen ankündigen.
+Topic Anchor: Ein realer Stadtmarkt und kommunales Verwaltungsgebäude zeigen zwei mögliche Schwerpunktsetzungen im selben politischen Feld.
+Composition Mode: simple-mini-scene
+Prompt: Show a lively town market street with privately owned shops and stalls on one side and a solid municipal services building at the end of the same street. Neutral Countryballs shop, work and enter the public building. Keep it one natural scene, not a comparison board. Use bright market awnings, deep green, terracotta and cream. No readable text. No humans.
+
+BILD 22 · B · 4.5 s
+Audio Anchor: "Manche konservativen Strömungen setzen stark auf Markt und Privateigentum."
+Visual Purpose: Markt und Privateigentum als konkrete konservative Wirtschaftsposition zeigen.
+Topic Anchor: Familienbetrieb, Ladenbesitz und lokaler Markt als anschauliche Eigentumsszene.
+Composition Mode: simple-mini-scene
+Prompt: Create a colorful local commercial street with one clearly owned storefront, a small workshop and a market stall. Neutral Countryballs exchange goods and one shopkeeper Countryball stands proudly beside its maintained property. No money icons floating, no charts. Flat 2D, warm storefront colors, green awnings, black outlines. No readable text. No humans.
+
+BILD 23 · B · 4.5 s
+Audio Anchor: "Andere akzeptieren einen größeren Staat"
+Visual Purpose: Größeren Staat als mögliche konservative Stabilitäts- und Ordnungsposition zeigen.
+Topic Anchor: Feuerwehr, öffentlicher Verkehrsservice und Verwaltungsgebäude sichern konkret Ordnung und Versorgung.
+Composition Mode: simple-mini-scene
+Prompt: Show one coherent civic service scene: a municipal administration building in the background, a public bus at a stop and a fire station vehicle ready nearby. Neutral Countryballs use the services. The image should show public capacity serving stability, not a generic government icon collage. Flat 2D, strong red fire accent, blue transit, warm civic architecture. No readable text. No humans.
+
+BILD 24 · C · 5.0 s
+Audio Anchor: "Wichtig ist außerdem der Unterschied zwischen konservativ und reaktionär."
+Visual Purpose: Konservativ klar von reaktionär unterscheiden.
+Topic Anchor: Eine historische Institution wird vorsichtig reformiert, statt auf einen früheren Zustand zurückgedreht zu werden.
+Composition Mode: cause-effect
+Prompt: Show an old civic building at a real street corner with a modern accessibility ramp and restored façade. A neutral Countryball points toward the practical renovation, while an old obsolete gate has been respectfully preserved only as a museum element off to the side rather than restored as the active entrance. The scene must communicate reform without returning society to the past. Add exactly: "NICHT REAKTIONÄR". No other readable text. No humans.
+
+BILD 25 · C · 5.0 s
+Audio Anchor: "Heute findet man konservative Ideen in vielen demokratischen Parteien."
+Visual Purpose: Konservatismus in moderner demokratischer Politik verorten.
+Topic Anchor: Demokratisches Parlament, Rechtsstaat und gesellschaftliche Verantwortung als heutiger institutioneller Rahmen.
+Composition Mode: simple-mini-scene
+Prompt: Create a modern democratic parliament exterior and public plaza. Several neutral differently colored Countryballs enter through the same open democratic entrance; nearby stand a courthouse and a local civic notice board with no readable writing. Keep the scene calm, institutional and contemporary. No party logos, no real-world flags, no humans. Flat 2D with blue, green, burgundy and sandstone accents.
+
+BILD 26 · D · 6.5 s
+Audio Anchor: "Konservatismus bedeutet also nicht einfach"
+Visual Purpose: Schlussbild fasst den konkreten Themenkern zusammen: Bewahren, verbessern, Brüche vermeiden.
+Topic Anchor: Eine funktionierende Stadt verbindet erhaltenes Rathaus, renovierte Brücke und neue Ergänzungen zu einer gemeinsamen Ordnung.
+Composition Mode: supported-explainer
+Prompt: Create a strong final 16:9 illustrated city scene in the Serious Minimal Countryball world. In one coherent view, show an old town hall still functioning, a stone bridge being carefully upgraded, a small modern public extension integrated into the district and neutral Countryballs moving through the city. Nothing is frozen in time and nothing is being radically demolished. The visual thesis is preservation plus measured reform. Use a polished colorful palette of warm stone, civic green, deep blue and burgundy. Add exactly this German closing line: "BEWAHREN + VERÄNDERN". No other readable text. No humans, no silhouettes, no realistic hands.
+
+FINALER CHECK
+- Visual Policy V5 aktiv
+- Design Quality V1 aktiv
+- Adaptive Pacing V3 aktiv
+- Scene Illustration Policy V2 aktiv
+- Topic Visual Relevance Policy V1 aktiv
+- End Hold Policy V1 aktiv
+- ACTIVE_STYLE_ID = serious-minimal-countryball-explainer-youtube-16x9
+- gleiche Countryball-Bildwelt wie Reels, nur 16:9
+- anschauliche Szenen statt abstrakter Poster als Standard
+- jedes Bild passt zum Satz UND zu Konservatismus
+- jedes Bild besitzt einen konkreten Topic Anchor
+- keine zufälligen Länder/Flaggen ohne narrativen Grund
+- finale Szene fasst den konkreten Themenkern zusammen
+- Bild 01 exakt 3 Cover-Kandidaten, genau 1 Gewinner
+- Bild 02–26 jeweils genau einmal generiert
+- alle finalen Bilder in `00-bildprompts/images/`
+- kein Bild 00
+- keine Bild-zu-Bild-Referenzen
+- jeder sichtbare Text Deutsch
+- finales Render hält das letzte Bild nach dem letzten Wort 1,2–1,5 s, Ziel 1,3 s
