@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "timingSource": "FINAL_TIMELINE.json",
+  "chapters": [
+    {"imageNumber":1,"title":"Wie der Kalte Krieg begann"},
+    {"imageNumber":5,"title":"Europa nach 1945"},
+    {"imageNumber":14,"title":"Truman-Doktrin und Marshallplan"},
+    {"imageNumber":20,"title":"Berlin-Blockade und Luftbrücke"},
+    {"imageNumber":26,"title":"NATO, DDR, BRD und Warschauer Pakt"},
+    {"imageNumber":31,"title":"Wettrüsten und atomare Abschreckung"},
+    {"imageNumber":35,"title":"Der Wettlauf ins All"},
+    {"imageNumber":41,"title":"Stellvertreterkriege und Berliner Mauer"},
+    {"imageNumber":48,"title":"Die Kubakrise"},
+    {"imageNumber":56,"title":"Entspannung und Afghanistan"},
+    {"imageNumber":63,"title":"Gorbatschow und das Ende des Ostblocks"},
+    {"imageNumber":70,"title":"Warum der Konflikt so lange dauerte"}
+  ]
+}
