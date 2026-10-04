@@ -9,13 +9,13 @@
 
 ## Skript
 
-- 1011 Wörter
+- 1020 Wörter
 - Zielbereich 380–420 Sekunden
 - Script Opening V1 erfüllt:
   - direkte Videofrage
   - `Denkst du dir gerade vielleicht.`
   - `Kurz gesagt:`
-  - anschließende Leitidee
+  - danach explizite Leitfrage: Warum wurden aus Verbündeten Rivalen und warum dauerte der Konflikt fast ein halbes Jahrhundert?
 - klare Einleitung, Hauptteil, Schluss
 - keine bloße Ereignisliste; Ursache → Reaktion → Folge wird mehrfach erklärt
 - Sicherheitsinteressen beider Seiten werden genannt
@@ -77,7 +77,8 @@ Besonders geprüft:
 - Topic Visual Relevance V1
 - Visual Flexibility V1
 - Serious Minimal Countryball visual DNA bleibt erhalten
-- Premium bedeutet bessere Komposition, nicht Stilwechsel
+- Premium bedeutet bessere Komposition, nicht Stilwechsel oder Realismus
+- Visual Storytelling Hard Lock aktiv
 - einfache Bilder ausdrücklich erlaubt
 - komplexe Szenen nur bei echtem narrativem Bedarf
 
