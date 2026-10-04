@@ -8,9 +8,10 @@ Ein fließendes historisches Erklärvideo mit klarer Einleitung, durchgehendem H
 
 ## Sprechertext
 
-- 1011 Wörter
+- 1020 Wörter
 - Zielzeit nach Audiooptimierung: ca. 6:20–7:00
 - direkte Zuschauerfrage nach Script Opening V1
+- nach der Kurzantwort folgt sofort die Leitfrage, warum aus Verbündeten Rivalen wurden und warum der Konflikt so lange dauerte
 - kein Listen-/Schulbuchstil; Übergänge sind im Text ausformuliert
 - Schluss beantwortet nicht nur „was geschah?“, sondern **warum der Konflikt so lange dauerte**
 
