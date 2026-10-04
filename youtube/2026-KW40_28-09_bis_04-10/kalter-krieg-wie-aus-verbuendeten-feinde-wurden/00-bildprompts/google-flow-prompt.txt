@@ -91,7 +91,13 @@ Every Bild NN below has a `Topic Anchor:` and a `Visual Form:`. Do not replace t
 ==================================================
 PREMIUM DESIGN LAYER V1 — HARD LOCK
 ==================================================
-Premium means better design inside the SAME visual world, never forced complexity. One clear reading order, strong hierarchy, controlled but varied palettes, clean spacing, readable maps, purposeful negative space. Text supports the illustration and never replaces it. Premium does NOT mean realistic or complicated.
+Premium means better design inside the SAME visual world, never forced complexity. One clear reading order, strong hierarchy, controlled but varied palettes, clean spacing, readable maps, purposeful negative space. Text supports the illustration and never replaces it.
+Premium does NOT mean realistic. Premium does NOT mean complicated.
+
+==================================================
+VISUAL STORYTELLING HARD LOCK
+==================================================
+Choose the visual grammar that explains each spoken point fastest and most clearly: map, object, document, schema, spatial relationship, comparison, actor interaction or full scene. If a simple topic-specific visual explains the sentence better, do not add extra actors, props, labels or decorative complexity. Every image must advance the historical explanation, not merely decorate it.
 
 ==================================================
 ADAPTIVE IMAGE DENSITY V3 — HARD LOCK
@@ -129,7 +135,7 @@ Composition Mode: map-explainer
 Prompt: Show a clean 1945 world-map crop focused on Europe, the USA and Soviet Union. The USA and USSR are visually dominant with clear flat color fields while war-damaged Europe is subdued between them. No characters needed. Add exactly: "1945". No other text.
 
 BILD 03 · B · 5.0 s
-Audio Anchor: "Aber aus Verbündeten gegen Hitler"
+Audio Anchor: "Aber warum wurden aus Verbündeten gegen Hitler"
 Visual Purpose: Kriegsallianz und anschließenden Bruch verständlich machen.
 Topic Anchor: Alliierter Handschlag als Bündnis gegen NS-Deutschland zerreißt nach Kriegsende.
 Visual Form: object-only
