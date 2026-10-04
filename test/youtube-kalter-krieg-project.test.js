@@ -29,8 +29,9 @@ test('Kalter-Krieg-Projekt nutzt Schema 13 und den 6–7-Minuten-Rahmen', async 
   assert.equal(meta.plannedImageCount, 74);
   assert.equal(meta.renderPolicy.endHoldSeconds, 1.3);
   assert.equal(meta.topicEditor.decision, 'APPROVED_NEW');
-  assert.equal(script.trim().split(/\s+/).length, 1011);
+  assert.equal(script.trim().split(/\s+/).length, 1020);
   assert.match(script, /^Wie begann der Kalte Krieg\? Denkst du dir gerade vielleicht\. Kurz gesagt:/);
+  assert.match(script, /Aber warum wurden aus Verbündeten gegen Hitler plötzlich Rivalen .* warum dauerte dieser Konflikt fast ein halbes Jahrhundert\?/);
 });
 
 test('74 Bilder besitzen Topic Anchor und Visual Form im Flow-Masterprompt', async () => {
@@ -45,6 +46,8 @@ test('74 Bilder besitzen Topic Anchor und Visual Form im Flow-Masterprompt', asy
   assert.equal(forms.length, 74);
   assert.match(prompt, /COUNTRYBALLS ARE OPTIONAL PER IMAGE/i);
   assert.match(prompt, /BEST VISUAL FORM > FORCED COUNTRYBALL > FORCED COMPLEX SCENE/i);
+  assert.match(prompt, /VISUAL STORYTELLING HARD LOCK/i);
+  assert.match(prompt, /Premium does NOT mean realistic\./i);
   assert.match(prompt, /No normal illustrated humans/i);
   assert.match(prompt, /Bild 02 through Bild 74 is generated exactly ONCE/i);
 });
