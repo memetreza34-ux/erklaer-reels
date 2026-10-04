@@ -153,7 +153,7 @@
   },
   "targetDurationSeconds": 400,
   "targetDurationRangeSeconds": [380, 420],
-  "scriptWordCount": 1011,
+  "scriptWordCount": 1020,
   "plannedImageCount": 74,
   "imageCountMethod": "adaptive-density-v3-content-derived",
   "complexityDistribution": {"A": 14, "B": 34, "C": 20, "D": 6, "E": 0},
