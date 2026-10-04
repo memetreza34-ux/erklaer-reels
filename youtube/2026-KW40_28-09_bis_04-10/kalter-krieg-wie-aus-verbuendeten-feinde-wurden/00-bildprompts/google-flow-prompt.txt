@@ -1,0 +1,737 @@
+YOUTUBE_VISUAL_POLICY_VERSION: 5
+DESIGN_QUALITY_VERSION: 1
+ADAPTIVE_PACING_VERSION: 3
+SCRIPT_OPENING_POLICY_VERSION: 1
+SCENE_ILLUSTRATION_POLICY_VERSION: 2
+TOPIC_VISUAL_RELEVANCE_POLICY_VERSION: 1
+VISUAL_FLEXIBILITY_POLICY_VERSION: 1
+END_HOLD_POLICY_VERSION: 1
+COVER_POLICY_VERSION: 1
+ASSET_GENERATION_POLICY_VERSION: 1
+ACTIVE_STYLE_ID: serious-minimal-countryball-explainer-youtube-16x9
+
+GOOGLE FLOW MASTER PROMPT — Kalter Krieg: Wie aus Verbündeten Feinde wurden
+
+ZIEL
+Erzeuge ausschließlich Bild 01 bis Bild 74. Kein Bild 00. Die 74 Bildmomente wurden aus einem 6–7-Minuten-Skript abgeleitet. Dichte historische Passagen erhalten bewusst mehr Bildmomente; einfache Aussagen dürfen bewusst nur aus Karte, Dokument, Objekt oder kurzem Schema bestehen.
+
+==================================================
+FIRST SCENE = COVER HARD LOCK
+==================================================
+- Bild 01 is the cover AND the first video scene.
+- Bild 01 starts the actual video at 0.0 seconds.
+- Bild 01 must contain a strong short German cover headline AND visually support the first spoken idea.
+- The exported YouTube thumbnail is copied from Bild 01.png.
+- Do NOT create Bild 00.
+- Do NOT create a separate thumbnail image outside the timeline.
+
+==================================================
+COVER = 3 CANDIDATES HARD LOCK
+==================================================
+- Generate Bild 01 exactly THREE times as temporary cover candidates.
+- Compare only these three cover candidates.
+- Select exactly ONE winner.
+- Rename only the selected winner exactly once to `Bild 01.png`.
+- Discard the other two cover candidates completely.
+
+==================================================
+NON-COVER = SINGLE GENERATION HARD LOCK
+==================================================
+- Every image from Bild 02 through Bild 74 is generated exactly ONCE.
+- Do not create second versions of non-cover images by default.
+- Do not stop for manual review after five-image waves.
+- Rename each finished non-cover image exactly once to its final `Bild NN.png` name.
+- Maximum five active generations at the same time.
+
+==================================================
+FINAL IMAGE FOLDER HARD LOCK
+==================================================
+At the end, all final images must exist in exactly one flat folder:
+`00-bildprompts/images/`
+Only `Bild 01.png` through `Bild 74.png`. No subfolders, no alternates, no Bild 00.
+
+==================================================
+SESSION RESET HARD LOCK
+==================================================
+- Use a fresh Google Flow session for this Schema-13 project.
+- The ONLY active style is `serious-minimal-countryball-explainer-youtube-16x9`.
+- Do not use any previous generated image as a visual reference.
+- Bild 01 is NOT a master style reference.
+
+==================================================
+WRITTEN STYLE LOCK — SERIOUS MINIMAL COUNTRYBALL
+==================================================
+Serious Minimal Countryball Explainer visual world, 16:9. Clean serious flat 2D explainer illustration, thick clean black outlines, controlled flat colors, restrained graphic shading, adult and informative. Countryballs belong to the world but are OPTIONAL per image. If used: perfectly round, simple white eyes, restrained expression, tiny simple limbs only when action requires them.
+
+No normal illustrated humans. No human silhouettes. No realistic hands. No stick figures. No photorealism. No glossy 3D. No Pixar. No clay. No anime.
+
+==================================================
+SCENE ILLUSTRATION V2 — HARD LOCK
+==================================================
+THIS VIDEO MUST LOOK LIKE A SERIES OF CLEAR ILLUSTRATIONS, NOT ABSTRACT INFOGRAPHIC POSTERS.
+Use the clearest visual form for each sentence: map, single object, document, short schema, Countryball action, several actors, several related elements, or a full environment.
+Do not force busy scenes. Do not force Countryballs. Do not force foreground/midground/background when a simpler illustration is clearer.
+
+==================================================
+VISUAL FLEXIBILITY V1 — HARD LOCK
+==================================================
+COUNTRYBALLS ARE OPTIONAL PER IMAGE. DO NOT FORCE A CHARACTER INTO THE FRAME.
+Explicitly allowed: object-only, document-only, map-only, simple-schema, countryball-action, multi-actor, multi-element, full-scene.
+A single dominant object is allowed when it explains the point best. Multiple actors or objects are allowed when the idea genuinely needs interaction or comparison.
+Simplicity is NOT a quality failure. Unnecessary complexity is a quality failure.
+BEST VISUAL FORM > FORCED COUNTRYBALL > FORCED COMPLEX SCENE.
+
+==================================================
+TOPIC VISUAL RELEVANCE V1 — HARD LOCK
+==================================================
+EVERY IMAGE MUST MATCH BOTH THE CURRENT SPOKEN SENTENCE AND THE SPECIFIC VIDEO TOPIC.
+The specific topic is DER KALTE KRIEG: Nachkriegsordnung, USA–UdSSR-Rivalität, Blockbildung, Deutschland/Berlin, nukleare Abschreckung, Weltraumwettlauf, Stellvertreterkriege, Kuba-Krise, Entspannung, Afghanistan, Gorbatschow und das Ende 1989–1991.
+Every Bild NN below has a `Topic Anchor:` and a `Visual Form:`. Do not replace them with generic political imagery. National Countryballs only when the named state is actually an actor in that moment.
+
+==================================================
+PREMIUM DESIGN LAYER V1 — HARD LOCK
+==================================================
+Premium means better design inside the SAME visual world, never forced complexity. One clear reading order, strong hierarchy, controlled but varied palettes, clean spacing, readable maps, purposeful negative space. Text supports the illustration and never replaces it.
+Premium does NOT mean realistic. Premium does NOT mean complicated.
+
+==================================================
+VISUAL STORYTELLING HARD LOCK
+==================================================
+Choose the visual grammar that explains each spoken point fastest and most clearly: map, object, document, schema, spatial relationship, comparison, actor interaction or full scene. If a simple topic-specific visual explains the sentence better, do not add extra actors, props, labels or decorative complexity. Every image must advance the historical explanation, not merely decorate it.
+
+==================================================
+ADAPTIVE IMAGE DENSITY V3 — HARD LOCK
+==================================================
+There is NO fixed target image count in general. This project resolves to 74 meaningful image moments because the historical story is dense. One image = one clear visual purpose. Preferred average hold about 4.5–7.5 seconds. No filler images.
+
+==================================================
+ANTI-LIFELESS HARD LOCK
+==================================================
+Simple is allowed. Lifeless means generic, weak or unrelated. A strong Cold-War-specific map, treaty, aircraft, wall segment, satellite, missile, telephone, archive document or schema may intentionally stand alone.
+
+==================================================
+DEUTSCH-HARD-LOCK
+==================================================
+Every readable word must be German. English visible text or pseudo-text = HARD FAIL. Proper names and established names like NATO, Sputnik, Apollo, DDR are allowed. If text is not explicitly requested, generate no readable text.
+
+==================================================
+BILDPLAN
+==================================================
+
+BILD 01 · D · 7.5 s
+Audio Anchor: "Wie begann der Kalte Krieg?"
+Visual Purpose: Cover-Hook: aus Verbündeten werden rivalisierende Supermächte.
+Topic Anchor: Europa 1945 zwischen USA und Sowjetunion, gemeinsame Kriegsallianz sichtbar am Zerbrechen.
+Visual Form: full-scene
+Composition Mode: supported-explainer
+Prompt: Create a premium 16:9 Serious Minimal Countryball Explainer cover. Center a simplified devastated Europe map after 1945. USA Countryball on the western edge and Soviet Union Countryball on the eastern edge were once connected by a worn allied ribbon that is now visibly splitting in the middle. Cold blue versus deep red accents, warm ruined-city neutrals, strong clean hierarchy. Add exactly this German headline: "WIE BEGANN DER KALTE KRIEG?". No other readable text. No humans.
+
+BILD 02 · B · 5.0 s
+Audio Anchor: "Kurz gesagt: Nach dem Zweiten Weltkrieg"
+Visual Purpose: Zwei Supermächte bleiben als zentrale Machtpole übrig.
+Topic Anchor: USA und Sowjetunion stehen nach 1945 auf gegenüberliegenden Seiten eines geschwächten Europas.
+Visual Form: map-only
+Composition Mode: map-explainer
+Prompt: Show a clean 1945 world-map crop focused on Europe, the USA and Soviet Union. The USA and USSR are visually dominant with clear flat color fields while war-damaged Europe is subdued between them. No characters needed. Add exactly: "1945". No other text.
+
+BILD 03 · B · 5.0 s
+Audio Anchor: "Aber warum wurden aus Verbündeten gegen Hitler"
+Visual Purpose: Kriegsallianz und anschließenden Bruch verständlich machen.
+Topic Anchor: Alliierter Handschlag als Bündnis gegen NS-Deutschland zerreißt nach Kriegsende.
+Visual Form: object-only
+Composition Mode: single-object-illustration
+Prompt: Show one strong symbolic object: a sturdy wartime alliance ribbon joining a USA emblem and Soviet emblem, with a defeated Nazi military insignia crossed out beneath, while the ribbon begins to tear after victory. Flat 2D, thick outlines, no people, no extra labels.
+
+BILD 04 · C · 6.0 s
+Audio Anchor: "Der Kalte Krieg entstand Schritt für Schritt"
+Visual Purpose: Kalten Krieg als Prozess statt als einzelnen Starttag erklären.
+Topic Anchor: 1945 → 1947 → 1948/49 als zunehmende Ost-West-Spannung.
+Visual Form: simple-schema
+Composition Mode: timeline-schema
+Prompt: Create a clean horizontal three-step timeline, not a dashboard: 1945 ruined Europe, 1947 two diverging political paths, 1948/49 divided Berlin and two blocs emerging. Same visual world, strong spacing, only these German labels: "1945", "1947", "1948/49".
+
+BILD 05 · C · 6.0 s
+Audio Anchor: "Als Deutschland im Mai 1945 kapitulierte"
+Visual Purpose: Ausgangslage nach dem Zweiten Weltkrieg setzen.
+Topic Anchor: Deutschland und europäische Städte im Mai 1945 zerstört.
+Visual Form: full-scene
+Composition Mode: environment
+Prompt: Show a wide flat-2D European cityscape in May 1945: damaged railway station, broken bridge, roofless buildings and silent streets. No humans or Countryballs required. Muted stone, brick and smoke-gray palette with one small calendar marker reading exactly "MAI 1945".
+
+BILD 06 · B · 5.0 s
+Audio Anchor: "Millionen Menschen waren tot"
+Visual Purpose: Dimension der Verwüstung ohne menschliche Darstellung vermitteln.
+Topic Anchor: Leere Wohnblöcke, zerstörte Infrastruktur und Gedenklichter als Kriegsfolgen.
+Visual Form: multi-element
+Composition Mode: symbolic-environment
+Prompt: Show an empty damaged residential district, broken rail line and several simple memorial lights in the foreground. No bodies, no humans, no silhouettes. Serious restrained palette, strong negative space, no text.
+
+BILD 07 · B · 5.0 s
+Audio Anchor: "Die USA dagegen verfügten"
+Visual Purpose: Amerikanische industrielle und atomare Macht 1945 zeigen.
+Topic Anchor: US-Industrie plus frühes Atommonopol.
+Visual Form: multi-element
+Composition Mode: supported-explainer
+Prompt: Show a powerful but clean US industrial scene: factory skyline, cargo ship, assembly line silhouette as machinery only, and one stylized atomic-era bomb shape secured in a military depot. A small USA Countryball may appear only as state actor. Add exactly: "USA 1945". No people.
+
+BILD 08 · C · 6.0 s
+Audio Anchor: "Die Sowjetunion hatte den Krieg"
+Visual Purpose: Sowjetische Verluste und territoriale Macht gleichzeitig erklären.
+Topic Anchor: UdSSR kommt schwer beschädigt aus dem Krieg, kontrolliert aber große Teile Osteuropas.
+Visual Form: map-only
+Composition Mode: map-explainer
+Prompt: Show a map from the Soviet Union into Eastern Europe. Western Soviet regions are scarred with damaged infrastructure symbols while a broad red influence zone extends into Eastern Europe. Keep map legible and sober. Add exactly: "SOWJETUNION 1945".
+
+BILD 09 · B · 5.5 s
+Audio Anchor: "Aus sowjetischer Sicht sollten"
+Visual Purpose: Sowjetische Sicherheitslogik erklären.
+Topic Anchor: Osteuropäische Staaten als strategischer Puffer westlich der UdSSR.
+Visual Form: map-only
+Composition Mode: spatial-explainer
+Prompt: Show Soviet territory on the right and a chain of Eastern European states forming a clear geographic buffer to the west. Use layered map bands instead of characters. Add exactly: "PUFFERZONE". No other text.
+
+BILD 10 · B · 5.0 s
+Audio Anchor: "Schließlich war das Land"
+Visual Purpose: Historische Angst vor Angriffen aus Westen verdeutlichen.
+Topic Anchor: Zwei große westwärts-östliche Invasionspfeile Richtung Russland/Sowjetunion, 1914 und 1941.
+Visual Form: map-only
+Composition Mode: historical-map
+Prompt: Create a simplified European map with two historically separated invasion arrows moving eastward toward Russia/Soviet territory. Label only "1914" and "1941". Keep the two routes distinct and uncluttered. No characters.
+
+BILD 11 · B · 5.0 s
+Audio Anchor: "In Washington und Westeuropa"
+Visual Purpose: Westliche Wahrnehmung sowjetischer Expansion zeigen.
+Topic Anchor: Ausbreitende rote Einflussfläche in Osteuropa wird aus westlicher Perspektive als Bedrohung gelesen.
+Visual Form: map-only
+Composition Mode: perspective-map
+Prompt: Show Europe with expanding Soviet-aligned red zone across the east. On the western edge, a small USA Countryball and neutral Western European country markers face the map with cautious expressions. No floating icons. No text.
+
+BILD 12 · B · 5.5 s
+Audio Anchor: "Polen, Ungarn, Rumänien"
+Visual Purpose: Kommunistische Machtkonsolidierung in Osteuropa konkret räumlich darstellen.
+Topic Anchor: Polen, Ungarn, Rumänien, Bulgarien und weitere osteuropäische Staaten im sowjetischen Machtbereich.
+Visual Form: map-only
+Composition Mode: labeled-map
+Prompt: Create a crisp Eastern Europe map highlighting Poland, Hungary, Romania and Bulgaria inside the Soviet-aligned zone. Use German labels: "POLEN", "UNGARN", "RUMÄNIEN", "BULGARIEN". No decorative flags or people.
+
+BILD 13 · C · 6.0 s
+Audio Anchor: "Beide Seiten betrachteten"
+Visual Purpose: Sicherheitsdilemma zeigen: jede Seite sieht die Reaktion der anderen als neue Gefahr.
+Topic Anchor: USA und UdSSR reagieren spiegelbildlich aufeinander.
+Visual Form: simple-schema
+Composition Mode: cause-effect
+Prompt: Show a simple circular escalation schema with USA Countryball and Soviet Union Countryball on opposite sides. One arrow reads "BEDROHUNG", the return arrow reads "GEGENREAKTION". Keep it clean, only two actors and two arrows.
+
+BILD 14 · B · 5.5 s
+Audio Anchor: "1947 erklärte US-Präsident Harry Truman"
+Visual Purpose: Truman-Doktrin historisch markieren, ohne Menschenporträt.
+Topic Anchor: US-Regierungsrede 1947 und Unterstützung Griechenlands/Türkei.
+Visual Form: document-only
+Composition Mode: document-illustration
+Prompt: Show a formal US presidential speech document on a dark wooden lectern with a small USA emblem, beside a simplified map showing Greece and Turkey. Add exactly: "TRUMAN-DOKTRIN 1947". No human figure or hands.
+
+BILD 15 · B · 5.0 s
+Audio Anchor: "Diese Truman-Doktrin wurde Teil"
+Visual Purpose: Containment als strategisches Prinzip erklären.
+Topic Anchor: Sowjetischer Einfluss soll an seinen damaligen Grenzen politisch eingedämmt werden.
+Visual Form: simple-schema
+Composition Mode: spatial-schema
+Prompt: Show a simplified Europe map with Soviet-aligned territory in red and a clear blue containment arc along its western edge. Add exactly: "CONTAINMENT = EINDÄMMUNG". No Countryballs needed.
+
+BILD 16 · A · 4.5 s
+Audio Anchor: "Fast gleichzeitig kam der Marshallplan."
+Visual Purpose: Marshallplan als eigenes Instrument einführen.
+Topic Anchor: European Recovery Program / amerikanische Wiederaufbauhilfe.
+Visual Form: object-only
+Composition Mode: single-object-illustration
+Prompt: Show one strong stack of aid crates, industrial equipment and grain sacks with a clean shipping label reading exactly "MARSHALLPLAN". Flat 2D, warm cream and blue accents, no people.
+
+BILD 17 · B · 5.0 s
+Audio Anchor: "Die USA stellten Milliarden Dollar"
+Visual Purpose: Umfang und Richtung der Wiederaufbauhilfe zeigen.
+Topic Anchor: US-Hilfe fließt in zerstörte westeuropäische Infrastruktur.
+Visual Form: map-only
+Composition Mode: route-map
+Prompt: Show a transatlantic map with a few strong arrows from the USA to Western Europe, ending at rail, factory and port symbols integrated into the map. Add exactly: "WIEDERAUFBAU". No money rain, no icon grid.
+
+BILD 18 · C · 6.0 s
+Audio Anchor: "Wirtschaftlich stabile Staaten"
+Visual Purpose: Wirtschaftliche Stabilisierung als geopolitische Strategie erklären.
+Topic Anchor: Wiederaufgebaute westliche Stadt mit funktionierender Industrie und stabilen Institutionen.
+Visual Form: full-scene
+Composition Mode: environment
+Prompt: Show a recovering Western European city: repaired rail station, operating factory, lit shops and functioning civic building, all in one coherent scene. No people required. Use brighter postwar colors than Bild 05. No text.
+
+BILD 19 · B · 5.5 s
+Audio Anchor: "Die Sowjetunion lehnte eine Teilnahme ab"
+Visual Purpose: Wirtschaftliche Teilung Europas vertiefen.
+Topic Anchor: Marshallplan-Angebot endet an der Ost-West-Grenze; Osteuropa bleibt außerhalb.
+Visual Form: map-only
+Composition Mode: map-contrast
+Prompt: Show Europe divided into western Marshall Plan participation and eastern Soviet-aligned non-participation. Keep the boundary clean and historically approximate, not a modern EU map. Add exactly: "WEST" and "OST".
+
+BILD 20 · C · 6.5 s
+Audio Anchor: "Berlin zeigte 1948"
+Visual Purpose: Berlin als ersten großen Krisenbrennpunkt inszenieren.
+Topic Anchor: West-Berlin als westliche Insel innerhalb der sowjetischen Besatzungszone.
+Visual Form: map-only
+Composition Mode: map-zoom
+Prompt: Show a clean Germany map zooming visually into Berlin deep inside the Soviet occupation zone. West Berlin should stand out as a small western-controlled island. Add exactly: "BERLIN 1948".
+
+BILD 21 · B · 5.0 s
+Audio Anchor: "Die Stadt lag mitten"
+Visual Purpose: Viersektorenstatus Berlins erklären.
+Topic Anchor: Berlin in US-, britischen, französischen und sowjetischen Sektor geteilt.
+Visual Form: map-only
+Composition Mode: sector-map
+Prompt: Show a simplified Berlin map divided into four occupation sectors. Use clear distinct colors and German labels: "USA", "GROSSBRITANNIEN", "FRANKREICH", "SOWJETUNION". No extra text.
+
+BILD 22 · C · 6.0 s
+Audio Anchor: "Als die Westmächte in ihren Gebieten"
+Visual Purpose: Währungsreform und sowjetische Blockade als Ursache-Folge zeigen.
+Topic Anchor: Neue West-Währung trifft auf geschlossene Straßen, Bahn und Wasserwege nach West-Berlin.
+Visual Form: multi-element
+Composition Mode: cause-effect
+Prompt: Show one coherent transport-map scene: a new western currency note enters West Berlin while road, rail and canal routes are simultaneously blocked by red barriers outside the city. Add exactly: "BLOCKADE". No characters.
+
+BILD 23 · B · 5.0 s
+Audio Anchor: "Statt die Stadt aufzugeben"
+Visual Purpose: Entscheidung für Luftbrücke statt militärischem Durchbruch.
+Topic Anchor: Gesperrte Bodenwege, aber offene Luftkorridore nach West-Berlin.
+Visual Form: simple-schema
+Composition Mode: spatial-schema
+Prompt: Show a very clear diagram-map: three blocked ground routes with red barriers and three open air corridors arching into West Berlin. Add exactly: "LUFTBRÜCKE". No Countryballs.
+
+BILD 24 · C · 6.0 s
+Audio Anchor: "Fast ein Jahr lang landeten Transportflugzeuge"
+Visual Purpose: Dauer und Logistik der Luftbrücke anschaulich zeigen.
+Topic Anchor: Transportflugzeuge landen mit Kohle und Lebensmitteln in West-Berlin.
+Visual Form: full-scene
+Composition Mode: environment
+Prompt: Show a Tempelhof-inspired runway in flat 2D with several transport aircraft arriving in sequence, cargo crates, coal sacks and food supplies stacked nearby. No human ground crews. Add exactly: "1948–1949".
+
+BILD 25 · B · 5.0 s
+Audio Anchor: "Im Mai 1949 hob Moskau die Blockade auf."
+Visual Purpose: Ende der Blockade und Öffnung der Verkehrswege zeigen.
+Topic Anchor: Schranken an Straße und Schiene nach West-Berlin öffnen sich.
+Visual Form: multi-element
+Composition Mode: resolution-scene
+Prompt: Show a road and rail corridor into West Berlin with red barriers now lifted and traffic routes glowing open. Add exactly: "MAI 1949". No characters required.
+
+BILD 26 · B · 5.0 s
+Audio Anchor: "1949 entstand die NATO"
+Visual Purpose: Westliche militärische Blockbildung erklären.
+Topic Anchor: Nordatlantikvertrag 1949 und kollektive Verteidigung.
+Visual Form: document-only
+Composition Mode: document-illustration
+Prompt: Show one formal treaty document with a simplified NATO compass emblem and a ring of twelve small member markers around it. Add exactly: "NATO 1949". No people.
+
+BILD 27 · C · 6.0 s
+Audio Anchor: "Im selben Jahr entstanden"
+Visual Purpose: Deutsche Teilung 1949 sichtbar machen.
+Topic Anchor: Bundesrepublik Deutschland und DDR entstehen aus den Besatzungszonen.
+Visual Form: map-only
+Composition Mode: before-after-map
+Prompt: Show a Germany map transforming from occupation zones into two clearly separated states. Label only "BRD" and "DDR" with "1949" centered above. No flags beyond necessary state coloring.
+
+BILD 28 · B · 5.0 s
+Audio Anchor: "Ebenfalls 1949 testete die Sowjetunion"
+Visual Purpose: Ende des US-Atommonopols markieren.
+Topic Anchor: Sowjetischer Atomtest 1949 verändert strategisches Gleichgewicht.
+Visual Form: object-only
+Composition Mode: single-object-illustration
+Prompt: Show a stylized distant atomic test cloud over an empty test range, rendered as flat 2D not photorealistic, with a small Soviet state marker at the edge. Add exactly: "1949: SOWJETISCHE ATOMBOMBE". No people.
+
+BILD 29 · C · 6.0 s
+Audio Anchor: "Als Westdeutschland 1955"
+Visual Purpose: NATO-Beitritt Westdeutschlands und Warschauer Pakt als Gegenreaktion zeigen.
+Topic Anchor: Europa wird 1955 in zwei formale Militärblöcke gegliedert.
+Visual Form: map-only
+Composition Mode: bloc-map
+Prompt: Show Europe in 1955 with NATO states in cool blue and Warsaw Pact states in deep red. Highlight West Germany joining NATO and a new eastern alliance forming. Add exactly: "1955" and labels "NATO" / "WARSCHAUER PAKT".
+
+BILD 30 · D · 7.0 s
+Audio Anchor: "Jetzt standen sich zwei Machtblöcke gegenüber."
+Visual Purpose: Kernstruktur des Kalten Krieges in Europa zeigen.
+Topic Anchor: Eiserner Vorhang / zwei Blöcke von Nord nach Süd.
+Visual Form: map-only
+Composition Mode: hero-map
+Prompt: Create a strong premium Europe map split into two coherent power blocs with a clear dividing line through Central Europe. USA influence is indicated westward, Soviet influence eastward. Add exactly: "ZWEI MACHTBLÖCKE". Keep it map-first, not a poster collage.
+
+BILD 31 · B · 5.0 s
+Audio Anchor: "Und beide Seiten rüsteten massiv auf."
+Visual Purpose: Wettrüsten einführen.
+Topic Anchor: Parallel wachsender US- und sowjetischer strategischer Waffenbestand.
+Visual Form: multi-element
+Composition Mode: mirrored-comparison
+Prompt: Show two opposing military storage landscapes, one US-aligned and one Soviet-aligned, each with a limited set of missiles, bombers and submarines increasing toward the center. No people, no weapon glamour, serious documentary tone. Add exactly: "WETTRÜSTEN".
+
+BILD 32 · C · 6.0 s
+Audio Anchor: "Erst Atombomben, dann Wasserstoffbomben"
+Visual Purpose: Technologische Eskalation der Nuklearstreitkräfte zeigen.
+Topic Anchor: Abfolge Bombe → stärkere Bombe → Rakete → U-Boot → Bomber.
+Visual Form: simple-schema
+Composition Mode: progression-schema
+Prompt: Create one clean left-to-right weapons progression with five large silhouettes only: atomic bomb, thermonuclear bomb, intercontinental missile, ballistic-missile submarine, strategic bomber. Add exactly: "IMMER WEITER". No grid, no tiny labels.
+
+BILD 33 · C · 6.0 s
+Audio Anchor: "Das Entscheidende war paradox"
+Visual Purpose: Abschreckungsparadox erklären.
+Topic Anchor: Mehr Zerstörungskraft senkt Bereitschaft zum direkten Krieg.
+Visual Form: simple-schema
+Composition Mode: cause-effect
+Prompt: Show two large opposing missiles locked in place by a heavy warning barrier between them. Above, a simple scale indicates rising destruction while a direct-war arrow is blocked. Add exactly: "ABSCHRECKUNG". Minimal, serious, no characters.
+
+BILD 34 · C · 6.0 s
+Audio Anchor: "Wenn beide Seiten einen Erstschlag"
+Visual Purpose: Zweitschlagsfähigkeit und gegenseitige Vernichtung verständlich machen.
+Topic Anchor: Beide Seiten können nach einem Angriff noch zurückschlagen.
+Visual Form: simple-schema
+Composition Mode: loop-schema
+Prompt: Show two hardened launch sites, USA and Soviet Union, with one attack arrow each and one surviving return arrow each. The arrows form a dangerous closed loop. Add exactly: "ERSTSCHLAG → GEGENSCHLAG". No explosion spectacle.
+
+BILD 35 · A · 4.5 s
+Audio Anchor: "Der Wettbewerb lief aber nicht nur militärisch."
+Visual Purpose: Übergang zum Technologie- und Prestigewettbewerb.
+Topic Anchor: Rakete wechselt vom Waffen- zum Weltraumkontext.
+Visual Form: object-only
+Composition Mode: transition-object
+Prompt: Show one stylized rocket vertically centered, with its lower background military dark and upper background opening into deep space. No text, no Countryball.
+
+BILD 36 · B · 5.0 s
+Audio Anchor: "Er wurde auch zu einem Kampf um Prestige"
+Visual Purpose: Systemkonkurrenz über Wissenschaft und Technik zeigen.
+Topic Anchor: Zwei rivalisierende Raumfahrtprogramme auf gegenüberliegenden Startplätzen.
+Visual Form: multi-element
+Composition Mode: parallel-scene
+Prompt: Show two simplified launch complexes facing upward under one star field, one Soviet-aligned red, one US-aligned blue. No people. Add exactly: "TECHNIK + PRESTIGE".
+
+BILD 37 · A · 4.5 s
+Audio Anchor: "1957 brachte die Sowjetunion mit Sputnik"
+Visual Purpose: Sputnik als sowjetischen Prestigeerfolg markieren.
+Topic Anchor: Sputnik 1 im Orbit 1957.
+Visual Form: object-only
+Composition Mode: single-object-illustration
+Prompt: Show Sputnik as one dominant polished-but-flat 2D satellite above Earth, long antennas clearly recognizable. Add exactly: "SPUTNIK 1957". No other objects except Earth curve and stars.
+
+BILD 38 · A · 4.5 s
+Audio Anchor: "1961 flog Juri Gagarin"
+Visual Purpose: Erster Mensch im All ohne menschliche Darstellung markieren.
+Topic Anchor: Wostok-Kapsel und Missionsdatum 1961.
+Visual Form: object-only
+Composition Mode: single-object-illustration
+Prompt: Show a Vostok-style spherical spacecraft in orbit with Earth below and a small mission patch-like circle, but no human portrait. Add exactly: "1961: ERSTER MENSCH IM ALL". No other readable text.
+
+BILD 39 · B · 5.0 s
+Audio Anchor: "Die USA reagierten mit dem Apollo-Programm"
+Visual Purpose: Amerikanische Antwort und Mondlandung zeigen.
+Topic Anchor: Saturn-V-Rakete → Mondlandefähre → Mondoberfläche.
+Visual Form: multi-element
+Composition Mode: progression-scene
+Prompt: Show a coherent 2D space composition: Saturn-V launch on the left transitioning to a lunar module resting on the Moon on the right, with a few bootprints but no person visible. Add exactly: "APOLLO 1969".
+
+BILD 40 · C · 6.0 s
+Audio Anchor: "Deshalb blieb der Kalte Krieg meistens"
+Visual Purpose: Warum direkte USA-UdSSR-Kriege vermieden wurden.
+Topic Anchor: USA und UdSSR stehen sich bewaffnet gegenüber, direkte Verbindung ist durch nukleares Risiko blockiert.
+Visual Form: multi-actor
+Composition Mode: tension-scene
+Prompt: Show USA and Soviet Union Countryballs on opposite sides of a dark divide, each backed by restrained strategic forces, with a bright nuclear-warning zone blocking a direct path between them. No combat. Add exactly: "DIREKTER KRIEG?".
+
+BILD 41 · C · 6.0 s
+Audio Anchor: "In Korea kämpfte der kommunistische Norden"
+Visual Purpose: Korea als frühen Stellvertreterkrieg räumlich erklären.
+Topic Anchor: Koreanische Halbinsel 1950–1953, Nord und Süd mit unterschiedlichen Unterstützern.
+Visual Form: map-only
+Composition Mode: conflict-map
+Prompt: Show a simplified Korean Peninsula map divided north/south, with Soviet/Chinese support lines toward the north and UN/US support toward the south. Add exactly: "KOREA 1950–1953". Keep arrows few and legible.
+
+BILD 42 · C · 6.0 s
+Audio Anchor: "In Vietnam unterstützte die Sowjetunion"
+Visual Purpose: Vietnam als weiteres Beispiel globaler Systemkonkurrenz zeigen.
+Topic Anchor: Nordvietnam erhält Unterstützung aus UdSSR/China, Südvietnam starke US-Unterstützung.
+Visual Form: map-only
+Composition Mode: conflict-map
+Prompt: Show a clean Vietnam map with north and south clearly separated for the war period. Use only a few support arrows: Soviet Union and China toward the north, USA toward the south. Add exactly: "VIETNAM". No people.
+
+BILD 43 · C · 6.0 s
+Audio Anchor: "Solche Stellvertreterkriege"
+Visual Purpose: Globale menschliche und materielle Folgen ohne Menschenbilder vermitteln.
+Topic Anchor: Mehrere entfernte Konfliktregionen tragen die Kosten der Supermachtrivalität.
+Visual Form: map-only
+Composition Mode: global-map
+Prompt: Show a world map with only three highlighted Cold-War conflict zones: Korea, Vietnam and Afghanistan, connected faintly to the two superpower poles. Damaged bridges or infrastructure symbols appear only inside conflict zones. Add exactly: "STELLVERTRETERKRIEGE".
+
+BILD 44 · B · 5.0 s
+Audio Anchor: "Zwischen 1949 und 1961"
+Visual Purpose: Fluchtbewegung aus der DDR über Berlin zeigen.
+Topic Anchor: Pfeile aus DDR Richtung West-Berlin/Westdeutschland vor dem Mauerbau.
+Visual Form: map-only
+Composition Mode: migration-map
+Prompt: Show East Germany and Berlin with many simple directional arrows moving from DDR territory toward West Berlin and West Germany. No people or suitcases needed. Add exactly: "1949–1961".
+
+BILD 45 · C · 6.0 s
+Audio Anchor: "Im August 1961 schloss die DDR"
+Visual Purpose: Mauerbau als abruptes Schließen der Grenze zeigen.
+Topic Anchor: Berliner Straßennetz wird im August 1961 durch neue Sperren zerschnitten.
+Visual Form: full-scene
+Composition Mode: city-scene
+Prompt: Show one Berlin street in flat 2D where an open road is abruptly cut by concrete blocks, barbed-wire fencing and a newly closed crossing. No human workers. Add exactly: "AUGUST 1961".
+
+BILD 46 · B · 5.0 s
+Audio Anchor: "Familien wurden getrennt"
+Visual Purpose: Geteilte Stadt emotional, aber ohne Menschen, vermitteln.
+Topic Anchor: Zwei identische Wohnhäuser auf gegenüberliegenden Seiten der Berliner Mauer, eine durchtrennte Straße dazwischen.
+Visual Form: full-scene
+Composition Mode: symbolic-environment
+Prompt: Show two neighboring apartment buildings separated by the Berlin Wall where the same street is visibly cut in half. Warm windows on both sides suggest everyday life without showing people. Add exactly: "GETEILTES BERLIN".
+
+BILD 47 · B · 5.0 s
+Audio Anchor: "Nur ein Jahr später"
+Visual Purpose: Übergang von Berlin zur Kubakrise dramatisch, aber klar markieren.
+Topic Anchor: Zeitwechsel 1961 → 1962 von Berliner Mauer zu Kuba.
+Visual Form: simple-schema
+Composition Mode: transition-timeline
+Prompt: Show a clean two-point timeline: a small Berlin Wall segment labeled "1961" leading to a Cuba map silhouette labeled "1962". No other elements.
+
+BILD 48 · C · 6.0 s
+Audio Anchor: "1962 stationierte die Sowjetunion"
+Visual Purpose: Sowjetische Raketenstationierung auf Kuba erklären.
+Topic Anchor: Raketenbasen auf Kuba mit Reichweite Richtung USA.
+Visual Form: map-only
+Composition Mode: range-map
+Prompt: Show Cuba with several simplified Soviet missile sites and a translucent range arc reaching into the southeastern United States. Add exactly: "KUBA 1962". No explosions, no people.
+
+BILD 49 · B · 5.0 s
+Audio Anchor: "Für die USA bedeutete das"
+Visual Purpose: Unmittelbare geografische Nähe der Bedrohung zeigen.
+Topic Anchor: Kuba liegt direkt vor der US-Küste; kurze Distanz wird visuell priorisiert.
+Visual Form: map-only
+Composition Mode: proximity-map
+Prompt: Zoom tightly on Florida and Cuba with a bold distance line across the Florida Strait and a missile silhouette on Cuba. Add exactly: "DIREKT VOR DER US-KÜSTE".
+
+BILD 50 · B · 5.0 s
+Audio Anchor: "Präsident John F. Kennedy"
+Visual Purpose: US-Reaktion als maritime Quarantäne zeigen, ohne Personenporträt.
+Topic Anchor: Präsidialer Entscheidungsraum + Sperrring um Kuba.
+Visual Form: document-only
+Composition Mode: decision-document
+Prompt: Show a formal presidential decision folder beside a clean Cuba map with a naval ring drawn around the island. A small USA state seal is enough; no human figure. Add exactly: "QUARANTÄNE".
+
+BILD 51 · D · 7.0 s
+Audio Anchor: "Mehrere Tage lang wusste niemand"
+Visual Purpose: Eskalationsrisiko der Kubakrise zeigen.
+Topic Anchor: Sowjetische Frachtschiffe nähern sich US-Sperrlinie, Raketen auf Kuba im Hintergrund.
+Visual Form: full-scene
+Composition Mode: tension-scene
+Prompt: Show open sea in flat 2D: Soviet cargo ships approach a clearly marked US naval quarantine line while Cuba with missile sites sits in the distance. No combat, no firing. Strong red-blue tension, dark ocean, one clear reading path. Add exactly: "13 TAGE".
+
+BILD 52 · B · 5.0 s
+Audio Anchor: "Am Ende zog Moskau die Raketen"
+Visual Purpose: Deeskalation durch Abzug sowjetischer Raketen zeigen.
+Topic Anchor: Raketen werden von Kuba auf Frachtschiffe zurücktransportiert.
+Visual Form: full-scene
+Composition Mode: resolution-scene
+Prompt: Show missile equipment being loaded as sealed cargo onto a Soviet ship leaving Cuba. No people or cranes with operators visible. Calm dawn palette. Add exactly: "RAKETEN RAUS".
+
+BILD 53 · C · 6.0 s
+Audio Anchor: "Washington versprach öffentlich"
+Visual Purpose: Gegenseitige Zugeständnisse der Lösung erklären.
+Topic Anchor: Nichtinvasionszusage für Kuba plus spätere Entfernung amerikanischer Jupiter-Raketen aus der Türkei.
+Visual Form: simple-schema
+Composition Mode: exchange-schema
+Prompt: Create a clean two-arrow diplomatic exchange: Soviet missiles move out of Cuba; a shield over Cuba reads "KEINE INVASION"; separately US Jupiter missiles move out of Turkey. Keep all three elements large and clear, not a dashboard.
+
+BILD 54 · C · 6.0 s
+Audio Anchor: "Die Krise zeigte beiden Seiten"
+Visual Purpose: Erkenntnis des extremen Fehlentscheidungsrisikos zeigen.
+Topic Anchor: Zwei fast kollidierende Entscheidungspfade stoppen kurz vor nuklearer Eskalation.
+Visual Form: simple-schema
+Composition Mode: near-miss-schema
+Prompt: Show two thick decision paths, one red and one blue, converging dangerously on a nuclear warning symbol but bending away just before collision. Add exactly: "FAST ESKALIERT". Minimal and serious.
+
+BILD 55 · B · 5.0 s
+Audio Anchor: "Danach entstanden direktere Kommunikationswege"
+Visual Purpose: Hotline und frühe Rüstungskontrolle als Lehren aus Kuba zeigen.
+Topic Anchor: Direkte Washington-Moskau-Kommunikation plus Teststopp-/Rüstungskontroll-Dokument.
+Visual Form: multi-element
+Composition Mode: object-pair
+Prompt: Show two strong objects only: a secure red telephone linking Washington and Moscow, and beside it one signed arms-control document. Add exactly: "DIREKTER KONTAKT". No people.
+
+BILD 56 · B · 5.0 s
+Audio Anchor: "In den 1970er-Jahren"
+Visual Purpose: Détente als sichtbare Entspannungsphase einführen.
+Topic Anchor: USA und Sowjetunion öffnen einen diplomatischen Verhandlungskanal.
+Visual Form: multi-actor
+Composition Mode: diplomatic-scene
+Prompt: Show USA and Soviet Union Countryballs seated across one small negotiation table, strategic maps rolled away to the side and one open treaty folder between them. Calm olive, blue and burgundy palette. Add exactly: "ENTSPANNUNG".
+
+BILD 57 · B · 5.5 s
+Audio Anchor: "Washington und Moskau verhandelten"
+Visual Purpose: Rüstungskontrolle trotz fortbestehender Rivalität zeigen.
+Topic Anchor: Strategische Raketen werden gezählt und begrenzt, während beide Blöcke bestehen bleiben.
+Visual Form: document-only
+Composition Mode: treaty-illustration
+Prompt: Show one arms-control treaty document over a restrained background of two reduced missile rows, one US, one Soviet. Add exactly: "RÜSTUNGSKONTROLLE". No people.
+
+BILD 58 · B · 5.0 s
+Audio Anchor: "Doch die Entspannung zerbrach zunehmend."
+Visual Purpose: Übergang zurück zu verschärfter Konfrontation markieren.
+Topic Anchor: Diplomatisches Band zwischen USA und UdSSR bekommt sichtbare Risse Ende der 1970er.
+Visual Form: object-only
+Composition Mode: symbolic-object
+Prompt: Show one thick diplomatic cable/ribbon colored blue and red beginning to crack in the center above a darkening world map. No characters. Add exactly: "ENDE DER ENTSPANNUNG?".
+
+BILD 59 · C · 6.0 s
+Audio Anchor: "1979 marschierte die Sowjetunion"
+Visual Purpose: Sowjetischen Einmarsch in Afghanistan räumlich erklären.
+Topic Anchor: Sowjetische Truppenbewegung über die Nordgrenze nach Afghanistan 1979.
+Visual Form: map-only
+Composition Mode: invasion-map
+Prompt: Show Afghanistan with a few clear Soviet movement arrows crossing from the north toward Kabul and major routes. Add exactly: "AFGHANISTAN 1979". No people, no battle imagery.
+
+BILD 60 · C · 6.0 s
+Audio Anchor: "Die USA unterstützten daraufhin"
+Visual Purpose: Amerikanische Reaktion und neue Eskalation zeigen.
+Topic Anchor: Sanktionen und Unterstützung afghanischer Widerstandsgruppen gegen sowjetische Präsenz.
+Visual Form: multi-element
+Composition Mode: response-map
+Prompt: Show a regional Afghanistan map with Soviet forces inside, external aid route arrows entering resistance-held areas, and a separate closed trade crate symbol representing sanctions. No armed human figures. Add exactly: "NEUE KONFRONTATION".
+
+BILD 61 · C · 6.0 s
+Audio Anchor: "In den 1980er-Jahren"
+Visual Purpose: Militärischer Wettbewerb trifft auf wirtschaftlich belastete UdSSR.
+Topic Anchor: Sowjetischer Industriebereich und Raketenkomplex konkurrieren um Ressourcen.
+Visual Form: full-scene
+Composition Mode: economic-environment
+Prompt: Show a Soviet industrial district in flat 2D: aging factory, rail yard and large military production facility drawing from the same limited energy/resource network. No people. Add exactly: "1980ER".
+
+BILD 62 · C · 6.0 s
+Audio Anchor: "Hohe Militärausgaben"
+Visual Purpose: Mehrere strukturelle Belastungen statt Monokausalität zeigen.
+Topic Anchor: Militärausgaben, stagnierende Produktion und veraltete Infrastruktur belasten gemeinsam das System.
+Visual Form: multi-element
+Composition Mode: relationship-illustration
+Prompt: Show one coherent Soviet planning desk without people: military budget ledger, factory output chart stuck flat, worn machinery blueprint and repair backlog papers. Add exactly: "STAGNATION + STRUKTURELLE PROBLEME". Keep it one scene, not a dashboard.
+
+BILD 63 · C · 6.0 s
+Audio Anchor: "Als Michail Gorbatschow 1985"
+Visual Purpose: Reformkurs ab 1985 einführen, ohne Menschenporträt.
+Topic Anchor: Neue sowjetische Reformagenda mit Perestroika und Glasnost.
+Visual Form: document-only
+Composition Mode: document-illustration
+Prompt: Show a 1985 Soviet reform folder opened on a desk, with two large German labels printed on separate pages: "UMBAU" and "OFFENHEIT". A small Soviet state marker may appear, no human portrait. Add exactly: "1985".
+
+BILD 64 · C · 6.0 s
+Audio Anchor: "Gleichzeitig wollte er die Beziehungen"
+Visual Purpose: Weniger sowjetische Interventionsbereitschaft in Osteuropa zeigen.
+Topic Anchor: Sowjetische Militärpfeile ziehen sich von osteuropäischen Hauptstädten zurück; lokale Wege öffnen sich.
+Visual Form: map-only
+Composition Mode: de-escalation-map
+Prompt: Show Eastern Europe with previously heavy Soviet control arrows fading and retracting, while Poland, Hungary and East Germany become visually more independent. Add exactly: "WENIGER INTERVENTION".
+
+BILD 65 · A · 4.5 s
+Audio Anchor: "Das veränderte alles."
+Visual Purpose: Übergang in das Revolutionsjahr 1989 setzen.
+Topic Anchor: Dominosteine kommunistischer Regime beginnen zu kippen, aber als echte Länderkarte verankert.
+Visual Form: map-only
+Composition Mode: transition-map
+Prompt: Show an Eastern Europe map at the start of 1989 with several regime-status markers beginning to change from rigid red locks to open civic symbols. Add exactly: "1989". No people.
+
+BILD 66 · C · 6.0 s
+Audio Anchor: "1989 wurden in Polen"
+Visual Purpose: Politische Umbrüche in mehreren osteuropäischen Staaten zeigen.
+Topic Anchor: Polen, Ungarn, DDR und weitere Staaten wechseln politische Richtung.
+Visual Form: map-only
+Composition Mode: wave-map
+Prompt: Show Eastern Europe with a clean wave of change moving from Poland and Hungary toward East Germany and neighboring states. Use country labels in German where needed: "POLEN", "UNGARN", "DDR". No crowd imagery.
+
+BILD 67 · D · 7.0 s
+Audio Anchor: "Am 9. November fiel die Berliner Mauer."
+Visual Purpose: Fall der Mauer als emotionalen historischen Höhepunkt zeigen.
+Topic Anchor: Geöffnete Berliner Grenzanlage und aufgebrochene Mauer am 9. November 1989.
+Visual Form: full-scene
+Composition Mode: hero-scene
+Prompt: Create a strong wide Berlin night scene in flat 2D: opened checkpoint, broken wall segments, city lights reconnecting across the former divide. A few German Countryballs may appear on both sides moving through the open gate; no humans. Add exactly: "9. NOVEMBER 1989".
+
+BILD 68 · B · 5.0 s
+Audio Anchor: "Ein Jahr später war Deutschland wiedervereinigt."
+Visual Purpose: Deutsche Wiedervereinigung 1990 klar markieren.
+Topic Anchor: BRD- und DDR-Kartenflächen verschmelzen zu einem Deutschland.
+Visual Form: map-only
+Composition Mode: merge-map
+Prompt: Show two Germany map halves, BRD and DDR, cleanly joining into one outline. Add exactly: "3. OKTOBER 1990". No other text.
+
+BILD 69 · D · 7.0 s
+Audio Anchor: "Und Ende 1991 zerfiel schließlich die Sowjetunion selbst."
+Visual Purpose: Zerfall der UdSSR als Endpunkt des Kalten Krieges zeigen.
+Topic Anchor: Sowjetunion-Karte löst sich in eigenständige Republiken auf.
+Visual Form: map-only
+Composition Mode: transformation-map
+Prompt: Show the Soviet Union map in late 1991 gently separating into its constituent republic outlines, with Russia visually largest but not dominant over the others. Add exactly: "1991" and "SOWJETUNION ZERFÄLLT".
+
+BILD 70 · C · 6.0 s
+Audio Anchor: "Warum dauerte der Kalte Krieg also fast ein halbes Jahrhundert?"
+Visual Purpose: Schlussfrage auf den gesamten Zeitraum zurückführen.
+Topic Anchor: Zeitachse 1945–1991 mit wenigen zentralen Wendepunkten.
+Visual Form: simple-schema
+Composition Mode: timeline-schema
+Prompt: Show one clean horizontal timeline from "1945" to "1991" with only five large milestone objects: divided Europe, Berlin aircraft, nuclear missile, Berlin Wall, open border. No tiny labels beyond the years.
+
+BILD 71 · B · 5.0 s
+Audio Anchor: "Weil es nie nur um einen einzelnen Streit ging."
+Visual Purpose: Mehrdimensionale Natur des Konflikts erklären.
+Topic Anchor: Ein einziger Ost-West-Konflikt verbindet mehrere konkrete Bereiche statt nur einen Streitpunkt.
+Visual Form: multi-element
+Composition Mode: relationship-illustration
+Prompt: Show one central divided-Europe map connected to four large concrete elements around it: treaty document, factory/aid crate, missile, satellite. Keep them spatially integrated, not boxed. No text.
+
+BILD 72 · C · 6.0 s
+Audio Anchor: "Es ging um Sicherheit, Ideologie"
+Visual Purpose: Haupttriebkräfte des Kalten Krieges zusammenfassen.
+Topic Anchor: Sicherheit, Ideologie, Einfluss, Wirtschaft, Bündnisse und Technologie als zusammenhängendes System.
+Visual Form: simple-schema
+Composition Mode: radial-schema
+Prompt: Create a clean six-part radial relationship around a central Europe map. Use one large object per concept: shield, two contrasting state-system buildings, influence map arrow, factory, alliance treaty, satellite. Add only these German labels: "SICHERHEIT", "IDEOLOGIE", "EINFLUSS", "WIRTSCHAFT", "BÜNDNISSE", "TECHNOLOGIE".
+
+BILD 73 · C · 6.0 s
+Audio Anchor: "Gleichzeitig verhinderte gerade die Angst"
+Visual Purpose: Nukleare Abschreckung als Grund für ausbleibenden direkten Supermachtkrieg zusammenfassen.
+Topic Anchor: USA und UdSSR bleiben getrennt, weil direkter Weg durch beiderseitige Atomgefahr blockiert ist.
+Visual Form: simple-schema
+Composition Mode: deterrence-schema
+Prompt: Show USA and Soviet Union Countryballs at opposite ends of a direct path. In the center, two opposing nuclear return arrows create an unmistakable catastrophic risk zone that blocks both from advancing. Add exactly: "ABSCHRECKUNG". No explosions.
+
+BILD 74 · D · 8.0 s
+Audio Anchor: "Der Kalte Krieg war deshalb ein Konflikt voller Widersprüche:"
+Visual Purpose: Ruhiges Schlussbild: globale Rivalität, kein direkter Großkrieg, Nachwirkungen bis heute.
+Topic Anchor: Weltkarte mit verblassenden Ost-West-Blöcken, NATO-Verbindung, ehemalige Teilung Europas und historische Narben bleiben sichtbar.
+Visual Form: full-scene
+Composition Mode: final-synthesis
+Prompt: Create a premium final 16:9 Serious Minimal Countryball Explainer image. Show a world map at dusk where the old red/blue Cold War bloc colors are fading away, but the former dividing line through Europe, alliance links and several historical nodes remain subtly visible. No random Countryballs, no modern conflict imagery. The mood is reflective, not dramatic. Add exactly this German closing line: "DER KONFLIKT ENDETE – SEINE SPUREN BLIEBEN". No other text.
+
+==================================================
+FINALER CHECK
+==================================================
+- Visual Policy V5 aktiv
+- Design Quality V1 aktiv
+- Adaptive Pacing V3 aktiv
+- Script Opening V1 aktiv
+- Scene Illustration V2 aktiv
+- Topic Visual Relevance V1 aktiv
+- Visual Flexibility V1 aktiv
+- End Hold V1 aktiv
+- ACTIVE_STYLE_ID = serious-minimal-countryball-explainer-youtube-16x9
+- 74 inhaltsgetriebene Bildmomente, keine Füllbilder
+- jedes Bild besitzt Topic Anchor + Visual Form
+- Countryballs optional, niemals erzwungen
+- Karten, Dokumente, Einzelobjekte und kurze Schemata ausdrücklich erlaubt
+- keine normalen Menschen, Silhouetten, realistischen Hände, Stickfiguren, 3D oder Fotorealismus
+- Länder/Flaggen nur mit echtem historischen Grund
+- sichtbarer Text nur Deutsch bzw. etablierte Eigennamen/Abkürzungen
+- Bild 01 exakt 3 Cover-Kandidaten, genau 1 Gewinner
+- Bild 02–74 jeweils genau einmal generiert
+- alle finalen Bilder in `00-bildprompts/images/`
+- kein Bild 00
+- keine Bild-zu-Bild-Referenzen
+- finales Render hält Bild 74 nach dem letzten Wort 1,2–1,5 s, Ziel 1,3 s
