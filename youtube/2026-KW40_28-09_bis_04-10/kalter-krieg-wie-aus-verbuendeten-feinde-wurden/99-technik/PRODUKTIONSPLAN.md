@@ -5,13 +5,15 @@
 **Titel:** Kalter Krieg: Wie aus Verbündeten Feinde wurden  
 **Cover:** WIE BEGANN DER KALTE KRIEG?  
 **Ziel:** 6–7 Minuten  
-**Skript:** 1011 Wörter  
+**Skript:** 1020 Wörter  
 **Bildmomente:** 74
+
+Geplant sind **74 Bildmomente**, damit dichte historische Passagen nicht auf zu wenigen Bildern hängen bleiben.
 
 ## Dramaturgie
 
 ### Einleitung
-Direkte Zuschauerfrage → kurze Antwort → These: Der Konflikt entstand nicht an einem Tag, sondern schrittweise aus Machtverschiebung, Sicherheitsängsten, Ideologie und Misstrauen.
+Direkte Zuschauerfrage → kurze Antwort → explizite Leitfrage: Warum wurden aus Verbündeten Rivalen und warum dauerte der Konflikt fast ein halbes Jahrhundert? → These: Der Konflikt entstand nicht an einem Tag, sondern schrittweise aus Machtverschiebung, Sicherheitsängsten, Ideologie und Misstrauen.
 
 ### Hauptteil
 1. Europa und Machtverhältnisse 1945
@@ -97,7 +99,7 @@ Finaler Bilderordner:
 
 - Themen-Editor: APPROVED_NEW
 - Script Opening V1 bestanden
-- 1011-Wort-Skript vollständig
+- 1020-Wort-Skript vollständig
 - Recherche belegt
 - 74 Topic Anchors + Visual Forms
 - keine Füllbilder
