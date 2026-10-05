@@ -5,6 +5,7 @@
   "designQualityVersion": 1,
   "adaptivePacingVersion": 3,
   "scriptOpeningPolicyVersion": 1,
+  "scriptQualityPolicyVersion": 1,
   "sceneIllustrationPolicyVersion": 2,
   "topicVisualRelevancePolicyVersion": 1,
   "visualFlexibilityPolicyVersion": 1,
@@ -28,6 +29,15 @@
   "sourceVisualWorldId": "serious-minimal-countryball-explainer",
   "visualStyleReason": "YouTube nutzt dieselbe Serious-Minimal-Countryball-Bildwelt wie die Reels in 16:9. Countryballs sind pro Bild optional: die beste thematische Darstellungsform entscheidet, ob eine Figur, ein Objekt, eine Karte, ein kurzes Schema oder eine größere Szene verwendet wird.",
   "aspectRatio": "16:9",
+  "scriptQualityPolicy": {
+    "flexibleTopicSpecificOpeningRequired": true,
+    "legacyQuestionThoughtShortAnswerTemplateForbidden": true,
+    "causalExplanationRequired": true,
+    "concreteExamplesOrFactsRequired": true,
+    "spokenLanguageReadabilityRequired": true,
+    "genericMetaIntroForbidden": true,
+    "schoolbookDefinitionLeadForbidden": true
+  },
   "coverPolicy": {
     "firstSceneIsCover": true,
     "coverImageNumber": 1,
