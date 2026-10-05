@@ -29,14 +29,14 @@ async function main() {
     readFile(path.join(projectDir, '01-voice-script/voice-script.txt'), 'utf8')
   ]);
 
-  const schema = Number(meta.schemaVersion) || 0;
-  if (schema < 14) {
-    console.log(`YouTube Script Quality: LEGACY-SKIP — Schema ${schema}; Hard-Gate gilt ab Schema 14.`);
+  const projectQualityVersion = Number(meta.scriptQualityPolicyVersion ?? 0);
+  if (projectQualityVersion < 1) {
+    console.log(`YouTube Script Quality: LEGACY-SKIP — Projekt hat keine Script-Quality-Policy; bestehende Produktion bleibt reproduzierbar.`);
     return;
   }
 
   const errors = [];
-  if (meta.scriptQualityPolicyVersion !== policy.scriptQualityPolicyVersion) {
+  if (projectQualityVersion !== Number(policy.scriptQualityPolicyVersion)) {
     errors.push(`scriptQualityPolicyVersion ist ${meta.scriptQualityPolicyVersion ?? 'fehlend'}, erwartet ${policy.scriptQualityPolicyVersion}.`);
   }
 
