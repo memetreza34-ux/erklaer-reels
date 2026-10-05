@@ -28,10 +28,14 @@ async function main() {
   // Fail-fast noch vor jeder Audioänderung: externe Werkzeuge und Whisper müssen verfügbar sein.
   run('src/cli/preflight-youtube.js');
 
-  // Phase 1 ist ein gemeinsamer Hard-Gate: neue Projekte müssen zuerst die
-  // Skriptqualität (Hook, Mehrwert, Konkretheit, Sprachfluss) und danach alle
-  // Themen-, Bildwelt-, Cover- und Produktionsregeln bestehen.
-  run('src/cli/validate-youtube-phase1.js', common);
+  // Neue Projekte mit Script Quality V1 müssen zuerst Hook, Mehrwert, Konkretheit
+  // und Sprachfluss bestehen. Legacy-Projekte ohne Policy werden hier nur sauber übersprungen.
+  run('src/cli/validate-youtube-script-quality.js', common);
+
+  // Bestehender direkter Phase-1-Policy-Gate bleibt sichtbar und unverändert in der
+  // Reihenfolge, damit Visual-, Themen-, Cover- und Produktionsregeln weiterhin
+  // garantiert vor Audio und Render geprüft werden.
+  run('src/cli/validate-youtube-phase1-policy.js', common);
   run('src/cli/validate-youtube-phase2-assets.js', common);
 
   // Wichtig: auto-align optimiert das interne Audio ZUERST. Whisper misst danach
