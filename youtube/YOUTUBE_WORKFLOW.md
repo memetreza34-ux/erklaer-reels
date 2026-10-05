@@ -1,6 +1,6 @@
 # YOUTUBE WORKFLOW — VERBINDLICHE REGEL FÜR LANGVIDEOS
 
-**Stand: 2026-09-27**  
+**Stand: 2026-10-05**  
 **Visual Policy Version: 5**  
 **Design Quality Version: 1**  
 **Adaptive Pacing Version: 3**  
@@ -55,25 +55,57 @@ Nur `APPROVED_NEW / THEMEN-EDITOR: FREI` erlaubt die Produktion. `REVIEW_SIMILAR
 
 ## SCRIPT OPENING V1 — HARD LOCK
 
-Alle neu angelegten Schema-11+-YouTube-Skripte beginnen direkt mit der Frage, wegen der der Zuschauer geklickt hat.
+Der Einstieg wird **für jedes Thema neu gewählt**. Es gibt kein festes Satzmuster mehr.
 
-Standard:
+Ziel der ersten Sätze:
+- sofort Interesse erzeugen
+- das konkrete Thema früh erkennbar machen
+- verständlich statt künstlich clever sein
+- Unterhaltung und Information verbinden
+- einen klaren Grund geben, warum der Zuschauer weiterhören sollte
+
+Erlaubte Einstiegsformen:
+- **konkrete Szene / Mini-Geschichte:** direkt in einen relevanten Moment springen
+- **Moment in der Zeit:** mit Datum, Ort oder historischer Situation beginnen
+- **überraschender Fakt:** eine starke, wahre Information als Türöffner verwenden
+- **Konflikt:** zwei Interessen, Staaten oder Entwicklungen direkt gegeneinanderstellen
+- **Paradox / Widerspruch:** etwas scheinbar Unlogisches erklären
+- **direkte Frage:** wenn eine Frage wirklich die stärkste Form für dieses Thema ist
+
+Beispiele für die Denkweise — nicht als feste Vorlagen kopieren:
 
 ```text
-[Direkte Videofrage]? Denkst du dir gerade vielleicht.
-Kurz gesagt: [sehr kurze erste Antwort].
-Aber [Leitfrage / Spannung für den Rest des Videos]?
+Berlin, Juni 1948. Plötzlich sind Straßen, Bahnlinien und Wasserwege nach West-Berlin blockiert. Jetzt hängt die Versorgung einer ganzen Stadt davon ab, ob Flugzeuge schnell genug Nachschub bringen können.
 ```
 
-Erlaubt ist statt `Kurz gesagt:` auch `Einfach gesagt:`.
+```text
+Fast ein halbes Jahrhundert standen sich zwei Supermächte gegenüber, ohne einander direkt den Krieg zu erklären. Gleichzeitig starben in ihren Stellvertreterkriegen Millionen Menschen.
+```
+
+```text
+Wie konnten die USA und die Sowjetunion gemeinsam Hitler besiegen und nur wenige Jahre später zu erbitterten Rivalen werden?
+```
 
 Pflicht:
-- erste Aussage = echte Videofrage
-- direkt danach `Denkst du dir gerade vielleicht.`
-- kurze erste Antwort
-- anschließende Leit-/Spannungsfrage
-- kein abstrakter Schulbuch-Einstieg vor der eigentlichen Frage
-- kein generisches `In diesem Video erklären wir ...`
+- Hook passt konkret zum Thema und ist keine austauschbare Floskel
+- Thema wird früh verständlich
+- nach dem Hook folgt zügig Kontext, Konflikt oder Leitgedanke
+- Ursache → Folge statt bloßer Faktenliste
+- konkrete Beispiele und relevante Details liefern echten Mehrwert
+- Sprache bleibt natürlich, gut sprechbar und leicht verständlich
+- bei aufeinanderfolgenden Videos nicht immer denselben Opening-Typ benutzen
+
+Nicht mehr als Standard verwenden:
+- `Denkst du dir gerade vielleicht.`
+- `Kurz gesagt:` / `Einfach gesagt:` als Pflichtformel
+- immer Frage → Kurzantwort → zweite Frage
+
+Verboten:
+- `In diesem Video erklären wir ...`
+- `Heute geht es um ...`
+- abstrakter Lexikon-/Schulbuchstart
+- leere Clickbait-Spannung ohne anschließenden Informationswert
+- kopierte Opening-Schablone über mehrere Videos hinweg
 
 ## VERBINDLICHE YOUTUBE-BILDWELT — HARD LOCK
 
@@ -379,6 +411,8 @@ Reihenfolge:
 - neues Projekt vor Themenfreigabe
 - Duplikat nur umformulieren
 - abstrakter Definitions-Einstieg bei neuen Schema-11+-Projekten
+- generische Video-Ansage statt inhaltlichem Hook
+- identische Frage-/Kurzantwort-Schablone als Standard für jedes Video
 - Stilwechsel unter dem Wort „Premium“
 - normale Menschen/Stickfiguren/Realismus
 - Countryball in jedem Bild erzwingen
@@ -402,6 +436,7 @@ Reihenfolge:
 Fertig erst wenn:
 - Themen-Editor `APPROVED_NEW`
 - Script Opening V1 bestanden
+- Einstieg wurde passend zum konkreten Thema gewählt und nicht aus einer festen Standardformel kopiert
 - Visual Policy V5
 - Design Quality V1
 - Scene Illustration V2
