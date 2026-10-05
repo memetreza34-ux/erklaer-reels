@@ -62,7 +62,6 @@ function cleanTranscriptText(words) {
     .filter(Boolean)
     .join(' ')
     .replace(/\s+([,.;:!?])/g, '$1')
-    .replace(/([„“"'])\s+/g, '$1')
     .replace(/\s+/g, ' ')
     .trim();
 }
