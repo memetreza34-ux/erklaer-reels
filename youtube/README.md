@@ -1,11 +1,18 @@
 # YouTube
 
-Dieser Bereich ist die eigenständige Produktionspipeline für YouTube-Langvideos. Der Workflow ist getrennt, die visuelle DNA ist wieder mit den Reels geteilt.
+Dieser Bereich ist die eigenständige Produktionspipeline für YouTube-Langvideos. Der Workflow ist getrennt, die visuelle DNA ist mit den Reels geteilt.
 
 Für neue YouTube-Videos gilt:
 
 ```text
-Visual Policy V4
+Visual Policy V5
+Design Quality V1
+Adaptive Pacing V3
+Script Opening V1
+Script Quality V1
+Scene Illustration V2
+Topic Visual Relevance V1
+Visual Flexibility V1
 Cover Policy V1
 Asset Generation Policy V1
 serious-minimal-countryball-explainer-youtube-16x9
@@ -14,6 +21,41 @@ serious-minimal-countryball-explainer-youtube-16x9
 ## Kanalfokus
 
 Autonom neue Themen bleiben in Politik/Staatssystemen, Geschichte, Ländern/Geografie/Grenzen, Ideologien/Gesellschaftssystemen und internationalen Beziehungen/Geopolitik. Außerhalb nur bei ausdrücklicher Nutzeranweisung.
+
+## Skript — HARD GATE
+
+Neue Schema-14+-Projekte müssen vor der Bildproduktion **Script Quality V1** bestehen.
+
+Der Einstieg wird für jedes Thema neu gewählt. Er darf als konkrete Szene/Mini-Geschichte, Moment in der Zeit, überraschender Fakt, Konflikt, Paradox oder starke direkte Frage funktionieren. Es gibt kein festes Kanal-Satzmuster.
+
+Verboten bzw. blockierend:
+- wiederkehrende Standardfloskeln wie `Denkst du dir gerade vielleicht.`
+- das alte Muster `Frage → Denkst du dir gerade vielleicht → Kurz gesagt`
+- `In diesem Video erklären wir ...` / `Heute geht es um ...`
+- abstrakte Schulbuch-/Definitionsstarts
+- lange reine Ereignislisten ohne Ursache → Reaktion → Folge
+- zu wenig konkrete Beispiele, Daten oder nachvollziehbare Fälle
+- dauerhaft verschachtelte, schlecht sprechbare Sätze
+- Einstieg ohne frühen Bezug zum eigentlichen Videothema
+
+Pflichtziel:
+- unterhaltsam **und** informativ
+- konkret statt generisch
+- verständliche gesprochene Sprache
+- Zusammenhänge erklären, nicht nur Fakten aufzählen
+- echter Mehrwert durch Ursachen, Folgen, Beispiele und Einordnung
+
+Einzelprüfung:
+
+```bash
+npm run validate:youtube-script -- --dir "youtube/<woche>/<thema>"
+```
+
+Der normale Phase-1-Gate führt diese Prüfung automatisch mit aus:
+
+```bash
+npm run validate:youtube-phase1 -- --dir "youtube/<woche>/<thema>"
+```
 
 ## Cover-Regel — HARD LOCK
 
@@ -40,9 +82,11 @@ Autonom neue Themen bleiben in Politik/Staatssystemen, Geschichte, Ländern/Geog
 
 1. `youtube/YOUTUBE_WORKFLOW.md`
 2. `config/youtube-channel-policy.json`
-3. `youtube/YOUTUBE_VISUAL_WORLD.md`
-4. `youtube/PHASE3_HARD_GATE.md`
-5. `youtube/ADAPTIVE_PACING_V2.md`
+3. `youtube/SCRIPT_QUALITY_V1.md`
+4. `youtube/YOUTUBE_VISUAL_WORLD.md`
+5. `youtube/PRODUKTIONSSTANDARD_NACH_TESTPHASE.md`
+6. `youtube/ADAPTIVE_PACING_V3.md`
+7. `youtube/PHASE3_HARD_GATE.md`
 
 ## Phase 1
 
@@ -52,7 +96,7 @@ Erstellt werden:
 - **EIN Google-Flow-Masterprompt**
 - **EIN Gesamtskript**
 - internes Bild↔Audio-Mapping
-- A–E-Pacing
+- adaptive Bildplanung / A–E-Komplexität
 - Renderplan + Kapitel + Upload-Metadaten
 
 Vor Übergabe an Flow:
@@ -61,17 +105,11 @@ Vor Übergabe an Flow:
 npm run validate:youtube-phase1 -- --dir "youtube/<woche>/<thema>"
 ```
 
-Neue Schema-9+-Projekte müssen Visual Policy V4 und die Serious-Minimal-Countryball-Bildwelt verwenden. Die zwischenzeitliche Premium-Editorial-Bildwelt ist dort nicht mehr aktiv.
+Neue Schema-14+-Projekte müssen dabei zusätzlich Script Quality V1 bestehen. Alte Projekte bleiben kompatibel und werden nicht rückwirkend auf die neue Schreibregel migriert.
 
 ## Phase 2 — Google Flow
 
-Da die Bildwelt auf V4 zurückgesetzt wurde, für aktuelle/neue Produktionen eine **frische Flow-Sitzung** verwenden.
-
-```text
-STOP bei alter Premium-Editorial-Sitzung
-→ frische Flow-Sitzung / frisches Flow-Projekt
-→ aktuellen google-flow-prompt.txt vollständig neu einfügen
-```
+Für eine neue Produktion eine frische Flow-Sitzung verwenden, wenn sich die aktive Bildwelt/Policy gegenüber einer alten Sitzung geändert hat.
 
 ### Bildproduktion
 
@@ -88,7 +126,7 @@ Nach Abschluss:
 npm run validate:youtube-phase2 -- --dir "youtube/<woche>/<thema>"
 ```
 
-## Visual Policy V4 — Serious Minimal Countryball
+## Visual Policy V5 — Serious Minimal Countryball
 
 Style-ID: `serious-minimal-countryball-explainer-youtube-16x9`
 
@@ -96,22 +134,21 @@ Quell-DNA: `serious-minimal-countryball-explainer`
 
 Verbindlich:
 - 16:9 horizontal
-- seriöse, cleane, minimalistische 2D-Countryball-Erklärwelt
-- perfekt runde Countryball-Akteure, wenn Akteure sinnvoll sind
-- einfache weiße Augen
-- dicke schwarze Konturen
+- seriöse, cleane 2D-Countryball-Erklärwelt
+- Countryballs nur, wenn sie die Aussage verbessern
+- Karten, Dokumente, Einzelobjekte, Schemata und volle Szenen je nach Inhalt
+- einfache weiße Augen bei Countryballs
+- kräftige schwarze Konturen
 - flache kontrollierte Farben
-- geringe bis mittlere Detaildichte
-- normalerweise 0–3 sinnvolle Zusatzobjekte
-- starke Symbolik statt realistischer Vollszenen
 - keine normalen illustrierten Menschen
 - keine humanoiden Cartoon-Personen
+- keine menschlichen Silhouetten oder realistischen Hände
 - keine Stickfiguren
 - kein Fotorealismus
 - kein 3D/Pixar/Clay/Anime
 - nicht kindisch, nicht albern
 
-Historische Inhalte werden in diese reduzierte Formsprache übersetzt; keine realistischen Konferenz-, Kriegs- oder Menschenszenen als Standard.
+**Inhalt vor Figur. So einfach wie möglich, so komplex wie nötig.**
 
 ## Anti-Lifeless — HARD LOCK
 
@@ -142,14 +179,18 @@ Nutzeroriginal bleibt unverändert.
 npm run phase3:youtube -- --dir "youtube/<woche>/<thema>"
 ```
 
-Phase 3 beginnt mit Phase-1- und Phase-2-Gates. Danach Audio, Alignment, Timeline, Motion/SFX und Render. Die Timeline beginnt mit Bild 01 bei 0,0 s und der Export kopiert Bild 01 als Thumbnail.
+Phase 3 beginnt erneut mit dem vollständigen Phase-1-Gate inklusive Script Quality V1 und danach dem Phase-2-Gate. Dadurch kann ein neues Schema-14+-Video mit einem nicht freigegebenen Skript nicht gerendert werden.
+
+Danach folgen Audio, Alignment, Timeline, Motion/SFX und Render. Die Timeline beginnt mit Bild 01 bei 0,0 s und der Export kopiert Bild 01 als Thumbnail.
 
 ## Export
 
 ```text
 03-export/
 ├── FERTIGES-VIDEO.mp4
-├── THUMBNAIL.png        ← Kopie von Bild 01.png
+├── THUMBNAIL.png
+├── YOUTUBE-UPLOAD.txt
+├── YOUTUBE-UNTERTITEL-ZEITABSCHNITTE.txt
 ├── YOUTUBE-TITEL.txt
 ├── YOUTUBE-BESCHREIBUNG.txt
 ├── YOUTUBE-KAPITEL.txt
