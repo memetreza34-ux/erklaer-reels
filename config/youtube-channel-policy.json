@@ -1,11 +1,12 @@
 {
-  "schemaVersion": 4,
+  "schemaVersion": 5,
   "visualPolicyVersion": 5,
   "coverPolicyVersion": 1,
   "assetGenerationPolicyVersion": 1,
   "designQualityVersion": 1,
   "adaptivePacingVersion": 3,
   "scriptOpeningPolicyVersion": 1,
+  "scriptQualityPolicyVersion": 1,
   "sceneIllustrationPolicyVersion": 2,
   "topicVisualRelevancePolicyVersion": 1,
   "visualFlexibilityPolicyVersion": 1,
@@ -55,6 +56,34 @@
     "entertainmentAndInformationBalanceRequired": true,
     "valueDensityRequired": true,
     "explicitUserOverrideAllowed": true
+  },
+  "scriptQualityPolicy": {
+    "openingWindowCharacters": 750,
+    "forbiddenOpeningPhrases": [
+      "Denkst du dir gerade vielleicht.",
+      "Du fragst dich jetzt vielleicht."
+    ],
+    "legacyQuestionThoughtShortAnswerTemplateForbidden": true,
+    "topicMentionRequiredInOpening": true,
+    "minimumWordsForDepthChecks": 450,
+    "causalExplanationRequired": true,
+    "minimumCausalSignalsPer1000Words": 6,
+    "concreteExamplesOrFactsRequired": true,
+    "minimumConcreteSignalsPer1000Words": 3,
+    "spokenReadabilityRequired": true,
+    "maxAverageSentenceWords": 25,
+    "longSentenceWordThreshold": 38,
+    "maxLongSentenceRatio": 0.2,
+    "maxParagraphWords": 180,
+    "repeatedParagraphStarterLimit": 3,
+    "maxQuestionsPer1000Words": 10,
+    "qualityPrinciples": [
+      "Unterhaltung und Information müssen zusammenarbeiten.",
+      "Ereignisse und Fakten dürfen nicht nur aufgezählt werden; Ursache, Reaktion und Folge müssen erklärt werden.",
+      "Konkrete Beispiele, Daten, Orte, Akteure oder nachvollziehbare Fälle geben dem Zuschauer echten Mehrwert.",
+      "Das Skript wird für gesprochene Sprache geschrieben: klar, natürlich und ohne unnötig verschachtelte Sätze.",
+      "Der Einstieg wird pro Thema neu gebaut und darf nicht aus einer wiederkehrenden Kanalfloskel bestehen."
+    ]
   },
   "visualStyleId": "serious-minimal-countryball-explainer-youtube-16x9",
   "sourceVisualWorldId": "serious-minimal-countryball-explainer",
