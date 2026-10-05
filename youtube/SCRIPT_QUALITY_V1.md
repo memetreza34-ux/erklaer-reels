@@ -1,6 +1,6 @@
 # SCRIPT QUALITY V1 — YouTube-Langvideos
 
-**Gilt verbindlich für neue Schema-14+-Projekte.**
+**Gilt verbindlich für neue Projekte mit `scriptQualityPolicyVersion: 1`.**
 
 Ziel: Skripte sollen nicht nur korrekt sein, sondern als gesprochenes YouTube-Langvideo funktionieren: verständlich, unterhaltsam, konkret und mit echtem Erklärwert.
 
@@ -95,10 +95,14 @@ npm run validate:youtube-phase1 -- --dir "youtube/<woche>/<thema>"
 
 `validate:youtube-phase1` führt zuerst Script Quality V1 und danach die übrigen Phase-1-Policies aus.
 
-Phase 3 ruft wiederum den vollständigen Phase-1-Gate auf. Ein neues Schema-14+-Projekt kann daher mit nicht freigegebenem Skript nicht in den Render durchrutschen.
+Phase 3 führt Script Quality V1 ebenfalls direkt vor den bisherigen Phase-1-/Phase-2-Gates aus. Ein neues Projekt mit aktivierter Script-Quality-Policy kann daher mit nicht freigegebenem Skript nicht in den Render durchrutschen.
 
 ## 7. Rückwärtskompatibilität
 
-Schema 13 und älter werden nicht rückwirkend durch Script Quality V1 blockiert. Bereits produzierte Projekte bleiben reproduzierbar.
+Die Aktivierung hängt **nicht** an einer neuen Schema-Nummer, sondern am expliziten Feld `scriptQualityPolicyVersion`.
 
-Neue Projekte aus dem aktuellen Template verwenden Schema 14 und müssen Script Quality V1 bestehen.
+- bestehende Projekte ohne dieses Feld: Legacy-Skip, reproduzierbar
+- neue Projekte aus dem aktuellen Template: `scriptQualityPolicyVersion: 1`, Hard-Gate aktiv
+- visuelles Schema 13 bleibt unverändert
+
+Damit wird die Schreibqualität künftig verschärft, ohne bereits produzierte Schema-13-Videos rückwirkend ungültig zu machen.
