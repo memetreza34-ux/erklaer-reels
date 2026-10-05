@@ -24,7 +24,7 @@ Autonom neue Themen bleiben in Politik/Staatssystemen, Geschichte, Ländern/Geog
 
 ## Skript — HARD GATE
 
-Neue Schema-14+-Projekte müssen vor der Bildproduktion **Script Quality V1** bestehen.
+Neue Projekte aus dem aktuellen Template tragen `scriptQualityPolicyVersion: 1` und müssen vor der Bildproduktion **Script Quality V1** bestehen. Bestehende Projekte ohne diese Policy bleiben reproduzierbar.
 
 Der Einstieg wird für jedes Thema neu gewählt. Er darf als konkrete Szene/Mini-Geschichte, Moment in der Zeit, überraschender Fakt, Konflikt, Paradox oder starke direkte Frage funktionieren. Es gibt kein festes Kanal-Satzmuster.
 
@@ -105,7 +105,7 @@ Vor Übergabe an Flow:
 npm run validate:youtube-phase1 -- --dir "youtube/<woche>/<thema>"
 ```
 
-Neue Schema-14+-Projekte müssen dabei zusätzlich Script Quality V1 bestehen. Alte Projekte bleiben kompatibel und werden nicht rückwirkend auf die neue Schreibregel migriert.
+Neue Template-Projekte mit `scriptQualityPolicyVersion: 1` müssen dabei zusätzlich Script Quality V1 bestehen. Alte Projekte ohne dieses Feld bleiben kompatibel und werden nicht rückwirkend auf die neue Schreibregel migriert.
 
 ## Phase 2 — Google Flow
 
@@ -179,7 +179,7 @@ Nutzeroriginal bleibt unverändert.
 npm run phase3:youtube -- --dir "youtube/<woche>/<thema>"
 ```
 
-Phase 3 beginnt erneut mit dem vollständigen Phase-1-Gate inklusive Script Quality V1 und danach dem Phase-2-Gate. Dadurch kann ein neues Schema-14+-Video mit einem nicht freigegebenen Skript nicht gerendert werden.
+Phase 3 prüft zuerst Script Quality V1, sofern das Projekt die Policy aktiviert hat, danach die bestehende Phase-1-Policy und anschließend den Phase-2-Gate. Dadurch kann ein neues Template-Projekt mit einem nicht freigegebenen Skript nicht gerendert werden.
 
 Danach folgen Audio, Alignment, Timeline, Motion/SFX und Render. Die Timeline beginnt mit Bild 01 bei 0,0 s und der Export kopiert Bild 01 als Thumbnail.
 
