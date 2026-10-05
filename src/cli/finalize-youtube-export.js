@@ -56,6 +56,78 @@ export function formatYoutubeTimestamp(secondsValue) {
   return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
 }
 
+function cleanTranscriptText(words) {
+  return words
+    .map((item) => String(item.word ?? '').trim())
+    .filter(Boolean)
+    .join(' ')
+    .replace(/\s+([,.;:!?])/g, '$1')
+    .replace(/([„“"'])\s+/g, '$1')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+export function collectMeasuredWords(measurement) {
+  const collected = [];
+  for (const part of measurement?.parts ?? []) {
+    const offset = Number(part.absoluteOffsetSeconds ?? 0);
+    for (const item of part.words ?? []) {
+      const word = String(item.word ?? '').trim();
+      const start = Number(item.start);
+      const end = Number(item.end);
+      if (!word || !Number.isFinite(start) || !Number.isFinite(end)) continue;
+      collected.push({
+        word,
+        start: Math.max(0, offset + start),
+        end: Math.max(0, offset + end)
+      });
+    }
+  }
+  return collected.sort((a, b) => a.start - b.start || a.end - b.end);
+}
+
+export function buildTimedTranscriptText(measurement, { windowSeconds = 10 } = {}) {
+  const window = Number(windowSeconds);
+  if (!Number.isFinite(window) || window <= 0) throw new Error('windowSeconds muss größer als 0 sein.');
+  const words = collectMeasuredWords(measurement);
+  if (!words.length) throw new Error('YOUTUBE_WORD_TIMINGS.json enthält keine verwertbaren Wortzeiten.');
+
+  const lastWordEnd = Math.max(...words.map((item) => item.end));
+  const totalDuration = Math.max(lastWordEnd, Number(measurement?.masterDurationSeconds ?? 0));
+  const lines = [];
+
+  for (let start = 0; start < totalDuration; start += window) {
+    const end = Math.min(start + window, totalDuration);
+    const bucket = words.filter((item) => item.start >= start && item.start < start + window);
+    if (!bucket.length) continue;
+    const text = cleanTranscriptText(bucket);
+    if (!text) continue;
+    lines.push(`${formatYoutubeTimestamp(start)}–${formatYoutubeTimestamp(end)} ${text}`);
+  }
+
+  if (!lines.length) throw new Error('Aus den Wortzeiten konnte kein Zeittranskript erzeugt werden.');
+  return `${lines.join('\n\n')}\n`;
+}
+
+export function buildUploadOverview({ title, description, chapters, tags }) {
+  return [
+    'YOUTUBE-UPLOAD',
+    '',
+    'TITEL',
+    String(title ?? '').trim(),
+    '',
+    'BESCHREIBUNG',
+    String(description ?? '').trim(),
+    '',
+    'KAPITEL',
+    String(chapters ?? '').trim(),
+    '',
+    'TAGS',
+    String(tags ?? '').trim(),
+    ''
+  ].join('\n');
+}
+
 async function buildTimelineChapters(projectDir) {
   const techDir = path.join(projectDir, '99-technik');
   const chapterPlanPath = path.join(techDir, 'YOUTUBE_CHAPTERS.json');
@@ -115,25 +187,43 @@ export async function finalizeYoutubeExport(projectDirectory) {
   const descriptionPath = path.join(exportDir, 'YOUTUBE-BESCHREIBUNG.txt');
   const chaptersPath = path.join(exportDir, 'YOUTUBE-KAPITEL.txt');
   const tagsPath = path.join(exportDir, 'YOUTUBE-TAGS.txt');
+  const overviewPath = path.join(exportDir, 'YOUTUBE-UPLOAD.txt');
+  const timedTranscriptPath = path.join(exportDir, 'YOUTUBE-UNTERTITEL-ZEITABSCHNITTE.txt');
 
   const existingOrUpload = async (filePath, uploadValue) => {
-    if (String(uploadValue ?? '').trim()) return uploadValue;
-    if (await exists(filePath)) return readFile(filePath, 'utf8');
+    if (String(uploadValue ?? '').trim()) return String(uploadValue).trim();
+    if (await exists(filePath)) return String(await readFile(filePath, 'utf8')).trim();
     return '';
   };
 
-  await writeRequired(titlePath, await existingOrUpload(titlePath, upload.title), 'YouTube-Titel');
-  await writeRequired(descriptionPath, await existingOrUpload(descriptionPath, upload.description), 'YouTube-Beschreibung');
+  const title = await existingOrUpload(titlePath, upload.title || meta.title);
+  const description = await existingOrUpload(descriptionPath, upload.description);
   const timelineChapters = await buildTimelineChapters(projectDir);
-  await writeRequired(chaptersPath, timelineChapters ?? await existingOrUpload(chaptersPath, upload.chapters), 'YouTube-Kapitel');
-  await writeRequired(tagsPath, await existingOrUpload(tagsPath, upload.tags), 'YouTube-Tags');
+  const chapters = String(timelineChapters ?? await existingOrUpload(chaptersPath, upload.chapters)).trim();
+  const tags = await existingOrUpload(tagsPath, upload.tags);
+
+  await writeRequired(titlePath, title, 'YouTube-Titel');
+  await writeRequired(descriptionPath, description, 'YouTube-Beschreibung');
+  await writeRequired(chaptersPath, chapters, 'YouTube-Kapitel');
+  await writeRequired(tagsPath, tags, 'YouTube-Tags');
+  await writeFile(overviewPath, buildUploadOverview({ title, description, chapters, tags }), 'utf8');
+
+  const measurementPath = path.join(projectDir, '99-technik', 'YOUTUBE_WORD_TIMINGS.json');
+  if (await exists(measurementPath)) {
+    const measurement = await readJson(measurementPath);
+    await writeFile(timedTranscriptPath, buildTimedTranscriptText(measurement, { windowSeconds: 10 }), 'utf8');
+  } else if (Number(meta?.schemaVersion) >= 13) {
+    throw new Error('Schema-13+: 99-technik/YOUTUBE_WORD_TIMINGS.json fehlt. Zeitabschnitt-Untertitel können nicht exportiert werden.');
+  }
 
   return {
     thumbnail: thumbnailTarget,
     title: titlePath,
     description: descriptionPath,
     chapters: chaptersPath,
-    tags: tagsPath
+    tags: tagsPath,
+    overview: overviewPath,
+    timedTranscript: (await exists(timedTranscriptPath)) ? timedTranscriptPath : null
   };
 }
 
@@ -147,6 +237,8 @@ async function main() {
   console.log(`- ${result.description}`);
   console.log(`- ${result.chapters}`);
   console.log(`- ${result.tags}`);
+  console.log(`- ${result.overview}`);
+  if (result.timedTranscript) console.log(`- ${result.timedTranscript}`);
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
