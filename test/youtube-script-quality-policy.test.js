@@ -91,6 +91,8 @@ test('Phase1- und Phase3-Pipeline können Script Quality V1 nicht umgehen', asyn
   assert.match(packageJson.scripts['validate:youtube-script'], /validate-youtube-script-quality\.js/);
   assert.match(phase1Wrapper, /validate-youtube-script-quality\.js/);
   assert.match(phase1Wrapper, /validate-youtube-phase1-policy\.js/);
-  assert.match(phase3, /validate-youtube-phase1\.js/);
-  assert.match(qualityCli, /schema < 14/);
+  assert.match(phase3, /validate-youtube-script-quality\.js/);
+  assert.match(phase3, /validate-youtube-phase1-policy\.js/);
+  assert.match(qualityCli, /scriptQualityPolicyVersion/);
+  assert.match(qualityCli, /LEGACY-SKIP/);
 });
