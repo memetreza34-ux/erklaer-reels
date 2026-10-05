@@ -28,8 +28,10 @@ async function main() {
   // Fail-fast noch vor jeder Audioänderung: externe Werkzeuge und Whisper müssen verfügbar sein.
   run('src/cli/preflight-youtube.js');
 
-  // Keine Produktion mit veralteten Themen-, Bildwelt-, Cover- oder Phase-2-Asset-Regeln.
-  run('src/cli/validate-youtube-phase1-policy.js', common);
+  // Phase 1 ist ein gemeinsamer Hard-Gate: neue Projekte müssen zuerst die
+  // Skriptqualität (Hook, Mehrwert, Konkretheit, Sprachfluss) und danach alle
+  // Themen-, Bildwelt-, Cover- und Produktionsregeln bestehen.
+  run('src/cli/validate-youtube-phase1.js', common);
   run('src/cli/validate-youtube-phase2-assets.js', common);
 
   // Wichtig: auto-align optimiert das interne Audio ZUERST. Whisper misst danach
@@ -41,7 +43,7 @@ async function main() {
   run('src/cli/validate-youtube-phase3.js', common);
 
   if (process.argv.includes('--prepare-only')) {
-    console.log('\nYouTube Phase 3 vorbereitet: Preflight, Phase-1-/Phase-2-Gates, Voice-over 1,10x, lange Pausen/Endstille gekürzt, echte Lautheit geprüft, Audio-Alignment, FINAL_TIMELINE und alle Pre-Render-Gates bestanden.');
+    console.log('\nYouTube Phase 3 vorbereitet: Preflight, Skript-/Phase-1-/Phase-2-Gates, Voice-over 1,10x, lange Pausen/Endstille gekürzt, echte Lautheit geprüft, Audio-Alignment, FINAL_TIMELINE und alle Pre-Render-Gates bestanden.');
     return;
   }
 
@@ -49,7 +51,7 @@ async function main() {
   run('src/cli/finalize-youtube-export.js', common);
   run('src/cli/validate-youtube-audio.js', common);
   run('src/cli/validate-youtube-phase3.js', [...common, '--post-render']);
-  console.log('\nYouTube Phase 3: BESTANDEN — Preflight, Phase-1-/Phase-2-Policies, Audio-Pacing/Lautheit, Render, Export-Finalisierung und Post-Render-QC abgeschlossen.');
+  console.log('\nYouTube Phase 3: BESTANDEN — Preflight, Skriptqualität, Phase-1-/Phase-2-Policies, Audio-Pacing/Lautheit, Render, Export-Finalisierung und Post-Render-QC abgeschlossen.');
 }
 
 main().catch((error) => {
