@@ -51,7 +51,7 @@ test('blockiert nicht ausgefüllte Opening-Platzhalter', async () => {
   assert.ok(result.errors.some((error) => /Platzhalter/i.test(error)));
 });
 
-test('Template verlangt für zukünftige Schema-14-Projekte flexible Hooks plus Script Quality V1', async () => {
+test('Template verlangt für zukünftige Schema-13-Projekte flexible Hooks plus Script Quality V1', async () => {
   const [policy, meta, scriptTemplate, workflow] = await Promise.all([
     readJson('config/youtube-channel-policy.json'),
     readJson('youtube/templates/video-template/99-technik/video.json'),
@@ -64,7 +64,7 @@ test('Template verlangt für zukünftige Schema-14-Projekte flexible Hooks plus 
   assert.equal(policy.scriptOpeningPolicy.directQuestionRequiredAtStart, false);
   assert.equal(policy.scriptOpeningPolicy.viewerThoughtPhraseRequired, false);
   assert.equal(policy.scriptOpeningPolicy.sameOpeningPatternAcrossConsecutiveVideosForbidden, true);
-  assert.equal(meta.schemaVersion, 14);
+  assert.equal(meta.schemaVersion, 13);
   assert.equal(meta.scriptOpeningPolicyVersion, 1);
   assert.equal(meta.scriptQualityPolicyVersion, 1);
   assert.equal(meta.scriptQualityPolicy.legacyQuestionThoughtShortAnswerTemplateForbidden, true);
