@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { access, copyFile, mkdir, readFile, writeFile } from 'node:fs/promises';
+import { access, copyFile, mkdir, readFile, writeFile, unlink } from 'node:fs/promises';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 
@@ -108,6 +108,20 @@ export function buildTimedTranscriptText(measurement, { windowSeconds = 10 } = {
   return `${lines.join('\n\n')}\n`;
 }
 
+export function buildCompactUploadOverview({ title, description, caption }) {
+  return ['TITEL', String(title ?? '').trim(), '', 'BESCHREIBUNG', String(description ?? '').trim(), '', 'CAPTION', String(caption ?? '').trim(), ''].join('\n');
+}
+
+export function parseCompactUploadOverview(content) {
+  const sections = {};
+  const text = String(content ?? '').replace(/\r\n/g, '\n');
+  for (const key of ['TITEL', 'BESCHREIBUNG', 'CAPTION']) {
+    const regex = new RegExp(`(?:^|\\n)${key}\\n([\\s\\S]*?)(?=\\n(?:TITEL|BESCHREIBUNG|CAPTION)\\n|$)`);
+    sections[key.toLowerCase()] = text.match(regex)?.[1]?.trim() || '';
+  }
+  return sections;
+}
+
 export function buildUploadOverview({ title, description, chapters, tags }) {
   return [
     'YOUTUBE-UPLOAD',
@@ -172,12 +186,40 @@ export async function finalizeYoutubeExport(projectDirectory) {
 
   const metaPath = path.join(projectDir, '99-technik', 'video.json');
   const meta = (await exists(metaPath)) ? await readJson(metaPath) : {};
-  const coverNumber = coverImageNumberForMeta(meta);
-  const coverFile = `Bild ${String(coverNumber).padStart(2, '0')}.png`;
-  const thumbnailSource = path.join(projectDir, '00-bildprompts', 'images', coverFile);
-  if (!(await exists(thumbnailSource))) throw new Error(`Thumbnail/Cover fehlt: 00-bildprompts/images/${coverFile}`);
+  const usesSeparateCover = Number(meta.coverPolicyVersion) >= 2;
   const thumbnailTarget = path.join(exportDir, 'THUMBNAIL.png');
-  await copyFile(thumbnailSource, thumbnailTarget);
+  if (usesSeparateCover) {
+    if (!(await exists(thumbnailTarget))) throw new Error('Cover V2: separates 03-export/THUMBNAIL.png fehlt. Niemals Bild 01 dafür kopieren.');
+  } else {
+    const coverNumber = coverImageNumberForMeta(meta);
+    const coverFile = `Bild ${String(coverNumber).padStart(2, '0')}.png`;
+    const thumbnailSource = path.join(projectDir, '00-bildprompts', 'images', coverFile);
+    if (!(await exists(thumbnailSource))) throw new Error(`Thumbnail/Cover fehlt: 00-bildprompts/images/${coverFile}`);
+    await copyFile(thumbnailSource, thumbnailTarget);
+  }
+
+  if (usesSeparateCover) {
+    const overviewPath = path.join(exportDir, 'YOUTUBE-UPLOAD.txt');
+    if (!(await exists(overviewPath))) throw new Error('Export V2: YOUTUBE-UPLOAD.txt mit Titel, Beschreibung und Caption fehlt.');
+    const sections = parseCompactUploadOverview(await readFile(overviewPath, 'utf8'));
+    for (const key of ['titel','beschreibung','caption']) {
+      if (!sections[key]) throw new Error(`Export V2: Abschnitt ${key.toUpperCase()} fehlt.`);
+    }
+    // Generate only the four requested deliverables, without touching unrelated user assets.
+    const oldGenerated = ['YOUTUBE-TITEL.txt','YOUTUBE-BESCHREIBUNG.txt','YOUTUBE-KAPITEL.txt','YOUTUBE-TAGS.txt','UPLOAD.md'];
+    for (const file of oldGenerated) {
+      const old = path.join(exportDir, file);
+      if (await exists(old)) await unlink(old);
+    }
+    await writeFile(overviewPath, buildCompactUploadOverview({
+      title: sections.titel, description: sections.beschreibung, caption: sections.caption
+    }), 'utf8');
+    const measurementPath = path.join(projectDir, '99-technik', 'YOUTUBE_WORD_TIMINGS.json');
+    if (!(await exists(measurementPath))) throw new Error('Export V2: echte Whisper-Wortzeiten fehlen.');
+    const timedTranscriptPath = path.join(exportDir, 'YOUTUBE-UNTERTITEL-ZEITABSCHNITTE.txt');
+    await writeFile(timedTranscriptPath, buildTimedTranscriptText(await readJson(measurementPath), { windowSeconds: 10 }), 'utf8');
+    return { thumbnail: thumbnailTarget, overview: overviewPath, timedTranscript: timedTranscriptPath };
+  }
 
   const uploadPath = path.join(exportDir, 'UPLOAD.md');
   const upload = (await exists(uploadPath)) ? parseUploadMarkdown(await readFile(uploadPath, 'utf8')) : {};
@@ -232,10 +274,7 @@ async function main() {
   const result = await finalizeYoutubeExport(dir);
   console.log('YouTube-Export finalisiert:');
   console.log(`- ${result.thumbnail}`);
-  console.log(`- ${result.title}`);
-  console.log(`- ${result.description}`);
-  console.log(`- ${result.chapters}`);
-  console.log(`- ${result.tags}`);
+  for (const key of ['title', 'description', 'chapters', 'tags']) if (result[key]) console.log(`- ${result[key]}`);
   console.log(`- ${result.overview}`);
   if (result.timedTranscript) console.log(`- ${result.timedTranscript}`);
 }
