@@ -2,7 +2,7 @@
 
 KW41 · 1041 Wörter · 67 Bildmomente · ca. 6–7 Minuten · deutsches Voice-over.
 
-**Status:** Phase 1 vorbereitet und per GitHub-CI zu prüfen. Phase 2 wartet auf 67 finale Flow-Bilder und ein vollständiges Voice-over. Phase 3 bleibt bis dahin blockiert.
+**Status:** Phase 1 vollständig und mit grüner GitHub-CI freigegeben. Phase 2 wartet auf 67 finale Flow-Bilder und ein vollständiges Voice-over. Phase 3 bleibt bis dahin blockiert.
 
 ## Dateien
 
