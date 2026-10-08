@@ -6,7 +6,10 @@ import os from 'node:os';
 
 import {
   buildTimedTranscriptText,
-  buildUploadOverview,\n  buildCompactUploadOverview,\n  parseCompactUploadOverview,\n  finalizeYoutubeExport,
+  buildUploadOverview,
+  buildCompactUploadOverview,
+  parseCompactUploadOverview,
+  finalizeYoutubeExport,
   collectMeasuredWords
 } from '../src/cli/finalize-youtube-export.js';
 
