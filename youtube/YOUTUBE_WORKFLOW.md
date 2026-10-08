@@ -9,9 +9,9 @@
 **Topic Visual Relevance Policy Version: 1**  
 **Visual Flexibility Policy Version: 1**  
 **End Hold Policy Version: 1**  
-**Cover Policy Version: 1**  
+**Cover Policy Version: 2**  
 **Topic Editor Version: 1**  
-**Asset Generation Policy Version: 1**
+**Asset Generation Policy Version: 2**
 
 Diese Datei gilt ausschließlich für YouTube-Langvideos. Reels bleiben davon getrennt und werden nicht verändert.
 
@@ -242,14 +242,20 @@ Premium bedeutet bessere Gestaltung innerhalb derselben Bildwelt:
 
 **Premium ≠ realistisch. Premium ≠ neue Bildwelt. Premium ≠ kompliziert.**
 
-## FIRST SCENE = COVER HARD LOCK
+## SEPARATE COVER — EXPORT ONLY HARD LOCK
 
-- Bild 01 = Cover UND erste Videoszene
-- Start bei 0,0 s
-- starke kurze deutsche Cover-Überschrift
-- `03-export/THUMBNAIL.png` = Kopie von `Bild 01.png`
-- kein Bild 00
-- kein separates Thumbnail
+Für NEUE Projekte mit **Cover Policy V2**:
+
+- Cover wird separat für den Export erzeugt: `03-export/THUMBNAIL.png`.
+- Cover gehört **niemals** zur Videotimeline.
+- `Bild 01.png` ist eine normale, zum ersten gesagten Satz passende Szene **ohne Cover-Headline**.
+- Das Video beginnt mit `Bild 01.png` bei 0,0 Sekunden.
+- Cover exakt drei Kandidaten → besten wählen → nur `THUMBNAIL.png` behalten.
+- Bild 01–NN jeweils exakt ein normaler Bildmoment und je einmal erzeugt.
+- Keine Cover-Kandidaten, keine Cover-Kopie oder Bild 00 im Ordner `images/`.
+- Vor Render Bild 01 und Cover per Hash prüfen: identische Datei ist ein Fehler.
+
+**Alte Projekte mit Cover Policy V2 bleiben reproduzierbar.**
 
 ## Sichtbare Struktur
 
@@ -298,8 +304,8 @@ Weiterhin geprüft:
 - Design Quality V1
 - Adaptive Pacing V3
 - Countryball-Style-ID
-- Cover Policy V1
-- Asset Generation Policy V1
+- Cover Policy V2
+- Asset Generation Policy V2
 - Themen-Editor
 - keine Bild-zu-Bild-Referenzen
 
@@ -333,30 +339,23 @@ Komplexe Passage = eher früher sinnvoll splitten. Einfache Passage = nicht kün
 
 ### COVER = 3 CANDIDATES HARD LOCK
 
-Nur Bild 01:
-1. exakt 3× generieren
-2. genau einen Gewinner auswählen
-3. Gewinner zu `Bild 01.png`
-4. andere zwei verwerfen
+Das COVER ist eine eigenständige Bildgenerierung, **keine Videoszene**:
+1. Drei separate Cover-Kandidaten.
+2. Einen Gewinner auswählen.
+3. Als `03-export/THUMBNAIL.png` ablegen, nicht als `Bild 01.png`.
+4. Zwei ungewählte Kandidaten entfernen.
 
 ### NON-COVER = SINGLE GENERATION HARD LOCK
 
-Bild 02 bis Bild NN:
-- jedes Bild exakt 1×
-- keine zweite Variante
-- keine Prüfstopps nach 5er-Wellen
-- maximal 5 aktive Generierungen gleichzeitig
-- jedes Bild genau einmal final benennen
+- Alle normalen Szenen **Bild 01–NN** je genau einmal generieren.
+- Bild 01 passend zum Hook, ohne Cover-Typografie.
+- Keine Varianten, keine manuellen Review-Stopps.
+- Maximal fünf gleichzeitige Bildgenerierungen.
 
 ### FINAL IMAGE FOLDER HARD LOCK
 
-Nur:
-
-```text
-00-bildprompts/images/Bild 01.png ... Bild NN.png
-```
-
-Keine Unterordner, Varianten, Extras oder Bild 00.
+`00-bildprompts/images/` enthält ausschließlich `Bild 01.png` bis `Bild NN.png`.
+`03-export/THUMBNAIL.png` wird separat erzeugt und nie als Timelinebild benutzt.
 
 ## Sichtbarer Text
 
@@ -403,8 +402,8 @@ Reihenfolge:
 10. Pre-Render-Hard-Gate
 11. Motion + SFX
 12. letzter Bildmoment mit konfiguriertem End Hold
-13. Export; `THUMBNAIL.png = Bild 01.png`
-14. Post-Render-Hard-Gate
+13. Export: separat generiertes `THUMBNAIL.png` bleibt außerhalb der Timeline.
+14. Post-Render-Hard-Gate: genau vier Dateien (Video, Cover, Upload mit Titel/Beschreibung/Caption, zeitgestempelter Sprechertext)
 
 ## Verboten
 
@@ -421,10 +420,10 @@ Reihenfolge:
 - generische austauschbare Bilder ohne Topic Anchor
 - zufällige Länder/Flaggen ohne narrativen Grund
 - generisches Schlussbild ohne Bezug zum konkreten Thema
-- separates Bild 00
-- Cover ≠ erste Szene
-- weniger/mehr als 3 Cover-Kandidaten
-- Bild 02..NN mehrfach generieren
+- Cover in der Videotimeline (V2)
+- Bild 01 als Cover statt normaler Szene (V2)
+- weniger/mehr als 3 separate Cover-Kandidaten
+- Bild 01..NN mehrfach generieren
 - Referenzbilder
 - starre Bildanzahl
 - dichte Passage unnötig in ein einziges überladenes Bild pressen
@@ -450,12 +449,25 @@ Fertig erst wenn:
 - keine beliebigen Länder-/Flaggen-Countryballs
 - Adaptive Pacing V3
 - Bildzahl inhaltsgetrieben
-- Bild 01 = Cover + erste Szene
-- Cover 3× → 1 Gewinner
-- Bild 02..NN je 1×
+- Bild 01 = normale erste Szene; Cover getrennt im Export
+- Separates Cover 3× → 1 Gewinner
+- Bild 01..NN je 1×
 - alle finalen Bilder in einem flachen Ordner
 - keine Referenzbilder
 - Audio 1,10x / −16 LUFS / max. −1,5 dBTP
 - letztes Bild hält nach dem letzten Wort 1,2–1,5 s, Ziel 1,3 s
 - finale Szene fasst den konkreten Themenkern zusammen
 - Pre-/Post-Render-Gates bestanden
+
+## EXPORT V2 — NUR VIER DATEIEN
+
+Der Ordner `03-export/` enthält nach Phase 3 **exakt**:
+
+```text
+FERTIGES-VIDEO.mp4
+THUMBNAIL.png
+YOUTUBE-UPLOAD.txt
+YOUTUBE-UNTERTITEL-ZEITABSCHNITTE.txt
+```
+
+`YOUTUBE-UPLOAD.txt` enthält ausschließlich **TITEL**, **BESCHREIBUNG**, **CAPTION** als drei Abschnitte. Keine getrennte Titel-, Kapitel-, Beschreibung-, Tags- oder Caption-Datei. Kapitel bleiben intern oder können bei Bedarf in die Beschreibung aufgenommen werden. Zeittranskript benutzt echte Whisper-Zeitstempel. Das Cover wird außerhalb der Timeline erzeugt.

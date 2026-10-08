@@ -13,8 +13,8 @@ Script Quality V1
 Scene Illustration V2
 Topic Visual Relevance V1
 Visual Flexibility V1
-Cover Policy V1
-Asset Generation Policy V1
+Cover Policy V2
+Asset Generation Policy V2
 serious-minimal-countryball-explainer-youtube-16x9
 ```
 
@@ -57,26 +57,18 @@ Der normale Phase-1-Gate führt diese Prüfung automatisch mit aus:
 npm run validate:youtube-phase1 -- --dir "youtube/<woche>/<thema>"
 ```
 
-## Cover-Regel — HARD LOCK
+## Cover V2 — separat, nie im Video
 
-- **Bild 01 ist immer Cover UND erste Videoszene.**
-- Bild 01 beginnt bei 0,0 s.
-- Bild 01 trägt eine starke kurze deutsche Cover-Überschrift und erklärt zugleich den ersten Sprecherabschnitt.
-- `THUMBNAIL.png` wird direkt aus `Bild 01.png` exportiert.
-- kein Bild 00
-- kein separates Thumbnail außerhalb der Timeline
-- Bild 01 ist kein Master-Style-Frame und keine Referenz für spätere Bilder.
+- Cover **3 Kandidaten** generieren, Gewinner `03-export/THUMBNAIL.png`.
+- Bild 01 ist **normale erste Videoszene** ohne Headline des Covers.
+- Bild 01–NN jeweils einmal generieren, flach unter `00-bildprompts/images/`.
+- Cover darf nicht identisch zu Bild 01 sein.
+- Bestehende V1-Projekte bleiben unverändert.
 
-## Asset Generation Policy V1
+## Vier Export-Dateien
 
-- Bild 01 / Cover exakt **3×** generieren.
-- genau 1 Gewinner auswählen.
-- Gewinner einmal final zu `Bild 01.png` umbenennen.
-- andere 2 Cover-Kandidaten verwerfen.
-- Bild 02–NN jeweils **exakt 1×** generieren.
-- keine manuellen Prüfstopps nach 5er-Blöcken.
-- maximal fünf aktive Generierungen gleichzeitig = nur Last-/Parallelitätsregel.
-- alle finalen Bilder flach in `00-bildprompts/images/`.
+`FERTIGES-VIDEO.mp4`, `THUMBNAIL.png`, `YOUTUBE-UPLOAD.txt` (TITEL/BESCHREIBUNG/CAPTION), `YOUTUBE-UNTERTITEL-ZEITABSCHNITTE.txt` (echte Zeitabschnitte).
+
 
 ## Verbindliche Reihenfolge
 
@@ -113,8 +105,8 @@ Für eine neue Produktion eine frische Flow-Sitzung verwenden, wenn sich die akt
 
 ### Bildproduktion
 
-- Bild 01 exakt 3× → einen Gewinner wählen
-- Bild 02–NN jeweils genau 1×
+- Separates Cover exakt 3× → einen Gewinner als THUMBNAIL.png wählen
+- Bild 01–NN jeweils genau 1×
 - kein vorheriges Bild als Referenz
 - maximal fünf aktive Generierungen gleichzeitig
 - kein Review-Stop nach 5er-Gruppen
@@ -189,10 +181,6 @@ Danach folgen Audio, Alignment, Timeline, Motion/SFX und Render. Die Timeline be
 03-export/
 ├── FERTIGES-VIDEO.mp4
 ├── THUMBNAIL.png
-├── YOUTUBE-UPLOAD.txt
-├── YOUTUBE-UNTERTITEL-ZEITABSCHNITTE.txt
-├── YOUTUBE-TITEL.txt
-├── YOUTUBE-BESCHREIBUNG.txt
-├── YOUTUBE-KAPITEL.txt
-└── YOUTUBE-TAGS.txt
+├── YOUTUBE-UPLOAD.txt  ← Titel, Beschreibung, Caption
+└── YOUTUBE-UNTERTITEL-ZEITABSCHNITTE.txt
 ```
