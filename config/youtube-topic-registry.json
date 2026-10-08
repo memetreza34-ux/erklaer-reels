@@ -5,92 +5,161 @@
     {
       "id": "2026-KW36_warum-hat-ein-tag-24-stunden",
       "title": "Warum hat ein Tag 24 Stunden – und nicht 10?",
-      "aliases": ["Warum hat der Tag 24 Stunden?", "Woher kommen 24 Stunden am Tag?"],
+      "aliases": [
+        "Warum hat der Tag 24 Stunden?",
+        "Woher kommen 24 Stunden am Tag?"
+      ],
       "status": "reserved"
     },
     {
       "id": "2026-KW39_warum-ging-das-roemische-reich-unter",
       "title": "Warum ging das Römische Reich wirklich unter?",
-      "aliases": ["Warum zerfiel das Römische Reich?", "Wie ging das Römische Reich unter?"],
+      "aliases": [
+        "Warum zerfiel das Römische Reich?",
+        "Wie ging das Römische Reich unter?"
+      ],
       "status": "reserved"
     },
     {
       "id": "2026-KW39_warum-gibt-es-zeitzonen",
       "title": "Warum gibt es Zeitzonen?",
-      "aliases": ["Wie entstanden Zeitzonen?", "Warum hat die Welt verschiedene Uhrzeiten?"],
+      "aliases": [
+        "Wie entstanden Zeitzonen?",
+        "Warum hat die Welt verschiedene Uhrzeiten?"
+      ],
       "status": "reserved"
     },
     {
       "id": "2026-KW39_warum-gibt-es-zwei-koreas",
       "title": "Warum gibt es zwei Koreas?",
-      "aliases": ["Warum wurde Korea geteilt?", "Wie wurde Korea geteilt?", "Wie entstanden Nord- und Südkorea?"],
+      "aliases": [
+        "Warum wurde Korea geteilt?",
+        "Wie wurde Korea geteilt?",
+        "Wie entstanden Nord- und Südkorea?"
+      ],
       "status": "reserved"
     },
     {
       "id": "2026-KW39_warum-ist-kaliningrad-von-russland-getrennt",
       "title": "Warum ist Kaliningrad von Russland getrennt?",
-      "aliases": ["Warum gehört Kaliningrad zu Russland?", "Warum ist Kaliningrad eine russische Exklave?", "Wie wurde Kaliningrad russisch?"],
+      "aliases": [
+        "Warum gehört Kaliningrad zu Russland?",
+        "Warum ist Kaliningrad eine russische Exklave?",
+        "Wie wurde Kaliningrad russisch?"
+      ],
       "status": "reserved"
     },
     {
       "id": "2026-KW39_was-ist-nationalismus",
       "title": "Nationalismus: Wie funktioniert diese Ideologie?",
-      "aliases": ["Was ist Nationalismus?", "Nationalismus einfach erklärt", "Was bedeutet Nationalismus?", "Wie funktioniert Nationalismus?"],
+      "aliases": [
+        "Was ist Nationalismus?",
+        "Nationalismus einfach erklärt",
+        "Was bedeutet Nationalismus?",
+        "Wie funktioniert Nationalismus?"
+      ],
       "status": "reserved"
     },
     {
       "id": "2026-KW39_liberalismus-freiheit-rechte-und-staat",
       "title": "Liberalismus: Freiheit, Rechte und Staat einfach erklärt",
-      "aliases": ["Was ist Liberalismus?", "Liberalismus einfach erklärt", "Was bedeutet Liberalismus?", "Wie funktioniert Liberalismus?"],
+      "aliases": [
+        "Was ist Liberalismus?",
+        "Liberalismus einfach erklärt",
+        "Was bedeutet Liberalismus?",
+        "Wie funktioniert Liberalismus?"
+      ],
       "status": "reserved"
     },
     {
       "id": "2026-KW39_konservatismus-bewahren-statt-radikal-veraendern",
       "title": "Konservatismus: Bewahren statt radikal verändern?",
-      "aliases": ["Was ist Konservatismus?", "Konservatismus einfach erklärt", "Was bedeutet Konservatismus?", "Wie funktioniert Konservatismus?", "Was wollen Konservative bewahren?"],
+      "aliases": [
+        "Was ist Konservatismus?",
+        "Konservatismus einfach erklärt",
+        "Was bedeutet Konservatismus?",
+        "Wie funktioniert Konservatismus?",
+        "Was wollen Konservative bewahren?"
+      ],
       "status": "reserved"
     },
     {
       "id": "2026-KW39_anarchismus-gesellschaft-ohne-staat",
       "title": "Anarchismus: Kann eine Gesellschaft ohne Staat funktionieren?",
-      "aliases": ["Was ist Anarchismus?", "Anarchismus einfach erklärt", "Was bedeutet Anarchismus?", "Wie funktioniert Anarchismus?", "Gesellschaft ohne Staat", "Ordnung ohne Staat"],
+      "aliases": [
+        "Was ist Anarchismus?",
+        "Anarchismus einfach erklärt",
+        "Was bedeutet Anarchismus?",
+        "Wie funktioniert Anarchismus?",
+        "Gesellschaft ohne Staat",
+        "Ordnung ohne Staat"
+      ],
       "status": "reserved"
     },
     {
       "id": "2026-KW40_kalter-krieg-wie-aus-verbuendeten-feinde-wurden",
       "title": "Kalter Krieg: Wie aus Verbündeten Feinde wurden",
-      "aliases": ["Wie begann der Kalte Krieg?", "Kalter Krieg einfach erklärt", "Wie entstand der Kalte Krieg?", "Warum wurden USA und Sowjetunion Feinde?", "Warum dauerte der Kalte Krieg so lange?"],
+      "aliases": [
+        "Wie begann der Kalte Krieg?",
+        "Kalter Krieg einfach erklärt",
+        "Wie entstand der Kalte Krieg?",
+        "Warum wurden USA und Sowjetunion Feinde?",
+        "Warum dauerte der Kalte Krieg so lange?"
+      ],
       "status": "reserved"
     },
     {
       "id": "reel-grenzen",
       "title": "Warum haben Länder Grenzen?",
-      "aliases": ["Warum gibt es Staatsgrenzen?"],
+      "aliases": [
+        "Warum gibt es Staatsgrenzen?"
+      ],
       "status": "used"
     },
     {
       "id": "reel-buendnisse",
       "title": "Warum schließen Länder Bündnisse?",
-      "aliases": ["Warum bilden Staaten Bündnisse?"],
+      "aliases": [
+        "Warum bilden Staaten Bündnisse?"
+      ],
       "status": "used"
     },
     {
       "id": "reel-taiwan",
       "title": "USA-China-Taiwan-Konflikt einfach erklärt",
-      "aliases": ["Warum streiten China und die USA um Taiwan?", "Taiwan-Konflikt erklärt"],
+      "aliases": [
+        "Warum streiten China und die USA um Taiwan?",
+        "Taiwan-Konflikt erklärt"
+      ],
       "status": "used"
     },
     {
       "id": "reel-weltkarte",
       "title": "Warum kann keine Weltkarte die Erde richtig zeigen?",
-      "aliases": ["Warum verzerren Weltkarten die Erde?"],
+      "aliases": [
+        "Warum verzerren Weltkarten die Erde?"
+      ],
       "status": "used"
     },
     {
       "id": "reel-regen-geruch",
       "title": "Warum riecht Regen so besonders?",
-      "aliases": ["Warum riecht Regen gut?", "Woher kommt der Geruch von Regen?"],
+      "aliases": [
+        "Warum riecht Regen gut?",
+        "Woher kommt der Geruch von Regen?"
+      ],
       "status": "used"
+    },
+    {
+      "id": "2026-KW41_suezkanal-wie-ein-schiff-den-welthandel-ausbremste",
+      "title": "Suezkanal: Wie ein Schiff den Welthandel ausbremste",
+      "aliases": [
+        "Warum ist der Suezkanal so wichtig?",
+        "Wie die Ever Given den Suezkanal blockierte",
+        "Suezkanal und Welthandel erklärt",
+        "Wie der Suezkanal die Weltwirtschaft verändert"
+      ],
+      "status": "reserved"
     }
   ]
 }

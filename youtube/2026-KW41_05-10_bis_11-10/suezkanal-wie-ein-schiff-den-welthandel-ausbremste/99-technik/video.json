@@ -1,0 +1,289 @@
+{
+  "schemaVersion": 13,
+  "productionRulesVersion": 5,
+  "visualPolicyVersion": 5,
+  "designQualityVersion": 1,
+  "adaptivePacingVersion": 3,
+  "scriptOpeningPolicyVersion": 1,
+  "scriptQualityPolicyVersion": 1,
+  "sceneIllustrationPolicyVersion": 2,
+  "topicVisualRelevancePolicyVersion": 1,
+  "visualFlexibilityPolicyVersion": 1,
+  "endHoldPolicyVersion": 1,
+  "explicitScriptOpeningOverride": false,
+  "coverPolicyVersion": 1,
+  "assetGenerationPolicyVersion": 1,
+  "complexityPacingVersion": 2,
+  "videoId": "2026-KW41_suezkanal-wie-ein-schiff-den-welthandel-ausbremste",
+  "weekFolder": "2026-KW41_05-10_bis_11-10",
+  "topicSlug": "suezkanal-wie-ein-schiff-den-welthandel-ausbremste",
+  "title": "Suezkanal: Wie ein Schiff den Welthandel ausbremste",
+  "topic": "Suezkanal, Ever Given 2021 und seine Bedeutung für den Welthandel",
+  "topicCategory": "internationale Beziehungen und Geopolitik",
+  "topicCoreLink": "Geostrategischer Schifffahrtskorridor zwischen Europa und Asien: Seeverkehr, Suezkrise 1956, Schließung 1967–1975, Ever Given 2021 und internationaler Handel.",
+  "explicitUserRequestedOutsideFocus": false,
+  "status": "phase1-complete",
+  "language": "de",
+  "format": "youtube-longform",
+  "visualStyleId": "serious-minimal-countryball-explainer-youtube-16x9",
+  "sourceVisualWorldId": "serious-minimal-countryball-explainer",
+  "visualStyleReason": "YouTube nutzt dieselbe Serious-Minimal-Countryball-Bildwelt wie die Reels in 16:9. Countryballs sind pro Bild optional: die beste thematische Darstellungsform entscheidet, ob eine Figur, ein Objekt, eine Karte, ein kurzes Schema oder eine größere Szene verwendet wird.",
+  "aspectRatio": "16:9",
+  "scriptQualityPolicy": {
+    "flexibleTopicSpecificOpeningRequired": true,
+    "legacyQuestionThoughtShortAnswerTemplateForbidden": true,
+    "causalExplanationRequired": true,
+    "concreteExamplesOrFactsRequired": true,
+    "spokenLanguageReadabilityRequired": true,
+    "genericMetaIntroForbidden": true,
+    "schoolbookDefinitionLeadForbidden": true
+  },
+  "coverPolicy": {
+    "firstSceneIsCover": true,
+    "coverImageNumber": 1,
+    "coverMustBeFirstTimelineImage": true,
+    "coverMustAlsoBeThumbnailSource": true,
+    "separateThumbnailImageForbidden": true,
+    "image00Forbidden": true,
+    "headlineRequired": true
+  },
+  "assetGenerationPolicy": {
+    "coverCandidateCount": 3,
+    "coverSelectionRequired": true,
+    "selectedCoverFinalName": "Bild 01.png",
+    "discardUnselectedCoverCandidates": true,
+    "nonCoverGenerationCount": 1,
+    "nonCoverManualWaveReviewForbidden": true,
+    "nonCoverRegenerationByDefaultForbidden": true,
+    "maxConcurrentGenerations": 5,
+    "renameEachFinalImageExactlyOnce": true,
+    "finalImagesFlatInSingleFolder": true,
+    "finalImageDirectory": "00-bildprompts/images",
+    "temporaryCoverCandidatesForbiddenInFinalFolder": true
+  },
+  "sessionPolicy": {
+    "freshFlowSessionRequiredWhenVisualPolicyChanges": true,
+    "continueSessionContainingLegacyStyleInstructionsForbidden": true,
+    "activeStyleIdMustBeRestatedBeforeGeneration": true,
+    "previousGeneratedImageAsReferenceForbidden": true
+  },
+  "visualWorldParityPolicy": {
+    "mustMatchReelVisualDNA": true,
+    "independentYoutubeStyle": false,
+    "stickFiguresForbidden": true,
+    "countryballVisualWorldRequired": true,
+    "countryballRequiredInEveryImage": false,
+    "normalIllustratedHumansForbidden": true,
+    "humanSilhouettesForbidden": true,
+    "humanHandsForbidden": true,
+    "photorealismForbiddenByDefault": true,
+    "genericTemplateCompositionForbidden": true
+  },
+  "masterReferencePolicy": {
+    "masterImageNumber": null,
+    "generateMasterSeparately": false,
+    "attachMasterToAllLaterImages": false,
+    "visualWorldMayChange": false,
+    "consistencySource": "written-style-lock-only"
+  },
+  "independentImagePolicy": {
+    "eachImageGeneratedFromOwnTextPrompt": true,
+    "previousGeneratedImageAsReferenceForbidden": true,
+    "imageToImageStyleInheritanceForbidden": true,
+    "freshCompositionRequired": true,
+    "repeatLayoutWithoutNarrativeReasonForbidden": true,
+    "varyPerspectiveLayoutAndBackgroundWhenUseful": true
+  },
+  "visualQualityPolicy": {
+    "visualStorytellingRequired": true,
+    "lifelessStaticCompositionForbidden": true,
+    "genericCenteredObjectOnBlankBackgroundForbiddenByDefault": false,
+    "singleObjectAllowedWhenItIsTheClearestVisual": true,
+    "genericIconCollageForbidden": true,
+    "sceneSpecificArtDirectionRequired": true,
+    "seriousMinimalCountryballWorldRequired": true,
+    "perfectlyRoundCountryballActorsRequired": true,
+    "normalIllustratedHumansForbidden": true,
+    "childishCartoonLookForbidden": true,
+    "premiumCompositionRequired": true,
+    "intentionalPaletteRequired": true,
+    "typographyHierarchyRequiredWhenTextPresent": true,
+    "balancedNegativeSpaceRequired": true,
+    "mapLegibilityRequired": true,
+    "visualRelationshipOverIconListingRequired": true,
+    "premiumDoesNotAuthorizeStyleChange": true
+  },
+  "sceneIllustrationPolicy": {
+    "concreteIllustratedScenePreferred": true,
+    "abstractInfographicPosterForbiddenByDefault": true,
+    "multiPanelDashboardForbiddenByDefault": true,
+    "iconGridAsPrimaryCompositionForbidden": true,
+    "recognizablePlaceOrSituationPreferred": true,
+    "actorsShouldDoSomethingWhenActorsAreUseful": true,
+    "sceneBasedColorVariationRequired": true,
+    "textMustSupportSceneNotReplaceScene": true
+  },
+  "topicVisualRelevancePolicy": {
+    "eachImageMustBeSpecificToVideoTopic": true,
+    "sentenceAndTopicDualMatchRequired": true,
+    "topicAnchorRequiredPerImagePlan": true,
+    "interchangeableGenericSceneForbidden": true,
+    "genericMetaphorForbiddenWhenTopicSpecificSceneExists": true,
+    "arbitraryCountryOrFlagUseForbidden": true,
+    "countryOrFlagRequiresNarrativeReason": true,
+    "topicSpecificInstitutionsObjectsPlacesPreferred": true,
+    "finalImageMustSummarizeCoreTopicNotGenericMoral": true
+  },
+  "visualFlexibilityPolicy": {
+    "countryballsOptionalPerImage": true,
+    "countryballOnlyWhenItImprovesExplanation": true,
+    "forcedActorInsertionForbidden": true,
+    "objectOnlyIllustrationAllowed": true,
+    "mapOnlyIllustrationAllowed": true,
+    "documentOnlyIllustrationAllowed": true,
+    "simpleDiagramOrSchemaAllowedWhenClearest": true,
+    "singleDominantObjectAllowed": true,
+    "multipleCountryballsAllowedWhenNarrativelyUseful": true,
+    "multipleRelevantElementsAllowedWhenNarrativelyUseful": true,
+    "simpleCompositionAllowed": true,
+    "complexSceneAllowedWhenNarrativelyUseful": true,
+    "forcedSceneComplexityForbidden": true,
+    "forcedForegroundMidgroundBackgroundForbidden": true,
+    "bestVisualFormMustBeChosenPerImage": true,
+    "clarityOverComplexityRequired": true,
+    "sameVisualWorldRequiredWithoutSameComposition": true
+  },
+  "visibleTextPolicy": {
+    "projectLanguageOnly": true,
+    "germanProjectRequiresGermanOnly": true,
+    "englishVisibleTextHardFail": true,
+    "pseudoTextHardFail": true,
+    "preferNoTextWhenNotRequired": true
+  },
+  "targetDurationSeconds": 400,
+  "targetDurationRangeSeconds": [
+    360,
+    435
+  ],
+  "plannedImageCount": 67,
+  "imageCountMethod": "adaptive-density-v3-content-derived",
+  "imageDensityPolicy": {
+    "contentDrivenImageCountRequired": true,
+    "fixedImageCountForbidden": true,
+    "splitOnNewVisualIdeaRequired": true,
+    "splitOnEraLocationPerspectiveChangeRequired": true,
+    "splitCauseEffectWhenDense": true,
+    "allowMoreImagesWhenNarrativelyUseful": true,
+    "doNotAddFillerImages": true,
+    "targetAverageHoldSeconds": [
+      4.5,
+      7.5
+    ],
+    "softReviewAboveSeconds": 9,
+    "strongSplitReviewAboveSeconds": 11,
+    "globalHardMaximumSeconds": 16,
+    "minimumUsefulHoldSeconds": 2.5
+  },
+  "complexityTargetsSeconds": {
+    "A": [
+      3,
+      4.5
+    ],
+    "B": [
+      4,
+      6
+    ],
+    "C": [
+      5.5,
+      7.5
+    ],
+    "D": [
+      7,
+      9.5
+    ],
+    "E": [
+      8.5,
+      11
+    ]
+  },
+  "complexityFinalHardMaxSeconds": {
+    "A": 5.5,
+    "B": 7,
+    "C": 8.5,
+    "D": 10.5,
+    "E": 12
+  },
+  "complexityFinalShortReviewSeconds": {
+    "A": 2.5,
+    "B": 3,
+    "C": 4,
+    "D": 5,
+    "E": 6
+  },
+  "adaptivePacing": {
+    "hardMaximumExclusiveSeconds": 16,
+    "reviewFromSeconds": 9,
+    "strongSplitReviewFromSeconds": 11,
+    "reviewIfShorterThanSeconds": 2.5,
+    "targetAverageHoldSeconds": [
+      4.5,
+      7.5
+    ],
+    "oneImageOneVisualPurpose": true,
+    "imageCountMustFollowContentDensity": true,
+    "uniformHoldDistributionForbidden": true,
+    "moreImagesAllowedWhenNarrativelyUseful": true,
+    "fillerImagesForbidden": true
+  },
+  "endHoldPolicy": {
+    "lastImageMustRemainVisibleAfterLastWord": true,
+    "minimumSeconds": 1.2,
+    "targetSeconds": 1.3,
+    "maximumSeconds": 1.5,
+    "audioSilenceMustNotBeUsedAsSubstitute": true
+  },
+  "userFacingStructure": {
+    "googleFlowPrompt": "00-bildprompts/google-flow-prompt.txt",
+    "imageDirectory": "00-bildprompts/images",
+    "script": "01-voice-script/voice-script.txt",
+    "finalAudioPattern": "02-audio/voiceover-final.*",
+    "flowWaveSize": 5
+  },
+  "audioEndPolicy": {
+    "maxTrailingSilenceSeconds": 0.35,
+    "preserveAfterLastWordSeconds": 0.2,
+    "trimMasterAutomatically": true,
+    "neverModifyUserOriginal": true
+  },
+  "renderPolicy": {
+    "motionPolicy": "complexity-v1",
+    "soundPlanFile": "99-technik/YOUTUBE_RENDER_PLAN.json",
+    "backgroundMusic": false,
+    "endHoldSeconds": 1.3
+  },
+  "titleRequired": true,
+  "thumbnailRequired": true,
+  "topicDuplicateCheckRequired": true,
+  "folderRule": "youtube/<weekFolder>/<topicSlug>/",
+  "createdAt": "2026-10-08",
+  "updatedAt": "2026-10-08",
+  "thumbnailText": "EIN SCHIFF. WELTWEITER STAU.",
+  "scriptWordCount": 1041,
+  "complexityDistribution": {
+    "A": 1,
+    "B": 33,
+    "C": 17,
+    "D": 16,
+    "E": 0
+  },
+  "topicEditor": {
+    "version": 1,
+    "decision": "APPROVED_NEW",
+    "checkedBeforeProjectCreation": true,
+    "candidateTitle": "Suezkanal: Wie ein Schiff den Welthandel ausbremste"
+  },
+  "phase1Ready": true,
+  "imagesReady": false,
+  "audioReady": false,
+  "renderReady": false
+}

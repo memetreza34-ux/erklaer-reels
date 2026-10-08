@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "timingSource": "FINAL_TIMELINE.json",
+  "chapters": [
+    {
+      "imageNumber": 1,
+      "title": "Die Blockade beginnt"
+    },
+    {
+      "imageNumber": 9,
+      "title": "Warum der Suezkanal so wichtig ist"
+    },
+    {
+      "imageNumber": 16,
+      "title": "Wenn Lieferketten ins Stocken geraten"
+    },
+    {
+      "imageNumber": 27,
+      "title": "Der Bau des Suezkanals"
+    },
+    {
+      "imageNumber": 35,
+      "title": "Suezkrise und ägyptische Kontrolle"
+    },
+    {
+      "imageNumber": 40,
+      "title": "Acht Jahre ohne Durchfahrt"
+    },
+    {
+      "imageNumber": 45,
+      "title": "Wie die Ever Given stecken blieb"
+    },
+    {
+      "imageNumber": 51,
+      "title": "Die Befreiung"
+    },
+    {
+      "imageNumber": 58,
+      "title": "Die Gefahr bleibt"
+    }
+  ]
+}

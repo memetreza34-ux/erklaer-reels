@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "motionPolicy": "complexity-v1",
+  "backgroundMusic": false,
+  "defaultSoundVolume": 0.12,
+  "motionOverrides": [],
+  "soundEffects": [
+    {
+      "imageNumber": 1,
+      "type": "soft-impact",
+      "offsetSeconds": 0,
+      "volume": 0.11
+    },
+    {
+      "imageNumber": 2,
+      "type": "whoosh-down",
+      "offsetSeconds": -0.04,
+      "volume": 0.09
+    },
+    {
+      "imageNumber": 9,
+      "type": "swoosh-reveal",
+      "offsetSeconds": -0.04,
+      "volume": 0.09
+    },
+    {
+      "imageNumber": 16,
+      "type": "click",
+      "offsetSeconds": -0.04,
+      "volume": 0.11
+    },
+    {
+      "imageNumber": 27,
+      "type": "paper",
+      "offsetSeconds": -0.04,
+      "volume": 0.09
+    },
+    {
+      "imageNumber": 31,
+      "type": "swoosh-reveal",
+      "offsetSeconds": -0.04,
+      "volume": 0.09
+    },
+    {
+      "imageNumber": 35,
+      "type": "paper",
+      "offsetSeconds": -0.04,
+      "volume": 0.11
+    },
+    {
+      "imageNumber": 38,
+      "type": "soft-impact",
+      "offsetSeconds": -0.04,
+      "volume": 0.09
+    },
+    {
+      "imageNumber": 40,
+      "type": "whoosh-down",
+      "offsetSeconds": -0.04,
+      "volume": 0.09
+    },
+    {
+      "imageNumber": 45,
+      "type": "soft-impact",
+      "offsetSeconds": -0.04,
+      "volume": 0.11
+    },
+    {
+      "imageNumber": 51,
+      "type": "whoosh-up",
+      "offsetSeconds": -0.04,
+      "volume": 0.09
+    },
+    {
+      "imageNumber": 53,
+      "type": "soft-swipe",
+      "offsetSeconds": -0.04,
+      "volume": 0.09
+    },
+    {
+      "imageNumber": 58,
+      "type": "paper",
+      "offsetSeconds": -0.04,
+      "volume": 0.11
+    },
+    {
+      "imageNumber": 67,
+      "type": "soft-impact",
+      "offsetSeconds": -0.04,
+      "volume": 0.09
+    }
+  ]
+}
