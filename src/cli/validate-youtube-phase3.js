@@ -246,7 +246,10 @@ async function main() {
       try {
         const videoDuration = ffprobeDuration(rendered);
         const trailing = videoDuration - audioDuration;
-        if (trailing < 0.35 || trailing > 1.00) errors.push(`Post-Render-QC: Video endet ${trailing.toFixed(3)} s nach dem Voice-over. Erlaubt sind 0,35–1,00 s.`);
+        if (usesSeparateCover) {
+          const expectedHold = Number(meta.renderPolicy?.endHoldSeconds ?? 1.3);
+          if (Math.abs(trailing - expectedHold) > 0.30) errors.push(`Post-Render-QC: Video endet ${trailing.toFixed(3)} s nach dem Voice-over, erwartet ca. ${expectedHold.toFixed(2)} s End-Hold.`);
+        } else if (trailing < 0.35 || trailing > 1.00) errors.push(`Post-Render-QC: Video endet ${trailing.toFixed(3)} s nach dem Voice-over. Erlaubt sind 0,35–1,00 s.`);
       } catch (error) { errors.push(error.message); }
     }
 
