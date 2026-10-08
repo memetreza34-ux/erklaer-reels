@@ -18,7 +18,7 @@ function requireTrue(errors, value, label) {
   if (value !== true) errors.push(`${label} muss true sein.`);
 }
 
-function validateTopicAnchors(errors, prompt, plannedImageCount, { requireVisualForm = false } = {}) {
+function validateTopicAnchors(errors, prompt, plannedImageCount, { requireVisualForm = false, separateCover = false } = {}) {
   const count = Number(plannedImageCount);
   if (!Number.isInteger(count) || count < 1) {
     errors.push('Schema-12+: plannedImageCount muss vor Phase 2 als positive Ganzzahl feststehen.');
@@ -27,7 +27,7 @@ function validateTopicAnchors(errors, prompt, plannedImageCount, { requireVisual
 
   for (let imageNumber = 1; imageNumber <= count; imageNumber += 1) {
     const nn = String(imageNumber).padStart(2, '0');
-    const start = prompt.search(new RegExp(`(?:^|\\n)BILD\\s+${nn}\\b`, 'i'));
+    const start = prompt.search(new RegExp(separateCover ? `(?:^|\\n)BILD\\s+${nn}\\s*·` : `(?:^|\\n)BILD\\s+${nn}\\b`, 'i'));
     if (start < 0) {
       errors.push(`Topic Visual Relevance V1: Bild ${nn} fehlt im Masterprompt.`);
       continue;
@@ -232,7 +232,7 @@ async function main() {
       errors.push(`renderPolicy.endHoldSeconds muss zwischen ${policy.endHoldPolicy.minimumSeconds} und ${policy.endHoldPolicy.maximumSeconds} liegen.`);
     }
 
-    validateTopicAnchors(errors, prompt, meta.plannedImageCount, { requireVisualForm: usesVisualFlexibilityV1 });
+    validateTopicAnchors(errors, prompt, meta.plannedImageCount, { requireVisualForm: usesVisualFlexibilityV1, separateCover: Number(meta.coverPolicyVersion) >= 2 });
   }
 
   if (usesVisualFlexibilityV1) {
@@ -366,7 +366,7 @@ async function main() {
   for (const marker of requiredPromptMarkers) if (!prompt.includes(marker)) errors.push(`Masterprompt fehlt Pflichtmarker: ${marker}`);
   if (Number(meta.coverPolicyVersion) >= 2) {
     if (/Bild 01 is the cover AND the first video scene|Bild 01.*cover AND.*first video scene/i.test(prompt)) errors.push('Cover V2: Masterprompt enthält veraltete Cover-als-Szene-Anweisung.');
-    const firstBlock = prompt.match(/(?:^|\n)BILD 01\b[^\n]*\n[\s\S]*?(?=\nBILD 02\b|\n={10,}|$)/i)?.[0] || '';
+    const firstBlock = prompt.match(/(?:^|\n)BILD 01\s*·[^\n]*\n[\s\S]*?(?=\nBILD 02\s*·|\n={10,}|$)/i)?.[0] || '';
     if (/Cover\s*\+\s*erste Videoszene|Render only[^\n]*Cover|COVER HEADLINE/i.test(firstBlock)) errors.push('Cover V2: Bild 01 darf keine Cover-Überschrift enthalten.');
   }
 
@@ -428,7 +428,7 @@ async function main() {
   }
 
   const topicText = schema >= 8 ? ', Themen-Editor FREI' : '';
-  const assetText = schema >= 9 ? `, Asset Generation Policy V${policy.assetGenerationPolicyVersion}` : '';
+  const assetText = schema >= 9 ? `, Asset Generation Policy V${meta.assetGenerationPolicyVersion}` : '';
   const openingText = usesScriptOpeningV1 ? `, Script Opening V${policy.scriptOpeningPolicyVersion}` : '';
   const relevanceText = usesTopicVisualRelevanceV1
     ? `, Scene Illustration V${policy.sceneIllustrationPolicyVersion}, Topic Relevance V${policy.topicVisualRelevancePolicyVersion}, End Hold V${policy.endHoldPolicyVersion}`
@@ -439,7 +439,7 @@ async function main() {
     : schema === 9
       ? 'Serious-Minimal-Countryball V4 (Legacy Schema 9)'
       : `Legacy Visual Policy V${meta.visualPolicyVersion}`;
-  console.log(`YouTube Phase-1-Policy: BESTANDEN — ${visualLabel}${openingText}${relevanceText}${flexibilityText}, Cover Policy V${policy.coverPolicyVersion}${topicText}${assetText}, Kanalfokus und Session-Schutz sind aktiv.`);
+  console.log(`YouTube Phase-1-Policy: BESTANDEN — ${visualLabel}${openingText}${relevanceText}${flexibilityText}, Cover Policy V${meta.coverPolicyVersion}${topicText}${assetText}, Kanalfokus und Session-Schutz sind aktiv.`);
 }
 
 main().catch((error) => {

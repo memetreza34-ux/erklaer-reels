@@ -1,5 +1,8 @@
 import assert from 'node:assert/strict';
-import test from 'node:test';\nimport { mkdtemp, mkdir, readFile, readdir, writeFile, rm } from 'node:fs/promises';\nimport path from 'node:path';\nimport os from 'node:os';
+import test from 'node:test';
+import { mkdtemp, mkdir, readFile, readdir, writeFile, rm } from 'node:fs/promises';
+import path from 'node:path';
+import os from 'node:os';
 
 import {
   buildTimedTranscriptText,

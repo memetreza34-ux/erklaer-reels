@@ -350,7 +350,7 @@ Das COVER ist eine eigenständige Bildgenerierung, **keine Videoszene**:
 - Alle normalen Szenen **Bild 01–NN** je genau einmal generieren.
 - Bild 01 passend zum Hook, ohne Cover-Typografie.
 - Keine Varianten, keine manuellen Review-Stopps.
-- Maximal fünf gleichzeitige Bildgenerierungen.
+- maximal fünf aktive Bildgenerierungen gleichzeitig.
 
 ### FINAL IMAGE FOLDER HARD LOCK
 
