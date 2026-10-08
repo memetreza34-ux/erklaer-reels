@@ -17,7 +17,7 @@ FINAL IMAGE COUNT: 67 (determined by exact approved narrative, NOT a fixed quota
 ==================================================
 FIRST SCENE = COVER HARD LOCK
 ==================================================
-The first picture (Bild 01) is the cover AND the first video scene. It is at video time 0.0 and corresponds to the first spoken sentence about 23 March 2021. Overlay exactly: "EIN SCHIFF. WELTWEITER STAU.". YouTube thumbnail must be copied from Bild 01.png. No zero-numbered image. The thumbnail is taken from the first video picture only.
+The first picture (Bild 01) is the cover AND the first video scene. Bild 01 is the cover AND the first video scene. It is at video time 0.0 and corresponds to the first spoken sentence about 23 March 2021. Overlay exactly: "EIN SCHIFF. WELTWEITER STAU.". YouTube thumbnail must be copied from Bild 01.png. No zero-numbered image. The thumbnail is taken from the first video picture only.
 
 ==================================================
 COVER = 3 CANDIDATES HARD LOCK
