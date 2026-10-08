@@ -17,7 +17,7 @@ FINAL IMAGE COUNT: 67 (determined by exact approved narrative, NOT a fixed quota
 ==================================================
 FIRST SCENE = COVER HARD LOCK
 ==================================================
-Bild 01 is the cover AND the first video scene. It is at video time 0.0 and corresponds to the first spoken sentence about 23 March 2021. Overlay exactly: "EIN SCHIFF. WELTWEITER STAU.". YouTube thumbnail must be copied from Bild 01.png. No Bild 00 and no extra independent thumbnail.
+The first picture (Bild 01) is the cover AND the first video scene. It is at video time 0.0 and corresponds to the first spoken sentence about 23 March 2021. Overlay exactly: "EIN SCHIFF. WELTWEITER STAU.". YouTube thumbnail must be copied from Bild 01.png. No zero-numbered image. The thumbnail is taken from the first video picture only.
 
 ==================================================
 COVER = 3 CANDIDATES HARD LOCK
@@ -106,7 +106,7 @@ BILDPLAN — 67 SPRECHERGENAUE SCENES
 ==================================================
 
 BILD 01 · D · 4.7 s
-Audio Anchor: "Am 23 März 2021 fährt ein gewaltiges Containerschiff durch"
+Audio Anchor: "Am 23. März 2021 fährt ein gewaltiges Containerschiff durch"
 Spoken Line: "Am 23. März 2021 fährt ein gewaltiges Containerschiff durch den Suezkanal in Ägypten."
 Visual Purpose: Am 23. März 2021 fährt ein gewaltiges Containerschiff durch den Suezkanal in Ägypten.
 Topic Anchor: Wide aerial 2D illustration of a giant container ship navigating the narrow Egyptian Suez Canal surrounded by pale desert shores; dramatic daylight; distinct waterway bends. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -124,7 +124,7 @@ Composition Mode: intimate detail
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Top down oblique scene of container vessel Ever Given wedged diagonally across narrow canal, bow touching eastern sandy bank, stern toward western bank; clear blocked water path. Choose a visually appropriate full-scene rendered as a intimate detail with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. No visible text, no letters and no nonsense typography.
 
 BILD 03 · B · 5.1 s
-Audio Anchor: "Vor ihr liegt Wasser Hinter ihr liegt Wasser Trotzdem"
+Audio Anchor: "Vor ihr liegt Wasser. Hinter ihr liegt Wasser. Trotzdem"
 Spoken Line: "Vor ihr liegt Wasser. Hinter ihr liegt Wasser. Trotzdem kommt kein anderes Schiff vorbei."
 Visual Purpose: Vor ihr liegt Wasser. Hinter ihr liegt Wasser. Trotzdem kommt kein anderes Schiff vorbei.
 Topic Anchor: Clear overhead single-channel waterway diagram with one sideways enormous container ship across full passage and waiting ships on both sides, no unnecessary arrows. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -133,7 +133,7 @@ Composition Mode: overhead analysis
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Clear overhead single-channel waterway diagram with one sideways enormous container ship across full passage and waiting ships on both sides, no unnecessary arrows. Choose a visually appropriate map-only rendered as a overhead analysis with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. No visible text, no letters and no nonsense typography.
 
 BILD 04 · C · 5.5 s
-Audio Anchor: "Was wie eine einzelne Panne aussieht löst einen Stau"
+Audio Anchor: "Was wie eine einzelne Panne aussieht, löst einen Stau"
 Spoken Line: "Was wie eine einzelne Panne aussieht, löst einen Stau aus, der weit über Ägypten hinausreicht."
 Visual Purpose: Was wie eine einzelne Panne aussieht, löst einen Stau aus, der weit über Ägypten hinausreicht.
 Topic Anchor: Illustrated perspective expanding from grounded Suez ship in Egypt out toward distant European and Asian ports, connecting paths turn red at the bottleneck. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -142,7 +142,7 @@ Composition Mode: map close-up
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Illustrated perspective expanding from grounded Suez ship in Egypt out toward distant European and Asian ports, connecting paths turn red at the bottleneck. Choose a visually appropriate multi-element rendered as a map close-up with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. No visible text, no letters and no nonsense typography.
 
 BILD 05 · D · 5.1 s
-Audio Anchor: "Am Ende warten mehr als 400 Schiffe beladen mit"
+Audio Anchor: "Am Ende warten mehr als 400 Schiffe, beladen mit"
 Spoken Line: "Am Ende warten mehr als 400 Schiffe, beladen mit Waren für ganz unterschiedliche Länder."
 Visual Purpose: Am Ende warten mehr als 400 Schiffe, beladen mit Waren für ganz unterschiedliche Länder.
 Topic Anchor: Long perspective queue of varied cargo ships approaching Suez entrance, tightly staggered in the sea; one grounded ship visible far ahead, no humans. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -151,7 +151,7 @@ Composition Mode: diagonal journey
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Long perspective queue of varied cargo ships approaching Suez entrance, tightly staggered in the sea; one grounded ship visible far ahead, no humans. Choose a visually appropriate full-scene rendered as a diagonal journey with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. Render only the following German readable text, large and correctly spelled: "ÜBER 400 SCHIFFE". No extra words or letter-shapes.
 
 BILD 06 · D · 5.8 s
-Audio Anchor: "Sechs Tage lang bleibt dieser wichtige Weg blockiert bis"
+Audio Anchor: "Sechs Tage lang bleibt dieser wichtige Weg blockiert, bis"
 Spoken Line: "Sechs Tage lang bleibt dieser wichtige Weg blockiert, bis Schlepper und Bagger die Ever Given befreien."
 Visual Purpose: Sechs Tage lang bleibt dieser wichtige Weg blockiert, bis Schlepper und Bagger die Ever Given befreien.
 Topic Anchor: Salvage illustration: tugboats pulling vessel at different angles, dredging equipment removing sandy bank, ship beginning to float back toward canal center. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -160,7 +160,7 @@ Composition Mode: spatial cause and effect
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Salvage illustration: tugboats pulling vessel at different angles, dredging equipment removing sandy bank, ship beginning to float back toward canal center. Choose a visually appropriate full-scene rendered as a spatial cause and effect with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. Render only the following German readable text, large and correctly spelled: "6 TAGE". No extra words or letter-shapes.
 
 BILD 07 · B · 5.5 s
-Audio Anchor: "Der Welthandel hört deshalb nicht vollständig auf Aber viele"
+Audio Anchor: "Der Welthandel hört deshalb nicht vollständig auf. Aber viele"
 Spoken Line: "Der Welthandel hört deshalb nicht vollständig auf. Aber viele Lieferungen verlieren plötzlich ihren geplanten Zeitvorsprung."
 Visual Purpose: Der Welthandel hört deshalb nicht vollständig auf. Aber viele Lieferungen verlieren plötzlich ihren geplanten Zeitvorsprung.
 Topic Anchor: Side-by-side shipping schedule: efficient green route timeline suddenly delayed in orange because of a canal blockade, global ship paths still moving elsewhere. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -169,7 +169,7 @@ Composition Mode: hero object
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Side-by-side shipping schedule: efficient green route timeline suddenly delayed in orange because of a canal blockade, global ship paths still moving elsewhere. Choose a visually appropriate simple-schema rendered as a hero object with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. No visible text, no letters and no nonsense typography.
 
 BILD 08 · B · 5.5 s
-Audio Anchor: "Entscheidend ist die Frage warum ausgerechnet dieser schmale Wasserstreifen"
+Audio Anchor: "Entscheidend ist die Frage, warum ausgerechnet dieser schmale Wasserstreifen"
 Spoken Line: "Entscheidend ist die Frage, warum ausgerechnet dieser schmale Wasserstreifen so viel Macht über Transportwege besitzt."
 Visual Purpose: Entscheidend ist die Frage, warum ausgerechnet dieser schmale Wasserstreifen so viel Macht über Transportwege besitzt.
 Topic Anchor: Zoom from whole globe to tiny cut across Egyptian isthmus with bold spotlight at Suez linking Red Sea and Mediterranean, visually conveying leverage. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -187,7 +187,7 @@ Composition Mode: intimate detail
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Global map Europe Asia Africa with Mediterranean Red Sea and Cape of Good Hope highlighted, no countryballs or fake geography, precise coastlines. Choose a visually appropriate map-only rendered as a intimate detail with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. No visible text, no letters and no nonsense typography.
 
 BILD 10 · C · 6.5 s
-Audio Anchor: "Ein Schiff aus Asien will Waren nach Europa bringen"
+Audio Anchor: "Ein Schiff aus Asien will Waren nach Europa bringen."
 Spoken Line: "Ein Schiff aus Asien will Waren nach Europa bringen. Der direkte Seeweg führt zunächst durch den Indischen Ozean."
 Visual Purpose: Ein Schiff aus Asien will Waren nach Europa bringen. Der direkte Seeweg führt zunächst durch den Indischen Ozean.
 Topic Anchor: Sea route from East Asian shipping port across Indian Ocean toward Arabian Sea, bright blue directional route on accurate simplified map. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -196,7 +196,7 @@ Composition Mode: overhead analysis
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Sea route from East Asian shipping port across Indian Ocean toward Arabian Sea, bright blue directional route on accurate simplified map. Choose a visually appropriate map-only rendered as a overhead analysis with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. No visible text, no letters and no nonsense typography.
 
 BILD 11 · B · 5.1 s
-Audio Anchor: "Anschließend fährt es durch das Rote Meer durch den"
+Audio Anchor: "Anschließend fährt es durch das Rote Meer, durch den"
 Spoken Line: "Anschließend fährt es durch das Rote Meer, durch den Suezkanal und schließlich ins Mittelmeer."
 Visual Purpose: Anschließend fährt es durch das Rote Meer, durch den Suezkanal und schließlich ins Mittelmeer.
 Topic Anchor: Focused accurate route from Gulf of Aden north through Red Sea Suez Canal Mediterranean toward European harbor, clean flowing cyan navigation line. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -214,7 +214,7 @@ Composition Mode: diagonal journey
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Comparative maritime route traced around south tip of Africa versus short Suez route, orange long path vs cyan short path, legible geographic proportions. Choose a visually appropriate map-only rendered as a diagonal journey with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. No visible text, no letters and no nonsense typography.
 
 BILD 13 · B · 5.8 s
-Audio Anchor: "Diese Ausweichroute führt am Kap der Guten Hoffnung vorbei"
+Audio Anchor: "Diese Ausweichroute führt am Kap der Guten Hoffnung vorbei."
 Spoken Line: "Diese Ausweichroute führt am Kap der Guten Hoffnung vorbei. Sie kostet je nach Strecke zusätzliche Tage."
 Visual Purpose: Diese Ausweichroute führt am Kap der Guten Hoffnung vorbei. Sie kostet je nach Strecke zusätzliche Tage.
 Topic Anchor: Detailed southern Africa map marking Cape of Good Hope, freight ship offshore and longer curved orange shipping lane along western African coast. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -232,7 +232,7 @@ Composition Mode: hero object
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: World map emphasizing Shenzhen-to-Rotterdam maritime voyage alternatives; clean two timeline tracks labeled 31 and 41 days, separated visually. Choose a visually appropriate map-only rendered as a hero object with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. Render only the following German readable text, large and correctly spelled: "31 ODER 41 TAGE". No extra words or letter-shapes.
 
 BILD 15 · C · 5.5 s
-Audio Anchor: "Der Suezkanal ist also keine Abkürzung auf einer Landkarte"
+Audio Anchor: "Der Suezkanal ist also keine Abkürzung auf einer Landkarte,"
 Spoken Line: "Der Suezkanal ist also keine Abkürzung auf einer Landkarte, sondern eine Abkürzung für ganze Lieferketten."
 Visual Purpose: Der Suezkanal ist also keine Abkürzung auf einer Landkarte, sondern eine Abkürzung für ganze Lieferketten.
 Topic Anchor: Single cargo container moving from Asian port to European factory through interconnected maritime route, canal highlighted as shortest link in chain. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -241,7 +241,7 @@ Composition Mode: wide panorama
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Single cargo container moving from Asian port to European factory through interconnected maritime route, canal highlighted as shortest link in chain. Choose a visually appropriate multi-element rendered as a wide panorama with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. No visible text, no letters and no nonsense typography.
 
 BILD 16 · D · 6.2 s
-Audio Anchor: "Ein Hafen kann Schiffe entladen Eine Fabrik kann ihre"
+Audio Anchor: "Ein Hafen kann Schiffe entladen. Eine Fabrik kann ihre"
 Spoken Line: "Ein Hafen kann Schiffe entladen. Eine Fabrik kann ihre Bauteile aber erst nutzen, wenn sie tatsächlich ankommen."
 Visual Purpose: Ein Hafen kann Schiffe entladen. Eine Fabrik kann ihre Bauteile aber erst nutzen, wenn sie tatsächlich ankommen.
 Topic Anchor: Port cranes unloading containers linked via rail to an illustrated car factory in Europe, absent components visualized as an empty marked pallet. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -250,7 +250,7 @@ Composition Mode: intimate detail
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Port cranes unloading containers linked via rail to an illustrated car factory in Europe, absent components visualized as an empty marked pallet. Choose a visually appropriate full-scene rendered as a intimate detail with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. No visible text, no letters and no nonsense typography.
 
 BILD 17 · C · 4.7 s
-Audio Anchor: "Kommt eine Lieferung verspätet muss die Produktion womöglich warten"
+Audio Anchor: "Kommt eine Lieferung verspätet, muss die Produktion womöglich warten"
 Spoken Line: "Kommt eine Lieferung verspätet, muss die Produktion womöglich warten oder teurere Ersatztransporte organisieren."
 Visual Purpose: Kommt eine Lieferung verspätet, muss die Produktion womöglich warten oder teurere Ersatztransporte organisieren.
 Topic Anchor: Cause and effect composition: late shipping container at left, stalled car factory conveyor at right, simple clear dotted connection, no human actors. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -259,7 +259,7 @@ Composition Mode: overhead analysis
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Cause and effect composition: late shipping container at left, stalled car factory conveyor at right, simple clear dotted connection, no human actors. Choose a visually appropriate cause-effect rendered as a overhead analysis with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. No visible text, no letters and no nonsense typography.
 
 BILD 18 · C · 5.5 s
-Audio Anchor: "Auch im Handel entstehen Probleme weil Lager und Verkaufstermine"
+Audio Anchor: "Auch im Handel entstehen Probleme, weil Lager und Verkaufstermine"
 Spoken Line: "Auch im Handel entstehen Probleme, weil Lager und Verkaufstermine längst auf geplante Ankünfte abgestimmt sind."
 Visual Purpose: Auch im Handel entstehen Probleme, weil Lager und Verkaufstermine längst auf geplante Ankünfte abgestimmt sind.
 Topic Anchor: Warehouse shelves with empty reserved slots, cargo manifest calendar, distant shipping containers waiting on harbor quay, all integrated in one perspective. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -268,7 +268,7 @@ Composition Mode: map close-up
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Warehouse shelves with empty reserved slots, cargo manifest calendar, distant shipping containers waiting on harbor quay, all integrated in one perspective. Choose a visually appropriate multi-element rendered as a map close-up with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. No visible text, no letters and no nonsense typography.
 
 BILD 19 · B · 5.8 s
-Audio Anchor: "Und wenn ein Schiff länger unterwegs ist fallen häufig"
+Audio Anchor: "Und wenn ein Schiff länger unterwegs ist, fallen häufig"
 Spoken Line: "Und wenn ein Schiff länger unterwegs ist, fallen häufig höhere Kosten für Treibstoff und Betrieb an."
 Visual Purpose: Und wenn ein Schiff länger unterwegs ist, fallen häufig höhere Kosten für Treibstoff und Betrieb an.
 Topic Anchor: Large merchant ship sailing along long curved course with visible fuel tank gauge and rising distance line, no unrelated price icons. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -277,7 +277,7 @@ Composition Mode: diagonal journey
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Large merchant ship sailing along long curved course with visible fuel tank gauge and rising distance line, no unrelated price icons. Choose a visually appropriate object-only rendered as a diagonal journey with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. No visible text, no letters and no nonsense typography.
 
 BILD 20 · C · 5.1 s
-Audio Anchor: "Diese Mehrkosten treffen zunächst Reedereien und Unternehmen können aber"
+Audio Anchor: "Diese Mehrkosten treffen zunächst Reedereien und Unternehmen, können aber"
 Spoken Line: "Diese Mehrkosten treffen zunächst Reedereien und Unternehmen, können aber später auch bei Kunden ankommen."
 Visual Purpose: Diese Mehrkosten treffen zunächst Reedereien und Unternehmen, können aber später auch bei Kunden ankommen.
 Topic Anchor: Stacked clear chain from ship operating costs to product supply chain invoice to shelf price, minimalist physically linked objects rather than icon collage. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -286,7 +286,7 @@ Composition Mode: spatial cause and effect
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Stacked clear chain from ship operating costs to product supply chain invoice to shelf price, minimalist physically linked objects rather than icon collage. Choose a visually appropriate cause-effect rendered as a spatial cause and effect with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. No visible text, no letters and no nonsense typography.
 
 BILD 21 · B · 6.2 s
-Audio Anchor: "Das bedeutet nicht dass durch jeden Stau sofort alle"
+Audio Anchor: "Das bedeutet nicht, dass durch jeden Stau sofort alle"
 Spoken Line: "Das bedeutet nicht, dass durch jeden Stau sofort alle Preise steigen. Entscheidend sind Ware, Nachfrage und Dauer."
 Visual Purpose: Das bedeutet nicht, dass durch jeden Stau sofort alle Preise steigen. Entscheidend sind Ware, Nachfrage und Dauer.
 Topic Anchor: Comparative two product shipments: one unaffected with stocked warehouse and one delayed with supply shortage; nuanced different outcomes, no sweeping global price claim. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -295,7 +295,7 @@ Composition Mode: hero object
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Comparative two product shipments: one unaffected with stocked warehouse and one delayed with supply shortage; nuanced different outcomes, no sweeping global price claim. Choose a visually appropriate simple-schema rendered as a hero object with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. No visible text, no letters and no nonsense typography.
 
 BILD 22 · B · 5.8 s
-Audio Anchor: "Trotzdem zeigt die Blockade wie verletzlich ein System wird"
+Audio Anchor: "Trotzdem zeigt die Blockade, wie verletzlich ein System wird,"
 Spoken Line: "Trotzdem zeigt die Blockade, wie verletzlich ein System wird, wenn sehr viele Transporte dieselbe Engstelle nutzen."
 Visual Purpose: Trotzdem zeigt die Blockade, wie verletzlich ein System wird, wenn sehr viele Transporte dieselbe Engstelle nutzen.
 Topic Anchor: Multiple Asia-Europe shipping paths converge to a single tight Suez canal chokepoint, thin routes crowding one narrow passage. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -304,7 +304,7 @@ Composition Mode: wide panorama
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Multiple Asia-Europe shipping paths converge to a single tight Suez canal chokepoint, thin routes crowding one narrow passage. Choose a visually appropriate map-only rendered as a wide panorama with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. Render only the following German readable text, large and correctly spelled: "ENGSTELLE". No extra words or letter-shapes.
 
 BILD 23 · B · 5.8 s
-Audio Anchor: "Solche Stellen heißen in der Schifffahrt Engpässe Ihre Bedeutung"
+Audio Anchor: "Solche Stellen heißen in der Schifffahrt Engpässe. Ihre Bedeutung"
 Spoken Line: "Solche Stellen heißen in der Schifffahrt Engpässe. Ihre Bedeutung entsteht nicht durch Größe, sondern durch Lage."
 Visual Purpose: Solche Stellen heißen in der Schifffahrt Engpässe. Ihre Bedeutung entsteht nicht durch Größe, sondern durch Lage.
 Topic Anchor: Accurate world map marking Suez choke, Strait of Gibraltar and Strait of Malacca as examples without claims of equal vulnerability, Suez spotlight dominates. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -322,7 +322,7 @@ Composition Mode: overhead analysis
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: One balanced bar representing approximate global trade 2023, highlighted modest 12-15 percent channel share with non-misleading remainder, maritime canal silhouette. Choose a visually appropriate simple-schema rendered as a overhead analysis with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. Render only the following German readable text, large and correctly spelled: "12–15 % (2023)". No extra words or letter-shapes.
 
 BILD 25 · B · 5.5 s
-Audio Anchor: "Das ist ein Anteil aus einem bestimmten Jahr keine"
+Audio Anchor: "Das ist ein Anteil aus einem bestimmten Jahr, keine"
 Spoken Line: "Das ist ein Anteil aus einem bestimmten Jahr, keine unveränderliche Zahl für jede spätere Krise."
 Visual Purpose: Das ist ein Anteil aus einem bestimmten Jahr, keine unveränderliche Zahl für jede spätere Krise.
 Topic Anchor: Two clear year-specific shipping flow bars, 2023 reference emphasized and later variability indicated without fabricated newer percentages. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -331,7 +331,7 @@ Composition Mode: map close-up
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Two clear year-specific shipping flow bars, 2023 reference emphasized and later variability indicated without fabricated newer percentages. Choose a visually appropriate simple-schema rendered as a map close-up with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. Render only the following German readable text, large and correctly spelled: "2023". No extra words or letter-shapes.
 
 BILD 26 · B · 5.8 s
-Audio Anchor: "Damit wird klar Ein blockierter Kanal stört vor allem"
+Audio Anchor: "Damit wird klar: Ein blockierter Kanal stört vor allem"
 Spoken Line: "Damit wird klar: Ein blockierter Kanal stört vor allem bestimmte Handelsrouten, kann ihre Folgen aber weitergeben."
 Visual Purpose: Damit wird klar: Ein blockierter Kanal stört vor allem bestimmte Handelsrouten, kann ihre Folgen aber weitergeben.
 Topic Anchor: Map with thicker impact lines on Asia-Europe maritime lane, thinner secondary links toward European logistics hubs, no claim of all trade stopped. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -340,7 +340,7 @@ Composition Mode: diagonal journey
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Map with thicker impact lines on Asia-Europe maritime lane, thinner secondary links toward European logistics hubs, no claim of all trade stopped. Choose a visually appropriate map-only rendered as a diagonal journey with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. No visible text, no letters and no nonsense typography.
 
 BILD 27 · B · 5.1 s
-Audio Anchor: "Warum wurde dieser kritische Weg überhaupt gebaut Die Antwort"
+Audio Anchor: "Warum wurde dieser kritische Weg überhaupt gebaut? Die Antwort"
 Spoken Line: "Warum wurde dieser kritische Weg überhaupt gebaut? Die Antwort führt zurück ins neunzehnte Jahrhundert."
 Visual Purpose: Warum wurde dieser kritische Weg überhaupt gebaut? Die Antwort führt zurück ins neunzehnte Jahrhundert.
 Topic Anchor: Antique 19th-century Egyptian survey map unfurled flat with proposed north-south water cut across Isthmus of Suez, historical paper design. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -367,7 +367,7 @@ Composition Mode: wide panorama
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Egyptian isthmus map before construction, dotted proposed manmade connection between Mediterranean and Red Sea, side note ports without fake topography. Choose a visually appropriate map-only rendered as a wide panorama with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. No visible text, no letters and no nonsense typography.
 
 BILD 30 · D · 5.1 s
-Audio Anchor: "1859 begannen die Bauarbeiten Für viele ägyptische Arbeiter waren"
+Audio Anchor: "1859 begannen die Bauarbeiten. Für viele ägyptische Arbeiter waren"
 Spoken Line: "1859 begannen die Bauarbeiten. Für viele ägyptische Arbeiter waren die Bedingungen schwer und gefährlich."
 Visual Purpose: 1859 begannen die Bauarbeiten. Für viele ägyptische Arbeiter waren die Bedingungen schwer und gefährlich.
 Topic Anchor: Historical earthworks canal cutting scene without human figures: excavated sand banks, primitive digging equipment, harsh desert conditions, abandoned tools only. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -376,7 +376,7 @@ Composition Mode: intimate detail
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Historical earthworks canal cutting scene without human figures: excavated sand banks, primitive digging equipment, harsh desert conditions, abandoned tools only. Choose a visually appropriate full-scene rendered as a intimate detail with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. Render only the following German readable text, large and correctly spelled: "1859". No extra words or letter-shapes.
 
 BILD 31 · B · 5.8 s
-Audio Anchor: "Am 17 November 1869 wurde der Suezkanal eröffnet Die"
+Audio Anchor: "Am 17. November 1869 wurde der Suezkanal eröffnet. Die"
 Spoken Line: "Am 17. November 1869 wurde der Suezkanal eröffnet. Die Verbindung veränderte Handelswege zwischen Europa und Asien."
 Visual Purpose: Am 17. November 1869 wurde der Suezkanal eröffnet. Die Verbindung veränderte Handelswege zwischen Europa und Asien.
 Topic Anchor: Timeline map opening in 1869, Mediterranean and Red Sea newly connected by bright straight canal water corridor, ship silhouettes appear. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -385,7 +385,7 @@ Composition Mode: overhead analysis
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Timeline map opening in 1869, Mediterranean and Red Sea newly connected by bright straight canal water corridor, ship silhouettes appear. Choose a visually appropriate map-only rendered as a overhead analysis with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. Render only the following German readable text, large and correctly spelled: "1869". No extra words or letter-shapes.
 
 BILD 32 · B · 6.2 s
-Audio Anchor: "Doch die Frage war von Anfang an politisch Wer"
+Audio Anchor: "Doch die Frage war von Anfang an politisch: Wer"
 Spoken Line: "Doch die Frage war von Anfang an politisch: Wer bestimmt über die Verbindung und über ihre Einnahmen?"
 Visual Purpose: Doch die Frage war von Anfang an politisch: Wer bestimmt über die Verbindung und über ihre Einnahmen?
 Topic Anchor: Historical concession papers and canal company share certificates next to detailed Egyptian canal map, stakes over control, all labels German. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -403,7 +403,7 @@ Composition Mode: diagonal journey
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Nineteenth-century Suez Canal Company document, paired British and French stakeholder seals and Egyptian territory map, careful ownership nuance. Choose a visually appropriate document-only rendered as a diagonal journey with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. Render only the following German readable text, large and correctly spelled: "KANALGESELLSCHAFT". No extra words or letter-shapes.
 
 BILD 34 · B · 5.8 s
-Audio Anchor: "Der Kanal lag jedoch auf ägyptischem Gebiet Genau dieser"
+Audio Anchor: "Der Kanal lag jedoch auf ägyptischem Gebiet. Genau dieser"
 Spoken Line: "Der Kanal lag jedoch auf ägyptischem Gebiet. Genau dieser Gegensatz wurde später zu einem großen Konflikt."
 Visual Purpose: Der Kanal lag jedoch auf ägyptischem Gebiet. Genau dieser Gegensatz wurde später zu einem großen Konflikt.
 Topic Anchor: Egypt country silhouette and canal bright cyan inside its borders while external concession paperwork overlaps at edge; territorial-versus-commercial contrast. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -412,7 +412,7 @@ Composition Mode: spatial cause and effect
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Egypt country silhouette and canal bright cyan inside its borders while external concession paperwork overlaps at edge; territorial-versus-commercial contrast. Choose a visually appropriate map-only rendered as a spatial cause and effect with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. Render only the following German readable text, large and correctly spelled: "ÄGYPTEN". No extra words or letter-shapes.
 
 BILD 35 · A · 4.0 s
-Audio Anchor: "Am 26 Juli 1956 verstaatlichte Präsident Gamal Abdel Nasser"
+Audio Anchor: "Am 26. Juli 1956 verstaatlichte Präsident Gamal Abdel Nasser"
 Spoken Line: "Am 26. Juli 1956 verstaatlichte Präsident Gamal Abdel Nasser die Kanalgesellschaft."
 Visual Purpose: Am 26. Juli 1956 verstaatlichte Präsident Gamal Abdel Nasser die Kanalgesellschaft.
 Topic Anchor: Egyptian nationalization decree on 1956 period paper and map of Suez, one clear large date and Egypt flag as national authority symbol. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -421,7 +421,7 @@ Composition Mode: hero object
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Egyptian nationalization decree on 1956 period paper and map of Suez, one clear large date and Egypt flag as national authority symbol. Choose a visually appropriate document-only rendered as a hero object with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. Render only the following German readable text, large and correctly spelled: "26. JULI 1956". No extra words or letter-shapes.
 
 BILD 36 · C · 5.8 s
-Audio Anchor: "Damit sollte die Kontrolle bei Ägypten liegen Zugleich wollte"
+Audio Anchor: "Damit sollte die Kontrolle bei Ägypten liegen. Zugleich wollte"
 Spoken Line: "Damit sollte die Kontrolle bei Ägypten liegen. Zugleich wollte Nasser die Einnahmen für eigene Entwicklungsprojekte nutzen."
 Visual Purpose: Damit sollte die Kontrolle bei Ägypten liegen. Zugleich wollte Nasser die Einnahmen für eigene Entwicklungsprojekte nutzen.
 Topic Anchor: Canal toll ship passage money flows toward Egyptian dam construction blueprint in period illustration, historical strategy without showing people. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -439,7 +439,7 @@ Composition Mode: intimate detail
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Three symbolic countryball governments Britain France and Egypt facing canal-shaped strategic map, clear serious tensions no caricature. Choose a visually appropriate multi-element rendered as a intimate detail with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. No visible text, no letters and no nonsense typography.
 
 BILD 38 · B · 5.5 s
-Audio Anchor: "Noch 1956 griff Israel Ägypten an Großbritannien und Frankreich"
+Audio Anchor: "Noch 1956 griff Israel Ägypten an. Großbritannien und Frankreich"
 Spoken Line: "Noch 1956 griff Israel Ägypten an. Großbritannien und Frankreich intervenierten militärisch; die Suezkrise wurde international."
 Visual Purpose: Noch 1956 griff Israel Ägypten an. Großbritannien und Frankreich intervenierten militärisch; die Suezkrise wurde international.
 Topic Anchor: Geopolitical map Egypt Sinai Israel Mediterranean with period arrows for 1956 military conflict, restrained non-graphic war geography and distinct dates. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -448,7 +448,7 @@ Composition Mode: overhead analysis
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Geopolitical map Egypt Sinai Israel Mediterranean with period arrows for 1956 military conflict, restrained non-graphic war geography and distinct dates. Choose a visually appropriate map-only rendered as a overhead analysis with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. Render only the following German readable text, large and correctly spelled: "SUEZKRISE 1956". No extra words or letter-shapes.
 
 BILD 39 · B · 4.7 s
-Audio Anchor: "Unter internationalem Druck mussten die Angreifer schließlich abziehen Der"
+Audio Anchor: "Unter internationalem Druck mussten die Angreifer schließlich abziehen. Der"
 Spoken Line: "Unter internationalem Druck mussten die Angreifer schließlich abziehen. Der Kanal blieb politisch hochsensibel."
 Visual Purpose: Unter internationalem Druck mussten die Angreifer schließlich abziehen. Der Kanal blieb politisch hochsensibel.
 Topic Anchor: Same regional map after intervention with military movement arrows retracting from canal, Egyptian jurisdiction shown clearly, avoid simplistic victory symbolism. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -457,7 +457,7 @@ Composition Mode: map close-up
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Same regional map after intervention with military movement arrows retracting from canal, Egyptian jurisdiction shown clearly, avoid simplistic victory symbolism. Choose a visually appropriate map-only rendered as a map close-up with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. No visible text, no letters and no nonsense typography.
 
 BILD 40 · B · 5.8 s
-Audio Anchor: "Ein paar Jahrzehnte später zeigte sich erneut wie eng"
+Audio Anchor: "Ein paar Jahrzehnte später zeigte sich erneut, wie eng"
 Spoken Line: "Ein paar Jahrzehnte später zeigte sich erneut, wie eng Handel und Krieg hier miteinander verbunden sind."
 Visual Purpose: Ein paar Jahrzehnte später zeigte sich erneut, wie eng Handel und Krieg hier miteinander verbunden sind.
 Topic Anchor: Timeline bridge from 1956 crisis to later closure in 1967, canal highlighted at both markers, spare illustration. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -475,7 +475,7 @@ Composition Mode: spatial cause and effect
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Canal map with red closure barrier from 1967 to 1975, reopening gate in final year, accurate Egyptian geography. Choose a visually appropriate map-only rendered as a spatial cause and effect with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. Render only the following German readable text, large and correctly spelled: "1967–1975". No extra words or letter-shapes.
 
 BILD 42 · B · 5.8 s
-Audio Anchor: "Acht Jahre ohne Durchfahrt machten sichtbar Die Welt kann"
+Audio Anchor: "Acht Jahre ohne Durchfahrt machten sichtbar: Die Welt kann"
 Spoken Line: "Acht Jahre ohne Durchfahrt machten sichtbar: Die Welt kann ausweichen, doch sie bezahlt mit langen Umwegen."
 Visual Purpose: Acht Jahre ohne Durchfahrt machten sichtbar: Die Welt kann ausweichen, doch sie bezahlt mit langen Umwegen.
 Topic Anchor: Wide route around Africa illuminated during 1967-1975 canal shutdown, winding orange line adds distance compared to blocked Suez. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -484,7 +484,7 @@ Composition Mode: hero object
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Wide route around Africa illuminated during 1967-1975 canal shutdown, winding orange line adds distance compared to blocked Suez. Choose a visually appropriate map-only rendered as a hero object with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. No visible text, no letters and no nonsense typography.
 
 BILD 43 · D · 4.7 s
-Audio Anchor: "Trotz dieser Erfahrungen wurde der Kanal weiter ausgebaut denn"
+Audio Anchor: "Trotz dieser Erfahrungen wurde der Kanal weiter ausgebaut, denn"
 Spoken Line: "Trotz dieser Erfahrungen wurde der Kanal weiter ausgebaut, denn der internationale Schiffsverkehr wuchs."
 Visual Purpose: Trotz dieser Erfahrungen wurde der Kanal weiter ausgebaut, denn der internationale Schiffsverkehr wuchs.
 Topic Anchor: Panorama of modern enlarged Suez Canal with parallel bypass and modern container ships; clear contrast of expanding capacity, not full dual carriageway. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -493,7 +493,7 @@ Composition Mode: wide panorama
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Panorama of modern enlarged Suez Canal with parallel bypass and modern container ships; clear contrast of expanding capacity, not full dual carriageway. Choose a visually appropriate full-scene rendered as a wide panorama with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. No visible text, no letters and no nonsense typography.
 
 BILD 44 · D · 6.2 s
-Audio Anchor: "Und die Schiffe selbst wurden immer größer Mehr Ladung"
+Audio Anchor: "Und die Schiffe selbst wurden immer größer. Mehr Ladung"
 Spoken Line: "Und die Schiffe selbst wurden immer größer. Mehr Ladung pro Fahrt spart Kosten, verlangt aber passende Wasserwege."
 Visual Purpose: Und die Schiffe selbst wurden immer größer. Mehr Ladung pro Fahrt spart Kosten, verlangt aber passende Wasserwege.
 Topic Anchor: Size comparison of early container vessel and huge modern container ship inside channel outline, clear horizontal scale not arbitrary percentages. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -502,7 +502,7 @@ Composition Mode: intimate detail
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Size comparison of early container vessel and huge modern container ship inside channel outline, clear horizontal scale not arbitrary percentages. Choose a visually appropriate full-scene rendered as a intimate detail with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. No visible text, no letters and no nonsense typography.
 
 BILD 45 · D · 7.3 s
-Audio Anchor: "Damit sind wir wieder im März 2021 Die Ever"
+Audio Anchor: "Damit sind wir wieder im März 2021. Die Ever"
 Spoken Line: "Damit sind wir wieder im März 2021. Die Ever Given ist rund 400 Meter lang, fast wie ein schwimmendes Gebäude."
 Visual Purpose: Damit sind wir wieder im März 2021. Die Ever Given ist rund 400 Meter lang, fast wie ein schwimmendes Gebäude.
 Topic Anchor: Huge 400-meter container ship shown in profile across Egyptian canal bank with simple recognizable distance ruler, no human-scale figures. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -511,7 +511,7 @@ Composition Mode: overhead analysis
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Huge 400-meter container ship shown in profile across Egyptian canal bank with simple recognizable distance ruler, no human-scale figures. Choose a visually appropriate full-scene rendered as a overhead analysis with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. Render only the following German readable text, large and correctly spelled: "400 METER". No extra words or letter-shapes.
 
 BILD 46 · D · 5.5 s
-Audio Anchor: "Bei ihrer Durchfahrt gerät sie seitlich aus der Spur"
+Audio Anchor: "Bei ihrer Durchfahrt gerät sie seitlich aus der Spur."
 Spoken Line: "Bei ihrer Durchfahrt gerät sie seitlich aus der Spur. Starker Wind spielte dabei eine Rolle."
 Visual Purpose: Bei ihrer Durchfahrt gerät sie seitlich aus der Spur. Starker Wind spielte dabei eine Rolle.
 Topic Anchor: Suez canal crosswind illustration with huge ship turning off center, sandy air gusts and diagonal motion arrows in flat 2D, no definitive sole cause. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -520,7 +520,7 @@ Composition Mode: map close-up
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Suez canal crosswind illustration with huge ship turning off center, sandy air gusts and diagonal motion arrows in flat 2D, no definitive sole cause. Choose a visually appropriate full-scene rendered as a map close-up with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. No visible text, no letters and no nonsense typography.
 
 BILD 47 · C · 6.5 s
-Audio Anchor: "Warum die Havarie genau geschah wurde später untersucht Sie"
+Audio Anchor: "Warum die Havarie genau geschah, wurde später untersucht. Sie"
 Spoken Line: "Warum die Havarie genau geschah, wurde später untersucht. Sie lässt sich nicht seriös auf einen einzigen Faktor reduzieren."
 Visual Purpose: Warum die Havarie genau geschah, wurde später untersucht. Sie lässt sich nicht seriös auf einen einzigen Faktor reduzieren.
 Topic Anchor: Nautical investigation document beside crosswind weather diagram and ship steering rudder, multiple possible contributing conditions, no final unproven blame. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -529,7 +529,7 @@ Composition Mode: diagonal journey
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Nautical investigation document beside crosswind weather diagram and ship steering rudder, multiple possible contributing conditions, no final unproven blame. Choose a visually appropriate simple-schema rendered as a diagonal journey with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. No visible text, no letters and no nonsense typography.
 
 BILD 48 · C · 6.5 s
-Audio Anchor: "An dieser Stelle ist der Kanal so eng dass"
+Audio Anchor: "An dieser Stelle ist der Kanal so eng, dass"
 Spoken Line: "An dieser Stelle ist der Kanal so eng, dass das querliegende Schiff den Verkehr in beide Richtungen blockiert."
 Visual Purpose: An dieser Stelle ist der Kanal so eng, dass das querliegende Schiff den Verkehr in beide Richtungen blockiert.
 Topic Anchor: Precise top-down Suez southern single-lane cross-section with diagonally stuck Ever Given closing passage both directions, clear water margins. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -538,7 +538,7 @@ Composition Mode: spatial cause and effect
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Precise top-down Suez southern single-lane cross-section with diagonally stuck Ever Given closing passage both directions, clear water margins. Choose a visually appropriate map-only rendered as a spatial cause and effect with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. No visible text, no letters and no nonsense typography.
 
 BILD 49 · B · 5.5 s
-Audio Anchor: "Für wartende Kapitäne gibt es zwei schlechte Möglichkeiten bleiben"
+Audio Anchor: "Für wartende Kapitäne gibt es zwei schlechte Möglichkeiten: bleiben"
 Spoken Line: "Für wartende Kapitäne gibt es zwei schlechte Möglichkeiten: bleiben oder einen sehr langen Umweg beginnen."
 Visual Purpose: Für wartende Kapitäne gibt es zwei schlechte Möglichkeiten: bleiben oder einen sehr langen Umweg beginnen.
 Topic Anchor: Two diverging shipping plans from port: anchored waiting freighters at Suez and rerouted container vessel around Africa, strong clear fork. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -547,7 +547,7 @@ Composition Mode: hero object
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Two diverging shipping plans from port: anchored waiting freighters at Suez and rerouted container vessel around Africa, strong clear fork. Choose a visually appropriate before-after rendered as a hero object with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. Render only the following German readable text, large and correctly spelled: "WARTEN ODER UMWEG". No extra words or letter-shapes.
 
 BILD 50 · D · 5.8 s
-Audio Anchor: "Viele warten zunächst Schließlich ist eine tagelange Fahrt um"
+Audio Anchor: "Viele warten zunächst. Schließlich ist eine tagelange Fahrt um"
 Spoken Line: "Viele warten zunächst. Schließlich ist eine tagelange Fahrt um Afrika ebenfalls teuer und bindet ihre Schiffe."
 Visual Purpose: Viele warten zunächst. Schließlich ist eine tagelange Fahrt um Afrika ebenfalls teuer und bindet ihre Schiffe.
 Topic Anchor: Anchored fleet of freight ships in Red Sea roadstead, stationary anchor symbols connected to calendar page, calm maritime scene. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -556,7 +556,7 @@ Composition Mode: wide panorama
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Anchored fleet of freight ships in Red Sea roadstead, stationary anchor symbols connected to calendar page, calm maritime scene. Choose a visually appropriate full-scene rendered as a wide panorama with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. No visible text, no letters and no nonsense typography.
 
 BILD 51 · D · 5.8 s
-Audio Anchor: "Gleichzeitig versuchen Spezialisten die Ever Given wieder in die"
+Audio Anchor: "Gleichzeitig versuchen Spezialisten, die Ever Given wieder in die"
 Spoken Line: "Gleichzeitig versuchen Spezialisten, die Ever Given wieder in die Fahrrinne zu bewegen. Schlepper ziehen am Rumpf."
 Visual Purpose: Gleichzeitig versuchen Spezialisten, die Ever Given wieder in die Fahrrinne zu bewegen. Schlepper ziehen am Rumpf.
 Topic Anchor: Close overhead salvage tugboats attached at ship stern and bow, pulling vectors safely away from sand banks, no human figures. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -565,7 +565,7 @@ Composition Mode: intimate detail
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Close overhead salvage tugboats attached at ship stern and bow, pulling vectors safely away from sand banks, no human figures. Choose a visually appropriate full-scene rendered as a intimate detail with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. No visible text, no letters and no nonsense typography.
 
 BILD 52 · D · 5.5 s
-Audio Anchor: "Bagger entfernen Sand der den Bug festhält Wasserstand und"
+Audio Anchor: "Bagger entfernen Sand, der den Bug festhält. Wasserstand und"
 Spoken Line: "Bagger entfernen Sand, der den Bug festhält. Wasserstand und Gezeiten helfen bei der Befreiung mit."
 Visual Purpose: Bagger entfernen Sand, der den Bug festhält. Wasserstand und Gezeiten helfen bei der Befreiung mit.
 Topic Anchor: Cutaway shore-level salvage of stuck ship bow, dredger excavating sand and clean rising tide water line, explanatory detail without worker silhouettes. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -574,7 +574,7 @@ Composition Mode: overhead analysis
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Cutaway shore-level salvage of stuck ship bow, dredger excavating sand and clean rising tide water line, explanatory detail without worker silhouettes. Choose a visually appropriate full-scene rendered as a overhead analysis with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. No visible text, no letters and no nonsense typography.
 
 BILD 53 · D · 5.5 s
-Audio Anchor: "Am 29 März gelingt die Bergung Der Kanal kann"
+Audio Anchor: "Am 29. März gelingt die Bergung. Der Kanal kann"
 Spoken Line: "Am 29. März gelingt die Bergung. Der Kanal kann wieder für den Schiffsverkehr geöffnet werden."
 Visual Purpose: Am 29. März gelingt die Bergung. Der Kanal kann wieder für den Schiffsverkehr geöffnet werden.
 Topic Anchor: Ever Given clear of bank and aligned into canal, tugboats alongside, open water path and queue beginning to advance, morning light. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -583,7 +583,7 @@ Composition Mode: map close-up
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Ever Given clear of bank and aligned into canal, tugboats alongside, open water path and queue beginning to advance, morning light. Choose a visually appropriate full-scene rendered as a map close-up with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. Render only the following German readable text, large and correctly spelled: "29. MÄRZ 2021". No extra words or letter-shapes.
 
 BILD 54 · B · 5.1 s
-Audio Anchor: "Doch damit sind die Probleme nicht sofort verschwunden Hunderte"
+Audio Anchor: "Doch damit sind die Probleme nicht sofort verschwunden. Hunderte"
 Spoken Line: "Doch damit sind die Probleme nicht sofort verschwunden. Hunderte wartende Schiffe müssen nacheinander weiterfahren."
 Visual Purpose: Doch damit sind die Probleme nicht sofort verschwunden. Hunderte wartende Schiffe müssen nacheinander weiterfahren.
 Topic Anchor: Orderly maritime canal convoy clearing massive backlog through single bottleneck, queue reducing across route sequence, no fabricated timings. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -601,7 +601,7 @@ Composition Mode: spatial cause and effect
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: One delayed container ship arriving outside port appointment slot causing cascading warehouse rail and vessel schedule shifts, integrated sequential drawing. Choose a visually appropriate cause-effect rendered as a spatial cause and effect with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. No visible text, no letters and no nonsense typography.
 
 BILD 56 · C · 5.8 s
-Audio Anchor: "Hier liegt der eigentliche Punkt Ein einzelner Vorfall kann"
+Audio Anchor: "Hier liegt der eigentliche Punkt: Ein einzelner Vorfall kann"
 Spoken Line: "Hier liegt der eigentliche Punkt: Ein einzelner Vorfall kann eine ganze Kette aus geplanten Abläufen verschieben."
 Visual Purpose: Hier liegt der eigentliche Punkt: Ein einzelner Vorfall kann eine ganze Kette aus geplanten Abläufen verschieben.
 Topic Anchor: Single grounded ship at left leads through arrowed chain to port crane, railcar, warehouse and factory, interconnected cause effect not collage. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -610,7 +610,7 @@ Composition Mode: hero object
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Single grounded ship at left leads through arrowed chain to port crane, railcar, warehouse and factory, interconnected cause effect not collage. Choose a visually appropriate multi-element rendered as a hero object with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. No visible text, no letters and no nonsense typography.
 
 BILD 57 · C · 6.9 s
-Audio Anchor: "Allerdings war die Blockade nicht der erste Hinweis Bereits"
+Audio Anchor: "Allerdings war die Blockade nicht der erste Hinweis. Bereits"
 Spoken Line: "Allerdings war die Blockade nicht der erste Hinweis. Bereits 1956 und zwischen 1967 und 1975 hatte Suez Ausfälle erlebt."
 Visual Purpose: Allerdings war die Blockade nicht der erste Hinweis. Bereits 1956 und zwischen 1967 und 1975 hatte Suez Ausfälle erlebt.
 Topic Anchor: Three different historical disruption dates marked along one illustrated canal route: 1956, 1967–1975, 2021, uncluttered milestone order. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -619,7 +619,7 @@ Composition Mode: wide panorama
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Three different historical disruption dates marked along one illustrated canal route: 1956, 1967–1975, 2021, uncluttered milestone order. Choose a visually appropriate simple-schema rendered as a wide panorama with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. Render only the following German readable text, large and correctly spelled: "1956 · 1967 · 2021". No extra words or letter-shapes.
 
 BILD 58 · B · 6.2 s
-Audio Anchor: "Und es geht nicht nur um Schiffsunfälle Auch Konflikte"
+Audio Anchor: "Und es geht nicht nur um Schiffsunfälle. Auch Konflikte"
 Spoken Line: "Und es geht nicht nur um Schiffsunfälle. Auch Konflikte in der Region können Reedereien zu Umwegen bewegen."
 Visual Purpose: Und es geht nicht nur um Schiffsunfälle. Auch Konflikte in der Region können Reedereien zu Umwegen bewegen.
 Topic Anchor: Red Sea Suez region map with neutral hazard zone near shipping route and safe alternative around Africa, no unverified latest-events text. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -637,7 +637,7 @@ Composition Mode: overhead analysis
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Historically labeled late-2023 Red Sea/Gulf of Aden danger zone and rerouted commercial ship lanes around Cape, neutral symbolic warning markers. Choose a visually appropriate map-only rendered as a overhead analysis with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. Render only the following German readable text, large and correctly spelled: "SEIT ENDE 2023". No extra words or letter-shapes.
 
 BILD 60 · C · 5.8 s
-Audio Anchor: "Ein längerer Kurs bedeutet nicht nur mehr Fahrzeit sondern"
+Audio Anchor: "Ein längerer Kurs bedeutet nicht nur mehr Fahrzeit, sondern"
 Spoken Line: "Ein längerer Kurs bedeutet nicht nur mehr Fahrzeit, sondern oft auch höhere Treibstoffkosten und zusätzliche Emissionen."
 Visual Purpose: Ein längerer Kurs bedeutet nicht nur mehr Fahrzeit, sondern oft auch höhere Treibstoffkosten und zusätzliche Emissionen.
 Topic Anchor: Merchant vessel taking long Africa detour with fuel flow and rising exhaust emission trail diagram, factual without invented exact emissions values. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -646,7 +646,7 @@ Composition Mode: map close-up
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Merchant vessel taking long Africa detour with fuel flow and rising exhaust emission trail diagram, factual without invented exact emissions values. Choose a visually appropriate cause-effect rendered as a map close-up with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. No visible text, no letters and no nonsense typography.
 
 BILD 61 · B · 5.5 s
-Audio Anchor: "Darum können Länder und Unternehmen versuchen Lieferwege zu verteilen"
+Audio Anchor: "Darum können Länder und Unternehmen versuchen, Lieferwege zu verteilen,"
 Spoken Line: "Darum können Länder und Unternehmen versuchen, Lieferwege zu verteilen, statt vollständig von einer Route abzuhängen."
 Visual Purpose: Darum können Länder und Unternehmen versuchen, Lieferwege zu verteilen, statt vollständig von einer Route abzuhängen.
 Topic Anchor: World maritime network showing several alternative trade route strands for same destination, Suez highlighted but not sole artery, diversifying paths. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -655,7 +655,7 @@ Composition Mode: diagonal journey
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: World maritime network showing several alternative trade route strands for same destination, Suez highlighted but not sole artery, diversifying paths. Choose a visually appropriate map-only rendered as a diagonal journey with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. No visible text, no letters and no nonsense typography.
 
 BILD 62 · D · 5.8 s
-Audio Anchor: "Das funktioniert nicht immer einfach Zusätzliche Schiffe freie Häfen"
+Audio Anchor: "Das funktioniert nicht immer einfach. Zusätzliche Schiffe, freie Häfen"
 Spoken Line: "Das funktioniert nicht immer einfach. Zusätzliche Schiffe, freie Häfen und Ersatzlager entstehen schließlich nicht über Nacht."
 Visual Purpose: Das funktioniert nicht immer einfach. Zusätzliche Schiffe, freie Häfen und Ersatzlager entstehen schließlich nicht über Nacht.
 Topic Anchor: Busy container harbor with all berths occupied, waiting supply ships and limited storage yards, visualizing real capacity constraints. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -673,7 +673,7 @@ Composition Mode: hero object
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Balanced composition: efficient blue Suez trade route on one side, red bottleneck when disrupted on other, both within same accurate Egyptian map. Choose a visually appropriate before-after rendered as a hero object with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. No visible text, no letters and no nonsense typography.
 
 BILD 64 · C · 6.5 s
-Audio Anchor: "Seine Stärke ist genau seine Schwäche Er bündelt Verkehr"
+Audio Anchor: "Seine Stärke ist genau seine Schwäche: Er bündelt Verkehr"
 Spoken Line: "Seine Stärke ist genau seine Schwäche: Er bündelt Verkehr auf einer kurzen Strecke, die sich kaum ersetzen lässt."
 Visual Purpose: Seine Stärke ist genau seine Schwäche: Er bündelt Verkehr auf einer kurzen Strecke, die sich kaum ersetzen lässt.
 Topic Anchor: Elegant accurate maritime map: dense route bundle into one thin Suez passage, replacement path loops far around Africa, one coherent explanatory image. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -691,7 +691,7 @@ Composition Mode: intimate detail
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Wide view Ever Given freed in canal with transparent global route lines projected across surrounding waters, sober reflective final setup. Choose a visually appropriate full-scene rendered as a intimate detail with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. No visible text, no letters and no nonsense typography.
 
 BILD 66 · C · 5.1 s
-Audio Anchor: "Es zeigt wie eng Häfen Fabriken Handelswege und politische"
+Audio Anchor: "Es zeigt, wie eng Häfen, Fabriken, Handelswege und politische"
 Spoken Line: "Es zeigt, wie eng Häfen, Fabriken, Handelswege und politische Entscheidungen heute miteinander verflochten sind."
 Visual Purpose: Es zeigt, wie eng Häfen, Fabriken, Handelswege und politische Entscheidungen heute miteinander verflochten sind.
 Topic Anchor: Synthesis world map from Egyptian Suez focal point: shipping port, Asian manufacturer, European warehouse and policy document integrated as spatial routes. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
@@ -700,7 +700,7 @@ Composition Mode: overhead analysis
 Prompt: Create one independent premium 16:9 Serious Minimal Countryball Explainer image, clean serious flat 2D, bold black outlines, graphic flat shading, controlled color and tasteful depth. Main explanatory visual: Synthesis world map from Egyptian Suez focal point: shipping port, Asian manufacturer, European warehouse and policy document integrated as spatial routes. Choose a visually appropriate multi-element rendered as a overhead analysis with a compelling specific focal point. Prioritize geographic accuracy, legible proportions and the spoken fact. Natural variation of desert-sand, deep navy, water-blue and warm historical tones. Countryball actors are optional and only appropriate for actual state-to-state decisions; if present perfectly round with simple white eyes, never humanlike. No people, silhouettes, hands, stick figures, photographic images, 3D, anime, Pixar, random unrelated flags, poster collages, charts full of tiny details or generic unconnected symbols. No visible text, no letters and no nonsense typography.
 
 BILD 67 · B · 5.8 s
-Audio Anchor: "Manchmal genügt eine Engstelle um sichtbar zu machen wie"
+Audio Anchor: "Manchmal genügt eine Engstelle, um sichtbar zu machen, wie"
 Spoken Line: "Manchmal genügt eine Engstelle, um sichtbar zu machen, wie abhängig die Welt von funktionierenden Verbindungen ist."
 Visual Purpose: Manchmal genügt eine Engstelle, um sichtbar zu machen, wie abhängig die Welt von funktionierenden Verbindungen ist.
 Topic Anchor: Final panoramic 16:9 detailed Mediterranean Red Sea Suez map with giant merchant ship moving through narrow open canal, global paths lit, optimistic restrained. A precise element of Suez geography, the Ever Given blockade or the specific Suez Canal history.
