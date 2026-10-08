@@ -4,6 +4,8 @@ Produktionspipeline für 9:16-Erklär-Reels mit fester Reel-Bildwelt und getrenn
 
 **`CURRENT_WORKFLOW.md` ist die Single Source of Truth.** Rollen: `WORKFLOW_PHASEN.md`.
 
+**Änderungsschutz:** `docs/CHANGE_SAFETY_POLICY.md` — Repository und wiederverwendbare Pipeline gezielt verbessern; einzelne bestehende Videos nur bei ausdrücklichem Nutzerauftrag. Vorhandene Produktionen bleiben unverändert. PRs werden darauf geprüft.
+
 ## Kanal-Fokus
 
 Für die autonome Reel-Themenwahl gilt `config/reel-topic-focus.json`: Schwerpunkt auf Politik, Geschichte, Geografie, Ideologien/Systemen und internationalen Beziehungen. Bereits vorhandene ältere Gesundheit-/Alltags-Reels bleiben nur Historie.

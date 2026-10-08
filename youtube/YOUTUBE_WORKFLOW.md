@@ -15,6 +15,13 @@
 
 Diese Datei gilt ausschließlich für YouTube-Langvideos. Reels bleiben davon getrennt und werden nicht verändert.
 
+## Repo-Verbesserung schützt einzelne Videos
+
+`docs/CHANGE_SAFETY_POLICY.md` gilt hier als übergreifende Schutzregel. „Verbessere den Kanal/das Repo“ verändert **ausschließlich wiederverwendbare Pipeline-Dateien, Template, Regeln und Tests**, nie automatisch alte oder gerade angelegte einzelne Videoprojekte. Analyse oder Feedback eines gerenderten Videos ist keine Freigabe, das Videoprojekt anzupassen. Nur bei ausdrücklich auf das konkrete Video bezogenem Auftrag ist eine gezielte Projektänderung zulässig.
+
+Keine kosmetischen oder spekulativen Features ohne echten Mehrwert; niemals bestehende Videos, Exporte, Sprechtexte, Flow-Prompts oder Schemaversionen anderer Projekte als Nebenwirkung ändern. Vor Merge: kleinster sinnvoller Diff, Kompatibilität, vollständige Tests, betroffene Videoverzeichnisse auf Änderungen prüfen.
+
+
 ## Status der Testphase
 
 Die YouTube-Testphase ist seit **27.09.2026 abgeschlossen**. Die Grundrichtung gilt als produktionsreif.

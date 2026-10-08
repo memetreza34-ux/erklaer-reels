@@ -2,6 +2,18 @@
 
 `CURRENT_WORKFLOW.md` ist die verbindliche Single Source of Truth. Bei Widersprüchen gilt immer die dort definierte Priorität.
 
+## Wichtigste Änderungssperre: Repo verbessern, fertige Videos schützen
+
+Vor JEDER Code-, Policy- oder Produktionsoptimierung `docs/CHANGE_SAFETY_POLICY.md` beachten:
+
+- Bei allgemeinen Verbesserungswünschen ausschließlich **systemweite Vorlagen, Validatoren, Tests, Workflows, Dokumentation** optimieren.
+- Nie ein bestehendes einzelnes Video / Reel oder seinen Ordner ändern, reparieren, umschreiben oder migrieren, sofern der Nutzer **nicht ausdrücklich genau dieses Video** zur Bearbeitung freigibt.
+- Feedback zu einem Video ist kein Auftrag, dieses Video nachträglich zu verändern.
+- Nur Änderungen mit klarem nachweisbarem Mehrwert; lieber nichts ändern als aus Aktionismus umbauen.
+- Minimaler Diff, keine Regressionen oder fremde Pipelines beschädigen. Vor Merge bestehende Tests ausführen.
+- Für tatsächlich ausdrücklich beauftragte Projektänderungen den konkreten Nutzerwunsch und exakten Projektpfad im PR dokumentieren; die PR-Schutzprüfung blockiert sonst bestehende Videoordner.
+
+
 ## Drei Produktionsphasen
 
 Phase 1 ChatGPT (Anlegen, Script, Prompts, Motion/SFX) → Phase 2 Arman (Audio, Bilder) → Phase 3 Antigravity (Zuordnung, Sync, QC, Render). Details stehen in `WORKFLOW_PHASEN.md`.
