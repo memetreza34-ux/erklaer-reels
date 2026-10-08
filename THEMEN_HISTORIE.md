@@ -54,6 +54,8 @@ Für **neue Reels** gilt zusätzlich `REEL_THEMENFOKUS.md`: autonom ausgewählt 
 - KW39 (21.09.–27.09.2026): Anarchismus: Kann eine Gesellschaft ohne Staat funktionieren? — Themen-Editor FREI, neues 2-Minuten-Schema-13-Projekt mit Visual Flexibility V1 reserviert
 - KW40 (28.09.–04.10.2026): Kalter Krieg: Wie aus Verbündeten Feinde wurden — Themen-Editor FREI, 6–7-Minuten-Schema-13-Projekt mit 74 Bildmomenten reserviert
 
+- KW41 (05.10.–11.10.2026): Suezkanal: Wie ein Schiff den Welthandel ausbremste — neue reguläre 6–7-Minuten-Produktion, 67 Bilder, Script Quality V1
+
 ## Duplicate-Regel
 
 Nicht nur exakte Titel zählen als doppelt. Auch dieselbe Kernfrage mit anderer Formulierung ist gesperrt.
