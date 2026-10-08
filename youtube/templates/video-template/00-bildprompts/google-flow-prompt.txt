@@ -6,8 +6,8 @@ SCENE_ILLUSTRATION_POLICY_VERSION: 2
 TOPIC_VISUAL_RELEVANCE_POLICY_VERSION: 1
 VISUAL_FLEXIBILITY_POLICY_VERSION: 1
 END_HOLD_POLICY_VERSION: 1
-COVER_POLICY_VERSION: 1
-ASSET_GENERATION_POLICY_VERSION: 1
+COVER_POLICY_VERSION: 2
+ASSET_GENERATION_POLICY_VERSION: 2
 ACTIVE_STYLE_ID: serious-minimal-countryball-explainer-youtube-16x9
 
 GOOGLE FLOW MASTER PROMPT — [VIDEO-TITEL]
@@ -17,44 +17,35 @@ Erzeuge ausschließlich Bild 01 bis Bild NN. Es gibt KEIN separates Bild 00.
 Die Bildanzahl NN ist NICHT fest vorgegeben: Sie wird in Phase 1 aus dem Inhalt abgeleitet. Komplexe Passagen dürfen bewusst mehr Bildmomente erhalten.
 
 ==================================================
-FIRST SCENE = COVER HARD LOCK
+SEPARATE COVER — EXPORT ONLY HARD LOCK
+NOTE: BILD 01 = NORMAL FIRST SCENE HARD LOCK
 ==================================================
-- Bild 01 is the cover AND the first video scene.
-- Bild 01 starts the actual video at 0.0 seconds.
-- Bild 01 must contain a strong short German cover headline AND visually support the first spoken idea.
-- The exported YouTube thumbnail is copied from Bild 01.png.
-- Do NOT create Bild 00.
-- Do NOT create a separate thumbnail image outside the timeline.
+- The separately generated cover is for 03-export/THUMBNAIL.png only and is NOT a frame in the video.
+- Bild 01 is a NORMAL first scene, from the first spoken words. The video starts at Bild 01 at 0.0 seconds.
+- Keep Bild 01 free of cover headline or thumbnail-style overlay. It must be a topic-specific illustration.
+- There is no Bild 00 and no cover image on the timeline.
 
 ==================================================
 COVER = 3 CANDIDATES HARD LOCK
 ==================================================
-- Generate Bild 01 exactly THREE times as temporary cover candidates.
-- Compare only these three cover candidates.
-- Select exactly ONE winner.
-- Rename only the selected winner exactly once to `Bild 01.png`.
-- Discard the other two cover candidates completely.
-- No cover candidate may remain in the final image folder.
+Generate COVER.jpg or cover candidate imagery exactly THREE times, separately from Bild 01–NN.
+Choose ONE strongest thumbnail. Save that winner directly as 03-export/THUMBNAIL.png (no overlay in video).
+Discard two rejected cover candidates. Use clear topic imagery and one large German headline. Do not use the cover as reference for a scene.
 
 ==================================================
 NON-COVER = SINGLE GENERATION HARD LOCK
 ==================================================
-- Every image from Bild 02 through Bild NN is generated exactly ONCE.
-- Do not create a second version of any non-cover image.
-- Do not stop for manual review after five-image waves.
-- Rename each finished non-cover image exactly once to its final `Bild NN.png` name, then continue.
-- Maximum five active generations at the same time; this is concurrency only, never a review gate.
+All video frames Bild 01 through Bild NN are generated exactly ONCE each, including Bild 01.
+Each is a normal scene corresponding to its spoken anchor, never a cover.
+No alternate versions, no five-image review stop, at most five active image jobs at a time.
+Name every result Bild NN.png exactly once.
 
 ==================================================
 FINAL IMAGE FOLDER HARD LOCK
 ==================================================
-At the end, all final images must exist in exactly one flat folder:
-`00-bildprompts/images/`
-
-The folder may contain only:
-`Bild 01.png` through `Bild NN.png`
-
-No subfolders. No Bild 00. No cover candidates. No alternate versions. No extra PNG files.
+The frame folder 00-bildprompts/images/ contains ONLY Bild 01.png through Bild NN.png.
+The separately generated COVER must be placed as 03-export/THUMBNAIL.png and never mixed with numbered frames.
+No Bild 00, cover variants, alternate PNGs, extra files or subfolders.
 
 ==================================================
 SESSION RESET HARD LOCK
@@ -62,7 +53,7 @@ SESSION RESET HARD LOCK
 - Use a fresh Google Flow session for Visual Policy V5.
 - The ONLY active style is `serious-minimal-countryball-explainer-youtube-16x9`.
 - Do not use any previous generated image as a visual reference.
-- Bild 01 is a cover, NOT a master style reference.
+- The separately generated cover is NOT a master style reference.
 - Sessions containing older conflicting instructions are stale for new projects.
 
 ==================================================
@@ -279,17 +270,17 @@ Für jedes Bild angeben:
 `Visual Form` wird frei nach Inhalt gewählt, z. B. `object-only`, `map-only`, `document-only`, `simple-schema`, `countryball-action`, `multi-actor`, `multi-element` oder `full-scene`.
 
 ==================================================
-BILD 01 — COVER + ERSTE VIDEOSZENE
+BILD 01 — NORMALE ERSTE VIDEOSZENE
 ==================================================
 Bild 01 · [A–E] · [PLANZEIT]
 Visual Purpose: [EINE KLARE AUSSAGE]
 Topic Anchor: [KONKRETES THEMENSPEZIFISCHES ELEMENT]
 Visual Form: [BESTE DARSTELLUNGSFORM]
 Composition Mode: [MODUS]
-[COVER-UND-SZENE-1-PROMPT]
+[NORMALE SZENE 1 OHNE COVER-ÜBERSCHRIFT]
 
 ==================================================
-BILD 02–NN — JEWEILS EINMAL
+BILD 02–NN — NORMALE FOLGESZENEN
 ==================================================
 Bild 02 · [A–E] · [PLANZEIT]
 Visual Purpose: [EINE KLARE AUSSAGE]
@@ -324,8 +315,8 @@ FINALER CHECK
 - keine starre Bildzahl
 - komplexe Passagen sinnvoll auf mehrere Bilder verteilt
 - keine Füllbilder
-- Bild 01 exakt 3 Cover-Kandidaten, genau 1 Gewinner
-- Bild 02–NN jeweils genau einmal generiert
+- Separates Cover exakt 3 Kandidaten, genau 1 Gewinner im Export
+- Bild 01–NN jeweils genau einmal als normale Szenen generiert
 - alle finalen Bilder in `00-bildprompts/images/`
 - kein Bild 00
 - keine Bild-zu-Bild-Referenzen

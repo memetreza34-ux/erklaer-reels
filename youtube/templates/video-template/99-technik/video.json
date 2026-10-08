@@ -11,8 +11,8 @@
   "visualFlexibilityPolicyVersion": 1,
   "endHoldPolicyVersion": 1,
   "explicitScriptOpeningOverride": false,
-  "coverPolicyVersion": 1,
-  "assetGenerationPolicyVersion": 1,
+  "coverPolicyVersion": 2,
+  "assetGenerationPolicyVersion": 2,
   "complexityPacingVersion": 2,
   "videoId": "YYYY-KWNN_topic-slug",
   "weekFolder": "YYYY-KWNN_DD-MM_bis_DD-MM",
@@ -39,18 +39,20 @@
     "schoolbookDefinitionLeadForbidden": true
   },
   "coverPolicy": {
-    "firstSceneIsCover": true,
-    "coverImageNumber": 1,
-    "coverMustBeFirstTimelineImage": true,
-    "coverMustAlsoBeThumbnailSource": true,
-    "separateThumbnailImageForbidden": true,
+    "firstSceneIsCover": false,
+    "firstSceneMustBeNormal": true,
+    "separateCoverRequired": true,
+    "coverExcludedFromTimeline": true,
+    "coverOnlyInExport": true,
+    "thumbnailFile": "03-export/THUMBNAIL.png",
+    "firstVideoImageNumber": 1,
     "image00Forbidden": true,
     "headlineRequired": true
   },
   "assetGenerationPolicy": {
     "coverCandidateCount": 3,
     "coverSelectionRequired": true,
-    "selectedCoverFinalName": "Bild 01.png",
+    "selectedCoverFinalName": "THUMBNAIL.png",
     "discardUnselectedCoverCandidates": true,
     "nonCoverGenerationCount": 1,
     "nonCoverManualWaveReviewForbidden": true,
@@ -59,7 +61,10 @@
     "renameEachFinalImageExactlyOnce": true,
     "finalImagesFlatInSingleFolder": true,
     "finalImageDirectory": "00-bildprompts/images",
-    "temporaryCoverCandidatesForbiddenInFinalFolder": true
+    "temporaryCoverCandidatesForbiddenInFinalFolder": true,
+    "separateCoverFinalPath": "03-export/THUMBNAIL.png",
+    "firstVideoImageMustBeNormal": true,
+    "coverGeneratedOnlyForExport": true
   },
   "sessionPolicy": {
     "freshFlowSessionRequiredWhenVisualPolicyChanges": true,
@@ -172,18 +177,36 @@
     "splitCauseEffectWhenDense": true,
     "allowMoreImagesWhenNarrativelyUseful": true,
     "doNotAddFillerImages": true,
-    "targetAverageHoldSeconds": [4.5, 7.5],
+    "targetAverageHoldSeconds": [
+      4.5,
+      7.5
+    ],
     "softReviewAboveSeconds": 9,
     "strongSplitReviewAboveSeconds": 11,
     "globalHardMaximumSeconds": 16,
     "minimumUsefulHoldSeconds": 2.5
   },
   "complexityTargetsSeconds": {
-    "A": [3, 4.5],
-    "B": [4, 6],
-    "C": [5.5, 7.5],
-    "D": [7, 9.5],
-    "E": [8.5, 11]
+    "A": [
+      3,
+      4.5
+    ],
+    "B": [
+      4,
+      6
+    ],
+    "C": [
+      5.5,
+      7.5
+    ],
+    "D": [
+      7,
+      9.5
+    ],
+    "E": [
+      8.5,
+      11
+    ]
   },
   "complexityFinalHardMaxSeconds": {
     "A": 5.5,
@@ -204,7 +227,10 @@
     "reviewFromSeconds": 9,
     "strongSplitReviewFromSeconds": 11,
     "reviewIfShorterThanSeconds": 2.5,
-    "targetAverageHoldSeconds": [4.5, 7.5],
+    "targetAverageHoldSeconds": [
+      4.5,
+      7.5
+    ],
     "oneImageOneVisualPurpose": true,
     "imageCountMustFollowContentDensity": true,
     "uniformHoldDistributionForbidden": true,

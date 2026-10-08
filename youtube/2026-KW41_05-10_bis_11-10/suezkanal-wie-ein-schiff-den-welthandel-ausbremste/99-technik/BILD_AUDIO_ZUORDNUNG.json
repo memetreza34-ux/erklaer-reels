@@ -2,8 +2,8 @@
   "schemaVersion": 6,
   "project": "2026-KW41_05-10_bis_11-10/suezkanal-wie-ein-schiff-den-welthandel-ausbremste",
   "voiceoverMaster": "01-voice-script/voice-script.txt",
-  "coverImageNumber": 1,
-  "thumbnailImageNumber": 1,
+  "coverImageNumber": null,
+  "thumbnailImageNumber": null,
   "videoFirstImageNumber": 1,
   "videoLastImageNumber": 67,
   "cutLeadSecondsDefault": 0.08,
@@ -18,16 +18,19 @@
     "audioIsFinalTimingAuthority": true,
     "noGaps": true,
     "noOverlaps": true,
-    "firstSceneIsCover": true,
-    "coverMustBeFirstTimelineImage": true,
-    "coverAlsoUsedAsThumbnail": true,
-    "separateThumbnailImageForbidden": true,
+    "firstSceneIsCover": false,
+    "coverMustBeFirstTimelineImage": false,
+    "coverAlsoUsedAsThumbnail": false,
+    "separateThumbnailImageForbidden": false,
     "image00ForbiddenForNewProjects": true,
     "imageEndsAtNextImageStart": true,
     "doNotGuessMissingAnchor": true,
     "oneImageOneVisualPurpose": true,
     "contentDrivenImageCountRequired": true,
-    "fillerImagesForbidden": true
+    "fillerImagesForbidden": true,
+    "separateCoverRequired": true,
+    "coverExcludedFromTimeline": true,
+    "firstVideoImageMustBeNormal": true
   },
   "images": [
     {
@@ -1102,5 +1105,6 @@
       "actualEndSeconds": null,
       "alignmentConfidence": null
     }
-  ]
+  ],
+  "separateThumbnailFile": "03-export/THUMBNAIL.png"
 }

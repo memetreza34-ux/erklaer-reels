@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { access, readFile } from 'node:fs/promises';
+import { access, readFile, readdir } from 'node:fs/promises';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
@@ -101,13 +101,18 @@ async function main() {
     }
   }
 
-  const usesFirstSceneCover = Number(meta.schemaVersion) >= 7;
+  const usesSeparateCover = Number(meta.coverPolicyVersion) >= 2;
+  const usesFirstSceneCover = Number(meta.schemaVersion) >= 7 && !usesSeparateCover;
   const expectedFirst = Number(mapping.videoFirstImageNumber ?? 1);
   const expectedLast = Number(mapping.videoLastImageNumber ?? images.length);
   const expectedCount = expectedLast - expectedFirst + 1;
   if (images.length !== expectedCount) errors.push(`Mapping erwartet ${expectedCount} Bilder, enthält aber ${images.length}.`);
 
-  if (usesFirstSceneCover) {
+  if (usesSeparateCover) {
+    if (expectedFirst !== 1 || Number(images[0]?.imageNumber) !== 1) errors.push('Cover V2: Bild 01 muss normale erste Szene sein.');
+    if (mapping.rules?.firstSceneIsCover !== false || mapping.rules?.coverExcludedFromTimeline !== true || mapping.rules?.separateCoverRequired !== true) errors.push('Cover V2: Mapping muss Cover und Videobilder trennen.');
+    if (meta.coverPolicy?.firstSceneIsCover !== false || meta.coverPolicy?.coverExcludedFromTimeline !== true || meta.coverPolicy?.thumbnailFile !== '03-export/THUMBNAIL.png') errors.push('Cover V2: Videometadaten sind widersprüchlich.');
+  } else if (usesFirstSceneCover) {
     if (expectedFirst !== 1) errors.push('Cover Policy V1: videoFirstImageNumber muss 1 sein.');
     if (Number(mapping.coverImageNumber) !== 1 || Number(mapping.thumbnailImageNumber) !== 1) {
       errors.push('Cover Policy V1: Bild 01 muss Cover, Thumbnail-Quelle und erstes Videobild sein.');
@@ -241,27 +246,37 @@ async function main() {
       try {
         const videoDuration = ffprobeDuration(rendered);
         const trailing = videoDuration - audioDuration;
-        if (trailing < 0.35 || trailing > 1.00) errors.push(`Post-Render-QC: Video endet ${trailing.toFixed(3)} s nach dem Voice-over. Erlaubt sind 0,35–1,00 s.`);
+        if (usesSeparateCover) {
+          const expectedHold = Number(meta.renderPolicy?.endHoldSeconds ?? 1.3);
+          if (Math.abs(trailing - expectedHold) > 0.30) errors.push(`Post-Render-QC: Video endet ${trailing.toFixed(3)} s nach dem Voice-over, erwartet ca. ${expectedHold.toFixed(2)} s End-Hold.`);
+        } else if (trailing < 0.35 || trailing > 1.00) errors.push(`Post-Render-QC: Video endet ${trailing.toFixed(3)} s nach dem Voice-over. Erlaubt sind 0,35–1,00 s.`);
       } catch (error) { errors.push(error.message); }
     }
 
     const thumbnail = path.join(exportDir, 'THUMBNAIL.png');
     if (!(await exists(thumbnail))) {
       errors.push('Post-Render-QC: THUMBNAIL.png fehlt.');
+    } else if (usesSeparateCover) {
+      const scene = path.join(projectDir, '00-bildprompts', 'images', 'Bild 01.png');
+      if (await exists(scene) && (await sha256(thumbnail)) === (await sha256(scene))) errors.push('Cover V2: Thumbnail und erstes Videobild sind identisch.');
     } else if (usesFirstSceneCover) {
       const cover = path.join(projectDir, '00-bildprompts', 'images', 'Bild 01.png');
       if (!(await exists(cover))) errors.push('Cover Policy V1: Bild 01.png fehlt.');
       else if ((await sha256(thumbnail)) !== (await sha256(cover))) errors.push('Cover Policy V1: THUMBNAIL.png muss byte-identisch aus Bild 01.png stammen.');
     }
 
-    const requiredTextFiles = [
-      ['YOUTUBE-TITEL.txt', 'Titel'],
-      ['YOUTUBE-BESCHREIBUNG.txt', 'Beschreibung'],
-      ['YOUTUBE-KAPITEL.txt', 'Kapitel'],
-      ['YOUTUBE-TAGS.txt', 'Tags']
-    ];
+    const requiredTextFiles = usesSeparateCover
+      ? [['YOUTUBE-UPLOAD.txt', 'Titel/Beschreibung/Caption'], ['YOUTUBE-UNTERTITEL-ZEITABSCHNITTE.txt', 'Zeittranskript']]
+      : [['YOUTUBE-TITEL.txt', 'Titel'], ['YOUTUBE-BESCHREIBUNG.txt', 'Beschreibung'], ['YOUTUBE-KAPITEL.txt', 'Kapitel'], ['YOUTUBE-TAGS.txt', 'Tags']];
     for (const [fileName, label] of requiredTextFiles) {
       if (!(await hasText(path.join(exportDir, fileName)))) errors.push(`Post-Render-QC: ${label}-Datei ${fileName} fehlt oder ist leer.`);
+    }
+    if (usesSeparateCover) {
+      const uploadText = (await exists(path.join(exportDir, 'YOUTUBE-UPLOAD.txt'))) ? await readFile(path.join(exportDir, 'YOUTUBE-UPLOAD.txt'), 'utf8') : '';
+      for (const label of ['TITEL', 'BESCHREIBUNG', 'CAPTION']) if (!new RegExp(`(?:^|\\n)${label}\\n[^\\s]`, 'm').test(uploadText)) errors.push(`Export V2: Abschnitt ${label} fehlt oder ist leer.`);
+      const actual = (await readdir(exportDir)).filter(name => !name.startsWith('.'));
+      const expected = new Set(['FERTIGES-VIDEO.mp4','THUMBNAIL.png','YOUTUBE-UPLOAD.txt','YOUTUBE-UNTERTITEL-ZEITABSCHNITTE.txt']);
+      for (const fileName of actual) if (!expected.has(fileName)) errors.push(`Export V2: unnötige Datei im Export: ${fileName}`);
     }
   }
 
@@ -275,6 +290,7 @@ async function main() {
   console.log('YouTube Phase-3-Hard-Gate: BESTANDEN');
   console.log(`Bilder: ${images.length}${plannedImageCount !== null ? ` / geplant ${plannedImageCount}` : ''}`);
   if (usesFirstSceneCover) console.log('Cover Policy V1: Bild 01 = Cover + erste Timeline-Szene + Thumbnail-Quelle.');
+  if (usesSeparateCover) console.log('Cover Policy V2: Cover separat im Export, Bild 01 normale erste Szene.');
   if (audioDuration !== null) console.log(`Voice-over-Dauer: ${audioDuration.toFixed(3)} s`);
   console.log('Audio-Anker wurden gegen echte Whisper-Wortzeiten und Audio-Fingerprints verifiziert.');
   if (process.argv.includes('--post-render')) console.log('Finaler YouTube-Uploadsatz ist vollständig: Video, Thumbnail und Metadaten.');

@@ -16,7 +16,7 @@ test('Asset Generation Policy V1 erzwingt 3x Cover und Single-Pass für alle and
     readFile(`${PROJECT}/00-bildprompts/google-flow-prompt.txt`, 'utf8')
   ]);
 
-  assert.equal(policy.assetGenerationPolicyVersion, 1);
+  assert.equal(policy.assetGenerationPolicyVersion, 2);
   assert.equal(policy.assetGenerationPolicy.coverCandidateCount, 3);
   assert.equal(policy.assetGenerationPolicy.nonCoverGenerationCount, 1);
   assert.equal(policy.assetGenerationPolicy.nonCoverManualWaveReviewForbidden, true);
@@ -91,4 +91,21 @@ test('Normale Phase 3 führt das Phase-2-Asset-Gate vor Audio und Render aus', a
   assert.ok(phase1Index >= 0);
   assert.ok(phase2Index > phase1Index);
   assert.ok(alignIndex > phase2Index);
+});
+
+test('Cover V2: Phase-2-Gate verlangt separates Cover und normale eigene Bild-01-Datei',async()=>{
+ const temp=await mkdtemp(path.join(os.tmpdir(),'youtube-v2-cover-'));
+ try{
+  const tech=path.join(temp,'99-technik'),images=path.join(temp,'00-bildprompts/images'),exports=path.join(temp,'03-export');
+  await mkdir(tech,{recursive:true});await mkdir(images,{recursive:true});await mkdir(exports,{recursive:true});
+  await writeFile(path.join(tech,'video.json'),JSON.stringify({schemaVersion:13,coverPolicyVersion:2,plannedImageCount:2,assetGenerationPolicy:{finalImageDirectory:'00-bildprompts/images'}}));
+  await writeFile(path.join(images,'Bild 01.png'),'SCENE-A');
+  await writeFile(path.join(images,'Bild 02.png'),'SCENE-B');
+  const command=()=>spawnSync(process.execPath,['src/cli/validate-youtube-phase2-assets.js','--dir',temp],{encoding:'utf8'});
+  let res=command();assert.notEqual(res.status,0);assert.match(res.stderr,/separates.*THUMBNAIL/i);
+  await writeFile(path.join(exports,'THUMBNAIL.png'),'SCENE-A');
+  res=command();assert.notEqual(res.status,0);assert.match(res.stderr,/identisch/i);
+  await writeFile(path.join(exports,'THUMBNAIL.png'),'DIFFERENT-COVER');
+  res=command();assert.equal(res.status,0,res.stderr);
+ }finally{await rm(temp,{recursive:true,force:true})}
 });

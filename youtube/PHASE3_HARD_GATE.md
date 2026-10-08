@@ -6,11 +6,14 @@ Diese Datei verhindert starre Slideshows, geschätzte Bildwechsel, alte Audio-Me
 
 **Das finale Voice-over ist die einzige Timing-Masterspur.**
 
-Für neue Projekte mit Cover Policy V1 gilt zusätzlich:
-- **Bild 01 ist Cover + erste Videoszene.**
-- Bild 01 beginnt bei 0,0 s.
-- `THUMBNAIL.png` muss direkt aus `Bild 01.png` stammen.
-- kein separates Bild 00.
+Für NEUE Projekte mit Cover Policy V2 gilt:
+- Bild 01 ist normale erste Videoszene ab 0,0 s.
+- Eigenständiges `03-export/THUMBNAIL.png` ist kein Videobild.
+- Cover und Bild 01 dürfen nicht identisch sein.
+- Cover-Asset muss bereits beim Phase-2-Asset-Check vorhanden sein.
+- Export enthält exakt vier Dateien: MP4, Cover, Upload-Titel/Beschreibung/Caption in einem Text und zeitgestempelter Sprechertext.
+
+Für ältere Projekte mit Cover Policy V1 bleiben die bisherigen Cover=Bild-01-Regeln gültig.
 
 Verboten sind insbesondere `Videolänge ÷ Bildanzahl`, pauschal gleiche Bilddauern, geschätzte Anchor-Zeiten, erfundene Alignment-Konfidenz und Rendern mit altem Audio-Messbeleg.
 
@@ -38,7 +41,7 @@ Nur Exit-Code 0 erlaubt den Render.
 Der Gate blockiert unter anderem:
 - fehlendes Mapping
 - fehlende oder falsch nummerierte Bilder
-- bei neuen Projekten: Cover/Thumbnail-Quelle ungleich Bild 01
+- bei neuen Projekten: Cover aus anderer Quelle als separatem Export-PNG (V2), bzw. V1-Thumbnail ungleich Bild 01
 - bei neuen Projekten: separate Bild-00-Regel
 - Timeline beginnt nicht mit Bild 01 bei 0,0 s
 - fehlende reale Start-/Endzeiten

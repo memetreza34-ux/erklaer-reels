@@ -20,7 +20,9 @@ test('Suez-Video hat 67 vollständige Bildmomente und ein freigegebenes Langskri
  assert.equal(shots.shots.length,67);
  assert.equal(map.images.length,67);
  assert.equal(meta.topicEditor.decision,'APPROVED_NEW');
- assert.equal(meta.coverPolicy.coverImageNumber,1);
+ assert.equal(meta.coverPolicyVersion,2);
+ assert.equal(meta.coverPolicy.firstSceneIsCover,false);
+ assert.equal(meta.coverPolicy.thumbnailFile,'03-export/THUMBNAIL.png');
  assert.equal(meta.renderPolicy.endHoldSeconds,1.3);
  for(const item of map.images){
   assert.ok(script.includes(item.startAnchor),'Anker fehlt: '+item.startAnchor);

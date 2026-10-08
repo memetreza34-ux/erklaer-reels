@@ -3,7 +3,7 @@
 **Format:** Deutsch, ca. 6–7 Minuten, 16:9.
 **Skript:** 1041 Wörter in 8 gegliederten Absätzen.
 **Bildanzahl:** 67 nach inhaltlichen Perspektivwechseln, circa 379 Sekunden Plan-Holds.
-**Cover:** EIN SCHIFF. WELTWEITER STAU.
+**Separates Cover (nicht im Video):** EIN SCHIFF. WELTWEITER STAU.
 **Quellen:** Siehe RECHERCHE_QUELLEN.md (6 verifizierte Quellen).
 
 ## Inhaltliche Dramaturgie
@@ -23,8 +23,8 @@ npm run validate:youtube-phase1 -- --dir "youtube/2026-KW41_05-10_bis_11-10/suez
 ```
 
 ## Phase 2
-- Bild 01 als Cover exakt 3×, einen Gewinner wählen.
-- Bilder 02–67 jeweils genau 1×, maximal 5 gleichzeitig, ohne Wellenstop.
+- Separates Cover exakt 3×, einen Gewinner als 03-export/THUMBNAIL.png speichern. NICHT als Videoszene verwenden.
+- Alle normalen Videoszenen Bild 01–67 jeweils genau 1×, maximal 5 gleichzeitig, ohne Wellenstop.
 - Nur 67 final beschriftete PNG in 00-bildprompts/images/.
 - Genau ein komplettes Voice-over in 02-audio/voiceover-final.wav.
 - Keine alten Bilder als Referenz.
@@ -34,3 +34,7 @@ npm run validate:youtube-phase1 -- --dir "youtube/2026-KW41_05-10_bis_11-10/suez
 npm run phase3:youtube -- --dir "youtube/2026-KW41_05-10_bis_11-10/suezkanal-wie-ein-schiff-den-welthandel-ausbremste"
 ```
 Erst nachdem Phase 2 fertig ist. Voice-over 1,10×, Tonhöhe erhalten, −16 LUFS, Wortzeiten über Whisper, Motion/SFX, Schlussbild 1,3 s halten. Dann MP4, Thumbnail, Upload-Text und Zeittranskript.
+
+## Vier finale Exportdateien
+
+`FERTIGES-VIDEO.mp4`, `THUMBNAIL.png` (separat), `YOUTUBE-UPLOAD.txt` (Titel/Beschreibung/Caption), `YOUTUBE-UNTERTITEL-ZEITABSCHNITTE.txt`. Keine weiteren Dateien.

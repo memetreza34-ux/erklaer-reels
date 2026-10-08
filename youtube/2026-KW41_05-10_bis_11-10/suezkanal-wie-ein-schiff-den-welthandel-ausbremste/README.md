@@ -18,4 +18,6 @@ KW41 · 1041 Wörter · 67 Bildmomente · ca. 6–7 Minuten · deutsches Voice-o
 
 `99-technik/PRODUKTIONSPLAN.md`: Abnahme und weiterer Ablauf.
 
-`03-export/`: uploadfertige Textvorlagen; Video/Thumbnail/zeitgestempeltes Transkript erst nach Phase 3.
+`03-export/`: uploadfertige Textvorlagen; Separates Cover THUMBNAIL.png bereits in Phase 2 erzeugen, fertiges Video und Zeittranskript erst nach Phase 3. Vier Exportdateien, keine Doppeldateien.
+
+**Cover V2:** Das eigenständige Cover wird nicht im Video gezeigt. Bild 01 ist eine normale erste Szene, ohne Cover-Text. Im Export stehen nur MP4, Thumbnail, Upload.txt (Titel/Beschreibung/Caption) und Zeitabschnitt-Untertitel.

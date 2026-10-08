@@ -18,7 +18,7 @@ function requireTrue(errors, value, label) {
   if (value !== true) errors.push(`${label} muss true sein.`);
 }
 
-function validateTopicAnchors(errors, prompt, plannedImageCount, { requireVisualForm = false } = {}) {
+function validateTopicAnchors(errors, prompt, plannedImageCount, { requireVisualForm = false, separateCover = false } = {}) {
   const count = Number(plannedImageCount);
   if (!Number.isInteger(count) || count < 1) {
     errors.push('Schema-12+: plannedImageCount muss vor Phase 2 als positive Ganzzahl feststehen.');
@@ -27,7 +27,7 @@ function validateTopicAnchors(errors, prompt, plannedImageCount, { requireVisual
 
   for (let imageNumber = 1; imageNumber <= count; imageNumber += 1) {
     const nn = String(imageNumber).padStart(2, '0');
-    const start = prompt.search(new RegExp(`(?:^|\\n)BILD\\s+${nn}\\b`, 'i'));
+    const start = prompt.search(new RegExp(separateCover ? `(?:^|\\n)BILD\\s+${nn}\\s*·` : `(?:^|\\n)BILD\\s+${nn}\\b`, 'i'));
     if (start < 0) {
       errors.push(`Topic Visual Relevance V1: Bild ${nn} fehlt im Masterprompt.`);
       continue;
@@ -232,7 +232,7 @@ async function main() {
       errors.push(`renderPolicy.endHoldSeconds muss zwischen ${policy.endHoldPolicy.minimumSeconds} und ${policy.endHoldPolicy.maximumSeconds} liegen.`);
     }
 
-    validateTopicAnchors(errors, prompt, meta.plannedImageCount, { requireVisualForm: usesVisualFlexibilityV1 });
+    validateTopicAnchors(errors, prompt, meta.plannedImageCount, { requireVisualForm: usesVisualFlexibilityV1, separateCover: Number(meta.coverPolicyVersion) >= 2 });
   }
 
   if (usesVisualFlexibilityV1) {
@@ -264,25 +264,38 @@ async function main() {
   }
 
   if (schema >= 7) {
-    if (meta.coverPolicyVersion !== policy.coverPolicyVersion) errors.push(`coverPolicyVersion ist ${meta.coverPolicyVersion ?? 'fehlend'}, erwartet ${policy.coverPolicyVersion}.`);
+    if (Number(meta.coverPolicyVersion) !== (Number(meta.coverPolicyVersion) >= 2 ? policy.coverPolicyVersion : 1)) errors.push(`coverPolicyVersion ist ${meta.coverPolicyVersion ?? 'fehlend'}, erwartet eine unterstützte Version.`);
     const c = meta.coverPolicy || {};
-    requireTrue(errors, c.firstSceneIsCover, 'coverPolicy.firstSceneIsCover');
-    requireTrue(errors, c.coverMustBeFirstTimelineImage, 'coverPolicy.coverMustBeFirstTimelineImage');
-    requireTrue(errors, c.coverMustAlsoBeThumbnailSource, 'coverPolicy.coverMustAlsoBeThumbnailSource');
-    requireTrue(errors, c.separateThumbnailImageForbidden, 'coverPolicy.separateThumbnailImageForbidden');
-    requireTrue(errors, c.image00Forbidden, 'coverPolicy.image00Forbidden');
-    requireTrue(errors, c.headlineRequired, 'coverPolicy.headlineRequired');
-    if (Number(c.coverImageNumber) !== 1) errors.push('coverPolicy.coverImageNumber muss 1 sein.');
+    if (Number(meta.coverPolicyVersion) >= 2) {
+      if (c.firstSceneIsCover !== false) errors.push('Cover V2: firstSceneIsCover muss false sein.');
+      for (const key of ['firstSceneMustBeNormal', 'separateCoverRequired', 'coverExcludedFromTimeline', 'coverOnlyInExport', 'image00Forbidden', 'headlineRequired']) requireTrue(errors, c[key], `coverPolicy.${key}`);
+      if (c.thumbnailFile !== '03-export/THUMBNAIL.png') errors.push('Cover V2: thumbnailFile muss 03-export/THUMBNAIL.png sein.');
+      if (Number(c.firstVideoImageNumber) !== 1) errors.push('Cover V2: erstes Videobild muss Bild 01 sein.');
+    } else {
+      requireTrue(errors, c.firstSceneIsCover, 'coverPolicy.firstSceneIsCover');
+      requireTrue(errors, c.coverMustBeFirstTimelineImage, 'coverPolicy.coverMustBeFirstTimelineImage');
+      requireTrue(errors, c.coverMustAlsoBeThumbnailSource, 'coverPolicy.coverMustAlsoBeThumbnailSource');
+      requireTrue(errors, c.separateThumbnailImageForbidden, 'coverPolicy.separateThumbnailImageForbidden');
+      requireTrue(errors, c.image00Forbidden, 'coverPolicy.image00Forbidden');
+      requireTrue(errors, c.headlineRequired, 'coverPolicy.headlineRequired');
+      if (Number(c.coverImageNumber) !== 1) errors.push('coverPolicy.coverImageNumber muss 1 sein.');
+    }
   }
 
   if (schema >= 9) {
-    if (meta.assetGenerationPolicyVersion !== policy.assetGenerationPolicyVersion) {
+    if (Number(meta.assetGenerationPolicyVersion) !== (Number(meta.assetGenerationPolicyVersion) >= 2 ? policy.assetGenerationPolicyVersion : 1)) {
       errors.push(`assetGenerationPolicyVersion ist ${meta.assetGenerationPolicyVersion ?? 'fehlend'}, erwartet ${policy.assetGenerationPolicyVersion}.`);
     }
     const a = meta.assetGenerationPolicy || {};
     if (Number(a.coverCandidateCount) !== 3) errors.push('assetGenerationPolicy.coverCandidateCount muss 3 sein.');
     requireTrue(errors, a.coverSelectionRequired, 'assetGenerationPolicy.coverSelectionRequired');
-    if (a.selectedCoverFinalName !== 'Bild 01.png') errors.push('assetGenerationPolicy.selectedCoverFinalName muss Bild 01.png sein.');
+    const expectedCoverName = Number(meta.assetGenerationPolicyVersion) >= 2 ? 'THUMBNAIL.png' : 'Bild 01.png';
+    if (a.selectedCoverFinalName !== expectedCoverName) errors.push(`assetGenerationPolicy.selectedCoverFinalName muss ${expectedCoverName} sein.`);
+    if (Number(meta.assetGenerationPolicyVersion) >= 2) {
+      requireTrue(errors, a.coverGeneratedOnlyForExport, 'assetGenerationPolicy.coverGeneratedOnlyForExport');
+      requireTrue(errors, a.firstVideoImageMustBeNormal, 'assetGenerationPolicy.firstVideoImageMustBeNormal');
+      if (a.separateCoverFinalPath !== '03-export/THUMBNAIL.png') errors.push('Cover V2: separater Cover-Pfad fehlt.');
+    }
     requireTrue(errors, a.discardUnselectedCoverCandidates, 'assetGenerationPolicy.discardUnselectedCoverCandidates');
     if (Number(a.nonCoverGenerationCount) !== 1) errors.push('assetGenerationPolicy.nonCoverGenerationCount muss 1 sein.');
     requireTrue(errors, a.nonCoverManualWaveReviewForbidden, 'assetGenerationPolicy.nonCoverManualWaveReviewForbidden');
@@ -306,14 +319,15 @@ async function main() {
   ];
   if (schema >= 7) {
     requiredPromptMarkers.push(
-      `COVER_POLICY_VERSION: ${policy.coverPolicyVersion}`,
-      'FIRST SCENE = COVER HARD LOCK',
-      'Bild 01 is the cover AND the first video scene'
+      `COVER_POLICY_VERSION: ${meta.coverPolicyVersion}`,
+      ...(Number(meta.coverPolicyVersion) >= 2
+        ? ['SEPARATE COVER — EXPORT ONLY HARD LOCK', 'BILD 01 = NORMAL FIRST SCENE HARD LOCK', '03-export/THUMBNAIL.png']
+        : ['FIRST SCENE = COVER HARD LOCK', 'Bild 01 is the cover AND the first video scene'])
     );
   }
   if (schema >= 9) {
     requiredPromptMarkers.push(
-      `ASSET_GENERATION_POLICY_VERSION: ${policy.assetGenerationPolicyVersion}`,
+      `ASSET_GENERATION_POLICY_VERSION: ${meta.assetGenerationPolicyVersion}`,
       'COVER = 3 CANDIDATES HARD LOCK',
       'NON-COVER = SINGLE GENERATION HARD LOCK',
       'FINAL IMAGE FOLDER HARD LOCK',
@@ -350,6 +364,11 @@ async function main() {
     );
   }
   for (const marker of requiredPromptMarkers) if (!prompt.includes(marker)) errors.push(`Masterprompt fehlt Pflichtmarker: ${marker}`);
+  if (Number(meta.coverPolicyVersion) >= 2) {
+    if (/Bild 01 is the cover AND the first video scene|Bild 01.*cover AND.*first video scene/i.test(prompt)) errors.push('Cover V2: Masterprompt enthält veraltete Cover-als-Szene-Anweisung.');
+    const firstBlock = prompt.match(/(?:^|\n)BILD 01\s*·[^\n]*\n[\s\S]*?(?=\nBILD 02\s*·|\n={10,}|$)/i)?.[0] || '';
+    if (/Cover\s*\+\s*erste Videoszene|Render only[^\n]*Cover|COVER HEADLINE/i.test(firstBlock)) errors.push('Cover V2: Bild 01 darf keine Cover-Überschrift enthalten.');
+  }
 
   const stalePatterns = [
     /MASTER-REFERENCE-REGEL/i,
@@ -409,7 +428,7 @@ async function main() {
   }
 
   const topicText = schema >= 8 ? ', Themen-Editor FREI' : '';
-  const assetText = schema >= 9 ? `, Asset Generation Policy V${policy.assetGenerationPolicyVersion}` : '';
+  const assetText = schema >= 9 ? `, Asset Generation Policy V${meta.assetGenerationPolicyVersion}` : '';
   const openingText = usesScriptOpeningV1 ? `, Script Opening V${policy.scriptOpeningPolicyVersion}` : '';
   const relevanceText = usesTopicVisualRelevanceV1
     ? `, Scene Illustration V${policy.sceneIllustrationPolicyVersion}, Topic Relevance V${policy.topicVisualRelevancePolicyVersion}, End Hold V${policy.endHoldPolicyVersion}`
@@ -420,7 +439,7 @@ async function main() {
     : schema === 9
       ? 'Serious-Minimal-Countryball V4 (Legacy Schema 9)'
       : `Legacy Visual Policy V${meta.visualPolicyVersion}`;
-  console.log(`YouTube Phase-1-Policy: BESTANDEN — ${visualLabel}${openingText}${relevanceText}${flexibilityText}, Cover Policy V${policy.coverPolicyVersion}${topicText}${assetText}, Kanalfokus und Session-Schutz sind aktiv.`);
+  console.log(`YouTube Phase-1-Policy: BESTANDEN — ${visualLabel}${openingText}${relevanceText}${flexibilityText}, Cover Policy V${meta.coverPolicyVersion}${topicText}${assetText}, Kanalfokus und Session-Schutz sind aktiv.`);
 }
 
 main().catch((error) => {
