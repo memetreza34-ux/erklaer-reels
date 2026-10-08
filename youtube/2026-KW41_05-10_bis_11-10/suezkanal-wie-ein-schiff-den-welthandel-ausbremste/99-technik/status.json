@@ -30,12 +30,18 @@
     "finalImageDirectory": "00-bildprompts/images",
     "imagesReady": false,
     "audioReady": false,
-    "freshFlowSessionRequired": true
+    "freshFlowSessionRequired": true,
+    "selectedCoverFinalName": "THUMBNAIL.png",
+    "separateCoverFinalPath": "03-export/THUMBNAIL.png",
+    "coverExcludedFromTimeline": true,
+    "coverFile": "03-export/THUMBNAIL.png"
   },
   "phase3": {
     "status": "BLOCKED-WAITING-PHASE2",
     "renderReady": false,
     "endHoldSeconds": 1.3
   },
-  "readyForAssetGeneration": true
+  "readyForAssetGeneration": true,
+  "coverPolicyVersion": 2,
+  "assetGenerationPolicyVersion": 2
 }

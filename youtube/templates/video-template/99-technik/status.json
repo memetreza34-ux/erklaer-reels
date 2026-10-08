@@ -1,7 +1,7 @@
 {
   "schemaVersion": 9,
   "productionRulesVersion": 2,
-  "assetGenerationPolicyVersion": 1,
+  "assetGenerationPolicyVersion": 2,
   "currentPhase": 1,
   "phase1": {
     "owner": "ChatGPT",
@@ -26,7 +26,7 @@
     "singleFinalAudio": "missing",
     "coverCandidateCount": 3,
     "coverSelectionRequired": true,
-    "selectedCoverFinalName": "Bild 01.png",
+    "selectedCoverFinalName": "THUMBNAIL.png",
     "discardUnselectedCoverCandidates": true,
     "nonCoverGenerationCount": 1,
     "manualWaveReview": false,
@@ -35,7 +35,9 @@
     "renameEachFinalImageExactlyOnce": true,
     "flatImageDirectory": "00-bildprompts/images",
     "finalImagesFlatInSingleFolder": true,
-    "temporaryCoverCandidatesForbiddenInFinalFolder": true
+    "temporaryCoverCandidatesForbiddenInFinalFolder": true,
+    "separateCoverFinalPath": "03-export/THUMBNAIL.png",
+    "coverExcludedFromTimeline": true
   },
   "phase3": {
     "owner": "Antigravity",
@@ -79,5 +81,6 @@
     "FINAL_TIMELINE.json is missing",
     "adaptive pacing V2 gate does not exit 0",
     "pre-render hard gate does not exit 0"
-  ]
+  ],
+  "coverPolicyVersion": 2
 }

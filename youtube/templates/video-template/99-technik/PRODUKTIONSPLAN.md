@@ -2,7 +2,7 @@
 
 **Für neue Schema-9+-Projekte.**
 
-Verbindlich zusätzlich lesen: `youtube/YOUTUBE_WORKFLOW.md`, `youtube/YOUTUBE_VISUAL_WORLD.md`, `youtube/ADAPTIVE_PACING_V2.md`.
+Verbindlich zusätzlich lesen: `youtube/YOUTUBE_WORKFLOW.md`, `youtube/YOUTUBE_VISUAL_WORLD.md`, `youtube/ADAPTIVE_PACING_V3.md`.
 
 ## Thema + Recherche
 
@@ -24,7 +24,7 @@ Keine sichtbaren Script-Parts, Audio-Parts oder 10er-Bildordner.
 
 ## Bildplanung
 
-- **Bild 01 = Cover + erste Videoszene**
+- **Bild 01 = normale erste Videoszene; separates Cover nur unter 03-export/THUMBNAIL.png**
 - kein Bild 00
 - Bild 01 bis Bild NN bilden die komplette Timeline
 - 1 Bild = 1 klarer visueller Zweck
@@ -38,7 +38,7 @@ A–E:
 - D komplex: 9–12 s
 - E sehr komplex: 12–15 s
 
-## Visual Policy V4
+## Visual Policy V5
 
 Aktive YouTube-Style-ID:
 
@@ -79,14 +79,14 @@ Cover:
 ```text
 Bild 01 exakt 3× erzeugen
 → genau 1 Gewinner auswählen
-→ Gewinner einmal zu Bild 01.png umbenennen
+→ Gewinner einmal zu THUMBNAIL.png umbenennen
 → andere 2 Kandidaten verwerfen
 ```
 
 Nicht-Cover:
 
 ```text
-Bild 02–NN jeweils exakt 1×
+Bild 01–NN jeweils exakt 1×
 → keine Varianten
 → keine manuellen Review-Stopps nach 5er-Gruppen
 → jedes Bild einmal korrekt benennen

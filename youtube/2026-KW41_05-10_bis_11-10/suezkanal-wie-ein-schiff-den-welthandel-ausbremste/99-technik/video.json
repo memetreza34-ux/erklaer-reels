@@ -11,8 +11,8 @@
   "visualFlexibilityPolicyVersion": 1,
   "endHoldPolicyVersion": 1,
   "explicitScriptOpeningOverride": false,
-  "coverPolicyVersion": 1,
-  "assetGenerationPolicyVersion": 1,
+  "coverPolicyVersion": 2,
+  "assetGenerationPolicyVersion": 2,
   "complexityPacingVersion": 2,
   "videoId": "2026-KW41_suezkanal-wie-ein-schiff-den-welthandel-ausbremste",
   "weekFolder": "2026-KW41_05-10_bis_11-10",
@@ -39,18 +39,20 @@
     "schoolbookDefinitionLeadForbidden": true
   },
   "coverPolicy": {
-    "firstSceneIsCover": true,
-    "coverImageNumber": 1,
-    "coverMustBeFirstTimelineImage": true,
-    "coverMustAlsoBeThumbnailSource": true,
-    "separateThumbnailImageForbidden": true,
+    "firstSceneIsCover": false,
+    "firstSceneMustBeNormal": true,
+    "separateCoverRequired": true,
+    "coverExcludedFromTimeline": true,
+    "coverOnlyInExport": true,
+    "thumbnailFile": "03-export/THUMBNAIL.png",
+    "firstVideoImageNumber": 1,
     "image00Forbidden": true,
     "headlineRequired": true
   },
   "assetGenerationPolicy": {
     "coverCandidateCount": 3,
     "coverSelectionRequired": true,
-    "selectedCoverFinalName": "Bild 01.png",
+    "selectedCoverFinalName": "THUMBNAIL.png",
     "discardUnselectedCoverCandidates": true,
     "nonCoverGenerationCount": 1,
     "nonCoverManualWaveReviewForbidden": true,
@@ -59,7 +61,10 @@
     "renameEachFinalImageExactlyOnce": true,
     "finalImagesFlatInSingleFolder": true,
     "finalImageDirectory": "00-bildprompts/images",
-    "temporaryCoverCandidatesForbiddenInFinalFolder": true
+    "temporaryCoverCandidatesForbiddenInFinalFolder": true,
+    "separateCoverFinalPath": "03-export/THUMBNAIL.png",
+    "firstVideoImageMustBeNormal": true,
+    "coverGeneratedOnlyForExport": true
   },
   "sessionPolicy": {
     "freshFlowSessionRequiredWhenVisualPolicyChanges": true,

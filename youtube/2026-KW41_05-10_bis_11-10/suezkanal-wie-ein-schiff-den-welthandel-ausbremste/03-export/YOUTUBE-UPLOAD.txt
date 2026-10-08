@@ -1,3 +1,7 @@
+TITEL
+Wie ein Schiff den Welthandel ausbremste – der Suezkanal erklärt
+
+BESCHREIBUNG
 Am 23. März 2021 bleibt die „Ever Given“ im Suezkanal stecken. Rund sechs Tage können Schiffe diesen Abschnitt nicht passieren. Wie konnte ein einziges Containerschiff den internationalen Handel so stark durcheinanderbringen?
 
 Wir verfolgen die Route zwischen Asien und Europa, vergleichen sie mit der Umfahrung Afrikas und erklären, warum Verzögerungen sich durch Häfen, Fabriken und Lieferketten fortsetzen können. Dazu gehört die Geschichte des Kanals: Bau und Eröffnung 1869, Suezkrise 1956, Schließung 1967 bis 1975 und die Bergung der Ever Given 2021.
@@ -12,3 +16,6 @@ UNCTAD zum Welthandel 2023: https://unctad.org/news/red-sea-black-sea-and-panama
 UNCTAD zu Umwegen: https://unctad.org/system/files/official-document/rmt2024_en.pdf
 
 #Suezkanal #EverGiven #Welthandel #Geschichte
+
+CAPTION
+Ein einziges Containerschiff versperrt den Suezkanal – und aus einem lokalen Unfall wird ein globales Lieferkettenproblem. Warum eine so kleine Engstelle so große Auswirkungen hat, zeigt dieses Video.

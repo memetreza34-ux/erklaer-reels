@@ -2,8 +2,8 @@
   "schemaVersion": 4,
   "project": "",
   "voiceoverMaster": "01-voice-script/voice-script.txt",
-  "coverImageNumber": 1,
-  "thumbnailImageNumber": 1,
+  "coverImageNumber": null,
+  "thumbnailImageNumber": null,
   "videoFirstImageNumber": 1,
   "videoLastImageNumber": null,
   "cutLeadSecondsDefault": 0.08,
@@ -17,14 +17,17 @@
     "audioIsFinalTimingAuthority": true,
     "noGaps": true,
     "noOverlaps": true,
-    "firstSceneIsCover": true,
-    "coverMustBeFirstTimelineImage": true,
-    "coverAlsoUsedAsThumbnail": true,
-    "separateThumbnailImageForbidden": true,
+    "firstSceneIsCover": false,
+    "coverMustBeFirstTimelineImage": false,
+    "coverAlsoUsedAsThumbnail": false,
+    "separateThumbnailImageForbidden": false,
     "image00ForbiddenForNewProjects": true,
     "imageEndsAtNextImageStart": true,
     "doNotGuessMissingAnchor": true,
-    "phase1ComplexityControlsAnchorDensity": true
+    "phase1ComplexityControlsAnchorDensity": true,
+    "separateCoverRequired": true,
+    "coverExcludedFromTimeline": true,
+    "firstVideoImageMustBeNormal": true
   },
   "images": [
     {
@@ -35,13 +38,14 @@
       "audioPartFile": "02-audio/voiceover-final.wav",
       "startAnchor": "[exakte erste gesprochene Wörter aus voice-script.txt]",
       "endAnchor": "[startAnchor von Bild 02]",
-      "visualPurpose": "Cover + erste Videoszene: starke Titelidee und gleichzeitig die erste gesprochene Aussage visuell tragen",
+      "visualPurpose": "Normale erste Videoszene passend zum ersten Sprecherabschnitt, ohne Cover-Typografie.",
       "complexityLevel": "B",
-      "complexityReason": "Cover braucht starke Hierarchie, Titel und sofort verständliche erste Aussage.",
+      "complexityReason": "Erste Szene trägt den Hook ohne Covertext.",
       "plannedHoldSeconds": 6,
       "actualStartSeconds": null,
       "actualEndSeconds": null,
       "alignmentConfidence": null
     }
-  ]
+  ],
+  "separateThumbnailFile": "03-export/THUMBNAIL.png"
 }
