@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Repository auschecken
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Node.js einrichten
         uses: actions/setup-node@v4
@@ -22,6 +24,13 @@ jobs:
 
       - name: Abhängigkeiten reproduzierbar installieren
         run: npm ci --no-audit --no-fund
+
+      - name: Bestehende Videoprojekte vor unbeauftragten Änderungen schützen
+        if: github.event_name == 'pull_request'
+        env:
+          VIDEO_CHANGE_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          VIDEO_CHANGE_PR_BODY: ${{ github.event.pull_request.body }}
+        run: node scripts/guard-existing-video-projects.js
 
       - name: Tests ausführen
         shell: bash

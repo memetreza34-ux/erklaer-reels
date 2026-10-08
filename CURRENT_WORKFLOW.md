@@ -4,6 +4,19 @@
 
 Diese Datei ist die verbindliche Repo-weite Produktionsregel für neue Reels. YouTube besitzt einen eigenen Produktionsworkflow und darf die Reel-Bildwelt oder Reel-Produktionsregeln nicht verändern.
 
+## REPO-VERBESSERUNGEN OHNE VIDEOÄNDERUNGEN — HARTE GRENZE
+
+Die allgemeine Änderungsregel für alle Reels und YouTube-Projekte steht in `docs/CHANGE_SAFETY_POLICY.md`. Sie gilt auch für ChatGPT, Codex, Claude und Antigravity.
+
+- Feedback, Analyse, Qualitätsverbesserung und „Repo verbessern“ bedeuten: **nur die wiederverwendbare Pipeline, Vorlagen, Regeln und Tests für zukünftige Produktionen** ändern.
+- **Bestehende einzelne Videoprojekte (auch Skripte, Prompts, Bildpläne, Metadaten, Cover, Exporte) niemals nachträglich ändern**, es sei denn, der Nutzer verlangt genau das ausdrücklich.
+- Bestehende Projektdateien nicht still migrieren oder als „Beispiel“ mitbearbeiten. Ein neu angelegtes Video auf ausdrücklichen Auftrag ist keine rückwirkende Videoänderung.
+- Jede Verbesserung muss ein konkretes Problem lösen, einen nachvollziehbaren Nutzen haben und gegenüber dem Risiko verhältnismäßig sein. Ohne belegbaren Mehrwert **keine Änderung**.
+- Minimaler Änderungsumfang: keine unnötigen Refactorings, neuen Features oder Änderungen an der anderen Pipeline. Alte Videos und bestehende Schnittstellen bleiben nutzbar.
+- Vor Merge: Diff prüfen, relevante Regressionstests und `npm test` müssen grün sein. Nicht ausgeführte Prüfungen niemals als bestanden behaupten.
+- CI blockiert PRs, die bestehende Videoprojekte anfassen, solange kein konkret dokumentierter ausdrücklicher Nutzerauftrag für den exakten Projektordner im PR steht.
+
+
 ## Priorität
 
 1. aktuelle ausdrückliche Nutzeranweisung
