@@ -1,0 +1,477 @@
+{
+  "schemaVersion": 1,
+  "topic": "Suezkanal, Ever Given 2021 und seine Bedeutung für den Welthandel",
+  "title": "Suezkanal: Wie ein Schiff den Welthandel ausbremste",
+  "createdAt": "2026-10-08",
+  "shots": [
+    {
+      "imageNumber": 1,
+      "narration": "Am 23. März 2021 fährt ein gewaltiges Containerschiff durch den Suezkanal in Ägypten.",
+      "visualForm": "full-scene",
+      "sceneDescription": "Wide aerial 2D illustration of a giant container ship navigating the narrow Egyptian Suez Canal surrounded by pale desert shores; dramatic daylight; distinct waterway bends.",
+      "visibleGermanText": "23. MÄRZ 2021"
+    },
+    {
+      "imageNumber": 2,
+      "narration": "Dann gerät die Ever Given quer zur Fahrtrichtung und steckt zwischen den Ufern fest.",
+      "visualForm": "full-scene",
+      "sceneDescription": "Top down oblique scene of container vessel Ever Given wedged diagonally across narrow canal, bow touching eastern sandy bank, stern toward western bank; clear blocked water path.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 3,
+      "narration": "Vor ihr liegt Wasser. Hinter ihr liegt Wasser. Trotzdem kommt kein anderes Schiff vorbei.",
+      "visualForm": "map-only",
+      "sceneDescription": "Clear overhead single-channel waterway diagram with one sideways enormous container ship across full passage and waiting ships on both sides, no unnecessary arrows.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 4,
+      "narration": "Was wie eine einzelne Panne aussieht, löst einen Stau aus, der weit über Ägypten hinausreicht.",
+      "visualForm": "multi-element",
+      "sceneDescription": "Illustrated perspective expanding from grounded Suez ship in Egypt out toward distant European and Asian ports, connecting paths turn red at the bottleneck.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 5,
+      "narration": "Am Ende warten mehr als 400 Schiffe, beladen mit Waren für ganz unterschiedliche Länder.",
+      "visualForm": "full-scene",
+      "sceneDescription": "Long perspective queue of varied cargo ships approaching Suez entrance, tightly staggered in the sea; one grounded ship visible far ahead, no humans.",
+      "visibleGermanText": "ÜBER 400 SCHIFFE"
+    },
+    {
+      "imageNumber": 6,
+      "narration": "Sechs Tage lang bleibt dieser wichtige Weg blockiert, bis Schlepper und Bagger die Ever Given befreien.",
+      "visualForm": "full-scene",
+      "sceneDescription": "Salvage illustration: tugboats pulling vessel at different angles, dredging equipment removing sandy bank, ship beginning to float back toward canal center.",
+      "visibleGermanText": "6 TAGE"
+    },
+    {
+      "imageNumber": 7,
+      "narration": "Der Welthandel hört deshalb nicht vollständig auf. Aber viele Lieferungen verlieren plötzlich ihren geplanten Zeitvorsprung.",
+      "visualForm": "simple-schema",
+      "sceneDescription": "Side-by-side shipping schedule: efficient green route timeline suddenly delayed in orange because of a canal blockade, global ship paths still moving elsewhere.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 8,
+      "narration": "Entscheidend ist die Frage, warum ausgerechnet dieser schmale Wasserstreifen so viel Macht über Transportwege besitzt.",
+      "visualForm": "map-only",
+      "sceneDescription": "Zoom from whole globe to tiny cut across Egyptian isthmus with bold spotlight at Suez linking Red Sea and Mediterranean, visually conveying leverage.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 9,
+      "narration": "Dafür müssen wir auf eine Weltkarte schauen und zwei sehr unterschiedliche Wege vergleichen.",
+      "visualForm": "map-only",
+      "sceneDescription": "Global map Europe Asia Africa with Mediterranean Red Sea and Cape of Good Hope highlighted, no countryballs or fake geography, precise coastlines.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 10,
+      "narration": "Ein Schiff aus Asien will Waren nach Europa bringen. Der direkte Seeweg führt zunächst durch den Indischen Ozean.",
+      "visualForm": "map-only",
+      "sceneDescription": "Sea route from East Asian shipping port across Indian Ocean toward Arabian Sea, bright blue directional route on accurate simplified map.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 11,
+      "narration": "Anschließend fährt es durch das Rote Meer, durch den Suezkanal und schließlich ins Mittelmeer.",
+      "visualForm": "map-only",
+      "sceneDescription": "Focused accurate route from Gulf of Aden north through Red Sea Suez Canal Mediterranean toward European harbor, clean flowing cyan navigation line.",
+      "visibleGermanText": "ROTES MEER"
+    },
+    {
+      "imageNumber": 12,
+      "narration": "Ohne den Kanal müsste es Afrika weit im Süden umrunden, bevor es europäische Häfen erreichen kann.",
+      "visualForm": "map-only",
+      "sceneDescription": "Comparative maritime route traced around south tip of Africa versus short Suez route, orange long path vs cyan short path, legible geographic proportions.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 13,
+      "narration": "Diese Ausweichroute führt am Kap der Guten Hoffnung vorbei. Sie kostet je nach Strecke zusätzliche Tage.",
+      "visualForm": "map-only",
+      "sceneDescription": "Detailed southern Africa map marking Cape of Good Hope, freight ship offshore and longer curved orange shipping lane along western African coast.",
+      "visibleGermanText": "KAP DER GUTEN HOFFNUNG"
+    },
+    {
+      "imageNumber": 14,
+      "narration": "Für eine beispielhafte Fahrt von Shenzhen nach Rotterdam nennt die UN rund zehn zusätzliche Tage beim Umweg.",
+      "visualForm": "map-only",
+      "sceneDescription": "World map emphasizing Shenzhen-to-Rotterdam maritime voyage alternatives; clean two timeline tracks labeled 31 and 41 days, separated visually.",
+      "visibleGermanText": "31 ODER 41 TAGE"
+    },
+    {
+      "imageNumber": 15,
+      "narration": "Der Suezkanal ist also keine Abkürzung auf einer Landkarte, sondern eine Abkürzung für ganze Lieferketten.",
+      "visualForm": "multi-element",
+      "sceneDescription": "Single cargo container moving from Asian port to European factory through interconnected maritime route, canal highlighted as shortest link in chain.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 16,
+      "narration": "Ein Hafen kann Schiffe entladen. Eine Fabrik kann ihre Bauteile aber erst nutzen, wenn sie tatsächlich ankommen.",
+      "visualForm": "full-scene",
+      "sceneDescription": "Port cranes unloading containers linked via rail to an illustrated car factory in Europe, absent components visualized as an empty marked pallet.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 17,
+      "narration": "Kommt eine Lieferung verspätet, muss die Produktion womöglich warten oder teurere Ersatztransporte organisieren.",
+      "visualForm": "cause-effect",
+      "sceneDescription": "Cause and effect composition: late shipping container at left, stalled car factory conveyor at right, simple clear dotted connection, no human actors.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 18,
+      "narration": "Auch im Handel entstehen Probleme, weil Lager und Verkaufstermine längst auf geplante Ankünfte abgestimmt sind.",
+      "visualForm": "multi-element",
+      "sceneDescription": "Warehouse shelves with empty reserved slots, cargo manifest calendar, distant shipping containers waiting on harbor quay, all integrated in one perspective.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 19,
+      "narration": "Und wenn ein Schiff länger unterwegs ist, fallen häufig höhere Kosten für Treibstoff und Betrieb an.",
+      "visualForm": "object-only",
+      "sceneDescription": "Large merchant ship sailing along long curved course with visible fuel tank gauge and rising distance line, no unrelated price icons.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 20,
+      "narration": "Diese Mehrkosten treffen zunächst Reedereien und Unternehmen, können aber später auch bei Kunden ankommen.",
+      "visualForm": "cause-effect",
+      "sceneDescription": "Stacked clear chain from ship operating costs to product supply chain invoice to shelf price, minimalist physically linked objects rather than icon collage.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 21,
+      "narration": "Das bedeutet nicht, dass durch jeden Stau sofort alle Preise steigen. Entscheidend sind Ware, Nachfrage und Dauer.",
+      "visualForm": "simple-schema",
+      "sceneDescription": "Comparative two product shipments: one unaffected with stocked warehouse and one delayed with supply shortage; nuanced different outcomes, no sweeping global price claim.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 22,
+      "narration": "Trotzdem zeigt die Blockade, wie verletzlich ein System wird, wenn sehr viele Transporte dieselbe Engstelle nutzen.",
+      "visualForm": "map-only",
+      "sceneDescription": "Multiple Asia-Europe shipping paths converge to a single tight Suez canal chokepoint, thin routes crowding one narrow passage.",
+      "visibleGermanText": "ENGSTELLE"
+    },
+    {
+      "imageNumber": 23,
+      "narration": "Solche Stellen heißen in der Schifffahrt Engpässe. Ihre Bedeutung entsteht nicht durch Größe, sondern durch Lage.",
+      "visualForm": "map-only",
+      "sceneDescription": "Accurate world map marking Suez choke, Strait of Gibraltar and Strait of Malacca as examples without claims of equal vulnerability, Suez spotlight dominates.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 24,
+      "narration": "Nach Angaben der Vereinten Nationen liefen 2023 ungefähr zwölf bis fünfzehn Prozent des weltweiten Handels durch Suez.",
+      "visualForm": "simple-schema",
+      "sceneDescription": "One balanced bar representing approximate global trade 2023, highlighted modest 12-15 percent channel share with non-misleading remainder, maritime canal silhouette.",
+      "visibleGermanText": "12–15 % (2023)"
+    },
+    {
+      "imageNumber": 25,
+      "narration": "Das ist ein Anteil aus einem bestimmten Jahr, keine unveränderliche Zahl für jede spätere Krise.",
+      "visualForm": "simple-schema",
+      "sceneDescription": "Two clear year-specific shipping flow bars, 2023 reference emphasized and later variability indicated without fabricated newer percentages.",
+      "visibleGermanText": "2023"
+    },
+    {
+      "imageNumber": 26,
+      "narration": "Damit wird klar: Ein blockierter Kanal stört vor allem bestimmte Handelsrouten, kann ihre Folgen aber weitergeben.",
+      "visualForm": "map-only",
+      "sceneDescription": "Map with thicker impact lines on Asia-Europe maritime lane, thinner secondary links toward European logistics hubs, no claim of all trade stopped.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 27,
+      "narration": "Warum wurde dieser kritische Weg überhaupt gebaut? Die Antwort führt zurück ins neunzehnte Jahrhundert.",
+      "visualForm": "document-only",
+      "sceneDescription": "Antique 19th-century Egyptian survey map unfurled flat with proposed north-south water cut across Isthmus of Suez, historical paper design.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 28,
+      "narration": "Vor dem Kanal mussten europäische Schiffe auf dem Seeweg nach Asien oft den langen Bogen um Afrika nehmen.",
+      "visualForm": "map-only",
+      "sceneDescription": "Nineteenth century stylized but accurate sea-chart showing sailing route around southern Africa and absent modern Suez cut, elegant vintage line work.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 29,
+      "narration": "Ein Kanal zwischen Mittelmeer und Rotem Meer versprach deshalb kürzere Reisen und wirtschaftlichen Einfluss.",
+      "visualForm": "map-only",
+      "sceneDescription": "Egyptian isthmus map before construction, dotted proposed manmade connection between Mediterranean and Red Sea, side note ports without fake topography.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 30,
+      "narration": "1859 begannen die Bauarbeiten. Für viele ägyptische Arbeiter waren die Bedingungen schwer und gefährlich.",
+      "visualForm": "full-scene",
+      "sceneDescription": "Historical earthworks canal cutting scene without human figures: excavated sand banks, primitive digging equipment, harsh desert conditions, abandoned tools only.",
+      "visibleGermanText": "1859"
+    },
+    {
+      "imageNumber": 31,
+      "narration": "Am 17. November 1869 wurde der Suezkanal eröffnet. Die Verbindung veränderte Handelswege zwischen Europa und Asien.",
+      "visualForm": "map-only",
+      "sceneDescription": "Timeline map opening in 1869, Mediterranean and Red Sea newly connected by bright straight canal water corridor, ship silhouettes appear.",
+      "visibleGermanText": "1869"
+    },
+    {
+      "imageNumber": 32,
+      "narration": "Doch die Frage war von Anfang an politisch: Wer bestimmt über die Verbindung und über ihre Einnahmen?",
+      "visualForm": "document-only",
+      "sceneDescription": "Historical concession papers and canal company share certificates next to detailed Egyptian canal map, stakes over control, all labels German.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 33,
+      "narration": "Lange spielte eine von britischen und französischen Interessen geprägte Gesellschaft bei der Verwaltung die zentrale Rolle.",
+      "visualForm": "document-only",
+      "sceneDescription": "Nineteenth-century Suez Canal Company document, paired British and French stakeholder seals and Egyptian territory map, careful ownership nuance.",
+      "visibleGermanText": "KANALGESELLSCHAFT"
+    },
+    {
+      "imageNumber": 34,
+      "narration": "Der Kanal lag jedoch auf ägyptischem Gebiet. Genau dieser Gegensatz wurde später zu einem großen Konflikt.",
+      "visualForm": "map-only",
+      "sceneDescription": "Egypt country silhouette and canal bright cyan inside its borders while external concession paperwork overlaps at edge; territorial-versus-commercial contrast.",
+      "visibleGermanText": "ÄGYPTEN"
+    },
+    {
+      "imageNumber": 35,
+      "narration": "Am 26. Juli 1956 verstaatlichte Präsident Gamal Abdel Nasser die Kanalgesellschaft.",
+      "visualForm": "document-only",
+      "sceneDescription": "Egyptian nationalization decree on 1956 period paper and map of Suez, one clear large date and Egypt flag as national authority symbol.",
+      "visibleGermanText": "26. JULI 1956"
+    },
+    {
+      "imageNumber": 36,
+      "narration": "Damit sollte die Kontrolle bei Ägypten liegen. Zugleich wollte Nasser die Einnahmen für eigene Entwicklungsprojekte nutzen.",
+      "visualForm": "cause-effect",
+      "sceneDescription": "Canal toll ship passage money flows toward Egyptian dam construction blueprint in period illustration, historical strategy without showing people.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 37,
+      "narration": "Großbritannien und Frankreich sahen dadurch ihren Einfluss und ihre Interessen bedroht. Der Streit eskalierte rasch.",
+      "visualForm": "multi-element",
+      "sceneDescription": "Three symbolic countryball governments Britain France and Egypt facing canal-shaped strategic map, clear serious tensions no caricature.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 38,
+      "narration": "Noch 1956 griff Israel Ägypten an. Großbritannien und Frankreich intervenierten militärisch; die Suezkrise wurde international.",
+      "visualForm": "map-only",
+      "sceneDescription": "Geopolitical map Egypt Sinai Israel Mediterranean with period arrows for 1956 military conflict, restrained non-graphic war geography and distinct dates.",
+      "visibleGermanText": "SUEZKRISE 1956"
+    },
+    {
+      "imageNumber": 39,
+      "narration": "Unter internationalem Druck mussten die Angreifer schließlich abziehen. Der Kanal blieb politisch hochsensibel.",
+      "visualForm": "map-only",
+      "sceneDescription": "Same regional map after intervention with military movement arrows retracting from canal, Egyptian jurisdiction shown clearly, avoid simplistic victory symbolism.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 40,
+      "narration": "Ein paar Jahrzehnte später zeigte sich erneut, wie eng Handel und Krieg hier miteinander verbunden sind.",
+      "visualForm": "simple-schema",
+      "sceneDescription": "Timeline bridge from 1956 crisis to later closure in 1967, canal highlighted at both markers, spare illustration.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 41,
+      "narration": "Nach dem Krieg von 1967 blieb der Suezkanal jahrelang geschlossen. Erst 1975 wurde er wieder geöffnet.",
+      "visualForm": "map-only",
+      "sceneDescription": "Canal map with red closure barrier from 1967 to 1975, reopening gate in final year, accurate Egyptian geography.",
+      "visibleGermanText": "1967–1975"
+    },
+    {
+      "imageNumber": 42,
+      "narration": "Acht Jahre ohne Durchfahrt machten sichtbar: Die Welt kann ausweichen, doch sie bezahlt mit langen Umwegen.",
+      "visualForm": "map-only",
+      "sceneDescription": "Wide route around Africa illuminated during 1967-1975 canal shutdown, winding orange line adds distance compared to blocked Suez.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 43,
+      "narration": "Trotz dieser Erfahrungen wurde der Kanal weiter ausgebaut, denn der internationale Schiffsverkehr wuchs.",
+      "visualForm": "full-scene",
+      "sceneDescription": "Panorama of modern enlarged Suez Canal with parallel bypass and modern container ships; clear contrast of expanding capacity, not full dual carriageway.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 44,
+      "narration": "Und die Schiffe selbst wurden immer größer. Mehr Ladung pro Fahrt spart Kosten, verlangt aber passende Wasserwege.",
+      "visualForm": "full-scene",
+      "sceneDescription": "Size comparison of early container vessel and huge modern container ship inside channel outline, clear horizontal scale not arbitrary percentages.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 45,
+      "narration": "Damit sind wir wieder im März 2021. Die Ever Given ist rund 400 Meter lang, fast wie ein schwimmendes Gebäude.",
+      "visualForm": "full-scene",
+      "sceneDescription": "Huge 400-meter container ship shown in profile across Egyptian canal bank with simple recognizable distance ruler, no human-scale figures.",
+      "visibleGermanText": "400 METER"
+    },
+    {
+      "imageNumber": 46,
+      "narration": "Bei ihrer Durchfahrt gerät sie seitlich aus der Spur. Starker Wind spielte dabei eine Rolle.",
+      "visualForm": "full-scene",
+      "sceneDescription": "Suez canal crosswind illustration with huge ship turning off center, sandy air gusts and diagonal motion arrows in flat 2D, no definitive sole cause.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 47,
+      "narration": "Warum die Havarie genau geschah, wurde später untersucht. Sie lässt sich nicht seriös auf einen einzigen Faktor reduzieren.",
+      "visualForm": "simple-schema",
+      "sceneDescription": "Nautical investigation document beside crosswind weather diagram and ship steering rudder, multiple possible contributing conditions, no final unproven blame.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 48,
+      "narration": "An dieser Stelle ist der Kanal so eng, dass das querliegende Schiff den Verkehr in beide Richtungen blockiert.",
+      "visualForm": "map-only",
+      "sceneDescription": "Precise top-down Suez southern single-lane cross-section with diagonally stuck Ever Given closing passage both directions, clear water margins.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 49,
+      "narration": "Für wartende Kapitäne gibt es zwei schlechte Möglichkeiten: bleiben oder einen sehr langen Umweg beginnen.",
+      "visualForm": "before-after",
+      "sceneDescription": "Two diverging shipping plans from port: anchored waiting freighters at Suez and rerouted container vessel around Africa, strong clear fork.",
+      "visibleGermanText": "WARTEN ODER UMWEG"
+    },
+    {
+      "imageNumber": 50,
+      "narration": "Viele warten zunächst. Schließlich ist eine tagelange Fahrt um Afrika ebenfalls teuer und bindet ihre Schiffe.",
+      "visualForm": "full-scene",
+      "sceneDescription": "Anchored fleet of freight ships in Red Sea roadstead, stationary anchor symbols connected to calendar page, calm maritime scene.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 51,
+      "narration": "Gleichzeitig versuchen Spezialisten, die Ever Given wieder in die Fahrrinne zu bewegen. Schlepper ziehen am Rumpf.",
+      "visualForm": "full-scene",
+      "sceneDescription": "Close overhead salvage tugboats attached at ship stern and bow, pulling vectors safely away from sand banks, no human figures.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 52,
+      "narration": "Bagger entfernen Sand, der den Bug festhält. Wasserstand und Gezeiten helfen bei der Befreiung mit.",
+      "visualForm": "full-scene",
+      "sceneDescription": "Cutaway shore-level salvage of stuck ship bow, dredger excavating sand and clean rising tide water line, explanatory detail without worker silhouettes.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 53,
+      "narration": "Am 29. März gelingt die Bergung. Der Kanal kann wieder für den Schiffsverkehr geöffnet werden.",
+      "visualForm": "full-scene",
+      "sceneDescription": "Ever Given clear of bank and aligned into canal, tugboats alongside, open water path and queue beginning to advance, morning light.",
+      "visibleGermanText": "29. MÄRZ 2021"
+    },
+    {
+      "imageNumber": 54,
+      "narration": "Doch damit sind die Probleme nicht sofort verschwunden. Hunderte wartende Schiffe müssen nacheinander weiterfahren.",
+      "visualForm": "map-only",
+      "sceneDescription": "Orderly maritime canal convoy clearing massive backlog through single bottleneck, queue reducing across route sequence, no fabricated timings.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 55,
+      "narration": "Ein verspäteter Container kann auch den nächsten Hafen aus dem Rhythmus bringen, weil Termine miteinander verbunden sind.",
+      "visualForm": "cause-effect",
+      "sceneDescription": "One delayed container ship arriving outside port appointment slot causing cascading warehouse rail and vessel schedule shifts, integrated sequential drawing.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 56,
+      "narration": "Hier liegt der eigentliche Punkt: Ein einzelner Vorfall kann eine ganze Kette aus geplanten Abläufen verschieben.",
+      "visualForm": "multi-element",
+      "sceneDescription": "Single grounded ship at left leads through arrowed chain to port crane, railcar, warehouse and factory, interconnected cause effect not collage.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 57,
+      "narration": "Allerdings war die Blockade nicht der erste Hinweis. Bereits 1956 und zwischen 1967 und 1975 hatte Suez Ausfälle erlebt.",
+      "visualForm": "simple-schema",
+      "sceneDescription": "Three different historical disruption dates marked along one illustrated canal route: 1956, 1967–1975, 2021, uncluttered milestone order.",
+      "visibleGermanText": "1956 · 1967 · 2021"
+    },
+    {
+      "imageNumber": 58,
+      "narration": "Und es geht nicht nur um Schiffsunfälle. Auch Konflikte in der Region können Reedereien zu Umwegen bewegen.",
+      "visualForm": "map-only",
+      "sceneDescription": "Red Sea Suez region map with neutral hazard zone near shipping route and safe alternative around Africa, no unverified latest-events text.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 59,
+      "narration": "Seit Ende 2023 haben Angriffe im Roten Meer beispielsweise viele Schifffahrtsunternehmen zur Umleitung ihrer Routen veranlasst.",
+      "visualForm": "map-only",
+      "sceneDescription": "Historically labeled late-2023 Red Sea/Gulf of Aden danger zone and rerouted commercial ship lanes around Cape, neutral symbolic warning markers.",
+      "visibleGermanText": "SEIT ENDE 2023"
+    },
+    {
+      "imageNumber": 60,
+      "narration": "Ein längerer Kurs bedeutet nicht nur mehr Fahrzeit, sondern oft auch höhere Treibstoffkosten und zusätzliche Emissionen.",
+      "visualForm": "cause-effect",
+      "sceneDescription": "Merchant vessel taking long Africa detour with fuel flow and rising exhaust emission trail diagram, factual without invented exact emissions values.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 61,
+      "narration": "Darum können Länder und Unternehmen versuchen, Lieferwege zu verteilen, statt vollständig von einer Route abzuhängen.",
+      "visualForm": "map-only",
+      "sceneDescription": "World maritime network showing several alternative trade route strands for same destination, Suez highlighted but not sole artery, diversifying paths.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 62,
+      "narration": "Das funktioniert nicht immer einfach. Zusätzliche Schiffe, freie Häfen und Ersatzlager entstehen schließlich nicht über Nacht.",
+      "visualForm": "full-scene",
+      "sceneDescription": "Busy container harbor with all berths occupied, waiting supply ships and limited storage yards, visualizing real capacity constraints.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 63,
+      "narration": "Der Suezkanal ist deshalb gleichzeitig eine riesige Erleichterung und ein Risiko für den internationalen Handel.",
+      "visualForm": "before-after",
+      "sceneDescription": "Balanced composition: efficient blue Suez trade route on one side, red bottleneck when disrupted on other, both within same accurate Egyptian map.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 64,
+      "narration": "Seine Stärke ist genau seine Schwäche: Er bündelt Verkehr auf einer kurzen Strecke, die sich kaum ersetzen lässt.",
+      "visualForm": "map-only",
+      "sceneDescription": "Elegant accurate maritime map: dense route bundle into one thin Suez passage, replacement path loops far around Africa, one coherent explanatory image.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 65,
+      "narration": "Das Bild von 2021 ist deshalb mehr als eine Geschichte über ein festgefahrenes Schiff.",
+      "visualForm": "full-scene",
+      "sceneDescription": "Wide view Ever Given freed in canal with transparent global route lines projected across surrounding waters, sober reflective final setup.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 66,
+      "narration": "Es zeigt, wie eng Häfen, Fabriken, Handelswege und politische Entscheidungen heute miteinander verflochten sind.",
+      "visualForm": "multi-element",
+      "sceneDescription": "Synthesis world map from Egyptian Suez focal point: shipping port, Asian manufacturer, European warehouse and policy document integrated as spatial routes.",
+      "visibleGermanText": ""
+    },
+    {
+      "imageNumber": 67,
+      "narration": "Manchmal genügt eine Engstelle, um sichtbar zu machen, wie abhängig die Welt von funktionierenden Verbindungen ist.",
+      "visualForm": "map-only",
+      "sceneDescription": "Final panoramic 16:9 detailed Mediterranean Red Sea Suez map with giant merchant ship moving through narrow open canal, global paths lit, optimistic restrained.",
+      "visibleGermanText": "EINE ENGSTELLE. GROSSE FOLGEN."
+    }
+  ]
+}
