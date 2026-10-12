@@ -56,6 +56,8 @@ Für **neue Reels** und **YouTube-Langvideos** gilt ab 12.10.2026: Politik, Geog
 
 - KW41 (05.10.–11.10.2026): Suezkanal: Wie ein Schiff den Welthandel ausbremste — neue reguläre 6–7-Minuten-Produktion, 67 Bilder, Script Quality V1
 
+- KW42 (12.10.–18.10.2026): Straße von Hormus: Warum die Meerenge die Welt unter Druck setzt — neues Politik-/Geografie-Langvideo, Phase 1, 64 Bilder, Quellenstand 12.10.2026
+
 ## Duplicate-Regel
 
 Nicht nur exakte Titel zählen als doppelt. Auch dieselbe Kernfrage mit anderer Formulierung ist gesperrt.
