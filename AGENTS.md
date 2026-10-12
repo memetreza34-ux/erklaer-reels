@@ -2,6 +2,12 @@
 
 `CURRENT_WORKFLOW.md` ist die verbindliche Single Source of Truth. Bei Widersprüchen gilt immer die dort definierte Priorität.
 
+## Oberste proaktive Aufgabe nach jedem Video: Qualität steigern
+
+**Nach jedem fertiggestellten Video** das tatsächliche Ergebnis prüfen, konkrete Stärken/Schwächen mit Belegen festhalten und die wichtigste sinnvoll lösbare Schwachstelle für **zukünftige** Produktionen in der zentralen Pipeline verbessern. Nicht auf eine zusätzliche Aufforderung zur Analyse warten. Genaue Reihenfolge, Kriterien und Stop-Bedingungen: `docs/POST_VIDEO_IMPROVEMENT.md`. Kein künstlicher Commit, wenn es nichts Sinnvolles zu verbessern gibt.
+
+**Wichtig:** Diese Priorität hebt weder ausdrückliche Nutzeranweisungen noch den Schutz bestehender Videoprojekte oder die Pflicht zu Tests auf. Fertige Videos bleiben unberührt, solange der Nutzer nicht genau deren Bearbeitung beauftragt.
+
 ## Wichtigste Änderungssperre: Repo verbessern, fertige Videos schützen
 
 Vor JEDER Code-, Policy- oder Produktionsoptimierung `docs/CHANGE_SAFETY_POLICY.md` beachten:
