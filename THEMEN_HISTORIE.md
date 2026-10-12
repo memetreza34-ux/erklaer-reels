@@ -12,7 +12,7 @@ npm run topic:youtube -- --topic "NEUES THEMA"
 
 Nur `THEMEN-EDITOR: FREI` / `APPROVED_NEW` erlaubt die Projekterstellung. `ÄHNLICH` und `DOPPELT` blockieren die automatische Erstellung. Der Editor prüft zusätzlich `config/youtube-topic-registry.json` und alle vorhandenen `youtube/**/99-technik/video.json`-Dateien. Dadurch bleibt ein vorhandenes Thema gesperrt, selbst wenn diese Historie versehentlich nicht aktualisiert wurde.
 
-Für **neue Reels** gilt zusätzlich `REEL_THEMENFOKUS.md`: autonom ausgewählt werden vor allem Politik, Geschichte, Geografie, Ideologien/Systeme und passende internationale bzw. staatliche Mechanismen. Ältere Off-Focus-Reels bleiben nur als Historie bestehen.
+Für **neue Reels** und **YouTube-Langvideos** gilt ab 12.10.2026: Politik, Geografie und aktuelle Geopolitik. Eigenständige Geschichte wird nicht mehr autonom ausgewählt. Alte Projekte bleiben ausschließlich als Archiv und zum Duplikatschutz bestehen.
 
 ## Bereits verwendet
 
