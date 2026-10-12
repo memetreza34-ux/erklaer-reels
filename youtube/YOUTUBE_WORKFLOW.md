@@ -15,6 +15,12 @@
 
 Diese Datei gilt ausschließlich für YouTube-Langvideos. Reels bleiben davon getrennt und werden nicht verändert.
 
+## Oberste Qualitätspriorität: aus JEDEM fertigen Langvideo lernen
+
+**Nach jedem fertiggestellten YouTube-Langvideo** zuerst das reale Ergebnis (Hook, Story, Visuals, Timing, Audio, Cover, Metadaten und technische Qualität) soweit verfügbar kritisch prüfen. Die wichtigste belegte, wiederholbare Schwachstelle gezielt in den **zentralen YouTube-Vorlagen, Regeln, Validatoren oder Tests** für künftige Videos beheben, sofern der konkrete Mehrwert das Risiko rechtfertigt.
+
+Pflichtverfahren: `docs/POST_VIDEO_IMPROVEMENT.md`. Bei fehlenden Belegen kein Qualitätsurteil erfinden; bei keinem klaren Mehrwert keine Änderung vornehmen. Die abgeschlossene Video-Produktion bleibt ohne ausdrücklichen Einzelvideo-Auftrag unangetastet. Aktuelle Nutzeranweisungen und Sicherheit haben Vorrang.
+
 ## Repo-Verbesserung schützt einzelne Videos
 
 `docs/CHANGE_SAFETY_POLICY.md` gilt hier als übergreifende Schutzregel. „Verbessere den Kanal/das Repo“ verändert **ausschließlich wiederverwendbare Pipeline-Dateien, Template, Regeln und Tests**, nie automatisch alte oder gerade angelegte einzelne Videoprojekte. Analyse oder Feedback eines gerenderten Videos ist keine Freigabe, das Videoprojekt anzupassen. Nur bei ausdrücklich auf das konkrete Video bezogenem Auftrag ist eine gezielte Projektänderung zulässig.
