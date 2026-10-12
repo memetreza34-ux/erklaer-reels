@@ -17,7 +17,7 @@ test('gefährliche Fake-QC- und Fake-Timing-Helfer bleiben entfernt', async () =
 test('README nennt aktive Reel-Bildwelt, Themenfokus und Simple Mode', async () => {
   const readme = await text('README.md');
   assert.match(readme, /serious-minimal-countryball-explainer/);
-  assert.match(readme, /Politik, Geschichte, Geografie/i);
+  assert.match(readme, /Politik, Geografie/i);
   assert.match(readme, /phase3:reel/);
   assert.match(readme, /Adaptive Dense V2/i);
 });
