@@ -52,21 +52,17 @@ Details: `WORKFLOW_PHASEN.md`.
 npm run import:user-asset -- --dir "<reel>" --source "<datei>" --kind images|audio
 ```
 
-## Themenfokus
+## Themenfokus — neue Videos nur Politik und Geografie
 
-Für autonome neue Reel-Themen gilt `config/reel-topic-focus.json` als Hard Gate.
+**Ab 2026-10-12 keine eigenständigen Geschichtsthemen mehr autonom auswählen.** Neue Reels und YouTube-Langvideos konzentrieren sich auf **Politik, Geografie und aktuelle Geopolitik**. Geschichte ist nur noch kurzer Hintergrund, wenn sie ein heutiges politisches oder geografisches Problem erklärt.
 
-Kern:
-- Politik und Staatssysteme
-- Geschichte
-- Länder, Geografie, Grenzen und Territorien
-- Ideologien und Gesellschaftssysteme
-- internationale Beziehungen / Geopolitik
-- angrenzende Kultur-/Wirtschaftsthemen nur bei natürlichem Länder-, Geschichts- oder Systembezug
+- Reels: `config/reel-topic-focus.json` und `REEL_THEMENFOKUS.md`
+- YouTube-Langvideos: `config/youtube-channel-policy.json`, `youtube/YOUTUBE_WORKFLOW.md` und `youtube/TOPIC_SELECTION_POLICY.md`
+- **Aktuelles Zuschauerinteresse bevorzugen**, Themen vor Freigabe anhand datierter glaubwürdiger Quellen prüfen, keine unbelegten Trend- oder Viralitätsversprechen.
+- Bewährte alte Videoprojekte, historische Themenregister und fertige Dateien bleiben erhalten; sie sind **kein Auftrag für neue Geschichtsvideos**.
+- Ausdrückliche Nutzeranweisungen für ein abweichendes Einzelthema können die autonome Fokusregel übersteuern.
 
-Gesundheit, Medizin, Psychologie, allgemeine Alltags-Warum-Fragen, Lifestyle usw. sind autonom pausiert. Der Nutzer kann sie ausdrücklich wieder anfordern.
 
-Vor jeder Themenwahl `THEMEN_HISTORIE.md` prüfen. Keine doppelte Kernfrage in neuer Formulierung.
 
 ## Reel-Standard
 
