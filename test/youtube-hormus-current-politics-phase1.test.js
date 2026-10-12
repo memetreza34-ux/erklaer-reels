@@ -38,7 +38,7 @@ test('aktuelles Hormus-Video ist ein neues Politik-/Geografie-Projekt mit 64 kon
     assert.ok(script.includes(s.narration),'missing spoken line '+nn);
     assert.ok(script.includes(m.startAnchor),'missing audio anchor '+nn);
     assert.ok(prompt.includes('BILD '+nn+' ·'),'missing image '+nn);
-    assert.match(s.sceneDescription,/[A-Za-z]{12}/);
+    assert.ok(s.sceneDescription.trim().split(/\s+/).length>=10,'scene description too vague '+nn);
     assert.ok(s.visualForm);
     assert.ok(s.sceneDescription.length>=55);
   }
