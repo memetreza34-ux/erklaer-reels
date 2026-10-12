@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "timingSource": "FINAL_TIMELINE.json",
+  "chapters": [
+    {
+      "imageNumber": 1,
+      "title": "Die neuen Angriffe"
+    },
+    {
+      "imageNumber": 9,
+      "title": "Die Geografie der Engstelle"
+    },
+    {
+      "imageNumber": 18,
+      "title": "Warum so viel Öl dort entlangfährt"
+    },
+    {
+      "imageNumber": 27,
+      "title": "Warum die Krise politisch ist"
+    },
+    {
+      "imageNumber": 36,
+      "title": "Weshalb Tanker nicht einfach ausweichen"
+    },
+    {
+      "imageNumber": 46,
+      "title": "Wie die Folgen im Alltag ankommen"
+    },
+    {
+      "imageNumber": 55,
+      "title": "Was jetzt passieren könnte"
+    }
+  ]
+}
