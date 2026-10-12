@@ -52,9 +52,15 @@ Neue Videos laufen ab jetzt als reguläre Produktion. Änderungen an der Grundbi
 8. `youtube/PHASE3_HARD_GATE.md`
 9. `THEMEN_HISTORIE.md`
 
-## Kanalfokus — HARD LOCK
+## Kanalfokus — POLITIK + GEOGRAFIE + AKTUELLE GEOPOLITIK
 
-Autonom gewählte YouTube-Themen bleiben in Politik/Staatssystemen, Geschichte, Ländern/Geografie/Grenzen, Ideologien/Gesellschaftssystemen sowie internationalen Beziehungen/Geopolitik. Außerhalb nur bei ausdrücklicher Nutzeranweisung.
+**Ab 12.10.2026 ausschließlich neue Themen zu Politik, Geografie und aktuellen geopolitischen Fragen autonom wählen.** Geeignet sind staatliche Entscheidungen, internationale Konflikte, Verträge, Grenzen, Länder, Gebiete, Karten, Handelsrouten, Meerengen und ihre politische Bedeutung.
+
+**Keine neuen eigenständigen Videos über Geschichte, historische Ereignisse oder klassische Ideologie-Definitionen** ohne gegenwärtige politische/geografische Leitfrage. Ein kurzer historischer Hintergrund ist erlaubt, wenn er nötig ist, um die heutige Lage zu verstehen.
+
+**Aktuelle, potenziell reichweitenstarke Themen haben redaktionell Vorrang.** Vor jeder Themenfreigabe die Nachrichtenlage und seriöse aktuelle Quellen prüfen, die konkreten Daten und Veränderungen verifizieren und Aktualität gegen den Nutzen einer längeren Erklärung abwägen. Keine Spekulation als Fakt, kein sensationsgetriebener Clickbait, keine politische Agitation; Viralität ist nicht garantiert.
+
+**Verbindliches Auswahlverfahren:** `youtube/TOPIC_SELECTION_POLICY.md`. Maschinenlesbarer Fokus: `config/youtube-channel-policy.json`. Bestandsprojekte behalten ihre früher gültigen Kategorien und bleiben unverändert. Bei ausdrücklich abweichendem Einzelauftrag des Nutzers ist eine Ausnahme möglich.
 
 ## SCHRITT 0 — THEMEN-EDITOR HARD LOCK
 
