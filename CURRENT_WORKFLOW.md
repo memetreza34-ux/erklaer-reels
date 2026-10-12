@@ -4,6 +4,12 @@
 
 Diese Datei ist die verbindliche Repo-weite Produktionsregel für neue Reels. YouTube besitzt einen eigenen Produktionsworkflow und darf die Reel-Bildwelt oder Reel-Produktionsregeln nicht verändern.
 
+## HÖCHSTE PROAKTIVE PRIORITÄT NACH JEDEM FERTIGEN VIDEO
+
+**Nach jedem fertigen Video ist kontinuierliche Qualitätsverbesserung die oberste proaktive Aufgabe.** Das reale Ergebnis kritisch prüfen, den größten belegbaren Schwachpunkt erkennen und daraus – bei echtem Mehrwert – eine kleine, testbare Verbesserung für **zukünftige Produktionen** ableiten. Das gilt für YouTube-Langvideos und Reels, jeweils in ihrer eigenen Pipeline.
+
+**Verbindlicher Ablauf und Entscheidungsregeln:** `docs/POST_VIDEO_IMPROVEMENT.md`. Immer analysieren und lernen; Code-/Policy-Änderungen nur bei belegtem Nutzen. Nie bestehende Videoordner still ändern. Aktuelle Nutzeranweisungen, Bestandsschutz und Sicherheit behalten Vorrang.
+
 ## REPO-VERBESSERUNGEN OHNE VIDEOÄNDERUNGEN — HARTE GRENZE
 
 Die allgemeine Änderungsregel für alle Reels und YouTube-Projekte steht in `docs/CHANGE_SAFETY_POLICY.md`. Sie gilt auch für ChatGPT, Codex, Claude und Antigravity.
