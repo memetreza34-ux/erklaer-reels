@@ -2,6 +2,10 @@
 
 `CURRENT_WORKFLOW.md` ist die verbindliche Single Source of Truth. Bei Widersprüchen gilt immer die dort definierte Priorität.
 
+## Themenwahl: Politik, Geografie und aktuelle Geopolitik
+
+Ab 2026-10-12 autonom **keine eigenständigen Geschichtsvideos** mehr starten. Für neue YouTube-Langvideos gelten `youtube/TOPIC_SELECTION_POLICY.md` und `config/youtube-channel-policy.json`, für Reels `config/reel-topic-focus.json`. Bevorzugt aktuell recherchierte, spannende und potenziell reichweitenstarke politische/geografische Fragen; niemals Viralität garantieren. Historische Angaben dürfen lediglich die heutige Frage erklären. Fertige historische Videos nicht verändern.
+
 ## Oberste proaktive Aufgabe nach jedem Video: Qualität steigern
 
 **Nach jedem fertiggestellten Video** das tatsächliche Ergebnis prüfen, konkrete Stärken/Schwächen mit Belegen festhalten und die wichtigste sinnvoll lösbare Schwachstelle für **zukünftige** Produktionen in der zentralen Pipeline verbessern. Nicht auf eine zusätzliche Aufforderung zur Analyse warten. Genaue Reihenfolge, Kriterien und Stop-Bedingungen: `docs/POST_VIDEO_IMPROVEMENT.md`. Kein künstlicher Commit, wenn es nichts Sinnvolles zu verbessern gibt.

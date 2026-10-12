@@ -4,6 +4,7 @@ import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { checkYoutubeTopic } from '../core/youtube-topic-editor.js';
 import { validateYoutubeScriptOpening } from '../core/youtube-script-opening.js';
+import { evaluateYoutubeTopicFocus } from '../core/youtube-topic-focus.js';
 
 function arg(name) {
   const index = process.argv.indexOf(name);
@@ -109,10 +110,8 @@ async function main() {
     }
   }
 
-  const allowedTopics = new Set(policy.channelFocus.primaryTopics);
-  if (!allowedTopics.has(meta.topicCategory) && meta.explicitUserRequestedOutsideFocus !== true) {
-    errors.push(`topicCategory "${meta.topicCategory ?? 'fehlend'}" liegt außerhalb des YouTube-Kanalfokus und wurde nicht ausdrücklich vom Nutzer angefordert.`);
-  }
+  const topicFocus = evaluateYoutubeTopicFocus(meta, policy.channelFocus);
+  if (!topicFocus.valid) errors.push(topicFocus.error);
   if (!meta.topicCoreLink || typeof meta.topicCoreLink !== 'string') errors.push('topicCoreLink muss den Bezug zum Kanalfokus kurz dokumentieren.');
 
   if (schema >= 8) {

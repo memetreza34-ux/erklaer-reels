@@ -14,19 +14,31 @@
   "channelFocus": {
     "primaryTopics": [
       "Politik und Staatssysteme",
-      "Geschichte",
       "Länder, Geografie, Grenzen und Territorien",
-      "Ideologien und Gesellschaftssysteme",
       "internationale Beziehungen und Geopolitik"
     ],
     "adjacentTopicsAllowedOnlyWithClearCoreLink": true,
+    "autonomousScope": "Neue Videos ausschließlich zu Politik, Geografie, Grenzen, Ländern, aktuellen politischen Entwicklungen und Geopolitik. Geschichte nur als knappe Kontextinformation; keine historische Kernfrage oder reine Ideologie-Einführung ohne Gegenwartsbezug.",
+    "effectiveSince": "2026-10-12",
+    "legacyCategoriesForExistingProjects": [
+      "Geschichte",
+      "Ideologien und Gesellschaftssysteme"
+    ],
+    "explicitUserTopicOverrideAllowed": true,
     "pausedWithoutExplicitUserRequest": [
+      "Geschichte als eigenständiges Thema",
+      "Historische Ereignisse ohne gegenwärtige politische oder geografische Kernfrage",
+      "Ideologie-Lexikon ohne aktuellen politischen Bezug",
       "Gesundheit",
       "Medizin",
       "Psychologie",
       "Lifestyle",
-      "allgemeine Alltags-Warum-Themen ohne Länder-, Geschichts- oder Systembezug"
-    ]
+      "allgemeine Alltags-Warum-Themen ohne Politik- oder Geografiebezug"
+    ],
+    "editorialPolicyFile": "youtube/TOPIC_SELECTION_POLICY.md",
+    "currentEventsPreferred": true,
+    "neutralEvidenceBasedReportingRequired": true,
+    "viralPotentialNotGuaranteed": true
   },
   "scriptOpeningPolicy": {
     "directQuestionRequiredAtStart": false,

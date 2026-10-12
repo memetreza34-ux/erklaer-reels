@@ -8,7 +8,7 @@ Produktionspipeline für 9:16-Erklär-Reels mit fester Reel-Bildwelt und getrenn
 
 ## Kanal-Fokus
 
-Für die autonome Reel-Themenwahl gilt `config/reel-topic-focus.json`: Schwerpunkt auf Politik, Geschichte, Geografie, Ideologien/Systemen und internationalen Beziehungen. Bereits vorhandene ältere Gesundheit-/Alltags-Reels bleiben nur Historie.
+Für neue Reels und YouTube-Langvideos gelten **Politik, Geografie und aktuelle Geopolitik**, nicht eigenständige Geschichtsvideos. Reels: `config/reel-topic-focus.json`; YouTube: `config/youtube-channel-policy.json` und `youtube/TOPIC_SELECTION_POLICY.md`. Aktualität und glaubwürdige Quellen prüfen; Viralität nie garantieren. Bestehende Videos bleiben unverändert.
 
 ## Produktionsstandard
 
