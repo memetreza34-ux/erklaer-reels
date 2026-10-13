@@ -8,7 +8,7 @@ Produktionspipeline für 9:16-Erklär-Reels mit fester Reel-Bildwelt und getrenn
 
 ## Kanal-Fokus
 
-Für neue Reels und YouTube-Langvideos gelten **Politik, Geografie und aktuelle Geopolitik**, nicht eigenständige Geschichtsvideos. Reels: `config/reel-topic-focus.json`; YouTube: `config/youtube-channel-policy.json` und `youtube/TOPIC_SELECTION_POLICY.md`. Aktualität und glaubwürdige Quellen prüfen; Viralität nie garantieren. Bestehende Videos bleiben unverändert.
+**Politik ist das A und O von Weltlogik:** aktuelle Politik, zeitlose politische Bildung, Begriffe und deren Ursprung, Ideologien, Staatssysteme und internationale Beziehungen. Geografie, Länder, Grenzen und relevante geschichtliche Hintergründe ergänzen diese Bildungsfragen. Kein künstlich erzwungener Nachrichtenanlass; reine Geschichte ohne Politik-/Geografiebezug bleibt außerhalb der automatischen Themenwahl. Reels: `config/reel-topic-focus.json`; YouTube: `config/youtube-channel-policy.json` und `youtube/TOPIC_SELECTION_POLICY.md`. Fakten prüfen, Viralität nicht versprechen und bestehende Videos unangetastet lassen.
 
 ## Produktionsstandard
 
