@@ -262,5 +262,20 @@
     "finalImageDirectory": "00-bildprompts/images",
     "coverFile": "03-export/THUMBNAIL.png",
     "noOverwriteOriginals": true
+  },
+  "editorialStoryUpgradeVersion": 1,
+  "editorialStoryUpgradePolicy": {
+    "briefRequired": true,
+    "minimumCauseEffectChains": 2,
+    "atLeastThreeVisualEnvironments": true,
+    "allowIndirectEducationalVisualAnalogies": true,
+    "analogyMustExplainNarratedMechanism": true,
+    "visibleLabelsAndSourcedFiguresAllowed": true,
+    "longTextOnlyForVerifiedQuotes": true,
+    "monotonyReviewRequired": true,
+    "realWorldPriceNumbersMustBeSourced": true,
+    "imaginedExamplesMustBeMarkedAsExamples": true,
+    "appliesTo": "New YouTube projects only; legacy without version unaffected",
+    "guide": "youtube/EDITORIAL_STORY_VISUAL_V2.md"
   }
 }
