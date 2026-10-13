@@ -106,3 +106,11 @@ Die Aktivierung hängt **nicht** an einer neuen Schema-Nummer, sondern am expliz
 - visuelles Schema 13 bleibt unverändert
 
 Damit wird die Schreibqualität künftig verschärft, ohne bereits produzierte Schema-13-Videos rückwirkend ungültig zu machen.
+
+## Ergänzung für neue Langvideos: Storytelling V2
+
+Die bestehende automatische Satzlängen-/Signalprüfung bleibt bestehen. **Sie genügt allein nicht**, weil auch ein trockener oder vager Text genug „weil“ und Jahreszahlen enthalten kann. Für neue Projekte mit `editorialStoryUpgradeVersion: 1` kommen `youtube/EDITORIAL_STORY_VISUAL_V2.md` und der explizite `99-technik/EDITORIAL_BRIEF.json`-Check hinzu.
+
+Vor Script-Freigabe redaktionell prüfen: Ist der Einstieg konkret? Gibt es einen nachvollziehbaren Mechanismus zwischen Ursache und Folge? Wird die Konsequenz für einen realen Akteur, Betrieb, Haushalt oder Staat greifbar? Gibt es belegte Größenordnungen und Beispiele, falls relevant? Hat das Video einen Spannungsbogen mit echter neuer Erkenntnis statt aufzählender Wiederholung? Eine politische Begriffserklärung kann statt Benzinpreisen natürlich andere lebensnahe Folgen oder anschauliche Analogien nutzen. Keine künstliche Pflicht zu Geldbeispielen.
+
+**Nie Zahlen oder Geschichten erfinden, nur weil sie sich gut erzählen lassen.** Hypothetische Alltagsszenen klar als Illustration erkennbar machen; konkrete behauptete Ereignisse und Preisentwicklungen belegen.
