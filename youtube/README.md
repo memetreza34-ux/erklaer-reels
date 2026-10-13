@@ -109,6 +109,7 @@ Für eine neue Produktion eine frische Flow-Sitzung verwenden, wenn sich die akt
 - Bild 01–NN jeweils genau 1×
 - kein vorheriges Bild als Referenz
 - **Feste 5er-Gruppen:** 01–05, danach 06–10 usw.; die letzte Gruppe darf kleiner sein.
+- Dabei **maximal fünf aktive** Google-Flow-Generierungen gleichzeitig; alle fünf Ergebnisse abwarten und vollständig prüfen, bevor eine neue Gruppe startet.
 - Pro Gruppe alle Bilder fertig erzeugen, dann auf Vollständigkeit prüfen, gesammelt korrekt benennen und erst nach bestandenem Blockcheck die nächste Gruppe starten.
 - Nur fehlende oder defekte Bilder erneut erzeugen; am Schluss vollständiger Bildnummern- und PNG-Check. `youtube/FLOW_BATCH_5_POLICY.md` beschreibt den ausführbaren Batch-Validator.
 - kein Bild 00
@@ -174,7 +175,7 @@ npm run phase3:youtube -- --dir "youtube/<woche>/<thema>"
 
 Phase 3 prüft zuerst Script Quality V1, sofern das Projekt die Policy aktiviert hat, danach die bestehende Phase-1-Policy und anschließend den Phase-2-Gate. Dadurch kann ein neues Template-Projekt mit einem nicht freigegebenen Skript nicht gerendert werden.
 
-Danach folgen Audio, Alignment, Timeline, Motion/SFX und Render. Die Timeline beginnt mit Bild 01 bei 0,0 s und der Export kopiert Bild 01 als Thumbnail.
+Danach folgen Audio, Alignment, Timeline, Motion/SFX und Render. Die Timeline beginnt mit dem normalen Bild 01 bei 0,0 s. Das separat erzeugte `THUMBNAIL.png` bleibt nur im Export und wird niemals aus Bild 01 kopiert.
 
 ## Export
 
