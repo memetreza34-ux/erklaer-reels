@@ -115,6 +115,27 @@ Avoid as the default:
 A simple image is allowed. A complex image is allowed. The content decides.
 
 ==================================================
+EDITORIAL STORY & VISUAL BRIDGES V2 — HARD LOCK
+==================================================
+SHOW THE CONSEQUENCE, NOT THE SAME PLACE OVER AND OVER. A sentence about an oil shipment may be best illustrated by a refinery, petrol station, truck, household bill, shipping insurer, port worker's equipment, or a clear chart rather than yet another image of the Strait of Hormuz. A political concept can be explained with a symbolic everyday analogy if the comparison genuinely teaches the spoken mechanism.
+
+Do not force every frame to literally depict the video's primary location. A VISUAL CAN BE INDIRECTLY RELEVANT when the visual illustrates a stated cause, mechanism, tangible consequence, example, comparison, verified data, or an explicitly meaningful analogy. It still MUST explain its actual spoken sentence and have a clear intellectual connection to the topic. The 'Topic Anchor' may therefore describe a narrative/conceptual bridge, not merely a named place.
+
+Plan deliberate variety of explanation modes: location and actors → mechanism → real-world effect → everyday consequence → sourced numbers → contrasting comparison → context, as appropriate to the script. Avoid repeating the same map, flag, ball or camera distance with only cosmetic changes. Do not create irrelevant filler merely to satisfy variety.
+
+Required planning fields for EVERY individual scene:
+Visual Role: topic | mechanism | consequence | everyday-example | analogy | comparison | data | context
+Why This Visual: a specific explanation of the spoken point and, when applicable, its concrete impact or indirect bridge.
+Visual Environment: distinct relevant location, scale, staging or view; avoid five identical environments in a row without a reason.
+On-screen Text: NONE, a short German label (prefer 1–6 words), verified figures/units, or QUOTE: exact and independently verified words.
+
+SIMPLE SHORT ON-SCREEN LABELS ARE WELCOME if they help comprehension, e.g. "TEURER TRANSPORT", "VETORECHT", "2 WEGE". Relevant verified data and units are welcome, but NEVER invent prices, percentages, chart axes or before-after values. A quote may exceed six words if it is genuine, sourced and legible, not an invented soundbite. No long explanatory sentences, text walls, pseudo lettering, English overlay or decorational info cards.
+
+ANALOGY FRAMES ARE OPTIONAL: if chosen, 'Why This Visual' explicitly says it is a symbolic comparison ("Analogie" / "Vergleich" / "symbolisch") and relates to the narrated mechanism. Clearly distinguish real footage/data from illustration and hypotheticals. Preserve the exact SAME premium flat 2D Countryball world even in a supermarket, gas station, factory, classroom, court or bank; no realistic human figures. A countryball is never mandatory.
+
+Do NOT present any invented event, false national actor, distorted statistic, bogus quote or fake real-world price as observed fact.
+
+==================================================
 VISUAL FLEXIBILITY V1 — HARD LOCK
 ==================================================
 COUNTRYBALLS ARE OPTIONAL PER IMAGE. DO NOT FORCE A CHARACTER INTO THE FRAME.
@@ -258,20 +279,17 @@ INDIVIDUALITY HARD LOCK
 ==================================================
 DEUTSCH-HARD-LOCK
 ==================================================
-Every readable word must be German. English visible text or pseudo-text = HARD FAIL for the planned image output. If text is not explicitly required, generate no readable text.
+Every readable word must be German. English visible text or pseudo-text = HARD FAIL. Use short purposeful German keywords, labels and sourced data where they help; for true sourced quotes use QUOTE: exact verified quotation and keep it readable. No full explanatory sentences unless an exact verified quote. When not needed, render NO visible text.
 
 ==================================================
 ABLAUF
 ==================================================
-1. Bild 01 exakt dreimal als temporäre Cover-Kandidaten erzeugen.
-2. Genau einen Cover-Gewinner auswählen, einmal final zu `Bild 01.png` umbenennen, die anderen zwei verwerfen.
-3. Bild 02 bis Bild NN jeweils genau einmal aus dem eigenen vollständigen Textprompt erzeugen.
-4. Keine manuellen Prüfstopps zwischen 5er-Wellen; direkt weiterarbeiten.
-5. Maximal fünf aktive Generierungen gleichzeitig.
-6. Jedes fertige Nicht-Cover-Bild einmal auf `Bild NN.png` benennen.
-7. Alle finalen Bilder flach unter `00-bildprompts/images/` sammeln.
-8. Am Ende dürfen dort nur `Bild 01.png` bis `Bild NN.png` liegen.
-9. Niemals Bild 00 erzeugen und niemals ein vorheriges Bild als Referenz anhängen.
+1. ZUERST drei SEPARATE Cover-Kandidaten generieren; den besten als `03-export/THUMBNAIL.png` speichern. Cover ist KEIN Videobild.
+2. Normale Bild 01–05 generieren und vollständig abwarten. Vor Benennung alle fünf tatsächlich auf Existenz, richtige Sprecherzuordnung, visuelle Qualität und Dateigültigkeit prüfen. Fehlende Bilder derselben Gruppe nacherzeugen.
+3. Erst wenn komplett: explizit zugeordnete Originaldownloads gesammelt korrekt als Bild 01.png bis Bild 05.png in `00-bildprompts/images/` kopieren und ALLE fünf nochmals kontrollieren.
+4. Erst dann 06–10, 11–15 usw.; die letzte Gruppe darf weniger als fünf Bilder enthalten. Nie über fünf aktive Generierungen und nie unvollständige Gruppen weiterlaufen lassen.
+5. VOR Abschluss vollständigen unabhängigen Dateinamen- und Bildausschnitt-Check `npm run flow:youtube-batch -- --dir "<project>" --audit` durchführen. Bei Fehlbild gezielt nur dieses nachgenerieren.
+6. Alle Bilder in genau EINEM flachen `00-bildprompts/images/`-Ordner, separates Cover nur im Export, kein Bild 00, keine vorherigen Bildreferenzen.
 
 ==================================================
 BILDPLAN
@@ -280,7 +298,11 @@ Für jedes Bild angeben:
 - Bildnummer
 - Satzbezug / Audio-Anker
 - Visual Purpose
-- Topic Anchor
+- Topic Anchor (realer oder eindeutig begründeter indirekter Folgen-/Analogie-Bezug)
+- Visual Role (topic/mechanism/consequence/everyday-example/analogy/comparison/data/context)
+- Why This Visual (eindeutiger Sprecher-/Erklärbezug)
+- Visual Environment (Karte, Straße, Tankstelle, Parlament, Werkhalle, Haushalt, Diagramm etc.)
+- On-screen Text (NONE oder kurze Wörter, belegte Zahlen, echte QUOTE:)
 - Visual Form
 - Composition Mode
 - Complexity A–E
@@ -288,7 +310,7 @@ Für jedes Bild angeben:
 - bei bewusstem Split: Split Reason
 - vollständigen englischen Bildprompt mit exakt vorgegebenem deutschen Sichttext
 
-`Topic Anchor` ist Pflicht und muss konkret beschreiben, warum genau dieses Bild zum Videothema gehört.
+`Topic Anchor` ist Pflicht; ein konzeptioneller Bezug zu den konkreten Folgen/Mechanismen ist ausdrücklich zulässig. Ein Bild muss nicht denselben geografischen Ort darstellen.
 
 `Visual Form` wird frei nach Inhalt gewählt, z. B. `object-only`, `map-only`, `document-only`, `simple-schema`, `countryball-action`, `multi-actor`, `multi-element` oder `full-scene`.
 
@@ -297,7 +319,11 @@ BILD 01 — NORMALE ERSTE VIDEOSZENE
 ==================================================
 Bild 01 · [A–E] · [PLANZEIT]
 Visual Purpose: [EINE KLARE AUSSAGE]
-Topic Anchor: [KONKRETES THEMENSPEZIFISCHES ELEMENT]
+Topic Anchor: [REALER ODER DIDAKTISCH ERKLÄRTER ZUSAMMENHANG]
+Visual Role: [topic | mechanism | consequence | everyday-example | analogy | comparison | data | context]
+Why This Visual: [ERKLÄRT EXAKT DIESEN SPRECHERPUNKT UND SEINE WIRKUNG]
+Visual Environment: [KONKRETE BILDSITUATION ODER KLARE DATENANSICHT]
+On-screen Text: [NONE / KURZES LABEL / BELEGTE ZAHL / QUOTE: EXAKT]
 Visual Form: [BESTE DARSTELLUNGSFORM]
 Composition Mode: [MODUS]
 [NORMALE SZENE 1 OHNE COVER-ÜBERSCHRIFT]
@@ -307,7 +333,11 @@ BILD 02–NN — NORMALE FOLGESZENEN
 ==================================================
 Bild 02 · [A–E] · [PLANZEIT]
 Visual Purpose: [EINE KLARE AUSSAGE]
-Topic Anchor: [KONKRETES THEMENSPEZIFISCHES ELEMENT]
+Topic Anchor: [REALER ODER DIDAKTISCH ERKLÄRTER ZUSAMMENHANG]
+Visual Role: [topic | mechanism | consequence | everyday-example | analogy | comparison | data | context]
+Why This Visual: [ERKLÄRT EXAKT DIESEN SPRECHERPUNKT UND SEINE WIRKUNG]
+Visual Environment: [ANDERE ODER BEWUSST ERFORDERLICHE BILDSITUATION]
+On-screen Text: [NONE / KURZES LABEL / BELEGTE ZAHL / QUOTE: EXAKT]
 Visual Form: [BESTE DARSTELLUNGSFORM]
 Composition Mode: [MODUS]
 [PROMPT]
