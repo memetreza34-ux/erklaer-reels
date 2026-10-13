@@ -163,7 +163,11 @@
     "germanProjectRequiresGermanOnly": true,
     "englishVisibleTextHardFail": true,
     "pseudoTextHardFail": true,
-    "preferNoTextWhenNotRequired": true
+    "preferNoTextWhenNotRequired": true,
+    "shortLabelsAllowed": true,
+    "sourcedDataAllowed": true,
+    "verbatimVerifiedQuotesAllowed": true,
+    "nonQuoteFullSentencesForbidden": true
   },
   "targetDurationSeconds": null,
   "targetDurationRangeSeconds": null,
@@ -281,5 +285,14 @@
     "requireExplicitSourceMapping": true,
     "finalImagesFlatInSingleFolder": true,
     "noOverwriteOriginals": true
+  },
+  "editorialStoryUpgradeVersion": 1,
+  "editorialStoryUpgradePolicy": {
+    "briefRequired": true,
+    "indirectAnalogiesAllowedWithNarratedBridge": true,
+    "motivatedSceneVariationRequired": true,
+    "visibleTextMode": "short-labels-numbers-sourced-quotes",
+    "factsVsAnalogiesDistinguished": true,
+    "avoidRepetitiveMainLocationShots": true
   }
 }
