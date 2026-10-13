@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "viewerPromise": "[Konkret: Welche politische Frage wird am Ende mit welchen Folgen beantwortet?]",
+  "specificHook": "[Konkret: Welcher echte beobachtbare Konflikt oder welches überprüfbare Beispiel eröffnet die Geschichte?]",
+  "narrativePayoff": "[Konkret: Welche zusätzliche Erkenntnis hat der Zuschauer nach dem Video, jenseits der Definition?]",
+  "causeEffectChains": [
+    {
+      "cause": "[Gesicherte Ausgangslage mit Akteur, Ort oder Entscheidung]",
+      "mechanism": "[Konkreter Mechanismus: Wie kommt eine Veränderung zustande?]",
+      "effect": "[Wer spürt welche politische oder wirtschaftliche Auswirkung?]",
+      "concreteExample": "[Ein praktisches Beispiel zur Folge, mit nötigem Zeit- oder Zahlenkontext]",
+      "source": "https://example.org/replace-with-real-source"
+    },
+    {
+      "cause": "[Zweite eigenständige Ausgangslage]",
+      "mechanism": "[Zweiter eigenständiger Mechanismus]",
+      "effect": "[Zweite klar unterscheidbare Folge]",
+      "concreteExample": "[Zweiter konkreter Fall, nicht derselbe umformuliert]",
+      "source": "https://example.org/replace-with-real-source"
+    }
+  ],
+  "visualVarietyPlan": {
+    "visualEnvironments": [
+      "[z. B. konkrete Karte oder politische Institution]",
+      "[z. B. Haushalt, Tankstelle, Gericht oder Fabrik]",
+      "[z. B. Datenvergleich, Markt, Medien oder Alltagssituation]"
+    ],
+    "connectionToStory": "[Welche Rolle spielt jeder Wechsel für den Erkenntnisgewinn? Nicht nur der Abwechslung wegen.]"
+  }
+}
