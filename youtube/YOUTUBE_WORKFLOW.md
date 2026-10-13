@@ -367,7 +367,7 @@ Das COVER ist eine eigenständige Bildgenerierung, **keine Videoszene**:
 ### NON-COVER = SINGLE GENERATION HARD LOCK
 
 - Jede normale Szene **Bild 01–NN** wird einmal erfolgreich erzeugt; fehlgeschlagene oder fehlende Bilder erneut erzeugen, nicht beliebige Varianten.
-- **NEUER STANDARD für Projekte ab 13.10.2026: genau fünf Bilder pro Durchlauf (letzte Gruppe ggf. kleiner).** Maximal fünf gleichzeitige Generationen, **keine nächste Gruppe**, solange nicht alle fünf fertig, kontrolliert und korrekt nummeriert sind. Dies ist ein automatischer Vollständigkeitscheck, kein manueller kreativer Freigabestopp.
+- **NEUER STANDARD für Projekte ab 13.10.2026: genau fünf Bilder pro Durchlauf (letzte Gruppe ggf. kleiner).** Maximal fünf aktive Google-Flow-Generierungen gleichzeitig, **keine nächste Gruppe**, solange nicht alle fünf fertig, kontrolliert und korrekt nummeriert sind. Dies ist ein automatischer Vollständigkeitscheck, kein manueller kreativer Freigabestopp.
 - Cover zuerst: 3 Kandidaten → Gewinner als separates `03-export/THUMBNAIL.png` festlegen. Erst danach Bild 01–05 starten.
 - Die fertigen 5 Google-Flow-Ausgaben zuerst **sammeln**; dann alle 5 auf Existenz, eindeutige Szenenzuordnung, technische PNG-Gültigkeit und Nummern prüfen.
 - **Erst wenn die Gruppe vollständig ist**, die Quellen kontrolliert als `Bild NN.png` in `00-bildprompts/images/` übernehmen. Bei fehlendem/defektem Bild genau dieses Bild nachgenerieren; Vorhandene nicht wahllos neu erstellen.
