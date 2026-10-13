@@ -113,6 +113,7 @@ test('batch waves reject malformed PNG and never overwrite existing mismatched n
    await writeFile(path.join(f.staging,'scene-5.png'),Buffer.from('bad png'));
    await assert.rejects(wave(f,1,5,m),/PNG/);
    await addImage(f,5);
+   await mkdir(f.dest,{recursive:true});
    await writeFile(path.join(f.dest,imageName(1)),png(99));
    await assert.rejects(wave(f,1,5,m),/anderem Inhalt/);
    assert.deepEqual(await readFile(path.join(f.dest,imageName(1))),png(99));
