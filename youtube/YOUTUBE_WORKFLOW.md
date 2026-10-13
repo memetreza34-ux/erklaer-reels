@@ -366,10 +366,15 @@ Das COVER ist eine eigenständige Bildgenerierung, **keine Videoszene**:
 
 ### NON-COVER = SINGLE GENERATION HARD LOCK
 
-- Alle normalen Szenen **Bild 01–NN** je genau einmal generieren.
-- Bild 01 passend zum Hook, ohne Cover-Typografie.
-- Keine Varianten, keine manuellen Review-Stopps.
-- maximal fünf aktive Bildgenerierungen gleichzeitig.
+- Jede normale Szene **Bild 01–NN** wird einmal erfolgreich erzeugt; fehlgeschlagene oder fehlende Bilder erneut erzeugen, nicht beliebige Varianten.
+- **NEUER STANDARD für Projekte ab 13.10.2026: genau fünf Bilder pro Durchlauf (letzte Gruppe ggf. kleiner).** Maximal fünf gleichzeitige Generationen, **keine nächste Gruppe**, solange nicht alle fünf fertig, kontrolliert und korrekt nummeriert sind. Dies ist ein automatischer Vollständigkeitscheck, kein manueller kreativer Freigabestopp.
+- Cover zuerst: 3 Kandidaten → Gewinner als separates `03-export/THUMBNAIL.png` festlegen. Erst danach Bild 01–05 starten.
+- Die fertigen 5 Google-Flow-Ausgaben zuerst **sammeln**; dann alle 5 auf Existenz, eindeutige Szenenzuordnung, technische PNG-Gültigkeit und Nummern prüfen.
+- **Erst wenn die Gruppe vollständig ist**, die Quellen kontrolliert als `Bild NN.png` in `00-bildprompts/images/` übernehmen. Bei fehlendem/defektem Bild genau dieses Bild nachgenerieren; Vorhandene nicht wahllos neu erstellen.
+- Danach **denselben 5er-Block noch einmal im finalen Ordner kontrollieren**. Erst wenn jede Nummer vorhanden und eindeutig ist, Gruppe 06–10 usw. starten.
+- Alle Quellbilder mit expliziten `imageNumber`-Zuordnungen erfassen; niemals aus Dateidatum oder Finder-Sortierung auf die richtige Szene schließen. Ursprungsdownloads nicht überschreiben.
+- **Letzte Gesamtprüfung** auf genau `Bild 01.png` bis `Bild NN.png`, weder Lücken noch Duplikate/falsche Namen, keine Cover-Kandidaten oder zusätzliche Dateien; separate Thumbnail prüfen. Ohne grünen Audit kein Render.
+- Verbindliches Verfahren: `youtube/FLOW_BATCH_5_POLICY.md`; technischer Batch-Check: `npm run flow:youtube-batch`. Gilt nicht rückwirkend für Altprojekte und nicht für die getrennte Reel-Pipeline.
 
 ### FINAL IMAGE FOLDER HARD LOCK
 
