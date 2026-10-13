@@ -306,6 +306,24 @@ async function main() {
     requireTrue(errors, a.temporaryCoverCandidatesForbiddenInFinalFolder, 'assetGenerationPolicy.temporaryCoverCandidatesForbiddenInFinalFolder');
   }
 
+  // Neue Produktionen (ab 13.10.2026) brauchen den automatischen 5er-Batch-Hard-Gate.
+  // Aeltere Projekte und ihre Masterprompts bleiben unveraendert reproduzierbar.
+  const needsFlowBatches = schema >= 13 && String(meta.createdAt || '') >= '2026-10-13';
+  if (needsFlowBatches) {
+    if (meta.flowBatchPolicyVersion !== policy.flowBatchPolicy?.version) {
+      errors.push('flowBatchPolicyVersion muss für neue YouTube-Projekte 1 sein.');
+    }
+    const w = meta.flowBatchPolicy || {};
+    if (w.size !== 5) errors.push('flowBatchPolicy.size muss 5 sein.');
+    for (const key of ['coverFirst', 'waitUntilCurrentBatchAllFinished', 'renameOnlyAfterEntireBatchReady', 'retryOnlyMissingOrFailed',
+      'verifyEveryBatchBeforeNext', 'finalAuditBeforePhase3', 'requireExplicitSourceMapping', 'finalImagesFlatInSingleFolder', 'noOverwriteOriginals']) {
+      requireTrue(errors, w[key], 'flowBatchPolicy.' + key);
+    }
+    for (const marker of ['FIVE-IMAGE BATCH HARD LOCK', 'FINAL COMPLETENESS AUDIT HARD LOCK']) {
+      if (!prompt.includes(marker)) errors.push('Neuer Google-Flow-Masterprompt braucht: ' + marker);
+    }
+  }
+
   const expectedVisualVersion = usesPremiumCountryballV5 ? policy.visualPolicyVersion : meta.visualPolicyVersion;
   const expectedStyleId = usesPremiumCountryballV5 ? policy.visualStyleId : meta.visualStyleId;
   const requiredPromptMarkers = [

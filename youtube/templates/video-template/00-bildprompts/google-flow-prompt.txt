@@ -35,10 +35,33 @@ Discard two rejected cover candidates. Use clear topic imagery and one large Ger
 ==================================================
 NON-COVER = SINGLE GENERATION HARD LOCK
 ==================================================
-All video frames Bild 01 through Bild NN are generated exactly ONCE each, including Bild 01.
+All normal video frames Bild 01 through Bild NN have ONE successful generation each, including Bild 01. Retry only genuinely missing or failed frames, never unrelated variants.
 Each is a normal scene corresponding to its spoken anchor, never a cover.
-No alternate versions, no five-image review stop, at most five active image jobs at a time.
-Name every result Bild NN.png exactly once.
+A wave contains exactly five intended images (the last wave may contain fewer). Never begin a second wave while the previous is unfinished. This completeness check is automatic, not a creative manual approval pause.
+
+==================================================
+FIVE-IMAGE BATCH HARD LOCK
+==================================================
+FIRST finish the 3-cover-candidate process and save the winning cover in 03-export/THUMBNAIL.png. THEN:
+1. Generate ONLY scenes 01-05 (maximum five jobs at once). Wait for ALL five jobs to finish.
+2. Collect five actual output PNGs outside 00-bildprompts/images/. Record for EACH original download the explicit original file path and the correct scripted imageNumber; do NOT guess order from Finder names, download timestamp or job completion time.
+3. Inspect ALL five outputs for actual existence and basic PNG validity. If any image was not created, failed to download, or is incomplete: regenerate ONLY the missing or failed image(s), and DO NOT start 06-10.
+4. ONLY once all five are complete, assign the exact official names Bild 01.png to Bild 05.png together using the explicit source-to-number mapping. Copy with no overwrite to 00-bildprompts/images/.
+5. Check ALL five numbered files AGAIN in that folder. Wrong names, gaps, duplicate images, invalid formats or unexplained extra files are hard blockers.
+6. ONLY after the successful five-image checkpoint begin scenes 06-10, repeating exactly. For N not divisible by five, process the last shorter wave similarly.
+Use npm run flow:youtube-batch -- --dir "<project>" --batch 1 --manifest "<manifest.json>" at every wave; stop immediately on nonzero exit code. The helper cannot generate missing Google Flow outputs by itself.
+No forced artistic manual review break between waves; only the strict automatic completeness/numbering verification.
+
+==================================================
+FINAL COMPLETENESS AUDIT HARD LOCK
+==================================================
+After the LAST wave, do one full independent pass:
+- Verify exactly all Bild 01.png ... Bild NN.png exist with no gaps, false names, repeats, extra PNGs, or subfolders.
+- Verify 16:9 PNG structure and distinct binaries, plus the separate 03-export/THUMBNAIL.png that must not appear in the scene folder.
+- If a numbered scene is missing, generate or recover THAT scene, map it to its correct number, and repeat the full audit. Never quietly reuse another scene.
+- All final scenes MUST be in the ONE flat folder 00-bildprompts/images/. No thumbnail or temporary candidate there.
+Run npm run flow:youtube-batch -- --dir "<project>" --audit. Do not report Phase 2 ready unless it passes.
+
 
 ==================================================
 FINAL IMAGE FOLDER HARD LOCK

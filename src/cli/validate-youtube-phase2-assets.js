@@ -3,6 +3,7 @@
 import { access, readdir, readFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import path from 'node:path';
+import { auditFlowImages } from '../core/youtube-flow-batches.js';
 
 function arg(name) {
   const index = process.argv.indexOf(name);
@@ -71,6 +72,13 @@ async function main() {
         if (coverHash === sceneHash) errors.push('Cover V2: THUMBNAIL.png ist identisch mit Bild 01.png. Erste Szene muss separat passen.');
       }
     }
+  }
+
+  // Strenge technische Abschlussprüfung nur für Projekte mit dem neuen Batch-Workflow.
+  // Legacy-Produktionen behalten ihren ursprünglichen Validator.
+  if (Number(meta.flowBatchPolicyVersion) === 1) {
+    const audit = await auditFlowImages(projectDir, planned);
+    errors.push(...audit.errors, ...audit.missing.map(name => 'Final-Audit: fehlendes Bild ' + name));
   }
 
   if (errors.length) {

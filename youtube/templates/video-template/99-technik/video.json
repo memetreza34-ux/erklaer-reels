@@ -268,5 +268,18 @@
   "topicDuplicateCheckRequired": true,
   "folderRule": "youtube/<weekFolder>/<topicSlug>/",
   "createdAt": "",
-  "updatedAt": ""
+  "updatedAt": "",
+  "flowBatchPolicyVersion": 1,
+  "flowBatchPolicy": {
+    "size": 5,
+    "coverFirst": true,
+    "waitUntilCurrentBatchAllFinished": true,
+    "renameOnlyAfterEntireBatchReady": true,
+    "retryOnlyMissingOrFailed": true,
+    "verifyEveryBatchBeforeNext": true,
+    "finalAuditBeforePhase3": true,
+    "requireExplicitSourceMapping": true,
+    "finalImagesFlatInSingleFolder": true,
+    "noOverwriteOriginals": true
+  }
 }

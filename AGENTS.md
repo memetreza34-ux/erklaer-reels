@@ -8,6 +8,10 @@
 
 Eine reine Geschichtschronik ohne klare Politik-/Staats-/Geografieleitfrage ist kein autonomes Weltlogik-Thema. Themenauswahl: `youtube/TOPIC_SELECTION_POLICY.md`, `config/youtube-channel-policy.json`, `config/reel-topic-focus.json`. Politisch sachlich, verständlich, mit Quellen und ohne Werbe-/Parteipropaganda. Vorhandene Videos nicht ändern.
 
+## Google Flow für neue YouTube-Langvideos: feste 5er-Gruppen
+
+Cover separat fertigstellen; dann die Videobilder **in exakt fünf Bildprompts pro Durchlauf** erzeugen (letzte Gruppe ggf. kleiner). **Erst nachdem die ganze Gruppe erfolgreich erzeugt ist:** Existenz + Szenenzuordnung prüfen, exakt `Bild NN.png` benennen, die komplette Gruppe erneut prüfen. Fehlende/defekte Ausgaben müssen in derselben Gruppe nachgeneriert werden; vor erfolgreicher Prüfung **niemals** die nächste Fünfergruppe starten. Nach dem letzten Batch alle nummerierten Szenenbilder und das separate Cover im endgültigen Ordner auf fehlende, falsche und doppelte Dateien prüfen. `youtube/FLOW_BATCH_5_POLICY.md` und `npm run flow:youtube-batch` für neue YouTube-Projekte verwenden. Bestehende Projekte/Reel-Pipeline nicht verändern.
+
 ## Oberste proaktive Aufgabe nach jedem Video: Qualität steigern
 
 **Nach jedem fertiggestellten Video** das tatsächliche Ergebnis prüfen, konkrete Stärken/Schwächen mit Belegen festhalten und die wichtigste sinnvoll lösbare Schwachstelle für **zukünftige** Produktionen in der zentralen Pipeline verbessern. Nicht auf eine zusätzliche Aufforderung zur Analyse warten. Genaue Reihenfolge, Kriterien und Stop-Bedingungen: `docs/POST_VIDEO_IMPROVEMENT.md`. Kein künstlicher Commit, wenn es nichts Sinnvolles zu verbessern gibt.

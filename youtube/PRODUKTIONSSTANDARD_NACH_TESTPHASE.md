@@ -159,9 +159,9 @@ Als bewährt gelten:
 - Scene Illustration V2
 - Topic Visual Relevance V1
 - adaptive Bildanzahl
-- Bild 01 = Cover + erste Videoszene
+- Cover Policy V2: Cover nur separat unter `03-export/THUMBNAIL.png`; Bild 01 ist **normale erste Videoszene**
 - 3 Cover-Kandidaten → 1 Gewinner
-- Bild 02–NN jeweils einmal
+- Bild 01–NN jeweils einmal erfolgreich (fehlende/fehlgeschlagene Bilder gezielt nachholen)
 - keine Bild-zu-Bild-Referenzen
 - keine Menschen / Stickfiguren / realistischen Hände
 - deutscher sichtbarer Text
@@ -182,7 +182,7 @@ Nicht mehr bei jedem Video grundsätzlich neu testen:
 - Countryball-Pflicht
 - Grundstruktur der Pipeline
 - Coverlogik
-- Asset-Ordnung
+- Asset-Ordnung (neu: verpflichtender automatischer 5er-Vollständigkeitscheck, `FLOW_BATCH_5_POLICY.md`)
 
 ---
 

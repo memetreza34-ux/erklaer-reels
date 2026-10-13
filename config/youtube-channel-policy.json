@@ -247,5 +247,20 @@
     "before-after",
     "cause-effect",
     "route-progression"
-  ]
+  ],
+  "flowBatchPolicy": {
+    "version": 1,
+    "size": 5,
+    "coverFirst": true,
+    "waitUntilCurrentBatchAllFinished": true,
+    "renameOnlyAfterEntireBatchReady": true,
+    "retryOnlyMissingOrFailed": true,
+    "verifyEveryBatchBeforeNext": true,
+    "finalAuditBeforePhase3": true,
+    "requireExplicitSourceMapping": true,
+    "finalImagesFlatInSingleFolder": true,
+    "finalImageDirectory": "00-bildprompts/images",
+    "coverFile": "03-export/THUMBNAIL.png",
+    "noOverwriteOriginals": true
+  }
 }
