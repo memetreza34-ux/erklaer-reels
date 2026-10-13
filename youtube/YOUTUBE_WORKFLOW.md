@@ -52,15 +52,15 @@ Neue Videos laufen ab jetzt als reguläre Produktion. Änderungen an der Grundbi
 8. `youtube/PHASE3_HARD_GATE.md`
 9. `THEMEN_HISTORIE.md`
 
-## Kanalfokus — POLITIK + GEOGRAFIE + AKTUELLE GEOPOLITIK
+## Kanalfokus — POLITIK ZUERST, BILDUNG UND GEOGRAFIE DAZU
 
-**Ab 12.10.2026 ausschließlich neue Themen zu Politik, Geografie und aktuellen geopolitischen Fragen autonom wählen.** Geeignet sind staatliche Entscheidungen, internationale Konflikte, Verträge, Grenzen, Länder, Gebiete, Karten, Handelsrouten, Meerengen und ihre politische Bedeutung.
+**Hauptziel Weltlogik: Politik erklären und politische Bildung vermitteln.** Neue YouTube-Videos dürfen aktuelle politische Ereignisse und geopolitische Entwicklungen behandeln, aber ebenso **politische Begriffe, ihre Bedeutung und Herkunft, Ideologien, Staatssysteme, Institutionen, Gesetze, Bündnisse, Wahlen und politische Mechanismen**. Geografie, Regionen und Grenzen sind erlaubt und besonders wertvoll, wenn sie politische Zusammenhänge verständlich machen.
 
-**Keine neuen eigenständigen Videos über Geschichte, historische Ereignisse oder klassische Ideologie-Definitionen** ohne gegenwärtige politische/geografische Leitfrage. Ein kurzer historischer Hintergrund ist erlaubt, wenn er nötig ist, um die heutige Lage zu verstehen.
+**Ursprung und Geschichte sind ausdrücklich zulässig**, zum Beispiel die Entstehung der Begriffe „links“ und „rechts“ oder die historische Entwicklung eines politischen Systems. Eine ausführliche Rückblende ist sinnvoll, wenn sie die politische Leitfrage erklärt. Reine Geschichtserzählungen ohne politische/geografische Bildungsfrage bleiben außerhalb des autonomen Schwerpunkts.
 
-**Aktuelle, potenziell reichweitenstarke Themen haben redaktionell Vorrang.** Vor jeder Themenfreigabe die Nachrichtenlage und seriöse aktuelle Quellen prüfen, die konkreten Daten und Veränderungen verifizieren und Aktualität gegen den Nutzen einer längeren Erklärung abwägen. Keine Spekulation als Fakt, kein sensationsgetriebener Clickbait, keine politische Agitation; Viralität ist nicht garantiert.
+**Aktuelle Themen sind erwünscht, aber kein Zwang.** Eine spannende zeitlose Begriffserklärung braucht keinen künstlichen News-Anlass. Themen nach Relevanz, Nutzen für Zuschauer, Faktenqualität, anschaulichem Erklärpotenzial und Reichweitenchance auswählen. Fakten prüfen, kontroverse Positionen fair erklären, ohne parteiische Überzeugungsabsicht; Viralität nie versprechen.
 
-**Verbindliches Auswahlverfahren:** `youtube/TOPIC_SELECTION_POLICY.md`. Maschinenlesbarer Fokus: `config/youtube-channel-policy.json`. Bestandsprojekte behalten ihre früher gültigen Kategorien und bleiben unverändert. Bei ausdrücklich abweichendem Einzelauftrag des Nutzers ist eine Ausnahme möglich.
+Verbindliches Vorgehen: `youtube/TOPIC_SELECTION_POLICY.md`, maschinenlesbarer Fokus: `config/youtube-channel-policy.json`. Bestehende Videoprojekte und ihre alten Themenkategorien unverändert schützen.
 
 ## SCHRITT 0 — THEMEN-EDITOR HARD LOCK
 

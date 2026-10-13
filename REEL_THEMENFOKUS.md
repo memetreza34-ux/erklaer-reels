@@ -1,27 +1,26 @@
-# Neuer Themenfokus für Reels — Politik & Geografie
+# Weltlogik-Reels — Politik und politische Bildung an erster Stelle
 
-**Gültig für neue Reels ab 12.10.2026.** Für YouTube-Langvideos gilt dieselbe thematische Grundentscheidung in `youtube/TOPIC_SELECTION_POLICY.md`; Reel- und YouTube-Produktionsregeln bleiben technisch getrennt.
+**Gültig für neue Reels ab 13.10.2026.** Gilt thematisch parallel zum YouTube-Kanal, während dessen technische Pipeline eigenständig bleibt.
 
-## Was autonom produziert wird
+## Kern: Politik verständlich machen
 
-- **Politik:** aktuelle staatliche Entscheidungen, Institutionen, Gesetze, Bündnisse, Sanktionen, internationale Verhandlungen und die Folgen für Länder.
-- **Geografie:** Länder, Grenzen, Exklaven, Meere, Meerengen, Karten, Handelsrouten, Regionen und territoriale Besonderheiten.
-- **Geopolitik:** aktuelle Konfliktlagen, Ressourcen, strategische Orte, Einfluss und internationale Beziehungen, sachlich und nachvollziehbar erklärt.
+**Politik ist das Hauptziel.** Reels dürfen aktuelle Nachrichten, Staatsformen, Institutionen, Wahlen, internationale Beziehungen und die Folgen politischer Entscheidungen erklären. Genauso wichtig sind **zeitlose politische Bildungsfragen**, beispielsweise die Bedeutung von Souveränität, Gewaltenteilung oder Föderalismus, politische Ideologien oder der Ursprung der Begriffe „links“ und „rechts“.
 
-**Kein eigenständiges Geschichtsvideo, keine reine Chronik und keine historische Lehrbuchfrage.** Historische Vorgeschichte ist in wenigen Sätzen erlaubt, wenn sie eine **heute relevante politische oder geografische Frage** erklärt. Reine Ideologie-Grundlagen und andere Themen ohne unmittelbaren Politik-/Geografiebezug werden nicht autonom gewählt; ausdrückliche Nutzeraufträge sind ausgenommen.
+Geografie, Karten, Länder, Grenzen, Meerengen, Ressourcen und Geopolitik sind eigene passende Inhalte, wenn sie helfen, staatliche oder politische Zusammenhänge zu verstehen.
 
-## Aktualität und Reichweitenchance
+**Geschichte ist nicht verboten.** Der Ursprung politischer Begriffe, frühere Staatsentscheidungen, Revolutionen und die Entwicklung von Grenzen oder Ideologien dürfen erklärt werden – auch als wesentlicher Teil –, **wenn das Reel ein politisches/geografisches Lernziel verfolgt**. Keine reine Geschichtschronik oder historische Biografie ohne solchen Bezug.
 
-Vor dem Festlegen eines neuen Reels:
+## Themenwahl
 
-1. Datiert prüfen, **was sich jüngst verändert hat**, wer betroffen ist und warum diese Entwicklung für Zuschauer erklärungsbedürftig ist.
-2. Seriöse aktuelle Quellen abgleichen; mindestens zwei voneinander unabhängige Belege, davon wenn möglich eine Primärquelle. Daten, Quellenzeitpunkt und etwaige Unsicherheit ausdrücklich berücksichtigen.
-3. Ein Thema priorisieren, wenn es eine konkrete überraschende geografische Frage, einen aktuellen politischen Konflikt, klar erkennbare Folgen oder eine relevante Karte bietet. Eine virale Entwicklung **nicht behaupten**, wenn keine belastbaren Trend-/Analytics-Daten vorliegen.
-4. Für die Veröffentlichung keine Fake-News, spekulativen Behauptungen, unbestätigten Gerüchte oder aufhetzenden Titel verwenden. Keine Wahlwerbung oder einseitige Überzeugungsabsicht.
-5. `THEMEN_HISTORIE.md` auf Duplikate prüfen. Das Reel muss auf 55–60 Sekunden sinnvoll und anschaulich erklärbar sein.
+1. `THEMEN_HISTORIE.md` überprüfen und gleiche Kernfrage nicht wiederholen.
+2. Eine spannende Frage wählen: politische Entscheidung, Begriff, Entstehung, Unterschied, Beispiel oder geografische Besonderheit. **Ein aktueller Nachrichtenanlass ist nicht zwingend.**
+3. Mindestens zwei passende unabhängige, nachvollziehbare Quellen prüfen; bei aktuellen Entwicklungen datierte Primär- und Fachquellen bevorzugen, bei Begriffen und historischen Ursprüngen verlässliche Fachliteratur/Institutionen.
+4. Einen 55–60-Sekunden-Bogen formulieren, der wirklich etwas erklärt. Begriffe nicht nur aufzählen, sondern mit Ursache, Beispiel und wenn sinnvoll Ursprung darstellen.
+5. Politische Kontroversen sachlich und fair behandeln, keine Wahlempfehlungen oder ideologische Werbung. Reichweitenpotenzial nur als Einschätzung, nicht als Gewissheit darstellen.
+6. Serious-Minimal-Countryball-Welt bleibt bestehen: runde Akteure nur, wenn hilfreich; sonst einfache Karten, Gegenstände und Dokumente.
 
-## Bildwelt und Bestandsschutz
+## Ohne Bezug zum Kanal autonom pausiert
 
-Die feste 2D-Bildwelt `serious-minimal-countryball-explainer` bleibt unverändert; Countryballs nur, wenn sie die politische oder geografische Erklärung wirklich unterstützen. Karten, Dokumente und Gegenstände sind oft geeigneter.
+Gesundheit, Medizin, Psychologie, Lifestyle, Dating, generische Technik, Alltagsfragen oder rein naturwissenschaftliche Themen ohne Zusammenhang mit Politik oder Geografie. Ausdrückliche Nutzeraufträge zu Abweichungen bleiben möglich.
 
-Alle älteren Reels, reservierten Themen und Einzelprojekte bleiben unverändert. Die neue Regel gilt **nur für neue Themenwahlen**; kein historisches Video wird gelöscht oder umgeschrieben.
+Alle alten Reels und Videoprojekte bleiben unverändert. Die neue Regel betrifft **nur zukünftige Themenwahlen**.

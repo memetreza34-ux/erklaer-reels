@@ -14,31 +14,42 @@
   "channelFocus": {
     "primaryTopics": [
       "Politik und Staatssysteme",
-      "Länder, Geografie, Grenzen und Territorien",
-      "internationale Beziehungen und Geopolitik"
+      "Politische Begriffe, Institutionen und politische Bildung",
+      "Ideologien und Gesellschaftssysteme",
+      "internationale Beziehungen und Geopolitik",
+      "Länder, Geografie, Grenzen und Territorien"
     ],
     "adjacentTopicsAllowedOnlyWithClearCoreLink": true,
-    "autonomousScope": "Neue Videos ausschließlich zu Politik, Geografie, Grenzen, Ländern, aktuellen politischen Entwicklungen und Geopolitik. Geschichte nur als knappe Kontextinformation; keine historische Kernfrage oder reine Ideologie-Einführung ohne Gegenwartsbezug.",
+    "autonomousScope": "Politik zuerst: aktuelle politische Entwicklungen UND zeitlos wertvolle Erklärvideos zu politischen Begriffen, Staatsformen, Ideologien, Institutionen, Wahlen, Gesetzen, internationalen Beziehungen und politisch relevanter Geografie. Die Entstehung und historischen Ursprünge politischer Ideen, Begriffe, Staaten und Grenzen dürfen ausführlich erklärt werden, wenn eine politische Bildungsfrage das Video trägt. Keine reine Geschichte ohne erkennbaren Politik-/Geografie-/Staatsbezug.",
     "effectiveSince": "2026-10-12",
     "legacyCategoriesForExistingProjects": [
-      "Geschichte",
-      "Ideologien und Gesellschaftssysteme"
+      "Geschichte"
     ],
     "explicitUserTopicOverrideAllowed": true,
     "pausedWithoutExplicitUserRequest": [
-      "Geschichte als eigenständiges Thema",
-      "Historische Ereignisse ohne gegenwärtige politische oder geografische Kernfrage",
-      "Ideologie-Lexikon ohne aktuellen politischen Bezug",
+      "Geschichte als eigenständiges Thema ohne politische Bildungsfrage",
+      "rein historische Schlachten, Chroniken und Biografien ohne Politik-/Staats-/Grenzbezug",
       "Gesundheit",
       "Medizin",
       "Psychologie",
       "Lifestyle",
-      "allgemeine Alltags-Warum-Themen ohne Politik- oder Geografiebezug"
+      "allgemeine Alltags-Warum-Themen ohne politischen oder geografischen Bezug"
     ],
     "editorialPolicyFile": "youtube/TOPIC_SELECTION_POLICY.md",
     "currentEventsPreferred": true,
     "neutralEvidenceBasedReportingRequired": true,
-    "viralPotentialNotGuaranteed": true
+    "viralPotentialNotGuaranteed": true,
+    "primaryPriority": "Politik ist Kern und Leitfrage des Kanals Weltlogik. Politische Bildung, Begriffe, Ideologien, Geografie, Geopolitik und historische Ursprünge sind erlaubt, sofern sie Politik oder staatliche/geografische Zusammenhänge verständlich machen.",
+    "historicalOriginsAllowed": true,
+    "standaloneHistoryWithoutPoliticalOrGeographicCoreForbidden": true,
+    "evergreenPoliticalEducationAllowedWithoutCurrentNewsTrigger": true,
+    "selectionPriority": [
+      "politische Relevanz und Zuschauermehrwert",
+      "faktenbasierte verständliche Erklärung",
+      "aktuelles Interesse oder dauerhaft nachgefragte politische Bildungsfrage",
+      "Karten- und Bildwelt-Passung",
+      "Neuheit gegenüber Themenhistorie"
+    ]
   },
   "scriptOpeningPolicy": {
     "directQuestionRequiredAtStart": false,

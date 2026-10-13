@@ -1,38 +1,54 @@
-# YouTube-Themenauswahl — Politik, Geografie und aktuelle Geopolitik
+# Weltlogik — Themenauswahl: Politik an erster Stelle
 
-**Ab 12.10.2026 verbindlich für NEUE Weltlogik-Langvideos.** Diese Regel ergänzt `YOUTUBE_WORKFLOW.md` und `config/youtube-channel-policy.json`. Die visuellen Standards, technischen Phasen und der Bestandsschutz bleiben unverändert.
+**Gültig für alle NEUEN Weltlogik-Langvideos ab 13. Oktober 2026.** Ergänzt `YOUTUBE_WORKFLOW.md` und `config/youtube-channel-policy.json`. Ändert weder die Bildwelt noch bestehende Projekte.
 
-## 1. Harte Themenauswahl
+## 1. Identität des Kanals
 
-**Nur drei autonome Kernbereiche:**
-- **Aktuelle Politik und Staatssysteme:** konkrete Entscheidungen, Abstimmungen, internationale Politik, Bündnisse, Sanktionen, Verträge, Institutionen und deren Folgen.
-- **Geografie, Länder, Grenzen und Territorien:** strategische Grenzen, Inseln, Regionen, Meerengen, Handelskorridore, Seegebiete und ungewöhnliche geografische Zusammenhänge.
-- **Gegenwärtige Geopolitik:** aktuelle internationale Konfliktlinien, Grenzfragen, politische Ressourcenkontrolle, maritime Routen und geografische Machtfragen.
+**Weltlogik vermittelt vor allem Politik und politische Bildung.** Ein Video soll zeigen, **was ein politischer Begriff, ein Mechanismus oder ein aktueller Konflikt bedeutet, warum er entstanden ist und welche Auswirkungen er hat**. Es muss nicht immer die neueste Nachricht sein.
 
-**Nicht eigenständig wählen:** historische Ereignisse, klassische Geschichtsdokumentationen, Biografien historischer Persönlichkeiten, reine historische Chronologien oder generische Ideologie-Lexikonvideos. Ein Rückblick darf vorkommen, wenn er nötig ist, um die **heutige** Politik/Geografie zu erklären; Gegenwart und konkrete politische/geografische Leitfrage bleiben das Videozentrum.
+**Die thematische Hierarchie lautet:**
 
-Keine Historien-Einträge, bestehenden Videoordner oder Altprojekte löschen/umschreiben. Ein ausdrücklich vom Nutzer angefordertes abweichendes Thema darf bearbeitet werden.
+1. **Politik (Hauptfokus)** — politische Entscheidungen, Macht, Demokratie, Regierungen, Staaten, Gesetze, Wahlen, Parlamente, Institutionen, internationale Beziehungen und Konflikte.
+2. **Politische Bildung und Begriffe (gleichwertig zum aktuellen Politikthema)** — Föderalismus, Souveränität, Gewaltenteilung, Vetorecht, Sanktionen, Populismus, Rechtsstaat, politische Systeme, Begriffsherkunft.
+3. **Ideologien und Gesellschaftssysteme** — z. B. Liberalismus, Konservatismus, Sozialismus, Kommunismus, Nationalismus. Bedeutung, Entstehung, Unterschiede, Beispiele und politische Folgen **sachlich und fair** darstellen. Keine Ideologie bewerben.
+4. **Geografie und Geopolitik** — Länder, Grenzen, Territorien, Meerengen, Handelswege, Ressourcen und Karten als eigenständige Bildungsfragen oder im politischen Zusammenhang.
+5. **Historische Ursprünge** — frühere politische Entscheidungen, Revolutionen, Begriffsursprünge und die Entwicklung von Staaten/Ideologien/Grenzen dürfen das Video wesentlich prägen, **wenn die Leitfrage politisch oder geografisch ist**.
 
-## 2. Aktualität zuerst — redaktioneller Ablauf vor JEDEM Themenvorschlag
+**Nicht autonom produzieren:** reine militärische Schlachtchronologien, historische Lebensläufe oder klassische Geschichtsdokumentationen **ohne** erkennbare politische, staatliche oder geografische Erkenntnisfrage. Es gibt kein generelles Geschichtsverbot: die **politisch relevante Vergangenheit** ist ausdrücklich erwünscht.
 
-1. **Heute recherchieren statt raten.** Vor autonomer Themenwahl aktuelle verlässliche Nachrichtenlage prüfen: bevorzugt Entwicklungen aus den letzten 7–14 Tagen, bei fortlaufenden wichtigen Themen bis zu etwa 30 Tagen. Eine ältere Entwicklung darf gewählt werden, wenn ein **neuer belegter Anlass** vorliegt. Bei fehlendem aktuellen Signal: keine erfundene Aktualität; lieber eine konkret relevante geografisch-politische Evergreen-Frage wählen.
-2. **Mehrere voneinander unabhängige Quellen prüfen.** Relevante Veröffentlichungsdaten/Stand prüfen. Mindestens zwei belastbare Quellen, bei möglichen Änderungen und strittigen Fakten möglichst eine offizielle Primärquelle (Regierung, Behörde, UNO, EU, amtliche Karte) und eine unabhängige fachkundige journalistische Quelle. Ereignisdatum und Berichtsdatum sauber auseinanderhalten.
-3. **Konkrete Zuschauerfrage bestimmen.** Nicht einfach Nachrichten nacherzählen. Das Video erklärt in verständlicher Sprache `Was hat sich verändert? → Warum? → Welche geografischen/politischen Ursachen? → Was folgt daraus und für wen?`. Karten, Länder und konkrete Beispiele gehören zu dieser Erklärung.
-4. **Reichweitenchance nüchtern einschätzen.** Sind Folgen relevant? Gibt es einen sofort verständlichen Konflikt, überraschende Kartenlage, klare offene Frage oder messbar hohes Interesse? Falls echte Trends/YouTube-Suchdaten fehlen, diese ausdrücklich nur als **Potenzial**, niemals als bestätigte Viralität bezeichnen.
-5. **Redaktionelle Vergleichsentscheidung.** Vor Projekterstellung nach **Aktualität**, Zuschauerinteresse, visueller Erklärbarkeit, Faktenlage und Neuheitswert priorisieren; keine austauschbaren reißerischen Titel, kein künstlich skandalisierender Frame, keine parteiische Überzeugungsarbeit.
-6. **Doppelte Themen sperren.** `THEMEN_HISTORIE.md`, `config/youtube-topic-registry.json`, vorhandene Videoordner und `npm run topic:youtube` prüfen. Erst nach Themenfreigabe Phase 1 beginnen.
+## 2. Erlaubte Beispiele für unterschiedliche Videoarten
 
-## 3. Pflicht in der neuen Recherche
+- **Aktuell:** „Warum streiten zwei Länder über diese Grenze?“ / „Wie wirken die neuen Sanktionen?“
+- **Grundwissen:** „Was ist ein Rechtsstaat – und was macht ihn aus?“ / „Was bedeutet Souveränität?“
+- **Begriffsursprung:** „Warum spricht man in der Politik von links und rechts?“ (mit historischer Entstehung).
+- **Ideologien:** „Was unterscheidet Sozialismus und Kommunismus?“ (mit Ursprung und praktischen Beispielen).
+- **Systeme:** „Warum gibt es Gewaltenteilung?“ / „Wie funktioniert ein parlamentarisches System?“
+- **Geografie:** „Warum sind Exklaven politisch kompliziert?“
+- **Geopolitik:** „Warum ist die Straße von Hormus wichtig?“
 
-Die Datei `99-technik/RECHERCHE_QUELLEN.md` eines **neuen** Videos dokumentiert neben Quellen auch **Redaktionsanlass und Aktualitätsdatum**: Welche konkrete Nachricht oder gegenwärtige geografische Frage rechtfertigt das Video? Was ist gesichert und was umstritten? Bei länger haltbaren Fragen ausdrücklich als Evergreen kennzeichnen.
+Diese Beispiele **sind keine automatische Produktionsfreigabe**. Immer zuerst `THEMEN_HISTORIE.md`, die Registry und den Themen-Editor prüfen. Manche Ideen wurden schon behandelt und dürfen nicht einfach doppelt produziert werden.
 
-Die Rechercheprüfung soll falsche Sicherheit verhindern: **aktuelle Informationen können sich bis zur Veröffentlichung ändern**. Vor Veröffentlichung wesentliche Zeitangaben, politische Entscheidungen, Amtsinhaber und Status von Verhandlungen nochmals prüfen. Falls keine aktuellen Quellen verfügbar sind, nicht so tun, als seien sie geprüft.
+## 3. Redaktioneller Entscheidungsprozess
 
-## 4. Bestandsschutz und Produktionsfreigabe
+1. **Politische Leitfrage feststellen:** Welches Wissen über Politik, Staat, Gesellschaftssystem, Grenze oder internationale Beziehungen erhält der Zuschauer? Kein erzwungenes politisches Stichwort bei einem fachfremden Thema.
+2. **Aktuellen Anlass oder dauerhaftes Lerninteresse wählen:** Aktuelle Entwicklungen sind wichtige Kandidaten, doch **Evergreen-Bildungsvideos brauchen keine News**. Nicht einen künstlichen Tagesbezug erfinden, um eine Definition zu rechtfertigen.
+3. **Quellen recherchieren und abgleichen:** Mindestens zwei geeignete unabhängige nachvollziehbare Quellen, nach Möglichkeit eine Primär-/Fachquelle. Bei aktuellen Themen aktuelle Veröffentlichungs-/Ereignisdaten prüfen. Bei Begriffen/Ideologien etablierte politikwissenschaftliche, institutionelle und historische Fachquellen nutzen; verschiedene Definitionen und Kontroversen kenntlich machen.
+4. **Erklärwert und Zuschauerinteresse vergleichen:** konkrete verständliche Frage, interessante Entstehung oder überraschende Konsequenz, gute Kartenszenen/Illustrationen, klare Dramaturgie. Potenzielles Interesse nicht als garantierte Viralität ausgeben.
+5. **Sachlich bleiben:** Keine Partei-, Wahl- oder Ideologiepropaganda. Bei politisch umstrittenen Fragen relevante Sichtweisen nachvollziehbar darstellen, klar zwischen Fakt, Interpretation und Prognose unterscheiden.
+6. **Themen-Editor vor Projektanlage:** `npm run topic:youtube -- --topic "NEUES THEMA"`. Nur `APPROVED_NEW` freigeben; gleiche Kernfrage in neuem Titel ist nicht neu.
 
-- Existierende Geschichtsvideos bleiben technisch reproduzierbar. Ihr früherer `createdAt`-Stand zählt für die historische Kategorie-Regel; neue Projekte müssen ab Stichtag die drei aktiven Kategorien nutzen.
-- Der autonome Themenfokus wird durch `src/core/youtube-topic-focus.js` und `src/cli/validate-youtube-phase1-policy.js` geprüft, zusätzlich zur manuellen inhaltlichen Themenkontrolle.
-- Die Policy erlaubt keine Änderung, Neuerstellung oder Löschung eines einzelnen bestehenden Videoprojekts ohne gesonderten ausdrücklichen Auftrag.
-- Die zuletzt vorgeschlagene Tambora-Idee wurde **nicht** als Projekt im Repository angelegt und ist kein für Weltlogik freigegebenes Thema.
+## 4. Anforderungen an die Video-Erklärung
 
-**Ziel:** informativ, faktenbasiert, spannend und aktuell — ohne Versprechen, dass ein Video viral geht.
+Bei einem **aktuellen** Thema: *Was ist passiert? → Warum? → Wer verfolgt welche Interessen? → Was bedeutet das?* Die zeitkritischen Aussagen vor Veröffentlichung erneut verifizieren.
+
+Bei einem **Begriff/System/einer Ideologie**: *Was heißt es verständlich? → Woher kommt es? → Wie funktioniert es? → Worin unterscheidet es sich von verwandten Begriffen? → Ein konkretes Beispiel → Warum ist es relevant?* Nicht zwanghaft jeden Punkt abarbeiten; jeweils nur die hilfreichen Schritte auswählen.
+
+Bei **politisch relevanter Geschichte**: *Welche frühere Entscheidung oder Entwicklung erklärt den heutigen Begriff, Staat, Grenzverlauf oder die politische Ordnung?* Historische Passagen dürfen länger sein, sofern sie zur Leitfrage gehören.
+
+Im neuen Projekt `99-technik/RECHERCHE_QUELLEN.md` die **Themenart** (aktuell / politische Bildung / Ideologie / politisch-geografisch / historischer Ursprung), Quellen und gegebenenfalls den Nachrichtenstichtag dokumentieren. Evergreen-Fragen benötigen **kein** künstliches Aktualitätsdatum, wohl aber sorgfältige Quellen.
+
+## 5. Bildwelt, Qualität und Schutz
+
+Serious Minimal Countryball Explainer als konstante hochwertige flache 2D-Visualisierung; Countryballs nur, wo sie politische Akteure sinnvoll erklären, sonst Karten, Texte, Dokumente, Symbole oder gegenständliche Szenen. Kein neues starres Bildkontingent und keine Änderung des technischen Render-Workflows.
+
+Die Regeln zu `docs/POST_VIDEO_IMPROVEMENT.md` (nach jedem fertigen Video lernen) und `docs/CHANGE_SAFETY_POLICY.md` (vorhandene Videos schützen) bleiben verbindlich. **Bestehende Projekte werden weder migriert noch verändert.**

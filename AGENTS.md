@@ -2,9 +2,11 @@
 
 `CURRENT_WORKFLOW.md` ist die verbindliche Single Source of Truth. Bei Widersprüchen gilt immer die dort definierte Priorität.
 
-## Themenwahl: Politik, Geografie und aktuelle Geopolitik
+## Themenwahl: Politik an erster Stelle, politische Bildung ausdrücklich erlaubt
 
-Ab 2026-10-12 autonom **keine eigenständigen Geschichtsvideos** mehr starten. Für neue YouTube-Langvideos gelten `youtube/TOPIC_SELECTION_POLICY.md` und `config/youtube-channel-policy.json`, für Reels `config/reel-topic-focus.json`. Bevorzugt aktuell recherchierte, spannende und potenziell reichweitenstarke politische/geografische Fragen; niemals Viralität garantieren. Historische Angaben dürfen lediglich die heutige Frage erklären. Fertige historische Videos nicht verändern.
+**Weltlogik ist in erster Linie ein Politik-Erklärkanal**, nicht ausschließlich ein Nachrichten- oder Geografiekanal. Für neue Videos dürfen Agenten neben aktuellen Konflikten und Entscheidungen auch **zeitlose politische Begriffe, ihren Ursprung, Ideologien, Staatsformen, Institutionen, politische Mechanismen sowie historische Ursachen politischer Entwicklungen** erklären. Geografie, Grenzen und Länder gehören als ergänzender Themenbereich dazu. **Keine aktuelle Nachricht als zwingende Voraussetzung** für ein gutes Bildungs- oder Begriffs-Video.
+
+Eine reine Geschichtschronik ohne klare Politik-/Staats-/Geografieleitfrage ist kein autonomes Weltlogik-Thema. Themenauswahl: `youtube/TOPIC_SELECTION_POLICY.md`, `config/youtube-channel-policy.json`, `config/reel-topic-focus.json`. Politisch sachlich, verständlich, mit Quellen und ohne Werbe-/Parteipropaganda. Vorhandene Videos nicht ändern.
 
 ## Oberste proaktive Aufgabe nach jedem Video: Qualität steigern
 
