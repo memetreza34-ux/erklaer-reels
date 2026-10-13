@@ -44,13 +44,13 @@ test('Agenten und Workflows erlauben Begriffsursprünge und Evergreen-Bildung st
   ]);
   assert.match(youtube,/Politik erklären und politische Bildung/);
   assert.match(youtube,/Ursprung und Geschichte sind ausdrücklich zulässig/);
-  assert.match(youtube,/keine.*Zwang/i);
+  assert.match(youtube,/kein.*Zwang/i);
   assert.match(reel,/Geschichte ist nicht verboten/);
   assert.match(agents,/politische Begriffe, ihren Ursprung/);
   assert.match(workflow,/Politik ist das A und O/);
   assert.match(doc,/Evergreen-Bildungsvideos brauchen keine News/);
   assert.match(doc,/Ideologien und Gesellschaftssysteme/);
-  assert.match(doc,/keine.*Geschichtschronik/i);
+  assert.match(doc,/reine militärische Schlachtchronologien/i);
   assert.match(doc,/unabhängige nachvollziehbare Quellen/);
   assert.match(doc,/Viralität/);
   assert.match(history,/Alte Projekte bleiben als Archiv/);
