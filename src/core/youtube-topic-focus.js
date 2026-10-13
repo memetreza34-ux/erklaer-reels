@@ -21,6 +21,6 @@ export function evaluateYoutubeTopicFocus(meta = {}, focus = {}) {
     isLegacy,
     explicitlyRequested,
     allowedCategories,
-    error: valid ? null : `topicCategory "${meta.topicCategory ?? 'fehlend'}" liegt außerhalb des neuen Politik-/Geografie-Fokus. Eigenständige Geschichtsvideos sind ab ${effectiveSince} nicht mehr autonom erlaubt.`
+    error: valid ? null : `topicCategory "${meta.topicCategory ?? 'fehlend'}" liegt außerhalb des politischen Bildungs- und Geografiefokus. Eigenständige Geschichtsvideos sind ab ${effectiveSince} nicht mehr autonom erlaubt.`
   };
 }
