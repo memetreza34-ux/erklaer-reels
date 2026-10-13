@@ -20,6 +20,19 @@ export async function pngInfo(file) {
   const sig=Buffer.from([137,80,78,71,13,10,26,10]);
   if(data.length<45 || !data.subarray(0,8).equals(sig) || data.toString('ascii',12,16)!=='IHDR')
     throw new Error('PNG-Kopfstruktur ungültig: ' + path.basename(file));
+  // Alle Chunks bis IEND durchlaufen statt nur die Magic Bytes zu prüfen.
+  // So werden offensichtlich abgeschnittene/falsche Downloads nicht freigegeben.
+  let cursor=8,hasData=false,hasEnd=false;
+  while(cursor+12<=data.length){
+    const length=data.readUInt32BE(cursor);
+    if(length>data.length-cursor-12)throw new Error('Abgeschnittenes PNG: '+path.basename(file));
+    const type=data.toString('ascii',cursor+4,cursor+8);
+    if(type==='IDAT' && length>0)hasData=true;
+    cursor+=length+12;
+    if(type==='IEND'){hasEnd=true;break;}
+  }
+  if(!hasData||!hasEnd||cursor!==data.length)
+    throw new Error('PNG ohne vollständige Daten/IEND: '+path.basename(file));
   const width=data.readUInt32BE(16),height=data.readUInt32BE(20);
   if(width<16 || height<16 || Math.abs(width/height-16/9)>0.045)
     throw new Error('Ungültiges 16:9-Bild: '+path.basename(file)+' ('+width+'x'+height+')');
