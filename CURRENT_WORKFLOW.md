@@ -52,17 +52,17 @@ Details: `WORKFLOW_PHASEN.md`.
 npm run import:user-asset -- --dir "<reel>" --source "<datei>" --kind images|audio
 ```
 
-## Themenfokus — neue Videos nur Politik und Geografie
+## Themenfokus — POLITIK ist das Hauptziel
 
-**Ab 2026-10-12 keine eigenständigen Geschichtsthemen mehr autonom auswählen.** Neue Reels und YouTube-Langvideos konzentrieren sich auf **Politik, Geografie und aktuelle Geopolitik**. Geschichte ist nur noch kurzer Hintergrund, wenn sie ein heutiges politisches oder geografisches Problem erklärt.
+**Ab 13.10.2026 gilt: Politik ist das A und O von Weltlogik.** Neue Reels und YouTube-Langvideos vermitteln politisches Wissen. Dazu gehören **aktuelle Politik, politische Bildung, politische Begriffe, Ideologien und Gesellschaftssysteme, Institutionen, Staatssysteme, internationale Beziehungen und Geopolitik**. Geografie, Länder und Grenzen sind ausdrücklich erwünscht, besonders wenn sie politische Zusammenhänge erklären.
 
-- Reels: `config/reel-topic-focus.json` und `REEL_THEMENFOKUS.md`
-- YouTube-Langvideos: `config/youtube-channel-policy.json`, `youtube/YOUTUBE_WORKFLOW.md` und `youtube/TOPIC_SELECTION_POLICY.md`
-- **Aktuelles Zuschauerinteresse bevorzugen**, Themen vor Freigabe anhand datierter glaubwürdiger Quellen prüfen, keine unbelegten Trend- oder Viralitätsversprechen.
-- Bewährte alte Videoprojekte, historische Themenregister und fertige Dateien bleiben erhalten; sie sind **kein Auftrag für neue Geschichtsvideos**.
-- Ausdrückliche Nutzeranweisungen für ein abweichendes Einzelthema können die autonome Fokusregel übersteuern.
+**Auch zeitlose Bildungsfragen sind vollwertige Videothemen**, selbst ohne aktuelle Nachricht: „Was bedeutet Souveränität?“, „Woher kommt links und rechts in der Politik?“, „Was unterscheidet Sozialismus und Kommunismus?“ Ein Ursprung, eine geschichtliche Entwicklung oder eine frühere Entscheidung darf ausführlicher erklärt werden, sofern das politische Lernziel klar bleibt. Nur reine Geschichtsdokumentationen ohne Politik-, Staats- oder geografischen Kern werden nicht autonom produziert.
 
-
+- Neues Thema: **Politik/Politikbildung zuerst**, Geografie und Geschichte dann inhaltlich passend; keine künstlich erzwungene Aktualität.
+- Aktuelle politische Entwicklungen und dauerhafte politische Erklärfragen beide nach Zuschauerinteresse, Relevanz, belegbarer Faktenlage und Verständlichkeit auswählen. Keine unbelegten Viralitätsversprechen.
+- Reels: `config/reel-topic-focus.json`, `REEL_THEMENFOKUS.md`; YouTube: `config/youtube-channel-policy.json`, `youtube/TOPIC_SELECTION_POLICY.md`.
+- Bereits vorhandene Videoordner, Themenregister und Exporte unverändert lassen; neue Regeln gelten für **zukünftige** Produktionen.
+- Ausdrückliche Nutzeranweisungen haben Vorrang.
 
 ## Reel-Standard
 
