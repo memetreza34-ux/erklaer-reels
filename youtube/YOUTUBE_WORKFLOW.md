@@ -62,6 +62,18 @@ Neue Videos laufen ab jetzt als reguläre Produktion. Änderungen an der Grundbi
 
 Verbindliches Vorgehen: `youtube/TOPIC_SELECTION_POLICY.md`, maschinenlesbarer Fokus: `config/youtube-channel-policy.json`. Bestehende Videoprojekte und ihre alten Themenkategorien unverändert schützen.
 
+## SCRIPT & BILDIDEEN V2 — KONKRETE FOLGEN, ECHTE ABWECHSLUNG
+
+Neue Videopakete mit `editorialStoryUpgradeVersion: 1` verwenden zwingend `youtube/EDITORIAL_STORY_VISUAL_V2.md` und `99-technik/EDITORIAL_BRIEF.json`.
+
+- **Story statt schwammiger Aussagen**: nicht nur Namen und Orte, sondern konkrete Ursache → Wirkungsmechanismus → nachvollziehbare politische, wirtschaftliche oder alltägliche Folge; mindestens zwei unterschiedliche recherchierte Zusammenhänge im Brief, mit nachprüfbaren Quellen. Zahlen, Preisverläufe, Prozentänderungen und Zeiträume nie erfinden.
+- **Direkte und indirekte Bilder kombinieren:** Eine Tankstelle, ein Lieferwagen, ein Gericht, ein Beispielhaushalt oder ein didaktischer Vergleich darf sichtbar werden, auch wenn das nicht der im Titel genannte Ort ist – **wenn** Sprechertext und klare Erklärung es tragen.
+- **Bilder wechseln die Perspektive/Skala sinnvoll:** Karte → Akteur → Prozess → Daten → Alltagsbeispiel → Folge; keine monotone Serie derselben Karte/Flaggenfiguren. Kein Zwang zu allen Kategorien in jedem Video und keine Füllbilder nur um einen Wechsel zu erzwingen.
+- **Kurztext ausdrücklich erlaubt:** prägnante deutsche Stichwörter, Zahlen und Einheiten mit Quelle; echte belegte Zitate als Ausnahme. Keine ganzen unzitierten Sätze, keine erfundenen Werte und keine unwahren „echten“ Analogieszenen.
+- **Phase-1-Gate:** Jede Bildszene bekommt `Visual Role`, `Why This Visual`, `Visual Environment` und `On-screen Text` zusätzlich zu Satzbezug, `Topic Anchor` und `Visual Form`. Menschliche/visuelle Endprüfung bleibt zwingend.
+
+Das frühere Thema-Direktbezug-Gate ist **kein Pflichtgebot, jeden Frame geografisch am selben Ort spielen zu lassen**. Bei einem indirekten Motiv ist der konkret erklärte *Bezug zur Aussage und zum Mechanismus* der Topic Anchor.
+
 ## SCHRITT 0 — THEMEN-EDITOR HARD LOCK
 
 Vor neuem Projektordner, Skript oder Flow-Prompt:
