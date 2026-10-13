@@ -1,30 +1,29 @@
 {
-  "version": 2,
-  "effectiveSince": "2026-10-12",
+  "version": 3,
+  "effectiveSince": "2026-10-13",
   "scope": "new-reels-only",
   "hardGateForAutonomousTopicSelection": true,
-  "channelPositioning": "Aktuelle Politik, Geografie, Länder, Grenzen und Geopolitik einfach erklärt",
+  "channelPositioning": "Politik im Mittelpunkt: politische Bildung, Begriffe, Ideologien, Geografie und Geopolitik einfach erklärt",
   "preferredCategories": [
-    "Politik und Staatssysteme mit Gegenwartsbezug",
-    "Länder, Geografie, Grenzen und Territorien",
-    "Internationale Beziehungen und aktuelle Geopolitik",
-    "Aktuelle politische Entscheidungen, Verträge, Bündnisse und Institutionen",
-    "Ressourcen, Handelsrouten und strategische Gebiete mit geopolitischem Bezug"
+    "Politik und Staatssysteme",
+    "Politische Begriffe, Institutionen und politische Bildung",
+    "Ideologien und Gesellschaftssysteme",
+    "Internationale Beziehungen und Geopolitik",
+    "Länder, Geografie, Grenzen und Territorien mit politischem Bezug",
+    "Historische Ursprünge von politischen Ideen, Begriffen, Grenzen und Staatssystemen"
   ],
   "adjacentTopicRule": {
     "allowed": true,
-    "condition": "Nur wenn die aktuelle politische oder geografische Kernfrage eindeutig im Mittelpunkt steht. Geschichte ist lediglich notwendiger Hintergrund und nie eigenständiges Thema."
+    "condition": "Das Thema vermittelt politisches Wissen oder erklärt die geografische bzw. geschichtliche Grundlage von Staaten, Ideologien, Institutionen und internationalen Beziehungen. Keine reine Geschichte ohne politische/geografische Leitfrage."
   },
   "pausedByDefault": [
-    "Eigenständige Geschichte, historische Wendepunkte und reine Geschichtserzählungen",
-    "Historische Ereignisse ohne aktuellen Politik-/Geografiebezug",
-    "Abstrakte Ideologie-Erklärungen ohne aktuellen politischen Bezug",
+    "Reine Geschichtsdokumentationen und Chronologien ohne politisches/geografisches Lernziel",
     "Gesundheit, Medizin, Körper und Ernährung",
     "Psychologie, Selbsthilfe und Gewohnheiten",
     "Beziehungen und Dating",
     "allgemeine Alltags-Warum-Fragen",
     "Naturwissenschaft ohne Politik-/Geografiebezug",
-    "Technik und Gadgets ohne geopolitischen Bezug",
+    "Technik und Gadgets ohne politische/geografische Relevanz",
     "generische Internet- und Social-Media-Themen",
     "Beauty, Fitness und Lifestyle"
   ],
@@ -32,28 +31,30 @@
   "selectionRules": [
     "THEMEN_HISTORIE.md vor jeder Themenwahl prüfen",
     "keine doppelte Kernfrage in neuer Formulierung",
-    "nur Politik/Geografie/aktuelle Geopolitik autonom auswählen",
-    "aktuelle überprüfbare Entwicklungen bevorzugen, keine erfundenen Trends",
-    "vor Themenfreigabe datierte seriöse Quellen und mindestens zwei voneinander unabhängige Belege suchen; bei kontroversen Fakten Primärquellen bevorzugen",
-    "Interesse durch eine echte überraschende Karte, Entscheidung, Konfliktfolge oder konkrete geografische Frage wecken statt reißerischem Clickbait",
-    "55 bis 60 Sekunden sauber erklärbar",
-    "natürliche visuelle Passung zur Serious-Minimal-Countryball-Welt",
-    "politische Inhalte sachlich, ausgewogen, keine Parteienwerbung oder gezielte Wählerbeeinflussung",
-    "Geschichte nur als kurzer zwingender Kontext",
-    "Viralität nie behaupten oder garantieren"
+    "Politik zuerst; passende Geografie, Ideologien und Bildung begründet ergänzen",
+    "aktuelle Entwicklungen auf Aktualität prüfen, aber für gut erklärte politische Begriffe oder Ursprünge ist kein News-Anlass erforderlich",
+    "mindestens zwei geeignete voneinander unabhängige nachvollziehbare Quellen prüfen; bei aktuellen oder strittigen Fakten datierte Primärquellen bevorzugen",
+    "Begriffe nicht nur definieren, sondern Entstehung, Unterschiede, Beispiele, Bedeutung und Grenzen erklären, soweit das Format zulässt",
+    "55 bis 60 Sekunden sauber und spannend erklärbar",
+    "natürliche visuelle Passung zur Serious-Minimal-Countryball-Welt; Countryballs optional",
+    "politische Inhalte neutral, keine Parteienwerbung oder gezielte Wählerbeeinflussung",
+    "virales Potenzial nie behaupten oder garantieren"
   ],
   "goodExamples": [
-    "Warum ist die Straße von Hormus geopolitisch so wichtig?",
-    "Wie wirken neue Sanktionen auf ein bestimmtes Land?",
-    "Warum streiten Staaten über eine Seegrenze?",
-    "Was bedeutet eine aktuelle Entscheidung des UN-Sicherheitsrats?",
-    "Warum ist Grönland strategisch interessant?",
-    "Wie verändern neue Handelszölle die Beziehungen zwischen Ländern?",
-    "Warum sind Exklaven für Staaten schwierig zu versorgen?",
-    "Warum sind bestimmte Meerengen für Welthandelsrouten entscheidend?"
+    "Was bedeutet Föderalismus – und warum gibt es ihn?",
+    "Was ist der Unterschied zwischen Staat und Regierung?",
+    "Wie entstand der Begriff links und rechts in der Politik?",
+    "Was unterscheidet Sozialismus und Kommunismus?",
+    "Was ist das Vetorecht im UN-Sicherheitsrat?",
+    "Was bedeutet Souveränität?",
+    "Warum ist die Straße von Hormus geopolitisch wichtig?",
+    "Warum verlaufen manche Staatsgrenzen so ungewöhnlich?",
+    "Warum gibt es politische Sanktionen?",
+    "Was ist Populismus – und woran erkennt man ihn?"
   ],
   "legacyOffFocusReelsRemainValidHistory": true,
   "youtubeUnchanged": true,
   "policyDocument": "REEL_THEMENFOKUS.md",
-  "editorialPolicyFile": "youtube/TOPIC_SELECTION_POLICY.md"
+  "editorialPolicyFile": "youtube/TOPIC_SELECTION_POLICY.md",
+  "primaryPriority": "Politik ist der Kern; aktuelle Politik und zeitlose politische Bildung sind beide erwünscht. Geografie und die Ursprünge politischer Ideen dienen dem Verständnis."
 }
