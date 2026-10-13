@@ -108,8 +108,9 @@ Für eine neue Produktion eine frische Flow-Sitzung verwenden, wenn sich die akt
 - Separates Cover exakt 3× → einen Gewinner als THUMBNAIL.png wählen
 - Bild 01–NN jeweils genau 1×
 - kein vorheriges Bild als Referenz
-- maximal fünf aktive Generierungen gleichzeitig
-- kein Review-Stop nach 5er-Gruppen
+- **Feste 5er-Gruppen:** 01–05, danach 06–10 usw.; die letzte Gruppe darf kleiner sein.
+- Pro Gruppe alle Bilder fertig erzeugen, dann auf Vollständigkeit prüfen, gesammelt korrekt benennen und erst nach bestandenem Blockcheck die nächste Gruppe starten.
+- Nur fehlende oder defekte Bilder erneut erzeugen; am Schluss vollständiger Bildnummern- und PNG-Check. `youtube/FLOW_BATCH_5_POLICY.md` beschreibt den ausführbaren Batch-Validator.
 - kein Bild 00
 
 Nach Abschluss:
