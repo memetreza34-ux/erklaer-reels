@@ -8,6 +8,12 @@
 
 Eine reine Geschichtschronik ohne klare Politik-/Staats-/Geografieleitfrage ist kein autonomes Weltlogik-Thema. Themenauswahl: `youtube/TOPIC_SELECTION_POLICY.md`, `config/youtube-channel-policy.json`, `config/reel-topic-focus.json`. Politisch sachlich, verständlich, mit Quellen und ohne Werbe-/Parteipropaganda. Vorhandene Videos nicht ändern.
 
+## YouTube-Storytelling: konkrete Auswirkungen, überraschende Perspektiven
+
+**Für neue Weltlogik-Langvideos ist `youtube/EDITORIAL_STORY_VISUAL_V2.md` verbindlich.** Skripte müssen nicht nur das Thema erklären, sondern interessante Ursache→Mechanismus→konkrete-Folge-Ketten führen (mit überprüfbaren Beispielen, Zahlen/Zeiträumen nur mit Quellen). Nicht vage behaupten, dass „Auswirkungen möglich“ seien; präzise zeigen **für wen, wie und warum**. Hook, Wendepunkte und nachvollziehbarer Payoff statt Ereignislisten. Neue Templates verlangen `99-technik/EDITORIAL_BRIEF.json`.
+
+**Bilder dürfen ausdrücklich einen anderen Ort, Alltag, Vergleich oder Symbol zeigen**, wenn die Szene die gerade gesprochene Wirkung oder das politische Prinzip klarer erklärt; die Brücke zur Aussage ausdrücklich dokumentieren. Beispiele: Öl-Engstelle → Tankstelle/Logistik; Gewaltenteilung → anschaulicher Schlüssel-/Schlösservergleich als SYMBOLISCH gekennzeichnet. **Kurze deutsche Labels, Schlagwörter, belegte Zahlen und echte Zitate** sind willkommen, keine Textwände oder erfundenen Preise/Zitate. Zwischen Ländern/Karten/Institutionen/Alltagsbeispielen sinnvoll wechseln, kein Wiederholen fast identischer Karten. Countryball-Bildwelt und technische Flow-Fünfergruppen beibehalten. Diese Regel betrifft YouTube, nicht die getrennte Reel-Pipeline.
+
 ## Google Flow für neue YouTube-Langvideos: feste 5er-Gruppen
 
 Cover separat fertigstellen; dann die Videobilder **in exakt fünf Bildprompts pro Durchlauf** erzeugen (letzte Gruppe ggf. kleiner). **Erst nachdem die ganze Gruppe erfolgreich erzeugt ist:** Existenz + Szenenzuordnung prüfen, exakt `Bild NN.png` benennen, die komplette Gruppe erneut prüfen. Fehlende/defekte Ausgaben müssen in derselben Gruppe nachgeneriert werden; vor erfolgreicher Prüfung **niemals** die nächste Fünfergruppe starten. Nach dem letzten Batch alle nummerierten Szenenbilder und das separate Cover im endgültigen Ordner auf fehlende, falsche und doppelte Dateien prüfen. `youtube/FLOW_BATCH_5_POLICY.md` und `npm run flow:youtube-batch` für neue YouTube-Projekte verwenden. Bestehende Projekte/Reel-Pipeline nicht verändern.
