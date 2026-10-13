@@ -22,14 +22,20 @@ export function validateEditorialBrief(brief={}) {
         if(!meaningful(chain?.[key], key==='source'?10:25))
           errors.push('EDITORIAL_BRIEF: Folge '+(i+1)+' ohne konkrete '+key+'-Angabe.');
       }
-      if(typeof chain?.source==='string'&&!/^(?:https?:\/\/\S+|Fachbuch:|Amtliche Quelle:)/i.test(chain.source.trim())){
+      if(typeof chain?.source==='string'&&(!/^(?:https?:\/\/\S+|Fachbuch:|Amtliche Quelle:)/i.test(chain.source.trim()) || /example\.(?:org|com|net)\/|replace-with/i.test(chain.source))){
         errors.push('EDITORIAL_BRIEF: Quelle in Folge '+(i+1)+' braucht einen nachprüfbaren Link oder nachvollziehbare Fachquellenangabe.');
       }
     }
   }
+  if(Array.isArray(brief.causeEffectChains)) {
+    const keyParts=brief.causeEffectChains.map(c=>phrase(c?.cause)+' '+phrase(c?.effect)).map(s=>s.toLowerCase());
+    if(new Set(keyParts).size!==keyParts.length)
+      errors.push('EDITORIAL_BRIEF: zwei lediglich duplizierte Ursache-Folge-Ketten reichen nicht aus.');
+  }
   const roles=brief.visualVarietyPlan;
   if(!roles||!Array.isArray(roles.visualEnvironments)||roles.visualEnvironments.length<3||
-       new Set(roles.visualEnvironments.map(x=>phrase(x).toLowerCase())).size<3)
+       new Set(roles.visualEnvironments.map(x=>phrase(x).toLowerCase())).size<3 ||
+       roles.visualEnvironments.some(x=>!meaningful(x,9)))
     errors.push('EDITORIAL_BRIEF: mindestens drei unterschiedliche sinnvolle Bildumgebungen/Maßstabsebenen planen.');
   if(!meaningful(roles?.connectionToStory,35))
     errors.push('EDITORIAL_BRIEF: erklären, warum die wechselnden Bilder die Geschichte verständlicher machen.');
