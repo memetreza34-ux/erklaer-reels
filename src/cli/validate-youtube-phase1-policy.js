@@ -5,6 +5,7 @@ import path from 'node:path';
 import { checkYoutubeTopic } from '../core/youtube-topic-editor.js';
 import { validateYoutubeScriptOpening } from '../core/youtube-script-opening.js';
 import { evaluateYoutubeTopicFocus } from '../core/youtube-topic-focus.js';
+import { validateEditorialBrief, validateVisualStoryPlan } from '../core/youtube-editorial-story.js';
 
 function arg(name) {
   const index = process.argv.indexOf(name);
@@ -135,6 +136,32 @@ async function main() {
   requireTrue(errors, meta.sessionPolicy?.freshFlowSessionRequiredWhenVisualPolicyChanges, 'sessionPolicy.freshFlowSessionRequiredWhenVisualPolicyChanges');
   requireTrue(errors, meta.sessionPolicy?.continueSessionContainingLegacyStyleInstructionsForbidden, 'sessionPolicy.continueSessionContainingLegacyStyleInstructionsForbidden');
   requireTrue(errors, meta.sessionPolicy?.previousGeneratedImageAsReferenceForbidden, 'sessionPolicy.previousGeneratedImageAsReferenceForbidden');
+
+  // An individual future project opts in through the new template version.
+  // Existing project folders without this version remain valid and untouched.
+  if (Number(meta.editorialStoryUpgradeVersion) === 1) {
+    if (Number(policy.editorialStoryUpgradeVersion) !== 1) {
+      errors.push('Neue Storytelling-Policy fehlt in config/youtube-channel-policy.json.');
+    }
+    const principles = meta.editorialStoryUpgradePolicy || {};
+    for (const key of ['briefRequired', 'indirectAnalogiesAllowedWithNarratedBridge', 'motivatedSceneVariationRequired',
+      'factsVsAnalogiesDistinguished', 'avoidRepetitiveMainLocationShots']) {
+      requireTrue(errors, principles[key], 'editorialStoryUpgradePolicy.' + key);
+    }
+    if (!prompt.includes('EDITORIAL STORY & VISUAL BRIDGES V2 — HARD LOCK')) {
+      errors.push('Masterprompt braucht EDITORIAL STORY & VISUAL BRIDGES V2 — HARD LOCK.');
+    }
+    try {
+      const brief = await readJson(path.join(projectDir, '99-technik/EDITORIAL_BRIEF.json'));
+      const checked = validateEditorialBrief(brief);
+      errors.push(...checked.errors);
+    } catch (e) {
+      errors.push('EDITORIAL_BRIEF.json fehlt oder ist ungültig: ' + e.message);
+    }
+    const visual = validateVisualStoryPlan(prompt, meta.plannedImageCount);
+    errors.push(...visual.errors);
+    for (const warning of visual.warnings) console.warn('Story-Visual-Review: ' + warning);
+  }
 
   const q = meta.visualQualityPolicy || {};
   requireTrue(errors, q.visualStorytellingRequired, 'visualQualityPolicy.visualStorytellingRequired');
