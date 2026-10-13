@@ -117,6 +117,12 @@ Oder kurz:
 
 > **So einfach wie möglich, so komplex wie nötig.**
 
+## Ergänzung für neue Projekte — didaktische Brücke statt Ortszwang
+
+**Die jetzige Standardregel für neue Projekte ist `youtube/EDITORIAL_STORY_VISUAL_V2.md`.** Ein Bild darf auch einen ganz anderen Ort, ein Alltagsbeispiel, Diagramm oder eine Analogie zeigen, wenn es den aktuell gesprochenen Zusammenhang besser vermittelt. Der Begriff „Topic Anchor“ umfasst deshalb auch den klar benannten **indirekten Mechanismus-, Folgen- oder Analogie-Bezug**. Die folgenden V1-Regeln zu generischen Metaphern untersagen weiterhin dekorative, thematisch leere Symbolbilder, **nicht** eine ausdrücklich begründete didaktische Analogie. Jede Szene bleibt der Serious-Minimal-Countryball-Welt treu; kurze deutsche Labels, belegte Zahlen und wörtlich geprüfte Zitate dürfen das Verständnis unterstützen.
+
+Die unten dokumentierte frühere Cover-V1-Logik ist **historisch**. Für neue Videos gelten **Cover V2** (separates Thumbnail, Bild 01 normale erste Szene) und feste 5er-Flow-Gruppen. Frühere Projekte bleiben unverändert.
+
 ## TOPIC VISUAL RELEVANCE V1 — HARD LOCK
 
 Jedes Bild muss **zweifach passen**:
