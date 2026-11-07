@@ -12,24 +12,25 @@ ACTIVE_STYLE_ID: serious-minimal-countryball-explainer-shorts-9x16
 GOOGLE FLOW MASTER PROMPT — [SHORTS-TITEL]
 
 ZIEL
-Erzeuge ausschließlich Bild 01 bis Bild NN (Standard ca. 18–22 Bilder für 55–60 Sekunden).
-Format: 9:16 (vertikal für Shorts / Reels / TikTok).
+Erzeuge ausschließlich das Cover (3 Kandidaten → 1 Gewinner) und die Szenenbilder Bild 01 bis Bild NN (ca. 19–24 Bilder für 55–60 Sekunden).
+Format: 9:16 (1080 × 1920 Pixel vertikal für YouTube Shorts / TikTok / Reels).
 Es gibt KEIN separates Bild 00.
 
 ==================================================
 SEPARATE COVER — EXPORT ONLY HARD LOCK
 NOTE: BILD 01 = NORMAL FIRST SCENE HARD LOCK
 ==================================================
-- Das separat generierte Cover ist ausschließlich für 03-export/THUMBNAIL.png bestimmt und gehört NICHT in die Timeline.
+- Das separat generierte Cover ist ausschließlich für 03-export/THUMBNAIL.png bestimmt und gehört NICHT in die Video-Timeline.
 - Bild 01 ist eine NORMALE erste Szene, passend zum ersten gesprochenen Satz (Hook). Das Video beginnt mit Bild 01 bei 0,0 Sekunden.
 - Bild 01 enthält KEINE Cover-Headline oder Thumbnail-Overlays, sondern eine saubere thematische Szene.
 
 ==================================================
 COVER = 3 CANDIDATES HARD LOCK
 ==================================================
-1. Generiere 3 eigenständige Cover-Kandidaten (9:16 vertikal) mit starker visueller Hook und prägnantem deutschen Text.
-2. Wähle den besten Kandidaten aus und speichere ihn als 03-export/THUMBNAIL.png ab.
-3. Verwende das Cover niemals als Videoszene oder Referenz für eine Timeline-Szene.
+1. Generiere das COVER genau DREIMAL mit 3 unterschiedlichen Bildideen / Blickwinkeln (9:16 vertikal).
+2. Wähle das stärkste Thumbnail aus.
+3. Speichere den Gewinner direkt als 03-export/THUMBNAIL.png ab.
+4. Lösche die zwei nicht gewählten Kandidaten.
 
 ==================================================
 NON-COVER = SINGLE GENERATION HARD LOCK
@@ -41,23 +42,87 @@ NON-COVER = SINGLE GENERATION HARD LOCK
 ==================================================
 FIVE-IMAGE BATCH HARD LOCK (5ER-GRUPPEN)
 ==================================================
-Zuerst das Cover (3 Kandidaten → 1 Gewinner nach 03-export/THUMBNAIL.png) fertigstellen. DANN:
-1. Generiere NUR Szenen 01–05 (maximal fünf Jobs gleichzeitig).
-2. Alle fünf Ausgaben prüfen: basic PNG validity, korrekte Auflösung (9:16), eindeutige Zuordnung.
-3. Fehlendes oder defektes Bild gezielt nachgenerieren; erst wenn 01–05 vollständig sind, nach 00-bildprompts/images/ übernehmen als Bild 01.png bis Bild 05.png.
-4. Erst danach mit Gruppe 06–10 fortfahren.
+Erst nachdem das Cover gewählt und als 03-export/THUMBNAIL.png gesichert ist:
+1. Generiere NUR Szenen 01–05 (maximal 5 Generierungen gleichzeitig).
+2. Alle 5 Ausgaben prüfen: PNG-Gültigkeit, Auflösung (9:16), keine Bildfehler.
+3. Fehlendes oder defektes Bild gezielt nachgenerieren.
+4. Wenn alle 5 Bilder einwandfrei sind, exakt umbenennen in:
+   Bild 01.png, Bild 02.png, Bild 03.png, Bild 04.png, Bild 05.png
+   und in den Ordner 00-bildprompts/images/ verschieben.
+5. Erst danach mit Gruppe 06–10 fortfahren und denselben Prüf- und Umbenennungsschritt wiederholen.
+6. So fortfahren bis zur letzten Gruppe (z. B. Gruppe 21–NN).
+
+==================================================
+FINAL COMPLETENESS AUDIT HARD LOCK
+==================================================
+Nach der letzten Gruppe einen vollständigen Abschluss-Check durchführen:
+- Existieren lückenlos alle Bild 01.png bis Bild NN.png im Ordner 00-bildprompts/images/?
+- Keine Lücken, keine doppelten Nummern, keine Extra-Dateien oder Unterordner in 00-bildprompts/images/.
+- Liegt das separate Cover in 03-export/THUMBNAIL.png? (Darf NICHT in images/ liegen).
+
+==================================================
+FINAL IMAGE FOLDER HARD LOCK (FLACHER ORDNER)
+==================================================
+- Der Szenenordner 00-bildprompts/images/ enthält AUSSCHLIESSLICH Bild 01.png bis Bild NN.png flach nebeneinander.
+- Keine Unterordner (wie "batch-1", "temp" etc.).
+- Das Cover liegt getrennt unter 03-export/THUMBNAIL.png.
 
 ==================================================
 VISUELLE DNA: SERIOUS MINIMAL COUNTRYBALL EXPLAINER (9:16)
 ==================================================
-- Seriöse, reduzierte 2D-Vektor-Ästhetik
-- Format: 9:16 (Smartphone vertical)
-- Klare, kräftige Konturen, harmonische Farbpalette
-- Countryballs nur wenn Akteure gebraucht werden; reine Objekte/Karten/Dokumente sind ausdrücklich erlaubt
-- Jeder sichtbare Text muss DEUTSCH sein. Kein Kauderwelsch, kein Englisch im Bild.
+- Seriöse, reduzierte 2D-Vektor-Illustration im 9:16 Smartphone-Format.
+- Dicke, saubere schwarze Konturen, kontrollierte flache Farbpalette, dezente Schattierung.
+- Countryballs perfekt rund mit einfachen weißen Augen, wenn Akteure gebraucht werden.
+- Inhalt vor Figur: Auch reine Objekte, Karten, Dokumente, Gebäude oder Mini-Schemata dürfen ein komplettes Bild tragen!
+- Keine normalen Menschen, keine fotorealistischen Gesichter, kein 3D/Pixar/Anime.
+- Jeder sichtbare Text muss DEUTSCH sein. Kein Englisch, kein Kauderwelsch im Bild.
 
 ==================================================
 PROMPTS
 ==================================================
 
-[HIER DIE SZENENPROMPTS BILD 01 BIS BILD NN EINTRAGEN]
+### COVER KANDIDATEN (3x generieren → bester nach 03-export/THUMBNAIL.png)
+Cover Prompt: ...
+
+---
+
+### GRUPPE 1: BILD 01 BIS 05 (Hook & Einstieg)
+Bild 01: ...
+Bild 02: ...
+Bild 03: ...
+Bild 04: ...
+Bild 05: ...
+
+---
+
+### GRUPPE 2: BILD 06 BIS 10 (Ausgangslage & Konflikt)
+Bild 06: ...
+Bild 07: ...
+Bild 08: ...
+Bild 09: ...
+Bild 10: ...
+
+---
+
+### GRUPPE 3: BILD 11 BIS 15 (Mechanismus & Details)
+Bild 11: ...
+Bild 12: ...
+Bild 13: ...
+Bild 14: ...
+Bild 15: ...
+
+---
+
+### GRUPPE 4: BILD 16 BIS 20 (Konsequenzen & Alltag)
+Bild 16: ...
+Bild 17: ...
+Bild 18: ...
+Bild 19: ...
+Bild 20: ...
+
+---
+
+### GRUPPE 5: BILD 21 BIS NN (Abschluss & Fazit)
+Bild 21: ...
+Bild 22: ...
+...

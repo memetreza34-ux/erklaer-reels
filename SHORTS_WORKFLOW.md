@@ -52,11 +52,17 @@ shorts/YYYY-KWNN_DD-MM_bis_DD-MM/<themen-slug>/
 
 ### Phase 2 — Arman (NUR NOCH BILDER & COVER)
 * **Kein Audioaufwand:** Du musst nichts mehr aufnehmen, schneiden oder hochladen.
-* **Cover zuerst:** 3 Kandidaten in Google Flow erzeugen → stärkstes Cover wählen → als `03-export/THUMBNAIL.png` speichern (gehört nicht in die Timeline).
-* **Szenenbilder in 5er-Batches:**
-  1. `00-bildprompts/google-flow-prompt.txt` öffnen.
-  2. Immer genau 5 Bilder erzeugen (01–05, dann 06–10 etc.).
-  3. Bilder kontrollieren und als `Bild 01.png` ... `Bild NN.png` in `00-bildprompts/images/` ablegen.
+* **Schritt 1: Cover zuerst (3 Kandidaten):**  
+  3 eigenständige Cover-Kandidaten in Google Flow erzeugen → den stärksten auswählen → direkt als `03-export/THUMBNAIL.png` ablegen (wird nicht in die Video-Timeline gemischt). Die anderen beiden verwerfen.
+* **Schritt 2: Szenenbilder in kontrollierten 5er-Batches:**  
+  1. `00-bildprompts/google-flow-prompt.txt` öffnen.  
+  2. Immer genau 5 Bilder gleichzeitig starten (z. B. 01–05, danach 06–10, 11–15, 16–20, 21–NN).  
+  3. Vollständig warten und die 5 PNG-Dateien kurz prüfen.  
+  4. Exakt umbenennen in `Bild 01.png` bis `Bild 05.png` und in den Ordner `00-bildprompts/images/` verschieben.  
+  5. Erst danach die nächste Gruppe starten und wiederholen, bis alle 19–24 Bilder fertig sind.  
+* **Schritt 3: Abschluss & Ablage:**  
+  - Alle Szenenbilder liegen **zusammen in einem einzigen flachen Ordner**: `00-bildprompts/images/Bild 01.png` ... `Bild NN.png` (keine Unterordner).  
+  - Das Cover liegt getrennt in `03-export/THUMBNAIL.png`.
 
 ### Phase 3 — Antigravity (vollautomatisch)
 Ein einziger Befehl startet die Endproduktion:
