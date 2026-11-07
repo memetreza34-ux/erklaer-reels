@@ -10,13 +10,35 @@ Eine reine Geschichtschronik ohne klare Politik-/Staats-/Geografieleitfrage ist 
 
 ## YouTube-Storytelling: konkrete Auswirkungen, überraschende Perspektiven
 
-**Für neue Weltlogik-Langvideos ist `youtube/EDITORIAL_STORY_VISUAL_V2.md` verbindlich.** Skripte müssen nicht nur das Thema erklären, sondern interessante Ursache→Mechanismus→konkrete-Folge-Ketten führen (mit überprüfbaren Beispielen, Zahlen/Zeiträumen nur mit Quellen). Nicht vage behaupten, dass „Auswirkungen möglich“ seien; präzise zeigen **für wen, wie und warum**. Hook, Wendepunkte und nachvollziehbarer Payoff statt Ereignislisten. Neue Templates verlangen `99-technik/EDITORIAL_BRIEF.json`.
+**Für neue Weltlogik-Langvideos sind `youtube/EDITORIAL_STORY_VISUAL_V2.md` und `docs/YOUTUBE_GROWTH_PLAYBOOK.md` verbindlich.** 
+Das Ziel ist nicht bloße formale Korrektheit, sondern **Zuschauerbindung (Retention) und Klickstärke (CTR)**:
+1. **Hook vor Definition (Erste 15s):** Kein nachrichtenhafter Ticker-Einstieg oder Lexikon-Definitionen. Sofort das Dilemma, das Rätsel oder die persönliche Auswirkung für den Zuschauer aufwerfen.
+2. **Klickstarke Verpackung (Titel & Thumbnail):** In `03-export/YOUTUBE-UPLOAD.txt` immer 3 zielgerichtete Titeloptionen (Curiosity/Stakes, Machtkampf, Suchbegriff-Kern) und ein Thumbnail mit max. 2–3 prägnanten Signalwörtern anlegen. Keine rein deskriptiven Referatstitel („Thema: Warum X passiert“).
+3. **Visuelle Abwechslung (3-Welten-Regel):** Mindestens 3 Bildumgebungen (Reale Geografie/Institution, Alltagsfolge wie Tankstelle/Supermarkt, visuelle Analogie/Metapher). Keine endlosen Wiederholungen fast identischer Karten.
+4. **Shorts-Multiplikator:** Jedes Thema so anlegen, dass der stärkste Hook direkt als 45-Sekunden-Short zur Abonnentengewinnung funktioniert.
+Skripte müssen interessante Ursache→Mechanismus→konkrete-Folge-Ketten führen (mit überprüfbaren Beispielen, Zahlen/Zeiträumen nur mit Quellen). Nicht vage behaupten, dass „Auswirkungen möglich“ seien; präzise zeigen **für wen, wie und warum**. Hook, Wendepunkte und nachvollziehbarer Payoff statt Ereignislisten. Neue Templates verlangen `99-technik/EDITORIAL_BRIEF.json`.
 
 **Bilder dürfen ausdrücklich einen anderen Ort, Alltag, Vergleich oder Symbol zeigen**, wenn die Szene die gerade gesprochene Wirkung oder das politische Prinzip klarer erklärt; die Brücke zur Aussage ausdrücklich dokumentieren. Beispiele: Öl-Engstelle → Tankstelle/Logistik; Gewaltenteilung → anschaulicher Schlüssel-/Schlösservergleich als SYMBOLISCH gekennzeichnet. **Kurze deutsche Labels, Schlagwörter, belegte Zahlen und echte Zitate** sind willkommen, keine Textwände oder erfundenen Preise/Zitate. Zwischen Ländern/Karten/Institutionen/Alltagsbeispielen sinnvoll wechseln, kein Wiederholen fast identischer Karten. Countryball-Bildwelt und technische Flow-Fünfergruppen beibehalten. Diese Regel betrifft YouTube, nicht die getrennte Reel-Pipeline.
 
 ## Google Flow für neue YouTube-Langvideos: feste 5er-Gruppen
 
 Cover separat fertigstellen; dann die Videobilder **in exakt fünf Bildprompts pro Durchlauf** erzeugen (letzte Gruppe ggf. kleiner). **Erst nachdem die ganze Gruppe erfolgreich erzeugt ist:** Existenz + Szenenzuordnung prüfen, exakt `Bild NN.png` benennen, die komplette Gruppe erneut prüfen. Fehlende/defekte Ausgaben müssen in derselben Gruppe nachgeneriert werden; vor erfolgreicher Prüfung **niemals** die nächste Fünfergruppe starten. Nach dem letzten Batch alle nummerierten Szenenbilder und das separate Cover im endgültigen Ordner auf fehlende, falsche und doppelte Dateien prüfen. `youtube/FLOW_BATCH_5_POLICY.md` und `npm run flow:youtube-batch` für neue YouTube-Projekte verwenden. Bestehende Projekte/Reel-Pipeline nicht verändern.
+
+## Automatisierte Sprachausgabe (Open-Source Voiceover Pipeline)
+
+Für YouTube-Langvideos steht eine vollständig automatisierte, unbegrenzte und kostenfreie (0 € / 0 Credits) TTS-Pipeline zur Verfügung:
+- **Primäre Engine**: **Qwen3-TTS 1.7B Base** auf Apple Silicon Metal GPU via `mlx-audio` (100% lokal, offline, null Credits).
+- **Kanal-Standardstimme**: **`weltlogik-alte-stimme-klon`** – der 1:1 Nachbau von Armans bewährter Google-KI-Stimme aus seinen bisherigen Videos.
+- **Pacing & Tempo (Variante 3)**: Leicht angezogenes Tempo (**1.05x**) und automatische Pausenkappung auf **maximal 0,25 s** mit weichen Cosinus-Fades gegen jede Art von Leerlauf oder Schleppen.
+- **Mastering**: Broadcast-Standard (48 kHz mono, Studio-EQ & Kompression, -16 LUFS Loudness).
+- **Alternative Presets**: `weltlogik-explainer-storyteller` (Simplicissimus/MrWissen2go), `weltlogik-nathan` (David Nathan Klon), `weltlogik-brueckner` (Christian Brückner Klon) sowie schnelle `edge-tts` Fallbacks.
+- **Aussprache-Guard**: `normalizeGermanScriptForTts` expandiert geopolitische Akronyme (`UN-` → `U-N-`, `USA` → `U-S-A`, `UdSSR` → `U-d-S-S-R`, `BVerfG`, `BIP`, `EU`), Abkürzungen (`z. B.`, `d. h.`, `Mrd.`, `Mio.`, `ca.`), Paragrafen/Artikel (`§ 12`, `Art. 108`), Prozentzeichen und säubert Markdown-Formatierungen & Regieanweisungen.
+- **Befehl**:
+  ```bash
+  npm run voice:youtube -- --dir "youtube/<woche>/<thema>" --force
+  ```
+- **Optionale Parameter**: `--preset <name>`, `--rate <+5%>`, `--pitch <-2Hz>`, `--pause <ms>`, `--align`, `--force`.
+- **Dokumentation**: Siehe `docs/VOICE_GENERATION_GUIDE.md`.
 
 ## Oberste proaktive Aufgabe nach jedem Video: Qualität steigern
 

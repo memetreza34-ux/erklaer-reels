@@ -27,50 +27,124 @@ function round(value) {
   return Number(Number(value).toFixed(3));
 }
 
+const GERMAN_NUMBER_MAP = {
+  null: '0',
+  eins: '1',
+  zwei: '2',
+  drei: '3',
+  vier: '4',
+  fuenf: '5',
+  sechs: '6',
+  sieben: '7',
+  acht: '8',
+  neun: '9',
+  zehn: '10',
+  elf: '11',
+  zwoelf: '12',
+  dreizehn: '13',
+  vierzehn: '14',
+  fuenfzehn: '15',
+  sechzehn: '16',
+  siebzehn: '17',
+  achtzehn: '18',
+  neunzehn: '19',
+  zwanzig: '20'
+};
+
+const NUMBER_TO_WORD = Object.fromEntries(
+  Object.entries(GERMAN_NUMBER_MAP).map(([word, num]) => [num, word])
+);
+
+const PHONETIC_MAP = {
+  kata: 'charta',
+  karta: 'charta'
+};
+
 export function normalizeSpokenToken(value) {
-  return String(value ?? '')
+  const cleaned = String(value ?? '')
     .toLocaleLowerCase('de-DE')
     .replace(/ä/g, 'ae')
     .replace(/ö/g, 'oe')
     .replace(/ü/g, 'ue')
     .replace(/ß/g, 'ss')
     .replace(/[^a-z0-9]/g, '');
+  const mappedNumber = GERMAN_NUMBER_MAP[cleaned] ?? cleaned;
+  return PHONETIC_MAP[mappedNumber] ?? mappedNumber;
 }
 
 function tokenize(text) {
   return String(text ?? '')
+    .replace(/-/g, ' ')
     .split(/\s+/)
     .map(normalizeSpokenToken)
     .filter(Boolean);
 }
 
+function editDistance(a, b) {
+  const m = a.length;
+  const n = b.length;
+  const d = Array.from({ length: m + 1 }, () => new Array(n + 1).fill(0));
+  for (let i = 0; i <= m; i++) d[i][0] = i;
+  for (let j = 0; j <= n; j++) d[0][j] = j;
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      d[i][j] = a[i - 1] === b[j - 1] ? d[i - 1][j - 1] : 1 + Math.min(d[i - 1][j], d[i][j - 1], d[i - 1][j - 1]);
+    }
+  }
+  return d[m][n];
+}
+
 function tokenSimilarity(a, b) {
   if (a === b) return 1;
   if (!a || !b) return 0;
-  if (a.length >= 5 && b.length >= 5 && (a.startsWith(b) || b.startsWith(a))) return 0.9;
+  if ((a === 'ja' && b === 'jahr') || (a === 'jahr' && b === 'ja')) return 1;
+  const aText = NUMBER_TO_WORD[a] ?? a;
+  const bText = NUMBER_TO_WORD[b] ?? b;
+  if (aText === bText) return 1;
+  if (aText.length >= 4 && bText.length >= 4 && (aText.startsWith(bText) || bText.startsWith(aText) || aText.endsWith(bText) || bText.endsWith(aText))) return 1;
+  if (aText.length >= 4 && bText.length >= 4 && editDistance(aText, bText) <= 1) return 1;
+  if (aText.length >= 7 && bText.length >= 7 && editDistance(aText, bText) <= 2) return 1;
   return 0;
+}
+
+function alignTokensScore(expected, candidate) {
+  const m = expected.length;
+  const n = candidate.length;
+  const dp = Array.from({ length: m + 1 }, () => new Array(n + 1).fill(0));
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      let match = dp[i - 1][j - 1] + tokenSimilarity(expected[i - 1], candidate[j - 1]);
+      if (i >= 2 && candidate[j - 1] === (NUMBER_TO_WORD[expected[i - 2]] ?? expected[i - 2]) + (NUMBER_TO_WORD[expected[i - 1]] ?? expected[i - 1])) {
+        match = Math.max(match, dp[i - 2][j - 1] + 2);
+      }
+      if (j >= 2 && candidate[j - 2] + candidate[j - 1] === (NUMBER_TO_WORD[expected[i - 1]] ?? expected[i - 1])) {
+        match = Math.max(match, dp[i - 1][j - 2] + 1);
+      }
+      dp[i][j] = Math.max(match, dp[i - 1][j], dp[i][j - 1]);
+    }
+  }
+  return dp[m][n] / m;
 }
 
 export function findAnchorInWords(anchor, words, fromWordIndex = 0) {
   const expected = tokenize(anchor);
   if (!expected.length) return null;
   const normalizedWords = words.map((item) => normalizeSpokenToken(item.word));
-  const maxStart = normalizedWords.length - expected.length;
+  const expLen = expected.length;
   let best = null;
 
+  const maxStart = normalizedWords.length - Math.min(expLen, 3);
   for (let start = Math.max(0, fromWordIndex); start <= maxStart; start += 1) {
-    let score = 0;
-    for (let offset = 0; offset < expected.length; offset += 1) {
-      score += tokenSimilarity(expected[offset], normalizedWords[start + offset]);
-    }
-    const confidence = score / expected.length;
+    const windowLen = Math.min(expLen + 4, normalizedWords.length - start);
+    const candidate = normalizedWords.slice(start, start + windowLen);
+    const confidence = alignTokensScore(expected, candidate);
     if (!best || confidence > best.confidence) {
       best = { wordIndex: start, confidence, startSeconds: Number(words[start]?.start) };
     }
-    if (confidence === 1) break;
+    if (confidence >= 0.99) break;
   }
 
-  if (!best || best.confidence < 0.95 || !Number.isFinite(best.startSeconds)) return null;
+  if (!best || best.confidence < 0.88 || !Number.isFinite(best.startSeconds)) return null;
   return { ...best, confidence: round(best.confidence), startSeconds: round(best.startSeconds) };
 }
 

@@ -31,6 +31,7 @@
     "preflight:reel": "node src/cli/preflight.js",
     "phase3:reel": "node src/cli/phase3-reel.js",
     "render:reel": "node src/cli/run-with-reel-layout.js src/cli/render-reel.js",
+    "voice:youtube": "node src/cli/generate-youtube-voice.js",
     "topic:youtube": "node src/cli/check-youtube-topic.js",
     "validate:youtube-script": "node src/cli/validate-youtube-script-quality.js",
     "validate:youtube-phase1": "node src/cli/validate-youtube-phase1.js",
