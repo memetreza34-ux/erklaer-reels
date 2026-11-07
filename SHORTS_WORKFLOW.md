@@ -2,7 +2,8 @@
 
 **Stand: 2026-11-07**  
 **Format:** Vertikal 9:16 (1080 × 1920 Pixel) für YouTube Shorts, Instagram Reels und TikTok  
-**Bildwelt:** `serious-minimal-countryball-explainer` (9:16 vertical)  
+**Bildwelt:** [`SHORTS_VISUAL_WORLD.md`](SHORTS_VISUAL_WORLD.md) (`serious-minimal-countryball-explainer-shorts-9x16`)  
+**Visuelle DNA:** 100 % identisch zur YouTube-Langvideo-Bildwelt ([`youtube/YOUTUBE_VISUAL_WORLD.md`](youtube/YOUTUBE_VISUAL_WORLD.md))  
 **Strukturstandard:** 1:1 identisch zur YouTube-Langvideo-Architektur  
 
 ---
