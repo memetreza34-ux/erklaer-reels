@@ -389,7 +389,7 @@ export async function generateYoutubeVoiceover(projectDirectory, options = {}) {
   const scriptPath = path.join(projectDir, '01-voice-script', 'voice-script.txt');
   const audioDir = path.join(projectDir, '02-audio');
   const techDir = path.join(projectDir, '99-technik');
-  const rawWavPath = path.join(audioDir, 'voiceover-raw.wav');
+  const rawWavPath = path.join(techDir, 'voiceover-raw.wav');
   const outputWav = path.join(audioDir, 'voiceover-final.wav');
   const reportPath = path.join(techDir, 'YOUTUBE_VOICE_REPORT.json');
 
@@ -420,6 +420,8 @@ export async function generateYoutubeVoiceover(projectDirectory, options = {}) {
     return {
       dryRun: true,
       config,
+      rawAudioPath: rawWavPath,
+      outputWav,
       totalWords: wordCount,
       totalChunks: chunks.length,
       estimatedDurationMinutes: (wordCount / 145).toFixed(1),
@@ -488,6 +490,7 @@ export async function generateYoutubeVoiceover(projectDirectory, options = {}) {
         persona: config.persona,
         output_dir: workDir,
         atempo: 1.0,
+        eq_filter: '',
         max_pause: config.preStretchMaxPauseSeconds ?? 0.285,
         temperature: config.temperature ?? 0.7,
         ref_audio: refAudioPath,
@@ -628,7 +631,7 @@ export async function generateYoutubeVoiceover(projectDirectory, options = {}) {
       pauseBetweenParagraphsSeconds: pauseBetweenSeconds,
       voiceBoostApplied: applyBoost,
       sourceScript: '01-voice-script/voice-script.txt',
-      rawAudioFile: '02-audio/voiceover-raw.wav',
+      rawAudioFile: '99-technik/voiceover-raw.wav',
       outputFile: '02-audio/voiceover-final.wav',
       totalWords: wordCount,
       totalChunks: chunks.length,

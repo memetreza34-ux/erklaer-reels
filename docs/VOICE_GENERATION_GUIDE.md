@@ -14,7 +14,7 @@ Dieses Dokument beschreibt die vollautomatische, kostenlose und lokal integriert
   - **Maximale Pausen:** **0.30 s** nach Tempo-Anpassung (`0.285 s` vor `atempo=0.95`, mit weichen Cosinus-Fades) für flüssigen Erzählfluss ohne unnatürliche Löcher.
   - **Chunk-Größe:** **max. 32 Wörter pro Chunk** bei `temperature: 0.7`.
 - **Kosten:** **0 € / 0 Credits**, 100% offline-fähig, unbegrenzt nutzbar für Shorts und 20-Minuten-Dokus.
-- **Qualität:** Studio Broadcast-Standard (`voiceBoost`: Highpass 75 Hz, De-Esser, Warmth +2.8 dB @ 180 Hz, Presence +1.8 dB @ 3.2 kHz, AI-Sheen-Taming -1.8 dB @ 11.5 kHz, Tanh-Softclip, subtiler Raumklang, Broadcast-Kompression & Limiter auf 48 kHz mono 16-bit PCM).
+- **Qualität:** Studio Broadcast-Standard (`voiceBoost`: Highpass 75 Hz, De-Esser, Warmth +2.2 dB @ 180 Hz, Presence +2.0 dB @ 3.2 kHz, AI-Sheen-Taming -2.5 dB @ 11.5 kHz, Tanh-Softclip, subtiler Raumklang, Broadcast-Kompression & Limiter auf 48 kHz mono 16-bit PCM).
 
 ---
 

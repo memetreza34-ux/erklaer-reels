@@ -24,7 +24,7 @@ Weltlogik YouTube Voiceover Generator (stickman-user-clone / Qwen3-TTS 1.7B MLX)
 
 Erzeugt das Voiceover mit deiner kalibrierten Master-Kanalstimme (stickman-user-clone)
 vollautomatisch aus 01-voice-script/voice-script.txt und legt es unter
-02-audio/voiceover-raw.wav sowie 02-audio/voiceover-final.wav ab.
+99-technik/voiceover-raw.wav sowie 02-audio/voiceover-final.wav ab.
 
 Verwendung:
   npm run voice:youtube -- --dir "youtube/<woche>/<thema>" [Optionen]

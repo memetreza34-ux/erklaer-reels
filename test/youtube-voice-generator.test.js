@@ -201,6 +201,8 @@ test('generateYoutubeVoiceover unterstützt --dry-run und prüft fehlende Skript
     assert.equal(dry.config.tempo, 0.95);
     assert.equal(dry.config.maxPauseSeconds, 0.30);
     assert.equal(dry.totalChunks, 2);
+    assert.match(dry.rawAudioPath, /99-technik\/voiceover-raw\.wav$/);
+    assert.match(dry.outputWav, /02-audio\/voiceover-final\.wav$/);
   } finally {
     await rm(tmpDir, { recursive: true, force: true });
   }
