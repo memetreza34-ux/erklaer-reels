@@ -58,8 +58,6 @@ shorts/YYYY-KWNN_DD-MM_bis_DD-MM/<themen-slug>/
   2. Immer genau 5 Bilder erzeugen (01–05, dann 06–10 etc.).
   3. Bilder kontrollieren und als `Bild 01.png` ... `Bild NN.png` in `00-bildprompts/images/` ablegen.
 
----
-
 ### Phase 3 — Antigravity (vollautomatisch)
 Ein einziger Befehl startet die Endproduktion:
 ```bash
@@ -70,3 +68,24 @@ npm run phase3:short -- --dir "shorts/<woche>/<thema>"
 * **Sound Design & Motion:** Automatische Bindung von Whooshes/Pops und subtilen Kamerabewegungen (subtle push-in, subtle pull-out, pan).
 * **Render:** 1080 × 1920 MP4-Rendering direkt nach `03-export/<themen-slug>.mp4`.
 * **Upload-Paket:** Fertige Metadaten in `03-export/SHORTS-UPLOAD.txt`.
+
+---
+
+## 3. Bilddichte & Pacing: Shorts vs. Longform (HARD LOCK)
+
+**ACHTUNG:** Bei Shorts gilt eine **deutlich höhere Bilddichte** und ein viel rasanteres Schnitttempo als bei Longform-Videos! Auf TikTok, YouTube Shorts und Reels entscheidet die visuelle Dynamik über die Retention (Zuschauerbindung):
+
+| Kriterium | Shorts / Reels (9:16) | YouTube Langvideos (16:9) |
+|---|---|---|
+| **Gesamtdauer** | 55–60 Sekunden | 5–15 Minuten |
+| **Wortzahl** | 155–175 Wörter | 1.000–2.000 Wörter |
+| **Bildanzahl** | **19–24 Bilder** (extrem hoch!) | ca. 80–120 Bilder |
+| **Schnitttempo** | **Alle 2,0–3,0 Sekunden ein neues Bild!** | Alle 4,5–7,5 Sekunden ein Bild |
+| **Hook (Erste 5 Sekunden)** | Sofort **2 Bildmomente** (erster Schnitt nach ~2s) | Erste Szene darf 4–6s tragen |
+| **Szenenaufbau** | 8–10 Szenen, **jede Szene hat 2–3 Bildphasen** | Szenen/Kapitel mit didaktischen Haltezeiten |
+| **Schluss-Hold** | 0,5–0,7 Sekunden (Ziel 0,6 s) | 1,2–1,5 Sekunden (Ziel 1,3 s) |
+
+### Goldene Shorts-Regeln für die Bildplanung:
+1. **Kein Standbild über 3,5 Sekunden:** Bleibt ein Bild in einem Short 4 oder 5 Sekunden stehen, springt der Zuschauer ab.
+2. **Hook muss sofort knallen:** In den ersten 5 Sekunden mindestens 2 unterschiedliche Bilder (z. B. Bild 01 zeigt die Ausgangsfrage, Bild 02 nach 2 Sekunden die provokante/konkrete Zuspitzung).
+3. **Jeder Gedankenschritt ein Bild:** Sobald im Satz eine neue Information, ein Akteur oder eine Zahl fällt, erfolgt der harte Bildwechsel.

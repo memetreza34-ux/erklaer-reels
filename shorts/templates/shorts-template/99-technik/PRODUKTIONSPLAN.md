@@ -25,7 +25,13 @@ shorts/YYYY-KWNN_DD-MM_bis_DD-MM/<thema-slug>/
     └── voiceover-raw.wav
 ```
 
+## Bilddichte & Pacing (Kritischer Unterschied zu Longform!)
+- **Shorts:** 55–60 Sekunden → **19–24 Bilder** (alle 2,0–3,0 Sekunden harter Bildwechsel!).
+- **Hook (erste 5 Sekunden):** Sofort 2 Bildmomente.
+- **Longform (Vergleich):** Alle 4,5–7,5 Sekunden ein Bild.
+- **Regel:** Kein Standbild über 3,5 Sekunden in einem Short! Jede Informationsnuance bekommt eine neue Illustration.
+
 ## Ablauf
-1. **Phase 1 (Antigravity):** Recherche, Skript, vollautomatische Sprachgenerierung (`voiceover-final.wav`), Flow-Prompts, Mapping.
+1. **Phase 1 (Antigravity):** Recherche, Skript, vollautomatische Sprachgenerierung (`voiceover-final.wav`), Flow-Prompts (19–24 Bilder in 5er-Batches), Mapping.
 2. **Phase 2 (Arman):** Nur Bilder in Google Flow (`images/Bild 01.png` ... `Bild NN.png`) und Cover (`03-export/THUMBNAIL.png`).
 3. **Phase 3 (Antigravity):** Alignment, Timeline, SFX, Motion und 9:16 Render nach `03-export/`.
