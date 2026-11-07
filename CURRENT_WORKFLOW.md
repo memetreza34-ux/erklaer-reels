@@ -34,8 +34,8 @@ Die allgemeine Änderungsregel für alle Reels und YouTube-Projekte steht in `do
 
 ## Drei Phasen
 
-1. **Phase 1 — ChatGPT:** Thema, Recherche, Script, Bildprompts, Bild↔Satz-Struktur, Motion/SFX, Caption und Quellen vorbereiten.
-2. **Phase 2 — Arman:** echtes Voice-over und alle finalen Bilder erzeugen.
+1. **Phase 1 — Antigravity / ChatGPT:** Thema, Recherche, Script, Masterstimme (`voiceover-final.wav`), Bildprompts, Bild↔Satz-Struktur, Motion/SFX, Caption und Quellen vorbereiten.
+2. **Phase 2 — Arman:** nur noch die finalen Bilder in Google Flow und ggf. das Cover erzeugen. (Kein manueller Audioaufwand mehr).
 3. **Phase 3 — Antigravity:** Assets automatisch routen, einmal schnell prüfen, Audio optimieren, Bild↔Audio ausrichten, SFX/Timeline bauen und rendern.
 
 Details: `WORKFLOW_PHASEN.md`.
@@ -200,7 +200,8 @@ Keine Queue, kein Batch, keine parallele Bildgenerierung.
 
 ## Audio
 
-Phase 2 legt genau ein aktuelles Voice-over unter `02-audio/AUDIO-HIER-EINFUEGEN/` ab.
+Phase 1 erzeugt das finale Voice-over vollautomatisch (`voiceover-final.wav` via `npm run voice:reel` bzw. `npm run voice:youtube`).
+In Phase 2 entfällt für Arman jeglicher Audio-Aufwand. In Phase 3 wird das Voice-over falls nötig nochmals auf perfekte Pacing- und Loudness-Werte geprüft und direkt mit den Bildern synchronisiert.
 
 Phase 3:
 

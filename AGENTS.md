@@ -59,7 +59,7 @@ Vor JEDER Code-, Policy- oder Produktionsoptimierung `docs/CHANGE_SAFETY_POLICY.
 
 ## Drei Produktionsphasen
 
-Phase 1 ChatGPT (Anlegen, Script, Prompts, Motion/SFX) → Phase 2 Arman (Audio, Bilder) → Phase 3 Antigravity (Zuordnung, Sync, QC, Render). Details stehen in `WORKFLOW_PHASEN.md`.
+Phase 1 Antigravity / ChatGPT (Anlegen, Script, fertige Stimme `voiceover-final.wav`, Prompts, Motion/SFX) → Phase 2 Arman (nur noch Bilder & Thumbnail) → Phase 3 Antigravity (Zuordnung, Sync, QC, Render). Details stehen in `WORKFLOW_PHASEN.md`.
 
 ## Antigravity-Autopilot — keine unnötigen Zwischenfragen
 

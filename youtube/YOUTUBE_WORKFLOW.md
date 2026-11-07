@@ -301,12 +301,13 @@ youtube/YYYY-KWNN_DD-MM_bis_DD-MM/themen-slug/
 └── 99-technik/
 ```
 
-## Phase 1 — ChatGPT
+## Phase 1 — ChatGPT / Antigravity
 
 Nach Themenfreigabe erstellt Phase 1:
 - Recherche
 - Titel
-- Gesamtskript
+- Gesamtskript (`01-voice-script/voice-script.txt`)
+- **NEU:** Finale Masterstimme (`02-audio/voiceover-final.wav` via `npm run voice:youtube`)
 - Google-Flow-Masterprompt
 - Bild↔Audio-Mapping
 - adaptive Bildplanung
@@ -317,6 +318,7 @@ Nach Themenfreigabe erstellt Phase 1:
 Vor Flow:
 
 ```bash
+npm run voice:youtube -- --dir "youtube/<woche>/<thema>"
 npm run validate:youtube-phase1 -- --dir "youtube/<woche>/<thema>"
 ```
 
@@ -366,7 +368,9 @@ Ziel:
 
 Komplexe Passage = eher früher sinnvoll splitten. Einfache Passage = nicht künstlich aufblähen.
 
-## Phase 2 — Nutzer + Google Flow
+## Phase 2 — Nutzer + Google Flow (Bilder & Cover only)
+
+**WICHTIG:** Für den Nutzer entfällt jeglicher Audio-Aufwand. Das finale Voice-over (`02-audio/voiceover-final.wav`) wird bereits in Phase 1 durch Antigravity mit der kalibrierten Master-Stimme (`stickman-user-clone`) erzeugt. Der Nutzer konzentriert sich in Phase 2 zu 100 % auf das Cover und die Szenenbilder in Google Flow.
 
 ### COVER = 3 CANDIDATES HARD LOCK
 

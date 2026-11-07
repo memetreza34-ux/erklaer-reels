@@ -4,8 +4,8 @@
 
 | Phase | Wer | Ergebnis |
 |---|---|---|
-| 1 | ChatGPT | komplettes Reel-Paket: Script, Bildprompts, Bild↔Satz-Struktur, Motion/SFX, Caption, Quellen |
-| 2 | Arman | echtes Voice-over und alle finalen nummerierten Bilder |
+| 1 | Antigravity / ChatGPT | komplettes Reel-Paket: Script, fertige Stimme (`voiceover-final.wav`), Bildprompts, Bild↔Satz-Struktur, Motion/SFX, Caption, Quellen |
+| 2 | Arman | nur noch alle finalen nummerierten Bilder (Google Flow) |
 | 3 | Antigravity | automatisch zusammengesetztes, geprüftes und gerendertes Reel |
 
 ---
@@ -37,26 +37,25 @@ Kanonische Übergabedateien:
 ```text
 00-bildprompts/99-alle-bildprompts.txt
 01-voice-script/voice-script.txt
+02-audio/voiceover-final.wav
 99-technik/BILD_AUDIO_ZUORDNUNG.json
 ```
 
-`BILD_AUDIO_ZUORDNUNG.json` legt schon in Phase 1 fest, welcher gesprochene Satz-/Teilbereich zu welchem Bild gehört. Die echten Sekundenwerte werden erst in Phase 3 aus dem finalen Audio erzeugt.
+Voice-over wird ab sofort direkt in Phase 1 vollautomatisch generiert:
+```bash
+npm run voice:reel -- --dir "<reel>"
+```
 
-**Übergabe an Phase 2:** Script, Masterprompt, Mapping, Motion/SFX, Caption und Quellen sind fertig.
+`BILD_AUDIO_ZUORDNUNG.json` legt schon in Phase 1 fest, welcher gesprochene Satz-/Teilbereich zu welchem Bild gehört. Die echten Sekundenwerte werden in Phase 3 aus dem finalen Audio erzeugt.
+
+**Übergabe an Phase 2:** Script, Masterstimme (`voiceover-final.wav`), Masterprompt, Mapping, Motion/SFX, Caption und Quellen sind fertig.
 
 ---
 
-## Phase 2 — Arman
+## Phase 2 — Arman (Nur noch Bilder)
 
 ### Voice-over
-
-Voice-over aus `01-voice-script/voice-script.txt` erzeugen und im aktuellen Reel unter
-
-```text
-02-audio/AUDIO-HIER-EINFUEGEN/
-```
-
-ablegen.
+Entfällt komplett für Arman! Das finale Voice-over wird bereits in Phase 1 von Antigravity über den kalibrierten Master-Stimmklon (`stickman-user-clone`) erzeugt und liegt unter `02-audio/voiceover-final.wav` bereit.
 
 ### Bilder
 
