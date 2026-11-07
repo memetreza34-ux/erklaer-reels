@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "viewerPromise": "[Konkret: Welche politische Frage wird am Ende des Shorts beantwortet?]",
+  "specificHook": "[Konkret: Welcher packende Fakt, Konflikt oder welches Beispiel eröffnet das Video in den ersten 3 Sekunden?]",
+  "narrativePayoff": "[Konkret: Welches Aha-Erlebnis oder welche Kernlektion bleibt hängen?]",
+  "causeEffectChains": [
+    {
+      "cause": "[Ausgangslage: Wer entscheidet was?]",
+      "mechanism": "[Mechanismus: Was passiert genau?]",
+      "effect": "[Konkrete politische oder gesellschaftliche Auswirkung]",
+      "concreteExample": "[Anschaulicher Beispielfall]",
+      "source": "https://example.org/replace-with-real-source"
+    }
+  ],
+  "visualVarietyPlan": {
+    "visualEnvironments": [
+      "[Ort / Institution / Land]",
+      "[Konkretes Objekt / Karte / Dokument]",
+      "[Wirkung / Folge im Alltag]"
+    ]
+  }
+}

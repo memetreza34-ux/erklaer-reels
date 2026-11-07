@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 9,
+  "productionRulesVersion": 2,
+  "assetGenerationPolicyVersion": 2,
+  "currentPhase": 1,
+  "phase1": {
+    "owner": "Antigravity",
+    "status": "pending",
+    "topic": "pending",
+    "duplicateCheck": "pending",
+    "research": "pending",
+    "title": "pending",
+    "singleGoogleFlowPrompt": "pending",
+    "singleMasterScript": "pending",
+    "voiceover": "pending",
+    "adaptiveImagePlanning": "pending",
+    "imageAudioMapping": "pending",
+    "renderPlan": "pending",
+    "uploadMetadata": "pending",
+    "assetGenerationPolicy": "pending"
+  },
+  "phase2": {
+    "owner": "Arman (Bilder & Cover only)",
+    "status": "blocked-until-phase1-complete",
+    "images": "missing",
+    "singleFinalAudio": "voiceover-final.wav",
+    "coverCandidateCount": 3,
+    "coverSelectionRequired": true,
+    "selectedCoverFinalName": "THUMBNAIL.png",
+    "discardUnselectedCoverCandidates": true,
+    "nonCoverGenerationCount": 1,
+    "maxConcurrentGenerations": 5,
+    "renameEachFinalImageExactlyOnce": true,
+    "flatImageDirectory": "00-bildprompts/images",
+    "finalImagesFlatInSingleFolder": true,
+    "temporaryCoverCandidatesForbiddenInFinalFolder": true,
+    "separateCoverFinalPath": "03-export/THUMBNAIL.png",
+    "coverExcludedFromTimeline": true
+  },
+  "phase3": {
+    "owner": "Antigravity",
+    "status": "blocked-until-phase2-complete",
+    "phase2AssetGate": "pending",
+    "assetValidation": "pending",
+    "actualAnchorAlignment": "pending",
+    "finalTimeline": "missing",
+    "motion": "pending",
+    "soundDesign": "pending",
+    "render": "pending",
+    "exportFinalization": "pending"
+  }
+}

@@ -1,0 +1,63 @@
+SHORTS_VISUAL_POLICY_VERSION: 5
+DESIGN_QUALITY_VERSION: 1
+ADAPTIVE_PACING_VERSION: 3
+SCRIPT_OPENING_POLICY_VERSION: 1
+SCENE_ILLUSTRATION_POLICY_VERSION: 2
+TOPIC_VISUAL_RELEVANCE_POLICY_VERSION: 1
+VISUAL_FLEXIBILITY_POLICY_VERSION: 1
+COVER_POLICY_VERSION: 2
+ASSET_GENERATION_POLICY_VERSION: 2
+ACTIVE_STYLE_ID: serious-minimal-countryball-explainer-shorts-9x16
+
+GOOGLE FLOW MASTER PROMPT — [SHORTS-TITEL]
+
+ZIEL
+Erzeuge ausschließlich Bild 01 bis Bild NN (Standard ca. 18–22 Bilder für 55–60 Sekunden).
+Format: 9:16 (vertikal für Shorts / Reels / TikTok).
+Es gibt KEIN separates Bild 00.
+
+==================================================
+SEPARATE COVER — EXPORT ONLY HARD LOCK
+NOTE: BILD 01 = NORMAL FIRST SCENE HARD LOCK
+==================================================
+- Das separat generierte Cover ist ausschließlich für 03-export/THUMBNAIL.png bestimmt und gehört NICHT in die Timeline.
+- Bild 01 ist eine NORMALE erste Szene, passend zum ersten gesprochenen Satz (Hook). Das Video beginnt mit Bild 01 bei 0,0 Sekunden.
+- Bild 01 enthält KEINE Cover-Headline oder Thumbnail-Overlays, sondern eine saubere thematische Szene.
+
+==================================================
+COVER = 3 CANDIDATES HARD LOCK
+==================================================
+1. Generiere 3 eigenständige Cover-Kandidaten (9:16 vertikal) mit starker visueller Hook und prägnantem deutschen Text.
+2. Wähle den besten Kandidaten aus und speichere ihn als 03-export/THUMBNAIL.png ab.
+3. Verwende das Cover niemals als Videoszene oder Referenz für eine Timeline-Szene.
+
+==================================================
+NON-COVER = SINGLE GENERATION HARD LOCK
+==================================================
+- Alle normalen Szenen Bild 01 bis Bild NN werden exakt einmal erfolgreich generiert.
+- Jede Szene entspricht genau ihrem gesprochenen Satzanker im Skript.
+- Generierung erfolgt kontrolliert in 5er-Batches.
+
+==================================================
+FIVE-IMAGE BATCH HARD LOCK (5ER-GRUPPEN)
+==================================================
+Zuerst das Cover (3 Kandidaten → 1 Gewinner nach 03-export/THUMBNAIL.png) fertigstellen. DANN:
+1. Generiere NUR Szenen 01–05 (maximal fünf Jobs gleichzeitig).
+2. Alle fünf Ausgaben prüfen: basic PNG validity, korrekte Auflösung (9:16), eindeutige Zuordnung.
+3. Fehlendes oder defektes Bild gezielt nachgenerieren; erst wenn 01–05 vollständig sind, nach 00-bildprompts/images/ übernehmen als Bild 01.png bis Bild 05.png.
+4. Erst danach mit Gruppe 06–10 fortfahren.
+
+==================================================
+VISUELLE DNA: SERIOUS MINIMAL COUNTRYBALL EXPLAINER (9:16)
+==================================================
+- Seriöse, reduzierte 2D-Vektor-Ästhetik
+- Format: 9:16 (Smartphone vertical)
+- Klare, kräftige Konturen, harmonische Farbpalette
+- Countryballs nur wenn Akteure gebraucht werden; reine Objekte/Karten/Dokumente sind ausdrücklich erlaubt
+- Jeder sichtbare Text muss DEUTSCH sein. Kein Kauderwelsch, kein Englisch im Bild.
+
+==================================================
+PROMPTS
+==================================================
+
+[HIER DIE SZENENPROMPTS BILD 01 BIS BILD NN EINTRAGEN]

@@ -184,19 +184,16 @@ Einzige verbindliche Masterdatei:
 00-bildprompts/99-alle-bildprompts.txt
 ```
 
-Ausführung streng seriell:
+Generierung in kontrollierten 5er-Batches:
 
 ```text
-World-Lock lesen
-→ genau 1 Bild erzeugen
-→ vollständig warten
-→ Inhalt + Bildwelt prüfen
-→ exakt Bild NN.png benennen
-→ in 00-bildprompts/00-ALLE-BILDER-HIER-REIN/ ablegen
-→ erst dann nächstes Bild
+1. 00-bildprompts/google-flow-prompt.txt öffnen
+2. Maximal 5 Bilder gleichzeitig erzeugen (Bild 01–05, dann 06–10 etc.)
+3. Vollständig warten und PNGs prüfen
+4. Exakt Bild NN.png benennen
+5. In 00-bildprompts/images/ ablegen
+6. Erst nach vollständiger Kontrolle der Gruppe nächsten 5er-Block starten
 ```
-
-Keine Queue, kein Batch, keine parallele Bildgenerierung.
 
 ## Audio
 

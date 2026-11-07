@@ -35,39 +35,51 @@ Für neue Reels gilt:
 Kanonische Übergabedateien:
 
 ```text
-00-bildprompts/99-alle-bildprompts.txt
-01-voice-script/voice-script.txt
-02-audio/voiceover-final.wav
-99-technik/BILD_AUDIO_ZUORDNUNG.json
+shorts/YYYY-KWNN_DD-MM_bis_DD-MM/<thema-slug>/
+├── 00-bildprompts/
+│   ├── google-flow-prompt.txt
+│   └── images/
+├── 01-voice-script/voice-script.txt
+├── 02-audio/voiceover-final.wav
+├── 03-export/
+│   ├── THUMBNAIL.png
+│   └── SHORTS-UPLOAD.txt
+└── 99-technik/
+    ├── status.json
+    ├── video.json
+    ├── EDITORIAL_BRIEF.json
+    └── BILD_AUDIO_ZUORDNUNG.json
 ```
 
 Voice-over wird ab sofort direkt in Phase 1 vollautomatisch generiert:
 ```bash
-npm run voice:reel -- --dir "<reel>"
+npm run voice:short -- --dir "shorts/<woche>/<thema>"
 ```
 
 `BILD_AUDIO_ZUORDNUNG.json` legt schon in Phase 1 fest, welcher gesprochene Satz-/Teilbereich zu welchem Bild gehört. Die echten Sekundenwerte werden in Phase 3 aus dem finalen Audio erzeugt.
 
-**Übergabe an Phase 2:** Script, Masterstimme (`voiceover-final.wav`), Masterprompt, Mapping, Motion/SFX, Caption und Quellen sind fertig.
+**Übergabe an Phase 2:** Script, Masterstimme (`voiceover-final.wav`), Masterprompt (`google-flow-prompt.txt`), Mapping, Motion/SFX, Caption und Quellen sind fertig.
 
 ---
 
-## Phase 2 — Arman (Nur noch Bilder)
+## Phase 2 — Arman (Nur noch Bilder & Cover)
 
 ### Voice-over
 Entfällt komplett für Arman! Das finale Voice-over wird bereits in Phase 1 von Antigravity über den kalibrierten Master-Stimmklon (`stickman-user-clone`) erzeugt und liegt unter `02-audio/voiceover-final.wav` bereit.
 
+### Cover
+3 separate Cover-Kandidaten in Google Flow erzeugen → stärkstes Cover wählen → als `03-export/THUMBNAIL.png` ablegen (wird nicht in die Video-Timeline gemischt).
+
 ### Bilder
 
-`00-bildprompts/99-alle-bildprompts.txt` verwenden. Google Flow arbeitet streng seriell:
+`00-bildprompts/google-flow-prompt.txt` verwenden. Google Flow arbeitet in kontrollierten 5er-Batches:
 
 ```text
-1 Bild erzeugen
-→ vollständig warten
-→ gegen Prompt + feste Bildwelt prüfen
-→ exakt Bild NN.png benennen
-→ in 00-bildprompts/00-ALLE-BILDER-HIER-REIN/ ablegen
-→ erst dann das nächste Bild
+1. Jeweils genau 5 Bilder erzeugen (z. B. Bild 01–05)
+2. Vollständig warten und PNGs prüfen
+3. Exakt Bild NN.png benennen
+4. In 00-bildprompts/images/ ablegen
+5. Erst danach mit dem nächsten 5er-Block fortfahren
 ```
 
 Keine Queue, keine parallele Generierung, keine unbenannten Sammelbilder.
