@@ -7,11 +7,14 @@ Dieses Dokument beschreibt die vollautomatische, kostenlose und lokal integriert
 ## 1. Übersicht & Zielsetzung
 
 - **Problem:** Manuelle Sprachaufnahmen sind zeitaufwendig; kommerzielle Cloud-TTS-Dienste verbrauchen teure Monats-Credits und haben starre API-Limits.
-- **Lösung:** Vollautomatische State-of-the-Art Text-to-Speech-Generierung direkt auf dem Mac via **Qwen3-TTS 1.7B Base** (Apple Silicon Metal GPU / `mlx-audio`).
-- **Kanalstimme:** 1:1 Klon der bewährten Google-KI-Stimme aus Armans bisherigen Videos (Referenz aus dem Kanalarchiv).
-- **Pacing:** Variante 3: **1.05x Tempo** mit automatischer Pausenkappung auf **maximal 0,25 s** für lebendigen, vorwärtsdrängenden Erzählfluss ohne störende Leerläufe.
+- **Lösung:** Vollautomatische State-of-the-Art Text-to-Speech-Generierung direkt auf dem Mac via **Qwen3-TTS 1.7B Base** (`mlx-community/Qwen3-TTS-12Hz-1.7B-Base-bf16` auf Apple Silicon Metal GPU / `mlx-audio`).
+- **Kanalstimme (`stickman-user-clone`):** Exakter 1:1 Stimmklon aus deiner eigenen Referenzaufnahme (`channel/audio/reference/user_voice_reference.wav`, 18,475 s, 24 kHz mono PCM). Alle alten Test- und Drittstimmen wurden restlos entfernt.
+- **Kalibrierte Parameter:**
+  - **Tempo:** **0.95x** (`rate: "-5%"`, via FFmpeg `atempo=0.95`) für ruhige, natürliche und souveräne Erklär-Autorität.
+  - **Maximale Pausen:** **0.30 s** nach Tempo-Anpassung (`0.285 s` vor `atempo=0.95`, mit weichen Cosinus-Fades) für flüssigen Erzählfluss ohne unnatürliche Löcher.
+  - **Chunk-Größe:** **max. 32 Wörter pro Chunk** bei `temperature: 0.7`.
 - **Kosten:** **0 € / 0 Credits**, 100% offline-fähig, unbegrenzt nutzbar für Shorts und 20-Minuten-Dokus.
-- **Qualität:** Studio Broadcast-Standard (48 kHz, -16 LUFS Loudness, Studio-EQ & Kompression).
+- **Qualität:** Studio Broadcast-Standard (`voiceBoost`: Highpass 75 Hz, De-Esser, Warmth +2.8 dB @ 180 Hz, Presence +1.8 dB @ 3.2 kHz, AI-Sheen-Taming -1.8 dB @ 11.5 kHz, Tanh-Softclip, subtiler Raumklang, Broadcast-Kompression & Limiter auf 48 kHz mono 16-bit PCM).
 
 ---
 
@@ -20,27 +23,24 @@ Dieses Dokument beschreibt die vollautomatische, kostenlose und lokal integriert
 ```mermaid
 flowchart TD
     Script["01-voice-script/voice-script.txt"] --> Norm["Text-Normalisierung & Aussprache-Guard<br/>(UN-, USA, UdSSR, z. B., Mrd., etc.)"]
-    Norm --> Chunks["Absatz-Chunking<br/>(22 logische Beats)"]
-    Chunks --> TTS["Qwen3-TTS 1.7B Base Klon<br/>(Lokal auf M4 Metal GPU)"]
-    TTS --> PauseCapping["Pausenkappung & Timing<br/>(weiche Cosinus-Fades ≤ 0.25s, atempo 1.05x)"]
-    PauseCapping --> Concat["FFmpeg Broadcast Mastering<br/>(Studio-EQ, Kompressor, 48 kHz mono)"]
-    Concat --> MasterWAV["02-audio/voiceover-final.wav<br/>(48 kHz, mono, 16-bit PCM, -16 LUFS)"]
+    Norm --> Chunks["Satzgenaues Chunking<br/>(max. 32 Wörter pro Chunk)"]
+    Chunks --> TTS["Qwen3-TTS 1.7B Base Klon (stickman-user-clone)<br/>(Referenz: channel/audio/reference/user_voice_reference.wav, temp 0.7)"]
+    TTS --> PauseCapping["Pausenkappung & Tempo-Kalibrierung<br/>(Pre-Stretch ≤ 0.285s + atempo 0.95x = exakt ≤ 0.30s Pausen)"]
+    PauseCapping --> Concat["FFmpeg Studio Voice Boost<br/>(Warmth, De-Esser, Soft-Clip, Kompression, 48 kHz mono)"]
+    Concat --> MasterWAV["02-audio/voiceover-final.wav<br/>(48 kHz, mono, 16-bit PCM)"]
     MasterWAV --> Whisper["Whisper Wort-Alignment<br/>(Messung aller Bildanker-Zeiten)"]
     Whisper --> Timeline["99-technik/FINAL_TIMELINE.json"]
 ```
 
 ---
 
-## 3. Stimm-Presets für Weltlogik
+## 3. Verbindliches Stimm-Preset
 
-| Preset | Typ / Engine | Tempo | Pausen | Charakter / Verwendung |
-| :--- | :--- | :--- | :--- | :--- |
-| **`weltlogik-alte-stimme-klon`** *(STANDARD)* | Qwen3-TTS 1.7B Base Klon | **1.05x** | **≤ 0.25s** | **1:1 Nachbau der bewährten Kanalstimme** aus bisherigen Videos. Vertraut, menschlich, lebendig, perfekte Balance für Shorts & Langform. |
-| **`weltlogik-explainer-storyteller`** | Qwen3-TTS VoiceDesign | 1.00x | ≤ 0.22s | **Moderner Video-Essayist** (Simplicissimus / MrWissen2go Vibe). Neugierig, dynamisch. |
-| **`weltlogik-nathan`** | Qwen3-TTS VoiceDesign | 1.00x | ≤ 0.22s | **David Nathan Klon** (Christian Bale / Stephen King Thriller). Dunkler Vocal-Fry, packend. |
-| **`weltlogik-brueckner`** | Qwen3-TTS VoiceDesign | 1.00x | ≤ 0.25s | **Christian Brückner Klon** (Die 'Stimme der Nation'). Rauchiger Doku-Bariton. |
-| **`weltlogik-florian-studio`** | edge-tts (Fallback) | +4% | 0.35s | Schneller Fallback ohne GPU-Bedarf. |
-| **`weltlogik-signature`** | edge-tts (Fallback) | +4% | 0.35s | Killian Bariton Fallback. |
+| Preset | Engine / Modell | Tempo | Max. Pause | Chunk-Limit | Referenz-Audio |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **`stickman-user-clone`** *(EINZIGER STANDARD)* | `qwen-mlx` (`Qwen3-TTS-12Hz-1.7B-Base-bf16`) | **0.95x** (`-5%`) | **≤ 0.30s** (`0.285s` pre-stretch) | **32 Wörter** | `channel/audio/reference/user_voice_reference.wav` |
+
+Die Konfiguration ist zentral in `config/voice-policy.json` hinterlegt.
 
 ---
 
@@ -75,7 +75,7 @@ Der Voice-Generator bereinigt das Skript vor der Synthese automatisch gegen typi
 
 ## 5. CLI-Befehle & Workflows
 
-### Standard-Generierung mit der Kanalstimme:
+### Standard-Generierung mit der kalibrierten Master-Stimme:
 ```bash
 npm run voice:youtube -- --dir "youtube/2026-KW43_19-10_bis_25-10/un-veto-wie-ein-land-einen-beschluss-stoppen-kann" --force
 ```
@@ -90,12 +90,7 @@ npm run voice:youtube -- --dir "youtube/..." --dry-run
 npm run voice:youtube -- --dir "youtube/..." --force --align
 ```
 
-### Alternatives Preset wählen:
-```bash
-npm run voice:youtube -- --dir "youtube/..." --preset weltlogik-explainer-storyteller --force
-```
-
-### Presets im Terminal auflisten:
+### Aktives Preset im Terminal prüfen:
 ```bash
 npm run voice:youtube -- --list-presets
 ```
@@ -104,6 +99,6 @@ npm run voice:youtube -- --list-presets
 
 ## 6. Lokale Voraussetzungen & Caching
 
-Die Engine nutzt die lokale Python-Umgebung unter `~/finanzneo-tts/.venv` und das gecachte Qwen3-Base-Modell unter `~/finanzneo-tts/hf`. 
-- **Kein Neu-Download** erforderlich: Modell (4,5 GB) ist dauerhaft auf der SSD gesichert.
-- **Speicherverwaltung:** `mlx.core.set_cache_limit` und sequenzielle Chunks verhindern OOM-Fehler auf 16 GB M-Series Macs.
+Die Engine nutzt die lokale Python-Umgebung unter `/Users/arman/finanzneo-tts/.venv` (`sprecher.py`) und das gecachte Qwen3-Base-Modell unter `/Users/arman/finanzneo-tts/hf`.
+- **Master-Referenz im Repo:** `channel/audio/reference/user_voice_reference.wav` (mit Metadaten in `user_voice_reference.json`).
+- **Speicherverwaltung:** `mlx.core.set_cache_limit` und sequenzielle 32-Wort-Chunks verhindern OOM-Fehler auf Apple Silicon Macs.

@@ -19,31 +19,27 @@ function hasFlag(name) {
 
 function printUsage() {
   console.log(`
-Weltlogik YouTube Voiceover Generator (Open-Source Automated TTS)
-=================================================================
+Weltlogik YouTube Voiceover Generator (stickman-user-clone / Qwen3-TTS 1.7B MLX)
+================================================================================
 
-Erzeugt eine hochqualitative, maßgeschneiderte Sprecherstimme für das YouTube-Projekt
-vollautomatisch aus 01-voice-script/voice-script.txt und legt sie unter 02-audio/voiceover-final.wav ab.
+Erzeugt das Voiceover mit deiner kalibrierten Master-Kanalstimme (stickman-user-clone)
+vollautomatisch aus 01-voice-script/voice-script.txt und legt es unter
+02-audio/voiceover-raw.wav sowie 02-audio/voiceover-final.wav ab.
 
 Verwendung:
   npm run voice:youtube -- --dir "youtube/<woche>/<thema>" [Optionen]
 
 Optionen:
-  --preset <name>       Stimm-Preset (Standard: weltlogik-signature)
-                        Verfügbar:
-                        - weltlogik-signature: Warmer, sonorer Bariton (Arte/ZDFinfo Stil)
-                        - weltlogik-conrad:    Präziser, analytischer Investigativton
-                        - weltlogik-florian:   Dynamischer Erklärer (MrWissen2go Stil)
-                        - weltlogik-seraphina: Eindrucksvolle feminine Dokumentarstimme
-                        - weltlogik-katja:     Klassische Nachrichtensprecherin
-  --rate <rate>         Sprechgeschwindigkeit (Standard aus Preset, z. B. +4% oder +6%)
-  --pitch <pitch>       Tonhöhe (Standard aus Preset, z. B. -1Hz)
-  --pause <sekunden>    Pause zwischen Absätzen in Sekunden (Standard: 0.35)
-  --voice <voice-id>    Explizite Stimm-ID überschreiben
+  --preset <name>       Stimm-Preset (Standard: stickman-user-clone)
+  --profile <name>      Alias für --preset (Standard: stickman-user-clone)
+  --tempo <faktor>      Sprechtempo-Multiplikator (Standard: 0.95)
+  --rate <rate>         Sprechgeschwindigkeit als Prozentwert (Standard: -5%)
+  --pause <sekunden>    Max. Pause in Sekunden nach Tempo-Anpassung (Standard: 0.30)
+  --no-boost            Studio Voice Boost deaktivieren
   --force               Bestehendes Audio überschreiben
   --dry-run             Zeigt Skript-Zerlegung, Wortzahl & Schätzung ohne Synthese
   --align               Startet direkt nach erfolgreicher Generierung auto-align:youtube
-  --list-presets        Zeigt alle Presets im Detail
+  --list-presets        Zeigt das aktive Master-Preset im Detail
 `);
 }
 
@@ -54,18 +50,15 @@ async function main() {
   }
 
   if (hasFlag('--list-presets')) {
-    console.log('\n=== Verfügbare Stimm-Presets für Weltlogik ===\n');
+    console.log('\n=== Aktives Stimm-Preset für Weltlogik ===\n');
     for (const [key, preset] of Object.entries(VOICE_PRESETS)) {
       const isDefault = key === DEFAULT_PRESET ? ' [STANDARD]' : '';
       console.log(`• ${key}${isDefault}`);
-      console.log(`  Titel:       ${preset.label}`);
-      if (preset.engine === 'qwen3-voice-design') {
-        console.log(`  Engine:      Qwen3-TTS 1.7B (Apple Silicon Metal GPU)`);
-        console.log(`  Persona:     ${preset.persona} | Tempo: ${preset.atempo ? preset.atempo + 'x' : '1.0x'}`);
-      } else {
-        console.log(`  Stimme:      ${preset.voice}`);
-        console.log(`  Tempo:       ${preset.rate} | Tonhöhe: ${preset.pitch}`);
-      }
+      console.log(`  Titel:        ${preset.label}`);
+      console.log(`  Engine:       ${preset.engine} (${preset.model})`);
+      console.log(`  Referenz:     ${preset.refAudio}`);
+      console.log(`  Tempo:        ${preset.tempo}x (${preset.rate}) | Max. Pause: ${preset.maxPauseSeconds}s (Pre-Stretch: ${preset.preStretchMaxPauseSeconds}s)`);
+      console.log(`  Chunk-Größe:  max. ${preset.maxWordsPerChunk} Wörter | Temperature: ${preset.temperature}`);
       console.log(`  Beschreibung: ${preset.description}\n`);
     }
     return;
@@ -78,11 +71,13 @@ async function main() {
   }
 
   const projectDir = path.resolve(dir);
-  const preset = arg('--preset') || DEFAULT_PRESET;
+  const preset = arg('--profile') || arg('--preset') || DEFAULT_PRESET;
   const voice = arg('--voice');
+  const tempo = arg('--tempo') ? Number(arg('--tempo')) : undefined;
   const rate = arg('--rate');
   const pitch = arg('--pitch');
   const pause = arg('--pause') ? Number(arg('--pause')) : undefined;
+  const boost = !hasFlag('--no-boost');
   const force = hasFlag('--force');
   const dryRun = hasFlag('--dry-run');
   const align = hasFlag('--align');
@@ -95,9 +90,12 @@ async function main() {
   const result = await generateYoutubeVoiceover(projectDir, {
     preset,
     voice,
+    tempo,
     rate,
     pitch,
+    maxPauseSeconds: pause,
     pauseBetweenSeconds: pause,
+    boost,
     force,
     dryRun
   });
@@ -105,9 +103,10 @@ async function main() {
   if (result.dryRun) {
     console.log(`\n[DRY RUN] Skript-Analyse:`);
     console.log(`Gesamtwörter:    ${result.totalWords}`);
-    console.log(`Absatz-Chunks:   ${result.totalChunks}`);
+    console.log(`Absatz-Chunks:   ${result.totalChunks} (max. ${result.config.maxWordsPerChunk} Wörter/Chunk)`);
+    console.log(`Tempo:           ${result.config.tempo}x (${result.config.rate}), max. Pause: ${result.config.maxPauseSeconds}s`);
     console.log(`Geschätzte Dauer: ~${result.estimatedDurationMinutes} Minuten`);
-    console.log(`\nAbsatzübersicht:`);
+    console.log(`\nChunk-Übersicht:`);
     result.chunks.forEach((c) => {
       console.log(`  [Chunk ${c.id}] (${c.words} Wörter): ${c.preview}`);
     });
@@ -115,9 +114,10 @@ async function main() {
   }
 
   console.log(`\n✅ Voiceover erfolgreich generiert!`);
-  console.log(`Ausgabe:     ${path.relative(process.cwd(), result.audioPath)}`);
+  console.log(`Roh-Audio:   ${path.relative(process.cwd(), result.rawAudioPath)}`);
+  console.log(`Master-WAV:  ${path.relative(process.cwd(), result.audioPath)}`);
   console.log(`Dauer:       ${result.report.durationSeconds}s (~${(result.report.durationSeconds / 60).toFixed(2)} min)`);
-  console.log(`Sprechtempo: ${result.report.wpm} Wörter/Minute`);
+  console.log(`Sprechtempo: ${result.report.wpm} Wörter/Minute (Tempo ${result.report.tempo}x)`);
   console.log(`Stimme:      ${result.report.voice} (${result.report.preset})`);
   console.log(`Messbericht: ${path.relative(process.cwd(), result.reportPath)}`);
 

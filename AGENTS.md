@@ -27,18 +27,17 @@ Cover separat fertigstellen; dann die Videobilder **in exakt fünf Bildprompts p
 ## Automatisierte Sprachausgabe (Open-Source Voiceover Pipeline)
 
 Für YouTube-Langvideos steht eine vollständig automatisierte, unbegrenzte und kostenfreie (0 € / 0 Credits) TTS-Pipeline zur Verfügung:
-- **Primäre Engine**: **Qwen3-TTS 1.7B Base** auf Apple Silicon Metal GPU via `mlx-audio` (100% lokal, offline, null Credits).
-- **Kanal-Standardstimme**: **`weltlogik-alte-stimme-klon`** – der 1:1 Nachbau von Armans bewährter Google-KI-Stimme aus seinen bisherigen Videos.
-- **Pacing & Tempo (Variante 3)**: Leicht angezogenes Tempo (**1.05x**) und automatische Pausenkappung auf **maximal 0,25 s** mit weichen Cosinus-Fades gegen jede Art von Leerlauf oder Schleppen.
-- **Mastering**: Broadcast-Standard (48 kHz mono, Studio-EQ & Kompression, -16 LUFS Loudness).
-- **Alternative Presets**: `weltlogik-explainer-storyteller` (Simplicissimus/MrWissen2go), `weltlogik-nathan` (David Nathan Klon), `weltlogik-brueckner` (Christian Brückner Klon) sowie schnelle `edge-tts` Fallbacks.
+- **Primäre Engine**: **Qwen3-TTS 1.7B Base** (`mlx-community/Qwen3-TTS-12Hz-1.7B-Base-bf16`) auf Apple Silicon Metal GPU via `mlx-audio` (100% lokal, offline, null Credits).
+- **Einzige Kanal-Standardstimme**: **`stickman-user-clone`** – exakter 1:1 Stimmklon aus der Master-Referenzaufnahme (`channel/audio/reference/user_voice_reference.wav`, 18,475 s, 24 kHz mono PCM). Alle alten Test- und Drittstimmen wurden entfernt.
+- **Kalibrierte Parameter**: Tempo **0.95x** (`rate: "-5%"`), maximale Pausen **0.30 s** (`0.285 s` pre-stretch mit weichen Cosinus-Fades), maximal **32 Wörter pro Chunk**, `temperature: 0.7`.
+- **Mastering (`voiceBoost`)**: Broadcast-Standard (48 kHz mono 16-bit PCM, Highpass 75 Hz, De-Esser, Warmth +2.2 dB @ 180 Hz, Presence +2.0 dB @ 3.2 kHz, AI-Sheen-Taming, Tanh-Softclip, Kompression & Limiter).
 - **Aussprache-Guard**: `normalizeGermanScriptForTts` expandiert geopolitische Akronyme (`UN-` → `U-N-`, `USA` → `U-S-A`, `UdSSR` → `U-d-S-S-R`, `BVerfG`, `BIP`, `EU`), Abkürzungen (`z. B.`, `d. h.`, `Mrd.`, `Mio.`, `ca.`), Paragrafen/Artikel (`§ 12`, `Art. 108`), Prozentzeichen und säubert Markdown-Formatierungen & Regieanweisungen.
 - **Befehl**:
   ```bash
   npm run voice:youtube -- --dir "youtube/<woche>/<thema>" --force
   ```
-- **Optionale Parameter**: `--preset <name>`, `--rate <+5%>`, `--pitch <-2Hz>`, `--pause <ms>`, `--align`, `--force`.
-- **Dokumentation**: Siehe `docs/VOICE_GENERATION_GUIDE.md`.
+- **Optionale Parameter**: `--preset stickman-user-clone`, `--tempo <0.95>`, `--rate <-5%>`, `--pause <0.30>`, `--no-boost`, `--align`, `--force`.
+- **Dokumentation**: Siehe `docs/VOICE_GENERATION_GUIDE.md` und `config/voice-policy.json`.
 
 ## Oberste proaktive Aufgabe nach jedem Video: Qualität steigern
 
